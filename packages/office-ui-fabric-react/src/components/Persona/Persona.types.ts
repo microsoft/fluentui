@@ -259,6 +259,11 @@ export interface IPersonaCoinStyleProps {
   size?: PersonaSize;
 
   /**
+   * Optional custom persona coin size in pixel.
+   */
+  coinSize?: number;
+
+  /**
    * Decides whether to display coin for unknown persona
    */
   showUnknownPersonaCoin?: boolean;

@@ -252,11 +252,15 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     );
   }
 
-  private _onMouseUpOrTouchEnd = (): void => {
+  private _onMouseUpOrTouchEnd = (event: MouseEvent | TouchEvent): void => {
     // Synchronize the renderedValue to the actual value.
     this.setState({
       renderedValue: this.state.value
     });
+
+    if (this.props.onChanged) {
+      this.props.onChanged(event, this.state.value as number);
+    }
 
     this._events.off();
   };

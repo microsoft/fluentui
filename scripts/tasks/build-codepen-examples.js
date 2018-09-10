@@ -3,6 +3,7 @@ module.exports = function() {
   const transformer = require('./codepen-examples-transform');
   const glob = require('glob');
   const files = glob.sync(path.resolve(__dirname, '../../packages/*/src/components/**/examples/*Example*.tsx'));
+
   const jscodeshift = require('jscodeshift');
   const fs = require('fs');
   const async = require('async');
@@ -23,7 +24,7 @@ module.exports = function() {
           const fileInfo = { path: file, source: fileSource };
           const api = { jscodeshift: jscodeshift.withParser('babylon'), stats: {} };
           const transformResult = transformer(fileInfo, api);
-          const dirPath = path.dirname(path.dirname(file)).replace(/(\b)src(\b)/, '$1lib/codepen$2');
+          const dirPath = path.dirname(path.dirname(file)).replace(/((\b)src(\b))(?!.*\1)/, '$2lib/codepen$3');
 
           if (!fs.existsSync(dirPath)) {
             mkdirp.sync(dirPath);

@@ -11,6 +11,8 @@ interface IVirtualElement extends HTMLElement {
   };
 }
 
+export const DATA_PORTAL_ATTRIBUTE = 'data-portal-element';
+
 /**
  * Sets the virtual parent of an element.
  * Pass `undefined` as the `parent` to clear the virtual parent.
@@ -205,6 +207,29 @@ export function getRect(element: HTMLElement | Window | null): IRectangle | unde
 }
 
 /**
+ * Identify element as a portal by setting an attribute.
+ * @param element Element to mark as a portal.
+ */
+export function setPortalAttribute(element: HTMLElement): void {
+  element.setAttribute(DATA_PORTAL_ATTRIBUTE, 'true');
+}
+
+/**
+ * Determine whether a target is within a portal from perspective of root or optional parent.
+ * This function only works against portal components that use the setPortalAttribute function.
+ * If both parent and child are within the same portal this function will return false.
+ * @param target Element to query portal containment status of.
+ * @param parent Optional parent perspective. Search for containing portal stops at parent (or root if parent is undefined or invalid.)
+ */
+export function portalContainsElement(target: HTMLElement, parent?: HTMLElement): boolean {
+  const elementMatch = findElementRecursive(
+    target,
+    (testElement: HTMLElement) => parent === testElement || testElement.hasAttribute(DATA_PORTAL_ATTRIBUTE)
+  );
+  return elementMatch !== null && elementMatch.hasAttribute(DATA_PORTAL_ATTRIBUTE);
+}
+
+/**
  * Finds the first parent element where the matchFunction returns true
  * @param element element to start searching at
  * @param matchFunction the function that determines if the element is a match
@@ -222,7 +247,7 @@ export function findElementRecursive(
 }
 
 /**
- * Determines if an element, or any of its ancestors, contian the given attribute
+ * Determines if an element, or any of its ancestors, contain the given attribute
  * @param element - element to start searching at
  * @param attribute - the attribute to search for
  * @returns the value of the first instance found

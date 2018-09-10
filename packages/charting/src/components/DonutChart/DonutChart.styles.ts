@@ -1,44 +1,46 @@
 import { IDonutChartStyleProps, IDonutChartStyles } from './DonutChart.types';
 
 export const getStyles = (props: IDonutChartStyleProps): IDonutChartStyles => {
-  const { className, height, width } = props;
-
+  const { className, width, height, theme, color } = props;
   return {
     root: [
       'ms-DonutChart',
       {
-        textAlign: 'center',
+        alignItems: 'center',
         display: 'flex',
         flexDirection: 'column',
-        width: width
+        width: '100%',
+        height: '100%'
       },
       className
     ],
     chart: {
-      width: height,
+      width: width,
       height: height,
       boxSizing: 'content-box',
-      overflow: 'visible'
+      overflow: 'visible',
+      alignmentAdjust: 'center'
     },
-    legend: [
-      {
-        display: 'flex',
-        width: height,
-        justifyContent: 'space-evenly'
-      }
-    ],
-    legendItem: [
-      {
-        display: 'flex',
-        alignItems: 'center'
-      }
-    ],
-    legendBox: [
-      {
-        width: 10,
-        height: 10,
-        marginRight: 5
-      }
-    ]
+    legendContainer: {
+      paddingTop: '16px',
+      width: `${width}px`
+    },
+    hoverCardTextStyles: {
+      ...theme.fonts.medium,
+      lineHeight: '14px'
+    },
+    hoverCardDataStyles: {
+      color: color === '' ? theme.palette.black : color,
+      fontSize: '28px',
+      fontFamily: 'Segoe UI',
+      fontWeight: 'bold',
+      lineHeight: '31px'
+    },
+    hoverCardRoot: {
+      paddingLeft: '16px',
+      paddingRight: '22px',
+      paddingTop: '15px',
+      paddingBottom: '8px'
+    }
   };
 };

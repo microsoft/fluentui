@@ -1,6 +1,89 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Mon, 20 Aug 2018 10:26:10 GMT and should not be manually modified.
+This log was last generated on Mon, 10 Sep 2018 10:24:57 GMT and should not be manually modified.
+
+## 0.19.1
+Mon, 10 Sep 2018 10:24:57 GMT
+
+### Patches
+
+- Show bar background if all chart data point data is 0 or undefined
+
+## 0.19.0
+Fri, 07 Sep 2018 22:04:50 GMT
+
+### Minor changes
+
+- Adding temporary fix for hovercard. This fix scales the hover card size based upon the content inside it
+
+### Patches
+
+- donut chart arc sectors selected arc show and remaining arcs decrease opacity
+
+## 0.18.0
+Fri, 07 Sep 2018 16:29:48 GMT
+
+### Minor changes
+
+- Changing interaction behaviour of Multistacked and stacked bar chart. Changing styling and opacity of bar upon interaction between legends and chart.
+
+## 0.17.4
+Thu, 06 Sep 2018 10:28:35 GMT
+
+### Patches
+
+- Line chart hover issue , css for x-axis text
+
+## 0.17.3
+Wed, 05 Sep 2018 10:29:25 GMT
+
+### Patches
+
+- Donut chart align issues fixed
+
+## 0.17.2
+Fri, 31 Aug 2018 17:27:00 GMT
+
+### Patches
+
+- add legends and hover behaviour for line chart
+
+## 0.17.1
+Fri, 31 Aug 2018 10:27:35 GMT
+
+### Patches
+
+- Fixes the usage of renamed variable
+- horizontal bar chart modified according to figma 
+
+## 0.17.0
+Thu, 30 Aug 2018 19:26:04 GMT
+
+### Minor changes
+
+- Adding hovercard for stacked and multistacked bar chart which show related data in the hover card. Created interaction between legends, stacked and multistacked bar chart. The legends are clickable  and upon  clicking on a legends that respective data point lits up  compared to others. This helps users understand the chart and visualze better. Added opacity to charts upon interaction
+
+### Patches
+
+- Donut chart align issues fixed
+
+## 0.16.1
+Thu, 30 Aug 2018 10:32:49 GMT
+
+### Patches
+
+- Donut chart with legends and hover behavior 
+
+## 0.16.0
+Fri, 24 Aug 2018 10:26:08 GMT
+
+### Minor changes
+
+- Making stacked bar chart flex and consume new legends component in it
+
+### Patches
+
+- Fix @types/prop-types being inconsistently restrictive.
 
 ## 0.15.0
 Mon, 20 Aug 2018 10:26:10 GMT

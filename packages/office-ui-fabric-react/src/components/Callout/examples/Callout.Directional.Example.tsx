@@ -67,7 +67,7 @@ export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirec
             label="Directional hint"
             selectedKey={directionalHint!}
             options={DIRECTION_OPTIONS}
-            onChanged={this._onDirectionalChanged}
+            onChange={this._onDirectionalChanged}
           />
         </div>
         <div className="ms-CalloutExample-buttonArea" ref={menuButton => (this._menuButtonElement = menuButton)}>
@@ -123,7 +123,7 @@ export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirec
     });
   };
 
-  private _onDirectionalChanged = (option: IDropdownOption): void => {
+  private _onDirectionalChanged = (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
     this.setState({
       directionalHint: option.key as number
     });

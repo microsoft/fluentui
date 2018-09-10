@@ -62,6 +62,12 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker> {
   ariaLabel?: string;
 
   /**
+   * Whether or not the Textfield of the DatePicker is underlined.
+   * @default false
+   */
+  underlined?: boolean;
+
+  /**
    * Aria label for date picker popup for screen reader users.
    * @defaultvalue Calendar
    */
@@ -194,6 +200,11 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker> {
    * Callback that runs after DatePicker's menu (Calendar) is closed
    */
   onAfterMenuDismiss?: () => void;
+
+  /**
+   * Whether the CalendarDay close button should be shown or not.
+   */
+  showCloseButton?: boolean;
 }
 
 export interface IDatePickerStrings {
@@ -260,6 +271,11 @@ export interface IDatePickerStrings {
    * Aria-label for the "next year" button.
    */
   nextYearAriaLabel?: string;
+
+  /**
+   * Aria-label for the "close" button.
+   */
+  closeButtonAriaLabel?: string;
 }
 export interface IDatePickerStyleProps {
   /**

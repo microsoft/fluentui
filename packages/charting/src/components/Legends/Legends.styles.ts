@@ -16,8 +16,7 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
       display: 'flex',
       alignItems: 'center',
       cursor: 'pointer',
-      marginTop: props.overflow ? '8px' : '',
-      marginLeft: props.overflow ? '8px' : ''
+      margin: props.overflow ? '16px 0px 16px 16px' : ''
     },
     rect: {
       width: '12px',
@@ -25,7 +24,8 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
       backgroundColor: props.colorOnSelectedState,
       marginRight: '8px',
       border: '1px solid',
-      borderColor: props.borderColor ? props.borderColor : palette.black
+      borderColor: props.borderColor ? props.borderColor : palette.black,
+      opacity: props.colorOnSelectedState === palette.white ? '0.6' : ''
     },
     text: {
       fontSize: '12px',

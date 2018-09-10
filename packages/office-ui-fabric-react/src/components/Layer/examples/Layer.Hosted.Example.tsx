@@ -32,7 +32,7 @@ export class LayerHostedExample extends React.Component<
 
     return (
       <div>
-        <Toggle label="Show host" checked={showHost} onChanged={this._onChangeToggle} />
+        <Toggle label="Show host" checked={showHost} onChange={this._onChangeToggle} />
 
         {showHost && <LayerHost id="layerhost1" className="LayerExample-customHost" />}
 
@@ -98,7 +98,7 @@ export class LayerHostedExample extends React.Component<
     this.setState({ showLayerNoId: checked });
   };
 
-  private _onChangeToggle = (checked: boolean): void => {
+  private _onChangeToggle = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
     this.setState({ showHost: checked });
   };
 }

@@ -104,6 +104,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'FluentStyles',
           name: 'Fluent Component Styles',
           url: '#/examples/fluent-styles'
+        },
+        {
+          component: require<any>('../theming/ThemingPage').ThemingPage,
+          key: 'ThemingPage',
+          name: 'Theming',
+          url: '#/examples/theming'
         }
       ]
     }

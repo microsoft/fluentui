@@ -83,7 +83,6 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
 
           >
             <input
-              aria-labelledby="ChoiceGroupLabel1-A"
               checked={false}
               className=
                   ms-ChoiceField-input
@@ -220,7 +219,10 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                       @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
                         background-color: Highlight;
                         border-color: Highlight;
-                        color: Highlight;
+                        color: HighlightText;
+                      }
+                      @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title:hover {
+                        color: HighlightText;
                       }
                       @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
                         -ms-high-contrast-adjust: none;
@@ -380,7 +382,6 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
 
           >
             <input
-              aria-labelledby="ChoiceGroupLabel1-B"
               checked={true}
               className=
                   ms-ChoiceField-input
@@ -504,7 +505,6 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
 
           >
             <input
-              aria-labelledby="ChoiceGroupLabel1-C"
               checked={false}
               className=
                   ms-ChoiceField-input
@@ -614,7 +614,6 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
 
           >
             <input
-              aria-labelledby="ChoiceGroupLabel1-D"
               checked={false}
               className=
                   ms-ChoiceField-input

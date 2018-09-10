@@ -5,8 +5,9 @@ const cardFrameColor = 'rgba(0, 120, 215, 1)';
 const recommendationBaseColor = 'rgba(0,0,0,1)';
 const commonFontFamily = 'Segoe UI';
 const commonFontWeight = 'bold';
-const largeFontSize = 26;
+const largeFontSize = 28;
 const regularFontSize = 12;
+const regularLineHeight = 18;
 const containerSpaceMargin = 22;
 const flexDisplayStyle: IStyle = {
   display: 'flex',
@@ -42,6 +43,7 @@ export const getStyles = (): IRecommendationStyles => ({
   },
   recommendationContent: {
     fontSize: regularFontSize,
+    lineHeight: regularLineHeight,
     fontFamily: commonFontFamily,
     color: recommendationBaseColor,
     display: 'flex',

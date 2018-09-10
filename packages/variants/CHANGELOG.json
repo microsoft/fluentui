@@ -2,6 +2,63 @@
   "name": "@uifabric/variants",
   "entries": [
     {
+      "version": "6.8.0",
+      "tag": "@uifabric/variants_v6.8.0",
+      "date": "Fri, 07 Sep 2018 16:29:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "8f69ab057f4e33b12713807228607386781c9a57",
+            "comment": "Updates button slots with correct pre-fluent palette values and scss fallbacks"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.65.0 <7.0.0` to `>=6.66.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.7.0",
+      "tag": "@uifabric/variants_v6.7.0",
+      "date": "Thu, 06 Sep 2018 10:28:35 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "78bd90844a740a239037b55ee4f783350ba9437d",
+            "comment": "add buttonBackgroundDisabled semantic slot"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.64.0 <7.0.0` to `>=6.65.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.6.0",
+      "tag": "@uifabric/variants_v6.6.0",
+      "date": "Tue, 28 Aug 2018 10:23:58 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "aba078cd1d16aeed456988c5d8ae0266b652d65b",
+            "comment": "fixes makeThemeFromPartials function to create theme in steps, so palette can be updated, then the updated palette informs the creation of the semantic slots, then the re st of the theme is filled in'"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.56.0 <7.0.0` to `>=6.57.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.5.0",
       "tag": "@uifabric/variants_v6.5.0",
       "date": "Tue, 21 Aug 2018 10:28:16 GMT",

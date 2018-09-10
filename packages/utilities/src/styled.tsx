@@ -58,8 +58,7 @@ export function styled<
         {(context: ICustomizerContext) => {
           const settings = Customizations.getSettings(fields, scope, context.customizations);
           const { styles: customizedStyles, ...rest } = settings;
-          const styles = (styleProps: TStyleProps) =>
-            _resolve(styleProps, baseStyles, customizedStyles, componentProps.styles);
+          const styles = (styleProps: TStyleProps) => _resolve(styleProps, baseStyles, customizedStyles, componentProps.styles);
 
           const additionalProps = getProps ? getProps(componentProps) : undefined;
           return <Component {...rest} {...additionalProps} {...componentProps} styles={styles} />;

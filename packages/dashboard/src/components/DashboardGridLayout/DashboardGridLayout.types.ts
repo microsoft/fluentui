@@ -1,34 +1,12 @@
 import { Breakpoints, Layout, Layouts } from 'react-grid-layout';
+import { ISection } from '../Section/Section.types';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { DragApiRefObject } from 'react-grid-layout';
-
-/**
- * Size of the card
- */
-export enum Size {
-  /**
-   * Option for selecting small card
-   */
-  small = 'small',
-
-  /**
-   * Option for selecting Medium Tall card
-   */
-  mediumTall = 'mediumTall',
-
-  /**
-   * Option for selecting Medium Wide card
-   */
-  mediumWide = 'mediumWide',
-
-  /**
-   * Option for selecting Large card
-   */
-  large = 'large'
-}
+import { DragApiRefObject, ItemCallback } from 'react-grid-layout';
+import { ICard, CardSize } from '../Card/Card.types';
 
 export interface IDashboardGridLayoutStyles {
   root: IStyle;
+  section: IStyle;
 }
 
 export type DashboardGridBreakpointLayouts = {
@@ -36,6 +14,15 @@ export type DashboardGridBreakpointLayouts = {
    * Layout dictionary for every breakpoint
    */
   [P in Breakpoints]?: IDashboardCardLayout[]
+};
+
+export type DashboardSectionMapping = {
+  /**
+   * Key to key mapping for sections
+   * Key: section key
+   * Value: List of cards keys that are under this section
+   */
+  [id: string]: string[];
 };
 
 export interface IDashboardCardLayout {
@@ -57,7 +44,7 @@ export interface IDashboardCardLayout {
   /**
    * Size of card
    */
-  size: Size;
+  size: CardSize;
 
   /**
    * Static elements can't be moved or dragged
@@ -90,6 +77,16 @@ export interface IDashboardGridLayoutProps {
   dragApi?: DragApiRefObject;
 
   /**
+   * # of cols. This is a breakpoint -> cols map, e.g. {lg: 12, md: 10, ...}
+   */
+  cols?: { [P in Breakpoints]: number };
+
+  /**
+   * the px value of break points
+   */
+  breakpoints?: { [P in Breakpoints]: number };
+
+  /**
    * Whether items in this grid should be draggable or not
    * @default true
    */
@@ -102,12 +99,60 @@ export interface IDashboardGridLayoutProps {
   isResizable?: boolean;
 
   /**
+   * Calls when drag starts.
+   */
+  onDragStart?: ItemCallback;
+
+  /**
+   * Calls on each drag movement.
+   */
+  onDrag?: ItemCallback;
+
+  /**
+   * Calls when drag is complete.
+   */
+  onDragStop?: ItemCallback;
+
+  /**
+   * The row height used for React-Grid-Layout, if not provided, the default value is used
+   * @default 50
+   */
+  rowHeight?: number;
+
+  /**
+   * The sections
+   */
+  sections?: ISection[];
+
+  /**
+   * The cards definition. Either use cards or cardNodes to pass in the card definitions.
+   */
+  cards?: ICard[];
+
+  /**
+   * Alternative to provide card definition. Either use cards or cardNodes to pass in the card definitions.
+   */
+  cardNodes?: JSX.Element[];
+
+  /**
+   * if the section is collapsible
+   * @default false
+   */
+  isCollapsible?: boolean;
+
+  /**
    * Callback so you can save the layout.
    */
   onLayoutChange?(currentLayout: Layout[], allLayouts: Layouts): void;
 
   /**
-   * Calls back with breakpoint and new number of columns
+   * Callback with breakpoint and new number of columns
    */
   onBreakPointChange?(newBreakpoint: string, newCols: number): void;
+
+  /**
+   * On section change.
+   * @param newMapping
+   */
+  onSectionChange?(currentLayout: Layout[], allLayouts: Layouts, sectionMapping?: DashboardSectionMapping): void;
 }

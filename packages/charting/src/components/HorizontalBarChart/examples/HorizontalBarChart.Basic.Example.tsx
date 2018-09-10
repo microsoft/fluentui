@@ -1,31 +1,48 @@
 import * as React from 'react';
-import { HorizontalBarChart, IHorizontalBarChartProps } from '@uifabric/charting/lib/HorizontalBarChart';
+import { HorizontalBarChart, IChartProps } from '@uifabric/charting';
+import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
-export class HorizontalBarChartBasicExample extends React.Component<IHorizontalBarChartProps, {}> {
-  constructor(props: IHorizontalBarChartProps) {
-    super(props);
-  }
+export const HorizontalBarChartBasicExample: React.SFC<{}> = () => {
+  const hideRatio: boolean[] = [true, false];
 
-  public render(): JSX.Element {
-    const points = [
-      { x: 7, y: 0 },
-      { x: 6, y: 18 },
-      { x: 12, y: 36 },
-      { x: 21, y: 20 },
-      { x: 29, y: 46 },
-      { x: 34, y: 25 },
-      { x: 40, y: 13 },
-      { x: 48, y: 43 },
-      { x: 57, y: 30 },
-      { x: 64, y: 45 },
-      { x: 72, y: 12 },
-      { x: 78, y: 50 },
-      { x: 85, y: 25 },
-      { x: 90, y: 43 },
-      { x: 96, y: 22 },
-      { x: 100, y: 19 }
-    ];
+  const data: IChartProps[] = [
+    {
+      chartTitle: 'one',
+      chartData: [{ legend: 'one', horizontalBarChartdata: { x: 1543, y: 15000 }, color: DefaultPalette.tealDark }]
+    },
+    {
+      chartTitle: 'two',
+      chartData: [{ legend: 'two', horizontalBarChartdata: { x: 800, y: 15000 }, color: DefaultPalette.purple }]
+    },
+    {
+      chartTitle: 'three',
+      chartData: [{ legend: 'three', horizontalBarChartdata: { x: 8888, y: 15000 }, color: DefaultPalette.redDark }]
+    },
+    {
+      chartTitle: 'four',
+      chartData: [
+        { legend: 'four', horizontalBarChartdata: { x: 15888, y: 15000 }, color: DefaultPalette.themeDarkAlt }
+      ]
+    },
+    {
+      chartTitle: 'five',
+      chartData: [
+        { legend: 'five', horizontalBarChartdata: { x: 11444, y: 15000 }, color: DefaultPalette.themePrimary }
+      ]
+    },
+    {
+      chartTitle: 'six',
+      chartData: [{ legend: 'six', horizontalBarChartdata: { x: 14000, y: 15000 }, color: DefaultPalette.greenDark }]
+    },
+    {
+      chartTitle: 'seven',
+      chartData: [{ legend: 'seven', horizontalBarChartdata: { x: 9855, y: 15000 }, color: DefaultPalette.accent }]
+    },
+    {
+      chartTitle: 'eight',
+      chartData: [{ legend: 'eight', horizontalBarChartdata: { x: 4250, y: 15000 }, color: DefaultPalette.blueLight }]
+    }
+  ];
 
-    return <HorizontalBarChart data={points} chartLabel={'Basic Chart with Numeric Axes'} />;
-  }
-}
+  return <HorizontalBarChart data={data} hideRatio={hideRatio} width={600} />;
+};

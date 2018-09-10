@@ -6,11 +6,21 @@ import { IStackProps, IStackStyles } from './Stack.types';
 import { styles } from './Stack.styles';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-const StackItemType = (<StackItem /> as React.ReactElement<IStackItemProps> &
-  IStyleableComponentProps<IStackItemProps, IStackItemStyles>).type;
+const StackItemType = (<StackItem /> as React.ReactElement<IStackItemProps> & IStyleableComponentProps<IStackItemProps, IStackItemStyles>)
+  .type;
 
 const view = (props: IViewComponentProps<IStackProps, IStackStyles>) => {
-  const { renderAs: RootType = 'div', classNames, gap, horizontal, shrinkItems } = props;
+  const {
+    renderAs: RootType = 'div',
+    classNames,
+    gap,
+    horizontal,
+    shrinkItems,
+    verticalAlignment,
+    horizontalAlignment,
+    grow,
+    ...rest
+  } = props;
 
   const stackChildren: (React.ReactChild | null)[] = React.Children.map(
     props.children,
@@ -49,7 +59,11 @@ const view = (props: IViewComponentProps<IStackProps, IStackStyles>) => {
     }
   );
 
-  return <RootType className={classNames.root}>{stackChildren}</RootType>;
+  return (
+    <RootType {...rest} className={classNames.root}>
+      {stackChildren}
+    </RootType>
+  );
 };
 
 const StackStatics = {

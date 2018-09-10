@@ -4,7 +4,7 @@
 // Office UI Fabric
 // --------------------------------------------------
 // Calendar styles
-$Calendar-day:28px;
+$Calendar-day: 28px;
 $Calendar-dayPicker-margin: 10px;
 .root {
   @include ms-normalize;
@@ -88,7 +88,8 @@ $Calendar-dayPicker-margin: 10px;
   padding: 0 5px;
 }
 
-.monthAndYear:hover, .currentYear:hover {
+.monthAndYear:hover,
+.currentYear:hover {
   color: $ms-color-black;
 }
 
@@ -143,7 +144,8 @@ $Calendar-dayPicker-margin: 10px;
 }
 
 // Today.
-.dayIsToday, .dayIsToday:hover {
+.dayIsToday,
+.dayIsToday:hover {
   position: relative;
   background-color: $ms-color-themeLight;
   @include high-contrast {
@@ -199,17 +201,21 @@ $Calendar-dayPicker-margin: 10px;
 }
 
 // Highlighted date squares
-.dayBackground, .dayBackground:hover, .dayBackground:active {
+.dayBackground,
+.dayBackground:hover,
+.dayBackground:active {
   border-radius: 2px;
 }
 
-.dayHover, .dayHover:hover {
+.dayHover,
+.dayHover:hover {
   cursor: pointer;
   background: $ms-color-neutralLight;
   color: $ms-color-neutralDark;
 }
 
-.dayPress, .dayPress:hover {
+.dayPress,
+.dayPress:hover {
   cursor: pointer;
   font-weight: $ms-font-weight-semibold;
   background: $ms-color-themeLight;
@@ -221,16 +227,22 @@ $Calendar-dayPicker-margin: 10px;
 
 .dayIsUnfocused:active,
 .dayIsFocused:active,
-.dayIsHighlighted, .dayIsHighlighted:hover, .dayIsHighlighted:active,
-.weekBackground, .weekBackground:hover, .weekBackground:active {
+.dayIsHighlighted,
+.dayIsHighlighted:hover,
+.dayIsHighlighted:active,
+.weekBackground,
+.weekBackground:hover,
+.weekBackground:active {
   background: $ms-color-themeLight;
   color: $ms-color-neutralPrimary;
   font-weight: $ms-font-weight-semibold;
 }
 
 // Today.
-.dayIsToday, .dayIsToday,
-.pickerIsFocused .dayIsToday, .dayIsToday.day:active {
+.dayIsToday,
+.dayIsToday,
+.pickerIsFocused .dayIsToday,
+.dayIsToday.day:active {
   position: relative;
   color: $ms-color-white;
   font-weight: $ms-font-weight-semibold;
@@ -290,6 +302,7 @@ $Calendar-dayPicker-margin: 10px;
   align-self: flex-end;
 }
 
+.closeButton,
 .prevMonth,
 .nextMonth,
 .prevYear,
@@ -469,6 +482,7 @@ $Calendar-dayPicker-margin: 10px;
     line-height: $Calendar-day;
     font-size: $ms-font-size-s;
   } // Reduce the size of arrows to change month/year.
+  .closeButton,
   .prevMonth,
   .nextMonth,
   .prevYear,
@@ -483,6 +497,7 @@ $Calendar-dayPicker-margin: 10px;
   .holder {
     display: inline-block;
     height: auto;
+    overflow: hidden;
   }
   .monthAndYear,
   .year {
@@ -553,7 +568,7 @@ $Calendar-dayPicker-margin: 10px;
       &:hover {
         outline: 1px solid transparent;
       }
-      &:nth-child(4n+4) {
+      &:nth-child(4n + 4) {
         @include margin(0, 0px, 16px, 0);
       }
     } // Position the "Go to today" button below the month picker.
@@ -622,8 +637,8 @@ $Calendar-dayPicker-margin: 10px;
       min-height: 240px;
     }
 
-    .holderWithButton{
-      padding-top:6px;
+    .holderWithButton {
+      padding-top: 6px;
       height: auto;
     }
   }
@@ -647,6 +662,7 @@ $Calendar-dayPicker-margin: 10px;
   width: auto;
 }
 
+.closeButton,
 .nextMonth,
 .prevMonth,
 .nextYear,

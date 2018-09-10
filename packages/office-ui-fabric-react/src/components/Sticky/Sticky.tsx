@@ -136,12 +136,20 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     return (
       <div ref={this._root}>
         {this.canStickyTop && (
-          <div ref={this._stickyContentTop} aria-hidden={!isStickyTop}>
+          <div
+            ref={this._stickyContentTop}
+            aria-hidden={!isStickyTop}
+            style={{ pointerEvents: isStickyTop ? 'auto' : 'none' }}
+          >
             <div style={this._getStickyPlaceholderHeight(isStickyTop)} />
           </div>
         )}
         {this.canStickyBottom && (
-          <div ref={this._stickyContentBottom} aria-hidden={!isStickyBottom}>
+          <div
+            ref={this._stickyContentBottom}
+            aria-hidden={!isStickyBottom}
+            style={{ pointerEvents: isStickyBottom ? 'auto' : 'none' }}
+          >
             <div style={this._getStickyPlaceholderHeight(isStickyBottom)} />
           </div>
         )}
@@ -254,7 +262,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     let currElem = this.root;
 
     if (currElem) {
-      while (currElem.offsetParent !== container) {
+      while (currElem && currElem.offsetParent !== container) {
         distance += currElem.offsetTop;
         currElem = currElem.offsetParent as HTMLDivElement;
       }

@@ -97,9 +97,11 @@ export interface ISpinButtonProps {
 
   /**
    * This callback is triggered when the value inside the SpinButton should be validated.
+   * @param value: The value entered in the SpinButton to validate
+   * @param event: The event that triggered this validate, if any. (For accessibility)
    * @return {string | void} If a string is returned, it will be used as the value of the SpinButton.
    */
-  onValidate?: (value: string) => string | void;
+  onValidate?: (value: string, event?: React.SyntheticEvent<HTMLElement>) => string | void;
 
   /**
    * This callback is triggered when the increment button is pressed or if the user presses up arrow with focus on the input of the spinButton
@@ -147,7 +149,8 @@ export interface ISpinButtonProps {
     disabled: boolean,
     isFocused: boolean,
     keyboardSpinDirection: KeyboardSpinDirection,
-    labelPosition?: Position
+    labelPosition?: Position,
+    className?: string
   ) => ISpinButtonClassNames;
 
   /**
@@ -199,6 +202,19 @@ export interface ISpinButtonProps {
    * The total size of the parent set (if in a set) for aria-setsize.
    */
   ariaSetSize?: number;
+
+  /**
+   * Sets the aria-valuenow of the spin button. The component must be
+   * controlled by the creator who controls the value externally.
+   * ariaValueNow would be the numeric form of value.
+   */
+  ariaValueNow?: number;
+
+  /*
+   * Sets the aria-valuetext of the spin button. The component must be
+   * controlled by the creator who controls the values externally.
+   */
+  ariaValueText?: string;
 
   /**
    * Optional keytip for this spin button

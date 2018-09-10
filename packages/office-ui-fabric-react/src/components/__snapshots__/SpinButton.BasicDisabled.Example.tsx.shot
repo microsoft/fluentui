@@ -179,7 +179,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                 -webkit-font-smoothing: antialiased;
                 background-color: #f4f4f4;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 color: #a6a6a6;
                 cursor: default;
@@ -306,7 +306,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                 -webkit-font-smoothing: antialiased;
                 background-color: #f4f4f4;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 color: #a6a6a6;
                 cursor: default;

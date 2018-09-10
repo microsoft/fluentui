@@ -1,22 +1,19 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 
+import { PanelBase } from './Panel.base';
 import { Panel } from './Panel';
-
 let div: HTMLElement;
 
-// Mock Layer since it otherwise shows nothing in snapshot tests
-jest.mock('../../Layer', () => {
-  return {
-    Layer: jest.fn().mockImplementation(props => {
-      return props.children;
-    })
-  };
-});
+const ReactDOM = require('react-dom');
 
 describe('Panel', () => {
   it('renders Panel correctly', () => {
+    // Mock createPortal to capture its component hierarchy in snapshot output.
+    ReactDOM.createPortal = jest.fn(element => {
+      return element;
+    });
+
     const component = renderer.create(
       <Panel isOpen={true} headerText="Test Panel">
         <span>Content goes here</span>
@@ -24,6 +21,8 @@ describe('Panel', () => {
     );
 
     expect(component.toJSON()).toMatchSnapshot();
+
+    ReactDOM.createPortal.mockClear();
   });
 
   describe('onClose', () => {
@@ -45,8 +44,8 @@ describe('Panel', () => {
         dismissedCalled = true;
       };
 
-      const panel: Panel = ReactDOM.render(
-        <Panel isOpen={true} onDismiss={setDismissTrue} onDismissed={setDismissedTrue} />,
+      const panel: PanelBase = ReactDOM.render(
+        <PanelBase isOpen={true} onDismiss={setDismissTrue} onDismissed={setDismissedTrue} />,
         div
       ) as any;
 

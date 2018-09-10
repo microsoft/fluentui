@@ -1,15 +1,7 @@
 import { IStyle } from '../../Styling';
 import { IStyleableComponentProps } from '../../Foundation';
 
-export type Alignment =
-  | 'start'
-  | 'end'
-  | 'center'
-  | 'space-between'
-  | 'space-around'
-  | 'space-evenly'
-  | 'baseline'
-  | 'stretch';
+export type Alignment = 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'baseline' | 'stretch';
 
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
@@ -26,6 +18,11 @@ export interface IStackProps extends IStyleableComponentProps<IStackProps, IStac
    * CSS class name used to style the Stack.
    */
   className?: string;
+
+  /**
+   * Inline styling.
+   */
+  style?: React.CSSProperties;
 
   /**
    * Whether to render Stack child elements horizontally.
