@@ -137,6 +137,11 @@ exports[`Component Examples renders Nav.ByKeys.Example.tsx correctly 1`] = `
                       right: -2px;
                       top: -2px;
                     }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
+                    }
                     &:hover {
                       color: #0078d4;
                     }
@@ -328,6 +333,11 @@ exports[`Component Examples renders Nav.ByKeys.Example.tsx correctly 1`] = `
                       outline-color: ButtonText;
                       right: -2px;
                       top: -2px;
+                    }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
                     }
                     &:hover {
                       color: #0078d4;
@@ -521,6 +531,11 @@ exports[`Component Examples renders Nav.ByKeys.Example.tsx correctly 1`] = `
                       right: -2px;
                       top: -2px;
                     }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
+                    }
                     &:hover {
                       color: #0078d4;
                     }
@@ -712,6 +727,11 @@ exports[`Component Examples renders Nav.ByKeys.Example.tsx correctly 1`] = `
                       outline-color: ButtonText;
                       right: -2px;
                       top: -2px;
+                    }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
                     }
                     &:hover {
                       color: #0078d4;

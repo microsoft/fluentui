@@ -114,6 +114,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
@@ -316,6 +321,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     outline-color: ButtonText;
                     right: -2px;
                     top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
@@ -520,6 +530,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
@@ -723,6 +738,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
@@ -925,6 +945,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     outline-color: ButtonText;
                     right: -2px;
                     top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
@@ -1184,6 +1209,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
@@ -1382,6 +1412,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     outline-color: ButtonText;
                     right: -2px;
                     top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
@@ -1582,6 +1617,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
@@ -1781,6 +1821,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
@@ -1979,6 +2024,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     outline-color: ButtonText;
                     right: -2px;
                     top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
@@ -2246,6 +2296,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
@@ -2448,6 +2503,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     outline-color: ButtonText;
                     right: -2px;
                     top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
@@ -2652,6 +2712,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
@@ -2854,6 +2919,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     outline-color: ButtonText;
                     right: -2px;
                     top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
@@ -3062,6 +3132,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
@@ -3264,6 +3339,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     outline-color: ButtonText;
                     right: -2px;
                     top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
@@ -3468,6 +3548,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
@@ -3670,6 +3755,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     outline-color: ButtonText;
                     right: -2px;
                     top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
@@ -3878,6 +3968,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
@@ -4080,6 +4175,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     outline-color: ButtonText;
                     right: -2px;
                     top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
@@ -4284,6 +4384,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
@@ -4486,6 +4591,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     outline-color: ButtonText;
                     right: -2px;
                     top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
@@ -4739,6 +4849,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                     bordercolor: grayText;
@@ -4943,6 +5058,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     outline-color: ButtonText;
                     right: -2px;
                     top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
@@ -5149,6 +5269,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                     bordercolor: grayText;
@@ -5354,6 +5479,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                     bordercolor: grayText;
@@ -5558,6 +5688,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     outline-color: ButtonText;
                     right: -2px;
                     top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
@@ -5829,6 +5964,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       right: -2px;
                       top: -2px;
                     }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
+                    }
                     @media screen and (-ms-high-contrast: active){& {
                       border: none;
                     }
@@ -6031,6 +6171,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       outline-color: ButtonText;
                       right: -2px;
                       top: -2px;
+                    }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){& {
                       border: none;
@@ -6235,6 +6380,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       right: -2px;
                       top: -2px;
                     }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
+                    }
                     @media screen and (-ms-high-contrast: active){& {
                       border: none;
                     }
@@ -6437,6 +6587,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       outline-color: ButtonText;
                       right: -2px;
                       top: -2px;
+                    }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){& {
                       border: none;
@@ -6645,6 +6800,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       right: -2px;
                       top: -2px;
                     }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
+                    }
                     @media screen and (-ms-high-contrast: active){& {
                       border: none;
                     }
@@ -6847,6 +7007,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       outline-color: ButtonText;
                       right: -2px;
                       top: -2px;
+                    }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){& {
                       border: none;
@@ -7051,6 +7216,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       right: -2px;
                       top: -2px;
                     }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
+                    }
                     @media screen and (-ms-high-contrast: active){& {
                       border: none;
                     }
@@ -7253,6 +7423,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       outline-color: ButtonText;
                       right: -2px;
                       top: -2px;
+                    }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){& {
                       border: none;
@@ -7461,6 +7636,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       right: -2px;
                       top: -2px;
                     }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
+                    }
                     @media screen and (-ms-high-contrast: active){& {
                       border: none;
                     }
@@ -7663,6 +7843,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       outline-color: ButtonText;
                       right: -2px;
                       top: -2px;
+                    }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){& {
                       border: none;
@@ -7867,6 +8052,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       right: -2px;
                       top: -2px;
                     }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
+                    }
                     @media screen and (-ms-high-contrast: active){& {
                       border: none;
                     }
@@ -8069,6 +8259,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       outline-color: ButtonText;
                       right: -2px;
                       top: -2px;
+                    }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
                     }
                     @media screen and (-ms-high-contrast: active){& {
                       border: none;
