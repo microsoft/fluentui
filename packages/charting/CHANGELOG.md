@@ -1,6 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Fri, 07 Sep 2018 22:04:50 GMT and should not be manually modified.
+This log was last generated on Mon, 10 Sep 2018 10:24:57 GMT and should not be manually modified.
+
+## 0.19.1
+Mon, 10 Sep 2018 10:24:57 GMT
+
+### Patches
+
+- Show bar background if all chart data point data is 0 or undefined
 
 ## 0.19.0
 Fri, 07 Sep 2018 22:04:50 GMT
