@@ -52,9 +52,9 @@ export const getBaseButtonClassNames = memoizeFunction(
           styles.rootExpanded,
           {
             selectors: {
-              ':hover $icon': styles.iconExpandedHovered,
+              [`:hover .${classNames.msButtonIcon}`]: styles.iconExpandedHovered,
               // menuIcon falls back to rootExpandedHovered to support original behavior
-              ':hover $menuIcon': styles.menuIconExpandedHovered || styles.rootExpandedHovered,
+              [`:hover .${classNames.msButtonMenuIcon}`]: styles.menuIconExpandedHovered || styles.rootExpandedHovered,
               ':hover': styles.rootExpandedHovered
             }
           }
@@ -65,15 +65,15 @@ export const getBaseButtonClassNames = memoizeFunction(
           !checked && {
             selectors: {
               ':hover': styles.rootHovered,
-              [`:hover ${classNames.msButtonLabel}`]: styles.labelHovered,
-              [`:hover ${classNames.msButtonIcon}`]: styles.iconHovered,
-              [`:hover ${classNames.msButtonDescription}`]: styles.descriptionHovered,
-              [`:hover ${classNames.msButtonMenuIcon}`]: styles.menuIconHovered,
+              [`:hover .${classNames.msButtonLabel}`]: styles.labelHovered,
+              [`:hover .${classNames.msButtonIcon}`]: styles.iconHovered,
+              [`:hover .${classNames.msButtonDescription}`]: styles.descriptionHovered,
+              [`:hover .${classNames.msButtonMenuIcon}`]: styles.menuIconHovered,
               ':focus': styles.rootFocused,
-              [`:active ${classNames.msButtonLabel}`]: styles.rootPressed,
-              [`:active ${classNames.msButtonIcon}`]: styles.iconPressed,
-              [`:active ${classNames.msButtonDescription}`]: styles.descriptionPressed,
-              [`:active ${classNames.msButtonMenuIcon}`]: styles.menuIconPressed
+              ':active': styles.rootPressed,
+              [`:active .${classNames.msButtonIcon}`]: styles.iconPressed,
+              [`:active .${classNames.msButtonDescription}`]: styles.descriptionPressed,
+              [`:active .${classNames.msButtonMenuIcon}`]: styles.menuIconPressed
             }
           },
         disabled && checked && [styles.rootCheckedDisabled],
