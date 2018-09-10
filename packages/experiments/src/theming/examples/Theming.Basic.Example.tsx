@@ -17,8 +17,7 @@ import {
   IVerticalStackStyles
 } from '@uifabric/experiments/lib/Stack';
 import { Text } from '@uifabric/experiments/lib/Text';
-import { CollapsibleSectionRecursiveExample } from
-  '@uifabric/experiments/lib/components/CollapsibleSection/examples/CollapsibleSection.Recursive.Example';
+import { CollapsibleSectionRecursiveExample } from '@uifabric/experiments/lib/components/CollapsibleSection/examples/CollapsibleSection.Recursive.Example';
 import { IThemedProps } from '../../Foundation';
 import {
   defaultTheme,
@@ -52,8 +51,8 @@ class DialogExample extends React.Component<IDialogExampleProps, IDialogExampleS
     return theme ? (
       <Customizer settings={{ theme }}>{this._renderDialog(buttonText)}</Customizer>
     ) : (
-        this._renderDialog(buttonText)
-      );
+      this._renderDialog(buttonText)
+    );
   }
 
   protected _renderDialog(buttonText: string): JSX.Element {
