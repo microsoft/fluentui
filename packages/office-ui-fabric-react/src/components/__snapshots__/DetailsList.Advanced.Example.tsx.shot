@@ -691,6 +691,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                           margin-left: 4px;
                           margin-right: 4px;
                           margin-top: 0;
+                          white-space: nowrap;
                         }
                     id="id__10"
                   >
