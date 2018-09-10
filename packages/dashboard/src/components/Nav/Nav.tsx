@@ -1,15 +1,7 @@
 /* tslint:disable */
 import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
 import * as React from 'react';
-import {
-  ICustomNavLinkGroup,
-  INavProps,
-  INavState,
-  INavLink,
-  INavStyleProps,
-  INavStyles,
-  NavGroupType
-} from './Nav.types';
+import { ICustomNavLinkGroup, INavProps, INavState, INavLink, INavStyleProps, INavStyles, NavGroupType } from './Nav.types';
 import { getStyles } from './Nav.styles';
 import { NavBase } from './NavBase';
 import { styled, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
@@ -87,30 +79,28 @@ class NavComponent extends NavBase {
 
     let ariaProps = {};
 
-    let rightIconName = undefined;
+    let secondaryIconName = undefined;
     if (link.links && link.links.length > 0 && nestingLevel === 0) {
       // for the first level link, show chevron icon if there is a children
-      rightIconName = link.isExpanded ? 'ChevronUp' : 'ChevronDown';
+      secondaryIconName = link.isExpanded ? 'ChevronUp' : 'ChevronDown';
 
       ariaProps = {
         ariaExpanded: !!link.isExpanded
       };
     } else if (link.url && link.target && link.target === '_blank') {
       // for external links, show an icon
-      rightIconName = 'OpenInNewWindow';
+      secondaryIconName = 'OpenInNewWindow';
     }
 
     // show nav icon for the first level only
-    const leftIconName = nestingLevel === 0 ? link.icon : undefined;
+    const primaryIconName = nestingLevel === 0 ? link.icon : undefined;
     const isLinkSelected = this.isLinkSelected(link, false /* includeChildren */);
     const isChildLinkSelected = this.isChildLinkSelected(link);
     const hasChildren = !!link.links && link.links.length > 0;
     const isSelected = (isLinkSelected && !hasChildren) || (isChildLinkSelected && !link.isExpanded);
-    const { styles, showMore, onShowMoreLinkClicked, dataHint } = this.props;
-    const classNames = getClassNames(styles!, { isSelected, nestingLevel, isChildLinkSelected });
+    const { showMore, onShowMoreLinkClicked, dataHint } = this.props;
     const linkText = this.getLinkText(link, showMore);
-    const onClickHandler =
-      link.isShowMoreLink && onShowMoreLinkClicked ? onShowMoreLinkClicked : this._onLinkClicked.bind(this, link);
+    const onClickHandler = link.isShowMoreLink && onShowMoreLinkClicked ? onShowMoreLinkClicked : this._onLinkClicked.bind(this, link);
 
     return (
       <NavLink
@@ -123,11 +113,11 @@ class NavComponent extends NavBase {
         dataValue={link.key}
         ariaLabel={linkText}
         {...ariaProps}
+        level={nestingLevel}
+        selected={isSelected}
         role="menu"
-        rootClassName={classNames.navItemRoot}
-        leftIconName={leftIconName}
-        rightIconName={rightIconName}
-        barClassName={classNames.navItemBarMarker}
+        primaryIconName={primaryIconName}
+        secondaryIconName={secondaryIconName}
       />
     );
   }
@@ -146,9 +136,7 @@ class NavComponent extends NavBase {
         // 1. only for the first level and
         // 2. if the link is expanded
         nestingLevel == 0 && link.isExpanded ? (
-          <div className={AnimationClassNames.slideDownIn20}>
-            {this._renderLinks(link.links as INavLink[], ++nestingLevel)}
-          </div>
+          <div className={AnimationClassNames.slideDownIn20}>{this._renderLinks(link.links as INavLink[], ++nestingLevel)}</div>
         ) : null}
       </li>
     );

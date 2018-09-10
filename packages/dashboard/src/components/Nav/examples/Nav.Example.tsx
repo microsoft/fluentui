@@ -17,84 +17,81 @@ export class NavExample extends React.Component<{}, {}> {
         name: 'default group',
         links: [
           {
-            name: 'Home - no action supported',
+            name: 'Home',
+            url: 'http://example.com',
+            isExpanded: false,
+            icon: 'Home',
+            key: 'key1'
+          },
+          {
+            name: 'Users',
             url: 'http://example.com',
             isExpanded: true,
-            icon: 'Home',
-            key: 'key1',
+            icon: 'Contact',
+            key: 'key2',
             links: [
-              { name: 'Activity', url: 'http://msn.com', key: 'key2' },
+              { name: 'Active users', url: 'http://msn.com', key: 'key3' },
               {
-                name: 'News - test with long name to show ellipse',
+                name: 'Contacts - test with long name to show ellipse',
                 url: 'http://msn.com',
                 target: '_blank',
-                key: 'key3'
+                key: 'key4'
+              },
+              { name: 'Guest users', url: 'http://msn.com', key: 'key4' },
+              { name: 'Deleted users', url: 'http://msn.com', key: 'key5' }
+            ]
+          },
+          { name: 'Groups', url: 'http://example.com', key: 'key6', icon: 'Group', isHidden: true },
+          { name: 'Resources', url: 'http://msn.com', target: '_blank', key: 'key7', icon: 'Devices4' },
+          {
+            name: 'Billing - test with long name to show ellipse',
+            url: 'http://msn.com',
+            target: '_blank',
+            key: 'key9',
+            icon: 'PaymentCard'
+          },
+          {
+            name: 'Support',
+            url: 'http://example.com',
+            isExpanded: false,
+            icon: 'Headset',
+            key: 'key10',
+            links: [
+              { name: 'Chat', url: 'http://msn.com', key: 'key11' },
+              {
+                name: 'Email - test with long name to show ellipse',
+                url: 'http://msn.com',
+                target: '_blank',
+                key: 'key12'
               }
             ]
           },
-          { name: 'Documents', url: 'http://example.com', key: 'key4', icon: 'Document', isHidden: true },
-          { name: 'Pages', url: 'http://msn.com', target: '_blank', key: 'key5', icon: 'Page' },
+          { name: 'Settings', url: 'http://example.com', key: 'key13', icon: 'Settings' },
+          { name: 'Setup', url: 'http://msn.com', target: '_blank', key: 'key14', icon: 'Repair' },
+          { name: 'Reports', url: 'http://example.com', key: 'key15', icon: 'Chart' },
+          { name: 'Health', url: 'http://msn.com', target: '_blank', key: 'key16', icon: 'Health' }
+        ],
+        groupType: NavGroupType.MenuGroup
+      },
+      {
+        name: 'Group heading',
+        links: [
           {
-            name: 'Notebook - test with long name to show ellipse',
-            url: 'http://msn.com',
-            target: '_blank',
-            key: 'key6',
-            icon: 'DietPlanNotebook'
-          },
-          {
-            name: 'Test nodes - test nodes',
+            name: 'Other admin centers',
             url: 'http://example.com',
             isExpanded: false,
             icon: 'Home',
             key: 'key17',
             links: [
-              { name: 'Activity', url: 'http://msn.com', key: 'key18' },
-              {
-                name: 'News - test with long name to show ellipse',
-                url: 'http://msn.com',
-                target: '_blank',
-                key: 'key19'
-              }
-            ]
-          }
-        ],
-        groupType: NavGroupType.MenuGroup
-      },
-      {
-        name: 'named menu group',
-        links: [
-          {
-            name: 'Home - no action supported',
-            url: 'http://example.com',
-            isExpanded: false,
-            icon: 'Home',
-            key: 'key7',
-            links: [
-              { name: 'Activity', url: 'http://msn.com', key: 'key8' },
-              {
-                name: 'News - test with long name to show ellipse',
-                url: 'http://msn.com',
-                target: '_blank',
-                key: 'key9'
-              }
+              { name: 'Security Center', url: 'http://msn.com', key: 'key18' },
+              { name: 'Device Management', url: 'http://msn.com', key: 'key19' },
+              { name: 'Azure Active Directory', url: 'http://msn.com', key: 'key20' },
+              { name: 'Exchange', url: 'http://msn.com', key: 'key21' },
+              { name: 'SharePoint', url: 'http://msn.com', key: 'key22' }
             ]
           },
-          { name: 'Documents', url: 'http://example.com', key: 'key10', icon: 'Document' },
-          { name: 'Pages', url: 'http://msn.com', target: '_blank', key: 'key11', icon: 'Page' },
-          {
-            name: 'Notebook - test with long name to show ellipse',
-            url: 'http://msn.com',
-            target: '_blank',
-            key: 'key12',
-            icon: 'DietPlanNotebook'
-          }
-        ],
-        groupType: NavGroupType.MenuGroup
-      },
-      {
-        links: [
-          { name: 'Edit', url: '#', onClick: this._onEditClick, icon: 'Edit', key: 'key13' },
-          { name: 'Show less', alternateText: 'Show more', url: '#', isShowMoreLink: true, icon: 'More', key: 'key14' }
+          { name: 'Edit navigation pane', url: '#', onClick: this._onEditClick, icon: 'Edit', key: 'key23' },
+          { name: 'Show less', alternateText: 'Show more', url: '#', isShowMoreLink: true, icon: 'More', key: 'key24' }
         ],
         groupType: NavGroupType.CustomizationGroup
       }

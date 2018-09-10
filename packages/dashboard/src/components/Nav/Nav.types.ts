@@ -177,11 +177,14 @@ export interface INavStyles {
    * Style set for the nav item root
    */
   navItemRoot: IStyle;
+  navItemSmall: IStyle;
+  hidden: IStyle;
 
   /**
    * Style set for the bar marker in the nav item
    */
   navItemBarMarker: IStyle;
+  NavItemBarMarkerSmall: IStyle;
 
   /**
    * Style set for the icon column in the nav item
@@ -258,12 +261,12 @@ export interface INavLinkProps extends React.AllHTMLAttributes<HTMLAnchorElement
   /**
    * Icon name for the icon shown on the left side of the nav link
    */
-  leftIconName?: string;
+  primaryIconName?: string;
 
   /**
    * Icon name for the icon shown on the right side of the nav link
    */
-  rightIconName?: string;
+  secondaryIconName?: string;
 
   /**
    * CSS class for the text part of the nav link
@@ -279,4 +282,7 @@ export interface INavLinkProps extends React.AllHTMLAttributes<HTMLAnchorElement
    * CSS class for the bar marker part of the nav link
    */
   barClassName?: string;
+
+  level?: number;
+  selected?: boolean;
 }

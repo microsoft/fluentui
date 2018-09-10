@@ -1,11 +1,5 @@
 /* tslint:disable */
-import {
-  IStyle,
-  AnimationClassNames,
-  DefaultPalette,
-  FontWeights,
-  FontSizes
-} from 'office-ui-fabric-react/lib/Styling';
+import { IStyle, AnimationClassNames, DefaultPalette, FontWeights, FontSizes } from 'office-ui-fabric-react/lib/Styling';
 import { INavStyleProps, INavStyles } from './Nav.types';
 
 export type INavItemStyle = {
@@ -80,6 +74,10 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         }
       }
     },
+    navItemSmall: {
+      height: navChildItemHeight,
+      lineHeight: navChildItemHeight
+    },
     iconWrapper: {
       position: 'relative',
       display: 'flex',
@@ -89,12 +87,22 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
     },
     navItemBarMarker: {
       position: 'absolute',
-      left: !!nestingLevel && nestingLevel > 0 && !hasChildren ? '-10px' : '6px',
-      top: !!nestingLevel && nestingLevel > 0 ? '7px' : '12px',
+      left: '4px',
+      top: '12px',
       width: '2px',
-      height: !!nestingLevel && nestingLevel > 0 ? '18px' : '24px',
-      backgroundColor: DefaultPalette.accent,
-      display: isSelected || isChildLinkSelected ? 'block' : 'none'
+      height: '24px',
+      backgroundColor: DefaultPalette.accent
+    },
+    NavItemBarMarkerSmall: {
+      position: 'absolute',
+      left: '41px',
+      top: '7px',
+      width: '2px',
+      height: '18px',
+      backgroundColor: DefaultPalette.accent
+    },
+    hidden: {
+      display: 'none'
     },
     navItemIcon: {
       fontSize: navIconSize,
@@ -104,8 +112,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
     navItemText: {
       flex: '1 1 auto',
       lineHeight: !!nestingLevel && nestingLevel > 0 ? navChildItemHeight : navItemHeight,
-      marginLeft:
-        isChildLinkSelected || (!hasChildren && isSelected && !(nestingLevel && nestingLevel > 0)) ? '8px' : '0px',
+      marginLeft: isChildLinkSelected || (!hasChildren && isSelected && !(nestingLevel && nestingLevel > 0)) ? '8px' : '0px',
       textOverflow: 'ellipsis',
       overflowX: 'hidden',
       whiteSpace: 'nowrap',

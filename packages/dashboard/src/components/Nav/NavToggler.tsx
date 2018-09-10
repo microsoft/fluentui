@@ -91,11 +91,7 @@ class NavTogglerComponent extends React.Component<INavProps, INavState> {
   }
 
   private _renderExpandCollapseNavItem(toggleNavGroups: ICustomNavLinkGroup[]): React.ReactElement<{}> | null {
-    if (
-      (!!toggleNavGroups && toggleNavGroups.length === 0) ||
-      !toggleNavGroups[0].links ||
-      toggleNavGroups[0].links.length === 0
-    ) {
+    if ((!!toggleNavGroups && toggleNavGroups.length === 0) || !toggleNavGroups[0].links || toggleNavGroups[0].links.length === 0) {
       // There is no toggle group with links defined
       return null;
     }
@@ -116,7 +112,7 @@ class NavTogglerComponent extends React.Component<INavProps, INavState> {
         dataValue={link.key}
         ariaLabel={ariaLabel}
         rootClassName={classNames.navItemRoot}
-        leftIconName={link.icon}
+        primaryIconName={link.icon}
         barClassName={classNames.navItemBarMarker}
         role="menu"
       />
