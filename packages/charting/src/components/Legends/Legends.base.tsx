@@ -29,6 +29,7 @@ export interface ILegendState {
 }
 export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   private _classNames: IProcessedStyleSet<ILegendsStyles>;
+  private centerLegends: boolean;
 
   public constructor(props: ILegendsProps) {
     super(props);
@@ -42,6 +43,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
 
   public render(): JSX.Element {
     const { theme, className, styles } = this.props;
+    this.centerLegends = this.props.centerLegends ? this.props.centerLegends : false;
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       className
@@ -86,6 +88,11 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         overflowItems={data.overflow}
         onRenderItem={this._renderButton}
         onRenderOverflowButton={this._renderOverflowItems}
+        styles={{
+          root: {
+            justifyContent: this.centerLegends ? 'center' : 'unset'
+          }
+        }}
       />
     );
   };

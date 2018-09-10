@@ -94,4 +94,9 @@ export interface ILegendsProps {
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<ILegendStyleProps, ILegendsStyles>;
+
+  /**
+   * This prop makes the legends component align itself to the center in the container it is sitting in
+   */
+  centerLegends?: boolean;
 }
