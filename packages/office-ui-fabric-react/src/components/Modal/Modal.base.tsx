@@ -81,6 +81,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
     const {
       className,
       containerClassName,
+      scrollableContentClassName,
       elementToFocusOnDismiss,
       firstFocusableSelector,
       forceFocusInsideTrap,
@@ -106,6 +107,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       theme: theme!,
       className,
       containerClassName,
+      scrollableContentClassName,
       isOpen,
       isVisible
     });
@@ -135,7 +137,9 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
                 forceFocusInsideTrap={forceFocusInsideTrap}
                 firstFocusableSelector={firstFocusableSelector}
               >
-                <div ref={this._allowScrollOnModal}>{this.props.children}</div>
+                <div ref={this._allowScrollOnModal} className={classNames.scrollableContent}>
+                  {this.props.children}
+                </div>
               </FocusTrapZone>
             </div>
           </Popup>

@@ -561,7 +561,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                           display: block;
                           position: relative;
                         }
-                    name="News"
+                    name="MSN"
                   >
                     <a
                       aria-describedby="id__9"
@@ -657,7 +657,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       onMouseUp={[Function]}
                       rel={undefined}
                       target={undefined}
-                      title="News"
+                      title="MSN"
                     >
                       <div
                         className=
@@ -713,7 +713,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                               }
                           id="id__9"
                         >
-                          News
+                          MSN
                         </span>
                         <div
                           className=
@@ -728,7 +728,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                                 vertical-align: middle;
                               }
                         >
-                          News
+                          MSN
                         </div>
                       </div>
                     </a>
@@ -1539,8 +1539,8 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       display: block;
                       position: relative;
                     }
-                icon="Edit"
-                name="Edit"
+                icon="News"
+                name="News"
               >
                 <a
                   aria-describedby="id__24"
@@ -1560,7 +1560,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                         border-radius: 0px;
                         border: none;
                         box-sizing: border-box;
-                        color: #0078d4;
+                        color: #333333;
                         cursor: pointer;
                         display: block;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1636,7 +1636,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                   onMouseUp={[Function]}
                   rel={undefined}
                   target={undefined}
-                  title="Edit"
+                  title="News"
                 >
                   <div
                     className=
@@ -1659,7 +1659,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                             color: #106ebe;
                             display: inline-block;
                             flex-shrink: 0;
-                            font-family: "FabricMDL2Icons";
+                            font-family: "FabricMDL2Icons-1";
                             font-size: 16px;
                             font-style: normal;
                             font-weight: normal;
@@ -1673,10 +1673,10 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                             text-align: center;
                             vertical-align: middle;
                           }
-                      data-icon-name="Edit"
+                      data-icon-name="News"
                       role="presentation"
                     >
-                      
+                      
                     </i>
                     <span
                       className=
@@ -1698,7 +1698,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                           }
                       id="id__24"
                     >
-                      Edit
+                      News
                     </span>
                     <div
                       className=
@@ -1713,206 +1713,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                             vertical-align: middle;
                           }
                     >
-                      Edit
-                    </div>
-                  </div>
-                </a>
-              </div>
-            </li>
-            <li
-              className=
-                  ms-Nav-navItem
-                  {
-                    padding-bottom: 0px;
-                    padding-left: 0px;
-                    padding-right: 0px;
-                    padding-top: 0px;
-                  }
-              role="listitem"
-            >
-              <div
-                className=
-                    ms-Nav-compositeLink
-                    {
-                      background-color: #ffffff;
-                      color: #333333;
-                      display: block;
-                      position: relative;
-                    }
-                name="Delete"
-              >
-                <a
-                  aria-describedby="id__27"
-                  aria-disabled={undefined}
-                  aria-label={undefined}
-                  aria-labelledby={undefined}
-                  aria-pressed={undefined}
-                  className=
-                      ms-Button
-                      ms-Button--action
-                      ms-Button--command
-                      ms-Nav-link
-                      {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        background-color: transparent;
-                        border-radius: 0px;
-                        border: none;
-                        box-sizing: border-box;
-                        color: #0078d4;
-                        cursor: pointer;
-                        display: block;
-                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 14px;
-                        font-weight: 400;
-                        height: 36px;
-                        line-height: 36px;
-                        outline: transparent;
-                        overflow: hidden;
-                        padding-bottom: 0;
-                        padding-left: 3px;
-                        padding-right: 20px;
-                        padding-top: 0;
-                        position: relative;
-                        text-align: center;
-                        text-decoration: none;
-                        text-overflow: ellipsis;
-                        user-select: none;
-                        vertical-align: top;
-                        white-space: nowrap;
-                        width: 100%;
-                      }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid #ffffff;
-                        bottom: 1px;
-                        content: "";
-                        left: 1px;
-                        outline: 1px solid #666666;
-                        position: absolute;
-                        right: 1px;
-                        top: 1px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        border: none;
-                        bottom: -2px;
-                        left: -2px;
-                        outline-color: ButtonText;
-                        right: -2px;
-                        top: -2px;
-                      }
-                      &:hover {
-                        color: #0078d4;
-                      }
-                      @media screen and (-ms-high-contrast: active){&:hover {
-                        border-color: Highlight;
-                        color: Highlight;
-                      }
-                      &:hover .ms-Button-icon {
-                        color: #0078d4;
-                      }
-                      &:active {
-                        color: #000000;
-                      }
-                      &:active .ms-Button-icon {
-                        color: #004578;
-                      }
-                      .ms-Nav-compositeLink:hover & {
-                        background-color: #f8f8f8;
-                        color: #333333;
-                      }
-                  data-is-focusable={true}
-                  disabled={undefined}
-                  href="http://cnn.com"
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyPress={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseUp={[Function]}
-                  rel={undefined}
-                  target={undefined}
-                  title="Delete"
-                >
-                  <div
-                    className=
-                        ms-Button-flexContainer
-                        {
-                          align-items: center;
-                          display: flex;
-                          flex-wrap: nowrap;
-                          height: 100%;
-                          justify-content: flex-start;
-                        }
-                  >
-                    <i
-                      aria-hidden={true}
-                      className=
-                          ms-Button-icon
-                          {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
-                            color: #106ebe;
-                            display: inline-block;
-                            flex-shrink: 0;
-                            font-family: "FabricMDL2Icons";
-                            font-size: 16px;
-                            font-style: normal;
-                            font-weight: normal;
-                            height: 16px;
-                            line-height: 16px;
-                            margin-bottom: 0;
-                            margin-left: 4px;
-                            margin-right: 4px;
-                            margin-top: 0;
-                            speak: none;
-                            text-align: center;
-                            vertical-align: middle;
-                          }
-                      data-icon-name="Delete"
-                      role="presentation"
-                    >
-                      
-                    </i>
-                    <span
-                      className=
-                          ms-Button-screenReaderText
-                          {
-                            border: 0px;
-                            height: 1px;
-                            margin-bottom: -1px;
-                            margin-left: -1px;
-                            margin-right: -1px;
-                            margin-top: -1px;
-                            overflow: hidden;
-                            padding-bottom: 0px;
-                            padding-left: 0px;
-                            padding-right: 0px;
-                            padding-top: 0px;
-                            position: absolute;
-                            width: 1px;
-                          }
-                      id="id__27"
-                    >
-                      Delete
-                    </span>
-                    <div
-                      className=
-                          ms-Nav-linkText
-                          {
-                            margin-bottom: 0;
-                            margin-left: 4px;
-                            margin-right: 4px;
-                            margin-top: 0;
-                            overflow: hidden;
-                            text-overflow: ellipsis;
-                            vertical-align: middle;
-                          }
-                    >
-                      Delete
+                      News
                     </div>
                   </div>
                 </a>

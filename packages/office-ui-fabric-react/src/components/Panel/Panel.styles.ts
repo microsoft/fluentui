@@ -260,7 +260,9 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     scrollableContent: [
       classNames.scrollableContent,
       {
-        height: '100%'
+        height: '100%',
+        overflowY: 'auto',
+        flexGrow: 1
       }
     ],
     navigation: [

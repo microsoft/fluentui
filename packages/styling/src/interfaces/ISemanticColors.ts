@@ -202,6 +202,10 @@ export interface ISemanticColors extends ISemanticTextColors {
    * Background of a pressed standard button; i.e. currently being clicked by mouse
    */
   buttonBackgroundPressed: string;
+  /**
+   * Background of a disabled standard button
+   */
+  buttonBackgroundDisabled: string;
 
   /**
    * Border of a standard button

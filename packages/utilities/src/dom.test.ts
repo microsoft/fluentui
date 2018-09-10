@@ -1,4 +1,13 @@
-import { getDocument, getParent, getWindow, setSSR, elementContains } from './dom';
+import {
+  DATA_PORTAL_ATTRIBUTE,
+  elementContains,
+  getDocument,
+  getParent,
+  getWindow,
+  portalContainsElement,
+  setPortalAttribute,
+  setSSR
+} from './dom';
 
 let unattachedSvg = document.createElement('svg');
 let unattachedDiv = document.createElement('div');
@@ -54,5 +63,72 @@ describe('getDocument', () => {
     setSSR(true);
     expect(getDocument()).toEqual(undefined);
     setSSR(false);
+  });
+});
+
+describe('setPortalAttribute', () => {
+  it('sets attribute', () => {
+    let testDiv = document.createElement('div');
+    expect(testDiv.getAttribute(DATA_PORTAL_ATTRIBUTE)).toBeFalsy();
+    setPortalAttribute(testDiv);
+    expect(testDiv.getAttribute(DATA_PORTAL_ATTRIBUTE)).toBeTruthy();
+  });
+});
+
+describe('portalContainsElement', () => {
+  let root: HTMLElement;
+  let leaf: HTMLElement;
+  let parent: HTMLElement;
+  let portal: HTMLElement;
+  let unlinked: HTMLElement;
+
+  beforeEach(() => {
+    root = document.createElement('div');
+    leaf = document.createElement('div');
+    parent = document.createElement('div');
+    portal = document.createElement('div');
+    unlinked = document.createElement('div');
+
+    setPortalAttribute(portal);
+  });
+
+  it('works with and without parent specified', () => {
+    root.appendChild(parent);
+    parent.appendChild(portal);
+    portal.appendChild(leaf);
+    expect(portalContainsElement(root)).toBeFalsy();
+    expect(portalContainsElement(parent)).toBeFalsy();
+    expect(portalContainsElement(portal)).toBeTruthy();
+    expect(portalContainsElement(leaf)).toBeTruthy();
+    expect(portalContainsElement(leaf, parent)).toBeTruthy();
+  });
+
+  it('works correctly when parent and child are in same portal', () => {
+    root.appendChild(portal);
+    portal.appendChild(parent);
+    parent.appendChild(leaf);
+    expect(portalContainsElement(parent)).toBeTruthy();
+    expect(portalContainsElement(leaf, parent)).toBeFalsy();
+  });
+
+  it('works with hierarchically invalid parents', () => {
+    root.appendChild(parent);
+    parent.appendChild(portal);
+    portal.appendChild(leaf);
+    // When parent is invalid, searches should go to root
+    expect(portalContainsElement(root, leaf)).toBeFalsy();
+    expect(portalContainsElement(parent, leaf)).toBeFalsy();
+    expect(portalContainsElement(portal, leaf)).toBeTruthy();
+    expect(portalContainsElement(leaf, unlinked)).toBeTruthy();
+  });
+
+  it('works when element is parent', () => {
+    root.appendChild(parent);
+    parent.appendChild(portal);
+    portal.appendChild(leaf);
+    expect(portalContainsElement(root, root)).toBeFalsy();
+    expect(portalContainsElement(parent, parent)).toBeFalsy();
+    expect(portalContainsElement(portal, portal)).toBeTruthy();
+    expect(portalContainsElement(leaf, leaf)).toBeFalsy();
   });
 });

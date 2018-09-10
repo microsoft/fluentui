@@ -16,8 +16,7 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
       display: 'flex',
       alignItems: 'center',
       cursor: 'pointer',
-      marginTop: props.overflow ? '8px' : '',
-      marginLeft: props.overflow ? '8px' : ''
+      margin: props.overflow ? '16px 0px 16px 16px' : ''
     },
     rect: {
       width: '12px',
