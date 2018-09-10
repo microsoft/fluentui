@@ -35,6 +35,11 @@ export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement
   iconName?: string;
 
   /**
+   * The name of the mirrored icon to use from the icon font in RTL mode.
+   */
+  iconNameMirrored?: string;
+
+  /**
    * The aria label of the button for the benefit of screen readers.
    */
   ariaLabel?: string;
