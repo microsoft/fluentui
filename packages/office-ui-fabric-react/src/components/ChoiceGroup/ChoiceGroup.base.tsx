@@ -43,9 +43,9 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
 
   public componentWillReceiveProps(newProps: IChoiceGroupProps): void {
     const newKeyChecked = this._getKeyChecked(newProps);
-    const oldKeyCheched = this._getKeyChecked(this.props);
+    const oldKeyChecked = this._getKeyChecked(this.props);
 
-    if (newKeyChecked !== oldKeyCheched) {
+    if (newKeyChecked !== oldKeyChecked) {
       this.setState({
         keyChecked: newKeyChecked!
       });
@@ -62,7 +62,11 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
       optionsContainIconOrImage: options!.some(option => Boolean(option.iconProps || option.imageSrc))
     });
 
-    const ariaLabelledBy = label ? this._id + '-label' : (this.props as any)['aria-labelledby'];
+    const ariaLabelledBy = this.props.ariaLabelledBy
+      ? this.props.ariaLabelledBy
+      : label
+        ? this._id + '-label'
+        : (this.props as any)['aria-labelledby'];
 
     // In cases where no option is checked, set focusable to first enabled option so that ChoiceGroup remains focusable.
     // If no options are enabled, ChoiceGroup is not focusable. If any option is checked, do not set keyDefaultFocusable.
@@ -110,6 +114,16 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
   }
 
   public focus() {
+    const { options } = this.props;
+    if (options) {
+      for (const option of options) {
+        const elementToFocus = document.getElementById(`${this._id}-${option.key}`);
+        if (elementToFocus && elementToFocus.getAttribute('data-is-focusable') === 'true') {
+          elementToFocus.focus(); // focus on checked or default focusable key
+          return;
+        }
+      }
+    }
     if (this._inputElement.current) {
       this._inputElement.current.focus();
     }

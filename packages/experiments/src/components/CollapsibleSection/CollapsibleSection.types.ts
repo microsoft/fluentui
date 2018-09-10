@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { IStyle } from 'office-ui-fabric-react';
-import { IStyleableComponent, IStyleableComponentProps, IThemedProps } from '../../Foundation';
+import { IStyleableComponentProps, IThemedProps } from '../../Foundation';
 import { RefObject } from '../../Utilities';
 
 import { ICollapsibleSectionTitleProps } from './CollapsibleSectionTitle.types';
 
-export interface ICollapsibleSectionProps
-  extends IStyleableComponent<ICollapsibleSectionProps, ICollapsibleSectionStyles> {
+export interface ICollapsibleSectionProps extends IStyleableComponentProps<ICollapsibleSectionProps, ICollapsibleSectionStyles> {
   /**
    * Additional class name to provide on the root element.
    */
@@ -35,10 +34,7 @@ export interface ICollapsibleSectionProps
   titleProps?: ICollapsibleSectionTitleProps;
 }
 
-export type ICollapsibleSectionControlledProps = IStyleableComponentProps<
-  ICollapsibleSectionViewProps,
-  ICollapsibleSectionStyles
->;
+export type ICollapsibleSectionControlledProps = IStyleableComponentProps<ICollapsibleSectionViewProps, ICollapsibleSectionStyles>;
 
 export type ICollapsibleSectionViewProps = Pick<ICollapsibleSectionProps, 'titleAs' | 'titleProps'> &
   Required<Pick<ICollapsibleSectionProps, 'collapsed'>> & {

@@ -3,22 +3,21 @@ import * as renderer from 'react-test-renderer';
 
 import { Modal } from './Modal';
 
-// Mock Layer since it otherwise shows nothing in snapshot tests
-jest.mock('../../Layer', () => {
-  return {
-    Layer: jest.fn().mockImplementation(props => {
-      return props.children;
-    })
-  };
-});
-
 describe('Modal', () => {
   it('renders Modal correctly', () => {
+    // Mock createPortal to capture its component hierarchy in snapshot output.
+    const ReactDOM = require('react-dom');
+    ReactDOM.createPortal = jest.fn(element => {
+      return element;
+    });
+
     const component = renderer.create(
       <Modal isOpen={true} className={'test-className'} containerClassName={'test-containerClassName'}>
         Test Content
       </Modal>
     );
     expect(component.toJSON()).toMatchSnapshot();
+
+    ReactDOM.createPortal.mockClear();
   });
 });

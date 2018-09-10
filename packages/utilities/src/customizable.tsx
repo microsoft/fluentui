@@ -1,12 +1,8 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import { Customizations } from './Customizations';
 import { hoistStatics } from './hoistStatics';
+import { CustomizerContext, ICustomizerContext } from './Customizer';
 import { concatStyleSets } from '@uifabric/merge-styles';
-
-export const CustomizableContextTypes = {
-  customizations: PropTypes.object
-};
 
 export function customizable(
   scope: string,
@@ -23,11 +19,9 @@ export function customizable(
     const resultClass = class ComponentWithInjectedProps extends React.Component<P, {}> {
       public static displayName: string = 'Customized' + scope;
 
-      public static contextTypes = CustomizableContextTypes;
-
       // tslint:disable-next-line:no-any
-      constructor(props: P, context: any) {
-        super(props, context);
+      constructor(props: P) {
+        super(props);
 
         this._onSettingChanged = this._onSettingChanged.bind(this);
       }
@@ -41,17 +35,23 @@ export function customizable(
       }
 
       public render(): JSX.Element {
-        const defaultProps = Customizations.getSettings(fields, scope, this.context.customizations);
+        return (
+          <CustomizerContext.Consumer>
+            {(context: ICustomizerContext) => {
+              const defaultProps = Customizations.getSettings(fields, scope, context.customizations);
 
-        // tslint:disable-next-line:no-any
-        const componentProps = this.props as any;
+              // tslint:disable-next-line:no-any
+              const componentProps = this.props as any;
 
-        if (concatStyles) {
-          const mergedStyles = concatStyleSets(defaultProps.styles, componentProps.styles);
-          return <ComposedComponent {...defaultProps} {...componentProps} styles={mergedStyles} />;
-        }
+              if (concatStyles) {
+                const mergedStyles = concatStyleSets(defaultProps.styles, componentProps.styles);
+                return <ComposedComponent {...defaultProps} {...componentProps} styles={mergedStyles} />;
+              }
 
-        return <ComposedComponent {...defaultProps} {...componentProps} />;
+              return <ComposedComponent {...defaultProps} {...componentProps} />;
+            }}
+          </CustomizerContext.Consumer>
+        );
       }
 
       private _onSettingChanged(): void {
