@@ -73,6 +73,20 @@ function _createAnimation(
   };
 }
 
+export namespace MotionDurations {
+  export const duration1 = '100ms';
+  export const duration2 = '200ms';
+  export const duration3 = '300ms';
+  export const duration4 = '400ms';
+}
+
+export namespace MotionTimings {
+  export const accelerate = 'cubic-bezier(0.9, 0.1, 1, 0.2)';
+  export const decelerate = 'cubic-bezier(0.1, 0.9, 0.2, 1)';
+  export const linear = 'cubic-bezier(0, 0, 1, 1)';
+  export const standard = 'cubic-bezier(0.8, 0, 0.2, 1)';
+}
+
 export namespace MotionAnimations {
   export const fadeIn = _createAnimation(fadeInKeyframes, MotionDurations.duration1, MotionTimings.linear);
   export const fadeOut = _createAnimation(fadeOutKeyframes, MotionDurations.duration1, MotionTimings.linear);
@@ -118,18 +132,4 @@ export namespace MotionAnimations {
     MotionDurations.duration1,
     MotionTimings.decelerate
   );
-}
-
-export namespace MotionDurations {
-  export const duration1 = '100ms';
-  export const duration2 = '200ms';
-  export const duration3 = '300ms';
-  export const duration4 = '400ms';
-}
-
-export namespace MotionTimings {
-  export const accelerate = 'cubic-bezier(0.9, 0.1, 1, 0.2)';
-  export const decelerate = 'cubic-bezier(0.1, 0.9, 0.2, 1)';
-  export const linear = 'cubic-bezier(0, 0, 1, 1)';
-  export const standard = 'cubic-bezier(0.8, 0, 0.2, 1)';
 }
