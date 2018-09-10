@@ -93,7 +93,7 @@ export class GroupHeaderBase extends BaseComponent<IGroupHeaderProps, IGroupHead
               type="button"
               className={this._classNames.check}
               role="checkbox"
-              aria-checked={currentlySelected}
+              aria-checked={!!currentlySelected}
               data-selection-toggle={true}
               onClick={this._onToggleSelectGroupClick}
             >
