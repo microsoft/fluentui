@@ -26,7 +26,7 @@ exports[`Component Examples renders DatePicker.Bounded.Example.tsx correctly 1`]
     <div
       aria-expanded={false}
       aria-haspopup="true"
-      aria-owns="DatPicker-Callout0"
+      aria-owns="DatePicker-Callout0"
       role="combobox"
     >
       <div

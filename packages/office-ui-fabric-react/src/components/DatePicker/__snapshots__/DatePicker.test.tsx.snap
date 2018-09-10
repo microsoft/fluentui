@@ -20,7 +20,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
   <div
     aria-expanded={false}
     aria-haspopup="true"
-    aria-owns="DatPicker-Callout4"
+    aria-owns="DatePicker-Callout4"
     role="combobox"
   >
     <div
