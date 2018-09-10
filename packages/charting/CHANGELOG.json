@@ -2,6 +2,25 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.19.1",
+      "tag": "@uifabric/charting_v0.19.1",
+      "date": "Mon, 10 Sep 2018 10:24:57 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "e154227ebec168e0fa42068cb2befc56c6128ff2",
+            "comment": "Show bar background if all chart data point data is 0 or undefined"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.66.1 <7.0.0` to `>=6.67.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.19.0",
       "tag": "@uifabric/charting_v0.19.0",
       "date": "Fri, 07 Sep 2018 22:04:50 GMT",
