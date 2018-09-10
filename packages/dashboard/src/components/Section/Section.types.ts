@@ -253,6 +253,11 @@ export interface IEditSectionsProps {
    * Callback when click on cancel button
    */
   onCancel?(): void;
+
+  /**
+   * Callback when click on save button
+   */
+  onSave?(): void;
 }
 
 export interface IEditSectionsStyles {

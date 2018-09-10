@@ -1,7 +1,7 @@
 import { Breakpoints, Layout, Layouts } from 'react-grid-layout';
 import { ISection } from '../Section/Section.types';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { DragApiRefObject } from 'react-grid-layout';
+import { DragApiRefObject, ItemCallback } from 'react-grid-layout';
 import { ICard, CardSize } from '../Card/Card.types';
 
 export interface IDashboardGridLayoutStyles {
@@ -77,6 +77,16 @@ export interface IDashboardGridLayoutProps {
   dragApi?: DragApiRefObject;
 
   /**
+   * # of cols. This is a breakpoint -> cols map, e.g. {lg: 12, md: 10, ...}
+   */
+  cols?: { [P in Breakpoints]: number };
+
+  /**
+   * the px value of break points
+   */
+  breakpoints?: { [P in Breakpoints]: number };
+
+  /**
    * Whether items in this grid should be draggable or not
    * @default true
    */
@@ -89,10 +99,46 @@ export interface IDashboardGridLayoutProps {
   isResizable?: boolean;
 
   /**
+   * Calls when drag starts.
+   */
+  onDragStart?: ItemCallback;
+
+  /**
+   * Calls on each drag movement.
+   */
+  onDrag?: ItemCallback;
+
+  /**
+   * Calls when drag is complete.
+   */
+  onDragStop?: ItemCallback;
+
+  /**
    * The row height used for React-Grid-Layout, if not provided, the default value is used
    * @default 50
    */
   rowHeight?: number;
+
+  /**
+   * The sections
+   */
+  sections?: ISection[];
+
+  /**
+   * The cards definition. Either use cards or cardNodes to pass in the card definitions.
+   */
+  cards?: ICard[];
+
+  /**
+   * Alternative to provide card definition. Either use cards or cardNodes to pass in the card definitions.
+   */
+  cardNodes?: JSX.Element[];
+
+  /**
+   * if the section is collapsible
+   * @default false
+   */
+  isCollapsible?: boolean;
 
   /**
    * Callback so you can save the layout.
@@ -100,27 +146,9 @@ export interface IDashboardGridLayoutProps {
   onLayoutChange?(currentLayout: Layout[], allLayouts: Layouts): void;
 
   /**
-   * Calls back with breakpoint and new number of columns
+   * Callback with breakpoint and new number of columns
    */
   onBreakPointChange?(newBreakpoint: string, newCols: number): void;
-}
-
-export interface IDashboardGridSectionLayoutProps extends IDashboardGridLayoutProps {
-  /**
-   * The sections
-   */
-  sections: ISection[];
-
-  /**
-   * THe cards
-   */
-  cards: ICard[];
-
-  /**
-   * if the section is collapsible
-   * @default false
-   */
-  isCollapsible?: boolean;
 
   /**
    * On section change.

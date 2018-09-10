@@ -1,77 +1,145 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Modal renders Modal correctly 1`] = `
-<div
-  aria-describedby={undefined}
-  aria-label={undefined}
-  aria-labelledby={undefined}
-  className={undefined}
-  onKeyDown={[Function]}
-  role="dialog"
-  style={
-    Object {
-      "overflowY": undefined,
-    }
-  }
+<span
+  className="ms-layer"
 >
   <div
     className=
-        ms-Modal
-        is-open
-        test-className
+        ms-Fabric
+        ms-Layer-content
         {
-          align-items: center;
-          background-color: transparent;
-          display: flex;
-          height: 100%;
-          justify-content: center;
-          opacity: 1;
-          pointer-events: auto;
-          position: fixed;
-          transition: opacity 0.267s;
-          width: 100%;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: #333333;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          visibility: visible;
         }
+        & button {
+          font-family: inherit;
+        }
+        & input {
+          font-family: inherit;
+        }
+        & textarea {
+          font-family: inherit;
+        }
+        button {
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          overflow: visible;
+        }
+    onBlur={[Function]}
+    onChange={[Function]}
+    onClick={[Function]}
+    onContextMenu={[Function]}
+    onDoubleClick={[Function]}
+    onDrag={[Function]}
+    onDragEnd={[Function]}
+    onDragEnter={[Function]}
+    onDragExit={[Function]}
+    onDragLeave={[Function]}
+    onDragOver={[Function]}
+    onDragStart={[Function]}
+    onDrop={[Function]}
+    onFocus={[Function]}
+    onInput={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onMouseMove={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    onMouseUp={[Function]}
+    onSubmit={[Function]}
   >
     <div
-      className=
-          ms-Overlay
-          ms-Overlay--dark
-          {
-            background-color: rgba(0,0,0,.4);
-            bottom: 0px;
-            left: 0px;
-            position: absolute;
-            right: 0px;
-            top: 0px;
-          }
-          @media screen and (-ms-high-contrast: active){& {
-            border: 1px solid WindowText;
-            opacity: 0;
-          }
-      onClick={undefined}
-    />
-    <div
+      aria-describedby={undefined}
+      aria-label={undefined}
       aria-labelledby={undefined}
-      className=
-          ms-Dialog-main
-          test-containerClassName
-          {
-            background-color: #ffffff;
-            box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
-            box-sizing: border-box;
-            max-height: 100%;
-            outline: 3px solid tranparent;
-            overflow-y: auto;
-            position: relative;
-            text-align: left;
-          }
-      onFocusCapture={[Function]}
+      className={undefined}
       onKeyDown={[Function]}
+      role="dialog"
+      style={
+        Object {
+          "overflowY": undefined,
+        }
+      }
     >
-      <div>
-        Test Content
+      <div
+        className=
+            ms-Modal
+            is-open
+            test-className
+            {
+              align-items: center;
+              background-color: transparent;
+              display: flex;
+              height: 100%;
+              justify-content: center;
+              opacity: 1;
+              pointer-events: auto;
+              position: fixed;
+              transition: opacity 0.267s;
+              width: 100%;
+            }
+      >
+        <div
+          className=
+              ms-Overlay
+              ms-Overlay--dark
+              {
+                background-color: rgba(0,0,0,.4);
+                bottom: 0px;
+                left: 0px;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border: 1px solid WindowText;
+                opacity: 0;
+              }
+          onClick={undefined}
+        />
+        <div
+          aria-labelledby={undefined}
+          className=
+              ms-Dialog-main
+              test-containerClassName
+              {
+                background-color: #ffffff;
+                box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
+                box-sizing: border-box;
+                max-height: 100%;
+                outline: 3px solid tranparent;
+                overflow-y: auto;
+                position: relative;
+                text-align: left;
+              }
+          onFocusCapture={[Function]}
+          onKeyDown={[Function]}
+        >
+          <div
+            className=
+                ms-Modal-scrollableContent
+                {
+                  flex-grow: 1;
+                  overflow-y: auto;
+                }
+          >
+            Test Content
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</span>
 `;

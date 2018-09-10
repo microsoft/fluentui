@@ -38,6 +38,7 @@ export class EditSections extends React.PureComponent<IEditSectionsProps, IEditS
             {...this.props.saveButtonProps}
             disabled={this.props.saveButtonDisabled || this.state.isAddingNewSection || this.state.isRenamingSection}
             allowDisabledFocus={true}
+            onClick={this._saveClicked}
             styles={{
               root: classNames.saveButton,
               icon: classNames.icon
@@ -54,9 +55,7 @@ export class EditSections extends React.PureComponent<IEditSectionsProps, IEditS
           />
         </div>
         <DashboardGridLayout
-          isDraggable={
-            !this.state.isRenamingSection && !this.state.isAddingNewSection && (this.props.isDraggable || true)
-          }
+          isDraggable={!this.state.isRenamingSection && !this.state.isAddingNewSection && (this.props.isDraggable || true)}
           rowHeight={this.props.rowHeight}
           layout={this.props.layout}
           onLayoutChange={this.props.onLayoutChange}
@@ -91,14 +90,8 @@ export class EditSections extends React.PureComponent<IEditSectionsProps, IEditS
           modalProps={this.props.deleteSectionDialogModelProps}
         >
           <DialogFooter>
-            <PrimaryButton
-              {...this.props.deleteSectionDilaogRemoveButtonProps}
-              onClick={this._deleteSectionDialogRemoveButtonClick}
-            />
-            <DefaultButton
-              {...this.props.deleteSectionDilaogCancelButtonProps}
-              onClick={this._closeDeleteSectionDialog}
-            />
+            <PrimaryButton {...this.props.deleteSectionDilaogRemoveButtonProps} onClick={this._deleteSectionDialogRemoveButtonClick} />
+            <DefaultButton {...this.props.deleteSectionDilaogCancelButtonProps} onClick={this._closeDeleteSectionDialog} />
           </DialogFooter>
         </Dialog>
       </div>
@@ -169,6 +162,15 @@ export class EditSections extends React.PureComponent<IEditSectionsProps, IEditS
 
     if (this.props.onCancel) {
       this.props.onCancel();
+    }
+  };
+
+  /**
+   * When click on the save button
+   */
+  private _saveClicked = () => {
+    if (this.props.onSave) {
+      this.props.onSave();
     }
   };
 

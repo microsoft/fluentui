@@ -135,12 +135,13 @@ export class Selection implements ISelection {
       }
     }
 
-    if (shouldClear) {
+    if (shouldClear || items.length === 0) {
       this.setAllSelected(false);
     }
 
     // Check the exemption list for discrepencies.
     const newExemptedIndicies: { [key: string]: boolean } = {};
+    let newExemptedCount = 0;
 
     for (const indexProperty in this._exemptedIndices) {
       if (this._exemptedIndices.hasOwnProperty(indexProperty)) {
@@ -150,22 +151,27 @@ export class Selection implements ISelection {
         const newIndex = exemptKey ? newKeyToIndexMap[exemptKey] : index;
 
         if (newIndex === undefined) {
-          // We don't know the index of the item any more so it's either moved or removed.
-          // In this case we reset the entire selection.
-          this.setAllSelected(false);
-          break;
+          // The item has likely been replaced or removed.
+          hasSelectionChanged = true;
         } else {
           // We know the new index of the item. update the existing exemption table.
           newExemptedIndicies[newIndex] = true;
+          newExemptedCount++;
           hasSelectionChanged = hasSelectionChanged || newIndex !== index;
         }
       }
     }
 
+    if (this._items && this._exemptedCount === 0 && items.length !== this._items.length && this._isAllSelected) {
+      // If everything was selected but the number of items has changed, selection has changed.
+      hasSelectionChanged = true;
+    }
+
     this._exemptedIndices = newExemptedIndicies;
+    this._exemptedCount = newExemptedCount;
     this._keyToIndexMap = newKeyToIndexMap;
     this._unselectableIndices = newUnselectableIndices;
-    this._items = items || [];
+    this._items = items;
     this._selectedItems = null;
 
     if (hasSelectionChanged) {
