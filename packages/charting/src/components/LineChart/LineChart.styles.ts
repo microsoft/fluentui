@@ -3,7 +3,6 @@ import { ILineChartStyleProps, ILineChartStyles } from './LineChart.types';
 export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
   const { className, theme, width, height } = props;
   const { palette, fonts } = theme!;
-  console.log('fonts:', fonts);
 
   const chartPadding = 30;
   const scalingVal = 0.33;
@@ -62,18 +61,14 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
     xAxisText: [
       {
         transform: `translate(0px,13px)`,
-        fontFamily: fonts.tiny.fontFamily,
-        fontSize: fonts.tiny.fontSize,
-        fontWeight: fonts.tiny.fontWeight,
-        lineHeight: '12px'
+        lineHeight: '12px',
+        ...fonts.tiny
       }
     ],
     yAxisText: [
       {
-        fontFamily: fonts.tiny.fontFamily,
-        fontSize: fonts.tiny.fontSize,
-        fontWeight: fonts.tiny.fontWeight,
-        lineHeight: '12px'
+        lineHeight: '12px',
+        ...fonts.tiny
       }
     ],
     lines: [
