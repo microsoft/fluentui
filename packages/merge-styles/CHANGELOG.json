@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.8.3",
+      "tag": "@uifabric/merge-styles_v6.8.3",
+      "date": "Wed, 05 Sep 2018 10:29:25 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "90cd34d276e26bcc8368f57c8efd2c828ccdd8eb",
+            "comment": "Improve a DX issue with IProcessedStyleSet typings. (issue #6124)"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.8.2",
       "tag": "@uifabric/merge-styles_v6.8.2",
       "date": "Wed, 29 Aug 2018 10:28:42 GMT",

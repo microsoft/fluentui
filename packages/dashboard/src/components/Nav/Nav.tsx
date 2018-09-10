@@ -62,8 +62,12 @@ class NavComponent extends NavBase {
         this.props.onNavNodeExpandedCallback(link.key, link.isExpanded);
       }
     } else if (link.onClick) {
-      // if there is a onClick defined, call it
-      link.onClick(ev, link);
+      if (!!this.props.onEditLeftNavClickedCallback && link.key && link.key === 'EditNavLink') {
+        this.props.onEditLeftNavClickedCallback();
+      } else {
+        // if there is a onClick defined, call it
+        link.onClick(ev, link);
+      }
     }
 
     this.setState(nextState);

@@ -321,11 +321,18 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   }
 
   private _updatePosition(): void {
+    // Try to update the target, page might have changed
+    this._setTargetWindowAndElement(this._getTarget());
+
     const { positions } = this.state;
     const hostElement: HTMLElement | null = this._hostElement.current;
     const calloutElement: HTMLElement | null = this._calloutElement.current;
 
-    if (hostElement && calloutElement) {
+    // If we expect a target element to position against, we need to wait until `this._target` is resolved. Otherwise
+    // we can try to position.
+    const expectsTarget = !!this.props.target;
+
+    if (hostElement && calloutElement && (!expectsTarget || this._target)) {
       let currentProps: IPositionProps | undefined;
       currentProps = assign(currentProps, this.props);
       currentProps!.bounds = this._getBounds();

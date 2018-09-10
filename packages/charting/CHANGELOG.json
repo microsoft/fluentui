@@ -2,6 +2,89 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.19.0",
+      "tag": "@uifabric/charting_v0.19.0",
+      "date": "Fri, 07 Sep 2018 22:04:50 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "8f0c1b4c91586d468b67d44f21dc653c92f80109",
+            "comment": "donut chart arc sectors selected arc show and remaining arcs decrease opacity"
+          }
+        ],
+        "minor": [
+          {
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "c356a8ae818e4da115d8d62a705a226e88fd6f3b",
+            "comment": "Adding temporary fix for hovercard. This fix scales the hover card size based upon the content inside it"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.66.0 <7.0.0` to `>=6.66.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.18.0",
+      "tag": "@uifabric/charting_v0.18.0",
+      "date": "Fri, 07 Sep 2018 16:29:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "77ad6dc6acb7551a82cea02aec8694712ae014e5",
+            "comment": "Changing interaction behaviour of Multistacked and stacked bar chart. Changing styling and opacity of bar upon interaction between legends and chart."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.65.0 <7.0.0` to `>=6.66.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.17.4",
+      "tag": "@uifabric/charting_v0.17.4",
+      "date": "Thu, 06 Sep 2018 10:28:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "BalakrishnaReddyPolu <polu.balakrishna96@gmail.com>",
+            "commit": "d204b73fbaf920e161ff9b37bd2b5c703192fa2b",
+            "comment": "Line chart hover issue , css for x-axis text"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.64.0 <7.0.0` to `>=6.65.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.17.3",
+      "tag": "@uifabric/charting_v0.17.3",
+      "date": "Wed, 05 Sep 2018 10:29:25 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "BalakrishnaReddyPolu <polu.balakrishna96@gmail.com>",
+            "commit": "97d8bebb7f6c1e9075de23fe7bc989fc024fa649",
+            "comment": "Donut chart align issues fixed"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.63.0 <7.0.0` to `>=6.64.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.17.2",
       "tag": "@uifabric/charting_v0.17.2",
       "date": "Fri, 31 Aug 2018 17:27:00 GMT",

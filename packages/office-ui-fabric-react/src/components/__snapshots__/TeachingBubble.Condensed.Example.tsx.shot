@@ -66,7 +66,7 @@ exports[`Component Examples renders TeachingBubble.Condensed.Example.tsx correct
           }
           &:hover {
             background-color: #eaeaea;
-            color: #000000;
+            color: #212121;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
