@@ -1,22 +1,14 @@
 import { IStyle } from '../../Styling';
-import { IStyleableComponent } from '../../Foundation';
+import { IStyleableComponentProps } from '../../Foundation';
 
-export type Alignment =
-  | 'start'
-  | 'end'
-  | 'center'
-  | 'space-between'
-  | 'space-around'
-  | 'space-evenly'
-  | 'baseline'
-  | 'stretch';
+export type Alignment = 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'baseline' | 'stretch';
 
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
 // contains the members of IStackProps that are common to both VerticalStack and HorizontalStack
 export type IPartialStackProps = Omit<IStackProps, 'verticalAlignment' | 'horizontalAlignment' | 'horizontal'>;
 
-export interface IStackProps extends IStyleableComponent<IStackProps, IStackStyles> {
+export interface IStackProps extends IStyleableComponentProps<IStackProps, IStackStyles> {
   /**
    * How to render the Stack.
    */

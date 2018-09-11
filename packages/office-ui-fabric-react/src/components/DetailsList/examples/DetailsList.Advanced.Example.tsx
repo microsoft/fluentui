@@ -45,6 +45,7 @@ export interface IDetailsListAdvancedExampleState {
   layoutMode?: LayoutMode;
   selectionMode?: SelectionMode;
   sortedColumnKey?: string;
+  selectionCount: number;
 }
 
 export class DetailsListAdvancedExample extends React.Component<{}, IDetailsListAdvancedExampleState> {
@@ -58,11 +59,14 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
       _items = createListItems(ITEMS_COUNT);
     }
 
-    this._selection = new Selection();
+    this._selection = new Selection({
+      onSelectionChanged: this._onItemsSelectionChanged
+    });
     this._selection.setItems(_items, false);
 
     this.state = {
       items: _items,
+      selectionCount: 0,
       groups: undefined,
       groupItemLimit: DEFAULT_ITEM_LIMIT,
       layoutMode: LayoutMode.justified,
@@ -117,7 +121,10 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
 
     return (
       <div className="ms-DetailsListAdvancedExample">
-        <CommandBar items={this._getCommandItems()} />
+        <CommandBar
+          items={this._getCommandItems()}
+          farItems={[{ key: 'count', text: `${this.state.selectionCount} selected` }]}
+        />
 
         {isGrouped ? <TextField label="Group Item Limit" onChange={this._onItemLimitChanged} /> : null}
 
@@ -605,8 +612,32 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
   };
 
   private _onDeleteRow = (): void => {
+    if (this._selection.getSelectedCount() > 0) {
+      this.setState((previousState: this['state']) => {
+        const items: this['state']['items'] = [];
+
+        const previousItems = previousState.items!;
+
+        for (let i = 0; i < previousItems.length; i++) {
+          if (!this._selection.isIndexSelected(i)) {
+            items.push(previousItems[i]);
+          }
+        }
+
+        return {
+          items
+        };
+      });
+    } else {
+      this.setState({
+        items: this.state.items!.slice(1)
+      });
+    }
+  };
+
+  private _onItemsSelectionChanged = () => {
     this.setState({
-      items: this.state.items!.slice(1)
+      selectionCount: this._selection.getSelectedCount()
     });
   };
 

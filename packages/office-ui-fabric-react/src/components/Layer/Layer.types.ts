@@ -48,6 +48,13 @@ export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement | Layer
    * content in a fixed position element rendered at the end of the document.
    */
   hostId?: string;
+
+  /**
+   * When enabled, Layer allows events to bubble up from Layer content.
+   * Traditionally Layer has not had this behavior. This prop preserves backwards compatibility by
+   * default while allowing users to opt in to the new event bubbling functionality.
+   */
+  eventBubblingEnabled?: boolean;
 }
 
 export interface ILayerStyleProps {

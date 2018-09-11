@@ -1,6 +1,54 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Wed, 05 Sep 2018 10:29:25 GMT and should not be manually modified.
+This log was last generated on Mon, 10 Sep 2018 10:24:57 GMT and should not be manually modified.
+
+## 0.22.1
+Mon, 10 Sep 2018 10:24:57 GMT
+
+### Patches
+
+- Update Recommendation card header text font size/line height settings
+
+## 0.22.0
+Fri, 07 Sep 2018 22:04:50 GMT
+
+### Minor changes
+
+- create base class for dashboard layout 
+- Adding necessary override styles to scale hovercard size as per content. Introducing time delay without which override is not possible.  This is temporary solution suggested by Fabric folks until they fix the bug in hovercard component.
+
+### Patches
+
+- updating card title line height
+- Changing color of card title upon hover and active state
+- ContentArea is croped in Edge browser
+
+## 0.21.0
+Fri, 07 Sep 2018 16:29:48 GMT
+
+### Minor changes
+
+- allow dashboard section control to take JSX elements as child member
+- add save prop to edit sections control
+
+### Patches
+
+- fix example for horizontalBarChart
+
+## 0.20.0
+Thu, 06 Sep 2018 10:28:35 GMT
+
+### Minor changes
+
+- add export
+- changing fabric icons to SVG's.
+
+### Patches
+
+- gird list text overflow css issue 
+- patch
+- Fix content area clipping in card because of overflow set to hidden
+- merge donut and piechart and added in dashboard package
 
 ## 0.19.0
 Wed, 05 Sep 2018 10:29:25 GMT
