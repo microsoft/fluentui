@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "adjust dropdownprops onchange to be more in line with the div element onchange attrib",
+      "comment": "Fixed_groupheader_checkbox_aria_label_accessibility_issue",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "kchau@microsoft.com"
+  "email": "lonli@microsoft.com"
 }

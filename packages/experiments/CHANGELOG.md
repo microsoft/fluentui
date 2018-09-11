@@ -1,6 +1,26 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 05 Sep 2018 10:29:25 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Sep 2018 02:54:40 GMT and should not be manually modified.
+
+## 6.29.1
+Tue, 11 Sep 2018 02:54:40 GMT
+
+### Patches
+
+- update missing metadata signal icon
+- Tiles: Fix on hover underline issue for signal icon in Tiles view
+
+## 6.29.0
+Fri, 07 Sep 2018 22:04:50 GMT
+
+### Minor changes
+
+- Adjusting foundation usage, using new React 16 context.
+
+## 6.28.3
+Fri, 07 Sep 2018 16:29:48 GMT
+
+*Version update only*
 
 ## 6.28.2
 Wed, 05 Sep 2018 10:29:25 GMT

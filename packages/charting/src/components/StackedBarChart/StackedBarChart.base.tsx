@@ -52,9 +52,9 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
 
   public render(): JSX.Element {
     this._adjustProps();
-    const { data, barHeight, hideNumberDisplay, hideLegend, theme, styles } = this.props;
+    const { data, barHeight, hideNumberDisplay, hideLegend, theme, styles, barBackgroundColor } = this.props;
     const { palette } = theme!;
-    const bars = this._createBarsAndLegends(data!, barHeight!, palette);
+    const bars = this._createBarsAndLegends(data!, barHeight!, palette, barBackgroundColor);
     const showRatio = hideNumberDisplay === false && data!.chartData!.length === 2;
     const showNumber = hideNumberDisplay === false && data!.chartData!.length === 1;
     let total = 0;
@@ -90,12 +90,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         <svg className={this._classNames.chart}>
           <g>{bars[0]}</g>
           {isCalloutVisible ? (
-            <Callout
-              gapSpace={0}
-              target={this.state.refSelected}
-              setInitialFocus={true}
-              directionalHint={DirectionalHint.topRightEdge}
-            >
+            <Callout gapSpace={0} target={this.state.refSelected} setInitialFocus={true} directionalHint={DirectionalHint.topRightEdge}>
               <div className={this._classNames.hoverCardRoot}>
                 <div className={this._classNames.hoverCardTextStyles}>{this.state.selectedLegendTitle}</div>
                 <div className={this._classNames.hoverCardDataStyles}>{this.state.dataForHoverCard}</div>
@@ -119,15 +114,17 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     });
   }
 
-  private _createBarsAndLegends(data: IChartProps, barHeight: number, palette: IPalette): [JSX.Element[], JSX.Element] {
+  private _createBarsAndLegends(
+    data: IChartProps,
+    barHeight: number,
+    palette: IPalette,
+    barBackgroundColor?: string
+  ): [JSX.Element[], JSX.Element] {
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     const legendDataItems: ILegend[] = [];
     // calculating starting point of each bar and it's range
     const startingPoint: number[] = [];
-    const total = data.chartData!.reduce(
-      (acc: number, point: IChartDataPoint) => acc + (point.data ? point.data : 0),
-      0
-    );
+    const total = data.chartData!.reduce((acc: number, point: IChartDataPoint) => acc + (point.data ? point.data : 0), 0);
     let prevPosition = 0;
     let value = 0;
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
@@ -137,15 +134,24 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       const legend: ILegend = {
         title: point.legend!,
         color: color,
-        action: () => {
-          this._onClick(point.legend!, pointData, color);
-        },
-        hoverAction: () => {
-          this._onHover(point.legend!, pointData, color);
-        },
-        onMouseOutAction: () => {
-          this._onLeave();
-        }
+        action:
+          total > 0
+            ? () => {
+                this._onClick(point.legend!, pointData, color);
+              }
+            : undefined,
+        hoverAction:
+          total > 0
+            ? () => {
+                this._onHover(point.legend!, pointData, color);
+              }
+            : undefined,
+        onMouseOutAction:
+          total > 0
+            ? () => {
+                this._onLeave();
+              }
+            : undefined
       };
       legendDataItems.push(legend);
       if (index > 0) {
@@ -176,8 +182,20 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         </g>
       );
     });
+
     const legends = <Legends legends={legendDataItems} />;
-    return [bars, legends];
+    return [
+      total === 0 ? [this._generateEmptyBar(barHeight, barBackgroundColor ? barBackgroundColor : palette.neutralTertiary)] : bars,
+      legends
+    ];
+  }
+
+  private _generateEmptyBar(barHeight: number, color: string): JSX.Element {
+    return (
+      <g key={0} className={this._classNames.opacityChangeOnHover}>
+        <rect key={0} x={'0%'} y={0} width={'100%'} height={barHeight} fill={color} />
+      </g>
+    );
   }
 
   private _refCallback(element: SVGGElement, legendTitle: string): void {
@@ -224,14 +242,9 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
   }
 
   private _onBarHover(customMessage: string, pointData: number, color: string): void {
-    if (
-      this.state.isLegendSelected === false ||
-      (this.state.isLegendSelected && this.state.selectedLegendTitle === customMessage)
-    ) {
+    if (this.state.isLegendSelected === false || (this.state.isLegendSelected && this.state.selectedLegendTitle === customMessage)) {
       const refArray = this.state.refArray;
-      const currentHoveredElement = refArray.find(
-        (currentElement: IRefArrayData) => currentElement.legendText === customMessage
-      );
+      const currentHoveredElement = refArray.find((currentElement: IRefArrayData) => currentElement.legendText === customMessage);
       this.setState({
         refSelected: currentHoveredElement!.refElement,
         isCalloutVisible: true,

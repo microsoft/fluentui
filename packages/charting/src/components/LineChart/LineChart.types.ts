@@ -141,4 +141,17 @@ export interface ILineChartStyles {
    * styles for callout in line chart
    */
   calloutPadding?: IStyle;
+
+  /**
+   * styles for callout root-content
+   */
+  calloutContentRoot?: IStyle;
+  /**
+   * styles for callout x-content
+   */
+  calloutContentX?: IStyle;
+  /**
+   * styles for callout y-content
+   */
+  calloutContentY?: IStyle;
 }

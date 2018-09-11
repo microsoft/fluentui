@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ChoiceGroup: have focus method take into account selectedKey",
+      "comment": "removed the check for event to be an instanceof DragEvent in the onDrop method",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "naethell@microsoft.com"
+  "email": "arkgupta@microsoft.com"
 }
