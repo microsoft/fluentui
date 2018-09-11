@@ -78,8 +78,6 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
               }
         >
           <input
-            aria-controls={undefined}
-            aria-describedby={undefined}
             aria-invalid={false}
             className=
                 ms-TextField-field
@@ -119,7 +117,6 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
                   color: #666666;
                   opacity: 1;
                 }
-            disabled={undefined}
             id="TextField5"
             onBlur={[Function]}
             onChange={[Function]}
