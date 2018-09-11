@@ -37,7 +37,7 @@
   "license": "MIT",
   "lint-staged": {
     "linters": {
-      "!(apps/vr-test)/**/*.{ts,tsx}|*.{ts,tsx}": [
+      "*.{ts,tsx}": [
         "node ./scripts/lint-staged/prettier",
         "node ./scripts/lint-staged/tslint",
         "git add"
@@ -48,7 +48,8 @@
       ]
     },
     "ignore": [
-      "common/scripts/*.js"
+      "common/scripts/*.js",
+      "apps/vr-tests/**/*.{ts,tsx}"
     ]
   }
 }
