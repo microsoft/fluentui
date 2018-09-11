@@ -64,17 +64,6 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     targetIndex: number;
   };
 
-  public static getDerivedStateFromProps(nextProps: IDetailsHeaderBaseProps): any {
-    let columnReorderProps: IColumnReorderHeaderProps | undefined;
-
-    columnReorderProps =
-      nextProps.columnReorderProps || (nextProps.columnReorderOptions && getLegacyColumnReorderProps(nextProps.columnReorderOptions));
-
-    return {
-      columnReorderProps
-    };
-  }
-
   constructor(props: IDetailsHeaderBaseProps) {
     super(props);
     let columnReorderProps: IColumnReorderHeaderProps | undefined;
@@ -149,11 +138,23 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
   }
 
   public componentWillReceiveProps(newProps: IDetailsHeaderBaseProps): void {
+    let columnReorderProps: IColumnReorderHeaderProps | undefined;
+
+    columnReorderProps =
+      newProps.columnReorderProps || (newProps.columnReorderOptions && getLegacyColumnReorderProps(newProps.columnReorderOptions));
+
     const { groupNestingDepth } = this.state;
 
     if (newProps.groupNestingDepth !== groupNestingDepth) {
-      this.setState({ groupNestingDepth: newProps.groupNestingDepth });
+      this.setState({
+        columnReorderProps,
+        groupNestingDepth: newProps.groupNestingDepth
+      });
+
+      return;
     }
+
+    this.setState({ columnReorderProps });
   }
 
   public componentWillUnmount(): void {
