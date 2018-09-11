@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 10 Sep 2018 10:24:57 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Sep 2018 02:54:40 GMT and should not be manually modified.
+
+## 6.67.1
+Tue, 11 Sep 2018 02:54:40 GMT
+
+### Patches
+
+- IconButton: now with less IE11 shifting pixels.
+- add safeguard in contextualmenu against doing setstate while unmounted
 
 ## 6.67.0
 Mon, 10 Sep 2018 10:24:57 GMT
