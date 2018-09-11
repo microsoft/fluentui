@@ -16,6 +16,9 @@ const VerticalStackVerticalAlignExampleCode = require('!raw-loader!@uifabric/exp
 import { VerticalStackHorizontalAlignExample } from './examples/VerticalStack.HorizontalAlign.Example';
 const VerticalStackHorizontalAlignExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Stack/VerticalStack/examples/VerticalStack.HorizontalAlign.Example.tsx') as string;
 
+import { VerticalStackConfigureExample } from './examples/VerticalStack.Configure.Example';
+const VerticalStackConfigureExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Stack/VerticalStack/examples/VerticalStack.Configure.Example.tsx') as string;
+
 export class VerticalStackPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
@@ -38,6 +41,9 @@ export class VerticalStackPage extends React.Component<IComponentDemoPageProps, 
             </ExampleCard>
             <ExampleCard title="Horizontal Alignments" code={VerticalStackHorizontalAlignExampleCode}>
               <VerticalStackHorizontalAlignExample />
+            </ExampleCard>
+            <ExampleCard title="Configure Properties" code={VerticalStackConfigureExampleCode}>
+              <VerticalStackConfigureExample />
             </ExampleCard>
           </div>
         }
