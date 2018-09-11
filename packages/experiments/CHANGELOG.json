@@ -2,6 +2,33 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.29.1",
+      "tag": "@uifabric/experiments_v6.29.1",
+      "date": "Tue, 11 Sep 2018 02:54:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Amy Hackett <ahackett@microsoft.com>",
+            "commit": "c2beb48ce55204240827847fb17254bc6a25120e",
+            "comment": "update missing metadata signal icon"
+          },
+          {
+            "author": "Amy Hackett <ahackett@microsoft.com>",
+            "commit": "1294a5d57b80a0bfdf4c108e4a0fdad956f93ab2",
+            "comment": "Tiles: Fix on hover underline issue for signal icon in Tiles view"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.19.1` to `^0.19.2`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.67.0 <7.0.0` to `>=6.67.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.29.0",
       "tag": "@uifabric/experiments_v6.29.0",
       "date": "Fri, 07 Sep 2018 22:04:50 GMT",

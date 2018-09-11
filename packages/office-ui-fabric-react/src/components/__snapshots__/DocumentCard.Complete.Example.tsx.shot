@@ -381,6 +381,11 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #004578;
               }
@@ -502,6 +507,11 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #004578;
               }
@@ -622,6 +632,11 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 outline-color: ButtonText;
                 right: -2px;
                 top: -2px;
+              }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
               }
               &:hover {
                 color: #004578;

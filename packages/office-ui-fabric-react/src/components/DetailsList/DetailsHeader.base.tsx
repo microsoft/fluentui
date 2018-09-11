@@ -347,7 +347,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     const draggedColumnIndex = this._draggedColumnIndex;
     const { columnReorderProps } = this.state;
     // Target index will not get changed if draggeditem is after target item.
-    if (this._draggedColumnIndex >= 0 && event && event instanceof DragEvent) {
+    if (this._draggedColumnIndex >= 0 && event) {
       const targetIndex = draggedColumnIndex > this._currentDropHintIndex! ? this._currentDropHintIndex! : this._currentDropHintIndex! - 1;
       let isValidDrop = false;
       event.stopPropagation();
