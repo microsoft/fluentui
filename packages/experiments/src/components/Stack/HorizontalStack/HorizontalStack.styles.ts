@@ -3,10 +3,12 @@ import { IHorizontalStackProps, IHorizontalStackStyles } from './HorizontalStack
 import { parseGap } from '../StackUtils';
 
 export const styles = (props: IThemedProps<IHorizontalStackProps>): IHorizontalStackStyles => {
-  const { wrap, gap, verticalGap, className } = props;
+  const { wrap, gap, verticalGap, className, theme } = props;
 
-  const hGap = parseGap(gap);
-  const vGap = parseGap(verticalGap);
+  const vertGap = verticalGap !== undefined ? verticalGap : gap;
+
+  const hGap = parseGap(gap, theme);
+  const vGap = parseGap(vertGap, theme);
 
   const horizontalMargin = -0.5 * hGap.value;
   const verticalMargin = -0.5 * vGap.value;

@@ -4,6 +4,9 @@ import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet
 import { HorizontalStackBasicExample } from './examples/HorizontalStack.Basic.Example';
 const HorizontalStackBasicExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Stack/HorizontalStack/examples/HorizontalStack.Basic.Example.tsx') as string;
 
+import { HorizontalStackGapExample } from './examples/HorizontalStack.Gap.Example';
+const HorizontalStackGapExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Stack/HorizontalStack/examples/HorizontalStack.Gap.Example.tsx') as string;
+
 import { HorizontalStackGrowExample } from './examples/HorizontalStack.Grow.Example';
 const HorizontalStackGrowExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Stack/HorizontalStack/examples/HorizontalStack.Grow.Example.tsx') as string;
 
@@ -35,6 +38,9 @@ export class HorizontalStackPage extends React.Component<IComponentDemoPageProps
           <div>
             <ExampleCard title="Basic Horizontal Stack" code={HorizontalStackBasicExampleCode}>
               <HorizontalStackBasicExample />
+            </ExampleCard>
+            <ExampleCard title="Gap Sizes" code={HorizontalStackGapExampleCode}>
+              <HorizontalStackGapExample />
             </ExampleCard>
             <ExampleCard title="Growing Items" code={HorizontalStackGrowExampleCode}>
               <HorizontalStackGrowExample />

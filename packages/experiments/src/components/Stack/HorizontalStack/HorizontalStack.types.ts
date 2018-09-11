@@ -25,8 +25,9 @@ export interface IHorizontalStackProps extends IPartialStackProps {
 
   /**
    * Vertical space between children when children wrap onto multiple rows.
+   * Defaults to the value of the gap property.
    */
-  verticalGap?: number;
+  verticalGap?: number | string;
 
   /**
    * Custom styles to apply to the HorizontalStack.

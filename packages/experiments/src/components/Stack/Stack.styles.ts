@@ -23,11 +23,12 @@ export const styles = (props: IThemedProps<IStackProps>): IStackStyles => {
     horizontalGap,
     verticalGap,
     shrinkItems,
+    theme,
     className
   } = props;
 
-  const hGap = parseGap(horizontalGap);
-  const vGap = parseGap(verticalGap);
+  const hGap = parseGap(horizontalGap, theme);
+  const vGap = parseGap(verticalGap, theme);
 
   const childStyles = {
     whiteSpace: 'nowrap',
@@ -72,7 +73,7 @@ export const styles = (props: IThemedProps<IStackProps>): IStackStyles => {
         horizontal && {
           selectors: {
             '> *': {
-              marginRight: hGap.value,
+              marginRight: `${hGap.value}${hGap.unit}`,
               ...childStyles
             },
             '> *:last-child': {
@@ -83,7 +84,7 @@ export const styles = (props: IThemedProps<IStackProps>): IStackStyles => {
         !horizontal && {
           selectors: {
             '> *': {
-              marginBottom: vGap.value,
+              marginBottom: `${vGap.value}${vGap.unit}`,
               ...childStyles
             },
             '> *:last-child': {

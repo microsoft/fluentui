@@ -3,6 +3,7 @@
  */
 
 import { Alignment } from './Stack.types';
+import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 
 const horizontalAlignmentMap: { [key: string]: string } = {
   left: 'start',
@@ -24,9 +25,10 @@ export const getVerticalAlignment = (alignment: string | undefined): Alignment =
   return (verticalAlignmentMap[alignment!] || alignment) as Alignment;
 };
 
-// Parses the CSS-style gap size into a numerical value and a CSS unit (e.g. px).
-export const parseGap = (gap: number | string | undefined): { value: number; unit: string } => {
-  if (gap === undefined) {
+// Parses a CSS-style gap size (e.g. "10px") into a numerical value and a CSS unit (e.g. px).
+// Also allows the user to pass in the key of a themed spacing value.
+export const parseGap = (gap: number | string | undefined, theme: ITheme): { value: number; unit: string } => {
+  if (gap === undefined || gap === '') {
     return {
       value: 0,
       unit: 'px'
@@ -40,11 +42,16 @@ export const parseGap = (gap: number | string | undefined): { value: number; uni
     };
   }
 
-  const numericalPart = parseFloat(gap);
+  let stringGap = gap;
+  if (theme.spacing.hasOwnProperty(gap)) {
+    stringGap = theme.spacing[gap as keyof typeof theme.spacing];
+  }
+
+  const numericalPart = parseFloat(stringGap);
   const numericalValue = isNaN(numericalPart) ? 0 : numericalPart;
   const numericalString = isNaN(numericalPart) ? '' : numericalPart.toString();
 
-  const unitPart = gap.substring(numericalString.toString().length);
+  const unitPart = stringGap.substring(numericalString.toString().length);
 
   return {
     value: numericalValue,

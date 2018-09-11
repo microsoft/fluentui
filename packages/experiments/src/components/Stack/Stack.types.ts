@@ -73,7 +73,7 @@ export interface IStackProps extends IStyleableComponent<IStackProps, IStackStyl
   /**
    * Spacing between Stack child elements.
    */
-  gap?: number;
+  gap?: number | string;
 
   /**
    * Maximum width of the Stack.
@@ -103,12 +103,12 @@ export interface IStackProps extends IStyleableComponent<IStackProps, IStackStyl
   /**
    * Horizontal gap between Stack child elements.
    */
-  horizontalGap?: number;
+  horizontalGap?: number | string;
 
   /**
    * Vertical gap between Stack child elements.
    */
-  verticalGap?: number;
+  verticalGap?: number | string;
 }
 
 export interface IStackStyles {

@@ -48,7 +48,7 @@ export class HorizontalStackWrapExample extends React.Component<{}, IExampleStat
           onChange={this._onSliderChange}
         />
 
-        <HorizontalStack wrap gap={30} verticalGap={20} className={styles.root}>
+        <HorizontalStack wrap gap={30} className={styles.root}>
           <Text className={styles.item}>One</Text>
           <Text className={styles.item}>Two</Text>
           <Text className={styles.item}>Three</Text>

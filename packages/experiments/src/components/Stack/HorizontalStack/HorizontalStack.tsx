@@ -8,7 +8,18 @@ import { IHorizontalStackProps, IHorizontalStackStyles } from './HorizontalStack
 import { styles } from './HorizontalStack.styles';
 
 const view = (props: IViewComponentProps<IHorizontalStackProps, IHorizontalStackStyles>) => {
-  const { horizontalAlign, verticalAlign, gap, classNames, children, styles: customStyles, ...rest } = props;
+  const {
+    horizontalAlign,
+    verticalAlign,
+    gap,
+    verticalGap,
+    classNames,
+    children,
+    styles: customStyles,
+    ...rest
+  } = props;
+
+  const vertGap = verticalGap !== undefined ? verticalGap : gap;
 
   if (props.wrap) {
     return (
@@ -21,6 +32,7 @@ const view = (props: IViewComponentProps<IHorizontalStackProps, IHorizontalStack
           horizontalAlignment={getHorizontalAlignment(horizontalAlign)}
           className={classNames.inner}
           horizontalGap={gap}
+          verticalGap={vertGap}
         >
           {children}
         </Stack>
