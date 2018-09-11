@@ -21,8 +21,8 @@ export class HorizontalStackBasicExample extends React.Component<{}, {}> {
 
     return (
       <VerticalStack gap={5}>
-        <Text>Default horizontal stack (with padding)</Text>
-        <HorizontalStack padding={padding} className={styles.root}>
+        <Text>Default horizontal stack</Text>
+        <HorizontalStack className={styles.root}>
           <Text>Item One</Text>
           <Text>Item Two</Text>
           <Text>Item Three</Text>
@@ -56,7 +56,16 @@ export class HorizontalStackBasicExample extends React.Component<{}, {}> {
             <Text>End-aligned item</Text>
           </HorizontalStack.Item>
         </HorizontalStack>
+
+        <Text>Clickable stack</Text>
+        <HorizontalStack onClick={this._onClick} padding={padding} className={styles.root}>
+          <Text>Click me</Text>
+        </HorizontalStack>
       </VerticalStack>
     );
   }
+
+  private _onClick = (): void => {
+    alert('Clicked HorizontalStack');
+  };
 }

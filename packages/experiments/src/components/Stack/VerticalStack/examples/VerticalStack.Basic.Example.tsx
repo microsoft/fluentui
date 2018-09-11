@@ -21,8 +21,8 @@ export class VerticalStackBasicExample extends React.Component<{}, {}> {
 
     return (
       <VerticalStack gap={5}>
-        <Text>Default vertical stack (with padding)</Text>
-        <VerticalStack padding={padding} className={styles.root}>
+        <Text>Default vertical stack</Text>
+        <VerticalStack className={styles.root}>
           <Text>Item One</Text>
           <Text>Item Two</Text>
           <Text>Item Three</Text>
@@ -56,7 +56,16 @@ export class VerticalStackBasicExample extends React.Component<{}, {}> {
             <Text>End-aligned item</Text>
           </VerticalStack.Item>
         </VerticalStack>
+
+        <Text>Clickable stack</Text>
+        <VerticalStack onClick={this._onClick} padding={padding} className={styles.root}>
+          <Text>Click me</Text>
+        </VerticalStack>
       </VerticalStack>
     );
   }
+
+  private _onClick = (): void => {
+    alert('Clicked VerticalStack');
+  };
 }
