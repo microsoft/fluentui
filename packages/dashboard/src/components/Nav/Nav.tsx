@@ -8,14 +8,17 @@ import { styled, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities
 import { NavLink } from './NavLink';
 
 const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
+const classNames = getClassNames(getStyles);
 
 class NavComponent extends NavBase {
   constructor(props: INavProps) {
     super(props);
 
     this.state = {
-      isLinkExpandStateChanged: false,
-      selectedKey: props.initialSelectedKey || props.selectedKey
+      // Collapsable
+      // Editable
+      isNavCollapsed: props.isNavCollapsed ? props.isNavCollapsed : false,
+      isLinkExpandStateChanged: false
     };
   }
 
@@ -29,7 +32,8 @@ class NavComponent extends NavBase {
     this._hasAtleastOneHiddenLink = false;
 
     return (
-      <nav role="navigation">
+      <nav role="navigation" className={classNames.root}>
+        {this._renderExpandCollapseNavItem()}
         {this.props.groups.map((group: ICustomNavLinkGroup, groupIndex: number) => {
           return this._renderGroup(group, groupIndex);
         })}
@@ -37,18 +41,51 @@ class NavComponent extends NavBase {
     );
   }
 
-  private _onLinkClicked(link: INavLink, ev: React.MouseEvent<HTMLElement>): void {
-    let nextState: INavState = {
-      selectedKey: link.key
-    };
+  private _onNavCollapseClicked(ev: React.MouseEvent<HTMLElement>): void {
+    this.setState((prevState: INavState) => {
+      const isNavCollapsed = !prevState.isNavCollapsed;
 
+      // inform the caller about the collapse event
+      if (!!this.props.onNavCollapsedCallback) {
+        this.props.onNavCollapsedCallback(isNavCollapsed);
+      }
+
+      return {
+        isNavCollapsed: isNavCollapsed
+      };
+    });
+
+    ev.preventDefault();
+    ev.stopPropagation();
+  }
+
+  private _renderExpandCollapseNavItem(): React.ReactElement<{}> | null {
+    const isNavCollapsed = this.state.isNavCollapsed;
+    const { dataHint } = this.props;
+    const ariaLabel = isNavCollapsed ? 'Navigation collapsed' : 'Navigation expanded';
+
+    return (
+      <NavLink
+        id={'NavToggle'}
+        href={'#'}
+        onClick={this._onNavCollapseClicked.bind(this)}
+        ariaExpanded={!isNavCollapsed}
+        dataHint={dataHint}
+        dataValue={'NavToggle'}
+        ariaLabel={ariaLabel}
+        rootClassName={classNames.navItemRoot}
+        primaryIconName={'GlobalNavButton'}
+        role="menu"
+      />
+    );
+  }
+
+  private _onLinkClicked(link: INavLink, ev: React.MouseEvent<HTMLElement>): void {
     const hasChildren = link.links && link.links.length > 0;
 
     if (hasChildren) {
       // show child links
       link.isExpanded = !link.isExpanded;
-
-      nextState.isLinkExpandStateChanged = true;
 
       if (!!this.props.onNavNodeExpandedCallback && link.key) {
         this.props.onNavNodeExpandedCallback(link.key, link.isExpanded);
@@ -62,7 +99,9 @@ class NavComponent extends NavBase {
       }
     }
 
-    this.setState(nextState);
+    this.setState({
+      isLinkExpandStateChanged: link.isExpanded
+    });
 
     if (hasChildren || link.onClick) {
       // prevent further action if the link has children or onClick handler is defined
@@ -113,22 +152,25 @@ class NavComponent extends NavBase {
     const onClickHandler = link.isShowMoreLink && onShowMoreLinkClicked ? onShowMoreLinkClicked : this._onLinkClicked.bind(this, link);
 
     return (
-      <NavLink
-        id={keyIndex}
-        content={linkText}
-        href={link.url}
-        target={link.target}
-        onClick={onClickHandler}
-        dataHint={dataHint}
-        dataValue={keyIndex}
-        ariaLabel={linkText}
-        {...ariaProps}
-        level={nestingLevel}
-        isSelected={isSelected}
-        role="menu"
-        primaryIconName={primaryIconName}
-        secondaryIconName={secondaryIconName}
-      />
+      <ul>
+        <li>
+          <NavLink
+            id={keyIndex}
+            href={link.url}
+            target={link.target}
+            onClick={onClickHandler}
+            dataHint={dataHint}
+            dataValue={keyIndex}
+            ariaLabel={linkText}
+            {...ariaProps}
+            level={nestingLevel}
+            isSelected={isSelected}
+            role="menu"
+            primaryIconName={primaryIconName}
+            secondaryIconName={secondaryIconName}
+          />
+        </li>
+      </ul>
     );
   }
 
@@ -189,22 +231,15 @@ class NavComponent extends NavBase {
       return null;
     }
 
-    const { styles, enableCustomization } = this.props;
-    const hasGroupName = !!group.name;
+    const { enableCustomization } = this.props;
 
     // skip customization group if customization is not enabled
     if (!enableCustomization && group.groupType === NavGroupType.CustomizationGroup) {
       return null;
     }
 
-    const classNames = getClassNames(styles!, { hasGroupName });
-
+    // TODO - set this
     let isGroupHeaderVisible = false;
-
-    // first group header is hidden by default, display group header for other groups only if there are visible links
-    if (groupIndex > 0) {
-      isGroupHeaderVisible = this.hasAtleastOneVisibleLink(group.links, this.props.showMore);
-    }
 
     return (
       <ul role="list" key={groupIndex.toString()}>

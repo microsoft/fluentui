@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ICustomNavLinkGroup, NavGroupType } from '../Nav.types';
-import { NavToggler } from '../NavToggler';
+import { Nav } from '../Nav';
 
 export class NavExample extends React.Component<{}, {}> {
   constructor(props: {}) {
@@ -9,10 +9,6 @@ export class NavExample extends React.Component<{}, {}> {
 
   public render(): JSX.Element {
     const navLinkGroups: ICustomNavLinkGroup[] = [
-      {
-        links: [{ name: 'Collapsed', alternateText: 'Expanded', url: '#', icon: 'GlobalNavButton', key: 'key' }],
-        groupType: NavGroupType.ToggleGroup
-      },
       {
         name: 'default group',
         links: [
@@ -90,11 +86,7 @@ export class NavExample extends React.Component<{}, {}> {
       }
     ];
 
-    return (
-      <div>
-        <NavToggler groups={navLinkGroups} dataHint="LeftNav" enableCustomization={true} selectedKey="key3" />
-      </div>
-    );
+    return <Nav groups={navLinkGroups} dataHint="LeftNav" enableCustomization={true} />;
   }
 
   private _onEditClick(): void {
