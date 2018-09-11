@@ -78,9 +78,9 @@ const columns: IColumn[] = [
     key: 'f',
     name: 'f',
     fieldName: 'f',
-    minWidth: 10,
-    maxWidth: 100,
-    calculatedWidth: 10,
+    minWidth: 200,
+    maxWidth: 400,
+    calculatedWidth: 200,
     isResizable: true,
     columnActionsMode: ColumnActionsMode.hasDropdown,
     isIconOnly: false,
@@ -95,17 +95,29 @@ const columns: IColumn[] = [
 
 _selection.setItems(_items);
 
+
+const _columnReorderProps = {
+  frozenColumnCountFromStart: 1,
+  frozenColumnCountFromEnd: 1,
+  handleColumnReorder: this._dummyFunction
+};
+
+
+
 storiesOf('DetailsHeader', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('.ms-DetailsHeader-cell ')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .click('.ms-DetailsHeader-cell ')
-        .hover('.ms-DetailsHeader-cell ')
-        .snapshot('click', { cropTo: '.testWrapper' })
+        .hover('[aria-colindex=2]')
+        .snapshot('hoverFrozen', { cropTo: '.testWrapper' })
+        .hover('[aria-colindex=3]')
+        .snapshot('hoverDraggable', { cropTo: '.testWrapper' })
+        .mouseDown('[aria-colindex=2]')
+        .snapshot('mouseDownFrozen', { cropTo: '.testWrapper' })
+        .mouseDown('[aria-colindex=3]')
+        .snapshot('mouseDownDraggable', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
@@ -118,6 +130,7 @@ storiesOf('DetailsHeader', module)
       selectionMode={SelectionMode.multiple}
       layoutMode={DetailsListLayoutMode.fixedColumns}
       columns={columns}
+      columnReorderProps={_columnReorderProps}
     />
 
   ))
