@@ -22,17 +22,18 @@ export class HorizontalStackWrapExample extends React.Component<{}, IExampleStat
     const styles = mergeStyleSets({
       root: {
         background: DefaultPalette.themeTertiary,
-        width: `${this.state.shrinkingContainerWidth}%`
-      },
-
-      item: {
-        background: `${DefaultPalette.white}55`,
-        border: `1px solid ${DefaultPalette.neutralPrimary}`,
-        width: 100,
-        height: 50,
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
+        width: `${this.state.shrinkingContainerWidth}%`,
+        selectors: {
+          '& span': {
+            width: 50,
+            height: 50,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: DefaultPalette.themePrimary,
+            color: DefaultPalette.white
+          }
+        }
       }
     });
 
@@ -49,12 +50,16 @@ export class HorizontalStackWrapExample extends React.Component<{}, IExampleStat
         />
 
         <HorizontalStack wrap gap={30} className={styles.root}>
-          <Text className={styles.item}>One</Text>
-          <Text className={styles.item}>Two</Text>
-          <Text className={styles.item}>Three</Text>
-          <Text className={styles.item}>Four</Text>
-          <Text className={styles.item}>Five</Text>
-          <Text className={styles.item}>Six</Text>
+          <Text>1</Text>
+          <Text>2</Text>
+          <Text>3</Text>
+          <Text>4</Text>
+          <Text>5</Text>
+          <Text>6</Text>
+          <Text>7</Text>
+          <Text>8</Text>
+          <Text>9</Text>
+          <Text>10</Text>
         </HorizontalStack>
       </VerticalStack>
     );

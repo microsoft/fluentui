@@ -6,16 +6,15 @@ import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export class HorizontalStackBasicExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
-    const padding = 10;
-
     const styles = mergeStyleSets({
       root: {
         background: DefaultPalette.themeTertiary
       },
 
       item: {
-        background: `${DefaultPalette.white}55`,
-        border: `1px solid ${DefaultPalette.neutralPrimary}`
+        color: DefaultPalette.white,
+        background: DefaultPalette.themePrimary,
+        padding: 5
       }
     });
 
@@ -29,14 +28,14 @@ export class HorizontalStackBasicExample extends React.Component<{}, {}> {
         </HorizontalStack>
 
         <Text>Horizontal gap between items</Text>
-        <HorizontalStack gap={10} padding={padding} className={styles.root}>
+        <HorizontalStack gap={10} padding={10} className={styles.root}>
           <Text>Item One</Text>
           <Text>Item Two</Text>
           <Text>Item Three</Text>
         </HorizontalStack>
 
         <Text>Item alignments</Text>
-        <HorizontalStack gap={5} padding={padding} className={styles.root} styles={{ root: { height: 100 } }}>
+        <HorizontalStack gap={5} padding={10} className={styles.root} styles={{ root: { height: 100 } }}>
           <HorizontalStack.Item align="auto" className={styles.item}>
             <Text>Auto-aligned item</Text>
           </HorizontalStack.Item>
@@ -58,8 +57,8 @@ export class HorizontalStackBasicExample extends React.Component<{}, {}> {
         </HorizontalStack>
 
         <Text>Clickable stack</Text>
-        <HorizontalStack onClick={this._onClick} padding={padding} className={styles.root}>
-          <Text>Click me</Text>
+        <HorizontalStack onClick={this._onClick} padding={10} className={styles.root}>
+          <Text>Click inside this box</Text>
         </HorizontalStack>
       </VerticalStack>
     );

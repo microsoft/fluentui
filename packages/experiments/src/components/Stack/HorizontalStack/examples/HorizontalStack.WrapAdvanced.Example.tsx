@@ -31,38 +31,38 @@ export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExa
     const styles = mergeStyleSets({
       root: {
         background: DefaultPalette.themeTertiary,
-        width: `${this.state.shrinkingContainerWidth}%`,
-        marginLeft: 10
+        width: `${this.state.shrinkingContainerWidth}%`
       },
 
       stackOne: {
-        background: DefaultPalette.tealLight
+        background: DefaultPalette.neutralTertiary,
+        selectors: {
+          '& span': {
+            ...textStyles,
+            background: DefaultPalette.themePrimary
+          }
+        }
       },
 
       stackTwo: {
-        background: DefaultPalette.teal
+        background: DefaultPalette.neutralSecondary,
+        selectors: {
+          '& span': {
+            ...textStyles,
+            background: DefaultPalette.themeDark
+          }
+        }
       },
 
       stackThree: {
-        background: DefaultPalette.tealDark
-      },
-
-      textOne: {
-        ...textStyles,
-        background: DefaultPalette.magentaLight
-      },
-
-      textTwo: {
-        ...textStyles,
-        background: DefaultPalette.magenta
-      },
-
-      textThree: {
-        ...textStyles,
-        background: DefaultPalette.magentaDark
-      },
-
-      text: textStyles
+        background: DefaultPalette.neutralPrimary,
+        selectors: {
+          '& span': {
+            ...textStyles,
+            background: DefaultPalette.themeDarker
+          }
+        }
+      }
     });
 
     return (
@@ -78,71 +78,33 @@ export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExa
         />
 
         <HorizontalStack wrap gap={40} verticalGap={30} className={styles.root}>
-          <HorizontalStack
-            wrap
-            gap={30}
-            verticalGap={10}
-            styles={{
-              inner: {
-                selectors: {
-                  '*': {
-                    background: DefaultPalette.magentaLight
-                  }
-                }
-              }
-            }}
-            className={styles.stackOne}
-          >
-            <Text className={styles.text}>1</Text>
-            <Text className={styles.textOne}>2</Text>
-            <Text className={styles.textOne}>3</Text>
-            <Text className={styles.textOne}>4</Text>
-            <Text className={styles.textOne}>5</Text>
-            <Text className={styles.textOne}>6</Text>
-            <Text className={styles.textOne}>7</Text>
+          <HorizontalStack wrap gap={30} verticalGap={10} className={styles.stackOne}>
+            <Text>1</Text>
+            <Text>2</Text>
+            <Text>3</Text>
+            <Text>4</Text>
+            <Text>5</Text>
+            <Text>6</Text>
+            <Text>7</Text>
           </HorizontalStack>
-          <HorizontalStack
-            wrap
-            gap={50}
-            verticalGap={20}
-            styles={{
-              inner: {
-                selectors: {
-                  '*': {
-                    background: DefaultPalette.magenta
-                  }
-                }
-              }
-            }}
-            className={styles.stackTwo}
-          >
-            <Text className={styles.textTwo}>1</Text>
-            <Text className={styles.textTwo}>2</Text>
-            <Text className={styles.textTwo}>3</Text>
+
+          <HorizontalStack wrap gap={50} verticalGap={20} className={styles.stackTwo}>
+            <Text>1</Text>
+            <Text>2</Text>
+            <Text>3</Text>
           </HorizontalStack>
-          <HorizontalStack
-            wrap
-            styles={{
-              inner: {
-                selectors: {
-                  '*': {
-                    background: DefaultPalette.magentaDark
-                  }
-                }
-              }
-            }}
-            className={styles.stackThree}
-          >
-            <Text className={styles.textThree}>1</Text>
-            <Text className={styles.textThree}>2</Text>
-            <Text className={styles.textThree}>3</Text>
-            <Text className={styles.textThree}>4</Text>
-            <Text className={styles.textThree}>5</Text>
-            <Text className={styles.textThree}>6</Text>
-            <Text className={styles.textThree}>7</Text>
-            <Text className={styles.textThree}>8</Text>
-            <Text className={styles.textThree}>9</Text>
-            <Text className={styles.textThree}>10</Text>
+
+          <HorizontalStack wrap className={styles.stackThree}>
+            <Text>1</Text>
+            <Text>2</Text>
+            <Text>3</Text>
+            <Text>4</Text>
+            <Text>5</Text>
+            <Text>6</Text>
+            <Text>7</Text>
+            <Text>8</Text>
+            <Text>9</Text>
+            <Text>10</Text>
           </HorizontalStack>
         </HorizontalStack>
       </VerticalStack>

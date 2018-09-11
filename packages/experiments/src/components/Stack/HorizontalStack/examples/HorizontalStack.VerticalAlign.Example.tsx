@@ -6,37 +6,45 @@ import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export class HorizontalStackVerticalAlignExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
-    const padding = 10;
-    const gap = 10;
-
     const styles = mergeStyleSets({
       root: {
         background: DefaultPalette.themeTertiary,
-        height: 100
+        height: 100,
+        selectors: {
+          '> *': {
+            width: 50,
+            height: 50,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: DefaultPalette.themePrimary,
+            color: DefaultPalette.white
+          }
+        }
       }
     });
 
     return (
       <VerticalStack gap={5}>
         <Text>Top-aligned</Text>
-        <HorizontalStack verticalAlign="top" gap={gap} padding={padding} className={styles.root}>
-          <Text>Item One</Text>
-          <Text>Item Two</Text>
-          <Text>Item Three</Text>
+        <HorizontalStack verticalAlign="top" className={styles.root}>
+          <Text>1</Text>
+          <Text>2</Text>
+          <Text>3</Text>
         </HorizontalStack>
 
         <Text>Vertically centered</Text>
-        <HorizontalStack verticalAlign="center" gap={gap} padding={padding} className={styles.root}>
-          <Text>Item One</Text>
-          <Text>Item Two</Text>
-          <Text>Item Three</Text>
+        <HorizontalStack verticalAlign="center" className={styles.root}>
+          <Text>1</Text>
+          <Text>2</Text>
+          <Text>3</Text>
         </HorizontalStack>
 
         <Text>Bottom-aligned</Text>
-        <HorizontalStack verticalAlign="bottom" gap={gap} padding={padding} className={styles.root}>
-          <Text>Item One</Text>
-          <Text>Item Two</Text>
-          <Text>Item Three</Text>
+        <HorizontalStack verticalAlign="bottom" className={styles.root}>
+          <Text>1</Text>
+          <Text>2</Text>
+          <Text>3</Text>
         </HorizontalStack>
       </VerticalStack>
     );

@@ -6,16 +6,15 @@ import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export class VerticalStackBasicExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
-    const padding = 10;
-
     const styles = mergeStyleSets({
       root: {
         background: DefaultPalette.themeTertiary
       },
 
       item: {
-        background: `${DefaultPalette.white}55`,
-        border: `1px solid ${DefaultPalette.neutralPrimary}`
+        color: DefaultPalette.white,
+        background: DefaultPalette.themePrimary,
+        padding: 5
       }
     });
 
@@ -29,14 +28,14 @@ export class VerticalStackBasicExample extends React.Component<{}, {}> {
         </VerticalStack>
 
         <Text>Vertical gap between items</Text>
-        <VerticalStack gap={10} padding={padding} className={styles.root}>
+        <VerticalStack gap={10} padding={10} className={styles.root}>
           <Text>Item One</Text>
           <Text>Item Two</Text>
           <Text>Item Three</Text>
         </VerticalStack>
 
         <Text>Item alignments</Text>
-        <VerticalStack gap={5} padding={padding} className={styles.root}>
+        <VerticalStack gap={5} padding={10} className={styles.root}>
           <VerticalStack.Item align="auto" className={styles.item}>
             <Text>Auto-aligned item</Text>
           </VerticalStack.Item>
@@ -58,8 +57,8 @@ export class VerticalStackBasicExample extends React.Component<{}, {}> {
         </VerticalStack>
 
         <Text>Clickable stack</Text>
-        <VerticalStack onClick={this._onClick} padding={padding} className={styles.root}>
-          <Text>Click me</Text>
+        <VerticalStack onClick={this._onClick} padding={10} className={styles.root}>
+          <Text>Click inside this box</Text>
         </VerticalStack>
       </VerticalStack>
     );

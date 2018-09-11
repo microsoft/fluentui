@@ -6,35 +6,41 @@ import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export class VerticalStackHorizontalAlignExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
-    const padding = 10;
-
     const styles = mergeStyleSets({
       root: {
-        background: DefaultPalette.themeTertiary
+        background: DefaultPalette.themeTertiary,
+        selectors: {
+          '> *': {
+            width: 50,
+            height: 50,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: DefaultPalette.themePrimary,
+            color: DefaultPalette.white
+          }
+        }
       }
     });
 
     return (
       <VerticalStack gap={5}>
         <Text>Left-aligned</Text>
-        <VerticalStack horizontalAlign="left" padding={padding} className={styles.root}>
-          <Text>Item One</Text>
-          <Text>Item Two</Text>
-          <Text>Item Three</Text>
+        <VerticalStack horizontalAlign="left" className={styles.root}>
+          <Text>1</Text>
+          <Text>2</Text>
         </VerticalStack>
 
         <Text>Horizontally centered</Text>
-        <VerticalStack horizontalAlign="center" padding={padding} className={styles.root}>
-          <Text>Item One</Text>
-          <Text>Item Two</Text>
-          <Text>Item Three</Text>
+        <VerticalStack horizontalAlign="center" className={styles.root}>
+          <Text>1</Text>
+          <Text>2</Text>
         </VerticalStack>
 
         <Text>Right-aligned</Text>
-        <VerticalStack horizontalAlign="right" padding={padding} className={styles.root}>
-          <Text>Item One</Text>
-          <Text>Item Two</Text>
-          <Text>Item Three</Text>
+        <VerticalStack horizontalAlign="right" className={styles.root}>
+          <Text>1</Text>
+          <Text>2</Text>
         </VerticalStack>
       </VerticalStack>
     );

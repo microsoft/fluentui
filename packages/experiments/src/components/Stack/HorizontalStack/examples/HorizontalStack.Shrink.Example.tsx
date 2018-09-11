@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { VerticalStack, HorizontalStack } from '@uifabric/experiments/lib/Stack';
-import { Text } from '@uifabric/experiments/lib/Text';
 import { mergeStyleSets, Slider } from 'office-ui-fabric-react';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
@@ -19,17 +18,20 @@ export class HorizontalStackShrinkExample extends React.Component<{}, IExampleSt
   }
 
   public render(): JSX.Element {
-    const padding = 10;
-
     const styles = mergeStyleSets({
-      item: {
-        background: `${DefaultPalette.white}55`,
-        border: `1px solid ${DefaultPalette.neutralPrimary}`
-      },
-
-      shrinkingContainer: {
+      root: {
         background: DefaultPalette.themeTertiary,
         width: `${this.state.shrinkingContainerWidth}%`,
+        overflow: 'hidden'
+      },
+
+      item: {
+        height: 50,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: DefaultPalette.white,
+        background: DefaultPalette.themePrimary,
         overflow: 'hidden'
       }
     });
@@ -45,18 +47,18 @@ export class HorizontalStackShrinkExample extends React.Component<{}, IExampleSt
           showValue={true}
           onChange={this._onSliderChange}
         />
-        <HorizontalStack shrinkItems gap={5} padding={padding} className={styles.shrinkingContainer}>
+        <HorizontalStack gap={5} shrinkItems padding={10} className={styles.root}>
           <HorizontalStack.Item grow className={styles.item}>
-            <Text>I shrink</Text>
+            I shrink
           </HorizontalStack.Item>
           <HorizontalStack.Item grow className={styles.item}>
-            <Text>I shrink</Text>
+            I shrink
           </HorizontalStack.Item>
           <HorizontalStack.Item grow preventShrink className={styles.item} styles={{ root: { width: 500 } }}>
-            <Text>I don't shrink</Text>
+            I don't shrink
           </HorizontalStack.Item>
           <HorizontalStack.Item grow className={styles.item}>
-            <Text>I shrink</Text>
+            I shrink
           </HorizontalStack.Item>
         </HorizontalStack>
       </VerticalStack>

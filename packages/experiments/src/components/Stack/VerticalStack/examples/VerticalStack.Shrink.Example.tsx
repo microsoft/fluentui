@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { VerticalStack } from '@uifabric/experiments/lib/Stack';
-import { Text } from '@uifabric/experiments/lib/Text';
 import { mergeStyleSets, Slider } from 'office-ui-fabric-react';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
@@ -19,22 +18,24 @@ export class VerticalStackShrinkExample extends React.Component<{}, IExampleStat
   }
 
   public render(): JSX.Element {
-    const padding = 10;
-
     const styles = mergeStyleSets({
-      item: {
-        background: `${DefaultPalette.white}55`,
-        border: `1px solid ${DefaultPalette.neutralPrimary}`
-      },
-
-      expandedHeight: {
-        height: 200
-      },
-
-      shrinkingContainer: {
+      root: {
         background: DefaultPalette.themeTertiary,
         height: `${this.state.shrinkingContainerHeight}%`,
         overflow: 'hidden'
+      },
+
+      item: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: DefaultPalette.themePrimary,
+        color: DefaultPalette.white,
+        overflow: 'hidden'
+      },
+
+      container: {
+        height: 200
       }
     });
 
@@ -49,19 +50,19 @@ export class VerticalStackShrinkExample extends React.Component<{}, IExampleStat
           showValue={true}
           onChange={this._onSliderChange}
         />
-        <div className={styles.expandedHeight}>
-          <VerticalStack shrinkItems gap={5} padding={padding} className={styles.shrinkingContainer}>
+        <div className={styles.container}>
+          <VerticalStack shrinkItems gap={5} padding={10} className={styles.root}>
             <VerticalStack.Item grow className={styles.item}>
-              <Text>I shrink</Text>
+              I shrink
             </VerticalStack.Item>
             <VerticalStack.Item grow className={styles.item}>
-              <Text>I shrink</Text>
+              I shrink
             </VerticalStack.Item>
             <VerticalStack.Item grow preventShrink className={styles.item} styles={{ root: { height: 50 } }}>
-              <Text>I don't shrink</Text>
+              I don't shrink
             </VerticalStack.Item>
             <VerticalStack.Item grow className={styles.item}>
-              <Text>I shrink</Text>
+              I shrink
             </VerticalStack.Item>
           </VerticalStack>
         </div>
