@@ -92,7 +92,11 @@ export class Chart extends React.Component<IChartInternalProps, { _width: number
         return <HorizontalBarChart data={this.props.chartData!} barHeight={this.props.barHeight} />;
       }
       case ChartType.DonutChart: {
-        return <DonutChart data={this.props.chartData![0]} innerRadius={40} />;
+        return (
+          <div className={mergeStyles({ width: 300, height: 250 })}>
+            <DonutChart data={this.props.chartData![0]} innerRadius={70} />
+          </div>
+        );
       }
       case ChartType.PieChart: {
         return <DonutChart data={this.props.chartData![0]} innerRadius={0} />;
@@ -127,13 +131,7 @@ export class Chart extends React.Component<IChartInternalProps, { _width: number
 
   private _getStackedBarChart = (): JSX.Element => {
     if (this.props.chartData!.length > 1) {
-      return (
-        <MultiStackedBarChart
-          data={this.props.chartData!}
-          barHeight={this.props.barHeight}
-          hideRatio={this.props.hideRatio}
-        />
-      );
+      return <MultiStackedBarChart data={this.props.chartData!} barHeight={this.props.barHeight} hideRatio={this.props.hideRatio} />;
     }
 
     return <StackedBarChart data={this.props.chartData![0]} barHeight={this.props.barHeight} />;
