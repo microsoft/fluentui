@@ -6,7 +6,7 @@
     "@uifabric/charting": "^0.19.2",
     "@uifabric/example-app-base": ">=6.7.2 <7.0.0",
     "@uifabric/experiments": ">=6.29.1 <7.0.0",
-    "auto-fontsize": "^1.0.11",
+    "auto-fontsize": "^1.0.14",
     "css-loader": "^0.15.1",
     "office-ui-fabric-react": ">=6.67.2 <7.0.0",
     "react-grid-layout": "samiyaakhtar/react-grid-layout",
