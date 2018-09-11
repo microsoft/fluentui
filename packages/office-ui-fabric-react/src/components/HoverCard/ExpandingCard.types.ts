@@ -143,9 +143,24 @@ export interface IExpandingCardStyleProps {
    */
   className?: string;
 
+  /**
+   * Whether the content of the expanded card overflows vertically.
+   */
   needsScroll?: boolean;
+
+  /**
+   * Boolean flag that expanded card is in Expanded.mode === expanded && first frame was rendered.
+   */
   expandedCardFirstFrameRendered?: boolean;
+
+  /**
+   * Height of the compact section of the card.
+   */
   compactCardHeight?: number;
+
+  /**
+   * Height of the expanded section of the card.
+   */
   expandedCardHeight?: number;
 }
 
