@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.67.1",
+      "tag": "office-ui-fabric-react_v6.67.1",
+      "date": "Tue, 11 Sep 2018 02:54:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "33d838f15a7aba3a846d68de7812b9dabde1c274",
+            "comment": "IconButton: now with less IE11 shifting pixels."
+          },
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "0fdc332e1098108d5a295198ed6636105cec346c",
+            "comment": "add safeguard in contextualmenu against doing setstate while unmounted"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.67.0",
       "tag": "office-ui-fabric-react_v6.67.0",
       "date": "Mon, 10 Sep 2018 10:24:57 GMT",
