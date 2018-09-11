@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Fri, 07 Sep 2018 22:04:50 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Sep 2018 02:54:40 GMT and should not be manually modified.
+
+## 6.9.0
+Tue, 11 Sep 2018 02:54:40 GMT
+
+### Minor changes
+
+- IE11 Promise polyfill was missing and broke `npm start`. Added polyfill.
 
 ## 6.8.3
 Fri, 07 Sep 2018 22:04:50 GMT

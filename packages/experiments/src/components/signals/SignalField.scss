@@ -1,4 +1,3 @@
-
 @import '~office-ui-fabric-react/src/common/common';
 
 .signalField {
@@ -14,6 +13,10 @@
 
   max-width: 100%;
   flex-direction: row nowrap;
+}
+
+.signalFieldBefore {
+  margin: 0 4px;
 }
 
 .signalFieldValue {

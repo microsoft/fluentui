@@ -2,6 +2,31 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.22.2",
+      "tag": "@uifabric/dashboard_v0.22.2",
+      "date": "Tue, 11 Sep 2018 02:54:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "BalakrishnaReddyPolu <polu.balakrishna96@gmail.com>",
+            "commit": "cd463136852d70182520a84b1b6ce6035546f9ec",
+            "comment": "handled the css issues for line chart"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.19.1` to `^0.19.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.29.0 <7.0.0` to `>=6.29.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.67.0 <7.0.0` to `>=6.67.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.22.1",
       "tag": "@uifabric/dashboard_v0.22.1",
       "date": "Mon, 10 Sep 2018 10:24:57 GMT",
