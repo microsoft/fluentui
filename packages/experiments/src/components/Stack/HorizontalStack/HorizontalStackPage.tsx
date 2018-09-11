@@ -10,11 +10,20 @@ const HorizontalStackGrowExampleCode = require('!raw-loader!@uifabric/experiment
 import { HorizontalStackShrinkExample } from './examples/HorizontalStack.Shrink.Example';
 const HorizontalStackShrinkExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Stack/HorizontalStack/examples/HorizontalStack.Shrink.Example.tsx') as string;
 
+import { HorizontalStackWrapExample } from './examples/HorizontalStack.Wrap.Example';
+const HorizontalStackWrapExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Stack/HorizontalStack/examples/HorizontalStack.Wrap.Example.tsx') as string;
+
+import { HorizontalStackWrapAdvancedExample } from './examples/HorizontalStack.WrapAdvanced.Example';
+const HorizontalStackWrapAdvancedExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Stack/HorizontalStack/examples/HorizontalStack.WrapAdvanced.Example.tsx') as string;
+
 import { HorizontalStackHorizontalAlignExample } from './examples/HorizontalStack.HorizontalAlign.Example';
 const HorizontalStackHorizontalAlignExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Stack/HorizontalStack/examples/HorizontalStack.HorizontalAlign.Example.tsx') as string;
 
 import { HorizontalStackVerticalAlignExample } from './examples/HorizontalStack.VerticalAlign.Example';
 const HorizontalStackVerticalAlignExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Stack/HorizontalStack/examples/HorizontalStack.VerticalAlign.Example.tsx') as string;
+
+import { HorizontalStackConfigureExample } from './examples/HorizontalStack.Configure.Example';
+const HorizontalStackConfigureExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Stack/HorizontalStack/examples/HorizontalStack.Configure.Example.tsx') as string;
 
 export class HorizontalStackPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -33,11 +42,20 @@ export class HorizontalStackPage extends React.Component<IComponentDemoPageProps
             <ExampleCard title="Shrinking Items" code={HorizontalStackShrinkExampleCode}>
               <HorizontalStackShrinkExample />
             </ExampleCard>
+            <ExampleCard title="Wrapping - Basic" code={HorizontalStackWrapExampleCode}>
+              <HorizontalStackWrapExample />
+            </ExampleCard>
+            <ExampleCard title="Wrapping - Advanced" code={HorizontalStackWrapAdvancedExampleCode}>
+              <HorizontalStackWrapAdvancedExample />
+            </ExampleCard>
             <ExampleCard title="Horizontal Alignments" code={HorizontalStackHorizontalAlignExampleCode}>
               <HorizontalStackHorizontalAlignExample />
             </ExampleCard>
             <ExampleCard title="Vertical Alignments" code={HorizontalStackVerticalAlignExampleCode}>
               <HorizontalStackVerticalAlignExample />
+            </ExampleCard>
+            <ExampleCard title="Configure Properties" code={HorizontalStackConfigureExampleCode}>
+              <HorizontalStackConfigureExample />
             </ExampleCard>
           </div>
         }
