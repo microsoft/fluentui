@@ -456,4 +456,58 @@ describe('KeytipTree', () => {
       expect(keytipTree.isCurrentKeytipParent(keytipPropsB)).toEqual(true);
     });
   });
+
+  describe('hasDuplicates', () => {
+    it('returns false when there are no duplicates', () => {
+      // Will use tree at top of file
+      keytipTree.addNode(keytipPropsF, uniqueIdF);
+      keytipTree.addNode(keytipPropsC, uniqueIdC);
+      keytipTree.addNode(keytipPropsB, uniqueIdB);
+      keytipTree.addNode(keytipPropsD, uniqueIdD);
+      keytipTree.addNode(keytipPropsE, uniqueIdE);
+      expect(keytipTree.hasDupicates()).toEqual(false);
+    });
+
+    it('returns true when there are duplicates in a group', () => {
+      // Will replace tree used previously with:
+      /**
+       *            a
+       *          /   \
+       *         c     e
+       *        /     / \
+       *       b     f   f
+       */
+      keytipTree.addNode(keytipPropsF, uniqueIdF);
+      keytipTree.addNode(keytipPropsC, uniqueIdC);
+      keytipTree.addNode(keytipPropsB, uniqueIdB);
+      // Replace 'd' with 'f'
+      const keytipSequenceFDupe: string[] = ['e', 'f'];
+      const keytipPropsFDupe = createKeytipProps(keytipSequenceFDupe);
+      keytipTree.addNode(keytipPropsFDupe, '101');
+      keytipTree.addNode(keytipPropsE, uniqueIdE);
+      expect(keytipTree.hasDupicates()).toEqual(false);
+    });
+
+    it('returns false when there are dupicate keytips at a level, but not in the same group', () => {
+      // Will replace tree used previously with:
+      /**
+       *            a
+       *          /   \
+       *         c     e
+       *        /     / \
+       *       f     d   f
+       */
+      keytipTree.addNode(keytipPropsF, uniqueIdF);
+      keytipTree.addNode(keytipPropsC, uniqueIdC);
+      // Replace 'b' with 'f'
+      const keytipSequenceFDupe: string[] = ['c', 'f'];
+      const keytipPropsFDupe = createKeytipProps(keytipSequenceFDupe);
+      keytipTree.addNode(keytipPropsFDupe, '101');
+      keytipTree.addNode(keytipPropsD, uniqueIdD);
+      keytipTree.addNode(keytipPropsE, uniqueIdE);
+      expect(keytipTree.hasDupicates()).toEqual(false);
+    });
+
+    // it('returns false when and overflow sequence is present and should not be treated as a duplicate', () => {});
+  });
 });

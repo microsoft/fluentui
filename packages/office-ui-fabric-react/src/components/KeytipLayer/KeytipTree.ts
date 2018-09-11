@@ -219,6 +219,41 @@ export class KeytipTree {
     return false;
   }
 
+  public hasDupicates(): boolean {
+    // Do a level traversal of the tree and determine if we have any duplicates at a level
+    if (this.root) {
+      let currNodeIds: string[] = this.root.children;
+      while (currNodeIds.length) {
+        const currNodes: IKeytipTreeNode[] = this.getNodes(currNodeIds);
+        const currNodeSequences: string[] = currNodes.reduce((array: string[], currNode: IKeytipTreeNode): string[] => {
+          // Merge overflow sequence if necessary
+          let fullSequence = [...currNode.keySequences];
+          if (currNode.overflowSetSequence) {
+            fullSequence = mergeOverflows(fullSequence, currNode.overflowSetSequence);
+          }
+          // Add the string sequence if not already there
+          if (array.indexOf(fullSequence.toString()) < 0) {
+            array.push(fullSequence.toString());
+          }
+          return array;
+        }, []);
+
+        // If we don't have the same amount of sequences after reducing, we have a duplicate
+        if (currNodeSequences.length !== currNodes.length) {
+          return true;
+        }
+
+        // Set currNodeIds to new level of children
+        currNodeIds = currNodes.reduce((array: string[], currNode: IKeytipTreeNode): string[] => {
+          array.concat(currNode.children);
+          return array;
+        }, []);
+      }
+    }
+
+    return false;
+  }
+
   private _getParentID(fullSequence: string[]): string {
     return fullSequence.length === 0 ? this.root.id : sequencesToID(fullSequence);
   }
