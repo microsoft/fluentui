@@ -1,6 +1,13 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Mon, 10 Sep 2018 10:24:57 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Sep 2018 02:54:40 GMT and should not be manually modified.
+
+## 0.22.2
+Tue, 11 Sep 2018 02:54:40 GMT
+
+### Patches
+
+- handled the css issues for line chart
 
 ## 0.22.1
 Mon, 10 Sep 2018 10:24:57 GMT

@@ -1,6 +1,14 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Mon, 10 Sep 2018 10:24:57 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Sep 2018 02:54:40 GMT and should not be manually modified.
+
+## 0.19.2
+Tue, 11 Sep 2018 02:54:40 GMT
+
+### Patches
+
+- Line chart hover issue , css for x-axis text
+- Line chart css issues foxed
 
 ## 0.19.1
 Mon, 10 Sep 2018 10:24:57 GMT

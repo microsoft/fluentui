@@ -113,9 +113,7 @@ export class DonutChartBase extends React.Component<
     const widthVal = node.parentElement ? node.parentElement.clientWidth : this.state._width;
 
     const heightVal =
-      node.parentElement && node.parentElement.offsetHeight > this.state._height!
-        ? node.parentElement.offsetHeight
-        : this.state._height;
+      node.parentElement && node.parentElement.offsetHeight > this.state._height! ? node.parentElement.offsetHeight : this.state._height;
     const viewbox = `0 0 ${widthVal!} ${heightVal!}`;
     node.setAttribute('viewBox', viewbox);
   }
@@ -151,7 +149,7 @@ export class DonutChartBase extends React.Component<
         };
         return legend;
       });
-    const legends = <Legends legends={legendDataItems} />;
+    const legends = <Legends legends={legendDataItems} centerLegends />;
     return legends;
   }
 

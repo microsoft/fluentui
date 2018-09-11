@@ -364,6 +364,11 @@ exports[`Facepile renders Facepile correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 button& {
                   background-color: transparent;
                   background: none;

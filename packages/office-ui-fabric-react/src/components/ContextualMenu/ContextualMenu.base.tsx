@@ -104,6 +104,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   private _processingExpandCollapseKeyOnly: boolean;
   private _shouldUpdateFocusOnMouseEvent: boolean;
   private _gotMouseMove: boolean;
+  private _mounted = false;
 
   private _adjustedFocusZoneProps: IFocusZoneProps;
 
@@ -176,6 +177,8 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     if (!this.props.hidden) {
       this._onMenuOpened();
     }
+
+    this._mounted = true;
   }
 
   // Invoked immediately before a component is unmounted from the DOM.
@@ -196,6 +199,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
     this._events.dispose();
     this._async.dispose();
+    this._mounted = false;
   }
 
   public render(): JSX.Element | null {
@@ -1146,10 +1150,16 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     }
   }
 
+  /**
+   * This function is called ASYNCHRONOUSLY, and so there is a chance it is called
+   * after the component is unmounted. The _mounted property is added to prevent
+   * from calling setState() after unmount. Do NOT copy this pattern in synchronous
+   * code.
+   */
   private _onSubMenuDismiss = (ev?: any, dismissAll?: boolean): void => {
     if (dismissAll) {
       this.dismiss(ev, dismissAll);
-    } else {
+    } else if (this._mounted) {
       this.setState({
         dismissedMenuItemKey: this.state.expandedMenuItemKey,
         expandedMenuItemKey: undefined,
