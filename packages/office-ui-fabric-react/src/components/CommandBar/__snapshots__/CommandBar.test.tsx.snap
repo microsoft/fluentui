@@ -121,6 +121,11 @@ exports[`CommandBar renders commands correctly 1`] = `
                   right: 4px;
                   top: 4px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
                 }
@@ -248,6 +253,11 @@ exports[`CommandBar renders commands correctly 1`] = `
                   outline-color: ButtonText;
                   right: 4px;
                   top: 4px;
+                }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;

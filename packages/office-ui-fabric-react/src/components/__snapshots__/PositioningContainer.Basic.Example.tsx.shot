@@ -63,6 +63,11 @@ exports[`Component Examples renders PositioningContainer.Basic.Example.tsx corre
             right: -2px;
             top: -2px;
           }
+          &:active > * {
+            left: 0px;
+            position: relative;
+            top: 0px;
+          }
           &:hover {
             background-color: #eaeaea;
             color: #212121;
