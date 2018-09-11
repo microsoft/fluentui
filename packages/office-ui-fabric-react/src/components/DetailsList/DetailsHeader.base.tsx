@@ -66,8 +66,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
 
   constructor(props: IDetailsHeaderBaseProps) {
     super(props);
-    let columnReorderProps: IColumnReorderHeaderProps | undefined;
-    columnReorderProps =
+    const columnReorderProps: IColumnReorderHeaderProps | undefined =
       props.columnReorderProps || (props.columnReorderOptions && getLegacyColumnReorderProps(props.columnReorderOptions));
     this.state = {
       columnReorderProps,
@@ -138,9 +137,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
   }
 
   public componentWillReceiveProps(newProps: IDetailsHeaderBaseProps): void {
-    let columnReorderProps: IColumnReorderHeaderProps | undefined;
-
-    columnReorderProps =
+    const columnReorderProps: IColumnReorderHeaderProps | undefined =
       newProps.columnReorderProps || (newProps.columnReorderOptions && getLegacyColumnReorderProps(newProps.columnReorderOptions));
 
     const { groupNestingDepth } = this.state;
