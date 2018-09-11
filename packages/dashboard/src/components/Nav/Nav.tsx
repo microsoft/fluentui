@@ -72,7 +72,7 @@ class NavComponent extends NavBase {
     ev.stopPropagation();
   }
 
-  private _renderCompositeLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> | null {
+  private _renderCompositeLink(link: INavLink, keyIndex: string, nestingLevel: number): React.ReactElement<{}> | null {
     if (!link) {
       return null;
     }
@@ -104,13 +104,13 @@ class NavComponent extends NavBase {
 
     return (
       <NavLink
-        id={link.key}
+        id={keyIndex}
         content={linkText}
         href={link.url}
         target={link.target}
         onClick={onClickHandler}
         dataHint={dataHint}
-        dataValue={link.key}
+        dataValue={keyIndex}
         ariaLabel={linkText}
         {...ariaProps}
         level={nestingLevel}
@@ -122,27 +122,32 @@ class NavComponent extends NavBase {
     );
   }
 
-  private _renderLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> | null {
+  private _renderLink(link: INavLink, linkIndex: number, nestingLevel: number, groupIndex: number): React.ReactElement<{}> | null {
     if (!link) {
       return null;
     }
 
     const linkText = this.getLinkText(link, this.props.showMore);
 
+    // Build a unique key and keep it from collapsing by stringifying it, ex: 001 should be 001, not 1
+    let keyIndex = groupIndex.toString() + nestingLevel.toString() + linkIndex.toString();
+
     return (
-      <li role="listitem" key={link.key || linkIndex} title={linkText}>
-        {this._renderCompositeLink(link, linkIndex, nestingLevel)}
+      <li role="listitem" key={keyIndex} title={linkText}>
+        {this._renderCompositeLink(link, keyIndex, nestingLevel)}
         {// show child links
         // 1. only for the first level and
         // 2. if the link is expanded
         nestingLevel == 0 && link.isExpanded ? (
-          <div className={AnimationClassNames.slideDownIn20}>{this._renderLinks(link.links as INavLink[], ++nestingLevel)}</div>
+          <ul role="list" key={nestingLevel.toString() + keyIndex} className={AnimationClassNames.slideDownIn20}>
+            {this._renderLinks(link.links as INavLink[], ++nestingLevel, linkIndex)}
+          </ul>
         ) : null}
       </li>
     );
   }
 
-  private _renderLinks(links: INavLink[], nestingLevel: number): React.ReactElement<{}> | null {
+  private _renderLinks(links: INavLink[], nestingLevel: number, groupIndex: number): React.ReactElement<{}> | null {
     if (!links || links.length === 0) {
       return null;
     }
@@ -150,7 +155,7 @@ class NavComponent extends NavBase {
     const { enableCustomization, showMore } = this.props;
 
     return (
-      <ul role="list">
+      <>
         {links.map((link: INavLink, linkIndex: number) => {
           if (enableCustomization && link.isHidden && !showMore) {
             // atleast one link is hidden
@@ -162,10 +167,10 @@ class NavComponent extends NavBase {
             // there is no hidden link, hide "Show more" link
             return null;
           } else {
-            return this._renderLink(link, linkIndex, nestingLevel);
+            return this._renderLink(link, linkIndex, nestingLevel, groupIndex);
           }
         })}
-      </ul>
+      </>
     );
   }
 
@@ -192,16 +197,15 @@ class NavComponent extends NavBase {
     }
 
     return (
-      <div key={groupIndex}>
+      <ul role="list" key={groupIndex.toString()}>
         {isGroupHeaderVisible ? (
-          <div className={classNames.navGroupSeparatorRoot}>
-            <div className={classNames.navGroupSeparatorHrLine}>
-              {group.name ? <span className={classNames.navGroupSeparatorHeaderGroupName}>{group.name}</span> : null}
-            </div>
-          </div>
+          <>
+            <li className={classNames.navGroupDivider} />
+            {group.name ? <li className={classNames.navGroupTitle}>{group.name}</li> : null}
+          </>
         ) : null}
-        {this._renderLinks(group.links, 0 /* nestingLevel */)}
-      </div>
+        {this._renderLinks(group.links, 0 /* nestingLevel */, groupIndex)}
+      </ul>
     );
   }
 }

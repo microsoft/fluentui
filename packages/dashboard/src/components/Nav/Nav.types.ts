@@ -214,17 +214,12 @@ export interface INavStyles {
   /**
    * Style set for the nav group separator
    */
-  navGroupSeparatorRoot: IStyle;
-
-  /**
-   * Style set for the horizontal line in nav group separator
-   */
-  navGroupSeparatorHrLine: IStyle;
+  navGroupDivider: IStyle;
 
   /**
    * Style set for the group name in nav group separator
    */
-  navGroupSeparatorHeaderGroupName: IStyle;
+  navGroupTitle: IStyle;
 
   /**
    * Style for navLink icons

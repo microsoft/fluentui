@@ -24,15 +24,15 @@ const navChildItemHeight = 32;
 const navBackgroundColor = '#E5E5E5';
 const floatingNavBackgroundColor = 'rgba(255,255,255,1)';
 const navItemHoverColor = '#CCCCCC';
-const navGroupSeparatorItemHeight = 40;
-const navGroupSeparatorWithGroupNameHeight = 70;
+const navDividerHeight = 21;
+const navDividerColor = 'rgba(0,0,0,.2)';
 const navItemWithChildBgColor = '#CCCCCC';
 const navItemSelectedColor = '#B7B7B7';
 const navFloatingItemIndentSize = 20;
 const BackDropSelector = '@supports (backdrop-filter: blur(20px)) or (-webkit-backdrop-filter: blur(20px))';
 
 export const getStyles = (props: INavStyleProps): INavStyles => {
-  const { isSelected, hasChildren, nestingLevel, isCollapsed, scrollTop, isChildLinkSelected, hasGroupName } = props;
+  const { isSelected, hasChildren, nestingLevel, isCollapsed, scrollTop, isChildLinkSelected } = props;
 
   return {
     root: {
@@ -165,22 +165,28 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         }
       }
     },
-    navGroupSeparatorRoot: {
-      width: '100%',
-      height: hasGroupName ? navGroupSeparatorWithGroupNameHeight : navGroupSeparatorItemHeight,
-      textAlign: 'center'
-    },
-    navGroupSeparatorHrLine: {
+    navGroupDivider: {
+      display: 'block',
       position: 'relative',
-      height: '20px',
-      borderBottom: `1px solid ${navItemWithChildBgColor}`
+      height: navDividerHeight,
+      textAlign: 'center',
+      selectors: {
+        '::after': {
+          content: '" "',
+          width: 'calc(100% - 32px)',
+          position: 'absolute',
+          height: '1px',
+          top: 10,
+          left: '16px',
+          backgroundColor: navDividerColor
+        }
+      }
     },
-    navGroupSeparatorHeaderGroupName: {
-      position: 'absolute',
-      marginTop: '40px',
-      left: '16px',
+    navGroupTitle: {
+      lineHeight: navItemHeight,
       color: DefaultPalette.black,
-      fontWeight: FontWeights.bold
+      fontWeight: FontWeights.bold,
+      marginLeft: '16px'
     }
   };
 };

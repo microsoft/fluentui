@@ -307,15 +307,14 @@ class SlimNavComponent extends NavBase {
     }
 
     return (
-      <div key={groupIndex}>
-        {// do not render group header for the first group
-        isGroupHeaderVisible ? (
-          <div className={classNames.navGroupSeparatorRoot}>
-            <div className={classNames.navGroupSeparatorHrLine} />
-          </div>
+      <>
+        {isGroupHeaderVisible ? (
+          <>
+            <div className={classNames.navGroupDivider} />
+          </>
         ) : null}
         {this._renderLinks(group.links, 0 /* nestingLevel */)}
-      </div>
+      </>
     );
   }
 }
