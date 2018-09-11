@@ -2,6 +2,40 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.67.2",
+      "tag": "office-ui-fabric-react_v6.67.2",
+      "date": "Tue, 11 Sep 2018 07:28:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Arko Gupta <arkogupta16@gmail.com>",
+            "commit": "e18e029ae60f175f255adbf368840e8b73207611",
+            "comment": "removed the check for event to be an instanceof DragEvent in the onDrop method"
+          },
+          {
+            "author": "VincentBailly <vincentbaill@gmail.com>",
+            "commit": "80588b009dff66a6baaa318fbf30785869b6c781",
+            "comment": "Make button respect no global class names flag"
+          },
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "da2800a20412ba52ec853cbb1d7dcd89c283f92e",
+            "comment": "update datepicker to allow IE to work with input field while retaining the accessibility"
+          },
+          {
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "02fe2d451644d3857404e6e549e48e0d0609fb72",
+            "comment": "Revert removal of should render DatePicker guard given focus changes with Layer changes."
+          },
+          {
+            "author": "mslonli <lonli@microsoft.com>",
+            "commit": "97d87384fba04a0c279a6bd910f43fb72a88ab0e",
+            "comment": "Fixed_groupheader_checkbox_aria_label_accessibility_issue"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.67.1",
       "tag": "office-ui-fabric-react_v6.67.1",
       "date": "Tue, 11 Sep 2018 02:54:40 GMT",

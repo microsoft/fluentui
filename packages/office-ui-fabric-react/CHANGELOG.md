@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 11 Sep 2018 02:54:40 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Sep 2018 07:28:02 GMT and should not be manually modified.
+
+## 6.67.2
+Tue, 11 Sep 2018 07:28:02 GMT
+
+### Patches
+
+- removed the check for event to be an instanceof DragEvent in the onDrop method
+- Make button respect no global class names flag
+- update datepicker to allow IE to work with input field while retaining the accessibility
+- Revert removal of should render DatePicker guard given focus changes with Layer changes.
+- Fixed_groupheader_checkbox_aria_label_accessibility_issue
 
 ## 6.67.1
 Tue, 11 Sep 2018 02:54:40 GMT
