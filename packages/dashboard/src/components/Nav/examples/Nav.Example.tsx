@@ -28,18 +28,18 @@ export class NavExample extends React.Component<{}, {}> {
             isExpanded: true,
             icon: 'Contact',
             links: [
-              { name: 'Active users', url: 'http://msn.com', key: 'key3' },
+              { name: 'Active users', url: 'http://msn.com', isSelected: true },
               {
                 name: 'Contacts - test with long name to show ellipse',
                 url: 'http://msn.com',
                 target: '_blank'
               },
-              { name: 'Guest users', url: 'http://msn.com' },
-              { name: 'Deleted users', url: 'http://msn.com' }
+              { name: 'Guest users', url: '#/examples/nav' },
+              { name: 'Deleted users', url: '#/examples/nav' }
             ]
           },
-          { name: 'Groups', url: 'http://example.com', icon: 'Group', isHidden: true },
-          { name: 'Resources', url: 'http://msn.com', target: '_blank', icon: 'Devices4' },
+          { name: 'Groups', url: '#/examples/nav', icon: 'Group', isHidden: true },
+          { name: 'Resources', url: '#/examples/nav', target: '_blank', icon: 'Devices4' },
           {
             name: 'Billing - test with long name to show ellipse',
             url: 'http://msn.com',

@@ -2,7 +2,6 @@
 import * as React from 'react';
 import { Nav } from './Nav';
 import { ICustomNavLinkGroup, INavProps, INavState, INavStyleProps, INavStyles, NavGroupType } from './Nav.types';
-import { SlimNav } from './SlimNav';
 import { getStyles } from './Nav.styles';
 import { styled, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { NavLink } from './NavLink';
@@ -44,29 +43,17 @@ class NavTogglerComponent extends React.Component<INavProps, INavState> {
       <div className={classNames.root}>
         <FocusZone direction={FocusZoneDirection.vertical}>
           {this._renderExpandCollapseNavItem(toggleNavGroups)}
-          {isNavCollapsed ? (
-            <SlimNav
-              groups={nonToggleNavGroups}
-              selectedKey={this.props.selectedKey}
-              navScrollerId={this.props.navScrollerId}
-              dataHint={this.props.dataHint}
-              enableCustomization={this.props.enableCustomization}
-              showMore={showMore}
-              onShowMoreLinkClicked={this._onShowMoreLinkClicked}
-              onEditLeftNavClickedCallback={this.props.onEditLeftNavClickedCallback}
-            />
-          ) : (
-            <Nav
-              groups={nonToggleNavGroups}
-              selectedKey={this.props.selectedKey}
-              dataHint={this.props.dataHint}
-              enableCustomization={this.props.enableCustomization}
-              showMore={showMore}
-              onShowMoreLinkClicked={this._onShowMoreLinkClicked}
-              onNavNodeExpandedCallback={this.props.onNavNodeExpandedCallback}
-              onEditLeftNavClickedCallback={this.props.onEditLeftNavClickedCallback}
-            />
-          )}
+          <Nav
+            groups={nonToggleNavGroups}
+            isSelected={this.props.isSelected}
+            isNavCollapsed={isNavCollapsed}
+            dataHint={this.props.dataHint}
+            enableCustomization={this.props.enableCustomization}
+            showMore={showMore}
+            onShowMoreLinkClicked={this._onShowMoreLinkClicked}
+            onNavNodeExpandedCallback={this.props.onNavNodeExpandedCallback}
+            onEditLeftNavClickedCallback={this.props.onEditLeftNavClickedCallback}
+          />
         </FocusZone>
       </div>
     );
@@ -115,6 +102,7 @@ class NavTogglerComponent extends React.Component<INavProps, INavState> {
         primaryIconName={link.icon}
         barClassName={classNames.navItemBarMarker}
         role="menu"
+        isSelected={this.props.isSelected}
       />
     );
   }

@@ -92,12 +92,22 @@ class NavComponent extends NavBase {
       secondaryIconName = 'OpenInNewWindow';
     }
 
+    const hasChildren = !!link.links && link.links.length > 0;
+
+    let isSelected = undefined;
+    if (hasChildren) {
+      if (link.isExpanded) {
+        isSelected = false;
+      } else if (!link.isExpanded && this.isChildLinkSelected(link)) {
+        console.log(link);
+        isSelected = true;
+      }
+    } else {
+      isSelected = link.isSelected;
+    }
+
     // show nav icon for the first level only
     const primaryIconName = nestingLevel === 0 ? link.icon : undefined;
-    const isLinkSelected = this.isLinkSelected(link, false /* includeChildren */);
-    const isChildLinkSelected = this.isChildLinkSelected(link);
-    const hasChildren = !!link.links && link.links.length > 0;
-    const isSelected = (isLinkSelected && !hasChildren) || (isChildLinkSelected && !link.isExpanded);
     const { showMore, onShowMoreLinkClicked, dataHint } = this.props;
     const linkText = this.getLinkText(link, showMore);
     const onClickHandler = link.isShowMoreLink && onShowMoreLinkClicked ? onShowMoreLinkClicked : this._onLinkClicked.bind(this, link);
@@ -114,7 +124,7 @@ class NavComponent extends NavBase {
         ariaLabel={linkText}
         {...ariaProps}
         level={nestingLevel}
-        selected={isSelected}
+        isSelected={isSelected}
         role="menu"
         primaryIconName={primaryIconName}
         secondaryIconName={secondaryIconName}

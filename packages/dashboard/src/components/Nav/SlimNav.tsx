@@ -223,8 +223,8 @@ class SlimNavComponent extends NavBase {
       return null;
     }
 
-    const isSelected = this.isLinkSelected(link, true /* includeChildren */);
     const hasChildren = !!link.links && link.links.length > 0;
+    const isSelected = this.isLinkSelected(link, true /* includeChildren */);
     const { styles, showMore, onShowMoreLinkClicked, dataHint } = this.props;
     const classNames = getClassNames(styles!, { isSelected, hasChildren });
     const linkText = this.getLinkText(link, showMore);
@@ -252,6 +252,7 @@ class SlimNavComponent extends NavBase {
           rootClassName={classNames.navItemRoot}
           primaryIconName={link.icon}
           barClassName={classNames.navItemBarMarker}
+          isSelected={this.props.isSelected}
         />
         {this._renderFloatingNav(link, linkIndex)}
       </li>

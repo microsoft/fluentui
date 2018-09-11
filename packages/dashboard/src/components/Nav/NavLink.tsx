@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import { INavStyles, INavLinkProps, INavStyleProps } from './Nav.types';
+import { INavStyles, INavLinkProps, INavStyleProps, INavLinkStates } from './Nav.types';
 import { getStyles } from './Nav.styles';
 import { IStyle, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
@@ -11,7 +11,7 @@ import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
 
-class NavigationLink extends React.Component<INavLinkProps, {}> {
+class NavigationLink extends React.Component<INavLinkProps, INavLinkStates> {
   private classNames = getClassNames(getStyles);
   constructor(props: INavLinkProps) {
     super(props);
@@ -39,14 +39,14 @@ class NavigationLink extends React.Component<INavLinkProps, {}> {
   }
 
   private _generateActiveBar(): React.ReactElement<{}> | null {
-    if (!!this.props.selected && this.props.selected) {
+    if (this.props.isSelected) {
       return (
         <div
           className={!!this.props.level && this.props.level > 0 ? this.classNames.NavItemBarMarkerSmall : this.classNames.navItemBarMarker}
         />
       );
     } else {
-      return <div className={mergeStyles(this.classNames.navItemBarMarker, this.classNames.hidden)} />;
+      return null;
     }
   }
 

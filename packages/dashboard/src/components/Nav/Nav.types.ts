@@ -25,6 +25,7 @@ export interface INavProps {
    * (Optional) The key of the nav item selected by caller.
    */
   selectedKey?: string;
+  isSelected?: boolean;
 
   /**
    * (Optional) Used to toggle the nav component between expanded and collapsed state
@@ -88,6 +89,7 @@ export interface INavState extends INavState {
    * Used to toggle the nav component between expanded and collapsed state.
    */
   isNavCollapsed?: boolean;
+  isSelected?: boolean;
 
   /**
    * Used to override isHidden property of the Nav link when the "Show More" link is clicked
@@ -279,5 +281,9 @@ export interface INavLinkProps extends React.AllHTMLAttributes<HTMLAnchorElement
   barClassName?: string;
 
   level?: number;
-  selected?: boolean;
+  isSelected?: boolean;
+}
+
+export interface INavLinkStates {
+  isSelected?: boolean;
 }
