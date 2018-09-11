@@ -17,6 +17,7 @@ import {
   IVerticalStackStyles
 } from '@uifabric/experiments/lib/Stack';
 import { Text } from '@uifabric/experiments/lib/Text';
+// tslint:disable-next-line:max-line-length
 import { CollapsibleSectionRecursiveExample } from '@uifabric/experiments/lib/components/CollapsibleSection/examples/CollapsibleSection.Recursive.Example';
 import { IThemedProps } from '../../Foundation';
 import {
