@@ -13,7 +13,13 @@ export const styles = (props: IThemedProps<IStackItemProps>): IStackItemStyles =
     root: [
       'ms-StackItem',
       grow && { flexGrow: grow === true ? 1 : grow },
-      (preventShrink || (!grow && !shrink)) && { flexShrink: '0 !important' },
+      (preventShrink || (!grow && !shrink)) && {
+        flexShrink: '0 !important'
+      },
+      shrink &&
+        !preventShrink && {
+          flexShrink: '1 !important'
+        },
       align && {
         alignSelf: alignMap[align] || align
       },
