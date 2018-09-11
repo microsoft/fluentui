@@ -215,7 +215,9 @@ exports[`HorizontalStack renders shrinking items correctly 1`] = `
   <span
     className=
         ms-StackItem
-
+        {
+          flex-shrink: 1 !important;
+        }
   >
     Item 1
   </span>
