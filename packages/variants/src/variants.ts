@@ -114,7 +114,14 @@ export function getNeutralVariant(theme: IPartialTheme): ITheme {
     primaryButtonBorder: 'transparent',
     primaryButtonText: p.white,
     primaryButtonTextHovered: p.white,
-    primaryButtonTextPressed: p.white
+    primaryButtonTextPressed: p.white,
+
+    menuBackground: p.white,
+    menuDivider: p.neutralTertiaryAlt,
+    menuItemBackgroundHovered: p.neutralLighter,
+    menuItemBackgroundPressed: p.neutralLight,
+    menuItemText: p.neutralPrimary,
+    menuItemTextHovered: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary
   };
 
   return makeThemeFromPartials(fullTheme, partialPalette, partialSemantic);
@@ -205,7 +212,14 @@ export function getSoftVariant(theme: IPartialTheme): ITheme {
     primaryButtonBorder: 'transparent',
     primaryButtonText: p.white,
     primaryButtonTextHovered: p.white,
-    primaryButtonTextPressed: p.white
+    primaryButtonTextPressed: p.white,
+
+    menuBackground: p.white,
+    menuDivider: p.neutralTertiaryAlt,
+    menuItemBackgroundHovered: p.neutralLighter,
+    menuItemBackgroundPressed: p.neutralLight,
+    menuItemText: p.neutralPrimary,
+    menuItemTextHovered: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary
   };
 
   return makeThemeFromPartials(fullTheme, partialPalette, partialSemantic);
@@ -301,7 +315,14 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
     primaryButtonBorder: 'transparent',
     primaryButtonText: !fullTheme.isInverted ? p.themePrimary : p.neutralPrimary,
     primaryButtonTextHovered: !fullTheme.isInverted ? p.themeDark : p.neutralPrimary,
-    primaryButtonTextPressed: !fullTheme.isInverted ? p.themeDark : p.neutralPrimary
+    primaryButtonTextPressed: !fullTheme.isInverted ? p.themeDark : p.neutralPrimary,
+
+    menuBackground: p.white,
+    menuDivider: p.neutralTertiaryAlt,
+    menuItemBackgroundHovered: p.neutralLighter,
+    menuItemBackgroundPressed: p.neutralLight,
+    menuItemText: p.neutralPrimary,
+    menuItemTextHovered: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary
   };
 
   // Strong variant is unique here, we've redefined the entire palette and are
