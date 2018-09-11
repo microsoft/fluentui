@@ -100,7 +100,7 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
   openHotKey?: KeyCodes;
 
   /**
-   * Additional CSS class(es) to apply to the Shimmer container.
+   * Additional CSS class(es) to apply to the HoverCard root element.
    */
   className?: string;
 
@@ -117,7 +117,7 @@ export interface IHoverCardStyleProps {
   theme: ITheme;
 
   /**
-   * Accept custom classNames
+   * Optional className(s) for the host div of HoverCard.
    */
   className?: string;
 }

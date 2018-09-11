@@ -1,19 +1,18 @@
 import * as React from 'react';
-import { BaseComponent, getNativeProps, divProperties, customizable, KeyCodes, createRef } from '../../Utilities';
-import { IExpandingCardProps, IExpandingCardStyles, ExpandingCardMode } from './ExpandingCard.types';
+import { BaseComponent, getNativeProps, divProperties, KeyCodes, createRef, classNamesFunction } from '../../Utilities';
+import { IExpandingCardProps, IExpandingCardStyles, ExpandingCardMode, IExpandingCardStyleProps } from './ExpandingCard.types';
 import { Callout, ICallout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { mergeStyles } from '../../Styling';
 import { FocusTrapZone } from '../../FocusTrapZone';
-import { getStyles } from './ExpandingCard.styles';
+
+const getClassNames = classNamesFunction<IExpandingCardStyleProps, IExpandingCardStyles>();
 
 export interface IExpandingCardState {
   firstFrameRendered: boolean;
   needsScroll: boolean;
 }
 
-@customizable('ExpandingCard', ['theme', 'styles'], true)
-export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpandingCardState> {
+export class ExpandingCardBase extends BaseComponent<IExpandingCardProps, IExpandingCardState> {
   public static defaultProps = {
     compactCardHeight: 156,
     expandedCardHeight: 384,
@@ -22,7 +21,7 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
     gapSpace: 0
   };
 
-  private _styles: IExpandingCardStyles;
+  private _classNames: { [key in keyof IExpandingCardStyles]: string };
   // tslint:disable-next-line:no-unused-variable
   private _callout = createRef<ICallout>();
   private _expandedElem = createRef<HTMLDivElement>();
@@ -52,12 +51,24 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
       compactCardHeight,
       directionalHintFixed,
       firstFocus,
-      expandedCardHeight
+      expandedCardHeight,
+      className,
+      mode
     } = this.props;
-    this._styles = getStyles(theme!, customStyles);
+
+    const { firstFrameRendered, needsScroll } = this.state;
+
+    this._classNames = getClassNames(customStyles!, {
+      theme: theme!,
+      className,
+      compactCardHeight,
+      expandedCardHeight,
+      needsScroll: needsScroll,
+      expandedCardFirstFrameRendered: mode === ExpandingCardMode.expanded && firstFrameRendered
+    });
 
     const content = (
-      <div onMouseEnter={this.props.onEnter} onMouseLeave={this.props.onLeave} onKeyDown={this._onKeyDown}>
+      <div onMouseEnter={this.props.onEnter} onMouseLeave={this.props.onLeave} onKeyDown={this._onKeyDown} className={className}>
         {this._onRenderCompactCard()}
         {this._onRenderExpandedCard()}
       </div>
@@ -67,7 +78,7 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
       <Callout
         {...getNativeProps(this.props, divProperties)}
         componentRef={this._callout}
-        className={mergeStyles(this._styles.root)}
+        className={this._classNames.root}
         target={targetElement}
         isBeakVisible={false}
         directionalHint={this.props.directionalHint}
@@ -78,11 +89,7 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
         gapSpace={this.props.gapSpace}
       >
         {this.props.trapFocus ? (
-          <FocusTrapZone
-            forceFocusInsideTrap={false}
-            isClickableOutsideFocusTrap={true}
-            disableFirstFocus={!firstFocus}
-          >
+          <FocusTrapZone forceFocusInsideTrap={false} isClickableOutsideFocusTrap={true} disableFirstFocus={!firstFocus}>
             {content}
           </FocusTrapZone>
         ) : (
@@ -99,11 +106,7 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
   };
 
   private _onRenderCompactCard = (): JSX.Element => {
-    return (
-      <div className={mergeStyles(this._styles.compactCard, { height: this.props.compactCardHeight + 'px' }) as string}>
-        {this.props.onRenderCompactCard!(this.props.renderData)}
-      </div>
-    );
+    return <div className={this._classNames.compactCard}>{this.props.onRenderCompactCard!(this.props.renderData)}</div>;
   };
 
   private _onRenderExpandedCard = (): JSX.Element => {
@@ -117,15 +120,8 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
       });
 
     return (
-      <div
-        className={mergeStyles(
-          this._styles.expandedCard,
-          this.props.mode === ExpandingCardMode.expanded &&
-            this.state.firstFrameRendered && { height: this.props.expandedCardHeight + 'px' }
-        )}
-        ref={this._expandedElem}
-      >
-        <div className={mergeStyles(this.state.needsScroll && this._styles.expandedCardScroll)}>
+      <div className={this._classNames.expandedCard} ref={this._expandedElem}>
+        <div className={this._classNames.expandedCardScroll}>
           {this.props.onRenderExpandedCard && this.props.onRenderExpandedCard(this.props.renderData)}
         </div>
       </div>

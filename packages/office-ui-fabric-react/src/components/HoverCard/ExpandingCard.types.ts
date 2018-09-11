@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ExpandingCard } from './ExpandingCard';
-import { IRefObject, IRenderFunction } from '../../Utilities';
+
+import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IStyle, ITheme } from '../../Styling';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
@@ -9,7 +9,7 @@ export interface IExpandingCard {}
 /**
  * ExpandingCard component props.
  */
-export interface IExpandingCardProps extends React.HTMLAttributes<HTMLDivElement | ExpandingCard> {
+export interface IExpandingCardProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the IExpandingCard interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -84,7 +84,7 @@ export interface IExpandingCardProps extends React.HTMLAttributes<HTMLDivElement
   /**
    * Custom styles for this component
    */
-  styles?: IExpandingCardStyles;
+  styles?: IStyleFunctionOrObject<IExpandingCardStyleProps, IExpandingCardStyles>;
 
   /**
    * Make callout content show on the set side
@@ -101,6 +101,11 @@ export interface IExpandingCardProps extends React.HTMLAttributes<HTMLDivElement
    * Focus on first element by default on card or not
    */
   firstFocus?: boolean;
+
+  /**
+   * Additional CSS class(es) to apply to the ExpandingCard content wrapper div.
+   */
+  className?: string;
 }
 
 export enum ExpandingCardMode {
@@ -125,6 +130,23 @@ export enum OpenCardMode {
    * Open card by hot key
    */
   hotKey = 1
+}
+
+export interface IExpandingCardStyleProps {
+  /**
+   * Theme provided by High-Order Component.
+   */
+  theme: ITheme;
+
+  /**
+   * Optional className(s) for ExpandingCard content wrapper div.
+   */
+  className?: string;
+
+  needsScroll?: boolean;
+  expandedCardFirstFrameRendered?: boolean;
+  compactCardHeight?: number;
+  expandedCardHeight?: number;
 }
 
 export interface IExpandingCardStyles {
