@@ -34,6 +34,7 @@ export interface IDetailsHeader {
 }
 
 export interface IDetailsHeaderState {
+  columnReorderProps?: IColumnReorderHeaderProps;
   columnResizeDetails?: IColumnResizeDetails;
   isAllSelected?: boolean;
   isSizing?: boolean;
@@ -64,7 +65,9 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
   };
 
   public static getDerivedStateFromProps(nextProps: IDetailsHeaderBaseProps): any {
-    const columnReorderProps =
+    let columnReorderProps: IColumnReorderHeaderProps | undefined;
+
+    columnReorderProps =
       nextProps.columnReorderProps || (nextProps.columnReorderOptions && getLegacyColumnReorderProps(nextProps.columnReorderOptions));
 
     return {
@@ -74,7 +77,8 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
 
   constructor(props: IDetailsHeaderBaseProps) {
     super(props);
-    const columnReorderProps =
+    let columnReorderProps: IColumnReorderHeaderProps | undefined;
+    columnReorderProps =
       props.columnReorderProps || (props.columnReorderOptions && getLegacyColumnReorderProps(props.columnReorderOptions));
     this.state = {
       columnReorderProps,
