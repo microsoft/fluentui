@@ -4,8 +4,8 @@ import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet
 import { VerticalStackBasicExample } from './examples/VerticalStack.Basic.Example';
 const VerticalStackBasicExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Stack/VerticalStack/examples/VerticalStack.Basic.Example.tsx') as string;
 
-import { VerticalStackGapExample } from './examples/VerticalStack.Gap.Example';
-const VerticalStackGapExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Stack/VerticalStack/examples/VerticalStack.Gap.Example.tsx') as string;
+import { VerticalStackSpacingExample } from './examples/VerticalStack.Spacing.Example';
+const VerticalStackSpacingExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Stack/VerticalStack/examples/VerticalStack.Spacing.Example.tsx') as string;
 
 import { VerticalStackGrowExample } from './examples/VerticalStack.Grow.Example';
 const VerticalStackGrowExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Stack/VerticalStack/examples/VerticalStack.Grow.Example.tsx') as string;
@@ -33,8 +33,8 @@ export class VerticalStackPage extends React.Component<IComponentDemoPageProps, 
             <ExampleCard title="Basic Vertical Stack" code={VerticalStackBasicExampleCode}>
               <VerticalStackBasicExample />
             </ExampleCard>
-            <ExampleCard title="Gap Sizes" code={VerticalStackGapExampleCode}>
-              <VerticalStackGapExample />
+            <ExampleCard title="Gap and Padding Sizes" code={VerticalStackSpacingExampleCode}>
+              <VerticalStackSpacingExample />
             </ExampleCard>
             <ExampleCard title="Growing Items" code={VerticalStackGrowExampleCode}>
               <VerticalStackGrowExample />

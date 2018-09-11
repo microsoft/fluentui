@@ -4,7 +4,7 @@ import { Text } from '@uifabric/experiments/lib/Text';
 import { mergeStyleSets } from 'office-ui-fabric-react';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
-export class VerticalStackGapExample extends React.Component<{}, {}> {
+export class VerticalStackSpacingExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     const styles = mergeStyleSets({
       root: {
@@ -26,8 +26,8 @@ export class VerticalStackGapExample extends React.Component<{}, {}> {
       <VerticalStack gap={10}>
         <HorizontalStack gap={50}>
           <VerticalStack>
-            <Text>Numerical gap</Text>
-            <VerticalStack className={styles.root} gap={10}>
+            <Text>Numerical spacing</Text>
+            <VerticalStack className={styles.root} gap={10} padding={10}>
               <Text className={styles.item}>1</Text>
               <Text className={styles.item}>2</Text>
               <Text className={styles.item}>3</Text>
@@ -35,8 +35,8 @@ export class VerticalStackGapExample extends React.Component<{}, {}> {
           </VerticalStack>
 
           <VerticalStack>
-            <Text>Custom string gap</Text>
-            <VerticalStack className={styles.root} gap="5vh">
+            <Text>Custom spacing</Text>
+            <VerticalStack className={styles.root} gap="2vh" padding="m 40px">
               <Text className={styles.item}>1</Text>
               <Text className={styles.item}>2</Text>
               <Text className={styles.item}>3</Text>
@@ -46,8 +46,8 @@ export class VerticalStackGapExample extends React.Component<{}, {}> {
 
         <HorizontalStack horizontalAlign="space-between">
           <VerticalStack>
-            <Text>Themed gap (extra small)</Text>
-            <VerticalStack className={styles.root} gap="s2">
+            <Text>Themed spacing (extra small)</Text>
+            <VerticalStack className={styles.root} gap="s2" padding="s2">
               <Text className={styles.item}>1</Text>
               <Text className={styles.item}>2</Text>
               <Text className={styles.item}>3</Text>
@@ -55,8 +55,8 @@ export class VerticalStackGapExample extends React.Component<{}, {}> {
           </VerticalStack>
 
           <VerticalStack>
-            <Text>Themed gap (small)</Text>
-            <VerticalStack className={styles.root} gap="s1">
+            <Text>Themed spacing (small)</Text>
+            <VerticalStack className={styles.root} gap="s1" padding="s2">
               <Text className={styles.item}>1</Text>
               <Text className={styles.item}>2</Text>
               <Text className={styles.item}>3</Text>
@@ -64,8 +64,8 @@ export class VerticalStackGapExample extends React.Component<{}, {}> {
           </VerticalStack>
 
           <VerticalStack>
-            <Text>Themed gap (medium)</Text>
-            <VerticalStack className={styles.root} gap="m">
+            <Text>Themed spacing (medium)</Text>
+            <VerticalStack className={styles.root} gap="m" padding="m">
               <Text className={styles.item}>1</Text>
               <Text className={styles.item}>2</Text>
               <Text className={styles.item}>3</Text>
@@ -73,8 +73,8 @@ export class VerticalStackGapExample extends React.Component<{}, {}> {
           </VerticalStack>
 
           <VerticalStack>
-            <Text>Themed gap (large)</Text>
-            <VerticalStack className={styles.root} gap="l1">
+            <Text>Themed spacing (large)</Text>
+            <VerticalStack className={styles.root} gap="l1" padding="l1">
               <Text className={styles.item}>1</Text>
               <Text className={styles.item}>2</Text>
               <Text className={styles.item}>3</Text>
@@ -82,8 +82,8 @@ export class VerticalStackGapExample extends React.Component<{}, {}> {
           </VerticalStack>
 
           <VerticalStack>
-            <Text>Themed gap (extra large)</Text>
-            <VerticalStack className={styles.root} gap="l2">
+            <Text>Themed spacing (extra large)</Text>
+            <VerticalStack className={styles.root} gap="l2" padding="l2">
               <Text className={styles.item}>1</Text>
               <Text className={styles.item}>2</Text>
               <Text className={styles.item}>3</Text>
