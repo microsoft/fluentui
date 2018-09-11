@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 07 Sep 2018 01:32:10 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Sep 2018 11:25:00 GMT and should not be manually modified.
+
+## 5.124.0
+Tue, 11 Sep 2018 11:25:00 GMT
+
+### Minor changes
+
+- adding viewport to IDetailsFooterProps
 
 ## 5.123.0
 Fri, 07 Sep 2018 01:32:10 GMT
