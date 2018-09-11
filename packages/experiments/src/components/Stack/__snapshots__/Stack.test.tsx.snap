@@ -12,16 +12,22 @@ exports[`Stack accepts custom className on child items 1`] = `
         height: auto;
         width: auto;
       }
+      & > * {
+        flex-shrink: 0;
+        margin-bottom: 0px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      & > *:last-child {
+        margin-bottom: 0px;
+      }
 >
   <span
     className=
-
+        ms-StackItem
         {
           background: red;
-          flex-shrink: 0;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
+          flex-shrink: 0 !important;
         }
   >
     Item 1
@@ -31,10 +37,6 @@ exports[`Stack accepts custom className on child items 1`] = `
 
         {
           background: red;
-          flex-shrink: 0;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
         }
   >
     Item 2
@@ -54,27 +56,30 @@ exports[`Stack renders Stack with StackItems correctly 1`] = `
         height: auto;
         width: auto;
       }
+      & > * {
+        flex-shrink: 0;
+        margin-bottom: 0px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      & > *:last-child {
+        margin-bottom: 0px;
+      }
 >
   <span
     className=
-
+        ms-StackItem
         {
-          flex-shrink: 0;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
+          flex-shrink: 0 !important;
         }
   >
     Item 1
   </span>
   <span
     className=
-
+        ms-StackItem
         {
-          flex-shrink: 0;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
+          flex-shrink: 0 !important;
         }
   >
     Item 2
@@ -94,28 +99,30 @@ exports[`Stack renders Stack with a gap correctly 1`] = `
         height: auto;
         width: auto;
       }
+      & > * {
+        flex-shrink: 0;
+        margin-bottom: 0px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      & > *:last-child {
+        margin-bottom: 0px;
+      }
 >
   <span
     className=
-
+        ms-StackItem
         {
-          flex-shrink: 0;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
+          flex-shrink: 0 !important;
         }
   >
     Item 1
   </span>
   <span
     className=
-
+        ms-StackItem
         {
-          flex-shrink: 0;
-          margin-top: 10px;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
+          flex-shrink: 0 !important;
         }
   >
     Item 2
@@ -135,6 +142,15 @@ exports[`Stack renders Stack with grow correctly 1`] = `
         height: auto;
         width: auto;
       }
+      & > * {
+        flex-shrink: 0;
+        margin-bottom: 0px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      & > *:last-child {
+        margin-bottom: 0px;
+      }
 >
   <div
     className=
@@ -144,27 +160,22 @@ exports[`Stack renders Stack with grow correctly 1`] = `
           display: flex;
           flex-direction: column;
           flex-grow: 5;
-          flex-shrink: 0;
           flex-wrap: nowrap;
           height: auto;
           overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
           width: auto;
         }
+        & > * {
+          flex-shrink: 0;
+          margin-bottom: 0px;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        & > *:last-child {
+          margin-bottom: 0px;
+        }
   >
-    <span
-      className=
-
-          {
-            flex-shrink: 0;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-    >
-      Item 1
-    </span>
+    Item 1
   </div>
   <div
     className=
@@ -174,27 +185,22 @@ exports[`Stack renders Stack with grow correctly 1`] = `
           display: flex;
           flex-direction: column;
           flex-grow: 2;
-          flex-shrink: 0;
           flex-wrap: nowrap;
           height: auto;
           overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
           width: auto;
         }
+        & > * {
+          flex-shrink: 0;
+          margin-bottom: 0px;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        & > *:last-child {
+          margin-bottom: 0px;
+        }
   >
-    <span
-      className=
-
-          {
-            flex-shrink: 0;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-    >
-      Item 2
-    </span>
+    Item 2
   </div>
   <div
     className=
@@ -204,27 +210,22 @@ exports[`Stack renders Stack with grow correctly 1`] = `
           display: flex;
           flex-direction: column;
           flex-grow: 1;
-          flex-shrink: 0;
           flex-wrap: nowrap;
           height: auto;
           overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
           width: auto;
         }
+        & > * {
+          flex-shrink: 0;
+          margin-bottom: 0px;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        & > *:last-child {
+          margin-bottom: 0px;
+        }
   >
-    <span
-      className=
-
-          {
-            flex-shrink: 0;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-    >
-      Item 3
-    </span>
+    Item 3
   </div>
 </div>
 `;
@@ -241,26 +242,27 @@ exports[`Stack renders Stack with shrinking StackItems correctly 1`] = `
         height: auto;
         width: auto;
       }
+      & > * {
+        flex-shrink: 1;
+        margin-bottom: 0px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      & > *:last-child {
+        margin-bottom: 0px;
+      }
 >
   <span
     className=
+        ms-StackItem
 
-        {
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
   >
     Item 1
   </span>
   <span
     className=
+        ms-StackItem
 
-        {
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
   >
     Item 2
   </span>
@@ -281,29 +283,20 @@ exports[`Stack renders Stack with vertical and horizontal alignment correctly 1`
         justify-content: flex-end;
         width: auto;
       }
+      & > * {
+        flex-shrink: 0;
+        margin-bottom: 0px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      & > *:last-child {
+        margin-bottom: 0px;
+      }
 >
-  <div
-    className=
-
-        {
-          flex-shrink: 0;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-  >
+  <div>
     Item 1
   </div>
-  <div
-    className=
-
-        {
-          flex-shrink: 0;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-  >
+  <div>
     Item 2
   </div>
 </div>
@@ -321,31 +314,20 @@ exports[`Stack renders Stack with vertical and horizontal fill correctly 1`] = `
         height: 100%;
         width: 100%;
       }
-  fillHorizontal={true}
-  fillVertical={true}
+      & > * {
+        flex-shrink: 0;
+        margin-bottom: 0px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      & > *:last-child {
+        margin-bottom: 0px;
+      }
 >
-  <div
-    className=
-
-        {
-          flex-shrink: 0;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-  >
+  <div>
     Item 1
   </div>
-  <div
-    className=
-
-        {
-          flex-shrink: 0;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-  >
+  <div>
     Item 2
   </div>
 </div>
@@ -363,29 +345,20 @@ exports[`Stack renders horizontal Stack correctly 1`] = `
         height: auto;
         width: auto;
       }
+      & > * {
+        flex-shrink: 0;
+        margin-right: 0px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      & > *:last-child {
+        margin-right: 0px;
+      }
 >
-  <div
-    className=
-
-        {
-          flex-shrink: 0;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-  >
+  <div>
     Item 1
   </div>
-  <div
-    className=
-
-        {
-          flex-shrink: 0;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-  >
+  <div>
     Item 2
   </div>
 </div>
@@ -403,29 +376,20 @@ exports[`Stack renders vertical Stack correctly 1`] = `
         height: auto;
         width: auto;
       }
+      & > * {
+        flex-shrink: 0;
+        margin-bottom: 0px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      & > *:last-child {
+        margin-bottom: 0px;
+      }
 >
-  <div
-    className=
-
-        {
-          flex-shrink: 0;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-  >
+  <div>
     Item 1
   </div>
-  <div
-    className=
-
-        {
-          flex-shrink: 0;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-  >
+  <div>
     Item 2
   </div>
 </div>
