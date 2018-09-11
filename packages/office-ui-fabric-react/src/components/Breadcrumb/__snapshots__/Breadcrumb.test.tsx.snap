@@ -468,6 +468,11 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   &:hover {
                     background-color: #f4f4f4;
                     color: #004578;
@@ -1175,6 +1180,11 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   &:hover {
                     background-color: #f4f4f4;
                     color: #004578;
@@ -1537,6 +1547,11 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   &:hover {
                     background-color: #f4f4f4;
                     color: #004578;
@@ -1740,6 +1755,11 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
                     outline-color: ButtonText;
                     right: -2px;
                     top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
                   }
                   &:hover {
                     background-color: #f4f4f4;

@@ -53,6 +53,11 @@ exports[`Button renders ActionButton correctly 1`] = `
         right: -2px;
         top: -2px;
       }
+      &:active > * {
+        left: 0px;
+        position: relative;
+        top: 0px;
+      }
       &:hover {
         color: #0078d4;
       }
@@ -169,6 +174,11 @@ exports[`Button renders CommandBarButton correctly 1`] = `
         outline-color: ButtonText;
         right: 4px;
         top: 4px;
+      }
+      &:active > * {
+        left: 0px;
+        position: relative;
+        top: 0px;
       }
       @media screen and (-ms-high-contrast: active){& {
         border: none;
@@ -345,6 +355,11 @@ exports[`Button renders CompoundButton correctly 1`] = `
         right: -2px;
         top: -2px;
       }
+      &:active > * {
+        left: 0px;
+        position: relative;
+        top: 0px;
+      }
       &:hover {
         background-color: #eaeaea;
         color: #212121;
@@ -486,6 +501,11 @@ exports[`Button renders DefaultButton correctly 1`] = `
         right: -2px;
         top: -2px;
       }
+      &:active > * {
+        left: 0px;
+        position: relative;
+        top: 0px;
+      }
       &:hover {
         background-color: #eaeaea;
         color: #212121;
@@ -597,6 +617,11 @@ exports[`Button renders IconButton correctly 1`] = `
         outline-color: ButtonText;
         right: -2px;
         top: -2px;
+      }
+      &:active > * {
+        left: 0px;
+        position: relative;
+        top: 0px;
       }
       &:hover {
         color: #004578;
@@ -714,6 +739,11 @@ exports[`Button renders a DefaultButton with a keytip correctly 1`] = `
         outline-color: ButtonText;
         right: -2px;
         top: -2px;
+      }
+      &:active > * {
+        left: 0px;
+        position: relative;
+        top: 0px;
       }
       &:hover {
         background-color: #eaeaea;

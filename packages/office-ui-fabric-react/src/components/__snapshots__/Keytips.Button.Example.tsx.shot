@@ -58,6 +58,11 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
           right: -2px;
           top: -2px;
         }
+        &:active > * {
+          left: 0px;
+          position: relative;
+          top: 0px;
+        }
         &:hover {
           background-color: #eaeaea;
           color: #212121;
@@ -171,6 +176,11 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
           outline-color: ButtonText;
           right: -2px;
           top: -2px;
+        }
+        &:active > * {
+          left: 0px;
+          position: relative;
+          top: 0px;
         }
         &:hover {
           background-color: #eaeaea;
@@ -315,6 +325,11 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
           outline-color: ButtonText;
           right: -2px;
           top: -2px;
+        }
+        &:active > * {
+          left: 0px;
+          position: relative;
+          top: 0px;
         }
         &:hover {
           background-color: #eaeaea;
@@ -508,6 +523,11 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
             }
             &:hover {
               background-color: #eaeaea;
@@ -718,6 +738,11 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
           right: -2px;
           top: -2px;
         }
+        &:active > * {
+          left: 0px;
+          position: relative;
+          top: 0px;
+        }
         &:hover {
           background-color: #eaeaea;
           color: #212121;
@@ -830,6 +855,11 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
           outline-color: ButtonText;
           right: -2px;
           top: -2px;
+        }
+        &:active > * {
+          left: 0px;
+          position: relative;
+          top: 0px;
         }
         &:hover {
           background-color: #eaeaea;
@@ -1081,6 +1111,11 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
           outline-color: ButtonText;
           right: -2px;
           top: -2px;
+        }
+        &:active > * {
+          left: 0px;
+          position: relative;
+          top: 0px;
         }
         &:hover {
           background-color: #eaeaea;

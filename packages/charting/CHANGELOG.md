@@ -1,6 +1,32 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Fri, 07 Sep 2018 16:29:48 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Sep 2018 02:54:40 GMT and should not be manually modified.
+
+## 0.19.2
+Tue, 11 Sep 2018 02:54:40 GMT
+
+### Patches
+
+- Line chart hover issue , css for x-axis text
+- Line chart css issues foxed
+
+## 0.19.1
+Mon, 10 Sep 2018 10:24:57 GMT
+
+### Patches
+
+- Show bar background if all chart data point data is 0 or undefined
+
+## 0.19.0
+Fri, 07 Sep 2018 22:04:50 GMT
+
+### Minor changes
+
+- Adding temporary fix for hovercard. This fix scales the hover card size based upon the content inside it
+
+### Patches
+
+- donut chart arc sectors selected arc show and remaining arcs decrease opacity
 
 ## 0.18.0
 Fri, 07 Sep 2018 16:29:48 GMT

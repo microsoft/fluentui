@@ -353,6 +353,11 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             @media screen and (-ms-high-contrast: active){& {
               -ms-high-contrast-adjust: none;
               background-color: WindowText;
@@ -490,6 +495,11 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               background-color: #eaeaea;
               color: #212121;
@@ -616,6 +626,11 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
           outline-color: ButtonText;
           right: -2px;
           top: -2px;
+        }
+        &:active > * {
+          left: 0px;
+          position: relative;
+          top: 0px;
         }
         &:hover {
           background: transparent;

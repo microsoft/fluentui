@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/dashboard",
-      "comment": "ContentArea is croped in Edge browser",
+      "comment": "Add fixed size for donut chart in dashboard package",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/dashboard",
-  "email": "polu.balakrishna96@gmail.com"
+  "email": "gorigarajesh@gmail.com"
 }

@@ -20,7 +20,12 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
           padding-top: 0px;
         }
   >
-    <div>
+    <div
+      aria-expanded={false}
+      aria-haspopup="true"
+      aria-owns="DatePicker-Callout0"
+      role="combobox"
+    >
       <div
         className=
             ms-TextField
@@ -76,8 +81,8 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
                 }
           >
             <input
-              aria-expanded={false}
-              aria-haspopup="true"
+              aria-controls={undefined}
+              aria-describedby={undefined}
               aria-invalid={false}
               className=
                   ms-TextField-field
@@ -117,7 +122,8 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
                     color: #666666;
                     opacity: 1;
                   }
-              id="TextField0"
+              disabled={undefined}
+              id="TextField1"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}
@@ -127,7 +133,6 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
               placeholder="Select a date..."
               readOnly={true}
               required={false}
-              role="button"
               type="text"
               value=""
             />
@@ -189,16 +194,20 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
             padding-top: 5px;
             word-wrap: break-word;
           }
-      htmlFor="Dropdown2"
-      id="Dropdown2-label"
+      htmlFor="Dropdown3"
+      id="Dropdown3-label"
+      required={undefined}
     >
       Select the first day of the week
     </label>
     <div
-      aria-activedescendant="Dropdown2-option"
-      aria-describedby="Dropdown2-option"
+      aria-activedescendant="Dropdown3-option"
+      aria-describedby="Dropdown3-option"
+      aria-disabled={undefined}
       aria-expanded="false"
-      aria-labelledby="Dropdown2-label"
+      aria-label={undefined}
+      aria-labelledby="Dropdown3-label"
+      aria-owns={undefined}
       className=
           ms-Dropdown
           {
@@ -285,7 +294,7 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
             border-color: #a80000;
           }
       data-is-focusable={true}
-      id="Dropdown2"
+      id="Dropdown3"
       onBlur={[Function]}
       onChange={[Function]}
       onClick={[Function]}
@@ -328,7 +337,7 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
               text-overflow: ellipsis;
               white-space: nowrap;
             }
-        id="Dropdown2-option"
+        id="Dropdown3-option"
         role="option"
       >
         <span>

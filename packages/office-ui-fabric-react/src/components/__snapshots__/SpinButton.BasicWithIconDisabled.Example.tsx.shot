@@ -236,6 +236,11 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 outline: 0px;
               }
@@ -358,6 +363,11 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
                 outline-color: ButtonText;
                 right: -2px;
                 top: -2px;
+              }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
               }
               &:hover {
                 outline: 0px;

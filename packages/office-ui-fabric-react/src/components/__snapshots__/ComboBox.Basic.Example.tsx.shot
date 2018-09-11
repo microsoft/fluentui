@@ -235,6 +235,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             @media screen and (-ms-high-contrast: active){& {
               -ms-high-contrast-adjust: none;
               background-color: ButtonFace;
@@ -359,6 +364,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           outline-color: ButtonText;
           right: -2px;
           top: -2px;
+        }
+        &:active > * {
+          left: 0px;
+          position: relative;
+          top: 0px;
         }
         @media screen and (-ms-high-contrast: active){& {
           -ms-high-contrast-adjust: none;
@@ -657,6 +667,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
             }
             @media screen and (-ms-high-contrast: active){& {
               -ms-high-contrast-adjust: none;
@@ -962,6 +977,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             @media screen and (-ms-high-contrast: active){& {
               -ms-high-contrast-adjust: none;
               background-color: ButtonFace;
@@ -1266,6 +1286,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             @media screen and (-ms-high-contrast: active){& {
               -ms-high-contrast-adjust: none;
               background-color: ButtonFace;
@@ -1570,6 +1595,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             @media screen and (-ms-high-contrast: active){& {
               -ms-high-contrast-adjust: none;
               background-color: ButtonFace;
@@ -1873,6 +1903,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
             }
             @media screen and (-ms-high-contrast: active){& {
               -ms-high-contrast-adjust: none;
@@ -2178,6 +2213,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             @media screen and (-ms-high-contrast: active){& {
               -ms-high-contrast-adjust: none;
               background-color: ButtonFace;
@@ -2451,6 +2491,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
             }
             @media screen and (-ms-high-contrast: active){& {
               -ms-high-contrast-adjust: none;
@@ -2739,6 +2784,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
             }
             @media screen and (-ms-high-contrast: active){& {
               -ms-high-contrast-adjust: none;
@@ -3039,6 +3089,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
             }
             @media screen and (-ms-high-contrast: active){& {
               -ms-high-contrast-adjust: none;
@@ -3343,6 +3398,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
             }
             @media screen and (-ms-high-contrast: active){& {
               -ms-high-contrast-adjust: none;

@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Adjusting foundation usage, using new React 16 context.",
+      "comment": "Add motion to the Fluent experiment",
       "type": "minor"
     }
   ],
   "packageName": "@uifabric/experiments",
-  "email": "dzearing@microsoft.com"
+  "email": "miwhea@microsoft.com"
 }

@@ -195,6 +195,11 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 background-color: #eaeaea;
                 color: #212121;
@@ -316,6 +321,11 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
                 outline-color: ButtonText;
                 right: -2px;
                 top: -2px;
+              }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
               }
               &:hover {
                 background-color: #eaeaea;

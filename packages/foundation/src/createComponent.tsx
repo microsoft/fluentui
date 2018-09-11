@@ -146,14 +146,18 @@ export function createComponent<
             // TODO: Should 'rest' props from customizations pass onto view? They are not currently.
             //          (items like theme seem like they shouldn't)
             const propStyles = processedProps.styles || userProps.styles;
-            const themedProps: TProcessedProps = Object.assign({}, rest, userProps, processedProps);
-            const viewProps: IViewComponentProps<TProcessedProps, TProcessedStyleSet> = Object.assign({}, processedProps, userProps, {
-              classNames: providers.mergeStyleSets(
-                _evaluateStyle(themedProps, options.styles),
-                _evaluateStyle(themedProps, contextStyles),
-                _evaluateStyle(themedProps, propStyles)
-              )
-            });
+            const styleProps: TProcessedProps = { ...rest, ...(processedProps as any), ...(userProps as any) };
+            const viewProps: IViewComponentProps<TProcessedProps, TProcessedStyleSet> = {
+              ...(processedProps as any),
+              ...(userProps as any),
+              ...{
+                classNames: providers.mergeStyleSets(
+                  _evaluateStyle(styleProps, options.styles),
+                  _evaluateStyle(styleProps, contextStyles),
+                  _evaluateStyle(styleProps, propStyles)
+                )
+              }
+            };
 
             // TODO: consider rendering view as JSX component with display name in debug mode to aid in debugging
             return options.view(viewProps);
@@ -204,14 +208,17 @@ export function createStatelessComponent<
             // TODO: Should 'rest' props from customizations pass onto view? They are not currently.
             //          (items like theme seem like they shouldn't)
             const { styles: propStyles } = processedProps;
-            const themedProps: TProcessedProps = Object.assign({}, rest, processedProps);
-            const viewProps: IViewComponentProps<TProcessedProps, TProcessedStyleSet> = Object.assign({}, processedProps, {
-              classNames: providers.mergeStyleSets(
-                _evaluateStyle(themedProps, options.styles),
-                _evaluateStyle(themedProps, contextStyles),
-                _evaluateStyle(themedProps, propStyles)
-              )
-            });
+            const styleProps: TProcessedProps = { ...rest, ...(processedProps as any) };
+            const viewProps: IViewComponentProps<TProcessedProps, TProcessedStyleSet> = {
+              ...(processedProps as any),
+              ...{
+                classNames: providers.mergeStyleSets(
+                  _evaluateStyle(styleProps, options.styles),
+                  _evaluateStyle(styleProps, contextStyles),
+                  _evaluateStyle(styleProps, propStyles)
+                )
+              }
+            };
 
             // TODO: consider rendering view as JSX component with display name in debug mode to aid in debugging
             return options.view(viewProps);

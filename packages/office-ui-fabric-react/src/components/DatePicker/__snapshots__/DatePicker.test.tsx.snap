@@ -17,7 +17,12 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
         padding-top: 0px;
       }
 >
-  <div>
+  <div
+    aria-expanded={false}
+    aria-haspopup="true"
+    aria-owns="DatePicker-Callout4"
+    role="combobox"
+  >
     <div
       className=
           ms-TextField
@@ -73,8 +78,8 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
               }
         >
           <input
-            aria-expanded={false}
-            aria-haspopup="true"
+            aria-controls={undefined}
+            aria-describedby={undefined}
             aria-invalid={false}
             className=
                 ms-TextField-field
@@ -114,7 +119,8 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
                   color: #666666;
                   opacity: 1;
                 }
-            id="TextField0"
+            disabled={undefined}
+            id="TextField5"
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}
@@ -123,7 +129,6 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
             onKeyDown={[Function]}
             readOnly={true}
             required={false}
-            role="button"
             type="text"
             value=""
           />
