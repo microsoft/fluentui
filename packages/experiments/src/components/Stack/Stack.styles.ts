@@ -1,5 +1,6 @@
 import { IThemedProps } from '../../Foundation';
 import { IStackProps, IStackStyles } from './Stack.types';
+import { parseGap } from './StackUtils';
 
 const nameMap: { [key: string]: string } = {
   start: 'flex-start',
@@ -14,11 +15,25 @@ export const styles = (props: IThemedProps<IStackProps>): IStackStyles => {
     maxHeight,
     horizontal,
     grow,
+    wrap,
     margin,
     padding,
     horizontalAlignment,
-    verticalAlignment
+    verticalAlignment,
+    horizontalGap,
+    verticalGap,
+    shrinkItems,
+    className
   } = props;
+
+  const hGap = parseGap(horizontalGap);
+  const vGap = parseGap(verticalGap);
+
+  const childStyles = {
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
+    flexShrink: shrinkItems ? 1 : 0
+  };
 
   return {
     root: [
@@ -26,8 +41,8 @@ export const styles = (props: IThemedProps<IStackProps>): IStackStyles => {
         display: 'flex',
         flexDirection: horizontal ? 'row' : 'column',
         flexWrap: 'nowrap',
-        width: fillHorizontal ? '100%' : 'auto',
-        height: fillVertical ? '100%' : 'auto',
+        width: fillHorizontal && !wrap ? '100%' : 'auto',
+        height: fillVertical && !wrap ? '100%' : 'auto',
         maxWidth,
         maxHeight,
         margin,
@@ -44,7 +59,40 @@ export const styles = (props: IThemedProps<IStackProps>): IStackStyles => {
       verticalAlignment && {
         [horizontal ? 'alignItems' : 'justifyContent']: nameMap[verticalAlignment] || verticalAlignment
       },
-      props.className
+      wrap && {
+        selectors: {
+          '> *': {
+            margin: `${0.5 * vGap.value}${vGap.unit} ${0.5 * hGap.value}${hGap.unit}`,
+            maxWidth: `calc(100% - ${hGap.value}${hGap.unit})`,
+            ...childStyles
+          }
+        }
+      },
+      !wrap && [
+        horizontal && {
+          selectors: {
+            '> *': {
+              marginRight: hGap.value,
+              ...childStyles
+            },
+            '> *:last-child': {
+              marginRight: 0
+            }
+          }
+        },
+        !horizontal && {
+          selectors: {
+            '> *': {
+              marginBottom: vGap.value,
+              ...childStyles
+            },
+            '> *:last-child': {
+              marginBottom: 0
+            }
+          }
+        }
+      ],
+      className
     ]
     // TODO: this cast may be hiding some potential issues with styling and name
     //        lookups and should be removed
