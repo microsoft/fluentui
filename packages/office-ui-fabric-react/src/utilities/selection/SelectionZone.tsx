@@ -195,7 +195,8 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         } else if (
           (target === itemRoot || this._shouldAutoSelect(target)) &&
           !this._isShiftPressed &&
-          !this._isCtrlPressed
+          !this._isCtrlPressed &&
+          !this._isMetaPressed
         ) {
           this._onInvokeMouseDown(ev, this._getItemIndex(itemRoot));
           break;
@@ -264,6 +265,9 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
 
       if (itemRoot) {
         const index = this._getItemIndex(itemRoot);
+
+        this._onInvokeMouseDown(ev, index);
+
         const skipPreventDefault = onItemContextMenu(selection.getItems()[index], index, ev.nativeEvent);
 
         // In order to keep back compat, if the value here is undefined, then we should still
@@ -307,10 +311,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
       const index = this._getItemIndex(itemRoot);
 
       while (target !== this._root.current) {
-        if (
-          this._hasAttribute(target, SELECTION_TOGGLE_ATTRIBUTE_NAME) ||
-          this._hasAttribute(target, SELECTION_INVOKE_ATTRIBUTE_NAME)
-        ) {
+        if (this._hasAttribute(target, SELECTION_TOGGLE_ATTRIBUTE_NAME) || this._hasAttribute(target, SELECTION_INVOKE_ATTRIBUTE_NAME)) {
           break;
         } else if (target === itemRoot) {
           this._onInvokeClick(ev, index);
@@ -478,10 +479,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     }
   }
 
-  private _onInvokeMouseDown(
-    ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
-    index: number
-  ): void {
+  private _onInvokeMouseDown(ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, index: number): void {
     const { selection } = this.props;
 
     // Only do work if item is not selected.

@@ -1,4 +1,7 @@
 import { ReactWrapper } from 'enzyme';
+import { Component } from 'react';
+
+export type __TS_2_8_WORKAROUND_COMPONENT__ = Component;
 
 export const findNodes = (wrapper: ReactWrapper<any, any>, className: string): ReactWrapper<any, any> =>
   wrapper.find(className).filterWhere((node: ReactWrapper<any, any>) => typeof node.type() === 'string');

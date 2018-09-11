@@ -119,6 +119,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                 aria-multiselectable="false"
                 aria-readonly="true"
                 className="ms-DatePicker-table"
+                role="grid"
               >
                 <thead>
                   <tr>
@@ -196,171 +197,185 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   >
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
-                      onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
                       onMouseOver={undefined}
                       onMouseUp={undefined}
+                      role="gridcell"
                     >
-                      <div
+                      <button
                         aria-label="January 30, 2000"
                         aria-selected={false}
-                        className=""
+                        className="ms-DatePicker-day-button"
                         data-is-focusable={true}
+                        disabled={false}
                         id={undefined}
+                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
+                        role="button"
                       >
                         <span
                           aria-hidden="true"
                         >
                           30
                         </span>
-                      </div>
+                      </button>
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
-                      onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
                       onMouseOver={undefined}
                       onMouseUp={undefined}
+                      role="gridcell"
                     >
-                      <div
+                      <button
                         aria-label="January 31, 2000"
                         aria-selected={false}
-                        className=""
+                        className="ms-DatePicker-day-button"
                         data-is-focusable={true}
+                        disabled={false}
                         id={undefined}
+                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
+                        role="button"
                       >
                         <span
                           aria-hidden="true"
                         >
                           31
                         </span>
-                      </div>
+                      </button>
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--highlighted undefined ms-DatePicker-day--infocus undefined"
-                      onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
                       onMouseOver={undefined}
                       onMouseUp={undefined}
+                      role="gridcell"
                     >
-                      <div
+                      <button
                         aria-label="February 1, 2000"
                         aria-selected={true}
-                        className=""
+                        className="ms-DatePicker-day-button"
                         data-is-focusable={true}
+                        disabled={false}
                         id="DatePickerDay-active9"
+                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
+                        role="button"
                       >
                         <span
                           aria-hidden="true"
                         >
                           1
                         </span>
-                      </div>
+                      </button>
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
                       onMouseOver={undefined}
                       onMouseUp={undefined}
+                      role="gridcell"
                     >
-                      <div
+                      <button
                         aria-label="February 2, 2000"
                         aria-selected={false}
-                        className=""
+                        className="ms-DatePicker-day-button"
                         data-is-focusable={true}
+                        disabled={false}
                         id={undefined}
+                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
+                        role="button"
                       >
                         <span
                           aria-hidden="true"
                         >
                           2
                         </span>
-                      </div>
+                      </button>
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
                       onMouseOver={undefined}
                       onMouseUp={undefined}
+                      role="gridcell"
                     >
-                      <div
+                      <button
                         aria-label="February 3, 2000"
                         aria-selected={false}
-                        className=""
+                        className="ms-DatePicker-day-button"
                         data-is-focusable={true}
+                        disabled={false}
                         id={undefined}
+                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
+                        role="button"
                       >
                         <span
                           aria-hidden="true"
                         >
                           3
                         </span>
-                      </div>
+                      </button>
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
                       onMouseOver={undefined}
                       onMouseUp={undefined}
+                      role="gridcell"
                     >
-                      <div
+                      <button
                         aria-label="February 4, 2000"
                         aria-selected={false}
-                        className=""
+                        className="ms-DatePicker-day-button"
                         data-is-focusable={true}
+                        disabled={false}
                         id={undefined}
+                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
+                        role="button"
                       >
                         <span
                           aria-hidden="true"
                         >
                           4
                         </span>
-                      </div>
+                      </button>
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
                       onMouseOver={undefined}
                       onMouseUp={undefined}
+                      role="gridcell"
                     >
-                      <div
+                      <button
                         aria-label="February 5, 2000"
                         aria-selected={false}
-                        className=""
+                        className="ms-DatePicker-day-button"
                         data-is-focusable={true}
+                        disabled={false}
                         id={undefined}
+                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
+                        role="button"
                       >
                         <span
                           aria-hidden="true"
                         >
                           5
                         </span>
-                      </div>
+                      </button>
                     </td>
                   </tr>
                   <tr
@@ -368,171 +383,185 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   >
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
                       onMouseOver={undefined}
                       onMouseUp={undefined}
+                      role="gridcell"
                     >
-                      <div
+                      <button
                         aria-label="February 6, 2000"
                         aria-selected={false}
-                        className=""
+                        className="ms-DatePicker-day-button"
                         data-is-focusable={true}
+                        disabled={false}
                         id={undefined}
+                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
+                        role="button"
                       >
                         <span
                           aria-hidden="true"
                         >
                           6
                         </span>
-                      </div>
+                      </button>
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
                       onMouseOver={undefined}
                       onMouseUp={undefined}
+                      role="gridcell"
                     >
-                      <div
+                      <button
                         aria-label="February 7, 2000"
                         aria-selected={false}
-                        className=""
+                        className="ms-DatePicker-day-button"
                         data-is-focusable={true}
+                        disabled={false}
                         id={undefined}
+                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
+                        role="button"
                       >
                         <span
                           aria-hidden="true"
                         >
                           7
                         </span>
-                      </div>
+                      </button>
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
                       onMouseOver={undefined}
                       onMouseUp={undefined}
+                      role="gridcell"
                     >
-                      <div
+                      <button
                         aria-label="February 8, 2000"
                         aria-selected={false}
-                        className=""
+                        className="ms-DatePicker-day-button"
                         data-is-focusable={true}
+                        disabled={false}
                         id={undefined}
+                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
+                        role="button"
                       >
                         <span
                           aria-hidden="true"
                         >
                           8
                         </span>
-                      </div>
+                      </button>
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
                       onMouseOver={undefined}
                       onMouseUp={undefined}
+                      role="gridcell"
                     >
-                      <div
+                      <button
                         aria-label="February 9, 2000"
                         aria-selected={false}
-                        className=""
+                        className="ms-DatePicker-day-button"
                         data-is-focusable={true}
+                        disabled={false}
                         id={undefined}
+                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
+                        role="button"
                       >
                         <span
                           aria-hidden="true"
                         >
                           9
                         </span>
-                      </div>
+                      </button>
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
                       onMouseOver={undefined}
                       onMouseUp={undefined}
+                      role="gridcell"
                     >
-                      <div
+                      <button
                         aria-label="February 10, 2000"
                         aria-selected={false}
-                        className=""
+                        className="ms-DatePicker-day-button"
                         data-is-focusable={true}
+                        disabled={false}
                         id={undefined}
+                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
+                        role="button"
                       >
                         <span
                           aria-hidden="true"
                         >
                           10
                         </span>
-                      </div>
+                      </button>
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
                       onMouseOver={undefined}
                       onMouseUp={undefined}
+                      role="gridcell"
                     >
-                      <div
+                      <button
                         aria-label="February 11, 2000"
                         aria-selected={false}
-                        className=""
+                        className="ms-DatePicker-day-button"
                         data-is-focusable={true}
+                        disabled={false}
                         id={undefined}
+                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
+                        role="button"
                       >
                         <span
                           aria-hidden="true"
                         >
                           11
                         </span>
-                      </div>
+                      </button>
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
                       onMouseOver={undefined}
                       onMouseUp={undefined}
+                      role="gridcell"
                     >
-                      <div
+                      <button
                         aria-label="February 12, 2000"
                         aria-selected={false}
-                        className=""
+                        className="ms-DatePicker-day-button"
                         data-is-focusable={true}
+                        disabled={false}
                         id={undefined}
+                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
+                        role="button"
                       >
                         <span
                           aria-hidden="true"
                         >
                           12
                         </span>
-                      </div>
+                      </button>
                     </td>
                   </tr>
                   <tr
@@ -540,171 +569,185 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   >
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
                       onMouseOver={undefined}
                       onMouseUp={undefined}
+                      role="gridcell"
                     >
-                      <div
+                      <button
                         aria-label="February 13, 2000"
                         aria-selected={false}
-                        className=""
+                        className="ms-DatePicker-day-button"
                         data-is-focusable={true}
+                        disabled={false}
                         id={undefined}
+                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
+                        role="button"
                       >
                         <span
                           aria-hidden="true"
                         >
                           13
                         </span>
-                      </div>
+                      </button>
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
                       onMouseOver={undefined}
                       onMouseUp={undefined}
+                      role="gridcell"
                     >
-                      <div
+                      <button
                         aria-label="February 14, 2000"
                         aria-selected={false}
-                        className=""
+                        className="ms-DatePicker-day-button"
                         data-is-focusable={true}
+                        disabled={false}
                         id={undefined}
+                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
+                        role="button"
                       >
                         <span
                           aria-hidden="true"
                         >
                           14
                         </span>
-                      </div>
+                      </button>
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
                       onMouseOver={undefined}
                       onMouseUp={undefined}
+                      role="gridcell"
                     >
-                      <div
+                      <button
                         aria-label="February 15, 2000"
                         aria-selected={false}
-                        className=""
+                        className="ms-DatePicker-day-button"
                         data-is-focusable={true}
+                        disabled={false}
                         id={undefined}
+                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
+                        role="button"
                       >
                         <span
                           aria-hidden="true"
                         >
                           15
                         </span>
-                      </div>
+                      </button>
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
                       onMouseOver={undefined}
                       onMouseUp={undefined}
+                      role="gridcell"
                     >
-                      <div
+                      <button
                         aria-label="February 16, 2000"
                         aria-selected={false}
-                        className=""
+                        className="ms-DatePicker-day-button"
                         data-is-focusable={true}
+                        disabled={false}
                         id={undefined}
+                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
+                        role="button"
                       >
                         <span
                           aria-hidden="true"
                         >
                           16
                         </span>
-                      </div>
+                      </button>
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
                       onMouseOver={undefined}
                       onMouseUp={undefined}
+                      role="gridcell"
                     >
-                      <div
+                      <button
                         aria-label="February 17, 2000"
                         aria-selected={false}
-                        className=""
+                        className="ms-DatePicker-day-button"
                         data-is-focusable={true}
+                        disabled={false}
                         id={undefined}
+                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
+                        role="button"
                       >
                         <span
                           aria-hidden="true"
                         >
                           17
                         </span>
-                      </div>
+                      </button>
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
                       onMouseOver={undefined}
                       onMouseUp={undefined}
+                      role="gridcell"
                     >
-                      <div
+                      <button
                         aria-label="February 18, 2000"
                         aria-selected={false}
-                        className=""
+                        className="ms-DatePicker-day-button"
                         data-is-focusable={true}
+                        disabled={false}
                         id={undefined}
+                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
+                        role="button"
                       >
                         <span
                           aria-hidden="true"
                         >
                           18
                         </span>
-                      </div>
+                      </button>
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
                       onMouseOver={undefined}
                       onMouseUp={undefined}
+                      role="gridcell"
                     >
-                      <div
+                      <button
                         aria-label="February 19, 2000"
                         aria-selected={false}
-                        className=""
+                        className="ms-DatePicker-day-button"
                         data-is-focusable={true}
+                        disabled={false}
                         id={undefined}
+                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
+                        role="button"
                       >
                         <span
                           aria-hidden="true"
                         >
                           19
                         </span>
-                      </div>
+                      </button>
                     </td>
                   </tr>
                   <tr
@@ -712,171 +755,185 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   >
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
                       onMouseOver={undefined}
                       onMouseUp={undefined}
+                      role="gridcell"
                     >
-                      <div
+                      <button
                         aria-label="February 20, 2000"
                         aria-selected={false}
-                        className=""
+                        className="ms-DatePicker-day-button"
                         data-is-focusable={true}
+                        disabled={false}
                         id={undefined}
+                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
+                        role="button"
                       >
                         <span
                           aria-hidden="true"
                         >
                           20
                         </span>
-                      </div>
+                      </button>
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
                       onMouseOver={undefined}
                       onMouseUp={undefined}
+                      role="gridcell"
                     >
-                      <div
+                      <button
                         aria-label="February 21, 2000"
                         aria-selected={false}
-                        className=""
+                        className="ms-DatePicker-day-button"
                         data-is-focusable={true}
+                        disabled={false}
                         id={undefined}
+                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
+                        role="button"
                       >
                         <span
                           aria-hidden="true"
                         >
                           21
                         </span>
-                      </div>
+                      </button>
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
                       onMouseOver={undefined}
                       onMouseUp={undefined}
+                      role="gridcell"
                     >
-                      <div
+                      <button
                         aria-label="February 22, 2000"
                         aria-selected={false}
-                        className=""
+                        className="ms-DatePicker-day-button"
                         data-is-focusable={true}
+                        disabled={false}
                         id={undefined}
+                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
+                        role="button"
                       >
                         <span
                           aria-hidden="true"
                         >
                           22
                         </span>
-                      </div>
+                      </button>
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
                       onMouseOver={undefined}
                       onMouseUp={undefined}
+                      role="gridcell"
                     >
-                      <div
+                      <button
                         aria-label="February 23, 2000"
                         aria-selected={false}
-                        className=""
+                        className="ms-DatePicker-day-button"
                         data-is-focusable={true}
+                        disabled={false}
                         id={undefined}
+                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
+                        role="button"
                       >
                         <span
                           aria-hidden="true"
                         >
                           23
                         </span>
-                      </div>
+                      </button>
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
                       onMouseOver={undefined}
                       onMouseUp={undefined}
+                      role="gridcell"
                     >
-                      <div
+                      <button
                         aria-label="February 24, 2000"
                         aria-selected={false}
-                        className=""
+                        className="ms-DatePicker-day-button"
                         data-is-focusable={true}
+                        disabled={false}
                         id={undefined}
+                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
+                        role="button"
                       >
                         <span
                           aria-hidden="true"
                         >
                           24
                         </span>
-                      </div>
+                      </button>
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
                       onMouseOver={undefined}
                       onMouseUp={undefined}
+                      role="gridcell"
                     >
-                      <div
+                      <button
                         aria-label="February 25, 2000"
                         aria-selected={false}
-                        className=""
+                        className="ms-DatePicker-day-button"
                         data-is-focusable={true}
+                        disabled={false}
                         id={undefined}
+                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
+                        role="button"
                       >
                         <span
                           aria-hidden="true"
                         >
                           25
                         </span>
-                      </div>
+                      </button>
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
                       onMouseOver={undefined}
                       onMouseUp={undefined}
+                      role="gridcell"
                     >
-                      <div
+                      <button
                         aria-label="February 26, 2000"
                         aria-selected={false}
-                        className=""
+                        className="ms-DatePicker-day-button"
                         data-is-focusable={true}
+                        disabled={false}
                         id={undefined}
+                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
+                        role="button"
                       >
                         <span
                           aria-hidden="true"
                         >
                           26
                         </span>
-                      </div>
+                      </button>
                     </td>
                   </tr>
                   <tr
@@ -884,171 +941,185 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   >
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
                       onMouseOver={undefined}
                       onMouseUp={undefined}
+                      role="gridcell"
                     >
-                      <div
+                      <button
                         aria-label="February 27, 2000"
                         aria-selected={false}
-                        className=""
+                        className="ms-DatePicker-day-button"
                         data-is-focusable={true}
+                        disabled={false}
                         id={undefined}
+                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
+                        role="button"
                       >
                         <span
                           aria-hidden="true"
                         >
                           27
                         </span>
-                      </div>
+                      </button>
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
                       onMouseOver={undefined}
                       onMouseUp={undefined}
+                      role="gridcell"
                     >
-                      <div
+                      <button
                         aria-label="February 28, 2000"
                         aria-selected={false}
-                        className=""
+                        className="ms-DatePicker-day-button"
                         data-is-focusable={true}
+                        disabled={false}
                         id={undefined}
+                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
+                        role="button"
                       >
                         <span
                           aria-hidden="true"
                         >
                           28
                         </span>
-                      </div>
+                      </button>
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
                       onMouseOver={undefined}
                       onMouseUp={undefined}
+                      role="gridcell"
                     >
-                      <div
+                      <button
                         aria-label="February 29, 2000"
                         aria-selected={false}
-                        className=""
+                        className="ms-DatePicker-day-button"
                         data-is-focusable={true}
+                        disabled={false}
                         id={undefined}
+                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
+                        role="button"
                       >
                         <span
                           aria-hidden="true"
                         >
                           29
                         </span>
-                      </div>
+                      </button>
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
-                      onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
                       onMouseOver={undefined}
                       onMouseUp={undefined}
+                      role="gridcell"
                     >
-                      <div
+                      <button
                         aria-label="March 1, 2000"
                         aria-selected={false}
-                        className=""
+                        className="ms-DatePicker-day-button"
                         data-is-focusable={true}
+                        disabled={false}
                         id={undefined}
+                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
+                        role="button"
                       >
                         <span
                           aria-hidden="true"
                         >
                           1
                         </span>
-                      </div>
+                      </button>
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
-                      onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
                       onMouseOver={undefined}
                       onMouseUp={undefined}
+                      role="gridcell"
                     >
-                      <div
+                      <button
                         aria-label="March 2, 2000"
                         aria-selected={false}
-                        className=""
+                        className="ms-DatePicker-day-button"
                         data-is-focusable={true}
+                        disabled={false}
                         id={undefined}
+                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
+                        role="button"
                       >
                         <span
                           aria-hidden="true"
                         >
                           2
                         </span>
-                      </div>
+                      </button>
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
-                      onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
                       onMouseOver={undefined}
                       onMouseUp={undefined}
+                      role="gridcell"
                     >
-                      <div
+                      <button
                         aria-label="March 3, 2000"
                         aria-selected={false}
-                        className=""
+                        className="ms-DatePicker-day-button"
                         data-is-focusable={true}
+                        disabled={false}
                         id={undefined}
+                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
+                        role="button"
                       >
                         <span
                           aria-hidden="true"
                         >
                           3
                         </span>
-                      </div>
+                      </button>
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
-                      onClick={[Function]}
                       onMouseDown={undefined}
                       onMouseLeave={undefined}
                       onMouseOver={undefined}
                       onMouseUp={undefined}
+                      role="gridcell"
                     >
-                      <div
+                      <button
                         aria-label="March 4, 2000"
                         aria-selected={false}
-                        className=""
+                        className="ms-DatePicker-day-button"
                         data-is-focusable={true}
+                        disabled={false}
                         id={undefined}
+                        onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="gridcell"
+                        role="button"
                       >
                         <span
                           aria-hidden="true"
                         >
                           4
                         </span>
-                      </div>
+                      </button>
                     </td>
                   </tr>
                 </tbody>

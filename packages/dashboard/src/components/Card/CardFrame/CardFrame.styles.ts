@@ -1,5 +1,4 @@
 import { ICardFrameStyles, ICardFrameProps } from './CardFrame.types';
-import { IButtonStyles } from 'office-ui-fabric-react';
 
 const cardTitleBox = 40;
 
@@ -8,15 +7,17 @@ export const getStyles = (props: ICardFrameProps): ICardFrameStyles => {
 
   return {
     root: {
-      boxShadow: '1px 1px 1px 1px #cdcdcd',
       height: '100%',
       overflow: 'hidden',
       display: 'flex',
       flexDirection: 'column'
     },
     cardTitleBox: {
+      alignItems: 'center',
+      display: 'flex',
+      flexDirection: 'row',
+      width: '100%',
       height: cardTitleBox,
-      overflow: 'hidden',
       borderBottom: '1px solid',
       borderBottomColor: seperatorColor ? seperatorColor : 'rgba(0,0,0,0.1)',
       borderTopLeftRadius: '2px',
@@ -25,38 +26,22 @@ export const getStyles = (props: ICardFrameProps): ICardFrameStyles => {
       transition: 'background-color .2s,color .2s,margin .2s,padding .2s,border-color .2s',
       selectors: {
         ':hover': {
-          backgroundColor: '#eaeaea'
+          backgroundColor: disableDrag ? '' : '#eaeaea'
         }
       }
     },
     cardTitleEllipsisButton: {
       width: 40,
-      float: 'right',
-      height: '100%',
-      textAlign: 'center',
-      borderTopRightRadius: '2px',
-      selectors: {
-        div: {
-          selectors: {
-            div: {
-              width: '40px',
-              selectors: {
-                button: {
-                  width: '40px',
-                  minWidth: '40px',
-                  padding: '0px'
-                }
-              }
-            }
-          }
-        }
-      }
+      height: 40
     },
     cardTitle: {
       overflow: 'hidden',
-      padding: '9px 16px 12px 16px',
+      flex: 1,
+      lineHeight: '19px',
+      paddingLeft: '16px',
       fontSize: fontSize ? fontSize : '14px',
-      fontFamily: fontFamily ? fontFamily : 'Segoe UI Semibold',
+      fontFamily: fontFamily ? fontFamily : 'Segoe UI',
+      fontWeight: 600,
       display: 'inline-block',
       selectors: {
         a: {
@@ -79,17 +64,10 @@ export const getStyles = (props: ICardFrameProps): ICardFrameStyles => {
       display: 'flex',
       flex: 1,
       padding: '0 16px 16px 16px'
+    },
+    ellipsisButtonStyle: {
+      width: '100%',
+      height: '100%'
     }
   };
-};
-
-export const customOverflowStyle: IButtonStyles = {
-  root: {
-    height: '40px',
-    width: '40px',
-    backgroundColor: 'inherit'
-  },
-  rootHovered: {
-    backgroundColor: 'rgba(0, 0, 0, 0.1)'
-  }
 };

@@ -68,7 +68,7 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
             minValue={0}
             maxValue={MAX_COLOR_HUE}
             value={color.h}
-            onChanged={this._onHChanged}
+            onChange={this._onHChanged}
           />
           {!this.props.alphaSliderHidden && (
             <ColorSlider
@@ -78,7 +78,7 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
               minValue={0}
               maxValue={100}
               value={color.a}
-              onChanged={this._onAChanged}
+              onChange={this._onAChanged}
             />
           )}
           <table className={classNames.table} cellPadding="0" cellSpacing="0">
@@ -138,7 +138,7 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
                     <TextField
                       className={classNames.input}
                       onBlur={this._onRGBAChanged}
-                      value={String(color.a)}
+                      value={String(color.a ? color.a.toPrecision(3) : color.a)}
                       componentRef={this._aText}
                       spellCheck={false}
                       ariaLabel={this.props.alphaLabel}
@@ -157,11 +157,11 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
     this._updateColor(updateSV(this.state.color, s, v));
   };
 
-  private _onHChanged = (h: number): void => {
+  private _onHChanged = (ev: React.MouseEvent<HTMLElement>, h: number): void => {
     this._updateColor(updateH(this.state.color, h));
   };
 
-  private _onAChanged = (a: number): void => {
+  private _onAChanged = (ev: React.MouseEvent<HTMLElement>, a: number): void => {
     this._updateColor(updateA(this.state.color, a));
   };
 
@@ -181,7 +181,7 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
         r: Number(this._rText.current.value),
         g: Number(this._gText.current.value),
         b: Number(this._bText.current.value),
-        a: Number((this._aText && this._aText.current.value) || 100)
+        a: Number(this._aText.current.value || 100)
       })
     );
   };
@@ -192,14 +192,15 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
     }
 
     const { onColorChanged } = this.props;
-
-    if (newColor.str !== this.state.color.str) {
+    const { color } = this.state;
+    const hasColorStringChanged = newColor.str !== color.str;
+    if (newColor.h !== color.h || hasColorStringChanged) {
       this.setState(
         {
           color: newColor
         } as IColorPickerState,
         () => {
-          if (onColorChanged) {
+          if (hasColorStringChanged && onColorChanged) {
             onColorChanged(newColor.str);
           }
         }

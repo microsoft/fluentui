@@ -355,7 +355,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 cursor: pointer;
                 display: inline-block;
@@ -401,6 +401,11 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 outline-color: ButtonText;
                 right: -2px;
                 top: -2px;
+              }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
               }
               &:hover {
                 color: #004578;
@@ -681,7 +686,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 cursor: pointer;
                 display: inline-block;
@@ -727,6 +732,11 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 outline-color: ButtonText;
                 right: -2px;
                 top: -2px;
+              }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
               }
               &:hover {
                 color: #004578;
@@ -833,7 +843,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 cursor: pointer;
                 display: inline-block;
@@ -879,6 +889,11 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 outline-color: ButtonText;
                 right: -2px;
                 top: -2px;
+              }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
               }
               &:hover {
                 color: #004578;
@@ -1192,6 +1207,11 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 background-color: #c8c8c8;
                 color: #212121;
@@ -1306,6 +1326,11 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 outline-color: ButtonText;
                 right: -2px;
                 top: -2px;
+              }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
               }
               &:hover {
                 background-color: #c8c8c8;
@@ -1611,6 +1636,11 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #c8c8c8;
                   color: #212121;
@@ -1725,6 +1755,11 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                   outline-color: ButtonText;
                   right: -2px;
                   top: -2px;
+                }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
                 }
                 &:hover {
                   background-color: #c8c8c8;
@@ -2032,6 +2067,11 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #c8c8c8;
                   color: #212121;
@@ -2120,7 +2160,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 cursor: pointer;
                 display: inline-block;
@@ -2166,6 +2206,11 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 outline-color: ButtonText;
                 right: -2px;
                 top: -2px;
+              }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
               }
               &:hover {
                 color: #004578;
@@ -2416,7 +2461,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               -webkit-font-smoothing: antialiased;
               background-color: transparent;
               border-radius: 0px;
-              border: 1px solid transparent;
+              border: none;
               box-sizing: border-box;
               cursor: pointer;
               display: inline-block;
@@ -2462,6 +2507,11 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
             }
             &:hover {
               color: #004578;
@@ -2617,6 +2667,11 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 background-color: #c8c8c8;
                 color: #212121;
@@ -2731,6 +2786,11 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 outline-color: ButtonText;
                 right: -2px;
                 top: -2px;
+              }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
               }
               &:hover {
                 background-color: #c8c8c8;
@@ -3146,7 +3206,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 cursor: pointer;
                 display: inline-block;
@@ -3192,6 +3252,11 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 outline-color: ButtonText;
                 right: -2px;
                 top: -2px;
+              }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
               }
               &:hover {
                 color: #004578;
@@ -3474,7 +3539,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 cursor: pointer;
                 display: inline-block;
@@ -3520,6 +3585,11 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 outline-color: ButtonText;
                 right: -2px;
                 top: -2px;
+              }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
               }
               &:hover {
                 color: #004578;
@@ -3627,7 +3697,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 cursor: pointer;
                 display: inline-block;
@@ -3673,6 +3743,11 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 outline-color: ButtonText;
                 right: -2px;
                 top: -2px;
+              }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
               }
               &:hover {
                 color: #004578;
@@ -3987,6 +4062,11 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 background-color: #c8c8c8;
                 color: #212121;
@@ -4101,6 +4181,11 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 outline-color: ButtonText;
                 right: -2px;
                 top: -2px;
+              }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
               }
               &:hover {
                 background-color: #c8c8c8;
@@ -4408,6 +4493,11 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #c8c8c8;
                   color: #212121;
@@ -4522,6 +4612,11 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                   outline-color: ButtonText;
                   right: -2px;
                   top: -2px;
+                }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
                 }
                 &:hover {
                   background-color: #c8c8c8;
@@ -4831,6 +4926,11 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #c8c8c8;
                   color: #212121;
@@ -4920,7 +5020,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 cursor: pointer;
                 display: inline-block;
@@ -4966,6 +5066,11 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 outline-color: ButtonText;
                 right: -2px;
                 top: -2px;
+              }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
               }
               &:hover {
                 color: #004578;
@@ -5263,6 +5368,11 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               color: #004578;
             }
@@ -5418,6 +5528,11 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 background-color: #c8c8c8;
                 color: #212121;
@@ -5532,6 +5647,11 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 outline-color: ButtonText;
                 right: -2px;
                 top: -2px;
+              }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
               }
               &:hover {
                 background-color: #c8c8c8;

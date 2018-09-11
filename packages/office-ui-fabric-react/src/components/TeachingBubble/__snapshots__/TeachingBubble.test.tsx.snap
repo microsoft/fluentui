@@ -375,6 +375,11 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             @media screen and (-ms-high-contrast: active){& {
               -ms-high-contrast-adjust: none;
               background-color: WindowText;
@@ -518,9 +523,14 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               background-color: #eaeaea;
-              color: #000000;
+              color: #212121;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
@@ -606,7 +616,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
           -webkit-font-smoothing: antialiased;
           background-color: transparent;
           border-radius: 0px;
-          border: 1px solid transparent;
+          border: none;
           box-sizing: border-box;
           color: #ffffff;
           cursor: pointer;
@@ -650,6 +660,11 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
           outline-color: ButtonText;
           right: -2px;
           top: -2px;
+        }
+        &:active > * {
+          left: 0px;
+          position: relative;
+          top: 0px;
         }
         &:hover {
           background: transparent;

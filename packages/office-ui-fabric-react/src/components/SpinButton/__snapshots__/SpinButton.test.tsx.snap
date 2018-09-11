@@ -164,7 +164,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               -webkit-font-smoothing: antialiased;
               background-color: transparent;
               border-radius: 0px;
-              border: 1px solid transparent;
+              border: none;
               box-sizing: border-box;
               color: #333333;
               cursor: default;
@@ -207,9 +207,14 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               background-color: #eaeaea;
-              color: #000000;
+              color: #212121;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
@@ -292,7 +297,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               -webkit-font-smoothing: antialiased;
               background-color: transparent;
               border-radius: 0px;
-              border: 1px solid transparent;
+              border: none;
               box-sizing: border-box;
               color: #333333;
               cursor: default;
@@ -335,9 +340,14 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               background-color: #eaeaea;
-              color: #000000;
+              color: #212121;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;

@@ -1,3 +1,4 @@
+// @codepen
 import * as React from 'react';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Dropdown, IDropdown, DropdownMenuItemType, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
@@ -71,7 +72,7 @@ export class DropdownBasicExample extends BaseComponent<
         <Dropdown
           label="Controlled example:"
           selectedKey={selectedItem ? selectedItem.key : undefined}
-          onChanged={this.changeState}
+          onChange={this.changeState}
           onFocus={this._log('onFocus called')}
           onBlur={this._log('onBlur called')}
           placeHolder="Select an Option"
@@ -112,7 +113,7 @@ export class DropdownBasicExample extends BaseComponent<
           placeHolder="Select options"
           label="Multi-Select controlled example:"
           selectedKeys={selectedItems}
-          onChanged={this.onChangeMultiSelect}
+          onChange={this.onChangeMultiSelect}
           onFocus={this._log('onFocus called')}
           onBlur={this._log('onBlur called')}
           multiSelect
@@ -150,12 +151,12 @@ export class DropdownBasicExample extends BaseComponent<
     );
   }
 
-  public changeState = (item: IDropdownOption): void => {
+  public changeState = (event: React.FormEvent<HTMLDivElement>, item: IDropdownOption): void => {
     console.log('here is the things updating...' + item.key + ' ' + item.text + ' ' + item.selected);
     this.setState({ selectedItem: item });
   };
 
-  public onChangeMultiSelect = (item: IDropdownOption): void => {
+  public onChangeMultiSelect = (event: React.FormEvent<HTMLDivElement>, item: IDropdownOption): void => {
     const updatedSelectedItem = this.state.selectedItems ? this.copyArray(this.state.selectedItems) : [];
     if (item.selected) {
       // add the option if it's checked

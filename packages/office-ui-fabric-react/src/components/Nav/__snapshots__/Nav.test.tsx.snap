@@ -90,7 +90,7 @@ exports[`Nav renders Nav correctly 1`] = `
                       -webkit-font-smoothing: antialiased;
                       background-color: transparent;
                       border-radius: 0px;
-                      border: 1px solid transparent;
+                      border: none;
                       box-sizing: border-box;
                       color: #333333;
                       cursor: pointer;
@@ -136,6 +136,11 @@ exports[`Nav renders Nav correctly 1`] = `
                       outline-color: ButtonText;
                       right: -2px;
                       top: -2px;
+                    }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
                     }
                     &:hover {
                       color: #0078d4;

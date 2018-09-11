@@ -45,6 +45,7 @@ export interface IDetailsListAdvancedExampleState {
   layoutMode?: LayoutMode;
   selectionMode?: SelectionMode;
   sortedColumnKey?: string;
+  selectionCount: number;
 }
 
 export class DetailsListAdvancedExample extends React.Component<{}, IDetailsListAdvancedExampleState> {
@@ -58,11 +59,14 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
       _items = createListItems(ITEMS_COUNT);
     }
 
-    this._selection = new Selection();
+    this._selection = new Selection({
+      onSelectionChanged: this._onItemsSelectionChanged
+    });
     this._selection.setItems(_items, false);
 
     this.state = {
       items: _items,
+      selectionCount: 0,
       groups: undefined,
       groupItemLimit: DEFAULT_ITEM_LIMIT,
       layoutMode: LayoutMode.justified,
@@ -117,13 +121,17 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
 
     return (
       <div className="ms-DetailsListAdvancedExample">
-        <CommandBar items={this._getCommandItems()} />
+        <CommandBar
+          items={this._getCommandItems()}
+          farItems={[{ key: 'count', text: `${this.state.selectionCount} selected` }]}
+        />
 
         {isGrouped ? <TextField label="Group Item Limit" onChange={this._onItemLimitChanged} /> : null}
 
         <DetailsList
           setKey="items"
           items={items as any[]}
+          selection={this._selection}
           groups={groups}
           columns={columns}
           checkboxVisibility={checkboxVisibility}
@@ -135,11 +143,15 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
           enterModalSelectionOnTouch={true}
           onItemInvoked={this._onItemInvoked}
           onItemContextMenu={this._onItemContextMenu}
+          selectionZoneProps={{
+            selection: this._selection,
+            disableAutoSelectOnInputElements: true,
+            selectionMode: selectionMode
+          }}
           ariaLabelForListHeader="Column headers. Use menus to perform column operations like sort and filter"
           ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           ariaLabelForSelectionColumn="Toggle selection"
           onRenderMissingItem={this._onRenderMissingItem}
-          useReducedRowRenderer={true}
         />
 
         {contextualMenuProps && <ContextualMenu {...contextualMenuProps} />}
@@ -442,10 +454,27 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
   };
 
   private _onItemContextMenu = (item: any, index: number, ev: MouseEvent): boolean => {
-    if ((ev.target as HTMLElement).nodeName === 'A') {
-      return true;
+    const contextualMenuProps: IContextualMenuProps = {
+      target: ev.target as HTMLElement,
+      items: [
+        {
+          key: 'text',
+          name: `${this._selection.getSelectedCount()} selected`
+        }
+      ],
+      onDismiss: () => {
+        this.setState({
+          contextualMenuProps: undefined
+        });
+      }
+    };
+
+    if (index > -1) {
+      this.setState({
+        contextualMenuProps: contextualMenuProps
+      });
     }
-    console.log('Item context menu invoked', item, index);
+
     return false;
   };
 
@@ -583,8 +612,32 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
   };
 
   private _onDeleteRow = (): void => {
+    if (this._selection.getSelectedCount() > 0) {
+      this.setState((previousState: this['state']) => {
+        const items: this['state']['items'] = [];
+
+        const previousItems = previousState.items!;
+
+        for (let i = 0; i < previousItems.length; i++) {
+          if (!this._selection.isIndexSelected(i)) {
+            items.push(previousItems[i]);
+          }
+        }
+
+        return {
+          items
+        };
+      });
+    } else {
+      this.setState({
+        items: this.state.items!.slice(1)
+      });
+    }
+  };
+
+  private _onItemsSelectionChanged = () => {
     this.setState({
-      items: this.state.items!.slice(1)
+      selectionCount: this._selection.getSelectedCount()
     });
   };
 

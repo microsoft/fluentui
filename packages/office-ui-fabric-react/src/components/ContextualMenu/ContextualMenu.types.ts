@@ -202,12 +202,17 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
   /**
    * Method to provide the classnames to style the contextual menu. Default value is the getMenuClassnames func
    * defined in ContextualMenu.classnames.
-   * @default getContextualMenuClassNames
+   * @deprecated Use `styles` prop of `IContextualMenuProps` to leverage mergeStyle API.
    */
   getMenuClassNames?: (theme: ITheme, className?: string) => IContextualMenuClassNames;
 
   /** Method to call when trying to render a submenu. */
   onRenderSubMenu?: IRenderFunction<IContextualMenuProps>;
+
+  /**
+   * Method to override the render of the list of menu items.
+   */
+  onRenderMenuList?: IRenderFunction<IContextualMenuListProps>;
 
   /**
    * Delay (in milliseconds) to wait before expanding / dismissing a submenu on mouseEnter or mouseLeave
@@ -238,6 +243,21 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
    * once the ContextualMenu is visible.
    */
   hidden?: boolean;
+
+  /**
+   * If true, the contextual menu will not be updated until
+   * focus enters the menu via other means. This will only result
+   * in different behavior when shouldFocusOnMount = false
+   * @default null
+   */
+  delayUpdateFocusOnHover?: boolean;
+}
+
+export interface IContextualMenuListProps {
+  items: IContextualMenuItem[];
+  totalItemCount: number;
+  hasCheckmarks: boolean;
+  hasIcons: boolean;
 }
 
 export interface IContextualMenuItem {
@@ -351,9 +371,8 @@ export interface IContextualMenuItem {
   subMenuProps?: IContextualMenuProps;
 
   /**
-   * Method to provide the classnames to style the individual items inside a menu. Default value is the getItemClassnames func
-   * defined in ContextualMenu.classnames.
-   * @default getItemClassNames
+   * Method to provide the classnames to style the individual items inside a menu.
+   * @deprecated Use `styles` prop of `IContextualMenuItemProps` to leverage mergeStyle API.
    */
   getItemClassNames?: (
     theme: ITheme,
@@ -368,6 +387,11 @@ export interface IContextualMenuItem {
     subMenuClassName?: string,
     primaryDisabled?: boolean
   ) => IMenuItemClassNames;
+
+  /**
+   * Optional IContextualMenuItemProps overrides to customize behaviors such as item styling via `styles`.
+   */
+  itemProps?: Partial<IContextualMenuItemProps>;
 
   /**
    * Method to provide the classnames to style the Vertical Divider of a split button inside a menu. Default value is the getVerticalDividerClassnames func defined in ContextualMenu.classnames
@@ -390,6 +414,7 @@ export interface IContextualMenuItem {
   /**
    * Additional styles to apply to the menu item
    * @defaultvalue undefined
+   * @deprecated in favor of the styles prop to leverage mergeStyles API.
    */
   style?: React.CSSProperties;
 

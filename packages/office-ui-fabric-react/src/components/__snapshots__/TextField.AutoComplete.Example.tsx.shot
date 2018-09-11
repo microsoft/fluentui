@@ -76,22 +76,11 @@ exports[`Component Examples renders TextField.AutoComplete.Example.tsx correctly
               padding-top: 0px;
               position: relative;
             }
-            &:-ms-clear {
-              display: none;
-            }
             &:hover {
               border-color: #212121;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
-            }
-            &::placeholder {
-              color: #666666;
-              opacity: 1;
-            }
-            &:-ms-input-placeholder {
-              color: #666666;
-              opacity: 1;
             }
       >
         <input
@@ -126,8 +115,16 @@ exports[`Component Examples renders TextField.AutoComplete.Example.tsx correctly
               &:active, &:focus, &:hover {
                 outline: 0px;
               }
+              &::-ms-clear {
+                display: none;
+              }
               &::placeholder {
                 color: #666666;
+                opacity: 1;
+              }
+              &:-ms-input-placeholder {
+                color: #666666;
+                opacity: 1;
               }
           id="TextField0"
           name="example"
@@ -198,6 +195,11 @@ exports[`Component Examples renders TextField.AutoComplete.Example.tsx correctly
           outline-color: ButtonText;
           right: -2px;
           top: -2px;
+        }
+        &:active > * {
+          left: 0px;
+          position: relative;
+          top: 0px;
         }
         @media screen and (-ms-high-contrast: active){& {
           -ms-high-contrast-adjust: none;

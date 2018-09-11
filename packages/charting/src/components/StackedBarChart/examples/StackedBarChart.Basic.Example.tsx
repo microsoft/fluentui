@@ -1,14 +1,21 @@
 import * as React from 'react';
-import { StackedBarChart, IStackedBarChartProps } from '@uifabric/charting/lib/StackedBarChart';
-export class StackedBarChartBasicExample extends React.Component<IStackedBarChartProps, {}> {
+import { StackedBarChart, IChartProps, IChartDataPoint } from '@uifabric/charting';
+import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+
+export class StackedBarChartBasicExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
-    return <div>{this._basicExample()}</div>;
-  }
+    const points: IChartDataPoint[] = [
+      { legend: 'first', data: 40, color: DefaultPalette.blue },
+      { legend: 'second', color: DefaultPalette.green }
+    ];
 
-  private _basicExample(): JSX.Element {
-    const points = [{ x: 'first', y: 40 }, { x: 'second', y: 23 }];
-    const colors = ['#581845', '#808000'];
+    const chartTitle = 'Stacked Bar chart example';
 
-    return <StackedBarChart data={points} chartTitle={'Stacked Bar chart'} colors={colors} />;
+    const data: IChartProps = {
+      chartTitle: chartTitle,
+      chartData: points
+    };
+
+    return <StackedBarChart data={data} />;
   }
 }

@@ -2,6 +2,62 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.8.3",
+      "tag": "@uifabric/merge-styles_v6.8.3",
+      "date": "Wed, 05 Sep 2018 10:29:25 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "90cd34d276e26bcc8368f57c8efd2c828ccdd8eb",
+            "comment": "Improve a DX issue with IProcessedStyleSet typings. (issue #6124)"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.8.2",
+      "tag": "@uifabric/merge-styles_v6.8.2",
+      "date": "Wed, 29 Aug 2018 10:28:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Sebastian K <nimelriansc2@gmail.com>",
+            "commit": "9f187d80f21fed6c0983066184a0fd73a6a43e64",
+            "comment": "The IProcessedStyleSet type now correctly infers the types of subComponentStyles properties."
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.8.1",
+      "tag": "@uifabric/merge-styles_v6.8.1",
+      "date": "Tue, 28 Aug 2018 10:23:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Patrik Husfloen <redoz@redoz.com>",
+            "commit": "a7a8c2aea7ae67a64693a2c3538d91dcac3b26ff",
+            "comment": "Adds missing CSS property values for 'align-self' in `IRawStyle` type definition and corrects CSS property values for 'justify-self' in 'IRawStyle'"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.8.0",
+      "tag": "@uifabric/merge-styles_v6.8.0",
+      "date": "Mon, 27 Aug 2018 10:27:43 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "redoz <redoz@redoz.com>",
+            "commit": "74e6bf8a7a78dc703193473bc0395511929ef72b",
+            "comment": "Adds support for 'justifySelf' which is needed to align items in CSS Grid."
+          }
+        ]
+      }
+    },
+    {
       "version": "6.7.0",
       "tag": "@uifabric/merge-styles_v6.7.0",
       "date": "Mon, 30 Jul 2018 10:27:11 GMT",

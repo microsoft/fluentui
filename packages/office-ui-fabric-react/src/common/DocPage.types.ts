@@ -71,6 +71,8 @@ export interface IDocPageProps {
     /** Working example of the example */
     view: JSX.Element;
 
+    isScrollable?: boolean;
+
     /** JS String for codepen of the example */
     codepenJS?: string;
   }[];
@@ -102,7 +104,7 @@ export interface IDocPageProps {
   /** Best practice as markdown string */
   bestPractices?: string;
 
-  /** Feedback section includes link to new issue page */
+  /** Feedback section includes link to new issue page and displays Github issues */
   isFeedbackVisible?: boolean;
 
   /** Passed through header visibility flag from the demo component page component */

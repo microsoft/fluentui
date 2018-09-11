@@ -4,15 +4,16 @@ import { ISelection, SelectionMode, ISelectionZoneProps } from '../../utilities/
 import { IRefObject, IBaseProps, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IDragDropEvents, IDragDropContext } from './../../utilities/dragdrop/index';
 import { IGroup, IGroupRenderProps, IGroupDividerProps } from '../GroupedList/index';
-import { IDetailsRowProps } from '../DetailsList/DetailsRow';
-import { IDetailsHeaderProps } from './DetailsHeader';
-import { IDetailsFooterProps } from './DetailsFooter.types';
+import { IDetailsRowProps, IDetailsRowBaseProps } from '../DetailsList/DetailsRow';
+import { IDetailsHeaderProps, IDetailsHeaderBaseProps } from './DetailsHeader';
+import { IDetailsFooterProps, IDetailsFooterBaseProps } from './DetailsFooter.types';
 import { IWithViewportProps, IViewport } from '../../utilities/decorators/withViewport';
 import { IList, IListProps, ScrollToMode } from '../List/index';
 import { ITheme, IStyle } from '../../Styling';
-import { ICellStyleProps } from './DetailsRow.types';
+import { ICellStyleProps, IDetailsItemProps } from './DetailsRow.types';
+import { IDetailsColumnProps } from './DetailsColumn';
 
-export { IDetailsHeaderProps };
+export { IDetailsHeaderProps, IDetailsRowBaseProps, IDetailsHeaderBaseProps, IDetailsFooterBaseProps };
 
 export interface IDetailsList extends IList {
   /**
@@ -83,6 +84,9 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
 
   /** Optional override properties to render groups. The definition for IGroupRenderProps can be found under the GroupedList component. */
   groupProps?: IDetailsGroupRenderProps;
+
+  /** Optional override for the indent width used for group nesting. */
+  indentWidth?: number;
 
   /** Optional selection model to track selection state.  */
   selection?: ISelection;
@@ -256,11 +260,6 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   enterModalSelectionOnTouch?: boolean;
 
   /**
-   * On horizontal scroll event listener
-   */
-  onScroll?: (e?: Event) => void;
-
-  /**
    * Options for column re-order using drag and drop
    */
   columnReorderOptions?: IColumnReorderOptions;
@@ -287,6 +286,11 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    * handled separately from normal theme styling, but they are passed to the styling system.
    */
   cellStyleProps?: ICellStyleProps;
+
+  /**
+   * Whether or not to disable the built-in SelectionZone, so the host component can provide its own.
+   */
+  disableSelectionZone?: boolean;
 }
 
 export interface IColumn {
@@ -384,6 +388,11 @@ export interface IColumn {
    * If provided uses this method to render custom cell content, rather than the default text rendering.
    */
   onRender?: (item?: any, index?: number, column?: IColumn) => any;
+
+  /**
+   * If provider, can be used to render a custom column header divider
+   */
+  onRenderDivider?: IRenderFunction<IDetailsColumnProps>;
 
   /**
    * Determines if the column is filtered, and if so shows a filter icon.
@@ -496,10 +505,63 @@ export interface IColumnReorderOptions {
   frozenColumnCountFromEnd?: number;
 
   /**
+   * Callback to handle the column dragstart
+   * draggedStarted indicates that the column drag has been started on DetailsHeader
+   */
+  onColumnDragStart?: (dragStarted: boolean) => void;
+
+  /**
+   * Callback to handle the column reorder
+   * draggedIndex is the source column index, that need to be placed in targetIndex
+   * Use oncolumnDrop instead of this
+   * @deprecated
+   */
+  handleColumnReorder?: (draggedIndex: number, targetIndex: number) => void;
+
+  /**
    * Callback to handle the column reorder
    * draggedIndex is the source column index, that need to be placed in targetIndex
    */
-  handleColumnReorder: (draggedIndex: number, targetIndex: number) => void;
+  onColumnDrop?: (dragDropDetails: IColumnDragDropDetails) => void;
+
+  /**
+   * Callback to handle the column reorder
+   */
+  onDragEnd?: (columnDropLocationDetails: ColumnDragEndLocation) => void;
+}
+
+export interface IColumnDragDropDetails {
+  /**
+   * Specifies the source column index
+   * @default -1
+   */
+  draggedIndex: number;
+
+  /**
+   * Specifies the target column index
+   * @default -1
+   */
+  targetIndex: number;
+}
+
+/**
+ * Enum to describe where the column has been dropped, after starting the drag
+ */
+export enum ColumnDragEndLocation {
+  /**
+   * Drag ended outside of current list
+   */
+  outside = 0,
+
+  /**
+   * Drag ended on current List
+   */
+  surface = 1,
+
+  /**
+   * Drag ended on Header
+   */
+  header = 2
 }
 
 export enum DetailsListLayoutMode {
@@ -554,8 +616,4 @@ export interface IDetailsGroupRenderProps extends IGroupRenderProps {
   onRenderHeader?: IRenderFunction<IDetailsGroupDividerProps>;
 }
 
-export interface IDetailsGroupDividerProps extends IGroupDividerProps {
-  columns?: IColumn[];
-  groupNestingDepth?: number;
-  selection?: ISelection;
-}
+export interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsItemProps {}

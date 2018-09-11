@@ -1,7 +1,22 @@
+import { IDetailsItemProps } from './DetailsRow.types';
 import { IColumn } from './DetailsList.types';
-import { ISelection } from '../../utilities/selection/index';
-export interface IDetailsFooterProps {
-  columns?: IColumn[];
-  groupNestingDepth?: number;
-  selection?: ISelection;
+import { ISelection, SelectionMode } from '../../utilities/selection/index';
+
+export interface IDetailsFooterBaseProps extends IDetailsItemProps {}
+
+export interface IDetailsFooterProps extends IDetailsFooterBaseProps {
+  /**
+   * Column metadata
+   */
+  columns: IColumn[];
+
+  /**
+   * Selection from utilities
+   */
+  selection: ISelection;
+
+  /**
+   * Selection mode
+   */
+  selectionMode: SelectionMode;
 }

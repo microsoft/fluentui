@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import { BaseComponent, classNamesFunction, divProperties, getNativeProps, createRef } from '../../Utilities';
+import { BaseComponent, classNamesFunction, divProperties, getNativeProps, createRef, getRTL } from '../../Utilities';
 import {
   IScrollablePane,
   IScrollablePaneProps,
@@ -10,12 +10,22 @@ import {
 import { Sticky } from '../../Sticky';
 
 export interface IScrollablePaneContext {
-  scrollablePane: PropTypes.Requireable<object>;
+  scrollablePane?: {
+    subscribe: (handler: (container: HTMLElement, stickyContainer: HTMLElement) => void) => void;
+    unsubscribe: (handler: (container: HTMLElement, stickyContainer: HTMLElement) => void) => void;
+    addSticky: (sticky: Sticky) => void;
+    removeSticky: (sticky: Sticky) => void;
+    updateStickyRefHeights: () => void;
+    sortSticky: (sticky: Sticky) => void;
+    notifySubscribers: (sort?: boolean) => void;
+  };
 }
 
 export interface IScrollablePaneState {
   stickyTopHeight: number;
   stickyBottomHeight: number;
+  scrollbarWidth: number | undefined;
+  scrollbarHeight: number | undefined;
 }
 
 const getClassNames = classNamesFunction<IScrollablePaneStyleProps, IScrollablePaneStyles>();
@@ -33,6 +43,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   private _subscribers: Set<Function>;
   private _stickies: Set<Sticky>;
   private _mutationObserver: MutationObserver;
+  private _notifyThrottled: () => void;
 
   constructor(props: IScrollablePaneProps) {
     super(props);
@@ -41,8 +52,12 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
 
     this.state = {
       stickyTopHeight: 0,
-      stickyBottomHeight: 0
+      stickyBottomHeight: 0,
+      scrollbarWidth: undefined,
+      scrollbarHeight: undefined
     };
+
+    this._notifyThrottled = this._async.throttle(this.notifySubscribers, 50);
   }
 
   public get root(): HTMLDivElement | null {
@@ -61,7 +76,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     return this._contentContainer.current;
   }
 
-  public getChildContext() {
+  public getChildContext(): IScrollablePaneContext {
     return {
       scrollablePane: {
         subscribe: this.subscribe,
@@ -77,7 +92,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
 
   public componentDidMount() {
     const { initialScrollPosition } = this.props;
-    this._events.on(this.contentContainer, 'scroll', this._async.throttle(this.notifySubscribers, 50));
+    this._events.on(this.contentContainer, 'scroll', this._onScroll);
     this._events.on(window, 'resize', this._onWindowResize);
     if (this.contentContainer && initialScrollPosition) {
       this.contentContainer.scrollTop = initialScrollPosition;
@@ -146,7 +161,9 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
       this.props.initialScrollPosition !== nextProps.initialScrollPosition ||
       this.props.className !== nextProps.className ||
       this.state.stickyTopHeight !== nextState.stickyTopHeight ||
-      this.state.stickyBottomHeight !== nextState.stickyBottomHeight
+      this.state.stickyBottomHeight !== nextState.stickyBottomHeight ||
+      this.state.scrollbarWidth !== nextState.scrollbarWidth ||
+      this.state.scrollbarHeight !== nextState.scrollbarHeight
     );
   }
 
@@ -167,6 +184,8 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     ) {
       this.notifySubscribers();
     }
+
+    this._async.setTimeout(this._onWindowResize, 0);
   }
 
   public render(): JSX.Element {
@@ -174,7 +193,8 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     const { stickyTopHeight, stickyBottomHeight } = this.state;
     const classNames = getClassNames(styles!, {
       theme: theme!,
-      className
+      className,
+      scrollbarVisibility: this.props.scrollbarVisibility
     });
 
     return (
@@ -185,9 +205,9 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
         <div
           ref={this._stickyAboveRef}
           className={classNames.stickyAbove}
-          style={this._getStickyContainerStyle(stickyTopHeight)}
+          style={this._getStickyContainerStyle(stickyTopHeight, true)}
         />
-        <div className={classNames.stickyBelow} style={this._getStickyContainerStyle(stickyBottomHeight)}>
+        <div className={classNames.stickyBelow} style={this._getStickyContainerStyle(stickyBottomHeight, false)}>
           <div ref={this._stickyBelowRef} className={classNames.stickyBelowItems} />
         </div>
       </div>
@@ -379,13 +399,58 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   };
 
   private _onWindowResize = (): void => {
+    const scrollbarWidth = this._getScrollbarWidth();
+    const scrollbarHeight = this._getScrollbarHeight();
+
+    this.setState({
+      scrollbarWidth,
+      scrollbarHeight
+    });
+
     this.notifySubscribers();
   };
 
-  private _getStickyContainerStyle = (height: number): React.CSSProperties => {
+  private _getStickyContainerStyle = (height: number, isTop: boolean): React.CSSProperties => {
     return {
       height: height,
-      width: this.contentContainer ? this.contentContainer.clientWidth : '100%'
+      ...(getRTL()
+        ? {
+            right: '0',
+            left: `${this.state.scrollbarWidth || this._getScrollbarWidth() || 0}px`
+          }
+        : {
+            left: '0',
+            right: `${this.state.scrollbarWidth || this._getScrollbarWidth() || 0}px`
+          }),
+      ...(isTop
+        ? {
+            top: '0'
+          }
+        : {
+            bottom: `${this.state.scrollbarHeight || this._getScrollbarHeight() || 0}px`
+          })
     };
+  };
+
+  private _getScrollbarWidth(): number | undefined {
+    const { contentContainer } = this;
+    return contentContainer ? contentContainer.offsetWidth - contentContainer.clientWidth : undefined;
+  }
+
+  private _getScrollbarHeight(): number | undefined {
+    const { contentContainer } = this;
+    return contentContainer ? contentContainer.offsetHeight - contentContainer.clientHeight : undefined;
+  }
+
+  private _onScroll = () => {
+    const { contentContainer } = this;
+
+    if (contentContainer) {
+      this._stickies.forEach((sticky: Sticky) => {
+        sticky.syncScroll(contentContainer);
+      });
+    }
+
+    this._notifyThrottled();
   };
 }

@@ -36,7 +36,8 @@ export const PersonaPageProps: IDocPageProps = {
     {
       title: 'Persona with initials',
       code: PersonaInitialsExampleCode,
-      view: <PersonaInitialsExample />
+      view: <PersonaInitialsExample />,
+      isScrollable: false
     },
     {
       title: 'Rendering custom persona text',
@@ -62,5 +63,6 @@ export const PersonaPageProps: IDocPageProps = {
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/docs/PersonaDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/docs/PersonaDonts.md'),
   isHeaderVisible: true,
+  isFeedbackVisible: true,
   allowNativeProps: true
 };

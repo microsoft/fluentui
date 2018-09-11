@@ -34,6 +34,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/recommendation'
         },
         {
+          component: require<any>('../components/Section/SectionPage').SectionPage,
+          key: 'EditSection',
+          name: 'EditSection',
+          url: '#/examples/section'
+        },
+        {
           component: require<any>('../components/MultiCount/MultiCountPage').MultiCountPage,
           key: 'MultiCount',
           name: 'MultiCount',

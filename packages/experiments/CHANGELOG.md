@@ -1,6 +1,140 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 08 Aug 2018 10:25:07 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Sep 2018 02:54:40 GMT and should not be manually modified.
+
+## 6.29.1
+Tue, 11 Sep 2018 02:54:40 GMT
+
+### Patches
+
+- update missing metadata signal icon
+- Tiles: Fix on hover underline issue for signal icon in Tiles view
+
+## 6.29.0
+Fri, 07 Sep 2018 22:04:50 GMT
+
+### Minor changes
+
+- Adjusting foundation usage, using new React 16 context.
+
+## 6.28.3
+Fri, 07 Sep 2018 16:29:48 GMT
+
+*Version update only*
+
+## 6.28.2
+Wed, 05 Sep 2018 10:29:25 GMT
+
+### Patches
+
+- nav fix
+- improve nav per designer feedback
+
+## 6.28.1
+Thu, 30 Aug 2018 19:26:04 GMT
+
+*Version update only*
+
+## 6.28.0
+Thu, 30 Aug 2018 10:32:49 GMT
+
+### Minor changes
+
+- TagPicker added as a Form input component.
+- Update Shared palette colors
+
+### Patches
+
+- Corrected some Checkbox implementations - should use 'aria-labelledby' instead of 'aria-describedby'
+
+## 6.27.1
+Tue, 28 Aug 2018 10:23:58 GMT
+
+### Patches
+
+- Experiments: Add theming examples page for documentation and to prep for testing schemes.
+
+## 6.27.0
+Fri, 24 Aug 2018 17:02:14 GMT
+
+### Minor changes
+
+- Reverting Customizer React 16 context change.
+
+## 6.26.0
+Fri, 24 Aug 2018 10:26:08 GMT
+
+### Minor changes
+
+- Text: now defaults to the default variant, added support for more styling options, adjusted how color is pulled, updated example.
+
+### Patches
+
+- Replace usage of deprecated onChanged prop with onChange
+
+## 6.25.0
+Thu, 23 Aug 2018 10:28:17 GMT
+
+### Minor changes
+
+- Adjusting foundation usage, using new React 16 context.
+
+## 6.24.3
+Tue, 21 Aug 2018 20:36:27 GMT
+
+### Patches
+
+- Adding required validator support for the FormDropdown in multi-select mode.
+
+## 6.24.2
+Tue, 21 Aug 2018 10:28:16 GMT
+
+### Patches
+
+- Experiments: fix TextPage require path after a file extension change.
+
+## 6.24.1
+Mon, 20 Aug 2018 10:26:10 GMT
+
+*Version update only*
+
+## 6.24.0
+Thu, 16 Aug 2018 10:26:16 GMT
+
+### Minor changes
+
+- Adding support for drop-downs with multiple selection to the FormDropdown component.
+
+## 6.23.3
+Tue, 14 Aug 2018 10:27:33 GMT
+
+### Patches
+
+- disabling codepen task
+
+## 6.23.2
+Tue, 14 Aug 2018 00:01:11 GMT
+
+*Version update only*
+
+## 6.23.1
+Mon, 13 Aug 2018 03:43:25 GMT
+
+### Patches
+
+- Remove utilities index file.
+
+## 6.23.0
+Fri, 10 Aug 2018 10:26:08 GMT
+
+### Minor changes
+
+- Stack: render vertically by default, add horizontalAlignment, verticalAlignment, fillHorizontal, fillVertical properties
+- Updating `Text` component with fixes to make it usable.
+
+### Patches
+
+- Inject customizations into Foundation. Add contextual theming and styling examples.
 
 ## 6.22.6
 Wed, 08 Aug 2018 10:25:07 GMT

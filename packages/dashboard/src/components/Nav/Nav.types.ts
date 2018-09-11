@@ -71,6 +71,16 @@ export interface INavProps {
    * The state "showMore" stays in the parent NavToggler component to keep show more/less state of Nav and SlimNav component in sync.
    */
   onShowMoreLinkClicked?(ev: React.MouseEvent<HTMLElement>): void;
+
+  /**
+   * (Optional) callback for the parent component when the nav node is toggled between expanded and collapsed state
+   */
+  onNavNodeExpandedCallback?(nodeKey: string, isExpanded: boolean): void;
+
+  /**
+   * (Optional) callback for the parent component when the edit nav node is clicked
+   */
+  onEditLeftNavClickedCallback?(): void;
 }
 
 export interface INavState extends INavState {
@@ -132,6 +142,16 @@ export interface INavStyleProps {
   hasChildren?: boolean;
 
   /**
+   * has group name
+   */
+  hasGroupName?: boolean;
+
+  /**
+   * has child be selected boolean
+   */
+  isChildLinkSelected?: boolean;
+
+  /**
    * nesting level of the nav item in the nav tree
    */
   nestingLevel?: number;
@@ -157,6 +177,11 @@ export interface INavStyles {
    * Style set for the nav item root
    */
   navItemRoot: IStyle;
+
+  /**
+   * Style set for the bar marker in the nav item
+   */
+  navItemBarMarker: IStyle;
 
   /**
    * Style set for the icon column in the nav item
@@ -196,7 +221,7 @@ export interface INavStyles {
   /**
    * Style set for the group name in nav group separator
    */
-  navGroupSeparatorGroupName: IStyle;
+  navGroupSeparatorHeaderGroupName: IStyle;
 
   /**
    * Style set for the nav toggler which toggles expanded and slim nav
@@ -249,4 +274,9 @@ export interface INavLinkProps extends React.AllHTMLAttributes<HTMLAnchorElement
    * CSS class for the icon part of the nav link
    */
   iconClassName?: string;
+
+  /**
+   * CSS class for the bar marker part of the nav link
+   */
+  barClassName?: string;
 }

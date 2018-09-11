@@ -1,14 +1,14 @@
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
-import { IDataPoint } from '../../types/IDataPoint';
-export { IDataPoint } from '../../types/IDataPoint';
+
 export interface IDonutChart {}
+import { IChartProps } from './index';
 
 export interface IDonutChartProps {
   /**
    * Data to render in the chart.
    */
-  data?: IDataPoint[];
+  data?: IChartProps;
 
   /**
    * Width of the donut.
@@ -21,14 +21,14 @@ export interface IDonutChartProps {
   height?: number;
 
   /**
-   * colors to render in the chart.
-   */
-  colors?: string[];
-
-  /**
    * Additional CSS class(es) to apply to the DonutChart.
    */
   className?: string;
+
+  /**
+   * inner radius for donut size
+   */
+  innerRadius?: number;
 
   /**
    * Theme (provided through customization.)
@@ -44,18 +44,34 @@ export interface IDonutChartProps {
    * Width of line stroke
    */
   strokeWidth?: number;
-  /**
-   * legend X position
-   */
-  legendX?: number;
-  /**
-   * Legend Y position
-   */
-  legendY?: number;
 }
 
-export type IDonutChartStyleProps = Required<Pick<IDonutChartProps, 'theme' | 'width' | 'height'>> &
-  Pick<IDonutChartProps, 'className' | 'legendX' | 'legendY'>;
+export interface IDonutChartStyleProps {
+  /**
+   * Theme (provided through customization.)
+   */
+  theme: ITheme;
+
+  /**
+   * Additional CSS class(es) to apply to the Donut chart.
+   */
+  className?: string;
+
+  /**
+   * Height of the donut.
+   */
+  height?: number;
+
+  /**
+   * Width of the donut.
+   */
+  width: number;
+
+  /**
+   * color for hover font color
+   */
+  color?: string;
+}
 
 export interface IDonutChartStyles {
   /**
@@ -67,9 +83,23 @@ export interface IDonutChartStyles {
    * Style for the chart.
    */
   chart?: IStyle;
+  /**
+   * Style for the legend container.
+   */
+  legendContainer: IStyle;
 
   /**
-   * Style set for the Pie component Legend
+   * Style for the legend card title displayed in the hover card
    */
-  legend: IStyle;
+  hoverCardTextStyles: IStyle;
+
+  /**
+   * Style for the data displayed in the hover card
+   */
+  hoverCardDataStyles: IStyle;
+
+  /**
+   * Style for the root of the hover card
+   */
+  hoverCardRoot: IStyle;
 }

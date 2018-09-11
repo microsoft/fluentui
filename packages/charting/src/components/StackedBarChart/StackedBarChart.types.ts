@@ -2,15 +2,13 @@ import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface IStackedBarChart {}
-import { IDataPoint } from '../../types/IDataPoint';
-
-export { IDataPoint } from '../../types/IDataPoint';
+import { IChartProps } from './index';
 
 export interface IStackedBarChartProps {
   /**
    * Data to render in the chart.
    */
-  data?: IDataPoint[];
+  data?: IChartProps;
 
   /**
    * Width of the chart.
@@ -18,24 +16,24 @@ export interface IStackedBarChartProps {
   width?: number;
 
   /**
-   * Height of the chart.
-   */
-  height?: number;
-
-  /**
    * Height of each bar in the chart.
    */
   barHeight?: number;
 
   /**
-   * Colors from which to select the color of each bar.
+   * Do not show the legend at the bottom of chart
+   * when there are more than two datapoints
+   *
+   * @default false
    */
-  colors?: string[];
+  hideLegend?: boolean;
 
   /**
-   * Title to apply to the whole chart.
+   * Do not show number/ratio on top of bar
+   *
+   * @default false
    */
-  chartTitle?: string;
+  hideNumberDisplay?: boolean;
 
   /**
    * Additional CSS class(es) to apply to the StackedBarChart.
@@ -51,6 +49,13 @@ export interface IStackedBarChartProps {
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IStackedBarChartStyleProps, IStackedBarChartStyles>;
+
+  isMultiStackedBarChart?: boolean;
+
+  /**
+   * Color setting of bar background color, this will show while all data points value is 0
+   */
+  barBackgroundColor?: string;
 }
 
 export interface IStackedBarChartStyleProps {
@@ -67,17 +72,27 @@ export interface IStackedBarChartStyleProps {
   /**
    * Width of the chart.
    */
-  width: number;
-
-  /**
-   * Height of the chart.
-   */
-  height: number;
+  width?: number;
 
   /**
    * Height of bar in the chart.
    */
   barHeight?: number;
+
+  /**
+   * prop to show data of the chart with appropriate legend color
+   */
+  legendColor?: string;
+
+  /**
+   * prop to check if the chart is selcted or hovered upon to determine opacity
+   */
+  shouldHighlight?: boolean;
+
+  /**
+   * prop to check which specific section of the stacked bar chart is selected or hovered upon
+   */
+  isChartSelected?: boolean;
 }
 
 export interface IStackedBarChartStyles {
@@ -97,27 +112,27 @@ export interface IStackedBarChartStyles {
   chartTitle: IStyle;
 
   /**
-   * Style for the element containing all the bars in the chart.
+   * Style for the legend container div
    */
-  bars: IStyle;
+  legendContainer: IStyle;
+
   /**
-   * Style for the element containing all the Legends in the chart.
+   * Style for the legend card title displayed in the hover card
    */
-  legend: IStyle;
+  hoverCardTextStyles: IStyle;
+
   /**
-   * Style for the element subTitle.
+   * Style for the data displayed in the hover card
    */
-  subTitle: IStyle;
+  hoverCardDataStyles: IStyle;
+
   /**
-   * Style for the element value.
+   * Style for the root of the hover card
    */
-  value: IStyle;
+  hoverCardRoot: IStyle;
+
   /**
-   * Style for the legend  bars.
+   * Style to change the opacity of bars in dataviz when we hover on a single bar or legends
    */
-  legendBar: IStyle;
-  /**
-   * Style for the legend text.
-   */
-  legendText: IStyle;
+  opacityChangeOnHover: IStyle;
 }

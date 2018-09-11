@@ -6,6 +6,7 @@ import { RatingButtonControlledExample } from './examples/Rating.ButtonControlle
 import { RatingStatus } from './Rating.checklist';
 
 const RatingBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Rating/examples/Rating.Basic.Example.tsx') as string;
+const RatingBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Rating/Rating.Basic.Example.Codepen.txt') as string;
 const RatingButtonControlledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Rating/examples/Rating.ButtonControlled.Example.tsx') as string;
 
 export const RatingPageProps: IDocPageProps = {
@@ -18,7 +19,8 @@ export const RatingPageProps: IDocPageProps = {
     {
       title: 'Rating',
       code: RatingBasicExampleCode,
-      view: <RatingBasicExample />
+      view: <RatingBasicExample />,
+      codepenJS: RatingBasicExampleCodepen
     },
     {
       title: 'Button Controlled Rating',
@@ -33,5 +35,6 @@ export const RatingPageProps: IDocPageProps = {
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Rating/docs/RatingDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Rating/docs/RatingDonts.md'),
-  isHeaderVisible: true
+  isHeaderVisible: true,
+  isFeedbackVisible: true
 };

@@ -22,7 +22,7 @@ class FocusTrapComponent extends React.Component<IFocusTrapComponentProps, IFocu
         <DefaultButton onClick={this._onStringButtonClicked} text={this.props.name} />
         <Toggle
           defaultChecked={this.props.isActive}
-          onChanged={this._onFocusTrapZoneToggleChanged}
+          onChange={this._onFocusTrapZoneToggleChanged}
           label="Focus Trap Zone"
           onText="On"
           offText="Off"
@@ -41,7 +41,7 @@ class FocusTrapComponent extends React.Component<IFocusTrapComponentProps, IFocu
     console.log(this.props.name);
   };
 
-  private _onFocusTrapZoneToggleChanged = (isChecked: boolean): void => {
+  private _onFocusTrapZoneToggleChanged = (ev: React.MouseEvent<HTMLElement>, isChecked: boolean): void => {
     this.props.setIsActive(this.props.name, isChecked);
   };
 }

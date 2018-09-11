@@ -11,7 +11,9 @@ import {
   getWindow,
   getDocument,
   css,
-  createRef
+  createRef,
+  getNativeProps,
+  divProperties
 } from '../../Utilities';
 import {
   positionCallout,
@@ -192,6 +194,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     const content = (
       <div ref={this._hostElement} className={this._classNames.container} style={visibilityStyle}>
         <div
+          {...getNativeProps(this.props, divProperties)}
           className={css(this._classNames.root, positions && positions.targetEdge && ANIMATIONS[positions.targetEdge!])}
           style={positions ? positions.elementPosition : OFF_SCREEN_STYLE}
           tabIndex={-1} // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
@@ -318,11 +321,18 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   }
 
   private _updatePosition(): void {
+    // Try to update the target, page might have changed
+    this._setTargetWindowAndElement(this._getTarget());
+
     const { positions } = this.state;
     const hostElement: HTMLElement | null = this._hostElement.current;
     const calloutElement: HTMLElement | null = this._calloutElement.current;
 
-    if (hostElement && calloutElement) {
+    // If we expect a target element to position against, we need to wait until `this._target` is resolved. Otherwise
+    // we can try to position.
+    const expectsTarget = !!this.props.target;
+
+    if (hostElement && calloutElement && (!expectsTarget || this._target)) {
       let currentProps: IPositionProps | undefined;
       currentProps = assign(currentProps, this.props);
       currentProps!.bounds = this._getBounds();

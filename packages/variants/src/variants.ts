@@ -2,17 +2,17 @@ import { IPalette, ISemanticColors, ITheme, IPartialTheme, createTheme } from 'o
 import { VariantThemeType } from './variantThemeType';
 
 function makeThemeFromPartials(
-  originalTheme: IPartialTheme,
+  originalTheme: ITheme,
   partialPalette: Partial<IPalette>,
   partialSemantic: Partial<ISemanticColors>
 ): ITheme {
-  return createTheme({
-    ...originalTheme,
-    ...{
-      palette: { ...originalTheme.palette, ...partialPalette },
-      semanticColors: { ...originalTheme.semanticColors, ...partialSemantic }
-    }
-  });
+  // Create variant palette
+  let variantTheme = createTheme({ palette: { ...originalTheme.palette, ...partialPalette } });
+  // Change semantic colors to use updated variant palette values
+  variantTheme.semanticColors = { ...variantTheme.semanticColors, ...partialSemantic };
+  // Fill in the rest of the theme
+  variantTheme = { ...originalTheme, palette: variantTheme.palette, semanticColors: variantTheme.semanticColors };
+  return variantTheme;
 }
 
 /**
@@ -85,10 +85,30 @@ export function getNeutralVariant(theme: IPartialTheme): ITheme {
     bodyStandoutBackground: p.neutralLight,
     bodyFrameBackground: !fullTheme.isInverted ? p.neutralLight : p.neutralLighter,
     bodyFrameDivider: !fullTheme.isInverted ? p.neutralLight : p.neutralQuaternary,
-    variantBorder: !fullTheme.isInverted ? p.neutralQuaternaryAlt : p.neutralLighterAlt
+    variantBorder: !fullTheme.isInverted ? p.neutralQuaternaryAlt : p.neutralLighterAlt,
+    variantBorderHovered: p.neutralTertiary,
+    defaultStateBackground: p.neutralQuaternaryAlt,
+
+    buttonBackground: p.neutralQuaternaryAlt,
+    buttonBackgroundHovered: p.neutralQuaternary,
+    buttonBackgroundPressed: !fullTheme.isInverted ? p.neutralTertiary : p.neutralTertiaryAlt,
+    buttonBackgroundDisabled: p.neutralLight,
+    buttonBorder: 'transparent',
+    buttonText: p.neutralPrimary,
+    buttonTextHovered: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary,
+    buttonTextPressed: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary,
+    buttonTextDisabled: !fullTheme.isInverted ? p.neutralTertiary : p.neutralTertiaryAlt,
+    buttonBorderDisabled: 'transparent',
+    primaryButtonBackground: p.themePrimary,
+    primaryButtonBackgroundHovered: p.themeDarkAlt,
+    primaryButtonBackgroundPressed: p.themeDark,
+    primaryButtonBorder: 'transparent',
+    primaryButtonText: p.white,
+    primaryButtonTextHovered: p.white,
+    primaryButtonTextPressed: p.white
   };
 
-  return makeThemeFromPartials(theme, partialPalette, partialSemantic);
+  return makeThemeFromPartials(fullTheme, partialPalette, partialSemantic);
 }
 
 /**
@@ -148,10 +168,30 @@ export function getSoftVariant(theme: IPartialTheme): ITheme {
     // inputBackgroundCheckedHovered: p.themeDarkAlt,
     inputForegroundChecked: p.themeLighter,
     // inputFocusBorderAlt: p.themePrimary,
-    variantBorder: !fullTheme.isInverted ? p.neutralLight : p.neutralLighterAlt
+    variantBorder: !fullTheme.isInverted ? p.neutralLight : p.neutralLighterAlt,
+    variantBorderHovered: p.neutralTertiary,
+    defaultStateBackground: !fullTheme.isInverted ? p.themeLight : p.themeTertiary,
+
+    buttonBackground: p.neutralQuaternaryAlt,
+    buttonBackgroundHovered: p.neutralQuaternary,
+    buttonBackgroundPressed: !fullTheme.isInverted ? p.neutralTertiary : p.neutralTertiaryAlt,
+    buttonBackgroundDisabled: p.neutralLight,
+    buttonBorder: 'transparent',
+    buttonText: p.neutralPrimary,
+    buttonTextHovered: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary,
+    buttonTextPressed: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary,
+    buttonTextDisabled: !fullTheme.isInverted ? p.neutralTertiary : p.neutralTertiaryAlt,
+    buttonBorderDisabled: 'transparent',
+    primaryButtonBackground: p.themePrimary,
+    primaryButtonBackgroundHovered: p.themeDarkAlt,
+    primaryButtonBackgroundPressed: p.themeDark,
+    primaryButtonBorder: 'transparent',
+    primaryButtonText: p.white,
+    primaryButtonTextHovered: p.white,
+    primaryButtonTextPressed: p.white
   };
 
-  return makeThemeFromPartials(theme, partialPalette, partialSemantic);
+  return makeThemeFromPartials(fullTheme, partialPalette, partialSemantic);
 }
 
 /**
@@ -219,19 +259,44 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
     // inputBackgroundCheckedHovered: p.themePrimary,
     inputForegroundChecked: p.themeDark,
     // inputFocusBorderAlt: p.themePrimary,
-    variantBorder: p.themeDark
+    variantBorder: p.themeDark,
+    variantBorderHovered: p.themeDarker,
+    defaultStateBackground: p.themeDark,
+
+    buttonBackground: p.themePrimary,
+    buttonBackgroundHovered: p.themeDarkAlt,
+    buttonBackgroundPressed: p.themeDark,
+    buttonBackgroundDisabled: !fullTheme.isInverted ? p.themeLighter : p.themeLight,
+    buttonBorder: p.white,
+    buttonText: p.white,
+    buttonTextHovered: p.white,
+    buttonTextPressed: p.white,
+    buttonTextDisabled: p.themeTertiary,
+    buttonBorderDisabled: 'transparent',
+    primaryButtonBackground: p.white,
+    primaryButtonBackgroundHovered: !fullTheme.isInverted ? p.themeLighter : p.themeLight,
+    primaryButtonBackgroundPressed: !fullTheme.isInverted ? p.themeLight : p.themeTertiary,
+    primaryButtonBorder: 'transparent',
+    primaryButtonText: !fullTheme.isInverted ? p.themePrimary : p.neutralPrimary,
+    primaryButtonTextHovered: !fullTheme.isInverted ? p.themeDark : p.neutralPrimary,
+    primaryButtonTextPressed: !fullTheme.isInverted ? p.themeDark : p.neutralPrimary
   };
 
   // Strong variant is unique here, we've redefined the entire palette and are
   // effectively inverting the theme. Thus, do not mix in the original theme's value
   // for the palette and semanticColors, since they will not work well "inverted",
   // instead, use the new palette and then generate semanticColors from scratch.
-  return createTheme({
-    ...theme,
-    ...{
-      palette: partialPalette,
-      semanticColors: partialSemantic,
-      isInverted: !theme.isInverted
-    }
-  });
+
+  // Create variant palette
+  let variantTheme = createTheme({ palette: { ...fullTheme.palette, ...partialPalette } });
+  // Change semantic colors to use updated variant palette values
+  variantTheme.semanticColors = { ...variantTheme.semanticColors, ...partialSemantic };
+  // Fill in the rest of the theme
+  variantTheme = {
+    ...fullTheme,
+    palette: variantTheme.palette,
+    semanticColors: variantTheme.semanticColors,
+    isInverted: !fullTheme.isInverted
+  };
+  return variantTheme;
 }

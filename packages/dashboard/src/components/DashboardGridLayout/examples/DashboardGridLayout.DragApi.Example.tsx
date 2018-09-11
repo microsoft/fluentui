@@ -1,8 +1,7 @@
 import * as React from 'react';
 import Draggable, { DraggableData, ControlPosition } from 'react-draggable';
 import { createDragApiRef, Layout } from 'react-grid-layout';
-import { DashboardGridLayout } from '../DashboardGridLayout';
-import { Size } from '../DashboardGridLayout.types';
+import { CardSize, DashboardGridLayout } from '@uifabric/dashboard';
 import * as exampleStyles from './DashboardGridLayout.Example.scss';
 import { DefaultButton } from 'office-ui-fabric-react/lib//Button';
 
@@ -28,7 +27,7 @@ export class DashboardGridLayoutDragApiExample extends React.PureComponent<
           x: i,
           w: 1,
           h: 1,
-          size: Size.small
+          size: CardSize.small
         };
       }),
       position: {

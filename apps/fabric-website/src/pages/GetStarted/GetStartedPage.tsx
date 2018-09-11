@@ -229,7 +229,7 @@ ReactDOM.render(<MyPage />, document.body.firstChild);`}
               </CodeBlock>
             </li>
             <li>
-              <p>Add props to your component to tack advantage of Fabric React's rich functionality.</p>
+              <p>Add props to your component to take advantage of Fabric React's rich functionality.</p>
               <CodeBlock language="javascript" isLightTheme={true}>
                 {`<DefaultButton
   text='See Button'

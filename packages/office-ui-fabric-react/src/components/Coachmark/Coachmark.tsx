@@ -1,6 +1,16 @@
 // Utilities
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, createRef, IRectangle, KeyCodes, shallowCompare } from '../../Utilities';
+import {
+  BaseComponent,
+  classNamesFunction,
+  createRef,
+  elementContains,
+  focusFirstChild,
+  getDocument,
+  IRectangle,
+  KeyCodes,
+  shallowCompare
+} from '../../Utilities';
 import { DefaultPalette } from '../../Styling';
 import { IPositionedData, RectangleEdge, getOppositeEdge } from '../../utilities/positioning';
 
@@ -10,7 +20,7 @@ import { Beak, BEAK_HEIGHT, BEAK_WIDTH } from './Beak/Beak';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
 // Coachmark
-import { ICoachmarkProps } from './Coachmark.types';
+import { ICoachmark, ICoachmarkProps } from './Coachmark.types';
 import {
   COACHMARK_HEIGHT,
   COACHMARK_WIDTH,
@@ -102,7 +112,7 @@ export interface ICoachmarkState {
   alertText?: string;
 }
 
-export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
+export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> implements ICoachmark {
   public static defaultProps: Partial<ICoachmarkProps> = {
     isCollapsed: true,
     mouseProximityOffset: 10,
@@ -122,6 +132,7 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
   private _translateAnimationContainer = createRef<HTMLDivElement>();
   private _ariaAlertContainer = createRef<HTMLDivElement>();
   private _positioningContainer = createRef<IPositioningContainer>();
+  private _focusTrapZone = createRef<FocusTrapZone>();
 
   /**
    * The target element the mouse would be in
@@ -131,6 +142,15 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
 
   constructor(props: ICoachmarkProps) {
     super(props);
+
+    this._warnDeprecations({
+      teachingBubbleRef: undefined,
+      collapsed: 'isCollapsed',
+      beakWidth: undefined,
+      beakHeight: undefined,
+      width: undefined,
+      height: undefined
+    });
 
     // Set defaults for state
     this.state = {
@@ -219,17 +239,22 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
           <div className={classNames.translateAnimationContainer} ref={this._translateAnimationContainer}>
             <div className={classNames.scaleAnimationLayer}>
               <div className={classNames.rotateAnimationLayer}>
-                {this._positioningContainer.current && (
-                  <Beak
-                    left={beakLeft}
-                    top={beakTop}
-                    right={beakRight}
-                    bottom={beakBottom}
-                    direction={this._beakDirection}
-                    color={color}
-                  />
-                )}
-                <FocusTrapZone isClickableOutsideFocusTrap={true}>
+                {this._positioningContainer.current &&
+                  isCollapsed && (
+                    <Beak
+                      left={beakLeft}
+                      top={beakTop}
+                      right={beakRight}
+                      bottom={beakBottom}
+                      direction={this._beakDirection}
+                      color={color}
+                    />
+                  )}
+                <FocusTrapZone
+                  componentRef={this._focusTrapZone}
+                  isClickableOutsideFocusTrap={true}
+                  forceFocusInsideTrap={false}
+                >
                   <div
                     className={classNames.entityHost}
                     tabIndex={-1}
@@ -285,6 +310,9 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
     ) {
       this._setBeakPosition();
     }
+    if (prevProps.preventDismissOnLostFocus !== this.props.preventDismissOnLostFocus) {
+      this._addListeners();
+    }
   }
 
   public componentDidMount(): void {
@@ -305,9 +333,9 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
           this.forceUpdate();
         }
 
-        this._events.on(document, 'keydown', this._onKeyDown, true);
+        this._addListeners();
 
-        // We dont want to the user to immediatley trigger the coachmark when it's opened
+        // We don't want to the user to immediately trigger the Coachmark when it's opened
         this._async.setTimeout(() => {
           this._addProximityHandler(this.props.mouseProximityOffset);
         }, this.props.delayBeforeMouseOpen!);
@@ -322,12 +350,49 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
             }
           }, 0);
         }
+        this._async.setTimeout(() => {
+          if (this._focusTrapZone.current) {
+            this._focusTrapZone.current.focus();
+          }
+        }, 1000);
       }
     );
   }
 
-  public componentWillUnmount(): void {
-    this._events.off(document, 'keydown', this._onKeyDown, true);
+  public dismiss = (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
+    const { onDismiss } = this.props;
+
+    if (onDismiss) {
+      onDismiss(ev);
+    }
+  };
+
+  private _addListeners(): void {
+    const { preventDismissOnLostFocus } = this.props;
+    const currentDoc: Document = getDocument()!;
+
+    this._events.off();
+
+    if (currentDoc) {
+      this._events.on(currentDoc, 'keydown', this._onKeyDown, true);
+
+      if (!preventDismissOnLostFocus) {
+        this._events.on(currentDoc, 'click', this._dismissOnLostFocus, true);
+        this._events.on(currentDoc, 'focus', this._dismissOnLostFocus, true);
+      }
+    }
+  }
+
+  private _dismissOnLostFocus(ev: Event) {
+    const clickTarget = ev.target as HTMLElement;
+    const clickedOutsideCallout =
+      this._translateAnimationContainer.current &&
+      !elementContains(this._translateAnimationContainer.current, clickTarget);
+    const { target } = this.props;
+
+    if (clickedOutsideCallout && clickTarget !== target && !elementContains(target as HTMLElement, clickTarget)) {
+      this.dismiss(ev);
+    }
   }
 
   private _onKeyDown = (e: any): void => {
@@ -484,10 +549,10 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
         (): void => {
           // Need setTimeout to trigger narrator
           this._async.setTimeout(() => {
-            if (this.props.teachingBubbleRef) {
-              this.props.teachingBubbleRef.focus();
+            if (this._entityInnerHostElement.current) {
+              focusFirstChild(this._entityInnerHostElement.current);
             }
-          }, 500);
+          }, 1000);
 
           if (this.props.onAnimationOpenEnd) {
             this.props.onAnimationOpenEnd();

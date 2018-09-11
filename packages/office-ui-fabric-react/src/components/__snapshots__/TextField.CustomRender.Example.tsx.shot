@@ -58,7 +58,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                   -webkit-font-smoothing: antialiased;
                   background-color: transparent;
                   border-radius: 0px;
-                  border: 1px solid transparent;
+                  border: none;
                   box-sizing: border-box;
                   cursor: pointer;
                   display: inline-block;
@@ -99,6 +99,11 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                   outline-color: ButtonText;
                   right: -2px;
                   top: -2px;
+                }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
                 }
                 &:hover {
                   color: #004578;
@@ -186,22 +191,11 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
               padding-top: 0px;
               position: relative;
             }
-            &:-ms-clear {
-              display: none;
-            }
             &:hover {
               border-color: #212121;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
-            }
-            &::placeholder {
-              color: #666666;
-              opacity: 1;
-            }
-            &:-ms-input-placeholder {
-              color: #666666;
-              opacity: 1;
             }
       >
         <input
@@ -235,8 +229,16 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
               &:active, &:focus, &:hover {
                 outline: 0px;
               }
+              &::-ms-clear {
+                display: none;
+              }
               &::placeholder {
                 color: #666666;
+                opacity: 1;
+              }
+              &:-ms-input-placeholder {
+                color: #666666;
+                opacity: 1;
               }
           id="TextField0"
           onBlur={[Function]}

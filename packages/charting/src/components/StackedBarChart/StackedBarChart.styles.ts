@@ -1,50 +1,50 @@
 import { IStackedBarChartStyleProps, IStackedBarChartStyles } from './StackedBarChart.types';
 
 export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartStyles => {
-  const { className, width, height } = props;
-
-  const chartWidth = width;
-  const chartPadding = 10;
-  const chartHeight = height;
+  const { className, width, barHeight, legendColor, shouldHighlight, theme } = props;
   return {
     root: [
       'ms-StackedBarChart',
       {
-        width: chartWidth + 2 * chartPadding
+        width: width ? width : '100%',
+        display: 'flex',
+        flexDirection: 'column'
       },
       className
     ],
-    chart: [
-      {
-        padding: chartPadding,
-        width: chartWidth,
-        height: chartHeight
-      }
-    ],
-    chartTitle: [
-      {
-        padding: chartPadding,
-        display: 'flex'
-      }
-    ],
-    bars: [],
-    legend: [
-      {
-        listStyle: 'none',
-        display: 'flex',
-        flexWrap: 'wrap',
-        paddingLeft: '30px',
-        paddingRight: '30px'
-      }
-    ],
-    subTitle: [{ width: '100%' }],
-    value: [
-      {
-        width: '100%',
-        textAlign: 'right'
-      }
-    ],
-    legendBar: [{ display: 'flex', padding: '10px 10px 0px 0px' }],
-    legendText: [{ marginTop: '-5px', paddingLeft: '5px' }]
+    chart: {
+      width: '100%',
+      height: barHeight ? barHeight : 16,
+      marginBottom: '13px'
+    },
+    chartTitle: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      marginBottom: '5px',
+      fontSize: '12px'
+    },
+    legendContainer: {
+      paddingTop: '4px'
+    },
+    hoverCardTextStyles: {
+      ...theme.fonts.medium,
+      lineHeight: '14px'
+    },
+    hoverCardDataStyles: {
+      color: legendColor === '' ? theme.palette.black : legendColor,
+      fontSize: '28px',
+      fontFamily: 'Segoe UI',
+      fontWeight: 'bold',
+      lineHeight: '31px'
+    },
+    hoverCardRoot: {
+      paddingLeft: '16px',
+      paddingRight: '22px',
+      paddingTop: '15px',
+      paddingBottom: '8px'
+    },
+    opacityChangeOnHover: {
+      opacity: shouldHighlight ? '' : '0.1'
+    }
   };
 };

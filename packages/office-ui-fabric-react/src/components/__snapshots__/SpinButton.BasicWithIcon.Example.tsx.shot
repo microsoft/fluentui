@@ -194,7 +194,7 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 color: #333333;
                 cursor: default;
@@ -237,9 +237,14 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 background-color: #eaeaea;
-                color: #000000;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -322,7 +327,7 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: none;
                 box-sizing: border-box;
                 color: #333333;
                 cursor: default;
@@ -365,9 +370,14 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 background-color: #eaeaea;
-                color: #000000;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;

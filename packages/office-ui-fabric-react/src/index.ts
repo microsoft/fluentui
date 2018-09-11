@@ -11,6 +11,7 @@ export * from './Callout';
 export * from './Check';
 export * from './Checkbox';
 export * from './ChoiceGroup';
+export * from './Coachmark';
 export * from './ColorPicker';
 export * from './ComboBox';
 export * from './CommandBar';

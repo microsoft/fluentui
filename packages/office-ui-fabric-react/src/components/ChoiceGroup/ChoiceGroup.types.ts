@@ -53,6 +53,11 @@ export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IChoiceGroupStyleProps, IChoiceGroupStyles>;
+
+  /**
+   * Aria labelled by prop for the ChoiceGroup itself
+   */
+  ariaLabelledBy?: string;
 }
 
 export interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | HTMLInputElement> {
@@ -72,7 +77,7 @@ export interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | H
   onRenderField?: IRenderFunction<IChoiceGroupOption>;
 
   /**
-   * Optional override of option render
+   * Optional override of label render
    */
   onRenderLabel?: (option: IChoiceGroupOption) => JSX.Element;
 

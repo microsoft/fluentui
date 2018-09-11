@@ -14,9 +14,11 @@ import { PanelLightDismissExample } from './examples/Panel.LightDismiss.Example'
 import { PanelLightDismissCustomExample } from './examples/Panel.LightDismissCustom.Example';
 import { PanelNonModalExample } from './examples/Panel.NonModal.Example';
 import { PanelFooterExample } from './examples/Panel.Footer.Example';
+import { PanelPreventDefaultExample } from './examples/Panel.PreventDefault.Example';
 import { PanelStatus } from './Panel.checklist';
 
 const PanelSmallRightExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.SmallRight.Example.tsx') as string;
+const PanelSmallRightExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Panel/Panel.SmallRight.Example.Codepen.txt') as string;
 const PanelSmallLeftExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.SmallLeft.Example.tsx') as string;
 const PanelSmallFluidExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.SmallFluid.Example.tsx') as string;
 const PanelMediumExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.Medium.Example.tsx') as string;
@@ -29,6 +31,7 @@ const PanelLightDismissExampleCode = require('!raw-loader!office-ui-fabric-react
 const PanelLightDismissCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.LightDismissCustom.Example.tsx') as string;
 const PanelNonModalExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.NonModal.Example.tsx') as string;
 const PanelFooterExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.Footer.Example.tsx') as string;
+const PanelPreventDefaultExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.PreventDefault.Example.tsx') as string;
 
 export const PanelPageProps: IDocPageProps = {
   title: 'Panel',
@@ -40,7 +43,8 @@ export const PanelPageProps: IDocPageProps = {
     {
       title: 'Panel - Small Panel, Anchored Right, Fixed Width',
       code: PanelSmallRightExampleCode,
-      view: <PanelSmallRightExample />
+      view: <PanelSmallRightExample />,
+      codepenJS: PanelSmallRightExampleCodepen
     },
     {
       title: 'Panel - Small Panel, Anchored Left, Fixed Width',
@@ -101,6 +105,11 @@ export const PanelPageProps: IDocPageProps = {
       title: 'Panel - Footer',
       code: PanelFooterExampleCode,
       view: <PanelFooterExample />
+    },
+    {
+      title: 'Panel - Prevent Default Sample',
+      code: PanelPreventDefaultExampleCode,
+      view: <PanelPreventDefaultExample />
     }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/Panel.types.ts')],
@@ -109,5 +118,6 @@ export const PanelPageProps: IDocPageProps = {
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelDonts.md'),
   isHeaderVisible: true,
+  isFeedbackVisible: true,
   allowNativeProps: true
 };

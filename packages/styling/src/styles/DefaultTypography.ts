@@ -1,17 +1,18 @@
 import { DefaultFontStyles } from './DefaultFontStyles';
-import { FontWeights } from './fonts';
-import { IFontFamilies, IFontSizes, IFontWeights, IFontTypes, ITypography } from '../interfaces/ITypography';
+import { FontSizes, FontWeights } from './fonts';
+import { IFontFamilies, IFontSizes, IFontWeights, IFontVariants, ITypography } from '../interfaces/ITypography';
 
 export const DefaultFontSizes: IFontSizes = {
-  tiny: '1rem',
-  xSmall: '1.2rem',
-  small: '1.3rem',
-  medium: '1.4rem',
-  large: '1.6rem',
-  xLarge: '1.8rem',
-  xxLarge: '2rem',
-  xxxLarge: '3rem',
-  mega: '4rem'
+  mini: FontSizes.mini,
+  xSmall: FontSizes.xSmall,
+  small: FontSizes.small,
+  smallPlus: FontSizes.smallPlus,
+  medium: FontSizes.medium,
+  mediumPlus: FontSizes.mediumPlus,
+  large: FontSizes.large,
+  xLarge: FontSizes.xLarge,
+  xxLarge: FontSizes.xxLarge,
+  mega: FontSizes.mega
 };
 
 export const DefaultFontFamilies: IFontFamilies = {
@@ -20,48 +21,52 @@ export const DefaultFontFamilies: IFontFamilies = {
 };
 
 export const DefaultFontWeights: IFontWeights = {
+  default: FontWeights.regular,
   regular: FontWeights.regular,
   light: FontWeights.light,
   semibold: FontWeights.semibold,
   bold: FontWeights.bold
 };
 
-export const DefaultFontTypes: IFontTypes = {
+export const DefaultFontVariants: IFontVariants = {
   default: {
-    fontFamily: 'default',
-    fontSize: 'medium',
-    fontWeight: 'default'
+    family: 'default',
+    size: 'medium',
+    weight: 'default'
   },
 
-  disabled: {},
-
   caption: {
-    fontSize: 'xSmall'
+    size: 'xSmall'
   },
 
   h1: {
-    fontSize: 'mega',
-    fontWeight: 'light'
+    size: 'mega',
+    weight: 'light'
   },
 
   h2: {
-    fontSize: 'xxxLarge',
-    fontWeight: 'light'
+    size: 'xxLarge',
+    weight: 'light'
   },
 
   h3: {
-    fontSize: 'xxLarge',
-    fontWeight: 'light'
+    size: 'xLarge',
+    weight: 'light'
   },
 
   h4: {
-    fontSize: 'xLarge',
-    fontWeight: 'light'
+    size: 'large',
+    weight: 'light'
   },
 
   h5: {
-    fontSize: 'large',
-    fontWeight: 'light'
+    size: 'mediumPlus',
+    weight: 'light'
+  },
+
+  link: {
+    color: 'link',
+    hoverColor: 'linkHovered'
   }
 };
 
@@ -69,5 +74,5 @@ export const DefaultTypography: ITypography = {
   families: DefaultFontFamilies,
   sizes: DefaultFontSizes,
   weights: DefaultFontWeights,
-  types: DefaultFontTypes
+  variants: DefaultFontVariants
 };

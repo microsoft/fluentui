@@ -74,7 +74,7 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
             label="Directional hint"
             selectedKey={directionalHint!}
             options={DIRECTION_OPTIONS}
-            onChanged={this._onDirectionalChanged}
+            onChange={this._onDirectionalChanged}
           />
           {getRTL() && (
             <Checkbox
@@ -88,7 +88,7 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
               label="Directional hint for RTL"
               selectedKey={directionalHintForRTL!}
               options={DIRECTION_OPTIONS}
-              onChanged={this._onDirectionalRtlChanged}
+              onChange={this._onDirectionalRtlChanged}
               disabled={!useDirectionalHintForRtl}
             />
           )}
@@ -137,25 +137,25 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
     );
   }
 
-  private _onShowBeakChange = (ev: React.FormEvent<HTMLElement>, isVisible: boolean): void => {
+  private _onShowBeakChange = (event: React.FormEvent<HTMLElement>, isVisible: boolean): void => {
     this.setState({
       isBeakVisible: isVisible
     });
   };
 
-  private _onUseRtlHintChange = (ev: React.FormEvent<HTMLElement>, isVisible: boolean): void => {
+  private _onUseRtlHintChange = (event: React.FormEvent<HTMLElement>, isVisible: boolean): void => {
     this.setState({
       useDirectionalHintForRtl: isVisible
     });
   };
 
-  private _onDirectionalChanged = (option: IDropdownOption): void => {
+  private _onDirectionalChanged = (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
     this.setState({
       directionalHint: option.key as number
     });
   };
 
-  private _onDirectionalRtlChanged = (option: IDropdownOption): void => {
+  private _onDirectionalRtlChanged = (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
     this.setState({
       directionalHintForRTL: option.key as number
     });

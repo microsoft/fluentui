@@ -1,11 +1,10 @@
 import { mergeStyleSets } from './mergeStyleSets';
 import { Stylesheet, InjectionMode } from './Stylesheet';
+import { IStyleSet } from './IStyleSet';
+import { IStyleFunctionOrObject } from './IStyleFunction';
+import { IStyle } from './IStyle';
 
 const _stylesheet: Stylesheet = Stylesheet.getInstance();
-
-interface ITestClasses {
-  root: string;
-}
 
 _stylesheet.setConfig({ injectionMode: InjectionMode.none });
 
@@ -168,8 +167,8 @@ describe('mergeStyleSets', () => {
   });
 
   it('can auto expand a previously registered style', () => {
-    const styles: ITestClasses = mergeStyleSets({ root: { background: 'red' } });
-    const styles2: ITestClasses = mergeStyleSets({ root: [{ background: 'purple' }, styles.root] });
+    const styles = mergeStyleSets({ root: { background: 'red' } });
+    const styles2 = mergeStyleSets({ root: [{ background: 'purple' }, styles.root] });
 
     expect(styles.root).toEqual(styles2.root);
 
@@ -177,17 +176,17 @@ describe('mergeStyleSets', () => {
   });
 
   it('can normalize duplicate static class names', () => {
-    const styles: ITestClasses = mergeStyleSets({ root: ['a', { background: 'red' }] });
-    const styles1: ITestClasses = mergeStyleSets(styles, styles);
+    const styles = mergeStyleSets({ root: ['a', { background: 'red' }] });
+    const styles1 = mergeStyleSets(styles, styles);
 
     expect(styles1).toEqual({ root: 'a root-0', subComponentStyles: {} });
   });
 
   it('can auto expand a previously registered style embedded in static classname', () => {
-    const styles: ITestClasses = mergeStyleSets({ root: ['a', { background: 'red' }] });
-    const styles2: ITestClasses = mergeStyleSets({ root: ['b', { background: 'purple' }] }, styles);
-    const styles3: ITestClasses = mergeStyleSets(styles, { root: ['b', { background: 'purple' }] });
-    const styles4: ITestClasses = mergeStyleSets(styles, styles2, styles3, { root: 'c' });
+    const styles = mergeStyleSets({ root: ['a', { background: 'red' }] });
+    const styles2 = mergeStyleSets({ root: ['b', { background: 'purple' }] }, styles);
+    const styles3 = mergeStyleSets(styles, { root: ['b', { background: 'purple' }] });
+    const styles4 = mergeStyleSets(styles, styles2, styles3, { root: 'c' });
 
     expect(styles).toEqual({ root: 'a root-0', subComponentStyles: {} });
     expect(styles2).toEqual({ root: 'b a root-0', subComponentStyles: {} });
@@ -196,14 +195,118 @@ describe('mergeStyleSets', () => {
   });
 
   it('can merge two sets with class names', () => {
-    const styleSet1: ITestClasses = mergeStyleSets({
+    const styleSet1 = mergeStyleSets({
       root: ['ms-Foo', { background: 'red' }]
     });
-    const styleSet2: ITestClasses = mergeStyleSets(styleSet1, {
+    const styleSet2 = mergeStyleSets(styleSet1, {
       root: ['ms-Bar', { background: 'green' }]
     });
 
     expect(styleSet2).toEqual({ root: 'ms-Foo ms-Bar root-1', subComponentStyles: {} });
     expect(_stylesheet.getRules()).toEqual('.root-0{background:red;}' + '.root-1{background:green;}');
+  });
+
+  describe('typings tests', () => {
+    interface ISubComponentStyles extends IStyleSet<ISubComponentStyles> {
+      root: IStyle;
+    }
+
+    interface ISubComponentStyleProps {
+      isCollapsed: boolean;
+    }
+
+    interface IStyles extends IStyleSet<IStyles> {
+      root: IStyle;
+      subComponentStyles: {
+        button: IStyleFunctionOrObject<ISubComponentStyleProps, IStyleSet<ISubComponentStyles>>;
+      };
+    }
+
+    interface IStylesWithStyleObjectAsSubCommponent extends IStyleSet<IStyles> {
+      root: IStyle;
+      subComponentStyles: {
+        button: Partial<IStyleSet<ISubComponentStyles>>;
+      };
+    }
+
+    /** Button component as of test writing has this interface. */
+    const LegacySubComponent: (props: { styles: Partial<ISubComponentStyles> }) => any = (props: {
+      styles: Partial<ISubComponentStyles>;
+    }) => {
+      return;
+    };
+
+    const SubComponent: (
+      props: { styles: IStyleFunctionOrObject<ISubComponentStyleProps, ISubComponentStyles> }
+    ) => any = (props: { styles: IStyleFunctionOrObject<ISubComponentStyleProps, ISubComponentStyles> }) => {
+      return;
+    };
+
+    const getStyles = (): IStyles => ({
+      root: {
+        background: 'red'
+      },
+      subComponentStyles: {
+        button: () => ({
+          root: {
+            background: 'green'
+          }
+        })
+      }
+    });
+
+    it('IStyleSet/IProcessedStyleSet should work with standard sub components', () => {
+      const classNames = mergeStyleSets<IStyles>(getStyles());
+
+      SubComponent({ styles: classNames.subComponentStyles.button });
+
+      // this test primarily tests that the lines above do not result in a Typescript error.
+      expect.assertions(0);
+    });
+
+    it('IStyleSet/IProcessedStyleSet should work with legacy sub components that only take IStyleFunctions', () => {
+      const classNames = mergeStyleSets<IStyles>(getStyles());
+
+      LegacySubComponent({ styles: classNames.subComponentStyles.button({ isCollapsed: false }) });
+
+      // this test primarily tests that the lines above do not result in a Typescript error.
+      expect.assertions(0);
+    });
+
+    describe('IStylesWithStyleObjectAsSubCommponent', () => {
+      const getStyles2 = (): IStylesWithStyleObjectAsSubCommponent => ({
+        root: {
+          background: 'red'
+        },
+        subComponentStyles: {
+          button: {
+            root: {
+              background: 'green'
+            }
+          }
+        }
+      });
+
+      it('IStyleSet/IProcessedStyleSet should work with standard sub components', () => {
+        const classNames = mergeStyleSets<IStyles>(getStyles2());
+
+        // this test primarily
+        SubComponent({ styles: classNames.subComponentStyles.button });
+
+        // this test primarily tests that the lines above do not result in a Typescript error.
+        expect.assertions(0);
+      });
+
+      // NOTE: The following test should be enabled when Fabric is upgraded to Typescript 3.
+      it.skip('IStyleSet/IProcessedStyleSet should work with legacy sub components that only take IStyleFunctions', () => {
+        const classNames = mergeStyleSets<IStylesWithStyleObjectAsSubCommponent>(getStyles2());
+
+        // NOTE: The following line should be uncommented when Fabric is upgraded to Typescript 3.
+        // LegacySubComponent({ styles: classNames.subComponentStyles.button({ isCollapsed: false }) });
+
+        // this test primarily tests that the lines above do not result in a Typescript error.
+        expect.assertions(0);
+      });
+    });
   });
 });

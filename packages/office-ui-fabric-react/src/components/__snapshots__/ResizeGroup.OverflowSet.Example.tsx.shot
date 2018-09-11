@@ -106,9 +106,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -259,9 +264,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -412,9 +422,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -565,9 +580,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -718,9 +738,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -871,9 +896,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -1024,9 +1054,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -1177,9 +1212,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -1330,9 +1370,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -1483,9 +1528,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -1636,9 +1686,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -1789,9 +1844,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -1942,9 +2002,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -2095,9 +2160,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -2248,9 +2318,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -2401,9 +2476,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -2554,9 +2634,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -2707,9 +2792,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -2860,9 +2950,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -3013,9 +3108,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -3190,7 +3290,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
         className=
             ms-Checkbox-label
             {
-              align-items: center;
+              align-items: flex-start;
               cursor: pointer;
               display: flex;
               margin-bottom: 0;
@@ -3259,6 +3359,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               {
                 color: #333333;
                 font-size: 14px;
+                line-height: 20px;
                 margin-bottom: 0;
                 margin-left: 4px;
                 margin-right: 4px;
@@ -3353,7 +3454,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
         className=
             ms-Checkbox-label
             {
-              align-items: center;
+              align-items: flex-start;
               cursor: pointer;
               display: flex;
               margin-bottom: 0;
@@ -3422,6 +3523,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               {
                 color: #333333;
                 font-size: 14px;
+                line-height: 20px;
                 margin-bottom: 0;
                 margin-left: 4px;
                 margin-right: 4px;
@@ -3516,7 +3618,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
         className=
             ms-Checkbox-label
             {
-              align-items: center;
+              align-items: flex-start;
               cursor: pointer;
               display: flex;
               margin-bottom: 0;
@@ -3585,6 +3687,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               {
                 color: #333333;
                 font-size: 14px;
+                line-height: 20px;
                 margin-bottom: 0;
                 margin-left: 4px;
                 margin-right: 4px;
@@ -3612,7 +3715,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 box-sizing: border-box;
                 color: #333333;
                 display: inline-block;
-                margin-bottom: 8px;
+                margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
@@ -3674,7 +3777,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
                 background-color: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
+              }
+              @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title:hover {
+                color: HighlightText;
               }
               @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
                 -ms-high-contrast-adjust: none;
@@ -3722,6 +3828,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           data-is-focusable={true}
           id="Dropdown64"
           onBlur={[Function]}
+          onChange={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}

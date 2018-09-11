@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, getId, createRef } from '../../Utilities';
+import { BaseComponent, classNamesFunction, getId, createRef, allowScrollOnElement } from '../../Utilities';
 import { FocusTrapZone, IFocusTrapZone } from '../FocusTrapZone/index';
 import { animationDuration, getOverlayStyles } from './Modal.styles';
 import { IModalProps, IModalStyleProps, IModalStyles, IModal } from './Modal.types';
@@ -31,6 +31,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
 
   private _onModalCloseTimer: number;
   private _focusTrapZone = createRef<IFocusTrapZone>();
+  private _scrollableContent: HTMLDivElement | null;
 
   constructor(props: IModalProps) {
     super(props);
@@ -80,6 +81,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
     const {
       className,
       containerClassName,
+      scrollableContentClassName,
       elementToFocusOnDismiss,
       firstFocusableSelector,
       forceFocusInsideTrap,
@@ -105,6 +107,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       theme: theme!,
       className,
       containerClassName,
+      scrollableContentClassName,
       isOpen,
       isVisible
     });
@@ -134,7 +137,9 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
                 forceFocusInsideTrap={forceFocusInsideTrap}
                 firstFocusableSelector={firstFocusableSelector}
               >
-                {this.props.children}
+                <div ref={this._allowScrollOnModal} className={classNames.scrollableContent}>
+                  {this.props.children}
+                </div>
               </FocusTrapZone>
             </div>
           </Popup>
@@ -149,6 +154,16 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       this._focusTrapZone.current.focus();
     }
   }
+
+  // Allow the user to scroll within the modal but not on the body
+  private _allowScrollOnModal = (elt: HTMLDivElement | null): void => {
+    if (elt) {
+      allowScrollOnElement(elt, this._events);
+    } else {
+      this._events.off(this._scrollableContent);
+    }
+    this._scrollableContent = elt;
+  };
 
   // Watch for completed animations and set the state
   private _onModalClose(): void {

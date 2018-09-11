@@ -1,6 +1,15 @@
 import * as React from 'react';
-import { IDataPoint } from '@uifabric/charting';
-import { Card, CardContentType, CardSize, ChartType, ICardProps, Priority } from '@uifabric/dashboard';
+import { IChartProps as IChartingProps } from '@uifabric/charting';
+import {
+  Card,
+  CardContentType,
+  CardSize,
+  ChartType,
+  ICardProps,
+  ICardContentDetails,
+  IChartProps,
+  Priority
+} from '@uifabric/dashboard';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export class StackedBarChartExample extends React.Component<{}, {}> {
@@ -25,43 +34,61 @@ export class StackedBarChartExample extends React.Component<{}, {}> {
       ]
     };
 
-    const points: IDataPoint[] = [{ x: 'first', y: 40 }, { x: 'second', y: 23 }];
-    const colors: string[] = [DefaultPalette.accent, DefaultPalette.red];
-
-    const multiplePoints = [
-      { x: 'first Lorem Ipsum is simply dummy text', y: 40 },
-      { x: 'second', y: 23 },
-      { x: 'third Lorem Ipsum is simply dummy text of the printing', y: 35 },
-      { x: 'fourth', y: 87 }
+    const firstChartData: IChartingProps[] = [
+      {
+        chartTitle: 'Monitored',
+        chartData: [
+          { legend: 'Legend 1 text', data: 40, color: DefaultPalette.accent },
+          { legend: 'Legend 2 text', data: 23, color: DefaultPalette.green },
+          { legend: 'Legend 3 text', data: 35, color: DefaultPalette.orange },
+          { legend: 'Legend 4 text', data: 87, color: DefaultPalette.blue }
+        ]
+      }
     ];
-    const multipleColors = [DefaultPalette.accent, DefaultPalette.red, DefaultPalette.orange, DefaultPalette.green];
 
-    const contentAreaList = [
+    const secondChartData: IChartingProps[] = [
+      {
+        chartTitle: 'UnMonitored',
+        chartData: [
+          { legend: 'first Lorem Ipsum is simply dummy text', data: 40, color: DefaultPalette.blueLight },
+          { legend: 'second', data: 23, color: DefaultPalette.red },
+          {
+            legend: 'third Lorem Ipsum is simply dummy text of the printing',
+            data: 35,
+            color: DefaultPalette.purpleLight
+          },
+          { legend: 'fourth', data: 87, color: DefaultPalette.green }
+        ]
+      }
+    ];
+
+    const chartContent1: IChartProps = {
+      chartType: ChartType.StackedBarChart,
+      chartData: firstChartData,
+      chartUpdatedOn: 'Updated 6:20 pm today'
+    };
+
+    const chartContent2: IChartProps = {
+      chartType: ChartType.StackedBarChart,
+      chartData: secondChartData,
+      chartUpdatedOn: 'Updated 6:20 pm today'
+    };
+
+    const contentAreaList: ICardContentDetails[] = [
       {
         priority: Priority.Priority1,
         cardContentType: CardContentType.Chart,
-        content: {
-          chartLabel: 'Stacked bar chart with two data points',
-          chartType: ChartType.StackedBarChart,
-          dataPoints: points,
-          colors: colors
-        }
+        content: chartContent1
       },
       {
         priority: Priority.Priority2,
         cardContentType: CardContentType.Chart,
-        content: {
-          chartLabel: 'Stacked bar chart with multiple points',
-          chartType: ChartType.StackedBarChart,
-          dataPoints: multiplePoints,
-          colors: multipleColors
-        }
+        content: chartContent2
       }
     ];
 
     const header = {
-      headerText: 'Header Text ',
-      annotationText: 'Annotation Text '
+      headerText: 'Header Text '
     };
 
     return (

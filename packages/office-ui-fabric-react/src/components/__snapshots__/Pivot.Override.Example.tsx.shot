@@ -97,6 +97,11 @@ exports[`Component Examples renders Pivot.Override.Example.tsx correctly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #333333;
                 cursor: pointer;
@@ -251,6 +256,11 @@ exports[`Component Examples renders Pivot.Override.Example.tsx correctly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #333333;
                 cursor: pointer;
@@ -400,6 +410,11 @@ exports[`Component Examples renders Pivot.Override.Example.tsx correctly 1`] = `
                 outline-color: ButtonText;
                 right: -2px;
                 top: -2px;
+              }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
               }
               &:hover {
                 color: #333333;
@@ -579,9 +594,14 @@ exports[`Component Examples renders Pivot.Override.Example.tsx correctly 1`] = `
           right: -2px;
           top: -2px;
         }
+        &:active > * {
+          left: 0px;
+          position: relative;
+          top: 0px;
+        }
         &:hover {
           background-color: #eaeaea;
-          color: #000000;
+          color: #212121;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           border-color: Highlight;

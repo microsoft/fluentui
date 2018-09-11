@@ -62,7 +62,12 @@ class SlimNavComponent extends NavBase {
 
     // if there is no children and onClick handler is defined, call it
     if (!hasChildren && link.onClick) {
-      link.onClick(ev, link);
+      if (!!this.props.onEditLeftNavClickedCallback && link.key && link.key === 'EditNavLink') {
+        this.props.onEditLeftNavClickedCallback();
+      } else {
+        // if there is a onClick defined, call it
+        link.onClick(ev, link);
+      }
     }
 
     // prevent url action on anchor tag if the node has a children or if the onClick handler is defined
@@ -175,6 +180,7 @@ class SlimNavComponent extends NavBase {
         rightIconName={rightIconName}
         textClassName={classNames.navItemNameColumn}
         iconClassName={classNames.navItemIconColumn}
+        barClassName={classNames.navItemBarMarker}
       />
     );
   }
@@ -261,6 +267,7 @@ class SlimNavComponent extends NavBase {
           rootClassName={classNames.navItemRoot}
           leftIconName={link.icon}
           iconClassName={classNames.navItemIconColumn}
+          barClassName={classNames.navItemBarMarker}
         />
         {this._renderFloatingNav(link, linkIndex)}
       </li>

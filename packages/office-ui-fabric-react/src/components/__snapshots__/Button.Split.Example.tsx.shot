@@ -84,6 +84,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
       data-is-focusable={true}
       data-ktp-target={undefined}
       onClick={[Function]}
+      onFocusCapture={[Function]}
       onKeyDown={[Function]}
       onTouchStart={[Function]}
       role="button"
@@ -155,9 +156,14 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 background-color: #eaeaea;
-                color: #000000;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -285,15 +291,26 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
               aria-hidden={true}
               className=
                   ms-Button-icon
+                  ms-Button-menuIcon
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
                     color: #333333;
                     display: inline-block;
+                    flex-shrink: 0;
                     font-family: "FabricMDL2Icons";
+                    font-size: 12px;
                     font-style: normal;
                     font-weight: normal;
+                    height: 16px;
+                    line-height: 16px;
+                    margin-bottom: 0;
+                    margin-left: 4px;
+                    margin-right: 4px;
+                    margin-top: 0;
                     speak: none;
+                    text-align: center;
+                    vertical-align: middle;
                   }
               data-icon-name="ChevronDown"
               role="presentation"
@@ -387,6 +404,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
       data-is-focusable={true}
       data-ktp-target={undefined}
       onClick={[Function]}
+      onFocusCapture={[Function]}
       onKeyDown={[Function]}
       onTouchStart={[Function]}
       role="button"
@@ -457,6 +475,11 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 outline-color: ButtonText;
                 right: -2px;
                 top: -2px;
+              }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
                 -ms-high-contrast-adjust: none;
@@ -598,15 +621,26 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
               aria-hidden={true}
               className=
                   ms-Button-icon
+                  ms-Button-menuIcon
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
                     color: #ffffff;
                     display: inline-block;
+                    flex-shrink: 0;
                     font-family: "FabricMDL2Icons";
+                    font-size: 12px;
                     font-style: normal;
                     font-weight: normal;
+                    height: 16px;
+                    line-height: 16px;
+                    margin-bottom: 0;
+                    margin-left: 4px;
+                    margin-right: 4px;
+                    margin-top: 0;
                     speak: none;
+                    text-align: center;
+                    vertical-align: middle;
                   }
               data-icon-name="ChevronDown"
               role="presentation"
@@ -700,6 +734,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
       data-is-focusable={true}
       data-ktp-target={undefined}
       onClick={undefined}
+      onFocusCapture={[Function]}
       onKeyDown={[Function]}
       onTouchStart={[Function]}
       role="button"
@@ -772,6 +807,11 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 outline-color: ButtonText;
                 right: -2px;
                 top: -2px;
+              }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
                 -ms-high-contrast-adjust: none;
@@ -904,15 +944,26 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
               aria-hidden={true}
               className=
                   ms-Button-icon
+                  ms-Button-menuIcon
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    color: #ffffff;
+                    color: #a6a6a6;
                     display: inline-block;
+                    flex-shrink: 0;
                     font-family: "FabricMDL2Icons";
+                    font-size: 12px;
                     font-style: normal;
                     font-weight: normal;
+                    height: 16px;
+                    line-height: 16px;
+                    margin-bottom: 0;
+                    margin-left: 4px;
+                    margin-right: 4px;
+                    margin-top: 0;
                     speak: none;
+                    text-align: center;
+                    vertical-align: middle;
                   }
               data-icon-name="ChevronDown"
               role="presentation"
@@ -1004,6 +1055,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
       data-is-focusable={true}
       data-ktp-target={undefined}
       onClick={undefined}
+      onFocusCapture={[Function]}
       onKeyDown={[Function]}
       onTouchStart={[Function]}
       role="button"
@@ -1076,6 +1128,11 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 outline-color: ButtonText;
                 right: -2px;
                 top: -2px;
+              }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
                 -ms-high-contrast-adjust: none;
@@ -1211,15 +1268,26 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
               aria-hidden={true}
               className=
                   ms-Button-icon
+                  ms-Button-menuIcon
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
                     color: #a6a6a6;
                     display: inline-block;
+                    flex-shrink: 0;
                     font-family: "FabricMDL2Icons";
+                    font-size: 12px;
                     font-style: normal;
                     font-weight: normal;
+                    height: 16px;
+                    line-height: 16px;
+                    margin-bottom: 0;
+                    margin-left: 4px;
+                    margin-right: 4px;
+                    margin-top: 0;
                     speak: none;
+                    text-align: center;
+                    vertical-align: middle;
                   }
               data-icon-name="ChevronDown"
               role="presentation"
@@ -1317,6 +1385,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 2`] = `
     data-is-focusable={true}
     data-ktp-target={undefined}
     onClick={[Function]}
+    onFocusCapture={[Function]}
     onKeyDown={[Function]}
     onTouchStart={[Function]}
     role="button"
@@ -1345,7 +1414,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 2`] = `
               -webkit-font-smoothing: antialiased;
               background-color: transparent;
               border-radius: 0px;
-              border: 1px solid transparent;
+              border: none;
               box-sizing: border-box;
               cursor: pointer;
               display: inline-block;
@@ -1386,6 +1455,11 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 2`] = `
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
             }
             &:hover {
               color: #004578;
@@ -1515,15 +1589,25 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 2`] = `
             aria-hidden={true}
             className=
                 ms-Button-icon
+                ms-Button-menuIcon
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
                   display: inline-block;
+                  flex-shrink: 0;
                   font-family: "FabricMDL2Icons";
-                  font-size: 7px;
+                  font-size: 12px;
                   font-style: normal;
                   font-weight: normal;
+                  height: 16px;
+                  line-height: 16px;
+                  margin-bottom: 0;
+                  margin-left: 4px;
+                  margin-right: 4px;
+                  margin-top: 0;
                   speak: none;
+                  text-align: center;
+                  vertical-align: middle;
                 }
             data-icon-name="ChevronDown"
             role="presentation"

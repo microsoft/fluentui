@@ -49,22 +49,11 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
               padding-top: 0px;
               position: relative;
             }
-            &:-ms-clear {
-              display: none;
-            }
             &:hover {
               border-color: #212121;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
-            }
-            &::placeholder {
-              color: #666666;
-              opacity: 1;
-            }
-            &:-ms-input-placeholder {
-              color: #666666;
-              opacity: 1;
             }
       >
         <input
@@ -98,8 +87,16 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
               &:active, &:focus, &:hover {
                 outline: 0px;
               }
+              &::-ms-clear {
+                display: none;
+              }
               &::placeholder {
                 color: #666666;
+                opacity: 1;
+              }
+              &:-ms-input-placeholder {
+                color: #666666;
+                opacity: 1;
               }
           id="TextField0"
           onBlur={[Function]}
@@ -173,9 +170,14 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
           right: -2px;
           top: -2px;
         }
+        &:active > * {
+          left: 0px;
+          position: relative;
+          top: 0px;
+        }
         &:hover {
           background-color: #eaeaea;
-          color: #000000;
+          color: #212121;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           border-color: Highlight;

@@ -1,24 +1,38 @@
 import * as React from 'react';
-import { createStatelessComponent, IStyleableComponent, IViewComponentProps } from '../../Foundation';
+import { createStatelessComponent, IStyleableComponentProps, IViewComponentProps } from '../../Foundation';
 import StackItem from './StackItem/StackItem';
 import { IStackItemProps, IStackItemStyles } from './StackItem/StackItem.types';
 import { IStackProps, IStackStyles } from './Stack.types';
 import { styles } from './Stack.styles';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-const StackItemType = (<StackItem /> as React.ReactElement<IStackItemProps> &
-  IStyleableComponent<IStackItemProps, IStackItemStyles>).type;
+const StackItemType = (<StackItem /> as React.ReactElement<IStackItemProps> & IStyleableComponentProps<IStackItemProps, IStackItemStyles>)
+  .type;
 
 const view = (props: IViewComponentProps<IStackProps, IStackStyles>) => {
-  const { renderAs: RootType = 'div', classNames, gap, vertical, collapseItems } = props;
+  const {
+    renderAs: RootType = 'div',
+    classNames,
+    gap,
+    horizontal,
+    shrinkItems,
+    verticalAlignment,
+    horizontalAlignment,
+    grow,
+    ...rest
+  } = props;
 
-  const stackChildren: React.ReactChild[] = React.Children.map(
+  const stackChildren: (React.ReactChild | null)[] = React.Children.map(
     props.children,
     (child: React.ReactElement<IStackItemProps>, index: number) => {
+      if (!child) {
+        return null;
+      }
+
       const defaultItemProps: IStackItemProps = {
         gap: index > 0 ? gap : 0,
-        vertical,
-        collapse: collapseItems,
+        horizontal,
+        shrink: shrinkItems,
         className: child.props ? child.props.className : undefined
       };
 
@@ -45,7 +59,11 @@ const view = (props: IViewComponentProps<IStackProps, IStackStyles>) => {
     }
   );
 
-  return <RootType className={classNames.root}>{stackChildren}</RootType>;
+  return (
+    <RootType {...rest} className={classNames.root}>
+      {stackChildren}
+    </RootType>
+  );
 };
 
 const StackStatics = {

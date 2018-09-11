@@ -4,7 +4,12 @@ import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { Coachmark } from './Coachmark';
 import { ITeachingBubble } from '../../TeachingBubble';
 
-export interface ICoachmark {}
+export interface ICoachmark {
+  /**
+   * Forces the Coachmark to dismiss
+   */
+  dismiss?: (ev?: any) => void;
+}
 
 export interface ICoachmarkProps extends React.Props<Coachmark> {
   /**
@@ -123,6 +128,7 @@ export interface ICoachmarkProps extends React.Props<Coachmark> {
 
   /**
    * Ref for TeachingBubble
+   * @deprecated Coachmark uses focusFirstChild utility instead to focus on TeachingBubbleContent
    */
   teachingBubbleRef?: ITeachingBubble;
 
@@ -145,6 +151,17 @@ export interface ICoachmarkProps extends React.Props<Coachmark> {
    * Defines the text content for the ariaDescribedBy element
    */
   ariaDescribedByText?: string;
+
+  /**
+   * If true then the Coachmark will not dismiss when it loses focus
+   * @default false
+   */
+  preventDismissOnLostFocus?: boolean;
+
+  /**
+   * Callback when the Coachmark tries to close.
+   */
+  onDismiss?: (ev?: any) => void;
 }
 
 /** @deprecated */

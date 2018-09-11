@@ -2,6 +2,34 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "version": "6.1.0",
+      "tag": "@uifabric/file-type-icons_v6.1.0",
+      "date": "Wed, 22 Aug 2018 05:10:19 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "25a03949d97b792d4d32e8cb6931bfc8b861e9c9",
+            "comment": "Add FileIconTypeInput alongside FileIconType const enum"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.2",
+      "tag": "@uifabric/file-type-icons_v6.0.2",
+      "date": "Tue, 14 Aug 2018 10:27:33 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Avital Baral <avitalbaral99@gmail.com>",
+            "commit": "cf0f728d0b28540b7a42aa9121a840605ee04670",
+            "comment": "disabling codepen task"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.0.1",
       "tag": "@uifabric/file-type-icons_v6.0.1",
       "date": "Tue, 03 Jul 2018 10:23:19 GMT",

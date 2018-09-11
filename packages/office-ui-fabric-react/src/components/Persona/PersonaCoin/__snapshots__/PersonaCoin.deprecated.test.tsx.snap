@@ -104,14 +104,14 @@ exports[`PersonaCoin renders correctly with image 1`] = `
           {
             border-radius: 50%;
             border: 0px;
-            height: 100%;
+            height: 48px;
             left: 0px;
             margin-right: 10px;
             overflow: hidden;
             perspective: 1px;
             position: absolute;
             top: 0px;
-            width: 100%;
+            width: 48px;
           }
       style={
         Object {
@@ -235,7 +235,7 @@ exports[`PersonaCoin renders correctly with text 1`] = `
       className=
           ms-Persona-initials
           {
-            background-color: #1D1D1D;
+            background-color: #5E4B8B;
             border-radius: 50%;
             color: #ffffff;
             font-size: 17px;

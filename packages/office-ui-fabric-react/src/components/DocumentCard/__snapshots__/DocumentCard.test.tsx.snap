@@ -95,7 +95,6 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
                 
               </i>
             </div>
-            
           </div>
         </div>
       </div>
