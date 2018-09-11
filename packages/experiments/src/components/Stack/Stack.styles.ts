@@ -1,6 +1,6 @@
 import { IThemedProps } from '../../Foundation';
 import { IStackProps, IStackStyles } from './Stack.types';
-import { parseGap } from './StackUtils';
+import { parseGap, parsePadding } from './StackUtils';
 
 const nameMap: { [key: string]: string } = {
   start: 'flex-start',
@@ -47,7 +47,7 @@ export const styles = (props: IThemedProps<IStackProps>): IStackStyles => {
         maxWidth,
         maxHeight,
         margin,
-        padding,
+        padding: parsePadding(padding, theme),
         boxSizing: 'border-box'
       },
       grow && {
