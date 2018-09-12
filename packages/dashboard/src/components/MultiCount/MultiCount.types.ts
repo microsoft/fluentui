@@ -58,6 +58,7 @@ export interface IMultiCountStyleProps {
   hoveredText?: string;
   currentText?: string;
   href?: string;
+  hideIcon?: boolean;
 }
 
 export interface IMultiCountRow {
@@ -90,6 +91,11 @@ export interface IMultiCountRow {
    *Url to be redirected to upon clicking on row of Multicount
    */
   href?: string;
+
+  /**
+   *prop to hide the change-indicator icon in the row
+   */
+  hideIcon?: boolean;
 }
 
 export interface IMultiCountStyles {
@@ -102,6 +108,11 @@ export interface IMultiCountStyles {
    * Style for bodyText
    */
   bodyText: IStyle;
+
+  /**
+   * Style for change indicator icon
+   */
+  changeIcon: IStyle;
 
   /**
    * Style for annotaion text and the change icon

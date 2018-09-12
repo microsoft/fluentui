@@ -10,7 +10,8 @@ import {
   KeyCodes,
   createRef,
   css,
-  mergeAriaAttributeValues
+  mergeAriaAttributeValues,
+  portalContainsElement
 } from '../../Utilities';
 import { Icon } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
@@ -516,9 +517,16 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   private _onSplitContainerFocusCapture = (ev: React.FocusEvent<HTMLDivElement>) => {
+    const container = this._splitButtonContainer.current;
+
+    // If the target is coming from the portal we do not need to set focus on the container.
+    if (!container || (ev.target && portalContainsElement(ev.target, container))) {
+      return;
+    }
+
     // We should never be able to focus the individual buttons in a split button. Focus
     // should always remain on the container.
-    this._splitButtonContainer.current && this._splitButtonContainer.current.focus();
+    container.focus();
   };
 
   private _onSplitButtonPrimaryClick = (ev: React.MouseEvent<HTMLDivElement>) => {
