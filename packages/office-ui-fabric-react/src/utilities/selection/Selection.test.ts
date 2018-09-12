@@ -106,4 +106,21 @@ describe('Selection', () => {
     expect(changeCount).toEqual(3);
     expect(selection.getSelectedCount()).toEqual(0);
   });
+
+  it('notifies consumers when some items are selected and some are removed', () => {
+    let changeCount = 0;
+    const selection = new Selection({ onSelectionChanged: () => changeCount++ });
+
+    selection.setItems(setA);
+
+    selection.setIndexSelected(2, true, false);
+
+    expect(changeCount).toEqual(1);
+    expect(selection.count).toEqual(1);
+
+    selection.setItems([{ key: 'a' }, { key: 'b' }], false);
+
+    expect(changeCount).toEqual(2);
+    expect(selection.count).toEqual(0);
+  });
 });
