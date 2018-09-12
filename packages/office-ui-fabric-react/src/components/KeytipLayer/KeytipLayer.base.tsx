@@ -607,7 +607,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
   private _detectDuplicateKeytips = (): void => {
     const duplicateKeytips = this._getDuplicateIds(this._keytipTree.getChildren());
     if (duplicateKeytips.length) {
-      warn('Duplicate keytips found for ' + duplicateKeytips.toString());
+      warn('Duplicate keytips found for ' + duplicateKeytips.join(', '));
     }
   };
 
