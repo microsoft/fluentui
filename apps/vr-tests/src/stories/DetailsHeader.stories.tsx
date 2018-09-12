@@ -156,16 +156,23 @@ storiesOf('DetailsHeader', module)
     />
   ))
 
-  .add('DragStart', () => (
-    <DetailsColumn
-      column={columns[3]}
-      key={columns[3].key}
-      columnIndex={3}
-      dragDropHelper={_dragDropHelper}
-      isDraggable={true}
-      isDropped={false}
-    />
+
+storiesOf('DetailsHeader', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(story => (
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default1', { cropTo: '.testWrapper' })
+        .snapshot('default2', { cropTo: '.testWrapper' })
+        .snapshot('default3', { cropTo: '.testWrapper' })
+        .hover('[aria-colindex=3]')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      {story()}
+    </Screener>
   ))
+
   .add('DragEnd', () => (
     <DetailsColumn
       column={columns[3]}
