@@ -4,10 +4,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
 <div>
   <button
     aria-describedby="id__1"
-    aria-disabled={undefined}
-    aria-label={undefined}
     aria-labelledby="id__0"
-    aria-pressed={undefined}
     className=
         ms-Button
         ms-Button--default
@@ -77,7 +74,6 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
           color: #212121;
         }
     data-is-focusable={true}
-    disabled={undefined}
     onClick={[Function]}
     onKeyDown={[Function]}
     onKeyPress={[Function]}
@@ -171,7 +167,6 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
                   word-wrap: break-word;
                 }
             htmlFor="TextField3"
-            required={undefined}
           >
             Default TextField
           </label>
@@ -205,9 +200,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
                 }
           >
             <input
-              aria-describedby={undefined}
               aria-invalid={false}
-              aria-label={undefined}
               className=
                   ms-TextField-field
                   {
@@ -252,7 +245,6 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
               onFocus={[Function]}
               onInput={[Function]}
               placeholder="Input inside Focus Trap Zone"
-              readOnly={undefined}
               type="text"
               value=""
             />
@@ -260,7 +252,6 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
         </div>
       </div>
       <button
-        aria-disabled={undefined}
         className=
             ms-Link
             {
@@ -319,7 +310,6 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
             &:focus {
               color: #0078d4;
             }
-        disabled={undefined}
         onClick={[Function]}
       >
         Hyperlink inside FocusTrapZone
@@ -373,8 +363,6 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
         >
           <button
             aria-checked={false}
-            aria-disabled={undefined}
-            aria-label={undefined}
             checked={false}
             className=
                 ms-Toggle-background
@@ -423,7 +411,6 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
                   border-color: Highlight;
                 }
             data-is-focusable={true}
-            disabled={undefined}
             id="Toggle5"
             onChange={[Function]}
             onClick={[Function]}

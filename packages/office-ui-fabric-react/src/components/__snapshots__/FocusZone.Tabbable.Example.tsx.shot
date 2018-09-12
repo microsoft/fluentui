@@ -8,8 +8,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
     className="ms-Row"
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className="ms-FocusZone"
       data-focuszone-id="FocusZone0"
       onFocus={[Function]}
@@ -21,11 +19,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
         Circular Tabbable FocusZone: 
       </span>
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         className=
             ms-Button
             ms-Button--default
@@ -95,7 +88,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               color: #212121;
             }
         data-is-focusable={true}
-        disabled={undefined}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}
@@ -141,11 +133,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
         </div>
       </button>
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         className=
             ms-Button
             ms-Button--default
@@ -215,7 +202,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               color: #212121;
             }
         data-is-focusable={true}
-        disabled={undefined}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}
@@ -316,9 +302,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                 }
           >
             <input
-              aria-describedby={undefined}
               aria-invalid={false}
-              aria-label={undefined}
               className=
                   ms-TextField-field
                   {
@@ -362,7 +346,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               onChange={[Function]}
               onFocus={[Function]}
               onInput={[Function]}
-              readOnly={undefined}
               type="text"
               value="FocusZone TextField"
             />
@@ -370,11 +353,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
         </div>
       </div>
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         className=
             ms-Button
             ms-Button--default
@@ -444,7 +422,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               color: #212121;
             }
         data-is-focusable={true}
-        disabled={undefined}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}
@@ -490,14 +467,8 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
         </div>
       </button>
       <div
-        aria-describedby={undefined}
-        aria-disabled={undefined}
         aria-expanded={false}
         aria-haspopup={true}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
-        aria-roledescription={undefined}
         className=
 
             {
@@ -533,7 +504,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               outline: none!important;
             }
         data-is-focusable={true}
-        data-ktp-target={undefined}
         onClick={[Function]}
         onFocusCapture={[Function]}
         onKeyDown={[Function]}
@@ -549,11 +519,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
           }
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
-            aria-label={undefined}
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             className=
                 ms-Button
                 ms-Button--default
@@ -623,8 +588,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                   color: #212121;
                 }
             data-is-focusable={false}
-            disabled={undefined}
-            onClick={undefined}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
             onKeyUp={[Function]}
@@ -670,14 +633,9 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
             </div>
           </button>
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
             aria-expanded={false}
             aria-haspopup={true}
             aria-label="See 2 sample options"
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
-            checked={undefined}
             className=
                 ms-Button
                 {
@@ -708,8 +666,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                   color: Highlight;
                 }
             data-is-focusable={false}
-            data-ktp-execute-target={undefined}
-            disabled={undefined}
             onClick={[Function]}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
@@ -782,8 +738,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
     className="ms-Row"
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className="ms-FocusZone"
       data-focuszone-id="FocusZone18"
       onFocus={[Function]}
@@ -795,11 +749,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
         Input Only FocusZone: 
       </span>
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         className=
             ms-Button
             ms-Button--default
@@ -869,7 +818,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               color: #212121;
             }
         data-is-focusable={true}
-        disabled={undefined}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}
@@ -915,11 +863,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
         </div>
       </button>
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         className=
             ms-Button
             ms-Button--default
@@ -989,7 +932,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               color: #212121;
             }
         data-is-focusable={true}
-        disabled={undefined}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}
@@ -1090,9 +1032,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                 }
           >
             <input
-              aria-describedby={undefined}
               aria-invalid={false}
-              aria-label={undefined}
               className=
                   ms-TextField-field
                   {
@@ -1136,7 +1076,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               onChange={[Function]}
               onFocus={[Function]}
               onInput={[Function]}
-              readOnly={undefined}
               type="text"
               value="FocusZone TextField"
             />
@@ -1144,11 +1083,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
         </div>
       </div>
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         className=
             ms-Button
             ms-Button--default
@@ -1218,7 +1152,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               color: #212121;
             }
         data-is-focusable={true}
-        disabled={undefined}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}

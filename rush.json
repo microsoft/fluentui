@@ -1,8 +1,14 @@
 {
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/rush.schema.json",
   "npmVersion": "5.4.0",
-  "rushVersion": "4.3.0",
+  "rushVersion": "5.0.6",
   "repository": {
     "url": "https://github.com/OfficeDev/office-ui-fabric-react.git"
+  },
+  "eventHooks": {
+    "postRushInstall": [
+      "node scripts/install-husky.js"
+    ]
   },
   "nodeSupportedVersionRange": ">=6.9.0 <10.0.0",
   "projects": [

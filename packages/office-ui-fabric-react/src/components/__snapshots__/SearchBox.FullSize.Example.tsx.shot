@@ -121,7 +121,6 @@ exports[`Component Examples renders SearchBox.FullSize.Example.tsx correctly 1`]
           &:-ms-input-placeholder {
             color: #666666;
           }
-      disabled={undefined}
       id="SearchBox0"
       onChange={[Function]}
       onInput={[Function]}
@@ -245,7 +244,6 @@ exports[`Component Examples renders SearchBox.FullSize.Example.tsx correctly 1`]
           &:-ms-input-placeholder {
             color: #666666;
           }
-      disabled={undefined}
       id="SearchBox1"
       onChange={[Function]}
       onInput={[Function]}

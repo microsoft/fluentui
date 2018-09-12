@@ -29,7 +29,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                 aria-atomic="true"
                 aria-live="polite"
                 aria-relevant="text"
-                className={undefined}
                 id="DatePickerDay-monthAndYear11"
               >
                 <div
@@ -46,7 +45,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                 >
                   <button
                     aria-controls="DatePickerDay-dayPicker10"
-                    aria-label={undefined}
                     className="ms-DatePicker-prevMonth js-prevMonth"
                     disabled={false}
                     onClick={[Function]}
@@ -74,7 +72,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   </button>
                   <button
                     aria-controls="DatePickerDay-dayPicker10"
-                    aria-label={undefined}
                     className="ms-DatePicker-nextMonth js-nextMonth"
                     disabled={false}
                     onClick={[Function]}
@@ -104,8 +101,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
               </div>
             </div>
             <div
-              aria-describedby={undefined}
-              aria-labelledby={undefined}
               className="ms-FocusZone"
               data-focuszone-id="FocusZone12"
               onFocus={[Function]}
@@ -188,19 +183,12 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </th>
                   </tr>
                 </thead>
-                <tbody
-                  onMouseLeave={undefined}
-                  onMouseUp={undefined}
-                >
+                <tbody>
                   <tr
                     role="row"
                   >
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
-                      onMouseDown={undefined}
-                      onMouseLeave={undefined}
-                      onMouseOver={undefined}
-                      onMouseUp={undefined}
                       role="gridcell"
                     >
                       <button
@@ -209,7 +197,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         className="ms-DatePicker-day-button"
                         data-is-focusable={true}
                         disabled={false}
-                        id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
@@ -223,10 +210,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
-                      onMouseDown={undefined}
-                      onMouseLeave={undefined}
-                      onMouseOver={undefined}
-                      onMouseUp={undefined}
                       role="gridcell"
                     >
                       <button
@@ -235,7 +218,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         className="ms-DatePicker-day-button"
                         data-is-focusable={true}
                         disabled={false}
-                        id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
@@ -249,10 +231,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--highlighted undefined ms-DatePicker-day--infocus undefined"
-                      onMouseDown={undefined}
-                      onMouseLeave={undefined}
-                      onMouseOver={undefined}
-                      onMouseUp={undefined}
                       role="gridcell"
                     >
                       <button
@@ -275,10 +253,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onMouseDown={undefined}
-                      onMouseLeave={undefined}
-                      onMouseOver={undefined}
-                      onMouseUp={undefined}
                       role="gridcell"
                     >
                       <button
@@ -287,7 +261,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         className="ms-DatePicker-day-button"
                         data-is-focusable={true}
                         disabled={false}
-                        id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
@@ -301,10 +274,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onMouseDown={undefined}
-                      onMouseLeave={undefined}
-                      onMouseOver={undefined}
-                      onMouseUp={undefined}
                       role="gridcell"
                     >
                       <button
@@ -313,7 +282,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         className="ms-DatePicker-day-button"
                         data-is-focusable={true}
                         disabled={false}
-                        id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
@@ -327,10 +295,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onMouseDown={undefined}
-                      onMouseLeave={undefined}
-                      onMouseOver={undefined}
-                      onMouseUp={undefined}
                       role="gridcell"
                     >
                       <button
@@ -339,7 +303,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         className="ms-DatePicker-day-button"
                         data-is-focusable={true}
                         disabled={false}
-                        id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
@@ -353,10 +316,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onMouseDown={undefined}
-                      onMouseLeave={undefined}
-                      onMouseOver={undefined}
-                      onMouseUp={undefined}
                       role="gridcell"
                     >
                       <button
@@ -365,7 +324,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         className="ms-DatePicker-day-button"
                         data-is-focusable={true}
                         disabled={false}
-                        id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
@@ -383,10 +341,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   >
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onMouseDown={undefined}
-                      onMouseLeave={undefined}
-                      onMouseOver={undefined}
-                      onMouseUp={undefined}
                       role="gridcell"
                     >
                       <button
@@ -395,7 +349,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         className="ms-DatePicker-day-button"
                         data-is-focusable={true}
                         disabled={false}
-                        id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
@@ -409,10 +362,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onMouseDown={undefined}
-                      onMouseLeave={undefined}
-                      onMouseOver={undefined}
-                      onMouseUp={undefined}
                       role="gridcell"
                     >
                       <button
@@ -421,7 +370,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         className="ms-DatePicker-day-button"
                         data-is-focusable={true}
                         disabled={false}
-                        id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
@@ -435,10 +383,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onMouseDown={undefined}
-                      onMouseLeave={undefined}
-                      onMouseOver={undefined}
-                      onMouseUp={undefined}
                       role="gridcell"
                     >
                       <button
@@ -447,7 +391,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         className="ms-DatePicker-day-button"
                         data-is-focusable={true}
                         disabled={false}
-                        id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
@@ -461,10 +404,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onMouseDown={undefined}
-                      onMouseLeave={undefined}
-                      onMouseOver={undefined}
-                      onMouseUp={undefined}
                       role="gridcell"
                     >
                       <button
@@ -473,7 +412,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         className="ms-DatePicker-day-button"
                         data-is-focusable={true}
                         disabled={false}
-                        id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
@@ -487,10 +425,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onMouseDown={undefined}
-                      onMouseLeave={undefined}
-                      onMouseOver={undefined}
-                      onMouseUp={undefined}
                       role="gridcell"
                     >
                       <button
@@ -499,7 +433,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         className="ms-DatePicker-day-button"
                         data-is-focusable={true}
                         disabled={false}
-                        id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
@@ -513,10 +446,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onMouseDown={undefined}
-                      onMouseLeave={undefined}
-                      onMouseOver={undefined}
-                      onMouseUp={undefined}
                       role="gridcell"
                     >
                       <button
@@ -525,7 +454,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         className="ms-DatePicker-day-button"
                         data-is-focusable={true}
                         disabled={false}
-                        id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
@@ -539,10 +467,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onMouseDown={undefined}
-                      onMouseLeave={undefined}
-                      onMouseOver={undefined}
-                      onMouseUp={undefined}
                       role="gridcell"
                     >
                       <button
@@ -551,7 +475,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         className="ms-DatePicker-day-button"
                         data-is-focusable={true}
                         disabled={false}
-                        id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
@@ -569,10 +492,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   >
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onMouseDown={undefined}
-                      onMouseLeave={undefined}
-                      onMouseOver={undefined}
-                      onMouseUp={undefined}
                       role="gridcell"
                     >
                       <button
@@ -581,7 +500,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         className="ms-DatePicker-day-button"
                         data-is-focusable={true}
                         disabled={false}
-                        id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
@@ -595,10 +513,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onMouseDown={undefined}
-                      onMouseLeave={undefined}
-                      onMouseOver={undefined}
-                      onMouseUp={undefined}
                       role="gridcell"
                     >
                       <button
@@ -607,7 +521,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         className="ms-DatePicker-day-button"
                         data-is-focusable={true}
                         disabled={false}
-                        id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
@@ -621,10 +534,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onMouseDown={undefined}
-                      onMouseLeave={undefined}
-                      onMouseOver={undefined}
-                      onMouseUp={undefined}
                       role="gridcell"
                     >
                       <button
@@ -633,7 +542,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         className="ms-DatePicker-day-button"
                         data-is-focusable={true}
                         disabled={false}
-                        id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
@@ -647,10 +555,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onMouseDown={undefined}
-                      onMouseLeave={undefined}
-                      onMouseOver={undefined}
-                      onMouseUp={undefined}
                       role="gridcell"
                     >
                       <button
@@ -659,7 +563,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         className="ms-DatePicker-day-button"
                         data-is-focusable={true}
                         disabled={false}
-                        id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
@@ -673,10 +576,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onMouseDown={undefined}
-                      onMouseLeave={undefined}
-                      onMouseOver={undefined}
-                      onMouseUp={undefined}
                       role="gridcell"
                     >
                       <button
@@ -685,7 +584,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         className="ms-DatePicker-day-button"
                         data-is-focusable={true}
                         disabled={false}
-                        id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
@@ -699,10 +597,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onMouseDown={undefined}
-                      onMouseLeave={undefined}
-                      onMouseOver={undefined}
-                      onMouseUp={undefined}
                       role="gridcell"
                     >
                       <button
@@ -711,7 +605,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         className="ms-DatePicker-day-button"
                         data-is-focusable={true}
                         disabled={false}
-                        id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
@@ -725,10 +618,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onMouseDown={undefined}
-                      onMouseLeave={undefined}
-                      onMouseOver={undefined}
-                      onMouseUp={undefined}
                       role="gridcell"
                     >
                       <button
@@ -737,7 +626,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         className="ms-DatePicker-day-button"
                         data-is-focusable={true}
                         disabled={false}
-                        id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
@@ -755,10 +643,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   >
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onMouseDown={undefined}
-                      onMouseLeave={undefined}
-                      onMouseOver={undefined}
-                      onMouseUp={undefined}
                       role="gridcell"
                     >
                       <button
@@ -767,7 +651,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         className="ms-DatePicker-day-button"
                         data-is-focusable={true}
                         disabled={false}
-                        id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
@@ -781,10 +664,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onMouseDown={undefined}
-                      onMouseLeave={undefined}
-                      onMouseOver={undefined}
-                      onMouseUp={undefined}
                       role="gridcell"
                     >
                       <button
@@ -793,7 +672,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         className="ms-DatePicker-day-button"
                         data-is-focusable={true}
                         disabled={false}
-                        id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
@@ -807,10 +685,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onMouseDown={undefined}
-                      onMouseLeave={undefined}
-                      onMouseOver={undefined}
-                      onMouseUp={undefined}
                       role="gridcell"
                     >
                       <button
@@ -819,7 +693,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         className="ms-DatePicker-day-button"
                         data-is-focusable={true}
                         disabled={false}
-                        id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
@@ -833,10 +706,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onMouseDown={undefined}
-                      onMouseLeave={undefined}
-                      onMouseOver={undefined}
-                      onMouseUp={undefined}
                       role="gridcell"
                     >
                       <button
@@ -845,7 +714,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         className="ms-DatePicker-day-button"
                         data-is-focusable={true}
                         disabled={false}
-                        id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
@@ -859,10 +727,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onMouseDown={undefined}
-                      onMouseLeave={undefined}
-                      onMouseOver={undefined}
-                      onMouseUp={undefined}
                       role="gridcell"
                     >
                       <button
@@ -871,7 +735,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         className="ms-DatePicker-day-button"
                         data-is-focusable={true}
                         disabled={false}
-                        id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
@@ -885,10 +748,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onMouseDown={undefined}
-                      onMouseLeave={undefined}
-                      onMouseOver={undefined}
-                      onMouseUp={undefined}
                       role="gridcell"
                     >
                       <button
@@ -897,7 +756,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         className="ms-DatePicker-day-button"
                         data-is-focusable={true}
                         disabled={false}
-                        id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
@@ -911,10 +769,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onMouseDown={undefined}
-                      onMouseLeave={undefined}
-                      onMouseOver={undefined}
-                      onMouseUp={undefined}
                       role="gridcell"
                     >
                       <button
@@ -923,7 +777,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         className="ms-DatePicker-day-button"
                         data-is-focusable={true}
                         disabled={false}
-                        id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
@@ -941,10 +794,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   >
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onMouseDown={undefined}
-                      onMouseLeave={undefined}
-                      onMouseOver={undefined}
-                      onMouseUp={undefined}
                       role="gridcell"
                     >
                       <button
@@ -953,7 +802,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         className="ms-DatePicker-day-button"
                         data-is-focusable={true}
                         disabled={false}
-                        id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
@@ -967,10 +815,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onMouseDown={undefined}
-                      onMouseLeave={undefined}
-                      onMouseOver={undefined}
-                      onMouseUp={undefined}
                       role="gridcell"
                     >
                       <button
@@ -979,7 +823,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         className="ms-DatePicker-day-button"
                         data-is-focusable={true}
                         disabled={false}
-                        id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
@@ -993,10 +836,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
-                      onMouseDown={undefined}
-                      onMouseLeave={undefined}
-                      onMouseOver={undefined}
-                      onMouseUp={undefined}
                       role="gridcell"
                     >
                       <button
@@ -1005,7 +844,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         className="ms-DatePicker-day-button"
                         data-is-focusable={true}
                         disabled={false}
-                        id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
@@ -1019,10 +857,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
-                      onMouseDown={undefined}
-                      onMouseLeave={undefined}
-                      onMouseOver={undefined}
-                      onMouseUp={undefined}
                       role="gridcell"
                     >
                       <button
@@ -1031,7 +865,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         className="ms-DatePicker-day-button"
                         data-is-focusable={true}
                         disabled={false}
-                        id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
@@ -1045,10 +878,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
-                      onMouseDown={undefined}
-                      onMouseLeave={undefined}
-                      onMouseOver={undefined}
-                      onMouseUp={undefined}
                       role="gridcell"
                     >
                       <button
@@ -1057,7 +886,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         className="ms-DatePicker-day-button"
                         data-is-focusable={true}
                         disabled={false}
-                        id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
@@ -1071,10 +899,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
-                      onMouseDown={undefined}
-                      onMouseLeave={undefined}
-                      onMouseOver={undefined}
-                      onMouseUp={undefined}
                       role="gridcell"
                     >
                       <button
@@ -1083,7 +907,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         className="ms-DatePicker-day-button"
                         data-is-focusable={true}
                         disabled={false}
-                        id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
@@ -1097,10 +920,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
-                      onMouseDown={undefined}
-                      onMouseLeave={undefined}
-                      onMouseOver={undefined}
-                      onMouseUp={undefined}
                       role="gridcell"
                     >
                       <button
@@ -1109,7 +928,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         className="ms-DatePicker-day-button"
                         data-is-focusable={true}
                         disabled={false}
-                        id={undefined}
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
@@ -1126,9 +944,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
               </table>
             </div>
           </div>
-          <div
-            className={undefined}
-          />
+          <div />
           <div
             className="ms-DatePicker-monthPicker"
           >
@@ -1147,7 +963,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   className="ms-DatePicker-navContainer"
                 >
                   <button
-                    aria-label={undefined}
                     className="ms-DatePicker-prevYear js-prevYear"
                     disabled={false}
                     onClick={[Function]}
@@ -1174,7 +989,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </i>
                   </button>
                   <button
-                    aria-label={undefined}
                     className="ms-DatePicker-nextYear js-nextYear"
                     disabled={false}
                     onClick={[Function]}
@@ -1204,8 +1018,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
               </div>
             </div>
             <div
-              aria-describedby={undefined}
-              aria-labelledby={undefined}
               className="ms-FocusZone"
               data-focuszone-id="FocusZone13"
               onFocus={[Function]}

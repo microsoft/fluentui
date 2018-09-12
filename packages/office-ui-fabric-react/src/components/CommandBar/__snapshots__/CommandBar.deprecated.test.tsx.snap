@@ -20,9 +20,6 @@ exports[`CommandBar renders commands correctly 1`] = `
     }
   >
     <div
-      aria-describedby={undefined}
-      aria-label={undefined}
-      aria-labelledby={undefined}
       className=
           ms-FocusZone
           ms-CommandBar
@@ -64,11 +61,6 @@ exports[`CommandBar renders commands correctly 1`] = `
               }
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
-            aria-label={undefined}
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             className=
                 ms-Button
                 ms-Button--commandBar
@@ -141,7 +133,6 @@ exports[`CommandBar renders commands correctly 1`] = `
                   color: #000000;
                 }
             data-is-focusable={true}
-            disabled={undefined}
             name="asdf"
             onClick={[Function]}
             onKeyDown={[Function]}
@@ -198,11 +189,6 @@ exports[`CommandBar renders commands correctly 1`] = `
               }
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
-            aria-label={undefined}
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             className=
                 ms-Button
                 ms-Button--commandBar
@@ -275,7 +261,6 @@ exports[`CommandBar renders commands correctly 1`] = `
                   color: #000000;
                 }
             data-is-focusable={true}
-            disabled={undefined}
             name="asdf"
             onClick={[Function]}
             onKeyDown={[Function]}

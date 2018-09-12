@@ -24,7 +24,6 @@ exports[`PersonaCoin renders correctly 1`] = `
           text-align: center;
           width: 48px;
         }
-    style={undefined}
   >
     <div
       aria-hidden="true"
@@ -46,7 +45,6 @@ exports[`PersonaCoin renders correctly 1`] = `
             box-sizing: border-box;
             color: WindowText;
           }
-      style={undefined}
     >
       <i
         aria-hidden={true}
@@ -95,7 +93,6 @@ exports[`PersonaCoin renders correctly with image 1`] = `
           text-align: center;
           width: 48px;
         }
-    style={undefined}
   >
     <div
       className=
@@ -140,7 +137,6 @@ exports[`PersonaCoin renders correctly with image 1`] = `
             }
         onError={[Function]}
         onLoad={[Function]}
-        role={undefined}
         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII="
       />
     </div>
@@ -172,7 +168,6 @@ exports[`PersonaCoin renders correctly with provided initials 1`] = `
           text-align: center;
           width: 48px;
         }
-    style={undefined}
   >
     <div
       aria-hidden="true"
@@ -194,7 +189,6 @@ exports[`PersonaCoin renders correctly with provided initials 1`] = `
             box-sizing: border-box;
             color: WindowText;
           }
-      style={undefined}
     >
       <span>
         JG
@@ -228,7 +222,6 @@ exports[`PersonaCoin renders correctly with text 1`] = `
           text-align: center;
           width: 48px;
         }
-    style={undefined}
   >
     <div
       aria-hidden="true"
@@ -250,7 +243,6 @@ exports[`PersonaCoin renders correctly with text 1`] = `
             box-sizing: border-box;
             color: WindowText;
           }
-      style={undefined}
     >
       <span>
         KL
