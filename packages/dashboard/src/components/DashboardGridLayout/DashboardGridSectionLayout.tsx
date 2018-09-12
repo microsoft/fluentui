@@ -25,6 +25,10 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridLa
   /** the section id to card ids mapping */
   private _sectionMapping: DashboardSectionMapping = {};
 
+  private _cardSizeToWidthHeight: { [P in CardSize]: { w: number; h: number } } = this.props.cardSizeToRGLWidthHeight
+    ? this.props.cardSizeToRGLWidthHeight
+    : CardSizeToWidthHeight;
+
   constructor(props: IDashboardGridLayoutProps) {
     super(props);
     this._sectionKeys = this.props.sections ? this.props.sections.map((section: ISection) => section.id) : [];
@@ -153,8 +157,8 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridLa
       for (let j = 0; j < Object.keys(newLayOut).length; j++) {
         const currentCardKey = String(newLayOut[j].i);
         if (cardKeysOfCurrentSection && cardKeysOfCurrentSection.indexOf(currentCardKey) > -1) {
-          newLayOut[j].h = CardSizeToWidthHeight[this._cardSizes[currentCardKey]].h;
-          newLayOut[j].w = CardSizeToWidthHeight[this._cardSizes[currentCardKey]].w;
+          newLayOut[j].h = this._cardSizeToWidthHeight[this._cardSizes[currentCardKey]].h;
+          newLayOut[j].w = this._cardSizeToWidthHeight[this._cardSizes[currentCardKey]].w;
         } else if (impactedKeys.indexOf(currentCardKey) > -1) {
           this._moveVertically(newLayOut[j], delta, false);
         }
@@ -184,7 +188,7 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridLa
       return layout.i === this._sectionKeys[this._sectionKeys.indexOf(key) + 1];
     })[0].y;
 
-    const sectionHeaderHeight = CardSizeToWidthHeight[CardSize.section].h;
+    const sectionHeaderHeight = this._cardSizeToWidthHeight[CardSize.section].h;
 
     return nextSectionY - currentSectionY - sectionHeaderHeight;
   }
@@ -331,8 +335,8 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridLa
       i: layoutProp.i,
       x: layoutProp.x,
       y: layoutProp.y,
-      w: CardSizeToWidthHeight[layoutProp.size].w,
-      h: CardSizeToWidthHeight[layoutProp.size].h,
+      w: this._cardSizeToWidthHeight[layoutProp.size].w,
+      h: this._cardSizeToWidthHeight[layoutProp.size].h,
       static: layoutProp.static === undefined ? false : layoutProp.static,
       isDraggable: layoutProp.disableDrag === undefined ? true : !layoutProp.disableDrag,
       isResizable: layoutProp.isResizable === undefined ? true : layoutProp.isResizable

@@ -2,7 +2,9 @@ import { CardSize } from '@uifabric/dashboard';
 import { IDashboardCardLayout, DashboardGridBreakpointLayouts } from '../components/DashboardGridLayout/DashboardGridLayout.types';
 import { Layout, Layouts } from 'react-grid-layout';
 
-// TODO, this should be exposed through props
+/**
+ * The is the default CardSizeToWidthHeight. In case this prop is not provided in the control
+ */
 export const CardSizeToWidthHeight: { [P in CardSize]: { w: number; h: number } } = {
   small: { w: 1, h: 4 },
   mediumTall: { w: 1, h: 8 },
