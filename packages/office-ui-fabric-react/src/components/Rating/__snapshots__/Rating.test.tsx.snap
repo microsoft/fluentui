@@ -19,8 +19,6 @@ exports[`Rating Renders Rating correctly 1`] = `
   id="Rating0"
 >
   <div
-    aria-describedby={undefined}
-    aria-labelledby={undefined}
     className=
         ms-FocusZone
         ms-Rating-focuszone

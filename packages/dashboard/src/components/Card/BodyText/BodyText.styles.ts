@@ -15,7 +15,7 @@ export const getStyles = (): IBodyTextStyles => {
     },
     bodyText: {
       fontFamily: 'Segoe UI',
-      lineHeight: '14px',
+      lineHeight: '16px',
       fontSize: '12px',
       paddingTop: '8px',
       flexWrap: 'wrap',

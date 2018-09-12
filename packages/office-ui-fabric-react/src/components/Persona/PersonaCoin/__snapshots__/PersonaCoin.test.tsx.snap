@@ -35,7 +35,6 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
         color: #212121;
       }
   size={13}
-  style={undefined}
 >
   <div
     className=
@@ -60,7 +59,6 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
             text-align: center;
             width: 48px;
           }
-      style={undefined}
     >
       <div
         aria-hidden="true"
@@ -82,7 +80,6 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
               box-sizing: border-box;
               color: WindowText;
             }
-        style={undefined}
       >
         <i
           aria-hidden={true}
@@ -134,7 +131,6 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
           }
     >
       <div
-        aria-describedby={undefined}
         className="ms-TooltipHost"
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
@@ -221,7 +217,6 @@ exports[`Persona renders Persona correctly with image 1`] = `
         color: #212121;
       }
   size={13}
-  style={undefined}
 >
   <div
     className=
@@ -246,7 +241,6 @@ exports[`Persona renders Persona correctly with image 1`] = `
             text-align: center;
             width: 48px;
           }
-      style={undefined}
     >
       <div
         className=
@@ -291,7 +285,6 @@ exports[`Persona renders Persona correctly with image 1`] = `
               }
           onError={[Function]}
           onLoad={[Function]}
-          role={undefined}
           src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII="
         />
       </div>
@@ -326,7 +319,6 @@ exports[`Persona renders Persona correctly with image 1`] = `
           }
     >
       <div
-        aria-describedby={undefined}
         className="ms-TooltipHost"
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
@@ -413,7 +405,6 @@ exports[`Persona renders Persona correctly with initials 1`] = `
         color: #212121;
       }
   size={13}
-  style={undefined}
 >
   <div
     className=
@@ -438,7 +429,6 @@ exports[`Persona renders Persona correctly with initials 1`] = `
             text-align: center;
             width: 48px;
           }
-      style={undefined}
     >
       <div
         aria-hidden="true"
@@ -460,7 +450,6 @@ exports[`Persona renders Persona correctly with initials 1`] = `
               box-sizing: border-box;
               color: WindowText;
             }
-        style={undefined}
       >
         <span>
           KL
@@ -497,7 +486,6 @@ exports[`Persona renders Persona correctly with initials 1`] = `
           }
     >
       <div
-        aria-describedby={undefined}
         className="ms-TooltipHost"
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
@@ -584,7 +572,6 @@ exports[`Persona renders Persona correctly with no props 1`] = `
         color: #212121;
       }
   size={13}
-  style={undefined}
 >
   <div
     className=
@@ -609,7 +596,6 @@ exports[`Persona renders Persona correctly with no props 1`] = `
             text-align: center;
             width: 48px;
           }
-      style={undefined}
     >
       <div
         aria-hidden="true"
@@ -631,7 +617,6 @@ exports[`Persona renders Persona correctly with no props 1`] = `
               box-sizing: border-box;
               color: WindowText;
             }
-        style={undefined}
       >
         <i
           aria-hidden={true}
@@ -760,7 +745,6 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
         color: #212121;
       }
   size={15}
-  style={undefined}
 >
   <div
     className=
@@ -785,7 +769,6 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
             text-align: center;
             width: 100px;
           }
-      style={undefined}
     >
       <div
         aria-hidden="true"
@@ -807,7 +790,6 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
               box-sizing: border-box;
               color: WindowText;
             }
-        style={undefined}
       >
         <span>
           SV
@@ -871,7 +853,6 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
               left: 2px;
               width: calc(100% - 4px);
             }
-        style={undefined}
       >
         <i
           aria-hidden={true}
@@ -891,7 +872,6 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
               }
           data-icon-name=""
           role="presentation"
-          style={undefined}
         />
       </div>
     </div>
@@ -925,7 +905,6 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
           }
     >
       <div
-        aria-describedby={undefined}
         className="ms-TooltipHost"
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
@@ -948,7 +927,6 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
           }
     >
       <div
-        aria-describedby={undefined}
         className="ms-TooltipHost"
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
@@ -972,7 +950,6 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
           }
     >
       <div
-        aria-describedby={undefined}
         className="ms-TooltipHost"
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
@@ -996,7 +973,6 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
           }
     >
       <div
-        aria-describedby={undefined}
         className="ms-TooltipHost"
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
@@ -1046,7 +1022,6 @@ exports[`Persona renders correctly with onRender callback 1`] = `
         color: #212121;
       }
   size={15}
-  style={undefined}
 >
   <div
     className=
@@ -1071,7 +1046,6 @@ exports[`Persona renders correctly with onRender callback 1`] = `
             text-align: center;
             width: 100px;
           }
-      style={undefined}
     >
       <div
         className=
@@ -1116,7 +1090,6 @@ exports[`Persona renders correctly with onRender callback 1`] = `
               }
           onError={[Function]}
           onLoad={[Function]}
-          role={undefined}
           src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-male.png"
         />
       </div>
@@ -1175,7 +1148,6 @@ exports[`Persona renders correctly with onRender callback 1`] = `
               left: 2px;
               width: calc(100% - 4px);
             }
-        style={undefined}
       >
         <i
           aria-hidden={true}
@@ -1195,7 +1167,6 @@ exports[`Persona renders correctly with onRender callback 1`] = `
               }
           data-icon-name=""
           role="presentation"
-          style={undefined}
         />
       </div>
     </div>
@@ -1229,7 +1200,6 @@ exports[`Persona renders correctly with onRender callback 1`] = `
           }
     >
       <div
-        aria-describedby={undefined}
         className="ms-TooltipHost"
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
@@ -1252,7 +1222,6 @@ exports[`Persona renders correctly with onRender callback 1`] = `
           }
     >
       <div
-        aria-describedby={undefined}
         className="ms-TooltipHost"
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
@@ -1276,7 +1245,6 @@ exports[`Persona renders correctly with onRender callback 1`] = `
           }
     >
       <div
-        aria-describedby={undefined}
         className="ms-TooltipHost"
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
@@ -1300,7 +1268,6 @@ exports[`Persona renders correctly with onRender callback 1`] = `
           }
     >
       <div
-        aria-describedby={undefined}
         className="ms-TooltipHost"
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
@@ -1338,7 +1305,6 @@ exports[`PersonaCoin does not render the initials when showInitialsUntilImageLoa
           text-align: center;
           width: 48px;
         }
-    style={undefined}
   >
     <div
       className=
@@ -1383,7 +1349,6 @@ exports[`PersonaCoin does not render the initials when showInitialsUntilImageLoa
             }
         onError={[Function]}
         onLoad={[Function]}
-        role={undefined}
         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII="
       />
     </div>
@@ -1415,7 +1380,6 @@ exports[`PersonaCoin renders correctly 1`] = `
           text-align: center;
           width: 48px;
         }
-    style={undefined}
   >
     <div
       aria-hidden="true"
@@ -1437,7 +1401,6 @@ exports[`PersonaCoin renders correctly 1`] = `
             box-sizing: border-box;
             color: WindowText;
           }
-      style={undefined}
     >
       <i
         aria-hidden={true}
@@ -1486,7 +1449,6 @@ exports[`PersonaCoin renders correctly with image 1`] = `
           text-align: center;
           width: 48px;
         }
-    style={undefined}
   >
     <div
       className=
@@ -1531,7 +1493,6 @@ exports[`PersonaCoin renders correctly with image 1`] = `
             }
         onError={[Function]}
         onLoad={[Function]}
-        role={undefined}
         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII="
       />
     </div>
@@ -1563,7 +1524,6 @@ exports[`PersonaCoin renders correctly with onRender callback 1`] = `
           text-align: center;
           width: 100px;
         }
-    style={undefined}
   >
     <div
       aria-hidden="true"
@@ -1585,7 +1545,6 @@ exports[`PersonaCoin renders correctly with onRender callback 1`] = `
             box-sizing: border-box;
             color: WindowText;
           }
-      style={undefined}
     >
       <span>
         SV
@@ -1619,7 +1578,6 @@ exports[`PersonaCoin renders correctly with provided initials 1`] = `
           text-align: center;
           width: 48px;
         }
-    style={undefined}
   >
     <div
       aria-hidden="true"
@@ -1641,7 +1599,6 @@ exports[`PersonaCoin renders correctly with provided initials 1`] = `
             box-sizing: border-box;
             color: WindowText;
           }
-      style={undefined}
     >
       <span>
         JG
@@ -1675,7 +1632,6 @@ exports[`PersonaCoin renders correctly with text 1`] = `
           text-align: center;
           width: 48px;
         }
-    style={undefined}
   >
     <div
       aria-hidden="true"
@@ -1697,7 +1653,6 @@ exports[`PersonaCoin renders correctly with text 1`] = `
             box-sizing: border-box;
             color: WindowText;
           }
-      style={undefined}
     >
       <span>
         KL
@@ -1731,7 +1686,6 @@ exports[`PersonaCoin renders the initials before the image is loaded 1`] = `
           text-align: center;
           width: 48px;
         }
-    style={undefined}
   >
     <div
       aria-hidden="true"
@@ -1753,7 +1707,6 @@ exports[`PersonaCoin renders the initials before the image is loaded 1`] = `
             box-sizing: border-box;
             color: WindowText;
           }
-      style={undefined}
     >
       <span>
         KL
@@ -1802,7 +1755,6 @@ exports[`PersonaCoin renders the initials before the image is loaded 1`] = `
             }
         onError={[Function]}
         onLoad={[Function]}
-        role={undefined}
         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII="
       />
     </div>
