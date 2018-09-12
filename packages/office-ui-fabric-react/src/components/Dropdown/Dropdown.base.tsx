@@ -588,10 +588,15 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
       // Focusing an element can trigger a reflow. Making this wait until there is an animation
       // frame can improve perf significantly.
       this._async.requestAnimationFrame(() => {
-        const element: HTMLElement = getDocument()!.querySelector(
-          `#${this._id}-list${this.state.selectedIndices[0]}`
-        ) as HTMLElement;
-        this._focusZone.current!.focusElement(element);
+        const selectedIndices = this.state.selectedIndices;
+        if (selectedIndices && selectedIndices[0]) {
+          const element: HTMLElement = getDocument()!.querySelector(
+            `#${this._id}-list${selectedIndices[0]}`
+          ) as HTMLElement;
+          this._focusZone.current!.focusElement(element);
+        } else {
+          this._focusZone.current!.focus();
+        }
       });
     }
   };
