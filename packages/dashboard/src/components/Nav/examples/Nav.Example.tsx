@@ -78,18 +78,25 @@ export class NavExample extends React.Component<{}, {}> {
               { name: 'Exchange', url: 'http://msn.com' },
               { name: 'SharePoint', url: 'http://msn.com' }
             ]
-          },
-          { name: 'Edit navigation pane', url: '#', onClick: this._onEditClick, icon: 'Edit' },
-          { name: 'Show less', alternateText: 'Show more', url: '#', isShowMoreLink: true, icon: 'More' }
+          }
         ],
         groupType: NavGroupType.CustomizationGroup
       }
     ];
 
-    return <Nav groups={navLinkGroups} dataHint="LeftNav" enableCustomization={true} />;
+    return (
+      <Nav
+        groups={navLinkGroups}
+        dataHint="PrimaryNavigation"
+        enableCustomization={true}
+        editLink={'Edit navigation'}
+        showMoreLink={'Show more'}
+        showLessLink={'Lhow less'}
+      />
+    );
   }
 
-  private _onEditClick(): void {
-    alert('open edit nav view / flyout');
-  }
+  // private _onEditClick(): void {
+  //   alert('open edit nav view / flyout');
+  // }
 }

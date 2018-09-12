@@ -32,13 +32,15 @@ const navFloatingItemIndentSize = 20;
 const BackDropSelector = '@supports (backdrop-filter: blur(20px)) or (-webkit-backdrop-filter: blur(20px))';
 
 export const getStyles = (props: INavStyleProps): INavStyles => {
-  const { isSelected, hasChildren, nestingLevel, isCollapsed, scrollTop, isChildLinkSelected } = props;
+  const { isSelected, hasChildren, nestingLevel, scrollTop, isChildLinkSelected } = props;
 
   return {
     root: {
-      width: isCollapsed ? navCollapsedWidth : navWidth,
+      width: navWidth,
       backgroundColor: navBackgroundColor,
       color: navTextColor,
+      transitionProperty: 'width',
+      transitionDuration: '.3s',
       selectors: {
         ul: {
           listStyleType: 'none',
@@ -57,6 +59,14 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         }
       }
     },
+    navCollapsed: {
+      width: '48px',
+      selectors: {}
+    },
+
+    //
+    // Everything below this needs to be brought above or deleted
+    //
     navItemRoot: {
       display: 'flex',
       flex: '1 1 auto',
@@ -119,11 +129,12 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
       color: DefaultPalette.black
     },
     navSlimItemRoot: {
-      selectors: {
-        ':hover': {
-          backgroundColor: hasChildren ? navItemWithChildBgColor : navItemHoverColor
-        }
-      }
+      width: '48'
+      // selectors: {
+      //   ':hover': {
+      //     backgroundColor: hasChildren ? navItemWithChildBgColor : navItemHoverColor
+      //   }
+      // }
     },
     navFloatingRoot: [
       {

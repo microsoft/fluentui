@@ -17,14 +17,8 @@ export interface INavProps {
   groups: ICustomNavLinkGroup[] | null;
 
   /**
-   * (Optional) The key of the nav item initially selected.
-   */
-  initialSelectedKey?: string;
-
-  /**
    * (Optional) The key of the nav item selected by caller.
    */
-  selectedKey?: string;
   isSelected?: boolean;
 
   /**
@@ -56,6 +50,9 @@ export interface INavProps {
    * will customize the isHidden property of the nav link (possibly through a flyout and refresh the Nav component).
    */
   enableCustomization?: boolean;
+  editLink?: string;
+  showMoreLink?: string;
+  showLessLink?: string;
 
   /**
    * Used to override isHidden property of the Nav link when the "Show More" link is clicked
@@ -68,7 +65,7 @@ export interface INavProps {
   onNavCollapsedCallback?(isCollapsed: boolean): void;
 
   /**
-   * (Optional) callback for the Nav and SlimNav component when the "Show more" / "Show less" nav link is clicked.
+   * (Optional) callback for the Nav and when the "Show more" / "Show less" nav link is clicked.
    * The state "showMore" stays in the parent NavToggler component to keep show more/less state of Nav and SlimNav component in sync.
    */
   onShowMoreLinkClicked?(ev: React.MouseEvent<HTMLElement>): void;
@@ -89,12 +86,27 @@ export interface INavState extends INavState {
    * Used to toggle the nav component between expanded and collapsed state.
    */
   isNavCollapsed?: boolean;
-  isSelected?: boolean;
 
   /**
    * Used to override isHidden property of the Nav link when the "Show More" link is clicked
    */
   showMore?: boolean;
+}
+
+export interface INavGroupProps {
+  /**
+   * Used to toggle L1 nav links
+   */
+  linkCollapsed?: boolean;
+  groupName?: string;
+  groupIndex: number;
+  links: INavLink[];
+  enableCustomization?: boolean;
+  showMore?: boolean;
+  hasHiddenLink: boolean;
+  dataHint?: string;
+  onShowNestedLink?(ev: React.MouseEvent<HTMLElement>): void;
+  onNavNodeExpandedCallback?(nodeKey: string, isExpanded: boolean): void;
 }
 
 export interface INavLink extends INavLink {
@@ -174,6 +186,7 @@ export interface INavStyles {
    * Style set for the nav component root
    */
   root: IStyle;
+  navCollapsed: IStyle;
 
   /**
    * Style set for the nav item root

@@ -8,30 +8,14 @@ export class NavBase extends React.Component<INavProps, INavState> {
 
   constructor(props: INavProps) {
     super(props);
-  }
 
-  /* given a link, find if one of the child is selected */
-  protected isChildLinkSelected(link: INavLink): boolean {
-    if (!link || !link.links || link.links.length === 0) {
-      return false;
-    }
+    this.state = {
+      isNavCollapsed: this.props.isNavCollapsed ? this.props.isNavCollapsed : false,
+      showMore: this.props.showMore ? this.props.showMore : false,
+      isLinkExpandStateChanged: false
+    };
 
-    return link.links.some((childLink: INavLink) => {
-      return !!childLink && childLink.isSelected;
-    });
-  }
-
-  protected getLinkText(link: INavLink, showMore?: boolean): string | undefined {
-    if (!link) {
-      return undefined;
-    }
-
-    if (link.isShowMoreLink && !showMore && link.alternateText) {
-      // if the link is show more/less link, based on the showMore state; return "Show more" localized text
-      return link.alternateText;
-    }
-
-    return link.name;
+    this._onShowMoreLinkClicked = this._onShowMoreLinkClicked.bind(this);
   }
 
   // find if atleast one child link is visible using isHidden property
@@ -48,5 +32,15 @@ export class NavBase extends React.Component<INavProps, INavState> {
         }
       ) || !!showMore
     );
+  }
+
+  protected _onShowMoreLinkClicked(ev: React.MouseEvent<HTMLElement>): void {
+    console.log('hey');
+    this.setState({
+      showMore: !this.state.showMore
+    });
+
+    ev.preventDefault();
+    ev.stopPropagation();
   }
 }
