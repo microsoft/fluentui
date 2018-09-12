@@ -13,7 +13,6 @@ exports[`Stack accepts custom className on child items 1`] = `
         width: auto;
       }
       & > * {
-        flex-shrink: 0;
         margin-bottom: 0px;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -21,13 +20,16 @@ exports[`Stack accepts custom className on child items 1`] = `
       & > *:last-child {
         margin-bottom: 0px;
       }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 0;
+      }
 >
   <span
     className=
         ms-StackItem
         {
           background: red;
-          flex-shrink: 0 !important;
+          flex-shrink: 0;
         }
   >
     Item 1
@@ -57,7 +59,6 @@ exports[`Stack renders Stack with StackItems correctly 1`] = `
         width: auto;
       }
       & > * {
-        flex-shrink: 0;
         margin-bottom: 0px;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -65,12 +66,15 @@ exports[`Stack renders Stack with StackItems correctly 1`] = `
       & > *:last-child {
         margin-bottom: 0px;
       }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 0;
+      }
 >
   <span
     className=
         ms-StackItem
         {
-          flex-shrink: 0 !important;
+          flex-shrink: 0;
         }
   >
     Item 1
@@ -79,7 +83,7 @@ exports[`Stack renders Stack with StackItems correctly 1`] = `
     className=
         ms-StackItem
         {
-          flex-shrink: 0 !important;
+          flex-shrink: 0;
         }
   >
     Item 2
@@ -100,7 +104,6 @@ exports[`Stack renders Stack with a gap correctly 1`] = `
         width: auto;
       }
       & > * {
-        flex-shrink: 0;
         margin-bottom: 0px;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -108,12 +111,15 @@ exports[`Stack renders Stack with a gap correctly 1`] = `
       & > *:last-child {
         margin-bottom: 0px;
       }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 0;
+      }
 >
   <span
     className=
         ms-StackItem
         {
-          flex-shrink: 0 !important;
+          flex-shrink: 0;
         }
   >
     Item 1
@@ -122,7 +128,7 @@ exports[`Stack renders Stack with a gap correctly 1`] = `
     className=
         ms-StackItem
         {
-          flex-shrink: 0 !important;
+          flex-shrink: 0;
         }
   >
     Item 2
@@ -143,13 +149,15 @@ exports[`Stack renders Stack with grow correctly 1`] = `
         width: auto;
       }
       & > * {
-        flex-shrink: 0;
         margin-bottom: 0px;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
       & > *:last-child {
         margin-bottom: 0px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 0;
       }
 >
   <div
@@ -166,13 +174,15 @@ exports[`Stack renders Stack with grow correctly 1`] = `
           width: auto;
         }
         & > * {
-          flex-shrink: 0;
           margin-bottom: 0px;
           text-overflow: ellipsis;
           white-space: nowrap;
         }
         & > *:last-child {
           margin-bottom: 0px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 0;
         }
   >
     Item 1
@@ -191,13 +201,15 @@ exports[`Stack renders Stack with grow correctly 1`] = `
           width: auto;
         }
         & > * {
-          flex-shrink: 0;
           margin-bottom: 0px;
           text-overflow: ellipsis;
           white-space: nowrap;
         }
         & > *:last-child {
           margin-bottom: 0px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 0;
         }
   >
     Item 2
@@ -216,13 +228,15 @@ exports[`Stack renders Stack with grow correctly 1`] = `
           width: auto;
         }
         & > * {
-          flex-shrink: 0;
           margin-bottom: 0px;
           text-overflow: ellipsis;
           white-space: nowrap;
         }
         & > *:last-child {
           margin-bottom: 0px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 0;
         }
   >
     Item 3
@@ -243,7 +257,6 @@ exports[`Stack renders Stack with shrinking StackItems correctly 1`] = `
         width: auto;
       }
       & > * {
-        flex-shrink: 1;
         margin-bottom: 0px;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -251,12 +264,15 @@ exports[`Stack renders Stack with shrinking StackItems correctly 1`] = `
       & > *:last-child {
         margin-bottom: 0px;
       }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
 >
   <span
     className=
         ms-StackItem
         {
-          flex-shrink: 1 !important;
+          flex-shrink: 1;
         }
   >
     Item 1
@@ -265,7 +281,7 @@ exports[`Stack renders Stack with shrinking StackItems correctly 1`] = `
     className=
         ms-StackItem
         {
-          flex-shrink: 1 !important;
+          flex-shrink: 1;
         }
   >
     Item 2
@@ -288,13 +304,15 @@ exports[`Stack renders Stack with vertical and horizontal alignment correctly 1`
         width: auto;
       }
       & > * {
-        flex-shrink: 0;
         margin-bottom: 0px;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
       & > *:last-child {
         margin-bottom: 0px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 0;
       }
 >
   <div>
@@ -319,13 +337,15 @@ exports[`Stack renders Stack with vertical and horizontal fill correctly 1`] = `
         width: 100%;
       }
       & > * {
-        flex-shrink: 0;
         margin-bottom: 0px;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
       & > *:last-child {
         margin-bottom: 0px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 0;
       }
 >
   <div>
@@ -350,13 +370,15 @@ exports[`Stack renders horizontal Stack correctly 1`] = `
         width: auto;
       }
       & > * {
-        flex-shrink: 0;
         margin-right: 0px;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
       & > *:last-child {
         margin-right: 0px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 0;
       }
 >
   <div>
@@ -381,13 +403,15 @@ exports[`Stack renders vertical Stack correctly 1`] = `
         width: auto;
       }
       & > * {
-        flex-shrink: 0;
         margin-bottom: 0px;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
       & > *:last-child {
         margin-bottom: 0px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 0;
       }
 >
   <div>

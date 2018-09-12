@@ -13,13 +13,15 @@ exports[`HorizontalStack renders default HorizontalStack correctly 1`] = `
         width: auto;
       }
       & > * {
-        flex-shrink: 0;
         margin-right: 0px;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
       & > *:last-child {
         margin-right: 0px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 0;
       }
 >
   <div>
@@ -44,13 +46,15 @@ exports[`HorizontalStack renders gap correctly 1`] = `
         width: auto;
       }
       & > * {
-        flex-shrink: 0;
         margin-right: 5px;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
       & > *:last-child {
         margin-right: 0px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 0;
       }
 >
   <div>
@@ -75,7 +79,6 @@ exports[`HorizontalStack renders growing items correctly 1`] = `
         width: auto;
       }
       & > * {
-        flex-shrink: 0;
         margin-right: 0px;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -83,12 +86,15 @@ exports[`HorizontalStack renders growing items correctly 1`] = `
       & > *:last-child {
         margin-right: 0px;
       }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 0;
+      }
 >
   <span
     className=
         ms-StackItem
         {
-          flex-shrink: 0 !important;
+          flex-shrink: 0;
         }
   >
     Item 1
@@ -97,7 +103,7 @@ exports[`HorizontalStack renders growing items correctly 1`] = `
     className=
         ms-StackItem
         {
-          flex-shrink: 0 !important;
+          flex-shrink: 0;
         }
   >
     Item 2
@@ -118,7 +124,6 @@ exports[`HorizontalStack renders item alignments correctly 1`] = `
         width: auto;
       }
       & > * {
-        flex-shrink: 0;
         margin-right: 0px;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -126,13 +131,16 @@ exports[`HorizontalStack renders item alignments correctly 1`] = `
       & > *:last-child {
         margin-right: 0px;
       }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 0;
+      }
 >
   <span
     className=
         ms-StackItem
         {
           align-self: auto;
-          flex-shrink: 0 !important;
+          flex-shrink: 0;
         }
   >
     Auto
@@ -142,7 +150,7 @@ exports[`HorizontalStack renders item alignments correctly 1`] = `
         ms-StackItem
         {
           align-self: stretch;
-          flex-shrink: 0 !important;
+          flex-shrink: 0;
         }
   >
     Stretch
@@ -152,7 +160,7 @@ exports[`HorizontalStack renders item alignments correctly 1`] = `
         ms-StackItem
         {
           align-self: baseline;
-          flex-shrink: 0 !important;
+          flex-shrink: 0;
         }
   >
     Baseline
@@ -162,7 +170,7 @@ exports[`HorizontalStack renders item alignments correctly 1`] = `
         ms-StackItem
         {
           align-self: flex-start;
-          flex-shrink: 0 !important;
+          flex-shrink: 0;
         }
   >
     Start
@@ -172,7 +180,7 @@ exports[`HorizontalStack renders item alignments correctly 1`] = `
         ms-StackItem
         {
           align-self: center;
-          flex-shrink: 0 !important;
+          flex-shrink: 0;
         }
   >
     Center
@@ -182,7 +190,7 @@ exports[`HorizontalStack renders item alignments correctly 1`] = `
         ms-StackItem
         {
           align-self: flex-end;
-          flex-shrink: 0 !important;
+          flex-shrink: 0;
         }
   >
     End
@@ -203,7 +211,6 @@ exports[`HorizontalStack renders shrinking items correctly 1`] = `
         width: auto;
       }
       & > * {
-        flex-shrink: 1;
         margin-right: 0px;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -211,12 +218,15 @@ exports[`HorizontalStack renders shrinking items correctly 1`] = `
       & > *:last-child {
         margin-right: 0px;
       }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
 >
   <span
     className=
         ms-StackItem
         {
-          flex-shrink: 1 !important;
+          flex-shrink: 1;
         }
   >
     Item 1
@@ -225,7 +235,7 @@ exports[`HorizontalStack renders shrinking items correctly 1`] = `
     className=
         ms-StackItem
         {
-          flex-shrink: 0 !important;
+          flex-shrink: 0;
         }
   >
     Item 2
