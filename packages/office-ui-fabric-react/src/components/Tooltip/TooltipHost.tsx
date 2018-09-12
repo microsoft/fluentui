@@ -58,7 +58,10 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
     } = this.props;
     const { isTooltipVisible } = this.state;
     const tooltipId = id || getId('tooltip');
-    const isContentPresent = !!(content || (tooltipProps && tooltipProps.onRenderContent && tooltipProps.onRenderContent()));
+    const isContentPresent = !!(
+      content ||
+      (tooltipProps && tooltipProps.onRenderContent && tooltipProps.onRenderContent())
+    );
     const showTooltip = isTooltipVisible && isContentPresent;
     const ariaDescribedBy = setAriaDescribedBy && isTooltipVisible && isContentPresent ? tooltipId : undefined;
 
@@ -161,7 +164,10 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
 
   private _toggleTooltip(isTooltipVisible: boolean): void {
     if (this.state.isTooltipVisible !== isTooltipVisible) {
-      this.setState({ isTooltipVisible }, () => this.props.onTooltipToggle && this.props.onTooltipToggle(this.state.isTooltipVisible));
+      this.setState(
+        { isTooltipVisible },
+        () => this.props.onTooltipToggle && this.props.onTooltipToggle(this.state.isTooltipVisible)
+      );
     }
   }
 }

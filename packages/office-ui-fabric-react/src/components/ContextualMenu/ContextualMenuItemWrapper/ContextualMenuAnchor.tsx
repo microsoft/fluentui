@@ -46,7 +46,11 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
 
     return (
       <div>
-        <KeytipData keytipProps={item.keytipProps} ariaDescribedBy={(nativeProps as any)['aria-describedby']} disabled={disabled}>
+        <KeytipData
+          keytipProps={item.keytipProps}
+          ariaDescribedBy={(nativeProps as any)['aria-describedby']}
+          disabled={disabled}
+        >
           {(keytipAttributes: any): JSX.Element => (
             <a
               {...nativeProps}

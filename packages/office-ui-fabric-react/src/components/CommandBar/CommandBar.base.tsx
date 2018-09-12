@@ -1,7 +1,13 @@
 import * as React from 'react';
 
 import { BaseComponent, css, nullRender } from '../../Utilities';
-import { ICommandBar, ICommandBarItemProps, ICommandBarProps, ICommandBarStyleProps, ICommandBarStyles } from './CommandBar.types';
+import {
+  ICommandBar,
+  ICommandBarItemProps,
+  ICommandBarProps,
+  ICommandBarStyleProps,
+  ICommandBarStyles
+} from './CommandBar.types';
 import { IOverflowSet, OverflowSet } from '../../OverflowSet';
 import { IResizeGroup, ResizeGroup } from '../../ResizeGroup';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
