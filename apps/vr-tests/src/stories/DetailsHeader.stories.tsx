@@ -4,12 +4,37 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { IColumn, DetailsListLayoutMode, ColumnActionsMode, Selection, SelectionMode } from 'office-ui-fabric-react';
+import { IColumn, DetailsListLayoutMode, ColumnActionsMode, Selection, SelectionMode, IClassNames, classNamesFunction } from 'office-ui-fabric-react';
+import { IDetailsColumnStyles, IDetailsColumnStyleProps } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn.types'
 import { DetailsHeader } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsHeader'
-
+import { IDetailsHeaderStyleProps, IDetailsHeaderStyles } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsHeader.types';
+import { DetailsColumn } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn'
+import { IDragDropHelper } from "c:/Git/office-ui-fabric-react/packages/office-ui-fabric-react/src/utilities/dragdrop/index"
 
 const _items: {}[] = [];
 const _selection = new Selection();
+let _classNames: IClassNames<IDetailsColumnStyles>;
+const getClassNames = classNamesFunction<IDetailsHeaderStyleProps, IDetailsHeaderStyles>();
+
+// const _onDragStart = (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent): void => {
+
+//   if (itemIndex) {
+//     this._updateHeaderDragInfo(itemIndex);
+//     this._root.current.classList.add(classNames.borderWhileDragging);
+//   }
+// }
+
+// const updateDragInfo = (props: { itemIndex: number }, event?: MouseEvent) => {
+
+//     this._draggedColumnIndex = this.props.selectionMode !== SelectionMode.none ? itemIndex - 2 : itemIndex - 1;
+//     onColumnDragStart(true);
+
+// }
+
+// _classNames = getClassNames(styles);
+
+
+let _dragDropHelper: IDragDropHelper;
 
 const columns: IColumn[] = [
   { key: 'a', name: 'a', fieldName: 'a', minWidth: 200, maxWidth: 400, calculatedWidth: 200, isResizable: true },
@@ -115,11 +140,6 @@ storiesOf('DetailsHeader', module)
         .hover('[aria-colindex=3]')
         .snapshot('hoverDraggable', { cropTo: '.testWrapper' })
         .mouseDown('[aria-colindex=2]')
-        .snapshot('mouseDownFrozen', { cropTo: '.testWrapper' })
-        .hover('[aria-colindex=2]')
-        .mouseUp('[aria-colindex=2]')
-        .mouseDown('[aria-colindex=3]')
-        .snapshot('mouseDownDraggable', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
@@ -134,5 +154,26 @@ storiesOf('DetailsHeader', module)
       columns={columns}
       columnReorderProps={_columnReorderProps}
     />
-
   ))
+
+  .add('DragStart', () => (
+    <DetailsColumn
+      column={columns[3]}
+      key={columns[3].key}
+      columnIndex={3}
+      dragDropHelper={_dragDropHelper}
+      isDraggable={true}
+      isDropped={false}
+    />
+  ))
+  .add('DragEnd', () => (
+    <DetailsColumn
+      column={columns[3]}
+      key={columns[3].key}
+      columnIndex={3}
+      isDraggable={true}
+      isDropped={true}
+    />
+  ))
+
+
