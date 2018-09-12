@@ -141,18 +141,28 @@ export interface IDashboardGridLayoutProps {
   isCollapsible?: boolean;
 
   /**
-   * Callback so you can save the layout.
+   * This is a CardSize -> width height value map in React-Grid-Layout. P is @see CardSize
    */
-  onLayoutChange?(currentLayout: Layout[], allLayouts: Layouts): void;
+  cardSizeToRGLWidthHeight?: { [P in CardSize]: { w: number; h: number } };
+
+  /**
+   * Callback on the layout change.
+   * @param currentLayout the current layout used
+   * @param allLayouts all layouts for all breakpoints
+   */
+  onLayoutChange?: (currentLayout: Layout[], allLayouts: Layouts) => void;
+
+  /**
+   * Callback on the layout change. Compare to @see onLayoutChange, this callback returns one more value which captures
+   * the section to cards mapping
+   * @param currentLayout the current layout used
+   * @param allLayouts all layouts for all breakpoints
+   * @param sectionMapping section tp card mapping
+   */
+  onSectionChange?: (currentLayout: Layout[], allLayouts: Layouts, sectionMapping?: DashboardSectionMapping) => void;
 
   /**
    * Callback with breakpoint and new number of columns
    */
-  onBreakPointChange?(newBreakpoint: string, newCols: number): void;
-
-  /**
-   * On section change.
-   * @param newMapping
-   */
-  onSectionChange?(currentLayout: Layout[], allLayouts: Layouts, sectionMapping?: DashboardSectionMapping): void;
+  onBreakPointChange?: (newBreakpoint: string, newCols: number) => void;
 }

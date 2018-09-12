@@ -8,7 +8,6 @@ import {
 } from './DashboardGridLayout.types';
 import { getStyles } from './DashboardGridLayout.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { CardSizeToWidthHeight } from '../../utilities/DashboardGridLayoutUtils';
 
 require('style-loader!css-loader!react-grid-layout/css/styles.css');
 require('style-loader!css-loader!react-resizable/css/styles.css');
@@ -38,6 +37,13 @@ export class DashboardGridLayoutBase extends React.Component<IDashboardGridLayou
       sm: 1024,
       xs: 640,
       xxs: 480
+    },
+    cardSizeToRGLWidthHeight: {
+      small: { w: 1, h: 4 },
+      mediumTall: { w: 1, h: 8 },
+      mediumWide: { w: 2, h: 4 },
+      large: { w: 2, h: 8 },
+      section: { w: 4, h: 1 }
     }
   };
 
@@ -105,8 +111,8 @@ export class DashboardGridLayoutBase extends React.Component<IDashboardGridLayou
       i: layoutProp.i,
       x: layoutProp.x,
       y: layoutProp.y,
-      w: CardSizeToWidthHeight[layoutProp.size].w,
-      h: CardSizeToWidthHeight[layoutProp.size].h,
+      w: this.props.cardSizeToRGLWidthHeight![layoutProp.size].w,
+      h: this.props.cardSizeToRGLWidthHeight![layoutProp.size].h,
       static: layoutProp.static === undefined ? false : layoutProp.static,
       isDraggable: layoutProp.disableDrag === undefined ? true : !layoutProp.disableDrag,
       isResizable: layoutProp.isResizable === undefined ? true : layoutProp.isResizable
