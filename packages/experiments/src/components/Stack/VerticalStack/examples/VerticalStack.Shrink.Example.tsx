@@ -4,24 +4,22 @@ import { mergeStyleSets, Slider } from 'office-ui-fabric-react';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export interface IExampleState {
-  shrinkingContainerHeight: number;
+  stackHeight: number;
 }
 
 export class VerticalStackShrinkExample extends React.Component<{}, IExampleState> {
   constructor(props: {}) {
     super(props);
     this.state = {
-      shrinkingContainerHeight: 100
+      stackHeight: 100
     };
-
-    this._onSliderChange = this._onSliderChange.bind(this);
   }
 
   public render(): JSX.Element {
     const styles = mergeStyleSets({
       root: {
         background: DefaultPalette.themeTertiary,
-        height: `${this.state.shrinkingContainerHeight}%`,
+        height: `${this.state.stackHeight}%`,
         overflow: 'hidden'
       },
 
@@ -42,13 +40,13 @@ export class VerticalStackShrinkExample extends React.Component<{}, IExampleStat
     return (
       <VerticalStack gap={5}>
         <Slider
-          label="Change the container height to see how its items shrink:"
+          label="Change the stack height to see how child items shrink:"
           min={1}
           max={100}
           step={1}
           defaultValue={100}
           showValue={true}
-          onChange={this._onSliderChange}
+          onChange={this._onHeightChange}
         />
         <div className={styles.container}>
           <VerticalStack shrinkItems gap={5} padding={10} className={styles.root}>
@@ -70,7 +68,7 @@ export class VerticalStackShrinkExample extends React.Component<{}, IExampleStat
     );
   }
 
-  private _onSliderChange(value: number): void {
-    this.setState({ shrinkingContainerHeight: value });
-  }
+  private _onHeightChange = (value: number): void => {
+    this.setState({ stackHeight: value });
+  };
 }
