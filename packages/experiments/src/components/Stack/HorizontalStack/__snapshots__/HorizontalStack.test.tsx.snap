@@ -242,3 +242,75 @@ exports[`HorizontalStack renders shrinking items correctly 1`] = `
   </span>
 </div>
 `;
+
+exports[`HorizontalStack renders wrapped HorizontalStack correctly 1`] = `
+<div
+  className=
+      ms-HorizontalStack
+      {
+        display: block;
+        height: auto;
+        overflow: visible;
+        padding-top: 1px;
+        width: auto;
+      }
+>
+  <div
+    className=
+        ms-HorizontalStack-inner
+        {
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          height: auto;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: calc(0px - 1px);
+          overflow: visible;
+          width: auto;
+        }
+        & > * {
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          max-width: calc(100% - 0px);
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 0;
+        }
+  >
+    <span
+      className=
+          ms-StackItem
+          {
+            flex-shrink: 0;
+          }
+    >
+      1
+    </span>
+    <span
+      className=
+          ms-StackItem
+          {
+            flex-shrink: 0;
+          }
+    >
+      2
+    </span>
+    <span
+      className=
+          ms-StackItem
+          {
+            flex-shrink: 0;
+          }
+    >
+      3
+    </span>
+  </div>
+</div>
+`;
