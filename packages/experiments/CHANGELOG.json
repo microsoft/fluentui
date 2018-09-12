@@ -2,6 +2,28 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.30.0",
+      "tag": "@uifabric/experiments_v6.30.0",
+      "date": "Wed, 12 Sep 2018 12:26:41 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Mike Wheaton <mike@mikewheaton.ca>",
+            "commit": "e9523792632d81a3a27766888873cb52d8522e24",
+            "comment": "Add motion to the Fluent experiment"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.19.2` to `^0.20.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.67.2 <7.0.0` to `>=6.67.3 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.29.1",
       "tag": "@uifabric/experiments_v6.29.1",
       "date": "Tue, 11 Sep 2018 02:54:40 GMT",

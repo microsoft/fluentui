@@ -23,14 +23,7 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
   }
 
   public render(): JSX.Element {
-    const {
-      multiCountRows,
-      annotationTextFontSize,
-      annotationTextColor,
-      bodyTextFontSize,
-      bodyTextColor,
-      customMessage
-    } = this.props;
+    const { multiCountRows, annotationTextFontSize, annotationTextColor, bodyTextFontSize, bodyTextColor, customMessage } = this.props;
     const data: JSX.Element[] = this.getGeneratedData(
       multiCountRows,
       annotationTextFontSize,
@@ -82,7 +75,8 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
           bodyTextFontSize: bodyTextFontSize,
           hoveredText: this.state.hoveredText,
           currentText: row.data + row.bodyText + row.annotaionText,
-          href: row.href
+          href: row.href,
+          hideIcon: row.hideIcon
         })
       );
       const expandingCardProps: IExpandingCardProps = {
@@ -121,10 +115,12 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
               <span className={classNames.data}>{formattedData + units[indexForUnits]}</span>
               <span>{row.bodyText}</span>
             </div>
-            <div className={classNames.annotationText}>
-              <span className={classNames.icon}>
-                <img src={changeIconIndicator} />
-              </span>
+            <div className={classNames.changeIcon}>
+              {!row.hideIcon && (
+                <span className={classNames.icon}>
+                  <img src={changeIconIndicator} />
+                </span>
+              )}
               <span className={classNames.annotationText}>{row.annotaionText}</span>
             </div>
           </div>

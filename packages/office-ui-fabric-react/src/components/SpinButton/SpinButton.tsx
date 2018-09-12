@@ -144,13 +144,13 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     const classNames = this.props.getClassNames
       ? this.props.getClassNames(theme!, !!disabled, !!isFocused, keyboardSpinDirection, labelPosition, className)
       : getClassNames(
-          getStyles(theme!, customStyles),
-          !!disabled,
-          !!isFocused,
-          keyboardSpinDirection,
-          labelPosition,
-          className
-        );
+        getStyles(theme!, customStyles),
+        !!disabled,
+        !!isFocused,
+        keyboardSpinDirection,
+        labelPosition,
+        className
+      );
 
     return (
       <div className={classNames.root}>
@@ -184,13 +184,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
                 autoComplete="off"
                 role="spinbutton"
                 aria-labelledby={label && this._labelId}
-                aria-valuenow={
-                  ariaValueNow !== undefined && !isNaN(ariaValueNow)
-                    ? ariaValueNow
-                    : !isNaN(Number(value))
-                      ? Number(value)
-                      : undefined
-                }
+                aria-valuenow={!isNaN(Number(ariaValueNow)) ? ariaValueNow : !isNaN(Number(value)) ? Number(value) : undefined}
                 aria-valuetext={ariaValueText ? ariaValueText : isNaN(Number(value)) ? value : undefined}
                 aria-valuemin={min}
                 aria-valuemax={max}
