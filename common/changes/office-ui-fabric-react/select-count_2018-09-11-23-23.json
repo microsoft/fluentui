@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Check whether meta key is pressed during selection",
+      "comment": "Fix Selection count not updating when items are removed",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "aharper@altair.com"
+  "email": "tmichon@microsoft.com"
 }

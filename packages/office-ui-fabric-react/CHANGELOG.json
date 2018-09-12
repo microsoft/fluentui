@@ -2,6 +2,30 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.67.3",
+      "tag": "office-ui-fabric-react_v6.67.3",
+      "date": "Wed, 12 Sep 2018 12:26:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Josh Chang <coralbue@gmail.com>",
+            "commit": "25bb017063c2f9df4eb4c0ef271c299140b5bbf8",
+            "comment": "SpinButton: Added SpinButton snapshot and simplified ariaValueNow logic"
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "2da99cb075f8eee4a2c735f710e6504818a17fa6",
+            "comment": "Button: Fix splitButton focus issue with Portals"
+          },
+          {
+            "author": "Aaron Harper <aaron.harper@outlook.com>",
+            "commit": "e5e05b57f91cbd54c93a952a04bc0faaa8ba4b9b",
+            "comment": "Check whether meta key is pressed during selection"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.67.2",
       "tag": "office-ui-fabric-react_v6.67.2",
       "date": "Tue, 11 Sep 2018 07:28:02 GMT",

@@ -2,6 +2,43 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.23.0",
+      "tag": "@uifabric/dashboard_v0.23.0",
+      "date": "Wed, 12 Sep 2018 12:26:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "6ee72d7bc5483ba8873eddf21c2b8b5a07eb79a1",
+            "comment": "Add fixed size for donut chart in dashboard package"
+          },
+          {
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "feb98944b26dc289a33e1057c42e25ca97e63a63",
+            "comment": "bug fixes for card components"
+          }
+        ],
+        "minor": [
+          {
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "113d74e096e36ce835a34243ea7681a45fee6fec",
+            "comment": "Adding prop that disables the icon in each row of Multicount. Changing styles if iconHide prop is set to true."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.19.2` to `^0.20.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.29.1 <7.0.0` to `>=6.30.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.67.2 <7.0.0` to `>=6.67.3 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.22.2",
       "tag": "@uifabric/dashboard_v0.22.2",
       "date": "Tue, 11 Sep 2018 02:54:40 GMT",
