@@ -3,7 +3,7 @@ import { IHorizontalStackProps, IHorizontalStackStyles } from './HorizontalStack
 import { parseGap } from '../StackUtils';
 
 export const styles = (props: IThemedProps<IHorizontalStackProps>): IHorizontalStackStyles => {
-  const { wrap, gap, verticalGap, className, theme } = props;
+  const { wrap, gap, verticalGap, fillHorizontal, fillVertical, maxWidth, maxHeight, className, theme } = props;
 
   const vertGap = verticalGap !== undefined ? verticalGap : gap;
 
@@ -17,11 +17,18 @@ export const styles = (props: IThemedProps<IHorizontalStackProps>): IHorizontalS
     return {
       root: [
         'ms-HorizontalStack',
-        className,
         {
+          maxWidth,
+          maxHeight,
+          width: fillHorizontal ? '100%' : 'auto',
+          height: fillVertical ? '100%' : 'auto',
+          overflow: 'visible',
           display: 'block',
-          overflow: 'visible'
-        }
+
+          // necessary in order to prevent collapsing margins
+          paddingTop: 1
+        },
+        className
       ],
 
       inner: [
@@ -29,7 +36,13 @@ export const styles = (props: IThemedProps<IHorizontalStackProps>): IHorizontalS
         {
           flexWrap: 'wrap',
           margin: `${verticalMargin}${vGap.unit} ${horizontalMargin}${hGap.unit}`,
-          overflow: 'visible'
+
+          // account for the extra 1px padding at the top of the root
+          marginTop: `calc(${verticalMargin}${vGap.unit} - 1px)`,
+
+          overflow: 'visible',
+          width: fillHorizontal ? `calc(100% + ${hGap.value}${hGap.unit})` : 'auto',
+          height: fillVertical ? `calc(100% + ${hGap.value}${hGap.unit})` : 'auto'
         }
       ]
     } as IHorizontalStackStyles;
