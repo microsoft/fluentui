@@ -160,6 +160,11 @@ export interface IMultiCountStyles {
   hoverCardAnnotationText: IStyle;
 
   /**
+   * Style for icon in the hover card
+   */
+  hoverCardIcon: IStyle;
+
+  /**
    * Style for the custom message
    */
   customMessage: IStyle;

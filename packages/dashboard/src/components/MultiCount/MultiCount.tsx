@@ -111,18 +111,14 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
           onCardVisible={this._hoverStateUpdate.bind(this, hoverKey, true)}
         >
           <div key={index} className={classNames.root} onClick={this._redirectToUrl.bind(this, row.href)}>
-            <div className={classNames.bodyText}>
-              <span className={classNames.data}>{formattedData + units[indexForUnits]}</span>
-              <span>{row.bodyText}</span>
-            </div>
-            <div className={classNames.changeIcon}>
-              {!row.hideIcon && (
-                <span className={classNames.icon}>
-                  <img src={changeIconIndicator} />
-                </span>
-              )}
-              <span className={classNames.annotationText}>{row.annotaionText}</span>
-            </div>
+            <div className={classNames.data}>{formattedData + units[indexForUnits]}</div>
+            <div className={classNames.bodyText}>{row.bodyText}</div>
+            {!row.hideIcon && (
+              <div className={classNames.icon}>
+                <img src={changeIconIndicator} />
+              </div>
+            )}
+            <div className={classNames.annotationText}>{row.annotaionText}</div>
           </div>
         </HoverCard>
       );
@@ -169,7 +165,7 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
         <div className={classNames.customMessage}>{data[1]}</div>
         <div className={classNames.hoverCardText}>
           <div className={classNames.hoverCardBodyText}>{data[0].bodyText}</div>
-          <div className={classNames.icon}>
+          <div className={classNames.hoverCardIcon}>
             <img src={changeIconIndicator} />
           </div>
           <div className={classNames.hoverCardAnnotationText}>{data[0].annotaionText}</div>
