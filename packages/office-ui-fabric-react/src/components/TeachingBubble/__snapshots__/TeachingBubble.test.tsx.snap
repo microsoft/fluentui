@@ -85,6 +85,7 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
                 box-shadow: none !important;
                 display: flex;
                 max-width: 456px;
+                outline: transparent;
                 width: calc(100% + 1px);
               }
           data-is-focusable={true}
@@ -149,6 +150,7 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
         box-shadow: none !important;
         display: block;
         max-width: 364px;
+        outline: transparent;
         width: calc(100% + 1px);
       }
   data-is-focusable={true}
@@ -236,6 +238,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
         box-shadow: none !important;
         display: block;
         max-width: 364px;
+        outline: transparent;
         width: calc(100% + 1px);
       }
   data-is-focusable={true}
@@ -747,6 +750,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
         box-shadow: none !important;
         display: block;
         max-width: 364px;
+        outline: transparent;
         width: calc(100% + 1px);
       }
   data-is-focusable={true}
@@ -834,6 +838,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
         box-shadow: none !important;
         display: block;
         max-width: 364px;
+        outline: transparent;
         width: calc(100% + 1px);
       }
   data-is-focusable={true}
@@ -958,6 +963,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
         box-shadow: none !important;
         display: block;
         max-width: 364px;
+        outline: transparent;
         width: calc(100% + 1px);
       }
   data-is-focusable={true}
