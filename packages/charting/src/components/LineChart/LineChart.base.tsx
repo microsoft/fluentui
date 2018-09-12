@@ -6,13 +6,7 @@ import { select as d3Select } from 'd3-selection';
 import { ILegend, Legends } from '../Legends/index';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
-import {
-  ILineChartProps,
-  ILineChartStyleProps,
-  ILineChartStyles,
-  IDataPoint,
-  ILineChartPoints
-} from './LineChart.types';
+import { ILineChartProps, ILineChartStyleProps, ILineChartStyles, IDataPoint, ILineChartPoints } from './LineChart.types';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 
 const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();
@@ -191,9 +185,7 @@ export class LineChartBase extends React.Component<
     const widthVal = node.parentElement ? node.parentElement.clientWidth : this.state._width;
 
     const heightVal =
-      node.parentElement && node.parentElement.offsetHeight > this.state._height
-        ? node.parentElement.offsetHeight
-        : this.state._height;
+      node.parentElement && node.parentElement.offsetHeight > this.state._height ? node.parentElement.offsetHeight : this.state._height;
 
     node.setAttribute('viewBox', `0 0 ${widthVal} ${heightVal}`);
   }

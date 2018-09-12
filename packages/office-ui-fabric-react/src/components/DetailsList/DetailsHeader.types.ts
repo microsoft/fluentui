@@ -102,6 +102,7 @@ export enum SelectAllVisibility {
 }
 
 export interface IDetailsHeaderState {
+  columnReorderProps?: IColumnReorderHeaderProps;
   columnResizeDetails?: IColumnResizeDetails;
   isAllSelected?: boolean;
   isSizing?: boolean;
