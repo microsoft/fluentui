@@ -303,7 +303,7 @@ describe('mergeStyleSets', () => {
 
         // NOTE: The following line should be uncommented when Fabric is upgraded to Typescript 3.
         // LegacySubComponent({ styles: classNames.subComponentStyles.button({ isCollapsed: false }) });
-        
+
         // this test primarily tests that the lines above do not result in a Typescript error.
         expect.assertions(0);
       });

@@ -139,7 +139,6 @@ export class LineChartBase extends React.Component<
       });
     }
   }
-
   private _hoverOff(isHoverShow: boolean): void {
     if (isHoverShow) {
       this.setState({ isCalloutVisible: false, hoverYValue: '', hoverXValue: '', activeLine: '', lineColor: '' });
@@ -203,7 +202,6 @@ export class LineChartBase extends React.Component<
     if (node === null) {
       return;
     }
-
     const axisNode = d3Select(node).call(yAxis);
     axisNode.selectAll('.domain').attr('class', this._classNames.yAxisDomain!);
     axisNode.selectAll('line').attr('class', this._classNames.yAxisTicks!);
@@ -231,7 +229,6 @@ export class LineChartBase extends React.Component<
     }
     return dataPointsArray;
   }
-
   private _createStringXAxis(): stringAxis {
     const dataArray: string[] = this._points[0]!.data!.map((point: IDataPoint) => point.x as string);
     const indexRange = Math.ceil(dataArray.length / 4);
@@ -312,6 +309,7 @@ export class LineChartBase extends React.Component<
         );
       }
     }
+
     return lines;
   }
 
@@ -329,7 +327,7 @@ export class LineChartBase extends React.Component<
       .range([0, this.state._height]);
 
     const lines = [];
-    
+
     for (let i = 0; i < this._points.length; i++) {
       const legendVal: string = this._points[i].legend;
       let opacity = 0.1;

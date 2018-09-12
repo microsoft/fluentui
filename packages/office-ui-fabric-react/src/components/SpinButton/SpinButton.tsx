@@ -65,7 +65,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   private _lastValidValue: string;
   private _spinningByMouse: boolean;
   private _valueToValidate: string | undefined; // To avoid duplicate validations/submissions
-  
+
   private _currentStepFunctionHandle: number;
   private _initialStepDelay = 400;
   private _stepDelay = 75;
