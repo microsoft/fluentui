@@ -5,24 +5,22 @@ import { mergeStyleSets, Slider } from 'office-ui-fabric-react';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export interface IExampleState {
-  shrinkingContainerWidth: number;
+  stackWidth: number;
 }
 
 export class HorizontalStackWrapExample extends React.Component<{}, IExampleState> {
   constructor(props: {}) {
     super(props);
     this.state = {
-      shrinkingContainerWidth: 100
+      stackWidth: 100
     };
-
-    this._onSliderChange = this._onSliderChange.bind(this);
   }
 
   public render(): JSX.Element {
     const styles = mergeStyleSets({
       root: {
         background: DefaultPalette.themeTertiary,
-        width: `${this.state.shrinkingContainerWidth}%`,
+        width: `${this.state.stackWidth}%`,
         selectors: {
           '& span': {
             width: 50,
@@ -40,13 +38,13 @@ export class HorizontalStackWrapExample extends React.Component<{}, IExampleStat
     return (
       <VerticalStack gap={10}>
         <Slider
-          label="Change the container width to see how child items wrap onto multiple rows:"
+          label="Change the stack width to see how child items wrap onto multiple rows:"
           min={1}
           max={100}
           step={1}
           defaultValue={100}
           showValue={true}
-          onChange={this._onSliderChange}
+          onChange={this._onWidthChange}
         />
 
         <HorizontalStack wrap gap={30} className={styles.root}>
@@ -65,7 +63,7 @@ export class HorizontalStackWrapExample extends React.Component<{}, IExampleStat
     );
   }
 
-  private _onSliderChange(value: number): void {
-    this.setState({ shrinkingContainerWidth: value });
-  }
+  private _onWidthChange = (value: number): void => {
+    this.setState({ stackWidth: value });
+  };
 }

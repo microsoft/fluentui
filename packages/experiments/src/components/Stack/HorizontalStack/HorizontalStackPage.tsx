@@ -19,6 +19,9 @@ const HorizontalStackWrapExampleCode = require('!raw-loader!@uifabric/experiment
 import { HorizontalStackWrapAdvancedExample } from './examples/HorizontalStack.WrapAdvanced.Example';
 const HorizontalStackWrapAdvancedExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Stack/HorizontalStack/examples/HorizontalStack.WrapAdvanced.Example.tsx') as string;
 
+import { HorizontalStackWrapNestedExample } from './examples/HorizontalStack.WrapNested.Example';
+const HorizontalStackWrapNestedExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Stack/HorizontalStack/examples/HorizontalStack.WrapNested.Example.tsx') as string;
+
 import { HorizontalStackHorizontalAlignExample } from './examples/HorizontalStack.HorizontalAlign.Example';
 const HorizontalStackHorizontalAlignExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Stack/HorizontalStack/examples/HorizontalStack.HorizontalAlign.Example.tsx') as string;
 
@@ -54,6 +57,9 @@ export class HorizontalStackPage extends React.Component<IComponentDemoPageProps
             <ExampleCard title="Wrapping - Advanced" code={HorizontalStackWrapAdvancedExampleCode}>
               <HorizontalStackWrapAdvancedExample />
             </ExampleCard>
+            <ExampleCard title="Wrapping - Nested" code={HorizontalStackWrapNestedExampleCode}>
+              <HorizontalStackWrapNestedExample />
+            </ExampleCard>
             <ExampleCard title="Horizontal Alignments" code={HorizontalStackHorizontalAlignExampleCode}>
               <HorizontalStackHorizontalAlignExample />
             </ExampleCard>
@@ -68,9 +74,7 @@ export class HorizontalStackPage extends React.Component<IComponentDemoPageProps
         propertiesTables={
           <PropertiesTableSet
             sources={[
-              require<
-                string
-              >('!raw-loader!@uifabric/experiments/src/components/Stack/HorizontalStack/HorizontalStack.types.ts'),
+              require<string>('!raw-loader!@uifabric/experiments/src/components/Stack/HorizontalStack/HorizontalStack.types.ts'),
               require<string>('!raw-loader!@uifabric/experiments/src/components/Stack/Stack.types.ts'),
               require<string>('!raw-loader!@uifabric/experiments/src/components/Stack/StackItem/StackItem.types.ts')
             ]}
