@@ -3,7 +3,7 @@ import { IKeytipLayerProps, IKeytipLayerStyles, IKeytipLayerStyleProps } from '.
 import { getLayerStyles } from './KeytipLayer.styles';
 import { Keytip, IKeytipProps } from '../../Keytip';
 import { Layer } from '../../Layer';
-import { BaseComponent, classNamesFunction, getDocument, arraysEqual } from '../../Utilities';
+import { BaseComponent, classNamesFunction, getDocument, arraysEqual, warn } from '../../Utilities';
 import { KeytipManager } from '../../utilities/keytips/KeytipManager';
 import { KeytipTree } from './KeytipTree';
 import { IKeytipTreeNode } from './IKeytipTreeNode';
@@ -192,12 +192,14 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
           this._keytipTree.currentKeytip = this._keytipTree.getNode(currKtp.parent);
           // Show children keytips of the new currentKeytip
           this.showKeytips(this._keytipTree.getChildren());
+          this._detectDuplicateKeytips();
         }
       }
     } else if (transitionKeysContain(this.props.keytipStartSequences!, transitionKey) && !currKtp) {
       // If key sequence is in 'entry sequences' and currentKeytip is null, we enter keytip mode
       this._keyHandled = true;
       this._enterKeytipMode();
+      this._detectDuplicateKeytips();
     }
   }
 
@@ -231,6 +233,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
         } else {
           // Show all children keytips
           this.showKeytips(currKtpChildren);
+          this._detectDuplicateKeytips();
         }
 
         // Clear currentSequence
@@ -607,5 +610,34 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
   private _setInKeytipMode = (inKeytipMode: boolean): void => {
     this.setState({ inKeytipMode: inKeytipMode });
     this._keytipManager.inKeytipMode = inKeytipMode;
+  };
+
+  private _detectDuplicateKeytips = (): void => {
+    const duplicateKeytips = this._getDuplicateIds(this._keytipTree.getChildren());
+    if (duplicateKeytips.length) {
+      warn('Duplicate keytips found for ' + duplicateKeytips.toString());
+    }
+  };
+
+  /**
+   * Returns duplicates among keytip IDs
+   * If the returned array is empty, no duplicates were found
+   *
+   * @param keytipIds - Array of keytip IDs to find duplicates for
+   * @returns {string[]} - Array of duplicates that were found. If multiple duplicates were found it will only be added once to this array
+   */
+  private _getDuplicateIds = (keytipIds: string[]): string[] => {
+    const duplicates: string[] = [];
+    const foundIds: { [id: string]: number } = {};
+    for (const id of keytipIds) {
+      const currFound = foundIds[id];
+      if (currFound === 1) {
+        // Make sure to only count the duplicate once
+        duplicates.push(id);
+      }
+      const newIdCount: number = currFound ? currFound + 1 : 1;
+      foundIds[id] = newIdCount;
+    }
+    return duplicates;
   };
 }
