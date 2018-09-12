@@ -192,14 +192,14 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
           this._keytipTree.currentKeytip = this._keytipTree.getNode(currKtp.parent);
           // Show children keytips of the new currentKeytip
           this.showKeytips(this._keytipTree.getChildren());
-          this._detectDuplicateKeytips();
+          this._warnIfDuplicateKeytips();
         }
       }
     } else if (transitionKeysContain(this.props.keytipStartSequences!, transitionKey) && !currKtp) {
       // If key sequence is in 'entry sequences' and currentKeytip is null, we enter keytip mode
       this._keyHandled = true;
       this._enterKeytipMode();
-      this._detectDuplicateKeytips();
+      this._warnIfDuplicateKeytips();
     }
   }
 
@@ -233,7 +233,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
         } else {
           // Show all children keytips
           this.showKeytips(currKtpChildren);
-          this._detectDuplicateKeytips();
+          this._warnIfDuplicateKeytips();
         }
 
         // Clear currentSequence
@@ -351,7 +351,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
   private _getVisibleKeytips(keytips: IKeytipProps[]): IKeytipProps[] {
     // Filter out non-visible keytips and duplicates
     const seenIds: { [childSequence: string]: number } = {};
-    return keytips.filter((keytip: IKeytipProps) => {
+    return keytips.filter(keytip => {
       const keytipId = sequencesToID(keytip.keySequences);
       seenIds[keytipId] = seenIds[keytipId] ? seenIds[keytipId] + 1 : 1;
       return keytip.visible && seenIds[keytipId] === 1;
@@ -602,9 +602,9 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
   };
 
   /**
-   * Emits a warning if duplicate keytips are found for the current keytip
+   * Emits a warning if duplicate keytips are found for the children of the current keytip
    */
-  private _detectDuplicateKeytips = (): void => {
+  private _warnIfDuplicateKeytips = (): void => {
     const duplicateKeytips = this._getDuplicateIds(this._keytipTree.getChildren());
     if (duplicateKeytips.length) {
       warn('Duplicate keytips found for ' + duplicateKeytips.join(', '));
@@ -620,7 +620,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
    */
   private _getDuplicateIds = (keytipIds: string[]): string[] => {
     const seenIds: { [id: string]: number } = {};
-    return keytipIds.filter((keytipId: string) => {
+    return keytipIds.filter(keytipId => {
       seenIds[keytipId] = seenIds[keytipId] ? seenIds[keytipId] + 1 : 1;
       // Only add the first duplicate keytip seen
       return seenIds[keytipId] === 2;
