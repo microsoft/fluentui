@@ -593,8 +593,6 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
             `#${this._id}-list${selectedIndices[0]}`
           ) as HTMLElement;
           this._focusZone.current!.focusElement(element);
-        } else {
-          this._focusZone.current!.focus();
         }
       });
     }
