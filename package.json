@@ -24,7 +24,7 @@
     "buildfast": "npm run _rushBuild",
     "code-style": "node common/scripts/install-run-rush.js code-style",
     "change": "node common/scripts/install-run-rush.js change",
-    "generate": "node common/scripts/install-run-rush.js update --force",
+    "generate": "node common/scripts/install-run-rush.js update --full",
     "bundlesize": "cd scripts && npm run bundlesize",
     "create-component": "node scripts/create-component.js",
     "checkchange": "node common/scripts/install-run-rush.js change -v",
