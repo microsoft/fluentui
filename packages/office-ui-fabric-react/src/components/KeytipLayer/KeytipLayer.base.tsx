@@ -350,23 +350,12 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
 
   private _getVisibleKeytips(keytips: IKeytipProps[]): IKeytipProps[] {
     // Filter out non-visible keytips and duplicates
-    const visibleKeytips = [];
-    const seenSequences: { [childSequence: string]: number } = {};
-    for (const keytip of keytips) {
-      // Merge overflow sequence if necessary
-      let fullSequence = [...keytip.keySequences];
-      if (keytip.overflowSetSequence) {
-        fullSequence = mergeOverflows(fullSequence, keytip.overflowSetSequence);
-      }
-
-      if (keytip.visible && !seenSequences[fullSequence.toString()]) {
-        // Keytip not a duplicate and is visible, show it
-        visibleKeytips.push(keytip);
-      }
-      seenSequences[fullSequence.toString()] = 1;
-    }
-
-    return visibleKeytips;
+    const seenIds: { [childSequence: string]: number } = {};
+    return keytips.filter((keytip: IKeytipProps) => {
+      const keytipId = sequencesToID(keytip.keySequences);
+      seenIds[keytipId] = seenIds[keytipId] ? seenIds[keytipId] + 1 : 1;
+      return keytip.visible && seenIds[keytipId] === 1;
+    });
   }
 
   private _onDismiss = (ev?: React.MouseEvent<HTMLElement>): void => {
