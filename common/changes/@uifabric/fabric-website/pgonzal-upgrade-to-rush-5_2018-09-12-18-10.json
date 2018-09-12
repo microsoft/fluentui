@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/fabric-website",
-      "comment": "Fix typo in docs",
+      "comment": "prettier fixes",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/fabric-website",
-  "email": "matt.johnson@microsoft.com"
+  "email": "naethell@microsoft.com"
 }

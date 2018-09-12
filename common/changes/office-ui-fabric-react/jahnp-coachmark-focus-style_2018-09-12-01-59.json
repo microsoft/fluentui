@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Check whether meta key is pressed during selection",
+      "comment": "Teaching Bubble: Fix outline on content that produces undesirable visuals",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "aharper@altair.com"
+  "email": "pejahn@microsoft.com"
 }

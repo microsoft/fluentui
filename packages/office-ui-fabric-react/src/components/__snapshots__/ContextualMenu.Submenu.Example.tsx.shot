@@ -57,9 +57,7 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
             }
       >
         <input
-          aria-describedby={undefined}
           aria-invalid={false}
-          aria-label={undefined}
           className=
               ms-TextField-field
               {
@@ -103,7 +101,6 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
-          readOnly={undefined}
           type="text"
           value="250"
         />
@@ -111,14 +108,9 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
     </div>
   </div>
   <button
-    aria-describedby={undefined}
-    aria-disabled={undefined}
     aria-expanded={false}
     aria-haspopup={true}
-    aria-label={undefined}
-    aria-labelledby={undefined}
     aria-owns={null}
-    aria-pressed={undefined}
     className=
         ms-Button
         ms-Button--default
@@ -188,7 +180,6 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
           color: #212121;
         }
     data-is-focusable={true}
-    disabled={undefined}
     id="ContextualMenuButton2"
     onClick={[Function]}
     onKeyDown={[Function]}

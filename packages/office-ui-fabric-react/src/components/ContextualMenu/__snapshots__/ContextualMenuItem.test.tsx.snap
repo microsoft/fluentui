@@ -21,7 +21,6 @@ ShallowWrapper {
         "subMenuIcon": "subMenuIcon",
       }
     }
-    hasIcons={undefined}
     index={1}
     item={
       Object {

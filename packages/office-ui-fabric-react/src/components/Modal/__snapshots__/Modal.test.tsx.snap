@@ -61,10 +61,6 @@ exports[`Modal renders Modal correctly 1`] = `
     onSubmit={[Function]}
   >
     <div
-      aria-describedby={undefined}
-      aria-label={undefined}
-      aria-labelledby={undefined}
-      className={undefined}
       onKeyDown={[Function]}
       role="dialog"
       style={
@@ -107,10 +103,8 @@ exports[`Modal renders Modal correctly 1`] = `
                 border: 1px solid WindowText;
                 opacity: 0;
               }
-          onClick={undefined}
         />
         <div
-          aria-labelledby={undefined}
           className=
               ms-Dialog-main
               test-containerClassName

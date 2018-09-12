@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 11 Sep 2018 07:28:02 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Sep 2018 12:26:41 GMT and should not be manually modified.
+
+## 6.67.3
+Wed, 12 Sep 2018 12:26:41 GMT
+
+### Patches
+
+- SpinButton: Added SpinButton snapshot and simplified ariaValueNow logic
+- Button: Fix splitButton focus issue with Portals
+- Check whether meta key is pressed during selection
 
 ## 6.67.2
 Tue, 11 Sep 2018 07:28:02 GMT

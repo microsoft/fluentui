@@ -61,8 +61,6 @@ exports[`Panel renders Panel correctly 1`] = `
     onSubmit={[Function]}
   >
     <div
-      aria-describedby={undefined}
-      aria-label={undefined}
       aria-labelledby="Panel0-headerText"
       className=
 
@@ -112,10 +110,8 @@ exports[`Panel renders Panel correctly 1`] = `
               @media screen and (-ms-high-contrast: active){& {
                 border: 1px solid WindowText;
               }
-          onClick={undefined}
         />
         <div
-          aria-labelledby={undefined}
           className=
               ms-Panel-main
               {
@@ -181,11 +177,6 @@ exports[`Panel renders Panel correctly 1`] = `
                     }
               >
                 <button
-                  aria-describedby={undefined}
-                  aria-disabled={undefined}
-                  aria-label={undefined}
-                  aria-labelledby={undefined}
-                  aria-pressed={undefined}
                   className=
                       ms-Button
                       ms-Button--icon
@@ -256,7 +247,6 @@ exports[`Panel renders Panel correctly 1`] = `
                       }
                   data-is-focusable={true}
                   data-is-visible={true}
-                  disabled={undefined}
                   onClick={[Function]}
                   onKeyDown={[Function]}
                   onKeyPress={[Function]}

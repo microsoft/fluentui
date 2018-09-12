@@ -120,7 +120,6 @@ exports[`Component Examples renders SearchBox.Underlined.Example.tsx correctly 1
         &:-ms-input-placeholder {
           color: #666666;
         }
-    disabled={undefined}
     id="SearchBox0"
     onChange={[Function]}
     onInput={[Function]}

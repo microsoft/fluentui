@@ -72,7 +72,6 @@ exports[`Component Examples renders Image.MaximizeFrame.Example.tsx correctly 1`
             }
         onError={[Function]}
         onLoad={[Function]}
-        role={undefined}
         src="http://placehold.it/500x500"
       />
     </div>
@@ -145,7 +144,6 @@ exports[`Component Examples renders Image.MaximizeFrame.Example.tsx correctly 1`
             }
         onError={[Function]}
         onLoad={[Function]}
-        role={undefined}
         src="http://placehold.it/500x500"
       />
     </div>

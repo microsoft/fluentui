@@ -1,6 +1,18 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Tue, 11 Sep 2018 02:54:40 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Sep 2018 12:26:41 GMT and should not be manually modified.
+
+## 0.23.0
+Wed, 12 Sep 2018 12:26:41 GMT
+
+### Minor changes
+
+- Adding prop that disables the icon in each row of Multicount. Changing styles if iconHide prop is set to true.
+
+### Patches
+
+- Add fixed size for donut chart in dashboard package
+- bug fixes for card components
 
 ## 0.22.2
 Tue, 11 Sep 2018 02:54:40 GMT
