@@ -116,6 +116,8 @@ storiesOf('DetailsHeader', module)
         .snapshot('hoverDraggable', { cropTo: '.testWrapper' })
         .mouseDown('[aria-colindex=2]')
         .snapshot('mouseDownFrozen', { cropTo: '.testWrapper' })
+        .hover('[aria-colindex=2]')
+        .mouseUp('[aria-colindex=2]')
         .mouseDown('[aria-colindex=3]')
         .snapshot('mouseDownDraggable', { cropTo: '.testWrapper' })
         .end()}
