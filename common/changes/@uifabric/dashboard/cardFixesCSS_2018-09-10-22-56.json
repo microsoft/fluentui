@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/dashboard",
+      "comment": "Card css fixes. Changing BodyText lineheight, small card condition margin fix and Thumbnail list content centering",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/dashboard",
+  "email": "nulikarthik@gmail.com"
+}
