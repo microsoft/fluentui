@@ -1,28 +1,28 @@
 import * as React from 'react';
 import { ExampleCard, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 import { SmallCardBasicExample } from './examples/Card.Small.Basic.Example';
-// import { MediumTallCardBasicExample } from './examples/Card.MediumTall.Basic.Example';
-// import { MediumWideCardBasicExample } from './examples/Card.MediumWide.Basic.Example';
-// import { LargeCardBasicExample } from './examples/Card.Large.Basic.Example';
-// import { DonutChartExample } from './examples/Card.Chart.Donut.Example';
-// import { LineAndVerticalBarChartExample } from './examples/Card.Chart.LineAndVerticalBar.Example';
-// import { MultiCountExample } from './examples/Card.MultiCount.Example';
-// import { StackedBarChartExample } from './examples/Card.Chart.StackedBar.Example';
-// import { MultiStackedBarChartExample } from './examples/Card.Chart.MultiStackedBar.Example';
-// import { MultipleLineChartExample } from './examples/Card.Chart.MultipleLineChart.Example';
-// import { SmallCardLongHeaderExample } from './examples/Card.Small.LongHeader.Example';
+import { MediumTallCardBasicExample } from './examples/Card.MediumTall.Basic.Example';
+import { MediumWideCardBasicExample } from './examples/Card.MediumWide.Basic.Example';
+import { LargeCardBasicExample } from './examples/Card.Large.Basic.Example';
+import { DonutChartExample } from './examples/Card.Chart.Donut.Example';
+import { LineAndVerticalBarChartExample } from './examples/Card.Chart.LineAndVerticalBar.Example';
+import { MultiCountExample } from './examples/Card.MultiCount.Example';
+import { StackedBarChartExample } from './examples/Card.Chart.StackedBar.Example';
+import { MultiStackedBarChartExample } from './examples/Card.Chart.MultiStackedBar.Example';
+import { MultipleLineChartExample } from './examples/Card.Chart.MultipleLineChart.Example';
+import { SmallCardLongHeaderExample } from './examples/Card.Small.LongHeader.Example';
 
 const SmallCardExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.Small.Basic.Example.tsx') as string;
-// const MediumTallCardExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.MediumTall.Basic.Example.tsx') as string;
-// const MediumWideCardExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.MediumWide.Basic.Example.tsx') as string;
-// const LargeCardExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.Large.Basic.Example.tsx') as string;
-// const DonutChartExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.Chart.Donut.Example.tsx') as string;
-// const LineAndVerticalBarChartExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.Chart.LineAndVerticalBar.Example.tsx') as string;
-// const MultiCountExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.MultiCount.Example.tsx') as string;
-// const StackedBarChartExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.Chart.StackedBar.Example.tsx') as string;
-// const MultiStackedBarChartExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.Chart.MultiStackedBar.Example.tsx') as string;
-// const MultipleLineChartExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.Chart.MultipleLineChart.Example.tsx') as string;
-// const SmallCardLongHeaderExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.Small.LongHeader.Example.tsx') as string;
+const MediumTallCardExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.MediumTall.Basic.Example.tsx') as string;
+const MediumWideCardExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.MediumWide.Basic.Example.tsx') as string;
+const LargeCardExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.Large.Basic.Example.tsx') as string;
+const DonutChartExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.Chart.Donut.Example.tsx') as string;
+const LineAndVerticalBarChartExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.Chart.LineAndVerticalBar.Example.tsx') as string;
+const MultiCountExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.MultiCount.Example.tsx') as string;
+const StackedBarChartExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.Chart.StackedBar.Example.tsx') as string;
+const MultiStackedBarChartExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.Chart.MultiStackedBar.Example.tsx') as string;
+const MultipleLineChartExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.Chart.MultipleLineChart.Example.tsx') as string;
+const SmallCardLongHeaderExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.Small.LongHeader.Example.tsx') as string;
 
 export class CardPage extends React.Component<{}, {}> {
   public render(): JSX.Element {
@@ -35,7 +35,7 @@ export class CardPage extends React.Component<{}, {}> {
             <ExampleCard title="Small Card" code={SmallCardExampleCode}>
               <SmallCardBasicExample />
             </ExampleCard>
-            {/* <ExampleCard title="Small Card" code={SmallCardLongHeaderExampleCode}>
+            <ExampleCard title="Small Card" code={SmallCardLongHeaderExampleCode}>
               <SmallCardLongHeaderExample />
             </ExampleCard>
             <ExampleCard title="Medium Tall Card" code={MediumTallCardExampleCode}>
@@ -64,7 +64,7 @@ export class CardPage extends React.Component<{}, {}> {
             </ExampleCard>
             <ExampleCard title="Mulitple line chart" code={MultipleLineChartExampleCode}>
               <MultipleLineChartExample />
-            </ExampleCard> */}
+            </ExampleCard>
           </div>
         }
         propertiesTables={
