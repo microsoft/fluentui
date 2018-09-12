@@ -208,9 +208,14 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 background-color: #eaeaea;
-                color: #000000;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -336,9 +341,14 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 background-color: #eaeaea;
-                color: #000000;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;

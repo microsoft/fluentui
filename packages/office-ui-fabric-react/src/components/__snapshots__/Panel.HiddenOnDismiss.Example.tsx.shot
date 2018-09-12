@@ -59,9 +59,14 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
           right: -2px;
           top: -2px;
         }
+        &:active > * {
+          left: 0px;
+          position: relative;
+          top: 0px;
+        }
         &:hover {
           background-color: #eaeaea;
-          color: #000000;
+          color: #212121;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           border-color: Highlight;
@@ -118,7 +123,374 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
     </div>
   </button>
   <span
-    className="ms-Layer"
-  />
+    className="ms-layer"
+  >
+    <div
+      className=
+          ms-Fabric
+          ms-Layer-content
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            color: #333333;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            visibility: visible;
+          }
+          & button {
+            font-family: inherit;
+          }
+          & input {
+            font-family: inherit;
+          }
+          & textarea {
+            font-family: inherit;
+          }
+          button {
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            overflow: visible;
+          }
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onDoubleClick={[Function]}
+      onDrag={[Function]}
+      onDragEnd={[Function]}
+      onDragEnter={[Function]}
+      onDragExit={[Function]}
+      onDragLeave={[Function]}
+      onDragOver={[Function]}
+      onDragStart={[Function]}
+      onDrop={[Function]}
+      onFocus={[Function]}
+      onInput={[Function]}
+      onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseMove={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      onMouseUp={[Function]}
+      onSubmit={[Function]}
+    >
+      <div
+        aria-describedby={undefined}
+        aria-label={undefined}
+        aria-labelledby="Panel3-headerText"
+        className=
+
+            {
+              visibility: hidden;
+            }
+        onKeyDown={[Function]}
+        role="dialog"
+        style={
+          Object {
+            "overflowY": undefined,
+          }
+        }
+      >
+        <div
+          className=
+              ms-Panel
+              ms-Panel--hasCloseButton
+              {
+                bottom: 0px;
+                left: 0px;
+                pointer-events: none;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                visibility: hidden;
+              }
+          type={1}
+        >
+          <div
+            aria-labelledby={undefined}
+            className=
+                ms-Panel-main
+                {
+                  -webkit-overflow-scrolling: touch;
+                  background-color: #ffffff;
+                  bottom: 0px;
+                  overflow-x: hidden;
+                  overflow-y: auto;
+                  position: absolute;
+                  right: 0px;
+                  top: 0px;
+                  width: 100%;
+                }
+                @media (min-width: 480px){& {
+                  border-left: 1px solid #eaeaea;
+                  border-right: 1px solid #eaeaea;
+                  box-shadow: -30px 0px 30px -30px rgba(0,0,0,0.2);
+                  left: auto;
+                  pointer-events: auto;
+                  width: 340px;
+                }
+                $root & {
+                  width: 272px;
+                }
+                @media (min-width: 480px){$root & {
+                  width: 340px;
+                }
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            style={Object {}}
+          >
+            <div
+              className=
+                  ms-Panel-scrollableContent
+                  {
+                    flex-grow: 1;
+                    height: 100%;
+                    overflow-y: auto;
+                  }
+            >
+              <div
+                className=
+                    ms-Panel-commands
+
+                data-is-visible={true}
+              >
+                <div
+                  className=
+                      ms-Panel-navigation
+                      {
+                        display: flex;
+                        height: 44px;
+                        justify-content: flex-end;
+                        padding-bottom: 0;
+                        padding-left: 5px;
+                        padding-right: 5px;
+                        padding-top: 0;
+                      }
+                >
+                  <button
+                    aria-describedby={undefined}
+                    aria-disabled={undefined}
+                    aria-label={undefined}
+                    aria-labelledby={undefined}
+                    aria-pressed={undefined}
+                    className=
+                        ms-Button
+                        ms-Button--icon
+                        ms-Panel-closeButton
+                        ms-PanelAction-close
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          background-color: transparent;
+                          border-radius: 0px;
+                          border: none;
+                          box-sizing: border-box;
+                          color: #666666;
+                          cursor: pointer;
+                          display: inline-block;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 20px;
+                          font-weight: 400;
+                          height: auto;
+                          outline: transparent;
+                          padding-bottom: 0;
+                          padding-left: 4px;
+                          padding-right: 4px;
+                          padding-top: 0;
+                          position: relative;
+                          text-align: center;
+                          text-decoration: none;
+                          user-select: none;
+                          vertical-align: top;
+                          width: 44px;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid #ffffff;
+                          bottom: 0px;
+                          content: "";
+                          left: 0px;
+                          outline: 1px solid #666666;
+                          position: absolute;
+                          right: 0px;
+                          top: 0px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          border: none;
+                          bottom: -2px;
+                          left: -2px;
+                          outline-color: ButtonText;
+                          right: -2px;
+                          top: -2px;
+                        }
+                        &:active > * {
+                          left: 0px;
+                          position: relative;
+                          top: 0px;
+                        }
+                        &:hover {
+                          color: #333333;
+                        }
+                        @media screen and (-ms-high-contrast: active){&:hover {
+                          border-color: Highlight;
+                          color: Highlight;
+                        }
+                        &:active {
+                          color: #0078d4;
+                        }
+                    data-is-focusable={true}
+                    data-is-visible={true}
+                    disabled={undefined}
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    onKeyPress={[Function]}
+                    onKeyUp={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseUp={[Function]}
+                    type="button"
+                  >
+                    <div
+                      className=
+                          ms-Button-flexContainer
+                          {
+                            align-items: center;
+                            display: flex;
+                            flex-wrap: nowrap;
+                            height: 100%;
+                            justify-content: center;
+                          }
+                    >
+                      <i
+                        aria-hidden={true}
+                        className=
+                            ms-Button-icon
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              display: inline-block;
+                              flex-shrink: 0;
+                              font-family: "FabricMDL2Icons";
+                              font-size: 16px;
+                              font-style: normal;
+                              font-weight: normal;
+                              height: 16px;
+                              line-height: 16px;
+                              margin-bottom: 0;
+                              margin-left: 4px;
+                              margin-right: 4px;
+                              margin-top: 0;
+                              speak: none;
+                              text-align: center;
+                              vertical-align: middle;
+                            }
+                        data-icon-name="Cancel"
+                        role="presentation"
+                      >
+                        
+                      </i>
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <div
+                className=
+                    ms-Panel-contentInner
+                    {
+                      -webkit-overflow-scrolling: touch;
+                      display: flex;
+                      flex-direction: column;
+                      min-height: calc(100% - 44px);
+                      top: 44px;
+                      transform: translateZ(0);
+                    }
+              >
+                <div
+                  className=
+                      ms-Panel-header
+                      {
+                        flex-grow: 0;
+                        margin-bottom: 14px;
+                        margin-left: 0;
+                        margin-right: 0;
+                        margin-top: 14px;
+                        padding-left: 16px;
+                        padding-right: 16px;
+                      }
+                      @media screen and (min-width: 768px){& {
+                        padding-left: 32px;
+                        padding-right: 32px;
+                      }
+                      @media screen and (min-width: 1366px){& {
+                        padding-left: 40px;
+                        padding-right: 40px;
+                      }
+                      @media (min-width: 1024px){& {
+                        margin-top: 30px;
+                      }
+                >
+                  <p
+                    aria-level={2}
+                    className=
+                        ms-Panel-headerText
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          color: #333333;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 21px;
+                          font-weight: 100;
+                          line-height: 32px;
+                          margin-bottom: 0px;
+                          margin-left: 0px;
+                          margin-right: 0px;
+                          margin-top: 0px;
+                        }
+                    id="Panel3-headerText"
+                    role="heading"
+                  >
+                    Hidden on Dismiss Panel
+                  </p>
+                </div>
+                <div
+                  className=
+                      ms-Panel-content
+                      {
+                        margin-bottom: 0px;
+                        overflow-y: auto;
+                        padding-bottom: 20px;
+                        padding-left: 16px;
+                        padding-right: 16px;
+                      }
+                      @media screen and (min-width: 768px){& {
+                        padding-left: 32px;
+                        padding-right: 32px;
+                      }
+                      @media screen and (min-width: 1366px){& {
+                        padding-left: 40px;
+                        padding-right: 40px;
+                      }
+                  data-is-scrollable={true}
+                >
+                  <span>
+                    When dismissed, this panel will be hidden instead of destroyed.
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </span>
 </div>
 `;

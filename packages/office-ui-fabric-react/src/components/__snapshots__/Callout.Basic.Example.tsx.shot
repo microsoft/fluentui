@@ -68,9 +68,14 @@ exports[`Component Examples renders Callout.Basic.Example.tsx correctly 1`] = `
             right: -2px;
             top: -2px;
           }
+          &:active > * {
+            left: 0px;
+            position: relative;
+            top: 0px;
+          }
           &:hover {
             background-color: #eaeaea;
-            color: #000000;
+            color: #212121;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
@@ -129,7 +134,109 @@ exports[`Component Examples renders Callout.Basic.Example.tsx correctly 1`] = `
     </button>
   </div>
   <span
-    className="ms-Layer"
-  />
+    className="ms-layer"
+  >
+    <div
+      className=
+          ms-Fabric
+          ms-Layer-content
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            color: #333333;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            visibility: visible;
+          }
+          & button {
+            font-family: inherit;
+          }
+          & input {
+            font-family: inherit;
+          }
+          & textarea {
+            font-family: inherit;
+          }
+          button {
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            overflow: visible;
+          }
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onDoubleClick={[Function]}
+      onDrag={[Function]}
+      onDragEnd={[Function]}
+      onDragEnter={[Function]}
+      onDragExit={[Function]}
+      onDragLeave={[Function]}
+      onDragOver={[Function]}
+      onDragStart={[Function]}
+      onDrop={[Function]}
+      onFocus={[Function]}
+      onInput={[Function]}
+      onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseMove={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      onMouseUp={[Function]}
+      onSubmit={[Function]}
+    >
+      <div
+        className=
+            ms-Callout-container
+            {
+              position: relative;
+            }
+        style={
+          Object {
+            "visibility": "hidden",
+          }
+        }
+      >
+        <div
+          className=
+              ms-Callout
+              ms-CalloutExample-callout
+              {
+                border-color: #eaeaea;
+                border-style: solid;
+                border-width: 1px;
+                box-shadow: 0 0 5px 0px rgba(0,0,0,0.4);
+                box-sizing: border-box;
+                outline: transparent;
+                position: absolute;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: WindowText;
+                border-style: solid;
+                border-width: 1px;
+              }
+              &::-moz-focus-inner {
+                border: 0px;
+              }
+          hidden={true}
+          role="alertdialog"
+          style={
+            Object {
+              "filter": "opacity(0)",
+              "opacity": 0,
+            }
+          }
+          tabIndex={-1}
+        />
+      </div>
+    </div>
+  </span>
 </div>
 `;

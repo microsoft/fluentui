@@ -2,6 +2,275 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.23.0",
+      "tag": "@uifabric/dashboard_v0.23.0",
+      "date": "Wed, 12 Sep 2018 12:26:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "6ee72d7bc5483ba8873eddf21c2b8b5a07eb79a1",
+            "comment": "Add fixed size for donut chart in dashboard package"
+          },
+          {
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "feb98944b26dc289a33e1057c42e25ca97e63a63",
+            "comment": "bug fixes for card components"
+          }
+        ],
+        "minor": [
+          {
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "113d74e096e36ce835a34243ea7681a45fee6fec",
+            "comment": "Adding prop that disables the icon in each row of Multicount. Changing styles if iconHide prop is set to true."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.19.2` to `^0.20.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.29.1 <7.0.0` to `>=6.30.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.67.2 <7.0.0` to `>=6.67.3 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.22.2",
+      "tag": "@uifabric/dashboard_v0.22.2",
+      "date": "Tue, 11 Sep 2018 02:54:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "BalakrishnaReddyPolu <polu.balakrishna96@gmail.com>",
+            "commit": "cd463136852d70182520a84b1b6ce6035546f9ec",
+            "comment": "handled the css issues for line chart"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.19.1` to `^0.19.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.29.0 <7.0.0` to `>=6.29.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.67.0 <7.0.0` to `>=6.67.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.22.1",
+      "tag": "@uifabric/dashboard_v0.22.1",
+      "date": "Mon, 10 Sep 2018 10:24:57 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "6b25061b0d581fb9507454d3b0ca306d5c3335fb",
+            "comment": "Update Recommendation card header text font size/line height settings"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.19.0` to `^0.19.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.66.1 <7.0.0` to `>=6.67.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.22.0",
+      "tag": "@uifabric/dashboard_v0.22.0",
+      "date": "Fri, 07 Sep 2018 22:04:50 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "1d10ba6d7f7027ee8206cbfed28cdcdf13cd5605",
+            "comment": "updating card title line height"
+          },
+          {
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "ea5f5cb6e774c4b8979334d00ebe7c973d4fbd05",
+            "comment": "Changing color of card title upon hover and active state"
+          },
+          {
+            "author": "BalakrishnaReddyPolu <polu.balakrishna96@gmail.com>",
+            "commit": "52941c5ccf6688e22902a232b7c3b9602d53b116",
+            "comment": "ContentArea is croped in Edge browser"
+          }
+        ],
+        "minor": [
+          {
+            "author": "caradong <caradong1122@gmail.com>",
+            "commit": "5a46343c015e67b20faf7dab5b6bbb001612f1d7",
+            "comment": "create base class for dashboard layout "
+          },
+          {
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "03b2b78222499101b9e67cf1ece88f1a624984cd",
+            "comment": "Adding necessary override styles to scale hovercard size as per content. Introducing time delay without which override is not possible.  This is temporary solution suggested by Fabric folks until they fix the bug in hovercard component."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.18.0` to `^0.19.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.28.3 <7.0.0` to `>=6.29.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.66.0 <7.0.0` to `>=6.66.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.21.0",
+      "tag": "@uifabric/dashboard_v0.21.0",
+      "date": "Fri, 07 Sep 2018 16:29:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "caradong <caradong1122@gmail.com>",
+            "commit": "a38aedb01a7478399585028c1c64180e664e2f99",
+            "comment": "allow dashboard section control to take JSX elements as child member"
+          },
+          {
+            "author": "caradong <caradong1122@gmail.com>",
+            "commit": "ee7b418434910910b269a1f137d46c1a08b0db61",
+            "comment": "add save prop to edit sections control"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "8d8af3cc2bf992b1cc5b4a1151778c0e9300335b",
+            "comment": "fix example for horizontalBarChart"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.17.4` to `^0.18.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.28.2 <7.0.0` to `>=6.28.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.65.0 <7.0.0` to `>=6.66.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.20.0",
+      "tag": "@uifabric/dashboard_v0.20.0",
+      "date": "Thu, 06 Sep 2018 10:28:35 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "caradong <caradong1122@gmail.com>",
+            "commit": "94d24139ee600a5b533a64a9abc586c47425c2cb",
+            "comment": "add export"
+          },
+          {
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "420bd52b6566b9cdac59c432c1a2299705d6ecba",
+            "comment": "changing fabric icons to SVG's."
+          }
+        ],
+        "patch": [
+          {
+            "author": "BalakrishnaReddyPolu <polu.balakrishna96@gmail.com>",
+            "commit": "0523228decb733e261fda01478e40a3aa82db7ba",
+            "comment": "gird list text overflow css issue "
+          },
+          {
+            "author": "Raghuraman Krishnamurthy <raghurk@microsoft.com>",
+            "commit": "aae02b0e1d0b0f4cefe36279756372543c418d75",
+            "comment": "patch"
+          },
+          {
+            "author": "Raghuraman Krishnamurthy <raghurk@microsoft.com>",
+            "commit": "e7724d52044d2c71789d5ffc0977f847408f965e",
+            "comment": "Fix content area clipping in card because of overflow set to hidden"
+          },
+          {
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "8fffe8444e45be992bf80db917d456d6ff6d18b2",
+            "comment": "merge donut and piechart and added in dashboard package"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.17.3` to `^0.17.4`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.64.0 <7.0.0` to `>=6.65.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.19.0",
+      "tag": "@uifabric/dashboard_v0.19.0",
+      "date": "Wed, 05 Sep 2018 10:29:25 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "BalakrishnaReddyPolu <polu.balakrishna96@gmail.com>",
+            "commit": "eb3887d9a6886c783b0abe015aabe2f0a186eccf",
+            "comment": "css issues for card"
+          },
+          {
+            "author": "BalakrishnaReddyPolu <polu.balakrishna96@gmail.com>",
+            "commit": "eb3887d9a6886c783b0abe015aabe2f0a186eccf",
+            "comment": "Added 19px lineHeight to card header text"
+          },
+          {
+            "author": "exchangeadmin <yuz@microsoft.com>",
+            "commit": "5ca37d1fc22afecbde83bee0cbb1b64206a1b370",
+            "comment": "fix leftNav styles per PM feedback"
+          },
+          {
+            "author": "exchangeadmin <yuz@microsoft.com>",
+            "commit": "5ca37d1fc22afecbde83bee0cbb1b64206a1b370",
+            "comment": "revert the change for expand behavior"
+          },
+          {
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "d891a1353799c61f99f1f7897cd38724de00627c",
+            "comment": "Update Recommendation Header text resize mechanism and description text line height"
+          }
+        ],
+        "minor": [
+          {
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "aa27d6b109acb3d727563ccc1b8a14d4dfd75bdf",
+            "comment": "Adding hover behaviour for Multicount component and onClick listener on each row of the Multicount component"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.17.2` to `^0.17.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.28.1 <7.0.0` to `>=6.28.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.63.0 <7.0.0` to `>=6.64.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.18.0",
       "tag": "@uifabric/dashboard_v0.18.0",
       "date": "Tue, 04 Sep 2018 10:27:15 GMT",

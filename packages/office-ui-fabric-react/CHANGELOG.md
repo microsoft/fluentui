@@ -1,6 +1,104 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 04 Sep 2018 10:27:15 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Sep 2018 12:26:41 GMT and should not be manually modified.
+
+## 6.67.3
+Wed, 12 Sep 2018 12:26:41 GMT
+
+### Patches
+
+- SpinButton: Added SpinButton snapshot and simplified ariaValueNow logic
+- Button: Fix splitButton focus issue with Portals
+- Check whether meta key is pressed during selection
+
+## 6.67.2
+Tue, 11 Sep 2018 07:28:02 GMT
+
+### Patches
+
+- removed the check for event to be an instanceof DragEvent in the onDrop method
+- Make button respect no global class names flag
+- update datepicker to allow IE to work with input field while retaining the accessibility
+- Revert removal of should render DatePicker guard given focus changes with Layer changes.
+- Fixed_groupheader_checkbox_aria_label_accessibility_issue
+
+## 6.67.1
+Tue, 11 Sep 2018 02:54:40 GMT
+
+### Patches
+
+- IconButton: now with less IE11 shifting pixels.
+- add safeguard in contextualmenu against doing setstate while unmounted
+
+## 6.67.0
+Mon, 10 Sep 2018 10:24:57 GMT
+
+### Minor changes
+
+- adding min and maxwidth to dialog
+
+### Patches
+
+- Fixed key not found issue with contextmenu with custom onRender per item
+
+## 6.66.1
+Fri, 07 Sep 2018 22:04:50 GMT
+
+### Patches
+
+- Check: adjusting shouldComponentUpdate to not ignore theme changes.
+
+## 6.66.0
+Fri, 07 Sep 2018 16:29:48 GMT
+
+### Minor changes
+
+- Updates button slots with correct pre-fluent palette values and scss fallbacks
+- Layer: Add optional event blocking. Tooltip: Detect targets in portals.
+- Layer: Now use React Portals.
+
+### Patches
+
+- Add white-space: nowrap to CommandBar Button labels
+- ChoiceGroup to add a customizable ariaLabelledBy prop
+- ChoiceGroup: have focus method take into account selectedKey
+- adjust dropdownprops onchange to be more in line with the div element onchange attrib
+- ComboBox: Fix pressing ENTER after just hovering over item when freeform (and there's no pending value)
+- ComboBox: Allow 0 as a valid selectedKey/defaultSelectedKey
+- Updates the example for Nav to use a more updated click handler pattern
+- Fix issue where deleting all selected items wouldn't update selection
+- allow custom classnames to be passed thru to spinbutton
+
+## 6.65.0
+Thu, 06 Sep 2018 10:28:35 GMT
+
+### Minor changes
+
+- add buttonBackgroundDisabled semantic slot
+
+### Patches
+
+- SpinButton: Add check for a 0 value
+- CommandBar: get rid of invalid aria attributes
+- ComboBox: reduce the calls to onChange to be more accruate (e.g. remove from the wrapping div and make sure we do not double process changes)
+- ContextualMenuItem declare font-color as semanticColors.bodyText instead of inherit
+- adding a scope for groupedlist footer link styles
+
+## 6.64.0
+Wed, 05 Sep 2018 10:29:25 GMT
+
+### Minor changes
+
+- Change bodyDivider value from neutralTertiaryAlt back to neutralLight
+- Mark unused "toggled" prop of IButtonProps as deprecated.
+- Deprecate classNames for ContextualMenu & ContextualMenuItem in favor of mergeStyles API via styles props.
+
+### Patches
+
+- onRenderDivider props added to DetailsList to wrap the existing behaviour of column divider of lists
+- Modal, Panel: make scrollable content styles customizable via className or styles props
+- use div and instead of p if teachingbubble content isn't a string
+- Fix 'npm run generate' issue
 
 ## 6.63.0
 Tue, 04 Sep 2018 10:27:15 GMT

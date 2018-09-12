@@ -98,6 +98,11 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               color: #333333;
               cursor: pointer;
@@ -251,6 +256,11 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
             }
             &:hover {
               color: #333333;
@@ -450,6 +460,11 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               color: #333333;
               cursor: pointer;
@@ -605,6 +620,11 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
             }
             &:hover {
               color: #333333;
@@ -768,6 +788,11 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
             }
             &:hover {
               color: #333333;
@@ -992,6 +1017,11 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               color: #333333;
               cursor: pointer;
@@ -1145,6 +1175,11 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
             }
             &:hover {
               color: #333333;
@@ -1344,6 +1379,11 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               color: #333333;
               cursor: pointer;
@@ -1510,6 +1550,11 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
             }
             &:hover {
               color: #333333;
@@ -1717,6 +1762,11 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               color: #333333;
               cursor: pointer;
@@ -1870,6 +1920,11 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
             }
             &:hover {
               color: #333333;
@@ -2068,6 +2123,11 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               color: #333333;
               cursor: pointer;
@@ -2234,6 +2294,11 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
             }
             &:hover {
               color: #333333;

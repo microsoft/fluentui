@@ -7,7 +7,8 @@ import {
   getId,
   assign,
   hasOverflow,
-  createRef
+  createRef,
+  portalContainsElement
 } from '../../Utilities';
 import { ITooltipHostProps, TooltipOverflowMode } from './TooltipHost.types';
 import { Tooltip } from './Tooltip';
@@ -57,10 +58,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
     } = this.props;
     const { isTooltipVisible } = this.state;
     const tooltipId = id || getId('tooltip');
-    const isContentPresent = !!(
-      content ||
-      (tooltipProps && tooltipProps.onRenderContent && tooltipProps.onRenderContent())
-    );
+    const isContentPresent = !!(content || (tooltipProps && tooltipProps.onRenderContent && tooltipProps.onRenderContent()));
     const showTooltip = isTooltipVisible && isContentPresent;
     const ariaDescribedBy = setAriaDescribedBy && isTooltipVisible && isContentPresent ? tooltipId : undefined;
 
@@ -130,6 +128,11 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
       }
     }
 
+    if (ev.target && portalContainsElement(ev.target as HTMLElement, this._getTargetElement())) {
+      // Do not show tooltip when target is inside a portal relative to TooltipHost.
+      return;
+    }
+
     this._toggleTooltip(true);
     this._clearDismissTimer();
   };
@@ -158,10 +161,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
 
   private _toggleTooltip(isTooltipVisible: boolean): void {
     if (this.state.isTooltipVisible !== isTooltipVisible) {
-      this.setState(
-        { isTooltipVisible },
-        () => this.props.onTooltipToggle && this.props.onTooltipToggle(this.state.isTooltipVisible)
-      );
+      this.setState({ isTooltipVisible }, () => this.props.onTooltipToggle && this.props.onTooltipToggle(this.state.isTooltipVisible));
     }
   }
 }

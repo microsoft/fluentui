@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { createStatelessComponent, IViewComponentProps, IStyleableComponent } from '../../Foundation';
+import { createStatelessComponent, IViewComponentProps, IStyleableComponentProps } from '../../Foundation';
 import { CollapsibleSection, ICollapsibleSectionProps, ICollapsibleSectionStyles } from '../../CollapsibleSection';
 import { IAccordionProps, IAccordionStyles } from './Accordion.types';
 import { styles } from './Accordion.styles';
 
 const AccordionItemType = (<CollapsibleSection /> as React.ReactElement<ICollapsibleSectionProps> &
-  IStyleableComponent<ICollapsibleSectionProps, ICollapsibleSectionStyles>).type;
+  IStyleableComponentProps<ICollapsibleSectionProps, ICollapsibleSectionStyles>).type;
 
 const view = (props: IViewComponentProps<IAccordionProps, IAccordionStyles>) => {
   const { renderAs: RootType = 'div', classNames, collapseItems } = props;

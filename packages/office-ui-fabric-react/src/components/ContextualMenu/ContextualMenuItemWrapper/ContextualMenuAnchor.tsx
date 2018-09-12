@@ -34,6 +34,7 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
     const itemHasSubmenu = hasSubmenu(item);
     const nativeProps = getNativeProps(item, anchorProperties);
     const disabled = isItemDisabled(item);
+    const { itemProps } = item;
 
     let { keytipProps } = item;
     if (keytipProps && itemHasSubmenu) {
@@ -45,11 +46,7 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
 
     return (
       <div>
-        <KeytipData
-          keytipProps={item.keytipProps}
-          ariaDescribedBy={(nativeProps as any)['aria-describedby']}
-          disabled={disabled}
-        >
+        <KeytipData keytipProps={item.keytipProps} ariaDescribedBy={(nativeProps as any)['aria-describedby']} disabled={disabled}>
           {(keytipAttributes: any): JSX.Element => (
             <a
               {...nativeProps}
@@ -83,6 +80,7 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
                 dismissSubMenu={dismissSubMenu}
                 dismissMenu={dismissMenu}
                 getSubmenuTarget={this._getSubmenuTarget}
+                {...itemProps}
               />
             </a>
           )}

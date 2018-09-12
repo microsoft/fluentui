@@ -4,7 +4,6 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
 <div
   autoComplete="on"
   className="ms-ComboBox-container "
-  value="testValue"
 >
   <div
     className=
@@ -218,6 +217,11 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             outline-color: ButtonText;
             right: -2px;
             top: -2px;
+          }
+          &:active > * {
+            left: 0px;
+            position: relative;
+            top: 0px;
           }
           @media screen and (-ms-high-contrast: active){& {
             -ms-high-contrast-adjust: none;
@@ -512,6 +516,11 @@ exports[`ComboBox renders a ComboBox with a Keytip correctly 1`] = `
             outline-color: ButtonText;
             right: -2px;
             top: -2px;
+          }
+          &:active > * {
+            left: 0px;
+            position: relative;
+            top: 0px;
           }
           @media screen and (-ms-high-contrast: active){& {
             -ms-high-contrast-adjust: none;

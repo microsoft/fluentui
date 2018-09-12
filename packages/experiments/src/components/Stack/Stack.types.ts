@@ -1,15 +1,7 @@
 import { IStyle } from '../../Styling';
-import { IStyleableComponent } from '../../Foundation';
+import { IStyleableComponentProps } from '../../Foundation';
 
-export type Alignment =
-  | 'start'
-  | 'end'
-  | 'center'
-  | 'space-between'
-  | 'space-around'
-  | 'space-evenly'
-  | 'baseline'
-  | 'stretch';
+export type Alignment = 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'baseline' | 'stretch';
 
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
@@ -19,7 +11,7 @@ export type IPartialStackProps = Omit<
   'verticalAlignment' | 'horizontalAlignment' | 'horizontal' | 'verticalGap' | 'horizontalGap' | 'wrap' | 'styles'
 >;
 
-export interface IStackProps extends IStyleableComponent<IStackProps, IStackStyles>, React.HTMLAttributes<HTMLElement> {
+export interface IStackProps extends IStyleableComponentProps<IStackProps, IStackStyles>, React.HTMLAttributes<HTMLElement> {
   /**
    * How to render the Stack.
    */

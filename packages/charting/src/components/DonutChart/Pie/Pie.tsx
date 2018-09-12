@@ -32,6 +32,7 @@ export class Pie extends React.Component<IPieProps, {}> {
         hoverOnCallback={this._hoverCallback}
         hoverLeaveCallback={this.props.hoverLeaveCallback}
         uniqText={this.props.uniqText}
+        activeArc={this.props.activeArc}
       />
     );
   };
@@ -44,7 +45,7 @@ export class Pie extends React.Component<IPieProps, {}> {
 
     return <g transform={translate}>{piechart.map((d: IArcData, i: number) => this.arcGenerator(d, i))}</g>;
   }
-  private _hoverCallback(data: IChartDataPoint): void {
-    this.props.hoverOnCallback!(data);
+  private _hoverCallback(data: IChartDataPoint, e: React.MouseEvent<SVGPathElement>): void {
+    this.props.hoverOnCallback!(data, e);
   }
 }

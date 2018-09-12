@@ -110,6 +110,11 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
                 }
@@ -312,6 +317,11 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   outline-color: ButtonText;
                   right: -2px;
                   top: -2px;
+                }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
@@ -516,6 +526,11 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
                 }
@@ -718,6 +733,11 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   outline-color: ButtonText;
                   right: -2px;
                   top: -2px;
+                }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
@@ -926,6 +946,11 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
                 }
@@ -1128,6 +1153,11 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   outline-color: ButtonText;
                   right: -2px;
                   top: -2px;
+                }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
@@ -1332,6 +1362,11 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
                 }
@@ -1534,6 +1569,11 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   outline-color: ButtonText;
                   right: -2px;
                   top: -2px;
+                }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
@@ -1742,6 +1782,11 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
                 }
@@ -1944,6 +1989,11 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   outline-color: ButtonText;
                   right: -2px;
                   top: -2px;
+                }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
@@ -2148,6 +2198,11 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
                 }
@@ -2350,6 +2405,11 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   outline-color: ButtonText;
                   right: -2px;
                   top: -2px;
+                }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
