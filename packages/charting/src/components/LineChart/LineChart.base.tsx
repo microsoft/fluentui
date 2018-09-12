@@ -121,6 +121,7 @@ export class LineChartBase extends React.Component<
       </div>
     );
   }
+
   private _hoverOn(
     hoverYValue: string | number | null,
     hoverXValue: string | number | null,
@@ -138,11 +139,13 @@ export class LineChartBase extends React.Component<
       });
     }
   }
+
   private _hoverOff(isHoverShow: boolean): void {
     if (isHoverShow) {
       this.setState({ isCalloutVisible: false, hoverYValue: '', hoverXValue: '', activeLine: '', lineColor: '' });
     }
   }
+
   private _createLegends(data: ILineChartPoints[], palette: IPalette): JSX.Element {
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     const legendDataItems = data.map((point: ILineChartPoints, index: number) => {
@@ -170,6 +173,7 @@ export class LineChartBase extends React.Component<
     const legends = <Legends legends={legendDataItems} />;
     return legends;
   }
+
   private _setXAxis(node: SVGGElement | null, xAxis: numericAxis | stringAxis): void {
     if (node === null) {
       return;
@@ -179,30 +183,38 @@ export class LineChartBase extends React.Component<
     axisNode.selectAll('line').attr('class', this._classNames.xAxisTicks!);
     axisNode.selectAll('text').attr('class', this._classNames.xAxisText!);
   }
+
   private _setViewBox(node: SVGElement | null): void {
     if (node === null) {
       return;
     }
+
     const widthVal = node.parentElement ? node.parentElement.clientWidth : this.state._width;
+
     const heightVal =
       node.parentElement && node.parentElement.offsetHeight > this.state._height
         ? node.parentElement.offsetHeight
         : this.state._height;
+
     node.setAttribute('viewBox', `0 0 ${widthVal} ${heightVal}`);
   }
+
   private _setYAxis(node: SVGElement | null, yAxis: numericAxis | stringAxis): void {
     if (node === null) {
       return;
     }
+
     const axisNode = d3Select(node).call(yAxis);
     axisNode.selectAll('.domain').attr('class', this._classNames.yAxisDomain!);
     axisNode.selectAll('line').attr('class', this._classNames.yAxisTicks!);
     axisNode.selectAll('text').attr('class', this._classNames.yAxisText!);
   }
+
   private _createNumericXAxis(): numericAxis {
     const xMax = d3Max(this._points, (point: ILineChartPoints) => {
       return d3Max(point.data, (item: IDataPoint) => item.x as number);
     })!;
+
     const domainValues = this._prepareDatapoints(xMax, 4, false);
     const xAxisScale = d3ScaleLinear()
       .domain([0, domainValues[domainValues.length - 1]])
@@ -210,6 +222,7 @@ export class LineChartBase extends React.Component<
     const xAxis = d3AxisBottom(xAxisScale).tickValues(domainValues);
     return xAxis;
   }
+
   private _prepareDatapoints(maxVal: number, splitInto: number, includeZero: boolean): number[] {
     const val = Math.ceil(maxVal / splitInto);
     const dataPointsArray: number[] = includeZero ? [0, val] : [val];
@@ -218,9 +231,11 @@ export class LineChartBase extends React.Component<
     }
     return dataPointsArray;
   }
+
   private _createStringXAxis(): stringAxis {
     const dataArray: string[] = this._points[0]!.data!.map((point: IDataPoint) => point.x as string);
     const indexRange = Math.ceil(dataArray.length / 4);
+
     const xAxisScale = d3ScaleBand()
       .domain(this._points[0]!.data!.map((point: IDataPoint) => point.x as string))
       .range([0, this.state._width]);
@@ -232,6 +247,7 @@ export class LineChartBase extends React.Component<
     ]);
     return xAxis;
   }
+
   private _createYAxis(): numericAxis {
     const yMax = d3Max(this._points, (point: ILineChartPoints) => {
       return d3Max(point.data, (item: IDataPoint) => item.y);
@@ -243,6 +259,7 @@ export class LineChartBase extends React.Component<
     const yAxis = d3AxisLeft(yAxisScale).tickValues(domainValues);
     return yAxis;
   }
+
   private _createNumericLines(): JSX.Element[] {
     const xMax = d3Max(this._points, (point: ILineChartPoints) => {
       return d3Max(point.data, (item: IDataPoint) => item.x as number);
@@ -250,13 +267,16 @@ export class LineChartBase extends React.Component<
     const yMax = d3Max(this._points, (point: ILineChartPoints) => {
       return d3Max(point.data, (item: IDataPoint) => item.y);
     })!;
+
     const xLineScale = d3ScaleLinear()
       .domain([0, xMax])
       .range([0, this.state._width - this._lineWidth]);
     const yLineScale = d3ScaleLinear()
       .domain([0, yMax])
       .range([0, this.state._height]);
+
     const lines = [];
+
     for (let i = 0; i < this._points.length; i++) {
       const legendVal: string = this._points[i].legend;
       let opacity = 0.1;
@@ -294,10 +314,12 @@ export class LineChartBase extends React.Component<
     }
     return lines;
   }
+
   private _createStringLines(): JSX.Element[] {
     const yMax = d3Max(this._points, (point: ILineChartPoints) => {
       return d3Max(point.data, (item: IDataPoint) => item.y);
     })!;
+
     const endpointDistance = 0.5 * (this.state._width / this._points[0]!.data!.length);
     const xLineScale = d3ScaleLinear()
       .domain([0, this._points[0]!.data!.length - 1])
@@ -305,7 +327,9 @@ export class LineChartBase extends React.Component<
     const yLineScale = d3ScaleLinear()
       .domain([0, yMax])
       .range([0, this.state._height]);
+
     const lines = [];
+    
     for (let i = 0; i < this._points.length; i++) {
       const legendVal: string = this._points[i].legend;
       let opacity = 0.1;
@@ -341,6 +365,7 @@ export class LineChartBase extends React.Component<
         );
       }
     }
+
     return lines;
   }
 }
