@@ -16,8 +16,8 @@ export class Section extends React.PureComponent<ISectionProps, ISectionState> {
 
   public render(): JSX.Element {
     const getClassNames = classNamesFunction<ISectionStyleProps, ISectionStyles>();
-    const { disabled, rowHeight } = this.props;
-    const classNames = getClassNames(getStyles!, { disabled, rowHeight });
+    const { disabled, rowHeight, isEditMode } = this.props;
+    const classNames = getClassNames(getStyles!, { disabled, rowHeight, isEditMode });
 
     if (this.props.isRenaming) {
       return (
@@ -118,14 +118,7 @@ export class Section extends React.PureComponent<ISectionProps, ISectionState> {
   };
 
   private _onRenderOverflowItem(item: IOverflowSetItemProps): JSX.Element {
-    return (
-      <IconButton
-        menuIconProps={{ iconName: item.icon }}
-        onClick={item.onClick}
-        title={item.title}
-        ariaLabel={item.ariaLabel}
-      />
-    );
+    return <IconButton menuIconProps={{ iconName: item.icon }} onClick={item.onClick} title={item.title} ariaLabel={item.ariaLabel} />;
   }
 
   private _onRenderOverflowButton(overflowItems: IOverflowSetItemProps[] | undefined): JSX.Element {

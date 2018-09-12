@@ -3,7 +3,7 @@ import { FontSizes, IStyle } from 'office-ui-fabric-react/lib/Styling';
 
 // TODO, color should be returned from theme
 export const getStyles = (props: ISectionStyleProps): ISectionStyles => {
-  const { disabled, rowHeight } = props;
+  const { disabled, rowHeight, isEditMode } = props;
 
   const rowFlexContainer: IStyle = {
     display: 'flex',
@@ -28,7 +28,8 @@ export const getStyles = (props: ISectionStyleProps): ISectionStyles => {
     sectionTitle: {
       fontSize: FontSizes.medium,
       fontWeight: '600',
-      margin: '9px 16px'
+      margin: isEditMode ? '9px 16px' : '22px 0 0'
+      // when the section is displayed in the dashboard, we add extra top margin (22px) to make it closer to cards
     },
     editTitleTextField: [
       {
