@@ -456,7 +456,6 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     const { onRenderItem = this._onRenderItem } = this.props;
 
     const id = this._id;
-    const { selectedIndices = [] } = this.state;
 
     return (
       <div
