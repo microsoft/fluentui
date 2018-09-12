@@ -419,7 +419,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
 </div>
 `;
 
-exports[`SpinButton renders SpinButton correctly 2`] = `
+exports[`SpinButton renders SpinButton correctly with values that the user passes in 1`] = `
 <div
   className=
 

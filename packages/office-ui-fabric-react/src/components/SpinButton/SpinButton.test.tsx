@@ -25,7 +25,7 @@ describe('SpinButton', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders SpinButton correctly', () => {
+  it('renders SpinButton correctly with values that the user passes in', () => {
     const component = renderer.create(<SpinButton label="label" value={'0'} ariaValueNow={0} ariaValueText={'0 pt'} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
