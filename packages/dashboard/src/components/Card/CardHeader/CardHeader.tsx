@@ -16,9 +16,9 @@ export class CardHeader extends React.Component<ICardHeaderProps, {}> {
     const annotationText = this.props.annotationText;
     const classNames = getClassNames(getStyles, { fontSize });
 
-    const fontSizeMapping = [{ fontSize: 16, lineHeight: '21px' }];
+    let fontSizeMapping = [{ fontSize: 28, lineHeight: '36px' }, { fontSize: 16, lineHeight: '21px' }];
     if (fontSize === FontSize.medium) {
-      fontSizeMapping.unshift({ fontSize: 28, lineHeight: '36px' });
+      fontSizeMapping = [{ fontSize: 16, lineHeight: '21px' }];
     }
 
     return (
