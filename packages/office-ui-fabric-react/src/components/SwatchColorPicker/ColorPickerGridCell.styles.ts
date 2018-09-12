@@ -3,13 +3,12 @@ import { IsFocusVisibleClassName } from '../../Utilities';
 import { IColorPickerGridCellStyleProps, IColorPickerGridCellStyles } from './ColorPickerGridCell.types';
 
 const ACTIVE_BORDER_COLOR = '#969696';
-const SVG_BORDER_WIDTH = 4;
 
 function getSvgSelectorStyles(borderColor: string, isHover: boolean): IRawStyle {
   return {
     width: 12,
     height: 12,
-    border: `${SVG_BORDER_WIDTH}px solid`,
+    border: '4px solid',
     borderColor: borderColor,
     boxShadow: isHover ? 'none' : '0 0 0 1px #969696',
     padding: 4,
@@ -19,8 +18,8 @@ function getSvgSelectorStyles(borderColor: string, isHover: boolean): IRawStyle 
 
 export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGridCellStyles => {
   const { theme, disabled, selected, circle, isWhite } = props;
-
   const { semanticColors } = theme;
+
   return {
     colorCell: [
       {
@@ -39,7 +38,7 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
         height: 40,
         selectors: {
           [HighContrastSelector]: { border: 'none' },
-          [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus::after`]: { border: 'none' },
+          [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus::after`]: { borderColor: 'transparent' },
           [`.${IsFocusVisibleClassName} &:focus $svg`]: getSvgSelectorStyles(theme.palette.neutralQuaternaryAlt, false),
           ':hover $svg': getSvgSelectorStyles(theme.palette.neutralQuaternaryAlt, true),
           ':focus $svg': getSvgSelectorStyles(theme.palette.neutralQuaternaryAlt, false),
@@ -49,13 +48,11 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
       isWhite && {
         selectors: {
           $svg: {
-            padding: 0,
-            border: '1px solid',
-            borderColor: theme.palette.neutralTertiary,
-            margin: 4
-          },
-          ':hover $svg': {
-            border: `${SVG_BORDER_WIDTH + 1}px solid` // include 1px extra border white swatch has to avoid shift on :hover
+            width: 12,
+            height: 12,
+            border: '4px solid',
+            boxShadow: `inset 0 0 0 1px ${theme.palette.neutralTertiary}`,
+            borderColor: 'transparent'
           }
         }
       },
