@@ -25,6 +25,7 @@
     "code-style": "node common/scripts/install-run-rush.js code-style",
     "change": "node common/scripts/install-run-rush.js change",
     "generate": "node common/scripts/install-run-rush.js update --full",
+    "update": "node common/scripts/install-run-rush.js update",
     "bundlesize": "cd scripts && npm run bundlesize",
     "create-component": "node scripts/create-component.js",
     "checkchange": "node common/scripts/install-run-rush.js change -v",
