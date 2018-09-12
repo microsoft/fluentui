@@ -601,6 +601,9 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     this._keytipManager.inKeytipMode = inKeytipMode;
   };
 
+  /**
+   * Emits a warning if duplicate keytips are found for the current keytip
+   */
   private _detectDuplicateKeytips = (): void => {
     const duplicateKeytips = this._getDuplicateIds(this._keytipTree.getChildren());
     if (duplicateKeytips.length) {
@@ -616,17 +619,11 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
    * @returns {string[]} - Array of duplicates that were found. If multiple duplicates were found it will only be added once to this array
    */
   private _getDuplicateIds = (keytipIds: string[]): string[] => {
-    const duplicates: string[] = [];
-    const foundIds: { [id: string]: number } = {};
-    for (const id of keytipIds) {
-      const currFound = foundIds[id];
-      if (currFound === 1) {
-        // Make sure to only count the duplicate once
-        duplicates.push(id);
-      }
-      const newIdCount: number = currFound ? currFound + 1 : 1;
-      foundIds[id] = newIdCount;
-    }
-    return duplicates;
+    const seenIds: { [id: string]: number } = {};
+    return keytipIds.filter((keytipId: string) => {
+      seenIds[keytipId] = seenIds[keytipId] ? seenIds[keytipId] + 1 : 1;
+      // Only add the first duplicate keytip seen
+      return seenIds[keytipId] === 2;
+    });
   };
 }
