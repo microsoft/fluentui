@@ -82,6 +82,11 @@ export interface IDashboardGridLayoutProps {
   cols?: { [P in Breakpoints]: number };
 
   /**
+   * Margin between items [x, y] in px.
+   */
+  margin?: [number, number];
+
+  /**
    * the px value of break points
    */
   breakpoints?: { [P in Breakpoints]: number };

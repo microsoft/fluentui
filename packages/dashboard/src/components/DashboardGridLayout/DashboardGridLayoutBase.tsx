@@ -44,7 +44,8 @@ export class DashboardGridLayoutBase extends React.Component<IDashboardGridLayou
       mediumWide: { w: 2, h: 4 },
       large: { w: 2, h: 8 },
       section: { w: 4, h: 1 }
-    }
+    },
+    margin: [24, 24]
   };
 
   constructor(props: IDashboardGridLayoutBaseProps) {
@@ -61,7 +62,7 @@ export class DashboardGridLayoutBase extends React.Component<IDashboardGridLayou
         breakpoints={this.props.breakpoints}
         cols={this.props.cols}
         className={classNames.root}
-        margin={[24, 24]}
+        margin={this.props.margin}
         containerPadding={[0, 0]}
         isResizable={this.props.isResizable || false}
         rowHeight={this.props.rowHeight}
