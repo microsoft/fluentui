@@ -74,6 +74,7 @@ export class DashboardGridLayoutBase extends React.Component<IDashboardGridLayou
         onDragStop={this.props.onDragStop}
         onBreakpointChange={this.props.onBreakPointChange}
         dragApiRef={this.props.dragApi}
+        onWidthChange={this.props.onWidthChange}
         {...this.props}
       >
         {this.props.children}

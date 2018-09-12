@@ -36,7 +36,15 @@ export const getStyles = (props: ISectionStyleProps): ISectionStyles => {
         width: '100%',
         marginTop: '24px', // TODO, this should be the margin prop in RGL
         // TODO, box Shadow should be merged with DashboardGridLayout.css
-        boxShadow: '0 0.3px 0.9px rgba(0, 0, 0, 0.108), 0 1.6px 3.6px rgba(0, 0, 0, 0.132)'
+        boxShadow: '0 0.3px 0.9px rgba(0, 0, 0, 0.108), 0 1.6px 3.6px rgba(0, 0, 0, 0.132)',
+        selectors: {
+          '.ms-TextField-wrapper': {
+            height: '100%'
+          },
+          '.ms-TextField-fieldGroup': {
+            height: '100%'
+          }
+        }
       }
     ],
     actions: [rowFlexContainer],

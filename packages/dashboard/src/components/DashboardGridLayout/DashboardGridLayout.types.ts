@@ -170,4 +170,9 @@ export interface IDashboardGridLayoutProps {
    * Callback with breakpoint and new number of columns
    */
   onBreakPointChange?: (newBreakpoint: string, newCols: number) => void;
+
+  /**
+   * Callback when the width changes, so you can modify the layout as needed.
+   */
+  onWidthChange?: (containerWidth: number, margin: [number, number], cols: number, containerPadding: [number, number]) => void;
 }
