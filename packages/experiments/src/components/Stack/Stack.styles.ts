@@ -16,7 +16,6 @@ export const styles = (props: IThemedProps<IStackProps>): IStackStyles => {
     horizontal,
     grow,
     wrap,
-    margin,
     padding,
     horizontalAlignment,
     verticalAlignment,
@@ -32,8 +31,14 @@ export const styles = (props: IThemedProps<IStackProps>): IStackStyles => {
 
   const childStyles = {
     whiteSpace: 'nowrap',
-    textOverflow: 'ellipsis',
-    flexShrink: shrinkItems ? 1 : 0
+    textOverflow: 'ellipsis'
+  };
+
+  // flexShrink styles are applied by the StackItem
+  const shrinkSelector = {
+    '> *:not(.ms-StackItem)': {
+      flexShrink: shrinkItems ? 1 : 0
+    }
   };
 
   return {
@@ -46,7 +51,6 @@ export const styles = (props: IThemedProps<IStackProps>): IStackStyles => {
         height: fillVertical && !wrap ? '100%' : 'auto',
         maxWidth,
         maxHeight,
-        margin,
         padding: parsePadding(padding, theme),
         boxSizing: 'border-box'
       },
@@ -66,7 +70,8 @@ export const styles = (props: IThemedProps<IStackProps>): IStackStyles => {
             margin: `${0.5 * vGap.value}${vGap.unit} ${0.5 * hGap.value}${hGap.unit}`,
             maxWidth: `calc(100% - ${hGap.value}${hGap.unit})`,
             ...childStyles
-          }
+          },
+          ...shrinkSelector
         }
       },
       !wrap && [
@@ -78,7 +83,8 @@ export const styles = (props: IThemedProps<IStackProps>): IStackStyles => {
             },
             '> *:last-child': {
               marginRight: 0
-            }
+            },
+            ...shrinkSelector
           }
         },
         !horizontal && {
@@ -89,7 +95,8 @@ export const styles = (props: IThemedProps<IStackProps>): IStackStyles => {
             },
             '> *:last-child': {
               marginBottom: 0
-            }
+            },
+            ...shrinkSelector
           }
         }
       ],

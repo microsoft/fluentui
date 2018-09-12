@@ -83,11 +83,6 @@ export interface IStackProps extends IStyleableComponentProps<IStackProps, IStac
   padding?: number | string;
 
   /**
-   * Margin of the Stack.
-   */
-  margin?: number | string;
-
-  /**
    * Whether Stack children should wrap onto multiple rows (HorizontalStacks only).
    */
   wrap?: boolean;
