@@ -1,6 +1,18 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Tue, 11 Sep 2018 02:54:40 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Sep 2018 12:26:41 GMT and should not be manually modified.
+
+## 0.20.0
+Wed, 12 Sep 2018 12:26:41 GMT
+
+### Minor changes
+
+- Passing mouseevents to target prop of calout, so that the callout comes next to cursor and follows it.
+- Centering legends component for Donut chart. Introducing prop for legends component that helps users align the component center
+
+### Patches
+
+- selected arc highlight and interaction between legend and chart issue fix
 
 ## 0.19.2
 Tue, 11 Sep 2018 02:54:40 GMT

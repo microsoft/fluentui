@@ -9,7 +9,8 @@ export const getStyles = (props: IMultiCountStyleProps): IMultiCountStyles => {
     color,
     currentText,
     hoveredText,
-    href
+    href,
+    hideIcon
   } = props;
   return {
     root: {
@@ -87,6 +88,9 @@ export const getStyles = (props: IMultiCountStyleProps): IMultiCountStyles => {
       marginLeft: '16px',
       marginBottom: '8px',
       opacity: '0.6'
+    },
+    changeIcon: {
+      marginLeft: hideIcon ? '' : '16px'
     }
   };
 };
