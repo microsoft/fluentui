@@ -113,7 +113,7 @@
     },
     "@rush-temp/build": {
       "version": "file:projects/build.tgz",
-      "integrity": "sha1-QXfKwqFC6C8DZKtqSL5axlfcctI=",
+      "integrity": "sha1-IpFDHPIGVQG8arNPD40/GrprAec=",
       "requires": {
         "@microsoft/api-extractor": "4.3.7",
         "@microsoft/load-themed-styles": "1.8.7",
@@ -720,7 +720,7 @@
     },
     "@rush-temp/charting": {
       "version": "file:projects/charting.tgz",
-      "integrity": "sha1-lqP+cQRGwh5Wc/O1x9QjBg3dAWM=",
+      "integrity": "sha1-VSCrmwBma3GV9mOZLO4xVTigkQg=",
       "requires": {
         "@microsoft/load-themed-styles": "1.8.7",
         "@types/d3-array": "1.2.1",
@@ -759,7 +759,7 @@
     },
     "@rush-temp/dashboard": {
       "version": "file:projects/dashboard.tgz",
-      "integrity": "sha1-MWdb4kninxhX7OpO1CAMQ8qWRVM=",
+      "integrity": "sha1-4YQXlVoHE+AD1+i5tCYzvgkvv0I=",
       "requires": {
         "@microsoft/load-themed-styles": "1.8.7",
         "@types/enzyme": "3.1.13",
@@ -1141,7 +1141,7 @@
     },
     "@rush-temp/example-app-base": {
       "version": "file:projects/example-app-base.tgz",
-      "integrity": "sha1-mBSAwWn+DcF98QTaRSCAyiDaAJU=",
+      "integrity": "sha1-tjMPX+kKiWZ9y8jAq2CEGgRDJKE=",
       "requires": {
         "@microsoft/load-themed-styles": "1.8.7",
         "@types/es6-promise": "0.0.32",
@@ -1164,7 +1164,7 @@
     },
     "@rush-temp/experiments": {
       "version": "file:projects/experiments.tgz",
-      "integrity": "sha1-gqEQ6jdhscUbvVjrZ7l3lf3TWXs=",
+      "integrity": "sha1-wZoBPfNDKs0Qe4hXEChgP4HqvNo=",
       "requires": {
         "@microsoft/load-themed-styles": "1.8.7",
         "@types/deep-assign": "0.1.1",
@@ -1193,7 +1193,7 @@
     },
     "@rush-temp/fabric-website": {
       "version": "file:projects/fabric-website.tgz",
-      "integrity": "sha1-ue6/1f6GTrf3kS/q9G3VGI2Fq4M=",
+      "integrity": "sha1-tXPwpQfdBbIb3mDD5w++T/Vp2Zg=",
       "requires": {
         "@microsoft/load-themed-styles": "1.8.7",
         "@types/es6-promise": "0.0.32",
@@ -1224,7 +1224,7 @@
     },
     "@rush-temp/fabric-website-resources": {
       "version": "file:projects/fabric-website-resources.tgz",
-      "integrity": "sha1-C2LcrBAevzvifhSqbrtOQgv7THU=",
+      "integrity": "sha1-V334uvZbzk+ItGPH96N9s80nWus=",
       "requires": {
         "@microsoft/load-themed-styles": "1.8.7",
         "@types/enzyme": "3.1.13",
@@ -1258,7 +1258,7 @@
     },
     "@rush-temp/file-type-icons": {
       "version": "file:projects/file-type-icons.tgz",
-      "integrity": "sha1-uWUET5OKmb/kx66P2HQgze3xAvE=",
+      "integrity": "sha1-fWdBbtMbcOxADYOEgnYcONmBFFQ=",
       "requires": {
         "@types/react": "16.3.16",
         "@types/react-dom": "16.0.5",
@@ -1269,7 +1269,7 @@
     },
     "@rush-temp/foundation": {
       "version": "file:projects/foundation.tgz",
-      "integrity": "sha1-+NltQE4iebPQ8FrDp4dm9S+pqhY=",
+      "integrity": "sha1-xE5VaVZ4JyN2J3RmhPTty72Bthc=",
       "requires": {
         "@types/enzyme": "3.1.13",
         "@types/enzyme-adapter-react-16": "1.0.3",
@@ -1289,21 +1289,21 @@
     },
     "@rush-temp/icons": {
       "version": "file:projects/icons.tgz",
-      "integrity": "sha1-03u02uR3vgVAhaxl+AqPjzl6fn0=",
+      "integrity": "sha1-cpP/E7XoqrELYqdADYy5ZKG7BLE=",
       "requires": {
         "tslib": "1.9.3"
       }
     },
     "@rush-temp/jest-serializer-merge-styles": {
       "version": "file:projects/jest-serializer-merge-styles.tgz",
-      "integrity": "sha1-VYn/MHHczZ8ybB/FeN5u0M7zUuU=",
+      "integrity": "sha1-d34NmuFtYQ2CualkOc/BnfPx1XU=",
       "requires": {
         "@types/jest": "23.0.0"
       }
     },
     "@rush-temp/merge-styles": {
       "version": "file:projects/merge-styles.tgz",
-      "integrity": "sha1-qAgSAGWBimHI3lEzxfBNz0awK48=",
+      "integrity": "sha1-/Xmh8AWDhHPZ+DGfkb26fz5/ORI=",
       "requires": {
         "@types/jest": "23.0.0",
         "tslib": "1.9.3"
@@ -1311,7 +1311,7 @@
     },
     "@rush-temp/office-ui-fabric-react": {
       "version": "file:projects/office-ui-fabric-react.tgz",
-      "integrity": "sha1-LPQt+0CAgg1QuCtzm1rY11cOHU0=",
+      "integrity": "sha1-52fOPdYztEHrsPqoP2L/YWi5Ofk=",
       "requires": {
         "@microsoft/load-themed-styles": "1.8.7",
         "@types/enzyme": "3.1.13",
@@ -1354,14 +1354,14 @@
     },
     "@rush-temp/office-ui-fabric-react-tslint": {
       "version": "file:projects/office-ui-fabric-react-tslint.tgz",
-      "integrity": "sha1-vVNsRR5NyJo1EqV6zoIFVovAQfo=",
+      "integrity": "sha1-gQc8OKaMxaWEovuYRXV6FW8IWSE=",
       "requires": {
         "tslint-react": "3.6.0"
       }
     },
     "@rush-temp/server-rendered-app": {
       "version": "file:projects/server-rendered-app.tgz",
-      "integrity": "sha1-12Xq1l0CluXYH15w250996N0vw8=",
+      "integrity": "sha1-I+QgchuV5w48OV+J9M/hljzAIsA=",
       "requires": {
         "@microsoft/load-themed-styles": "1.8.7",
         "@types/es6-promise": "0.0.32",
@@ -1379,7 +1379,7 @@
     },
     "@rush-temp/ssr-tests": {
       "version": "file:projects/ssr-tests.tgz",
-      "integrity": "sha1-lgq9Q6ceNijEwqkHdrBK/vUOemI=",
+      "integrity": "sha1-J9ykKV26Aw8CZFFT228/hEWnArw=",
       "requires": {
         "@microsoft/load-themed-styles": "1.8.7",
         "@types/es6-promise": "0.0.32",
@@ -1724,7 +1724,7 @@
     },
     "@rush-temp/styling": {
       "version": "file:projects/styling.tgz",
-      "integrity": "sha1-mrdmspNMKNqrNuHiUs52cQbAGGY=",
+      "integrity": "sha1-L3uVHO4aNxhHmpFGoXohT+WmYr0=",
       "requires": {
         "@microsoft/load-themed-styles": "1.8.7",
         "@types/jest": "23.0.0",
@@ -1739,7 +1739,7 @@
     },
     "@rush-temp/test-bundle-button": {
       "version": "file:projects/test-bundle-button.tgz",
-      "integrity": "sha1-Z2NNPW6JcLZeJ+DfFube4oPfVpk=",
+      "integrity": "sha1-rV9sIna7wXiWaqHFH9cZt+Ki8iM=",
       "requires": {
         "@types/react": "16.3.16",
         "@types/react-dom": "16.0.5",
@@ -1751,7 +1751,7 @@
     },
     "@rush-temp/todo-app": {
       "version": "file:projects/todo-app.tgz",
-      "integrity": "sha1-PFIgtd5kLlfySJ3BMNaUhRP+WGE=",
+      "integrity": "sha1-79CFph+gWDLCLUgU7gxT96l0mxI=",
       "requires": {
         "@microsoft/load-themed-styles": "1.8.7",
         "@types/es6-promise": "0.0.32",
@@ -1768,7 +1768,7 @@
     },
     "@rush-temp/utilities": {
       "version": "file:projects/utilities.tgz",
-      "integrity": "sha1-f+aV3/mrYvwRwHNEY8uMbV5qtq8=",
+      "integrity": "sha1-/QMLsmYod34ywPNTf/8ZD39IF/Q=",
       "requires": {
         "@types/enzyme": "3.1.13",
         "@types/enzyme-adapter-react-16": "1.0.3",
@@ -1790,7 +1790,7 @@
     },
     "@rush-temp/variants": {
       "version": "file:projects/variants.tgz",
-      "integrity": "sha1-KpBSKHFUWVxQsVs60dT5/VJMI7I=",
+      "integrity": "sha1-4sOthUFJPivzOfeqM/iMLofxKps=",
       "requires": {
         "@types/jest": "23.0.0",
         "tslib": "1.9.3"
@@ -1798,7 +1798,7 @@
     },
     "@rush-temp/vr-tests": {
       "version": "file:projects/vr-tests.tgz",
-      "integrity": "sha1-H74AARE/WPx6NqGFlmHpbtXV2/k=",
+      "integrity": "sha1-63QtcyZbkEXHPLTII4WUn4Hm+EI=",
       "requires": {
         "@storybook/addon-options": "3.2.3",
         "@storybook/react": "3.4.10",
@@ -1822,7 +1822,7 @@
     },
     "@rush-temp/webpack-utils": {
       "version": "file:projects/webpack-utils.tgz",
-      "integrity": "sha1-xL80mLDxjaID3sbw9jo8gZGwMFc=",
+      "integrity": "sha1-8OBGQb+ymtbQMUBfelAR2gyUgsg=",
       "requires": {
         "@types/jest": "23.0.0",
         "@types/loader-utils": "1.1.3",
