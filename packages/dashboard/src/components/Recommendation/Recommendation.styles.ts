@@ -56,25 +56,23 @@ export const getStyles = (): IRecommendationStyles => ({
   recommendationHeaderRow: {
     flexDirection: 'row',
     width: '49%',
-    justifyContent: 'space-between',
-    marginRight: containerSpaceMargin
+    justifyContent: 'space-between'
   },
   recommendationContentRow: {
     flexDirection: 'row',
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
-    marginRight: containerSpaceMargin,
     marginTop: '10px'
   },
   recommendationContentRowText: {
-    width: '49%',
+    width: '48.5%',
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-between'
   },
   recommendationContentRowVisualization: {
-    width: '49%'
+    width: '48.5%'
   },
   recommendationCommandRow: {
     alignSelf: 'flex-end'
