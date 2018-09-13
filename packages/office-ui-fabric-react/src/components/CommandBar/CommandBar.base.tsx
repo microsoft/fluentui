@@ -1,13 +1,7 @@
 import * as React from 'react';
 
 import { BaseComponent, css, nullRender } from '../../Utilities';
-import {
-  ICommandBar,
-  ICommandBarItemProps,
-  ICommandBarProps,
-  ICommandBarStyleProps,
-  ICommandBarStyles
-} from './CommandBar.types';
+import { ICommandBar, ICommandBarItemProps, ICommandBarProps, ICommandBarStyleProps, ICommandBarStyles } from './CommandBar.types';
 import { IOverflowSet, OverflowSet } from '../../OverflowSet';
 import { IResizeGroup, ResizeGroup } from '../../ResizeGroup';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
@@ -131,6 +125,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
 
   private _onRenderItem = (item: ICommandBarItemProps): JSX.Element | React.ReactNode => {
     const { buttonAs: CommandButtonType = CommandBarButton } = this.props;
+    const { commandBarButtonAs: ItemCommandButtonType = CommandButtonType } = item;
 
     const itemText = item.text || item.name;
 
@@ -152,12 +147,12 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     if (item.iconOnly && itemText !== undefined) {
       return (
         <TooltipHost content={itemText} {...item.tooltipHostProps}>
-          <CommandButtonType {...commandButtonProps as IButtonProps} />
+          <ItemCommandButtonType {...commandButtonProps as IButtonProps} defaultRender={CommandButtonType} />
         </TooltipHost>
       );
     }
 
-    return <CommandButtonType {...commandButtonProps as IButtonProps} />;
+    return <ItemCommandButtonType {...commandButtonProps as IButtonProps} defaultRender={CommandButtonType} />;
   };
 
   private _onButtonClick(item: ICommandBarItemProps): (ev: React.MouseEvent<HTMLButtonElement>) => void {
