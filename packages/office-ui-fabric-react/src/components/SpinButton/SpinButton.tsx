@@ -144,13 +144,13 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     const classNames = this.props.getClassNames
       ? this.props.getClassNames(theme!, !!disabled, !!isFocused, keyboardSpinDirection, labelPosition, className)
       : getClassNames(
-          getStyles(theme!, customStyles),
-          !!disabled,
-          !!isFocused,
-          keyboardSpinDirection,
-          labelPosition,
-          className
-        );
+        getStyles(theme!, customStyles),
+        !!disabled,
+        !!isFocused,
+        keyboardSpinDirection,
+        labelPosition,
+        className
+      );
 
     return (
       <div className={classNames.root}>
@@ -438,7 +438,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   private _handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>): void => {
     // eat the up and down arrow keys to keep focus in the spinButton
     // (especially when a spinButton is inside of a FocusZone)
-    if (event.which === KeyCodes.up || event.which === KeyCodes.down) {
+    if (event.which === KeyCodes.up || event.which === KeyCodes.down || event.which === KeyCodes.enter) {
       event.preventDefault();
       event.stopPropagation();
     }
