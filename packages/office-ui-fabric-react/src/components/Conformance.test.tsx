@@ -10,10 +10,6 @@ import * as path from 'path';
  *    2) The component applies the className prop to some DOM element
  *        (preferably the root element unless otherwise specified).
  *
- * The need for a className prop is motivated by the Stack component.
- * In order for a Stack component to style its children,
- *    each child component within a Stack must accept and apply a className prop.
- *
  * Any conditions that Fabric components should fulfill can be added to this test suite.
  */
 
@@ -211,11 +207,11 @@ describe('Conformance', () => {
       } catch (e) {
         console.warn(
           'ERROR: ' +
-            e +
-            ', TEST NOTE: Failure with ' +
-            componentName +
-            '. ' +
-            'Have you recently added a component? If so, please see notes in Conformance.test.tsx.'
+          e +
+          ', TEST NOTE: Failure with ' +
+          componentName +
+          '. ' +
+          'Have you recently added a component? If so, please see notes in Conformance.test.tsx.'
         );
       }
     });
