@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IChartInternalProps, ChartType, ChartHeight, ChartWidth } from './Chart.types';
+import { IChartInternalProps, IChartStyles, IChartProps, ChartType, ChartHeight, ChartWidth } from './Chart.types';
 import {
   DonutChart,
   HorizontalBarChart,
@@ -11,6 +11,8 @@ import {
   VerticalBarChart
 } from '@uifabric/charting';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { getStyles } from './Chart.styles';
 
 export class Chart extends React.Component<IChartInternalProps, { _width: number; _height: number }> {
   public static defaultProps = {
@@ -60,12 +62,10 @@ export class Chart extends React.Component<IChartInternalProps, { _width: number
   }
 
   public render(): JSX.Element {
-    const rootStyle = {
-      width: '100%',
-      height: '100%'
-    };
+    const getClassNames = classNamesFunction<IChartProps, IChartStyles>();
+    const classNames = getClassNames(getStyles);
     return (
-      <div ref={(rootElem: HTMLElement | null) => (this._rootElem = rootElem)} className={mergeStyles(rootStyle)}>
+      <div ref={(rootElem: HTMLElement | null) => (this._rootElem = rootElem)} className={classNames.chartWrapper}>
         {this._getChartByType(this.props.chartType)}
       </div>
     );
