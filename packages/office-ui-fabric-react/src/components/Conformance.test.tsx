@@ -7,7 +7,8 @@ import * as path from 'path';
  * These tests verify that Fabric components fulfill the following conditions:
  *
  *    1) The component accepts a className prop.
- *    2) The component applies the className prop to some DOM element.
+ *    2) The component applies the className prop to some DOM element
+ *        (preferably the root element unless otherwise specified).
  *
  * The need for a className prop is motivated by the Stack component.
  * In order for a Stack component to style its children,
