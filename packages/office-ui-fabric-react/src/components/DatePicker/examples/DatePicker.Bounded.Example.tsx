@@ -9,20 +9,7 @@ const maxDate: Date = addYears(today, 1);
 const description = `When date boundaries are set (via minDate and maxDate props) the DatePicker will not allow out-of-bounds dates to be picked or entered. In this example, the allowed dates are ${minDate.toLocaleDateString()}-${maxDate.toLocaleDateString()}`;
 
 const DayPickerStrings: IDatePickerStrings = {
-  months: [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December'
-  ],
+  months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
 
   shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 
@@ -71,7 +58,6 @@ export class DatePickerBoundedExample extends React.Component<{}, IDatePickerReq
           minDate={minDate}
           maxDate={maxDate}
           allowTextInput={true}
-          allFocusable={true}
         />
       </div>
     );
