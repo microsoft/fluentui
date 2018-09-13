@@ -111,7 +111,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   border: none;
                 }
                 .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                  border: none;
+                  border-color: transparent;
                 }
                 .ms-Fabric--isFocusVisible &:focus $svg {
                   border-color: #dadada;
@@ -314,7 +314,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   border: none;
                 }
                 .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                  border: none;
+                  border-color: transparent;
                 }
                 .ms-Fabric--isFocusVisible &:focus $svg {
                   border-color: #dadada;
@@ -517,7 +517,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   border: none;
                 }
                 .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                  border: none;
+                  border-color: transparent;
                 }
                 .ms-Fabric--isFocusVisible &:focus $svg {
                   border-color: #dadada;
@@ -720,7 +720,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   border: none;
                 }
                 .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                  border: none;
+                  border-color: transparent;
                 }
                 .ms-Fabric--isFocusVisible &:focus $svg {
                   border-color: #dadada;
@@ -927,7 +927,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   border: none;
                 }
                 .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                  border: none;
+                  border-color: transparent;
                 }
                 .ms-Fabric--isFocusVisible &:focus $svg {
                   border-color: #dadada;
@@ -1130,7 +1130,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   border: none;
                 }
                 .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                  border: none;
+                  border-color: transparent;
                 }
                 .ms-Fabric--isFocusVisible &:focus $svg {
                   border-color: #dadada;
@@ -1333,7 +1333,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   border: none;
                 }
                 .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                  border: none;
+                  border-color: transparent;
                 }
                 .ms-Fabric--isFocusVisible &:focus $svg {
                   border-color: #dadada;
@@ -1536,7 +1536,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   border: none;
                 }
                 .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                  border: none;
+                  border-color: transparent;
                 }
                 .ms-Fabric--isFocusVisible &:focus $svg {
                   border-color: #dadada;
@@ -1743,7 +1743,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   border: none;
                 }
                 .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                  border: none;
+                  border-color: transparent;
                 }
                 .ms-Fabric--isFocusVisible &:focus $svg {
                   border-color: #dadada;
@@ -1946,7 +1946,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   border: none;
                 }
                 .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                  border: none;
+                  border-color: transparent;
                 }
                 .ms-Fabric--isFocusVisible &:focus $svg {
                   border-color: #dadada;
@@ -2149,7 +2149,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   border: none;
                 }
                 .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                  border: none;
+                  border-color: transparent;
                 }
                 .ms-Fabric--isFocusVisible &:focus $svg {
                   border-color: #dadada;
@@ -2352,7 +2352,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   border: none;
                 }
                 .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                  border: none;
+                  border-color: transparent;
                 }
                 .ms-Fabric--isFocusVisible &:focus $svg {
                   border-color: #dadada;
