@@ -39,63 +39,58 @@ class NavigationLink extends React.Component<INavLinkProps, INavLinkStates> {
   }
 
   private _generateActiveBar(): React.ReactElement<{}> | null {
+    const { isNested } = this.props;
     if (this.props.isSelected) {
-      return (
-        <div
-          className={!!this.props.level && this.props.level > 0 ? this.classNames.NavItemBarMarkerSmall : this.classNames.navItemBarMarker}
-        />
-      );
+      return <div className={isNested ? this.classNames.navItemBarMarkerSmall : this.classNames.navItemBarMarker} />;
     } else {
       return null;
     }
   }
 
   private _generatePrimaryIcon(): React.ReactElement<{}> | null {
+    const { isNested } = this.props;
     return (
       <div className={this.classNames.iconWrapper} aria-hidden="true">
         {this._generateActiveBar()}
         <Icon
           iconName={this.props.primaryIconName}
-          className={
-            !!this.props.level && this.props.level > 0
-              ? mergeStyles(this.classNames.navItemIcon, this.classNames.navItemSmall)
-              : this.classNames.navItemIcon
-          }
+          className={isNested ? mergeStyles(this.classNames.navItemIcon, this.classNames.navItemSmall) : this.classNames.navItemIcon}
         />
       </div>
     );
   }
 
   private _generateLinkContent(): React.ReactElement<{}> | null {
+    const { isNested } = this.props;
     if (this.props.isNavCollapsed) {
       return null;
     }
     return (
-      <div
-        className={
-          !!this.props.level && this.props.level > 0
-            ? mergeStyles(this.classNames.navItemText, this.classNames.navItemSmall)
-            : this.classNames.navItemText
-        }
-      >
+      <div className={isNested ? mergeStyles(this.classNames.navItemText, this.classNames.navItemSmall) : this.classNames.navItemText}>
         {this.props.name}
       </div>
     );
   }
 
   private _generateSecondaryIcon(): React.ReactElement<{}> | null {
-    if (this.props.isNavCollapsed) {
+    const { hasNestedMenu, isNested, target, isExpanded, isNavCollapsed } = this.props;
+
+    if (isNavCollapsed) {
       return null;
     }
+
+    let iconName = undefined;
+    if (hasNestedMenu) {
+      iconName = isExpanded ? 'ChevronUp' : 'ChevronDown';
+    } else if (target === '_blank') {
+      iconName = 'OpenInNewWindow';
+    }
+
     return (
       <div className={this.classNames.iconWrapper}>
         <Icon
-          iconName={this.props.secondaryIconName}
-          className={
-            !!this.props.level && this.props.level > 0
-              ? mergeStyles(this.classNames.navItemIcon, this.classNames.navItemSmall)
-              : this.classNames.navItemIcon
-          }
+          iconName={iconName}
+          className={isNested ? mergeStyles(this.classNames.navItemIcon, this.classNames.navItemSmall) : this.classNames.navItemIcon}
         />
       </div>
     );

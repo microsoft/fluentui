@@ -89,9 +89,9 @@ export class NavExample extends React.Component<{}, {}> {
         dataHint="PrimaryNavigation"
         enableCustomization={true}
         showMore={true}
-        editLink={'Edit navigation'}
-        showMoreLink={'Show more'}
-        showLessLink={'Lhow less'}
+        editLinkName={'Edit navigation'}
+        showMoreLinkName={'Show more'}
+        showLessLinkName={'Lhow less'}
       />
     );
   }

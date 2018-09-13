@@ -60,8 +60,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
       }
     },
     navCollapsed: {
-      width: '48px',
-      selectors: {}
+      width: '48px'
     },
 
     //
@@ -103,7 +102,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
       height: '24px',
       backgroundColor: DefaultPalette.accent
     },
-    NavItemBarMarkerSmall: {
+    navItemBarMarkerSmall: {
       position: 'absolute',
       left: '41px',
       top: '7px',

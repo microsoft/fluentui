@@ -61,7 +61,7 @@ class NavGroup extends React.Component<INavGroupProps, {}> {
     // }
 
     this.setState({
-      isLinkExpandStateChanged: link.isExpanded
+      linkCollapsed: link.isExpanded
     });
 
     if (hasChildren || link.onClick) {
@@ -77,22 +77,10 @@ class NavGroup extends React.Component<INavGroupProps, {}> {
       return null;
     }
 
-    let ariaProps = {};
+    // TODO - move this down into the nav group that folds nested links
+    // let ariaProps = {};
     const hasChildren = !!link.links && link.links.length > 0;
     const { onShowNestedLink, dataHint, isNavCollapsed } = this.props;
-
-    let secondaryIconName = undefined;
-    if (hasChildren && nestingLevel === 0) {
-      // for the first level link, show chevron icon if there is a children
-      secondaryIconName = link.isExpanded ? 'ChevronUp' : 'ChevronDown';
-
-      ariaProps = {
-        ariaExpanded: !!link.isExpanded
-      };
-    } else if (link.url && link.target && link.target === '_blank') {
-      // for external links, show an icon
-      secondaryIconName = 'OpenInNewWindow';
-    }
 
     let isSelected = undefined;
     if (hasChildren) {
@@ -127,11 +115,12 @@ class NavGroup extends React.Component<INavGroupProps, {}> {
         dataValue={keyIndex}
         ariaLabel={link.name}
         {...ariaProps}
-        level={nestingLevel}
+        hasNestedMenu={hasChildren}
+        isNested={nestingLevel > 0 ? true : false}
+        isExpanded={link.isExpanded}
         isSelected={isSelected}
         role="menu"
         primaryIconName={primaryIconName}
-        secondaryIconName={secondaryIconName}
         isNavCollapsed={isNavCollapsed}
       />
     );

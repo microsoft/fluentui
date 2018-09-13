@@ -17,11 +17,6 @@ export interface INavProps {
   groups: ICustomNavLinkGroup[] | null;
 
   /**
-   * (Optional) The key of the nav item selected by caller.
-   */
-  isSelected?: boolean;
-
-  /**
    * (Optional) Used to toggle the nav component between expanded and collapsed state
    */
   isNavCollapsed?: boolean;
@@ -50,9 +45,13 @@ export interface INavProps {
    * will customize the isHidden property of the nav link (possibly through a flyout and refresh the Nav component).
    */
   enableCustomization?: boolean;
-  editLink?: string;
-  showMoreLink?: string;
-  showLessLink?: string;
+
+  /**
+   * (Optional) enables passing custom strings to the edit and show more links
+   */
+  editLinkName?: string;
+  showMoreLinkName?: string;
+  showLessLinkName?: string;
 
   /**
    * Used to override isHidden property of the Nav link when the "Show More" link is clicked
@@ -200,7 +199,7 @@ export interface INavStyles {
    * Style set for the bar marker in the nav item
    */
   navItemBarMarker: IStyle;
-  NavItemBarMarkerSmall: IStyle;
+  navItemBarMarkerSmall: IStyle;
 
   /**
    * Style set for the icon column in the nav item
@@ -294,7 +293,9 @@ export interface INavLinkProps extends React.AllHTMLAttributes<HTMLAnchorElement
    */
   barClassName?: string;
 
-  level?: number;
+  hasNestedMenu?: boolean;
+  isNested?: boolean;
+  isExpanded?: boolean;
   isSelected?: boolean;
   isNavCollapsed?: boolean;
 }

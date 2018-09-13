@@ -11,8 +11,7 @@ export class NavBase extends React.Component<INavProps, INavState> {
 
     this.state = {
       isNavCollapsed: this.props.isNavCollapsed ? this.props.isNavCollapsed : false,
-      showMore: this.props.showMore ? this.props.showMore : false,
-      isLinkExpandStateChanged: false
+      showMore: this.props.showMore ? this.props.showMore : false
     };
 
     this._onShowMoreLinkClicked = this._onShowMoreLinkClicked.bind(this);

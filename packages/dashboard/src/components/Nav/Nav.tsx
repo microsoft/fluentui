@@ -101,7 +101,7 @@ class NavComponent extends NavBase {
   }
 
   private _renderCustomizationLinks(): React.ReactElement<{}> | null {
-    const { enableCustomization, showMore } = this.props;
+    const { enableCustomization, showMore, editLinkName, showMoreLinkName } = this.props;
 
     if (!enableCustomization) {
       // If enable customization is not on, then don't render anything
@@ -110,12 +110,13 @@ class NavComponent extends NavBase {
 
     return (
       // If enableCustomization
+      // TODO only reveal the show more link if there are hidden links. this._hasAtLeastOneHiddenLink is false no matter what here
       <ul role={'list'}>
         <li role={'listitem'} title={'Edit navigation'}>
           <NavLink
             id={'EditNav'}
             href={'#'}
-            name={'Edit navigation'}
+            name={editLinkName}
             onClick={this._editClicked.bind(this)}
             dataHint={'Edit navigation'}
             dataValue={'NavToggle'}
@@ -129,7 +130,7 @@ class NavComponent extends NavBase {
             <NavLink
               id={'ShowMore'}
               href={'#'}
-              name={'Show more'}
+              name={showMoreLinkName}
               onClick={this._toggleHidden.bind(this)}
               dataHint={'Show more'}
               dataValue={'Show more'}
