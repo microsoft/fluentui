@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 11 Sep 2018 02:54:40 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Sep 2018 12:26:41 GMT and should not be manually modified.
+
+## 6.30.0
+Wed, 12 Sep 2018 12:26:41 GMT
+
+### Minor changes
+
+- Add motion to the Fluent experiment
 
 ## 6.29.1
 Tue, 11 Sep 2018 02:54:40 GMT

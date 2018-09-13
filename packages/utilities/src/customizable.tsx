@@ -9,11 +9,11 @@ export function customizable(
   fields: string[],
   concatStyles?: boolean
   // tslint:disable-next-line:no-any
-): <P, S>(ComposedComponent: new (props: P, ...args: any[]) => React.Component<P, S>) => any {
+): <P>(ComposedComponent: React.ComponentType<P>) => any {
   // tslint:disable-next-line:no-shadowed-variable
-  return function customizableFactory<P, S>(
+  return function customizableFactory<P>(
     // tslint:disable-next-line:no-any
-    ComposedComponent: new (props: P, ...args: any[]) => React.Component<P, S>
+    ComposedComponent: React.ComponentType<P>
     // tslint:disable-next-line:no-any
   ): any {
     const resultClass = class ComponentWithInjectedProps extends React.Component<P, {}> {

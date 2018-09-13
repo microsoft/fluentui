@@ -30,6 +30,8 @@ export class DonutChartBase extends React.Component<
   private _classNames: IProcessedStyleSet<IDonutChartStyles>;
   private _rootElem: HTMLElement | null;
   private _uniqText: string;
+  // tslint:disable:no-any
+  private _currentHoverElement: any;
   constructor(props: IDonutChartProps) {
     super(props);
     this.state = {
@@ -90,7 +92,7 @@ export class DonutChartBase extends React.Component<
         </svg>
         {this.state.showHover ? (
           <Callout
-            target={'#' + this._uniqText + this.state.legend!.replace(/\s+/, '') + this.state.value}
+            target={this._currentHoverElement}
             coverTarget={true}
             isBeakVisible={false}
             directionalHint={DirectionalHint.bottomRightEdge}
@@ -160,14 +162,15 @@ export class DonutChartBase extends React.Component<
     return legends;
   }
 
-  private _hoverCallback(data: IChartDataPoint): void {
+  private _hoverCallback = (data: IChartDataPoint, e: React.MouseEvent<SVGPathElement>): void => {
+    this._currentHoverElement = e;
     this.setState({
       showHover: true,
       value: data.data!.toString(),
       legend: data.legend,
       color: data.color!
     });
-  }
+  };
 
   private _hoverLeave(): void {
     this.setState({ showHover: false });

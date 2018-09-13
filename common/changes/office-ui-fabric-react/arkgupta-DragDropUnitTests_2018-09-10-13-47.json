@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Check whether meta key is pressed during selection",
+      "comment": "added functional unit tests for drag-drop feature",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "aharper@altair.com"
+  "email": "arkgupta@microsoft.com"
 }

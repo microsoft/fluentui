@@ -42,7 +42,6 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
               word-wrap: break-word;
             }
         id="ChoiceGroup0-label"
-        required={undefined}
       >
         Pick one image
       </label>
@@ -104,13 +103,11 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
                     width: 100%;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               id="ChoiceGroup0-bar"
               name="ChoiceGroup0"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              required={undefined}
               type="radio"
             />
             <label
@@ -272,7 +269,6 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
                           }
                       onError={[Function]}
                       onLoad={[Function]}
-                      role={undefined}
                       src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/choicegroup-bar-unselected.png"
                     />
                   </div>
@@ -319,7 +315,6 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
                           }
                       onError={[Function]}
                       onLoad={[Function]}
-                      role={undefined}
                       src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/choicegroup-bar-selected.png"
                     />
                   </div>
@@ -408,13 +403,11 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
                     width: 100%;
                   }
               data-is-focusable={false}
-              disabled={undefined}
               id="ChoiceGroup0-pie"
               name="ChoiceGroup0"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              required={undefined}
               type="radio"
             />
             <label
@@ -557,7 +550,6 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
                           }
                       onError={[Function]}
                       onLoad={[Function]}
-                      role={undefined}
                       src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/choicegroup-bar-unselected.png"
                     />
                   </div>
@@ -612,7 +604,6 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
                           }
                       onError={[Function]}
                       onLoad={[Function]}
-                      role={undefined}
                       src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/choicegroup-bar-selected.png"
                     />
                   </div>

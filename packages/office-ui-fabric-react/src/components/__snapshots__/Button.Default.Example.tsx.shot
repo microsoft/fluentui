@@ -38,12 +38,6 @@ exports[`Component Examples renders Button.Default.Example.tsx correctly 1`] = `
       Standard
     </label>
     <button
-      aria-describedby={undefined}
-      aria-disabled={undefined}
-      aria-label={undefined}
-      aria-labelledby={undefined}
-      aria-pressed={undefined}
-      checked={undefined}
       className=
           ms-Button
           ms-Button--default
@@ -114,7 +108,6 @@ exports[`Component Examples renders Button.Default.Example.tsx correctly 1`] = `
           }
       data-automation-id="test"
       data-is-focusable={true}
-      disabled={undefined}
       onClick={[Function]}
       onKeyDown={[Function]}
       onKeyPress={[Function]}
@@ -184,12 +177,6 @@ exports[`Component Examples renders Button.Default.Example.tsx correctly 1`] = `
       Primary
     </label>
     <button
-      aria-describedby={undefined}
-      aria-disabled={undefined}
-      aria-label={undefined}
-      aria-labelledby={undefined}
-      aria-pressed={undefined}
-      checked={undefined}
       className=
           ms-Button
           ms-Button--primary
@@ -270,7 +257,6 @@ exports[`Component Examples renders Button.Default.Example.tsx correctly 1`] = `
           }
       data-automation-id="test"
       data-is-focusable={true}
-      disabled={undefined}
       onClick={[Function]}
       onKeyDown={[Function]}
       onKeyPress={[Function]}

@@ -2,6 +2,25 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.19.1",
+      "tag": "@uifabric/utilities_v6.19.1",
+      "date": "Thu, 13 Sep 2018 17:38:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "allow stateless components to use customizable",
+            "author": "VincentBailly <vincentbaill@gmail.com>",
+            "commit": "e75160d82563e4b98ab7969306ff92f6b1797289"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.8.3 <7.0.0` to `>=6.8.4 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.19.0",
       "tag": "@uifabric/utilities_v6.19.0",
       "date": "Fri, 07 Sep 2018 22:04:50 GMT",

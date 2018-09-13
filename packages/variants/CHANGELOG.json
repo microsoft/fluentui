@@ -2,6 +2,25 @@
   "name": "@uifabric/variants",
   "entries": [
     {
+      "version": "6.9.0",
+      "tag": "@uifabric/variants_v6.9.0",
+      "date": "Thu, 13 Sep 2018 17:38:04 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adds new semantic slots per design direction",
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "02814cbe9b8d3994b40c9afc6825625e078bd3fe"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.67.3 <7.0.0` to `>=6.68.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.8.0",
       "tag": "@uifabric/variants_v6.8.0",
       "date": "Fri, 07 Sep 2018 16:29:48 GMT",

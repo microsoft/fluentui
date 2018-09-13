@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 07 Sep 2018 22:04:50 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Sep 2018 17:38:04 GMT and should not be manually modified.
+
+## 6.19.1
+Thu, 13 Sep 2018 17:38:04 GMT
+
+### Patches
+
+- allow stateless components to use customizable
 
 ## 6.19.0
 Fri, 07 Sep 2018 22:04:50 GMT

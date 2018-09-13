@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.8.4",
+      "tag": "@uifabric/merge-styles_v6.8.4",
+      "date": "Thu, 13 Sep 2018 17:38:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Added some missing styles. mix-blend-mode plus some padding-inline-*",
+            "author": "Manfred Nysted Berry <38347275+mberry73@users.noreply.github.com>",
+            "commit": "50a43b5d1e13e6d507ab15477316bb5742fa6dbb"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.8.3",
       "tag": "@uifabric/merge-styles_v6.8.3",
       "date": "Wed, 05 Sep 2018 10:29:25 GMT",
