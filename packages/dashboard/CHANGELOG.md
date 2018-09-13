@@ -1,6 +1,19 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Wed, 12 Sep 2018 12:26:41 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Sep 2018 17:38:04 GMT and should not be manually modified.
+
+## 0.24.0
+Thu, 13 Sep 2018 17:38:04 GMT
+
+### Minor changes
+
+- expose the card size mapping prop
+
+### Patches
+
+- Changing overflow behaviour of multicount component
+- add tslib as a dependency in dashboard
+- Enable auto adjust dashboard card header textdashboard card header text
 
 ## 0.23.0
 Wed, 12 Sep 2018 12:26:41 GMT

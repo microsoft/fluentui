@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Wed, 05 Sep 2018 10:29:25 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Sep 2018 17:38:04 GMT and should not be manually modified.
+
+## 6.8.4
+Thu, 13 Sep 2018 17:38:04 GMT
+
+### Patches
+
+- Added some missing styles. mix-blend-mode plus some padding-inline-*
 
 ## 6.8.3
 Wed, 05 Sep 2018 10:29:25 GMT
