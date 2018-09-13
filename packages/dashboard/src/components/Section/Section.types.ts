@@ -25,7 +25,7 @@ export interface ISectionProps {
   /**
    * Styling
    */
-  style?: IStyleFunctionOrObject<ISectionStyleProps, ISectionStyles>;
+  styles?: IStyleFunctionOrObject<ISectionStyleProps, ISectionStyles>;
 
   /**
    * String for removing section, pass in only if remove is allowed when section is displayed in dashboard
@@ -228,6 +228,11 @@ export interface IEditSectionsProps {
   deleteSectionButtonProps?: IButtonProps;
 
   /**
+   * Custom styling for individual elements within the edit section DOM.
+   */
+  styles?: IStyleFunctionOrObject<{}, IEditSectionsStyles>;
+
+  /**
    * On add a new section.
    */
   onAddSection?(title: string): void;
@@ -273,5 +278,5 @@ export interface IEditSectionsStyles {
   addButton: IStyle;
   saveButton: IStyle;
   cancelButton: IStyle;
-  rightAlignedFlexContainer: IStyle;
+  topActionButtonsFlexContainer: IStyle;
 }
