@@ -20,9 +20,7 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
       }
     >
       <div
-        aria-describedby={undefined}
         aria-label="Use left and right arrow keys to navigate between commands"
-        aria-labelledby={undefined}
         className=
             ms-FocusZone
             ms-CommandBar
@@ -63,14 +61,10 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-expanded={false}
               aria-haspopup={true}
               aria-label="New. Use left and right arrow keys to navigate"
-              aria-labelledby={undefined}
               aria-owns={null}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -123,6 +117,11 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                     right: 4px;
                     top: 4px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
@@ -138,7 +137,6 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                     color: #000000;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               name="New"
               onClick={[Function]}
               onKeyDown={[Function]}
@@ -253,11 +251,6 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <a
-              aria-describedby={undefined}
-              aria-disabled={undefined}
-              aria-label={undefined}
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -310,6 +303,11 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                     right: 4px;
                     top: 4px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
@@ -326,7 +324,6 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                   }
               data-automation-id="uploadButton"
               data-is-focusable={true}
-              disabled={undefined}
               href="https://dev.office.com/fabric"
               name="Upload"
               onClick={[Function]}
@@ -412,11 +409,6 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
-              aria-label={undefined}
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -469,6 +461,11 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                     right: 4px;
                     top: 4px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
@@ -484,7 +481,6 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                     color: #000000;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               name="Share"
               onClick={[Function]}
               onKeyDown={[Function]}
@@ -570,11 +566,6 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
-              aria-label={undefined}
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -627,6 +618,11 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                     right: 4px;
                     top: 4px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
@@ -642,7 +638,6 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                     color: #000000;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               name="Download"
               onClick={[Function]}
               onKeyDown={[Function]}
@@ -728,14 +723,9 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-expanded={false}
               aria-haspopup={true}
-              aria-label={undefined}
-              aria-labelledby={undefined}
               aria-owns={null}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -787,6 +777,11 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                     right: 4px;
                     top: 4px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
@@ -802,7 +797,6 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                     color: #000000;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               onClick={[Function]}
               onKeyDown={[Function]}
               onKeyPress={[Function]}
@@ -877,11 +871,6 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
-              aria-label={undefined}
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -934,6 +923,11 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                     right: 4px;
                     top: 4px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
@@ -949,7 +943,6 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                     color: #000000;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               name="Sort"
               onClick={[Function]}
               onKeyDown={[Function]}
@@ -1035,7 +1028,6 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <div
-              aria-describedby={undefined}
               className="ms-TooltipHost"
               onBlurCapture={[Function]}
               onFocusCapture={[Function]}
@@ -1043,11 +1035,6 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
               onMouseLeave={[Function]}
             >
               <button
-                aria-describedby={undefined}
-                aria-disabled={undefined}
-                aria-label={undefined}
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 className=
                     ms-Button
                     ms-Button--commandBar
@@ -1100,6 +1087,11 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                       right: 4px;
                       top: 4px;
                     }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
+                    }
                     @media screen and (-ms-high-contrast: active){& {
                       border: none;
                     }
@@ -1115,7 +1107,6 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                       color: #000000;
                     }
                 data-is-focusable={true}
-                disabled={undefined}
                 name="Grid view"
                 onClick={[Function]}
                 onKeyDown={[Function]}
@@ -1178,7 +1169,6 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <div
-              aria-describedby={undefined}
               className="ms-TooltipHost"
               onBlurCapture={[Function]}
               onFocusCapture={[Function]}
@@ -1186,11 +1176,6 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
               onMouseLeave={[Function]}
             >
               <button
-                aria-describedby={undefined}
-                aria-disabled={undefined}
-                aria-label={undefined}
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 className=
                     ms-Button
                     ms-Button--commandBar
@@ -1243,6 +1228,11 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                       right: 4px;
                       top: 4px;
                     }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
+                    }
                     @media screen and (-ms-high-contrast: active){& {
                       border: none;
                     }
@@ -1258,7 +1248,6 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                       color: #000000;
                     }
                 data-is-focusable={true}
-                disabled={undefined}
                 name="Info"
                 onClick={[Function]}
                 onKeyDown={[Function]}

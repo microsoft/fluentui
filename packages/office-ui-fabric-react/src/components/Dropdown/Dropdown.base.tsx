@@ -27,7 +27,13 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { ResponsiveMode, withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
-import { DropdownMenuItemType, IDropdownOption, IDropdownProps, IDropdownStyleProps, IDropdownStyles } from './Dropdown.types';
+import {
+  DropdownMenuItemType,
+  IDropdownOption,
+  IDropdownProps,
+  IDropdownStyleProps,
+  IDropdownStyles
+} from './Dropdown.types';
 import { DropdownSizePosCache } from './utilities/DropdownSizePosCache';
 
 const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>();
@@ -177,7 +183,9 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
         {
           role: 'listbox',
           ariaActiveDescendant:
-            isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0 ? this._id + '-list' + selectedIndices[0] : optionId,
+            isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0
+              ? this._id + '-list' + selectedIndices[0]
+              : optionId,
           childRole: 'option',
           ariaSetSize: this._sizePosCache.optionSetSize,
           ariaPosInSet: this._sizePosCache.positionInSet(selectedIndices[0]),
@@ -203,7 +211,13 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     return (
       <div className={this._classNames.root}>
         {label && (
-          <Label className={this._classNames.label} id={id + '-label'} htmlFor={id} required={required} styles={labelStyles}>
+          <Label
+            className={this._classNames.label}
+            id={id + '-label'}
+            htmlFor={id}
+            required={required}
+            styles={labelStyles}
+          >
             {label}
           </Label>
         )}
@@ -247,7 +261,9 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
                   ? onRenderTitle(selectedOptions, this._onRenderTitle)
                   : onRenderPlaceHolder(this.props, this._onRenderPlaceHolder)}
               </span>
-              <span className={this._classNames.caretDownWrapper}>{onRenderCaretDown(this.props, this._onRenderCaretDown)}</span>
+              <span className={this._classNames.caretDownWrapper}>
+                {onRenderCaretDown(this.props, this._onRenderCaretDown)}
+              </span>
             </div>
           )}
         </KeytipData>
@@ -330,7 +346,12 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
    * @param selectedIndex The selectedIndex Dropdown's state
    * @returns The next valid dropdown option's index
    */
-  private _moveIndex(event: React.FormEvent<HTMLDivElement>, stepValue: number, index: number, selectedIndex: number): number {
+  private _moveIndex(
+    event: React.FormEvent<HTMLDivElement>,
+    stepValue: number,
+    index: number,
+    selectedIndex: number
+  ): number {
     const { options } = this.props;
     // Return selectedIndex if nothing has changed or options is empty
     if (selectedIndex === index || options.length === 0) {
@@ -495,7 +516,8 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     const { onRenderOption = this._onRenderOption } = this.props;
     const { selectedIndices = [] } = this.state;
     const id = this._id;
-    const isItemSelected = item.index !== undefined && selectedIndices ? selectedIndices.indexOf(item.index) > -1 : false;
+    const isItemSelected =
+      item.index !== undefined && selectedIndices ? selectedIndices.indexOf(item.index) > -1 : false;
 
     // select the right classname based on the combination of selected/disabled
     const itemClassName =
@@ -656,7 +678,10 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   };
 
   // Get all selected indexes for multi-select mode
-  private _getSelectedIndexes(options: IDropdownOption[], selectedKey: string | number | string[] | number[] | undefined): number[] {
+  private _getSelectedIndexes(
+    options: IDropdownOption[],
+    selectedKey: string | number | string[] | number[] | undefined
+  ): number[] {
     if (selectedKey === undefined) {
       if (this.props.multiSelect) {
         return this._getAllSelectedIndices(options);
@@ -689,7 +714,9 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   }
 
   private _getAllSelectedIndices(options: IDropdownOption[]): number[] {
-    return options.map((option: IDropdownOption, index: number) => (option.selected ? index : -1)).filter(index => index !== -1);
+    return options
+      .map((option: IDropdownOption, index: number) => (option.selected ? index : -1))
+      .filter(index => index !== -1);
   }
 
   private _getSelectedIndex(options: IDropdownOption[], selectedKey: string | number | null): number {

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IDatePicker, IDatePickerProps, IDatePickerStrings, IDatePickerStyleProps, IDatePickerStyles } from './DatePicker.types';
-import { BaseComponent, KeyCodes, createRef, classNamesFunction } from '../../Utilities';
+import { BaseComponent, KeyCodes, createRef, classNamesFunction, getId } from '../../Utilities';
 import { Calendar, ICalendar, DayOfWeek } from '../../Calendar';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { Callout } from '../../Callout';
@@ -74,10 +74,13 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
   private _calendar = createRef<ICalendar>();
   private _datePickerDiv = createRef<HTMLDivElement>();
   private _textField = createRef<ITextField>();
+  private _preventFocusOpeningPicker: boolean;
 
   constructor(props: IDatePickerProps) {
     super(props);
     this.state = this._getDefaultState();
+
+    this._preventFocusOpeningPicker = false;
   }
 
   public componentWillReceiveProps(nextProps: IDatePickerProps): void {
@@ -119,9 +122,16 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
   }
 
   public componentDidUpdate(prevProps: IDatePickerProps, prevState: IDatePickerState) {
-    // If DatePicker's menu (Calendar) is closed, run onAfterMenuDismiss
-    if (this.props.onAfterMenuDismiss && prevState.isDatePickerShown && !this.state.isDatePickerShown) {
-      this.props.onAfterMenuDismiss();
+    if (prevState.isDatePickerShown && !this.state.isDatePickerShown) {
+      // In browsers like IE, textfield gets unfocused when datepicker is collapsed
+      if (this.props.allowTextInput) {
+        this._async.requestAnimationFrame(() => this.focus());
+      }
+
+      // If DatePicker's menu (Calendar) is closed, run onAfterMenuDismiss
+      if (this.props.onAfterMenuDismiss) {
+        this.props.onAfterMenuDismiss();
+      }
     }
   }
 
@@ -157,14 +167,15 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       isDatePickerShown
     });
 
+    const calloutId = getId('DatePicker-Callout');
+
     return (
       <div className={classNames.root}>
-        <div ref={this._datePickerDiv}>
+        <div ref={this._datePickerDiv} role="combobox" aria-expanded={isDatePickerShown} aria-haspopup="true" aria-owns={calloutId}>
           <TextField
             label={label}
             ariaLabel={ariaLabel}
-            aria-haspopup="true"
-            aria-expanded={isDatePickerShown}
+            aria-controls={isDatePickerShown ? calloutId : undefined}
             required={isRequired}
             disabled={disabled}
             onKeyDown={this._onTextFieldKeyDown}
@@ -183,12 +194,12 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
             readOnly={!allowTextInput}
             value={formattedDate}
             componentRef={this._textField}
-            role={'button'}
             underlined={underlined}
           />
         </div>
         {isDatePickerShown && (
           <Callout
+            id={calloutId}
             role="dialog"
             ariaLabel={pickerAriaLabel}
             isBeakVisible={false}
@@ -270,7 +281,11 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     }
 
     if (!this.props.allowTextInput) {
-      this._showDatePickerPopup();
+      if (!this._preventFocusOpeningPicker) {
+        this._showDatePickerPopup();
+      } else {
+        this._preventFocusOpeningPicker = false;
+      }
     }
   };
 
@@ -337,6 +352,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
 
   private _showDatePickerPopup(): void {
     if (!this.state.isDatePickerShown) {
+      this._preventFocusOpeningPicker = true;
       this.setState({
         isDatePickerShown: true,
         errorMessage: ''
@@ -358,6 +374,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
    * Callback for closing the calendar callout
    */
   private _calendarDismissed = (): void => {
+    this._preventFocusOpeningPicker = true;
     this._dismissDatePickerPopup();
     // don't need to focus the text box, if necessary the focusTrapZone will do it
   };

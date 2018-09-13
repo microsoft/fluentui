@@ -25,6 +25,12 @@ describe('SpinButton', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders SpinButton correctly with values that the user passes in', () => {
+    const component = renderer.create(<SpinButton label="label" value={'0'} ariaValueNow={0} ariaValueText={'0 pt'} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('should render a spinner with the default value on the input element', () => {
     const exampleLabelValue = 'SpinButton';
     const exampleMinValue = 2;
@@ -32,12 +38,7 @@ describe('SpinButton', () => {
     const exampleDefaultValue = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton
-        label={exampleLabelValue}
-        min={exampleMinValue}
-        max={exampleMaxValue}
-        defaultValue={exampleDefaultValue}
-      />
+      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} />
     );
 
     // Assert on the input element.
@@ -62,12 +63,7 @@ describe('SpinButton', () => {
     const exampleDefaultValue = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton
-        label={exampleLabelValue}
-        min={exampleMinValue}
-        max={exampleMaxValue}
-        defaultValue={exampleDefaultValue}
-      />
+      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} />
     );
 
     // Assert on the input element.
@@ -101,12 +97,7 @@ describe('SpinButton', () => {
     const exampleDefaultValue = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton
-        label={exampleLabelValue}
-        min={exampleMinValue}
-        max={exampleMaxValue}
-        defaultValue={exampleDefaultValue}
-      />
+      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} />
     );
 
     // Assert on the input element.
@@ -140,12 +131,7 @@ describe('SpinButton', () => {
     const exampleDefaultValue = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton
-        label={exampleLabelValue}
-        min={exampleMinValue}
-        max={exampleMaxValue}
-        defaultValue={exampleDefaultValue}
-      />
+      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} />
     );
 
     // Assert on the input element.
@@ -172,12 +158,7 @@ describe('SpinButton', () => {
     const exampleDefaultValue = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton
-        label={exampleLabelValue}
-        min={exampleMinValue}
-        max={exampleMaxValue}
-        defaultValue={exampleDefaultValue}
-      />
+      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} />
     );
 
     // Assert on the input element.
@@ -204,13 +185,7 @@ describe('SpinButton', () => {
     const exampleDefaultValue = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton
-        label={exampleLabelValue}
-        min={exampleMinValue}
-        max={exampleMaxValue}
-        defaultValue={exampleDefaultValue}
-        step={2}
-      />
+      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} step={2} />
     );
 
     // Assert on the input element.
@@ -237,13 +212,7 @@ describe('SpinButton', () => {
     const exampleDefaultValue = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton
-        label={exampleLabelValue}
-        min={exampleMinValue}
-        max={exampleMaxValue}
-        defaultValue={exampleDefaultValue}
-        step={2}
-      />
+      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} step={2} />
     );
 
     // Assert on the input element.
@@ -271,12 +240,7 @@ describe('SpinButton', () => {
     const exampleNewValue = '21';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton
-        label={exampleLabelValue}
-        min={exampleMinValue}
-        max={exampleMaxValue}
-        defaultValue={exampleDefaultValue}
-      />
+      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} />
     );
 
     // Assert on the input element.
@@ -298,12 +262,7 @@ describe('SpinButton', () => {
     const exampleNewValue = 'garbage';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton
-        label={exampleLabelValue}
-        min={exampleMinValue}
-        max={exampleMaxValue}
-        defaultValue={exampleDefaultValue}
-      />
+      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} />
     );
 
     // Assert on the input element.
@@ -324,12 +283,7 @@ describe('SpinButton', () => {
     const exampleDefaultValue = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton
-        label={exampleLabelValue}
-        min={exampleMinValue}
-        max={exampleMaxValue}
-        defaultValue={exampleDefaultValue}
-      />
+      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} />
     );
 
     // Assert on the input element.
@@ -351,12 +305,7 @@ describe('SpinButton', () => {
     const exampleNewValue = '23';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton
-        label={exampleLabelValue}
-        min={exampleMinValue}
-        max={exampleMaxValue}
-        defaultValue={exampleDefaultValue}
-      />
+      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} />
     );
 
     // Assert on the input element.
@@ -378,12 +327,7 @@ describe('SpinButton', () => {
     const exampleNewValue = '0';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton
-        label={exampleLabelValue}
-        min={exampleMinValue}
-        max={exampleMaxValue}
-        defaultValue={exampleDefaultValue}
-      />
+      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} />
     );
 
     // Assert on the input element.
@@ -414,9 +358,7 @@ describe('SpinButton', () => {
         // tslint:disable-next-line:jsx-no-lambda
         onValidate={(newValue: string): string => {
           const numberValue: number = +newValue;
-          return !isNaN(numberValue) && numberValue >= exampleMinValue && numberValue <= exampleMaxValue
-            ? newValue
-            : errorMessage;
+          return !isNaN(numberValue) && numberValue >= exampleMinValue && numberValue <= exampleMaxValue ? newValue : errorMessage;
         }}
       />
     );
@@ -449,9 +391,7 @@ describe('SpinButton', () => {
         // tslint:disable-next-line:jsx-no-lambda
         onValidate={(newValue: string): string => {
           const numberValue: number = Number(newValue);
-          return !isNaN(numberValue) && numberValue >= exampleMinValue && numberValue <= exampleMaxValue
-            ? newValue
-            : errorMessage;
+          return !isNaN(numberValue) && numberValue >= exampleMinValue && numberValue <= exampleMaxValue ? newValue : errorMessage;
         }}
       />
     );
@@ -518,9 +458,7 @@ describe('SpinButton', () => {
 
     // Assert on the input element.
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
-    const downButtonDOM: HTMLButtonElement = renderedDOM.getElementsByClassName(
-      'ms-DownButton'
-    )[0] as HTMLButtonElement;
+    const downButtonDOM: HTMLButtonElement = renderedDOM.getElementsByClassName('ms-DownButton')[0] as HTMLButtonElement;
     ReactTestUtils.Simulate.mouseDown(downButtonDOM);
     ReactTestUtils.Simulate.mouseUp(downButtonDOM);
 
@@ -587,12 +525,7 @@ describe('SpinButton', () => {
     }
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton
-        label={exampleLabelValue}
-        min={exampleMinValue}
-        max={exampleMaxValue}
-        defaultValue={exampleDefaultValue}
-      />
+      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} />
     );
 
     // Assert on the input element.

@@ -1,36 +1,55 @@
 import { IMultiCountStyles, IMultiCountStyleProps } from './MultiCount.types';
 
 export const getStyles = (props: IMultiCountStyleProps): IMultiCountStyles => {
-  const { annotationTextColor, annotationTextFontSize, bodyTextFontSize, bodyTextColor, color, currentText, hoveredText, href } = props;
+  const {
+    annotationTextColor,
+    annotationTextFontSize,
+    bodyTextFontSize,
+    bodyTextColor,
+    color,
+    currentText,
+    hoveredText,
+    href,
+    hideIcon
+  } = props;
+  const bodyTextSize = bodyTextFontSize ? bodyTextFontSize : '28px';
   return {
     root: {
       display: 'flex',
-      flexDirection: 'row',
-      flex: 1,
+      width: '100%',
+      flexWrap: 'wrap',
       alignItems: 'baseline',
+      overflow: 'hidden',
       opacity: hoveredText === '' ? '' : hoveredText === currentText ? '' : '0.1',
       cursor: href ? 'pointer' : 'default',
-      lineHeight: 'normal'
+      fontSize: bodyTextSize,
+      height: '1.286em'
     },
     bodyText: {
+      flex: '1 1 50%',
+      overflow: 'hidden',
+      whiteSpace: 'nowrap',
+      textOverflow: 'ellipsis',
+      fontSize: bodyTextSize,
       fontFamily: 'Segoe UI',
       fontWeight: 600,
-      overflow: 'hidden',
-      textOverflow: 'ellipsis',
-      whiteSpace: 'nowrap',
-      fontSize: bodyTextFontSize ? bodyTextFontSize : '28px',
-      flex: 1,
-      color: bodyTextColor ? bodyTextColor : '#000000'
+      lineHeight: '1.286em',
+      marginLeft: '8px'
     },
     data: {
+      flex: '0 0 auto',
+      fontSize: bodyTextSize,
+      lineHeight: '1.286em',
       fontFamily: 'Segoe UI',
       fontWeight: 'bold',
-      color: color,
-      marginRight: '8px'
+      color: bodyTextColor ? bodyTextColor : color
     },
     annotation: {
-      display: 'inline-flex',
-      flex: 1
+      flex: '0 0 auto',
+      fontFamily: 'Segoe UI',
+      marginLeft: '16px',
+      width: '12px',
+      height: '12px'
     },
     annotationText: {
       marginLeft: '16px',
@@ -38,8 +57,8 @@ export const getStyles = (props: IMultiCountStyleProps): IMultiCountStyles => {
       fontSize: annotationTextFontSize ? annotationTextFontSize : '12px'
     },
     icon: {
-      width: '12px',
-      height: '12px'
+      flex: '0 0 auto',
+      marginLeft: '16px'
     },
     hoverCardText: {
       display: 'flex',
@@ -69,6 +88,10 @@ export const getStyles = (props: IMultiCountStyleProps): IMultiCountStyles => {
       marginRight: '16px',
       fontFamily: 'Segoe UI'
     },
+    hoverCardIcon: {
+      width: '12px',
+      height: '12px'
+    },
     customMessage: {
       fontSize: '10px',
       lineHeight: '12px',
@@ -78,6 +101,9 @@ export const getStyles = (props: IMultiCountStyleProps): IMultiCountStyles => {
       marginLeft: '16px',
       marginBottom: '8px',
       opacity: '0.6'
+    },
+    changeIcon: {
+      marginLeft: hideIcon ? '' : '16px'
     }
   };
 };

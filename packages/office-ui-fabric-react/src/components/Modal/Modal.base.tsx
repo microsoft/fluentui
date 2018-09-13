@@ -123,7 +123,11 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
             onDismiss={onDismiss}
           >
             <div className={classNames.root}>
-              <Overlay isDarkThemed={isDarkOverlay} onClick={isBlocking ? undefined : (onDismiss as any)} styles={getOverlayStyles} />
+              <Overlay
+                isDarkThemed={isDarkOverlay}
+                onClick={isBlocking ? undefined : (onDismiss as any)}
+                styles={getOverlayStyles}
+              />
               <FocusTrapZone
                 componentRef={this._focusTrapZone}
                 className={classNames.main}

@@ -36,7 +36,8 @@ const PanelPreventDefaultExampleCode = require('!raw-loader!office-ui-fabric-rea
 export const PanelPageProps: IDocPageProps = {
   title: 'Panel',
   componentName: 'Panel',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Panel',
+  componentUrl:
+    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Panel',
   componentStatus: PanelStatus,
   examples: [
     {

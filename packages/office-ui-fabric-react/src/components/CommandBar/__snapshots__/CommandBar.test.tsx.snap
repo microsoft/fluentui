@@ -20,9 +20,6 @@ exports[`CommandBar renders commands correctly 1`] = `
     }
   >
     <div
-      aria-describedby={undefined}
-      aria-label={undefined}
-      aria-labelledby={undefined}
       className=
           ms-FocusZone
           ms-CommandBar
@@ -64,11 +61,6 @@ exports[`CommandBar renders commands correctly 1`] = `
               }
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
-            aria-label={undefined}
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             className=
                 ms-Button
                 ms-Button--commandBar
@@ -121,6 +113,11 @@ exports[`CommandBar renders commands correctly 1`] = `
                   right: 4px;
                   top: 4px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
                 }
@@ -136,7 +133,6 @@ exports[`CommandBar renders commands correctly 1`] = `
                   color: #000000;
                 }
             data-is-focusable={true}
-            disabled={undefined}
             onClick={[Function]}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
@@ -192,11 +188,6 @@ exports[`CommandBar renders commands correctly 1`] = `
               }
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
-            aria-label={undefined}
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             className=
                 ms-Button
                 ms-Button--commandBar
@@ -249,6 +240,11 @@ exports[`CommandBar renders commands correctly 1`] = `
                   right: 4px;
                   top: 4px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
                 }
@@ -264,7 +260,6 @@ exports[`CommandBar renders commands correctly 1`] = `
                   color: #000000;
                 }
             data-is-focusable={true}
-            disabled={undefined}
             onClick={[Function]}
             onKeyDown={[Function]}
             onKeyPress={[Function]}

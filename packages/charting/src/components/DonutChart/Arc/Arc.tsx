@@ -42,16 +42,18 @@ export class Arc extends React.Component<IArcProps, { isCalloutVisible: boolean 
           id={id}
           d={arc(this.props.data)}
           className={classNames.root}
-          onMouseOver={this._hoverOn.bind(this, this.props.data!.data, id)}
+          onMouseOver={this._hoverOn.bind(this, this.props.data!.data)}
+          onMouseMove={this._hoverOn.bind(this, this.props.data!.data)}
           onMouseLeave={this._hoverOff}
           opacity={opacity}
         />
       </g>
     );
   }
-  private _hoverOn(data: IChartDataPoint, id: string): void {
+  private _hoverOn(data: IChartDataPoint, mouseEvent: React.MouseEvent<SVGPathElement>): void {
+    mouseEvent.persist();
     if (this.props.activeArc === this.props.data!.data.legend || this.props.activeArc === '') {
-      this.props.hoverOnCallback!(data);
+      this.props.hoverOnCallback!(data, mouseEvent);
     }
   }
   private _hoverOff(): void {

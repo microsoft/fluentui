@@ -1,7 +1,8 @@
 import { IStyle } from './IStyle';
 import { IStyleFunctionOrObject, IStyleFunction } from './IStyleFunction';
 
-export type Diff<T extends keyof any, U extends keyof any> = ({ [P in T]: P } & { [P in U]: never } & { [x: string]: never })[T];
+export type Diff<T extends keyof any, U extends keyof any> = ({ [P in T]: P } &
+  { [P in U]: never } & { [x: string]: never })[T];
 
 export type Omit<U, K extends keyof U> = Pick<U, Diff<keyof U, K>>;
 
@@ -23,7 +24,9 @@ export type __MapToFunctionType<T> = /*[T] extends [IStyleSet<any>] ? (...args: 
  * It may optionally contain style functions for sub components in the special `subComponentStyles`
  * property.
  */
-export type IStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = { [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: IStyle } & {
+export type IStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
+  [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: IStyle
+} & {
   subComponentStyles?: { [P in keyof TStyleSet['subComponentStyles']]: IStyleFunctionOrObject<any, IStyleSet<any>> };
 };
 
@@ -40,6 +43,10 @@ export type IConcatenatedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
  * A processed style set is one which the set of styles associated with each area has been converted
  * into a class name. Additionally, all subComponentStyles are style functions.
  */
-export type IProcessedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = { [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: string } & {
-  subComponentStyles: { [P in keyof TStyleSet['subComponentStyles']]: __MapToFunctionType<TStyleSet['subComponentStyles'][P]> };
+export type IProcessedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
+  [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: string
+} & {
+  subComponentStyles: {
+    [P in keyof TStyleSet['subComponentStyles']]: __MapToFunctionType<TStyleSet['subComponentStyles'][P]>
+  };
 };

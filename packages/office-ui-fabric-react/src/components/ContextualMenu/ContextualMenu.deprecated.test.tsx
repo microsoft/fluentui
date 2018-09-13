@@ -75,7 +75,9 @@ describe('ContextualMenu', () => {
       };
     };
 
-    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} getMenuClassNames={getClassNames} />);
+    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(
+      <ContextualMenu items={items} getMenuClassNames={getClassNames} />
+    );
 
     const container = document.querySelector('.containerFoo') as HTMLElement;
     const rootEl = document.querySelector('.rootFoo') as HTMLElement;
@@ -249,7 +251,9 @@ describe('ContextualMenu', () => {
       spyCalled = true;
     };
 
-    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} isSubMenu={true} onDismiss={onDismissSpy} />);
+    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(
+      <ContextualMenu items={items} isSubMenu={true} onDismiss={onDismissSpy} />
+    );
 
     const menuList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
     ReactTestUtils.Simulate.keyDown(menuList, { which: KeyCodes.left });
@@ -875,7 +879,9 @@ describe('ContextualMenu', () => {
     ];
     const customRenderer = jest.fn(() => null);
 
-    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} contextualMenuItemAs={customRenderer} />);
+    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(
+      <ContextualMenu items={items} contextualMenuItemAs={customRenderer} />
+    );
 
     const menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
     ReactTestUtils.Simulate.click(menuItem);
@@ -919,7 +925,11 @@ describe('ContextualMenu', () => {
           key: 'Item 3',
           sectionProps: {
             key: 'Section1',
-            items: [{ name: 'Item 1', key: 'Item 1' }, { name: 'Item 2', key: 'Item 2', canCheck: true }, { name: 'Item 3', key: 'Item 3' }]
+            items: [
+              { name: 'Item 1', key: 'Item 1' },
+              { name: 'Item 2', key: 'Item 2', canCheck: true },
+              { name: 'Item 3', key: 'Item 3' }
+            ]
           }
         }
       ];

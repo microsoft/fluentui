@@ -1,6 +1,13 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Fri, 07 Sep 2018 22:04:50 GMT and should not be manually modified.
+This log was last generated on Mon, 10 Sep 2018 10:24:57 GMT and should not be manually modified.
+
+## 0.5.1
+Mon, 10 Sep 2018 10:24:57 GMT
+
+### Patches
+
+- Remove Object.assign usage to fix IE11 issues.
 
 ## 0.5.0
 Fri, 07 Sep 2018 22:04:50 GMT

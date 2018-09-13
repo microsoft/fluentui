@@ -16,8 +16,8 @@ export class Section extends React.PureComponent<ISectionProps, ISectionState> {
 
   public render(): JSX.Element {
     const getClassNames = classNamesFunction<ISectionStyleProps, ISectionStyles>();
-    const { disabled, rowHeight } = this.props;
-    const classNames = getClassNames(getStyles!, { disabled, rowHeight });
+    const { disabled, rowHeight, isEditMode } = this.props;
+    const classNames = getClassNames(getStyles!, { disabled, rowHeight, isEditMode });
 
     if (this.props.isRenaming) {
       return (

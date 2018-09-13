@@ -45,11 +45,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
           className="ms-CustomRenderExample-labelIconArea"
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
             aria-label="Info"
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             className=
                 ms-Button
                 ms-Button--icon
@@ -100,6 +96,11 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   color: #004578;
                 }
@@ -111,7 +112,6 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                   color: #0078d4;
                 }
             data-is-focusable={true}
-            disabled={undefined}
             onClick={[Function]}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
@@ -194,9 +194,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
             }
       >
         <input
-          aria-describedby={undefined}
           aria-invalid={false}
-          aria-label={undefined}
           className=
               ms-TextField-field
               {
@@ -240,7 +238,6 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
-          readOnly={undefined}
           type="text"
           value=""
         />

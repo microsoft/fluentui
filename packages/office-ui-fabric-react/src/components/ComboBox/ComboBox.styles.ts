@@ -1,4 +1,12 @@
-import { FontSizes, FontWeights, IRawStyle, ITheme, concatStyleSets, getFocusStyle, HighContrastSelector } from '../../Styling';
+import {
+  FontSizes,
+  FontWeights,
+  IRawStyle,
+  ITheme,
+  concatStyleSets,
+  getFocusStyle,
+  HighContrastSelector
+} from '../../Styling';
 import { IComboBoxOptionStyles, IComboBoxStyles } from './ComboBox.types';
 
 import { IButtonStyles } from '../../Button';

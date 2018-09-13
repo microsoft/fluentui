@@ -1,7 +1,13 @@
 import * as React from 'react';
 import { Layout, Layouts } from 'react-grid-layout';
 import { EditSections } from '../EditSections';
-import { CardSize, DashboardGridBreakpointLayouts, ISection, IDashboardCardLayout, CardSizeToWidthHeight } from '@uifabric/dashboard';
+import {
+  CardSize,
+  DashboardGridBreakpointLayouts,
+  ISection,
+  IDashboardCardLayout,
+  CardSizeToWidthHeight
+} from '@uifabric/dashboard';
 
 export interface IEditSectionsExampleState {
   saveButtonDisabled: boolean;

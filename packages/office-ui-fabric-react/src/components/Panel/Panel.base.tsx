@@ -150,7 +150,13 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
 
     let overlay;
     if (isBlocking && isOpen) {
-      overlay = <Overlay className={_classNames.overlay} isDarkThemed={false} onClick={isLightDismiss ? onLightDismissClick : undefined} />;
+      overlay = (
+        <Overlay
+          className={_classNames.overlay}
+          isDarkThemed={false}
+          onClick={isLightDismiss ? onLightDismissClick : undefined}
+        />
+      );
     }
 
     const header = onRenderHeader(this.props, this._onRenderHeader, headerTextId);
@@ -173,7 +179,9 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
               className={_classNames.main}
               style={customWidthStyles}
               elementToFocusOnDismiss={elementToFocusOnDismiss}
-              isClickableOutsideFocusTrap={focusTrapZoneProps && !focusTrapZoneProps.isClickableOutsideFocusTrap ? false : true}
+              isClickableOutsideFocusTrap={
+                focusTrapZoneProps && !focusTrapZoneProps.isClickableOutsideFocusTrap ? false : true
+              }
             >
               <div ref={this._allowScrollOnPanel} className={_classNames.scrollableContent}>
                 <div className={_classNames.commands} data-is-visible={true}>

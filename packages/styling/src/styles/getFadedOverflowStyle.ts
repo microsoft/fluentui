@@ -67,7 +67,8 @@ export function getFadedOverflowStyle(
   height: string | number = getDefaultValue('height', direction)
 ): IRawStyle {
   // Get the color value string from the theme semanticColors or palette.
-  const colorValue: string = theme.semanticColors[color as keyof ISemanticColors] || theme.palette[color as keyof IPalette];
+  const colorValue: string =
+    theme.semanticColors[color as keyof ISemanticColors] || theme.palette[color as keyof IPalette];
   // Get the red, green, blue values of the colorValue.
   const rgbColor: IRGB = color2rgb(colorValue);
   // Apply opacity 0 to serve as a start color of the gradient.

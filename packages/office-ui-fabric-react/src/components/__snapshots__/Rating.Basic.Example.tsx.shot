@@ -23,8 +23,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
     id="Rating0"
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className=
           ms-FocusZone
           ms-Rating-focuszone
@@ -836,8 +834,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
     id="Rating3"
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className=
           ms-FocusZone
           ms-Rating-focuszone
@@ -1649,8 +1645,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
     id="Rating6"
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className=
           ms-FocusZone
           ms-Rating-focuszone
@@ -3227,8 +3221,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
     id="Rating9"
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className=
           ms-FocusZone
           ms-Rating-focuszone
@@ -3790,8 +3782,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
     id="Rating12"
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className=
           ms-FocusZone
           ms-Rating-focuszone
@@ -4513,8 +4503,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
     id="Rating15"
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className=
           ms-FocusZone
           ms-Rating-focuszone

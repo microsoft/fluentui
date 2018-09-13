@@ -169,9 +169,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
                 autoComplete="off"
                 role="spinbutton"
                 aria-labelledby={label && this._labelId}
-                aria-valuenow={
-                  ariaValueNow !== undefined && !isNaN(ariaValueNow) ? ariaValueNow : !isNaN(Number(value)) ? Number(value) : undefined
-                }
+                aria-valuenow={!isNaN(Number(ariaValueNow)) ? ariaValueNow : !isNaN(Number(value)) ? Number(value) : undefined}
                 aria-valuetext={ariaValueText ? ariaValueText : isNaN(Number(value)) ? value : undefined}
                 aria-valuemin={min}
                 aria-valuemax={max}

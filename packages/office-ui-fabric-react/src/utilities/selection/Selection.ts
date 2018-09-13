@@ -170,6 +170,7 @@ export class Selection implements ISelection {
     this._selectedItems = null;
 
     if (hasSelectionChanged) {
+      this._updateCount();
       this._change();
     }
 

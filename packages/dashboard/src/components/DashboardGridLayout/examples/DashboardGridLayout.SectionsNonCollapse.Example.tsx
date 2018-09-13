@@ -250,7 +250,11 @@ export class DashboardGridLayoutSectionsNoncollapsibleExample extends React.Comp
     ];
   }
 
-  private _onSectionChange = (currentLayout: Layout[], allLayouts: Layouts, sectionMapping: DashboardSectionMapping): void => {
+  private _onSectionChange = (
+    currentLayout: Layout[],
+    allLayouts: Layouts,
+    sectionMapping: DashboardSectionMapping
+  ): void => {
     console.log('nonCollapse-currentLayout', currentLayout);
     console.log('nonCollapse-sectionMapping', sectionMapping);
     this.setState({

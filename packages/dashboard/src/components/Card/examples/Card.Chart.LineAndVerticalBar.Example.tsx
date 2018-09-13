@@ -1,6 +1,15 @@
 import * as React from 'react';
 import { IChartProps as IChartingProps, ILineChartPoints, IDataPoint, ILegendDataItem } from '@uifabric/charting';
-import { Card, CardContentType, CardSize, ChartType, ICardProps, ICardContentDetails, IChartProps, Priority } from '../../../index';
+import {
+  Card,
+  CardContentType,
+  CardSize,
+  ChartType,
+  ICardProps,
+  ICardContentDetails,
+  IChartProps,
+  Priority
+} from '../../../index';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export class LineAndVerticalBarChartExample extends React.Component<{}, {}> {
@@ -101,6 +110,13 @@ export class LineAndVerticalBarChartExample extends React.Component<{}, {}> {
       headerText: 'Header Text '
     };
 
-    return <Card cardFrameContent={cardFrameContent} header={header} cardContentList={contentAreaList} cardSize={CardSize.mediumWide} />;
+    return (
+      <Card
+        cardFrameContent={cardFrameContent}
+        header={header}
+        cardContentList={contentAreaList}
+        cardSize={CardSize.mediumWide}
+      />
+    );
   }
 }

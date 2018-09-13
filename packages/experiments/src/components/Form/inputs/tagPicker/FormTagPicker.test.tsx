@@ -31,7 +31,11 @@ describe('FormTagPicker Unit Tests', () => {
       const errorFunction = () => {
         ReactTestUtils.renderIntoDocument(
           <Form onSubmit={undefined}>
-            <FormTagPicker inputKey={null as any} value={undefined} tagPickerProps={{ onResolveSuggestions: () => [] }} />
+            <FormTagPicker
+              inputKey={null as any}
+              value={undefined}
+              tagPickerProps={{ onResolveSuggestions: () => [] }}
+            />
           </Form>
         );
       };
@@ -70,12 +74,19 @@ describe('FormTagPicker Unit Tests', () => {
             result = value;
           }}
         >
-          <FormTagPicker inputKey="tag" tagPickerProps={{ onResolveSuggestions: () => [option1, option2] }} value={[option2]} />
+          <FormTagPicker
+            inputKey="tag"
+            tagPickerProps={{ onResolveSuggestions: () => [option1, option2] }}
+            value={[option2]}
+          />
         </Form>
       ) as Form;
 
       renderedInput = ReactTestUtils.findRenderedDOMComponentWithClass(renderedForm, 'ms-BasePicker') as HTMLElement;
-      const form: HTMLFormElement = ReactTestUtils.findRenderedDOMComponentWithTag(renderedForm, 'form') as HTMLFormElement;
+      const form: HTMLFormElement = ReactTestUtils.findRenderedDOMComponentWithTag(
+        renderedForm,
+        'form'
+      ) as HTMLFormElement;
       ReactTestUtils.Simulate.submit(form);
 
       expect(result['tag']).toEqual([option2]);
@@ -105,7 +116,11 @@ describe('FormTagPicker Unit Tests', () => {
       const updateStub: sinon.SinonStub = sinon.stub();
       const renderedForm = ReactTestUtils.renderIntoDocument(
         <Form onUpdated={updateStub}>
-          <ExtendsTagPicker inputKey="tag" value={[option1]} tagPickerProps={{ onResolveSuggestions: () => [option1, option2] }} />
+          <ExtendsTagPicker
+            inputKey="tag"
+            value={[option1]}
+            tagPickerProps={{ onResolveSuggestions: () => [option1, option2] }}
+          />
         </Form>
       ) as Form;
 
