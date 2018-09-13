@@ -22,13 +22,8 @@ class NavGroup extends React.Component<INavGroupProps, {}> {
     const { groupIndex, groupName, links } = this.props;
 
     return (
-      <ul role="list" key={this.props.groupIndex}>
-        {groupName ? (
-          <>
-            <li className={classNames.navGroupDivider} />
-            {groupName ? <li className={classNames.navGroupTitle}>{groupName}</li> : null}
-          </>
-        ) : null}
+      <ul role="list" key={groupIndex}>
+        {this._renderGroupName(groupName, groupIndex)}
         {this._renderLinks(links, 0, groupIndex)}
       </ul>
     );
@@ -83,9 +78,11 @@ class NavGroup extends React.Component<INavGroupProps, {}> {
     }
 
     let ariaProps = {};
+    const hasChildren = !!link.links && link.links.length > 0;
+    const { onShowNestedLink, dataHint, isNavCollapsed } = this.props;
 
     let secondaryIconName = undefined;
-    if (link.links && link.links.length > 0 && nestingLevel === 0) {
+    if (hasChildren && nestingLevel === 0) {
       // for the first level link, show chevron icon if there is a children
       secondaryIconName = link.isExpanded ? 'ChevronUp' : 'ChevronDown';
 
@@ -97,13 +94,18 @@ class NavGroup extends React.Component<INavGroupProps, {}> {
       secondaryIconName = 'OpenInNewWindow';
     }
 
-    const hasChildren = !!link.links && link.links.length > 0;
-
     let isSelected = undefined;
     if (hasChildren) {
-      if (link.isExpanded) {
+      // Nav is expanded and the nested links are exposed, L1 has no selected indicator
+      if (link.isExpanded && !isNavCollapsed) {
         isSelected = false;
-      } else if (!link.isExpanded && this.isChildLinkSelected(link)) {
+        // L1 has indicator when...
+        // Nav is collapsed, nested link menu is expanded, and a nested link is selected or
+        // Nav is expanded, nested link menu is collapsed
+      } else if (
+        (link.isExpanded && isNavCollapsed && this.isChildLinkSelected(link)) ||
+        (!link.isExpanded && this.isChildLinkSelected(link))
+      ) {
         isSelected = true;
       }
     } else {
@@ -112,13 +114,13 @@ class NavGroup extends React.Component<INavGroupProps, {}> {
 
     // show nav icon for the first level only
     const primaryIconName = nestingLevel === 0 ? link.icon : undefined;
-    const { onShowNestedLink, dataHint } = this.props;
     const onClickHandler = link.isShowMoreLink && onShowNestedLink ? onShowNestedLink : this._onLinkClicked.bind(this, link);
 
     return (
       <NavLink
         id={keyIndex}
         href={link.url}
+        name={link.name}
         target={link.target}
         onClick={onClickHandler}
         dataHint={dataHint}
@@ -130,6 +132,7 @@ class NavGroup extends React.Component<INavGroupProps, {}> {
         role="menu"
         primaryIconName={primaryIconName}
         secondaryIconName={secondaryIconName}
+        isNavCollapsed={isNavCollapsed}
       />
     );
   }
@@ -141,14 +144,16 @@ class NavGroup extends React.Component<INavGroupProps, {}> {
 
     // Build a unique key and keep it from collapsing by stringifying it, ex: 001 should be 001, not 1
     const keyIndex = groupIndex.toString() + nestingLevel.toString() + linkIndex.toString();
+    const { isNavCollapsed } = this.props;
 
     return (
       <li role="listitem" key={keyIndex} title={link.name}>
-        {this._renderCompositeLink(link, keyIndex, nestingLevel)} */}
+        {this._renderCompositeLink(link, keyIndex, nestingLevel)}
         {// show child links
         // 1. only for the first level and
-        // 2. if the link is expanded
-        nestingLevel === 0 && link.isExpanded ? (
+        // 2. only if nav pane is expanded and
+        // 2. only the link is expanded
+        nestingLevel === 0 && link.isExpanded && !isNavCollapsed ? (
           <ul role="list" key={nestingLevel.toString() + keyIndex} className={AnimationClassNames.slideDownIn20}>
             {this._renderLinks(link.links as INavLink[], ++nestingLevel, linkIndex)}
           </ul>
@@ -161,26 +166,34 @@ class NavGroup extends React.Component<INavGroupProps, {}> {
     if (!links || links.length === 0) {
       return null;
     }
+
     const { enableCustomization, showMore } = this.props;
 
     return (
       <>
         {links.map((link: INavLink, linkIndex: number) => {
           if (enableCustomization && link.isHidden && !showMore) {
-            // atleast one link is hidden
-            this.setState({
-              hasHiddenLink: true
-            });
-
-            // "Show more" overrides isHidden property
-            return null;
-          } else if (!this.props.hasHiddenLink && !showMore) {
-            // there is no hidden link, hide "Show more" link
             return null;
           } else {
             return this._renderLink(link, linkIndex, nestingLevel, groupIndex);
           }
         })}
+      </>
+    );
+  }
+
+  private _renderGroupName(groupName: string | undefined, groupIndex: number): React.ReactElement<{}> | null {
+    // The default group heading will not show even if it is supplied
+    // because it is redundant
+    const { isNavCollapsed } = this.props;
+    if (!groupName || groupIndex === 0) {
+      return null;
+    }
+
+    return (
+      <>
+        <li className={classNames.navGroupDivider} />
+        {!isNavCollapsed ? <li className={classNames.navGroupTitle}>{groupName}</li> : null}
       </>
     );
   }

@@ -10,7 +10,6 @@ export class NavExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     const navLinkGroups: ICustomNavLinkGroup[] = [
       {
-        name: 'default group',
         links: [
           {
             name: 'Home',
@@ -72,11 +71,11 @@ export class NavExample extends React.Component<{}, {}> {
             isExpanded: false,
             icon: 'Home',
             links: [
-              { name: 'Security Center', url: 'http://msn.com' },
-              { name: 'Device Management', url: 'http://msn.com' },
-              { name: 'Azure Active Directory', url: 'http://msn.com' },
-              { name: 'Exchange', url: 'http://msn.com' },
-              { name: 'SharePoint', url: 'http://msn.com' }
+              { name: 'Security Center', url: 'http://msn.com', target: '_blank' },
+              { name: 'Device Management', url: 'http://msn.com', target: '_blank' },
+              { name: 'Azure Active Directory', url: 'http://msn.com', target: '_blank' },
+              { name: 'Exchange', url: 'http://msn.com', target: '_blank' },
+              { name: 'SharePoint', url: 'http://msn.com', target: '_blank' }
             ]
           }
         ],
@@ -89,6 +88,7 @@ export class NavExample extends React.Component<{}, {}> {
         groups={navLinkGroups}
         dataHint="PrimaryNavigation"
         enableCustomization={true}
+        showMore={true}
         editLink={'Edit navigation'}
         showMoreLink={'Show more'}
         showLessLink={'Lhow less'}

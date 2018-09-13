@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { INavStyles, INavLinkProps, INavStyleProps, INavLinkStates } from './Nav.types';
 import { getStyles } from './Nav.styles';
-import { IStyle, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 /**
@@ -67,6 +67,9 @@ class NavigationLink extends React.Component<INavLinkProps, INavLinkStates> {
   }
 
   private _generateLinkContent(): React.ReactElement<{}> | null {
+    if (this.props.isNavCollapsed) {
+      return null;
+    }
     return (
       <div
         className={
@@ -75,23 +78,23 @@ class NavigationLink extends React.Component<INavLinkProps, INavLinkStates> {
             : this.classNames.navItemText
         }
       >
-        {this.props.content}
+        {this.props.name}
       </div>
     );
   }
 
   private _generateSecondaryIcon(): React.ReactElement<{}> | null {
-    const fixedIconWidth: IStyle = {
-      display: this.props.secondaryIconName === 'OpenInNewWindow' ? 'none' : 'flex'
-    };
+    if (this.props.isNavCollapsed) {
+      return null;
+    }
     return (
       <div className={this.classNames.iconWrapper}>
         <Icon
           iconName={this.props.secondaryIconName}
           className={
             !!this.props.level && this.props.level > 0
-              ? mergeStyles(this.classNames.navItemIcon, fixedIconWidth, this.classNames.navItemSmall)
-              : mergeStyles(this.classNames.navItemIcon, fixedIconWidth)
+              ? mergeStyles(this.classNames.navItemIcon, this.classNames.navItemSmall)
+              : this.classNames.navItemIcon
           }
         />
       </div>

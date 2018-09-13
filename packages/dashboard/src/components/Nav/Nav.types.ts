@@ -105,6 +105,7 @@ export interface INavGroupProps {
   showMore?: boolean;
   hasHiddenLink: boolean;
   dataHint?: string;
+  isNavCollapsed?: boolean;
   onShowNestedLink?(ev: React.MouseEvent<HTMLElement>): void;
   onNavNodeExpandedCallback?(nodeKey: string, isExpanded: boolean): void;
 }
@@ -295,6 +296,7 @@ export interface INavLinkProps extends React.AllHTMLAttributes<HTMLAnchorElement
 
   level?: number;
   isSelected?: boolean;
+  isNavCollapsed?: boolean;
 }
 
 export interface INavLinkStates {

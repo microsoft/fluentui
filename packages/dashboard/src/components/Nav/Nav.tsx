@@ -95,6 +95,7 @@ class NavComponent extends NavBase {
         hasHiddenLink={this._hasAtleastOneHiddenLink}
         onShowNestedLink={this._onShowMoreLinkClicked}
         dataHint={this.props.dataHint}
+        isNavCollapsed={this.state.isNavCollapsed ? this.state.isNavCollapsed : false}
       />
     );
   }
