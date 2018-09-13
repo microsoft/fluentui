@@ -462,7 +462,7 @@
         },
         "inquirer": {
           "version": "5.2.0",
-          "resolved": "https://registry.npmjs.org/inquirer/-/inquirer-5.2.0.tgz",
+          "resolved": "http://registry.npmjs.org/inquirer/-/inquirer-5.2.0.tgz",
           "integrity": "sha512-E9BmnJbAKLPGonz0HeWHtbKf+EeSP93paWO3ZYoUpq/aowXvYGjjCSuashhXPpzbArIjBbji39THkxTz9ZeEUQ==",
           "requires": {
             "ansi-escapes": "3.1.0",
@@ -471,7 +471,7 @@
             "cli-width": "2.2.0",
             "external-editor": "2.2.0",
             "figures": "2.0.0",
-            "lodash": "4.17.10",
+            "lodash": "4.17.11",
             "mute-stream": "0.0.7",
             "run-async": "2.3.0",
             "rxjs": "5.5.12",
@@ -641,9 +641,9 @@
           }
         },
         "lodash": {
-          "version": "4.17.10",
-          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.10.tgz",
-          "integrity": "sha512-UejweD1pDoXu+AD825lWwp4ZGtSwgnpZxb3JDViD7StjQz+Nb/6l093lx4OQ0foGWNRoc19mWy7BzL+UAK2iVg=="
+          "version": "4.17.11",
+          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.11.tgz",
+          "integrity": "sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg=="
         },
         "micromatch": {
           "version": "3.1.10",
@@ -739,7 +739,7 @@
             "jscodeshift": "0.5.1",
             "listr": "0.13.0",
             "loader-utils": "1.1.0",
-            "lodash": "4.17.10",
+            "lodash": "4.17.11",
             "log-symbols": "2.2.0",
             "mkdirp": "0.5.1",
             "p-each-series": "1.0.0",
@@ -899,7 +899,7 @@
     },
     "@rush-temp/dashboard": {
       "version": "file:projects/dashboard.tgz",
-      "integrity": "sha1-r/ENVAZGM6axgf42/Nl1SWygSSU=",
+      "integrity": "sha1-KtIz1Gz54hjVqd/xJGPastWmq+w=",
       "requires": {
         "@microsoft/load-themed-styles": "1.8.8",
         "@types/enzyme": "3.1.13",
@@ -909,7 +909,7 @@
         "@types/react-dom": "16.0.5",
         "@types/react-test-renderer": "16.0.2",
         "@types/webpack-env": "1.13.0",
-        "auto-fontsize": "1.0.17",
+        "auto-fontsize": "1.0.18",
         "css-loader": "0.15.6",
         "enzyme": "3.6.0",
         "enzyme-adapter-react-16": "1.5.0",
@@ -1516,7 +1516,7 @@
         "react": "16.5.0",
         "react-dom": "16.5.0",
         "tslib": "1.9.3",
-        "webpack": "4.18.0"
+        "webpack": "4.19.0"
       },
       "dependencies": {
         "ajv": {
@@ -1814,9 +1814,9 @@
           }
         },
         "webpack": {
-          "version": "4.18.0",
-          "resolved": "https://registry.npmjs.org/webpack/-/webpack-4.18.0.tgz",
-          "integrity": "sha512-XOGIV1FuGSisuX0gJwoANpR0+rUnlDWf2dadNfdT8ftaM8QzIMsJin2vK9XaYuhsji321C6dnCV4bxbIwq9jrg==",
+          "version": "4.19.0",
+          "resolved": "https://registry.npmjs.org/webpack/-/webpack-4.19.0.tgz",
+          "integrity": "sha512-Ak3mMGtA8F1ar4ZP6VCLiICNIPoillROGYstnEd+LzI5Tkvz0qTITeTMcAFjxyYsaxu98F97yrCWdcxRUMPAYw==",
           "requires": {
             "@webassemblyjs/ast": "1.7.6",
             "@webassemblyjs/helper-module-context": "1.7.6",
@@ -1953,7 +1953,7 @@
         "@types/webpack": "4.4.0",
         "loader-utils": "1.1.0",
         "tslib": "1.9.3",
-        "webpack": "4.18.0"
+        "webpack": "4.19.0"
       },
       "dependencies": {
         "ajv": {
@@ -2251,9 +2251,9 @@
           }
         },
         "webpack": {
-          "version": "4.18.0",
-          "resolved": "https://registry.npmjs.org/webpack/-/webpack-4.18.0.tgz",
-          "integrity": "sha512-XOGIV1FuGSisuX0gJwoANpR0+rUnlDWf2dadNfdT8ftaM8QzIMsJin2vK9XaYuhsji321C6dnCV4bxbIwq9jrg==",
+          "version": "4.19.0",
+          "resolved": "https://registry.npmjs.org/webpack/-/webpack-4.19.0.tgz",
+          "integrity": "sha512-Ak3mMGtA8F1ar4ZP6VCLiICNIPoillROGYstnEd+LzI5Tkvz0qTITeTMcAFjxyYsaxu98F97yrCWdcxRUMPAYw==",
           "requires": {
             "@webassemblyjs/ast": "1.7.6",
             "@webassemblyjs/helper-module-context": "1.7.6",
@@ -3385,9 +3385,9 @@
       "integrity": "sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg=="
     },
     "auto-fontsize": {
-      "version": "1.0.17",
-      "resolved": "https://registry.npmjs.org/auto-fontsize/-/auto-fontsize-1.0.17.tgz",
-      "integrity": "sha512-Ha5qVLCILrEKJwZc5RL+uncuj1pXRFywFi0Ox1TmvXT7T/1T27K66buGx3asg0e98vZMG8SSbFlfNgWNttrPKA==",
+      "version": "1.0.18",
+      "resolved": "https://registry.npmjs.org/auto-fontsize/-/auto-fontsize-1.0.18.tgz",
+      "integrity": "sha512-RBXlnVp0pM01qd4cWWFXimHgwhBOnXZP4kal6YD23oJRINhMLmOwQOELeh20q67J8UHF8T5c66yD76ptT1PS6g==",
       "requires": {
         "convert-css-length": "1.0.2",
         "line-height": "0.3.1"
@@ -9955,7 +9955,7 @@
       "requires": {
         "http-proxy": "1.17.0",
         "is-glob": "4.0.0",
-        "lodash": "4.17.10",
+        "lodash": "4.17.11",
         "micromatch": "3.1.10"
       },
       "dependencies": {
@@ -10209,9 +10209,9 @@
           "integrity": "sha512-s5kLOcnH0XqDO+FvuaLX8DDjZ18CGFk7VygH40QoKPUQhW4e2rvM0rwUq0t8IQDOwYSeLK01U90OjzBTme2QqA=="
         },
         "lodash": {
-          "version": "4.17.10",
-          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.10.tgz",
-          "integrity": "sha512-UejweD1pDoXu+AD825lWwp4ZGtSwgnpZxb3JDViD7StjQz+Nb/6l093lx4OQ0foGWNRoc19mWy7BzL+UAK2iVg=="
+          "version": "4.17.11",
+          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.11.tgz",
+          "integrity": "sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg=="
         },
         "micromatch": {
           "version": "3.1.10",
@@ -18710,6 +18710,17 @@
                 "items": "2.1.1",
                 "moment": "2.22.2",
                 "topo": "2.0.2"
+              }
+            },
+            "ngrok": {
+              "version": "github:screener-io/ngrok#ca2e459b401722ae8c033491aaacaf87125cd238",
+              "requires": {
+                "@types/node": "8.0.26",
+                "async": "2.6.1",
+                "decompress-zip": "0.3.1",
+                "lock": "0.1.4",
+                "request": "2.87.0",
+                "uuid": "3.3.2"
               }
             },
             "oauth-sign": {
