@@ -1,7 +1,5 @@
 import * as React from 'react';
-// import { assign } from './utilities';
-import { __assign } from 'tslib';
-export const assign = __assign;
+import { assign } from './utilities';
 
 /**
  * Props contract for themed components.
@@ -134,8 +132,7 @@ export function createComponent<TComponentProps, TViewProps, TStyleSet, TProcess
             // TODO: userProps should only override processedProps for controlled props. for all other props, such as callbacks,
             //    processedProps should always have priority (this is not the case as written now.)
             //    introduce controlled prop marking mechanism so that only controlled userProps override processedProps.
-            // TODO: Should 'rest' props from customizations pass onto view? They are not currently.
-            //    (props like theme will break snapshots while styles will generate div errors in console)
+            // TODO: Should 'rest' props from customizations pass onto view? They're not currently. (props like theme will break snapshots)
             const propStyles = processedProps.styles || (userProps as IStyleableComponentProps<TViewProps, TStyleSet, TTheme>).styles;
             const styleProps: TProcessedProps = { ...rest, ...(processedProps as any), ...(userProps as any) };
             const viewProps: IViewComponentProps<TProcessedProps, TProcessedStyleSet> = {

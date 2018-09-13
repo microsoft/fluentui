@@ -11,8 +11,6 @@ export { IStateComponentProps } from '@uifabric/foundation';
 import { IProcessedStyleSet, IStyleSet } from './Styling';
 import { Customizations, CustomizerContext, ICustomizations } from './Utilities';
 
-export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
-
 // Centralize Foundation interaction for use throughout this package. These convenience types provide types
 //  that are global for all of OUFR, such as ITheme and IProcessedStyleSet.
 
