@@ -2,7 +2,6 @@
 
 exports[`Link renders Link correctly 1`] = `
 <a
-  aria-disabled={undefined}
   className=
       ms-Link
       {
@@ -36,7 +35,6 @@ exports[`Link renders Link correctly 1`] = `
       }
   href="#"
   onClick={[Function]}
-  target={undefined}
 >
   I'm a link
 </a>
@@ -44,7 +42,6 @@ exports[`Link renders Link correctly 1`] = `
 
 exports[`Link renders Link with "as=div" a div element 1`] = `
 <div
-  aria-disabled={undefined}
   className=
       ms-Link
       customClassName
@@ -104,7 +101,6 @@ exports[`Link renders Link with "as=div" a div element 1`] = `
       &:focus {
         color: #0078d4;
       }
-  disabled={undefined}
   onClick={[Function]}
 >
   I'm a div
@@ -113,7 +109,6 @@ exports[`Link renders Link with "as=div" a div element 1`] = `
 
 exports[`Link renders Link with a custom class name 1`] = `
 <a
-  aria-disabled={undefined}
   className=
       ms-Link
       customClassName
@@ -148,7 +143,6 @@ exports[`Link renders Link with a custom class name 1`] = `
       }
   href="#"
   onClick={[Function]}
-  target={undefined}
 >
   I'm a link
 </a>
@@ -156,7 +150,6 @@ exports[`Link renders Link with a custom class name 1`] = `
 
 exports[`Link renders Link with no href as a button 1`] = `
 <button
-  aria-disabled={undefined}
   className=
       ms-Link
       {
@@ -215,7 +208,6 @@ exports[`Link renders Link with no href as a button 1`] = `
       &:focus {
         color: #0078d4;
       }
-  disabled={undefined}
   onClick={[Function]}
 >
   I'm a link as a button
@@ -254,7 +246,6 @@ exports[`Link renders disabled Link correctly 1`] = `
       }
   href="#"
   onClick={[Function]}
-  target={undefined}
 >
   I'm a disabled link
 </a>
@@ -325,7 +316,6 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
 
 exports[`Link supports non button/anchor html attributes when "as=" is used 1`] = `
 <blockquote
-  aria-disabled={undefined}
   cite="hi"
   className=
       ms-Link
@@ -386,7 +376,6 @@ exports[`Link supports non button/anchor html attributes when "as=" is used 1`] 
       &:focus {
         color: #0078d4;
       }
-  disabled={undefined}
   onClick={[Function]}
 >
   I'm a blockquote

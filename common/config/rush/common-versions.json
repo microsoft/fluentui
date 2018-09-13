@@ -1,0 +1,8 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/common-versions.schema.json",
+  "preferredVersions": {
+    "webpack": "3.11.0",
+    "webpack-dev-server": "2.11.2",
+    "webpack-cli": "2.0.15"
+  }
+}

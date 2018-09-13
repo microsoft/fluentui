@@ -4,8 +4,6 @@ exports[`Component Examples renders Pivot.Remove.Example.tsx correctly 1`] = `
 <div>
   <div>
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className="ms-FocusZone"
       data-focuszone-id="FocusZone1"
       onFocus={[Function]}
@@ -38,11 +36,6 @@ exports[`Component Examples renders Pivot.Remove.Example.tsx correctly 1`] = `
         role="tablist"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           aria-selected={true}
           className=
               ms-Button
@@ -168,7 +161,6 @@ exports[`Component Examples renders Pivot.Remove.Example.tsx correctly 1`] = `
                 color: #ffffff;
               }
           data-is-focusable={true}
-          disabled={undefined}
           id="Pivot0-Tab0"
           name="Foo"
           onClick={[Function]}
@@ -211,11 +203,6 @@ exports[`Component Examples renders Pivot.Remove.Example.tsx correctly 1`] = `
           </div>
         </button>
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           aria-selected={false}
           className=
               ms-Button
@@ -333,7 +320,6 @@ exports[`Component Examples renders Pivot.Remove.Example.tsx correctly 1`] = `
                 color: #000000;
               }
           data-is-focusable={true}
-          disabled={undefined}
           id="Pivot0-Tab1"
           name="Bar"
           onClick={[Function]}
@@ -376,11 +362,6 @@ exports[`Component Examples renders Pivot.Remove.Example.tsx correctly 1`] = `
           </div>
         </button>
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           aria-selected={false}
           className=
               ms-Button
@@ -498,7 +479,6 @@ exports[`Component Examples renders Pivot.Remove.Example.tsx correctly 1`] = `
                 color: #000000;
               }
           data-is-focusable={true}
-          disabled={undefined}
           id="Pivot0-Tab2"
           name="Bas"
           onClick={[Function]}
@@ -541,11 +521,6 @@ exports[`Component Examples renders Pivot.Remove.Example.tsx correctly 1`] = `
           </div>
         </button>
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           aria-selected={false}
           className=
               ms-Button
@@ -663,7 +638,6 @@ exports[`Component Examples renders Pivot.Remove.Example.tsx correctly 1`] = `
                 color: #000000;
               }
           data-is-focusable={true}
-          disabled={undefined}
           id="Pivot0-Tab3"
           name="Biz"
           onClick={[Function]}
@@ -783,11 +757,6 @@ exports[`Component Examples renders Pivot.Remove.Example.tsx correctly 1`] = `
   </div>
   <div>
     <button
-      aria-describedby={undefined}
-      aria-disabled={undefined}
-      aria-label={undefined}
-      aria-labelledby={undefined}
-      aria-pressed={undefined}
       className=
           ms-Button
           ms-Button--default
@@ -857,7 +826,6 @@ exports[`Component Examples renders Pivot.Remove.Example.tsx correctly 1`] = `
             color: #212121;
           }
       data-is-focusable={true}
-      disabled={undefined}
       onClick={[Function]}
       onKeyDown={[Function]}
       onKeyPress={[Function]}

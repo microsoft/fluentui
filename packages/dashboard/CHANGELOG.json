@@ -2,6 +2,42 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.24.0",
+      "tag": "@uifabric/dashboard_v0.24.0",
+      "date": "Thu, 13 Sep 2018 17:38:04 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "expose the card size mapping prop",
+            "author": "caradong <caradong1122@gmail.com>",
+            "commit": "e6abc121a0acf3ddaa19e4b9c391d7dfd36b3c45"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Changing overflow behaviour of multicount component",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "f4fd0b05ac433d5aa4f772dd01d06a7279823d11"
+          },
+          {
+            "comment": "add tslib as a dependency in dashboard",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "f425097fa7f03be743a3825682d26acac7b7a95c"
+          },
+          {
+            "comment": "Enable auto adjust dashboard card header textdashboard card header text",
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "6862509b07d50650686ea00c4f9c73b15237b097"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.67.3 <7.0.0` to `>=6.68.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.23.0",
       "tag": "@uifabric/dashboard_v0.23.0",
       "date": "Wed, 12 Sep 2018 12:26:41 GMT",

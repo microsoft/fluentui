@@ -54,7 +54,6 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
               word-wrap: break-word;
             }
         htmlFor="TextField0"
-        required={undefined}
       >
         Default with error message
       </label>
@@ -94,7 +93,6 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
         <input
           aria-describedby="TextFieldDescription1"
           aria-invalid={false}
-          aria-label={undefined}
           className=
               ms-TextField-field
               {
@@ -138,7 +136,6 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
-          readOnly={undefined}
           type="text"
           value=""
         />
@@ -218,7 +215,6 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
         <input
           aria-describedby="TextFieldDescription3"
           aria-invalid={false}
-          aria-label={undefined}
           className=
               ms-TextField-field
               {
@@ -263,7 +259,6 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
           onFocus={[Function]}
           onInput={[Function]}
           placeholder="Placeholder with error message"
-          readOnly={undefined}
           type="text"
           value=""
         />
@@ -350,7 +345,6 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
               word-wrap: break-word;
             }
         htmlFor="TextField4"
-        required={undefined}
       >
         Underlined with error message:
       </label>
@@ -393,7 +387,6 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
         <input
           aria-describedby="TextFieldDescription5"
           aria-invalid={false}
-          aria-label={undefined}
           className=
               ms-TextField-field
               {
@@ -438,7 +431,6 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
-          readOnly={undefined}
           type="text"
           value=""
         />
@@ -503,7 +495,6 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
               word-wrap: break-word;
             }
         htmlFor="TextField6"
-        required={undefined}
       >
         Multiline with error message
       </label>
@@ -544,7 +535,6 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
         <textarea
           aria-describedby="TextFieldDescription7"
           aria-invalid={false}
-          aria-label={undefined}
           className=
               ms-TextField-field
               {
@@ -591,7 +581,6 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
-          readOnly={undefined}
           rows={4}
           value=""
         />

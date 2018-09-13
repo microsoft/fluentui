@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 12 Sep 2018 12:26:41 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Sep 2018 17:38:04 GMT and should not be manually modified.
+
+## 6.68.0
+Thu, 13 Sep 2018 17:38:04 GMT
+
+### Minor changes
+
+- Adds new semantic slots per design direction
+
+### Patches
+
+- Teaching Bubble: Fix outline on content that produces undesirable visuals
+- Fixes SwatchColorPicker swatches shifting when isWhite swatch not at end of row due to 1px different in border-width
+- Hide duplicate keytips and give console warning if found
+- Fix Selection count not updating when items are removed
 
 ## 6.67.3
 Wed, 12 Sep 2018 12:26:41 GMT

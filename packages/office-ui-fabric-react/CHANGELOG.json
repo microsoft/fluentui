@@ -2,6 +2,60 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.68.0",
+      "tag": "office-ui-fabric-react_v6.68.0",
+      "date": "Thu, 13 Sep 2018 17:38:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Teaching Bubble: Fix outline on content that produces undesirable visuals",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "19037b64e7b118410f0833075430debb8d155311"
+          },
+          {
+            "comment": "Fixes SwatchColorPicker swatches shifting when isWhite swatch not at end of row due to 1px different in border-width",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "e195fa03a3375c3f1384bdb2c89f343f6c68e0b7"
+          },
+          {
+            "comment": "Hide duplicate keytips and give console warning if found",
+            "author": "Kelsey Young <kelseyyoung4@gmail.com>",
+            "commit": "b00afc6ca7978aa69929cb6f89124039d4632405"
+          },
+          {
+            "comment": "Fix Selection count not updating when items are removed",
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "7da03c0bf1c1e6396e40a8e9362debbaf51a3f0d"
+          }
+        ],
+        "none": [
+          {
+            "comment": "react-test-renderer version updated 16.4.2 -> 16.5.0",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "f425097fa7f03be743a3825682d26acac7b7a95c"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Adds new semantic slots per design direction",
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "02814cbe9b8d3994b40c9afc6825625e078bd3fe"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.8.3 <7.0.0` to `>=6.8.4 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.23.0 <7.0.0` to `>=6.24.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.19.0 <7.0.0` to `>=6.19.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.67.3",
       "tag": "office-ui-fabric-react_v6.67.3",
       "date": "Wed, 12 Sep 2018 12:26:41 GMT",
