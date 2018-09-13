@@ -17,7 +17,7 @@ export interface IStackedBarChartState {
   isCalloutVisible: boolean;
   refArray: IRefArrayData[];
   selectedLegendTitle: string;
-  //ts-lint:disable:no-any
+  // tslint:disable-next-line:no-any
   refSelected: any;
   dataForHoverCard: number;
   color: string;
