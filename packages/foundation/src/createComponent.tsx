@@ -151,7 +151,7 @@ export function createComponent<TComponentProps, TViewProps, TStyleSet, TProcess
             return options.view(viewProps);
           };
           // TODO: What we really need to be able to do here either type force TViewProps to be TComponentProps when StateComponent
-          //        is undefined OR logically something like code below. Until we figure out how to do this, case userProps as any
+          //        is undefined OR logically something like code below. Until we figure out how to do this, cast userProps as any
           //        since userProps does not necessarily extend TViewProps.
           // if (StateComponent) {
           //   type TProcessedProps = TViewProps & IStyleableComponentProps<TViewProps, TStyleSet, TTheme>;
