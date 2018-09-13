@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { VerticalStack, HorizontalStack } from '@uifabric/experiments/lib/Stack';
 import { Text } from '@uifabric/experiments/lib/Text';
-import { mergeStyleSets, Slider, Checkbox, Dropdown, IDropdownOption } from 'office-ui-fabric-react';
+import { mergeStyleSets, Slider, Checkbox, Dropdown, IDropdownOption, TextField } from 'office-ui-fabric-react';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export type HorizontalAlignment = 'left' | 'center' | 'right' | 'space-around' | 'space-between' | 'space-evenly';
@@ -22,6 +22,7 @@ export interface IExampleState {
   paddingBottom: number;
   horizontalAlignment: HorizontalAlignment;
   verticalAlignment: VerticalAlignment;
+  emptyChildren: string[];
 }
 
 export class HorizontalStackConfigureExample extends React.Component<{}, IExampleState> {
@@ -41,7 +42,8 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
       paddingTop: 0,
       paddingBottom: 0,
       horizontalAlignment: 'left',
-      verticalAlignment: 'top'
+      verticalAlignment: 'top',
+      emptyChildren: []
     };
   }
 
@@ -60,7 +62,8 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
       paddingTop,
       paddingBottom,
       horizontalAlignment,
-      verticalAlignment
+      verticalAlignment,
+      emptyChildren
     } = this.state;
 
     const styles = mergeStyleSets({
@@ -110,11 +113,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
                 onChange={this._onNumItemsChange}
               />
               <HorizontalStack>
-                <Checkbox
-                  label="Shadow around items"
-                  onChange={this._onBoxShadowChange}
-                  styles={{ root: { marginRight: 10 } }}
-                />
+                <Checkbox label="Shadow around items" onChange={this._onBoxShadowChange} styles={{ root: { marginRight: 10 } }} />
                 <Checkbox label="Prevent item overflow" onChange={this._onPreventOverflowChange} />
               </HorizontalStack>
             </VerticalStack>
@@ -231,13 +230,12 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
               selectedKey={verticalAlignment}
               placeHolder="Select Vertical Alignment"
               label="Vertical alignment:"
-              options={[
-                { key: 'top', text: 'Top' },
-                { key: 'center', text: 'Center' },
-                { key: 'bottom', text: 'Bottom' }
-              ]}
+              options={[{ key: 'top', text: 'Top' }, { key: 'center', text: 'Center' }, { key: 'bottom', text: 'Bottom' }]}
               onChange={this._onVerticalAlignChange}
             />
+          </HorizontalStack.Item>
+          <HorizontalStack.Item grow>
+            <TextField label="Enter a space-separated list of empty children (e.g. 1 2 3):" onChange={this._onEmptyChildrenChange} />
           </HorizontalStack.Item>
         </HorizontalStack>
 
@@ -253,6 +251,10 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
           styles={stackStyles}
         >
           {this._range(1, numItems).map((value: number, index: number) => {
+            if (emptyChildren.indexOf(value.toString()) !== -1) {
+              return <Text key={index} className={styles.item} />;
+            }
+
             return (
               <Text key={index} className={styles.item}>
                 {value}
@@ -325,5 +327,12 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
 
   private _onVerticalAlignChange = (ev: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
     this.setState({ verticalAlignment: option.key as VerticalAlignment });
+  };
+
+  private _onEmptyChildrenChange = (ev: React.FormEvent<HTMLInputElement>, value?: string): void => {
+    if (value === undefined) {
+      return;
+    }
+    this.setState({ emptyChildren: value.replace(/,/g, '').split(' ') });
   };
 }

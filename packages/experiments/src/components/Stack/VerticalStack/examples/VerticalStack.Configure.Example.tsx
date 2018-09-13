@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { VerticalStack, HorizontalStack } from '@uifabric/experiments/lib/Stack';
 import { Text } from '@uifabric/experiments/lib/Text';
-import { mergeStyleSets, Slider, Checkbox, Dropdown, IDropdownOption } from 'office-ui-fabric-react';
+import { mergeStyleSets, Slider, Checkbox, Dropdown, IDropdownOption, TextField } from 'office-ui-fabric-react';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export type VerticalAlignment = 'top' | 'center' | 'bottom' | 'space-around' | 'space-between' | 'space-evenly';
@@ -21,6 +21,7 @@ export interface IExampleState {
   paddingBottom: number;
   verticalAlignment: VerticalAlignment;
   horizontalAlignment: HorizontalAlignment;
+  emptyChildren: string[];
 }
 
 export class VerticalStackConfigureExample extends React.Component<{}, IExampleState> {
@@ -39,7 +40,8 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
       paddingTop: 0,
       paddingBottom: 0,
       verticalAlignment: 'top',
-      horizontalAlignment: 'left'
+      horizontalAlignment: 'left',
+      emptyChildren: []
     };
   }
 
@@ -57,7 +59,8 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
       paddingTop,
       paddingBottom,
       verticalAlignment,
-      horizontalAlignment
+      horizontalAlignment,
+      emptyChildren
     } = this.state;
 
     const styles = mergeStyleSets({
@@ -100,16 +103,8 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
                 onChange={this._onNumItemsChange}
               />
               <HorizontalStack>
-                <Checkbox
-                  label="Shadow around items"
-                  onChange={this._onBoxShadowChange}
-                  styles={{ root: { marginRight: 10 } }}
-                />
-                <Checkbox
-                  label="Prevent item overflow"
-                  onChange={this._onPreventOverflowChange}
-                  styles={{ root: { marginRight: 10 } }}
-                />
+                <Checkbox label="Shadow around items" onChange={this._onBoxShadowChange} styles={{ root: { marginRight: 10 } }} />
+                <Checkbox label="Prevent item overflow" onChange={this._onPreventOverflowChange} styles={{ root: { marginRight: 10 } }} />
                 <Checkbox label="Shrink items" onChange={this._onShrinkItemsChange} />
               </HorizontalStack>
             </VerticalStack>
@@ -126,11 +121,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
                 onChange={this._onStackHeightChange}
                 disabled={autoHeight}
               />
-              <Checkbox
-                label="Automatic height (based on items)"
-                defaultChecked={true}
-                onChange={this._onAutoHeightChange}
-              />
+              <Checkbox label="Automatic height (based on items)" defaultChecked={true} onChange={this._onAutoHeightChange} />
             </VerticalStack>
           </HorizontalStack.Item>
         </HorizontalStack>
@@ -169,13 +160,12 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
                     selectedKey={horizontalAlignment}
                     placeHolder="Select Horizontal Alignment"
                     label="Horizontal alignment:"
-                    options={[
-                      { key: 'left', text: 'Left' },
-                      { key: 'center', text: 'Center' },
-                      { key: 'right', text: 'Right' }
-                    ]}
+                    options={[{ key: 'left', text: 'Left' }, { key: 'center', text: 'Center' }, { key: 'right', text: 'Right' }]}
                     onChange={this._onHorizontalAlignChange}
                   />
+                </HorizontalStack.Item>
+                <HorizontalStack.Item grow>
+                  <TextField label="List of empty children (e.g. 1 2 3):" onChange={this._onEmptyChildrenChange} />
                 </HorizontalStack.Item>
               </HorizontalStack>
             </VerticalStack>
@@ -235,6 +225,10 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
           className={styles.root}
         >
           {this._range(1, numItems).map((value: number, index: number) => {
+            if (emptyChildren.indexOf(value.toString()) !== -1) {
+              return <Text key={index} className={styles.item} />;
+            }
+
             return (
               <Text key={index} className={styles.item}>
                 {value}
@@ -303,5 +297,12 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
 
   private _onHorizontalAlignChange = (ev: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
     this.setState({ horizontalAlignment: option.key as HorizontalAlignment });
+  };
+
+  private _onEmptyChildrenChange = (ev: React.FormEvent<HTMLInputElement>, value?: string): void => {
+    if (value === undefined) {
+      return;
+    }
+    this.setState({ emptyChildren: value.replace(/,/g, '').split(' ') });
   };
 }

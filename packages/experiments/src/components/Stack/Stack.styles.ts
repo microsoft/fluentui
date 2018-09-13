@@ -29,13 +29,19 @@ export const styles = (props: IThemedProps<IStackProps>): IStackStyles => {
   const hGap = parseGap(horizontalGap, theme);
   const vGap = parseGap(verticalGap, theme);
 
+  // styles to be applied to all direct children regardless of wrap or direction
   const childStyles = {
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis'
   };
 
-  // flexShrink styles are applied by the StackItem
-  const shrinkSelector = {
+  // selectors to be applied regardless of wrap or direction
+  const commonSelectors = {
+    '> *:empty': {
+      display: 'none'
+    },
+
+    // flexShrink styles are applied by the StackItem
     '> *:not(.ms-StackItem)': {
       flexShrink: shrinkItems ? 1 : 0
     }
@@ -71,35 +77,25 @@ export const styles = (props: IThemedProps<IStackProps>): IStackStyles => {
             maxWidth: `calc(100% - ${hGap.value}${hGap.unit})`,
             ...childStyles
           },
-          ...shrinkSelector
+          ...commonSelectors
         }
       },
-      !wrap && [
-        horizontal && {
-          selectors: {
-            '> *': {
-              marginRight: `${hGap.value}${hGap.unit}`,
-              ...childStyles
+      !wrap && {
+        selectors: {
+          '> *': childStyles,
+
+          // apply gap margin to every direct child except the first non-empty direct child
+          '> *:not(:empty) ~ *': [
+            horizontal && {
+              marginLeft: `${hGap.value}${hGap.unit}`
             },
-            '> *:last-child': {
-              marginRight: 0
-            },
-            ...shrinkSelector
-          }
-        },
-        !horizontal && {
-          selectors: {
-            '> *': {
-              marginBottom: `${vGap.value}${vGap.unit}`,
-              ...childStyles
-            },
-            '> *:last-child': {
-              marginBottom: 0
-            },
-            ...shrinkSelector
-          }
+            !horizontal && {
+              marginTop: `${vGap.value}${vGap.unit}`
+            }
+          ],
+          ...commonSelectors
         }
-      ],
+      },
       className
     ]
     // TODO: this cast may be hiding some potential issues with styling and name

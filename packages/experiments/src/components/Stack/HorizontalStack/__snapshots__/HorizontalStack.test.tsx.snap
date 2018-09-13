@@ -13,12 +13,14 @@ exports[`HorizontalStack renders default HorizontalStack correctly 1`] = `
         width: auto;
       }
       & > * {
-        margin-right: 0px;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
-      & > *:last-child {
-        margin-right: 0px;
+      & > *:not(:empty) ~ * {
+        margin-left: 0px;
+      }
+      & > *:empty {
+        display: none;
       }
       & > *:not(.ms-StackItem) {
         flex-shrink: 0;
@@ -46,12 +48,14 @@ exports[`HorizontalStack renders gap correctly 1`] = `
         width: auto;
       }
       & > * {
-        margin-right: 5px;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
-      & > *:last-child {
-        margin-right: 0px;
+      & > *:not(:empty) ~ * {
+        margin-left: 5px;
+      }
+      & > *:empty {
+        display: none;
       }
       & > *:not(.ms-StackItem) {
         flex-shrink: 0;
@@ -79,12 +83,14 @@ exports[`HorizontalStack renders growing items correctly 1`] = `
         width: auto;
       }
       & > * {
-        margin-right: 0px;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
-      & > *:last-child {
-        margin-right: 0px;
+      & > *:not(:empty) ~ * {
+        margin-left: 0px;
+      }
+      & > *:empty {
+        display: none;
       }
       & > *:not(.ms-StackItem) {
         flex-shrink: 0;
@@ -124,12 +130,14 @@ exports[`HorizontalStack renders item alignments correctly 1`] = `
         width: auto;
       }
       & > * {
-        margin-right: 0px;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
-      & > *:last-child {
-        margin-right: 0px;
+      & > *:not(:empty) ~ * {
+        margin-left: 0px;
+      }
+      & > *:empty {
+        display: none;
       }
       & > *:not(.ms-StackItem) {
         flex-shrink: 0;
@@ -211,12 +219,14 @@ exports[`HorizontalStack renders shrinking items correctly 1`] = `
         width: auto;
       }
       & > * {
-        margin-right: 0px;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
-      & > *:last-child {
-        margin-right: 0px;
+      & > *:not(:empty) ~ * {
+        margin-left: 0px;
+      }
+      & > *:empty {
+        display: none;
       }
       & > *:not(.ms-StackItem) {
         flex-shrink: 1;
@@ -279,6 +289,9 @@ exports[`HorizontalStack renders wrapped HorizontalStack correctly 1`] = `
           max-width: calc(100% - 0px);
           text-overflow: ellipsis;
           white-space: nowrap;
+        }
+        & > *:empty {
+          display: none;
         }
         & > *:not(.ms-StackItem) {
           flex-shrink: 0;

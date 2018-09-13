@@ -13,12 +13,14 @@ exports[`Stack accepts custom className on child items 1`] = `
         width: auto;
       }
       & > * {
-        margin-bottom: 0px;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
-      & > *:last-child {
-        margin-bottom: 0px;
+      & > *:not(:empty) ~ * {
+        margin-top: 0px;
+      }
+      & > *:empty {
+        display: none;
       }
       & > *:not(.ms-StackItem) {
         flex-shrink: 0;
@@ -59,12 +61,14 @@ exports[`Stack renders Stack with StackItems correctly 1`] = `
         width: auto;
       }
       & > * {
-        margin-bottom: 0px;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
-      & > *:last-child {
-        margin-bottom: 0px;
+      & > *:not(:empty) ~ * {
+        margin-top: 0px;
+      }
+      & > *:empty {
+        display: none;
       }
       & > *:not(.ms-StackItem) {
         flex-shrink: 0;
@@ -104,12 +108,14 @@ exports[`Stack renders Stack with a gap correctly 1`] = `
         width: auto;
       }
       & > * {
-        margin-bottom: 0px;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
-      & > *:last-child {
-        margin-bottom: 0px;
+      & > *:not(:empty) ~ * {
+        margin-top: 0px;
+      }
+      & > *:empty {
+        display: none;
       }
       & > *:not(.ms-StackItem) {
         flex-shrink: 0;
@@ -149,12 +155,14 @@ exports[`Stack renders Stack with grow correctly 1`] = `
         width: auto;
       }
       & > * {
-        margin-bottom: 0px;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
-      & > *:last-child {
-        margin-bottom: 0px;
+      & > *:not(:empty) ~ * {
+        margin-top: 0px;
+      }
+      & > *:empty {
+        display: none;
       }
       & > *:not(.ms-StackItem) {
         flex-shrink: 0;
@@ -174,12 +182,14 @@ exports[`Stack renders Stack with grow correctly 1`] = `
           width: auto;
         }
         & > * {
-          margin-bottom: 0px;
           text-overflow: ellipsis;
           white-space: nowrap;
         }
-        & > *:last-child {
-          margin-bottom: 0px;
+        & > *:not(:empty) ~ * {
+          margin-top: 0px;
+        }
+        & > *:empty {
+          display: none;
         }
         & > *:not(.ms-StackItem) {
           flex-shrink: 0;
@@ -201,12 +211,14 @@ exports[`Stack renders Stack with grow correctly 1`] = `
           width: auto;
         }
         & > * {
-          margin-bottom: 0px;
           text-overflow: ellipsis;
           white-space: nowrap;
         }
-        & > *:last-child {
-          margin-bottom: 0px;
+        & > *:not(:empty) ~ * {
+          margin-top: 0px;
+        }
+        & > *:empty {
+          display: none;
         }
         & > *:not(.ms-StackItem) {
           flex-shrink: 0;
@@ -228,12 +240,14 @@ exports[`Stack renders Stack with grow correctly 1`] = `
           width: auto;
         }
         & > * {
-          margin-bottom: 0px;
           text-overflow: ellipsis;
           white-space: nowrap;
         }
-        & > *:last-child {
-          margin-bottom: 0px;
+        & > *:not(:empty) ~ * {
+          margin-top: 0px;
+        }
+        & > *:empty {
+          display: none;
         }
         & > *:not(.ms-StackItem) {
           flex-shrink: 0;
@@ -257,12 +271,14 @@ exports[`Stack renders Stack with shrinking StackItems correctly 1`] = `
         width: auto;
       }
       & > * {
-        margin-bottom: 0px;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
-      & > *:last-child {
-        margin-bottom: 0px;
+      & > *:not(:empty) ~ * {
+        margin-top: 0px;
+      }
+      & > *:empty {
+        display: none;
       }
       & > *:not(.ms-StackItem) {
         flex-shrink: 1;
@@ -304,12 +320,14 @@ exports[`Stack renders Stack with vertical and horizontal alignment correctly 1`
         width: auto;
       }
       & > * {
-        margin-bottom: 0px;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
-      & > *:last-child {
-        margin-bottom: 0px;
+      & > *:not(:empty) ~ * {
+        margin-top: 0px;
+      }
+      & > *:empty {
+        display: none;
       }
       & > *:not(.ms-StackItem) {
         flex-shrink: 0;
@@ -337,12 +355,14 @@ exports[`Stack renders Stack with vertical and horizontal fill correctly 1`] = `
         width: 100%;
       }
       & > * {
-        margin-bottom: 0px;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
-      & > *:last-child {
-        margin-bottom: 0px;
+      & > *:not(:empty) ~ * {
+        margin-top: 0px;
+      }
+      & > *:empty {
+        display: none;
       }
       & > *:not(.ms-StackItem) {
         flex-shrink: 0;
@@ -370,12 +390,14 @@ exports[`Stack renders horizontal Stack correctly 1`] = `
         width: auto;
       }
       & > * {
-        margin-right: 0px;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
-      & > *:last-child {
-        margin-right: 0px;
+      & > *:not(:empty) ~ * {
+        margin-left: 0px;
+      }
+      & > *:empty {
+        display: none;
       }
       & > *:not(.ms-StackItem) {
         flex-shrink: 0;
@@ -403,12 +425,14 @@ exports[`Stack renders vertical Stack correctly 1`] = `
         width: auto;
       }
       & > * {
-        margin-bottom: 0px;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
-      & > *:last-child {
-        margin-bottom: 0px;
+      & > *:not(:empty) ~ * {
+        margin-top: 0px;
+      }
+      & > *:empty {
+        display: none;
       }
       & > *:not(.ms-StackItem) {
         flex-shrink: 0;
