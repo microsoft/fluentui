@@ -101,28 +101,6 @@ export class Recommendation extends React.Component<IRecommendationProps, {}> {
           </div>
           <div className={classNames.recommendationContentRowVisualization}>{this.props.children}</div>
         </div>
-        {/* <div className={classNames.recommendationTextContainer}>
-          <div className={classNames.recommendationHeader}>
-            <AutoFontSize
-              text={recommendationDescriptionHeader}
-              targetElementType={'div'}
-              fontSizeMapping={[{ fontSize: 28, lineHeight: '36px' }, { fontSize: 16, lineHeight: '23px' }]}
-              targetLines={2}
-            />
-          </div>
-          <div className={classNames.recommendationContent}>{recommendationDescription} </div>
-          <div>
-            <PrimaryButton
-              data-automation-id="btnRecommendation"
-              name={recommendationButtonLocalizedName}
-              onClick={handleViewRecommendationClick}
-              ariaDescription={recommendationButtonAriaDescription}
-            >
-              {recommendationButtonLocalizedName}
-            </PrimaryButton>
-          </div>
-        </div> */}
-        {/* <div className={classNames.recommendationVisualizationContainer}>{this.props.children}</div> */}
       </div>
     );
   }

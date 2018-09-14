@@ -98,7 +98,7 @@ export class RecommendationMultiStackedBarChartExample extends React.Component<{
     const recommendationDescription = `Some sensitive information types aren't currently monotired and could be shared accidentally. We recommend creating a data loss prevention (DLP) policy to detect when items containing this sensitive info are shared with people outside your org.`;
 
     return this.state.dismissed === true ? null : (
-      <React.Fragment>
+      <>
         <div className={classNames.sampleContainerStyle}>
           <Recommendation
             recommendationBarTitle={recommendationBarTitle}
@@ -154,7 +154,7 @@ export class RecommendationMultiStackedBarChartExample extends React.Component<{
             </div>
           </Recommendation>
         </div>
-      </React.Fragment>
+      </>
     );
   }
 
