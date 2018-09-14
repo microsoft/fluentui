@@ -15,7 +15,6 @@ import {
   SelectionMode,
   buildColumns
 } from 'office-ui-fabric-react/lib/DetailsList';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { createListItems, isGroupable } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import './DetailsList.Advanced.Example.scss';
 import { IDetailsColumnProps } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn';
@@ -114,7 +113,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     return (
       <div className="ms-DetailsListAdvancedExample">
         <Checkbox
-          label="Show on render divider feature on column header divider"
+          label="Show custom color column-divider on hover"
           checked={this.state.showRenderDividerView}
           onChange={this._onRenderDividerCheckboxChange}
         />
@@ -174,14 +173,6 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     });
   };
 
-  private _onMouseAction = (index: number): void => {
-    alert(`Divider icon #${index} clicked`);
-  };
-
-  private _onMouseActionForIndex = (index: number): any => {
-    return () => this._onMouseAction(index);
-  };
-
   private _onRenderDivider = (
     iDetailsColumnProps: IDetailsColumnProps,
     defaultRenderer: (props?: IDetailsColumnProps) => JSX.Element | null
@@ -190,12 +181,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     return (
       <React.Fragment key={`divider-wrapper-${columnIndex}`}>
         <span className="ms-DetailsHeader-divider">{defaultRenderer(iDetailsColumnProps)}</span>
-        <Icon
-          iconName="AlertSolid"
-          style={{ fontSize: 20, marginLeft: '-20px' }}
-          onClick={this._onMouseActionForIndex(columnIndex)}
-          className="ms-DetailsHeader-divider-icon"
-        />
+        <span className="ms-DetailsHeader-divider-bar" />
       </React.Fragment>
     );
   };

@@ -27,18 +27,17 @@
     height: 100%;
   }
 
-  .ms-DetailsHeader-divider-icon {
+  .ms-DetailsHeader-divider-bar {
     display: none;
-    position: fixed;
+    background: $ms-color-themePrimary;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    width: 1px;
     z-index: 5;
   }
 
-  .ms-DetailsHeader-divider:hover + .ms-DetailsHeader-divider-icon {
+  .ms-DetailsHeader-divider:hover + .ms-DetailsHeader-divider-bar {
     display: inline;
-  }
-
-  .ms-DetailsHeader-divider-icon:hover {
-    display: inline;
-    cursor: pointer;
   }
 }
