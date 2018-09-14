@@ -1,29 +1,30 @@
 /* tslint:disable */
 import * as React from 'react';
-import { ICustomNavLinkGroup, INavProps, INavStyleProps, INavStyles, NavGroupType } from './Nav.types';
+import { INavLinkGroup } from 'office-ui-fabric-react/lib/Nav';
+import { INavProps, INavStyleProps, INavStyles, INavState } from './Nav.types';
 import { getStyles } from './Nav.styles';
-import { NavBase } from './NavBase';
 import { styled, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { NavLink } from './NavLink';
-import { NavLinkGroup } from '@uifabric/dashboard/lib/components/Nav/NavLinkGroup';
+import { NavGroup } from './NavGroup';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
 const classNames = getClassNames(getStyles);
 
-class NavComponent extends NavBase {
+class NavComponent extends React.Component<INavProps, INavState> {
   constructor(props: INavProps) {
     super(props);
+
+    this.state = {
+      isNavCollapsed: this.props.isNavCollapsed ? this.props.isNavCollapsed : false,
+      showMore: this.props.showMore ? this.props.showMore : false
+    };
   }
 
   public render() {
     if (!this.props.groups || this.props.groups.length === 0) {
       return null;
     }
-
-    // reset the flag
-    // on render link, find if there is atleast one hidden link to display "Show more" link
-    this._hasAtleastOneHiddenLink = false;
 
     return (
       <nav
@@ -32,7 +33,7 @@ class NavComponent extends NavBase {
       >
         {this._renderExpandCollapseNavItem()}
 
-        {this.props.groups.map((group: ICustomNavLinkGroup, groupIndex: number) => {
+        {this.props.groups.map((group: INavLinkGroup, groupIndex: number) => {
           return this._renderGroup(group, groupIndex);
         })}
 
@@ -40,11 +41,6 @@ class NavComponent extends NavBase {
       </nav>
     );
   }
-
-  // TODO
-  // Nav expand & collapse
-  // Edit & show more links
-  // Render NavGroups (new component?)
 
   //
   // Basic methods
@@ -74,26 +70,17 @@ class NavComponent extends NavBase {
   }
 
   // Start to parse the Nav Schema
-  private _renderGroup(group: ICustomNavLinkGroup, groupIndex: number): React.ReactElement<{}> | null {
+  private _renderGroup(group: INavLinkGroup, groupIndex: number): React.ReactElement<{}> | null {
     if (!group || !group.links || group.links.length === 0) {
       return null;
     }
 
-    const { enableCustomization } = this.props;
-
-    // skip customization group if customization is not enabled
-    if (!enableCustomization && group.groupType === NavGroupType.CustomizationGroup) {
-      return null;
-    }
-
     return (
-      <NavLinkGroup
+      <NavGroup
+        key={groupIndex}
         groupIndex={groupIndex}
         groupName={group.name}
         links={group.links}
-        enableCustomization={enableCustomization}
-        hasHiddenLink={this._hasAtleastOneHiddenLink}
-        onShowNestedLink={this._onShowMoreLinkClicked}
         dataHint={this.props.dataHint}
         isNavCollapsed={this.state.isNavCollapsed ? this.state.isNavCollapsed : false}
       />
@@ -110,7 +97,6 @@ class NavComponent extends NavBase {
 
     return (
       // If enableCustomization
-      // TODO only reveal the show more link if there are hidden links. this._hasAtLeastOneHiddenLink is false no matter what here
       <ul role={'list'}>
         <li role={'listitem'} title={'Edit navigation'}>
           <NavLink

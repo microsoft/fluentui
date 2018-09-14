@@ -61,13 +61,13 @@ class NavigationLink extends React.Component<INavLinkProps, INavLinkStates> {
   }
 
   private _generateLinkContent(): React.ReactElement<{}> | null {
-    const { isNested } = this.props;
+    const { isNested, name } = this.props;
     if (this.props.isNavCollapsed) {
       return null;
     }
     return (
       <div className={isNested ? mergeStyles(this.classNames.navItemText, this.classNames.navItemSmall) : this.classNames.navItemText}>
-        {this.props.name}
+        {name}
       </div>
     );
   }

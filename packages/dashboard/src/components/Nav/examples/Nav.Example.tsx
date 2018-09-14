@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ICustomNavLinkGroup, NavGroupType } from '../Nav.types';
+import { INavLinkGroup } from 'office-ui-fabric-react/lib/Nav';
 import { Nav } from '../Nav';
 
 export class NavExample extends React.Component<{}, {}> {
@@ -8,7 +8,7 @@ export class NavExample extends React.Component<{}, {}> {
   }
 
   public render(): JSX.Element {
-    const navLinkGroups: ICustomNavLinkGroup[] = [
+    const navLinkGroups: INavLinkGroup[] = [
       {
         links: [
           {
@@ -59,8 +59,7 @@ export class NavExample extends React.Component<{}, {}> {
           { name: 'Setup', url: 'http://msn.com', target: '_blank', icon: 'Repair' },
           { name: 'Reports', url: 'http://example.com', icon: 'Chart' },
           { name: 'Health', url: 'http://msn.com', target: '_blank', icon: 'Health' }
-        ],
-        groupType: NavGroupType.MenuGroup
+        ]
       },
       {
         name: 'Group heading',
@@ -78,8 +77,7 @@ export class NavExample extends React.Component<{}, {}> {
               { name: 'SharePoint', url: 'http://msn.com', target: '_blank' }
             ]
           }
-        ],
-        groupType: NavGroupType.CustomizationGroup
+        ]
       }
     ];
 

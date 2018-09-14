@@ -4,17 +4,11 @@ import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { INavLink, INavLinkGroup, INavState } from 'office-ui-fabric-react/lib/Nav';
 /* tslint:enable */
 
-export enum NavGroupType {
-  ToggleGroup,
-  MenuGroup,
-  CustomizationGroup
-}
-
 export interface INavProps {
   /**
    * A collection of link groups to display in the navigation bar
    */
-  groups: ICustomNavLinkGroup[] | null;
+  groups: INavLinkGroup[] | null;
 
   /**
    * (Optional) Used to toggle the nav component between expanded and collapsed state
@@ -102,11 +96,14 @@ export interface INavGroupProps {
   links: INavLink[];
   enableCustomization?: boolean;
   showMore?: boolean;
-  hasHiddenLink: boolean;
   dataHint?: string;
   isNavCollapsed?: boolean;
-  onShowNestedLink?(ev: React.MouseEvent<HTMLElement>): void;
-  onNavNodeExpandedCallback?(nodeKey: string, isExpanded: boolean): void;
+}
+
+export interface INavLinkGroupProps extends INavLinkProps {
+  link: INavLink;
+  isExpanded?: boolean;
+  isNavCollapsed?: boolean;
 }
 
 export interface INavLink extends INavLink {
@@ -135,13 +132,6 @@ export interface INavLink extends INavLink {
    * (Optional) Provides an ability to toggle auto expand when the selectedKey prop is one of the child of this link
    */
   disableAutoExpand?: boolean;
-}
-
-export interface ICustomNavLinkGroup extends INavLinkGroup {
-  /**
-   * Used to identify whether the nav group is toggle group or menu group or the customization group.
-   */
-  groupType: NavGroupType;
 }
 
 export interface INavStyleProps {
