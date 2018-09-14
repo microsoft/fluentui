@@ -12,7 +12,7 @@ export interface ISuggestionsCoreProps<T> extends React.Props<any> {
   /**
    * How the suggestion should look in the suggestion list.
    */
-  onRenderSuggestion?: (props: T, suggestionItemProps: T) => JSX.Element;
+  onRenderSuggestion?: (props: T, suggestionItemProps: any) => JSX.Element;
   /**
    * What should occur when a suggestion is clicked
    */
@@ -51,6 +51,10 @@ export interface ISuggestionsCoreProps<T> extends React.Props<any> {
    * on calling nextSuggestion and previousSuggestion, respectively
    */
   shouldLoopSelection: boolean;
+  /**
+   * Flag indicates if render suggestions as a div element
+   */
+  renderSuggestionsItemAsDiv?: boolean;
 }
 
 // tslint:disable-next-line:no-any
@@ -83,6 +87,10 @@ export interface ISuggestionsControlProps<T> extends React.Props<any>, ISuggesti
    * Completes the suggestion
    */
   completeSuggestion: () => void;
+  /**
+   * Flag indicates if render suggestions as a div element
+   */
+  renderSuggestionsItemAsDiv?: boolean;
 }
 
 export interface ISuggestionsHeaderFooterProps {

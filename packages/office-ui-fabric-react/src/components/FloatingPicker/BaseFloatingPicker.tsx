@@ -161,6 +161,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
         calloutWidth={this.props.calloutWidth ? this.props.calloutWidth : 0}
       >
         <TypedSuggestionsControl
+          renderSuggestionsItemAsDiv={this.props.renderSuggestionsItemAsDiv}
           onRenderSuggestion={this.props.onRenderSuggestionsItem}
           onSuggestionClick={this.onSuggestionClick}
           onSuggestionRemove={this.onSuggestionRemove}
