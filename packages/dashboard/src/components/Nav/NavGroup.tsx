@@ -15,13 +15,12 @@ class NavigationGroup extends React.Component<INavGroupProps, {}> {
 
   public render(): JSX.Element {
     const { groupIndex, groupName, links } = this.props;
-    const nestingLevel = 0;
 
     return (
-      <ul role="list" key={groupIndex}>
+      <ul role="list">
         {this._renderGroupName(groupName, groupIndex)}
         {links.map((link: INavLink, linkIndex: number) => {
-          return this._renderLinks(link, nestingLevel, linkIndex);
+          return this._renderLinks(link, linkIndex, groupIndex);
         })}
       </ul>
     );
@@ -44,41 +43,36 @@ class NavigationGroup extends React.Component<INavGroupProps, {}> {
     );
   }
 
-  private _renderLinks(link: INavLink, nestingLevel: number, linkIndex: number): React.ReactElement<{}> | null {
+  private _renderLinks(link: INavLink, linkIndex: number, groupIndex: number): React.ReactElement<{}> | null {
     if (!link) {
       return null;
     }
 
     const { isNavCollapsed } = this.props;
-    const keyIndex = nestingLevel.toString() + linkIndex.toString();
+    const keyStr = groupIndex.toString() + linkIndex.toString();
 
     return (
-      <>
+      <li role="listitem" key={keyStr}>
         {!!link.links && link.links ? (
-          <li role="listitem" key={keyIndex}>
-            <NavLinkGroup key={keyIndex} isExpanded={link.isExpanded} isNavCollapsed={isNavCollapsed} link={link} />
-          </li>
+          <NavLinkGroup isExpanded={link.isExpanded ? link.isExpanded : false} isNavCollapsed={isNavCollapsed} link={link} />
         ) : (
-          <li role="listitem" key={keyIndex}>
-            <NavLink
-              key={keyIndex}
-              isNavCollapsed={isNavCollapsed}
-              id={link.name}
-              name={link.name}
-              href={link.url}
-              target={link.target}
-              onClick={link.onClick}
-              ariaExpanded={!isNavCollapsed}
-              dataValue={link.name}
-              ariaLabel={link.ariaLabel}
-              primaryIconName={link.icon}
-              hasNestedMenu={false}
-              isNested={false}
-              role="menuitem"
-            />
-          </li>
+          <NavLink
+            isNavCollapsed={isNavCollapsed}
+            id={link.name}
+            name={link.name}
+            href={link.url}
+            target={link.target}
+            onClick={link.onClick}
+            ariaExpanded={!isNavCollapsed}
+            dataValue={link.name}
+            ariaLabel={link.ariaLabel}
+            primaryIconName={link.icon}
+            hasNestedMenu={false}
+            isNested={false}
+            role="menuitem"
+          />
         )}
-      </>
+      </li>
     );
   }
 }

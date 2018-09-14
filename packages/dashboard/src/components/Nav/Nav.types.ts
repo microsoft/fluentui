@@ -102,8 +102,13 @@ export interface INavGroupProps {
 
 export interface INavLinkGroupProps extends INavLinkProps {
   link: INavLink;
-  isExpanded?: boolean;
+  isExpanded: boolean;
   isNavCollapsed?: boolean;
+}
+
+export interface INavLinkGroupStates {
+  isExpanded: boolean;
+  hasSelectedNestedLink?: boolean;
 }
 
 export interface INavLink extends INavLink {
@@ -184,6 +189,8 @@ export interface INavStyles {
   navItemRoot: IStyle;
   navItemSmall: IStyle;
   hidden: IStyle;
+  nestedNavLink: IStyle;
+  nestedNavLinkCollapsed: IStyle;
 
   /**
    * Style set for the bar marker in the nav item
@@ -200,21 +207,6 @@ export interface INavStyles {
    * Style set for the name column in the nav item
    */
   navItemText: IStyle;
-
-  /**
-   * Style set for the slim version of nav item
-   */
-  navSlimItemRoot: IStyle;
-
-  /**
-   * Style set for the floating nav root in the slim version
-   */
-  navFloatingRoot: IStyle;
-
-  /**
-   * Style set for the floating nav item root
-   */
-  navFloatingItemRoot: IStyle;
 
   /**
    * Style set for the nav group separator

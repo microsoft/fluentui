@@ -77,7 +77,7 @@ class NavComponent extends React.Component<INavProps, INavState> {
 
     return (
       <NavGroup
-        key={groupIndex}
+        key={'group_' + groupIndex}
         groupIndex={groupIndex}
         groupName={group.name}
         links={group.links}
