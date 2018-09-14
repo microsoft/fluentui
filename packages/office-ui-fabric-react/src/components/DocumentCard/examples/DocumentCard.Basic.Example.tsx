@@ -7,6 +7,7 @@ import {
   IDocumentCardPreviewProps
 } from 'office-ui-fabric-react/lib/DocumentCard';
 import { ImageFit } from 'office-ui-fabric-react/lib/Image';
+import { ILinkProps } from 'office-ui-fabric-react/lib/Link';
 import { TestImages } from '../../../common/TestImages';
 import './DocumentCard.Example.scss';
 
@@ -26,8 +27,13 @@ export class DocumentCardBasicExample extends React.Component<any, any> {
       ]
     };
 
+    const linkProps: ILinkProps = {
+      href: 'http://bing.com',
+      target: '_blank'
+    };
+
     return (
-      <DocumentCard onClickHref="http://bing.com">
+      <DocumentCard linkProps={linkProps}>
         <DocumentCardPreview {...previewProps} />
         <DocumentCardTitle
           title="Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx"

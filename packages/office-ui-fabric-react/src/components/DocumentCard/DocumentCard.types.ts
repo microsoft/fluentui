@@ -8,6 +8,7 @@ import { DocumentCardStatus } from './DocumentCardStatus';
 import { PersonaInitialsColor } from '../../Persona';
 import { ImageFit } from '../../Image';
 import { IButtonProps } from '../../Button';
+import { ILinkProps } from '../../Link';
 import { IIconProps } from '../../Icon';
 import { IBaseProps, IRefObject } from '../../Utilities';
 
@@ -28,12 +29,14 @@ export interface IDocumentCardProps extends IBaseProps<IDocumentCard> {
 
   /**
    * Function to call when the card is clicked or keyboard Enter/Space is pushed.
+   * @deprecated Use linkProps instead.
    */
   onClick?: (ev?: React.SyntheticEvent<HTMLElement>) => void;
 
   /**
    * A URL to navigate to when the card is clicked. If a function has also been provided,
    * it will be used instead of the URL.
+   * @deprecated Use linkProps instead.
    */
   onClickHref?: string;
 
@@ -41,6 +44,11 @@ export interface IDocumentCardProps extends IBaseProps<IDocumentCard> {
    * Optional class for document card.
    */
   className?: string;
+
+  /**
+   * Props for the Link component.  Use this instead of the deprecated onClick and onClickHref.
+   */
+  linkProps?: ILinkProps;
 
   /**
    * Hex color value of the line below the card, which should correspond to the document type.

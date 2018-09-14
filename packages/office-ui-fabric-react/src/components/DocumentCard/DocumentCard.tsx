@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IDocumentCardProps, DocumentCardType } from './DocumentCard.types';
 import { BaseComponent, KeyCodes, css } from '../../Utilities';
+import { Link } from '../Link';
 import * as stylesImport from './DocumentCard.scss';
 const styles: any = stylesImport;
 
@@ -18,7 +19,7 @@ export class DocumentCard extends BaseComponent<IDocumentCardProps, any> {
   }
 
   public render(): JSX.Element {
-    const { onClick, onClickHref, children, className, type, accentColor } = this.props;
+    const { onClick, onClickHref, children, className, type, accentColor, linkProps } = this.props;
     const actionable = onClick || onClickHref ? true : false;
 
     // Override the border color if an accent color was provided (compact card only)
@@ -50,7 +51,7 @@ export class DocumentCard extends BaseComponent<IDocumentCardProps, any> {
         onClick={actionable ? this._onClick : undefined}
         style={style}
       >
-        {children}
+        <Link {...linkProps}>{children}</Link>
       </div>
     );
   }
