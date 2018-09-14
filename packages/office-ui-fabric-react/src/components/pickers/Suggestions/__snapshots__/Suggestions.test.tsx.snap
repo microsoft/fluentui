@@ -5,13 +5,10 @@ exports[`Suggestions renders a list properly 1`] = `
   className="ms-Suggestions"
 >
   <div
-    aria-label={undefined}
     className="ms-Suggestions-container"
-    id={undefined}
     role="listbox"
   >
     <div
-      aria-label={undefined}
       aria-selected={true}
       id="sug-0"
       role="option"
@@ -20,11 +17,6 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item is-suggested undefined"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--action
@@ -77,6 +69,11 @@ exports[`Suggestions renders a list properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #0078d4;
               }
@@ -94,7 +91,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 color: #004578;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -124,7 +120,6 @@ exports[`Suggestions renders a list properly 1`] = `
       </div>
     </div>
     <div
-      aria-label={undefined}
       aria-selected={false}
       id="sug-1"
       role="option"
@@ -133,11 +128,6 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--action
@@ -190,6 +180,11 @@ exports[`Suggestions renders a list properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #0078d4;
               }
@@ -207,7 +202,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 color: #004578;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -237,7 +231,6 @@ exports[`Suggestions renders a list properly 1`] = `
       </div>
     </div>
     <div
-      aria-label={undefined}
       aria-selected={false}
       id="sug-2"
       role="option"
@@ -246,11 +239,6 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--action
@@ -303,6 +291,11 @@ exports[`Suggestions renders a list properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #0078d4;
               }
@@ -320,7 +313,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 color: #004578;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -350,7 +342,6 @@ exports[`Suggestions renders a list properly 1`] = `
       </div>
     </div>
     <div
-      aria-label={undefined}
       aria-selected={false}
       id="sug-3"
       role="option"
@@ -359,11 +350,6 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--action
@@ -416,6 +402,11 @@ exports[`Suggestions renders a list properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #0078d4;
               }
@@ -433,7 +424,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 color: #004578;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -463,7 +453,6 @@ exports[`Suggestions renders a list properly 1`] = `
       </div>
     </div>
     <div
-      aria-label={undefined}
       aria-selected={false}
       id="sug-4"
       role="option"
@@ -472,11 +461,6 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--action
@@ -529,6 +513,11 @@ exports[`Suggestions renders a list properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #0078d4;
               }
@@ -546,7 +535,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 color: #004578;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -576,7 +564,6 @@ exports[`Suggestions renders a list properly 1`] = `
       </div>
     </div>
     <div
-      aria-label={undefined}
       aria-selected={false}
       id="sug-5"
       role="option"
@@ -585,11 +572,6 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--action
@@ -642,6 +624,11 @@ exports[`Suggestions renders a list properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #0078d4;
               }
@@ -659,7 +646,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 color: #004578;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -689,7 +675,6 @@ exports[`Suggestions renders a list properly 1`] = `
       </div>
     </div>
     <div
-      aria-label={undefined}
       aria-selected={false}
       id="sug-6"
       role="option"
@@ -698,11 +683,6 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--action
@@ -755,6 +735,11 @@ exports[`Suggestions renders a list properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #0078d4;
               }
@@ -772,7 +757,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 color: #004578;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -802,7 +786,6 @@ exports[`Suggestions renders a list properly 1`] = `
       </div>
     </div>
     <div
-      aria-label={undefined}
       aria-selected={false}
       id="sug-7"
       role="option"
@@ -811,11 +794,6 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--action
@@ -868,6 +846,11 @@ exports[`Suggestions renders a list properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #0078d4;
               }
@@ -885,7 +868,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 color: #004578;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -915,7 +897,6 @@ exports[`Suggestions renders a list properly 1`] = `
       </div>
     </div>
     <div
-      aria-label={undefined}
       aria-selected={false}
       id="sug-8"
       role="option"
@@ -924,11 +905,6 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--action
@@ -981,6 +957,11 @@ exports[`Suggestions renders a list properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #0078d4;
               }
@@ -998,7 +979,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 color: #004578;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -1028,7 +1008,6 @@ exports[`Suggestions renders a list properly 1`] = `
       </div>
     </div>
     <div
-      aria-label={undefined}
       aria-selected={false}
       id="sug-9"
       role="option"
@@ -1037,11 +1016,6 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--action
@@ -1094,6 +1068,11 @@ exports[`Suggestions renders a list properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #0078d4;
               }
@@ -1111,7 +1090,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 color: #004578;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -1141,7 +1119,6 @@ exports[`Suggestions renders a list properly 1`] = `
       </div>
     </div>
     <div
-      aria-label={undefined}
       aria-selected={false}
       id="sug-10"
       role="option"
@@ -1150,11 +1127,6 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--action
@@ -1207,6 +1179,11 @@ exports[`Suggestions renders a list properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #0078d4;
               }
@@ -1224,7 +1201,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 color: #004578;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -1254,7 +1230,6 @@ exports[`Suggestions renders a list properly 1`] = `
       </div>
     </div>
     <div
-      aria-label={undefined}
       aria-selected={false}
       id="sug-11"
       role="option"
@@ -1263,11 +1238,6 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--action
@@ -1320,6 +1290,11 @@ exports[`Suggestions renders a list properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #0078d4;
               }
@@ -1337,7 +1312,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 color: #004578;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -1367,7 +1341,6 @@ exports[`Suggestions renders a list properly 1`] = `
       </div>
     </div>
     <div
-      aria-label={undefined}
       aria-selected={false}
       id="sug-12"
       role="option"
@@ -1376,11 +1349,6 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--action
@@ -1433,6 +1401,11 @@ exports[`Suggestions renders a list properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #0078d4;
               }
@@ -1450,7 +1423,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 color: #004578;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -1480,7 +1452,6 @@ exports[`Suggestions renders a list properly 1`] = `
       </div>
     </div>
     <div
-      aria-label={undefined}
       aria-selected={false}
       id="sug-13"
       role="option"
@@ -1489,11 +1460,6 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--action
@@ -1546,6 +1512,11 @@ exports[`Suggestions renders a list properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #0078d4;
               }
@@ -1563,7 +1534,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 color: #004578;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -1593,7 +1563,6 @@ exports[`Suggestions renders a list properly 1`] = `
       </div>
     </div>
     <div
-      aria-label={undefined}
       aria-selected={false}
       id="sug-14"
       role="option"
@@ -1602,11 +1571,6 @@ exports[`Suggestions renders a list properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--action
@@ -1659,6 +1623,11 @@ exports[`Suggestions renders a list properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #0078d4;
               }
@@ -1676,7 +1645,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 color: #004578;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -1719,13 +1687,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
   className="ms-Suggestions"
 >
   <div
-    aria-label={undefined}
     className="ms-Suggestions-container"
-    id={undefined}
     role="listbox"
   >
     <div
-      aria-label={undefined}
       aria-selected={false}
       id="sug-0"
       role="option"
@@ -1734,11 +1699,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--action
@@ -1791,6 +1751,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #0078d4;
               }
@@ -1808,7 +1773,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 color: #004578;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -1838,7 +1802,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       </div>
     </div>
     <div
-      aria-label={undefined}
       aria-selected={false}
       id="sug-1"
       role="option"
@@ -1847,11 +1810,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--action
@@ -1904,6 +1862,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #0078d4;
               }
@@ -1921,7 +1884,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 color: #004578;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -1951,7 +1913,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       </div>
     </div>
     <div
-      aria-label={undefined}
       aria-selected={false}
       id="sug-2"
       role="option"
@@ -1960,11 +1921,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--action
@@ -2017,6 +1973,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #0078d4;
               }
@@ -2034,7 +1995,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 color: #004578;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -2064,7 +2024,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       </div>
     </div>
     <div
-      aria-label={undefined}
       aria-selected={false}
       id="sug-3"
       role="option"
@@ -2073,11 +2032,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--action
@@ -2130,6 +2084,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #0078d4;
               }
@@ -2147,7 +2106,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 color: #004578;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -2177,7 +2135,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       </div>
     </div>
     <div
-      aria-label={undefined}
       aria-selected={false}
       id="sug-4"
       role="option"
@@ -2186,11 +2143,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--action
@@ -2243,6 +2195,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #0078d4;
               }
@@ -2260,7 +2217,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 color: #004578;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -2290,7 +2246,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       </div>
     </div>
     <div
-      aria-label={undefined}
       aria-selected={false}
       id="sug-5"
       role="option"
@@ -2299,11 +2254,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--action
@@ -2356,6 +2306,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #0078d4;
               }
@@ -2373,7 +2328,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 color: #004578;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -2403,7 +2357,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       </div>
     </div>
     <div
-      aria-label={undefined}
       aria-selected={false}
       id="sug-6"
       role="option"
@@ -2412,11 +2365,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--action
@@ -2469,6 +2417,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #0078d4;
               }
@@ -2486,7 +2439,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 color: #004578;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -2516,7 +2468,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       </div>
     </div>
     <div
-      aria-label={undefined}
       aria-selected={false}
       id="sug-7"
       role="option"
@@ -2525,11 +2476,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--action
@@ -2582,6 +2528,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #0078d4;
               }
@@ -2599,7 +2550,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 color: #004578;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -2629,7 +2579,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       </div>
     </div>
     <div
-      aria-label={undefined}
       aria-selected={true}
       id="sug-8"
       role="option"
@@ -2638,11 +2587,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item is-suggested undefined"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--action
@@ -2695,6 +2639,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #0078d4;
               }
@@ -2712,7 +2661,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 color: #004578;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -2742,7 +2690,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       </div>
     </div>
     <div
-      aria-label={undefined}
       aria-selected={false}
       id="sug-9"
       role="option"
@@ -2751,11 +2698,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--action
@@ -2808,6 +2750,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #0078d4;
               }
@@ -2825,7 +2772,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 color: #004578;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -2855,7 +2801,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       </div>
     </div>
     <div
-      aria-label={undefined}
       aria-selected={false}
       id="sug-10"
       role="option"
@@ -2864,11 +2809,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--action
@@ -2921,6 +2861,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #0078d4;
               }
@@ -2938,7 +2883,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 color: #004578;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -2968,7 +2912,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       </div>
     </div>
     <div
-      aria-label={undefined}
       aria-selected={false}
       id="sug-11"
       role="option"
@@ -2977,11 +2920,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--action
@@ -3034,6 +2972,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #0078d4;
               }
@@ -3051,7 +2994,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 color: #004578;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -3081,7 +3023,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       </div>
     </div>
     <div
-      aria-label={undefined}
       aria-selected={false}
       id="sug-12"
       role="option"
@@ -3090,11 +3031,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--action
@@ -3147,6 +3083,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #0078d4;
               }
@@ -3164,7 +3105,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 color: #004578;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -3194,7 +3134,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       </div>
     </div>
     <div
-      aria-label={undefined}
       aria-selected={false}
       id="sug-13"
       role="option"
@@ -3203,11 +3142,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--action
@@ -3260,6 +3194,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #0078d4;
               }
@@ -3277,7 +3216,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 color: #004578;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -3307,7 +3245,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       </div>
     </div>
     <div
-      aria-label={undefined}
       aria-selected={false}
       id="sug-14"
       role="option"
@@ -3316,11 +3253,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         className="ms-Suggestions-item"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--action
@@ -3373,6 +3305,11 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #0078d4;
               }
@@ -3390,7 +3327,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 color: #004578;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}

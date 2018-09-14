@@ -33,12 +33,6 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
   <div>
     <button
       aria-checked={false}
-      aria-describedby={undefined}
-      aria-disabled={undefined}
-      aria-label={undefined}
-      aria-labelledby={undefined}
-      aria-posinset={undefined}
-      aria-setsize={undefined}
       checked={false}
       className=
           ms-Checkbox
@@ -100,15 +94,11 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
           &:focus .ms-Checkbox-text {
             color: #333333;
           }
-      data-ktp-execute-target={undefined}
-      disabled={undefined}
       id="checkbox-0"
-      name={undefined}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
       role="checkbox"
-      title={undefined}
       type="button"
     >
       <label
@@ -151,7 +141,6 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                 transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                 width: 20px;
               }
-          data-ktp-target={undefined}
         >
           <i
             aria-hidden={true}
@@ -197,11 +186,6 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
     </button>
   </div>
   <button
-    aria-describedby={undefined}
-    aria-disabled={undefined}
-    aria-label={undefined}
-    aria-labelledby={undefined}
-    aria-pressed={undefined}
     className=
         ms-Button
         ms-Button--default
@@ -253,6 +237,11 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
           right: -2px;
           top: -2px;
         }
+        &:active > * {
+          left: 0px;
+          position: relative;
+          top: 0px;
+        }
         &:hover {
           background-color: #eaeaea;
           color: #212121;
@@ -266,7 +255,6 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
           color: #212121;
         }
     data-is-focusable={true}
-    disabled={undefined}
     onClick={[Function]}
     onKeyDown={[Function]}
     onKeyPress={[Function]}

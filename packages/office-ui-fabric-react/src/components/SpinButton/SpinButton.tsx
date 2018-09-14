@@ -2,15 +2,7 @@ import * as React from 'react';
 import { IconButton } from '../../Button';
 import { Label } from '../../Label';
 import { Icon } from '../../Icon';
-import {
-  BaseComponent,
-  getId,
-  KeyCodes,
-  customizable,
-  calculatePrecision,
-  precisionRound,
-  createRef
-} from '../../Utilities';
+import { BaseComponent, getId, KeyCodes, customizable, calculatePrecision, precisionRound, createRef } from '../../Utilities';
 import { ISpinButton, ISpinButtonProps } from './SpinButton.types';
 import { Position } from '../../utilities/positioning';
 import { getStyles, getArrowButtonStyles } from './SpinButton.styles';
@@ -143,14 +135,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
 
     const classNames = this.props.getClassNames
       ? this.props.getClassNames(theme!, !!disabled, !!isFocused, keyboardSpinDirection, labelPosition, className)
-      : getClassNames(
-          getStyles(theme!, customStyles),
-          !!disabled,
-          !!isFocused,
-          keyboardSpinDirection,
-          labelPosition,
-          className
-        );
+      : getClassNames(getStyles(theme!, customStyles), !!disabled, !!isFocused, keyboardSpinDirection, labelPosition, className);
 
     return (
       <div className={classNames.root}>
@@ -184,13 +169,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
                 autoComplete="off"
                 role="spinbutton"
                 aria-labelledby={label && this._labelId}
-                aria-valuenow={
-                  ariaValueNow !== undefined && !isNaN(ariaValueNow)
-                    ? ariaValueNow
-                    : !isNaN(Number(value))
-                      ? Number(value)
-                      : undefined
-                }
+                aria-valuenow={!isNaN(Number(ariaValueNow)) ? ariaValueNow : !isNaN(Number(value)) ? Number(value) : undefined}
                 aria-valuetext={ariaValueText ? ariaValueText : isNaN(Number(value)) ? value : undefined}
                 aria-valuemin={min}
                 aria-valuemax={max}
@@ -359,11 +338,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * @param event - the event that fired
    */
   private _validate = (event: React.FocusEvent<HTMLInputElement> | React.KeyboardEvent<HTMLInputElement>): void => {
-    if (
-      this.state.value !== undefined &&
-      this._valueToValidate !== undefined &&
-      this._valueToValidate !== this._lastValidValue
-    ) {
+    if (this.state.value !== undefined && this._valueToValidate !== undefined && this._valueToValidate !== this._lastValidValue) {
       const newValue = this._onValidate!(this._valueToValidate, event);
       if (newValue) {
         this._lastValidValue = newValue;
@@ -393,11 +368,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * when spinning in response to a mouseDown
    * @param stepFunction - function to use to step by
    */
-  private _updateValue = (
-    shouldSpin: boolean,
-    stepDelay: number,
-    stepFunction: (value: string) => string | void
-  ): void => {
+  private _updateValue = (shouldSpin: boolean, stepDelay: number, stepFunction: (value: string) => string | void): void => {
     const newValue: string | void = stepFunction(this.state.value);
     if (newValue) {
       this._lastValidValue = newValue;

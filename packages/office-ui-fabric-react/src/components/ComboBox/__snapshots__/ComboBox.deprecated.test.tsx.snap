@@ -103,18 +103,11 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
           right: -2px;
           top: -2px;
         }
-    data-ktp-target={undefined}
     id="ComboBox0wrapper"
   >
     <input
-      aria-activedescendant={undefined}
       aria-autocomplete="both"
-      aria-describedby={undefined}
-      aria-disabled={undefined}
       aria-expanded={false}
-      aria-label={undefined}
-      aria-labelledby={undefined}
-      aria-owns={undefined}
       autoCapitalize="off"
       autoComplete="off"
       className=
@@ -135,7 +128,6 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             width: 100%;
           }
       data-is-interactable={true}
-      data-ktp-execute-target={undefined}
       data-lpignore={true}
       id="ComboBox0-input"
       onBlur={[Function]}
@@ -151,17 +143,11 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
       readOnly={true}
       role="combobox"
       spellCheck={false}
-      title={undefined}
       type="text"
       value="testValue"
     />
     <button
-      aria-describedby={undefined}
-      aria-disabled={undefined}
       aria-hidden={true}
-      aria-label={undefined}
-      aria-labelledby={undefined}
-      aria-pressed={undefined}
       checked={false}
       className=
           ms-Button
@@ -218,6 +204,11 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             right: -2px;
             top: -2px;
           }
+          &:active > * {
+            left: 0px;
+            position: relative;
+            top: 0px;
+          }
           @media screen and (-ms-high-contrast: active){& {
             -ms-high-contrast-adjust: none;
             background-color: ButtonFace;
@@ -238,7 +229,6 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             color: #212121;
           }
       data-is-focusable={false}
-      disabled={undefined}
       onClick={[Function]}
       onKeyDown={[Function]}
       onKeyPress={[Function]}
@@ -401,14 +391,9 @@ exports[`ComboBox renders a ComboBox with a Keytip correctly 1`] = `
     id="ComboBox4wrapper"
   >
     <input
-      aria-activedescendant={undefined}
       aria-autocomplete="both"
       aria-describedby=" ktp-layer-id ktp-a"
-      aria-disabled={undefined}
       aria-expanded={false}
-      aria-label={undefined}
-      aria-labelledby={undefined}
-      aria-owns={undefined}
       autoCapitalize="off"
       autoComplete="off"
       className=
@@ -445,17 +430,11 @@ exports[`ComboBox renders a ComboBox with a Keytip correctly 1`] = `
       readOnly={true}
       role="combobox"
       spellCheck={false}
-      title={undefined}
       type="text"
       value=""
     />
     <button
-      aria-describedby={undefined}
-      aria-disabled={undefined}
       aria-hidden={true}
-      aria-label={undefined}
-      aria-labelledby={undefined}
-      aria-pressed={undefined}
       checked={false}
       className=
           ms-Button
@@ -512,6 +491,11 @@ exports[`ComboBox renders a ComboBox with a Keytip correctly 1`] = `
             right: -2px;
             top: -2px;
           }
+          &:active > * {
+            left: 0px;
+            position: relative;
+            top: 0px;
+          }
           @media screen and (-ms-high-contrast: active){& {
             -ms-high-contrast-adjust: none;
             background-color: ButtonFace;
@@ -532,7 +516,6 @@ exports[`ComboBox renders a ComboBox with a Keytip correctly 1`] = `
             color: #212121;
           }
       data-is-focusable={false}
-      disabled={undefined}
       onClick={[Function]}
       onKeyDown={[Function]}
       onKeyPress={[Function]}

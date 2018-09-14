@@ -2,8 +2,6 @@
 
 exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] = `
 <div
-  aria-describedby={undefined}
-  aria-labelledby={undefined}
   className=
       ms-FocusZone
       ms-OverflowSet
@@ -27,7 +25,6 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
         }
   >
     <button
-      aria-disabled={undefined}
       className=
           ms-Link
           {
@@ -86,7 +83,6 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
           &:focus {
             color: #0078d4;
           }
-      disabled={undefined}
       onClick={[Function]}
     >
       Link 1
@@ -101,7 +97,6 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
         }
   >
     <button
-      aria-disabled={undefined}
       className=
           ms-Link
           {
@@ -160,7 +155,6 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
           &:focus {
             color: #0078d4;
           }
-      disabled={undefined}
       onClick={[Function]}
     >
       Link 2
@@ -175,7 +169,6 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
         }
   >
     <button
-      aria-disabled={undefined}
       className=
           ms-Link
           {
@@ -234,7 +227,6 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
           &:focus {
             color: #0078d4;
           }
-      disabled={undefined}
       onClick={[Function]}
     >
       Link 3
@@ -249,14 +241,9 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
         }
   >
     <button
-      aria-describedby={undefined}
-      aria-disabled={undefined}
       aria-expanded={false}
       aria-haspopup={true}
-      aria-label={undefined}
-      aria-labelledby={undefined}
       aria-owns={null}
-      aria-pressed={undefined}
       className=
           ms-Button
           ms-Button--icon
@@ -307,6 +294,11 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             right: -2px;
             top: -2px;
           }
+          &:active > * {
+            left: 0px;
+            position: relative;
+            top: 0px;
+          }
           &:hover {
             color: #004578;
           }
@@ -318,7 +310,6 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             color: #0078d4;
           }
       data-is-focusable={true}
-      disabled={undefined}
       onClick={[Function]}
       onKeyDown={[Function]}
       onKeyPress={[Function]}

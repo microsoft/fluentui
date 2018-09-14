@@ -220,9 +220,14 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     primaryButtonTextHovered: p.white,
     primaryButtonTextPressed: p.white,
 
-    menuItemBackgroundHovered: p.neutralLighter,
+    menuBackground: p.white,
+    menuDivider: p.neutralTertiaryAlt,
     menuIcon: p.themePrimary,
     menuHeader: p.themePrimary,
+    menuItemBackgroundHovered: p.neutralLighter,
+    menuItemBackgroundPressed: p.neutralLight,
+    menuItemText: p.neutralPrimary,
+    menuItemTextHovered: p.neutralDark,
 
     listBackground: p.white,
     listText: p.neutralPrimary,

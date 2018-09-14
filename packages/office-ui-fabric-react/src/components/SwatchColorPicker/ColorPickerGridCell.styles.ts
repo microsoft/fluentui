@@ -18,8 +18,8 @@ function getSvgSelectorStyles(borderColor: string, isHover: boolean): IRawStyle 
 
 export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGridCellStyles => {
   const { theme, disabled, selected, circle, isWhite } = props;
-
   const { semanticColors } = theme;
+
   return {
     colorCell: [
       {
@@ -38,7 +38,7 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
         height: 40,
         selectors: {
           [HighContrastSelector]: { border: 'none' },
-          [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus::after`]: { border: 'none' },
+          [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus::after`]: { borderColor: 'transparent' },
           [`.${IsFocusVisibleClassName} &:focus $svg`]: getSvgSelectorStyles(theme.palette.neutralQuaternaryAlt, false),
           ':hover $svg': getSvgSelectorStyles(theme.palette.neutralQuaternaryAlt, true),
           ':focus $svg': getSvgSelectorStyles(theme.palette.neutralQuaternaryAlt, false),
@@ -48,10 +48,11 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
       isWhite && {
         selectors: {
           $svg: {
-            padding: 0,
-            border: '1px solid',
-            borderColor: theme.palette.neutralTertiary,
-            margin: 4
+            width: 12,
+            height: 12,
+            border: '4px solid',
+            boxShadow: `inset 0 0 0 1px ${theme.palette.neutralTertiary}`,
+            borderColor: 'transparent'
           }
         }
       },
