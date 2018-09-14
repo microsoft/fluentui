@@ -52,6 +52,30 @@ export const getStyles = (): IRecommendationStyles => ({
     textOverflow: 'ellipsis',
     overflow: 'hidden',
     wordWrap: 'break-word'
+  },
+  recommendationHeaderRow: {
+    flexDirection: 'row',
+    width: '49%',
+    justifyContent: 'space-between'
+  },
+  recommendationContentRow: {
+    flexDirection: 'row',
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    marginTop: '10px'
+  },
+  recommendationContentRowText: {
+    width: '48.5%',
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between'
+  },
+  recommendationContentRowVisualization: {
+    width: '48.5%'
+  },
+  recommendationCommandRow: {
+    alignSelf: 'flex-end'
   }
 });
 
