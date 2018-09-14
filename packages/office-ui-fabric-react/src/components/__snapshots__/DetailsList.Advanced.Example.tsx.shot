@@ -164,7 +164,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
               margin-top: 0;
             }
       >
-        Show on render divider feature on column header divider
+        Show custom color column-divider on hover
       </span>
     </label>
   </button>
