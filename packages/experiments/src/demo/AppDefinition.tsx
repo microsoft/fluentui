@@ -46,6 +46,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/layoutgroup'
         },
         {
+          component: require<any>('../components/Separator/SeparatorPage').SeparatorPage,
+          key: 'Separator',
+          name: 'Separator',
+          url: '#/examples/separator'
+        },
+        {
           component: require<any>('../components/signals/SignalsPage').SignalsPage,
           key: 'Signals',
           name: 'Signals',
