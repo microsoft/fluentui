@@ -2,6 +2,35 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.30.1",
+      "tag": "@uifabric/experiments_v6.30.1",
+      "date": "Fri, 14 Sep 2018 01:55:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fluent: Fix issue with background color on primary buttons using the wrong values",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "485daa279a8fc49fb095952c2902f6490bbf4c63"
+          }
+        ],
+        "none": [
+          {
+            "comment": "react-test-renderer version updated 16.4.2 -> 16.5.0",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "f425097fa7f03be743a3825682d26acac7b7a95c"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.20.0` to `^0.21.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.68.0 <7.0.0` to `>=6.69.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.30.0",
       "tag": "@uifabric/experiments_v6.30.0",
       "date": "Wed, 12 Sep 2018 12:26:41 GMT",

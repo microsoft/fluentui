@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.69.0",
+      "tag": "office-ui-fabric-react_v6.69.0",
+      "date": "Fri, 14 Sep 2018 01:55:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "added functional unit tests for drag-drop feature",
+            "author": "Arko Gupta <arkogupta16@gmail.com>",
+            "commit": "be741c32aad8d2920f92a4d639651e6fccd6c52d"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Adds an optional prop to the DatePicker that allows disabled elements to be focused (although not pressed)",
+            "author": "kisiebel <40902158+kisiebel@users.noreply.github.com>",
+            "commit": "5d609578f17555827e4979e79eed5ebf98b8db25"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.68.0",
       "tag": "office-ui-fabric-react_v6.68.0",
       "date": "Thu, 13 Sep 2018 17:38:04 GMT",

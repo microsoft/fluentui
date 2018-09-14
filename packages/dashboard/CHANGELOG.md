@@ -1,6 +1,13 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Thu, 13 Sep 2018 17:38:04 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Sep 2018 01:55:02 GMT and should not be manually modified.
+
+## 0.24.1
+Fri, 14 Sep 2018 01:55:02 GMT
+
+### Patches
+
+- Changing styling of wrapper component in card. This wrapper component covers all the charts inside the card content layout.
 
 ## 0.24.0
 Thu, 13 Sep 2018 17:38:04 GMT
