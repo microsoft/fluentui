@@ -1,9 +1,16 @@
 import * as React from 'react';
-import { BaseComponent, getNativeProps, divProperties, KeyCodes, createRef, classNamesFunction } from '../../Utilities';
-import { IExpandingCardProps, IExpandingCardStyles, ExpandingCardMode, IExpandingCardStyleProps } from './ExpandingCard.types';
-import { Callout, ICallout } from '../../Callout';
+import { createRef, classNamesFunction } from '../../Utilities';
+import {
+  IExpandingCardProps,
+  IExpandingCardStyles,
+  ExpandingCardMode,
+  IExpandingCardStyleProps,
+  IExpandingCard
+} from './ExpandingCard.types';
+// import { Callout, ICallout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { FocusTrapZone } from '../../FocusTrapZone';
+// import { FocusTrapZone } from '../../FocusTrapZone';
+import { BaseCard } from 'office-ui-fabric-react/lib/components/HoverCard/BaseCard';
 
 const getClassNames = classNamesFunction<IExpandingCardStyleProps, IExpandingCardStyles>();
 
@@ -12,7 +19,7 @@ export interface IExpandingCardState {
   needsScroll: boolean;
 }
 
-export class ExpandingCardBase extends BaseComponent<IExpandingCardProps, IExpandingCardState> {
+export class ExpandingCardBase extends BaseCard<IExpandingCard, IExpandingCardProps, IExpandingCardStyles, IExpandingCardState> {
   public static defaultProps = {
     compactCardHeight: 156,
     expandedCardHeight: 384,
@@ -21,9 +28,9 @@ export class ExpandingCardBase extends BaseComponent<IExpandingCardProps, IExpan
     gapSpace: 0
   };
 
-  private _classNames: { [key in keyof IExpandingCardStyles]: string };
+  // private _classNames: { [key in keyof IExpandingCardStyles]: string };
   // tslint:disable-next-line:no-unused-variable
-  private _callout = createRef<ICallout>();
+  // private _callout = createRef<ICallout>();
   private _expandedElem = createRef<HTMLDivElement>();
 
   constructor(props: IExpandingCardProps) {
@@ -45,12 +52,12 @@ export class ExpandingCardBase extends BaseComponent<IExpandingCardProps, IExpan
 
   public render(): JSX.Element {
     const {
-      targetElement,
+      // targetElement,
       theme,
       styles: customStyles,
       compactCardHeight,
-      directionalHintFixed,
-      firstFocus,
+      // directionalHintFixed,
+      // firstFocus,
       expandedCardHeight,
       className,
       mode
@@ -60,50 +67,52 @@ export class ExpandingCardBase extends BaseComponent<IExpandingCardProps, IExpan
 
     this._classNames = getClassNames(customStyles!, {
       theme: theme!,
-      className,
       compactCardHeight,
       expandedCardHeight,
       needsScroll: needsScroll,
       expandedCardFirstFrameRendered: mode === ExpandingCardMode.expanded && firstFrameRendered
     });
 
-    const content = (
-      <div onMouseEnter={this.props.onEnter} onMouseLeave={this.props.onLeave} onKeyDown={this._onKeyDown} className={className}>
+    this._finalHeight = compactCardHeight! + expandedCardHeight!;
+
+    this._content = (
+      <div onMouseEnter={this.props.onEnter} onMouseLeave={this.props.onLeave} onKeyDown={this.onKeyDown} className={className}>
         {this._onRenderCompactCard()}
         {this._onRenderExpandedCard()}
       </div>
     );
 
-    return (
-      <Callout
-        {...getNativeProps(this.props, divProperties)}
-        componentRef={this._callout}
-        className={this._classNames.root}
-        target={targetElement}
-        isBeakVisible={false}
-        directionalHint={this.props.directionalHint}
-        directionalHintFixed={directionalHintFixed}
-        finalHeight={compactCardHeight! + expandedCardHeight!}
-        minPagePadding={24}
-        onDismiss={this.props.onLeave}
-        gapSpace={this.props.gapSpace}
-      >
-        {this.props.trapFocus ? (
-          <FocusTrapZone forceFocusInsideTrap={false} isClickableOutsideFocusTrap={true} disableFirstFocus={!firstFocus}>
-            {content}
-          </FocusTrapZone>
-        ) : (
-          content
-        )}
-      </Callout>
-    );
+    return this.renderCard();
+    // return (
+    //   <Callout
+    //     {...getNativeProps(this.props, divProperties)}
+    //     componentRef={this._callout}
+    //     className={this._classNames.root}
+    //     target={targetElement}
+    //     isBeakVisible={false}
+    //     directionalHint={this.props.directionalHint}
+    //     directionalHintFixed={directionalHintFixed}
+    //     finalHeight={compactCardHeight! + expandedCardHeight!}
+    //     minPagePadding={24}
+    //     onDismiss={this.props.onLeave}
+    //     gapSpace={this.props.gapSpace}
+    //   >
+    //     {this.props.trapFocus ? (
+    //       <FocusTrapZone forceFocusInsideTrap={false} isClickableOutsideFocusTrap={true} disableFirstFocus={!firstFocus}>
+    //         {content}
+    //       </FocusTrapZone>
+    //     ) : (
+    //       content
+    //     )}
+    //   </Callout>
+    // );
   }
 
-  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
-    if (ev.which === KeyCodes.escape) {
-      this.props.onLeave && this.props.onLeave(ev);
-    }
-  };
+  // private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
+  //   if (ev.which === KeyCodes.escape) {
+  //     this.props.onLeave && this.props.onLeave(ev);
+  //   }
+  // };
 
   private _onRenderCompactCard = (): JSX.Element => {
     return <div className={this._classNames.compactCard}>{this.props.onRenderCompactCard!(this.props.renderData)}</div>;

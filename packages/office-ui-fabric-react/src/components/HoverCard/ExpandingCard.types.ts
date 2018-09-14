@@ -1,25 +1,24 @@
-import * as React from 'react';
-
-import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IStyle, ITheme } from '../../Styling';
-import { DirectionalHint } from '../../common/DirectionalHint';
+// import { DirectionalHint } from '../../common/DirectionalHint';
+import { IBaseCardProps, IBaseCardStyles } from './BaseCard.types';
 
 export interface IExpandingCard {}
 
 /**
  * ExpandingCard component props.
  */
-export interface IExpandingCardProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface IExpandingCardProps extends IBaseCardProps<IExpandingCard> {
   /**
    * Optional callback to access the IExpandingCard interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: IRefObject<IExpandingCard>;
+  // componentRef?: IRefObject<IExpandingCard>;
 
   /**
    *  Item to be returned with onRender functions
    */
-  renderData?: any;
+  // renderData?: any;
 
   /**
    *  Render function to populate compact content area
@@ -34,17 +33,17 @@ export interface IExpandingCardProps extends React.HTMLAttributes<HTMLDivElement
   /**
    * Element to anchor the ExpandingCard to.
    */
-  targetElement?: HTMLElement;
+  // targetElement?: HTMLElement;
 
   /**
    * Callback upon focus or mouse enter event
    */
-  onEnter?: (ev?: any) => void;
+  // onEnter?: (ev?: any) => void;
 
   /**
    * Callback upon blur or mouse leave event
    */
-  onLeave?: (ev?: any) => void;
+  // onLeave?: (ev?: any) => void;
 
   /**
    * Height of compact card
@@ -67,19 +66,19 @@ export interface IExpandingCardProps extends React.HTMLAttributes<HTMLDivElement
   /**
    * Theme provided by HOC.
    */
-  theme?: ITheme;
+  // theme?: ITheme;
 
   /**
    * How the element should be positioned
    * @default DirectionalHint.bottomLeftEdge
    */
-  directionalHint?: DirectionalHint;
+  // directionalHint?: DirectionalHint;
 
   /**
    * The gap between the card and the target
    * @default 0
    */
-  gapSpace?: number;
+  // gapSpace?: number;
 
   /**
    * Custom styles for this component
@@ -90,22 +89,22 @@ export interface IExpandingCardProps extends React.HTMLAttributes<HTMLDivElement
    * Make callout content show on the set side
    * @default true
    */
-  directionalHintFixed?: boolean;
+  // directionalHintFixed?: boolean;
 
   /**
    * Trap focus or not
    */
-  trapFocus?: boolean;
+  // trapFocus?: boolean;
 
   /**
    * Focus on first element by default on card or not
    */
-  firstFocus?: boolean;
+  // firstFocus?: boolean;
 
   /**
    * Additional CSS class(es) to apply to the ExpandingCard content wrapper div.
    */
-  className?: string;
+  // className?: string;
 }
 
 export enum ExpandingCardMode {
@@ -139,11 +138,6 @@ export interface IExpandingCardStyleProps {
   theme: ITheme;
 
   /**
-   * Optional className(s) for ExpandingCard content wrapper div.
-   */
-  className?: string;
-
-  /**
    * Whether the content of the expanded card overflows vertically.
    */
   needsScroll?: boolean;
@@ -164,12 +158,7 @@ export interface IExpandingCardStyleProps {
   expandedCardHeight?: number;
 }
 
-export interface IExpandingCardStyles {
-  /**
-   * Style for the root element in the default enabled, non-toggled state.
-   */
-  root?: IStyle;
-
+export interface IExpandingCardStyles extends IBaseCardStyles {
   /**
    * Style for the main card element.
    */
