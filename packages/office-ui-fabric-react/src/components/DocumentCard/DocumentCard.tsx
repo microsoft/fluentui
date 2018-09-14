@@ -51,7 +51,9 @@ export class DocumentCard extends BaseComponent<IDocumentCardProps, any> {
         onClick={actionable ? this._onClick : undefined}
         style={style}
       >
-        <Link {...linkProps}>{children}</Link>
+        <Link as="a" {...linkProps}>
+          {children}
+        </Link>
       </div>
     );
   }

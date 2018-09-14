@@ -8,6 +8,7 @@ import {
   DocumentCardType
 } from 'office-ui-fabric-react/lib/DocumentCard';
 import { TestImages } from '../../../common/TestImages';
+import { ILinkProps } from 'office-ui-fabric-react/lib/components/Link';
 
 export class DocumentCardCompactExample extends React.Component<any, any> {
   public render(): JSX.Element {
@@ -64,9 +65,14 @@ export class DocumentCardCompactExample extends React.Component<any, any> {
       ]
     };
 
+    const linkProps: ILinkProps = {
+      href: 'http://bing.com',
+      target: '_blank'
+    };
+
     return (
       <div>
-        <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
+        <DocumentCard type={DocumentCardType.compact} linkProps={linkProps}>
           <DocumentCardPreview {...previewProps} />
           <div className="ms-DocumentCard-details">
             <DocumentCardTitle title="4 files were uploaded" shouldTruncate={true} />
@@ -77,7 +83,7 @@ export class DocumentCardCompactExample extends React.Component<any, any> {
           </div>
         </DocumentCard>
         <p />
-        <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
+        <DocumentCard type={DocumentCardType.compact} linkProps={linkProps}>
           <DocumentCardPreview previewImages={[previewProps.previewImages[0]]} />
           <div className="ms-DocumentCard-details">
             <DocumentCardTitle title="Revenue stream proposal fiscal year 2016 version02.pptx" shouldTruncate={true} />
@@ -88,7 +94,7 @@ export class DocumentCardCompactExample extends React.Component<any, any> {
           </div>
         </DocumentCard>
         <p />
-        <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
+        <DocumentCard type={DocumentCardType.compact} linkProps={linkProps}>
           <DocumentCardPreview {...previewPropsUsingIcon} />
           <div className="ms-DocumentCard-details">
             <DocumentCardTitle title="View and share files" shouldTruncate={true} />
@@ -99,13 +105,10 @@ export class DocumentCardCompactExample extends React.Component<any, any> {
           </div>
         </DocumentCard>
         <p />
-        <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
+        <DocumentCard type={DocumentCardType.compact} linkProps={linkProps}>
           <DocumentCardPreview {...previewOutlookUsingIcon} />
           <div className="ms-DocumentCard-details">
-            <DocumentCardTitle
-              title="Conversation about anual report from SharePoint conference"
-              shouldTruncate={true}
-            />
+            <DocumentCardTitle title="Conversation about anual report from SharePoint conference" shouldTruncate={true} />
             <DocumentCardActivity
               activity="Sent a few minutes ago"
               people={[{ name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale }]}
