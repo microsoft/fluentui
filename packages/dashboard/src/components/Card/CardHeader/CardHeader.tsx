@@ -23,7 +23,7 @@ export class CardHeader extends React.Component<ICardHeaderProps, {}> {
 
     return (
       <div className={classNames.root}>
-        <div className={classNames.headerText}>
+        <div className={classNames.headerText} title={headerText}>
           <AutoFontSize text={headerText!} targetLines={2} fontSizeMapping={fontSizeMapping} ellipsisOverflow />
         </div>
         <span className={classNames.annotationText}>{annotationText}</span>
