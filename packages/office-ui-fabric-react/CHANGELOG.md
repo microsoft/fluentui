@@ -1,6 +1,28 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 30 Aug 2018 11:28:40 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Sep 2018 11:25:00 GMT and should not be manually modified.
+
+## 5.124.0
+Tue, 11 Sep 2018 11:25:00 GMT
+
+### Minor changes
+
+- adding viewport to IDetailsFooterProps
+
+## 5.123.0
+Fri, 07 Sep 2018 01:32:10 GMT
+
+### Minor changes
+
+- Updates button slots with correct pre-fluent palette values and scss fallbacks
+- add buttonBackgroundDisabled semantic slot
+
+## 5.122.4
+Thu, 06 Sep 2018 11:26:20 GMT
+
+### Patches
+
+- Change bodyDivider value from neutralTertiaryAlt back to neutralLight
 
 ## 5.122.3
 Thu, 30 Aug 2018 11:28:40 GMT

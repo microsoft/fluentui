@@ -2,6 +2,39 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "5.34.0",
+      "tag": "@uifabric/styling_v5.34.0",
+      "date": "Fri, 07 Sep 2018 01:32:10 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "bded61c48dac02e7f7dc50b8276ec912327224c6",
+            "comment": "Updates button slots with correct pre-fluent palette values and scss fallbacks"
+          },
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "6e45f444c56510050df017746042ca41f6410cc6",
+            "comment": "add buttonBackgroundDisabled semantic slot"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.33.1",
+      "tag": "@uifabric/styling_v5.33.1",
+      "date": "Thu, 06 Sep 2018 11:26:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "d77bd5de3b80e84fcb58c19e94c3390fec0830d7",
+            "comment": "Change bodyDivider value from neutralTertiaryAlt back to neutralLight"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.33.0",
       "tag": "@uifabric/styling_v5.33.0",
       "date": "Wed, 22 Aug 2018 11:23:37 GMT",
