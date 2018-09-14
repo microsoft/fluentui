@@ -1,6 +1,8 @@
 import { ISeparatorStyleProps, ISeparatorStyles } from './Separator.types';
 
 export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
+  const { theme } = props;
+
   return {
     root: [
       {
@@ -11,7 +13,7 @@ export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
         padding: '5px',
         selectors: {
           ':before': {
-            borderTop: '1px solid black',
+            borderTop: `1px solid ${theme!.palette.neutralLight}`,
             content: '""',
             width: '100%',
             display: 'inline-block',
@@ -19,7 +21,7 @@ export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
             bottom: '5px'
           },
           ':after': {
-            borderTop: '1px solid black',
+            borderTop: `1px solid ${theme!.palette.neutralLight}`,
             content: '""',
             width: '100%',
             display: 'inline-block',
@@ -35,7 +37,7 @@ export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
         whiteSpace: 'nowrap',
         display: 'inline-block',
         fontSize: '20px',
-        padding: '0 10px'
+        padding: '0 20px'
       }
     ]
   };

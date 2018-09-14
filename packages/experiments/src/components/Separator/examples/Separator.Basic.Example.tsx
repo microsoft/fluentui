@@ -7,7 +7,7 @@ export class SeparatorBasicExample extends React.Component<{}, {}> {
   }
 
   public render(): JSX.Element {
-    const message = 'I am a separator';
+    const message = 'Today';
 
     return <Separator message={message} />;
   }
