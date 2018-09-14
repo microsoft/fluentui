@@ -2,6 +2,31 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.24.1",
+      "tag": "@uifabric/dashboard_v0.24.1",
+      "date": "Fri, 14 Sep 2018 01:55:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Changing styling of wrapper component in card. This wrapper component covers all the charts inside the card content layout.",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "dc56a3a9389725dc364b51be6a1d237fc150bd2e"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.20.0` to `^0.21.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.30.0 <7.0.0` to `>=6.30.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.68.0 <7.0.0` to `>=6.69.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.24.0",
       "tag": "@uifabric/dashboard_v0.24.0",
       "date": "Thu, 13 Sep 2018 17:38:04 GMT",
