@@ -1,6 +1,14 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Fri, 14 Sep 2018 01:55:02 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Sep 2018 17:03:00 GMT and should not be manually modified.
+
+## 0.25.0
+Fri, 14 Sep 2018 17:03:00 GMT
+
+### Minor changes
+
+- Changing css for card header. Added tooltip to card header. Disabling icon in hovercard in Multicount component upon passing prop
+- Update recommendation component to support data visualization component center align layout
 
 ## 0.24.1
 Fri, 14 Sep 2018 01:55:02 GMT

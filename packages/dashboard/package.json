@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/dashboard",
-  "version": "0.24.1",
+  "version": "0.25.0",
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
     "@uifabric/charting": "^0.21.0",
