@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Remove TSLint overrides",
+      "comment": "Remove max lines TS override",
       "type": "patch"
     }
   ],
