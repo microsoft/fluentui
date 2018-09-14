@@ -53,17 +53,25 @@ export const getStyles = (): IRecommendationStyles => ({
     overflow: 'hidden',
     wordWrap: 'break-word'
   },
+  recommendationRowContainer: mergeStyles(flexDisplayStyle, {
+    paddingTop: 19,
+    flexDirection: 'column',
+    flexWrap: 'nowrap',
+    justifyContent: 'space-between'
+  }),
   recommendationHeaderRow: {
     flexDirection: 'row',
-    width: '49%',
-    justifyContent: 'space-between'
+    width: '48.5%',
+    justifyContent: 'space-between',
+    flexGrow: 0
   },
   recommendationContentRow: {
     flexDirection: 'row',
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
-    marginTop: '10px'
+    marginTop: '6px',
+    flexGrow: 1
   },
   recommendationContentRowText: {
     width: '48.5%',
