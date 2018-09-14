@@ -1,6 +1,14 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Fri, 14 Sep 2018 17:03:00 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Sep 2018 19:19:00 GMT and should not be manually modified.
+
+## 0.25.1
+Fri, 14 Sep 2018 19:19:00 GMT
+
+### Patches
+
+- Update recommendation centerDataVisualization flex layout css
+- Update section title font color
 
 ## 0.25.0
 Fri, 14 Sep 2018 17:03:00 GMT

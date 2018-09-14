@@ -2,6 +2,25 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.25.1",
+      "tag": "@uifabric/dashboard_v0.25.1",
+      "date": "Fri, 14 Sep 2018 19:19:00 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update recommendation centerDataVisualization flex layout css",
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "cffdf177ce45d6fa5d6e6a268ec83b04f80e45fe"
+          },
+          {
+            "comment": "Update section title font color",
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "cffdf177ce45d6fa5d6e6a268ec83b04f80e45fe"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.25.0",
       "tag": "@uifabric/dashboard_v0.25.0",
       "date": "Fri, 14 Sep 2018 17:03:00 GMT",
