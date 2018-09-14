@@ -141,7 +141,9 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
             views={432}
           />
         </DocumentCard>
-        <p />Card Logo, Text Preview CardStatus are used on below examples.<p />
+        <p />
+        Card Logo, Text Preview CardStatus are used on below examples.
+        <p />
         <DocumentCard onClickHref="http://bing.com">
           <DocumentCardLogo {...logoProps} />
           <div className="ms-ConversationTile-TitlePreviewArea">
@@ -150,7 +152,8 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
               shouldTruncate={true}
             />
             <DocumentCardTitle
-              title="This is the email content preview, please feel free to give feedback. SharePoint Site Acitivity add conversation card! This is the last."
+              title={`This is the email content preview, please feel free to give feedback.
+                SharePoint Site Activity add conversation card! This is the last.`}
               shouldTruncate={true}
               showAsSecondaryTitle={true}
             />

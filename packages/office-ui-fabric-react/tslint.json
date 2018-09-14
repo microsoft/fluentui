@@ -1,3 +1,13 @@
 {
-  "extends": ["office-ui-fabric-react-tslint"]
+  "extends": [
+    "office-ui-fabric-react-tslint"
+  ],
+  "rules": {
+    "deprecation": false,
+    "jsx-ban-props": false,
+    "no-any": false,
+    "typedef": [
+      false
+    ]
+  }
 }
