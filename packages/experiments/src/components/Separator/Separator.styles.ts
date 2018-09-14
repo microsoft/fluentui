@@ -7,20 +7,20 @@ export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
         textAlign: 'center',
         position: 'relative',
         whiteSpace: 'nowrap',
-        // width: '400px',
+        width: '400px',
         padding: '5px',
         selectors: {
-          '::before': {
+          ':before': {
             borderTop: '1px solid black',
-            content: '',
+            content: '""',
             width: '100%',
             display: 'inline-block',
             position: 'relative',
             bottom: '5px'
           },
-          '::after': {
+          ':after': {
             borderTop: '1px solid black',
-            content: '',
+            content: '""',
             width: '100%',
             display: 'inline-block',
             position: 'relative',
@@ -33,6 +33,7 @@ export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
       {
         position: 'relative',
         whiteSpace: 'nowrap',
+        display: 'inline-block',
         fontSize: '20px',
         padding: '0 10px'
       }
