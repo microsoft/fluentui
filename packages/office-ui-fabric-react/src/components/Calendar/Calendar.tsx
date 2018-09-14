@@ -78,7 +78,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     dateTimeFormatter: dateTimeFormatterCallbacks,
     showSixWeeksByDefault: false,
     workWeekDays: defaultWorkWeekDays,
-    showCloseButton: false
+    showCloseButton: false,
+    allFocusable: false
   };
 
   private _dayPicker = createRef<ICalendarDay>();
@@ -143,7 +144,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
       minDate,
       maxDate,
       className,
-      showCloseButton
+      showCloseButton,
+      allFocusable
     } = this.props;
     const { selectedDate, navigatedDayDate, navigatedMonthDate, isMonthPickerVisible, isDayPickerVisible } = this.state;
     const onHeaderSelect = showMonthPickerAsOverlay ? this._onHeaderSelect : undefined;
@@ -197,6 +199,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                     workWeekDays={this.props.workWeekDays}
                     componentRef={this._dayPicker}
                     showCloseButton={showCloseButton}
+                    allFocusable={allFocusable}
                   />
                 )}
                 {isDayPickerVisible && isMonthPickerVisible && <div className={styles.divider} />}
