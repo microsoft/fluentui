@@ -9,6 +9,15 @@ export class SeparatorBasicExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     const message = 'Today';
 
-    return <Separator message={message} />;
+    return (
+      <div>
+        <p>Center aligned</p>
+        <Separator text={message} alignText="center" />
+        <p>Left aligned</p>
+        <Separator text={message} alignText="start" />
+        <p>Right aligned</p>
+        <Separator text={message} alignText="end" />
+      </div>
+    );
   }
 }

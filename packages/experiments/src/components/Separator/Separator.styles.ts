@@ -6,27 +6,48 @@ export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
   return {
     root: [
       {
-        textAlign: 'center',
         position: 'relative',
-        whiteSpace: 'nowrap',
-        width: '400px',
         padding: '5px',
+        display: 'block',
         selectors: {
           ':before': {
             borderTop: `1px solid ${theme!.palette.neutralLight}`,
             content: '""',
-            width: '100%',
-            display: 'inline-block',
+            display: 'block',
             position: 'relative',
-            bottom: '5px'
-          },
-          ':after': {
-            borderTop: `1px solid ${theme!.palette.neutralLight}`,
+            top: '12px'
+          }
+        }
+      }
+    ],
+    center: [
+      {
+        textAlign: 'center'
+      }
+    ],
+    start: [
+      {
+        textAlign: 'start'
+      }
+    ],
+    end: [
+      {
+        textAlign: 'end'
+      }
+    ],
+    isVertical: [
+      {
+        textAlign: 'center',
+        position: 'relative',
+        padding: '5px',
+        display: 'block',
+        selectors: {
+          ':before': {
+            borderLeft: `1px solid ${theme!.palette.neutralLight}`,
             content: '""',
-            width: '100%',
-            display: 'inline-block',
-            position: 'relative',
-            bottom: '5px'
+            display: 'block',
+            position: 'relative'
+            // left: '12px'
           }
         }
       }
@@ -34,10 +55,10 @@ export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
     text: [
       {
         position: 'relative',
-        whiteSpace: 'nowrap',
         display: 'inline-block',
-        fontSize: '20px',
-        padding: '0 20px'
+        fontSize: '16px',
+        padding: '0 20px',
+        background: 'white'
       }
     ]
   };
