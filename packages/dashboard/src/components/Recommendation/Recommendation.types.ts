@@ -139,4 +139,8 @@ export interface IRecommendationStyles {
    * Style for the Recommendation flex row: visualization
    */
   recommendationContentRowVisualization: IStyle;
+  /**
+   * Style for the Recommendation flex row: visualization
+   */
+  recommendationRowContainer: IStyle;
 }

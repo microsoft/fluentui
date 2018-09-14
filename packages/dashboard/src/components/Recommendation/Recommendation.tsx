@@ -74,7 +74,7 @@ export class Recommendation extends React.Component<IRecommendationProps, {}> {
     } = this.props;
 
     return (
-      <div className={classNames.recommendationContainer}>
+      <div className={classNames.recommendationRowContainer}>
         <div className={classNames.recommendationHeaderRow}>
           <div className={classNames.recommendationHeader}>
             <AutoFontSize
