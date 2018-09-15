@@ -107,7 +107,7 @@ export class TagPickerBasicExample extends BaseComponent<{}, ITagPickerDemoPageS
     filterText: string,
     tagList: { key: string; name: string }[]
   ): { key: string; name: string }[] => {
-    return filterText ? _testTags.filter(tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0) : [];
+    return filterText ? _testTags.filter((tag: { key: string; name: string }) => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0) : [];
   };
 
   private _onItemSelected = (item: { key: string; name: string }): { key: string; name: string } | null => {

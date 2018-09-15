@@ -47,7 +47,7 @@ describe('TextField deprecated', () => {
         defaultValue="initial value"
         onChanged={onChangedSpy}
         // tslint:disable-next-line:jsx-no-lambda
-        onGetErrorMessage={value => (value.length > 0 ? '' : 'error')}
+        onGetErrorMessage={(value: string) => (value.length > 0 ? '' : 'error')}
       />
     );
 

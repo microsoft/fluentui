@@ -68,7 +68,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     let currentPicker: JSX.Element | undefined = undefined;
 
     switch (this.state.currentPicker) {
@@ -123,7 +123,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
   private _getTextFromItem(persona: IPersonaProps): string {
     return persona.text as string;
   }
-  private _renderListPicker() {
+  private _renderListPicker(): JSX.Element {
     return (
       <ListPeoplePicker
         onResolveSuggestions={this._onFilterChanged}
@@ -145,7 +145,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     );
   }
 
-  private _renderNormalPicker() {
+  private _renderNormalPicker(): JSX.Element {
     return (
       <NormalPeoplePicker
         onResolveSuggestions={this._onFilterChanged}
@@ -169,7 +169,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     );
   }
 
-  private _renderCompactPicker() {
+  private _renderCompactPicker(): JSX.Element {
     return (
       <CompactPeoplePicker
         onResolveSuggestions={this._onFilterChanged}
@@ -190,7 +190,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     );
   }
 
-  private _renderPreselectedItemsPicker() {
+  private _renderPreselectedItemsPicker(): JSX.Element {
     return (
       <CompactPeoplePicker
         onResolveSuggestions={this._onFilterChanged}
@@ -213,7 +213,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     );
   }
 
-  private _renderLimitedSearch() {
+  private _renderLimitedSearch(): JSX.Element {
     limitedSearchSuggestionProps.resultsFooter = this._renderFooterText;
 
     return (
@@ -236,7 +236,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     );
   }
 
-  private _renderProcessSelectionPicker() {
+  private _renderProcessSelectionPicker(): JSX.Element {
     return (
       <NormalPeoplePicker
         onResolveSuggestions={this._onFilterChanged}
@@ -259,7 +259,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     );
   }
 
-  private _renderControlledPicker() {
+  private _renderControlledPicker(): JSX.Element {
     const controlledItems = [];
     for (let i = 0; i < 5; i++) {
       const item = this.state.peopleList[i];
@@ -285,7 +285,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           resolveDelay={300}
         />
         <label> Click to Add a person </label>
-        {controlledItems.map((item, index) => (
+        {controlledItems.map((item: IPersonaProps, index: number) => (
           <div key={index}>
             <DefaultButton
               className="controlledPickerButton"
@@ -392,7 +392,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     }
   }
 
-  private _listContainsPersona(persona: IPersonaProps, personas: IPersonaProps[]) {
+  private _listContainsPersona(persona: IPersonaProps, personas: IPersonaProps[]): boolean {
     if (!personas || !personas.length || personas.length === 0) {
       return false;
     }

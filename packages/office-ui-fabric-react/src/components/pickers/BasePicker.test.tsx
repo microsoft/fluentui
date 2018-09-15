@@ -28,8 +28,8 @@ function onResolveSuggestions(text: string): ITag[] {
     'white',
     'yellow'
   ]
-    .filter(tag => tag.toLowerCase().indexOf(text.toLowerCase()) === 0)
-    .map(item => ({ key: item, name: item }));
+    .filter((tag: string) => tag.toLowerCase().indexOf(text.toLowerCase()) === 0)
+    .map((item: string) => ({ key: item, name: item }));
 }
 
 const basicRenderer = (props: IPickerItemProps<{ key: string; name: string }>) => {
@@ -52,7 +52,7 @@ describe('Pickers', () => {
     const BasePickerWithType = BasePicker as new (props: IBasePickerProps<ISimple>) => BasePicker<
       ISimple,
       IBasePickerProps<ISimple>
-    >;
+      >;
     const onRenderItem = (props: IPickerItemProps<{ key: string; name: string }>): JSX.Element => (
       <div key={props.item.name}>{basicRenderer(props)}</div>
     );

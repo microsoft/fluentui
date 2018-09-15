@@ -256,7 +256,7 @@ describe('MaskedTextField', () => {
     const component = mount(
       <MaskedTextField
         // tslint:disable-next-line jsx-no-lambda
-        onChange={(ev, newValue) => (onChangeValue = newValue)}
+        onChange={(ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue: string | undefined) => (onChangeValue = newValue)}
         label="With input mask"
         mask="m\ask: (999) 999 - 9999"
         value="123-456-7890"

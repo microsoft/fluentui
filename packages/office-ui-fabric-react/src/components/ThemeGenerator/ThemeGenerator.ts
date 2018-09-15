@@ -15,9 +15,9 @@ export class ThemeGenerator {
   public static setSlot(
     rule: IThemeSlotRule,
     color: string | IColor,
-    isInverted = false,
-    isCustomization = false,
-    overwriteCustomColor = true
+    isInverted: boolean = false,
+    isCustomization: boolean = false,
+    overwriteCustomColor: boolean = true
   ) {
     if (!rule.color && rule.value) {
       // not a color rule
@@ -45,7 +45,7 @@ export class ThemeGenerator {
    * setSlot() can be called before this, but this must be called before getThemeAs*().
    * Does not override colors of rules where isCustomized is true (i.e. doesn't override existing customizations).
    */
-  public static insureSlots(slotRules: IThemeRules, isInverted: boolean) {
+  public static insureSlots(slotRules: IThemeRules, isInverted: boolean): void {
     // Get all the "root" rules, the ones which don't inherit. Then "set" them to trigger updating dependent slots.
     for (const ruleName in slotRules) {
       if (slotRules.hasOwnProperty(ruleName)) {
@@ -140,8 +140,8 @@ export class ThemeGenerator {
     color: IColor,
     isInverted: boolean,
     isCustomization: boolean,
-    overwriteCustomColor = true
-  ) {
+    overwriteCustomColor: boolean = true
+  ): void {
     if (!rule.color && rule.value) {
       // not a color rule
       return;

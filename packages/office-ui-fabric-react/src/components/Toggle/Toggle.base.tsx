@@ -115,7 +115,7 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
     );
   }
 
-  public focus() {
+  public focus(): void {
     if (this._toggleButton.current) {
       this._toggleButton.current.focus();
     }

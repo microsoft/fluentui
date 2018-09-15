@@ -123,7 +123,7 @@ export function themeRulesStandardCreator(): IThemeRules {
     slotName: string,
     inheritedBase: BaseSlots,
     inheritedShade: Shade,
-    isBackgroundShade = false
+    isBackgroundShade: boolean = false
   ): void {
     const inherits = slotRules[BaseSlots[inheritedBase]];
     const thisSlotRule = {
