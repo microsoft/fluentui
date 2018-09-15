@@ -1,36 +1,32 @@
 import * as React from 'react';
-import { createRef, classNamesFunction } from '../../Utilities';
+
+import { BaseCard } from './BaseCard';
+import { classNamesFunction, createRef } from '../../Utilities';
 import {
+  ExpandingCardMode,
   IExpandingCardProps,
   IExpandingCardStyles,
-  ExpandingCardMode,
   IExpandingCardStyleProps,
   IExpandingCard
 } from './ExpandingCard.types';
-// import { Callout, ICallout } from '../../Callout';
-import { DirectionalHint } from '../../common/DirectionalHint';
-// import { FocusTrapZone } from '../../FocusTrapZone';
-import { BaseCard } from 'office-ui-fabric-react/lib/components/HoverCard/BaseCard';
 
 const getClassNames = classNamesFunction<IExpandingCardStyleProps, IExpandingCardStyles>();
+
+const COMPACT_CARD_HEIGHT = 156;
+const EXPANDED_CARD_HEIGHT = 384;
 
 export interface IExpandingCardState {
   firstFrameRendered: boolean;
   needsScroll: boolean;
 }
 
-export class ExpandingCardBase extends BaseCard<IExpandingCard, IExpandingCardProps, IExpandingCardStyles, IExpandingCardState> {
-  public static defaultProps = {
-    compactCardHeight: 156,
-    expandedCardHeight: 384,
-    directionalHint: DirectionalHint.bottomLeftEdge,
-    directionalHintFixed: true,
-    gapSpace: 0
-  };
-
-  // private _classNames: { [key in keyof IExpandingCardStyles]: string };
-  // tslint:disable-next-line:no-unused-variable
-  // private _callout = createRef<ICallout>();
+export class ExpandingCardBase extends BaseCard<
+  IExpandingCard,
+  IExpandingCardProps,
+  IExpandingCardStyles,
+  IExpandingCardStyleProps,
+  IExpandingCardState
+> {
   private _expandedElem = createRef<HTMLDivElement>();
 
   constructor(props: IExpandingCardProps) {
@@ -52,13 +48,10 @@ export class ExpandingCardBase extends BaseCard<IExpandingCard, IExpandingCardPr
 
   public render(): JSX.Element {
     const {
-      // targetElement,
       theme,
       styles: customStyles,
-      compactCardHeight,
-      // directionalHintFixed,
-      // firstFocus,
-      expandedCardHeight,
+      compactCardHeight = COMPACT_CARD_HEIGHT,
+      expandedCardHeight = EXPANDED_CARD_HEIGHT,
       className,
       mode
     } = this.props;
@@ -83,36 +76,7 @@ export class ExpandingCardBase extends BaseCard<IExpandingCard, IExpandingCardPr
     );
 
     return this.renderCard();
-    // return (
-    //   <Callout
-    //     {...getNativeProps(this.props, divProperties)}
-    //     componentRef={this._callout}
-    //     className={this._classNames.root}
-    //     target={targetElement}
-    //     isBeakVisible={false}
-    //     directionalHint={this.props.directionalHint}
-    //     directionalHintFixed={directionalHintFixed}
-    //     finalHeight={compactCardHeight! + expandedCardHeight!}
-    //     minPagePadding={24}
-    //     onDismiss={this.props.onLeave}
-    //     gapSpace={this.props.gapSpace}
-    //   >
-    //     {this.props.trapFocus ? (
-    //       <FocusTrapZone forceFocusInsideTrap={false} isClickableOutsideFocusTrap={true} disableFirstFocus={!firstFocus}>
-    //         {content}
-    //       </FocusTrapZone>
-    //     ) : (
-    //       content
-    //     )}
-    //   </Callout>
-    // );
   }
-
-  // private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
-  //   if (ev.which === KeyCodes.escape) {
-  //     this.props.onLeave && this.props.onLeave(ev);
-  //   }
-  // };
 
   private _onRenderCompactCard = (): JSX.Element => {
     return <div className={this._classNames.compactCard}>{this.props.onRenderCompactCard!(this.props.renderData)}</div>;
@@ -138,9 +102,10 @@ export class ExpandingCardBase extends BaseCard<IExpandingCard, IExpandingCardPr
   };
 
   private _checkNeedsScroll = (): void => {
+    const { expandedCardHeight = EXPANDED_CARD_HEIGHT } = this.props;
     if (this._expandedElem.current) {
       this._async.requestAnimationFrame(() => {
-        if (this._expandedElem.current && this._expandedElem.current.scrollHeight >= this.props.expandedCardHeight!) {
+        if (this._expandedElem.current && this._expandedElem.current.scrollHeight >= expandedCardHeight!) {
           this.setState({
             needsScroll: true
           });

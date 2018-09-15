@@ -1,19 +1,23 @@
 import * as React from 'react';
 
-import { BaseComponent, getNativeProps, divProperties, KeyCodes, createRef } from '../../Utilities';
-import { Callout, ICallout } from '../../Callout';
-// import { DirectionalHint } from '../../common/DirectionalHint';
+import { BaseComponent, divProperties, getNativeProps, KeyCodes } from '../../Utilities';
+import { Callout } from '../../Callout';
+import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusTrapZone } from '../../FocusTrapZone';
-import { IBaseCardProps, IBaseCardStyles } from './BaseCard.types';
+import { IBaseCardProps, IBaseCardStyles, IBaseCardStyleProps } from './BaseCard.types';
 
 export abstract class BaseCard<
   TCard,
-  TCardProps extends IBaseCardProps<TCard>,
+  TCardProps extends IBaseCardProps<TCard, TCardStyles, TCardStyleProps>,
   TCardStyles extends IBaseCardStyles,
-  TCardState extends {}
+  TCardStyleProps extends IBaseCardStyleProps,
+  TCardState
 > extends BaseComponent<TCardProps, TCardState> {
-  // tslint:disable-next-line:no-unused-variable
-  protected _callout = createRef<ICallout>();
+  public static defaultProps = {
+    directionalHint: DirectionalHint.bottomLeftEdge,
+    directionalHintFixed: true,
+    gapSpace: 0
+  };
 
   protected _finalHeight: number;
   protected _content: JSX.Element;
@@ -23,13 +27,12 @@ export abstract class BaseCard<
     super(props);
   }
 
-  public renderCard(): JSX.Element {
+  protected renderCard(): JSX.Element {
     const { targetElement, directionalHintFixed, directionalHint, firstFocus, trapFocus, gapSpace, onLeave } = this.props;
-    console.log(gapSpace);
+
     return (
       <Callout
         {...getNativeProps(this.props, divProperties)}
-        componentRef={this._callout}
         className={this._classNames.root}
         target={targetElement}
         isBeakVisible={false}
@@ -51,7 +54,7 @@ export abstract class BaseCard<
     );
   }
 
-  public onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
+  protected onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     if (ev.which === KeyCodes.escape) {
       this.props.onLeave && this.props.onLeave(ev);
     }
