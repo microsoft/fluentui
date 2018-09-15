@@ -113,6 +113,18 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
   trapFocus?: boolean;
 }
 
+export enum OpenCardMode {
+  /**
+   * Open card by hover
+   */
+  hover = 0,
+
+  /**
+   * Open card by hot key
+   */
+  hotKey = 1
+}
+
 export interface IHoverCardStyleProps {
   /**
    * Theme provided by High-Order Component.

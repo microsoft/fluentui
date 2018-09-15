@@ -49,18 +49,6 @@ export enum ExpandingCardMode {
   expanded = 1
 }
 
-export enum OpenCardMode {
-  /**
-   * Open card by hover
-   */
-  hover = 0,
-
-  /**
-   * Open card by hot key
-   */
-  hotKey = 1
-}
-
 export interface IExpandingCardStyleProps extends ICardStyleProps {
   /**
    * Height of the compact section of the card.

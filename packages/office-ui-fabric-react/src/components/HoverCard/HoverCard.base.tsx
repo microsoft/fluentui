@@ -1,9 +1,9 @@
 import * as React from 'react';
 
 import { BaseComponent, divProperties, getNativeProps, getId, KeyCodes, getDocument, createRef, classNamesFunction } from '../../Utilities';
-import { IHoverCardProps, IHoverCardStyles, IHoverCardStyleProps } from './HoverCard.types';
+import { IHoverCardProps, IHoverCardStyles, IHoverCardStyleProps, OpenCardMode } from './HoverCard.types';
 import { ExpandingCard } from './ExpandingCard/ExpandingCard';
-import { ExpandingCardMode, OpenCardMode } from './ExpandingCard/ExpandingCard.types';
+import { ExpandingCardMode } from './ExpandingCard/ExpandingCard.types';
 
 const getClassNames = classNamesFunction<IHoverCardStyleProps, IHoverCardStyles>();
 
@@ -106,7 +106,7 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
             firstFocus={this.props.setInitialFocus || openMode === OpenCardMode.hotKey}
             targetElement={this._getTargetElement()}
             onEnter={this._cardOpen}
-            onLeave={this._executeCardDimiss}
+            onLeave={this._executeCardDismiss}
             mode={mode}
             {...expandingCardProps}
           />
@@ -172,11 +172,11 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
 
     // Dismiss if not sticky and currentTarget is the same element that mouse last entered
     if (!this.props.sticky && (this._currentMouseTarget === ev.currentTarget || ev.which === KeyCodes.escape)) {
-      this._executeCardDimiss();
+      this._executeCardDismiss();
     }
   };
 
-  private _executeCardDimiss = (): void => {
+  private _executeCardDismiss = (): void => {
     this._async.clearTimeout(this._openTimerId);
     this._async.clearTimeout(this._dismissTimerId);
     this._dismissTimerId = this._async.setTimeout(() => {
