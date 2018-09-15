@@ -17,17 +17,19 @@ export class SeparatorBase extends BaseComponent<ISeparatorProps, {}> {
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
-      className
+      className,
+      alignText: alignText,
+      vertical: vertical
     });
 
     return vertical ? (
-      <div className={mergeStyles(this._classNames.isVertical, alignText ? this._classNames[alignText] : null)}>
+      <div className={this._classNames.root}>
         <div className={this._classNames.text} role="heading">
           {text}
         </div>
       </div>
     ) : (
-      <div className={mergeStyles(this._classNames.root, alignText ? this._classNames[alignText] : null)}>
+      <div className={this._classNames.root}>
         <div className={this._classNames.text} role="heading">
           {text}
         </div>

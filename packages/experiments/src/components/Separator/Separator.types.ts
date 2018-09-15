@@ -50,9 +50,19 @@ export interface ISeparatorStyleProps {
   theme?: ITheme;
 
   /**
-   * Accept custom classNames
+   * Accept custom classNames.
    */
   className?: string;
+
+  /**
+   * How to align text in the separator.
+   */
+  alignText?: 'start' | 'center' | 'end';
+
+  /**
+   * Whether the separator is vertical.
+   */
+  vertical?: boolean;
 }
 
 export interface ISeparatorStyles {
@@ -66,6 +76,9 @@ export interface ISeparatorStyles {
    */
   isVertical?: IStyle;
 
+  /**
+   * Text align
+   */
   center?: IStyle;
   start?: IStyle;
   end?: IStyle;

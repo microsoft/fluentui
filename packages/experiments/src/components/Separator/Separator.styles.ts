@@ -1,10 +1,17 @@
 import { ISeparatorStyleProps, ISeparatorStyles } from './Separator.types';
 
 export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
-  const { theme } = props;
+  const { theme, alignText, vertical } = props;
 
   return {
     root: [
+      alignText && {
+        textAlign: alignText
+      },
+      !alignText && {
+        textAlign: 'center'
+      },
+      vertical && {},
       {
         position: 'relative',
         padding: '5px',
