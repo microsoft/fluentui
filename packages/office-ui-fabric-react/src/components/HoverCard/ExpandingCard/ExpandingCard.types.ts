@@ -35,11 +35,6 @@ export interface IExpandingCardProps extends ICardProps<IExpandingCard, IExpandi
    *  Render function to populate expanded content area
    */
   onRenderExpandedCard?: IRenderFunction<IExpandingCardProps>;
-
-  /**
-   * Custom styles for this component
-   */
-  styles?: IStyleFunctionOrObject<IExpandingCardStyleProps, IExpandingCardStyles>;
 }
 
 export enum ExpandingCardMode {

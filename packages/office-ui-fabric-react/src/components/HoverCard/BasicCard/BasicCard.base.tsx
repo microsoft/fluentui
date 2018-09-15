@@ -1,0 +1,29 @@
+import * as React from 'react';
+
+import { Card } from '../Card';
+import { classNamesFunction } from '../../../Utilities';
+import { IBasicCardProps, IBasicCardStyles, IBasicCardStyleProps, IBasicCard } from './BasicCard.types';
+
+const getClassNames = classNamesFunction<IBasicCardStyleProps, IBasicCardStyles>();
+
+export class BasicCardBase extends Card<IBasicCard, IBasicCardProps, IBasicCardStyles, IBasicCardStyleProps, {}> {
+  constructor(props: IBasicCardProps) {
+    super(props);
+  }
+
+  public render(): JSX.Element {
+    const { theme, styles, className } = this.props;
+
+    this._classNames = getClassNames(styles!, {
+      theme: theme!
+    });
+
+    this._content = (
+      <div onMouseEnter={this.props.onEnter} onMouseLeave={this.props.onLeave} onKeyDown={this.onKeyDown} className={className}>
+        {this.props.onRenderBasicCard!(this.props.renderData)}
+      </div>
+    );
+
+    return this.renderCard();
+  }
+}
