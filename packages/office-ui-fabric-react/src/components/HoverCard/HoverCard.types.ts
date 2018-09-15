@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { IExpandingCardProps } from './ExpandingCard.types';
 import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, KeyCodes, IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IStyleFunctionOrObject, KeyCodes } from '../../Utilities';
 
 export interface IHoverCard {}
 
@@ -17,21 +17,9 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
   componentRef?: IRefObject<IHoverCard>;
 
   /**
-   * Additional properties to pass through for HoverCard, reference detail properties in IHoverCardProps
+   * Additional CSS class(es) to apply to the HoverCard root element.
    */
-  expandingCardProps?: IExpandingCardProps;
-
-  /**
-   * Whether or not to mark the container as described by the hover card.
-   * If not specified, the caller should mark as element as described by the hover card id.
-   */
-  setAriaDescribedBy?: boolean;
-
-  /**
-   * Length of compact card delay
-   * @default 500
-   */
-  cardOpenDelay?: number;
+  className?: string;
 
   /**
    * Length of card dismiss delay. A min number is necessary for pointer to hop between target and card
@@ -40,32 +28,27 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
   cardDismissDelay?: number;
 
   /**
+   * Length of compact card delay
+   * @default 500
+   */
+  cardOpenDelay?: number;
+
+  /**
    * Time in ms when expanded card should open after compact card
    * @default 1500
    */
   expandedCardOpenDelay?: number;
 
   /**
-   * If true disables Card dismiss upon mouse leave, so that card sticks around.
-   * @default false
+   * Additional properties to pass through for HoverCard, reference detail properties in IHoverCardProps
    */
-  sticky?: boolean;
+  expandingCardProps?: IExpandingCardProps;
 
   /**
    * Enables instant open of the full card upon click
    * @default false
    */
   instantOpenOnClick?: boolean;
-
-  /**
-   * Custom styles for this component
-   */
-  styles?: IStyleFunctionOrObject<IHoverCardStyleProps, IHoverCardStyles>;
-
-  /**
-   * Optional target element to tag hover card on
-   */
-  target?: HTMLElement | string;
 
   /**
    * Callback when card becomes visible
@@ -78,14 +61,16 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
   onCardHide?: () => void;
 
   /**
-   * Trap focus or not
+   * HotKey used for opening the HoverCard when tabbed to target.
+   * @default 'KeyCodes.c'
    */
-  trapFocus?: boolean;
+  openHotKey?: KeyCodes;
 
   /**
-   * Should block hover card or not
+   * Whether or not to mark the container as described by the hover card.
+   * If not specified, the caller should mark as element as described by the hover card id.
    */
-  shouldBlockHoverCard?: () => void;
+  setAriaDescribedBy?: boolean;
 
   /**
    * Set first focus into hover card.
@@ -94,20 +79,35 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
   setInitialFocus?: boolean;
 
   /**
-   * HotKey used for opening the HoverCard when tabbed to target.
-   * @default 'KeyCodes.c'
+   * Should block hover card or not
    */
-  openHotKey?: KeyCodes;
+  shouldBlockHoverCard?: () => void;
 
   /**
-   * Additional CSS class(es) to apply to the HoverCard root element.
+   * If true disables Card dismiss upon mouse leave, so that card sticks around.
+   * @default false
    */
-  className?: string;
+  sticky?: boolean;
+
+  /**
+   * Custom styles for this component
+   */
+  styles?: IStyleFunctionOrObject<IHoverCardStyleProps, IHoverCardStyles>;
+
+  /**
+   * Optional target element to tag hover card on
+   */
+  target?: HTMLElement | string;
 
   /**
    * Theme provided by higher order component.
    */
   theme?: ITheme;
+
+  /**
+   * Trap focus or not
+   */
+  trapFocus?: boolean;
 }
 
 export interface IHoverCardStyleProps {
