@@ -1,6 +1,6 @@
-import { IBaseCardProps, IBaseCardStyles, IBaseCardStyleProps } from './BaseCard.types';
-import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import { IStyle } from '../../Styling';
+import { IBaseCardProps, IBaseCardStyles, IBaseCardStyleProps } from '../BaseCard.types';
+import { IRenderFunction, IStyleFunctionOrObject } from '../../../Utilities';
+import { IStyle } from '../../../Styling';
 
 export interface IExpandingCard {}
 

@@ -27,7 +27,8 @@ export const HoverCardPageProps: IDocPageProps = {
   ],
   propertiesTablesSources: [
     require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/HoverCard.types.ts'),
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/ExpandingCard.types.ts')
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/BaseCard.types.ts'),
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/ExpandingCard/ExpandingCard.types.ts')
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/docs/HoverCardOverview.md'),
   bestPractices: 'Use this guidance when need to fine tune properties of HoverCard',

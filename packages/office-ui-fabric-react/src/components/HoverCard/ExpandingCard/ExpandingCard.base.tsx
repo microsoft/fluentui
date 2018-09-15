@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { BaseCard } from './BaseCard';
-import { classNamesFunction, createRef } from '../../Utilities';
+import { BaseCard } from '../BaseCard';
+import { classNamesFunction, createRef } from '../../../Utilities';
 import {
   ExpandingCardMode,
   IExpandingCardProps,

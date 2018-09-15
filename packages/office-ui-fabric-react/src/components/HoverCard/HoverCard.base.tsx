@@ -2,8 +2,8 @@ import * as React from 'react';
 
 import { BaseComponent, divProperties, getNativeProps, getId, KeyCodes, getDocument, createRef, classNamesFunction } from '../../Utilities';
 import { IHoverCardProps, IHoverCardStyles, IHoverCardStyleProps } from './HoverCard.types';
-import { ExpandingCard } from './ExpandingCard';
-import { ExpandingCardMode, OpenCardMode } from './ExpandingCard.types';
+import { ExpandingCard } from './ExpandingCard/ExpandingCard';
+import { ExpandingCardMode, OpenCardMode } from './ExpandingCard/ExpandingCard.types';
 
 const getClassNames = classNamesFunction<IHoverCardStyleProps, IHoverCardStyles>();
 
