@@ -1,2 +1,0 @@
-- Set `trapFocus` prop to **true** if you want to render the content of the HoverCard in a FocusTrapZone for accessibility reasons.
-- Set `setInitialFocus` prop to **true** if when opening the card your intention is to set focus on the first focusable element in the card. Works in pair with the `trapFocus` prop.

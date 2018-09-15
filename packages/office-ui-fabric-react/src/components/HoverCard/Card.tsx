@@ -6,6 +6,9 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusTrapZone } from '../../FocusTrapZone';
 import { ICardProps, ICardStyles, ICardStyleProps } from './Card.types';
 
+/**
+ * Basic class for all types of hover cards providing the callout in which to render the content.
+ */
 export abstract class Card<
   TCard,
   TCardProps extends ICardProps<TCard, TCardStyles, TCardStyleProps>,
@@ -13,6 +16,7 @@ export abstract class Card<
   TCardStyleProps extends ICardStyleProps,
   TCardState
 > extends BaseComponent<TCardProps, TCardState> {
+  // Common default props across all hover card types.
   public static defaultProps = {
     directionalHint: DirectionalHint.bottomLeftEdge,
     directionalHintFixed: true,
@@ -27,6 +31,7 @@ export abstract class Card<
     super(props);
   }
 
+  // Method to be called as a return in the render of each type of the hover card.
   protected renderCard(): JSX.Element {
     const { targetElement, directionalHintFixed, directionalHint, firstFocus, trapFocus, gapSpace, onLeave } = this.props;
 
