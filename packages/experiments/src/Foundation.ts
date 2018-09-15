@@ -1,19 +1,15 @@
 import { mergeStyleSets, ITheme } from 'office-ui-fabric-react';
 import {
-  createStatelessComponent as foundationCreateStatelessComponent,
   createComponent as foundationCreateComponent,
   IComponentOptions,
   IViewComponentProps,
-  IStateComponent,
-  IStyleableComponent,
   IStyleableComponentProps,
   IStylingProviders,
-  IThemedComponent,
-  IViewComponent
+  IThemedComponent
 } from '@uifabric/foundation';
 export { IStateComponentProps } from '@uifabric/foundation';
 import { IProcessedStyleSet, IStyleSet } from './Styling';
-import { Customizations, CustomizableContextTypes, ICustomizations } from './Utilities';
+import { Customizations, CustomizerContext, ICustomizations } from './Utilities';
 
 // Centralize Foundation interaction for use throughout this package. These convenience types provide types
 //  that are global for all of OUFR, such as ITheme and IProcessedStyleSet.
@@ -25,11 +21,12 @@ export type IViewComponentProps<TProps, TStyleSet extends IStyleSet<TStyleSet>> 
   TProps,
   IProcessedStyleSet<TStyleSet>
 >;
+
 /**
  * Required properties for styleable components.
  */
-export type IStyleableComponent<TProps, TStyleSet> = IStyleableComponent<TProps, TStyleSet, ITheme>;
 export type IStyleableComponentProps<TProps, TStyleSet> = IStyleableComponentProps<TProps, TStyleSet, ITheme>;
+
 /**
  * Required properties for themed components.
  */
@@ -45,23 +42,20 @@ type IContextCustomization = { customizations: ICustomizations };
 const providers: IStylingProviders<any, any, any, IContextCustomization, ITheme> = {
   mergeStyleSets,
   getCustomizations,
-  CustomizableContextTypes
+  CustomizerContext
 };
 
 /**
- * A helper for Foundation's createStatelessComponent that automatically passes in constant types.
- * See Foundation's createStatelessComponent for more detail.
+ * A helper for Foundation's createComponent that automatically passes in constant types.
+ * See Foundation's createComponent for more detail.
  * @param {IComponentOptions} options
  */
-export function createStatelessComponent<
-  TComponentProps extends IStyleableComponent<TComponentProps, TStyleSet, ITheme>,
-  TStyleSet extends IStyleSet<TStyleSet>,
-  TStatics = {}
->(
-  options: IComponentOptions<TComponentProps, TStyleSet, IProcessedStyleSet<TStyleSet>, ITheme, TStatics>
+export function createStatelessComponent<TComponentProps, TStyleSet extends IStyleSet<TStyleSet>, TStatics = {}>(
+  options: IComponentOptions<TComponentProps, TComponentProps, TStyleSet, IProcessedStyleSet<TStyleSet>, ITheme, TStatics>
 ): React.StatelessComponent<TComponentProps> & TStatics {
-  return foundationCreateStatelessComponent<
+  return foundationCreateComponent<
     TComponentProps,
+    TComponentProps, // TViewProps === TComponentProps for stateless components
     TStyleSet,
     IProcessedStyleSet<TStyleSet>,
     IContextCustomization,
@@ -76,18 +70,8 @@ export function createStatelessComponent<
  * @param {IComponentOptions} options
  * @param {IStateComponent} state
  */
-export function createComponent<
-  TComponentProps extends IStyleableComponent<TViewProps, TStyleSet, ITheme>,
-  TViewProps,
-  TStyleSet extends IStyleSet<TStyleSet>,
-  TStatics = {}
->(
-  options: IComponentOptions<TViewProps, TStyleSet, IProcessedStyleSet<TStyleSet>, ITheme, TStatics>,
-  state: IStateComponent<
-    TComponentProps,
-    TViewProps & IViewComponent<TViewProps, IProcessedStyleSet<TStyleSet>>,
-    IProcessedStyleSet<TStyleSet>
-  >
+export function createComponent<TComponentProps, TViewProps, TStyleSet extends IStyleSet<TStyleSet>, TStatics = {}>(
+  options: IComponentOptions<TComponentProps, TViewProps, TStyleSet, IProcessedStyleSet<TStyleSet>, ITheme, TStatics>
 ): React.StatelessComponent<TComponentProps> & TStatics {
   return foundationCreateComponent<
     TComponentProps,
@@ -97,7 +81,7 @@ export function createComponent<
     IContextCustomization,
     ITheme,
     TStatics
-  >(options, providers, state);
+  >(options, providers);
 }
 
 // TODO: remove any if possible

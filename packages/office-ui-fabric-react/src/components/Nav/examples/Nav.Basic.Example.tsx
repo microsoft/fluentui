@@ -1,12 +1,13 @@
 import * as React from 'react';
-import { Nav, INavProps } from 'office-ui-fabric-react/lib/Nav';
+import { Nav, INavLink } from 'office-ui-fabric-react/lib/Nav';
 import './Nav.Basic.Example.scss';
 
 export class NavBasicExample extends React.Component<any, any> {
-  constructor(props: INavProps) {
-    super(props);
-    this._onClickHandler = this._onClickHandler.bind(this);
-  }
+  public onLinkClick = (ev: React.MouseEvent<HTMLElement>, item?: INavLink) => {
+    if (item && item.name === 'News') {
+      alert('News link clicked');
+    }
+  };
 
   public render(): JSX.Element {
     return (
@@ -25,7 +26,7 @@ export class NavBasicExample extends React.Component<any, any> {
                       key: 'key1'
                     },
                     {
-                      name: 'News',
+                      name: 'MSN',
                       url: 'http://msn.com',
                       key: 'key2'
                     }
@@ -37,36 +38,20 @@ export class NavBasicExample extends React.Component<any, any> {
                 { name: 'Notebook', url: 'http://msn.com', key: 'key5' },
                 { name: 'Long Name Test for ellipse', url: 'http://msn.com', key: 'key6' },
                 {
-                  name: 'Edit',
+                  name: 'News',
                   url: 'http://cnn.com',
-                  onClick: this._onClickHandler2,
-                  icon: 'Edit',
+                  icon: 'News',
                   key: 'key8'
-                },
-                {
-                  name: 'Delete',
-                  url: 'http://cnn.com',
-                  onClick: this._onClickHandler2,
-                  iconProps: { iconName: 'Delete' },
-                  key: 'key9'
                 }
               ]
             }
           ]}
+          onLinkClick={this.onLinkClick}
           expandedStateText={'expanded'}
           collapsedStateText={'collapsed'}
           selectedKey={'key3'}
         />
       </div>
     );
-  }
-
-  private _onClickHandler(e: React.MouseEvent<HTMLElement>): false {
-    alert('test');
-    return false;
-  }
-
-  private _onClickHandler2(e: React.MouseEvent<HTMLElement>): false {
-    return false;
   }
 }

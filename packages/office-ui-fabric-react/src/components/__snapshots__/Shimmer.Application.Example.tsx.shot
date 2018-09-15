@@ -2,9 +2,7 @@
 
 exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`] = `
 <div>
-  <div
-    className={undefined}
-  >
+  <div>
     <div
       className=
           ms-Toggle
@@ -52,8 +50,6 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
       >
         <button
           aria-checked={false}
-          aria-disabled={undefined}
-          aria-label={undefined}
           checked={false}
           className=
               ms-Toggle-background
@@ -102,7 +98,6 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                 border-color: Highlight;
               }
           data-is-focusable={true}
-          disabled={undefined}
           id="Toggle0"
           onChange={[Function]}
           onClick={[Function]}
@@ -208,8 +203,6 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
       >
         <button
           aria-checked={false}
-          aria-disabled={undefined}
-          aria-label={undefined}
           checked={false}
           className=
               ms-Toggle-background
@@ -258,7 +251,6 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                 border-color: Highlight;
               }
           data-is-focusable={true}
-          disabled={undefined}
           id="Toggle1"
           onChange={[Function]}
           onClick={[Function]}
@@ -364,8 +356,6 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
       >
         <button
           aria-checked={false}
-          aria-disabled={undefined}
-          aria-label={undefined}
           checked={false}
           className=
               ms-Toggle-background
@@ -414,7 +404,6 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                 border-color: Highlight;
               }
           data-is-focusable={true}
-          disabled={undefined}
           id="Toggle2"
           onChange={[Function]}
           onClick={[Function]}

@@ -25,9 +25,10 @@ export class MultiCountExample extends React.Component<{}, {}> {
         bodyText: 'Risky sign-ins',
         annotaionText: 'Annotation',
         color: DefaultPalette.blue,
-        type: AnnotationType.neutral
+        type: AnnotationType.neutral,
+        hideIcon: true
       }
     ];
-    return <MultiCount multiCountRows={rows} />;
+    return <MultiCount multiCountRows={rows} customMessage={'Updatd 6:20pm today'} />;
   }
 }

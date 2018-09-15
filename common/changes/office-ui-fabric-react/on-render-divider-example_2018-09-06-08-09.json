@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Modal, Panel: make scrollable content styles customizable via className or styles props",
+      "comment": "Example updated with the implementation of onRenderDivider for DetailsList",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "kakje@microsoft.com"
+  "email": "svaibhav@microsoft.com"
 }

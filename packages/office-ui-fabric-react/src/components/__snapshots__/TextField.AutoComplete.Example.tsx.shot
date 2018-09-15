@@ -50,7 +50,6 @@ exports[`Component Examples renders TextField.AutoComplete.Example.tsx correctly
               word-wrap: break-word;
             }
         htmlFor="TextField0"
-        required={undefined}
       >
         Fill in and submit this form. The page will reload and autocomplete suggestions will appear.
       </label>
@@ -84,9 +83,7 @@ exports[`Component Examples renders TextField.AutoComplete.Example.tsx correctly
             }
       >
         <input
-          aria-describedby={undefined}
           aria-invalid={false}
-          aria-label={undefined}
           autoComplete="on"
           className=
               ms-TextField-field
@@ -132,7 +129,6 @@ exports[`Component Examples renders TextField.AutoComplete.Example.tsx correctly
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
-          readOnly={undefined}
           type="text"
           value=""
         />
@@ -140,11 +136,6 @@ exports[`Component Examples renders TextField.AutoComplete.Example.tsx correctly
     </div>
   </div>
   <button
-    aria-describedby={undefined}
-    aria-disabled={undefined}
-    aria-label={undefined}
-    aria-labelledby={undefined}
-    aria-pressed={undefined}
     className=
         ms-Button
         ms-Button--primary
@@ -196,6 +187,11 @@ exports[`Component Examples renders TextField.AutoComplete.Example.tsx correctly
           right: -2px;
           top: -2px;
         }
+        &:active > * {
+          left: 0px;
+          position: relative;
+          top: 0px;
+        }
         @media screen and (-ms-high-contrast: active){& {
           -ms-high-contrast-adjust: none;
           background-color: WindowText;
@@ -219,7 +215,6 @@ exports[`Component Examples renders TextField.AutoComplete.Example.tsx correctly
           color: Window;
         }
     data-is-focusable={true}
-    disabled={undefined}
     onClick={[Function]}
     onKeyDown={[Function]}
     onKeyPress={[Function]}

@@ -1,27 +1,41 @@
 {
-  "customCommands": [
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/command-line.schema.json",
+  "commands": [
     {
       "name": "code-style",
       "summary": "Runs prettier and tslint.",
-      "documentation": "Runs prettier and tslint for each of the packages that have a code-style task.",
-      "parallelized": true
+      "commandKind": "bulk",
+      "description": "Runs prettier and tslint for each of the packages that have a code-style task.",
+      "enableParallelism": true
     }
   ],
-  "customOptions": {
-    "--production": {
-      "optionType": "flag",
+  "parameters": [
+    {
+      "longName": "--production",
+      "parameterKind": "flag",
       "description": "Builds production bits.",
-      "associatedCommands": ["build", "rebuild"]
+      "associatedCommands": [
+        "build",
+        "rebuild"
+      ]
     },
-    "--lint": {
-      "optionType": "flag",
+    {
+      "longName": "--lint",
+      "parameterKind": "flag",
       "description": "Builds with linting.",
-      "associatedCommands": ["build", "rebuild"]
+      "associatedCommands": [
+        "build",
+        "rebuild"
+      ]
     },
-    "--npm-install-mode": {
-      "optionType": "flag",
+    {
+      "longName": "--npm-install-mode",
+      "parameterKind": "flag",
       "description": "Skips tasks that are irrelevant during npm install",
-      "associatedCommands": ["build", "rebuild"]
+      "associatedCommands": [
+        "build",
+        "rebuild"
+      ]
     }
-  }
+  ]
 }

@@ -1,12 +1,11 @@
 import { ILineChartStyleProps, ILineChartStyles } from './LineChart.types';
 
 export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
-  const { className, theme, width, height, color } = props;
+  const { className, theme, width, height } = props;
   const { palette, fonts } = theme!;
-  console.log('fonts', fonts);
 
   const chartPadding = 30;
-  const scalingVal = 0.3;
+  const scalingVal = 0.33;
   const xOffset = 20;
 
   return {
@@ -61,7 +60,15 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
     ],
     xAxisText: [
       {
-        transform: `translate(0px,13px)`
+        transform: `translate(0px,13px)`,
+        lineHeight: '12px',
+        ...fonts.tiny
+      }
+    ],
+    yAxisText: [
+      {
+        lineHeight: '12px',
+        ...fonts.tiny
       }
     ],
     lines: [
@@ -72,7 +79,7 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
     legendContainer: [
       {
         marginTop: '10px',
-        paddingLeft: '5%'
+        paddingLeft: '15%'
       }
     ],
     calloutPadding: [
@@ -80,10 +87,30 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
         padding: '10px 16px 10px 16px',
         backgroundColor: palette.white,
         fontSize: fonts.xxLarge.fontSize,
-        color: color !== '' ? `${color}` : palette.black,
+        color: palette.blue,
         fontFamily: fonts.xxLarge.fontFamily,
-        fontWeight: 'bold',
-        border: color !== '' ? `1px solid ${color}` : `unset`
+        fontWeight: 'bold'
+      }
+    ],
+    calloutContentRoot: [
+      {
+        display: 'grid',
+        overflow: 'hidden'
+      }
+    ],
+    calloutContentX: [
+      {
+        fontSize: fonts.small.fontSize,
+        fontFamily: fonts.small.fontFamily,
+        lineHeight: '14px',
+        marginBottom: '2.9px'
+      }
+    ],
+    calloutContentY: [
+      {
+        fontSize: fonts.xxLarge.fontSize,
+        fontFamily: fonts.xxLarge.fontFamily,
+        lineHeight: '33px'
       }
     ]
   };

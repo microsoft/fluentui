@@ -2,6 +2,154 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.30.1",
+      "tag": "@uifabric/experiments_v6.30.1",
+      "date": "Fri, 14 Sep 2018 01:55:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fluent: Fix issue with background color on primary buttons using the wrong values",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "485daa279a8fc49fb095952c2902f6490bbf4c63"
+          }
+        ],
+        "none": [
+          {
+            "comment": "react-test-renderer version updated 16.4.2 -> 16.5.0",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "f425097fa7f03be743a3825682d26acac7b7a95c"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.20.0` to `^0.21.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.68.0 <7.0.0` to `>=6.69.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.30.0",
+      "tag": "@uifabric/experiments_v6.30.0",
+      "date": "Wed, 12 Sep 2018 12:26:41 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Mike Wheaton <mike@mikewheaton.ca>",
+            "commit": "e9523792632d81a3a27766888873cb52d8522e24",
+            "comment": "Add motion to the Fluent experiment"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.19.2` to `^0.20.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.67.2 <7.0.0` to `>=6.67.3 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.29.1",
+      "tag": "@uifabric/experiments_v6.29.1",
+      "date": "Tue, 11 Sep 2018 02:54:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Amy Hackett <ahackett@microsoft.com>",
+            "commit": "c2beb48ce55204240827847fb17254bc6a25120e",
+            "comment": "update missing metadata signal icon"
+          },
+          {
+            "author": "Amy Hackett <ahackett@microsoft.com>",
+            "commit": "1294a5d57b80a0bfdf4c108e4a0fdad956f93ab2",
+            "comment": "Tiles: Fix on hover underline issue for signal icon in Tiles view"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.19.1` to `^0.19.2`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.67.0 <7.0.0` to `>=6.67.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.29.0",
+      "tag": "@uifabric/experiments_v6.29.0",
+      "date": "Fri, 07 Sep 2018 22:04:50 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "888f598942757c715181a1441457f1c7d5611c73",
+            "comment": "Adjusting foundation usage, using new React 16 context."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.18.0` to `^0.19.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.4.1 <1.0.0` to `>=0.5.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.66.0 <7.0.0` to `>=6.66.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.28.3",
+      "tag": "@uifabric/experiments_v6.28.3",
+      "date": "Fri, 07 Sep 2018 16:29:48 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.17.4` to `^0.18.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `>=6.7.0 <7.0.0` to `>=6.8.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.65.0 <7.0.0` to `>=6.66.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.28.2",
+      "tag": "@uifabric/experiments_v6.28.2",
+      "date": "Wed, 05 Sep 2018 10:29:25 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "exchangeadmin <yuz@microsoft.com>",
+            "commit": "5ca37d1fc22afecbde83bee0cbb1b64206a1b370",
+            "comment": "nav fix"
+          },
+          {
+            "author": "exchangeadmin <yuz@microsoft.com>",
+            "commit": "5ca37d1fc22afecbde83bee0cbb1b64206a1b370",
+            "comment": "improve nav per designer feedback"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.17.2` to `^0.17.3`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.63.0 <7.0.0` to `>=6.64.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.28.1",
       "tag": "@uifabric/experiments_v6.28.1",
       "date": "Thu, 30 Aug 2018 19:26:04 GMT",

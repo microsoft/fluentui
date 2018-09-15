@@ -69,12 +69,7 @@ export interface IMultiStackedBarChartStyleProps {
   /**
    * prop to check if the chart is selcted or hovered upon to determine opacity
    */
-  isSelected?: boolean;
-
-  /**
-   * prop to check which specific section of the stacked bar chart is selected or hovered upon
-   */
-  isChartSelected?: boolean;
+  shouldHighlight?: boolean;
 }
 
 export interface IMultiStackedBarChartStyles {

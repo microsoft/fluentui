@@ -88,6 +88,7 @@ const rootStyle = (isWide?: boolean): IStyle[] => {
       display: 'block',
       maxWidth: 364,
       border: 0,
+      outline: 'transparent',
       boxShadow: 'none !important',
       width: 'calc(100% + 1px)',
       animationName: `${bounceAnimation}, ${opacityFadeIn}`,

@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { createStatelessComponent, IStyleableComponent, IViewComponentProps } from '../../Foundation';
+import { createStatelessComponent, IStyleableComponentProps, IViewComponentProps } from '../../Foundation';
 import StackItem from './StackItem/StackItem';
 import { IStackItemProps, IStackItemStyles } from './StackItem/StackItem.types';
 import { IStackProps, IStackStyles } from './Stack.types';
 import { styles } from './Stack.styles';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-const StackItemType = (<StackItem /> as React.ReactElement<IStackItemProps> &
-  IStyleableComponent<IStackItemProps, IStackItemStyles>).type;
+const StackItemType = (<StackItem /> as React.ReactElement<IStackItemProps> & IStyleableComponentProps<IStackItemProps, IStackItemStyles>)
+  .type;
 
 const view = (props: IViewComponentProps<IStackProps, IStackStyles>) => {
   const {
