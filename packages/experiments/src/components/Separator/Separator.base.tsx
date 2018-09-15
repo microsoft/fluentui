@@ -22,13 +22,7 @@ export class SeparatorBase extends BaseComponent<ISeparatorProps, {}> {
       vertical: vertical
     });
 
-    return vertical ? (
-      <div className={this._classNames.root}>
-        <div className={this._classNames.text} role="heading">
-          {text}
-        </div>
-      </div>
-    ) : (
+    return (
       <div className={this._classNames.root}>
         <div className={this._classNames.text} role="heading">
           {text}
