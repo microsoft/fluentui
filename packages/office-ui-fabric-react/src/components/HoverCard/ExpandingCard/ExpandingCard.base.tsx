@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { BaseCard } from '../BaseCard';
+import { Card } from '../Card';
 import { classNamesFunction, createRef } from '../../../Utilities';
 import {
   ExpandingCardMode,
@@ -20,7 +20,7 @@ export interface IExpandingCardState {
   needsScroll: boolean;
 }
 
-export class ExpandingCardBase extends BaseCard<
+export class ExpandingCardBase extends Card<
   IExpandingCard,
   IExpandingCardProps,
   IExpandingCardStyles,

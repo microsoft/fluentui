@@ -5,9 +5,9 @@ import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IStyle, ITheme } from '../../Styling';
 
 /**
- * BaseCard common props.
+ * Card common props.
  */
-export interface IBaseCardProps<TCard, TCardStyles, TCardStyleProps> extends React.HTMLAttributes<HTMLDivElement> {
+export interface ICardProps<TCard, TCardStyles, TCardStyleProps> extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the TCard interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -78,14 +78,14 @@ export interface IBaseCardProps<TCard, TCardStyles, TCardStyleProps> extends Rea
   trapFocus?: boolean;
 }
 
-export interface IBaseCardStyleProps {
+export interface ICardStyleProps {
   /**
    * Theme provided by High-Order Component.
    */
   theme: ITheme;
 }
 
-export interface IBaseCardStyles {
+export interface ICardStyles {
   /**
    * Style for the root element in the default enabled, non-toggled state.
    */

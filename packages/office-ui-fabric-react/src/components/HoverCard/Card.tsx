@@ -4,13 +4,13 @@ import { BaseComponent, divProperties, getNativeProps, KeyCodes } from '../../Ut
 import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusTrapZone } from '../../FocusTrapZone';
-import { IBaseCardProps, IBaseCardStyles, IBaseCardStyleProps } from './BaseCard.types';
+import { ICardProps, ICardStyles, ICardStyleProps } from './Card.types';
 
-export abstract class BaseCard<
+export abstract class Card<
   TCard,
-  TCardProps extends IBaseCardProps<TCard, TCardStyles, TCardStyleProps>,
-  TCardStyles extends IBaseCardStyles,
-  TCardStyleProps extends IBaseCardStyleProps,
+  TCardProps extends ICardProps<TCard, TCardStyles, TCardStyleProps>,
+  TCardStyles extends ICardStyles,
+  TCardStyleProps extends ICardStyleProps,
   TCardState
 > extends BaseComponent<TCardProps, TCardState> {
   public static defaultProps = {

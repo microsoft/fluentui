@@ -1,4 +1,4 @@
-import { IBaseCardProps, IBaseCardStyles, IBaseCardStyleProps } from '../BaseCard.types';
+import { ICardProps, ICardStyles, ICardStyleProps } from '../Card.types';
 import { IRenderFunction, IStyleFunctionOrObject } from '../../../Utilities';
 import { IStyle } from '../../../Styling';
 
@@ -7,7 +7,7 @@ export interface IExpandingCard {}
 /**
  * ExpandingCard component props.
  */
-export interface IExpandingCardProps extends IBaseCardProps<IExpandingCard, IExpandingCardStyles, IExpandingCardStyleProps> {
+export interface IExpandingCardProps extends ICardProps<IExpandingCard, IExpandingCardStyles, IExpandingCardStyleProps> {
   /**
    * Height of compact card
    * @default 156
@@ -66,7 +66,7 @@ export enum OpenCardMode {
   hotKey = 1
 }
 
-export interface IExpandingCardStyleProps extends IBaseCardStyleProps {
+export interface IExpandingCardStyleProps extends ICardStyleProps {
   /**
    * Height of the compact section of the card.
    */
@@ -88,7 +88,7 @@ export interface IExpandingCardStyleProps extends IBaseCardStyleProps {
   needsScroll?: boolean;
 }
 
-export interface IExpandingCardStyles extends IBaseCardStyles {
+export interface IExpandingCardStyles extends ICardStyles {
   /**
    * Style for the main card element.
    */
