@@ -42,7 +42,7 @@ export interface IFullDocumentCardProps {
   documentTitleProps?: IDocumentCardTitleProps;
 }
 
-export interface IDocumentPickerProps extends IBasePickerProps<IFullDocumentCardProps> {}
+export interface IDocumentPickerProps extends IBasePickerProps<IFullDocumentCardProps> { }
 
 const data: IFullDocumentCardProps[] = [
   {
@@ -321,7 +321,7 @@ export const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumen
   );
 };
 
-export class DocumentPicker extends BasePickerListBelow<IFullDocumentCardProps, IDocumentPickerProps> {}
+export class DocumentPicker extends BasePickerListBelow<IFullDocumentCardProps, IDocumentPickerProps> { }
 export class PickerCustomResultExample extends React.Component<{}, IPeoplePickerExampleState> {
   constructor(props: {}) {
     super(props);
@@ -373,12 +373,12 @@ export class PickerCustomResultExample extends React.Component<{}, IPeoplePicker
   private _onFilterChanged(filterText: string, items: IFullDocumentCardProps[]): IFullDocumentCardProps[] {
     return filterText
       ? data
-          .filter(
-            item =>
-              item.documentTitleProps &&
-              item.documentTitleProps.title.toLowerCase().indexOf(filterText.toLowerCase()) === 0
-          )
-          .filter(item => !this._listContainsDocument(item, items))
+        .filter(
+          (item: IFullDocumentCardProps) =>
+            item.documentTitleProps &&
+            item.documentTitleProps.title.toLowerCase().indexOf(filterText.toLowerCase()) === 0
+        )
+        .filter((item: IFullDocumentCardProps) => !this._listContainsDocument(item, items))
       : [];
   }
 
@@ -388,7 +388,7 @@ export class PickerCustomResultExample extends React.Component<{}, IPeoplePicker
     }
     const documentTitle = document.documentTitleProps && document.documentTitleProps.title;
     return (
-      items.filter(item => (item.documentTitleProps && item.documentTitleProps.title) === documentTitle).length > 0
+      items.filter((item: IFullDocumentCardProps) => (item.documentTitleProps && item.documentTitleProps.title) === documentTitle).length > 0
     );
   }
 }

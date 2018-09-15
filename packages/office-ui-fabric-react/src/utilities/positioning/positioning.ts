@@ -111,7 +111,7 @@ function _getEdgeValue(rect: Rectangle, edge: RectangleEdge): number {
   return rect[RectangleEdge[edge]];
 }
 
-function _setEdgeValue(rect: Rectangle, edge: RectangleEdge, value: number) {
+function _setEdgeValue(rect: Rectangle, edge: RectangleEdge, value: number): Rectangle {
   rect[RectangleEdge[edge]] = value;
   return rect;
 }
@@ -647,7 +647,7 @@ function _getMaxHeightFromTargetRectangle(
   gapSpace: number,
   bounds: Rectangle,
   coverTarget?: boolean
-) {
+): number {
   let maxHeight = 0;
   const directionalHint = DirectionalDictionary[targetEdge];
 

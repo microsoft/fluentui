@@ -70,7 +70,7 @@ function _lighten(hsv: IHSV, factor: number): IHSV {
   };
 }
 
-function _clamp(n: number, min: number, max: number) {
+function _clamp(n: number, min: number, max: number): number {
   return n; // Math.max(min, Math.min(n, max));
 }
 

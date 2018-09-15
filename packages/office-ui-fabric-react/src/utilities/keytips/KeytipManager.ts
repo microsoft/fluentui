@@ -166,7 +166,7 @@ export class KeytipManager {
    * @param overflowButtonSequences
    * @param keytipSequences
    */
-  public menuExecute(overflowButtonSequences: string[], keytipSequences: string[]) {
+  public menuExecute(overflowButtonSequences: string[], keytipSequences: string[]): void {
     EventGroup.raise(this, KeytipEvents.PERSISTED_KEYTIP_EXECUTE, {
       overflowButtonSequences,
       keytipSequences
