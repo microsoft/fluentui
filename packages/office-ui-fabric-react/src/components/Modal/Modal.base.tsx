@@ -69,7 +69,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
     }
   }
 
-  public componentDidUpdate(prevProps: IModalProps, prevState: IDialogState) {
+  public componentDidUpdate(prevProps: IModalProps, prevState: IDialogState): void {
     if (!prevProps.isOpen && !prevState.isVisible) {
       this.setState({
         isVisible: true
@@ -149,7 +149,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
     return null;
   }
 
-  public focus() {
+  public focus(): void {
     if (this._focusTrapZone.current) {
       this._focusTrapZone.current.focus();
     }

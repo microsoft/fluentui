@@ -42,7 +42,7 @@ export class ImageBase extends BaseComponent<IImageProps, IImageState> {
     }
   }
 
-  public componentDidUpdate(prevProps: IImageProps, prevState: IImageState) {
+  public componentDidUpdate(prevProps: IImageProps, prevState: IImageState): void {
     this._checkImageLoaded();
     if (this.props.onLoadingStateChange && prevState.loadState !== this.state.loadState) {
       this.props.onLoadingStateChange(this.state.loadState!);

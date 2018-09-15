@@ -65,7 +65,7 @@ export class MarqueeSelectionBasicExample extends React.Component<{}, IMarqueeSe
         />
         <p>Drag a rectangle around the items below to select them:</p>
         <ul className="ms-MarqueeSelectionBasicExample-photoList">
-          {PHOTOS.map((photo, index) => (
+          {PHOTOS.map((photo: IPhoto, index: number) => (
             <div
               key={index}
               className={css(

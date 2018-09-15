@@ -5,7 +5,13 @@ import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { Image } from 'office-ui-fabric-react/lib/Image';
 import './FocusZone.Photos.Example.scss';
 
-const PHOTOS = createArray(25, () => {
+interface IPhoto {
+  url: string;
+  width: number;
+  height: number;
+}
+
+const PHOTOS: IPhoto[] = createArray(25, () => {
   const randomWidth = 50 + Math.floor(Math.random() * 150);
 
   return {
@@ -21,7 +27,7 @@ const log = (): void => {
 
 export const FocusZonePhotosExample = () => (
   <FocusZone elementType="ul" className="ms-FocusZoneExamples-photoList">
-    {PHOTOS.map((photo, index) => (
+    {PHOTOS.map((photo: IPhoto, index: number) => (
       <li
         key={index}
         className="ms-FocusZoneExamples-photoCell"

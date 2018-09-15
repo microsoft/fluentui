@@ -57,7 +57,7 @@ describe('Shimmer', () => {
         isDataLoaded={false}
         ariaLabel={'Shimmer component'}
         // tslint:disable-next-line:jsx-no-lambda
-        componentRef={ref => (component = ref)}
+        componentRef={(ref: IShimmer) => (component = ref)}
       >
         <div>TEST DATA</div>
       </Shimmer>
