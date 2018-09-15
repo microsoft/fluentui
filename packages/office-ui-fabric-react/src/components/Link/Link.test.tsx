@@ -63,7 +63,7 @@ describe('Link', () => {
 
   it('renders Link with "as=Route" a Route element', () => {
     class Route extends React.Component {
-      public render() {
+      public render(): null {
         return null;
       }
     }

@@ -42,7 +42,7 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
     );
   }
 
-  public focus() {
+  public focus(): void {
     const { current } = this._link;
 
     if (current && current.focus) {

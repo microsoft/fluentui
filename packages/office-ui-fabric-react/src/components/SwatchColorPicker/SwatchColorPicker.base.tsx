@@ -9,6 +9,8 @@ import {
 import { Grid } from '../../utilities/grid/Grid';
 import { IColorCellProps } from './ColorPickerGridCell.types';
 import { ColorPickerGridCell } from './ColorPickerGridCell';
+import { IGridStyleProps } from 'office-ui-fabric-react/lib/utilities/grid';
+import { IColor } from 'office-ui-fabric-react/lib/utilities/color';
 
 export interface ISwatchColorPickerState {
   selectedIndex?: number;
@@ -74,7 +76,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
     }
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     if (this.props.onCellFocused && this._cellFocused) {
       this._cellFocused = false;
       this.props.onCellFocused();
@@ -104,7 +106,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
     return (
       <Grid
         {...this.props}
-        items={colorCells.map((item, index) => {
+        items={colorCells.map((item: IColorCellProps, index: number) => {
           return { ...item, index: index };
         })}
         columnCount={columnCount}
@@ -116,7 +118,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
         onBlur={this._onSwatchColorPickerBlur}
         theme={this.props.theme!}
         // tslint:disable-next-line:jsx-no-lambda
-        styles={props => ({
+        styles={(props: IGridStyleProps) => ({
           root: classNames.root,
           tableCell: classNames.tableCell,
           focusedContainer: classNames.focusedContainer
@@ -143,7 +145,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
    * @returns {number} - The index of the selected item's id, -1 if there was no match
    */
   private _getSelectedIndex(items: IColorCellProps[], selectedId: string): number | undefined {
-    const selectedIndex = findIndex(items, item => item.id === selectedId);
+    const selectedIndex = findIndex(items, (item: IColorCellProps) => item.id === selectedId);
     return selectedIndex >= 0 ? selectedIndex : undefined;
   }
 

@@ -43,7 +43,7 @@ const keytipSequenceF: string[] = ['e', 'f'];
 const keytipPropsF = createKeytipProps(keytipSequenceF);
 const uniqueIdF = '5';
 
-function verifySampleTree() {
+function verifySampleTree(): void {
   const nodeB = keytipTree.getNode(keytipIdB)!;
   const nodeC = keytipTree.getNode(keytipIdC)!;
   const nodeD = keytipTree.getNode(keytipIdD)!;

@@ -90,39 +90,39 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
             eventBubblingEnabled ? (
               <Fabric className={classNames.content}>{this.props.children}</Fabric>
             ) : (
-              <Fabric
-                className={classNames.content}
-                onClick={this._filterEvent}
-                onContextMenu={this._filterEvent}
-                onDoubleClick={this._filterEvent}
-                onDrag={this._filterEvent}
-                onDragEnd={this._filterEvent}
-                onDragEnter={this._filterEvent}
-                onDragExit={this._filterEvent}
-                onDragLeave={this._filterEvent}
-                onDragOver={this._filterEvent}
-                onDragStart={this._filterEvent}
-                onDrop={this._filterEvent}
-                onMouseDown={this._filterEvent}
-                onMouseEnter={this._filterEvent}
-                onMouseLeave={this._filterEvent}
-                onMouseMove={this._filterEvent}
-                onMouseOver={this._filterEvent}
-                onMouseOut={this._filterEvent}
-                onMouseUp={this._filterEvent}
-                onKeyDown={this._filterEvent}
-                onKeyPress={this._filterEvent}
-                onKeyUp={this._filterEvent}
-                onFocus={this._filterEvent}
-                onBlur={this._filterEvent}
-                onChange={this._filterEvent}
-                onInput={this._filterEvent}
-                onInvalid={this._filterEvent}
-                onSubmit={this._filterEvent}
-              >
-                {this.props.children}
-              </Fabric>
-            ),
+                <Fabric
+                  className={classNames.content}
+                  onClick={this._filterEvent}
+                  onContextMenu={this._filterEvent}
+                  onDoubleClick={this._filterEvent}
+                  onDrag={this._filterEvent}
+                  onDragEnd={this._filterEvent}
+                  onDragEnter={this._filterEvent}
+                  onDragExit={this._filterEvent}
+                  onDragLeave={this._filterEvent}
+                  onDragOver={this._filterEvent}
+                  onDragStart={this._filterEvent}
+                  onDrop={this._filterEvent}
+                  onMouseDown={this._filterEvent}
+                  onMouseEnter={this._filterEvent}
+                  onMouseLeave={this._filterEvent}
+                  onMouseMove={this._filterEvent}
+                  onMouseOver={this._filterEvent}
+                  onMouseOut={this._filterEvent}
+                  onMouseUp={this._filterEvent}
+                  onKeyDown={this._filterEvent}
+                  onKeyPress={this._filterEvent}
+                  onKeyUp={this._filterEvent}
+                  onFocus={this._filterEvent}
+                  onBlur={this._filterEvent}
+                  onChange={this._filterEvent}
+                  onInput={this._filterEvent}
+                  onInvalid={this._filterEvent}
+                  onSubmit={this._filterEvent}
+                >
+                  {this.props.children}
+                </Fabric>
+              ),
             this._layerElement
           )}
       </span>
@@ -151,7 +151,7 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
     return classNames;
   }
 
-  private _setVirtualParent() {
+  private _setVirtualParent(): void {
     if (this._rootElement && this._rootElement.current && this._layerElement) {
       setVirtualParent(this._layerElement, this._rootElement.current);
     }

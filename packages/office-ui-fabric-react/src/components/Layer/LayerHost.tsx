@@ -4,7 +4,7 @@ import { ILayerHostProps } from './LayerHost.types';
 import { notifyHostChanged } from './Layer.notification';
 
 export class LayerHost extends BaseComponent<ILayerHostProps> {
-  public shouldComponentUpdate() {
+  public shouldComponentUpdate(): boolean {
     return false;
   }
 
