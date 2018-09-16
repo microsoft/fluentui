@@ -17,7 +17,7 @@ export interface IColorPickerProps extends IBaseProps<IColorPicker> {
   /**
    * Callback issued when the user changes the color.
    */
-  onColorChanged?: (color: string) => void;
+  onColorChanged?: (color: string, alpha?: number) => void;
 
   /**
    * The setting of whether to hide the alpha control slider.

@@ -41,8 +41,10 @@ describe('ColorPicker', () => {
 
   it('onColorChange is called', () => {
     let color = '#FFFFFF';
-    const onColorChanged = (str: string): void => {
+    let a = 1;
+    const onColorChanged = (str: string, alpha?: number): void => {
       color = str;
+      alpha = a;
     };
 
     let colorPickerComponent: any;
