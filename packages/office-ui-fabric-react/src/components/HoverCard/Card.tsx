@@ -31,7 +31,6 @@ export abstract class Card<
     super(props);
   }
 
-  // Method to be called as a return in the render of each type of the hover card.
   public render(): JSX.Element {
     const { targetElement, directionalHintFixed, directionalHint, firstFocus, trapFocus, gapSpace, onLeave } = this.props;
 
@@ -61,7 +60,14 @@ export abstract class Card<
     );
   }
 
+  /**
+   * Method that returns the content of the HoverCard
+   */
   protected abstract renderContent(): JSX.Element;
+
+  /**
+   * Method that sets the styles for a specific card.
+   */
   protected abstract setStyles(): void;
 
   protected onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
