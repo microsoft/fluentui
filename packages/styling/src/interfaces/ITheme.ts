@@ -3,6 +3,8 @@ import { IFontStyles } from './IFontStyles';
 import { ISemanticColors } from './ISemanticColors';
 import { ITypography, IPartialTypography } from './ITypography';
 
+export type IScheme = 'default' | 'neutral' | 'soft' | 'strong';
+
 export interface ITheme {
   palette: IPalette;
   fonts: IFontStyles;
@@ -26,12 +28,17 @@ export interface ITheme {
    * Avoid using it until it is finalized.
    */
   typography: ITypography;
+
+  /**
+   * @internal
+   * Alternative themes that can be referred to by name.
+   */
+  schemes?: { [P in IScheme]?: ITheme };
 }
 
 export type IPartialTheme = {
-  [P in keyof Pick<
-    ITheme,
-    'palette' | 'fonts' | 'semanticColors' | 'isInverted' | 'disableGlobalClassNames'
-  >]?: Partial<ITheme[P]>
+  [P in keyof Pick<ITheme, 'palette' | 'fonts' | 'semanticColors' | 'isInverted' | 'disableGlobalClassNames' | 'schemes'>]?: Partial<
+    ITheme[P]
+  >
 } &
   { [P in keyof Pick<ITheme, 'typography'>]?: IPartialTypography };

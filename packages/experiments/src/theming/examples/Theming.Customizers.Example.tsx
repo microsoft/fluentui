@@ -10,18 +10,10 @@ import { farItems, items, overflowItems } from 'office-ui-fabric-react/lib/compo
 
 import { HorizontalStack, VerticalStack, IStackProps, IStackStyles } from '@uifabric/experiments/lib/Stack';
 import { Text } from '@uifabric/experiments/lib/Text';
-import { CollapsibleSectionRecursiveExample } from
-  '@uifabric/experiments/lib/components/CollapsibleSection/examples/CollapsibleSection.Recursive.Example';
+// tslint:disable:max-line-length
+import { CollapsibleSectionRecursiveExample } from '@uifabric/experiments/lib/components/CollapsibleSection/examples/CollapsibleSection.Recursive.Example';
 import { IThemedProps } from '../../Foundation';
-import {
-  defaultTheme,
-  invertedPrimaryTheme,
-  invertedDefaultTheme,
-  neutralTheme,
-  schemeTheme,
-  softTheme,
-  strongTheme
-} from './Themes';
+import { defaultTheme, invertedPrimaryTheme, invertedDefaultTheme, neutralTheme, softTheme, strongTheme } from './Themes';
 
 interface IDialogExampleProps {
   buttonText: string;
@@ -42,11 +34,7 @@ class DialogExample extends React.Component<IDialogExampleProps, IDialogExampleS
   }
 
   protected _renderCustomizerDialog(buttonText: string, theme?: ITheme): JSX.Element {
-    return theme ? (
-      <Customizer settings={{ theme }}>{this._renderDialog(buttonText)}</Customizer>
-    ) : (
-      this._renderDialog(buttonText)
-    );
+    return theme ? <Customizer settings={{ theme }}>{this._renderDialog(buttonText)}</Customizer> : this._renderDialog(buttonText);
   }
 
   protected _renderDialog(buttonText: string): JSX.Element {
@@ -60,8 +48,7 @@ class DialogExample extends React.Component<IDialogExampleProps, IDialogExampleS
           dialogContentProps={{
             type: DialogType.largeHeader,
             title: 'All emails together',
-            subText:
-              'Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
+            subText: 'Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
           }}
           modalProps={{
             isBlocking: false,
@@ -111,7 +98,7 @@ class ThemedDialog extends DialogExample {
   }
 }
 
-// TODO: requiring users to type this way is frictiony. find a way to reduces props typing
+// TODO: requiring users to type this way is frictiony. find a way to reduce props typing
 export const stackStyles = (props: IThemedProps<IStackProps>): IStackStyles => {
   return {
     root: {
@@ -120,38 +107,18 @@ export const stackStyles = (props: IThemedProps<IStackProps>): IStackStyles => {
   };
 };
 
-export class ThemingBasicExample extends React.Component<{}, {}> {
-  public render(): JSX.Element {
-    return (
-      <div>
-        <h2>Multiple Customizers</h2>
-        {this._renderCustomizedComponents(defaultTheme, invertedPrimaryTheme, invertedDefaultTheme, neutralTheme)}
-        <h2>Multiple Customizers (Variants package)</h2>
-        {this._renderCustomizedComponents(defaultTheme, softTheme, strongTheme, neutralTheme)}
-        <h2>Multiple Customizers (Variants package)</h2>
-        {this._renderCustomizedComponents(defaultTheme, strongTheme, softTheme, neutralTheme)}
-        <h2>One Customizer with Schemes</h2>
-        <Customizer settings={{ theme: schemeTheme }}>{this._renderSchemedComponents()}</Customizer>
-      </div>
-    );
-  }
-
+export class ThemingExample extends React.Component<{}, {}> {
   /**
    * Render various components using multiple Customizers.
    */
-  private _renderCustomizedComponents(
-    theme: ITheme,
-    sideMenuTheme: ITheme,
-    topMenuTheme: ITheme,
-    bodyTheme: ITheme
-  ): JSX.Element {
+  protected _renderCustomizedComponents(theme: ITheme, sideMenuTheme: ITheme, topMenuTheme: ITheme, bodyTheme: ITheme): JSX.Element {
     return (
       <HorizontalStack gap={10} styles={stackStyles}>
         <Customizer settings={{ theme: sideMenuTheme }}>
           <HorizontalStack.Item grow={1}>{this._renderSideMenu()}</HorizontalStack.Item>
         </Customizer>
         <HorizontalStack.Item grow={3}>
-          <VerticalStack gap={10} styles={stackStyles}>
+          <VerticalStack styles={stackStyles}>
             <Customizer settings={{ theme: topMenuTheme }}>{this._renderTopMenu()}</Customizer>
             <Customizer settings={{ theme: bodyTheme }}>
               <VerticalStack styles={stackStyles}>
@@ -168,27 +135,7 @@ export class ThemingBasicExample extends React.Component<{}, {}> {
     );
   }
 
-  /**
-   * Render various components only using scheme names (no Customizers.)
-   */
-  private _renderSchemedComponents(): JSX.Element {
-    return (
-      <HorizontalStack gap={10} styles={stackStyles}>
-        <HorizontalStack.Item grow={1}>{this._renderSideMenu()}</HorizontalStack.Item>
-        <HorizontalStack.Item grow={3}>
-          <VerticalStack styles={stackStyles}>
-            <Text>Body Content</Text>
-            <ThemedDialog buttonText="Default Theme" />
-            <ThemedDialog buttonText="Side Menu Theme" />
-            <ThemedDialog buttonText="Top Menu Theme" />
-            <ThemedDialog buttonText="Implicit Body Theme" />
-          </VerticalStack>
-        </HorizontalStack.Item>
-      </HorizontalStack>
-    );
-  }
-
-  private _renderSideMenu(): JSX.Element {
+  protected _renderSideMenu(): JSX.Element {
     return (
       <VerticalStack maxWidth="25%" styles={stackStyles}>
         <Text>Side Menu</Text>
@@ -197,12 +144,30 @@ export class ThemingBasicExample extends React.Component<{}, {}> {
     );
   }
 
-  private _renderTopMenu(): JSX.Element {
+  protected _renderTopMenu(): JSX.Element {
     return (
       <VerticalStack styles={stackStyles}>
         <Text>Top Menu</Text>
         <CommandBar items={items} overflowItems={overflowItems} farItems={farItems} />
       </VerticalStack>
     );
+  }
+}
+
+export class ThemingBasicExample extends ThemingExample {
+  public render(): JSX.Element {
+    return this._renderCustomizedComponents(defaultTheme, invertedPrimaryTheme, invertedDefaultTheme, neutralTheme);
+  }
+}
+
+export class ThemingVariant1Example extends ThemingExample {
+  public render(): JSX.Element {
+    return this._renderCustomizedComponents(defaultTheme, softTheme, strongTheme, neutralTheme);
+  }
+}
+
+export class ThemingVariant2Example extends ThemingExample {
+  public render(): JSX.Element {
+    return this._renderCustomizedComponents(defaultTheme, strongTheme, softTheme, neutralTheme);
   }
 }
