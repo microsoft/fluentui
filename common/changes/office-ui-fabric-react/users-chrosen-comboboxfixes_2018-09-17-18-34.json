@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Add a new option for allowing substring input search for comboboxes. This is largely to fix the experience for the room list combobox. If a user types in the box 32, with this option on, it will select Puget Sound - Building 32. Does not influence existing behavior. Updated examples with new option to allow for fullstringautocomplete (substring search). ",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "chrosen@microsoft.com"
+}
