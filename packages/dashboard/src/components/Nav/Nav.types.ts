@@ -104,6 +104,8 @@ export interface INavLinkGroupProps extends INavLinkProps {
   link: INavLink;
   isExpanded: boolean;
   isNavCollapsed?: boolean;
+  hasNestedMenu?: boolean;
+  hasSelectedNestedLink?: boolean;
 }
 
 export interface INavLinkGroupStates {
@@ -276,6 +278,7 @@ export interface INavLinkProps extends React.AllHTMLAttributes<HTMLAnchorElement
   barClassName?: string;
 
   hasNestedMenu?: boolean;
+  hasSelectedNestedLink?: boolean;
   isNested?: boolean;
   isExpanded?: boolean;
   isSelected?: boolean;

@@ -14,24 +14,11 @@ class NavigationLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGr
 
     this.state = {
       isExpanded: this.props.isExpanded,
-      hasSelectedNestedLink: false
+      hasSelectedNestedLink: this.props.hasSelectedNestedLink
     };
 
     this._onLinkClicked = this._onLinkClicked.bind(this);
   }
-
-  // not working
-  // componentWillMount() {
-  //   const { link } = this.props;
-  //   const ary = link.links ? link.links : [];
-  //   for (let i = 0; i < ary.length; i++) {
-  //     if (ary[i].isSlected) {
-  //       this.setState({
-  //         hasSelectedNestedLink: true
-  //       });
-  //     }
-  //   }
-  // }
 
   public render(): JSX.Element {
     const { link, isNavCollapsed } = this.props;
@@ -50,6 +37,7 @@ class NavigationLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGr
           ariaLabel={link.ariaLabel}
           primaryIconName={link.icon}
           isSelected={hasSelectedNestedLink}
+          hasSelectedNestedLink={hasSelectedNestedLink}
           hasNestedMenu={true}
           isNested={false}
           isExpanded={this.state.isExpanded}
@@ -88,6 +76,7 @@ class NavigationLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGr
           ariaLabel={nestedLink.ariaLabel}
           primaryIconName={nestedLink.icon}
           hasNestedMenu={false}
+          hasSelectedNestedLink={false}
           isNested={true}
           isSelected={nestedLink.isSelected}
           role="menuitem"
@@ -100,7 +89,6 @@ class NavigationLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGr
     this.setState({
       isExpanded: !this.state.isExpanded
     });
-    console.log(this.state.isExpanded);
 
     ev.preventDefault();
     ev.stopPropagation();

@@ -43,6 +43,15 @@ class NavigationGroup extends React.Component<INavGroupProps, {}> {
     );
   }
 
+  private _isNestedLinkSelected(link: INavLink): boolean {
+    if (!link || !link.links || link.links.length === 0) {
+      return false;
+    }
+    return link.links.some((childLink: INavLink) => {
+      return !!childLink && childLink.isSelected;
+    });
+  }
+
   private _renderLinks(link: INavLink, linkIndex: number, groupIndex: number): React.ReactElement<{}> | null {
     if (!link) {
       return null;
@@ -50,11 +59,19 @@ class NavigationGroup extends React.Component<INavGroupProps, {}> {
 
     const { isNavCollapsed } = this.props;
     const keyStr = groupIndex.toString() + linkIndex.toString();
+    const hasSelectedNestedLink = this._isNestedLinkSelected(link);
 
     return (
+      // if there are nested links, render a NavLinkGroup, otherwise just render a NavLink
       <li role="listitem" key={keyStr}>
         {!!link.links && link.links ? (
-          <NavLinkGroup isExpanded={link.isExpanded ? link.isExpanded : false} isNavCollapsed={isNavCollapsed} link={link} />
+          <NavLinkGroup
+            isExpanded={link.isExpanded ? link.isExpanded : false}
+            isNavCollapsed={isNavCollapsed}
+            link={link}
+            hasNestedMenu={true}
+            hasSelectedNestedLink={hasSelectedNestedLink}
+          />
         ) : (
           <NavLink
             isNavCollapsed={isNavCollapsed}

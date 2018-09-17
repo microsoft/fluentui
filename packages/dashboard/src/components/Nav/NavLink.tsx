@@ -39,8 +39,14 @@ class NavigationLink extends React.Component<INavLinkProps, INavLinkStates> {
   }
 
   private _generateActiveBar(): React.ReactElement<{}> | null {
-    const { isNested } = this.props;
-    if (this.props.isSelected) {
+    const { isNested, isSelected, hasNestedMenu, isNavCollapsed, hasSelectedNestedLink, isExpanded } = this.props;
+
+    // Decide all the cases to show the selected indicator
+    if (
+      (!isNavCollapsed && !isExpanded && hasSelectedNestedLink) ||
+      (!isNavCollapsed && !hasNestedMenu && isSelected) ||
+      (isNavCollapsed && isSelected && !isNested)
+    ) {
       return <div className={isNested ? this.classNames.navItemBarMarkerSmall : this.classNames.navItemBarMarker} />;
     } else {
       return null;
