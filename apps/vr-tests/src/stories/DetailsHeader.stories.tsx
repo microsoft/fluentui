@@ -4,17 +4,10 @@ import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
 import { IColumn, DetailsListLayoutMode, ColumnActionsMode, Selection, SelectionMode, IClassNames, classNamesFunction } from 'office-ui-fabric-react';
-import { IDetailsColumnStyles, IDetailsColumnStyleProps } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn.types'
 import { DetailsHeader } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsHeader'
-import { IDetailsHeaderStyleProps, IDetailsHeaderStyles } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsHeader.types';
-import { DetailsColumn } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn';
-//import * as fs from 'fs';
-//import { dndScript } from '../../../../../office-ui-fabric-react/packages/webpack-utils/src/ManifestServicePlugin'
-
 
 const _items: {}[] = [];
 const _selection = new Selection();
-// const dndScript = fs.readFileSync('../../dndSim.js', 'utf8');
 const dndScript = require('!raw-loader!../../dndSim.js') as string;
 
 const columns: IColumn[] = [
@@ -98,17 +91,13 @@ const columns: IColumn[] = [
   }
 ];
 
-
 _selection.setItems(_items);
-
 
 const _columnReorderProps = {
   frozenColumnCountFromStart: 1,
   frozenColumnCountFromEnd: 1,
   handleColumnReorder: this._dummyFunction
 };
-
-
 
 storiesOf('DetailsHeader', module)
   .addDecorator(FabricDecorator)
@@ -122,7 +111,6 @@ storiesOf('DetailsHeader', module)
         .snapshot('hoverDraggable', { cropTo: '.testWrapper' })
         .hover('[aria-colindex=7]')
         .snapshot('hoverFrozenLast', { cropTo: '.testWrapper' })
-        .hover('[aria-colindex=4]')
         .executeScript(dndScript)
         .executeScript('DndSimulator.simulate(\'[draggable="true"]\', \'[aria-colindex="5"]\')')
         .snapshot('DropHint', { cropTo: '.testWrapper' })
@@ -141,44 +129,3 @@ storiesOf('DetailsHeader', module)
       columnReorderProps={_columnReorderProps}
     />
   ))
-
-// storiesOf('DetailsHeader', module)
-//   .addDecorator(FabricDecorator)
-//   .addDecorator(story => (
-//     <Screener
-//       steps={new Screener.Steps()
-//         .snapshot('default1', { cropTo: '.testWrapper' })
-//         .snapshot('default2', { cropTo: '.testWrapper' })
-//         .snapshot('default3', { cropTo: '.testWrapper' })
-//         .hover('[aria-colindex=3]')
-//         .snapshot('hover', { cropTo: '.testWrapper' })
-//         .end()}
-//     >
-//       {story()}
-//     </Screener>
-//   ))
-
-//   .add('DragEnd', () => (
-//     <div>
-//       <DetailsColumn
-//         column={columns[3]}
-//         key={columns[3].key}
-//         columnIndex={3}
-//         isDraggable={true}
-//       />
-//       <DetailsColumn
-//         column={columns[4]}
-//         key={columns[4].key}
-//         columnIndex={4}
-//         isDraggable={true}
-//       />
-//       <DetailsColumn
-//         column={columns[5]}
-//         key={columns[5].key}
-//         columnIndex={5}
-//         isDraggable={true}
-//       />
-//     </div>
-//   ))
-
-
