@@ -49,40 +49,35 @@ export interface IStorySet {
  *  once in LTR and once in RTL
  *  (optionally excluding some stories from being run in RTL)
  */
-export const runStories = (componentName: string, allStories: IStorySet[], rtlExclusions: string[] = []): void => {
-  _createStorySet(componentName, allStories, rtlExclusions, false);
-  // TODO: use same component name for RTL tests, or create new story set with different name,
-  // e.g. componentName + ' - RTL'?
-  _createStorySet(componentName, allStories, rtlExclusions, true);
+export const runStories = (componentName: string, storySet: IStorySet, rtlExclusions: string[] = []): void => {
+  _createStorySet(componentName, storySet, rtlExclusions, false);
+  _createStorySet(componentName, storySet, rtlExclusions, true);
 };
 
 // Helper function to run a set of stories in either LTR or RTL
 const _createStorySet =
   (componentName: string,
-    allStories: IStorySet[],
+    storySet: IStorySet,
     rtlExclusions: string[],
     rtl: boolean
   ): void => {
-    for (let i = 0; i < allStories.length; i++) {
-      const decorators = allStories[i].decorators;
-      const stories = allStories[i].stories;
+    const { decorators, stories } = storySet;
 
-      const componentStories = storiesOf(componentName, module);
+    const componentStories = storiesOf(componentName, module);
 
-      for (let j = 0; j < decorators.length; j++) {
-        componentStories.addDecorator((story) => {
-          setRTL(rtl);
-          return decorators[j](story);
-        });
+    for (let j = 0; j < decorators.length; j++) {
+      componentStories.addDecorator((story) => {
+        setRTL(rtl);
+        return decorators[j](story);
+      });
+    }
+
+    for (const title in stories) {
+      if (rtl && rtlExclusions.indexOf(title) !== -1) {
+        continue;
       }
 
-      for (const title in stories) {
-        if (rtl && rtlExclusions.indexOf(title) !== -1) {
-          continue;
-        }
-
-        const displayTitle = title + (rtl ? ' - RTL' : '');
-        componentStories.add(displayTitle, stories[title]);
-      }
+      const displayTitle = title + (rtl ? ' - RTL' : '');
+      componentStories.add(displayTitle, stories[title]);
     }
   };

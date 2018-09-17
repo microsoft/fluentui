@@ -24,52 +24,48 @@ const SearchBoxDecorator = story => (
 );
 
 const defaultStories = {
-  'Small left w/ close button': () => (
-    <Panel {...defaultProps} hasCloseButton type={PanelType.smallFixedNear} headerText="Small" />
-  ),
-  'Small fixed right w/ close button': () => (
-    <Panel {...defaultProps} hasCloseButton type={PanelType.smallFixedFar} headerText="Small fixed" />
-  ),
-  'Small fluid right': () => (
-    <Panel {...defaultProps} type={PanelType.smallFluid} headerText="Small fluid" />
-  ),
-  'Medium right': () => (
-    <Panel {...defaultProps} type={PanelType.medium} headerText="Medium" />
-  ),
-  'Large right': () => (
-    <Panel {...defaultProps} type={PanelType.large} headerText="Large" />
-  ),
-  'Large fixed right': () => (
-    <Panel {...defaultProps} type={PanelType.largeFixed} headerText="Large fixed" />
-  ),
-  'Extra large right': () => (
-    <Panel {...defaultProps} type={PanelType.extraLarge} headerText="Extra Large" />
-  ),
-  'Custom': () => (
-    <Panel {...defaultProps} type={PanelType.custom} headerText="Custom" customWidth="200vw" />
-  )
+  decorators: [FabricDecorator, ScreenerDecorator],
+  stories: {
+    'Small left w/ close button': () => (
+      <Panel {...defaultProps} hasCloseButton type={PanelType.smallFixedNear} headerText="Small" />
+    ),
+    'Small fixed right w/ close button': () => (
+      <Panel {...defaultProps} hasCloseButton type={PanelType.smallFixedFar} headerText="Small fixed" />
+    ),
+    'Small fluid right': () => (
+      <Panel {...defaultProps} type={PanelType.smallFluid} headerText="Small fluid" />
+    ),
+    'Medium right': () => (
+      <Panel {...defaultProps} type={PanelType.medium} headerText="Medium" />
+    ),
+    'Large right': () => (
+      <Panel {...defaultProps} type={PanelType.large} headerText="Large" />
+    ),
+    'Large fixed right': () => (
+      <Panel {...defaultProps} type={PanelType.largeFixed} headerText="Large fixed" />
+    ),
+    'Extra large right': () => (
+      <Panel {...defaultProps} type={PanelType.extraLarge} headerText="Extra Large" />
+    ),
+    'Custom': () => (
+      <Panel {...defaultProps} type={PanelType.custom} headerText="Custom" customWidth="200vw" />
+    )
+  }
 };
 
 const searchBoxStories = {
-  'SearchBox and Right Panel': () => (
-    <div>
-      <SearchBox placeholder="Search" />
-      <Panel isOpen={false} type={PanelType.medium} headerClassName="" headerText={'Header'} isHiddenOnDismiss>
-        {null}
-      </Panel>
-    </div>
-  )
+  decorators: [FabricDecorator, SearchBoxDecorator],
+  stories: {
+    'SearchBox and Right Panel': () => (
+      <div>
+        <SearchBox placeholder="Search" />
+        <Panel isOpen={false} type={PanelType.medium} headerClassName="" headerText={'Header'} isHiddenOnDismiss>
+          {null}
+        </Panel>
+      </div>
+    )
+  }
 };
 
-const allStories = [
-  {
-    decorators: [FabricDecorator, ScreenerDecorator],
-    stories: defaultStories
-  },
-  {
-    decorators: [FabricDecorator, SearchBoxDecorator],
-    stories: searchBoxStories
-  }
-];
-
-runStories('Panel', allStories);
+runStories('Panel', defaultStories);
+runStories('Panel', searchBoxStories);

@@ -15,14 +15,12 @@ const ScreenerDecorator = story => (
   </Screener>
 );
 
-const allStories = [
-  {
-    decorators: [FabricDecorator, ScreenerDecorator],
-    stories: {
-      'Root': () => <ColorPicker color='#FFF' />,
-      'Blue': () => <ColorPicker color='#48B' />
-    }
+const colorPickerStories = {
+  decorators: [FabricDecorator, ScreenerDecorator],
+  stories: {
+    'Root': () => <ColorPicker color='#FFF' />,
+    'Blue': () => <ColorPicker color='#48B' />
   }
-];
+};
 
-runStories('ColorPicker', allStories);
+runStories('ColorPicker', colorPickerStories);

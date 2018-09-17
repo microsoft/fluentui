@@ -1,8 +1,7 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
-import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
+import { FabricDecorator, runStories } from '../utilities';
 import { DetailsList, DetailsListLayoutMode, IColumn, CheckboxVisibility } from 'office-ui-fabric-react';
 
 const url = 'https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/';
@@ -114,65 +113,71 @@ const groups = [
   { count: 4, key: '2', name: 'Blue', startIndex: 2 }
 ];
 
-storiesOf('DetailsList', module)
-  .addDecorator(FabricDecorator)
-  .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('.ms-DetailsRow')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .click('.ms-DetailsRow')
-        .hover('.ms-DetailsRow')
-        .snapshot('click', { cropTo: '.testWrapper' })
-        .end()}
-    >
-      {story()}
-    </Screener>
-  ))
-  .add('Root', () => (
-    <DetailsList
-      items={items}
-      compact={false}
-      columns={columns}
-      layoutMode={DetailsListLayoutMode.justified}
-      isHeaderVisible={true}
-    />
-  ))
-  .add('Compact', () => (
-    <DetailsList
-      items={items}
-      compact
-      columns={columns}
-      layoutMode={DetailsListLayoutMode.justified}
-      isHeaderVisible={true}
-    />
-  ))
-  .add('Grouped', () => (
-    <DetailsList
-      items={items}
-      groups={groups}
-      columns={columns}
-      layoutMode={DetailsListLayoutMode.justified}
-      isHeaderVisible={true}
-    />
-  ))
-  .add('Grouped with Checkbox Hidden', () => (
-    <DetailsList
-      items={items}
-      groups={groups}
-      columns={columns}
-      layoutMode={DetailsListLayoutMode.justified}
-      checkboxVisibility={CheckboxVisibility.hidden}
-      isHeaderVisible={true}
-    />
-  ))
-  .add('Checkbox Visible Always', () => (
-    <DetailsList
-      items={items}
-      columns={columns}
-      layoutMode={DetailsListLayoutMode.justified}
-      checkboxVisibility={CheckboxVisibility.always}
-      isHeaderVisible={true}
-    />
-  ));
+const ScreenerDecorator = story => (
+  <Screener
+    steps={new Screener.Steps()
+      .snapshot('default', { cropTo: '.testWrapper' })
+      .hover('.ms-DetailsRow')
+      .snapshot('hover', { cropTo: '.testWrapper' })
+      .click('.ms-DetailsRow')
+      .hover('.ms-DetailsRow')
+      .snapshot('click', { cropTo: '.testWrapper' })
+      .end()}
+  >
+    {story()}
+  </Screener>
+);
+
+const detailsListStories = {
+  decorators: [FabricDecorator],
+  stories: {
+    'Root': () => (
+      <DetailsList
+        items={items}
+        compact={false}
+        columns={columns}
+        layoutMode={DetailsListLayoutMode.justified}
+        isHeaderVisible={true}
+      />
+    ),
+    'Compact': () => (
+      <DetailsList
+        items={items}
+        compact
+        columns={columns}
+        layoutMode={DetailsListLayoutMode.justified}
+        isHeaderVisible={true}
+      />
+    ),
+    'Grouped': () => (
+      <DetailsList
+        items={items}
+        groups={groups}
+        columns={columns}
+        layoutMode={DetailsListLayoutMode.justified}
+        isHeaderVisible={true}
+      />
+    ),
+    'Grouped with Checkbox Hidden': () => (
+      <DetailsList
+        items={items}
+        groups={groups}
+        columns={columns}
+        layoutMode={DetailsListLayoutMode.justified}
+        checkboxVisibility={CheckboxVisibility.hidden}
+        isHeaderVisible={true}
+      />
+    ),
+    'Checkbox Visible Always': () => (
+      <DetailsList
+        items={items}
+        columns={columns}
+        layoutMode={DetailsListLayoutMode.justified}
+        checkboxVisibility={CheckboxVisibility.always}
+        isHeaderVisible={true}
+      />
+    )
+  }
+};
+
+runStories('DetailsList', detailsListStories);

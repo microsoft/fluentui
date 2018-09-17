@@ -33,107 +33,105 @@ const CalloutScreenerDecorator = story => (
   </Screener>
 );
 
-const allStories = [
-  {
-    decorators: [CalloutDecorator, FabricDecoratorTall, CalloutScreenerDecorator],
-    stories: {
-      'Root': () => (
-        <Callout {...defaultProps} >
-          {calloutContent}
-        </Callout>
-      ),
-      'Bottom auto edge': () => (
-        <Callout {...defaultProps} directionalHint={DirectionalHint.bottomAutoEdge} >
-          {calloutContent}
-        </Callout>
-      ),
-      'Bottom center': () => (
-        <Callout {...defaultProps} directionalHint={DirectionalHint.bottomCenter} >
-          {calloutContent}
-        </Callout>
-      ),
-      'Bottom left edge': () => (
-        <Callout {...defaultProps} directionalHint={DirectionalHint.bottomLeftEdge} >
-          {calloutContent}
-        </Callout>
-      ),
-      'Bottom right edge': () => (
-        <Callout {...defaultProps} directionalHint={DirectionalHint.bottomRightEdge} >
-          {calloutContent}
-        </Callout>
-      ),
-      'Left bottom edge': () => (
-        <Callout {...defaultProps} directionalHint={DirectionalHint.leftBottomEdge} >
-          {calloutContent}
-        </Callout>
-      ),
-      'Left center': () => (
-        <Callout {...defaultProps} directionalHint={DirectionalHint.leftCenter} >
-          {calloutContent}
-        </Callout>
-      ),
-      'Left top edge': () => (
-        <Callout {...defaultProps} directionalHint={DirectionalHint.leftTopEdge} >
-          {calloutContent}
-        </Callout>
-      ),
-      'Right bottom edge': () => (
-        <Callout {...defaultProps} directionalHint={DirectionalHint.rightBottomEdge} >
-          {calloutContent}
-        </Callout>
-      ),
-      'Right center': () => (
-        <Callout {...defaultProps} directionalHint={DirectionalHint.rightCenter} >
-          {calloutContent}
-        </Callout>
-      ),
-      'Right top edge': () => (
-        <Callout {...defaultProps} directionalHint={DirectionalHint.rightTopEdge} >
-          {calloutContent}
-        </Callout>
-      ),
-      'Top auto edge': () => (
-        <Callout {...defaultProps} directionalHint={DirectionalHint.topAutoEdge} >
-          {calloutContent}
-        </Callout>
-      ),
-      'Top center': () => (
-        <Callout {...defaultProps} directionalHint={DirectionalHint.topCenter} >
-          {calloutContent}
-        </Callout>
-      ),
-      'Top left edge': () => (
-        <Callout {...defaultProps} directionalHint={DirectionalHint.topLeftEdge} >
-          {calloutContent}
-        </Callout>
-      ),
-      'Top right edge': () => (
-        <Callout {...defaultProps} directionalHint={DirectionalHint.topRightEdge} >
-          {calloutContent}
-        </Callout>
-      ),
-      'Beak 25': () => (
-        <Callout {...defaultProps} beakWidth={25} >
-          {calloutContent}
-        </Callout>
-      ),
-      'Gap space 25': () => (
-        <Callout {...defaultProps} gapSpace={25}>
-          {calloutContent}
-        </Callout>
-      ),
-      'No beak': () => (
-        <Callout {...defaultProps} isBeakVisible={false} >
-          {calloutContent}
-        </Callout>
-      ),
-      'No callout width specified': () => (
-        <Callout {...defaultProps} calloutWidth={undefined} >
-          {calloutContent}
-        </Callout>
-      )
-    }
+const calloutStories = {
+  decorators: [CalloutDecorator, FabricDecoratorTall, CalloutScreenerDecorator],
+  stories: {
+    'Root': () => (
+      <Callout {...defaultProps} >
+        {calloutContent}
+      </Callout>
+    ),
+    'Bottom auto edge': () => (
+      <Callout {...defaultProps} directionalHint={DirectionalHint.bottomAutoEdge} >
+        {calloutContent}
+      </Callout>
+    ),
+    'Bottom center': () => (
+      <Callout {...defaultProps} directionalHint={DirectionalHint.bottomCenter} >
+        {calloutContent}
+      </Callout>
+    ),
+    'Bottom left edge': () => (
+      <Callout {...defaultProps} directionalHint={DirectionalHint.bottomLeftEdge} >
+        {calloutContent}
+      </Callout>
+    ),
+    'Bottom right edge': () => (
+      <Callout {...defaultProps} directionalHint={DirectionalHint.bottomRightEdge} >
+        {calloutContent}
+      </Callout>
+    ),
+    'Left bottom edge': () => (
+      <Callout {...defaultProps} directionalHint={DirectionalHint.leftBottomEdge} >
+        {calloutContent}
+      </Callout>
+    ),
+    'Left center': () => (
+      <Callout {...defaultProps} directionalHint={DirectionalHint.leftCenter} >
+        {calloutContent}
+      </Callout>
+    ),
+    'Left top edge': () => (
+      <Callout {...defaultProps} directionalHint={DirectionalHint.leftTopEdge} >
+        {calloutContent}
+      </Callout>
+    ),
+    'Right bottom edge': () => (
+      <Callout {...defaultProps} directionalHint={DirectionalHint.rightBottomEdge} >
+        {calloutContent}
+      </Callout>
+    ),
+    'Right center': () => (
+      <Callout {...defaultProps} directionalHint={DirectionalHint.rightCenter} >
+        {calloutContent}
+      </Callout>
+    ),
+    'Right top edge': () => (
+      <Callout {...defaultProps} directionalHint={DirectionalHint.rightTopEdge} >
+        {calloutContent}
+      </Callout>
+    ),
+    'Top auto edge': () => (
+      <Callout {...defaultProps} directionalHint={DirectionalHint.topAutoEdge} >
+        {calloutContent}
+      </Callout>
+    ),
+    'Top center': () => (
+      <Callout {...defaultProps} directionalHint={DirectionalHint.topCenter} >
+        {calloutContent}
+      </Callout>
+    ),
+    'Top left edge': () => (
+      <Callout {...defaultProps} directionalHint={DirectionalHint.topLeftEdge} >
+        {calloutContent}
+      </Callout>
+    ),
+    'Top right edge': () => (
+      <Callout {...defaultProps} directionalHint={DirectionalHint.topRightEdge} >
+        {calloutContent}
+      </Callout>
+    ),
+    'Beak 25': () => (
+      <Callout {...defaultProps} beakWidth={25} >
+        {calloutContent}
+      </Callout>
+    ),
+    'Gap space 25': () => (
+      <Callout {...defaultProps} gapSpace={25}>
+        {calloutContent}
+      </Callout>
+    ),
+    'No beak': () => (
+      <Callout {...defaultProps} isBeakVisible={false} >
+        {calloutContent}
+      </Callout>
+    ),
+    'No callout width specified': () => (
+      <Callout {...defaultProps} calloutWidth={undefined} >
+        {calloutContent}
+      </Callout>
+    )
   }
-];
+};
 
-runStories('Callout', allStories);
+runStories('Callout', calloutStories);

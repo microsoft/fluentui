@@ -50,19 +50,17 @@ const DefaultScreenerDecorator = story => (
   </Screener>
 );
 
-const defaultStories = [
-  {
-    decorators: [FabricDecorator, DefaultScreenerDecorator],
-    stories: {
-      'Root': () => <DefaultButton {...baseProps} />,
-      'Disabled': () => <DefaultButton {...baseProps} disabled={true} />,
-      'Checked': () => <DefaultButton {...baseProps} checked={true} />,
-      'Primary': () => <DefaultButton {...baseProps} primary={true} />,
-      'Primary Disabled': () => <DefaultButton {...baseProps} primary={true} disabled={true} />,
-      'Primary Checked': () => <DefaultButton {...baseProps} primary={true} checked={true} />
-    }
+const defaultStories = {
+  decorators: [FabricDecorator, DefaultScreenerDecorator],
+  stories: {
+    'Root': () => <DefaultButton {...baseProps} />,
+    'Disabled': () => <DefaultButton {...baseProps} disabled={true} />,
+    'Checked': () => <DefaultButton {...baseProps} checked={true} />,
+    'Primary': () => <DefaultButton {...baseProps} primary={true} />,
+    'Primary Disabled': () => <DefaultButton {...baseProps} primary={true} disabled={true} />,
+    'Primary Checked': () => <DefaultButton {...baseProps} primary={true} checked={true} />
   }
-];
+};
 
 runStories('Button Default', defaultStories);
 
@@ -80,16 +78,14 @@ const ActionScreenerDecorator = story => (
   </Screener>
 );
 
-const actionStories = [
-  {
-    decorators: [FabricDecorator, ActionScreenerDecorator],
-    stories: {
-      'Root': () => <ActionButton {...baseProps} />,
-      'Disabled': () => <ActionButton {...baseProps} disabled={true} />,
-      'Checked': () => <ActionButton {...baseProps} checked={true} />
-    }
+const actionStories = {
+  decorators: [FabricDecorator, ActionScreenerDecorator],
+  stories: {
+    'Root': () => <ActionButton {...baseProps} />,
+    'Disabled': () => <ActionButton {...baseProps} disabled={true} />,
+    'Checked': () => <ActionButton {...baseProps} checked={true} />
   }
-];
+};
 
 runStories('Button Action', actionStories);
 
@@ -107,19 +103,17 @@ const CompoundScreenerDecorator = story => (
   </Screener>
 );
 
-const compoundStories = [
-  {
-    decorators: [FabricDecorator, CompoundScreenerDecorator],
-    stories: {
-      'Root': () => <CompoundButton {...baseProps} />,
-      'Disabled': () => <CompoundButton {...baseProps} disabled={true} />,
-      'Checked': () => <CompoundButton {...baseProps} checked={true} />,
-      'Primary': () => <CompoundButton {...baseProps} primary={true} />,
-      'Primary Disabled': () => <CompoundButton {...baseProps} primary={true} disabled={true} />,
-      'Primary Checked': () => <CompoundButton {...baseProps} primary={true} checked={true} />
-    }
+const compoundStories = {
+  decorators: [FabricDecorator, CompoundScreenerDecorator],
+  stories: {
+    'Root': () => <CompoundButton {...baseProps} />,
+    'Disabled': () => <CompoundButton {...baseProps} disabled={true} />,
+    'Checked': () => <CompoundButton {...baseProps} checked={true} />,
+    'Primary': () => <CompoundButton {...baseProps} primary={true} />,
+    'Primary Disabled': () => <CompoundButton {...baseProps} primary={true} disabled={true} />,
+    'Primary Checked': () => <CompoundButton {...baseProps} primary={true} checked={true} />
   }
-];
+};
 
 runStories('Button Compound', compoundStories);
 
@@ -145,16 +139,14 @@ const CommandScreenerDecorator = story => (
   </Screener>
 );
 
-const commandStories = [
-  {
-    decorators: [CommandDecorator, FabricDecoratorTall, CommandScreenerDecorator],
-    stories: {
-      'Root': () => <CommandBarButton {...commandProps} />,
-      'Disabled': () => <CommandBarButton {...commandProps} disabled={true} />,
-      'Checked': () => <CommandBarButton {...commandProps} checked={true} />
-    }
+const commandStories = {
+  decorators: [CommandDecorator, FabricDecoratorTall, CommandScreenerDecorator],
+  stories: {
+    'Root': () => <CommandBarButton {...commandProps} />,
+    'Disabled': () => <CommandBarButton {...commandProps} disabled={true} />,
+    'Checked': () => <CommandBarButton {...commandProps} checked={true} />
   }
-];
+};
 
 runStories('Button Command', commandStories);
 
@@ -181,20 +173,18 @@ const SplitScreenerDecorator = story => (
   </Screener>
 );
 
-const splitStories = [
-  {
-    decorators: [FabricDecoratorTall, SplitScreenerDecorator],
-    stories: {
-      'Root': () => <DefaultButton {...commandProps} split={true} />,
-      'Disabled': () => <DefaultButton {...commandProps} disabled={true} split={true} />,
-      'Checked': () => <DefaultButton {...commandProps} checked={true} split={true} />,
-      'Primary': () => <DefaultButton {...commandProps} primary={true} split={true} />,
-      'Primary Disabled': () => <DefaultButton {...commandProps} primary={true} disabled={true} split={true} />,
-      'Primary Checked': () => <DefaultButton {...commandProps} primary={true} checked={true} split={true} />,
-      'Command Split': () => <CommandBarButton {...commandProps} split={true} />
-    }
+const splitStories = {
+  decorators: [FabricDecoratorTall, SplitScreenerDecorator],
+  stories: {
+    'Root': () => <DefaultButton {...commandProps} split={true} />,
+    'Disabled': () => <DefaultButton {...commandProps} disabled={true} split={true} />,
+    'Checked': () => <DefaultButton {...commandProps} checked={true} split={true} />,
+    'Primary': () => <DefaultButton {...commandProps} primary={true} split={true} />,
+    'Primary Disabled': () => <DefaultButton {...commandProps} primary={true} disabled={true} split={true} />,
+    'Primary Checked': () => <DefaultButton {...commandProps} primary={true} checked={true} split={true} />,
+    'Command Split': () => <CommandBarButton {...commandProps} split={true} />
   }
-];
+};
 
 runStories('Button Split', splitStories);
 
@@ -202,37 +192,35 @@ const SpecialScreenerDecorator = story => (
   <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
 );
 
-const specialStories = [
-  {
-    decorators: [FabricDecorator, SpecialScreenerDecorator],
-    stories: {
-      'primary with placeholder': () => (
-        <div>
-          <DefaultButton {...baseProps} iconProps={{ iconName: '' }} primary={true} />
-          <br />
-          <DefaultButton {...baseProps} iconProps={{ iconName: 'Add' }} primary={true} />
-        </div>
-      ),
-      'no flex shrink': () => (
-        // tslint:disable-next-line:jsx-ban-props
-        <div style={{ width: '300px' }}>
-          <DefaultButton
-            {...baseProps}
-            iconProps={{ iconName: 'Add' }}
-            menuIconProps={{}}
-            styles={{ root: { width: '100%' } }}
-          />
-          <DefaultButton
-            {...baseProps}
-            text="This is a much longer string of text in a constrained space"
-            iconProps={{ iconName: 'Add' }}
-            menuIconProps={{}}
-            styles={{ root: { width: '100%' } }}
-          />
-        </div>
-      )
-    }
+const specialStories = {
+  decorators: [FabricDecorator, SpecialScreenerDecorator],
+  stories: {
+    'primary with placeholder': () => (
+      <div>
+        <DefaultButton {...baseProps} iconProps={{ iconName: '' }} primary={true} />
+        <br />
+        <DefaultButton {...baseProps} iconProps={{ iconName: 'Add' }} primary={true} />
+      </div>
+    ),
+    'no flex shrink': () => (
+      // tslint:disable-next-line:jsx-ban-props
+      <div style={{ width: '300px' }}>
+        <DefaultButton
+          {...baseProps}
+          iconProps={{ iconName: 'Add' }}
+          menuIconProps={{}}
+          styles={{ root: { width: '100%' } }}
+        />
+        <DefaultButton
+          {...baseProps}
+          text="This is a much longer string of text in a constrained space"
+          iconProps={{ iconName: 'Add' }}
+          menuIconProps={{}}
+          styles={{ root: { width: '100%' } }}
+        />
+      </div>
+    )
   }
-];
+};
 
 runStories('Button Special Scenarios', specialStories);

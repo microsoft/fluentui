@@ -22,15 +22,13 @@ const WrapperDecorator = story => (
   </Screener>
 );
 
-const allStories = [
-  {
-    decorators: [TargetDecorator, FabricDecorator, WrapperDecorator],
-    stories: {
-      'Root': () => <Keytip content={'A'} keySequences={['a']} visible={true} />,
-      'Disabled': () => <Keytip content={'A'} keySequences={['a']} visible={true} disabled={true} />,
-      'Offset': () => <Keytip content={'A'} keySequences={['a']} visible={true} offset={{ x: 15, y: 15 }} />
-    }
+const keytipStories = {
+  decorators: [TargetDecorator, FabricDecorator, WrapperDecorator],
+  stories: {
+    'Root': () => <Keytip content={'A'} keySequences={['a']} visible={true} />,
+    'Disabled': () => <Keytip content={'A'} keySequences={['a']} visible={true} disabled={true} />,
+    'Offset': () => <Keytip content={'A'} keySequences={['a']} visible={true} offset={{ x: 15, y: 15 }} />
   }
-];
+};
 
-runStories('Keytip', allStories);
+runStories('Keytip', keytipStories);

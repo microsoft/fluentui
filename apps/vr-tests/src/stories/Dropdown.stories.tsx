@@ -2,8 +2,47 @@
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
+import { FabricDecorator, runStories } from '../utilities';
 import { Dropdown, DropdownMenuItemType, IDropdownProps, Icon, IDropdownOption } from 'office-ui-fabric-react';
+
+const ScreenerDecorator = story => (
+  <Screener
+    steps={new Screener.Steps()
+      .snapshot('default', { cropTo: '.testWrapper' })
+      .hover('.ms-Dropdown')
+      .snapshot('hover', { cropTo: '.testWrapper' })
+      .click('.ms-Dropdown')
+      .hover('.ms-Dropdown')
+      .snapshot('click', { cropTo: '.ms-Layer' })
+      .end()}
+  >
+    {story()}
+  </Screener>
+);
+
+const allStories = [
+  {
+    decorators: [FabricDecorator, ScreenerDecorator],
+    stories: {
+      'Root test': () => (
+        <Dropdown
+          placeHolder="Select an Option"
+          label="Basic example:"
+          ariaLabel="Basic dropdown example"
+          options={[
+            { key: 'Header', text: 'Actions', itemType: DropdownMenuItemType.Header },
+            { key: 'A', text: 'Option a' },
+            { key: 'B', text: 'Option b' },
+            { key: 'divider_2', text: '-', itemType: DropdownMenuItemType.Divider },
+            { key: 'Header2', text: 'People', itemType: DropdownMenuItemType.Header },
+            { key: 'F', text: 'Option f', disabled: true },
+            { key: 'G', text: 'Option g' }
+          ]}
+        />
+      )
+    }
+  }
+];
 
 storiesOf('Dropdown', module)
   .addDecorator(FabricDecorator)

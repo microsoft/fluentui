@@ -39,88 +39,86 @@ const ScreenerDecorator = story => (
   </Screener>
 );
 
-const allStories = [
-  {
-    decorators: [FabricDecorator, ScreenerDecorator],
-    stories: {
-      'Root': () => (
-        <ChoiceGroup
-          options={options}
-          label='Pick one'
-        />
-      ),
-      'Required': () => (
-        <ChoiceGroup
-          options={options}
-          label='Pick one'
-          required
-        />
-      ),
-      'With icons': () => (
-        <ChoiceGroup
-          label='Pick one icon'
-          options={[
-            {
-              key: 'day',
-              iconProps: { iconName: 'CalendarDay' },
-              text: 'Day'
-            },
-            {
-              key: 'week',
-              iconProps: { iconName: 'CalendarWeek' },
-              text: 'Week'
-            },
-            {
-              key: 'month',
-              iconProps: { iconName: 'Calendar' },
-              text: 'Month',
-              disabled: true
-            }
-          ]}
-        />
-      ),
-      'With default size images': () => (
-        <ChoiceGroup
-          label='Pick one image'
-          options={[
-            {
-              key: 'bar',
-              imageSrc: TestImages.choiceGroupBarUnselected,
-              selectedImageSrc: TestImages.choiceGroupBarSelected,
-              text: 'Clustered bar chart'
-            },
-            {
-              key: 'pie',
-              imageSrc: TestImages.choiceGroupBarUnselected,
-              selectedImageSrc: TestImages.choiceGroupBarSelected,
-              text: 'Pie chart'
-            }
-          ]}
-        />
-      ),
-      'With large size images': () => (
-        <ChoiceGroup
-          label='Pick one image'
-          options={[
-            {
-              key: 'bar2',
-              imageSrc: TestImages.choiceGroupBarUnselected,
-              selectedImageSrc: TestImages.choiceGroupBarSelected,
-              imageSize: { width: 120, height: 120 },
-              text: 'Clustered bar chart'
-            },
-            {
-              key: 'pie2',
-              imageSrc: TestImages.choiceGroupBarUnselected,
-              selectedImageSrc: TestImages.choiceGroupBarSelected,
-              imageSize: { width: 120, height: 120 },
-              text: 'Pie chart'
-            }
-          ]}
-        />
-      )
-    }
+const choiceGroupStories = {
+  decorators: [FabricDecorator, ScreenerDecorator],
+  stories: {
+    'Root': () => (
+      <ChoiceGroup
+        options={options}
+        label='Pick one'
+      />
+    ),
+    'Required': () => (
+      <ChoiceGroup
+        options={options}
+        label='Pick one'
+        required
+      />
+    ),
+    'With icons': () => (
+      <ChoiceGroup
+        label='Pick one icon'
+        options={[
+          {
+            key: 'day',
+            iconProps: { iconName: 'CalendarDay' },
+            text: 'Day'
+          },
+          {
+            key: 'week',
+            iconProps: { iconName: 'CalendarWeek' },
+            text: 'Week'
+          },
+          {
+            key: 'month',
+            iconProps: { iconName: 'Calendar' },
+            text: 'Month',
+            disabled: true
+          }
+        ]}
+      />
+    ),
+    'With default size images': () => (
+      <ChoiceGroup
+        label='Pick one image'
+        options={[
+          {
+            key: 'bar',
+            imageSrc: TestImages.choiceGroupBarUnselected,
+            selectedImageSrc: TestImages.choiceGroupBarSelected,
+            text: 'Clustered bar chart'
+          },
+          {
+            key: 'pie',
+            imageSrc: TestImages.choiceGroupBarUnselected,
+            selectedImageSrc: TestImages.choiceGroupBarSelected,
+            text: 'Pie chart'
+          }
+        ]}
+      />
+    ),
+    'With large size images': () => (
+      <ChoiceGroup
+        label='Pick one image'
+        options={[
+          {
+            key: 'bar2',
+            imageSrc: TestImages.choiceGroupBarUnselected,
+            selectedImageSrc: TestImages.choiceGroupBarSelected,
+            imageSize: { width: 120, height: 120 },
+            text: 'Clustered bar chart'
+          },
+          {
+            key: 'pie2',
+            imageSrc: TestImages.choiceGroupBarUnselected,
+            selectedImageSrc: TestImages.choiceGroupBarSelected,
+            imageSize: { width: 120, height: 120 },
+            text: 'Pie chart'
+          }
+        ]}
+      />
+    )
   }
-];
+};
 
-runStories('ChoiceGroup', allStories);
+runStories('ChoiceGroup', choiceGroupStories);

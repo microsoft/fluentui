@@ -100,25 +100,23 @@ const ScreenerDecorator = story => (
   </Screener>
 );
 
-const allStories = [
-  {
-    decorators: [FabricDecoratorTall, ScreenerDecorator],
-    stories: {
-      'Root test': () => <CommandBar items={items} farItems={farItems} />,
-      'Text only test': () => (
-        <CommandBar
-          items={items.map(item => ({ ...item, iconProps: undefined }))}
-          farItems={farItems.map(item => ({ ...item, iconProps: undefined }))}
-        />
-      ),
-      'Icons only test': () => (
-        <CommandBar
-          items={items.map(item => ({ ...item, text: undefined }))}
-          farItems={farItems.map(item => ({ ...item, iconOnly: true }))}
-        />
-      )
-    }
+const commandBarStories = {
+  decorators: [FabricDecoratorTall, ScreenerDecorator],
+  stories: {
+    'Root': () => <CommandBar items={items} farItems={farItems} />,
+    'Text only': () => (
+      <CommandBar
+        items={items.map(item => ({ ...item, iconProps: undefined }))}
+        farItems={farItems.map(item => ({ ...item, iconProps: undefined }))}
+      />
+    ),
+    'Icons only': () => (
+      <CommandBar
+        items={items.map(item => ({ ...item, text: undefined }))}
+        farItems={farItems.map(item => ({ ...item, iconOnly: true }))}
+      />
+    )
   }
-];
+};
 
-runStories('CommandBar', allStories);
+runStories('CommandBar', commandBarStories);

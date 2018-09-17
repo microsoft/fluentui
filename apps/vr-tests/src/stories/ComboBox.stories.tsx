@@ -59,41 +59,39 @@ const ScreenerDecorator = story => (
   </Screener>
 );
 
-const allStories = [
-  {
-    decorators: [FabricDecoratorTallFixedWdith, ScreenerDecorator],
-    stories: {
-      'Root': () => (
-        <ComboBox
-          defaultSelectedKey='A'
-          label='Default with dividers'
-          ariaLabel='Basic ComboBox example'
-          autoComplete='on'
-          options={testOptions}
-        />
-      ),
-      'Styled': () => (
-        <ComboBox
-          defaultSelectedKey='A'
-          label='Styled with dividers'
-          ariaLabel='Basic ComboBox example'
-          autoComplete='on'
-          options={testOptions}
-          onRenderOption={onRenderFontOption}
-        />
-      ),
-      'Disabled': () => (
-        <ComboBox
-          defaultSelectedKey='A'
-          label='Disabled'
-          ariaLabel='Basic ComboBox example'
-          autoComplete='on'
-          options={testOptions}
-          disabled
-        />
-      )
-    }
+const comboBoxStories = {
+  decorators: [FabricDecoratorTallFixedWdith, ScreenerDecorator],
+  stories: {
+    'Root': () => (
+      <ComboBox
+        defaultSelectedKey='A'
+        label='Default with dividers'
+        ariaLabel='Basic ComboBox example'
+        autoComplete='on'
+        options={testOptions}
+      />
+    ),
+    'Styled': () => (
+      <ComboBox
+        defaultSelectedKey='A'
+        label='Styled with dividers'
+        ariaLabel='Basic ComboBox example'
+        autoComplete='on'
+        options={testOptions}
+        onRenderOption={onRenderFontOption}
+      />
+    ),
+    'Disabled': () => (
+      <ComboBox
+        defaultSelectedKey='A'
+        label='Disabled'
+        ariaLabel='Basic ComboBox example'
+        autoComplete='on'
+        options={testOptions}
+        disabled
+      />
+    )
   }
-];
+};
 
-runStories('ComboBox', allStories);
+runStories('ComboBox', comboBoxStories);

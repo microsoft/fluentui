@@ -270,18 +270,16 @@ const ScreenerDecorator = story => (
   </Screener>
 );
 
-const allStories = [
-  {
-    decorators: [FabricDecorator, ScreenerDecorator],
-    stories: {
-      'Root': () => <ContextualMenu items={items} />,
-      'With icons': () => <ContextualMenu items={itemsWithIcons} />,
-      'With secondaryText': () => <ContextualMenu items={itemsWithSecondaryText} />,
-      'With submenu': () => <ContextualMenu items={itemsWithSubmenu} />,
-      'With headers': () => <ContextualMenu items={itemsWithHeaders} />,
-      'With split button submenu': () => <ContextualMenu items={itemsWithSplitButtonSubmenu} />,
-    }
+const contextualMenuStories = {
+  decorators: [FabricDecorator, ScreenerDecorator],
+  stories: {
+    'Root': () => <ContextualMenu items={items} />,
+    'With icons': () => <ContextualMenu items={itemsWithIcons} />,
+    'With secondaryText': () => <ContextualMenu items={itemsWithSecondaryText} />,
+    'With submenu': () => <ContextualMenu items={itemsWithSubmenu} />,
+    'With headers': () => <ContextualMenu items={itemsWithHeaders} />,
+    'With split button submenu': () => <ContextualMenu items={itemsWithSplitButtonSubmenu} />,
   }
-];
+};
 
-runStories('ContextualMenu', allStories);
+runStories('ContextualMenu', contextualMenuStories);

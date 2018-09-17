@@ -15,55 +15,53 @@ const ScreenerDecorator = story => (
   </Screener>
 );
 
-const allStories = [
-  {
-    decorators: [FabricDecorator, ScreenerDecorator],
-    stories: {
-      'Root': () => (
-        <ActivityItem
-          activityIcon={<Icon iconName={'Message'} />}
-          activityDescription={<span>description text</span>}
-          comments={<span>comment text</span>}
-          timeStamp={'timeStamp text'}
-        />
-      ),
-      'Personas': () => (
-        <ActivityItem
-          activityPersonas={[
-            { imageInitials: 'AB' },
-            { imageInitials: 'CD' },
-            { imageInitials: 'EF' },
-            { imageInitials: 'GH' }
-          ]}
-          activityDescription={<span>description text</span>}
-          comments={<span>comment text</span>}
-          timeStamp={'timeStamp text'}
-        />
-      ),
-      'Compact': () => (
-        <ActivityItem
-          activityIcon={<Icon iconName={'Message'} />}
-          isCompact={true}
-          activityDescription={<span>description text</span>}
-          comments={<span>comment text</span>}
-          timeStamp={'timeStamp text'}
-        />
-      ),
-      'CompactPersonas': () => (
-        <ActivityItem
-          activityPersonas={[
-            { imageInitials: 'AB' },
-            { imageInitials: 'CD' },
-            { imageInitials: 'EF' }
-          ]}
-          isCompact={true}
-          activityDescription={<span>description text</span>}
-          comments={<span>comment text</span>}
-          timeStamp={'timeStamp text'}
-        />
-      )
-    }
+const activityItemStories = {
+  decorators: [FabricDecorator, ScreenerDecorator],
+  stories: {
+    'Root': () => (
+      <ActivityItem
+        activityIcon={<Icon iconName={'Message'} />}
+        activityDescription={<span>description text</span>}
+        comments={<span>comment text</span>}
+        timeStamp={'timeStamp text'}
+      />
+    ),
+    'Personas': () => (
+      <ActivityItem
+        activityPersonas={[
+          { imageInitials: 'AB' },
+          { imageInitials: 'CD' },
+          { imageInitials: 'EF' },
+          { imageInitials: 'GH' }
+        ]}
+        activityDescription={<span>description text</span>}
+        comments={<span>comment text</span>}
+        timeStamp={'timeStamp text'}
+      />
+    ),
+    'Compact': () => (
+      <ActivityItem
+        activityIcon={<Icon iconName={'Message'} />}
+        isCompact={true}
+        activityDescription={<span>description text</span>}
+        comments={<span>comment text</span>}
+        timeStamp={'timeStamp text'}
+      />
+    ),
+    'CompactPersonas': () => (
+      <ActivityItem
+        activityPersonas={[
+          { imageInitials: 'AB' },
+          { imageInitials: 'CD' },
+          { imageInitials: 'EF' }
+        ]}
+        isCompact={true}
+        activityDescription={<span>description text</span>}
+        comments={<span>comment text</span>}
+        timeStamp={'timeStamp text'}
+      />
+    )
   }
-];
+};
 
-runStories('ActivityItem', allStories);
+runStories('ActivityItem', activityItemStories);

@@ -128,43 +128,61 @@ const ScreenerDecorator = story => (
 );
 
 const disabledStories = {
-  'Normal disabled': () => (
-    <NormalPeoplePicker
-      onResolveSuggestions={getPeople}
-      onEmptyInputFocus={getPeople}
-      getTextFromItem={getTextFromItem}
-      className={'ms-PeoplePicker'}
-      pickerSuggestionsProps={suggestionProps}
-      disabled
-    />
-  ),
-  'List disabled': () => (
-    <ListPeoplePicker
-      onResolveSuggestions={getPeople}
-      onEmptyInputFocus={getPeople}
-      getTextFromItem={getTextFromItem}
-      className={'ms-PeoplePicker'}
-      pickerSuggestionsProps={suggestionProps}
-      disabled
-    />
-  ),
-  'Compact disabled': () => (
-    <CompactPeoplePicker
-      onResolveSuggestions={getPeople}
-      onEmptyInputFocus={getPeople}
-      getTextFromItem={getTextFromItem}
-      className={'ms-PeoplePicker'}
-      pickerSuggestionsProps={suggestionProps}
-      disabled
-    />
-  ),
-  'Normal with text': () => (
-    <Screener
-      steps={new Screener.Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .setValue('.ms-BasePicker-input', 'a')
-        .snapshot('suggestion: "a"')
-        .end()}>
+  decorators: [FabricDecorator],
+  stories: {
+    'Normal disabled': () => (
+      <NormalPeoplePicker
+        onResolveSuggestions={getPeople}
+        onEmptyInputFocus={getPeople}
+        getTextFromItem={getTextFromItem}
+        className={'ms-PeoplePicker'}
+        pickerSuggestionsProps={suggestionProps}
+        disabled
+      />
+    ),
+    'List disabled': () => (
+      <ListPeoplePicker
+        onResolveSuggestions={getPeople}
+        onEmptyInputFocus={getPeople}
+        getTextFromItem={getTextFromItem}
+        className={'ms-PeoplePicker'}
+        pickerSuggestionsProps={suggestionProps}
+        disabled
+      />
+    ),
+    'Compact disabled': () => (
+      <CompactPeoplePicker
+        onResolveSuggestions={getPeople}
+        onEmptyInputFocus={getPeople}
+        getTextFromItem={getTextFromItem}
+        className={'ms-PeoplePicker'}
+        pickerSuggestionsProps={suggestionProps}
+        disabled
+      />
+    ),
+    'Normal with text': () => (
+      <Screener
+        steps={new Screener.Steps()
+          .snapshot('default', { cropTo: '.testWrapper' })
+          .setValue('.ms-BasePicker-input', 'a')
+          .snapshot('suggestion: "a"')
+          .end()}>
+        <NormalPeoplePicker
+          onResolveSuggestions={getPeople}
+          onEmptyInputFocus={getPeople}
+          getTextFromItem={getTextFromItem}
+          className={'ms-PeoplePicker'}
+          pickerSuggestionsProps={suggestionProps}
+        />
+      </Screener>
+    )
+  }
+};
+
+const defaultStories = {
+  decorators: [FabricDecorator, ScreenerDecorator],
+  stories: {
+    'Normal': () => (
       <NormalPeoplePicker
         onResolveSuggestions={getPeople}
         onEmptyInputFocus={getPeople}
@@ -172,79 +190,57 @@ const disabledStories = {
         className={'ms-PeoplePicker'}
         pickerSuggestionsProps={suggestionProps}
       />
-    </Screener>
-  )
-};
-
-const defaultStories = {
-  'Normal': () => (
-    <NormalPeoplePicker
-      onResolveSuggestions={getPeople}
-      onEmptyInputFocus={getPeople}
-      getTextFromItem={getTextFromItem}
-      className={'ms-PeoplePicker'}
-      pickerSuggestionsProps={suggestionProps}
-    />
-  ),
-  'Normal selected': () => (
-    <NormalPeoplePicker
-      onResolveSuggestions={getPeople}
-      onEmptyInputFocus={getPeople}
-      getTextFromItem={getTextFromItem}
-      className={'ms-PeoplePicker'}
-      pickerSuggestionsProps={suggestionProps}
-      defaultSelectedItems={[people[2]]}
-    />
-  ),
-  'List': () => (
-    <ListPeoplePicker
-      onResolveSuggestions={getPeople}
-      onEmptyInputFocus={getPeople}
-      getTextFromItem={getTextFromItem}
-      className={'ms-PeoplePicker'}
-      pickerSuggestionsProps={suggestionProps}
-    />
-  ),
-  'List selected': () => (
-    <ListPeoplePicker
-      onResolveSuggestions={getPeople}
-      onEmptyInputFocus={getPeople}
-      getTextFromItem={getTextFromItem}
-      className={'ms-PeoplePicker'}
-      pickerSuggestionsProps={suggestionProps}
-      defaultSelectedItems={[people[2]]}
-    />
-  ),
-  'Compact': () => (
-    <CompactPeoplePicker
-      onResolveSuggestions={getPeople}
-      onEmptyInputFocus={getPeople}
-      getTextFromItem={getTextFromItem}
-      className={'ms-PeoplePicker'}
-      pickerSuggestionsProps={suggestionProps}
-    />
-  ),
-  'Compact selected': () => (
-    <CompactPeoplePicker
-      onResolveSuggestions={getPeople}
-      onEmptyInputFocus={getPeople}
-      getTextFromItem={getTextFromItem}
-      className={'ms-PeoplePicker'}
-      pickerSuggestionsProps={suggestionProps}
-      defaultSelectedItems={[people[2]]}
-    />
-  )
-};
-
-const allStories = [
-  {
-    decorators: [FabricDecorator],
-    stories: disabledStories
-  },
-  {
-    decorators: [FabricDecorator, ScreenerDecorator],
-    stories: defaultStories
+    ),
+    'Normal selected': () => (
+      <NormalPeoplePicker
+        onResolveSuggestions={getPeople}
+        onEmptyInputFocus={getPeople}
+        getTextFromItem={getTextFromItem}
+        className={'ms-PeoplePicker'}
+        pickerSuggestionsProps={suggestionProps}
+        defaultSelectedItems={[people[2]]}
+      />
+    ),
+    'List': () => (
+      <ListPeoplePicker
+        onResolveSuggestions={getPeople}
+        onEmptyInputFocus={getPeople}
+        getTextFromItem={getTextFromItem}
+        className={'ms-PeoplePicker'}
+        pickerSuggestionsProps={suggestionProps}
+      />
+    ),
+    'List selected': () => (
+      <ListPeoplePicker
+        onResolveSuggestions={getPeople}
+        onEmptyInputFocus={getPeople}
+        getTextFromItem={getTextFromItem}
+        className={'ms-PeoplePicker'}
+        pickerSuggestionsProps={suggestionProps}
+        defaultSelectedItems={[people[2]]}
+      />
+    ),
+    'Compact': () => (
+      <CompactPeoplePicker
+        onResolveSuggestions={getPeople}
+        onEmptyInputFocus={getPeople}
+        getTextFromItem={getTextFromItem}
+        className={'ms-PeoplePicker'}
+        pickerSuggestionsProps={suggestionProps}
+      />
+    ),
+    'Compact selected': () => (
+      <CompactPeoplePicker
+        onResolveSuggestions={getPeople}
+        onEmptyInputFocus={getPeople}
+        getTextFromItem={getTextFromItem}
+        className={'ms-PeoplePicker'}
+        pickerSuggestionsProps={suggestionProps}
+        defaultSelectedItems={[people[2]]}
+      />
+    )
   }
-];
+};
 
-runStories('PeoplePicker', allStories);
+runStories('PeoplePicker', disabledStories);
+runStories('PeoplePicker', defaultStories);

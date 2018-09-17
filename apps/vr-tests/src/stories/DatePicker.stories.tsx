@@ -25,19 +25,17 @@ const DefaultScreenerDecorator = story => (
   </Screener>
 );
 
-const defaultStories = [
-  {
-    decorators: [FabricDecoratorFixedWidth, DefaultScreenerDecorator],
-    stories: {
-      'Root': () => <DatePicker value={date} />,
-      'Placeholder': () => <DatePicker value={date} placeholder="Enter date" />,
-      'Allow text input': () => <DatePicker value={date} allowTextInput />,
-      'Required': () => <DatePicker value={date} isRequired />,
-      'Underlined': () => <DatePicker value={date} underlined />,
-      'Underlined and Required': () => <DatePicker value={date} underlined isRequired />
-    }
+const defaultStories = {
+  decorators: [FabricDecoratorFixedWidth, DefaultScreenerDecorator],
+  stories: {
+    'Root': () => <DatePicker value={date} />,
+    'Placeholder': () => <DatePicker value={date} placeholder="Enter date" />,
+    'Allow text input': () => <DatePicker value={date} allowTextInput />,
+    'Required': () => <DatePicker value={date} isRequired />,
+    'Underlined': () => <DatePicker value={date} underlined />,
+    'Underlined and Required': () => <DatePicker value={date} underlined isRequired />
   }
-];
+};
 
 const NoMonthScreenerDecorator = story => (
   <Screener
@@ -56,16 +54,14 @@ const NoMonthScreenerDecorator = story => (
   </Screener>
 );
 
-const noMonthStories = [
-  {
-    decorators: [FabricDecoratorFixedWidth, NoMonthScreenerDecorator],
-    stories: {
-      'Show Month as Overlay and no Go To Today': () => (
-        <DatePicker value={date} showGoToToday={false} showMonthPickerAsOverlay={true} />
-      )
-    }
+const noMonthStories = {
+  decorators: [FabricDecoratorFixedWidth, NoMonthScreenerDecorator],
+  stories: {
+    'Show Month as Overlay and no Go To Today': () => (
+      <DatePicker value={date} showGoToToday={false} showMonthPickerAsOverlay={true} />
+    )
   }
-];
+};
 
 runStories('DatePicker', defaultStories);
 runStories('DatePicker - No Month Option', noMonthStories);
