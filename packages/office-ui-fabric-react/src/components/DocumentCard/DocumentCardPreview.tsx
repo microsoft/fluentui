@@ -89,7 +89,7 @@ export class DocumentCardPreview extends BaseComponent<IDocumentCardPreviewProps
           width="16px"
           height="16px"
         />
-        <Link {...file.linkProps}>{file.name}</Link>
+        <Link {...(file.linkProps, { href: file.url || (file.linkProps && file.linkProps.href) })}>{file.name}</Link>
       </li>
     ));
 
