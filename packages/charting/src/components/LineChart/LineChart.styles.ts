@@ -62,13 +62,15 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
       {
         transform: `translate(0px,13px)`,
         lineHeight: '12px',
-        ...fonts.tiny
+        ...fonts.tiny,
+        fontFamily: 'Segoe UI'
       }
     ],
     yAxisText: [
       {
         lineHeight: '12px',
-        ...fonts.tiny
+        ...fonts.tiny,
+        fontFamily: 'Segoe UI'
       }
     ],
     lines: [
@@ -98,18 +100,17 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
     ],
     calloutContentX: [
       {
-        fontSize: fonts.small.fontSize,
-        fontFamily: fonts.small.fontFamily,
-        lineHeight: '14px',
-        marginBottom: '2.9px'
+        ...fonts.medium,
+        lineHeight: '14px'
       }
     ],
     calloutContentY: [
       {
-        color: color ? color : palette.black,
-        fontSize: fonts.xxLarge.fontSize,
-        fontFamily: fonts.xxLarge.fontFamily,
-        lineHeight: '33px'
+        color: color === '' ? palette.black : color,
+        fontSize: '28px',
+        fontFamily: 'Segoe UI',
+        fontWeight: 'bold',
+        lineHeight: '31px'
       }
     ]
   };
