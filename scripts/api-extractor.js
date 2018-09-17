@@ -8,10 +8,11 @@ const config = {
   },
   project: {
     entryPointSourceFile: 'lib/index.d.ts'
+  },
+  validationRules: {
+    missingReleaseTags: 'ignore'
   }
 };
-
-console.log('rootFolder: ', config.compiler.rootFolder);
 
 // This interface provides additional runtime state
 // that is NOT part of the config file
