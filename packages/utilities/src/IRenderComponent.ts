@@ -5,8 +5,6 @@
 export interface IRenderComponent<TProps> {
   /**
    * JSX.Element to return in this component's render() function.
-   *
-   * @type {JSX.Element}
    */
   children: (props: TProps) => JSX.Element;
 }

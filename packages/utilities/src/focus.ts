@@ -50,10 +50,10 @@ export function getLastFocusable(
 /**
  * Gets the first tabbable element.
  * The difference between focusable and tabbable is that tabbable elements are focusable elements that also have tabIndex != -1.
- * @param rootElement The parent element to search beneath.
- * @param currentElement The descendant of rootElement to start the search at.  This element is the first one checked,
+ * @param rootElement - The parent element to search beneath.
+ * @param currentElement - The descendant of rootElement to start the search at.  This element is the first one checked,
  * and iteration continues forward.  Typical use passes rootElement.firstChild.
- * @param includeElementsInFocusZones true if traversal should go into FocusZone descendants.
+ * @param includeElementsInFocusZones - true if traversal should go into FocusZone descendants.
  * @public
  */
 export function getFirstTabbable(
@@ -76,10 +76,10 @@ export function getFirstTabbable(
 /**
  * Gets the last tabbable element.
  * The difference between focusable and tabbable is that tabbable elements are focusable elements that also have tabIndex != -1.
- * @param rootElement The parent element to search beneath.
- * @param currentElement The descendant of rootElement to start the search at.  This element is the first one checked,
+ * @param rootElement - The parent element to search beneath.
+ * @param currentElement - The descendant of rootElement to start the search at.  This element is the first one checked,
  * and iteration continues in reverse.  Typical use passes rootElement.lastChild.
- * @param includeElementsInFocusZones true if traversal should go into FocusZone descendants.
+ * @param includeElementsInFocusZones - true if traversal should go into FocusZone descendants.
  * @public
  */
 export function getLastTabbable(
@@ -442,7 +442,7 @@ let targetToFocusOnNextRepaint: HTMLElement | { focus: () => void } | null | und
  * Sets focus to an element asynchronously. The focus will be set at the next browser repaint,
  * meaning it won't cause any extra recalculations. If more than one focusAsync is called during one frame,
  * only the latest called focusAsync element will actually be focused
- * @param element The element to focus
+ * @param element - The element to focus
  */
 export function focusAsync(element: HTMLElement | { focus: () => void } | undefined | null): void {
   if (element) {

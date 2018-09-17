@@ -4,7 +4,7 @@
  *
  * NOTE: This function will NOT insert whitespace between provided attributes.
  *
- * @param ariaAttributes ARIA attributes to merge
+ * @param ariaAttributes - ARIA attributes to merge
  */
 export function mergeAriaAttributeValues(...ariaAttributes: (string | undefined)[]): string | undefined {
   const mergedAttribute = ariaAttributes
