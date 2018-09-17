@@ -1,8 +1,7 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
-import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
+import { FabricDecorator, runStories } from '../utilities';
 import { Facepile, PersonaInitialsColor, PersonaSize, OverflowButtonType } from 'office-ui-fabric-react';
 
 import { TestImages } from '../common/TestImages';
@@ -41,43 +40,40 @@ const facepilePersonas = [
   }
 ];
 
-let facepileProps = {
+const facepileProps = {
   personas: facepilePersonas,
   ariaDescription: 'To move through the items use left and right arrow keys.'
 };
 
-storiesOf('Facepile', module)
-  .addDecorator(FabricDecorator)
-  .addDecorator(story => (
-    <Screener
-      steps={ new Screener.Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .end()
-      }
-    >
-      { story() }
-    </Screener>
-  ))
-  .add('Root', () => (
-    <Facepile {...facepileProps} />
-  ))
-  .add('Extra extra small', () => (
-    <Facepile {...facepileProps} personaSize={ PersonaSize.size24 } />
-  ))
-  .add('Overflow', () => (
-    <Facepile
-      {...facepileProps}
-      maxDisplayablePersonas={ 3 }
-      overflowButtonType={ OverflowButtonType.downArrow }
-      overflowButtonProps={ {
-        ariaLabel: 'More users',
-      }
-      }
-    />
-  ))
-  .add('Add face', () => (
-    <Facepile
-      {...facepileProps}
-      showAddButton={ true }
-    />
-  ));
+const ScreenerDecorator = story => (
+  <Screener
+    steps={new Screener.Steps()
+      .snapshot('default', { cropTo: '.testWrapper' })
+      .end()
+    }
+  >
+    {story()}
+  </Screener>
+);
+
+const facepileStories = {
+  decorators: [FabricDecorator, ScreenerDecorator],
+  stories: {
+    'Root': () => <Facepile {...facepileProps} />,
+    'Extra extra small': () => <Facepile {...facepileProps} personaSize={PersonaSize.size24} />,
+    'Overflow': () => (
+      <Facepile
+        {...facepileProps}
+        maxDisplayablePersonas={3}
+        overflowButtonType={OverflowButtonType.downArrow}
+        overflowButtonProps={{
+          ariaLabel: 'More users',
+        }
+        }
+      />
+    ),
+    'Add face': () => <Facepile {...facepileProps} showAddButton={true} />
+  }
+};
+
+runStories('Facepile', facepileStories);
