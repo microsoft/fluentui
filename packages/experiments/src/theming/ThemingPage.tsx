@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IComponentDemoPageProps, ComponentPage, ExampleCard } from '@uifabric/example-app-base';
 
-import { ThemingBasicExample, ThemingVariant1Example, ThemingVariant2Example } from './examples/Theming.Customizers.Example';
+import { ThemingBasicExample } from './examples/Theming.Customizers.Example';
 import {
   ThemingSchemesCustomExample,
   ThemingSchemesDefaultExample,
@@ -36,12 +36,6 @@ export class ThemingPage extends React.Component<IComponentDemoPageProps, {}> {
             </ExampleCard>
             <ExampleCard title="Using Multiple Customizers to theme components" code={ThemingCustomizersExampleCode}>
               <ThemingBasicExample />
-            </ExampleCard>
-            <ExampleCard title="Using Multiple Customizers to theme components (Variant 1)" code={ThemingCustomizersExampleCode}>
-              <ThemingVariant1Example />
-            </ExampleCard>
-            <ExampleCard title="Using Multiple Customizers to theme components (Variant 2)" code={ThemingCustomizersExampleCode}>
-              <ThemingVariant2Example />
             </ExampleCard>
           </div>
         }

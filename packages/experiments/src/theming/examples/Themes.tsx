@@ -163,7 +163,7 @@ export const schemeThemeCustom: ITheme = {
   schemes: {
     default: defaultTheme,
     neutral: defaultTheme,
-    soft: invertedDefaultTheme,
-    strong: invertedPrimaryTheme
+    soft: invertedPrimaryTheme,
+    strong: invertedDefaultTheme
   }
 };
