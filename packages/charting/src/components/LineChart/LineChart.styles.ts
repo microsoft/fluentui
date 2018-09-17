@@ -1,7 +1,7 @@
 import { ILineChartStyleProps, ILineChartStyles } from './LineChart.types';
 
 export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
-  const { className, theme, width, height } = props;
+  const { className, theme, width, height, color } = props;
   const { palette, fonts } = theme!;
 
   const chartPadding = 30;
@@ -78,8 +78,7 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
     ],
     legendContainer: [
       {
-        marginTop: '10px',
-        paddingLeft: '15%'
+        marginTop: '10px'
       }
     ],
     calloutPadding: [
@@ -87,7 +86,6 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
         padding: '10px 16px 10px 16px',
         backgroundColor: palette.white,
         fontSize: fonts.xxLarge.fontSize,
-        color: palette.blue,
         fontFamily: fonts.xxLarge.fontFamily,
         fontWeight: 'bold'
       }
@@ -108,6 +106,7 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
     ],
     calloutContentY: [
       {
+        color: color ? color : palette.black,
         fontSize: fonts.xxLarge.fontSize,
         fontFamily: fonts.xxLarge.fontFamily,
         lineHeight: '33px'
