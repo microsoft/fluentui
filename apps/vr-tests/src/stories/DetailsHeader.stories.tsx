@@ -9,13 +9,14 @@ import { IDetailsColumnStyles, IDetailsColumnStyleProps } from 'office-ui-fabric
 import { DetailsHeader } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsHeader'
 import { IDetailsHeaderStyleProps, IDetailsHeaderStyles } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsHeader.types';
 import { DetailsColumn } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn';
-import * as fs from 'fs-extra';
+//import * as fs from 'fs';
+//import { dndScript } from '../../../../../office-ui-fabric-react/packages/webpack-utils/src/ManifestServicePlugin'
 
 
 const _items: {}[] = [];
 const _selection = new Selection();
-const dndScript = fs.readFileSync('../../dndSim.js', 'utf8');
-
+// const dndScript = fs.readFileSync('../../dndSim.js', 'utf8');
+const dndScript = require('!raw-loader!../../dndSim.js') as string;
 
 const columns: IColumn[] = [
   { key: 'a', name: 'a', fieldName: 'a', minWidth: 200, maxWidth: 400, calculatedWidth: 200, isResizable: true },
@@ -124,8 +125,7 @@ storiesOf('DetailsHeader', module)
         .snapshot('hoverFrozenLast', { cropTo: '.testWrapper' })
         .executeScript(dndScript)
         .executeScript('DndSimulator.simulate(\'[draggable="true"]\', \'[aria-colindex="5"]\')')
-        .snapshot('Drop Hint', { cropTo: '.testWrapper' })
-
+        .snapshot('DropHint', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
