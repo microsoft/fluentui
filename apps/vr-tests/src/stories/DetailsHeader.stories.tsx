@@ -1,4 +1,3 @@
-
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
@@ -19,14 +18,14 @@ const _selection = new Selection();
 const dndScript = require('!raw-loader!../../dndSim.js') as string;
 
 const columns: IColumn[] = [
-  { key: 'a', name: 'a', fieldName: 'a', minWidth: 200, maxWidth: 400, calculatedWidth: 200, isResizable: true },
+  { key: 'a', name: 'a', fieldName: 'a', minWidth: 100, maxWidth: 200, calculatedWidth: 100, isResizable: true },
   {
     key: 'b',
     name: 'b',
     fieldName: 'b',
-    minWidth: 200,
-    maxWidth: 400,
-    calculatedWidth: 200,
+    minWidth: 100,
+    maxWidth: 200,
+    calculatedWidth: 100,
     isResizable: true,
     isSorted: true,
     sortAscendingAriaLabel: 'Sorted up.',
@@ -37,9 +36,9 @@ const columns: IColumn[] = [
     key: 'c',
     name: 'c',
     fieldName: 'c',
-    minWidth: 200,
-    maxWidth: 400,
-    calculatedWidth: 200,
+    minWidth: 100,
+    maxWidth: 200,
+    calculatedWidth: 100,
     isResizable: true,
     columnActionsMode: ColumnActionsMode.hasDropdown,
     isIconOnly: false,
@@ -53,9 +52,9 @@ const columns: IColumn[] = [
     key: 'd',
     name: 'd',
     fieldName: 'd',
-    minWidth: 200,
-    maxWidth: 400,
-    calculatedWidth: 200,
+    minWidth: 100,
+    maxWidth: 200,
+    calculatedWidth: 100,
     isResizable: true,
     columnActionsMode: ColumnActionsMode.hasDropdown,
     isIconOnly: false,
@@ -69,9 +68,9 @@ const columns: IColumn[] = [
     key: 'e',
     name: 'e',
     fieldName: 'e',
-    minWidth: 200,
-    maxWidth: 400,
-    calculatedWidth: 200,
+    minWidth: 100,
+    maxWidth: 200,
+    calculatedWidth: 100,
     isResizable: true,
     columnActionsMode: ColumnActionsMode.hasDropdown,
     isIconOnly: false,
@@ -85,9 +84,9 @@ const columns: IColumn[] = [
     key: 'f',
     name: 'f',
     fieldName: 'f',
-    minWidth: 200,
-    maxWidth: 400,
-    calculatedWidth: 200,
+    minWidth: 100,
+    maxWidth: 200,
+    calculatedWidth: 100,
     isResizable: true,
     columnActionsMode: ColumnActionsMode.hasDropdown,
     isIconOnly: false,
@@ -123,6 +122,7 @@ storiesOf('DetailsHeader', module)
         .snapshot('hoverDraggable', { cropTo: '.testWrapper' })
         .hover('[aria-colindex=7]')
         .snapshot('hoverFrozenLast', { cropTo: '.testWrapper' })
+        .hover('[aria-colindex=2]')
         .executeScript(dndScript)
         .executeScript('DndSimulator.simulate(\'[draggable="true"]\', \'[aria-colindex="5"]\')')
         .snapshot('DropHint', { cropTo: '.testWrapper' })
