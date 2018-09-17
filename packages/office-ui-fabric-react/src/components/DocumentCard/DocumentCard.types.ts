@@ -10,7 +10,7 @@ import { ImageFit } from '../../Image';
 import { IButtonProps } from '../../Button';
 import { IIconProps } from '../../Icon';
 import { IBaseProps, IRefObject } from '../../Utilities';
-import { ILinkProps } from 'office-ui-fabric-react/lib/components/Link';
+import { ILinkProps } from '../../Link';
 
 export interface IDocumentCard {}
 
