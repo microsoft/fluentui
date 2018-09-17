@@ -8,6 +8,7 @@ import { DetailsHeader } from 'office-ui-fabric-react/lib/components/DetailsList
 
 const _items: {}[] = [];
 const _selection = new Selection();
+// script to simulate drag so that drop hint is rendered
 const dndScript = require('!raw-loader!../../dndSim.js') as string;
 
 const columns: IColumn[] = [
@@ -112,6 +113,7 @@ storiesOf('DetailsHeader', module)
         .hover('[aria-colindex=7]')
         .snapshot('hoverFrozenLast', { cropTo: '.testWrapper' })
         .executeScript(dndScript)
+        // simulate a drag on column 'b' and do a dragover on 'd' to render the drop hint
         .executeScript('DndSimulator.simulate(\'[draggable="true"]\', \'[aria-colindex="5"]\')')
         .snapshot('DropHint', { cropTo: '.testWrapper' })
         .end()}
