@@ -1,6 +1,12 @@
 import { IThemedProps } from '../../../Foundation';
+import { getGlobalClassNames } from '../../../Styling';
 import { IHorizontalStackProps, IHorizontalStackStyles } from './HorizontalStack.types';
 import { parseGap } from '../StackUtils';
+
+const GlobalClassNames = {
+  root: 'ms-HorizontalStack',
+  inner: 'ms-HorizontalStack-inner'
+};
 
 export const styles = (props: IThemedProps<IHorizontalStackProps>): IHorizontalStackStyles => {
   const { wrap, gap, verticalGap, fillHorizontal, fillVertical, maxWidth, maxHeight, className, theme } = props;
@@ -13,10 +19,12 @@ export const styles = (props: IThemedProps<IHorizontalStackProps>): IHorizontalS
   const horizontalMargin = -0.5 * hGap.value;
   const verticalMargin = -0.5 * vGap.value;
 
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
   if (wrap) {
     return {
       root: [
-        'ms-HorizontalStack',
+        classNames.root,
         {
           maxWidth,
           maxHeight,
@@ -32,7 +40,7 @@ export const styles = (props: IThemedProps<IHorizontalStackProps>): IHorizontalS
       ],
 
       inner: [
-        'ms-HorizontalStack-inner',
+        classNames.inner,
         {
           flexWrap: 'wrap',
           margin: `${verticalMargin}${vGap.unit} ${horizontalMargin}${hGap.unit}`,
@@ -49,7 +57,7 @@ export const styles = (props: IThemedProps<IHorizontalStackProps>): IHorizontalS
   }
 
   return {
-    root: ['ms-HorizontalStack', className]
+    root: [classNames.root, className]
     // TODO: this cast may be hiding some potential issues with styling and name
     //        lookups and should be removed
   } as IHorizontalStackStyles;

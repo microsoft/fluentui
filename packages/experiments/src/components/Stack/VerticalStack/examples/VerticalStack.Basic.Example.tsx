@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { VerticalStack } from '@uifabric/experiments/lib/Stack';
 import { Text } from '@uifabric/experiments/lib/Text';
-import { mergeStyleSets } from 'office-ui-fabric-react';
-import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export class VerticalStackBasicExample extends React.Component<{}, {}> {
   public render(): JSX.Element {

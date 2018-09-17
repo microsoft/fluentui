@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { VerticalStack, HorizontalStack } from '@uifabric/experiments/lib/Stack';
 import { Text } from '@uifabric/experiments/lib/Text';
-import { mergeStyleSets, Slider, Checkbox, Dropdown, IDropdownOption, TextField } from 'office-ui-fabric-react';
-import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { Slider, Checkbox, Dropdown, IDropdownOption, TextField } from 'office-ui-fabric-react';
+import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export type HorizontalAlignment = 'left' | 'center' | 'right' | 'space-around' | 'space-between' | 'space-evenly';
 export type VerticalAlignment = 'top' | 'center' | 'bottom';

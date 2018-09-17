@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { VerticalStack } from '@uifabric/experiments/lib/Stack';
-import { mergeStyleSets, Slider } from 'office-ui-fabric-react';
-import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { Slider } from 'office-ui-fabric-react';
+import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export interface IExampleState {
   stackHeight: number;

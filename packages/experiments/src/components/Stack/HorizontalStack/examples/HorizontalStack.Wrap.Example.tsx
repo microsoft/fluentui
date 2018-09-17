@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { VerticalStack, HorizontalStack } from '@uifabric/experiments/lib/Stack';
 import { Text } from '@uifabric/experiments/lib/Text';
-import { mergeStyleSets, Slider } from 'office-ui-fabric-react';
-import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { Slider } from 'office-ui-fabric-react';
+import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export interface IExampleState {
   stackWidth: number;

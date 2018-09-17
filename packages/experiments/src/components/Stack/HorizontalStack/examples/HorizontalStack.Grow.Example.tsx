@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { HorizontalStack } from '@uifabric/experiments/lib/Stack';
-import { mergeStyleSets } from 'office-ui-fabric-react';
-import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export class HorizontalStackGrowExample extends React.Component<{}, {}> {
   public render(): JSX.Element {

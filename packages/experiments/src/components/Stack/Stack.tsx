@@ -4,8 +4,8 @@ import StackItem from './StackItem/StackItem';
 import { IStackItemProps, IStackItemStyles } from './StackItem/StackItem.types';
 import { IStackProps, IStackStyles } from './Stack.types';
 import { styles } from './Stack.styles';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-import { getNativeProps, htmlElementProperties } from 'office-ui-fabric-react/lib/Utilities';
+import { mergeStyles } from '../../Styling';
+import { getNativeProps, htmlElementProperties } from '../../Utilities';
 
 const StackItemType = (<StackItem /> as React.ReactElement<IStackItemProps> & IStyleableComponentProps<IStackItemProps, IStackItemStyles>)
   .type;

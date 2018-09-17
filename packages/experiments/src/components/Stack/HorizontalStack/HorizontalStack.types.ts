@@ -1,6 +1,6 @@
 import { IPartialStackProps } from '../Stack.types';
-import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
-import { IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { IStyleFunctionOrObject } from '../../../Utilities';
+import { IStyle } from '../../../Styling';
 
 export interface IHorizontalStackProps extends IPartialStackProps {
   /**

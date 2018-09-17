@@ -3,7 +3,7 @@
  */
 
 import { Alignment } from './Stack.types';
-import { ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { ITheme } from '../../Styling';
 
 const horizontalAlignmentMap: { [key: string]: string } = {
   left: 'start',
