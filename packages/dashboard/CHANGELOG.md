@@ -1,6 +1,15 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Fri, 14 Sep 2018 19:19:00 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Sep 2018 12:27:05 GMT and should not be manually modified.
+
+## 0.25.2
+Mon, 17 Sep 2018 12:27:05 GMT
+
+### Patches
+
+- fix leftNav styles per PM feedback
+- revert the change for expand behavior
+- fix the issue where user click on show more link in floating nav
 
 ## 0.25.1
 Fri, 14 Sep 2018 19:19:00 GMT

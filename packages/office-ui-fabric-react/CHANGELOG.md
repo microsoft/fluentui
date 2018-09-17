@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 14 Sep 2018 01:55:02 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Sep 2018 12:27:05 GMT and should not be manually modified.
+
+## 6.70.0
+Mon, 17 Sep 2018 12:27:05 GMT
+
+### Minor changes
+
+- Add conformance tests to verify that components take a className property
+
+### Patches
+
+- SpinButton: SpinButton: Preventing and Stopping Propagation when enter is pressed
+- Coachmark: Fix tabbing when Coachmark is mounted
+- Fix DetailsList columnReorderProps change not causing render
+- Example updated with the implementation of onRenderDivider for DetailsList
 
 ## 6.69.0
 Fri, 14 Sep 2018 01:55:02 GMT

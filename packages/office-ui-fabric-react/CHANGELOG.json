@@ -2,6 +2,42 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.70.0",
+      "tag": "office-ui-fabric-react_v6.70.0",
+      "date": "Mon, 17 Sep 2018 12:27:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "SpinButton: SpinButton: Preventing and Stopping Propagation when enter is pressed",
+            "author": "Josh Chang <coralbue@gmail.com>",
+            "commit": "32a9b8df88327a4bf8fb4ffd00f4e2d57e18e81b"
+          },
+          {
+            "comment": "Coachmark: Fix tabbing when Coachmark is mounted",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "cf449722376d658dcff6303eb6ca29e5038d6104"
+          },
+          {
+            "comment": "Fix DetailsList columnReorderProps change not causing render",
+            "author": "Aaron Harper <aaron.harper@outlook.com>",
+            "commit": "d5c221e47bcde2e6eba488e530092e6ff28ab5a7"
+          },
+          {
+            "comment": "Example updated with the implementation of onRenderDivider for DetailsList",
+            "author": "Swapnil Vaibhav <swapnil.vaibhav@microsoft.com>",
+            "commit": "1b3f34f459ac98671f7b768a29dbc2940d11535c"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add conformance tests to verify that components take a className property",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "a956a00cfed7c6972f6b3090c8a3cf38eff0d520"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.69.0",
       "tag": "office-ui-fabric-react_v6.69.0",
       "date": "Fri, 14 Sep 2018 01:55:02 GMT",
