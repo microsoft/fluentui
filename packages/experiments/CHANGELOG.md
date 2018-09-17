@@ -1,6 +1,22 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 12 Sep 2018 12:26:41 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Sep 2018 12:27:05 GMT and should not be manually modified.
+
+## 6.30.2
+Mon, 17 Sep 2018 12:27:05 GMT
+
+### Patches
+
+- Changes to support Foundation refactoring.
+- nav fix
+- improve nav per designer feedback
+
+## 6.30.1
+Fri, 14 Sep 2018 01:55:02 GMT
+
+### Patches
+
+- Fluent: Fix issue with background color on primary buttons using the wrong values
 
 ## 6.30.0
 Wed, 12 Sep 2018 12:26:41 GMT

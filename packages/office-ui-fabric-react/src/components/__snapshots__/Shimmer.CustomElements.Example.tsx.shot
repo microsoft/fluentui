@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly 1`] = `
-<div
-  className={undefined}
->
+<div>
   Using ShimmerElementsGroup component to build complex structures of the placeholder you need.
   <div
     className=

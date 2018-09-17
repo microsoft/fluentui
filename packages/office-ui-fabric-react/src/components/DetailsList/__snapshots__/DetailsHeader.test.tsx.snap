@@ -2,9 +2,6 @@
 
 exports[`DetailsHeader can render 1`] = `
 <div
-  aria-describedby={undefined}
-  aria-label={undefined}
-  aria-labelledby={undefined}
   className=
       ms-FocusZone
       ms-DetailsHeader
@@ -44,7 +41,6 @@ exports[`DetailsHeader can render 1`] = `
 >
   <div
     aria-colindex={1}
-    aria-hidden={undefined}
     aria-labelledby="header0-check"
     className=
         ms-DetailsHeader-cell
@@ -100,9 +96,7 @@ exports[`DetailsHeader can render 1`] = `
 
     >
       <div
-        aria-checked={undefined}
         aria-describedby="header0-checkTooltip"
-        aria-label={undefined}
         className=
             ms-DetailsRow-check
             ms-DetailsRow-check--isHeader
@@ -335,9 +329,7 @@ exports[`DetailsHeader can render 1`] = `
           }
     >
       <span
-        aria-describedby={undefined}
         aria-haspopup={false}
-        aria-label={undefined}
         aria-labelledby="header0-a-name "
         className=
             ms-DetailsHeader-cellTitle
@@ -373,7 +365,6 @@ exports[`DetailsHeader can render 1`] = `
         id="header0-a"
         onClick={[Function]}
         onContextMenu={[Function]}
-        role={undefined}
       >
         <span
           className=
@@ -528,9 +519,7 @@ exports[`DetailsHeader can render 1`] = `
           }
     >
       <span
-        aria-describedby={undefined}
         aria-haspopup={false}
-        aria-label={undefined}
         aria-labelledby="header0-b-name "
         className=
             ms-DetailsHeader-cellTitle
@@ -566,7 +555,6 @@ exports[`DetailsHeader can render 1`] = `
         id="header0-b"
         onClick={[Function]}
         onContextMenu={[Function]}
-        role={undefined}
       >
         <span
           className=
@@ -743,9 +731,7 @@ exports[`DetailsHeader can render 1`] = `
           }
     >
       <span
-        aria-describedby={undefined}
         aria-haspopup={true}
-        aria-label={undefined}
         aria-labelledby="header0-c-name "
         className=
             ms-DetailsHeader-cellTitle
@@ -781,7 +767,6 @@ exports[`DetailsHeader can render 1`] = `
         id="header0-c"
         onClick={[Function]}
         onContextMenu={[Function]}
-        role={undefined}
       >
         <span
           className=
@@ -880,9 +865,6 @@ exports[`DetailsHeader can render 1`] = `
 
 exports[`DetailsHeader renders accessible labels 1`] = `
 <div
-  aria-describedby={undefined}
-  aria-label={undefined}
-  aria-labelledby={undefined}
   className=
       ms-FocusZone
       ms-DetailsHeader
@@ -922,7 +904,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
 >
   <div
     aria-colindex={1}
-    aria-hidden={undefined}
     aria-labelledby="header4-check"
     className=
         ms-DetailsHeader-cell
@@ -978,9 +959,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
 
     >
       <div
-        aria-checked={undefined}
         aria-describedby="header4-checkTooltip"
-        aria-label={undefined}
         className=
             ms-DetailsRow-check
             ms-DetailsRow-check--isHeader
@@ -1213,9 +1192,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           }
     >
       <span
-        aria-describedby={undefined}
         aria-haspopup={false}
-        aria-label={undefined}
         aria-labelledby="header4-a-name "
         className=
             ms-DetailsHeader-cellTitle
@@ -1251,7 +1228,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         id="header4-a"
         onClick={[Function]}
         onContextMenu={[Function]}
-        role={undefined}
       >
         <span
           className=
@@ -1408,7 +1384,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
       <span
         aria-describedby="header4-b-tooltip"
         aria-haspopup={false}
-        aria-label={undefined}
         aria-labelledby="header4-b-name "
         className=
             ms-DetailsHeader-cellTitle
@@ -1444,7 +1419,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         id="header4-b"
         onClick={[Function]}
         onContextMenu={[Function]}
-        role={undefined}
       >
         <span
           className=
@@ -1647,7 +1621,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
       <span
         aria-describedby="header4-c-tooltip"
         aria-haspopup={true}
-        aria-label={undefined}
         aria-labelledby="header4-c-name "
         className=
             ms-DetailsHeader-cellTitle
@@ -1683,7 +1656,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         id="header4-c"
         onClick={[Function]}
         onContextMenu={[Function]}
-        role={undefined}
       >
         <span
           className=

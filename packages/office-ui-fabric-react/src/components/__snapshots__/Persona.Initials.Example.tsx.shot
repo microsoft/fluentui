@@ -38,7 +38,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           color: #212121;
         }
     size={13}
-    style={undefined}
   >
     <div
       className=
@@ -63,7 +62,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
               text-align: center;
               width: 48px;
             }
-        style={undefined}
       >
         <div
           aria-hidden="true"
@@ -85,7 +83,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
                 box-sizing: border-box;
                 color: WindowText;
               }
-          style={undefined}
         >
           <span>
             KL
@@ -122,7 +119,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -145,7 +141,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -169,7 +164,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -193,7 +187,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -239,7 +232,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           color: #212121;
         }
     size={13}
-    style={undefined}
   >
     <div
       className=
@@ -264,7 +256,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
               text-align: center;
               width: 48px;
             }
-        style={undefined}
       >
         <div
           aria-hidden="true"
@@ -286,7 +277,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
                 box-sizing: border-box;
                 color: WindowText;
               }
-          style={undefined}
         >
           <span>
             A
@@ -323,7 +313,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -346,7 +335,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -370,7 +358,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -394,7 +381,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -440,7 +426,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           color: #212121;
         }
     size={13}
-    style={undefined}
   >
     <div
       className=
@@ -465,7 +450,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
               text-align: center;
               width: 48px;
             }
-        style={undefined}
       >
         <div
           aria-hidden="true"
@@ -487,7 +471,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
                 box-sizing: border-box;
                 color: WindowText;
               }
-          style={undefined}
         >
           <span>
             AL
@@ -524,7 +507,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -547,7 +529,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -571,7 +552,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -595,7 +575,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -641,7 +620,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           color: #212121;
         }
     size={13}
-    style={undefined}
   >
     <div
       className=
@@ -666,7 +644,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
               text-align: center;
               width: 48px;
             }
-        style={undefined}
       >
         <div
           aria-hidden="true"
@@ -688,7 +665,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
                 box-sizing: border-box;
                 color: WindowText;
               }
-          style={undefined}
         >
           <span>
             AL
@@ -725,7 +701,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -748,7 +723,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -772,7 +746,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -796,7 +769,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -842,7 +814,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           color: #212121;
         }
     size={13}
-    style={undefined}
   >
     <div
       className=
@@ -867,7 +838,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
               text-align: center;
               width: 48px;
             }
-        style={undefined}
       >
         <div
           aria-hidden="true"
@@ -889,7 +859,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
                 box-sizing: border-box;
                 color: WindowText;
               }
-          style={undefined}
         >
           <span>
             A
@@ -926,7 +895,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -949,7 +917,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -973,7 +940,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -997,7 +963,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -1043,7 +1008,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           color: #212121;
         }
     size={13}
-    style={undefined}
   >
     <div
       className=
@@ -1068,7 +1032,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
               text-align: center;
               width: 48px;
             }
-        style={undefined}
       >
         <div
           aria-hidden="true"
@@ -1090,7 +1053,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
                 box-sizing: border-box;
                 color: WindowText;
               }
-          style={undefined}
         >
           <i
             aria-hidden={true}
@@ -1142,7 +1104,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -1165,7 +1126,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -1189,7 +1149,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -1213,7 +1172,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -1259,7 +1217,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           color: #212121;
         }
     size={13}
-    style={undefined}
   >
     <div
       className=
@@ -1284,7 +1241,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
               text-align: center;
               width: 48px;
             }
-        style={undefined}
       >
         <div
           aria-hidden="true"
@@ -1306,7 +1262,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
                 box-sizing: border-box;
                 color: WindowText;
               }
-          style={undefined}
         >
           <span>
             1X
@@ -1343,7 +1298,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -1366,7 +1320,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -1390,7 +1343,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -1414,7 +1366,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -1460,7 +1411,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           color: #212121;
         }
     size={13}
-    style={undefined}
   >
     <div
       className=
@@ -1485,7 +1435,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
               text-align: center;
               width: 48px;
             }
-        style={undefined}
       >
         <div
           aria-hidden="true"
@@ -1507,7 +1456,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
                 box-sizing: border-box;
                 color: WindowText;
               }
-          style={undefined}
         >
           <i
             aria-hidden={true}
@@ -1559,7 +1507,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -1582,7 +1529,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -1606,7 +1552,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -1630,7 +1575,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -1676,7 +1620,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           color: #212121;
         }
     size={13}
-    style={undefined}
   >
     <div
       className=
@@ -1701,7 +1644,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
               text-align: center;
               width: 48px;
             }
-        style={undefined}
       >
         <div
           aria-hidden="true"
@@ -1723,7 +1665,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
                 box-sizing: border-box;
                 color: WindowText;
               }
-          style={undefined}
         >
           <i
             aria-hidden={true}
@@ -1775,7 +1716,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -1798,7 +1738,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -1822,7 +1761,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -1846,7 +1784,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -1892,7 +1829,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           color: #212121;
         }
     size={13}
-    style={undefined}
   >
     <div
       className=
@@ -1917,7 +1853,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
               text-align: center;
               width: 48px;
             }
-        style={undefined}
       >
         <div
           aria-hidden="true"
@@ -1939,7 +1874,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
                 box-sizing: border-box;
                 color: WindowText;
               }
-          style={undefined}
         >
           <i
             aria-hidden={true}
@@ -1991,7 +1925,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -2014,7 +1947,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -2038,7 +1970,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -2062,7 +1993,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -2108,7 +2038,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           color: #212121;
         }
     size={13}
-    style={undefined}
   >
     <div
       className=
@@ -2133,7 +2062,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
               text-align: center;
               width: 48px;
             }
-        style={undefined}
       >
         <div
           aria-hidden="true"
@@ -2155,7 +2083,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
                 box-sizing: border-box;
                 color: WindowText;
               }
-          style={undefined}
         >
           <span>
             MS
@@ -2192,7 +2119,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -2215,7 +2141,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -2239,7 +2164,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -2263,7 +2187,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -2309,7 +2232,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           color: #212121;
         }
     size={13}
-    style={undefined}
   >
     <div
       className=
@@ -2334,7 +2256,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
               text-align: center;
               width: 48px;
             }
-        style={undefined}
       >
         <div
           aria-hidden="true"
@@ -2356,7 +2277,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
                 box-sizing: border-box;
                 color: WindowText;
               }
-          style={undefined}
         >
           <span>
             MS
@@ -2393,7 +2313,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -2416,7 +2335,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -2440,7 +2358,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -2464,7 +2381,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -2609,7 +2525,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -2632,7 +2547,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -2656,7 +2570,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -2680,7 +2593,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}

@@ -66,7 +66,6 @@ exports[`Tooltip renders default Tooltip correctly 1`] = `
           {
             position: relative;
           }
-      style={undefined}
     >
       <div
         className=
@@ -97,9 +96,6 @@ exports[`Tooltip renders default Tooltip correctly 1`] = `
         tabIndex={-1}
       >
         <div
-          aria-describedby={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
           className=
               ms-Callout-main
               {
@@ -109,8 +105,6 @@ exports[`Tooltip renders default Tooltip correctly 1`] = `
                 position: relative;
               }
           onKeyDown={[Function]}
-          onScroll={undefined}
-          role={undefined}
           style={
             Object {
               "maxHeight": 750,
@@ -119,15 +113,9 @@ exports[`Tooltip renders default Tooltip correctly 1`] = `
           }
         >
           <div
-            className={undefined}
-            id={undefined}
-            onMouseEnter={undefined}
-            onMouseLeave={undefined}
             role="tooltip"
           >
-            <p
-              className={undefined}
-            />
+            <p />
           </div>
         </div>
       </div>

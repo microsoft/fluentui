@@ -2,6 +2,25 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.21.0",
+      "tag": "@uifabric/charting_v0.21.0",
+      "date": "Fri, 14 Sep 2018 01:55:02 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating target for callout so that the callout follows cursor",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "6150decb258da300efdcb6195096de1824bd5bf6"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.68.0 <7.0.0` to `>=6.69.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.20.0",
       "tag": "@uifabric/charting_v0.20.0",
       "date": "Wed, 12 Sep 2018 12:26:41 GMT",

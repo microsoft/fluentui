@@ -4,11 +4,6 @@ exports[`Component Examples renders Calendar.Button.Example.tsx correctly 1`] = 
 <div>
   <div>
     <button
-      aria-describedby={undefined}
-      aria-disabled={undefined}
-      aria-label={undefined}
-      aria-labelledby={undefined}
-      aria-pressed={undefined}
       className=
           ms-Button
           ms-Button--default
@@ -78,7 +73,6 @@ exports[`Component Examples renders Calendar.Button.Example.tsx correctly 1`] = 
             color: #212121;
           }
       data-is-focusable={true}
-      disabled={undefined}
       onClick={[Function]}
       onKeyDown={[Function]}
       onKeyPress={[Function]}

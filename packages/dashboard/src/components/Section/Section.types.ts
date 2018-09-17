@@ -31,6 +31,7 @@ export interface ISectionProps {
    * String for removing section, pass in only if remove is allowed when section is displayed in dashboard
    */
   removeTitle?: string;
+
   /**
    * Is in the edit section mode?
    * @default false
@@ -106,6 +107,12 @@ export interface ISectionStyleProps {
    * The row height used for React-Grid-Layout
    */
   rowHeight?: number;
+
+  /**
+   * Is in the edit section mode?
+   * @default false
+   */
+  isEditMode?: boolean;
 }
 
 export interface ISection extends ISectionProps {
