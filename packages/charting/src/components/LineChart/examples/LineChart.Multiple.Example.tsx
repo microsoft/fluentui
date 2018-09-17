@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { LineChart, ILineChartProps } from '../index';
+import { LineChart, ILineChartProps } from '@uifabric/charting/lib/LineChart';
 import { customizable } from 'office-ui-fabric-react/lib/Utilities';
 import { IChartProps, ILineChartPoints } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
