@@ -3,6 +3,7 @@ import * as React from 'react';
 import { IExpandingCardProps } from './ExpandingCard/ExpandingCard.types';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject, KeyCodes } from '../../Utilities';
+import { IBasicCardProps } from 'office-ui-fabric-react/lib/components/HoverCard/BasicCard/BasicCard.types';
 
 export interface IHoverCard {}
 
@@ -15,6 +16,12 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
    * the public methods and properties of the component.
    */
   componentRef?: IRefObject<IHoverCard>;
+
+  /**
+   * Additional BasicCard props to pass through HoverCard like renderers, target, gapSpace etc.
+   * See for more details ICardProps and IBasicCardProps interfaces
+   */
+  basicCardProps?: IBasicCardProps;
 
   /**
    * Additional CSS class(es) to apply to the HoverCard root element.
@@ -40,7 +47,8 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
   expandedCardOpenDelay?: number;
 
   /**
-   * Additional properties to pass through for HoverCard, reference detail properties in IHoverCardProps
+   * Additional ExpandingCard props to pass through HoverCard like renderers, target. gapSpace etc.
+   * Reference detail properties in ICardProps and IExpandingCardProps.
    */
   expandingCardProps?: IExpandingCardProps;
 
@@ -111,6 +119,12 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
    * Optionally 'setInitialFocus' prop can be set to true to move focus inside the FocusTrapZone.
    */
   trapFocus?: boolean;
+
+  /**
+   * Type of the hover card to render.
+   * @default HoverCardType.expanding
+   */
+  type?: HoverCardType;
 }
 
 export enum OpenCardMode {
@@ -123,6 +137,18 @@ export enum OpenCardMode {
    * Open card by hot key
    */
   hotKey = 1
+}
+
+export enum HoverCardType {
+  /**
+   * Basic card consisting of one part responsive to the size of content.
+   */
+  basic = 'BasicCard',
+
+  /**
+   * File card consisting of two parts: compact and expanded. Has some default sizes if not specified.
+   */
+  expanding = 'ExpandingCard'
 }
 
 export interface IHoverCardStyleProps {

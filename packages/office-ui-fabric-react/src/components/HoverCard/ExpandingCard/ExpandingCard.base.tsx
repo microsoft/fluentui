@@ -46,36 +46,30 @@ export class ExpandingCardBase extends Card<
     this._async.dispose();
   }
 
-  public render(): JSX.Element {
-    const {
-      theme,
-      styles: customStyles,
-      compactCardHeight = COMPACT_CARD_HEIGHT,
-      expandedCardHeight = EXPANDED_CARD_HEIGHT,
-      className,
-      mode
-    } = this.props;
+  protected setStyles(): void {
+    const { styles, compactCardHeight = COMPACT_CARD_HEIGHT, expandedCardHeight = EXPANDED_CARD_HEIGHT, theme, mode } = this.props;
+    const { needsScroll, firstFrameRendered } = this.state;
 
-    const { firstFrameRendered, needsScroll } = this.state;
+    this._finalHeight = compactCardHeight! + expandedCardHeight!;
 
-    this._classNames = getClassNames(customStyles!, {
+    this._classNames = getClassNames(styles!, {
       theme: theme!,
       compactCardHeight,
       expandedCardHeight,
       needsScroll: needsScroll,
       expandedCardFirstFrameRendered: mode === ExpandingCardMode.expanded && firstFrameRendered
     });
+  }
 
-    this._finalHeight = compactCardHeight! + expandedCardHeight!;
+  protected renderContent(): JSX.Element {
+    const { className } = this.props;
 
-    this._content = (
+    return (
       <div onMouseEnter={this.props.onEnter} onMouseLeave={this.props.onLeave} onKeyDown={this.onKeyDown} className={className}>
         {this._onRenderCompactCard()}
         {this._onRenderExpandedCard()}
       </div>
     );
-
-    return this.renderCard();
   }
 
   private _onRenderCompactCard = (): JSX.Element => {

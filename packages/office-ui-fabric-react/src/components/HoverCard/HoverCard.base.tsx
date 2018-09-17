@@ -1,9 +1,11 @@
 import * as React from 'react';
 
 import { BaseComponent, divProperties, getNativeProps, getId, KeyCodes, getDocument, createRef, classNamesFunction } from '../../Utilities';
-import { IHoverCardProps, IHoverCardStyles, IHoverCardStyleProps, OpenCardMode } from './HoverCard.types';
+import { IHoverCardProps, IHoverCardStyles, IHoverCardStyleProps, OpenCardMode, HoverCardType } from './HoverCard.types';
 import { ExpandingCard } from './ExpandingCard/ExpandingCard';
-import { ExpandingCardMode } from './ExpandingCard/ExpandingCard.types';
+import { ExpandingCardMode, IExpandingCardProps } from './ExpandingCard/ExpandingCard.types';
+import { BasicCard } from './BasicCard/BasicCard';
+import { IBasicCardProps } from './BasicCard/BasicCard.types';
 
 const getClassNames = classNamesFunction<IHoverCardStyleProps, IHoverCardStyles>();
 
@@ -20,7 +22,8 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
     expandedCardOpenDelay: 1500,
     instantOpenOnClick: false,
     setInitialFocus: false,
-    openHotKey: KeyCodes.c
+    openHotKey: KeyCodes.c,
+    type: HoverCardType.expanding
   };
 
   // The wrapping div that gets the hover events
@@ -81,7 +84,17 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
 
   // Render
   public render(): JSX.Element {
-    const { expandingCardProps, children, id, setAriaDescribedBy = true, styles: customStyles, theme, className } = this.props;
+    const {
+      expandingCardProps,
+      children,
+      id,
+      setAriaDescribedBy = true,
+      styles: customStyles,
+      theme,
+      className,
+      type,
+      basicCardProps
+    } = this.props;
     const { isHoverCardVisible, mode, openMode } = this.state;
     const hoverCardId = id || getId('hoverCard');
 
@@ -89,6 +102,20 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
       theme: theme!,
       className
     });
+
+    // Common props for both card types.
+    const commonCardProps = {
+      ...getNativeProps(this.props, divProperties),
+      id: hoverCardId,
+      trapFocus: !!this.props.trapFocus,
+      firstFocus: this.props.setInitialFocus || openMode === OpenCardMode.hotKey,
+      targetElement: this._getTargetElement(),
+      onEnter: this._cardOpen,
+      onLeave: this._executeCardDismiss
+    };
+
+    const finalExpandedCardProps: IExpandingCardProps = { ...expandingCardProps, ...commonCardProps, mode };
+    const finalBasicCardProps: IBasicCardProps = { ...basicCardProps, ...commonCardProps };
 
     return (
       <div
@@ -98,19 +125,8 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
         data-is-focusable={!Boolean(this.props.target)}
       >
         {children}
-        {isHoverCardVisible && (
-          <ExpandingCard
-            {...getNativeProps(this.props, divProperties)}
-            id={hoverCardId}
-            trapFocus={!!this.props.trapFocus}
-            firstFocus={this.props.setInitialFocus || openMode === OpenCardMode.hotKey}
-            targetElement={this._getTargetElement()}
-            onEnter={this._cardOpen}
-            onLeave={this._executeCardDismiss}
-            mode={mode}
-            {...expandingCardProps}
-          />
-        )}
+        {isHoverCardVisible &&
+          (type === HoverCardType.expanding ? <ExpandingCard {...finalExpandedCardProps} /> : <BasicCard {...finalBasicCardProps} />)}
       </div>
     );
   }

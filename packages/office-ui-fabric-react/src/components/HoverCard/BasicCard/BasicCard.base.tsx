@@ -11,19 +11,20 @@ export class BasicCardBase extends Card<IBasicCard, IBasicCardProps, IBasicCardS
     super(props);
   }
 
-  public render(): JSX.Element {
-    const { theme, styles, className } = this.props;
-
+  protected setStyles(): void {
+    const { styles, theme } = this.props;
     this._classNames = getClassNames(styles!, {
       theme: theme!
     });
+  }
 
-    this._content = (
+  protected renderContent(): JSX.Element {
+    const { className } = this.props;
+
+    return (
       <div onMouseEnter={this.props.onEnter} onMouseLeave={this.props.onLeave} onKeyDown={this.onKeyDown} className={className}>
         {this.props.onRenderBasicCard!(this.props.renderData)}
       </div>
     );
-
-    return this.renderCard();
   }
 }

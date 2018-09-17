@@ -32,8 +32,10 @@ export abstract class Card<
   }
 
   // Method to be called as a return in the render of each type of the hover card.
-  protected renderCard(): JSX.Element {
+  public render(): JSX.Element {
     const { targetElement, directionalHintFixed, directionalHint, firstFocus, trapFocus, gapSpace, onLeave } = this.props;
+
+    this.setStyles();
 
     return (
       <Callout
@@ -50,14 +52,17 @@ export abstract class Card<
       >
         {trapFocus ? (
           <FocusTrapZone forceFocusInsideTrap={false} isClickableOutsideFocusTrap={true} disableFirstFocus={!firstFocus}>
-            {this._content}
+            {this.renderContent()}
           </FocusTrapZone>
         ) : (
-          this._content
+          this.renderContent()
         )}
       </Callout>
     );
   }
+
+  protected abstract renderContent(): JSX.Element;
+  protected abstract setStyles(): void;
 
   protected onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     if (ev.which === KeyCodes.escape) {
