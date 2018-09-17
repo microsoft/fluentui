@@ -105,6 +105,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     options: [],
     allowFreeform: false,
     autoComplete: 'on',
+    autoCompleteFullString: 'off',
     buttonIconProps: { iconName: 'ChevronDown' }
   };
 
@@ -652,19 +653,28 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // If autoComplete is on, attempt to find a match from the available options
     if (this.props.autoComplete === 'on') {
       // If autoComplete is on, attempt to find a match where the text of an option starts with the updated value
-      const items = currentOptions
+      let items = currentOptions
         .map((item, index) => {
           return { ...item, index };
         })
         .filter(
           option => option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider
-        )
-        .filter(
+        );
+
+      if (this.props.autoCompleteFullString === 'on') {
+        items = items.filter(option =>
+          this._getPreviewText(option)
+            .toLocaleLowerCase()
+            .includes(updatedValue)
+        );
+      } else {
+        items = items.filter(
           option =>
             this._getPreviewText(option)
               .toLocaleLowerCase()
               .indexOf(updatedValue) === 0
         );
+      }
       if (items.length > 0) {
         // use ariaLabel as the value when the option is set
         const text: string = this._getPreviewText(items[0]);
@@ -999,6 +1009,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
               this._autofill.current.inputElement &&
               this._autofill.current.inputElement.value.toLocaleLowerCase() === pendingOptionText))
         ) {
+          this._setSelectedIndex(currentPendingValueValidIndex, submitPendingValueEvent);
+          this._clearPendingInfo();
+          return;
+        }
+
+        // else if the pending option contains the pending value and we have auto complete and auto full string
+        // update the state
+        if (this.props.autoComplete && this.props.autoCompleteFullString) {
           this._setSelectedIndex(currentPendingValueValidIndex, submitPendingValueEvent);
           this._clearPendingInfo();
           return;

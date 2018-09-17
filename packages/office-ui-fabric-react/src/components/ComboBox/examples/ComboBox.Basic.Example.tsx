@@ -54,6 +54,22 @@ export class ComboBoxBasicExample extends React.Component<
     { key: 'J', text: 'Option j', disabled: true }
   ];
 
+  private _fullSearchOptions = [
+    { key: 'Header', text: 'Suggested room lists', itemType: SelectableOptionMenuItemType.Header },
+    { key: 'A', text: 'Puget Sound - Building 31' },
+    { key: 'B', text: 'Puget Sound - Building 32' },
+    { key: 'C', text: 'Puget Sound - Building 34' },
+    { key: 'Header2', text: 'All room lists', itemType: SelectableOptionMenuItemType.Header },
+    { key: 'D', text: 'All Rooms Vernier' },
+    { key: 'E', text: 'All Rooms Wallisellen' },
+    { key: 'F', text: 'APAC-AUSTRALIA-ADELAIDE' },
+    { key: 'G', text: 'APAC-Australia-BRISBANE' },
+    { key: 'H', text: 'Puget Sound - Building 30' },
+    { key: 'I', text: 'Puget Sound - Building 32' },
+    { key: 'J', text: 'Puget Sound - Building 33' },
+    { key: 'K', text: 'Puget Sound - Building 34' }
+  ];
+
   private _fontMapping: { [key: string]: string } = {
     ['Arial Black']: '"Arial Black", "Arial Black_MSFontService", sans-serif',
     ['Time New Roman']: '"Times New Roman", "Times New Roman_MSFontService", serif',
@@ -104,9 +120,7 @@ export class ComboBoxBasicExample extends React.Component<
           onBlur={() => console.log('onBlur called')}
           onMenuOpen={() => console.log('ComboBox menu opened')}
           onPendingValueChanged={(option, pendingIndex, pendingValue) =>
-            console.log(
-              'Preview value was changed. Pending index: ' + pendingIndex + '. Pending value: ' + pendingValue
-            )
+            console.log('Preview value was changed. Pending index: ' + pendingIndex + '. Pending value: ' + pendingValue)
           }
           // tslint:enable:jsx-no-lambda
         />
@@ -121,6 +135,24 @@ export class ComboBoxBasicExample extends React.Component<
           ariaLabel="Basic ComboBox example"
           allowFreeform={true}
           autoComplete="on"
+          options={this._testOptions}
+          onRenderOption={this._onRenderFontOption}
+          // tslint:disable:jsx-no-lambda
+          onFocus={() => console.log('onFocus called')}
+          onBlur={() => console.log('onBlur called')}
+          onMenuOpen={() => console.log('ComboBox menu opened')}
+          // tslint:enable:jsx-no-lambda
+        />
+
+        <ComboBox
+          multiSelect
+          defaultSelectedKey={['C', 'E']}
+          label="Basic uncontrolled multi select example (allowFreeform: T, AutoComplete: T, AutoCompleteFullString: T):"
+          id="Basicdrop11"
+          ariaLabel="Basic ComboBox example"
+          allowFreeform={true}
+          autoComplete="on"
+          autoCompleteFullString="on"
           options={this._testOptions}
           onRenderOption={this._onRenderFontOption}
           // tslint:disable:jsx-no-lambda
@@ -175,9 +207,7 @@ export class ComboBoxBasicExample extends React.Component<
           onBlur={() => console.log('onBlur called')}
           onMenuOpen={() => console.log('ComboBox menu opened')}
           onPendingValueChanged={(option, pendingIndex, pendingValue) =>
-            console.log(
-              'Preview value was changed. Pending index: ' + pendingIndex + '. Pending value: ' + pendingValue
-            )
+            console.log('Preview value was changed. Pending index: ' + pendingIndex + '. Pending value: ' + pendingValue)
           }
           // tslint:enable:jsx-no-lambda
           dropdownMaxWidth={200}
@@ -197,9 +227,28 @@ export class ComboBoxBasicExample extends React.Component<
           onBlur={() => console.log('onBlur called')}
           onMenuOpen={() => console.log('ComboBox menu opened')}
           onPendingValueChanged={(option, pendingIndex, pendingValue) =>
-            console.log(
-              'Preview value was changed. Pending index: ' + pendingIndex + '. Pending value: ' + pendingValue
-            )
+            console.log('Preview value was changed. Pending index: ' + pendingIndex + '. Pending value: ' + pendingValue)
+          }
+          // tslint:enable:jsx-no-lambda
+          dropdownMaxWidth={400}
+          useComboBoxAsMenuWidth={true}
+        />
+
+        <VirtualizedComboBox
+          defaultSelectedKey="C"
+          label="Scaled example with 1000 items (allowFreeform: T, AutoComplete: T, AutoCompleteFullString: T):"
+          id="Basicdrop1"
+          ariaLabel="Basic ComboBox example"
+          allowFreeform={true}
+          autoComplete="on"
+          autoCompleteFullString="on"
+          options={this._fullSearchOptions}
+          // tslint:disable:jsx-no-lambda
+          onFocus={() => console.log('onFocus called')}
+          onBlur={() => console.log('onBlur called')}
+          onMenuOpen={() => console.log('ComboBox menu opened')}
+          onPendingValueChanged={(option, pendingIndex, pendingValue) =>
+            console.log('Preview value was changed. Pending index: ' + pendingIndex + '. Pending value: ' + pendingValue)
           }
           // tslint:enable:jsx-no-lambda
           dropdownMaxWidth={400}
@@ -318,10 +367,7 @@ export class ComboBoxBasicExample extends React.Component<
 
   // Render content of item
   private _onRenderFontOption = (item: IComboBoxOption): JSX.Element => {
-    if (
-      item.itemType === SelectableOptionMenuItemType.Header ||
-      item.itemType === SelectableOptionMenuItemType.Divider
-    ) {
+    if (item.itemType === SelectableOptionMenuItemType.Header || item.itemType === SelectableOptionMenuItemType.Divider) {
       return <span className={'ms-ComboBox-optionText'}>{item.text}</span>;
     }
 
@@ -375,12 +421,7 @@ export class ComboBoxBasicExample extends React.Component<
     return INITIAL_OPTIONS;
   };
 
-  private _onChange = (
-    event: React.FormEvent<IComboBox>,
-    option: IComboBoxOption,
-    index: number,
-    value: string
-  ): void => {
+  private _onChange = (event: React.FormEvent<IComboBox>, option: IComboBoxOption, index: number, value: string): void => {
     console.log('_onChanged() is called: option = ' + JSON.stringify(option));
     if (option !== undefined) {
       this.setState({
@@ -403,12 +444,7 @@ export class ComboBoxBasicExample extends React.Component<
     }
   };
 
-  private _onChangeMulti = (
-    event: React.FormEvent<IComboBox>,
-    option: IComboBoxOption,
-    index: number,
-    value: string
-  ) => {
+  private _onChangeMulti = (event: React.FormEvent<IComboBox>, option: IComboBoxOption, index: number, value: string) => {
     console.log('_onChangeMulti() is called: option = ' + JSON.stringify(option));
     if (option !== undefined) {
       // User selected/de-selected an existing option

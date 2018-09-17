@@ -103,6 +103,14 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   autoComplete?: 'on' | 'off';
 
   /**
+   * If ComboBox has autocomplete, whether it will use substring search or not when suggesting potential matches from the list of options
+   * when user inputs text.
+   *
+   * @default "off"
+   **/
+  autoCompleteFullString?: 'on' | 'off';
+
+  /**
    * Value to show in the input, does not have to map to a combobox option
    */
   text?: string;
