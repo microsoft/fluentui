@@ -11,6 +11,7 @@ exports[`Component Examples renders Button.Action.Example.tsx correctly 1`] = `
         margin-top: 10px;
       }
 >
+  asdfadsfadf
   <button
     className=
         ms-Button
