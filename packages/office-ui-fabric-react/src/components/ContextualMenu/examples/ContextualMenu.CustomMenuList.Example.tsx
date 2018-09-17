@@ -130,6 +130,7 @@ export class ContextualMenuWithCustomMenuListExample extends React.Component<
       <div>
         <div style={{ borderBottom: '1px solid #ccc' }}>
           <SearchBox
+            ariaLabel="Filter actions by text"
             placeholder="Filter actions"
             onAbort={this._onAbort}
             onChange={this._onChange}
