@@ -12,6 +12,7 @@ import {
   IDocumentCardLogoProps
 } from 'office-ui-fabric-react/lib/DocumentCard';
 import { ImageFit } from 'office-ui-fabric-react/lib/Image';
+import { ILinkProps } from 'office-ui-fabric-react/lib/Link';
 import { TestImages } from '../../../common/TestImages';
 
 export class DocumentCardCompleteExample extends React.Component<any, any> {
@@ -90,9 +91,18 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
       logoIcon: 'OutlookLogo'
     };
 
+    const linkPropsOne: ILinkProps = {
+      onClick: this._onClick
+    };
+
+    const linkPropsTwo: ILinkProps = {
+      href: 'http://bing.com',
+      target: '_blank'
+    };
+
     return (
       <div>
-        <DocumentCard onClick={this._onClick}>
+        <DocumentCard linkProps={linkPropsOne}>
           <DocumentCardPreview {...previewProps} />
           <DocumentCardLocation
             location="Marketing Documents"
@@ -141,8 +151,10 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
             views={432}
           />
         </DocumentCard>
-        <p />Card Logo, Text Preview CardStatus are used on below examples.<p />
-        <DocumentCard onClickHref="http://bing.com">
+        <p />
+        Card Logo, Text Preview CardStatus are used on below examples.
+        <p />
+        <DocumentCard linkProps={linkPropsTwo}>
           <DocumentCardLogo {...logoProps} />
           <div className="ms-ConversationTile-TitlePreviewArea">
             <DocumentCardTitle
@@ -166,7 +178,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
           />
         </DocumentCard>
         <p />
-        <DocumentCard onClickHref="http://bing.com">
+        <DocumentCard linkProps={linkPropsTwo}>
           <DocumentCardLogo {...logoProps} />
           <div className="ms-ConversationTile-TitlePreviewArea">
             <DocumentCardTitle title="Conversation about anual Report" />
@@ -183,7 +195,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
           />
         </DocumentCard>
         <p />
-        <DocumentCard onClickHref="http://bing.com">
+        <DocumentCard linkProps={linkPropsTwo}>
           <DocumentCardLogo {...logoProps} />
           <div className="ms-ConversationTile-TitlePreviewArea">
             <DocumentCardTitle title="Conversation about anual report" shouldTruncate={true} />
@@ -203,7 +215,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
           />
         </DocumentCard>
         <p />
-        <DocumentCard onClickHref="http://bing.com">
+        <DocumentCard linkProps={linkPropsTwo}>
           <DocumentCardPreview {...previewPropsUsingIcon} />
           <div className="ms-DocumentCard-details">
             <DocumentCardTitle title="View and share files" shouldTruncate={true} />

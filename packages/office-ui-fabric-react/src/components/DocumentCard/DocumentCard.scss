@@ -112,6 +112,7 @@ $ms-DocumentCardActions-verticalPadding: 4px;
 .views {
   @include text-align(right);
   line-height: $ms-DocumentCardActions-actionSize;
+  color: $ms-color-neutralPrimary;
 }
 
 .viewsIcon {
@@ -279,6 +280,7 @@ $ms-DocumentCardActivity-personaTextGutter: 8px;
   @include padding(0px, 16px, 8px, 16px);
   display: block;
   font-size: $ms-font-size-s;
+  color: $ms-color-neutralPrimary;
 }
 
 /** Title **/

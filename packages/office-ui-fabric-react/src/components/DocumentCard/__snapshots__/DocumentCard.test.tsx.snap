@@ -4,107 +4,169 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
 <div
   className="ms-DocumentCard"
 >
-  <div
-    className="ms-DocumentCardPreview"
-  />
-  <div
-    className="ms-DocumentCardTitle"
-    title=""
-  >
-    
-  </div>
-  <div
-    className="ms-DocumentCardActivity"
+  <a
+    className=
+        ms-Link
+        {
+          background-color: transparent;
+          background: none;
+          border-bottom: 1px solid transparent;
+          border: none;
+          color: #0078d4;
+          cursor: pointer;
+          display: inline;
+          font-size: inherit;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          outline: transparent;
+          overflow: inherit;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+          text-align: left;
+          text-overflow: inherit;
+          user-select: text;
+        }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: -1px;
+          content: "";
+          left: -1px;
+          outline: 1px solid #666666;
+          position: absolute;
+          right: -1px;
+          top: -1px;
+          z-index: 1;
+        }
+        @media screen and (-ms-high-contrast: white-on-black){& {
+          color: #FFFF00;
+        }
+        @media screen and (-ms-high-contrast: black-on-white){& {
+          color: #00009F;
+        }
+        @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+          border-bottom: none;
+        }
+        &:active, &:hover, &:active:hover {
+          color: #004578;
+        }
+        @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+          text-decoration: underline;
+        }
+        &:focus {
+          color: #0078d4;
+        }
+    onClick={[Function]}
   >
     <div
-      className="ms-DocumentCardActivity-avatars"
+      className="ms-DocumentCardPreview"
+    />
+    <div
+      className="ms-DocumentCardTitle"
+      title=""
+    >
+      
+    </div>
+    <div
+      className="ms-DocumentCardActivity"
     >
       <div
-        className="ms-DocumentCardActivity-avatar"
+        className="ms-DocumentCardActivity-avatars"
       >
         <div
-          className=
-              ms-Persona-coin
-              ms-Persona--size32
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-              }
-          role="persentation"
-          size={11}
+          className="ms-DocumentCardActivity-avatar"
         >
           <div
             className=
-                ms-Persona-imageArea
+                ms-Persona-coin
+                ms-Persona--size32
                 {
-                  flex: 0 0 auto;
-                  height: 32px;
-                  position: relative;
-                  text-align: center;
-                  width: 32px;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                 }
+            role="persentation"
+            size={11}
           >
             <div
-              aria-hidden="true"
               className=
-                  ms-Persona-initials
+                  ms-Persona-imageArea
                   {
-                    background-color: #2D89EF;
-                    border-radius: 50%;
-                    color: #ffffff;
-                    font-size: 14px;
-                    font-weight: 400;
+                    flex: 0 0 auto;
                     height: 32px;
-                    line-height: 32px;
-                  }
-                  @media screen and (-ms-high-contrast: active){& {
-                    -ms-high-contrast-adjust: none;
-                    background-color: Window !important;
-                    border: 1px solid WindowText;
-                    box-sizing: border-box;
-                    color: WindowText;
+                    position: relative;
+                    text-align: center;
+                    width: 32px;
                   }
             >
-              <i
-                aria-hidden={true}
+              <div
+                aria-hidden="true"
                 className=
-
+                    ms-Persona-initials
                     {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      display: inline-block;
-                      font-family: "FabricMDL2Icons-0";
-                      font-style: normal;
-                      font-weight: normal;
-                      speak: none;
+                      background-color: #2D89EF;
+                      border-radius: 50%;
+                      color: #ffffff;
+                      font-size: 14px;
+                      font-weight: 400;
+                      height: 32px;
+                      line-height: 32px;
                     }
-                data-icon-name="Contact"
-                role="presentation"
+                    @media screen and (-ms-high-contrast: active){& {
+                      -ms-high-contrast-adjust: none;
+                      background-color: Window !important;
+                      border: 1px solid WindowText;
+                      box-sizing: border-box;
+                      color: WindowText;
+                    }
               >
-                
-              </i>
+                <i
+                  aria-hidden={true}
+                  className=
+
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        display: inline-block;
+                        font-family: "FabricMDL2Icons-0";
+                        font-style: normal;
+                        font-weight: normal;
+                        speak: none;
+                      }
+                  data-icon-name="Contact"
+                  role="presentation"
+                >
+                  
+                </i>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div
-      className="ms-DocumentCardActivity-details"
-    >
-      <span
-        className="ms-DocumentCardActivity-name"
+      <div
+        className="ms-DocumentCardActivity-details"
       >
-        
-      </span>
-      <span
-        className="ms-DocumentCardActivity-activity"
-      >
-        
-      </span>
+        <span
+          className="ms-DocumentCardActivity-name"
+        >
+          
+        </span>
+        <span
+          className="ms-DocumentCardActivity-activity"
+        >
+          
+        </span>
+      </div>
     </div>
-  </div>
+  </a>
 </div>
 `;
