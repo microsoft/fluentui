@@ -2,13 +2,13 @@
 
 exports[`CommandBar renders commands correctly 1`] = `
 <div
-  className=
-      ms-ResizeGroup
-      TestClassName
-      {
-        display: block;
-        position: relative;
-      }
+  className="TestClassName"
+  style={
+    Object {
+      "display": "block",
+      "position": "relative",
+    }
+  }
 >
   <div
     data-automation-id="visibleContent"
