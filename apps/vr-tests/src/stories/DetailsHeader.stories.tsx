@@ -8,33 +8,14 @@ import { IColumn, DetailsListLayoutMode, ColumnActionsMode, Selection, Selection
 import { IDetailsColumnStyles, IDetailsColumnStyleProps } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn.types'
 import { DetailsHeader } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsHeader'
 import { IDetailsHeaderStyleProps, IDetailsHeaderStyles } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsHeader.types';
-import { DetailsColumn } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn'
-import { IDragDropHelper } from "c:/Git/office-ui-fabric-react/packages/office-ui-fabric-react/src/utilities/dragdrop/index"
+import { DetailsColumn } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn';
+import * as fs from 'fs-extra';
+
 
 const _items: {}[] = [];
 const _selection = new Selection();
-let _classNames: IClassNames<IDetailsColumnStyles>;
-const getClassNames = classNamesFunction<IDetailsHeaderStyleProps, IDetailsHeaderStyles>();
+const dndScript = fs.readFileSync('../../dndSim.js', 'utf8');
 
-// const _onDragStart = (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent): void => {
-
-//   if (itemIndex) {
-//     this._updateHeaderDragInfo(itemIndex);
-//     this._root.current.classList.add(classNames.borderWhileDragging);
-//   }
-// }
-
-// const updateDragInfo = (props: { itemIndex: number }, event?: MouseEvent) => {
-
-//     this._draggedColumnIndex = this.props.selectionMode !== SelectionMode.none ? itemIndex - 2 : itemIndex - 1;
-//     onColumnDragStart(true);
-
-// }
-
-// _classNames = getClassNames(styles);
-
-
-let _dragDropHelper: IDragDropHelper;
 
 const columns: IColumn[] = [
   { key: 'a', name: 'a', fieldName: 'a', minWidth: 200, maxWidth: 400, calculatedWidth: 200, isResizable: true },
@@ -136,9 +117,15 @@ storiesOf('DetailsHeader', module)
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('[aria-colindex=2]')
-        .snapshot('hoverFrozen', { cropTo: '.testWrapper' })
+        .snapshot('hoverFrozenFirst', { cropTo: '.testWrapper' })
         .hover('[aria-colindex=3]')
         .snapshot('hoverDraggable', { cropTo: '.testWrapper' })
+        .hover('[aria-colindex=7]')
+        .snapshot('hoverFrozenLast', { cropTo: '.testWrapper' })
+        .executeScript(dndScript)
+        .executeScript('DndSimulator.simulate(\'[draggable="true"]\', \'[aria-colindex="5"]\')')
+        .snapshot('Drop Hint', { cropTo: '.testWrapper' })
+
         .end()}
     >
       {story()}
@@ -155,31 +142,43 @@ storiesOf('DetailsHeader', module)
     />
   ))
 
+// storiesOf('DetailsHeader', module)
+//   .addDecorator(FabricDecorator)
+//   .addDecorator(story => (
+//     <Screener
+//       steps={new Screener.Steps()
+//         .snapshot('default1', { cropTo: '.testWrapper' })
+//         .snapshot('default2', { cropTo: '.testWrapper' })
+//         .snapshot('default3', { cropTo: '.testWrapper' })
+//         .hover('[aria-colindex=3]')
+//         .snapshot('hover', { cropTo: '.testWrapper' })
+//         .end()}
+//     >
+//       {story()}
+//     </Screener>
+//   ))
 
-storiesOf('DetailsHeader', module)
-  .addDecorator(FabricDecorator)
-  .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
-        .snapshot('default1', { cropTo: '.testWrapper' })
-        .snapshot('default2', { cropTo: '.testWrapper' })
-        .snapshot('default3', { cropTo: '.testWrapper' })
-        .hover('[aria-colindex=3]')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .end()}
-    >
-      {story()}
-    </Screener>
-  ))
-
-  .add('DragEnd', () => (
-    <DetailsColumn
-      column={columns[3]}
-      key={columns[3].key}
-      columnIndex={3}
-      isDraggable={true}
-      isDropped={true}
-    />
-  ))
+//   .add('DragEnd', () => (
+//     <div>
+//       <DetailsColumn
+//         column={columns[3]}
+//         key={columns[3].key}
+//         columnIndex={3}
+//         isDraggable={true}
+//       />
+//       <DetailsColumn
+//         column={columns[4]}
+//         key={columns[4].key}
+//         columnIndex={4}
+//         isDraggable={true}
+//       />
+//       <DetailsColumn
+//         column={columns[5]}
+//         key={columns[5].key}
+//         columnIndex={5}
+//         isDraggable={true}
+//       />
+//     </div>
+//   ))
 
 

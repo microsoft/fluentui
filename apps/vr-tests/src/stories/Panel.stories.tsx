@@ -5,10 +5,10 @@ import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
 import { Panel, PanelType, SearchBox } from 'office-ui-fabric-react';
 
-Panel.defaultProps = {
-  isOpen: true,
-  children: 'Content goes here'
-};
+// Panel.defaultProps = {
+//   isOpen: true,
+//   children: 'Content goes here'
+// };
 
 storiesOf('Panel', module)
   .addDecorator(FabricDecorator)
