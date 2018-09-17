@@ -1,8 +1,7 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
-import { storiesOf } from '@storybook/react';
-import { FabricDecoratorTall } from '../utilities';
+import { FabricDecoratorTall, runStories } from '../utilities';
 import { CommandBar, ICommandBarItemProps } from 'office-ui-fabric-react';
 
 const items: ICommandBarItemProps[] = [
@@ -86,32 +85,40 @@ const farItems: ICommandBarItemProps[] = [
   }
 ];
 
-storiesOf('CommandBar', module)
-  .addDecorator(FabricDecoratorTall)
-  .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('.ms-CommandBarItem-link')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .click('.ms-CommandBarItem-link')
-        .hover('.ms-CommandBarItem-link')
-        .snapshot('click', { cropTo: '.testWrapper' })
-        .end()}
-    >
-      {story()}
-    </Screener>
-  ))
-  .add('Root', () => <CommandBar items={items} farItems={farItems} />)
-  .add('Text only', () => (
-    <CommandBar
-      items={items.map(item => ({ ...item, iconProps: undefined }))}
-      farItems={farItems.map(item => ({ ...item, iconProps: undefined }))}
-    />
-  ))
-  .add('Icons only', () => (
-    <CommandBar
-      items={items.map(item => ({ ...item, text: undefined }))}
-      farItems={farItems.map(item => ({ ...item, iconOnly: true }))}
-    />
-  ));
+const ScreenerDecorator = story => (
+  <Screener
+    steps={new Screener.Steps()
+      .snapshot('default', { cropTo: '.testWrapper' })
+      .hover('.ms-CommandBarItem-link')
+      .snapshot('hover', { cropTo: '.testWrapper' })
+      .click('.ms-CommandBarItem-link')
+      .hover('.ms-CommandBarItem-link')
+      .snapshot('click', { cropTo: '.testWrapper' })
+      .end()}
+  >
+    {story()}
+  </Screener>
+);
+
+const allStories = [
+  {
+    decorators: [FabricDecoratorTall, ScreenerDecorator],
+    stories: {
+      'Root test': () => <CommandBar items={items} farItems={farItems} />,
+      'Text only test': () => (
+        <CommandBar
+          items={items.map(item => ({ ...item, iconProps: undefined }))}
+          farItems={farItems.map(item => ({ ...item, iconProps: undefined }))}
+        />
+      ),
+      'Icons only test': () => (
+        <CommandBar
+          items={items.map(item => ({ ...item, text: undefined }))}
+          farItems={farItems.map(item => ({ ...item, iconOnly: true }))}
+        />
+      )
+    }
+  }
+];
+
+runStories('CommandBar', allStories);

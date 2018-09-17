@@ -2,7 +2,7 @@
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
+import { FabricDecorator, runStories } from '../utilities';
 import { ContextualMenu, ContextualMenuItemType, IContextualMenuItem } from 'office-ui-fabric-react';
 
 const items: IContextualMenuItem[] = [
@@ -254,50 +254,34 @@ const itemsWithSplitButtonSubmenu: IContextualMenuItem[] = [
   }
 ];
 
-storiesOf('ContextualMenu', module)
-  .addDecorator(FabricDecorator)
-  .addDecorator(story => (
-    <Screener
-      steps={ new Screener.Steps()
-        .snapshot('default', { cropTo: '.ms-Layer' })
-        .hover('.ms-ContextualMenu-linkContent')
-        .snapshot('hover', { cropTo: '.ms-Layer' })
-        .click('.ms-ContextualMenu-linkContent')
-        .hover('.ms-ContextualMenu-linkContent')
-        .snapshot('click', { cropTo: '.ms-Layer' })
-        .end()
-      }
-    >
-      { story() }
-    </Screener>
-  ))
-  .add('Root', () => (
-    <ContextualMenu
-      items={ items }
-    />
-  ))
-  .add('With icons', () => (
-    <ContextualMenu
-      items={ itemsWithIcons }
-    />
-  ))
-  .add('With secondaryText', () => (
-    <ContextualMenu
-      items={ itemsWithSecondaryText }
-    />
-  ))
-  .add('With submenu', () => (
-    <ContextualMenu
-      items={ itemsWithSubmenu }
-    />
-  ))
-  .add('With headers', () => (
-    <ContextualMenu
-      items={ itemsWithHeaders }
-    />
-  ))
-  .add('With split button submenu', () => (
-    <ContextualMenu
-      items={ itemsWithSplitButtonSubmenu }
-    />
-  ));
+const ScreenerDecorator = story => (
+  <Screener
+    steps={new Screener.Steps()
+      .snapshot('default', { cropTo: '.ms-Layer' })
+      .hover('.ms-ContextualMenu-linkContent')
+      .snapshot('hover', { cropTo: '.ms-Layer' })
+      .click('.ms-ContextualMenu-linkContent')
+      .hover('.ms-ContextualMenu-linkContent')
+      .snapshot('click', { cropTo: '.ms-Layer' })
+      .end()
+    }
+  >
+    {story()}
+  </Screener>
+);
+
+const allStories = [
+  {
+    decorators: [FabricDecorator, ScreenerDecorator],
+    stories: {
+      'Root': () => <ContextualMenu items={items} />,
+      'With icons': () => <ContextualMenu items={itemsWithIcons} />,
+      'With secondaryText': () => <ContextualMenu items={itemsWithSecondaryText} />,
+      'With submenu': () => <ContextualMenu items={itemsWithSubmenu} />,
+      'With headers': () => <ContextualMenu items={itemsWithHeaders} />,
+      'With split button submenu': () => <ContextualMenu items={itemsWithSplitButtonSubmenu} />,
+    }
+  }
+];
+
+runStories('ContextualMenu', allStories);

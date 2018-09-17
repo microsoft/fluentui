@@ -1,11 +1,10 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
-import { storiesOf } from '@storybook/react';
-import { FabricDecoratorTallFixedWdith } from '../utilities';
+import { FabricDecoratorTallFixedWdith, runStories } from '../utilities';
 import { ComboBox, SelectableOptionMenuItemType } from 'office-ui-fabric-react';
 
-let testOptions = [
+const testOptions = [
   { key: 'Header', text: 'Theme Fonts', itemType: SelectableOptionMenuItemType.Header },
   { key: 'A', text: 'Arial Black' },
   { key: 'B', text: 'Times New Roman' },
@@ -19,10 +18,10 @@ let fontMapping = {
   ['Time New Roman']: '"Times New Roman", "Times New Roman_MSFontService", serif',
 };
 
-let onRenderFontOption = (item) => {
+const onRenderFontOption = (item) => {
   if (item.itemType === SelectableOptionMenuItemType.Header ||
     item.itemType === SelectableOptionMenuItemType.Divider) {
-    return <span className={ 'ms-ComboBox-optionText' }>{ item.text }</span>;
+    return <span className={'ms-ComboBox-optionText'}>{item.text}</span>;
   }
 
   let fontFamily = fontMapping[item.text];
@@ -41,52 +40,60 @@ let onRenderFontOption = (item) => {
   }
 
   // tslint:disable-next-line:jsx-ban-props
-  return <span className={ 'ms-ComboBox-optionText' } style={ { fontFamily: fontFamily && fontFamily } }>{ item.text }</span>;
+  return <span className={'ms-ComboBox-optionText'} style={{ fontFamily: fontFamily && fontFamily }}>{item.text}</span>;
 };
 
-storiesOf('ComboBox', module)
-  .addDecorator(FabricDecoratorTallFixedWdith)
-  .addDecorator(story => (
-    <Screener
-      steps={ new Screener.Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('.ms-ComboBox-Input')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .click('.ms-Button-flexContainer')
-        .hover('.ms-Button-flexContainer')
-        .snapshot('click', { cropTo: '.ms-Layer' }) // Dropdown extends beyond testWrapper
-        .end()
-      }
-    >
-      { story() }
-    </Screener>
-  ))
-  .add('Root', () => (
-    <ComboBox
-      defaultSelectedKey='A'
-      label='Default with dividers'
-      ariaLabel='Basic ComboBox example'
-      autoComplete='on'
-      options={ testOptions }
-    />
-  ))
-  .add('Styled', () => (
-    <ComboBox
-      defaultSelectedKey='A'
-      label='Styled with dividers'
-      ariaLabel='Basic ComboBox example'
-      autoComplete='on'
-      options={ testOptions }
-      onRenderOption={ onRenderFontOption }
-    />
-  ))
-  .add('Disabled', () => (
-    <ComboBox
-      defaultSelectedKey='A'
-      label='Disabled'
-      ariaLabel='Basic ComboBox example'
-      autoComplete='on'
-      options={ testOptions }
-      disabled
-    />
-  ));
+const ScreenerDecorator = story => (
+  <Screener
+    steps={new Screener.Steps()
+      .snapshot('default', { cropTo: '.testWrapper' })
+      .hover('.ms-ComboBox-Input')
+      .snapshot('hover', { cropTo: '.testWrapper' })
+      .click('.ms-Button-flexContainer')
+      .hover('.ms-Button-flexContainer')
+      .snapshot('click', { cropTo: '.ms-Layer' }) // Dropdown extends beyond testWrapper
+      .end()
+    }
+  >
+    {story()}
+  </Screener>
+);
+
+const allStories = [
+  {
+    decorators: [FabricDecoratorTallFixedWdith, ScreenerDecorator],
+    stories: {
+      'Root': () => (
+        <ComboBox
+          defaultSelectedKey='A'
+          label='Default with dividers'
+          ariaLabel='Basic ComboBox example'
+          autoComplete='on'
+          options={testOptions}
+        />
+      ),
+      'Styled': () => (
+        <ComboBox
+          defaultSelectedKey='A'
+          label='Styled with dividers'
+          ariaLabel='Basic ComboBox example'
+          autoComplete='on'
+          options={testOptions}
+          onRenderOption={onRenderFontOption}
+        />
+      ),
+      'Disabled': () => (
+        <ComboBox
+          defaultSelectedKey='A'
+          label='Disabled'
+          ariaLabel='Basic ComboBox example'
+          autoComplete='on'
+          options={testOptions}
+          disabled
+        />
+      )
+    }
+  }
+];
+
+runStories('ComboBox', allStories);

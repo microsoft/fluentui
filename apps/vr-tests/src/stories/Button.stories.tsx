@@ -1,8 +1,7 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
-import { storiesOf } from '@storybook/react';
-import { FabricDecorator, FabricDecoratorTall } from '../utilities';
+import { FabricDecorator, FabricDecoratorTall, runStories } from '../utilities';
 import { DefaultButton, ActionButton, CompoundButton, IButtonProps, CommandBarButton } from 'office-ui-fabric-react';
 
 const baseProps: IButtonProps = {
@@ -37,153 +36,203 @@ const commandProps: IButtonProps = {
   }
 };
 
-storiesOf('Button Default', module)
-  .addDecorator(FabricDecorator)
-  .addDecorator(story => (
-    <Screener
-      steps={new Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('.ms-Button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('.ms-Button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
-        .end()}
-    >
-      {story()}
-    </Screener>
-  ))
-  .add('Root', () => <DefaultButton {...baseProps} />)
-  .add('Disabled', () => <DefaultButton {...baseProps} disabled={true} />)
-  .add('Checked', () => <DefaultButton {...baseProps} checked={true} />)
-  .add('Primary', () => <DefaultButton {...baseProps} primary={true} />)
-  .add('Primary Disabled', () => <DefaultButton {...baseProps} primary={true} disabled={true} />)
-  .add('Primary Checked', () => <DefaultButton {...baseProps} primary={true} checked={true} />);
+const DefaultScreenerDecorator = story => (
+  <Screener
+    steps={new Steps()
+      .snapshot('default', { cropTo: '.testWrapper' })
+      .hover('.ms-Button')
+      .snapshot('hover', { cropTo: '.testWrapper' })
+      .mouseDown('.ms-Button')
+      .snapshot('pressed', { cropTo: '.testWrapper' })
+      .end()}
+  >
+    {story()}
+  </Screener>
+);
 
-storiesOf('Button Action', module)
-  .addDecorator(FabricDecorator)
-  .addDecorator(story => (
-    <Screener
-      steps={new Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('.ms-Button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('.ms-Button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
-        .end()}
-    >
-      {story()}
-    </Screener>
-  ))
-  .add('Root', () => <ActionButton {...baseProps} />)
-  .add('Disabled', () => <ActionButton {...baseProps} disabled={true} />)
-  .add('Checked', () => <ActionButton {...baseProps} checked={true} />);
+const defaultStories = [
+  {
+    decorators: [FabricDecorator, DefaultScreenerDecorator],
+    stories: {
+      'Root': () => <DefaultButton {...baseProps} />,
+      'Disabled': () => <DefaultButton {...baseProps} disabled={true} />,
+      'Checked': () => <DefaultButton {...baseProps} checked={true} />,
+      'Primary': () => <DefaultButton {...baseProps} primary={true} />,
+      'Primary Disabled': () => <DefaultButton {...baseProps} primary={true} disabled={true} />,
+      'Primary Checked': () => <DefaultButton {...baseProps} primary={true} checked={true} />
+    }
+  }
+];
 
-storiesOf('Button Compound', module)
-  .addDecorator(FabricDecorator)
-  .addDecorator(story => (
-    <Screener
-      steps={new Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('.ms-Button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('.ms-Button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
-        .end()}
-    >
-      {story()}
-    </Screener>
-  ))
-  .add('Root', () => <CompoundButton {...baseProps} />)
-  .add('Disabled', () => <CompoundButton {...baseProps} disabled={true} />)
-  .add('Checked', () => <CompoundButton {...baseProps} checked={true} />)
-  .add('Primary', () => <CompoundButton {...baseProps} primary={true} />)
-  .add('Primary Disabled', () => <CompoundButton {...baseProps} primary={true} disabled={true} />)
-  .add('Primary Checked', () => <CompoundButton {...baseProps} primary={true} checked={true} />);
+runStories('Button Default', defaultStories);
 
-storiesOf('Button Command', module)
+const ActionScreenerDecorator = story => (
+  <Screener
+    steps={new Steps()
+      .snapshot('default', { cropTo: '.testWrapper' })
+      .hover('.ms-Button')
+      .snapshot('hover', { cropTo: '.testWrapper' })
+      .mouseDown('.ms-Button')
+      .snapshot('pressed', { cropTo: '.testWrapper' })
+      .end()}
+  >
+    {story()}
+  </Screener>
+);
+
+const actionStories = [
+  {
+    decorators: [FabricDecorator, ActionScreenerDecorator],
+    stories: {
+      'Root': () => <ActionButton {...baseProps} />,
+      'Disabled': () => <ActionButton {...baseProps} disabled={true} />,
+      'Checked': () => <ActionButton {...baseProps} checked={true} />
+    }
+  }
+];
+
+runStories('Button Action', actionStories);
+
+const CompoundScreenerDecorator = story => (
+  <Screener
+    steps={new Steps()
+      .snapshot('default', { cropTo: '.testWrapper' })
+      .hover('.ms-Button')
+      .snapshot('hover', { cropTo: '.testWrapper' })
+      .mouseDown('.ms-Button')
+      .snapshot('pressed', { cropTo: '.testWrapper' })
+      .end()}
+  >
+    {story()}
+  </Screener>
+);
+
+const compoundStories = [
+  {
+    decorators: [FabricDecorator, CompoundScreenerDecorator],
+    stories: {
+      'Root': () => <CompoundButton {...baseProps} />,
+      'Disabled': () => <CompoundButton {...baseProps} disabled={true} />,
+      'Checked': () => <CompoundButton {...baseProps} checked={true} />,
+      'Primary': () => <CompoundButton {...baseProps} primary={true} />,
+      'Primary Disabled': () => <CompoundButton {...baseProps} primary={true} disabled={true} />,
+      'Primary Checked': () => <CompoundButton {...baseProps} primary={true} checked={true} />
+    }
+  }
+];
+
+runStories('Button Compound', compoundStories);
+
+const CommandDecorator = story => (
   // tslint:disable-next-line:jsx-ban-props
-  .addDecorator(story => <div style={{ display: 'flex', alignItems: 'stretch', height: '40px' }}>{story()}</div>)
-  .addDecorator(FabricDecoratorTall)
-  .addDecorator(story => (
-    <Screener
-      steps={new Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('.ms-Button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('.ms-Button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
-        .click('.ms-Button')
-        .hover('.ms-Button')
-        .snapshot('open', { cropTo: '.testWrapper' })
-        .end()}
-    >
-      {story()}
-    </Screener>
-  ))
-  .add('Root', () => <CommandBarButton {...commandProps} />)
-  .add('Disabled', () => <CommandBarButton {...commandProps} disabled={true} />)
-  .add('Checked', () => <CommandBarButton {...commandProps} checked={true} />);
+  <div style={{ display: 'flex', alignItems: 'stretch', height: '40px' }}>{story()}</div>
+);
 
-storiesOf('Button Split', module)
-  .addDecorator(FabricDecoratorTall)
-  .addDecorator(story => (
-    <Screener
-      steps={new Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('.ms-Button:nth-child(1)')
-        .snapshot('hover main', { cropTo: '.testWrapper' })
-        .hover('.ms-Button:nth-child(2)')
-        .snapshot('hover split', { cropTo: '.testWrapper' })
-        .mouseDown('.ms-Button:nth-child(1)')
-        .snapshot('pressed main', { cropTo: '.testWrapper' })
-        .hover('.ms-Button') // reset mouseDown
-        .mouseUp('.ms-Button:nth-child(2)')
-        .mouseDown('.ms-Button:nth-child(2)')
-        .snapshot('pressed split', { cropTo: '.testWrapper' })
-        .click('.ms-Button:nth-child(2)')
-        .hover('.ms-Button') // move mouse to make click work
-        .snapshot('open', { cropTo: '.testWrapper' })
-        .end()}
-    >
-      {story()}
-    </Screener>
-  ))
-  .add('Root', () => <DefaultButton {...commandProps} split={true} />)
-  .add('Disabled', () => <DefaultButton {...commandProps} disabled={true} split={true} />)
-  .add('Checked', () => <DefaultButton {...commandProps} checked={true} split={true} />)
-  .add('Primary', () => <DefaultButton {...commandProps} primary={true} split={true} />)
-  .add('Primary Disabled', () => <DefaultButton {...commandProps} primary={true} disabled={true} split={true} />)
-  .add('Primary Checked', () => <DefaultButton {...commandProps} primary={true} checked={true} split={true} />)
-  .add('Command Split', () => <CommandBarButton {...commandProps} split={true} />);
+const CommandScreenerDecorator = story => (
+  <Screener
+    steps={new Steps()
+      .snapshot('default', { cropTo: '.testWrapper' })
+      .hover('.ms-Button')
+      .snapshot('hover', { cropTo: '.testWrapper' })
+      .mouseDown('.ms-Button')
+      .snapshot('pressed', { cropTo: '.testWrapper' })
+      .click('.ms-Button')
+      .hover('.ms-Button')
+      .snapshot('open', { cropTo: '.testWrapper' })
+      .end()}
+  >
+    {story()}
+  </Screener>
+);
 
-storiesOf('Button Special Scenarios', module)
-  .addDecorator(FabricDecorator)
-  .addDecorator(story => (
-    <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
-  ))
+const commandStories = [
+  {
+    decorators: [CommandDecorator, FabricDecoratorTall, CommandScreenerDecorator],
+    stories: {
+      'Root': () => <CommandBarButton {...commandProps} />,
+      'Disabled': () => <CommandBarButton {...commandProps} disabled={true} />,
+      'Checked': () => <CommandBarButton {...commandProps} checked={true} />
+    }
+  }
+];
 
-  .add('primary with placeholder', () => (
-    <div>
-      <DefaultButton {...baseProps} iconProps={{ iconName: '' }} primary={true} />
-      <br />
-      <DefaultButton {...baseProps} iconProps={{ iconName: 'Add' }} primary={true} />
-    </div>
-  ))
-  .add('no flex shrink', () => (
-    // tslint:disable-next-line:jsx-ban-props
-    <div style={{ width: '300px' }}>
-      <DefaultButton
-        {...baseProps}
-        iconProps={{ iconName: 'Add' }}
-        menuIconProps={{}}
-        styles={{ root: { width: '100%' } }}
-      />
-      <DefaultButton
-        {...baseProps}
-        text="This is a much longer string of text in a constrained space"
-        iconProps={{ iconName: 'Add' }}
-        menuIconProps={{}}
-        styles={{ root: { width: '100%' } }}
-      />
-    </div>
-  ));
+runStories('Button Command', commandStories);
+
+const SplitScreenerDecorator = story => (
+  <Screener
+    steps={new Steps()
+      .snapshot('default', { cropTo: '.testWrapper' })
+      .hover('.ms-Button:nth-child(1)')
+      .snapshot('hover main', { cropTo: '.testWrapper' })
+      .hover('.ms-Button:nth-child(2)')
+      .snapshot('hover split', { cropTo: '.testWrapper' })
+      .mouseDown('.ms-Button:nth-child(1)')
+      .snapshot('pressed main', { cropTo: '.testWrapper' })
+      .hover('.ms-Button') // reset mouseDown
+      .mouseUp('.ms-Button:nth-child(2)')
+      .mouseDown('.ms-Button:nth-child(2)')
+      .snapshot('pressed split', { cropTo: '.testWrapper' })
+      .click('.ms-Button:nth-child(2)')
+      .hover('.ms-Button') // move mouse to make click work
+      .snapshot('open', { cropTo: '.testWrapper' })
+      .end()}
+  >
+    {story()}
+  </Screener>
+);
+
+const splitStories = [
+  {
+    decorators: [FabricDecoratorTall, SplitScreenerDecorator],
+    stories: {
+      'Root': () => <DefaultButton {...commandProps} split={true} />,
+      'Disabled': () => <DefaultButton {...commandProps} disabled={true} split={true} />,
+      'Checked': () => <DefaultButton {...commandProps} checked={true} split={true} />,
+      'Primary': () => <DefaultButton {...commandProps} primary={true} split={true} />,
+      'Primary Disabled': () => <DefaultButton {...commandProps} primary={true} disabled={true} split={true} />,
+      'Primary Checked': () => <DefaultButton {...commandProps} primary={true} checked={true} split={true} />,
+      'Command Split': () => <CommandBarButton {...commandProps} split={true} />
+    }
+  }
+];
+
+runStories('Button Split', splitStories);
+
+const SpecialScreenerDecorator = story => (
+  <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
+);
+
+const specialStories = [
+  {
+    decorators: [FabricDecorator, SpecialScreenerDecorator],
+    stories: {
+      'primary with placeholder': () => (
+        <div>
+          <DefaultButton {...baseProps} iconProps={{ iconName: '' }} primary={true} />
+          <br />
+          <DefaultButton {...baseProps} iconProps={{ iconName: 'Add' }} primary={true} />
+        </div>
+      ),
+      'no flex shrink': () => (
+        // tslint:disable-next-line:jsx-ban-props
+        <div style={{ width: '300px' }}>
+          <DefaultButton
+            {...baseProps}
+            iconProps={{ iconName: 'Add' }}
+            menuIconProps={{}}
+            styles={{ root: { width: '100%' } }}
+          />
+          <DefaultButton
+            {...baseProps}
+            text="This is a much longer string of text in a constrained space"
+            iconProps={{ iconName: 'Add' }}
+            menuIconProps={{}}
+            styles={{ root: { width: '100%' } }}
+          />
+        </div>
+      )
+    }
+  }
+];
+
+runStories('Button Special Scenarios', specialStories);
