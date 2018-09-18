@@ -79,10 +79,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         //   }
         // }
       }
-    ],
-    navItem: {
-      position: 'relative'
-    }
+    ]
   };
 };
 

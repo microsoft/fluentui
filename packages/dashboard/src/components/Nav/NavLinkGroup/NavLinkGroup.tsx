@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { INavLinkGroupProps, INavLinkGroupStates, INavLinkGroupStyleProps, INavLinkGroupStyles } from '../Nav.types';
+import { INavLink, INavLinkGroupProps, INavLinkGroupStates, INavLinkGroupStyleProps, INavLinkGroupStyles } from '../Nav.types';
 import { NavLink } from '../NavLink/NavLink';
-import { getStyles } from '@uifabric/dashboard/lib/components/Nav/Nav.styles';
+import { getStyles } from './NavLinkGroup.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { AnimationClassNames, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+// import { AnimationClassNames, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 const getClassNames = classNamesFunction<INavLinkGroupStyleProps, INavLinkGroupStyles>();
-// const classNames = getClassNames(getStyles);
+const classNames = getClassNames(getStyles);
 
 class NavigationLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGroupStates> {
   constructor(props: INavLinkGroupProps) {

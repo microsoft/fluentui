@@ -214,7 +214,6 @@ export interface INavStyles {
    */
   nav: IStyle;
   navCollapsed: IStyle;
-  navItem: IStyle;
 }
 
 export interface INavGroupStyles {
@@ -227,6 +226,7 @@ export interface INavGroupStyles {
    * Style set for the group name in nav group separator
    */
   navGroupTitle: IStyle;
+  navItem: IStyle;
 }
 
 export interface INavLinkGroupStyles {
