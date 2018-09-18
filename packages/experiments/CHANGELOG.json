@@ -2,6 +2,28 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.31.0",
+      "tag": "@uifabric/experiments_v6.31.0",
+      "date": "Tue, 18 Sep 2018 12:26:03 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Stack: add wrapping for HorizontalStack, support themed gap and padding, support native HTML properties, refactor StackItem so that its child does not require a class",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "acab328b7c244a50ff2369c577b15008f1a75c1a"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `>=6.1.0 <7.0.0` to `>=6.1.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.70.0 <7.0.0` to `>=6.71.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.30.2",
       "tag": "@uifabric/experiments_v6.30.2",
       "date": "Mon, 17 Sep 2018 12:27:05 GMT",

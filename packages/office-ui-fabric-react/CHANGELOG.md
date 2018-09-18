@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 17 Sep 2018 12:27:05 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Sep 2018 12:26:03 GMT and should not be manually modified.
+
+## 6.71.0
+Tue, 18 Sep 2018 12:26:03 GMT
+
+### Minor changes
+
+- Panel: Extend props to HTMLAttributes
 
 ## 6.70.0
 Mon, 17 Sep 2018 12:27:05 GMT
