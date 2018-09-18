@@ -21,9 +21,14 @@ if (!generateOnly) {
 
   // Do a dry-run on all packages
   run('rush publish -a');
-  status = run('git status -s');
-  modified = status.split(/\n/g).map(line => '"' + line.split(/\s/)[1] + '"');
+  status = run('git status --porcelain=1');
+  modified = status
+    .split(/\n/g)
+    .map(line => line && '"' + line.trim().split(/\s/)[1] + '"')
+    .filter(item => item);
 }
+
+process.exit();
 
 const packageJsons = glob.sync('+(packages|apps)/*/package.json');
 packageJsons.forEach(packageJsonPath => {
