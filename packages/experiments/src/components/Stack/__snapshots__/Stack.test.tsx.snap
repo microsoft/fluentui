@@ -32,6 +32,8 @@ exports[`Stack accepts custom className on child items 1`] = `
         {
           background: red;
           flex-shrink: 0;
+          height: auto;
+          width: auto;
         }
   >
     Item 1
@@ -79,6 +81,8 @@ exports[`Stack renders Stack with StackItems correctly 1`] = `
         ms-StackItem
         {
           flex-shrink: 0;
+          height: auto;
+          width: auto;
         }
   >
     Item 1
@@ -88,6 +92,8 @@ exports[`Stack renders Stack with StackItems correctly 1`] = `
         ms-StackItem
         {
           flex-shrink: 0;
+          height: auto;
+          width: auto;
         }
   >
     Item 2
@@ -126,6 +132,8 @@ exports[`Stack renders Stack with a gap correctly 1`] = `
         ms-StackItem
         {
           flex-shrink: 0;
+          height: auto;
+          width: auto;
         }
   >
     Item 1
@@ -135,6 +143,8 @@ exports[`Stack renders Stack with a gap correctly 1`] = `
         ms-StackItem
         {
           flex-shrink: 0;
+          height: auto;
+          width: auto;
         }
   >
     Item 2
@@ -289,6 +299,8 @@ exports[`Stack renders Stack with shrinking StackItems correctly 1`] = `
         ms-StackItem
         {
           flex-shrink: 1;
+          height: auto;
+          width: auto;
         }
   >
     Item 1
@@ -298,6 +310,8 @@ exports[`Stack renders Stack with shrinking StackItems correctly 1`] = `
         ms-StackItem
         {
           flex-shrink: 1;
+          height: auto;
+          width: auto;
         }
   >
     Item 2
