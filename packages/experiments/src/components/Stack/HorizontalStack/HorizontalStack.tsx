@@ -8,26 +8,57 @@ import { IHorizontalStackProps, IHorizontalStackStyles } from './HorizontalStack
 import { styles } from './HorizontalStack.styles';
 
 const view = (props: IViewComponentProps<IHorizontalStackProps, IHorizontalStackStyles>) => {
-  const { horizontalAlign, verticalAlign, classNames, children } = props;
+  const {
+    horizontalAlign,
+    verticalAlign,
+    gap,
+    verticalGap,
+    classNames,
+    children,
+    styles: customStyles,
+    ...rest
+  } = props;
+
+  const vertGap = verticalGap !== undefined ? verticalGap : gap;
+
+  if (props.wrap) {
+    return (
+      <div className={classNames.root}>
+        <Stack
+          {...rest}
+          wrap
+          horizontal
+          verticalAlignment={getVerticalAlignment(verticalAlign)}
+          horizontalAlignment={getHorizontalAlignment(horizontalAlign)}
+          className={classNames.inner}
+          horizontalGap={gap}
+          verticalGap={vertGap}
+        >
+          {children}
+        </Stack>
+      </div>
+    );
+  }
 
   return (
     <Stack
-      {...props}
+      {...rest}
       horizontal
       verticalAlignment={getVerticalAlignment(verticalAlign)}
       horizontalAlignment={getHorizontalAlignment(horizontalAlign)}
       className={classNames.root}
+      horizontalGap={gap}
     >
       {children}
     </Stack>
   );
 };
 
-const StackStatics = {
+const HorizontalStackStatics = {
   Item: StackItem,
   defaultProps: {}
 };
-type IHorizontalStackStatics = typeof StackStatics;
+type IHorizontalStackStatics = typeof HorizontalStackStatics;
 
 export const HorizontalStack: React.StatelessComponent<IHorizontalStackProps> & {
   Item: React.StatelessComponent<IStackItemProps>;
@@ -35,7 +66,7 @@ export const HorizontalStack: React.StatelessComponent<IHorizontalStackProps> & 
   displayName: 'HorizontalStack',
   styles,
   view,
-  statics: StackStatics
+  statics: HorizontalStackStatics
 });
 
 export default HorizontalStack;

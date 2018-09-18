@@ -2,6 +2,38 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.25.2",
+      "tag": "@uifabric/dashboard_v0.25.2",
+      "date": "Mon, 17 Sep 2018 12:27:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix leftNav styles per PM feedback",
+            "author": "exchangeadmin <yuz@microsoft.com>",
+            "commit": "e49c7543b6bdc409a461375ff540c1bbb99b30c2"
+          },
+          {
+            "comment": "revert the change for expand behavior",
+            "author": "exchangeadmin <yuz@microsoft.com>",
+            "commit": "e49c7543b6bdc409a461375ff540c1bbb99b30c2"
+          },
+          {
+            "comment": "fix the issue where user click on show more link in floating nav",
+            "author": "exchangeadmin <yuz@microsoft.com>",
+            "commit": "e49c7543b6bdc409a461375ff540c1bbb99b30c2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.30.1 <7.0.0` to `>=6.30.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.69.0 <7.0.0` to `>=6.70.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.25.1",
       "tag": "@uifabric/dashboard_v0.25.1",
       "date": "Fri, 14 Sep 2018 19:19:00 GMT",

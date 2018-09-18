@@ -1,6 +1,13 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Mon, 10 Sep 2018 10:24:57 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Sep 2018 12:27:05 GMT and should not be manually modified.
+
+## 0.5.2
+Mon, 17 Sep 2018 12:27:05 GMT
+
+### Patches
+
+- Refactor Foundation to remove code duplication, ease props typing, and make option parameter definition more consistent.
 
 ## 0.5.1
 Mon, 10 Sep 2018 10:24:57 GMT
