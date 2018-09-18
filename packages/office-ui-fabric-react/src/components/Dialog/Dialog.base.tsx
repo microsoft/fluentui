@@ -79,7 +79,9 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
       theme,
       title,
       topButtonsProps,
-      type
+      type,
+      minWidth,
+      maxWidth
     } = this.props;
 
     const modalProps = {
@@ -96,7 +98,9 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
       theme: theme!,
       className: className || modalProps!.className,
       containerClassName: containerClassName || modalProps!.containerClassName,
-      hidden
+      hidden,
+      dialogDefaultMinWidth: minWidth,
+      dialogDefaultMaxWidth: maxWidth
     });
 
     return (

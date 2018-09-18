@@ -6,8 +6,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
     Simple circle swatch color picker:
   </div>
   <div
-    aria-describedby={undefined}
-    aria-labelledby={undefined}
     className=
         ms-FocusZone
         ms-swatchColorPickerBodyContainer
@@ -24,8 +22,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
     role="presentation"
   >
     <table
-      aria-posinset={undefined}
-      aria-setsize={undefined}
       className=
 
           {
@@ -55,11 +51,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-label="green"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               aria-selected={false}
               className=
                   ms-Button
@@ -114,11 +106,16 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                    border: none;
+                    border-color: transparent;
                   }
                   .ms-Fabric--isFocusVisible &:focus $svg {
                     border-color: #dadada;
@@ -195,7 +192,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={0}
               data-is-focusable={true}
-              disabled={undefined}
               id="swatchColorPicker0-a-0"
               onClick={[Function]}
               onFocus={[Function]}
@@ -258,11 +254,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-label="orange"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               aria-selected={false}
               className=
                   ms-Button
@@ -317,11 +309,16 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                    border: none;
+                    border-color: transparent;
                   }
                   .ms-Fabric--isFocusVisible &:focus $svg {
                     border-color: #dadada;
@@ -398,7 +395,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={1}
               data-is-focusable={true}
-              disabled={undefined}
               id="swatchColorPicker0-b-1"
               onClick={[Function]}
               onFocus={[Function]}
@@ -461,11 +457,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-label="blue"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               aria-selected={false}
               className=
                   ms-Button
@@ -520,11 +512,16 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                    border: none;
+                    border-color: transparent;
                   }
                   .ms-Fabric--isFocusVisible &:focus $svg {
                     border-color: #dadada;
@@ -601,7 +598,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={2}
               data-is-focusable={true}
-              disabled={undefined}
               id="swatchColorPicker0-c-2"
               onClick={[Function]}
               onFocus={[Function]}
@@ -664,11 +660,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-label="red"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               aria-selected={false}
               className=
                   ms-Button
@@ -723,11 +715,16 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                    border: none;
+                    border-color: transparent;
                   }
                   .ms-Fabric--isFocusVisible &:focus $svg {
                     border-color: #dadada;
@@ -804,7 +801,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={3}
               data-is-focusable={true}
-              disabled={undefined}
               id="swatchColorPicker0-d-3"
               onClick={[Function]}
               onFocus={[Function]}
@@ -867,11 +863,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-label="white"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               aria-selected={false}
               className=
                   ms-Button
@@ -926,11 +918,16 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                    border: none;
+                    border-color: transparent;
                   }
                   .ms-Fabric--isFocusVisible &:focus $svg {
                     border-color: #dadada;
@@ -993,17 +990,12 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     width: 12px;
                   }
                   & $svg {
-                    border-color: #a6a6a6;
+                    border-color: transparent;
                     border-radius: 100%;
-                    border: 1px solid;
-                    margin-bottom: 4px;
-                    margin-left: 4px;
-                    margin-right: 4px;
-                    margin-top: 4px;
-                    padding-bottom: 0px;
-                    padding-left: 0px;
-                    padding-right: 0px;
-                    padding-top: 0px;
+                    border: 4px solid;
+                    box-shadow: inset 0 0 0 1px #a6a6a6;
+                    height: 12px;
+                    width: 12px;
                   }
                   &:hover {
                     color: #0078d4;
@@ -1017,7 +1009,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={4}
               data-is-focusable={true}
-              disabled={undefined}
               id="swatchColorPicker0-e-4"
               onClick={[Function]}
               onFocus={[Function]}
@@ -1076,8 +1067,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
     Simple square swatch color picker:
   </div>
   <div
-    aria-describedby={undefined}
-    aria-labelledby={undefined}
     className=
         ms-FocusZone
         ms-swatchColorPickerBodyContainer
@@ -1094,8 +1083,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
     role="presentation"
   >
     <table
-      aria-posinset={undefined}
-      aria-setsize={undefined}
       className=
 
           {
@@ -1125,11 +1112,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-label="green"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               aria-selected={false}
               className=
                   ms-Button
@@ -1184,11 +1167,16 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                    border: none;
+                    border-color: transparent;
                   }
                   .ms-Fabric--isFocusVisible &:focus $svg {
                     border-color: #dadada;
@@ -1262,7 +1250,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={0}
               data-is-focusable={true}
-              disabled={undefined}
               id="swatchColorPicker18-a-0"
               onClick={[Function]}
               onFocus={[Function]}
@@ -1324,11 +1311,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-label="orange"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               aria-selected={false}
               className=
                   ms-Button
@@ -1383,11 +1366,16 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                    border: none;
+                    border-color: transparent;
                   }
                   .ms-Fabric--isFocusVisible &:focus $svg {
                     border-color: #dadada;
@@ -1461,7 +1449,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={1}
               data-is-focusable={true}
-              disabled={undefined}
               id="swatchColorPicker18-b-1"
               onClick={[Function]}
               onFocus={[Function]}
@@ -1523,11 +1510,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-label="blue"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               aria-selected={false}
               className=
                   ms-Button
@@ -1582,11 +1565,16 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                    border: none;
+                    border-color: transparent;
                   }
                   .ms-Fabric--isFocusVisible &:focus $svg {
                     border-color: #dadada;
@@ -1660,7 +1648,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={2}
               data-is-focusable={true}
-              disabled={undefined}
               id="swatchColorPicker18-c-2"
               onClick={[Function]}
               onFocus={[Function]}
@@ -1722,11 +1709,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-label="red"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               aria-selected={false}
               className=
                   ms-Button
@@ -1781,11 +1764,16 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                    border: none;
+                    border-color: transparent;
                   }
                   .ms-Fabric--isFocusVisible &:focus $svg {
                     border-color: #dadada;
@@ -1859,7 +1847,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={3}
               data-is-focusable={true}
-              disabled={undefined}
               id="swatchColorPicker18-d-3"
               onClick={[Function]}
               onFocus={[Function]}
@@ -1921,11 +1908,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-label="white"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               aria-selected={false}
               className=
                   ms-Button
@@ -1980,11 +1963,16 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                    border: none;
+                    border-color: transparent;
                   }
                   .ms-Fabric--isFocusVisible &:focus $svg {
                     border-color: #dadada;
@@ -2047,16 +2035,11 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     width: 12px;
                   }
                   & $svg {
-                    border-color: #a6a6a6;
-                    border: 1px solid;
-                    margin-bottom: 4px;
-                    margin-left: 4px;
-                    margin-right: 4px;
-                    margin-top: 4px;
-                    padding-bottom: 0px;
-                    padding-left: 0px;
-                    padding-right: 0px;
-                    padding-top: 0px;
+                    border-color: transparent;
+                    border: 4px solid;
+                    box-shadow: inset 0 0 0 1px #a6a6a6;
+                    height: 12px;
+                    width: 12px;
                   }
                   &:hover {
                     color: #0078d4;
@@ -2070,7 +2053,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={4}
               data-is-focusable={true}
-              disabled={undefined}
               id="swatchColorPicker18-e-4"
               onClick={[Function]}
               onFocus={[Function]}
@@ -2138,8 +2120,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
     Sample Text
   </div>
   <div
-    aria-describedby={undefined}
-    aria-labelledby={undefined}
     className=
         ms-FocusZone
         ms-swatchColorPickerBodyContainer
@@ -2156,8 +2136,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
     role="presentation"
   >
     <table
-      aria-posinset={undefined}
-      aria-setsize={undefined}
       className=
 
           {
@@ -2187,11 +2165,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-label="green"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               aria-selected={false}
               className=
                   ms-Button
@@ -2246,11 +2220,16 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                    border: none;
+                    border-color: transparent;
                   }
                   .ms-Fabric--isFocusVisible &:focus $svg {
                     border-color: #dadada;
@@ -2327,7 +2306,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={0}
               data-is-focusable={true}
-              disabled={undefined}
               id="swatchColorPicker36-a-0"
               onClick={[Function]}
               onFocus={[Function]}
@@ -2390,11 +2368,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-label="orange"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               aria-selected={false}
               className=
                   ms-Button
@@ -2449,11 +2423,16 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                    border: none;
+                    border-color: transparent;
                   }
                   .ms-Fabric--isFocusVisible &:focus $svg {
                     border-color: #dadada;
@@ -2530,7 +2509,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={1}
               data-is-focusable={true}
-              disabled={undefined}
               id="swatchColorPicker36-b-1"
               onClick={[Function]}
               onFocus={[Function]}
@@ -2593,11 +2571,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-label="blue"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               aria-selected={false}
               className=
                   ms-Button
@@ -2652,11 +2626,16 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                    border: none;
+                    border-color: transparent;
                   }
                   .ms-Fabric--isFocusVisible &:focus $svg {
                     border-color: #dadada;
@@ -2733,7 +2712,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={2}
               data-is-focusable={true}
-              disabled={undefined}
               id="swatchColorPicker36-c-2"
               onClick={[Function]}
               onFocus={[Function]}
@@ -2796,11 +2774,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-label="red"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               aria-selected={false}
               className=
                   ms-Button
@@ -2855,11 +2829,16 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                    border: none;
+                    border-color: transparent;
                   }
                   .ms-Fabric--isFocusVisible &:focus $svg {
                     border-color: #dadada;
@@ -2936,7 +2915,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={3}
               data-is-focusable={true}
-              disabled={undefined}
               id="swatchColorPicker36-d-3"
               onClick={[Function]}
               onFocus={[Function]}
@@ -3003,11 +2981,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-label="green"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               aria-selected={false}
               className=
                   ms-Button
@@ -3062,11 +3036,16 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                    border: none;
+                    border-color: transparent;
                   }
                   .ms-Fabric--isFocusVisible &:focus $svg {
                     border-color: #dadada;
@@ -3143,7 +3122,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={4}
               data-is-focusable={true}
-              disabled={undefined}
               id="swatchColorPicker36-g-4"
               onClick={[Function]}
               onFocus={[Function]}
@@ -3206,11 +3184,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-label="orange"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               aria-selected={false}
               className=
                   ms-Button
@@ -3265,11 +3239,16 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                    border: none;
+                    border-color: transparent;
                   }
                   .ms-Fabric--isFocusVisible &:focus $svg {
                     border-color: #dadada;
@@ -3346,7 +3325,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={5}
               data-is-focusable={true}
-              disabled={undefined}
               id="swatchColorPicker36-h-5"
               onClick={[Function]}
               onFocus={[Function]}
@@ -3409,11 +3387,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-label="blue"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               aria-selected={false}
               className=
                   ms-Button
@@ -3468,11 +3442,16 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                    border: none;
+                    border-color: transparent;
                   }
                   .ms-Fabric--isFocusVisible &:focus $svg {
                     border-color: #dadada;
@@ -3549,7 +3528,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={6}
               data-is-focusable={true}
-              disabled={undefined}
               id="swatchColorPicker36-i-6"
               onClick={[Function]}
               onFocus={[Function]}
@@ -3612,11 +3590,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-label="red"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               aria-selected={false}
               className=
                   ms-Button
@@ -3671,11 +3645,16 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                    border: none;
+                    border-color: transparent;
                   }
                   .ms-Fabric--isFocusVisible &:focus $svg {
                     border-color: #dadada;
@@ -3752,7 +3731,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={7}
               data-is-focusable={true}
-              disabled={undefined}
               id="swatchColorPicker36-j-7"
               onClick={[Function]}
               onFocus={[Function]}
@@ -3819,11 +3797,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-label="black"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               aria-selected={false}
               className=
                   ms-Button
@@ -3878,11 +3852,16 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                    border: none;
+                    border-color: transparent;
                   }
                   .ms-Fabric--isFocusVisible &:focus $svg {
                     border-color: #dadada;
@@ -3959,7 +3938,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={8}
               data-is-focusable={true}
-              disabled={undefined}
               id="swatchColorPicker36-k-8"
               onClick={[Function]}
               onFocus={[Function]}
@@ -4022,11 +4000,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-label="grey"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               aria-selected={false}
               className=
                   ms-Button
@@ -4081,11 +4055,16 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                    border: none;
+                    border-color: transparent;
                   }
                   .ms-Fabric--isFocusVisible &:focus $svg {
                     border-color: #dadada;
@@ -4162,7 +4141,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={9}
               data-is-focusable={true}
-              disabled={undefined}
               id="swatchColorPicker36-l-9"
               onClick={[Function]}
               onFocus={[Function]}
@@ -4225,11 +4203,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-label="purple"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               aria-selected={false}
               className=
                   ms-Button
@@ -4284,11 +4258,16 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                    border: none;
+                    border-color: transparent;
                   }
                   .ms-Fabric--isFocusVisible &:focus $svg {
                     border-color: #dadada;
@@ -4365,7 +4344,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={10}
               data-is-focusable={true}
-              disabled={undefined}
               id="swatchColorPicker36-m-10"
               onClick={[Function]}
               onFocus={[Function]}
@@ -4428,11 +4406,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-label="yellow"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               aria-selected={false}
               className=
                   ms-Button
@@ -4487,11 +4461,16 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                    border: none;
+                    border-color: transparent;
                   }
                   .ms-Fabric--isFocusVisible &:focus $svg {
                     border-color: #dadada;
@@ -4568,7 +4547,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={11}
               data-is-focusable={true}
-              disabled={undefined}
               id="swatchColorPicker36-n-11"
               onClick={[Function]}
               onFocus={[Function]}
@@ -4627,8 +4605,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
     Simple disabled circle swatch color picker:
   </div>
   <div
-    aria-describedby={undefined}
-    aria-labelledby={undefined}
     className=
         ms-FocusZone
         ms-swatchColorPickerBodyContainer
@@ -4645,8 +4621,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
     role="presentation"
   >
     <table
-      aria-posinset={undefined}
-      aria-setsize={undefined}
       className=
 
           {
@@ -4676,11 +4650,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-describedby={undefined}
               aria-disabled={true}
               aria-label="green"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               aria-selected={false}
               className=
                   ms-Button
@@ -4739,13 +4710,18 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                     bordercolor: grayText;
                     color: grayText;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                    border: none;
+                    border-color: transparent;
                   }
                   .ms-Fabric--isFocusVisible &:focus $svg {
                     border-color: #dadada;
@@ -4881,11 +4857,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-describedby={undefined}
               aria-disabled={true}
               aria-label="orange"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               aria-selected={false}
               className=
                   ms-Button
@@ -4944,13 +4917,18 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                     bordercolor: grayText;
                     color: grayText;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                    border: none;
+                    border-color: transparent;
                   }
                   .ms-Fabric--isFocusVisible &:focus $svg {
                     border-color: #dadada;
@@ -5086,11 +5064,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-describedby={undefined}
               aria-disabled={true}
               aria-label="blue"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               aria-selected={false}
               className=
                   ms-Button
@@ -5149,13 +5124,18 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                     bordercolor: grayText;
                     color: grayText;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                    border: none;
+                    border-color: transparent;
                   }
                   .ms-Fabric--isFocusVisible &:focus $svg {
                     border-color: #dadada;
@@ -5291,11 +5271,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-describedby={undefined}
               aria-disabled={true}
               aria-label="red"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               aria-selected={false}
               className=
                   ms-Button
@@ -5354,13 +5331,18 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                     bordercolor: grayText;
                     color: grayText;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                    border: none;
+                    border-color: transparent;
                   }
                   .ms-Fabric--isFocusVisible &:focus $svg {
                     border-color: #dadada;
@@ -5496,11 +5478,8 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-describedby={undefined}
               aria-disabled={true}
               aria-label="white"
-              aria-labelledby={undefined}
-              aria-pressed={undefined}
               aria-selected={false}
               className=
                   ms-Button
@@ -5559,13 +5538,18 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                     bordercolor: grayText;
                     color: grayText;
                   }
                   .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                    border: none;
+                    border-color: transparent;
                   }
                   .ms-Fabric--isFocusVisible &:focus $svg {
                     border-color: #dadada;
@@ -5628,17 +5612,12 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     width: 12px;
                   }
                   & $svg {
-                    border-color: #a6a6a6;
+                    border-color: transparent;
                     border-radius: 100%;
-                    border: 1px solid;
-                    margin-bottom: 4px;
-                    margin-left: 4px;
-                    margin-right: 4px;
-                    margin-top: 4px;
-                    padding-bottom: 0px;
-                    padding-left: 0px;
-                    padding-right: 0px;
-                    padding-top: 0px;
+                    border: 4px solid;
+                    box-shadow: inset 0 0 0 1px #a6a6a6;
+                    height: 12px;
+                    width: 12px;
                   }
                   &:hover {
                     outline: 0px;
@@ -5721,8 +5700,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
       Sample Text
     </div>
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className=
           ms-FocusZone
           ms-swatchColorPickerBodyContainer
@@ -5739,8 +5716,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
       role="presentation"
     >
       <table
-        aria-posinset={undefined}
-        aria-setsize={undefined}
         className=
 
             {
@@ -5770,11 +5745,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               role="presentation"
             >
               <button
-                aria-describedby={undefined}
-                aria-disabled={undefined}
                 aria-label="green"
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 aria-selected={false}
                 className=
                     ms-Button
@@ -5829,11 +5800,16 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       right: -2px;
                       top: -2px;
                     }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
+                    }
                     @media screen and (-ms-high-contrast: active){& {
                       border: none;
                     }
                     .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                      border: none;
+                      border-color: transparent;
                     }
                     .ms-Fabric--isFocusVisible &:focus $svg {
                       border-color: #dadada;
@@ -5910,7 +5886,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     }
                 data-index={0}
                 data-is-focusable={true}
-                disabled={undefined}
                 id="swatchColorPicker93-a-0"
                 onClick={[Function]}
                 onFocus={[Function]}
@@ -5973,11 +5948,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               role="presentation"
             >
               <button
-                aria-describedby={undefined}
-                aria-disabled={undefined}
                 aria-label="orange"
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 aria-selected={false}
                 className=
                     ms-Button
@@ -6032,11 +6003,16 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       right: -2px;
                       top: -2px;
                     }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
+                    }
                     @media screen and (-ms-high-contrast: active){& {
                       border: none;
                     }
                     .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                      border: none;
+                      border-color: transparent;
                     }
                     .ms-Fabric--isFocusVisible &:focus $svg {
                       border-color: #dadada;
@@ -6113,7 +6089,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     }
                 data-index={1}
                 data-is-focusable={true}
-                disabled={undefined}
                 id="swatchColorPicker93-b-1"
                 onClick={[Function]}
                 onFocus={[Function]}
@@ -6176,11 +6151,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               role="presentation"
             >
               <button
-                aria-describedby={undefined}
-                aria-disabled={undefined}
                 aria-label="blue"
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 aria-selected={false}
                 className=
                     ms-Button
@@ -6235,11 +6206,16 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       right: -2px;
                       top: -2px;
                     }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
+                    }
                     @media screen and (-ms-high-contrast: active){& {
                       border: none;
                     }
                     .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                      border: none;
+                      border-color: transparent;
                     }
                     .ms-Fabric--isFocusVisible &:focus $svg {
                       border-color: #dadada;
@@ -6316,7 +6292,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     }
                 data-index={2}
                 data-is-focusable={true}
-                disabled={undefined}
                 id="swatchColorPicker93-c-2"
                 onClick={[Function]}
                 onFocus={[Function]}
@@ -6379,11 +6354,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               role="presentation"
             >
               <button
-                aria-describedby={undefined}
-                aria-disabled={undefined}
                 aria-label="red"
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 aria-selected={false}
                 className=
                     ms-Button
@@ -6438,11 +6409,16 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       right: -2px;
                       top: -2px;
                     }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
+                    }
                     @media screen and (-ms-high-contrast: active){& {
                       border: none;
                     }
                     .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                      border: none;
+                      border-color: transparent;
                     }
                     .ms-Fabric--isFocusVisible &:focus $svg {
                       border-color: #dadada;
@@ -6519,7 +6495,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     }
                 data-index={3}
                 data-is-focusable={true}
-                disabled={undefined}
                 id="swatchColorPicker93-d-3"
                 onClick={[Function]}
                 onFocus={[Function]}
@@ -6586,11 +6561,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               role="presentation"
             >
               <button
-                aria-describedby={undefined}
-                aria-disabled={undefined}
                 aria-label="green"
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 aria-selected={false}
                 className=
                     ms-Button
@@ -6645,11 +6616,16 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       right: -2px;
                       top: -2px;
                     }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
+                    }
                     @media screen and (-ms-high-contrast: active){& {
                       border: none;
                     }
                     .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                      border: none;
+                      border-color: transparent;
                     }
                     .ms-Fabric--isFocusVisible &:focus $svg {
                       border-color: #dadada;
@@ -6726,7 +6702,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     }
                 data-index={4}
                 data-is-focusable={true}
-                disabled={undefined}
                 id="swatchColorPicker93-g-4"
                 onClick={[Function]}
                 onFocus={[Function]}
@@ -6789,11 +6764,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               role="presentation"
             >
               <button
-                aria-describedby={undefined}
-                aria-disabled={undefined}
                 aria-label="orange"
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 aria-selected={false}
                 className=
                     ms-Button
@@ -6848,11 +6819,16 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       right: -2px;
                       top: -2px;
                     }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
+                    }
                     @media screen and (-ms-high-contrast: active){& {
                       border: none;
                     }
                     .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                      border: none;
+                      border-color: transparent;
                     }
                     .ms-Fabric--isFocusVisible &:focus $svg {
                       border-color: #dadada;
@@ -6929,7 +6905,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     }
                 data-index={5}
                 data-is-focusable={true}
-                disabled={undefined}
                 id="swatchColorPicker93-h-5"
                 onClick={[Function]}
                 onFocus={[Function]}
@@ -6992,11 +6967,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               role="presentation"
             >
               <button
-                aria-describedby={undefined}
-                aria-disabled={undefined}
                 aria-label="blue"
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 aria-selected={false}
                 className=
                     ms-Button
@@ -7051,11 +7022,16 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       right: -2px;
                       top: -2px;
                     }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
+                    }
                     @media screen and (-ms-high-contrast: active){& {
                       border: none;
                     }
                     .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                      border: none;
+                      border-color: transparent;
                     }
                     .ms-Fabric--isFocusVisible &:focus $svg {
                       border-color: #dadada;
@@ -7132,7 +7108,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     }
                 data-index={6}
                 data-is-focusable={true}
-                disabled={undefined}
                 id="swatchColorPicker93-i-6"
                 onClick={[Function]}
                 onFocus={[Function]}
@@ -7195,11 +7170,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               role="presentation"
             >
               <button
-                aria-describedby={undefined}
-                aria-disabled={undefined}
                 aria-label="red"
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 aria-selected={false}
                 className=
                     ms-Button
@@ -7254,11 +7225,16 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       right: -2px;
                       top: -2px;
                     }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
+                    }
                     @media screen and (-ms-high-contrast: active){& {
                       border: none;
                     }
                     .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                      border: none;
+                      border-color: transparent;
                     }
                     .ms-Fabric--isFocusVisible &:focus $svg {
                       border-color: #dadada;
@@ -7335,7 +7311,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     }
                 data-index={7}
                 data-is-focusable={true}
-                disabled={undefined}
                 id="swatchColorPicker93-j-7"
                 onClick={[Function]}
                 onFocus={[Function]}
@@ -7402,11 +7377,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               role="presentation"
             >
               <button
-                aria-describedby={undefined}
-                aria-disabled={undefined}
                 aria-label="black"
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 aria-selected={false}
                 className=
                     ms-Button
@@ -7461,11 +7432,16 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       right: -2px;
                       top: -2px;
                     }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
+                    }
                     @media screen and (-ms-high-contrast: active){& {
                       border: none;
                     }
                     .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                      border: none;
+                      border-color: transparent;
                     }
                     .ms-Fabric--isFocusVisible &:focus $svg {
                       border-color: #dadada;
@@ -7542,7 +7518,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     }
                 data-index={8}
                 data-is-focusable={true}
-                disabled={undefined}
                 id="swatchColorPicker93-k-8"
                 onClick={[Function]}
                 onFocus={[Function]}
@@ -7605,11 +7580,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               role="presentation"
             >
               <button
-                aria-describedby={undefined}
-                aria-disabled={undefined}
                 aria-label="grey"
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 aria-selected={false}
                 className=
                     ms-Button
@@ -7664,11 +7635,16 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       right: -2px;
                       top: -2px;
                     }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
+                    }
                     @media screen and (-ms-high-contrast: active){& {
                       border: none;
                     }
                     .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                      border: none;
+                      border-color: transparent;
                     }
                     .ms-Fabric--isFocusVisible &:focus $svg {
                       border-color: #dadada;
@@ -7745,7 +7721,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     }
                 data-index={9}
                 data-is-focusable={true}
-                disabled={undefined}
                 id="swatchColorPicker93-l-9"
                 onClick={[Function]}
                 onFocus={[Function]}
@@ -7808,11 +7783,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               role="presentation"
             >
               <button
-                aria-describedby={undefined}
-                aria-disabled={undefined}
                 aria-label="purple"
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 aria-selected={false}
                 className=
                     ms-Button
@@ -7867,11 +7838,16 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       right: -2px;
                       top: -2px;
                     }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
+                    }
                     @media screen and (-ms-high-contrast: active){& {
                       border: none;
                     }
                     .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                      border: none;
+                      border-color: transparent;
                     }
                     .ms-Fabric--isFocusVisible &:focus $svg {
                       border-color: #dadada;
@@ -7948,7 +7924,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     }
                 data-index={10}
                 data-is-focusable={true}
-                disabled={undefined}
                 id="swatchColorPicker93-m-10"
                 onClick={[Function]}
                 onFocus={[Function]}
@@ -8011,11 +7986,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               role="presentation"
             >
               <button
-                aria-describedby={undefined}
-                aria-disabled={undefined}
                 aria-label="yellow"
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 aria-selected={false}
                 className=
                     ms-Button
@@ -8070,11 +8041,16 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       right: -2px;
                       top: -2px;
                     }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
+                    }
                     @media screen and (-ms-high-contrast: active){& {
                       border: none;
                     }
                     .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                      border: none;
+                      border-color: transparent;
                     }
                     .ms-Fabric--isFocusVisible &:focus $svg {
                       border-color: #dadada;
@@ -8151,7 +8127,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     }
                 data-index={11}
                 data-is-focusable={true}
-                disabled={undefined}
                 id="swatchColorPicker93-n-11"
                 onClick={[Function]}
                 onFocus={[Function]}

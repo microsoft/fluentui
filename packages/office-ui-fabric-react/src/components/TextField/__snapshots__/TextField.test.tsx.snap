@@ -47,7 +47,6 @@ exports[`TextField renders TextField correctly 1`] = `
             word-wrap: break-word;
           }
       htmlFor="TextField0"
-      required={undefined}
     >
       Label
     </label>
@@ -81,9 +80,7 @@ exports[`TextField renders TextField correctly 1`] = `
           }
     >
       <input
-        aria-describedby={undefined}
         aria-invalid={false}
-        aria-label={undefined}
         className=
             ms-TextField-field
             testInputClassName
@@ -128,7 +125,6 @@ exports[`TextField renders TextField correctly 1`] = `
         onChange={[Function]}
         onFocus={[Function]}
         onInput={[Function]}
-        readOnly={undefined}
         type="text"
         value=""
       />
@@ -184,7 +180,6 @@ exports[`TextField renders TextField multiline resizable correctly 1`] = `
             word-wrap: break-word;
           }
       htmlFor="TextField0"
-      required={undefined}
     >
       Label
     </label>
@@ -219,9 +214,7 @@ exports[`TextField renders TextField multiline resizable correctly 1`] = `
           }
     >
       <textarea
-        aria-describedby={undefined}
         aria-invalid={false}
-        aria-label={undefined}
         className=
             ms-TextField-field
             {
@@ -268,7 +261,6 @@ exports[`TextField renders TextField multiline resizable correctly 1`] = `
         onChange={[Function]}
         onFocus={[Function]}
         onInput={[Function]}
-        readOnly={undefined}
         value=""
       />
     </div>
@@ -323,7 +315,6 @@ exports[`TextField renders TextField multiline unresizable correctly 1`] = `
             word-wrap: break-word;
           }
       htmlFor="TextField0"
-      required={undefined}
     >
       Label
     </label>
@@ -358,9 +349,7 @@ exports[`TextField renders TextField multiline unresizable correctly 1`] = `
           }
     >
       <textarea
-        aria-describedby={undefined}
         aria-invalid={false}
-        aria-label={undefined}
         className=
             ms-TextField-field
             ms-TextField--unresizable
@@ -409,7 +398,6 @@ exports[`TextField renders TextField multiline unresizable correctly 1`] = `
         onChange={[Function]}
         onFocus={[Function]}
         onInput={[Function]}
-        readOnly={undefined}
         value=""
       />
     </div>
@@ -491,7 +479,6 @@ exports[`TextField renders multiline TextField correctly with errorMessage 1`] =
             word-wrap: break-word;
           }
       htmlFor="TextField0"
-      required={undefined}
     >
       Label
     </label>
@@ -560,7 +547,6 @@ exports[`TextField renders multiline TextField correctly with errorMessage 1`] =
       <input
         aria-describedby="TextFieldDescription1"
         aria-invalid={false}
-        aria-label={undefined}
         className=
             ms-TextField-field
             {
@@ -605,7 +591,6 @@ exports[`TextField renders multiline TextField correctly with errorMessage 1`] =
         onChange={[Function]}
         onFocus={[Function]}
         onInput={[Function]}
-        readOnly={undefined}
         type="text"
         value=""
       />
@@ -721,7 +706,6 @@ exports[`TextField renders multiline TextField correctly with props affecting st
             word-wrap: break-word;
           }
       htmlFor="TextField0"
-      required={undefined}
     >
       Label
     </label>
@@ -790,7 +774,6 @@ exports[`TextField renders multiline TextField correctly with props affecting st
       <input
         aria-describedby="TextFieldDescription1"
         aria-invalid={false}
-        aria-label={undefined}
         className=
             ms-TextField-field
             {
@@ -835,7 +818,6 @@ exports[`TextField renders multiline TextField correctly with props affecting st
         onChange={[Function]}
         onFocus={[Function]}
         onInput={[Function]}
-        readOnly={undefined}
         type="text"
         value=""
       />
@@ -953,7 +935,6 @@ exports[`TextField should resepect user component and subcomponent styling 1`] =
             word-wrap: break-word;
           }
       htmlFor="TextField0"
-      required={undefined}
     >
       Label
     </label>
@@ -1022,7 +1003,6 @@ exports[`TextField should resepect user component and subcomponent styling 1`] =
       <input
         aria-describedby="TextFieldDescription1"
         aria-invalid={false}
-        aria-label={undefined}
         className=
             ms-TextField-field
             {
@@ -1067,7 +1047,6 @@ exports[`TextField should resepect user component and subcomponent styling 1`] =
         onChange={[Function]}
         onFocus={[Function]}
         onInput={[Function]}
-        readOnly={undefined}
         type="text"
         value=""
       />

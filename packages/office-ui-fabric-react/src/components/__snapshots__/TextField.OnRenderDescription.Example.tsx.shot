@@ -61,7 +61,6 @@ exports[`Component Examples renders TextField.OnRenderDescription.Example.tsx co
         <input
           aria-describedby="TextFieldDescription1"
           aria-invalid={false}
-          aria-label={undefined}
           className=
               ms-TextField-field
               {
@@ -105,7 +104,6 @@ exports[`Component Examples renders TextField.OnRenderDescription.Example.tsx co
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
-          readOnly={undefined}
           type="text"
           value=""
         />

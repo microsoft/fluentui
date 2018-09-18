@@ -62,6 +62,12 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker> {
   ariaLabel?: string;
 
   /**
+   * Whether or not the Textfield of the DatePicker is underlined.
+   * @default false
+   */
+  underlined?: boolean;
+
+  /**
    * Aria label for date picker popup for screen reader users.
    * @defaultvalue Calendar
    */
@@ -189,6 +195,12 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker> {
    * The initially highlighted date in the calendar picker
    */
   initialPickerDate?: Date;
+
+  /**
+   * Allows all elements to be focused, including disabled ones
+   * @defaultvalue false
+   */
+  allFocusable?: boolean;
 
   /**
    * Callback that runs after DatePicker's menu (Calendar) is closed

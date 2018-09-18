@@ -1,6 +1,41 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Mon, 27 Aug 2018 10:27:43 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Sep 2018 17:38:04 GMT and should not be manually modified.
+
+## 6.24.0
+Thu, 13 Sep 2018 17:38:04 GMT
+
+### Minor changes
+
+- Adds new semantic slots per design direction
+
+## 6.23.0
+Fri, 07 Sep 2018 16:29:48 GMT
+
+### Minor changes
+
+- Updates button slots with correct pre-fluent palette values and scss fallbacks
+
+## 6.22.0
+Thu, 06 Sep 2018 10:28:35 GMT
+
+### Minor changes
+
+- add buttonBackgroundDisabled semantic slot
+
+## 6.21.0
+Wed, 05 Sep 2018 10:29:25 GMT
+
+### Minor changes
+
+- Change bodyDivider value from neutralTertiaryAlt back to neutralLight
+
+## 6.20.0
+Thu, 30 Aug 2018 10:32:49 GMT
+
+### Minor changes
+
+- Adds a new function returning a style for an :after pseudo element to replace an ellipsis text-overflow with a fading out effect of last characters. Considers the fact that all colors are affected by the theme applied to the app.
 
 ## 6.19.0
 Mon, 27 Aug 2018 10:27:43 GMT

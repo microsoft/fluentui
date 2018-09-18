@@ -68,6 +68,11 @@ export interface IModalProps extends React.Props<ModalBase>, IWithResponsiveMode
   containerClassName?: string;
 
   /**
+   * Optional override for scrollable content class
+   */
+  scrollableContentClassName?: string;
+
+  /**
    * A callback function for when the Modal content is mounted on the overlay layer
    */
   onLayerDidMount?: () => void;
@@ -84,7 +89,7 @@ export interface IModalProps extends React.Props<ModalBase>, IWithResponsiveMode
 }
 
 export type IModalStyleProps = Required<Pick<IModalProps, 'theme'>> &
-  Pick<IModalProps, 'className' | 'containerClassName'> & {
+  Pick<IModalProps, 'className' | 'containerClassName' | 'scrollableContentClassName'> & {
     /** Modal open state. */
     isOpen?: boolean;
     /** Modal visible state. */
@@ -94,4 +99,5 @@ export type IModalStyleProps = Required<Pick<IModalProps, 'theme'>> &
 export interface IModalStyles {
   root: IStyle;
   main: IStyle;
+  scrollableContent: IStyle;
 }

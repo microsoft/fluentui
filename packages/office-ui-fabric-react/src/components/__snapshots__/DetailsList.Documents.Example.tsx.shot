@@ -49,8 +49,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
     >
       <button
         aria-checked={false}
-        aria-disabled={undefined}
-        aria-label={undefined}
         checked={false}
         className=
             ms-Toggle-background
@@ -99,7 +97,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               border-color: Highlight;
             }
         data-is-focusable={true}
-        disabled={undefined}
         id="Toggle0"
         onChange={[Function]}
         onClick={[Function]}
@@ -205,8 +202,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
     >
       <button
         aria-checked={false}
-        aria-disabled={undefined}
-        aria-label={undefined}
         checked={false}
         className=
             ms-Toggle-background
@@ -255,7 +250,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               border-color: Highlight;
             }
         data-is-focusable={true}
-        disabled={undefined}
         id="Toggle1"
         onChange={[Function]}
         onClick={[Function]}
@@ -362,7 +356,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               word-wrap: break-word;
             }
         htmlFor="TextField2"
-        required={undefined}
       >
         Filter by name:
       </label>
@@ -396,9 +389,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
             }
       >
         <input
-          aria-describedby={undefined}
           aria-invalid={false}
-          aria-label={undefined}
           className=
               ms-TextField-field
               {
@@ -442,7 +433,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
-          readOnly={undefined}
           type="text"
           value=""
         />

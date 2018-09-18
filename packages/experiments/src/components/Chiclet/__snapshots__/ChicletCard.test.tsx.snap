@@ -61,7 +61,6 @@ exports[`Dialog renders chiclet with title, icon, onClick, and url 1`] = `
         }
       >
         <img
-          alt={undefined}
           className=
               ms-Image-image
               ms-Image-image--portrait

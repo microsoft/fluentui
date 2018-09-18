@@ -11,7 +11,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
   }
 >
   <div
-    aria-label={undefined}
     className=
         ms-DetailsList
         is-horizontalConstrained
@@ -33,7 +32,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
   >
     <div
       aria-colcount={4}
-      aria-label={undefined}
       aria-readonly="true"
       aria-rowcount={6}
       role="grid"
@@ -43,15 +41,12 @@ exports[`DetailsRow renders details list row correctly 1`] = `
         role="presentation"
       >
         <div
-          aria-describedby={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
           className=
               ms-FocusZone
               ms-DetailsHeader
               {
                 background: #ffffff;
-                border-bottom: 1px solid #c8c8c8;
+                border-bottom: 1px solid #eaeaea;
                 box-sizing: content-box;
                 cursor: default;
                 display: inline-block;
@@ -85,7 +80,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
         >
           <div
             aria-colindex={1}
-            aria-hidden={undefined}
             aria-labelledby="header0-check"
             className=
                 ms-DetailsHeader-cell
@@ -141,9 +135,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
 
             >
               <div
-                aria-checked={undefined}
                 aria-describedby="header0-checkTooltip"
-                aria-label={undefined}
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
@@ -376,9 +368,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   }
             >
               <span
-                aria-describedby={undefined}
                 aria-haspopup={false}
-                aria-label={undefined}
                 aria-labelledby="header0-key-name "
                 className=
                     ms-DetailsHeader-cellTitle
@@ -414,7 +404,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 id="header0-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
-                role="button"
               >
                 <span
                   className=
@@ -512,9 +501,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   }
             >
               <span
-                aria-describedby={undefined}
                 aria-haspopup={false}
-                aria-label={undefined}
                 aria-labelledby="header0-name-name "
                 className=
                     ms-DetailsHeader-cellTitle
@@ -550,7 +537,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 id="header0-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
-                role="button"
               >
                 <span
                   className=
@@ -648,9 +634,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   }
             >
               <span
-                aria-describedby={undefined}
                 aria-haspopup={false}
-                aria-label={undefined}
                 aria-labelledby="header0-value-name "
                 className=
                     ms-DetailsHeader-cellTitle
@@ -686,7 +670,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 id="header0-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}
-                role="button"
               >
                 <span
                   className=
@@ -710,8 +693,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
         role="presentation"
       >
         <div
-          aria-describedby={undefined}
-          aria-labelledby={undefined}
           className=
               ms-FocusZone
               {
@@ -823,7 +804,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
   }
 >
   <div
-    aria-label={undefined}
     className=
         ms-DetailsList
         is-horizontalConstrained
@@ -845,7 +825,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
   >
     <div
       aria-colcount={4}
-      aria-label={undefined}
       aria-readonly="true"
       aria-rowcount={6}
       role="grid"
@@ -855,15 +834,12 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
         role="presentation"
       >
         <div
-          aria-describedby={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
           className=
               ms-FocusZone
               ms-DetailsHeader
               {
                 background: #ffffff;
-                border-bottom: 1px solid #c8c8c8;
+                border-bottom: 1px solid #eaeaea;
                 box-sizing: content-box;
                 cursor: default;
                 display: inline-block;
@@ -897,7 +873,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
         >
           <div
             aria-colindex={1}
-            aria-hidden={undefined}
             aria-labelledby="header9-check"
             className=
                 ms-DetailsHeader-cell
@@ -953,9 +928,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
 
             >
               <div
-                aria-checked={undefined}
                 aria-describedby="header9-checkTooltip"
-                aria-label={undefined}
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
@@ -1188,9 +1161,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   }
             >
               <span
-                aria-describedby={undefined}
                 aria-haspopup={false}
-                aria-label={undefined}
                 aria-labelledby="header9-key-name "
                 className=
                     ms-DetailsHeader-cellTitle
@@ -1226,7 +1197,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 id="header9-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
-                role="button"
               >
                 <span
                   className=
@@ -1324,9 +1294,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   }
             >
               <span
-                aria-describedby={undefined}
                 aria-haspopup={false}
-                aria-label={undefined}
                 aria-labelledby="header9-name-name "
                 className=
                     ms-DetailsHeader-cellTitle
@@ -1362,7 +1330,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 id="header9-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
-                role="button"
               >
                 <span
                   className=
@@ -1460,9 +1427,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   }
             >
               <span
-                aria-describedby={undefined}
                 aria-haspopup={false}
-                aria-label={undefined}
                 aria-labelledby="header9-value-name "
                 className=
                     ms-DetailsHeader-cellTitle
@@ -1498,7 +1463,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 id="header9-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}
-                role="button"
               >
                 <span
                   className=
@@ -1522,8 +1486,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
         role="presentation"
       >
         <div
-          aria-describedby={undefined}
-          aria-labelledby={undefined}
           className=
               ms-FocusZone
               {
@@ -1626,9 +1588,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
 
 exports[`DetailsRow renders details list row with checkbox visible always correctly 1`] = `
 <div
-  aria-describedby={undefined}
-  aria-label={undefined}
-  aria-labelledby={undefined}
   aria-rowindex={1}
   aria-selected={false}
   className=
@@ -1811,7 +1770,6 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
       data-automationid="DetailsRowCheck"
       data-selection-toggle={true}
       role="checkbox"
-      title={undefined}
     >
       <div
         className=
@@ -2159,7 +2117,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
   }
 >
   <div
-    aria-label={undefined}
     className=
         ms-DetailsList
         is-horizontalConstrained
@@ -2181,7 +2138,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
   >
     <div
       aria-colcount={4}
-      aria-label={undefined}
       aria-readonly="true"
       aria-rowcount={6}
       role="grid"
@@ -2191,15 +2147,12 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
         role="presentation"
       >
         <div
-          aria-describedby={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
           className=
               ms-FocusZone
               ms-DetailsHeader
               {
                 background: #ffffff;
-                border-bottom: 1px solid #c8c8c8;
+                border-bottom: 1px solid #eaeaea;
                 box-sizing: content-box;
                 cursor: default;
                 display: inline-block;
@@ -2233,7 +2186,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
         >
           <div
             aria-colindex={1}
-            aria-hidden={undefined}
             aria-labelledby="header3-check"
             className=
                 ms-DetailsHeader-cell
@@ -2289,9 +2241,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
 
             >
               <div
-                aria-checked={undefined}
                 aria-describedby="header3-checkTooltip"
-                aria-label={undefined}
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
@@ -2524,9 +2474,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   }
             >
               <span
-                aria-describedby={undefined}
                 aria-haspopup={false}
-                aria-label={undefined}
                 aria-labelledby="header3-key-name "
                 className=
                     ms-DetailsHeader-cellTitle
@@ -2562,7 +2510,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 id="header3-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
-                role="button"
               >
                 <span
                   className=
@@ -2660,9 +2607,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   }
             >
               <span
-                aria-describedby={undefined}
                 aria-haspopup={false}
-                aria-label={undefined}
                 aria-labelledby="header3-name-name "
                 className=
                     ms-DetailsHeader-cellTitle
@@ -2698,7 +2643,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 id="header3-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
-                role="button"
               >
                 <span
                   className=
@@ -2796,9 +2740,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   }
             >
               <span
-                aria-describedby={undefined}
                 aria-haspopup={false}
-                aria-label={undefined}
                 aria-labelledby="header3-value-name "
                 className=
                     ms-DetailsHeader-cellTitle
@@ -2834,7 +2776,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 id="header3-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}
-                role="button"
               >
                 <span
                   className=
@@ -2858,8 +2799,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
         role="presentation"
       >
         <div
-          aria-describedby={undefined}
-          aria-labelledby={undefined}
           className=
               ms-FocusZone
               {
@@ -2971,7 +2910,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
   }
 >
   <div
-    aria-label={undefined}
     className=
         ms-DetailsList
         is-horizontalConstrained
@@ -2993,7 +2931,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
   >
     <div
       aria-colcount={4}
-      aria-label={undefined}
       aria-readonly="true"
       aria-rowcount={6}
       role="grid"
@@ -3003,15 +2940,12 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
         role="presentation"
       >
         <div
-          aria-describedby={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
           className=
               ms-FocusZone
               ms-DetailsHeader
               {
                 background: #ffffff;
-                border-bottom: 1px solid #c8c8c8;
+                border-bottom: 1px solid #eaeaea;
                 box-sizing: content-box;
                 cursor: default;
                 display: inline-block;
@@ -3045,7 +2979,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
         >
           <div
             aria-colindex={1}
-            aria-hidden={undefined}
             aria-labelledby="header6-check"
             className=
                 ms-DetailsHeader-cell
@@ -3101,9 +3034,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
 
             >
               <div
-                aria-checked={undefined}
                 aria-describedby="header6-checkTooltip"
-                aria-label={undefined}
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
@@ -3336,9 +3267,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   }
             >
               <span
-                aria-describedby={undefined}
                 aria-haspopup={false}
-                aria-label={undefined}
                 aria-labelledby="header6-key-name "
                 className=
                     ms-DetailsHeader-cellTitle
@@ -3374,7 +3303,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 id="header6-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
-                role="button"
               >
                 <span
                   className=
@@ -3472,9 +3400,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   }
             >
               <span
-                aria-describedby={undefined}
                 aria-haspopup={false}
-                aria-label={undefined}
                 aria-labelledby="header6-name-name "
                 className=
                     ms-DetailsHeader-cellTitle
@@ -3510,7 +3436,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 id="header6-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
-                role="button"
               >
                 <span
                   className=
@@ -3608,9 +3533,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   }
             >
               <span
-                aria-describedby={undefined}
                 aria-haspopup={false}
-                aria-label={undefined}
                 aria-labelledby="header6-value-name "
                 className=
                     ms-DetailsHeader-cellTitle
@@ -3646,7 +3569,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 id="header6-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}
-                role="button"
               >
                 <span
                   className=
@@ -3670,8 +3592,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
         role="presentation"
       >
         <div
-          aria-describedby={undefined}
-          aria-labelledby={undefined}
           className=
               ms-FocusZone
               {

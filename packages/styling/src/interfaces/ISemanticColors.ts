@@ -202,6 +202,10 @@ export interface ISemanticColors extends ISemanticTextColors {
    * Background of a pressed standard button; i.e. currently being clicked by mouse
    */
   buttonBackgroundPressed: string;
+  /**
+   * Background of a disabled standard button
+   */
+  buttonBackgroundDisabled: string;
 
   /**
    * Border of a standard button
@@ -234,9 +238,14 @@ export interface ISemanticColors extends ISemanticTextColors {
   //// Menus, popups, etc
 
   /**
-   * The background of a hovered menu item.
+   * The background of a menu.
    */
-  menuItemBackgroundHovered: string;
+  menuBackground: string;
+
+  /**
+   * The divider between menu items.
+   */
+  menuDivider: string;
 
   /**
    * The default colors of icons in menus.
@@ -247,6 +256,26 @@ export interface ISemanticColors extends ISemanticTextColors {
    * The headers in menus that denote title of a section.
    */
   menuHeader: string;
+
+  /**
+   * The background of a hovered menu item.
+   */
+  menuItemBackgroundHovered: string;
+
+  /**
+   * The background of a pressed menu item.
+   */
+  menuItemBackgroundPressed: string;
+
+  /**
+   * The text color of a menu item.
+   */
+  menuItemText: string;
+
+  /**
+   * The text color of a hovered menu item.
+   */
+  menuItemTextHovered: string;
 
   //// Lists
 

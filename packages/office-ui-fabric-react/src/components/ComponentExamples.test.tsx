@@ -1,10 +1,14 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
+import * as glob from 'glob';
+import * as path from 'path';
 
 import { resetIds } from '../Utilities';
 
 import * as DataUtil from '../utilities/exampleData';
 import * as mergeStylesSerializer from '@uifabric/jest-serializer-merge-styles';
+
+const ReactDOM = require('react-dom');
 
 // Extend Jest Expect to allow us to map each component example to its own snapshot file.
 const snapshotsStateMap = new Map();
@@ -94,16 +98,20 @@ declare const global: any;
  *    what you expect before submitting a PR.
  */
 describe('Component Examples', () => {
-  const glob = require('glob');
-  const path = require('path');
   const realDate = Date;
   const realToLocaleString = global.Date.prototype.toLocaleString;
   const realToLocaleTimeString = global.Date.prototype.toLocaleTimeString;
   const realToLocaleDateString = global.Date.prototype.toLocaleDateString;
-  const constantDate = new Date(Date.UTC(2017, 13, 6, 4, 41, 20));
+  const constantDate = new Date(Date.UTC(2017, 0, 6, 4, 41, 20));
   const files: string[] = glob.sync(path.resolve(process.cwd(), 'src/components/**/examples/*Example*.tsx'));
+  const createPortal = ReactDOM.createPortal;
 
   beforeAll(() => {
+    // Mock createPortal to capture its component hierarchy in snapshot output.
+    ReactDOM.createPortal = jest.fn(element => {
+      return element;
+    });
+
     // Ensure test output is consistent across machine locale and time zone config.
     const mockToLocaleString = () => {
       return constantDate.toUTCString();
@@ -134,6 +142,9 @@ describe('Component Examples', () => {
 
   afterAll(() => {
     jest.restoreAllMocks();
+
+    ReactDOM.createPortal = createPortal;
+
     global.Date = realDate;
     global.Date.prototype.toLocaleString = realToLocaleString;
     global.Date.prototype.toLocaleTimeString = realToLocaleTimeString;

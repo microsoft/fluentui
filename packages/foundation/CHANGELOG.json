@@ -2,6 +2,48 @@
   "name": "@uifabric/foundation",
   "entries": [
     {
+      "version": "0.5.2",
+      "tag": "@uifabric/foundation_v0.5.2",
+      "date": "Mon, 17 Sep 2018 12:27:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Refactor Foundation to remove code duplication, ease props typing, and make option parameter definition more consistent.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "25776c70eddcecb59d4d622c8d22bfa43a8c2d2a"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.5.1",
+      "tag": "@uifabric/foundation_v0.5.1",
+      "date": "Mon, 10 Sep 2018 10:24:57 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "0ee9e8f082ee724ef61533aa40e4c2d232312ed0",
+            "comment": "Remove Object.assign usage to fix IE11 issues."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.5.0",
+      "tag": "@uifabric/foundation_v0.5.0",
+      "date": "Fri, 07 Sep 2018 22:04:50 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "888f598942757c715181a1441457f1c7d5611c73",
+            "comment": "Adjusting foundation usage, using new React 16 context."
+          }
+        ]
+      }
+    },
+    {
       "version": "0.4.1",
       "tag": "@uifabric/foundation_v0.4.1",
       "date": "Wed, 29 Aug 2018 10:28:42 GMT",

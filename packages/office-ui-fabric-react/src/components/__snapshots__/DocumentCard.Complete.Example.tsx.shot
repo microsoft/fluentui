@@ -7,12 +7,10 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
     onClick={[Function]}
     onKeyDown={[Function]}
     role="button"
-    style={undefined}
     tabIndex={0}
   >
     <div
       className="ms-DocumentCardPreview is-fileList undefined"
-      style={undefined}
     >
       <div>
         <ul
@@ -150,7 +148,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
       aria-label="Location, Marketing Documents"
       className="ms-DocumentCardLocation"
       href="http://microsoft.com"
-      onClick={undefined}
     >
       Marketing Documents
     </a>
@@ -193,7 +190,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     text-align: center;
                     width: 32px;
                   }
-              style={undefined}
             >
               <div
                 aria-hidden="true"
@@ -215,13 +211,11 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                       box-sizing: border-box;
                       color: WindowText;
                     }
-                style={undefined}
               >
                 <span>
                   JH
                 </span>
               </div>
-              
             </div>
           </div>
         </div>
@@ -252,7 +246,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     text-align: center;
                     width: 32px;
                   }
-              style={undefined}
             >
               <div
                 className=
@@ -297,7 +290,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                       }
                   onError={[Function]}
                   onLoad={[Function]}
-                  role={undefined}
                   src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
                 />
               </div>
@@ -327,11 +319,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
         className="ms-DocumentCardActions-action"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
           aria-label="share action"
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--icon
@@ -382,6 +370,11 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #004578;
               }
@@ -393,7 +386,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 color: #0078d4;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -448,11 +440,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
         className="ms-DocumentCardActions-action"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
           aria-label="pin action"
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--icon
@@ -503,6 +491,11 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #004578;
               }
@@ -514,7 +507,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 color: #0078d4;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -569,11 +561,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
         className="ms-DocumentCardActions-action"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
           aria-label="ringer action"
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--icon
@@ -624,6 +612,11 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #004578;
               }
@@ -635,7 +628,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 color: #0078d4;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -719,7 +711,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
-    style={undefined}
     tabIndex={0}
   >
     <div
@@ -820,7 +811,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     text-align: center;
                     width: 32px;
                   }
-              style={undefined}
             >
               <div
                 aria-hidden="true"
@@ -842,13 +832,11 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                       box-sizing: border-box;
                       color: WindowText;
                     }
-                style={undefined}
               >
                 <span>
                   JH
                 </span>
               </div>
-              
             </div>
           </div>
         </div>
@@ -879,7 +867,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     text-align: center;
                     width: 32px;
                   }
-              style={undefined}
             >
               <div
                 className=
@@ -924,7 +911,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                       }
                   onError={[Function]}
                   onLoad={[Function]}
-                  role={undefined}
                   src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
                 />
               </div>
@@ -954,7 +940,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
-    style={undefined}
     tabIndex={0}
   >
     <div
@@ -1055,7 +1040,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     text-align: center;
                     width: 32px;
                   }
-              style={undefined}
             >
               <div
                 aria-hidden="true"
@@ -1077,13 +1061,11 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                       box-sizing: border-box;
                       color: WindowText;
                     }
-                style={undefined}
               >
                 <span>
                   JH
                 </span>
               </div>
-              
             </div>
           </div>
         </div>
@@ -1114,7 +1096,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     text-align: center;
                     width: 32px;
                   }
-              style={undefined}
             >
               <div
                 className=
@@ -1159,7 +1140,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                       }
                   onError={[Function]}
                   onLoad={[Function]}
-                  role={undefined}
                   src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
                 />
               </div>
@@ -1189,7 +1169,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
-    style={undefined}
     tabIndex={0}
   >
     <div
@@ -1263,7 +1242,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     text-align: center;
                     width: 32px;
                   }
-              style={undefined}
             >
               <div
                 aria-hidden="true"
@@ -1285,13 +1263,11 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                       box-sizing: border-box;
                       color: WindowText;
                     }
-                style={undefined}
               >
                 <span>
                   JH
                 </span>
               </div>
-              
             </div>
           </div>
         </div>
@@ -1322,7 +1298,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     text-align: center;
                     width: 32px;
                   }
-              style={undefined}
             >
               <div
                 className=
@@ -1367,7 +1342,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                       }
                   onError={[Function]}
                   onLoad={[Function]}
-                  role={undefined}
                   src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
                 />
               </div>
@@ -1397,12 +1371,10 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
-    style={undefined}
     tabIndex={0}
   >
     <div
       className="ms-DocumentCardPreview"
-      style={undefined}
     >
       <div
         className="ms-DocumentCardPreview-iconContainer"
@@ -1477,7 +1449,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                       text-align: center;
                       width: 32px;
                     }
-                style={undefined}
               >
                 <div
                   className=
@@ -1522,7 +1493,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                         }
                     onError={[Function]}
                     onLoad={[Function]}
-                    role={undefined}
                     src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
                   />
                 </div>

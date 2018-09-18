@@ -53,6 +53,7 @@ class NavTogglerComponent extends React.Component<INavProps, INavState> {
               enableCustomization={this.props.enableCustomization}
               showMore={showMore}
               onShowMoreLinkClicked={this._onShowMoreLinkClicked}
+              onEditLeftNavClickedCallback={this.props.onEditLeftNavClickedCallback}
             />
           ) : (
             <Nav
@@ -62,6 +63,8 @@ class NavTogglerComponent extends React.Component<INavProps, INavState> {
               enableCustomization={this.props.enableCustomization}
               showMore={showMore}
               onShowMoreLinkClicked={this._onShowMoreLinkClicked}
+              onNavNodeExpandedCallback={this.props.onNavNodeExpandedCallback}
+              onEditLeftNavClickedCallback={this.props.onEditLeftNavClickedCallback}
             />
           )}
         </FocusZone>

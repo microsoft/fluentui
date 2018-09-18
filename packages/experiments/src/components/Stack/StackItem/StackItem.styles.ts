@@ -7,22 +7,21 @@ const alignMap: { [key: string]: string } = {
 };
 
 export const styles = (props: IThemedProps<IStackItemProps>): IStackItemStyles => {
-  const { grow, shrink, preventShrink, align, gap, horizontal, className } = props;
+  const { grow, shrink, preventShrink, align, className } = props;
 
   return {
     root: [
+      'ms-StackItem',
       grow && { flexGrow: grow === true ? 1 : grow },
-      (preventShrink || (!grow && !shrink)) && { flexShrink: 0 },
+      (preventShrink || (!grow && !shrink)) && {
+        flexShrink: 0
+      },
+      shrink &&
+        !preventShrink && {
+          flexShrink: 1
+        },
       align && {
         alignSelf: alignMap[align] || align
-      },
-      {
-        overflow: 'hidden',
-        whiteSpace: 'nowrap',
-        textOverflow: 'ellipsis'
-      },
-      !!gap && {
-        [horizontal ? 'marginLeft' : 'marginTop']: gap
       },
       className
     ]

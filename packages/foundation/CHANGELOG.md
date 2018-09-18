@@ -1,6 +1,27 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Wed, 29 Aug 2018 10:28:42 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Sep 2018 12:27:05 GMT and should not be manually modified.
+
+## 0.5.2
+Mon, 17 Sep 2018 12:27:05 GMT
+
+### Patches
+
+- Refactor Foundation to remove code duplication, ease props typing, and make option parameter definition more consistent.
+
+## 0.5.1
+Mon, 10 Sep 2018 10:24:57 GMT
+
+### Patches
+
+- Remove Object.assign usage to fix IE11 issues.
+
+## 0.5.0
+Fri, 07 Sep 2018 22:04:50 GMT
+
+### Minor changes
+
+- Adjusting foundation usage, using new React 16 context.
 
 ## 0.4.1
 Wed, 29 Aug 2018 10:28:42 GMT

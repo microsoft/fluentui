@@ -1,43 +1,109 @@
 import { IMultiCountStyles, IMultiCountStyleProps } from './MultiCount.types';
 
 export const getStyles = (props: IMultiCountStyleProps): IMultiCountStyles => {
+  const {
+    annotationTextColor,
+    annotationTextFontSize,
+    bodyTextFontSize,
+    bodyTextColor,
+    color,
+    currentText,
+    hoveredText,
+    href,
+    hideIcon
+  } = props;
+  const bodyTextSize = bodyTextFontSize ? bodyTextFontSize : '28px';
   return {
     root: {
       display: 'flex',
-      flexDirection: 'row',
-      flex: 1,
-      alignItems: 'baseline'
+      width: '100%',
+      flexWrap: 'wrap',
+      alignItems: 'baseline',
+      overflow: 'hidden',
+      opacity: hoveredText === '' ? '' : hoveredText === currentText ? '' : '0.1',
+      cursor: href ? 'pointer' : 'default',
+      fontSize: bodyTextSize,
+      height: '1.286em'
     },
     bodyText: {
+      flex: '1 1 50%',
+      overflow: 'hidden',
+      whiteSpace: 'nowrap',
+      textOverflow: 'ellipsis',
+      fontSize: bodyTextSize,
       fontFamily: 'Segoe UI',
       fontWeight: 600,
-      overflow: 'hidden',
-      textOverflow: 'ellipsis',
-      whiteSpace: 'nowrap',
-      fontSize: props.bodyTextFontSize ? props.bodyTextFontSize : '28px',
-      flex: 1,
-      color: props.bodyTextColor ? props.bodyTextColor : '#000000'
+      lineHeight: '1.286em',
+      marginLeft: '8px'
     },
     data: {
+      flex: '0 0 auto',
+      fontSize: bodyTextSize,
+      lineHeight: '1.286em',
       fontFamily: 'Segoe UI',
       fontWeight: 'bold',
-      color: props.color,
-      marginRight: '8px'
+      color: bodyTextColor ? bodyTextColor : color
     },
     annotation: {
-      display: 'inline-flex',
-      flex: 1
+      flex: '0 0 auto',
+      fontFamily: 'Segoe UI',
+      marginLeft: '16px',
+      width: '12px',
+      height: '12px'
     },
     annotationText: {
       marginLeft: '16px',
-      color: props.annotationTextColor ? props.annotationTextColor : '#000000',
-      fontSize: props.annotationTextFontSize ? props.annotationTextFontSize : '12px'
+      color: annotationTextColor ? annotationTextColor : '#000000',
+      fontSize: annotationTextFontSize ? annotationTextFontSize : '12px'
     },
     icon: {
+      flex: '0 0 auto',
+      marginLeft: '16px'
+    },
+    hoverCardText: {
+      display: 'flex',
+      flexDirection: 'row',
+      paddingLeft: '16px',
+      paddingBottom: '3px'
+    },
+    hoverCardData: {
+      fontFamily: 'Segoe UI',
+      fontWeight: 'bold',
+      fontSize: '28px',
+      lineHeight: '33px',
+      color: props.color,
+      paddingLeft: '16px',
+      paddingBottom: '8px'
+    },
+    hoverCardRoot: {
+      display: 'flex',
+      flexDirection: 'column',
+      marginRight: '16px'
+    },
+    hoverCardAnnotationText: {
+      fontFamily: 'Segoe UI'
+    },
+    hoverCardBodyText: {
+      marginRight: '16px',
+      fontFamily: 'Segoe UI'
+    },
+    hoverCardIcon: {
       width: '12px',
       height: '12px',
-      display: props.iconName === '' ? 'none' : '',
-      color: props.iconName === 'FlickUp' ? '#ED0000' : '#6BB700'
+      marginRight: '16px'
+    },
+    customMessage: {
+      fontSize: '10px',
+      lineHeight: '12px',
+      fontFamily: 'Segoe UI',
+      fontWeight: 600,
+      marginTop: '13px',
+      marginLeft: '16px',
+      marginBottom: '8px',
+      opacity: '0.6'
+    },
+    changeIcon: {
+      marginLeft: hideIcon ? '' : '16px'
     }
   };
 };
