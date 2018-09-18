@@ -2,11 +2,13 @@ import * as React from 'react';
 
 import { IDocPageProps } from '../../common/DocPage.types';
 import { HoverCardBasicExample } from './examples/HoverCard.Basic.Example';
+import { HoverCardBasicCardExample } from './examples/HoverCard.BasicCard.Example';
 import { HoverCardTargetExample } from './examples/HoverCard.Target.Example';
 import { HoverCardStatus } from './HoverCard.checklist';
 
 const HoverCardBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/HoverCard/examples/HoverCard.Basic.Example.tsx') as string;
 const HoverCardTargetExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/HoverCard/examples/HoverCard.Target.Example.tsx') as string;
+const HoverCardBasicCardExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/HoverCard/examples/HoverCard.BasicCard.Example.tsx') as string;
 
 export const HoverCardPageProps: IDocPageProps = {
   title: 'HoverCard',
@@ -15,14 +17,19 @@ export const HoverCardPageProps: IDocPageProps = {
   componentStatus: HoverCardStatus,
   examples: [
     {
-      title: 'Example 1: HoverCard wrapping an element',
+      title: 'Example 1: Expanding HoverCard wrapping an element',
       code: HoverCardBasicExampleCode,
       view: <HoverCardBasicExample />
     },
     {
-      title: 'Example 2: HoverCard using Target, DirectionalHint and custom HotKey',
+      title: 'Example 2: Expanding HoverCard using Target, DirectionalHint and custom HotKey',
       code: HoverCardTargetExampleCode,
       view: <HoverCardTargetExample />
+    },
+    {
+      title: 'Example 3: Basic HoverCard wrapping an element',
+      code: HoverCardBasicCardExampleCode,
+      view: <HoverCardBasicCardExample />
     }
   ],
   propertiesTablesSources: [

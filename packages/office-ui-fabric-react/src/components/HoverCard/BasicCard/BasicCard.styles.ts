@@ -14,7 +14,6 @@ export function getStyles(props: IBasicCardStyleProps): IBasicCardStyles {
     root: [
       classNames.root,
       {
-        width: '340px',
         pointerEvents: 'none',
         selectors: {
           '.ms-Callout': {

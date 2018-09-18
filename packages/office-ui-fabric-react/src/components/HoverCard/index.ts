@@ -4,4 +4,7 @@ export * from './HoverCard.types';
 export * from './ExpandingCard/ExpandingCard';
 export * from './ExpandingCard/ExpandingCard.base';
 export * from './ExpandingCard/ExpandingCard.types';
+export * from './BasicCard/BasicCard';
+export * from './BasicCard/BasicCard.base';
+export * from './BasicCard/BasicCard.types';
 export * from '../../common/DirectionalHint';
