@@ -35,7 +35,7 @@ export class VerticalStackSpacingExample extends React.Component<{}, {}> {
 
           <VerticalStack>
             <Text>Custom spacing</Text>
-            <VerticalStack className={styles.root} gap="2vh" padding="m 40px">
+            <VerticalStack className={styles.root} gap="20%" padding="m 40px">
               <Text className={styles.item}>1</Text>
               <Text className={styles.item}>2</Text>
               <Text className={styles.item}>3</Text>
