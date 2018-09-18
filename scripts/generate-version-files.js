@@ -64,5 +64,6 @@ if (typeof window !== 'undefined') {
 
 if (!generateOnly) {
   // Undo the dry-run changes, preserve the version file changes
+  console.log(`reset ${modified.join(' ')}`);
   run(`git checkout ${modified.join(' ')}`);
 }
