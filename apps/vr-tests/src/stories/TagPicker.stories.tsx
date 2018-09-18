@@ -42,7 +42,7 @@ const TagPickerDecorator = story => (
 
 // Pickers that are 'disabled' are added before the Screener decorator
 // because css classes for suggestion items won't exist
-const disabledStories = {
+const disabledTagPickerStories = {
   decorators: [FabricDecorator],
   stories: {
     'TagPicker disabled': () => (
@@ -89,5 +89,5 @@ const tagPickerStories = {
   }
 };
 
-runStories('TagPicker', disabledStories);
+runStories('TagPicker', disabledTagPickerStories);
 runStories('TagPicker', tagPickerStories);

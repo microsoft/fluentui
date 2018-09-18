@@ -43,7 +43,7 @@ const onRenderFontOption = (item) => {
   return <span className={'ms-ComboBox-optionText'} style={{ fontFamily: fontFamily && fontFamily }}>{item.text}</span>;
 };
 
-const ScreenerDecorator = story => (
+const ComboBoxDecorator = story => (
   <Screener
     steps={new Screener.Steps()
       .snapshot('default', { cropTo: '.testWrapper' })
@@ -60,7 +60,7 @@ const ScreenerDecorator = story => (
 );
 
 const comboBoxStories = {
-  decorators: [FabricDecoratorTallFixedWdith, ScreenerDecorator],
+  decorators: [FabricDecoratorTallFixedWdith, ComboBoxDecorator],
   stories: {
     'Root': () => (
       <ComboBox

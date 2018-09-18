@@ -1,7 +1,7 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
-import { FabricDecorator, runStories } from '../utilities';
+import { FabricDecorator, TestWrapperDecorator, runStories } from '../utilities';
 import { IPersonaProps, Persona, PersonaPresence, PersonaSize } from 'office-ui-fabric-react';
 import { TestImages } from '../common/TestImages';
 
@@ -13,17 +13,6 @@ const examplePersona: IPersonaProps = {
   tertiaryText: 'In a meeting',
   optionalText: 'Available at 4:00pm'
 };
-
-const TestWrapperDecorator = story => (
-  <Screener
-    steps={new Screener.Steps()
-      .snapshot('default', { cropTo: '.testWrapper' })
-      .end()
-    }
-  >
-    {story()}
-  </Screener>
-);
 
 const personaStories = {
   decorators: [FabricDecorator, TestWrapperDecorator],

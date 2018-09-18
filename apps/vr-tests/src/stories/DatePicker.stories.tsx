@@ -6,7 +6,7 @@ import { DatePicker } from 'office-ui-fabric-react';
 
 const date = new Date(2010, 1, 12);
 
-const DefaultScreenerDecorator = story => (
+const DatePickerDecorator = story => (
   <Screener
     steps={new Screener.Steps()
       .snapshot('default', { cropTo: '.testWrapper' })
@@ -26,7 +26,7 @@ const DefaultScreenerDecorator = story => (
 );
 
 const defaultStories = {
-  decorators: [FabricDecoratorFixedWidth, DefaultScreenerDecorator],
+  decorators: [FabricDecoratorFixedWidth, DatePickerDecorator],
   stories: {
     'Root': () => <DatePicker value={date} />,
     'Placeholder': () => <DatePicker value={date} placeholder="Enter date" />,
@@ -37,7 +37,7 @@ const defaultStories = {
   }
 };
 
-const NoMonthScreenerDecorator = story => (
+const NoMonthDatePickerDecorator = story => (
   <Screener
     steps={new Screener.Steps()
       .snapshot('default', { cropTo: '.testWrapper' })
@@ -55,7 +55,7 @@ const NoMonthScreenerDecorator = story => (
 );
 
 const noMonthStories = {
-  decorators: [FabricDecoratorFixedWidth, NoMonthScreenerDecorator],
+  decorators: [FabricDecoratorFixedWidth, NoMonthDatePickerDecorator],
   stories: {
     'Show Month as Overlay and no Go To Today': () => (
       <DatePicker value={date} showGoToToday={false} showMonthPickerAsOverlay={true} />

@@ -1,13 +1,14 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
-import { FabricDecoratorTall, runStories } from '../utilities';
+import { FabricDecoratorTall, DefaultScreenerDecorator, runStories } from '../utilities';
 import { Callout, Link, DirectionalHint } from 'office-ui-fabric-react';
 
 const calloutContent = (
   <p className='ms-CalloutExample-subText' id={'callout-description-1'}>
     Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
-</p>);
+  </p>
+);
 
 const defaultProps = {
   target: '#target',
@@ -22,19 +23,8 @@ const CalloutDecorator = story => (
   </div>
 );
 
-const CalloutScreenerDecorator = story => (
-  <Screener
-    steps={new Screener.Steps()
-      .snapshot('default')
-      .end()
-    }
-  >
-    {story()}
-  </Screener>
-);
-
 const calloutStories = {
-  decorators: [CalloutDecorator, FabricDecoratorTall, CalloutScreenerDecorator],
+  decorators: [CalloutDecorator, FabricDecoratorTall, DefaultScreenerDecorator],
   stories: {
     'Root': () => (
       <Callout {...defaultProps} >

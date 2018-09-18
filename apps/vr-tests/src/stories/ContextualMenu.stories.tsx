@@ -253,7 +253,7 @@ const itemsWithSplitButtonSubmenu: IContextualMenuItem[] = [
   }
 ];
 
-const ScreenerDecorator = story => (
+const ContextualMenuDecorator = story => (
   <Screener
     steps={new Screener.Steps()
       .snapshot('default', { cropTo: '.ms-Layer' })
@@ -270,7 +270,7 @@ const ScreenerDecorator = story => (
 );
 
 const contextualMenuStories = {
-  decorators: [FabricDecorator, ScreenerDecorator],
+  decorators: [FabricDecorator, ContextualMenuDecorator],
   stories: {
     'Root': () => <ContextualMenu items={items} />,
     'With icons': () => <ContextualMenu items={itemsWithIcons} />,

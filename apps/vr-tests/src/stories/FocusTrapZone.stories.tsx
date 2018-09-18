@@ -3,7 +3,7 @@ import Screener, { Steps } from 'screener-storybook/src/screener';
 import { FabricDecorator, runStories } from '../utilities';
 import { Panel, PanelType, Dialog, DialogType } from 'office-ui-fabric-react';
 
-const ScreenerDecorator = story => (
+const FocusTrapZoneDecorator = story => (
   <Screener
     steps={new Screener.Steps()
       .snapshot('default')
@@ -16,7 +16,7 @@ const ScreenerDecorator = story => (
 );
 
 const focusTrapZoneStories = {
-  decorators: [FabricDecorator, ScreenerDecorator],
+  decorators: [FabricDecorator, FocusTrapZoneDecorator],
   stories: {
     'Dialog nested in Panel': () => (
       <div>

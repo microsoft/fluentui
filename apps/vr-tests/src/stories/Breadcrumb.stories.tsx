@@ -4,7 +4,7 @@ import Screener, { Steps } from 'screener-storybook/src/screener';
 import { FabricDecoratorTall, runStories } from '../utilities';
 import { Breadcrumb } from 'office-ui-fabric-react';
 
-const ScreenerDecorator = story => (
+const BreadcrumbDecorator = story => (
   <Screener
     steps={new Screener.Steps()
       .snapshot('default', { cropTo: '.testWrapper' })
@@ -26,7 +26,7 @@ const ScreenerDecorator = story => (
 );
 
 const breadcrumbStories = {
-  decorators: [FabricDecoratorTall, ScreenerDecorator],
+  decorators: [FabricDecoratorTall, BreadcrumbDecorator],
   stories: {
     'Root': () => (
       <Breadcrumb

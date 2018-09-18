@@ -4,7 +4,7 @@ import Screener, { Steps } from 'screener-storybook/src/screener';
 import { FabricDecorator, runStories } from '../utilities';
 import { Dropdown, DropdownMenuItemType, IDropdownProps, Icon, IDropdownOption } from 'office-ui-fabric-react';
 
-const ScreenerDecorator = story => (
+const DropdownDecorator = story => (
   <Screener
     steps={new Screener.Steps()
       .snapshot('default', { cropTo: '.testWrapper' })
@@ -20,7 +20,7 @@ const ScreenerDecorator = story => (
 );
 
 const dropdownStories = {
-  decorators: [FabricDecorator, ScreenerDecorator],
+  decorators: [FabricDecorator, DropdownDecorator],
   stories: {
     'Root': () => (
       <Dropdown

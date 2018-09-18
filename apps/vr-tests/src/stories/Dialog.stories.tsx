@@ -16,12 +16,12 @@ const text = {
   subText: 'Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
 };
 
-const ScreenerDecorator = story => (
+const DialogDecorator = story => (
   <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.ms-Dialog-main' }).end()}>{story()}</Screener>
 );
 
 const dialogStories = {
-  decorators: [FabricDecoratorTall, ScreenerDecorator],
+  decorators: [FabricDecoratorTall, DialogDecorator],
   stories: {
     'Root': () => (
       <Dialog

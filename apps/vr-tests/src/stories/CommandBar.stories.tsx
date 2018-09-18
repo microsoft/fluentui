@@ -85,7 +85,7 @@ const farItems: ICommandBarItemProps[] = [
   }
 ];
 
-const ScreenerDecorator = story => (
+const CommandBarDecorator = story => (
   <Screener
     steps={new Screener.Steps()
       .snapshot('default', { cropTo: '.testWrapper' })
@@ -101,7 +101,7 @@ const ScreenerDecorator = story => (
 );
 
 const commandBarStories = {
-  decorators: [FabricDecoratorTall, ScreenerDecorator],
+  decorators: [FabricDecoratorTall, CommandBarDecorator],
   stories: {
     'Root': () => <CommandBar items={items} farItems={farItems} />,
     'Text only': () => (

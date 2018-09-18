@@ -1,7 +1,7 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
-import { FabricDecorator, runStories } from '../utilities';
+import { FabricDecorator, DefaultScreenerDecorator, runStories } from '../utilities';
 import { Panel, PanelType, SearchBox } from 'office-ui-fabric-react';
 import { setRTL } from 'office-ui-fabric-react/lib/Utilities';
 
@@ -10,21 +10,8 @@ const defaultProps = {
   children: 'Content goes here'
 };
 
-const ScreenerDecorator = story => <Screener steps={new Screener.Steps().snapshot('default').end()}>{story()}</Screener>;
-const SearchBoxDecorator = story => (
-  <Screener
-    steps={new Screener.Steps()
-      .snapshot('default')
-      .click('.ms-SearchBox-field')
-      .snapshot('default')
-      .end()}
-  >
-    {story()}
-  </Screener>
-);
-
-const defaultStories = {
-  decorators: [FabricDecorator, ScreenerDecorator],
+const panelStories = {
+  decorators: [FabricDecorator, DefaultScreenerDecorator],
   stories: {
     'Small left w/ close button': () => (
       <Panel {...defaultProps} hasCloseButton type={PanelType.smallFixedNear} headerText="Small" />
@@ -53,8 +40,20 @@ const defaultStories = {
   }
 };
 
-const searchBoxStories = {
-  decorators: [FabricDecorator, SearchBoxDecorator],
+const SearchBoxPanelDecorator = story => (
+  <Screener
+    steps={new Screener.Steps()
+      .snapshot('default')
+      .click('.ms-SearchBox-field')
+      .snapshot('default')
+      .end()}
+  >
+    {story()}
+  </Screener>
+);
+
+const searchBoxPanelStories = {
+  decorators: [FabricDecorator, SearchBoxPanelDecorator],
   stories: {
     'SearchBox and Right Panel': () => (
       <div>
@@ -67,5 +66,5 @@ const searchBoxStories = {
   }
 };
 
-runStories('Panel', defaultStories);
-runStories('Panel', searchBoxStories);
+runStories('Panel', panelStories);
+runStories('Panel', searchBoxPanelStories);

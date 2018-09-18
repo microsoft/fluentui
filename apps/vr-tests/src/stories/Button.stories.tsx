@@ -1,7 +1,7 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
-import { FabricDecorator, FabricDecoratorTall, runStories } from '../utilities';
+import { FabricDecorator, FabricDecoratorTall, TestWrapperDecorator, runStories } from '../utilities';
 import { DefaultButton, ActionButton, CompoundButton, IButtonProps, CommandBarButton } from 'office-ui-fabric-react';
 
 const baseProps: IButtonProps = {
@@ -36,7 +36,7 @@ const commandProps: IButtonProps = {
   }
 };
 
-const DefaultScreenerDecorator = story => (
+const DefaultButtonDecorator = story => (
   <Screener
     steps={new Steps()
       .snapshot('default', { cropTo: '.testWrapper' })
@@ -50,21 +50,21 @@ const DefaultScreenerDecorator = story => (
   </Screener>
 );
 
-const defaultStories = {
-  decorators: [FabricDecorator, DefaultScreenerDecorator],
+const defaultButtonStories = {
+  decorators: [FabricDecorator, DefaultButtonDecorator],
   stories: {
     'Root': () => <DefaultButton {...baseProps} />,
-    'Disabled': () => <DefaultButton {...baseProps} disabled={true} />,
-    'Checked': () => <DefaultButton {...baseProps} checked={true} />,
-    'Primary': () => <DefaultButton {...baseProps} primary={true} />,
-    'Primary Disabled': () => <DefaultButton {...baseProps} primary={true} disabled={true} />,
-    'Primary Checked': () => <DefaultButton {...baseProps} primary={true} checked={true} />
+    'Disabled': () => <DefaultButton {...baseProps} disabled />,
+    'Checked': () => <DefaultButton {...baseProps} checked />,
+    'Primary': () => <DefaultButton {...baseProps} primary />,
+    'Primary Disabled': () => <DefaultButton {...baseProps} primary disabled />,
+    'Primary Checked': () => <DefaultButton {...baseProps} primary checked />
   }
 };
 
-runStories('Button Default', defaultStories);
+runStories('Button Default', defaultButtonStories);
 
-const ActionScreenerDecorator = story => (
+const ActionButtonDecorator = story => (
   <Screener
     steps={new Steps()
       .snapshot('default', { cropTo: '.testWrapper' })
@@ -78,18 +78,18 @@ const ActionScreenerDecorator = story => (
   </Screener>
 );
 
-const actionStories = {
-  decorators: [FabricDecorator, ActionScreenerDecorator],
+const actionButtonStories = {
+  decorators: [FabricDecorator, ActionButtonDecorator],
   stories: {
     'Root': () => <ActionButton {...baseProps} />,
-    'Disabled': () => <ActionButton {...baseProps} disabled={true} />,
-    'Checked': () => <ActionButton {...baseProps} checked={true} />
+    'Disabled': () => <ActionButton {...baseProps} disabled />,
+    'Checked': () => <ActionButton {...baseProps} checked />
   }
 };
 
-runStories('Button Action', actionStories);
+runStories('Button Action', actionButtonStories);
 
-const CompoundScreenerDecorator = story => (
+const CompoundButtonDecorator = story => (
   <Screener
     steps={new Steps()
       .snapshot('default', { cropTo: '.testWrapper' })
@@ -103,26 +103,26 @@ const CompoundScreenerDecorator = story => (
   </Screener>
 );
 
-const compoundStories = {
-  decorators: [FabricDecorator, CompoundScreenerDecorator],
+const compoundButtonStories = {
+  decorators: [FabricDecorator, CompoundButtonDecorator],
   stories: {
     'Root': () => <CompoundButton {...baseProps} />,
-    'Disabled': () => <CompoundButton {...baseProps} disabled={true} />,
-    'Checked': () => <CompoundButton {...baseProps} checked={true} />,
-    'Primary': () => <CompoundButton {...baseProps} primary={true} />,
-    'Primary Disabled': () => <CompoundButton {...baseProps} primary={true} disabled={true} />,
-    'Primary Checked': () => <CompoundButton {...baseProps} primary={true} checked={true} />
+    'Disabled': () => <CompoundButton {...baseProps} disabled />,
+    'Checked': () => <CompoundButton {...baseProps} checked />,
+    'Primary': () => <CompoundButton {...baseProps} primary />,
+    'Primary Disabled': () => <CompoundButton {...baseProps} primary disabled />,
+    'Primary Checked': () => <CompoundButton {...baseProps} primary checked />
   }
 };
 
-runStories('Button Compound', compoundStories);
+runStories('Button Compound', compoundButtonStories);
 
-const CommandDecorator = story => (
+const CommandButtonDivDecorator = story => (
   // tslint:disable-next-line:jsx-ban-props
   <div style={{ display: 'flex', alignItems: 'stretch', height: '40px' }}>{story()}</div>
 );
 
-const CommandScreenerDecorator = story => (
+const CommandButtonDecorator = story => (
   <Screener
     steps={new Steps()
       .snapshot('default', { cropTo: '.testWrapper' })
@@ -139,18 +139,18 @@ const CommandScreenerDecorator = story => (
   </Screener>
 );
 
-const commandStories = {
-  decorators: [CommandDecorator, FabricDecoratorTall, CommandScreenerDecorator],
+const commandButtonStories = {
+  decorators: [CommandButtonDivDecorator, FabricDecoratorTall, CommandButtonDecorator],
   stories: {
     'Root': () => <CommandBarButton {...commandProps} />,
-    'Disabled': () => <CommandBarButton {...commandProps} disabled={true} />,
-    'Checked': () => <CommandBarButton {...commandProps} checked={true} />
+    'Disabled': () => <CommandBarButton {...commandProps} disabled />,
+    'Checked': () => <CommandBarButton {...commandProps} checked />
   }
 };
 
-runStories('Button Command', commandStories);
+runStories('Button Command', commandButtonStories);
 
-const SplitScreenerDecorator = story => (
+const SplitButtonDecorator = story => (
   <Screener
     steps={new Steps()
       .snapshot('default', { cropTo: '.testWrapper' })
@@ -173,27 +173,23 @@ const SplitScreenerDecorator = story => (
   </Screener>
 );
 
-const splitStories = {
-  decorators: [FabricDecoratorTall, SplitScreenerDecorator],
+const splitButtonStories = {
+  decorators: [FabricDecoratorTall, SplitButtonDecorator],
   stories: {
-    'Root': () => <DefaultButton {...commandProps} split={true} />,
-    'Disabled': () => <DefaultButton {...commandProps} disabled={true} split={true} />,
-    'Checked': () => <DefaultButton {...commandProps} checked={true} split={true} />,
-    'Primary': () => <DefaultButton {...commandProps} primary={true} split={true} />,
-    'Primary Disabled': () => <DefaultButton {...commandProps} primary={true} disabled={true} split={true} />,
-    'Primary Checked': () => <DefaultButton {...commandProps} primary={true} checked={true} split={true} />,
-    'Command Split': () => <CommandBarButton {...commandProps} split={true} />
+    'Root': () => <DefaultButton {...commandProps} split />,
+    'Disabled': () => <DefaultButton {...commandProps} disabled split />,
+    'Checked': () => <DefaultButton {...commandProps} checked split />,
+    'Primary': () => <DefaultButton {...commandProps} primary split />,
+    'Primary Disabled': () => <DefaultButton {...commandProps} primary disabled split />,
+    'Primary Checked': () => <DefaultButton {...commandProps} primary checked split />,
+    'Command Split': () => <CommandBarButton {...commandProps} split />
   }
 };
 
-runStories('Button Split', splitStories);
+runStories('Button Split', splitButtonStories);
 
-const SpecialScreenerDecorator = story => (
-  <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
-);
-
-const specialStories = {
-  decorators: [FabricDecorator, SpecialScreenerDecorator],
+const specialButtonStories = {
+  decorators: [FabricDecorator, TestWrapperDecorator],
   stories: {
     'primary with placeholder': () => (
       <div>
@@ -223,4 +219,4 @@ const specialStories = {
   }
 };
 
-runStories('Button Special Scenarios', specialStories);
+runStories('Button Special Scenarios', specialButtonStories);

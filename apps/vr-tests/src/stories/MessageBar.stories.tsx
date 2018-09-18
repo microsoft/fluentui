@@ -1,24 +1,14 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
-import { FabricDecorator, runStories } from '../utilities';
+import { FabricDecorator, TestWrapperDecorator, runStories } from '../utilities';
 import { MessageBarButton, Link, MessageBar, IMessageBarProps, MessageBarType } from 'office-ui-fabric-react';
 
 const noop = (): void => { /**/ };
 // tslint:disable-next-line:max-line-length
 const longText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vestibulum tellus at malesuada vestibulum. Pellentesque eget mi sagittis, sagittis nisi a, tristique nisl. Sed sed consequat neque, et dignissim ipsum. Integer in neque vestibulum, aliquet erat nec, vestibulum ex. Nullam et imperdiet lectus. Cras tempus eu tortor a elementum. Proin non justo lacus. Donec tincidunt laoreet malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean augue nisl, lobortis ut sodales eu, convallis in metus.';
-const link = <Link href='www.bing.com'>Visit our website</Link>;
 
-const TestWrapperDecorator = story => (
-  <Screener
-    steps={new Steps()
-      .snapshot('default', { cropTo: '.testWrapper' })
-      .end()
-    }
-  >
-    {story()}
-  </Screener>
-);
+const link = <Link href='www.bing.com'>Visit our website</Link>;
 
 const messageBarStories = {
   decorators: [FabricDecorator, TestWrapperDecorator],

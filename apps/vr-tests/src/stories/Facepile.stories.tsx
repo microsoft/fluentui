@@ -1,7 +1,7 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
-import { FabricDecorator, runStories } from '../utilities';
+import { FabricDecorator, TestWrapperDecorator, runStories } from '../utilities';
 import { Facepile, PersonaInitialsColor, PersonaSize, OverflowButtonType } from 'office-ui-fabric-react';
 
 import { TestImages } from '../common/TestImages';
@@ -45,19 +45,8 @@ const facepileProps = {
   ariaDescription: 'To move through the items use left and right arrow keys.'
 };
 
-const ScreenerDecorator = story => (
-  <Screener
-    steps={new Screener.Steps()
-      .snapshot('default', { cropTo: '.testWrapper' })
-      .end()
-    }
-  >
-    {story()}
-  </Screener>
-);
-
 const facepileStories = {
-  decorators: [FabricDecorator, ScreenerDecorator],
+  decorators: [FabricDecorator, TestWrapperDecorator],
   stories: {
     'Root': () => <Facepile {...facepileProps} />,
     'Extra extra small': () => <Facepile {...facepileProps} personaSize={PersonaSize.size24} />,

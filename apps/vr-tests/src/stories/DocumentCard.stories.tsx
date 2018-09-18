@@ -1,7 +1,7 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
-import { FabricDecorator, runStories } from '../utilities';
+import { FabricDecorator, TestWrapperDecorator, runStories } from '../utilities';
 import {
   DocumentCard,
   DocumentCardPreview,
@@ -69,12 +69,8 @@ const DocActivity = (
   />
 );
 
-const ScreenerDecorator = story => (
-  <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
-);
-
 const documentCardStories = {
-  decorators: [FabricDecorator, ScreenerDecorator],
+  decorators: [FabricDecorator, TestWrapperDecorator],
   stories: {
     'Root': () => (
       <DocumentCard onClickHref="http://bing.com">

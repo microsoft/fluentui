@@ -113,21 +113,7 @@ const getTextFromItem = (persona: IPersonaProps): string => persona.text as stri
 
 const getPeople = () => people;
 
-const ScreenerDecorator = story => (
-  <Screener
-    steps={new Screener.Steps()
-      .snapshot('default', { cropTo: '.testWrapper' })
-      .click('.ms-BasePicker-input')
-      .hover('.ms-Suggestions-item')
-      .snapshot('suggestions')
-      .end()
-    }
-  >
-    {story()}
-  </Screener>
-);
-
-const disabledStories = {
+const disabledPeoplePickerStories = {
   decorators: [FabricDecorator],
   stories: {
     'Normal disabled': () => (
@@ -179,8 +165,22 @@ const disabledStories = {
   }
 };
 
-const defaultStories = {
-  decorators: [FabricDecorator, ScreenerDecorator],
+const PeoplePickerDecorator = story => (
+  <Screener
+    steps={new Screener.Steps()
+      .snapshot('default', { cropTo: '.testWrapper' })
+      .click('.ms-BasePicker-input')
+      .hover('.ms-Suggestions-item')
+      .snapshot('suggestions')
+      .end()
+    }
+  >
+    {story()}
+  </Screener>
+);
+
+const peoplePickerStories = {
+  decorators: [FabricDecorator, PeoplePickerDecorator],
   stories: {
     'Normal': () => (
       <NormalPeoplePicker
@@ -242,5 +242,5 @@ const defaultStories = {
   }
 };
 
-runStories('PeoplePicker', disabledStories);
-runStories('PeoplePicker', defaultStories);
+runStories('PeoplePicker', disabledPeoplePickerStories);
+runStories('PeoplePicker', peoplePickerStories);

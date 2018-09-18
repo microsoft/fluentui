@@ -1,21 +1,17 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
-import { FabricDecorator, runStories } from '../utilities';
+import { FabricDecorator, DefaultScreenerDecorator, runStories } from '../utilities';
 import { Shimmer, ShimmerElementType as ElemType, ShimmerElementsGroup } from 'office-ui-fabric-react';
 
-const DivDecorator = story => (
+const ShimmerDecorator = story => (
   // Shimmer without a specified width needs a container with a fixed width or it's collapsing.
   // tslint:disable-next-line:jsx-ban-props
   <div style={{ width: '500px' }}>{story()}</div>
 );
 
-const ScreenerDecorator = story => (
-  <Screener steps={new Screener.Steps().snapshot('default').end()}>{story()}</Screener>
-);
-
 const shimmerStories = {
-  decorators: [DivDecorator, FabricDecorator, ScreenerDecorator],
+  decorators: [ShimmerDecorator, FabricDecorator, DefaultScreenerDecorator],
   stories: {
     'Basic': () => <Shimmer />,
     '50% width': () => <Shimmer width={'50%'} />,

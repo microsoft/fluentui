@@ -17,7 +17,7 @@ const onRenderCell = (nestingDepth: number, item: any, itemIndex: number) => {
   );
 };
 
-const ScreenerDecorator = story => (
+const GroupedListDecorator = story => (
   <Screener
     steps={new Screener.Steps()
       .snapshot('default', { cropTo: '.testWrapper' })
@@ -34,7 +34,7 @@ const ScreenerDecorator = story => (
 );
 
 const groupedListStories = {
-  decorators: [FabricDecorator, ScreenerDecorator],
+  decorators: [FabricDecorator, GroupedListDecorator],
   stories: {
     'Root': () => (
       <GroupedList

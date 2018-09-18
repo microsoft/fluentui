@@ -1,6 +1,7 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import { Fabric } from 'office-ui-fabric-react';
+import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { setRTL } from 'office-ui-fabric-react/lib/Utilities';
 
@@ -37,6 +38,28 @@ export const FabricDecoratorFixedWidth = (story) => (
       {story()}
     </div>
   </Fabric>
+);
+
+export const TestWrapperDecorator = story => (
+  <Screener
+    steps={new Steps()
+      .snapshot('default', { cropTo: '.testWrapper' })
+      .end()
+    }
+  >
+    {story()}
+  </Screener>
+);
+
+export const DefaultScreenerDecorator = story => (
+  <Screener
+    steps={new Screener.Steps()
+      .snapshot('default')
+      .end()
+    }
+  >
+    {story()}
+  </Screener>
 );
 
 export interface IStorySet {

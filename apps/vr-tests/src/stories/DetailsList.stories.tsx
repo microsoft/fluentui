@@ -113,7 +113,7 @@ const groups = [
   { count: 4, key: '2', name: 'Blue', startIndex: 2 }
 ];
 
-const ScreenerDecorator = story => (
+const DetailsListDecorator = story => (
   <Screener
     steps={new Screener.Steps()
       .snapshot('default', { cropTo: '.testWrapper' })
@@ -129,7 +129,7 @@ const ScreenerDecorator = story => (
 );
 
 const detailsListStories = {
-  decorators: [FabricDecorator],
+  decorators: [FabricDecorator, DetailsListDecorator],
   stories: {
     'Root': () => (
       <DetailsList

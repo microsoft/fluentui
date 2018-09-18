@@ -1,7 +1,7 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
-import { FabricDecorator, runStories } from '../utilities';
+import { FabricDecorator, TestWrapperDecorator, runStories } from '../utilities';
 import { List } from 'office-ui-fabric-react';
 
 // tslint:disable-next-line:max-line-length
@@ -9,17 +9,6 @@ const items = [{ 'thumbnail': '//placehold.it/233x233', 'key': 'item-0 sit Lorem
 
 const onRenderCell = (item) => (
   <div>{item.name}</div>
-);
-
-const TestWrapperDecorator = story => (
-  <Screener
-    steps={new Screener.Steps()
-      .snapshot('default', { cropTo: '.testWrapper' })
-      .end()
-    }
-  >
-    {story()}
-  </Screener>
 );
 
 const listStories = {

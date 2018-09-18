@@ -21,7 +21,7 @@ const options = [
   }
 ];
 
-const ScreenerDecorator = story => (
+const ChoiceGroupDecorator = story => (
   <Screener
     steps={new Screener.Steps()
       .snapshot('default', { cropTo: '.testWrapper' })
@@ -40,7 +40,7 @@ const ScreenerDecorator = story => (
 );
 
 const choiceGroupStories = {
-  decorators: [FabricDecorator, ScreenerDecorator],
+  decorators: [FabricDecorator, ChoiceGroupDecorator],
   stories: {
     'Root': () => (
       <ChoiceGroup
