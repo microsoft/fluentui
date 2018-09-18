@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 
@@ -39,6 +40,7 @@ export class ThemeDialog extends React.Component<IDialogExampleProps, IDialogExa
             containerClassName: 'ms-dialogMainOverride'
           }}
         >
+          <Checkbox label="Default Theme (Scoped)" />
           <ChoiceGroup
             options={[
               {

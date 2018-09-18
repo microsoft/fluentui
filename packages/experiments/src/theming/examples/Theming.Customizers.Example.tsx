@@ -1,25 +1,16 @@
 import * as React from 'react';
 
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
-import { Customizer } from 'office-ui-fabric-react/lib/Utilities';
 import { farItems, items, overflowItems } from 'office-ui-fabric-react/lib/components/CommandBar/examples/data';
+import { Customizer } from 'office-ui-fabric-react/lib/Utilities';
 
-import { HorizontalStack, VerticalStack, IStackProps, IStackStyles } from '@uifabric/experiments/lib/Stack';
+import { HorizontalStack, VerticalStack } from '@uifabric/experiments/lib/Stack';
 import { Text } from '@uifabric/experiments/lib/Text';
 // tslint:disable:max-line-length
 import { CollapsibleSectionRecursiveExample } from '@uifabric/experiments/lib/components/CollapsibleSection/examples/CollapsibleSection.Recursive.Example';
-import { IThemedProps } from '../../Foundation';
-import { ThemeDialog } from './ThemeDialog';
-import { defaultTheme, neutralTheme, softTheme, strongTheme } from './Themes';
 
-// TODO: requiring users to type this way is frictiony. find a way to reduce props typing
-export const stackStyles = (props: IThemedProps<IStackProps>): IStackStyles => {
-  return {
-    root: {
-      backgroundColor: props.theme.semanticColors.bodyBackground
-    }
-  };
-};
+import { ThemeDialog } from './ThemeDialog';
+import { defaultTheme, neutralTheme, softTheme, strongTheme, scopedSettings } from './Themes';
 
 export class ThemingExample extends React.Component<{}, {}> {
   /**
@@ -27,26 +18,26 @@ export class ThemingExample extends React.Component<{}, {}> {
    */
   protected _renderCustomizedComponents(): JSX.Element {
     return (
-      <HorizontalStack gap={10} styles={stackStyles}>
+      <HorizontalStack gap={10}>
         <Customizer settings={{ theme: strongTheme }}>
           <HorizontalStack.Item grow={1}>
-            <VerticalStack maxWidth="25%" styles={stackStyles}>
-              <Text>Strong Theme</Text>
+            <VerticalStack fillHorizontal={true} maxWidth="33%" padding={5}>
+              <Text weight="bold">Strong Theme</Text>
               <CollapsibleSectionRecursiveExample />
             </VerticalStack>
           </HorizontalStack.Item>
         </Customizer>
         <HorizontalStack.Item grow={3}>
-          <VerticalStack styles={stackStyles}>
+          <VerticalStack>
             <Customizer settings={{ theme: softTheme }}>
-              <VerticalStack styles={stackStyles}>
-                <Text>Soft Theme</Text>
+              <VerticalStack padding={5}>
+                <Text weight="bold">Soft Theme</Text>
                 <CommandBar items={items} overflowItems={overflowItems} farItems={farItems} />
               </VerticalStack>
             </Customizer>
             <Customizer settings={{ theme: neutralTheme }}>
-              <VerticalStack styles={stackStyles}>
-                <Text>Neutral Theme</Text>
+              <VerticalStack padding={5}>
+                <Text weight="bold">Neutral Theme</Text>
                 <Customizer settings={{ theme: defaultTheme }}>
                   <ThemeDialog buttonText="Default Theme" />
                 </Customizer>
@@ -68,6 +59,6 @@ export class ThemingExample extends React.Component<{}, {}> {
 
 export class ThemingBasicExample extends ThemingExample {
   public render(): JSX.Element {
-    return this._renderCustomizedComponents();
+    return <Customizer scopedSettings={scopedSettings}>{this._renderCustomizedComponents()}</Customizer>;
   }
 }

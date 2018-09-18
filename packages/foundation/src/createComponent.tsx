@@ -83,7 +83,7 @@ export interface IStylingProviders<TViewProps, TStyleSet, TProcessedStyleSet, TC
    */
   mergeStyleSets: (...styles: (Partial<TStyleSet> | undefined)[]) => TProcessedStyleSet;
   /**
-   * A required provider for accessing global customization context as a fallback for contextual customizations.
+   * A required provider for accessing global customizations as a fallback for contextual customizations.
    */
   getCustomizations: (scope: string, context: TContext) => IStyleableComponentProps<TViewProps, TStyleSet, TTheme, TScheme>;
   /**

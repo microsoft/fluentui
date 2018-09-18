@@ -10,13 +10,13 @@ import { IScheme, ITheme } from '../interfaces/index';
  * @param settingsTheme Themes setting fallback if context does not have schemed theme.
  */
 export function getSchemedContext(scheme: IScheme, context: ICustomizerContext, settingsTheme?: ITheme): ICustomizerContext | undefined {
-  // TODO: How should schemes work with scopedSettings? As is now, schemes affect all components (including styled components)
-  //        by modifying the default active theme. With this method, if there is a scopedSetting theme scheme, it will
-  //        be ignored as only schemes in the default theme will take effect. In addition, any scopedSetting themes will
-  //        override the active theme, schemed or otherwise. This seems consistent as scopedSettings are more localized than
-  //        a contextual scheme name. However:
-  //        Should scopedSetting theme schemes have an effect? How would they be applied?
-  //        Should scheme be a scopedSetting? How would it work (i.e. which components would the scheme affect)?
+  // As written now, schemes affect all components (including styled components) by modifying the active contextual theme.
+  //    With this method, if there is a scopedSetting theme with schemes, it will be ignored as only schemes in the default theme will take
+  //    effect. In addition, any scopedSetting themes will override the active theme, schemed or otherwise. This seems consistent
+  //    as scopedSettings are more localized than a contextual scheme name.
+  //  * How should schemes work with scopedSettings?  However:
+  //  * Should scopedSetting theme schemes have an effect? How would they be applied?
+  //  * Should scheme be a scopedSetting? How would it work (i.e. which components would the scheme affect)?
   let newContext: ICustomizerContext | undefined;
   const contextTheme: ITheme | undefined = context.customizations.settings.theme;
   // Grab scheme theme from context (if it exists) with fallback to settings.
