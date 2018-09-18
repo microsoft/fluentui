@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "5.35.0",
+      "tag": "@uifabric/styling_v5.35.0",
+      "date": "Tue, 18 Sep 2018 11:25:16 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "560e620644aeb3a3cb876ce4aab44eac585b14d6",
+            "comment": "Adds new semantic slots per design direction"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.34.0",
       "tag": "@uifabric/styling_v5.34.0",
       "date": "Fri, 07 Sep 2018 01:32:10 GMT",
