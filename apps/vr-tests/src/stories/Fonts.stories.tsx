@@ -1,12 +1,11 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
-import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
+import { FabricDecorator, runStories } from '../utilities';
 import { createFontStyles } from 'office-ui-fabric-react/lib/Styling';
 
 const RepresentativeText = (props: { style: React.CSSProperties }) => (
-  <div style={ props.style }>
+  <div style={props.style}>
     <p id='ar'>استكشف بعض الميزات الجديدة.</p>
     <p id='bg'>Да разгледаме някои нови функции.</p>
     <p id='cs'>Podívejme se na některé nové funkce.</p>
@@ -23,54 +22,60 @@ const RepresentativeText = (props: { style: React.CSSProperties }) => (
   </div>
 );
 
-storiesOf('Fonts', module)
-  .addDecorator(FabricDecorator)
-  .addDecorator(story => (
-    <Screener
-      steps={ new Screener.Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .end()
-      }
-    >
-      { story() }
-    </Screener>
-  ))
-  .add('Arabic', () => (
-    <RepresentativeText style={ createFontStyles('ar').medium as React.CSSProperties } />
-  ))
-  .add('Chinese (Simplified)', () => (
-    <RepresentativeText style={ createFontStyles('zh-Hans').medium as React.CSSProperties } />
-  ))
-  .add('Chinese (Traditional)', () => (
-    <RepresentativeText style={ createFontStyles('zh-Hant').medium as React.CSSProperties } />
-  ))
-  .add('Cyrillic', () => (
-    <RepresentativeText style={ createFontStyles('bg').medium as React.CSSProperties } />
-  ))
-  .add('East European', () => (
-    <RepresentativeText style={ createFontStyles('cs').medium as React.CSSProperties } />
-  ))
-  .add('Greek', () => (
-    <RepresentativeText style={ createFontStyles('el').medium as React.CSSProperties } />
-  ))
-  .add('Hebrew', () => (
-    <RepresentativeText style={ createFontStyles('he').medium as React.CSSProperties } />
-  ))
-  .add('Hindi', () => (
-    <RepresentativeText style={ createFontStyles('hi').medium as React.CSSProperties } />
-  ))
-  .add('Japanese', () => (
-    <RepresentativeText style={ createFontStyles('ja').medium as React.CSSProperties } />
-  ))
-  .add('Korean', () => (
-    <RepresentativeText style={ createFontStyles('ko').medium as React.CSSProperties } />
-  ))
-  .add('Thai', () => (
-    <RepresentativeText style={ createFontStyles('th').medium as React.CSSProperties } />
-  ))
-  .add('Vietnamese', () => (
-    <RepresentativeText style={ createFontStyles('vi').medium as React.CSSProperties } />
-  ))
-  .add('West European', () => (
-    <RepresentativeText style={ createFontStyles('en').medium as React.CSSProperties } />
-  ));
+const ScreenerDecorator = story => (
+  <Screener
+    steps={new Screener.Steps()
+      .snapshot('default', { cropTo: '.testWrapper' })
+      .end()
+    }
+  >
+    {story()}
+  </Screener>
+);
+
+const fontsStories = {
+  decorators: [FabricDecorator, ScreenerDecorator],
+  stories: {
+    'Arabic': () => (
+      <RepresentativeText style={createFontStyles('ar').medium as React.CSSProperties} />
+    ),
+    'Chinese (Simplified)': () => (
+      <RepresentativeText style={createFontStyles('zh-Hans').medium as React.CSSProperties} />
+    ),
+    'Chinese (Traditional)': () => (
+      <RepresentativeText style={createFontStyles('zh-Hant').medium as React.CSSProperties} />
+    ),
+    'Cyrillic': () => (
+      <RepresentativeText style={createFontStyles('bg').medium as React.CSSProperties} />
+    ),
+    'East European': () => (
+      <RepresentativeText style={createFontStyles('cs').medium as React.CSSProperties} />
+    ),
+    'Greek': () => (
+      <RepresentativeText style={createFontStyles('el').medium as React.CSSProperties} />
+    ),
+    'Hebrew': () => (
+      <RepresentativeText style={createFontStyles('he').medium as React.CSSProperties} />
+    ),
+    'Hindi': () => (
+      <RepresentativeText style={createFontStyles('hi').medium as React.CSSProperties} />
+    ),
+    'Japanese': () => (
+      <RepresentativeText style={createFontStyles('ja').medium as React.CSSProperties} />
+    ),
+    'Korean': () => (
+      <RepresentativeText style={createFontStyles('ko').medium as React.CSSProperties} />
+    ),
+    'Thai': () => (
+      <RepresentativeText style={createFontStyles('th').medium as React.CSSProperties} />
+    ),
+    'Vietnamese': () => (
+      <RepresentativeText style={createFontStyles('vi').medium as React.CSSProperties} />
+    ),
+    'West European': () => (
+      <RepresentativeText style={createFontStyles('en').medium as React.CSSProperties} />
+    )
+  }
+};
+
+runStories('Fonts', fontsStories);

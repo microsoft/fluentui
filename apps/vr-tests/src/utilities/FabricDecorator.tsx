@@ -65,10 +65,10 @@ const _createStorySet =
 
     const componentStories = storiesOf(componentName, module);
 
-    for (let j = 0; j < decorators.length; j++) {
+    for (let i = 0; i < decorators.length; i++) {
       componentStories.addDecorator((story) => {
         setRTL(rtl);
-        return decorators[j](story);
+        return decorators[i](story);
       });
     }
 
