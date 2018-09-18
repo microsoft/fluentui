@@ -177,7 +177,7 @@ DndSimulator = {
    * \param targetElement The element the source element should be
    *                        dragged to.
    */
-  simulate: function(sourceElement, targetElement) {
+  simulate: function(sourceElement, targetElement, dragOver) {
     /* if strings are specified, assume they are CSS selectors */
     if (typeof sourceElement == 'string') {
       sourceElement = document.querySelector(sourceElement);
@@ -227,14 +227,15 @@ DndSimulator = {
 
     targetElement.dispatchEvent(dragEnterEvent);
 
-    /* simulate a drag over event on the target element */
-    var dragOverEvent = this.createEvent('dragover', {
-      clientX: targetCoordinates.left,
-      clientY: targetCoordinates.top,
-      dataTransfer: dragStartEvent.dataTransfer
-    });
-
-    targetElement.dispatchEvent(dragOverEvent);
+    if (dragOver) {
+      /* simulate a drag over event on the target element */
+      var dragOverEvent = this.createEvent('dragover', {
+        clientX: targetCoordinates.left,
+        clientY: targetCoordinates.top,
+        dataTransfer: dragStartEvent.dataTransfer
+      });
+      targetElement.dispatchEvent(dragOverEvent);
+    }
   },
 
   /*!

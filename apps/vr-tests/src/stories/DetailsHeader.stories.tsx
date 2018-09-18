@@ -10,7 +10,6 @@ const _items: {}[] = [];
 const _selection = new Selection();
 // script to simulate drag so that drop hint is rendered
 const dndScript = require('!raw-loader!../../dndSim.js') as string;
-const dndScript1 = require('!raw-loader!../../dndSim.1.js') as string;
 
 const columns: IColumn[] = [
   { key: 'a', name: 'a', fieldName: 'a', minWidth: 100, maxWidth: 200, calculatedWidth: 100, isResizable: true },
@@ -106,21 +105,21 @@ storiesOf('DetailsHeader', module)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
-        .snapshot('default')
+        .snapshot('default', { cropTo: '.ms-DetailsHeader' })
         .hover('[aria-colindex=2]')
-        .snapshot('hoverFrozenFirst')
+        .snapshot('hoverFrozenFirst', { cropTo: '.ms-DetailsHeader' })
         .hover('[aria-colindex=3]')
         .snapshot('hoverDraggable', { cropTo: '.ms-DetailsHeader' })
         .hover('[aria-colindex=7]')
         .snapshot('hoverFrozenLast', { cropTo: '.ms-DetailsHeader' })
-        .executeScript(dndScript1)
-        .executeScript('DndSimulator.simulate(\'[draggable="true"]\', \'[aria-colindex="5"]\')')
+        .executeScript(dndScript)
+        .executeScript('DndSimulator.simulate(\'[draggable="true"]\', \'[aria-colindex="5"]\', false)')
         .snapshot('Border', { cropTo: '.testWrapper' })
         .executeScript(dndScript)
         // simulate a drag on column 'b' and do a dragover on 'd' to render the drop hint
-        .executeScript('DndSimulator.simulate(\'[draggable="true"]\', \'[aria-colindex="5"]\')')
-        .wait(1600)
-        .snapshot('DropHint', { cropTo: '.testWrapper' })
+        .executeScript('DndSimulator.simulate(\'[draggable="true"]\', \'[aria-colindex="5"]\', true)')
+        .wait(2000)
+        .snapshot('DropHint')
         .end()}
     >
       {story()}
