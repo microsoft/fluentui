@@ -1,13 +1,16 @@
 import { getNeutralVariant, getSoftVariant, getStrongVariant } from '@uifabric/variants';
 
 import { createTheme, IPalette, ITheme, getTheme } from 'office-ui-fabric-react/lib/Styling';
-import { Settings } from 'office-ui-fabric-react/lib/Utilities';
 
-import { ICollapsibleSectionTitleStyleProps } from '@uifabric/experiments/lib/CollapsibleSection';
-import { IStackProps } from '@uifabric/experiments/lib/Stack';
-import { ITextProps } from '@uifabric/experiments/lib/Text';
-
+import { IHorizontalStackProps } from '@uifabric/experiments/lib/Stack';
 import { IThemedProps } from '../../Foundation';
+
+export const regionStyles = (props: IThemedProps<IHorizontalStackProps>) => ({
+  root: {
+    backgroundColor: props.theme.semanticColors.bodyBackground,
+    color: props.theme.semanticColors.bodyText
+  }
+});
 
 // TODO: what is our story with ThemeGeneratorPage? right now it creates palettes, but we don't want to support
 //        theming through different palette sets. ThemeGeneratorPage should probably be redone to create schemes
@@ -173,42 +176,5 @@ export const schemeThemeCustom: ITheme = {
     neutral: defaultTheme,
     soft: invertedPrimaryTheme,
     strong: invertedDefaultTheme
-  }
-};
-
-// TODO: Can we specify default coloring for text without having to defined a scoped style function?
-//        Is there a way we could define a 'color' prop in a scope pointing to semanticColors?
-//        Also thought of making variant typography, but I would need one for each scheme that are all
-//        basically pointing to semanticColor.bodyText.
-// TODO: reduce friction on using styled props while making themes non-optional and easily accessible
-export const scopedSettings: Settings = {
-  Checkbox: { theme: defaultTheme },
-  Text: {
-    styles: (props: IThemedProps<ITextProps>) => ({
-      root: {
-        color: props.theme.semanticColors.bodyText
-      }
-    })
-  },
-  CollapsibleSectionTitle: {
-    styles: (props: ICollapsibleSectionTitleStyleProps) => ({
-      icon: {
-        color: props.theme.semanticColors.bodyText
-      }
-    })
-  },
-  Stack: {
-    styles: (props: IThemedProps<IStackProps>) => ({
-      root: {
-        backgroundColor: props.theme.semanticColors.bodyBackground
-      }
-    })
-  },
-  ResizeGroup: {
-    styles: {
-      root: {
-        marginTop: 0
-      }
-    }
   }
 };

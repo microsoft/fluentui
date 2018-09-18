@@ -14,6 +14,7 @@ export const getStyles = (props: IThemedProps<ICollapsibleSectionTitleProps>): I
         alignItems: 'center',
         background: 'none',
         border: 'none',
+        color: 'inherit',
         height: 24,
         margin: 0,
         selectors: {

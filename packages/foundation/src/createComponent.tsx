@@ -145,11 +145,10 @@ export function createComponent<TComponentProps, TViewProps, TStyleSet, TProcess
     return (
       <CustomizerContext.Consumer>
         {(context: TContext) => {
-          const settings: IStyleableComponentProps<TViewProps, TStyleSet, TTheme, TScheme> = providers.getCustomizations(
+          let settings: IStyleableComponentProps<TViewProps, TStyleSet, TTheme, TScheme> = providers.getCustomizations(
             options.displayName,
             context
           );
-          const { styles: contextStyles, ...rest } = settings;
 
           const renderView = (processedProps: TProcessedProps) => {
             // The approach here is to allow state components to provide only the props they care about, automatically
@@ -163,6 +162,12 @@ export function createComponent<TComponentProps, TViewProps, TStyleSet, TProcess
 
             const newContext = providers.getContextFromProps(mergedProps, context, settings);
 
+            if (newContext) {
+              // If we have a new context we need to refresh our settings (to reflect new contextual theme, for example)
+              settings = providers.getCustomizations(options.displayName, newContext);
+            }
+
+            const { styles: contextStyles, ...rest } = settings;
             const styleProps: TProcessedProps = { ...rest, ...(mergedProps as any) };
             const viewProps: IViewComponentProps<TProcessedProps, TProcessedStyleSet> = {
               ...(mergedProps as any),

@@ -10,7 +10,7 @@ import { Text } from '@uifabric/experiments/lib/Text';
 // tslint:disable:max-line-length
 import { CollapsibleSectionRecursiveExample } from '@uifabric/experiments/lib/components/CollapsibleSection/examples/CollapsibleSection.Recursive.Example';
 
-import { schemeThemeCustom, schemeThemeVariants, scopedSettings } from './Themes';
+import { regionStyles, schemeThemeCustom, schemeThemeVariants } from './Themes';
 import { ThemeDialog } from './ThemeDialog';
 
 export interface IThemingExampleState {
@@ -41,25 +41,27 @@ export class ThemingExample extends React.Component<{}, IThemingExampleState> {
     const sideCaption = 'Scheme: ' + sideScheme;
     const topCaption = 'Scheme: ' + topScheme;
 
+    // TODO: Even though this styles function is the same for all regions, it has to be provided whenever the scheme
+    //        is changed to apply the new semanticColors. Is this the best way we can do this?
     return (
       <HorizontalStack gap={10}>
-        <HorizontalStack.Item grow={1}>
-          <VerticalStack gap={10} scheme={sideScheme} fillHorizontal={true} maxWidth="33%" padding={5}>
+        <HorizontalStack.Item grow={true} styles={{ root: { width: '33%', maxWidth: '33%' } }}>
+          <VerticalStack scheme={sideScheme} styles={regionStyles} gap={10} padding={5}>
             <Text weight="bold">{sideCaption}</Text>
             <Toggle offText={sideCaption} onText={sideCaption} onChange={this.toggleSide} />
             <CollapsibleSectionRecursiveExample />
           </VerticalStack>
         </HorizontalStack.Item>
-        <HorizontalStack.Item grow={3}>
-          <VerticalStack>
-            <VerticalStack gap={10} scheme={topScheme} padding={5}>
+        <HorizontalStack.Item grow={true} styles={{ root: { height: 'auto' } }}>
+          <VerticalStack grow={true} fillVertical={true}>
+            <VerticalStack scheme={topScheme} styles={regionStyles} gap={10} padding={5}>
               <HorizontalStack horizontalAlign="space-between">
                 <Text weight="bold">{topCaption}</Text>
                 <Toggle offText={topCaption} onText={topCaption} onChange={this.toggleTop} />
               </HorizontalStack>
               <CommandBar items={items} overflowItems={overflowItems} farItems={farItems} />
             </VerticalStack>
-            <VerticalStack fillVertical={true} gap={10} scheme={bodyScheme} padding={5}>
+            <VerticalStack scheme={bodyScheme} styles={regionStyles} fillVertical={true} padding={5}>
               <HorizontalStack horizontalAlign="space-between">
                 <Text weight="bold">{bodyCaption}</Text>
                 <Toggle offText={bodyCaption} onText={bodyCaption} onChange={this.toggleBody} />
@@ -96,20 +98,12 @@ export class ThemingExample extends React.Component<{}, IThemingExampleState> {
 
 export class ThemingSchemesVariantExample extends ThemingExample {
   public render(): JSX.Element {
-    return (
-      <Customizer settings={{ theme: schemeThemeVariants }} scopedSettings={scopedSettings}>
-        {this._renderSchemedComponents()}
-      </Customizer>
-    );
+    return <Customizer settings={{ theme: schemeThemeVariants }}>{this._renderSchemedComponents()}</Customizer>;
   }
 }
 
 export class ThemingSchemesCustomExample extends ThemingExample {
   public render(): JSX.Element {
-    return (
-      <Customizer settings={{ theme: schemeThemeCustom }} scopedSettings={scopedSettings}>
-        {this._renderSchemedComponents()}
-      </Customizer>
-    );
+    return <Customizer settings={{ theme: schemeThemeCustom }}>{this._renderSchemedComponents()}</Customizer>;
   }
 }
