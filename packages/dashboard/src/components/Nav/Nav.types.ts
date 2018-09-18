@@ -176,23 +176,72 @@ export interface INavStyleProps {
    * if the component is hosted inside a scroll bar, send the scrollTop to position the floating nav relative to it's parent
    */
   scrollTop?: number;
+  isNavCollapsed?: boolean;
+  isExpanded?: boolean;
+}
+
+export interface INavGroupStyleProps {
+  linkCollapsed?: boolean;
+  groupName?: string;
+  groupIndex: number;
+  links: INavLink[];
+  enableCustomization?: boolean;
+  showMore?: boolean;
+  dataHint?: string;
+  isNavCollapsed?: boolean;
+}
+
+export interface INavLinkGroupStyleProps {
+  link: INavLink;
+  isExpanded: boolean;
+  isNavCollapsed?: boolean;
+  hasNestedMenu?: boolean;
+  hasSelectedNestedLink?: boolean;
+}
+
+export interface INavLinkStyleProps {
+  hasNestedMenu?: boolean;
+  hasSelectedNestedLink?: boolean;
+  isNested?: boolean;
+  isExpanded?: boolean;
+  isSelected?: boolean;
+  isNavCollapsed?: boolean;
 }
 
 export interface INavStyles {
   /**
    * Style set for the nav component root
    */
-  root: IStyle;
+  nav: IStyle;
   navCollapsed: IStyle;
+  navItem: IStyle;
+}
 
+export interface INavGroupStyles {
+  /**
+   * Style set for the nav group separator
+   */
+  navGroupDivider: IStyle;
+
+  /**
+   * Style set for the group name in nav group separator
+   */
+  navGroupTitle: IStyle;
+}
+
+export interface INavLinkGroupStyles {
+  nestedNavMenu: IStyle;
+  nestedNavMenuCollapsed: IStyle;
+}
+
+export interface INavLinkStyles {
   /**
    * Style set for the nav item root
    */
-  navItemRoot: IStyle;
-  navItemSmall: IStyle;
+
+  navLink: IStyle;
+  navLinkSmall: IStyle;
   hidden: IStyle;
-  nestedNavLink: IStyle;
-  nestedNavLinkCollapsed: IStyle;
 
   /**
    * Style set for the bar marker in the nav item
@@ -209,16 +258,6 @@ export interface INavStyles {
    * Style set for the name column in the nav item
    */
   navItemText: IStyle;
-
-  /**
-   * Style set for the nav group separator
-   */
-  navGroupDivider: IStyle;
-
-  /**
-   * Style set for the group name in nav group separator
-   */
-  navGroupTitle: IStyle;
 
   /**
    * Style for navLink icons

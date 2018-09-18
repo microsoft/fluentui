@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import { INavStyles, INavLinkProps, INavStyleProps, INavLinkStates } from './Nav.types';
-import { getStyles } from './Nav.styles';
+import { INavLinkStyles, INavLinkProps, INavLinkStyleProps, INavLinkStates } from '../Nav.types';
+import { getStyles } from './NavLink.styles';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
@@ -9,10 +9,10 @@ import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
  * Represents a composed link in the Nav component.
  */
 
-const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
+const getClassNames = classNamesFunction<INavLinkStyleProps, INavLinkStyles>();
+const classNames = getClassNames(getStyles);
 
 class NavigationLink extends React.Component<INavLinkProps, INavLinkStates> {
-  private classNames = getClassNames(getStyles);
   constructor(props: INavLinkProps) {
     super(props);
   }
@@ -29,7 +29,7 @@ class NavigationLink extends React.Component<INavLinkProps, INavLinkStates> {
         aria-label={this.props.ariaLabel}
         aria-expanded={this.props.ariaExpanded}
         role={this.props.role}
-        className={this.classNames.navItemRoot}
+        className={this.classNames.navLink}
       >
         {this._generatePrimaryIcon()}
         {this._generateLinkContent()}
@@ -60,7 +60,7 @@ class NavigationLink extends React.Component<INavLinkProps, INavLinkStates> {
         {this._generateActiveBar()}
         <Icon
           iconName={this.props.primaryIconName}
-          className={isNested ? mergeStyles(this.classNames.navItemIcon, this.classNames.navItemSmall) : this.classNames.navItemIcon}
+          className={isNested ? mergeStyles(this.classNames.navItemIcon, this.classNames.navLinkSmall) : this.classNames.navItemIcon}
         />
       </div>
     );
@@ -68,11 +68,8 @@ class NavigationLink extends React.Component<INavLinkProps, INavLinkStates> {
 
   private _generateLinkContent(): React.ReactElement<{}> | null {
     const { isNested, name } = this.props;
-    if (this.props.isNavCollapsed) {
-      return null;
-    }
     return (
-      <div className={isNested ? mergeStyles(this.classNames.navItemText, this.classNames.navItemSmall) : this.classNames.navItemText}>
+      <div className={isNested ? mergeStyles(this.classNames.navItemText, this.classNames.navLinkSmall) : this.classNames.navItemText}>
         {name}
       </div>
     );
@@ -81,7 +78,7 @@ class NavigationLink extends React.Component<INavLinkProps, INavLinkStates> {
   private _generateSecondaryIcon(): React.ReactElement<{}> | null {
     const { hasNestedMenu, isNested, target, isExpanded, isNavCollapsed } = this.props;
 
-    if (isNavCollapsed) {
+    if (isNavCollapsed && !isNested) {
       return null;
     }
 
@@ -96,7 +93,7 @@ class NavigationLink extends React.Component<INavLinkProps, INavLinkStates> {
       <div className={this.classNames.iconWrapper}>
         <Icon
           iconName={iconName}
-          className={isNested ? mergeStyles(this.classNames.navItemIcon, this.classNames.navItemSmall) : this.classNames.navItemIcon}
+          className={isNested ? mergeStyles(this.classNames.navItemIcon, this.classNames.navLinkSmall) : this.classNames.navItemIcon}
         />
       </div>
     );

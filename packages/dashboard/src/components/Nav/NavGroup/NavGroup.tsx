@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { INavGroupProps, INavStyles, INavLink, INavStyleProps } from './Nav.types';
-import { NavLink } from './NavLink';
-import { NavLinkGroup } from './NavLinkGroup';
-import { getStyles } from './Nav.styles';
+import { INavGroupProps, INavGroupStyles, INavLink, INavGroupStyleProps } from '@uifabric/dashboard/lib/components/Nav/Nav.types';
+import { NavLink } from '../NavLink/NavLink';
+import { NavLinkGroup } from '@uifabric/dashboard/lib/components/Nav/NavLinkGroup/NavLinkGroup';
+import { getStyles } from '@uifabric/dashboard/lib/components/Nav/Nav.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
-const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
-const classNames = getClassNames(getStyles);
+const getClassNames = classNamesFunction<INavGroupStyleProps, INavGroupStyles>();
+// const classNames = getClassNames(getStyles);
 
 class NavigationGroup extends React.Component<INavGroupProps, {}> {
   constructor(props: INavGroupProps) {
@@ -63,7 +63,7 @@ class NavigationGroup extends React.Component<INavGroupProps, {}> {
 
     return (
       // if there are nested links, render a NavLinkGroup, otherwise just render a NavLink
-      <li role="listitem" key={keyStr}>
+      <li className={classNames.navItem} role="listitem" key={keyStr}>
         {!!link.links && link.links ? (
           <NavLinkGroup
             isExpanded={link.isExpanded ? link.isExpanded : false}
