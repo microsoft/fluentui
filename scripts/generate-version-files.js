@@ -28,8 +28,6 @@ if (!generateOnly) {
     .filter(item => item);
 }
 
-process.exit();
-
 const packageJsons = glob.sync('+(packages|apps)/*/package.json');
 packageJsons.forEach(packageJsonPath => {
   const versionFile = path.join(path.dirname(packageJsonPath), 'src/version.ts');
