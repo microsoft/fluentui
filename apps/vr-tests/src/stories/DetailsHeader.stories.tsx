@@ -112,14 +112,11 @@ storiesOf('DetailsHeader', module)
         .snapshot('hoverDraggable', { cropTo: '.ms-DetailsHeader' })
         .hover('[aria-colindex=7]')
         .snapshot('hoverFrozenLast', { cropTo: '.ms-DetailsHeader' })
-        .executeScript(dndScript)
-        .executeScript('DndSimulator.simulate(\'[draggable="true"]\', \'[aria-colindex="5"]\', false)')
-        .snapshot('Border', { cropTo: '.testWrapper' })
+        .hover('[aria-colindex=5]')
         .executeScript(dndScript)
         // simulate a drag on column 'b' and do a dragover on 'd' to render the drop hint
         .executeScript('DndSimulator.simulate(\'[draggable="true"]\', \'[aria-colindex="5"]\', true)')
-        .wait(2000)
-        .snapshot('DropHint')
+        .snapshot('dropHint')
         .end()}
     >
       {story()}
