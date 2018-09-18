@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.71.0",
+      "tag": "office-ui-fabric-react_v6.71.0",
+      "date": "Tue, 18 Sep 2018 12:26:03 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Panel: Extend props to HTMLAttributes",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "664ae3dce6a2b8c1e99a193bab3240fcdf83387a"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.24.0 <7.0.0` to `>=6.25.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.70.0",
       "tag": "office-ui-fabric-react_v6.70.0",
       "date": "Mon, 17 Sep 2018 12:27:05 GMT",

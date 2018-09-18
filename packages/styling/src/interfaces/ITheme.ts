@@ -2,6 +2,7 @@ import { IPalette } from './IPalette';
 import { IFontStyles } from './IFontStyles';
 import { ISemanticColors } from './ISemanticColors';
 import { ITypography, IPartialTypography } from './ITypography';
+import { ISpacing } from './ISpacing';
 
 export type IScheme = 'default' | 'neutral' | 'soft' | 'strong';
 
@@ -23,7 +24,7 @@ export interface ITheme {
 
   /**
    * @internal
-   * The typography property is still in an experimental phase. The intent is the have it
+   * The typography property is still in an experimental phase. The intent is to have it
    * eventually replace IFontStyles in a future release, but it is still undergoing review.
    * Avoid using it until it is finalized.
    */
@@ -31,14 +32,25 @@ export interface ITheme {
 
   /**
    * @internal
-   * Alternative themes that can be referred to by name.
+   * The spacing property is still in an experimental phase. The intent is to have it
+   * be used for padding and margin sizes in a future release, but it is still undergoing review.
+   * Avoid using it until it is finalized.
    */
+  spacing: ISpacing;
+
+  /**
+ * @internal
+ * The schemes property is still in an experimental phase. The intent is to have it work
+ * in conjunction with new 'schemes' prop that any component making use of Foundation can use.
+ * Alternative themes that can be referred to by name.
+ */
   schemes?: { [P in IScheme]?: ITheme };
 }
 
 export type IPartialTheme = {
-  [P in keyof Pick<ITheme, 'palette' | 'fonts' | 'semanticColors' | 'isInverted' | 'disableGlobalClassNames' | 'schemes'>]?: Partial<
-    ITheme[P]
-  >
+  [P in keyof Pick<
+  ITheme,
+  'palette' | 'fonts' | 'semanticColors' | 'isInverted' | 'disableGlobalClassNames' | 'spacing' | 'schemes'
+  >]?: Partial<ITheme[P]>
 } &
   { [P in keyof Pick<ITheme, 'typography'>]?: IPartialTypography };
