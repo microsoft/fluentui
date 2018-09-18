@@ -19,7 +19,8 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
 
   /**
    * Additional BasicCard props to pass through HoverCard like renderers, target, gapSpace etc.
-   * See for more details ICardProps and IBasicCardProps interfaces
+   * Used along with 'type' prop set to HoverCardType.basic.
+   * See for more details ICardProps and IBasicCardProps interfaces.
    */
   basicCardProps?: IBasicCardProps;
 
@@ -48,6 +49,7 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
 
   /**
    * Additional ExpandingCard props to pass through HoverCard like renderers, target. gapSpace etc.
+   * Used along with 'type' prop set to HoverCardType.expanding.
    * Reference detail properties in ICardProps and IExpandingCardProps.
    */
   expandingCardProps?: IExpandingCardProps;
