@@ -19,20 +19,28 @@ export abstract class Card<
   // Common default props across all hover card types.
   public static defaultProps = {
     directionalHint: DirectionalHint.bottomLeftEdge,
-    directionalHintFixed: true,
     gapSpace: 0
   };
 
   protected _finalHeight: number;
   protected _content: JSX.Element;
   protected _classNames: { [key in keyof TStyles]: string };
+  protected _directionalHintFixed: boolean;
 
   constructor(props: TProps) {
     super(props);
   }
 
   public render(): JSX.Element {
-    const { targetElement, directionalHintFixed, directionalHint, firstFocus, trapFocus, gapSpace, onLeave } = this.props;
+    const {
+      targetElement,
+      directionalHintFixed = this._directionalHintFixed,
+      directionalHint,
+      firstFocus,
+      trapFocus,
+      gapSpace,
+      onLeave
+    } = this.props;
 
     this.setStyles();
 

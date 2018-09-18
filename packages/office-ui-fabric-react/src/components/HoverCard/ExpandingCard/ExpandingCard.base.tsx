@@ -32,6 +32,8 @@ export class ExpandingCardBase extends Card<
   constructor(props: IExpandingCardProps) {
     super(props);
 
+    this._directionalHintFixed = true;
+
     this.state = {
       firstFrameRendered: false,
       needsScroll: false
