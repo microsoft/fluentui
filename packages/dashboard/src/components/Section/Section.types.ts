@@ -132,7 +132,8 @@ export interface ISectionState {
 export interface ISectionStyles {
   root: IStyle;
   sectionTitle: IStyle;
-  editTitleTextField: IStyle;
+  addSectionTextField: IStyle;
+  renameSectionTextField: IStyle;
   actions: IStyle;
   actionButton: IStyle;
   actionButtonDisabled: IStyle;

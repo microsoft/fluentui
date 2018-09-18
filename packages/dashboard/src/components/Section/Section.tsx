@@ -23,6 +23,7 @@ export class Section extends React.PureComponent<ISectionProps, ISectionState> {
       return (
         <div className={classNames.root}>
           <SectionTitleTextField
+            className={classNames.renameSectionTextField}
             id={this.props.id}
             placeHolder={this.props.title}
             rowHeight={this.props.rowHeight}
@@ -36,7 +37,7 @@ export class Section extends React.PureComponent<ISectionProps, ISectionState> {
       return (
         <div className={classNames.root}>
           <SectionTitleTextField
-            className={classNames.editTitleTextField}
+            className={classNames.addSectionTextField}
             id={this.props.id}
             placeHolder={this.props.title}
             rowHeight={this.props.rowHeight}
