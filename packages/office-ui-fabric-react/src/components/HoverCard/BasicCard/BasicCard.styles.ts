@@ -14,7 +14,7 @@ export function getStyles(props: IBasicCardStyleProps): IBasicCardStyles {
     root: [
       classNames.root,
       {
-        pointerEvents: 'none',
+        pointerEvents: 'auto',
         selectors: {
           '.ms-Callout': {
             boxShadow: '0 0 20px rgba(0, 0, 0, .2)',

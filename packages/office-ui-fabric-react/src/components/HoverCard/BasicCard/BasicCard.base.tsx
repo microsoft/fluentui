@@ -23,12 +23,8 @@ export class BasicCardBase extends Card<IBasicCard, IBasicCardProps, IBasicCardS
 
     return (
       <div onMouseEnter={this.props.onEnter} onMouseLeave={this.props.onLeave} onKeyDown={this.onKeyDown} className={className}>
-        {this._onRenderBasicCard()}
+        {this.props.onRenderBasicCard!(this.props.renderData)}
       </div>
     );
   }
-
-  private _onRenderBasicCard = (): JSX.Element => {
-    return <div>{this.props.onRenderBasicCard!(this.props.renderData)}</div>;
-  };
 }
