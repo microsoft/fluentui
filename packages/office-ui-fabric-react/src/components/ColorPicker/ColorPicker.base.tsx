@@ -201,7 +201,7 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
         } as IColorPickerState,
         () => {
           if (hasColorStringChanged && onColorChanged) {
-            onColorChanged(newColor.str, newColor.a);
+            onColorChanged(newColor.str, newColor);
           }
         }
       );

@@ -1,5 +1,6 @@
 import { ITheme, IStyle } from '../../Styling';
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { IColor } from 'office-ui-fabric-react/lib/utilities/color';
 
 export interface IColorPicker {}
 
@@ -17,7 +18,7 @@ export interface IColorPickerProps extends IBaseProps<IColorPicker> {
   /**
    * Callback issued when the user changes the color.
    */
-  onColorChanged?: (color: string, alpha?: number) => void;
+  onColorChanged?: (color: string, colorObject: IColor) => void;
 
   /**
    * The setting of whether to hide the alpha control slider.

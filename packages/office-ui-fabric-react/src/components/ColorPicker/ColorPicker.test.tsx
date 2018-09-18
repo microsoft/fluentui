@@ -7,6 +7,7 @@ import { mount } from 'enzyme';
 import { ColorPicker } from './ColorPicker';
 import { ColorPickerBase, IColorPickerState } from './ColorPicker.base';
 import { IColorPicker, IColorPickerProps } from './ColorPicker.types';
+import { IColor, getColorFromString } from 'office-ui-fabric-react/lib/utilities/color';
 
 describe('ColorPicker', () => {
   it('renders ColorPicker correctly', () => {
@@ -41,10 +42,10 @@ describe('ColorPicker', () => {
 
   it('onColorChange is called', () => {
     let color = '#FFFFFF';
-    let a = 1;
-    const onColorChanged = (str: string, alpha?: number): void => {
+    let newColorObject;
+    const onColorChanged = (str: string, colorObject: IColor): void => {
       color = str;
-      alpha = a;
+      newColorObject = colorObject;
     };
 
     let colorPickerComponent: any;
@@ -60,6 +61,7 @@ describe('ColorPicker', () => {
 
     expect(component.state.color.hex).toEqual('aeaeae');
     expect(color).toEqual(newColor);
+    expect(newColorObject).toEqual(getColorFromString(newColor));
   });
 
   it('Hides alpha control slider', () => {
