@@ -653,23 +653,24 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // If autoComplete is on, attempt to find a match from the available options
     if (this.props.autoComplete === 'on') {
       // If autoComplete is on, attempt to find a match where the text of an option starts with the updated value
-      let items = currentOptions
-        .map((item, index) => {
-          return { ...item, index };
-        })
-        .filter(
-          option => option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider
-        );
+      let items = currentOptions.map((item, index) => {
+        return { ...item, index };
+      });
 
       if (this.props.autoCompleteFullString === 'on') {
-        items = items.filter(option =>
-          this._getPreviewText(option)
-            .toLocaleLowerCase()
-            .includes(updatedValue)
+        items = items.filter(
+          option =>
+            option.itemType !== SelectableOptionMenuItemType.Header &&
+            option.itemType !== SelectableOptionMenuItemType.Divider &&
+            this._getPreviewText(option)
+              .toLocaleLowerCase()
+              .includes(updatedValue)
         );
       } else {
         items = items.filter(
           option =>
+            option.itemType !== SelectableOptionMenuItemType.Header &&
+            option.itemType !== SelectableOptionMenuItemType.Divider &&
             this._getPreviewText(option)
               .toLocaleLowerCase()
               .indexOf(updatedValue) === 0
@@ -692,9 +693,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           return { ...item, index };
         })
         .filter(
-          option => option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider
-        )
-        .filter(option => this._getPreviewText(option).toLocaleLowerCase() === updatedValue);
+          option =>
+            option.itemType !== SelectableOptionMenuItemType.Header &&
+            option.itemType !== SelectableOptionMenuItemType.Divider &&
+            this._getPreviewText(option).toLocaleLowerCase() === updatedValue
+        );
 
       // if we found a match remember the index
       if (items.length === 1) {

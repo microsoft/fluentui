@@ -19,6 +19,22 @@ const DEFAULT_OPTIONS3: IComboBoxOption[] = [
   { key: '3', text: 'Bar' }
 ];
 
+const DEFAULT_OPTIONS4 = [
+  { key: 'Header', text: 'Suggested room lists', itemType: SelectableOptionMenuItemType.Header },
+  { key: 'A', text: 'Puget Sound - Building 31' },
+  { key: 'B', text: 'Puget Sound - Building 32' },
+  { key: 'C', text: 'Puget Sound - Building 34' },
+  { key: 'Header2', text: 'All room lists', itemType: SelectableOptionMenuItemType.Header },
+  { key: 'D', text: 'All Rooms Vernier' },
+  { key: 'E', text: 'All Rooms Wallisellen' },
+  { key: 'F', text: 'APAC-AUSTRALIA-ADELAIDE' },
+  { key: 'G', text: 'APAC-Australia-BRISBANE' },
+  { key: 'H', text: 'Puget Sound - Building 30' },
+  { key: 'I', text: 'Puget Sound - Building 32' },
+  { key: 'J', text: 'Puget Sound - Building 33' },
+  { key: 'K', text: 'Puget Sound - Building 34' }
+];
+
 describe('ComboBox', () => {
   it('Renders ComboBox correctly', () => {
     const createNodeMock = (el: React.ReactElement<{}>) => {
@@ -173,6 +189,25 @@ describe('ComboBox', () => {
     wrapper.find('input').simulate('input', { target: { value: 'f' } });
     wrapper.update();
     expect(wrapper.find('input').props().value).toEqual('Foo');
+  });
+
+  it('Can insert text in uncontrolled case with autoComplete, autoCompleteFullString, allowFreeform on', () => {
+    const wrapper = mount(
+      <ComboBox
+        label="testgroup"
+        defaultSelectedKey="1"
+        options={DEFAULT_OPTIONS4}
+        autoComplete="on"
+        autoCompleteFullString="on"
+        allowFreeform={true}
+      />
+    );
+
+    wrapper.find('input').simulate('input', { target: { value: '3' } });
+    wrapper.find('input').simulate('input', { target: { value: '0' } });
+    wrapper.find('input').simulate('keydown', { which: KeyCodes.enter });
+    wrapper.update();
+    expect(wrapper.find('input').props().value).toEqual('Puget Sound - Building 30');
   });
 
   it('Can insert text in uncontrolled case with autoComplete on and allowFreeform off', () => {
