@@ -22,4 +22,22 @@
     }
   }
 
+  .ms-DetailsHeader-divider {
+    display: inline-block;
+    height: 100%;
+  }
+
+  .ms-DetailsHeader-divider-bar {
+    display: none;
+    background: $ms-color-themePrimary;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    width: 1px;
+    z-index: 5;
+  }
+
+  .ms-DetailsHeader-divider:hover + .ms-DetailsHeader-divider-bar {
+    display: inline;
+  }
 }
