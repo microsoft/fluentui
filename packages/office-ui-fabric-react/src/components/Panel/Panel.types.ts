@@ -16,7 +16,7 @@ export interface IPanel {
    */
   dismiss: (ev?: React.KeyboardEvent<HTMLElement>) => void;
 }
-export interface IPanelProps extends React.Props<PanelBase> {
+export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
   /**
    * Optional callback to access the IPanel interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
