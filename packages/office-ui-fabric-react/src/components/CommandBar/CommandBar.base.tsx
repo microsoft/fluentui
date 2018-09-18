@@ -146,12 +146,12 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     if (item.iconOnly && itemText !== undefined) {
       return (
         <TooltipHost content={itemText} {...item.tooltipHostProps}>
-          <CommandButtonType {...commandButtonProps as IButtonProps} defaultRender={CommandButtonType} />
+          <CommandButtonType {...commandButtonProps as IButtonProps} defaultRender={CommandBarButton} />
         </TooltipHost>
       );
     }
 
-    return <CommandButtonType {...commandButtonProps as IButtonProps} defaultRender={CommandButtonType} />;
+    return <CommandButtonType {...commandButtonProps as IButtonProps} defaultRender={CommandBarButton} />;
   };
 
   private _onButtonClick(item: ICommandBarItemProps): (ev: React.MouseEvent<HTMLButtonElement>) => void {
