@@ -1,5 +1,5 @@
 import { ISectionStyles, ISectionStyleProps } from './Section.types';
-import { FontSizes, IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { FontSizes, IStyle, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 // TODO, color should be returned from theme
 export const getStyles = (props: ISectionStyleProps): ISectionStyles => {
@@ -28,7 +28,8 @@ export const getStyles = (props: ISectionStyleProps): ISectionStyles => {
     sectionTitle: {
       fontSize: FontSizes.medium,
       fontWeight: '600',
-      margin: isEditMode ? '9px 16px' : '22px 0 0'
+      margin: isEditMode ? '9px 16px' : '22px 0 0',
+      color: DefaultPalette.black
       // when the section is displayed in the dashboard, we add extra top margin (22px) to make it closer to cards
     },
     editTitleTextField: [

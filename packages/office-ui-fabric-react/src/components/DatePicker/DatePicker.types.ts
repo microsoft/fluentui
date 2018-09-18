@@ -197,6 +197,12 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker> {
   initialPickerDate?: Date;
 
   /**
+   * Allows all elements to be focused, including disabled ones
+   * @defaultvalue false
+   */
+  allFocusable?: boolean;
+
+  /**
    * Callback that runs after DatePicker's menu (Calendar) is closed
    */
   onAfterMenuDismiss?: () => void;
