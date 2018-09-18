@@ -165,9 +165,11 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
         <div className={classNames.customMessage}>{data[1]}</div>
         <div className={classNames.hoverCardText}>
           <div className={classNames.hoverCardBodyText}>{data[0].bodyText}</div>
-          <div className={classNames.hoverCardIcon}>
-            <img src={changeIconIndicator} />
-          </div>
+          {!data[0].hideIcon && (
+            <div className={classNames.hoverCardIcon}>
+              <img src={changeIconIndicator} />
+            </div>
+          )}
           <div className={classNames.hoverCardAnnotationText}>{data[0].annotaionText}</div>
         </div>
         <div className={classNames.hoverCardData}>{data[0].data.toLocaleString()}</div>

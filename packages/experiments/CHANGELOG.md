@@ -1,6 +1,29 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 12 Sep 2018 12:26:41 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Sep 2018 12:26:03 GMT and should not be manually modified.
+
+## 6.31.0
+Tue, 18 Sep 2018 12:26:03 GMT
+
+### Minor changes
+
+- Stack: add wrapping for HorizontalStack, support themed gap and padding, support native HTML properties, refactor StackItem so that its child does not require a class
+
+## 6.30.2
+Mon, 17 Sep 2018 12:27:05 GMT
+
+### Patches
+
+- Changes to support Foundation refactoring.
+- nav fix
+- improve nav per designer feedback
+
+## 6.30.1
+Fri, 14 Sep 2018 01:55:02 GMT
+
+### Patches
+
+- Fluent: Fix issue with background color on primary buttons using the wrong values
 
 ## 6.30.0
 Wed, 12 Sep 2018 12:26:41 GMT

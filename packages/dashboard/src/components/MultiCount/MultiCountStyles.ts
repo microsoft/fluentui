@@ -81,7 +81,6 @@ export const getStyles = (props: IMultiCountStyleProps): IMultiCountStyles => {
       marginRight: '16px'
     },
     hoverCardAnnotationText: {
-      marginLeft: '16px',
       fontFamily: 'Segoe UI'
     },
     hoverCardBodyText: {
@@ -90,7 +89,8 @@ export const getStyles = (props: IMultiCountStyleProps): IMultiCountStyles => {
     },
     hoverCardIcon: {
       width: '12px',
-      height: '12px'
+      height: '12px',
+      marginRight: '16px'
     },
     customMessage: {
       fontSize: '10px',

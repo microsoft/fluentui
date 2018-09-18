@@ -68,7 +68,8 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     showGoToToday: true,
     dateTimeFormatter: undefined,
     showCloseButton: false,
-    underlined: false
+    underlined: false,
+    allFocusable: false
   };
 
   private _calendar = createRef<ICalendar>();
@@ -155,7 +156,8 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       maxDate,
       showCloseButton,
       calendarProps,
-      underlined
+      underlined,
+      allFocusable
     } = this.props;
     const { isDatePickerShown, formattedDate, selectedDate, errorMessage } = this.state;
 
@@ -232,6 +234,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
                 maxDate={maxDate}
                 componentRef={this._calendar}
                 showCloseButton={showCloseButton}
+                allFocusable={allFocusable}
               />
             </FocusTrapZone>
           </Callout>

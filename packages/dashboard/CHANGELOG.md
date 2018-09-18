@@ -1,6 +1,38 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Thu, 13 Sep 2018 17:38:04 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Sep 2018 12:27:05 GMT and should not be manually modified.
+
+## 0.25.2
+Mon, 17 Sep 2018 12:27:05 GMT
+
+### Patches
+
+- fix leftNav styles per PM feedback
+- revert the change for expand behavior
+- fix the issue where user click on show more link in floating nav
+
+## 0.25.1
+Fri, 14 Sep 2018 19:19:00 GMT
+
+### Patches
+
+- Update recommendation centerDataVisualization flex layout css
+- Update section title font color
+
+## 0.25.0
+Fri, 14 Sep 2018 17:03:00 GMT
+
+### Minor changes
+
+- Changing css for card header. Added tooltip to card header. Disabling icon in hovercard in Multicount component upon passing prop
+- Update recommendation component to support data visualization component center align layout
+
+## 0.24.1
+Fri, 14 Sep 2018 01:55:02 GMT
+
+### Patches
+
+- Changing styling of wrapper component in card. This wrapper component covers all the charts inside the card content layout.
 
 ## 0.24.0
 Thu, 13 Sep 2018 17:38:04 GMT
