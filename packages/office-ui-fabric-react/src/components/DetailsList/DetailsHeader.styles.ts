@@ -339,7 +339,8 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
     dropHintStyle: [
       {
         display: 'inline-block',
-        position: 'absolute'
+        position: 'absolute',
+        overflow: 'hidden'
       }
     ]
   };

@@ -400,10 +400,21 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
   }
 
   private _resetDropHints(): void {
+    let overflow: string;
+
     if (this._currentDropHintIndex >= 0) {
       this._updateDropHintElement(this._dropHintDetails[this._currentDropHintIndex].dropHintElementRef, 'hidden');
       this._currentDropHintIndex = Number.MIN_SAFE_INTEGER;
+      overflow = 'hidden';
+    } else {
+      overflow = 'visible';
     }
+
+    Object.values(this._dropHintDetails).forEach(dropHint => {
+      const dropHintElem = dropHint.dropHintElementRef;
+
+      dropHintElem.style.overflow = overflow;
+    });
   }
 
   private _updateDropHintElement(element: HTMLElement, property: string) {
