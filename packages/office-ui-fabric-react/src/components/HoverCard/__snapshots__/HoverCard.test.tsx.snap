@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HoveCard renders target wrapped by HoverCard correctly 1`] = `
+<div
+  aria-describedby={undefined}
+  className={undefined}
+  data-is-focusable={true}
+>
+  Content
+</div>
+`;
