@@ -9,6 +9,8 @@ function run(cmd) {
   return execSync(cmd, { cwd: path.resolve(__dirname, '..') }).toString();
 }
 
+let modified = [];
+
 if (!generateOnly) {
   // Check that no uncommitted changes exist
   let status = run('git status -s');
@@ -20,7 +22,7 @@ if (!generateOnly) {
   // Do a dry-run on all packages
   run('rush publish -a');
   status = run('git status -s');
-  const modified = status.split(/\n/g).map(line => '"' + line.split(/\s/)[1] + '"');
+  modified = status.split(/\n/g).map(line => '"' + line.split(/\s/)[1] + '"');
 }
 
 const packageJsons = glob.sync('+(packages|apps)/*/package.json');
