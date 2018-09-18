@@ -1,6 +1,6 @@
 import { ITheme, IStyle } from '../../Styling';
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { IColor } from 'office-ui-fabric-react/lib/utilities/color';
+import { IColor } from 'office-ui-fabric-react/lib/utilities/color/colors';
 
 export interface IColorPicker {}
 
