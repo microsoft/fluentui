@@ -4,7 +4,7 @@
   "description": "Testing the button for bundling.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "sideEffects": false,
+  "sideEffects": ["lib/version.js"],
   "typings": "lib/index.d.ts",
   "private": true,
   "repository": {

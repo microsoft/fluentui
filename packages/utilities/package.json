@@ -4,7 +4,7 @@
   "description": "Office UI Fabric utilities for building React components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "sideEffects": false,
+  "sideEffects": ["lib/version.js"],
   "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",
