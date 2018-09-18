@@ -7,17 +7,10 @@ const view = (props: IViewComponentProps<IStackItemProps, IStackItemStyles>) => 
   const childNodes: React.ReactElement<{}>[] = React.Children.toArray(props.children) as React.ReactElement<{}>[];
   const first = childNodes[0];
   if (!first) {
-    return <div />;
+    return <span />;
   }
 
-  if (typeof first === 'string') {
-    return <span className={props.classNames.root}>{first}</span>;
-  }
-
-  return React.cloneElement(first as React.ReactElement<{ className: string }>, {
-    ...first.props,
-    className: props.classNames.root
-  });
+  return <span className={props.classNames.root}>{first}</span>;
 };
 
 export const StackItem: React.StatelessComponent<IStackItemProps> = createStatelessComponent<
