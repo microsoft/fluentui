@@ -22,6 +22,9 @@ const listProps = {
 
 // Props required by certain components in order for tests to pass
 const requiredProps: { [key: string]: any } = {
+  BasicCard: {
+    onRenderBasicCard: () => null
+  },
   ColorPicker: {
     color: '#ffffff'
   },
@@ -38,6 +41,10 @@ const requiredProps: { [key: string]: any } = {
     items: [{ text: 'TestText', key: 'TestKey', canCheck: true, isChecked: true }]
   },
   DetailsList: listProps,
+  ExpandingCard: {
+    onRenderCompactCard: () => null,
+    onRenderExpandedCard: () => null
+  },
   GroupedList: {
     ...listProps,
     groups: []
