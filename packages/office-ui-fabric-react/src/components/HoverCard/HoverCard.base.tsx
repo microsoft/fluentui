@@ -93,7 +93,9 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
       theme,
       className,
       type,
-      basicCardProps
+      basicCardProps,
+      trapFocus,
+      setInitialFocus
     } = this.props;
     const { isHoverCardVisible, mode, openMode } = this.state;
     const hoverCardId = id || getId('hoverCard');
@@ -107,8 +109,8 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
     const commonCardProps = {
       ...getNativeProps(this.props, divProperties),
       id: hoverCardId,
-      trapFocus: !!this.props.trapFocus,
-      firstFocus: this.props.setInitialFocus || openMode === OpenCardMode.hotKey,
+      trapFocus: !!trapFocus,
+      firstFocus: setInitialFocus || openMode === OpenCardMode.hotKey,
       targetElement: this._getTargetElement(),
       onEnter: this._cardOpen,
       onLeave: this._executeCardDismiss

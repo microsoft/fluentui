@@ -51,11 +51,6 @@ export enum ExpandingCardMode {
 
 export interface IExpandingCardStyleProps extends ICardStyleProps {
   /**
-   * Classname to inject into wrapper div of both cards.
-   */
-  className?: string;
-
-  /**
    * Height of the compact section of the card.
    */
   compactCardHeight?: number;

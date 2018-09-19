@@ -3,7 +3,7 @@ import * as React from 'react';
 import { IExpandingCardProps } from './ExpandingCard/ExpandingCard.types';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject, KeyCodes } from '../../Utilities';
-import { IBasicCardProps } from 'office-ui-fabric-react/lib/components/HoverCard/BasicCard/BasicCard.types';
+import { IBasicCardProps } from './BasicCard/BasicCard.types';
 
 export interface IHoverCard {}
 
