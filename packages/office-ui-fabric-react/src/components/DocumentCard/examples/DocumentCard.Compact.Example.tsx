@@ -16,28 +16,36 @@ export class DocumentCardCompactExample extends React.Component<any, any> {
       previewImages: [
         {
           name: 'Revenue stream proposal fiscal year 2016 version02.pptx',
-          url: 'http://bing.com',
+          linkProps: {
+            href: 'http://bing.com'
+          },
           previewImageSrc: TestImages.documentPreview,
           iconSrc: TestImages.iconPpt,
           width: 144
         },
         {
           name: 'New Contoso Collaboration for Conference Presentation Draft',
-          url: 'http://bing.com',
+          linkProps: {
+            href: 'http://bing.com'
+          },
           previewImageSrc: TestImages.documentPreviewTwo,
           iconSrc: TestImages.iconPpt,
           width: 144
         },
         {
           name: 'Spec Sheet for design',
-          url: 'http://bing.com',
+          linkProps: {
+            href: 'http://bing.com'
+          },
           previewImageSrc: TestImages.documentPreviewThree,
           iconSrc: TestImages.iconPpt,
           width: 144
         },
         {
           name: 'Contoso Marketing Presentation',
-          url: 'http://bing.com',
+          linkProps: {
+            href: 'http://bing.com'
+          },
           previewImageSrc: TestImages.documentPreview,
           iconSrc: TestImages.iconPpt,
           width: 144
@@ -102,10 +110,7 @@ export class DocumentCardCompactExample extends React.Component<any, any> {
         <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
           <DocumentCardPreview {...previewOutlookUsingIcon} />
           <div className="ms-DocumentCard-details">
-            <DocumentCardTitle
-              title="Conversation about anual report from SharePoint conference"
-              shouldTruncate={true}
-            />
+            <DocumentCardTitle title="Conversation about anual report from SharePoint conference" shouldTruncate={true} />
             <DocumentCardActivity
               activity="Sent a few minutes ago"
               people={[{ name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale }]}

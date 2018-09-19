@@ -10,6 +10,7 @@ import { ImageFit } from '../../Image';
 import { IButtonProps } from '../../Button';
 import { IIconProps } from '../../Icon';
 import { IBaseProps, IRefObject } from '../../Utilities';
+import { ILinkProps } from '../../Link';
 
 export interface IDocumentCard {}
 
@@ -94,8 +95,14 @@ export interface IDocumentCardPreviewImage {
 
   /**
    * URL to view the file.
+   * @deprecated Use href inside of linkProps instead.
    */
   url?: string;
+
+  /**
+   * Props to pass to Link component
+   */
+  linkProps?: ILinkProps;
 
   /**
    * Path to the preview image.
