@@ -66,7 +66,6 @@
     {
       "packageName": "@uifabric/set-version",
       "projectFolder": "packages/set-version",
-      "versionPolicyName": "lockedMajor",
       "shouldPublish": true
     },
     {

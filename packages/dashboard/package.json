@@ -6,7 +6,7 @@
     "@uifabric/charting": "^0.21.0",
     "@uifabric/example-app-base": ">=6.7.2 <7.0.0",
     "@uifabric/experiments": ">=6.32.0 <7.0.0",
-    "@uifabric/set-version": ">=6.0.0 <7.0.0",
+    "@uifabric/set-version": ">=1.0.0 <2.0.0",
     "auto-fontsize": "^1.0.18",
     "css-loader": "^0.15.1",
     "office-ui-fabric-react": ">=6.71.1 <7.0.0",

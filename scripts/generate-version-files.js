@@ -48,7 +48,8 @@ packageJsons.forEach(packageJsonPath => {
 
     fs.writeFileSync(
       versionFile,
-      `// ${packageJson.name}@${packageJson.version} - Do not modify this file, the file is generated as part of publish but not checked in
+      `// ${packageJson.name}@${packageJson.version}
+// Do not modify this file, the file is generated as part of publish. The checked in version is a placeholder only.
 import { setVersion } from '@uifabric/set-version';
 setVersion('${packageJson.name}', '${packageJson.version}');`
     );
