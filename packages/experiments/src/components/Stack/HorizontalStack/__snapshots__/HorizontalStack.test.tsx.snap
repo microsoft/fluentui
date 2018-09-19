@@ -101,6 +101,8 @@ exports[`HorizontalStack renders growing items correctly 1`] = `
         ms-StackItem
         {
           flex-shrink: 0;
+          height: auto;
+          width: auto;
         }
   >
     Item 1
@@ -110,6 +112,8 @@ exports[`HorizontalStack renders growing items correctly 1`] = `
         ms-StackItem
         {
           flex-shrink: 0;
+          height: auto;
+          width: auto;
         }
   >
     Item 2
@@ -149,6 +153,8 @@ exports[`HorizontalStack renders item alignments correctly 1`] = `
         {
           align-self: auto;
           flex-shrink: 0;
+          height: auto;
+          width: auto;
         }
   >
     Auto
@@ -159,6 +165,8 @@ exports[`HorizontalStack renders item alignments correctly 1`] = `
         {
           align-self: stretch;
           flex-shrink: 0;
+          height: auto;
+          width: auto;
         }
   >
     Stretch
@@ -169,6 +177,8 @@ exports[`HorizontalStack renders item alignments correctly 1`] = `
         {
           align-self: baseline;
           flex-shrink: 0;
+          height: auto;
+          width: auto;
         }
   >
     Baseline
@@ -179,6 +189,8 @@ exports[`HorizontalStack renders item alignments correctly 1`] = `
         {
           align-self: flex-start;
           flex-shrink: 0;
+          height: auto;
+          width: auto;
         }
   >
     Start
@@ -189,6 +201,8 @@ exports[`HorizontalStack renders item alignments correctly 1`] = `
         {
           align-self: center;
           flex-shrink: 0;
+          height: auto;
+          width: auto;
         }
   >
     Center
@@ -199,6 +213,8 @@ exports[`HorizontalStack renders item alignments correctly 1`] = `
         {
           align-self: flex-end;
           flex-shrink: 0;
+          height: auto;
+          width: auto;
         }
   >
     End
@@ -237,6 +253,8 @@ exports[`HorizontalStack renders shrinking items correctly 1`] = `
         ms-StackItem
         {
           flex-shrink: 1;
+          height: auto;
+          width: auto;
         }
   >
     Item 1
@@ -246,6 +264,8 @@ exports[`HorizontalStack renders shrinking items correctly 1`] = `
         ms-StackItem
         {
           flex-shrink: 0;
+          height: auto;
+          width: auto;
         }
   >
     Item 2
@@ -302,6 +322,8 @@ exports[`HorizontalStack renders wrapped HorizontalStack correctly 1`] = `
           ms-StackItem
           {
             flex-shrink: 0;
+            height: auto;
+            width: auto;
           }
     >
       1
@@ -311,6 +333,8 @@ exports[`HorizontalStack renders wrapped HorizontalStack correctly 1`] = `
           ms-StackItem
           {
             flex-shrink: 0;
+            height: auto;
+            width: auto;
           }
     >
       2
@@ -320,6 +344,8 @@ exports[`HorizontalStack renders wrapped HorizontalStack correctly 1`] = `
           ms-StackItem
           {
             flex-shrink: 0;
+            height: auto;
+            width: auto;
           }
     >
       3

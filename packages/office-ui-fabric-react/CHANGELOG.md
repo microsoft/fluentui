@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 18 Sep 2018 12:26:03 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Sep 2018 12:27:48 GMT and should not be manually modified.
+
+## 6.71.1
+Wed, 19 Sep 2018 12:27:48 GMT
+
+### Patches
+
+- Panel: pass click events to onDismiss handler
+- Refactor PivotItem & DialogFooter type comparison to use React.Element.type to address hot module replacement break.
 
 ## 6.71.0
 Tue, 18 Sep 2018 12:26:03 GMT

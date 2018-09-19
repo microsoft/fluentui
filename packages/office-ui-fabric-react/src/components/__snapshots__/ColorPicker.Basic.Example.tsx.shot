@@ -98,7 +98,8 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
       onMouseDown={[Function]}
       style={
         Object {
-          "background": "linear-gradient(to left,red 0,#f09 10%,#cd00ff 20%,#3200ff 30%,#06f 40%,#00fffd 50%,#0f6 60%,#35ff00 70%,#cdff00 80%,#f90 90%,red 100%)",
+          "background": "linear-gradient(to left,red 0,#f09 10%,#cd00ff 20%,#3200ff 30%,#06f 40%,#00fffd
+        50%,#0f6 60%,#35ff00 70%,#cdff00 80%,#f90 90%,red 100%)",
         }
       }
     >
@@ -150,7 +151,8 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
       onMouseDown={[Function]}
       style={
         Object {
-          "backgroundImage": "url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJUlEQVQYV2N89erVfwY0ICYmxoguxjgUFKI7GsTH5m4M3w1ChQC1/Ca8i2n1WgAAAABJRU5ErkJggg==)",
+          "backgroundImage": "url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AA
+        AAJUlEQVQYV2N89erVfwY0ICYmxoguxjgUFKI7GsTH5m4M3w1ChQC1/Ca8i2n1WgAAAABJRU5ErkJggg==)",
         }
       }
     >
