@@ -5,12 +5,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
   <div>
     <button
       aria-checked={true}
-      aria-describedby={undefined}
-      aria-disabled={undefined}
-      aria-label={undefined}
-      aria-labelledby={undefined}
-      aria-posinset={undefined}
-      aria-setsize={undefined}
       checked={true}
       className=
           ms-Checkbox
@@ -81,15 +75,11 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           &:focus .ms-Checkbox-text {
             color: #333333;
           }
-      data-ktp-execute-target={undefined}
-      disabled={undefined}
       id="checkbox-0"
-      name={undefined}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
       role="checkbox"
-      title={undefined}
       type="button"
     >
       <label
@@ -137,7 +127,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 background: Highlight;
                 border-color: Highlight;
               }
-          data-ktp-target={undefined}
         >
           <i
             aria-hidden={true}
@@ -238,7 +227,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           color: #212121;
         }
     size={9}
-    style={undefined}
   >
     <div
       className=
@@ -307,7 +295,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -331,7 +318,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -355,7 +341,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -379,7 +364,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -448,7 +432,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           color: #212121;
         }
     size={9}
-    style={undefined}
   >
     <div
       className=
@@ -488,7 +471,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               border: 1px solid WindowText;
               top: 9px;
             }
-        style={undefined}
       />
     </div>
     <div
@@ -521,7 +503,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -545,7 +526,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -569,7 +549,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -593,7 +572,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -662,7 +640,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           color: #212121;
         }
     size={10}
-    style={undefined}
   >
     <div
       className=
@@ -687,7 +664,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-align: center;
               width: 24px;
             }
-        style={undefined}
       >
         <div
           className=
@@ -732,7 +708,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 }
             onError={[Function]}
             onLoad={[Function]}
-            role={undefined}
             src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
           />
         </div>
@@ -758,7 +733,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 background-color: Highlight;
                 border-color: Window;
               }
-          style={undefined}
         />
       </div>
     </div>
@@ -791,7 +765,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -815,7 +788,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -839,7 +811,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -863,7 +834,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -932,7 +902,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           color: #212121;
         }
     size={7}
-    style={undefined}
   >
     <div
       className=
@@ -957,7 +926,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-align: center;
               width: 28px;
             }
-        style={undefined}
       >
         <div
           className=
@@ -1002,7 +970,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 }
             onError={[Function]}
             onLoad={[Function]}
-            role={undefined}
             src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
           />
         </div>
@@ -1028,7 +995,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 background-color: Highlight;
                 border-color: Window;
               }
-          style={undefined}
         />
       </div>
     </div>
@@ -1061,7 +1027,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -1085,7 +1050,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -1109,7 +1073,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -1133,7 +1096,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -1202,7 +1164,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           color: #212121;
         }
     size={11}
-    style={undefined}
   >
     <div
       className=
@@ -1227,7 +1188,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-align: center;
               width: 32px;
             }
-        style={undefined}
       >
         <div
           className=
@@ -1272,7 +1232,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 }
             onError={[Function]}
             onLoad={[Function]}
-            role={undefined}
             src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
           />
         </div>
@@ -1298,7 +1257,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 background-color: Highlight;
                 border-color: Window;
               }
-          style={undefined}
         />
       </div>
     </div>
@@ -1331,7 +1289,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -1355,7 +1312,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -1379,7 +1335,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -1403,7 +1358,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -1472,7 +1426,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           color: #212121;
         }
     size={12}
-    style={undefined}
   >
     <div
       className=
@@ -1497,7 +1450,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-align: center;
               width: 40px;
             }
-        style={undefined}
       >
         <div
           className=
@@ -1542,7 +1494,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 }
             onError={[Function]}
             onLoad={[Function]}
-            role={undefined}
             src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
           />
         </div>
@@ -1568,7 +1519,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 background-color: WindowText;
                 border-color: Window;
               }
-          style={undefined}
         >
           <i
             aria-hidden={true}
@@ -1594,7 +1544,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 }
             data-icon-name="SkypeClock"
             role="presentation"
-            style={undefined}
           >
             
           </i>
@@ -1630,7 +1579,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -1653,7 +1601,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -1677,7 +1624,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -1701,7 +1647,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -1770,7 +1715,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           color: #212121;
         }
     size={13}
-    style={undefined}
   >
     <div
       className=
@@ -1795,7 +1739,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-align: center;
               width: 48px;
             }
-        style={undefined}
       >
         <div
           className=
@@ -1840,7 +1783,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 }
             onError={[Function]}
             onLoad={[Function]}
-            role={undefined}
             src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
           />
         </div>
@@ -1866,7 +1808,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 background-color: WindowText;
                 border-color: Window;
               }
-          style={undefined}
         >
           <i
             aria-hidden={true}
@@ -1886,7 +1827,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 }
             data-icon-name=""
             role="presentation"
-            style={undefined}
           />
         </div>
       </div>
@@ -1920,7 +1860,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -1943,7 +1882,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -1967,7 +1905,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -1991,7 +1928,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -2060,7 +1996,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           color: #212121;
         }
     size={14}
-    style={undefined}
   >
     <div
       className=
@@ -2085,7 +2020,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-align: center;
               width: 72px;
             }
-        style={undefined}
       >
         <div
           className=
@@ -2130,7 +2064,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 }
             onError={[Function]}
             onLoad={[Function]}
-            role={undefined}
             src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
           />
         </div>
@@ -2156,7 +2089,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 background-color: WindowText;
                 border-color: Window;
               }
-          style={undefined}
         >
           <i
             aria-hidden={true}
@@ -2180,7 +2112,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 }
             data-icon-name="SkypeMinus"
             role="presentation"
-            style={undefined}
           >
             
           </i>
@@ -2216,7 +2147,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -2239,7 +2169,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -2263,7 +2192,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -2287,7 +2215,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -2356,7 +2283,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           color: #212121;
         }
     size={15}
-    style={undefined}
   >
     <div
       className=
@@ -2381,7 +2307,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-align: center;
               width: 100px;
             }
-        style={undefined}
       >
         <div
           className=
@@ -2426,7 +2351,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 }
             onError={[Function]}
             onLoad={[Function]}
-            role={undefined}
             src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
           />
         </div>
@@ -2485,7 +2409,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 left: 2px;
                 width: calc(100% - 4px);
               }
-          style={undefined}
         >
           <i
             aria-hidden={true}
@@ -2505,7 +2428,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 }
             data-icon-name=""
             role="presentation"
-            style={undefined}
           />
         </div>
       </div>
@@ -2539,7 +2461,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -2562,7 +2483,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -2586,7 +2506,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -2610,7 +2529,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             }
       >
         <div
-          aria-describedby={undefined}
           className="ms-TooltipHost"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}

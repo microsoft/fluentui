@@ -162,8 +162,15 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
 
   /**
    * Whether the close button should be shown or not
+   * @defaultvalue false
    */
   showCloseButton?: boolean;
+
+  /**
+   * Allows all dates and buttons to be focused, including disabled ones
+   * @defaultvalue false
+   */
+  allFocusable?: boolean;
 }
 
 export interface ICalendarStrings {

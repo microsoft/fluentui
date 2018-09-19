@@ -7,9 +7,10 @@ import { Dialog, DialogType, DialogFooter, PrimaryButton, DefaultButton } from '
 
 let footer = (
   <DialogFooter>
-    <PrimaryButton text='Save' />
-    <DefaultButton text='Cancel' />
-  </DialogFooter>);
+    <PrimaryButton text="Save" />
+    <DefaultButton text="Cancel" />
+  </DialogFooter>
+);
 
 let text = {
   title: 'All emails together',
@@ -19,54 +20,63 @@ let text = {
 storiesOf('Dialog', module)
   .addDecorator(FabricDecoratorTall)
   .addDecorator(story => (
-    <Screener
-      steps={ new Screener.Steps()
-        .snapshot('default', { cropTo: '.ms-Dialog-main' })
-        .end()
-      }
-    >
-      { story() }
-    </Screener>
+    <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.ms-Dialog-main' }).end()}>{story()}</Screener>
   ))
   .add('Root', () => (
     <Dialog
-      hidden={ false }
-      dialogContentProps={ {
+      hidden={false}
+      dialogContentProps={{
         type: DialogType.normal,
         ...text
-      } }
-      modalProps={ {
+      }}
+      modalProps={{
         isBlocking: false
-      } }
+      }}
     >
-      { footer }
+      {footer}
+    </Dialog>
+  ))
+  .add('Wide Dialog', () => (
+    <Dialog
+      hidden={false}
+      dialogContentProps={{
+        type: DialogType.normal,
+        ...text
+      }}
+      modalProps={{
+        isBlocking: false
+      }}
+      minWidth="500px"
+      maxWidth="600px"
+    >
+      {footer}
     </Dialog>
   ))
   .add('Large header', () => (
     <Dialog
-      hidden={ false }
-      dialogContentProps={ {
+      hidden={false}
+      dialogContentProps={{
         type: DialogType.largeHeader,
         ...text
-      } }
-      modalProps={ {
+      }}
+      modalProps={{
         isBlocking: false
-      } }
+      }}
     >
-      { footer }
+      {footer}
     </Dialog>
   ))
   .add('Blocking', () => (
     <Dialog
-      hidden={ false }
-      dialogContentProps={ {
+      hidden={false}
+      dialogContentProps={{
         type: DialogType.normal,
         ...text
-      } }
-      modalProps={ {
+      }}
+      modalProps={{
         isBlocking: true
-      } }
+      }}
     >
-      { footer }
+      {footer}
     </Dialog>
   ));

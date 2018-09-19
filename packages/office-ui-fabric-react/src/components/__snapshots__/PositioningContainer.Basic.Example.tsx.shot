@@ -6,11 +6,6 @@ exports[`Component Examples renders PositioningContainer.Basic.Example.tsx corre
     className="ms-PositioningContainerBasicExample-buttonArea"
   >
     <button
-      aria-describedby={undefined}
-      aria-disabled={undefined}
-      aria-label={undefined}
-      aria-labelledby={undefined}
-      aria-pressed={undefined}
       className=
           ms-Button
           ms-Button--default
@@ -63,6 +58,11 @@ exports[`Component Examples renders PositioningContainer.Basic.Example.tsx corre
             right: -2px;
             top: -2px;
           }
+          &:active > * {
+            left: 0px;
+            position: relative;
+            top: 0px;
+          }
           &:hover {
             background-color: #eaeaea;
             color: #212121;
@@ -76,7 +76,6 @@ exports[`Component Examples renders PositioningContainer.Basic.Example.tsx corre
             color: #212121;
           }
       data-is-focusable={true}
-      disabled={undefined}
       onClick={[Function]}
       onKeyDown={[Function]}
       onKeyPress={[Function]}

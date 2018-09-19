@@ -18,7 +18,6 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
           justify-content: flex-start;
           margin-top: 20px;
         }
-    style={undefined}
   >
     <div
       className=
@@ -100,7 +99,6 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
                   text-align: center;
                   width: 16px;
                 }
-            style={undefined}
           >
             <div
               className=
@@ -145,7 +143,6 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
                     }
                 onError={[Function]}
                 onLoad={[Function]}
-                role={undefined}
                 src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
               />
             </div>
@@ -205,7 +202,6 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
           justify-content: flex-start;
           margin-top: 20px;
         }
-    style={undefined}
   >
     <div
       className=
@@ -287,7 +283,6 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
                   text-align: center;
                   width: 16px;
                 }
-            style={undefined}
           >
             <div
               aria-hidden="true"
@@ -309,7 +304,6 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
                     box-sizing: border-box;
                     color: WindowText;
                   }
-              style={undefined}
             >
               <span>
                 PT
@@ -353,7 +347,6 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
                   text-align: center;
                   width: 16px;
                 }
-            style={undefined}
           >
             <div
               className=
@@ -398,7 +391,6 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
                     }
                 onError={[Function]}
                 onLoad={[Function]}
-                role={undefined}
                 src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-male.png"
               />
             </div>
@@ -440,7 +432,6 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
                   text-align: center;
                   width: 16px;
                 }
-            style={undefined}
           >
             <div
               aria-hidden="true"
@@ -462,7 +453,6 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
                     box-sizing: border-box;
                     color: WindowText;
                   }
-              style={undefined}
             >
               <span>
                 EC
@@ -534,7 +524,6 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
           justify-content: flex-start;
           margin-top: 20px;
         }
-    style={undefined}
   >
     <div
       className=
@@ -638,7 +627,6 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
           justify-content: flex-start;
           margin-top: 20px;
         }
-    style={undefined}
   >
     <div
       className=

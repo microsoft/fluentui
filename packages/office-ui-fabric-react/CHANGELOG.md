@@ -1,6 +1,98 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 07 Sep 2018 16:29:48 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Sep 2018 12:26:03 GMT and should not be manually modified.
+
+## 6.71.0
+Tue, 18 Sep 2018 12:26:03 GMT
+
+### Minor changes
+
+- Panel: Extend props to HTMLAttributes
+
+## 6.70.0
+Mon, 17 Sep 2018 12:27:05 GMT
+
+### Minor changes
+
+- Add conformance tests to verify that components take a className property
+
+### Patches
+
+- SpinButton: SpinButton: Preventing and Stopping Propagation when enter is pressed
+- Coachmark: Fix tabbing when Coachmark is mounted
+- Fix DetailsList columnReorderProps change not causing render
+- Example updated with the implementation of onRenderDivider for DetailsList
+
+## 6.69.0
+Fri, 14 Sep 2018 01:55:02 GMT
+
+### Minor changes
+
+- Adds an optional prop to the DatePicker that allows disabled elements to be focused (although not pressed)
+
+### Patches
+
+- added functional unit tests for drag-drop feature
+
+## 6.68.0
+Thu, 13 Sep 2018 17:38:04 GMT
+
+### Minor changes
+
+- Adds new semantic slots per design direction
+
+### Patches
+
+- Teaching Bubble: Fix outline on content that produces undesirable visuals
+- Fixes SwatchColorPicker swatches shifting when isWhite swatch not at end of row due to 1px different in border-width
+- Hide duplicate keytips and give console warning if found
+- Fix Selection count not updating when items are removed
+
+## 6.67.3
+Wed, 12 Sep 2018 12:26:41 GMT
+
+### Patches
+
+- SpinButton: Added SpinButton snapshot and simplified ariaValueNow logic
+- Button: Fix splitButton focus issue with Portals
+- Check whether meta key is pressed during selection
+
+## 6.67.2
+Tue, 11 Sep 2018 07:28:02 GMT
+
+### Patches
+
+- removed the check for event to be an instanceof DragEvent in the onDrop method
+- Make button respect no global class names flag
+- update datepicker to allow IE to work with input field while retaining the accessibility
+- Revert removal of should render DatePicker guard given focus changes with Layer changes.
+- Fixed_groupheader_checkbox_aria_label_accessibility_issue
+
+## 6.67.1
+Tue, 11 Sep 2018 02:54:40 GMT
+
+### Patches
+
+- IconButton: now with less IE11 shifting pixels.
+- add safeguard in contextualmenu against doing setstate while unmounted
+
+## 6.67.0
+Mon, 10 Sep 2018 10:24:57 GMT
+
+### Minor changes
+
+- adding min and maxwidth to dialog
+
+### Patches
+
+- Fixed key not found issue with contextmenu with custom onRender per item
+
+## 6.66.1
+Fri, 07 Sep 2018 22:04:50 GMT
+
+### Patches
+
+- Check: adjusting shouldComponentUpdate to not ignore theme changes.
 
 ## 6.66.0
 Fri, 07 Sep 2018 16:29:48 GMT

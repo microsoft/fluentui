@@ -16,7 +16,6 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
         font-weight: 400;
         justify-content: flex-start;
       }
-  style={undefined}
 >
   <div
     className=
@@ -98,7 +97,6 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
                 text-align: center;
                 width: 16px;
               }
-          style={undefined}
         >
           <div
             aria-hidden="true"
@@ -120,7 +118,6 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
                   box-sizing: border-box;
                   color: WindowText;
                 }
-            style={undefined}
           >
             <span>
               TN
@@ -175,7 +172,6 @@ exports[`ActivityItem renders compact with an icon correctly 1`] = `
         font-weight: 400;
         justify-content: flex-start;
       }
-  style={undefined}
 >
   <div
     className=
@@ -275,7 +271,6 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
         font-weight: 400;
         justify-content: flex-start;
       }
-  style={undefined}
 >
   <div
     className=
@@ -376,7 +371,6 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
                 text-align: center;
                 width: 16px;
               }
-          style={undefined}
         >
           <div
             aria-hidden="true"
@@ -398,7 +392,6 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
                   box-sizing: border-box;
                   color: WindowText;
                 }
-            style={undefined}
           >
             <span>
               TN
@@ -456,7 +449,6 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
         font-weight: 400;
         justify-content: flex-start;
       }
-  style={undefined}
 >
   <div
     className=
@@ -538,7 +530,6 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                 text-align: center;
                 width: 16px;
               }
-          style={undefined}
         >
           <div
             aria-hidden="true"
@@ -560,7 +551,6 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                   box-sizing: border-box;
                   color: WindowText;
                 }
-            style={undefined}
           >
             <span>
               TN
@@ -604,7 +594,6 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                 text-align: center;
                 width: 16px;
               }
-          style={undefined}
         >
           <div
             className=
@@ -649,7 +638,6 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                   }
               onError={[Function]}
               onLoad={[Function]}
-              role={undefined}
               src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
             />
           </div>
@@ -691,7 +679,6 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                 text-align: center;
                 width: 16px;
               }
-          style={undefined}
         >
           <div
             aria-hidden="true"
@@ -713,7 +700,6 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                   box-sizing: border-box;
                   color: WindowText;
                 }
-            style={undefined}
           >
             <span>
               AN
@@ -768,7 +754,6 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
         font-weight: 400;
         justify-content: flex-start;
       }
-  style={undefined}
 >
   <div
     className=
@@ -805,7 +790,6 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
               font-weight: 400;
             }
         size={11}
-        style={undefined}
       >
         <div
           className=
@@ -817,7 +801,6 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
                 text-align: center;
                 width: 32px;
               }
-          style={undefined}
         >
           <div
             aria-hidden="true"
@@ -839,7 +822,6 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
                   box-sizing: border-box;
                   color: WindowText;
                 }
-            style={undefined}
           >
             <span>
               TN
@@ -915,7 +897,6 @@ exports[`ActivityItem renders with an icon correctly 1`] = `
         font-weight: 400;
         justify-content: flex-start;
       }
-  style={undefined}
 >
   <div
     className=
@@ -1012,7 +993,6 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
         font-weight: 400;
         justify-content: flex-start;
       }
-  style={undefined}
 >
   <div
     className=
@@ -1049,7 +1029,6 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
               font-weight: 400;
             }
         size={8}
-        style={undefined}
       >
         <div
           className=
@@ -1061,7 +1040,6 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                 text-align: center;
                 width: 16px;
               }
-          style={undefined}
         >
           <div
             aria-hidden="true"
@@ -1083,7 +1061,6 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                   box-sizing: border-box;
                   color: WindowText;
                 }
-            style={undefined}
           >
             <span>
               TN
@@ -1105,7 +1082,6 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
               font-weight: 400;
             }
         size={8}
-        style={undefined}
       >
         <div
           className=
@@ -1117,7 +1093,6 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                 text-align: center;
                 width: 16px;
               }
-          style={undefined}
         >
           <div
             className=
@@ -1162,7 +1137,6 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                   }
               onError={[Function]}
               onLoad={[Function]}
-              role={undefined}
               src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
             />
           </div>
@@ -1182,7 +1156,6 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
               font-weight: 400;
             }
         size={8}
-        style={undefined}
       >
         <div
           className=
@@ -1194,7 +1167,6 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                 text-align: center;
                 width: 16px;
               }
-          style={undefined}
         >
           <div
             aria-hidden="true"
@@ -1216,7 +1188,6 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                   box-sizing: border-box;
                   color: WindowText;
                 }
-            style={undefined}
           >
             <span>
               AN
@@ -1238,7 +1209,6 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
               font-weight: 400;
             }
         size={8}
-        style={undefined}
       >
         <div
           className=
@@ -1250,7 +1220,6 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                 text-align: center;
                 width: 16px;
               }
-          style={undefined}
         >
           <div
             className=
@@ -1295,7 +1264,6 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                   }
               onError={[Function]}
               onLoad={[Function]}
-              role={undefined}
               src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-male.png"
             />
           </div>

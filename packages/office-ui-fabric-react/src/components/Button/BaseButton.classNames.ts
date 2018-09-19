@@ -1,6 +1,7 @@
 import { memoizeFunction } from '../../Utilities';
-import { mergeStyleSets } from '../../Styling';
+import { ITheme, mergeStyleSets } from '../../Styling';
 import { IButtonStyles } from './Button.types';
+import { getGlobalClassNames } from '../../Styling';
 
 export interface IButtonClassNames {
   root?: string;
@@ -13,8 +14,20 @@ export interface IButtonClassNames {
   screenReaderText?: string;
 }
 
+const GlobalClassNames = {
+  msButton: 'ms-Button',
+  msButtonIcon: 'ms-Button-icon',
+  msButtonMenuIcon: 'ms-Button-menuIcon',
+  msButtonLabel: 'ms-Button-label',
+  msButtonDescription: 'ms-Button-description',
+  msButtonScreenReaderText: 'ms-Button-screenReaderText',
+  msButtonFlexContainer: 'ms-Button-flexContainer',
+  msButtonTextContainer: 'ms-Button-textContainer'
+};
+
 export const getBaseButtonClassNames = memoizeFunction(
   (
+    theme: ITheme,
     styles: IButtonStyles,
     className: string,
     variantClassName: string,
@@ -25,10 +38,12 @@ export const getBaseButtonClassNames = memoizeFunction(
     expanded: boolean,
     isSplit: boolean | undefined
   ): IButtonClassNames => {
+    const classNames = getGlobalClassNames(GlobalClassNames, theme || {});
+
     const isExpanded = expanded && !isSplit;
     return mergeStyleSets({
       root: [
-        'ms-Button',
+        classNames.msButton,
         styles.root,
         variantClassName,
         checked && ['is-checked', styles.rootChecked],
@@ -37,9 +52,9 @@ export const getBaseButtonClassNames = memoizeFunction(
           styles.rootExpanded,
           {
             selectors: {
-              ':hover .ms-Button-icon': styles.iconExpandedHovered,
+              [`:hover .${classNames.msButtonIcon}`]: styles.iconExpandedHovered,
               // menuIcon falls back to rootExpandedHovered to support original behavior
-              ':hover .ms-Button-menuIcon': styles.menuIconExpandedHovered || styles.rootExpandedHovered,
+              [`:hover .${classNames.msButtonMenuIcon}`]: styles.menuIconExpandedHovered || styles.rootExpandedHovered,
               ':hover': styles.rootExpandedHovered
             }
           }
@@ -50,15 +65,15 @@ export const getBaseButtonClassNames = memoizeFunction(
           !checked && {
             selectors: {
               ':hover': styles.rootHovered,
-              ':hover .ms-Button-label': styles.labelHovered,
-              ':hover .ms-Button-icon': styles.iconHovered,
-              ':hover .ms-Button-description': styles.descriptionHovered,
-              ':hover .ms-Button-menuIcon': styles.menuIconHovered,
+              [`:hover .${classNames.msButtonLabel}`]: styles.labelHovered,
+              [`:hover .${classNames.msButtonIcon}`]: styles.iconHovered,
+              [`:hover .${classNames.msButtonDescription}`]: styles.descriptionHovered,
+              [`:hover .${classNames.msButtonMenuIcon}`]: styles.menuIconHovered,
               ':focus': styles.rootFocused,
               ':active': styles.rootPressed,
-              ':active .ms-Button-icon': styles.iconPressed,
-              ':active .ms-Button-description': styles.descriptionPressed,
-              ':active .ms-Button-menuIcon': styles.menuIconPressed
+              [`:active .${classNames.msButtonIcon}`]: styles.iconPressed,
+              [`:active .${classNames.msButtonDescription}`]: styles.descriptionPressed,
+              [`:active .${classNames.msButtonMenuIcon}`]: styles.menuIconPressed
             }
           },
         disabled && checked && [styles.rootCheckedDisabled],
@@ -71,19 +86,19 @@ export const getBaseButtonClassNames = memoizeFunction(
           },
         className
       ],
-      flexContainer: ['ms-Button-flexContainer', styles.flexContainer],
-      textContainer: ['ms-Button-textContainer', styles.textContainer],
+      flexContainer: [classNames.msButtonFlexContainer, styles.flexContainer],
+      textContainer: [classNames.msButtonTextContainer, styles.textContainer],
       icon: [
-        'ms-Button-icon',
+        classNames.msButtonIcon,
         iconClassName,
         styles.icon,
         isExpanded && styles.iconExpanded,
         checked && styles.iconChecked,
         disabled && styles.iconDisabled
       ],
-      label: ['ms-Button-label', styles.label, checked && styles.labelChecked, disabled && styles.labelDisabled],
+      label: [classNames.msButtonLabel, styles.label, checked && styles.labelChecked, disabled && styles.labelDisabled],
       menuIcon: [
-        'ms-Button-menuIcon',
+        classNames.msButtonMenuIcon,
         menuIconClassName,
         styles.menuIcon,
         checked && styles.menuIconChecked,
@@ -99,12 +114,12 @@ export const getBaseButtonClassNames = memoizeFunction(
         isExpanded && ['is-expanded', styles.menuIconExpanded]
       ],
       description: [
-        'ms-Button-description',
+        classNames.msButtonDescription,
         styles.description,
         checked && styles.descriptionChecked,
         disabled && styles.descriptionDisabled
       ],
-      screenReaderText: ['ms-Button-screenReaderText', styles.screenReaderText]
+      screenReaderText: [classNames.msButtonScreenReaderText, styles.screenReaderText]
     });
   }
 );
