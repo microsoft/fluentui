@@ -1,6 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Wed, 12 Sep 2018 12:26:41 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Sep 2018 01:55:02 GMT and should not be manually modified.
+
+## 0.21.0
+Fri, 14 Sep 2018 01:55:02 GMT
+
+### Minor changes
+
+- Updating target for callout so that the callout follows cursor
 
 ## 0.20.0
 Wed, 12 Sep 2018 12:26:41 GMT

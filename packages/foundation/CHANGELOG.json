@@ -2,6 +2,20 @@
   "name": "@uifabric/foundation",
   "entries": [
     {
+      "version": "0.5.2",
+      "tag": "@uifabric/foundation_v0.5.2",
+      "date": "Mon, 17 Sep 2018 12:27:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Refactor Foundation to remove code duplication, ease props typing, and make option parameter definition more consistent.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "25776c70eddcecb59d4d622c8d22bfa43a8c2d2a"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.5.1",
       "tag": "@uifabric/foundation_v0.5.1",
       "date": "Mon, 10 Sep 2018 10:24:57 GMT",

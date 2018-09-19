@@ -835,7 +835,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         return;
       }
       if (this.props.multiSelect) {
-        // Setting the initial state of option.selected in Multi-select combobox by checking the selectedIndices array and overriding the undefined issue
+        // Setting the initial state of option.selected in Multi-select combobox by checking the
+        // selectedIndices array and overriding the undefined issue
         option.selected = option.selected !== undefined ? !option.selected : selectedIndices.indexOf(index) < 0;
         if (option.selected && selectedIndices.indexOf(index) < 0) {
           selectedIndices.push(index);

@@ -1,11 +1,12 @@
 import { IPartialStackProps } from '../Stack.types';
-import { IStyle } from 'office-ui-fabric-react';
+import { IStyleFunctionOrObject } from '../../../Utilities';
+import { IStyle } from '../../../Styling';
 
 export interface IVerticalStackProps extends IPartialStackProps {
   /**
    * How to render the VerticalStack.
    */
-  renderAs?: string | React.ReactType<IVerticalStackProps>;
+  as?: string | React.ReactType<IVerticalStackProps>;
 
   /**
    * How to align child elements vertically.
@@ -16,6 +17,11 @@ export interface IVerticalStackProps extends IPartialStackProps {
    * How to align child elements horizontally.
    */
   horizontalAlign?: 'left' | 'right' | 'center' | 'baseline' | 'stretch';
+
+  /**
+   * Custom styles to apply to the VerticalStack.
+   */
+  styles?: IStyleFunctionOrObject<IVerticalStackProps, IVerticalStackStyles>;
 }
 
 export interface IVerticalStackStyles {

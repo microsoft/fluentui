@@ -2,6 +2,34 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "6.26.0",
+      "tag": "@uifabric/styling_v6.26.0",
+      "date": "Wed, 19 Sep 2018 12:27:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Theming: add ISpacing interface and spacing property",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "813d94f140fdb8054136f3632d88f529e302ca09"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.25.0",
+      "tag": "@uifabric/styling_v6.25.0",
+      "date": "Tue, 18 Sep 2018 12:26:03 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Theming: add ISpacing interface and spacing property",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "acab328b7c244a50ff2369c577b15008f1a75c1a"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.24.0",
       "tag": "@uifabric/styling_v6.24.0",
       "date": "Thu, 13 Sep 2018 17:38:04 GMT",

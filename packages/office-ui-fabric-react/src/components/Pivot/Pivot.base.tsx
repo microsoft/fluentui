@@ -1,13 +1,5 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  KeyCodes,
-  getId,
-  getNativeProps,
-  divProperties,
-  createRef,
-  classNamesFunction
-} from '../../Utilities';
+import { BaseComponent, KeyCodes, getId, getNativeProps, divProperties, createRef, classNamesFunction } from '../../Utilities';
 import { CommandButton } from '../../Button';
 import { IPivotProps, IPivotStyleProps, IPivotStyles } from './Pivot.types';
 import { IPivotItemProps } from './PivotItem.types';
@@ -41,8 +33,7 @@ export interface IPivotState {
   selectedTabId: string;
 }
 
-// Use regular React.createElement because `<PivotItem />.type` breaks prettier.
-const PivotItemType = React.createElement(PivotItem).type;
+const PivotItemType = (<PivotItem /> as React.ReactElement<IPivotItemProps>).type;
 
 export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
   private _keyToIndexMapping: { [key: string]: number };
