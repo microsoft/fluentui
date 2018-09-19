@@ -55,7 +55,7 @@ export class CalloutCoverExample extends React.Component<{}, ICalloutCoverExampl
             onChange={this._onDirectionalChanged}
           />
         </div>
-        <div className="ms-CalloutCoverExample-buttonArea" ref={menuButton => (this._menuButtonElement = menuButton)}>
+        <div className="ms-CalloutCoverExample-buttonArea" ref={(menuButton: HTMLDivElement) => (this._menuButtonElement = menuButton)}>
           <DefaultButton text={isCalloutVisible ? 'Hide callout' : 'Show callout'} onClick={this._onShowMenuClicked} />
         </div>
         {isCalloutVisible ? (

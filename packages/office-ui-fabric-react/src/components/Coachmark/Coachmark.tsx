@@ -21,13 +21,7 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 
 // Coachmark
 import { ICoachmark, ICoachmarkProps } from './Coachmark.types';
-import {
-  COACHMARK_HEIGHT,
-  COACHMARK_WIDTH,
-  getStyles,
-  ICoachmarkStyles,
-  ICoachmarkStyleProps
-} from './Coachmark.styles';
+import { COACHMARK_HEIGHT, COACHMARK_WIDTH, getStyles, ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.styles';
 import { FocusTrapZone } from '../../FocusTrapZone';
 
 const getClassNames = classNamesFunction<ICoachmarkStyleProps, ICoachmarkStyles>();
@@ -226,12 +220,7 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> i
       >
         <div className={classNames.root}>
           {ariaAlertText && (
-            <div
-              className={classNames.ariaContainer}
-              role="alert"
-              ref={this._ariaAlertContainer}
-              aria-hidden={!isCollapsed}
-            >
+            <div className={classNames.ariaContainer} role="alert" ref={this._ariaAlertContainer} aria-hidden={!isCollapsed}>
               {alertText}
             </div>
           )}
@@ -250,11 +239,7 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> i
                       color={color}
                     />
                   )}
-                <FocusTrapZone
-                  componentRef={this._focusTrapZone}
-                  isClickableOutsideFocusTrap={true}
-                  forceFocusInsideTrap={false}
-                >
+                <FocusTrapZone componentRef={this._focusTrapZone} isClickableOutsideFocusTrap={true} forceFocusInsideTrap={false}>
                   <div
                     className={classNames.entityHost}
                     tabIndex={-1}
@@ -275,11 +260,7 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> i
                         </p>
                       )
                     ]}
-                    <div
-                      className={classNames.entityInnerHost}
-                      ref={this._entityInnerHostElement}
-                      aria-hidden={isCollapsed}
-                    >
+                    <div className={classNames.entityInnerHost} ref={this._entityInnerHostElement} aria-hidden={isCollapsed}>
                       {children}
                     </div>
                   </div>
@@ -304,10 +285,7 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> i
   }
 
   public componentDidUpdate(prevProps: ICoachmarkProps, prevState: ICoachmarkState): void {
-    if (
-      prevState.targetAlignment !== this.state.targetAlignment ||
-      prevState.targetPosition !== this.state.targetPosition
-    ) {
+    if (prevState.targetAlignment !== this.state.targetAlignment || prevState.targetPosition !== this.state.targetPosition) {
       this._setBeakPosition();
     }
     if (prevProps.preventDismissOnLostFocus !== this.props.preventDismissOnLostFocus) {
@@ -318,10 +296,7 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> i
   public componentDidMount(): void {
     this._async.requestAnimationFrame(
       (): void => {
-        if (
-          this._entityInnerHostElement.current &&
-          this.state.entityInnerHostRect.width + this.state.entityInnerHostRect.width === 0
-        ) {
+        if (this._entityInnerHostElement.current && this.state.entityInnerHostRect.width + this.state.entityInnerHostRect.width === 0) {
           this.setState({
             isMeasuring: false,
             entityInnerHostRect: {
@@ -383,11 +358,10 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> i
     }
   }
 
-  private _dismissOnLostFocus(ev: Event) {
+  private _dismissOnLostFocus(ev: Event): void {
     const clickTarget = ev.target as HTMLElement;
     const clickedOutsideCallout =
-      this._translateAnimationContainer.current &&
-      !elementContains(this._translateAnimationContainer.current, clickTarget);
+      this._translateAnimationContainer.current && !elementContains(this._translateAnimationContainer.current, clickTarget);
     const { target } = this.props;
 
     if (clickedOutsideCallout && clickTarget !== target && !elementContains(target as HTMLElement, clickTarget)) {

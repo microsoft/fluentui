@@ -86,7 +86,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     this._positionAttempts = 0;
   }
 
-  public componentDidUpdate() {
+  public componentDidUpdate(): void {
     this._setInitialFocus();
     if (!this.props.hidden) {
       if (!this._hasListeners) {
@@ -100,7 +100,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     }
   }
 
-  public componentWillMount() {
+  public componentWillMount(): void {
     this._setTargetWindowAndElement(this._getTarget());
   }
 
@@ -162,13 +162,9 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     target = this._getTarget();
     const { positions } = this.state;
 
-    const getContentMaxHeight: number | undefined = this._getMaxHeight()
-      ? this._getMaxHeight()! + this.state.heightOffset!
-      : undefined;
+    const getContentMaxHeight: number | undefined = this._getMaxHeight() ? this._getMaxHeight()! + this.state.heightOffset! : undefined;
     const contentMaxHeight: number | undefined =
-      calloutMaxHeight! && getContentMaxHeight && calloutMaxHeight! < getContentMaxHeight
-        ? calloutMaxHeight!
-        : getContentMaxHeight!;
+      calloutMaxHeight! && getContentMaxHeight && calloutMaxHeight! < getContentMaxHeight ? calloutMaxHeight! : getContentMaxHeight!;
     const overflowYHidden = hideOverflow;
 
     const beakVisible = isBeakVisible && !!target;
@@ -233,14 +229,14 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     }
   };
 
-  protected _dismissOnScroll(ev: Event) {
+  protected _dismissOnScroll(ev: Event): void {
     const { preventDismissOnScroll } = this.props;
     if (this.state.positions && !preventDismissOnScroll) {
       this._dismissOnLostFocus(ev);
     }
   }
 
-  protected _dismissOnLostFocus(ev: Event) {
+  protected _dismissOnLostFocus(ev: Event): void {
     const target = ev.target as HTMLElement;
     const clickedOutsideCallout = this._hostElement.current && !elementContains(this._hostElement.current, target);
     const { preventDismissOnLostFocus } = this.props;
@@ -258,12 +254,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   }
 
   protected _setInitialFocus = (): void => {
-    if (
-      this.props.setInitialFocus &&
-      !this._didSetInitialFocus &&
-      this.state.positions &&
-      this._calloutElement.current
-    ) {
+    if (this.props.setInitialFocus && !this._didSetInitialFocus && this.state.positions && this._calloutElement.current) {
       this._didSetInitialFocus = true;
       this._async.requestAnimationFrame(() => focusFirstChild(this._calloutElement.current!));
     }
@@ -280,7 +271,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     this._setHeightOffsetEveryFrame();
   };
 
-  private _addListeners() {
+  private _addListeners(): void {
     // This is added so the callout will dismiss when the window is scrolled
     // but not when something inside the callout is scrolled. The delay seems
     // to be required to avoid React firing an async focus event in IE from
@@ -294,7 +285,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     }, 0);
   }
 
-  private _removeListeners() {
+  private _removeListeners(): void {
     this._events.off(this._targetWindow, 'scroll', this._dismissOnScroll, true);
     this._events.off(this._targetWindow, 'resize', this.dismiss, true);
     this._events.off(this._targetWindow.document.documentElement, 'focus', this._dismissOnLostFocus, true);
@@ -337,12 +328,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
       currentProps = assign(currentProps, this.props);
       currentProps!.bounds = this._getBounds();
       currentProps!.target = this._target!;
-      const newPositions: ICalloutPositionedInfo = positionCallout(
-        currentProps!,
-        hostElement,
-        calloutElement,
-        positions
-      );
+      const newPositions: ICalloutPositionedInfo = positionCallout(currentProps!, hostElement, calloutElement, positions);
 
       // Set the new position only when the positions are not exists or one of the new callout positions are different.
       // The position should not change if the position is within 2 decimal places.
@@ -396,13 +382,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
         const totalGap = gapSpace + beakWidth! + BORDER_WIDTH * 2;
         this._async.requestAnimationFrame(() => {
           if (this._target) {
-            this._maxHeight = getMaxHeight(
-              this._target,
-              this.props.directionalHint!,
-              totalGap,
-              this._getBounds(),
-              this.props.coverTarget
-            );
+            this._maxHeight = getMaxHeight(this._target, this.props.directionalHint!, totalGap, this._getBounds(), this.props.coverTarget);
             this.forceUpdate();
           }
         });

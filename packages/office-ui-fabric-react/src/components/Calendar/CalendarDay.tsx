@@ -219,7 +219,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
             <thead>
               <tr>
                 {showWeekNumbers && <th className={css('ms-DatePicker-weekday', styles.weekday)} />}
-                {strings.shortDays.map((val, index) => (
+                {strings.shortDays.map((val: string, index: number) => (
                   <th
                     className={css('ms-DatePicker-weekday', styles.weekday)}
                     role="gridcell"
@@ -238,7 +238,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               onMouseLeave={dateRangeType !== DateRangeType.Day ? this._onTableMouseLeave : undefined}
               onMouseUp={dateRangeType !== DateRangeType.Day ? this._onTableMouseUp : undefined}
             >
-              {weeks!.map((week, weekIndex) => (
+              {weeks!.map((week: IDayInfo[], weekIndex: number) => (
                 <tr key={weekNumbers ? weekNumbers[weekIndex] : weekIndex}>
                   {showWeekNumbers &&
                     weekNumbers && (
@@ -263,7 +263,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                         </div>
                       </th>
                     )}
-                  {week.map((day, dayIndex) => {
+                  {week.map((day: IDayInfo, dayIndex: number) => {
                     const isNavigatedDate = compareDates(navigatedDate, day.originalDate);
                     return (
                       <td
@@ -282,7 +282,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                             ['ms-DatePicker-day--outfocus ' + styles.dayIsUnfocused]: day.isInBounds && !day.isInMonth
                           }
                         )}
-                        ref={element => this._setDayCellRef(element, day, isNavigatedDate)}
+                        ref={(element: HTMLTableCellElement) => this._setDayCellRef(element, day, isNavigatedDate)}
                         onMouseOver={
                           dateRangeType !== DateRangeType.Day
                             ? this._onDayMouseOver(day.originalDate, weekIndex, dayIndex, dateRangeType)
@@ -318,7 +318,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                           id={isNavigatedDate ? activeDescendantId : undefined}
                           aria-selected={day.isInBounds ? day.isSelected : undefined}
                           data-is-focusable={allFocusable || (day.isInBounds ? true : undefined)}
-                          ref={element => this._setDayRef(element, day, isNavigatedDate)}
+                          ref={(element: HTMLButtonElement) => this._setDayRef(element, day, isNavigatedDate)}
                           disabled={!allFocusable && !day.isInBounds}
                           aria-disabled={!day.isInBounds}
                         >
@@ -336,7 +336,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     );
   }
 
-  public focus() {
+  public focus(): void {
     if (this.navigatedDay) {
       this.navigatedDay.tabIndex = 0;
       this.navigatedDay.focus();
@@ -482,14 +482,14 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     return (ev: React.MouseEvent<HTMLElement>): void => {
       // set the press styling
       if (dateRangeType === DateRangeType.Month) {
-        this._applyFunctionToDayRefs((ref, day) => {
+        this._applyFunctionToDayRefs((ref: HTMLElement, day: IDayInfo) => {
           if (ref && day.originalDate.getMonth() === originalDate.getMonth()) {
             ref.classList.add(styles.dayPress);
           }
         });
       } else {
         // week or work week view
-        this._applyFunctionToDayRefs((ref, day, dayWeekIndex) => {
+        this._applyFunctionToDayRefs((ref: HTMLElement, day: IDayInfo, dayWeekIndex: number) => {
           if (ref && dayWeekIndex === weekIndex) {
             ref.classList.add(styles.dayPress);
             ref.classList.add(styles.dayIsHighlighted);
@@ -510,14 +510,14 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     return (ev: React.MouseEvent<HTMLElement>): void => {
       // remove press styling
       if (dateRangeType === DateRangeType.Month) {
-        this._applyFunctionToDayRefs((ref, day) => {
+        this._applyFunctionToDayRefs((ref: HTMLElement, day: IDayInfo) => {
           if (ref && day.originalDate.getMonth() === originalDate.getMonth()) {
             ref.classList.remove(styles.dayPress);
           }
         });
       } else {
         // week or work week view
-        this._applyFunctionToDayRefs((ref, day, dayWeekIndex) => {
+        this._applyFunctionToDayRefs((ref: HTMLElement, day: IDayInfo, dayWeekIndex: number) => {
           if (ref && dayWeekIndex === weekIndex) {
             ref.classList.remove(styles.dayPress);
           }
@@ -535,14 +535,14 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     return (ev: React.MouseEvent<HTMLElement>): void => {
       // set the hover styling on every day in the same month
       if (dateRangeType === DateRangeType.Month) {
-        this._applyFunctionToDayRefs((ref, day) => {
+        this._applyFunctionToDayRefs((ref: HTMLElement, day: IDayInfo) => {
           if (ref && day.originalDate.getMonth() === originalDate.getMonth()) {
             ref.classList.add(styles.dayHover);
           }
         });
       } else {
         // week or work week view
-        this._applyFunctionToDayRefs((ref, day, dayWeekIndex) => {
+        this._applyFunctionToDayRefs((ref: HTMLElement, day: IDayInfo, dayWeekIndex: number) => {
           if (ref && dayWeekIndex === weekIndex) {
             ref.classList.add(styles.dayHover);
           }
@@ -560,14 +560,14 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     return (ev: React.MouseEvent<HTMLElement>): void => {
       // remove the hover and pressed styling
       if (dateRangeType === DateRangeType.Month) {
-        this._applyFunctionToDayRefs((ref, day) => {
+        this._applyFunctionToDayRefs((ref: HTMLElement, day: IDayInfo) => {
           if (ref && day.originalDate.getMonth() === originalDate.getMonth()) {
             ref.classList.remove(styles.dayHover);
           }
         });
       } else {
         // week or work week view
-        this._applyFunctionToDayRefs((ref, day, dayWeekIndex) => {
+        this._applyFunctionToDayRefs((ref: HTMLElement, da: IDayInfo, dayWeekIndex: number) => {
           if (ref && dayWeekIndex === weekIndex) {
             ref.classList.remove(styles.dayHover);
           }
@@ -586,7 +586,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       return;
     }
 
-    this._applyFunctionToDayRefs((ref, day) => {
+    this._applyFunctionToDayRefs((ref: HTMLElement, day: IDayInfo) => {
       if (ref) {
         ref.classList.remove(styles.dayHover);
         ref.classList.remove(styles.dayPress);
@@ -604,17 +604,17 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       return;
     }
 
-    this._applyFunctionToDayRefs((ref, day) => {
+    this._applyFunctionToDayRefs((ref: HTMLElement, day: IDayInfo) => {
       if (ref) {
         ref.classList.remove(styles.dayPress);
       }
     });
   };
 
-  private _applyFunctionToDayRefs(func: (ref: HTMLElement | null, day: IDayInfo, weekIndex?: number) => void) {
+  private _applyFunctionToDayRefs(func: (ref: HTMLElement | null, day: IDayInfo, weekIndex?: number) => void): void {
     if (this.state.weeks) {
       this.state.weeks.map((week: IDayInfo[], weekIndex: number) => {
-        week.map(day => {
+        week.map((day: IDayInfo) => {
           const ref = this.days[day.key];
           func(ref, day, weekIndex);
         });
@@ -773,10 +773,10 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   private _getBoundedDateRange(dateRange: Date[], minDate?: Date, maxDate?: Date): Date[] {
     let boundedDateRange = [...dateRange];
     if (minDate) {
-      boundedDateRange = boundedDateRange.filter(date => compareDatePart(date, minDate as Date) >= 0);
+      boundedDateRange = boundedDateRange.filter((date: Date) => compareDatePart(date, minDate as Date) >= 0);
     }
     if (maxDate) {
-      boundedDateRange = boundedDateRange.filter(date => compareDatePart(date, maxDate as Date) <= 0);
+      boundedDateRange = boundedDateRange.filter((date: Date) => compareDatePart(date, maxDate as Date) <= 0);
     }
     return boundedDateRange;
   }
