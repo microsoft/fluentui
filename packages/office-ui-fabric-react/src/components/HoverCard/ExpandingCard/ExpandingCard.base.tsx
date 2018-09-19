@@ -49,7 +49,14 @@ export class ExpandingCardBase extends Card<
   }
 
   protected setStyles(): void {
-    const { styles, compactCardHeight = COMPACT_CARD_HEIGHT, expandedCardHeight = EXPANDED_CARD_HEIGHT, theme, mode } = this.props;
+    const {
+      styles,
+      compactCardHeight = COMPACT_CARD_HEIGHT,
+      expandedCardHeight = EXPANDED_CARD_HEIGHT,
+      theme,
+      mode,
+      className
+    } = this.props;
     const { needsScroll, firstFrameRendered } = this.state;
 
     this._finalHeight = compactCardHeight! + expandedCardHeight!;
@@ -57,6 +64,7 @@ export class ExpandingCardBase extends Card<
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       compactCardHeight,
+      className,
       expandedCardHeight,
       needsScroll: needsScroll,
       expandedCardFirstFrameRendered: mode === ExpandingCardMode.expanded && firstFrameRendered

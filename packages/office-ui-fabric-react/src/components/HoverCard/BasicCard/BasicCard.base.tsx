@@ -12,9 +12,10 @@ export class BasicCardBase extends Card<IBasicCard, IBasicCardProps, IBasicCardS
   }
 
   protected setStyles(): void {
-    const { styles, theme } = this.props;
+    const { styles, theme, className } = this.props;
     this._classNames = getClassNames(styles!, {
-      theme: theme!
+      theme: theme!,
+      className
     });
   }
 

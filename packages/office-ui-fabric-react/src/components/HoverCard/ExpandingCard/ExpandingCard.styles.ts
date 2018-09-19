@@ -4,12 +4,13 @@ import { IExpandingCardStyles, IExpandingCardStyleProps } from './ExpandingCard.
 const GlobalClassNames = {
   root: 'ms-ExpandingCard-root',
   compactCard: 'ms-ExpandingCard-compactCard',
+  contentWrapper: 'ms-ExpandingCard-content',
   expandedCard: 'ms-ExpandingCard-expandedCard',
   expandedCardScroll: 'ms-ExpandingCard-expandedCardScrollRegion'
 };
 
 export function getStyles(props: IExpandingCardStyleProps): IExpandingCardStyles {
-  const { theme, needsScroll, expandedCardFirstFrameRendered, compactCardHeight, expandedCardHeight } = props;
+  const { theme, needsScroll, expandedCardFirstFrameRendered, compactCardHeight, expandedCardHeight, className } = props;
 
   const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
@@ -72,6 +73,7 @@ export function getStyles(props: IExpandingCardStyleProps): IExpandingCardStyles
         boxSizing: 'border-box',
         overflowY: 'auto'
       }
-    ]
+    ],
+    contentWrapper: [classNames.contentWrapper, className]
   };
 }
