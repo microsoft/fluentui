@@ -36,7 +36,7 @@ export const HoverCardPageProps: IDocPageProps = {
     require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/HoverCard.types.ts'),
     require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/Card.types.ts'),
     require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/BasicCard/BasicCard.types.ts'),
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/ExpandingCard/ExpandingCard.types.ts')
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/ExpandingCard.types.ts')
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/docs/HoverCardOverview.md'),
   bestPractices: '',
