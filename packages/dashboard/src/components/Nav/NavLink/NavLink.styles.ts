@@ -1,5 +1,6 @@
+/* tslint:disable */
 import { DefaultPalette, FontSizes } from 'office-ui-fabric-react/lib/Styling';
-import { INavLinkProps, INavLinkStyles } from '../Nav.types';
+import { INavLinkStyleProps, INavLinkStyles } from '../Nav.types';
 
 const navIconSize = FontSizes.icon;
 const navItemHeight = 48;
@@ -7,9 +8,8 @@ const navChildItemHeight = 32;
 const navItemHoverColor = '#CCCCCC';
 const navItemWithChildBgColor = '#CCCCCC';
 const navItemSelectedColor = '#B7B7B7';
-// const BackDropSelector = '@supports (backdrop-filter: blur(20px)) or (-webkit-backdrop-filter: blur(20px))';
 
-export const getStyles = (props: INavLinkProps): INavLinkStyles => {
+export const getStyles = (props: INavLinkStyleProps): INavLinkStyles => {
   const { hasChildren, isSelected, isChildLinkSelected, isNested } = this.props;
 
   return {
@@ -76,3 +76,4 @@ export const getStyles = (props: INavLinkProps): INavLinkStyles => {
     }
   };
 };
+/* tslint:enable */

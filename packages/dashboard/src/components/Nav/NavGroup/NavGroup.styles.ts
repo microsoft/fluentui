@@ -1,13 +1,13 @@
 /* tslint:disable */
 import { DefaultPalette, FontWeights } from 'office-ui-fabric-react/lib/Styling';
-import { INavGroupProps, INavGroupStyles } from '../Nav.types';
+import { INavGroupStyleProps, INavGroupStyles } from '../Nav.types';
 
 // const BackDropSelector = '@supports (backdrop-filter: blur(20px)) or (-webkit-backdrop-filter: blur(20px))';
 const navDividerHeight = 21;
 const navDividerColor = 'rgba(0,0,0,.2)';
 const navItemHeight = 48;
 
-export const getStyles = (props: INavGroupProps): INavGroupStyles => {
+export const getStyles = (props: INavGroupStyleProps): INavGroupStyles => {
   // const { isNavCollapsed } = this.props;
   return {
     navGroupDivider: {
