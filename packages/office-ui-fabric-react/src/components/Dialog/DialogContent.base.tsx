@@ -4,6 +4,7 @@ import { DialogType, IDialogContentProps, IDialogContentStyleProps, IDialogConte
 import { IconButton } from '../../Button';
 import { DialogFooter } from './DialogFooter';
 import { withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
+import { IButtonProps } from 'office-ui-fabric-react/lib/components/Button';
 
 const getClassNames = classNamesFunction<IDialogContentStyleProps, IDialogContentStyles>();
 
@@ -59,7 +60,7 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
             {title}
           </p>
           <div className={classNames.topButton}>
-            {this.props.topButtonsProps!.map((props, index) => (
+            {this.props.topButtonsProps!.map((props: IButtonProps, index: number) => (
               <IconButton key={props.uniqueId || index} {...props} />
             ))}
             {(type === DialogType.close || (showCloseButton && type !== DialogType.largeHeader)) && (
@@ -92,7 +93,7 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
       contents: []
     };
 
-    React.Children.map(this.props.children, child => {
+    React.Children.map(this.props.children, (child: React.ReactChild) => {
       if (typeof child === 'object' && child !== null && child.type === DialogFooter) {
         groupings.footers.push(child);
       } else {

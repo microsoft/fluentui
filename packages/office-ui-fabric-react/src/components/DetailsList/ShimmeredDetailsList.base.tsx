@@ -10,7 +10,7 @@ import {
   IShimmeredDetailsListStyleProps,
   IShimmeredDetailsListStyles
 } from './ShimmeredDetailsList.types';
-import { CheckboxVisibility } from './DetailsList.types';
+import { CheckboxVisibility, IColumn } from './DetailsList.types';
 
 import { IDetailsRowStyleProps, IDetailsRowStyles } from './DetailsRow.types';
 import { DEFAULT_CELL_STYLE_PROPS, getStyles as getRowStyles } from './DetailsRow.styles';

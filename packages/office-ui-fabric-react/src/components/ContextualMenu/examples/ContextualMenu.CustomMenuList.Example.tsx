@@ -92,17 +92,17 @@ export class ContextualMenuWithCustomMenuListExample extends React.Component<
     );
   }
 
-  private _onAbort() {
+  private _onAbort(): void {
     this.setState({ items: ITEMS });
   }
 
-  private _onChange(newValue: any) {
-    const filteredItems = ITEMS.filter(item => item.text && item.text.toLowerCase().includes(newValue.toLowerCase()));
+  private _onChange(newValue: any): void {
+    const filteredItems = ITEMS.filter((item: IContextualMenuItem) => item.text && item.text.toLowerCase().includes(newValue.toLowerCase()));
 
     if (!filteredItems || !filteredItems.length) {
       filteredItems.push({
         key: 'no_results',
-        onRender: (item, dismissMenu) => (
+        onRender: (item: IContextualMenuItem, dismissMenu: (ev?: any, dismissAll?: boolean | undefined) => void) => (
           <div
             key="no_results"
             style={{
@@ -120,7 +120,7 @@ export class ContextualMenuWithCustomMenuListExample extends React.Component<
       });
     }
 
-    this.setState((prevState, props) => ({
+    this.setState((prevState: {}, props: {}) => ({
       items: filteredItems
     }));
   }

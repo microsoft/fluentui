@@ -53,7 +53,7 @@ export class FocusZoneListExample extends React.Component {
         isCircularNavigation={true}
         isInnerZoneKeystroke={this._isInnerZoneKeystroke}
       >
-        {ITEMS.map((item, index) => (
+        {ITEMS.map((item, index: number) => (
           <DetailsRow
             key={index}
             item={item}

@@ -140,7 +140,7 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
     }
   };
 
-  private _getClassNames() {
+  private _getClassNames(): { [key in keyof ILayerStyles]: string } {
     const { className, styles, theme } = this.props;
     const classNames = getClassNames(styles!, {
       theme: theme!,

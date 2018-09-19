@@ -72,7 +72,7 @@ export class CalendarButtonExample extends React.Component<ICalendarButtonExampl
   public render(): JSX.Element {
     return (
       <div>
-        <div ref={calendarBtn => (this._calendarButtonElement = calendarBtn!)}>
+        <div ref={(calendarBtn: HTMLDivElement) => (this._calendarButtonElement = calendarBtn!)}>
           <DefaultButton
             onClick={this._onClick}
             text={!this.state.selectedDate ? this.props.buttonString : this.state.selectedDate.toLocaleDateString()}

@@ -19,7 +19,7 @@ export class KeytipsCommandBarExample extends React.Component<{}, IKeytipsComman
   }
 
   /* tslint:disable:jsx-ban-props jsx-no-lambda */
-  public render() {
+  public render(): JSX.Element {
     return (
       <div style={{ height: 100 }}>
         <CommandBar

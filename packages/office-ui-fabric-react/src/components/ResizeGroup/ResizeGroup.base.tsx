@@ -389,7 +389,7 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     });
   }
 
-  public componentDidUpdate(prevProps: IResizeGroupProps) {
+  public componentDidUpdate(prevProps: IResizeGroupProps): void {
     if (this.state.renderedData) {
       this._hasRenderedContent = true;
       if (this.props.dataDidRender) {
