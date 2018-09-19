@@ -17,7 +17,7 @@ export class DropdownSizePosCache {
   /**
    * Invalidates the cache and recalculate the size of selectable options.
    */
-  public updateOptions(options: IDropdownOption[]) {
+  public updateOptions(options: IDropdownOption[]): void {
     const displayOnlyOptionsCache = [];
     let size = 0;
     for (let i = 0; i < options.length; i++) {

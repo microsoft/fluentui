@@ -8,7 +8,7 @@ export class DialogBlockingExample extends React.Component<
   {
     hideDialog: boolean;
   }
-> {
+  > {
   constructor(props: {}) {
     super(props);
     this.state = {
@@ -16,7 +16,7 @@ export class DialogBlockingExample extends React.Component<
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <DefaultButton secondaryText="Opens the Sample Dialog" onClick={this._showDialog} text="Open Dialog" />

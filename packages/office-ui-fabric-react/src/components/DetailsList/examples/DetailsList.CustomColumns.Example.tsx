@@ -23,7 +23,7 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { sortedItems, columns } = this.state;
 
     return (
@@ -64,7 +64,7 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
     // Reset the items and columns to match the state.
     this.setState({
       sortedItems: sortedItems,
-      columns: columns!.map(col => {
+      columns: columns!.map((col: IColumn) => {
         col.isSorted = col.key === column.key;
 
         if (col.isSorted) {
@@ -85,10 +85,10 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
   }
 }
 
-function _buildColumns() {
+function _buildColumns(): IColumn[] {
   const columns = buildColumns(_items);
 
-  const thumbnailColumn = columns.filter(column => column.name === 'thumbnail')[0];
+  const thumbnailColumn = columns.filter((column: IColumn) => column.name === 'thumbnail')[0];
 
   // Special case one column's definition.
   thumbnailColumn.name = '';
@@ -97,7 +97,7 @@ function _buildColumns() {
   return columns;
 }
 
-function _renderItemColumn(item: any, index: number, column: IColumn) {
+function _renderItemColumn(item: any, index: number, column: IColumn): JSX.Element {
   const fieldContent = item[column.fieldName || ''];
 
   switch (column.key) {

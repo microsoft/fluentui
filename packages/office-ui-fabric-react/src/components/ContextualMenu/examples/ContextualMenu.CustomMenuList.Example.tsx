@@ -62,7 +62,7 @@ export class ContextualMenuWithCustomMenuListExample extends React.Component<
   {
     items: IContextualMenuItem[];
   }
-> {
+  > {
   constructor(props: {}) {
     super(props);
 
@@ -128,7 +128,7 @@ export class ContextualMenuWithCustomMenuListExample extends React.Component<
   private _renderMenuList(
     menuListProps: IContextualMenuListProps,
     defaultRender: IRenderFunction<IContextualMenuListProps>
-  ) {
+  ): JSX.Element {
     return (
       <div>
         <div style={{ borderBottom: '1px solid #ccc' }}>

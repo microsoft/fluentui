@@ -24,7 +24,7 @@ export class HoverCardBasicExample extends BaseComponent<{}, IHoverCardExampleSt
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { items, columns } = this.state;
 
     return (
@@ -79,6 +79,6 @@ export class HoverCardBasicExample extends BaseComponent<{}, IHoverCardExampleSt
   };
 }
 
-function _buildColumns() {
-  return buildColumns(_items).filter(column => column.name === 'location' || column.name === 'key');
+function _buildColumns(): IColumn[] {
+  return buildColumns(_items).filter((column: IColumn) => column.name === 'location' || column.name === 'key');
 }

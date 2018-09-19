@@ -33,7 +33,7 @@ class HoverCardField extends BaseComponent<IHoverCardFieldProps, IHoverCardField
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div
         ref={(c: HTMLDivElement) => !this.state.contentRendered && this.setState({ contentRendered: c })}
@@ -74,7 +74,7 @@ export class HoverCardTargetExample extends BaseComponent<{}, IHoverCardExampleS
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { items, columns } = this.state;
 
     return (
@@ -138,6 +138,6 @@ export class HoverCardTargetExample extends BaseComponent<{}, IHoverCardExampleS
   };
 }
 
-function _buildColumns() {
-  return buildColumns(_items).filter(column => column.name === 'location' || column.name === 'key');
+function _buildColumns(): IColumn[] {
+  return buildColumns(_items).filter((column: IColumn) => column.name === 'location' || column.name === 'key');
 }

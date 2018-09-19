@@ -58,7 +58,7 @@ const renderSubMenuIcon = ({ item, classNames }: IContextualMenuItemProps) => {
 };
 
 export class ContextualMenuItemBase extends BaseComponent<IContextualMenuItemProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     const { item, classNames } = this.props;
 
     return (

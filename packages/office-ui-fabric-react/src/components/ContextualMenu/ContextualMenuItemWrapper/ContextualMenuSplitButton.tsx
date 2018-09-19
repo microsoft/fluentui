@@ -8,7 +8,7 @@ import { isItemDisabled, hasSubmenu } from '../../../utilities/contextualMenu/in
 import { VerticalDivider } from '../../../Divider';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 
-export interface IContextualMenuSplitButtonState {}
+export interface IContextualMenuSplitButtonState { }
 
 const TouchIdleDelay = 500; /* ms */
 
@@ -17,7 +17,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
   private _lastTouchTimeoutId: number | undefined;
   private _processingTouch: boolean;
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     if (this._splitButton && 'onpointerdown' in this._splitButton) {
       this._events.on(this._splitButton, 'pointerdown', this._onPointerDown, true);
     }
@@ -104,7 +104,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
     index: number,
     hasCheckmarks: boolean,
     hasIcons: boolean
-  ) {
+  ): JSX.Element {
     const { contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem, onItemClick } = this.props;
 
     const itemProps = {
@@ -138,7 +138,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
     );
   }
 
-  private _renderSplitDivider(item: IContextualMenuItem) {
+  private _renderSplitDivider(item: IContextualMenuItem): JSX.Element {
     const getDividerClassNames =
       item.getSplitButtonVerticalDividerClassNames || getSplitButtonVerticalDividerClassNames;
     return <VerticalDivider getClassNames={getDividerClassNames} />;
@@ -149,7 +149,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
     classNames: IMenuItemClassNames,
     index: number,
     keytipAttributes: any
-  ) {
+  ): JSX.Element {
     const {
       contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem,
       onItemMouseLeave,
@@ -264,7 +264,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
     }
   };
 
-  private _handleTouchAndPointerEvent(ev: React.TouchEvent<HTMLElement> | PointerEvent) {
+  private _handleTouchAndPointerEvent(ev: React.TouchEvent<HTMLElement> | PointerEvent): void {
     const { onTap } = this.props;
 
     if (onTap) {

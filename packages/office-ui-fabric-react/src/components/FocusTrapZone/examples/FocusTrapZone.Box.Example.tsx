@@ -22,7 +22,7 @@ export default class BoxExample extends React.Component<React.HTMLAttributes<HTM
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { isChecked } = this.state;
 
     return (
@@ -44,7 +44,7 @@ export default class BoxExample extends React.Component<React.HTMLAttributes<HTM
     );
   }
 
-  private _internalContents() {
+  private _internalContents(): JSX.Element {
     const { isChecked } = this.state;
 
     return (

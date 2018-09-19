@@ -14,7 +14,7 @@ export interface IBoxNoClickExampleExampleState {
 export default class BoxNoClickExample extends React.Component<
   React.HTMLAttributes<HTMLDivElement>,
   IBoxNoClickExampleExampleState
-> {
+  > {
   private _toggle: IToggle;
 
   constructor(props: React.HTMLAttributes<HTMLDivElement>) {
@@ -25,7 +25,7 @@ export default class BoxNoClickExample extends React.Component<
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { isToggled } = this.state;
 
     return (
@@ -51,7 +51,7 @@ export default class BoxNoClickExample extends React.Component<
     );
   }
 
-  private _internalContents() {
+  private _internalContents(): JSX.Element {
     const { isToggled } = this.state;
 
     return (

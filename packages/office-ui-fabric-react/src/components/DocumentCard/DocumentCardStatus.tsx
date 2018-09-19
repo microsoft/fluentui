@@ -11,7 +11,7 @@ export class DocumentCardStatus extends BaseComponent<IDocumentCardStatusProps, 
     super(props);
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { statusIcon, status } = this.props;
     const iconProps = {
       iconName: statusIcon,

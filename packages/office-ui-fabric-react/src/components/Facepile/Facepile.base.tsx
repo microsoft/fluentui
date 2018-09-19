@@ -85,7 +85,7 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
     );
   }
 
-  protected onRenderAriaDescription() {
+  protected onRenderAriaDescription(): string | JSX.Element | undefined {
     const { ariaDescription } = this.props;
 
     const { _classNames } = this;
@@ -184,7 +184,7 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
   private _getElementProps(
     persona: IFacepilePersona,
     index: number
-  ): { key: React.Key; ['data-is-focusable']: boolean } & React.HTMLAttributes<HTMLDivElement> {
+  ): { key: React.Key;['data-is-focusable']: boolean } & React.HTMLAttributes<HTMLDivElement> {
     const { _classNames } = this;
 
     return {

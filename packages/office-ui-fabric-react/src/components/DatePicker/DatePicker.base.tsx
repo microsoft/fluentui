@@ -122,7 +122,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     }
   }
 
-  public componentDidUpdate(prevProps: IDatePickerProps, prevState: IDatePickerState) {
+  public componentDidUpdate(prevProps: IDatePickerProps, prevState: IDatePickerState): void {
     if (prevState.isDatePickerShown && !this.state.isDatePickerShown) {
       // In browsers like IE, textfield gets unfocused when datepicker is collapsed
       if (this.props.allowTextInput) {

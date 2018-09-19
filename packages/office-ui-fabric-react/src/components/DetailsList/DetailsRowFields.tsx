@@ -26,14 +26,14 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
 
     return (
       <div className={rowClassNames.fields} data-automationid="DetailsRowFields" role="presentation">
-        {columns.map((column, columnIndex) => {
+        {columns.map((column: IColumn, columnIndex: number) => {
           const width: string | number =
             typeof column.calculatedWidth === 'undefined'
               ? 'auto'
               : column.calculatedWidth +
-                cellStyleProps.cellLeftPadding +
-                cellStyleProps.cellRightPadding +
-                (column.isPadded ? cellStyleProps.cellExtraRightPadding : 0);
+              cellStyleProps.cellLeftPadding +
+              cellStyleProps.cellRightPadding +
+              (column.isPadded ? cellStyleProps.cellExtraRightPadding : 0);
 
           return (
             <div
@@ -65,7 +65,7 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
     const { item, itemIndex, onRenderItemColumn, shimmer } = props;
 
     return {
-      cellContent: props.columns.map(column => {
+      cellContent: props.columns.map((column: IColumn) => {
         let cellContent;
 
         try {

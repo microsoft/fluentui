@@ -41,7 +41,7 @@ export class DetailsListBasicExample extends React.Component<
     selectionDetails: {};
     showItemIndexInView: boolean;
   }
-> {
+  > {
   private _selection: Selection;
   private _detailsList = createRef<IDetailsList>();
 
@@ -102,7 +102,7 @@ export class DetailsListBasicExample extends React.Component<
     );
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     if (this.state.showItemIndexInView) {
       const itemIndexInView = this._detailsList!.current!.getStartItemIndexInView();
       alert('unmounting, getting first item index that was in view: ' + itemIndexInView);
