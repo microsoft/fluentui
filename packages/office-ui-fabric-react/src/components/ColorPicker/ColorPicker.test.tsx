@@ -7,8 +7,8 @@ import { mount } from 'enzyme';
 import { ColorPicker } from './ColorPicker';
 import { ColorPickerBase, IColorPickerState } from './ColorPicker.base';
 import { IColorPicker, IColorPickerProps } from './ColorPicker.types';
-import { IColor } from 'office-ui-fabric-react/lib/utilities/color/colors';
-import { getColorFromString } from '../../utilities/color/colors';
+import { IColor } from '../../Utilities/color/colors';
+import { getColorFromString } from '../../Utilities/color/colors';
 
 describe('ColorPicker', () => {
   it('renders ColorPicker correctly', () => {
