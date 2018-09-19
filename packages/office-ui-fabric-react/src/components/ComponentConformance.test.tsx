@@ -85,11 +85,13 @@ const requiredProps: { [key: string]: any } = {
 // Some components inject the className prop on a child DOM element rather than the root,
 // so the test needs to look for className on the child props object that has the given class name
 const classNameSelectors: { [key: string]: string } = {
+  BasicCard: 'ms-Callout',
   Breadcrumb: 'ms-Breadcrumb',
   Callout: 'ms-Callout',
   ContextualMenu: 'ms-ContextualMenu',
   DetailsList: 'ms-DetailsList',
   Dropdown: 'ms-Dropdown',
+  ExpandedCard: 'ms-Callout',
   Modal: 'ms-Modal',
   Nav: 'ms-Nav',
   Panel: 'ms-Panel',
