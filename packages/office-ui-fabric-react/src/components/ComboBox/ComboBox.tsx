@@ -676,6 +676,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
               .indexOf(updatedValue) === 0
         );
       }
+      
       if (items.length > 0) {
         // use ariaLabel as the value when the option is set
         const text: string = this._getPreviewText(items[0]);
