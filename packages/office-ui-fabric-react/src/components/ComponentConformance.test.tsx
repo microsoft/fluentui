@@ -94,6 +94,7 @@ const classNameSelectors: { [key: string]: string } = {
 const excludedComponents: string[] = [
   'Beak', // className is not injected
   'Button', // deprecated, test Button variants instead
+  'Card', // helper abstract class, not meant to be instantiated
   'ChoiceGroupOption', // className is not injected
   'Coachmark', // className is not injected
   'ColorRectangle', // className is not injected
@@ -207,11 +208,11 @@ describe('Conformance', () => {
       } catch (e) {
         console.warn(
           'ERROR: ' +
-          e +
-          ', TEST NOTE: Failure with ' +
-          componentName +
-          '. ' +
-          'Have you recently added a component? If so, please see notes in Conformance.test.tsx.'
+            e +
+            ', TEST NOTE: Failure with ' +
+            componentName +
+            '. ' +
+            'Have you recently added a component? If so, please see notes in Conformance.test.tsx.'
         );
       }
     });
