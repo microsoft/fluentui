@@ -1,13 +1,5 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  KeyCodes,
-  getId,
-  getNativeProps,
-  divProperties,
-  createRef,
-  classNamesFunction
-} from '../../Utilities';
+import { BaseComponent, KeyCodes, getId, getNativeProps, divProperties, createRef, classNamesFunction } from '../../Utilities';
 import { CommandButton } from '../../Button';
 import { IPivotProps, IPivotStyleProps, IPivotStyles } from './Pivot.types';
 import { IPivotItemProps } from './PivotItem.types';
@@ -79,7 +71,7 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
   public componentWillReceiveProps(nextProps: IPivotProps): void {
     const links: IPivotItemProps[] = this._getPivotLinks(nextProps);
 
-    this.setState((prevState, props) => {
+    this.setState((prevState: Readonly<IPivotState>, props: IPivotProps) => {
       let selectedKey: string | undefined;
       if (this._isKeyValid(nextProps.selectedKey)) {
         selectedKey = nextProps.selectedKey;

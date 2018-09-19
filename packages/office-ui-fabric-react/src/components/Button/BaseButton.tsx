@@ -213,7 +213,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     return this._onRenderContent(tag, buttonProps);
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     // For split buttons, touching anywhere in the button should drop the dropdown, which should contain the primary action.
     // This gives more hit target space for touch environments. We're setting the onpointerdown here, because React
     // does not support Pointer events yet.
@@ -222,7 +222,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
   }
 
-  public componentDidUpdate(prevProps: IBaseButtonProps, prevState: IBaseButtonState) {
+  public componentDidUpdate(prevProps: IBaseButtonProps, prevState: IBaseButtonState): void {
     // If Button's menu was closed, run onAfterMenuDismiss
     if (this.props.onAfterMenuDismiss && prevState.menuProps && !this.state.menuProps) {
       this.props.onAfterMenuDismiss();
@@ -672,7 +672,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
   };
 
-  private _onPointerDown(ev: PointerEvent) {
+  private _onPointerDown(ev: PointerEvent): void {
     if (ev.pointerType === 'touch') {
       this._handleTouchAndPointerEvent();
 
@@ -681,7 +681,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
   }
 
-  private _handleTouchAndPointerEvent() {
+  private _handleTouchAndPointerEvent(): void {
     // If we already have an existing timeeout from a previous touch and pointer event
     // cancel that timeout so we can set a nwe one.
     if (this._lastTouchTimeoutId !== undefined) {

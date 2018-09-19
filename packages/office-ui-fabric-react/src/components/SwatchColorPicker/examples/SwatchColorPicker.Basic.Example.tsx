@@ -57,9 +57,9 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
         </div>
         <SwatchColorPicker
           // tslint:disable:jsx-no-lambda
-          onCellHovered={(id, color) => this.setState({ previewColor: color! })}
-          onCellFocused={(id, color) => this.setState({ previewColor: color! })}
-          onColorChanged={(id, newColor) => this.setState({ color: newColor })}
+          onCellHovered={(id: string, color: string) => this.setState({ previewColor: color! })}
+          onCellFocused={(id: string, color: string) => this.setState({ previewColor: color! })}
+          onColorChanged={(id: string, newColor: string) => this.setState({ color: newColor })}
           // tslint:enable:jsx-no-lambda
           columnCount={4}
           cellShape={'circle'}
@@ -92,16 +92,10 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
           ]}
         />
         <div id="foo" tab-index="-1">
-          <div>
-            Simple swatch color picker with multiple rows that updates it's icon color and shows a preview color:
-          </div>
+          <div>Simple swatch color picker with multiple rows that updates it's icon color and shows a preview color:</div>
           <div
             style={{
-              color: this.state.previewColor2
-                ? this.state.previewColor2
-                : this.state.color2
-                  ? this.state.color2
-                  : undefined,
+              color: this.state.previewColor2 ? this.state.previewColor2 : this.state.color2 ? this.state.color2 : undefined,
               fontSize: '24px'
             }}
           >
@@ -111,9 +105,9 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
             focusOnHover={true}
             mouseLeaveParentSelector={'#foo'}
             // tslint:disable:jsx-no-lambda
-            onCellHovered={(id, color) => this.setState({ previewColor2: color! })}
-            onCellFocused={(id, color) => this.setState({ previewColor2: color! })}
-            onColorChanged={(id, newColor) => this.setState({ color2: newColor })}
+            onCellHovered={(id: string, color: string) => this.setState({ previewColor2: color! })}
+            onCellFocused={(id: string, color: string) => this.setState({ previewColor2: color! })}
+            onColorChanged={(id: string, newColor: string) => this.setState({ color2: newColor })}
             // tslint:enable:jsx-no-lambda
             columnCount={4}
             cellShape={'circle'}

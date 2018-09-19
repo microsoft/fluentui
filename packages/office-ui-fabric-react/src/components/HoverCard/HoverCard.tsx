@@ -61,7 +61,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
     }
   }
 
-  public componentDidUpdate(prevProps: IHoverCardProps, prevState: IHoverCardState) {
+  public componentDidUpdate(prevProps: IHoverCardProps, prevState: IHoverCardState): void {
     if (prevState.isHoverCardVisible !== this.state.isHoverCardVisible) {
       if (this.state.isHoverCardVisible) {
         this._async.setTimeout(() => {
