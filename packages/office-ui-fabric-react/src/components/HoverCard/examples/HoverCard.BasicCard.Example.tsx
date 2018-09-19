@@ -4,7 +4,7 @@ import { HoverCard, IBasicCardProps, HoverCardType } from 'office-ui-fabric-reac
 import { DetailsList, buildColumns, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { createListItems } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import './HoverCard.Example.scss';
-import { Image, ImageFit } from 'office-ui-fabric-react/lib/components/Image';
+import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { getColorFromString } from 'office-ui-fabric-react/lib/Color';
 
 let _items: any[];
