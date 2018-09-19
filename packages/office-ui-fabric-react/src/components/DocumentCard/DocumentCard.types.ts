@@ -165,7 +165,8 @@ export interface IDocumentCardTitleProps extends React.Props<DocumentCardTitle> 
   componentRef?: IRefObject<{}>;
 
   /**
-   * Title text. If the card represents more than one document, this should be the title of one document and a "+X" string. For example, a collection of four documents would have a string of "Document.docx +3".
+   * Title text. If the card represents more than one document, this should be the title of one document and a "+X" string.
+   * For example, a collection of four documents would have a string of "Document.docx +3".
    */
   title: string;
 

@@ -842,9 +842,11 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
       </div>
       <div
         className="ms-DocumentCardTitle"
-        title="This is the email content preview, please feel free to give feedback. SharePoint Site Acitivity add conversation card! This is the last."
+        title="This is the email content preview, please feel free to give feedback.
+                SharePoint Site Activity add conversation card! This is the last."
       >
-        This is the email content preview, please feel free to give feedback. SharePoint Site Acitivity add conversation card! This is the last.
+        This is the email content preview, please feel free to give feedback.
+                SharePoint Site Activity add conversation card! This is the last.
       </div>
       <div
         className="ms-DocumentCardStatus"

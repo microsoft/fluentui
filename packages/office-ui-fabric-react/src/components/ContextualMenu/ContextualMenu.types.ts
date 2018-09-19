@@ -144,10 +144,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
    * menu item.
    * Returning true will dismiss the menu even if ev.preventDefault() was called.
    */
-  onItemClick?: (
-    ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
-    item?: IContextualMenuItem
-  ) => boolean | void;
+  onItemClick?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, item?: IContextualMenuItem) => boolean | void;
 
   /**
    * Whether this menu is a submenu of another menu or not.
@@ -223,9 +220,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
    * Method to override the render of the individual menu items
    * @default ContextualMenuItem
    */
-  contextualMenuItemAs?:
-    | React.ComponentClass<IContextualMenuItemProps>
-    | React.StatelessComponent<IContextualMenuItemProps>;
+  contextualMenuItemAs?: React.ComponentClass<IContextualMenuItemProps> | React.StatelessComponent<IContextualMenuItemProps>;
 
   /**
    * Props to pass down to the FocusZone.
@@ -342,10 +337,7 @@ export interface IContextualMenuItem {
    * Callback issued when the menu item is invoked. If ev.preventDefault() is called in onClick, click will not close menu.
    * Returning true will dismiss the menu even if ev.preventDefault() was called.
    */
-  onClick?: (
-    ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
-    item?: IContextualMenuItem
-  ) => boolean | void;
+  onClick?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, item?: IContextualMenuItem) => boolean | void;
 
   /**
    * An optional URL to navigate to upon selection
@@ -394,7 +386,8 @@ export interface IContextualMenuItem {
   itemProps?: Partial<IContextualMenuItemProps>;
 
   /**
-   * Method to provide the classnames to style the Vertical Divider of a split button inside a menu. Default value is the getVerticalDividerClassnames func defined in ContextualMenu.classnames
+   * Method to provide the classnames to style the Vertical Divider of a split button inside a menu.
+   * Default value is the getVerticalDividerClassnames func defined in ContextualMenu.classnames
    * @default getSplitButtonVerticalDividerClassNames
    */
   getSplitButtonVerticalDividerClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
