@@ -337,8 +337,10 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
   }
 
   private _onDrop(item?: any, event?: DragEvent): void {
-    const draggedColumnIndex = this._draggedColumnIndex;
+    const showCheckbox = this.props.selectAllVisibility !== SelectAllVisibility.none;
+    const draggedColumnIndex = showCheckbox ? this._draggedColumnIndex : this._draggedColumnIndex + 1;
     const { columnReorderProps } = this.state;
+
     // Target index will not get changed if draggeditem is after target item.
     if (this._draggedColumnIndex >= 0 && event) {
       const targetIndex = draggedColumnIndex > this._currentDropHintIndex! ? this._currentDropHintIndex! : this._currentDropHintIndex! - 1;
