@@ -1,16 +1,34 @@
 import * as React from 'react';
-// import * as ReactDOM from 'react-dom';
-
-import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
-
 import { mount } from 'enzyme';
 
 import { DirectionalHint } from '../../common/DirectionalHint';
+import { BasicCardBase } from './BasicCard/BasicCard.base';
+import { IBasicCardProps } from './BasicCard/BasicCard.types';
+import { ExpandingCardBase } from './ExpandingCard/ExpandingCard.base';
 import { IExpandingCardProps } from './ExpandingCard/ExpandingCard.types';
 import { HoverCardBase } from './HoverCard.base';
 import { HoverCardType } from './HoverCard.types';
 import { KeyCodes } from '../../Utilities';
+// tslint:disable:jsx-no-lambda
+const expandingCardProps: IExpandingCardProps = {
+  onRenderCompactCard: (item: any) => {
+    return <div>{item.key}</div>;
+  },
+  onRenderExpandedCard: (item: any) => {
+    return <div>{item.key}</div>;
+  },
+  renderData: { key: 'TEST' },
+  directionalHint: DirectionalHint.rightTopEdge,
+  gapSpace: 16
+};
+
+const basicCardProps: IBasicCardProps = {
+  onRenderBasicCard: (item: any) => {
+    return <div style={{ width: '200px', height: '500px' }}>{item.key}</div>;
+  },
+  renderData: { key: 'TEST' }
+};
 
 describe('HoveCard', () => {
   it('renders target wrapped by HoverCard correctly', () => {
@@ -24,6 +42,36 @@ describe('HoveCard', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders ExpandingCard correctly', () => {
+    // Mock createPortal to capture its component hierarchy in snapshot output.
+    const ReactDOM = require('react-dom');
+    const createPortal = ReactDOM.createPortal;
+    ReactDOM.createPortal = jest.fn(element => {
+      return element;
+    });
+
+    const component = renderer.create(<ExpandingCardBase {...expandingCardProps} trapFocus={true} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+
+    ReactDOM.createPortal = createPortal;
+  });
+
+  it('renders BasicCard correctly', () => {
+    // Mock createPortal to capture its component hierarchy in snapshot output.
+    const ReactDOM = require('react-dom');
+    const createPortal = ReactDOM.createPortal;
+    ReactDOM.createPortal = jest.fn(element => {
+      return element;
+    });
+
+    const component = renderer.create(<BasicCardBase {...basicCardProps} trapFocus={true} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+
+    ReactDOM.createPortal = createPortal;
+  });
+
   it('uses default documented properties', () => {
     const component = mount(<HoverCardBase />);
 
@@ -34,25 +82,11 @@ describe('HoveCard', () => {
     expect(component.prop('setInitialFocus')).toEqual(false);
     expect(component.prop('openHotKey')).toEqual(KeyCodes.c);
     expect(component.prop('type')).toEqual(HoverCardType.expanding);
+
+    component.unmount();
   });
 
   it('uses specified properties when rendering an ExpandedCard', () => {
-    const item = {
-      key: 'Test'
-    };
-
-    const expandingCardProps: IExpandingCardProps = {
-      onRenderCompactCard: () => {
-        return null;
-      },
-      onRenderExpandedCard: () => {
-        return null;
-      },
-      renderData: item,
-      directionalHint: DirectionalHint.rightTopEdge,
-      gapSpace: 16
-    };
-
     const component = mount(
       <HoverCardBase
         expandingCardProps={expandingCardProps}
@@ -73,5 +107,42 @@ describe('HoveCard', () => {
     expect(component.prop('setInitialFocus')).toEqual(true);
     expect(component.prop('openHotKey')).toEqual(KeyCodes.enter);
     expect(component.prop('expandingCardProps')).toMatchObject(expandingCardProps);
+
+    component.unmount();
+  });
+
+  it('fires onCardVisible and onCardHide', () => {
+    let cardVisible = false;
+    let cardHidden = false;
+    let hoverCard: any;
+
+    const onCardVisible = () => {
+      cardVisible = true;
+    };
+
+    const onCardHide = () => {
+      cardHidden = true;
+    };
+
+    const component = mount(
+      <HoverCardBase
+        expandingCardProps={expandingCardProps}
+        onCardVisible={onCardVisible}
+        onCardHide={onCardHide}
+        componentRef={ref => (hoverCard = ref)}
+      >
+        <div>Child</div>
+      </HoverCardBase>
+    );
+    jest.useFakeTimers();
+
+    expect(hoverCard).toBeDefined();
+
+    component.setState({ isHoverCardVisible: true });
+    expect(cardVisible).toEqual(true);
+
+    component.setState({ isHoverCardVisible: false });
+    expect(cardHidden).toEqual(true);
+    component.unmount();
   });
 });
