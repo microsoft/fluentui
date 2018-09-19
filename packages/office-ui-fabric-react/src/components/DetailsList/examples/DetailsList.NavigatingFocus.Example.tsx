@@ -18,7 +18,7 @@ export class DetailsListNavigatingFocusExample extends React.Component<{}, IDeta
     {
       key: 'filepath',
       name: 'File path',
-      onRender: item => (
+      onRender: (item: any) => (
         <Link key={item} onClick={this._navigate(item)}>
           {item}
         </Link>
@@ -27,7 +27,7 @@ export class DetailsListNavigatingFocusExample extends React.Component<{}, IDeta
     {
       key: 'size',
       name: 'Size',
-      onRender: item => '4 KB'
+      onRender: (item: any) => '4 KB'
     } as IColumn
   ];
 

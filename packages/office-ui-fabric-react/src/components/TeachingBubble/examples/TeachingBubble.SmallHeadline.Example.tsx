@@ -7,7 +7,7 @@ export interface ITeachingBubbleSmallHeadlineExampleState {
 }
 
 export class TeachingBubbleSmallHeadlineExample extends React.Component<{}, ITeachingBubbleSmallHeadlineExampleState> {
-  private _menuButtonElement: HTMLElement;
+  private _menuButtonElement: HTMLSpanElement;
 
   constructor(props: {}) {
     super(props);
@@ -29,7 +29,7 @@ export class TeachingBubbleSmallHeadlineExample extends React.Component<{}, ITea
       <div className="ms-TeachingBubbleExample">
         <span
           className="ms-TeachingBubbleBasicExample-buttonArea"
-          ref={menuButton => (this._menuButtonElement = menuButton!)}
+          ref={(menuButton: HTMLSpanElement) => (this._menuButtonElement = menuButton!)}
         >
           <DefaultButton
             onClick={this._onDismiss}

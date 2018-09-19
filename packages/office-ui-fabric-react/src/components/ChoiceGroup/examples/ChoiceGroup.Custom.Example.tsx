@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
+import { ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
 
@@ -7,7 +7,7 @@ import * as stylesImport from './ChoiceGroup.Custom.Example.scss';
 const styles: any = stylesImport;
 
 export class ChoiceGroupCustomExample extends React.Component {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <ChoiceGroup
@@ -16,7 +16,7 @@ export class ChoiceGroupCustomExample extends React.Component {
             {
               key: 'A',
               text: 'Mark displayed items as read after',
-              onRenderField: (props, render) => {
+              onRenderField: (props: IChoiceGroupOption, render: ((props?: IChoiceGroupOption) => JSX.Element | null)) => {
                 return (
                   <div className={css(styles.root)}>
                     {render!(props)}

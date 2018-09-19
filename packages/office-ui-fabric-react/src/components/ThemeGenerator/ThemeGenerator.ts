@@ -18,7 +18,7 @@ export class ThemeGenerator {
     isInverted: boolean = false,
     isCustomization: boolean = false,
     overwriteCustomColor: boolean = true
-  ) {
+  ): void {
     if (!rule.color && rule.value) {
       // not a color rule
       return;

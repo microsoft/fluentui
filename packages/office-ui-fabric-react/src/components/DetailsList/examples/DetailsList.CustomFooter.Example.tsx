@@ -128,7 +128,7 @@ export class DetailsListCustomFooterExample extends React.Component<
   }
 
   private _onChange = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string): void => {
-    this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items });
+    this.setState({ items: text ? _items.filter((i: any) => i.name.toLowerCase().indexOf(text) > -1) : _items });
   };
 
   private _onItemInvoked(item: any): void {

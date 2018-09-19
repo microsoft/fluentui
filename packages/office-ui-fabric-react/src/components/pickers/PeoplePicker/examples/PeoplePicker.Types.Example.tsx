@@ -343,7 +343,8 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
   private _onItemSelected = (item: IPersonaProps): Promise<IPersonaProps> => {
     const processedItem = Object.assign({}, item);
     processedItem.text = `${item.text} (selected)`;
-    return new Promise<IPersonaProps>((resolve, reject) => setTimeout(() => resolve(processedItem), 250));
+    // tslint:disable-next-line:no-any
+    return new Promise<IPersonaProps>((resolve: any, reject: any) => setTimeout(() => resolve(processedItem), 250));
   };
 
   private _onFilterChanged = (
@@ -396,11 +397,11 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     if (!personas || !personas.length || personas.length === 0) {
       return false;
     }
-    return personas.filter(item => item.text === persona.text).length > 0;
+    return personas.filter((item: IPersonaProps) => item.text === persona.text).length > 0;
   }
 
   private _filterPersonasByText(filterText: string): IPersonaProps[] {
-    return this.state.peopleList.filter(item => this._doesTextStartWith(item.text as string, filterText));
+    return this.state.peopleList.filter((item: IPersonaProps) => this._doesTextStartWith(item.text as string, filterText));
   }
 
   private _doesTextStartWith(text: string, filterText: string): boolean {
@@ -408,7 +409,8 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
   }
 
   private _convertResultsToPromise(results: IPersonaProps[]): Promise<IPersonaProps[]> {
-    return new Promise<IPersonaProps[]>((resolve, reject) => setTimeout(() => resolve(results), 2000));
+    // tslint:disable-next-line:no-any
+    return new Promise<IPersonaProps[]>((resolve: any, reject: any) => setTimeout(() => resolve(results), 2000));
   }
 
   private _removeDuplicates(personas: IPersonaProps[], possibleDupes: IPersonaProps[]): IPersonaProps[] {

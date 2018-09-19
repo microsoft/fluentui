@@ -161,7 +161,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
   };
 
   private _onButtonClick(item: ICommandBarItemProps): (ev: React.MouseEvent<HTMLButtonElement>) => void {
-    return ev => {
+    return (ev: React.MouseEvent<HTMLButtonElement>) => {
       // inactive is deprecated. remove check in 7.0
       if (item.inactive) {
         return;

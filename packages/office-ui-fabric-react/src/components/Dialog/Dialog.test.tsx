@@ -14,7 +14,7 @@ import { DialogType } from './DialogContent.types'; // for express fluent assert
     expect(tree).toMatchSnapshot();
   });
 
-  it('Fires dismissed after closing', done => {
+  it('Fires dismissed after closing', (done: jest.DoneCallback) => {
     let dismissedCalled = false;
 
     const handleDismissed = () => {

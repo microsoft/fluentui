@@ -50,7 +50,7 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
     }
 
     // Sort the items.
-    sortedItems = sortedItems!.concat([]).sort((a, b) => {
+    sortedItems = sortedItems!.concat([]).sort((a: any, b: any) => {
       const firstValue = a[column.fieldName || ''];
       const secondValue = b[column.fieldName || ''];
 

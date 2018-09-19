@@ -521,7 +521,8 @@ describe('SpinButton', () => {
     const exampleDefaultValue = '12';
 
     function delay(millisecond: number): Promise<string> {
-      return new Promise<string>(resolve => setTimeout(resolve, millisecond));
+      // tslint:disable-next-line:no-any
+      return new Promise<string>((resolve: any) => setTimeout(resolve, millisecond));
     }
 
     const renderedDOM: HTMLElement = renderIntoDocument(

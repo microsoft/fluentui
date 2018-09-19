@@ -62,7 +62,7 @@ const highContrastBorderState: IRawStyle = {
   }
 };
 
-export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = props => {
+export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = (props: IDropdownStyleProps) => {
   const {
     theme,
     hasError,

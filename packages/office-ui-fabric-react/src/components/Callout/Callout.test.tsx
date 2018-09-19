@@ -104,7 +104,7 @@ describe('Callout', () => {
     expect(threwException).toEqual(false);
   });
 
-  it('passes event to onDismiss prop', done => {
+  it('passes event to onDismiss prop', (done: jest.DoneCallback) => {
     let threwException = false;
     let gotEvent = false;
     const onDismiss = (ev?: any) => {
