@@ -2,8 +2,8 @@ import * as React from 'react';
 
 import { BaseComponent, divProperties, getNativeProps, getId, KeyCodes, getDocument, createRef, classNamesFunction } from '../../Utilities';
 import { IHoverCardProps, IHoverCardStyles, IHoverCardStyleProps, OpenCardMode, HoverCardType } from './HoverCard.types';
-import { ExpandingCard } from './ExpandingCard/ExpandingCard';
-import { ExpandingCardMode, IExpandingCardProps } from './ExpandingCard/ExpandingCard.types';
+import { ExpandingCard } from './ExpandingCard';
+import { ExpandingCardMode, IExpandingCardProps } from './ExpandingCard.types';
 import { BasicCard } from './BasicCard/BasicCard';
 import { IBasicCardProps } from './BasicCard/BasicCard.types';
 

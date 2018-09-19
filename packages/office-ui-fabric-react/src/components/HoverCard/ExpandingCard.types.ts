@@ -1,6 +1,6 @@
-import { ICardProps, ICardStyles, ICardStyleProps } from '../Card.types';
-import { IRenderFunction } from '../../../Utilities';
-import { IStyle } from '../../../Styling';
+import { ICardProps, ICardStyles, ICardStyleProps } from './Card.types';
+import { IRenderFunction } from '../../Utilities';
+import { IStyle } from '../../Styling';
 
 export interface IExpandingCard {}
 

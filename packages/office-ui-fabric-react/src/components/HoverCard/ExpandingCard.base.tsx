@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Card } from '../Card';
-import { classNamesFunction, createRef } from '../../../Utilities';
+import { Card } from './Card';
+import { classNamesFunction, createRef } from '../../Utilities';
 import {
   ExpandingCardMode,
   IExpandingCardProps,

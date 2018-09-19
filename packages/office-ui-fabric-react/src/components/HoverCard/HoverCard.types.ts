@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { IExpandingCardProps } from './ExpandingCard/ExpandingCard.types';
+import { IExpandingCardProps } from './ExpandingCard.types';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject, KeyCodes } from '../../Utilities';
 import { IBasicCardProps } from './BasicCard/BasicCard.types';
