@@ -85,11 +85,9 @@ const requiredProps: { [key: string]: any } = {
 // Some components inject the className prop on a child DOM element rather than the root,
 // so the test needs to look for className on the child props object that has the given class name
 const classNameSelectors: { [key: string]: string } = {
-  BasicCard: 'ms-BasicCard-content',
   Breadcrumb: 'ms-Breadcrumb',
   Callout: 'ms-Callout',
   ContextualMenu: 'ms-ContextualMenu',
-  ExpandingCard: 'ms-ExpandingCard-content',
   DetailsList: 'ms-DetailsList',
   Dropdown: 'ms-Dropdown',
   Modal: 'ms-Modal',
@@ -109,7 +107,6 @@ const excludedComponents: string[] = [
   'ColorRectangle', // className is not injected
   'ContextualMenuItemWrapper', // className is not injected
   'Dialog', // className is deprecated
-  'HoverCard', // className is not injected
   'Keytip', // helper component, not meant to take a className
   'KeytipData', // helper component, not meant to take a className
   'KeytipLayer', // helper component, not meant to take a className

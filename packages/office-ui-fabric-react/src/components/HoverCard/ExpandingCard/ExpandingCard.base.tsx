@@ -72,10 +72,8 @@ export class ExpandingCardBase extends Card<
   }
 
   protected renderContent(): JSX.Element {
-    const { className } = this.props;
-
     return (
-      <div onMouseEnter={this.props.onEnter} onMouseLeave={this.props.onLeave} onKeyDown={this.onKeyDown} className={className}>
+      <div onMouseEnter={this.props.onEnter} onMouseLeave={this.props.onLeave} onKeyDown={this.onKeyDown}>
         {this._onRenderCompactCard()}
         {this._onRenderExpandedCard()}
       </div>

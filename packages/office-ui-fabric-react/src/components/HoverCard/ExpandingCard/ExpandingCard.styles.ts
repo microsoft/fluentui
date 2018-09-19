@@ -4,7 +4,6 @@ import { IExpandingCardStyles, IExpandingCardStyleProps } from './ExpandingCard.
 const GlobalClassNames = {
   root: 'ms-ExpandingCard-root',
   compactCard: 'ms-ExpandingCard-compactCard',
-  contentWrapper: 'ms-ExpandingCard-content',
   expandedCard: 'ms-ExpandingCard-expandedCard',
   expandedCardScroll: 'ms-ExpandingCard-expandedCardScrollRegion'
 };
@@ -32,7 +31,8 @@ export function getStyles(props: IExpandingCardStyleProps): IExpandingCardStyles
             }
           }
         }
-      }
+      },
+      className
     ],
     compactCard: [
       classNames.compactCard,
@@ -73,7 +73,6 @@ export function getStyles(props: IExpandingCardStyleProps): IExpandingCardStyles
         boxSizing: 'border-box',
         overflowY: 'auto'
       }
-    ],
-    contentWrapper: [classNames.contentWrapper, className]
+    ]
   };
 }

@@ -92,11 +92,6 @@ export interface ICardStyleProps {
 
 export interface ICardStyles {
   /**
-   * Style for wrapping div of both compact and expanded cards.
-   */
-  contentWrapper?: IStyle;
-
-  /**
    * Style for the root element in the default enabled, non-toggled state.
    */
   root?: IStyle;

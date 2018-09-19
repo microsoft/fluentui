@@ -2,8 +2,7 @@ import { getGlobalClassNames, HighContrastSelector } from '../../../Styling';
 import { IBasicCardStyles, IBasicCardStyleProps } from './BasicCard.types';
 
 const GlobalClassNames = {
-  root: 'ms-BasicCard-root',
-  contentWrapper: 'ms-BasicCard-content'
+  root: 'ms-BasicCard-root'
 };
 
 export function getStyles(props: IBasicCardStyleProps): IBasicCardStyles {
@@ -27,8 +26,8 @@ export function getStyles(props: IBasicCardStyleProps): IBasicCardStyles {
             }
           }
         }
-      }
-    ],
-    contentWrapper: [classNames.contentWrapper, className]
+      },
+      className
+    ]
   };
 }
