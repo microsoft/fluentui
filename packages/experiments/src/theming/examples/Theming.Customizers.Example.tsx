@@ -9,7 +9,7 @@ import { Text } from '@uifabric/experiments/lib/Text';
 // tslint:disable:max-line-length
 import { CollapsibleSectionRecursiveExample } from '@uifabric/experiments/lib/components/CollapsibleSection/examples/CollapsibleSection.Recursive.Example';
 
-import { ThemeDialog } from './ThemeDialog';
+import { DialogExample } from './DialogExample';
 import { defaultTheme, neutralTheme, softTheme, strongTheme, regionStyles } from './Themes';
 
 export class ThemingExample extends React.Component<{}, {}> {
@@ -39,15 +39,15 @@ export class ThemingExample extends React.Component<{}, {}> {
               <VerticalStack styles={regionStyles} fillVertical={true} padding={5}>
                 <Text weight="bold">Neutral Theme</Text>
                 <Customizer settings={{ theme: defaultTheme }}>
-                  <ThemeDialog buttonText="Default Theme" />
+                  <DialogExample buttonText="Default Theme" />
                 </Customizer>
                 <Customizer settings={{ theme: strongTheme }}>
-                  <ThemeDialog buttonText="Strong Theme" />
+                  <DialogExample buttonText="Strong Theme" />
                 </Customizer>
                 <Customizer settings={{ theme: softTheme }}>
-                  <ThemeDialog buttonText="Soft Theme" />
+                  <DialogExample buttonText="Soft Theme" />
                 </Customizer>
-                <ThemeDialog buttonText="Inherited Theme" />
+                <DialogExample buttonText="Inherited Theme" />
               </VerticalStack>
             </Customizer>
           </VerticalStack>

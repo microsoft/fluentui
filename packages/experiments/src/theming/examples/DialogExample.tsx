@@ -12,7 +12,7 @@ export interface IDialogExampleState {
   hideDialog: boolean;
 }
 
-export class ThemeDialog extends React.Component<IDialogExampleProps, IDialogExampleState> {
+export class DialogExample extends React.Component<IDialogExampleProps, IDialogExampleState> {
   constructor(props: IDialogExampleProps) {
     super(props);
 

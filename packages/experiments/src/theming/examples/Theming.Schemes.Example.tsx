@@ -11,7 +11,7 @@ import { Text } from '@uifabric/experiments/lib/Text';
 import { CollapsibleSectionRecursiveExample } from '@uifabric/experiments/lib/components/CollapsibleSection/examples/CollapsibleSection.Recursive.Example';
 
 import { regionStyles, schemeThemeCustom, schemeThemeVariants } from './Themes';
-import { ThemeDialog } from './ThemeDialog';
+import { DialogExample } from './DialogExample';
 
 export interface IThemingExampleState {
   bodyToggle: boolean;
@@ -67,15 +67,15 @@ export class ThemingExample extends React.Component<{}, IThemingExampleState> {
                 <Toggle offText={bodyCaption} onText={bodyCaption} onChange={this.toggleBody} />
               </HorizontalStack>
               <VerticalStack.Item scheme="default">
-                <ThemeDialog buttonText="Default Theme" />
+                <DialogExample buttonText="Default Theme" />
               </VerticalStack.Item>
               <VerticalStack.Item scheme="strong">
-                <ThemeDialog buttonText="Strong Scheme" />
+                <DialogExample buttonText="Strong Scheme" />
               </VerticalStack.Item>
               <VerticalStack.Item scheme="soft">
-                <ThemeDialog buttonText="Soft Scheme" />
+                <DialogExample buttonText="Soft Scheme" />
               </VerticalStack.Item>
-              <ThemeDialog buttonText="Inherited Scheme" />
+              <DialogExample buttonText="Inherited Scheme" />
             </VerticalStack>
           </VerticalStack>
         </HorizontalStack.Item>
