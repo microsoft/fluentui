@@ -8,7 +8,7 @@ import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 const getClassNames = classNamesFunction<INavGroupStyleProps, INavGroupStyles>();
 const classNames = getClassNames(getStyles);
 
-class NavigationGroup extends React.Component<INavGroupProps, {}> {
+export class NavGroup extends React.Component<INavGroupProps, {}> {
   constructor(props: INavGroupProps) {
     super(props);
   }
@@ -93,5 +93,3 @@ class NavigationGroup extends React.Component<INavGroupProps, {}> {
     );
   }
 }
-
-export const NavGroup = NavigationGroup;

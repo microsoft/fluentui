@@ -71,6 +71,14 @@ export interface IRecommendationProps {
    * @memberof IRecommendationProps
    */
   dismissRecommendationAriaLabel?: string;
+  /**
+   * Optional: Align the data visualization child in center
+   *
+   * @default false
+   * @type  {boolean}
+   * @memberof IRecommendationProps
+   */
+  centerDataVisualization?: boolean;
 }
 
 /**
@@ -111,4 +119,28 @@ export interface IRecommendationStyles {
    * Styles for the Recommendation Content
    */
   recommendationContent: IStyle;
+  /**
+   * Style for the Recommendation flex row: header
+   */
+  recommendationHeaderRow: IStyle;
+  /**
+   * Style for the Recommendation flex row: content
+   */
+  recommendationContentRow: IStyle;
+  /**
+   * Style for the Recommendation flex row: command
+   */
+  recommendationCommandRow: IStyle;
+  /**
+   * Style for the Recommendation flex row: text
+   */
+  recommendationContentRowText: IStyle;
+  /**
+   * Style for the Recommendation flex row: visualization
+   */
+  recommendationContentRowVisualization: IStyle;
+  /**
+   * Style for the Recommendation flex row: visualization
+   */
+  recommendationRowContainer: IStyle;
 }

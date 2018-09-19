@@ -1,5 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
+import * as glob from 'glob';
+import * as path from 'path';
 
 import { resetIds } from '../Utilities';
 
@@ -96,8 +98,6 @@ declare const global: any;
  *    what you expect before submitting a PR.
  */
 describe('Component Examples', () => {
-  const glob = require('glob');
-  const path = require('path');
   const realDate = Date;
   const realToLocaleString = global.Date.prototype.toLocaleString;
   const realToLocaleTimeString = global.Date.prototype.toLocaleTimeString;

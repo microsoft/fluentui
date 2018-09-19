@@ -48,7 +48,7 @@ export class CardFrame extends React.Component<ICardFrameProps, {}> {
                   fontFamily: 'Segoe UI',
                   fontWeight: '600',
                   fontSize: '14px !important',
-                  lineHeight: '16px',
+                  lineHeight: '19px',
                   selectors: {
                     ':hover': {
                       color: '#0078D4'

@@ -192,11 +192,8 @@ export class RecommendationDlpExample extends React.Component<{}, IRecommendatio
           handleViewRecommendationClick={this.onViewRecommendationClick}
           handleDismissRecommendationClick={this.onDimissRecommendationClick}
         >
-          <div className={classNames.visualizationStyle}>
-            <DlpVisualization
-              dlpVisualizationHeaderText={visualizationHeaderText}
-              dlpLineItems={dlpVisualizationData}
-            />
+          <div>
+            <DlpVisualization dlpVisualizationHeaderText={visualizationHeaderText} dlpLineItems={dlpVisualizationData} />
           </div>
         </Recommendation>
       </div>

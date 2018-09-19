@@ -9,8 +9,8 @@ const navItemHoverColor = '#CCCCCC';
 const navItemWithChildBgColor = '#CCCCCC';
 const navItemSelectedColor = '#B7B7B7';
 
-export const getStyles = (props: INavLinkStyleProps): INavLinkStyles => {
-  const { hasChildren, isSelected, isChildLinkSelected, isNested } = this.props;
+export const getNavLinkStyles = (props: INavLinkStyleProps): INavLinkStyles => {
+  // const { hasChildren, isSelected, isChildLinkSelected, isNested } = this.props;
 
   return {
     navLink: {
@@ -23,7 +23,7 @@ export const getStyles = (props: INavLinkStyleProps): INavLinkStyles => {
 
       selectors: {
         ':hover': {
-          backgroundColor: hasChildren ? navItemWithChildBgColor : navItemHoverColor
+          backgroundColor: this.props.hasChildren ? navItemWithChildBgColor : navItemHoverColor
         },
         ':active': {
           backgroundColor: navItemSelectedColor
@@ -37,7 +37,7 @@ export const getStyles = (props: INavLinkStyleProps): INavLinkStyles => {
     iconWrapper: {
       position: 'relative',
       display: 'flex',
-      flex: isSelected || isChildLinkSelected ? '0 0 32px' : '0 0 48px',
+      flex: this.props.isSelected || this.props.isChildLinkSelected ? '0 0 32px' : '0 0 48px',
       alignItems: 'center',
       justifyContent: 'center'
     },
@@ -62,13 +62,14 @@ export const getStyles = (props: INavLinkStyleProps): INavLinkStyles => {
     },
     navItemIcon: {
       fontSize: navIconSize,
-      lineHeight: isNested ? navChildItemHeight : navItemHeight,
+      lineHeight: this.props.isNested ? navChildItemHeight : navItemHeight,
       color: DefaultPalette.black
     },
     navItemText: {
       flex: '1 1 auto',
-      lineHeight: isNested > 0 ? navChildItemHeight : navItemHeight,
-      marginLeft: isChildLinkSelected || (!hasChildren && isSelected && !isNested) ? '8px' : '0px',
+      lineHeight: this.props.isNested > 0 ? navChildItemHeight : navItemHeight,
+      marginLeft:
+        this.props.isChildLinkSelected || (!this.props.hasChildren && this.props.isSelected && !this.props.isNested) ? '8px' : '0px',
       textOverflow: 'ellipsis',
       overflowX: 'hidden',
       whiteSpace: 'nowrap',

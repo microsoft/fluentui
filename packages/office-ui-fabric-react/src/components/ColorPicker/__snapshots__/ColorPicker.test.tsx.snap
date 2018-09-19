@@ -98,7 +98,8 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
       onMouseDown={[Function]}
       style={
         Object {
-          "background": "linear-gradient(to left,red 0,#f09 10%,#cd00ff 20%,#3200ff 30%,#06f 40%,#00fffd 50%,#0f6 60%,#35ff00 70%,#cdff00 80%,#f90 90%,red 100%)",
+          "background": "linear-gradient(to left,red 0,#f09 10%,#cd00ff 20%,#3200ff 30%,#06f 40%,#00fffd
+        50%,#0f6 60%,#35ff00 70%,#cdff00 80%,#f90 90%,red 100%)",
         }
       }
     >
@@ -113,7 +114,6 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
               right: 0px;
               top: 0px;
             }
-        style={undefined}
       />
       <div
         className=
@@ -151,7 +151,8 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
       onMouseDown={[Function]}
       style={
         Object {
-          "backgroundImage": "url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJUlEQVQYV2N89erVfwY0ICYmxoguxjgUFKI7GsTH5m4M3w1ChQC1/Ca8i2n1WgAAAABJRU5ErkJggg==)",
+          "backgroundImage": "url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AA
+        AAJUlEQVQYV2N89erVfwY0ICYmxoguxjgUFKI7GsTH5m4M3w1ChQC1/Ca8i2n1WgAAAABJRU5ErkJggg==)",
         }
       }
     >
@@ -312,7 +313,6 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                       }
                 >
                   <input
-                    aria-describedby={undefined}
                     aria-invalid={false}
                     aria-label="Hex"
                     className=
@@ -358,7 +358,6 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                     onChange={[Function]}
                     onFocus={[Function]}
                     onInput={[Function]}
-                    readOnly={undefined}
                     spellCheck={false}
                     type="text"
                     value="ffffff"
@@ -444,7 +443,6 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                       }
                 >
                   <input
-                    aria-describedby={undefined}
                     aria-invalid={false}
                     aria-label="Red"
                     className=
@@ -490,7 +488,6 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                     onChange={[Function]}
                     onFocus={[Function]}
                     onInput={[Function]}
-                    readOnly={undefined}
                     spellCheck={false}
                     type="text"
                     value="255"
@@ -576,7 +573,6 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                       }
                 >
                   <input
-                    aria-describedby={undefined}
                     aria-invalid={false}
                     aria-label="Green"
                     className=
@@ -622,7 +618,6 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                     onChange={[Function]}
                     onFocus={[Function]}
                     onInput={[Function]}
-                    readOnly={undefined}
                     spellCheck={false}
                     type="text"
                     value="255"
@@ -708,7 +703,6 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                       }
                 >
                   <input
-                    aria-describedby={undefined}
                     aria-invalid={false}
                     aria-label="Blue"
                     className=
@@ -754,7 +748,6 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                     onChange={[Function]}
                     onFocus={[Function]}
                     onInput={[Function]}
-                    readOnly={undefined}
                     spellCheck={false}
                     type="text"
                     value="255"
@@ -840,7 +833,6 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                       }
                 >
                   <input
-                    aria-describedby={undefined}
                     aria-invalid={false}
                     aria-label="Alpha"
                     className=
@@ -886,7 +878,6 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                     onChange={[Function]}
                     onFocus={[Function]}
                     onInput={[Function]}
-                    readOnly={undefined}
                     spellCheck={false}
                     type="text"
                     value="100"

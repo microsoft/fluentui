@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { INavLinkStyles, INavLinkProps, INavLinkStyleProps, INavLinkStates } from '../Nav.types';
-import { getStyles } from './NavLink.styles';
+import { getNavLinkStyles } from './NavLink.styles';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 const getClassNames = classNamesFunction<INavLinkStyleProps, INavLinkStyles>();
-const classNames = getClassNames(getStyles);
+const classNames = getClassNames(getNavLinkStyles);
 
-class NavigationLink extends React.Component<INavLinkProps, INavLinkStates> {
+export class NavLink extends React.Component<INavLinkProps, INavLinkStates> {
   constructor(props: INavLinkProps) {
     super(props);
   }
@@ -91,5 +91,3 @@ class NavigationLink extends React.Component<INavLinkProps, INavLinkStates> {
     );
   }
 }
-
-export const NavLink = NavigationLink;

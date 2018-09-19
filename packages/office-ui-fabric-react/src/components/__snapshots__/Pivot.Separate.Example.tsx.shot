@@ -16,8 +16,6 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
   />
   <div>
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className="ms-FocusZone"
       data-focuszone-id="FocusZone1"
       onFocus={[Function]}
@@ -48,11 +46,6 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
         role="tablist"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           aria-selected={true}
           className=
               ms-Button
@@ -109,6 +102,11 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #333333;
                 cursor: pointer;
@@ -160,7 +158,6 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                 color: Highlight;
               }
           data-is-focusable={true}
-          disabled={undefined}
           id="ShapeColorPivot_rectangleRed"
           name="Rectangle red"
           onClick={[Function]}
@@ -203,11 +200,6 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
           </div>
         </button>
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           aria-selected={false}
           className=
               ms-Button
@@ -263,6 +255,11 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #333333;
                 cursor: pointer;
@@ -310,7 +307,6 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                 box-sizing: border-box;
               }
           data-is-focusable={true}
-          disabled={undefined}
           id="ShapeColorPivot_squareRed"
           name="Square red"
           onClick={[Function]}
@@ -353,11 +349,6 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
           </div>
         </button>
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           aria-selected={false}
           className=
               ms-Button
@@ -413,6 +404,11 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #333333;
                 cursor: pointer;
@@ -460,7 +456,6 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                 box-sizing: border-box;
               }
           data-is-focusable={true}
-          disabled={undefined}
           id="ShapeColorPivot_rectangleGreen"
           name="Rectangle green"
           onClick={[Function]}

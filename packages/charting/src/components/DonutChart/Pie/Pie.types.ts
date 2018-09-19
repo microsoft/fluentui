@@ -39,6 +39,10 @@ export interface IPieProps {
    * Uniq string for chart
    */
   uniqText?: string;
+  /**
+   * Active Arc for chart
+   */
+  activeArc?: string;
 }
 
 export interface IPieStyles {

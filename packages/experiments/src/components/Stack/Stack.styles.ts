@@ -1,5 +1,6 @@
 import { IThemedProps } from '../../Foundation';
 import { IStackProps, IStackStyles } from './Stack.types';
+import { parseGap, parsePadding } from './StackUtils';
 
 const nameMap: { [key: string]: string } = {
   start: 'flex-start',
@@ -14,11 +15,37 @@ export const styles = (props: IThemedProps<IStackProps>): IStackStyles => {
     maxHeight,
     horizontal,
     grow,
-    margin,
+    wrap,
     padding,
     horizontalAlignment,
-    verticalAlignment
+    verticalAlignment,
+    horizontalGap,
+    verticalGap,
+    shrinkItems,
+    theme,
+    className
   } = props;
+
+  const hGap = parseGap(horizontalGap, theme);
+  const vGap = parseGap(verticalGap, theme);
+
+  // styles to be applied to all direct children regardless of wrap or direction
+  const childStyles = {
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis'
+  };
+
+  // selectors to be applied regardless of wrap or direction
+  const commonSelectors = {
+    '> *:empty': {
+      display: 'none'
+    },
+
+    // flexShrink styles are applied by the StackItem
+    '> *:not(.ms-StackItem)': {
+      flexShrink: shrinkItems ? 1 : 0
+    }
+  };
 
   return {
     root: [
@@ -26,12 +53,11 @@ export const styles = (props: IThemedProps<IStackProps>): IStackStyles => {
         display: 'flex',
         flexDirection: horizontal ? 'row' : 'column',
         flexWrap: 'nowrap',
-        width: fillHorizontal ? '100%' : 'auto',
-        height: fillVertical ? '100%' : 'auto',
+        width: fillHorizontal && !wrap ? '100%' : 'auto',
+        height: fillVertical && !wrap ? '100%' : 'auto',
         maxWidth,
         maxHeight,
-        margin,
-        padding,
+        padding: parsePadding(padding, theme),
         boxSizing: 'border-box'
       },
       grow && {
@@ -44,7 +70,33 @@ export const styles = (props: IThemedProps<IStackProps>): IStackStyles => {
       verticalAlignment && {
         [horizontal ? 'alignItems' : 'justifyContent']: nameMap[verticalAlignment] || verticalAlignment
       },
-      props.className
+      wrap && {
+        selectors: {
+          '> *': {
+            margin: `${0.5 * vGap.value}${vGap.unit} ${0.5 * hGap.value}${hGap.unit}`,
+            maxWidth: `calc(100% - ${hGap.value}${hGap.unit})`,
+            ...childStyles
+          },
+          ...commonSelectors
+        }
+      },
+      !wrap && {
+        selectors: {
+          '> *': childStyles,
+
+          // apply gap margin to every direct child except the first non-empty direct child
+          '> *:not(:empty) ~ *': [
+            horizontal && {
+              marginLeft: `${hGap.value}${hGap.unit}`
+            },
+            !horizontal && {
+              marginTop: `${vGap.value}${vGap.unit}`
+            }
+          ],
+          ...commonSelectors
+        }
+      },
+      className
     ]
     // TODO: this cast may be hiding some potential issues with styling and name
     //        lookups and should be removed
