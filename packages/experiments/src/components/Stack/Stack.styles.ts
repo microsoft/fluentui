@@ -53,8 +53,8 @@ export const styles = (props: IThemedProps<IStackProps>): IStackStyles => {
         display: 'flex',
         flexDirection: horizontal ? 'row' : 'column',
         flexWrap: 'nowrap',
-        width: (fillHorizontal && !wrap) ? '100%' : 'auto',
-        height: (fillVertical && !wrap) ? '100%' : 'auto',
+        width: fillHorizontal && !wrap ? '100%' : 'auto',
+        height: fillVertical && !wrap ? '100%' : 'auto',
         maxWidth,
         maxHeight,
         padding: parsePadding(padding, theme),
@@ -74,7 +74,10 @@ export const styles = (props: IThemedProps<IStackProps>): IStackStyles => {
         selectors: {
           '> *': {
             margin: `${0.5 * vGap.value}${vGap.unit} ${0.5 * hGap.value}${hGap.unit}`,
-            maxWidth: `calc(100% - ${hGap.value}${hGap.unit})`,
+
+            // extra 2px to account for padding on wrapped Stacks
+            maxWidth: `calc(100% - ${hGap.value}${hGap.unit} - 2px)`,
+
             ...childStyles
           },
           ...commonSelectors
