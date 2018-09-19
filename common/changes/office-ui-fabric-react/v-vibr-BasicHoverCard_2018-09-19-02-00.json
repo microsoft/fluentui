@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "HoverCard: Add BasicCard as an option when need to render a non-expanding HoverCard. Refactor mergeStyle API plus refactor file organization.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "v-vibr@microsoft.com"
+}
