@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "The ColorPicker component now also passes the complete color object as second parameter to the onColorChanged props along with the existing string representation of the same as first parameter.",
+      "comment": "ColorPicker: The ColorPicker component now passes the complete color object as second parameter to the `onColorChanged` props along with the existing string representation of the same as first parameter.",
       "type": "patch"
     }
   ],
