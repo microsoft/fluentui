@@ -34,11 +34,11 @@ packageJsons.forEach(packageJsonPath => {
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath).toString());
   let shouldGenerate = true;
 
-  if (!fs.existsSync(path.dirname(versionFile))) {
+  if (!fs.existsSync(path.dirname(versionFile)) || packageJsonPath.indexOf('set-version') > -1) {
     return;
   }
 
-  if (fs.existsSync(versionFile)) {
+  if (fs.existsSync(versionFile) && process.argv.indexOf('-f') < 0) {
     const originVersionFileContent = fs.readFileSync(versionFile).toString();
     shouldGenerate = originVersionFileContent.indexOf(`${packageJson.name}@${packageJson.version}`) < 0;
   }
@@ -49,13 +49,8 @@ packageJsons.forEach(packageJsonPath => {
     fs.writeFileSync(
       versionFile,
       `// ${packageJson.name}@${packageJson.version} - Do not modify this file, the file is generated as part of publish but not checked in
-if (typeof window !== 'undefined') {
-  // tslint:disable-next-line:no-any
-  const scope = window as any;
-  scope.__FabricVersions = scope.__FabricVersions || {};
-  scope.__FabricVersions['${packageJson.name}'] = scope.__FabricVersions['${packageJson.name}'] || [];
-  scope.__FabricVersions['${packageJson.name}'].push('${packageJson.version}');
-}`
+import { setVersion } from '@uifabric/set-version';
+setVersion('${packageJson.name}', '${packageJson.version}');`
     );
   }
 });
