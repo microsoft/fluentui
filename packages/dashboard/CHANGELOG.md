@@ -1,6 +1,13 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Mon, 17 Sep 2018 12:27:05 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Sep 2018 12:25:33 GMT and should not be manually modified.
+
+## 0.25.3
+Thu, 20 Sep 2018 12:25:33 GMT
+
+### Patches
+
+- Add target for cardHeader title in dashboard package
 
 ## 0.25.2
 Mon, 17 Sep 2018 12:27:05 GMT

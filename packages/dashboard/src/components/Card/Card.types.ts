@@ -99,6 +99,11 @@ export interface ICardFrameContent {
    * Hyperlink URL for title
    */
   href?: string;
+
+  /**
+   * Target for Hyperlink URL for title
+   */
+  target?: string;
 }
 
 export interface ICardProps {

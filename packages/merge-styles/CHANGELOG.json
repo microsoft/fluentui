@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.9.0",
+      "tag": "@uifabric/merge-styles_v6.9.0",
+      "date": "Thu, 20 Sep 2018 12:25:33 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding support for feature queries in selectors.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "2c9c91288704828364eb022e04bdec9dbce008b0"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.8.4",
       "tag": "@uifabric/merge-styles_v6.8.4",
       "date": "Thu, 13 Sep 2018 17:38:04 GMT",

@@ -4,7 +4,7 @@
   "description": "Office UI Fabric file type icon set.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "sideEffects": false,
+  "sideEffects": ["lib/version.js"],
   "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",
@@ -30,7 +30,8 @@
     "react-dom": ">=16.3.2-0 <17.0.0"
   },
   "dependencies": {
-    "@uifabric/styling": ">=6.25.0 <7.0.0",
+    "@uifabric/styling": ">=6.26.0 <7.0.0",
+    "@uifabric/set-version": ">=1.0.0 <2.0.0",
     "tslib": "^1.7.1"
   },
   "peerDependencies": {

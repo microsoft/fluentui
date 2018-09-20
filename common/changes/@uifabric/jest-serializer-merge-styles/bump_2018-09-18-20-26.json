@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/jest-serializer-merge-styles",
+      "comment": "Adding a version stamp file",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/jest-serializer-merge-styles",
+  "email": "kchau@microsoft.com"
+}

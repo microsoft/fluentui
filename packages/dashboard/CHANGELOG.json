@@ -2,6 +2,25 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.25.3",
+      "tag": "@uifabric/dashboard_v0.25.3",
+      "date": "Thu, 20 Sep 2018 12:25:33 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add target for cardHeader title in dashboard package",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "1bd32132a7eaed9294214c1017d68c41885dad51"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.71.1 <7.0.0` to `>=6.72.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.25.2",
       "tag": "@uifabric/dashboard_v0.25.2",
       "date": "Mon, 17 Sep 2018 12:27:05 GMT",

@@ -32,6 +32,7 @@
     "update-snapshots": "cd packages/office-ui-fabric-react && npm run update-snapshots",
     "check-for-changed-files": "node ./scripts/check-for-modified-files.js",
     "prettier": "node scripts/prettier.js",
+    "generate-version-files": "node scripts/generate-version-files.js",
     "codepen": "cd packages/office-ui-fabric-react && node ../../scripts/local-codepen.js",
     "precommit": "node scripts/node_modules/lint-staged/index.js"
   },
