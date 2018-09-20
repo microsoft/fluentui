@@ -1368,7 +1368,8 @@ describe('FocusZone', () => {
     expect(buttonB.tabIndex).toBe(0);
   });
 
-  it('focus should leave input box when arrow keys are pressed when tabbing is supported but shouldInputLoseFocusOnArrowKey callback method return true', () => {
+  it(`focus should leave input box when arrow keys are pressed when tabbing is supported but
+    shouldInputLoseFocusOnArrowKey callback method return true`, () => {
     const tabDownListener = jest.fn();
     const component = ReactTestUtils.renderIntoDocument(
       <div {...{ onFocusCapture: _onFocus, onKeyDown: tabDownListener }}>

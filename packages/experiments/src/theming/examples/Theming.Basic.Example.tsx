@@ -8,20 +8,19 @@ import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { farItems, items, overflowItems } from 'office-ui-fabric-react/lib/components/CommandBar/examples/data';
 
-import { HorizontalStack, VerticalStack, IStackProps, IStackStyles } from '@uifabric/experiments/lib/Stack';
-import { Text } from '@uifabric/experiments/lib/Text';
-import { CollapsibleSectionRecursiveExample } from
-  '@uifabric/experiments/lib/components/CollapsibleSection/examples/CollapsibleSection.Recursive.Example';
-import { IThemedProps } from '../../Foundation';
 import {
-  defaultTheme,
-  invertedPrimaryTheme,
-  invertedDefaultTheme,
-  neutralTheme,
-  schemeTheme,
-  softTheme,
-  strongTheme
-} from './Themes';
+  HorizontalStack,
+  VerticalStack,
+  IHorizontalStackProps,
+  IVerticalStackProps,
+  IHorizontalStackStyles,
+  IVerticalStackStyles
+} from '@uifabric/experiments/lib/Stack';
+import { Text } from '@uifabric/experiments/lib/Text';
+// tslint:disable-next-line:max-line-length
+import { CollapsibleSectionRecursiveExample } from '@uifabric/experiments/lib/components/CollapsibleSection/examples/CollapsibleSection.Recursive.Example';
+import { IThemedProps } from '../../Foundation';
+import { defaultTheme, invertedPrimaryTheme, invertedDefaultTheme, neutralTheme, schemeTheme, softTheme, strongTheme } from './Themes';
 
 interface IDialogExampleProps {
   buttonText: string;
@@ -42,11 +41,7 @@ class DialogExample extends React.Component<IDialogExampleProps, IDialogExampleS
   }
 
   protected _renderCustomizerDialog(buttonText: string, theme?: ITheme): JSX.Element {
-    return theme ? (
-      <Customizer settings={{ theme }}>{this._renderDialog(buttonText)}</Customizer>
-    ) : (
-      this._renderDialog(buttonText)
-    );
+    return theme ? <Customizer settings={{ theme }}>{this._renderDialog(buttonText)}</Customizer> : this._renderDialog(buttonText);
   }
 
   protected _renderDialog(buttonText: string): JSX.Element {
@@ -60,8 +55,7 @@ class DialogExample extends React.Component<IDialogExampleProps, IDialogExampleS
           dialogContentProps={{
             type: DialogType.largeHeader,
             title: 'All emails together',
-            subText:
-              'Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
+            subText: 'Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
           }}
           modalProps={{
             isBlocking: false,
@@ -112,12 +106,20 @@ class ThemedDialog extends DialogExample {
 }
 
 // TODO: requiring users to type this way is frictiony. find a way to reduces props typing
-export const stackStyles = (props: IThemedProps<IStackProps>): IStackStyles => {
+export const horizontalStackStyles = (props: IThemedProps<IHorizontalStackProps>): IHorizontalStackStyles => {
   return {
     root: {
       backgroundColor: props.theme.semanticColors.bodyBackground
     }
-  };
+  } as IHorizontalStackStyles;
+};
+
+export const verticalStackStyles = (props: IThemedProps<IVerticalStackProps>): IVerticalStackStyles => {
+  return {
+    root: {
+      backgroundColor: props.theme.semanticColors.bodyBackground
+    }
+  } as IVerticalStackStyles;
 };
 
 export class ThemingBasicExample extends React.Component<{}, {}> {
@@ -139,22 +141,17 @@ export class ThemingBasicExample extends React.Component<{}, {}> {
   /**
    * Render various components using multiple Customizers.
    */
-  private _renderCustomizedComponents(
-    theme: ITheme,
-    sideMenuTheme: ITheme,
-    topMenuTheme: ITheme,
-    bodyTheme: ITheme
-  ): JSX.Element {
+  private _renderCustomizedComponents(theme: ITheme, sideMenuTheme: ITheme, topMenuTheme: ITheme, bodyTheme: ITheme): JSX.Element {
     return (
-      <HorizontalStack gap={10} styles={stackStyles}>
+      <HorizontalStack gap={10} styles={horizontalStackStyles}>
         <Customizer settings={{ theme: sideMenuTheme }}>
           <HorizontalStack.Item grow={1}>{this._renderSideMenu()}</HorizontalStack.Item>
         </Customizer>
         <HorizontalStack.Item grow={3}>
-          <VerticalStack gap={10} styles={stackStyles}>
+          <VerticalStack gap={10} styles={verticalStackStyles}>
             <Customizer settings={{ theme: topMenuTheme }}>{this._renderTopMenu()}</Customizer>
             <Customizer settings={{ theme: bodyTheme }}>
-              <VerticalStack styles={stackStyles}>
+              <VerticalStack styles={verticalStackStyles}>
                 <Text>Body Content</Text>
                 <ThemedDialog buttonText="Default Theme" customizerTheme={theme} />
                 <ThemedDialog buttonText="Side Menu Theme" customizerTheme={sideMenuTheme} />
@@ -173,10 +170,10 @@ export class ThemingBasicExample extends React.Component<{}, {}> {
    */
   private _renderSchemedComponents(): JSX.Element {
     return (
-      <HorizontalStack gap={10} styles={stackStyles}>
+      <HorizontalStack gap={10} styles={horizontalStackStyles}>
         <HorizontalStack.Item grow={1}>{this._renderSideMenu()}</HorizontalStack.Item>
         <HorizontalStack.Item grow={3}>
-          <VerticalStack styles={stackStyles}>
+          <VerticalStack styles={verticalStackStyles}>
             <Text>Body Content</Text>
             <ThemedDialog buttonText="Default Theme" />
             <ThemedDialog buttonText="Side Menu Theme" />
@@ -190,7 +187,7 @@ export class ThemingBasicExample extends React.Component<{}, {}> {
 
   private _renderSideMenu(): JSX.Element {
     return (
-      <VerticalStack maxWidth="25%" styles={stackStyles}>
+      <VerticalStack maxWidth="25%" styles={verticalStackStyles}>
         <Text>Side Menu</Text>
         <CollapsibleSectionRecursiveExample />
       </VerticalStack>
@@ -199,7 +196,7 @@ export class ThemingBasicExample extends React.Component<{}, {}> {
 
   private _renderTopMenu(): JSX.Element {
     return (
-      <VerticalStack styles={stackStyles}>
+      <VerticalStack styles={verticalStackStyles}>
         <Text>Top Menu</Text>
         <CommandBar items={items} overflowItems={overflowItems} farItems={farItems} />
       </VerticalStack>

@@ -1,24 +1,23 @@
 import * as React from 'react';
-
-import {
-  BaseComponent,
-  classNamesFunction,
-  divProperties,
-  getId,
-  getNativeProps,
-  getRTL,
-  createRef,
-  elementContains,
-  allowScrollOnElement,
-  isIOS
-} from '../../Utilities';
-import { IProcessedStyleSet, getTheme, IconFontSizes } from '../../Styling';
-import { FocusTrapZone } from '../FocusTrapZone/index';
-import { IPanel, IPanelProps, PanelType, IPanelStyleProps, IPanelStyles } from './Panel.types';
+import { IconButton } from '../../Button';
 import { Layer } from '../../Layer';
 import { Overlay } from '../../Overlay';
 import { Popup } from '../../Popup';
-import { IconButton } from '../../Button';
+import { getTheme, IconFontSizes, IProcessedStyleSet } from '../../Styling';
+import {
+  allowScrollOnElement,
+  BaseComponent,
+  classNamesFunction,
+  createRef,
+  divProperties,
+  elementContains,
+  getId,
+  getNativeProps,
+  getRTL,
+  isIOS
+} from '../../Utilities';
+import { FocusTrapZone } from '../FocusTrapZone/index';
+import { IPanel, IPanelProps, IPanelStyleProps, IPanelStyles, PanelType } from './Panel.types';
 
 const getClassNames = classNamesFunction<IPanelStyleProps, IPanelStyles>();
 
@@ -206,7 +205,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     }
   }
 
-  public dismiss = (ev?: React.KeyboardEvent<HTMLElement>): void => {
+  public dismiss = (ev?: React.SyntheticEvent<HTMLElement>): void => {
     if (this.state.isOpen) {
       if (this.props.onDismiss) {
         this.props.onDismiss(ev);
@@ -344,8 +343,8 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     }
   }
 
-  private _onPanelClick = (): void => {
-    this.dismiss();
+  private _onPanelClick = (ev?: any): void => {
+    this.dismiss(ev);
   };
 
   private _onTransitionComplete = (): void => {

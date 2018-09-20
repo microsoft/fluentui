@@ -92,22 +92,18 @@ export class TagPickerBasicExample extends BaseComponent<{}, ITagPickerDemoPageS
     });
   };
 
-  private _onFilterChanged = (
-    filterText: string,
-    tagList: { key: string; name: string }[]
-  ): { key: string; name: string }[] => {
+  private _onFilterChanged = (filterText: string, tagList: { key: string; name: string }[]): { key: string; name: string }[] => {
     return filterText
       ? _testTags
-        .filter((tag: { key: string; name: string }) => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0)
-        .filter((tag: { key: string; name: string }) => !this._listContainsDocument(tag, tagList))
+          .filter((tag: { key: string; name: string }) => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0)
+          .filter((tag: { key: string; name: string }) => !this._listContainsDocument(tag, tagList))
       : [];
   };
 
-  private _onFilterChangedNoFilter = (
-    filterText: string,
-    tagList: { key: string; name: string }[]
-  ): { key: string; name: string }[] => {
-    return filterText ? _testTags.filter((tag: { key: string; name: string }) => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0) : [];
+  private _onFilterChangedNoFilter = (filterText: string, tagList: { key: string; name: string }[]): { key: string; name: string }[] => {
+    return filterText
+      ? _testTags.filter((tag: { key: string; name: string }) => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0)
+      : [];
   };
 
   private _onItemSelected = (item: { key: string; name: string }): { key: string; name: string } | null => {

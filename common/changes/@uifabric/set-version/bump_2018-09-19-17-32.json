@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/set-version",
+      "comment": "Adding a set-version package to manage duplicated version code",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/set-version",
+  "email": "kchau@microsoft.com"
+}

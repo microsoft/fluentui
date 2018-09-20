@@ -66,14 +66,14 @@ describe('FocusTrapZone', () => {
       clientRect,
       isVisible = true
     }: {
-        clientRect: {
-          top: number;
-          left: number;
-          bottom: number;
-          right: number;
-        };
-        isVisible?: boolean;
-      }
+      clientRect: {
+        top: number;
+        left: number;
+        bottom: number;
+        right: number;
+      };
+      isVisible?: boolean;
+    }
   ): void {
     element.getBoundingClientRect = () => ({
       top: clientRect.top,
@@ -209,7 +209,8 @@ describe('FocusTrapZone', () => {
       expect(lastFocusedElement).toBe(buttonX);
     });
 
-    it('can trap focus when FTZ bookmark elements are FocusZones, and those elements have inner elements focused that are not the first inner element', async () => {
+    it(`can trap focus when FTZ bookmark elements are FocusZones, and those elements have inner elements focused that
+      are not the first inner element`, async () => {
       expect.assertions(4);
 
       const topLevelDiv = ReactTestUtils.renderIntoDocument(
@@ -353,7 +354,9 @@ describe('FocusTrapZone', () => {
   });
 
   describe('Focusing the FTZ', () => {
-    function setupTest(focusPreviouslyFocusedInnerElement: boolean): {
+    function setupTest(
+      focusPreviouslyFocusedInnerElement: boolean
+    ): {
       focusTrapZone: FocusTrapZone;
       buttonF: HTMLElement;
       buttonA: HTMLElement;

@@ -105,7 +105,8 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   }
 
   public componentWillUpdate(newProps: ICalloutProps): void {
-    // If the target element changed, find the new one. If we are tracking target with class name, always find element because we do not know if fabric has rendered a new element and disposed the old element.
+    // If the target element changed, find the new one. If we are tracking target with class name, always find element because we
+    // do not know if fabric has rendered a new element and disposed the old element.
     const newTarget = this._getTarget(newProps);
     const oldTarget = this._getTarget();
     if (newTarget !== oldTarget || typeof newTarget === 'string' || newTarget instanceof String) {

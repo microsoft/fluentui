@@ -326,15 +326,15 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     this._classNames = this.props.getClassNames
       ? this.props.getClassNames(theme!, !!isOpen, !!disabled, !!required, !!focused, !!allowFreeform, !!hasErrorMessage, className)
       : getClassNames(
-        getStyles(theme!, customStyles),
-        className!,
-        !!isOpen,
-        !!disabled,
-        !!required,
-        !!focused,
-        !!allowFreeform,
-        !!hasErrorMessage
-      );
+          getStyles(theme!, customStyles),
+          className!,
+          !!isOpen,
+          !!disabled,
+          !!required,
+          !!focused,
+          !!allowFreeform,
+          !!hasErrorMessage
+        );
 
     return (
       <div {...divProps} ref={this._root} className={this._classNames.container}>
@@ -629,7 +629,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           return { ...item, index };
         })
         .filter(
-          (option: IComboBoxOption) => option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider
+          (option: IComboBoxOption) =>
+            option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider
         )
         .filter((option: IComboBoxOption) => this._getPreviewText(option) === updatedValue);
 
@@ -657,7 +658,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           return { ...item, index };
         })
         .filter(
-          (option: IComboBoxOption) => option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider
+          (option: IComboBoxOption) =>
+            option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider
         )
         .filter(
           (option: IComboBoxOption) =>
@@ -682,7 +684,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           return { ...item, index };
         })
         .filter(
-          (option: IComboBoxOption) => option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider
+          (option: IComboBoxOption) =>
+            option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider
         )
         .filter((option: IComboBoxOption) => this._getPreviewText(option).toLocaleLowerCase() === updatedValue);
 
@@ -731,7 +734,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             return { ...item, index: i };
           })
           .filter(
-            (option: IComboBoxOption) => option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider
+            (option: IComboBoxOption) =>
+              option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider
           )
           .filter((option: IComboBoxOption) => option.text.toLocaleLowerCase().indexOf(updatedValue) === 0);
 
@@ -835,7 +839,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         return;
       }
       if (this.props.multiSelect) {
-        // Setting the initial state of option.selected in Multi-select combobox by checking the selectedIndices array and overriding the undefined issue
+        // Setting the initial state of option.selected in Multi-select combobox by checking the
+        // selectedIndices array and overriding the undefined issue
         option.selected = option.selected !== undefined ? !option.selected : selectedIndices.indexOf(index) < 0;
         if (option.selected && selectedIndices.indexOf(index) < 0) {
           selectedIndices.push(index);
@@ -994,7 +999,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             (this._autofill.current &&
               this._autofill.current.isValueSelected &&
               currentPendingValue.length + (this._autofill.current.selectionEnd! - this._autofill.current.selectionStart!) ===
-              pendingOptionText.length)) ||
+                pendingOptionText.length)) ||
             (this._autofill.current &&
               this._autofill.current.inputElement &&
               this._autofill.current.inputElement.value.toLocaleLowerCase() === pendingOptionText))
@@ -1179,24 +1184,24 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           }
         </CommandButton>
       ) : (
-          <Checkbox
-            id={id + '-list' + item.index}
-            ariaLabel={this._getPreviewText(item)}
-            key={item.key}
-            data-index={item.index}
-            styles={checkboxStyles}
-            className={'ms-ComboBox-option'}
-            data-is-focusable={true}
-            onChange={this._onItemClick(item.index!)}
-            label={item.text}
-            role="option"
-            aria-selected={isSelected ? 'true' : 'false'}
-            checked={isSelected}
-            title={title}
-          >
-            {onRenderOption(item, this._onRenderOptionContent)}
-          </Checkbox>
-        );
+        <Checkbox
+          id={id + '-list' + item.index}
+          ariaLabel={this._getPreviewText(item)}
+          key={item.key}
+          data-index={item.index}
+          styles={checkboxStyles}
+          className={'ms-ComboBox-option'}
+          data-is-focusable={true}
+          onChange={this._onItemClick(item.index!)}
+          label={item.text}
+          role="option"
+          aria-selected={isSelected ? 'true' : 'false'}
+          checked={isSelected}
+          title={title}
+        >
+          {onRenderOption(item, this._onRenderOptionContent)}
+        </Checkbox>
+      );
     };
 
     return (

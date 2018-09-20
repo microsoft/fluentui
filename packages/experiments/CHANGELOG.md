@@ -1,6 +1,30 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 14 Sep 2018 01:55:02 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Sep 2018 12:27:48 GMT and should not be manually modified.
+
+## 6.32.0
+Wed, 19 Sep 2018 12:27:48 GMT
+
+### Minor changes
+
+- Stack: add wrapping for HorizontalStack, support themed gap and padding, support native HTML properties, refactor StackItem so that its child does not require a class
+- StackItem: add fillHorizontal and fillVertical props
+
+## 6.31.0
+Tue, 18 Sep 2018 12:26:03 GMT
+
+### Minor changes
+
+- Stack: add wrapping for HorizontalStack, support themed gap and padding, support native HTML properties, refactor StackItem so that its child does not require a class
+
+## 6.30.2
+Mon, 17 Sep 2018 12:27:05 GMT
+
+### Patches
+
+- Changes to support Foundation refactoring.
+- nav fix
+- improve nav per designer feedback
 
 ## 6.30.1
 Fri, 14 Sep 2018 01:55:02 GMT

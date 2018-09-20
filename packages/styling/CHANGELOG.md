@@ -1,6 +1,20 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Thu, 13 Sep 2018 17:38:04 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Sep 2018 12:27:48 GMT and should not be manually modified.
+
+## 6.26.0
+Wed, 19 Sep 2018 12:27:48 GMT
+
+### Minor changes
+
+- Theming: add ISpacing interface and spacing property
+
+## 6.25.0
+Tue, 18 Sep 2018 12:26:03 GMT
+
+### Minor changes
+
+- Theming: add ISpacing interface and spacing property
 
 ## 6.24.0
 Thu, 13 Sep 2018 17:38:04 GMT

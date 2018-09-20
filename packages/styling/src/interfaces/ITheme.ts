@@ -2,6 +2,7 @@ import { IPalette } from './IPalette';
 import { IFontStyles } from './IFontStyles';
 import { ISemanticColors } from './ISemanticColors';
 import { ITypography, IPartialTypography } from './ITypography';
+import { ISpacing } from './ISpacing';
 
 export interface ITheme {
   palette: IPalette;
@@ -21,17 +22,24 @@ export interface ITheme {
 
   /**
    * @internal
-   * The typography property is still in an experimental phase. The intent is the have it
+   * The typography property is still in an experimental phase. The intent is to have it
    * eventually replace IFontStyles in a future release, but it is still undergoing review.
    * Avoid using it until it is finalized.
    */
   typography: ITypography;
+
+  /**
+   * @internal
+   * The spacing property is still in an experimental phase. The intent is to have it
+   * be used for padding and margin sizes in a future release, but it is still undergoing review.
+   * Avoid using it until it is finalized.
+   */
+  spacing: ISpacing;
 }
 
 export type IPartialTheme = {
-  [P in keyof Pick<
-    ITheme,
-    'palette' | 'fonts' | 'semanticColors' | 'isInverted' | 'disableGlobalClassNames'
-  >]?: Partial<ITheme[P]>
+  [P in keyof Pick<ITheme, 'palette' | 'fonts' | 'semanticColors' | 'isInverted' | 'disableGlobalClassNames' | 'spacing'>]?: Partial<
+    ITheme[P]
+  >
 } &
   { [P in keyof Pick<ITheme, 'typography'>]?: IPartialTypography };

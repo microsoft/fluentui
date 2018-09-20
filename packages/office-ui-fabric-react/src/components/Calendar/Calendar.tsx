@@ -83,7 +83,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
       navigatedDayDate: currentDate,
       navigatedMonthDate: currentDate,
 
-      /** When showMonthPickerAsOverlay is active it overrides isMonthPickerVisible/isDayPickerVisible props (These props permanently set the visibility of their respective calendars). */
+      /** When showMonthPickerAsOverlay is active it overrides isMonthPickerVisible/isDayPickerVisible props
+       (These props permanently set the visibility of their respective calendars). */
       isMonthPickerVisible: this.props.showMonthPickerAsOverlay ? false : this.props.isMonthPickerVisible,
       isDayPickerVisible: this.props.showMonthPickerAsOverlay ? true : this.props.isDayPickerVisible
     };

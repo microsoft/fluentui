@@ -62,7 +62,7 @@ export class ContextualMenuWithCustomMenuListExample extends React.Component<
   {
     items: IContextualMenuItem[];
   }
-  > {
+> {
   constructor(props: {}) {
     super(props);
 
@@ -97,7 +97,9 @@ export class ContextualMenuWithCustomMenuListExample extends React.Component<
   }
 
   private _onChange(newValue: any): void {
-    const filteredItems = ITEMS.filter((item: IContextualMenuItem) => item.text && item.text.toLowerCase().includes(newValue.toLowerCase()));
+    const filteredItems = ITEMS.filter(
+      (item: IContextualMenuItem) => item.text && item.text.toLowerCase().includes(newValue.toLowerCase())
+    );
 
     if (!filteredItems || !filteredItems.length) {
       filteredItems.push({
@@ -125,10 +127,7 @@ export class ContextualMenuWithCustomMenuListExample extends React.Component<
     }));
   }
 
-  private _renderMenuList(
-    menuListProps: IContextualMenuListProps,
-    defaultRender: IRenderFunction<IContextualMenuListProps>
-  ): JSX.Element {
+  private _renderMenuList(menuListProps: IContextualMenuListProps, defaultRender: IRenderFunction<IContextualMenuListProps>): JSX.Element {
     return (
       <div>
         <div style={{ borderBottom: '1px solid #ccc' }}>

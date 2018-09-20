@@ -51,7 +51,39 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               />
             </div>
             <a
+              className=
+                  ms-Link
+                  {
+                    color: #0078d4;
+                    outline: transparent;
+                    position: relative;
+                    text-decoration: none;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: -1px;
+                    content: "";
+                    left: -1px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: -1px;
+                    top: -1px;
+                    z-index: 1;
+                  }
+                  &:active, &:hover, &:active:hover {
+                    color: #004578;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                    text-decoration: underline;
+                  }
+                  &:focus {
+                    color: #0078d4;
+                  }
               href="http://bing.com"
+              onClick={[Function]}
             >
               2016 Conference Presentation
             </a>
@@ -91,7 +123,39 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               />
             </div>
             <a
+              className=
+                  ms-Link
+                  {
+                    color: #0078d4;
+                    outline: transparent;
+                    position: relative;
+                    text-decoration: none;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: -1px;
+                    content: "";
+                    left: -1px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: -1px;
+                    top: -1px;
+                    z-index: 1;
+                  }
+                  &:active, &:hover, &:active:hover {
+                    color: #004578;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                    text-decoration: underline;
+                  }
+                  &:focus {
+                    color: #0078d4;
+                  }
               href="http://bing.com"
+              onClick={[Function]}
             >
               New Contoso Collaboration for Conference Presentation Draft
             </a>
@@ -131,7 +195,39 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               />
             </div>
             <a
+              className=
+                  ms-Link
+                  {
+                    color: #0078d4;
+                    outline: transparent;
+                    position: relative;
+                    text-decoration: none;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: -1px;
+                    content: "";
+                    left: -1px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: -1px;
+                    top: -1px;
+                    z-index: 1;
+                  }
+                  &:active, &:hover, &:active:hover {
+                    color: #004578;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                    text-decoration: underline;
+                  }
+                  &:focus {
+                    color: #0078d4;
+                  }
               href="http://bing.com"
+              onClick={[Function]}
             >
               Spec Sheet for design
             </a>
@@ -746,9 +842,11 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
       </div>
       <div
         className="ms-DocumentCardTitle"
-        title="This is the email content preview, please feel free to give feedback. SharePoint Site Acitivity add conversation card! This is the last."
+        title="This is the email content preview, please feel free to give feedback.
+                SharePoint Site Activity add conversation card! This is the last."
       >
-        This is the email content preview, please feel free to give feedback. SharePoint Site Acitivity add conversation card! This is the last.
+        This is the email content preview, please feel free to give feedback.
+                SharePoint Site Activity add conversation card! This is the last.
       </div>
       <div
         className="ms-DocumentCardStatus"
