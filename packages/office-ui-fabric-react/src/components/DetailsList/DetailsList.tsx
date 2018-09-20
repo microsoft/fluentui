@@ -20,9 +20,10 @@ import {
   IColumn,
   IDetailsList,
   IDetailsListProps,
-  IDetailsGroupRenderProps
+  IDetailsGroupRenderProps,
+  ColumnDragEndLocation
 } from '../DetailsList/DetailsList.types';
-import { DetailsHeader, IDetailsHeader, SelectAllVisibility, IDetailsHeaderProps } from '../DetailsList/DetailsHeader';
+import { DetailsHeader, IDetailsHeader, SelectAllVisibility, IDetailsHeaderProps, IColumnReorderHeaderProps } from '../DetailsList/DetailsHeader';
 import { DetailsRow, IDetailsRowProps } from '../DetailsList/DetailsRow';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import {
@@ -117,6 +118,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     this._onContentKeyDown = this._onContentKeyDown.bind(this);
     this._onRenderCell = this._onRenderCell.bind(this);
     this._onGroupExpandStateChanged = this._onGroupExpandStateChanged.bind(this);
+    this._onColumnDragEnd = this._onColumnDragEnd.bind(this);
 
     this.state = {
       focusedItemIndex: -1,
@@ -293,7 +295,6 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       usePageCache,
       onShouldVirtualize,
       enableShimmer,
-      columnReorderOptions,
       minimumPixelsForDrag
     } = this.props;
     const {
@@ -337,6 +338,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     } = this.props;
 
     const detailsFooterProps = this._getDetailsFooterProps();
+    const columnReorderProps = this._getColumnReorderProps();
     const rowCount = (isHeaderVisible ? 1 : 0) + GetGroupCount(groups) + (items ? items.length : 0);
     return (
       // If shouldApplyApplicationRole is true, role application will be applied to make arrow keys work
@@ -386,7 +388,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                   ariaLabelForSelectionColumn: ariaLabelForSelectionColumn,
                   selectAllVisibility: selectAllVisibility,
                   collapseAllVisibility: groupProps && groupProps.collapseAllVisibility,
-                  columnReorderOptions: columnReorderOptions,
+                  columnReorderProps: columnReorderProps,
                   minimumPixelsForDrag: minimumPixelsForDrag
                 },
                 this._onRenderDetailsHeader
@@ -625,6 +627,27 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     });
     if (this._groupedList.current) {
       this._groupedList.current.toggleCollapseAll(collapsed);
+    }
+  }
+
+  private _onColumnDragEnd(props: { dropLocation?: ColumnDragEndLocation }, event: MouseEvent): void {
+    const { columnReorderOptions } = this.props;
+    let finalDropLocation: ColumnDragEndLocation = ColumnDragEndLocation.outside;
+    if (columnReorderOptions && columnReorderOptions.onDragEnd) {
+      if (props.dropLocation && props.dropLocation !== ColumnDragEndLocation.header) {
+        finalDropLocation = props.dropLocation;
+      } else if (this._root.current) {
+        const clientRect = this._root.current.getBoundingClientRect();
+        if (
+          event.clientX > clientRect.left &&
+          event.clientX < clientRect.right &&
+          event.clientY > clientRect.top &&
+          event.clientY < clientRect.bottom
+        ) {
+          finalDropLocation = ColumnDragEndLocation.surface;
+        }
+      }
+      columnReorderOptions.onDragEnd(finalDropLocation);
     }
   }
 
@@ -910,6 +933,16 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     return {
       ...detailsFooterProps
     };
+  }
+
+  private _getColumnReorderProps(): IColumnReorderHeaderProps | undefined {
+    const { columnReorderOptions } = this.props;
+    if (columnReorderOptions) {
+      return {
+        ...columnReorderOptions,
+        onColumnDragEnd: this._onColumnDragEnd
+      };
+    }
   }
 
   private _getGroupProps(detailsGroupProps: IDetailsGroupRenderProps): IGroupRenderProps {
