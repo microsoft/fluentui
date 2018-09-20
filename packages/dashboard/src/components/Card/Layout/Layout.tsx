@@ -26,7 +26,7 @@ export class Layout extends React.Component<ILayoutProps> {
 
   public render(): JSX.Element {
     const getClassNames = classNamesFunction<ILayoutProps, ILayoutStyles>();
-    const { header, contentArea, actions, cardSize } = this.props;
+    const { header, contentArea, actions, cardSize, animation, animationStart } = this.props;
     const classNames = getClassNames(getStyles, { cardSize, header });
     const content: JSX.Element | null = this._generateContentArea(
       contentArea!,
@@ -41,7 +41,8 @@ export class Layout extends React.Component<ILayoutProps> {
     return (
       <div className={classNames.root} onMouseDown={this.onMouseDown}>
         {headerElement}
-        <div className={classNames.contentAreaLayout}>{content}</div>
+        {animationStart ? animation : <div className={classNames.contentAreaLayout}>{content}</div>}
+
         {footerElement}
       </div>
     );
@@ -51,10 +52,7 @@ export class Layout extends React.Component<ILayoutProps> {
     e.stopPropagation();
   };
 
-  private _generateContentElement(
-    cardContentList: ICardContentDetails[],
-    dataVizLastUpdateClassName: string
-  ): JSX.Element[] {
+  private _generateContentElement(cardContentList: ICardContentDetails[], dataVizLastUpdateClassName: string): JSX.Element[] {
     const contentArea: JSX.Element[] = [];
     // This works because we have priority is defined in enum as numbers if it is string this will not work
     for (const priority in Priority) {
@@ -148,15 +146,11 @@ export class Layout extends React.Component<ILayoutProps> {
   }
 
   private _getChartHeight(numberOfContentAreas: number): ChartHeight {
-    return this.props.cardSize === CardSize.mediumTall && numberOfContentAreas > 1
-      ? ChartHeight.tall
-      : ChartHeight.short;
+    return this.props.cardSize === CardSize.mediumTall && numberOfContentAreas > 1 ? ChartHeight.tall : ChartHeight.short;
   }
 
   private _getChartWidth(numberOfContentAreas: number): ChartWidth {
-    return numberOfContentAreas > 1 ||
-      this.props.cardSize === CardSize.small ||
-      this.props.cardSize === CardSize.mediumTall
+    return numberOfContentAreas > 1 || this.props.cardSize === CardSize.small || this.props.cardSize === CardSize.mediumTall
       ? ChartWidth.compact
       : ChartWidth.wide;
   }
@@ -165,9 +159,7 @@ export class Layout extends React.Component<ILayoutProps> {
     if (header === null || header === undefined) {
       return null;
     }
-    return (
-      <CardHeader headerText={header.headerText} annotationText={header.annotationText} fontSize={header.fontSize} />
-    );
+    return <CardHeader headerText={header.headerText} annotationText={header.annotationText} fontSize={header.fontSize} />;
   }
 
   private _generateFooter(actions: IAction[], className: string): JSX.Element | null {

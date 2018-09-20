@@ -138,6 +138,10 @@ export interface ICardProps {
    * @default false
    */
   disableDrag?: boolean;
+
+  animation?: JSX.Element;
+
+  animationStart?: boolean;
 }
 
 export interface ICard extends ICardProps {

@@ -1,20 +1,12 @@
 import * as React from 'react';
 import { IChartProps as IChartingProps } from '@uifabric/charting';
-import {
-  Card,
-  CardContentType,
-  CardSize,
-  ChartType,
-  ICardProps,
-  ICardContentDetails,
-  IChartProps,
-  Priority
-} from '@uifabric/dashboard';
+import { Card, CardContentType, CardSize, ChartType, ICardProps, ICardContentDetails, IChartProps, Priority } from '@uifabric/dashboard';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
-export class DonutChartExample extends React.Component<{}, {}> {
+export class DonutChartExample extends React.Component<{}, { animationStart: boolean }> {
   constructor(props: ICardProps) {
     super(props);
+    this.state = { animationStart: true };
   }
 
   public render(): JSX.Element {
@@ -80,18 +72,41 @@ export class DonutChartExample extends React.Component<{}, {}> {
         content: chartContent2
       }
     ];
-
+    const that = this;
+    setTimeout(() => {
+      that.setState({ animationStart: false });
+    }, 10000);
     const header = {
       headerText: 'Donut Chart and Pie chart '
     };
-
+    const animation: JSX.Element | undefined = this._getAnimation();
     return (
       <Card
         cardFrameContent={cardFrameContent}
         header={header}
         cardContentList={contentAreaList}
         cardSize={CardSize.large}
+        animation={animation}
+        animationStart={this.state.animationStart}
       />
+    );
+  }
+
+  private _getAnimation(): JSX.Element | undefined {
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="10" height="110" width="110" fill="#0000ff">
+          <animateTransform
+            attributeName="transform"
+            begin="0s"
+            dur="20s"
+            type="rotate"
+            from="0 60 60"
+            to="360 60 60"
+            repeatCount="indefinite"
+          />
+        </rect>
+      </svg>
     );
   }
 }
