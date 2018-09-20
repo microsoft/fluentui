@@ -4,7 +4,7 @@ import { Autofill } from '../../Autofill';
 import { IInputProps } from '../../Pickers';
 import * as stylesImport from './BaseExtendedPicker.scss';
 import { IBaseExtendedPickerProps, IBaseExtendedPicker } from './BaseExtendedPicker.types';
-import { IBaseFloatingPickerProps, BaseFloatingPicker } from '../../FloatingPicker';
+import { FloatingPeoplePicker, IBaseFloatingPickerProps, BaseFloatingPicker } from '../../FloatingPicker';
 import { BaseSelectedItemsList, IBaseSelectedItemsListProps } from '../../SelectedItemsList';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Selection, SelectionMode, SelectionZone } from '../../Selection';
@@ -16,8 +16,7 @@ export interface IBaseExtendedPickerState<T> {
   suggestionItems: T[] | null;
 }
 
-export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
-  extends BaseComponent<P, IBaseExtendedPickerState<T>>
+export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends BaseComponent<P, IBaseExtendedPickerState<T>>
   implements IBaseExtendedPicker<T> {
   public floatingPicker = createRef<BaseFloatingPicker<T, IBaseFloatingPickerProps<T>>>();
   public selectedItemsList = createRef<BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>>>();
@@ -151,25 +150,35 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
 
   protected renderSuggestions(): JSX.Element {
     const onRenderFloatingPicker = this.props.onRenderFloatingPicker;
-    return onRenderFloatingPicker({
+    const floatingPickerProps = {
       componentRef: this.floatingPicker,
       onChange: this._onSuggestionSelected,
       inputElement: this.input.current ? this.input.current.inputElement : undefined,
       selectedItems: this.items,
       suggestionItems: this.props.suggestionItems ? this.props.suggestionItems : undefined,
       ...this.floatingPickerProps
-    });
+    };
+
+    if (onRenderFloatingPicker) {
+      return onRenderFloatingPicker(floatingPickerProps);
+    }
+    return <FloatingPeoplePicker {...floatingPickerProps} />;
   }
 
   protected renderSelectedItemsList(): JSX.Element {
     const onRenderSelectedItems = this.props.onRenderSelectedItems;
-    return onRenderSelectedItems({
+    const selectedItemsProps = {
       componentRef: this.selectedItemsList,
       selection: this.selection,
       selectedItems: this.props.selectedItems ? this.props.selectedItems : undefined,
       onItemsDeleted: this.props.selectedItems ? this.props.onItemsRemoved : undefined,
       ...this.selectedItemsListProps
-    });
+    };
+
+    if (onRenderSelectedItems) {
+      return onRenderSelectedItems(selectedItemsListProps);
+    }
+    return <SelectedPeopleList {...selectedItemsListProps} />;
   }
 
   protected onInputChange = (value: string): void => {
@@ -195,8 +204,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
 
     if (this.floatingPicker.current && this.inputElement) {
       // Update the value if the input value is empty or it is different than the current inputText from the floatingPicker
-      const shoudUpdateValue =
-        this.inputElement.value === '' || this.inputElement.value !== this.floatingPicker.current.inputText;
+      const shoudUpdateValue = this.inputElement.value === '' || this.inputElement.value !== this.floatingPicker.current.inputText;
       this.floatingPicker.current.showPicker(shoudUpdateValue);
     }
   };
@@ -248,9 +256,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
   };
 
   protected _onSuggestionSelected = (item: T): void => {
-    const processedItem: T | PromiseLike<T> | null = this.props.onItemSelected
-      ? (this.props.onItemSelected as any)(item)
-      : item;
+    const processedItem: T | PromiseLike<T> | null = this.props.onItemSelected ? (this.props.onItemSelected as any)(item) : item;
 
     if (processedItem === null) {
       return;
