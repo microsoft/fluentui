@@ -147,7 +147,7 @@ describe('Conformance', () => {
     // Mock Layer since otherwise components that use Layer will have empty JSON representations
     jest.mock('./Layer', () => {
       return {
-        Layer: jest.fn().mockImplementation(props => {
+        Layer: jest.fn().mockImplementation((props: any) => {
           return props.children;
         })
       };

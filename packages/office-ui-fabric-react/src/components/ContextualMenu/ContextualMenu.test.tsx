@@ -776,7 +776,7 @@ describe('ContextualMenu', () => {
     }).catch(done());
   });
 
-  it('will not focus the first element when shouldFocusOnMount is false', done => {
+  it('will not focus the first element when shouldFocusOnMount is false', (done: jest.DoneCallback) => {
     const items: IContextualMenuItem[] = [
       {
         text: 'TestText 1',
@@ -790,7 +790,7 @@ describe('ContextualMenu', () => {
     ];
 
     ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} shouldFocusOnMount={true} />);
-    new Promise(resolve => {
+    new Promise((resolve: any) => {
       let focusedItem;
       for (let i = 0; i < 20; i++) {
         focusedItem = document.querySelector('.testkey1')!.firstChild;
@@ -804,7 +804,7 @@ describe('ContextualMenu', () => {
     }).catch(done);
   });
 
-  it('Hover correctly focuses the second element', done => {
+  it('Hover correctly focuses the second element', (done: jest.DoneCallback) => {
     const items: IContextualMenuItem[] = [
       {
         text: 'TestText 1',
@@ -820,7 +820,7 @@ describe('ContextualMenu', () => {
 
     ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
 
-    new Promise<any>(resolve => {
+    new Promise<any>((resolve: any) => {
       let focusedItem;
       for (let i = 0; i < 20; i++) {
         focusedItem = document.querySelector('.testkey2')!.firstChild;

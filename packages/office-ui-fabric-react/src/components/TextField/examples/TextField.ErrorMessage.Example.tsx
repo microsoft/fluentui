@@ -82,7 +82,7 @@ export class TextFieldErrorMessageExample extends React.Component<{}, {}> {
   }
 
   private _getErrorMessagePromise(value: string): Promise<string> {
-    return new Promise(resolve => {
+    return new Promise((resolve: any) => {
       // resolve the promise after 3 second.
       setTimeout(() => resolve(this._getErrorMessage(value)), 5000);
     });

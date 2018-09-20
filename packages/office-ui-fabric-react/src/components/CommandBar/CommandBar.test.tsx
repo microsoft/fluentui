@@ -66,7 +66,7 @@ describe('CommandBar', () => {
       data: {
         foo: 'bar'
       },
-      onClick: (ev, item) => {
+      onClick: (ev: React.MouseEvent<HTMLElement>, item: IContextualMenuItem) => {
         testValue = item;
       }
     };

@@ -601,7 +601,7 @@ describe('SpinButton', () => {
 
   it(`should pass KeyCode ${KeyCodes.enter} to onValidate handler`, () => {
     let keyCode;
-    const onValidate: jest.Mock = jest.fn((value, event) => {
+    const onValidate: jest.Mock = jest.fn((value: any, event: any) => {
       keyCode = event.which;
       return value;
     });
@@ -620,7 +620,7 @@ describe('SpinButton', () => {
   });
 
   it('onValidate is not called again on enter key press until the input changes', () => {
-    const onValidate: jest.Mock = jest.fn((value, event) => {
+    const onValidate: jest.Mock = jest.fn((value: any, event: any) => {
       return value;
     });
     const exampleNewValue = '99';

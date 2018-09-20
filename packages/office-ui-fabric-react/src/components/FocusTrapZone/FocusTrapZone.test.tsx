@@ -10,7 +10,7 @@ window.requestAnimationFrame = (callback: FrameRequestCallback) => {
   jest.runAllTimers();
   return r;
 };
-const animationFrame = () => new Promise(resolve => window.requestAnimationFrame(resolve));
+const animationFrame = () => new Promise((resolve: any) => window.requestAnimationFrame(resolve));
 jest.useFakeTimers();
 
 class FocusTrapZoneTestComponent extends React.Component<{}, { isShowingFirst: boolean; isShowingSecond: boolean }> {
@@ -19,7 +19,7 @@ class FocusTrapZoneTestComponent extends React.Component<{}, { isShowingFirst: b
     this.state = { isShowingFirst: true, isShowingSecond: false };
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <FocusTrapZone forceFocusInsideTrap={true} isClickableOutsideFocusTrap={false}>
@@ -66,14 +66,14 @@ describe('FocusTrapZone', () => {
       clientRect,
       isVisible = true
     }: {
-      clientRect: {
-        top: number;
-        left: number;
-        bottom: number;
-        right: number;
-      };
-      isVisible?: boolean;
-    }
+        clientRect: {
+          top: number;
+          left: number;
+          bottom: number;
+          right: number;
+        };
+        isVisible?: boolean;
+      }
   ): void {
     element.getBoundingClientRect = () => ({
       top: clientRect.top,
@@ -278,7 +278,13 @@ describe('FocusTrapZone', () => {
   });
 
   describe('Tab and shift-tab do nothing (keep focus where it is) when the FTZ contains 0 tabbable items', () => {
-    function setupTest() {
+    function setupTest(): {
+      buttonZ1: HTMLElement;
+      buttonA: HTMLElement;
+      buttonB: HTMLElement;
+      buttonC: HTMLElement;
+      buttonZ2: HTMLElement;
+    } {
       const topLevelDiv = ReactTestUtils.renderIntoDocument(
         <div onFocusCapture={_onFocus}>
           <button className={'z1'}>z1</button>
@@ -347,7 +353,13 @@ describe('FocusTrapZone', () => {
   });
 
   describe('Focusing the FTZ', () => {
-    function setupTest(focusPreviouslyFocusedInnerElement: boolean) {
+    function setupTest(focusPreviouslyFocusedInnerElement: boolean): {
+      focusTrapZone: FocusTrapZone;
+      buttonF: HTMLElement;
+      buttonA: HTMLElement;
+      buttonB: HTMLElement;
+      buttonZ: HTMLElement;
+    } {
       const focusTrapZoneRef = createRef<FocusTrapZone>();
       const topLevelDiv = ReactTestUtils.renderIntoDocument(
         <div onFocusCapture={_onFocus}>

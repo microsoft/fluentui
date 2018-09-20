@@ -257,7 +257,7 @@ describe('Pickers', () => {
       expect(picker.items[0].name).toEqual('testColor');
       ReactDOM.unmountComponentAtNode(root);
     });
-    it('fires change events correctly for controlled components', done => {
+    it('fires change events correctly for controlled components', (done: jest.DoneCallback) => {
       const root = document.createElement('div');
       document.body.appendChild(root);
       const onChange = (items: ITag[] | undefined): void => {

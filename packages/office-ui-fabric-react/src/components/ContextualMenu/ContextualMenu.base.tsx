@@ -58,7 +58,7 @@ export interface IContextualMenuState {
   submenuDirection?: DirectionalHint;
 }
 
-export function getSubmenuItems(item: IContextualMenuItem) {
+export function getSubmenuItems(item: IContextualMenuItem): any {
   return item.subMenuProps ? item.subMenuProps.items : item.items;
 }
 
@@ -1100,7 +1100,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     }
   };
 
-  private _getSubmenuProps() {
+  private _getSubmenuProps(): any {
     const { submenuTarget, expandedMenuItemKey } = this.state;
     const item = this._findItemByKey(expandedMenuItemKey!);
     let submenuProps = null;

@@ -65,7 +65,10 @@ export class IconBase extends BaseComponent<IIconProps, IIconState> {
     }
   };
 
-  private _getIconContent(name?: string) {
+  private _getIconContent(name?: string): {
+    children: string | undefined;
+    iconClassName: string | undefined;
+  } {
     const iconDefinition = getIcon(name) || {
       subset: {
         className: undefined

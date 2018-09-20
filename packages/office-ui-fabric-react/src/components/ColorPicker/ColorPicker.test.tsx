@@ -87,7 +87,7 @@ describe('ColorPicker', () => {
       ColorPickerBase.defaultProps.alphaLabel
     ];
 
-    tableHeaders.forEach((node, index) => {
+    tableHeaders.forEach((node: any, index: number) => {
       expect(node.text()).toEqual(textHeaders[index]);
     });
   });
@@ -107,7 +107,7 @@ describe('ColorPicker', () => {
     );
 
     const tableHeaders = wrapper.find('.ms-ColorPicker-table > thead > tr > td');
-    tableHeaders.forEach((node, index) => {
+    tableHeaders.forEach((node: any, index: number) => {
       expect(node.text()).toEqual(textHeaders[index]);
     });
   });
@@ -141,7 +141,7 @@ describe('ColorPicker', () => {
     const allInputs = wrapper.find(`.${inputClassName} input`);
     expect(allInputs.length).toBe(5);
 
-    allInputs.forEach(input => {
+    allInputs.forEach((input: any) => {
       input.simulate('blur');
 
       expect(colorPickerComponent.state.color.hex).toEqual(colorStringValue);

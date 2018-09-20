@@ -4,6 +4,7 @@ import * as renderer from 'react-test-renderer';
 import * as sinon from 'sinon';
 
 import { Toggle } from './Toggle';
+import { IToggle } from 'office-ui-fabric-react/lib/components/Toggle/Toggle.types';
 
 describe('Toggle', () => {
   it('renders a label', () => {
@@ -106,14 +107,14 @@ describe('Toggle', () => {
       <form
         action="#"
         // tslint:disable-next-line:jsx-no-lambda
-        onSubmit={e => {
+        onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
           onSubmit();
           e.preventDefault();
         }}
       >
         <Toggle
           // tslint:disable-next-line:jsx-no-lambda
-          componentRef={ref => (component = ref)}
+          componentRef={(ref: IToggle) => (component = ref)}
           label="Label"
         />
       </form>
