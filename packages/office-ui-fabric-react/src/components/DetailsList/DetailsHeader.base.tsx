@@ -274,7 +274,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
             <DetailsColumn
               column={column}
               key={column.key}
-              columnIndex={(showCheckbox ? 2 : 1) + columnIndex}
+              columnIndex={2 + columnIndex}
               parentId={this._id}
               isDraggable={_isDraggable}
               updateDragInfo={this._updateDragInfo}
