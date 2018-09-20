@@ -2,6 +2,45 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.72.0",
+      "tag": "office-ui-fabric-react_v6.72.0",
+      "date": "Thu, 20 Sep 2018 12:25:33 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove max lines TS override",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "83d150162e37bf7683e43aa1b7ba64417a44599c"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "DocumentCardPreview: Change component to use Link and add linkProps",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "989dfd082a50af1bf89d7bf54a1fb0c3babec736"
+          },
+          {
+            "comment": "ColorPicker: The ColorPicker component now passes the complete color object as second parameter to the `onColorChanged` props along with the existing string representation of the same as first parameter.",
+            "author": "Bishwendu Kundu <bishwenduk029@gmail.com>",
+            "commit": "797d62e31bb6662068d9e6a87f19ba2ec576969e"
+          },
+          {
+            "comment": "add support for commandBarButtonAs to ICommandBarItemProps along with passing the defaultRender to the commandBarButtonAs",
+            "author": "Nick Durak <nickdurak@gmail.com>",
+            "commit": "55c0766d38b433be52e005262ed824ee3f153f5f"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.8.4 <7.0.0` to `>=6.9.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.19.1 <7.0.0` to `>=6.20.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.71.1",
       "tag": "office-ui-fabric-react_v6.71.1",
       "date": "Wed, 19 Sep 2018 12:27:48 GMT",
