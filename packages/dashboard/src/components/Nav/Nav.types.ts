@@ -184,8 +184,7 @@ export interface INavGroupStyleProps {
 }
 
 export interface INavLinkGroupStyleProps {
-  link: INavLink;
-  isExpanded: boolean;
+  isExpanded?: boolean;
   isNavCollapsed?: boolean;
   hasNestedMenu?: boolean;
   hasSelectedNestedLink?: boolean;
@@ -219,11 +218,14 @@ export interface INavGroupStyles {
    */
   navGroupTitle: IStyle;
   navItem: IStyle;
+  navItemWhenNavCollapsed: IStyle;
 }
 
 export interface INavLinkGroupStyles {
   nestedNavMenu: IStyle;
   nestedNavMenuCollapsed: IStyle;
+  nestedNavMenuWhenNavCollapsed: IStyle;
+  nestedNavLinksWhenNavCollapsed: IStyle;
 }
 
 export interface INavLinkStyles {

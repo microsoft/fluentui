@@ -50,34 +50,6 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
             backgroundColor: 'rgba(255,255,255,.6)'
           }
         }
-        // ul: {
-        //   selectors: {
-        //     li: {
-        //       selectors: {
-        //         ':hover': {
-        //           selectors: {
-        //             ul: {
-        //               display: 'flex',
-        //               flexDirection: 'column',
-        //               position: 'absolute',
-        //               top: '0',
-        //               left: navCollapsedWidth,
-        //               width: '230px',
-        //               backgroundColor: 'rgba(255,255,255,.6)',
-        //               selectors: {
-        //                 [BackDropSelector]: {
-        //                   webkitBackdropFilter: 'blur(20px) saturate(125%)',
-        //                   backdropFilter: 'blur(20px) saturate(125%)',
-        //                   backgroundColor: 'rgba(255,255,255,.6)'
-        //                 }
-        //               }
-        //             }
-        //           }
-        //         }
-        //       }
-        //     }
-        //   }
-        // }
       }
     ]
   };

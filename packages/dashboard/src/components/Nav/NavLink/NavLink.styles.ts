@@ -10,7 +10,7 @@ const navItemWithChildBgColor = '#CCCCCC';
 const navItemSelectedColor = '#B7B7B7';
 
 export const getNavLinkStyles = (props: INavLinkStyleProps): INavLinkStyles => {
-  // const { hasChildren, isSelected, isChildLinkSelected, isNested } = this.props;
+  const { hasNestedMenu, isSelected, hasSelectedNestedLink, isNested } = props;
 
   return {
     navLink: {
@@ -23,7 +23,7 @@ export const getNavLinkStyles = (props: INavLinkStyleProps): INavLinkStyles => {
 
       selectors: {
         ':hover': {
-          backgroundColor: this.props.hasChildren ? navItemWithChildBgColor : navItemHoverColor
+          backgroundColor: hasNestedMenu ? navItemWithChildBgColor : navItemHoverColor
         },
         ':active': {
           backgroundColor: navItemSelectedColor
@@ -37,7 +37,7 @@ export const getNavLinkStyles = (props: INavLinkStyleProps): INavLinkStyles => {
     iconWrapper: {
       position: 'relative',
       display: 'flex',
-      flex: this.props.isSelected || this.props.isChildLinkSelected ? '0 0 32px' : '0 0 48px',
+      flex: isSelected || hasSelectedNestedLink ? '0 0 32px' : '0 0 48px',
       alignItems: 'center',
       justifyContent: 'center'
     },
@@ -62,14 +62,13 @@ export const getNavLinkStyles = (props: INavLinkStyleProps): INavLinkStyles => {
     },
     navItemIcon: {
       fontSize: navIconSize,
-      lineHeight: this.props.isNested ? navChildItemHeight : navItemHeight,
+      lineHeight: isNested ? navChildItemHeight : navItemHeight,
       color: DefaultPalette.black
     },
     navItemText: {
       flex: '1 1 auto',
-      lineHeight: this.props.isNested > 0 ? navChildItemHeight : navItemHeight,
-      marginLeft:
-        this.props.isChildLinkSelected || (!this.props.hasChildren && this.props.isSelected && !this.props.isNested) ? '8px' : '0px',
+      lineHeight: isNested ? navChildItemHeight : navItemHeight,
+      marginLeft: hasSelectedNestedLink || (!hasNestedMenu && isSelected && !isNested) ? '8px' : '0px',
       textOverflow: 'ellipsis',
       overflowX: 'hidden',
       whiteSpace: 'nowrap',

@@ -41,7 +41,7 @@ export class NavLink extends React.Component<INavLinkProps, INavLinkStates> {
     if (
       (!isNavCollapsed && !isExpanded && hasSelectedNestedLink) ||
       (!isNavCollapsed && !hasNestedMenu && isSelected) ||
-      (isNavCollapsed && isSelected && !isNested)
+      (isNavCollapsed && isSelected)
     ) {
       return <div className={isNested ? classNames.navItemBarMarkerSmall : classNames.navItemBarMarker} />;
     } else {

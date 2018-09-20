@@ -3,10 +3,8 @@ import { INavLink, INavLinkGroupProps, INavLinkGroupStates, INavLinkGroupStylePr
 import { NavLink } from '../NavLink/NavLink';
 import { getStyles } from './NavLinkGroup.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-// import { AnimationClassNames, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 const getClassNames = classNamesFunction<INavLinkGroupStyleProps, INavLinkGroupStyles>();
-const classNames = getClassNames(getStyles);
 
 export class NavLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGroupStates> {
   constructor(props: INavLinkGroupProps) {
@@ -43,31 +41,57 @@ export class NavLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGr
           isExpanded={this.state.isExpanded}
           role="menuitem"
         />
-        <ul className={classNames.nestedNavMenu}>
+        {isNavCollapsed ? this._renderWhenNavCollapsed(link) : this._renderWhenNavExpanded(link)}
+      </>
+    );
+  }
+
+  private _renderWhenNavCollapsed(link: INavLink): React.ReactElement<{}> | null {
+    const classNames = getClassNames(getStyles, { isExpanded: this.state.isExpanded, isNavCollapsed: this.props.isNavCollapsed });
+    const { isNavCollapsed, hasSelectedNestedLink } = this.props;
+    return (
+      <div className={classNames.nestedNavMenuWhenNavCollapsed}>
+        <NavLink
+          isNavCollapsed={isNavCollapsed}
+          id={link.name}
+          name={link.name}
+          href={link.href}
+          target={link.target}
+          onClick={this._onLinkClicked}
+          ariaExpanded={isNavCollapsed}
+          dataValue={link.name}
+          ariaLabel={link.ariaLabel}
+          primaryIconName={link.icon}
+          isSelected={hasSelectedNestedLink}
+          hasSelectedNestedLink={hasSelectedNestedLink}
+          hasNestedMenu={true}
+          isNested={false}
+          isExpanded={this.state.isExpanded}
+          role="menuitem"
+        />
+        <ul className={classNames.nestedNavLinksWhenNavCollapsed}>
           {!!link.links
             ? link.links.map((nestedLink: INavLink, linkIndex: number) => {
                 return this._renderNestedLinks(nestedLink, linkIndex);
               })
             : null}
         </ul>
-      </>
+      </div>
     );
   }
 
-  // private _getClasses():  {
-  //   const { isNavCollapsed } = this.props;
-  //   const { isExpanded } = this.state;
-  //   let classes = undefined;
-
-  //   if (!isNavCollapsed && isExpanded) {
-  //     classes = mergeStyles(AnimationClassNames.slideDownIn20);
-  //   } else if (!isNavCollapsed && !isExpanded) {
-  //     classes = mergeStyles(classNames.nestedNavMenuCollapsed);
-  //   } else if (isNavCollapsed) {
-  //     classes = mergeStyles(classNames.hidden, AnimationClassNames.slideDownIn20);
-  //   }
-  //   return classes;
-  // }
+  private _renderWhenNavExpanded(link: INavLink): React.ReactElement<{}> | null {
+    const classNames = getClassNames(getStyles, { isExpanded: this.state.isExpanded, isNavCollapsed: this.props.isNavCollapsed });
+    return (
+      <ul className={classNames.nestedNavMenu}>
+        {!!link.links
+          ? link.links.map((nestedLink: INavLink, linkIndex: number) => {
+              return this._renderNestedLinks(nestedLink, linkIndex);
+            })
+          : null}
+      </ul>
+    );
+  }
 
   private _renderNestedLinks(nestedLink: INavLink, linkIndex: number): React.ReactElement<{}> | null {
     if (!nestedLink) {

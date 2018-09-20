@@ -6,6 +6,7 @@ import { INavGroupStyleProps, INavGroupStyles } from '../Nav.types';
 const navDividerHeight = 21;
 const navDividerColor = 'rgba(0,0,0,.2)';
 const navItemHeight = 48;
+// const navCollapsedWidth = 48;
 
 export const getStyles = (props: INavGroupStyleProps): INavGroupStyles => {
   // const { isNavCollapsed } = this.props;
@@ -35,6 +36,17 @@ export const getStyles = (props: INavGroupStyleProps): INavGroupStyles => {
     },
     navItem: {
       position: 'relative'
+    },
+    navItemWhenNavCollapsed: {
+      selectors: {
+        ':hover': {
+          selectors: {
+            div: {
+              display: 'flex'
+            }
+          }
+        }
+      }
     }
   };
 };

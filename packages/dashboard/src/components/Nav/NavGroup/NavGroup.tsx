@@ -4,6 +4,7 @@ import { NavLink } from '../NavLink/NavLink';
 import { NavLinkGroup } from '@uifabric/dashboard/lib/components/Nav/NavLinkGroup/NavLinkGroup';
 import { getStyles } from './NavGroup.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 const getClassNames = classNamesFunction<INavGroupStyleProps, INavGroupStyles>();
 const classNames = getClassNames(getStyles);
@@ -63,7 +64,11 @@ export class NavGroup extends React.Component<INavGroupProps, {}> {
 
     return (
       // if there are nested links, render a NavLinkGroup, otherwise just render a NavLink
-      <li className={classNames.navItem} role="listitem" key={keyStr}>
+      <li
+        className={isNavCollapsed ? mergeStyles(classNames.navItem, classNames.navItemWhenNavCollapsed) : mergeStyles(classNames.navItem)}
+        role="listitem"
+        key={keyStr}
+      >
         {!!link.links && link.links ? (
           <NavLinkGroup
             isExpanded={link.isExpanded ? link.isExpanded : false}
