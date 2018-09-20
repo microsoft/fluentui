@@ -1,6 +1,6 @@
 import { getSchemedContext } from './scheme';
 import { createTheme } from './theme';
-import { IPartialTheme, IScheme, ITheme, ITypography } from '../interfaces/index';
+import { IPartialTheme, ISchemeNames, ITheme, ITypography } from '../interfaces/index';
 import { mergeCustomizations, ICustomizerContext } from '@uifabric/utilities';
 
 describe('getSchemedCustomizations', () => {
@@ -12,8 +12,8 @@ describe('getSchemedCustomizations', () => {
   let testContextScheme: ITheme;
   let testSettingsScheme: ITheme;
 
-  let testSettingsSchemes: { [P in IScheme]?: ITheme };
-  let testContextSchemes: { [P in IScheme]?: ITheme };
+  let testSettingsSchemes: { [P in ISchemeNames]?: ITheme };
+  let testContextSchemes: { [P in ISchemeNames]?: ITheme };
 
   let testContextTheme: ITheme;
   let testSettingsTheme: ITheme;

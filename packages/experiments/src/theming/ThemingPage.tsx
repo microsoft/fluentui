@@ -1,10 +1,8 @@
 import * as React from 'react';
 import { IComponentDemoPageProps, ComponentPage, ExampleCard } from '@uifabric/example-app-base';
 
-import { ThemingBasicExample } from './examples/Theming.Customizers.Example';
 import { ThemingSchemesCustomExample, ThemingSchemesVariantExample } from './examples/Theming.Schemes.Example';
 
-const ThemingCustomizersExampleCode = require('!raw-loader!@uifabric/experiments/src/theming/examples/Theming.Customizers.Example.tsx') as string;
 const ThemingSchemesExampleCode = require('!raw-loader!@uifabric/experiments/src/theming/examples/Theming.Schemes.Example.tsx') as string;
 
 export class ThemingPage extends React.Component<IComponentDemoPageProps, {}> {
@@ -24,14 +22,8 @@ export class ThemingPage extends React.Component<IComponentDemoPageProps, {}> {
             <ExampleCard title="Schemes: Using one Customizer to theme components" code={ThemingSchemesExampleCode}>
               <ThemingSchemesCustomExample />
             </ExampleCard>
-            <ExampleCard title="Schemes: Using one Customizer to theme components (Variant)" code={ThemingSchemesExampleCode}>
+            <ExampleCard title="Schemes: Using one Customizer to theme components (using Variant package)" code={ThemingSchemesExampleCode}>
               <ThemingSchemesVariantExample />
-            </ExampleCard>
-            <ExampleCard
-              title="Using Multiple Customizers to theme components (non-preferred method used before schemes)"
-              code={ThemingCustomizersExampleCode}
-            >
-              <ThemingBasicExample />
             </ExampleCard>
           </div>
         }

@@ -7,7 +7,7 @@ import {
   IThemedComponent
 } from '@uifabric/foundation';
 export { IStateComponentProps } from '@uifabric/foundation';
-import { getSchemedContext, IProcessedStyleSet, IScheme, IStyleSet, ITheme, mergeStyleSets } from './Styling';
+import { getSchemedContext, IProcessedStyleSet, ISchemeNames, IStyleSet, ITheme, mergeStyleSets } from './Styling';
 import { Customizations, CustomizerContext, ICustomizerContext } from './Utilities';
 
 // Centralize Foundation interaction for use throughout this package. These convenience types provide types
@@ -24,7 +24,7 @@ export type IViewComponentProps<TProps, TStyleSet extends IStyleSet<TStyleSet>> 
 /**
  * Required properties for styleable components.
  */
-export type IStyleableComponentProps<TProps, TStyleSet> = IStyleableComponentProps<TProps, TStyleSet, ITheme, IScheme>;
+export type IStyleableComponentProps<TProps, TStyleSet> = IStyleableComponentProps<TProps, TStyleSet, ITheme, ISchemeNames>;
 
 /**
  * Required properties for themed components.
@@ -32,7 +32,7 @@ export type IStyleableComponentProps<TProps, TStyleSet> = IStyleableComponentPro
 export type IThemedProps<TProps> = TProps & IThemedComponent<ITheme>;
 
 // tslint:disable-next-line:no-any
-const providers: IStylingProviders<any, any, any, ICustomizerContext, ITheme, IScheme> = {
+const providers: IStylingProviders<any, any, any, ICustomizerContext, ITheme, ISchemeNames> = {
   mergeStyleSets,
   getContextFromProps,
   getCustomizations,
@@ -54,7 +54,7 @@ export function createStatelessComponent<TComponentProps, TStyleSet extends ISty
     IProcessedStyleSet<TStyleSet>,
     ICustomizerContext,
     ITheme,
-    IScheme,
+    ISchemeNames,
     TStatics
   >(options, providers);
 }
@@ -75,7 +75,7 @@ export function createComponent<TComponentProps, TViewProps, TStyleSet extends I
     IProcessedStyleSet<TStyleSet>,
     ICustomizerContext,
     ITheme,
-    IScheme,
+    ISchemeNames,
     TStatics
   >(options, providers);
 }
@@ -83,7 +83,7 @@ export function createComponent<TComponentProps, TViewProps, TStyleSet extends I
 function getCustomizations<TViewProps, TStyleSet>(
   displayName: string,
   context: ICustomizerContext
-): IStyleableComponentProps<TViewProps, TStyleSet, ITheme, IScheme> {
+): IStyleableComponentProps<TViewProps, TStyleSet, ITheme, ISchemeNames> {
   // TODO: do we want field props? should fields be part of IComponentOptions and used here?
   // TODO: should we centrally define DefaultFields? (not exported from styling)
   const DefaultFields = ['theme', 'styles'];
@@ -91,9 +91,9 @@ function getCustomizations<TViewProps, TStyleSet>(
 }
 
 function getContextFromProps<TViewProps, TStyleSet>(
-  props: IStyleableComponentProps<TViewProps, TStyleSet, ITheme, IScheme>,
+  props: IStyleableComponentProps<TViewProps, TStyleSet, ITheme, ISchemeNames>,
   context: ICustomizerContext,
-  settings: IStyleableComponentProps<TViewProps, TStyleSet, ITheme, IScheme>
+  settings: IStyleableComponentProps<TViewProps, TStyleSet, ITheme, ISchemeNames>
 ): ICustomizerContext | undefined {
   let newContext: ICustomizerContext | undefined;
   if (props.scheme) {
