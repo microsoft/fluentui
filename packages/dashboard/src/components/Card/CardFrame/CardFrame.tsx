@@ -38,6 +38,7 @@ export class CardFrame extends React.Component<ICardFrameProps, {}> {
       });
     }
     const href = this.props.href === undefined ? '#' : this.props.href;
+    const target = this.props.target === undefined ? '_self' : this.props.target;
     return (
       <div className={classNames.root}>
         <div className={classNames.cardTitleBox}>
@@ -60,6 +61,7 @@ export class CardFrame extends React.Component<ICardFrameProps, {}> {
                 }
               }}
               href={href}
+              target={target}
               disabled={href === '#'}
             >
               {cardTitle}
