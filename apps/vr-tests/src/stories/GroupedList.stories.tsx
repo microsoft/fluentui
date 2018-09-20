@@ -1,7 +1,8 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
-import { FabricDecorator, runStories } from '../utilities';
+import { storiesOf } from '@storybook/react';
+import { FabricDecorator } from '../utilities';
 import { GroupedList } from 'office-ui-fabric-react';
 
 const groupCount = 2;
@@ -11,39 +12,34 @@ const items = [{ 'thumbnail': '//placehold.it/175x175', 'key': 'item-0 nostrud p
 // tslint:disable-next-line:max-line-length
 const groups = [{ 'count': 4, 'key': 'group0', 'name': 'group 0', 'startIndex': 0, 'level': 0, 'children': [{ 'count': 2, 'key': 'group0-0', 'name': 'group 0-0', 'startIndex': 0, 'level': 1, 'children': [] }, { 'count': 2, 'key': 'group0-1', 'name': 'group 0-1', 'startIndex': 2, 'level': 1, 'children': [] }] }, { 'count': 4, 'key': 'group1', 'name': 'group 1', 'startIndex': 4, 'level': 0, 'children': [{ 'count': 2, 'key': 'group1-0', 'name': 'group 1-0', 'startIndex': 4, 'level': 1, 'children': [] }, { 'count': 2, 'key': 'group1-1', 'name': 'group 1-1', 'startIndex': 6, 'level': 1, 'children': [] }] }];
 
-const onRenderCell = (nestingDepth: number, item: any, itemIndex: number) => {
+let onRenderCell = (nestingDepth: number, item: any, itemIndex: number) => {
   return (
     <div>{item.name}</div>
   );
 };
 
-const GroupedListDecorator = story => (
-  <Screener
-    steps={new Screener.Steps()
-      .snapshot('default', { cropTo: '.testWrapper' })
-      .hover('.ms-GroupHeader-expand')
-      .snapshot('hover', { cropTo: '.testWrapper' })
-      .click('.ms-GroupHeader-expand')
-      .hover('.ms-GroupHeader-expand')
-      .snapshot('click', { cropTo: '.testWrapper' })
-      .end()
-    }
-  >
-    {story()}
-  </Screener>
-);
-
-const groupedListStories = {
-  decorators: [FabricDecorator, GroupedListDecorator],
-  stories: {
-    'Root': () => (
-      <GroupedList
-        groups={groups}
-        items={items}
-        onRenderCell={onRenderCell}
-      />
-    )
-  }
-};
-
-runStories('GroupedList', groupedListStories);
+storiesOf('GroupedList', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(story => (
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .hover('.ms-GroupHeader-expand')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .click('.ms-GroupHeader-expand')
+        .hover('.ms-GroupHeader-expand')
+        .snapshot('click', { cropTo: '.testWrapper' })
+        .end()
+      }
+    >
+      {story()}
+    </Screener>
+  ))
+  .addStory('Root', () => (
+    <GroupedList
+      groups={groups}
+      items={items}
+      onRenderCell={onRenderCell}
+    />
+  ))
+  ;

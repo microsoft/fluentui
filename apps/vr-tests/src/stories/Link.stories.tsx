@@ -1,33 +1,28 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
-import { FabricDecorator, runStories } from '../utilities';
+import { storiesOf } from '@storybook/react';
+import { FabricDecorator } from '../utilities';
 import { Link, ILinkProps } from 'office-ui-fabric-react';
 
-const LinkDecorator = story => (
-  <Screener
-    steps={new Steps()
-      .snapshot('default', { cropTo: '.testWrapper' })
-      .hover('.ms-Link')
-      .snapshot('hover', { cropTo: '.testWrapper' })
-      .click('.ms-Link')
-      .hover('.ms-Link')
-      .snapshot('click', { cropTo: '.testWrapper' })
-      .end()
-    }
-  >
-    {story()}
-  </Screener>
-);
-
-const linkStories = {
-  decorators: [FabricDecorator, LinkDecorator],
-  stories: {
-    'Root': () => <Link href='#'>I'm a link</Link>,
-    'Disabled': () => <Link href='#' disabled>I'm a disabled link</Link>,
-    'No Href': () => <Link>I'm rendered as a button because I have no href</Link>,
-    'No Href Disabled': () => <Link disabled>I'm rendered as a button because I have no href and am disabled</Link>
-  }
-};
-
-runStories('Link', linkStories);
+storiesOf('Link', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(story => (
+    <Screener
+      steps={new Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .hover('.ms-Link')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .click('.ms-Link')
+        .hover('.ms-Link')
+        .snapshot('click', { cropTo: '.testWrapper' })
+        .end()
+      }
+    >
+      {story()}
+    </Screener>
+  ))
+  .addStory('Root', () => (<Link href='#'>I'm a link</Link>))
+  .addStory('Disabled', () => (<Link href='#' disabled>I'm a disabled link</Link>))
+  .addStory('No Href', () => (<Link>I'm rendered as a button because I have no href</Link>))
+  .addStory('No Href Disabled', () => (<Link disabled>I'm rendered as a button because I have no href and am disabled</Link>));

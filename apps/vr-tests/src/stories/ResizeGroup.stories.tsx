@@ -1,11 +1,12 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
-import { FabricDecorator, runStories } from '../utilities';
+import { storiesOf } from '@storybook/react';
+import { FabricDecorator } from '../utilities';
 import { ResizeGroup, OverflowSet, DefaultButton } from 'office-ui-fabric-react';
 
 // tslint:disable-next-line:max-line-length
-const list = {
+let list = {
   'primary': [
     { key: 'item0', name: 'Item 0', iconProps: { iconName: 'Add' }, 'checked': false },
     { key: 'item1', name: 'Item 1', iconProps: { iconName: 'Share' }, 'checked': false },
@@ -23,59 +24,52 @@ const list = {
   ]
 };
 
-const noop = () => null;
+let noop = () => null;
 
-const ResizeGroupDecorator = story => (
-  <Screener
-    steps={new Screener.Steps()
-      .snapshot('default', { cropTo: '.testWrapper' })
-      .click('.OverflowButton')
-      .hover('.OverflowButton')
-      .snapshot('click overflow')
-      .end()
-    }
-  >
-    {story()}
-  </Screener>
-);
-
-const resizeGroupStories = {
-  decorators: [FabricDecorator, ResizeGroupDecorator],
-  stories: {
-    'Root': () => (
-      <ResizeGroup
-        data={list}
-        onReduceData={noop}
-        // tslint:disable-next-line:jsx-no-lambda
-        onRenderData={(data) => {
-          return (
-            <OverflowSet
-              items={data.primary}
-              overflowItems={data.overflow.length ? data.overflow : null}
-              onRenderItem={(item) => {
-                return (
-                  <DefaultButton
-                    text={item.name}
-                    iconProps={item.iconProps}
-                    onClick={item.onClick}
-                    checked={item.checked}
-                  />
-                );
-              }}
-              onRenderOverflowButton={(overflowItems) => {
-                return (
-                  <DefaultButton
-                    className='OverflowButton'
-                    menuProps={{ items: overflowItems! }}
-                  />
-                );
-              }}
-            />
-          );
-        }}
-      />
-    )
-  }
-};
-
-runStories('ResizeGroup', resizeGroupStories);
+storiesOf('ResizeGroup', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(story => (
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .click('.OverflowButton')
+        .hover('.OverflowButton')
+        .snapshot('click overflow')
+        .end()
+      }
+    >
+      {story()}
+    </Screener>
+  )).addStory('Root', () => (
+    <ResizeGroup
+      data={list}
+      onReduceData={noop}
+      // tslint:disable-next-line:jsx-no-lambda
+      onRenderData={(data) => {
+        return (
+          <OverflowSet
+            items={data.primary}
+            overflowItems={data.overflow.length ? data.overflow : null}
+            onRenderItem={(item) => {
+              return (
+                <DefaultButton
+                  text={item.name}
+                  iconProps={item.iconProps}
+                  onClick={item.onClick}
+                  checked={item.checked}
+                />
+              );
+            }}
+            onRenderOverflowButton={(overflowItems) => {
+              return (
+                <DefaultButton
+                  className='OverflowButton'
+                  menuProps={{ items: overflowItems! }}
+                />
+              );
+            }}
+          />
+        );
+      }}
+    />
+  ));

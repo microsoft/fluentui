@@ -1,7 +1,8 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
-import { FabricDecorator, runStories } from '../utilities';
+import { storiesOf } from '@storybook/react';
+import { FabricDecorator } from '../utilities';
 import { ContextualMenu, ContextualMenuItemType, IContextualMenuItem } from 'office-ui-fabric-react';
 
 const items: IContextualMenuItem[] = [
@@ -253,32 +254,50 @@ const itemsWithSplitButtonSubmenu: IContextualMenuItem[] = [
   }
 ];
 
-const ContextualMenuDecorator = story => (
-  <Screener
-    steps={new Screener.Steps()
-      .snapshot('default', { cropTo: '.ms-Layer' })
-      .hover('.ms-ContextualMenu-linkContent')
-      .snapshot('hover', { cropTo: '.ms-Layer' })
-      .click('.ms-ContextualMenu-linkContent')
-      .hover('.ms-ContextualMenu-linkContent')
-      .snapshot('click', { cropTo: '.ms-Layer' })
-      .end()
-    }
-  >
-    {story()}
-  </Screener>
-);
-
-const contextualMenuStories = {
-  decorators: [FabricDecorator, ContextualMenuDecorator],
-  stories: {
-    'Root': () => <ContextualMenu items={items} />,
-    'With icons': () => <ContextualMenu items={itemsWithIcons} />,
-    'With secondaryText': () => <ContextualMenu items={itemsWithSecondaryText} />,
-    'With submenu': () => <ContextualMenu items={itemsWithSubmenu} />,
-    'With headers': () => <ContextualMenu items={itemsWithHeaders} />,
-    'With split button submenu': () => <ContextualMenu items={itemsWithSplitButtonSubmenu} />,
-  }
-};
-
-runStories('ContextualMenu', contextualMenuStories);
+storiesOf('ContextualMenu', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(story => (
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.ms-Layer' })
+        .hover('.ms-ContextualMenu-linkContent')
+        .snapshot('hover', { cropTo: '.ms-Layer' })
+        .click('.ms-ContextualMenu-linkContent')
+        .hover('.ms-ContextualMenu-linkContent')
+        .snapshot('click', { cropTo: '.ms-Layer' })
+        .end()
+      }
+    >
+      {story()}
+    </Screener>
+  ))
+  .addStory('Root', () => (
+    <ContextualMenu
+      items={items}
+    />
+  ))
+  .addStory('With icons', () => (
+    <ContextualMenu
+      items={itemsWithIcons}
+    />
+  ))
+  .addStory('With secondaryText', () => (
+    <ContextualMenu
+      items={itemsWithSecondaryText}
+    />
+  ))
+  .addStory('With submenu', () => (
+    <ContextualMenu
+      items={itemsWithSubmenu}
+    />
+  ))
+  .addStory('With headers', () => (
+    <ContextualMenu
+      items={itemsWithHeaders}
+    />
+  ))
+  .addStory('With split button submenu', () => (
+    <ContextualMenu
+      items={itemsWithSplitButtonSubmenu}
+    />
+  ));

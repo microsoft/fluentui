@@ -1,7 +1,8 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
-import { FabricDecorator, TestWrapperDecorator, runStories } from '../utilities';
+import { storiesOf } from '@storybook/react';
+import { FabricDecorator } from '../utilities';
 import { List } from 'office-ui-fabric-react';
 
 // tslint:disable-next-line:max-line-length
@@ -11,11 +12,18 @@ const onRenderCell = (item) => (
   <div>{item.name}</div>
 );
 
-const listStories = {
-  decorators: [FabricDecorator, TestWrapperDecorator],
-  stories: {
-    'Root': () => <List items={items} onRenderCell={onRenderCell} />
-  }
-};
-
-runStories('List', listStories);
+storiesOf('List', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(story => (
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .end()
+      }
+    >
+      {story()}
+    </Screener>
+  ))
+  .addStory('Root', () => (
+    <List items={items} onRenderCell={onRenderCell} />
+  ));
