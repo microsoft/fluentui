@@ -747,7 +747,7 @@ describe('ContextualMenu', () => {
     expect(menuList).toBeNull();
   });
 
-  it('correctly focuses the first element', done => {
+  it('correctly focuses the first element', (done: jest.DoneCallback) => {
     const items: IContextualMenuItem[] = [
       {
         text: 'TestText 1',
@@ -762,7 +762,7 @@ describe('ContextualMenu', () => {
 
     ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
 
-    new Promise<any>(resolve => {
+    new Promise<any>((resolve: any) => {
       let focusedItem;
       for (let i = 0; i < 20; i++) {
         focusedItem = document.querySelector('.testkey1')!.firstChild;

@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { BaseComponent, classNamesFunction } from '../../Utilities';
 import { DialogType, IDialogContentProps, IDialogContentStyleProps, IDialogContentStyles } from './DialogContent.types';
-import { IconButton } from '../../Button';
+import { IconButton, IButtonProps } from '../../Button';
 import { DialogFooter } from './DialogFooter';
 import { withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
-import { IButtonProps } from 'office-ui-fabric-react/lib/components/Button';
 
 const getClassNames = classNamesFunction<IDialogContentStyleProps, IDialogContentStyles>();
 

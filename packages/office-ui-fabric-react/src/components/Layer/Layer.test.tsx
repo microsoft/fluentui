@@ -17,7 +17,7 @@ describe('Layer', () => {
   it('renders Layer correctly', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
     const createPortal = ReactDOM.createPortal;
-    ReactDOM.createPortal = jest.fn(element => {
+    ReactDOM.createPortal = jest.fn((element: any) => {
       return element;
     });
 
@@ -152,7 +152,7 @@ describe('Layer', () => {
 
     const targetContent = wrapper.find(`.${targetClassName}`).at(0);
 
-    testEvents.forEach((event: String) => {
+    testEvents.forEach((event: string) => {
       targetContent.simulate(event, eventObject(event));
     });
 

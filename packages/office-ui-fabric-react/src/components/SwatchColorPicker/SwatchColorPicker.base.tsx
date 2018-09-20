@@ -7,9 +7,9 @@ import {
   ISwatchColorPickerStyles
 } from './SwatchColorPicker.types';
 import { Grid } from '../../utilities/grid/Grid';
+import { IGridStyleProps } from '../../utilities/grid/Grid.types';
 import { IColorCellProps } from './ColorPickerGridCell.types';
 import { ColorPickerGridCell } from './ColorPickerGridCell';
-import { IGridStyleProps } from 'office-ui-fabric-react/lib/utilities/grid';
 
 export interface ISwatchColorPickerState {
   selectedIndex?: number;
