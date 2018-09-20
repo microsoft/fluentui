@@ -4,6 +4,8 @@ import { initializeIcons } from '@uifabric/icons';
 
 import TodoApp from './TodoApp';
 
+import './version';
+
 let _rootDiv: HTMLElement;
 
 function start(): void {

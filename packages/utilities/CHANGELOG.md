@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 13 Sep 2018 17:38:04 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Sep 2018 12:25:33 GMT and should not be manually modified.
+
+## 6.20.0
+Thu, 20 Sep 2018 12:25:33 GMT
+
+### Minor changes
+
+- add optional defaultRender to IComponentAs
 
 ## 6.19.1
 Thu, 13 Sep 2018 17:38:04 GMT

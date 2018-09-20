@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Remove max lines TS override",
-      "type": "none"
+      "comment": "Adding a version stamp file",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "edwl@microsoft.com"
+  "email": "kchau@microsoft.com"
 }
