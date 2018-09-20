@@ -59,6 +59,7 @@
     "@uifabric/icons": ">=6.1.0 <7.0.0",
     "@uifabric/merge-styles": ">=6.9.0 <7.0.0",
     "@uifabric/styling": ">=6.26.0 <7.0.0",
+    "@uifabric/set-version": ">=1.0.0 <2.0.0",
     "@uifabric/utilities": ">=6.20.0 <7.0.0",
     "prop-types": "^15.5.10",
     "tslib": "^1.7.1"

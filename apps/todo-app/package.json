@@ -17,6 +17,7 @@
     "office-ui-fabric-react-tslint": ">=6.0.0 <7.0.0"
   },
   "dependencies": {
+    "@uifabric/set-version": ">=1.0.0 <2.0.0",
     "@microsoft/load-themed-styles": "^1.7.13",
     "es6-promise": "^4.1.0",
     "immutability-helper": "^2.6.4",

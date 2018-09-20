@@ -6,6 +6,7 @@
     "@uifabric/charting": "^0.21.0",
     "@uifabric/example-app-base": ">=6.7.2 <7.0.0",
     "@uifabric/experiments": ">=6.32.0 <7.0.0",
+    "@uifabric/set-version": ">=1.0.0 <2.0.0",
     "auto-fontsize": "^1.0.18",
     "css-loader": "^0.15.1",
     "office-ui-fabric-react": ">=6.72.0 <7.0.0",
@@ -16,7 +17,7 @@
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "sideEffects": false,
+  "sideEffects": ["lib/version.js"],
   "scripts": {
     "build": "node ../../scripts/build.js",
     "clean": "node ../../scripts/clean.js",

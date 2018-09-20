@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { DefaultButton } from 'office-ui-fabric-react';
+import './version';
 
 function start(): void {
   const div: HTMLElement = document.createElement('div');

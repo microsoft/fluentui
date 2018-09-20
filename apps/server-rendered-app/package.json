@@ -3,7 +3,7 @@
   "description": "Sample server-rendered todo app using office-ui-fabric-react.",
   "version": "0.0.1",
   "private": true,
-  "sideEffects": false,
+  "sideEffects": ["lib/version.js"],
   "scripts": {
     "build": "node ../../scripts/build.js",
     "clean": "node ../../scripts/clean.js",
@@ -24,6 +24,7 @@
   "dependencies": {
     "@uifabric/icons": ">=6.1.0 <7.0.0",
     "@microsoft/load-themed-styles": "^1.7.13",
+    "@uifabric/set-version": ">=1.0.0 <2.0.0",
     "@uifabric/merge-styles": "^6.9.0",
     "es6-promise": "^4.1.0",
     "immutability-helper": "^2.6.4",

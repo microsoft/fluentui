@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/foundation",
+      "comment": "Adding a version stamp file",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/foundation",
+  "email": "kchau@microsoft.com"
+}
