@@ -164,7 +164,7 @@ export class ScrollablePaneDetailsListExample extends React.Component<
               ariaLabelForSelectionColumn="Toggle selection"
               ariaLabelForSelectAllCheckbox="Toggle selection for all items"
               // tslint:disable-next-line:jsx-no-lambda
-              onItemInvoked={item => alert(`Item invoked: ${item.name}`)}
+              onItemInvoked={(item: any) => alert(`Item invoked: ${item.name}`)}
             />
           </MarqueeSelection>
         </ScrollablePane>
@@ -186,10 +186,7 @@ export class ScrollablePaneDetailsListExample extends React.Component<
   }
 }
 
-function onRenderDetailsHeader(
-  props: IDetailsHeaderProps,
-  defaultRender?: IRenderFunction<IDetailsHeaderProps>
-): JSX.Element {
+function onRenderDetailsHeader(props: IDetailsHeaderProps, defaultRender?: IRenderFunction<IDetailsHeaderProps>): JSX.Element {
   return (
     <Sticky stickyPosition={StickyPositionType.Header} isScrollSynced={true}>
       {defaultRender!({
@@ -200,10 +197,7 @@ function onRenderDetailsHeader(
   );
 }
 
-function onRenderDetailsFooter(
-  props: IDetailsFooterProps,
-  defaultRender?: IRenderFunction<IDetailsFooterProps>
-): JSX.Element {
+function onRenderDetailsFooter(props: IDetailsFooterProps, defaultRender?: IRenderFunction<IDetailsFooterProps>): JSX.Element {
   return (
     <Sticky stickyPosition={StickyPositionType.Footer} isScrollSynced={true}>
       <DetailsRow
