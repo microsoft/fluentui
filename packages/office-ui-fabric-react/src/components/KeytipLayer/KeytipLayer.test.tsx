@@ -57,7 +57,7 @@ describe('KeytipLayer', () => {
   };
 
   function delay(millisecond: number): Promise<void> {
-    return new Promise<void>(resolve => setTimeout(resolve, millisecond));
+    return new Promise<void>((resolve: any) => setTimeout(resolve, millisecond));
   }
 
   function getKeytip(keytips: IKeytipProps[], content: string): IKeytipProps | undefined {

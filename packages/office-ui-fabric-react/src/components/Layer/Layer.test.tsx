@@ -46,7 +46,9 @@ describe('Layer', () => {
         foo: PropTypes.string
       };
 
-      public getChildContext() {
+      public getChildContext(): {
+        foo: string;
+      } {
         return {
           foo: 'foo'
         };
@@ -116,7 +118,7 @@ describe('Layer', () => {
 
     const targetContent = wrapper.find(`.${targetClassName}`).at(0);
 
-    testEvents.forEach(event => {
+    testEvents.forEach((event: string) => {
       targetContent.simulate(event, eventObject(event));
     });
 
@@ -150,7 +152,7 @@ describe('Layer', () => {
 
     const targetContent = wrapper.find(`.${targetClassName}`).at(0);
 
-    testEvents.forEach(event => {
+    testEvents.forEach((event: String) => {
       targetContent.simulate(event, eventObject(event));
     });
 

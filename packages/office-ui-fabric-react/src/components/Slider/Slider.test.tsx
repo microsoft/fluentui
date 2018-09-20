@@ -54,7 +54,7 @@ describe('Slider', () => {
   it('has type=button on all buttons', () => {
     const component = mount(<Slider />);
 
-    component.find('button').forEach(button => {
+    component.find('button').forEach((button: any) => {
       expect(button.prop('type')).toEqual('button');
     });
   });

@@ -38,7 +38,7 @@ export function unregisterLayer(hostId: string, layer: React.Component): void {
  */
 export function notifyHostChanged(id: string): void {
   if (_layersByHostId[id]) {
-    _layersByHostId[id].forEach(layer => layer.forceUpdate());
+    _layersByHostId[id].forEach((layer: React.Component) => layer.forceUpdate());
   }
 }
 

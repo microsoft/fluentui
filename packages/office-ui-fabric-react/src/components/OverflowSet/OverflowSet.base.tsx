@@ -187,7 +187,7 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
     let newOverflowItems: any[] = [];
 
     if (overflowKeytipSequences) {
-      items.forEach(overflowItem => {
+      items.forEach((overflowItem: any) => {
         const keytip = (overflowItem as IOverflowSetItemProps).keytipProps;
         if (keytip) {
           // Create persisted keytip

@@ -10,7 +10,7 @@ const ReactDOM = require('react-dom');
 describe('Panel', () => {
   it('renders Panel correctly', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
-    ReactDOM.createPortal = jest.fn(element => {
+    ReactDOM.createPortal = jest.fn((element: any) => {
       return element;
     });
 
@@ -34,7 +34,7 @@ describe('Panel', () => {
       ReactDOM.unmountComponentAtNode(div);
     });
 
-    it('fires the correct events when closing', done => {
+    it('fires the correct events when closing', (done: jest.DoneCallback) => {
       let dismissedCalled = false;
       let dismissCalled = false;
       const setDismissTrue = (): void => {

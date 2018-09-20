@@ -74,7 +74,10 @@ export const getMeasurementCache = () => {
  * Returns a function that is able to compute the next state for the ResizeGroup given the current
  * state and any measurement updates.
  */
-export const getNextResizeGroupStateProvider = (measurementCache = getMeasurementCache()) => {
+export const getNextResizeGroupStateProvider = (measurementCache: {
+  getCachedMeasurement: (data: any) => number | undefined;
+  addMeasurementToCache: (data: any, measurement: number) => void;
+} = getMeasurementCache()) => {
   const _measurementCache = measurementCache;
   let _containerWidth: number | undefined;
 

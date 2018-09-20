@@ -15,7 +15,14 @@ const GlobalClassNames = {
   ratingFocusZone: 'ms-Rating-focuszone'
 };
 
-function _getColorWithHighContrast(color: string, highContrastColor: string) {
+function _getColorWithHighContrast(color: string, highContrastColor: string): {
+  color: string;
+  selectors: {
+    [HighContrastSelector]: {
+      color: string;
+    };
+  };
+} {
   return {
     color: color,
     selectors: {
@@ -47,16 +54,16 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
     root: [
       classNames.root,
       !disabled &&
-        !readOnly && {
-          selectors: {
-            // This is part 1 of highlighting all stars up to the one the user is hovering over
-            '&:hover': {
-              selectors: {
-                '.ms-RatingStar-back': _getColorWithHighContrast(ratingStarCheckedColor, 'Highlight')
-              }
+      !readOnly && {
+        selectors: {
+          // This is part 1 of highlighting all stars up to the one the user is hovering over
+          '&:hover': {
+            selectors: {
+              '.ms-RatingStar-back': _getColorWithHighContrast(ratingStarCheckedColor, 'Highlight')
             }
           }
         }
+      }
     ],
     rootIsSmall: [
       classNames.rootIsSmall,
@@ -118,27 +125,27 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
         }
       },
       !disabled &&
-        !readOnly && {
-          selectors: {
-            // This is part 2 of highlighting all stars up to the one the user is hovering over
-            '&:hover ~ .ms-Rating-button': {
-              selectors: {
-                '.ms-RatingStar-back': _getColorWithHighContrast(ratingStarUncheckedColor, 'WindowText'),
-                '.ms-RatingStar-front': _getColorWithHighContrast(ratingStarUncheckedColor, 'WindowText')
-              }
-            },
-            '&:hover': {
-              selectors: {
-                '.ms-RatingStar-back': {
-                  color: ratingStarUncheckedHoverColor
-                },
-                '.ms-RatingStar-front': {
-                  color: ratingStarUncheckedHoverSelectedColor
-                }
+      !readOnly && {
+        selectors: {
+          // This is part 2 of highlighting all stars up to the one the user is hovering over
+          '&:hover ~ .ms-Rating-button': {
+            selectors: {
+              '.ms-RatingStar-back': _getColorWithHighContrast(ratingStarUncheckedColor, 'WindowText'),
+              '.ms-RatingStar-front': _getColorWithHighContrast(ratingStarUncheckedColor, 'WindowText')
+            }
+          },
+          '&:hover': {
+            selectors: {
+              '.ms-RatingStar-back': {
+                color: ratingStarUncheckedHoverColor
+              },
+              '.ms-RatingStar-front': {
+                color: ratingStarUncheckedHoverSelectedColor
               }
             }
           }
-        },
+        }
+      },
       disabled && {
         cursor: 'default'
       }
