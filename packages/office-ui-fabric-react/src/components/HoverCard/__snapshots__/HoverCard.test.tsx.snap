@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HoveCard renders BasicCard correctly 1`] = `
+exports[`HoverCard renders BasicCard correctly 1`] = `
 <span
   className="ms-layer"
 >
@@ -138,7 +138,7 @@ exports[`HoveCard renders BasicCard correctly 1`] = `
 </span>
 `;
 
-exports[`HoveCard renders ExpandingCard correctly 1`] = `
+exports[`HoverCard renders ExpandingCard correctly 1`] = `
 <span
   className="ms-layer"
 >
@@ -278,7 +278,7 @@ exports[`HoveCard renders ExpandingCard correctly 1`] = `
 </span>
 `;
 
-exports[`HoveCard renders target wrapped by HoverCard correctly 1`] = `
+exports[`HoverCard renders target wrapped by HoverCard correctly 1`] = `
 <div
   data-is-focusable={true}
 >

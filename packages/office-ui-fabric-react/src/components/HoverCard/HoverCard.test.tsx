@@ -32,7 +32,7 @@ const basicCardProps: IBasicCardProps = {
   renderData: { key: 'TEST' }
 };
 
-describe('HoveCard', () => {
+describe('HoverCard', () => {
   it('renders target wrapped by HoverCard correctly', () => {
     const createNodeMock = (el: React.ReactElement<{}>) => {
       return {
