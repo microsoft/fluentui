@@ -13,7 +13,10 @@ const view = (props: IViewComponentProps<IStackItemProps, IStackItemStyles>) => 
   return <span className={props.classNames.root}>{first}</span>;
 };
 
-export const StackItem: React.StatelessComponent<IStackItemProps> = createStatelessComponent<IStackItemProps, IStackItemStyles>({
+export const StackItem: React.StatelessComponent<IStackItemProps> = createStatelessComponent<
+  IStackItemProps,
+  IStackItemStyles
+>({
   displayName: 'StackItem',
   styles,
   view
