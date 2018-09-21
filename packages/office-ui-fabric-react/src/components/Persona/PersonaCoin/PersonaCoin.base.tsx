@@ -170,6 +170,11 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
       showUnknownPersonaCoin,
     } = this.props;
 
+    // render Image component only if there is a valid imageUrl
+    if (!imageUrl) {
+      return null;
+    }
+
     const size = this.props.size as PersonaSize;
 
     const classNames = getClassNames(getStyles, {
