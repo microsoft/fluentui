@@ -28,7 +28,7 @@ if (!generateOnly) {
       const parts = line.trim().split(/\s/);
 
       if (parts[0] === '??') {
-        untracked.push('"' + parts[1] + '"');
+        untracked.push(parts[1]);
       } else {
         modified.push('"' + parts[1] + '"');
       }
