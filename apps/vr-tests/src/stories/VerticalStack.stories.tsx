@@ -63,44 +63,54 @@ storiesOf('VerticalStack', module)
   .addDecorator(story => (
     <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
   ))
-  .add('Default', () => (
+  .addStory('Default', () => (
     <VerticalStack {...defaultProps} />
-  ))
-  .add('Padding', () => (
+  ), { rtl: true })
+  .addStory('Padding', () => (
     <VerticalStack {...defaultProps} padding={10} />
   ))
-  .add('Gap', () => (
+  .addStory('Gap', () => (
     <VerticalStack {...defaultProps} gap={10} />
   ))
-  .add('Vertically centered', () => (
+  .addStory('Vertically centered', () => (
     <VerticalStack {...defaultProps} verticalAlign="center" className={styles.fixedHeight} />
   ))
-  .add('Bottom-aligned', () => (
+  .addStory('Bottom-aligned', () => (
     <VerticalStack {...defaultProps} verticalAlign="bottom" className={styles.fixedHeight} />
   ))
-  .add('Space around', () => (
+  .addStory('Space around', () => (
     <VerticalStack {...defaultProps} verticalAlign="space-around" className={styles.fixedHeight} />
   ))
-  .add('Space between', () => (
+  .addStory('Space between', () => (
     <VerticalStack {...defaultProps} verticalAlign="space-between" className={styles.fixedHeight} />
   ))
-  .add('Space evenly', () => (
+  .addStory('Space evenly', () => (
     <VerticalStack {...defaultProps} verticalAlign="space-evenly" className={styles.fixedHeight} />
   ))
-  .add('Horizontally centered', () => (
+  .addStory('Horizontally centered', () => (
     <VerticalStack {...defaultProps} horizontalAlign="center" />
   ))
-  .add('Right-aligned', () => (
+  .addStory('Right-aligned', () => (
     <VerticalStack {...defaultProps} horizontalAlign="right" />
-  ))
-  .add('Growing items', () => (
+  ), { rtl: true })
+  .addStory('Item alignments', () => (
+    <VerticalStack {...defaultProps} gap={10}>
+      <VerticalStack.Item align="auto" className={styles.item}>Auto-aligned item</VerticalStack.Item>
+      <VerticalStack.Item align="stretch" className={styles.item}>Stretch-aligned item</VerticalStack.Item>
+      <VerticalStack.Item align="baseline" className={styles.item}>Baseline-aligned item</VerticalStack.Item>
+      <VerticalStack.Item align="start" className={styles.item}>Start-aligned item</VerticalStack.Item>
+      <VerticalStack.Item align="center" className={styles.item}>Center-aligned item</VerticalStack.Item>
+      <VerticalStack.Item align="end" className={styles.item}>End-aligned item</VerticalStack.Item>
+    </VerticalStack>
+  ), { rtl: true })
+  .addStory('Growing items', () => (
     <VerticalStack {...defaultProps} gap={10} className={styles.fixedHeight}>
       <VerticalStack.Item grow={3} className={styles.item}>Grow is 3</VerticalStack.Item>
       <VerticalStack.Item grow={2} className={styles.item}>Grow is 2</VerticalStack.Item>
       <VerticalStack.Item grow className={styles.item}>Grow is 1</VerticalStack.Item>
     </VerticalStack>
   ))
-  .add('Shrinking items', () => (
+  .addStory('Shrinking items', () => (
     <VerticalStack {...defaultProps} gap={10} shrinkItems className={styles.fixedHeight}>
       <VerticalStack.Item className={styles.shrinkItem}>1</VerticalStack.Item>
       <VerticalStack.Item preventShrink className={styles.shrinkItem}>2 (does not shrink)</VerticalStack.Item>
@@ -109,7 +119,7 @@ storiesOf('VerticalStack', module)
       <VerticalStack.Item className={styles.shrinkItem}>5</VerticalStack.Item>
     </VerticalStack>
   ))
-  .add('Box shadow around items', () => (
+  .addStory('Box shadow around items', () => (
     <VerticalStack {...defaultProps} gap={25}>
       <span className={styles.shadowItem}>1</span>
       <span className={styles.shadowItem}>2</span>

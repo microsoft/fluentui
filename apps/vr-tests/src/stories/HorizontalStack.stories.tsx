@@ -63,37 +63,37 @@ storiesOf('HorizontalStack', module)
   .addDecorator(story => (
     <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
   ))
-  .add('Default', () => (
+  .addStory('Default', () => (
     <HorizontalStack {...defaultProps} />
-  ))
-  .add('Padding', () => (
+  ), { rtl: true })
+  .addStory('Padding', () => (
     <HorizontalStack {...defaultProps} padding={10} />
   ))
-  .add('Gap', () => (
+  .addStory('Gap', () => (
     <HorizontalStack {...defaultProps} gap={10} />
-  ))
-  .add('Horizontally centered', () => (
+  ), { rtl: true })
+  .addStory('Horizontally centered', () => (
     <HorizontalStack {...defaultProps} horizontalAlign="center" />
   ))
-  .add('Right-aligned', () => (
+  .addStory('Right-aligned', () => (
     <HorizontalStack {...defaultProps} horizontalAlign="right" />
-  ))
-  .add('Space around', () => (
+  ), { rtl: true })
+  .addStory('Space around', () => (
     <HorizontalStack {...defaultProps} horizontalAlign="space-around" />
   ))
-  .add('Space between', () => (
+  .addStory('Space between', () => (
     <HorizontalStack {...defaultProps} horizontalAlign="space-between" />
   ))
-  .add('Space evenly', () => (
+  .addStory('Space evenly', () => (
     <HorizontalStack {...defaultProps} horizontalAlign="space-evenly" />
   ))
-  .add('Vertically centered', () => (
+  .addStory('Vertically centered', () => (
     <HorizontalStack {...defaultProps} verticalAlign="center" className={styles.fixedHeight} />
   ))
-  .add('Bottom-aligned', () => (
+  .addStory('Bottom-aligned', () => (
     <HorizontalStack {...defaultProps} verticalAlign="bottom" className={styles.fixedHeight} />
   ))
-  .add('Item alignments', () => (
+  .addStory('Item alignments', () => (
     <HorizontalStack {...defaultProps} gap={10} className={styles.fixedHeight}>
       <HorizontalStack.Item align="auto" className={styles.item}>Auto-aligned item</HorizontalStack.Item>
       <HorizontalStack.Item align="stretch" className={styles.item}>Stretch-aligned item</HorizontalStack.Item>
@@ -102,15 +102,15 @@ storiesOf('HorizontalStack', module)
       <HorizontalStack.Item align="center" className={styles.item}>Center-aligned item</HorizontalStack.Item>
       <HorizontalStack.Item align="end" className={styles.item}>End-aligned item</HorizontalStack.Item>
     </HorizontalStack>
-  ))
-  .add('Growing items', () => (
+  ), { rtl: true })
+  .addStory('Growing items', () => (
     <HorizontalStack {...defaultProps} gap={10}>
       <HorizontalStack.Item grow={3} className={styles.item}>Grow is 3</HorizontalStack.Item>
       <HorizontalStack.Item grow={2} className={styles.item}>Grow is 2</HorizontalStack.Item>
       <HorizontalStack.Item grow className={styles.item}>Grow is 1</HorizontalStack.Item>
     </HorizontalStack>
   ))
-  .add('Shrinking items', () => (
+  .addStory('Shrinking items', () => (
     <HorizontalStack {...defaultProps} gap={10} shrinkItems>
       <HorizontalStack.Item className={styles.shrinkItem}>1</HorizontalStack.Item>
       <HorizontalStack.Item preventShrink className={styles.shrinkItem}>2 (does not shrink)</HorizontalStack.Item>
@@ -121,7 +121,7 @@ storiesOf('HorizontalStack', module)
       <HorizontalStack.Item className={styles.shrinkItem}>7</HorizontalStack.Item>
     </HorizontalStack>
   ))
-  .add('Wrap', () => (
+  .addStory('Wrap', () => (
     <HorizontalStack {...defaultProps} gap={10} wrap>
       <span className={styles.boxItem}>1</span>
       <span className={styles.boxItem}>2</span>
@@ -153,8 +153,8 @@ storiesOf('HorizontalStack', module)
       <span className={styles.boxItem}>29</span>
       <span className={styles.boxItem}>30</span>
     </HorizontalStack>
-  ))
-  .add('Wrap with specified vertical gap', () => (
+  ), { rtl: true })
+  .addStory('Wrap with specified vertical gap', () => (
     <HorizontalStack {...defaultProps} wrap gap={10} verticalGap={40}>
       <span className={styles.boxItem}>1</span>
       <span className={styles.boxItem}>2</span>
@@ -187,7 +187,7 @@ storiesOf('HorizontalStack', module)
       <span className={styles.boxItem}>30</span>
     </HorizontalStack>
   ))
-  .add('Box shadow around items', () => (
+  .addStory('Box shadow around items', () => (
     <HorizontalStack {...defaultProps} gap={25}>
       <span className={styles.shadowItem}>1</span>
       <span className={styles.shadowItem}>2</span>
