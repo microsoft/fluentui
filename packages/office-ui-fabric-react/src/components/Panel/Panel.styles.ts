@@ -122,6 +122,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         isHiddenOnDismiss && {
           visibility: 'hidden'
         },
+      type === PanelType.custom && classNames.custom,
       className
     ],
     overlay: [
