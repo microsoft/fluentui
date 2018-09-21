@@ -101,8 +101,8 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     type
   } = props;
   const { palette } = theme;
-
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
+  const isCustomPanel = type === PanelType.custom;
 
   return {
     root: [
@@ -122,7 +122,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         isHiddenOnDismiss && {
           visibility: 'hidden'
         },
-      type === PanelType.custom && classNames.custom,
+      isCustomPanel && classNames.custom,
       className
     ],
     overlay: [
@@ -230,7 +230,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
                 }
               }
             },
-            type === PanelType.custom && {
+            isCustomPanel && {
               maxWidth: '100vw'
             }
           ]
