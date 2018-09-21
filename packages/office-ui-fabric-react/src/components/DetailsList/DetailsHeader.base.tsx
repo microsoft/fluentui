@@ -371,7 +371,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
   /**
    * @returns whether or not the "Select All" checkbox column is hidden.
    */
-  private _isCheckboxHidden(): boolean {
+  private _isCheckboxColumnHidden(): boolean {
     const { selectionMode, checkboxVisibility } = this.props;
 
     return selectionMode === SelectionMode.none || checkboxVisibility === CheckboxVisibility.hidden;
@@ -382,7 +382,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     const itemIndex = props.itemIndex;
     if (itemIndex >= 0) {
       // Column index is set based on the checkbox
-      this._draggedColumnIndex = this._isCheckboxHidden() ? itemIndex - 1 : itemIndex - 2;
+      this._draggedColumnIndex = this._isCheckboxColumnHidden() ? itemIndex - 1 : itemIndex - 2;
       this._getDropHintPositions();
       if (columnReorderProps && columnReorderProps.onColumnDragStart) {
         columnReorderProps.onColumnDragStart(true);
