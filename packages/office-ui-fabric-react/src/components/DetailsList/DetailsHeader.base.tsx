@@ -6,7 +6,8 @@ import {
   IDetailsHeaderBaseProps,
   IColumnDragDropDetails,
   ColumnDragEndLocation,
-  IColumnReorderOptions
+  IColumnReorderOptions,
+  CheckboxVisibility
 } from './DetailsList.types';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Icon } from '../../Icon';
@@ -367,12 +368,21 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     this._draggedColumnIndex = -1;
   }
 
+  /**
+   * @returns whether or not the "Select All" checkbox column is hidden.
+   */
+  private _isCheckboxHidden(): boolean {
+    const { selectionMode, checkboxVisibility } = this.props;
+
+    return selectionMode === SelectionMode.none || checkboxVisibility === CheckboxVisibility.hidden;
+  }
+
   private _updateDragInfo(props: { itemIndex: number }, event?: MouseEvent) {
     const { columnReorderProps } = this.state;
     const itemIndex = props.itemIndex;
     if (itemIndex >= 0) {
       // Column index is set based on the checkbox
-      this._draggedColumnIndex = this.props.selectionMode !== SelectionMode.none ? itemIndex - 2 : itemIndex - 1;
+      this._draggedColumnIndex = this._isCheckboxHidden() ? itemIndex - 1 : itemIndex - 2;
       this._getDropHintPositions();
       if (columnReorderProps && columnReorderProps.onColumnDragStart) {
         columnReorderProps.onColumnDragStart(true);
