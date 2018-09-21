@@ -173,7 +173,8 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
       theme
     } = this.props;
     const { isAllSelected, columnResizeDetails, isSizing, groupNestingDepth, isAllCollapsed, columnReorderProps } = this.state;
-    const isCheckboxHidden = this._isCheckboxHidden();
+    const showCheckbox = selectAllVisibility !== SelectAllVisibility.none;
+    const isCheckboxHidden = selectAllVisibility === SelectAllVisibility.hidden;
 
     const { onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip } = this.props;
     if (!this._dragDropHelper && columnReorderProps) {
@@ -215,7 +216,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
         style={{ minWidth: viewport ? viewport.width : 0 }}
         direction={FocusZoneDirection.horizontal}
       >
-        {!isCheckboxHidden
+        {showCheckbox
           ? [
               <div
                 key="__checkbox"
@@ -273,7 +274,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
             <DetailsColumn
               column={column}
               key={column.key}
-              columnIndex={(!isCheckboxHidden ? 2 : 1) + columnIndex}
+              columnIndex={(showCheckbox ? 2 : 1) + columnIndex}
               parentId={this._id}
               isDraggable={_isDraggable}
               updateDragInfo={this._updateDragInfo}
