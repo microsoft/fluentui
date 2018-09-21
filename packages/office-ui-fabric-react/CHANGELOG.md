@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 18 Sep 2018 11:25:16 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Sep 2018 11:24:29 GMT and should not be manually modified.
+
+## 5.126.0
+Fri, 21 Sep 2018 11:24:29 GMT
+
+### Minor changes
+
+- onRenderDivider prop added to DetailsList, onRender*Text types of callbacks in Persona can be used to override default behaviour
 
 ## 5.125.0
 Tue, 18 Sep 2018 11:25:16 GMT
