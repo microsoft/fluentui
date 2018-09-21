@@ -1,6 +1,18 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 20 Sep 2018 12:25:33 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Sep 2018 14:25:46 GMT and should not be manually modified.
+
+## 6.21.0
+Fri, 21 Sep 2018 14:25:46 GMT
+
+### Minor changes
+
+- Expose Customizer's mergeCustomizations as new helper function.
+
+### Patches
+
+- Adding a version stamp file
+- Add IComponentAsProps
 
 ## 6.20.0
 Thu, 20 Sep 2018 12:25:33 GMT

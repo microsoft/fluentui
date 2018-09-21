@@ -1,6 +1,16 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 20 Sep 2018 12:25:33 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Sep 2018 14:25:46 GMT and should not be manually modified.
+
+## 6.72.1
+Fri, 21 Sep 2018 14:25:46 GMT
+
+### Patches
+
+- Adding a version stamp file
+- fixed Korean characters typing issue in IE11.
+- Revert max-line-length change in favor of tslint disable next line for ColorSlider background  values to fix Screener regression.
+- Add example of using CommandBarButtonAs with coachmarks and add IComponentAsProps
 
 ## 6.72.0
 Thu, 20 Sep 2018 12:25:33 GMT

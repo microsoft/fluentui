@@ -1,10 +1,12 @@
 {
   "name": "@uifabric/jest-serializer-merge-styles",
-  "version": "6.0.4",
+  "version": "6.0.5",
   "description": "Jest serializer for merge-styles.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "sideEffects": ["lib/version.js"],
+  "sideEffects": [
+    "lib/version.js"
+  ],
   "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",
@@ -28,7 +30,7 @@
     "office-ui-fabric-react-tslint": ">=6.0.0 <7.0.0"
   },
   "dependencies": {
-    "@uifabric/set-version": ">=1.0.0 <2.0.0",
-    "@uifabric/merge-styles": ">=6.9.0 <7.0.0"
+    "@uifabric/set-version": ">=1.1.0 <2.0.0",
+    "@uifabric/merge-styles": ">=6.9.1 <7.0.0"
   }
 }

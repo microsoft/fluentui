@@ -2,6 +2,38 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "6.27.0",
+      "tag": "@uifabric/styling_v6.27.0",
+      "date": "Fri, 21 Sep 2018 14:25:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding a version stamp file",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "11c18bce52dba131548610c5eea0c1ab7fa4d1ca"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add schemes to ITheme with helper utility.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "7c45ef96439a8794586a6b338c2b2ee1e7080318"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.0.0 <2.0.0` to `>=1.1.0 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.20.0 <7.0.0` to `>=6.21.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.9.0 <7.0.0` to `>=6.9.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.26.0",
       "tag": "@uifabric/styling_v6.26.0",
       "date": "Wed, 19 Sep 2018 12:27:48 GMT",

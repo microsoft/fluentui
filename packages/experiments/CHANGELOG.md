@@ -1,6 +1,14 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 19 Sep 2018 12:27:48 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Sep 2018 14:25:46 GMT and should not be manually modified.
+
+## 6.32.1
+Fri, 21 Sep 2018 14:25:46 GMT
+
+### Patches
+
+- Adding a version stamp file
+- Example modification to highlight scheming capability.
 
 ## 6.32.0
 Wed, 19 Sep 2018 12:27:48 GMT
