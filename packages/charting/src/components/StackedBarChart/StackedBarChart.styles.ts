@@ -45,6 +45,16 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
     },
     opacityChangeOnHover: {
       opacity: shouldHighlight ? '' : '0.1'
+    },
+    ratioNumerator: {
+      fontSize: '12px',
+      fontWeight: '600',
+      color: theme.palette.black
+    },
+    ratioDenominator: {
+      fontSize: '12px',
+      color: theme.palette.black,
+      opacity: '0.6'
     }
   };
 };
