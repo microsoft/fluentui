@@ -1,11 +1,11 @@
 {
   "changes": [
     {
+      "comment": "",
       "packageName": "office-ui-fabric-react",
-      "comment": "fixed Korean characters typing issue in IE11.",
-      "type": "patch"
+      "type": "none"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "huaxi@microsoft.com"
+  "email": "kchau@microsoft.com"
 }

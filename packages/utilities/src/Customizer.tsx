@@ -85,7 +85,7 @@ export class Customizer extends BaseComponent<ICustomizerProps> {
     return (
       <CustomizerContext.Consumer>
         {(parentContext: ICustomizerContext) => {
-          const newContext = this._getCustomizations(this.props, parentContext);
+          const newContext = mergeCustomizations(this.props, parentContext);
 
           return <CustomizerContext.Provider value={newContext}>{this.props.children}</CustomizerContext.Provider>;
         }}
@@ -94,17 +94,17 @@ export class Customizer extends BaseComponent<ICustomizerProps> {
   }
 
   private _onCustomizationChange = () => this.forceUpdate();
+}
 
-  private _getCustomizations(props: ICustomizerProps, parentContext: ICustomizerContext): ICustomizerContext {
-    const { customizations = { settings: {}, scopedSettings: {} } } = parentContext || {};
+export function mergeCustomizations(props: ICustomizerProps, parentContext: ICustomizerContext): ICustomizerContext {
+  const { customizations = { settings: {}, scopedSettings: {} } } = parentContext || {};
 
-    return {
-      customizations: {
-        settings: mergeSettings(customizations.settings, props.settings),
-        scopedSettings: mergeScopedSettings(customizations.scopedSettings, props.scopedSettings)
-      }
-    };
-  }
+  return {
+    customizations: {
+      settings: mergeSettings(customizations.settings, props.settings),
+      scopedSettings: mergeScopedSettings(customizations.scopedSettings, props.scopedSettings)
+    }
+  };
 }
 
 function mergeSettings(oldSettings: Settings = {}, newSettings?: Settings | SettingsFunction): Settings {

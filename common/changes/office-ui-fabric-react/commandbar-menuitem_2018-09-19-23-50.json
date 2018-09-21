@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Adding a version stamp file",
+      "comment": "CommandBar: Surface buttons now have role of menuitem",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "kchau@microsoft.com"
+  "email": "mgodbolt@microsoft.com"
 }

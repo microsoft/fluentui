@@ -2,6 +2,25 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.9.1",
+      "tag": "@uifabric/merge-styles_v6.9.1",
+      "date": "Fri, 21 Sep 2018 14:25:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding a version stamp file",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "11c18bce52dba131548610c5eea0c1ab7fa4d1ca"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.0.0 <2.0.0` to `>=1.1.0 <2.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.9.0",
       "tag": "@uifabric/merge-styles_v6.9.0",
       "date": "Thu, 20 Sep 2018 12:25:33 GMT",
