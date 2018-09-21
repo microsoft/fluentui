@@ -4,6 +4,7 @@ import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from 'office-u
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { FontSizes } from './FluentType';
 import { Depths } from './FluentDepths';
+import { IDropdownProps } from 'office-ui-fabric-react/lib/Dropdown';
 
 const fluentBorderRadius = '2px';
 
@@ -18,36 +19,6 @@ const BreadcrumbStyles = {
       }
     }
   }
-};
-
-const PrimaryButtonStyles = {
-  root: {
-    borderRadius: fluentBorderRadius
-  }
-};
-
-const CompoundButtonStyles = {
-  root: {
-    borderRadius: fluentBorderRadius
-  }
-};
-
-const DefaultButtonStyles = (props: IButtonProps) => {
-  const { primary, theme } = props;
-  const { palette, semanticColors } = theme!;
-
-  return {
-    root: {
-      borderRadius: fluentBorderRadius,
-      backgroundColor: primary ? semanticColors.primaryButtonBackground : palette.white,
-      border: primary ? '' : `1px solid ${NeutralColors.gray110}`,
-      color: primary ? semanticColors.buttonText : palette.white
-    },
-    rootHovered: {
-      backgroundColor: primary ? palette.themeDarkAlt : NeutralColors.gray20,
-      border: primary ? '' : `1px solid ${NeutralColors.gray110}`
-    }
-  };
 };
 
 const CheckboxStyles = {
@@ -97,6 +68,30 @@ const ComboBoxStyles = {
   }
 };
 
+const CompoundButtonStyles = {
+  root: {
+    borderRadius: fluentBorderRadius
+  }
+};
+
+const DefaultButtonStyles = (props: IButtonProps) => {
+  const { primary, theme } = props;
+  const { palette, semanticColors } = theme!;
+
+  return {
+    root: {
+      borderRadius: fluentBorderRadius,
+      backgroundColor: primary ? semanticColors.primaryButtonBackground : palette.white,
+      border: primary ? '' : `1px solid ${NeutralColors.gray110}`,
+      color: primary ? semanticColors.buttonText : palette.white
+    },
+    rootHovered: {
+      backgroundColor: primary ? palette.themeDarkAlt : NeutralColors.gray20,
+      border: primary ? '' : `1px solid ${NeutralColors.gray110}`
+    }
+  };
+};
+
 const DialogStyles = {
   main: {
     selectors: {
@@ -132,9 +127,35 @@ const DialogFooterStyles = {
   }
 };
 
+const DropdownStyles = (props: IDropdownProps) => {
+  const { disabled } = props;
+
+  return {
+    // dropdown: {
+    //   selectors: {
+    //   }
+    // }
+    title: {
+      borderColor: NeutralColors.gray80,
+      borderRadius: fluentBorderRadius
+    },
+    caretDown: [
+      disabled && {
+        color: NeutralColors.gray70
+      }
+    ]
+  };
+};
+
 const LabelStyles = {
   root: {
     fontWeight: FontWeights.semibold
+  }
+};
+
+const PrimaryButtonStyles = {
+  root: {
+    borderRadius: fluentBorderRadius
   }
 };
 
@@ -164,12 +185,6 @@ export const FluentStyles = {
   Breadcrumb: {
     styles: BreadcrumbStyles
   },
-  PrimaryButton: {
-    styles: PrimaryButtonStyles
-  },
-  DefaultButton: {
-    styles: DefaultButtonStyles
-  },
   CompoundButton: {
     styles: CompoundButtonStyles
   },
@@ -182,6 +197,9 @@ export const FluentStyles = {
   ComboBox: {
     styles: ComboBoxStyles
   },
+  DefaultButton: {
+    styles: DefaultButtonStyles
+  },
   Dialog: {
     styles: DialogStyles
   },
@@ -191,8 +209,14 @@ export const FluentStyles = {
   DialogFooter: {
     styles: DialogFooterStyles
   },
+  Dropdown: {
+    styles: DropdownStyles
+  },
   Label: {
     styles: LabelStyles
+  },
+  PrimaryButton: {
+    styles: PrimaryButtonStyles
   },
   TextField: {
     styles: TextFieldStyles
