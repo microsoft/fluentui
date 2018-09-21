@@ -12,7 +12,7 @@ import { IButtonClassNames } from '../Button/BaseButton.classNames';
 import { getStyles as getActionButtonStyles } from '../Button/ActionButton/ActionButton.styles';
 import { mergeStyleSets, ITheme } from '../../Styling';
 import { classNamesFunction } from '../../Utilities';
-import { COLOR_VALUES } from 'office-ui-fabric-react/lib/utilities/color/colorValues';
+import { COLOR_VALUES } from '../../utilities/color/colorValues';
 
 const getClassNames = classNamesFunction<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>();
 
