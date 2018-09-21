@@ -38,7 +38,7 @@ storiesOf('SwatchColorPicker', module)
     <SwatchColorPicker
       {...props}
     />
-  )).addStory('Square', () => (
+  ), { rtl: true }).addStory('Square', () => (
     <SwatchColorPicker
       {...props}
       cellShape='square'

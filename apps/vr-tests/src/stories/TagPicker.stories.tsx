@@ -76,4 +76,4 @@ storiesOf('TagPicker', module)
       }
       itemLimit={2}
     />
-  ));
+  ), { rtl: true });

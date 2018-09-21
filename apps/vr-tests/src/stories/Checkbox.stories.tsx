@@ -10,11 +10,11 @@ storiesOf('Checkbox', module)
   .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
   ))
-  .addStory('Unchecked', () => <Checkbox label="Unchecked checkbox" />)
+  .addStory('Unchecked', () => <Checkbox label="Unchecked checkbox" />, { rtl: true })
   .addStory('Checked', () => <Checkbox label="Checked checkbox" checked />)
   .addStory('Unchecked disabled', () => <Checkbox label="Unchecked disabled checkbox" disabled />)
   .addStory('Checked disabled', () => <Checkbox label="Checked disabled checkbox" checked disabled />)
-  .addStory('End', () => <Checkbox label="Checkbox end" boxSide="end" />)
+  .addStory('End', () => <Checkbox label="Checkbox end" boxSide="end" />, { rtl: true })
   .addStory('Multi-line Checkbox', () => (
     <Checkbox
       // tslint:disable-next-line:max-line-length

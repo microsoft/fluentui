@@ -30,7 +30,7 @@ storiesOf('DatePicker', module)
     <DatePicker
       value={date}
     />
-  ))
+  ), { rtl: true })
   .addStory('Placeholder', () => (
     <DatePicker
       value={date}

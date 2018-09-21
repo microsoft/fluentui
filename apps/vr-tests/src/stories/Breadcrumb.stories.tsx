@@ -40,4 +40,4 @@ storiesOf('Breadcrumb', module)
       maxDisplayedItems={3}
       ariaLabel={'Website breadcrumb'}
     />
-  ));
+  ), { rtl: true });

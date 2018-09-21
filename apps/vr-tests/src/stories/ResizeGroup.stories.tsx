@@ -72,4 +72,4 @@ storiesOf('ResizeGroup', module)
         );
       }}
     />
-  ));
+  ), { rtl: true });

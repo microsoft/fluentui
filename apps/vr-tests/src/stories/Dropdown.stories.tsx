@@ -36,7 +36,7 @@ storiesOf('Dropdown', module)
         { key: 'G', text: 'Option g' }
       ]}
     />
-  ))
+  ), { rtl: true })
   .addStory('Disabled', () => (
     <Dropdown
       placeHolder="Select an Option"
@@ -85,7 +85,7 @@ storiesOf('Dropdown', module)
         { key: 'Orange', text: 'orange' }
       ]}
     />
-  ))
+  ), { rtl: true })
   .addStory('Custom Dropdown', () => (
     <Dropdown
       placeHolder="Select an Option"
@@ -153,4 +153,4 @@ storiesOf('Dropdown', module)
         { key: 'J', text: 'Option j', data: { icon: 'AddGroup' } }
       ]}
     />
-  ));
+  ), { rtl: true });

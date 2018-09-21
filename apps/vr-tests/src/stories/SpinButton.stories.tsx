@@ -48,9 +48,9 @@ storiesOf('SpinButton', module)
       {...props}
       iconProps={{ iconName: 'IncreaseIndentLegacy', }}
     />
-  )).addStory('Label at end', () => (
+  ), { rtl: true }).addStory('Label at end', () => (
     <SpinButton
       {...props}
       labelPosition={Position.end}
     />
-  ));
+  ), { rtl: true });

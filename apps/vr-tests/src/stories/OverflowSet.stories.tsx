@@ -58,7 +58,7 @@ storiesOf('OverflowSet', module)
       onRenderOverflowButton={onRenderOverflowButton}
       onRenderItem={onRenderItem}
     />
-  ));
+  ), { rtl: true });
 
 storiesOf('OverflowSet variant', module)
   .addDecorator(FabricDecorator)

@@ -19,7 +19,7 @@ storiesOf('Shimmer', module)
     <Shimmer
       shimmerElements={[{ type: ElemType.circle }, { type: ElemType.gap, width: '2%' }, { type: ElemType.line }]}
     />
-  ))
+  ), { rtl: true })
   .addStory('Custom elements', () => (
     <Shimmer
       customElementsGroup={

@@ -19,4 +19,4 @@ storiesOf('Layer', module)
   ))
   .addStory('Root', () => (
     <Layer>Layer content</Layer>
-  ));
+  ), { rtl: true });

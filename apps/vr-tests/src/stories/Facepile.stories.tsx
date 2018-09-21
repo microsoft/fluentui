@@ -60,7 +60,7 @@ storiesOf('Facepile', module)
   ))
   .addStory('Root', () => (
     <Facepile {...facepileProps} />
-  ))
+  ), { rtl: true })
   .addStory('Extra extra small', () => (
     <Facepile {...facepileProps} personaSize={PersonaSize.size24} />
   ))

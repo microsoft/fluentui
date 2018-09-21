@@ -19,7 +19,7 @@ storiesOf('Overlay', module)
   ))
   .addStory('Root', () => (
     <Overlay>Overlay content</Overlay>
-  ))
+  ), { rtl: true })
   .addStory('Dark', () => (
     <Overlay isDarkThemed>Overlay content</Overlay>
   ));

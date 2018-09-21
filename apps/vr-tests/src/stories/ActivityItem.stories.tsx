@@ -24,7 +24,7 @@ storiesOf('ActivityItem', module)
       comments={<span>comment text</span>}
       timeStamp={'timeStamp text'}
     />
-  ))
+  ), { rtl: true })
   .addStory('Personas', () => (
     <ActivityItem
       activityPersonas={[
@@ -37,7 +37,7 @@ storiesOf('ActivityItem', module)
       comments={<span>comment text</span>}
       timeStamp={'timeStamp text'}
     />
-  ))
+  ), { rtl: true })
   .addStory('Compact', () => (
     <ActivityItem
       activityIcon={<Icon iconName={'Message'} />}

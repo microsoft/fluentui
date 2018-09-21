@@ -102,7 +102,7 @@ storiesOf('CommandBar', module)
       {story()}
     </Screener>
   ))
-  .addStory('Root', () => <CommandBar items={items} farItems={farItems} />)
+  .addStory('Root', () => <CommandBar items={items} farItems={farItems} />, { rtl: true })
   .addStory('Text only', () => (
     <CommandBar
       items={items.map(item => ({ ...item, iconProps: undefined }))}

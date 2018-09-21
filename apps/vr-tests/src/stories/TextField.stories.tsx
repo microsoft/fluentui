@@ -30,7 +30,7 @@ storiesOf('TextField', module)
       label='Standard'
       placeholder='Placeholder'
     />
-  )).addStory('Disabled', () => (
+  ), { rtl: true }).addStory('Disabled', () => (
     <TextField
       label='Disabled'
       disabled
@@ -45,13 +45,13 @@ storiesOf('TextField', module)
       label='Error'
       errorMessage='Error message'
     />
-  )).addStory('Multiline', () => (
+  ), { rtl: true }).addStory('Multiline', () => (
     <TextField
       label='Multiline'
       multiline
       rows={4}
     />
-  )).addStory('Multiline nonresizable', () => (
+  ), { rtl: true }).addStory('Multiline nonresizable', () => (
     <TextField
       label='Multiline'
       multiline
@@ -74,14 +74,14 @@ storiesOf('TextField', module)
       label='Icon'
       iconProps={{ iconName: 'Calendar' }}
     />
-  )).addStory('Prefix', () => (
+  ), { rtl: true }).addStory('Prefix', () => (
     <TextField
       label='Prefix'
       prefix='https://'
     />
-  )).addStory('Suffix', () => (
+  ), { rtl: true }).addStory('Suffix', () => (
     <TextField
       label='Suffix'
       suffix='.com'
     />
-  ));
+  ), { rtl: true });

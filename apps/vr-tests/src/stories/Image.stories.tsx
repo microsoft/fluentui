@@ -64,7 +64,7 @@ storiesOf('Image', module)
       <Image src={img350x150} width={600} />
     </div>
   ))
-  .addStory('No fit, only heght', () => (
+  .addStory('No fit, only height', () => (
     <div>
       <Label>If only a height is provided, the frame will be set to that height.
         The image will scale proportionally to fill the available height.</Label>

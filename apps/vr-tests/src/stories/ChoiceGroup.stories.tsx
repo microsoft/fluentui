@@ -76,7 +76,7 @@ storiesOf('ChoiceGroup', module)
         }
       ] }
     />
-  ))
+  ), { rtl: true })
   .addStory('With default size images', () => (
     <ChoiceGroup
       label='Pick one image'

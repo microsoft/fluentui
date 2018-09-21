@@ -28,7 +28,7 @@ storiesOf('ProgressIndicator', module)
       description='Example description'
       percentComplete={0.5}
     />
-  )).addStory('100%', () => (
+  ), { rtl: true }).addStory('100%', () => (
     <ProgressIndicator
       label='Example title'
       description='Example description'

@@ -175,4 +175,4 @@ storiesOf('DetailsList', module)
       checkboxVisibility={CheckboxVisibility.always}
       isHeaderVisible={true}
     />
-  ));
+  ), { rtl: true });

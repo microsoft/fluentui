@@ -19,7 +19,7 @@ storiesOf('ColorPicker', module)
   ))
   .addStory('Root', () => (
     <ColorPicker color='#FFF' />
-  ))
+  ), { rtl: true })
   .addStory('Blue', () => (
     <ColorPicker color='#48B' />
   ));

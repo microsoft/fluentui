@@ -285,12 +285,12 @@ storiesOf('ContextualMenu', module)
     <ContextualMenu
       items={itemsWithSecondaryText}
     />
-  ))
+  ), { rtl: true })
   .addStory('With submenu', () => (
     <ContextualMenu
       items={itemsWithSubmenu}
     />
-  ))
+  ), { rtl: true })
   .addStory('With headers', () => (
     <ContextualMenu
       items={itemsWithHeaders}

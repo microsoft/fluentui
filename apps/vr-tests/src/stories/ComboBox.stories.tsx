@@ -69,7 +69,7 @@ storiesOf('ComboBox', module)
       autoComplete='on'
       options={testOptions}
     />
-  ))
+  ), { rtl: true })
   .addStory('Styled', () => (
     <ComboBox
       defaultSelectedKey='A'

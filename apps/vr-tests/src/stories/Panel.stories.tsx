@@ -15,12 +15,12 @@ storiesOf('Panel', module)
   .addDecorator(story => <Screener steps={new Screener.Steps().snapshot('default').end()}>{story()}</Screener>)
   .addStory('Small left w/ close button', () => (
     <Panel {...defaultProps} hasCloseButton type={PanelType.smallFixedNear} headerText="Small" />
-  ))
+  ), { rtl: true })
   .addStory('Small fixed right w/ close button', () => (
     <Panel {...defaultProps} hasCloseButton type={PanelType.smallFixedFar} headerText="Small fixed" />
-  ))
+  ), { rtl: true })
   .addStory('Small fluid right', () => <Panel {...defaultProps} type={PanelType.smallFluid} headerText="Small fluid" />)
-  .addStory('Medium right', () => <Panel {...defaultProps} type={PanelType.medium} headerText="Medium" />)
+  .addStory('Medium right', () => <Panel {...defaultProps} type={PanelType.medium} headerText="Medium" />, { rtl: true })
   .addStory('Large right', () => <Panel {...defaultProps} type={PanelType.large} headerText="Large" />)
   .addStory('Large fixed right', () => <Panel {...defaultProps} type={PanelType.largeFixed} headerText="Large fixed" />)
   .addStory('Extra large right', () => <Panel {...defaultProps} type={PanelType.extraLarge} headerText="Extra Large" />)
@@ -46,4 +46,4 @@ storiesOf('Panel', module)
         {null}
       </Panel>
     </div>
-  ));
+  ), { rtl: true });

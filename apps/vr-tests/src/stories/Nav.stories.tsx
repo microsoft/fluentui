@@ -68,4 +68,4 @@ storiesOf('Nav', module)
         selectedKey={'key3'}
       />
     </div>
-  ));
+  ), { rtl: true });

@@ -170,9 +170,9 @@ storiesOf('Persona', module)
         presence={PersonaPresence.blocked}
       />
     </div>
-  )).addStory('Initials', () => (
+  ), { rtl: true }).addStory('Initials', () => (
     <Persona
       {...examplePersona}
       imageUrl={undefined}
     />
-  ));
+  ), { rtl: true });

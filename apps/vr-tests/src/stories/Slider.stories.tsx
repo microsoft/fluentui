@@ -30,7 +30,7 @@ storiesOf('Slider', module)
         showValue={true}
       />
     </div>
-  ))
+  ), { rtl: true })
   .addStory('Disabled', () => (
     <div style={{ flexDirection: 'column', width: '300px', display: 'flex' }}>
       <Slider

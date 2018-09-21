@@ -127,4 +127,4 @@ storiesOf('DocumentCard', module)
         views={432}
       />
     </DocumentCard>
-  ));
+  ), { rtl: true });

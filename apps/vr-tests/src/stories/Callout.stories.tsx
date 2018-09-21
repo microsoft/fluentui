@@ -50,11 +50,11 @@ storiesOf('Callout', module)
     <Callout {...defaultProps} directionalHint={DirectionalHint.bottomLeftEdge} >
       {calloutContent}
     </Callout>
-  )).addStory('Bottom right edge', () => (
+  ), { rtl: true }).addStory('Bottom right edge', () => (
     <Callout {...defaultProps} directionalHint={DirectionalHint.bottomRightEdge} >
       {calloutContent}
     </Callout>
-  )).addStory('Left bottom edge', () => (
+  ), { rtl: true }).addStory('Left bottom edge', () => (
     <Callout {...defaultProps} directionalHint={DirectionalHint.leftBottomEdge} >
       {calloutContent}
     </Callout>

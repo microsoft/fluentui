@@ -38,7 +38,7 @@ storiesOf('TeachingBubble', module)
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni harum non?
       Modal content
     </TeachingBubble >
-  })
+  }, { rtl: true })
   .addStory('SmallHeadline', () => {
     let examplePrimaryButton: IButtonProps = {
       children: 'Got it',

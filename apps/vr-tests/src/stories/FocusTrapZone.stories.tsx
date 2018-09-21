@@ -46,7 +46,7 @@ storiesOf('FocusTrapZones', module)
         </Dialog>
       </Panel>
     </div>
-  ))
+  ), { rtl: true })
   .addStory('Panel on its own', () => (
     <div>
       <Panel

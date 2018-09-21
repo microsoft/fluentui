@@ -22,7 +22,7 @@ storiesOf('Link', module)
       {story()}
     </Screener>
   ))
-  .addStory('Root', () => (<Link href='#'>I'm a link</Link>))
+  .addStory('Root', () => (<Link href='#'>I'm a link</Link>), { rtl: true })
   .addStory('Disabled', () => (<Link href='#' disabled>I'm a disabled link</Link>))
   .addStory('No Href', () => (<Link>I'm rendered as a button because I have no href</Link>))
   .addStory('No Href Disabled', () => (<Link disabled>I'm rendered as a button because I have no href and am disabled</Link>));

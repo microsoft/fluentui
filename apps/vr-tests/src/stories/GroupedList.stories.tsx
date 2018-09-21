@@ -41,5 +41,4 @@ storiesOf('GroupedList', module)
       items={items}
       onRenderCell={onRenderCell}
     />
-  ))
-  ;
+  ), { rtl: true });

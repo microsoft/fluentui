@@ -26,4 +26,4 @@ storiesOf('List', module)
   ))
   .addStory('Root', () => (
     <List items={items} onRenderCell={onRenderCell} />
-  ));
+  ), { rtl: true });

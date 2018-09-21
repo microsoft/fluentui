@@ -33,7 +33,7 @@ storiesOf('Pivot', module)
       <PivotItem itemIcon='Globe' />
       <PivotItem linkText='Shared with me' itemIcon='Ringer' itemCount={1} />
     </Pivot>
-  )).addStory('Large', () => (
+  ), { rtl: true }).addStory('Large', () => (
     <Pivot linkSize={PivotLinkSize.large}>
       <PivotItem linkText='My Files'>
         Content
@@ -50,7 +50,7 @@ storiesOf('Pivot', module)
       <PivotItem linkText='Bas' />
       <PivotItem linkText='Biz' />
     </Pivot>
-  )).addStory('Tabs large', () => (
+  ), { rtl: true }).addStory('Tabs large', () => (
     <Pivot linkFormat={PivotLinkFormat.tabs} linkSize={PivotLinkSize.large}>
       <PivotItem linkText='Foo'>
         Content

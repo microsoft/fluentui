@@ -190,7 +190,7 @@ storiesOf('PeoplePicker', module)
       pickerSuggestionsProps={suggestionProps}
       defaultSelectedItems={[people[2]]}
     />
-  )).addStory('List', () => (
+  ), { rtl: true }).addStory('List', () => (
     <ListPeoplePicker
       onResolveSuggestions={getPeople}
       onEmptyInputFocus={getPeople}
@@ -207,7 +207,7 @@ storiesOf('PeoplePicker', module)
       pickerSuggestionsProps={suggestionProps}
       defaultSelectedItems={[people[2]]}
     />
-  )).addStory('Compact', () => (
+  ), { rtl: true }).addStory('Compact', () => (
     <CompactPeoplePicker
       onResolveSuggestions={getPeople}
       onEmptyInputFocus={getPeople}
@@ -224,4 +224,4 @@ storiesOf('PeoplePicker', module)
       pickerSuggestionsProps={suggestionProps}
       defaultSelectedItems={[people[2]]}
     />
-  ));
+  ), { rtl: true });

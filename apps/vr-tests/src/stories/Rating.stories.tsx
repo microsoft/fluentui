@@ -29,7 +29,7 @@ storiesOf('Rating', module)
       max={5}
       rating={2}
     />
-  )).addStory('Allow Zero', () => (
+  ), { rtl: true }).addStory('Allow Zero', () => (
     <Rating
       allowZeroStars={true}
       max={5}

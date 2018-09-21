@@ -29,8 +29,8 @@ storiesOf('SearchBox', module)
         <SearchBox placeholder='Search' />
       </div>
     </Fabric>
-  )).addStory('Full', () => (
+  ), { rtl: true }).addStory('Full', () => (
     <Fabric className='testWrapper'>
       <SearchBox placeholder='Search' />
     </Fabric>
-  ));
+  ), { rtl: true });
