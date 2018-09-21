@@ -10,6 +10,7 @@ function run(cmd) {
 }
 
 let modified = [];
+let untracked = [];
 
 if (!generateOnly) {
   // Check that no uncommitted changes exist
@@ -22,10 +23,17 @@ if (!generateOnly) {
   // Do a dry-run on all packages
   run(`"${process.execPath}" "${path.resolve(__dirname, '../common/scripts/install-run-rush.js')}" publish -a`);
   status = run('git status --porcelain=1');
-  modified = status
-    .split(/\n/g)
-    .map(line => line && '"' + line.trim().split(/\s/)[1] + '"')
-    .filter(item => item);
+  status.split(/\n/g).forEach(line => {
+    if (line) {
+      const parts = line.trim().split(/\s/);
+
+      if (parts[0] === '??') {
+        untracked.push('"' + parts[1] + '"');
+      } else {
+        modified.push('"' + parts[1] + '"');
+      }
+    }
+  });
 }
 
 const packageJsons = glob.sync('+(packages|apps)/*/package.json');
@@ -58,6 +66,9 @@ setVersion('${packageJson.name}', '${packageJson.version}');`
 
 if (!generateOnly) {
   // Undo the dry-run changes, preserve the version file changes
+  console.log(`remove untracked ${untracked.join(' ')}`);
+  untracked.forEach(f => fs.unlinkSync(f));
+
   console.log(`reset ${modified.join(' ')}`);
   run(`git checkout ${modified.join(' ')}`);
 }
