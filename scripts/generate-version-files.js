@@ -20,7 +20,7 @@ if (!generateOnly) {
   }
 
   // Do a dry-run on all packages
-  run('rush publish -a');
+  run(`"${process.execPath}" "${path.resolve(__dirname, '../common/scripts/install-run-rush.js')}" publish -a`);
   status = run('git status --porcelain=1');
   modified = status
     .split(/\n/g)
