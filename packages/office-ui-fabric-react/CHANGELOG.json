@@ -2,6 +2,58 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.72.1",
+      "tag": "office-ui-fabric-react_v6.72.1",
+      "date": "Fri, 21 Sep 2018 14:25:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding a version stamp file",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "11c18bce52dba131548610c5eea0c1ab7fa4d1ca"
+          },
+          {
+            "comment": "fixed Korean characters typing issue in IE11.",
+            "author": "Yumiko Huang <dayumikoda@gmail.com>",
+            "commit": "b5c719900a2a9f37835f16b7483eb6669d5d4453"
+          },
+          {
+            "comment": "Revert max-line-length change in favor of tslint disable next line for ColorSlider background  values to fix Screener regression.",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "8ff082f3b03bb316c3b99f105dec23082685e852"
+          },
+          {
+            "comment": "Add example of using CommandBarButtonAs with coachmarks and add IComponentAsProps",
+            "author": "Nick Durak <nickdurak@gmail.com>",
+            "commit": "c3f996accaad24f93ae959c8437af6f90da738c8"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=6.1.0 <7.0.0` to `>=6.1.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.9.0 <7.0.0` to `>=6.9.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.0.0 <2.0.0` to `>=1.1.0 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.26.0 <7.0.0` to `>=6.27.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.20.0 <7.0.0` to `>=6.21.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=6.0.4 <7.0.0` to `>=6.0.5 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/webpack-utils\" from `>=0.7.2 <1.0.0` to `>=0.7.3 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.72.0",
       "tag": "office-ui-fabric-react_v6.72.0",
       "date": "Thu, 20 Sep 2018 12:25:33 GMT",

@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "fixed Korean characters typing issue in IE11.",
+      "comment": "Fix Panel Custom className not output if PanelType is Custom",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "huaxi@microsoft.com"
+  "email": "keco@microsoft.com"
 }

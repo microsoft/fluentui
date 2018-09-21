@@ -30,15 +30,15 @@ let getList = () => testTags;
 // Pickers that are 'disabled' are added before the Screener decorator because css classes for suggestion items won't exist
 storiesOf('TagPicker', module)
   .addDecorator(FabricDecorator)
-  .add('TagPicker disabled', () => (
+  .addStory('TagPicker disabled', () => (
     <TagPicker
-      onResolveSuggestions={ getList }
+      onResolveSuggestions={getList}
       disabled
     />
   ))
   .addDecorator(story => (
     <Screener
-      steps={ new Screener.Steps()
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .click('.ms-BasePicker-input')
         .hover('.ms-Suggestions-item')
@@ -46,34 +46,34 @@ storiesOf('TagPicker', module)
         .end()
       }
     >
-      { story() }
+      {story()}
     </Screener>
   ))
-  .add('Root', () => (
+  .addStory('Root', () => (
     <TagPicker
-      onResolveSuggestions={ getList }
-      onEmptyInputFocus={ getList }
-      getTextFromItem={ getTextFromItem }
+      onResolveSuggestions={getList}
+      onEmptyInputFocus={getList}
+      getTextFromItem={getTextFromItem}
       pickerSuggestionsProps={
         {
           suggestionsHeaderText: 'Suggested Tags',
           noResultsFoundText: 'No Color Tags Found'
         }
       }
-      itemLimit={ 2 }
+      itemLimit={2}
     />
-  )).add('Selected', () => (
+  )).addStory('Selected', () => (
     <TagPicker
-      defaultSelectedItems={ [testTags[4]] }
-      onResolveSuggestions={ getList }
-      onEmptyInputFocus={ getList }
-      getTextFromItem={ getTextFromItem }
+      defaultSelectedItems={[testTags[4]]}
+      onResolveSuggestions={getList}
+      onEmptyInputFocus={getList}
+      getTextFromItem={getTextFromItem}
       pickerSuggestionsProps={
         {
           suggestionsHeaderText: 'Suggested Tags',
           noResultsFoundText: 'No Color Tags Found'
         }
       }
-      itemLimit={ 2 }
+      itemLimit={2}
     />
-  ));
+  ), { rtl: true });

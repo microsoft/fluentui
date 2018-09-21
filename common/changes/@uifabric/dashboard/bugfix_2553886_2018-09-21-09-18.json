@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/dashboard",
-      "comment": "Remove drag on menu button on card frame and link button ",
+      "comment": "change lineHeight for card headerText",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/dashboard",
-  "email": "saakhta@microsoft.com"
+  "email": "gorigarajesh@gmail.com"
 }

@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Revert max-line-length change in favor of tslint disable next line for ColorSlider background  values to fix Screener regression.",
+      "comment": "Fix off by one error with DetailsHeader DnD when checkbox is hidden.",
       "type": "patch"
     }
   ],

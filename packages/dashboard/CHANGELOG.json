@@ -2,6 +2,45 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.25.4",
+      "tag": "@uifabric/dashboard_v0.25.4",
+      "date": "Fri, 21 Sep 2018 14:25:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding a version stamp file",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "11c18bce52dba131548610c5eea0c1ab7fa4d1ca"
+          },
+          {
+            "comment": "Remove drag on menu button on card frame and link button ",
+            "author": "Samiya <samiyaakhtar7@gmail.com>",
+            "commit": "08d331aa55e157ed468b07e06111884943c50766"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.21.0` to `^0.21.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.7.2 <7.0.0` to `>=6.7.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.32.0 <7.0.0` to `>=6.32.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.0.0 <2.0.0` to `>=1.1.0 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.72.0 <7.0.0` to `>=6.72.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=6.0.4 <7.0.0` to `>=6.0.5 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.25.3",
       "tag": "@uifabric/dashboard_v0.25.3",
       "date": "Thu, 20 Sep 2018 12:25:33 GMT",
