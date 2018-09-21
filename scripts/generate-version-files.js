@@ -29,8 +29,10 @@ if (!generateOnly) {
       const parts = line.trim().split(/\s/);
 
       if (parts[0] === '??') {
+        // untracked files at this point would be things like CHANGELOG files for a brand new project
         untracked.push(parts[1]);
       } else {
+        // modified files include package.json, generated CHANGELOG files from rush publish dry run
         modified.push('"' + parts[1] + '"');
       }
     }
