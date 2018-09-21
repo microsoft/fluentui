@@ -9,24 +9,24 @@ storiesOf('Spinner', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
-      steps={ new Screener.Steps()
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .end()
       }
     >
-      { story() }
+      {story()}
     </Screener>
-  )).add('Extra small', () => (
-    <Spinner size={ SpinnerSize.xSmall } />
-  )).add('Small', () => (
-    <Spinner size={ SpinnerSize.small } />
-  )).add('Medium', () => (
-    <Spinner size={ SpinnerSize.medium } />
-  )).add('Large', () => (
-    <Spinner size={ SpinnerSize.large } />
-  )).add('Label', () => (
+  )).addStory('Extra small', () => (
+    <Spinner size={SpinnerSize.xSmall} />
+  )).addStory('Small', () => (
+    <Spinner size={SpinnerSize.small} />
+  )).addStory('Medium', () => (
+    <Spinner size={SpinnerSize.medium} />
+  )).addStory('Large', () => (
+    <Spinner size={SpinnerSize.large} />
+  )).addStory('Label', () => (
     <Spinner
-      size={ SpinnerSize.medium }
+      size={SpinnerSize.medium}
       label='Spinner label'
     />
   ));

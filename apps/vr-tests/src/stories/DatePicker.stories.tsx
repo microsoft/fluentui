@@ -26,36 +26,36 @@ storiesOf('DatePicker', module)
       {story()}
     </Screener>
   ))
-  .add('Root', () => (
+  .addStory('Root', () => (
     <DatePicker
       value={date}
     />
-  ))
-  .add('Placeholder', () => (
+  ), { rtl: true })
+  .addStory('Placeholder', () => (
     <DatePicker
       value={date}
       placeholder="Enter date"
     />
   ))
-  .add('Allow text input', () => (
+  .addStory('Allow text input', () => (
     <DatePicker
       value={date}
       allowTextInput
     />
   ))
-  .add('Required', () => (
+  .addStory('Required', () => (
     <DatePicker
       value={date}
       isRequired
     />
   ))
-  .add('Underlined', () => (
+  .addStory('Underlined', () => (
     <DatePicker
       value={date}
       underlined
     />
   ))
-  .add('Underlined and Required', () => (
+  .addStory('Underlined and Required', () => (
     <DatePicker
       value={date}
       underlined
@@ -81,6 +81,6 @@ storiesOf('DatePicker - No Month Option', module)
       {story()}
     </Screener>
   ))
-  .add('Show Month as Overlay and no Go To Today', () => (
+  .addStory('Show Month as Overlay and no Go To Today', () => (
     <DatePicker value={date} showGoToToday={false} showMonthPickerAsOverlay={true} />
   ));

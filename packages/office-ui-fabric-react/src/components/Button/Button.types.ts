@@ -328,7 +328,7 @@ export interface IButtonStyles {
   rootHovered?: IStyle;
 
   /**
-   * Style override applied to the root on hover in the default, enabled, non-toggled state.
+   * Style override applied to the root on focus in the default, enabled, non-toggled state.
    */
   rootFocused?: IStyle;
 

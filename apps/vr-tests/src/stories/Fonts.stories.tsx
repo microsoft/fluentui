@@ -6,7 +6,7 @@ import { FabricDecorator } from '../utilities';
 import { createFontStyles } from 'office-ui-fabric-react/lib/Styling';
 
 const RepresentativeText = (props: { style: React.CSSProperties }) => (
-  <div style={ props.style }>
+  <div style={props.style}>
     <p id='ar'>استكشف بعض الميزات الجديدة.</p>
     <p id='bg'>Да разгледаме някои нови функции.</p>
     <p id='cs'>Podívejme se na některé nové funkce.</p>
@@ -27,50 +27,50 @@ storiesOf('Fonts', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
-      steps={ new Screener.Steps()
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .end()
       }
     >
-      { story() }
+      {story()}
     </Screener>
   ))
-  .add('Arabic', () => (
-    <RepresentativeText style={ createFontStyles('ar').medium as React.CSSProperties } />
+  .addStory('Arabic', () => (
+    <RepresentativeText style={createFontStyles('ar').medium as React.CSSProperties} />
   ))
-  .add('Chinese (Simplified)', () => (
-    <RepresentativeText style={ createFontStyles('zh-Hans').medium as React.CSSProperties } />
+  .addStory('Chinese (Simplified)', () => (
+    <RepresentativeText style={createFontStyles('zh-Hans').medium as React.CSSProperties} />
   ))
-  .add('Chinese (Traditional)', () => (
-    <RepresentativeText style={ createFontStyles('zh-Hant').medium as React.CSSProperties } />
+  .addStory('Chinese (Traditional)', () => (
+    <RepresentativeText style={createFontStyles('zh-Hant').medium as React.CSSProperties} />
   ))
-  .add('Cyrillic', () => (
-    <RepresentativeText style={ createFontStyles('bg').medium as React.CSSProperties } />
+  .addStory('Cyrillic', () => (
+    <RepresentativeText style={createFontStyles('bg').medium as React.CSSProperties} />
   ))
-  .add('East European', () => (
-    <RepresentativeText style={ createFontStyles('cs').medium as React.CSSProperties } />
+  .addStory('East European', () => (
+    <RepresentativeText style={createFontStyles('cs').medium as React.CSSProperties} />
   ))
-  .add('Greek', () => (
-    <RepresentativeText style={ createFontStyles('el').medium as React.CSSProperties } />
+  .addStory('Greek', () => (
+    <RepresentativeText style={createFontStyles('el').medium as React.CSSProperties} />
   ))
-  .add('Hebrew', () => (
-    <RepresentativeText style={ createFontStyles('he').medium as React.CSSProperties } />
+  .addStory('Hebrew', () => (
+    <RepresentativeText style={createFontStyles('he').medium as React.CSSProperties} />
   ))
-  .add('Hindi', () => (
-    <RepresentativeText style={ createFontStyles('hi').medium as React.CSSProperties } />
+  .addStory('Hindi', () => (
+    <RepresentativeText style={createFontStyles('hi').medium as React.CSSProperties} />
   ))
-  .add('Japanese', () => (
-    <RepresentativeText style={ createFontStyles('ja').medium as React.CSSProperties } />
+  .addStory('Japanese', () => (
+    <RepresentativeText style={createFontStyles('ja').medium as React.CSSProperties} />
   ))
-  .add('Korean', () => (
-    <RepresentativeText style={ createFontStyles('ko').medium as React.CSSProperties } />
+  .addStory('Korean', () => (
+    <RepresentativeText style={createFontStyles('ko').medium as React.CSSProperties} />
   ))
-  .add('Thai', () => (
-    <RepresentativeText style={ createFontStyles('th').medium as React.CSSProperties } />
+  .addStory('Thai', () => (
+    <RepresentativeText style={createFontStyles('th').medium as React.CSSProperties} />
   ))
-  .add('Vietnamese', () => (
-    <RepresentativeText style={ createFontStyles('vi').medium as React.CSSProperties } />
+  .addStory('Vietnamese', () => (
+    <RepresentativeText style={createFontStyles('vi').medium as React.CSSProperties} />
   ))
-  .add('West European', () => (
-    <RepresentativeText style={ createFontStyles('en').medium as React.CSSProperties } />
+  .addStory('West European', () => (
+    <RepresentativeText style={createFontStyles('en').medium as React.CSSProperties} />
   ));

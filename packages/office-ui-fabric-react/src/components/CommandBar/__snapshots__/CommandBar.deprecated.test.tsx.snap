@@ -140,6 +140,7 @@ exports[`CommandBar renders commands correctly 1`] = `
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseUp={[Function]}
+            role="menuitem"
             type="button"
           >
             <div
@@ -268,6 +269,7 @@ exports[`CommandBar renders commands correctly 1`] = `
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseUp={[Function]}
+            role="menuitem"
             type="button"
           >
             <div

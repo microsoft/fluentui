@@ -9,7 +9,7 @@ storiesOf('Link', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
-      steps={ new Steps()
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Link')
         .snapshot('hover', { cropTo: '.testWrapper' })
@@ -19,10 +19,10 @@ storiesOf('Link', module)
         .end()
       }
     >
-      { story() }
+      {story()}
     </Screener>
   ))
-  .add('Root', () => (<Link href='#'>I'm a link</Link>))
-  .add('Disabled', () => (<Link href='#' disabled>I'm a disabled link</Link>))
-  .add('No Href', () => (<Link>I'm rendered as a button because I have no href</Link>))
-  .add('No Href Disabled', () => (<Link disabled>I'm rendered as a button because I have no href and am disabled</Link>));
+  .addStory('Root', () => (<Link href='#'>I'm a link</Link>), { rtl: true })
+  .addStory('Disabled', () => (<Link href='#' disabled>I'm a disabled link</Link>))
+  .addStory('No Href', () => (<Link>I'm rendered as a button because I have no href</Link>))
+  .addStory('No Href Disabled', () => (<Link disabled>I'm rendered as a button because I have no href and am disabled</Link>));

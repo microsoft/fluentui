@@ -22,18 +22,18 @@ storiesOf('HoverCard', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
-      steps={ new Screener.Steps()
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .end()
       }
     >
-      { story() }
+      {story()}
     </Screener>
-  )).add('Root', () => (
+  )).addStory('Root', () => (
     <HoverCard
-      expandingCardProps={ expandingCardProps }
-      instantOpenOnClick={ true }
+      expandingCardProps={expandingCardProps}
+      instantOpenOnClick={true}
     >
       Hover over me
     </HoverCard>
-  ));
+  ), { rtl: true });

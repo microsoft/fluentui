@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/dashboard",
-      "comment": "Adding a version stamp file",
+      "comment": "change lineHeight for card headerText",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/dashboard",
-  "email": "kchau@microsoft.com"
+  "email": "gorigarajesh@gmail.com"
 }

@@ -4,7 +4,9 @@
   "description": "Testing the button for bundling.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "sideEffects": ["lib/version.js"],
+  "sideEffects": [
+    "lib/version.js"
+  ],
   "typings": "lib/index.d.ts",
   "private": true,
   "repository": {
@@ -25,10 +27,10 @@
     "office-ui-fabric-react-tslint": ">=6.0.0 <7.0.0"
   },
   "dependencies": {
-    "@uifabric/set-version": ">=1.0.0 <2.0.0",
+    "@uifabric/set-version": ">=1.1.0 <2.0.0",
     "react": ">=16.3.2-0 <17.0.0",
     "react-dom": ">=16.3.2-0 <17.0.0",
-    "office-ui-fabric-react": ">=6.72.0 <7.0.0",
+    "office-ui-fabric-react": ">=6.72.1 <7.0.0",
     "tslib": "^1.7.1"
   }
 }

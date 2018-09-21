@@ -1,11 +1,13 @@
 {
   "name": "@uifabric/charting",
-  "version": "0.21.0",
+  "version": "0.21.1",
   "description": "Experimental React components for building experiences for Office 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "sideEffects": ["lib/version.js"],
+  "sideEffects": [
+    "lib/version.js"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/OfficeDev/office-ui-fabric-react"
@@ -31,8 +33,8 @@
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/prop-types": "15.5.3",
     "@types/webpack-env": "1.13.0",
-    "@uifabric/example-app-base": ">=6.7.2 <7.0.0",
-    "@uifabric/jest-serializer-merge-styles": ">=6.0.4 <7.0.0",
+    "@uifabric/example-app-base": ">=6.7.3 <7.0.0",
+    "@uifabric/jest-serializer-merge-styles": ">=6.0.5 <7.0.0",
     "es6-weak-map": "^2.0.2",
     "enzyme": "^3.4.1",
     "enzyme-adapter-react-16": "^1.2.0",
@@ -50,14 +52,14 @@
     "@types/d3-scale": "2.0.0",
     "@types/d3-selection": "1.3.0",
     "@types/d3-shape": "^1.2.3",
-    "@uifabric/icons": ">=6.1.0 <7.0.0",
-    "@uifabric/set-version": ">=1.0.0 <2.0.0",
+    "@uifabric/icons": ">=6.1.1 <7.0.0",
+    "@uifabric/set-version": ">=1.1.0 <2.0.0",
     "d3-array": "1.2.1",
     "d3-axis": "1.0.8",
     "d3-scale": "2.0.0",
     "d3-selection": "1.3.0",
     "d3-shape": "^1.2.0",
-    "office-ui-fabric-react": ">=6.72.0 <7.0.0",
+    "office-ui-fabric-react": ">=6.72.1 <7.0.0",
     "prop-types": "^15.5.10",
     "tslib": "^1.7.1"
   },
