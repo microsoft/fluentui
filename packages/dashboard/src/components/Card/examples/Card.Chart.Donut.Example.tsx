@@ -3,6 +3,8 @@ import { IChartProps as IChartingProps } from '@uifabric/charting';
 import { Card, CardContentType, CardSize, ChartType, ICardProps, ICardContentDetails, IChartProps, Priority } from '@uifabric/dashboard';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
+import { BarGraph } from '../animations/BarGraph';
+
 export class DonutChartExample extends React.Component<{}, { animationStart: boolean }> {
   constructor(props: ICardProps) {
     super(props);
@@ -93,20 +95,6 @@ export class DonutChartExample extends React.Component<{}, { animationStart: boo
   }
 
   private _getAnimation(): JSX.Element | undefined {
-    return (
-      <svg xmlns="http://www.w3.org/2000/svg">
-        <rect x="10" y="10" height="110" width="110" fill="#0000ff">
-          <animateTransform
-            attributeName="transform"
-            begin="0s"
-            dur="20s"
-            type="rotate"
-            from="0 60 60"
-            to="360 60 60"
-            repeatCount="indefinite"
-          />
-        </rect>
-      </svg>
-    );
+    return <BarGraph />;
   }
 }
