@@ -4,6 +4,7 @@ const fs = require('fs');
 const glob = require('glob');
 
 const generateOnly = process.argv.indexOf('-g') > -1;
+const rushCmd = `"${process.execPath}" "${path.resolve(__dirname, '../common/scripts/install-run-rush.js')}"`;
 
 function run(cmd) {
   return execSync(cmd, { cwd: path.resolve(__dirname, '..') }).toString();
@@ -21,7 +22,7 @@ if (!generateOnly) {
   }
 
   // Do a dry-run on all packages
-  run(`"${process.execPath}" "${path.resolve(__dirname, '../common/scripts/install-run-rush.js')}" publish -a`);
+  run(`${rushCmd} publish -a`);
   status = run('git status --porcelain=1');
   status.split(/\n/g).forEach(line => {
     if (line) {
