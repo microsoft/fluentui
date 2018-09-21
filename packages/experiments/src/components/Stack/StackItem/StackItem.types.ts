@@ -37,6 +37,16 @@ export interface IStackItemProps extends IStyleableComponentProps<IStackItemProp
    * How to align the StackItem along the x-axis (for vertical Stacks) or the y-axis (for horizontal Stacks).
    */
   align?: 'auto' | 'stretch' | 'baseline' | 'start' | 'center' | 'end';
+
+  /**
+   * Whether the StackItem should take up 100% of the width of its parent.
+   */
+  fillHorizontal?: boolean;
+
+  /**
+   * Whether the StackItem should take up 100% of the height of its parent.
+   */
+  fillVertical?: boolean;
 }
 
 export interface IStackItemStyles {

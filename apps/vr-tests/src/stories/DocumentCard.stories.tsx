@@ -19,7 +19,9 @@ let previewProps = {
   previewImages: [
     {
       name: 'Revenue stream proposal fiscal year 2016 version02.pptx',
-      url: 'http://bing.com',
+      linkProps: {
+        href: 'http://bing.com'
+      },
       previewImageSrc: TestImages.documentPreview,
       iconSrc: TestImages.iconPpt,
       imageFit: ImageFit.cover,
@@ -34,28 +36,36 @@ let previewPropsCompact = {
   previewImages: [
     {
       name: 'Revenue stream proposal fiscal year 2016 version02.pptx',
-      url: 'http://bing.com',
+      linkProps: {
+        href: 'http://bing.com'
+      },
       previewImageSrc: TestImages.documentPreview,
       iconSrc: TestImages.iconPpt,
       width: 144
     },
     {
       name: 'New Contoso Collaboration for Conference Presentation Draft',
-      url: 'http://bing.com',
+      linkProps: {
+        href: 'http://bing.com'
+      },
       previewImageSrc: TestImages.documentPreviewTwo,
       iconSrc: TestImages.iconPpt,
       width: 144
     },
     {
       name: 'Spec Sheet for design',
-      url: 'http://bing.com',
+      linkProps: {
+        href: 'http://bing.com'
+      },
       previewImageSrc: TestImages.documentPreviewThree,
       iconSrc: TestImages.iconPpt,
       width: 144
     },
     {
       name: 'Contoso Marketing Presentation',
-      url: 'http://bing.com',
+      linkProps: {
+        href: 'http://bing.com'
+      },
       previewImageSrc: TestImages.documentPreview,
       iconSrc: TestImages.iconPpt,
       width: 144

@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/webpack-utils",
+      "comment": "Adding a version stamp file",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/webpack-utils",
+  "email": "kchau@microsoft.com"
+}

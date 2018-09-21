@@ -4,4 +4,4 @@
  * @public
  */
 // export type IComponentAs<P> = string | ((props?: P) => JSX.Element);
-export type IComponentAs<T> = React.StatelessComponent<T> | React.ComponentClass<T>;
+export type IComponentAs<T> = React.ComponentType<T & { defaultRender?: React.ComponentType<T> }>;

@@ -46,7 +46,7 @@ export class HorizontalStackSpacingExample extends React.Component<{}, {}> {
           </VerticalStack>
           <VerticalStack>
             <Text>Custom spacing</Text>
-            <HorizontalStack className={styles.root} gap="2vw" padding="s1 2vw">
+            <HorizontalStack className={styles.root} gap="10%" padding="s1 15%">
               <Text>1</Text>
               <Text>2</Text>
               <Text>3</Text>

@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/file-type-icons",
+      "comment": "Adding a version stamp file",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/file-type-icons",
+  "email": "kchau@microsoft.com"
+}

@@ -29,3 +29,5 @@ export function initializeIcons(baseUrl: string = DEFAULT_BASE_URL, options?: II
 }
 
 export { IconNames } from './IconNames';
+
+import './version';

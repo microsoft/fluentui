@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Panel: pass click events to onDismiss handler",
+      "comment": "fixed Korean characters typing issue in IE11.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "deanverleger@gmail.com"
+  "email": "huaxi@microsoft.com"
 }

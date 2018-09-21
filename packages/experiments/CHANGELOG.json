@@ -2,6 +2,30 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.32.0",
+      "tag": "@uifabric/experiments_v6.32.0",
+      "date": "Wed, 19 Sep 2018 12:27:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Stack: add wrapping for HorizontalStack, support themed gap and padding, support native HTML properties, refactor StackItem so that its child does not require a class",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "813d94f140fdb8054136f3632d88f529e302ca09"
+          },
+          {
+            "comment": "StackItem: add fillHorizontal and fillVertical props",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "813d94f140fdb8054136f3632d88f529e302ca09"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.71.0 <7.0.0` to `>=6.71.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.31.0",
       "tag": "@uifabric/experiments_v6.31.0",
       "date": "Tue, 18 Sep 2018 12:26:03 GMT",
