@@ -1,10 +1,10 @@
 import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
-import { NeutralColors } from './FluentColors';
+import { NeutralColors, CommunicationColors } from './FluentColors';
 import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { FontSizes } from './FluentType';
 import { Depths } from './FluentDepths';
-import { IDropdownProps } from 'office-ui-fabric-react/lib/Dropdown';
+import { IDropdownStyleProps } from 'office-ui-fabric-react/lib/Dropdown';
 
 const fluentBorderRadius = '2px';
 
@@ -127,18 +127,51 @@ const DialogFooterStyles = {
   }
 };
 
-const DropdownStyles = (props: IDropdownProps) => {
-  const { disabled } = props;
+const DropdownStyles = (props: IDropdownStyleProps) => {
+  const { disabled, hasError, theme } = props;
+  const { semanticColors } = theme!;
 
   return {
-    // dropdown: {
-    //   selectors: {
-    //   }
-    // }
-    title: {
-      borderColor: NeutralColors.gray80,
-      borderRadius: fluentBorderRadius
-    },
+    dropdown: [
+      disabled && {
+        selectors: {
+          // Title placeholder states when disabled.
+          ['&:hover .ms-Dropdown-titleIsPlaceHolder']: { color: NeutralColors.gray70 },
+          ['&:focus .ms-Dropdown-titleIsPlaceHolder']: { color: NeutralColors.gray70 },
+          ['&:active .ms-Dropdown-titleIsPlaceHolder']: { color: NeutralColors.gray70 }
+        }
+      },
+      !disabled && {
+        selectors: {
+          // Title and border states. For :hover and :focus even if the styles are the same we need to keep them separate for specificity
+          // reasons in order :active borderColor to work.
+          ['&:hover .ms-Dropdown-title']: { color: NeutralColors.gray190, borderColor: NeutralColors.gray160 },
+          ['&:focus .ms-Dropdown-title']: { color: NeutralColors.gray190, borderColor: NeutralColors.gray160 },
+          ['&:active .ms-Dropdown-title']: {
+            color: NeutralColors.gray190,
+            fontWeight: FontWeights.semibold,
+            borderColor: CommunicationColors.primary
+          },
+
+          // CaretDown states are the same for focus, hover, active.
+          ['&:hover .ms-Dropdown-caretDown, &:focus .ms-Dropdown-caretDown, &:active .ms-Dropdown-caretDown']: {
+            color: NeutralColors.gray160
+          },
+
+          // Title placeholder states when not disabled.
+          ['&:hover .ms-Dropdown-titleIsPlaceHolder, &:focus .ms-Dropdown-titleIsPlaceHolder, &:active .ms-Dropdown-titleIsPlaceHolder']: {
+            color: NeutralColors.gray190
+          }
+        }
+      }
+    ],
+    title: [
+      {
+        borderColor: !hasError ? NeutralColors.gray80 : semanticColors.errorText,
+        borderRadius: fluentBorderRadius
+      },
+      disabled && { color: NeutralColors.gray70 }
+    ],
     caretDown: [
       disabled && {
         color: NeutralColors.gray70

@@ -30,7 +30,7 @@ export class FluentStylesDropdownExample extends React.Component<{}, {}> {
         />
         <Dropdown
           label="Disabled"
-          defaultSelectedKey="D"
+          placeHolder="Select an Option"
           disabled={true}
           options={[
             { key: 'A', text: 'Option a' },
