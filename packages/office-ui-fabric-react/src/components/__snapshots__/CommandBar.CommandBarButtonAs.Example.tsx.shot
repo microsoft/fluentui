@@ -143,6 +143,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseUp={[Function]}
+            role="menuitem"
             type="button"
           >
             <div
@@ -331,6 +332,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseUp={[Function]}
+            role="menuitem"
           >
             <div
               className=
@@ -488,6 +490,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               onKeyUp={[Function]}
               onMouseDown={[Function]}
               onMouseUp={[Function]}
+              role="menuitem"
               type="button"
             >
               <div
@@ -646,6 +649,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseUp={[Function]}
+            role="menuitem"
             type="button"
           >
             <div
@@ -951,6 +955,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseUp={[Function]}
+            role="menuitem"
             type="button"
           >
             <div
@@ -1115,6 +1120,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               onKeyUp={[Function]}
               onMouseDown={[Function]}
               onMouseUp={[Function]}
+              role="menuitem"
               type="button"
             >
               <div
@@ -1256,6 +1262,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               onKeyUp={[Function]}
               onMouseDown={[Function]}
               onMouseUp={[Function]}
+              role="menuitem"
               type="button"
             >
               <div
@@ -1451,6 +1458,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseUp={[Function]}
+            role="menuitem"
             type="button"
           >
             <div
@@ -1639,6 +1647,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseUp={[Function]}
+            role="menuitem"
           >
             <div
               className=
@@ -1796,6 +1805,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               onKeyUp={[Function]}
               onMouseDown={[Function]}
               onMouseUp={[Function]}
+              role="menuitem"
               type="button"
             >
               <div
@@ -2411,6 +2421,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseUp={[Function]}
+            role="menuitem"
             type="button"
           >
             <div
@@ -2716,6 +2727,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseUp={[Function]}
+            role="menuitem"
             type="button"
           >
             <div
@@ -2880,6 +2892,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               onKeyUp={[Function]}
               onMouseDown={[Function]}
               onMouseUp={[Function]}
+              role="menuitem"
               type="button"
             >
               <div
@@ -3021,6 +3034,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               onKeyUp={[Function]}
               onMouseDown={[Function]}
               onMouseUp={[Function]}
+              role="menuitem"
               type="button"
             >
               <div
