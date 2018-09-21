@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import {
   IContextualMenuProps,
   IContextualMenuItem,
@@ -22,6 +23,7 @@ import {
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { createListItems, isGroupable } from '@uifabric/example-app-base';
 import './DetailsList.Advanced.Example.scss';
+import { IDetailsColumnProps } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn';
 
 const DEFAULT_ITEM_LIMIT = 5;
 const PAGING_SIZE = 10;
@@ -45,6 +47,7 @@ export interface IDetailsListAdvancedExampleState {
   layoutMode?: LayoutMode;
   selectionMode?: SelectionMode;
   sortedColumnKey?: string;
+  showRenderDividerView: boolean;
 }
 
 export class DetailsListAdvancedExample extends React.Component<{}, IDetailsListAdvancedExampleState> {
@@ -73,6 +76,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
       columns: this._buildColumns(_items, true, this._onColumnClick, '', undefined, undefined, this._onColumnContextMenu),
       contextualMenuProps: undefined,
       sortedColumnKey: 'name',
+      showRenderDividerView: false,
       isSortedDescending: false,
       isLazyLoaded: false,
       isHeaderVisible: true
@@ -109,6 +113,12 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
 
     return (
       <div className='ms-DetailsListAdvancedExample'>
+        <Checkbox
+          label='Show custom color column-divider on hover'
+          checked={ this.state.showRenderDividerView }
+          onChange={ this._onRenderDividerCheckboxChange }
+        />
+        <br />
         <CommandBar items={ this._getCommandItems() } />
 
         {
@@ -141,6 +151,39 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
           <ContextualMenu { ...contextualMenuProps } />
         ) }
       </div>
+    );
+  }
+
+  private _onRenderDividerCheckboxChange = (event: React.FormEvent<HTMLInputElement>, showRenderDividerView: boolean): void => {
+    const { columns = [] } = this.state;
+    for (let i = 0; i < columns.length; i++) {
+      // based on the state of checkbox, either adding the onRenderDivider callback or removing it
+      if (showRenderDividerView) {
+        columns[i] = {
+          ...columns[i],
+          onRenderDivider: this._onRenderDivider
+        };
+      } else {
+        const { onRenderDivider, ..._column } = columns[i];
+        columns[i] = _column;
+      }
+    }
+    this.setState({
+      showRenderDividerView,
+      columns
+    });
+  }
+
+  private _onRenderDivider = (
+    iDetailsColumnProps: IDetailsColumnProps,
+    defaultRenderer: (props: IDetailsColumnProps) => JSX.Element | null
+  ): JSX.Element => {
+    const { columnIndex } = iDetailsColumnProps;
+    return (
+      <React.Fragment key={ `divider-wrapper-${columnIndex}` }>
+        <span className='ms-DetailsHeader-divider'>{ defaultRenderer(iDetailsColumnProps) }</span>
+        <span className='ms-DetailsHeader-divider-bar' />
+      </React.Fragment>
     );
   }
 
