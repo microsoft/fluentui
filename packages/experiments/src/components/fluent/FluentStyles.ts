@@ -128,7 +128,7 @@ const DialogFooterStyles = {
 };
 
 const DropdownStyles = (props: IDropdownStyleProps) => {
-  const { disabled, hasError, theme } = props;
+  const { disabled, hasError, theme, isOpen } = props;
   const { semanticColors } = theme!;
 
   return {
@@ -168,15 +168,27 @@ const DropdownStyles = (props: IDropdownStyleProps) => {
     title: [
       {
         borderColor: !hasError ? NeutralColors.gray80 : semanticColors.errorText,
-        borderRadius: fluentBorderRadius
+        borderRadius: isOpen ? `${fluentBorderRadius} ${fluentBorderRadius} 0 0` : fluentBorderRadius,
+        padding: `0 28px 0 8px`
       },
       disabled && { color: NeutralColors.gray70 }
     ],
+    caretDownWrapper: {
+      right: 8
+    },
     caretDown: [
       disabled && {
         color: NeutralColors.gray70
       }
-    ]
+    ],
+    callout: {
+      border: 'none',
+      borderRadius: `0 0 ${fluentBorderRadius} ${fluentBorderRadius}`,
+      boxShadow: Depths.depth8,
+      selectors: {
+        ['.ms-Callout-main']: { borderRadius: `0 0 ${fluentBorderRadius} ${fluentBorderRadius}` }
+      }
+    }
   };
 };
 
