@@ -8,7 +8,7 @@ import { isItemDisabled, hasSubmenu } from '../../../utilities/contextualMenu/in
 import { VerticalDivider } from '../../../Divider';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 
-export interface IContextualMenuSplitButtonState { }
+export interface IContextualMenuSplitButtonState {}
 
 const TouchIdleDelay = 500; /* ms */
 

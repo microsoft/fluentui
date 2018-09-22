@@ -52,7 +52,7 @@ describe('Pickers', () => {
     const BasePickerWithType = BasePicker as new (props: IBasePickerProps<ISimple>) => BasePicker<
       ISimple,
       IBasePickerProps<ISimple>
-      >;
+    >;
     const onRenderItem = (props: IPickerItemProps<{ key: string; name: string }>): JSX.Element => (
       <div key={props.item.name}>{basicRenderer(props)}</div>
     );

@@ -15,7 +15,12 @@ import {
 import { ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { IBasePickerProps, BasePickerListBelow, IPickerItemProps, ISuggestionItemProps } from 'office-ui-fabric-react/lib/Pickers';
+import {
+  IBasePickerProps,
+  BasePickerListBelow,
+  IPickerItemProps,
+  ISuggestionItemProps
+} from 'office-ui-fabric-react/lib/Pickers';
 
 import { TestImages } from '../../../common/TestImages';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
@@ -262,7 +267,9 @@ const data: IFullDocumentCardProps[] = [
   }
 ];
 
-export const SuggestedDocumentItem: (documentProps: IFullDocumentCardProps) => JSX.Element = (documentProps: IFullDocumentCardProps) => {
+export const SuggestedDocumentItem: (documentProps: IFullDocumentCardProps) => JSX.Element = (
+  documentProps: IFullDocumentCardProps
+) => {
   return <div> {documentProps.documentTitleProps && documentProps.documentTitleProps.title} </div>;
 };
 
@@ -302,7 +309,11 @@ export const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumen
   return (
     <DocumentCard onClick={log('You clicked the card.')}>
       <DocumentCardPreview {...documentPreviewProps as IDocumentCardPreviewProps} />
-      <DocumentCardLocation location="Marketing Documents" locationHref="http://microsoft.com" ariaLabel="Location, Marketing Documents" />
+      <DocumentCardLocation
+        location="Marketing Documents"
+        locationHref="http://microsoft.com"
+        ariaLabel="Location, Marketing Documents"
+      />
       <DocumentCardTitle {...documentTitleProps as IDocumentCardTitleProps} />
       <DocumentCardActivity {...documentActivityProps as IDocumentCardActivityProps} />
       <DocumentCardActions actions={actions} />

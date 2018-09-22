@@ -15,7 +15,7 @@ export interface IFocusTrapZoneDialogInPanelExampleState {
 export default class FocusTrapDialogInPanelExample extends React.Component<
   {},
   IFocusTrapZoneDialogInPanelExampleState
-  > {
+> {
   constructor(props: {}) {
     super(props);
 

@@ -18,7 +18,7 @@ export class FabricBase extends BaseComponent<
   {
     isFocusVisible: boolean;
   }
-  > {
+> {
   private _rootElement = createRef<HTMLDivElement>();
 
   constructor(props: IFabricProps) {

@@ -749,10 +749,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     const fixedColumns = newColumns.slice(0, resizingColumnIndex);
     fixedColumns.forEach((column: IColumn) => (column.calculatedWidth = this._getColumnOverride(column.key).currentWidth));
 
-    const fixedWidth = fixedColumns.reduce(
-      (total: number, column: IColumn, i: number) => total + getPaddedWidth(column, i === 0, props),
-      0
-    );
+    const fixedWidth = fixedColumns.reduce((total: number, column: IColumn, i: number) =>
+      total + getPaddedWidth(column, i === 0, props), 0);
 
     const remainingColumns = newColumns.slice(resizingColumnIndex);
     const remainingWidth = viewportWidth - fixedWidth;

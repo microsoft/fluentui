@@ -133,11 +133,11 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
     this.focusedVars[key]
       ? this.focusedVars[key]
       : (this.focusedVars[key] = (ev: React.FocusEvent<HTMLElement>, option: IChoiceGroupOption) => {
-        this.setState({
-          keyFocused: key,
-          keyChecked: this.state.keyChecked
+          this.setState({
+            keyFocused: key,
+            keyChecked: this.state.keyChecked
+          });
         });
-      });
 
   private _onBlur = (ev: React.FocusEvent<HTMLElement>, option: IChoiceGroupOption) => {
     this.setState({
@@ -150,24 +150,21 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
     this.changedVars[key]
       ? this.changedVars[key]
       : (this.changedVars[key] = (evt: React.FormEvent<HTMLInputElement>, option: IChoiceGroupOption) => {
-        const { onChanged, onChange, selectedKey, options = [] } = this.props;
-
-        // Only manage state in uncontrolled scenarios.
-        if (selectedKey === undefined) {
-          this.setState({
-            keyChecked: key
-          });
-        }
-
-        const originalOption = find(options, (value: IChoiceGroupOption) => value.key === key);
-
-        // TODO: onChanged deprecated, remove else if after 07/17/2017 when onChanged has been removed.
-        if (onChange) {
-          onChange(evt, originalOption);
-        } else if (onChanged) {
-          onChanged(originalOption!);
-        }
-      });
+          const { onChanged, onChange, selectedKey, options = [] } = this.props;
+          // Only manage state in uncontrolled scenarios.
+          if (selectedKey === undefined) {
+            this.setState({
+              keyChecked: key
+            });
+          }
+          const originalOption = find(options, (value: IChoiceGroupOption) => value.key === key);
+          // TODO: onChanged deprecated, remove else if after 07/17/2017 when onChanged has been removed.
+          if (onChange) {
+            onChange(evt, originalOption);
+          } else if (onChanged) {
+            onChanged(originalOption!);
+          }
+        });
 
   private _getKeyChecked(props: IChoiceGroupProps): string | number | undefined {
     if (props.selectedKey !== undefined) {

@@ -8,7 +8,7 @@ export class DialogBasicExample extends React.Component<
   {
     hideDialog: boolean;
   }
-  > {
+> {
   constructor(props: {}) {
     super(props);
 

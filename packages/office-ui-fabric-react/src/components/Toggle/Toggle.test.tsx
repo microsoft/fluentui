@@ -4,7 +4,7 @@ import * as renderer from 'react-test-renderer';
 import * as sinon from 'sinon';
 
 import { Toggle } from './Toggle';
-import { IToggle } from 'office-ui-fabric-react/lib/components/Toggle/Toggle.types';
+import { IToggle } from './Toggle.types';
 
 describe('Toggle', () => {
   it('renders a label', () => {

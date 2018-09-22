@@ -41,7 +41,7 @@ export class DetailsListBasicExample extends React.Component<
     selectionDetails: {};
     showItemIndexInView: boolean;
   }
-  > {
+> {
   private _selection: Selection;
   private _detailsList = createRef<IDetailsList>();
 

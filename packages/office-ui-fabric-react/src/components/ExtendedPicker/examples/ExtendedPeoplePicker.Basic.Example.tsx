@@ -69,12 +69,18 @@ export class ExtendedPeoplePickerTypesExample extends React.Component<{}, IPeopl
             return (
               <div className={styles.headerItem}>
                 Use this address:{' '}
-                {this._picker && this._picker.inputElement && this._picker.inputElement ? this._picker.inputElement.value : ''}
+                {this._picker && this._picker.inputElement && this._picker.inputElement
+                  ? this._picker.inputElement.value
+                  : ''}
               </div>
             );
           },
           shouldShow: () => {
-            return this._picker !== undefined && this._picker.inputElement !== null && this._picker.inputElement.value.indexOf('@') > -1;
+            return (
+              this._picker !== undefined &&
+              this._picker.inputElement !== null &&
+              this._picker.inputElement.value.indexOf('@') > -1
+            );
           },
           onExecute: () => {
             if (this._picker.floatingPicker.current !== null) {
@@ -233,7 +239,10 @@ export class ExtendedPeoplePickerTypesExample extends React.Component<{}, IPeopl
     } else {
       if (this._picker.selectedItemsList.current) {
         // tslint:disable-next-line:no-any
-        (this._picker.selectedItemsList.current as SelectedPeopleList).replaceItem(item, this._getExpandedGroupItems(item as any));
+        (this._picker.selectedItemsList.current as SelectedPeopleList).replaceItem(
+          item,
+          this._getExpandedGroupItems(item as any)
+        );
       }
     }
   };
@@ -244,7 +253,9 @@ export class ExtendedPeoplePickerTypesExample extends React.Component<{}, IPeopl
     const indexMostRecentlyUsed: number = mruState.indexOf(item);
 
     if (indexPeopleList >= 0) {
-      const newPeople: IPersonaProps[] = peopleList.slice(0, indexPeopleList).concat(peopleList.slice(indexPeopleList + 1));
+      const newPeople: IPersonaProps[] = peopleList
+        .slice(0, indexPeopleList)
+        .concat(peopleList.slice(indexPeopleList + 1));
       this.setState({ peopleList: newPeople });
     }
 
@@ -275,8 +286,10 @@ export class ExtendedPeoplePickerTypesExample extends React.Component<{}, IPeopl
     return controlledComponent ? null : this._convertResultsToPromise(filteredPersonas);
   };
 
-  private _returnMostRecentlyUsed = (currentPersonas: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> | null => {
-    const { controlledComponent } = this.state;
+  private _returnMostRecentlyUsed = (
+    currentPersonas: IPersonaProps[]
+  ): IPersonaProps[] | Promise<IPersonaProps[]> | null => {
+  const { controlledComponent } = this.state;
     let { mostRecentlyUsed } = this.state;
     mostRecentlyUsed = this._removeDuplicates(mostRecentlyUsed, this._picker.items);
     if (controlledComponent) {
@@ -318,7 +331,9 @@ export class ExtendedPeoplePickerTypesExample extends React.Component<{}, IPeopl
   }
 
   private _filterPersonasByText(filterText: string): IPersonaProps[] {
-    return this.state.peopleList.filter((item: IPersonaProps) => this._doesTextStartWith(item.text as string, filterText));
+    return this.state.peopleList.filter((item: IPersonaProps) =>
+      this._doesTextStartWith(item.text as string, filterText)
+    );
   }
 
   private _doesTextStartWith(text: string, filterText: string): boolean {

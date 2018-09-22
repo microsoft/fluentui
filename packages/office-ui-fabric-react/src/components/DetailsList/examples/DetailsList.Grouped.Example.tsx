@@ -57,7 +57,7 @@ export class DetailsListGroupedExample extends BaseComponent<
     items: {}[];
     showItemIndexInView: boolean;
   }
-  > {
+> {
   private _root = createRef<IDetailsList>();
 
   constructor(props: {}) {

@@ -34,7 +34,7 @@ export class DetailsListCompactExample extends React.Component<
     items: {}[];
     selectionDetails: string;
   }
-  > {
+> {
   private _selection: Selection;
 
   constructor(props: {}) {

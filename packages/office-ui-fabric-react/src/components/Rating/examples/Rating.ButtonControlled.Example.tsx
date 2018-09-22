@@ -7,7 +7,7 @@ export class RatingButtonControlledExample extends React.Component<
   {
     rating: number;
   }
-  > {
+> {
   constructor(props: {}) {
     super(props);
 

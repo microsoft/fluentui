@@ -29,8 +29,8 @@ export const wrapPersona = (
     return shouldWrapPersonaCoin ? (
       <span id="persona-coin-container">{defaultCoinRenderer(coinProps)}</span>
     ) : (
-        defaultCoinRenderer(coinProps)
-      );
+      defaultCoinRenderer(coinProps)
+    );
   };
 };
 

@@ -12,7 +12,7 @@ export interface ITeachingBubbleWideIllustrationExampleState {
 export class TeachingBubbleWideIllustrationExample extends React.Component<
   {},
   ITeachingBubbleWideIllustrationExampleState
-  > {
+> {
   private _menuButtonElement: HTMLElement;
 
   constructor(props: {}) {

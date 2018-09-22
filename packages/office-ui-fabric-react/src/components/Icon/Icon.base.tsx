@@ -36,12 +36,12 @@ export class IconBase extends BaseComponent<IIconProps, IIconState> {
 
     const containerProps = ariaLabel
       ? {
-        'aria-label': ariaLabel
-      }
+          'aria-label': ariaLabel
+        }
       : {
-        role: 'presentation',
-        'aria-hidden': true
-      };
+          role: 'presentation',
+          'aria-hidden': true
+        };
 
     const RootType = isImage ? 'div' : 'i';
     const nativeProps = getNativeProps(this.props, htmlElementProperties);

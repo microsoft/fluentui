@@ -98,7 +98,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
                   data-is-focusable={column.columnActionsMode !== ColumnActionsMode.disabled}
                   role={
                     column.columnActionsMode !== ColumnActionsMode.disabled &&
-                      (column.onColumnClick !== undefined || this.props.onColumnClick !== undefined)
+                    (column.onColumnClick !== undefined || this.props.onColumnClick !== undefined)
                       ? 'button'
                       : undefined
                   }
@@ -119,8 +119,8 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
                     {column.isIconOnly ? (
                       <span className={classNames.accessibleLabel}>{column.name}</span>
                     ) : (
-                        column.name
-                      )}
+                      column.name
+                    )}
                   </span>
 
                   {column.isFiltered && <Icon className={classNames.nearIcon} iconName={'Filter'} />}

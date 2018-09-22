@@ -13,7 +13,7 @@ interface IFocusTrapComponentProps {
   setIsActive: (name: string, isActive: boolean) => void;
 }
 
-interface IFocusTrapComponentState { }
+interface IFocusTrapComponentState {}
 
 class FocusTrapComponent extends React.Component<IFocusTrapComponentProps, IFocusTrapComponentState> {
   public render(): JSX.Element {

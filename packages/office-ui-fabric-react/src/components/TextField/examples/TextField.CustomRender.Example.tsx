@@ -9,7 +9,7 @@ export class TextFieldCustomRenderExample extends React.Component<
   {
     isCalloutVisible: boolean;
   }
-  > {
+> {
   private _iconButtonElement: HTMLElement;
 
   constructor(props: {}) {

@@ -189,12 +189,12 @@ describe('Component Examples', () => {
         } catch (e) {
           console.warn(
             'ERROR: ' +
-            e +
-            ', ' +
-            'TEST NOTE: Failure with ' +
-            componentFile +
-            '. ' +
-            'Have you recently added a component? If so, please see notes in ComponentExamples.test.tsx.'
+              e +
+              ', ' +
+              'TEST NOTE: Failure with ' +
+              componentFile +
+              '. ' +
+              'Have you recently added a component? If so, please see notes in ComponentExamples.test.tsx.'
           );
         }
       });

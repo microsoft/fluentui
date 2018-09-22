@@ -8,7 +8,7 @@ export class DialogLargeHeaderExample extends React.Component<
   {
     hideDialog: boolean;
   }
-  > {
+> {
   constructor(props: {}) {
     super(props);
     this.state = {

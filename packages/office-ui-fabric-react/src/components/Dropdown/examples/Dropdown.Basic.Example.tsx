@@ -11,7 +11,7 @@ export class DropdownBasicExample extends BaseComponent<
     selectedItem?: { key: string | number | undefined };
     selectedItems: string[];
   }
-  > {
+> {
   private _basicDropdown = createRef<IDropdown>();
 
   constructor(props: {}) {

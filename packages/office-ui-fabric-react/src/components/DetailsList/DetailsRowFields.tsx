@@ -31,9 +31,9 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
             typeof column.calculatedWidth === 'undefined'
               ? 'auto'
               : column.calculatedWidth +
-              cellStyleProps.cellLeftPadding +
-              cellStyleProps.cellRightPadding +
-              (column.isPadded ? cellStyleProps.cellExtraRightPadding : 0);
+                cellStyleProps.cellLeftPadding +
+                cellStyleProps.cellRightPadding +
+                (column.isPadded ? cellStyleProps.cellExtraRightPadding : 0);
 
           return (
             <div
