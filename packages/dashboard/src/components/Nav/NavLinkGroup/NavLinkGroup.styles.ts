@@ -24,7 +24,7 @@ export const getStyles = (props: INavLinkGroupStyleProps): INavLinkGroupStyles =
       width: '278px',
       justifyContent: 'flex-end',
       selectors: {
-        '& .navLink': {
+        $navLink: {
           zIndex: 1,
           backgroundColor: navItemWithChildBgColor
         }

@@ -48,7 +48,7 @@ class NavComponent extends React.Component<INavProps, INavState> {
     const ariaLabel = isNavCollapsed ? 'Navigation collapsed' : 'Navigation expanded';
 
     return (
-      <ul role={'list'}>
+      <ul role={'list'} className={classNames.navGroup}>
         <li role={'listitem'} title={'NavToggle'}>
           <NavLink
             id={'NavToggle'}
@@ -94,7 +94,7 @@ class NavComponent extends React.Component<INavProps, INavState> {
 
     return (
       // If enableCustomization
-      <ul role={'list'}>
+      <ul role={'list'} className={classNames.navGroup}>
         <li role={'listitem'} title={'Edit navigation'}>
           <NavLink
             id={'EditNav'}

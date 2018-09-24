@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { INavLink, INavLinkGroupProps, INavLinkGroupStates, INavLinkGroupStyleProps, INavLinkGroupStyles } from '../Nav.types';
+import { INavLink, INavLinkGroupProps, INavLinkGroupStates, INavLinkGroupStyleProps, INavStyles } from '../Nav.types';
 import { NavLink } from '../NavLink/NavLink';
-import { getStyles } from './NavLinkGroup.styles';
+import { getStyles } from '../Nav.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
-const getClassNames = classNamesFunction<INavLinkGroupStyleProps, INavLinkGroupStyles>();
+const getClassNames = classNamesFunction<INavLinkGroupStyleProps, INavStyles>();
 
 export class NavLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGroupStates> {
   constructor(props: INavLinkGroupProps) {
@@ -69,13 +69,13 @@ export class NavLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGr
           isExpanded={this.state.isExpanded}
           role="menuitem"
         />
-        <ul className={classNames.nestedNavLinksWhenNavCollapsed}>
+        <div className={classNames.nestedNavLinksWhenNavCollapsed}>
           {!!link.links
             ? link.links.map((nestedLink: INavLink, linkIndex: number) => {
                 return this._renderNestedLinks(nestedLink, linkIndex);
               })
             : null}
-        </ul>
+        </div>
       </div>
     );
   }

@@ -1,13 +1,12 @@
 import * as React from 'react';
-import { INavGroupProps, INavGroupStyles, INavLink, INavGroupStyleProps } from '@uifabric/dashboard/lib/components/Nav/Nav.types';
+import { INavGroupProps, INavStyles, INavLink, INavGroupStyleProps } from '@uifabric/dashboard/lib/components/Nav/Nav.types';
 import { NavLink } from '../NavLink/NavLink';
-import { NavLinkGroup } from '@uifabric/dashboard/lib/components/Nav/NavLinkGroup/NavLinkGroup';
-import { getStyles } from './NavGroup.styles';
+import { NavLinkGroup } from '../NavLinkGroup/NavLinkGroup';
+import { getStyles } from '../Nav.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-const getClassNames = classNamesFunction<INavGroupStyleProps, INavGroupStyles>();
-const classNames = getClassNames(getStyles);
+const getClassNames = classNamesFunction<INavGroupStyleProps, INavStyles>();
 
 export class NavGroup extends React.Component<INavGroupProps, {}> {
   constructor(props: INavGroupProps) {
@@ -16,9 +15,10 @@ export class NavGroup extends React.Component<INavGroupProps, {}> {
 
   public render(): JSX.Element {
     const { groupIndex, groupName, links } = this.props;
+    const classNames = getClassNames(getStyles);
 
     return (
-      <ul role="list">
+      <ul role="list" className={classNames.navGroup}>
         {this._renderGroupName(groupName, groupIndex)}
         {links.map((link: INavLink, linkIndex: number) => {
           return this._renderLinks(link, linkIndex, groupIndex);
@@ -28,6 +28,7 @@ export class NavGroup extends React.Component<INavGroupProps, {}> {
   }
 
   private _renderGroupName(groupName: string | undefined, groupIndex: number): React.ReactElement<{}> | null {
+    const classNames = getClassNames(getStyles);
     // The default group heading will not show even if it is supplied
     // because it is redundant
     if (!groupName || groupIndex === 0) {
@@ -57,15 +58,15 @@ export class NavGroup extends React.Component<INavGroupProps, {}> {
     if (!link) {
       return null;
     }
-
+    const classNames = getClassNames(getStyles);
     const { isNavCollapsed } = this.props;
     const keyStr = groupIndex.toString() + linkIndex.toString();
     const hasSelectedNestedLink = this._isNestedLinkSelected(link);
-
+    console.log(isNavCollapsed);
     return (
       // if there are nested links, render a NavLinkGroup, otherwise just render a NavLink
       <li
-        className={isNavCollapsed ? mergeStyles(classNames.navItem, classNames.navItemWhenNavCollapsed) : mergeStyles(classNames.navItem)}
+        className={isNavCollapsed ? mergeStyles(classNames.navItem, classNames.navItemWhenNavCollapsed) : classNames.navItem}
         role="listitem"
         key={keyStr}
       >

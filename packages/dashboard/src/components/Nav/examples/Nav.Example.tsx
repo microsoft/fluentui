@@ -62,7 +62,7 @@ export class NavExample extends React.Component<{}, {}> {
         ]
       },
       {
-        name: 'Group heading',
+        name: 'Other admin centers',
         links: [
           {
             name: 'Other admin centers',

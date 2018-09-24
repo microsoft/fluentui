@@ -201,10 +201,40 @@ export interface INavLinkStyleProps {
 
 export interface INavStyles {
   /**
-   * Style set for the nav component root
+   * Nav
    */
   nav: IStyle;
   navCollapsed: IStyle;
+
+  /**
+   * NavGroup
+   */
+  navGroup: IStyle;
+  navGroupDivider: IStyle;
+  navGroupTitle: IStyle;
+  navItem: IStyle;
+  navItemWhenNavCollapsed: IStyle;
+
+  /**
+   * NavLinkGroup
+   */
+  nestedNavMenu: IStyle;
+  nestedNavMenuCollapsed: IStyle;
+  nestedNavMenuWhenNavCollapsed: IStyle;
+  nestedNavLinksWhenNavCollapsed: IStyle;
+
+  /**
+   * NavLink
+   */
+  navLink: IStyle;
+  navLinkSmall: IStyle;
+  hidden: IStyle;
+  navItemBarMarker: IStyle;
+  navItemBarMarkerSmall: IStyle;
+  navItemIcon: IStyle;
+  navItemText: IStyle;
+  iconWrapper: IStyle;
+  nestedIconWrapper: IStyle;
 }
 
 export interface INavGroupStyles {

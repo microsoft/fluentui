@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import { INavLinkStyles, INavLinkProps, INavLinkStyleProps, INavLinkStates } from '../Nav.types';
-import { getNavLinkStyles } from './NavLink.styles';
+import { INavStyles, INavLinkProps, INavLinkStyleProps, INavLinkStates } from '../Nav.types';
+import { getStyles } from '../Nav.styles';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
-const getClassNames = classNamesFunction<INavLinkStyleProps, INavLinkStyles>();
-const classNames = getClassNames(getNavLinkStyles);
+const getClassNames = classNamesFunction<INavLinkStyleProps, INavStyles>();
 
 export class NavLink extends React.Component<INavLinkProps, INavLinkStates> {
   constructor(props: INavLinkProps) {
@@ -14,6 +13,7 @@ export class NavLink extends React.Component<INavLinkProps, INavLinkStates> {
   }
 
   public render(): JSX.Element {
+    const classNames = getClassNames(getStyles);
     return (
       <a
         id={this.props.id}
@@ -36,6 +36,7 @@ export class NavLink extends React.Component<INavLinkProps, INavLinkStates> {
 
   private _generateActiveBar(): React.ReactElement<{}> | null {
     const { isNested, isSelected, hasNestedMenu, isNavCollapsed, hasSelectedNestedLink, isExpanded } = this.props;
+    const classNames = getClassNames(getStyles);
 
     // Decide all the cases to show the selected indicator
     if (
@@ -50,9 +51,14 @@ export class NavLink extends React.Component<INavLinkProps, INavLinkStates> {
   }
 
   private _generatePrimaryIcon(): React.ReactElement<{}> | null {
-    const { isNested } = this.props;
+    const { isNested, isNavCollapsed } = this.props;
+    const classNames = getClassNames(getStyles);
+
     return (
-      <div className={classNames.iconWrapper} aria-hidden="true">
+      <div
+        className={isNavCollapsed && isNested ? mergeStyles(classNames.iconWrapper, classNames.nestedIconWrapper) : classNames.iconWrapper}
+        aria-hidden="true"
+      >
         {this._generateActiveBar()}
         <Icon
           iconName={this.props.primaryIconName}
@@ -64,11 +70,13 @@ export class NavLink extends React.Component<INavLinkProps, INavLinkStates> {
 
   private _generateLinkContent(): React.ReactElement<{}> | null {
     const { isNested, name } = this.props;
+    const classNames = getClassNames(getStyles);
     return <div className={isNested ? mergeStyles(classNames.navItemText, classNames.navLinkSmall) : classNames.navItemText}>{name}</div>;
   }
 
   private _generateSecondaryIcon(): React.ReactElement<{}> | null {
     const { hasNestedMenu, isNested, target, isExpanded, isNavCollapsed } = this.props;
+    const classNames = getClassNames(getStyles);
 
     if (isNavCollapsed && !isNested) {
       return null;
