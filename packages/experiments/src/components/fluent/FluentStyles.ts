@@ -5,6 +5,7 @@ import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { FontSizes } from './FluentType';
 import { Depths } from './FluentDepths';
 import { IDropdownStyleProps } from 'office-ui-fabric-react/lib/Dropdown';
+import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
 
 const fluentBorderRadius = '2px';
 
@@ -128,8 +129,17 @@ const DialogFooterStyles = {
 };
 
 const DropdownStyles = (props: IDropdownStyleProps) => {
-  const { disabled, hasError, theme, isOpen } = props;
+  const { disabled, hasError, theme, isOpen, calloutRenderEdge } = props;
   const { semanticColors } = theme!;
+
+  const titleOpenBorderRadius =
+    calloutRenderEdge === RectangleEdge.bottom
+      ? `${fluentBorderRadius} ${fluentBorderRadius} 0 0`
+      : `0 0 ${fluentBorderRadius} ${fluentBorderRadius}`;
+  const calloutOpenBorderRadius =
+    calloutRenderEdge === RectangleEdge.bottom
+      ? `0 0 ${fluentBorderRadius} ${fluentBorderRadius}`
+      : `${fluentBorderRadius} ${fluentBorderRadius} 0 0`;
 
   return {
     dropdown: [
@@ -168,7 +178,7 @@ const DropdownStyles = (props: IDropdownStyleProps) => {
     title: [
       {
         borderColor: !hasError ? NeutralColors.gray80 : semanticColors.errorText,
-        borderRadius: isOpen ? `${fluentBorderRadius} ${fluentBorderRadius} 0 0` : fluentBorderRadius,
+        borderRadius: isOpen ? titleOpenBorderRadius : fluentBorderRadius,
         padding: `0 28px 0 8px`
       },
       disabled && { color: NeutralColors.gray70 }
@@ -183,7 +193,7 @@ const DropdownStyles = (props: IDropdownStyleProps) => {
     ],
     callout: {
       border: 'none',
-      borderRadius: `0 0 ${fluentBorderRadius} ${fluentBorderRadius}`,
+      borderRadius: calloutOpenBorderRadius,
       boxShadow: Depths.depth8,
       selectors: {
         ['.ms-Callout-main']: { borderRadius: `0 0 ${fluentBorderRadius} ${fluentBorderRadius}` }
