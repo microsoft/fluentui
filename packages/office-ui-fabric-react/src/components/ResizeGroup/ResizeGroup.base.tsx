@@ -1,6 +1,12 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import { BaseComponent, divProperties, getNativeProps, provideContext, createRef } from '../../Utilities';
+import {
+  BaseComponent,
+  divProperties,
+  getNativeProps,
+  provideContext,
+  createRef
+} from '../../Utilities';
 import { IResizeGroupProps } from './ResizeGroup.types';
 
 const RESIZE_DELAY = 16;
@@ -256,7 +262,12 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
       if (currentState.resizeDirection === 'grow' && props.onGrowData) {
         nextState = {
           ...nextState,
-          ..._growDataUntilItDoesNotFit(currentState.dataToMeasure, props.onGrowData, getElementToMeasureWidth, props.onReduceData)
+          ..._growDataUntilItDoesNotFit(
+            currentState.dataToMeasure,
+            props.onGrowData,
+            getElementToMeasureWidth,
+            props.onReduceData
+          )
         };
       } else {
         nextState = {
@@ -354,7 +365,11 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
             </div>
           )}
 
-        <div ref={this._initialHiddenDiv} style={isInitialMeasure ? hiddenDivStyles : undefined} data-automation-id="visibleContent">
+        <div
+          ref={this._initialHiddenDiv}
+          style={isInitialMeasure ? hiddenDivStyles : undefined}
+          data-automation-id="visibleContent"
+        >
           {isInitialMeasure ? onRenderData(dataToMeasure) : renderedData && onRenderData(renderedData)}
         </div>
       </div>
