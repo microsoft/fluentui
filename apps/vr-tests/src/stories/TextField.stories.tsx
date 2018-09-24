@@ -9,7 +9,7 @@ storiesOf('TextField', module)
   .addDecorator(FabricDecoratorFixedWidth)
   .addDecorator(story => (
     <Screener
-      steps={ new Screener.Steps()
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-TextField-field')
         .snapshot('hover', { cropTo: '.testWrapper' })
@@ -19,69 +19,69 @@ storiesOf('TextField', module)
         .end()
       }
     >
-      { story() }
+      {story()}
     </Screener>
-  )).add('Root', () => (
+  )).addStory('Root', () => (
     <TextField
       label='Standard'
     />
-  )).add('Placeholder', () => (
+  )).addStory('Placeholder', () => (
     <TextField
       label='Standard'
       placeholder='Placeholder'
     />
-  )).add('Disabled', () => (
+  ), { rtl: true }).addStory('Disabled', () => (
     <TextField
       label='Disabled'
       disabled
     />
-  )).add('Required', () => (
+  )).addStory('Required', () => (
     <TextField
       label='Required'
       required
     />
-  )).add('Error', () => (
+  )).addStory('Error', () => (
     <TextField
       label='Error'
       errorMessage='Error message'
     />
-  )).add('Multiline', () => (
+  ), { rtl: true }).addStory('Multiline', () => (
     <TextField
       label='Multiline'
       multiline
-      rows={ 4 }
+      rows={4}
     />
-  )).add('Multiline nonresizable', () => (
+  ), { rtl: true }).addStory('Multiline nonresizable', () => (
     <TextField
       label='Multiline'
       multiline
-      rows={ 4 }
-      resizable={ false }
+      rows={4}
+      resizable={false}
     />
-  )).add('Underlined', () => (
+  )).addStory('Underlined', () => (
     <TextField
       label='Underlined'
       underlined
     />
-  )).add('Borderless', () => (
+  )).addStory('Borderless', () => (
     <TextField
       label='Borderless'
       borderless
       placeholder='Placeholder text'
     />
-  )).add('Icon', () => (
+  )).addStory('Icon', () => (
     <TextField
       label='Icon'
-      iconProps={ { iconName: 'Calendar' } }
+      iconProps={{ iconName: 'Calendar' }}
     />
-  )).add('Prefix', () => (
+  ), { rtl: true }).addStory('Prefix', () => (
     <TextField
       label='Prefix'
       prefix='https://'
     />
-  )).add('Suffix', () => (
+  ), { rtl: true }).addStory('Suffix', () => (
     <TextField
       label='Suffix'
       suffix='.com'
     />
-  ));
+  ), { rtl: true });

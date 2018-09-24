@@ -1,6 +1,49 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 17 Sep 2018 12:27:05 GMT and should not be manually modified.
+This log was last generated on Mon, 24 Sep 2018 12:27:31 GMT and should not be manually modified.
+
+## 6.72.2
+Mon, 24 Sep 2018 12:27:31 GMT
+
+### Patches
+
+- CommandBar: Surface buttons now have role of menuitem
+- Fix off by one error with DetailsHeader DnD when checkbox is hidden.
+- Fix Panel Custom className not output if PanelType is Custom
+
+## 6.72.1
+Fri, 21 Sep 2018 14:25:46 GMT
+
+### Patches
+
+- Adding a version stamp file
+- fixed Korean characters typing issue in IE11.
+- Revert max-line-length change in favor of tslint disable next line for ColorSlider background  values to fix Screener regression.
+- Add example of using CommandBarButtonAs with coachmarks and add IComponentAsProps
+
+## 6.72.0
+Thu, 20 Sep 2018 12:25:33 GMT
+
+### Minor changes
+
+- DocumentCardPreview: Change component to use Link and add linkProps
+- ColorPicker: The ColorPicker component now passes the complete color object as second parameter to the `onColorChanged` props along with the existing string representation of the same as first parameter.
+- add support for commandBarButtonAs to ICommandBarItemProps along with passing the defaultRender to the commandBarButtonAs
+
+## 6.71.1
+Wed, 19 Sep 2018 12:27:48 GMT
+
+### Patches
+
+- Panel: pass click events to onDismiss handler
+- Refactor PivotItem & DialogFooter type comparison to use React.Element.type to address hot module replacement break.
+
+## 6.71.0
+Tue, 18 Sep 2018 12:26:03 GMT
+
+### Minor changes
+
+- Panel: Extend props to HTMLAttributes
 
 ## 6.70.0
 Mon, 17 Sep 2018 12:27:05 GMT
