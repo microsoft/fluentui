@@ -2,6 +2,7 @@
 import { INavLinkGroupStyleProps, INavLinkGroupStyles } from '../Nav.types';
 
 // const BackDropSelector = '@supports (backdrop-filter: blur(20px)) or (-webkit-backdrop-filter: blur(20px))';
+const navItemWithChildBgColor = '#CCCCCC';
 
 export const getStyles = (props: INavLinkGroupStyleProps): INavLinkGroupStyles => {
   const { isNavCollapsed, isExpanded } = props;
@@ -21,7 +22,13 @@ export const getStyles = (props: INavLinkGroupStyleProps): INavLinkGroupStyles =
       top: '0',
       left: '0',
       width: '278px',
-      justifyContent: 'flex-end'
+      justifyContent: 'flex-end',
+      selectors: {
+        '& .navLink': {
+          zIndex: 1,
+          backgroundColor: navItemWithChildBgColor
+        }
+      }
     },
     nestedNavLinksWhenNavCollapsed: {
       width: '230px',

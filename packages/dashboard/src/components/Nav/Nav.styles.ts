@@ -11,7 +11,6 @@ const navItemSelectedColor = '#B7B7B7';
 
 // Will need these later
 // const navFloatingWidth = 230;
-const BackDropSelector = '@supports (backdrop-filter: blur(20px)) or (-webkit-backdrop-filter: blur(20px))';
 
 export const getStyles = (props: INavStyleProps): INavStyles => {
   return {
@@ -22,12 +21,17 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
       transitionProperty: 'width',
       transitionDuration: '.2s',
       userSelect: 'none',
+      fontSize: navFontSize,
       selectors: {
         ul: {
-          listStyleType: 'none',
-          padding: 0,
-          margin: 0,
-          fontSize: navFontSize
+          paddingLeft: 0,
+          selectors: {
+            li: {
+              listStyleType: 'none',
+              padding: 0,
+              margin: 0
+            }
+          }
         },
         a: {
           color: navTextColor,
@@ -40,18 +44,9 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         }
       }
     },
-    navCollapsed: [
-      {
-        width: navCollapsedWidth,
-        selectors: {
-          [BackDropSelector]: {
-            webkitBackdropFilter: 'blur(20px) saturate(125%)',
-            backdropFilter: 'blur(20px) saturate(125%)',
-            backgroundColor: 'rgba(255,255,255,.6)'
-          }
-        }
-      }
-    ]
+    navCollapsed: {
+      width: navCollapsedWidth
+    }
   };
 };
 
