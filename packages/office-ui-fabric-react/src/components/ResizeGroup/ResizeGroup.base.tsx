@@ -324,10 +324,14 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
   constructor(props: IResizeGroupProps) {
     super(props);
     this.state = this._nextResizeGroupStateProvider.getInitialResizeGroupState(this.props.data);
+
+    this._warnDeprecations({
+      styles: 'className'
+    });
   }
 
   public render(): JSX.Element {
-    const { onRenderData } = this.props;
+    const { className, onRenderData } = this.props;
     const { dataToMeasure, renderedData } = this.state;
     const divProps = getNativeProps(this.props, divProperties, ['data']);
 
@@ -342,7 +346,7 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     // we mount a second version of the component just for measurement purposes and leave the rendered content untouched until we know the
     // next state sto show to the user.
     return (
-      <div {...divProps} ref={this._root} style={{ display: 'block', position: 'relative' }}>
+      <div {...divProps} className={className} ref={this._root} style={{ display: 'block', position: 'relative' }}>
         {dataNeedsMeasuring &&
           !isInitialMeasure && (
             <div style={hiddenDivStyles} ref={this._updateHiddenDiv}>
