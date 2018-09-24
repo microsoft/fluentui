@@ -16,8 +16,7 @@ export interface IBaseExtendedPickerState<T> {
   suggestionItems: T[] | null;
 }
 
-export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
-  extends BaseComponent<P, IBaseExtendedPickerState<T>>
+export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends BaseComponent<P, IBaseExtendedPickerState<T>>
   implements IBaseExtendedPicker<T> {
   public floatingPicker = createRef<BaseFloatingPicker<T, IBaseFloatingPickerProps<T>>>();
   public selectedItemsList = createRef<BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>>>();
@@ -157,6 +156,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
       inputElement: this.input.current ? this.input.current.inputElement : undefined,
       selectedItems: this.items,
       suggestionItems: this.props.suggestionItems ? this.props.suggestionItems : undefined,
+      currentRenderedQueryString: this.props.currentRenderedQueryString,
       ...this.floatingPickerProps
     });
   }
@@ -195,8 +195,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
 
     if (this.floatingPicker.current && this.inputElement) {
       // Update the value if the input value is empty or it is different than the current inputText from the floatingPicker
-      const shoudUpdateValue =
-        this.inputElement.value === '' || this.inputElement.value !== this.floatingPicker.current.inputText;
+      const shoudUpdateValue = this.inputElement.value === '' || this.inputElement.value !== this.floatingPicker.current.inputText;
       this.floatingPicker.current.showPicker(shoudUpdateValue);
     }
   };
@@ -248,9 +247,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
   };
 
   protected _onSuggestionSelected = (item: T): void => {
-    const processedItem: T | PromiseLike<T> | null = this.props.onItemSelected
-      ? (this.props.onItemSelected as any)(item)
-      : item;
+    const processedItem: T | PromiseLike<T> | null = this.props.onItemSelected ? (this.props.onItemSelected as any)(item) : item;
 
     if (processedItem === null) {
       return;
