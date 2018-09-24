@@ -2,6 +2,25 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.25.5",
+      "tag": "@uifabric/dashboard_v0.25.5",
+      "date": "Mon, 24 Sep 2018 12:27:31 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "change lineHeight for card headerText",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "3f45ade8755b9248cd9cb60a1adcce378cd2efc7"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.72.1 <7.0.0` to `>=6.72.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.25.4",
       "tag": "@uifabric/dashboard_v0.25.4",
       "date": "Fri, 21 Sep 2018 14:25:46 GMT",

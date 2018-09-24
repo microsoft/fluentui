@@ -2,6 +2,30 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.72.2",
+      "tag": "office-ui-fabric-react_v6.72.2",
+      "date": "Mon, 24 Sep 2018 12:27:31 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "CommandBar: Surface buttons now have role of menuitem",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "5a9d043cf59bcbac41a513f5e2d5c146f162cd9d"
+          },
+          {
+            "comment": "Fix off by one error with DetailsHeader DnD when checkbox is hidden.",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "81a6be8fc09ed98e053b92180bf7db8fe160368e"
+          },
+          {
+            "comment": "Fix Panel Custom className not output if PanelType is Custom",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "054288b812034b7d2d36d3820d34eec77d306ab7"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.72.1",
       "tag": "office-ui-fabric-react_v6.72.1",
       "date": "Fri, 21 Sep 2018 14:25:46 GMT",

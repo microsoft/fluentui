@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 21 Sep 2018 14:25:46 GMT and should not be manually modified.
+This log was last generated on Mon, 24 Sep 2018 12:27:31 GMT and should not be manually modified.
+
+## 6.72.2
+Mon, 24 Sep 2018 12:27:31 GMT
+
+### Patches
+
+- CommandBar: Surface buttons now have role of menuitem
+- Fix off by one error with DetailsHeader DnD when checkbox is hidden.
+- Fix Panel Custom className not output if PanelType is Custom
 
 ## 6.72.1
 Fri, 21 Sep 2018 14:25:46 GMT
