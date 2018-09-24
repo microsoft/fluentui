@@ -4,7 +4,7 @@ import { IPersonaProps } from '../Persona/Persona.types';
 import { IRefObject, IRenderFunction } from '../../Utilities';
 import { ISuggestionModel } from './Suggestions/SuggestionsController';
 import { BaseAutoFill } from './AutoFill/BaseAutoFill';
-import { ICalloutProps } from 'office-ui-fabric-react/lib/components/Callout';
+import { ICalloutProps } from '../../Callout';
 
 export interface IBasePicker<T> {
   /** Gets the current value of the input. */
