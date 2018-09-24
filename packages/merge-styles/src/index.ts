@@ -19,3 +19,5 @@ export { keyframes } from './keyframes';
 export { IStyleSheetConfig, InjectionMode, Stylesheet } from './Stylesheet';
 
 export { setRTL } from './transforms/rtlifyRules';
+
+import './version';

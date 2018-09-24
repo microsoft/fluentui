@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Remove max lines TS override",
-      "type": "none"
+      "comment": "make oufr also set sideeffects for version.js",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "edwl@microsoft.com"
+  "email": "kchau@microsoft.com"
 }

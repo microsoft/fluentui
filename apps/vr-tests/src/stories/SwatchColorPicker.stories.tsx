@@ -9,18 +9,18 @@ let props = {
   columnCount: 4,
   cellShape: 'circle' as any,
   colorCells:
-  [
-    { id: 'a', label: 'green', color: '#00ff00' },
-    { id: 'b', label: 'orange', color: '#ffa500' },
-    { id: 'c', label: 'blue', color: '#0000ff' },
-    { id: 'd', label: 'red', color: '#ff0000' }
-  ]
+    [
+      { id: 'a', label: 'green', color: '#00ff00' },
+      { id: 'b', label: 'orange', color: '#ffa500' },
+      { id: 'c', label: 'blue', color: '#0000ff' },
+      { id: 'd', label: 'red', color: '#ff0000' }
+    ]
 };
 storiesOf('SwatchColorPicker', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
-      steps={ new Screener.Steps()
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Button-flexContainer')
         .snapshot('hover', { cropTo: '.testWrapper' })
@@ -32,26 +32,26 @@ storiesOf('SwatchColorPicker', module)
         .end()
       }
     >
-      { story() }
+      {story()}
     </Screener>
-  )).add('Circle', () => (
+  )).addStory('Circle', () => (
     <SwatchColorPicker
-      { ...props }
+      {...props}
     />
-  )).add('Square', () => (
+  ), { rtl: true }).addStory('Square', () => (
     <SwatchColorPicker
-      { ...props }
+      {...props}
       cellShape='square'
     />
-  )).add('Disabled', () => (
+  )).addStory('Disabled', () => (
     <SwatchColorPicker
-      { ...props }
+      {...props}
       disabled
     />
-  )).add('Multiple rows', () => (
+  )).addStory('Multiple rows', () => (
     <SwatchColorPicker
-      { ...props }
-      columnCount={ 4 }
-      colorCells={ props.colorCells.concat(props.colorCells) }
+      {...props}
+      columnCount={4}
+      colorCells={props.colorCells.concat(props.colorCells)}
     />
   ));

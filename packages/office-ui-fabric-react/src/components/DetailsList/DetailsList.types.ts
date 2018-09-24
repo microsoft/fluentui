@@ -516,7 +516,7 @@ export interface IColumnReorderOptions {
   /**
    * Callback to handle the column reorder
    * draggedIndex is the source column index, that need to be placed in targetIndex
-   * Use oncolumnDrop instead of this
+   * Use onColumnDrop instead of this
    * @deprecated
    */
   handleColumnReorder?: (draggedIndex: number, targetIndex: number) => void;

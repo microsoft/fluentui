@@ -10,18 +10,18 @@ storiesOf('Modal', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
-      steps={ new Screener.Steps()
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.ms-Modal' })
         .end()
       }
     >
-      { story() }
+      {story()}
     </Screener>
   ))
-  .add('Root', () => (
+  .addStory('Root', () => (
     <Modal
       isOpen
-      isBlocking={ false }
+      isBlocking={false}
     >
       Modal content
     </Modal >

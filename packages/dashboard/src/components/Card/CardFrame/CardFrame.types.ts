@@ -64,6 +64,11 @@ export interface ICardFrameProps {
   href?: string;
 
   /**
+   * Target for Hyperlink URL for title
+   */
+  target?: string;
+
+  /**
    * Whether the card is draggable or not
    * @default false
    */

@@ -1,6 +1,14 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Mon, 17 Sep 2018 12:27:05 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Sep 2018 14:25:46 GMT and should not be manually modified.
+
+## 0.5.3
+Fri, 21 Sep 2018 14:25:46 GMT
+
+### Patches
+
+- Adding a version stamp file
+- Support schemes through new schemes prop.
 
 ## 0.5.2
 Mon, 17 Sep 2018 12:27:05 GMT
