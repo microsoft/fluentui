@@ -56,7 +56,9 @@ export class VerticalStackPage extends React.Component<IComponentDemoPageProps, 
         propertiesTables={
           <PropertiesTableSet
             sources={[
-              require<string>('!raw-loader!@uifabric/experiments/src/components/Stack/VerticalStack/VerticalStack.types.ts'),
+              require<
+                string
+              >('!raw-loader!@uifabric/experiments/src/components/Stack/VerticalStack/VerticalStack.types.ts'),
               require<string>('!raw-loader!@uifabric/experiments/src/components/Stack/Stack.types.ts'),
               require<string>('!raw-loader!@uifabric/experiments/src/components/Stack/StackItem/StackItem.types.ts')
             ]}
