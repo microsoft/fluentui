@@ -16,8 +16,9 @@ export const styles = (props: IThemedProps<IHorizontalStackProps>): IHorizontalS
   const hGap = parseGap(gap, theme);
   const vGap = parseGap(vertGap, theme);
 
-  const horizontalMargin = -0.5 * hGap.value;
-  const verticalMargin = -0.5 * vGap.value;
+  // account for the extra 1px padding in the root
+  const horizontalMargin = `calc(${-0.5 * hGap.value}${hGap.unit} - 1px)`;
+  const verticalMargin = `calc(${-0.5 * vGap.value}${vGap.unit} - 1px)`;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -34,7 +35,7 @@ export const styles = (props: IThemedProps<IHorizontalStackProps>): IHorizontalS
           display: 'block',
 
           // necessary in order to prevent collapsing margins
-          paddingTop: 1
+          padding: 1
         },
         className
       ],
@@ -43,14 +44,13 @@ export const styles = (props: IThemedProps<IHorizontalStackProps>): IHorizontalS
         classNames.inner,
         {
           flexWrap: 'wrap',
-          margin: `${verticalMargin}${vGap.unit} ${horizontalMargin}${hGap.unit}`,
-
-          // account for the extra 1px padding at the top of the root
-          marginTop: `calc(${verticalMargin}${vGap.unit} - 1px)`,
-
+          marginLeft: horizontalMargin,
+          marginRight: horizontalMargin,
+          marginTop: verticalMargin,
+          marginBottom: verticalMargin,
           overflow: 'visible',
-          width: fillHorizontal ? `calc(100% + ${hGap.value}${hGap.unit})` : 'auto',
-          height: fillVertical ? `calc(100% + ${hGap.value}${hGap.unit})` : 'auto'
+          width: fillHorizontal ? `calc(100% + ${hGap.value}${hGap.unit} + 2px)` : 'auto',
+          height: fillVertical ? `calc(100% + ${hGap.value}${hGap.unit} + 2px)` : 'auto'
         }
       ]
     } as IHorizontalStackStyles;
