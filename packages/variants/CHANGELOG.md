@@ -1,6 +1,13 @@
 # Change Log - @uifabric/variants
 
-This log was last generated on Tue, 18 Sep 2018 11:25:16 GMT and should not be manually modified.
+This log was last generated on Mon, 24 Sep 2018 11:27:12 GMT and should not be manually modified.
+
+## 5.12.0
+Mon, 24 Sep 2018 11:27:12 GMT
+
+### Minor changes
+
+- Variants: export everything
 
 ## 5.11.0
 Tue, 18 Sep 2018 11:25:16 GMT
