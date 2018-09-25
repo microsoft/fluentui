@@ -2,6 +2,32 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.73.0",
+      "tag": "office-ui-fabric-react_v6.73.0",
+      "date": "Tue, 25 Sep 2018 12:28:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ResizeGroup: Remove classNamesFunction from ResizeGroup",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "418fe4c38c2e18719446e1c53ebfdc544aac1d53"
+          },
+          {
+            "comment": "make oufr also set sideeffects for version.js",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "69138be4cf348b4597b252828c174940cbbcb508"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Allows callout props to be passed through the base picker",
+            "author": "kisiebel <40902158+kisiebel@users.noreply.github.com>",
+            "commit": "2eb1bb1c978f9e7ee69319038df415c349f530d8"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.72.2",
       "tag": "office-ui-fabric-react_v6.72.2",
       "date": "Mon, 24 Sep 2018 12:27:31 GMT",

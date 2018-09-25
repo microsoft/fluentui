@@ -1,6 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Fri, 21 Sep 2018 14:25:46 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Sep 2018 12:28:12 GMT and should not be manually modified.
+
+## 0.21.2
+Tue, 25 Sep 2018 12:28:12 GMT
+
+### Patches
+
+- change  barHeight for lessthan 2 data points and apply css for ratio txt
 
 ## 0.21.1
 Fri, 21 Sep 2018 14:25:46 GMT

@@ -2,6 +2,25 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.21.2",
+      "tag": "@uifabric/charting_v0.21.2",
+      "date": "Tue, 25 Sep 2018 12:28:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "change  barHeight for lessthan 2 data points and apply css for ratio txt",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "4e2e5f5b49f643bf17fe816bdd2faa91bd4e9f35"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.72.2 <7.0.0` to `>=6.73.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.21.1",
       "tag": "@uifabric/charting_v0.21.1",
       "date": "Fri, 21 Sep 2018 14:25:46 GMT",
