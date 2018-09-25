@@ -38,6 +38,7 @@ export class LineChartBase extends React.Component<
   private _yAxisScale: any = '';
   private _uniqLineText: string;
   private chartContainer: HTMLDivElement;
+  // These margins are necessary for d3Scales to appear without cutting off
   private margins = { top: 20, right: 10, bottom: 35, left: 40 };
   constructor(props: ILineChartProps) {
     super(props);
