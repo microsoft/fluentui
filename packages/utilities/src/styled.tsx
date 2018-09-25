@@ -2,6 +2,7 @@ import * as React from 'react';
 import { concatStyleSets, IStyleSet, IStyleFunctionOrObject, IConcatenatedStyleSet } from '@uifabric/merge-styles';
 import { Customizations } from './Customizations';
 import { CustomizerContext, ICustomizerContext } from './Customizer';
+import { memoizeFunction } from './memoize';
 
 export interface IPropsWithStyles<TStyleProps, TStyleSet extends IStyleSet<TStyleSet>> {
   styles?: IStyleFunctionOrObject<TStyleProps, TStyleSet>;
@@ -37,6 +38,7 @@ const DefaultFields = ['theme', 'styles'];
  * @param baseStyles - The styles which should be curried with the component.
  * @param getProps - A helper which provides default props.
  * @param customizable - An object which defines which props can be customized using the Customizer.
+ * @param useMemoize - Whether to use {@link memoizeFunction} to optimize component rendering.
  */
 export function styled<
   TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>,
@@ -46,8 +48,16 @@ export function styled<
   Component: React.ComponentClass<TComponentProps> | React.StatelessComponent<TComponentProps>,
   baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>,
   getProps?: (props: TComponentProps) => Partial<TComponentProps>,
-  customizable?: ICustomizableProps
+  customizable?: ICustomizableProps,
+  useMemoize?: boolean
 ): (props: TComponentProps) => JSX.Element {
+  let getStyleFunction = (...allStyles: (IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined)[]) => {
+    return (styleProps: TStyleProps) => _resolve(styleProps, ...allStyles);
+  };
+  if (useMemoize) {
+    getStyleFunction = memoizeFunction(getStyleFunction);
+  }
+
   const Wrapped: React.StatelessComponent<TComponentProps> = (componentProps: TComponentProps) => {
     customizable = customizable || { scope: '', fields: undefined };
 
@@ -58,7 +68,7 @@ export function styled<
         {(context: ICustomizerContext) => {
           const settings = Customizations.getSettings(fields, scope, context.customizations);
           const { styles: customizedStyles, ...rest } = settings;
-          const styles = (styleProps: TStyleProps) => _resolve(styleProps, baseStyles, customizedStyles, componentProps.styles);
+          const styles = getStyleFunction(baseStyles, customizedStyles, componentProps.styles);
 
           const additionalProps = getProps ? getProps(componentProps) : undefined;
           return <Component {...rest} {...additionalProps} {...componentProps} styles={styles} />;

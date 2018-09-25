@@ -41,6 +41,48 @@ exports[`styled can process style props (background blue) 1`] = `
 />
 `;
 
+exports[`styled can produce same styles object if cached 1`] = `
+<div
+  className=
+
+      {
+        background: blue;
+      }
+/>
+`;
+
+exports[`styled can produce same styles object if cached 2`] = `
+<div
+  className=
+
+      {
+        background: blue;
+      }
+/>
+`;
+
+exports[`styled can produce same styles object if cached 3`] = `
+<div
+  className=
+
+      {
+        background: blue;
+        color: red;
+      }
+/>
+`;
+
+exports[`styled can produce same styles object if cached 4`] = `
+<div
+  className=
+
+      {
+        background: blue;
+        color: red;
+      }
+/>
+`;
+
 exports[`styled renders base styles (background red) 1`] = `
 <div
   className=
