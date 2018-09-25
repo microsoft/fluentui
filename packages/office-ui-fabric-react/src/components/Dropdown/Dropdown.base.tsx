@@ -704,6 +704,12 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   }
 
   private _onDropdownBlur = (ev: React.FocusEvent<HTMLDivElement>): void => {
+    // If Dropdown disabled do not proceed with this logic.
+    const disabled = this._isDisabled();
+    if (disabled) {
+      return;
+    }
+
     // hasFocus tracks whether the root element has focus so always update the state.
     this.setState({ hasFocus: false });
 
@@ -936,13 +942,13 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
 
     const disabled = this._isDisabled();
 
-    if (!isOpen && selectedIndices.length === 0 && !multiSelect && !disabled) {
-      // Per aria
-      this._moveIndex(ev, 1, 0, -1);
+    if (!disabled) {
+      if (!isOpen && selectedIndices.length === 0 && !multiSelect) {
+        // Per aria
+        this._moveIndex(ev, 1, 0, -1);
+      }
+      this.setState({ hasFocus: true });
     }
-
-    this.setState({ hasFocus: true });
-    return;
   };
 
   /**
