@@ -41,16 +41,24 @@ export interface INavProps {
   enableCustomization?: boolean;
 
   /**
-   * (Optional) enables passing custom strings to the edit and show more links
-   */
-  editLinkName?: string;
-  showMoreLinkName?: string;
-  showLessLinkName?: string;
-
-  /**
-   * Used to override isHidden property of the Nav link when the "Show More" link is clicked
+   * (Optional) Enables the show more / show less toggle. Only used when enableCustomization is true.
    */
   showMore?: boolean;
+
+  /**
+   * (Optional) enables custom string for the Edit link
+   */
+  editString?: string;
+
+  /**
+   * (Optional) enables custom string for the Show more link
+   */
+  showMoreString?: string;
+
+  /**
+   * (Optional) enables custom string for the Show less link
+   */
+  showLessString?: string;
 
   /**
    * (Optional) callback for the parent component when the nav component is toggled between expanded and collapsed state
@@ -79,123 +87,151 @@ export interface INavState extends INavState {
    * Used to toggle the nav component between expanded and collapsed state.
    */
   isNavCollapsed?: boolean;
-
-  /**
-   * Used to override isHidden property of the Nav link when the "Show More" link is clicked
-   */
-  showMore?: boolean;
 }
 
 export interface INavGroupProps {
   /**
-   * Used to toggle L1 nav links
+   * Title of the group. Is hidden for the first nav group.
    */
-  linkCollapsed?: boolean;
   groupName?: string;
+
+  /**
+   * Manages key index of nav groups, is passed down to navLinkGroup to help with unique ID
+   */
   groupIndex: number;
+
+  /**
+   * Navigation links array
+   */
   links: INavLink[];
-  enableCustomization?: boolean;
-  showMore?: boolean;
+
+  /**
+   * TODO: Not sure what this is for
+   */
   dataHint?: string;
+
+  /**
+   * Passes the state of the nav as a prop so the lower level components know how to behave
+   */
+  isNavCollapsed: boolean;
+}
+
+export interface INavLinkProps extends React.AllHTMLAttributes<HTMLAnchorElement> {
+  /**
+   * Used for telemetry
+   */
+  dataHint?: string;
+
+  /**
+   * Used for telemetry
+   */
+  dataValue?: string;
+
+  /**
+   * Used by the screen reader to describe the nav link
+   */
+  ariaLabel?: string;
+
+  /**
+   * True means the nav link is currently expanded (visible), false means the nav link is currently collapsed (invisible)
+   */
+  ariaExpanded?: boolean;
+
+  /**
+   * Icon name for the icon shown on the left side of the nav link
+   */
+  primaryIconName?: string;
+
+  /**
+   * Icon name for the icon shown on the right side of the nav link
+   */
+  secondaryIconName?: string;
+
+  /**
+   * Has an L2 (nested) menu
+   */
+  hasNestedMenu?: boolean;
+
+  /**
+   * One of it's L2 links is selected (required for selected indicator)
+   */
+  hasSelectedNestedLink?: boolean;
+
+  /**
+   * Is an L2 (nested) link
+   */
+  isNested?: boolean;
+
+  /**
+   * Is an L1 in an expanded state
+   */
+  isExpanded?: boolean;
+
+  /**
+   * Either is the selected link, or the L1 with a selected L2
+   */
+  isSelected?: boolean;
+
+  /**
+   * Pays attention to Nav collapsed state to render the right selected indicator and nested menu
+   */
   isNavCollapsed?: boolean;
 }
 
-export interface INavLinkGroupStates {
+export interface INavLinkGroupProps extends INavLinkProps {
+  /**
+   * L1 link which contains all NavLink data and L2 links array
+   */
+  link: INavLink;
+
+  /**
+   * Takes this prop from NavGroup, uses it to set and manage L1 expanded/collapsed state
+   */
   isExpanded: boolean;
+
+  /**
+   * Pays attention to Nav collapsed state to render the nested L2 menu appropriately
+   */
+  isNavCollapsed?: boolean;
+
+  /**
+   * Receives this prop from NavGroup and passes it through to NavLink so NavLink knows how to render L1 selected indicator
+   */
+  hasNestedMenu?: boolean;
+
+  /**
+   * Receives this prop from NavGroup and passes it through to NavLink so NavLink knows how to render L2 selected indicator
+   */
   hasSelectedNestedLink?: boolean;
 }
 
-export interface INavLink extends INavLink {
+export interface INavLinkGroupStates {
   /**
-   * (Optional) Used to adjust the floating nav when the scrollbar appears
+   * Should be set on a link group when one of it's NavLink's is selected. NavLinkGroup reads this for default value for it's own state.
    */
-  scrollTop?: number;
-
+  isExpanded: boolean;
   /**
-   * (Optional) Show / hide the nav link
+   * Set to true when one of it's NavLink's is selected. This is used to manage when the selected indicator is visible or not.
    */
-  isHidden?: boolean;
-
-  /**
-   * (Optional) Localized alternate text for the name field.
-   */
-  alternateText?: string;
-
-  /**
-   * (Optional) To identify whether this link is show more/less and
-   * provide internal implementation to show/hide nav links based on isHidden property.
-   */
-  isShowMoreLink?: boolean;
-
-  /**
-   * (Optional) Provides an ability to toggle auto expand when the selectedKey prop is one of the child of this link
-   */
-  disableAutoExpand?: boolean;
+  hasSelectedNestedLink?: boolean;
 }
 
 export interface INavStyleProps {
   /**
-   * is element selected boolean
+   * When the Nav is collapsed
    */
-  isSelected?: boolean;
-
-  /**
-   * has children boolean
-   */
-  hasChildren?: boolean;
-
-  /**
-   * has group name
-   */
-  hasGroupName?: boolean;
-
-  /**
-   * has child be selected boolean
-   */
-  isChildLinkSelected?: boolean;
-
-  /**
-   * nesting level of the nav item in the nav tree
-   */
-  nestingLevel?: number;
-
-  /**
-   * is nav collapsed boolean
-   */
-  isCollapsed?: boolean;
-
-  /**
-   * if the component is hosted inside a scroll bar, send the scrollTop to position the floating nav relative to it's parent
-   */
-  scrollTop?: number;
-  isNavCollapsed?: boolean;
-  isExpanded?: boolean;
-}
-
-export interface INavGroupStyleProps {
-  linkCollapsed?: boolean;
-  groupName?: string;
-  groupIndex: number;
-  links: INavLink[];
-  enableCustomization?: boolean;
-  showMore?: boolean;
-  dataHint?: string;
   isNavCollapsed?: boolean;
 }
 
 export interface INavLinkGroupStyleProps {
+  /**
+   * Pays attention to the NavLinkGroup expanded/collapsed state
+   */
   isExpanded?: boolean;
-  isNavCollapsed?: boolean;
-  hasNestedMenu?: boolean;
-  hasSelectedNestedLink?: boolean;
-}
 
-export interface INavLinkStyleProps {
-  hasNestedMenu?: boolean;
-  hasSelectedNestedLink?: boolean;
-  isNested?: boolean;
-  isExpanded?: boolean;
-  isSelected?: boolean;
+  /**
+   * Pays attention to the Nav expanded/collapsed state
+   */
   isNavCollapsed?: boolean;
 }
 
@@ -236,127 +272,4 @@ export interface INavStyles {
   navItemText: IStyle;
   iconWrapper: IStyle;
   nestedIconWrapper: IStyle;
-}
-
-export interface INavGroupStyles {
-  /**
-   * Style set for the nav group separator
-   */
-  navGroupDivider: IStyle;
-
-  /**
-   * Style set for the group name in nav group separator
-   */
-  navGroupTitle: IStyle;
-  navItem: IStyle;
-  navItemWhenNavCollapsed: IStyle;
-}
-
-export interface INavLinkGroupStyles {
-  nestedNavMenu: IStyle;
-  nestedNavMenuCollapsed: IStyle;
-  nestedNavMenuWhenNavCollapsed: IStyle;
-  nestedNavLinksWhenNavCollapsed: IStyle;
-}
-
-export interface INavLinkStyles {
-  /**
-   * Style set for the nav item root
-   */
-
-  navLink: IStyle;
-  navLinkSmall: IStyle;
-  hidden: IStyle;
-
-  /**
-   * Style set for the bar marker in the nav item
-   */
-  navItemBarMarker: IStyle;
-  navItemBarMarkerSmall: IStyle;
-
-  /**
-   * Style set for the icon column in the nav item
-   */
-  navItemIcon: IStyle;
-
-  /**
-   * Style set for the name column in the nav item
-   */
-  navItemText: IStyle;
-
-  /**
-   * Style for navLink icons
-   */
-  iconWrapper: IStyle;
-}
-
-export interface INavLinkProps extends React.AllHTMLAttributes<HTMLAnchorElement> {
-  /**
-   * Used for telemetry
-   */
-  dataHint?: string;
-
-  /**
-   * Used for telemetry
-   */
-  dataValue?: string;
-
-  /**
-   * Used by the screen reader to describe the nav link
-   */
-  ariaLabel?: string;
-
-  /**
-   * True means the nav link is currently expanded (visible), false means the nav link is currently collapsed (invisible)
-   */
-  ariaExpanded?: boolean;
-
-  /**
-   * CSS class for the nav link container
-   */
-  rootClassName?: string;
-
-  /**
-   * Icon name for the icon shown on the left side of the nav link
-   */
-  primaryIconName?: string;
-
-  /**
-   * Icon name for the icon shown on the right side of the nav link
-   */
-  secondaryIconName?: string;
-
-  /**
-   * CSS class for the text part of the nav link
-   */
-  textClassName?: string;
-
-  /**
-   * CSS class for the icon part of the nav link
-   */
-  iconClassName?: string;
-
-  /**
-   * CSS class for the bar marker part of the nav link
-   */
-  barClassName?: string;
-
-  hasNestedMenu?: boolean;
-  hasSelectedNestedLink?: boolean;
-  isNested?: boolean;
-  isExpanded?: boolean;
-  isSelected?: boolean;
-  isNavCollapsed?: boolean;
-}
-
-export interface INavLinkStates {
-  isSelected?: boolean;
-}
-
-export interface INavLinkGroupProps extends INavLinkProps {
-  link: INavLink;
-  isExpanded: boolean;
-  isNavCollapsed?: boolean;
-  hasNestedMenu?: boolean;
-  hasSelectedNestedLink?: boolean;
 }

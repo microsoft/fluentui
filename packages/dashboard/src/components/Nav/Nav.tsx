@@ -16,8 +16,7 @@ class NavComponent extends React.Component<INavProps, INavState> {
     super(props);
 
     this.state = {
-      isNavCollapsed: this.props.isNavCollapsed ? this.props.isNavCollapsed : false,
-      showMore: this.props.showMore ? this.props.showMore : false
+      isNavCollapsed: this.props.isNavCollapsed ? this.props.isNavCollapsed : false
     };
   }
 
@@ -85,7 +84,7 @@ class NavComponent extends React.Component<INavProps, INavState> {
   }
 
   private _renderCustomizationLinks(): React.ReactElement<{}> | null {
-    const { enableCustomization, showMore, editLinkName, showMoreLinkName } = this.props;
+    const { enableCustomization, showMore, editString, showMoreString, showLessString } = this.props;
 
     if (!enableCustomization) {
       // If enable customization is not on, then don't render anything
@@ -99,7 +98,7 @@ class NavComponent extends React.Component<INavProps, INavState> {
           <NavLink
             id={'EditNav'}
             href={'#'}
-            name={editLinkName}
+            name={editString}
             onClick={this._editClicked.bind(this)}
             dataHint={'Edit navigation'}
             dataValue={'NavToggle'}
@@ -113,7 +112,7 @@ class NavComponent extends React.Component<INavProps, INavState> {
             <NavLink
               id={'ShowMore'}
               href={'#'}
-              name={showMoreLinkName}
+              name={this.props.showMore ? showMoreString : showLessString}
               onClick={this._toggleHidden.bind(this)}
               dataHint={'Show more'}
               dataValue={'Show more'}

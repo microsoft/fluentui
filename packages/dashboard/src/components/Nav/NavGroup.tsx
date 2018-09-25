@@ -1,12 +1,13 @@
 import * as React from 'react';
-import { INavGroupProps, INavStyles, INavLink, INavGroupStyleProps } from '@uifabric/dashboard/lib/components/Nav/Nav.types';
+import { INavGroupProps, INavStyles, INavProps } from './Nav.types';
 import { NavLink } from './NavLink';
 import { NavLinkGroup } from './NavLinkGroup';
 import { getStyles } from './Nav.styles';
+import { INavLink } from 'office-ui-fabric-react/lib/Nav';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-const getClassNames = classNamesFunction<INavGroupStyleProps, INavStyles>();
+const getClassNames = classNamesFunction<INavProps, INavStyles>();
 
 export class NavGroup extends React.Component<INavGroupProps, {}> {
   constructor(props: INavGroupProps) {
@@ -62,7 +63,7 @@ export class NavGroup extends React.Component<INavGroupProps, {}> {
     const { isNavCollapsed } = this.props;
     const keyStr = groupIndex.toString() + linkIndex.toString();
     const hasSelectedNestedLink = this._isNestedLinkSelected(link);
-    console.log(isNavCollapsed);
+
     return (
       // if there are nested links, render a NavLinkGroup, otherwise just render a NavLink
       <li
