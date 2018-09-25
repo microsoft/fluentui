@@ -32,11 +32,7 @@ export interface INavProps {
   dataHint?: string;
 
   /**
-   * (Optional) When enabled
-   * 1. Links will consider isHidden property to show/hide itself.
-   * 2. There will be a customization group with show more/less link to show/hide hidden links.
-   * 3. There will also be an edit nav link button. This is for the partner to implement the UX which
-   * will customize the isHidden property of the nav link (possibly through a flyout and refresh the Nav component).
+   * (Optional) Enables the Edit link
    */
   enableCustomization?: boolean;
 
