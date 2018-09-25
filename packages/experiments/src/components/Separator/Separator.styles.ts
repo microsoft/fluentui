@@ -3,6 +3,10 @@ import { ISeparatorStyleProps, ISeparatorStyles } from './Separator.types';
 export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
   const { theme, alignText, vertical } = props;
 
+  const alignStart = alignText === 'start';
+  const alignCenter = alignText === 'center';
+  const alignEnd = alignText === 'end';
+
   return {
     root: [
       {
@@ -14,13 +18,23 @@ export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
       !alignText && {
         textAlign: 'center'
       },
+      vertical &&
+        (alignCenter || !alignText) && {
+          verticalAlign: 'middle'
+        },
+      vertical &&
+        alignStart && {
+          verticalAlign: 'top'
+        },
+      vertical &&
+        alignEnd && {
+          verticalAlign: 'bottom'
+        },
       vertical && {
         padding: '0 5px',
         height: '200px',
-        textAlign: 'center',
-        zIndex: 1,
         display: 'table-cell',
-        verticalAlign: 'middle',
+        zIndex: 1,
         selectors: {
           ':after': {
             backgroundColor: theme!.palette.neutralLight,
