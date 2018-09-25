@@ -660,12 +660,15 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         getRTL(),
         (activeRect: ClientRect, targetRect: ClientRect) => {
           let distance = -1;
+          let topBottomComparison;
 
-          if (
-            targetRect.bottom > activeRect.top &&
-            targetRect.right <= activeRect.right &&
-            this.props.direction !== FocusZoneDirection.vertical
-          ) {
+          if (getRTL()) {
+            topBottomComparison = targetRect.top.toFixed(3) < activeRect.bottom.toFixed(3);
+          } else {
+            topBottomComparison = targetRect.bottom.toFixed(3) > activeRect.top.toFixed(3);
+          }
+
+          if (topBottomComparison && targetRect.right <= activeRect.right && this.props.direction !== FocusZoneDirection.vertical) {
             distance = activeRect.right - targetRect.right;
           } else {
             if (!shouldWrap) {
@@ -693,12 +696,15 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         !getRTL(),
         (activeRect: ClientRect, targetRect: ClientRect) => {
           let distance = -1;
+          let topBottomComparison;
 
-          if (
-            targetRect.top < activeRect.bottom &&
-            targetRect.left >= activeRect.left &&
-            this.props.direction !== FocusZoneDirection.vertical
-          ) {
+          if (getRTL()) {
+            topBottomComparison = targetRect.bottom.toFixed(3) > activeRect.top.toFixed(3);
+          } else {
+            topBottomComparison = targetRect.top.toFixed(3) < activeRect.bottom.toFixed(3);
+          }
+
+          if (topBottomComparison && targetRect.left >= activeRect.left && this.props.direction !== FocusZoneDirection.vertical) {
             distance = targetRect.left - activeRect.left;
           } else if (!shouldWrap) {
             distance = LARGE_NEGATIVE_DISTANCE_FROM_CENTER;
