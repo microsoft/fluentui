@@ -69,12 +69,14 @@ export class NavLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGr
           isExpanded={this.state.isExpanded}
           role="menuitem"
         />
-        <div className={classNames.nestedNavLinksWhenNavCollapsed}>
-          {!!link.links
-            ? link.links.map((nestedLink: INavLink, linkIndex: number) => {
-                return this._renderNestedLinks(nestedLink, linkIndex);
-              })
-            : null}
+        <div className={classNames.nestedNavLinksWrapper}>
+          <ul className={classNames.nestedNavLinksWhenNavCollapsed}>
+            {!!link.links
+              ? link.links.map((nestedLink: INavLink, linkIndex: number) => {
+                  return this._renderNestedLinks(nestedLink, linkIndex);
+                })
+              : null}
+          </ul>
         </div>
       </div>
     );

@@ -221,6 +221,7 @@ export interface INavStyles {
   nestedNavMenu: IStyle;
   nestedNavMenuCollapsed: IStyle;
   nestedNavMenuWhenNavCollapsed: IStyle;
+  nestedNavLinksWrapper: IStyle;
   nestedNavLinksWhenNavCollapsed: IStyle;
 
   /**
