@@ -3,7 +3,7 @@
     {
       "packageName": "office-ui-fabric-react",
       "comment": "Dropdown: prevent dropdown to open on keyboard events when in disabled mode.",
-      "type": "minor"
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
