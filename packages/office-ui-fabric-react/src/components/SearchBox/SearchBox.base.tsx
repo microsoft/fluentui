@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
-import { BaseComponent, getId, KeyCodes, classNamesFunction, createRef } from '../../Utilities';
+import { BaseComponent, getId, KeyCodes, classNamesFunction, createRef, getNativeProps, inputProperties } from '../../Utilities';
 
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
@@ -82,6 +82,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
           <Icon iconName="Search" {...iconProps} className={classNames.icon} />
         </div>
         <input
+          {...getNativeProps(this.props, inputProperties)}
           id={id}
           className={classNames.field}
           placeholder={placeholderValue}
