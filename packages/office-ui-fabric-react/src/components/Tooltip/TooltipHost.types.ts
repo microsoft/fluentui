@@ -4,6 +4,7 @@ import { TooltipDelay, ITooltipProps } from './Tooltip.types';
 import { ICalloutProps } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IRefObject } from '../../Utilities';
+import { IRawStyle } from '../../Styling';
 
 export interface ITooltipHost {}
 
@@ -67,7 +68,7 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
    * at the base line of the wrapped element. If line-heights of both don't match it will render not in the intended position.
    * @default 'inline'
    */
-  display?: 'inline' | 'inline-block' | 'block';
+  display?: IRawStyle['display'];
 
   /**
    * Optional class name to apply to tooltip host.
