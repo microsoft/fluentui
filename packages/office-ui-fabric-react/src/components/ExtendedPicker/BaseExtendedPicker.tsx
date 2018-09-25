@@ -158,7 +158,6 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
       inputElement: this.input.current ? this.input.current.inputElement : undefined,
       selectedItems: this.items,
       suggestionItems: this.props.suggestionItems ? this.props.suggestionItems : undefined,
-      currentRenderedQueryString: this.props.currentRenderedQueryString,
       ...this.floatingPickerProps
     });
   }

@@ -140,11 +140,6 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
    * If using as a controlled component, the items to show in the suggestion list
    */
   suggestionItems?: T[];
-
-  /**
-   * Current rendered query string that's corealte to current rendered result
-   **/
-  currentRenderedQueryString?: string;
 }
 
 export interface IBaseFloatingPickerSuggestionProps {
