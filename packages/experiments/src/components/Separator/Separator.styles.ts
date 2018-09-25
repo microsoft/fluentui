@@ -11,18 +11,45 @@ export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
       !alignText && {
         textAlign: 'center'
       },
-      vertical && {},
-      {
+      vertical && {
         position: 'relative',
-        padding: '5px',
+        paddingTop: '20%',
+        paddingBottom: '20%',
+        zIndex: '1',
+        textAlign: 'center',
+        display: 'block',
+        height: '40px',
+        selectors: {
+          ':before': {
+            backgroundColor: theme!.palette.neutralLight,
+            width: '1px',
+            height: '100%',
+            content: '""',
+            position: 'absolute',
+            top: '0',
+            bottom: '0',
+            left: '50%',
+            right: '0',
+            zIndex: '-1'
+          }
+        }
+      },
+      !vertical && {
+        position: 'relative',
+        paddingTop: '5px',
+        paddingBottom: '5px',
         display: 'block',
         selectors: {
           ':before': {
-            borderTop: `1px solid ${theme!.palette.neutralLight}`,
+            backgroundColor: theme!.palette.neutralLight,
+            height: '1px',
             content: '""',
             display: 'block',
-            position: 'relative',
-            top: '12px'
+            position: 'absolute',
+            top: '50%',
+            bottom: '0',
+            left: '0',
+            right: '0'
           }
         }
       }
@@ -42,25 +69,15 @@ export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
         textAlign: 'end'
       }
     ],
-    isVertical: [
-      {
-        textAlign: 'center',
-        position: 'relative',
-        padding: '5px',
-        display: 'block',
-        selectors: {
-          ':before': {
-            borderLeft: `1px solid ${theme!.palette.neutralLight}`,
-            content: '""',
-            display: 'block',
-            position: 'relative'
-            // left: '12px'
-          }
-        }
-      }
-    ],
     text: [
-      {
+      vertical && {
+        position: 'relative',
+        display: 'inline-block',
+        fontSize: '16px',
+        padding: '20px 0',
+        background: 'white'
+      },
+      !vertical && {
         position: 'relative',
         display: 'inline-block',
         fontSize: '16px',

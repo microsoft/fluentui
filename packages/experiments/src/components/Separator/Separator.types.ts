@@ -72,11 +72,6 @@ export interface ISeparatorStyles {
   root?: IStyle;
 
   /**
-   * Style for vertical separator.
-   */
-  isVertical?: IStyle;
-
-  /**
    * Text align
    */
   center?: IStyle;

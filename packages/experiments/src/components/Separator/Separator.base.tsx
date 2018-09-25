@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IProcessedStyleSet, mergeStyles } from '../../Styling';
+import { IProcessedStyleSet } from '../../Styling';
 import { BaseComponent, classNamesFunction } from '../../Utilities';
 import { ISeparatorProps, ISeparatorStyles, ISeparatorStyleProps } from './Separator.types';
 

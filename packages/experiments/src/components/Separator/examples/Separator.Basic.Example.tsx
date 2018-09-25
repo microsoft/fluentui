@@ -17,6 +17,8 @@ export class SeparatorBasicExample extends React.Component<{}, {}> {
         <Separator text={message} alignText="start" />
         <p>Right aligned</p>
         <Separator text={message} alignText="end" />
+        <p>Vertical</p>
+        <Separator vertical text={message} />
       </div>
     );
   }
