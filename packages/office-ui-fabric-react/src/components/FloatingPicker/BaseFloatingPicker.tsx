@@ -216,9 +216,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   }
 
   protected onChange(item: T): void {
-    const currentRenderedQueryString = this.props.currentRenderedQueryString;
-    const queryString = this.state.queryString;
-    if (this.props.onChange && currentRenderedQueryString !== undefined && currentRenderedQueryString === queryString) {
+    if (this.props.onChange) {
       (this.props.onChange as ((items: T) => void))(item);
     }
   }

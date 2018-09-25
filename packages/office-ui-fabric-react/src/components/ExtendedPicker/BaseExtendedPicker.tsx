@@ -12,6 +12,7 @@ import { Selection, SelectionMode, SelectionZone } from '../../Selection';
 const styles: any = stylesImport;
 
 export interface IBaseExtendedPickerState<T> {
+  queryString: string | null;
   selectedItems: T[] | null;
   suggestionItems: T[] | null;
 }
@@ -33,6 +34,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     this.selection = new Selection({ onSelectionChanged: () => this.onSelectionChange() });
 
     this.state = {
+      queryString: '',
       suggestionItems: this.props.suggestionItems ? (this.props.suggestionItems as T[]) : null,
       selectedItems: this.props.defaultSelectedItems
         ? (this.props.defaultSelectedItems as T[])
@@ -173,6 +175,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   }
 
   protected onInputChange = (value: string): void => {
+    this.setState({ queryString: value });
     if (this.floatingPicker.current) {
       this.floatingPicker.current.onQueryStringChanged(value);
     }
@@ -247,24 +250,28 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   };
 
   protected _onSuggestionSelected = (item: T): void => {
-    const processedItem: T | PromiseLike<T> | null = this.props.onItemSelected ? (this.props.onItemSelected as any)(item) : item;
+    const currentRenderedQueryString = this.props.currentRenderedQueryString;
+    const queryString = this.state.queryString;
+    if (currentRenderedQueryString !== undefined && currentRenderedQueryString === queryString) {
+      const processedItem: T | PromiseLike<T> | null = this.props.onItemSelected ? (this.props.onItemSelected as any)(item) : item;
 
-    if (processedItem === null) {
-      return;
-    }
+      if (processedItem === null) {
+        return;
+      }
 
-    const processedItemObject: T = processedItem as T;
-    const processedItemPromiseLike: PromiseLike<T> = processedItem as PromiseLike<T>;
+      const processedItemObject: T = processedItem as T;
+      const processedItemPromiseLike: PromiseLike<T> = processedItem as PromiseLike<T>;
 
-    let newItem: T;
-    if (processedItemPromiseLike && processedItemPromiseLike.then) {
-      processedItemPromiseLike.then((resolvedProcessedItem: T) => {
-        newItem = resolvedProcessedItem;
+      let newItem: T;
+      if (processedItemPromiseLike && processedItemPromiseLike.then) {
+        processedItemPromiseLike.then((resolvedProcessedItem: T) => {
+          newItem = resolvedProcessedItem;
+          this._addProcessedItem(newItem);
+        });
+      } else {
+        newItem = processedItemObject;
         this._addProcessedItem(newItem);
-      });
-    } else {
-      newItem = processedItemObject;
-      this._addProcessedItem(newItem);
+      }
     }
   };
 
