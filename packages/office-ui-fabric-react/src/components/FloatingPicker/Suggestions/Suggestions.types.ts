@@ -87,11 +87,6 @@ export interface ISuggestionsControlProps<T> extends React.Props<any>, ISuggesti
    * Completes the suggestion
    */
   completeSuggestion: () => void;
-
-  /**
-   * Flag indicates if render suggestions as a div element
-   */
-  renderSuggestionsItemAsDiv?: boolean;
 }
 
 export interface ISuggestionsHeaderFooterProps {
