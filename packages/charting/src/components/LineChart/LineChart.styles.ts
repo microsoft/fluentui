@@ -1,7 +1,7 @@
 import { ILineChartStyleProps, ILineChartStyles } from './LineChart.types';
 
 export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
-  const { className, theme, width, height } = props;
+  const { className, theme, width, height, color } = props;
   const { palette, fonts } = theme!;
 
   const chartPadding = 30;
@@ -62,13 +62,15 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
       {
         transform: `translate(0px,13px)`,
         lineHeight: '12px',
-        ...fonts.tiny
+        ...fonts.tiny,
+        fontFamily: 'Segoe UI'
       }
     ],
     yAxisText: [
       {
         lineHeight: '12px',
-        ...fonts.tiny
+        ...fonts.tiny,
+        fontFamily: 'Segoe UI'
       }
     ],
     lines: [
@@ -78,8 +80,7 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
     ],
     legendContainer: [
       {
-        marginTop: '10px',
-        paddingLeft: '15%'
+        marginTop: '10px'
       }
     ],
     calloutPadding: [
@@ -87,7 +88,6 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
         padding: '10px 16px 10px 16px',
         backgroundColor: palette.white,
         fontSize: fonts.xxLarge.fontSize,
-        color: palette.blue,
         fontFamily: fonts.xxLarge.fontFamily,
         fontWeight: 'bold'
       }
@@ -100,17 +100,17 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
     ],
     calloutContentX: [
       {
-        fontSize: fonts.small.fontSize,
-        fontFamily: fonts.small.fontFamily,
-        lineHeight: '14px',
-        marginBottom: '2.9px'
+        ...fonts.medium,
+        lineHeight: '14px'
       }
     ],
     calloutContentY: [
       {
-        fontSize: fonts.xxLarge.fontSize,
-        fontFamily: fonts.xxLarge.fontFamily,
-        lineHeight: '33px'
+        color: color === '' ? palette.black : color,
+        fontSize: '28px',
+        fontFamily: 'Segoe UI',
+        fontWeight: 'bold',
+        lineHeight: '31px'
       }
     ]
   };
