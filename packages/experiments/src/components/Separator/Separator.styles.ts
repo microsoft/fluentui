@@ -1,7 +1,7 @@
 import { ISeparatorStyleProps, ISeparatorStyles } from './Separator.types';
 
 export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
-  const { theme, alignText, vertical } = props;
+  const { theme, alignText, vertical, className } = props;
 
   const alignStart = alignText === 'start';
   const alignCenter = alignText === 'center';
@@ -64,7 +64,8 @@ export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
             right: '0'
           }
         }
-      }
+      },
+      className
     ],
     text: [
       {
