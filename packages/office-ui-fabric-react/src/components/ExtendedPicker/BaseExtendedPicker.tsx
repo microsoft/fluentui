@@ -251,7 +251,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   protected _onSuggestionSelected = (item: T): void => {
     const currentRenderedQueryString = this.props.currentRenderedQueryString;
     const queryString = this.state.queryString;
-    if (currentRenderedQueryString !== undefined && currentRenderedQueryString === queryString) {
+    if (currentRenderedQueryString === undefined || currentRenderedQueryString === queryString) {
       const processedItem: T | PromiseLike<T> | null = this.props.onItemSelected ? (this.props.onItemSelected as any)(item) : item;
 
       if (processedItem === null) {
