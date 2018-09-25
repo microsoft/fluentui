@@ -3,12 +3,14 @@ import { TooltipCustomExample } from './examples/Tooltip.Custom.Example';
 
 import { IDocPageProps } from '../../common/DocPage.types';
 import { TooltipBasicExample } from './examples/Tooltip.Basic.Example';
+import { TooltipDisplayExample } from './examples/Tooltip.Display.Example';
 import { TooltipInteractiveExample } from './examples/Tooltip.Interactive.Example';
 import { TooltipOverflowExample } from './examples/Tooltip.Overflow.Example';
 import { TooltipNoScrollExample } from './examples/Tooltip.NoScroll.Example';
 import { TooltipStatus } from './Tooltip.checklist';
 
 const TooltipBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Basic.Example.tsx') as string;
+const TooltipDisplayExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Display.Example.tsx') as string;
 const TooltipBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Tooltip/Tooltip.Basic.Example.Codepen.txt') as string;
 const TooltipCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Custom.Example.tsx') as string;
 const TooltipInteractiveExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Interactive.Example.tsx') as string;
@@ -26,6 +28,11 @@ export const TooltipPageProps: IDocPageProps = {
       code: TooltipBasicExampleCode,
       view: <TooltipBasicExample />,
       codepenJS: TooltipBasicExampleCodepen
+    },
+    {
+      title: 'Tooltip with display prop',
+      code: TooltipDisplayExampleCode,
+      view: <TooltipDisplayExample />
     },
     {
       title: 'Tooltip with list',

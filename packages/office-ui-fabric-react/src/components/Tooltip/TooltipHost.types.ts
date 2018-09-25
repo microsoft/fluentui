@@ -31,26 +31,23 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
   calloutProps?: ICalloutProps;
 
   /**
-   * Additional properties to pass through for Tooltip, reference detail properties in ITooltipProps
+   * Optionally a number of milliseconds to delay closing the tooltip, so that
+   * the user has time to hover over the tooltip and interact with it. Hovering
+   * over the tooltip will count as hovering over the host, so that the tooltip
+   * will stay open if the user is actively interacting with it.
    */
-  tooltipProps?: ITooltipProps;
+  closeDelay?: number;
 
   /**
-   * Whether or not to mark the container as described by the tooltip.
-   * If not specified, the caller should mark as element as described by the tooltip id.
+   * String to be passed to the tooltip
    */
-  setAriaDescribedBy?: boolean;
+  content?: string;
 
   /**
    * Length of delay
    * @default medium
    */
   delay?: TooltipDelay;
-
-  /**
-   * String to be passed to the tooltip
-   */
-  content?: string;
 
   /**
    * Indicator of how the tooltip should be anchored to its targetElement.
@@ -64,10 +61,13 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
   directionalHintForRTL?: DirectionalHint;
 
   /**
-   * Only show if there is overflow. If set, the tooltip hosts observes  and only shows the tooltip if this element has overflow.
-   * It also uses the parent as target element for the tooltip.
+   * Display property to be applied to the host wrapper div.
+   * When wrapping elements which have display 'inline' or 'inline-block' there are instances when Tooltip covers the target when rendered.
+   * This happens due to default value 'inline' of the wrapper which computes it's line-height from the inherited font-size and being placed
+   * at the base line of the wrapped element. If line-heights of both don't match it will render not in the intended position.
+   * @default 'inline'
    */
-  overflowMode?: TooltipOverflowMode;
+  display?: 'inline' | 'inline-block' | 'block';
 
   /**
    * Optional class name to apply to tooltip host.
@@ -75,12 +75,21 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
   hostClassName?: string;
 
   /**
-   * Optionally a number of milliseconds to delay closing the tooltip, so that
-   * the user has time to hover over the tooltip and interact with it. Hovering
-   * over the tooltip will count as hovering over the host, so that the tooltip
-   * will stay open if the user is actively interacting with it.
+   * Only show if there is overflow. If set, the tooltip hosts observes  and only shows the tooltip if this element has overflow.
+   * It also uses the parent as target element for the tooltip.
    */
-  closeDelay?: number;
+  overflowMode?: TooltipOverflowMode;
+
+  /**
+   * Whether or not to mark the container as described by the tooltip.
+   * If not specified, the caller should mark as element as described by the tooltip id.
+   */
+  setAriaDescribedBy?: boolean;
+
+  /**
+   * Additional properties to pass through for Tooltip, reference detail properties in ITooltipProps
+   */
+  tooltipProps?: ITooltipProps;
 
   /**
    * Notifies when tooltip becomes visible or hidden, whatever the trigger was.

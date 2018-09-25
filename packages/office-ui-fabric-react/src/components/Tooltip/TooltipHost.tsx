@@ -14,16 +14,14 @@ import { ITooltipHostProps, TooltipOverflowMode } from './TooltipHost.types';
 import { Tooltip } from './Tooltip';
 import { TooltipDelay } from './Tooltip.types';
 
-import * as stylesImport from './TooltipHost.scss';
-const styles: any = stylesImport;
-
 export interface ITooltipHostState {
   isTooltipVisible: boolean;
 }
 
 export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostState> {
   public static defaultProps = {
-    delay: TooltipDelay.medium
+    delay: TooltipDelay.medium,
+    display: 'inline'
   };
 
   // The wrapping div that gets the hover events
@@ -51,6 +49,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
       delay,
       directionalHint,
       directionalHintForRTL,
+      display,
       hostClassName,
       id,
       setAriaDescribedBy = true,
@@ -58,22 +57,20 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
     } = this.props;
     const { isTooltipVisible } = this.state;
     const tooltipId = id || getId('tooltip');
-    const isContentPresent = !!(
-      content ||
-      (tooltipProps && tooltipProps.onRenderContent && tooltipProps.onRenderContent())
-    );
+    const isContentPresent = !!(content || (tooltipProps && tooltipProps.onRenderContent && tooltipProps.onRenderContent()));
     const showTooltip = isTooltipVisible && isContentPresent;
     const ariaDescribedBy = setAriaDescribedBy && isTooltipVisible && isContentPresent ? tooltipId : undefined;
 
     return (
       <div
-        className={css('ms-TooltipHost', styles.host, hostClassName)}
+        className={css('ms-TooltipHost', hostClassName)}
         ref={this._tooltipHost}
         {...{ onFocusCapture: this._onTooltipMouseEnter }}
         {...{ onBlurCapture: this._hideTooltip }}
         onMouseEnter={this._onTooltipMouseEnter}
         onMouseLeave={this._onTooltipMouseLeave}
         aria-describedby={ariaDescribedBy}
+        style={{ display: display }}
       >
         {children}
         {showTooltip && (
@@ -164,10 +161,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
 
   private _toggleTooltip(isTooltipVisible: boolean): void {
     if (this.state.isTooltipVisible !== isTooltipVisible) {
-      this.setState(
-        { isTooltipVisible },
-        () => this.props.onTooltipToggle && this.props.onTooltipToggle(this.state.isTooltipVisible)
-      );
+      this.setState({ isTooltipVisible }, () => this.props.onTooltipToggle && this.props.onTooltipToggle(this.state.isTooltipVisible));
     }
   }
 }
