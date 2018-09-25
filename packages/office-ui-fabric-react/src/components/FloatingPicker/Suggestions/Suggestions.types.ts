@@ -12,7 +12,7 @@ export interface ISuggestionsCoreProps<T> extends React.Props<any> {
   /**
    * How the suggestion should look in the suggestion list.
    */
-  onRenderSuggestion?: (props: T, suggestionItemProps: any) => JSX.Element;
+  onRenderSuggestion?: (props: T, suggestionItemProps: T) => JSX.Element;
   /**
    * What should occur when a suggestion is clicked
    */
@@ -87,6 +87,11 @@ export interface ISuggestionsControlProps<T> extends React.Props<any>, ISuggesti
    * Completes the suggestion
    */
   completeSuggestion: () => void;
+
+  /**
+   * Flag indicates if render suggestions as a div element
+   */
+  renderSuggestionsItemAsDiv?: boolean;
 }
 
 export interface ISuggestionsHeaderFooterProps {

@@ -132,9 +132,4 @@ export interface IBaseExtendedPickerProps<T> {
    * Current rendered query string that's corealte to current rendered result
    **/
   currentRenderedQueryString?: string;
-
-  /**
-   * Flag indicates if render suggestions as a div element
-   */
-  renderSuggestionsItemAsDiv?: boolean;
 }

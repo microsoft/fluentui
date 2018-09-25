@@ -147,24 +147,18 @@ export class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, 
             role="listitem"
             aria-label={suggestion.ariaLabel}
           >
-            {renderSuggestionsItemAsDiv && onRenderSuggestion ? (
-              onRenderSuggestion(suggestion.item, {
-                suggestionModel: suggestion,
-                onClick: this._onClickTypedSuggestionsItem(suggestion.item, index)
-              })
-            ) : (
-              <TypedSuggestionsItem
-                id={'sug-item' + index}
-                suggestionModel={suggestion}
-                // tslint:disable-next-line:no-any
-                RenderSuggestion={onRenderSuggestion as any}
-                onClick={this._onClickTypedSuggestionsItem(suggestion.item, index)}
-                className={suggestionsItemClassName}
-                showRemoveButton={showRemoveButtons}
-                onRemoveItem={this._onRemoveTypedSuggestionsItem(suggestion.item, index)}
-                isSelectedOverride={index === this.currentIndex}
-              />
-            )}
+            <TypedSuggestionsItem
+              renderSuggestionsItemAsDiv={renderSuggestionsItemAsDiv}
+              id={'sug-item' + index}
+              suggestionModel={suggestion}
+              // tslint:disable-next-line:no-any
+              RenderSuggestion={onRenderSuggestion as any}
+              onClick={this._onClickTypedSuggestionsItem(suggestion.item, index)}
+              className={suggestionsItemClassName}
+              showRemoveButton={showRemoveButtons}
+              onRemoveItem={this._onRemoveTypedSuggestionsItem(suggestion.item, index)}
+              isSelectedOverride={index === this.currentIndex}
+            />
           </div>
         ))}
       </div>
