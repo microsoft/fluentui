@@ -133,8 +133,9 @@ export const getStyles = (props: INavStyleProps & INavLinkProps): INavStyles => 
       marginTop: '-48px',
       backgroundColor: 'rgba(255,255,255,.95)',
       selectors: {
-        '@supports(backdrop-filter: blur(20px))': {
+        '@supports((backdrop-filter: blur(20px)) or (-webkit-backdrop-filter: blur(20px)))': {
           backgroundColor: 'rgba(255,255,255,.8)',
+          webkitBackdropFilter: 'blur(20px) saturate(125%)',
           backdropFilter: 'blur(20px) saturate(125%)'
         }
       }
