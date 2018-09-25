@@ -1,4 +1,4 @@
-expect(test(fnB)).toEqual(2);import { memoize, memoizeFunction } from './memoize';
+import { memoize, memoizeFunction } from './memoize';
 
 describe('memoizeFunction', () => {
   it('can return a cached result with a no args function', () => {
