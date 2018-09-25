@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { INavGroupProps, INavStyles, INavLink, INavGroupStyleProps } from '@uifabric/dashboard/lib/components/Nav/Nav.types';
-import { NavLink } from '../NavLink/NavLink';
-import { NavLinkGroup } from '../NavLinkGroup/NavLinkGroup';
-import { getStyles } from '../Nav.styles';
+import { NavLink } from './NavLink';
+import { NavLinkGroup } from './NavLinkGroup';
+import { getStyles } from './Nav.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 

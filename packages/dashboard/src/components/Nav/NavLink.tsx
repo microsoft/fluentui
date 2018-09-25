@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import { INavStyles, INavLinkProps, INavLinkStyleProps, INavLinkStates } from '../Nav.types';
-import { getStyles } from '../Nav.styles';
+import { INavStyles, INavLinkProps, INavLinkStyleProps, INavLinkStates } from './Nav.types';
+import { getStyles } from './Nav.styles';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 

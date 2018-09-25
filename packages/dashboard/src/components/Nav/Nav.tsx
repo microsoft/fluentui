@@ -4,8 +4,8 @@ import { INavLinkGroup } from 'office-ui-fabric-react/lib/Nav';
 import { INavProps, INavStyleProps, INavStyles, INavState } from './Nav.types';
 import { getStyles } from './Nav.styles';
 import { styled, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { NavLink } from './NavLink/NavLink';
-import { NavGroup } from '@uifabric/dashboard/lib/components/Nav/NavGroup/NavGroup';
+import { NavLink } from './NavLink';
+import { NavGroup } from './NavGroup';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();

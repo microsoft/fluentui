@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { INavLink, INavLinkGroupProps, INavLinkGroupStates, INavLinkGroupStyleProps, INavStyles } from '../Nav.types';
-import { NavLink } from '../NavLink/NavLink';
-import { getStyles } from '../Nav.styles';
+import { INavLink, INavLinkGroupProps, INavLinkGroupStates, INavLinkGroupStyleProps, INavStyles } from './Nav.types';
+import { NavLink } from './NavLink';
+import { getStyles } from './Nav.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 const getClassNames = classNamesFunction<INavLinkGroupStyleProps, INavStyles>();
