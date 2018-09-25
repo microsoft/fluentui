@@ -1,6 +1,28 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Mon, 17 Sep 2018 12:27:05 GMT and should not be manually modified.
+This log was last generated on Mon, 24 Sep 2018 12:27:31 GMT and should not be manually modified.
+
+## 0.25.5
+Mon, 24 Sep 2018 12:27:31 GMT
+
+### Patches
+
+- change lineHeight for card headerText
+
+## 0.25.4
+Fri, 21 Sep 2018 14:25:46 GMT
+
+### Patches
+
+- Adding a version stamp file
+- Remove drag on menu button on card frame and link button 
+
+## 0.25.3
+Thu, 20 Sep 2018 12:25:33 GMT
+
+### Patches
+
+- Add target for cardHeader title in dashboard package
 
 ## 0.25.2
 Mon, 17 Sep 2018 12:27:05 GMT

@@ -743,6 +743,9 @@ export function merge<T = {}>(target: Partial<T>, ...args: (Partial<T> | null | 
 // @public
 export function mergeAriaAttributeValues(...ariaAttributes: (string | undefined)[]): string | undefined;
 
+// @public (undocumented)
+export function mergeCustomizations(props: ICustomizerProps, parentContext: ICustomizerContext): ICustomizerContext;
+
 // @public
 export function nullRender(): JSX.Element | null;
 
@@ -845,6 +848,7 @@ export function warnMutuallyExclusive<P>(componentName: string, props: P, exclus
 // WARNING: Unsupported export: CustomizerContext
 // WARNING: Unsupported export: ICustomizerProps
 // WARNING: Unsupported export: IClassNames
+// WARNING: Unsupported export: IComponentAsProps
 // WARNING: Unsupported export: IComponentAs
 // WARNING: Unsupported export: IStyleFunction
 // WARNING: Unsupported export: IRefObject

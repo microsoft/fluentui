@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Panel: pass click events to onDismiss handler",
+      "comment": "ResizeGroup: Remove classNamesFunction from ResizeGroup",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "deanverleger@gmail.com"
+  "email": "edwl@microsoft.com"
 }

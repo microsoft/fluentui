@@ -1,6 +1,24 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 18 Sep 2018 12:26:03 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Sep 2018 14:25:46 GMT and should not be manually modified.
+
+## 6.27.0
+Fri, 21 Sep 2018 14:25:46 GMT
+
+### Minor changes
+
+- Add schemes to ITheme with helper utility.
+
+### Patches
+
+- Adding a version stamp file
+
+## 6.26.0
+Wed, 19 Sep 2018 12:27:48 GMT
+
+### Minor changes
+
+- Theming: add ISpacing interface and spacing property
 
 ## 6.25.0
 Tue, 18 Sep 2018 12:26:03 GMT

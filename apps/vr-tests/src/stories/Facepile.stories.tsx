@@ -50,34 +50,34 @@ storiesOf('Facepile', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
-      steps={ new Screener.Steps()
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .end()
       }
     >
-      { story() }
+      {story()}
     </Screener>
   ))
-  .add('Root', () => (
+  .addStory('Root', () => (
     <Facepile {...facepileProps} />
+  ), { rtl: true })
+  .addStory('Extra extra small', () => (
+    <Facepile {...facepileProps} personaSize={PersonaSize.size24} />
   ))
-  .add('Extra extra small', () => (
-    <Facepile {...facepileProps} personaSize={ PersonaSize.size24 } />
-  ))
-  .add('Overflow', () => (
+  .addStory('Overflow', () => (
     <Facepile
       {...facepileProps}
-      maxDisplayablePersonas={ 3 }
-      overflowButtonType={ OverflowButtonType.downArrow }
-      overflowButtonProps={ {
+      maxDisplayablePersonas={3}
+      overflowButtonType={OverflowButtonType.downArrow}
+      overflowButtonProps={{
         ariaLabel: 'More users',
       }
       }
     />
   ))
-  .add('Add face', () => (
+  .addStory('Add face', () => (
     <Facepile
       {...facepileProps}
-      showAddButton={ true }
+      showAddButton={true}
     />
   ));

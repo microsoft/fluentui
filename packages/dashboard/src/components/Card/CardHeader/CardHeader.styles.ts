@@ -14,7 +14,7 @@ export const getStyles = (props: ICardHeaderProps): ICardHeaderStyles => {
     },
     headerText: {
       fontSize: fontSize === FontSize.medium ? '16px' : '28px',
-      lineHeight: fontSize === FontSize.medium ? '21px' : '38px',
+      lineHeight: '38px',
       fontFamily: 'Segoe UI',
       marginRight: '16px',
       color: '#000000',

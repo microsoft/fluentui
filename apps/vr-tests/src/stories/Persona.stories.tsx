@@ -19,160 +19,160 @@ storiesOf('Persona', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
-      steps={ new Screener.Steps()
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .end()
       }
     >
-      { story() }
+      {story()}
     </Screener>
   ))
-  .add('size10 (tiny)', () => (
+  .addStory('size10 (tiny)', () => (
     <div>
       <Persona
-        { ...examplePersona }
-        size={ PersonaSize.size10 }
-        presence={ PersonaPresence.offline }
+        {...examplePersona}
+        size={PersonaSize.size10}
+        presence={PersonaPresence.offline}
       />
       <Persona
-        { ...examplePersona }
-        size={ PersonaSize.tiny }
-        presence={ PersonaPresence.offline }
+        {...examplePersona}
+        size={PersonaSize.tiny}
+        presence={PersonaPresence.offline}
       />
     </div>
-  )).add('size24 (extraExtraSmall)', () => (
+  )).addStory('size24 (extraExtraSmall)', () => (
     <div>
       <Persona
-        { ...examplePersona }
-        size={ PersonaSize.size24 }
-        presence={ PersonaPresence.none }
+        {...examplePersona}
+        size={PersonaSize.size24}
+        presence={PersonaPresence.none}
       />
       <Persona
-        { ...examplePersona }
-        size={ PersonaSize.extraExtraSmall }
-        presence={ PersonaPresence.none }
+        {...examplePersona}
+        size={PersonaSize.extraExtraSmall}
+        presence={PersonaPresence.none}
       />
     </div>
-  )).add('size28 (extraSmall)', () => (
+  )).addStory('size28 (extraSmall)', () => (
     <div>
       <Persona
-        { ...examplePersona }
-        size={ PersonaSize.size28 }
-        presence={ PersonaPresence.none }
+        {...examplePersona}
+        size={PersonaSize.size28}
+        presence={PersonaPresence.none}
       />
       <Persona
-        { ...examplePersona }
-        size={ PersonaSize.extraSmall }
-        presence={ PersonaPresence.none }
+        {...examplePersona}
+        size={PersonaSize.extraSmall}
+        presence={PersonaPresence.none}
       />
     </div>
-  )).add('size32', () => (
+  )).addStory('size32', () => (
     <Persona
-      { ...examplePersona }
-      size={ PersonaSize.size32 }
-      presence={ PersonaPresence.online }
+      {...examplePersona}
+      size={PersonaSize.size32}
+      presence={PersonaPresence.online}
     />
-  )).add('size40 (small)', () => (
+  )).addStory('size40 (small)', () => (
     <div>
       <Persona
-        { ...examplePersona }
-        size={ PersonaSize.size40 }
-        presence={ PersonaPresence.none }
+        {...examplePersona}
+        size={PersonaSize.size40}
+        presence={PersonaPresence.none}
         showSecondaryText
       />
       <Persona
-        { ...examplePersona }
-        size={ PersonaSize.small }
-        presence={ PersonaPresence.none }
+        {...examplePersona}
+        size={PersonaSize.small}
+        presence={PersonaPresence.none}
         showSecondaryText
       />
     </div>
-  )).add('size48 (regular)', () => (
+  )).addStory('size48 (regular)', () => (
     <div>
       <Persona
-        { ...examplePersona }
-        size={ PersonaSize.size48 }
-        presence={ PersonaPresence.away }
+        {...examplePersona}
+        size={PersonaSize.size48}
+        presence={PersonaPresence.away}
       />
       <Persona
-        { ...examplePersona }
-        size={ PersonaSize.regular }
-        presence={ PersonaPresence.away }
+        {...examplePersona}
+        size={PersonaSize.regular}
+        presence={PersonaPresence.away}
       />
     </div>
-  )).add('default size, presences', () => (
+  )).addStory('default size, presences', () => (
     <div>
       <Persona
-        { ...examplePersona }
+        {...examplePersona}
         text='PersonaPresence.away'
-        presence={ PersonaPresence.away }
+        presence={PersonaPresence.away}
       />
       <Persona
-        { ...examplePersona }
+        {...examplePersona}
         text='PersonaPresence.blocked'
-        presence={ PersonaPresence.blocked }
+        presence={PersonaPresence.blocked}
       />
       <Persona
-        { ...examplePersona }
+        {...examplePersona}
         text='PersonaPresence.busy'
-        presence={ PersonaPresence.busy }
+        presence={PersonaPresence.busy}
       />
       <Persona
-        { ...examplePersona }
+        {...examplePersona}
         text='PersonaPresence.dnd'
-        presence={ PersonaPresence.dnd }
+        presence={PersonaPresence.dnd}
       />
       <Persona
-        { ...examplePersona }
+        {...examplePersona}
         text='PersonaPresence.none'
-        presence={ PersonaPresence.none }
+        presence={PersonaPresence.none}
       />
       <Persona
-        { ...examplePersona }
+        {...examplePersona}
         text='PersonaPresence.offline'
-        presence={ PersonaPresence.offline }
+        presence={PersonaPresence.offline}
       />
       <Persona
-        { ...examplePersona }
+        {...examplePersona}
         text='PersonaPresence.online'
-        presence={ PersonaPresence.online }
+        presence={PersonaPresence.online}
       />
     </div>
-  )).add('default size, details hidden', () => (
+  )).addStory('default size, details hidden', () => (
     <Persona
-      { ...examplePersona }
-      presence={ PersonaPresence.busy }
+      {...examplePersona}
+      presence={PersonaPresence.busy}
       hidePersonaDetails
     />
-  )).add('size72 (large)', () => (
+  )).addStory('size72 (large)', () => (
     <div>
       <Persona
-        { ...examplePersona }
-        size={ PersonaSize.size72 }
-        presence={ PersonaPresence.dnd }
+        {...examplePersona}
+        size={PersonaSize.size72}
+        presence={PersonaPresence.dnd}
       />
       <Persona
-        { ...examplePersona }
-        size={ PersonaSize.large }
-        presence={ PersonaPresence.dnd }
+        {...examplePersona}
+        size={PersonaSize.large}
+        presence={PersonaPresence.dnd}
       />
     </div>
-  )).add('size100 (extraLarge)', () => (
+  )).addStory('size100 (extraLarge)', () => (
     <div>
       <Persona
-        { ...examplePersona }
-        size={ PersonaSize.size100 }
-        presence={ PersonaPresence.blocked }
+        {...examplePersona}
+        size={PersonaSize.size100}
+        presence={PersonaPresence.blocked}
       />
       <Persona
-        { ...examplePersona }
-        size={ PersonaSize.extraLarge }
-        presence={ PersonaPresence.blocked }
+        {...examplePersona}
+        size={PersonaSize.extraLarge}
+        presence={PersonaPresence.blocked}
       />
     </div>
-  )).add('Initials', () => (
+  ), { rtl: true }).addStory('Initials', () => (
     <Persona
-      { ...examplePersona }
-      imageUrl={ undefined }
+      {...examplePersona}
+      imageUrl={undefined}
     />
-  ));
+  ), { rtl: true });

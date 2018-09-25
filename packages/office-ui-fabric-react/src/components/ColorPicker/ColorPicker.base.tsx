@@ -4,15 +4,7 @@ import { IColorPickerProps, IColorPickerStyleProps, IColorPickerStyles } from '.
 import { ITextField, TextField } from '../../TextField';
 import { ColorRectangle } from './ColorRectangle/ColorRectangle';
 import { ColorSlider } from './ColorSlider/ColorSlider';
-import {
-  MAX_COLOR_HUE,
-  IColor,
-  getColorFromString,
-  getColorFromRGBA,
-  updateA,
-  updateH,
-  updateSV
-} from '../../utilities/color/colors';
+import { MAX_COLOR_HUE, IColor, getColorFromString, getColorFromRGBA, updateA, updateH, updateSV } from '../../utilities/color/colors';
 
 export interface IColorPickerState {
   isOpen: boolean;
@@ -63,13 +55,7 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
       <div className={classNames.root}>
         <div className={classNames.panel}>
           <ColorRectangle color={color} onSVChanged={this._onSVChanged} />
-          <ColorSlider
-            className="is-hue"
-            minValue={0}
-            maxValue={MAX_COLOR_HUE}
-            value={color.h}
-            onChange={this._onHChanged}
-          />
+          <ColorSlider className="is-hue" minValue={0} maxValue={MAX_COLOR_HUE} value={color.h} onChange={this._onHChanged} />
           {!this.props.alphaSliderHidden && (
             <ColorSlider
               className="is-alpha"
@@ -201,7 +187,7 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
         } as IColorPickerState,
         () => {
           if (hasColorStringChanged && onColorChanged) {
-            onColorChanged(newColor.str);
+            onColorChanged(newColor.str, newColor);
           }
         }
       );
