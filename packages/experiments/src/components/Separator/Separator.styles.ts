@@ -5,6 +5,9 @@ export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
 
   return {
     root: [
+      {
+        position: 'relative'
+      },
       alignText && {
         textAlign: alignText
       },
@@ -12,33 +15,28 @@ export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
         textAlign: 'center'
       },
       vertical && {
-        position: 'relative',
-        paddingTop: '20%',
-        paddingBottom: '20%',
-        zIndex: '1',
+        padding: '0 5px',
+        height: '200px',
         textAlign: 'center',
-        display: 'block',
-        height: '40px',
+        zIndex: 1,
+        display: 'table-cell',
+        verticalAlign: 'middle',
         selectors: {
-          ':before': {
+          ':after': {
             backgroundColor: theme!.palette.neutralLight,
             width: '1px',
-            height: '100%',
             content: '""',
             position: 'absolute',
             top: '0',
             bottom: '0',
             left: '50%',
             right: '0',
-            zIndex: '-1'
+            zIndex: -1
           }
         }
       },
       !vertical && {
-        position: 'relative',
-        paddingTop: '5px',
-        paddingBottom: '5px',
-        display: 'block',
+        padding: '5px 0',
         selectors: {
           ':before': {
             backgroundColor: theme!.palette.neutralLight,
@@ -54,35 +52,16 @@ export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
         }
       }
     ],
-    center: [
-      {
-        textAlign: 'center'
-      }
-    ],
-    start: [
-      {
-        textAlign: 'start'
-      }
-    ],
-    end: [
-      {
-        textAlign: 'end'
-      }
-    ],
     text: [
-      vertical && {
-        position: 'relative',
-        display: 'inline-block',
-        fontSize: '16px',
-        padding: '20px 0',
-        background: 'white'
-      },
-      !vertical && {
+      {
         position: 'relative',
         display: 'inline-block',
         fontSize: '16px',
         padding: '0 20px',
         background: 'white'
+      },
+      vertical && {
+        padding: '20px 0'
       }
     ]
   };

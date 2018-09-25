@@ -72,13 +72,6 @@ export interface ISeparatorStyles {
   root?: IStyle;
 
   /**
-   * Text align
-   */
-  center?: IStyle;
-  start?: IStyle;
-  end?: IStyle;
-
-  /**
    * Style for the text element
    */
   text?: IStyle;
