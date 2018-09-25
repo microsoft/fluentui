@@ -11,3 +11,5 @@ export * from './Text';
 export * from './Tile';
 export * from './TilesList';
 export * from './VirtualizedList';
+
+import './version';

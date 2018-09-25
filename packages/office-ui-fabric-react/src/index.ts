@@ -67,3 +67,5 @@ export * from './TextField';
 export * from './Toggle';
 export * from './Tooltip';
 export * from './Utilities';
+
+import './version';

@@ -4,6 +4,7 @@ import { IPersonaProps } from '../Persona/Persona.types';
 import { IRefObject, IRenderFunction } from '../../Utilities';
 import { ISuggestionModel } from './Suggestions/SuggestionsController';
 import { BaseAutoFill } from './AutoFill/BaseAutoFill';
+import { ICalloutProps } from '../../Callout';
 
 export interface IBasePicker<T> {
   /** Gets the current value of the input. */
@@ -81,6 +82,10 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * The properties that will get passed to the Suggestions component.
    */
   pickerSuggestionsProps?: IBasePickerSuggestionsProps;
+  /**
+   * The properties that will get passed to the Callout component.
+   */
+  pickerCalloutProps?: ICalloutProps;
   /**
    * AutoFill input native props
    * @default undefined

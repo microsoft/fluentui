@@ -281,6 +281,9 @@ exports[`HorizontalStack renders wrapped HorizontalStack correctly 1`] = `
         display: block;
         height: auto;
         overflow: visible;
+        padding-bottom: 1px;
+        padding-left: 1px;
+        padding-right: 1px;
         padding-top: 1px;
         width: auto;
       }
@@ -294,9 +297,9 @@ exports[`HorizontalStack renders wrapped HorizontalStack correctly 1`] = `
           flex-direction: row;
           flex-wrap: wrap;
           height: auto;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
+          margin-bottom: calc(0px - 1px);
+          margin-left: calc(0px - 1px);
+          margin-right: calc(0px - 1px);
           margin-top: calc(0px - 1px);
           overflow: visible;
           width: auto;
@@ -306,7 +309,7 @@ exports[`HorizontalStack renders wrapped HorizontalStack correctly 1`] = `
           margin-left: 0px;
           margin-right: 0px;
           margin-top: 0px;
-          max-width: calc(100% - 0px);
+          max-width: calc(100% - 0px - 2px);
           text-overflow: ellipsis;
           white-space: nowrap;
         }

@@ -21,7 +21,8 @@ export const getStyles = (props: ICustomCssForCells): IGridListStyles => {
       display: 'block',
       textOverflow: 'ellipsis',
       overflow: 'hidden',
-      whiteSpace: 'nowrap'
+      whiteSpace: 'nowrap',
+      fontWeight: props.boldText === 'bold' ? 'bold' : 'normal'
     }
   };
 };

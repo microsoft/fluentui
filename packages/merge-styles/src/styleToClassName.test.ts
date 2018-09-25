@@ -73,13 +73,7 @@ describe('styleToClassName', () => {
   });
 
   it('can merge rules', () => {
-    let className = styleToClassName(
-      null,
-      false,
-      undefined,
-      { backgroundColor: 'red', color: 'white' },
-      { backgroundColor: 'green' }
-    );
+    let className = styleToClassName(null, false, undefined, { backgroundColor: 'red', color: 'white' }, { backgroundColor: 'green' });
 
     expect(className).toEqual('css-0');
     expect(_stylesheet.getRules()).toEqual('.css-0{background-color:green;color:white;}');
@@ -194,5 +188,17 @@ describe('styleToClassName', () => {
         '.css-0:hover{background:green;}' +
         '}'
     );
+  });
+
+  it('can apply @support queries', () => {
+    styleToClassName({
+      selectors: {
+        '@supports(display: grid)': {
+          display: 'grid'
+        }
+      }
+    });
+
+    expect(_stylesheet.getRules()).toEqual('@supports(display: grid){' + '.css-0{display:grid;}' + '}');
   });
 });

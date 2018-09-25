@@ -53,8 +53,9 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
 
   public render(): JSX.Element {
     this._adjustProps();
-    const { data, barHeight, hideNumberDisplay, hideLegend, theme, styles, barBackgroundColor } = this.props;
+    const { data, hideNumberDisplay, hideLegend, theme, styles, barBackgroundColor } = this.props;
     const { palette } = theme!;
+    const barHeight = data!.chartData!.length > 2 ? this.props.barHeight : 8;
     const bars = this._createBarsAndLegends(data!, barHeight!, palette, barBackgroundColor);
     const showRatio = hideNumberDisplay === false && data!.chartData!.length === 2;
     const showNumber = hideNumberDisplay === false && data!.chartData!.length === 1;
@@ -78,7 +79,8 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           )}
           {showRatio && (
             <div>
-              <strong>{data!.chartData![0].data}</strong>/{total}
+              <span className={this._classNames.ratioNumerator}>{data!.chartData![0].data}</span>/
+              <span className={this._classNames.ratioDenominator}>{total}</span>
             </div>
           )}
           {showNumber && (

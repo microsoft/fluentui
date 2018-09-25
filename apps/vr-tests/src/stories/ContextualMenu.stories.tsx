@@ -258,7 +258,7 @@ storiesOf('ContextualMenu', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
-      steps={ new Screener.Steps()
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.ms-Layer' })
         .hover('.ms-ContextualMenu-linkContent')
         .snapshot('hover', { cropTo: '.ms-Layer' })
@@ -268,36 +268,36 @@ storiesOf('ContextualMenu', module)
         .end()
       }
     >
-      { story() }
+      {story()}
     </Screener>
   ))
-  .add('Root', () => (
+  .addStory('Root', () => (
     <ContextualMenu
-      items={ items }
+      items={items}
     />
   ))
-  .add('With icons', () => (
+  .addStory('With icons', () => (
     <ContextualMenu
-      items={ itemsWithIcons }
+      items={itemsWithIcons}
     />
   ))
-  .add('With secondaryText', () => (
+  .addStory('With secondaryText', () => (
     <ContextualMenu
-      items={ itemsWithSecondaryText }
+      items={itemsWithSecondaryText}
+    />
+  ), { rtl: true })
+  .addStory('With submenu', () => (
+    <ContextualMenu
+      items={itemsWithSubmenu}
+    />
+  ), { rtl: true })
+  .addStory('With headers', () => (
+    <ContextualMenu
+      items={itemsWithHeaders}
     />
   ))
-  .add('With submenu', () => (
+  .addStory('With split button submenu', () => (
     <ContextualMenu
-      items={ itemsWithSubmenu }
-    />
-  ))
-  .add('With headers', () => (
-    <ContextualMenu
-      items={ itemsWithHeaders }
-    />
-  ))
-  .add('With split button submenu', () => (
-    <ContextualMenu
-      items={ itemsWithSplitButtonSubmenu }
+      items={itemsWithSplitButtonSubmenu}
     />
   ));

@@ -78,12 +78,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     const { suggestedDisplayValue, shouldSelectFullInputValueInComponentDidUpdate } = this.props;
     let differenceIndex = 0;
 
-    if (
-      this._autoFillEnabled &&
-      value &&
-      suggestedDisplayValue &&
-      this._doesTextStartWith(suggestedDisplayValue, value)
-    ) {
+    if (this._autoFillEnabled && value && suggestedDisplayValue && this._doesTextStartWith(suggestedDisplayValue, value)) {
       let shouldSelectFullRange = false;
 
       if (shouldSelectFullInputValueInComponentDidUpdate) {
@@ -100,11 +95,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
           differenceIndex++;
         }
         if (differenceIndex > 0 && this._inputElement.current) {
-          this._inputElement.current.setSelectionRange(
-            differenceIndex,
-            suggestedDisplayValue.length,
-            SELECTION_BACKWARD
-          );
+          this._inputElement.current.setSelectionRange(differenceIndex, suggestedDisplayValue.length, SELECTION_BACKWARD);
         }
       }
     }
@@ -155,8 +146,15 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
   private _onCompositionEnd = (ev: React.CompositionEvent<HTMLInputElement>) => {
     const inputValue = this._getCurrentInputValue();
     this._tryEnableAutofill(inputValue, this.value, false, true);
+    // Korean characters typing issue has been addressed in React 16.5
+    // TODO: revert back below lines when we upgrade to React 16.5
+    // Find out at https://github.com/facebook/react/pull/12563/commits/06524c6c542c571705c0fd7df61ac48f3d5ce244
+    const isKorean = (ev.nativeEvent as any).locale === 'ko';
     // Due to timing, this needs to be async, otherwise no text will be selected.
-    this._async.setTimeout(() => this._updateValue(inputValue), 0);
+    this._async.setTimeout(() => {
+      const updatedInputValue = isKorean ? this.value : inputValue;
+      this._updateValue(updatedInputValue);
+    }, 0);
   };
 
   private _onClick = () => {
@@ -277,12 +275,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
    */
   private _getDisplayValue(inputValue: string, suggestedDisplayValue?: string): string {
     let displayValue = inputValue;
-    if (
-      suggestedDisplayValue &&
-      inputValue &&
-      this._doesTextStartWith(suggestedDisplayValue, displayValue) &&
-      this._autoFillEnabled
-    ) {
+    if (suggestedDisplayValue && inputValue && this._doesTextStartWith(suggestedDisplayValue, displayValue) && this._autoFillEnabled) {
       displayValue = suggestedDisplayValue;
     }
     return displayValue;
