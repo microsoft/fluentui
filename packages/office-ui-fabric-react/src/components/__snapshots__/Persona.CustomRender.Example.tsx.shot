@@ -192,6 +192,11 @@ exports[`Component Examples renders Persona.CustomRender.Example.tsx correctly 1
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          style={
+            Object {
+              "display": "inline",
+            }
+          }
         >
           Annie Lindqvist
         </div>
@@ -249,6 +254,11 @@ exports[`Component Examples renders Persona.CustomRender.Example.tsx correctly 1
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          style={
+            Object {
+              "display": "inline",
+            }
+          }
         >
           In a meeting
         </div>
@@ -272,6 +282,11 @@ exports[`Component Examples renders Persona.CustomRender.Example.tsx correctly 1
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          style={
+            Object {
+              "display": "inline",
+            }
+          }
         >
           Available at 4:00pm
         </div>

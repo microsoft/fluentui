@@ -1038,6 +1038,11 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
               onFocusCapture={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
+              style={
+                Object {
+                  "display": "inline",
+                }
+              }
             >
               <button
                 className=
@@ -1180,6 +1185,11 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
               onFocusCapture={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
+              style={
+                Object {
+                  "display": "inline",
+                }
+              }
             >
               <button
                 className=

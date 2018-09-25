@@ -1039,6 +1039,11 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
             onFocusCapture={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            style={
+              Object {
+                "display": "inline",
+              }
+            }
           >
             <button
               className=
@@ -1181,6 +1186,11 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
             onFocusCapture={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            style={
+              Object {
+                "display": "inline",
+              }
+            }
           >
             <button
               className=
@@ -2811,6 +2821,11 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
             onFocusCapture={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            style={
+              Object {
+                "display": "inline",
+              }
+            }
           >
             <button
               className=
@@ -2953,6 +2968,11 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
             onFocusCapture={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            style={
+              Object {
+                "display": "inline",
+              }
+            }
           >
             <button
               className=

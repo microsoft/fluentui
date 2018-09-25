@@ -139,6 +139,11 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          style={
+            Object {
+              "display": "inline",
+            }
+          }
         >
           Maor Sharett
         </div>
@@ -161,6 +166,11 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          style={
+            Object {
+              "display": "inline",
+            }
+          }
         >
           Designer
         </div>
@@ -328,6 +338,11 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          style={
+            Object {
+              "display": "inline",
+            }
+          }
         >
           Kat Larrson
         </div>
@@ -350,6 +365,11 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          style={
+            Object {
+              "display": "inline",
+            }
+          }
         >
           Designer
         </div>
@@ -373,6 +393,11 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          style={
+            Object {
+              "display": "inline",
+            }
+          }
         >
           Unverified sender
         </div>

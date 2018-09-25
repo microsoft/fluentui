@@ -142,6 +142,11 @@ exports[`Persona renders Persona correctly with image 1`] = `
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
+        style={
+          Object {
+            "display": "inline",
+          }
+        }
       >
         Kat Larrson
       </div>
@@ -309,6 +314,11 @@ exports[`Persona renders Persona correctly with initials 1`] = `
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
+        style={
+          Object {
+            "display": "inline",
+          }
+        }
       >
         Kat Larrson
       </div>

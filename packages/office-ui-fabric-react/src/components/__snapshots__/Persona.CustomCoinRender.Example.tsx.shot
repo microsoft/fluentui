@@ -186,6 +186,11 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          style={
+            Object {
+              "display": "inline",
+            }
+          }
         >
           Ted Randall
         </div>
@@ -208,6 +213,11 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          style={
+            Object {
+              "display": "inline",
+            }
+          }
         >
           Project Manager
         </div>
@@ -244,6 +254,11 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
+          style={
+            Object {
+              "display": "inline",
+            }
+          }
         >
           Available at 4:00pm
         </div>
