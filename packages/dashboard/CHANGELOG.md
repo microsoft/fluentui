@@ -1,6 +1,13 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Wed, 26 Sep 2018 12:27:23 GMT and should not be manually modified.
+This log was last generated on Wed, 26 Sep 2018 16:58:51 GMT and should not be manually modified.
+
+## 0.26.1
+Wed, 26 Sep 2018 16:58:51 GMT
+
+### Patches
+
+- card content overflow issue fix
 
 ## 0.26.0
 Wed, 26 Sep 2018 12:27:23 GMT

@@ -2,6 +2,20 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.26.1",
+      "tag": "@uifabric/dashboard_v0.26.1",
+      "date": "Wed, 26 Sep 2018 16:58:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "card content overflow issue fix",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "c2d3d6f69c8459387279584de7f185dfaf21dd7d"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.26.0",
       "tag": "@uifabric/dashboard_v0.26.0",
       "date": "Wed, 26 Sep 2018 12:27:23 GMT",
