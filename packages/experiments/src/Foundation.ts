@@ -13,7 +13,7 @@ import {
 import { getSchemedContext, IProcessedStyleSet, ISchemeNames, IStyleSet, ITheme, mergeStyleSets } from './Styling';
 import { Customizations, CustomizerContext, ICustomizerContext } from './Utilities';
 
-// This module centralizes Foundation interaction for use throughout this package. These convenience types automaticlaly
+// This module centralizes Foundation interaction for use throughout this package. These convenience types automatically
 //  inject types that are global for all of OUFR, such as ITheme and IProcessedStyleSet.
 
 /**
@@ -51,7 +51,7 @@ export type IStateComponentType<TComponentProps, TViewProps, TStyleSet extends I
 export type IViewComponent<TViewProps, TStyleSet extends IStyleSet<TStyleSet>> = IViewComponent<TViewProps, IProcessedStyleSet<TStyleSet>>;
 
 /**
- * Primary type for defnining stateful components.
+ * Primary type for defining stateful components.
  */
 export type IComponent<TComponentProps, TViewProps, TStyleSet extends IStyleSet<TStyleSet>, TStatics = {}> = IComponent<
   TComponentProps,
@@ -63,7 +63,7 @@ export type IComponent<TComponentProps, TViewProps, TStyleSet extends IStyleSet<
 >;
 
 /**
- * Primary type for defnining stateless components.
+ * Primary type for defining stateless components.
  */
 export type IStatelessComponent<TComponentProps, TStyleSet extends IStyleSet<TStyleSet>, TStatics = {}> = IStatelessComponent<
   TComponentProps,
