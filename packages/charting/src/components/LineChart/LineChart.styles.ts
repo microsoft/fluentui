@@ -17,8 +17,8 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
     xAxis: {
       selectors: {
         text: {
-          opacity: 0.6,
-          fontSize: '10px'
+          ...fonts.tiny,
+          opacity: 0.6
         },
         line: {
           opacity: 0.1,
@@ -65,8 +65,7 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
     calloutContentY: [
       {
         color: color === '' ? palette.black : color,
-        fontSize: '28px',
-        fontFamily: 'Segoe UI',
+        ...fonts.xxLarge,
         fontWeight: 'bold',
         lineHeight: '31px'
       }

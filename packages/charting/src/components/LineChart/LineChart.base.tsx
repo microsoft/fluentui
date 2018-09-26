@@ -71,7 +71,7 @@ export class LineChartBase extends React.Component<
 
   public render(): JSX.Element {
     const { theme, className, styles } = this.props;
-    const isNumeric = this._points[0].data[0]!.x && typeof this._points[0].data[0]!.x === 'number';
+    const isNumeric = this._points[0].data[0] ? typeof this._points[0].data[0]!.x === 'number' : false;
     isNumeric ? this._createNumericXAxis() : this._createStringXAxis();
     this._createYAxis();
     const strokeWidth = this.props.strokeWidth ? this.props.strokeWidth : 4;
