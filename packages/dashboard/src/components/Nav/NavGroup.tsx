@@ -1,13 +1,12 @@
 import * as React from 'react';
-import { INavGroupProps, INavStyles, INavProps } from './Nav.types';
+import { INavGroupProps, INavStyles, INavStyleProps } from './Nav.types';
 import { NavLink } from './NavLink';
 import { NavLinkGroup } from './NavLinkGroup';
 import { getStyles } from './Nav.styles';
 import { INavLink } from 'office-ui-fabric-react/lib/Nav';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-const getClassNames = classNamesFunction<INavProps, INavStyles>();
+const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
 
 export class NavGroup extends React.Component<INavGroupProps, {}> {
   constructor(props: INavGroupProps) {
@@ -59,18 +58,14 @@ export class NavGroup extends React.Component<INavGroupProps, {}> {
     if (!link) {
       return null;
     }
-    const classNames = getClassNames(getStyles);
     const { isNavCollapsed } = this.props;
+    const classNames = getClassNames(getStyles, { isNavCollapsed: isNavCollapsed });
     const keyStr = groupIndex.toString() + linkIndex.toString();
     const hasSelectedNestedLink = this._isNestedLinkSelected(link);
 
     return (
       // if there are nested links, render a NavLinkGroup, otherwise just render a NavLink
-      <li
-        className={isNavCollapsed ? mergeStyles(classNames.navItem, classNames.navItemWhenNavCollapsed) : classNames.navItem}
-        role="listitem"
-        key={keyStr}
-      >
+      <li className={classNames.navItem} role="listitem" key={keyStr}>
         {!!link.links && link.links ? (
           <NavLinkGroup
             isExpanded={link.isExpanded ? link.isExpanded : false}

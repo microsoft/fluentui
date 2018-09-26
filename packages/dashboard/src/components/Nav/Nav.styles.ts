@@ -1,5 +1,5 @@
 /* tslint:disable */
-import { DefaultPalette, FontSizes, FontWeights } from 'office-ui-fabric-react/lib/Styling';
+import { DefaultPalette, FontSizes, FontWeights, AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
 import { INavLinkProps, INavStyles } from './Nav.types';
 
 // Nav
@@ -91,57 +91,64 @@ export const getStyles = (props: INavLinkProps): INavStyles => {
       fontWeight: FontWeights.bold,
       marginLeft: '16px'
     },
-    navItem: {
-      position: 'relative'
-    },
-    navItemWhenNavCollapsed: {
-      position: 'relative',
-      selectors: {
-        ':hover $nestedNavMenuWhenNavCollapsed': {
-          display: 'flex'
+    navItem: [
+      {
+        position: 'relative'
+      },
+      isNavCollapsed && {
+        selectors: {
+          ':hover $nestedNavMenuWhenNavCollapsed': {
+            display: 'flex'
+          }
         }
       }
-    },
-    nestedNavMenu: {
-      display: isNavCollapsed || !isExpanded ? 'none' : 'flex',
-      flexDirection: 'column',
-      padding: 0
-    },
-    nestedNavMenuCollapsed: {
-      background: 'green'
-    },
-    nestedNavMenuWhenNavCollapsed: {
-      display: 'none',
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-      position: 'absolute',
-      top: '0',
-      left: '0',
-      width: '278px',
-      justifyContent: 'flex-end',
-      selectors: {
-        '> a': {
-          zIndex: 1,
-          backgroundColor: navBackgroundColor
+    ],
+    nestedNavMenu: [
+      {
+        display: isNavCollapsed || !isExpanded ? 'none' : 'flex',
+        flexDirection: 'column',
+        padding: 0
+      },
+      AnimationClassNames.slideDownIn20
+    ],
+    nestedNavMenuWhenNavCollapsed: [
+      {
+        display: 'none',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        position: 'absolute',
+        top: '0',
+        left: '0',
+        width: '278px',
+        justifyContent: 'flex-end',
+        selectors: {
+          '> a': {
+            zIndex: 1,
+            backgroundColor: navBackgroundColor
+          }
         }
-      }
-    },
+      },
+      AnimationClassNames.fadeIn400
+    ],
     nestedNavLinksWrapper: {
       boxShadow: '0 1.2px 3.6px rgba(0, 0, 0, 0.09), 0 6.4px 14.4px rgba(0, 0, 0, 0.11)'
     },
-    nestedNavLinksWhenNavCollapsed: {
-      width: '230px',
-      padding: '48px 0 0',
-      marginTop: '-48px',
-      backgroundColor: 'rgba(255,255,255,.95)',
-      selectors: {
-        '@supports((backdrop-filter: blur(20px)) or (-webkit-backdrop-filter: blur(20px)))': {
-          backgroundColor: 'rgba(255,255,255,.8)',
-          webkitBackdropFilter: 'blur(20px) saturate(125%)',
-          backdropFilter: 'blur(20px) saturate(125%)'
+    nestedNavLinksWhenNavCollapsed: [
+      {
+        width: '230px',
+        padding: '48px 0 0',
+        marginTop: '-48px',
+        backgroundColor: 'rgba(255,255,255,.95)',
+        selectors: {
+          '@supports((backdrop-filter: blur(20px)) or (-webkit-backdrop-filter: blur(20px)))': {
+            backgroundColor: 'rgba(255,255,255,.8)',
+            webkitBackdropFilter: 'blur(20px) saturate(125%)',
+            backdropFilter: 'blur(20px) saturate(125%)'
+          }
         }
-      }
-    },
+      },
+      AnimationClassNames.slideRightIn10
+    ],
     // NavLink
     navLink: {
       display: 'flex',
@@ -163,16 +170,22 @@ export const getStyles = (props: INavLinkProps): INavStyles => {
       height: navChildItemHeight,
       lineHeight: navChildItemHeight
     },
-    iconWrapper: {
-      position: 'relative',
-      display: 'flex',
-      flex: isSelected || hasSelectedNestedLink ? '0 0 32px' : '0 0 48px',
-      alignItems: 'center',
-      justifyContent: 'center'
-    },
-    nestedIconWrapper: {
-      flex: '0 0 12px'
-    },
+    iconWrapper: [
+      {
+        position: 'relative',
+        display: 'flex',
+        flex: '0 0 48px',
+        alignItems: 'center',
+        justifyContent: 'center'
+      },
+      (isSelected || hasSelectedNestedLink) && {
+        flex: '0 0 32px'
+      },
+      isNavCollapsed &&
+        isNested && {
+          flex: '0 0 12px'
+        }
+    ],
     navItemBarMarker: [
       {
         position: 'absolute',
@@ -215,15 +228,21 @@ export const getStyles = (props: INavLinkProps): INavStyles => {
         transform: 'rotate(-180deg)'
       }
     ],
-    navItemText: {
-      flex: '1 1 auto',
-      lineHeight: isNested ? navChildItemHeight : navItemHeight,
-      marginLeft: hasSelectedNestedLink || (!hasNestedMenu && isSelected && !isNested) ? '8px' : '0px',
-      textOverflow: 'ellipsis',
-      overflowX: 'hidden',
-      whiteSpace: 'nowrap',
-      color: DefaultPalette.black
-    }
+    navItemText: [
+      {
+        flex: '1 1 auto',
+        lineHeight: isNested ? navChildItemHeight : navItemHeight,
+        marginLeft: hasSelectedNestedLink || (!hasNestedMenu && isSelected && !isNested) ? '8px' : '0px',
+        textOverflow: 'ellipsis',
+        overflowX: 'hidden',
+        whiteSpace: 'nowrap',
+        color: DefaultPalette.black
+      },
+      isNested && {
+        height: navChildItemHeight,
+        lineHeight: navChildItemHeight
+      }
+    ]
   };
 };
 

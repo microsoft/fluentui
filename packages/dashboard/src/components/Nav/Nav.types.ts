@@ -244,13 +244,11 @@ export interface INavStyles {
   navGroupDivider: IStyle;
   navGroupTitle: IStyle;
   navItem: IStyle;
-  navItemWhenNavCollapsed: IStyle;
 
   /**
    * NavLinkGroup
    */
   nestedNavMenu: IStyle;
-  nestedNavMenuCollapsed: IStyle;
   nestedNavMenuWhenNavCollapsed: IStyle;
   nestedNavLinksWrapper: IStyle;
   nestedNavLinksWhenNavCollapsed: IStyle;
@@ -265,5 +263,4 @@ export interface INavStyles {
   navItemIcon: IStyle;
   navItemText: IStyle;
   iconWrapper: IStyle;
-  nestedIconWrapper: IStyle;
 }

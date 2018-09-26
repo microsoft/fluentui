@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { INavStyles, INavLinkProps } from './Nav.types';
 import { getStyles } from './Nav.styles';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 const getClassNames = classNamesFunction<INavLinkProps, INavStyles>();
@@ -51,26 +50,20 @@ export class NavLink extends React.Component<INavLinkProps, {}> {
 
   private _generatePrimaryIcon(): React.ReactElement<{}> | null {
     const { isNested, isNavCollapsed } = this.props;
-    const classNames = getClassNames(getStyles);
+    const classNames = getClassNames(getStyles, { isNested: isNested, isNavCollapsed: isNavCollapsed });
 
     return (
-      <div
-        className={isNavCollapsed && isNested ? mergeStyles(classNames.iconWrapper, classNames.nestedIconWrapper) : classNames.iconWrapper}
-        aria-hidden="true"
-      >
+      <div className={classNames.iconWrapper} aria-hidden="true">
         {this._generateActiveBar()}
-        <Icon
-          iconName={this.props.primaryIconName}
-          className={isNested ? mergeStyles(classNames.navItemIcon, classNames.navLinkSmall) : classNames.navItemIcon}
-        />
+        <Icon iconName={this.props.primaryIconName} className={classNames.navItemIcon} />
       </div>
     );
   }
 
   private _generateLinkContent(): React.ReactElement<{}> | null {
     const { isNested, name } = this.props;
-    const classNames = getClassNames(getStyles);
-    return <div className={isNested ? mergeStyles(classNames.navItemText, classNames.navLinkSmall) : classNames.navItemText}>{name}</div>;
+    const classNames = getClassNames(getStyles, { isNested: isNested });
+    return <div className={classNames.navItemText}>{name}</div>;
   }
 
   private _generateSecondaryIcon(): React.ReactElement<{}> | null {
