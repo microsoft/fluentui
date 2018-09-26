@@ -1,6 +1,13 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Mon, 24 Sep 2018 12:27:31 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Sep 2018 12:28:12 GMT and should not be manually modified.
+
+## 0.25.6
+Tue, 25 Sep 2018 12:28:12 GMT
+
+### Patches
+
+- Bug fix: Multicount component body text is not rendered in IE when put inside a flex box with justifyContent of center
 
 ## 0.25.5
 Mon, 24 Sep 2018 12:27:31 GMT

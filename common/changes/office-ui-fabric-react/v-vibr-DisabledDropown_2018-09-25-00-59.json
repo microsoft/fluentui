@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "make oufr also set sideeffects for version.js",
+      "comment": "Dropdown: prevent dropdown to open on keyboard events when in disabled mode.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "kchau@microsoft.com"
+  "email": "v-vibr@microsoft.com"
 }

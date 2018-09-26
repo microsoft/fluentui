@@ -2,12 +2,12 @@
 
 exports[`Component Examples renders ResizeGroup.FlexBox.Example.tsx correctly 1`] = `
 <div
-  className=
-      ms-ResizeGroup
-      {
-        display: block;
-        position: relative;
-      }
+  style={
+    Object {
+      "display": "block",
+      "position": "relative",
+    }
+  }
 >
   <div
     data-automation-id="visibleContent"

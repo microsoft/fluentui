@@ -2,6 +2,31 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.25.6",
+      "tag": "@uifabric/dashboard_v0.25.6",
+      "date": "Tue, 25 Sep 2018 12:28:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bug fix: Multicount component body text is not rendered in IE when put inside a flex box with justifyContent of center",
+            "author": "Kevin Chan <2591766+chankev@users.noreply.github.com>",
+            "commit": "84ec86ff059bdf7abaacabe1ad095a3aa870243d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.21.1` to `^0.21.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.32.1 <7.0.0` to `>=6.32.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.72.2 <7.0.0` to `>=6.73.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.25.5",
       "tag": "@uifabric/dashboard_v0.25.5",
       "date": "Mon, 24 Sep 2018 12:27:31 GMT",

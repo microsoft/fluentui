@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 21 Sep 2018 14:25:46 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Sep 2018 12:28:12 GMT and should not be manually modified.
+
+## 6.32.2
+Tue, 25 Sep 2018 12:28:12 GMT
+
+### Patches
+
+- Stack: update styles to account for all margin collapsing on wrapped HorizontalStacks
 
 ## 6.32.1
 Fri, 21 Sep 2018 14:25:46 GMT

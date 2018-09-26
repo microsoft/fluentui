@@ -2,12 +2,12 @@
 
 exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx correctly 1`] = `
 <div
-  className=
-      ms-ResizeGroup
-      {
-        display: block;
-        position: relative;
-      }
+  style={
+    Object {
+      "display": "block",
+      "position": "relative",
+    }
+  }
 >
   <div
     data-automation-id="visibleContent"
@@ -1317,12 +1317,12 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
 
 exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx correctly 2`] = `
 <div
-  className=
-      ms-ResizeGroup
-      {
-        display: block;
-        position: relative;
-      }
+  style={
+    Object {
+      "display": "block",
+      "position": "relative",
+    }
+  }
 >
   <div
     data-automation-id="visibleContent"

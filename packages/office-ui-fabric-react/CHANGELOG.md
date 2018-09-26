@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 24 Sep 2018 12:27:31 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Sep 2018 12:28:13 GMT and should not be manually modified.
+
+## 6.73.0
+Tue, 25 Sep 2018 12:28:12 GMT
+
+### Minor changes
+
+- Allows callout props to be passed through the base picker
+
+### Patches
+
+- ResizeGroup: Remove classNamesFunction from ResizeGroup
+- make oufr also set sideeffects for version.js
 
 ## 6.72.2
 Mon, 24 Sep 2018 12:27:31 GMT
