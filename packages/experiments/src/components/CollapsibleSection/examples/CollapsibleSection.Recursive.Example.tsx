@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
-import { CollapsibleSection, ICollapsibleSectionStyleProps } from '@uifabric/experiments/lib/CollapsibleSection';
+import { CollapsibleSection, ICollapsibleSectionComponent } from '@uifabric/experiments/lib/CollapsibleSection';
 import { Text } from '@uifabric/experiments/lib/Text';
 
 import { lorem } from '@uifabric/example-app-base';
@@ -57,7 +57,7 @@ const ExampleFile = (props: IExampleFileProps) => {
   );
 };
 
-const collapsibleSectionStyles = (props: ICollapsibleSectionStyleProps) => {
+const collapsibleSectionStyles: ICollapsibleSectionComponent['styles'] = () => {
   return {
     body: [
       // Match indent to make look like tree view
@@ -84,9 +84,7 @@ class CollapsibleSectionFolder extends React.Component<{}, {}> {
     const randomFileCount = Math.floor(Math.random() * 10) + 1;
     for (let i = 0; i < randomFileCount; i++) {
       const randomFile = Math.floor(Math.random() * _fileItems.length);
-      this._files.push(
-        <ExampleFile key={i} iconSource={_fileItems[randomFile].iconName} filename={_fileItems[randomFile].name} />
-      );
+      this._files.push(<ExampleFile key={i} iconSource={_fileItems[randomFile].iconName} filename={_fileItems[randomFile].name} />);
     }
 
     const randomFolderCount = Math.floor(Math.random() * 10) + 5;
@@ -126,8 +124,7 @@ export class CollapsibleSectionRecursiveExample extends React.Component<{}, {}> 
 
         const randomFileType = this._randomFileIcon();
         let randomFileName: string = lorem(2).replace(/\W/g, '');
-        randomFileName =
-          randomFileName.charAt(0).toUpperCase() + randomFileName.slice(1).concat(`.${randomFileType.docType}`);
+        randomFileName = randomFileName.charAt(0).toUpperCase() + randomFileName.slice(1).concat(`.${randomFileType.docType}`);
         _fileItems.push({ name: randomFileName, iconName: randomFileType.url });
       }
     }

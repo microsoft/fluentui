@@ -3,11 +3,6 @@ import { ICollapsibleSectionProps, ICollapsibleSectionViewProps } from './Collap
 import { BaseStateComponent, IBaseStateComponentProps, IStateTransforms } from '../../utilities/BaseState';
 import { getRTL, KeyCodes } from '../../Utilities';
 
-export type ICollapsibleSectionStateProps = IBaseStateComponentProps<
-  ICollapsibleSectionProps,
-  ICollapsibleSectionViewProps
->;
-
 const CollapsibleSectionStateTransforms: IStateTransforms<ICollapsibleSectionProps, ICollapsibleSectionViewProps> = [
   {
     transform: 'toggle',
@@ -18,23 +13,22 @@ const CollapsibleSectionStateTransforms: IStateTransforms<ICollapsibleSectionPro
   }
 ];
 
-export class CollapsibleSectionState extends BaseStateComponent<
-  ICollapsibleSectionProps,
-  ICollapsibleSectionViewProps
-> {
+// TODO: how would devs use BaseStateComponent if they also want to track their own state?
+//        (state type def, passing/merging to BaseState, etc)
+export class CollapsibleSectionState extends BaseStateComponent<ICollapsibleSectionProps, ICollapsibleSectionViewProps> {
   private _titleElement = createRef<HTMLElement>();
 
   constructor(props: IBaseStateComponentProps<ICollapsibleSectionProps, ICollapsibleSectionViewProps>) {
     super(props, CollapsibleSectionStateTransforms);
   }
 
-  public render(): JSX.Element {
-    const viewProps = {
+  public render(): JSX.Element | null {
+    const viewProps: ICollapsibleSectionViewProps = {
       ...this.getTransformProps(),
       titleElementRef: this._titleElement,
       onKeyDown: this._onKeyDown,
       onRootKeyDown: this._onRootKeyDown
-    } as ICollapsibleSectionViewProps;
+    };
 
     return this.props.renderView(viewProps);
   }

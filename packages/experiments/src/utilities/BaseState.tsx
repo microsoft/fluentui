@@ -1,4 +1,4 @@
-import { IStateComponentProps } from '../Foundation';
+import { IStateComponentProps } from '@uifabric/foundation';
 import { BaseComponent } from '../Utilities';
 
 // TODO: add transforms and flesh out typing
@@ -43,27 +43,21 @@ export class BaseStateComponent<TComponentProps, TViewProps> extends BaseCompone
   IBaseStateComponentProps<TComponentProps, TViewProps>,
   IBaseStateComponentState<TViewProps>
 > {
-  constructor(
-    props: IBaseStateComponentProps<TComponentProps, TViewProps>,
-    transforms: IStateTransforms<TComponentProps, TViewProps>
-  ) {
+  constructor(props: IBaseStateComponentProps<TComponentProps, TViewProps>, transforms: IStateTransforms<TComponentProps, TViewProps>) {
     super(props);
 
     const stateObject: IBaseStateComponentState<TViewProps> = {};
 
     transforms.forEach((transform: ITransform<TComponentProps, TViewProps>) => {
-      const defaultValuePropDefined =
-        transform.defaultValueProp !== undefined && props[transform.defaultValueProp] !== undefined;
-      stateObject[transform.prop] = defaultValuePropDefined
-        ? props[transform.defaultValueProp!]
-        : transform.defaultValue;
+      const defaultValuePropDefined = transform.defaultValueProp !== undefined && props[transform.defaultValueProp] !== undefined;
+      stateObject[transform.prop] = defaultValuePropDefined ? props[transform.defaultValueProp!] : transform.defaultValue;
       stateObject[transform.onInput] = this._onToggle(transform.prop);
     });
 
     this.state = stateObject;
   }
 
-  public render(): JSX.Element {
+  public render(): JSX.Element | null {
     // createComponent will automatically give priority to any values passed by parent, overriding these state values
     //    and automatically turning this component into a controlled component.
     return this.props.renderView(this.getTransformProps());
