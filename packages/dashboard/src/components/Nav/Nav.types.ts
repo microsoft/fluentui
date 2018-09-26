@@ -236,7 +236,6 @@ export interface INavStyles {
    * Nav
    */
   nav: IStyle;
-  navCollapsed: IStyle;
 
   /**
    * NavGroup
@@ -263,7 +262,6 @@ export interface INavStyles {
   navLinkSmall: IStyle;
   hidden: IStyle;
   navItemBarMarker: IStyle;
-  navItemBarMarkerSmall: IStyle;
   navItemIcon: IStyle;
   navItemText: IStyle;
   iconWrapper: IStyle;

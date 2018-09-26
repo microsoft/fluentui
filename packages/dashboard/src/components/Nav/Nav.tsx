@@ -9,7 +9,6 @@ import { NavGroup } from './NavGroup';
 // import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
-const classNames = getClassNames(getStyles);
 
 class NavComponent extends React.Component<INavProps, INavState> {
   constructor(props: INavProps) {
@@ -24,6 +23,8 @@ class NavComponent extends React.Component<INavProps, INavState> {
     if (!this.props.groups || this.props.groups.length === 0) {
       return null;
     }
+
+    const classNames = getClassNames(getStyles, { isNavCollapsed: this.state.isNavCollapsed });
 
     return (
       <nav role="navigation" className={classNames.nav}>
@@ -42,6 +43,7 @@ class NavComponent extends React.Component<INavProps, INavState> {
   // Basic methods
   //
   private _renderExpandCollapseNavItem(): React.ReactElement<{}> | null {
+    const classNames = getClassNames(getStyles);
     const isNavCollapsed = this.state.isNavCollapsed;
     const { dataHint } = this.props;
     const ariaLabel = isNavCollapsed ? 'Navigation collapsed' : 'Navigation expanded';
@@ -84,6 +86,7 @@ class NavComponent extends React.Component<INavProps, INavState> {
   }
 
   private _renderCustomizationLinks(): React.ReactElement<{}> | null {
+    const classNames = getClassNames(getStyles);
     const { enableCustomization, showMore, editString, showMoreString, showLessString } = this.props;
 
     if (!enableCustomization) {

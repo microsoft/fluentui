@@ -1,6 +1,6 @@
 /* tslint:disable */
 import { DefaultPalette, FontSizes, FontWeights } from 'office-ui-fabric-react/lib/Styling';
-import { INavStyleProps, INavLinkProps, INavStyles } from './Nav.types';
+import { INavLinkProps, INavStyles } from './Nav.types';
 
 // Nav
 const navFontSize = FontSizes.medium;
@@ -26,7 +26,7 @@ const navItemHoverColor = '#CCCCCC';
 // Will need these later
 // const navFloatingWidth = 230;
 
-export const getStyles = (props: INavStyleProps & INavLinkProps): INavStyles => {
+export const getStyles = (props: INavLinkProps): INavStyles => {
   const { isNavCollapsed, isExpanded, hasNestedMenu, isSelected, hasSelectedNestedLink, isNested } = props;
 
   return {
@@ -63,9 +63,6 @@ export const getStyles = (props: INavStyleProps & INavLinkProps): INavStyles => 
         width: navCollapsedWidth
       }
     ],
-    navCollapsed: {
-      width: navCollapsedWidth
-    },
     // NavGroup
     navGroup: {
       margin: 0,
@@ -176,30 +173,48 @@ export const getStyles = (props: INavStyleProps & INavLinkProps): INavStyles => 
     nestedIconWrapper: {
       flex: '0 0 12px'
     },
-    navItemBarMarker: {
-      position: 'absolute',
-      left: '4px',
-      top: '12px',
-      width: '2px',
-      height: '24px',
-      backgroundColor: DefaultPalette.accent
-    },
-    navItemBarMarkerSmall: {
-      position: 'absolute',
-      right: '6px',
-      top: '7px',
-      width: '2px',
-      height: '18px',
-      backgroundColor: DefaultPalette.accent
-    },
+    navItemBarMarker: [
+      {
+        position: 'absolute',
+        left: '4px',
+        top: '12px',
+        width: '2px',
+        height: '24px',
+        backgroundColor: DefaultPalette.accent,
+        opacity: 0,
+        transition: 'opacity 300ms'
+      },
+      isNested && {
+        left: 'unset',
+        right: '6px',
+        top: '7px',
+        height: '18px'
+      },
+      ((!isNavCollapsed && !isExpanded && hasSelectedNestedLink) || // Nav is open, L2 menu collapsed, L2 has a selected link => true
+      (!isNavCollapsed && !hasNestedMenu && isSelected) || // Nav is open, is an L2 menu, is selected => true
+        (isNavCollapsed && isSelected)) && {
+        // Nav is closed, is selected regardless of L1 or L2 => true
+        opacity: 1
+      }
+    ],
     hidden: {
       display: 'none'
     },
-    navItemIcon: {
-      fontSize: navIconSize,
-      lineHeight: isNested ? navChildItemHeight : navItemHeight,
-      color: DefaultPalette.black
-    },
+    navItemIcon: [
+      {
+        fontSize: navIconSize,
+        lineHeight: isNested ? navChildItemHeight : navItemHeight,
+        color: DefaultPalette.black,
+        transition: 'transform 200ms'
+      },
+      isNested && {
+        height: navChildItemHeight,
+        lineHeight: navChildItemHeight
+      },
+      isExpanded && {
+        transform: 'rotate(-180deg)'
+      }
+    ],
     navItemText: {
       flex: '1 1 auto',
       lineHeight: isNested ? navChildItemHeight : navItemHeight,

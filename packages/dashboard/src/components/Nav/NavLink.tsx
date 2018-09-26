@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import { INavStyles, INavLinkProps, INavProps } from './Nav.types';
+import { INavStyles, INavLinkProps } from './Nav.types';
 import { getStyles } from './Nav.styles';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
-const getClassNames = classNamesFunction<INavProps, INavStyles>();
+const getClassNames = classNamesFunction<INavLinkProps, INavStyles>();
 
 export class NavLink extends React.Component<INavLinkProps, {}> {
   constructor(props: INavLinkProps) {
@@ -36,18 +36,17 @@ export class NavLink extends React.Component<INavLinkProps, {}> {
 
   private _generateActiveBar(): React.ReactElement<{}> | null {
     const { isNested, isSelected, hasNestedMenu, isNavCollapsed, hasSelectedNestedLink, isExpanded } = this.props;
-    const classNames = getClassNames(getStyles);
+    // Pass all the right props to getStyles so we can handle all the cases where the selected indicator is shown/hidden
+    const classNames = getClassNames(getStyles, {
+      isNested: isNested,
+      hasNestedMenu: hasNestedMenu,
+      isNavCollapsed: isNavCollapsed,
+      hasSelectedNestedLink: hasSelectedNestedLink,
+      isSelected: isSelected,
+      isExpanded: isExpanded
+    });
 
-    // Decide all the cases to show the selected indicator
-    if (
-      (!isNavCollapsed && !isExpanded && hasSelectedNestedLink) ||
-      (!isNavCollapsed && !hasNestedMenu && isSelected) ||
-      (isNavCollapsed && isSelected)
-    ) {
-      return <div className={isNested ? classNames.navItemBarMarkerSmall : classNames.navItemBarMarker} />;
-    } else {
-      return null;
-    }
+    return <div className={classNames.navItemBarMarker} />;
   }
 
   private _generatePrimaryIcon(): React.ReactElement<{}> | null {
@@ -75,8 +74,8 @@ export class NavLink extends React.Component<INavLinkProps, {}> {
   }
 
   private _generateSecondaryIcon(): React.ReactElement<{}> | null {
-    const { hasNestedMenu, isNested, target, isExpanded, isNavCollapsed } = this.props;
-    const classNames = getClassNames(getStyles);
+    const { hasNestedMenu, isNested, target, isNavCollapsed, isExpanded } = this.props;
+    const classNames = getClassNames(getStyles, { isExpanded: isExpanded, isNested: isNested });
 
     if (isNavCollapsed && !isNested) {
       return null;
@@ -84,17 +83,14 @@ export class NavLink extends React.Component<INavLinkProps, {}> {
 
     let iconName = undefined;
     if (hasNestedMenu) {
-      iconName = isExpanded ? 'ChevronUp' : 'ChevronDown';
+      iconName = 'ChevronUp';
     } else if (target === '_blank') {
       iconName = 'OpenInNewWindow';
     }
 
     return (
       <div className={classNames.iconWrapper}>
-        <Icon
-          iconName={iconName}
-          className={isNested ? mergeStyles(classNames.navItemIcon, classNames.navLinkSmall) : classNames.navItemIcon}
-        />
+        <Icon iconName={iconName} className={classNames.navItemIcon} />
       </div>
     );
   }
