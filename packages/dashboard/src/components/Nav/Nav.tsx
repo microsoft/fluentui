@@ -6,7 +6,7 @@ import { getStyles } from './Nav.styles';
 import { styled, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { NavLink } from './NavLink';
 import { NavGroup } from './NavGroup';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+// import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
 const classNames = getClassNames(getStyles);
@@ -26,7 +26,7 @@ class NavComponent extends React.Component<INavProps, INavState> {
     }
 
     return (
-      <nav role="navigation" className={this.state.isNavCollapsed ? mergeStyles(classNames.nav, classNames.navCollapsed) : classNames.nav}>
+      <nav role="navigation" className={classNames.nav}>
         {this._renderExpandCollapseNavItem()}
 
         {this.props.groups.map((group: INavLinkGroup, groupIndex: number) => {

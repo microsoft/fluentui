@@ -31,33 +31,38 @@ export const getStyles = (props: INavStyleProps & INavLinkProps): INavStyles => 
 
   return {
     // Nav
-    nav: {
-      width: navWidth,
-      backgroundColor: navBackgroundColor,
-      color: navTextColor,
-      transitionProperty: 'width',
-      transitionDuration: '.2s',
-      userSelect: 'none',
-      fontSize: navFontSize,
-      selectors: {
-        ul: {
-          selectors: {
-            li: {
-              listStyleType: 'none'
+    nav: [
+      {
+        width: navWidth,
+        backgroundColor: navBackgroundColor,
+        color: navTextColor,
+        transitionProperty: 'width',
+        transitionDuration: '.2s',
+        userSelect: 'none',
+        fontSize: navFontSize,
+        selectors: {
+          ul: {
+            selectors: {
+              li: {
+                listStyleType: 'none'
+              }
             }
-          }
-        },
-        a: {
-          color: navTextColor,
-          textDecoration: 'none',
-          selectors: {
-            ':focus': {
-              backgroundColor: navItemSelectedColor
+          },
+          a: {
+            color: navTextColor,
+            textDecoration: 'none',
+            selectors: {
+              ':focus': {
+                backgroundColor: navItemSelectedColor
+              }
             }
           }
         }
+      },
+      isNavCollapsed && {
+        width: navCollapsedWidth
       }
-    },
+    ],
     navCollapsed: {
       width: navCollapsedWidth
     },
