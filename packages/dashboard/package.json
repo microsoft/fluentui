@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/dashboard",
-  "version": "0.25.6",
+  "version": "0.26.0",
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
     "@uifabric/charting": "^0.21.2",
@@ -9,7 +9,7 @@
     "@uifabric/set-version": ">=1.1.0 <2.0.0",
     "auto-fontsize": "^1.0.18",
     "css-loader": "^0.15.1",
-    "office-ui-fabric-react": ">=6.73.0 <7.0.0",
+    "office-ui-fabric-react": ">=6.74.0 <7.0.0",
     "react-grid-layout": "samiyaakhtar/react-grid-layout",
     "style-loader": "^0.21.0",
     "tslib": "^1.7.1"

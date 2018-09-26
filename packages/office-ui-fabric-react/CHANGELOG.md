@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 25 Sep 2018 12:28:13 GMT and should not be manually modified.
+This log was last generated on Wed, 26 Sep 2018 12:27:23 GMT and should not be manually modified.
+
+## 6.74.0
+Wed, 26 Sep 2018 12:27:23 GMT
+
+### Minor changes
+
+- Add currentRenderedQueryString to avoid discrepancy
+
+### Patches
+
+- Sticky: second null check for currElem
+- Dropdown: prevent dropdown to open on keyboard events when in disabled mode.
 
 ## 6.73.0
 Tue, 25 Sep 2018 12:28:12 GMT

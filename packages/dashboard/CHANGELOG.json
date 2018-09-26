@@ -2,6 +2,25 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.26.0",
+      "tag": "@uifabric/dashboard_v0.26.0",
+      "date": "Wed, 26 Sep 2018 12:27:23 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding props that take bolding for the content in each cell of gridlist",
+            "author": "dezverev <dbzverev@outlook.com>",
+            "commit": "0d208d1031f9af115576667aaeb279a97b8e5342"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.73.0 <7.0.0` to `>=6.74.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.25.6",
       "tag": "@uifabric/dashboard_v0.25.6",
       "date": "Tue, 25 Sep 2018 12:28:12 GMT",

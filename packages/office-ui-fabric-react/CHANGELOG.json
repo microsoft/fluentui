@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.74.0",
+      "tag": "office-ui-fabric-react_v6.74.0",
+      "date": "Wed, 26 Sep 2018 12:27:23 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add currentRenderedQueryString to avoid discrepancy",
+            "author": "Francis Meng <meng.francis@gmail.com>",
+            "commit": "279f798a66462c382eadb816d8a25fe6ca96e861"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Sticky: second null check for currElem",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "d2778eb85f78a056e552fda52cda17c6bc273d5b"
+          },
+          {
+            "comment": "Dropdown: prevent dropdown to open on keyboard events when in disabled mode.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "ed76bda0e18f3a68c831383ef898e092e1e3a8f0"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.21.0 <7.0.0` to `>=6.21.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.73.0",
       "tag": "office-ui-fabric-react_v6.73.0",
       "date": "Tue, 25 Sep 2018 12:28:12 GMT",
