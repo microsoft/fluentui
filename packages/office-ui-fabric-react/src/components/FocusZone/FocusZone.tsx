@@ -663,6 +663,10 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
           let topBottomComparison;
 
           if (getRTL()) {
+            // When in RTL, this comparison should be the same as the one in _moveFocusRight for LTR.
+            // Going left at a leftmost rectangle will go down a line instead of up a line like in LTR.
+            // This is important, because we want to be comparing the top of the target rect
+            // with the bottom of the active rect.
             topBottomComparison = targetRect.top.toFixed(3) < activeRect.bottom.toFixed(3);
           } else {
             topBottomComparison = targetRect.bottom.toFixed(3) > activeRect.top.toFixed(3);
@@ -699,6 +703,10 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
           let topBottomComparison;
 
           if (getRTL()) {
+            // When in RTL, this comparison should be the same as the one in _moveFocusLeft for LTR.
+            // Going right at a rightmost rectangle will go up a line instead of down a line like in LTR.
+            // This is important, because we want to be comparing the bottom of the target rect
+            // with the top of the active rect.
             topBottomComparison = targetRect.bottom.toFixed(3) > activeRect.top.toFixed(3);
           } else {
             topBottomComparison = targetRect.top.toFixed(3) < activeRect.bottom.toFixed(3);
