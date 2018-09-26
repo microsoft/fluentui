@@ -76,13 +76,26 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
       disableAnimation
     });
 
+    const nativeProps = getNativeProps(this.props, inputProperties, [
+      'id',
+      'className',
+      'placeholder',
+      'onFocus',
+      'onBlur',
+      'onChange',
+      'onInput',
+      'onKeyDown',
+      'value',
+      'disabled'
+    ]);
+
     return (
       <div ref={this._rootElement} className={classNames.root} onFocusCapture={this._onFocusCapture}>
         <div className={classNames.iconContainer} onClick={this._onClickFocus} aria-hidden={true}>
           <Icon iconName="Search" {...iconProps} className={classNames.icon} />
         </div>
         <input
-          {...getNativeProps(this.props, inputProperties)}
+          {...nativeProps}
           id={id}
           className={classNames.field}
           placeholder={placeholderValue}
@@ -90,7 +103,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
           onInput={this._onInputChange}
           onKeyDown={this._onKeyDown}
           value={value}
-          disabled={this.props.disabled}
+          disabled={disabled}
           aria-label={ariaLabel ? ariaLabel : placeholder}
           ref={this._inputElement}
         />
