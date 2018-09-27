@@ -2,6 +2,32 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.22.0",
+      "tag": "@uifabric/charting_v0.22.0",
+      "date": "Thu, 27 Sep 2018 12:27:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "donut chart legends padding issue fix",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "6ce5620e70a1da8a6d1a5c63ebf1fd45e81a766e"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "1)Making the line chart responsive 2)Correcting flex behavior 3)Curving corners of lines to get a smooth intersection between lines",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "ab1cbcae84ae0d91ef47d61189911c815ca872e1"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.74.0 <7.0.0` to `>=6.74.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.21.2",
       "tag": "@uifabric/charting_v0.21.2",
       "date": "Tue, 25 Sep 2018 12:28:12 GMT",
