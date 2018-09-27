@@ -509,10 +509,11 @@ describe('FocusZone', () => {
     // Pressing up should go to a.
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.up });
     expect(lastFocusedElement).toBe(buttonA);
+
+    setRTL(false);
   });
 
   it('can use arrows bidirectionally with data-no-vertical-wrap', () => {
-    setRTL(false);
     const component = ReactTestUtils.renderIntoDocument(
       <div {...{ onFocusCapture: _onFocus }}>
         <FocusZone checkForNoWrap={true} data-no-vertical-wrap={true}>
