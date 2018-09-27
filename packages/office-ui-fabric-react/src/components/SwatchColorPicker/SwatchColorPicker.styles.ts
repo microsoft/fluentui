@@ -6,23 +6,17 @@ const GlobalClassNames = {
 };
 
 export const getStyles = (props: ISwatchColorPickerStyleProps): ISwatchColorPickerStyles => {
-  const { className, theme, cellMargin = 10 } = props;
+  const { className, theme, cellMargin } = props;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {
     root: {
-      margin: '12px 5px',
+      margin: '8px 0',
       borderCollapse: 'collapse'
     },
     tableCell: {
-      paddingRight: cellMargin,
-      paddingBottom: cellMargin,
-      selectors: {
-        ':last-child': {
-          paddingRight: 0
-        }
-      }
+      padding: cellMargin! / 2
     },
     focusedContainer: [
       classNames.focusedContainer,

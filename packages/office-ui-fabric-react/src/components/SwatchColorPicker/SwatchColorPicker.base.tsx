@@ -21,7 +21,8 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
   public static defaultProps = {
     cellShape: 'circle',
     disabled: false,
-    shouldFocusCircularNavigate: true
+    shouldFocusCircularNavigate: true,
+    cellMargin: 10
   } as ISwatchColorPickerProps;
 
   private _id: string;

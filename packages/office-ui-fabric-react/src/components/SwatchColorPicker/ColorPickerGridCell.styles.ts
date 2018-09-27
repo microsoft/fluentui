@@ -2,7 +2,7 @@ import { IsFocusVisibleClassName } from '../../Utilities';
 import { IColorPickerGridCellStyleProps, IColorPickerGridCellStyles } from './ColorPickerGridCell.types';
 
 export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGridCellStyles => {
-  const { theme, disabled, selected, circle, isWhite, height = 20, width = 20, borderWidth = 2 } = props;
+  const { theme, disabled, selected, circle, isWhite, height, width, borderWidth } = props;
   const { semanticColors } = theme;
 
   return {
