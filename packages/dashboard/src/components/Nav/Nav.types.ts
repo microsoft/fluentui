@@ -258,7 +258,6 @@ export interface INavStyles {
    */
   navLink: IStyle;
   navLinkSmall: IStyle;
-  hidden: IStyle;
   navItemBarMarker: IStyle;
   navItemIcon: IStyle;
   navItemText: IStyle;

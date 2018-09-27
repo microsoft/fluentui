@@ -131,14 +131,15 @@ export const getStyles = (props: INavLinkProps): INavStyles => {
       AnimationClassNames.fadeIn400
     ],
     nestedNavLinksWrapper: {
-      boxShadow: '0 1.2px 3.6px rgba(0, 0, 0, 0.09), 0 6.4px 14.4px rgba(0, 0, 0, 0.11)'
+      boxShadow: '0 1.2px 3.6px rgba(0, 0, 0, 0.09), 0 6.4px 14.4px rgba(0, 0, 0, 0.11)',
+      width: '230px',
+      padding: '48px 0 0',
+      marginTop: '-48px'
     },
     nestedNavLinksWhenNavCollapsed: [
       {
-        width: '230px',
-        padding: '48px 0 0',
-        marginTop: '-48px',
         backgroundColor: 'rgba(255,255,255,.95)',
+        padding: 0,
         selectors: {
           '@supports((backdrop-filter: blur(20px)) or (-webkit-backdrop-filter: blur(20px)))': {
             backgroundColor: 'rgba(255,255,255,.8)',
@@ -210,9 +211,6 @@ export const getStyles = (props: INavLinkProps): INavStyles => {
         opacity: 1
       }
     ],
-    hidden: {
-      display: 'none'
-    },
     navItemIcon: [
       {
         fontSize: navIconSize,
