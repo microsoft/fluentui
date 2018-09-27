@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { SetupBanner } from '../SetupBanner';
-import { ISetupBannerAction, SetupBannerActionType, ISetupBannerStep } from '../SetupBanner.types';
+import { ISetupBannerAction, SetupBannerActionType } from '../SetupBanner.types';
 
 interface ISetupBannerBasicExampleStyle {
   sectionMargin: IStyle;
@@ -35,18 +35,12 @@ export class SetupBannerBasicExample extends React.Component<{}, {}> {
       }
     ];
 
-    const steps: ISetupBannerStep[] = [
-      { stepName: 'Domains', completed: false },
-      { stepName: 'Users', completed: false },
-      { stepName: 'Office', completed: false }
-    ];
-
     return (
       <SetupBanner
         actions={actions}
         headerText={"Three things you'll need to get set up"}
         onRenderBody={this._onRenderBody}
-        stepInformation={steps}
+        onRenderVisualization={this._onRenderVisualization}
       />
     );
   }
@@ -56,15 +50,16 @@ export class SetupBannerBasicExample extends React.Component<{}, {}> {
     const classNames = getClassNames(getStyles!);
     return (
       <div>
-        <div className={classNames.sectionMargin}>
-          For now, you're using contoso.onmicrosoft.com for your organization.
-        </div>
+        <div className={classNames.sectionMargin}>For now, you're using contoso.onmicrosoft.com for your organization.</div>
         <div>
-          But you may want to set up a simpler, more professional domain name to use for your organization's website and
-          email address. If so, it's best to do that right away. If you wait and set it up later, you'll have to redo a
-          lot of other work.
+          But you may want to set up a simpler, more professional domain name to use for your organization's website and email address. If
+          so, it's best to do that right away. If you wait and set it up later, you'll have to redo a lot of other work.
         </div>
       </div>
     );
+  };
+
+  private _onRenderVisualization = (): JSX.Element => {
+    return <div>Visualization</div>;
   };
 }

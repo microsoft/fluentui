@@ -60,30 +60,14 @@ export interface ISetupBannerProps {
   onRenderBody: () => JSX.Element;
 
   /**
-   * An array of setup banner step information
-   * The step order corresponds to the order in the array (the first step is the first element in the array)
+   * The content of the visualization
    */
-  stepInformation: ISetupBannerStep[];
+  onRenderVisualization: () => JSX.Element;
 
   /**
    * CSS class name for the outermost div
    */
   className?: string;
-}
-
-/**
- * A setup banner step
- */
-export interface ISetupBannerStep {
-  /**
-   * The name of the step
-   */
-  stepName: string;
-
-  /**
-   * Boolean indicating if the step is complete
-   */
-  completed: boolean;
 }
 
 /**
@@ -96,7 +80,7 @@ export interface ISetupBannerStyles {
   root: IStyle;
 
   /**
-   * Style for the visualization partition (the steps)
+   * Style for the visualization partition
    */
   visualizationPartition: IStyle;
 
