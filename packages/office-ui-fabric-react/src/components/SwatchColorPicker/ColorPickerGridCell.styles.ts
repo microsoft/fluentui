@@ -1,26 +1,9 @@
-// import { IRawStyle, HighContrastSelector } from '../../Styling';
-import { IStyle } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
 import { IColorPickerGridCellStyleProps, IColorPickerGridCellStyles } from './ColorPickerGridCell.types';
 
 export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGridCellStyles => {
   const { theme, disabled, selected, circle, isWhite, height = 20, width = 20, borderWidth = 2 } = props;
   const { semanticColors } = theme;
-
-  // constructing this first, since array syntax breaks '&'s for 'selectors'
-  let colorCellSelectors: { [key: string]: IStyle } = {
-    // remove default focus border
-    [`.${IsFocusVisibleClassName} &:focus::after`]: { display: 'none' },
-    // add a custom focus border
-    [`.${IsFocusVisibleClassName} &:focus`]: { outline: `1px solid ${semanticColors.focusBorder}` }
-  };
-  if (!selected) {
-    colorCellSelectors['&:hover, &:active, &:focus'] = {
-      backgroundColor: semanticColors.bodyBackground, // overwrite white's override
-      padding: borderWidth,
-      border: `${borderWidth}px solid ${theme.palette.neutralLight}`
-    };
-  }
 
   return {
     // this is a button that wraps the color
@@ -35,7 +18,12 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
         userSelect: 'none',
         height: height,
         width: width,
-        selectors: colorCellSelectors
+        selectors: {
+          // remove default focus border
+          [`.${IsFocusVisibleClassName} &:focus::after`]: { display: 'none' },
+          // add a custom focus border
+          [`.${IsFocusVisibleClassName} &:focus`]: { outline: `1px solid ${semanticColors.focusBorder}` }
+        }
       },
       circle && {
         borderRadius: '100%'
@@ -43,6 +31,15 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
       selected && {
         padding: borderWidth,
         border: `${borderWidth}px solid ${theme.palette.neutralTertiaryAlt}`
+      },
+      !selected && {
+        selectors: {
+          ['&:hover, &:active, &:focus']: {
+            backgroundColor: semanticColors.bodyBackground, // overwrite white's override
+            padding: borderWidth,
+            border: `${borderWidth}px solid ${theme.palette.neutralLight}`
+          }
+        }
       },
       disabled && {
         color: semanticColors.disabledBodyText,
