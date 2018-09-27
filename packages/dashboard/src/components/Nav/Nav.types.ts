@@ -1,10 +1,10 @@
 ﻿/* tslint:disable */
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import { IStyleFunctionOrObject, IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
 import { INavLink, INavLinkGroup, INavState } from 'office-ui-fabric-react/lib/Nav';
 /* tslint:enable */
 
-export interface INavProps {
+export interface INavProps extends IBaseProps {
   /**
    * A collection of link groups to display in the navigation bar
    */
@@ -235,31 +235,31 @@ export interface INavStyles {
   /**
    * Nav
    */
-  nav: IStyle;
+  root?: IStyle;
 
   /**
    * NavGroup
    */
-  navGroup: IStyle;
-  navGroupDivider: IStyle;
-  navGroupTitle: IStyle;
-  navItem: IStyle;
+  navGroup?: IStyle;
+  navGroupDivider?: IStyle;
+  navGroupTitle?: IStyle;
+  navItem?: IStyle;
 
   /**
    * NavLinkGroup
    */
-  nestedNavMenu: IStyle;
-  nestedNavMenuWhenNavCollapsed: IStyle;
-  nestedNavLinksWrapper: IStyle;
-  nestedNavLinksWhenNavCollapsed: IStyle;
+  nestedNavMenu?: IStyle;
+  nestedNavMenuWhenNavCollapsed?: IStyle;
+  nestedNavLinksWrapper?: IStyle;
+  nestedNavLinksWhenNavCollapsed?: IStyle;
 
   /**
    * NavLink
    */
-  navLink: IStyle;
-  navLinkSmall: IStyle;
-  navItemBarMarker: IStyle;
-  navItemIcon: IStyle;
-  navItemText: IStyle;
-  iconWrapper: IStyle;
+  navLink?: IStyle;
+  navLinkSmall?: IStyle;
+  navItemBarMarker?: IStyle;
+  navItemIcon?: IStyle;
+  navItemText?: IStyle;
+  iconWrapper?: IStyle;
 }
