@@ -32,7 +32,7 @@ const TASKS_WITH_PREREQUISITES = [
   ['jest', 'sass'],
   ['lint-imports', 'ts'],
   ['build-codepen-examples', 'ts'],
-  ['webpack', 'ts']
+  ['webpack', 'build-codepen-examples']
 ];
 
 /**
