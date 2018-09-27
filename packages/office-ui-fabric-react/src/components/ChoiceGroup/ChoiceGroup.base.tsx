@@ -53,7 +53,7 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
   }
 
   public render(): JSX.Element {
-    const { className, theme, styles, options, label, required, disabled, name } = this.props;
+    const { className, theme, styles, options, label, required, disabled, name, role = 'application' } = this.props;
     const { keyChecked, keyFocused } = this.state;
 
     const classNames = getClassNames(styles!, {
@@ -70,13 +70,13 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
 
     // In cases where no option is checked, set focusable to first enabled option so that ChoiceGroup remains focusable.
     // If no options are enabled, ChoiceGroup is not focusable. If any option is checked, do not set keyDefaultFocusable.
-    const firstEnabledOption =
-      disabled || options === undefined ? undefined : find(options, option => !option.disabled);
+    const firstEnabledOption = disabled || options === undefined ? undefined : find(options, option => !option.disabled);
     const keyDefaultFocusable = keyChecked === undefined && firstEnabledOption ? firstEnabledOption.key : undefined;
 
     return (
-      // Need to assign role application on containing div because JAWS doesn't call OnKeyDown without this role
-      <div role="application" className={classNames.applicationRole}>
+      // By default, we need to assign the role 'application' on the containing div
+      // because JAWS doesn't call OnKeyDown without this role
+      <div role={role} className={classNames.applicationRole}>
         <div className={classNames.root} role="radiogroup" {...ariaLabelledBy && { 'aria-labelledby': ariaLabelledBy }}>
           {label && (
             <Label className={classNames.label} required={required} id={this._id + '-label'}>
