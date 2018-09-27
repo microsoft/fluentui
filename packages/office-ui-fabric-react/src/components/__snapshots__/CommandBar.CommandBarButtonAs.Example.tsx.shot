@@ -2483,7 +2483,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                         margin-top: 0;
                         white-space: nowrap;
                       }
-                  id="id__13"
+                  id="id__10"
                 >
                   Download
                 </div>
@@ -2789,7 +2789,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                         margin-top: 0;
                         white-space: nowrap;
                       }
-                  id="id__19"
+                  id="id__16"
                 >
                   Sort
                 </div>
