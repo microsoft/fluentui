@@ -22,10 +22,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
 
         {
           border-collapse: collapse;
-          margin-bottom: 12px;
-          margin-left: 5px;
-          margin-right: 5px;
-          margin-top: 12px;
+          margin-bottom: 8px;
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: 8px;
           outline: none;
           padding-bottom: 2px;
           padding-left: 2px;
@@ -44,13 +44,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           className=
 
               {
-                padding-bottom: 10px;
-                padding-left: 0px;
-                padding-right: 10px;
-                padding-top: 0px;
-              }
-              &:last-child {
-                padding-right: 0px;
+                padding-bottom: 5px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-top: 5px;
               }
           role="presentation"
         >
@@ -190,13 +187,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           className=
 
               {
-                padding-bottom: 10px;
-                padding-left: 0px;
-                padding-right: 10px;
-                padding-top: 0px;
-              }
-              &:last-child {
-                padding-right: 0px;
+                padding-bottom: 5px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-top: 5px;
               }
           role="presentation"
         >
@@ -336,13 +330,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           className=
 
               {
-                padding-bottom: 10px;
-                padding-left: 0px;
-                padding-right: 10px;
-                padding-top: 0px;
-              }
-              &:last-child {
-                padding-right: 0px;
+                padding-bottom: 5px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-top: 5px;
               }
           role="presentation"
         >
@@ -482,13 +473,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           className=
 
               {
-                padding-bottom: 10px;
-                padding-left: 0px;
-                padding-right: 10px;
-                padding-top: 0px;
-              }
-              &:last-child {
-                padding-right: 0px;
+                padding-bottom: 5px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-top: 5px;
               }
           role="presentation"
         >
@@ -632,13 +620,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           className=
 
               {
-                padding-bottom: 10px;
-                padding-left: 0px;
-                padding-right: 10px;
-                padding-top: 0px;
-              }
-              &:last-child {
-                padding-right: 0px;
+                padding-bottom: 5px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-top: 5px;
               }
           role="presentation"
         >
@@ -778,13 +763,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           className=
 
               {
-                padding-bottom: 10px;
-                padding-left: 0px;
-                padding-right: 10px;
-                padding-top: 0px;
-              }
-              &:last-child {
-                padding-right: 0px;
+                padding-bottom: 5px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-top: 5px;
               }
           role="presentation"
         >
@@ -924,13 +906,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           className=
 
               {
-                padding-bottom: 10px;
-                padding-left: 0px;
-                padding-right: 10px;
-                padding-top: 0px;
-              }
-              &:last-child {
-                padding-right: 0px;
+                padding-bottom: 5px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-top: 5px;
               }
           role="presentation"
         >
@@ -1070,13 +1049,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           className=
 
               {
-                padding-bottom: 10px;
-                padding-left: 0px;
-                padding-right: 10px;
-                padding-top: 0px;
-              }
-              &:last-child {
-                padding-right: 0px;
+                padding-bottom: 5px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-top: 5px;
               }
           role="presentation"
         >
@@ -1220,13 +1196,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           className=
 
               {
-                padding-bottom: 10px;
-                padding-left: 0px;
-                padding-right: 10px;
-                padding-top: 0px;
-              }
-              &:last-child {
-                padding-right: 0px;
+                padding-bottom: 5px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-top: 5px;
               }
           role="presentation"
         >
@@ -1366,13 +1339,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           className=
 
               {
-                padding-bottom: 10px;
-                padding-left: 0px;
-                padding-right: 10px;
-                padding-top: 0px;
-              }
-              &:last-child {
-                padding-right: 0px;
+                padding-bottom: 5px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-top: 5px;
               }
           role="presentation"
         >
@@ -1512,13 +1482,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           className=
 
               {
-                padding-bottom: 10px;
-                padding-left: 0px;
-                padding-right: 10px;
-                padding-top: 0px;
-              }
-              &:last-child {
-                padding-right: 0px;
+                padding-bottom: 5px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-top: 5px;
               }
           role="presentation"
         >
@@ -1658,13 +1625,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           className=
 
               {
-                padding-bottom: 10px;
-                padding-left: 0px;
-                padding-right: 10px;
-                padding-top: 0px;
-              }
-              &:last-child {
-                padding-right: 0px;
+                padding-bottom: 5px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-top: 5px;
               }
           role="presentation"
         >
