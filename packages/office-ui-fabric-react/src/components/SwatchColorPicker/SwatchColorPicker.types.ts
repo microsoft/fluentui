@@ -93,21 +93,25 @@ export interface ISwatchColorPickerProps {
 
   /**
    * The distance between cells, in pixels
+   * @default 10
    */
   cellMargin?: number;
 
   /**
    * Height of an individual cell, in pixels
+   * @default 20
    */
   cellHeight?: number;
 
   /**
    * Width of an individual cell, in pixels
+   * @default 20
    */
   cellWidth?: number;
 
   /**
    * Width of the border indicating a hovered/selected cell, in pixels
+   * @default 2
    */
   cellBorderWidth?: number;
 

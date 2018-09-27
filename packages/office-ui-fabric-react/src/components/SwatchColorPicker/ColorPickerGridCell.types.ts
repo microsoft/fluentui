@@ -51,16 +51,19 @@ export interface IColorPickerGridCellProps {
 
   /**
    * Height of the cell, in pixels
+   * @default 20
    */
   height?: number;
 
   /**
    * Width of the cell, in pixels
+   * @default 20
    */
   width?: number;
 
   /**
    * Width of the border that indicates a selected/hovered cell, in pixels
+   * @default 2
    */
   borderWidth?: number;
 
