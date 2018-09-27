@@ -1,12 +1,5 @@
 import { IDetailsRowStyleProps, IDetailsRowStyles, ICellStyleProps } from './DetailsRow.types';
-import {
-  AnimationClassNames,
-  FontSizes,
-  HighContrastSelector,
-  IStyle,
-  getFocusStyle,
-  getGlobalClassNames
-} from '../../Styling';
+import { AnimationClassNames, FontSizes, HighContrastSelector, IStyle, getFocusStyle, getGlobalClassNames } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-DetailsRow',
@@ -65,7 +58,6 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
 
   const {
     neutralPrimary,
-    neutralSecondaryAlt,
     white,
     neutralSecondary,
     neutralLighter,
@@ -81,12 +73,11 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
   const colors = {
     // Default
     defaultHeaderTextColor: neutralPrimary,
-    defaultMetaTextColor: neutralSecondaryAlt,
+    defaultMetaTextColor: neutralSecondary,
     defaultBackgroundColor: white,
 
     // Hover
     hoverTextColor: neutralPrimary,
-    hoverMetaTextColor: neutralSecondary,
     hoverColorBackground: neutralLighter,
 
     // Selected
@@ -223,12 +214,8 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
       // Masking the running shimmer background with borders when it's an Icon placeholder
       [`&$shimmerIconPlaceholder`]: {
         borderRight: `${cellStyleProps.cellRightPadding}px solid ${colors.defaultBackgroundColor}`,
-        borderBottom: `${(values.compactRowHeight - values.rowShimmerIconPlaceholderHeight) / 2}px solid ${
-          colors.defaultBackgroundColor
-        }`,
-        borderTop: `${(values.compactRowHeight - values.rowShimmerIconPlaceholderHeight) / 2}px solid ${
-          colors.defaultBackgroundColor
-        }`
+        borderBottom: `${(values.compactRowHeight - values.rowShimmerIconPlaceholderHeight) / 2}px solid ${colors.defaultBackgroundColor}`,
+        borderTop: `${(values.compactRowHeight - values.rowShimmerIconPlaceholderHeight) / 2}px solid ${colors.defaultBackgroundColor}`
       }
     }
   };
@@ -265,12 +252,8 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
 
         '&$shimmerIconPlaceholder': {
           borderRight: `${cellStyleProps.cellRightPadding}px solid ${colors.defaultBackgroundColor}`,
-          borderBottom: `${(values.rowHeight - values.rowShimmerIconPlaceholderHeight) / 2}px solid ${
-            colors.defaultBackgroundColor
-          }`,
-          borderTop: `${(values.rowHeight - values.rowShimmerIconPlaceholderHeight) / 2}px solid ${
-            colors.defaultBackgroundColor
-          }`
+          borderBottom: `${(values.rowHeight - values.rowShimmerIconPlaceholderHeight) / 2}px solid ${colors.defaultBackgroundColor}`,
+          borderTop: `${(values.rowHeight - values.rowShimmerIconPlaceholderHeight) / 2}px solid ${colors.defaultBackgroundColor}`
         }
       }
     },
@@ -327,8 +310,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
           },
 
           '&:hover': {
-            background: colors.hoverColorBackground,
-            color: colors.hoverMetaTextColor
+            background: colors.hoverColorBackground
           },
 
           '&:hover $check': {
