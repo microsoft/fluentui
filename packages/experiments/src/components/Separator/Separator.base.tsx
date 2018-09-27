@@ -24,7 +24,7 @@ export class SeparatorBase extends BaseComponent<ISeparatorProps, {}> {
 
     return (
       <div className={this._classNames.root}>
-        <div className={this._classNames.text} role="heading">
+        <div className={this._classNames.text} role="separator" aria-orientation={vertical ? 'vertical' : 'horizontal'}>
           {text}
         </div>
       </div>
