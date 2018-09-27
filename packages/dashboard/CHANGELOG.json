@@ -2,6 +2,24 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.26.2",
+      "tag": "@uifabric/dashboard_v0.26.2",
+      "date": "Thu, 27 Sep 2018 12:27:48 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.21.2` to `^0.22.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.32.2 <7.0.0` to `>=6.32.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.74.0 <7.0.0` to `>=6.74.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.26.1",
       "tag": "@uifabric/dashboard_v0.26.1",
       "date": "Wed, 26 Sep 2018 16:58:51 GMT",

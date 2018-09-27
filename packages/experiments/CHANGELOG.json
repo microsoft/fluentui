@@ -2,6 +2,21 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.32.3",
+      "tag": "@uifabric/experiments_v6.32.3",
+      "date": "Thu, 27 Sep 2018 12:27:48 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.21.2` to `^0.22.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.74.0 <7.0.0` to `>=6.74.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.32.2",
       "tag": "@uifabric/experiments_v6.32.2",
       "date": "Tue, 25 Sep 2018 12:28:12 GMT",

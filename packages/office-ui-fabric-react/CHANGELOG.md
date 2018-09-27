@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 26 Sep 2018 12:27:23 GMT and should not be manually modified.
+This log was last generated on Thu, 27 Sep 2018 12:27:48 GMT and should not be manually modified.
+
+## 6.74.1
+Thu, 27 Sep 2018 12:27:48 GMT
+
+### Patches
+
+- Layer: Do not render content until virtual parent is set.
 
 ## 6.74.0
 Wed, 26 Sep 2018 12:27:23 GMT
