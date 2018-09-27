@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/set-version",
+      "comment": "version files now expose a call that can be called by apps that don't do index import",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/set-version",
+  "email": "kchau@microsoft.com"
+}
