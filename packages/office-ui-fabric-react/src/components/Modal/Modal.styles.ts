@@ -22,7 +22,17 @@ const globalClassNames = {
 };
 
 export const getStyles = (props: IModalStyleProps): IModalStyles => {
-  const { className, containerClassName, scrollableContentClassName, isOpen, isVisible, theme } = props;
+  const {
+    className,
+    containerClassName,
+    scrollableContentClassName,
+    isOpen,
+    isVisible,
+    hasBeenOpened,
+    modalRectangleTop,
+    theme,
+    topOffsetFixed
+  } = props;
   const { palette } = theme;
 
   const classNames = getGlobalClassNames(globalClassNames, theme);
@@ -42,6 +52,11 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
         pointerEvents: 'none',
         transition: `opacity ${animationDuration}`
       },
+      topOffsetFixed &&
+        hasBeenOpened && {
+          alignItems: 'flex-start',
+          top: modalRectangleTop
+        },
       isOpen && classNames.isOpen,
       isVisible && {
         opacity: 1,
