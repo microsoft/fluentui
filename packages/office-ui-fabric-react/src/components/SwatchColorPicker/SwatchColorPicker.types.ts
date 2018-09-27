@@ -6,7 +6,7 @@ import {
   IColorPickerGridCellStyles
 } from './ColorPickerGridCell.types';
 
-export interface ISwatchColorPicker {}
+export interface ISwatchColorPicker { }
 
 export interface ISwatchColorPickerProps {
   /**
@@ -79,7 +79,7 @@ export interface ISwatchColorPickerProps {
   setSize?: number;
 
   /**
-   * Should focus cycle to the beginning of once the user navigates past the end (and visa vsersa).
+   * Should focus cycle to the beginning of once the user navigates past the end (and vice versa).
    * This prop is only relevant if doNotcontainWithinFocusZone is not true
    * @default to true
    */
@@ -90,6 +90,26 @@ export interface ISwatchColorPickerProps {
    * If false contain the grid inside of a FocusZone.
    */
   doNotContainWithinFocusZone?: boolean;
+
+  /**
+   * The distance between cells, in pixels
+   */
+  cellMargin?: number;
+
+  /**
+   * Height of an individual cell, in pixels
+   */
+  cellHeight?: number;
+
+  /**
+   * Width of an individual cell, in pixels
+   */
+  cellWidth?: number;
+
+  /**
+   * Width of the border indicating a hovered/selected cell, in pixels
+   */
+  cellBorderWidth?: number;
 
   /**
    * Theme to apply to the component.
@@ -132,6 +152,11 @@ export interface ISwatchColorPickerStyleProps {
    * Custom className to apply to the container.
    */
   className?: string;
+
+  /**
+   * The distance between cells
+   */
+  cellMargin?: number;
 }
 
 /**
