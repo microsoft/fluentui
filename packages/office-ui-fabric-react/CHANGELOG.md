@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 27 Sep 2018 12:27:48 GMT and should not be manually modified.
+This log was last generated on Fri, 28 Sep 2018 12:27:38 GMT and should not be manually modified.
+
+## 6.74.2
+Fri, 28 Sep 2018 12:27:38 GMT
+
+### Patches
+
+- DetailsList: replace the use of neutralSecondaryAlt color which was deprecated.
+- ComboBox: add logic to stop onBlur handler to be invoked when clicking on Callout's scrollbar.
+- now all the top level components will include version info for package
 
 ## 6.74.1
 Thu, 27 Sep 2018 12:27:48 GMT
