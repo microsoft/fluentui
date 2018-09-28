@@ -149,7 +149,7 @@ function _makeSemanticColorsFromPalette(
 ): ISemanticColors {
   let toReturn: ISemanticColors = {
     bodyBackground: p.white,
-    bodyStandoutBackground: p.white,
+    bodyStandoutBackground: p.neutralLighterAlt,
     bodyFrameBackground: p.white,
     bodyFrameDivider: p.neutralLight,
     bodyText: p.neutralPrimary,
