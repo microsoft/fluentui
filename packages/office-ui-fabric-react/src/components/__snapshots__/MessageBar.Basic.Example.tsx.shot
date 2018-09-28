@@ -352,6 +352,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 flex-shrink: 0;
@@ -403,7 +404,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 top: 0px;
               }
               &:hover {
-                color: #004578;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -678,6 +679,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 flex-shrink: 0;
@@ -729,7 +731,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 top: 0px;
               }
               &:hover {
-                color: #004578;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -830,6 +832,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 flex-shrink: 0;
@@ -881,7 +884,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 top: 0px;
               }
               &:hover {
-                color: #004578;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -2110,6 +2113,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 flex-shrink: 0;
@@ -2161,7 +2165,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 top: 0px;
               }
               &:hover {
-                color: #004578;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -2406,6 +2410,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               border-radius: 0px;
               border: none;
               box-sizing: border-box;
+              color: #333333;
               cursor: pointer;
               display: inline-block;
               flex-shrink: 0;
@@ -2457,7 +2462,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               top: 0px;
             }
             &:hover {
-              color: #004578;
+              color: #212121;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
@@ -3133,6 +3138,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 flex-shrink: 0;
@@ -3184,7 +3190,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 top: 0px;
               }
               &:hover {
-                color: #004578;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -3461,6 +3467,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 flex-shrink: 0;
@@ -3512,7 +3519,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 top: 0px;
               }
               &:hover {
-                color: #004578;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -3614,6 +3621,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 flex-shrink: 0;
@@ -3665,7 +3673,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 top: 0px;
               }
               &:hover {
-                color: #004578;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -4900,6 +4908,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 flex-shrink: 0;
@@ -4951,7 +4960,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 top: 0px;
               }
               &:hover {
-                color: #004578;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -5196,6 +5205,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               border-radius: 0px;
               border: 1px solid #00188f;
               box-sizing: border-box;
+              color: #333333;
               cursor: pointer;
               display: inline-block;
               flex-shrink: 0;
@@ -5247,7 +5257,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               top: 0px;
             }
             &:hover {
-              color: #004578;
+              color: #212121;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
