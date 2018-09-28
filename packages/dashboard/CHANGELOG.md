@@ -1,6 +1,25 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Tue, 25 Sep 2018 12:28:12 GMT and should not be manually modified.
+This log was last generated on Thu, 27 Sep 2018 12:27:48 GMT and should not be manually modified.
+
+## 0.26.2
+Thu, 27 Sep 2018 12:27:48 GMT
+
+*Version update only*
+
+## 0.26.1
+Wed, 26 Sep 2018 16:58:51 GMT
+
+### Patches
+
+- card content overflow issue fix
+
+## 0.26.0
+Wed, 26 Sep 2018 12:27:23 GMT
+
+### Minor changes
+
+- Adding props that take bolding for the content in each cell of gridlist
 
 ## 0.25.6
 Tue, 25 Sep 2018 12:28:12 GMT

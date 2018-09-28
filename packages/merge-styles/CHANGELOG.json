@@ -2,6 +2,25 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.9.2",
+      "tag": "@uifabric/merge-styles_v6.9.2",
+      "date": "Fri, 28 Sep 2018 12:27:38 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Ignoring registering rules which are undefined.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "f2291fcd09a42295f7ccc0136ddaf40f0ad6cbe5"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.1.0 <2.0.0` to `>=1.1.1 <2.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.9.1",
       "tag": "@uifabric/merge-styles_v6.9.1",
       "date": "Fri, 21 Sep 2018 14:25:46 GMT",

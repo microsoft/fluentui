@@ -1,6 +1,34 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 25 Sep 2018 12:28:13 GMT and should not be manually modified.
+This log was last generated on Fri, 28 Sep 2018 12:27:38 GMT and should not be manually modified.
+
+## 6.74.2
+Fri, 28 Sep 2018 12:27:38 GMT
+
+### Patches
+
+- DetailsList: replace the use of neutralSecondaryAlt color which was deprecated.
+- ComboBox: add logic to stop onBlur handler to be invoked when clicking on Callout's scrollbar.
+- now all the top level components will include version info for package
+
+## 6.74.1
+Thu, 27 Sep 2018 12:27:48 GMT
+
+### Patches
+
+- Layer: Do not render content until virtual parent is set.
+
+## 6.74.0
+Wed, 26 Sep 2018 12:27:23 GMT
+
+### Minor changes
+
+- Add currentRenderedQueryString to avoid discrepancy
+
+### Patches
+
+- Sticky: second null check for currElem
+- Dropdown: prevent dropdown to open on keyboard events when in disabled mode.
 
 ## 6.73.0
 Tue, 25 Sep 2018 12:28:12 GMT

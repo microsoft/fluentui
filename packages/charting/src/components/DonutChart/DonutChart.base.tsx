@@ -55,7 +55,7 @@ export class DonutChartBase extends React.Component<
   public componentDidMount(): void {
     this.setState({
       _width: this._rootElem!.offsetWidth,
-      _height: this._rootElem!.offsetHeight - 32
+      _height: this._rootElem!.offsetHeight
     });
   }
   public render(): JSX.Element {

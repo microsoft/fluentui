@@ -11,6 +11,20 @@ export const getStyles = (props: ISectionStyleProps): ISectionStyles => {
     alignItems: 'center'
   };
 
+  const textFieldOverwrite = {
+    selectors: {
+      '.ms-TextField-wrapper': {
+        height: '100%'
+      },
+      '.ms-TextField-fieldGroup': {
+        height: '100%'
+      },
+      '.ms-TextField-field': {
+        padding: '0px 16px'
+      }
+    }
+  };
+
   return {
     root: [
       rowFlexContainer,
@@ -32,22 +46,16 @@ export const getStyles = (props: ISectionStyleProps): ISectionStyles => {
       color: DefaultPalette.black
       // when the section is displayed in the dashboard, we add extra top margin (22px) to make it closer to cards
     },
-    editTitleTextField: [
+    addSectionTextField: [
+      textFieldOverwrite,
       {
         width: '100%',
         marginTop: '24px', // TODO, this should be the margin prop in RGL
         // TODO, box Shadow should be merged with DashboardGridLayout.css
-        boxShadow: '0 0.3px 0.9px rgba(0, 0, 0, 0.108), 0 1.6px 3.6px rgba(0, 0, 0, 0.132)',
-        selectors: {
-          '.ms-TextField-wrapper': {
-            height: '100%'
-          },
-          '.ms-TextField-fieldGroup': {
-            height: '100%'
-          }
-        }
+        boxShadow: '0 0.3px 0.9px rgba(0, 0, 0, 0.108), 0 1.6px 3.6px rgba(0, 0, 0, 0.132)'
       }
     ],
+    renameSectionTextField: [textFieldOverwrite],
     actions: [rowFlexContainer],
     actionButton: {
       height: rowHeight,

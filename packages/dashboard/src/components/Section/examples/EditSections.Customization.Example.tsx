@@ -9,7 +9,7 @@ export interface IEditSectionsExampleState {
   layout: DashboardGridBreakpointLayouts;
 }
 
-export class EditSectionsExample extends React.Component<{}, IEditSectionsExampleState> {
+export class EditSectionsCustomizationExample extends React.Component<{}, IEditSectionsExampleState> {
   constructor(props: {}) {
     super(props);
     this.state = {
@@ -52,8 +52,8 @@ export class EditSectionsExample extends React.Component<{}, IEditSectionsExampl
           ariaLabel: 'Delete this section from dashboard'
         }}
         addButtonProps={{
-          iconProps: { iconName: 'Add' },
-          text: 'Add',
+          iconProps: { iconName: 'CircleAddition' },
+          text: 'Add a new section',
           ariaLabel: 'Add a few section into dashboard'
         }}
         cancelButtonProps={{
@@ -72,6 +72,11 @@ export class EditSectionsExample extends React.Component<{}, IEditSectionsExampl
         onUpdateSectionTitle={this._onUpdateSectionTitle}
         onDeleteSection={this._onDeleteSection}
         onCancel={this._onCancel}
+        styles={{
+          icon: {
+            color: 'red'
+          }
+        }}
       />
     );
   }

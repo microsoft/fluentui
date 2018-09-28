@@ -23,21 +23,6 @@ export interface ILineChartProps {
   height?: number;
 
   /**
-   * Number of ticks on the y-axis.
-   */
-  yAxisTickCount?: number;
-
-  /**
-   * Color for all the lines in the chart.
-   */
-  colors?: string[];
-
-  /**
-   * Label to apply to the whole chart.
-   */
-  chartLabel?: string;
-
-  /**
    * Additional CSS class(es) to apply to the LineChart.
    */
   className?: string;
@@ -73,59 +58,14 @@ export interface ILineChartStyles {
   root?: IStyle;
 
   /**
-   * Style for the chart.
-   */
-  chart?: IStyle;
-
-  /**
-   * Style for the chart label.
-   */
-  chartLabel?: IStyle;
-
-  /**
    * Style for the element containing the x-axis.
    */
   xAxis?: IStyle;
 
   /**
-   * Style for the line representing the domain of the x-axis.
-   */
-  xAxisDomain?: IStyle;
-
-  /**
-   * Style for the lines representing the ticks along the x-axis.
-   */
-  xAxisTicks?: IStyle;
-
-  /**
-   * Style for the text labeling each tick along the x-axis.
-   */
-  xAxisText?: IStyle;
-
-  /**
    * Style for the element containing the y-axis.
    */
   yAxis?: IStyle;
-
-  /**
-   * Style for the line representing the domain of the y-axis.
-   */
-  yAxisDomain?: IStyle;
-
-  /**
-   * Style for the lines representing the ticks along the y-axis.
-   */
-  yAxisTicks?: IStyle;
-
-  /**
-   * Style for the text labeling each tick along the y-axis.
-   */
-  yAxisText?: IStyle;
-
-  /**
-   * Style for the element containing all the lines in the chart.
-   */
-  lines?: IStyle;
 
   /**
    * Style for legend container
@@ -136,11 +76,6 @@ export interface ILineChartStyles {
    * line hover box css
    */
   hover?: IStyle;
-
-  /**
-   * styles for callout in line chart
-   */
-  calloutPadding?: IStyle;
 
   /**
    * styles for callout root-content
