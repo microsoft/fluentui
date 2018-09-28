@@ -76,18 +76,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
       disableAnimation
     });
 
-    const nativeProps = getNativeProps(this.props, inputProperties, [
-      'id',
-      'className',
-      'placeholder',
-      'onFocus',
-      'onBlur',
-      'onChange',
-      'onInput',
-      'onKeyDown',
-      'value',
-      'disabled'
-    ]);
+    const nativeProps = getNativeProps(this.props, inputProperties, ['id', 'className', 'placeholder', 'onFocus', 'onBlur', 'value']);
 
     return (
       <div ref={this._rootElement} className={classNames.root} onFocusCapture={this._onFocusCapture}>
