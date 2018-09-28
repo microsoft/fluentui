@@ -17,6 +17,8 @@ export const getStyles = (props: IThemedProps<ICollapsibleSectionTitleProps>): I
         color: 'inherit',
         height: 24,
         margin: 0,
+        paddingLeft: 4 + (props.indent || 0) * 18,
+
         selectors: {
           ':hover': {
             background: theme.palette.neutralLight
