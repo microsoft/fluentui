@@ -241,7 +241,7 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridLa
             isFirstSectionFound = true;
           }
           if (this._sectionKeys.indexOf(sortedLayout[i].i) > -1) {
-            // This mena it is the a section header and dont allow to be dragged
+            // This means it is the a section header and dont allow to be dragged
             layoutElement.isDraggable = false;
           }
           layout.push(layoutElement);
