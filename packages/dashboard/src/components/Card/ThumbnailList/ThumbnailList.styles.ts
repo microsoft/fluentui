@@ -19,6 +19,9 @@ export const getCustomCommandBarStyles = memoizeFunction(
         fontSize: '12px',
         lineHeight: '14px',
         paddingBottom: '2px'
+      },
+      textContainer: {
+        paddingLeft: '16px'
       }
     };
   }
@@ -47,7 +50,7 @@ export const getThumbnailItemStyles = (): IThumbnailItemStyles => {
         button: {
           minHeight: 'inherit',
           backgroundColor: 'transparent',
-          marginLeft: '68px',
+          marginLeft: '52px',
           maxHeight: '52px',
           overflow: 'hidden',
           width: '100%'
