@@ -147,6 +147,8 @@ describe('ChoiceGroup', () => {
     expect(extraAttributeGetter(1)).toBeNull();
   });
 
+  // By default, we need to assign the role 'application' on the containing div
+  // because JAWS doesn't call OnKeyDown without this role
   it('has role="application" by default on the containing element', () => {
     const choiceGroup = mount(<ChoiceGroup options={TEST_OPTIONS} />);
     const choiceGroupEl: Element = choiceGroup.getDOMNode();
