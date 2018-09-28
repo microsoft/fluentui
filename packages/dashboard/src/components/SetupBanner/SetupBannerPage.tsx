@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 import { SetupBannerBasicExample } from './examples/SetupBanner.Basic.Example';
-const SetupBannerBasicExampleCode = require('!raw-loader!@uifabric/experiments/src/components/SetupBanner/examples/SetupBanner.Basic.Example.tsx') as string;
+const SetupBannerBasicExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/SetupBanner/examples/SetupBanner.Basic.Example.tsx') as string;
 
 export class SetupBannerPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -18,9 +18,7 @@ export class SetupBannerPage extends React.Component<IComponentDemoPageProps, {}
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={[
-              require<string>('!raw-loader!@uifabric/experiments/src/components/SetupBanner/SetupBanner.types.ts')
-            ]}
+            sources={[require<string>('!raw-loader!@uifabric/dashboard/src/components/SetupBanner/SetupBanner.types.ts')]}
           />
         }
         /* tslint:disable:max-line-length */
@@ -32,16 +30,12 @@ export class SetupBannerPage extends React.Component<IComponentDemoPageProps, {}
         bestPractices={<div />}
         dos={
           <div>
-            <ul>
-              <li>TBA</li>
-            </ul>
+            <ul />
           </div>
         }
         donts={
           <div>
-            <ul>
-              <li>TBA</li>
-            </ul>
+            <ul />
           </div>
         }
         isHeaderVisible={this.props.isHeaderVisible}

@@ -52,12 +52,6 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/layoutgroup'
         },
         {
-          component: require<any>('../components/SetupBanner/SetupBannerPage').SetupBannerPage,
-          key: 'SetupBanner',
-          name: 'SetupBanner',
-          url: '#/examples/setupbanner'
-        },
-        {
           component: require<any>('../components/signals/SignalsPage').SignalsPage,
           key: 'Signals',
           name: 'Signals',
