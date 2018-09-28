@@ -204,7 +204,7 @@ export interface ISemanticColors extends ISemanticTextColors {
   buttonBackgroundCheckedHovered: string;
 
   /**
-   * Backgrund of a disabled standard button
+   * Background of a disabled standard button
    */
   buttonBackgroundDisabled: string;
 
