@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/dashboard",
-      "comment": "change lineHeight for card headerText",
-      "type": "patch"
+      "comment": "improve the logic to determin first section",
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/dashboard",
-  "email": "gorigarajesh@gmail.com"
+  "email": "yudon@microsoft.com"
 }

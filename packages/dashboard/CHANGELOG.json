@@ -2,6 +2,101 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.26.2",
+      "tag": "@uifabric/dashboard_v0.26.2",
+      "date": "Thu, 27 Sep 2018 12:27:48 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.21.2` to `^0.22.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.32.2 <7.0.0` to `>=6.32.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.74.0 <7.0.0` to `>=6.74.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.26.1",
+      "tag": "@uifabric/dashboard_v0.26.1",
+      "date": "Wed, 26 Sep 2018 16:58:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "card content overflow issue fix",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "c2d3d6f69c8459387279584de7f185dfaf21dd7d"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.26.0",
+      "tag": "@uifabric/dashboard_v0.26.0",
+      "date": "Wed, 26 Sep 2018 12:27:23 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding props that take bolding for the content in each cell of gridlist",
+            "author": "dezverev <dbzverev@outlook.com>",
+            "commit": "0d208d1031f9af115576667aaeb279a97b8e5342"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.73.0 <7.0.0` to `>=6.74.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.25.6",
+      "tag": "@uifabric/dashboard_v0.25.6",
+      "date": "Tue, 25 Sep 2018 12:28:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bug fix: Multicount component body text is not rendered in IE when put inside a flex box with justifyContent of center",
+            "author": "Kevin Chan <2591766+chankev@users.noreply.github.com>",
+            "commit": "84ec86ff059bdf7abaacabe1ad095a3aa870243d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.21.1` to `^0.21.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.32.1 <7.0.0` to `>=6.32.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.72.2 <7.0.0` to `>=6.73.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.25.5",
+      "tag": "@uifabric/dashboard_v0.25.5",
+      "date": "Mon, 24 Sep 2018 12:27:31 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "change lineHeight for card headerText",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "3f45ade8755b9248cd9cb60a1adcce378cd2efc7"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.72.1 <7.0.0` to `>=6.72.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.25.4",
       "tag": "@uifabric/dashboard_v0.25.4",
       "date": "Fri, 21 Sep 2018 14:25:46 GMT",

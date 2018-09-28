@@ -1,6 +1,25 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 21 Sep 2018 14:25:46 GMT and should not be manually modified.
+This log was last generated on Fri, 28 Sep 2018 12:27:38 GMT and should not be manually modified.
+
+## 6.32.4
+Fri, 28 Sep 2018 12:27:38 GMT
+
+### Patches
+
+- HorizontalStack: remove padding as a fix for collapsing margins, remove unnecessary calc() calls
+
+## 6.32.3
+Thu, 27 Sep 2018 12:27:48 GMT
+
+*Version update only*
+
+## 6.32.2
+Tue, 25 Sep 2018 12:28:12 GMT
+
+### Patches
+
+- Stack: update styles to account for all margin collapsing on wrapped HorizontalStacks
 
 ## 6.32.1
 Fri, 21 Sep 2018 14:25:46 GMT

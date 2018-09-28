@@ -9,29 +9,29 @@ storiesOf('ProgressIndicator', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
-      steps={ new Screener.Steps()
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .end()
       }
     >
-      { story() }
+      {story()}
     </Screener>
-  )).add('0%', () => (
+  )).addStory('0%', () => (
     <ProgressIndicator
       label='Example title'
       description='Example description'
-      percentComplete={ 0 }
+      percentComplete={0}
     />
-  )).add('50%', () => (
+  )).addStory('50%', () => (
     <ProgressIndicator
       label='Example title'
       description='Example description'
-      percentComplete={ 0.5 }
+      percentComplete={0.5}
     />
-  )).add('100%', () => (
+  ), { rtl: true }).addStory('100%', () => (
     <ProgressIndicator
       label='Example title'
       description='Example description'
-      percentComplete={ 1 }
+      percentComplete={1}
     />
   ));

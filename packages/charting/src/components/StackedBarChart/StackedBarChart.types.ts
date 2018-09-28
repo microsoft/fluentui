@@ -135,4 +135,14 @@ export interface IStackedBarChartStyles {
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends
    */
   opacityChangeOnHover: IStyle;
+
+  /**
+   * Style for the chart ratio numerator
+   */
+  ratioNumerator: IStyle;
+
+  /**
+   * Style for the chart ratio denominator
+   */
+  ratioDenominator: IStyle;
 }
