@@ -220,9 +220,15 @@ describe('Component File Conformance', () => {
 });
 
 describe('Top Level Component File Conformance', () => {
-  const components: string[] = glob.sync(path.resolve(process.cwd(), 'src/components/*/index.ts*')).map(file => {
-    return path.basename(path.dirname(file));
-  });
+  const privateComponents = new Set(['ContextualMenuItemWrapper']);
+
+  const components: string[] = glob
+    .sync(path.resolve(process.cwd(), 'src/components/**/index.ts*'))
+    .map(file => {
+      const componentName = path.basename(path.dirname(file));
+      return componentName[0] === componentName[0].toUpperCase() ? path.basename(path.dirname(file)) : '';
+    })
+    .filter(f => f && !privateComponents.has(f));
 
   const topLevelComponentFiles = components
     .map(f => {
@@ -243,7 +249,7 @@ describe('Top Level Component File Conformance', () => {
   // Top Level Compoennt File Compliance -
   // make sure that there is a corresponding top level component file for each component in the directory
   components.forEach(componentName => {
-    it(`${componentName} as a corresponding top level component file`, () => {
+    it(`${componentName} has a corresponding top level component file`, () => {
       expect(
         fs.existsSync(path.resolve(__dirname, `../${componentName}.ts`)) ||
           fs.existsSync(path.resolve(__dirname, `../${componentName}.tsx`))
