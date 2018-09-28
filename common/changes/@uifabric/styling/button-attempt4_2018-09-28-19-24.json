@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/styling",
+      "comment": "Minor additions for semantic colors.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/styling",
+  "email": "dzearing@microsoft.com"
+}
