@@ -12,7 +12,6 @@ import { IButtonClassNames } from '../Button/BaseButton.classNames';
 import { getStyles as getActionButtonStyles } from '../Button/ActionButton/ActionButton.styles';
 import { mergeStyleSets, ITheme } from '../../Styling';
 import { classNamesFunction } from '../../Utilities';
-import { COLOR_VALUES } from '../../utilities/color/colorValues';
 
 const getClassNames = classNamesFunction<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>();
 
@@ -100,7 +99,7 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
    */
   private _isWhiteCell(inputColor: string | undefined): boolean {
     const color = getColorFromString(inputColor!);
-    return color!.r === COLOR_VALUES.white[0] && color!.g === COLOR_VALUES.white[1] && color!.b === COLOR_VALUES.white[2];
+    return color!.hex === 'ffffff';
   }
 
   /**
