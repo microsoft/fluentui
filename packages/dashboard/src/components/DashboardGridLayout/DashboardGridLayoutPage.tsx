@@ -69,7 +69,6 @@ export class DashboardGridLayoutPage extends React.Component<IComponentDemoPageP
         propertiesTables={
           <PropertiesTableSet
             sources={[require<string>('!raw-loader!@uifabric/dashboard/src/components/DashboardGridLayout/DashboardGridLayout.types.ts')]}
-            renderOnly={['IDashboardGridLayoutProps', 'DashboardGridBreakpointLayouts', 'IDashboardCardLayout']}
           />
         }
         overview={

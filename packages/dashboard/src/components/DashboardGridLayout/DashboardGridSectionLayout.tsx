@@ -122,110 +122,8 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridLa
    * @param sectionKey the key of the section clicked
    */
   private _expandCollapseLayoutsUnderSection(expanded: boolean, sectionKey: string): void {
-    if (this.props.sections) {
-      return;
-    }
-
-    const sectionsAfterCurrentSection = this._sectionKeys.slice(this._sectionKeys.indexOf(sectionKey) + 1);
-    const impactedSections: ISection[] = this.props.sections!.filter((section: ISection) => {
-      return sectionsAfterCurrentSection.indexOf(section.id) > -1;
-    });
-    const cardKeysOfCurrentSection = this.props.sections!.filter((section: ISection) => {
-      return section.id === sectionKey;
-    })[0].cardIds;
-
-    let impactedKeys: string[] = impactedSections.map((section: ISection) => {
-      return section.id;
-    });
-
-    impactedSections.forEach((section: ISection) => {
-      if (section.cardIds) {
-        impactedKeys = impactedKeys.concat(section.cardIds);
-      }
-    });
-
-    let delta = 0;
-    if (!this._isLastSection(sectionKey)) {
-      delta = this._currentSectionHeight(sectionKey);
-    }
-    const newLayOut = JSON.parse(JSON.stringify(this._currentLayout)); // deep clone
-    if (expanded) {
-      // if current expanded, toggle to collapse
-      for (let i = 0; i < Object.keys(newLayOut).length; i++) {
-        if (cardKeysOfCurrentSection && cardKeysOfCurrentSection.indexOf(String(newLayOut[i].i)) > -1) {
-          newLayOut[i].h = 0;
-          newLayOut[i].w = 0;
-        } else if (impactedKeys.indexOf(String(newLayOut[i].i)) > -1) {
-          this._moveVertically(newLayOut[i], delta, true);
-        }
-      }
-    } else {
-      for (let j = 0; j < Object.keys(newLayOut).length; j++) {
-        const currentCardKey = String(newLayOut[j].i);
-        if (cardKeysOfCurrentSection && cardKeysOfCurrentSection.indexOf(currentCardKey) > -1) {
-          newLayOut[j].h = this._cardSizeToWidthHeight[this._cardSizes[currentCardKey]].h;
-          newLayOut[j].w = this._cardSizeToWidthHeight[this._cardSizes[currentCardKey]].w;
-        } else if (impactedKeys.indexOf(currentCardKey) > -1) {
-          this._moveVertically(newLayOut[j], delta, false);
-        }
-      }
-    }
-
-    const newLayouts: Layouts = {};
-    if (this.props.layout) {
-      for (const [k, _] of Object.entries(this.props.layout)) {
-        updateLayoutsFromLayout(newLayouts, newLayOut, k as Breakpoints);
-      }
-
-      // TODO update parent state with new layout
-    }
+    // TODO the exand/collapse function is not yet implemented.
   }
-
-  /**
-   * Get the height of a section by measure the y axis between this and the next section. This method
-   * does not work with the last section for the page.
-   * @param key the key of the section
-   */
-  private _currentSectionHeight(key: string): number {
-    const currentSectionY = this._currentLayout.filter((layout: Layout) => {
-      return layout.i === key;
-    })[0].y;
-    const nextSectionY = this._currentLayout.filter((layout: Layout) => {
-      return layout.i === this._sectionKeys[this._sectionKeys.indexOf(key) + 1];
-    })[0].y;
-
-    const sectionHeaderHeight = this._cardSizeToWidthHeight[CardSize.section].h;
-
-    return nextSectionY - currentSectionY - sectionHeaderHeight;
-  }
-
-  /**
-   * If this is the last section on the dashboard
-   * @param key the key of the section
-   */
-  private _isLastSection(key: string): boolean {
-    if (this._sectionKeys[this._sectionKeys.indexOf(key) + 1]) {
-      return false;
-    }
-    return true;
-  }
-
-  /**
-   * Move a card vertically
-   * @param layout the layout of card
-   * @param value value to move
-   * @param moveUp true to move up, false to move down
-   */
-  private _moveVertically = (layout: Layout, value: number, moveUp: boolean): Layout => {
-    let newLayout: Layout;
-    if (moveUp === true) {
-      newLayout = { ...layout, y: layout.y - value };
-    } else {
-      newLayout = { ...layout, y: layout.y + value };
-    }
-
-    return newLayout;
-  };
 
   /**
    * return the list of layout for sections, sorted vertically
@@ -343,7 +241,7 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridLa
             isFirstSectionFound = true;
           }
           if (this._sectionKeys.indexOf(sortedLayout[i].i) > -1) {
-            // This mena it is the a section header and dont allow to be dragged
+            // This means it is the a section header and dont allow to be dragged
             layoutElement.isDraggable = false;
           }
           layout.push(layoutElement);
