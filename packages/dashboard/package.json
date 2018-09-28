@@ -11,6 +11,7 @@
     "css-loader": "^0.15.1",
     "office-ui-fabric-react": ">=6.74.2 <7.0.0",
     "react-grid-layout": "samiyaakhtar/react-grid-layout",
+    "react-resizable": "^1.7.5",
     "style-loader": "^0.21.0",
     "tslib": "^1.7.1"
   },
