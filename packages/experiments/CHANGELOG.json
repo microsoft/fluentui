@@ -2,6 +2,31 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.32.4",
+      "tag": "@uifabric/experiments_v6.32.4",
+      "date": "Fri, 28 Sep 2018 12:27:38 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "HorizontalStack: remove padding as a fix for collapsing margins, remove unnecessary calc() calls",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "9e45030357156e0469790bf08a35fd1a2f3e14dd"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.1.0 <2.0.0` to `>=1.1.1 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.9.1 <7.0.0` to `>=6.9.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.74.1 <7.0.0` to `>=6.74.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.32.3",
       "tag": "@uifabric/experiments_v6.32.3",
       "date": "Thu, 27 Sep 2018 12:27:48 GMT",
