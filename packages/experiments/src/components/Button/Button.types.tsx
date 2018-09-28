@@ -57,15 +57,7 @@ export interface IButtonStyleVariablesTypes {
   minHeight?: number | string;
 }
 
-export interface IButtonStyleVariables2 extends IButtonStyleVariablesTypes {
-  states?: { [P in IButtonStates]?: IButtonStyleVariablesTypes };
-}
-
-export type IButtonStyleVariables = {
-  [PVariant in IButtonVariants]?: { [PState in IButtonStates]?: IButtonStyleVariablesTypes } & {
-    extends?: IButtonVariants;
-  }
-};
+export type IButtonStyleVariables = { [PVariant in IButtonVariants]?: { [PState in IButtonStates]?: IButtonStyleVariablesTypes } };
 
 export type IButtonStyles = { [key in IButtonSlots]: IStyle };
 
