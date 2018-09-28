@@ -14,16 +14,9 @@ import { ICollapsibleSectionTitleProps, ICollapsibleSectionTitleStyles } from '.
 // tslint:disable-next-line:no-any
 export type __TYPESCRIPT_2_8_WORKAROUND_ = IStyleFunction<any, any>;
 
-export const CollapsibleSectionTitleView = (
-  props: IViewComponentProps<ICollapsibleSectionTitleProps, ICollapsibleSectionTitleStyles>
-) => {
+export const CollapsibleSectionTitleView = (props: IViewComponentProps<ICollapsibleSectionTitleProps, ICollapsibleSectionTitleStyles>) => {
   return (
-    <button
-      ref={props.focusElementRef}
-      className={props.classNames.root}
-      onClick={props.onToggleCollapse}
-      onKeyDown={props.onKeyDown}
-    >
+    <button ref={props.focusElementRef} className={props.classNames.root} onClick={props.onClick} onKeyDown={props.onKeyDown}>
       {!props.chevronDisabled && <Icon className={props.classNames.icon} iconName="ChevronDown" />}
       <Text className={props.classNames.text}>{props.text}</Text>
     </button>
