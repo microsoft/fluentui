@@ -15,9 +15,8 @@ export const styles: IHorizontalStackComponent['styles'] = props => {
   const hGap = parseGap(gap, theme);
   const vGap = parseGap(vertGap, theme);
 
-  // account for the extra 1px padding in the root
-  const horizontalMargin = `calc(${-0.5 * hGap.value}${hGap.unit} - 1px)`;
-  const verticalMargin = `calc(${-0.5 * vGap.value}${vGap.unit} - 1px)`;
+  const horizontalMargin = `${-0.5 * hGap.value}${hGap.unit}`;
+  const verticalMargin = `${-0.5 * vGap.value}${vGap.unit}`;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -30,13 +29,14 @@ export const styles: IHorizontalStackComponent['styles'] = props => {
           maxHeight,
           width: fillHorizontal ? '100%' : 'auto',
           height: fillVertical ? '100%' : 'auto',
-          overflow: 'visible',
-          display: 'block',
-
-          // necessary in order to prevent collapsing margins
-          padding: 1
+          overflow: 'visible'
         },
-        className
+        className,
+        {
+          // not allowed to be overridden by className
+          // since this is necessary in order to prevent collapsing margins
+          display: 'inline-block'
+        }
       ],
 
       inner: [
@@ -48,8 +48,12 @@ export const styles: IHorizontalStackComponent['styles'] = props => {
           marginTop: verticalMargin,
           marginBottom: verticalMargin,
           overflow: 'visible',
-          width: fillHorizontal ? `calc(100% + ${hGap.value}${hGap.unit} + 2px)` : 'auto',
-          height: fillVertical ? `calc(100% + ${hGap.value}${hGap.unit} + 2px)` : 'auto'
+          maxWidth: '100vw',
+
+          // avoid unnecessary calc() calls if vertical gap is 0
+          height: fillVertical ?
+            (vGap.value === 0 ? '100%' : `calc(100% + ${vGap.value}${vGap.unit})`)
+            : 'auto'
         }
       ]
     } as IHorizontalStackStyles;

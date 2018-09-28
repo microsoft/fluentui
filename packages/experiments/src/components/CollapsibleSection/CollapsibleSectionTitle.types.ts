@@ -13,7 +13,7 @@ export interface ICollapsibleSectionTitleProps
   /**
    * Toggle input callback triggered by mouse and keyboard input.
    */
-  onToggleCollapse?: () => void;
+  onClick?: (ev: React.MouseEvent<Element>) => void;
   /**
    * Key down callback for input on title.
    */
@@ -26,6 +26,11 @@ export interface ICollapsibleSectionTitleProps
    * Title text.
    */
   text?: string;
+
+  /**
+   * Indentation of title.
+   */
+  indent?: number;
 }
 
 export interface ICollapsibleSectionTitleStyles {

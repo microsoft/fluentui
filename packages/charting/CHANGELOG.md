@@ -1,6 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Tue, 25 Sep 2018 12:28:12 GMT and should not be manually modified.
+This log was last generated on Thu, 27 Sep 2018 12:27:48 GMT and should not be manually modified.
+
+## 0.22.0
+Thu, 27 Sep 2018 12:27:48 GMT
+
+### Minor changes
+
+- 1)Making the line chart responsive 2)Correcting flex behavior 3)Curving corners of lines to get a smooth intersection between lines
+
+### Patches
+
+- donut chart legends padding issue fix
 
 ## 0.21.2
 Tue, 25 Sep 2018 12:28:12 GMT

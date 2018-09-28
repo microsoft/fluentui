@@ -74,8 +74,8 @@ export const styles: IStackComponent['styles'] = props => {
           '> *': {
             margin: `${0.5 * vGap.value}${vGap.unit} ${0.5 * hGap.value}${hGap.unit}`,
 
-            // extra 2px to account for padding on wrapped Stacks
-            maxWidth: `calc(100% - ${hGap.value}${hGap.unit} - 2px)`,
+            // avoid unnecessary calc() calls if horizontal gap is 0
+            maxWidth: hGap.value === 0 ? '100%' : `calc(100% - ${hGap.value}${hGap.unit})`,
 
             ...childStyles
           },

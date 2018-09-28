@@ -1,37 +1,50 @@
 import { createRef } from 'office-ui-fabric-react';
 import { ICollapsibleSectionProps, ICollapsibleSectionViewProps } from './CollapsibleSection.types';
-import { BaseStateComponent, IBaseStateComponentProps, IStateTransforms } from '../../utilities/BaseState';
+import { BaseState } from '../../utilities/BaseState';
 import { getRTL, KeyCodes } from '../../Utilities';
 
-const CollapsibleSectionStateTransforms: IStateTransforms<ICollapsibleSectionProps, ICollapsibleSectionViewProps> = [
-  {
-    transform: 'toggle',
-    prop: 'collapsed',
-    defaultValueProp: 'defaultCollapsed',
-    defaultValue: true,
-    onInput: 'onToggleCollapse'
-  }
-];
+// export type ICollapsibleSectionStateProps = IBaseStateComponentProps<
+//   ICollapsibleSectionProps,
+//   ICollapsibleSectionViewProps
+// >;
 
-// TODO: how would devs use BaseStateComponent if they also want to track their own state?
-//        (state type def, passing/merging to BaseState, etc)
-export class CollapsibleSectionState extends BaseStateComponent<ICollapsibleSectionProps, ICollapsibleSectionViewProps> {
+// const CollapsibleSectionStateTransforms: IStateTransforms<ICollapsibleSectionProps, ICollapsibleSectionViewProps> = [
+//   {
+//     transform: 'toggle',
+//     prop: 'collapsed',
+//     defaultValueProp: 'defaultCollapsed',
+//     defaultValue: true,
+//     onInput: 'onToggleCollapse'
+//   }
+// ];
+
+export type ICollapsibleSectionState = Pick<
+  ICollapsibleSectionViewProps,
+  'collapsed' | 'titleElementRef' | 'onClick' | 'onKeyDown' | 'onRootKeyDown'
+  >;
+
+export class CollapsibleSectionState extends BaseState<ICollapsibleSectionProps, ICollapsibleSectionState> {
   private _titleElement = createRef<HTMLElement>();
 
-  constructor(props: IBaseStateComponentProps<ICollapsibleSectionProps, ICollapsibleSectionViewProps>) {
-    super(props, CollapsibleSectionStateTransforms);
-  }
+  constructor(props: ICollapsibleSectionProps) {
+    super(props, {
+      controlledProps: ['collapsed']
+    });
 
-  public render(): JSX.Element | null {
-    const viewProps: ICollapsibleSectionViewProps = {
-      ...this.getTransformProps(),
-      titleElementRef: this._titleElement,
+    this.state = {
+      collapsed: !!props.defaultCollapsed,
+      onClick: this._onClick,
       onKeyDown: this._onKeyDown,
-      onRootKeyDown: this._onRootKeyDown
+      onRootKeyDown: this._onRootKeyDown,
+      titleElementRef: this._titleElement
     };
-
-    return this.props.renderView(viewProps);
   }
+
+  private _onClick = (ev: React.MouseEvent<Element>) => {
+    this.setState({ collapsed: !this.state.collapsed });
+    ev.preventDefault();
+    ev.stopPropagation();
+  };
 
   private _onRootKeyDown = (ev: React.KeyboardEvent<Element>) => {
     const rootKey = getRTL() ? KeyCodes.right : KeyCodes.left;
@@ -57,16 +70,14 @@ export class CollapsibleSectionState extends BaseStateComponent<ICollapsibleSect
     switch (ev.which) {
       case collapseKey:
         if (!collapsed) {
-          const onToggleCollapse = this.getTransformProps().onToggleCollapse;
-          onToggleCollapse && onToggleCollapse();
+          this.setState({ collapsed: true });
           break;
         }
         return;
 
       case expandKey:
         if (collapsed) {
-          const onToggleCollapse = this.getTransformProps().onToggleCollapse;
-          onToggleCollapse && onToggleCollapse();
+          this.setState({ collapsed: false });
           break;
         }
         return;

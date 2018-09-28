@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Layout, Layouts } from 'react-grid-layout';
+import { Breakpoints, Layout, Layouts } from 'react-grid-layout';
 import {
   IDashboardGridLayoutStyles,
   IDashboardCardLayout,
@@ -13,7 +13,13 @@ import { Card } from '../Card/Card';
 import { Section } from '../Section/Section';
 import { getStyles } from './DashboardGridLayout.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { CardSizeToWidthHeight, getFirstDefinedDashboardLayout, getFirstDefinedLayout } from '../../utilities/DashboardGridLayoutUtils';
+import {
+  CardSizeToWidthHeight,
+  getFirstDefinedDashboardLayout,
+  getFirstDefinedLayout,
+  compareLayoutY,
+  updateLayoutsFromLayout
+} from '../../utilities/DashboardGridLayoutUtils';
 
 export class DashboardGridSectionLayout extends React.Component<IDashboardGridLayoutProps, {}> {
   /** the list of all section ids */
@@ -24,7 +30,7 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridLa
   private _currentLayout: Layout[];
   /** the section id to card ids mapping */
   private _sectionMapping: DashboardSectionMapping = {};
-
+  /** the CardSize -> w h value in RGL. If no provided in the prop, use the default value */
   private _cardSizeToWidthHeight: { [P in CardSize]: { w: number; h: number } } = this.props.cardSizeToRGLWidthHeight
     ? this.props.cardSizeToRGLWidthHeight
     : CardSizeToWidthHeight;
@@ -71,7 +77,7 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridLa
    */
   private _processSections(): DashboardSectionMapping {
     if (this._currentLayout) {
-      const sections: Layout[] = this._getSections();
+      const sections: Layout[] = this._getSortedSections();
       const newsectionMapping: DashboardSectionMapping = {};
 
       if (sections.length > 0) {
@@ -168,7 +174,7 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridLa
     const newLayouts: Layouts = {};
     if (this.props.layout) {
       for (const [k, _] of Object.entries(this.props.layout)) {
-        this._updateLayoutsFromLayout(newLayouts, newLayOut, k);
+        updateLayoutsFromLayout(newLayouts, newLayOut, k as Breakpoints);
       }
 
       // TODO update parent state with new layout
@@ -224,7 +230,7 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridLa
   /**
    * return the list of layout for sections, sorted vertically
    */
-  private _getSections = (): Layout[] => {
+  private _getSortedSections = (): Layout[] => {
     const layouts: Layout[] = [];
     if (this._currentLayout) {
       for (let i = 0; i < this._currentLayout.length; i++) {
@@ -233,15 +239,7 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridLa
         }
       }
     }
-    layouts.sort(
-      (a: Layout, b: Layout): number => {
-        if (a.y < b.y) {
-          return 0;
-        }
-        return 1;
-      }
-    );
-    return layouts;
+    return layouts.sort(compareLayoutY);
   };
 
   /**
@@ -279,7 +277,7 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridLa
   private _renderCards(keys: string[]): JSX.Element[] {
     let result: JSX.Element[] = [];
     if (this.props.cards) {
-      // cards are provided as card definition objects
+      // case 1: cards are provided as card definition objects
       const cardsOfSection = this.props.cards.filter((card: ICard) => {
         return keys.indexOf(card.id) > -1;
       });
@@ -298,7 +296,7 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridLa
         );
       });
     } else if (this.props.cardNodes) {
-      // cards are provided as elements
+      // case 2: cards are provided as elements
       result = this.props.cardNodes.filter((card: JSX.Element) => {
         return keys.indexOf(String(card.key)) > -1;
       });
@@ -306,26 +304,6 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridLa
 
     return result;
   }
-
-  private _updateLayoutsFromLayout = (layouts: Layouts, layout: Layout[], key: string) => {
-    switch (key) {
-      case 'lg':
-        layouts.lg = layout;
-        break;
-      case 'md':
-        layouts.md = layout;
-        break;
-      case 'sm':
-        layouts.sm = layout;
-        break;
-      case 'xs':
-        layouts.xs = layout;
-        break;
-      case 'xxs':
-        layouts.xxs = layout;
-        break;
-    }
-  };
 
   /**
    * Translate card size to w and h value, return a Layout object for react-grid-layout
@@ -343,26 +321,34 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridLa
     };
   }
 
+  /**
+   * Create RGL layout from dashboard layout
+   */
   private _createLayout = (): Layouts => {
     const layouts: Layouts = {};
     if (this.props.layout) {
-      for (const [key, value] of Object.entries(this.props.layout)) {
+      for (const [breakpoint, value] of Object.entries(this.props.layout)) {
         if (value === undefined) {
           continue;
         }
+        // The layout in props can be provided in any order. sort all the layouts by y for this breakpoint to determine the first section
+        const sortedLayout = value.sort(compareLayoutY);
         const layout: Layout[] = [];
-        for (let i = 0; i < value.length; i++) {
-          const layoutElement = this._createLayoutFromProp(value[i]);
-          if (i === 0) {
+        let isFirstSectionFound = false;
+        for (let i = 0; i < sortedLayout.length; i++) {
+          const layoutElement = this._createLayoutFromProp(sortedLayout[i]);
+          if (!isFirstSectionFound && sortedLayout[i].size === CardSize.section) {
             // this means it is the first section header and don't allow card to be moved before the first section
             layoutElement.static = true;
+            isFirstSectionFound = true;
           }
-          if (this._sectionKeys.indexOf(value[i].i) > -1) {
+          if (this._sectionKeys.indexOf(sortedLayout[i].i) > -1) {
+            // This mena it is the a section header and dont allow to be dragged
             layoutElement.isDraggable = false;
           }
           layout.push(layoutElement);
         }
-        this._updateLayoutsFromLayout(layouts, layout, key);
+        updateLayoutsFromLayout(layouts, layout, breakpoint as Breakpoints);
       }
     }
 
