@@ -114,7 +114,12 @@ storiesOf('DetailsHeader', module)
         .snapshot('hoverFrozenLast', { cropTo: '.ms-DetailsHeader' })
         .hover('[aria-colindex=5]')
         .executeScript(dndScript)
-        // simulate a drag on column 'b' and do a dragover on 'd' to render the drop hint
+        // simulate a drag on column 'b' to render the border
+        .cssAnimations(false)
+        .executeScript('DndSimulator.simulate(\'[draggable="true"]\', \'[aria-colindex="5"]\', false)')
+        .snapshot('borderWhileDragging')
+        // do a dragover on 'd' to render the drop hint
+        .cssAnimations(true)
         .executeScript('DndSimulator.simulate(\'[draggable="true"]\', \'[aria-colindex="5"]\', true)')
         .snapshot('dropHint')
         .end()}
