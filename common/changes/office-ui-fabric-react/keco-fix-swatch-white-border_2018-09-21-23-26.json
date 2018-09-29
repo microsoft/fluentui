@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Sticky: second null check for currElem",
+      "comment": "Improve _isWhiteCell logic to handle rgb(a) and hex shorthand  notation.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "naethell@microsoft.com"
+  "email": "keco@microsoft.com"
 }

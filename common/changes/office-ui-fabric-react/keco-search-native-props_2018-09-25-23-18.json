@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Dropdown: prevent dropdown to open on keyboard events when in disabled mode.",
+      "comment": "Add native props support for input properties to  SearchBox's inner input element.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "v-vibr@microsoft.com"
+  "email": "keco@microsoft.com"
 }

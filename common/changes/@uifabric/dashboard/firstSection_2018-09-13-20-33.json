@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/dashboard",
-      "comment": "Adding props that take bolding for the content in each cell of gridlist",
+      "comment": "improve the logic to determin first section",
       "type": "minor"
     }
   ],
   "packageName": "@uifabric/dashboard",
-  "email": "dezverev@microsoft.com"
+  "email": "yudon@microsoft.com"
 }

@@ -11,11 +11,11 @@ export const TextStyles = (props: IThemedProps<ITextProps>): ITextStyles => {
     root: [
       {
         display: inline ? 'inline' : as === 'td' ? 'table-cell' : 'block',
-        fontFamily: variantObject.family,
-        fontSize: variantObject.size,
+        fontFamily: variantObject.family || 'inherit',
+        fontSize: variantObject.size || 'inherit',
         // tslint:disable-next-line:no-any
-        fontWeight: variantObject.weight as any,
-        color: variantObject.color
+        fontWeight: (variantObject.weight as any) || 'inherit',
+        color: variantObject.color || 'inherit'
       },
       family && {
         // TODO: How are language specific font families configured?

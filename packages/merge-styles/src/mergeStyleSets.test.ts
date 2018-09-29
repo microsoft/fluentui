@@ -83,9 +83,7 @@ describe('mergeStyleSets', () => {
     expect(result.a).toBe('a-1');
     expect(result.b).toBe('b-2');
 
-    expect(_stylesheet.getRules()).toEqual(
-      '.root-0{background:red;}' + '.a-1{background:white;}' + '.b-2{background:blue;}'
-    );
+    expect(_stylesheet.getRules()).toEqual('.root-0{background:red;}' + '.a-1{background:white;}' + '.b-2{background:blue;}');
   });
 
   it('can merge correctly when all inputs are falsey', () => {
@@ -236,9 +234,9 @@ describe('mergeStyleSets', () => {
       return;
     };
 
-    const SubComponent: (
-      props: { styles: IStyleFunctionOrObject<ISubComponentStyleProps, ISubComponentStyles> }
-    ) => any = (props: { styles: IStyleFunctionOrObject<ISubComponentStyleProps, ISubComponentStyles> }) => {
+    const SubComponent: (props: { styles: IStyleFunctionOrObject<ISubComponentStyleProps, ISubComponentStyles> }) => any = (props: {
+      styles: IStyleFunctionOrObject<ISubComponentStyleProps, ISubComponentStyles>;
+    }) => {
       return;
     };
 

@@ -86,7 +86,7 @@ function getCustomizations<TViewProps, TStyleSet>(
 ): IStyleableComponentProps<TViewProps, TStyleSet, ITheme, ISchemeNames> {
   // TODO: do we want field props? should fields be part of IComponentOptions and used here?
   // TODO: should we centrally define DefaultFields? (not exported from styling)
-  const DefaultFields = ['theme', 'styles'];
+  const DefaultFields = ['theme', 'styles', 'styleVariables'];
   return Customizations.getSettings(DefaultFields, displayName, context.customizations);
 }
 
