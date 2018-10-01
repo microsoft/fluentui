@@ -6,8 +6,7 @@ export const getStyles = (): ISetupBannerStyles => {
       display: 'flex',
       height: '296px',
       flexDirection: 'row',
-      flexWrap: 'wrap',
-      backgroundColor: '#f5f5f5'
+      flexWrap: 'wrap'
     },
     visualizationPartition: {
       display: 'flex',
