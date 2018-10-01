@@ -43,27 +43,7 @@ export interface ISeparatorProps extends React.Props<SeparatorBase> {
   className?: string;
 }
 
-export interface ISeparatorStyleProps {
-  /**
-   * Theme for the component.
-   */
-  theme: ITheme;
-
-  /**
-   * Accept custom classNames.
-   */
-  className?: string;
-
-  /**
-   * How to align text in the separator.
-   */
-  alignText?: 'start' | 'center' | 'end';
-
-  /**
-   * Whether the separator is vertical.
-   */
-  vertical?: boolean;
-}
+export type ISeparatorStyleProps = Required<Pick<ISeparatorProps, 'theme'>> & Pick<ISeparatorProps, 'className' | 'alignText' | 'vertical'>;
 
 export interface ISeparatorStyles {
   /**
