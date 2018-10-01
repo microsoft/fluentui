@@ -185,7 +185,7 @@ export function createComponent<TComponentProps, TViewProps, TStyleSet, TProcess
   providers: IStylingProviders<TViewProps, TStyleSet, TProcessedStyleSet, TContext, TTheme, TScheme>
 ): React.StatelessComponent<TComponentProps> & TStatics {
   const { CustomizerContext } = providers;
-  const result: React.StatelessComponent<TComponentProps> = (userProps: TComponentProps) => {
+  const result: React.StatelessComponent<TComponentProps> = (componentProps: TComponentProps) => {
     return (
       <CustomizerContext.Consumer>
         {(context: TContext) => {
@@ -201,8 +201,8 @@ export function createComponent<TComponentProps, TViewProps, TStyleSet, TProcess
             //    including children and styles.
             // What we really need to be able to do here either type force TViewProps to be TComponentProps when StateComponent
             //    is undefined OR logically something like code below. Until we figure out how to do this, cast mergedProps as
-            //    IStyleableComponentProps since userProps does not necessarily extend TViewProps. Until then we're sacrificing a bit of
-            //    type safety to prevent the need of duplicating this function.
+            //    IStyleableComponentProps since componentProps does not necessarily extend TViewProps. Until then we're sacrificing
+            //    a bit of type safety to prevent the need of duplicating this function.
             // if (StateComponent) {
             //   type TViewProps = TViewProps;
             // } else {
@@ -212,10 +212,10 @@ export function createComponent<TComponentProps, TViewProps, TStyleSet, TProcess
             //        however, customized props like theme will break snapshots. how is styled not showing theme output in snapshots?
             const mergedProps: IStyleableComponentProps<TViewProps, TStyleSet, TTheme, TScheme> = viewProps
               ? {
-                  ...(userProps as any),
+                  ...(componentProps as any),
                   ...(viewProps as any)
                 }
-              : userProps;
+              : componentProps;
 
             const newContext = providers.getContextFromProps(mergedProps, context, settings);
 
@@ -252,7 +252,7 @@ export function createComponent<TComponentProps, TViewProps, TStyleSet, TProcess
               component.view(viewComponentProps)
             );
           };
-          return component.state ? <component.state {...userProps} renderView={renderView} /> : renderView();
+          return component.state ? <component.state {...componentProps} renderView={renderView} /> : renderView();
         }}
       </CustomizerContext.Consumer>
     );
