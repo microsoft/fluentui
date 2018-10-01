@@ -20,10 +20,10 @@ export class SetupBannerBasicExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     const actions: ISetupBannerAction[] = [
       {
-        text: 'Setup a domain',
+        text: 'Set up a domain',
         actionType: SetupBannerActionType.PrimaryButton,
         action: () => {
-          alert('Setup a domain clicked');
+          alert('Set up a domain clicked');
         }
       },
       {
