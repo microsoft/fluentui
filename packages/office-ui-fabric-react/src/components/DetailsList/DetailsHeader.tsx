@@ -21,13 +21,15 @@ import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/sel
 import * as stylesImport from './DetailsHeader.scss';
 import { IDragDropOptions } from './../../utilities/dragdrop/interfaces';
 import { DragDropHelper } from './../../utilities/dragdrop';
-import { DetailsColumn } from './../../components/DetailsList/DetailsColumn';
+import { DetailsColumn, IDetailsColumnProps } from './../../components/DetailsList/DetailsColumn';
 
 const styles: any = stylesImport;
 const checkStyles: any = checkStylesModule;
 
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
 const MOUSEMOVE_PRIMARY_BUTTON = 1; // for mouse move event we are using ev.buttons property, 1 means left button
+
+const NO_COLUMNS: IColumn[] = [];
 
 export interface IDetailsHeader {
   focus: () => boolean;
@@ -351,7 +353,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
               onColumnContextMenu={ onColumnContextMenu }
               isDropped={ this._onDropIndexInfo.targetIndex === columnIndex }
             />,
-            column.isResizable && this._renderColumnSizer(columnIndex)
+            this._renderColumnDivider(columnIndex)
           ];
         }) }
         { columnReorderProps && frozenColumnCountFromEnd === 0 && this._renderDropHint(columns.length) }
@@ -627,12 +629,21 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     }
   }
 
-  private _renderColumnSizer(columnIndex: number): JSX.Element {
-    const { columns } = this.props;
-    const column = this.props.columns[columnIndex];
+  private _renderColumnDivider(columnIndex: number): JSX.Element | null {
+    const { columns = NO_COLUMNS } = this.props;
+    const column = columns[columnIndex];
+    const { onRenderDivider } = column;
+    return onRenderDivider
+      ? onRenderDivider({ column, columnIndex }, this._renderColumnSizer)
+      : this._renderColumnSizer({ column, columnIndex });
+  }
+
+  private _renderColumnSizer = ({ columnIndex }: IDetailsColumnProps): JSX.Element | null => {
+    const { columns = NO_COLUMNS } = this.props;
+    const column = columns[columnIndex];
     const { columnResizeDetails } = this.state;
 
-    return (
+    return column.isResizable ? (
       <div
         key={ `${column.key}_sizer` }
         aria-hidden={ true }
@@ -652,7 +663,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         ) }
         onDoubleClick={ this._onSizerDoubleClick.bind(this, columnIndex) }
       />
-    );
+    ) : null;
   }
 
   private _renderDropHint(dropHintIndex: number): JSX.Element {

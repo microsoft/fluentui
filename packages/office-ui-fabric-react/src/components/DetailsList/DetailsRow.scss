@@ -18,12 +18,11 @@ $compactRowShimmerVerticalBorder: ($compactRowHeight - $rowShimmerLineHeight) / 
 /* DetailsList Colors */
 // Default
 $detailsList-item-default-header-text-color: $ms-color-neutralPrimary;
-$detailsList-item-default-meta-text-color: $ms-color-neutralSecondaryAlt;
+$detailsList-item-default-meta-text-color: $ms-color-neutralSecondary;
 $detailsList-item-default-background-color: $ms-color-white;
 
 // Hover
 $detailsList-item-hover-text-color: $ms-color-neutralPrimary;
-$detailsList-item-hover-meta-text-color: $ms-color-neutralSecondary;
 $detailsList-item-hover-color-background: $ms-color-neutralLighter;
 
 // Selected
@@ -105,7 +104,6 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
   // Default State hover
   &:hover {
     background: $detailsList-item-hover-color-background;
-    color: $detailsList-item-hover-meta-text-color;
   }
 }
 

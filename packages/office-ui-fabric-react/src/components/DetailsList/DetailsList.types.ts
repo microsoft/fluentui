@@ -16,6 +16,7 @@ import {
   IGroupDividerProps
 } from '../GroupedList/index';
 import { IDetailsRowProps } from '../DetailsList/DetailsRow';
+import { IDetailsColumnProps } from '../DetailsList/DetailsColumn';
 import { IDetailsHeaderProps } from './DetailsHeader';
 import { IWithViewportProps, IViewport } from '../../utilities/decorators/withViewport';
 import {
@@ -354,6 +355,11 @@ export interface IColumn {
    * If provided uses this method to render custom cell content, rather than the default text rendering.
    */
   onRender?: (item?: any, index?: number, column?: IColumn) => any;
+
+  /**
+   * If provider, can be used to render a custom column header divider
+   */
+  onRenderDivider?: IRenderFunction<IDetailsColumnProps>;
 
   /**
    * Determines if the column is filtered, and if so shows a filter icon.
