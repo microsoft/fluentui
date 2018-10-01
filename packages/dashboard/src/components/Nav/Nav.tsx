@@ -25,6 +25,7 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
     }
 
     const classNames = getClassNames(getStyles, { isNavCollapsed: this.state.isNavCollapsed });
+    //let { root } = getStyles({isNavCollapsed: this.props.isNavCollapsed});
 
     return (
       <nav role="navigation" className={classNames.root}>
