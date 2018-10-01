@@ -1,6 +1,19 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Thu, 27 Sep 2018 12:27:48 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Oct 2018 12:27:24 GMT and should not be manually modified.
+
+## 0.27.0
+Mon, 01 Oct 2018 12:27:24 GMT
+
+### Minor changes
+
+- clean up not used code
+- improve the logic to determin first section
+
+### Patches
+
+- Fix transient dependency on react-resizable
+- resolved hover issue of thumbnailList 
 
 ## 0.26.2
 Thu, 27 Sep 2018 12:27:48 GMT

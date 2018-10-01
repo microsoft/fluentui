@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 28 Sep 2018 12:27:38 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Oct 2018 12:27:24 GMT and should not be manually modified.
+
+## 6.75.0
+Mon, 01 Oct 2018 12:27:24 GMT
+
+### Minor changes
+
+- semantic slot value updates per design direction
+
+### Patches
+
+- Improve _isWhiteCell logic to handle rgb(a) and hex shorthand  notation.
+- Add native props support for input properties to  SearchBox's inner input element.
 
 ## 6.74.2
 Fri, 28 Sep 2018 12:27:38 GMT

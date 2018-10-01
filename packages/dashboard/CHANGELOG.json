@@ -2,6 +2,48 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.27.0",
+      "tag": "@uifabric/dashboard_v0.27.0",
+      "date": "Mon, 01 Oct 2018 12:27:24 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "clean up not used code",
+            "author": "caradong <caradong1122@gmail.com>",
+            "commit": "d830f7c42d9f35b38c765c966d5be7e08a5e702c"
+          },
+          {
+            "comment": "improve the logic to determin first section",
+            "author": "caradong <caradong1122@gmail.com>",
+            "commit": "8f565bb03db16ad1eedbdda78d306800da7d64ad"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix transient dependency on react-resizable",
+            "author": "Wei Chen <xbtsw@users.noreply.github.com>",
+            "commit": "25614db7afcdee509aa37d5094ec452e22cb1748"
+          },
+          {
+            "comment": "resolved hover issue of thumbnailList ",
+            "author": "BalakrishnaReddyPolu <polu.balakrishna96@gmail.com>",
+            "commit": "92f15b7e3dffa730e7544e1407e885e5dd8b9b6b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.22.0` to `^0.22.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.32.4 <7.0.0` to `>=6.33.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.74.2 <7.0.0` to `>=6.75.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.26.2",
       "tag": "@uifabric/dashboard_v0.26.2",
       "date": "Thu, 27 Sep 2018 12:27:48 GMT",

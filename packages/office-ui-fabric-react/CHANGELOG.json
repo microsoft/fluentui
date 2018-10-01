@@ -2,6 +2,40 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.75.0",
+      "tag": "office-ui-fabric-react_v6.75.0",
+      "date": "Mon, 01 Oct 2018 12:27:24 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Improve _isWhiteCell logic to handle rgb(a) and hex shorthand  notation.",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "8b0a6acc0dcb4c4f86934b24e1567114c2edd280"
+          },
+          {
+            "comment": "Add native props support for input properties to  SearchBox's inner input element.",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "85162a93eb1e4abe5e8edd36fbf108990e89dbd3"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "semantic slot value updates per design direction",
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "4b31ba1706ff7b4a1b34399d3f1ffdb192737dbd"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.9.2 <7.0.0` to `>=6.9.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.27.0 <7.0.0` to `>=6.28.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.74.2",
       "tag": "office-ui-fabric-react_v6.74.2",
       "date": "Fri, 28 Sep 2018 12:27:38 GMT",
