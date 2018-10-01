@@ -1,4 +1,4 @@
-import { IStyle } from '../../Styling';
+import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 
 /**
  * The action type (used to determine how the action is displayed)
