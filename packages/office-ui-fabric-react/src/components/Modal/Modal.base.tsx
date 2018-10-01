@@ -57,11 +57,9 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
         });
       } else {
         // Modal has been opened
-        this.setState({
-          hasBeenOpened: true
-        });
         // Reopen during closing
         this.setState({
+          hasBeenOpened: true,
           isVisible: true
         });
       }
