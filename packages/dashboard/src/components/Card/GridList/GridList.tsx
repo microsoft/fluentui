@@ -5,7 +5,10 @@ import {
   IColumn,
   ColumnActionsMode,
   DetailsListLayoutMode,
-  ConstrainMode
+  ConstrainMode,
+  DetailsRow,
+  IDetailsRowProps,
+  IDetailsRowStyles
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
@@ -32,6 +35,7 @@ export class GridList extends React.Component<IGridListProps> {
           items={rows}
           setKey="set"
           columns={columns}
+          onRenderRow={this._onRenderRow}
           onRenderItemColumn={this._renderItemColumn}
           isHeaderVisible={this.props.isHeaderVisible}
           checkboxVisibility={CheckboxVisibility.hidden}
@@ -44,6 +48,17 @@ export class GridList extends React.Component<IGridListProps> {
     );
   }
 
+  private _onRenderRow(props: IDetailsRowProps): JSX.Element {
+    const styles: Partial<IDetailsRowStyles> = {
+      root: {
+        borderBottom: 'unset'
+      },
+      cell: {
+        paddingLeft: '0px'
+      }
+    };
+    return <DetailsRow {...props} styles={styles} />;
+  }
   // Disabling ts-lint for the signature because Details List expects row parameter as any
   // tslint:disable-next-line
   private _renderItemColumn(row: any, index: number, column: IColumn): JSX.Element | undefined {
