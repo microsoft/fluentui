@@ -1,8 +1,7 @@
-import { ICollapsibleSectionTitleProps, ICollapsibleSectionTitleStyles } from './CollapsibleSectionTitle.types';
+import { ICollapsibleSectionTitleComponent } from './CollapsibleSectionTitle.types';
 import { getFocusStyle } from 'office-ui-fabric-react';
-import { IThemedProps } from '../../Foundation';
 
-export const getStyles = (props: IThemedProps<ICollapsibleSectionTitleProps>): ICollapsibleSectionTitleStyles => {
+export const getStyles: ICollapsibleSectionTitleComponent['styles'] = props => {
   const { theme } = props;
 
   return {

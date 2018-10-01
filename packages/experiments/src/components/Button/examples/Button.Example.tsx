@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Button, IButtonStyleVariables } from '../index';
-import { HorizontalStack, Text, VerticalStack, IHorizontalStackProps } from '@uifabric/experiments';
+import { Button, IButtonComponent, IButtonStyleVariables } from '../index';
+import { HorizontalStack, Text, VerticalStack } from '@uifabric/experiments';
 import {
   Customizer,
   ContextualMenu,
@@ -14,7 +14,6 @@ import {
   IDropdownOption
 } from 'office-ui-fabric-react';
 import { getNeutralVariant, getSoftVariant, getStrongVariant } from '@uifabric/variants';
-import { IThemedProps } from '@uifabric/experiments/lib/Foundation';
 
 const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
 const buttonMenu = (props: IContextualMenuProps) => <ContextualMenu {...props} items={menuItems} />;
@@ -170,7 +169,7 @@ const sectionGap = 32;
 const headingGap = 16;
 const buttonGap = 12;
 
-const regionStyles = (props: IThemedProps<IHorizontalStackProps>) => ({
+const regionStyles: IButtonComponent['styles'] = props => ({
   root: {
     backgroundColor: props.theme.semanticColors.bodyBackground,
     color: props.theme.semanticColors.bodyText

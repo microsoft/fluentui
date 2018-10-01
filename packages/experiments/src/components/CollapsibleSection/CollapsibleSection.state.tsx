@@ -21,7 +21,7 @@ import { getRTL, KeyCodes } from '../../Utilities';
 export type ICollapsibleSectionState = Pick<
   ICollapsibleSectionViewProps,
   'collapsed' | 'titleElementRef' | 'onClick' | 'onKeyDown' | 'onRootKeyDown'
->;
+  >;
 
 export class CollapsibleSectionState extends BaseState<ICollapsibleSectionProps, ICollapsibleSectionState> {
   private _titleElement = createRef<HTMLElement>();

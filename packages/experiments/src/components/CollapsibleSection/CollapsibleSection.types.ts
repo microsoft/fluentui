@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { IStyle } from 'office-ui-fabric-react';
-import { IStyleableComponentProps, IThemedProps } from '../../Foundation';
+import { IComponent, IStyleableComponentProps } from '../../Foundation';
 import { RefObject } from '../../Utilities';
 
 import { ICollapsibleSectionTitleProps } from './CollapsibleSectionTitle.types';
 
-export interface ICollapsibleSectionProps extends IStyleableComponentProps<ICollapsibleSectionProps, ICollapsibleSectionStyles> {
+export type ICollapsibleSectionComponent = IComponent<ICollapsibleSectionProps, ICollapsibleSectionViewProps, ICollapsibleSectionStyles>;
+
+export interface ICollapsibleSectionProps extends IStyleableComponentProps<ICollapsibleSectionViewProps, ICollapsibleSectionStyles> {
   /**
    * Additional class name to provide on the root element.
    */
@@ -36,8 +38,6 @@ export interface ICollapsibleSectionProps extends IStyleableComponentProps<IColl
   indent?: number;
 }
 
-export type ICollapsibleSectionControlledProps = IStyleableComponentProps<ICollapsibleSectionViewProps, ICollapsibleSectionStyles>;
-
 export type ICollapsibleSectionViewProps = Pick<ICollapsibleSectionProps, 'titleAs' | 'titleProps' | 'indent'> &
   Required<Pick<ICollapsibleSectionProps, 'collapsed'>> & {
     /**
@@ -61,8 +61,6 @@ export type ICollapsibleSectionViewProps = Pick<ICollapsibleSectionProps, 'title
      */
     onKeyDown?: (ev: React.KeyboardEvent<Element>) => void;
   };
-
-export type ICollapsibleSectionStyleProps = IThemedProps<ICollapsibleSectionViewProps>;
 
 export interface ICollapsibleSectionStyles {
   /**
