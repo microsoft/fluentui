@@ -3,7 +3,7 @@
     {
       "packageName": "@uifabric/dashboard",
       "comment": "Add setup banner component for dashboard",
-      "type": "patch"
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/dashboard",
