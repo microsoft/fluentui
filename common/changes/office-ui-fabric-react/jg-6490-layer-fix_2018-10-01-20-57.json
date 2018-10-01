@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Sticky: second null check for currElem",
+      "comment": "Layer: Don't block capture events, allowing onFocus and onBlur events to work as expected.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "naethell@microsoft.com"
+  "email": "jagore@microsoft.com"
 }

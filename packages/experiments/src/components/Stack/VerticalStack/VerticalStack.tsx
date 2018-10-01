@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { createStatelessComponent, IViewComponentProps } from '../../../Foundation';
+import { createStatelessComponent } from '../../../Foundation';
 import { Stack } from '../Stack';
 import { StackItem } from '../StackItem/StackItem';
 import { IStackItemProps } from '../StackItem/StackItem.types';
 import { getVerticalAlignment, getHorizontalAlignment } from '../StackUtils';
-import { IVerticalStackProps, IVerticalStackStyles } from './VerticalStack.types';
+import { IVerticalStackComponent, IVerticalStackProps, IVerticalStackStyles } from './VerticalStack.types';
 import { styles } from './VerticalStack.styles';
 
-const view = (props: IViewComponentProps<IVerticalStackProps, IVerticalStackStyles>) => {
+const view: IVerticalStackComponent['view'] = props => {
   const { verticalAlign, horizontalAlign, gap, classNames, children, styles: customStyles, ...rest } = props;
 
   return (

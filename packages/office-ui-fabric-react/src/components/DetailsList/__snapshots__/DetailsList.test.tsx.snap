@@ -5023,7 +5023,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         background: #ffffff;
                                         border-bottom: 1px solid #f4f4f4;
                                         box-sizing: border-box;
-                                        color: #767676;
+                                        color: #666666;
                                         cursor: default;
                                         display: inline-flex;
                                         min-height: 42px;
@@ -5058,7 +5058,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       }
                                       &:hover {
                                         background: #f4f4f4;
-                                        color: #666666;
                                       }
                                       &:hover $check {
                                         opacity: 1;
@@ -5212,7 +5211,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         background: #ffffff;
                                         border-bottom: 1px solid #f4f4f4;
                                         box-sizing: border-box;
-                                        color: #767676;
+                                        color: #666666;
                                         cursor: default;
                                         display: inline-flex;
                                         min-height: 42px;
@@ -5247,7 +5246,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       }
                                       &:hover {
                                         background: #f4f4f4;
-                                        color: #666666;
                                       }
                                       &:hover $check {
                                         opacity: 1;
@@ -5621,7 +5619,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         background: #ffffff;
                                         border-bottom: 1px solid #f4f4f4;
                                         box-sizing: border-box;
-                                        color: #767676;
+                                        color: #666666;
                                         cursor: default;
                                         display: inline-flex;
                                         min-height: 42px;
@@ -5656,7 +5654,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       }
                                       &:hover {
                                         background: #f4f4f4;
-                                        color: #666666;
                                       }
                                       &:hover $check {
                                         opacity: 1;
@@ -5810,7 +5807,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         background: #ffffff;
                                         border-bottom: 1px solid #f4f4f4;
                                         box-sizing: border-box;
-                                        color: #767676;
+                                        color: #666666;
                                         cursor: default;
                                         display: inline-flex;
                                         min-height: 42px;
@@ -5845,7 +5842,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       }
                                       &:hover {
                                         background: #f4f4f4;
-                                        color: #666666;
                                       }
                                       &:hover $check {
                                         opacity: 1;
@@ -5999,7 +5995,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         background: #ffffff;
                                         border-bottom: 1px solid #f4f4f4;
                                         box-sizing: border-box;
-                                        color: #767676;
+                                        color: #666666;
                                         cursor: default;
                                         display: inline-flex;
                                         min-height: 42px;
@@ -6034,7 +6030,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       }
                                       &:hover {
                                         background: #f4f4f4;
-                                        color: #666666;
                                       }
                                       &:hover $check {
                                         opacity: 1;

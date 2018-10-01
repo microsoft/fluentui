@@ -42,13 +42,10 @@ export class LineChartBasicExample extends React.Component<ILineChartProps, {}> 
       chartTitle: 'Line Chart',
       lineChartData: points
     };
-    const colors = [DefaultPalette.blue];
-
     const rootStyle: IRootStyles = { width: '700px', height: '300px' };
-
     return (
       <div className={mergeStyles(rootStyle)}>
-        <LineChart data={data} chartLabel={'Basic Chart with Numeric Axes'} colors={colors} />
+        <LineChart data={data} />
       </div>
     );
   }

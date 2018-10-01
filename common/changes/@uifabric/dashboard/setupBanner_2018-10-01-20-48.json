@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/dashboard",
-      "comment": "Adding props that take bolding for the content in each cell of gridlist",
+      "comment": "Add setup banner component for dashboard",
       "type": "minor"
     }
   ],
   "packageName": "@uifabric/dashboard",
-  "email": "dezverev@microsoft.com"
+  "email": "kevcha@microsoft.com"
 }
