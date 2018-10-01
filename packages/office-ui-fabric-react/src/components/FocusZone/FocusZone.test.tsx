@@ -310,7 +310,7 @@ describe('FocusZone', () => {
     // D E
     //
     // We will iterate from A to B, press down to skip hidden and go to C,
-    // down again to E, left to D, then back up to A.
+    // down again to E, left to D, up to C, then back up to A.
     setupElement(buttonA, {
       clientRect: {
         top: 0,
@@ -425,7 +425,7 @@ describe('FocusZone', () => {
     // E D
     //
     // We will iterate from A to B, press down to skip hidden and go to C,
-    // down again to E, right to D, then back up to A.
+    // down again to E, right to D, up to C, then back up to A.
     setupElement(buttonA, {
       clientRect: {
         top: 0,
