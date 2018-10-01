@@ -73,7 +73,8 @@ export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
         display: 'inline-block',
         fontSize: '16px',
         padding: '0 20px',
-        background: 'white'
+        color: theme!.semanticColors.bodyText,
+        background: theme!.semanticColors.bodyBackground
       },
       vertical && {
         padding: '20px 0'
