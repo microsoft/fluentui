@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 21 Sep 2018 11:24:29 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Oct 2018 11:24:38 GMT and should not be manually modified.
+
+## 5.127.0
+Mon, 01 Oct 2018 11:24:38 GMT
+
+### Minor changes
+
+- semantic slot value updates per design direction
+
+### Patches
+
+- IconButton: add semantic slot color to icon in IconButton so that it can be themed.
+- DetailsRow: remove the use of neutralSecondaryAlt deprecated color slot.
 
 ## 5.126.0
 Fri, 21 Sep 2018 11:24:29 GMT
