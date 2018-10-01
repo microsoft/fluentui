@@ -1,5 +1,7 @@
 import { IStyle } from '../../Styling';
-import { IStyleableComponentProps } from '../../Foundation';
+import { IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
+
+export type IAccordionComponent = IStatelessComponent<IAccordionProps, IAccordionStyles>;
 
 export interface IAccordionProps extends IStyleableComponentProps<IAccordionProps, IAccordionStyles> {
   renderAs?: string | React.ReactType<IAccordionProps>;

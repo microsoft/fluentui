@@ -1,6 +1,52 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Fri, 21 Sep 2018 14:25:46 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Oct 2018 12:27:24 GMT and should not be manually modified.
+
+## 0.27.0
+Mon, 01 Oct 2018 12:27:24 GMT
+
+### Minor changes
+
+- clean up not used code
+- improve the logic to determin first section
+
+### Patches
+
+- Fix transient dependency on react-resizable
+- resolved hover issue of thumbnailList 
+
+## 0.26.2
+Thu, 27 Sep 2018 12:27:48 GMT
+
+*Version update only*
+
+## 0.26.1
+Wed, 26 Sep 2018 16:58:51 GMT
+
+### Patches
+
+- card content overflow issue fix
+
+## 0.26.0
+Wed, 26 Sep 2018 12:27:23 GMT
+
+### Minor changes
+
+- Adding props that take bolding for the content in each cell of gridlist
+
+## 0.25.6
+Tue, 25 Sep 2018 12:28:12 GMT
+
+### Patches
+
+- Bug fix: Multicount component body text is not rendered in IE when put inside a flex box with justifyContent of center
+
+## 0.25.5
+Mon, 24 Sep 2018 12:27:31 GMT
+
+### Patches
+
+- change lineHeight for card headerText
 
 ## 0.25.4
 Fri, 21 Sep 2018 14:25:46 GMT

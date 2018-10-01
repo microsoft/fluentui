@@ -1,4 +1,5 @@
 import { IStackedBarChartStyleProps, IStackedBarChartStyles } from './StackedBarChart.types';
+import { FontSizes, FontWeights } from 'office-ui-fabric-react/lib/Styling';
 
 export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartStyles => {
   const { className, width, barHeight, legendColor, shouldHighlight, theme } = props;
@@ -21,7 +22,7 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
       display: 'flex',
       justifyContent: 'space-between',
       marginBottom: '5px',
-      fontSize: '12px'
+      fontSize: FontSizes.small
     },
     legendContainer: {
       paddingTop: '4px'
@@ -32,9 +33,9 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
     },
     hoverCardDataStyles: {
       color: legendColor === '' ? theme.palette.black : legendColor,
-      fontSize: '28px',
+      fontSize: FontSizes.xxLarge,
       fontFamily: 'Segoe UI',
-      fontWeight: 'bold',
+      fontWeight: FontWeights.bold,
       lineHeight: '31px'
     },
     hoverCardRoot: {
@@ -45,6 +46,16 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
     },
     opacityChangeOnHover: {
       opacity: shouldHighlight ? '' : '0.1'
+    },
+    ratioNumerator: {
+      fontSize: FontSizes.small,
+      fontWeight: FontWeights.semibold,
+      color: theme.palette.black
+    },
+    ratioDenominator: {
+      fontSize: FontSizes.small,
+      color: theme.palette.black,
+      opacity: '0.6'
     }
   };
 };

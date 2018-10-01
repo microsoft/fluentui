@@ -82,10 +82,7 @@ export function memoize<T extends Function>(
  * @param maxCacheSize - Max results to cache. If the cache exceeds this value, it will reset on the next call.
  * @returns A memoized version of the function.
  */
-export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE>(
-  cb: T,
-  maxCacheSize: number = 100
-): T {
+export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE>(cb: T, maxCacheSize: number = 100): T {
   // Avoid breaking scenarios which don't have weak map.
   if (!_weakMap) {
     return cb;
@@ -99,11 +96,7 @@ export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE
   return function memoizedFunction(...args: any[]): RET_TYPE {
     let currentNode: any = rootNode;
 
-    if (
-      rootNode === undefined ||
-      localResetCounter !== _resetCounter ||
-      (maxCacheSize > 0 && cacheSize > maxCacheSize)
-    ) {
+    if (rootNode === undefined || localResetCounter !== _resetCounter || (maxCacheSize > 0 && cacheSize > maxCacheSize)) {
       rootNode = _createNode();
       cacheSize = 0;
       localResetCounter = _resetCounter;
@@ -136,7 +129,7 @@ function _normalizeArg(val: object): any;
 function _normalizeArg(val: any): any {
   if (!val) {
     return _emptyObject;
-  } else if (typeof val === 'object') {
+  } else if (typeof val === 'object' || typeof val === 'function') {
     return val;
   } else if (!_dictionary[val]) {
     _dictionary[val] = { val };

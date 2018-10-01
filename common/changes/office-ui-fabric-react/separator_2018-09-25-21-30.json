@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix Panel Custom className not output if PanelType is Custom",
+      "comment": "TextField: prettier fixes",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "keco@microsoft.com"
+  "email": "naethell@microsoft.com"
 }
