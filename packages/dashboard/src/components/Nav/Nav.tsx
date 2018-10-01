@@ -1,4 +1,3 @@
-/* tslint:disable */
 import * as React from 'react';
 import { INavLinkGroup } from 'office-ui-fabric-react/lib/Nav';
 import { INavProps, INavStyleProps, INavStyles, INavState } from './Nav.types';
@@ -6,7 +5,6 @@ import { getStyles } from './Nav.styles';
 import { styled, classNamesFunction, BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { NavLink } from './NavLink';
 import { NavGroup } from './NavGroup';
-// import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
 
@@ -17,15 +15,18 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
     this.state = {
       isNavCollapsed: this.props.isNavCollapsed ? this.props.isNavCollapsed : false
     };
+
+    this._onNavCollapseClicked = this._onNavCollapseClicked.bind(this);
+    this._editClicked = this._editClicked.bind(this);
+    this._toggleHidden = this._toggleHidden.bind(this);
   }
 
-  public render() {
+  public render(): JSX.Element | null {
     if (!this.props.groups || this.props.groups.length === 0) {
       return null;
     }
 
     const classNames = getClassNames(getStyles, { isNavCollapsed: this.state.isNavCollapsed });
-    //let { root } = getStyles({isNavCollapsed: this.props.isNavCollapsed});
 
     return (
       <nav role="navigation" className={classNames.root}>
@@ -55,7 +56,7 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
           <NavLink
             id={'NavToggle'}
             href={'#'}
-            onClick={this._onNavCollapseClicked.bind(this)}
+            onClick={this._onNavCollapseClicked}
             ariaExpanded={!isNavCollapsed}
             dataHint={dataHint}
             dataValue={'NavToggle'}
@@ -103,7 +104,7 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
             id={'EditNav'}
             href={'#'}
             name={editString}
-            onClick={this._editClicked.bind(this)}
+            onClick={this._editClicked}
             dataHint={'Edit navigation'}
             dataValue={'NavToggle'}
             ariaLabel={'Edit navigation'}
@@ -117,7 +118,7 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
               id={'ShowMore'}
               href={'#'}
               name={this.props.showMore ? showMoreString : showLessString}
-              onClick={this._toggleHidden.bind(this)}
+              onClick={this._toggleHidden}
               dataHint={'Show more'}
               dataValue={'Show more'}
               ariaLabel={'Show more'}
@@ -137,6 +138,7 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
     this.setState({
       isNavCollapsed: !this.state.isNavCollapsed
     });
+    console.log(this.state.isNavCollapsed);
 
     // inform the caller about the collapse event
     if (!!this.props.onNavCollapsedCallback && !!this.state.isNavCollapsed) {
@@ -163,5 +165,3 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
 }
 
 export const Nav = styled<INavProps, INavStyleProps, INavStyles>(NavComponent, getStyles);
-
-/* tslint:enable */
