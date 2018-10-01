@@ -47,7 +47,7 @@ export interface ISeparatorStyleProps {
   /**
    * Theme for the component.
    */
-  theme?: ITheme;
+  theme: ITheme;
 
   /**
    * Accept custom classNames.
@@ -69,10 +69,10 @@ export interface ISeparatorStyles {
   /**
    * Style for the root element
    */
-  root?: IStyle;
+  root: IStyle;
 
   /**
    * Style for the text element
    */
-  text?: IStyle;
+  text: IStyle;
 }
