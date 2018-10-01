@@ -32,7 +32,7 @@ export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
         },
       vertical && {
         padding: '0 5px',
-        height: '200px',
+        height: 'inherit',
         display: 'table-cell',
         zIndex: 1,
         selectors: {
