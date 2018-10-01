@@ -21,7 +21,6 @@ export class SetupBannerPage extends React.Component<IComponentDemoPageProps, {}
             sources={[require<string>('!raw-loader!@uifabric/dashboard/src/components/SetupBanner/SetupBanner.types.ts')]}
           />
         }
-        /* tslint:disable:max-line-length */
         overview={
           <div>
             <p>The setup banner control allows you to display a banner to the user to complete setup.</p>
