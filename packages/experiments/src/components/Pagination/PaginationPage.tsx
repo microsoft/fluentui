@@ -2,10 +2,10 @@ import * as React from 'react';
 import { ExampleCard, ComponentPage, IComponentDemoPageProps, PropertiesTableSet } from '@uifabric/example-app-base';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { PaginationBasicExample } from './examples/Pagination.Basic.Example';
-import { PaginationCustomizaionExample } from './examples/Pagination.Customization.Example';
+import { PaginationCustomizationExample } from './examples/Pagination.Customization.Example';
 
 const PaginationBasicExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Pagination/examples/Pagination.Basic.Example.tsx') as string;
-const PaginationCustomizaionExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Pagination/examples/Pagination.Customization.Example.tsx') as string;
+const PaginationCustomizationExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Pagination/examples/Pagination.Customization.Example.tsx') as string;
 
 export class PaginationPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -18,8 +18,8 @@ export class PaginationPage extends React.Component<IComponentDemoPageProps, {}>
             <ExampleCard title="Pagination with basic elements" code={PaginationBasicExampleCode}>
               <PaginationBasicExample />
             </ExampleCard>
-            <ExampleCard title="Pagination with customization" code={PaginationCustomizaionExampleCode}>
-              <PaginationCustomizaionExample />
+            <ExampleCard title="Pagination with customization" code={PaginationCustomizationExampleCode}>
+              <PaginationCustomizationExample />
             </ExampleCard>
           </div>
         }

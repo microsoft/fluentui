@@ -4,7 +4,7 @@ import { Pagination } from '@uifabric/experiments/lib/Pagination';
 export interface IPaginationBasicExampleState {
   selectedPageIndex: number;
 }
-export class PaginationCustomizaionExample extends React.Component<{}, IPaginationBasicExampleState> {
+export class PaginationCustomizationExample extends React.Component<{}, IPaginationBasicExampleState> {
   constructor(props: {}) {
     super(props);
 

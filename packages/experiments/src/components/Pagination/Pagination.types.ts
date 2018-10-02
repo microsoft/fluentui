@@ -113,8 +113,8 @@ export interface IPaginationStyles {
   /**
    * Style for the root element in the default enabled/unchecked state.
    */
-  root?: IStyle;
-  pageNumber?: IStyle;
-  previousNextPage?: IStyle;
-  omission?: IStyle;
+  root: IStyle;
+  pageNumber: IStyle;
+  previousNextPage: IStyle;
+  omission: IStyle;
 }
