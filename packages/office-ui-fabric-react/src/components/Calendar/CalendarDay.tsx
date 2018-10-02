@@ -284,22 +284,22 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                         )}
                         ref={element => this._setDayCellRef(element, day, isNavigatedDate)}
                         onMouseOver={
-                          dateRangeType !== DateRangeType.Day
+                          dateRangeType !== DateRangeType.Day && day.isInBounds
                             ? this._onDayMouseOver(day.originalDate, weekIndex, dayIndex, dateRangeType)
                             : undefined
                         }
                         onMouseLeave={
-                          dateRangeType !== DateRangeType.Day
+                          dateRangeType !== DateRangeType.Day && day.isInBounds
                             ? this._onDayMouseLeave(day.originalDate, weekIndex, dayIndex, dateRangeType)
                             : undefined
                         }
                         onMouseDown={
-                          dateRangeType !== DateRangeType.Day
+                          dateRangeType !== DateRangeType.Day && day.isInBounds
                             ? this._onDayMouseDown(day.originalDate, weekIndex, dayIndex, dateRangeType)
                             : undefined
                         }
                         onMouseUp={
-                          dateRangeType !== DateRangeType.Day
+                          dateRangeType !== DateRangeType.Day && day.isInBounds
                             ? this._onDayMouseUp(day.originalDate, weekIndex, dayIndex, dateRangeType)
                             : undefined
                         }
