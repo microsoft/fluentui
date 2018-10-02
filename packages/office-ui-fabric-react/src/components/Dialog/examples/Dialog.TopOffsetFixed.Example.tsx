@@ -8,7 +8,7 @@ export class DialogTopOffsetFixedExample extends React.Component<
   {},
   {
     hideDialog: boolean;
-    currentOption: string;
+    optionSelected: string;
   }
 > {
   constructor(props: {}) {
@@ -16,12 +16,12 @@ export class DialogTopOffsetFixedExample extends React.Component<
 
     this.state = {
       hideDialog: true,
-      currentOption: 'A'
+      optionSelected: 'A'
     };
   }
 
   public render() {
-    const { currentOption, hideDialog } = this.state;
+    const { optionSelected, hideDialog } = this.state;
 
     return (
       <div>
@@ -42,33 +42,33 @@ export class DialogTopOffsetFixedExample extends React.Component<
           }}
         >
           <ChoiceGroup
+            label="Pick one icon"
             options={[
               {
                 key: 'A',
                 iconProps: { iconName: 'CalendarDay' },
                 text: 'Day',
-                checked: currentOption === 'A'
+                checked: optionSelected === 'A'
               },
               {
                 key: 'B',
                 iconProps: { iconName: 'CalendarWeek' },
                 text: 'Week',
-                checked: currentOption === 'B'
+                checked: optionSelected === 'B'
               },
               {
                 key: 'C',
                 iconProps: { iconName: 'Calendar' },
                 text: 'Month',
-                checked: currentOption === 'C'
+                checked: optionSelected === 'C'
               }
             ]}
             onChange={this._onChange}
-            label="Pick one"
             required={true}
           />
-          {currentOption === 'A' && (
+          {optionSelected === 'A' && (
             <div>
-              <h1> Description </h1>
+              <h1>Description</h1>
               <div>
                 {' '}
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -78,9 +78,9 @@ export class DialogTopOffsetFixedExample extends React.Component<
               </div>
             </div>
           )}
-          {currentOption === 'B' && (
+          {optionSelected === 'B' && (
             <div>
-              <h1> Description </h1>
+              <h1>Description</h1>
               <div>
                 {' '}
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -88,9 +88,9 @@ export class DialogTopOffsetFixedExample extends React.Component<
               </div>
             </div>
           )}
-          {currentOption === 'C' && (
+          {optionSelected === 'C' && (
             <div>
-              <h1> No Description </h1>
+              <h1>Description</h1>
             </div>
           )}
           <DialogFooter>
@@ -103,7 +103,7 @@ export class DialogTopOffsetFixedExample extends React.Component<
   }
 
   private _onChange = (ev: React.FormEvent<HTMLInputElement>, option: any): void => {
-    this.setState({ currentOption: option.key });
+    this.setState({ optionSelected: option.key });
   };
 
   private _showDialog = (): void => {
