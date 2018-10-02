@@ -40,9 +40,7 @@
       "packageName": "@uifabric/example-app-base",
       "projectFolder": "packages/example-app-base",
       "versionPolicyName": "lockedMajor",
-      "cyclicDependencyProjects": [
-        "office-ui-fabric-react"
-      ],
+      "cyclicDependencyProjects": ["office-ui-fabric-react"],
       "shouldPublish": true
     },
     {
