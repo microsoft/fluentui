@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Pagination } from '../Pagination';
+import { Pagination } from '@uifabric/experiments/lib/Pagination';
 
 export interface IPaginationBasicExampleState {
   selectedPageIndex: number;
@@ -26,12 +26,18 @@ export class PaginationCustomizaionExample extends React.Component<{}, IPaginati
           pageNumber: {
             fontWeight: 'bold',
             selectors: {
-              ':hover': { backgroundColor: '#c8c8c8' }
+              ':hover': { backgroundColor: '#c8c8c8' },
+              '&:aria-selected=true': {
+                color: 'red',
+                fontWeight: 'bold',
+                textDecoration: 'underline'
+              },
+              '&[aria-selected=true]': {
+                color: 'red',
+                fontWeight: 'bold',
+                textDecoration: 'underline'
+              }
             }
-          },
-          selectedPageNumber: {
-            color: 'red',
-            textDecoration: 'underline'
           }
         }}
       />

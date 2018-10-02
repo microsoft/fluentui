@@ -8,6 +8,9 @@ const getClassNames = classNamesFunction<IPaginationStyleProps, IPaginationStyle
 
 export class PaginationBase extends BaseComponent<IPaginationProps, {}> {
   public static defaultProps: Partial<IPaginationProps> = {
+    nextLabel: '>>',
+    previousLabel: '<<',
+    selectedPageIndex: 0,
     pageRange: 2,
     marginPagesDisplayed: 1,
     omissionLabel: '...'
@@ -26,8 +29,8 @@ export class PaginationBase extends BaseComponent<IPaginationProps, {}> {
       theme: theme!
     });
 
-    const canPrevious = this.props.selectedPageIndex > 0;
-    const canNext = this.props.selectedPageIndex + 1 < this.props.pageCount;
+    const canPrevious = this.props.selectedPageIndex! > 0;
+    const canNext = this.props.selectedPageIndex! + 1 < this.props.pageCount;
 
     // FocusZone handles A11Y requirement such as:
     // Dynamically set tabindex (0 or -1) to the correct item
@@ -38,7 +41,7 @@ export class PaginationBase extends BaseComponent<IPaginationProps, {}> {
         <ul className={this._classNames.root} role="tablist">
           <li key="previousPage">
             <button
-              className={canPrevious ? this._classNames.previousNextPage : this._classNames.disabledPreviousNextPage}
+              className={this._classNames.previousNextPage}
               onClick={this.handlePreviousPage}
               disabled={!canPrevious}
               role="tab"
@@ -50,7 +53,7 @@ export class PaginationBase extends BaseComponent<IPaginationProps, {}> {
           {this._pageList(this._classNames)}
           <li key="nextPage">
             <button
-              className={canNext ? this._classNames.previousNextPage : this._classNames.disabledPreviousNextPage}
+              className={this._classNames.previousNextPage}
               onClick={this.handleNextPage}
               disabled={!canNext}
               role="tab"
@@ -74,14 +77,14 @@ export class PaginationBase extends BaseComponent<IPaginationProps, {}> {
   };
 
   private handlePreviousPage = () => {
-    this.handleSelectedPage(this.props.selectedPageIndex - 1);
+    this.handleSelectedPage(this.props.selectedPageIndex! - 1);
   };
 
   private handleNextPage = () => {
-    this.handleSelectedPage(this.props.selectedPageIndex + 1);
+    this.handleSelectedPage(this.props.selectedPageIndex! + 1);
   };
 
-  private _pageElement(index: number, classNames: { [key in keyof IPaginationStyles]: string }): JSX.Element {
+  private _pageElement(index: number): JSX.Element {
     return (
       <PageNumber
         key={index + 1}
@@ -89,7 +92,7 @@ export class PaginationBase extends BaseComponent<IPaginationProps, {}> {
         pageAriaLabel={this.props.pageAriaLabel}
         selected={index === this.props.selectedPageIndex}
         applyPage={this.handleSelectedPage}
-        className={index === this.props.selectedPageIndex ? classNames.selectedPageNumber : classNames.pageNumber}
+        className={this._classNames.pageNumber}
       />
     );
   }
@@ -98,37 +101,32 @@ export class PaginationBase extends BaseComponent<IPaginationProps, {}> {
     const element = [];
     if (this.props.pageCount <= this.props.pageRange!) {
       for (let index = 0; index < this.props.pageCount; index++) {
-        element.push(this._pageElement(index, classNames));
+        element.push(this._pageElement(index));
       }
     } else {
-      let leftSide = this.props.pageRange! / 2;
-      let rightSide = this.props.pageRange! - leftSide;
+      const leftHalfCount = this.props.pageRange! / 2;
+      const rightHalfCount = this.props.pageRange! - leftHalfCount;
 
-      if (this.props.selectedPageIndex > this.props.pageCount - 1 - this.props.pageRange! / 2) {
-        rightSide = this.props.pageCount - 1 - this.props.selectedPageIndex;
+      let leftSide = leftHalfCount;
+      let rightSide = rightHalfCount;
+
+      if (this.props.selectedPageIndex! > this.props.pageCount - 1 - leftHalfCount) {
+        rightSide = this.props.pageCount - 1 - this.props.selectedPageIndex!;
         leftSide = this.props.pageRange! - rightSide;
-      } else if (this.props.selectedPageIndex < this.props.pageRange! / 2) {
-        leftSide = this.props.selectedPageIndex;
+      } else if (this.props.selectedPageIndex! < leftHalfCount) {
+        leftSide = this.props.selectedPageIndex!;
         rightSide = this.props.pageRange! - leftSide;
       }
 
       let previousIndexIsOmitted = false;
       for (let index = 0; index < this.props.pageCount; index++) {
         const page = index + 1;
-        if (page <= this.props.marginPagesDisplayed!) {
-          element.push(this._pageElement(index, classNames));
-          previousIndexIsOmitted = false;
-          continue;
-        }
-
-        if (page > this.props.pageCount - this.props.marginPagesDisplayed!) {
-          element.push(this._pageElement(index, classNames));
-          previousIndexIsOmitted = false;
-          continue;
-        }
-
-        if (index >= this.props.selectedPageIndex - leftSide && index <= this.props.selectedPageIndex + rightSide) {
-          element.push(this._pageElement(index, classNames));
+        if (
+          page <= this.props.marginPagesDisplayed! ||
+          page > this.props.pageCount - this.props.marginPagesDisplayed! ||
+          (index >= this.props.selectedPageIndex! - leftSide && index <= this.props.selectedPageIndex! + rightSide)
+        ) {
+          element.push(this._pageElement(index));
           previousIndexIsOmitted = false;
           continue;
         }
@@ -136,7 +134,7 @@ export class PaginationBase extends BaseComponent<IPaginationProps, {}> {
         if (previousIndexIsOmitted === false) {
           const listKey = 'ellipsis' + index.toString();
           element.push(
-            <li key={listKey} className="detailsListPagination-ellipsis" aria-label={this.props.omittedPagesAriaLabel}>
+            <li key={listKey} className={this._classNames.omission} aria-label={this.props.omittedPagesAriaLabel}>
               {this.props.omissionLabel}
             </li>
           );

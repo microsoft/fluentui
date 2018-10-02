@@ -1,10 +1,10 @@
 import { IPaginationStyles, IPaginationStyleProps } from './Pagination.types';
-import { getGlobalClassNames } from '../../Styling';
+import { getGlobalClassNames, IStyle } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-Pagination-container',
   pageNumber: 'ms-Pagination-page-number',
-  selectedPageNumber: 'ms-Pagination-page-number-selected'
+  omission: 'ms-Pagination-omission'
 };
 
 export function getStyles(props: IPaginationStyleProps): IPaginationStyles {
@@ -12,6 +12,12 @@ export function getStyles(props: IPaginationStyleProps): IPaginationStyles {
 
   const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
+  const buttonStyles: IStyle = {
+    cursor: 'pointer',
+    border: 'none',
+    backgroundColor: 'transparent'
+  };
 
   return {
     root: [
@@ -25,34 +31,43 @@ export function getStyles(props: IPaginationStyleProps): IPaginationStyles {
         }
       }
     ],
-    previousNextPage: {
-      color: palette.black,
-      cursor: 'pointer',
-      border: 'none',
-      backgroundColor: 'Transparent'
-    },
-    disabledPreviousNextPage: {
-      color: palette.neutralTertiaryAlt,
-      border: 'none',
-      backgroundColor: 'Transparent'
-    },
-    pageNumber: [
-      classNames.pageNumber,
+    previousNextPage: [
+      buttonStyles,
       {
         color: palette.black,
-        cursor: 'pointer',
-        border: 'none',
-        backgroundColor: 'Transparent'
+        selectors: {
+          '&:disabled': {
+            cursor: 'default',
+            color: palette.neutralTertiaryAlt
+          },
+          '&[disabled]': {
+            cursor: 'default',
+            color: palette.neutralTertiaryAlt
+          }
+        }
       }
     ],
-    selectedPageNumber: [
-      classNames.selectedPageNumber,
+    pageNumber: [
+      classNames.pageNumber,
+      buttonStyles,
       {
-        color: palette.blue,
-        fontWeight: 'bold',
-        cursor: 'pointer',
-        border: 'none',
-        backgroundColor: 'Transparent'
+        color: palette.black,
+        selectors: {
+          '&:aria-selected=true': {
+            color: palette.blue,
+            fontWeight: 'bold'
+          },
+          '&[aria-selected=true]': {
+            color: palette.blue,
+            fontWeight: 'bold'
+          }
+        }
+      }
+    ],
+    omission: [
+      classNames.omission,
+      {
+        color: palette.neutralSecondary
       }
     ]
   };

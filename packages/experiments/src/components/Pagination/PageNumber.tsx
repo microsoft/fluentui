@@ -7,10 +7,11 @@ export class PageNumber extends React.Component<IPageNumberProps, {}> {
   }
 
   public render(): JSX.Element {
-    const ariaLabel = this.props.pageAriaLabel ? this.props.pageAriaLabel + '' + this.props.page : 'Page ' + this.props.page;
+    const { pageAriaLabel, page } = this.props;
+    const ariaLabel = pageAriaLabel && `${pageAriaLabel} ${page}`;
 
     return (
-      <li>
+      <li key={this.props.page}>
         <button
           className={this.props.className}
           onClick={this.onClick}

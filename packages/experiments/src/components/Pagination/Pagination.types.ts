@@ -5,49 +5,27 @@ export interface IPagination {}
 
 export interface IPaginationProps {
   /**
-   * Required: Selected index
-   */
-  selectedPageIndex: number;
-
-  /**
-   * label for the previous page button
-   */
-  previousLabel: string;
-
-  /**
-   * Required: label for the next page button
-   */
-  nextLabel: string;
-
-  /**
-   * Required: The total number of pages.
+   * The total number of pages.
    */
   pageCount: number;
 
   /**
-   * Required: aria label for the omitted pages
+   * label for the next page button
+   * @default '>>'
    */
-  omittedPagesAriaLabel?: string;
+  nextLabel?: string;
 
   /**
-   * Required: aria label for the next page button
+   * label for the previous page button
+   * @default '<<'
    */
-  nextAriaLabel?: string;
+  previousLabel?: string;
 
   /**
-   * aria label for the page buttons
+   * The label representing omitted page numbers.
+   * @default '...'
    */
-  pageAriaLabel?: string;
-
-  /**
-   * The call back function to load another page in the table. This needs to be defined in the parent component.
-   */
-  onPageChange?: (index: number) => void;
-
-  /**
-   * aria label for the previous page button
-   */
-  previousAriaLabel?: string;
+  omissionLabel?: string;
 
   /**
    * The page range to show around the selected page. e.g., if this is 2, there will be 2 page numbers in total
@@ -63,10 +41,30 @@ export interface IPaginationProps {
   marginPagesDisplayed?: number;
 
   /**
-   * The label representing omitted page numbers.
-   * @default '...'
+   * Selected page index
+   * @default 0
    */
-  omissionLabel?: string;
+  selectedPageIndex?: number;
+
+  /**
+   * aria label for the next page button
+   */
+  nextAriaLabel?: string;
+
+  /**
+   * aria label for the previous page button
+   */
+  previousAriaLabel?: string;
+
+  /**
+   * aria label for the omitted pages
+   */
+  omittedPagesAriaLabel?: string;
+
+  /**
+   * aria label for the page buttons
+   */
+  pageAriaLabel?: string;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
@@ -83,6 +81,11 @@ export interface IPaginationProps {
    * Theme provided by High-Order Component.
    */
   theme?: ITheme;
+
+  /**
+   * The call back function to load another page in the table. This needs to be defined in the parent component.
+   */
+  onPageChange?: (index: number) => void;
 }
 
 export interface IPageNumberProps {
@@ -98,6 +101,7 @@ export interface IPageNumberProps {
   /** The aria label template. Should contain one place holder, e.g. Page {0} */
   pageAriaLabel?: string;
 
+  /** The className */
   className?: string;
 }
 
@@ -111,7 +115,6 @@ export interface IPaginationStyles {
    */
   root?: IStyle;
   pageNumber?: IStyle;
-  selectedPageNumber?: IStyle;
   previousNextPage?: IStyle;
-  disabledPreviousNextPage?: IStyle;
+  omission?: IStyle;
 }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Pagination } from '../Pagination';
+import { Pagination } from '@uifabric/experiments/lib/Pagination';
 
 export interface IPaginationBasicExampleState {
   selectedPageIndex: number;
