@@ -58,9 +58,8 @@ export const DialogPageProps: IDocPageProps = {
       view: (
         <>
           <p>
-            This Dialog can be useful when the Dialog content changes dynamically. This option will allow a Dialog keep a fixed top
-            position, while expanding only the bottom of the dialog. This allows for less jumpy behavior when content changes dynamically in
-            a Dialog.
+            This Dialog maintains its top position and expands only the bottom, offering a more stable appearance when a Dialog's content
+            changes dynamically.
           </p>
           <DialogTopOffsetFixedExample />
         </>
