@@ -3,7 +3,7 @@ import { getGlobalClassNames, IStyle } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-Pagination-container',
-  pageNumber: 'ms-Pagination-page-number',
+  pageNumber: 'ms-Pagination-pageNumber',
   omission: 'ms-Pagination-omission'
 };
 
