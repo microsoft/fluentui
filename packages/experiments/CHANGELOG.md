@@ -1,6 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 01 Oct 2018 12:27:24 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Oct 2018 12:28:04 GMT and should not be manually modified.
+
+## 6.34.0
+Tue, 02 Oct 2018 12:28:04 GMT
+
+### Minor changes
+
+- Separator: new experimental component
+
+### Patches
+
+- Changes to support Foundation interface refactoring.
 
 ## 6.33.0
 Mon, 01 Oct 2018 12:27:24 GMT

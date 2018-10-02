@@ -1,6 +1,14 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Mon, 01 Oct 2018 12:27:24 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Oct 2018 12:28:04 GMT and should not be manually modified.
+
+## 0.28.0
+Tue, 02 Oct 2018 12:28:04 GMT
+
+### Minor changes
+
+- Adding callback upon clicking on the card title. This can be used in cases like if clicks needs to be instrumented.
+- Add setup banner component for dashboard
 
 ## 0.27.0
 Mon, 01 Oct 2018 12:27:24 GMT
