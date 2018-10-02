@@ -25,7 +25,7 @@ describe('Image', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders an image', done => {
+  it('renders an image', (done: jest.DoneCallback) => {
     const component = ReactTestUtils.renderIntoDocument(
       <ImageBase
         src={testImage1x1}
@@ -89,7 +89,7 @@ describe('Image', () => {
     expect(component.update().find('.ms-Image-image--landscape')).toHaveLength(1);
   });
 
-  it('allows onError events to be attached', done => {
+  it('allows onError events to be attached', (done: jest.DoneCallback) => {
     const component = ReactTestUtils.renderIntoDocument(
       <ImageBase
         src={brokenImage}

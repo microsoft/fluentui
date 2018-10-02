@@ -156,7 +156,7 @@ export class DetailsListShimmerExample extends React.Component<any, IDetailsList
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { columns, items } = this.state;
 
     return (

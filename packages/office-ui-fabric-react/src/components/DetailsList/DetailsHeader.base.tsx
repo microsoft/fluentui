@@ -325,7 +325,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     }
   }
 
-  private _isValidCurrentDropHintIndex() {
+  private _isValidCurrentDropHintIndex(): boolean {
     return this._currentDropHintIndex! >= 0;
   }
 
@@ -377,7 +377,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     return selectionMode === SelectionMode.none || checkboxVisibility === CheckboxVisibility.hidden;
   }
 
-  private _updateDragInfo(props: { itemIndex: number }, event?: MouseEvent) {
+  private _updateDragInfo(props: { itemIndex: number }, event?: MouseEvent): void {
     const { columnReorderProps } = this.state;
     const itemIndex = props.itemIndex;
     if (itemIndex >= 0) {
@@ -405,7 +405,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     }
   }
 
-  private _updateDropHintElement(element: HTMLElement, property: string) {
+  private _updateDropHintElement(element: HTMLElement, property: string): void {
     (element.childNodes[1] as HTMLElement).style.visibility = property;
     (element.childNodes[0] as HTMLElement).style.visibility = property;
   }

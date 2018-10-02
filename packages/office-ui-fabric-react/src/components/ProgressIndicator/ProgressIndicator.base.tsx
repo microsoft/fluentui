@@ -31,7 +31,7 @@ export class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps
     });
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       barHeight,
       className,

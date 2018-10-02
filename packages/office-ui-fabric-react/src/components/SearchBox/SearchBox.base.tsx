@@ -49,7 +49,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       ariaLabel,
       placeholder,
@@ -113,7 +113,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
   /**
    * Sets focus to the search box input field
    */
-  public focus() {
+  public focus(): void {
     if (this._inputElement.current) {
       this._inputElement.current.focus();
     }
@@ -126,7 +126,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     return !!this.state.hasFocus;
   }
 
-  private _onClear(ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement> | React.KeyboardEvent<HTMLElement>) {
+  private _onClear(ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement> | React.KeyboardEvent<HTMLElement>): void {
     this.props.onClear && this.props.onClear(ev);
     if (!ev.defaultPrevented) {
       this._latestValue = '';

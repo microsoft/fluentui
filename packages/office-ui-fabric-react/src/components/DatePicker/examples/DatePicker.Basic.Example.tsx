@@ -47,7 +47,7 @@ export class DatePickerBasicExample extends React.Component<{}, IDatePickerBasic
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { firstDayOfWeek } = this.state;
 
     return (

@@ -60,7 +60,7 @@ export class LayerBasicExample extends BaseComponent<
     };
   }
 
-  public getChildContext() {
+  public getChildContext(): { message: string } {
     return {
       message: 'Hello world.'
     };

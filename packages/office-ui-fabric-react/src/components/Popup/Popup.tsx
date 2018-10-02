@@ -51,7 +51,7 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
     this._updateScrollBarAsync();
   }
 
-  public componentDidUpdate() {
+  public componentDidUpdate(): void {
     this._updateScrollBarAsync();
   }
 

@@ -278,7 +278,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     this.focus();
   };
 
-  private _addProcessedItem(newItem: T) {
+  private _addProcessedItem(newItem: T): void {
     // If this is a controlled component, call the on item selected callback
     // Otherwise add it to the selectedItemsList
     if (this.props.onItemAdded) {

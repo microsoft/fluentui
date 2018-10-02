@@ -47,7 +47,7 @@ export class ToggleBasicExample extends React.Component {
     );
   }
 
-  private _onChange(ev: React.MouseEvent<HTMLElement>, checked: boolean) {
+  private _onChange(ev: React.MouseEvent<HTMLElement>, checked: boolean): void {
     console.log('toggle is ' + (checked ? 'checked' : 'not checked'));
   }
 }

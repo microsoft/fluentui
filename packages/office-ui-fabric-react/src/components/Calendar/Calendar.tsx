@@ -226,7 +226,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     );
   }
 
-  public focus() {
+  public focus(): void {
     if (this.state.isDayPickerVisible && this._dayPicker.current) {
       this._dayPicker.current.focus();
     } else if (this.state.isMonthPickerVisible && this._monthPicker.current) {

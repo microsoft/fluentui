@@ -18,7 +18,7 @@ export class ButtonContextualMenuExample extends React.Component<IButtonProps, {
             menuAs={this._getMenu}
             text="New"
             // tslint:disable-next-line:jsx-no-lambda
-            onMenuClick={ev => {
+            onMenuClick={(ev: React.MouseEvent<HTMLElement>) => {
               console.log(ev);
             }}
             menuProps={{

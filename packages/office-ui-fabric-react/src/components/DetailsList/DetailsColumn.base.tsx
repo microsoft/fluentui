@@ -285,7 +285,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
     this._root.current.classList.remove(classNames.borderWhileDragging);
   }
 
-  private _updateHeaderDragInfo(itemIndex: number, event?: MouseEvent) {
+  private _updateHeaderDragInfo(itemIndex: number, event?: MouseEvent): void {
     if (this.props.setDraggedItemIndex) {
       this.props.setDraggedItemIndex(itemIndex);
     }

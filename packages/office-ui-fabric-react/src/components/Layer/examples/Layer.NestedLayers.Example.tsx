@@ -22,7 +22,7 @@ export class LayerNestedLayersExample extends React.Component<{}, ILayerNestedLa
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <DefaultButton secondaryText="Opens the Sample Panel" onClick={this._onShowPanel} text="Open Panel" />

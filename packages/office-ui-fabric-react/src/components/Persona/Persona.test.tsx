@@ -25,7 +25,7 @@ export const wrapPersona = (
   example: IPersonaSharedProps,
   shouldWrapPersonaCoin: boolean = false
 ): ((coinProps: IPersonaProps, defaultRenderer: IRenderFunction<IPersonaProps>) => JSX.Element | null) => {
-  return (coinProps, defaultCoinRenderer): JSX.Element | null => {
+  return (coinProps: IPersonaProps, defaultCoinRenderer: IRenderFunction<IPersonaProps>): JSX.Element | null => {
     return shouldWrapPersonaCoin ? (
       <span id="persona-coin-container">{defaultCoinRenderer(coinProps)}</span>
     ) : (

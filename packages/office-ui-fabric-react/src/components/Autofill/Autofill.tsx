@@ -73,7 +73,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     }
   }
 
-  public componentDidUpdate() {
+  public componentDidUpdate(): void {
     const value = this._value;
     const { suggestedDisplayValue, shouldSelectFullInputValueInComponentDidUpdate } = this.props;
     let differenceIndex = 0;
@@ -132,11 +132,11 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     );
   }
 
-  public focus() {
+  public focus(): void {
     this._inputElement.current && this._inputElement.current.focus();
   }
 
-  public clear() {
+  public clear(): void {
     this._autoFillEnabled = true;
     this._updateValue('');
     this._inputElement.current && this._inputElement.current.setSelectionRange(0, 0);

@@ -35,7 +35,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { items } = this.props;
 
     return (
@@ -83,10 +83,10 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
     );
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     if (this.state.showItemIndexInView) {
       const itemIndexInView = this._list!.getStartItemIndexInView(
-        idx => (idx % 2 === 0 ? evenItemHeight : oddItemHeight) /* measureItem */
+        (idx: number) => (idx % 2 === 0 ? evenItemHeight : oddItemHeight) /* measureItem */
       );
       alert('unmounting, getting first item index that was in view: ' + itemIndexInView);
     }
@@ -158,7 +158,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
       () => {
         this._list.scrollToIndex(
           updatedSelectedIndex,
-          idx => (idx % 2 === 0 ? evenItemHeight : oddItemHeight),
+          (idx: number) => (idx % 2 === 0 ? evenItemHeight : oddItemHeight),
           scrollToMode
         );
       }

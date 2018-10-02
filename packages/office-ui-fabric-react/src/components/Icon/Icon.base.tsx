@@ -21,7 +21,7 @@ export class IconBase extends BaseComponent<IIconProps, IIconState> {
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { ariaLabel, className, styles, iconName, imageErrorAs } = this.props;
     const isPlaceholder = typeof iconName === 'string' && iconName.length === 0;
     const isImage = this.props.iconType === IconType.image || this.props.iconType === IconType.Image;
@@ -65,7 +65,10 @@ export class IconBase extends BaseComponent<IIconProps, IIconState> {
     }
   };
 
-  private _getIconContent(name?: string) {
+  private _getIconContent(name?: string): {
+    children: string | undefined;
+    iconClassName: string | undefined;
+  } {
     const iconDefinition = getIcon(name) || {
       subset: {
         className: undefined

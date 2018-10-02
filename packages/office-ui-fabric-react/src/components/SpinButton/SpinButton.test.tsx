@@ -521,7 +521,8 @@ describe('SpinButton', () => {
     const exampleDefaultValue = '12';
 
     function delay(millisecond: number): Promise<string> {
-      return new Promise<string>(resolve => setTimeout(resolve, millisecond));
+      // tslint:disable-next-line:no-any
+      return new Promise<string>((resolve: any) => setTimeout(resolve, millisecond));
     }
 
     const renderedDOM: HTMLElement = renderIntoDocument(
@@ -600,7 +601,7 @@ describe('SpinButton', () => {
 
   it(`should pass KeyCode ${KeyCodes.enter} to onValidate handler`, () => {
     let keyCode;
-    const onValidate: jest.Mock = jest.fn((value, event) => {
+    const onValidate: jest.Mock = jest.fn((value: any, event: any) => {
       keyCode = event.which;
       return value;
     });
@@ -619,7 +620,7 @@ describe('SpinButton', () => {
   });
 
   it('onValidate is not called again on enter key press until the input changes', () => {
-    const onValidate: jest.Mock = jest.fn((value, event) => {
+    const onValidate: jest.Mock = jest.fn((value: any, event: any) => {
       return value;
     });
     const exampleNewValue = '99';

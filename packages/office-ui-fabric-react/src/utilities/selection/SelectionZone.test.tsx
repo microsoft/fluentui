@@ -26,7 +26,7 @@ let _surface3: Element;
 let _onItemInvokeCalled: number;
 let _lastItemInvoked: any;
 
-function _initializeSelection(selectionMode = SelectionMode.multiple): void {
+function _initializeSelection(selectionMode: SelectionMode = SelectionMode.multiple): void {
   _selection = new Selection();
   _selection.setItems([{ key: 'a' }, { key: 'b' }, { key: 'c' }, { key: 'd' }]);
   _selectionZone = ReactTestUtils.renderIntoDocument(

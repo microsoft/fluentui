@@ -64,7 +64,7 @@ export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirec
             onChange={this._onDirectionalChanged}
           />
         </div>
-        <div className="ms-CalloutExample-buttonArea" ref={menuButton => (this._menuButtonElement = menuButton)}>
+        <div className="ms-CalloutExample-buttonArea" ref={(menuButton: HTMLDivElement) => (this._menuButtonElement = menuButton)}>
           <DefaultButton
             className={'calloutExampleButton'}
             onClick={this._onShowMenuClicked}

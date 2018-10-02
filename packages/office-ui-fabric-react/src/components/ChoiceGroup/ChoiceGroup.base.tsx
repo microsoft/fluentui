@@ -59,7 +59,7 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
     const classNames = getClassNames(styles!, {
       theme: theme!,
       className,
-      optionsContainIconOrImage: options!.some(option => Boolean(option.iconProps || option.imageSrc))
+      optionsContainIconOrImage: options!.some((option: IChoiceGroupOption) => Boolean(option.iconProps || option.imageSrc))
     });
 
     const ariaLabelledBy = this.props.ariaLabelledBy
@@ -71,7 +71,7 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
     // In cases where no option is checked, set focusable to first enabled option so that ChoiceGroup remains focusable.
     // If no options are enabled, ChoiceGroup is not focusable. If any option is checked, do not set keyDefaultFocusable.
     const firstEnabledOption =
-      disabled || options === undefined ? undefined : find(options, option => !option.disabled);
+      disabled || options === undefined ? undefined : find(options, (option: IChoiceGroupOption) => !option.disabled);
     const keyDefaultFocusable = keyChecked === undefined && firstEnabledOption ? firstEnabledOption.key : undefined;
 
     return (
@@ -113,7 +113,7 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
     );
   }
 
-  public focus() {
+  public focus(): void {
     const { options } = this.props;
     if (options) {
       for (const option of options) {
@@ -149,18 +149,15 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
   private _onChange = (key: string) =>
     this.changedVars[key]
       ? this.changedVars[key]
-      : (this.changedVars[key] = (evt, option: IChoiceGroupOption) => {
+      : (this.changedVars[key] = (evt: React.FormEvent<HTMLInputElement>, option: IChoiceGroupOption) => {
           const { onChanged, onChange, selectedKey, options = [] } = this.props;
-
           // Only manage state in uncontrolled scenarios.
           if (selectedKey === undefined) {
             this.setState({
               keyChecked: key
             });
           }
-
           const originalOption = find(options, (value: IChoiceGroupOption) => value.key === key);
-
           // TODO: onChanged deprecated, remove else if after 07/17/2017 when onChanged has been removed.
           if (onChange) {
             onChange(evt, originalOption);

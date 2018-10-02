@@ -228,7 +228,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
   }
 
-  public componentDidUpdate(prevProps: IComboBoxProps, prevState: IComboBoxState) {
+  public componentDidUpdate(prevProps: IComboBoxProps, prevState: IComboBoxState): void {
     const { allowFreeform, text, value, onMenuOpen, onMenuDismissed } = this.props;
     const { isOpen, focused, selectedIndices, currentPendingValueValidIndex } = this.state;
 
@@ -405,7 +405,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
               onRenderList,
               onRenderItem,
               onRenderOption,
-              options: this.state.currentOptions.map((item, index) => ({ ...item, index: index }))
+              options: this.state.currentOptions.map((item: IComboBoxOption, index: number) => ({ ...item, index: index }))
             },
             this._onRenderContainer
           )}
@@ -626,13 +626,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // and then set the pending info
     if (updatedValue === '') {
       const items = currentOptions
-        .map((item, index) => {
+        .map((item: IComboBoxOption, index: number) => {
           return { ...item, index };
         })
         .filter(
-          option => option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider
+          (option: IComboBoxOption) =>
+            option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider
         )
-        .filter(option => this._getPreviewText(option) === updatedValue);
+        .filter((option: IComboBoxOption) => this._getPreviewText(option) === updatedValue);
 
       // if we found a match remember the index
       if (items.length === 1) {
@@ -654,14 +655,15 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     if (this.props.autoComplete === 'on') {
       // If autoComplete is on, attempt to find a match where the text of an option starts with the updated value
       const items = currentOptions
-        .map((item, index) => {
+        .map((item: IComboBoxOption, index: number) => {
           return { ...item, index };
         })
         .filter(
-          option => option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider
+          (option: IComboBoxOption) =>
+            option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider
         )
         .filter(
-          option =>
+          (option: IComboBoxOption) =>
             this._getPreviewText(option)
               .toLocaleLowerCase()
               .indexOf(updatedValue) === 0
@@ -679,13 +681,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     } else {
       // If autoComplete is off, attempt to find a match only when the value is exactly equal to the text of an option
       const items = currentOptions
-        .map((item, index) => {
+        .map((item: IComboBoxOption, index: number) => {
           return { ...item, index };
         })
         .filter(
-          option => option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider
+          (option: IComboBoxOption) =>
+            option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider
         )
-        .filter(option => this._getPreviewText(option).toLocaleLowerCase() === updatedValue);
+        .filter((option: IComboBoxOption) => this._getPreviewText(option).toLocaleLowerCase() === updatedValue);
 
       // if we found a match remember the index
       if (items.length === 1) {
@@ -728,13 +731,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
         // If autoComplete is on, attempt to find a match where the text of an option starts with the updated value
         const items = currentOptions
-          .map((item, i) => {
+          .map((item: IComboBoxOption, i: number) => {
             return { ...item, index: i };
           })
           .filter(
-            option => option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider
+            (option: IComboBoxOption) =>
+              option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider
           )
-          .filter(option => option.text.toLocaleLowerCase().indexOf(updatedValue) === 0);
+          .filter((option: IComboBoxOption) => option.text.toLocaleLowerCase().indexOf(updatedValue) === 0);
 
         // If we found a match, udpdate the state
         if (items.length > 0) {
@@ -1107,7 +1111,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const id = this._id;
     return (
       <div id={id + '-list'} className={this._classNames.optionsContainer} aria-labelledby={id + '-label'} role="listbox">
-        {options.map(item => (onRenderItem as any)(item, this._onRenderItem))}
+        {options.map((item: IComboBoxOption) => (onRenderItem as any)(item, this._onRenderItem))}
       </div>
     );
   };
@@ -1376,7 +1380,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
 
     for (const selectedKey of selectedKeys) {
-      const index = findIndex(options, option => option.selected || option.key === selectedKey);
+      const index = findIndex(options, (option: IComboBoxOption) => option.selected || option.key === selectedKey);
       if (index > -1) {
         selectedIndices.push(index);
       }
@@ -1722,7 +1726,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     ev.preventDefault();
   };
 
-  private _isExpandCollapseKey(ev: React.KeyboardEvent<HTMLElement | Autofill>) {
+  private _isExpandCollapseKey(ev: React.KeyboardEvent<HTMLElement | Autofill>): boolean {
     return ev.which === KeyCodes.alt || ev.key === 'Meta';
   }
 
@@ -1869,7 +1873,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
   };
 
-  private _handleTouchAndPointerEvent() {
+  private _handleTouchAndPointerEvent(): void {
     // If we already have an existing timeeout from a previous touch and pointer event
     // cancel that timeout so we can set a nwe one.
     if (this._lastTouchTimeoutId !== undefined) {

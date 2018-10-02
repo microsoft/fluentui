@@ -90,7 +90,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     };
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     const { initialScrollPosition } = this.props;
     this._events.on(this.contentContainer, 'scroll', this._onScroll);
     this._events.on(window, 'resize', this._onWindowResize);
@@ -100,13 +100,13 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
 
     // Set sticky distances from top property, then sort in correct order and notify subscribers
     this.setStickiesDistanceFromTop();
-    this._stickies.forEach(sticky => {
+    this._stickies.forEach((sticky: Sticky) => {
       this.sortSticky(sticky);
     });
     this.notifySubscribers();
 
     if ('MutationObserver' in window) {
-      this._mutationObserver = new MutationObserver(mutation => {
+      this._mutationObserver = new MutationObserver((mutation: MutationRecord[]) => {
         // Function to check if mutation is occuring in stickyAbove or stickyBelow
         function checkIfMutationIsSticky(mutationRecord: MutationRecord): boolean {
           if (this.stickyAbove !== null && this.stickyBelow !== null) {
@@ -124,13 +124,13 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
         } else {
           // If mutation occurs in scrollable region, then find Sticky it belongs to and force update
           const stickyList: Sticky[] = [];
-          this._stickies.forEach(sticky => {
+          this._stickies.forEach((sticky: Sticky) => {
             if (sticky.root && sticky.root.contains(mutation[0].target)) {
               stickyList.push(sticky);
             }
           });
           if (stickyList.length) {
-            stickyList.forEach(sticky => {
+            stickyList.forEach((sticky: Sticky) => {
               sticky.forceUpdate();
             });
           }
@@ -148,7 +148,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     }
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     this._events.off(this.contentContainer);
     this._events.off(window);
     this._mutationObserver.disconnect();
@@ -167,7 +167,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     );
   }
 
-  public componentDidUpdate(prevProps: IScrollablePaneProps, prevState: IScrollablePaneState) {
+  public componentDidUpdate(prevProps: IScrollablePaneProps, prevState: IScrollablePaneState): void {
     const initialScrollPosition = this.props.initialScrollPosition;
     if (
       this.contentContainer &&
@@ -216,13 +216,13 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
 
   public setStickiesDistanceFromTop(): void {
     if (this.contentContainer) {
-      this._stickies.forEach(sticky => {
+      this._stickies.forEach((sticky: Sticky) => {
         sticky.setDistanceFromTop(this.contentContainer as HTMLDivElement);
       });
     }
   }
 
-  public forceLayoutUpdate() {
+  public forceLayoutUpdate(): void {
     this._onWindowResize();
   }
 
@@ -290,7 +290,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
 
   public notifySubscribers = (): void => {
     if (this.contentContainer) {
-      this._subscribers.forEach(handle => {
+      this._subscribers.forEach((handle: Function) => {
         // this.stickyBelow is passed in for calculating distance to determine Sticky status
         handle(this.contentContainer, this.stickyBelow);
       });
@@ -347,7 +347,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
         const stickyList: Sticky[] = [];
         // Get stickies.  Filter by canStickyTop/Bottom, then sort by distance from top, and then
         // filter by elements that are in the stickyContainer already.
-        this._stickies.forEach(stickyItem => {
+        this._stickies.forEach((stickyItem: Sticky) => {
           if (stickyContainer === this.stickyAbove && sticky.canStickyTop) {
             stickyList.push(stickyItem);
           } else if (sticky.canStickyBottom) {
@@ -356,10 +356,10 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
         });
 
         const stickyListSorted = stickyList
-          .sort((a, b) => {
+          .sort((a: Sticky, b: Sticky) => {
             return a.distanceFromTop - b.distanceFromTop;
           })
-          .filter(item => {
+          .filter((item: Sticky) => {
             const stickyContent =
               stickyContainer === this.stickyAbove ? item.stickyContentTop : item.stickyContentBottom;
             if (stickyContent) {

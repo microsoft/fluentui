@@ -50,7 +50,7 @@ export class GroupedListBasicExample extends React.Component {
         columns={Object.keys(item)
           .slice(0, 3)
           .map(
-            (value): IColumn => {
+            (value: string): IColumn => {
               return {
                 key: value,
                 name: value,

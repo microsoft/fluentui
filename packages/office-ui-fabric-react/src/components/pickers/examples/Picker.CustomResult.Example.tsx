@@ -273,10 +273,10 @@ export const SuggestedDocumentItem: (documentProps: IFullDocumentCardProps) => J
   return <div> {documentProps.documentTitleProps && documentProps.documentTitleProps.title} </div>;
 };
 
-export const SuggestedBigItem: (
+export const SuggestedBigItem: (documentProps: IFullDocumentCardProps, itemProps: ISuggestionItemProps<any>) => JSX.Element = (
   documentProps: IFullDocumentCardProps,
   itemProps: ISuggestionItemProps<any>
-) => JSX.Element = (documentProps: IFullDocumentCardProps, itemProps: ISuggestionItemProps<any>) => {
+) => {
   const { documentPreviewProps, documentTitleProps } = documentProps;
 
   return (
@@ -374,11 +374,10 @@ export class PickerCustomResultExample extends React.Component<{}, IPeoplePicker
     return filterText
       ? data
           .filter(
-            item =>
-              item.documentTitleProps &&
-              item.documentTitleProps.title.toLowerCase().indexOf(filterText.toLowerCase()) === 0
+            (item: IFullDocumentCardProps) =>
+              item.documentTitleProps && item.documentTitleProps.title.toLowerCase().indexOf(filterText.toLowerCase()) === 0
           )
-          .filter(item => !this._listContainsDocument(item, items))
+          .filter((item: IFullDocumentCardProps) => !this._listContainsDocument(item, items))
       : [];
   }
 
@@ -388,7 +387,8 @@ export class PickerCustomResultExample extends React.Component<{}, IPeoplePicker
     }
     const documentTitle = document.documentTitleProps && document.documentTitleProps.title;
     return (
-      items.filter(item => (item.documentTitleProps && item.documentTitleProps.title) === documentTitle).length > 0
+      items.filter((item: IFullDocumentCardProps) => (item.documentTitleProps && item.documentTitleProps.title) === documentTitle).length >
+      0
     );
   }
 }

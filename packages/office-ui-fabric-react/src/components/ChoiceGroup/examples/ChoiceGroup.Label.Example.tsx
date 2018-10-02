@@ -18,7 +18,7 @@ export class ChoiceGroupLabelExample extends React.Component<{}, IChoiceGroupLab
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <div id="labelElement">Here is a custom label</div>

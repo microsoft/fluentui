@@ -3,7 +3,7 @@ import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 
 import { Shimmer } from './Shimmer';
-import { ShimmerElementType as ElemType } from './Shimmer.types';
+import { IShimmer, ShimmerElementType as ElemType } from './Shimmer.types';
 import { ShimmerElementsGroup } from './ShimmerElementsGroup/ShimmerElementsGroup';
 
 describe('Shimmer', () => {
@@ -57,7 +57,7 @@ describe('Shimmer', () => {
         isDataLoaded={false}
         ariaLabel={'Shimmer component'}
         // tslint:disable-next-line:jsx-no-lambda
-        componentRef={ref => (component = ref)}
+        componentRef={(ref: IShimmer) => (component = ref)}
       >
         <div>TEST DATA</div>
       </Shimmer>

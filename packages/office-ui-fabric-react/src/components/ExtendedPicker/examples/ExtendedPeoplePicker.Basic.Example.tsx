@@ -289,7 +289,7 @@ export class ExtendedPeoplePickerTypesExample extends React.Component<{}, IPeopl
   private _returnMostRecentlyUsed = (
     currentPersonas: IPersonaProps[]
   ): IPersonaProps[] | Promise<IPersonaProps[]> | null => {
-    const { controlledComponent } = this.state;
+  const { controlledComponent } = this.state;
     let { mostRecentlyUsed } = this.state;
     mostRecentlyUsed = this._removeDuplicates(mostRecentlyUsed, this._picker.items);
     if (controlledComponent) {
@@ -362,7 +362,7 @@ export class ExtendedPeoplePickerTypesExample extends React.Component<{}, IPeopl
   };
 
   private _onItemsRemoved = (items: IExtendedPersonaProps[]): void => {
-    const newItems = this.state.currentlySelectedItems.filter(value => items.indexOf(value) === -1);
+    const newItems = this.state.currentlySelectedItems.filter((value: IExtendedPersonaProps) => items.indexOf(value) === -1);
     this.setState({ currentlySelectedItems: newItems });
   };
 

@@ -327,7 +327,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
    *
    * @param keytipProps - Keytips to set in this layer
    */
-  private _setKeytips(keytipProps: IKeytipProps[] = this._keytipManager.getKeytips()) {
+  private _setKeytips(keytipProps: IKeytipProps[] = this._keytipManager.getKeytips()): void {
     this.setState({ keytips: keytipProps, visibleKeytips: this._getVisibleKeytips(keytipProps) });
   }
 
@@ -337,7 +337,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
    * @param overflowButtonSequences - The overflow button sequence to execute
    * @param keytipSequences - The keytip that should become the 'currentKeytip' when it is registered
    */
-  private _persistedKeytipExecute(overflowButtonSequences: string[], keytipSequences: string[]) {
+  private _persistedKeytipExecute(overflowButtonSequences: string[], keytipSequences: string[]): void {
     // Save newCurrentKeytip for later
     this._newCurrentKeytipSequences = keytipSequences;
 
@@ -351,7 +351,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
   private _getVisibleKeytips(keytips: IKeytipProps[]): IKeytipProps[] {
     // Filter out non-visible keytips and duplicates
     const seenIds: { [childSequence: string]: number } = {};
-    return keytips.filter(keytip => {
+    return keytips.filter((keytip: IKeytipProps) => {
       const keytipId = sequencesToID(keytip.keySequences);
       seenIds[keytipId] = seenIds[keytipId] ? seenIds[keytipId] + 1 : 1;
       return keytip.visible && seenIds[keytipId] === 1;
@@ -508,7 +508,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
    *
    * @param keytipProps - Keytip to trigger immediately
    */
-  private _triggerKeytipImmediately(keytipProps: IKeytipProps) {
+  private _triggerKeytipImmediately(keytipProps: IKeytipProps): void {
     // This keytip should become the currentKeytip and should execute right away
     let keytipSequence = [...keytipProps.keySequences];
     if (keytipProps.overflowSetSequence) {
@@ -536,7 +536,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     this._newCurrentKeytipSequences = undefined;
   }
 
-  private _addKeytipToQueue(keytipID: string) {
+  private _addKeytipToQueue(keytipID: string): void {
     // Add keytip
     this._delayedKeytipQueue.push(keytipID);
     // Clear timeout
@@ -550,7 +550,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     }, 300);
   }
 
-  private _removeKeytipFromQueue(keytipID: string) {
+  private _removeKeytipFromQueue(keytipID: string): void {
     const index = this._delayedKeytipQueue.indexOf(keytipID);
     if (index >= 0) {
       // Remove keytip
@@ -620,7 +620,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
    */
   private _getDuplicateIds = (keytipIds: string[]): string[] => {
     const seenIds: { [id: string]: number } = {};
-    return keytipIds.filter(keytipId => {
+    return keytipIds.filter((keytipId: string) => {
       seenIds[keytipId] = seenIds[keytipId] ? seenIds[keytipId] + 1 : 1;
       // Only add the first duplicate keytip seen
       return seenIds[keytipId] === 2;

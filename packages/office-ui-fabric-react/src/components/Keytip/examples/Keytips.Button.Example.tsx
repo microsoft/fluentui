@@ -17,7 +17,7 @@ export class KeytipsButtonExample extends React.Component<{}, IKeytipsButtonExam
   }
 
   /* tslint:disable:jsx-ban-props jsx-no-lambda */
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <p>Keytips on the same level starting with the same characters will get filtered out as you hit those keys</p>

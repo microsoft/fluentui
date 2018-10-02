@@ -135,13 +135,13 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     }
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     if (this._dragDropSubscription) {
       this._dragDropSubscription.dispose();
     }
   }
 
-  public componentDidUpdate(previousProps: IGroupedListSectionProps) {
+  public componentDidUpdate(previousProps: IGroupedListSectionProps): void {
     if (
       this.props.group !== previousProps.group ||
       this.props.groupIndex !== previousProps.groupIndex ||
@@ -226,12 +226,12 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     );
   }
 
-  public forceUpdate() {
+  public forceUpdate(): void {
     super.forceUpdate();
     this.forceListUpdate();
   }
 
-  public forceListUpdate() {
+  public forceListUpdate(): void {
     const { group } = this.props;
 
     if (this._list.current) {

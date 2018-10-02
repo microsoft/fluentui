@@ -10,7 +10,7 @@ export class SpinnerBase extends BaseComponent<ISpinnerProps, any> {
     ariaLive: 'polite'
   };
 
-  public render() {
+  public render(): JSX.Element {
     const { type, size, ariaLabel, ariaLive, styles, label, theme, className } = this.props;
     const statusMessage = ariaLabel || label;
     const nativeProps = getNativeProps(this.props, divProperties, ['size']);

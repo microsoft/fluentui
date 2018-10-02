@@ -108,7 +108,7 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
     );
   }
 
-  public forceUpdate() {
+  public forceUpdate(): void {
     super.forceUpdate();
     this._forceListUpdates();
   }
@@ -296,7 +296,7 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
   private _computeIsSomeGroupExpanded(groups: IGroup[] | undefined): boolean {
     return !!(
       groups &&
-      groups.some(group => (group.children ? this._computeIsSomeGroupExpanded(group.children) : !group.isCollapsed))
+      groups.some((group: IGroup) => (group.children ? this._computeIsSomeGroupExpanded(group.children) : !group.isCollapsed))
     );
   }
 

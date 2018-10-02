@@ -47,7 +47,7 @@ export class ListBasicExample extends React.Component<IListBasicExampleProps, an
 
     this.setState({
       filterText: text,
-      items: text ? items.filter(item => item.name.toLowerCase().indexOf(text.toLowerCase()) >= 0) : items
+      items: text ? items.filter((item: any) => item.name.toLowerCase().indexOf(text.toLowerCase()) >= 0) : items
     });
   }
 

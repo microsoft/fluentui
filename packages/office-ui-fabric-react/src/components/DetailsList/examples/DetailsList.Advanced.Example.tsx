@@ -544,7 +544,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
       }
 
       const newColumns = columns as IColumn[];
-      newColumns.filter(matchColumn => matchColumn.key === key).forEach((groupedColumn: IColumn) => {
+      newColumns.filter((matchColumn: IColumn) => matchColumn.key === key).forEach((groupedColumn: IColumn) => {
         groupedColumn.isGrouped = true;
       });
       this.setState({
@@ -574,12 +574,12 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
   }
 
   private _groupItems(items: any[], columnKey: string): any[] {
-    return items.slice(0).sort((a, b) => (a[columnKey] < b[columnKey] ? -1 : 1));
+    return items.slice(0).sort((a: any, b: any) => (a[columnKey] < b[columnKey] ? -1 : 1));
   }
 
   private _getGroups(groupedItems: any[], key: string, parentGroup?: IGroup): IGroup[] {
     const separator = '-';
-    const groups = groupedItems.reduce((current, item, index) => {
+    const groups = groupedItems.reduce((current: any, item: any, index: number) => {
       const currentGroup = current[current.length - 1];
 
       if (!currentGroup || this._getLeafGroupKey(currentGroup.key, separator) !== item[key]) {
@@ -652,10 +652,10 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     isSortedDescending?: boolean,
     groupedColumnKey?: string,
     onColumnContextMenu?: (column: IColumn, ev: React.MouseEvent<HTMLElement>) => any
-  ) {
+  ): IColumn[] {
     const columns = buildColumns(items, canResizeColumns, onColumnClick, sortedColumnKey, isSortedDescending, groupedColumnKey);
 
-    columns.forEach(column => {
+    columns.forEach((column: IColumn) => {
       column.onColumnContextMenu = onColumnContextMenu;
       column.ariaLabel = `Operations for ${column.name}`;
       if (column.key === 'thumbnail') {
@@ -665,10 +665,10 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
         column.isMultiline = true;
         column.minWidth = 200;
       } else if (column.key === 'name') {
-        column.onRender = item => <Link data-selection-invoke={true}>{item.name}</Link>;
+        column.onRender = (item: any) => <Link data-selection-invoke={true}>{item.name}</Link>;
       } else if (column.key === 'key') {
         column.columnActionsMode = ColumnActionsMode.disabled;
-        column.onRender = item => (
+        column.onRender = (item: any) => (
           <Link href="https://microsoft.com" target="_blank" rel="noopener">
             {item.key}
           </Link>

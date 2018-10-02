@@ -69,14 +69,14 @@ export class DetailsListGroupedExample extends BaseComponent<
     };
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     if (this.state.showItemIndexInView) {
       const itemIndexInView = this._root!.current!.getStartItemIndexInView();
       alert('unmounting, getting first item index that was in view: ' + itemIndexInView);
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { items } = this.state;
 
     return (
@@ -145,7 +145,7 @@ export class DetailsListGroupedExample extends BaseComponent<
     );
   };
 
-  private _onRenderColumn(item: any, index: number, column: IColumn) {
+  private _onRenderColumn(item: any, index: number, column: IColumn): JSX.Element {
     let value = item && column && column.fieldName ? item[column.fieldName] : '';
 
     if (value === null || value === undefined) {

@@ -102,7 +102,7 @@ export class DetailsListBasicExample extends React.Component<
     );
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     if (this.state.showItemIndexInView) {
       const itemIndexInView = this._detailsList!.current!.getStartItemIndexInView();
       alert('unmounting, getting first item index that was in view: ' + itemIndexInView);
@@ -123,7 +123,7 @@ export class DetailsListBasicExample extends React.Component<
   }
 
   private _onChange = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string): void => {
-    this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items });
+    this.setState({ items: text ? _items.filter((i: any) => i.name.toLowerCase().indexOf(text) > -1) : _items });
   };
 
   private _onItemInvoked(item: any): void {

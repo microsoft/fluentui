@@ -181,7 +181,7 @@ describe('DetailsList', () => {
       <DetailsList
         items={mockData(5)}
         // tslint:disable-next-line:jsx-no-lambda
-        componentRef={ref => (component = ref)}
+        componentRef={(ref: IDetailsList) => (component = ref)}
         skipViewportMeasures={true}
         // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
@@ -217,7 +217,7 @@ describe('DetailsList', () => {
       <DetailsList
         items={mockData(5)}
         // tslint:disable-next-line:jsx-no-lambda
-        componentRef={ref => (component = ref)}
+        componentRef={(ref: IDetailsList) => (component = ref)}
         skipViewportMeasures={true}
         // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
@@ -260,7 +260,7 @@ describe('DetailsList', () => {
         setKey={'key1'}
         initialFocusedIndex={0}
         // tslint:disable-next-line:jsx-no-lambda
-        componentRef={ref => (component = ref)}
+        componentRef={(ref: IDetailsList) => (component = ref)}
         skipViewportMeasures={true}
         // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}

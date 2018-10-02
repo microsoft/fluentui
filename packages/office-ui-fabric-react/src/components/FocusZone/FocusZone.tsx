@@ -107,11 +107,11 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     }
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     delete _allInstances[this._id];
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { rootProps, ariaDescribedBy, ariaLabelledBy, className } = this.props;
     const divProps = getNativeProps(this.props, htmlElementProperties);
 
@@ -236,7 +236,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   /**
    * Handle global tab presses so that we can patch tabindexes on the fly.
    */
-  private _onKeyDownCapture(ev: KeyboardEvent) {
+  private _onKeyDownCapture(ev: KeyboardEvent): void {
     if (ev.which === KeyCodes.tab) {
       this._updateTabIndexes();
     }
@@ -717,7 +717,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     return false;
   }
 
-  private _setFocusAlignment(element: HTMLElement, isHorizontal?: boolean, isVertical?: boolean) {
+  private _setFocusAlignment(element: HTMLElement, isHorizontal?: boolean, isVertical?: boolean): void {
     if (this.props.direction === FocusZoneDirection.bidirectional && (!this._focusAlignment || isHorizontal || isVertical)) {
       const rect = element.getBoundingClientRect();
       const left = rect.left + rect.width / 2;
@@ -755,7 +755,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     return this._root.current;
   }
 
-  private _updateTabIndexes(element?: HTMLElement) {
+  private _updateTabIndexes(element?: HTMLElement): void {
     if (!element && this._root.current) {
       this._defaultFocusElement = null;
       element = this._root.current;
@@ -818,7 +818,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     return false;
   }
 
-  private _shouldInputLoseFocus(element: HTMLInputElement, isForward?: boolean) {
+  private _shouldInputLoseFocus(element: HTMLInputElement, isForward?: boolean): boolean {
     // If a tab was used, we want to focus on the next element.
     if (!this._processingTabKey && element && element.type && ALLOWED_INPUT_TYPES.indexOf(element.type.toLowerCase()) > -1) {
       const selectionStart = element.selectionStart;

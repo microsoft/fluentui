@@ -89,7 +89,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
     }
   }
 
-  public componentDidUpdate(previousProps: IDetailsRowBaseProps) {
+  public componentDidUpdate(previousProps: IDetailsRowBaseProps): void {
     const state = this.state;
     const { item, onDidMount } = this.props;
     const { columnMeasureInfo } = state;
@@ -328,7 +328,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
     return !!this._focusZone.current && this._focusZone.current.focus(forceIntoFirstElement);
   }
 
-  protected _onRenderCheck(props: IDetailsRowCheckProps) {
+  protected _onRenderCheck(props: IDetailsRowCheckProps): JSX.Element {
     return <DetailsRowCheck {...props} />;
   }
 

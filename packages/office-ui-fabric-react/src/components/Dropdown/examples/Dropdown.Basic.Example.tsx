@@ -22,7 +22,7 @@ export class DropdownBasicExample extends BaseComponent<
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { selectedItem, selectedItems } = this.state;
 
     return (

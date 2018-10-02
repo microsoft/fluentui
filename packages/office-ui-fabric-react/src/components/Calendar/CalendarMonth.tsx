@@ -47,7 +47,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
     super(props);
 
     this._selectMonthCallbacks = [];
-    props.strings.shortMonths.map((month, index) => {
+    props.strings.shortMonths.map((month: string, index: number) => {
       this._selectMonthCallbacks[index] = this._onSelectMonth.bind(this, index);
     });
 
@@ -139,7 +139,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
         </div>
         <FocusZone>
           <div className={css('ms-DatePicker-optionGrid', styles.optionGrid)} role="grid">
-            {strings.shortMonths.map((month, index) => {
+            {strings.shortMonths.map((month: string, index: number) => {
               const indexedMonth = setMonth(navigatedDate, index);
               const isCurrentMonth = this._isCurrentMonth(index, navigatedDate.getFullYear(), today!);
               const isNavigatedMonth = navigatedDate.getMonth() === index;
@@ -154,7 +154,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
                   role={'gridcell'}
                   className={css('ms-DatePicker-monthOption', styles.monthOption, {
                     ['ms-DatePicker-day--today ' + styles.monthIsCurrentMonth]:
-                      highlightCurrentMonth && isCurrentMonth!,
+                    highlightCurrentMonth && isCurrentMonth!,
                     ['ms-DatePicker-day--highlighted ' + styles.monthIsHighlighted]:
                       (highlightCurrentMonth || highlightSelectedMonth) && isSelectedMonth && isSelectedYear,
                     ['ms-DatePicker-monthOption--disabled ' + styles.monthOptionIsDisabled]: !isInBounds
@@ -178,7 +178,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
     );
   }
 
-  public focus() {
+  public focus(): void {
     if (this.refs.navigatedMonth) {
       this.refs.navigatedMonth.tabIndex = 0;
       this.refs.navigatedMonth.focus();

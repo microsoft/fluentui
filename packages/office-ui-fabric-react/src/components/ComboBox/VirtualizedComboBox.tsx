@@ -17,7 +17,7 @@ export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> imple
     }
   }
 
-  public focus() {
+  public focus(): boolean {
     if (this._comboBox.current) {
       this._comboBox.current.focus();
       return true;

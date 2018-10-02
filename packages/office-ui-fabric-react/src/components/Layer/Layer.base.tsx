@@ -168,7 +168,7 @@ export class LayerBase extends BaseComponent<ILayerProps, ILayerBaseState> {
     }
   };
 
-  private _getClassNames() {
+  private _getClassNames(): { [key in keyof ILayerStyles]: string } {
     const { className, styles, theme } = this.props;
     const classNames = getClassNames(styles!, {
       theme: theme!,
@@ -179,7 +179,7 @@ export class LayerBase extends BaseComponent<ILayerProps, ILayerBaseState> {
     return classNames;
   }
 
-  private _setVirtualParent() {
+  private _setVirtualParent(): void {
     if (this._rootElement && this._rootElement.current && this._layerElement) {
       setVirtualParent(this._layerElement, this._rootElement.current);
     }

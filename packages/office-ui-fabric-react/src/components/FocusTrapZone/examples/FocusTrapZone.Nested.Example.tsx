@@ -16,7 +16,7 @@ interface IFocusTrapComponentProps {
 interface IFocusTrapComponentState {}
 
 class FocusTrapComponent extends React.Component<IFocusTrapComponentProps, IFocusTrapComponentState> {
-  public render() {
+  public render(): JSX.Element {
     const contents = (
       <div className="ms-FocusTrapComponent">
         <DefaultButton onClick={this._onStringButtonClicked} text={this.props.name} />
@@ -63,7 +63,7 @@ export default class FocusTrapZoneNestedExample extends React.Component<{}, IFoc
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { stateMap } = this.state;
 
     return (
@@ -86,7 +86,7 @@ export default class FocusTrapZoneNestedExample extends React.Component<{}, IFoc
   };
 
   private _randomize = (): void => {
-    NAMES.forEach(name => {
+    NAMES.forEach((name: string) => {
       this.state.stateMap[name] = Math.random() >= 0.5;
     });
 

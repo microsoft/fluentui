@@ -98,7 +98,7 @@ export class KeytipsOverflowExample extends React.Component<{}, IKeytipsOverflow
   }
 
   /* tslint:disable:jsx-ban-props jsx-no-lambda */
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <p>

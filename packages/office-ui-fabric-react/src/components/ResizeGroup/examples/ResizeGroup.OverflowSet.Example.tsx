@@ -2,7 +2,7 @@ import * as React from 'react';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
-import { OverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
+import { OverflowSet, IOverflowSetItemProps } from 'office-ui-fabric-react/lib/OverflowSet';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
@@ -53,7 +53,7 @@ export interface IResizeGroupOverflowSetExampleState {
 }
 
 function computeCacheKey(primaryControls: IContextualMenuItem[]): string {
-  return primaryControls.reduce((acc, current) => acc + current.key, '');
+  return primaryControls.reduce((acc: string, current: IContextualMenuItem) => acc + current.key, '');
 }
 
 export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGroupOverflowSetExampleState> {
@@ -80,12 +80,12 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
           onReduceData={this._onReduceData}
           onGrowData={onGrowDataEnabled ? this._onGrowData : undefined}
           // tslint:disable-next-line:jsx-no-lambda
-          onRenderData={data => {
+          onRenderData={(data: any) => {
             return (
               <OverflowSet
                 items={data.primary}
                 overflowItems={data.overflow.length ? data.overflow : null}
-                onRenderItem={item => {
+                onRenderItem={(item: IOverflowSetItemProps) => {
                   return (
                     <DefaultButton
                       text={item.name}
@@ -95,7 +95,7 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
                     />
                   );
                 }}
-                onRenderOverflowButton={overflowItems => {
+                onRenderOverflowButton={(overflowItems: any[]) => {
                   return <DefaultButton menuProps={{ items: overflowItems! }} />;
                 }}
               />

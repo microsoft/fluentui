@@ -7,7 +7,7 @@ import './ScrollablePane.Example.scss';
 const colors = ['#eaeaea', '#dadada', '#d0d0d0', '#c8c8c8', '#a6a6a6', '#c7e0f4', '#71afe5', '#eff6fc', '#deecf9'];
 
 export class ScrollablePaneDefaultExample extends React.Component {
-  public render() {
+  public render(): JSX.Element {
     const contentAreas: JSX.Element[] = [];
     for (let i = 0; i < 5; i++) {
       contentAreas.push(this._createContentArea(i));
@@ -22,7 +22,7 @@ export class ScrollablePaneDefaultExample extends React.Component {
         }}
       >
         <ScrollablePane className="scrollablePaneDefaultExample">
-          {contentAreas.map(ele => {
+          {contentAreas.map((ele: JSX.Element) => {
             return ele;
           })}
         </ScrollablePane>
@@ -30,7 +30,7 @@ export class ScrollablePaneDefaultExample extends React.Component {
     );
   }
 
-  private _createContentArea(index: number) {
+  private _createContentArea(index: number): JSX.Element {
     const color = colors.splice(Math.floor(Math.random() * colors.length), 1)[0];
 
     return (

@@ -86,7 +86,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     this._positionAttempts = 0;
   }
 
-  public componentDidUpdate() {
+  public componentDidUpdate(): void {
     this._setInitialFocus();
     if (!this.props.hidden) {
       if (!this._hasListeners) {
@@ -100,7 +100,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     }
   }
 
-  public componentWillMount() {
+  public componentWillMount(): void {
     this._setTargetWindowAndElement(this._getTarget());
   }
 
@@ -230,14 +230,14 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     }
   };
 
-  protected _dismissOnScroll(ev: Event) {
+  protected _dismissOnScroll(ev: Event): void {
     const { preventDismissOnScroll } = this.props;
     if (this.state.positions && !preventDismissOnScroll) {
       this._dismissOnLostFocus(ev);
     }
   }
 
-  protected _dismissOnLostFocus(ev: Event) {
+  protected _dismissOnLostFocus(ev: Event): void {
     const target = ev.target as HTMLElement;
     const clickedOutsideCallout = this._hostElement.current && !elementContains(this._hostElement.current, target);
     const { preventDismissOnLostFocus } = this.props;
@@ -272,7 +272,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     this._setHeightOffsetEveryFrame();
   };
 
-  private _addListeners() {
+  private _addListeners(): void {
     // This is added so the callout will dismiss when the window is scrolled
     // but not when something inside the callout is scrolled. The delay seems
     // to be required to avoid React firing an async focus event in IE from
@@ -286,7 +286,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     }, 0);
   }
 
-  private _removeListeners() {
+  private _removeListeners(): void {
     this._events.off(this._targetWindow, 'scroll', this._dismissOnScroll, true);
     this._events.off(this._targetWindow, 'resize', this.dismiss, true);
     this._events.off(this._targetWindow.document.documentElement, 'focus', this._dismissOnLostFocus, true);

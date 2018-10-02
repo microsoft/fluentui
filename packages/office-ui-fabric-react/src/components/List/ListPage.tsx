@@ -31,7 +31,7 @@ export class ListPage extends React.PureComponent<IListPageProps, IListPageStyle
     };
   }
 
-  public componentWillReceiveProps(newProps: IListPageProps) {
+  public componentWillReceiveProps(newProps: IListPageProps): void {
     if (this.props.visible !== newProps.visible) {
       let hiddenStyle: React.CSSProperties | undefined = undefined;
 
@@ -47,7 +47,7 @@ export class ListPage extends React.PureComponent<IListPageProps, IListPageStyle
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { hiddenStyle } = this.state;
 
     return (

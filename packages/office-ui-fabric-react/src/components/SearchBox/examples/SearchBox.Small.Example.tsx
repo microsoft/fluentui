@@ -9,14 +9,14 @@ export class SearchBoxSmallExample extends React.Component<any, any> {
       <div className="ms-SearchBoxSmallExample">
         <SearchBox
           placeholder="Search"
-          onEscape={ev => {
+          onEscape={(ev: any) => {
             console.log('Custom onEscape Called');
           }}
-          onClear={ev => {
+          onClear={(ev: any) => {
             console.log('Custom onClear Called');
           }}
-          onChange={newValue => console.log('SearchBox onChange fired: ' + newValue)}
-          onSearch={newValue => console.log('SearchBox onSearch fired: ' + newValue)}
+          onChange={(newValue: any) => console.log('SearchBox onChange fired: ' + newValue)}
+          onSearch={(newValue: any) => console.log('SearchBox onSearch fired: ' + newValue)}
           onFocus={() => console.log('onFocus called')}
           onBlur={() => console.log('onBlur called')}
         />

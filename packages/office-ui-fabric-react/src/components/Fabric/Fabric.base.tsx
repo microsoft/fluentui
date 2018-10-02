@@ -26,7 +26,7 @@ export class FabricBase extends BaseComponent<
     this.state = { isFocusVisible: false };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const classNames = getClassNames(getStyles, {
       ...(this.props as IFabricStyleProps),
       ...this.state

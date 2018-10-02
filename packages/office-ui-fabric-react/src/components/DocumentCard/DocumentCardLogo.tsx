@@ -6,7 +6,7 @@ import * as stylesImport from './DocumentCard.scss';
 const styles: any = stylesImport;
 
 export class DocumentCardLogo extends BaseComponent<IDocumentCardLogoProps, any> {
-  public render() {
+  public render(): JSX.Element {
     const { logoIcon } = this.props;
 
     return (

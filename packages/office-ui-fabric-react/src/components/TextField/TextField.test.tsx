@@ -36,7 +36,8 @@ describe('TextField', () => {
   }
 
   function delay(millisecond: number): Promise<void> {
-    return new Promise<void>(resolve => setTimeout(resolve, millisecond));
+    // tslint:disable-next-line:no-any
+    return new Promise<void>((resolve: any) => setTimeout(resolve, millisecond));
   }
 
   it('renders TextField correctly', () => {
@@ -565,7 +566,7 @@ describe('TextField', () => {
         defaultValue="initial value"
         onChange={onChangeSpy}
         // tslint:disable-next-line:jsx-no-lambda
-        onGetErrorMessage={value => (value.length > 0 ? '' : 'error')}
+        onGetErrorMessage={(value: string) => (value.length > 0 ? '' : 'error')}
       />
     );
 

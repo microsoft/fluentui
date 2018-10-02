@@ -7,7 +7,7 @@ describe('Modal', () => {
   it('renders Modal correctly', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
     const ReactDOM = require('react-dom');
-    ReactDOM.createPortal = jest.fn(element => {
+    ReactDOM.createPortal = jest.fn((element: any) => {
       return element;
     });
 

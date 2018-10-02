@@ -190,7 +190,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { columns, isCompactMode, items, selectionDetails } = this.state;
 
     return (
@@ -230,7 +230,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
     );
   }
 
-  public componentDidUpdate(previousProps: any, previousState: IDetailsListDocumentsExampleState) {
+  public componentDidUpdate(previousProps: any, previousState: IDetailsListDocumentsExampleState): void {
     if (previousState.isModalSelection !== this.state.isModalSelection) {
       this._selection.setModal(this.state.isModalSelection);
     }
@@ -245,7 +245,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
   };
 
   private _onChangeText = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string): void => {
-    this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items });
+    this.setState({ items: text ? _items.filter((i: IDocument) => i.name.toLowerCase().indexOf(text) > -1) : _items });
   };
 
   private _onItemInvoked(item: any): void {

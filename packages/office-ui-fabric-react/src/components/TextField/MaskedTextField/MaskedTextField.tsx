@@ -95,7 +95,7 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
     };
   }
 
-  public componentWillReceiveProps(newProps: ITextFieldProps) {
+  public componentWillReceiveProps(newProps: ITextFieldProps): void {
     if (newProps.mask !== this.props.mask) {
       this._maskCharData = parseMask(newProps.mask, newProps.maskFormat);
       this.state = {
@@ -104,14 +104,14 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
     }
   }
 
-  public componentDidUpdate() {
+  public componentDidUpdate(): void {
     // Move the cursor to the start of the mask format on update
     if (this.state.maskCursorPosition !== undefined) {
       this._textField.setSelectionRange(this.state.maskCursorPosition, this.state.maskCursorPosition);
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <TextField
         {...this.props}
@@ -191,7 +191,7 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
   }
 
   @autobind
-  private _onFocus(event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) {
+  private _onFocus(event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>): void {
     if (this.props.onFocus) {
       this.props.onFocus(event);
     }
@@ -210,7 +210,7 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
   }
 
   @autobind
-  private _onBlur(event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) {
+  private _onBlur(event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>): void {
     if (this.props.onBlur) {
       this.props.onBlur(event);
     }
@@ -220,7 +220,7 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
   }
 
   @autobind
-  private _onMouseDown(event: React.MouseEvent<HTMLInputElement>) {
+  private _onMouseDown(event: React.MouseEvent<HTMLInputElement>): void {
     if (this.props.onMouseDown) {
       this.props.onMouseDown(event);
     }
@@ -231,7 +231,7 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
   }
 
   @autobind
-  private _onMouseUp(event: React.MouseEvent<HTMLInputElement>) {
+  private _onMouseUp(event: React.MouseEvent<HTMLInputElement>): void {
     if (this.props.onMouseUp) {
       this.props.onMouseUp(event);
     }
@@ -252,7 +252,7 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
   }
 
   @autobind
-  private _onBeforeChange(value: String) {
+  private _onBeforeChange(value: String): void {
     if (this.props.onBeforeChange) {
       this.props.onBeforeChange(value);
     }
@@ -267,7 +267,7 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
   }
 
   @autobind
-  private _onInputChange(ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, value: string) {
+  private _onInputChange(ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, value: string): void {
     if (!this._changeSelectionData) {
       return;
     }
@@ -351,7 +351,7 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
   }
 
   @autobind
-  private _onKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
+  private _onKeyDown(event: React.KeyboardEvent<HTMLInputElement>): void {
     if (this.props.onKeyDown) {
       this.props.onKeyDown(event);
     }
@@ -388,7 +388,7 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
   }
 
   @autobind
-  private _onPaste(event: React.ClipboardEvent<HTMLInputElement>) {
+  private _onPaste(event: React.ClipboardEvent<HTMLInputElement>): void {
     if (this.props.onPaste) {
       this.props.onPaste(event);
     }

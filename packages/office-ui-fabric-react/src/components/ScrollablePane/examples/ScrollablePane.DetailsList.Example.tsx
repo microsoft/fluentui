@@ -164,7 +164,7 @@ export class ScrollablePaneDetailsListExample extends React.Component<
               ariaLabelForSelectionColumn="Toggle selection"
               ariaLabelForSelectAllCheckbox="Toggle selection for all items"
               // tslint:disable-next-line:jsx-no-lambda
-              onItemInvoked={item => alert(`Item invoked: ${item.name}`)}
+              onItemInvoked={(item: any) => alert(`Item invoked: ${item.name}`)}
             />
           </MarqueeSelection>
         </ScrollablePane>

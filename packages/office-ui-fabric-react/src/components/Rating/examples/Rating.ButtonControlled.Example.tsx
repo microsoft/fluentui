@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Rating } from 'office-ui-fabric-react/lib/Rating';
-import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { BaseButton, Button, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 
 export class RatingButtonControlledExample extends React.Component<
   {},
@@ -17,7 +17,7 @@ export class RatingButtonControlledExample extends React.Component<
   }
 
   // tslint:disable:jsx-no-lambda
-  public render() {
+  public render(): JSX.Element {
     const maxrating = 5;
 
     return (
@@ -25,7 +25,7 @@ export class RatingButtonControlledExample extends React.Component<
         <Rating rating={this.state.rating} max={5} readOnly={true} allowZeroStars={true} />
         <PrimaryButton
           text={'Click to change rating to ' + (maxrating - this.state.rating)}
-          onClick={e => {
+          onClick={(e: React.MouseEvent<HTMLElement | BaseButton | Button>) => {
             if (this.state.rating === 0) {
               this.setState({ rating: 5 });
             } else {

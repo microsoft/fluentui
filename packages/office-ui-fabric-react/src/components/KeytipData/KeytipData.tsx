@@ -15,19 +15,19 @@ export class KeytipData extends BaseComponent<IKeytipDataProps & IRenderComponen
   private _uniqueId: string;
   private _keytipManager: KeytipManager = KeytipManager.getInstance();
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     // Register Keytip in KeytipManager
     if (this.props.keytipProps) {
       this._uniqueId = this._keytipManager.register(this._getKtpProps());
     }
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     // Unregister Keytip in KeytipManager
     this.props.keytipProps && this._keytipManager.unregister(this._getKtpProps(), this._uniqueId);
   }
 
-  public componentDidUpdate() {
+  public componentDidUpdate(): void {
     // Update Keytip in KeytipManager
     this.props.keytipProps && this._keytipManager.update(this._getKtpProps(), this._uniqueId);
   }

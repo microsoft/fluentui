@@ -75,14 +75,14 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
     }
   }
 
-  private _onBlur(props: IChoiceGroupOptionProps, evt: React.FocusEvent<HTMLElement>) {
+  private _onBlur(props: IChoiceGroupOptionProps, evt: React.FocusEvent<HTMLElement>): void {
     const { onBlur } = props;
     if (onBlur) {
       onBlur(evt, props);
     }
   }
 
-  private _onFocus(props: IChoiceGroupOptionProps, evt: React.FocusEvent<HTMLElement>) {
+  private _onFocus(props: IChoiceGroupOptionProps, evt: React.FocusEvent<HTMLElement>): void {
     const { onFocus } = props;
     if (onFocus) {
       onFocus(evt, props);

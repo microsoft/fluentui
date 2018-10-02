@@ -173,7 +173,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     }
   }
 
-  public componentDidUpdate(prevProps: any, prevState: any) {
+  public componentDidUpdate(prevProps: any, prevState: any): void {
     if (this._initialFocusedIndex !== undefined) {
       const item = this.props.items[this._initialFocusedIndex];
       if (item) {
@@ -709,7 +709,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       adjustedColumns = this._getFixedColumns(newColumns);
 
       // Preserve adjusted column calculated widths.
-      adjustedColumns.forEach(column => {
+      adjustedColumns.forEach((column: IColumn) => {
         this._rememberCalculatedWidth(column, column.calculatedWidth!);
       });
     } else {
@@ -719,7 +719,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
         adjustedColumns = this._getJustifiedColumns(newColumns, viewportWidth, newProps, 0);
       }
 
-      adjustedColumns.forEach(column => {
+      adjustedColumns.forEach((column: IColumn) => {
         this._getColumnOverride(column.key).currentWidth = column.calculatedWidth;
       });
     }
@@ -729,7 +729,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
 
   /** Builds a set of columns based on the given columns mixed with the current overrides. */
   private _getFixedColumns(newColumns: IColumn[]): IColumn[] {
-    return newColumns.map(column => {
+    return newColumns.map((column: IColumn) => {
       const newColumn: IColumn = assign({}, column, this._columnOverrides[column.key]);
 
       if (!newColumn.calculatedWidth) {
@@ -747,9 +747,10 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     resizingColumnIndex: number
   ): IColumn[] {
     const fixedColumns = newColumns.slice(0, resizingColumnIndex);
-    fixedColumns.forEach(column => (column.calculatedWidth = this._getColumnOverride(column.key).currentWidth));
+    fixedColumns.forEach((column: IColumn) => (column.calculatedWidth = this._getColumnOverride(column.key).currentWidth));
 
-    const fixedWidth = fixedColumns.reduce((total, column, i) => total + getPaddedWidth(column, i === 0, props), 0);
+    const fixedWidth = fixedColumns.reduce((total: number, column: IColumn, i: number) =>
+      total + getPaddedWidth(column, i === 0, props), 0);
 
     const remainingColumns = newColumns.slice(resizingColumnIndex);
     const remainingWidth = viewportWidth - fixedWidth;
@@ -764,7 +765,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     const groupExpandWidth = this._getGroupNestingDepth() * GROUP_EXPAND_WIDTH;
     let totalWidth = 0; // offset because we have one less inner padding.
     const availableWidth = viewportWidth - (rowCheckWidth + groupExpandWidth);
-    const adjustedColumns: IColumn[] = newColumns.map((column, i) => {
+    const adjustedColumns: IColumn[] = newColumns.map((column: IColumn, i: number) => {
       const newColumn = {
         ...column,
         calculatedWidth: column.minWidth || MIN_COLUMN_WIDTH,
@@ -1027,7 +1028,7 @@ export function buildColumns(
   isSortedDescending?: boolean,
   groupedColumnKey?: string,
   isMultiline?: boolean
-) {
+): IColumn[] {
   const columns: IColumn[] = [];
 
   if (items && items.length) {

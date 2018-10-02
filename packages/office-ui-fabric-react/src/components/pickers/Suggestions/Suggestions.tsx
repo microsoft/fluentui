@@ -2,6 +2,7 @@ import * as React from 'react';
 import { BaseComponent, css, KeyCodes, createRef } from '../../../Utilities';
 import { CommandButton, IconButton, IButton } from '../../../Button';
 import { Spinner } from '../../../Spinner';
+import { ISuggestionModel } from '../../../Pickers';
 import { ISuggestionItemProps, ISuggestionsProps } from './Suggestions.types';
 import * as stylesImport from './Suggestions.scss';
 const styles: any = stylesImport;
@@ -329,7 +330,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
         role="listbox"
         aria-label={suggestionsContainerAriaLabel}
       >
-        {suggestions.map((suggestion, index) => (
+        {suggestions.map((suggestion: ISuggestionModel<T>, index: number) => (
           <div
             ref={suggestion.selected ? this._selectedElement : ''}
             // tslint:disable-next-line:no-string-literal

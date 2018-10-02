@@ -79,7 +79,7 @@ export class DocumentCardPreview extends BaseComponent<IDocumentCardPreviewProps
       : null;
 
     // Create list items for the documents to be shown
-    const fileListItems = previewImages.slice(0, LIST_ITEM_COUNT).map((file, fileIndex) => (
+    const fileListItems = previewImages.slice(0, LIST_ITEM_COUNT).map((file: IDocumentCardPreviewImage, fileIndex: number) => (
       <li key={fileIndex}>
         <Image
           className={css('ms-DocumentCardPreview-fileListIcon', styles.fileListIcon)}

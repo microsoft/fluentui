@@ -92,7 +92,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     );
   }
 
-  public focus() {
+  public focus(): void {
     const { focusPreviouslyFocusedInnerElement, firstFocusableSelector } = this.props;
 
     if (

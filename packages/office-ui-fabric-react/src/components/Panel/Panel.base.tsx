@@ -191,7 +191,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     );
   }
 
-  public open() {
+  public open(): void {
     if (!this.state.isOpen) {
       this.setState(
         {

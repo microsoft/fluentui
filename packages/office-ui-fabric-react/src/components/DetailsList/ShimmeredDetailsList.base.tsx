@@ -10,7 +10,7 @@ import {
   IShimmeredDetailsListStyleProps,
   IShimmeredDetailsListStyles
 } from './ShimmeredDetailsList.types';
-import { CheckboxVisibility } from './DetailsList.types';
+import { CheckboxVisibility, IColumn } from './DetailsList.types';
 
 import { IDetailsRowStyleProps, IDetailsRowStyles } from './DetailsRow.types';
 import { DEFAULT_CELL_STYLE_PROPS, getStyles as getRowStyles } from './DetailsRow.styles';
@@ -103,7 +103,7 @@ export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsLis
     const shimmerElementsRow: JSX.Element[] = [];
     const gapHeight: number = compact ? COMPACT_ROW_HEIGHT : DEFAULT_ROW_HEIGHT;
 
-    columns.map((column, columnIdx) => {
+    columns.map((column: IColumn, columnIdx: number) => {
       const shimmerElements: IShimmerElement[] = [];
       const groupWidth: number =
         cellStyleProps.cellLeftPadding +

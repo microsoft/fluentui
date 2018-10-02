@@ -25,7 +25,7 @@ export default class FocusTrapDialogInPanelExample extends React.Component<
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <DefaultButton secondaryText="Opens the Sample Panel" onClick={this._onShowPanel} text="Open Panel" />

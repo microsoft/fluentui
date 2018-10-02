@@ -45,7 +45,7 @@ export class DetailsListGroupedLargeExample extends BaseComponent<{}, { items: {
     super(props);
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <Fabric className="DetailsList-grouped-large-example">
         <DetailsList

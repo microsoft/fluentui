@@ -121,7 +121,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     }
   }
 
-  public componentDidUpdate(prevProps: IDropdownProps, prevState: IDropdownState) {
+  public componentDidUpdate(prevProps: IDropdownProps, prevState: IDropdownState): void {
     if (prevState.isOpen === true && this.state.isOpen === false) {
       this._gotMouseMove = false;
 
@@ -375,7 +375,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   private _onRenderTitle = (item: IDropdownOption[]): JSX.Element => {
     const { multiSelectDelimiter = ', ' } = this.props;
 
-    const displayTxt = item.map(i => i.text).join(multiSelectDelimiter);
+    const displayTxt = item.map((i: IDropdownOption) => i.text).join(multiSelectDelimiter);
     return <span>{displayTxt}</span>;
   };
 
@@ -693,7 +693,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   }
 
   private _getSelectedIndex(options: IDropdownOption[], selectedKey: string | number | null): number {
-    return findIndex(options, option => {
+    return findIndex(options, (option: IDropdownOption) => {
       // tslint:disable-next-line:triple-equals
       if (selectedKey != null) {
         return option.key === selectedKey;
@@ -851,7 +851,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     ev.preventDefault();
   };
 
-  private _isExpandCollapseKey(ev: React.KeyboardEvent<HTMLElement>) {
+  private _isExpandCollapseKey(ev: React.KeyboardEvent<HTMLElement>): boolean {
     return ev.which === KeyCodes.alt || ev.key === 'Meta';
   }
 

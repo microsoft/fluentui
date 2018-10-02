@@ -392,7 +392,7 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> i
     }
   }
 
-  private _dismissOnLostFocus(ev: Event) {
+  private _dismissOnLostFocus(ev: Event): void {
     const clickTarget = ev.target as HTMLElement;
     const clickedOutsideCallout =
       this._translateAnimationContainer.current &&

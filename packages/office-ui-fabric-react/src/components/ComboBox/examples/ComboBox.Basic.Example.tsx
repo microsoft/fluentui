@@ -103,7 +103,7 @@ export class ComboBoxBasicExample extends React.Component<
           onFocus={() => console.log('onFocus called')}
           onBlur={() => console.log('onBlur called')}
           onMenuOpen={() => console.log('ComboBox menu opened')}
-          onPendingValueChanged={(option, pendingIndex, pendingValue) =>
+          onPendingValueChanged={(option: IComboBoxOption, pendingIndex: number, pendingValue: string) =>
             console.log(
               'Preview value was changed. Pending index: ' + pendingIndex + '. Pending value: ' + pendingValue
             )
@@ -174,7 +174,7 @@ export class ComboBoxBasicExample extends React.Component<
           onFocus={() => console.log('onFocus called')}
           onBlur={() => console.log('onBlur called')}
           onMenuOpen={() => console.log('ComboBox menu opened')}
-          onPendingValueChanged={(option, pendingIndex, pendingValue) =>
+          onPendingValueChanged={(option: IComboBoxOption, pendingIndex: number, pendingValue: string) =>
             console.log(
               'Preview value was changed. Pending index: ' + pendingIndex + '. Pending value: ' + pendingValue
             )
@@ -196,7 +196,7 @@ export class ComboBoxBasicExample extends React.Component<
           onFocus={() => console.log('onFocus called')}
           onBlur={() => console.log('onBlur called')}
           onMenuOpen={() => console.log('ComboBox menu opened')}
-          onPendingValueChanged={(option, pendingIndex, pendingValue) =>
+          onPendingValueChanged={(option: IComboBoxOption, pendingIndex: number, pendingValue: string) =>
             console.log(
               'Preview value was changed. Pending index: ' + pendingIndex + '. Pending value: ' + pendingValue
             )

@@ -15,7 +15,14 @@ const GlobalClassNames = {
   ratingFocusZone: 'ms-Rating-focuszone'
 };
 
-function _getColorWithHighContrast(color: string, highContrastColor: string) {
+function _getColorWithHighContrast(color: string, highContrastColor: string): {
+  color: string;
+  selectors: {
+    [HighContrastSelector]: {
+      color: string;
+    };
+  };
+} {
   return {
     color: color,
     selectors: {

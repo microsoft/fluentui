@@ -70,7 +70,7 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
   public componentWillReceiveProps(nextProps: IPivotProps): void {
     const links: IPivotItemProps[] = this._getPivotLinks(nextProps);
 
-    this.setState((prevState, props) => {
+    this.setState((prevState: Readonly<IPivotState>, props: IPivotProps) => {
       let selectedKey: string | undefined;
       if (this._isKeyValid(nextProps.selectedKey)) {
         selectedKey = nextProps.selectedKey;

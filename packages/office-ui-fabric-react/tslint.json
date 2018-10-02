@@ -3,7 +3,6 @@
   "rules": {
     "deprecation": false,
     "jsx-ban-props": false,
-    "no-any": false,
-    "typedef": [false]
+    "no-any": false
   }
 }

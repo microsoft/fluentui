@@ -29,7 +29,7 @@ let globalSnapshotState: ISnapshotState;
 jestSnapshot.addSerializer(mergeStylesSerializer);
 
 expect.extend({
-  toMatchSpecificSnapshot(received, snapshotFile) {
+  toMatchSpecificSnapshot(received: any, snapshotFile: any): any {
     globalSnapshotState = (this as any).snapshotState;
 
     // Append .shot to prevent jest failure when it finds .snaps without associated tests.
@@ -108,7 +108,7 @@ describe('Component Examples', () => {
 
   beforeAll(() => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
-    ReactDOM.createPortal = jest.fn(element => {
+    ReactDOM.createPortal = jest.fn((element: any) => {
       return element;
     });
 
@@ -123,7 +123,7 @@ describe('Component Examples', () => {
 
     // Prevent random and time elements from failing repeated tests.
     global.Date = class {
-      public static now() {
+      public static now(): Date {
         return constantDate;
       }
 
@@ -150,7 +150,7 @@ describe('Component Examples', () => {
     global.Date.prototype.toLocaleTimeString = realToLocaleTimeString;
     global.Date.prototype.toLocaleDateString = realToLocaleDateString;
 
-    snapshotsStateMap.forEach(snapshotState => {
+    snapshotsStateMap.forEach((snapshotState: any) => {
       if (snapshotState.getUncheckedCount() > 0) {
         snapshotState.removeUncheckedKeys();
       }
@@ -171,14 +171,14 @@ describe('Component Examples', () => {
 
   files
     .filter((componentFile: string) => {
-      return excludedExampleFiles.find(excludedFile => componentFile.endsWith(excludedFile)) === undefined;
+      return excludedExampleFiles.find((excludedFile: string) => componentFile.endsWith(excludedFile)) === undefined;
     })
     .forEach((componentFile: string) => {
       const componentFileName = componentFile.substring(componentFile.lastIndexOf('/') + 1);
       it('renders ' + componentFileName + ' correctly', () => {
         try {
           const ExampleFile = require(componentFile);
-          Object.keys(ExampleFile).forEach(key => {
+          Object.keys(ExampleFile).forEach((key: string) => {
             // Resetting ids by each object creates predictability in generated ids.
             resetIds();
             const ComponentUnderTest: React.ComponentClass = ExampleFile[key];

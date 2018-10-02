@@ -130,13 +130,13 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     }
   }
 
-  public focus() {
+  public focus(): void {
     if (this.focusZone.current) {
       this.focusZone.current.focus();
     }
   }
 
-  public focusInput() {
+  public focusInput(): void {
     if (this.input.current) {
       this.input.current.focus();
     }
@@ -164,7 +164,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     this.setState({ suggestionsVisible: false });
   };
 
-  public completeSuggestion() {
+  public completeSuggestion(): void {
     if (this.suggestionStore.hasSelectedSuggestion() && this.input.current) {
       this.addItem(this.suggestionStore.currentSuggestion!.item);
       this.updateValue('');
@@ -290,7 +290,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     );
   }
 
-  protected resetFocus(index?: number) {
+  protected resetFocus(index?: number): void {
     const { items } = this.state;
 
     if (items.length && index! >= 0) {
@@ -309,7 +309,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     }
   }
 
-  protected onSuggestionSelect() {
+  protected onSuggestionSelect(): void {
     if (this.suggestionStore.currentSuggestion) {
       const currentValue: string = this.input.current ? this.input.current.value : '';
       const itemValue: string = this._getTextFromItem(this.suggestionStore.currentSuggestion.item, currentValue);
@@ -317,28 +317,28 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     }
   }
 
-  protected onSelectionChange() {
+  protected onSelectionChange(): void {
     this.setState({
       selectedIndices: this.selection.getSelectedIndices()
     });
   }
 
-  protected updateSuggestions(suggestions: any[]) {
+  protected updateSuggestions(suggestions: any[]): void {
     this.suggestionStore.updateSuggestions(suggestions, 0);
     this.forceUpdate();
   }
 
-  protected onEmptyInputFocus() {
+  protected onEmptyInputFocus(): void {
     const onEmptyInputFocus = this.props.onEmptyInputFocus as (selectedItems?: T[]) => T[] | PromiseLike<T[]>;
     const suggestions: T[] | PromiseLike<T[]> = onEmptyInputFocus(this.state.items);
     this.updateSuggestionsList(suggestions);
   }
 
-  protected updateValue(updatedValue: string) {
+  protected updateValue(updatedValue: string): void {
     this._onResolveSuggestions(updatedValue);
   }
 
-  protected updateSuggestionsList(suggestions: T[] | PromiseLike<T[]>, updatedValue?: string) {
+  protected updateSuggestionsList(suggestions: T[] | PromiseLike<T[]>, updatedValue?: string): void {
     const suggestionsArray: T[] = suggestions as T[];
     const suggestionsPromiseLike: PromiseLike<T[]> = suggestions as PromiseLike<T[]>;
 
@@ -376,7 +376,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     }
   }
 
-  protected resolveNewValue(updatedValue: string, suggestions: T[]) {
+  protected resolveNewValue(updatedValue: string, suggestions: T[]): void {
     this.updateSuggestions(suggestions);
     let itemValue: string | undefined = undefined;
 
@@ -398,7 +398,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     );
   }
 
-  protected onChange(items?: T[]) {
+  protected onChange(items?: T[]): void {
     if (this.props.onChange) {
       (this.props.onChange as any)(items);
     }
@@ -675,7 +675,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   // This is protected because we may expect the backspace key to work differently in a different kind of picker.
   // This lets the subclass override it and provide it's own onBackspace. For an example see the BasePickerListBelow
-  protected onBackspace(ev: React.KeyboardEvent<HTMLElement>) {
+  protected onBackspace(ev: React.KeyboardEvent<HTMLElement>): void {
     if (
       (this.state.items.length && !this.input.current) ||
       (this.input.current && (!this.input.current.isValueSelected && this.input.current.cursorLocation === 0))
@@ -705,12 +705,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     return false;
   };
 
-  protected getActiveDescendant() {
+  protected getActiveDescendant(): string | undefined {
     const currentIndex = this.suggestionStore.currentIndex;
     return currentIndex > -1 && !this.state.suggestionsLoading ? 'sug-' + currentIndex : undefined;
   }
 
-  protected getSuggestionsAlert() {
+  protected getSuggestionsAlert(): JSX.Element | undefined {
     const currentIndex = this.suggestionStore.currentIndex;
     if (this.props.enableSelectedSuggestionAlert) {
       const selectedSuggestion =
@@ -727,7 +727,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
    * Takes in the current updated value and either resolves it with the new suggestions
    * or if updated value is undefined then it clears out currently suggested items
    */
-  private _updateAndResolveValue(updatedValue: string | undefined, newSuggestions: T[]) {
+  private _updateAndResolveValue(updatedValue: string | undefined, newSuggestions: T[]): void {
     if (updatedValue !== undefined) {
       this.resolveNewValue(updatedValue, newSuggestions);
     } else {
@@ -843,7 +843,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
     );
   }
 
-  protected onBackspace(ev: React.KeyboardEvent<HTMLElement>) {
+  protected onBackspace(ev: React.KeyboardEvent<HTMLElement>): void {
     // override the existing backspace method to not do anything because the list items appear below.
   }
 }

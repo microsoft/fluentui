@@ -85,7 +85,7 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
     );
   }
 
-  protected onRenderAriaDescription() {
+  protected onRenderAriaDescription(): string | JSX.Element | undefined {
     const { ariaDescription } = this.props;
 
     const { _classNames } = this;

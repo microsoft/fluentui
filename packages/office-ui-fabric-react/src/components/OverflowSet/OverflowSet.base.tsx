@@ -131,23 +131,23 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
   }
 
   // Add keytip register/unregister handlers to lifecycle functions to correctly manage persisted keytips
-  public componentDidMount() {
+  public componentDidMount(): void {
     this._registerPersistedKeytips();
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     this._unregisterPersistedKeytips();
   }
 
-  public componentWillUpdate() {
+  public componentWillUpdate(): void {
     this._unregisterPersistedKeytips();
   }
 
-  public componentDidUpdate() {
+  public componentDidUpdate(): void {
     this._registerPersistedKeytips();
   }
 
-  private _registerPersistedKeytips() {
+  private _registerPersistedKeytips(): void {
     Object.keys(this._persistedKeytips).forEach((key: string) => {
       const keytip = this._persistedKeytips[key];
       const uniqueID = this._keytipManager.register(keytip, true);
@@ -157,7 +157,7 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
     });
   }
 
-  private _unregisterPersistedKeytips() {
+  private _unregisterPersistedKeytips(): void {
     // Delete all persisted keytips saved
     Object.keys(this._persistedKeytips).forEach((uniqueID: string) => {
       this._keytipManager.unregister(this._persistedKeytips[uniqueID], uniqueID, true);
@@ -166,7 +166,7 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
   }
 
   private _onRenderItems = (items: IOverflowSetItemProps[]): JSX.Element[] => {
-    return items.map((item, i) => {
+    return items.map((item: IOverflowSetItemProps, i: number) => {
       const wrapperDivProps: React.HTMLProps<HTMLDivElement> = {
         className: this._classNames.item
       };
@@ -187,7 +187,7 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
     let newOverflowItems: any[] = [];
 
     if (overflowKeytipSequences) {
-      items.forEach(overflowItem => {
+      items.forEach((overflowItem: any) => {
         const keytip = (overflowItem as IOverflowSetItemProps).keytipProps;
         if (keytip) {
           // Create persisted keytip

@@ -6,7 +6,7 @@ import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZ
 import { DetailsRow, IColumn, Selection, SelectionMode } from 'office-ui-fabric-react/lib/DetailsList';
 import './FocusZone.List.Example.scss';
 
-const ITEMS = createArray(10, index => ({
+const ITEMS = createArray(10, (index: number) => ({
   key: index.toString(),
   name: 'Item-' + index,
   url: 'http://placehold.it/100x' + (200 + index!)
@@ -24,14 +24,14 @@ const COLUMNS: IColumn[] = [
     name: 'Link',
     fieldName: 'url',
     minWidth: 100,
-    onRender: item => <Link href={item.url}>{item.url}</Link>
+    onRender: (item: any) => <Link href={item.url}>{item.url}</Link>
   },
   {
     key: 'link',
     name: 'Link',
     fieldName: 'url',
     minWidth: 100,
-    onRender: item => <DefaultButton>{item.url}</DefaultButton>
+    onRender: (item: any) => <DefaultButton>{item.url}</DefaultButton>
   }
 ];
 
@@ -53,7 +53,7 @@ export class FocusZoneListExample extends React.Component {
         isCircularNavigation={true}
         isInnerZoneKeystroke={this._isInnerZoneKeystroke}
       >
-        {ITEMS.map((item, index) => (
+        {ITEMS.map((item: any, index: number) => (
           <DetailsRow
             key={index}
             item={item}

@@ -8,7 +8,7 @@ import { ContextualMenuItem } from '../ContextualMenuItem';
 export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
   private _anchor = createRef<HTMLAnchorElement>();
 
-  public render() {
+  public render(): JSX.Element {
     const {
       item,
       classNames,

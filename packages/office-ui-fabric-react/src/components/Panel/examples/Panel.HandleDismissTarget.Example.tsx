@@ -29,7 +29,7 @@ export class PanelHandleDismissTargetExample extends React.Component<
           type={PanelType.smallFixedNear}
           isFooterAtBottom={true}
           // tslint:disable-next-line:jsx-no-lambda
-          onDismiss={ev => {
+          onDismiss={(ev: React.SyntheticEvent<HTMLElement>) => {
             if (!ev) {
               console.log('Panel dismissed.');
               return;

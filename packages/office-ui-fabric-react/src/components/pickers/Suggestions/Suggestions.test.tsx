@@ -22,8 +22,8 @@ const suggestions = [
   'yellow'
 ];
 
-function generateSimpleSuggestions(selectedIndex: number = 0) {
-  return suggestions.map<ISuggestionModel<ISimple>>((value, index) => {
+function generateSimpleSuggestions(selectedIndex: number = 0): ISuggestionModel<ISimple>[] {
+  return suggestions.map<ISuggestionModel<ISimple>>((value: string, index: number) => {
     return {
       item: {
         key: value,
@@ -43,7 +43,7 @@ export interface ISimple {
   name: string;
 }
 
-function mockOnClick() {
+function mockOnClick(): void {
   console.log('clicked');
 }
 

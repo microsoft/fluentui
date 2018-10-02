@@ -31,7 +31,7 @@ export class CalloutNestedExample extends React.Component<
 
     return (
       <div className="ms-CalloutExample">
-        <div className="ms-CalloutBasicExample-buttonArea" ref={menuButton => (this._menuButtonElement = menuButton)}>
+        <div className="ms-CalloutBasicExample-buttonArea" ref={(menuButton: HTMLDivElement) => (this._menuButtonElement = menuButton)}>
           <DefaultButton onClick={this._onDismiss} text={isCalloutVisible ? 'Hide callout' : 'Show callout'} />
         </div>
         {isCalloutVisible ? (
@@ -53,8 +53,8 @@ export class CalloutNestedExample extends React.Component<
               <div className="ms-CalloutExample-inner">
                 <div className="ms-CalloutExample-content">
                   <p className="ms-CalloutExample-subText">
-                    Message body is optional. If help documentation is available, consider adding a link to learn more
-                    at the bottom.
+                  Message body is optional. If help documentation is available, consider adding a link to learn more
+                  at the bottom.
                   </p>
                 </div>
               </div>

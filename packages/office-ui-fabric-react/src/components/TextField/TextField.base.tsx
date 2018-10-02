@@ -243,7 +243,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
   /**
    * Sets focus on the text field
    */
-  public focus() {
+  public focus(): void {
     if (this._textElement.current) {
       this._textElement.current.focus();
     }
@@ -252,7 +252,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
   /**
    * Selects the text field
    */
-  public select() {
+  public select(): void {
     if (this._textElement.current) {
       this._textElement.current.select();
     }
@@ -301,7 +301,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
     }
   }
 
-  private _setValue(value?: string) {
+  private _setValue(value?: string): void {
     this._latestValue = value;
     this.setState(
       {

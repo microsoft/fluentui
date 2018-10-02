@@ -22,7 +22,7 @@ const _testTags = [
   'violet',
   'white',
   'yellow'
-].map(item => ({ key: item, name: item }));
+].map((item: string) => ({ key: item, name: item }));
 
 export class TagPickerBasicExample extends BaseComponent<{}, ITagPickerDemoPageState> {
   private _picker: TagPicker;
@@ -34,7 +34,7 @@ export class TagPickerBasicExample extends BaseComponent<{}, ITagPickerDemoPageS
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <Checkbox
@@ -98,8 +98,8 @@ export class TagPickerBasicExample extends BaseComponent<{}, ITagPickerDemoPageS
   ): { key: string; name: string }[] => {
     return filterText
       ? _testTags
-          .filter(tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0)
-          .filter(tag => !this._listContainsDocument(tag, tagList))
+          .filter((tag: { key: string; name: string }) => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0)
+          .filter((tag: { key: string; name: string }) => !this._listContainsDocument(tag, tagList))
       : [];
   };
 
@@ -107,7 +107,9 @@ export class TagPickerBasicExample extends BaseComponent<{}, ITagPickerDemoPageS
     filterText: string,
     tagList: { key: string; name: string }[]
   ): { key: string; name: string }[] => {
-    return filterText ? _testTags.filter(tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0) : [];
+    return filterText ?
+            _testTags.filter((tag: { key: string; name: string }) => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0) :
+            [];
   };
 
   private _onItemSelected = (item: { key: string; name: string }): { key: string; name: string } | null => {
@@ -117,10 +119,10 @@ export class TagPickerBasicExample extends BaseComponent<{}, ITagPickerDemoPageS
     return item;
   };
 
-  private _listContainsDocument(tag: { key: string; name: string }, tagList: { key: string; name: string }[]) {
+  private _listContainsDocument(tag: { key: string; name: string }, tagList: { key: string; name: string }[]): boolean {
     if (!tagList || !tagList.length || tagList.length === 0) {
       return false;
     }
-    return tagList.filter(compareTag => compareTag.key === tag.key).length > 0;
+    return tagList.filter((compareTag: { key: string; name: string }) => compareTag.key === tag.key).length > 0;
   }
 }

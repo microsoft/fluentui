@@ -16,7 +16,7 @@ export class DialogLargeHeaderExample extends React.Component<
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <DefaultButton secondaryText="Opens the Sample Dialog" onClick={this._showDialog} text="Open Dialog" />
@@ -70,7 +70,7 @@ export class DialogLargeHeaderExample extends React.Component<
     this.setState({ hideDialog: true });
   };
 
-  private _onChoiceChanged() {
+  private _onChoiceChanged(): void {
     console.log('Choice option change');
   }
 }

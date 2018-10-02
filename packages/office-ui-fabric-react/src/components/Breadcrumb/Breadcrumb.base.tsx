@@ -102,7 +102,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
     } = data.props;
     const { renderedOverflowItems, renderedItems } = data;
 
-    const contextualItems = renderedOverflowItems.map((item, index) => ({
+    const contextualItems = renderedOverflowItems.map((item: IBreadcrumbItem, index: number) => ({
       name: item.text,
       key: item.key,
       onClick: item.onClick ? this._onBreadcrumbClicked.bind(this, item) : null,
@@ -114,7 +114,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
     const lastItemIndex = renderedItems.length - 1;
     const hasOverflowItems = renderedOverflowItems && renderedOverflowItems.length !== 0;
 
-    const itemElements: JSX.Element[] = renderedItems.map((item, index) => (
+    const itemElements: JSX.Element[] = renderedItems.map((item: IBreadcrumbItem, index: number) => (
       <li className={this._classNames.listItem} key={item.key || String(index)}>
         {onRenderItem(item, this._onRenderItem)}
         {(index !== lastItemIndex || (hasOverflowItems && index === overflowIndex! - 1)) && (
