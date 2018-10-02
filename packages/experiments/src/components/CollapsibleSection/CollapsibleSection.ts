@@ -11,8 +11,7 @@ export const CollapsibleSection: React.StatelessComponent<ICollapsibleSectionPro
 >({
   displayName: 'CollapsibleSection',
   view: CollapsibleSectionView,
-  // tslint:disable-next-line:no-any
-  state: CollapsibleSectionState as any,
+  state: CollapsibleSectionState,
   styles: collapsibleSectionStyles
 });
 
