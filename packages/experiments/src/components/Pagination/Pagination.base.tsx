@@ -98,10 +98,10 @@ export class PaginationBase extends BaseComponent<IPaginationProps, {}> {
   }
 
   private _pageList(classNames: { [key in keyof IPaginationStyles]: string }): JSX.Element[] {
-    const element = [];
+    const pageList = [];
     if (this.props.pageCount <= this.props.pageRange!) {
       for (let index = 0; index < this.props.pageCount; index++) {
-        element.push(this._pageElement(index));
+        pageList.push(this._pageElement(index));
       }
     } else {
       const leftHalfCount = this.props.pageRange! / 2;
@@ -126,14 +126,14 @@ export class PaginationBase extends BaseComponent<IPaginationProps, {}> {
           page > this.props.pageCount - this.props.marginPagesDisplayed! ||
           (index >= this.props.selectedPageIndex! - leftSide && index <= this.props.selectedPageIndex! + rightSide)
         ) {
-          element.push(this._pageElement(index));
+          pageList.push(this._pageElement(index));
           previousIndexIsOmitted = false;
           continue;
         }
 
         if (previousIndexIsOmitted === false) {
           const listKey = 'ellipsis' + index.toString();
-          element.push(
+          pageList.push(
             <li key={listKey} className={this._classNames.omission} aria-label={this.props.omittedPagesAriaLabel}>
               {this.props.omissionLabel}
             </li>
@@ -143,6 +143,6 @@ export class PaginationBase extends BaseComponent<IPaginationProps, {}> {
       }
     }
 
-    return element;
+    return pageList;
   }
 }
