@@ -1,8 +1,8 @@
 language: node_js
 node_js:
-  - '8'
+  - "8"
 script:
-  - if [ $TRAVIS_BRANCH == "master" ] && [ $TRAVIS_PULL_REQUEST != "false" ];
+  - if [ $TRAVIS_BRANCH == "5.0" ] && [ $TRAVIS_PULL_REQUEST != "false" ];
     then npm run checkchange;
     fi
   - npm run buildfast
