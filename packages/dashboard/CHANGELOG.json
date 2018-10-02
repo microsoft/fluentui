@@ -2,6 +2,33 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.28.0",
+      "tag": "@uifabric/dashboard_v0.28.0",
+      "date": "Tue, 02 Oct 2018 12:28:04 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding callback upon clicking on the card title. This can be used in cases like if clicks needs to be instrumented.",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "3e2f1a5e99adb433cf786719a55aa49164920d1a"
+          },
+          {
+            "comment": "Add setup banner component for dashboard",
+            "author": "Kevin Chan <2591766+chankev@users.noreply.github.com>",
+            "commit": "e9f5f26d7d067d0ad64aadb422531b957c57e3df"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.33.0 <7.0.0` to `>=6.34.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.75.0 <7.0.0` to `>=6.76.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.27.0",
       "tag": "@uifabric/dashboard_v0.27.0",
       "date": "Mon, 01 Oct 2018 12:27:24 GMT",

@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 01 Oct 2018 12:27:24 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Oct 2018 12:28:04 GMT and should not be manually modified.
+
+## 6.76.0
+Tue, 02 Oct 2018 12:28:04 GMT
+
+### Minor changes
+
+- Pivot: update the wrapper holding the tab buttons from ul tags to div for HTML validation and keep the narrator working correctly.
+
+### Patches
+
+- Layer: Don't block capture events, allowing onFocus and onBlur events to work as expected.
+- TextField: prettier fixes
 
 ## 6.75.0
 Mon, 01 Oct 2018 12:27:24 GMT
