@@ -3,7 +3,7 @@
 exports[`VerticalStack renders default VerticalStack correctly 1`] = `
 <div
   className=
-
+      ms-VerticalStack
       {
         box-sizing: border-box;
         display: flex;
@@ -12,29 +12,24 @@ exports[`VerticalStack renders default VerticalStack correctly 1`] = `
         height: auto;
         width: auto;
       }
+      & > * {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      & > *:not(:empty) ~ * {
+        margin-top: 0px;
+      }
+      & > *:empty {
+        display: none;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 0;
+      }
 >
-  <div
-    className=
-
-        {
-          flex-shrink: 0;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-  >
+  <div>
     Item 1
   </div>
-  <div
-    className=
-
-        {
-          flex-shrink: 0;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-  >
+  <div>
     Item 2
   </div>
 </div>
@@ -43,7 +38,7 @@ exports[`VerticalStack renders default VerticalStack correctly 1`] = `
 exports[`VerticalStack renders gap correctly 1`] = `
 <div
   className=
-
+      ms-VerticalStack
       {
         box-sizing: border-box;
         display: flex;
@@ -52,30 +47,24 @@ exports[`VerticalStack renders gap correctly 1`] = `
         height: auto;
         width: auto;
       }
+      & > * {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      & > *:not(:empty) ~ * {
+        margin-top: 5px;
+      }
+      & > *:empty {
+        display: none;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 0;
+      }
 >
-  <div
-    className=
-
-        {
-          flex-shrink: 0;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-  >
+  <div>
     Item 1
   </div>
-  <div
-    className=
-
-        {
-          flex-shrink: 0;
-          margin-top: 5px;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-  >
+  <div>
     Item 2
   </div>
 </div>
@@ -84,7 +73,7 @@ exports[`VerticalStack renders gap correctly 1`] = `
 exports[`VerticalStack renders growing items correctly 1`] = `
 <div
   className=
-
+      ms-VerticalStack
       {
         box-sizing: border-box;
         display: flex;
@@ -93,27 +82,38 @@ exports[`VerticalStack renders growing items correctly 1`] = `
         height: auto;
         width: auto;
       }
+      & > * {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      & > *:not(:empty) ~ * {
+        margin-top: 0px;
+      }
+      & > *:empty {
+        display: none;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 0;
+      }
 >
   <span
     className=
-
+        ms-StackItem
         {
           flex-shrink: 0;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
+          height: auto;
+          width: auto;
         }
   >
     Item 1
   </span>
   <span
     className=
-
+        ms-StackItem
         {
           flex-shrink: 0;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
+          height: auto;
+          width: auto;
         }
   >
     Item 2
@@ -124,7 +124,7 @@ exports[`VerticalStack renders growing items correctly 1`] = `
 exports[`VerticalStack renders item alignments correctly 1`] = `
 <div
   className=
-
+      ms-VerticalStack
       {
         box-sizing: border-box;
         display: flex;
@@ -133,81 +133,88 @@ exports[`VerticalStack renders item alignments correctly 1`] = `
         height: auto;
         width: auto;
       }
+      & > * {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      & > *:not(:empty) ~ * {
+        margin-top: 0px;
+      }
+      & > *:empty {
+        display: none;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 0;
+      }
 >
   <span
     className=
-
+        ms-StackItem
         {
           align-self: auto;
           flex-shrink: 0;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
+          height: auto;
+          width: auto;
         }
   >
     Auto
   </span>
   <span
     className=
-
+        ms-StackItem
         {
           align-self: stretch;
           flex-shrink: 0;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
+          height: auto;
+          width: auto;
         }
   >
     Stretch
   </span>
   <span
     className=
-
+        ms-StackItem
         {
           align-self: baseline;
           flex-shrink: 0;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
+          height: auto;
+          width: auto;
         }
   >
     Baseline
   </span>
   <span
     className=
-
+        ms-StackItem
         {
           align-self: flex-start;
           flex-shrink: 0;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
+          height: auto;
+          width: auto;
         }
   >
     Start
   </span>
   <span
     className=
-
+        ms-StackItem
         {
           align-self: center;
           flex-shrink: 0;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
+          height: auto;
+          width: auto;
         }
   >
     Center
   </span>
   <span
     className=
-
+        ms-StackItem
         {
           align-self: flex-end;
           flex-shrink: 0;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
+          height: auto;
+          width: auto;
         }
   >
     End
@@ -218,7 +225,7 @@ exports[`VerticalStack renders item alignments correctly 1`] = `
 exports[`VerticalStack renders shrinking items correctly 1`] = `
 <div
   className=
-
+      ms-VerticalStack
       {
         box-sizing: border-box;
         display: flex;
@@ -227,26 +234,38 @@ exports[`VerticalStack renders shrinking items correctly 1`] = `
         height: auto;
         width: auto;
       }
+      & > * {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      & > *:not(:empty) ~ * {
+        margin-top: 0px;
+      }
+      & > *:empty {
+        display: none;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
 >
   <span
     className=
-
+        ms-StackItem
         {
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
+          flex-shrink: 1;
+          height: auto;
+          width: auto;
         }
   >
     Item 1
   </span>
   <span
     className=
-
+        ms-StackItem
         {
           flex-shrink: 0;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
+          height: auto;
+          width: auto;
         }
   >
     Item 2

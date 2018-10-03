@@ -2,8 +2,6 @@
 
 exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
 <div
-  aria-describedby={undefined}
-  aria-labelledby={undefined}
   className="ms-FocusZone"
   data-focuszone-id="FocusZone0"
   onFocus={[Function]}
@@ -12,7 +10,6 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
   role="presentation"
 >
   <nav
-    aria-label={undefined}
     className=
         ms-Nav
         {
@@ -76,7 +73,6 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
             >
               <button
                 aria-expanded="false"
-                aria-label={undefined}
                 className=
                     ms-Nav-chevronButton
                     {
@@ -163,10 +159,6 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
               </button>
               <a
                 aria-describedby="id__3"
-                aria-disabled={undefined}
-                aria-label={undefined}
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 className=
                     ms-Button
                     ms-Button--action
@@ -224,6 +216,11 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                       right: -2px;
                       top: -2px;
                     }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
+                    }
                     &:hover {
                       color: #0078d4;
                     }
@@ -245,7 +242,6 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                       color: #333333;
                     }
                 data-is-focusable={true}
-                disabled={undefined}
                 href="http://example.com"
                 onClick={[Function]}
                 onKeyDown={[Function]}
@@ -253,8 +249,6 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
-                rel={undefined}
-                target={undefined}
                 title="Parent link"
               >
                 <div
@@ -356,7 +350,6 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
             >
               <button
                 aria-expanded="false"
-                aria-label={undefined}
                 className=
                     ms-Nav-chevronButton
                     {
@@ -443,10 +436,6 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
               </button>
               <a
                 aria-describedby="id__6"
-                aria-disabled={undefined}
-                aria-label={undefined}
-                aria-labelledby={undefined}
-                aria-pressed={undefined}
                 className=
                     ms-Button
                     ms-Button--action
@@ -504,6 +493,11 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                       right: -2px;
                       top: -2px;
                     }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
+                    }
                     &:hover {
                       color: #0078d4;
                     }
@@ -525,7 +519,6 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                       color: #333333;
                     }
                 data-is-focusable={true}
-                disabled={undefined}
                 href="http://example.com"
                 onClick={[Function]}
                 onKeyDown={[Function]}
@@ -533,8 +526,6 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
-                rel={undefined}
-                target={undefined}
                 title="Parent link"
               >
                 <div

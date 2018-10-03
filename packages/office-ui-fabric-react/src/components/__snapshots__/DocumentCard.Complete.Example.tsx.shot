@@ -7,12 +7,10 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
     onClick={[Function]}
     onKeyDown={[Function]}
     role="button"
-    style={undefined}
     tabIndex={0}
   >
     <div
       className="ms-DocumentCardPreview is-fileList undefined"
-      style={undefined}
     >
       <div>
         <ul
@@ -53,7 +51,39 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               />
             </div>
             <a
+              className=
+                  ms-Link
+                  {
+                    color: #0078d4;
+                    outline: transparent;
+                    position: relative;
+                    text-decoration: none;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: -1px;
+                    content: "";
+                    left: -1px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: -1px;
+                    top: -1px;
+                    z-index: 1;
+                  }
+                  &:active, &:hover, &:active:hover {
+                    color: #004578;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                    text-decoration: underline;
+                  }
+                  &:focus {
+                    color: #0078d4;
+                  }
               href="http://bing.com"
+              onClick={[Function]}
             >
               2016 Conference Presentation
             </a>
@@ -93,7 +123,39 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               />
             </div>
             <a
+              className=
+                  ms-Link
+                  {
+                    color: #0078d4;
+                    outline: transparent;
+                    position: relative;
+                    text-decoration: none;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: -1px;
+                    content: "";
+                    left: -1px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: -1px;
+                    top: -1px;
+                    z-index: 1;
+                  }
+                  &:active, &:hover, &:active:hover {
+                    color: #004578;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                    text-decoration: underline;
+                  }
+                  &:focus {
+                    color: #0078d4;
+                  }
               href="http://bing.com"
+              onClick={[Function]}
             >
               New Contoso Collaboration for Conference Presentation Draft
             </a>
@@ -133,7 +195,39 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               />
             </div>
             <a
+              className=
+                  ms-Link
+                  {
+                    color: #0078d4;
+                    outline: transparent;
+                    position: relative;
+                    text-decoration: none;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: -1px;
+                    content: "";
+                    left: -1px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: -1px;
+                    top: -1px;
+                    z-index: 1;
+                  }
+                  &:active, &:hover, &:active:hover {
+                    color: #004578;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                    text-decoration: underline;
+                  }
+                  &:focus {
+                    color: #0078d4;
+                  }
               href="http://bing.com"
+              onClick={[Function]}
             >
               Spec Sheet for design
             </a>
@@ -150,7 +244,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
       aria-label="Location, Marketing Documents"
       className="ms-DocumentCardLocation"
       href="http://microsoft.com"
-      onClick={undefined}
     >
       Marketing Documents
     </a>
@@ -193,7 +286,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     text-align: center;
                     width: 32px;
                   }
-              style={undefined}
             >
               <div
                 aria-hidden="true"
@@ -215,7 +307,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                       box-sizing: border-box;
                       color: WindowText;
                     }
-                style={undefined}
               >
                 <span>
                   JH
@@ -251,7 +342,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     text-align: center;
                     width: 32px;
                   }
-              style={undefined}
             >
               <div
                 className=
@@ -296,7 +386,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                       }
                   onError={[Function]}
                   onLoad={[Function]}
-                  role={undefined}
                   src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
                 />
               </div>
@@ -326,11 +415,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
         className="ms-DocumentCardActions-action"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
           aria-label="share action"
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--icon
@@ -381,6 +466,11 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #004578;
               }
@@ -392,7 +482,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 color: #0078d4;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -447,11 +536,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
         className="ms-DocumentCardActions-action"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
           aria-label="pin action"
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--icon
@@ -502,6 +587,11 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #004578;
               }
@@ -513,7 +603,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 color: #0078d4;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -568,11 +657,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
         className="ms-DocumentCardActions-action"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
           aria-label="ringer action"
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--icon
@@ -623,6 +708,11 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #004578;
               }
@@ -634,7 +724,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 color: #0078d4;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -718,7 +807,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
-    style={undefined}
     tabIndex={0}
   >
     <div
@@ -754,9 +842,11 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
       </div>
       <div
         className="ms-DocumentCardTitle"
-        title="This is the email content preview, please feel free to give feedback. SharePoint Site Acitivity add conversation card! This is the last."
+        title="This is the email content preview, please feel free to give feedback.
+                SharePoint Site Activity add conversation card! This is the last."
       >
-        This is the email content preview, please feel free to give feedback. SharePoint Site Acitivity add conversation card! This is the last.
+        This is the email content preview, please feel free to give feedback.
+                SharePoint Site Activity add conversation card! This is the last.
       </div>
       <div
         className="ms-DocumentCardStatus"
@@ -819,7 +909,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     text-align: center;
                     width: 32px;
                   }
-              style={undefined}
             >
               <div
                 aria-hidden="true"
@@ -841,7 +930,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                       box-sizing: border-box;
                       color: WindowText;
                     }
-                style={undefined}
               >
                 <span>
                   JH
@@ -877,7 +965,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     text-align: center;
                     width: 32px;
                   }
-              style={undefined}
             >
               <div
                 className=
@@ -922,7 +1009,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                       }
                   onError={[Function]}
                   onLoad={[Function]}
-                  role={undefined}
                   src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
                 />
               </div>
@@ -952,7 +1038,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
-    style={undefined}
     tabIndex={0}
   >
     <div
@@ -1053,7 +1138,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     text-align: center;
                     width: 32px;
                   }
-              style={undefined}
             >
               <div
                 aria-hidden="true"
@@ -1075,7 +1159,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                       box-sizing: border-box;
                       color: WindowText;
                     }
-                style={undefined}
               >
                 <span>
                   JH
@@ -1111,7 +1194,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     text-align: center;
                     width: 32px;
                   }
-              style={undefined}
             >
               <div
                 className=
@@ -1156,7 +1238,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                       }
                   onError={[Function]}
                   onLoad={[Function]}
-                  role={undefined}
                   src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
                 />
               </div>
@@ -1186,7 +1267,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
-    style={undefined}
     tabIndex={0}
   >
     <div
@@ -1260,7 +1340,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     text-align: center;
                     width: 32px;
                   }
-              style={undefined}
             >
               <div
                 aria-hidden="true"
@@ -1282,7 +1361,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                       box-sizing: border-box;
                       color: WindowText;
                     }
-                style={undefined}
               >
                 <span>
                   JH
@@ -1318,7 +1396,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     text-align: center;
                     width: 32px;
                   }
-              style={undefined}
             >
               <div
                 className=
@@ -1363,7 +1440,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                       }
                   onError={[Function]}
                   onLoad={[Function]}
-                  role={undefined}
                   src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
                 />
               </div>
@@ -1393,12 +1469,10 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
-    style={undefined}
     tabIndex={0}
   >
     <div
       className="ms-DocumentCardPreview"
-      style={undefined}
     >
       <div
         className="ms-DocumentCardPreview-iconContainer"
@@ -1473,7 +1547,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                       text-align: center;
                       width: 32px;
                     }
-                style={undefined}
               >
                 <div
                   className=
@@ -1518,7 +1591,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                         }
                     onError={[Function]}
                     onLoad={[Function]}
-                    role={undefined}
                     src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
                   />
                 </div>

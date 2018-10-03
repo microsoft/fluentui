@@ -4,7 +4,6 @@ import { SectionTitleTextField } from './SectionTitleTextField';
 import { getStyles } from './Section.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
-import { OverflowSet, IOverflowSetItemProps } from 'office-ui-fabric-react/lib/OverflowSet';
 
 export class Section extends React.PureComponent<ISectionProps, ISectionState> {
   constructor(props: ISectionProps) {
@@ -16,13 +15,14 @@ export class Section extends React.PureComponent<ISectionProps, ISectionState> {
 
   public render(): JSX.Element {
     const getClassNames = classNamesFunction<ISectionStyleProps, ISectionStyles>();
-    const { disabled, rowHeight } = this.props;
-    const classNames = getClassNames(getStyles!, { disabled, rowHeight });
+    const { disabled, rowHeight, isEditMode } = this.props;
+    const classNames = getClassNames(getStyles!, { disabled, rowHeight, isEditMode });
 
     if (this.props.isRenaming) {
       return (
         <div className={classNames.root}>
           <SectionTitleTextField
+            className={classNames.renameSectionTextField}
             id={this.props.id}
             placeHolder={this.props.title}
             rowHeight={this.props.rowHeight}
@@ -36,7 +36,7 @@ export class Section extends React.PureComponent<ISectionProps, ISectionState> {
       return (
         <div className={classNames.root}>
           <SectionTitleTextField
-            className={classNames.editTitleTextField}
+            className={classNames.addSectionTextField}
             id={this.props.id}
             placeHolder={this.props.title}
             rowHeight={this.props.rowHeight}
@@ -89,47 +89,9 @@ export class Section extends React.PureComponent<ISectionProps, ISectionState> {
               }}
             />
           )}
-          {!this.props.isEditMode &&
-            this.props.removeTitle && (
-              <OverflowSet
-                overflowItems={this._getOverflowSetOptions()}
-                onRenderOverflowButton={this._onRenderOverflowButton}
-                onRenderItem={this._onRenderOverflowItem}
-                className={classNames.actionButton}
-              />
-            )}
         </div>
       </div>
     );
-  }
-
-  // TODO, the button prop should be moved to top level prop
-  private _getOverflowSetOptions = () => {
-    if (this.props.removeTitle) {
-      const dropDownOptions: IOverflowSetItemProps[] = [];
-      const dropDownOption: IOverflowSetItemProps = {
-        key: '0',
-        name: this.props.removeTitle,
-        title: this.props.removeTitle
-      };
-      dropDownOptions.push(dropDownOption);
-      return dropDownOptions;
-    }
-  };
-
-  private _onRenderOverflowItem(item: IOverflowSetItemProps): JSX.Element {
-    return (
-      <IconButton
-        menuIconProps={{ iconName: item.icon }}
-        onClick={item.onClick}
-        title={item.title}
-        ariaLabel={item.ariaLabel}
-      />
-    );
-  }
-
-  private _onRenderOverflowButton(overflowItems: IOverflowSetItemProps[] | undefined): JSX.Element {
-    return <IconButton menuIconProps={{ iconName: 'More' }} menuProps={{ items: overflowItems! }} />;
   }
 
   /**

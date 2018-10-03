@@ -16,8 +16,6 @@ exports[`Facepile renders Facepile correctly 1`] = `
         }
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className="ms-FocusZone"
       data-focuszone-id="FocusZone1"
       onFocus={[Function]}
@@ -115,7 +113,6 @@ exports[`Facepile renders Facepile correctly 1`] = `
                       text-align: center;
                       width: 32px;
                     }
-                style={undefined}
               >
                 <div
                   className=
@@ -160,7 +157,6 @@ exports[`Facepile renders Facepile correctly 1`] = `
                         }
                     onError={[Function]}
                     onLoad={[Function]}
-                    role={undefined}
                     src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
                   />
                 </div>
@@ -241,7 +237,6 @@ exports[`Facepile renders Facepile correctly 1`] = `
                       text-align: center;
                       width: 32px;
                     }
-                style={undefined}
               >
                 <div
                   className=
@@ -286,7 +281,6 @@ exports[`Facepile renders Facepile correctly 1`] = `
                         }
                     onError={[Function]}
                     onLoad={[Function]}
-                    role={undefined}
                     src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
                   />
                 </div>
@@ -307,11 +301,6 @@ exports[`Facepile renders Facepile correctly 1`] = `
               }
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
-            aria-label={undefined}
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             className=
                 ms-Button
                 ms-Facepile-itemButton
@@ -364,6 +353,11 @@ exports[`Facepile renders Facepile correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 button& {
                   background-color: transparent;
                   background: none;
@@ -377,7 +371,6 @@ exports[`Facepile renders Facepile correctly 1`] = `
                 }
             data="75%"
             data-is-focusable={true}
-            disabled={undefined}
             onClick={[Function]}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
@@ -424,7 +417,6 @@ exports[`Facepile renders Facepile correctly 1`] = `
                         text-align: center;
                         width: 32px;
                       }
-                  style={undefined}
                 >
                   <div
                     aria-hidden="true"
@@ -446,7 +438,6 @@ exports[`Facepile renders Facepile correctly 1`] = `
                           box-sizing: border-box;
                           color: WindowText;
                         }
-                    style={undefined}
                   >
                     <span>
                       AL

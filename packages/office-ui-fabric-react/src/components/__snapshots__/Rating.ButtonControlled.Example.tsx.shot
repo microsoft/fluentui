@@ -17,8 +17,6 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
     id="Rating0"
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className=
           ms-FocusZone
           ms-Rating-focuszone
@@ -721,11 +719,6 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
     </div>
   </div>
   <button
-    aria-describedby={undefined}
-    aria-disabled={undefined}
-    aria-label={undefined}
-    aria-labelledby={undefined}
-    aria-pressed={undefined}
     className=
         ms-Button
         ms-Button--primary
@@ -777,6 +770,11 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
           right: -2px;
           top: -2px;
         }
+        &:active > * {
+          left: 0px;
+          position: relative;
+          top: 0px;
+        }
         @media screen and (-ms-high-contrast: active){& {
           -ms-high-contrast-adjust: none;
           background-color: WindowText;
@@ -800,7 +798,6 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
           color: Window;
         }
     data-is-focusable={true}
-    disabled={undefined}
     onClick={[Function]}
     onKeyDown={[Function]}
     onKeyPress={[Function]}

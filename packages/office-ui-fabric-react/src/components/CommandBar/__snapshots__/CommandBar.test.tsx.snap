@@ -2,13 +2,13 @@
 
 exports[`CommandBar renders commands correctly 1`] = `
 <div
-  className=
-      ms-ResizeGroup
-      TestClassName
-      {
-        display: block;
-        position: relative;
-      }
+  className="TestClassName"
+  style={
+    Object {
+      "display": "block",
+      "position": "relative",
+    }
+  }
 >
   <div
     data-automation-id="visibleContent"
@@ -20,9 +20,6 @@ exports[`CommandBar renders commands correctly 1`] = `
     }
   >
     <div
-      aria-describedby={undefined}
-      aria-label={undefined}
-      aria-labelledby={undefined}
       className=
           ms-FocusZone
           ms-CommandBar
@@ -64,13 +61,6 @@ exports[`CommandBar renders commands correctly 1`] = `
               }
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
-            aria-label={undefined}
-            aria-labelledby={undefined}
-            aria-posinset={1}
-            aria-pressed={undefined}
-            aria-setsize={2}
             className=
                 ms-Button
                 ms-Button--commandBar
@@ -123,6 +113,11 @@ exports[`CommandBar renders commands correctly 1`] = `
                   right: 4px;
                   top: 4px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
                 }
@@ -138,13 +133,13 @@ exports[`CommandBar renders commands correctly 1`] = `
                   color: #000000;
                 }
             data-is-focusable={true}
-            disabled={undefined}
             onClick={[Function]}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseUp={[Function]}
+            role="menuitem"
             type="button"
           >
             <div
@@ -175,6 +170,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
+                        white-space: nowrap;
                       }
                   id="id__1"
                 >
@@ -193,13 +189,6 @@ exports[`CommandBar renders commands correctly 1`] = `
               }
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
-            aria-label={undefined}
-            aria-labelledby={undefined}
-            aria-posinset={2}
-            aria-pressed={undefined}
-            aria-setsize={2}
             className=
                 ms-Button
                 ms-Button--commandBar
@@ -252,6 +241,11 @@ exports[`CommandBar renders commands correctly 1`] = `
                   right: 4px;
                   top: 4px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
                 }
@@ -267,13 +261,13 @@ exports[`CommandBar renders commands correctly 1`] = `
                   color: #000000;
                 }
             data-is-focusable={true}
-            disabled={undefined}
             onClick={[Function]}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseUp={[Function]}
+            role="menuitem"
             type="button"
           >
             <div
@@ -304,6 +298,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
+                        white-space: nowrap;
                       }
                   id="id__4"
                 >

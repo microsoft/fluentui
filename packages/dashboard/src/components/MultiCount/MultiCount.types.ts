@@ -25,6 +25,11 @@ export interface IMultiCountProps {
    * color for the body text
    */
   bodyTextColor?: string;
+
+  /**
+   * custom message for the multicount
+   */
+  customMessage?: string;
 }
 
 export enum AnnotationType {
@@ -53,6 +58,7 @@ export interface IMultiCountStyleProps {
   hoveredText?: string;
   currentText?: string;
   href?: string;
+  hideIcon?: boolean;
 }
 
 export interface IMultiCountRow {
@@ -85,6 +91,11 @@ export interface IMultiCountRow {
    *Url to be redirected to upon clicking on row of Multicount
    */
   href?: string;
+
+  /**
+   *prop to hide the change-indicator icon in the row
+   */
+  hideIcon?: boolean;
 }
 
 export interface IMultiCountStyles {
@@ -97,6 +108,11 @@ export interface IMultiCountStyles {
    * Style for bodyText
    */
   bodyText: IStyle;
+
+  /**
+   * Style for change indicator icon
+   */
+  changeIcon: IStyle;
 
   /**
    * Style for annotaion text and the change icon
@@ -142,4 +158,14 @@ export interface IMultiCountStyles {
    * Style for annotation text displayedin the hover card
    */
   hoverCardAnnotationText: IStyle;
+
+  /**
+   * Style for icon in the hover card
+   */
+  hoverCardIcon: IStyle;
+
+  /**
+   * Style for the custom message
+   */
+  customMessage: IStyle;
 }

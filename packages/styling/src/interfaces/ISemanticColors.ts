@@ -186,26 +186,32 @@ export interface ISemanticColors extends ISemanticTextColors {
    * Background of a standard button
    */
   buttonBackground: string;
-  /**
-   * Background of a hovered standard button
-   */
-  buttonBackgroundHovered: string;
+
   /**
    * Background of a checked standard button; e.g. bold/italicize/underline text button in toolbar
    */
   buttonBackgroundChecked: string;
+
+  /**
+   * Background of a hovered standard button
+   */
+
+  buttonBackgroundHovered: string;
+
   /**
    * Background of a checked and hovered standard button; e.g. bold/italicize/underline text button in toolbar
    */
   buttonBackgroundCheckedHovered: string;
-  /**
-   * Background of a pressed standard button; i.e. currently being clicked by mouse
-   */
-  buttonBackgroundPressed: string;
+
   /**
    * Background of a disabled standard button
    */
   buttonBackgroundDisabled: string;
+
+  /**
+   * Background of a pressed standard button; i.e. currently being clicked by mouse
+   */
+  buttonBackgroundPressed: string;
 
   /**
    * Border of a standard button
@@ -221,14 +227,21 @@ export interface ISemanticColors extends ISemanticTextColors {
    * Background of a primary button
    */
   primaryButtonBackground: string;
+
   /**
    * Background of a hovered primary button
    */
   primaryButtonBackgroundHovered: string;
+
   /**
    * Background of a pressed primary button; i.e. currently being clicked by mouse
    */
   primaryButtonBackgroundPressed: string;
+
+  /**
+   * Background of a disabled primary button
+   */
+  primaryButtonBackgroundDisabled: string;
 
   /**
    * Border of a primary button
@@ -238,9 +251,14 @@ export interface ISemanticColors extends ISemanticTextColors {
   //// Menus, popups, etc
 
   /**
-   * The background of a hovered menu item.
+   * The background of a menu.
    */
-  menuItemBackgroundHovered: string;
+  menuBackground: string;
+
+  /**
+   * The divider between menu items.
+   */
+  menuDivider: string;
 
   /**
    * The default colors of icons in menus.
@@ -251,6 +269,26 @@ export interface ISemanticColors extends ISemanticTextColors {
    * The headers in menus that denote title of a section.
    */
   menuHeader: string;
+
+  /**
+   * The background of a hovered menu item.
+   */
+  menuItemBackgroundHovered: string;
+
+  /**
+   * The background of a pressed menu item.
+   */
+  menuItemBackgroundPressed: string;
+
+  /**
+   * The text color of a menu item.
+   */
+  menuItemText: string;
+
+  /**
+   * The text color of a hovered menu item.
+   */
+  menuItemTextHovered: string;
 
   //// Lists
 

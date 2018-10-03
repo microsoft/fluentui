@@ -25,6 +25,13 @@ export type DashboardSectionMapping = {
   [id: string]: string[];
 };
 
+export type CardSizeToRGLWidthHeightMapping = {
+  /**
+   * CardSize -> width height value map in React-Grid-Layout. P is @see CardSize
+   */
+  [P in CardSize]: { w: number; h: number }
+};
+
 export interface IDashboardCardLayout {
   /**
    * A string corresponding to the component key
@@ -77,6 +84,21 @@ export interface IDashboardGridLayoutProps {
   dragApi?: DragApiRefObject;
 
   /**
+   * # of cols. This is a breakpoint -> cols map, e.g. {lg: 12, md: 10, ...}
+   */
+  cols?: { [P in Breakpoints]: number };
+
+  /**
+   * Margin between items [x, y] in px.
+   */
+  margin?: [number, number];
+
+  /**
+   * the px value of break points
+   */
+  breakpoints?: { [P in Breakpoints]: number };
+
+  /**
    * Whether items in this grid should be draggable or not
    * @default true
    */
@@ -110,26 +132,19 @@ export interface IDashboardGridLayoutProps {
   rowHeight?: number;
 
   /**
-   * Callback so you can save the layout.
-   */
-  onLayoutChange?(currentLayout: Layout[], allLayouts: Layouts): void;
-
-  /**
-   * Calls back with breakpoint and new number of columns
-   */
-  onBreakPointChange?(newBreakpoint: string, newCols: number): void;
-}
-
-export interface IDashboardGridSectionLayoutProps extends IDashboardGridLayoutProps {
-  /**
    * The sections
    */
-  sections: ISection[];
+  sections?: ISection[];
 
   /**
-   * THe cards
+   * The cards definition. Either use cards or cardNodes to pass in the card definitions.
    */
-  cards: ICard[];
+  cards?: ICard[];
+
+  /**
+   * Alternative to provide card definition. Either use cards or cardNodes to pass in the card definitions.
+   */
+  cardNodes?: JSX.Element[];
 
   /**
    * if the section is collapsible
@@ -138,8 +153,33 @@ export interface IDashboardGridSectionLayoutProps extends IDashboardGridLayoutPr
   isCollapsible?: boolean;
 
   /**
-   * On section change.
-   * @param newMapping
+   * This is a CardSize -> width height value map in React-Grid-Layout.
    */
-  onSectionChange?(currentLayout: Layout[], allLayouts: Layouts, sectionMapping?: DashboardSectionMapping): void;
+  cardSizeToRGLWidthHeight?: CardSizeToRGLWidthHeightMapping;
+
+  /**
+   * Callback on the layout change.
+   * @param currentLayout the current layout used
+   * @param allLayouts all layouts for all breakpoints
+   */
+  onLayoutChange?: (currentLayout: Layout[], allLayouts: Layouts) => void;
+
+  /**
+   * Callback on the layout change. Compare to @see onLayoutChange, this callback returns one more value which captures
+   * the section to cards mapping
+   * @param currentLayout the current layout used
+   * @param allLayouts all layouts for all breakpoints
+   * @param sectionMapping section tp card mapping
+   */
+  onSectionChange?: (currentLayout: Layout[], allLayouts: Layouts, sectionMapping?: DashboardSectionMapping) => void;
+
+  /**
+   * Callback with breakpoint and new number of columns
+   */
+  onBreakPointChange?: (newBreakpoint: string, newCols: number) => void;
+
+  /**
+   * Callback when the width changes, so you can modify the layout as needed.
+   */
+  onWidthChange?: (containerWidth: number, margin: [number, number], cols: number, containerPadding: [number, number]) => void;
 }

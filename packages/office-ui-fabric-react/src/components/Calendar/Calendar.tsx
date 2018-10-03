@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  ICalendar,
-  ICalendarProps,
-  ICalendarStrings,
-  ICalendarIconStrings,
-  ICalendarFormatDateCallbacks
-} from './Calendar.types';
+import { ICalendar, ICalendarProps, ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.types';
 import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { CalendarDay, ICalendarDay } from './CalendarDay';
 import { CalendarMonth, ICalendarMonth } from './CalendarMonth';
@@ -22,19 +16,12 @@ const iconStrings: ICalendarIconStrings = {
   rightNavigation: rightArrow,
   closeIcon: closeIcon
 };
-const defaultWorkWeekDays: DayOfWeek[] = [
-  DayOfWeek.Monday,
-  DayOfWeek.Tuesday,
-  DayOfWeek.Wednesday,
-  DayOfWeek.Thursday,
-  DayOfWeek.Friday
-];
+const defaultWorkWeekDays: DayOfWeek[] = [DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Thursday, DayOfWeek.Friday];
 
 const dateTimeFormatterCallbacks: ICalendarFormatDateCallbacks = {
   formatMonthDayYear: (date: Date, strings: ICalendarStrings) =>
     strings.months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear(),
-  formatMonthYear: (date: Date, strings: ICalendarStrings) =>
-    strings.months[date.getMonth()] + ' ' + date.getFullYear(),
+  formatMonthYear: (date: Date, strings: ICalendarStrings) => strings.months[date.getMonth()] + ' ' + date.getFullYear(),
   formatDay: (date: Date) => date.getDate().toString(),
   formatYear: (date: Date) => date.getFullYear().toString()
 };
@@ -78,7 +65,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     dateTimeFormatter: dateTimeFormatterCallbacks,
     showSixWeeksByDefault: false,
     workWeekDays: defaultWorkWeekDays,
-    showCloseButton: false
+    showCloseButton: false,
+    allFocusable: false
   };
 
   private _dayPicker = createRef<ICalendarDay>();
@@ -95,7 +83,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
       navigatedDayDate: currentDate,
       navigatedMonthDate: currentDate,
 
-      /** When showMonthPickerAsOverlay is active it overrides isMonthPickerVisible/isDayPickerVisible props (These props permanently set the visibility of their respective calendars). */
+      /** When showMonthPickerAsOverlay is active it overrides isMonthPickerVisible/isDayPickerVisible props
+       (These props permanently set the visibility of their respective calendars). */
       isMonthPickerVisible: this.props.showMonthPickerAsOverlay ? false : this.props.isMonthPickerVisible,
       isDayPickerVisible: this.props.showMonthPickerAsOverlay ? true : this.props.isDayPickerVisible
     };
@@ -143,7 +132,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
       minDate,
       maxDate,
       className,
-      showCloseButton
+      showCloseButton,
+      allFocusable
     } = this.props;
     const { selectedDate, navigatedDayDate, navigatedMonthDate, isMonthPickerVisible, isDayPickerVisible } = this.state;
     const onHeaderSelect = showMonthPickerAsOverlay ? this._onHeaderSelect : undefined;
@@ -165,11 +155,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
           )}
         >
           <div
-            className={css(
-              'ms-DatePicker-holder ms-slideDownIn10',
-              styles.holder,
-              overlayedWithButton && styles.holderWithButton
-            )}
+            className={css('ms-DatePicker-holder ms-slideDownIn10', styles.holder, overlayedWithButton && styles.holderWithButton)}
             onKeyDown={this._onDatePickerPopupKeyDown}
           >
             <div className={css('ms-DatePicker-frame', styles.frame)}>
@@ -197,6 +183,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                     workWeekDays={this.props.workWeekDays}
                     componentRef={this._dayPicker}
                     showCloseButton={showCloseButton}
+                    allFocusable={allFocusable}
                   />
                 )}
                 {isDayPickerVisible && isMonthPickerVisible && <div className={styles.divider} />}

@@ -1,0 +1,32 @@
+{
+  "name": "@uifabric/set-version",
+  "version": "1.1.1",
+  "description": "Non-Fabric specific package version setter",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "sideEffects": [
+    "lib/version.js"
+  ],
+  "typings": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "node ../../scripts/build.js"
+  },
+  "disabledTasks": [
+    "copy",
+    "karma",
+    "webpack",
+    "build-codepen-examples"
+  ],
+  "devDependencies": {
+    "@types/jest": "23.0.0",
+    "office-ui-fabric-react-tslint": ">=6.0.0 <7.0.0"
+  },
+  "dependencies": {
+    "tslib": "^1.7.1"
+  }
+}

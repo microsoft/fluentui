@@ -10,24 +10,27 @@ import { HoverCard, IExpandingCardProps, ExpandingCardMode } from 'office-ui-fab
 
 export interface IMultiCountState {
   hoveredText: string;
+  hoverCardHeight: number;
 }
 
 export class MultiCount extends React.Component<IMultiCountProps, IMultiCountState> {
   constructor(props: IMultiCountProps) {
     super(props);
     this.state = {
-      hoveredText: ''
+      hoveredText: '',
+      hoverCardHeight: 0
     };
   }
 
   public render(): JSX.Element {
-    const { multiCountRows, annotationTextFontSize, annotationTextColor, bodyTextFontSize, bodyTextColor } = this.props;
+    const { multiCountRows, annotationTextFontSize, annotationTextColor, bodyTextFontSize, bodyTextColor, customMessage } = this.props;
     const data: JSX.Element[] = this.getGeneratedData(
       multiCountRows,
       annotationTextFontSize,
       annotationTextColor,
       bodyTextFontSize,
-      bodyTextColor
+      bodyTextColor,
+      customMessage
     );
     return <div>{data}</div>;
   }
@@ -37,7 +40,8 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
     annotationTextFontSize?: string,
     annotationTextColor?: string,
     bodyTextFontSize?: string,
-    bodyTextColor?: string
+    bodyTextColor?: string,
+    customMessage?: string
   ): JSX.Element[] {
     const formattedRows: JSX.Element[] = [];
     const units = ['', 'k', 'm', 'b'];
@@ -71,21 +75,29 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
           bodyTextFontSize: bodyTextFontSize,
           hoveredText: this.state.hoveredText,
           currentText: row.data + row.bodyText + row.annotaionText,
-          href: row.href
+          href: row.href,
+          hideIcon: row.hideIcon
         })
       );
       const expandingCardProps: IExpandingCardProps = {
+        compactCardHeight: this.state.hoverCardHeight,
         onRenderCompactCard: this._onRenderCompactCard,
-        renderData: row,
+        renderData: [row, customMessage],
         mode: ExpandingCardMode.compact,
         styles: {
           root: {
             width: 'auto',
-            height: 'auto'
+            height: 'auto',
+            margin: 0
           },
           compactCard: {
             width: 'auto',
-            height: 'auto'
+            height: 'auto',
+            margin: 0
+          },
+          expandedCard: {
+            width: 0,
+            margin: 0
           }
         }
       };
@@ -99,16 +111,14 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
           onCardVisible={this._hoverStateUpdate.bind(this, hoverKey, true)}
         >
           <div key={index} className={classNames.root} onClick={this._redirectToUrl.bind(this, row.href)}>
-            <div className={classNames.bodyText}>
-              <span className={classNames.data}>{formattedData + units[indexForUnits]}</span>
-              <span>{row.bodyText}</span>
-            </div>
-            <div className={classNames.annotationText}>
-              <span className={classNames.icon}>
+            <div className={classNames.data}>{formattedData + units[indexForUnits]}</div>
+            <div className={classNames.bodyText}>{row.bodyText}</div>
+            {!row.hideIcon && (
+              <div className={classNames.icon}>
                 <img src={changeIconIndicator} />
-              </span>
-              <span className={classNames.annotationText}>{row.annotaionText}</span>
-            </div>
+              </div>
+            )}
+            <div className={classNames.annotationText}>{row.annotaionText}</div>
           </div>
         </HoverCard>
       );
@@ -118,12 +128,16 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
 
   private _hoverStateUpdate = (hoverKey: string, hoverState: boolean): void => {
     if (hoverState) {
-      this.setState({
-        hoveredText: hoverKey
-      });
+      setTimeout(() => {
+        this.setState({
+          hoveredText: hoverKey,
+          hoverCardHeight: document.getElementsByClassName('hoverCardRoot')[0].clientHeight
+        });
+      }, 10);
     } else {
       this.setState({
-        hoveredText: ''
+        hoveredText: '',
+        hoverCardHeight: 0
       });
     }
   };
@@ -132,30 +146,33 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
     href ? (window.location.href = href) : '';
   }
 
-  private _onRenderCompactCard = (data: IMultiCountRow): JSX.Element => {
+  // tslint:disable-next-line:no-any
+  private _onRenderCompactCard = (data: any): JSX.Element => {
     const changeIconIndicator =
-      AnnotationType[data.type] === AnnotationType.neutral
+      AnnotationType[data[0].type] === AnnotationType.neutral
         ? noStateChange
-        : AnnotationType[data.type] === AnnotationType.positive
+        : AnnotationType[data[0].type] === AnnotationType.positive
           ? negativeStateChange
           : positiveChangeState;
     const getClassNames = classNamesFunction<IMultiCountProps, IMultiCountStyles>();
     const classNames = getClassNames(
       getStyles({
-        color: data.color
+        color: data[0].color
       })
     );
     return (
-      <div className={classNames.hoverCardRoot}>
-        <div />
+      <div className={classNames.hoverCardRoot + ' hoverCardRoot'}>
+        <div className={classNames.customMessage}>{data[1]}</div>
         <div className={classNames.hoverCardText}>
-          <div className={classNames.hoverCardBodyText}>{data.bodyText}</div>
-          <div className={classNames.icon}>
-            <img src={changeIconIndicator} />
-          </div>
-          <div className={classNames.hoverCardAnnotationText}>{data.annotaionText}</div>
+          <div className={classNames.hoverCardBodyText}>{data[0].bodyText}</div>
+          {!data[0].hideIcon && (
+            <div className={classNames.hoverCardIcon}>
+              <img src={changeIconIndicator} />
+            </div>
+          )}
+          <div className={classNames.hoverCardAnnotationText}>{data[0].annotaionText}</div>
         </div>
-        <div className={classNames.hoverCardData}>{data.data.toLocaleString()}</div>
+        <div className={classNames.hoverCardData}>{data[0].data.toLocaleString()}</div>
       </div>
     );
   };
