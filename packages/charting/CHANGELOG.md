@@ -1,6 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Mon, 01 Oct 2018 12:27:24 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Oct 2018 12:28:46 GMT and should not be manually modified.
+
+## 0.23.0
+Wed, 03 Oct 2018 12:28:46 GMT
+
+### Minor changes
+
+- Removing old legends component. Replaced in all data-viz with the new components which supports isolation and other states
 
 ## 0.22.1
 Mon, 01 Oct 2018 12:27:24 GMT

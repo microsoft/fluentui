@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 02 Oct 2018 12:28:04 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Oct 2018 12:28:46 GMT and should not be manually modified.
+
+## 6.77.0
+Wed, 03 Oct 2018 12:28:46 GMT
+
+### Minor changes
+
+- Modal: add optional prop topOffsetFixed
+- SwatchColorPicker: let height and width be customizable
+
+### Patches
+
+- FocusZone: check for RTL before making top bottom comparisons
 
 ## 6.76.0
 Tue, 02 Oct 2018 12:28:04 GMT

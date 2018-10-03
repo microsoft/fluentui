@@ -2,6 +2,25 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.23.0",
+      "tag": "@uifabric/charting_v0.23.0",
+      "date": "Wed, 03 Oct 2018 12:28:46 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Removing old legends component. Replaced in all data-viz with the new components which supports isolation and other states",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "327dd49d837d5065df25bb87a380d31033a8343a"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.76.0 <7.0.0` to `>=6.77.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.22.1",
       "tag": "@uifabric/charting_v0.22.1",
       "date": "Mon, 01 Oct 2018 12:27:24 GMT",
