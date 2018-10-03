@@ -1,6 +1,16 @@
 // Utilities
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, createRef, IRectangle, KeyCodes, shallowCompare } from '../../Utilities';
+import {
+  BaseComponent,
+  classNamesFunction,
+  createRef,
+  elementContains,
+  focusFirstChild,
+  getDocument,
+  IRectangle,
+  KeyCodes,
+  shallowCompare
+} from '../../Utilities';
 import { DefaultPalette } from '../../Styling';
 import { IPositionedData, RectangleEdge, getOppositeEdge } from '../../utilities/positioning';
 
@@ -10,7 +20,7 @@ import { Beak, BEAK_HEIGHT, BEAK_WIDTH } from './Beak/Beak';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
 // Coachmark
-import { ICoachmarkTypes } from './Coachmark.types';
+import { ICoachmark, ICoachmarkProps } from './Coachmark.types';
 import {
   COACHMARK_HEIGHT,
   COACHMARK_WIDTH,
@@ -18,7 +28,7 @@ import {
   ICoachmarkStyles,
   ICoachmarkStyleProps
 } from './Coachmark.styles';
-import { FocusTrapZone } from '../FocusTrapZone';
+import { FocusTrapZone } from '../../FocusTrapZone';
 
 const getClassNames = classNamesFunction<ICoachmarkStyleProps, ICoachmarkStyles>();
 
@@ -50,6 +60,11 @@ export interface ICoachmarkState {
    * original dimensions of the hosted entity.
    */
   isMeasuring: boolean;
+
+  /**
+   * Is the Coachmark done measuring the hosted entity
+   */
+  isMeasured: boolean;
 
   /**
    * Cached width and height of _entityInnerHostElement
@@ -102,8 +117,8 @@ export interface ICoachmarkState {
   alertText?: string;
 }
 
-export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
-  public static defaultProps: Partial<ICoachmarkTypes> = {
+export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> implements ICoachmark {
+  public static defaultProps: Partial<ICoachmarkProps> = {
     isCollapsed: true,
     mouseProximityOffset: 10,
     delayBeforeMouseOpen: 3600, // The approximate time the coachmark shows up
@@ -118,9 +133,11 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
    * The cached HTMLElement reference to the Entity Inner Host
    * element.
    */
+  private _entityHost = createRef<HTMLDivElement>();
   private _entityInnerHostElement = createRef<HTMLDivElement>();
   private _translateAnimationContainer = createRef<HTMLDivElement>();
   private _ariaAlertContainer = createRef<HTMLDivElement>();
+  private _childrenContainer = createRef<HTMLDivElement>();
   private _positioningContainer = createRef<IPositioningContainer>();
 
   /**
@@ -129,8 +146,17 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
    */
   private _targetElementRect: ClientRect;
 
-  constructor(props: ICoachmarkTypes) {
+  constructor(props: ICoachmarkProps) {
     super(props);
+
+    this._warnDeprecations({
+      teachingBubbleRef: undefined,
+      collapsed: 'isCollapsed',
+      beakWidth: undefined,
+      beakHeight: undefined,
+      width: undefined,
+      height: undefined
+    });
 
     // Set defaults for state
     this.state = {
@@ -141,7 +167,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
         width: 0,
         height: 0
       },
-      isMouseInProximity: false
+      isMouseInProximity: false,
+      isMeasured: false
     };
   }
 
@@ -177,7 +204,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       isMeasuring,
       entityInnerHostRect,
       transformOrigin,
-      alertText
+      alertText,
+      isMeasured
     } = this.state;
 
     const classNames = getClassNames(getStyles, {
@@ -189,7 +217,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       width: `${COACHMARK_WIDTH}px`,
       height: `${COACHMARK_HEIGHT}px`,
       color: color,
-      transformOrigin: transformOrigin
+      transformOrigin: transformOrigin,
+      isMeasured: isMeasured
     });
 
     const finalHeight: number = isCollapsed ? COACHMARK_HEIGHT : entityInnerHostRect.height;
@@ -219,46 +248,50 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
           <div className={classNames.translateAnimationContainer} ref={this._translateAnimationContainer}>
             <div className={classNames.scaleAnimationLayer}>
               <div className={classNames.rotateAnimationLayer}>
-                {this._positioningContainer.current && (
-                  <Beak
-                    left={beakLeft}
-                    top={beakTop}
-                    right={beakRight}
-                    bottom={beakBottom}
-                    direction={this._beakDirection}
-                    color={color}
-                  />
-                )}
-                <FocusTrapZone isClickableOutsideFocusTrap={true}>
-                  <div
-                    className={classNames.entityHost}
-                    tabIndex={-1}
-                    data-is-focusable={true}
-                    role="dialog"
-                    aria-labelledby={ariaLabelledBy}
-                    aria-describedby={ariaDescribedBy}
-                  >
-                    {isCollapsed && [
-                      ariaLabelledBy && (
-                        <p id={ariaLabelledBy} className={classNames.ariaContainer}>
-                          {ariaLabelledByText}
-                        </p>
-                      ),
-                      ariaDescribedBy && (
-                        <p id={ariaDescribedBy} className={classNames.ariaContainer}>
-                          {ariaDescribedByText}
-                        </p>
-                      )
-                    ]}
-                    <div
-                      className={classNames.entityInnerHost}
-                      ref={this._entityInnerHostElement}
-                      aria-hidden={isCollapsed}
-                    >
-                      {children}
+                {this._positioningContainer.current &&
+                  isCollapsed && (
+                    <Beak
+                      left={beakLeft}
+                      top={beakTop}
+                      right={beakRight}
+                      bottom={beakBottom}
+                      direction={this._beakDirection}
+                      color={color}
+                    />
+                  )}
+                <div
+                  className={classNames.entityHost}
+                  ref={this._entityHost}
+                  tabIndex={-1}
+                  data-is-focusable={true}
+                  role="dialog"
+                  aria-labelledby={ariaLabelledBy}
+                  aria-describedby={ariaDescribedBy}
+                >
+                  {isCollapsed && [
+                    ariaLabelledBy && (
+                      <p id={ariaLabelledBy} key={0} className={classNames.ariaContainer}>
+                        {ariaLabelledByText}
+                      </p>
+                    ),
+                    ariaDescribedBy && (
+                      <p id={ariaDescribedBy} key={1} className={classNames.ariaContainer}>
+                        {ariaDescribedByText}
+                      </p>
+                    )
+                  ]}
+                  <FocusTrapZone isClickableOutsideFocusTrap={true} forceFocusInsideTrap={false}>
+                    <div className={classNames.entityInnerHost} ref={this._entityInnerHostElement}>
+                      <div
+                        className={classNames.childrenContainer}
+                        ref={this._childrenContainer}
+                        aria-hidden={isCollapsed}
+                      >
+                        {children}
+                      </div>
                     </div>
-                  </div>
-                </FocusTrapZone>
+                  </FocusTrapZone>
+                </div>
               </div>
             </div>
           </div>
@@ -267,23 +300,26 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     );
   }
 
-  public componentWillReceiveProps(newProps: ICoachmarkTypes): void {
+  public componentWillReceiveProps(newProps: ICoachmarkProps): void {
     if (this.props.isCollapsed && !newProps.isCollapsed) {
       // The coachmark is about to open
       this._openCoachmark();
     }
   }
 
-  public shouldComponentUpdate(newProps: ICoachmarkTypes, newState: ICoachmarkState): boolean {
+  public shouldComponentUpdate(newProps: ICoachmarkProps, newState: ICoachmarkState): boolean {
     return !shallowCompare(newProps, this.props) || !shallowCompare(newState, this.state);
   }
 
-  public componentDidUpdate(prevProps: ICoachmarkTypes, prevState: ICoachmarkState): void {
+  public componentDidUpdate(prevProps: ICoachmarkProps, prevState: ICoachmarkState): void {
     if (
       prevState.targetAlignment !== this.state.targetAlignment ||
       prevState.targetPosition !== this.state.targetPosition
     ) {
       this._setBeakPosition();
+    }
+    if (prevProps.preventDismissOnLostFocus !== this.props.preventDismissOnLostFocus) {
+      this._addListeners();
     }
   }
 
@@ -299,15 +335,16 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
             entityInnerHostRect: {
               width: this._entityInnerHostElement.current.offsetWidth,
               height: this._entityInnerHostElement.current.offsetHeight
-            }
+            },
+            isMeasured: true
           });
           this._setBeakPosition();
           this.forceUpdate();
         }
 
-        this._events.on(document, 'keydown', this._onKeyDown, true);
+        this._addListeners();
 
-        // We dont want to the user to immediatley trigger the coachmark when it's opened
+        // We don't want to the user to immediately trigger the Coachmark when it's opened
         this._async.setTimeout(() => {
           this._addProximityHandler(this.props.mouseProximityOffset);
         }, this.props.delayBeforeMouseOpen!);
@@ -322,12 +359,49 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
             }
           }, 0);
         }
+        this._async.setTimeout(() => {
+          if (this._entityHost.current) {
+            this._entityHost.current.focus();
+          }
+        }, 1000);
       }
     );
   }
 
-  public componentWillUnmount(): void {
-    this._events.off(document, 'keydown', this._onKeyDown, true);
+  public dismiss = (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
+    const { onDismiss } = this.props;
+
+    if (onDismiss) {
+      onDismiss(ev);
+    }
+  };
+
+  private _addListeners(): void {
+    const { preventDismissOnLostFocus } = this.props;
+    const currentDoc: Document = getDocument()!;
+
+    this._events.off();
+
+    if (currentDoc) {
+      this._events.on(currentDoc, 'keydown', this._onKeyDown, true);
+
+      if (!preventDismissOnLostFocus) {
+        this._events.on(currentDoc, 'click', this._dismissOnLostFocus, true);
+        this._events.on(currentDoc, 'focus', this._dismissOnLostFocus, true);
+      }
+    }
+  }
+
+  private _dismissOnLostFocus(ev: Event) {
+    const clickTarget = ev.target as HTMLElement;
+    const clickedOutsideCallout =
+      this._translateAnimationContainer.current &&
+      !elementContains(this._translateAnimationContainer.current, clickTarget);
+    const { target } = this.props;
+
+    if (clickedOutsideCallout && clickTarget !== target && !elementContains(target as HTMLElement, clickTarget)) {
+      this.dismiss(ev);
+    }
   }
 
   private _onKeyDown = (e: any): void => {
@@ -484,10 +558,10 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
         (): void => {
           // Need setTimeout to trigger narrator
           this._async.setTimeout(() => {
-            if (this.props.teachingBubbleRef) {
-              this.props.teachingBubbleRef.focus();
+            if (this._entityInnerHostElement.current) {
+              focusFirstChild(this._entityInnerHostElement.current);
             }
-          }, 500);
+          }, 1000);
 
           if (this.props.onAnimationOpenEnd) {
             this.props.onAnimationOpenEnd();

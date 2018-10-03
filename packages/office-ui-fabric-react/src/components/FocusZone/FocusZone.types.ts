@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { FocusZone } from './FocusZone';
+import { IRefObject } from '../../Utilities';
 
 /**
  * FocusZone component class interface.
@@ -7,7 +8,8 @@ import { FocusZone } from './FocusZone';
 export interface IFocusZone {
   /**
    * Sets focus to the first tabbable item in the zone.
-   * @param {boolean} forceIntoFirstElement If true, focus will be forced into the first element, even if focus is already in the focus zone.
+   * @param {boolean} forceIntoFirstElement If true, focus will be forced into the first element, even
+   * if focus is already in the focus zone.
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
   focus(forceIntoFirstElement?: boolean): boolean;
@@ -30,7 +32,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
    * Optional callback to access the IFocusZone interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IFocusZone | null) => void;
+  componentRef?: IRefObject<IFocusZone>;
 
   /**
    * Additional class name to provide on the root element, in addition to the ms-FocusZone class.

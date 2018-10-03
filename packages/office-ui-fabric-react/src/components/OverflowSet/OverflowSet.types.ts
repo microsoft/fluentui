@@ -3,13 +3,14 @@ import * as React from 'react';
 import { IFocusZoneProps } from '../../FocusZone';
 import { IKeytipProps } from '../../Keytip';
 import { IStyle } from '../../Styling';
-import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { OverflowSetBase } from './OverflowSet.base';
 
 export interface IOverflowSet {
   /**
    * Sets focus to the first tabbable item in the zone.
-   * @param {boolean} forceIntoFirstElement If true, focus will be forced into the first element, even if focus is already in the focus zone.
+   * @param {boolean} forceIntoFirstElement If true, focus will be forced into the first element, even if
+   * focus is already in the focus zone.
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
   focus(forceIntoFirstElement?: boolean): boolean;
@@ -28,7 +29,7 @@ export interface IOverflowSetProps extends React.Props<OverflowSetBase> {
   /**
    * Gets the component ref.
    */
-  componentRef?: (ref?: IOverflowSet | null) => void;
+  componentRef?: IRefObject<IOverflowSet>;
 
   /**
    * Class name

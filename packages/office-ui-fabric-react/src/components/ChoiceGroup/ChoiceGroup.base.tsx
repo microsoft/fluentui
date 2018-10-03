@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Label } from '../../Label';
-import { IChoiceGroupOptionProps, ChoiceGroupOption, OnFocusCallback, OnChangeCallback } from './ChoiceGroupOption';
+import { ChoiceGroupOption, OnFocusCallback, OnChangeCallback } from './ChoiceGroupOption/index';
 import { IChoiceGroupOption, IChoiceGroupProps, IChoiceGroupStyleProps, IChoiceGroupStyles } from './ChoiceGroup.types';
-import { BaseComponent, customizable, classNamesFunction, createRef, getId } from '../../Utilities';
+import { BaseComponent, classNamesFunction, createRef, getId, find } from '../../Utilities';
 
 const getClassNames = classNamesFunction<IChoiceGroupStyleProps, IChoiceGroupStyles>();
 
@@ -13,7 +13,6 @@ export interface IChoiceGroupState {
   keyFocused?: string | number;
 }
 
-@customizable('ChoiceGroup', ['theme', 'styles'])
 export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGroupState> {
   public static defaultProps: IChoiceGroupProps = {
     options: []
@@ -44,9 +43,9 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
 
   public componentWillReceiveProps(newProps: IChoiceGroupProps): void {
     const newKeyChecked = this._getKeyChecked(newProps);
-    const oldKeyCheched = this._getKeyChecked(this.props);
+    const oldKeyChecked = this._getKeyChecked(this.props);
 
-    if (newKeyChecked !== oldKeyCheched) {
+    if (newKeyChecked !== oldKeyChecked) {
       this.setState({
         keyChecked: newKeyChecked!
       });
@@ -63,7 +62,17 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
       optionsContainIconOrImage: options!.some(option => Boolean(option.iconProps || option.imageSrc))
     });
 
-    const ariaLabelledBy = label ? this._id + '-label' : (this.props as any)['aria-labelledby'];
+    const ariaLabelledBy = this.props.ariaLabelledBy
+      ? this.props.ariaLabelledBy
+      : label
+        ? this._id + '-label'
+        : (this.props as any)['aria-labelledby'];
+
+    // In cases where no option is checked, set focusable to first enabled option so that ChoiceGroup remains focusable.
+    // If no options are enabled, ChoiceGroup is not focusable. If any option is checked, do not set keyDefaultFocusable.
+    const firstEnabledOption =
+      disabled || options === undefined ? undefined : find(options, option => !option.disabled);
+    const keyDefaultFocusable = keyChecked === undefined && firstEnabledOption ? firstEnabledOption.key : undefined;
 
     return (
       // Need to assign role application on containing div because JAWS doesn't call OnKeyDown without this role
@@ -76,10 +85,11 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
           )}
           <div className={classNames.flexContainer}>
             {options!.map((option: IChoiceGroupOption) => {
-              const innerOptionProps: IChoiceGroupOptionProps = {
+              const innerOptionProps = {
                 ...option,
                 focused: option.key === keyFocused,
                 checked: option.key === keyChecked,
+                'data-is-focusable': option.key === keyChecked || option.key === keyDefaultFocusable ? true : false,
                 disabled: option.disabled || disabled,
                 id: `${this._id}-${option.key}`,
                 labelId: `${this._labelId}-${option.key}`,
@@ -104,6 +114,16 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
   }
 
   public focus() {
+    const { options } = this.props;
+    if (options) {
+      for (const option of options) {
+        const elementToFocus = document.getElementById(`${this._id}-${option.key}`);
+        if (elementToFocus && elementToFocus.getAttribute('data-is-focusable') === 'true') {
+          elementToFocus.focus(); // focus on checked or default focusable key
+          return;
+        }
+      }
+    }
     if (this._inputElement.current) {
       this._inputElement.current.focus();
     }
@@ -130,7 +150,7 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
     this.changedVars[key]
       ? this.changedVars[key]
       : (this.changedVars[key] = (evt, option: IChoiceGroupOption) => {
-          const { onChanged, onChange, selectedKey, options } = this.props;
+          const { onChanged, onChange, selectedKey, options = [] } = this.props;
 
           // Only manage state in uncontrolled scenarios.
           if (selectedKey === undefined) {
@@ -139,7 +159,7 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
             });
           }
 
-          const originalOption = options!.find((value: IChoiceGroupOption) => value.key === key);
+          const originalOption = find(options, (value: IChoiceGroupOption) => value.key === key);
 
           // TODO: onChanged deprecated, remove else if after 07/17/2017 when onChanged has been removed.
           if (onChange) {
@@ -154,7 +174,9 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
       return props.selectedKey;
     }
 
-    const optionsChecked = props.options!.filter((option: IChoiceGroupOption) => {
+    const { options = [] } = props;
+
+    const optionsChecked = options.filter((option: IChoiceGroupOption) => {
       return option.checked;
     });
 

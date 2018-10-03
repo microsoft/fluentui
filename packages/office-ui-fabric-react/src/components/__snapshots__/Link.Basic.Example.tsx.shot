@@ -8,15 +8,30 @@ exports[`Component Examples renders Link.Basic.Example.tsx correctly 1`] = `
     When a link has an href, 
   </span>
   <a
-    aria-disabled={undefined}
     className=
         ms-Link
         {
           color: #0078d4;
           text-decoration: none;
         }
+<<<<<<< HEAD
         .ms-Fabric--isFocusVisible &:focus {
           outline: 1px solid #666666;
+=======
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: -1px;
+          content: "";
+          left: -1px;
+          outline: 1px solid #666666;
+          position: absolute;
+          right: -1px;
+          top: -1px;
+          z-index: 1;
+>>>>>>> master
         }
         &:active, &:hover, &:active:hover {
           color: #004578;
@@ -29,7 +44,6 @@ exports[`Component Examples renders Link.Basic.Example.tsx correctly 1`] = `
         }
     href="http://dev.office.com/fabric/components/link"
     onClick={[Function]}
-    target={undefined}
   >
     it renders as an anchor tag.
   </a>
@@ -37,7 +51,6 @@ exports[`Component Examples renders Link.Basic.Example.tsx correctly 1`] = `
      Without an href, 
   </span>
   <button
-    aria-disabled={undefined}
     className=
         ms-Link
         {
@@ -62,8 +75,24 @@ exports[`Component Examples renders Link.Basic.Example.tsx correctly 1`] = `
           text-overflow: inherit;
           user-select: text;
         }
+<<<<<<< HEAD
         .ms-Fabric--isFocusVisible &:focus {
           outline: 1px solid #666666;
+=======
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: -1px;
+          content: "";
+          left: -1px;
+          outline: 1px solid #666666;
+          position: absolute;
+          right: -1px;
+          top: -1px;
+          z-index: 1;
+>>>>>>> master
         }
         @media screen and (-ms-high-contrast: white-on-black){& {
           color: #FFFF00;
@@ -83,7 +112,6 @@ exports[`Component Examples renders Link.Basic.Example.tsx correctly 1`] = `
         &:focus {
           color: #0078d4;
         }
-    disabled={undefined}
     onClick={[Function]}
   >
     the link is rendered as a button
@@ -102,15 +130,30 @@ exports[`Component Examples renders Link.Basic.Example.tsx correctly 1`] = `
           cursor: default;
           text-decoration: none;
         }
+<<<<<<< HEAD
         .ms-Fabric--isFocusVisible &:focus {
           outline: 1px solid #666666;
+=======
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: -1px;
+          content: "";
+          left: -1px;
+          outline: 1px solid #666666;
+          position: absolute;
+          right: -1px;
+          top: -1px;
+          z-index: 1;
+>>>>>>> master
         }
         &:link, &:visited {
           pointer-events: none;
         }
     href="http://dev.office.com/fabric/components/link"
     onClick={[Function]}
-    target={undefined}
   >
     disabled link
   </a>

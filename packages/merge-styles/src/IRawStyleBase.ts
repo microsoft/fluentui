@@ -9,6 +9,37 @@ export type ICSSPercentageRule = string;
 // See CSS 3 <length> type https://drafts.csswg.org/css-values-3/#lengths
 export type ICSSPixelUnitRule = string | number;
 
+// See CSS <baseline-position> type https://www.w3.org/TR/css-align-3/#typedef-baseline-position
+export type ICSSBaselinePositionRule = 'baseline' | 'last baseline' | 'first baseline';
+
+// See CSS <overflow-position> type https://www.w3.org/TR/css-align-3/#typedef-overflow-position
+// See CSS <self-position> type https://www.w3.org/TR/css-align-3/#typedef-self-position
+export type ICSSOverflowAndSelfPositionRule =
+  // <self-position>
+  | 'center'
+  | 'start'
+  | 'end'
+  | 'self-start'
+  | 'self-end'
+  | 'flex-start'
+  | 'flex-end'
+  // <self-position> prefixed with <overflow-position> value 'safe'
+  | 'safe center'
+  | 'safe start'
+  | 'safe end'
+  | 'safe self-start'
+  | 'safe self-end'
+  | 'safe flex-start'
+  | 'safe flex-end'
+  // <self-position> prefixed with <overflow-position> value 'unsafe'
+  | 'unsafe center'
+  | 'unsafe start'
+  | 'unsafe end'
+  | 'unsafe self-start'
+  | 'unsafe self-end'
+  | 'unsafe flex-start'
+  | 'unsafe flex-end';
+
 export type IFontWeight =
   | ICSSRule
   | 'normal'
@@ -33,6 +64,25 @@ export type IFontWeight =
   | 800
   | '900'
   | 900;
+
+export type IMixBlendModes =
+  | ICSSRule
+  | 'normal'
+  | 'multiply'
+  | 'screen'
+  | 'overlay'
+  | 'darken'
+  | 'lighten'
+  | 'color-dodge'
+  | 'color-burn'
+  | 'hard-light'
+  | 'soft-light'
+  | 'difference'
+  | 'exclusion'
+  | 'hue'
+  | 'saturation'
+  | 'color'
+  | 'luminosity';
 
 /**
  * The base font style.
@@ -203,9 +253,13 @@ export interface IRawStyleBase extends IRawFontStyle {
   alignItems?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch';
 
   /**
-   * Allows the default alignment to be overridden for individual flex items.
+   * Aligns the box (as the alignment subject) within its containing block (as the alignment container)
+   * along the block/column/cross axis of the alignment container.
+   *
+   * See CSS align-self property
+   * https://www.w3.org/TR/css-align-3/#propdef-align-self
    */
-  alignSelf?: ICSSRule | 'auto' | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch';
+  alignSelf?: ICSSRule | 'auto' | 'normal' | 'stretch' | ICSSBaselinePositionRule | ICSSOverflowAndSelfPositionRule;
 
   /**
    * This property allows precise alignment of elements, such as graphics, that do not
@@ -949,6 +1003,29 @@ export interface IRawStyleBase extends IRawFontStyle {
   justifyContent?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly';
 
   /**
+   * Justifies the box (as the alignment subject) within its containing block (as the alignment container)
+   * along the inline/row/main axis of the alignment container.
+   *
+   * See CSS jusitfy-self property
+   * https://www.w3.org/TR/css-align-3/#propdef-justify-self
+   */
+  justifySelf?:
+    | ICSSRule
+    | 'auto'
+    | 'normal'
+    | 'stretch'
+    | ICSSBaselinePositionRule
+    | ICSSOverflowAndSelfPositionRule
+    | 'left'
+    | 'right'
+    // prefixed with <overflow-position> value 'safe'
+    | 'safe left'
+    | 'safe right'
+    // prefixed with <overflow-position> value 'unsafe'
+    | 'unsafe left'
+    | 'unsafe right';
+
+  /**
    * Sets the left position of an element relative to the nearest anscestor that is set
    * to position absolute, relative, or fixed.
    */
@@ -1122,6 +1199,12 @@ export interface IRawStyleBase extends IRawFontStyle {
   minWidth?: ICSSRule | ICSSPixelUnitRule;
 
   /**
+   * The mix-blend-mode CSS property describes how an element's content should blend
+   * with the content of the element's direct parent and the element's background.
+   */
+  mixBlendMode?: ICSSRule | IMixBlendModes;
+
+  /**
    * Specifies the transparency of an element.
    * See CSS 3 opacity property https://drafts.csswg.org/css-color-3/#opacity
    */
@@ -1211,12 +1294,22 @@ export interface IRawStyleBase extends IRawFontStyle {
   padding?: ICSSRule | ICSSPixelUnitRule;
 
   /**
-   * The padding-bottom CSS property of an element sets the padding space required on
-   * the bottom of an element. The padding area is the space between the content of the
-   * element and its border. Contrary to margin-bottom values, negative values of
-   * padding-bottom are invalid.
+   * The padding-block-end CSS property defines the logical block end padding
+   * of an element, which maps to a physical padding depending on the element's
+   * writing mode, directionality, and text orientation. It corresponds to the
+   * padding-top, padding-right, padding-bottom, or padding-left property
+   * depending on the values defined for writing-mode, direction, and text-orientation.
    */
-  paddingBottom?: ICSSRule | ICSSPixelUnitRule;
+  paddingBlockEnd?: ICSSRule | ICSSPixelUnitRule;
+
+  /**
+   * The padding-block-start CSS property defines the logical block start padding
+   * of an element, which maps to a physical padding depending on the element's
+   * writing mode, directionality, and text orientation. It corresponds to the
+   * padding-top, padding-right, padding-bottom, or padding-left property depending
+   * on the values defined for writing-mode, direction, and text-orientation.
+   */
+  paddingBlockStart?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * The padding-left CSS property of an element sets the padding space required on the
@@ -1225,6 +1318,32 @@ export interface IRawStyleBase extends IRawFontStyle {
    * padding-left are invalid.
    */
   paddingLeft?: ICSSRule | ICSSPixelUnitRule;
+
+  /**
+   * The padding-bottom CSS property of an element sets the padding space required on
+   * the bottom of an element. The padding area is the space between the content of the
+   * element and its border. Contrary to margin-bottom values, negative values of
+   * padding-bottom are invalid.
+   */
+  paddingBottom?: ICSSRule | ICSSPixelUnitRule;
+
+  /**
+   * The padding-inline-end CSS property defines the logical inline end padding of an element,
+   * which maps to a physical padding depending on the element's writing mode, directionality,
+   * and text orientation. It corresponds to the padding-top, padding-right, padding-bottom,
+   * or padding-left property depending on the values defined for writing-mode, direction,
+   * and text-orientation.
+   */
+  paddingInlineEnd?: ICSSRule | ICSSPixelUnitRule;
+
+  /**
+   * The padding-inline-start CSS property defines the logical inline start padding of
+   * an element, which maps to a physical padding depending on the element's writing mode,
+   * directionality, and text orientation. It corresponds to the padding-top, padding-right,
+   * padding-bottom, or padding-left property depending on the values defined for writing-mode,
+   * direction, and text-orientation.
+   */
+  paddingInlineStart?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * The padding-right CSS property of an element sets the padding space required on the
@@ -1337,6 +1456,12 @@ export interface IRawStyleBase extends IRawFontStyle {
    * as if it were flowing into a subsequent region.
    */
   regionFragment?: ICSSRule | string;
+
+  /**
+   * The resize CSS sets whether an element is resizable, and if so, in which direction(s).
+   */
+
+  resize?: ICSSRule | 'none' | 'both' | 'horizontal' | 'vertical' | 'block' | 'inline';
 
   /**
    * The rest-after property determines how long a speech media agent should pause after

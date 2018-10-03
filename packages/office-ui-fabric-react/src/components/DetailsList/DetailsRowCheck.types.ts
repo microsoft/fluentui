@@ -53,10 +53,16 @@ export interface IDetailsRowCheckProps extends React.HTMLAttributes<HTMLElement>
    * The classname to be passed down to Check component
    */
   checkClassName?: string;
+
+  /**
+   * Whether or not this checkbox is visible
+   */
+  isVisible?: boolean;
 }
 
 export type IDetailsRowCheckStyleProps = Required<Pick<IDetailsRowCheckProps, 'theme'>> &
   Pick<IDetailsRowCheckProps, 'compact' | 'isHeader' | 'selected' | 'anySelected' | 'canSelect' | 'className'> & {
+    /** Is checkbox visible */
     isVisible?: boolean;
   };
 

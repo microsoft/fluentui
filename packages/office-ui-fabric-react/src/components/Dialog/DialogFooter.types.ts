@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { DialogFooterBase } from './DialogFooter.base';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
+export interface IDialogFooter {}
 export interface IDialogFooterProps extends React.Props<DialogFooterBase> {
   /**
    * Gets the component ref.
    */
-  componentRef?: (component: IDialogFooterProps | null) => void;
+  componentRef?: IRefObject<IDialogFooter>;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules

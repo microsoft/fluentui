@@ -114,14 +114,14 @@ export class TilesListDocumentExample extends React.Component<
         <Toggle
           label="Enable Modal Selection"
           checked={this.state.isModalSelection}
-          onChanged={this._onToggleIsModalSelection}
+          onChange={this._onToggleIsModalSelection}
           onText="Modal"
           offText="Normal"
         />
         <Toggle
           label="Load Data Switch"
           checked={this.state.isDataLoaded}
-          onChanged={this._onToggleIsDataLoaded}
+          onChange={this._onToggleIsDataLoaded}
           onText="Loaded"
           offText="Loading..."
         />
@@ -134,11 +134,11 @@ export class TilesListDocumentExample extends React.Component<
     );
   }
 
-  private _onToggleIsModalSelection = (checked: boolean): void => {
+  private _onToggleIsModalSelection = (event: React.MouseEvent<HTMLElement>, checked: boolean): void => {
     this._selection.setModal(checked);
   };
 
-  private _onToggleIsDataLoaded = (checked: boolean): void => {
+  private _onToggleIsDataLoaded = (event: React.MouseEvent<HTMLElement>, checked: boolean): void => {
     const { tileSize } = this.props;
     const { isDataLoaded } = this.state;
     let { cells } = this.state;

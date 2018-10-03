@@ -1,56 +1,57 @@
-import * as React from 'react';
-import { ICollapsibleSectionProps, ICollapsibleSectionStyles } from './CollapsibleSection.types';
 import { createRef } from 'office-ui-fabric-react';
-import { IStateProps } from '../../Foundation';
+import { ICollapsibleSectionProps, ICollapsibleSectionViewProps } from './CollapsibleSection.types';
+import { BaseState } from '../../utilities/BaseState';
 import { getRTL, KeyCodes } from '../../Utilities';
 
-export interface ICollapsibleSectionState {
-  collapsed: boolean;
-}
+// export type ICollapsibleSectionStateProps = IBaseStateComponentProps<
+//   ICollapsibleSectionProps,
+//   ICollapsibleSectionViewProps
+// >;
 
-// TODO: these types seem duplicated from createComponent. try to avoid duplication and be aware of circular references with IStateComponent
-// export type ICollapsibleSectionStateProps = ICollapsibleSectionProps & { styles: { [key in keyof ICollapsibleSectionStyles]: string } };
-export type ICollapsibleSectionStateProps = IStateProps<
-  ICollapsibleSectionProps & { styles: { [key in keyof ICollapsibleSectionStyles]: string } }
->;
+// const CollapsibleSectionStateTransforms: IStateTransforms<ICollapsibleSectionProps, ICollapsibleSectionViewProps> = [
+//   {
+//     transform: 'toggle',
+//     prop: 'collapsed',
+//     defaultValueProp: 'defaultCollapsed',
+//     defaultValue: true,
+//     onInput: 'onToggleCollapse'
+//   }
+// ];
 
-export class CollapsibleSectionState extends React.Component<ICollapsibleSectionStateProps, ICollapsibleSectionState> {
-  public static defaultProps: Partial<ICollapsibleSectionProps> = {
-    defaultCollapsed: true
-  };
+export type ICollapsibleSectionState = Pick<
+  ICollapsibleSectionViewProps,
+  'collapsed' | 'titleElementRef' | 'onClick' | 'onKeyDown' | 'onRootKeyDown'
+  >;
 
+export class CollapsibleSectionState extends BaseState<ICollapsibleSectionProps, ICollapsibleSectionState> {
   private _titleElement = createRef<HTMLElement>();
 
-  constructor(props: ICollapsibleSectionStateProps) {
-    super(props);
+  constructor(props: ICollapsibleSectionProps) {
+    super(props, {
+      controlledProps: ['collapsed']
+    });
 
-    this.state = { collapsed: props.defaultCollapsed! };
-  }
-
-  public render(): JSX.Element {
-    const { collapsed } = this.state;
-
-    // TODO: clean this up. is this the right way to merge and pass props on?
-    // TODO: check React 16 deriveStateFromProps
-    // TODO: analyze functions and determine if any should be moved to view
-    const mergedProps = {
-      ...this.props,
-      collapsed,
-      titleElementRef: this._titleElement,
-      onToggleCollapse: this._onToggleCollapse,
+    this.state = {
+      collapsed: !!props.defaultCollapsed,
+      onClick: this._onClick,
       onKeyDown: this._onKeyDown,
-      onRootKeyDown: this._onRootKeyDown
+      onRootKeyDown: this._onRootKeyDown,
+      titleElementRef: this._titleElement
     };
-
-    return this.props.view(mergedProps);
   }
+
+  private _onClick = (ev: React.MouseEvent<Element>) => {
+    this.setState({ collapsed: !this.state.collapsed });
+    ev.preventDefault();
+    ev.stopPropagation();
+  };
 
   private _onRootKeyDown = (ev: React.KeyboardEvent<Element>) => {
     const rootKey = getRTL() ? KeyCodes.right : KeyCodes.left;
     switch (ev.which) {
       case rootKey:
-        if (ev.target !== this._titleElement.value && this._titleElement.value) {
-          this._titleElement.value.focus();
+        if (this._titleElement && this._titleElement.current && ev.target !== this._titleElement.current) {
+          this._titleElement.current.focus();
           ev.preventDefault();
           ev.stopPropagation();
         }
@@ -58,14 +59,6 @@ export class CollapsibleSectionState extends React.Component<ICollapsibleSection
 
       default:
         break;
-    }
-  };
-
-  private _onToggleCollapse = () => {
-    this.setState((state: ICollapsibleSectionState) => ({ collapsed: !state.collapsed }));
-    // TODO: make sense of this in design and clean this up
-    if (this.props.titleProps && this.props.titleProps.onToggleCollapse) {
-      this.props.titleProps.onToggleCollapse();
     }
   };
 

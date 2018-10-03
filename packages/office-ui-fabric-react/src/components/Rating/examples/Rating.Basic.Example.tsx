@@ -1,6 +1,7 @@
+// @codepen
 import * as React from 'react';
 import { Rating, RatingSize } from 'office-ui-fabric-react/lib/Rating';
-import { getTheme, createTheme, ITheme } from '../../../Styling';
+import { getTheme, createTheme, ITheme } from 'office-ui-fabric-react/lib/Styling';
 
 import './Rating.Basic.Example.scss';
 
@@ -43,7 +44,7 @@ export class RatingBasicExample extends React.Component<
           size={RatingSize.Large}
           rating={this.state.largeStarRating}
           getAriaLabel={this._getRatingComponentAriaLabel}
-          onChanged={this._onLargeStarChanged}
+          onChange={this._onLargeStarChange}
           onFocus={() => console.log('onFocus called')}
           onBlur={() => console.log('onBlur called')}
           ariaLabelFormat={'{0} of {1} stars selected'}
@@ -54,7 +55,7 @@ export class RatingBasicExample extends React.Component<
           min={1}
           max={5}
           rating={this.state.smallStarRating}
-          onChanged={this._onSmallStarChanged}
+          onChange={this._onSmallStarChange}
           getAriaLabel={this._getRatingComponentAriaLabel}
           onFocus={() => console.log('onFocus called')}
           onBlur={() => console.log('onBlur called')}
@@ -66,7 +67,7 @@ export class RatingBasicExample extends React.Component<
           min={1}
           max={10}
           rating={this.state.tenStarRating}
-          onChanged={this._onTenStarChanged}
+          onChange={this._onTenStarChange}
           getAriaLabel={this._getRatingComponentAriaLabel}
           onFocus={() => console.log('onFocus called')}
           onBlur={() => console.log('onBlur called')}
@@ -98,7 +99,7 @@ export class RatingBasicExample extends React.Component<
           min={1}
           max={5}
           rating={this.state.themedStarRating}
-          onChanged={this._onThemedStarChanged}
+          onChange={this._onThemedStarChange}
           getAriaLabel={this._getRatingComponentAriaLabel}
           onFocus={() => console.log('onFocus called')}
           onBlur={() => console.log('onBlur called')}
@@ -109,25 +110,25 @@ export class RatingBasicExample extends React.Component<
     );
   }
 
-  private _onLargeStarChanged = (rating: number): void => {
+  private _onLargeStarChange = (ev: React.FocusEvent<HTMLElement>, rating: number): void => {
     this.setState({
       largeStarRating: rating
     });
   };
 
-  private _onSmallStarChanged = (rating: number): void => {
+  private _onSmallStarChange = (ev: React.FocusEvent<HTMLElement>, rating: number): void => {
     this.setState({
       smallStarRating: rating
     });
   };
 
-  private _onTenStarChanged = (rating: number): void => {
+  private _onTenStarChange = (ev: React.FocusEvent<HTMLElement>, rating: number): void => {
     this.setState({
       tenStarRating: rating
     });
   };
 
-  private _onThemedStarChanged = (rating: number): void => {
+  private _onThemedStarChange = (ev: React.FocusEvent<HTMLElement>, rating: number): void => {
     this.setState({
       themedStarRating: rating
     });

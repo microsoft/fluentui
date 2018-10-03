@@ -1,0 +1,34 @@
+import * as React from 'react';
+import { IChartDataPoint, MultiStackedBarChart, IChartProps } from '@uifabric/charting';
+import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+
+export const MultiStackedBarChartExample: React.SFC<{}> = () => {
+  const firstChartPoints: IChartDataPoint[] = [
+    { legend: 'Debit card numbers (EU and USA)', data: 40, color: DefaultPalette.red },
+    { legend: 'Passport numbers (USA)', data: 23, color: DefaultPalette.green },
+    { legend: 'Social security numbers', data: 35, color: DefaultPalette.yellow },
+    { legend: 'Credit card numbers', data: 87, color: DefaultPalette.blueLight },
+    { legend: 'Tax identification numbers (USA)', data: 87, color: DefaultPalette.black }
+  ];
+
+  const secondChartPoints: IChartDataPoint[] = [
+    { legend: 'Phone Numbers', data: 40, color: DefaultPalette.blue },
+    { legend: 'Credit card Numbers', data: 23, color: DefaultPalette.green },
+    { legend: 'Asset Numbers', data: 35, color: DefaultPalette.yellow }
+  ];
+
+  const hideRatio: boolean[] = [true, false];
+
+  const data: IChartProps[] = [
+    {
+      chartTitle: 'Monitored',
+      chartData: firstChartPoints
+    },
+    {
+      chartTitle: 'Unmonitored',
+      chartData: secondChartPoints
+    }
+  ];
+
+  return <MultiStackedBarChart data={data} hideRatio={hideRatio} width={600} href={'https://developer.microsoft.com/en-us/'} />;
+};

@@ -9,14 +9,15 @@ exports[`Component Examples renders Keytips.CommandBar.Example.tsx correctly 1`]
   }
 >
   <div
-    className=
-        ms-ResizeGroup
-        {
-          display: block;
-          position: relative;
-        }
+    style={
+      Object {
+        "display": "block",
+        "position": "relative",
+      }
+    }
   >
     <div
+      data-automation-id="visibleContent"
       style={
         Object {
           "position": "fixed",
@@ -25,9 +26,6 @@ exports[`Component Examples renders Keytips.CommandBar.Example.tsx correctly 1`]
       }
     >
       <div
-        aria-describedby={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
         className=
             ms-FocusZone
             ms-CommandBar
@@ -69,12 +67,6 @@ exports[`Component Examples renders Keytips.CommandBar.Example.tsx correctly 1`]
           >
             <button
               aria-describedby=" ktp-layer-id ktp-j"
-              aria-disabled={undefined}
-              aria-label={undefined}
-              aria-labelledby={undefined}
-              aria-posinset={1}
-              aria-pressed={undefined}
-              aria-setsize={2}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -127,6 +119,11 @@ exports[`Component Examples renders Keytips.CommandBar.Example.tsx correctly 1`]
                     right: 4px;
                     top: 4px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
@@ -144,13 +141,13 @@ exports[`Component Examples renders Keytips.CommandBar.Example.tsx correctly 1`]
               data-is-focusable={true}
               data-ktp-execute-target="ktp-j"
               data-ktp-target="ktp-j"
-              disabled={undefined}
               onClick={[Function]}
               onKeyDown={[Function]}
               onKeyPress={[Function]}
               onKeyUp={[Function]}
               onMouseDown={[Function]}
               onMouseUp={[Function]}
+              role="menuitem"
               type="button"
             >
               <div
@@ -210,6 +207,7 @@ exports[`Component Examples renders Keytips.CommandBar.Example.tsx correctly 1`]
                           margin-left: 4px;
                           margin-right: 4px;
                           margin-top: 0;
+                          white-space: nowrap;
                         }
                     id="id__1"
                   >
@@ -229,12 +227,6 @@ exports[`Component Examples renders Keytips.CommandBar.Example.tsx correctly 1`]
           >
             <button
               aria-describedby=" ktp-layer-id ktp-m"
-              aria-disabled={undefined}
-              aria-label={undefined}
-              aria-labelledby={undefined}
-              aria-posinset={2}
-              aria-pressed={undefined}
-              aria-setsize={2}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -287,6 +279,11 @@ exports[`Component Examples renders Keytips.CommandBar.Example.tsx correctly 1`]
                     right: 4px;
                     top: 4px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
@@ -304,13 +301,13 @@ exports[`Component Examples renders Keytips.CommandBar.Example.tsx correctly 1`]
               data-is-focusable={true}
               data-ktp-execute-target="ktp-m"
               data-ktp-target="ktp-m"
-              disabled={undefined}
               onClick={[Function]}
               onKeyDown={[Function]}
               onKeyPress={[Function]}
               onKeyUp={[Function]}
               onMouseDown={[Function]}
               onMouseUp={[Function]}
+              role="menuitem"
               type="button"
             >
               <div
@@ -370,6 +367,7 @@ exports[`Component Examples renders Keytips.CommandBar.Example.tsx correctly 1`]
                           margin-left: 4px;
                           margin-right: 4px;
                           margin-top: 0;
+                          white-space: nowrap;
                         }
                     id="id__4"
                   >
@@ -403,15 +401,9 @@ exports[`Component Examples renders Keytips.CommandBar.Example.tsx correctly 1`]
           >
             <button
               aria-describedby=" ktp-layer-id ktp-l-k"
-              aria-disabled={undefined}
               aria-expanded={false}
               aria-haspopup={true}
-              aria-label={undefined}
-              aria-labelledby={undefined}
               aria-owns={null}
-              aria-posinset={1}
-              aria-pressed={undefined}
-              aria-setsize={1}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -464,6 +456,11 @@ exports[`Component Examples renders Keytips.CommandBar.Example.tsx correctly 1`]
                     right: 4px;
                     top: 4px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   @media screen and (-ms-high-contrast: active){& {
                     border: none;
                   }
@@ -481,13 +478,13 @@ exports[`Component Examples renders Keytips.CommandBar.Example.tsx correctly 1`]
               data-is-focusable={true}
               data-ktp-execute-target="ktp-l-k"
               data-ktp-target="ktp-l-k"
-              disabled={undefined}
               onClick={[Function]}
               onKeyDown={[Function]}
               onKeyPress={[Function]}
               onKeyUp={[Function]}
               onMouseDown={[Function]}
               onMouseUp={[Function]}
+              role="menuitem"
               type="button"
             >
               <div
@@ -547,6 +544,7 @@ exports[`Component Examples renders Keytips.CommandBar.Example.tsx correctly 1`]
                           margin-left: 4px;
                           margin-right: 4px;
                           margin-top: 0;
+                          white-space: nowrap;
                         }
                     id="id__7"
                   >

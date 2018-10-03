@@ -1,6 +1,99 @@
-# Change Log - office-ui-fabric-react
+# Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Thu, 07 Jun 2018 17:40:07 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Sep 2018 14:25:46 GMT and should not be manually modified.
+
+## 6.9.1
+Fri, 21 Sep 2018 14:25:46 GMT
+
+### Patches
+
+- Adding a version stamp file
+
+## 6.9.0
+Tue, 11 Sep 2018 02:54:40 GMT
+
+### Minor changes
+
+- IE11 Promise polyfill was missing and broke `npm start`. Added polyfill.
+
+## 6.8.3
+Fri, 07 Sep 2018 22:04:50 GMT
+
+### Patches
+
+- Updating serve config to respect oufr imports.
+
+## 6.8.2
+Fri, 31 Aug 2018 20:48:42 GMT
+
+### Patches
+
+- Invoke ES6 Promise polyfill in local dev site root for IE compat
+
+## 6.8.1
+Fri, 24 Aug 2018 10:26:08 GMT
+
+### Patches
+
+- Fix @types/prop-types being inconsistently restrictive.
+
+## 6.8.0
+Thu, 23 Aug 2018 10:28:17 GMT
+
+### Minor changes
+
+- Allow examples to provide their own scroll mechanic
+
+### Patches
+
+- Updating serve config to respect oufr imports.
+
+## 6.7.4
+Tue, 14 Aug 2018 10:27:33 GMT
+
+### Patches
+
+- autogenerate codepenable examples for fabric examples tagged with @codepen
+
+## 6.7.3
+Fri, 10 Aug 2018 10:26:08 GMT
+
+### Patches
+
+- autogenerate codepenable examples for fabric examples tagged with @codepen
+- Added optional feedback section for component pages
+
+## 6.7.2
+Wed, 08 Aug 2018 10:25:07 GMT
+
+### Patches
+
+- Fix bad imports that break AMD.
+
+## 6.7.1
+Tue, 07 Aug 2018 10:22:32 GMT
+
+### Patches
+
+- Fix duplicate nav key
+
+## 6.7.0
+Mon, 30 Jul 2018 10:27:11 GMT
+
+### Minor changes
+
+- Addressing bad imports.
+
+### Patches
+
+- Fixes an issue with demo website that have a duplicate key in the list of components
+
+## 6.0.2
+Thu, 19 Jul 2018 21:25:32 GMT
+
+### Patches
+
+- Added optional feedback section for component pages
 
 ## 6.6.1
 Thu, 07 Jun 2018 17:40:07 GMT

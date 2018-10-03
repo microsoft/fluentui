@@ -1,10 +1,8 @@
-import * as React from 'react';
-import { DatePickerBase } from './DatePicker.base';
 import { DayOfWeek, ICalendarProps } from '../../Calendar';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { ICalendarFormatDateCallbacks } from '../Calendar/Calendar.types';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IRefObject, IBaseProps, IStyleFunction } from '../../Utilities';
 
 export interface IDatePicker {
   /** Sets focus to the text field */
@@ -14,12 +12,12 @@ export interface IDatePicker {
   reset(): void;
 }
 
-export interface IDatePickerProps extends React.Props<DatePickerBase> {
+export interface IDatePickerProps extends IBaseProps<IDatePicker> {
   /**
    * Optional callback to access the IDatePicker interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IDatePicker | null) => void;
+  componentRef?: IRefObject<IDatePicker>;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
@@ -62,6 +60,12 @@ export interface IDatePickerProps extends React.Props<DatePickerBase> {
    * Aria Label for TextField of the DatePicker for screen reader users.
    */
   ariaLabel?: string;
+
+  /**
+   * Whether or not the Textfield of the DatePicker is underlined.
+   * @default false
+   */
+  underlined?: boolean;
 
   /**
    * Aria label for date picker popup for screen reader users.
@@ -193,9 +197,20 @@ export interface IDatePickerProps extends React.Props<DatePickerBase> {
   initialPickerDate?: Date;
 
   /**
+   * Allows all elements to be focused, including disabled ones
+   * @defaultvalue false
+   */
+  allFocusable?: boolean;
+
+  /**
    * Callback that runs after DatePicker's menu (Calendar) is closed
    */
   onAfterMenuDismiss?: () => void;
+
+  /**
+   * Whether the CalendarDay close button should be shown or not.
+   */
+  showCloseButton?: boolean;
 }
 
 export interface IDatePickerStrings {
@@ -262,6 +277,11 @@ export interface IDatePickerStrings {
    * Aria-label for the "next year" button.
    */
   nextYearAriaLabel?: string;
+
+  /**
+   * Aria-label for the "close" button.
+   */
+  closeButtonAriaLabel?: string;
 }
 export interface IDatePickerStyleProps {
   /**

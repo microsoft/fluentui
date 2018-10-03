@@ -1,11 +1,14 @@
 import { IColumn } from './DetailsList.types';
-import { IDetailsRowStyles } from './DetailsRow.types';
+import { IDetailsRowStyles, ICellStyleProps } from './DetailsRow.types';
+import { IBaseProps, IRefObject } from '../../Utilities';
 
-export interface IDetailsRowFieldsProps {
+export interface IDetailsRowFields {}
+
+export interface IDetailsRowFieldsProps extends IBaseProps<IDetailsRowFields> {
   /**
    * Ref of component
    */
-  componentRef?: () => void;
+  componentRef?: IRefObject<IDetailsRowFields>;
 
   /**
    * Data source for this component
@@ -46,4 +49,6 @@ export interface IDetailsRowFieldsProps {
    * Required prop to be passed in from the parent DetailsRow a map of classNames and its mergestyle-created classNames
    */
   rowClassNames: { [className in keyof IDetailsRowStyles]: string };
+
+  cellStyleProps?: ICellStyleProps;
 }

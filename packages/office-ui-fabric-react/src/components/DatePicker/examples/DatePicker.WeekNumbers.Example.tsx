@@ -29,7 +29,8 @@ const DayPickerStrings: IDatePickerStrings = {
   prevMonthAriaLabel: 'Go to previous month',
   nextMonthAriaLabel: 'Go to next month',
   prevYearAriaLabel: 'Go to previous year',
-  nextYearAriaLabel: 'Go to next year'
+  nextYearAriaLabel: 'Go to next year',
+  closeButtonAriaLabel: 'Close date picker'
 };
 
 export interface IDatePickerBasicExampleState {
@@ -91,13 +92,13 @@ export class DatePickerWeekNumbersExample extends React.Component<{}, IDatePicke
             }
           ]}
           selectedKey={DayOfWeek[firstDayOfWeek!]}
-          onChanged={this._onDropdownChanged}
+          onChange={this._onDropdownChange}
         />
       </div>
     );
   }
 
-  private _onDropdownChanged = (option: IDropdownOption): void => {
+  private _onDropdownChange = (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
     this.setState({
       firstDayOfWeek: (DayOfWeek as any)[option.key]
     });

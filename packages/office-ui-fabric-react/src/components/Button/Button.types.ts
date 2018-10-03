@@ -3,7 +3,7 @@ import { BaseButton } from './BaseButton';
 import { Button } from './Button';
 import { IButtonClassNames } from './BaseButton.classNames';
 import { ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
-import { IRenderFunction, KeyCodes } from '../../Utilities';
+import { IRefObject, IRenderFunction, KeyCodes, IComponentAs } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
 import { IIconProps } from '../../Icon';
 import { IStyle, ITheme } from '../../Styling';
@@ -24,7 +24,8 @@ export interface IButton {
    * If there is a menu associated with this button and it is visible, this will open the menu.
    * Params are optional overrides to the ones defined in 'menuProps' to apply to just this instance of opening the menu.
    *
-   * @param shouldFocusOnContainer - override to the ContextualMenu shouldFocusOnContainer prop. BaseButton implementation defaults to 'undefined'.
+   * @param shouldFocusOnContainer - override to the ContextualMenu shouldFocusOnContainer prop.
+   * BaseButton implementation defaults to 'undefined'.
    * @param shouldFocusOnMount - override to the ContextualMenu shouldFocusOnMount prop. BaseButton implementation defaults to 'true'.
    */
   openMenu: (shouldFocusOnContainer?: boolean, shouldFocusOnMount?: boolean) => void;
@@ -36,7 +37,7 @@ export interface IButtonProps
    * Optional callback to access the IButton interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IButton | null) => void;
+  componentRef?: IRefObject<IButton>;
 
   /**
    * If provided, this component will be rendered as an anchor.
@@ -86,6 +87,12 @@ export interface IButtonProps
   checked?: boolean;
 
   /**
+   * Whether button is a toggle button with distinct on and off states. This should be true for buttons that permanently
+   * change state when a press event finishes, such as a volume mute button.
+   */
+  toggle?: boolean;
+
+  /**
    * If provided, additional class name to provide on the root element.
    */
   className?: string;
@@ -108,7 +115,8 @@ export interface IButtonProps
   ariaHidden?: boolean;
 
   /**
-   * Text to render button label. If text is supplied, it will override any string in button children. Other children components will be passed through after the text.
+   * Text to render button label. If text is supplied, it will override any string in button children.
+   * Other children components will be passed through after the text.
    */
   text?: string;
 
@@ -179,9 +187,15 @@ export interface IButtonProps
   onRenderMenuIcon?: IRenderFunction<IButtonProps>;
 
   /**
-   * Custom render function for button menu
+   * Deprecated at v6.3.2, to be removed at >= v7.0.0. Use menuAs instead.
+   * @deprecated
    */
   onRenderMenu?: IRenderFunction<IContextualMenuProps>;
+
+  /**
+   * Render a custom menu in place of the normal one.
+   */
+  menuAs?: IComponentAs<IContextualMenuProps>;
 
   /**
    * Description of the action this button takes.
@@ -206,6 +220,8 @@ export interface IButtonProps
 
   /**
    * Any custom data the developer wishes to associate with the menu item.
+   *
+   * @deprecated unused, use `checked` if setting state.
    */
   toggled?: boolean;
 
@@ -312,7 +328,7 @@ export interface IButtonStyles {
   rootHovered?: IStyle;
 
   /**
-   * Style override applied to the root on hover in the default, enabled, non-toggled state.
+   * Style override applied to the root on focus in the default, enabled, non-toggled state.
    */
   rootFocused?: IStyle;
 
@@ -395,6 +411,11 @@ export interface IButtonStyles {
    * Style for the text content of the button.
    */
   label?: IStyle;
+
+  /**
+   * Style override for the text content when the button is hovered.
+   */
+  labelHovered?: IStyle;
 
   /**
    * Style override for the text content when the button is disabled.

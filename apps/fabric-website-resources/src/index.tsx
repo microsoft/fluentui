@@ -1,3 +1,5 @@
+require('es6-promise/auto');
+
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { App, AppDefinition } from './AppDefinition';
@@ -10,6 +12,8 @@ import './index.scss';
 import './ColorStyles.scss';
 
 import { initializeIcons } from '@uifabric/icons';
+
+import './version';
 
 initializeIcons();
 
@@ -41,9 +45,7 @@ function _onLoad(): void {
 }
 
 function _getRoutes(): JSX.Element[] {
-  const routes = AppDefinition.testPages.map((page: IAppLink) => (
-    <Route key={page.key} path={page.url} component={page.component} />
-  ));
+  const routes = AppDefinition.testPages.map((page: IAppLink) => <Route key={page.key} path={page.url} component={page.component} />);
   const appRoutes: JSX.Element[] = [];
 
   AppDefinition.examplePages.forEach((group: IAppLinkGroup) => {

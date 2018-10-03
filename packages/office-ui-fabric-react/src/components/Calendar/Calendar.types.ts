@@ -1,7 +1,5 @@
-import * as React from 'react';
-import { Calendar } from './Calendar';
 import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
-
+import { IRefObject, IBaseProps } from '../../Utilities';
 export { DayOfWeek, DateRangeType, FirstWeekOfYear };
 
 export interface ICalendar {
@@ -9,12 +7,12 @@ export interface ICalendar {
   focus: () => void;
 }
 
-export interface ICalendarProps extends React.Props<Calendar> {
+export interface ICalendarProps extends IBaseProps<ICalendar> {
   /**
    * Optional callback to access the ICalendar interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ICalendar | null) => void;
+  componentRef?: IRefObject<ICalendar>;
 
   /**
    * Optional class name to add to the root element.
@@ -155,6 +153,24 @@ export interface ICalendarProps extends React.Props<Calendar> {
    * @defaultvalue [Monday,Tuesday,Wednesday,Thursday,Friday]
    */
   workWeekDays?: DayOfWeek[];
+
+  /**
+   * When clicking on "Today", select the date and close the calendar.
+   * @defaultvalue false
+   */
+  selectDateOnClick?: boolean;
+
+  /**
+   * Whether the close button should be shown or not
+   * @defaultvalue false
+   */
+  showCloseButton?: boolean;
+
+  /**
+   * Allows all dates and buttons to be focused, including disabled ones
+   * @defaultvalue false
+   */
+  allFocusable?: boolean;
 }
 
 export interface ICalendarStrings {
@@ -208,6 +224,11 @@ export interface ICalendarStrings {
   nextYearAriaLabel?: string;
 
   /**
+   * Aria-label for the "close" button.
+   */
+  closeButtonAriaLabel?: string;
+
+  /**
    * Aria-label format string for the week number header. Should have 1 string param e.g. "week number {0}"
    */
   weekNumberFormatString?: string;
@@ -225,6 +246,12 @@ export interface ICalendarIconStrings {
    * @defaultvalue  'Down'
    */
   rightNavigation?: string;
+
+  /**
+   * Close icon
+   * @defaultvalue  'CalculatorMultiply'
+   */
+  closeIcon?: string;
 }
 
 export interface ICalendarFormatDateCallbacks {

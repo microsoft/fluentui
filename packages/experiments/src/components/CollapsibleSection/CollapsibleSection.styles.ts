@@ -1,15 +1,18 @@
-import { ICollapsibleSectionProps, ICollapsibleSectionStyles } from './CollapsibleSection.types';
-import { ITheme } from 'office-ui-fabric-react';
+import { ICollapsibleSectionComponent } from './CollapsibleSection.types';
+import { getGlobalClassNames } from '../../Styling';
 
-export const getStyles = (props: ICollapsibleSectionProps & { theme: ITheme }): ICollapsibleSectionStyles => {
+const GlobalClassNames = {
+  root: 'ms-CollapsibleSection',
+  body: 'ms-CollapsibleSection-body'
+};
+
+export const collapsibleSectionStyles: ICollapsibleSectionComponent['styles'] = props => {
   const { theme } = props;
 
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
   return {
-    body: [
-      {
-        paddingLeft: 30
-      },
-      theme.fonts.small
-    ]
+    root: [classNames.root],
+    body: [classNames.body]
   };
 };

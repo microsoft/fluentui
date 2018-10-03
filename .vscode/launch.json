@@ -23,14 +23,9 @@
       "program": "${workspaceRoot}/apps/server-rendered-app/server/index.js",
       "cwd": "${workspaceRoot}/apps/server-rendered-app",
       "stopOnEntry": false,
-      "args": [
-        "-i"
-      ],
+      "args": ["-i"],
       "runtimeExecutable": null,
-      "runtimeArgs": [
-        "--nolazy",
-        "--debug"
-      ],
+      "runtimeArgs": ["--nolazy", "--debug"],
       "env": {
         "NODE_ENV": "development"
       },
@@ -57,8 +52,8 @@
       "request": "launch",
       "program": "${workspaceRoot}/scripts/build.js",
       "stopOnEntry": false,
-      "args": ["webpack", "--", "--production"],
-      "cwd": "${workspaceRoot}/apps/fabric-website",
+      "args": ["tslint"],
+      "cwd": "${workspaceRoot}/packages/styling",
       "runtimeExecutable": null,
       "runtimeArgs": ["--nolazy", "--debug"],
       "env": {
@@ -100,6 +95,21 @@
       "request": "launch",
       "program": "${workspaceRoot}/scripts/create-component.js",
       "cwd": "${workspaceRoot}",
+      "stopOnEntry": false,
+      "args": ["--name", "TestComponentName"],
+      "runtimeExecutable": null,
+      "runtimeArgs": ["--nolazy", "--debug"],
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "sourceMaps": true
+    },
+    {
+      "name": "Debug lint imports",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}/scripts/lint-imports.js",
+      "cwd": "${workspaceRoot}/packages/charting/src",
       "stopOnEntry": false,
       "args": ["--name", "TestComponentName"],
       "runtimeExecutable": null,

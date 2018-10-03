@@ -21,6 +21,12 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
       checked: 'defaultChecked'
     });
 
+    this._warnDeprecations({
+      onAriaLabel: 'ariaLabel',
+      offAriaLabel: undefined,
+      onChanged: 'onChange'
+    });
+
     this.state = {
       checked: !!(props.checked || props.defaultChecked)
     };
@@ -50,15 +56,16 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
       disabled,
       keytipProps,
       label,
+      ariaLabel,
+      onAriaLabel,
       offAriaLabel,
       offText,
-      onAriaLabel,
       onText,
       styles
     } = this.props;
     const { checked } = this.state;
     const stateText = checked ? onText : offText;
-    const ariaLabel = checked ? onAriaLabel : offAriaLabel;
+    const badAriaLabel = checked ? onAriaLabel : offAriaLabel;
     const toggleNativeProps = getNativeProps(this.props, inputProperties, ['defaultChecked']);
     const classNames = getClassNames(styles!, {
       theme: theme!,
@@ -89,10 +96,11 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
                 disabled={disabled}
                 id={this._id}
                 type="button"
+                role="switch" // ARIA 1.1 definition; "checkbox" in ARIA 1.0
                 ref={this._toggleButton}
                 aria-disabled={disabled}
-                aria-pressed={checked}
-                aria-label={ariaLabel ? ariaLabel : label}
+                aria-checked={checked}
+                aria-label={ariaLabel ? ariaLabel : badAriaLabel}
                 data-is-focusable={true}
                 onChange={this._noop}
                 onClick={this._onClick}
@@ -101,11 +109,7 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
               </button>
             )}
           </KeytipData>
-          {stateText && (
-            <Label htmlFor={this._id} className={classNames.text}>
-              {stateText}
-            </Label>
-          )}
+          {stateText && <Label className={classNames.text}>{stateText}</Label>}
         </div>
       </RootType>
     );
@@ -118,7 +122,7 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
   }
 
   private _onClick = (ev: React.MouseEvent<HTMLElement>) => {
-    const { disabled, checked: checkedProp, onChanged, onClick } = this.props;
+    const { disabled, checked: checkedProp, onChange, onChanged, onClick } = this.props;
     const { checked } = this.state;
 
     if (!disabled) {
@@ -127,6 +131,10 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
         this.setState({
           checked: !checked
         });
+      }
+
+      if (onChange) {
+        onChange(ev, !checked);
       }
 
       if (onChanged) {

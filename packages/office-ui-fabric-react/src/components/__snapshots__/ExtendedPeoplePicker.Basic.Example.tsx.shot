@@ -8,8 +8,6 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
     onKeyDown={[Function]}
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className="ms-FocusZone"
       data-focuszone-id="FocusZone0"
       onFocus={[Function]}
@@ -33,13 +31,14 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
           className="ms-BasePicker-text"
           role="list"
         >
-          <div>
+          <div
+            data-is-focusable={true}
+          >
             TO:
           </div>
           <input
-            aria-activedescendant={undefined}
             aria-controls="selected-suggestion-alert"
-            aria-expanded="true"
+            aria-expanded={false}
             aria-haspopup="true"
             aria-label="People Picker"
             aria-owns="suggestion-list"
@@ -47,7 +46,6 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
             autoComplete="off"
             className="ms-BasePicker-input"
             data-lpignore={true}
-            disabled={undefined}
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}
@@ -113,9 +111,7 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
           }
     >
       <button
-        aria-disabled={undefined}
-        aria-label="Controlled component"
-        aria-pressed={false}
+        aria-checked={false}
         className=
             ms-Toggle-background
             {
@@ -163,10 +159,10 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
               border-color: Highlight;
             }
         data-is-focusable={true}
-        disabled={undefined}
         id="Toggle1"
         onChange={[Function]}
         onClick={[Function]}
+        role="switch"
         type="button"
       >
         <div
@@ -188,11 +184,6 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
     </div>
   </div>
   <button
-    aria-describedby={undefined}
-    aria-disabled={undefined}
-    aria-label={undefined}
-    aria-labelledby={undefined}
-    aria-pressed={undefined}
     className=
         ms-Button
         ms-Button--primary
@@ -244,6 +235,11 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
           right: -2px;
           top: -2px;
         }
+        &:active > * {
+          left: 0px;
+          position: relative;
+          top: 0px;
+        }
         @media screen and (-ms-high-contrast: active){& {
           -ms-high-contrast-adjust: none;
           background-color: WindowText;
@@ -267,7 +263,6 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
           color: Window;
         }
     data-is-focusable={true}
-    disabled={undefined}
     onClick={[Function]}
     onKeyDown={[Function]}
     onKeyPress={[Function]}

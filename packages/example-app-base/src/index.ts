@@ -3,6 +3,7 @@ export * from './components/ComponentPage/ComponentPage';
 export * from './components/ComponentPage/IComponentDemoPageProps';
 export * from './components/EditSection';
 export * from './components/ExampleCard/ExampleCard';
+export * from './components/FeedbackList/FeedbackList';
 export * from './components/Header/Header';
 export * from './components/Highlight/Highlight';
 export * from './components/PropertiesTable/PropertiesTable';
@@ -15,3 +16,5 @@ export * from './utilities/data';
 export * from './utilities/debugging';
 export * from './utilities/examplesOf';
 export * from './utilities/parser/index';
+
+import './version';

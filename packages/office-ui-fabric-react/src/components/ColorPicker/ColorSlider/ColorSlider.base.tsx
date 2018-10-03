@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, customizable, createRef } from '../../../Utilities';
+import { BaseComponent, classNamesFunction, createRef } from '../../../Utilities';
 import { IColorSliderProps, IColorSliderStyleProps, IColorSliderStyles } from './ColorSlider.types';
 
 const getClassNames = classNamesFunction<IColorSliderStyleProps, IColorSliderStyles>();
@@ -10,6 +10,7 @@ export interface IColorSliderProps {
   value?: number;
   thumbColor?: string;
   overlayStyle?: any;
+  onChange?: (event: React.MouseEvent<HTMLElement>, newValue?: number) => void;
   onChanged?: (newValue: number) => void;
 
   className?: string;
@@ -22,7 +23,6 @@ export interface IColorSliderState {
   currentValue?: number;
 }
 
-@customizable('ColorSlider', ['theme'])
 export class ColorSliderBase extends BaseComponent<IColorSliderProps, IColorSliderState> {
   public static defaultProps = {
     minValue: 0,
@@ -35,6 +35,10 @@ export class ColorSliderBase extends BaseComponent<IColorSliderProps, IColorSlid
 
   constructor(props: IColorSliderProps) {
     super(props);
+
+    this._warnDeprecations({
+      onChanged: 'onChange'
+    });
 
     const { value } = this.props;
 
@@ -64,11 +68,13 @@ export class ColorSliderBase extends BaseComponent<IColorSliderProps, IColorSlid
 
     const hueStyle = {
       background:
+        // tslint:disable-next-line:max-line-length
         'linear-gradient(to left,red 0,#f09 10%,#cd00ff 20%,#3200ff 30%,#06f 40%,#00fffd 50%,#0f6 60%,#35ff00 70%,#cdff00 80%,#f90 90%,red 100%)'
     };
 
     const alphaStyle = {
       backgroundImage:
+        // tslint:disable-next-line:max-line-length
         'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJUlEQVQYV2N89erVfwY0ICYmxoguxjgUFKI7GsTH5m4M3w1ChQC1/Ca8i2n1WgAAAABJRU5ErkJggg==)'
     };
 
@@ -94,7 +100,7 @@ export class ColorSliderBase extends BaseComponent<IColorSliderProps, IColorSlid
       return;
     }
 
-    const { onChanged, minValue, maxValue } = this.props;
+    const { onChange, onChanged, minValue, maxValue } = this.props;
     const rectSize = this._root.current.getBoundingClientRect();
 
     const currentPercentage = (ev.clientX - rectSize.left) / rectSize.width;
@@ -104,6 +110,10 @@ export class ColorSliderBase extends BaseComponent<IColorSliderProps, IColorSlid
       isAdjusting: true,
       currentValue: newValue
     });
+
+    if (onChange) {
+      onChange(ev, newValue);
+    }
 
     if (onChanged) {
       onChanged(newValue);

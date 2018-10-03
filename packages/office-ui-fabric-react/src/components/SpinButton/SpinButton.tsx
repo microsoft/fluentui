@@ -2,15 +2,7 @@ import * as React from 'react';
 import { IconButton } from '../../Button';
 import { Label } from '../../Label';
 import { Icon } from '../../Icon';
-import {
-  BaseComponent,
-  getId,
-  KeyCodes,
-  customizable,
-  calculatePrecision,
-  precisionRound,
-  createRef
-} from '../../Utilities';
+import { BaseComponent, getId, KeyCodes, customizable, calculatePrecision, precisionRound, createRef } from '../../Utilities';
 import { ISpinButton, ISpinButtonProps } from './SpinButton.types';
 import { Position } from '../../utilities/positioning';
 import { getStyles, getArrowButtonStyles } from './SpinButton.styles';
@@ -46,7 +38,7 @@ export interface ISpinButtonState {
   precision: number;
 }
 
-@customizable('SpinButton', ['theme', 'styles'])
+@customizable('SpinButton', ['theme', 'styles'], true)
 export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
   public static defaultProps: ISpinButtonProps = {
     step: 1,
@@ -64,6 +56,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   private _labelId: string;
   private _lastValidValue: string;
   private _spinningByMouse: boolean;
+  private _valueToValidate: string | undefined; // To avoid duplicate validations/submissions
 
   private _currentStepFunctionHandle: number;
   private _initialStepDelay = 400;
@@ -93,6 +86,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     this._labelId = getId('Label');
     this._inputId = getId('input');
     this._spinningByMouse = false;
+    this._valueToValidate = undefined;
   }
 
   /**
@@ -131,14 +125,17 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       theme,
       ariaPositionInSet,
       ariaSetSize,
-      keytipProps
+      ariaValueNow,
+      ariaValueText,
+      keytipProps,
+      className
     } = this.props;
 
     const { isFocused, value, keyboardSpinDirection } = this.state;
 
     const classNames = this.props.getClassNames
-      ? this.props.getClassNames(theme!, !!disabled, !!isFocused, keyboardSpinDirection, labelPosition)
-      : getClassNames(getStyles(theme!, customStyles), !!disabled, !!isFocused, keyboardSpinDirection, labelPosition);
+      ? this.props.getClassNames(theme!, !!disabled, !!isFocused, keyboardSpinDirection, labelPosition, className)
+      : getClassNames(getStyles(theme!, customStyles), !!disabled, !!isFocused, keyboardSpinDirection, labelPosition, className);
 
     return (
       <div className={classNames.root}>
@@ -172,8 +169,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
                 autoComplete="off"
                 role="spinbutton"
                 aria-labelledby={label && this._labelId}
-                aria-valuenow={!isNaN(Number(value)) ? Number(value) : undefined}
-                aria-valuetext={isNaN(Number(value)) ? value : undefined}
+                aria-valuenow={!isNaN(Number(ariaValueNow)) ? ariaValueNow : !isNaN(Number(value)) ? Number(value) : undefined}
+                aria-valuetext={ariaValueText ? ariaValueText : isNaN(Number(value)) ? value : undefined}
                 aria-valuemin={min}
                 aria-valuemax={max}
                 aria-describedby={keytipAttributes['aria-describedby']}
@@ -272,9 +269,9 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     return this.props.value === undefined ? this.state.value : this.props.value;
   }
 
-  private _onValidate = (value: string): string | void => {
+  private _onValidate = (value: string, event?: React.SyntheticEvent<HTMLElement>): string | void => {
     if (this.props.onValidate) {
-      return this.props.onValidate(value);
+      return this.props.onValidate(value, event);
     } else {
       return this._defaultOnValidate(value);
     }
@@ -340,13 +337,12 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * in the input (not when changed via the buttons)
    * @param event - the event that fired
    */
-  private _validate = (event: React.FocusEvent<HTMLInputElement>): void => {
-    const element: HTMLInputElement = event.target as HTMLInputElement;
-    const value: string = element.value;
-    if (this.state.value !== undefined) {
-      const newValue = this._onValidate!(value);
+  private _validate = (event: React.FocusEvent<HTMLInputElement> | React.KeyboardEvent<HTMLInputElement>): void => {
+    if (this.state.value !== undefined && this._valueToValidate !== undefined && this._valueToValidate !== this._lastValidValue) {
+      const newValue = this._onValidate!(this._valueToValidate, event);
       if (newValue) {
         this._lastValidValue = newValue;
+        this._valueToValidate = undefined;
         this.setState({ value: newValue });
       }
     }
@@ -360,7 +356,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   private _onInputChange = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     const element: HTMLInputElement = event.target as HTMLInputElement;
     const value: string = element.value;
-
+    this._valueToValidate = value;
     this.setState({
       value: value
     });
@@ -372,11 +368,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * when spinning in response to a mouseDown
    * @param stepFunction - function to use to step by
    */
-  private _updateValue = (
-    shouldSpin: boolean,
-    stepDelay: number,
-    stepFunction: (value: string) => string | void
-  ): void => {
+  private _updateValue = (shouldSpin: boolean, stepDelay: number, stepFunction: (value: string) => string | void): void => {
     const newValue: string | void = stepFunction(this.state.value);
     if (newValue) {
       this._lastValidValue = newValue;
@@ -414,10 +406,10 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * the value when up or down arrow are depressed
    * @param event - the keyboardEvent that was fired
    */
-  private _handleKeyDown = (event: React.KeyboardEvent<HTMLElement>): void => {
+  private _handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>): void => {
     // eat the up and down arrow keys to keep focus in the spinButton
     // (especially when a spinButton is inside of a FocusZone)
-    if (event.which === KeyCodes.up || event.which === KeyCodes.down) {
+    if (event.which === KeyCodes.up || event.which === KeyCodes.down || event.which === KeyCodes.enter) {
       event.preventDefault();
       event.stopPropagation();
     }
@@ -429,19 +421,26 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
 
     let spinDirection = KeyboardSpinDirection.notSpinning;
 
-    if (event.which === KeyCodes.up) {
-      spinDirection = KeyboardSpinDirection.up;
-      this._updateValue(false /* shouldSpin */, this._initialStepDelay, this._onIncrement!);
-    } else if (event.which === KeyCodes.down) {
-      spinDirection = KeyboardSpinDirection.down;
-      this._updateValue(false /* shouldSpin */, this._initialStepDelay, this._onDecrement!);
-    } else if (event.which === KeyCodes.enter) {
-      event.currentTarget.blur();
-      this.focus();
-    } else if (event.which === KeyCodes.escape) {
-      if (this.state.value !== this._lastValidValue) {
-        this.setState({ value: this._lastValidValue });
-      }
+    switch (event.which) {
+      case KeyCodes.up:
+        spinDirection = KeyboardSpinDirection.up;
+        this._updateValue(false /* shouldSpin */, this._initialStepDelay, this._onIncrement!);
+        break;
+      case KeyCodes.down:
+        spinDirection = KeyboardSpinDirection.down;
+        this._updateValue(false /* shouldSpin */, this._initialStepDelay, this._onDecrement!);
+        break;
+      case KeyCodes.enter:
+      case KeyCodes.tab:
+        this._validate(event);
+        break;
+      case KeyCodes.escape:
+        if (this.state.value !== this._lastValidValue) {
+          this.setState({ value: this._lastValidValue });
+        }
+        break;
+      default:
+        break;
     }
 
     // style the increment/decrement button to look active

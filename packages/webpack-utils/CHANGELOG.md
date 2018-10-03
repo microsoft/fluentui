@@ -1,6 +1,27 @@
 # Change Log - @uifabric/webpack-utils
 
-This log was last generated on Fri, 06 Jul 2018 19:07:51 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Sep 2018 14:25:46 GMT and should not be manually modified.
+
+## 0.7.3
+Fri, 21 Sep 2018 14:25:46 GMT
+
+### Patches
+
+- Adding a version stamp file
+
+## 0.7.2
+Tue, 14 Aug 2018 10:27:33 GMT
+
+### Patches
+
+- exposing codepen examples, disabling codepen tasks in packages != ouifr
+
+## 0.7.1
+Mon, 16 Jul 2018 10:27:18 GMT
+
+### Patches
+
+- Use var instead of const in the ui fabric plugin to make it compatible with Safari 9
 
 ## 0.7.0
 Fri, 06 Jul 2018 19:07:51 GMT

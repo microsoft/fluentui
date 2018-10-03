@@ -1,28 +1,17 @@
 import * as React from 'react';
 import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
-import { addMonths, addYears } from '../../../utilities/dateMath/DateMath';
+import { addMonths, addYears } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
 import './DatePicker.Examples.scss';
 
 const today: Date = new Date(Date.now());
 const minDate: Date = addMonths(today, -1);
 const maxDate: Date = addYears(today, 1);
-const description = `When date boundaries are set (via minDate and maxDate props) the DatePicker will not allow out-of-bounds dates to be picked or entered. In this example, the allowed dates are ${minDate.toLocaleDateString()}-${maxDate.toLocaleDateString()}`;
+const description = `When date boundaries are set (via minDate and maxDate props) the DatePicker will not allow
+out-of-bounds dates to be picked or entered. In this example, the allowed dates are
+${minDate.toLocaleDateString()}-${maxDate.toLocaleDateString()}`;
 
 const DayPickerStrings: IDatePickerStrings = {
-  months: [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December'
-  ],
+  months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
 
   shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 
@@ -35,6 +24,7 @@ const DayPickerStrings: IDatePickerStrings = {
   nextMonthAriaLabel: 'Go to next month',
   prevYearAriaLabel: 'Go to previous year',
   nextYearAriaLabel: 'Go to next year',
+  closeButtonAriaLabel: 'Close date picker',
 
   isRequiredErrorMessage: 'Field is required.',
 

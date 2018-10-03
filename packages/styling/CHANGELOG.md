@@ -1,6 +1,161 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 10 Jul 2018 21:54:07 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Oct 2018 12:27:24 GMT and should not be manually modified.
+
+## 6.28.0
+Mon, 01 Oct 2018 12:27:24 GMT
+
+### Minor changes
+
+- Minor additions for semantic colors.
+- semantic slot value updates per design direction
+
+## 6.27.0
+Fri, 21 Sep 2018 14:25:46 GMT
+
+### Minor changes
+
+- Add schemes to ITheme with helper utility.
+
+### Patches
+
+- Adding a version stamp file
+
+## 6.26.0
+Wed, 19 Sep 2018 12:27:48 GMT
+
+### Minor changes
+
+- Theming: add ISpacing interface and spacing property
+
+## 6.25.0
+Tue, 18 Sep 2018 12:26:03 GMT
+
+### Minor changes
+
+- Theming: add ISpacing interface and spacing property
+
+## 6.24.0
+Thu, 13 Sep 2018 17:38:04 GMT
+
+### Minor changes
+
+- Adds new semantic slots per design direction
+
+## 6.23.0
+Fri, 07 Sep 2018 16:29:48 GMT
+
+### Minor changes
+
+- Updates button slots with correct pre-fluent palette values and scss fallbacks
+
+## 6.22.0
+Thu, 06 Sep 2018 10:28:35 GMT
+
+### Minor changes
+
+- add buttonBackgroundDisabled semantic slot
+
+## 6.21.0
+Wed, 05 Sep 2018 10:29:25 GMT
+
+### Minor changes
+
+- Change bodyDivider value from neutralTertiaryAlt back to neutralLight
+
+## 6.20.0
+Thu, 30 Aug 2018 10:32:49 GMT
+
+### Minor changes
+
+- Adds a new function returning a style for an :after pseudo element to replace an ellipsis text-overflow with a fading out effect of last characters. Considers the fact that all colors are affected by the theme applied to the app.
+
+## 6.19.0
+Mon, 27 Aug 2018 10:27:43 GMT
+
+### Minor changes
+
+- Added ScreenWidthMinUhfMobile constant
+
+## 6.18.0
+Fri, 24 Aug 2018 10:26:08 GMT
+
+### Minor changes
+
+- Adjustments to the internal typography interfaces.
+
+## 6.17.0
+Tue, 21 Aug 2018 10:28:16 GMT
+
+### Minor changes
+
+- adds variantBorderHovered and emptyStateBackground semantic slots to theme and variants logic
+
+## 6.16.0
+Mon, 13 Aug 2018 03:43:25 GMT
+
+### Minor changes
+
+- new button semantic slots
+- adds opacity function to variants
+
+## 6.15.0
+Fri, 10 Aug 2018 10:26:09 GMT
+
+### Minor changes
+
+- Updating `ITypography` interface with improvements. Note this is an experimental interface we're working on.
+
+## 6.14.0
+Fri, 03 Aug 2018 10:25:59 GMT
+
+### Minor changes
+
+- adds 4 new semantic slots, based on designs from SP-Client events webpart, and with approval from Philip Kuo; actionLink, actionLinkHovered, cardBackground, variantBorder
+
+## 6.13.0
+Thu, 02 Aug 2018 10:23:19 GMT
+
+### Minor changes
+
+- getGlobalClassNames - when disabled, now returns a unique classname (modularized) instead of empty string.
+- Styling: make typography properties optional in Partial<ITheme>
+
+## 6.12.0
+Tue, 24 Jul 2018 10:24:36 GMT
+
+### Minor changes
+
+- Add unregisterIcons to styling export
+
+## 6.11.0
+Mon, 23 Jul 2018 10:28:08 GMT
+
+### Minor changes
+
+- add ITypography to ITheme
+- Theming: add new semantic slot
+
+## 6.10.0
+Thu, 19 Jul 2018 10:23:34 GMT
+
+### Minor changes
+
+- Add unregister icons API
+
+## 6.9.0
+Wed, 18 Jul 2018 10:25:50 GMT
+
+### Minor changes
+
+- Move certain types into `@uifabric/merge-styles` and export more types as well from that package.
+
+## 6.8.0
+Fri, 13 Jul 2018 21:32:37 GMT
+
+### Minor changes
+
+- Reverting the TypeScript bump, to un
 
 ## 6.6.0
 Tue, 10 Jul 2018 21:54:07 GMT

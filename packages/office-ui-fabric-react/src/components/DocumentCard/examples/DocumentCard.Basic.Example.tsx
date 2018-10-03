@@ -16,7 +16,9 @@ export class DocumentCardBasicExample extends React.Component<any, any> {
       previewImages: [
         {
           name: 'Revenue stream proposal fiscal year 2016 version02.pptx',
-          url: 'http://bing.com',
+          linkProps: {
+            href: 'http://google.com'
+          },
           previewImageSrc: TestImages.documentPreview,
           iconSrc: TestImages.iconPpt,
           imageFit: ImageFit.cover,

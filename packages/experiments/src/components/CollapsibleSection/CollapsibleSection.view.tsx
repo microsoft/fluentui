@@ -1,36 +1,34 @@
 import * as React from 'react';
-import { ICollapsibleSectionProps, ICollapsibleSectionStyles } from './CollapsibleSection.types';
-import { RefObject } from 'office-ui-fabric-react';
-import { IViewProps } from '../../Foundation';
 
-export interface ICollapsibleSectionViewOnlyProps {
-  collapsed: boolean;
-  titleElementRef?: RefObject<HTMLElement>;
-  onKeyDown?: (ev: React.KeyboardEvent<Element>) => void;
-  onToggleCollapse?: () => void;
-  onRootKeyDown?: (ev: React.KeyboardEvent<Element>) => void;
-}
+import { ICollapsibleSectionComponent } from './CollapsibleSection.types';
+import { CollapsibleSectionTitle } from './CollapsibleSectionTitle';
 
-// TODO: consolidate in createComponent to automatically take in parent / HOC props?
-export type ICollapsibleSectionViewProps = IViewProps<
-  ICollapsibleSectionProps & ICollapsibleSectionViewOnlyProps,
-  ICollapsibleSectionStyles
->;
+export const CollapsibleSectionView: ICollapsibleSectionComponent['view'] = props => {
+  const {
+    collapsed,
+    titleAs: TitleType = CollapsibleSectionTitle,
+    titleElementRef,
+    titleProps,
+    children,
+    onClick,
+    onKeyDown,
+    indent
+  } = props;
 
-export const CollapsibleSectionView = (props: ICollapsibleSectionViewProps) => {
-  const { collapsed, titleAs: TitleType, titleProps, children } = props;
-
+  // TODO: we're stomping on titleProps here with callbacks and ref. need to deal with both
+  //        state and user values or limit the props exposed to user.
   return (
-    <div onKeyDown={props.onRootKeyDown}>
+    <div className={props.classNames.root} onKeyDown={props.onRootKeyDown}>
       <TitleType
         {...titleProps}
         collapsed={props.collapsed}
-        focusElementRef={props.titleElementRef}
+        focusElementRef={titleElementRef}
         defaultCollapsed={true}
-        onToggleCollapse={props.onToggleCollapse}
-        onKeyDown={props.onKeyDown}
+        onClick={onClick}
+        onKeyDown={onKeyDown}
+        indent={indent}
       />
-      <div className={props.styles.body}>{!collapsed && children}</div>
+      <div className={props.classNames.body}>{!collapsed && children}</div>
     </div>
   );
 };

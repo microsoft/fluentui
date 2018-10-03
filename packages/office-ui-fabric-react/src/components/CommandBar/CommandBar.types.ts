@@ -3,7 +3,8 @@ import { IContextualMenuItem } from '../../ContextualMenu';
 import { IButtonStyles, IButtonProps } from '../../Button';
 import { ICommandBarData } from './CommandBar.base';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject, IComponentAs } from '../../Utilities';
+import { IRefObject, IStyleFunctionOrObject, IComponentAs } from '../../Utilities';
+import { ITooltipHostProps } from '../../Tooltip';
 
 export interface ICommandBar {
   /**
@@ -22,20 +23,20 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
    * Optional callback to access the ICommandBar interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ICommandBar | null) => void;
+  componentRef?: IRefObject<ICommandBar>;
 
   /**
-   * Items to render
+   * Items to render. ICommandBarItemProps extend IContextualMenuItem
    */
   items: ICommandBarItemProps[];
 
   /**
-   * Items to render on the right side (or left, in RTL).
+   * Items to render on the right side (or left, in RTL). ICommandBarItemProps extend IContextualMenuItem
    */
   farItems?: ICommandBarItemProps[];
 
   /**
-   * Default items to have in the overflow menu
+   * Default items to have in the overflow menu. ICommandBarItemProps extend IContextualMenuItem
    */
   overflowItems?: ICommandBarItemProps[];
 
@@ -107,12 +108,18 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   theme?: ITheme;
 }
 
+// ICommandBarItemProps extends IContextualMenuItem and adds a few CommandBar specific props
 export interface ICommandBarItemProps extends IContextualMenuItem {
   /**
    * Remove text when button is not in the overflow
    * @defaultvalue false
    */
   iconOnly?: boolean;
+
+  /**
+   * Props to pass into tooltip during iconOnly
+   */
+  tooltipHostProps?: ITooltipHostProps;
 
   /**
    * Custom styles for individual button
@@ -129,6 +136,12 @@ export interface ICommandBarItemProps extends IContextualMenuItem {
    * This value is controlled by the component and useful for adjusting onRender function
    */
   renderedInOverflow?: boolean;
+
+  /**
+   * Method to override the render of the individual command bar button. Note, is not used when rendered in overflow
+   * @default CommandBarButton
+   */
+  commandBarButtonAs?: IComponentAs<ICommandBarItemProps>;
 }
 
 export interface ICommandBarStyleProps {

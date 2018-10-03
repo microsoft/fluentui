@@ -10,17 +10,15 @@ import {
   KeyCodes,
   createRef,
   css,
-  mergeAriaAttributeValues
+  mergeAriaAttributeValues,
+  portalContainsElement
 } from '../../Utilities';
 import { Icon } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.types';
 import { IButtonClassNames, getBaseButtonClassNames } from './BaseButton.classNames';
-import {
-  getClassNames as getBaseSplitButtonClassNames,
-  ISplitButtonClassNames
-} from './SplitButton/SplitButton.classNames';
+import { getClassNames as getBaseSplitButtonClassNames, ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
 import { KeytipData } from '../../KeytipData';
 
 export interface IBaseButtonProps extends IButtonProps {
@@ -68,7 +66,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     this._warnDeprecations({
       rootProps: undefined,
-      description: 'secondaryText'
+      description: 'secondaryText',
+      toggled: 'checked'
     });
     this._labelId = getId();
     this._descriptionId = getId();
@@ -97,10 +96,10 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       iconProps,
       menuIconProps,
       styles,
-      text,
       checked,
       variantClassName,
       theme,
+      toggle,
       getClassNames
     } = this.props;
 
@@ -122,6 +121,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
           !!allowDisabledFocus
         )
       : getBaseButtonClassNames(
+          theme!,
           styles!,
           className!,
           variantClassName!,
@@ -147,6 +147,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       ]
     );
 
+    // Check for ariaLabel passed in via Button props, and fall back to aria-label passed in via native props
+    const resolvedAriaLabel = ariaLabel || (nativeProps as any)['aria-label'];
+
     // Check for ariaDescription, secondaryText or aria-describedby in the native props to determine source of aria-describedby
     // otherwise default to undefined so property does not appear in output.
     let ariaDescribedBy = undefined;
@@ -164,18 +167,16 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     // set the labelledby element. Otherwise, the button is labeled implicitly by the descendent
     // text on the button (if it exists). Never set both aria-label and aria-labelledby.
     let ariaLabelledBy = undefined;
-    if (!ariaLabel) {
+    if (!resolvedAriaLabel) {
       if ((nativeProps as any)['aria-labelledby']) {
         ariaLabelledBy = (nativeProps as any)['aria-labelledby'];
       } else if (ariaDescribedBy) {
-        ariaLabelledBy = text ? _labelId : undefined;
+        ariaLabelledBy = this._hasText() ? _labelId : undefined;
       }
     }
 
     const dataIsFocusable =
-      (this.props as any)['data-is-focusable'] === false || (disabled && !allowDisabledFocus) || this._isSplitButton
-        ? false
-        : true;
+      (this.props as any)['data-is-focusable'] === false || (disabled && !allowDisabledFocus) || this._isSplitButton ? false : true;
 
     const buttonProps = assign(nativeProps, {
       className: this._classNames.root,
@@ -187,12 +188,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       onMouseDown: this._onMouseDown,
       onMouseUp: this._onMouseUp,
       onClick: this._onClick,
-      'aria-label': ariaLabel,
+      'aria-label': resolvedAriaLabel,
       'aria-labelledby': ariaLabelledBy,
       'aria-describedby': ariaDescribedBy,
       'aria-disabled': isPrimaryButtonDisabled,
       'data-is-focusable': dataIsFocusable,
-      'aria-pressed': checked
+      'aria-pressed': toggle ? !!checked : undefined // aria-pressed attribute should only be present for toggle buttons
     });
 
     if (ariaHidden) {
@@ -203,8 +204,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       return this._onRenderSplitButtonContent(tag, buttonProps);
     } else if (this.props.menuProps) {
       assign(buttonProps, {
-        onKeyDown: this._onMenuKeyDown,
-        onClick: this._onMenuClick,
         'aria-expanded': this._isExpanded,
         'aria-owns': this.state.menuProps ? this._labelId + '-menu' : null,
         'aria-haspopup': true
@@ -218,11 +217,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     // For split buttons, touching anywhere in the button should drop the dropdown, which should contain the primary action.
     // This gives more hit target space for touch environments. We're setting the onpointerdown here, because React
     // does not support Pointer events yet.
-    if (
-      this._isSplitButton &&
-      this._splitButtonContainer.value &&
-      'onpointerdown' in this._splitButtonContainer.value
-    ) {
+    if (this._isSplitButton && this._splitButtonContainer.value && 'onpointerdown' in this._splitButtonContainer.value) {
       this._events.on(this._splitButtonContainer.value, 'pointerdown', this._onPointerDown, true);
     }
   }
@@ -307,14 +302,13 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     return Content;
   }
 
-  private _onRenderIcon = (
-    buttonProps?: IButtonProps,
-    defaultRender?: IRenderFunction<IButtonProps>
-  ): JSX.Element | null => {
+  private _onRenderIcon = (buttonProps?: IButtonProps, defaultRender?: IRenderFunction<IButtonProps>): JSX.Element | null => {
     const { iconProps } = this.props;
 
     if (iconProps) {
-      return <Icon {...iconProps} className={this._classNames.icon} />;
+      const { className, ...rest } = iconProps;
+
+      return <Icon className={css(this._classNames.icon, className)} {...rest} />;
     }
     return null;
   };
@@ -411,6 +405,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _onRenderMenu = (menuProps: IContextualMenuProps): JSX.Element => {
     const { onDismiss = this._dismissMenu } = menuProps;
 
+    const MenuType = this.props.menuAs || (ContextualMenu as React.ReactType<IContextualMenuProps>);
+
     // the accessible menu label (accessible name) has a relationship to the button.
     // If the menu props do not specify an explicit value for aria-label or aria-labelledBy,
     // AND the button has text, we'll set the menu aria-labelledBy to the text element id.
@@ -419,7 +415,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
 
     return (
-      <ContextualMenu
+      <MenuType
         id={this._labelId + '-menu'}
         directionalHint={DirectionalHint.bottomLeftEdge}
         {...menuProps}
@@ -452,34 +448,20 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   };
 
   private _onToggleMenu = (shouldFocusOnContainer: boolean): void => {
-    if (this._splitButtonContainer.current) {
-      this._splitButtonContainer.current.focus();
-    }
-
     const currentMenuProps = this.state.menuProps;
     let shouldFocusOnMount = true;
     if (this.props.menuProps && this.props.menuProps.shouldFocusOnMount === false) {
       shouldFocusOnMount = false;
     }
     if (this.props.persistMenu) {
-      currentMenuProps && currentMenuProps.hidden
-        ? this._openMenu(shouldFocusOnContainer, shouldFocusOnMount)
-        : this._dismissMenu();
+      currentMenuProps && currentMenuProps.hidden ? this._openMenu(shouldFocusOnContainer, shouldFocusOnMount) : this._dismissMenu();
     } else {
       currentMenuProps ? this._dismissMenu() : this._openMenu(shouldFocusOnContainer, shouldFocusOnMount);
     }
   };
 
   private _onRenderSplitButtonContent(tag: any, buttonProps: IButtonProps): JSX.Element {
-    const {
-      styles = {},
-      disabled,
-      allowDisabledFocus,
-      checked,
-      getSplitButtonClassNames,
-      primaryDisabled,
-      menuProps
-    } = this.props;
+    const { styles = {}, disabled, allowDisabledFocus, checked, getSplitButtonClassNames, primaryDisabled, menuProps, toggle } = this.props;
     let { keytipProps } = this.props;
 
     const classNames = getSplitButtonClassNames
@@ -511,7 +493,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
             aria-disabled={disabled}
             aria-haspopup={true}
             aria-expanded={this._isExpanded}
-            aria-pressed={this.props.checked}
+            aria-pressed={toggle ? !!checked : undefined} // aria-pressed attribute should only be present for toggle buttons
             aria-describedby={mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])}
             className={classNames && classNames.splitButtonContainer}
             onKeyDown={this._onSplitButtonContainerKeyDown}
@@ -521,6 +503,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
             onClick={!disabled && !primaryDisabled ? this._onSplitButtonPrimaryClick : undefined}
             tabIndex={!disabled || allowDisabledFocus ? 0 : undefined}
             aria-roledescription={buttonProps['aria-roledescription']}
+            onFocusCapture={this._onSplitContainerFocusCapture}
           >
             <span style={{ display: 'flex' }}>
               {this._onRenderContent(tag, buttonProps)}
@@ -532,6 +515,19 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       </KeytipData>
     );
   }
+
+  private _onSplitContainerFocusCapture = (ev: React.FocusEvent<HTMLDivElement>) => {
+    const container = this._splitButtonContainer.current;
+
+    // If the target is coming from the portal we do not need to set focus on the container.
+    if (!container || (ev.target && portalContainsElement(ev.target, container))) {
+      return;
+    }
+
+    // We should never be able to focus the individual buttons in a split button. Focus
+    // should always remain on the container.
+    container.focus();
+  };
 
   private _onSplitButtonPrimaryClick = (ev: React.MouseEvent<HTMLDivElement>) => {
     if (this._isExpanded) {
@@ -552,10 +548,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     return null;
   }
 
-  private _onRenderSplitButtonMenuButton(
-    classNames: ISplitButtonClassNames | undefined,
-    keytipAttributes: any
-  ): JSX.Element {
+  private _onRenderSplitButtonMenuButton(classNames: ISplitButtonClassNames | undefined, keytipAttributes: any): JSX.Element {
     const { allowDisabledFocus, checked, disabled } = this.props;
     let menuIconProps = this.props.menuIconProps;
 
@@ -574,7 +567,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       allowDisabledFocus: allowDisabledFocus,
       onClick: this._onMenuClick,
       menuProps: undefined,
-      iconProps: menuIconProps,
+      iconProps: { ...menuIconProps, className: this._classNames.menuIcon },
       ariaLabel: splitButtonAriaLabel,
       'aria-haspopup': true,
       'aria-expanded': this._isExpanded,
@@ -597,8 +590,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     if (this.props.disabled && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
       ev.preventDefault();
       ev.stopPropagation();
-    } else if (!this.props.disabled && this.props.onKeyDown !== undefined) {
-      this.props.onKeyDown(ev); // not cancelling event because it's not disabled
+    } else if (!this.props.disabled) {
+      if (this.props.menuProps) {
+        this._onMenuKeyDown(ev);
+      } else if (this.props.onKeyDown !== undefined) {
+        this.props.onKeyDown(ev); // not cancelling event because it's not disabled
+      }
     }
   };
 
@@ -627,8 +624,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   };
 
   private _onClick = (ev: React.MouseEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>) => {
-    if (!this.props.disabled && this.props.onClick !== undefined) {
-      this.props.onClick(ev); // not cancelling event because it's not disabled
+    if (!this.props.disabled) {
+      if (this.props.menuProps) {
+        this._onMenuClick(ev);
+      } else if (this.props.onClick !== undefined) {
+        this.props.onClick(ev); // not cancelling event because it's not disabled
+      }
     }
   };
 
@@ -666,11 +667,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   };
 
   private _onTouchStart: () => void = () => {
-    if (
-      this._isSplitButton &&
-      this._splitButtonContainer.value &&
-      !('onpointerdown' in this._splitButtonContainer.value)
-    ) {
+    if (this._isSplitButton && this._splitButtonContainer.value && !('onpointerdown' in this._splitButtonContainer.value)) {
       this._handleTouchAndPointerEvent();
     }
   };
@@ -704,9 +701,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
    * @param ev - the keyboard event
    * @returns True if user clicks on custom trigger key if enabled or alt + down arrow if not. False otherwise.
    */
-  private _isValidMenuOpenKey(
-    ev: React.KeyboardEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>
-  ): boolean {
+  private _isValidMenuOpenKey(ev: React.KeyboardEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>): boolean {
     if (this.props.menuTriggerKeyCode) {
       return ev.which === this.props.menuTriggerKeyCode;
     } else if (this.props.menuProps) {
@@ -718,7 +713,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     return false;
   }
 
-  private _onMenuClick = (ev: React.MouseEvent<HTMLDivElement | HTMLAnchorElement>) => {
+  private _onMenuClick = (ev: React.MouseEvent<HTMLDivElement | HTMLButtonElement | HTMLAnchorElement>) => {
     const { onMenuClick } = this.props;
     if (onMenuClick) {
       onMenuClick(ev, this);

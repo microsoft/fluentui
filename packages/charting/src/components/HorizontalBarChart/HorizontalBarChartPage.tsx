@@ -14,7 +14,7 @@ export class HorizontalBarChartPage extends React.Component<IComponentDemoPagePr
         componentName="HorizontalBarChartExample"
         exampleCards={
           <div>
-            <ExampleCard title="HorizontalBarChart" code={HorizontalBarChartBasicExampleCode}>
+            <ExampleCard title="HorizontalBarChart basic" code={HorizontalBarChartBasicExampleCode}>
               <HorizontalBarChartBasicExample />
             </ExampleCard>
           </div>

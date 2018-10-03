@@ -5,6 +5,7 @@ import { IDocPageProps } from '../../common/DocPage.types';
 import { ModalStatus } from './Modal.checklist';
 
 const ModalBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Modal/examples/Modal.Basic.Example.tsx') as string;
+const ModalBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Modal/Modal.Basic.Example.Codepen.txt') as string;
 
 export const ModalPageProps: IDocPageProps = {
   title: 'Modal',
@@ -16,7 +17,8 @@ export const ModalPageProps: IDocPageProps = {
     {
       title: 'Modal',
       code: ModalBasicExampleCode,
-      view: <ModalBasicExample />
+      view: <ModalBasicExample />,
+      codepenJS: ModalBasicExampleCodepen
     }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/Modal.types.ts')],
@@ -24,5 +26,6 @@ export const ModalPageProps: IDocPageProps = {
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/docs/ModalDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/docs/ModalDonts.md'),
-  isHeaderVisible: true
+  isHeaderVisible: true,
+  isFeedbackVisible: true
 };

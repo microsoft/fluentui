@@ -1,5 +1,5 @@
 import { IDemoPageProps } from './DemoPage.types';
-import { ComponentPage, ExampleCard, PropertiesTableSet, PageMarkdown } from '@uifabric/example-app-base';
+import { ComponentPage, ExampleCard, PropertiesTableSet, PageMarkdown, FeedbackList } from '@uifabric/example-app-base';
 import * as React from 'react';
 import { ComponentStatus } from '../ComponentStatus/ComponentStatus';
 
@@ -28,7 +28,13 @@ export const DemoPage: React.StatelessComponent<IDemoPageProps> = componentPageP
           {componentPageProps.exampleKnobs}
           {componentPageProps.examples &&
             componentPageProps.examples.map(example => (
-              <ExampleCard title={example.title} code={example.code} key={example.title}>
+              <ExampleCard
+                title={example.title}
+                code={example.code}
+                key={example.title}
+                codepenJS={example.codepenJS}
+                isScrollable={example.isScrollable}
+              >
                 {example.view}
               </ExampleCard>
             ))}
@@ -39,7 +45,7 @@ export const DemoPage: React.StatelessComponent<IDemoPageProps> = componentPageP
           <PropertiesTableSet sources={componentPageProps.propertiesTablesSources} />
         )
       }
-      overview={<PageMarkdown>{componentPageProps.overview}</PageMarkdown>}
+      overview={componentPageProps.overview ? <PageMarkdown>{componentPageProps.overview}</PageMarkdown> : undefined}
       bestPractices={
         componentPageProps.bestPractices ? <PageMarkdown>{componentPageProps.bestPractices}</PageMarkdown> : undefined
       }
@@ -49,6 +55,8 @@ export const DemoPage: React.StatelessComponent<IDemoPageProps> = componentPageP
       componentStatus={
         componentPageProps.componentStatus ? <ComponentStatus {...componentPageProps.componentStatus} /> : undefined
       }
+      isFeedbackVisible={componentPageProps.isFeedbackVisible}
+      feedback={componentPageProps.isFeedbackVisible ? <FeedbackList title={componentPageProps.title} /> : undefined}
     />
   );
 };

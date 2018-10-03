@@ -1,13 +1,13 @@
 import { ITheme, IStyle } from '../../../Styling';
-import { IStyleFunctionOrObject } from '../../../Utilities';
+import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
 
 export interface IColorSlider {}
 
-export interface IColorSliderProps {
+export interface IColorSliderProps extends IBaseProps<IColorSlider> {
   /**
    * Gets the component ref.
    */
-  componentRef?: (component: IColorSlider | null) => void;
+  componentRef?: IRefObject<IColorSlider>;
 
   /**
    * Minimum value of the slider.
@@ -36,6 +36,11 @@ export interface IColorSliderProps {
 
   /**
    * Callback issued when the value changes.
+   */
+  onChange?: (event: React.MouseEvent<HTMLElement>, newValue?: number) => void;
+
+  /**
+   * @deprecated Use onChange instead.
    */
   onChanged?: (newValue: number) => void;
 

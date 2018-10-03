@@ -121,14 +121,14 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         flexBasis: '32px',
         flexShrink: 0,
         padding: 1,
-        color: palette.themePrimary,
-        backgroundColor: 'transparent'
+        color: palette.themePrimary
       }
     ],
     field: [
       'ms-SearchBox-field',
       normalize,
       {
+        backgroundColor: 'transparent',
         border: 'none',
         outline: 'none',
         fontWeight: 'inherit',
@@ -136,6 +136,9 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         fontSize: 'inherit',
         color: palette.neutralPrimary,
         flex: '1 1 0px',
+        // The default implicit value of 'auto' prevents the input from shrinking. Setting min-width to
+        // 0px allows the input element to shrink to fit the container.
+        minWidth: '0px',
         overflow: 'hidden',
         textOverflow: 'ellipsis',
         // This padding forces the text placement to round up.

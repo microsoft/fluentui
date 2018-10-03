@@ -1,59 +1,73 @@
 import { ILineChartStyleProps, ILineChartStyles } from './LineChart.types';
 
 export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
-  const { className, theme, width, height } = props;
-
-  const chartWidth = width + 30;
-  const chartPadding = 20;
-  const chartHeight = height + 10;
-  const xOffset = 30;
-  const yOffset = 20;
-
+  const { className, theme, color } = props;
+  const { palette, fonts } = theme!;
   return {
     root: [
-      'ms-LineChart',
-      className,
       {
-        width: chartWidth + 2 * chartPadding
+        display: 'flex',
+        width: '100%',
+        height: '100%',
+        flexDirection: 'column',
+        overflow: 'hidden'
+      },
+      className
+    ],
+    xAxis: {
+      selectors: {
+        text: {
+          ...fonts.tiny,
+          opacity: 0.6
+        },
+        line: {
+          opacity: 0.1,
+          width: '1px'
+        },
+        path: {
+          display: 'none'
+        }
+      }
+    },
+    yAxis: {
+      selectors: {
+        text: {
+          opacity: 0.6
+        },
+        path: {
+          display: 'none'
+        },
+        line: {
+          opacity: 0.1
+        }
+      }
+    },
+    legendContainer: [
+      {
+        marginTop: '8px',
+        marginLeft: '20px'
       }
     ],
-    chart: [
+    calloutContentRoot: [
       {
-        padding: chartPadding,
-        width: chartWidth,
-        height: chartHeight
+        display: 'grid',
+        overflow: 'hidden',
+        padding: '10px 16px 10px 16px',
+        backgroundColor: palette.white
       }
     ],
-    chartLabel: [
+    calloutContentX: [
       {
-        textAlign: 'center',
-        ...theme.fonts.mediumPlus
+        ...fonts.medium,
+        lineHeight: '14px'
       }
     ],
-    xAxis: [
+    calloutContentY: [
       {
-        transform: `translate(${xOffset}px, ${height}px)`
-      }
-    ],
-    xAxisTicks: [],
-    yAxis: [
-      {
-        transform: `translate(${yOffset}px, 0px)`
-      }
-    ],
-    yAxisTicks: [
-      {
-        transform: 'scaleX(-1)'
-      }
-    ],
-    yAxisDomain: [
-      {
-        transform: 'scaleX(-1)'
-      }
-    ],
-    lines: [
-      {
-        transform: `translate(${xOffset}px, 0px)`
+        color: color === '' ? palette.black : color,
+        ...fonts.xxLarge,
+        fontWeight: 'bold',
+        lineHeight: '31px'
       }
     ]
   };

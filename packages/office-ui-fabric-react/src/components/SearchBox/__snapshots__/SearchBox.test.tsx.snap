@@ -83,10 +83,10 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
     </i>
   </div>
   <input
-    aria-label={undefined}
     className=
         ms-SearchBox-field
         {
+          background-color: transparent;
           border: none;
           box-shadow: none;
           box-sizing: border-box;
@@ -99,6 +99,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
           margin-left: 0px;
           margin-right: 0px;
           margin-top: 0px;
+          min-width: 0px;
           outline: none;
           overflow: hidden;
           padding-bottom: 0.5px;
@@ -117,12 +118,10 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
         &:-ms-input-placeholder {
           color: #666666;
         }
-    disabled={undefined}
     id="SearchBox0"
     onChange={[Function]}
     onInput={[Function]}
     onKeyDown={[Function]}
-    placeholder={undefined}
     value=""
   />
 </div>
@@ -209,10 +208,10 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
     </i>
   </div>
   <input
-    aria-label={undefined}
     className=
         ms-SearchBox-field
         {
+          background-color: transparent;
           border: none;
           box-shadow: none;
           box-sizing: border-box;
@@ -225,6 +224,7 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
           margin-left: 0px;
           margin-right: 0px;
           margin-top: 0px;
+          min-width: 0px;
           outline: none;
           overflow: hidden;
           padding-bottom: 0.5px;
@@ -243,12 +243,10 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
         &:-ms-input-placeholder {
           color: #666666;
         }
-    disabled={undefined}
     id="SearchBox5"
     onChange={[Function]}
     onInput={[Function]}
     onKeyDown={[Function]}
-    placeholder={undefined}
     value=""
   />
 </div>

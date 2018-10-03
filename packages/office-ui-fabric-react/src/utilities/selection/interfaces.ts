@@ -14,7 +14,7 @@ export interface ISelection {
   count: number;
   mode: SelectionMode;
 
-  canSelectItem: (item: IObjectWithKey) => boolean;
+  canSelectItem: (item: IObjectWithKey, index?: number) => boolean;
 
   // Obesrvable methods.
   setChangeEvents(isEnabled: boolean, suppressChange?: boolean): void;

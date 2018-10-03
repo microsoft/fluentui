@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseDecorator } from './BaseDecorator';
-import { findScrollableParent, getRect, createRef } from '../../Utilities';
+import { findScrollableParent, getRect, createRef, getWindow } from '../../Utilities';
 
 export interface IViewport {
   width: number;
@@ -24,6 +24,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
   return class WithViewportComponent extends BaseDecorator<TProps, IWithViewportState> {
     private _root = createRef<HTMLDivElement>();
     private _resizeAttempts: number;
+    private _viewportResizeObserver: any;
 
     constructor(props: TProps) {
       super(props);
@@ -38,12 +39,25 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
     }
 
     public componentDidMount(): void {
+      const { skipViewportMeasures } = this.props as IWithViewportProps;
       this._onAsyncResize = this._async.debounce(this._onAsyncResize, RESIZE_DELAY, {
         leading: false
       });
 
-      this._events.on(window, 'resize', this._onAsyncResize);
-      const { skipViewportMeasures } = this.props as IWithViewportProps;
+      const window = getWindow();
+      const viewportElement = this._root.current;
+
+      // ResizeObserver seems always fire even window is not resized. This is
+      // particularly bad when skipViewportMeasures is set when optimizing fixed layout lists.
+      // It will measure and update and re-render the entire list after list is fully rendered.
+      // So fallback to listen to resize event when skipViewportMeasures is set.
+      if (!skipViewportMeasures && window && (window as any).ResizeObserver) {
+        this._viewportResizeObserver = new (window as any).ResizeObserver(this._onAsyncResize);
+        this._viewportResizeObserver.observe(viewportElement);
+      } else {
+        this._events.on(window, 'resize', this._onAsyncResize);
+      }
+
       if (!skipViewportMeasures) {
         this._updateViewport();
       }
@@ -51,6 +65,10 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
 
     public componentWillUnmount(): void {
       this._events.dispose();
+
+      if (this._viewportResizeObserver) {
+        this._viewportResizeObserver.disconnect();
+      }
     }
 
     public render(): JSX.Element {

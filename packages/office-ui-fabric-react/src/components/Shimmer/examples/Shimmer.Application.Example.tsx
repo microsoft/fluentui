@@ -2,10 +2,9 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
-import { createListItems } from '../../../utilities/exampleData';
+import { createListItems } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import { IColumn, buildColumns, SelectionMode, Toggle } from 'office-ui-fabric-react/lib/index';
-import { ShimmeredDetailsList } from '../../DetailsList';
-
+import { ShimmeredDetailsList } from 'office-ui-fabric-react/lib/ShimmeredDetailsList';
 import * as ShimmerExampleStyles from './Shimmer.Example.scss';
 
 export interface IItem {
@@ -90,21 +89,21 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
           <Toggle
             label="Enable Modal Selection"
             checked={isModalSelection}
-            onChanged={this._onChangeModalSelection}
+            onChange={this._onChangeModalSelection}
             onText="Modal"
             offText="Normal"
           />
           <Toggle
             label="Enable Compact Mode"
             checked={isCompactMode}
-            onChanged={this._onChangeCompactMode}
+            onChange={this._onChangeCompactMode}
             onText="Compact"
             offText="Normal"
           />
           <Toggle
             label="Enable content loading"
             checked={isDataLoaded}
-            onChanged={this._onLoadData}
+            onChange={this._onLoadData}
             onText="Content"
             offText="Shimmer"
           />
@@ -143,7 +142,7 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
     }, INTERVAL_DELAY);
   };
 
-  private _onLoadData = (checked: boolean): void => {
+  private _onLoadData = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
     if (!_items) {
       _items = createListItems(ITEMS_COUNT);
       _items.map((item: IItem) => {
@@ -168,11 +167,11 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
     });
   };
 
-  private _onChangeModalSelection = (checked: boolean): void => {
+  private _onChangeModalSelection = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
     this.setState({ isModalSelection: checked });
   };
 
-  private _onChangeCompactMode = (checked: boolean): void => {
+  private _onChangeCompactMode = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
     this.setState({ isCompactMode: checked });
   };
 

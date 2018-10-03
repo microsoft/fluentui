@@ -4,12 +4,7 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
 <div>
   <button
     aria-checked={false}
-    aria-describedby="descriptionID"
-    aria-disabled={undefined}
-    aria-label={undefined}
-    aria-labelledby={undefined}
-    aria-posinset={undefined}
-    aria-setsize={undefined}
+    aria-labelledby="labelID"
     className=
         ms-Checkbox
         is-enabled
@@ -70,10 +65,7 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
         &:focus .ms-Checkbox-text {
           color: #333333;
         }
-    data-ktp-execute-target={undefined}
-    disabled={undefined}
     id="checkbox-0"
-    name={undefined}
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -84,7 +76,7 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
       className=
           ms-Checkbox-label
           {
-            align-items: center;
+            align-items: flex-start;
             cursor: pointer;
             display: flex;
             margin-bottom: 0;
@@ -120,7 +112,6 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 20px;
             }
-        data-ktp-target={undefined}
       >
         <i
           aria-hidden={true}
@@ -153,6 +144,7 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
             {
               color: #333333;
               font-size: 14px;
+              line-height: 20px;
               margin-bottom: 0;
               margin-left: 4px;
               margin-right: 4px;
@@ -165,18 +157,12 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
   </button>
   <label
     className="screenReaderOnly"
-    id="descriptionID"
+    id="labelID"
   >
-    Uncontroller checkbox description
+    Uncontrolled checkbox label
   </label>
   <button
     aria-checked={true}
-    aria-describedby={undefined}
-    aria-disabled={undefined}
-    aria-label={undefined}
-    aria-labelledby={undefined}
-    aria-posinset={undefined}
-    aria-setsize={undefined}
     className=
         ms-Checkbox
         is-checked
@@ -246,11 +232,8 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
         &:focus .ms-Checkbox-text {
           color: #333333;
         }
-    data-ktp-execute-target={undefined}
     defaultChecked={true}
-    disabled={undefined}
     id="checkbox-1"
-    name={undefined}
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -261,7 +244,7 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
       className=
           ms-Checkbox-label
           {
-            align-items: center;
+            align-items: flex-start;
             cursor: pointer;
             display: flex;
             margin-bottom: 0;
@@ -302,7 +285,6 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
               background: Highlight;
               border-color: Highlight;
             }
-        data-ktp-target={undefined}
       >
         <i
           aria-hidden={true}
@@ -335,6 +317,7 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
             {
               color: #333333;
               font-size: 14px;
+              line-height: 20px;
               margin-bottom: 0;
               margin-left: 4px;
               margin-right: 4px;
@@ -347,12 +330,7 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
   </button>
   <button
     aria-checked={false}
-    aria-describedby={undefined}
     aria-disabled={true}
-    aria-label={undefined}
-    aria-labelledby={undefined}
-    aria-posinset={undefined}
-    aria-setsize={undefined}
     className=
         ms-Checkbox
         is-disabled
@@ -391,10 +369,8 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
           top: -2px;
           z-index: 1;
         }
-    data-ktp-execute-target={undefined}
     disabled={true}
     id="checkbox-2"
-    name={undefined}
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -405,7 +381,7 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
       className=
           ms-Checkbox-label
           {
-            align-items: center;
+            align-items: flex-start;
             cursor: default;
             display: flex;
             margin-bottom: 0;
@@ -441,7 +417,6 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 20px;
             }
-        data-ktp-target={undefined}
       >
         <i
           aria-hidden={true}
@@ -474,6 +449,7 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
             {
               color: #a6a6a6;
               font-size: 14px;
+              line-height: 20px;
               margin-bottom: 0;
               margin-left: 4px;
               margin-right: 4px;
@@ -486,12 +462,7 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
   </button>
   <button
     aria-checked={true}
-    aria-describedby={undefined}
     aria-disabled={true}
-    aria-label={undefined}
-    aria-labelledby={undefined}
-    aria-posinset={undefined}
-    aria-setsize={undefined}
     className=
         ms-Checkbox
         is-checked
@@ -531,11 +502,9 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
           top: -2px;
           z-index: 1;
         }
-    data-ktp-execute-target={undefined}
     defaultChecked={true}
     disabled={true}
     id="checkbox-3"
-    name={undefined}
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -546,7 +515,7 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
       className=
           ms-Checkbox-label
           {
-            align-items: center;
+            align-items: flex-start;
             cursor: default;
             display: flex;
             margin-bottom: 0;
@@ -583,7 +552,6 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 20px;
             }
-        data-ktp-target={undefined}
       >
         <i
           aria-hidden={true}
@@ -616,6 +584,7 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
             {
               color: #a6a6a6;
               font-size: 14px;
+              line-height: 20px;
               margin-bottom: 0;
               margin-left: 4px;
               margin-right: 4px;
@@ -628,12 +597,6 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
   </button>
   <button
     aria-checked={false}
-    aria-describedby={undefined}
-    aria-disabled={undefined}
-    aria-label={undefined}
-    aria-labelledby={undefined}
-    aria-posinset={undefined}
-    aria-setsize={undefined}
     checked={false}
     className=
         ms-Checkbox
@@ -695,10 +658,7 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
         &:focus .ms-Checkbox-text {
           color: #333333;
         }
-    data-ktp-execute-target={undefined}
-    disabled={undefined}
     id="checkbox-4"
-    name={undefined}
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -709,7 +669,7 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
       className=
           ms-Checkbox-label
           {
-            align-items: center;
+            align-items: flex-start;
             cursor: pointer;
             display: flex;
             margin-bottom: 0;
@@ -745,7 +705,6 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 20px;
             }
-        data-ktp-target={undefined}
       >
         <i
           aria-hidden={true}
@@ -778,6 +737,7 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
             {
               color: #333333;
               font-size: 14px;
+              line-height: 20px;
               margin-bottom: 0;
               margin-left: 4px;
               margin-right: 4px;
@@ -790,12 +750,6 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
   </button>
   <button
     aria-checked={false}
-    aria-describedby={undefined}
-    aria-disabled={undefined}
-    aria-label={undefined}
-    aria-labelledby={undefined}
-    aria-posinset={undefined}
-    aria-setsize={undefined}
     className=
         ms-Checkbox
         reversed
@@ -857,10 +811,7 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
         &:focus .ms-Checkbox-text {
           color: #333333;
         }
-    data-ktp-execute-target={undefined}
-    disabled={undefined}
     id="checkbox-5"
-    name={undefined}
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -871,7 +822,7 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
       className=
           ms-Checkbox-label
           {
-            align-items: center;
+            align-items: flex-start;
             cursor: pointer;
             display: flex;
             flex-direction: row-reverse;
@@ -909,7 +860,6 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 20px;
             }
-        data-ktp-target={undefined}
       >
         <i
           aria-hidden={true}
@@ -942,6 +892,7 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
             {
               color: #333333;
               font-size: 14px;
+              line-height: 20px;
               margin-bottom: 0;
               margin-left: 4px;
               margin-right: 4px;
@@ -954,12 +905,6 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
   </button>
   <button
     aria-checked={false}
-    aria-describedby={undefined}
-    aria-disabled={undefined}
-    aria-label={undefined}
-    aria-labelledby={undefined}
-    aria-posinset={undefined}
-    aria-setsize={undefined}
     className=
         ms-Checkbox
         is-enabled
@@ -1020,10 +965,7 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
         &:focus .ms-Checkbox-text {
           color: #333333;
         }
-    data-ktp-execute-target={undefined}
-    disabled={undefined}
     id="checkbox-6"
-    name={undefined}
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -1070,7 +1012,6 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 20px;
             }
-        data-ktp-target={undefined}
       >
         <i
           aria-hidden={true}
@@ -1131,7 +1072,6 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
               color: #212121;
             }
         size={11}
-        style={undefined}
       >
         <div
           className=
@@ -1156,7 +1096,6 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
                   text-align: center;
                   width: 32px;
                 }
-            style={undefined}
           >
             <div
               className=
@@ -1201,7 +1140,6 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
                     }
                 onError={[Function]}
                 onLoad={[Function]}
-                role={undefined}
                 src="/_layouts/15/userphoto.aspx?size=S&accountname="
               />
             </div>
@@ -1236,7 +1174,6 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
                 }
           >
             <div
-              aria-describedby={undefined}
               className="ms-TooltipHost"
               onBlurCapture={[Function]}
               onFocusCapture={[Function]}

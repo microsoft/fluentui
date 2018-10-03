@@ -31,7 +31,7 @@ export class ShimmerLoadDataExample extends React.Component<{}, IShimmerLoadData
       <div className={ShimmerExampleStyles.shimmerExampleContainer}>
         <Toggle
           checked={isDataLoadedOne}
-          onChanged={this._getContentOne}
+          onChange={this._getContentOne}
           onText="Toggle to show shimmer"
           offText="Toggle to load content"
         />
@@ -53,7 +53,7 @@ export class ShimmerLoadDataExample extends React.Component<{}, IShimmerLoadData
         </Shimmer>
         <Toggle
           checked={isDataLoadedTwo}
-          onChanged={this._getContentTwo}
+          onChange={this._getContentTwo}
           onText="Toggle to show shimmer"
           offText="Toggle to load content"
         />
@@ -64,7 +64,7 @@ export class ShimmerLoadDataExample extends React.Component<{}, IShimmerLoadData
     );
   }
 
-  private _getContentOne = (checked: boolean): void => {
+  private _getContentOne = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
     const { isDataLoadedOne } = this.state;
     this.setState({
       isDataLoadedOne: checked,
@@ -72,7 +72,7 @@ export class ShimmerLoadDataExample extends React.Component<{}, IShimmerLoadData
     });
   };
 
-  private _getContentTwo = (checked: boolean): void => {
+  private _getContentTwo = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
     const { isDataLoadedTwo } = this.state;
     this.setState({
       isDataLoadedTwo: checked,

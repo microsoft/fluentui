@@ -33,6 +33,7 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
     const canCheck: boolean = isChecked !== null;
     const defaultRole = canCheck ? 'menuitemcheckbox' : 'menuitem';
     const itemHasSubmenu = hasSubmenu(item);
+    const { itemProps } = item;
 
     const buttonNativeProperties = getNativeProps(item, buttonProperties);
     // Do not add the disabled attribute to the button so that it is focusable
@@ -92,6 +93,7 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
               dismissSubMenu={dismissSubMenu}
               dismissMenu={dismissMenu}
               getSubmenuTarget={this._getSubmenuTarget}
+              {...itemProps}
             />
           </button>
         )}

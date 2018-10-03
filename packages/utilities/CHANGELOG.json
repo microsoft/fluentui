@@ -2,6 +2,366 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.21.1",
+      "tag": "@uifabric/utilities_v6.21.1",
+      "date": "Wed, 26 Sep 2018 12:27:23 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Memoize: Do not use cached result when function instances are distinct.",
+            "author": "Pablo Núñez <pablonete@gmail.com>",
+            "commit": "74bfc90fdbfae64ba91a53e9bd9b47493e326d60"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.21.0",
+      "tag": "@uifabric/utilities_v6.21.0",
+      "date": "Fri, 21 Sep 2018 14:25:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding a version stamp file",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "11c18bce52dba131548610c5eea0c1ab7fa4d1ca"
+          },
+          {
+            "comment": "Add IComponentAsProps",
+            "author": "Nick Durak <nickdurak@gmail.com>",
+            "commit": "c3f996accaad24f93ae959c8437af6f90da738c8"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Expose Customizer's mergeCustomizations as new helper function.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "7c45ef96439a8794586a6b338c2b2ee1e7080318"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.0.0 <2.0.0` to `>=1.1.0 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.9.0 <7.0.0` to `>=6.9.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=6.0.4 <7.0.0` to `>=6.0.5 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.20.0",
+      "tag": "@uifabric/utilities_v6.20.0",
+      "date": "Thu, 20 Sep 2018 12:25:33 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add optional defaultRender to IComponentAs",
+            "author": "Nick Durak <nickdurak@gmail.com>",
+            "commit": "55c0766d38b433be52e005262ed824ee3f153f5f"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.8.4 <7.0.0` to `>=6.9.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.19.1",
+      "tag": "@uifabric/utilities_v6.19.1",
+      "date": "Thu, 13 Sep 2018 17:38:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "allow stateless components to use customizable",
+            "author": "VincentBailly <vincentbaill@gmail.com>",
+            "commit": "e75160d82563e4b98ab7969306ff92f6b1797289"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.8.3 <7.0.0` to `>=6.8.4 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.19.0",
+      "tag": "@uifabric/utilities_v6.19.0",
+      "date": "Fri, 07 Sep 2018 22:04:50 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "888f598942757c715181a1441457f1c7d5611c73",
+            "comment": "Customizer: moving to use React 16 context."
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.18.0",
+      "tag": "@uifabric/utilities_v6.18.0",
+      "date": "Fri, 07 Sep 2018 16:29:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "a0d0b91a56f7671d26179abf47aaf1569e087650",
+            "comment": "Add helpers for setting and detecting portals"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.17.2",
+      "tag": "@uifabric/utilities_v6.17.2",
+      "date": "Wed, 05 Sep 2018 10:29:25 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "da7fc2b7254cf643749949ac1f5f8605f2477b81",
+            "comment": "Scroll: add flex-grow: 1 to scrollable content elements"
+          },
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "da7fc2b7254cf643749949ac1f5f8605f2477b81",
+            "comment": "Scroll: remove inline styles from scrollable content elements"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.8.2 <7.0.0` to `>=6.8.3 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.17.1",
+      "tag": "@uifabric/utilities_v6.17.1",
+      "date": "Thu, 30 Aug 2018 10:32:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "03c9afa72b5906b1c9d15459d01af974da32a1f5",
+            "comment": "Replace comment reference to old ms-Fabric is-focusVisible with ms-Fabric--isFocusVisible"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.17.0",
+      "tag": "@uifabric/utilities_v6.17.0",
+      "date": "Tue, 28 Aug 2018 10:23:58 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "3fb8e9d98632b11d38d079989c3e44c137d04e5c",
+            "comment": "Add mobileDetector to detect iOS devices"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.8.0 <7.0.0` to `>=6.8.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.16.0",
+      "tag": "@uifabric/utilities_v6.16.0",
+      "date": "Fri, 24 Aug 2018 17:02:14 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "63835ddd705e2350aa025ea69b041f28a3be5e19",
+            "comment": "Reverting Customizer React 16 context change."
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.15.1",
+      "tag": "@uifabric/utilities_v6.15.1",
+      "date": "Fri, 24 Aug 2018 10:26:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "0b20b876f152cc69147617e9b848feaa2dbb71df",
+            "comment": "Fix @types/prop-types being inconsistently restrictive."
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.15.0",
+      "tag": "@uifabric/utilities_v6.15.0",
+      "date": "Thu, 23 Aug 2018 10:28:17 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "e4daa37b59065e1d90b91ac728b3e3c7e52d9e77",
+            "comment": "Customizer: moving to use React 16 context."
+          },
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "882a50c5ae8d6e4521b21842d5f68723ba4f9d2e",
+            "comment": "Scroll: allow scrolling within a target element"
+          }
+        ],
+        "patch": [
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "882a50c5ae8d6e4521b21842d5f68723ba4f9d2e",
+            "comment": "Scroll: disable ios body scrolling in disableBodyScroll"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.14.1",
+      "tag": "@uifabric/utilities_v6.14.1",
+      "date": "Tue, 14 Aug 2018 10:27:33 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Avital Baral <avitalbaral99@gmail.com>",
+            "commit": "cf0f728d0b28540b7a42aa9121a840605ee04670",
+            "comment": "disabling codepen task"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=6.0.3 <7.0.0` to `>=6.0.4 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.14.0",
+      "tag": "@uifabric/utilities_v6.14.0",
+      "date": "Mon, 13 Aug 2018 03:43:25 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "3d0df820eec602f90ef5a4876f16f16f68965b32",
+            "comment": "Customizer should allow for nesting. Right now, `settings` provided have the reverse precendence expected; the outer-most Customizer wins over an inner one. This is completely backwards. Fixing to be correct."
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.13.0",
+      "tag": "@uifabric/utilities_v6.13.0",
+      "date": "Fri, 10 Aug 2018 10:26:09 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "b77f3bdfe3c4ae9c1b51f297921c23038de5f2ac",
+            "comment": "Customizable: add optional flag to allow customizer styles to be merged with component styles prop rather than overriding component styles"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "904f08478a0113198d8004ba757b9a82a6b6da8a",
+            "comment": "Adding merge helper for deep merging."
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.12.1",
+      "tag": "@uifabric/utilities_v6.12.1",
+      "date": "Fri, 27 Jul 2018 10:25:39 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Esteban Munoz <esteban.230@hotmail.com>",
+            "commit": "313c5cd21a9dcf435528e83693d75a7fedeeb015",
+            "comment": "prop-types version "
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.12.0",
+      "tag": "@uifabric/utilities_v6.12.0",
+      "date": "Mon, 23 Jul 2018 10:28:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "28242c40916d14cef3d555d18f4df69454163e87",
+            "comment": "Addressing bad imports."
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.11.0",
+      "tag": "@uifabric/utilities_v6.11.0",
+      "date": "Wed, 18 Jul 2018 10:25:50 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "99545224cefac2af3edb13ce7b038ac1d14f3d38",
+            "comment": "Tighten typings of APIs around merge-styles to be more correct"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.4.0 <7.0.0` to `>=6.5.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.10.0",
+      "tag": "@uifabric/utilities_v6.10.0",
+      "date": "Tue, 17 Jul 2018 10:28:40 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "5d0930647e631482b6016e0017aae0b5167b9f13",
+            "comment": "Removing most `@customizable` decorator usage. This change should reduce extra React dom elements from being created. Also updating `componentRef` resolution to support `React.createRef()` usage."
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.9.0",
+      "tag": "@uifabric/utilities_v6.9.0",
+      "date": "Fri, 13 Jul 2018 21:32:37 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "83486db0dd8f831599dd75f37b32878efac45ca0",
+            "comment": "Reverting the TypeScript bump, to un"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.2.3 <7.0.0` to `>=6.4.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.7.1",
       "tag": "@uifabric/utilities_v6.7.1",
       "date": "Wed, 20 Jun 2018 10:25:55 GMT",

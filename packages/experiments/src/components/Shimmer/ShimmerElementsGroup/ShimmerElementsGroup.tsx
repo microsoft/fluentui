@@ -11,4 +11,4 @@ export const ShimmerElementsGroup = styled<
   IShimmerElementsGroupProps,
   IShimmerElementsGroupStyleProps,
   IShimmerElementsGroupStyles
->(ShimmerElementsGroupBase, getStyles);
+>(ShimmerElementsGroupBase, getStyles, undefined, { scope: 'ShimmerElementsGroup' });

@@ -7,7 +7,7 @@ import { IButtonProps } from '../../Button';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import { ICalloutProps } from '../../Callout';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
 export interface ITeachingBubble {
   /** Sets focus to the TeachingBubble root element */
@@ -17,15 +17,12 @@ export interface ITeachingBubble {
 /**
  * TeachingBubble component props.
  */
-
-export interface ITeachingBubbleProps
-  extends React.Props<TeachingBubbleBase | TeachingBubbleContentBase>,
-    IAccessiblePopupProps {
+export interface ITeachingBubbleProps extends React.Props<TeachingBubbleBase | TeachingBubbleContentBase>, IAccessiblePopupProps {
   /**
-   * Optional callback to access the ISlider interface. Use this instead of ref for accessing
+   * Optional callback to access the ITeachingBubble interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ITeachingBubble | null) => void;
+  componentRef?: IRefObject<ITeachingBubble>;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.

@@ -14,34 +14,9 @@ const baseProps: IToggleProps = {
 storiesOf('Toggle', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={ new Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .end()
-      }
-    >
-      { story() }
-    </Screener>
+    <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
   ))
-  .add('Checked', () => (
-    <Toggle
-      { ...baseProps }
-      defaultChecked={ true }
-    />))
-  .add('Unchecked', () => (
-    <Toggle
-      { ...baseProps }
-      defaultChecked={ false }
-    />))
-  .add('Disabled checked', () => (
-    <Toggle
-      { ...baseProps }
-      defaultChecked={ true }
-      disabled={ true }
-    />))
-  .add('Disabled unhecked', () => (
-    <Toggle
-      { ...baseProps }
-      defaultChecked={ false }
-      disabled={ true }
-    />));
+  .addStory('Checked', () => <Toggle {...baseProps} defaultChecked={true} />, { rtl: true })
+  .addStory('Unchecked', () => <Toggle {...baseProps} defaultChecked={false} />, { rtl: true })
+  .addStory('Disabled checked', () => <Toggle {...baseProps} defaultChecked={true} disabled={true} />)
+  .addStory('Disabled unchecked', () => <Toggle {...baseProps} defaultChecked={false} disabled={true} />);

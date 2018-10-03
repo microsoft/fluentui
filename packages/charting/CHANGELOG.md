@@ -1,6 +1,220 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Tue, 03 Jul 2018 10:23:19 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Oct 2018 12:28:46 GMT and should not be manually modified.
+
+## 0.23.0
+Wed, 03 Oct 2018 12:28:46 GMT
+
+### Minor changes
+
+- Removing old legends component. Replaced in all data-viz with the new components which supports isolation and other states
+
+## 0.22.1
+Mon, 01 Oct 2018 12:27:24 GMT
+
+### Patches
+
+- Adding timeout so that line chart can scale according to the container size and occupy the entire width thereby
+
+## 0.22.0
+Thu, 27 Sep 2018 12:27:48 GMT
+
+### Minor changes
+
+- 1)Making the line chart responsive 2)Correcting flex behavior 3)Curving corners of lines to get a smooth intersection between lines
+
+### Patches
+
+- donut chart legends padding issue fix
+
+## 0.21.2
+Tue, 25 Sep 2018 12:28:12 GMT
+
+### Patches
+
+- change  barHeight for lessthan 2 data points and apply css for ratio txt
+
+## 0.21.1
+Fri, 21 Sep 2018 14:25:46 GMT
+
+### Patches
+
+- Adding a version stamp file
+
+## 0.21.0
+Fri, 14 Sep 2018 01:55:02 GMT
+
+### Minor changes
+
+- Updating target for callout so that the callout follows cursor
+
+## 0.20.0
+Wed, 12 Sep 2018 12:26:41 GMT
+
+### Minor changes
+
+- Passing mouseevents to target prop of calout, so that the callout comes next to cursor and follows it.
+- Centering legends component for Donut chart. Introducing prop for legends component that helps users align the component center
+
+### Patches
+
+- selected arc highlight and interaction between legend and chart issue fix
+
+## 0.19.2
+Tue, 11 Sep 2018 02:54:40 GMT
+
+### Patches
+
+- Line chart hover issue , css for x-axis text
+- Line chart css issues foxed
+
+## 0.19.1
+Mon, 10 Sep 2018 10:24:57 GMT
+
+### Patches
+
+- Show bar background if all chart data point data is 0 or undefined
+
+## 0.19.0
+Fri, 07 Sep 2018 22:04:50 GMT
+
+### Minor changes
+
+- Adding temporary fix for hovercard. This fix scales the hover card size based upon the content inside it
+
+### Patches
+
+- donut chart arc sectors selected arc show and remaining arcs decrease opacity
+
+## 0.18.0
+Fri, 07 Sep 2018 16:29:48 GMT
+
+### Minor changes
+
+- Changing interaction behaviour of Multistacked and stacked bar chart. Changing styling and opacity of bar upon interaction between legends and chart.
+
+## 0.17.4
+Thu, 06 Sep 2018 10:28:35 GMT
+
+### Patches
+
+- Line chart hover issue , css for x-axis text
+
+## 0.17.3
+Wed, 05 Sep 2018 10:29:25 GMT
+
+### Patches
+
+- Donut chart align issues fixed
+
+## 0.17.2
+Fri, 31 Aug 2018 17:27:00 GMT
+
+### Patches
+
+- add legends and hover behaviour for line chart
+
+## 0.17.1
+Fri, 31 Aug 2018 10:27:35 GMT
+
+### Patches
+
+- Fixes the usage of renamed variable
+- horizontal bar chart modified according to figma 
+
+## 0.17.0
+Thu, 30 Aug 2018 19:26:04 GMT
+
+### Minor changes
+
+- Adding hovercard for stacked and multistacked bar chart which show related data in the hover card. Created interaction between legends, stacked and multistacked bar chart. The legends are clickable  and upon  clicking on a legends that respective data point lits up  compared to others. This helps users understand the chart and visualze better. Added opacity to charts upon interaction
+
+### Patches
+
+- Donut chart align issues fixed
+
+## 0.16.1
+Thu, 30 Aug 2018 10:32:49 GMT
+
+### Patches
+
+- Donut chart with legends and hover behavior 
+
+## 0.16.0
+Fri, 24 Aug 2018 10:26:08 GMT
+
+### Minor changes
+
+- Making stacked bar chart flex and consume new legends component in it
+
+### Patches
+
+- Fix @types/prop-types being inconsistently restrictive.
+
+## 0.15.0
+Mon, 20 Aug 2018 10:26:10 GMT
+
+### Minor changes
+
+- Charting: allow components to render dynamic data
+- Adding legends as a seperate component with examples. Legends component has a  shows all the legends in a single row. If  it does not have space to show the rest of the legends it puts them in a overflow hover card.
+
+## 0.14.1
+Tue, 14 Aug 2018 10:27:33 GMT
+
+### Patches
+
+- disabling codepen task
+
+## 0.14.0
+Tue, 14 Aug 2018 00:01:11 GMT
+
+### Minor changes
+
+- Updating StackedBar Chart desgin, MultiStackedBarChart and Legend components
+
+## 0.13.1
+Fri, 10 Aug 2018 10:26:08 GMT
+
+### Patches
+
+- Charting: change svg boxSizing to content-box
+
+## 0.13.0
+Wed, 08 Aug 2018 10:25:07 GMT
+
+### Minor changes
+
+- Adding multiple line chart implementation to existing single line chart.
+
+## 0.12.0
+Wed, 01 Aug 2018 10:25:51 GMT
+
+### Minor changes
+
+- Adding stacked chart with variants, updating stacked chart to use common IDataPoint
+
+## 0.11.1
+Mon, 30 Jul 2018 10:27:11 GMT
+
+### Patches
+
+- Fixing bad imports and broken theming in some charts
+
+## 0.11.0
+Wed, 25 Jul 2018 03:20:34 GMT
+
+### Minor changes
+
+- Addressing bad imports.
+- Removing most `@customizable` decorator usage. This change should reduce extra React dom elements from being created. Also updating `componentRef` resolution to support `React.createRef()` usage.
+
+### Patches
+
+- Update typings to not use deprecated types.
+- Add Pie and Donut Chart to charting package
+- Change  package.json file
+- Adding Stacked Bar chart
 
 ## 0.0.4
 Tue, 03 Jul 2018 10:23:19 GMT

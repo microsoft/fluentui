@@ -1,3 +1,4 @@
+// @codepen
 import * as React from 'react';
 import { TextField, MaskedTextField } from 'office-ui-fabric-react/lib/TextField';
 import './TextField.Examples.scss';
@@ -11,6 +12,7 @@ export class TextFieldBasicExample extends React.Component<any, any> {
         <TextField label="Read Only" readOnly={true} />
         <TextField label="Required " required={true} />
         <TextField label="With error message" errorMessage="Error message" />
+        <MaskedTextField label="With number mask" mask="99999" />
         <MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" />
       </div>
     );

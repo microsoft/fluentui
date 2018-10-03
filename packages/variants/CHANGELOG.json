@@ -2,6 +2,244 @@
   "name": "@uifabric/variants",
   "entries": [
     {
+      "version": "6.11.0",
+      "tag": "@uifabric/variants_v6.11.0",
+      "date": "Mon, 01 Oct 2018 12:27:24 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "semantic slot value updates per design direction",
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "4b31ba1706ff7b4a1b34399d3f1ffdb192737dbd"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.74.2 <7.0.0` to `>=6.75.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.10.0",
+      "tag": "@uifabric/variants_v6.10.0",
+      "date": "Fri, 21 Sep 2018 14:25:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding a version stamp file",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "11c18bce52dba131548610c5eea0c1ab7fa4d1ca"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Variants: export everything",
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "fd0c554b1456d9ecfcfc8deea0b4c31496ad4acc"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.0.0 <2.0.0` to `>=1.1.0 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.72.0 <7.0.0` to `>=6.72.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.9.0",
+      "tag": "@uifabric/variants_v6.9.0",
+      "date": "Thu, 13 Sep 2018 17:38:04 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adds new semantic slots per design direction",
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "02814cbe9b8d3994b40c9afc6825625e078bd3fe"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.67.3 <7.0.0` to `>=6.68.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.8.0",
+      "tag": "@uifabric/variants_v6.8.0",
+      "date": "Fri, 07 Sep 2018 16:29:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "8f69ab057f4e33b12713807228607386781c9a57",
+            "comment": "Updates button slots with correct pre-fluent palette values and scss fallbacks"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.65.0 <7.0.0` to `>=6.66.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.7.0",
+      "tag": "@uifabric/variants_v6.7.0",
+      "date": "Thu, 06 Sep 2018 10:28:35 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "78bd90844a740a239037b55ee4f783350ba9437d",
+            "comment": "add buttonBackgroundDisabled semantic slot"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.64.0 <7.0.0` to `>=6.65.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.6.0",
+      "tag": "@uifabric/variants_v6.6.0",
+      "date": "Tue, 28 Aug 2018 10:23:58 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "aba078cd1d16aeed456988c5d8ae0266b652d65b",
+            "comment": "fixes makeThemeFromPartials function to create theme in steps, so palette can be updated, then the updated palette informs the creation of the semantic slots, then the re st of the theme is filled in'"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.56.0 <7.0.0` to `>=6.57.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.5.0",
+      "tag": "@uifabric/variants_v6.5.0",
+      "date": "Tue, 21 Aug 2018 10:28:16 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "3399908ef83f9b2db6171796062c3ba8e8fb5b7a",
+            "comment": "adds variantBorderHovered and emptyStateBackground semantic slots to theme and variants logic"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.50.2 <7.0.0` to `>=6.51.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.4.0",
+      "tag": "@uifabric/variants_v6.4.0",
+      "date": "Mon, 20 Aug 2018 10:26:10 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "7257dbf0bbaf4f4243dbf0759639e6a8d04645e2",
+            "comment": "removes opacity function and import from color utilities from variants.ts"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.50.1 <7.0.0` to `>=6.50.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.3.0",
+      "tag": "@uifabric/variants_v6.3.0",
+      "date": "Mon, 13 Aug 2018 03:43:25 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "30ce67f0d1eda4736015ba73968a21388ac58324",
+            "comment": "adds opacity function to variants"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.48.0 <7.0.0` to `>=6.49.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.2.0",
+      "tag": "@uifabric/variants_v6.2.0",
+      "date": "Fri, 03 Aug 2018 10:25:59 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "7264474f10852c0e4d6f6431c52b019659546abc",
+            "comment": "add bodyStandoutBackground default values to variants"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.44.0 <7.0.0` to `>=6.45.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.1.0",
+      "tag": "@uifabric/variants_v6.1.0",
+      "date": "Thu, 02 Aug 2018 10:23:19 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "fc25cf3ddddafc7d92382ac4af2d110db554ed9d",
+            "comment": "Add variantThemeType enums and utility function to apply variant theme"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.43.0 <7.0.0` to `>=6.44.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.6",
+      "tag": "@uifabric/variants_v6.0.6",
+      "date": "Mon, 23 Jul 2018 10:28:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "7604bf8128096c2fec78c81a1ce076b2f75bb668",
+            "comment": "Variants: new designs for bodyFrameBackground"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.38.2 <7.0.0` to `>=6.39.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.0.5",
       "tag": "@uifabric/variants_v6.0.5",
       "date": "Tue, 03 Jul 2018 10:23:19 GMT",

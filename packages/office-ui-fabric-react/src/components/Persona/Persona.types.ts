@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IRenderFunction } from '../../Utilities';
+import { IRefObject, IRenderFunction } from '../../Utilities';
 import { PersonaBase } from './Persona.base';
 import { ImageLoadState } from '../../Image';
 import { IStyle, ITheme } from '../../Styling';
@@ -113,6 +113,13 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
   showUnknownPersonaCoin?: boolean;
 
   /**
+   * If true renders the initials while the image is loading.
+   * This only applies when an imageUrl is provided.
+   * @defaultvalue false
+   */
+  showInitialsUntilImageLoads?: boolean;
+
+  /**
    * Optional custom persona coin size in pixel.
    */
   coinSize?: number;
@@ -139,7 +146,7 @@ export interface IPersonaProps extends IPersonaSharedProps {
    * Optional callback to access the IPersona interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IPersona | null) => void;
+  componentRef?: IRefObject<IPersona>;
 
   /**
    * Additional CSS class(es) to apply to the Persona
@@ -220,7 +227,7 @@ export interface IPersonaCoinProps extends IPersonaSharedProps {
   /**
    * Gets the component ref.
    */
-  componentRef?: (component: IPersonaCoinProps) => void;
+  componentRef?: IRefObject<{}>;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules
@@ -252,6 +259,11 @@ export interface IPersonaCoinStyleProps {
   size?: PersonaSize;
 
   /**
+   * Optional custom persona coin size in pixel.
+   */
+  coinSize?: number;
+
+  /**
    * Decides whether to display coin for unknown persona
    */
   showUnknownPersonaCoin?: boolean;
@@ -269,7 +281,7 @@ export interface IPersonaPresenceProps extends IPersonaSharedProps {
   /**
    * Gets the component ref.
    */
-  componentRef?: (component: IPersonaPresenceProps) => void;
+  componentRef?: IRefObject<{}>;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules
@@ -376,6 +388,9 @@ export enum PersonaInitialsColor {
   pink = 8,
   magenta = 9,
   purple = 10,
+  /**
+   * Black is a color that can result in offensive persona coins with some initials combinations, so it can only be set with overrides
+   */
   black = 11,
   orange = 12,
   /**
@@ -387,5 +402,6 @@ export enum PersonaInitialsColor {
    * Transparent is not intended to be used with typical initials due to accessibility issues.
    * Its primary use is for overflow buttons, so it is considered a reserved color and can only be set with overrides.
    */
-  transparent = 15
+  transparent = 15,
+  violet = 16
 }

@@ -1,16 +1,60 @@
 import * as React from 'react';
 import { DetailsRowBase } from './DetailsRow.base';
-import { IStyle, ITheme, IStyleSet } from '../../Styling';
+import { IStyle, ITheme } from '../../Styling';
 import { IColumn, CheckboxVisibility } from './DetailsList.types';
 import { ISelection, SelectionMode } from '../../utilities/selection/interfaces';
 import { IDragDropHelper, IDragDropEvents } from '../../utilities/dragdrop/interfaces';
 import { IViewport } from '../../utilities/decorators/withViewport';
 import { CollapseAllVisibility } from '../GroupedList/GroupedList.types';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IDetailsRowCheckProps } from './DetailsRowCheck.types';
 import { IDetailsRowFieldsProps } from './DetailsRowFields.types';
 
-export interface IDetailsRowProps extends React.Props<DetailsRowBase> {
+export interface IDetailsRow {}
+
+export interface IDetailsItemProps {
+  /**
+   * Column metadata
+   */
+  columns?: IColumn[];
+
+  /**
+   * Nesting depth of a grouping
+   */
+  groupNestingDepth?: number;
+
+  /**
+   * How much to indent
+   */
+  indentWidth?: number | undefined;
+
+  /**
+   * Selection from utilities
+   */
+  selection?: ISelection | undefined;
+
+  /**
+   * Selection mode
+   */
+  selectionMode?: SelectionMode | undefined;
+
+  /**
+   * View port of the virtualized list
+   */
+  viewport?: IViewport | undefined;
+
+  /**
+   * Checkbox visibility
+   */
+  checkboxVisibility?: CheckboxVisibility | undefined;
+
+  /**
+   * Rules for rendering column cells.
+   */
+  cellStyleProps?: ICellStyleProps;
+}
+
+export interface IDetailsRowBaseProps extends IBaseProps<IDetailsRow>, IDetailsItemProps {
   /**
    * Theme provided by styled() function
    */
@@ -24,7 +68,7 @@ export interface IDetailsRowProps extends React.Props<DetailsRowBase> {
   /**
    * Ref of the component
    */
-  componentRef?: () => void;
+  componentRef?: IRefObject<IDetailsRow>;
 
   /**
    * Data source for this component
@@ -37,24 +81,9 @@ export interface IDetailsRowProps extends React.Props<DetailsRowBase> {
   itemIndex: number;
 
   /**
-   * Column metadata
-   */
-  columns: IColumn[];
-
-  /**
    * Whether to render in compact mode
    */
   compact?: boolean;
-
-  /**
-   * Selection mode
-   */
-  selectionMode: SelectionMode;
-
-  /**
-   * Selection from utilities
-   */
-  selection: ISelection;
 
   /**
    * A list of events to register
@@ -90,26 +119,6 @@ export interface IDetailsRowProps extends React.Props<DetailsRowBase> {
    * Helper for the drag and drop
    */
   dragDropHelper?: IDragDropHelper;
-
-  /**
-   * Nesting depth of a grouping
-   */
-  groupNestingDepth?: number;
-
-  /**
-   * How much to indent
-   */
-  indentWidth?: number;
-
-  /**
-   * View port of the virtualized list
-   */
-  viewport?: IViewport;
-
-  /**
-   * Checkbox visibility
-   */
-  checkboxVisibility?: CheckboxVisibility;
 
   /**
    * Collapse all visibility
@@ -150,20 +159,67 @@ export interface IDetailsRowProps extends React.Props<DetailsRowBase> {
    * Whether to render shimmer
    */
   shimmer?: boolean;
+
+  /**
+   * Rerender DetailsRow only when props changed. Might cause regression when depending on external updates.
+   * @default false
+   */
+  useReducedRowRenderer?: boolean;
+}
+
+export interface IDetailsRowProps extends IDetailsRowBaseProps {
+  /**
+   * Column metadata
+   */
+  columns: IColumn[];
+
+  /**
+   * Selection from utilities
+   */
+  selection: ISelection;
+
+  /**
+   * Selection mode
+   */
+  selectionMode: SelectionMode;
 }
 
 export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & {
+  /** Whether the row is selected  */
   isSelected?: boolean;
+
+  /** Whether there are any rows in the list selected */
   anySelected?: boolean;
+
+  /** Whether this row can be selected */
   canSelect?: boolean;
-  checkClassNames?: IStyleSet;
+
+  /** Class name of when this becomes a drop target. */
   droppingClassName?: string;
+
+  /** Is the checkbox visible */
   isCheckVisible?: boolean;
+
+  /** Is this a row header */
   isRowHeader?: boolean;
+
+  /** A class name from the checkbox cell, so proper styling can be targeted */
   checkboxCellClassName?: string;
+
+  /** CSS class name for the component */
   className?: string;
+
+  /** Is list in compact mode */
   compact?: boolean;
+
+  cellStyleProps?: ICellStyleProps;
 };
+
+export interface ICellStyleProps {
+  cellLeftPadding: number;
+  cellRightPadding: number;
+  cellExtraRightPadding: number;
+}
 
 export interface IDetailsRowStyles {
   root: IStyle;

@@ -1,13 +1,16 @@
 import * as React from 'react';
 import { IStyle } from 'office-ui-fabric-react';
+import { IComponent, IStyleableComponentProps } from '../../Foundation';
+import { RefObject } from '../../Utilities';
 
 import { ICollapsibleSectionTitleProps } from './CollapsibleSectionTitle.types';
 
-// TODO: consider view vs. state props. should they be identical?
-//       do we want to have private view props that aren't exposed beyond combined component?
+export type ICollapsibleSectionComponent = IComponent<ICollapsibleSectionProps, ICollapsibleSectionViewProps, ICollapsibleSectionStyles>;
 
-export interface ICollapsibleSectionProps extends React.Props<{}> {
-  // TODO: how to incorporate className into createComponent?
+export interface ICollapsibleSectionProps extends IStyleableComponentProps<ICollapsibleSectionViewProps, ICollapsibleSectionStyles> {
+  /**
+   * Additional class name to provide on the root element.
+   */
   className?: string;
 
   /**
@@ -17,18 +20,53 @@ export interface ICollapsibleSectionProps extends React.Props<{}> {
   defaultCollapsed?: boolean;
 
   /**
+   * Collapsed state. If provided, component is controlled.
+   * @default defaultCollapsed
+   */
+  collapsed?: boolean;
+
+  /**
    * Component to use for CollapsibleSection title.
    */
-  // TODO: make optional and use CollapsibleSectionTitle by default
-  titleAs: React.ReactType<ICollapsibleSectionTitleProps>;
+  titleAs?: React.ReactType<ICollapsibleSectionTitleProps>;
 
   /**
    * Optional title props to pass onto title component.
    */
   titleProps?: ICollapsibleSectionTitleProps;
+
+  indent?: number;
 }
 
+export type ICollapsibleSectionViewProps = Pick<ICollapsibleSectionProps, 'titleAs' | 'titleProps' | 'indent'> &
+  Required<Pick<ICollapsibleSectionProps, 'collapsed'>> & {
+    /**
+     * Optional callback to access the Title element interface. Use this instead of ref for accessing
+     * the public methods and properties of the component.
+     */
+    titleElementRef?: RefObject<HTMLElement>;
+
+    /**
+     * Toggle input callback triggered by mouse and keyboard input.
+     */
+    onClick?: (ev: React.MouseEvent<Element>) => void;
+
+    /**
+     * Key down callback for root element of CollapsibleSection.
+     */
+    onRootKeyDown?: (ev: React.KeyboardEvent<Element>) => void;
+
+    /**
+     * Key down callback for CollapsibleSection title.
+     */
+    onKeyDown?: (ev: React.KeyboardEvent<Element>) => void;
+  };
+
 export interface ICollapsibleSectionStyles {
+  /**
+   * Styling for the root element.
+   */
+  root: IStyle;
   /**
    * Styling for the body content.
    */

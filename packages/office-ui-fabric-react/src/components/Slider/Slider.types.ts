@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { SliderBase } from './Slider.base';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStyleFunctionOrObject, IRefObject } from '../../Utilities';
 
 export interface ISlider {
   value: number | undefined;
@@ -14,7 +14,7 @@ export interface ISliderProps extends React.Props<SliderBase> {
    * Optional callback to access the ISlider interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ISlider | null) => void;
+  componentRef?: IRefObject<ISlider>;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
@@ -73,12 +73,18 @@ export interface ISliderProps extends React.Props<SliderBase> {
   onChange?: (value: number) => void;
 
   /**
+   * Callback on mouse up or touch end
+   */
+  onChanged?: (event: MouseEvent | TouchEvent, value: number) => void;
+
+  /**
    * A description of the Slider for the benefit of screen readers.
    */
   ariaLabel?: string;
 
   /**
-   * A text description of the Slider number value for the benefit of screen readers. This should be used when the Slider number value is not accurately represented by a number.
+   * A text description of the Slider number value for the benefit of screen readers.
+   * This should be used when the Slider number value is not accurately represented by a number.
    */
   ariaValueText?: (value: number) => string;
   /**

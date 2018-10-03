@@ -49,7 +49,7 @@ module.exports.pitch = function(remainingRequest: string, precedingRequest: stri
 
   return [
     "import Loadable from 'react-loadable';",
-    `export const ${moduleName} = Loadable({`,
+    `export var ${moduleName} = Loadable({`,
     `  loader: function() { return import(${getMagicComments(
       options
     )} ${request}).then(function(m) { return m.${moduleName}; }); },`,

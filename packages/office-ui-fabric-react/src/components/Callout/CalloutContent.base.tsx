@@ -10,9 +10,10 @@ import {
   focusFirstChild,
   getWindow,
   getDocument,
-  customizable,
   css,
-  createRef
+  createRef,
+  getNativeProps,
+  divProperties
 } from '../../Utilities';
 import {
   positionCallout,
@@ -48,7 +49,6 @@ export interface ICalloutState {
   heightOffset?: number;
 }
 
-@customizable('CalloutContent', ['theme', 'styles'])
 export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutState> {
   public static defaultProps = {
     preventDismissOnLostFocus: false,
@@ -105,7 +105,8 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   }
 
   public componentWillUpdate(newProps: ICalloutProps): void {
-    // If the target element changed, find the new one. If we are tracking target with class name, always find element because we do not know if fabric has rendered a new element and disposed the old element.
+    // If the target element changed, find the new one. If we are tracking target with class name, always find element because we
+    // do not know if fabric has rendered a new element and disposed the old element.
     const newTarget = this._getTarget(newProps);
     const oldTarget = this._getTarget();
     if (newTarget !== oldTarget || typeof newTarget === 'string' || newTarget instanceof String) {
@@ -142,6 +143,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     let { target } = this.props;
     const {
       styles,
+      style,
       role,
       ariaLabel,
       ariaDescribedBy,
@@ -153,6 +155,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
       calloutWidth,
       calloutMaxWidth,
       finalHeight,
+      hideOverflow = !!finalHeight,
       backgroundColor,
       calloutMaxHeight,
       onScroll
@@ -160,14 +163,10 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     target = this._getTarget();
     const { positions } = this.state;
 
-    const getContentMaxHeight: number | undefined = this._getMaxHeight()
-      ? this._getMaxHeight()! + this.state.heightOffset!
-      : undefined;
+    const getContentMaxHeight: number | undefined = this._getMaxHeight() ? this._getMaxHeight()! + this.state.heightOffset! : undefined;
     const contentMaxHeight: number | undefined =
-      calloutMaxHeight! && getContentMaxHeight && calloutMaxHeight! < getContentMaxHeight
-        ? calloutMaxHeight!
-        : getContentMaxHeight!;
-    const overflowYHidden = !!finalHeight;
+      calloutMaxHeight! && getContentMaxHeight && calloutMaxHeight! < getContentMaxHeight ? calloutMaxHeight! : getContentMaxHeight!;
+    const overflowYHidden = hideOverflow;
 
     const beakVisible = isBeakVisible && !!target;
     this._classNames = getClassNames(styles!, {
@@ -181,14 +180,18 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
       calloutMaxWidth
     });
 
-    const overflowStyle: React.CSSProperties = overflowYHidden
-      ? { overflowY: 'hidden', maxHeight: contentMaxHeight }
-      : { maxHeight: contentMaxHeight };
+    const overflowStyle: React.CSSProperties = {
+      ...style,
+      maxHeight: contentMaxHeight,
+      ...(overflowYHidden && { overflowY: 'hidden' })
+    };
+
     const visibilityStyle: React.CSSProperties | undefined = this.props.hidden ? { visibility: 'hidden' } : undefined;
     // React.CSSProperties does not understand IRawStyle, so the inline animations will need to be cast as any for now.
     const content = (
       <div ref={this._hostElement} className={this._classNames.container} style={visibilityStyle}>
         <div
+          {...getNativeProps(this.props, divProperties)}
           className={css(this._classNames.root, positions && positions.targetEdge && ANIMATIONS[positions.targetEdge!])}
           style={positions ? positions.elementPosition : OFF_SCREEN_STYLE}
           tabIndex={-1} // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
@@ -251,23 +254,8 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     }
   }
 
-  // We implement a blur listener for the Callout component so that if a page inside inside of an iframe uses a callout,
-  // it can be dismissed when the user clicks outside of the iframe.
-  protected _dismissOnBlur(ev: Event) {
-    const { preventDismissOnLostFocus } = this.props;
-
-    if (!preventDismissOnLostFocus && ev.target === this._targetWindow) {
-      this.dismiss(ev);
-    }
-  }
-
   protected _setInitialFocus = (): void => {
-    if (
-      this.props.setInitialFocus &&
-      !this._didSetInitialFocus &&
-      this.state.positions &&
-      this._calloutElement.current
-    ) {
+    if (this.props.setInitialFocus && !this._didSetInitialFocus && this.state.positions && this._calloutElement.current) {
       this._didSetInitialFocus = true;
       this._async.requestAnimationFrame(() => focusFirstChild(this._calloutElement.current!));
     }
@@ -292,7 +280,6 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     this._async.setTimeout(() => {
       this._events.on(this._targetWindow, 'scroll', this._dismissOnScroll, true);
       this._events.on(this._targetWindow, 'resize', this.dismiss, true);
-      this._events.on(this._targetWindow, 'blur', this._dismissOnBlur, true);
       this._events.on(this._targetWindow.document.documentElement, 'focus', this._dismissOnLostFocus, true);
       this._events.on(this._targetWindow.document.documentElement, 'click', this._dismissOnLostFocus, true);
       this._hasListeners = true;
@@ -302,7 +289,6 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   private _removeListeners() {
     this._events.off(this._targetWindow, 'scroll', this._dismissOnScroll, true);
     this._events.off(this._targetWindow, 'resize', this.dismiss, true);
-    this._events.off(this._targetWindow, 'blur', this._dismissOnBlur, true);
     this._events.off(this._targetWindow.document.documentElement, 'focus', this._dismissOnLostFocus, true);
     this._events.off(this._targetWindow.document.documentElement, 'click', this._dismissOnLostFocus, true);
     this._hasListeners = false;
@@ -327,21 +313,23 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   }
 
   private _updatePosition(): void {
+    // Try to update the target, page might have changed
+    this._setTargetWindowAndElement(this._getTarget());
+
     const { positions } = this.state;
     const hostElement: HTMLElement | null = this._hostElement.current;
     const calloutElement: HTMLElement | null = this._calloutElement.current;
 
-    if (hostElement && calloutElement) {
+    // If we expect a target element to position against, we need to wait until `this._target` is resolved. Otherwise
+    // we can try to position.
+    const expectsTarget = !!this.props.target;
+
+    if (hostElement && calloutElement && (!expectsTarget || this._target)) {
       let currentProps: IPositionProps | undefined;
       currentProps = assign(currentProps, this.props);
       currentProps!.bounds = this._getBounds();
       currentProps!.target = this._target!;
-      const newPositions: ICalloutPositionedInfo = positionCallout(
-        currentProps!,
-        hostElement,
-        calloutElement,
-        positions
-      );
+      const newPositions: ICalloutPositionedInfo = positionCallout(currentProps!, hostElement, calloutElement, positions);
 
       // Set the new position only when the positions are not exists or one of the new callout positions are different.
       // The position should not change if the position is within 2 decimal places.
@@ -395,13 +383,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
         const totalGap = gapSpace + beakWidth! + BORDER_WIDTH * 2;
         this._async.requestAnimationFrame(() => {
           if (this._target) {
-            this._maxHeight = getMaxHeight(
-              this._target,
-              this.props.directionalHint!,
-              totalGap,
-              this._getBounds(),
-              this.props.coverTarget
-            );
+            this._maxHeight = getMaxHeight(this._target, this.props.directionalHint!, totalGap, this._getBounds(), this.props.coverTarget);
             this.forceUpdate();
           }
         });

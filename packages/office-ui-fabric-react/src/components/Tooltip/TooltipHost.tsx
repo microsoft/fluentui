@@ -7,7 +7,8 @@ import {
   getId,
   assign,
   hasOverflow,
-  createRef
+  createRef,
+  portalContainsElement
 } from '../../Utilities';
 import { ITooltipHostProps, TooltipOverflowMode } from './TooltipHost.types';
 import { Tooltip } from './Tooltip';
@@ -62,6 +63,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
       (tooltipProps && tooltipProps.onRenderContent && tooltipProps.onRenderContent())
     );
     const showTooltip = isTooltipVisible && isContentPresent;
+    const ariaDescribedBy = setAriaDescribedBy && isTooltipVisible && isContentPresent ? tooltipId : undefined;
 
     return (
       <div
@@ -71,7 +73,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
         {...{ onBlurCapture: this._hideTooltip }}
         onMouseEnter={this._onTooltipMouseEnter}
         onMouseLeave={this._onTooltipMouseLeave}
-        aria-describedby={setAriaDescribedBy && isTooltipVisible && content ? tooltipId : undefined}
+        aria-describedby={ariaDescribedBy}
       >
         {children}
         {showTooltip && (
@@ -127,6 +129,11 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
       if (overflowElement && !hasOverflow(overflowElement)) {
         return;
       }
+    }
+
+    if (ev.target && portalContainsElement(ev.target as HTMLElement, this._getTargetElement())) {
+      // Do not show tooltip when target is inside a portal relative to TooltipHost.
+      return;
     }
 
     this._toggleTooltip(true);

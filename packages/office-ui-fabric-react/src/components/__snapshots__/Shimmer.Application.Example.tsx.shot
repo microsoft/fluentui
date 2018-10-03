@@ -2,9 +2,7 @@
 
 exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`] = `
 <div>
-  <div
-    className={undefined}
-  >
+  <div>
     <div
       className=
           ms-Toggle
@@ -51,9 +49,7 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
             }
       >
         <button
-          aria-disabled={undefined}
-          aria-label="Enable Modal Selection"
-          aria-pressed={false}
+          aria-checked={false}
           checked={false}
           className=
               ms-Toggle-background
@@ -102,10 +98,10 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                 border-color: Highlight;
               }
           data-is-focusable={true}
-          disabled={undefined}
           id="Toggle0"
           onChange={[Function]}
           onClick={[Function]}
+          role="switch"
           type="button"
         >
           <div
@@ -155,7 +151,6 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                 padding-top: 0;
                 user-select: none;
               }
-          htmlFor="Toggle0"
         >
           Normal
         </label>
@@ -207,9 +202,7 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
             }
       >
         <button
-          aria-disabled={undefined}
-          aria-label="Enable Compact Mode"
-          aria-pressed={false}
+          aria-checked={false}
           checked={false}
           className=
               ms-Toggle-background
@@ -258,10 +251,10 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                 border-color: Highlight;
               }
           data-is-focusable={true}
-          disabled={undefined}
           id="Toggle1"
           onChange={[Function]}
           onClick={[Function]}
+          role="switch"
           type="button"
         >
           <div
@@ -311,7 +304,6 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                 padding-top: 0;
                 user-select: none;
               }
-          htmlFor="Toggle1"
         >
           Normal
         </label>
@@ -363,9 +355,7 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
             }
       >
         <button
-          aria-disabled={undefined}
-          aria-label="Enable content loading"
-          aria-pressed={false}
+          aria-checked={false}
           checked={false}
           className=
               ms-Toggle-background
@@ -414,10 +404,10 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                 border-color: Highlight;
               }
           data-is-focusable={true}
-          disabled={undefined}
           id="Toggle2"
           onChange={[Function]}
           onClick={[Function]}
+          role="switch"
           type="button"
         >
           <div
@@ -467,7 +457,6 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                 padding-top: 0;
                 user-select: none;
               }
-          htmlFor="Toggle2"
         >
           Shimmer
         </label>

@@ -23,7 +23,7 @@ describe('Toggle', () => {
   });
 
   it('renders aria-label', () => {
-    const component = mount(<Toggle label="Label" offAriaLabel="offLabel" />);
+    const component = mount(<Toggle label="Label" ariaLabel="AriaLabel" />);
 
     expect(
       component
@@ -31,23 +31,23 @@ describe('Toggle', () => {
         .first()
         .getDOMNode()
         .getAttribute('aria-label')
-    ).toEqual('offLabel');
+    ).toEqual('AriaLabel');
   });
 
   it('can call the callback on a change of toggle', () => {
     let isToggledValue;
-    const callback = (isToggled: boolean) => {
+    const callback = (ev: React.MouseEvent<HTMLElement>, isToggled: boolean) => {
       isToggledValue = isToggled;
     };
 
-    const component = mount<React.ReactInstance>(<Toggle label="Label" onChanged={callback} />);
+    const component = mount<React.ReactInstance>(<Toggle label="Label" onChange={callback} />);
 
     expect(
       component
         .find('button')
         .first()
         .getDOMNode()
-        .getAttribute('aria-pressed')
+        .getAttribute('aria-checked')
     ).toEqual('false');
 
     component
@@ -62,7 +62,7 @@ describe('Toggle', () => {
         .find('button')
         .first()
         .getDOMNode()
-        .getAttribute('aria-pressed')
+        .getAttribute('aria-checked')
     ).toEqual('true');
   });
 
@@ -74,7 +74,7 @@ describe('Toggle', () => {
         .find('button')
         .first()
         .getDOMNode()
-        .getAttribute('aria-pressed')
+        .getAttribute('aria-checked')
     ).toEqual('false');
 
     component
@@ -88,7 +88,7 @@ describe('Toggle', () => {
         .find('button')
         .first()
         .getDOMNode()
-        .getAttribute('aria-pressed')
+        .getAttribute('aria-checked')
     ).toEqual('false');
   });
 

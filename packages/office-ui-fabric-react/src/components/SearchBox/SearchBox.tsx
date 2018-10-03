@@ -7,4 +7,4 @@ export const SearchBox: (props: ISearchBoxProps) => JSX.Element = styled<
   ISearchBoxProps,
   ISearchBoxStyleProps,
   ISearchBoxStyles
->(SearchBoxBase, getStyles);
+>(SearchBoxBase, getStyles, undefined, { scope: 'SearchBox' });

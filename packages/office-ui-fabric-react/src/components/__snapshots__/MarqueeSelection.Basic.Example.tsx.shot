@@ -11,12 +11,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
 >
   <button
     aria-checked={true}
-    aria-describedby={undefined}
-    aria-disabled={undefined}
-    aria-label={undefined}
-    aria-labelledby={undefined}
-    aria-posinset={undefined}
-    aria-setsize={undefined}
     className=
         ms-Checkbox
         is-checked
@@ -86,11 +80,8 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
         &:focus .ms-Checkbox-text {
           color: #333333;
         }
-    data-ktp-execute-target={undefined}
     defaultChecked={true}
-    disabled={undefined}
     id="checkbox-0"
-    name={undefined}
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -101,7 +92,7 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
       className=
           ms-Checkbox-label
           {
-            align-items: center;
+            align-items: flex-start;
             cursor: pointer;
             display: flex;
             margin-bottom: 0;
@@ -142,7 +133,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
               background: Highlight;
               border-color: Highlight;
             }
-        data-ktp-target={undefined}
       >
         <i
           aria-hidden={true}
@@ -175,6 +165,7 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
             {
               color: #333333;
               font-size: 14px;
+              line-height: 20px;
               margin-bottom: 0;
               margin-left: 4px;
               margin-right: 4px;

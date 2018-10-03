@@ -1,13 +1,14 @@
 import { ITheme, IStyle } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { IColor } from '../../utilities/color/colors';
 
 export interface IColorPicker {}
 
-export interface IColorPickerProps {
+export interface IColorPickerProps extends IBaseProps<IColorPicker> {
   /**
    * Gets the component ref.
    */
-  componentRef?: (component: IColorPicker | null) => void;
+  componentRef?: IRefObject<IColorPicker>;
 
   /**
    * CSS-compatible string to describe the initial color.
@@ -17,7 +18,7 @@ export interface IColorPickerProps {
   /**
    * Callback issued when the user changes the color.
    */
-  onColorChanged?: (color: string) => void;
+  onColorChanged?: (color: string, colorObject: IColor) => void;
 
   /**
    * The setting of whether to hide the alpha control slider.

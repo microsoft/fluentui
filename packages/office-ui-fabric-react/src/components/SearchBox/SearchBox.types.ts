@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { ITheme, IStyle } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
-import { IButtonProps } from '../Button';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { IButtonProps } from '../../Button';
+import { IIconProps } from '../../Icon';
 
 export interface ISearchBox {
   /**
@@ -20,7 +21,7 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
    * Optional callback to access the ISearchBox interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ISearchBox | null) => void;
+  componentRef?: IRefObject<ISearchBox>;
 
   /**
    * Placeholder for the search box.
@@ -87,6 +88,11 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
    * The props for the clear button.
    */
   clearButtonProps?: IButtonProps;
+
+  /**
+   * The props for the icon.
+   */
+  iconProps?: Pick<IIconProps, Exclude<keyof IIconProps, 'className'>>;
 
   /**
    * Whether or not the SearchBox is underlined.

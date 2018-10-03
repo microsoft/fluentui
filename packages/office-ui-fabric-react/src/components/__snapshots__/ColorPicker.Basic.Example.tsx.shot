@@ -113,7 +113,6 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
               right: 0px;
               top: 0px;
             }
-        style={undefined}
       />
       <div
         className=
@@ -248,9 +247,22 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                   ms-ColorPicker-input
                   {
                     border: none;
+                    box-shadow: none;
                     box-sizing: border-box;
                     height: 30px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
                     width: 100%;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border-width: 2px;
                   }
                   &.ms-TextField {
                     padding-right: 2px;
@@ -265,22 +277,85 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                   }
             >
               <div
-                className="ms-TextField-wrapper"
+                className=
+                    ms-TextField-wrapper
+
               >
                 <div
-                  className="ms-TextField-fieldGroup"
+                  className=
+                      ms-TextField-fieldGroup
+                      {
+                        align-items: stretch;
+                        background: #ffffff;
+                        border: 1px solid #a6a6a6;
+                        box-shadow: none;
+                        box-sizing: border-box;
+                        display: flex;
+                        flex-direction: row;
+                        height: 32px;
+                        margin-bottom: 0px;
+                        margin-left: 0px;
+                        margin-right: 0px;
+                        margin-top: 0px;
+                        padding-bottom: 0px;
+                        padding-left: 0px;
+                        padding-right: 0px;
+                        padding-top: 0px;
+                        position: relative;
+                      }
+                      &:hover {
+                        border-color: #212121;
+                      }
+                      @media screen and (-ms-high-contrast: active){&:hover {
+                        border-color: Highlight;
+                      }
                 >
                   <input
-                    aria-describedby={undefined}
                     aria-invalid={false}
                     aria-label="Hex"
-                    className="ms-TextField-field"
+                    className=
+                        ms-TextField-field
+                        {
+                          background-color: transparent;
+                          background: none;
+                          border-radius: 0px;
+                          border: none;
+                          box-shadow: none;
+                          box-sizing: border-box;
+                          color: #333333;
+                          font-size: 14px;
+                          margin-bottom: 0px;
+                          margin-left: 0px;
+                          margin-right: 0px;
+                          margin-top: 0px;
+                          min-width: 0px;
+                          outline: 0px;
+                          padding-bottom: 0;
+                          padding-left: 12px;
+                          padding-right: 12px;
+                          padding-top: 0;
+                          text-overflow: ellipsis;
+                          width: 100%;
+                        }
+                        &:active, &:focus, &:hover {
+                          outline: 0px;
+                        }
+                        &::-ms-clear {
+                          display: none;
+                        }
+                        &::placeholder {
+                          color: #666666;
+                          opacity: 1;
+                        }
+                        &:-ms-input-placeholder {
+                          color: #666666;
+                          opacity: 1;
+                        }
                     id="TextField0"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
                     onInput={[Function]}
-                    readOnly={undefined}
                     spellCheck={false}
                     type="text"
                     value="ffffff"
@@ -302,9 +377,22 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                   ms-ColorPicker-input
                   {
                     border: none;
+                    box-shadow: none;
                     box-sizing: border-box;
                     height: 30px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
                     width: 100%;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border-width: 2px;
                   }
                   &.ms-TextField {
                     padding-right: 2px;
@@ -319,22 +407,85 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                   }
             >
               <div
-                className="ms-TextField-wrapper"
+                className=
+                    ms-TextField-wrapper
+
               >
                 <div
-                  className="ms-TextField-fieldGroup"
+                  className=
+                      ms-TextField-fieldGroup
+                      {
+                        align-items: stretch;
+                        background: #ffffff;
+                        border: 1px solid #a6a6a6;
+                        box-shadow: none;
+                        box-sizing: border-box;
+                        display: flex;
+                        flex-direction: row;
+                        height: 32px;
+                        margin-bottom: 0px;
+                        margin-left: 0px;
+                        margin-right: 0px;
+                        margin-top: 0px;
+                        padding-bottom: 0px;
+                        padding-left: 0px;
+                        padding-right: 0px;
+                        padding-top: 0px;
+                        position: relative;
+                      }
+                      &:hover {
+                        border-color: #212121;
+                      }
+                      @media screen and (-ms-high-contrast: active){&:hover {
+                        border-color: Highlight;
+                      }
                 >
                   <input
-                    aria-describedby={undefined}
                     aria-invalid={false}
                     aria-label="Red"
-                    className="ms-TextField-field"
+                    className=
+                        ms-TextField-field
+                        {
+                          background-color: transparent;
+                          background: none;
+                          border-radius: 0px;
+                          border: none;
+                          box-shadow: none;
+                          box-sizing: border-box;
+                          color: #333333;
+                          font-size: 14px;
+                          margin-bottom: 0px;
+                          margin-left: 0px;
+                          margin-right: 0px;
+                          margin-top: 0px;
+                          min-width: 0px;
+                          outline: 0px;
+                          padding-bottom: 0;
+                          padding-left: 12px;
+                          padding-right: 12px;
+                          padding-top: 0;
+                          text-overflow: ellipsis;
+                          width: 100%;
+                        }
+                        &:active, &:focus, &:hover {
+                          outline: 0px;
+                        }
+                        &::-ms-clear {
+                          display: none;
+                        }
+                        &::placeholder {
+                          color: #666666;
+                          opacity: 1;
+                        }
+                        &:-ms-input-placeholder {
+                          color: #666666;
+                          opacity: 1;
+                        }
                     id="TextField2"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
                     onInput={[Function]}
-                    readOnly={undefined}
                     spellCheck={false}
                     type="text"
                     value="255"
@@ -356,9 +507,22 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                   ms-ColorPicker-input
                   {
                     border: none;
+                    box-shadow: none;
                     box-sizing: border-box;
                     height: 30px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
                     width: 100%;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border-width: 2px;
                   }
                   &.ms-TextField {
                     padding-right: 2px;
@@ -373,22 +537,85 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                   }
             >
               <div
-                className="ms-TextField-wrapper"
+                className=
+                    ms-TextField-wrapper
+
               >
                 <div
-                  className="ms-TextField-fieldGroup"
+                  className=
+                      ms-TextField-fieldGroup
+                      {
+                        align-items: stretch;
+                        background: #ffffff;
+                        border: 1px solid #a6a6a6;
+                        box-shadow: none;
+                        box-sizing: border-box;
+                        display: flex;
+                        flex-direction: row;
+                        height: 32px;
+                        margin-bottom: 0px;
+                        margin-left: 0px;
+                        margin-right: 0px;
+                        margin-top: 0px;
+                        padding-bottom: 0px;
+                        padding-left: 0px;
+                        padding-right: 0px;
+                        padding-top: 0px;
+                        position: relative;
+                      }
+                      &:hover {
+                        border-color: #212121;
+                      }
+                      @media screen and (-ms-high-contrast: active){&:hover {
+                        border-color: Highlight;
+                      }
                 >
                   <input
-                    aria-describedby={undefined}
                     aria-invalid={false}
                     aria-label="Green"
-                    className="ms-TextField-field"
+                    className=
+                        ms-TextField-field
+                        {
+                          background-color: transparent;
+                          background: none;
+                          border-radius: 0px;
+                          border: none;
+                          box-shadow: none;
+                          box-sizing: border-box;
+                          color: #333333;
+                          font-size: 14px;
+                          margin-bottom: 0px;
+                          margin-left: 0px;
+                          margin-right: 0px;
+                          margin-top: 0px;
+                          min-width: 0px;
+                          outline: 0px;
+                          padding-bottom: 0;
+                          padding-left: 12px;
+                          padding-right: 12px;
+                          padding-top: 0;
+                          text-overflow: ellipsis;
+                          width: 100%;
+                        }
+                        &:active, &:focus, &:hover {
+                          outline: 0px;
+                        }
+                        &::-ms-clear {
+                          display: none;
+                        }
+                        &::placeholder {
+                          color: #666666;
+                          opacity: 1;
+                        }
+                        &:-ms-input-placeholder {
+                          color: #666666;
+                          opacity: 1;
+                        }
                     id="TextField4"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
                     onInput={[Function]}
-                    readOnly={undefined}
                     spellCheck={false}
                     type="text"
                     value="255"
@@ -410,9 +637,22 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                   ms-ColorPicker-input
                   {
                     border: none;
+                    box-shadow: none;
                     box-sizing: border-box;
                     height: 30px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
                     width: 100%;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border-width: 2px;
                   }
                   &.ms-TextField {
                     padding-right: 2px;
@@ -427,22 +667,85 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                   }
             >
               <div
-                className="ms-TextField-wrapper"
+                className=
+                    ms-TextField-wrapper
+
               >
                 <div
-                  className="ms-TextField-fieldGroup"
+                  className=
+                      ms-TextField-fieldGroup
+                      {
+                        align-items: stretch;
+                        background: #ffffff;
+                        border: 1px solid #a6a6a6;
+                        box-shadow: none;
+                        box-sizing: border-box;
+                        display: flex;
+                        flex-direction: row;
+                        height: 32px;
+                        margin-bottom: 0px;
+                        margin-left: 0px;
+                        margin-right: 0px;
+                        margin-top: 0px;
+                        padding-bottom: 0px;
+                        padding-left: 0px;
+                        padding-right: 0px;
+                        padding-top: 0px;
+                        position: relative;
+                      }
+                      &:hover {
+                        border-color: #212121;
+                      }
+                      @media screen and (-ms-high-contrast: active){&:hover {
+                        border-color: Highlight;
+                      }
                 >
                   <input
-                    aria-describedby={undefined}
                     aria-invalid={false}
                     aria-label="Blue"
-                    className="ms-TextField-field"
+                    className=
+                        ms-TextField-field
+                        {
+                          background-color: transparent;
+                          background: none;
+                          border-radius: 0px;
+                          border: none;
+                          box-shadow: none;
+                          box-sizing: border-box;
+                          color: #333333;
+                          font-size: 14px;
+                          margin-bottom: 0px;
+                          margin-left: 0px;
+                          margin-right: 0px;
+                          margin-top: 0px;
+                          min-width: 0px;
+                          outline: 0px;
+                          padding-bottom: 0;
+                          padding-left: 12px;
+                          padding-right: 12px;
+                          padding-top: 0;
+                          text-overflow: ellipsis;
+                          width: 100%;
+                        }
+                        &:active, &:focus, &:hover {
+                          outline: 0px;
+                        }
+                        &::-ms-clear {
+                          display: none;
+                        }
+                        &::placeholder {
+                          color: #666666;
+                          opacity: 1;
+                        }
+                        &:-ms-input-placeholder {
+                          color: #666666;
+                          opacity: 1;
+                        }
                     id="TextField6"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
                     onInput={[Function]}
-                    readOnly={undefined}
                     spellCheck={false}
                     type="text"
                     value="255"
@@ -464,9 +767,22 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                   ms-ColorPicker-input
                   {
                     border: none;
+                    box-shadow: none;
                     box-sizing: border-box;
                     height: 30px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
                     width: 100%;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border-width: 2px;
                   }
                   &.ms-TextField {
                     padding-right: 2px;
@@ -481,22 +797,85 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                   }
             >
               <div
-                className="ms-TextField-wrapper"
+                className=
+                    ms-TextField-wrapper
+
               >
                 <div
-                  className="ms-TextField-fieldGroup"
+                  className=
+                      ms-TextField-fieldGroup
+                      {
+                        align-items: stretch;
+                        background: #ffffff;
+                        border: 1px solid #a6a6a6;
+                        box-shadow: none;
+                        box-sizing: border-box;
+                        display: flex;
+                        flex-direction: row;
+                        height: 32px;
+                        margin-bottom: 0px;
+                        margin-left: 0px;
+                        margin-right: 0px;
+                        margin-top: 0px;
+                        padding-bottom: 0px;
+                        padding-left: 0px;
+                        padding-right: 0px;
+                        padding-top: 0px;
+                        position: relative;
+                      }
+                      &:hover {
+                        border-color: #212121;
+                      }
+                      @media screen and (-ms-high-contrast: active){&:hover {
+                        border-color: Highlight;
+                      }
                 >
                   <input
-                    aria-describedby={undefined}
                     aria-invalid={false}
                     aria-label="Alpha"
-                    className="ms-TextField-field"
+                    className=
+                        ms-TextField-field
+                        {
+                          background-color: transparent;
+                          background: none;
+                          border-radius: 0px;
+                          border: none;
+                          box-shadow: none;
+                          box-sizing: border-box;
+                          color: #333333;
+                          font-size: 14px;
+                          margin-bottom: 0px;
+                          margin-left: 0px;
+                          margin-right: 0px;
+                          margin-top: 0px;
+                          min-width: 0px;
+                          outline: 0px;
+                          padding-bottom: 0;
+                          padding-left: 12px;
+                          padding-right: 12px;
+                          padding-top: 0;
+                          text-overflow: ellipsis;
+                          width: 100%;
+                        }
+                        &:active, &:focus, &:hover {
+                          outline: 0px;
+                        }
+                        &::-ms-clear {
+                          display: none;
+                        }
+                        &::placeholder {
+                          color: #666666;
+                          opacity: 1;
+                        }
+                        &:-ms-input-placeholder {
+                          color: #666666;
+                          opacity: 1;
+                        }
                     id="TextField8"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
                     onInput={[Function]}
-                    readOnly={undefined}
                     spellCheck={false}
                     type="text"
                     value="100"

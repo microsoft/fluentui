@@ -8,8 +8,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
     className="ms-Row"
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className="ms-FocusZone"
       data-focuszone-id="FocusZone0"
       onFocus={[Function]}
@@ -21,11 +19,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
         Circular Tabbable FocusZone: 
       </span>
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         className=
             ms-Button
             ms-Button--default
@@ -77,9 +70,14 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               background-color: #eaeaea;
-              color: #000000;
+              color: #212121;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
@@ -90,7 +88,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               color: #212121;
             }
         data-is-focusable={true}
-        disabled={undefined}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}
@@ -136,11 +133,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
         </div>
       </button>
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         className=
             ms-Button
             ms-Button--default
@@ -192,9 +184,14 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               background-color: #eaeaea;
-              color: #000000;
+              color: #212121;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
@@ -205,7 +202,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               color: #212121;
             }
         data-is-focusable={true}
-        disabled={undefined}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}
@@ -251,25 +247,105 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
         </div>
       </button>
       <div
-        className="ms-TextField ms-FocusZoneTabbableExample-textField"
+        className=
+            ms-TextField
+            ms-FocusZoneTabbableExample-textField
+            {
+              box-shadow: none;
+              box-sizing: border-box;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              border-width: 2px;
+            }
       >
         <div
-          className="ms-TextField-wrapper"
+          className=
+              ms-TextField-wrapper
+
         >
           <div
-            className="ms-TextField-fieldGroup"
+            className=
+                ms-TextField-fieldGroup
+                {
+                  align-items: stretch;
+                  background: #ffffff;
+                  border: 1px solid #a6a6a6;
+                  box-shadow: none;
+                  box-sizing: border-box;
+                  display: flex;
+                  flex-direction: row;
+                  height: 32px;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                  position: relative;
+                }
+                &:hover {
+                  border-color: #212121;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                }
           >
             <input
-              aria-describedby={undefined}
               aria-invalid={false}
-              aria-label={undefined}
-              className="ms-TextField-field"
+              className=
+                  ms-TextField-field
+                  {
+                    background-color: transparent;
+                    background: none;
+                    border-radius: 0px;
+                    border: none;
+                    box-shadow: none;
+                    box-sizing: border-box;
+                    color: #333333;
+                    font-size: 14px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    min-width: 0px;
+                    outline: 0px;
+                    padding-bottom: 0;
+                    padding-left: 12px;
+                    padding-right: 12px;
+                    padding-top: 0;
+                    text-overflow: ellipsis;
+                    width: 100%;
+                  }
+                  &:active, &:focus, &:hover {
+                    outline: 0px;
+                  }
+                  &::-ms-clear {
+                    display: none;
+                  }
+                  &::placeholder {
+                    color: #666666;
+                    opacity: 1;
+                  }
+                  &:-ms-input-placeholder {
+                    color: #666666;
+                    opacity: 1;
+                  }
               id="TextField7"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               onInput={[Function]}
-              readOnly={undefined}
               type="text"
               value="FocusZone TextField"
             />
@@ -277,11 +353,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
         </div>
       </div>
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         className=
             ms-Button
             ms-Button--default
@@ -333,9 +404,14 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               background-color: #eaeaea;
-              color: #000000;
+              color: #212121;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
@@ -346,7 +422,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               color: #212121;
             }
         data-is-focusable={true}
-        disabled={undefined}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}
@@ -392,14 +467,8 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
         </div>
       </button>
       <div
-        aria-describedby={undefined}
-        aria-disabled={undefined}
         aria-expanded={false}
         aria-haspopup={true}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
-        aria-roledescription={undefined}
         className=
 
             {
@@ -435,8 +504,8 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               outline: none!important;
             }
         data-is-focusable={true}
-        data-ktp-target={undefined}
         onClick={[Function]}
+        onFocusCapture={[Function]}
         onKeyDown={[Function]}
         onTouchStart={[Function]}
         role="button"
@@ -450,11 +519,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
           }
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
-            aria-label={undefined}
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             className=
                 ms-Button
                 ms-Button--default
@@ -506,9 +570,14 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -519,8 +588,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                   color: #212121;
                 }
             data-is-focusable={false}
-            disabled={undefined}
-            onClick={undefined}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
             onKeyUp={[Function]}
@@ -566,14 +633,9 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
             </div>
           </button>
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
             aria-expanded={false}
             aria-haspopup={true}
             aria-label="See 2 sample options"
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
-            checked={undefined}
             className=
                 ms-Button
                 {
@@ -604,8 +666,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                   color: Highlight;
                 }
             data-is-focusable={false}
-            data-ktp-execute-target={undefined}
-            disabled={undefined}
             onClick={[Function]}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
@@ -630,15 +690,26 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                 aria-hidden={true}
                 className=
                     ms-Button-icon
+                    ms-Button-menuIcon
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
                       color: #333333;
                       display: inline-block;
+                      flex-shrink: 0;
                       font-family: "FabricMDL2Icons";
+                      font-size: 12px;
                       font-style: normal;
                       font-weight: normal;
+                      height: 16px;
+                      line-height: 16px;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
                       speak: none;
+                      text-align: center;
+                      vertical-align: middle;
                     }
                 data-icon-name="ChevronDown"
                 role="presentation"
@@ -667,8 +738,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
     className="ms-Row"
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className="ms-FocusZone"
       data-focuszone-id="FocusZone18"
       onFocus={[Function]}
@@ -680,11 +749,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
         Input Only FocusZone: 
       </span>
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         className=
             ms-Button
             ms-Button--default
@@ -736,9 +800,14 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               background-color: #eaeaea;
-              color: #000000;
+              color: #212121;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
@@ -749,7 +818,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               color: #212121;
             }
         data-is-focusable={true}
-        disabled={undefined}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}
@@ -795,11 +863,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
         </div>
       </button>
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         className=
             ms-Button
             ms-Button--default
@@ -851,9 +914,14 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               background-color: #eaeaea;
-              color: #000000;
+              color: #212121;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
@@ -864,7 +932,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               color: #212121;
             }
         data-is-focusable={true}
-        disabled={undefined}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}
@@ -910,25 +977,105 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
         </div>
       </button>
       <div
-        className="ms-TextField ms-FocusZoneTabbableExample-textField"
+        className=
+            ms-TextField
+            ms-FocusZoneTabbableExample-textField
+            {
+              box-shadow: none;
+              box-sizing: border-box;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              border-width: 2px;
+            }
       >
         <div
-          className="ms-TextField-wrapper"
+          className=
+              ms-TextField-wrapper
+
         >
           <div
-            className="ms-TextField-fieldGroup"
+            className=
+                ms-TextField-fieldGroup
+                {
+                  align-items: stretch;
+                  background: #ffffff;
+                  border: 1px solid #a6a6a6;
+                  box-shadow: none;
+                  box-sizing: border-box;
+                  display: flex;
+                  flex-direction: row;
+                  height: 32px;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                  position: relative;
+                }
+                &:hover {
+                  border-color: #212121;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                }
           >
             <input
-              aria-describedby={undefined}
               aria-invalid={false}
-              aria-label={undefined}
-              className="ms-TextField-field"
+              className=
+                  ms-TextField-field
+                  {
+                    background-color: transparent;
+                    background: none;
+                    border-radius: 0px;
+                    border: none;
+                    box-shadow: none;
+                    box-sizing: border-box;
+                    color: #333333;
+                    font-size: 14px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    min-width: 0px;
+                    outline: 0px;
+                    padding-bottom: 0;
+                    padding-left: 12px;
+                    padding-right: 12px;
+                    padding-top: 0;
+                    text-overflow: ellipsis;
+                    width: 100%;
+                  }
+                  &:active, &:focus, &:hover {
+                    outline: 0px;
+                  }
+                  &::-ms-clear {
+                    display: none;
+                  }
+                  &::placeholder {
+                    color: #666666;
+                    opacity: 1;
+                  }
+                  &:-ms-input-placeholder {
+                    color: #666666;
+                    opacity: 1;
+                  }
               id="TextField25"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               onInput={[Function]}
-              readOnly={undefined}
               type="text"
               value="FocusZone TextField"
             />
@@ -936,11 +1083,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
         </div>
       </div>
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         className=
             ms-Button
             ms-Button--default
@@ -992,9 +1134,14 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               background-color: #eaeaea;
-              color: #000000;
+              color: #212121;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
@@ -1005,7 +1152,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               color: #212121;
             }
         data-is-focusable={true}
-        disabled={undefined}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}

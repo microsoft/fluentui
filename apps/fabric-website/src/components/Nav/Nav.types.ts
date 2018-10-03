@@ -29,9 +29,19 @@ export interface INavPage {
   className?: string;
 
   /**
+   * Wether this link is filterable
+   */
+  isFilterable?: boolean;
+
+  /**
    * The component to render for this page's content.
    */
   component?: any;
+
+  /**
+   * Wether this link is a category subsection
+   */
+  isCategory?: boolean;
 
   /**
    *  Loads the component using require.ensure;

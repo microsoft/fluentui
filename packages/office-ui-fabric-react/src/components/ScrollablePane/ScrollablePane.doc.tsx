@@ -19,12 +19,14 @@ export const ScrollablePanePageProps: IDocPageProps = {
     {
       title: 'Default',
       code: ScrollablePaneDefaultExampleCode,
-      view: <ScrollablePaneDefaultExample />
+      view: <ScrollablePaneDefaultExample />,
+      isScrollable: false
     },
     {
       title: 'DetailsList Locked Header',
       code: ScrollablePaneDetailsListExampleCode,
-      view: <ScrollablePaneDetailsListExample />
+      view: <ScrollablePaneDetailsListExample />,
+      isScrollable: false
     }
   ],
   propertiesTablesSources: [
@@ -40,6 +42,7 @@ export const ScrollablePanePageProps: IDocPageProps = {
     string
   >('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneDonts.md'),
   isHeaderVisible: true,
+  isFeedbackVisible: true,
   allowNativeProps: true,
   nativePropsElement: ['a', 'button']
 };

@@ -2,8 +2,6 @@
 
 exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
 <div
-  aria-describedby={undefined}
-  aria-labelledby={undefined}
   className="ms-FocusZone ms-FocusZoneListExample"
   data-focuszone-id="FocusZone0"
   onFocus={[Function]}
@@ -12,9 +10,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
   role="presentation"
 >
   <div
-    aria-describedby={undefined}
-    aria-label={undefined}
-    aria-labelledby={undefined}
     aria-rowindex={1}
     aria-selected={false}
     className=
@@ -28,8 +23,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           background: #ffffff;
           border-bottom: 1px solid #f4f4f4;
           box-sizing: border-box;
-          color: #767676;
-          display: flex;
+          color: #666666;
+          display: inline-flex;
           min-height: 42px;
           min-width: 100%;
           outline: transparent;
@@ -61,7 +56,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         }
         &:hover {
           background: #f4f4f4;
-          color: #666666;
         }
         &:hover $check {
           opacity: 1;
@@ -129,9 +123,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           & [data-is-focusable='true']::-moz-focus-inner {
             border: 0;
           }
-          &.$shimmer {
+          &$shimmer {
             border-bottom: 17.5px solid #ffffff;
-            border-left: 8px solid #ffffff;
+            border-left: 12px solid #ffffff;
             border-right: 32px solid #ffffff;
             border-top: 17.5px solid #ffffff;
             padding-bottom: 0px;
@@ -139,9 +133,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             padding-right: 0px;
             padding-top: 0px;
           }
-          &.$shimmerIconPlaceholder {
+          &$shimmerIconPlaceholder {
             border-bottom: 13px solid #ffffff;
-            border-left: 8px solid #ffffff;
+            border-right: 8px solid #ffffff;
             border-top: 13px solid #ffffff;
           }
       data-selection-toggle={true}
@@ -197,7 +191,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         data-automationid="DetailsRowCheck"
         data-selection-toggle={true}
         role="checkbox"
-        title={undefined}
       >
         <div
           className=
@@ -307,9 +300,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         className=
             ms-DetailsRow-cell
             {
-              padding-right: 8px;
-            }
-            {
               box-sizing: border-box;
               display: inline-block;
               min-height: 42px;
@@ -347,9 +337,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
               border-top: 17.5px solid #ffffff;
               padding-bottom: 0px;
@@ -357,17 +347,20 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
+            }
+            {
+              padding-right: 8px;
             }
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -378,9 +371,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         className=
             ms-DetailsRow-cell
             {
-              padding-right: 8px;
-            }
-            {
               box-sizing: border-box;
               display: inline-block;
               min-height: 42px;
@@ -418,9 +408,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
               border-top: 17.5px solid #ffffff;
               padding-bottom: 0px;
@@ -428,30 +418,48 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
+            }
+            {
+              padding-right: 8px;
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
         <a
-          aria-disabled={undefined}
           className=
               ms-Link
               {
                 color: #0078d4;
                 text-decoration: none;
               }
+<<<<<<< HEAD
               .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #666666;
+=======
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: -1px;
+                content: "";
+                left: -1px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: -1px;
+                top: -1px;
+                z-index: 1;
+>>>>>>> master
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -464,7 +472,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
           href="http://placehold.it/100x200"
           onClick={[Function]}
-          target={undefined}
         >
           http://placehold.it/100x200
         </a>
@@ -473,9 +480,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         aria-colindex={4}
         className=
             ms-DetailsRow-cell
-            {
-              padding-right: 8px;
-            }
             {
               box-sizing: border-box;
               display: inline-block;
@@ -514,9 +518,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
               border-top: 17.5px solid #ffffff;
               padding-bottom: 0px;
@@ -524,26 +528,24 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
+            }
+            {
+              padding-right: 8px;
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--default
@@ -595,9 +597,14 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 background-color: #eaeaea;
-                color: #000000;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -608,7 +615,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 color: #212121;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -672,9 +678,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     />
   </div>
   <div
-    aria-describedby={undefined}
-    aria-label={undefined}
-    aria-labelledby={undefined}
     aria-rowindex={2}
     aria-selected={false}
     className=
@@ -688,8 +691,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           background: #ffffff;
           border-bottom: 1px solid #f4f4f4;
           box-sizing: border-box;
-          color: #767676;
-          display: flex;
+          color: #666666;
+          display: inline-flex;
           min-height: 42px;
           min-width: 100%;
           outline: transparent;
@@ -721,7 +724,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         }
         &:hover {
           background: #f4f4f4;
-          color: #666666;
         }
         &:hover $check {
           opacity: 1;
@@ -789,9 +791,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           & [data-is-focusable='true']::-moz-focus-inner {
             border: 0;
           }
-          &.$shimmer {
+          &$shimmer {
             border-bottom: 17.5px solid #ffffff;
-            border-left: 8px solid #ffffff;
+            border-left: 12px solid #ffffff;
             border-right: 32px solid #ffffff;
             border-top: 17.5px solid #ffffff;
             padding-bottom: 0px;
@@ -799,9 +801,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             padding-right: 0px;
             padding-top: 0px;
           }
-          &.$shimmerIconPlaceholder {
+          &$shimmerIconPlaceholder {
             border-bottom: 13px solid #ffffff;
-            border-left: 8px solid #ffffff;
+            border-right: 8px solid #ffffff;
             border-top: 13px solid #ffffff;
           }
       data-selection-toggle={true}
@@ -857,7 +859,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         data-automationid="DetailsRowCheck"
         data-selection-toggle={true}
         role="checkbox"
-        title={undefined}
       >
         <div
           className=
@@ -967,9 +968,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         className=
             ms-DetailsRow-cell
             {
-              padding-right: 8px;
-            }
-            {
               box-sizing: border-box;
               display: inline-block;
               min-height: 42px;
@@ -1007,9 +1005,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
               border-top: 17.5px solid #ffffff;
               padding-bottom: 0px;
@@ -1017,17 +1015,20 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
+            }
+            {
+              padding-right: 8px;
             }
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -1038,9 +1039,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         className=
             ms-DetailsRow-cell
             {
-              padding-right: 8px;
-            }
-            {
               box-sizing: border-box;
               display: inline-block;
               min-height: 42px;
@@ -1078,9 +1076,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
               border-top: 17.5px solid #ffffff;
               padding-bottom: 0px;
@@ -1088,30 +1086,48 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
+            }
+            {
+              padding-right: 8px;
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
         <a
-          aria-disabled={undefined}
           className=
               ms-Link
               {
                 color: #0078d4;
                 text-decoration: none;
               }
+<<<<<<< HEAD
               .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #666666;
+=======
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: -1px;
+                content: "";
+                left: -1px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: -1px;
+                top: -1px;
+                z-index: 1;
+>>>>>>> master
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -1124,7 +1140,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
           href="http://placehold.it/100x201"
           onClick={[Function]}
-          target={undefined}
         >
           http://placehold.it/100x201
         </a>
@@ -1133,9 +1148,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         aria-colindex={4}
         className=
             ms-DetailsRow-cell
-            {
-              padding-right: 8px;
-            }
             {
               box-sizing: border-box;
               display: inline-block;
@@ -1174,9 +1186,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
               border-top: 17.5px solid #ffffff;
               padding-bottom: 0px;
@@ -1184,26 +1196,24 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
+            }
+            {
+              padding-right: 8px;
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--default
@@ -1255,9 +1265,14 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 background-color: #eaeaea;
-                color: #000000;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -1268,7 +1283,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 color: #212121;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -1332,9 +1346,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     />
   </div>
   <div
-    aria-describedby={undefined}
-    aria-label={undefined}
-    aria-labelledby={undefined}
     aria-rowindex={3}
     aria-selected={false}
     className=
@@ -1348,8 +1359,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           background: #ffffff;
           border-bottom: 1px solid #f4f4f4;
           box-sizing: border-box;
-          color: #767676;
-          display: flex;
+          color: #666666;
+          display: inline-flex;
           min-height: 42px;
           min-width: 100%;
           outline: transparent;
@@ -1381,7 +1392,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         }
         &:hover {
           background: #f4f4f4;
-          color: #666666;
         }
         &:hover $check {
           opacity: 1;
@@ -1449,9 +1459,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           & [data-is-focusable='true']::-moz-focus-inner {
             border: 0;
           }
-          &.$shimmer {
+          &$shimmer {
             border-bottom: 17.5px solid #ffffff;
-            border-left: 8px solid #ffffff;
+            border-left: 12px solid #ffffff;
             border-right: 32px solid #ffffff;
             border-top: 17.5px solid #ffffff;
             padding-bottom: 0px;
@@ -1459,9 +1469,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             padding-right: 0px;
             padding-top: 0px;
           }
-          &.$shimmerIconPlaceholder {
+          &$shimmerIconPlaceholder {
             border-bottom: 13px solid #ffffff;
-            border-left: 8px solid #ffffff;
+            border-right: 8px solid #ffffff;
             border-top: 13px solid #ffffff;
           }
       data-selection-toggle={true}
@@ -1517,7 +1527,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         data-automationid="DetailsRowCheck"
         data-selection-toggle={true}
         role="checkbox"
-        title={undefined}
       >
         <div
           className=
@@ -1627,9 +1636,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         className=
             ms-DetailsRow-cell
             {
-              padding-right: 8px;
-            }
-            {
               box-sizing: border-box;
               display: inline-block;
               min-height: 42px;
@@ -1667,9 +1673,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
               border-top: 17.5px solid #ffffff;
               padding-bottom: 0px;
@@ -1677,17 +1683,20 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
+            }
+            {
+              padding-right: 8px;
             }
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -1698,9 +1707,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         className=
             ms-DetailsRow-cell
             {
-              padding-right: 8px;
-            }
-            {
               box-sizing: border-box;
               display: inline-block;
               min-height: 42px;
@@ -1738,9 +1744,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
               border-top: 17.5px solid #ffffff;
               padding-bottom: 0px;
@@ -1748,30 +1754,48 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
+            }
+            {
+              padding-right: 8px;
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
         <a
-          aria-disabled={undefined}
           className=
               ms-Link
               {
                 color: #0078d4;
                 text-decoration: none;
               }
+<<<<<<< HEAD
               .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #666666;
+=======
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: -1px;
+                content: "";
+                left: -1px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: -1px;
+                top: -1px;
+                z-index: 1;
+>>>>>>> master
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -1784,7 +1808,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
           href="http://placehold.it/100x202"
           onClick={[Function]}
-          target={undefined}
         >
           http://placehold.it/100x202
         </a>
@@ -1793,9 +1816,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         aria-colindex={4}
         className=
             ms-DetailsRow-cell
-            {
-              padding-right: 8px;
-            }
             {
               box-sizing: border-box;
               display: inline-block;
@@ -1834,9 +1854,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
               border-top: 17.5px solid #ffffff;
               padding-bottom: 0px;
@@ -1844,26 +1864,24 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
+            }
+            {
+              padding-right: 8px;
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--default
@@ -1915,9 +1933,14 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 background-color: #eaeaea;
-                color: #000000;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -1928,7 +1951,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 color: #212121;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -1992,9 +2014,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     />
   </div>
   <div
-    aria-describedby={undefined}
-    aria-label={undefined}
-    aria-labelledby={undefined}
     aria-rowindex={4}
     aria-selected={false}
     className=
@@ -2008,8 +2027,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           background: #ffffff;
           border-bottom: 1px solid #f4f4f4;
           box-sizing: border-box;
-          color: #767676;
-          display: flex;
+          color: #666666;
+          display: inline-flex;
           min-height: 42px;
           min-width: 100%;
           outline: transparent;
@@ -2041,7 +2060,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         }
         &:hover {
           background: #f4f4f4;
-          color: #666666;
         }
         &:hover $check {
           opacity: 1;
@@ -2109,9 +2127,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           & [data-is-focusable='true']::-moz-focus-inner {
             border: 0;
           }
-          &.$shimmer {
+          &$shimmer {
             border-bottom: 17.5px solid #ffffff;
-            border-left: 8px solid #ffffff;
+            border-left: 12px solid #ffffff;
             border-right: 32px solid #ffffff;
             border-top: 17.5px solid #ffffff;
             padding-bottom: 0px;
@@ -2119,9 +2137,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             padding-right: 0px;
             padding-top: 0px;
           }
-          &.$shimmerIconPlaceholder {
+          &$shimmerIconPlaceholder {
             border-bottom: 13px solid #ffffff;
-            border-left: 8px solid #ffffff;
+            border-right: 8px solid #ffffff;
             border-top: 13px solid #ffffff;
           }
       data-selection-toggle={true}
@@ -2177,7 +2195,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         data-automationid="DetailsRowCheck"
         data-selection-toggle={true}
         role="checkbox"
-        title={undefined}
       >
         <div
           className=
@@ -2287,9 +2304,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         className=
             ms-DetailsRow-cell
             {
-              padding-right: 8px;
-            }
-            {
               box-sizing: border-box;
               display: inline-block;
               min-height: 42px;
@@ -2327,9 +2341,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
               border-top: 17.5px solid #ffffff;
               padding-bottom: 0px;
@@ -2337,17 +2351,20 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
+            }
+            {
+              padding-right: 8px;
             }
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -2358,9 +2375,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         className=
             ms-DetailsRow-cell
             {
-              padding-right: 8px;
-            }
-            {
               box-sizing: border-box;
               display: inline-block;
               min-height: 42px;
@@ -2398,9 +2412,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
               border-top: 17.5px solid #ffffff;
               padding-bottom: 0px;
@@ -2408,30 +2422,48 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
+            }
+            {
+              padding-right: 8px;
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
         <a
-          aria-disabled={undefined}
           className=
               ms-Link
               {
                 color: #0078d4;
                 text-decoration: none;
               }
+<<<<<<< HEAD
               .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #666666;
+=======
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: -1px;
+                content: "";
+                left: -1px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: -1px;
+                top: -1px;
+                z-index: 1;
+>>>>>>> master
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -2444,7 +2476,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
           href="http://placehold.it/100x203"
           onClick={[Function]}
-          target={undefined}
         >
           http://placehold.it/100x203
         </a>
@@ -2453,9 +2484,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         aria-colindex={4}
         className=
             ms-DetailsRow-cell
-            {
-              padding-right: 8px;
-            }
             {
               box-sizing: border-box;
               display: inline-block;
@@ -2494,9 +2522,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
               border-top: 17.5px solid #ffffff;
               padding-bottom: 0px;
@@ -2504,26 +2532,24 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
+            }
+            {
+              padding-right: 8px;
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--default
@@ -2575,9 +2601,14 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 background-color: #eaeaea;
-                color: #000000;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -2588,7 +2619,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 color: #212121;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -2652,9 +2682,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     />
   </div>
   <div
-    aria-describedby={undefined}
-    aria-label={undefined}
-    aria-labelledby={undefined}
     aria-rowindex={5}
     aria-selected={false}
     className=
@@ -2668,8 +2695,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           background: #ffffff;
           border-bottom: 1px solid #f4f4f4;
           box-sizing: border-box;
-          color: #767676;
-          display: flex;
+          color: #666666;
+          display: inline-flex;
           min-height: 42px;
           min-width: 100%;
           outline: transparent;
@@ -2701,7 +2728,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         }
         &:hover {
           background: #f4f4f4;
-          color: #666666;
         }
         &:hover $check {
           opacity: 1;
@@ -2769,9 +2795,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           & [data-is-focusable='true']::-moz-focus-inner {
             border: 0;
           }
-          &.$shimmer {
+          &$shimmer {
             border-bottom: 17.5px solid #ffffff;
-            border-left: 8px solid #ffffff;
+            border-left: 12px solid #ffffff;
             border-right: 32px solid #ffffff;
             border-top: 17.5px solid #ffffff;
             padding-bottom: 0px;
@@ -2779,9 +2805,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             padding-right: 0px;
             padding-top: 0px;
           }
-          &.$shimmerIconPlaceholder {
+          &$shimmerIconPlaceholder {
             border-bottom: 13px solid #ffffff;
-            border-left: 8px solid #ffffff;
+            border-right: 8px solid #ffffff;
             border-top: 13px solid #ffffff;
           }
       data-selection-toggle={true}
@@ -2837,7 +2863,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         data-automationid="DetailsRowCheck"
         data-selection-toggle={true}
         role="checkbox"
-        title={undefined}
       >
         <div
           className=
@@ -2947,9 +2972,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         className=
             ms-DetailsRow-cell
             {
-              padding-right: 8px;
-            }
-            {
               box-sizing: border-box;
               display: inline-block;
               min-height: 42px;
@@ -2987,9 +3009,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
               border-top: 17.5px solid #ffffff;
               padding-bottom: 0px;
@@ -2997,17 +3019,20 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
+            }
+            {
+              padding-right: 8px;
             }
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -3018,9 +3043,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         className=
             ms-DetailsRow-cell
             {
-              padding-right: 8px;
-            }
-            {
               box-sizing: border-box;
               display: inline-block;
               min-height: 42px;
@@ -3058,9 +3080,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
               border-top: 17.5px solid #ffffff;
               padding-bottom: 0px;
@@ -3068,30 +3090,48 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
+            }
+            {
+              padding-right: 8px;
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
         <a
-          aria-disabled={undefined}
           className=
               ms-Link
               {
                 color: #0078d4;
                 text-decoration: none;
               }
+<<<<<<< HEAD
               .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #666666;
+=======
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: -1px;
+                content: "";
+                left: -1px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: -1px;
+                top: -1px;
+                z-index: 1;
+>>>>>>> master
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -3104,7 +3144,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
           href="http://placehold.it/100x204"
           onClick={[Function]}
-          target={undefined}
         >
           http://placehold.it/100x204
         </a>
@@ -3113,9 +3152,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         aria-colindex={4}
         className=
             ms-DetailsRow-cell
-            {
-              padding-right: 8px;
-            }
             {
               box-sizing: border-box;
               display: inline-block;
@@ -3154,9 +3190,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
               border-top: 17.5px solid #ffffff;
               padding-bottom: 0px;
@@ -3164,26 +3200,24 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
+            }
+            {
+              padding-right: 8px;
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--default
@@ -3235,9 +3269,14 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 background-color: #eaeaea;
-                color: #000000;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -3248,7 +3287,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 color: #212121;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -3312,9 +3350,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     />
   </div>
   <div
-    aria-describedby={undefined}
-    aria-label={undefined}
-    aria-labelledby={undefined}
     aria-rowindex={6}
     aria-selected={false}
     className=
@@ -3328,8 +3363,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           background: #ffffff;
           border-bottom: 1px solid #f4f4f4;
           box-sizing: border-box;
-          color: #767676;
-          display: flex;
+          color: #666666;
+          display: inline-flex;
           min-height: 42px;
           min-width: 100%;
           outline: transparent;
@@ -3361,7 +3396,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         }
         &:hover {
           background: #f4f4f4;
-          color: #666666;
         }
         &:hover $check {
           opacity: 1;
@@ -3429,9 +3463,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           & [data-is-focusable='true']::-moz-focus-inner {
             border: 0;
           }
-          &.$shimmer {
+          &$shimmer {
             border-bottom: 17.5px solid #ffffff;
-            border-left: 8px solid #ffffff;
+            border-left: 12px solid #ffffff;
             border-right: 32px solid #ffffff;
             border-top: 17.5px solid #ffffff;
             padding-bottom: 0px;
@@ -3439,9 +3473,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             padding-right: 0px;
             padding-top: 0px;
           }
-          &.$shimmerIconPlaceholder {
+          &$shimmerIconPlaceholder {
             border-bottom: 13px solid #ffffff;
-            border-left: 8px solid #ffffff;
+            border-right: 8px solid #ffffff;
             border-top: 13px solid #ffffff;
           }
       data-selection-toggle={true}
@@ -3497,7 +3531,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         data-automationid="DetailsRowCheck"
         data-selection-toggle={true}
         role="checkbox"
-        title={undefined}
       >
         <div
           className=
@@ -3607,9 +3640,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         className=
             ms-DetailsRow-cell
             {
-              padding-right: 8px;
-            }
-            {
               box-sizing: border-box;
               display: inline-block;
               min-height: 42px;
@@ -3647,9 +3677,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
               border-top: 17.5px solid #ffffff;
               padding-bottom: 0px;
@@ -3657,17 +3687,20 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
+            }
+            {
+              padding-right: 8px;
             }
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -3678,9 +3711,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         className=
             ms-DetailsRow-cell
             {
-              padding-right: 8px;
-            }
-            {
               box-sizing: border-box;
               display: inline-block;
               min-height: 42px;
@@ -3718,9 +3748,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
               border-top: 17.5px solid #ffffff;
               padding-bottom: 0px;
@@ -3728,30 +3758,48 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
+            }
+            {
+              padding-right: 8px;
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
         <a
-          aria-disabled={undefined}
           className=
               ms-Link
               {
                 color: #0078d4;
                 text-decoration: none;
               }
+<<<<<<< HEAD
               .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #666666;
+=======
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: -1px;
+                content: "";
+                left: -1px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: -1px;
+                top: -1px;
+                z-index: 1;
+>>>>>>> master
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -3764,7 +3812,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
           href="http://placehold.it/100x205"
           onClick={[Function]}
-          target={undefined}
         >
           http://placehold.it/100x205
         </a>
@@ -3773,9 +3820,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         aria-colindex={4}
         className=
             ms-DetailsRow-cell
-            {
-              padding-right: 8px;
-            }
             {
               box-sizing: border-box;
               display: inline-block;
@@ -3814,9 +3858,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
               border-top: 17.5px solid #ffffff;
               padding-bottom: 0px;
@@ -3824,26 +3868,24 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
+            }
+            {
+              padding-right: 8px;
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--default
@@ -3895,9 +3937,14 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 background-color: #eaeaea;
-                color: #000000;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -3908,7 +3955,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 color: #212121;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -3972,9 +4018,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     />
   </div>
   <div
-    aria-describedby={undefined}
-    aria-label={undefined}
-    aria-labelledby={undefined}
     aria-rowindex={7}
     aria-selected={false}
     className=
@@ -3988,8 +4031,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           background: #ffffff;
           border-bottom: 1px solid #f4f4f4;
           box-sizing: border-box;
-          color: #767676;
-          display: flex;
+          color: #666666;
+          display: inline-flex;
           min-height: 42px;
           min-width: 100%;
           outline: transparent;
@@ -4021,7 +4064,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         }
         &:hover {
           background: #f4f4f4;
-          color: #666666;
         }
         &:hover $check {
           opacity: 1;
@@ -4089,9 +4131,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           & [data-is-focusable='true']::-moz-focus-inner {
             border: 0;
           }
-          &.$shimmer {
+          &$shimmer {
             border-bottom: 17.5px solid #ffffff;
-            border-left: 8px solid #ffffff;
+            border-left: 12px solid #ffffff;
             border-right: 32px solid #ffffff;
             border-top: 17.5px solid #ffffff;
             padding-bottom: 0px;
@@ -4099,9 +4141,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             padding-right: 0px;
             padding-top: 0px;
           }
-          &.$shimmerIconPlaceholder {
+          &$shimmerIconPlaceholder {
             border-bottom: 13px solid #ffffff;
-            border-left: 8px solid #ffffff;
+            border-right: 8px solid #ffffff;
             border-top: 13px solid #ffffff;
           }
       data-selection-toggle={true}
@@ -4157,7 +4199,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         data-automationid="DetailsRowCheck"
         data-selection-toggle={true}
         role="checkbox"
-        title={undefined}
       >
         <div
           className=
@@ -4267,9 +4308,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         className=
             ms-DetailsRow-cell
             {
-              padding-right: 8px;
-            }
-            {
               box-sizing: border-box;
               display: inline-block;
               min-height: 42px;
@@ -4307,9 +4345,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
               border-top: 17.5px solid #ffffff;
               padding-bottom: 0px;
@@ -4317,17 +4355,20 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
+            }
+            {
+              padding-right: 8px;
             }
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -4338,9 +4379,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         className=
             ms-DetailsRow-cell
             {
-              padding-right: 8px;
-            }
-            {
               box-sizing: border-box;
               display: inline-block;
               min-height: 42px;
@@ -4378,9 +4416,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
               border-top: 17.5px solid #ffffff;
               padding-bottom: 0px;
@@ -4388,30 +4426,48 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
+            }
+            {
+              padding-right: 8px;
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
         <a
-          aria-disabled={undefined}
           className=
               ms-Link
               {
                 color: #0078d4;
                 text-decoration: none;
               }
+<<<<<<< HEAD
               .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #666666;
+=======
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: -1px;
+                content: "";
+                left: -1px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: -1px;
+                top: -1px;
+                z-index: 1;
+>>>>>>> master
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -4424,7 +4480,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
           href="http://placehold.it/100x206"
           onClick={[Function]}
-          target={undefined}
         >
           http://placehold.it/100x206
         </a>
@@ -4433,9 +4488,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         aria-colindex={4}
         className=
             ms-DetailsRow-cell
-            {
-              padding-right: 8px;
-            }
             {
               box-sizing: border-box;
               display: inline-block;
@@ -4474,9 +4526,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
               border-top: 17.5px solid #ffffff;
               padding-bottom: 0px;
@@ -4484,26 +4536,24 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
+            }
+            {
+              padding-right: 8px;
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--default
@@ -4555,9 +4605,14 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 background-color: #eaeaea;
-                color: #000000;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -4568,7 +4623,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 color: #212121;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -4632,9 +4686,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     />
   </div>
   <div
-    aria-describedby={undefined}
-    aria-label={undefined}
-    aria-labelledby={undefined}
     aria-rowindex={8}
     aria-selected={false}
     className=
@@ -4648,8 +4699,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           background: #ffffff;
           border-bottom: 1px solid #f4f4f4;
           box-sizing: border-box;
-          color: #767676;
-          display: flex;
+          color: #666666;
+          display: inline-flex;
           min-height: 42px;
           min-width: 100%;
           outline: transparent;
@@ -4681,7 +4732,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         }
         &:hover {
           background: #f4f4f4;
-          color: #666666;
         }
         &:hover $check {
           opacity: 1;
@@ -4749,9 +4799,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           & [data-is-focusable='true']::-moz-focus-inner {
             border: 0;
           }
-          &.$shimmer {
+          &$shimmer {
             border-bottom: 17.5px solid #ffffff;
-            border-left: 8px solid #ffffff;
+            border-left: 12px solid #ffffff;
             border-right: 32px solid #ffffff;
             border-top: 17.5px solid #ffffff;
             padding-bottom: 0px;
@@ -4759,9 +4809,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             padding-right: 0px;
             padding-top: 0px;
           }
-          &.$shimmerIconPlaceholder {
+          &$shimmerIconPlaceholder {
             border-bottom: 13px solid #ffffff;
-            border-left: 8px solid #ffffff;
+            border-right: 8px solid #ffffff;
             border-top: 13px solid #ffffff;
           }
       data-selection-toggle={true}
@@ -4817,7 +4867,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         data-automationid="DetailsRowCheck"
         data-selection-toggle={true}
         role="checkbox"
-        title={undefined}
       >
         <div
           className=
@@ -4927,9 +4976,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         className=
             ms-DetailsRow-cell
             {
-              padding-right: 8px;
-            }
-            {
               box-sizing: border-box;
               display: inline-block;
               min-height: 42px;
@@ -4967,9 +5013,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
               border-top: 17.5px solid #ffffff;
               padding-bottom: 0px;
@@ -4977,17 +5023,20 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
+            }
+            {
+              padding-right: 8px;
             }
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -4998,9 +5047,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         className=
             ms-DetailsRow-cell
             {
-              padding-right: 8px;
-            }
-            {
               box-sizing: border-box;
               display: inline-block;
               min-height: 42px;
@@ -5038,9 +5084,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
               border-top: 17.5px solid #ffffff;
               padding-bottom: 0px;
@@ -5048,30 +5094,48 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
+            }
+            {
+              padding-right: 8px;
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
         <a
-          aria-disabled={undefined}
           className=
               ms-Link
               {
                 color: #0078d4;
                 text-decoration: none;
               }
+<<<<<<< HEAD
               .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #666666;
+=======
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: -1px;
+                content: "";
+                left: -1px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: -1px;
+                top: -1px;
+                z-index: 1;
+>>>>>>> master
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -5084,7 +5148,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
           href="http://placehold.it/100x207"
           onClick={[Function]}
-          target={undefined}
         >
           http://placehold.it/100x207
         </a>
@@ -5093,9 +5156,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         aria-colindex={4}
         className=
             ms-DetailsRow-cell
-            {
-              padding-right: 8px;
-            }
             {
               box-sizing: border-box;
               display: inline-block;
@@ -5134,9 +5194,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
               border-top: 17.5px solid #ffffff;
               padding-bottom: 0px;
@@ -5144,26 +5204,24 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
+            }
+            {
+              padding-right: 8px;
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--default
@@ -5215,9 +5273,14 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 background-color: #eaeaea;
-                color: #000000;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -5228,7 +5291,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 color: #212121;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -5292,9 +5354,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     />
   </div>
   <div
-    aria-describedby={undefined}
-    aria-label={undefined}
-    aria-labelledby={undefined}
     aria-rowindex={9}
     aria-selected={false}
     className=
@@ -5308,8 +5367,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           background: #ffffff;
           border-bottom: 1px solid #f4f4f4;
           box-sizing: border-box;
-          color: #767676;
-          display: flex;
+          color: #666666;
+          display: inline-flex;
           min-height: 42px;
           min-width: 100%;
           outline: transparent;
@@ -5341,7 +5400,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         }
         &:hover {
           background: #f4f4f4;
-          color: #666666;
         }
         &:hover $check {
           opacity: 1;
@@ -5409,9 +5467,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           & [data-is-focusable='true']::-moz-focus-inner {
             border: 0;
           }
-          &.$shimmer {
+          &$shimmer {
             border-bottom: 17.5px solid #ffffff;
-            border-left: 8px solid #ffffff;
+            border-left: 12px solid #ffffff;
             border-right: 32px solid #ffffff;
             border-top: 17.5px solid #ffffff;
             padding-bottom: 0px;
@@ -5419,9 +5477,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             padding-right: 0px;
             padding-top: 0px;
           }
-          &.$shimmerIconPlaceholder {
+          &$shimmerIconPlaceholder {
             border-bottom: 13px solid #ffffff;
-            border-left: 8px solid #ffffff;
+            border-right: 8px solid #ffffff;
             border-top: 13px solid #ffffff;
           }
       data-selection-toggle={true}
@@ -5477,7 +5535,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         data-automationid="DetailsRowCheck"
         data-selection-toggle={true}
         role="checkbox"
-        title={undefined}
       >
         <div
           className=
@@ -5587,9 +5644,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         className=
             ms-DetailsRow-cell
             {
-              padding-right: 8px;
-            }
-            {
               box-sizing: border-box;
               display: inline-block;
               min-height: 42px;
@@ -5627,9 +5681,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
               border-top: 17.5px solid #ffffff;
               padding-bottom: 0px;
@@ -5637,17 +5691,20 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
+            }
+            {
+              padding-right: 8px;
             }
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -5658,9 +5715,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         className=
             ms-DetailsRow-cell
             {
-              padding-right: 8px;
-            }
-            {
               box-sizing: border-box;
               display: inline-block;
               min-height: 42px;
@@ -5698,9 +5752,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
               border-top: 17.5px solid #ffffff;
               padding-bottom: 0px;
@@ -5708,30 +5762,48 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
+            }
+            {
+              padding-right: 8px;
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
         <a
-          aria-disabled={undefined}
           className=
               ms-Link
               {
                 color: #0078d4;
                 text-decoration: none;
               }
+<<<<<<< HEAD
               .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #666666;
+=======
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: -1px;
+                content: "";
+                left: -1px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: -1px;
+                top: -1px;
+                z-index: 1;
+>>>>>>> master
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -5744,7 +5816,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
           href="http://placehold.it/100x208"
           onClick={[Function]}
-          target={undefined}
         >
           http://placehold.it/100x208
         </a>
@@ -5753,9 +5824,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         aria-colindex={4}
         className=
             ms-DetailsRow-cell
-            {
-              padding-right: 8px;
-            }
             {
               box-sizing: border-box;
               display: inline-block;
@@ -5794,9 +5862,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
               border-top: 17.5px solid #ffffff;
               padding-bottom: 0px;
@@ -5804,26 +5872,24 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
+            }
+            {
+              padding-right: 8px;
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--default
@@ -5875,9 +5941,14 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 background-color: #eaeaea;
-                color: #000000;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -5888,7 +5959,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 color: #212121;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -5952,9 +6022,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     />
   </div>
   <div
-    aria-describedby={undefined}
-    aria-label={undefined}
-    aria-labelledby={undefined}
     aria-rowindex={10}
     aria-selected={false}
     className=
@@ -5968,8 +6035,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           background: #ffffff;
           border-bottom: 1px solid #f4f4f4;
           box-sizing: border-box;
-          color: #767676;
-          display: flex;
+          color: #666666;
+          display: inline-flex;
           min-height: 42px;
           min-width: 100%;
           outline: transparent;
@@ -6001,7 +6068,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         }
         &:hover {
           background: #f4f4f4;
-          color: #666666;
         }
         &:hover $check {
           opacity: 1;
@@ -6069,9 +6135,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           & [data-is-focusable='true']::-moz-focus-inner {
             border: 0;
           }
-          &.$shimmer {
+          &$shimmer {
             border-bottom: 17.5px solid #ffffff;
-            border-left: 8px solid #ffffff;
+            border-left: 12px solid #ffffff;
             border-right: 32px solid #ffffff;
             border-top: 17.5px solid #ffffff;
             padding-bottom: 0px;
@@ -6079,9 +6145,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             padding-right: 0px;
             padding-top: 0px;
           }
-          &.$shimmerIconPlaceholder {
+          &$shimmerIconPlaceholder {
             border-bottom: 13px solid #ffffff;
-            border-left: 8px solid #ffffff;
+            border-right: 8px solid #ffffff;
             border-top: 13px solid #ffffff;
           }
       data-selection-toggle={true}
@@ -6137,7 +6203,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         data-automationid="DetailsRowCheck"
         data-selection-toggle={true}
         role="checkbox"
-        title={undefined}
       >
         <div
           className=
@@ -6247,9 +6312,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         className=
             ms-DetailsRow-cell
             {
-              padding-right: 8px;
-            }
-            {
               box-sizing: border-box;
               display: inline-block;
               min-height: 42px;
@@ -6287,9 +6349,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
               border-top: 17.5px solid #ffffff;
               padding-bottom: 0px;
@@ -6297,17 +6359,20 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
+            }
+            {
+              padding-right: 8px;
             }
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
@@ -6318,9 +6383,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         className=
             ms-DetailsRow-cell
             {
-              padding-right: 8px;
-            }
-            {
               box-sizing: border-box;
               display: inline-block;
               min-height: 42px;
@@ -6358,9 +6420,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
               border-top: 17.5px solid #ffffff;
               padding-bottom: 0px;
@@ -6368,30 +6430,48 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
+            }
+            {
+              padding-right: 8px;
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
         <a
-          aria-disabled={undefined}
           className=
               ms-Link
               {
                 color: #0078d4;
                 text-decoration: none;
               }
+<<<<<<< HEAD
               .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #666666;
+=======
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: -1px;
+                content: "";
+                left: -1px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: -1px;
+                top: -1px;
+                z-index: 1;
+>>>>>>> master
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -6404,7 +6484,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
           href="http://placehold.it/100x209"
           onClick={[Function]}
-          target={undefined}
         >
           http://placehold.it/100x209
         </a>
@@ -6413,9 +6492,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         aria-colindex={4}
         className=
             ms-DetailsRow-cell
-            {
-              padding-right: 8px;
-            }
             {
               box-sizing: border-box;
               display: inline-block;
@@ -6454,9 +6530,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
             }
-            &.$shimmer {
+            &$shimmer {
               border-bottom: 17.5px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-left: 12px solid #ffffff;
               border-right: 32px solid #ffffff;
               border-top: 17.5px solid #ffffff;
               padding-bottom: 0px;
@@ -6464,26 +6540,24 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-right: 0px;
               padding-top: 0px;
             }
-            &.$shimmerIconPlaceholder {
+            &$shimmerIconPlaceholder {
               border-bottom: 13px solid #ffffff;
-              border-left: 8px solid #ffffff;
+              border-right: 8px solid #ffffff;
               border-top: 13px solid #ffffff;
+            }
+            {
+              padding-right: 8px;
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
           Object {
-            "width": NaN,
+            "width": "auto",
           }
         }
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--default
@@ -6535,9 +6609,14 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 background-color: #eaeaea;
-                color: #000000;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -6548,7 +6627,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 color: #212121;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}

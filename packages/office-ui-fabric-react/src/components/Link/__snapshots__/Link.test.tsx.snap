@@ -2,15 +2,30 @@
 
 exports[`Link renders Link correctly 1`] = `
 <a
-  aria-disabled={undefined}
   className=
       ms-Link
       {
         color: #0078d4;
         text-decoration: none;
       }
+<<<<<<< HEAD
       .ms-Fabric--isFocusVisible &:focus {
         outline: 1px solid #666666;
+=======
+      &::-moz-focus-inner {
+        border: 0;
+      }
+      .ms-Fabric--isFocusVisible &:focus:after {
+        border: 1px solid #ffffff;
+        bottom: -1px;
+        content: "";
+        left: -1px;
+        outline: 1px solid #666666;
+        position: absolute;
+        right: -1px;
+        top: -1px;
+        z-index: 1;
+>>>>>>> master
       }
       &:active, &:hover, &:active:hover {
         color: #004578;
@@ -23,7 +38,6 @@ exports[`Link renders Link correctly 1`] = `
       }
   href="#"
   onClick={[Function]}
-  target={undefined}
 >
   I'm a link
 </a>
@@ -31,7 +45,6 @@ exports[`Link renders Link correctly 1`] = `
 
 exports[`Link renders Link with "as=div" a div element 1`] = `
 <div
-  aria-disabled={undefined}
   className=
       ms-Link
       customClassName
@@ -57,8 +70,24 @@ exports[`Link renders Link with "as=div" a div element 1`] = `
         text-overflow: inherit;
         user-select: text;
       }
+<<<<<<< HEAD
       .ms-Fabric--isFocusVisible &:focus {
         outline: 1px solid #666666;
+=======
+      &::-moz-focus-inner {
+        border: 0;
+      }
+      .ms-Fabric--isFocusVisible &:focus:after {
+        border: 1px solid #ffffff;
+        bottom: -1px;
+        content: "";
+        left: -1px;
+        outline: 1px solid #666666;
+        position: absolute;
+        right: -1px;
+        top: -1px;
+        z-index: 1;
+>>>>>>> master
       }
       @media screen and (-ms-high-contrast: white-on-black){& {
         color: #FFFF00;
@@ -78,7 +107,6 @@ exports[`Link renders Link with "as=div" a div element 1`] = `
       &:focus {
         color: #0078d4;
       }
-  disabled={undefined}
   onClick={[Function]}
 >
   I'm a div
@@ -87,7 +115,6 @@ exports[`Link renders Link with "as=div" a div element 1`] = `
 
 exports[`Link renders Link with a custom class name 1`] = `
 <a
-  aria-disabled={undefined}
   className=
       ms-Link
       customClassName
@@ -95,8 +122,24 @@ exports[`Link renders Link with a custom class name 1`] = `
         color: #0078d4;
         text-decoration: none;
       }
+<<<<<<< HEAD
       .ms-Fabric--isFocusVisible &:focus {
         outline: 1px solid #666666;
+=======
+      &::-moz-focus-inner {
+        border: 0;
+      }
+      .ms-Fabric--isFocusVisible &:focus:after {
+        border: 1px solid #ffffff;
+        bottom: -1px;
+        content: "";
+        left: -1px;
+        outline: 1px solid #666666;
+        position: absolute;
+        right: -1px;
+        top: -1px;
+        z-index: 1;
+>>>>>>> master
       }
       &:active, &:hover, &:active:hover {
         color: #004578;
@@ -109,7 +152,6 @@ exports[`Link renders Link with a custom class name 1`] = `
       }
   href="#"
   onClick={[Function]}
-  target={undefined}
 >
   I'm a link
 </a>
@@ -117,7 +159,6 @@ exports[`Link renders Link with a custom class name 1`] = `
 
 exports[`Link renders Link with no href as a button 1`] = `
 <button
-  aria-disabled={undefined}
   className=
       ms-Link
       {
@@ -142,8 +183,24 @@ exports[`Link renders Link with no href as a button 1`] = `
         text-overflow: inherit;
         user-select: text;
       }
+<<<<<<< HEAD
       .ms-Fabric--isFocusVisible &:focus {
         outline: 1px solid #666666;
+=======
+      &::-moz-focus-inner {
+        border: 0;
+      }
+      .ms-Fabric--isFocusVisible &:focus:after {
+        border: 1px solid #ffffff;
+        bottom: -1px;
+        content: "";
+        left: -1px;
+        outline: 1px solid #666666;
+        position: absolute;
+        right: -1px;
+        top: -1px;
+        z-index: 1;
+>>>>>>> master
       }
       @media screen and (-ms-high-contrast: white-on-black){& {
         color: #FFFF00;
@@ -163,7 +220,6 @@ exports[`Link renders Link with no href as a button 1`] = `
       &:focus {
         color: #0078d4;
       }
-  disabled={undefined}
   onClick={[Function]}
 >
   I'm a link as a button
@@ -181,15 +237,30 @@ exports[`Link renders disabled Link correctly 1`] = `
         cursor: default;
         text-decoration: none;
       }
+<<<<<<< HEAD
       .ms-Fabric--isFocusVisible &:focus {
         outline: 1px solid #666666;
+=======
+      &::-moz-focus-inner {
+        border: 0;
+      }
+      .ms-Fabric--isFocusVisible &:focus:after {
+        border: 1px solid #ffffff;
+        bottom: -1px;
+        content: "";
+        left: -1px;
+        outline: 1px solid #666666;
+        position: absolute;
+        right: -1px;
+        top: -1px;
+        z-index: 1;
+>>>>>>> master
       }
       &:link, &:visited {
         pointer-events: none;
       }
   href="#"
   onClick={[Function]}
-  target={undefined}
 >
   I'm a disabled link
 </a>
@@ -223,8 +294,24 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
         text-overflow: inherit;
         user-select: text;
       }
+<<<<<<< HEAD
       .ms-Fabric--isFocusVisible &:focus {
         outline: 1px solid #666666;
+=======
+      &::-moz-focus-inner {
+        border: 0;
+      }
+      .ms-Fabric--isFocusVisible &:focus:after {
+        border: 1px solid #ffffff;
+        bottom: -1px;
+        content: "";
+        left: -1px;
+        outline: 1px solid #666666;
+        position: absolute;
+        right: -1px;
+        top: -1px;
+        z-index: 1;
+>>>>>>> master
       }
       @media screen and (-ms-high-contrast: white-on-black){& {
         color: #FFFF00;
@@ -247,7 +334,6 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
 
 exports[`Link supports non button/anchor html attributes when "as=" is used 1`] = `
 <blockquote
-  aria-disabled={undefined}
   cite="hi"
   className=
       ms-Link
@@ -274,8 +360,24 @@ exports[`Link supports non button/anchor html attributes when "as=" is used 1`] 
         text-overflow: inherit;
         user-select: text;
       }
+<<<<<<< HEAD
       .ms-Fabric--isFocusVisible &:focus {
         outline: 1px solid #666666;
+=======
+      &::-moz-focus-inner {
+        border: 0;
+      }
+      .ms-Fabric--isFocusVisible &:focus:after {
+        border: 1px solid #ffffff;
+        bottom: -1px;
+        content: "";
+        left: -1px;
+        outline: 1px solid #666666;
+        position: absolute;
+        right: -1px;
+        top: -1px;
+        z-index: 1;
+>>>>>>> master
       }
       @media screen and (-ms-high-contrast: white-on-black){& {
         color: #FFFF00;
@@ -295,7 +397,6 @@ exports[`Link supports non button/anchor html attributes when "as=" is used 1`] 
       &:focus {
         color: #0078d4;
       }
-  disabled={undefined}
   onClick={[Function]}
 >
   I'm a blockquote

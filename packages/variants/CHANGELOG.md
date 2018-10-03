@@ -1,6 +1,94 @@
 # Change Log - @uifabric/variants
 
-This log was last generated on Tue, 03 Jul 2018 10:23:19 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Oct 2018 12:27:24 GMT and should not be manually modified.
+
+## 6.11.0
+Mon, 01 Oct 2018 12:27:24 GMT
+
+### Minor changes
+
+- semantic slot value updates per design direction
+
+## 6.10.0
+Fri, 21 Sep 2018 14:25:46 GMT
+
+### Minor changes
+
+- Variants: export everything
+
+### Patches
+
+- Adding a version stamp file
+
+## 6.9.0
+Thu, 13 Sep 2018 17:38:04 GMT
+
+### Minor changes
+
+- Adds new semantic slots per design direction
+
+## 6.8.0
+Fri, 07 Sep 2018 16:29:48 GMT
+
+### Minor changes
+
+- Updates button slots with correct pre-fluent palette values and scss fallbacks
+
+## 6.7.0
+Thu, 06 Sep 2018 10:28:35 GMT
+
+### Minor changes
+
+- add buttonBackgroundDisabled semantic slot
+
+## 6.6.0
+Tue, 28 Aug 2018 10:23:58 GMT
+
+### Minor changes
+
+- fixes makeThemeFromPartials function to create theme in steps, so palette can be updated, then the updated palette informs the creation of the semantic slots, then the re st of the theme is filled in'
+
+## 6.5.0
+Tue, 21 Aug 2018 10:28:16 GMT
+
+### Minor changes
+
+- adds variantBorderHovered and emptyStateBackground semantic slots to theme and variants logic
+
+## 6.4.0
+Mon, 20 Aug 2018 10:26:10 GMT
+
+### Minor changes
+
+- removes opacity function and import from color utilities from variants.ts
+
+## 6.3.0
+Mon, 13 Aug 2018 03:43:25 GMT
+
+### Minor changes
+
+- adds opacity function to variants
+
+## 6.2.0
+Fri, 03 Aug 2018 10:25:59 GMT
+
+### Minor changes
+
+- add bodyStandoutBackground default values to variants
+
+## 6.1.0
+Thu, 02 Aug 2018 10:23:19 GMT
+
+### Minor changes
+
+- Add variantThemeType enums and utility function to apply variant theme
+
+## 6.0.6
+Mon, 23 Jul 2018 10:28:08 GMT
+
+### Patches
+
+- Variants: new designs for bodyFrameBackground
 
 ## 6.0.5
 Tue, 03 Jul 2018 10:23:19 GMT

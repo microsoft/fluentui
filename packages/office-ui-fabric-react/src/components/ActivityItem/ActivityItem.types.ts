@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { IStyle } from '../../Styling';
-import { IRenderFunction } from '../../Utilities';
+import { IRefObject, IRenderFunction } from '../../Utilities';
 import { IPersonaSharedProps } from '../../Persona';
 
-// Please keep alphabetized
 export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement> {
   /**
-   * An element describing the activity that took place. If no activityDescription, activityDescriptionText, or onRenderActivityDescription are included, no description of the activity is shown.
+   * An element describing the activity that took place. If no activityDescription, activityDescriptionText, or
+   * onRenderActivityDescription are included, no description of the activity is shown.
    */
   activityDescription?: React.ReactNode[] | React.ReactNode;
 
@@ -27,7 +27,8 @@ export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement>
   activityPersonas?: Array<IPersonaSharedProps>;
 
   /**
-   * An element containing the text of comments or @mention messages. If no comments, commentText, or onRenderComments are included, no comments are shown.
+   * An element containing the text of comments or @mention messages.
+   * If no comments, commentText, or onRenderComments are included, no comments are shown.
    */
   comments?: React.ReactNode[] | React.ReactNode;
 
@@ -40,7 +41,7 @@ export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement>
   /**
    * Gets ref to component interface.
    */
-  componentRef?: () => void;
+  componentRef?: IRefObject<{}>;
 
   /**
    * Indicated if the compact styling should be used.

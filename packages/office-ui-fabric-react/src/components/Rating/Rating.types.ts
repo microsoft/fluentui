@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IRating {}
 
@@ -12,7 +12,7 @@ export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
    * Optional callback to access the IRating interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IRating | null) => void;
+  componentRef?: IRefObject<IRating>;
 
   /**
    * Selected rating, has to be an integer between min and max
@@ -46,7 +46,12 @@ export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
   size?: RatingSize;
 
   /**
-   * Callback when the rating has changed
+   * Callback issued when the rating changes.
+   */
+  onChange?: (event: React.FocusEvent<HTMLElement>, rating?: number) => void;
+
+  /**
+   * @deprecated Use onChange instead.
    */
   onChanged?: (rating: number) => void;
 

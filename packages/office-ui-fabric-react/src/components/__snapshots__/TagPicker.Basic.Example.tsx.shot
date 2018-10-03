@@ -4,12 +4,6 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
 <div>
   <button
     aria-checked={false}
-    aria-describedby={undefined}
-    aria-disabled={undefined}
-    aria-label={undefined}
-    aria-labelledby={undefined}
-    aria-posinset={undefined}
-    aria-setsize={undefined}
     checked={false}
     className=
         ms-Checkbox
@@ -71,10 +65,7 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
         &:focus .ms-Checkbox-text {
           color: #333333;
         }
-    data-ktp-execute-target={undefined}
-    disabled={undefined}
     id="checkbox-0"
-    name={undefined}
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
@@ -85,7 +76,7 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
       className=
           ms-Checkbox-label
           {
-            align-items: center;
+            align-items: flex-start;
             cursor: pointer;
             display: flex;
             margin-bottom: 0;
@@ -121,7 +112,6 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 20px;
             }
-        data-ktp-target={undefined}
       >
         <i
           aria-hidden={true}
@@ -154,6 +144,7 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
             {
               color: #333333;
               font-size: 14px;
+              line-height: 20px;
               margin-bottom: 0;
               margin-left: 4px;
               margin-right: 4px;
@@ -170,10 +161,8 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
     onKeyDown={[Function]}
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className="ms-FocusZone"
-      data-focuszone-id="FocusZone1"
+      data-focuszone-id="FocusZone2"
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
@@ -195,13 +184,16 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
           className="ms-BasePicker-text"
           role="list"
         >
+          <span
+            id="selected-items-id__1"
+          />
           <input
-            aria-activedescendant={undefined}
-            aria-controls="selected-suggestion-alert"
+            aria-autocomplete="both"
+            aria-controls=" "
+            aria-describedby="selected-items-id__1"
             aria-expanded={false}
             aria-haspopup="true"
             aria-label="Tag Picker"
-            aria-owns={undefined}
             autoCapitalize="off"
             autoComplete="off"
             className="ms-BasePicker-input"
@@ -229,10 +221,8 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
     onKeyDown={[Function]}
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className="ms-FocusZone"
-      data-focuszone-id="FocusZone2"
+      data-focuszone-id="FocusZone4"
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
@@ -254,13 +244,16 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
           className="ms-BasePicker-text"
           role="list"
         >
+          <span
+            id="selected-items-id__3"
+          />
           <input
-            aria-activedescendant={undefined}
-            aria-controls="selected-suggestion-alert"
+            aria-autocomplete="both"
+            aria-controls=" "
+            aria-describedby="selected-items-id__3"
             aria-expanded={false}
             aria-haspopup="true"
             aria-label="Tag Picker"
-            aria-owns={undefined}
             autoCapitalize="off"
             autoComplete="off"
             className="ms-BasePicker-input"

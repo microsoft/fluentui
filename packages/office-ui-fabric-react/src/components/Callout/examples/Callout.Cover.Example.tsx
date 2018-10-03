@@ -44,7 +44,8 @@ export class CalloutCoverExample extends React.Component<{}, ICalloutCoverExampl
 
   public render(): JSX.Element {
     const { isCalloutVisible, directionalHint } = this.state;
-    // ms-Callout-smallbeak is used in this directional example to reflect all the positions. Large beak will disable some position to avoid beak over the callout edge.
+    // ms-Callout-smallbeak is used in this directional example to reflect all the positions.
+    // Large beak will disable some position to avoid beak over the callout edge.
     return (
       <div className="ms-CalloutExample">
         <div className="ms-CalloutExample-configArea">
@@ -52,7 +53,7 @@ export class CalloutCoverExample extends React.Component<{}, ICalloutCoverExampl
             label="Directional hint"
             selectedKey={directionalHint!}
             options={DIRECTION_OPTIONS}
-            onChanged={this._onDirectionalChanged}
+            onChange={this._onDirectionalChanged}
           />
         </div>
         <div className="ms-CalloutCoverExample-buttonArea" ref={menuButton => (this._menuButtonElement = menuButton)}>
@@ -92,7 +93,7 @@ export class CalloutCoverExample extends React.Component<{}, ICalloutCoverExampl
     });
   }
 
-  private _onDirectionalChanged(option: IDropdownOption): void {
+  private _onDirectionalChanged(event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void {
     this.setState({
       directionalHint: option.key as number
     });
