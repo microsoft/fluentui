@@ -5,8 +5,6 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
   className="specialClassName"
 >
   <div
-    aria-describedby={undefined}
-    aria-labelledby={undefined}
     className="ms-FocusZone"
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
@@ -14,7 +12,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
     onMouseDownCapture={[Function]}
     role="presentation"
   >
-    <ul
+    <div
       className=
           ms-Pivot
           {
@@ -37,11 +35,6 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
       role="tablist"
     >
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         aria-selected={true}
         className=
             ms-Button
@@ -98,6 +91,11 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               color: #333333;
               cursor: pointer;
@@ -149,7 +147,6 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
               color: Highlight;
             }
         data-is-focusable={true}
-        disabled={undefined}
         id="Pivot0-Tab0"
         name="Test Link 1"
         onClick={[Function]}
@@ -192,11 +189,6 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
         </div>
       </button>
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         aria-selected={false}
         className=
             ms-Button
@@ -252,6 +244,11 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               color: #333333;
               cursor: pointer;
@@ -299,7 +296,6 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
               box-sizing: border-box;
             }
         data-is-focusable={true}
-        disabled={undefined}
         id="Pivot0-Tab1"
         name="Test Link 2"
         onClick={[Function]}
@@ -341,7 +337,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
           </span>
         </div>
       </button>
-    </ul>
+    </div>
   </div>
   <div
     aria-labelledby="Pivot0-Tab0"
@@ -357,8 +353,6 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
 exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
 <div>
   <div
-    aria-describedby={undefined}
-    aria-labelledby={undefined}
     className="ms-FocusZone"
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
@@ -366,7 +360,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
     onMouseDownCapture={[Function]}
     role="presentation"
   >
-    <ul
+    <div
       className=
           ms-Pivot
           {
@@ -389,11 +383,6 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
       role="tablist"
     >
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         aria-selected={true}
         className=
             ms-Button
@@ -450,6 +439,11 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               color: #333333;
               cursor: pointer;
@@ -501,9 +495,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               color: Highlight;
             }
         data-is-focusable={true}
-        disabled={undefined}
         id="Pivot0-Tab0"
-        name={undefined}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}
@@ -546,11 +538,6 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
         </div>
       </button>
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         aria-selected={false}
         className=
             ms-Button
@@ -606,6 +593,11 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               color: #333333;
               cursor: pointer;
@@ -653,7 +645,6 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               box-sizing: border-box;
             }
         data-is-focusable={true}
-        disabled={undefined}
         id="Pivot0-Tab1"
         name="Test Link"
         onClick={[Function]}
@@ -709,11 +700,6 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
         </div>
       </button>
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         aria-selected={false}
         className=
             ms-Button
@@ -769,6 +755,11 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               color: #333333;
               cursor: pointer;
@@ -816,7 +807,6 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               box-sizing: border-box;
             }
         data-is-focusable={true}
-        disabled={undefined}
         id="Pivot0-Tab2"
         name="Text with icon"
         onClick={[Function]}
@@ -884,7 +874,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
           </span>
         </div>
       </button>
-    </ul>
+    </div>
   </div>
   <div
     aria-labelledby="Pivot0-Tab0"
@@ -898,8 +888,6 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
 exports[`Pivot renders large link Pivot correctly 1`] = `
 <div>
   <div
-    aria-describedby={undefined}
-    aria-labelledby={undefined}
     className="ms-FocusZone"
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
@@ -907,7 +895,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
     onMouseDownCapture={[Function]}
     role="presentation"
   >
-    <ul
+    <div
       className=
           ms-Pivot
           ms-Pivot--large
@@ -931,11 +919,6 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
       role="tablist"
     >
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         aria-selected={true}
         className=
             ms-Button
@@ -992,6 +975,11 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               color: #333333;
               cursor: pointer;
@@ -1043,7 +1031,6 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
               color: Highlight;
             }
         data-is-focusable={true}
-        disabled={undefined}
         id="Pivot0-Tab0"
         name="Test Link 1"
         onClick={[Function]}
@@ -1086,11 +1073,6 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
         </div>
       </button>
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         aria-selected={false}
         className=
             ms-Button
@@ -1146,6 +1128,11 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               color: #333333;
               cursor: pointer;
@@ -1193,7 +1180,6 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
               box-sizing: border-box;
             }
         data-is-focusable={true}
-        disabled={undefined}
         id="Pivot0-Tab1"
         name=""
         onClick={[Function]}
@@ -1235,7 +1221,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
           </span>
         </div>
       </button>
-    </ul>
+    </div>
   </div>
   <div
     aria-labelledby="Pivot0-Tab0"
@@ -1249,8 +1235,6 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
 exports[`Pivot renders large tabbed Pivot correctly 1`] = `
 <div>
   <div
-    aria-describedby={undefined}
-    aria-labelledby={undefined}
     className="ms-FocusZone"
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
@@ -1258,7 +1242,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
     onMouseDownCapture={[Function]}
     role="presentation"
   >
-    <ul
+    <div
       className=
           ms-Pivot
           ms-Pivot--large
@@ -1283,11 +1267,6 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
       role="tablist"
     >
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         aria-selected={true}
         className=
             ms-Button
@@ -1343,6 +1322,11 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
             }
             &:hover {
               color: #333333;
@@ -1408,7 +1392,6 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               color: #ffffff;
             }
         data-is-focusable={true}
-        disabled={undefined}
         id="Pivot0-Tab0"
         name="Test Link 1"
         onClick={[Function]}
@@ -1451,11 +1434,6 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
         </div>
       </button>
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         aria-selected={false}
         className=
             ms-Button
@@ -1510,6 +1488,11 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
             }
             &:hover {
               color: #333333;
@@ -1568,7 +1551,6 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               color: #000000;
             }
         data-is-focusable={true}
-        disabled={undefined}
         id="Pivot0-Tab1"
         name=""
         onClick={[Function]}
@@ -1610,7 +1592,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
           </span>
         </div>
       </button>
-    </ul>
+    </div>
   </div>
   <div
     aria-labelledby="Pivot0-Tab0"
@@ -1624,8 +1606,6 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
 exports[`Pivot renders link Pivot correctly 1`] = `
 <div>
   <div
-    aria-describedby={undefined}
-    aria-labelledby={undefined}
     className="ms-FocusZone"
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
@@ -1633,7 +1613,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
     onMouseDownCapture={[Function]}
     role="presentation"
   >
-    <ul
+    <div
       className=
           ms-Pivot
           {
@@ -1656,11 +1636,6 @@ exports[`Pivot renders link Pivot correctly 1`] = `
       role="tablist"
     >
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         aria-selected={true}
         className=
             ms-Button
@@ -1717,6 +1692,11 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               color: #333333;
               cursor: pointer;
@@ -1768,7 +1748,6 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               color: Highlight;
             }
         data-is-focusable={true}
-        disabled={undefined}
         id="Pivot0-Tab0"
         name="Test Link 1"
         onClick={[Function]}
@@ -1811,11 +1790,6 @@ exports[`Pivot renders link Pivot correctly 1`] = `
         </div>
       </button>
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         aria-selected={false}
         className=
             ms-Button
@@ -1871,6 +1845,11 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               color: #333333;
               cursor: pointer;
@@ -1918,7 +1897,6 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               box-sizing: border-box;
             }
         data-is-focusable={true}
-        disabled={undefined}
         id="Pivot0-Tab1"
         name=""
         onClick={[Function]}
@@ -1960,7 +1938,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
           </span>
         </div>
       </button>
-    </ul>
+    </div>
   </div>
   <div
     aria-labelledby="Pivot0-Tab0"
@@ -1974,8 +1952,6 @@ exports[`Pivot renders link Pivot correctly 1`] = `
 exports[`Pivot renders tabbed Pivot correctly 1`] = `
 <div>
   <div
-    aria-describedby={undefined}
-    aria-labelledby={undefined}
     className="ms-FocusZone"
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
@@ -1983,7 +1959,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
     onMouseDownCapture={[Function]}
     role="presentation"
   >
-    <ul
+    <div
       className=
           ms-Pivot
           ms-Pivot--tabs
@@ -2007,11 +1983,6 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
       role="tablist"
     >
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         aria-selected={true}
         className=
             ms-Button
@@ -2067,6 +2038,11 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
             }
             &:hover {
               color: #333333;
@@ -2132,7 +2108,6 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               color: #ffffff;
             }
         data-is-focusable={true}
-        disabled={undefined}
         id="Pivot0-Tab0"
         name="Test Link 1"
         onClick={[Function]}
@@ -2175,11 +2150,6 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
         </div>
       </button>
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         aria-selected={false}
         className=
             ms-Button
@@ -2234,6 +2204,11 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
             }
             &:hover {
               color: #333333;
@@ -2292,7 +2267,6 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               color: #000000;
             }
         data-is-focusable={true}
-        disabled={undefined}
         id="Pivot0-Tab1"
         name=""
         onClick={[Function]}
@@ -2334,7 +2308,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
           </span>
         </div>
       </button>
-    </ul>
+    </div>
   </div>
   <div
     aria-labelledby="Pivot0-Tab0"

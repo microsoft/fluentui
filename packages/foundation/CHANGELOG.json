@@ -2,6 +2,89 @@
   "name": "@uifabric/foundation",
   "entries": [
     {
+      "version": "0.5.4",
+      "tag": "@uifabric/foundation_v0.5.4",
+      "date": "Tue, 02 Oct 2018 12:28:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Interface refactoring for reducing dev friction.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "3878b423fc86bbbab6322edc72e23a424013e642"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.5.3",
+      "tag": "@uifabric/foundation_v0.5.3",
+      "date": "Fri, 21 Sep 2018 14:25:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding a version stamp file",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "11c18bce52dba131548610c5eea0c1ab7fa4d1ca"
+          },
+          {
+            "comment": "Support schemes through new schemes prop.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "7c45ef96439a8794586a6b338c2b2ee1e7080318"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.0.0 <2.0.0` to `>=1.1.0 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=6.0.4 <7.0.0` to `>=6.0.5 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.5.2",
+      "tag": "@uifabric/foundation_v0.5.2",
+      "date": "Mon, 17 Sep 2018 12:27:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Refactor Foundation to remove code duplication, ease props typing, and make option parameter definition more consistent.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "25776c70eddcecb59d4d622c8d22bfa43a8c2d2a"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.5.1",
+      "tag": "@uifabric/foundation_v0.5.1",
+      "date": "Mon, 10 Sep 2018 10:24:57 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "0ee9e8f082ee724ef61533aa40e4c2d232312ed0",
+            "comment": "Remove Object.assign usage to fix IE11 issues."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.5.0",
+      "tag": "@uifabric/foundation_v0.5.0",
+      "date": "Fri, 07 Sep 2018 22:04:50 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "888f598942757c715181a1441457f1c7d5611c73",
+            "comment": "Adjusting foundation usage, using new React 16 context."
+          }
+        ]
+      }
+    },
+    {
       "version": "0.4.1",
       "tag": "@uifabric/foundation_v0.4.1",
       "date": "Wed, 29 Aug 2018 10:28:42 GMT",

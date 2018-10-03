@@ -10,6 +10,7 @@ import { ImageFit } from '../../Image';
 import { IButtonProps } from '../../Button';
 import { IIconProps } from '../../Icon';
 import { IBaseProps, IRefObject } from '../../Utilities';
+import { ILinkProps } from '../../Link';
 
 export interface IDocumentCard {}
 
@@ -94,8 +95,14 @@ export interface IDocumentCardPreviewImage {
 
   /**
    * URL to view the file.
+   * @deprecated Use href inside of linkProps instead.
    */
   url?: string;
+
+  /**
+   * Props to pass to Link component
+   */
+  linkProps?: ILinkProps;
 
   /**
    * Path to the preview image.
@@ -158,7 +165,8 @@ export interface IDocumentCardTitleProps extends React.Props<DocumentCardTitle> 
   componentRef?: IRefObject<{}>;
 
   /**
-   * Title text. If the card represents more than one document, this should be the title of one document and a "+X" string. For example, a collection of four documents would have a string of "Document.docx +3".
+   * Title text. If the card represents more than one document, this should be the title of one document and a "+X" string.
+   * For example, a collection of four documents would have a string of "Document.docx +3".
    */
   title: string;
 

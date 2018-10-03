@@ -70,7 +70,7 @@ export class GridList extends React.Component<IGridListProps> {
     } else {
       cell = row.c3;
     }
-    const customColorCss = getClassNames(getStyles({ iconColor: cell.iconColor, textColor: cell.textColor }));
+    const customColorCss = getClassNames(getStyles({ iconColor: cell.iconColor, textColor: cell.textColor, boldText: cell.boldText }));
     switch (column.key) {
       case 'facepile':
         return (
@@ -99,10 +99,7 @@ export class GridList extends React.Component<IGridListProps> {
     }
   }
 
-  private _renderActionButton(
-    actionButtonText: string | undefined,
-    onActionLinkClicked: VoidFunction | undefined
-  ): JSX.Element | null {
+  private _renderActionButton(actionButtonText: string | undefined, onActionLinkClicked: VoidFunction | undefined): JSX.Element | null {
     if (actionButtonText !== undefined) {
       return (
         <ActionButton onClick={onActionLinkClicked}>
@@ -129,21 +126,24 @@ export class GridList extends React.Component<IGridListProps> {
           facepileImageSrc: gridRow.c1.facepileImageSrc,
           iconName: gridRow.c1.iconName,
           textColor: gridRow.c1 !== undefined ? gridRow.c1.textColor : undefined,
-          iconColor: gridRow.c1 !== undefined ? gridRow.c1.iconColor : undefined
+          iconColor: gridRow.c1 !== undefined ? gridRow.c1.iconColor : undefined,
+          boldText: gridRow.c1 !== undefined ? gridRow.c1.boldText : undefined
         },
         c2: {
           content: gridRow.c2 !== undefined ? gridRow.c2.content : undefined,
           facepileImageSrc: gridRow.c2 !== undefined ? gridRow.c2.facepileImageSrc : undefined,
           iconName: gridRow.c2 !== undefined ? gridRow.c2.iconName : undefined,
           textColor: gridRow.c1 !== undefined ? gridRow.c1.textColor : undefined,
-          iconColor: gridRow.c1 !== undefined ? gridRow.c1.iconColor : undefined
+          iconColor: gridRow.c1 !== undefined ? gridRow.c1.iconColor : undefined,
+          boldText: gridRow.c1 !== undefined ? gridRow.c1.boldText : undefined
         },
         c3: {
           content: gridRow.c3 !== undefined ? gridRow.c3.content : undefined,
           facepileImageSrc: gridRow.c3 !== undefined ? gridRow.c3.facepileImageSrc : undefined,
           iconName: gridRow.c3 !== undefined ? gridRow.c3.iconName : undefined,
           textColor: gridRow.c1 !== undefined ? gridRow.c1.textColor : undefined,
-          iconColor: gridRow.c1 !== undefined ? gridRow.c1.iconColor : undefined
+          iconColor: gridRow.c1 !== undefined ? gridRow.c1.iconColor : undefined,
+          boldText: gridRow.c1 !== undefined ? gridRow.c1.boldText : undefined
         }
       };
       rows.push(rowItem);

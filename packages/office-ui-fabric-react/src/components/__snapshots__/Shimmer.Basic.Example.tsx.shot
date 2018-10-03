@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
-<div
-  className={undefined}
->
+<div>
   Basic Shimmer with no elements provided. It defaults to a line of 16px height.
   <div
     className=

@@ -12,11 +12,17 @@
 }
 
 .react-grid-item {
-  /* width: 100%; */
   box-shadow: 0 0.3px 0.9px rgba(0, 0, 0, 0.108), 0 1.6px 3.6px rgba(0, 0, 0, 0.132);
   border-radius: 2px;
   transition: transform 200ms ease;
   transition-property: left, top;
+  display: flex;
+}
+
+/**style override for section headers in dashboard */
+.react-grid-item.section-item {
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: none;
   display: flex;
 }
 

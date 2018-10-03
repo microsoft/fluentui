@@ -8,7 +8,6 @@ exports[`Component Examples renders Link.Basic.Example.tsx correctly 1`] = `
     When a link has an href, 
   </span>
   <a
-    aria-disabled={undefined}
     className=
         ms-Link
         {
@@ -42,7 +41,6 @@ exports[`Component Examples renders Link.Basic.Example.tsx correctly 1`] = `
         }
     href="http://dev.office.com/fabric/components/link"
     onClick={[Function]}
-    target={undefined}
   >
     it renders as an anchor tag.
   </a>
@@ -50,7 +48,6 @@ exports[`Component Examples renders Link.Basic.Example.tsx correctly 1`] = `
      Without an href, 
   </span>
   <button
-    aria-disabled={undefined}
     className=
         ms-Link
         {
@@ -109,7 +106,6 @@ exports[`Component Examples renders Link.Basic.Example.tsx correctly 1`] = `
         &:focus {
           color: #0078d4;
         }
-    disabled={undefined}
     onClick={[Function]}
   >
     the link is rendered as a button
@@ -149,7 +145,6 @@ exports[`Component Examples renders Link.Basic.Example.tsx correctly 1`] = `
         }
     href="http://dev.office.com/fabric/components/link"
     onClick={[Function]}
-    target={undefined}
   >
     disabled link
   </a>

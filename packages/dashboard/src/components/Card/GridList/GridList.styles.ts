@@ -17,7 +17,12 @@ export const getStyles = (props: ICustomCssForCells): IGridListStyles => {
     text: {
       fontSize: '14px',
       lineHeight: '16px',
-      color: props.textColor ? props.textColor : '#333333'
+      color: props.textColor ? props.textColor : '#333333',
+      display: 'block',
+      textOverflow: 'ellipsis',
+      overflow: 'hidden',
+      whiteSpace: 'nowrap',
+      fontWeight: props.boldText === 'bold' ? 'bold' : 'normal'
     }
   };
 };

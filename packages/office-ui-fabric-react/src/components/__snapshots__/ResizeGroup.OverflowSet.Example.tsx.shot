@@ -6,13 +6,13 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
 >
   <div
     aria-label="Resize Group with an Overflow Set"
-    className=
-        ms-ResizeGroup
-        {
-          display: block;
-          position: relative;
-        }
     role="tabpanel"
+    style={
+      Object {
+        "display": "block",
+        "position": "relative",
+      }
+    }
   >
     <div
       data-automation-id="visibleContent"
@@ -24,8 +24,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
       }
     >
       <div
-        aria-describedby={undefined}
-        aria-labelledby={undefined}
         className=
             ms-FocusZone
             ms-OverflowSet
@@ -49,11 +47,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               }
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
-            aria-label={undefined}
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -106,9 +99,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -119,7 +117,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   color: #212121;
                 }
             data-is-focusable={true}
-            disabled={undefined}
             onClick={[Function]}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
@@ -202,11 +199,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               }
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
-            aria-label={undefined}
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -259,9 +251,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -272,7 +269,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   color: #212121;
                 }
             data-is-focusable={true}
-            disabled={undefined}
             onClick={[Function]}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
@@ -355,11 +351,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               }
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
-            aria-label={undefined}
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -412,9 +403,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -425,7 +421,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   color: #212121;
                 }
             data-is-focusable={true}
-            disabled={undefined}
             onClick={[Function]}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
@@ -508,11 +503,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               }
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
-            aria-label={undefined}
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -565,9 +555,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -578,7 +573,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   color: #212121;
                 }
             data-is-focusable={true}
-            disabled={undefined}
             onClick={[Function]}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
@@ -661,11 +655,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               }
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
-            aria-label={undefined}
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -718,9 +707,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -731,7 +725,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   color: #212121;
                 }
             data-is-focusable={true}
-            disabled={undefined}
             onClick={[Function]}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
@@ -814,11 +807,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               }
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
-            aria-label={undefined}
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -871,9 +859,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -884,7 +877,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   color: #212121;
                 }
             data-is-focusable={true}
-            disabled={undefined}
             onClick={[Function]}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
@@ -967,11 +959,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               }
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
-            aria-label={undefined}
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -1024,9 +1011,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -1037,7 +1029,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   color: #212121;
                 }
             data-is-focusable={true}
-            disabled={undefined}
             onClick={[Function]}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
@@ -1120,11 +1111,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               }
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
-            aria-label={undefined}
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -1177,9 +1163,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -1190,7 +1181,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   color: #212121;
                 }
             data-is-focusable={true}
-            disabled={undefined}
             onClick={[Function]}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
@@ -1273,11 +1263,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               }
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
-            aria-label={undefined}
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -1330,9 +1315,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -1343,7 +1333,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   color: #212121;
                 }
             data-is-focusable={true}
-            disabled={undefined}
             onClick={[Function]}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
@@ -1426,11 +1415,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               }
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
-            aria-label={undefined}
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -1483,9 +1467,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -1496,7 +1485,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   color: #212121;
                 }
             data-is-focusable={true}
-            disabled={undefined}
             onClick={[Function]}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
@@ -1579,11 +1567,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               }
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
-            aria-label={undefined}
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -1636,9 +1619,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -1649,7 +1637,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   color: #212121;
                 }
             data-is-focusable={true}
-            disabled={undefined}
             onClick={[Function]}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
@@ -1732,11 +1719,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               }
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
-            aria-label={undefined}
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -1789,9 +1771,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -1802,7 +1789,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   color: #212121;
                 }
             data-is-focusable={true}
-            disabled={undefined}
             onClick={[Function]}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
@@ -1885,11 +1871,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               }
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
-            aria-label={undefined}
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -1942,9 +1923,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -1955,7 +1941,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   color: #212121;
                 }
             data-is-focusable={true}
-            disabled={undefined}
             onClick={[Function]}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
@@ -2038,11 +2023,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               }
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
-            aria-label={undefined}
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -2095,9 +2075,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -2108,7 +2093,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   color: #212121;
                 }
             data-is-focusable={true}
-            disabled={undefined}
             onClick={[Function]}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
@@ -2191,11 +2175,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               }
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
-            aria-label={undefined}
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -2248,9 +2227,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -2261,7 +2245,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   color: #212121;
                 }
             data-is-focusable={true}
-            disabled={undefined}
             onClick={[Function]}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
@@ -2344,11 +2327,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               }
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
-            aria-label={undefined}
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -2401,9 +2379,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -2414,7 +2397,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   color: #212121;
                 }
             data-is-focusable={true}
-            disabled={undefined}
             onClick={[Function]}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
@@ -2497,11 +2479,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               }
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
-            aria-label={undefined}
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -2554,9 +2531,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -2567,7 +2549,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   color: #212121;
                 }
             data-is-focusable={true}
-            disabled={undefined}
             onClick={[Function]}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
@@ -2650,11 +2631,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               }
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
-            aria-label={undefined}
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -2707,9 +2683,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -2720,7 +2701,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   color: #212121;
                 }
             data-is-focusable={true}
-            disabled={undefined}
             onClick={[Function]}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
@@ -2803,11 +2783,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               }
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
-            aria-label={undefined}
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -2860,9 +2835,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -2873,7 +2853,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   color: #212121;
                 }
             data-is-focusable={true}
-            disabled={undefined}
             onClick={[Function]}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
@@ -2956,11 +2935,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               }
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
-            aria-label={undefined}
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             checked={false}
             className=
                 ms-Button
@@ -3013,9 +2987,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   right: -2px;
                   top: -2px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 &:hover {
                   background-color: #eaeaea;
-                  color: #000000;
+                  color: #212121;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -3026,7 +3005,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   color: #212121;
                 }
             data-is-focusable={true}
-            disabled={undefined}
             onClick={[Function]}
             onKeyDown={[Function]}
             onKeyPress={[Function]}
@@ -3103,17 +3081,9 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
       </div>
     </div>
   </div>
-  <div
-    className={undefined}
-  >
+  <div>
     <button
       aria-checked={false}
-      aria-describedby={undefined}
-      aria-disabled={undefined}
-      aria-label={undefined}
-      aria-labelledby={undefined}
-      aria-posinset={undefined}
-      aria-setsize={undefined}
       checked={false}
       className=
           ms-Checkbox
@@ -3175,15 +3145,11 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           &:focus .ms-Checkbox-text {
             color: #333333;
           }
-      data-ktp-execute-target={undefined}
-      disabled={undefined}
       id="checkbox-61"
-      name={undefined}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
       role="checkbox"
-      title={undefined}
       type="button"
     >
       <label
@@ -3226,7 +3192,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                 width: 20px;
               }
-          data-ktp-target={undefined}
         >
           <i
             aria-hidden={true}
@@ -3272,12 +3237,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
     </button>
     <button
       aria-checked={false}
-      aria-describedby={undefined}
-      aria-disabled={undefined}
-      aria-label={undefined}
-      aria-labelledby={undefined}
-      aria-posinset={undefined}
-      aria-setsize={undefined}
       checked={false}
       className=
           ms-Checkbox
@@ -3339,15 +3298,11 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           &:focus .ms-Checkbox-text {
             color: #333333;
           }
-      data-ktp-execute-target={undefined}
-      disabled={undefined}
       id="checkbox-62"
-      name={undefined}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
       role="checkbox"
-      title={undefined}
       type="button"
     >
       <label
@@ -3390,7 +3345,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                 width: 20px;
               }
-          data-ktp-target={undefined}
         >
           <i
             aria-hidden={true}
@@ -3436,12 +3390,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
     </button>
     <button
       aria-checked={false}
-      aria-describedby={undefined}
-      aria-disabled={undefined}
-      aria-label={undefined}
-      aria-labelledby={undefined}
-      aria-posinset={undefined}
-      aria-setsize={undefined}
       checked={false}
       className=
           ms-Checkbox
@@ -3503,15 +3451,11 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           &:focus .ms-Checkbox-text {
             color: #333333;
           }
-      data-ktp-execute-target={undefined}
-      disabled={undefined}
       id="checkbox-63"
-      name={undefined}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
       role="checkbox"
-      title={undefined}
       type="button"
     >
       <label
@@ -3554,7 +3498,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                 width: 20px;
               }
-          data-ktp-target={undefined}
         >
           <i
             aria-hidden={true}
@@ -3598,9 +3541,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
         </span>
       </label>
     </button>
-    <div
-      className={undefined}
-    >
+    <div>
       <div
         className=
             ms-Dropdown-container
@@ -3628,18 +3569,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               }
           htmlFor="Dropdown64"
           id="Dropdown64-label"
-          required={undefined}
         >
           Number of items to render
         </label>
         <div
           aria-activedescendant="Dropdown64-option"
           aria-describedby="Dropdown64-option"
-          aria-disabled={undefined}
           aria-expanded="false"
-          aria-label={undefined}
           aria-labelledby="Dropdown64-label"
-          aria-owns={undefined}
           className=
               ms-Dropdown
               {

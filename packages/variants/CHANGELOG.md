@@ -1,6 +1,45 @@
 # Change Log - @uifabric/variants
 
-This log was last generated on Tue, 28 Aug 2018 10:23:58 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Oct 2018 12:27:24 GMT and should not be manually modified.
+
+## 6.11.0
+Mon, 01 Oct 2018 12:27:24 GMT
+
+### Minor changes
+
+- semantic slot value updates per design direction
+
+## 6.10.0
+Fri, 21 Sep 2018 14:25:46 GMT
+
+### Minor changes
+
+- Variants: export everything
+
+### Patches
+
+- Adding a version stamp file
+
+## 6.9.0
+Thu, 13 Sep 2018 17:38:04 GMT
+
+### Minor changes
+
+- Adds new semantic slots per design direction
+
+## 6.8.0
+Fri, 07 Sep 2018 16:29:48 GMT
+
+### Minor changes
+
+- Updates button slots with correct pre-fluent palette values and scss fallbacks
+
+## 6.7.0
+Thu, 06 Sep 2018 10:28:35 GMT
+
+### Minor changes
+
+- add buttonBackgroundDisabled semantic slot
 
 ## 6.6.0
 Tue, 28 Aug 2018 10:23:58 GMT

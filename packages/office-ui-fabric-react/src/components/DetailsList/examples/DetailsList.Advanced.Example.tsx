@@ -2,12 +2,7 @@ import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
-import {
-  IContextualMenuProps,
-  IContextualMenuItem,
-  DirectionalHint,
-  ContextualMenu
-} from 'office-ui-fabric-react/lib/ContextualMenu';
+import { IContextualMenuProps, IContextualMenuItem, DirectionalHint, ContextualMenu } from 'office-ui-fabric-react/lib/ContextualMenu';
 import {
   CheckboxVisibility,
   ColumnActionsMode,
@@ -22,6 +17,8 @@ import {
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { createListItems, isGroupable } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import './DetailsList.Advanced.Example.scss';
+import { IDetailsColumnProps } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn';
+import { Checkbox } from '../../../Checkbox';
 
 const DEFAULT_ITEM_LIMIT = 5;
 const PAGING_SIZE = 10;
@@ -45,6 +42,8 @@ export interface IDetailsListAdvancedExampleState {
   layoutMode?: LayoutMode;
   selectionMode?: SelectionMode;
   sortedColumnKey?: string;
+  selectionCount: number;
+  showRenderDividerView: boolean;
 }
 
 export class DetailsListAdvancedExample extends React.Component<{}, IDetailsListAdvancedExampleState> {
@@ -58,11 +57,14 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
       _items = createListItems(ITEMS_COUNT);
     }
 
-    this._selection = new Selection();
+    this._selection = new Selection({
+      onSelectionChanged: this._onItemsSelectionChanged
+    });
     this._selection.setItems(_items, false);
 
     this.state = {
       items: _items,
+      selectionCount: 0,
       groups: undefined,
       groupItemLimit: DEFAULT_ITEM_LIMIT,
       layoutMode: LayoutMode.justified,
@@ -70,15 +72,8 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
       selectionMode: SelectionMode.multiple,
       canResizeColumns: true,
       checkboxVisibility: CheckboxVisibility.onHover,
-      columns: this._buildColumns(
-        _items,
-        true,
-        this._onColumnClick,
-        '',
-        undefined,
-        undefined,
-        this._onColumnContextMenu
-      ),
+      columns: this._buildColumns(_items, true, this._onColumnClick, '', undefined, undefined, this._onColumnContextMenu),
+      showRenderDividerView: false,
       contextualMenuProps: undefined,
       sortedColumnKey: 'name',
       isSortedDescending: false,
@@ -117,7 +112,13 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
 
     return (
       <div className="ms-DetailsListAdvancedExample">
-        <CommandBar items={this._getCommandItems()} />
+        <Checkbox
+          label="Show custom color column-divider on hover"
+          checked={this.state.showRenderDividerView}
+          onChange={this._onRenderDividerCheckboxChange}
+        />
+        <br />
+        <CommandBar items={this._getCommandItems()} farItems={[{ key: 'count', text: `${this.state.selectionCount} selected` }]} />
 
         {isGrouped ? <TextField label="Group Item Limit" onChange={this._onItemLimitChanged} /> : null}
 
@@ -151,6 +152,39 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
       </div>
     );
   }
+
+  private _onRenderDividerCheckboxChange = (event: React.FormEvent<HTMLInputElement>, showRenderDividerView: boolean): void => {
+    const { columns = [] } = this.state;
+    for (let i = 0; i < columns.length; i++) {
+      // based on the state of checkbox, either adding the onRenderDivider callback or removing it
+      if (showRenderDividerView) {
+        columns[i] = {
+          ...columns[i],
+          onRenderDivider: this._onRenderDivider
+        };
+      } else {
+        const { onRenderDivider, ..._column } = columns[i];
+        columns[i] = _column;
+      }
+    }
+    this.setState({
+      showRenderDividerView,
+      columns
+    });
+  };
+
+  private _onRenderDivider = (
+    iDetailsColumnProps: IDetailsColumnProps,
+    defaultRenderer: (props?: IDetailsColumnProps) => JSX.Element | null
+  ): JSX.Element => {
+    const { columnIndex } = iDetailsColumnProps;
+    return (
+      <React.Fragment key={`divider-wrapper-${columnIndex}`}>
+        <span className="ms-DetailsHeader-divider">{defaultRenderer(iDetailsColumnProps)}</span>
+        <span className="ms-DetailsHeader-divider-bar" />
+      </React.Fragment>
+    );
+  };
 
   private _onDataMiss(index: number): void {
     index = Math.floor(index / PAGING_SIZE) * PAGING_SIZE;
@@ -195,13 +229,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
 
     this.setState({
       canResizeColumns: canResizeColumns,
-      columns: this._buildColumns(
-        items as any[],
-        canResizeColumns,
-        this._onColumnClick,
-        sortedColumnKey,
-        isSortedDescending
-      )
+      columns: this._buildColumns(items as any[], canResizeColumns, this._onColumnClick, sortedColumnKey, isSortedDescending)
     });
   };
 
@@ -234,15 +262,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
   };
 
   private _getCommandItems = (): IContextualMenuItem[] => {
-    const {
-      canResizeColumns,
-      checkboxVisibility,
-      constrainMode,
-      isHeaderVisible,
-      isLazyLoaded,
-      layoutMode,
-      selectionMode
-    } = this.state;
+    const { canResizeColumns, checkboxVisibility, constrainMode, isHeaderVisible, isLazyLoaded, layoutMode, selectionMode } = this.state;
 
     return [
       {
@@ -494,22 +514,12 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
   };
 
   private _onSortColumn = (key: string, isSortedDescending: boolean): void => {
-    const sortedItems = _items
-      .slice(0)
-      .sort((a: any, b: any) => ((isSortedDescending ? a[key] < b[key] : a[key] > b[key]) ? 1 : -1));
+    const sortedItems = _items.slice(0).sort((a: any, b: any) => ((isSortedDescending ? a[key] < b[key] : a[key] > b[key]) ? 1 : -1));
 
     this.setState({
       items: sortedItems,
       groups: undefined,
-      columns: this._buildColumns(
-        sortedItems,
-        true,
-        this._onColumnClick,
-        key,
-        isSortedDescending,
-        undefined,
-        this._onColumnContextMenu
-      ),
+      columns: this._buildColumns(sortedItems, true, this._onColumnClick, key, isSortedDescending, undefined, this._onColumnContextMenu),
       isSortedDescending: isSortedDescending,
       sortedColumnKey: key
     });
@@ -605,8 +615,32 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
   };
 
   private _onDeleteRow = (): void => {
+    if (this._selection.getSelectedCount() > 0) {
+      this.setState((previousState: this['state']) => {
+        const items: this['state']['items'] = [];
+
+        const previousItems = previousState.items!;
+
+        for (let i = 0; i < previousItems.length; i++) {
+          if (!this._selection.isIndexSelected(i)) {
+            items.push(previousItems[i]);
+          }
+        }
+
+        return {
+          items
+        };
+      });
+    } else {
+      this.setState({
+        items: this.state.items!.slice(1)
+      });
+    }
+  };
+
+  private _onItemsSelectionChanged = () => {
     this.setState({
-      items: this.state.items!.slice(1)
+      selectionCount: this._selection.getSelectedCount()
     });
   };
 
@@ -619,14 +653,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     groupedColumnKey?: string,
     onColumnContextMenu?: (column: IColumn, ev: React.MouseEvent<HTMLElement>) => any
   ) {
-    const columns = buildColumns(
-      items,
-      canResizeColumns,
-      onColumnClick,
-      sortedColumnKey,
-      isSortedDescending,
-      groupedColumnKey
-    );
+    const columns = buildColumns(items, canResizeColumns, onColumnClick, sortedColumnKey, isSortedDescending, groupedColumnKey);
 
     columns.forEach(column => {
       column.onColumnContextMenu = onColumnContextMenu;

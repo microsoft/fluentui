@@ -35,8 +35,8 @@ export const AppDefinition: IAppDefinition = {
         },
         {
           component: require<any>('../components/Section/SectionPage').SectionPage,
-          key: 'Section',
-          name: 'Section',
+          key: 'EditSection',
+          name: 'EditSection',
           url: '#/examples/section'
         },
         {
@@ -44,6 +44,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'MultiCount',
           name: 'MultiCount',
           url: '#/examples/multiCount'
+        },
+        {
+          component: require<any>('../components/SetupBanner/SetupBannerPage').SetupBannerPage,
+          key: 'SetupBanner',
+          name: 'SetupBanner',
+          url: '#/examples/setupbanner'
         }
       ]
     }

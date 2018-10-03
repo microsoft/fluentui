@@ -77,9 +77,6 @@ exports[`Component Examples renders SpinButton.BasicWithEndPosition.Example.tsx 
       </label>
     </div>
     <div
-      aria-label={undefined}
-      aria-posinset={undefined}
-      aria-setsize={undefined}
       className=
 
           {
@@ -99,17 +96,13 @@ exports[`Component Examples renders SpinButton.BasicWithEndPosition.Example.tsx 
             border-color: Highlight;
             outline: none;
           }
-      data-ktp-target={undefined}
-      title={undefined}
     >
       <input
-        aria-describedby={undefined}
         aria-disabled={false}
         aria-labelledby="Label0"
         aria-valuemax={100}
         aria-valuemin={0}
         aria-valuenow={0}
-        aria-valuetext={undefined}
         autoComplete="off"
         className=
             ms-spinButton-input
@@ -147,7 +140,6 @@ exports[`Component Examples renders SpinButton.BasicWithEndPosition.Example.tsx 
               border-color: Highlight;
               color: HighlightText;
             }
-        data-ktp-execute-target={undefined}
         data-lpignore={true}
         id="input1"
         onBlur={[Function]}
@@ -179,11 +171,6 @@ exports[`Component Examples renders SpinButton.BasicWithEndPosition.Example.tsx 
             }
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           checked={false}
           className=
               ms-Button
@@ -237,9 +224,14 @@ exports[`Component Examples renders SpinButton.BasicWithEndPosition.Example.tsx 
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 background-color: #eaeaea;
-                color: #000000;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -254,7 +246,6 @@ exports[`Component Examples renders SpinButton.BasicWithEndPosition.Example.tsx 
                 color: HighlightText;
               }
           data-is-focusable={false}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -307,11 +298,6 @@ exports[`Component Examples renders SpinButton.BasicWithEndPosition.Example.tsx 
           </div>
         </button>
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           checked={false}
           className=
               ms-Button
@@ -365,9 +351,14 @@ exports[`Component Examples renders SpinButton.BasicWithEndPosition.Example.tsx 
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 background-color: #eaeaea;
-                color: #000000;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -382,7 +373,6 @@ exports[`Component Examples renders SpinButton.BasicWithEndPosition.Example.tsx 
                 color: HighlightText;
               }
           data-is-focusable={false}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}

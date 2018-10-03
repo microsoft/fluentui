@@ -105,7 +105,8 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   }
 
   public componentWillUpdate(newProps: ICalloutProps): void {
-    // If the target element changed, find the new one. If we are tracking target with class name, always find element because we do not know if fabric has rendered a new element and disposed the old element.
+    // If the target element changed, find the new one. If we are tracking target with class name, always find element because we
+    // do not know if fabric has rendered a new element and disposed the old element.
     const newTarget = this._getTarget(newProps);
     const oldTarget = this._getTarget();
     if (newTarget !== oldTarget || typeof newTarget === 'string' || newTarget instanceof String) {
@@ -162,13 +163,9 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     target = this._getTarget();
     const { positions } = this.state;
 
-    const getContentMaxHeight: number | undefined = this._getMaxHeight()
-      ? this._getMaxHeight()! + this.state.heightOffset!
-      : undefined;
+    const getContentMaxHeight: number | undefined = this._getMaxHeight() ? this._getMaxHeight()! + this.state.heightOffset! : undefined;
     const contentMaxHeight: number | undefined =
-      calloutMaxHeight! && getContentMaxHeight && calloutMaxHeight! < getContentMaxHeight
-        ? calloutMaxHeight!
-        : getContentMaxHeight!;
+      calloutMaxHeight! && getContentMaxHeight && calloutMaxHeight! < getContentMaxHeight ? calloutMaxHeight! : getContentMaxHeight!;
     const overflowYHidden = hideOverflow;
 
     const beakVisible = isBeakVisible && !!target;
@@ -258,12 +255,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   }
 
   protected _setInitialFocus = (): void => {
-    if (
-      this.props.setInitialFocus &&
-      !this._didSetInitialFocus &&
-      this.state.positions &&
-      this._calloutElement.current
-    ) {
+    if (this.props.setInitialFocus && !this._didSetInitialFocus && this.state.positions && this._calloutElement.current) {
       this._didSetInitialFocus = true;
       this._async.requestAnimationFrame(() => focusFirstChild(this._calloutElement.current!));
     }
@@ -321,21 +313,23 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   }
 
   private _updatePosition(): void {
+    // Try to update the target, page might have changed
+    this._setTargetWindowAndElement(this._getTarget());
+
     const { positions } = this.state;
     const hostElement: HTMLElement | null = this._hostElement.current;
     const calloutElement: HTMLElement | null = this._calloutElement.current;
 
-    if (hostElement && calloutElement) {
+    // If we expect a target element to position against, we need to wait until `this._target` is resolved. Otherwise
+    // we can try to position.
+    const expectsTarget = !!this.props.target;
+
+    if (hostElement && calloutElement && (!expectsTarget || this._target)) {
       let currentProps: IPositionProps | undefined;
       currentProps = assign(currentProps, this.props);
       currentProps!.bounds = this._getBounds();
       currentProps!.target = this._target!;
-      const newPositions: ICalloutPositionedInfo = positionCallout(
-        currentProps!,
-        hostElement,
-        calloutElement,
-        positions
-      );
+      const newPositions: ICalloutPositionedInfo = positionCallout(currentProps!, hostElement, calloutElement, positions);
 
       // Set the new position only when the positions are not exists or one of the new callout positions are different.
       // The position should not change if the position is within 2 decimal places.
@@ -389,13 +383,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
         const totalGap = gapSpace + beakWidth! + BORDER_WIDTH * 2;
         this._async.requestAnimationFrame(() => {
           if (this._target) {
-            this._maxHeight = getMaxHeight(
-              this._target,
-              this.props.directionalHint!,
-              totalGap,
-              this._getBounds(),
-              this.props.coverTarget
-            );
+            this._maxHeight = getMaxHeight(this._target, this.props.directionalHint!, totalGap, this._getBounds(), this.props.coverTarget);
             this.forceUpdate();
           }
         });

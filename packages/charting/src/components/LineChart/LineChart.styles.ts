@@ -1,89 +1,73 @@
 import { ILineChartStyleProps, ILineChartStyles } from './LineChart.types';
 
 export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
-  const { className, theme, width, height, color } = props;
+  const { className, theme, color } = props;
   const { palette, fonts } = theme!;
-  console.log('fonts', fonts);
-
-  const chartPadding = 30;
-  const scalingVal = 0.3;
-  const xOffset = 20;
-
   return {
     root: [
-      'ms-LineChart',
       {
         display: 'flex',
         width: '100%',
         height: '100%',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        overflow: 'hidden'
       },
       className
     ],
-    chart: [
-      {
-        padding: chartPadding,
-        boxSizing: 'content-box'
+    xAxis: {
+      selectors: {
+        text: {
+          ...fonts.tiny,
+          opacity: 0.6
+        },
+        line: {
+          opacity: 0.1,
+          width: '1px'
+        },
+        path: {
+          display: 'none'
+        }
       }
-    ],
-    chartLabel: [
-      {
-        textAlign: 'center',
-        ...theme.fonts.mediumPlus
+    },
+    yAxis: {
+      selectors: {
+        text: {
+          opacity: 0.6
+        },
+        path: {
+          display: 'none'
+        },
+        line: {
+          opacity: 0.1
+        }
       }
-    ],
-    xAxis: [
-      {
-        transform: `translate(-${width * scalingVal}px, ${height}px) scaleX(1.5)`
-      }
-    ],
-    xAxisTicks: [],
-    yAxis: [
-      {
-        transform: `translate(-${width * scalingVal}px, 0px)`
-      }
-    ],
-    yAxisTicks: [
-      {
-        transform: `scaleX(-${width * scalingVal - xOffset})`,
-        stroke: 'grey'
-      }
-    ],
-    yAxisDomain: [
-      {
-        transform: 'scaleX(0)'
-      }
-    ],
-    xAxisDomain: [
-      {
-        transform: 'scaleY(0)'
-      }
-    ],
-    xAxisText: [
-      {
-        transform: `translate(0px,13px)`
-      }
-    ],
-    lines: [
-      {
-        transform: `translate(-${width * scalingVal}px, 0px) scaleX(1.5)`
-      }
-    ],
+    },
     legendContainer: [
       {
-        marginTop: '10px',
-        paddingLeft: '5%'
+        marginTop: '8px',
+        marginLeft: '20px'
       }
     ],
-    calloutPadding: [
+    calloutContentRoot: [
       {
+        display: 'grid',
+        overflow: 'hidden',
         padding: '10px 16px 10px 16px',
-        backgroundColor: palette.white,
-        fontSize: fonts.xxLarge.fontSize,
-        color: color !== '' ? `${color}` : palette.black,
-        fontFamily: fonts.xxLarge.fontFamily,
+        backgroundColor: palette.white
+      }
+    ],
+    calloutContentX: [
+      {
+        ...fonts.medium,
+        lineHeight: '14px'
+      }
+    ],
+    calloutContentY: [
+      {
+        color: color === '' ? palette.black : color,
+        ...fonts.xxLarge,
         fontWeight: 'bold',
-        border: color !== '' ? `1px solid ${color}` : `unset`
+        lineHeight: '31px'
       }
     ]
   };

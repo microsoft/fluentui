@@ -2,12 +2,12 @@
 
 exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
 <div
-  className=
-      ms-ResizeGroup
-      {
-        display: block;
-        position: relative;
-      }
+  style={
+    Object {
+      "display": "block",
+      "position": "relative",
+    }
+  }
 >
   <div
     data-automation-id="visibleContent"
@@ -19,7 +19,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
     }
   >
     <div
-      aria-label={undefined}
       className=
           ms-Breadcrumb
           {
@@ -31,8 +30,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
       role="navigation"
     >
       <div
-        aria-describedby={undefined}
-        aria-labelledby={undefined}
         className="ms-FocusZone"
         data-focuszone-id="FocusZone1"
         onFocus={[Function]}
@@ -96,7 +93,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                   }
             >
               <div
-                aria-describedby={undefined}
                 className="ms-TooltipHost"
                 onBlurCapture={[Function]}
                 onFocusCapture={[Function]}
@@ -176,7 +172,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                   }
             >
               <div
-                aria-describedby={undefined}
                 className="ms-TooltipHost"
                 onBlurCapture={[Function]}
                 onFocusCapture={[Function]}
@@ -256,7 +251,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                   }
             >
               <div
-                aria-describedby={undefined}
                 className="ms-TooltipHost"
                 onBlurCapture={[Function]}
                 onFocusCapture={[Function]}
@@ -336,7 +330,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                   }
             >
               <div
-                aria-describedby={undefined}
                 className="ms-TooltipHost"
                 onBlurCapture={[Function]}
                 onFocusCapture={[Function]}
@@ -356,12 +349,12 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
 
 exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
 <div
-  className=
-      ms-ResizeGroup
-      {
-        display: block;
-        position: relative;
-      }
+  style={
+    Object {
+      "display": "block",
+      "position": "relative",
+    }
+  }
 >
   <div
     data-automation-id="visibleContent"
@@ -373,7 +366,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
     }
   >
     <div
-      aria-label={undefined}
       className=
           ms-Breadcrumb
           {
@@ -385,8 +377,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
       role="navigation"
     >
       <div
-        aria-describedby={undefined}
-        aria-labelledby={undefined}
         className="ms-FocusZone"
         data-focuszone-id="FocusZone6"
         onFocus={[Function]}
@@ -421,14 +411,9 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                 }
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-expanded={false}
               aria-haspopup={true}
-              aria-label={undefined}
-              aria-labelledby={undefined}
               aria-owns={null}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--icon
@@ -483,6 +468,11 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   &:hover {
                     background-color: #f4f4f4;
                     color: #004578;
@@ -508,7 +498,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                     font-size: 15px;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               onClick={[Function]}
               onKeyDown={[Function]}
               onKeyPress={[Function]}
@@ -629,7 +618,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                   }
             >
               <div
-                aria-describedby={undefined}
                 className="ms-TooltipHost"
                 onBlurCapture={[Function]}
                 onFocusCapture={[Function]}
@@ -709,7 +697,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                   }
             >
               <div
-                aria-describedby={undefined}
                 className="ms-TooltipHost"
                 onBlurCapture={[Function]}
                 onFocusCapture={[Function]}
@@ -729,12 +716,12 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
 
 exports[`Breadcrumb basic rendering renders breadcumb correctly 3 1`] = `
 <div
-  className=
-      ms-ResizeGroup
-      {
-        display: block;
-        position: relative;
-      }
+  style={
+    Object {
+      "display": "block",
+      "position": "relative",
+    }
+  }
 >
   <div
     data-automation-id="visibleContent"
@@ -746,7 +733,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 3 1`] = `
     }
   >
     <div
-      aria-label={undefined}
       className=
           ms-Breadcrumb
           {
@@ -758,8 +744,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 3 1`] = `
       role="navigation"
     >
       <div
-        aria-describedby={undefined}
-        aria-labelledby={undefined}
         className="ms-FocusZone"
         data-focuszone-id="FocusZone12"
         onFocus={[Function]}
@@ -823,7 +807,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 3 1`] = `
                   }
             >
               <div
-                aria-describedby={undefined}
                 className="ms-TooltipHost"
                 onBlurCapture={[Function]}
                 onFocusCapture={[Function]}
@@ -876,7 +859,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 3 1`] = `
                   }
             >
               <div
-                aria-describedby={undefined}
                 className="ms-TooltipHost"
                 onBlurCapture={[Function]}
                 onFocusCapture={[Function]}
@@ -929,7 +911,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 3 1`] = `
                   }
             >
               <div
-                aria-describedby={undefined}
                 className="ms-TooltipHost"
                 onBlurCapture={[Function]}
                 onFocusCapture={[Function]}
@@ -982,7 +963,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 3 1`] = `
                   }
             >
               <div
-                aria-describedby={undefined}
                 className="ms-TooltipHost"
                 onBlurCapture={[Function]}
                 onFocusCapture={[Function]}
@@ -1002,12 +982,12 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 3 1`] = `
 
 exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
 <div
-  className=
-      ms-ResizeGroup
-      {
-        display: block;
-        position: relative;
-      }
+  style={
+    Object {
+      "display": "block",
+      "position": "relative",
+    }
+  }
 >
   <div
     data-automation-id="visibleContent"
@@ -1019,7 +999,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
     }
   >
     <div
-      aria-label={undefined}
       className=
           ms-Breadcrumb
           {
@@ -1031,8 +1010,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
       role="navigation"
     >
       <div
-        aria-describedby={undefined}
-        aria-labelledby={undefined}
         className="ms-FocusZone"
         data-focuszone-id="FocusZone17"
         onFocus={[Function]}
@@ -1096,7 +1073,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                   }
             >
               <div
-                aria-describedby={undefined}
                 className="ms-TooltipHost"
                 onBlurCapture={[Function]}
                 onFocusCapture={[Function]}
@@ -1147,14 +1123,9 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                 }
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-expanded={false}
               aria-haspopup={true}
-              aria-label={undefined}
-              aria-labelledby={undefined}
               aria-owns={null}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--icon
@@ -1209,6 +1180,11 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   &:hover {
                     background-color: #f4f4f4;
                     color: #004578;
@@ -1234,7 +1210,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                     font-size: 15px;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               onClick={[Function]}
               onKeyDown={[Function]}
               onKeyPress={[Function]}
@@ -1355,7 +1330,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                   }
             >
               <div
-                aria-describedby={undefined}
                 className="ms-TooltipHost"
                 onBlurCapture={[Function]}
                 onFocusCapture={[Function]}
@@ -1375,12 +1349,12 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
 
 exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
 <div
-  className=
-      ms-ResizeGroup
-      {
-        display: block;
-        position: relative;
-      }
+  style={
+    Object {
+      "display": "block",
+      "position": "relative",
+    }
+  }
 >
   <div
     data-automation-id="visibleContent"
@@ -1392,7 +1366,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
     }
   >
     <div
-      aria-label={undefined}
       className=
           ms-Breadcrumb
           {
@@ -1404,8 +1377,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
       role="navigation"
     >
       <div
-        aria-describedby={undefined}
-        aria-labelledby={undefined}
         className="ms-FocusZone"
         data-focuszone-id="FocusZone23"
         onFocus={[Function]}
@@ -1469,7 +1440,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                   }
             >
               <div
-                aria-describedby={undefined}
                 className="ms-TooltipHost"
                 onBlurCapture={[Function]}
                 onFocusCapture={[Function]}
@@ -1520,14 +1490,9 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                 }
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-expanded={false}
               aria-haspopup={true}
-              aria-label={undefined}
-              aria-labelledby={undefined}
               aria-owns={null}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--icon
@@ -1582,6 +1547,11 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   &:hover {
                     background-color: #f4f4f4;
                     color: #004578;
@@ -1607,7 +1577,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                     font-size: 15px;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               onClick={[Function]}
               onKeyDown={[Function]}
               onKeyPress={[Function]}
@@ -1668,12 +1637,12 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
 
 exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
 <div
-  className=
-      ms-ResizeGroup
-      {
-        display: block;
-        position: relative;
-      }
+  style={
+    Object {
+      "display": "block",
+      "position": "relative",
+    }
+  }
 >
   <div
     data-automation-id="visibleContent"
@@ -1685,7 +1654,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
     }
   >
     <div
-      aria-label={undefined}
       className=
           ms-Breadcrumb
           {
@@ -1697,8 +1665,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
       role="navigation"
     >
       <div
-        aria-describedby={undefined}
-        aria-labelledby={undefined}
         className="ms-FocusZone"
         data-focuszone-id="FocusZone28"
         onFocus={[Function]}
@@ -1733,14 +1699,9 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
                 }
           >
             <button
-              aria-describedby={undefined}
-              aria-disabled={undefined}
               aria-expanded={false}
               aria-haspopup={true}
-              aria-label={undefined}
-              aria-labelledby={undefined}
               aria-owns={null}
-              aria-pressed={undefined}
               className=
                   ms-Button
                   ms-Button--icon
@@ -1795,6 +1756,11 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
                     right: -2px;
                     top: -2px;
                   }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
                   &:hover {
                     background-color: #f4f4f4;
                     color: #004578;
@@ -1820,7 +1786,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
                     font-size: 15px;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               onClick={[Function]}
               onKeyDown={[Function]}
               onKeyPress={[Function]}
@@ -1881,12 +1846,12 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
 
 exports[`Breadcrumb renders empty breadcrumb 1`] = `
 <div
-  className=
-      ms-ResizeGroup
-      {
-        display: block;
-        position: relative;
-      }
+  style={
+    Object {
+      "display": "block",
+      "position": "relative",
+    }
+  }
 >
   <div
     data-automation-id="visibleContent"
@@ -1898,7 +1863,6 @@ exports[`Breadcrumb renders empty breadcrumb 1`] = `
     }
   >
     <div
-      aria-label={undefined}
       className=
           ms-Breadcrumb
           {
@@ -1910,8 +1874,6 @@ exports[`Breadcrumb renders empty breadcrumb 1`] = `
       role="navigation"
     >
       <div
-        aria-describedby={undefined}
-        aria-labelledby={undefined}
         className="ms-FocusZone"
         data-focuszone-id="FocusZone0"
         onFocus={[Function]}

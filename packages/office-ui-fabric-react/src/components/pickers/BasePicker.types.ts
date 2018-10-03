@@ -4,6 +4,7 @@ import { IPersonaProps } from '../Persona/Persona.types';
 import { IRefObject, IRenderFunction } from '../../Utilities';
 import { ISuggestionModel } from './Suggestions/SuggestionsController';
 import { BaseAutoFill } from './AutoFill/BaseAutoFill';
+import { ICalloutProps } from '../../Callout';
 
 export interface IBasePicker<T> {
   /** Gets the current value of the input. */
@@ -82,6 +83,10 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    */
   pickerSuggestionsProps?: IBasePickerSuggestionsProps;
   /**
+   * The properties that will get passed to the Callout component.
+   */
+  pickerCalloutProps?: ICalloutProps;
+  /**
    * AutoFill input native props
    * @default undefined
    */
@@ -124,7 +129,8 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    */
   onItemSelected?: (selectedItem?: T) => T | PromiseLike<T> | null;
   /**
-   * The items that the base picker should currently display as selected. If this is provided then the picker will act as a controlled component.
+   * The items that the base picker should currently display as selected.
+   * If this is provided then the picker will act as a controlled component.
    */
   selectedItems?: T[];
   /**

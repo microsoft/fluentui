@@ -178,11 +178,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
    * @param measureItem Optional callback to measure the height of an individual item
    * @param scrollToMode Optional defines where in the window the item should be positioned to when scrolling
    */
-  public scrollToIndex(
-    index: number,
-    measureItem?: (itemIndex: number) => number,
-    scrollToMode: ScrollToMode = ScrollToMode.auto
-  ): void {
+  public scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode: ScrollToMode = ScrollToMode.auto): void {
     const startIndex = this.props.startIndex as number;
     const renderCount = this._getRenderCount();
     const endIndex = startIndex + renderCount;
@@ -273,8 +269,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   public getStartItemIndexInView(measureItem?: (itemIndex: number) => number): number {
     const pages = this.state.pages || [];
     for (const page of pages) {
-      const isPageVisible =
-        !page.isSpacer && (this._scrollTop || 0) >= page.top && (this._scrollTop || 0) <= page.top + page.height;
+      const isPageVisible = !page.isSpacer && (this._scrollTop || 0) >= page.top && (this._scrollTop || 0) <= page.top + page.height;
       if (isPageVisible) {
         if (!measureItem) {
           const rowHeight = Math.floor(page.height / page.itemCount);
@@ -283,10 +278,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
           let totalRowHeight = 0;
           for (let itemIndex = page.startIndex; itemIndex < page.startIndex + page.itemCount; itemIndex++) {
             const rowHeight = measureItem(itemIndex);
-            if (
-              page.top + totalRowHeight <= this._scrollTop &&
-              this._scrollTop < page.top + totalRowHeight + rowHeight
-            ) {
+            if (page.top + totalRowHeight <= this._scrollTop && this._scrollTop < page.top + totalRowHeight + rowHeight) {
               return itemIndex;
             } else {
               totalRowHeight += rowHeight;
@@ -378,12 +370,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     }
 
     return (
-      <div
-        ref={this._root}
-        {...divProps}
-        role={role === undefined ? 'list' : role}
-        className={css('ms-List', className)}
-      >
+      <div ref={this._root} {...divProps} role={role === undefined ? 'list' : role} className={css('ms-List', className)}>
         <div ref={this._surface} className={css('ms-List-surface')} role="presentation">
           {pageElements}
         </div>
@@ -478,13 +465,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       }
 
       return (
-        <div
-          role={cellRole}
-          className={css('ms-List-cell')}
-          key={itemKey}
-          data-list-index={index}
-          data-automationid="ListCell"
-        >
+        <div role={cellRole} className={css('ms-List-cell')} key={itemKey} data-list-index={index} data-automationid="ListCell">
           {onRenderCell && onRenderCell(item, index, this.state.isScrolling)}
         </div>
       );
@@ -683,11 +664,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
 
     // console.log('   * measure attempt', page.startIndex, cachedHeight);
 
-    if (
-      pageElement &&
-      this._shouldVirtualize() &&
-      (!cachedHeight || cachedHeight.measureVersion !== this._measureVersion)
-    ) {
+    if (pageElement && this._shouldVirtualize() && (!cachedHeight || cachedHeight.measureVersion !== this._measureVersion)) {
       const newClientRect = {
         width: pageElement.clientWidth,
         height: pageElement.clientHeight
@@ -772,17 +749,16 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
 
       const pageBottom = pageTop + pageHeight - 1;
 
-      const isPageRendered =
-        findIndex(this.state.pages as IPage[], (page: IPage) => !!page.items && page.startIndex === itemIndex) > -1;
+      const isPageRendered = findIndex(this.state.pages as IPage[], (page: IPage) => !!page.items && page.startIndex === itemIndex) > -1;
       const isPageInAllowedRange = !allowedRect || (pageBottom >= allowedRect.top && pageTop <= allowedRect.bottom!);
       const isPageInRequiredRange =
         !this._requiredRect || (pageBottom >= this._requiredRect!.top && pageTop <= this._requiredRect!.bottom!);
-      const isPageVisible =
-        (!isFirstRender && (isPageInRequiredRange || (isPageInAllowedRange && isPageRendered))) || !shouldVirtualize;
+      const isPageVisible = (!isFirstRender && (isPageInRequiredRange || (isPageInAllowedRange && isPageRendered))) || !shouldVirtualize;
       const isPageFocused = focusedIndex >= itemIndex && focusedIndex < itemIndex + itemsPerPage;
       const isFirstPage = itemIndex === startIndex;
 
-      // console.log('building page', itemIndex, 'pageTop: ' + pageTop, 'inAllowed: ' + isPageInAllowedRange, 'inRequired: ' + isPageInRequiredRange);
+      // console.log('building page', itemIndex, 'pageTop: ' + pageTop, 'inAllowed: ' +
+      // isPageInAllowedRange, 'inRequired: ' + isPageInRequiredRange);
 
       // Only render whats visible, focused, or first page,
       // or when running in fast rendering mode (not in virtualized mode), we render all current items in pages
@@ -793,14 +769,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
         }
 
         const itemsInPage = Math.min(itemsPerPage, endIndex - itemIndex);
-        const newPage = this._createPage(
-          key,
-          items!.slice(itemIndex, itemIndex + itemsInPage),
-          itemIndex,
-          undefined,
-          undefined,
-          pageData
-        );
+        const newPage = this._createPage(key, items!.slice(itemIndex, itemIndex + itemsInPage), itemIndex, undefined, undefined, pageData);
 
         newPage.top = pageTop;
         newPage.height = pageHeight;
@@ -819,15 +788,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
         }
       } else {
         if (!currentSpacer) {
-          currentSpacer = this._createPage(
-            SPACER_KEY_PREFIX + itemIndex,
-            undefined,
-            itemIndex,
-            0,
-            undefined,
-            pageData,
-            true /*isSpacer*/
-          );
+          currentSpacer = this._createPage(SPACER_KEY_PREFIX + itemIndex, undefined, itemIndex, 0, undefined, pageData, true /*isSpacer*/);
         }
         currentSpacer.height = (currentSpacer.height || 0) + (pageBottom - pageTop) + 1;
         currentSpacer.itemCount += itemsPerPage;
@@ -904,9 +865,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   }
 
   private _getItemCountForPage(itemIndex: number, visibileRect: IRectangle): number {
-    const itemsPerPage = this.props.getItemCountForPage
-      ? this.props.getItemCountForPage(itemIndex, visibileRect)
-      : DEFAULT_ITEMS_PER_PAGE;
+    const itemsPerPage = this.props.getItemCountForPage ? this.props.getItemCountForPage(itemIndex, visibileRect) : DEFAULT_ITEMS_PER_PAGE;
 
     return itemsPerPage ? itemsPerPage : DEFAULT_ITEMS_PER_PAGE;
   }
@@ -1036,8 +995,7 @@ function _isContainedWithin(innerRect: IRectangle, outerRect: IRectangle): boole
 function _mergeRect(targetRect: IRectangle, newRect: IRectangle): IRectangle {
   targetRect.top = newRect.top < targetRect.top || targetRect.top === -1 ? newRect.top : targetRect.top;
   targetRect.left = newRect.left < targetRect.left || targetRect.left === -1 ? newRect.left : targetRect.left;
-  targetRect.bottom =
-    newRect.bottom! > targetRect.bottom! || targetRect.bottom === -1 ? newRect.bottom : targetRect.bottom;
+  targetRect.bottom = newRect.bottom! > targetRect.bottom! || targetRect.bottom === -1 ? newRect.bottom : targetRect.bottom;
   targetRect.right = newRect.right! > targetRect.right! || targetRect.right === -1 ? newRect.right : targetRect.right;
   targetRect.width = targetRect.right! - targetRect.left + 1;
   targetRect.height = targetRect.bottom! - targetRect.top + 1;
