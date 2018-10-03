@@ -24,8 +24,8 @@
     "style-loader": "^0.19.0",
     "awesome-typescript-loader": "^3.2.3",
     "office-ui-fabric-react-tslint": ">=6.0.0 <7.0.0",
-    "screener-storybook": "^0.14.11",
-    "screener-runner": "^0.10.13",
+    "screener-storybook": "^0.14.13",
+    "screener-runner": "^0.10.15",
     "storybook-readme": "=3.0.6"
   },
   "dependencies": {
