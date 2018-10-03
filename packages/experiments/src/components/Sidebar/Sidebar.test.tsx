@@ -96,7 +96,7 @@ describe('Sidebar', () => {
 
     const wrapper = Enzyme.shallow(<Sidebar componentRef={sidebar} {...sidebarAccordionExampleProps} />);
 
-    sidebar.value.setCollapsed(true);
+    sidebar.value && sidebar.value.setCollapsed(true);
     wrapper.update();
 
     expect(wrapper.find('.ba-SidebarContextualMenuButton').length).toBe(2);

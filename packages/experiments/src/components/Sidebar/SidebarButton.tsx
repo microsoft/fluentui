@@ -11,6 +11,6 @@ export class SidebarButton extends BaseComponent<IButtonProps, {}> {
   public render(): JSX.Element {
     const { styles, theme } = this.props;
 
-    return <DefaultButton {...this.props} styles={getSidebarButtonStyles(theme, styles)} />;
+    return <DefaultButton {...this.props} styles={getSidebarButtonStyles(theme!, styles)} />;
   }
 }

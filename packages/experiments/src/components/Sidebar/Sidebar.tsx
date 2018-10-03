@@ -51,39 +51,18 @@ export class Sidebar extends BaseComponent<ISidebarProps, ISidebarState> impleme
   }
 
   public render(): JSX.Element {
-    const {
-      theme,
-      styles,
-      buttonStyles,
-      collapseButtonStyles,
-      className,
-      collapsible,
-      collapseButtonAriaLabel,
-      footerItems,
-      id,
-      items,
-      ...other
-    } = this.props;
+    const { theme, styles, collapseButtonStyles, className, collapseButtonAriaLabel, footerItems, id, items } = this.props;
 
     this._theme = theme!;
     this._colors = this.props.colors ? this.props.colors : SidebarColors.Light;
     this._buttonStyles = getButtonColoredStyles(theme!, this._colors, this.props.buttonStyles);
 
-    this._classNames = getSidebarClassNames(
-      getSidebarStyles(theme!, this._colors, styles),
-      className,
-      this.state.isCollapsed
-    );
+    this._classNames = getSidebarClassNames(getSidebarStyles(theme!, this._colors, styles), className, this.state.isCollapsed);
 
     const ButtonAs = this._getButtonAs();
 
     return (
-      <div
-        className={this._classNames.root}
-        role="menu"
-        aria-orientation={'vertical'}
-        aria-expanded={!this.state.isCollapsed}
-      >
+      <div className={this._classNames.root} role="menu" aria-orientation={'vertical'} aria-expanded={!this.state.isCollapsed}>
         <ScrollablePane
           className={this._classNames.content}
           styles={{
@@ -108,11 +87,7 @@ export class Sidebar extends BaseComponent<ISidebarProps, ISidebarState> impleme
           </FocusZone>
         </ScrollablePane>
         {footerItems && (
-          <FocusZone
-            direction={FocusZoneDirection.vertical}
-            className={this._classNames.footer}
-            key={`baSidebarFooter${id}`}
-          >
+          <FocusZone direction={FocusZoneDirection.vertical} className={this._classNames.footer} key={`baSidebarFooter${id}`}>
             {footerItems.map((item: ISidebarItemProps) => this._renderItemInSidebar(item))}
           </FocusZone>
         )}
@@ -202,7 +177,7 @@ export class Sidebar extends BaseComponent<ISidebarProps, ISidebarState> impleme
       return null;
     }
 
-    let numActiveChildren: number = 0;
+    let numActiveChildren = 0;
 
     if (item.items) {
       numActiveChildren = item.items.filter((child: ISidebarItemProps) => {
@@ -221,7 +196,7 @@ export class Sidebar extends BaseComponent<ISidebarProps, ISidebarState> impleme
           role={'menuitem'}
           ariaLabel={item.name}
           title={item.tooltip}
-          styles={concatStyleSets(this._buttonStyles, item.styles)}
+          styles={concatStyleSets(this._buttonStyles, item.styles as IButtonStyles)}
           theme={this._theme}
           checked={numActiveChildren > 0 ? true : false}
           aria-current={numActiveChildren > 0 ? true : false}

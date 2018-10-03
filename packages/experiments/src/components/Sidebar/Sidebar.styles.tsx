@@ -2,16 +2,13 @@
  * Copyright (C) Microsoft Corporation. All rights reserved.
  */
 
-import { concatStyleSets, ITheme } from '@uifabric/styling';
-import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
-import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { IButtonStyles } from 'office-ui-fabric-react';
+import { memoizeFunction, ITheme, concatStyleSets } from 'office-ui-fabric-react';
 import { ISidebarStyles, SidebarStylingConstants } from './Sidebar.types';
 
 export const sidebarFonts = {
-  segoeUiSemibold:
-    'wf_segoe-ui_semibold, "Segoe UI Semibold", "Segoe WP Semibold", "Segoe UI", "Segoe WP", Tahoma, Arial, sans-serif',
-  segoeUiSemilight:
-    'wf_segoe-ui_semilight, "Segoe UI Light", "Segoe WP Light", "Segoe UI", "Segoe WP",Tahoma, Arial, sans-serif'
+  segoeUiSemibold: 'wf_segoe-ui_semibold, "Segoe UI Semibold", "Segoe WP Semibold", "Segoe UI", "Segoe WP", Tahoma, Arial, sans-serif',
+  segoeUiSemilight: 'wf_segoe-ui_semilight, "Segoe UI Light", "Segoe WP Light", "Segoe UI", "Segoe WP",Tahoma, Arial, sans-serif'
 };
 
 export enum SidebarColors {

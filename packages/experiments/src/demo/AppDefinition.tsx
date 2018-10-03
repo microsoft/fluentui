@@ -70,6 +70,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/signals'
         },
         {
+          component: require<any>('../components/Sidebar/SidebarPage').SidebarPage,
+          key: 'Sidebar',
+          name: 'Sidebar',
+          url: '#/examples/sidebar'
+        },
+        {
           component: require<any>('../components/Text/TextPage').TextPage,
           key: 'Text',
           name: 'Text',
