@@ -43,7 +43,7 @@ describe('BaseState', () => {
     mount(<TestBaseState renderView={renderView} />);
   });
 
-  it('controlled component prop has priority over state', done => {
+  it('prioritizes controlled component prop over state', done => {
     const testProps: ITestComponentProps = {
       propControlled: 'propControlledValue'
     };
@@ -57,7 +57,7 @@ describe('BaseState', () => {
     mount(<TestBaseState {...testProps} renderView={renderView} />);
   });
 
-  it('uncontrolled state has priority over component prop', done => {
+  it('prioritizes uncontrolled state over component prop', done => {
     const testProps: ITestComponentProps = {
       propUncontrolled: 'propUncontrolledValue'
     };

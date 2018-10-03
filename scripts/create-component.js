@@ -6,7 +6,7 @@ const stateless = argv.stateless;
 const fs = require('fs');
 
 // Template Sequence
-const statefulSequence = ['GlobalIndex', 'Styles', 'Index', 'View', 'ViewTest', 'Types', 'Component', 'State'];
+const statefulSequence = ['GlobalIndex', 'Styles', 'Index', 'View', 'ViewTest', 'Types', 'Component', 'State', 'StateTest'];
 const statelessSequence = ['GlobalIndex', 'Styles', 'Index', 'View', 'ViewTest', 'TypesStateless', 'ComponentStateless'];
 
 // Paths/File Names
@@ -21,11 +21,11 @@ const outputFiles = {
   GlobalIndex: rootComponentFolderPath + newComponentName + '.ts',
   Index: componentFolderPath + 'index.ts',
   State: componentPathNamePrefix + '.state.ts',
+  StateTest: componentPathNamePrefix + '.state.test.tsx',
   Styles: componentPathNamePrefix + '.styles.ts',
   Types: componentPathNamePrefix + '.types.ts',
   TypesStateless: componentPathNamePrefix + '.types.ts',
   View: componentPathNamePrefix + '.view.tsx',
-  ViewStateless: componentPathNamePrefix + '.view.tsx',
   ViewTest: componentPathNamePrefix + '.view.test.tsx'
 };
 

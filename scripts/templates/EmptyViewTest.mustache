@@ -14,12 +14,13 @@ const test{{componentName}}ClassNames: IProcessedStyleSet< I{{componentName}}Sty
 
 // Views are just pure functions with no statefulness, which means they can get full code coverage
 //    with snapshot tests exercising permutations of the props.
-
-it('renders correctly', () => {
-  const tree = renderer
-    .create(
-      < {{componentName}}View text="textProp" status="statusProp" classNames={test{{componentName}}ClassNames} />
-    )
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+describe('{{componentName}}View', () => {
+  it('renders correctly', () => {
+    const tree = renderer
+      .create(
+        < {{componentName}}View text="textProp" status="statusProp" classNames={test{{componentName}}ClassNames} />
+      )
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
