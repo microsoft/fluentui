@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/styling",
-      "comment": "add delayLength parameter to _createDefaultAnimation",
+      "comment": "add delayLength parameter to _createDefaultAnimation in PulsingBeaconAnimationStyles",
       "type": "patch"
     }
   ],
