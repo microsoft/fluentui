@@ -23,14 +23,14 @@ export class PaginationBase extends BaseComponent<IPaginationProps, {}> {
   }
 
   public render(): JSX.Element {
-    const { styles, theme } = this.props;
+    const { nextAriaLabel, nextLabel, pageCount, previousAriaLabel, previousLabel, selectedPageIndex, styles, theme } = this.props;
 
     this._classNames = getClassNames(styles!, {
       theme: theme!
     });
 
-    const canPrevious = this.props.selectedPageIndex! > 0;
-    const canNext = this.props.selectedPageIndex! + 1 < this.props.pageCount;
+    const canPrevious = selectedPageIndex! > 0;
+    const canNext = selectedPageIndex! + 1 < pageCount;
 
     // FocusZone handles A11Y requirement such as:
     // Dynamically set tabindex (0 or -1) to the correct item
@@ -45,21 +45,21 @@ export class PaginationBase extends BaseComponent<IPaginationProps, {}> {
               onClick={this.handlePreviousPage}
               disabled={!canPrevious}
               role="tab"
-              aria-label={this.props.previousAriaLabel}
+              aria-label={previousAriaLabel}
             >
-              {this.props.previousLabel}
+              {previousLabel}
             </button>
           </li>
-          {this._pageList(this._classNames)}
+          {this._pageList()}
           <li key="nextPage">
             <button
               className={this._classNames.previousNextPage}
               onClick={this.handleNextPage}
               disabled={!canNext}
               role="tab"
-              aria-label={this.props.nextAriaLabel}
+              aria-label={nextAriaLabel}
             >
-              {this.props.nextLabel}
+              {nextLabel}
             </button>
           </li>
         </ul>
@@ -97,7 +97,7 @@ export class PaginationBase extends BaseComponent<IPaginationProps, {}> {
     );
   }
 
-  private _pageList(classNames: { [key in keyof IPaginationStyles]: string }): JSX.Element[] {
+  private _pageList(): JSX.Element[] {
     const pageList = [];
     if (this.props.pageCount <= this.props.pageRange!) {
       for (let index = 0; index < this.props.pageCount; index++) {

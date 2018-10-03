@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IPageNumberProps } from './Pagination.types';
+import { IPageNumberProps } from './PageNumber.types';
 
 export class PageNumber extends React.Component<IPageNumberProps, {}> {
   constructor(props: IPageNumberProps) {
@@ -7,20 +7,20 @@ export class PageNumber extends React.Component<IPageNumberProps, {}> {
   }
 
   public render(): JSX.Element {
-    const { pageAriaLabel, page } = this.props;
+    const { className, pageAriaLabel, page, selected } = this.props;
     const ariaLabel = pageAriaLabel && `${pageAriaLabel} ${page}`;
 
     return (
-      <li key={this.props.page}>
+      <li key={page}>
         <button
-          className={this.props.className}
+          className={className}
           onClick={this.onClick}
-          aria-selected={this.props.selected}
+          aria-selected={selected}
           aria-label={ariaLabel}
-          data-page-number={this.props.page}
+          data-page-number={page}
           role={'tab'}
         >
-          {this.props.page}
+          {page}
         </button>
       </li>
     );

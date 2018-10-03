@@ -17,8 +17,11 @@ export class PaginationBasicExample extends React.Component<{}, IPaginationBasic
         selectedPageIndex={this.state.selectedPageIndex}
         pageCount={15}
         previousLabel={'previous'}
+        previousAriaLabel={'previous page'}
         nextLabel={'next'}
+        nextAriaLabel={'next page'}
         pageAriaLabel={'page'}
+        omittedPagesAriaLabel={'more pages'}
         onPageChange={this.onPageChange}
       />
     );
