@@ -1,10 +1,4 @@
-import {
-  getFocusStyle,
-  getGlobalClassNames,
-  HighContrastSelector,
-  HighContrastSelectorWhite,
-  HighContrastSelectorBlack
-} from '../../Styling';
+import { getGlobalClassNames, HighContrastSelector, HighContrastSelectorWhite, HighContrastSelectorBlack } from '../../Styling';
 import { ILinkStyleProps, ILinkStyles } from './Link.types';
 
 const GlobalClassNames = {
@@ -20,9 +14,13 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
   return {
     root: [
       classNames.root,
-      getFocusStyle(theme),
       {
-        color: semanticColors.link
+        color: semanticColors.link,
+        selectors: {
+          '.ms-Fabric--isFocusVisible &:focus': {
+            outline: `1px solid ${theme.palette.neutralSecondary}`
+          }
+        }
       },
       isButton && {
         background: 'none',
