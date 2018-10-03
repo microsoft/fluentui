@@ -6,6 +6,8 @@ const testView = () => {
   return <div />;
 };
 
+// States do not generate rendered output so unit tests test that state initializes and reacts
+//  to inputs and events as expected.
 describe('{{componentName}}State', () => {
   it('initializes default state correctly', () => {
 
