@@ -16,8 +16,7 @@ const today = new Date(Date.now());
 export const CalendarPageProps: IDocPageProps = {
   title: 'Calendar',
   componentName: 'Calendar',
-  componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Calendar',
+  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Calendar',
   componentStatus: CalendarStatus,
   examples: [
     {
@@ -153,8 +152,7 @@ export const CalendarPageProps: IDocPageProps = {
       )
     },
     {
-      title:
-        'Calendar with selectableDays = [Tuesday, Wednesday, Friday, Saturday] provided, first day of week = Monday',
+      title: 'Calendar with selectableDays = [Tuesday, Wednesday, Friday, Saturday] provided, first day of week = Monday',
       code: CalendarButtonExampleCode,
 
       view: (
@@ -217,9 +215,7 @@ export const CalendarPageProps: IDocPageProps = {
       )
     }
   ],
-  propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/Calendar.types.ts')
-  ],
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/Calendar.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/docs/CalendarOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/docs/CalendarDos.md'),

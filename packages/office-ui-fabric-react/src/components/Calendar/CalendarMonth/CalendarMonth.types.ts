@@ -107,7 +107,6 @@ export interface ICalendarMonthProps extends IBaseProps<ICalendarMonth> {
   className?: string;
 }
 
-
 export interface ICalendarMonthStyleProps {
   /**
    * Theme provided by High-Order Component.

@@ -15,6 +15,6 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
   };
 
   return {
-    root: [normalize, className],
+    root: [normalize, className]
   };
 };

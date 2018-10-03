@@ -10,4 +10,4 @@ export const CalendarMonth: (props: ICalendarMonthProps) => JSX.Element = styled
   ICalendarMonthProps,
   ICalendarMonthStyleProps,
   ICalendarMonthStyles
-  >(CalendarMonthBase, getStyles, undefined, { scope: 'CalendarMonth' });
+>(CalendarMonthBase, getStyles, undefined, { scope: 'CalendarMonth' });

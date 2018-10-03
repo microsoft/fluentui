@@ -11,9 +11,10 @@ export const getStyles = (props: ICalendarMonthStyleProps): ICalendarMonthStyles
         width: 196
       },
       normalize,
-      className],
+      className
+    ],
     headerContainer: {
-      display: 'flex',
+      display: 'flex'
     },
     currentYearButton: {
       textAlign: 'left',
@@ -23,13 +24,13 @@ export const getStyles = (props: ICalendarMonthStyleProps): ICalendarMonthStyles
       selectors: {
         '&:hover, &:active': {
           cursor: !hasHeaderClickCallback ? 'default' : 'auto',
-          backgroundColor: 'inherit',
+          backgroundColor: 'inherit'
         }
       }
     },
     yearNavigationButtonsContainer: {
       display: 'flex',
-      alignItems: 'center',
+      alignItems: 'center'
     },
     yearNavigationButton: {
       width: 28,
@@ -50,8 +51,8 @@ export const getStyles = (props: ICalendarMonthStyleProps): ICalendarMonthStyles
         '&:hover': {
           color: palette.neutralDark,
           cursor: 'pointer',
-          outline: '1px solid transparent',
-        },
+          outline: '1px solid transparent'
+        }
       }
     },
     monthGridContainer: {},
@@ -71,40 +72,44 @@ export const getStyles = (props: ICalendarMonthStyleProps): ICalendarMonthStyles
           marginRight: 0
         },
         '& div': {
-          fontWeight: FontWeights.regular,
+          fontWeight: FontWeights.regular
         },
         '&:active': {
-          backgroundColor: palette.themeLight,
+          backgroundColor: palette.themeLight
         }
       }
     },
-    currentMonth: highlightCurrentMonth ? {
-      color: palette.white,
-      backgroundColor: palette.themePrimary,
-      selectors: {
-        '& div': {
-          fontWeight: FontWeights.semibold
-        },
-        '&:hover': {
+    currentMonth: highlightCurrentMonth
+      ? {
+          color: palette.white,
           backgroundColor: palette.themePrimary,
+          selectors: {
+            '& div': {
+              fontWeight: FontWeights.semibold
+            },
+            '&:hover': {
+              backgroundColor: palette.themePrimary
+            }
+          }
         }
-      }
-    } : {},
-    selectedMonth: highlightSelectedMonth ? {
-      color: palette.neutralPrimary,
-      backgroundColor: palette.themeLight,
-      selectors: {
-        '& div': {
-          fontWeight: FontWeights.semibold
-        },
-        '&:hover, &:active': {
+      : {},
+    selectedMonth: highlightSelectedMonth
+      ? {
+          color: palette.neutralPrimary,
           backgroundColor: palette.themeLight,
+          selectors: {
+            '& div': {
+              fontWeight: FontWeights.semibold
+            },
+            '&:hover, &:active': {
+              backgroundColor: palette.themeLight
+            }
+          }
         }
-      }
-    } : {},
+      : {},
     disabledStyle: {
       color: palette.neutralTertiaryAlt,
-      pointerEvents: 'none',
-    },
+      pointerEvents: 'none'
+    }
   };
 };

@@ -1,5 +1,13 @@
 import * as React from 'react';
-import { ICalendar, ICalendarProps, ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks, ICalendarStyleProps, ICalendarStyles } from './Calendar.types';
+import {
+  ICalendar,
+  ICalendarProps,
+  ICalendarStrings,
+  ICalendarIconStrings,
+  ICalendarFormatDateCallbacks,
+  ICalendarStyleProps,
+  ICalendarStyles
+} from './Calendar.types';
 import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { CalendarDay } from './CalendarDay/CalendarDay';
 import { CalendarMonth } from './CalendarMonth/CalendarMonth';
@@ -19,7 +27,13 @@ export const defaultIconStrings: ICalendarIconStrings = {
   closeIcon: closeIcon
 };
 
-export const defaultWorkWeekDays: DayOfWeek[] = [DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Thursday, DayOfWeek.Friday];
+export const defaultWorkWeekDays: DayOfWeek[] = [
+  DayOfWeek.Monday,
+  DayOfWeek.Tuesday,
+  DayOfWeek.Wednesday,
+  DayOfWeek.Thursday,
+  DayOfWeek.Friday
+];
 
 export const defaultDateTimeFormatterCallbacks: ICalendarFormatDateCallbacks = {
   formatMonthDayYear: (date: Date, strings: ICalendarStrings) =>
@@ -141,21 +155,15 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
       monthPickerOnly: monthPickerOnly,
       showMonthPickerAsOverlay: showMonthPickerAsOverlay,
       overlayedWithButton: overlayedWithButton,
-      showGoToToday: showGoToToday,
+      showGoToToday: showGoToToday
     });
 
     return (
       <div
-        className={
-          css(
-            rootClass,
-            classes.root,
-            className,
-            'ms-clideDownIn10'
-          )
-        }
+        className={css(rootClass, classes.root, className, 'ms-clideDownIn10')}
         role="application"
-        onKeyDown={this._onDatePickerPopupKeyDown}>
+        onKeyDown={this._onDatePickerPopupKeyDown}
+      >
         {/* <div
           className={css(
             classes.picker,
@@ -216,10 +224,7 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
         )}
 
         {showGoToToday && (
-          <DefaultButton
-            className={css('js-goToday', classes.goTodayButton)}
-            onClick={this._onGotoTodayClick}
-          >
+          <DefaultButton className={css('js-goToday', classes.goTodayButton)} onClick={this._onGotoTodayClick}>
             {strings!.goToToday}
           </DefaultButton>
         )}

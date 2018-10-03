@@ -150,10 +150,10 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
                 {dateTimeFormatter.formatMonthYear(navigatedDate, strings)}
               </div>
             ) : (
-                <div className={css('ms-DatePicker-monthAndYear', styles.monthAndYear)}>
-                  {dateTimeFormatter.formatMonthYear(navigatedDate, strings)}
-                </div>
-              )}
+              <div className={css('ms-DatePicker-monthAndYear', styles.monthAndYear)}>
+                {dateTimeFormatter.formatMonthYear(navigatedDate, strings)}
+              </div>
+            )}
           </div>
           <div className={css('ms-DatePicker-monthComponents', styles.monthComponents)}>
             <div className={css('ms-DatePicker-navContainer', styles.navContainer)}>

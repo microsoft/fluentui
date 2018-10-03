@@ -29,10 +29,10 @@ export const styles = (props: ICalendarStyleProps): ICalendarStyles => {
         },
         '&:hover': {
           color: palette.themePrimary,
-          backgroundColor: 'transparent',
+          backgroundColor: 'transparent'
         },
         '&:active': {
-          color: palette.themeDark,
+          color: palette.themeDark
         }
       }
     }

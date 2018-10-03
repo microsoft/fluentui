@@ -6,8 +6,9 @@ import { styled } from 'office-ui-fabric-react/lib/Utilities';
 /**
  * CalendarDay description
  */
-export const CalendarDay: (props: ICalendarDayProps) => JSX.Element = styled<
-  ICalendarDayProps,
-  ICalendarDayStyleProps,
-  ICalendarDayStyles
-  >(CalendarDayBase, styles, undefined, { scope: 'CalendarDay' });
+export const CalendarDay: (props: ICalendarDayProps) => JSX.Element = styled<ICalendarDayProps, ICalendarDayStyleProps, ICalendarDayStyles>(
+  CalendarDayBase,
+  styles,
+  undefined,
+  { scope: 'CalendarDay' }
+);

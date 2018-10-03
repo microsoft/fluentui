@@ -1,5 +1,12 @@
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
-import { ICalendarStrings, DayOfWeek, FirstWeekOfYear, DateRangeType, ICalendarIconStrings, ICalendarFormatDateCallbacks } from 'office-ui-fabric-react/lib/Calendar';
+import {
+  ICalendarStrings,
+  DayOfWeek,
+  FirstWeekOfYear,
+  DateRangeType,
+  ICalendarIconStrings,
+  ICalendarFormatDateCallbacks
+} from 'office-ui-fabric-react/lib/Calendar';
 import { IStyle, ITheme } from '@uifabric/styling';
 
 export interface ICalendarDay {
@@ -134,7 +141,6 @@ export interface ICalendarDayProps extends IBaseProps<ICalendarDay> {
   allFocusable?: boolean;
 }
 
-
 export interface ICalendarDayStyleProps {
   /**
    * Theme provided by High-Order Component.
@@ -147,7 +153,6 @@ export interface ICalendarDayStyleProps {
   className?: string;
 
   // Insert CalendarDay style props below
-
 }
 
 export interface ICalendarDayStyles {
@@ -155,6 +160,4 @@ export interface ICalendarDayStyles {
    * Style for the root element.
    */
   root: IStyle;
-
-
 }

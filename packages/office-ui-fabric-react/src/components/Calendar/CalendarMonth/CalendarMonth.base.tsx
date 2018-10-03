@@ -26,8 +26,7 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, {}> {
     styles: getStyles,
     strings: undefined,
     navigationIcons: defaultIconStrings,
-    dateTimeFormatter: defaultDateTimeFormatterCallbacks,
-
+    dateTimeFormatter: defaultDateTimeFormatterCallbacks
   };
 
   public render(): JSX.Element {
@@ -58,16 +57,13 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, {}> {
     const isPrevYearInBounds = minDate ? compareDatePart(minDate, getYearStart(navigatedDate)) < 0 : true;
     const isNextYearInBounds = maxDate ? compareDatePart(getYearEnd(navigatedDate), maxDate) < 0 : true;
 
-    const classNames = getClassNames(
-      styles,
-      {
-        theme: theme!,
-        className: className,
-        hasHeaderClickCallback: !!this.props.onHeaderSelect,
-        highlightCurrentMonth: highlightCurrentMonth,
-        highlightSelectedMonth: highlightSelectedMonth
-      }
-    );
+    const classNames = getClassNames(styles, {
+      theme: theme!,
+      className: className,
+      hasHeaderClickCallback: !!this.props.onHeaderSelect,
+      highlightCurrentMonth: highlightCurrentMonth,
+      highlightSelectedMonth: highlightSelectedMonth
+    });
 
     return (
       <div className={classNames.root}>
@@ -131,13 +127,11 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, {}> {
                 <DefaultButton
                   componentRef={isNavigatedMonth ? this._navigatedMonth : undefined}
                   role={'gridcell'}
-                  className={css(classNames.monthButton,
-                    {
-                      [classNames.currentMonth]: highlightCurrentMonth && isCurrentMonth!,
-                      [classNames.selectedMonth]: highlightSelectedMonth && isSelectedMonth && isSelectedYear,
-                      [classNames.disabledStyle]: !isInBounds
-                    }
-                  )}
+                  className={css(classNames.monthButton, {
+                    [classNames.currentMonth]: highlightCurrentMonth && isCurrentMonth!,
+                    [classNames.selectedMonth]: highlightSelectedMonth && isSelectedMonth && isSelectedYear,
+                    [classNames.disabledStyle]: !isInBounds
+                  })}
                   disabled={!allFocusable && !isInBounds}
                   key={index}
                   onClick={isInBounds ? this._selectMonthCallback(index) : undefined}
@@ -160,9 +154,9 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, {}> {
     if (this._navigatedMonth && this._navigatedMonth.value) {
       this._navigatedMonth.value.focus();
     }
-  }
+  };
 
-  private _onButtonKeyDown = (callback: () => void): (ev: React.KeyboardEvent<BaseButton>) => void => {
+  private _onButtonKeyDown = (callback: () => void): ((ev: React.KeyboardEvent<BaseButton>) => void) => {
     return (ev: React.KeyboardEvent<BaseButton>) => {
       switch (ev.which) {
         case KeyCodes.enter:
@@ -171,15 +165,15 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, {}> {
           break;
       }
     };
-  }
+  };
 
-  private _selectMonthCallback = (newMonth: number): () => void => {
+  private _selectMonthCallback = (newMonth: number): (() => void) => {
     return () => this._onSelectMonth(newMonth);
-  }
+  };
 
   private _isCurrentMonth = (month: number, year: number, today: Date): boolean => {
     return today.getFullYear() === year && today.getMonth() === month;
-  }
+  };
 
   private _onSelectNextYear = (): void => {
     const { navigatedDate, onNavigateDate } = this.props;
