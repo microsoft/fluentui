@@ -6,9 +6,13 @@ import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 const getClassNames = classNamesFunction<INavLinkProps, INavStyles>();
 
-export class NavLink extends React.Component<INavLinkProps, {}> {
+export class NavLink extends React.PureComponent<INavLinkProps, {}> {
+  private navLinkRef: React.RefObject<HTMLAnchorElement>;
+
   constructor(props: INavLinkProps) {
     super(props);
+    this.navLinkRef = React.createRef<HTMLAnchorElement>();
+    this._getLinkPosition = this._getLinkPosition.bind(this);
   }
 
   public render(): JSX.Element {
@@ -19,12 +23,14 @@ export class NavLink extends React.Component<INavLinkProps, {}> {
         href={this.props.href}
         target={this.props.target}
         onClick={this.props.onClick}
+        onMouseOver={this._getLinkPosition}
         data-hint={this.props.dataHint}
         data-value={this.props.dataValue}
         aria-label={this.props.ariaLabel}
         aria-expanded={this.props.ariaExpanded}
         role={this.props.role}
         className={classNames.navLink}
+        ref={this.navLinkRef}
       >
         {this._generatePrimaryIcon()}
         {this._generateLinkContent()}
@@ -86,5 +92,11 @@ export class NavLink extends React.Component<INavLinkProps, {}> {
         <Icon iconName={iconName} className={classNames.navItemIcon} />
       </div>
     );
+  }
+
+  private _getLinkPosition(ev: React.MouseEvent<HTMLElement>): void {
+    if (this.navLinkRef.current && this.props.offsetUpdated) {
+      this.props.offsetUpdated(this.navLinkRef.current.offsetTop);
+    }
   }
 }

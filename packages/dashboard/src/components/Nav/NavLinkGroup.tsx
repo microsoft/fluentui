@@ -7,7 +7,9 @@ import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 const getClassNames = classNamesFunction<INavLinkGroupStyleProps, INavStyles>();
 
-export class NavLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGroupStates> {
+export class NavLinkGroup extends React.PureComponent<INavLinkGroupProps, INavLinkGroupStates> {
+  private navLinkGroupRef: React.RefObject<HTMLDivElement>;
+
   constructor(props: INavLinkGroupProps) {
     super(props);
 
@@ -15,13 +17,15 @@ export class NavLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGr
       isExpanded: this.props.isExpanded,
       hasSelectedNestedLink: this.props.hasSelectedNestedLink
     };
-
+    this.navLinkGroupRef = React.createRef<HTMLDivElement>();
     this._onLinkClicked = this._onLinkClicked.bind(this);
+    this._offsetUpdated = this._offsetUpdated.bind(this);
   }
 
   public render(): JSX.Element {
     const { link, isNavCollapsed } = this.props;
     const { hasSelectedNestedLink } = this.state;
+
     return (
       <>
         <NavLink
@@ -41,6 +45,7 @@ export class NavLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGr
           isNested={false}
           isExpanded={this.state.isExpanded}
           role="menuitem"
+          offsetUpdated={this._offsetUpdated}
         />
         {isNavCollapsed ? this._renderWhenNavCollapsed(link) : this._renderWhenNavExpanded(link)}
       </>
@@ -50,8 +55,9 @@ export class NavLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGr
   private _renderWhenNavCollapsed(link: INavLink): React.ReactElement<{}> | null {
     const classNames = getClassNames(getStyles, { isExpanded: this.state.isExpanded, isNavCollapsed: this.props.isNavCollapsed });
     const { isNavCollapsed, hasSelectedNestedLink } = this.props;
+
     return (
-      <div className={classNames.nestedNavMenuWhenNavCollapsed}>
+      <div className={classNames.nestedNavMenuWhenNavCollapsed} ref={this.navLinkGroupRef}>
         <NavLink
           isNavCollapsed={isNavCollapsed}
           id={link.name}
@@ -70,7 +76,11 @@ export class NavLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGr
           isExpanded={this.state.isExpanded}
           role="menuitem"
         />
+        {/* If you apply backdrop-filter to an element with box-shadow, the filter will also apply to the shadow,
+            so those elements need to be separated. This one has the shadow.
+        */}
         <div className={classNames.nestedNavLinksWrapper}>
+          {/* This one has the blur. */}
           <ul className={classNames.nestedNavLinksWhenNavCollapsed}>
             {!!link.links
               ? link.links.map((nestedLink: INavLink, linkIndex: number) => {
@@ -134,5 +144,11 @@ export class NavLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGr
 
     ev.preventDefault();
     ev.stopPropagation();
+  }
+
+  private _offsetUpdated(offset: number): void {
+    if (this.navLinkGroupRef.current) {
+      this.navLinkGroupRef.current.style.top = offset + 'px';
+    }
   }
 }

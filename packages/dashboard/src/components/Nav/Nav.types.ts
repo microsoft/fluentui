@@ -70,12 +70,12 @@ export interface INavProps extends IBaseProps {
   /**
    * (Optional) callback for the parent component when the nav node is toggled between expanded and collapsed state
    */
-  onNavNodeExpandedCallback?(nodeKey: string, isExpanded: boolean): void;
+  onNavLinkGroupExpandedCallback?(nodeKey: string, isExpanded: boolean): void;
 
   /**
    * (Optional) callback for the parent component when the edit nav node is clicked
    */
-  onEditLeftNavClickedCallback?(): void;
+  onEditNavClickedCallback?(): void;
 }
 
 export interface INavState extends INavState {
@@ -172,6 +172,8 @@ export interface INavLinkProps extends React.AllHTMLAttributes<HTMLAnchorElement
    * Pays attention to Nav collapsed state to render the right selected indicator and nested menu
    */
   isNavCollapsed?: boolean;
+
+  offsetUpdated?: (offset: number) => void;
 }
 
 export interface INavLinkGroupProps extends INavLinkProps {
@@ -235,33 +237,37 @@ export interface INavStyles {
   /**
    * Nav
    */
-  root?: IStyle;
+  root: IStyle;
+  navWrapper: IStyle;
+  navContainer: IStyle;
+  navWrapperScroll: IStyle;
+  navContainerScroll: IStyle;
 
   /**
    * NavGroup
    */
-  navGroup?: IStyle;
-  navGroupDivider?: IStyle;
-  navGroupTitle?: IStyle;
-  navItem?: IStyle;
+  navGroup: IStyle;
+  navGroupDivider: IStyle;
+  navGroupTitle: IStyle;
+  navItem: IStyle;
 
   /**
    * NavLinkGroup
    */
-  nestedNavMenu?: IStyle;
-  nestedNavMenuWhenNavCollapsed?: IStyle;
-  nestedNavLinksWrapper?: IStyle;
-  nestedNavLinksWhenNavCollapsed?: IStyle;
+  nestedNavMenu: IStyle;
+  nestedNavMenuWhenNavCollapsed: IStyle;
+  nestedNavLinksWrapper: IStyle;
+  nestedNavLinksWhenNavCollapsed: IStyle;
 
   /**
    * NavLink
    */
-  navLink?: IStyle;
-  navLinkSmall?: IStyle;
-  navItemBarMarker?: IStyle;
-  navItemIcon?: IStyle;
-  navItemText?: IStyle;
-  iconWrapper?: IStyle;
+  navLink: IStyle;
+  navLinkSmall: IStyle;
+  navItemBarMarker: IStyle;
+  navItemIcon: IStyle;
+  navItemText: IStyle;
+  iconWrapper: IStyle;
 }
 
 export interface INavClassNames {

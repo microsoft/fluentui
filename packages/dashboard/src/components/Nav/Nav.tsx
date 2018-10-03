@@ -9,16 +9,21 @@ import { NavGroup } from './NavGroup';
 const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
 
 class NavComponent extends BaseComponent<INavProps, INavState> {
+  private wrapperRef: React.RefObject<HTMLDivElement>;
+  private containerRef: React.RefObject<HTMLDivElement>;
+
   constructor(props: INavProps) {
     super(props);
-
     this.state = {
       isNavCollapsed: this.props.isNavCollapsed ? this.props.isNavCollapsed : false
     };
 
+    this.wrapperRef = React.createRef<HTMLDivElement>();
+    this.containerRef = React.createRef<HTMLDivElement>();
     this._onNavCollapseClicked = this._onNavCollapseClicked.bind(this);
     this._editClicked = this._editClicked.bind(this);
     this._toggleHidden = this._toggleHidden.bind(this);
+    this._setScrollLayout = this._setScrollLayout.bind(this);
   }
 
   public render(): JSX.Element | null {
@@ -29,15 +34,19 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
     const classNames = getClassNames(getStyles, { isNavCollapsed: this.state.isNavCollapsed });
 
     return (
-      <nav role="navigation" className={classNames.root}>
-        {this._renderExpandCollapseNavItem()}
+      <div aria-hidden="true" className={classNames.root} onMouseEnter={this._setScrollLayout} onMouseOver={this._setScrollLayout}>
+        <div aria-hidden="true" className={classNames.navWrapper} ref={this.wrapperRef}>
+          <nav role="navigation" className={classNames.navContainer} ref={this.containerRef}>
+            {this._renderExpandCollapseNavItem()}
 
-        {this.props.groups.map((group: INavLinkGroup, groupIndex: number) => {
-          return this._renderGroup(group, groupIndex);
-        })}
+            {this.props.groups.map((group: INavLinkGroup, groupIndex: number) => {
+              return this._renderGroup(group, groupIndex);
+            })}
 
-        {this._renderCustomizationLinks()}
-      </nav>
+            {this._renderCustomizationLinks()}
+          </nav>
+        </div>
+      </div>
     );
   }
 
@@ -131,6 +140,20 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
     );
   }
 
+  private _setScrollLayout(): void {
+    const classNames = getClassNames(getStyles);
+    if (this.containerRef.current && this.wrapperRef.current) {
+      console.log(this.containerRef.current);
+      if (this.containerRef.current.scrollHeight > this.containerRef.current.clientHeight) {
+        this.containerRef.current.classList.add(classNames.navContainerScroll);
+        this.wrapperRef.current.classList.add(classNames.navWrapperScroll);
+      } else {
+        this.containerRef.current.classList.remove(classNames.navContainerScroll);
+        this.wrapperRef.current.classList.remove(classNames.navWrapperScroll);
+      }
+    }
+  }
+
   //
   // Event handlers
   //
@@ -138,7 +161,6 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
     this.setState({
       isNavCollapsed: !this.state.isNavCollapsed
     });
-    console.log(this.state.isNavCollapsed);
 
     // inform the caller about the collapse event
     if (!!this.props.onNavCollapsedCallback && !!this.state.isNavCollapsed) {
@@ -151,14 +173,12 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
 
   // TODO: make this a callback
   private _editClicked(ev: React.MouseEvent<HTMLElement>): void {
-    console.log('edit clicked');
     ev.preventDefault();
     ev.stopPropagation();
   }
 
   // TODO: make this a callback
   private _toggleHidden(ev: React.MouseEvent<HTMLElement>): void {
-    console.log('show more');
     ev.preventDefault();
     ev.stopPropagation();
   }

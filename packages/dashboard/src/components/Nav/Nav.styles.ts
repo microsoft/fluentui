@@ -2,11 +2,22 @@
 import { DefaultPalette, FontSizes, FontWeights, AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
 import { INavLinkProps, INavStyles } from './Nav.types';
 
+// Get the browser scrollbar width because they're all different
+let scrollBarWidth: number = 0;
+const scrollDiv: HTMLDivElement = document.createElement('div');
+scrollDiv.setAttribute('style', 'width: 100px;height: 100px;overflow: scroll;position: absolute;top: -999px;');
+const contentDiv: HTMLElement = document.createElement('p');
+contentDiv.setAttribute('style', 'width: 100px;height: 200px;');
+scrollDiv.appendChild(contentDiv);
+document.body.appendChild(scrollDiv);
+scrollBarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+document.body.removeChild(scrollDiv);
+
 // Nav
 const navFontSize = FontSizes.medium;
 const navTextColor = DefaultPalette.black;
-const navWidth = 280;
-const navCollapsedWidth = 48;
+const navWidth = 280 + scrollBarWidth;
+const navCollapsedWidth = 48 + scrollBarWidth;
 const navBackgroundColor = '#E5E5E5';
 const navItemSelectedColor = '#B7B7B7';
 
@@ -22,13 +33,22 @@ const navItemWithChildBgColor = '#CCCCCC';
 const navIconSize = FontSizes.icon;
 const navChildItemHeight = 32;
 const navItemHoverColor = '#CCCCCC';
+// const scrollBarWidth = getBrowserScollbarWidth;
 
 export const getStyles = (props: INavLinkProps): INavStyles => {
   const { isNavCollapsed, isExpanded, hasNestedMenu, isSelected, hasSelectedNestedLink, isNested } = props;
 
   return {
     // Nav
-    root: [
+    root: {
+      position: 'relative',
+      flex: '0 0 auto'
+    },
+    navWrapper: {
+      overflow: 'hidden',
+      height: '100%'
+    },
+    navContainer: [
       {
         width: navWidth,
         backgroundColor: navBackgroundColor,
@@ -37,6 +57,10 @@ export const getStyles = (props: INavLinkProps): INavStyles => {
         transitionDuration: '.2s',
         userSelect: 'none',
         fontSize: navFontSize,
+        overflowY: 'scroll',
+        overflowX: 'hidden',
+        marginRight: -scrollBarWidth + 'px',
+        height: '100%',
         selectors: {
           ul: {
             selectors: {
@@ -53,6 +77,10 @@ export const getStyles = (props: INavLinkProps): INavStyles => {
                 backgroundColor: navItemSelectedColor
               }
             }
+          },
+          // This is needed because some versions of Chrome hide the scrollbar event with overflow set to scroll
+          '::-webkit-scrollbar': {
+            display: 'block'
           }
         }
       },
@@ -60,6 +88,21 @@ export const getStyles = (props: INavLinkProps): INavStyles => {
         width: navCollapsedWidth
       }
     ],
+    navWrapperScroll: {
+      selectors: {
+        ':hover': {
+          overflow: 'unset',
+          marginRight: -scrollBarWidth + 'px'
+        }
+      }
+    },
+    navContainerScroll: {
+      selectors: {
+        ':hover': {
+          marginRight: '0px'
+        }
+      }
+    },
     // NavGroup
     navGroup: {
       margin: 0,
@@ -89,9 +132,9 @@ export const getStyles = (props: INavLinkProps): INavStyles => {
       marginLeft: '16px'
     },
     navItem: [
-      {
-        position: 'relative'
-      },
+      // {
+      //   position: 'relative'
+      // },
       isNavCollapsed && {
         selectors: {
           ':hover $nestedNavMenuWhenNavCollapsed': {
