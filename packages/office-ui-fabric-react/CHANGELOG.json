@@ -2,6 +2,32 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.77.0",
+      "tag": "office-ui-fabric-react_v6.77.0",
+      "date": "Wed, 03 Oct 2018 12:28:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "FocusZone: check for RTL before making top bottom comparisons",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "42d14e685d6dcc4e1ebc16a6aa643f873bcf9ce8"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Modal: add optional prop topOffsetFixed",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "2e0ccb4e91fb916e6393e303668811be025f9c46"
+          },
+          {
+            "comment": "SwatchColorPicker: let height and width be customizable",
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "af98084ea865dea7baf0c471d870a30fd69a5c0b"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.76.0",
       "tag": "office-ui-fabric-react_v6.76.0",
       "date": "Tue, 02 Oct 2018 12:28:04 GMT",

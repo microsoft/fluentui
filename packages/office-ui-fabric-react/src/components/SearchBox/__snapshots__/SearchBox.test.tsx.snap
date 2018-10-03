@@ -99,6 +99,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
           margin-left: 0px;
           margin-right: 0px;
           margin-top: 0px;
+          min-width: 0px;
           outline: none;
           overflow: hidden;
           padding-bottom: 0.5px;
@@ -223,6 +224,7 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
           margin-left: 0px;
           margin-right: 0px;
           margin-top: 0px;
+          min-width: 0px;
           outline: none;
           overflow: hidden;
           padding-bottom: 0.5px;

@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/charting",
-      "comment": "Removing old legends component. Replaced in all data-viz with the new components which supports isolation and other states",
+      "comment": "Adding optional href prop to dataviz, to redirect upon clicking on the dataviz",
       "type": "minor"
     }
   ],
