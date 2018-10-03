@@ -132,6 +132,7 @@ describe('Calendar', () => {
           value={defaultDate}
           firstDayOfWeek={DayOfWeek.Tuesday}
           dateRangeType={DateRangeType.Week}
+          autoNavigateOnSelection={true}
           onSelectDate={onSelectDate()}
           className="CalendarTestClass"
         />
