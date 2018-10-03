@@ -51,7 +51,7 @@ export class GridList extends React.Component<IGridListProps> {
   private _onRenderRow(props: IDetailsRowProps): JSX.Element {
     const styles: Partial<IDetailsRowStyles> = {
       root: {
-        borderBottom: 'unset'
+        borderBottom: '0px'
       },
       cell: {
         paddingLeft: '0px'
