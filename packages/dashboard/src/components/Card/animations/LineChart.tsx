@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-import { mergeStyles } from '@uifabric/merge-styles';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 import { getStyles } from './LineChart.style';
 
-interface ILineChartProps {}
+export interface ILineChartProps {}
 
 // const classNames = getClassNames(getStyles!, {});
 

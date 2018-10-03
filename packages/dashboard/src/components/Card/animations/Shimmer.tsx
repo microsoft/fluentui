@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-import { mergeStyles } from '@uifabric/merge-styles';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 import { getStyles } from './Shimmer.style';
 
-interface IShimmerProps {}
+export interface IShimmerProps {}
 
 export class Shimmer extends React.Component<IShimmerProps> {
   constructor(props: IShimmerProps) {

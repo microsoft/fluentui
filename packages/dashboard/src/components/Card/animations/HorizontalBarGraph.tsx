@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-import { mergeStyles } from '@uifabric/merge-styles';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 import { getStyles } from '../animations/HorizontalBarGraph.style';
 
-interface IHorizontalBarGraph {}
+export interface IHorizontalBarGraph {}
 
 export class HorizontalBarGraph extends React.Component<IHorizontalBarGraph> {
   constructor(props: IHorizontalBarGraph) {

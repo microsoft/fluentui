@@ -26,7 +26,7 @@ export class Layout extends React.Component<ILayoutProps> {
 
   public render(): JSX.Element {
     const getClassNames = classNamesFunction<ILayoutProps, ILayoutStyles>();
-    const { header, contentArea, actions, cardSize, animation, animationStart } = this.props;
+    const { header, contentArea, actions, cardSize, animation, loading } = this.props;
     const classNames = getClassNames(getStyles, { cardSize, header });
     const content: JSX.Element | null = this._generateContentArea(
       contentArea!,
@@ -36,12 +36,13 @@ export class Layout extends React.Component<ILayoutProps> {
       classNames.contentArea2,
       cardSize
     );
+    // const { chartType } = cardContent.content as IChartProps;
     const headerElement: JSX.Element | null = this._generateHeader(header!);
     const footerElement: JSX.Element | null = this._generateFooter(actions!, classNames.footer);
     return (
       <div className={classNames.root} onMouseDown={this.onMouseDown}>
         {headerElement}
-        {animationStart ? animation : <div className={classNames.contentAreaLayout}>{content}</div>}
+        {loading ? animation : <div className={classNames.contentAreaLayout}>{content}</div>}
 
         {footerElement}
       </div>

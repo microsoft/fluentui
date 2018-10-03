@@ -49,7 +49,7 @@ export interface ILayoutProps {
   cardSize: CardSize;
 
   animation?: JSX.Element;
-  animationStart?: boolean;
+  loading?: boolean;
 }
 
 export interface ILayoutStyles {

@@ -3,12 +3,10 @@ import { IChartProps as IChartingProps } from '@uifabric/charting';
 import { Card, CardContentType, CardSize, ChartType, ICardProps, ICardContentDetails, IChartProps, Priority } from '@uifabric/dashboard';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
-import { BarGraph } from '../animations/BarGraph';
-
-export class DonutChartExample extends React.Component<{}, { animationStart: boolean }> {
+export class DonutChartExample extends React.Component<{}, { loading: boolean }> {
   constructor(props: ICardProps) {
     super(props);
-    this.state = { animationStart: true };
+    this.state = { loading: true };
   }
 
   public render(): JSX.Element {
@@ -76,25 +74,19 @@ export class DonutChartExample extends React.Component<{}, { animationStart: boo
     ];
     const that = this;
     setTimeout(() => {
-      that.setState({ animationStart: false });
+      that.setState({ loading: false });
     }, 10000);
     const header = {
       headerText: 'Donut Chart and Pie chart '
     };
-    const animation: JSX.Element | undefined = this._getAnimation();
     return (
       <Card
         cardFrameContent={cardFrameContent}
         header={header}
         cardContentList={contentAreaList}
         cardSize={CardSize.large}
-        animation={animation}
-        animationStart={this.state.animationStart}
+        loading={this.state.loading}
       />
     );
-  }
-
-  private _getAnimation(): JSX.Element | undefined {
-    return <BarGraph />;
   }
 }

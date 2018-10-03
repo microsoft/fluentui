@@ -1,4 +1,4 @@
-import { keyframes } from '@uifabric/merge-styles';
+import { keyframes } from 'office-ui-fabric-react/lib/Styling';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 
 const horizontalBarGraphLoadingAnimationBar1Keyframes = keyframes({

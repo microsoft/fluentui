@@ -4,7 +4,7 @@ import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 import { getStyles } from './BarGraph.style';
 
-interface IBarGraphProps {}
+export interface IBarGraphProps {}
 
 export class BarGraph extends React.Component<IBarGraphProps> {
   constructor(props: IBarGraphProps) {

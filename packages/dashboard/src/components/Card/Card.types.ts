@@ -1,3 +1,4 @@
+import { ChartType } from './Chart/Chart.types';
 import { ICardHeaderProps } from './CardHeader/CardHeader.types';
 import { ICardContentDetails } from './Layout/Layout.types';
 import { IAction } from './ActionBar/ActionBar.types';
@@ -139,9 +140,9 @@ export interface ICardProps {
    */
   disableDrag?: boolean;
 
-  animation?: JSX.Element;
+  // animation?: JSX.Element;
 
-  animationStart?: boolean;
+  loading?: boolean;
 }
 
 export interface ICard extends ICardProps {
@@ -156,6 +157,8 @@ export interface ICardState {
    * The card size state
    */
   cardSize: CardSize;
+
+  chartType?: ChartType;
 }
 
 export interface ICardStyles {

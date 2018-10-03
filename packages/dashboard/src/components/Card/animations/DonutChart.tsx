@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-import { mergeStyles } from '@uifabric/merge-styles';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 import { getStyles } from './DonutChart.style';
 
-interface IDonutChartProps {}
+export interface IDonutChartProps {}
 
 export class DonutChart extends React.Component<IDonutChartProps> {
   constructor(props: IDonutChartProps) {
