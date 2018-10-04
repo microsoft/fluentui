@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "FocusZone: check for RTL before making top bottom comparisons",
+      "comment": "Facepile: allow FacepileButton to render custom styles",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "naethell@microsoft.com"
+  "email": "kakje@microsoft.com"
 }
