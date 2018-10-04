@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DocumentCardTitle shows title with secondary title style 1`] = `
+<div
+  className="ms-DocumentCardTitle"
+  title="This is a title of normal length"
+>
+  This is a title of normal length
+</div>
+`;
