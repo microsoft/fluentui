@@ -4,7 +4,6 @@ import { BaseComponent, getId, KeyCodes, classNamesFunction, createRef, getNativ
 
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
-import { log } from 'util';
 
 const getClassNames = classNamesFunction<ISearchBoxStyleProps, ISearchBoxStyles>();
 
