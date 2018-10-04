@@ -4868,7 +4868,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               className=
                                   ms-GroupHeader-dropIcon
                                   {
-                                    color: #767676;
+                                    color: #666666;
                                     font-size: 20px;
                                     left: -26px;
                                     opacity: 0;
@@ -5464,7 +5464,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               className=
                                   ms-GroupHeader-dropIcon
                                   {
-                                    color: #767676;
+                                    color: #666666;
                                     font-size: 20px;
                                     left: -26px;
                                     opacity: 0;
