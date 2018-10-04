@@ -16,8 +16,11 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
       classNames.root,
       {
         color: semanticColors.link,
+        outline: 'none',
         selectors: {
           '.ms-Fabric--isFocusVisible &:focus': {
+            // Can't use getFocusStyle because it doesn't support wrapping links
+            // https://github.com/OfficeDev/office-ui-fabric-react/issues/4883#issuecomment-406743543
             outline: `1px solid ${theme.palette.neutralSecondary}`
           }
         }
