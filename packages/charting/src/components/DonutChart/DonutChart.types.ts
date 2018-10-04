@@ -43,7 +43,12 @@ export interface IDonutChartProps {
   /**
    * Width of line stroke
    */
-  strokeWidth?: number;
+  strokeWidth?: string;
+
+  /**
+   * Url that the data-viz needs to redirect to upon clicking on it
+   */
+  href?: string;
 }
 
 export interface IDonutChartStyleProps {

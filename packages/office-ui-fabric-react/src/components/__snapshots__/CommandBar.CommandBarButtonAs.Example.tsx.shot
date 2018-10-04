@@ -1987,7 +1987,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       className=
 
                           {
-                            animation-delay: 2s;
+                            animation-delay: 0ms;
                             animation-duration: 14s;
                             animation-iteration-count: 1;
                             animation-name: keyframes 0%{border-color:#0078d4;border-width:0px;width:35px;height:35px;}1.42%{opacity:1;border-width:10px;}3.57%{opacity:1;}7.14%{border-width:0;width:150px;height:150px;opacity:0;border-color:#71afe5;}8%{border-color:#0078d4;border-width:0px;width:35px;height:35px;opacity:0;}29.99%{border-color:#0078d4;border-width:0px;width:35px;height:35px;opacity:0;}30%{border-color:#0078d4;border-width:0px;width:35px;height:35px;}31.42%{opacity:1;border-width:10px;}33.57%{opacity:1;}37.14%{border-width:0;width:150px;height:150px;opacity:0;border-color:#71afe5;}38%{border-color:#0078d4;border-width:0px;width:35px;height:35px;opacity:0;}79.42%{border-color:#0078d4;border-width:0px;width:35px;height:35px;opacity:0;}79.43{border-color:#0078d4;border-width:0px;width:35px;height:35px;}81.85{opacity:1;border-width:10px;}83.42{opacity:1;}87%{border-width:0;width:150px;height:150px;opacity:0;border-color:#71afe5;}100%{};

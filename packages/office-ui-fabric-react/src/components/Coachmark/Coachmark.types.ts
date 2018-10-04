@@ -90,6 +90,12 @@ export interface ICoachmarkProps extends React.Props<Coachmark> {
   delayBeforeMouseOpen?: number;
 
   /**
+   * Delay in milliseconds before Coachmark animation appears.
+   * @default 0
+   */
+  delayBeforeCoachmarkAnimation?: number;
+
+  /**
    * Callback to run when the mouse moves.
    */
   onMouseMove?: (e: MouseEvent) => void;

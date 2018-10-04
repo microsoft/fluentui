@@ -1,6 +1,16 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 02 Oct 2018 12:28:04 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Oct 2018 12:26:48 GMT and should not be manually modified.
+
+## 6.34.2
+Thu, 04 Oct 2018 12:26:48 GMT
+
+*Version update only*
+
+## 6.34.1
+Wed, 03 Oct 2018 12:28:46 GMT
+
+*Version update only*
 
 ## 6.34.0
 Tue, 02 Oct 2018 12:28:04 GMT
