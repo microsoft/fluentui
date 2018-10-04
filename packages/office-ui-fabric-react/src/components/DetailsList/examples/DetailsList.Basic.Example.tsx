@@ -1,15 +1,10 @@
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import {
-  DetailsList,
-  DetailsListLayoutMode,
-  Selection,
-  IColumn,
-  IDetailsList
-} from 'office-ui-fabric-react/lib/DetailsList';
+import { DetailsList, DetailsListLayoutMode, Selection, IColumn, IDetailsList } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { createRef } from 'office-ui-fabric-react/lib/Utilities';
+import { createTheme, loadTheme } from '@uifabric/styling';
 
 const _items: any[] = [];
 
@@ -33,6 +28,23 @@ const _columns: IColumn[] = [
     ariaLabel: 'Operations for value'
   }
 ];
+
+const theme2 = createTheme({
+  palette: {
+    themePrimary: 'green'
+  },
+  fonts: {
+    small: {
+      fontFamily: 'Courier New'
+    },
+    medium: {
+      fontFamily: 'Courier New',
+      fontSize: 20
+    }
+  }
+});
+
+loadTheme(theme2);
 
 export class DetailsListBasicExample extends React.Component<
   {},
