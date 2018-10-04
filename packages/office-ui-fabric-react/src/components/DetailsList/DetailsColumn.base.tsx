@@ -1,13 +1,6 @@
 import * as React from 'react';
 import { Icon } from '../../Icon';
-import {
-  BaseComponent,
-  IRenderFunction,
-  createRef,
-  IDisposable,
-  classNamesFunction,
-  IClassNames
-} from '../../Utilities';
+import { BaseComponent, IRenderFunction, createRef, IDisposable, classNamesFunction, IClassNames } from '../../Utilities';
 import { IColumn, ColumnActionsMode } from './DetailsList.types';
 
 import { ITooltipHostProps } from '../../Tooltip';
@@ -36,15 +29,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
   }
 
   public render(): JSX.Element {
-    const {
-      column,
-      columnIndex,
-      parentId,
-      isDraggable,
-      styles,
-      theme,
-      cellStyleProps = DEFAULT_CELL_STYLE_PROPS
-    } = this.props;
+    const { column, columnIndex, parentId, isDraggable, styles, theme, cellStyleProps = DEFAULT_CELL_STYLE_PROPS } = this.props;
     const { onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip } = this.props;
 
     this._classNames = getClassNames(styles, {
@@ -103,41 +88,26 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
                       : undefined
                   }
                   aria-describedby={
-                    this.props.onRenderColumnHeaderTooltip || this._hasAccessibleLabel()
-                      ? `${parentId}-${column.key}-tooltip`
-                      : undefined
+                    this.props.onRenderColumnHeaderTooltip || this._hasAccessibleLabel() ? `${parentId}-${column.key}-tooltip` : undefined
                   }
                   onContextMenu={this._onColumnContextMenu.bind(this, column)}
                   onClick={this._onColumnClick.bind(this, column)}
                   aria-haspopup={column.columnActionsMode === ColumnActionsMode.hasDropdown}
                 >
                   <span id={`${parentId}-${column.key}-name`} className={classNames.cellName}>
-                    {(column.iconName || column.iconClassName) && (
-                      <Icon className={classNames.iconClassName} iconName={column.iconName} />
-                    )}
+                    {(column.iconName || column.iconClassName) && <Icon className={classNames.iconClassName} iconName={column.iconName} />}
 
-                    {column.isIconOnly ? (
-                      <span className={classNames.accessibleLabel}>{column.name}</span>
-                    ) : (
-                      column.name
-                    )}
+                    {column.isIconOnly ? <span className={classNames.accessibleLabel}>{column.name}</span> : column.name}
                   </span>
 
                   {column.isFiltered && <Icon className={classNames.nearIcon} iconName={'Filter'} />}
 
-                  {column.isSorted && (
-                    <Icon
-                      className={classNames.sortIcon}
-                      iconName={column.isSortedDescending ? 'SortDown' : 'SortUp'}
-                    />
-                  )}
+                  {column.isSorted && <Icon className={classNames.sortIcon} iconName={column.isSortedDescending ? 'SortDown' : 'SortUp'} />}
 
                   {column.isGrouped && <Icon className={classNames.nearIcon} iconName={'GroupedDescending'} />}
 
                   {column.columnActionsMode === ColumnActionsMode.hasDropdown &&
-                    !column.isIconOnly && (
-                      <Icon aria-hidden={true} className={classNames.filterChevron} iconName={'ChevronDown'} />
-                    )}
+                    !column.isIconOnly && <Icon aria-hidden={true} className={classNames.filterChevron} iconName={'ChevronDown'} />}
                 </span>
               )
             },
@@ -213,10 +183,16 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
   };
 
   private _onColumnClick(column: IColumn, ev: React.MouseEvent<HTMLElement>): void {
+    if (column.columnActionsMode === ColumnActionsMode.disabled) {
+      return;
+    }
+
     const { onColumnClick } = this.props;
+
     if (column.onColumnClick) {
       column.onColumnClick(ev, column);
     }
+
     if (onColumnClick) {
       onColumnClick(ev, column);
     }
@@ -254,16 +230,10 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
     const classNames = this._classNames;
 
     return this._hasAccessibleLabel() && !this.props.onRenderColumnHeaderTooltip ? (
-      <label
-        key={`${column.key}_label`}
-        id={`${parentId}-${column.key}-tooltip`}
-        className={classNames.accessibleLabel}
-      >
+      <label key={`${column.key}_label`} id={`${parentId}-${column.key}-tooltip`} className={classNames.accessibleLabel}>
         {column.ariaLabel}
         {(column.isFiltered && column.filterAriaLabel) || null}
-        {(column.isSorted &&
-          (column.isSortedDescending ? column.sortDescendingAriaLabel : column.sortAscendingAriaLabel)) ||
-          null}
+        {(column.isSorted && (column.isSortedDescending ? column.sortDescendingAriaLabel : column.sortAscendingAriaLabel)) || null}
         {(column.isGrouped && column.groupAriaLabel) || null}
       </label>
     ) : null;
