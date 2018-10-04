@@ -1,6 +1,13 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Wed, 03 Oct 2018 12:28:46 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Oct 2018 12:26:48 GMT and should not be manually modified.
+
+## 0.29.0
+Thu, 04 Oct 2018 12:26:48 GMT
+
+### Minor changes
+
+- Adding common href for the entire multicount component. Removing href that was in before  that allowed passing href to every row seperately
 
 ## 0.28.1
 Wed, 03 Oct 2018 12:28:46 GMT

@@ -2,6 +2,47 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.78.0",
+      "tag": "office-ui-fabric-react_v6.78.0",
+      "date": "Thu, 04 Oct 2018 12:26:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add explicit min-width of 0px to SearchBox input element, to prevent overflow when SearchBox has a fixed width.",
+            "author": "Ayrton Massey <ayrtonmassey@googlemail.com>",
+            "commit": "dc8006f130300a6dee7831e3e0166a4da8ff84a8"
+          },
+          {
+            "comment": "Modal: small topOffsetFixed changes and added example to Dialog",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "3d6d7e1213c9b402655376c61dc8782a01917af1"
+          },
+          {
+            "comment": "Dropdown: only apply an aria-labelledby attribute if a non-empty label property is given",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "8ea7b62a98c581a9c89a92160f5a84e6fa143ee0"
+          },
+          {
+            "comment": "Correct hover and highlight states for Calendar (DateRangeType.Week)",
+            "author": "Jeff Hellesen <jhellesen@gmail.com>",
+            "commit": "6de50bf9e453ba12b588bd5532e5bfad6564e995"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Coachmark: Add delayBeforeCoachmarkAnimation prop",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "a6d25782cd0b11a5f010b1409f8fa2a287a370e5"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.28.0 <7.0.0` to `>=6.29.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.77.0",
       "tag": "office-ui-fabric-react_v6.77.0",
       "date": "Wed, 03 Oct 2018 12:28:46 GMT",

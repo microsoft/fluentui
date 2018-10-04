@@ -1,6 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Wed, 03 Oct 2018 12:28:46 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Oct 2018 12:26:48 GMT and should not be manually modified.
+
+## 0.24.0
+Thu, 04 Oct 2018 12:26:48 GMT
+
+### Minor changes
+
+- Adding optional href prop to dataviz, to redirect upon clicking on the dataviz
 
 ## 0.23.0
 Wed, 03 Oct 2018 12:28:46 GMT
