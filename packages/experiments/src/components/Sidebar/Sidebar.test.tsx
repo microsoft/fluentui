@@ -3,7 +3,6 @@
  */
 
 import * as Enzyme from 'enzyme';
-import 'jest';
 import { createRef, getTheme } from 'office-ui-fabric-react';
 import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
 import * as React from 'react';
