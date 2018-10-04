@@ -16,13 +16,36 @@ storiesOf('Link', module)
         .click('.ms-Link')
         .hover('.ms-Link')
         .snapshot('click', { cropTo: '.testWrapper' })
-        .end()
-      }
+        .end()}
     >
       {story()}
     </Screener>
   ))
-  .addStory('Root', () => (<Link href='#'>I'm a link</Link>), { rtl: true })
-  .addStory('Disabled', () => (<Link href='#' disabled>I'm a disabled link</Link>))
-  .addStory('No Href', () => (<Link>I'm rendered as a button because I have no href</Link>))
-  .addStory('No Href Disabled', () => (<Link disabled>I'm rendered as a button because I have no href and am disabled</Link>));
+  .addStory('Root', () => <Link href="#">I'm a link</Link>, { rtl: true })
+  .addStory('Disabled', () => (
+    <Link href="#" disabled>
+      I'm a disabled link
+    </Link>
+  ))
+  .addStory('No Href', () => <Link>I'm rendered as a button because I have no href</Link>)
+  .addStory('No Href Disabled', () => <Link disabled>I'm rendered as a button because I have no href and am disabled</Link>)
+  .addStory(
+    'Anchor with focus',
+    () => (
+      <div className="ms-isFocusVisible">
+        <Link href="#">I'm rendered as an anchor tag with focus.</Link>
+      </div>
+    ),
+    { rtl: true }
+  )
+  .addStory(
+    'Anchor with focus disabled',
+    () => (
+      <div className="ms-isFocusVisible">
+        <Link disabled href="#">
+          I'm rendered as an anchor tag with focus but I'm disabled.
+        </Link>
+      </div>
+    ),
+    { rtl: true }
+  );
