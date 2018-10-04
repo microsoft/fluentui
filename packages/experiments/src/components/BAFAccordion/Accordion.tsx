@@ -31,7 +31,8 @@ export class Accordion extends BaseComponent<IAccordionProps, IAccordionState> i
   }
 
   public render(): JSX.Element {
-    let { onRenderMenu, menuIconProps, className, buttonAs, onClick, onRenderContent, ...other } = this.props;
+    const { onRenderMenu, className, buttonAs, onClick, ...other } = this.props;
+    let { menuIconProps, onRenderContent } = this.props;
 
     const AccordionButton = buttonAs || DefaultButton;
 
