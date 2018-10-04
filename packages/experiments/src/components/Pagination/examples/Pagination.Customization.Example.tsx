@@ -19,7 +19,7 @@ export class PaginationCustomizationExample extends React.Component<{}, IPaginat
         previousLabel={'<<'}
         nextLabel={'>>'}
         omissionLabel={'......'}
-        marginPagesDisplayed={2}
+        marginPages={2}
         pageAriaLabel={'page'}
         onPageChange={this.onPageChange}
         styles={{

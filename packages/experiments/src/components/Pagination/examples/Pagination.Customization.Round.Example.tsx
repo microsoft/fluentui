@@ -8,7 +8,7 @@ export class PaginationCustomizationRoundExample extends React.Component<{}, IPa
   constructor(props: {}) {
     super(props);
 
-    this.state = { selectedPageIndex: 15 };
+    this.state = { selectedPageIndex: 0 };
   }
 
   public render(): JSX.Element {
@@ -18,7 +18,7 @@ export class PaginationCustomizationRoundExample extends React.Component<{}, IPa
         pageCount={50}
         previousLabel={'<<'}
         nextLabel={'>>'}
-        marginPagesDisplayed={2}
+        marginPages={2}
         pageAriaLabel={'page'}
         onPageChange={this.onPageChange}
         styles={{

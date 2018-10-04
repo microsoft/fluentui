@@ -12,7 +12,7 @@ export class PaginationBase extends BaseComponent<IPaginationProps, {}> {
     previousLabel: '<<',
     selectedPageIndex: 0,
     pageRange: 2,
-    marginPagesDisplayed: 1,
+    marginPages: 1,
     omissionLabel: '...'
   };
 
@@ -68,11 +68,12 @@ export class PaginationBase extends BaseComponent<IPaginationProps, {}> {
   }
 
   private handleSelectedPage = (selected: number) => {
-    if (selected === this.props.selectedPageIndex) {
+    const { selectedPageIndex, onPageChange } = this.props;
+    if (selected === selectedPageIndex) {
       return; // same page, no action
     }
-    if (this.props.onPageChange) {
-      this.props.onPageChange(selected);
+    if (onPageChange) {
+      onPageChange(selected);
     }
   };
 
@@ -85,12 +86,13 @@ export class PaginationBase extends BaseComponent<IPaginationProps, {}> {
   };
 
   private _pageElement(index: number): JSX.Element {
+    const { pageAriaLabel, selectedPageIndex } = this.props;
     return (
       <PageNumber
         key={index + 1}
         page={index + 1}
-        pageAriaLabel={this.props.pageAriaLabel}
-        selected={index === this.props.selectedPageIndex}
+        pageAriaLabel={pageAriaLabel}
+        selected={index === selectedPageIndex}
         applyPage={this.handleSelectedPage}
         className={this._classNames.pageNumber}
       />
@@ -98,33 +100,34 @@ export class PaginationBase extends BaseComponent<IPaginationProps, {}> {
   }
 
   private _pageList(): JSX.Element[] {
+    const { marginPages, omittedPagesAriaLabel, omissionLabel, pageCount, pageRange, selectedPageIndex } = this.props;
     const pageList = [];
-    if (this.props.pageCount <= this.props.pageRange!) {
-      for (let index = 0; index < this.props.pageCount; index++) {
+    if (pageCount <= pageRange!) {
+      for (let index = 0; index < pageCount; index++) {
         pageList.push(this._pageElement(index));
       }
     } else {
-      const leftHalfCount = this.props.pageRange! / 2;
-      const rightHalfCount = this.props.pageRange! - leftHalfCount;
+      const leftHalfCount = pageRange! / 2;
+      const rightHalfCount = pageRange! - leftHalfCount;
 
       let leftSide = leftHalfCount;
       let rightSide = rightHalfCount;
 
-      if (this.props.selectedPageIndex! > this.props.pageCount - 1 - leftHalfCount) {
-        rightSide = this.props.pageCount - 1 - this.props.selectedPageIndex!;
-        leftSide = this.props.pageRange! - rightSide;
-      } else if (this.props.selectedPageIndex! < leftHalfCount) {
-        leftSide = this.props.selectedPageIndex!;
-        rightSide = this.props.pageRange! - leftSide;
+      if (selectedPageIndex! > pageCount - 1 - leftHalfCount) {
+        rightSide = pageCount - 1 - selectedPageIndex!;
+        leftSide = pageRange! - rightSide;
+      } else if (selectedPageIndex! < leftHalfCount) {
+        leftSide = selectedPageIndex!;
+        rightSide = pageRange! - leftSide;
       }
 
       let previousIndexIsOmitted = false;
-      for (let index = 0; index < this.props.pageCount; index++) {
+      for (let index = 0; index < pageCount; index++) {
         const page = index + 1;
         if (
-          page <= this.props.marginPagesDisplayed! ||
-          page > this.props.pageCount - this.props.marginPagesDisplayed! ||
-          (index >= this.props.selectedPageIndex! - leftSide && index <= this.props.selectedPageIndex! + rightSide)
+          page <= marginPages! ||
+          page > pageCount - marginPages! ||
+          (index >= selectedPageIndex! - leftSide && index <= selectedPageIndex! + rightSide)
         ) {
           pageList.push(this._pageElement(index));
           previousIndexIsOmitted = false;
@@ -134,8 +137,8 @@ export class PaginationBase extends BaseComponent<IPaginationProps, {}> {
         if (previousIndexIsOmitted === false) {
           const listKey = 'ellipsis' + index.toString();
           pageList.push(
-            <li key={listKey} className={this._classNames.omission} aria-label={this.props.omittedPagesAriaLabel}>
-              {this.props.omissionLabel}
+            <li key={listKey} className={this._classNames.omission} aria-label={omittedPagesAriaLabel}>
+              {omissionLabel}
             </li>
           );
           previousIndexIsOmitted = true;

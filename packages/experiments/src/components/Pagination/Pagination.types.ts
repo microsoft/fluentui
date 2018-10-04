@@ -38,7 +38,7 @@ export interface IPaginationProps {
    * The number of pages in the beginning and the end of the list.
    * @default 1
    */
-  marginPagesDisplayed?: number;
+  marginPages?: number;
 
   /**
    * Selected page index
