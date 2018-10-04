@@ -13,40 +13,40 @@ storiesOf('TeachingBubble', module)
   .addDecorator(FabricDecoratorTall)
   .addDecorator(story => (
     <Screener
-      steps={ new Screener.Steps()
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.ms-TeachingBubble' })
         .end()
       }
     >
-      { story() }
+      {story()}
     </Screener>
   ))
-  .add('WideIllustration', () => {
+  .addStory('WideIllustration', () => {
     let exampleImageProps: IImageProps = { src: 'http://placehold.it/364x140' };
     let examplePrimaryButton: IButtonProps = {
       children: 'Got it',
     };
     return <TeachingBubble
-      illustrationImage={ exampleImageProps }
-      calloutProps={ { directionalHint: DirectionalHint.bottomCenter } }
-      isWide={ true }
-      hasSmallHeadline={ true }
-      hasCloseIcon={ true }
-      primaryButtonProps={ examplePrimaryButton }
+      illustrationImage={exampleImageProps}
+      calloutProps={{ directionalHint: DirectionalHint.bottomCenter }}
+      isWide={true}
+      hasSmallHeadline={true}
+      hasCloseIcon={true}
+      primaryButtonProps={examplePrimaryButton}
       headline='Discover what’s trending around you'
     >
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni harum non?
       Modal content
     </TeachingBubble >
-  })
-  .add('SmallHeadline', () => {
+  }, { rtl: true })
+  .addStory('SmallHeadline', () => {
     let examplePrimaryButton: IButtonProps = {
       children: 'Got it',
     };
     return <TeachingBubble
-      hasSmallHeadline={ true }
-      hasCloseIcon={ true }
-      primaryButtonProps={ examplePrimaryButton }
+      hasSmallHeadline={true}
+      hasCloseIcon={true}
+      primaryButtonProps={examplePrimaryButton}
       headline='Discover what’s trending around you'
     >
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni harum non?

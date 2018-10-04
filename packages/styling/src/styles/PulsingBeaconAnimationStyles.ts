@@ -89,12 +89,12 @@ function _continuousPulseAnimationSingle(
   });
 }
 
-function _createDefaultAnimation(animationName: string): IRawStyle {
+function _createDefaultAnimation(animationName: string, delayLength?: string): IRawStyle {
   return {
     animationName,
     animationIterationCount: DEFAULT_ITERATION_COUNT,
     animationDuration: DEFAULT_DURATION,
-    animationDelay: DEFAULT_DELAY
+    animationDelay: delayLength || DEFAULT_DELAY
   };
 }
 

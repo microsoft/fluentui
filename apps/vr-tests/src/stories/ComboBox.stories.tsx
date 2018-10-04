@@ -22,7 +22,7 @@ let fontMapping = {
 let onRenderFontOption = (item) => {
   if (item.itemType === SelectableOptionMenuItemType.Header ||
     item.itemType === SelectableOptionMenuItemType.Divider) {
-    return <span className={ 'ms-ComboBox-optionText' }>{ item.text }</span>;
+    return <span className={'ms-ComboBox-optionText'}>{item.text}</span>;
   }
 
   let fontFamily = fontMapping[item.text];
@@ -41,14 +41,14 @@ let onRenderFontOption = (item) => {
   }
 
   // tslint:disable-next-line:jsx-ban-props
-  return <span className={ 'ms-ComboBox-optionText' } style={ { fontFamily: fontFamily && fontFamily } }>{ item.text }</span>;
+  return <span className={'ms-ComboBox-optionText'} style={{ fontFamily: fontFamily && fontFamily }}>{item.text}</span>;
 };
 
 storiesOf('ComboBox', module)
   .addDecorator(FabricDecoratorTallFixedWdith)
   .addDecorator(story => (
     <Screener
-      steps={ new Screener.Steps()
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-ComboBox-Input')
         .snapshot('hover', { cropTo: '.testWrapper' })
@@ -58,35 +58,35 @@ storiesOf('ComboBox', module)
         .end()
       }
     >
-      { story() }
+      {story()}
     </Screener>
   ))
-  .add('Root', () => (
+  .addStory('Root', () => (
     <ComboBox
       defaultSelectedKey='A'
       label='Default with dividers'
       ariaLabel='Basic ComboBox example'
       autoComplete='on'
-      options={ testOptions }
+      options={testOptions}
     />
-  ))
-  .add('Styled', () => (
+  ), { rtl: true })
+  .addStory('Styled', () => (
     <ComboBox
       defaultSelectedKey='A'
       label='Styled with dividers'
       ariaLabel='Basic ComboBox example'
       autoComplete='on'
-      options={ testOptions }
-      onRenderOption={ onRenderFontOption }
+      options={testOptions}
+      onRenderOption={onRenderFontOption}
     />
   ))
-  .add('Disabled', () => (
+  .addStory('Disabled', () => (
     <ComboBox
       defaultSelectedKey='A'
       label='Disabled'
       ariaLabel='Basic ComboBox example'
       autoComplete='on'
-      options={ testOptions }
+      options={testOptions}
       disabled
     />
   ));

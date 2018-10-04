@@ -2,6 +2,28 @@
   "name": "@uifabric/jest-serializer-merge-styles",
   "entries": [
     {
+      "version": "6.0.5",
+      "tag": "@uifabric/jest-serializer-merge-styles_v6.0.5",
+      "date": "Fri, 21 Sep 2018 14:25:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding a version stamp file",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "11c18bce52dba131548610c5eea0c1ab7fa4d1ca"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.0.0 <2.0.0` to `>=1.1.0 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.9.0 <7.0.0` to `>=6.9.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.0.4",
       "tag": "@uifabric/jest-serializer-merge-styles_v6.0.4",
       "date": "Tue, 14 Aug 2018 10:27:33 GMT",

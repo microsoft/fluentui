@@ -14,10 +14,14 @@ import {
 } from '../../Utilities';
 import { registerLayer, getDefaultTarget, unregisterLayer } from './Layer.notification';
 
+export type ILayerBaseState = {
+  hasMounted: boolean;
+};
+
 const getClassNames = classNamesFunction<ILayerStyleProps, ILayerStyles>();
 
 @customizable('Layer', ['theme', 'hostId'])
-export class LayerBase extends BaseComponent<ILayerProps, {}> {
+export class LayerBase extends BaseComponent<ILayerProps, ILayerBaseState> {
   public static defaultProps: ILayerProps = {
     onLayerDidMount: () => undefined,
     onLayerWillUnmount: () => undefined
@@ -29,6 +33,10 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
 
   constructor(props: ILayerProps) {
     super(props);
+
+    this.state = {
+      hasMounted: false
+    };
 
     this._warnDeprecations({
       onLayerMounted: 'onLayerDidMount'
@@ -50,6 +58,10 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
   }
 
   public componentDidMount(): void {
+    // We can safely set state immediately because the ref wrapper will make sure the virtual
+    //    parent has been set before componentDidMount is called.
+    this.setState({ hasMounted: true });
+
     this._setVirtualParent();
 
     const { onLayerDidMount, onLayerMounted } = this.props;
@@ -82,10 +94,12 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
   public render(): React.ReactNode {
     const classNames = this._getClassNames();
     const { eventBubblingEnabled } = this.props;
+    const { hasMounted } = this.state;
 
     return (
-      <span className="ms-layer" ref={this._rootElement}>
+      <span className="ms-layer" ref={this._handleRootElementRef}>
         {this._layerElement &&
+          hasMounted &&
           ReactDOM.createPortal(
             eventBubblingEnabled ? (
               <Fabric className={classNames.content}>{this.props.children}</Fabric>
@@ -130,12 +144,26 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
   }
 
   /**
+   * rootElement wrapper for setting virtual parent as soon as root element ref is available.
+   */
+  private _handleRootElementRef = (ref: HTMLDivElement): void => {
+    this._rootElement(ref);
+    if (ref) {
+      // TODO: Calling _setVirtualParent in this ref wrapper SHOULD allow us to remove
+      //    other calls to _setVirtualParent throughout this class. However,
+      //    as this is an immediate fix for a P0 issue the existing _setVirtualParent
+      //    calls are left for now to minimize potential regression.
+      this._setVirtualParent();
+    }
+  };
+
+  /**
    * Helper to stop events from bubbling up out of Layer.
    */
   private _filterEvent = (ev: React.SyntheticEvent<HTMLElement>): void => {
     // We should just be able to check ev.bubble here and only stop events that are bubbling up. However, even though mouseenter and
     //    mouseleave do NOT bubble up, they are showing up as bubbling. Therefore we stop events based on event name rather than ev.bubble.
-    if (ev.type !== 'mouseenter' && ev.type !== 'mouseleave') {
+    if (ev.eventPhase === Event.BUBBLING_PHASE && ev.type !== 'mouseenter' && ev.type !== 'mouseleave') {
       ev.stopPropagation();
     }
   };

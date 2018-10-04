@@ -1,32 +1,23 @@
 import { IStyle } from '../../../Styling';
-import { IStyleableComponentProps } from '../../../Foundation';
+import { IStatelessComponent, IStyleableComponentProps } from '../../../Foundation';
+
+export type IStackItemComponent = IStatelessComponent<IStackItemProps, IStackItemStyles>;
 
 export interface IStackItemProps extends IStyleableComponentProps<IStackItemProps, IStackItemStyles> {
+  /**
+   * How to render the StackItem.
+   */
+  as?: string | React.ReactType<IStackItemProps>;
+
   /**
    * CSS class name used to style the StackItem.
    */
   className?: string;
 
   /**
-   * How to render the StackItem.
+   * @internal Internal use only - gives the Stack component a handle on the children of its Stack.Items
    */
-  renderAs?: string | React.ReactType<IStackItemProps>;
-
-  /** @internal Internal use only - gives the Stack component a handle on the children of its Stack.Items */
   children?: (React.ReactElement<IStackItemProps> | string)[] | React.ReactElement<IStackItemProps> | string;
-
-  /**
-   * Top margin (for vertical StackItems) or left margin (for horizontal StackItems).
-   */
-  gap?: number;
-
-  /**
-   * Whether the StackItem is within a horizontal Stack.
-   */
-  horizontal?: boolean;
-
-  /** @internal Internal use only - allows the Stack component to determine whether to apply a margin to the StackItem. */
-  index?: number;
 
   /**
    * How much to grow the StackItem in proportion to its siblings.
@@ -48,6 +39,16 @@ export interface IStackItemProps extends IStyleableComponentProps<IStackItemProp
    * How to align the StackItem along the x-axis (for vertical Stacks) or the y-axis (for horizontal Stacks).
    */
   align?: 'auto' | 'stretch' | 'baseline' | 'start' | 'center' | 'end';
+
+  /**
+   * Whether the StackItem should take up 100% of the width of its parent.
+   */
+  fillHorizontal?: boolean;
+
+  /**
+   * Whether the StackItem should take up 100% of the height of its parent.
+   */
+  fillVertical?: boolean;
 }
 
 export interface IStackItemStyles {

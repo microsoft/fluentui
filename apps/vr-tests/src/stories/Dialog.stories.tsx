@@ -22,7 +22,7 @@ storiesOf('Dialog', module)
   .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.ms-Dialog-main' }).end()}>{story()}</Screener>
   ))
-  .add('Root', () => (
+  .addStory('Root', () => (
     <Dialog
       hidden={false}
       dialogContentProps={{
@@ -35,8 +35,8 @@ storiesOf('Dialog', module)
     >
       {footer}
     </Dialog>
-  ))
-  .add('Wide Dialog', () => (
+  ), { rtl: true })
+  .addStory('Wide Dialog', () => (
     <Dialog
       hidden={false}
       dialogContentProps={{
@@ -52,7 +52,7 @@ storiesOf('Dialog', module)
       {footer}
     </Dialog>
   ))
-  .add('Large header', () => (
+  .addStory('Large header', () => (
     <Dialog
       hidden={false}
       dialogContentProps={{
@@ -66,7 +66,7 @@ storiesOf('Dialog', module)
       {footer}
     </Dialog>
   ))
-  .add('Blocking', () => (
+  .addStory('Blocking', () => (
     <Dialog
       hidden={false}
       dialogContentProps={{

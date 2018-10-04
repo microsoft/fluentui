@@ -9,17 +9,17 @@ storiesOf('Tooltip', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
-      steps={ new Screener.Steps()
+      steps={new Screener.Steps()
         .hover('.ms-TooltipHost')
         .wait(200)
         .snapshot('default')
         .end()
       }
     >
-      { story() }
+      {story()}
     </Screener>
-  )).add('Default', () => (
-    <TooltipHost content='This is the tooltip' id='myID' calloutProps={ { gapSpace: 0 } }>
+  )).addStory('Default', () => (
+    <TooltipHost content='This is the tooltip' id='myID' calloutProps={{ gapSpace: 0 }}>
       Hover over me
     </TooltipHost>
   ));

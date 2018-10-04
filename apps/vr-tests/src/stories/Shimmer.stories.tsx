@@ -13,14 +13,14 @@ storiesOf('Shimmer', module)
   ))
   .addDecorator(FabricDecorator)
   .addDecorator(story => <Screener steps={new Screener.Steps().snapshot('default').end()}>{story()}</Screener>)
-  .add('Basic', () => <Shimmer />)
-  .add('50% width', () => <Shimmer width={'50%'} />)
-  .add('Circle Gap Line', () => (
+  .addStory('Basic', () => <Shimmer />)
+  .addStory('50% width', () => <Shimmer width={'50%'} />)
+  .addStory('Circle Gap Line', () => (
     <Shimmer
       shimmerElements={[{ type: ElemType.circle }, { type: ElemType.gap, width: '2%' }, { type: ElemType.line }]}
     />
-  ))
-  .add('Custom elements', () => (
+  ), { rtl: true })
+  .addStory('Custom elements', () => (
     <Shimmer
       customElementsGroup={
         <div
@@ -44,12 +44,12 @@ storiesOf('Shimmer', module)
       width={300}
     />
   ))
-  .add('Data not loaded', () => (
+  .addStory('Data not loaded', () => (
     <Shimmer isDataLoaded={false} ariaLabel={'Loading content'}>
       <div>Example content</div>
     </Shimmer>
   ))
-  .add('Data loaded', () => (
+  .addStory('Data loaded', () => (
     <Shimmer isDataLoaded={true} ariaLabel={'Loading content'}>
       <div>Example content</div>
     </Shimmer>

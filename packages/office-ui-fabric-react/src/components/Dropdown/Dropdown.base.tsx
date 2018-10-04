@@ -27,13 +27,7 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { ResponsiveMode, withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
-import {
-  DropdownMenuItemType,
-  IDropdownOption,
-  IDropdownProps,
-  IDropdownStyleProps,
-  IDropdownStyles
-} from './Dropdown.types';
+import { DropdownMenuItemType, IDropdownOption, IDropdownProps, IDropdownStyleProps, IDropdownStyles } from './Dropdown.types';
 import { DropdownSizePosCache } from './utilities/DropdownSizePosCache';
 
 const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>();
@@ -183,9 +177,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
         {
           role: 'listbox',
           ariaActiveDescendant:
-            isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0
-              ? this._id + '-list' + selectedIndices[0]
-              : optionId,
+            isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0 ? this._id + '-list' + selectedIndices[0] : optionId,
           childRole: 'option',
           ariaSetSize: this._sizePosCache.optionSetSize,
           ariaPosInSet: this._sizePosCache.positionInSet(selectedIndices[0]),
@@ -211,13 +203,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     return (
       <div className={this._classNames.root}>
         {label && (
-          <Label
-            className={this._classNames.label}
-            id={id + '-label'}
-            htmlFor={id}
-            required={required}
-            styles={labelStyles}
-          >
+          <Label className={this._classNames.label} id={id + '-label'} htmlFor={id} required={required} styles={labelStyles}>
             {label}
           </Label>
         )}
@@ -232,7 +218,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
               aria-expanded={isOpen ? 'true' : 'false'}
               role={ariaAttrs.role}
               aria-label={ariaLabel}
-              aria-labelledby={id + '-label'}
+              aria-labelledby={label ? (id + '-label') : undefined}
               aria-describedby={mergeAriaAttributeValues(optionId, keytipAttributes['aria-describedby'])}
               aria-activedescendant={ariaAttrs.ariaActiveDescendant}
               aria-disabled={disabled}
@@ -261,9 +247,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
                   ? onRenderTitle(selectedOptions, this._onRenderTitle)
                   : onRenderPlaceHolder(this.props, this._onRenderPlaceHolder)}
               </span>
-              <span className={this._classNames.caretDownWrapper}>
-                {onRenderCaretDown(this.props, this._onRenderCaretDown)}
-              </span>
+              <span className={this._classNames.caretDownWrapper}>{onRenderCaretDown(this.props, this._onRenderCaretDown)}</span>
             </div>
           )}
         </KeytipData>
@@ -346,12 +330,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
    * @param selectedIndex The selectedIndex Dropdown's state
    * @returns The next valid dropdown option's index
    */
-  private _moveIndex(
-    event: React.FormEvent<HTMLDivElement>,
-    stepValue: number,
-    index: number,
-    selectedIndex: number
-  ): number {
+  private _moveIndex(event: React.FormEvent<HTMLDivElement>, stepValue: number, index: number, selectedIndex: number): number {
     const { options } = this.props;
     // Return selectedIndex if nothing has changed or options is empty
     if (selectedIndex === index || options.length === 0) {
@@ -516,8 +495,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     const { onRenderOption = this._onRenderOption } = this.props;
     const { selectedIndices = [] } = this.state;
     const id = this._id;
-    const isItemSelected =
-      item.index !== undefined && selectedIndices ? selectedIndices.indexOf(item.index) > -1 : false;
+    const isItemSelected = item.index !== undefined && selectedIndices ? selectedIndices.indexOf(item.index) > -1 : false;
 
     // select the right classname based on the combination of selected/disabled
     const itemClassName =
@@ -678,10 +656,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   };
 
   // Get all selected indexes for multi-select mode
-  private _getSelectedIndexes(
-    options: IDropdownOption[],
-    selectedKey: string | number | string[] | number[] | undefined
-  ): number[] {
+  private _getSelectedIndexes(options: IDropdownOption[], selectedKey: string | number | string[] | number[] | undefined): number[] {
     if (selectedKey === undefined) {
       if (this.props.multiSelect) {
         return this._getAllSelectedIndices(options);
@@ -714,9 +689,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   }
 
   private _getAllSelectedIndices(options: IDropdownOption[]): number[] {
-    return options
-      .map((option: IDropdownOption, index: number) => (option.selected ? index : -1))
-      .filter(index => index !== -1);
+    return options.map((option: IDropdownOption, index: number) => (option.selected ? index : -1)).filter(index => index !== -1);
   }
 
   private _getSelectedIndex(options: IDropdownOption[], selectedKey: string | number | null): number {
@@ -731,6 +704,12 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   }
 
   private _onDropdownBlur = (ev: React.FocusEvent<HTMLDivElement>): void => {
+    // If Dropdown disabled do not proceed with this logic.
+    const disabled = this._isDisabled();
+    if (disabled) {
+      return;
+    }
+
     // hasFocus tracks whether the root element has focus so always update the state.
     this.setState({ hasFocus: false });
 
@@ -744,6 +723,12 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   };
 
   private _onDropdownKeyDown = (ev: React.KeyboardEvent<HTMLDivElement>): void => {
+    // If Dropdown disabled do not process any keyboard events.
+    const disabled = this._isDisabled();
+    if (disabled) {
+      return;
+    }
+
     // Take note if we are processing a altKey or metaKey keydown
     // so that the menu does not collapse if no other keys are pressed
     this._processingExpandCollapseKeyOnly = this._isExpandCollapseKey(ev);
@@ -832,6 +817,12 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   };
 
   private _onDropdownKeyUp = (ev: React.KeyboardEvent<HTMLDivElement>): void => {
+    // If Dropdown disabled do not process any keyboard events.
+    const disabled = this._isDisabled();
+    if (disabled) {
+      return;
+    }
+
     const shouldHandleKey = this._processingExpandCollapseKeyOnly && this._isExpandCollapseKey(ev);
     this._processingExpandCollapseKeyOnly = false;
     const isOpen = this.state.isOpen;
@@ -951,13 +942,13 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
 
     const disabled = this._isDisabled();
 
-    if (!isOpen && selectedIndices.length === 0 && !multiSelect && !disabled) {
-      // Per aria
-      this._moveIndex(ev, 1, 0, -1);
+    if (!disabled) {
+      if (!isOpen && selectedIndices.length === 0 && !multiSelect) {
+        // Per aria
+        this._moveIndex(ev, 1, 0, -1);
+      }
+      this.setState({ hasFocus: true });
     }
-
-    this.setState({ hasFocus: true });
-    return;
   };
 
   /**

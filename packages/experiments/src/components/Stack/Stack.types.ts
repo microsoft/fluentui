@@ -1,18 +1,23 @@
 import { IStyle } from '../../Styling';
-import { IStyleableComponentProps } from '../../Foundation';
+import { IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
 
 export type Alignment = 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'baseline' | 'stretch';
 
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
-// contains the members of IStackProps that are common to both VerticalStack and HorizontalStack
-export type IPartialStackProps = Omit<IStackProps, 'verticalAlignment' | 'horizontalAlignment' | 'horizontal'>;
+export type IStackComponent = IStatelessComponent<IStackProps, IStackStyles>;
 
-export interface IStackProps extends IStyleableComponentProps<IStackProps, IStackStyles> {
+// contains the members of IStackProps that are common to both VerticalStack and HorizontalStack
+export type IPartialStackProps = Omit<
+  IStackProps,
+  'verticalAlignment' | 'horizontalAlignment' | 'horizontal' | 'verticalGap' | 'horizontalGap' | 'wrap' | 'styles'
+>;
+
+export interface IStackProps extends IStyleableComponentProps<IStackProps, IStackStyles>, React.HTMLAttributes<HTMLElement> {
   /**
    * How to render the Stack.
    */
-  renderAs?: string | React.ReactType<IStackProps>;
+  as?: string | React.ReactType<IPartialStackProps>;
 
   /**
    * CSS class name used to style the Stack.
@@ -62,7 +67,7 @@ export interface IStackProps extends IStyleableComponentProps<IStackProps, IStac
   /**
    * Spacing between Stack child elements.
    */
-  gap?: number;
+  gap?: number | string;
 
   /**
    * Maximum width of the Stack.
@@ -80,9 +85,19 @@ export interface IStackProps extends IStyleableComponentProps<IStackProps, IStac
   padding?: number | string;
 
   /**
-   * Margin of the Stack.
+   * Whether Stack children should wrap onto multiple rows (HorizontalStacks only).
    */
-  margin?: number | string;
+  wrap?: boolean;
+
+  /**
+   * Horizontal gap between Stack child elements.
+   */
+  horizontalGap?: number | string;
+
+  /**
+   * Vertical gap between Stack child elements.
+   */
+  verticalGap?: number | string;
 }
 
 export interface IStackStyles {

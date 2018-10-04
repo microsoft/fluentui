@@ -1,8 +1,7 @@
 import { ISemanticTextColors } from '../../Styling';
-import { IThemedProps } from '../../Foundation';
-import { ITextProps, ITextStyles } from './Text.types';
+import { ITextComponent } from './Text.types';
 
-export const TextStyles = (props: IThemedProps<ITextProps>): ITextStyles => {
+export const TextStyles: ITextComponent['styles'] = props => {
   const { as, className, inline, theme, wrap, variant, family, weight, size, color, hoverColor } = props;
   const { semanticColors, typography } = theme;
   const variantObject = typography.variants[variant!] || typography.variants.default;
@@ -11,11 +10,11 @@ export const TextStyles = (props: IThemedProps<ITextProps>): ITextStyles => {
     root: [
       {
         display: inline ? 'inline' : as === 'td' ? 'table-cell' : 'block',
-        fontFamily: variantObject.family,
-        fontSize: variantObject.size,
+        fontFamily: variantObject.family || 'inherit',
+        fontSize: variantObject.size || 'inherit',
         // tslint:disable-next-line:no-any
-        fontWeight: variantObject.weight as any,
-        color: variantObject.color
+        fontWeight: (variantObject.weight as any) || 'inherit',
+        color: variantObject.color || 'inherit'
       },
       family && {
         // TODO: How are language specific font families configured?

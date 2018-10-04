@@ -16,7 +16,8 @@ import {
   focusAsync,
   getId,
   getNativeProps,
-  shallowCompare
+  shallowCompare,
+  findElementRecursive
 } from '../../Utilities';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
@@ -835,7 +836,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         return;
       }
       if (this.props.multiSelect) {
-        // Setting the initial state of option.selected in Multi-select combobox by checking the selectedIndices array and overriding the undefined issue
+        // Setting the initial state of option.selected in Multi-select combobox by checking the
+        // selectedIndices array and overriding the undefined issue
         option.selected = option.selected !== undefined ? !option.selected : selectedIndices.indexOf(index) < 0;
         if (option.selected && selectedIndices.indexOf(index) < 0) {
           selectedIndices.push(index);
@@ -935,8 +937,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
     if (
       relatedTarget &&
+      // when event coming from withing the comboBox title
       ((this._root.current && this._root.current.contains(relatedTarget as HTMLElement)) ||
-        (this._comboBoxMenu.current && this._comboBoxMenu.current.contains(relatedTarget as HTMLElement)))
+        // when event coming from within the comboBox list menu
+        (this._comboBoxMenu.current &&
+          (this._comboBoxMenu.current.contains(relatedTarget as HTMLElement) ||
+            // when event coming from the callout containing the comboBox list menu (ex: when scrollBar of the Callout clicked)
+            // checks if the relatedTarget is a parent of _comboBoxMenu
+            findElementRecursive(this._comboBoxMenu.current, element => element === relatedTarget))))
     ) {
       event.preventDefault();
       event.stopPropagation();

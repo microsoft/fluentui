@@ -15,6 +15,8 @@ export interface IDialogState {
   isVisible?: boolean;
   isVisibleClose?: boolean;
   id?: string;
+  hasBeenOpened?: boolean;
+  modalRectangleTop?: number;
 }
 
 const getClassNames = classNamesFunction<IModalStyleProps, IModalStyles>();
@@ -38,7 +40,8 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
     this.state = {
       id: getId('Modal'),
       isOpen: props.isOpen,
-      isVisible: props.isOpen
+      isVisible: props.isOpen,
+      hasBeenOpened: props.isOpen
     };
   }
 
@@ -53,10 +56,23 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
           isOpen: true
         });
       } else {
+        // Modal has been opened
         // Reopen during closing
         this.setState({
+          hasBeenOpened: true,
           isVisible: true
         });
+
+        if (newProps.topOffsetFixed) {
+          const dialogMain = document.getElementsByClassName('ms-Dialog-main');
+          let modalRectangle;
+          if (dialogMain.length > 0) {
+            modalRectangle = dialogMain[0].getBoundingClientRect();
+            this.setState({
+              modalRectangleTop: modalRectangle.top
+            });
+          }
+        }
       }
     }
 
@@ -95,9 +111,10 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       titleAriaId,
       styles,
       subtitleAriaId,
-      theme
+      theme,
+      topOffsetFixed
     } = this.props;
-    const { isOpen, isVisible } = this.state;
+    const { isOpen, isVisible, hasBeenOpened, modalRectangleTop } = this.state;
 
     if (!isOpen) {
       return null;
@@ -109,7 +126,10 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       containerClassName,
       scrollableContentClassName,
       isOpen,
-      isVisible
+      isVisible,
+      hasBeenOpened,
+      modalRectangleTop,
+      topOffsetFixed
     });
 
     // @temp tuatology - Will adjust this to be a panel at certain breakpoints
@@ -123,11 +143,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
             onDismiss={onDismiss}
           >
             <div className={classNames.root}>
-              <Overlay
-                isDarkThemed={isDarkOverlay}
-                onClick={isBlocking ? undefined : (onDismiss as any)}
-                styles={getOverlayStyles}
-              />
+              <Overlay isDarkThemed={isDarkOverlay} onClick={isBlocking ? undefined : (onDismiss as any)} styles={getOverlayStyles} />
               <FocusTrapZone
                 componentRef={this._focusTrapZone}
                 className={classNames.main}
