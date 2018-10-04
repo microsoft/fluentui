@@ -2,6 +2,31 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.29.0",
+      "tag": "@uifabric/dashboard_v0.29.0",
+      "date": "Thu, 04 Oct 2018 12:26:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding common href for the entire multicount component. Removing href that was in before  that allowed passing href to every row seperately",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "99a969e67f1b0d396007f7ff0c5acb7a8dc20d00"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.23.0` to `^0.24.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.34.1 <7.0.0` to `>=6.34.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.77.0 <7.0.0` to `>=6.78.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.28.1",
       "tag": "@uifabric/dashboard_v0.28.1",
       "date": "Wed, 03 Oct 2018 12:28:46 GMT",

@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "6.29.0",
+      "tag": "@uifabric/styling_v6.29.0",
+      "date": "Thu, 04 Oct 2018 12:26:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add delayLength parameter to _createDefaultAnimation in PulsingBeaconAnimationStyles",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "a6d25782cd0b11a5f010b1409f8fa2a287a370e5"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.28.0",
       "tag": "@uifabric/styling_v6.28.0",
       "date": "Mon, 01 Oct 2018 12:27:24 GMT",

@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 03 Oct 2018 12:28:46 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Oct 2018 12:26:48 GMT and should not be manually modified.
+
+## 6.78.0
+Thu, 04 Oct 2018 12:26:48 GMT
+
+### Minor changes
+
+- Coachmark: Add delayBeforeCoachmarkAnimation prop
+
+### Patches
+
+- Add explicit min-width of 0px to SearchBox input element, to prevent overflow when SearchBox has a fixed width.
+- Modal: small topOffsetFixed changes and added example to Dialog
+- Dropdown: only apply an aria-labelledby attribute if a non-empty label property is given
+- Correct hover and highlight states for Calendar (DateRangeType.Week)
 
 ## 6.77.0
 Wed, 03 Oct 2018 12:28:46 GMT

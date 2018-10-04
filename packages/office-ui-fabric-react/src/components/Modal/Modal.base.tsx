@@ -62,6 +62,17 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
           hasBeenOpened: true,
           isVisible: true
         });
+
+        if (newProps.topOffsetFixed) {
+          const dialogMain = document.getElementsByClassName('ms-Dialog-main');
+          let modalRectangle;
+          if (dialogMain.length > 0) {
+            modalRectangle = dialogMain[0].getBoundingClientRect();
+            this.setState({
+              modalRectangleTop: modalRectangle.top
+            });
+          }
+        }
       }
     }
 
@@ -79,17 +90,6 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       this.setState({
         isVisible: true
       });
-
-      if (prevProps.topOffsetFixed) {
-        const dialogMain = document.getElementsByClassName('ms-Dialog-main');
-        let modalRectangle;
-        if (dialogMain.length > 0) {
-          modalRectangle = dialogMain[0].getBoundingClientRect();
-          this.setState({
-            modalRectangleTop: modalRectangle.top
-          });
-        }
-      }
     }
   }
 

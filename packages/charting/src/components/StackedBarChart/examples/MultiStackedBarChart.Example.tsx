@@ -30,5 +30,5 @@ export const MultiStackedBarChartExample: React.SFC<{}> = () => {
     }
   ];
 
-  return <MultiStackedBarChart data={data} hideRatio={hideRatio} width={600} />;
+  return <MultiStackedBarChart data={data} hideRatio={hideRatio} width={600} href={'https://developer.microsoft.com/en-us/'} />;
 };

@@ -30,6 +30,11 @@ export interface IMultiCountProps {
    * custom message for the multicount
    */
   customMessage?: string;
+
+  /**
+   *Url to be redirected to upon clicking on the component
+   */
+  href?: string;
 }
 
 export enum AnnotationType {
@@ -86,11 +91,6 @@ export interface IMultiCountRow {
    *Indicates the whether the change for data is positive, negative or nuetral
    */
   type: AnnotationType;
-
-  /**
-   *Url to be redirected to upon clicking on row of Multicount
-   */
-  href?: string;
 
   /**
    *prop to hide the change-indicator icon in the row
