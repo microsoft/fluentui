@@ -291,6 +291,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
                 ms-Button
                 ms-Facepile-itemButton
                 ms-Facepile-person
+                ms-Button--facepile
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component Examples renders Facepile.AddFace.Example.tsx correctly 1`] = `
+exports[`Component Examples renders Facepile.ButtonStyles.Example.tsx correctly 1`] = `
 <div
   className=
       ms-Facepile
@@ -111,6 +111,13 @@ exports[`Component Examples renders Facepile.AddFace.Example.tsx correctly 1`] =
           }
           &:disabled {
             background-color: #c8c8c8;
+          }
+          & .ms-Persona-initials {
+            background: #d83b01;
+          }
+          &:hover .ms-Persona-initials {
+            background: #ff8c00;
+            color: #000000;
           }
       data-is-focusable={true}
       onClick={[Function]}
