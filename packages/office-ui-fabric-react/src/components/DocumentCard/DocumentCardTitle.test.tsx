@@ -31,11 +31,4 @@ describe('DocumentCardTitle', () => {
 
     expect(component.text()).toEqual(veryLongTitle);
   });
-
-  it('shows title with secondary title style', () => {
-    const component = renderer.create(<DocumentCardTitle title={normalLengthTitle} showAsSecondaryTitle={true} />);
-
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
 });
