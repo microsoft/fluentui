@@ -5,7 +5,7 @@
 import { autobind } from 'office-ui-fabric-react';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
-import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
+import { DirectionalHint } from 'office-ui-fabric-react';
 import { ScrollablePane } from 'office-ui-fabric-react/lib/ScrollablePane';
 import { concatStyleSets, ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { BaseComponent, KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
