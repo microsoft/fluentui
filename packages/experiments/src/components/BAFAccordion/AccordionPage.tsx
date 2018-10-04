@@ -23,15 +23,12 @@ export class AccordionPage extends React.Component<IComponentDemoPageProps, {}> 
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet
-            sources={[require<string>('!raw-loader!business-app-fabric/src/components/Accordion/Accordion.types.tsx')]}
-          />
+          <PropertiesTableSet sources={[require<string>('!raw-loader!business-app-fabric/src/components/Accordion/Accordion.types.tsx')]} />
         }
         overview={
           <div>
             <p>
-              The Accordion component creates a collapsible section where a parent button is used to show or hide the
-              children elements.
+              The Accordion component creates a collapsible section where a parent button is used to show or hide the children elements.
             </p>
           </div>
         }

@@ -16,7 +16,7 @@ export class SidebarBasicExample extends React.Component {
     /*
          * Basic sidebar example, with position override so that the example fits into the example page.
          * Here is the wrapper class. By default the sidebar takes all of the left height and is positioned on the left.
-         * 
+         *
          *   .sidebar-position-override {
          *       top: auto;
          *       bottom: auto;
@@ -115,15 +115,7 @@ export class SidebarBasicExample extends React.Component {
             name: 'onRender Example',
             iconProps: { iconName: 'AirTickets' },
             onRender: item => {
-              return (
-                <SidebarButton
-                  key={item.key}
-                  text={item.name}
-                  iconProps={item.iconProps}
-                  role="menuitem"
-                  theme={getTheme()}
-                />
-              );
+              return <SidebarButton key={item.key} text={item.name} iconProps={item.iconProps} role="menuitem" theme={getTheme()} />;
             }
           }
         ]}
