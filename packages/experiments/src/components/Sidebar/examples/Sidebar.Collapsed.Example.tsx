@@ -4,7 +4,7 @@
 
 import { getTheme } from 'office-ui-fabric-react';
 import * as React from 'react';
-import { Sidebar } from '..';
+import { Sidebar } from '../index';
 import './Sidebar.Examples.scss';
 
 export class SidebarCollapsibleExample extends React.Component {

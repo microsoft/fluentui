@@ -4,7 +4,7 @@
 
 import { getTheme } from 'office-ui-fabric-react';
 import * as React from 'react';
-import { Sidebar, SidebarButton } from '..';
+import { Sidebar, SidebarButton } from '../index';
 import './Sidebar.Examples.scss';
 
 export class SidebarBasicExample extends React.Component {

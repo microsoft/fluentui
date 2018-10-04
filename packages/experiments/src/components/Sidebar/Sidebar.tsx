@@ -3,14 +3,14 @@
  */
 
 import { autobind } from 'office-ui-fabric-react';
-import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib';
+import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
-import { DirectionalHint } from 'office-ui-fabric-react';
+import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 import { ScrollablePane } from 'office-ui-fabric-react/lib/ScrollablePane';
 import { concatStyleSets, ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { BaseComponent, KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
 import * as React from 'react';
-import { Accordion } from '../../BAFAccordion';
+import { Accordion } from '../BAFAccordion/Accordion';
 import { getSidebarClassNames, ISidebarClassNames } from './Sidebar.classNames';
 import { getButtonColoredStyles, getSidebarStyles, SidebarColors } from './Sidebar.styles';
 import { ISidebar, ISidebarItemProps, ISidebarProps } from './Sidebar.types';
