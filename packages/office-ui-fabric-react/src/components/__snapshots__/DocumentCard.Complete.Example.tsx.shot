@@ -55,6 +55,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   ms-Link
                   {
                     color: #0078d4;
+                    outline: none;
                     text-decoration: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
@@ -114,6 +115,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   ms-Link
                   {
                     color: #0078d4;
+                    outline: none;
                     text-decoration: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
@@ -173,6 +175,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   ms-Link
                   {
                     color: #0078d4;
+                    outline: none;
                     text-decoration: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {

@@ -150,6 +150,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
+                outline: none;
                 overflow: inherit;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -429,6 +430,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
+                outline: none;
                 overflow: inherit;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -483,6 +485,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
+                outline: none;
                 overflow: inherit;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -537,6 +540,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
+                outline: none;
                 overflow: inherit;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -863,6 +867,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
+                outline: none;
                 overflow: inherit;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -917,6 +922,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
+                outline: none;
                 overflow: inherit;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -1299,6 +1305,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
+                outline: none;
                 overflow: inherit;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -1353,6 +1360,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
+                outline: none;
                 overflow: inherit;
                 padding-bottom: 0px;
                 padding-left: 0px;
