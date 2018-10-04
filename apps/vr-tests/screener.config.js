@@ -16,12 +16,12 @@ module.exports = {
 //   {
 //     browserName: 'chrome'
 //   },
-  // {
-  //   browserName: 'firefox'
-  // },
-  // {
-  //   browserName: 'microsoftedge'
-  // }
+// {
+//   browserName: 'firefox'
+// },
+// {
+//   browserName: 'microsoftedge'
+// }
 // ];
 
 // config.sauce = {
