@@ -122,16 +122,18 @@ export class LineChartBase extends React.Component<
   }
 
   private _fitParentContainer(): void {
-    const { containerWidth, containerHeight } = this.state;
-    const currentContainerWidth = this.chartContainer.getBoundingClientRect().width;
-    const currentContainerHeight = this.chartContainer.getBoundingClientRect().height;
-    const shouldResize = containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight;
-    if (shouldResize) {
-      this.setState({
-        containerWidth: currentContainerWidth,
-        containerHeight: currentContainerHeight - 26
-      });
-    }
+    setTimeout(() => {
+      const { containerWidth, containerHeight } = this.state;
+      const currentContainerWidth = this.chartContainer.getBoundingClientRect().width;
+      const currentContainerHeight = this.chartContainer.getBoundingClientRect().height;
+      const shouldResize = containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight;
+      if (shouldResize) {
+        this.setState({
+          containerWidth: currentContainerWidth,
+          containerHeight: currentContainerHeight - 26
+        });
+      }
+    }, 100);
   }
 
   private _createLegends(data: ILineChartPoints[]): JSX.Element {
@@ -193,6 +195,21 @@ export class LineChartBase extends React.Component<
     return dataPointsArray;
   }
 
+  private _getXAxisValues(xAxisData: string[]): string[] {
+    let tickValues: string[] = [];
+    if (xAxisData.length <= 7) {
+      tickValues = xAxisData;
+    } else {
+      tickValues.push(xAxisData[0]);
+      const length = Math.ceil((xAxisData.length - 2) / 5);
+      for (let i = length; i < xAxisData.length - 2; i += length) {
+        tickValues.push(xAxisData[i]);
+      }
+      tickValues.push(xAxisData[xAxisData.length - 1]);
+    }
+    return tickValues;
+  }
+
   private _createStringXAxis = () => {
     const xAxisData: string[] = [];
     this._points.map((singleLineChartData: ILineChartPoints) => {
@@ -200,6 +217,7 @@ export class LineChartBase extends React.Component<
         xAxisData.push(point.x as string);
       });
     });
+    const tickValues: string[] = this._getXAxisValues(xAxisData);
     const xAxisScale = d3ScaleBand()
       .padding(1)
       .domain(xAxisData)
@@ -208,7 +226,7 @@ export class LineChartBase extends React.Component<
     const xAxis = d3AxisBottom(xAxisScale)
       .tickSize(10)
       .tickPadding(12)
-      .ticks([7])
+      .tickValues(tickValues)
       .tickSizeOuter(0);
     if (this.xAxisElement) {
       d3Select(this.xAxisElement)

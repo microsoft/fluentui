@@ -1,11 +1,9 @@
 import { getNeutralVariant, getSoftVariant, getStrongVariant } from '@uifabric/variants';
+import { IHorizontalStackComponent } from '@uifabric/experiments/lib/Stack';
 
 import { createTheme, IPalette, ITheme, getTheme } from 'office-ui-fabric-react/lib/Styling';
 
-import { IHorizontalStackProps } from '@uifabric/experiments/lib/Stack';
-import { IThemedProps } from '../../Foundation';
-
-export const regionStyles = (props: IThemedProps<IHorizontalStackProps>) => ({
+export const regionStyles: IHorizontalStackComponent['styles'] = props => ({
   root: {
     backgroundColor: props.theme.semanticColors.bodyBackground,
     color: props.theme.semanticColors.bodyText

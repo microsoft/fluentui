@@ -21,6 +21,11 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
     className=
 
         {
+          border-collapse: collapse;
+          margin-bottom: 8px;
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: 8px;
           outline: none;
           padding-bottom: 2px;
           padding-left: 2px;
@@ -39,10 +44,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           className=
 
               {
-                padding-bottom: 0px;
-                padding-left: 0px;
-                padding-right: 0px;
-                padding-top: 0px;
+                padding-bottom: 5px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-top: 5px;
               }
           role="presentation"
         >
@@ -56,10 +61,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: transparent;
-                  background: transparent;
-                  border-radius: 0px;
-                  border: 1px solid transparent;
+                  background-color: #ffffff;
+                  border-radius: 100%;
+                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   cursor: pointer;
@@ -67,9 +71,8 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  height: 40px;
+                  height: 20px;
                   outline: transparent;
-                  overflow: visible;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -79,6 +82,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-decoration: none;
                   user-select: none;
                   vertical-align: top;
+                  width: 20px;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -107,74 +111,19 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
-                  border: none;
+                .ms-Fabric--isFocusVisible &:focus::after {
+                  display: none;
                 }
-                .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                  border-color: transparent;
+                .ms-Fabric--isFocusVisible &:focus {
+                  outline: 1px solid #000000;
                 }
-                .ms-Fabric--isFocusVisible &:focus $svg {
-                  border-color: #dadada;
-                  border: 4px solid;
-                  box-shadow: 0 0 0 1px #969696;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                &:hover $svg {
-                  border-color: #dadada;
-                  border: 4px solid;
-                  box-shadow: none;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                &:focus $svg {
-                  border-color: #dadada;
-                  border: 4px solid;
-                  box-shadow: 0 0 0 1px #969696;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                &:active $svg {
-                  border-color: #969696;
-                  border: 4px solid;
-                  box-shadow: 0 0 0 1px #969696;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                & $svg {
-                  border-radius: 100%;
+                &:hover, &:active, &:focus {
+                  background-color: #ffffff;
+                  border: 2px solid #eaeaea;
+                  padding-bottom: 2px;
+                  padding-left: 2px;
+                  padding-right: 2px;
+                  padding-top: 2px;
                 }
                 &:hover {
                   color: #0078d4;
@@ -218,13 +167,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 className=
 
                     {
-                      box-sizing: content-box;
-                      height: 20px;
-                      padding-bottom: 4px;
-                      padding-left: 4px;
-                      padding-right: 4px;
-                      padding-top: 4px;
-                      width: 20px;
+                      border-radius: 100%;
+                      height: 100%;
+                      width: 100%;
                     }
                 fill="#00ff00"
                 viewBox="0 0 20 20"
@@ -242,10 +187,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           className=
 
               {
-                padding-bottom: 0px;
-                padding-left: 0px;
-                padding-right: 0px;
-                padding-top: 0px;
+                padding-bottom: 5px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-top: 5px;
               }
           role="presentation"
         >
@@ -259,10 +204,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: transparent;
-                  background: transparent;
-                  border-radius: 0px;
-                  border: 1px solid transparent;
+                  background-color: #ffffff;
+                  border-radius: 100%;
+                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   cursor: pointer;
@@ -270,9 +214,8 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  height: 40px;
+                  height: 20px;
                   outline: transparent;
-                  overflow: visible;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -282,6 +225,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-decoration: none;
                   user-select: none;
                   vertical-align: top;
+                  width: 20px;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -310,74 +254,19 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
-                  border: none;
+                .ms-Fabric--isFocusVisible &:focus::after {
+                  display: none;
                 }
-                .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                  border-color: transparent;
+                .ms-Fabric--isFocusVisible &:focus {
+                  outline: 1px solid #000000;
                 }
-                .ms-Fabric--isFocusVisible &:focus $svg {
-                  border-color: #dadada;
-                  border: 4px solid;
-                  box-shadow: 0 0 0 1px #969696;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                &:hover $svg {
-                  border-color: #dadada;
-                  border: 4px solid;
-                  box-shadow: none;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                &:focus $svg {
-                  border-color: #dadada;
-                  border: 4px solid;
-                  box-shadow: 0 0 0 1px #969696;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                &:active $svg {
-                  border-color: #969696;
-                  border: 4px solid;
-                  box-shadow: 0 0 0 1px #969696;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                & $svg {
-                  border-radius: 100%;
+                &:hover, &:active, &:focus {
+                  background-color: #ffffff;
+                  border: 2px solid #eaeaea;
+                  padding-bottom: 2px;
+                  padding-left: 2px;
+                  padding-right: 2px;
+                  padding-top: 2px;
                 }
                 &:hover {
                   color: #0078d4;
@@ -421,13 +310,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 className=
 
                     {
-                      box-sizing: content-box;
-                      height: 20px;
-                      padding-bottom: 4px;
-                      padding-left: 4px;
-                      padding-right: 4px;
-                      padding-top: 4px;
-                      width: 20px;
+                      border-radius: 100%;
+                      height: 100%;
+                      width: 100%;
                     }
                 fill="#ffa500"
                 viewBox="0 0 20 20"
@@ -445,10 +330,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           className=
 
               {
-                padding-bottom: 0px;
-                padding-left: 0px;
-                padding-right: 0px;
-                padding-top: 0px;
+                padding-bottom: 5px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-top: 5px;
               }
           role="presentation"
         >
@@ -462,10 +347,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: transparent;
-                  background: transparent;
-                  border-radius: 0px;
-                  border: 1px solid transparent;
+                  background-color: #ffffff;
+                  border-radius: 100%;
+                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   cursor: pointer;
@@ -473,9 +357,8 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  height: 40px;
+                  height: 20px;
                   outline: transparent;
-                  overflow: visible;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -485,6 +368,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-decoration: none;
                   user-select: none;
                   vertical-align: top;
+                  width: 20px;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -513,74 +397,19 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
-                  border: none;
+                .ms-Fabric--isFocusVisible &:focus::after {
+                  display: none;
                 }
-                .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                  border-color: transparent;
+                .ms-Fabric--isFocusVisible &:focus {
+                  outline: 1px solid #000000;
                 }
-                .ms-Fabric--isFocusVisible &:focus $svg {
-                  border-color: #dadada;
-                  border: 4px solid;
-                  box-shadow: 0 0 0 1px #969696;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                &:hover $svg {
-                  border-color: #dadada;
-                  border: 4px solid;
-                  box-shadow: none;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                &:focus $svg {
-                  border-color: #dadada;
-                  border: 4px solid;
-                  box-shadow: 0 0 0 1px #969696;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                &:active $svg {
-                  border-color: #969696;
-                  border: 4px solid;
-                  box-shadow: 0 0 0 1px #969696;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                & $svg {
-                  border-radius: 100%;
+                &:hover, &:active, &:focus {
+                  background-color: #ffffff;
+                  border: 2px solid #eaeaea;
+                  padding-bottom: 2px;
+                  padding-left: 2px;
+                  padding-right: 2px;
+                  padding-top: 2px;
                 }
                 &:hover {
                   color: #0078d4;
@@ -624,13 +453,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 className=
 
                     {
-                      box-sizing: content-box;
-                      height: 20px;
-                      padding-bottom: 4px;
-                      padding-left: 4px;
-                      padding-right: 4px;
-                      padding-top: 4px;
-                      width: 20px;
+                      border-radius: 100%;
+                      height: 100%;
+                      width: 100%;
                     }
                 fill="#0000ff"
                 viewBox="0 0 20 20"
@@ -648,10 +473,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           className=
 
               {
-                padding-bottom: 0px;
-                padding-left: 0px;
-                padding-right: 0px;
-                padding-top: 0px;
+                padding-bottom: 5px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-top: 5px;
               }
           role="presentation"
         >
@@ -665,10 +490,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: transparent;
-                  background: transparent;
-                  border-radius: 0px;
-                  border: 1px solid transparent;
+                  background-color: #ffffff;
+                  border-radius: 100%;
+                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   cursor: pointer;
@@ -676,9 +500,8 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  height: 40px;
+                  height: 20px;
                   outline: transparent;
-                  overflow: visible;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -688,6 +511,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-decoration: none;
                   user-select: none;
                   vertical-align: top;
+                  width: 20px;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -716,74 +540,19 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
-                  border: none;
+                .ms-Fabric--isFocusVisible &:focus::after {
+                  display: none;
                 }
-                .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                  border-color: transparent;
+                .ms-Fabric--isFocusVisible &:focus {
+                  outline: 1px solid #000000;
                 }
-                .ms-Fabric--isFocusVisible &:focus $svg {
-                  border-color: #dadada;
-                  border: 4px solid;
-                  box-shadow: 0 0 0 1px #969696;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                &:hover $svg {
-                  border-color: #dadada;
-                  border: 4px solid;
-                  box-shadow: none;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                &:focus $svg {
-                  border-color: #dadada;
-                  border: 4px solid;
-                  box-shadow: 0 0 0 1px #969696;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                &:active $svg {
-                  border-color: #969696;
-                  border: 4px solid;
-                  box-shadow: 0 0 0 1px #969696;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                & $svg {
-                  border-radius: 100%;
+                &:hover, &:active, &:focus {
+                  background-color: #ffffff;
+                  border: 2px solid #eaeaea;
+                  padding-bottom: 2px;
+                  padding-left: 2px;
+                  padding-right: 2px;
+                  padding-top: 2px;
                 }
                 &:hover {
                   color: #0078d4;
@@ -827,13 +596,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 className=
 
                     {
-                      box-sizing: content-box;
-                      height: 20px;
-                      padding-bottom: 4px;
-                      padding-left: 4px;
-                      padding-right: 4px;
-                      padding-top: 4px;
-                      width: 20px;
+                      border-radius: 100%;
+                      height: 100%;
+                      width: 100%;
                     }
                 fill="#ff0000"
                 viewBox="0 0 20 20"
@@ -855,10 +620,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           className=
 
               {
-                padding-bottom: 0px;
-                padding-left: 0px;
-                padding-right: 0px;
-                padding-top: 0px;
+                padding-bottom: 5px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-top: 5px;
               }
           role="presentation"
         >
@@ -872,10 +637,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: transparent;
-                  background: transparent;
-                  border-radius: 0px;
-                  border: 1px solid transparent;
+                  background-color: #ffffff;
+                  border-radius: 100%;
+                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   cursor: pointer;
@@ -883,9 +647,8 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  height: 40px;
+                  height: 20px;
                   outline: transparent;
-                  overflow: visible;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -895,6 +658,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-decoration: none;
                   user-select: none;
                   vertical-align: top;
+                  width: 20px;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -923,74 +687,19 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
-                  border: none;
+                .ms-Fabric--isFocusVisible &:focus::after {
+                  display: none;
                 }
-                .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                  border-color: transparent;
+                .ms-Fabric--isFocusVisible &:focus {
+                  outline: 1px solid #000000;
                 }
-                .ms-Fabric--isFocusVisible &:focus $svg {
-                  border-color: #dadada;
-                  border: 4px solid;
-                  box-shadow: 0 0 0 1px #969696;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                &:hover $svg {
-                  border-color: #dadada;
-                  border: 4px solid;
-                  box-shadow: none;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                &:focus $svg {
-                  border-color: #dadada;
-                  border: 4px solid;
-                  box-shadow: 0 0 0 1px #969696;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                &:active $svg {
-                  border-color: #969696;
-                  border: 4px solid;
-                  box-shadow: 0 0 0 1px #969696;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                & $svg {
-                  border-radius: 100%;
+                &:hover, &:active, &:focus {
+                  background-color: #ffffff;
+                  border: 2px solid #eaeaea;
+                  padding-bottom: 2px;
+                  padding-left: 2px;
+                  padding-right: 2px;
+                  padding-top: 2px;
                 }
                 &:hover {
                   color: #0078d4;
@@ -1034,13 +743,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 className=
 
                     {
-                      box-sizing: content-box;
-                      height: 20px;
-                      padding-bottom: 4px;
-                      padding-left: 4px;
-                      padding-right: 4px;
-                      padding-top: 4px;
-                      width: 20px;
+                      border-radius: 100%;
+                      height: 100%;
+                      width: 100%;
                     }
                 fill="green"
                 viewBox="0 0 20 20"
@@ -1058,10 +763,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           className=
 
               {
-                padding-bottom: 0px;
-                padding-left: 0px;
-                padding-right: 0px;
-                padding-top: 0px;
+                padding-bottom: 5px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-top: 5px;
               }
           role="presentation"
         >
@@ -1075,10 +780,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: transparent;
-                  background: transparent;
-                  border-radius: 0px;
-                  border: 1px solid transparent;
+                  background-color: #ffffff;
+                  border-radius: 100%;
+                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   cursor: pointer;
@@ -1086,9 +790,8 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  height: 40px;
+                  height: 20px;
                   outline: transparent;
-                  overflow: visible;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -1098,6 +801,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-decoration: none;
                   user-select: none;
                   vertical-align: top;
+                  width: 20px;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -1126,74 +830,19 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
-                  border: none;
+                .ms-Fabric--isFocusVisible &:focus::after {
+                  display: none;
                 }
-                .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                  border-color: transparent;
+                .ms-Fabric--isFocusVisible &:focus {
+                  outline: 1px solid #000000;
                 }
-                .ms-Fabric--isFocusVisible &:focus $svg {
-                  border-color: #dadada;
-                  border: 4px solid;
-                  box-shadow: 0 0 0 1px #969696;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                &:hover $svg {
-                  border-color: #dadada;
-                  border: 4px solid;
-                  box-shadow: none;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                &:focus $svg {
-                  border-color: #dadada;
-                  border: 4px solid;
-                  box-shadow: 0 0 0 1px #969696;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                &:active $svg {
-                  border-color: #969696;
-                  border: 4px solid;
-                  box-shadow: 0 0 0 1px #969696;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                & $svg {
-                  border-radius: 100%;
+                &:hover, &:active, &:focus {
+                  background-color: #ffffff;
+                  border: 2px solid #eaeaea;
+                  padding-bottom: 2px;
+                  padding-left: 2px;
+                  padding-right: 2px;
+                  padding-top: 2px;
                 }
                 &:hover {
                   color: #0078d4;
@@ -1237,13 +886,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 className=
 
                     {
-                      box-sizing: content-box;
-                      height: 20px;
-                      padding-bottom: 4px;
-                      padding-left: 4px;
-                      padding-right: 4px;
-                      padding-top: 4px;
-                      width: 20px;
+                      border-radius: 100%;
+                      height: 100%;
+                      width: 100%;
                     }
                 fill="orange"
                 viewBox="0 0 20 20"
@@ -1261,10 +906,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           className=
 
               {
-                padding-bottom: 0px;
-                padding-left: 0px;
-                padding-right: 0px;
-                padding-top: 0px;
+                padding-bottom: 5px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-top: 5px;
               }
           role="presentation"
         >
@@ -1278,10 +923,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: transparent;
-                  background: transparent;
-                  border-radius: 0px;
-                  border: 1px solid transparent;
+                  background-color: #ffffff;
+                  border-radius: 100%;
+                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   cursor: pointer;
@@ -1289,9 +933,8 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  height: 40px;
+                  height: 20px;
                   outline: transparent;
-                  overflow: visible;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -1301,6 +944,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-decoration: none;
                   user-select: none;
                   vertical-align: top;
+                  width: 20px;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -1329,74 +973,19 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
-                  border: none;
+                .ms-Fabric--isFocusVisible &:focus::after {
+                  display: none;
                 }
-                .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                  border-color: transparent;
+                .ms-Fabric--isFocusVisible &:focus {
+                  outline: 1px solid #000000;
                 }
-                .ms-Fabric--isFocusVisible &:focus $svg {
-                  border-color: #dadada;
-                  border: 4px solid;
-                  box-shadow: 0 0 0 1px #969696;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                &:hover $svg {
-                  border-color: #dadada;
-                  border: 4px solid;
-                  box-shadow: none;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                &:focus $svg {
-                  border-color: #dadada;
-                  border: 4px solid;
-                  box-shadow: 0 0 0 1px #969696;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                &:active $svg {
-                  border-color: #969696;
-                  border: 4px solid;
-                  box-shadow: 0 0 0 1px #969696;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                & $svg {
-                  border-radius: 100%;
+                &:hover, &:active, &:focus {
+                  background-color: #ffffff;
+                  border: 2px solid #eaeaea;
+                  padding-bottom: 2px;
+                  padding-left: 2px;
+                  padding-right: 2px;
+                  padding-top: 2px;
                 }
                 &:hover {
                   color: #0078d4;
@@ -1440,13 +1029,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 className=
 
                     {
-                      box-sizing: content-box;
-                      height: 20px;
-                      padding-bottom: 4px;
-                      padding-left: 4px;
-                      padding-right: 4px;
-                      padding-top: 4px;
-                      width: 20px;
+                      border-radius: 100%;
+                      height: 100%;
+                      width: 100%;
                     }
                 fill="blue"
                 viewBox="0 0 20 20"
@@ -1464,10 +1049,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           className=
 
               {
-                padding-bottom: 0px;
-                padding-left: 0px;
-                padding-right: 0px;
-                padding-top: 0px;
+                padding-bottom: 5px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-top: 5px;
               }
           role="presentation"
         >
@@ -1481,10 +1066,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: transparent;
-                  background: transparent;
-                  border-radius: 0px;
-                  border: 1px solid transparent;
+                  background-color: #ffffff;
+                  border-radius: 100%;
+                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   cursor: pointer;
@@ -1492,9 +1076,8 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  height: 40px;
+                  height: 20px;
                   outline: transparent;
-                  overflow: visible;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -1504,6 +1087,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-decoration: none;
                   user-select: none;
                   vertical-align: top;
+                  width: 20px;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -1532,74 +1116,19 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
-                  border: none;
+                .ms-Fabric--isFocusVisible &:focus::after {
+                  display: none;
                 }
-                .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                  border-color: transparent;
+                .ms-Fabric--isFocusVisible &:focus {
+                  outline: 1px solid #000000;
                 }
-                .ms-Fabric--isFocusVisible &:focus $svg {
-                  border-color: #dadada;
-                  border: 4px solid;
-                  box-shadow: 0 0 0 1px #969696;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                &:hover $svg {
-                  border-color: #dadada;
-                  border: 4px solid;
-                  box-shadow: none;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                &:focus $svg {
-                  border-color: #dadada;
-                  border: 4px solid;
-                  box-shadow: 0 0 0 1px #969696;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                &:active $svg {
-                  border-color: #969696;
-                  border: 4px solid;
-                  box-shadow: 0 0 0 1px #969696;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                & $svg {
-                  border-radius: 100%;
+                &:hover, &:active, &:focus {
+                  background-color: #ffffff;
+                  border: 2px solid #eaeaea;
+                  padding-bottom: 2px;
+                  padding-left: 2px;
+                  padding-right: 2px;
+                  padding-top: 2px;
                 }
                 &:hover {
                   color: #0078d4;
@@ -1643,13 +1172,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 className=
 
                     {
-                      box-sizing: content-box;
-                      height: 20px;
-                      padding-bottom: 4px;
-                      padding-left: 4px;
-                      padding-right: 4px;
-                      padding-top: 4px;
-                      width: 20px;
+                      border-radius: 100%;
+                      height: 100%;
+                      width: 100%;
                     }
                 fill="red"
                 viewBox="0 0 20 20"
@@ -1671,10 +1196,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           className=
 
               {
-                padding-bottom: 0px;
-                padding-left: 0px;
-                padding-right: 0px;
-                padding-top: 0px;
+                padding-bottom: 5px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-top: 5px;
               }
           role="presentation"
         >
@@ -1688,10 +1213,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: transparent;
-                  background: transparent;
-                  border-radius: 0px;
-                  border: 1px solid transparent;
+                  background-color: #ffffff;
+                  border-radius: 100%;
+                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   cursor: pointer;
@@ -1699,9 +1223,8 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  height: 40px;
+                  height: 20px;
                   outline: transparent;
-                  overflow: visible;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -1711,6 +1234,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-decoration: none;
                   user-select: none;
                   vertical-align: top;
+                  width: 20px;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -1739,74 +1263,19 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
-                  border: none;
+                .ms-Fabric--isFocusVisible &:focus::after {
+                  display: none;
                 }
-                .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                  border-color: transparent;
+                .ms-Fabric--isFocusVisible &:focus {
+                  outline: 1px solid #000000;
                 }
-                .ms-Fabric--isFocusVisible &:focus $svg {
-                  border-color: #dadada;
-                  border: 4px solid;
-                  box-shadow: 0 0 0 1px #969696;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                &:hover $svg {
-                  border-color: #dadada;
-                  border: 4px solid;
-                  box-shadow: none;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                &:focus $svg {
-                  border-color: #dadada;
-                  border: 4px solid;
-                  box-shadow: 0 0 0 1px #969696;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                &:active $svg {
-                  border-color: #969696;
-                  border: 4px solid;
-                  box-shadow: 0 0 0 1px #969696;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                & $svg {
-                  border-radius: 100%;
+                &:hover, &:active, &:focus {
+                  background-color: #ffffff;
+                  border: 2px solid #eaeaea;
+                  padding-bottom: 2px;
+                  padding-left: 2px;
+                  padding-right: 2px;
+                  padding-top: 2px;
                 }
                 &:hover {
                   color: #0078d4;
@@ -1850,13 +1319,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 className=
 
                     {
-                      box-sizing: content-box;
-                      height: 20px;
-                      padding-bottom: 4px;
-                      padding-left: 4px;
-                      padding-right: 4px;
-                      padding-top: 4px;
-                      width: 20px;
+                      border-radius: 100%;
+                      height: 100%;
+                      width: 100%;
                     }
                 fill="black"
                 viewBox="0 0 20 20"
@@ -1874,10 +1339,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           className=
 
               {
-                padding-bottom: 0px;
-                padding-left: 0px;
-                padding-right: 0px;
-                padding-top: 0px;
+                padding-bottom: 5px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-top: 5px;
               }
           role="presentation"
         >
@@ -1891,10 +1356,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: transparent;
-                  background: transparent;
-                  border-radius: 0px;
-                  border: 1px solid transparent;
+                  background-color: #ffffff;
+                  border-radius: 100%;
+                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   cursor: pointer;
@@ -1902,9 +1366,8 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  height: 40px;
+                  height: 20px;
                   outline: transparent;
-                  overflow: visible;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -1914,6 +1377,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-decoration: none;
                   user-select: none;
                   vertical-align: top;
+                  width: 20px;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -1942,74 +1406,19 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
-                  border: none;
+                .ms-Fabric--isFocusVisible &:focus::after {
+                  display: none;
                 }
-                .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                  border-color: transparent;
+                .ms-Fabric--isFocusVisible &:focus {
+                  outline: 1px solid #000000;
                 }
-                .ms-Fabric--isFocusVisible &:focus $svg {
-                  border-color: #dadada;
-                  border: 4px solid;
-                  box-shadow: 0 0 0 1px #969696;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                &:hover $svg {
-                  border-color: #dadada;
-                  border: 4px solid;
-                  box-shadow: none;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                &:focus $svg {
-                  border-color: #dadada;
-                  border: 4px solid;
-                  box-shadow: 0 0 0 1px #969696;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                &:active $svg {
-                  border-color: #969696;
-                  border: 4px solid;
-                  box-shadow: 0 0 0 1px #969696;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                & $svg {
-                  border-radius: 100%;
+                &:hover, &:active, &:focus {
+                  background-color: #ffffff;
+                  border: 2px solid #eaeaea;
+                  padding-bottom: 2px;
+                  padding-left: 2px;
+                  padding-right: 2px;
+                  padding-top: 2px;
                 }
                 &:hover {
                   color: #0078d4;
@@ -2053,13 +1462,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 className=
 
                     {
-                      box-sizing: content-box;
-                      height: 20px;
-                      padding-bottom: 4px;
-                      padding-left: 4px;
-                      padding-right: 4px;
-                      padding-top: 4px;
-                      width: 20px;
+                      border-radius: 100%;
+                      height: 100%;
+                      width: 100%;
                     }
                 fill="grey"
                 viewBox="0 0 20 20"
@@ -2077,10 +1482,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           className=
 
               {
-                padding-bottom: 0px;
-                padding-left: 0px;
-                padding-right: 0px;
-                padding-top: 0px;
+                padding-bottom: 5px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-top: 5px;
               }
           role="presentation"
         >
@@ -2094,10 +1499,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: transparent;
-                  background: transparent;
-                  border-radius: 0px;
-                  border: 1px solid transparent;
+                  background-color: #ffffff;
+                  border-radius: 100%;
+                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   cursor: pointer;
@@ -2105,9 +1509,8 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  height: 40px;
+                  height: 20px;
                   outline: transparent;
-                  overflow: visible;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -2117,6 +1520,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-decoration: none;
                   user-select: none;
                   vertical-align: top;
+                  width: 20px;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -2145,74 +1549,19 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
-                  border: none;
+                .ms-Fabric--isFocusVisible &:focus::after {
+                  display: none;
                 }
-                .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                  border-color: transparent;
+                .ms-Fabric--isFocusVisible &:focus {
+                  outline: 1px solid #000000;
                 }
-                .ms-Fabric--isFocusVisible &:focus $svg {
-                  border-color: #dadada;
-                  border: 4px solid;
-                  box-shadow: 0 0 0 1px #969696;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                &:hover $svg {
-                  border-color: #dadada;
-                  border: 4px solid;
-                  box-shadow: none;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                &:focus $svg {
-                  border-color: #dadada;
-                  border: 4px solid;
-                  box-shadow: 0 0 0 1px #969696;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                &:active $svg {
-                  border-color: #969696;
-                  border: 4px solid;
-                  box-shadow: 0 0 0 1px #969696;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                & $svg {
-                  border-radius: 100%;
+                &:hover, &:active, &:focus {
+                  background-color: #ffffff;
+                  border: 2px solid #eaeaea;
+                  padding-bottom: 2px;
+                  padding-left: 2px;
+                  padding-right: 2px;
+                  padding-top: 2px;
                 }
                 &:hover {
                   color: #0078d4;
@@ -2256,13 +1605,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 className=
 
                     {
-                      box-sizing: content-box;
-                      height: 20px;
-                      padding-bottom: 4px;
-                      padding-left: 4px;
-                      padding-right: 4px;
-                      padding-top: 4px;
-                      width: 20px;
+                      border-radius: 100%;
+                      height: 100%;
+                      width: 100%;
                     }
                 fill="purple"
                 viewBox="0 0 20 20"
@@ -2280,10 +1625,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           className=
 
               {
-                padding-bottom: 0px;
-                padding-left: 0px;
-                padding-right: 0px;
-                padding-top: 0px;
+                padding-bottom: 5px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-top: 5px;
               }
           role="presentation"
         >
@@ -2297,10 +1642,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: transparent;
-                  background: transparent;
-                  border-radius: 0px;
-                  border: 1px solid transparent;
+                  background-color: #ffffff;
+                  border-radius: 100%;
+                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   cursor: pointer;
@@ -2308,9 +1652,8 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  height: 40px;
+                  height: 20px;
                   outline: transparent;
-                  overflow: visible;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -2320,6 +1663,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-decoration: none;
                   user-select: none;
                   vertical-align: top;
+                  width: 20px;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -2348,74 +1692,19 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
-                  border: none;
+                .ms-Fabric--isFocusVisible &:focus::after {
+                  display: none;
                 }
-                .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus::after {
-                  border-color: transparent;
+                .ms-Fabric--isFocusVisible &:focus {
+                  outline: 1px solid #000000;
                 }
-                .ms-Fabric--isFocusVisible &:focus $svg {
-                  border-color: #dadada;
-                  border: 4px solid;
-                  box-shadow: 0 0 0 1px #969696;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                &:hover $svg {
-                  border-color: #dadada;
-                  border: 4px solid;
-                  box-shadow: none;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                &:focus $svg {
-                  border-color: #dadada;
-                  border: 4px solid;
-                  box-shadow: 0 0 0 1px #969696;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                &:active $svg {
-                  border-color: #969696;
-                  border: 4px solid;
-                  box-shadow: 0 0 0 1px #969696;
-                  height: 12px;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  padding-bottom: 4px;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 4px;
-                  width: 12px;
-                }
-                & $svg {
-                  border-radius: 100%;
+                &:hover, &:active, &:focus {
+                  background-color: #ffffff;
+                  border: 2px solid #eaeaea;
+                  padding-bottom: 2px;
+                  padding-left: 2px;
+                  padding-right: 2px;
+                  padding-top: 2px;
                 }
                 &:hover {
                   color: #0078d4;
@@ -2459,13 +1748,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 className=
 
                     {
-                      box-sizing: content-box;
-                      height: 20px;
-                      padding-bottom: 4px;
-                      padding-left: 4px;
-                      padding-right: 4px;
-                      padding-top: 4px;
-                      width: 20px;
+                      border-radius: 100%;
+                      height: 100%;
+                      width: 100%;
                     }
                 fill="yellow"
                 viewBox="0 0 20 20"

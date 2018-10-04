@@ -1,86 +1,57 @@
-import { IStateComponentProps } from '../Foundation';
-import { BaseComponent } from '../Utilities';
+import * as React from 'react';
 
-// TODO: add transforms and flesh out typing
-export type ITransform<TComponentProps, TViewProps> = {
-  /**
-   * Available transforms.
-   */
-  transform: 'toggle';
-  /**
-   * Name of prop that transform should change. Must exist in TViewProps.
-   */
-  prop: keyof TViewProps;
-  /**
-   * Component prop setting default value.
-   */
-  defaultValueProp?: keyof TComponentProps;
-  /**
-   * Default value for prop when defaultValueProp is undefined.
-   */
-  defaultValue: boolean;
-  /**
-   * Callback as input into transform indicating change on input. Must exist in TViewProps.
-   */
-  onInput: keyof TViewProps;
-};
+export interface IBaseStateOptions<TState> {
+  controlledProps: (keyof TState)[];
+}
 
-export type IStateTransforms<TComponentProps, TViewProps> = (ITransform<TComponentProps, TViewProps>)[];
+export class BaseState<TProps, TState> extends React.Component<TProps, TState> {
+  private _controlledProps: (keyof TState)[];
 
-export type IBaseStateComponentProps<TComponentProps, TViewProps> = IStateComponentProps<TComponentProps, TViewProps>;
-
-// TODO: One or the other of these solutions should work in TS. TypeScript is preventing use of
-//        keyof against generic types throughout this file.
-//        https://github.com/Microsoft/TypeScript/issues/13948
-// export type IBaseStateComponentState<TViewProps> = Partial<TViewProps>;
-export type IBaseStateComponentState<TViewProps> = {
-  // [key in keyof TViewProps]?: TViewProps[key];
-  // tslint:disable:no-any
-  [key in keyof TViewProps]?: any
-};
-
-export class BaseStateComponent<TComponentProps, TViewProps> extends BaseComponent<
-  IBaseStateComponentProps<TComponentProps, TViewProps>,
-  IBaseStateComponentState<TViewProps>
-> {
-  constructor(
-    props: IBaseStateComponentProps<TComponentProps, TViewProps>,
-    transforms: IStateTransforms<TComponentProps, TViewProps>
-  ) {
+  constructor(props: TProps, options: Partial<IBaseStateOptions<TState>> = {}) {
     super(props);
-
-    const stateObject: IBaseStateComponentState<TViewProps> = {};
-
-    transforms.forEach((transform: ITransform<TComponentProps, TViewProps>) => {
-      const defaultValuePropDefined =
-        transform.defaultValueProp !== undefined && props[transform.defaultValueProp] !== undefined;
-      stateObject[transform.prop] = defaultValuePropDefined
-        ? props[transform.defaultValueProp!]
-        : transform.defaultValue;
-      stateObject[transform.onInput] = this._onToggle(transform.prop);
-    });
-
-    this.state = stateObject;
+    this._controlledProps = options.controlledProps || [];
   }
 
-  public render(): JSX.Element {
-    // createComponent will automatically give priority to any values passed by parent, overriding these state values
-    //    and automatically turning this component into a controlled component.
-    return this.props.renderView(this.getTransformProps());
+  public componentWillReceiveProps(newProps: TProps): void {
+    for (const propName of this._controlledProps) {
+      // tslint:disable-next-line:no-any
+      const controlledPropValue = (newProps as any)[propName];
+
+      if (controlledPropValue !== undefined && controlledPropValue !== this.state[propName]) {
+        this.setState({
+          [propName]: controlledPropValue
+          // tslint:disable-next-line:no-any
+        } as any);
+      }
+    }
   }
 
-  protected getTransformProps(): TViewProps {
-    // TODO: this should only return configured transform props, not entire state
-    return this.state;
-  }
+  public render(): JSX.Element | null {
+    // tslint:disable-next-line:no-any
+    const { renderView, ...rest } = this.props as any;
 
-  private _onToggle = (prop: keyof TViewProps) => {
-    return () => {
-      // TODO: TypeScript issue where using keyof on generic type widens to string errors on simpler version of setState
-      //  https://github.com/Microsoft/TypeScript/issues/13948
-      // this.setState((state: IBaseStateComponentState<TViewProps>) => ({ [prop]: !state[prop] }));
-      // tslint:disable:no-any
-      this.setState((state: IBaseStateComponentState<TViewProps>): any => ({ [prop]: !state[prop] }));
+    const newProps: TProps = {
+      ...rest,
+      ...(this.state as {}),
+      ...this._getControlledProps()
     };
-  };
+
+    return renderView(newProps);
+  }
+
+  private _getControlledProps(): {} {
+    const result = {};
+
+    for (const propName of this._controlledProps) {
+      // tslint:disable-next-line:no-any
+      const value = (this.props as any)[propName];
+
+      if (value !== undefined) {
+        // tslint:disable-next-line:no-any
+        (result as any)[propName] = value;
+      }
+    }
+
+    return result;
+  }
 }

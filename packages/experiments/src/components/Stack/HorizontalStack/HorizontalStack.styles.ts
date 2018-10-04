@@ -1,6 +1,5 @@
-import { IThemedProps } from '../../../Foundation';
 import { getGlobalClassNames } from '../../../Styling';
-import { IHorizontalStackProps, IHorizontalStackStyles } from './HorizontalStack.types';
+import { IHorizontalStackComponent, IHorizontalStackStyles } from './HorizontalStack.types';
 import { parseGap } from '../StackUtils';
 
 const GlobalClassNames = {
@@ -8,7 +7,7 @@ const GlobalClassNames = {
   inner: 'ms-HorizontalStack-inner'
 };
 
-export const styles = (props: IThemedProps<IHorizontalStackProps>): IHorizontalStackStyles => {
+export const styles: IHorizontalStackComponent['styles'] = props => {
   const { wrap, gap, verticalGap, fillHorizontal, fillVertical, maxWidth, maxHeight, className, theme } = props;
 
   const vertGap = verticalGap !== undefined ? verticalGap : gap;

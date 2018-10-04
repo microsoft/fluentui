@@ -1,5 +1,7 @@
 import { IStyle, RefObject } from 'office-ui-fabric-react';
-import { IStyleableComponentProps, IThemedProps } from '../../Foundation';
+import { IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
+
+export type ICollapsibleSectionTitleComponent = IStatelessComponent<ICollapsibleSectionTitleProps, ICollapsibleSectionTitleStyles>;
 
 export interface ICollapsibleSectionTitleProps
   extends IStyleableComponentProps<ICollapsibleSectionTitleProps, ICollapsibleSectionTitleStyles> {
@@ -11,7 +13,7 @@ export interface ICollapsibleSectionTitleProps
   /**
    * Toggle input callback triggered by mouse and keyboard input.
    */
-  onToggleCollapse?: () => void;
+  onClick?: (ev: React.MouseEvent<Element>) => void;
   /**
    * Key down callback for input on title.
    */
@@ -24,9 +26,12 @@ export interface ICollapsibleSectionTitleProps
    * Title text.
    */
   text?: string;
-}
 
-export type ICollapsibleSectionTitleStyleProps = IThemedProps<ICollapsibleSectionTitleProps>;
+  /**
+   * Indentation of title.
+   */
+  indent?: number;
+}
 
 export interface ICollapsibleSectionTitleStyles {
   root: IStyle;

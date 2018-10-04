@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { IStyle } from 'office-ui-fabric-react';
-import { IStyleableComponentProps, IThemedProps } from '../../Foundation';
+import { IComponent, IStyleableComponentProps } from '../../Foundation';
 import { RefObject } from '../../Utilities';
 
 import { ICollapsibleSectionTitleProps } from './CollapsibleSectionTitle.types';
 
-export interface ICollapsibleSectionProps extends IStyleableComponentProps<ICollapsibleSectionProps, ICollapsibleSectionStyles> {
+export type ICollapsibleSectionComponent = IComponent<ICollapsibleSectionProps, ICollapsibleSectionViewProps, ICollapsibleSectionStyles>;
+
+export interface ICollapsibleSectionProps extends IStyleableComponentProps<ICollapsibleSectionViewProps, ICollapsibleSectionStyles> {
   /**
    * Additional class name to provide on the root element.
    */
@@ -32,32 +34,33 @@ export interface ICollapsibleSectionProps extends IStyleableComponentProps<IColl
    * Optional title props to pass onto title component.
    */
   titleProps?: ICollapsibleSectionTitleProps;
+
+  indent?: number;
 }
 
-export type ICollapsibleSectionControlledProps = IStyleableComponentProps<ICollapsibleSectionViewProps, ICollapsibleSectionStyles>;
-
-export type ICollapsibleSectionViewProps = Pick<ICollapsibleSectionProps, 'titleAs' | 'titleProps'> &
+export type ICollapsibleSectionViewProps = Pick<ICollapsibleSectionProps, 'titleAs' | 'titleProps' | 'indent'> &
   Required<Pick<ICollapsibleSectionProps, 'collapsed'>> & {
     /**
      * Optional callback to access the Title element interface. Use this instead of ref for accessing
      * the public methods and properties of the component.
      */
     titleElementRef?: RefObject<HTMLElement>;
+
     /**
      * Toggle input callback triggered by mouse and keyboard input.
      */
-    onToggleCollapse?: () => void;
+    onClick?: (ev: React.MouseEvent<Element>) => void;
+
     /**
      * Key down callback for root element of CollapsibleSection.
      */
     onRootKeyDown?: (ev: React.KeyboardEvent<Element>) => void;
+
     /**
      * Key down callback for CollapsibleSection title.
      */
     onKeyDown?: (ev: React.KeyboardEvent<Element>) => void;
   };
-
-export type ICollapsibleSectionStyleProps = IThemedProps<ICollapsibleSectionViewProps>;
 
 export interface ICollapsibleSectionStyles {
   /**
