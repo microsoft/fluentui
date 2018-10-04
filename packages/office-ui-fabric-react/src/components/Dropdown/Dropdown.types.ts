@@ -111,11 +111,6 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<HTMLDivEle
 
 export interface IDropdownOption extends ISelectableOption {
   /**
-   * Data available to custom onRender functions.
-   */
-  data?: any;
-
-  /**
    * Deprecated at v.65.1, use 'selected' instead.
    * @deprecated
    */
