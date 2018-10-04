@@ -67,7 +67,7 @@ const linkStyles = (props: IPivotStyleProps): IStyle[] => {
           outline: 'none'
         },
         [`.${IsFocusVisibleClassName} &:focus`]: {
-          outline: `1px solid ${palette.neutralSecondaryAlt}`
+          outline: `1px solid ${palette.neutralSecondary}`
         }
       }
     },
