@@ -1,9 +1,11 @@
 import * as React from 'react';
+import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import { DocumentCardTitle } from './DocumentCardTitle';
 
 const veryLongTitle = `This is obviously a very very very very very very very very
 very very loooooooooooooooooooooooooooooooooooooooooooooooong title that will need to be truncated`;
+const normalLengthTitle = `This is a title of normal length`;
 
 describe('DocumentCardTitle', () => {
   it('truncates a title that is too long', () => {
@@ -28,5 +30,12 @@ describe('DocumentCardTitle', () => {
     component.setProps({});
 
     expect(component.text()).toEqual(veryLongTitle);
+  });
+
+  it('shows title with secondary title style', () => {
+    const component = renderer.create(<DocumentCardTitle title={normalLengthTitle} showAsSecondaryTitle={true} />);
+
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
   });
 });
