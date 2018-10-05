@@ -77,7 +77,7 @@ exports[`styled can produce same styles object if cached 4`] = `
   className=
 
       {
-        background: blue;
+        background: red;
         color: red;
       }
 />
