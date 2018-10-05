@@ -1,0 +1,39 @@
+import { Link, MessageBar } from 'office-ui-fabric-react';
+import * as React from 'react';
+
+export interface IFluentMessageBarProps {}
+
+export interface IFluentMessageBarState {
+  isVisible: boolean;
+}
+
+export default class IFluentMessageBar extends React.Component<IFluentMessageBarProps, IFluentMessageBarState> {
+  constructor(props: IFluentMessageBarProps) {
+    super(props);
+
+    this.state = {
+      isVisible: true
+    };
+
+    this._onClose = this._onClose.bind(this);
+  }
+
+  public render() {
+    const { isVisible } = this.state;
+
+    return (
+      isVisible && (
+        <MessageBar onDismiss={this._onClose} dismissButtonAriaLabel="Close">
+          Get an early look at the latest Fluent updates coming to Fabric.{' '}
+          <Link href="https://fluentfabric.azurewebsites.net/">Learn more</Link>
+        </MessageBar>
+      )
+    );
+  }
+
+  private _onClose() {
+    this.setState({
+      isVisible: false
+    });
+  }
+}
