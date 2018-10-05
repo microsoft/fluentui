@@ -1,6 +1,21 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Fri, 21 Sep 2018 14:25:46 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Oct 2018 12:26:48 GMT and should not be manually modified.
+
+## 6.29.0
+Thu, 04 Oct 2018 12:26:48 GMT
+
+### Minor changes
+
+- add delayLength parameter to _createDefaultAnimation in PulsingBeaconAnimationStyles
+
+## 6.28.0
+Mon, 01 Oct 2018 12:27:24 GMT
+
+### Minor changes
+
+- Minor additions for semantic colors.
+- semantic slot value updates per design direction
 
 ## 6.27.0
 Fri, 21 Sep 2018 14:25:46 GMT

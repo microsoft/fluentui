@@ -1,6 +1,13 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Fri, 21 Sep 2018 14:25:46 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Oct 2018 12:28:04 GMT and should not be manually modified.
+
+## 0.5.4
+Tue, 02 Oct 2018 12:28:04 GMT
+
+### Patches
+
+- Interface refactoring for reducing dev friction.
 
 ## 0.5.3
 Fri, 21 Sep 2018 14:25:46 GMT

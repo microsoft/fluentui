@@ -2,6 +2,44 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "6.29.0",
+      "tag": "@uifabric/styling_v6.29.0",
+      "date": "Thu, 04 Oct 2018 12:26:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add delayLength parameter to _createDefaultAnimation in PulsingBeaconAnimationStyles",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "a6d25782cd0b11a5f010b1409f8fa2a287a370e5"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.28.0",
+      "tag": "@uifabric/styling_v6.28.0",
+      "date": "Mon, 01 Oct 2018 12:27:24 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Minor additions for semantic colors.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "7eee9844e61fa75247af89fdff79bd23e2ca74bb"
+          },
+          {
+            "comment": "semantic slot value updates per design direction",
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "4b31ba1706ff7b4a1b34399d3f1ffdb192737dbd"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.9.2 <7.0.0` to `>=6.9.3 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.27.0",
       "tag": "@uifabric/styling_v6.27.0",
       "date": "Fri, 21 Sep 2018 14:25:46 GMT",
