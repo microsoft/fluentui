@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/dashboard",
-      "comment": "resolved hover issue of thumbnailList ",
+      "comment": "removed the line inbetween the grid rows",
       "type": "patch"
     }
   ],

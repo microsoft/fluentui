@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.9.3",
+      "tag": "@uifabric/merge-styles_v6.9.3",
+      "date": "Mon, 01 Oct 2018 12:27:24 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Prettier cleanup",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "7eee9844e61fa75247af89fdff79bd23e2ca74bb"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.9.2",
       "tag": "@uifabric/merge-styles_v6.9.2",
       "date": "Fri, 28 Sep 2018 12:27:38 GMT",

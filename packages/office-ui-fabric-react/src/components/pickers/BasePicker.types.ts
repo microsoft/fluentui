@@ -38,7 +38,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    */
   onResolveSuggestions: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]>;
   /**
-   * The delay time in ms before resolving suggestions, which is kicked off when input has been cahnged.
+   * The delay time in ms before resolving suggestions, which is kicked off when input has been changed.
    * e.g. If a second input change happens within the resolveDelay time, the timer will start over.
    * Only until after the timer completes will onResolveSuggestions be called.
    */

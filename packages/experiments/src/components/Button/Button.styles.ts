@@ -1,8 +1,8 @@
-import { IButtonStyleProps, IButtonStyles, IButtonStyleVariablesTypes, IButtonStates } from './Button.types';
+import { IButtonComponent, IButtonStyles, IButtonStyleVariablesTypes, IButtonStates } from './Button.types';
 import { getFocusStyle, getGlobalClassNames, concatStyleSets } from '../../Styling';
 import { merge } from '../../Utilities';
 
-export function getButtonStyles(props: IButtonStyleProps): Partial<IButtonStyles> {
+export const getButtonStyles: IButtonComponent['styles'] = props => {
   const { theme, disabled, expanded, className, circular, primary, styleVariables } = props;
   const { semanticColors } = theme;
 
@@ -220,7 +220,7 @@ export function getButtonStyles(props: IButtonStyleProps): Partial<IButtonStyles
       root: className
     }
   );
-}
+};
 
 type IProcessedVariables<T> = { [P in keyof T]-?: IProcessedVariables<T[P]> };
 

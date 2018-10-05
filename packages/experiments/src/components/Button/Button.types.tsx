@@ -1,6 +1,8 @@
-import { IThemedProps, IStyleableComponentProps } from '../../Foundation';
+import { IComponent, IStyleableComponentProps } from '../../Foundation';
 import { IStyle } from '../../Styling';
 import { IIconProps, IContextualMenuProps, IFontWeight } from 'office-ui-fabric-react';
+
+export type IButtonComponent = IComponent<IButtonProps, IButtonViewProps, IButtonStyles>;
 
 // States should only be javascript evluated states. (Not css states.)
 export type IButtonStates = 'baseState' | 'enabled' | 'disabled' | 'expanded';
@@ -65,5 +67,3 @@ export type IButtonViewProps = IButtonProps & {
   onMenuDismiss: () => void;
   menuTarget: HTMLElement | undefined;
 };
-
-export type IButtonStyleProps = IThemedProps<IButtonProps>;

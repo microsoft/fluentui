@@ -163,7 +163,7 @@ export class LayerBase extends BaseComponent<ILayerProps, ILayerBaseState> {
   private _filterEvent = (ev: React.SyntheticEvent<HTMLElement>): void => {
     // We should just be able to check ev.bubble here and only stop events that are bubbling up. However, even though mouseenter and
     //    mouseleave do NOT bubble up, they are showing up as bubbling. Therefore we stop events based on event name rather than ev.bubble.
-    if (ev.type !== 'mouseenter' && ev.type !== 'mouseleave') {
+    if (ev.eventPhase === Event.BUBBLING_PHASE && ev.type !== 'mouseenter' && ev.type !== 'mouseleave') {
       ev.stopPropagation();
     }
   };
