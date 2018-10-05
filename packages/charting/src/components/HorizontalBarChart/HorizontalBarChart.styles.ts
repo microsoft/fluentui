@@ -14,12 +14,13 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
     ],
     items: {
       height: '32px',
-      marginBottom: ''
+      marginBottom: '',
+      marginTop: '5px'
     },
     chart: {
       width: '100%',
       height: '8px',
-      marginBottom: '10px'
+      marginBottom: '11px'
     },
     chartTitle: {
       display: 'flex',

@@ -53,6 +53,9 @@ export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleP
     },
     opacityChangeOnHover: {
       opacity: isChartSelected ? (isSelected ? '' : '0.6') : ''
+    },
+    legendContainer: {
+      marginTop: '5px'
     }
   };
 };

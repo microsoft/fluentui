@@ -122,4 +122,8 @@ export interface IMultiStackedBarChartStyles {
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends
    */
   opacityChangeOnHover: IStyle;
+  /**
+   * Style for the legends container
+   */
+  legendContainer: IStyle;
 }
