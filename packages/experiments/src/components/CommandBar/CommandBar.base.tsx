@@ -20,7 +20,7 @@ import {
   createRef
 } from '../../Utilities';
 
-import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
+import { CommandBarButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
 
 const getClassNames = classNamesFunction<ICommandBarStyleProps, ICommandBarStyles>();
@@ -220,6 +220,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
 
   private _onRenderItems = (item: ICommandBarItemProps): JSX.Element | React.ReactNode => {
     const { buttonStyles } = this.props;
+    const CommandButtonType = item.commandBarButtonAs || CommandBarButton;
 
     if (item.onRender) {
       // These are the top level items, there is no relevant menu dismissing function to
@@ -237,12 +238,12 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     if (item.iconOnly && item.name !== undefined) {
       return (
         <TooltipHost content={ item.name } >
-          { this._onRenderButton(commandButtonProps) }
+          <CommandButtonType { ...commandButtonProps as IButtonProps } defaultRender={ CommandBarButton } />
         </TooltipHost>
       );
     }
 
-    return this._onRenderButton(commandButtonProps);
+    return <CommandButtonType { ...commandButtonProps as IButtonProps } defaultRender={ CommandBarButton } />;
   }
 
   private _onRenderButton = (props: ICommandBarItemProps): JSX.Element => {
