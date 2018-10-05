@@ -1,4 +1,5 @@
-import { Link, MessageBar } from 'office-ui-fabric-react';
+import { Link } from 'office-ui-fabric-react/lib/Link';
+import { MessageBar } from 'office-ui-fabric-react/lib/MessageBar';
 import * as React from 'react';
 
 export interface IFluentMessageBarProps {}
