@@ -73,12 +73,18 @@ export interface ISliderProps extends React.Props<SliderBase> {
   onChange?: (value: number) => void;
 
   /**
+   * Callback on mouse up or touch end
+   */
+  onChanged?: (event: MouseEvent | TouchEvent, value: number) => void;
+
+  /**
    * A description of the Slider for the benefit of screen readers.
    */
   ariaLabel?: string;
 
   /**
-   * A text description of the Slider number value for the benefit of screen readers. This should be used when the Slider number value is not accurately represented by a number.
+   * A text description of the Slider number value for the benefit of screen readers.
+   * This should be used when the Slider number value is not accurately represented by a number.
    */
   ariaValueText?: (value: number) => string;
   /**

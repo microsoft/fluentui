@@ -1,12 +1,8 @@
 import * as React from 'react';
 import { Text, VerticalStack } from '@uifabric/experiments';
 import { IFontVariants, IFontSizes, IFontWeights, IFontFamilies, IStyle } from '@uifabric/experiments/lib/Styling';
-import { ISemanticTextColors, IPalette, ITheme } from '@uifabric/experiments/lib/Styling';
-import {
-  createStatelessComponent,
-  IStyleableComponent,
-  IViewComponentProps
-} from '@uifabric/experiments/lib/Foundation';
+import { ISemanticTextColors, IPalette } from '@uifabric/experiments/lib/Styling';
+import { createStatelessComponent, IStyleableComponentProps, IStatelessComponent } from '@uifabric/experiments/lib/Foundation';
 
 const TestText = 'The quick brown fox jumped over the lazy dog.';
 
@@ -64,32 +60,35 @@ interface ITableStyles {
 }
 
 // Note I intuitively tried to extend IStyleableComponentProps... this was confusing.
-interface ITableProps extends IStyleableComponent<ITableProps, ITableStyles> {
+interface ITableProps extends IStyleableComponentProps<ITableProps, ITableStyles> {
   className?: string;
   title: string;
   headers: string[];
   children: React.ReactNode;
-  theme?: ITheme;
 }
 
+type ITableComponent = IStatelessComponent<ITableProps, ITableStyles>;
+
+const TableView: ITableComponent['view'] = props => (
+  <VerticalStack className={props.className} gap={20}>
+    <Text variant="h3">{props.title}</Text>
+    <table className={props.classNames.table}>
+      <thead>
+        <tr className={props.classNames.header}>
+          {props.headers.map((header: string) => (
+            <Text key={header} as="td" weight="bold">
+              {header}
+            </Text>
+          ))}
+        </tr>
+      </thead>
+      <tbody>{props.children}</tbody>
+    </table>
+  </VerticalStack>
+);
+
 const Table = createStatelessComponent<ITableProps, ITableStyles>({
-  view: (props: IViewComponentProps<ITableProps, ITableStyles>) => (
-    <VerticalStack className={props.className} gap={20}>
-      <Text variant="h3">{props.title}</Text>
-      <table className={props.classNames.table}>
-        <thead>
-          <tr className={props.classNames.header}>
-            {props.headers.map((header: string) => (
-              <Text key={header} as="td" weight="bold">
-                {header}
-              </Text>
-            ))}
-          </tr>
-        </thead>
-        <tbody>{props.children}</tbody>
-      </table>
-    </VerticalStack>
-  ),
+  view: TableView,
   displayName: 'Table',
   styles: {
     table: {

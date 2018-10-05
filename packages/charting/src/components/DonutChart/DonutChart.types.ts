@@ -43,11 +43,40 @@ export interface IDonutChartProps {
   /**
    * Width of line stroke
    */
-  strokeWidth?: number;
+  strokeWidth?: string;
+
+  /**
+   * Url that the data-viz needs to redirect to upon clicking on it
+   */
+  href?: string;
 }
 
-export type IDonutChartStyleProps = Required<Pick<IDonutChartProps, 'theme' | 'width' | 'height'>> &
-  Pick<IDonutChartProps, 'className'>;
+export interface IDonutChartStyleProps {
+  /**
+   * Theme (provided through customization.)
+   */
+  theme: ITheme;
+
+  /**
+   * Additional CSS class(es) to apply to the Donut chart.
+   */
+  className?: string;
+
+  /**
+   * Height of the donut.
+   */
+  height?: number;
+
+  /**
+   * Width of the donut.
+   */
+  width: number;
+
+  /**
+   * color for hover font color
+   */
+  color?: string;
+}
 
 export interface IDonutChartStyles {
   /**
@@ -63,8 +92,19 @@ export interface IDonutChartStyles {
    * Style for the legend container.
    */
   legendContainer: IStyle;
+
   /**
-   * Style for the callout.
+   * Style for the legend card title displayed in the hover card
    */
-  callOut: IStyle;
+  hoverCardTextStyles: IStyle;
+
+  /**
+   * Style for the data displayed in the hover card
+   */
+  hoverCardDataStyles: IStyle;
+
+  /**
+   * Style for the root of the hover card
+   */
+  hoverCardRoot: IStyle;
 }

@@ -1,11 +1,12 @@
 import { Breakpoints, Layout, Layouts } from 'react-grid-layout';
 import { ISection } from '../Section/Section.types';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { DragApiRefObject } from 'react-grid-layout';
+import { DragApiRefObject, ItemCallback } from 'react-grid-layout';
 import { ICard, CardSize } from '../Card/Card.types';
 
 export interface IDashboardGridLayoutStyles {
   root: IStyle;
+  section: IStyle;
 }
 
 export type DashboardGridBreakpointLayouts = {
@@ -22,6 +23,13 @@ export type DashboardSectionMapping = {
    * Value: List of cards keys that are under this section
    */
   [id: string]: string[];
+};
+
+export type CardSizeToRGLWidthHeightMapping = {
+  /**
+   * CardSize -> width height value map in React-Grid-Layout. P is @see CardSize
+   */
+  [P in CardSize]: { w: number; h: number }
 };
 
 export interface IDashboardCardLayout {
@@ -76,6 +84,21 @@ export interface IDashboardGridLayoutProps {
   dragApi?: DragApiRefObject;
 
   /**
+   * # of cols. This is a breakpoint -> cols map, e.g. {lg: 12, md: 10, ...}
+   */
+  cols?: { [P in Breakpoints]: number };
+
+  /**
+   * Margin between items [x, y] in px.
+   */
+  margin?: [number, number];
+
+  /**
+   * the px value of break points
+   */
+  breakpoints?: { [P in Breakpoints]: number };
+
+  /**
    * Whether items in this grid should be draggable or not
    * @default true
    */
@@ -88,26 +111,40 @@ export interface IDashboardGridLayoutProps {
   isResizable?: boolean;
 
   /**
-   * Callback so you can save the layout.
+   * Calls when drag starts.
    */
-  onLayoutChange?(currentLayout: Layout[], allLayouts: Layouts): void;
+  onDragStart?: ItemCallback;
 
   /**
-   * Calls back with breakpoint and new number of columns
+   * Calls on each drag movement.
    */
-  onBreakPointChange?(newBreakpoint: string, newCols: number): void;
-}
+  onDrag?: ItemCallback;
 
-export interface IDashboardGridSectionLayoutProps extends IDashboardGridLayoutProps {
+  /**
+   * Calls when drag is complete.
+   */
+  onDragStop?: ItemCallback;
+
+  /**
+   * The row height used for React-Grid-Layout, if not provided, the default value is used
+   * @default 50
+   */
+  rowHeight?: number;
+
   /**
    * The sections
    */
-  sections: ISection[];
+  sections?: ISection[];
 
   /**
-   * THe cards
+   * The cards definition. Either use cards or cardNodes to pass in the card definitions.
    */
-  cards: ICard[];
+  cards?: ICard[];
+
+  /**
+   * Alternative to provide card definition. Either use cards or cardNodes to pass in the card definitions.
+   */
+  cardNodes?: JSX.Element[];
 
   /**
    * if the section is collapsible
@@ -116,8 +153,33 @@ export interface IDashboardGridSectionLayoutProps extends IDashboardGridLayoutPr
   isCollapsible?: boolean;
 
   /**
-   * On section change.
-   * @param newMapping
+   * This is a CardSize -> width height value map in React-Grid-Layout.
    */
-  onSectionChange?(currentLayout: Layout[], allLayouts: Layouts, sectionMapping?: DashboardSectionMapping): void;
+  cardSizeToRGLWidthHeight?: CardSizeToRGLWidthHeightMapping;
+
+  /**
+   * Callback on the layout change.
+   * @param currentLayout the current layout used
+   * @param allLayouts all layouts for all breakpoints
+   */
+  onLayoutChange?: (currentLayout: Layout[], allLayouts: Layouts) => void;
+
+  /**
+   * Callback on the layout change. Compare to @see onLayoutChange, this callback returns one more value which captures
+   * the section to cards mapping
+   * @param currentLayout the current layout used
+   * @param allLayouts all layouts for all breakpoints
+   * @param sectionMapping section tp card mapping
+   */
+  onSectionChange?: (currentLayout: Layout[], allLayouts: Layouts, sectionMapping?: DashboardSectionMapping) => void;
+
+  /**
+   * Callback with breakpoint and new number of columns
+   */
+  onBreakPointChange?: (newBreakpoint: string, newCols: number) => void;
+
+  /**
+   * Callback when the width changes, so you can modify the layout as needed.
+   */
+  onWidthChange?: (containerWidth: number, margin: [number, number], cols: number, containerPadding: [number, number]) => void;
 }

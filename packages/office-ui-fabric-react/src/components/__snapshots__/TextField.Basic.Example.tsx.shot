@@ -49,7 +49,6 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
               word-wrap: break-word;
             }
         htmlFor="TextField0"
-        required={undefined}
       >
         Standard
       </label>
@@ -83,9 +82,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
             }
       >
         <input
-          aria-describedby={undefined}
           aria-invalid={false}
-          aria-label={undefined}
           className=
               ms-TextField-field
               {
@@ -129,7 +126,6 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
-          readOnly={undefined}
           type="text"
           value=""
         />
@@ -182,7 +178,6 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
               word-wrap: break-word;
             }
         htmlFor="TextField2"
-        required={undefined}
       >
         Disabled
       </label>
@@ -215,9 +210,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
             }
       >
         <input
-          aria-describedby={undefined}
           aria-invalid={false}
-          aria-label={undefined}
           className=
               ms-TextField-field
               {
@@ -263,7 +256,6 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
-          readOnly={undefined}
           type="text"
           value=""
         />
@@ -315,7 +307,6 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
               word-wrap: break-word;
             }
         htmlFor="TextField4"
-        required={undefined}
       >
         Read Only
       </label>
@@ -349,9 +340,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
             }
       >
         <input
-          aria-describedby={undefined}
           aria-invalid={false}
-          aria-label={undefined}
           className=
               ms-TextField-field
               {
@@ -487,9 +476,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
             }
       >
         <input
-          aria-describedby={undefined}
           aria-invalid={false}
-          aria-label={undefined}
           className=
               ms-TextField-field
               {
@@ -533,7 +520,6 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
-          readOnly={undefined}
           required={true}
           type="text"
           value=""
@@ -591,7 +577,6 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
               word-wrap: break-word;
             }
         htmlFor="TextField8"
-        required={undefined}
       >
         With error message
       </label>
@@ -631,7 +616,6 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
         <input
           aria-describedby="TextFieldDescription9"
           aria-invalid={false}
-          aria-label={undefined}
           className=
               ms-TextField-field
               {
@@ -675,7 +659,6 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
-          readOnly={undefined}
           type="text"
           value=""
         />
@@ -734,7 +717,6 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
               word-wrap: break-word;
             }
         htmlFor="TextField10"
-        required={undefined}
       >
         With number mask
       </label>
@@ -768,9 +750,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
             }
       >
         <input
-          aria-describedby={undefined}
           aria-invalid={false}
-          aria-label={undefined}
           className=
               ms-TextField-field
               {
@@ -818,7 +798,6 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
           onMouseDown={[Function]}
           onMouseUp={[Function]}
           onPaste={[Function]}
-          readOnly={undefined}
           type="text"
           value="_____"
         />
@@ -870,7 +849,6 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
               word-wrap: break-word;
             }
         htmlFor="TextField12"
-        required={undefined}
       >
         With input mask
       </label>
@@ -904,9 +882,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
             }
       >
         <input
-          aria-describedby={undefined}
           aria-invalid={false}
-          aria-label={undefined}
           className=
               ms-TextField-field
               {
@@ -954,7 +930,6 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
           onMouseDown={[Function]}
           onMouseUp={[Function]}
           onPaste={[Function]}
-          readOnly={undefined}
           type="text"
           value="mask: (___) ___ - ____"
         />

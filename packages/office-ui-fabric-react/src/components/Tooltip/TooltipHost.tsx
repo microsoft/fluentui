@@ -7,7 +7,8 @@ import {
   getId,
   assign,
   hasOverflow,
-  createRef
+  createRef,
+  portalContainsElement
 } from '../../Utilities';
 import { ITooltipHostProps, TooltipOverflowMode } from './TooltipHost.types';
 import { Tooltip } from './Tooltip';
@@ -128,6 +129,11 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
       if (overflowElement && !hasOverflow(overflowElement)) {
         return;
       }
+    }
+
+    if (ev.target && portalContainsElement(ev.target as HTMLElement, this._getTargetElement())) {
+      // Do not show tooltip when target is inside a portal relative to TooltipHost.
+      return;
     }
 
     this._toggleTooltip(true);

@@ -110,6 +110,11 @@ export interface ISemanticTextColors {
    */
   primaryButtonTextPressed: string;
 
+  /**
+   * Color of text in a disabled primary button
+   */
+  primaryButtonTextDisabled: string;
+
   //// Lists
 
   /**

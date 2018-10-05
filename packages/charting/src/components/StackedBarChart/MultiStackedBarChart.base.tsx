@@ -21,10 +21,13 @@ export interface IRefArrayData {
 export interface IMultiStackedBarChartState {
   isCalloutVisible: boolean;
   refArray: IRefArrayData[];
-  legendSelected: string;
-  refSelected: SVGGElement | null | undefined;
+  selectedLegendTitle: string;
+  // tslint:disable-next-line:no-any
+  refSelected: any;
   dataForHoverCard: number;
   color: string;
+  isLegendHovered: boolean;
+  isLegendSelected: boolean;
 }
 
 export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarChartProps, IMultiStackedBarChartState> {
@@ -40,22 +43,25 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     this.state = {
       isCalloutVisible: false,
       refArray: [],
-      legendSelected: '',
+      selectedLegendTitle: '',
       refSelected: null,
       dataForHoverCard: 0,
-      color: ''
+      color: '',
+      isLegendHovered: false,
+      isLegendSelected: false
     };
     this._onLeave = this._onLeave.bind(this);
+    this._onBarLeave = this._onBarLeave.bind(this);
   }
 
   public render(): JSX.Element {
-    const { barHeight, data, theme, hideRatio, styles } = this.props;
+    const { barHeight, data, theme, hideRatio, styles, href } = this.props;
     this._adjustProps();
     const { palette } = theme!;
     const legends = this._getLegendData(data!, hideRatio!, palette);
     const bars: JSX.Element[] = [];
     data!.map((singleChartData: IChartProps, index: number) => {
-      const singleChartBars = this._createBarsAndLegends(singleChartData!, barHeight!, palette, hideRatio![index]);
+      const singleChartBars = this._createBarsAndLegends(singleChartData!, barHeight!, palette, hideRatio![index], href);
       bars.push(<div key={index}>{singleChartBars}</div>);
     });
     this._classNames = getClassNames(styles!, {
@@ -69,13 +75,14 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         <div className={this._classNames.legendContainer}>{legends}</div>
         {isCalloutVisible ? (
           <Callout
-            gapSpace={0}
+            gapSpace={5}
+            isBeakVisible={false}
             target={this.state.refSelected}
             setInitialFocus={true}
             directionalHint={DirectionalHint.topRightEdge}
           >
             <div className={this._classNames.hoverCardRoot}>
-              <div className={this._classNames.hoverCardTextStyles}>{this.state.legendSelected}</div>
+              <div className={this._classNames.hoverCardTextStyles}>{this.state.selectedLegendTitle}</div>
               <div className={this._classNames.hoverCardDataStyles}>{this.state.dataForHoverCard}</div>
             </div>
           </Callout>
@@ -84,19 +91,11 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     );
   }
 
-  private _createBarsAndLegends(
-    data: IChartProps,
-    barHeight: number,
-    palette: IPalette,
-    hideRatio: boolean
-  ): JSX.Element {
+  private _createBarsAndLegends(data: IChartProps, barHeight: number, palette: IPalette, hideRatio: boolean, href?: string): JSX.Element {
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     // calculating starting point of each bar and it's range
     const startingPoint: number[] = [];
-    const total = data.chartData!.reduce(
-      (acc: number, point: IChartDataPoint) => acc + (point.data ? point.data : 0),
-      0
-    );
+    const total = data.chartData!.reduce((acc: number, point: IChartDataPoint) => acc + (point.data ? point.data : 0), 0);
     let prevPosition = 0;
     let value = 0;
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
@@ -107,12 +106,15 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       }
       value = (pointData / total) * 100;
       startingPoint.push(prevPosition);
-      const isSelected = this.state.legendSelected === point.legend!;
       const styles = this.props.styles;
+      let shouldHighlight = true;
+      if (this.state.isLegendHovered || this.state.isLegendSelected) {
+        shouldHighlight = this.state.selectedLegendTitle === point.legend;
+      }
       this._classNames = getClassNames(styles!, {
         theme: this.props.theme!,
-        isSelected: isSelected,
-        isChartSelected: this.state.isCalloutVisible
+        shouldHighlight: shouldHighlight,
+        href: href
       });
       return (
         <g
@@ -121,8 +123,10 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           ref={(e: SVGGElement) => {
             this._refCallback(e, point.legend!);
           }}
-          onMouseOver={this._onHover.bind(this, point.legend!, pointData, color)}
-          onMouseLeave={this._onLeave}
+          onMouseOver={this._onBarHover.bind(this, point.legend!, pointData, color)}
+          onMouseMove={this._onBarHover.bind(this, point.legend!, pointData, color)}
+          onMouseLeave={this._onBarLeave}
+          onClick={this._redirectToUrl.bind(this, href)}
         >
           <rect key={index} x={startingPoint[index] + '%'} y={0} width={value + '%'} height={barHeight} fill={color} />
         </g>
@@ -130,7 +134,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     });
     if (data.chartData!.length === 0) {
       bars.push(
-        <g key={0}>
+        <g key={0} className={this._classNames.noData} onClick={this._redirectToUrl.bind(this, href)}>
           <rect key={0} x={'0%'} y={0} width={'100%'} height={barHeight} fill={palette.neutralTertiaryAlt} />
         </g>
       );
@@ -177,18 +181,11 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     });
   };
 
-  private _onHover(customMessage: string, pointData: number, color: string): void {
-    if (!this.state.isCalloutVisible || this.state.legendSelected !== customMessage) {
-      const refArray = this.state.refArray;
-      const currentHoveredElement = refArray.find(
-        (eachElement: IRefArrayData) => eachElement.legendText === customMessage
-      );
+  private _onHover(customMessage: string): void {
+    if (this.state.isLegendSelected === false) {
       this.setState({
-        isCalloutVisible: true,
-        refSelected: currentHoveredElement!.refElement,
-        legendSelected: customMessage,
-        dataForHoverCard: pointData,
-        color: color
+        isLegendHovered: true,
+        selectedLegendTitle: customMessage
       });
     }
   }
@@ -202,15 +199,14 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         if (hideNumber) {
           singleChartData.chartData!.map((point: IChartDataPoint) => {
             const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
-            const pointData = point.data ? point.data : 0;
             const legend: ILegend = {
               title: point.legend!,
               color: color,
               action: () => {
-                this._onHover(point.legend!, pointData, color);
+                this._onClick(point.legend!);
               },
               hoverAction: () => {
-                this._onHover(point.legend!, pointData, color);
+                this._onHover(point.legend!);
               },
               onMouseOutAction: () => {
                 this._onLeave();
@@ -222,15 +218,14 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       } else {
         singleChartData.chartData!.map((point: IChartDataPoint) => {
           const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
-          const pointData = point.data ? point.data : 0;
           const legend: ILegend = {
             title: point.legend!,
             color: color,
             action: () => {
-              this._onHover(point.legend!, pointData, color);
+              this._onClick(point.legend!);
             },
             hoverAction: () => {
-              this._onHover(point.legend!, pointData, color);
+              this._onHover(point.legend!);
             },
             onMouseOutAction: () => {
               this._onLeave();
@@ -243,15 +238,55 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     return <Legends legends={actions} />;
   };
 
-  private _onLeave(): void {
-    if (this.state.isCalloutVisible) {
+  private _onClick(customMessage: string): void {
+    if (this.state.isLegendSelected) {
+      if (this.state.selectedLegendTitle === customMessage) {
+        this.setState({
+          isLegendSelected: false,
+          selectedLegendTitle: customMessage
+        });
+      } else {
+        this.setState({
+          selectedLegendTitle: customMessage
+        });
+      }
+    } else {
       this.setState({
-        isCalloutVisible: false,
-        refSelected: null,
-        legendSelected: '',
-        dataForHoverCard: 0,
-        color: ''
+        isLegendSelected: true,
+        selectedLegendTitle: customMessage
       });
     }
+  }
+
+  private _onLeave(): void {
+    if (this.state.isLegendSelected === false) {
+      this.setState({
+        isLegendHovered: false,
+        selectedLegendTitle: ''
+      });
+    }
+  }
+
+  private _onBarHover(customMessage: string, pointData: number, color: string, mouseEvent: React.MouseEvent<SVGPathElement>): void {
+    mouseEvent.persist();
+    if (this.state.isLegendSelected === false || (this.state.isLegendSelected && this.state.selectedLegendTitle === customMessage)) {
+      this.setState({
+        refSelected: mouseEvent,
+        isCalloutVisible: true,
+        selectedLegendTitle: customMessage,
+        dataForHoverCard: pointData,
+        color: color
+      });
+    }
+  }
+
+  private _onBarLeave(): void {
+    this.setState({
+      isCalloutVisible: false
+    });
+  }
+
+  private _redirectToUrl(href: string | undefined): void {
+    href ? (window.location.href = href) : '';
   }
 }

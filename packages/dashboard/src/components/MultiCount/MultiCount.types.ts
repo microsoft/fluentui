@@ -25,32 +25,45 @@ export interface IMultiCountProps {
    * color for the body text
    */
   bodyTextColor?: string;
+
+  /**
+   * custom message for the multicount
+   */
+  customMessage?: string;
+
+  /**
+   *Url to be redirected to upon clicking on the component
+   */
+  href?: string;
 }
 
 export enum AnnotationType {
   /**
    * Indicates a positive change, displays a up arrow
    */
-  positive,
+  positive = 'positive',
 
   /**
    * Indicates no change, no icon is displayed
    */
-  neutral,
+  neutral = 'neutral',
 
   /**
    * Indicates a negative change, displays a down arrow
    */
-  negative
+  negative = 'negative'
 }
 
 export interface IMultiCountStyleProps {
-  color: string;
-  iconName: string;
+  color?: string;
   annotationTextFontSize?: string;
   annotationTextColor?: string;
   bodyTextFontSize?: string;
   bodyTextColor?: string;
+  hoveredText?: string;
+  currentText?: string;
+  href?: string;
+  hideIcon?: boolean;
 }
 
 export interface IMultiCountRow {
@@ -78,6 +91,11 @@ export interface IMultiCountRow {
    *Indicates the whether the change for data is positive, negative or nuetral
    */
   type: AnnotationType;
+
+  /**
+   *prop to hide the change-indicator icon in the row
+   */
+  hideIcon?: boolean;
 }
 
 export interface IMultiCountStyles {
@@ -90,6 +108,11 @@ export interface IMultiCountStyles {
    * Style for bodyText
    */
   bodyText: IStyle;
+
+  /**
+   * Style for change indicator icon
+   */
+  changeIcon: IStyle;
 
   /**
    * Style for annotaion text and the change icon
@@ -110,4 +133,39 @@ export interface IMultiCountStyles {
    * Style for icon
    */
   icon: IStyle;
+
+  /**
+   * Style for the hover card root
+   */
+  hoverCardRoot: IStyle;
+
+  /**
+   * Style for data in hover card
+   */
+  hoverCardData: IStyle;
+
+  /**
+   * Style for the bodytext and annotation text displayed in the hover card
+   */
+  hoverCardText: IStyle;
+
+  /**
+   * Style for body text displayed in the hover card
+   */
+  hoverCardBodyText: IStyle;
+
+  /**
+   * Style for annotation text displayedin the hover card
+   */
+  hoverCardAnnotationText: IStyle;
+
+  /**
+   * Style for icon in the hover card
+   */
+  hoverCardIcon: IStyle;
+
+  /**
+   * Style for the custom message
+   */
+  customMessage: IStyle;
 }

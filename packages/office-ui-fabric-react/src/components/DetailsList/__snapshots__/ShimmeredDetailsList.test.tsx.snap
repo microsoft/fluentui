@@ -11,7 +11,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
   }
 >
   <div
-    aria-label={undefined}
     className=
         ms-DetailsList
         is-horizontalConstrained
@@ -33,7 +32,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
   >
     <div
       aria-colcount={1}
-      aria-label={undefined}
       aria-readonly="true"
       aria-rowcount={11}
       role="grid"
@@ -43,18 +41,20 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
         role="presentation"
       >
         <div
-          aria-describedby={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
           className=
               ms-FocusZone
               ms-DetailsHeader
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 background: #ffffff;
-                border-bottom: 1px solid #c8c8c8;
+                border-bottom: 1px solid #eaeaea;
                 box-sizing: content-box;
                 cursor: default;
                 display: inline-block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
                 height: 32px;
                 line-height: 32px;
                 min-width: 100%;
@@ -85,22 +85,16 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
         >
           <div
             aria-colindex={1}
-            aria-hidden={undefined}
             aria-labelledby="header0-check"
             className=
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   align-items: center;
                   border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-flex;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
                   height: 32px;
                   line-height: inherit;
                   margin-bottom: 0px;
@@ -141,9 +135,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
 
             >
               <div
-                aria-checked={undefined}
                 aria-describedby="header0-checkTooltip"
-                aria-label={undefined}
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
@@ -302,8 +294,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
         role="presentation"
       >
         <div
-          aria-describedby={undefined}
-          aria-labelledby={undefined}
           className=
               ms-FocusZone
               {

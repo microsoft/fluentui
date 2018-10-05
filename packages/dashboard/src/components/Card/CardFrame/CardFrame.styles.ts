@@ -37,7 +37,7 @@ export const getStyles = (props: ICardFrameProps): ICardFrameStyles => {
     cardTitle: {
       overflow: 'hidden',
       flex: 1,
-      lineHeight: '18px',
+      lineHeight: '19px',
       paddingLeft: '16px',
       fontSize: fontSize ? fontSize : '14px',
       fontFamily: fontFamily ? fontFamily : 'Segoe UI',
@@ -63,7 +63,8 @@ export const getStyles = (props: ICardFrameProps): ICardFrameStyles => {
     layout: {
       display: 'flex',
       flex: 1,
-      padding: '0 16px 16px 16px'
+      padding: '0 16px 16px 16px',
+      overflow: 'hidden'
     },
     ellipsisButtonStyle: {
       width: '100%',

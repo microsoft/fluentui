@@ -104,6 +104,7 @@ exports[`Component Examples renders FloatingPeoplePicker.Basic.Example.tsx corre
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
+              min-width: 0px;
               outline: none;
               overflow: hidden;
               padding-bottom: 0.5px;
@@ -122,7 +123,6 @@ exports[`Component Examples renders FloatingPeoplePicker.Basic.Example.tsx corre
             &:-ms-input-placeholder {
               color: #666666;
             }
-        disabled={undefined}
         id="SearchBox0"
         onChange={[Function]}
         onInput={[Function]}

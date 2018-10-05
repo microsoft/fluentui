@@ -1,8 +1,7 @@
 import { IDonutChartStyleProps, IDonutChartStyles } from './DonutChart.types';
 
 export const getStyles = (props: IDonutChartStyleProps): IDonutChartStyles => {
-  const { className, width, height, theme } = props;
-  const { palette } = theme;
+  const { className, width, height, theme, color } = props;
   return {
     root: [
       'ms-DonutChart',
@@ -23,15 +22,25 @@ export const getStyles = (props: IDonutChartStyleProps): IDonutChartStyles => {
       alignmentAdjust: 'center'
     },
     legendContainer: {
-      paddingTop: '16px'
+      paddingTop: '16px',
+      width: `${width}px`
     },
-    callOut: {
-      padding: '10px 16px 10px 16px',
-      fontSize: '12px',
-      color: palette.blue,
+    hoverCardTextStyles: {
+      ...theme.fonts.medium,
+      lineHeight: '14px'
+    },
+    hoverCardDataStyles: {
+      color: color === '' ? theme.palette.black : color,
+      fontSize: '28px',
       fontFamily: 'Segoe UI',
       fontWeight: 'bold',
-      backgroundColor: 'white'
+      lineHeight: '31px'
+    },
+    hoverCardRoot: {
+      paddingLeft: '16px',
+      paddingRight: '22px',
+      paddingTop: '15px',
+      paddingBottom: '8px'
     }
   };
 };

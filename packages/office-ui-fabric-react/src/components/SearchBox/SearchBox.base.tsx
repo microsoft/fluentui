@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
-import { BaseComponent, getId, KeyCodes, classNamesFunction, createRef } from '../../Utilities';
+import { BaseComponent, getId, KeyCodes, classNamesFunction, createRef, getNativeProps, inputProperties } from '../../Utilities';
 
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
@@ -76,12 +76,15 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
       disableAnimation
     });
 
+    const nativeProps = getNativeProps(this.props, inputProperties, ['id', 'className', 'placeholder', 'onFocus', 'onBlur', 'value']);
+
     return (
       <div ref={this._rootElement} className={classNames.root} onFocusCapture={this._onFocusCapture}>
         <div className={classNames.iconContainer} onClick={this._onClickFocus} aria-hidden={true}>
           <Icon iconName="Search" {...iconProps} className={classNames.icon} />
         </div>
         <input
+          {...nativeProps}
           id={id}
           className={classNames.field}
           placeholder={placeholderValue}
@@ -89,7 +92,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
           onInput={this._onInputChange}
           onKeyDown={this._onKeyDown}
           value={value}
-          disabled={this.props.disabled}
+          disabled={disabled}
           aria-label={ariaLabel ? ariaLabel : placeholder}
           ref={this._inputElement}
         />
@@ -151,7 +154,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
       hasFocus: true
     });
 
-    this._events.on(this._rootElement.current, 'blur', this._onBlur, true);
+    this._events.on(ev.currentTarget, 'blur', this._onBlur, true);
 
     if (this.props.onFocus) {
       this.props.onFocus(ev as React.FocusEvent<HTMLInputElement>);

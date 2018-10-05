@@ -17,11 +17,22 @@ export const getOverlayStyles: IOverlayStyles = {
 const globalClassNames = {
   root: 'ms-Modal',
   main: 'ms-Dialog-main',
+  scrollableContent: 'ms-Modal-scrollableContent',
   isOpen: 'is-open'
 };
 
 export const getStyles = (props: IModalStyleProps): IModalStyles => {
-  const { className, containerClassName, isOpen, isVisible, theme } = props;
+  const {
+    className,
+    containerClassName,
+    scrollableContentClassName,
+    isOpen,
+    isVisible,
+    hasBeenOpened,
+    modalRectangleTop,
+    theme,
+    topOffsetFixed
+  } = props;
   const { palette } = theme;
 
   const classNames = getGlobalClassNames(globalClassNames, theme);
@@ -41,6 +52,10 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
         pointerEvents: 'none',
         transition: `opacity ${animationDuration}`
       },
+      topOffsetFixed &&
+        hasBeenOpened && {
+          alignItems: 'flex-start'
+        },
       isOpen && classNames.isOpen,
       isVisible && {
         opacity: 1,
@@ -60,7 +75,19 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
         maxHeight: '100%',
         overflowY: 'auto'
       },
+      topOffsetFixed &&
+        hasBeenOpened && {
+          top: modalRectangleTop
+        },
       containerClassName
+    ],
+    scrollableContent: [
+      classNames.scrollableContent,
+      {
+        overflowY: 'auto',
+        flexGrow: 1
+      },
+      scrollableContentClassName
     ]
   };
 };

@@ -31,18 +31,15 @@ exports[`Component Examples renders Dropdown.Custom.Example.tsx correctly 1`] = 
           }
       htmlFor="Customdrop1"
       id="Customdrop1-label"
-      required={undefined}
     >
       Custom example:
     </label>
     <div
       aria-activedescendant="Customdrop1-option"
       aria-describedby="Customdrop1-option"
-      aria-disabled={undefined}
       aria-expanded="false"
       aria-label="Custom dropdown example"
       aria-labelledby="Customdrop1-label"
-      aria-owns={undefined}
       className=
           ms-Dropdown
           {
@@ -142,8 +139,6 @@ exports[`Component Examples renders Dropdown.Custom.Example.tsx correctly 1`] = 
         aria-atomic={true}
         aria-label="Select an Option"
         aria-live="off"
-        aria-posinset={undefined}
-        aria-selected={undefined}
         aria-setsize={10}
         className=
             ms-Dropdown-title
