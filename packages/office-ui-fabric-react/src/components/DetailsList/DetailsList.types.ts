@@ -472,11 +472,58 @@ export interface IColumnReorderOptions {
   frozenColumnCountFromEnd?: number;
 
   /**
+   * Callback to handle the column dragstart
+   * draggedStarted indicates that the column drag has been started on DetailsHeader
+   */
+  onColumnDragStart?: (dragStarted: boolean) => void;
+
+  /**
+   * Callback to handle the column reorder
+   * draggedIndex is the source column index, that need to be placed in targetIndex
+   * Use oncolumnDrop instead of this
+   * @deprecated
+   */
+  handleColumnReorder?: (draggedIndex: number, targetIndex: number) => void;
+
+  /**
    * Callback to handle the column reorder
    * draggedIndex is the source column index, that need to be placed in targetIndex
    */
-  handleColumnReorder: (draggedIndex: number, targetIndex: number) => void;
+  onColumnDrop?: (dragDropDetails: IColumnDragDropDetails) => void;
 
+  /**
+   * Callback to handle the column reorder
+   */
+  onDragEnd?: (columnDropLocationDetails: ColumnDragEndLocation) => void;
+}
+export interface IColumnDragDropDetails {
+  /**
+   * Specifies the source column index
+   * @default -1
+   */
+  draggedIndex: number;
+  /**
+  * Specifies the target column index
+  * @default -1
+  */
+  targetIndex: number;
+}
+/**
+* Enum to describe where the column has been dropped, after starting the drag
+*/
+export enum ColumnDragEndLocation {
+  /**
+   * Drag ended outside of current list
+   */
+  outside = 0,
+  /**
+   * Drag ended on current List
+   */
+  surface = 1,
+  /**
+   * Drag ended on Header
+   */
+  header = 2
 }
 
 export enum DetailsListLayoutMode {
