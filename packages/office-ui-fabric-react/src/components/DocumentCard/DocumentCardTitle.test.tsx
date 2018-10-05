@@ -1,11 +1,9 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import { DocumentCardTitle } from './DocumentCardTitle';
 
 const veryLongTitle = `This is obviously a very very very very very very very very
 very very loooooooooooooooooooooooooooooooooooooooooooooooong title that will need to be truncated`;
-const normalLengthTitle = `This is a title of normal length`;
 
 describe('DocumentCardTitle', () => {
   it('truncates a title that is too long', () => {
