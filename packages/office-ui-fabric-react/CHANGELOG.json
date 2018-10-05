@@ -2,6 +2,32 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.79.0",
+      "tag": "office-ui-fabric-react_v6.79.0",
+      "date": "Fri, 05 Oct 2018 23:29:26 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Moving data property from IDropDownOption to ISelectableOption so anyone that uses ISelectableOption can use this property",
+            "author": "SavannahBourgeois <42548121+SavannahBourgeois@users.noreply.github.com>",
+            "commit": "8dbbb210c9b8d81fd32015f4d01c0005f3d5e65b"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fixed initials not reappearing bug when image is removed from a PersonaCoin",
+            "author": "Greg Dardis <dardis.greg@gmail.com>",
+            "commit": "a79272f6a88cbb7e6d144c5e504e671f2b8a23c1"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.29.0 <7.0.0` to `>=6.29.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.78.1",
       "tag": "office-ui-fabric-react_v6.78.1",
       "date": "Fri, 05 Oct 2018 12:27:02 GMT",

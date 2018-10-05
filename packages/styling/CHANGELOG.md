@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Thu, 04 Oct 2018 12:26:48 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Oct 2018 23:29:26 GMT and should not be manually modified.
+
+## 6.29.1
+Fri, 05 Oct 2018 23:29:26 GMT
+
+### Patches
+
+- Fixing getGlobalClassNames to return the correct class names even when the theme object is different.
 
 ## 6.29.0
 Thu, 04 Oct 2018 12:26:48 GMT

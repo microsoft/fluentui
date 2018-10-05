@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.35.0",
+      "tag": "@uifabric/experiments_v6.35.0",
+      "date": "Fri, 05 Oct 2018 23:29:26 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Sidebar: Added new component",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "df26624e48824d005e5afff015e405773381272b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.78.1 <7.0.0` to `>=6.79.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.34.2",
       "tag": "@uifabric/experiments_v6.34.2",
       "date": "Thu, 04 Oct 2018 12:26:48 GMT",

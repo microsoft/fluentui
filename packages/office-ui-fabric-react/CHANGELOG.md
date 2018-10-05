@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 05 Oct 2018 12:27:02 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Oct 2018 23:29:26 GMT and should not be manually modified.
+
+## 6.79.0
+Fri, 05 Oct 2018 23:29:26 GMT
+
+### Minor changes
+
+- Moving data property from IDropDownOption to ISelectableOption so anyone that uses ISelectableOption can use this property
+
+### Patches
+
+- Fixed initials not reappearing bug when image is removed from a PersonaCoin
 
 ## 6.78.1
 Fri, 05 Oct 2018 12:27:02 GMT
