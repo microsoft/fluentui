@@ -2,6 +2,35 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.78.1",
+      "tag": "office-ui-fabric-react_v6.78.1",
+      "date": "Fri, 05 Oct 2018 12:27:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsList: header now reflects the theme defined in the font.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "80ccabf9a355ff5506f4f502b0060a85c616ca15"
+          },
+          {
+            "comment": "Facepile: allow FacepileButton to render custom styles",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "87f8f84b2a87c223802cc566f56a10dc0097f611"
+          },
+          {
+            "comment": "Fixed null ref error when autoFocus prop is used in SearchBox",
+            "author": "Greg Dardis <dardis.greg@gmail.com>",
+            "commit": "678fbae040abb66cb89f2bb3106dacf63f0e77d8"
+          },
+          {
+            "comment": "Fixes DetailsHeader disabled columns invoking onColumnClick callbacks",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "76ac532d4e3d317c53bcb447cc9a1d48fb82b1b2"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.78.0",
       "tag": "office-ui-fabric-react_v6.78.0",
       "date": "Thu, 04 Oct 2018 12:26:48 GMT",

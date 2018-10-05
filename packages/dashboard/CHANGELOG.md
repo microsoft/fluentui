@@ -1,6 +1,13 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Thu, 04 Oct 2018 12:26:48 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Oct 2018 12:27:02 GMT and should not be manually modified.
+
+## 0.29.1
+Fri, 05 Oct 2018 12:27:02 GMT
+
+### Patches
+
+- removed the line inbetween the grid rows
 
 ## 0.29.0
 Thu, 04 Oct 2018 12:26:48 GMT

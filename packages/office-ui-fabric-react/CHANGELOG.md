@@ -1,6 +1,16 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 04 Oct 2018 12:26:48 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Oct 2018 12:27:02 GMT and should not be manually modified.
+
+## 6.78.1
+Fri, 05 Oct 2018 12:27:02 GMT
+
+### Patches
+
+- DetailsList: header now reflects the theme defined in the font.
+- Facepile: allow FacepileButton to render custom styles
+- Fixed null ref error when autoFocus prop is used in SearchBox
+- Fixes DetailsHeader disabled columns invoking onColumnClick callbacks
 
 ## 6.78.0
 Thu, 04 Oct 2018 12:26:48 GMT
