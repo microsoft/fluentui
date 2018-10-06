@@ -42,7 +42,7 @@ export type IStateComponentType<TComponentProps, TViewProps, TStyleSet extends I
   TComponentProps,
   TViewProps,
   IProcessedStyleSet<TStyleSet>
-  >;
+>;
 
 /**
  * A helper type for defining view components, including its properties.
@@ -60,7 +60,7 @@ export type IComponent<TComponentProps, TViewProps, TStyleSet extends IStyleSet<
   IProcessedStyleSet<TStyleSet>,
   ITheme,
   TStatics
-  >;
+>;
 
 /**
  * Primary type for defining stateless components.
@@ -71,7 +71,7 @@ export type IStatelessComponent<TComponentProps, TStyleSet extends IStyleSet<TSt
   IProcessedStyleSet<TStyleSet>,
   ITheme,
   TStatics
-  >;
+>;
 
 // tslint:disable-next-line:no-any
 const providers: IStylingProviders<any, any, any, ICustomizerContext, ITheme, ISchemeNames> = {
@@ -97,7 +97,7 @@ export function createStatelessComponent<TComponentProps, TStyleSet extends ISty
     ITheme,
     ISchemeNames,
     TStatics
-    >(component, providers);
+  >(component, providers);
 }
 
 /**
@@ -118,7 +118,7 @@ export function createComponent<TComponentProps, TViewProps, TStyleSet extends I
     ITheme,
     ISchemeNames,
     TStatics
-    >(component, providers);
+  >(component, providers);
 }
 
 function getCustomizations<TViewProps, TStyleSet>(

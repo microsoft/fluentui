@@ -27,7 +27,8 @@
   "devDependencies": {
     "@types/react": "16.3.16",
     "@types/react-dom": "16.0.5",
-    "office-ui-fabric-react-tslint": ">=6.0.0 <7.0.0",
+    "@uifabric/prettier-rules": ">=1.0.0 <2.0.0",
+    "@uifabric/tslint-rules": ">=1.0.0 <2.0.0",
     "react": ">=16.3.2-0 <17.0.0",
     "react-dom": ">=16.3.2-0 <17.0.0"
   },

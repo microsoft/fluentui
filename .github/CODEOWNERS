@@ -33,7 +33,8 @@ packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
 # packages/icons/
 # packages/jest-serializer-merge-styles/
 # packages/merge-styles/
-# packages/office-ui-fabric-react-tslint/
+# packages/prettier-rules/
+# packages/tslint-rules/
 packages/styling/ @dzearing
 packages/styling/src/interfaces/ @phkuo
 packages/styling/src/styles/ @phkuo
@@ -136,7 +137,7 @@ HoverCard/docs/   @atneik @Jahnp
 # Label/docs/
 Layer/docs/  @ThomasMichon
 # Link/docs/
-# List/docs/  
+# List/docs/
 # MarqueeSelection/docs/
 # MessageBar/docs/
 # Modal/docs/

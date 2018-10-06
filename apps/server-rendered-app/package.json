@@ -21,7 +21,8 @@
     "@types/webpack-env": "1.13.0",
     "express": "^4.16.3",
     "compression": "^1.7.2",
-    "office-ui-fabric-react-tslint": ">=6.0.0 <7.0.0"
+    "@uifabric/prettier-rules": ">=1.0.0 <2.0.0",
+    "@uifabric/tslint-rules": ">=1.0.0 <2.0.0"
   },
   "dependencies": {
     "@uifabric/icons": ">=6.1.1 <7.0.0",

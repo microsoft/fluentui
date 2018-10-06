@@ -46,10 +46,12 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
         pointerEvents: 'none',
         opacity: 0.3
       },
-      isWhite && !selected && { // fake a border for white
-        backgroundColor: semanticColors.bodyDivider,
-        padding: 1
-      }
+      isWhite &&
+        !selected && {
+          // fake a border for white
+          backgroundColor: semanticColors.bodyDivider,
+          padding: 1
+        }
     ],
     // the <svg> that holds the color
     svg: [

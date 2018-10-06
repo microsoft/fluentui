@@ -26,7 +26,8 @@
   ],
   "devDependencies": {
     "@types/jest": "23.0.0",
-    "office-ui-fabric-react-tslint": ">=6.0.0 <7.0.0"
+    "@uifabric/prettier-rules": ">=1.0.0 <2.0.0",
+    "@uifabric/tslint-rules": ">=1.0.0 <2.0.0"
   },
   "dependencies": {
     "@uifabric/set-version": ">=1.1.1 <2.0.0",

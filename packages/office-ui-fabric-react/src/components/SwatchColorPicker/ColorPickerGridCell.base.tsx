@@ -15,7 +15,7 @@ import { classNamesFunction } from '../../Utilities';
 
 const getClassNames = classNamesFunction<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>();
 
-class ColorCell extends GridCell<IColorCellProps, IGridCellProps<IColorCellProps>> { }
+class ColorCell extends GridCell<IColorCellProps, IGridCellProps<IColorCellProps>> {}
 
 export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCellProps, {}> {
   public static defaultProps = {
@@ -135,21 +135,21 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
         checked && ['is-checked', styles.rootChecked],
         disabled && ['is-disabled', styles.rootDisabled],
         !disabled &&
-        !checked && {
-          selectors: {
-            ':hover': styles.rootHovered,
-            ':focus': styles.rootFocused,
-            ':active': styles.rootPressed
-          }
-        },
+          !checked && {
+            selectors: {
+              ':hover': styles.rootHovered,
+              ':focus': styles.rootFocused,
+              ':active': styles.rootPressed
+            }
+          },
         disabled && checked && [styles.rootCheckedDisabled],
         !disabled &&
-        checked && {
-          selectors: {
-            ':hover': styles.rootCheckedHovered,
-            ':active': styles.rootCheckedPressed
+          checked && {
+            selectors: {
+              ':hover': styles.rootCheckedHovered,
+              ':active': styles.rootCheckedPressed
+            }
           }
-        }
       ],
       flexContainer: ['ms-Button-flexContainer', styles.flexContainer]
     });
