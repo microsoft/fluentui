@@ -42,7 +42,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
 
     this._id = getId('Slider');
 
-    const value = props.value || props.defaultValue || props.min;
+    const value = props.value != null ? props.value : props.defaultValue != null ? props.defaultValue : props.min; 
 
     this.state = {
       value: value,
