@@ -2,4 +2,4 @@
 - Keep the names of the navigation items brief and clear, rather than trying to be overly specific.
 - Use the word that feels right for the navigation. For example, some items may make better sense as nouns (e.g. “Files”), others as adjectives (“Shared”). Use what makes sense for users, and keep it short!
 - Try to keep your app’s nav in a consistent order across platforms. This sort of consistency increases predictability which drives user confidence, thus retaining and engaging them.
-- UseNav for an app with a medium to high number of top-level views or categories. If your app is very simple, you may prefer a simpler hub-and-spoke layout.
+- Use Nav for an app with a medium to high number of top-level views or categories. If your app is very simple, you may prefer a simpler hub-and-spoke layout.
