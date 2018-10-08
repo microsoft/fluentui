@@ -21,51 +21,54 @@ function semverSort(a, b) {
   return 0;
 }
 
-rushConfig.projects.reduce(async (previousPromise, project) => {
-  await previousPromise;
+(async () => {
+  await rushConfig.projects.reduce(async (previousPromise, project) => {
+    await previousPromise;
 
-  const projectFolder = path.join(rootFolder, project.projectFolder);
-  const packageJson = JSON.parse(fs.readFileSync(path.join(projectFolder, 'package.json')));
+    const projectFolder = path.join(rootFolder, project.projectFolder);
+    const packageJson = JSON.parse(fs.readFileSync(path.join(projectFolder, 'package.json')));
 
-  let npmInfo = {};
+    let npmInfo = {};
 
-  try {
-    const response = await npmFetch(`/${packageJson.name}`);
-    npmInfo = await response.json();
-  } catch (e) {
-    console.log(`cannot fetch ${packageJson.name} from public npm registry`);
-  }
-
-  if (npmInfo.versions) {
-    const checkedInVersion = packageJson.version;
-    const prereleaseVersions = Object.keys(npmInfo.versions).filter(version => version.startsWith(checkedInVersion + '-'));
-    const latestVersion = prereleaseVersions.length > 0 ? prereleaseVersions.sort(semverSort)[prereleaseVersions.length - 1] : null;
-    const newVersion = semver.inc(latestVersion, 'prerelease', 'beta');
-
-    packageJson.version = newVersion;
-
-    newVersions[packageJson.name] = newVersion;
-  }
-}, Promise.resolve());
-
-rushConfig.projects.forEach(project => {
-  const projectFolder = path.join(rootFolder, project.projectFolder);
-  const packageJsonPath = path.join(projectFolder, 'package.json');
-  const packageJson = JSON.parse(fs.readFileSync(packageJsonPath));
-
-  if (newVersions[packageJson.name]) {
-    packageJson.version = newVersions[packageJson.name];
-  }
-
-  Object.keys(newVersions).forEach(dep => {
-    if (packageJson.dependencies && packageJson.dependencies[dep]) {
-      packageJson.dependencies[dep] = newVersions[dep];
+    try {
+      const response = await npmFetch(`/${packageJson.name}`);
+      npmInfo = await response.json();
+    } catch (e) {
+      console.log(`cannot fetch ${packageJson.name} from public npm registry`);
     }
 
-    if (packageJson.devDependencies && packageJson.devDependencies[dep]) {
-      packageJson.devDependencies[dep] = newVersions[dep];
+    if (npmInfo.versions) {
+      const checkedInVersion = packageJson.version;
+      const prereleaseVersions = Object.keys(npmInfo.versions).filter(version => version.startsWith(checkedInVersion + '-'));
+      const latestVersion =
+        prereleaseVersions.length > 0 ? prereleaseVersions.sort(semverSort)[prereleaseVersions.length - 1] : checkedInVersion;
+      const newVersion = semver.inc(latestVersion, 'prerelease', 'beta');
+
+      packageJson.version = newVersion;
+
+      newVersions[packageJson.name] = newVersion;
     }
+  }, Promise.resolve());
+
+  rushConfig.projects.forEach(project => {
+    const projectFolder = path.join(rootFolder, project.projectFolder);
+    const packageJsonPath = path.join(projectFolder, 'package.json');
+    const packageJson = JSON.parse(fs.readFileSync(packageJsonPath));
+
+    if (newVersions[packageJson.name]) {
+      packageJson.version = newVersions[packageJson.name];
+    }
+
+    Object.keys(newVersions).forEach(dep => {
+      if (packageJson.dependencies && packageJson.dependencies[dep]) {
+        packageJson.dependencies[dep] = newVersions[dep];
+      }
+
+      if (packageJson.devDependencies && packageJson.devDependencies[dep]) {
+        packageJson.devDependencies[dep] = newVersions[dep];
+      }
+    });
+
+    fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2) + '\n');
   });
-
-  fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
-});
+})();
