@@ -46,9 +46,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                     </div>
                   )}
                   <div>
-                    <strong>
-                      {points!.chartData![0].horizontalBarChartdata!.x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                    </strong>
+                    <strong>{points!.chartData![0].horizontalBarChartdata!.x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</strong>
                   </div>
                 </div>
                 <svg className={this._classNames.chart}>
@@ -78,8 +76,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     // calculating starting point of each bar and it's range
     const startingPoint: number[] = [];
     const total = data.chartData!.reduce(
-      (acc: number, point: IChartDataPoint) =>
-        acc + (point.horizontalBarChartdata!.x ? point.horizontalBarChartdata!.x : 0),
+      (acc: number, point: IChartDataPoint) => acc + (point.horizontalBarChartdata!.x ? point.horizontalBarChartdata!.x : 0),
       0
     );
     let prevPosition = 0;
@@ -91,17 +88,9 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
         prevPosition += value;
       }
       value = (pointData / total) * 100;
+      value >= 0 ? (value = value) : (value = 0);
       startingPoint.push(prevPosition);
-      return (
-        <rect
-          key={index}
-          x={startingPoint[index] + '%'}
-          y={0}
-          width={value + '%'}
-          height={this._barHeight}
-          fill={color}
-        />
-      );
+      return <rect key={index} x={startingPoint[index] + '%'} y={0} width={value + '%'} height={this._barHeight} fill={color} />;
     });
     return bars;
   }
