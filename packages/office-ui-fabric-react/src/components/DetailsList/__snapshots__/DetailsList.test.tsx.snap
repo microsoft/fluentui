@@ -15,10 +15,14 @@ exports[`DetailsList renders List correctly 1`] = `
         ms-DetailsList
         is-horizontalConstrained
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
           background: #ffffff;
           color: #333333;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
+          font-weight: 400;
           overflow-x: auto;
           overflow-y: visible;
           position: relative;
@@ -578,10 +582,14 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
         ms-DetailsList
         is-horizontalConstrained
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
           background: #ffffff;
           color: #333333;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
+          font-weight: 400;
           overflow-x: auto;
           overflow-y: visible;
           position: relative;
@@ -1733,10 +1741,14 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
         ms-DetailsList--Compact
         is-horizontalConstrained
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
           background: #ffffff;
           color: #333333;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
+          font-weight: 400;
           overflow-x: auto;
           overflow-y: visible;
           position: relative;
@@ -2297,10 +2309,14 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
         is-fixed
         is-horizontalConstrained
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
           background: #ffffff;
           color: #333333;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
+          font-weight: 400;
           overflow-x: auto;
           overflow-y: visible;
           position: relative;
@@ -3238,10 +3254,14 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
         ms-DetailsList
         is-horizontalConstrained
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
           background: #ffffff;
           color: #333333;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
+          font-weight: 400;
           overflow-x: auto;
           overflow-y: visible;
           position: relative;
@@ -4407,10 +4427,14 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
         ms-DetailsList
         is-horizontalConstrained
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
           background: #ffffff;
           color: #333333;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
+          font-weight: 400;
           overflow-x: auto;
           overflow-y: visible;
           position: relative;
