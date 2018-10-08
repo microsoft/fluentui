@@ -1,6 +1,13 @@
 # Change Log - @uifabric/set-version
 
-This log was last generated on Fri, 28 Sep 2018 12:27:38 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Oct 2018 12:24:15 GMT and should not be manually modified.
+
+## 1.1.2
+Mon, 08 Oct 2018 12:24:15 GMT
+
+### Patches
+
+- Moving tslint/prettier dependencies 
 
 ## 1.1.1
 Fri, 28 Sep 2018 12:27:38 GMT

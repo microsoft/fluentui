@@ -37,6 +37,11 @@ export interface ISelectableOption {
    * @defaultvalue false
    */
   disabled?: boolean;
+
+  /**
+   * Data available to custom onRender functions.
+   */
+  data?: any;
 }
 
 export enum SelectableOptionMenuItemType {

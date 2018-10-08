@@ -51,9 +51,7 @@ export const styles: IHorizontalStackComponent['styles'] = props => {
           maxWidth: '100vw',
 
           // avoid unnecessary calc() calls if vertical gap is 0
-          height: fillVertical ?
-            (vGap.value === 0 ? '100%' : `calc(100% + ${vGap.value}${vGap.unit})`)
-            : 'auto'
+          height: fillVertical ? (vGap.value === 0 ? '100%' : `calc(100% + ${vGap.value}${vGap.unit})`) : 'auto'
         }
       ]
     } as IHorizontalStackStyles;

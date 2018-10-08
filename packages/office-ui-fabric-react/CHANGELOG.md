@@ -1,6 +1,40 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 04 Oct 2018 12:26:48 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Oct 2018 12:24:16 GMT and should not be manually modified.
+
+## 6.80.0
+Mon, 08 Oct 2018 12:24:16 GMT
+
+### Minor changes
+
+- Typescript 3.1 type fixes.
+
+### Patches
+
+- Moving tslint/prettier dependencies to published packages.
+- Fix a11y violations in ContextualMenu examples
+- Fix Sliders' support for zero values.
+
+## 6.79.0
+Fri, 05 Oct 2018 23:29:26 GMT
+
+### Minor changes
+
+- Moving data property from IDropDownOption to ISelectableOption so anyone that uses ISelectableOption can use this property
+
+### Patches
+
+- Fixed initials not reappearing bug when image is removed from a PersonaCoin
+
+## 6.78.1
+Fri, 05 Oct 2018 12:27:02 GMT
+
+### Patches
+
+- DetailsList: header now reflects the theme defined in the font.
+- Facepile: allow FacepileButton to render custom styles
+- Fixed null ref error when autoFocus prop is used in SearchBox
+- Fixes DetailsHeader disabled columns invoking onColumnClick callbacks
 
 ## 6.78.0
 Thu, 04 Oct 2018 12:26:48 GMT

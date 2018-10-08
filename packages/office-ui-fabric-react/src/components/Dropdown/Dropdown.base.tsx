@@ -218,7 +218,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
               aria-expanded={isOpen ? 'true' : 'false'}
               role={ariaAttrs.role}
               aria-label={ariaLabel}
-              aria-labelledby={label ? (id + '-label') : undefined}
+              aria-labelledby={label ? id + '-label' : undefined}
               aria-describedby={mergeAriaAttributeValues(optionId, keytipAttributes['aria-describedby'])}
               aria-activedescendant={ariaAttrs.ariaActiveDescendant}
               aria-disabled={disabled}
