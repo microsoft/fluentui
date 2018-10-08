@@ -66,6 +66,11 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
   value?: string;
 
   /**
+   * The HTML input type for the SearchBox. Examples: 'text', 'search'.
+   */
+  type?: string;
+
+  /**
    * The default value of the text in the SearchBox, in the case of an uncontrolled component.
    * Up till now, this has not been implemented, deprecating. Will re-implement if uncontrolled
    * component behavior is implemented.
