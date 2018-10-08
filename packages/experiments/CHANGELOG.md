@@ -1,6 +1,19 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 05 Oct 2018 23:29:26 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Oct 2018 12:24:15 GMT and should not be manually modified.
+
+## 6.36.0
+Mon, 08 Oct 2018 12:24:15 GMT
+
+### Minor changes
+
+- Sidebar: Added new component
+
+### Patches
+
+- Moving tslint/prettier dependencies 
+- Fix a11y violations in Fluent ContextualMenu examples
+- Sidebar: Fixed filename and imports
 
 ## 6.35.0
 Fri, 05 Oct 2018 23:29:26 GMT

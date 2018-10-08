@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/merge-styles",
-  "version": "6.9.3",
+  "version": "6.9.4",
   "description": "Office UI Fabric style loading utilities.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -30,7 +30,7 @@
     "@uifabric/tslint-rules": ">=1.0.0 <2.0.0"
   },
   "dependencies": {
-    "@uifabric/set-version": ">=1.1.1 <2.0.0",
+    "@uifabric/set-version": ">=1.1.2 <2.0.0",
     "tslib": "^1.7.1"
   }
 }

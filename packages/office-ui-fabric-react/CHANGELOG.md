@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 05 Oct 2018 23:29:26 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Oct 2018 12:24:16 GMT and should not be manually modified.
+
+## 6.80.0
+Mon, 08 Oct 2018 12:24:16 GMT
+
+### Minor changes
+
+- Typescript 3.1 type fixes.
+
+### Patches
+
+- Moving tslint/prettier dependencies to published packages.
+- Fix a11y violations in ContextualMenu examples
+- Fix Sliders' support for zero values.
 
 ## 6.79.0
 Fri, 05 Oct 2018 23:29:26 GMT
