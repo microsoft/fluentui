@@ -42,6 +42,12 @@ export interface INavProps {
   groups: INavLinkGroup[] | null;
 
   /**
+   * Used to customize how content inside the group header is rendered
+   * @defaultvalue Default group header rendering
+   */
+  onRenderGroupHeader?: IRenderFunction<INavLinkGroup>;
+
+  /**
    * Used to customize how content inside the link tag is rendered
    * @defaultvalue Default link rendering
    */
