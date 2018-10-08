@@ -21,31 +21,29 @@ storiesOf('Link', module)
       {story()}
     </Screener>
   ))
-  .addStory('Root', () => <Link href="#">I'm a link</Link>, { rtl: true })
-  .addStory('Disabled', () => (
-    <Link href="#" disabled>
-      I'm a disabled link
-    </Link>
-  ))
-  .addStory('No Href', () => <Link>I'm rendered as a button because I have no href</Link>)
-  .addStory('No Href Disabled', () => <Link disabled>I'm rendered as a button because I have no href and am disabled</Link>)
   .addStory(
-    'Anchor with focus',
+    'Root',
     () => (
-      <div className="ms-isFocusVisible">
-        <Link href="#">I'm rendered as an anchor tag with focus.</Link>
+      <div className=".ms-Fabric--isFocusVisible">
+        <Link href="#">I'm a link</Link>
       </div>
     ),
     { rtl: true }
   )
-  .addStory(
-    'Anchor with focus disabled',
-    () => (
-      <div className="ms-isFocusVisible">
-        <Link disabled href="#">
-          I'm rendered as an anchor tag with focus but I'm disabled.
-        </Link>
-      </div>
-    ),
-    { rtl: true }
-  );
+  .addStory('Disabled', () => (
+    <div className=".ms-Fabric--isFocusVisible">
+      <Link href="#" disabled>
+        I'm a disabled link
+      </Link>{' '}
+    </div>
+  ))
+  .addStory('No Href', () => (
+    <div className=".ms-Fabric--isFocusVisible">
+      <Link>I'm rendered as a button because I have no href</Link>
+    </div>
+  ))
+  .addStory('No Href Disabled', () => (
+    <div className=".ms-Fabric--isFocusVisible">
+      <Link disabled>I'm rendered as a button because I have no href and am disabled</Link>
+    </div>
+  ));
