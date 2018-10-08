@@ -9,6 +9,7 @@ import {
   ScreenWidthMinXXLarge,
   ScreenWidthMinUhfMobile
 } from '../../Styling';
+import { isIOS } from '../../Utilities';
 // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
 // import { IStyleFunctionOrObject } from '../../Utilities';
 // import { IButtonStyles, IButtonStyleProps } from '../../Button';
@@ -103,6 +104,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
   const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
   const isCustomPanel = type === PanelType.custom;
+  const heightForDevice = isIOS() ? window.innerHeight : '100%';
 
   return {
     root: [
@@ -118,10 +120,10 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         bottom: 0
       },
       !isOpen &&
-        !isAnimating &&
-        isHiddenOnDismiss && {
-          visibility: 'hidden'
-        },
+      !isAnimating &&
+      isHiddenOnDismiss && {
+        visibility: 'hidden'
+      },
       isCustomPanel && classNames.custom,
       className
     ],
@@ -141,10 +143,10 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     ],
     hiddenPanel: [
       !isOpen &&
-        !isAnimating &&
-        isHiddenOnDismiss && {
-          visibility: 'hidden'
-        }
+      !isAnimating &&
+      isHiddenOnDismiss && {
+        visibility: 'hidden'
+      }
     ],
     main: [
       classNames.main,
@@ -242,30 +244,18 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       !isOpen && isAnimating && isOnRightSide && AnimationClassNames.slideRightOut40,
       focusTrapZoneClassName
     ],
-    commands: [classNames.commands],
     contentInner: [
       classNames.contentInner,
       {
         display: 'flex',
         flexDirection: 'column',
-        minHeight: '100%',
-        WebkitOverflowScrolling: 'touch',
-        /* Force hw accelleration on scrollable region */
-        transform: 'translateZ(0)'
+        maxHeight: heightForDevice,
       },
-      hasCloseButton && {
-        top: commandBarHeight,
-        minHeight: `calc(100% - ${commandBarHeight})`
+      isFooterAtBottom && {
+        height: heightForDevice
       }
     ],
-    scrollableContent: [
-      classNames.scrollableContent,
-      {
-        height: '100%',
-        overflowY: 'auto',
-        flexGrow: 1
-      }
-    ],
+    commands: [classNames.commands],
     navigation: [
       classNames.navigation,
       {
@@ -300,13 +290,19 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       },
       headerClassName
     ],
+    scrollableContent: [
+      classNames.scrollableContent,
+      {
+        overflowY: 'auto',
+        height: heightForDevice
+      }
+    ],
     content: [
       classNames.content,
       sharedPaddingStyles,
       {
         marginBottom: 0,
-        paddingBottom: '20px',
-        overflowY: 'auto'
+        paddingBottom: 20
       },
       isFooterAtBottom && {
         flexGrow: 1

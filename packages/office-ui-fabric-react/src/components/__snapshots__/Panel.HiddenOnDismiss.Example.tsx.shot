@@ -239,11 +239,11 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
           >
             <div
               className=
-                  ms-Panel-scrollableContent
+                  ms-Panel-contentInner
                   {
-                    flex-grow: 1;
-                    height: 100%;
-                    overflow-y: auto;
+                    display: flex;
+                    flex-direction: column;
+                    max-height: 100%;
                   }
             >
               <div
@@ -389,69 +389,65 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
               </div>
               <div
                 className=
-                    ms-Panel-contentInner
+                    ms-Panel-header
                     {
-                      -webkit-overflow-scrolling: touch;
-                      display: flex;
-                      flex-direction: column;
-                      min-height: calc(100% - 44px);
-                      top: 44px;
-                      transform: translateZ(0);
+                      flex-grow: 0;
+                      margin-bottom: 14px;
+                      margin-left: 0;
+                      margin-right: 0;
+                      margin-top: 14px;
+                      padding-left: 16px;
+                      padding-right: 16px;
+                    }
+                    @media screen and (min-width: 768px){& {
+                      padding-left: 32px;
+                      padding-right: 32px;
+                    }
+                    @media screen and (min-width: 1366px){& {
+                      padding-left: 40px;
+                      padding-right: 40px;
+                    }
+                    @media (min-width: 1024px){& {
+                      margin-top: 30px;
                     }
               >
-                <div
+                <p
+                  aria-level={2}
                   className=
-                      ms-Panel-header
+                      ms-Panel-headerText
                       {
-                        flex-grow: 0;
-                        margin-bottom: 14px;
-                        margin-left: 0;
-                        margin-right: 0;
-                        margin-top: 14px;
-                        padding-left: 16px;
-                        padding-right: 16px;
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #333333;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 21px;
+                        font-weight: 100;
+                        line-height: 32px;
+                        margin-bottom: 0px;
+                        margin-left: 0px;
+                        margin-right: 0px;
+                        margin-top: 0px;
                       }
-                      @media screen and (min-width: 768px){& {
-                        padding-left: 32px;
-                        padding-right: 32px;
-                      }
-                      @media screen and (min-width: 1366px){& {
-                        padding-left: 40px;
-                        padding-right: 40px;
-                      }
-                      @media (min-width: 1024px){& {
-                        margin-top: 30px;
-                      }
+                  id="Panel3-headerText"
+                  role="heading"
                 >
-                  <p
-                    aria-level={2}
-                    className=
-                        ms-Panel-headerText
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          color: #333333;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 21px;
-                          font-weight: 100;
-                          line-height: 32px;
-                          margin-bottom: 0px;
-                          margin-left: 0px;
-                          margin-right: 0px;
-                          margin-top: 0px;
-                        }
-                    id="Panel3-headerText"
-                    role="heading"
-                  >
-                    Hidden on Dismiss Panel
-                  </p>
-                </div>
+                  Hidden on Dismiss Panel
+                </p>
+              </div>
+              <div
+                className=
+                    ms-Panel-scrollableContent
+                    {
+                      height: 100%;
+                      overflow-y: auto;
+                    }
+                data-is-scrollable={true}
+              >
                 <div
                   className=
                       ms-Panel-content
                       {
                         margin-bottom: 0px;
-                        overflow-y: auto;
                         padding-bottom: 20px;
                         padding-left: 16px;
                         padding-right: 16px;
@@ -464,7 +460,6 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                         padding-left: 40px;
                         padding-right: 40px;
                       }
-                  data-is-scrollable={true}
                 >
                   <span>
                     When dismissed, this panel will be hidden instead of destroyed.
