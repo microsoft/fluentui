@@ -5,7 +5,7 @@ import 'whatwg-fetch';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
 import { setBaseUrl } from 'office-ui-fabric-react/lib/Utilities';
-import { Route, Router } from 'office-ui-fabric-react/lib/utilities/router';
+import { Route, Router } from 'office-ui-fabric-react/lib/utilities/router/index';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
