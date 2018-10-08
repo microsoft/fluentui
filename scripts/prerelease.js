@@ -8,6 +8,7 @@ const rootFolder = path.join(__dirname, '../');
 const rushConfig = JSON.parse(fs.readFileSync(path.join(rootFolder, 'rush.json')).toString());
 
 const newVersions = {};
+const preleaseTag = 'beta';
 
 function semverSort(a, b) {
   if (semver.gt(a, b)) {
@@ -39,10 +40,12 @@ function semverSort(a, b) {
 
     if (npmInfo.versions) {
       const checkedInVersion = packageJson.version;
-      const prereleaseVersions = Object.keys(npmInfo.versions).filter(version => version.startsWith(checkedInVersion + '-'));
+      const prereleaseVersions = Object.keys(npmInfo.versions).filter(version => version.startsWith(checkedInVersion + '-' + preleaseTag));
       const latestVersion =
-        prereleaseVersions.length > 0 ? prereleaseVersions.sort(semverSort)[prereleaseVersions.length - 1] : checkedInVersion;
-      const newVersion = semver.inc(latestVersion, 'prerelease', 'beta');
+        prereleaseVersions.length > 0
+          ? prereleaseVersions.sort(semverSort)[prereleaseVersions.length - 1]
+          : checkedInVersion + '-' + preleaseTag + '.0';
+      const newVersion = semver.inc(latestVersion, 'prerelease', preleaseTag);
 
       packageJson.version = newVersion;
 
