@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.81.0",
+      "tag": "office-ui-fabric-react_v6.81.0",
+      "date": "Mon, 08 Oct 2018 19:25:44 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "TextField can no longer be resized to below its minimum height",
+            "author": "Greg Dardis <dardis.greg@gmail.com>",
+            "commit": "787e1f420eb58d65b6ffd29bb96736917efa40a7"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Links that wrap aren't getting the proper focus rect. Added a conditional selector that changes the  outline and removed the getFocusStyles call  to fix this. This is for Links that are anchors. Links that are buttons do not wrap at the moment. Once Links that are buttons wrap we can address their focus rect issues if there are any.",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "f07207f078502843557c45f59872b76526929aa0"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.80.0",
       "tag": "office-ui-fabric-react_v6.80.0",
       "date": "Mon, 08 Oct 2018 12:24:16 GMT",

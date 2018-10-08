@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.36.1",
+      "tag": "@uifabric/experiments_v6.36.1",
+      "date": "Mon, 08 Oct 2018 19:25:44 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Sidebar: added index export",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "2bb01951d9ead0e850b86ba30141dbf9e0ce4dee"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.80.0 <7.0.0` to `>=6.81.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.36.0",
       "tag": "@uifabric/experiments_v6.36.0",
       "date": "Mon, 08 Oct 2018 12:24:15 GMT",
