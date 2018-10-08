@@ -77,7 +77,9 @@ export class DocumentCardTitle extends BaseComponent<IDocumentCardTitleProps, ID
           ref={this._titleElement}
           title={title}
         >
-          {truncatedTitleFirstPiece}&hellip;{truncatedTitleSecondPiece}
+          {truncatedTitleFirstPiece}
+          &hellip;
+          {truncatedTitleSecondPiece}
         </div>
       );
     } else {
@@ -108,17 +110,12 @@ export class DocumentCardTitle extends BaseComponent<IDocumentCardTitleProps, ID
         this._isTruncated = true;
         this.setState({
           truncatedTitleFirstPiece: originalTitle.slice(0, maxLength / 2 + TRUNCATION_FIRST_PIECE_LONGER_BY),
-          truncatedTitleSecondPiece: originalTitle.slice(
-            originalTitle.length - (maxLength / 2 - TRUNCATION_FIRST_PIECE_LONGER_BY)
-          )
+          truncatedTitleSecondPiece: originalTitle.slice(originalTitle.length - (maxLength / 2 - TRUNCATION_FIRST_PIECE_LONGER_BY))
         });
       } else {
         // The text is not so long, so we'll just break it into two pieces
         this.setState({
-          truncatedTitleFirstPiece: originalTitle.slice(
-            0,
-            Math.ceil(originalTitle.length / 2) + TRUNCATION_FIRST_PIECE_LONGER_BY
-          ),
+          truncatedTitleFirstPiece: originalTitle.slice(0, Math.ceil(originalTitle.length / 2) + TRUNCATION_FIRST_PIECE_LONGER_BY),
           truncatedTitleSecondPiece: originalTitle.slice(
             originalTitle.length - Math.floor(originalTitle.length / 2) + TRUNCATION_FIRST_PIECE_LONGER_BY
           )
@@ -137,14 +134,12 @@ export class DocumentCardTitle extends BaseComponent<IDocumentCardTitleProps, ID
       const { truncatedTitleFirstPiece, truncatedTitleSecondPiece } = this.state;
       this._isTruncated = true;
 
-      if (!truncatedTitleFirstPiece && !truncatedTitleSecondPiece) {
-        this._startTruncation(this.props);
+      if (truncatedTitleFirstPiece || truncatedTitleSecondPiece) {
+        this.setState({
+          truncatedTitleFirstPiece: truncatedTitleFirstPiece!.slice(0, truncatedTitleFirstPiece!.length - 1),
+          truncatedTitleSecondPiece: truncatedTitleSecondPiece!.slice(1)
+        });
       }
-
-      this.setState({
-        truncatedTitleFirstPiece: truncatedTitleFirstPiece!.slice(0, truncatedTitleFirstPiece!.length - 1),
-        truncatedTitleSecondPiece: truncatedTitleSecondPiece!.slice(1)
-      });
     }
   }
 
