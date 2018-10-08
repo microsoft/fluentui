@@ -1,6 +1,41 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 03 Oct 2018 12:28:46 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Oct 2018 23:29:26 GMT and should not be manually modified.
+
+## 6.79.0
+Fri, 05 Oct 2018 23:29:26 GMT
+
+### Minor changes
+
+- Moving data property from IDropDownOption to ISelectableOption so anyone that uses ISelectableOption can use this property
+
+### Patches
+
+- Fixed initials not reappearing bug when image is removed from a PersonaCoin
+
+## 6.78.1
+Fri, 05 Oct 2018 12:27:02 GMT
+
+### Patches
+
+- DetailsList: header now reflects the theme defined in the font.
+- Facepile: allow FacepileButton to render custom styles
+- Fixed null ref error when autoFocus prop is used in SearchBox
+- Fixes DetailsHeader disabled columns invoking onColumnClick callbacks
+
+## 6.78.0
+Thu, 04 Oct 2018 12:26:48 GMT
+
+### Minor changes
+
+- Coachmark: Add delayBeforeCoachmarkAnimation prop
+
+### Patches
+
+- Add explicit min-width of 0px to SearchBox input element, to prevent overflow when SearchBox has a fixed width.
+- Modal: small topOffsetFixed changes and added example to Dialog
+- Dropdown: only apply an aria-labelledby attribute if a non-empty label property is given
+- Correct hover and highlight states for Calendar (DateRangeType.Week)
 
 ## 6.77.0
 Wed, 03 Oct 2018 12:28:46 GMT

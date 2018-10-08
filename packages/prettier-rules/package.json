@@ -1,0 +1,11 @@
+{
+  "name": "@uifabric/prettier-rules",
+  "version": "1.0.0",
+  "description": "Shared Prettier rules",
+  "main": "prettier.config.js",
+  "scripts": {
+    "clean": "",
+    "build": "node -v",
+    "code-style": "node -v"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/variants",
+      "comment": "Moving tslint/prettier dependencies ",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/variants",
+  "email": "dzearing@microsoft.com"
+}

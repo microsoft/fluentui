@@ -54,8 +54,7 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
       },
       topOffsetFixed &&
         hasBeenOpened && {
-          alignItems: 'flex-start',
-          top: modalRectangleTop
+          alignItems: 'flex-start'
         },
       isOpen && classNames.isOpen,
       isVisible && {
@@ -76,6 +75,10 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
         maxHeight: '100%',
         overflowY: 'auto'
       },
+      topOffsetFixed &&
+        hasBeenOpened && {
+          top: modalRectangleTop
+        },
       containerClassName
     ],
     scrollableContent: [
