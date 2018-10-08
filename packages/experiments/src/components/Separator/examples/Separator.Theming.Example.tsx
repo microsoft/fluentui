@@ -12,10 +12,6 @@ const theme: ITheme = createTheme({
 });
 
 export class SeparatorThemingExample extends React.Component<{}, {}> {
-  constructor(props: {}) {
-    super(props);
-  }
-
   public render(): JSX.Element {
     const message = 'Today';
 
