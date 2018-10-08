@@ -5,6 +5,7 @@ export * from './FolderCover';
 export * from './Form';
 export * from './LayoutGroup';
 export * from './Shimmer';
+export * from './Sidebar';
 export * from './Stack';
 export * from './StaticList';
 export * from './Text';
