@@ -30,7 +30,7 @@ storiesOf('ResizeGroup', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
-      steps={ new Screener.Steps()
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .click('.OverflowButton')
         .hover('.OverflowButton')
@@ -38,38 +38,38 @@ storiesOf('ResizeGroup', module)
         .end()
       }
     >
-      { story() }
+      {story()}
     </Screener>
-  )).add('Root', () => (
+  )).addStory('Root', () => (
     <ResizeGroup
-      data={ list }
-      onReduceData={ noop }
+      data={list}
+      onReduceData={noop}
       // tslint:disable-next-line:jsx-no-lambda
-      onRenderData={ (data) => {
+      onRenderData={(data) => {
         return (
           <OverflowSet
-            items={ data.primary }
-            overflowItems={ data.overflow.length ? data.overflow : null }
-            onRenderItem={ (item) => {
+            items={data.primary}
+            overflowItems={data.overflow.length ? data.overflow : null}
+            onRenderItem={(item) => {
               return (
                 <DefaultButton
-                  text={ item.name }
-                  iconProps={ item.iconProps }
-                  onClick={ item.onClick }
-                  checked={ item.checked }
+                  text={item.name}
+                  iconProps={item.iconProps}
+                  onClick={item.onClick}
+                  checked={item.checked}
                 />
               );
-            } }
-            onRenderOverflowButton={ (overflowItems) => {
+            }}
+            onRenderOverflowButton={(overflowItems) => {
               return (
                 <DefaultButton
                   className='OverflowButton'
-                  menuProps={ { items: overflowItems! } }
+                  menuProps={{ items: overflowItems! }}
                 />
               );
-            } }
+            }}
           />
         );
-      } }
+      }}
     />
-  ));
+  ), { rtl: true });

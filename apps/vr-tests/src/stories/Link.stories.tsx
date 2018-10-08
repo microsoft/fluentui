@@ -9,20 +9,41 @@ storiesOf('Link', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
-      steps={ new Steps()
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Link')
         .snapshot('hover', { cropTo: '.testWrapper' })
         .click('.ms-Link')
         .hover('.ms-Link')
         .snapshot('click', { cropTo: '.testWrapper' })
-        .end()
-      }
+        .end()}
     >
-      { story() }
+      {story()}
     </Screener>
   ))
-  .add('Root', () => (<Link href='#'>I'm a link</Link>))
-  .add('Disabled', () => (<Link href='#' disabled>I'm a disabled link</Link>))
-  .add('No Href', () => (<Link>I'm rendered as a button because I have no href</Link>))
-  .add('No Href Disabled', () => (<Link disabled>I'm rendered as a button because I have no href and am disabled</Link>));
+  .addStory(
+    'Root',
+    () => (
+      <div className=".ms-Fabric--isFocusVisible">
+        <Link href="#">I'm a link</Link>
+      </div>
+    ),
+    { rtl: true }
+  )
+  .addStory('Disabled', () => (
+    <div className=".ms-Fabric--isFocusVisible">
+      <Link href="#" disabled>
+        I'm a disabled link
+      </Link>{' '}
+    </div>
+  ))
+  .addStory('No Href', () => (
+    <div className=".ms-Fabric--isFocusVisible">
+      <Link>I'm rendered as a button because I have no href</Link>
+    </div>
+  ))
+  .addStory('No Href Disabled', () => (
+    <div className=".ms-Fabric--isFocusVisible">
+      <Link disabled>I'm rendered as a button because I have no href and am disabled</Link>
+    </div>
+  ));

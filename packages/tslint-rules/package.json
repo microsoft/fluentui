@@ -1,0 +1,14 @@
+{
+  "name": "@uifabric/tslint-rules",
+  "version": "1.0.0",
+  "description": "Shared tslint rules",
+  "main": "tslint.json",
+  "scripts": {
+    "clean": "",
+    "build": "node -v",
+    "code-style": "node -v"
+  },
+  "devDependencies": {
+    "tslint-react": "^3.2.0"
+  }
+}

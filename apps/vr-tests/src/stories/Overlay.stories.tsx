@@ -9,17 +9,17 @@ storiesOf('Overlay', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
-      steps={ new Screener.Steps()
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.ms-Overlay' })
         .end()
       }
     >
-      { story() }
+      {story()}
     </Screener>
   ))
-  .add('Root', () => (
+  .addStory('Root', () => (
     <Overlay>Overlay content</Overlay>
-  ))
-  .add('Dark', () => (
+  ), { rtl: true })
+  .addStory('Dark', () => (
     <Overlay isDarkThemed>Overlay content</Overlay>
   ));

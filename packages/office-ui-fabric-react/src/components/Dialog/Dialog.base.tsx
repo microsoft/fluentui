@@ -13,7 +13,8 @@ const DefaultModalProps: IModalProps = {
   isDarkOverlay: false,
   isBlocking: false,
   className: '',
-  containerClassName: ''
+  containerClassName: '',
+  topOffsetFixed: false
 };
 
 const DefaultDialogContentProps: IDialogContentProps = {

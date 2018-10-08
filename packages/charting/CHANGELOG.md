@@ -1,6 +1,59 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Fri, 14 Sep 2018 01:55:02 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Oct 2018 12:24:15 GMT and should not be manually modified.
+
+## 0.24.1
+Mon, 08 Oct 2018 12:24:15 GMT
+
+### Patches
+
+- Moving tslint/prettier dependencies 
+
+## 0.24.0
+Thu, 04 Oct 2018 12:26:48 GMT
+
+### Minor changes
+
+- Adding optional href prop to dataviz, to redirect upon clicking on the dataviz
+
+## 0.23.0
+Wed, 03 Oct 2018 12:28:46 GMT
+
+### Minor changes
+
+- Removing old legends component. Replaced in all data-viz with the new components which supports isolation and other states
+
+## 0.22.1
+Mon, 01 Oct 2018 12:27:24 GMT
+
+### Patches
+
+- Adding timeout so that line chart can scale according to the container size and occupy the entire width thereby
+
+## 0.22.0
+Thu, 27 Sep 2018 12:27:48 GMT
+
+### Minor changes
+
+- 1)Making the line chart responsive 2)Correcting flex behavior 3)Curving corners of lines to get a smooth intersection between lines
+
+### Patches
+
+- donut chart legends padding issue fix
+
+## 0.21.2
+Tue, 25 Sep 2018 12:28:12 GMT
+
+### Patches
+
+- change  barHeight for lessthan 2 data points and apply css for ratio txt
+
+## 0.21.1
+Fri, 21 Sep 2018 14:25:46 GMT
+
+### Patches
+
+- Adding a version stamp file
 
 ## 0.21.0
 Fri, 14 Sep 2018 01:55:02 GMT

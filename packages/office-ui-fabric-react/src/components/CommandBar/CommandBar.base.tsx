@@ -1,13 +1,7 @@
 import * as React from 'react';
 
 import { BaseComponent, css, nullRender } from '../../Utilities';
-import {
-  ICommandBar,
-  ICommandBarItemProps,
-  ICommandBarProps,
-  ICommandBarStyleProps,
-  ICommandBarStyles
-} from './CommandBar.types';
+import { ICommandBar, ICommandBarItemProps, ICommandBarProps, ICommandBarStyleProps, ICommandBarStyles } from './CommandBar.types';
 import { IOverflowSet, OverflowSet } from '../../OverflowSet';
 import { IResizeGroup, ResizeGroup } from '../../ResizeGroup';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
@@ -130,7 +124,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
   };
 
   private _onRenderItem = (item: ICommandBarItemProps): JSX.Element | React.ReactNode => {
-    const { buttonAs: CommandButtonType = CommandBarButton } = this.props;
+    const CommandButtonType = this.props.buttonAs || item.commandBarButtonAs || CommandBarButton;
 
     const itemText = item.text || item.name;
 
@@ -141,6 +135,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     }
     const commandButtonProps: ICommandBarItemProps = {
       allowDisabledFocus: true,
+      role: 'menuitem',
       ...item,
       styles: { root: { height: '100%' }, label: { whiteSpace: 'nowrap' }, ...item.buttonStyles },
       className: css('ms-CommandBarItem-link', item.className),
@@ -152,12 +147,12 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     if (item.iconOnly && itemText !== undefined) {
       return (
         <TooltipHost content={itemText} {...item.tooltipHostProps}>
-          <CommandButtonType {...commandButtonProps as IButtonProps} />
+          <CommandButtonType {...commandButtonProps as IButtonProps} defaultRender={CommandBarButton} />
         </TooltipHost>
       );
     }
 
-    return <CommandButtonType {...commandButtonProps as IButtonProps} />;
+    return <CommandButtonType {...commandButtonProps as IButtonProps} defaultRender={CommandBarButton} />;
   };
 
   private _onButtonClick(item: ICommandBarItemProps): (ev: React.MouseEvent<HTMLButtonElement>) => void {

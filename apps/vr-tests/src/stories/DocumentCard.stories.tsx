@@ -85,7 +85,7 @@ storiesOf('DocumentCard', module)
   .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
   ))
-  .add('Root', () => (
+  .addStory('Root', () => (
     <DocumentCard onClickHref="http://bing.com">
       <DocumentCardPreview {...previewProps} />
       <DocumentCardTitle
@@ -95,7 +95,7 @@ storiesOf('DocumentCard', module)
       {DocActivity}
     </DocumentCard>
   ))
-  .add('Not truncated', () => (
+  .addStory('Not truncated', () => (
     <DocumentCard onClickHref="http://bing.com">
       <DocumentCardPreview {...previewProps} />
       <DocumentCardTitle
@@ -105,14 +105,14 @@ storiesOf('DocumentCard', module)
       {DocActivity}
     </DocumentCard>
   ))
-  .add('Compact', () => (
+  .addStory('Compact', () => (
     <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
       <DocumentCardPreview {...previewPropsCompact} />
       <DocumentCardTitle title="4 files were uploaded" shouldTruncate={true} />
       {DocActivity}
     </DocumentCard>
   ))
-  .add('With Views', () => (
+  .addStory('With Views', () => (
     <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
       <DocumentCardPreview {...previewPropsCompact} />
       <DocumentCardTitle title="4 files were uploaded" shouldTruncate={true} />
@@ -127,4 +127,4 @@ storiesOf('DocumentCard', module)
         views={432}
       />
     </DocumentCard>
-  ));
+  ), { rtl: true });

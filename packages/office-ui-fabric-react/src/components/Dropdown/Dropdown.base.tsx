@@ -223,7 +223,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
               aria-expanded={isOpen ? 'true' : 'false'}
               role={ariaAttrs.role}
               aria-label={ariaLabel}
-              aria-labelledby={id + '-label'}
+              aria-labelledby={label ? id + '-label' : undefined}
               aria-describedby={mergeAriaAttributeValues(optionId, keytipAttributes['aria-describedby'])}
               aria-activedescendant={ariaAttrs.ariaActiveDescendant}
               aria-disabled={disabled}
@@ -715,6 +715,12 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   }
 
   private _onDropdownBlur = (ev: React.FocusEvent<HTMLDivElement>): void => {
+    // If Dropdown disabled do not proceed with this logic.
+    const disabled = this._isDisabled();
+    if (disabled) {
+      return;
+    }
+
     // hasFocus tracks whether the root element has focus so always update the state.
     this.setState({ hasFocus: false });
 
@@ -728,6 +734,12 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   };
 
   private _onDropdownKeyDown = (ev: React.KeyboardEvent<HTMLDivElement>): void => {
+    // If Dropdown disabled do not process any keyboard events.
+    const disabled = this._isDisabled();
+    if (disabled) {
+      return;
+    }
+
     // Take note if we are processing a altKey or metaKey keydown
     // so that the menu does not collapse if no other keys are pressed
     this._processingExpandCollapseKeyOnly = this._isExpandCollapseKey(ev);
@@ -816,6 +828,12 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   };
 
   private _onDropdownKeyUp = (ev: React.KeyboardEvent<HTMLDivElement>): void => {
+    // If Dropdown disabled do not process any keyboard events.
+    const disabled = this._isDisabled();
+    if (disabled) {
+      return;
+    }
+
     const shouldHandleKey = this._processingExpandCollapseKeyOnly && this._isExpandCollapseKey(ev);
     this._processingExpandCollapseKeyOnly = false;
     const isOpen = this.state.isOpen;
@@ -935,13 +953,13 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
 
     const disabled = this._isDisabled();
 
-    if (!isOpen && selectedIndices.length === 0 && !multiSelect && !disabled) {
-      // Per aria
-      this._moveIndex(ev, 1, 0, -1);
+    if (!disabled) {
+      if (!isOpen && selectedIndices.length === 0 && !multiSelect) {
+        // Per aria
+        this._moveIndex(ev, 1, 0, -1);
+      }
+      this.setState({ hasFocus: true });
     }
-
-    this.setState({ hasFocus: true });
-    return;
   };
 
   /**

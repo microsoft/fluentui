@@ -2,6 +2,69 @@
   "name": "@uifabric/foundation",
   "entries": [
     {
+      "version": "0.5.5",
+      "tag": "@uifabric/foundation_v0.5.5",
+      "date": "Mon, 08 Oct 2018 12:24:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Moving tslint/prettier dependencies ",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8ba9e22a7a8a2a1e7facda5aa7d91423c7af43ed"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.1.1 <2.0.0` to `>=1.1.2 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=6.0.5 <7.0.0` to `>=6.0.6 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.5.4",
+      "tag": "@uifabric/foundation_v0.5.4",
+      "date": "Tue, 02 Oct 2018 12:28:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Interface refactoring for reducing dev friction.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "3878b423fc86bbbab6322edc72e23a424013e642"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.5.3",
+      "tag": "@uifabric/foundation_v0.5.3",
+      "date": "Fri, 21 Sep 2018 14:25:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding a version stamp file",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "11c18bce52dba131548610c5eea0c1ab7fa4d1ca"
+          },
+          {
+            "comment": "Support schemes through new schemes prop.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "7c45ef96439a8794586a6b338c2b2ee1e7080318"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.0.0 <2.0.0` to `>=1.1.0 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=6.0.4 <7.0.0` to `>=6.0.5 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.5.2",
       "tag": "@uifabric/foundation_v0.5.2",
       "date": "Mon, 17 Sep 2018 12:27:05 GMT",

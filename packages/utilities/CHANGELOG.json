@@ -2,6 +2,101 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.21.2",
+      "tag": "@uifabric/utilities_v6.21.2",
+      "date": "Mon, 08 Oct 2018 12:24:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Moving tslint/prettier dependencies ",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8ba9e22a7a8a2a1e7facda5aa7d91423c7af43ed"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.1.1 <2.0.0` to `>=1.1.2 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.9.3 <7.0.0` to `>=6.9.4 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=6.0.5 <7.0.0` to `>=6.0.6 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.21.1",
+      "tag": "@uifabric/utilities_v6.21.1",
+      "date": "Wed, 26 Sep 2018 12:27:23 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Memoize: Do not use cached result when function instances are distinct.",
+            "author": "Pablo Núñez <pablonete@gmail.com>",
+            "commit": "74bfc90fdbfae64ba91a53e9bd9b47493e326d60"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.21.0",
+      "tag": "@uifabric/utilities_v6.21.0",
+      "date": "Fri, 21 Sep 2018 14:25:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding a version stamp file",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "11c18bce52dba131548610c5eea0c1ab7fa4d1ca"
+          },
+          {
+            "comment": "Add IComponentAsProps",
+            "author": "Nick Durak <nickdurak@gmail.com>",
+            "commit": "c3f996accaad24f93ae959c8437af6f90da738c8"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Expose Customizer's mergeCustomizations as new helper function.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "7c45ef96439a8794586a6b338c2b2ee1e7080318"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.0.0 <2.0.0` to `>=1.1.0 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.9.0 <7.0.0` to `>=6.9.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=6.0.4 <7.0.0` to `>=6.0.5 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.20.0",
+      "tag": "@uifabric/utilities_v6.20.0",
+      "date": "Thu, 20 Sep 2018 12:25:33 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add optional defaultRender to IComponentAs",
+            "author": "Nick Durak <nickdurak@gmail.com>",
+            "commit": "55c0766d38b433be52e005262ed824ee3f153f5f"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.8.4 <7.0.0` to `>=6.9.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.19.1",
       "tag": "@uifabric/utilities_v6.19.1",
       "date": "Thu, 13 Sep 2018 17:38:04 GMT",
