@@ -14,11 +14,13 @@
   }
 
   .ExampleCard-title {
+    @include ms-font-l;
     margin-bottom: 10px;
     display: inline-block;
   }
 
   .ExampleCard-toggleButtons {
+    @include ms-font-l;
     display: flex;
     @include float(right);
 
