@@ -129,6 +129,7 @@ export class ContextualMenuCustomizationExample extends React.Component<{}, {}> 
               key: 'categories',
               text: 'Categorize',
               subMenuProps: {
+                ariaLabel: 'Categories',
                 items: [
                   {
                     key: 'categories',

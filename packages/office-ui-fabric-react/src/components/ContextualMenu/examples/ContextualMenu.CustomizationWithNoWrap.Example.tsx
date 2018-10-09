@@ -138,6 +138,7 @@ export class ContextualMenuCustomizationWithNoWrapExample extends React.Componen
               key: 'categories',
               text: 'Categorize',
               subMenuProps: {
+                ariaLabel: 'Categories',
                 items: [
                   {
                     key: 'categories',
