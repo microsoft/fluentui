@@ -66,6 +66,20 @@ describe('Slider', () => {
     expect(slider.current!.value).toEqual(12);
   });
 
+  it('should be able to handler zero default value', () => {
+    const slider = React.createRef<ISlider>();
+
+    mount(<Slider label="slider" defaultValue={0} min={-100} max={100} componentRef={slider} />);
+    expect(slider.current!.value).toEqual(0);
+  });
+
+  it('should be able to handler zero value', () => {
+    const slider = React.createRef<ISlider>();
+
+    mount(<Slider label="slider" value={0} min={-100} max={100} componentRef={slider} />);
+    expect(slider.current!.value).toEqual(0);
+  });
+
   it('renders correct aria-valuetext', () => {
     let component = mount(<Slider />);
 

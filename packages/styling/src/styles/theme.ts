@@ -167,7 +167,7 @@ function _expandFrom<TRetVal, TMapType>(propertyName: string | TRetVal | undefin
 function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depComments: boolean): ISemanticColors {
   let toReturn: ISemanticColors = {
     bodyBackground: p.white,
-    bodyStandoutBackground: p.white,
+    bodyStandoutBackground: p.neutralLighterAlt,
     bodyFrameBackground: p.white,
     bodyFrameDivider: p.neutralLight,
     bodyText: p.neutralPrimary,
@@ -180,7 +180,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     disabledBodyText: p.neutralTertiaryAlt,
     disabledSubtext: p.neutralQuaternary,
 
-    focusBorder: p.black,
+    focusBorder: p.neutralSecondary,
     variantBorder: p.neutralLight,
     variantBorderHovered: p.neutralTertiary,
     defaultStateBackground: p.neutralLight,
@@ -207,7 +207,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     buttonBackgroundChecked: p.neutralTertiaryAlt,
     buttonBackgroundHovered: p.neutralLight,
     buttonBackgroundCheckedHovered: p.neutralLight,
-    buttonBackgroundPressed: p.neutralTertiaryAlt,
+    buttonBackgroundPressed: p.neutralLight,
     buttonBackgroundDisabled: p.neutralLighter,
     buttonBorder: 'transparent',
     buttonText: p.neutralPrimary,
@@ -217,13 +217,17 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     buttonTextPressed: p.neutralDark,
     buttonTextDisabled: p.neutralTertiary,
     buttonBorderDisabled: 'transparent',
+
     primaryButtonBackground: p.themePrimary,
     primaryButtonBackgroundHovered: p.themeDarkAlt,
     primaryButtonBackgroundPressed: p.themeDark,
+    primaryButtonBackgroundDisabled: p.neutralLighter,
     primaryButtonBorder: 'transparent',
+
     primaryButtonText: p.white,
     primaryButtonTextHovered: p.white,
     primaryButtonTextPressed: p.white,
+    primaryButtonTextDisabled: p.neutralQuaternary,
 
     menuBackground: p.white,
     menuDivider: p.neutralTertiaryAlt,

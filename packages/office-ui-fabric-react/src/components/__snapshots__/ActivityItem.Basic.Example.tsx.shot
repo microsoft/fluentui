@@ -82,30 +82,18 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
-                outline: transparent;
+                outline: none;
                 overflow: inherit;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
                 padding-top: 0px;
-                position: relative;
                 text-align: left;
                 text-overflow: inherit;
                 user-select: text;
               }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: -1px;
-                content: "";
-                left: -1px;
+              .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #666666;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-                z-index: 1;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {
                 color: #FFFF00;
@@ -160,30 +148,18 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
-                outline: transparent;
+                outline: none;
                 overflow: inherit;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
                 padding-top: 0px;
-                position: relative;
                 text-align: left;
                 text-overflow: inherit;
                 user-select: text;
               }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: -1px;
-                content: "";
-                left: -1px;
+              .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #666666;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-                z-index: 1;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {
                 color: #FFFF00;
@@ -307,30 +283,18 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
-                outline: transparent;
+                outline: none;
                 overflow: inherit;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
                 padding-top: 0px;
-                position: relative;
                 text-align: left;
                 text-overflow: inherit;
                 user-select: text;
               }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: -1px;
-                content: "";
-                left: -1px;
+              .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #666666;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-                z-index: 1;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {
                 color: #FFFF00;
@@ -463,30 +427,18 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
-                outline: transparent;
+                outline: none;
                 overflow: inherit;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
                 padding-top: 0px;
-                position: relative;
                 text-align: left;
                 text-overflow: inherit;
                 user-select: text;
               }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: -1px;
-                content: "";
-                left: -1px;
+              .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #666666;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-                z-index: 1;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {
                 color: #FFFF00;
@@ -530,30 +482,18 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
-                outline: transparent;
+                outline: none;
                 overflow: inherit;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
                 padding-top: 0px;
-                position: relative;
                 text-align: left;
                 text-overflow: inherit;
                 user-select: text;
               }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: -1px;
-                content: "";
-                left: -1px;
+              .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #666666;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-                z-index: 1;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {
                 color: #FFFF00;
@@ -597,30 +537,18 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
-                outline: transparent;
+                outline: none;
                 overflow: inherit;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
                 padding-top: 0px;
-                position: relative;
                 text-align: left;
                 text-overflow: inherit;
                 user-select: text;
               }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: -1px;
-                content: "";
-                left: -1px;
+              .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #666666;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-                z-index: 1;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {
                 color: #FFFF00;

@@ -1,6 +1,9 @@
+import { IBaseProps } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
 
-export interface IKeytipDataProps {
+export interface IKeytip {}
+
+export interface IKeytipDataProps extends IBaseProps<IKeytip> {
   /**
    * IKeytipProps to create from this KeytipData
    * If no keytipProps are defined, a keytip won't be registered

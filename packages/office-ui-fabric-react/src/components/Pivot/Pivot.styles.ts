@@ -25,7 +25,7 @@ const globalClassNames = {
 
 const linkStyles = (props: IPivotStyleProps): IStyle[] => {
   const { rootIsLarge, rootIsTabs, theme } = props;
-  const { palette } = props.theme;
+  const { palette, semanticColors } = props.theme;
   return [
     {
       color: palette.neutralPrimary,
@@ -67,7 +67,7 @@ const linkStyles = (props: IPivotStyleProps): IStyle[] => {
           outline: 'none'
         },
         [`.${IsFocusVisibleClassName} &:focus`]: {
-          outline: `1px solid ${palette.neutralSecondaryAlt}`
+          outline: `1px solid ${semanticColors.focusBorder}`
         }
       }
     },

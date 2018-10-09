@@ -23,7 +23,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           background: #ffffff;
           border-bottom: 1px solid #f4f4f4;
           box-sizing: border-box;
-          color: #767676;
+          color: #666666;
           display: inline-flex;
           min-height: 42px;
           min-width: 100%;
@@ -56,7 +56,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         }
         &:hover {
           background: #f4f4f4;
-          color: #666666;
         }
         &:hover $check {
           opacity: 1;
@@ -441,23 +440,11 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               ms-Link
               {
                 color: #0078d4;
-                outline: transparent;
-                position: relative;
+                outline: none;
                 text-decoration: none;
               }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: -1px;
-                content: "";
-                left: -1px;
+              .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #666666;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-                z-index: 1;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -689,7 +676,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           background: #ffffff;
           border-bottom: 1px solid #f4f4f4;
           box-sizing: border-box;
-          color: #767676;
+          color: #666666;
           display: inline-flex;
           min-height: 42px;
           min-width: 100%;
@@ -722,7 +709,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         }
         &:hover {
           background: #f4f4f4;
-          color: #666666;
         }
         &:hover $check {
           opacity: 1;
@@ -1107,23 +1093,11 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               ms-Link
               {
                 color: #0078d4;
-                outline: transparent;
-                position: relative;
+                outline: none;
                 text-decoration: none;
               }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: -1px;
-                content: "";
-                left: -1px;
+              .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #666666;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-                z-index: 1;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -1355,7 +1329,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           background: #ffffff;
           border-bottom: 1px solid #f4f4f4;
           box-sizing: border-box;
-          color: #767676;
+          color: #666666;
           display: inline-flex;
           min-height: 42px;
           min-width: 100%;
@@ -1388,7 +1362,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         }
         &:hover {
           background: #f4f4f4;
-          color: #666666;
         }
         &:hover $check {
           opacity: 1;
@@ -1773,23 +1746,11 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               ms-Link
               {
                 color: #0078d4;
-                outline: transparent;
-                position: relative;
+                outline: none;
                 text-decoration: none;
               }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: -1px;
-                content: "";
-                left: -1px;
+              .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #666666;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-                z-index: 1;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -2021,7 +1982,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           background: #ffffff;
           border-bottom: 1px solid #f4f4f4;
           box-sizing: border-box;
-          color: #767676;
+          color: #666666;
           display: inline-flex;
           min-height: 42px;
           min-width: 100%;
@@ -2054,7 +2015,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         }
         &:hover {
           background: #f4f4f4;
-          color: #666666;
         }
         &:hover $check {
           opacity: 1;
@@ -2439,23 +2399,11 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               ms-Link
               {
                 color: #0078d4;
-                outline: transparent;
-                position: relative;
+                outline: none;
                 text-decoration: none;
               }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: -1px;
-                content: "";
-                left: -1px;
+              .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #666666;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-                z-index: 1;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -2687,7 +2635,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           background: #ffffff;
           border-bottom: 1px solid #f4f4f4;
           box-sizing: border-box;
-          color: #767676;
+          color: #666666;
           display: inline-flex;
           min-height: 42px;
           min-width: 100%;
@@ -2720,7 +2668,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         }
         &:hover {
           background: #f4f4f4;
-          color: #666666;
         }
         &:hover $check {
           opacity: 1;
@@ -3105,23 +3052,11 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               ms-Link
               {
                 color: #0078d4;
-                outline: transparent;
-                position: relative;
+                outline: none;
                 text-decoration: none;
               }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: -1px;
-                content: "";
-                left: -1px;
+              .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #666666;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-                z-index: 1;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -3353,7 +3288,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           background: #ffffff;
           border-bottom: 1px solid #f4f4f4;
           box-sizing: border-box;
-          color: #767676;
+          color: #666666;
           display: inline-flex;
           min-height: 42px;
           min-width: 100%;
@@ -3386,7 +3321,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         }
         &:hover {
           background: #f4f4f4;
-          color: #666666;
         }
         &:hover $check {
           opacity: 1;
@@ -3771,23 +3705,11 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               ms-Link
               {
                 color: #0078d4;
-                outline: transparent;
-                position: relative;
+                outline: none;
                 text-decoration: none;
               }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: -1px;
-                content: "";
-                left: -1px;
+              .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #666666;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-                z-index: 1;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -4019,7 +3941,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           background: #ffffff;
           border-bottom: 1px solid #f4f4f4;
           box-sizing: border-box;
-          color: #767676;
+          color: #666666;
           display: inline-flex;
           min-height: 42px;
           min-width: 100%;
@@ -4052,7 +3974,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         }
         &:hover {
           background: #f4f4f4;
-          color: #666666;
         }
         &:hover $check {
           opacity: 1;
@@ -4437,23 +4358,11 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               ms-Link
               {
                 color: #0078d4;
-                outline: transparent;
-                position: relative;
+                outline: none;
                 text-decoration: none;
               }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: -1px;
-                content: "";
-                left: -1px;
+              .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #666666;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-                z-index: 1;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -4685,7 +4594,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           background: #ffffff;
           border-bottom: 1px solid #f4f4f4;
           box-sizing: border-box;
-          color: #767676;
+          color: #666666;
           display: inline-flex;
           min-height: 42px;
           min-width: 100%;
@@ -4718,7 +4627,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         }
         &:hover {
           background: #f4f4f4;
-          color: #666666;
         }
         &:hover $check {
           opacity: 1;
@@ -5103,23 +5011,11 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               ms-Link
               {
                 color: #0078d4;
-                outline: transparent;
-                position: relative;
+                outline: none;
                 text-decoration: none;
               }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: -1px;
-                content: "";
-                left: -1px;
+              .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #666666;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-                z-index: 1;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -5351,7 +5247,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           background: #ffffff;
           border-bottom: 1px solid #f4f4f4;
           box-sizing: border-box;
-          color: #767676;
+          color: #666666;
           display: inline-flex;
           min-height: 42px;
           min-width: 100%;
@@ -5384,7 +5280,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         }
         &:hover {
           background: #f4f4f4;
-          color: #666666;
         }
         &:hover $check {
           opacity: 1;
@@ -5769,23 +5664,11 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               ms-Link
               {
                 color: #0078d4;
-                outline: transparent;
-                position: relative;
+                outline: none;
                 text-decoration: none;
               }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: -1px;
-                content: "";
-                left: -1px;
+              .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #666666;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-                z-index: 1;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -6017,7 +5900,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           background: #ffffff;
           border-bottom: 1px solid #f4f4f4;
           box-sizing: border-box;
-          color: #767676;
+          color: #666666;
           display: inline-flex;
           min-height: 42px;
           min-width: 100%;
@@ -6050,7 +5933,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         }
         &:hover {
           background: #f4f4f4;
-          color: #666666;
         }
         &:hover $check {
           opacity: 1;
@@ -6435,23 +6317,11 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               ms-Link
               {
                 color: #0078d4;
-                outline: transparent;
-                position: relative;
+                outline: none;
                 text-decoration: none;
               }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: -1px;
-                content: "";
-                left: -1px;
+              .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #666666;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-                z-index: 1;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;

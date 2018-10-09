@@ -8,7 +8,7 @@ export class ContextualMenuSectionExample extends React.Component<any, any> {
     return (
       <div>
         <DefaultButton
-          id="ContextualMenuButton1"
+          id="ContextualMenuSectionExample"
           text="Click for ContextualMenu"
           menuProps={{
             items: [

@@ -4,7 +4,8 @@ module.exports = {
   apiKey: process.env.SCREENER_API_KEY,
   resolution: '1024x768',
   baseBranch: (process.env.TRAVIS_PULL_REQUEST !== 'false' && process.env.TRAVIS_BRANCH) || 'master',
-  failureExitCode: 0
+  failureExitCode: 0,
+  alwaysAcceptBaseBranch: true
 };
 
 // if (process.env.TRAVIS_BRANCH === 'master') {
@@ -16,12 +17,12 @@ module.exports = {
 //   {
 //     browserName: 'chrome'
 //   },
-  // {
-  //   browserName: 'firefox'
-  // },
-  // {
-  //   browserName: 'microsoftedge'
-  // }
+// {
+//   browserName: 'firefox'
+// },
+// {
+//   browserName: 'microsoftedge'
+// }
 // ];
 
 // config.sauce = {

@@ -79,7 +79,7 @@ export class ContextualMenuWithCustomMenuListExample extends React.Component<
     return (
       <div>
         <DefaultButton
-          id="ContextualMenuButton1"
+          id="ContextualMenuWithCustomMenuListExample"
           text="Click for ContextualMenu"
           menuProps={{
             onRenderMenuList: this._renderMenuList,
@@ -125,14 +125,12 @@ export class ContextualMenuWithCustomMenuListExample extends React.Component<
     }));
   }
 
-  private _renderMenuList(
-    menuListProps: IContextualMenuListProps,
-    defaultRender: IRenderFunction<IContextualMenuListProps>
-  ) {
+  private _renderMenuList(menuListProps: IContextualMenuListProps, defaultRender: IRenderFunction<IContextualMenuListProps>) {
     return (
       <div>
         <div style={{ borderBottom: '1px solid #ccc' }}>
           <SearchBox
+            ariaLabel="Filter actions by text"
             placeholder="Filter actions"
             onAbort={this._onAbort}
             onChange={this._onChange}

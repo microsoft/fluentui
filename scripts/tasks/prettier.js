@@ -10,14 +10,7 @@ module.exports = function(options) {
   const prettierPath = 'node ' + path.resolve(__dirname, '../node_modules/prettier/bin-prettier.js');
   const prettierIgnorePath = path.resolve(path.join(__dirname, '..', '..', '.prettierignore'));
 
-  const prettierConfigPath = path.join(
-    process.cwd(),
-    '..',
-    '..',
-    'packages',
-    'office-ui-fabric-react-tslint',
-    'prettier.config.js'
-  );
+  const prettierConfigPath = path.join(process.cwd(), '..', '..', 'packages', 'prettier-rules', 'prettier.config.js');
 
   try {
     fs.accessSync(prettierConfigPath, fs.constants.R_OK);

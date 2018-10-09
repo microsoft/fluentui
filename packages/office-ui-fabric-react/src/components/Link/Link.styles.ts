@@ -1,10 +1,4 @@
-import {
-  getFocusStyle,
-  getGlobalClassNames,
-  HighContrastSelector,
-  HighContrastSelectorWhite,
-  HighContrastSelectorBlack
-} from '../../Styling';
+import { getGlobalClassNames, HighContrastSelector, HighContrastSelectorWhite, HighContrastSelectorBlack } from '../../Styling';
 import { ILinkStyleProps, ILinkStyles } from './Link.types';
 
 const GlobalClassNames = {
@@ -20,9 +14,16 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
   return {
     root: [
       classNames.root,
-      getFocusStyle(theme, -2),
       {
-        color: semanticColors.link
+        color: semanticColors.link,
+        outline: 'none',
+        selectors: {
+          '.ms-Fabric--isFocusVisible &:focus': {
+            // Can't use getFocusStyle because it doesn't support wrapping links
+            // https://github.com/OfficeDev/office-ui-fabric-react/issues/4883#issuecomment-406743543
+            outline: `1px solid ${theme.palette.neutralSecondary}`
+          }
+        }
       },
       isButton && {
         background: 'none',
