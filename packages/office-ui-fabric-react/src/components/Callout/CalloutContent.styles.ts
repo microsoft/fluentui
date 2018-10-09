@@ -31,7 +31,6 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
     ],
     root: [
       classNames.root,
-      theme.fonts.small,
       {
         position: 'absolute',
         boxSizing: 'border-box',
