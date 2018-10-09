@@ -14,7 +14,6 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
     ],
     items: {
       height: '32px',
-      marginBottom: '',
       marginTop: '5px'
     },
     chart: {
