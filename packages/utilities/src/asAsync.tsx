@@ -1,3 +1,17 @@
+/**
+ * asAsync - a HOC for async loading components.
+ *
+ * Usage:
+ *
+ * const AsyncDialog = asAsync({
+ *   load: () => import('Dialog'),
+ *   exportName: 'Dialog', // defaults to 'default'
+ *   placeholder: () => <div>I am a placeholder</div>
+ * });
+ *
+ * React.render(domElement, <AsyncDialog { ...dialogProps } />);
+ */
+
 import * as React from 'react';
 
 interface IAsAsyncOptions<TProps> {
