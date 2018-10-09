@@ -105,6 +105,13 @@ storiesOf('DocumentCard', module)
       {DocActivity}
     </DocumentCard>
   ))
+  .addStory('With secondary title style', () => (
+    <DocumentCard onClickHref="http://bing.com">
+      <DocumentCardPreview {...previewProps} />
+      <DocumentCardTitle title="4 files were uploaded" showAsSecondaryTitle={true} />
+      {DocActivity}
+    </DocumentCard>
+  ))
   .addStory('Compact', () => (
     <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
       <DocumentCardPreview {...previewPropsCompact} />

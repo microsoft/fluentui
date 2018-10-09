@@ -1,6 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 04 Oct 2018 12:26:48 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Oct 2018 12:24:15 GMT and should not be manually modified.
+
+## 0.24.1
+Mon, 08 Oct 2018 12:24:15 GMT
+
+### Patches
+
+- Moving tslint/prettier dependencies 
 
 ## 0.24.0
 Thu, 04 Oct 2018 12:26:48 GMT

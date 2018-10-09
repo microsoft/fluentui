@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 26 Sep 2018 12:27:23 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Oct 2018 12:24:15 GMT and should not be manually modified.
+
+## 6.21.2
+Mon, 08 Oct 2018 12:24:15 GMT
+
+### Patches
+
+- Moving tslint/prettier dependencies 
 
 ## 6.21.1
 Wed, 26 Sep 2018 12:27:23 GMT

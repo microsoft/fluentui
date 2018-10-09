@@ -2,6 +2,25 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.9.4",
+      "tag": "@uifabric/merge-styles_v6.9.4",
+      "date": "Mon, 08 Oct 2018 12:24:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Moving tslint/prettier dependencies ",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8ba9e22a7a8a2a1e7facda5aa7d91423c7af43ed"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.1.1 <2.0.0` to `>=1.1.2 <2.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.9.3",
       "tag": "@uifabric/merge-styles_v6.9.3",
       "date": "Mon, 01 Oct 2018 12:27:24 GMT",
