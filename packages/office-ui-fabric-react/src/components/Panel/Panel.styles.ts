@@ -9,7 +9,6 @@ import {
   ScreenWidthMinXXLarge,
   ScreenWidthMinUhfMobile
 } from '../../Styling';
-import { isIOS } from '../../Utilities';
 // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
 // import { IStyleFunctionOrObject } from '../../Utilities';
 // import { IButtonStyles, IButtonStyleProps } from '../../Button';
@@ -104,7 +103,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
   const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
   const isCustomPanel = type === PanelType.custom;
-  const heightForDevice = isIOS() ? window.innerHeight : '100%';
+  const windowHeight = typeof window !== 'undefined' ? window.innerHeight : '100%';
 
   return {
     root: [
@@ -120,10 +119,10 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         bottom: 0
       },
       !isOpen &&
-      !isAnimating &&
-      isHiddenOnDismiss && {
-        visibility: 'hidden'
-      },
+        !isAnimating &&
+        isHiddenOnDismiss && {
+          visibility: 'hidden'
+        },
       isCustomPanel && classNames.custom,
       className
     ],
@@ -143,10 +142,10 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     ],
     hiddenPanel: [
       !isOpen &&
-      !isAnimating &&
-      isHiddenOnDismiss && {
-        visibility: 'hidden'
-      }
+        !isAnimating &&
+        isHiddenOnDismiss && {
+          visibility: 'hidden'
+        }
     ],
     main: [
       classNames.main,
@@ -249,10 +248,20 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       {
         display: 'flex',
         flexDirection: 'column',
-        maxHeight: heightForDevice,
+        maxHeight: '100%',
+        selectors: {
+          ['@supports (-webkit-overflow-scrolling: touch)']: {
+            maxHeight: windowHeight
+          }
+        }
       },
       isFooterAtBottom && {
-        height: heightForDevice
+        height: '100%',
+        selectors: {
+          ['@supports (-webkit-overflow-scrolling: touch)']: {
+            height: windowHeight
+          }
+        }
       }
     ],
     commands: [classNames.commands],
@@ -294,7 +303,12 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       classNames.scrollableContent,
       {
         overflowY: 'auto',
-        height: heightForDevice
+        height: '100%',
+        selectors: {
+          ['@supports (-webkit-overflow-scrolling: touch)']: {
+            height: windowHeight
+          }
+        }
       }
     ],
     content: [

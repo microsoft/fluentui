@@ -245,6 +245,9 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                     flex-direction: column;
                     max-height: 100%;
                   }
+                  @supports (-webkit-overflow-scrolling: touch){& {
+                    max-height: 768px;
+                  }
             >
               <div
                 className=
@@ -440,6 +443,9 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                     {
                       height: 100%;
                       overflow-y: auto;
+                    }
+                    @supports (-webkit-overflow-scrolling: touch){& {
+                      height: 768px;
                     }
                 data-is-scrollable={true}
               >
