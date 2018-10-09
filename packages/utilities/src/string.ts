@@ -9,7 +9,11 @@ const FORMAT_REGEX = /\{\d+\}/g;
  * need to evaluate a formatted string given a tokenized string. This
  * usually only is needed in localization scenarios.
 
- * Example "I love {0} every {1}".format("CXP") will result in a Debug Exception.
+ * @example
+ * ```tsx
+ * "I love {0} every {1}".format("CXP")
+ * ```
+ * will result in a Debug Exception.
  *
  * @public
  */

@@ -26,13 +26,13 @@ const DefaultFields = ['theme', 'styles'];
  * The styled HOC wrapper allows you to create a functional wrapper around a given component which will resolve
  * getStyles functional props, and mix customized props passed in using concatStyleSets.
  *
- * Example:
- * <pre>```tsx
+ * @example
+ * ```tsx
  * export const Toggle = styled(
  *   ToggleBase,
  *   props => ({ root: { background: 'red' }})
  * );
- * ```</pre>
+ * ```
  * @param Component - The unstyled base component to render, which receives styles.
  * @param baseStyles - The styles which should be curried with the component.
  * @param getProps - A helper which provides default props.
@@ -42,12 +42,12 @@ export function styled<
   TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>,
   TStyleProps,
   TStyleSet extends IStyleSet<TStyleSet>
-  >(
-    Component: React.ComponentClass<TComponentProps> | React.StatelessComponent<TComponentProps>,
-    baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>,
-    getProps?: (props: TComponentProps) => Partial<TComponentProps>,
-    customizable?: ICustomizableProps
-  ): (props: TComponentProps) => JSX.Element {
+>(
+  Component: React.ComponentClass<TComponentProps> | React.StatelessComponent<TComponentProps>,
+  baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>,
+  getProps?: (props: TComponentProps) => Partial<TComponentProps>,
+  customizable?: ICustomizableProps
+): (props: TComponentProps) => JSX.Element {
   const Wrapped: React.StatelessComponent<TComponentProps> = (componentProps: TComponentProps) => {
     customizable = customizable || { scope: '', fields: undefined };
 
