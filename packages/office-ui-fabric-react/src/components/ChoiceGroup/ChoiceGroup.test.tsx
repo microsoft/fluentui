@@ -113,10 +113,7 @@ describe('ChoiceGroup', () => {
 
   it('can render as a controlled component', () => {
     let _selectedItem;
-    const onChange = (
-      ev: React.FormEvent<HTMLElement | HTMLInputElement>,
-      item: IChoiceGroupOption | undefined
-    ): void => {
+    const onChange = (ev: React.FormEvent<HTMLElement | HTMLInputElement>, item: IChoiceGroupOption | undefined): void => {
       _selectedItem = item;
     };
 
@@ -135,10 +132,7 @@ describe('ChoiceGroup', () => {
   });
 
   it('extra <input> attributes appear in dom if specified', () => {
-    const onChange = (
-      ev: React.FormEvent<HTMLElement | HTMLInputElement>,
-      item: IChoiceGroupOption | undefined
-    ): void => undefined;
+    const onChange = (ev: React.FormEvent<HTMLElement | HTMLInputElement>, item: IChoiceGroupOption | undefined): void => undefined;
 
     const choiceGroup = mount(<ChoiceGroup options={TEST_OPTIONS} onChange={onChange} />);
 
@@ -151,5 +145,23 @@ describe('ChoiceGroup', () => {
 
     expect(extraAttributeGetter(0)).toEqual('auto1');
     expect(extraAttributeGetter(1)).toBeNull();
+  });
+
+  // By default, we need to assign the role 'application' on the containing div
+  // because JAWS doesn't call OnKeyDown without this role
+  it('has role="application" by default on the containing element', () => {
+    const choiceGroup = mount(<ChoiceGroup options={TEST_OPTIONS} />);
+    const choiceGroupEl: Element = choiceGroup.getDOMNode();
+    const role = choiceGroupEl.getAttribute('role');
+
+    expect(role).toEqual('application');
+  });
+
+  it('has role attribute that can be omitted', () => {
+    const choiceGroup = mount(<ChoiceGroup options={TEST_OPTIONS} role="" />);
+    const choiceGroupEl: Element = choiceGroup.getDOMNode();
+    const role = choiceGroupEl.getAttribute('role');
+
+    expect(role).toEqual('');
   });
 });
