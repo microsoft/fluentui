@@ -137,7 +137,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                 visibility: hidden;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #000000;
+                outline: 1px solid #666666;
               }
               @media screen and (-ms-high-contrast: active){&:before {
                 border-bottom-color: Highlight;
@@ -327,7 +327,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                 visibility: hidden;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #000000;
+                outline: 1px solid #666666;
               }
               &:hover::before {
                 border-bottom: 2px solid transparent;
@@ -503,7 +503,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                 visibility: hidden;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #000000;
+                outline: 1px solid #666666;
               }
               &:hover::before {
                 border-bottom: 2px solid transparent;
@@ -666,7 +666,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                 visibility: hidden;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #000000;
+                outline: 1px solid #666666;
               }
               &:hover::before {
                 border-bottom: 2px solid transparent;
@@ -854,7 +854,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                 visibility: hidden;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #000000;
+                outline: 1px solid #666666;
               }
               &:hover::before {
                 border-bottom: 2px solid transparent;
