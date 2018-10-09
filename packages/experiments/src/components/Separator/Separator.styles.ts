@@ -9,6 +9,7 @@ export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
 
   return {
     root: [
+      theme.fonts.medium,
       {
         position: 'relative'
       },
@@ -71,7 +72,6 @@ export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
       {
         position: 'relative',
         display: 'inline-block',
-        fontSize: '16px',
         padding: '0 20px',
         color: theme.semanticColors.bodyText,
         background: theme.semanticColors.bodyBackground
