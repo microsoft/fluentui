@@ -295,7 +295,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
 
   private _onRenderBody = (props: IPanelProps): JSX.Element => {
     return (
-      <div ref={this._content} className={this._classNames.content} /*data-is-scrollable={true}*/>
+      <div ref={this._content} className={this._classNames.content}>
         {props.children}
       </div>
     );
