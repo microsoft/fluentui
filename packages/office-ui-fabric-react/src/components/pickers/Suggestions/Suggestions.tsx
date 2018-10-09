@@ -19,6 +19,7 @@ export interface ISuggestionsState {
 export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {}> {
   public render(): JSX.Element {
     const {
+      renderSuggestionsItemAsDiv,
       suggestionModel,
       RenderSuggestion,
       onClick,
@@ -38,9 +39,13 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
           className
         )}
       >
-        <CommandButton onClick={onClick} className={css('ms-Suggestions-itemButton', styles.itemButton)}>
-          {RenderSuggestion(suggestionModel.item, this.props)}
-        </CommandButton>
+        {renderSuggestionsItemAsDiv ? (
+          <div className={css('ms-Suggestions-itemButton', styles.itemButton)}>{RenderSuggestion(suggestionModel.item, this.props)}</div>
+        ) : (
+          <CommandButton onClick={onClick} className={css('ms-Suggestions-itemButton', styles.itemButton)}>
+            {RenderSuggestion(suggestionModel.item, this.props)}
+          </CommandButton>
+        )}
         {this.props.showRemoveButton ? (
           <IconButton
             iconProps={{ iconName: 'Cancel', style: { fontSize: '12px' } }}
@@ -131,29 +136,21 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
             <CommandButton
               componentRef={this._forceResolveButton}
               className={css('ms-forceResolve-button', styles.actionButton, {
-                ['is-selected ' + styles.buttonSelected]:
-                  this.state.selectedActionType === SuggestionActionType.forceResolve
+                ['is-selected ' + styles.buttonSelected]: this.state.selectedActionType === SuggestionActionType.forceResolve
               })}
               onClick={this._forceResolve}
             >
               {forceResolveText}
             </CommandButton>
           )}
-        {isLoading && (
-          <Spinner className={css('ms-Suggestions-spinner', styles.suggestionsSpinner)} label={loadingText} />
-        )}
-        {hasNoSuggestions
-          ? onRenderNoResultFound
-            ? onRenderNoResultFound(undefined, noResults)
-            : noResults()
-          : this._renderSuggestions()}
+        {isLoading && <Spinner className={css('ms-Suggestions-spinner', styles.suggestionsSpinner)} label={loadingText} />}
+        {hasNoSuggestions ? (onRenderNoResultFound ? onRenderNoResultFound(undefined, noResults) : noResults()) : this._renderSuggestions()}
         {searchForMoreText &&
           moreSuggestionsAvailable && (
             <CommandButton
               componentRef={this._searchForMoreButton}
               className={css('ms-SearchMore-button', styles.actionButton, {
-                ['is-selected ' + styles.buttonSelected]:
-                  this.state.selectedActionType === SuggestionActionType.searchMore
+                ['is-selected ' + styles.buttonSelected]: this.state.selectedActionType === SuggestionActionType.searchMore
               })}
               iconProps={{ iconName: 'Search' }}
               onClick={this._getMoreResults}
@@ -161,18 +158,12 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
               {searchForMoreText}
             </CommandButton>
           )}
-        {isSearching ? (
-          <Spinner className={css('ms-Suggestions-spinner', styles.suggestionsSpinner)} label={searchingText} />
-        ) : null}
+        {isSearching ? <Spinner className={css('ms-Suggestions-spinner', styles.suggestionsSpinner)} label={searchingText} /> : null}
         {footerTitle && !moreSuggestionsAvailable && !isMostRecentlyUsedVisible && !isSearching ? (
           <div className={css('ms-Suggestions-title', styles.suggestionsTitle)}>{footerTitle(this.props)}</div>
         ) : null}
         {
-          <span
-            role="alert"
-            aria-live="polite"
-            className={css('ms-Suggestions-suggestionsAvailable', styles.suggestionsAvailable)}
-          >
+          <span role="alert" aria-live="polite" className={css('ms-Suggestions-suggestionsAvailable', styles.suggestionsAvailable)}>
             {!isLoading && !isSearching && suggestions && suggestions.length > 0 && suggestionsAvailableAlertText
               ? suggestionsAvailableAlertText
               : null}

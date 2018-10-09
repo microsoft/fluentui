@@ -161,4 +161,9 @@ export interface ISuggestionItemProps<T> {
    * The ARIA label for the button to remove the suggestion from the list.
    */
   removeButtonAriaLabel?: string;
+
+  /**
+   * Flag indicates if render suggestions as a div element
+   */
+  renderSuggestionsItemAsDiv?: boolean;
 }

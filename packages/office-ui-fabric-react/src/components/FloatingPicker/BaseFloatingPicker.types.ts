@@ -140,6 +140,11 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
    * If using as a controlled component, the items to show in the suggestion list
    */
   suggestionItems?: T[];
+
+  /**
+   * Flag indicates if render suggestions as a div element
+   */
+  renderSuggestionsItemAsDiv?: boolean;
 }
 
 export interface IBaseFloatingPickerSuggestionProps {

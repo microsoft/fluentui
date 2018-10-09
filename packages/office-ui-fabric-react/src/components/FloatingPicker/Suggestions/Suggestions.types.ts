@@ -51,6 +51,10 @@ export interface ISuggestionsCoreProps<T> extends React.Props<any> {
    * on calling nextSuggestion and previousSuggestion, respectively
    */
   shouldLoopSelection: boolean;
+  /**
+   * Flag indicates if render suggestions as a div element
+   */
+  renderSuggestionsItemAsDiv?: boolean;
 }
 
 // tslint:disable-next-line:no-any
