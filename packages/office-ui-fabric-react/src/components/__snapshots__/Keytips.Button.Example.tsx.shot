@@ -3,13 +3,14 @@
 exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
 <div>
   <p>
-    Keytips on the same level starting with the same characters will get filtered out as you hit those keys
+    When multiple Keytips start with the same character, typing that character will filter the visible keytips.
   </p>
   <button
     aria-describedby=" ktp-layer-id ktp-1-a"
     className=
         ms-Button
         ms-Button--default
+        u-marginRight
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
@@ -128,6 +129,8 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
     className=
         ms-Button
         ms-Button--compound
+        u-marginRight
+        u-marginBottom
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
@@ -278,6 +281,7 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
     className=
         ms-Button
         ms-Button--default
+        u-marginRight
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
@@ -476,6 +480,7 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
         className=
             ms-Button
             ms-Button--default
+            u-marginRight
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -801,13 +806,14 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
     </div>
   </button>
   <p>
-    A keytip can have an 'offset' prop which will position the keytip starting from the top-left corner of the element
+    The 'offset' prop can be used to position the keytip a set distance from the top-left corner of the element.
   </p>
   <button
     aria-describedby=" ktp-layer-id ktp-0-0"
     className=
         ms-Button
         ms-Button--default
+        u-marginBottom
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
@@ -921,7 +927,7 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
     </div>
   </button>
   <p>
-    A keytip will become disabled when its corresponding component becomes disabled. A disabled keytip will be visible but cannot be triggered
+    When a Keytip's corresponding component is disabled, the keytip still appears but cannot be triggered.
   </p>
   <div
     className=
