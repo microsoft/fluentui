@@ -4,6 +4,7 @@ import { DetailsList, DetailsListLayoutMode, Selection, IColumn, IDetailsList } 
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { createRef } from 'office-ui-fabric-react/lib/Utilities';
+import { createTheme, loadTheme } from '@uifabric/styling';
 
 const _items: any[] = [];
 
@@ -27,6 +28,23 @@ const _columns: IColumn[] = [
     ariaLabel: 'Operations for value'
   }
 ];
+
+const theme2 = createTheme({
+  palette: {
+    themePrimary: 'green'
+  },
+  fonts: {
+    small: {
+      fontFamily: 'Courier New'
+    },
+    medium: {
+      fontFamily: 'Courier New',
+      fontSize: 20
+    }
+  }
+});
+
+loadTheme(theme2);
 
 export class DetailsListBasicExample extends React.Component<
   {},
