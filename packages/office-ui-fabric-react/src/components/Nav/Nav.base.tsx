@@ -212,7 +212,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
   };
 
   private _renderGroupHeader = (group: INavLinkGroup): React.ReactElement<{}> => {
-    const { styles, groups, theme } = this.props;
+    const { styles, groups, theme, expandButtonAriaLabel } = this.props;
     const classNames = getClassNames(styles!, {
       theme: theme!,
       isGroup: true,
@@ -224,7 +224,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
       <button
         className={classNames.chevronButton}
         onClick={this._onGroupHeaderClicked.bind(this, group)}
-        aria-label={this.props.expandButtonAriaLabel}
+        aria-label={expandButtonAriaLabel}
         aria-expanded={!this.state.isGroupCollapsed![group.name!]}
       >
         <Icon className={classNames.chevronIcon} iconName="ChevronDown" />
