@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 08 Oct 2018 19:25:44 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Oct 2018 12:26:48 GMT and should not be manually modified.
+
+## 6.82.0
+Tue, 09 Oct 2018 12:26:48 GMT
+
+### Minor changes
+
+- Nav: Add custom group header renderer property
+
+### Patches
+
+- DocumentCard, Pivot, GroupHeader - replace instances of neutralSecondaryAlt with neutralSecondary
+- DocumentCardTitle: Fixes an infinite loop condition caused by componentDidUpdate calling _srinkTitle() over and over again due to setState being triggered every time without a stop condition.
 
 ## 6.81.0
 Mon, 08 Oct 2018 19:25:44 GMT

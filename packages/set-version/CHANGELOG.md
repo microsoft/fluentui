@@ -1,6 +1,13 @@
 # Change Log - @uifabric/set-version
 
-This log was last generated on Mon, 08 Oct 2018 12:24:15 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Oct 2018 12:26:48 GMT and should not be manually modified.
+
+## 1.1.3
+Tue, 09 Oct 2018 12:26:48 GMT
+
+### Patches
+
+- Adding package boilerplate files.
 
 ## 1.1.2
 Mon, 08 Oct 2018 12:24:15 GMT
