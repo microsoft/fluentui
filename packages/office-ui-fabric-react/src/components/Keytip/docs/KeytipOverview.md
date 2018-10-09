@@ -12,12 +12,12 @@ Keytip. A user will enter and exit keytip mode with a
 IKeytipTransitionSequence, which is a key with any amount of modifiers (Alt,
 Shift, etc).
 
-By default, the entry and exit sequence is 'Alt-Windows' (Meta). There is also
-a sequence to 'return' up a level of keytips while traversing. This is by
-default 'Esc'.
+By default, the entry and exit sequence is 'Alt-Windows' (Meta) on Windows and
+'Option-Control' on macOS. There is also a sequence to 'return' up a level of
+keytips while traversing. This is by default 'Esc'.
 
-Fabric components that have keytips enabled will have an optional
-'keytipProps' prop which will handler registering, unregistering, and
-rendering the keytip. The keySequences of the Keytip should be the full
-sequence to get to that keytip. There is a 'buildKeytipConfigMap' helper which
-will build a map of ID -> IKeytipProps to assist in defining your keytips.
+Fabric components that have keytips enabled have an optional 'keytipProps' prop
+which handles registering, unregistering, and rendering of the keytip. The
+keySequences of the Keytip should be the full sequence to get to that keytip.
+There is a 'buildKeytipConfigMap' helper which will build a map of ID ->
+IKeytipProps to assist in defining your keytips.

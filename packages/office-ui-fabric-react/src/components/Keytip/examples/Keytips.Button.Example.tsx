@@ -20,7 +20,7 @@ export class KeytipsButtonExample extends React.Component<{}, IKeytipsButtonExam
   public render() {
     return (
       <div>
-        <p>Keytips on the same level starting with the same characters will get filtered out as you hit those keys</p>
+        <p>When multiple Keytips start with the same character, typing that character will filter the visible keytips.</p>
         <DefaultButton
           keytipProps={keytipMap.Button}
           text="Button"
@@ -80,10 +80,7 @@ export class KeytipsButtonExample extends React.Component<{}, IKeytipsButtonExam
           }}
         />
         <DefaultButton text="I do not have a keytip" />
-        <p>
-          A keytip can have an 'offset' prop which will position the keytip starting from the top-left corner of the
-          element
-        </p>
+        <p>The 'offset' prop can be used to position the keytip a set distance from the top-left corner of the element.</p>
         <DefaultButton
           keytipProps={keytipMap.ButtonOffset}
           text="Button keytip offset 10x10"
@@ -91,16 +88,8 @@ export class KeytipsButtonExample extends React.Component<{}, IKeytipsButtonExam
             console.log('Button');
           }}
         />
-        <p>
-          A keytip will become disabled when its corresponding component becomes disabled. A disabled keytip will be
-          visible but cannot be triggered
-        </p>
-        <Toggle
-          onText={'Enabled'}
-          offText={'Disabled'}
-          defaultChecked={!this.state.btnDisabled}
-          onChange={this._toggleDisabled}
-        />
+        <p>When a Keytip's corresponding component is disabled, the keytip still appears but cannot be triggered.</p>
+        <Toggle onText={'Enabled'} offText={'Disabled'} defaultChecked={!this.state.btnDisabled} onChange={this._toggleDisabled} />
         <DefaultButton
           keytipProps={keytipMap.DisabledButton}
           disabled={this.state.btnDisabled}
