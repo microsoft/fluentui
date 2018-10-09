@@ -1,13 +1,5 @@
 import { IGroupHeaderStyleProps, IGroupHeaderStyles } from './GroupHeader.types';
-import {
-  getGlobalClassNames,
-  getFocusStyle,
-  FontSizes,
-  IStyle,
-  AnimationVariables,
-  FontWeights,
-  IconFontSizes
-} from '../../Styling';
+import { getGlobalClassNames, getFocusStyle, FontSizes, IStyle, AnimationVariables, FontWeights, IconFontSizes } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-GroupHeader',
@@ -164,10 +156,10 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
         position: 'absolute',
         left: -26,
         fontSize: IconFontSizes.large,
-        color: palette.neutralSecondaryAlt,
-        transition: `transform ${AnimationVariables.durationValue2} ${beziers.easeInBack}, opacity ${
-          AnimationVariables.durationValue4
-        } ${beziers.easeOutSine}`,
+        color: palette.neutralSecondary,
+        transition: `transform ${AnimationVariables.durationValue2} ${beziers.easeInBack}, opacity ${AnimationVariables.durationValue4} ${
+          beziers.easeOutSine
+        }`,
         opacity: 0,
         transform: 'rotate(0.2deg) scale(0.65)', // rotation prevents jittery motion in IE
         transformOrigin: '10px 10px',

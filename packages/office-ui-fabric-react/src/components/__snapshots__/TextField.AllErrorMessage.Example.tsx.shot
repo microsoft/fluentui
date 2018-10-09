@@ -552,6 +552,7 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
+                min-height: inherit;
                 min-width: 0px;
                 outline: 0px;
                 overflow: auto;

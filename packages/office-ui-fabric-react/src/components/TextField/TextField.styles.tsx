@@ -289,6 +289,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
           }
         ],
       multiline && {
+        minHeight: 'inherit',
         lineHeight: 17,
         flexGrow: 1,
         paddingTop: 6,
