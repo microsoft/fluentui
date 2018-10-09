@@ -22,6 +22,7 @@ export class KeytipsButtonExample extends React.Component<{}, IKeytipsButtonExam
       <div>
         <p>When multiple Keytips start with the same character, typing that character will filter the visible keytips.</p>
         <DefaultButton
+          className="u-marginRight"
           keytipProps={keytipMap.Button}
           text="Button"
           onClick={() => {
@@ -29,6 +30,7 @@ export class KeytipsButtonExample extends React.Component<{}, IKeytipsButtonExam
           }}
         />
         <CompoundButton
+          className="u-marginRight u-marginBottom"
           keytipProps={keytipMap.CompoundButton}
           text="Compound Button"
           secondaryText={'With a Keytip'}
@@ -37,6 +39,7 @@ export class KeytipsButtonExample extends React.Component<{}, IKeytipsButtonExam
           }}
         />
         <DefaultButton
+          className="u-marginRight"
           keytipProps={keytipMap.ButtonWithMenu}
           text="Button with Menu"
           onClick={() => {
@@ -58,6 +61,7 @@ export class KeytipsButtonExample extends React.Component<{}, IKeytipsButtonExam
           }}
         />
         <DefaultButton
+          className="u-marginRight"
           keytipProps={keytipMap.SplitButton}
           text="Split Button"
           split={true}
@@ -82,6 +86,7 @@ export class KeytipsButtonExample extends React.Component<{}, IKeytipsButtonExam
         <DefaultButton text="I do not have a keytip" />
         <p>The 'offset' prop can be used to position the keytip a set distance from the top-left corner of the element.</p>
         <DefaultButton
+          className="u-marginBottom"
           keytipProps={keytipMap.ButtonOffset}
           text="Button keytip offset 10x10"
           onClick={() => {
