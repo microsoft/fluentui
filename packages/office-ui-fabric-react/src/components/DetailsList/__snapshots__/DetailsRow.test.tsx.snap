@@ -15,14 +15,10 @@ exports[`DetailsRow renders details list row correctly 1`] = `
         ms-DetailsList
         is-horizontalConstrained
         {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
           background: #ffffff;
           color: #333333;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
-          font-weight: 400;
           overflow-x: auto;
           overflow-y: visible;
           position: relative;
@@ -797,14 +793,10 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
         ms-DetailsList
         is-horizontalConstrained
         {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
           background: #ffffff;
           color: #333333;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
-          font-weight: 400;
           overflow-x: auto;
           overflow-y: visible;
           position: relative;
@@ -2098,14 +2090,10 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
         ms-DetailsList
         is-horizontalConstrained
         {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
           background: #ffffff;
           color: #333333;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
-          font-weight: 400;
           overflow-x: auto;
           overflow-y: visible;
           position: relative;
@@ -2880,14 +2868,10 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
         ms-DetailsList
         is-horizontalConstrained
         {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
           background: #ffffff;
           color: #333333;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
-          font-weight: 400;
           overflow-x: auto;
           overflow-y: visible;
           position: relative;

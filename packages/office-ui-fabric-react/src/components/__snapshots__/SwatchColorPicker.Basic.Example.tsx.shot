@@ -119,7 +119,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     display: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid #666666;
+                    outline: 1px solid #000000;
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
@@ -262,7 +262,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     display: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid #666666;
+                    outline: 1px solid #000000;
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
@@ -405,7 +405,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     display: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid #666666;
+                    outline: 1px solid #000000;
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
@@ -548,7 +548,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     display: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid #666666;
+                    outline: 1px solid #000000;
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
@@ -691,7 +691,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     display: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid #666666;
+                    outline: 1px solid #000000;
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
@@ -880,7 +880,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     display: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid #666666;
+                    outline: 1px solid #000000;
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
@@ -1021,7 +1021,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     display: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid #666666;
+                    outline: 1px solid #000000;
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
@@ -1162,7 +1162,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     display: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid #666666;
+                    outline: 1px solid #000000;
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
@@ -1303,7 +1303,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     display: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid #666666;
+                    outline: 1px solid #000000;
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
@@ -1444,7 +1444,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     display: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid #666666;
+                    outline: 1px solid #000000;
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
@@ -1641,7 +1641,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     display: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid #666666;
+                    outline: 1px solid #000000;
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
@@ -1784,7 +1784,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     display: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid #666666;
+                    outline: 1px solid #000000;
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
@@ -1927,7 +1927,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     display: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid #666666;
+                    outline: 1px solid #000000;
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
@@ -2070,7 +2070,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     display: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid #666666;
+                    outline: 1px solid #000000;
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
@@ -2217,7 +2217,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     display: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid #666666;
+                    outline: 1px solid #000000;
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
@@ -2360,7 +2360,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     display: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid #666666;
+                    outline: 1px solid #000000;
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
@@ -2503,7 +2503,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     display: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid #666666;
+                    outline: 1px solid #000000;
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
@@ -2646,7 +2646,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     display: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid #666666;
+                    outline: 1px solid #000000;
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
@@ -2793,7 +2793,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     display: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid #666666;
+                    outline: 1px solid #000000;
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
@@ -2936,7 +2936,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     display: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid #666666;
+                    outline: 1px solid #000000;
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
@@ -3079,7 +3079,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     display: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid #666666;
+                    outline: 1px solid #000000;
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
@@ -3222,7 +3222,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     display: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid #666666;
+                    outline: 1px solid #000000;
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
@@ -3416,7 +3416,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     display: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid #666666;
+                    outline: 1px solid #000000;
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
@@ -3565,7 +3565,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     display: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid #666666;
+                    outline: 1px solid #000000;
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
@@ -3714,7 +3714,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     display: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid #666666;
+                    outline: 1px solid #000000;
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
@@ -3863,7 +3863,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     display: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid #666666;
+                    outline: 1px solid #000000;
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
@@ -4012,7 +4012,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     display: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid #666666;
+                    outline: 1px solid #000000;
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
