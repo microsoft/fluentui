@@ -1,10 +1,29 @@
 import * as React from 'react';
 
 interface IAsAsyncOptions<TProps> {
+  /**
+   * Callback which returns a promise resolving an object which exports the component.
+   */
   load: () => Promise<{ [key: string]: React.ReactType<TProps> }>;
+
+  /**
+   * The exportName to resolve from the result, defaults to "default".
+   */
   exportName?: string;
+
+  /**
+   * An optional JSX rendering for placeholder content.
+   */
   placeholder?: React.ReactType;
+
+  /**
+   * Callback executed when async loading is complete.
+   */
   onLoad?: () => void;
+
+  /**
+   * Callback when async loading fails.
+   */
   onError?: (error: Error) => void;
 }
 
