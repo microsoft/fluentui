@@ -5,6 +5,7 @@ import { Layout } from './Layout/Layout';
 import { getStyles } from './Card.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IChartProps, ChartType } from './Chart/Chart.types';
+import { ICardContentDetails } from './Layout/Layout.types';
 
 import { BarGraph } from './animations/BarGraph';
 import { DonutChart } from './animations/DonutChart';
@@ -13,8 +14,7 @@ import { LineChart } from './animations/LineChart';
 import { Shimmer } from './animations/Shimmer';
 
 export class Card extends React.Component<ICardProps, ICardState> {
-  // tslint:disable-next-line
-  public _chartType: any;
+  public _chartType: ChartType;
   constructor(props: ICardProps) {
     super(props);
     this.state = {
@@ -36,7 +36,7 @@ export class Card extends React.Component<ICardProps, ICardState> {
     const { cardFrameContent, header, cardContentList, actions, disableDrag, loading } = this.props;
     cardContentList!.some(
       // tslint:disable-next-line
-      (item): any => {
+      (item: ICardContentDetails): any => {
         if (item.cardContentType === CardContentType.Chart) {
           const { chartType } = item.content as IChartProps;
           this._chartType = chartType;
@@ -67,14 +67,13 @@ export class Card extends React.Component<ICardProps, ICardState> {
       </div>
     );
   }
-  // tslint:disable-next-line
-  private _getAnimation(chartType: any): JSX.Element | undefined {
+
+  private _getAnimation(chartType: ChartType): JSX.Element | undefined {
     switch (chartType) {
       case ChartType.DonutChart: {
         return <DonutChart />;
       }
       case ChartType.HorizontalBarChart: {
-        console.log(1);
         return <HorizontalBarGraph />;
       }
       case ChartType.LineChart: {

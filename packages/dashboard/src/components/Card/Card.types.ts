@@ -140,8 +140,9 @@ export interface ICardProps {
    */
   disableDrag?: boolean;
 
-  // animation?: JSX.Element;
-
+  /**
+   * load animations for loading  dashboard card
+   */
   loading?: boolean;
 }
 
