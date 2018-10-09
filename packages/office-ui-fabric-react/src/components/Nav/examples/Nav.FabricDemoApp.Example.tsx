@@ -69,7 +69,7 @@ const AppDefinition = {
 
 export class NavFabricDemoAppExample extends React.Component<any, any> {
   public render(): JSX.Element {
-    return <Nav groups={AppDefinition.examplePages} onRenderLink={this._onRenderLink} />;
+    return <Nav groups={AppDefinition.examplePages} onRenderLink={this._onRenderLink} expandButtonAriaLabel="Expand or collapse" />;
   }
 
   private _onRenderLink = (link: any): JSX.Element | null => {
