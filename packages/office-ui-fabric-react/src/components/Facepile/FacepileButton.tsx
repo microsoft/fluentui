@@ -11,18 +11,10 @@ export class FacepileButton extends BaseComponent<IButtonProps, {}> {
   protected _skipComponentRefResolution = true;
 
   public render(): JSX.Element {
-    const { theme, className, styles } = this.props;
+    const { className, styles, ...rest } = this.props;
 
-    const customStyles = getStyles(theme!, className, styles);
+    const customStyles = getStyles(this.props.theme!, className, styles);
 
-    return (
-      <BaseButton
-        {...this.props}
-        variantClassName="ms-Button--facepile"
-        className=""
-        styles={customStyles}
-        onRenderDescription={nullRender}
-      />
-    );
+    return <BaseButton {...rest} variantClassName="ms-Button--facepile" styles={customStyles} onRenderDescription={nullRender} />;
   }
 }
