@@ -237,12 +237,41 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
           ]
         }
       },
+      {
+        display: 'flex',
+        flexDirection: 'column',
+        maxHeight: '100%',
+        selectors: {
+          ['@supports (-webkit-overflow-scrolling: touch)']: {
+            maxHeight: windowHeight
+          }
+        }
+      },
+      isFooterAtBottom && {
+        height: '100%',
+        selectors: {
+          ['@supports (-webkit-overflow-scrolling: touch)']: {
+            height: windowHeight
+          }
+        }
+      },
       isOpen && isAnimating && !isOnRightSide && AnimationClassNames.slideRightIn40,
       isOpen && isAnimating && isOnRightSide && AnimationClassNames.slideLeftIn40,
       !isOpen && isAnimating && !isOnRightSide && AnimationClassNames.slideLeftOut40,
       !isOpen && isAnimating && isOnRightSide && AnimationClassNames.slideRightOut40,
       focusTrapZoneClassName
     ],
+    commands: [classNames.commands],
+    navigation: [
+      classNames.navigation,
+      {
+        padding: '0 5px',
+        height: commandBarHeight,
+        display: 'flex',
+        justifyContent: 'flex-end'
+      }
+    ],
+    closeButton: [classNames.closeButton],
     contentInner: [
       classNames.contentInner,
       {
@@ -264,17 +293,6 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         }
       }
     ],
-    commands: [classNames.commands],
-    navigation: [
-      classNames.navigation,
-      {
-        padding: '0 5px',
-        height: commandBarHeight,
-        display: 'flex',
-        justifyContent: 'flex-end'
-      }
-    ],
-    closeButton: [classNames.closeButton],
     header: [
       classNames.header,
       sharedPaddingStyles,

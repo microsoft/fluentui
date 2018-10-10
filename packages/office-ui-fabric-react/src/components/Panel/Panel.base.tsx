@@ -173,10 +173,10 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
               elementToFocusOnDismiss={elementToFocusOnDismiss}
               isClickableOutsideFocusTrap={focusTrapZoneProps && !focusTrapZoneProps.isClickableOutsideFocusTrap ? false : true}
             >
+              <div className={_classNames.commands} data-is-visible={true}>
+                {onRenderNavigation(this.props, this._onRenderNavigation)}
+              </div>
               <div className={_classNames.contentInner}>
-                <div className={_classNames.commands} data-is-visible={true}>
-                  {onRenderNavigation(this.props, this._onRenderNavigation)}
-                </div>
                 {header}
                 <div ref={this._allowScrollOnPanel} className={_classNames.scrollableContent} data-is-scrollable={true}>
                   {onRenderBody(this.props, this._onRenderBody)}
