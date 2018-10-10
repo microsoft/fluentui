@@ -11,7 +11,7 @@ export class LineAndVerticalBarChartExample extends React.Component<{}, { loadin
 
   public render(): JSX.Element {
     const cardFrameContent = {
-      cardTitle: 'Stacked bar chart example',
+      cardTitle: 'Line and vertical bar chart example',
       cardDropDownOptions: [
         {
           key: 'Remove',
@@ -23,7 +23,11 @@ export class LineAndVerticalBarChartExample extends React.Component<{}, { loadin
             alert('Remove clicked');
           }
         }
-      ]
+      ],
+      cardTitleCallback: () => {
+        alert('Card title callback example');
+      },
+      href: '/'
     };
     const points: ILineChartPoints[] = [
       {
@@ -105,7 +109,7 @@ export class LineAndVerticalBarChartExample extends React.Component<{}, { loadin
     setTimeout(() => {
       that.setState({ loading: false });
     }, 10000);
-
+    
     return (
       <Card
         cardFrameContent={cardFrameContent}

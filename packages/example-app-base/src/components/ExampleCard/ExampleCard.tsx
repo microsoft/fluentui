@@ -50,8 +50,8 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
     return (
       <div className={rootClass}>
         <div className="ExampleCard-header">
-          <span className="ExampleCard-title ms-font-l">{title}</span>
-          <div className="ExampleCard-toggleButtons ms-font-l">
+          <span className="ExampleCard-title">{title}</span>
+          <div className="ExampleCard-toggleButtons">
             {codepenJS && <CodepenComponent jsContent={codepenJS} />}
             {code && (
               <CommandButton

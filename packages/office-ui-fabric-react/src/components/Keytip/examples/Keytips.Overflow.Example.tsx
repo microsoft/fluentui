@@ -102,20 +102,20 @@ export class KeytipsOverflowExample extends React.Component<{}, IKeytipsOverflow
     return (
       <div>
         <p>
-          Keytips in an overflow well have a special behavior. When a keytip goes into the overflow button menu, it will
-          also register a 'persisted' keytip that can be accessed from the top level as a shortcut. A shortcut to a
-          normal button item will trigger that button. A shortcut to a menu button item will open the overflow button
-          menu and then open that item's menu as well. In this example triggering 'T' and 'Y' will show off this
-          functionality (see console messages)
+          Keytips in an overflow well have a special behavior. When a keytip goes into the overflow button menu, it will also register a
+          'persisted' keytip that can be accessed from the top level as a shortcut. A shortcut to a normal button item will trigger that
+          button. A shortcut to a menu button item will open the overflow button menu and then open that item's menu as well. In this
+          example triggering 'T' and 'Y' will show off this functionality (see console messages).
         </p>
         <OverflowSet
+          className="u-marginBottom"
           items={this.state.items}
           overflowItems={this.state.overflowItems}
           keytipSequences={keytipMap.OverflowButton4.keySequences}
           onRenderOverflowButton={this._onRenderOverflowButton}
           onRenderItem={this._onRenderItem}
         />
-        <p>When an item is moved out of the overflow well, it behaves as a normal keytip</p>
+        <p>When an item is moved out of the overflow well, it behaves as a normal keytip.</p>
         <DefaultButton text={'Move overflow items'} onClick={this._toggleOverflowItems} />
       </div>
     );

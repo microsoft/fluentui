@@ -44,8 +44,7 @@ export type IPickerAriaIds = {
   suggestionList: string;
 };
 
-export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBasePickerState>
-  implements IBasePicker<T> {
+export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBasePickerState> implements IBasePicker<T> {
   protected selection: Selection;
 
   protected root = createRef<HTMLDivElement>();
@@ -146,10 +145,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   public dismissSuggestions = (ev?: any): void => {
     const selectItemFunction = () => {
       if (this.props.onDismiss) {
-        this.props.onDismiss(
-          ev,
-          this.suggestionStore.currentSuggestion ? this.suggestionStore.currentSuggestion.item : undefined
-        );
+        this.props.onDismiss(ev, this.suggestionStore.currentSuggestion ? this.suggestionStore.currentSuggestion.item : undefined);
       }
 
       if (!ev || (ev && !ev.defaultPrevented)) {
@@ -191,9 +187,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     const { suggestedDisplayValue } = this.state;
     const { className, inputProps, disabled } = this.props;
 
-    const selectedSuggestionAlertId = this.props.enableSelectedSuggestionAlert
-      ? this._ariaMap.selectedSuggestionAlert
-      : '';
+    const selectedSuggestionAlertId = this.props.enableSelectedSuggestionAlert ? this._ariaMap.selectedSuggestionAlert : '';
     const suggestionsAvailable = this.state.suggestionsVisible ? this._ariaMap.suggestionList : '';
 
     return (
@@ -205,10 +199,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         >
           {this.getSuggestionsAlert()}
           <SelectionZone selection={this.selection} selectionMode={SelectionMode.multiple}>
-            <div
-              className={css('ms-BasePicker-text', styles.pickerText, this.state.isFocused && styles.inputFocused)}
-              role={'list'}
-            >
+            <div className={css('ms-BasePicker-text', styles.pickerText, this.state.isFocused && styles.inputFocused)} role={'list'}>
               <span id={this._ariaMap.selectedItems}>{this.renderItems()}</span>
               {this.canAddItems() && (
                 <Autofill
@@ -257,6 +248,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         onDismiss={this.dismissSuggestions}
         directionalHint={DirectionalHint.bottomLeftEdge}
         directionalHintForRTL={DirectionalHint.bottomRightEdge}
+        {...this.props.pickerCalloutProps}
       >
         <TypedSuggestion
           onRenderSuggestion={this.props.onRenderSuggestionsItem}
@@ -304,9 +296,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     if (items.length && index! >= 0) {
       const newEl: HTMLElement | null =
         this.root.current &&
-        (this.root.current.querySelectorAll('[data-selection-index]')[
-          Math.min(index!, items.length - 1)
-        ] as HTMLElement | null);
+        (this.root.current.querySelectorAll('[data-selection-index]')[Math.min(index!, items.length - 1)] as HTMLElement | null);
       if (newEl && this.focusZone.current) {
         this.focusZone.current.focusElement(newEl);
       }
@@ -605,10 +595,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       },
       () => {
         if (this.props.onGetMoreResults && this.input.current) {
-          const suggestions: T[] | PromiseLike<T[]> = (this.props.onGetMoreResults as any)(
-            this.input.current.value,
-            this.state.items
-          );
+          const suggestions: T[] | PromiseLike<T[]> = (this.props.onGetMoreResults as any)(this.input.current.value, this.state.items);
           const suggestionsArray: T[] = suggestions as T[];
           const suggestionsPromiseLike: PromiseLike<T[]> = suggestions as PromiseLike<T[]>;
 
@@ -646,9 +633,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   };
 
   protected addItem = (item: T): void => {
-    const processedItem: T | PromiseLike<T> | null = this.props.onItemSelected
-      ? (this.props.onItemSelected as any)(item)
-      : item;
+    const processedItem: T | PromiseLike<T> | null = this.props.onItemSelected ? (this.props.onItemSelected as any)(item) : item;
 
     if (processedItem === null) {
       return;
@@ -732,12 +717,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         currentIndex > -1 ? this.suggestionStore.getSuggestionAtIndex(this.suggestionStore.currentIndex) : undefined;
       const selectedSuggestionAlertText = selectedSuggestion ? selectedSuggestion.ariaLabel : undefined;
       return (
-        <div
-          className={styles.screenReaderOnly}
-          role="alert"
-          id={this._ariaMap.selectedSuggestionAlert}
-          aria-live="assertive"
-        >
+        <div className={styles.screenReaderOnly} role="alert" id={this._ariaMap.selectedSuggestionAlert} aria-live="assertive">
           {selectedSuggestionAlertText}{' '}
         </div>
       );
@@ -795,10 +775,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       (this.props.onValidateInput as any)(this.input.current.value) !== ValidationState.invalid &&
       this.props.createGenericItem
     ) {
-      const itemToConvert = this.props.createGenericItem(
-        this.input.current.value,
-        this.props.onValidateInput(this.input.current.value)
-      );
+      const itemToConvert = this.props.createGenericItem(this.input.current.value, this.props.onValidateInput(this.input.current.value));
       this.suggestionStore.createGenericSuggestion(itemToConvert);
       this.completeSuggestion();
     }

@@ -53,7 +53,9 @@ export class Card extends React.Component<ICardProps, ICardState> {
           cardTitle={cardFrameContent.cardTitle}
           cardDropDownOptions={cardFrameContent.cardDropDownOptions}
           href={cardFrameContent.href}
+          target={cardFrameContent.target}
           disableDrag={disableDrag === undefined ? false : disableDrag}
+          cardTitleCallback={cardFrameContent.cardTitleCallback}
         >
           <Layout
             header={header}

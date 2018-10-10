@@ -49,3 +49,4 @@ export * from './string';
 export * from './styled';
 export * from './warn';
 export { IStyleFunctionOrObject } from '@uifabric/merge-styles';
+import './version';

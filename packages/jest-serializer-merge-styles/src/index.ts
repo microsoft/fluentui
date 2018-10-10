@@ -1,4 +1,5 @@
 import { Stylesheet } from '@uifabric/merge-styles';
+import './version';
 
 export function print(val: string, serialize: () => string, indent: (val: string) => string): string {
   const classNames = [];

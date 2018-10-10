@@ -11,40 +11,40 @@ import { TestImages } from '../common/TestImages';
 // Rendering allIcons tests that the icon package can initialize all icons from the cdn
 let allIcons: JSX.Element[] = [];
 for (let iconName in (IconNames as any)['IconNames']) {
-  allIcons.push(<Icon iconName={ iconName } />);
+  allIcons.push(<Icon iconName={iconName} />);
 }
 
 storiesOf('Icon', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
-      steps={ new Screener.Steps()
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .end()
       }
     >
-      { story() }
+      {story()}
     </Screener>
-  )).add('Root', () => (
+  )).addStory('Root', () => (
     <div>
       <div>
-        { allIcons }
+        {allIcons}
       </div>
       <div>
-        <Icon className={ getIconClassName('CompassNW') } />
-        <Icon className={ getIconClassName('Upload') } />
-        <Icon className={ getIconClassName('Share') } />
+        <Icon className={getIconClassName('CompassNW')} />
+        <Icon className={getIconClassName('Upload')} />
+        <Icon className={getIconClassName('Share')} />
       </div>
     </div>
-  )).add('Color', () => (
+  )).addStory('Color', () => (
     // tslint:disable-next-line:jsx-ban-props
-    <Icon iconName={ 'CompassNW' } style={ { color: 'red' } } />
-  )).add('Image', () => (
+    <Icon iconName={'CompassNW'} style={{ color: 'red' }} />
+  )).addStory('Image', () => (
     <Icon
-      iconName={ 'None' }
-      iconType={ IconType.image }
-      imageProps={ {
+      iconName={'None'}
+      iconType={IconType.image}
+      imageProps={{
         src: TestImages.iconOne
-      } }
+      }}
     />
   ));

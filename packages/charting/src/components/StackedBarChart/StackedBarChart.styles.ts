@@ -1,7 +1,8 @@
 import { IStackedBarChartStyleProps, IStackedBarChartStyles } from './StackedBarChart.types';
+import { FontSizes, FontWeights } from 'office-ui-fabric-react/lib/Styling';
 
 export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartStyles => {
-  const { className, width, barHeight, legendColor, shouldHighlight, theme } = props;
+  const { className, width, barHeight, legendColor, shouldHighlight, theme, href } = props;
   return {
     root: [
       'ms-StackedBarChart',
@@ -15,13 +16,13 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
     chart: {
       width: '100%',
       height: barHeight ? barHeight : 16,
-      marginBottom: '13px'
+      marginBottom: '12px'
     },
     chartTitle: {
       display: 'flex',
       justifyContent: 'space-between',
       marginBottom: '5px',
-      fontSize: '12px'
+      fontSize: FontSizes.small
     },
     legendContainer: {
       paddingTop: '4px'
@@ -32,9 +33,9 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
     },
     hoverCardDataStyles: {
       color: legendColor === '' ? theme.palette.black : legendColor,
-      fontSize: '28px',
+      fontSize: FontSizes.xxLarge,
       fontFamily: 'Segoe UI',
-      fontWeight: 'bold',
+      fontWeight: FontWeights.bold,
       lineHeight: '31px'
     },
     hoverCardRoot: {
@@ -44,7 +45,18 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
       paddingBottom: '8px'
     },
     opacityChangeOnHover: {
-      opacity: shouldHighlight ? '' : '0.1'
+      opacity: shouldHighlight ? '' : '0.1',
+      cursor: href ? 'pointer' : 'default'
+    },
+    ratioNumerator: {
+      fontSize: FontSizes.small,
+      fontWeight: FontWeights.semibold,
+      color: theme.palette.black
+    },
+    ratioDenominator: {
+      fontSize: FontSizes.small,
+      color: theme.palette.black,
+      opacity: '0.6'
     }
   };
 };

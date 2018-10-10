@@ -51,7 +51,27 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
               />
             </div>
             <a
+              className=
+                  ms-Link
+                  {
+                    color: #0078d4;
+                    outline: none;
+                    text-decoration: none;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid #666666;
+                  }
+                  &:active, &:hover, &:active:hover {
+                    color: #004578;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                    text-decoration: underline;
+                  }
+                  &:focus {
+                    color: #0078d4;
+                  }
               href="http://bing.com"
+              onClick={[Function]}
             >
               Revenue stream proposal fiscal year 2016 version02.pptx
             </a>
@@ -91,7 +111,27 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
               />
             </div>
             <a
+              className=
+                  ms-Link
+                  {
+                    color: #0078d4;
+                    outline: none;
+                    text-decoration: none;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid #666666;
+                  }
+                  &:active, &:hover, &:active:hover {
+                    color: #004578;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                    text-decoration: underline;
+                  }
+                  &:focus {
+                    color: #0078d4;
+                  }
               href="http://bing.com"
+              onClick={[Function]}
             >
               New Contoso Collaboration for Conference Presentation Draft
             </a>
@@ -131,7 +171,27 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
               />
             </div>
             <a
+              className=
+                  ms-Link
+                  {
+                    color: #0078d4;
+                    outline: none;
+                    text-decoration: none;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid #666666;
+                  }
+                  &:active, &:hover, &:active:hover {
+                    color: #004578;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                    text-decoration: underline;
+                  }
+                  &:focus {
+                    color: #0078d4;
+                  }
               href="http://bing.com"
+              onClick={[Function]}
             >
               Spec Sheet for design
             </a>

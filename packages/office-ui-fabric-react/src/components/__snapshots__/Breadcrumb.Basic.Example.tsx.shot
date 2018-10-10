@@ -25,12 +25,12 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
     With no maxDisplayedItems
   </label>
   <div
-    className=
-        ms-ResizeGroup
-        {
-          display: block;
-          position: relative;
-        }
+    style={
+      Object {
+        "display": "block",
+        "position": "relative",
+      }
+    }
   >
     <div
       data-automation-id="visibleContent"
@@ -131,19 +131,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       user-select: text;
                       white-space: nowrap;
                     }
-                    &::-moz-focus-inner {
-                      border: 0;
-                    }
-                    .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid #ffffff;
-                      bottom: 1px;
-                      content: "";
-                      left: 1px;
+                    .ms-Fabric--isFocusVisible &:focus {
                       outline: 1px solid #666666;
-                      position: absolute;
-                      right: 1px;
-                      top: 1px;
-                      z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: white-on-black){& {
                       color: #FFFF00;
@@ -162,6 +151,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                     }
                     &:focus {
                       color: #212121;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #666666;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
                     }
                     &:hover {
                       background-color: #f4f4f4;
@@ -286,19 +289,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       user-select: text;
                       white-space: nowrap;
                     }
-                    &::-moz-focus-inner {
-                      border: 0;
-                    }
-                    .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid #ffffff;
-                      bottom: 1px;
-                      content: "";
-                      left: 1px;
+                    .ms-Fabric--isFocusVisible &:focus {
                       outline: 1px solid #666666;
-                      position: absolute;
-                      right: 1px;
-                      top: 1px;
-                      z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: white-on-black){& {
                       color: #FFFF00;
@@ -317,6 +309,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                     }
                     &:focus {
                       color: #212121;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #666666;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
                     }
                     &:hover {
                       background-color: #f4f4f4;
@@ -441,19 +447,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       user-select: text;
                       white-space: nowrap;
                     }
-                    &::-moz-focus-inner {
-                      border: 0;
-                    }
-                    .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid #ffffff;
-                      bottom: 1px;
-                      content: "";
-                      left: 1px;
+                    .ms-Fabric--isFocusVisible &:focus {
                       outline: 1px solid #666666;
-                      position: absolute;
-                      right: 1px;
-                      top: 1px;
-                      z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: white-on-black){& {
                       color: #FFFF00;
@@ -472,6 +467,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                     }
                     &:focus {
                       color: #212121;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #666666;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
                     }
                     &:hover {
                       background-color: #f4f4f4;
@@ -596,19 +605,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       user-select: text;
                       white-space: nowrap;
                     }
-                    &::-moz-focus-inner {
-                      border: 0;
-                    }
-                    .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid #ffffff;
-                      bottom: 1px;
-                      content: "";
-                      left: 1px;
+                    .ms-Fabric--isFocusVisible &:focus {
                       outline: 1px solid #666666;
-                      position: absolute;
-                      right: 1px;
-                      top: 1px;
-                      z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: white-on-black){& {
                       color: #FFFF00;
@@ -627,6 +625,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                     }
                     &:focus {
                       color: #212121;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #666666;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
                     }
                     &:hover {
                       background-color: #f4f4f4;
@@ -751,19 +763,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       user-select: text;
                       white-space: nowrap;
                     }
-                    &::-moz-focus-inner {
-                      border: 0;
-                    }
-                    .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid #ffffff;
-                      bottom: 1px;
-                      content: "";
-                      left: 1px;
+                    .ms-Fabric--isFocusVisible &:focus {
                       outline: 1px solid #666666;
-                      position: absolute;
-                      right: 1px;
-                      top: 1px;
-                      z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: white-on-black){& {
                       color: #FFFF00;
@@ -782,6 +783,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                     }
                     &:focus {
                       color: #212121;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #666666;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
                     }
                     &:hover {
                       background-color: #f4f4f4;
@@ -907,19 +922,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       user-select: text;
                       white-space: nowrap;
                     }
-                    &::-moz-focus-inner {
-                      border: 0;
-                    }
-                    .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid #ffffff;
-                      bottom: 1px;
-                      content: "";
-                      left: 1px;
+                    .ms-Fabric--isFocusVisible &:focus {
                       outline: 1px solid #666666;
-                      position: absolute;
-                      right: 1px;
-                      top: 1px;
-                      z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: white-on-black){& {
                       color: #FFFF00;
@@ -938,6 +942,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                     }
                     &:focus {
                       color: #212121;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #666666;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
                     }
                     &:hover {
                       background-color: #f4f4f4;
@@ -1012,12 +1030,12 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
     With Custom Divider Icon
   </label>
   <div
-    className=
-        ms-ResizeGroup
-        {
-          display: block;
-          position: relative;
-        }
+    style={
+      Object {
+        "display": "block",
+        "position": "relative",
+      }
+    }
   >
     <div
       data-automation-id="visibleContent"
@@ -1118,19 +1136,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       user-select: text;
                       white-space: nowrap;
                     }
-                    &::-moz-focus-inner {
-                      border: 0;
-                    }
-                    .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid #ffffff;
-                      bottom: 1px;
-                      content: "";
-                      left: 1px;
+                    .ms-Fabric--isFocusVisible &:focus {
                       outline: 1px solid #666666;
-                      position: absolute;
-                      right: 1px;
-                      top: 1px;
-                      z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: white-on-black){& {
                       color: #FFFF00;
@@ -1149,6 +1156,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                     }
                     &:focus {
                       color: #212121;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #666666;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
                     }
                     &:hover {
                       background-color: #f4f4f4;
@@ -1260,19 +1281,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       user-select: text;
                       white-space: nowrap;
                     }
-                    &::-moz-focus-inner {
-                      border: 0;
-                    }
-                    .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid #ffffff;
-                      bottom: 1px;
-                      content: "";
-                      left: 1px;
+                    .ms-Fabric--isFocusVisible &:focus {
                       outline: 1px solid #666666;
-                      position: absolute;
-                      right: 1px;
-                      top: 1px;
-                      z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: white-on-black){& {
                       color: #FFFF00;
@@ -1291,6 +1301,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                     }
                     &:focus {
                       color: #212121;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #666666;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
                     }
                     &:hover {
                       background-color: #f4f4f4;
@@ -1402,19 +1426,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       user-select: text;
                       white-space: nowrap;
                     }
-                    &::-moz-focus-inner {
-                      border: 0;
-                    }
-                    .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid #ffffff;
-                      bottom: 1px;
-                      content: "";
-                      left: 1px;
+                    .ms-Fabric--isFocusVisible &:focus {
                       outline: 1px solid #666666;
-                      position: absolute;
-                      right: 1px;
-                      top: 1px;
-                      z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: white-on-black){& {
                       color: #FFFF00;
@@ -1433,6 +1446,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                     }
                     &:focus {
                       color: #212121;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #666666;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
                     }
                     &:hover {
                       background-color: #f4f4f4;
@@ -1544,19 +1571,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       user-select: text;
                       white-space: nowrap;
                     }
-                    &::-moz-focus-inner {
-                      border: 0;
-                    }
-                    .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid #ffffff;
-                      bottom: 1px;
-                      content: "";
-                      left: 1px;
+                    .ms-Fabric--isFocusVisible &:focus {
                       outline: 1px solid #666666;
-                      position: absolute;
-                      right: 1px;
-                      top: 1px;
-                      z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: white-on-black){& {
                       color: #FFFF00;
@@ -1575,6 +1591,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                     }
                     &:focus {
                       color: #212121;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #666666;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
                     }
                     &:hover {
                       background-color: #f4f4f4;
@@ -1686,19 +1716,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       user-select: text;
                       white-space: nowrap;
                     }
-                    &::-moz-focus-inner {
-                      border: 0;
-                    }
-                    .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid #ffffff;
-                      bottom: 1px;
-                      content: "";
-                      left: 1px;
+                    .ms-Fabric--isFocusVisible &:focus {
                       outline: 1px solid #666666;
-                      position: absolute;
-                      right: 1px;
-                      top: 1px;
-                      z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: white-on-black){& {
                       color: #FFFF00;
@@ -1717,6 +1736,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                     }
                     &:focus {
                       color: #212121;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #666666;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
                     }
                     &:hover {
                       background-color: #f4f4f4;
@@ -1829,19 +1862,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       user-select: text;
                       white-space: nowrap;
                     }
-                    &::-moz-focus-inner {
-                      border: 0;
-                    }
-                    .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid #ffffff;
-                      bottom: 1px;
-                      content: "";
-                      left: 1px;
+                    .ms-Fabric--isFocusVisible &:focus {
                       outline: 1px solid #666666;
-                      position: absolute;
-                      right: 1px;
-                      top: 1px;
-                      z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: white-on-black){& {
                       color: #FFFF00;
@@ -1860,6 +1882,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                     }
                     &:focus {
                       color: #212121;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #666666;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
                     }
                     &:hover {
                       background-color: #f4f4f4;
@@ -1934,12 +1970,12 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
     With maxDisplayedItems set to three
   </label>
   <div
-    className=
-        ms-ResizeGroup
-        {
-          display: block;
-          position: relative;
-        }
+    style={
+      Object {
+        "display": "block",
+        "position": "relative",
+      }
+    }
   >
     <div
       data-automation-id="visibleContent"
@@ -2206,6 +2242,18 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       text-overflow: ellipsis;
                       white-space: nowrap;
                     }
+                    .ms-Fabric--isFocusVisible &:focus {
+                      outline: 1px solid #666666;
+                    }
+                    &:active, &:hover, &:active:hover {
+                      color: #004578;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                      text-decoration: underline;
+                    }
+                    &:focus {
+                      color: #212121;
+                    }
                     &::-moz-focus-inner {
                       border: 0;
                     }
@@ -2219,15 +2267,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       right: 1px;
                       top: 1px;
                       z-index: 1;
-                    }
-                    &:active, &:hover, &:active:hover {
-                      color: #004578;
-                    }
-                    @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
-                      text-decoration: underline;
-                    }
-                    &:focus {
-                      color: #212121;
                     }
                     &:hover {
                       background-color: #f4f4f4;
@@ -2341,6 +2380,18 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       text-overflow: ellipsis;
                       white-space: nowrap;
                     }
+                    .ms-Fabric--isFocusVisible &:focus {
+                      outline: 1px solid #666666;
+                    }
+                    &:active, &:hover, &:active:hover {
+                      color: #004578;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                      text-decoration: underline;
+                    }
+                    &:focus {
+                      color: #212121;
+                    }
                     &::-moz-focus-inner {
                       border: 0;
                     }
@@ -2354,15 +2405,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       right: 1px;
                       top: 1px;
                       z-index: 1;
-                    }
-                    &:active, &:hover, &:active:hover {
-                      color: #004578;
-                    }
-                    @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
-                      text-decoration: underline;
-                    }
-                    &:focus {
-                      color: #212121;
                     }
                     &:hover {
                       background-color: #f4f4f4;
@@ -2477,6 +2519,18 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       text-overflow: ellipsis;
                       white-space: nowrap;
                     }
+                    .ms-Fabric--isFocusVisible &:focus {
+                      outline: 1px solid #666666;
+                    }
+                    &:active, &:hover, &:active:hover {
+                      color: #004578;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                      text-decoration: underline;
+                    }
+                    &:focus {
+                      color: #212121;
+                    }
                     &::-moz-focus-inner {
                       border: 0;
                     }
@@ -2490,15 +2544,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       right: 1px;
                       top: 1px;
                       z-index: 1;
-                    }
-                    &:active, &:hover, &:active:hover {
-                      color: #004578;
-                    }
-                    @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
-                      text-decoration: underline;
-                    }
-                    &:focus {
-                      color: #212121;
                     }
                     &:hover {
                       background-color: #f4f4f4;
@@ -2574,12 +2619,12 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
     With maxDisplayedItems set to two and overflowIndex set to 1 (second element)
   </label>
   <div
-    className=
-        ms-ResizeGroup
-        {
-          display: block;
-          position: relative;
-        }
+    style={
+      Object {
+        "display": "block",
+        "position": "relative",
+      }
+    }
   >
     <div
       data-automation-id="visibleContent"

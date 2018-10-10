@@ -86,8 +86,8 @@ export function getParent(child: HTMLElement, allowVirtualParents: boolean = tru
  * Gets the elements which are child elements of the given element.
  * If `allowVirtualChildren` is `true`, this method enumerates virtual child elements
  * after the original children.
- * @param parent
- * @param allowVirtualChildren
+ * @param parent - The element to get the children of.
+ * @param allowVirtualChildren - true if the method should enumerate virtual child elements.
  */
 export function getChildren(parent: HTMLElement, allowVirtualChildren: boolean = true): HTMLElement[] {
   const children: HTMLElement[] = [];
@@ -208,7 +208,7 @@ export function getRect(element: HTMLElement | Window | null): IRectangle | unde
 
 /**
  * Identify element as a portal by setting an attribute.
- * @param element Element to mark as a portal.
+ * @param element - Element to mark as a portal.
  */
 export function setPortalAttribute(element: HTMLElement): void {
   element.setAttribute(DATA_PORTAL_ATTRIBUTE, 'true');
@@ -218,8 +218,8 @@ export function setPortalAttribute(element: HTMLElement): void {
  * Determine whether a target is within a portal from perspective of root or optional parent.
  * This function only works against portal components that use the setPortalAttribute function.
  * If both parent and child are within the same portal this function will return false.
- * @param target Element to query portal containment status of.
- * @param parent Optional parent perspective. Search for containing portal stops at parent (or root if parent is undefined or invalid.)
+ * @param target - Element to query portal containment status of.
+ * @param parent - Optional parent perspective. Search for containing portal stops at parent (or root if parent is undefined or invalid.)
  */
 export function portalContainsElement(target: HTMLElement, parent?: HTMLElement): boolean {
   const elementMatch = findElementRecursive(
@@ -231,8 +231,8 @@ export function portalContainsElement(target: HTMLElement, parent?: HTMLElement)
 
 /**
  * Finds the first parent element where the matchFunction returns true
- * @param element element to start searching at
- * @param matchFunction the function that determines if the element is a match
+ * @param element - element to start searching at
+ * @param matchFunction - the function that determines if the element is a match
  * @returns the matched element or null no match was found
  */
 export function findElementRecursive(

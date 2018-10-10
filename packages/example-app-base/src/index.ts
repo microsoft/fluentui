@@ -16,3 +16,5 @@ export * from './utilities/data';
 export * from './utilities/debugging';
 export * from './utilities/examplesOf';
 export * from './utilities/parser/index';
+
+import './version';

@@ -14,11 +14,13 @@
   }
 
   .ExampleCard-title {
+    @include ms-font-l;
     margin-bottom: 10px;
     display: inline-block;
   }
 
   .ExampleCard-toggleButtons {
+    @include ms-font-l;
     display: flex;
     @include float(right);
 
@@ -65,6 +67,17 @@
 
     &.is-right-aligned {
       @include text-align(right);
+    }
+
+    // Utility classes that can be used within examples.
+    .u-marginLeft {
+      @include ms-margin-left(20px);
+    }
+    .u-marginRight {
+      @include ms-margin-right(20px);
+    }
+    .u-marginBottom {
+      margin-bottom: 28px;
     }
   }
 

@@ -25,12 +25,7 @@ export interface ISectionProps {
   /**
    * Styling
    */
-  style?: IStyleFunctionOrObject<ISectionStyleProps, ISectionStyles>;
-
-  /**
-   * String for removing section, pass in only if remove is allowed when section is displayed in dashboard
-   */
-  removeTitle?: string;
+  styles?: IStyleFunctionOrObject<ISectionStyleProps, ISectionStyles>;
 
   /**
    * Is in the edit section mode?
@@ -74,26 +69,26 @@ export interface ISectionProps {
   /**
    * Handler when collapse expand is toggled
    */
-  onCollapseExpand?(expanded: boolean, key: string): void;
+  onCollapseExpand?: (expanded: boolean, key: string) => void;
 
   /**
    * Handler for deleting section
    * @param key the key of section being deleted
    */
-  onDelete?(key: string): void;
+  onDelete?: (key: string) => void;
 
   /**
    * Handler for renaming section button click
    * @param key the key of section being renamed
    */
-  onRename?(key: string): void;
+  onRename?: (key: string) => void;
 
   /**
    * Update the title of section being renamed
    * @param key the key of section being renamed
    * @param title the new title
    */
-  updateSectionTitle?(key: string, title: string): void;
+  updateSectionTitle?: (key: string, title: string) => void;
 }
 
 export interface ISectionStyleProps {
@@ -132,7 +127,8 @@ export interface ISectionState {
 export interface ISectionStyles {
   root: IStyle;
   sectionTitle: IStyle;
-  editTitleTextField: IStyle;
+  addSectionTextField: IStyle;
+  renameSectionTextField: IStyle;
   actions: IStyle;
   actionButton: IStyle;
   actionButtonDisabled: IStyle;
@@ -228,43 +224,48 @@ export interface IEditSectionsProps {
   deleteSectionButtonProps?: IButtonProps;
 
   /**
+   * Custom styling for individual elements within the edit section DOM.
+   */
+  styles?: IStyleFunctionOrObject<{}, IEditSectionsStyles>;
+
+  /**
    * On add a new section.
    */
-  onAddSection?(title: string): void;
+  onAddSection?: (title: string) => void;
 
   /**
    * Callback to save the layout.
    */
-  onLayoutChange?(currentLayout: Layout[], allLayouts: Layouts): void;
+  onLayoutChange?: (currentLayout: Layout[], allLayouts: Layouts) => void;
 
   /**
    * Handler for deleting section
    * @param the key of section being deleted
    */
-  onDeleteSection?(key: string): void;
+  onDeleteSection?: (key: string) => void;
 
   /**
    * Handler when renaming section button is clicked
    * @param the key of section being renamed
    */
-  onRenameSectionClick?(key: string): void;
+  onRenameSectionClick?: (key: string) => void;
 
   /**
    * Handler when the title of the section in edit is updated
    * @param key the key of section being renamed
    * @param title the new title
    */
-  onUpdateSectionTitle?(key: string, title: string): void;
+  onUpdateSectionTitle?: (key: string, title: string) => void;
 
   /**
    * Callback when click on cancel button
    */
-  onCancel?(): void;
+  onCancel?: () => void;
 
   /**
    * Callback when click on save button
    */
-  onSave?(): void;
+  onSave?: () => void;
 }
 
 export interface IEditSectionsStyles {
@@ -273,5 +274,5 @@ export interface IEditSectionsStyles {
   addButton: IStyle;
   saveButton: IStyle;
   cancelButton: IStyle;
-  rightAlignedFlexContainer: IStyle;
+  topActionButtonsFlexContainer: IStyle;
 }

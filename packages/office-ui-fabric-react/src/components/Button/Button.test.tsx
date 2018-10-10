@@ -67,17 +67,13 @@ describe('Button', () => {
   });
 
   it('renders CompoundButton correctly', () => {
-    const component = renderer.create(
-      <CompoundButton secondaryText="You can create a new account here.">Create account</CompoundButton>
-    );
+    const component = renderer.create(<CompoundButton secondaryText="You can create a new account here.">Create account</CompoundButton>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders IconButton correctly', () => {
-    const component = renderer.create(
-      <IconButton iconProps={{ iconName: 'Emoji2' }} title="Emoji" ariaLabel="Emoji" />
-    );
+    const component = renderer.create(<IconButton iconProps={{ iconName: 'Emoji2' }} title="Emoji" ariaLabel="Emoji" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -130,12 +126,7 @@ describe('Button', () => {
 
       it('overrides native aria-label with Button ariaLabel', () => {
         const button: any = ReactTestUtils.renderIntoDocument<any>(
-          <DefaultButton
-            href="http://www.microsoft.com"
-            target="_blank"
-            aria-label="NativeLabel"
-            ariaLabel="ButtonLabel"
-          >
+          <DefaultButton href="http://www.microsoft.com" target="_blank" aria-label="NativeLabel" ariaLabel="ButtonLabel">
             Hello
           </DefaultButton>
         );
@@ -199,9 +190,7 @@ describe('Button', () => {
         expect(renderedDOM.getAttribute('aria-labelledby')).toEqual(renderedDOM.querySelector(`.ms-Button-label`).id);
         expect(renderedDOM.getAttribute('aria-labelledby')).toBeDefined();
 
-        expect(renderedDOM.getAttribute('aria-describedby')).toEqual(
-          renderedDOM.querySelector('.some-screenreader-class').id
-        );
+        expect(renderedDOM.getAttribute('aria-describedby')).toEqual(renderedDOM.querySelector('.some-screenreader-class').id);
         expect(renderedDOM.getAttribute('aria-describedby')).toBeDefined();
       });
 
@@ -220,9 +209,7 @@ describe('Button', () => {
         expect(renderedDOM.getAttribute('aria-labelledby')).toBeNull();
         expect(renderedDOM.getAttribute('aria-labelledby')).toBeDefined();
 
-        expect(renderedDOM.getAttribute('aria-describedby')).toEqual(
-          renderedDOM.querySelector('.some-screenreader-class').id
-        );
+        expect(renderedDOM.getAttribute('aria-describedby')).toEqual(renderedDOM.querySelector('.some-screenreader-class').id);
         expect(renderedDOM.getAttribute('aria-describedby')).toBeDefined();
       });
 
@@ -243,9 +230,7 @@ describe('Button', () => {
         expect(renderedDOM.getAttribute('aria-labelledby')).toEqual(renderedDOM.querySelector('.ms-Button-label').id);
         expect(renderedDOM.getAttribute('aria-labelledby')).toBeDefined();
 
-        expect(renderedDOM.getAttribute('aria-describedby')).toEqual(
-          renderedDOM.querySelector('.some-screenreader-class').id
-        );
+        expect(renderedDOM.getAttribute('aria-describedby')).toEqual(renderedDOM.querySelector('.some-screenreader-class').id);
         expect(renderedDOM.getAttribute('aria-describedby')).toBeDefined();
       });
 
@@ -260,9 +245,7 @@ describe('Button', () => {
         expect(renderedDOM.getAttribute('aria-labelledby')).toEqual(renderedDOM.querySelector('.ms-Button-label').id);
         expect(renderedDOM.getAttribute('aria-labelledby')).toBeDefined();
 
-        expect(renderedDOM.getAttribute('aria-describedby')).toEqual(
-          renderedDOM.querySelector('.ms-Button-description').id
-        );
+        expect(renderedDOM.getAttribute('aria-describedby')).toEqual(renderedDOM.querySelector('.ms-Button-description').id);
         expect(renderedDOM.getAttribute('aria-describedby')).toBeDefined();
       });
 
@@ -942,11 +925,7 @@ describe('Button', () => {
       ): HTMLElement {
         const menuProps = { items: [{ key: 'item', name: 'Item' }], ...menuPropsPatch };
         const element: React.ReactElement<any> = (
-          <DefaultButton
-            iconProps={{ iconName: 'Add' }}
-            text={!textAsChildElement && text ? text : undefined}
-            menuProps={menuProps}
-          >
+          <DefaultButton iconProps={{ iconName: 'Add' }} text={!textAsChildElement && text ? text : undefined} menuProps={menuProps}>
             {textAsChildElement && text ? text : null}
           </DefaultButton>
         );
@@ -976,11 +955,7 @@ describe('Button', () => {
       });
 
       it('If button has a text child, contextual menu has aria-labelledBy attribute set', () => {
-        const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement(
-          null,
-          'Button Text',
-          true
-        );
+        const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement(null, 'Button Text', true);
 
         expect(contextualMenuElement).not.toBeNull();
         expect(contextualMenuElement.getAttribute('aria-label')).toBeNull();
@@ -1007,7 +982,8 @@ describe('Button', () => {
         expect(contextualMenuElement.getAttribute('aria-labelledBy')).toBeNull();
       });
 
-      it('If button has text but labelElementId provided in menuProps, contextual menu has aria-labelledBy reflecting labelElementId', () => {
+      it(`If button has text but labelElementId provided in menuProps, contextual menu has
+      aria-labelledBy reflecting labelElementId`, () => {
         const explicitLabelElementId = 'id_ExplicitLabel';
         const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement(
           { labelElementId: explicitLabelElementId },

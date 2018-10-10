@@ -1,0 +1,10 @@
+; alias is an owner alias. Only one alias per line is accepted.
+; ; starts a comment line. It is only accepted at the beginning of a line.
+; * before an alias indicates an owner who won't be added to any pull request automatically.
+; @ before an alias indicates a non-owner who has to be added to all pull requests automatically.
+;
+; developer1
+; *developer2
+; @developer3
+
+krvander

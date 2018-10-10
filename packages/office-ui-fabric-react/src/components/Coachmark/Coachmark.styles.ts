@@ -70,6 +70,11 @@ export interface ICoachmarkStyleProps {
    * Transform origin for teaching bubble content
    */
   transformOrigin?: string;
+
+  /**
+   * Delay time for the animation to start
+   */
+  delayBeforeCoachmarkAnimation?: string;
 }
 
 export interface ICoachmarkStyles {
@@ -253,7 +258,10 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
     animationBorderWidth
   );
 
-  const ContinuousPulseAnimation = PulsingBeaconAnimationStyles.createDefaultAnimation(ContinuousPulse);
+  const ContinuousPulseAnimation = PulsingBeaconAnimationStyles.createDefaultAnimation(
+    ContinuousPulse,
+    props.delayBeforeCoachmarkAnimation
+  );
 
   return {
     root: [

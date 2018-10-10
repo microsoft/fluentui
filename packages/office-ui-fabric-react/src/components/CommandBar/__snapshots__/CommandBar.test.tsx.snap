@@ -2,13 +2,13 @@
 
 exports[`CommandBar renders commands correctly 1`] = `
 <div
-  className=
-      ms-ResizeGroup
-      TestClassName
-      {
-        display: block;
-        position: relative;
-      }
+  className="TestClassName"
+  style={
+    Object {
+      "display": "block",
+      "position": "relative",
+    }
+  }
 >
   <div
     data-automation-id="visibleContent"
@@ -139,6 +139,7 @@ exports[`CommandBar renders commands correctly 1`] = `
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseUp={[Function]}
+            role="menuitem"
             type="button"
           >
             <div
@@ -266,6 +267,7 @@ exports[`CommandBar renders commands correctly 1`] = `
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseUp={[Function]}
+            role="menuitem"
             type="button"
           >
             <div

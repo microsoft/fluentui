@@ -9,14 +9,14 @@ storiesOf('Pivot', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
-      steps={ new Screener.Steps()
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .end()
       }
     >
-      { story() }
+      {story()}
     </Screener>
-  )).add('Root', () => (
+  )).addStory('Root', () => (
     <Pivot>
       <PivotItem linkText='My Files'>
         Content
@@ -24,25 +24,25 @@ storiesOf('Pivot', module)
       <PivotItem linkText='Recent' />
       <PivotItem linkText='Shared with me' />
     </Pivot>
-  )).add('Count and icon', () => (
+  )).addStory('Count and icon', () => (
     <Pivot>
-      <PivotItem linkText='My Files' itemCount={ 42 } itemIcon='Emoji2'>
+      <PivotItem linkText='My Files' itemCount={42} itemIcon='Emoji2'>
         Content
       </PivotItem>
-      <PivotItem itemCount={ 23 } itemIcon='Recent' />
+      <PivotItem itemCount={23} itemIcon='Recent' />
       <PivotItem itemIcon='Globe' />
-      <PivotItem linkText='Shared with me' itemIcon='Ringer' itemCount={ 1 } />
+      <PivotItem linkText='Shared with me' itemIcon='Ringer' itemCount={1} />
     </Pivot>
-  )).add('Large', () => (
-    <Pivot linkSize={ PivotLinkSize.large }>
+  ), { rtl: true }).addStory('Large', () => (
+    <Pivot linkSize={PivotLinkSize.large}>
       <PivotItem linkText='My Files'>
         Content
           </PivotItem>
       <PivotItem linkText='Recent' />
       <PivotItem linkText='Shared with me' />
     </Pivot>
-  )).add('Tabs', () => (
-    <Pivot linkFormat={ PivotLinkFormat.tabs }>
+  )).addStory('Tabs', () => (
+    <Pivot linkFormat={PivotLinkFormat.tabs}>
       <PivotItem linkText='Foo'>
         Content
           </PivotItem>
@@ -50,8 +50,8 @@ storiesOf('Pivot', module)
       <PivotItem linkText='Bas' />
       <PivotItem linkText='Biz' />
     </Pivot>
-  )).add('Tabs large', () => (
-    <Pivot linkFormat={ PivotLinkFormat.tabs } linkSize={ PivotLinkSize.large }>
+  ), { rtl: true }).addStory('Tabs large', () => (
+    <Pivot linkFormat={PivotLinkFormat.tabs} linkSize={PivotLinkSize.large}>
       <PivotItem linkText='Foo'>
         Content
           </PivotItem>

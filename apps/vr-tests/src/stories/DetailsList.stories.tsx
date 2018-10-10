@@ -130,7 +130,7 @@ storiesOf('DetailsList', module)
       {story()}
     </Screener>
   ))
-  .add('Root', () => (
+  .addStory('Root', () => (
     <DetailsList
       items={items}
       compact={false}
@@ -139,7 +139,7 @@ storiesOf('DetailsList', module)
       isHeaderVisible={true}
     />
   ))
-  .add('Compact', () => (
+  .addStory('Compact', () => (
     <DetailsList
       items={items}
       compact
@@ -148,7 +148,7 @@ storiesOf('DetailsList', module)
       isHeaderVisible={true}
     />
   ))
-  .add('Grouped', () => (
+  .addStory('Grouped', () => (
     <DetailsList
       items={items}
       groups={groups}
@@ -157,7 +157,7 @@ storiesOf('DetailsList', module)
       isHeaderVisible={true}
     />
   ))
-  .add('Grouped with Checkbox Hidden', () => (
+  .addStory('Grouped with Checkbox Hidden', () => (
     <DetailsList
       items={items}
       groups={groups}
@@ -167,7 +167,7 @@ storiesOf('DetailsList', module)
       isHeaderVisible={true}
     />
   ))
-  .add('Checkbox Visible Always', () => (
+  .addStory('Checkbox Visible Always', () => (
     <DetailsList
       items={items}
       columns={columns}
@@ -175,4 +175,4 @@ storiesOf('DetailsList', module)
       checkboxVisibility={CheckboxVisibility.always}
       isHeaderVisible={true}
     />
-  ));
+  ), { rtl: true });

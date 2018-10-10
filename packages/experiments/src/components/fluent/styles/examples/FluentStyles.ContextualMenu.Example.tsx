@@ -10,7 +10,7 @@ export class FluentStylesContextualMenuExample extends React.Component<{}, {}> {
     return (
       <div>
         <DefaultButton
-          id="ContextualMenuButton1"
+          id="FluentStylesContextualMenuExample"
           text="Click for ContextualMenu"
           menuProps={{
             shouldFocusOnMount: true,

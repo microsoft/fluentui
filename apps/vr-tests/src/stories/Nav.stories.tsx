@@ -11,7 +11,7 @@ storiesOf('Nav', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
-      steps={ new Screener.Steps()
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Nav-compositeLink')
         .snapshot('hover', { cropTo: '.testWrapper' })
@@ -21,12 +21,12 @@ storiesOf('Nav', module)
         .end()
       }
     >
-      { story() }
+      {story()}
     </Screener>
   ))
-  .add('Root', () => (
+  .addStory('Root', () => (
     // tslint:disable-next-line:jsx-ban-props
-    <div style={ { width: '208px' } }>
+    <div style={{ width: '208px' }}>
       <Nav
         groups={
           [
@@ -63,9 +63,9 @@ storiesOf('Nav', module)
             }
           ]
         }
-        expandedStateText={ 'expanded' }
-        collapsedStateText={ 'collapsed' }
-        selectedKey={ 'key3' }
+        expandedStateText={'expanded'}
+        collapsedStateText={'collapsed'}
+        selectedKey={'key3'}
       />
     </div>
-  ));
+  ), { rtl: true });

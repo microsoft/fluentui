@@ -103,6 +103,7 @@ exports[`Component Examples renders SearchBox.Small.Example.tsx correctly 1`] = 
             margin-left: 0px;
             margin-right: 0px;
             margin-top: 0px;
+            min-width: 0px;
             outline: none;
             overflow: hidden;
             padding-bottom: 0.5px;

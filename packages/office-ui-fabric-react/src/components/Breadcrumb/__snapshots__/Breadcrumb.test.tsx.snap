@@ -2,12 +2,12 @@
 
 exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
 <div
-  className=
-      ms-ResizeGroup
-      {
-        display: block;
-        position: relative;
-      }
+  style={
+    Object {
+      "display": "block",
+      "position": "relative",
+    }
+  }
 >
   <div
     data-automation-id="visibleContent"
@@ -349,12 +349,12 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
 
 exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
 <div
-  className=
-      ms-ResizeGroup
-      {
-        display: block;
-        position: relative;
-      }
+  style={
+    Object {
+      "display": "block",
+      "position": "relative",
+    }
+  }
 >
   <div
     data-automation-id="visibleContent"
@@ -716,12 +716,12 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
 
 exports[`Breadcrumb basic rendering renders breadcumb correctly 3 1`] = `
 <div
-  className=
-      ms-ResizeGroup
-      {
-        display: block;
-        position: relative;
-      }
+  style={
+    Object {
+      "display": "block",
+      "position": "relative",
+    }
+  }
 >
   <div
     data-automation-id="visibleContent"
@@ -982,12 +982,12 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 3 1`] = `
 
 exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
 <div
-  className=
-      ms-ResizeGroup
-      {
-        display: block;
-        position: relative;
-      }
+  style={
+    Object {
+      "display": "block",
+      "position": "relative",
+    }
+  }
 >
   <div
     data-automation-id="visibleContent"
@@ -1349,12 +1349,12 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
 
 exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
 <div
-  className=
-      ms-ResizeGroup
-      {
-        display: block;
-        position: relative;
-      }
+  style={
+    Object {
+      "display": "block",
+      "position": "relative",
+    }
+  }
 >
   <div
     data-automation-id="visibleContent"
@@ -1637,12 +1637,12 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
 
 exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
 <div
-  className=
-      ms-ResizeGroup
-      {
-        display: block;
-        position: relative;
-      }
+  style={
+    Object {
+      "display": "block",
+      "position": "relative",
+    }
+  }
 >
   <div
     data-automation-id="visibleContent"
@@ -1846,12 +1846,12 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
 
 exports[`Breadcrumb renders empty breadcrumb 1`] = `
 <div
-  className=
-      ms-ResizeGroup
-      {
-        display: block;
-        position: relative;
-      }
+  style={
+    Object {
+      "display": "block",
+      "position": "relative",
+    }
+  }
 >
   <div
     data-automation-id="visibleContent"

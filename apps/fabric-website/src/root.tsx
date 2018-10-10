@@ -1,19 +1,23 @@
-require('es6-promise').polyfill();
-/* tslint:disable:no-unused-variable */
-import * as React from 'react';
-/* tslint:enable:no-unused-variable */
-import * as ReactDOM from 'react-dom';
-import { App } from './components/App/App';
-import { AppState } from './components/App/AppState';
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import { Route, Router } from 'office-ui-fabric-react/lib/utilities/router/index';
-import { setBaseUrl } from 'office-ui-fabric-react/lib/Utilities';
-import { HomePage } from './pages/HomePage/HomePage';
-import WindowWidthUtility from './utilities/WindowWidthUtility';
 import './styles/styles.scss';
-import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
+import './version';
 import 'whatwg-fetch';
 
+import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
+import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
+import { setBaseUrl } from 'office-ui-fabric-react/lib/Utilities';
+import { Route, Router } from 'office-ui-fabric-react/lib/utilities/router/index';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+
+import { App } from './components/App/App';
+import { AppState } from './components/App/AppState';
+import FluentMessageBar from './components/FluentMessageBar/FluentMessageBar';
+import { HomePage } from './pages/HomePage/HomePage';
+import WindowWidthUtility from './utilities/WindowWidthUtility';
+
+require('es6-promise').polyfill();
+/* tslint:disable:no-unused-variable */
+/* tslint:enable:no-unused-variable */
 const corePackageData = require('../node_modules/office-ui-fabric-core/package.json');
 const corePackageVersion: string = (corePackageData && corePackageData.version) || '9.2.0';
 
@@ -80,6 +84,7 @@ function _onLoad(): void {
 
   ReactDOM.render(
     <Fabric>
+      <FluentMessageBar />
       <Router onNewRouteLoaded={_routerDidMount}>
         <Route component={App}>{_getAppRoutes()}</Route>
       </Router>
@@ -137,8 +142,4 @@ function addCSSToHeader(fileName: string): void {
   headEl.appendChild(linkEl);
 }
 
-addCSSToHeader(
-  'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/' +
-    corePackageVersion +
-    '/css/fabric.min.css'
-);
+addCSSToHeader('https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/' + corePackageVersion + '/css/fabric.min.css');

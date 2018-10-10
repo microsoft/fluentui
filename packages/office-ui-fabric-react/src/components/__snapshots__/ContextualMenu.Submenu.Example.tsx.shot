@@ -27,6 +27,29 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
           ms-TextField-wrapper
 
     >
+      <label
+        className=
+            ms-Label
+            {
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #333333;
+              display: block;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              overflow-wrap: break-word;
+              padding-bottom: 5px;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 5px;
+              word-wrap: break-word;
+            }
+        htmlFor="TextField0"
+      >
+        Hover delay (ms)
+      </label>
       <div
         className=
             ms-TextField-fieldGroup

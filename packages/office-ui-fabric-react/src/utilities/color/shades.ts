@@ -6,7 +6,8 @@ import { IHSV, IColor, MAX_COLOR_RGBA } from './colors';
 import * as Colors from './colors';
 import { assign } from '../../Utilities';
 
-// Soften: to get closer to the background color's luminance (softening with a white background would be lightening, with black it'd be darkening)
+// Soften: to get closer to the background color's luminance
+// (softening with a white background would be lightening, with black it'd be darkening)
 // Strongen: opposite of soften
 
 // Luminance multiplier constants for generating shades of a given color

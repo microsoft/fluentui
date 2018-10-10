@@ -50,6 +50,7 @@ export class NavBasicExample extends React.Component<any, any> {
           expandedStateText={'expanded'}
           collapsedStateText={'collapsed'}
           selectedKey={'key3'}
+          expandButtonAriaLabel={'Expand or collapse'}
         />
       </div>
     );

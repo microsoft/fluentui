@@ -6,6 +6,8 @@ import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
 import Todo from './components/Todo';
 import DataProvider from './DataProvider';
 
+import './version';
+
 let _rootDiv: HTMLElement;
 let _dataProvider = new DataProvider();
 

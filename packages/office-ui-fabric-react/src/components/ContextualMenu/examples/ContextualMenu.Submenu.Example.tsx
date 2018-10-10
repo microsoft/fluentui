@@ -19,7 +19,7 @@ export class ContextualMenuSubmenuExample extends React.Component<any, IContextu
   public render(): JSX.Element {
     return (
       <div>
-        <TextField value={String(this.state.hoverDelay)} onChange={this._onHoverDelayChanged} />
+        <TextField value={String(this.state.hoverDelay)} label="Hover delay (ms)" onChange={this._onHoverDelayChanged} />
         <DefaultButton
           id="ContextualMenuButton2"
           text="Click for ContextualMenu"

@@ -17,13 +17,7 @@ const filesChangedSinceLastRun = gitDiffOutput
 
 const prettierPath = path.resolve(__dirname, './node_modules/prettier/bin-prettier.js');
 const prettierIgnorePath = path.resolve(path.join(__dirname, '..', '.prettierignore'));
-const prettierConfigPath = path.join(
-  __dirname,
-  '..',
-  'packages',
-  'office-ui-fabric-react-tslint',
-  'prettier.config.js'
-);
+const prettierConfigPath = path.join(__dirname, '..', 'packages', 'prettier-rules', 'prettier.config.js');
 
 function runPrettierForFiles(filePaths) {
   if (filePaths.length === 0) {

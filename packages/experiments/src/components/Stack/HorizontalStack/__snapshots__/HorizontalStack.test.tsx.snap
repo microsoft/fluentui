@@ -278,10 +278,9 @@ exports[`HorizontalStack renders wrapped HorizontalStack correctly 1`] = `
   className=
       ms-HorizontalStack
       {
-        display: block;
+        display: inline-block;
         height: auto;
         overflow: visible;
-        padding-top: 1px;
         width: auto;
       }
 >
@@ -297,7 +296,8 @@ exports[`HorizontalStack renders wrapped HorizontalStack correctly 1`] = `
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
-          margin-top: calc(0px - 1px);
+          margin-top: 0px;
+          max-width: 100vw;
           overflow: visible;
           width: auto;
         }
@@ -306,7 +306,7 @@ exports[`HorizontalStack renders wrapped HorizontalStack correctly 1`] = `
           margin-left: 0px;
           margin-right: 0px;
           margin-top: 0px;
-          max-width: calc(100% - 0px);
+          max-width: 100%;
           text-overflow: ellipsis;
           white-space: nowrap;
         }

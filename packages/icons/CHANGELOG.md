@@ -1,6 +1,20 @@
 # Change Log - @uifabric/icons
 
-This log was last generated on Wed, 22 Aug 2018 05:10:19 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Oct 2018 12:24:15 GMT and should not be manually modified.
+
+## 6.1.2
+Mon, 08 Oct 2018 12:24:15 GMT
+
+### Patches
+
+- Moving tslint/prettier dependencies 
+
+## 6.1.1
+Fri, 21 Sep 2018 14:25:46 GMT
+
+### Patches
+
+- Adding a version stamp file
 
 ## 6.1.0
 Wed, 22 Aug 2018 05:10:19 GMT

@@ -232,6 +232,7 @@ exports[`TextField renders TextField multiline resizable correctly 1`] = `
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
+              min-height: inherit;
               min-width: 0px;
               outline: 0px;
               overflow: auto;
@@ -368,6 +369,7 @@ exports[`TextField renders TextField multiline unresizable correctly 1`] = `
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
+              min-height: inherit;
               min-width: 0px;
               outline: 0px;
               overflow: auto;

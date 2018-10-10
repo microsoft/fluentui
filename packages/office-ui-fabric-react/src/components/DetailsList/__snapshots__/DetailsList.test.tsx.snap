@@ -45,11 +45,16 @@ exports[`DetailsList renders List correctly 1`] = `
               ms-FocusZone
               ms-DetailsHeader
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 background: #ffffff;
                 border-bottom: 1px solid #eaeaea;
                 box-sizing: content-box;
                 cursor: default;
                 display: inline-block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
                 height: 32px;
                 line-height: 32px;
                 min-width: 100%;
@@ -85,16 +90,11 @@ exports[`DetailsList renders List correctly 1`] = `
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   align-items: center;
                   border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-flex;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
                   height: 32px;
                   line-height: inherit;
                   margin-bottom: 0px;
@@ -294,15 +294,10 @@ exports[`DetailsList renders List correctly 1`] = `
                 ms-DetailsHeader-cell
                 is-actionable
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
                   height: 32px;
                   line-height: inherit;
                   margin-bottom: 0;
@@ -608,11 +603,16 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
               ms-FocusZone
               ms-DetailsHeader
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 background: #ffffff;
                 border-bottom: 1px solid #eaeaea;
                 box-sizing: content-box;
                 cursor: default;
                 display: inline-block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
                 height: 32px;
                 line-height: 32px;
                 min-width: 100%;
@@ -648,16 +648,11 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   align-items: center;
                   border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-flex;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
                   height: 32px;
                   line-height: inherit;
                   margin-bottom: 0px;
@@ -857,15 +852,10 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                 ms-DetailsHeader-cell
                 is-actionable
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
                   height: 32px;
                   line-height: inherit;
                   margin-bottom: 0;
@@ -1013,15 +1003,10 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                 ms-DetailsHeader-cell
                 is-actionable
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
                   height: 32px;
                   line-height: inherit;
                   margin-bottom: 0;
@@ -1169,15 +1154,10 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                 ms-DetailsHeader-cell
                 is-actionable
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
                   height: 32px;
                   line-height: inherit;
                   margin-bottom: 0;
@@ -1325,15 +1305,10 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                 ms-DetailsHeader-cell
                 is-actionable
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
                   height: 32px;
                   line-height: inherit;
                   margin-bottom: 0;
@@ -1481,15 +1456,10 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                 ms-DetailsHeader-cell
                 is-actionable
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
                   height: 32px;
                   line-height: inherit;
                   margin-bottom: 0;
@@ -1763,11 +1733,16 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
               ms-FocusZone
               ms-DetailsHeader
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 background: #ffffff;
                 border-bottom: 1px solid #eaeaea;
                 box-sizing: content-box;
                 cursor: default;
                 display: inline-block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
                 height: 32px;
                 line-height: 32px;
                 min-width: 100%;
@@ -1803,16 +1778,11 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   align-items: center;
                   border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-flex;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
                   height: 32px;
                   line-height: inherit;
                   margin-bottom: 0px;
@@ -2012,15 +1982,10 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                 ms-DetailsHeader-cell
                 is-actionable
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
                   height: 32px;
                   line-height: inherit;
                   margin-bottom: 0;
@@ -2327,11 +2292,16 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
               ms-FocusZone
               ms-DetailsHeader
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 background: #ffffff;
                 border-bottom: 1px solid #eaeaea;
                 box-sizing: content-box;
                 cursor: default;
                 display: inline-block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
                 height: 32px;
                 line-height: 32px;
                 min-width: 100%;
@@ -2367,16 +2337,11 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   align-items: center;
                   border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-flex;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
                   height: 32px;
                   line-height: inherit;
                   margin-bottom: 0px;
@@ -2576,15 +2541,10 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                 ms-DetailsHeader-cell
                 is-actionable
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
                   height: 32px;
                   line-height: inherit;
                   margin-bottom: 0;
@@ -2765,15 +2725,10 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                 ms-DetailsHeader-cell
                 is-actionable
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
                   height: 32px;
                   line-height: inherit;
                   margin-bottom: 0;
@@ -2954,15 +2909,10 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                 ms-DetailsHeader-cell
                 is-actionable
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
                   height: 32px;
                   line-height: inherit;
                   margin-bottom: 0;
@@ -3268,11 +3218,16 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
               ms-FocusZone
               ms-DetailsHeader
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 background: #ffffff;
                 border-bottom: 1px solid #eaeaea;
                 box-sizing: content-box;
                 cursor: default;
                 display: inline-block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
                 height: 32px;
                 line-height: 32px;
                 min-width: 100%;
@@ -3308,16 +3263,11 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   align-items: center;
                   border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-flex;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
                   height: 32px;
                   line-height: inherit;
                   margin-bottom: 0px;
@@ -3517,15 +3467,10 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                 ms-DetailsHeader-cell
                 is-actionable
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
                   height: 32px;
                   line-height: inherit;
                   margin-bottom: 0;
@@ -3676,15 +3621,10 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                 ms-DetailsHeader-cell
                 is-actionable
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
                   height: 32px;
                   line-height: inherit;
                   margin-bottom: 0;
@@ -3835,15 +3775,10 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                 ms-DetailsHeader-cell
                 is-actionable
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
                   height: 32px;
                   line-height: inherit;
                   margin-bottom: 0;
@@ -3994,15 +3929,10 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                 ms-DetailsHeader-cell
                 is-actionable
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
                   height: 32px;
                   line-height: inherit;
                   margin-bottom: 0;
@@ -4153,15 +4083,10 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                 ms-DetailsHeader-cell
                 is-actionable
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
                   height: 32px;
                   line-height: inherit;
                   margin-bottom: 0;
@@ -4437,11 +4362,16 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
               ms-FocusZone
               ms-DetailsHeader
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 background: #ffffff;
                 border-bottom: 1px solid #eaeaea;
                 box-sizing: content-box;
                 cursor: default;
                 display: inline-block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
                 height: 32px;
                 line-height: 32px;
                 min-width: 100%;
@@ -4474,15 +4404,10 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
             className=
                 ms-DetailsHeader-cell
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
                   height: 32px;
                   line-height: inherit;
                   margin-bottom: 0;
@@ -4551,15 +4476,10 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                 ms-DetailsHeader-cell
                 is-actionable
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
                   height: 32px;
                   line-height: inherit;
                   margin-bottom: 0;
@@ -4868,7 +4788,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               className=
                                   ms-GroupHeader-dropIcon
                                   {
-                                    color: #767676;
+                                    color: #666666;
                                     font-size: 20px;
                                     left: -26px;
                                     opacity: 0;
@@ -5023,7 +4943,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         background: #ffffff;
                                         border-bottom: 1px solid #f4f4f4;
                                         box-sizing: border-box;
-                                        color: #767676;
+                                        color: #666666;
                                         cursor: default;
                                         display: inline-flex;
                                         min-height: 42px;
@@ -5058,7 +4978,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       }
                                       &:hover {
                                         background: #f4f4f4;
-                                        color: #666666;
                                       }
                                       &:hover $check {
                                         opacity: 1;
@@ -5212,7 +5131,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         background: #ffffff;
                                         border-bottom: 1px solid #f4f4f4;
                                         box-sizing: border-box;
-                                        color: #767676;
+                                        color: #666666;
                                         cursor: default;
                                         display: inline-flex;
                                         min-height: 42px;
@@ -5247,7 +5166,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       }
                                       &:hover {
                                         background: #f4f4f4;
-                                        color: #666666;
                                       }
                                       &:hover $check {
                                         opacity: 1;
@@ -5466,7 +5384,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               className=
                                   ms-GroupHeader-dropIcon
                                   {
-                                    color: #767676;
+                                    color: #666666;
                                     font-size: 20px;
                                     left: -26px;
                                     opacity: 0;
@@ -5621,7 +5539,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         background: #ffffff;
                                         border-bottom: 1px solid #f4f4f4;
                                         box-sizing: border-box;
-                                        color: #767676;
+                                        color: #666666;
                                         cursor: default;
                                         display: inline-flex;
                                         min-height: 42px;
@@ -5656,7 +5574,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       }
                                       &:hover {
                                         background: #f4f4f4;
-                                        color: #666666;
                                       }
                                       &:hover $check {
                                         opacity: 1;
@@ -5810,7 +5727,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         background: #ffffff;
                                         border-bottom: 1px solid #f4f4f4;
                                         box-sizing: border-box;
-                                        color: #767676;
+                                        color: #666666;
                                         cursor: default;
                                         display: inline-flex;
                                         min-height: 42px;
@@ -5845,7 +5762,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       }
                                       &:hover {
                                         background: #f4f4f4;
-                                        color: #666666;
                                       }
                                       &:hover $check {
                                         opacity: 1;
@@ -5999,7 +5915,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         background: #ffffff;
                                         border-bottom: 1px solid #f4f4f4;
                                         box-sizing: border-box;
-                                        color: #767676;
+                                        color: #666666;
                                         cursor: default;
                                         display: inline-flex;
                                         min-height: 42px;
@@ -6034,7 +5950,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       }
                                       &:hover {
                                         background: #f4f4f4;
-                                        color: #666666;
                                       }
                                       &:hover $check {
                                         opacity: 1;

@@ -9,42 +9,42 @@ storiesOf('Rating', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
-      steps={ new Screener.Steps()
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .click('button.ms-Rating-button:nth-of-type(2)')
         .snapshot('click', { cropTo: '.testWrapper' })
         .end()
       }
     >
-      { story() }
+      {story()}
     </Screener>
-  )).add('Root', () => (
+  )).addStory('Root', () => (
     <Rating
-      min={ 1 }
-      max={ 5 }
+      min={1}
+      max={5}
     />
-  )).add('Rated', () => (
+  )).addStory('Rated', () => (
     <Rating
-      min={ 1 }
-      max={ 5 }
-      rating={ 2 }
+      min={1}
+      max={5}
+      rating={2}
     />
-  )).add('Allow Zero', () => (
+  ), { rtl: true }).addStory('Allow Zero', () => (
     <Rating
-      allowZeroStars={ true }
-      max={ 5 }
-      rating={ 0 }
+      allowZeroStars={true}
+      max={5}
+      rating={0}
     />
-  )).add('Large', () => (
+  )).addStory('Large', () => (
     <Rating
-      min={ 1 }
-      max={ 5 }
-      size={ RatingSize.Large }
+      min={1}
+      max={5}
+      size={RatingSize.Large}
     />
-  )).add('Disabled', () => (
+  )).addStory('Disabled', () => (
     <Rating
-      min={ 1 }
-      max={ 5 }
+      min={1}
+      max={5}
       disabled
     />
   ));
