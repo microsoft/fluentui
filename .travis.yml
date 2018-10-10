@@ -4,7 +4,7 @@ node_js:
 script:
   - node common/scripts/install-run-rush.js install --bypass-policy
   - if [ $TRAVIS_BRANCH == "master" ] && [ $TRAVIS_PULL_REQUEST != "false" ];
-    then npm run checkchange;
+    then git fetch origin 5.0;npm run checkchange;
     fi
   - npm run buildci
   - npm run bundlesize
