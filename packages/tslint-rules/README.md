@@ -7,7 +7,7 @@ This project contains the baseline standard tslint rules for UI Fabric projects.
 ### Install Dependencies
 We are using the [tslint-microsoft-contrib](https://github.com/Microsoft/tslint-microsoft-contrib) with additional rules. The following packages are needed.
 ```
-yarn add -D tslint tslint-react tslint-microsoft-contrib
+yarn add -D tslint tslint-react tslint-microsoft-contrib
 ```
 
 ### NPM Setup
@@ -16,7 +16,7 @@ For manual lint, add the following under scripts within `package.json`, and just
 ```json
 {
   "scripts": {
-    "lint": "tslint --project tsconfig.json --config tslint.json -t stylish -r node_modules/tslint-microsoft-contrib"
+    "lint": "tslint --project tsconfig.json --config tslint.json -t stylish -r node_modules/tslint-microsoft-contrib"
   }
 }
 ```
@@ -26,36 +26,36 @@ Using Visual Studio Code, the following settings will make the codebase more con
 
 ```json
 {
-  "editor.tabSize": 2,
-  "editor.detectIndentation": false,
-  "files.trimTrailingWhitespace": true,
-  "editor.renderWhitespace": "all",
-  "editor.insertSpaces": true,
-  "files.exclude": {
-    "**/.git": true,
-    "**/.DS_Store": true,
-    "**/coverage": true
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "files.trimTrailingWhitespace": true,
+  "editor.renderWhitespace": "all",
+  "editor.insertSpaces": true,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/coverage": true
   },
-  "files.watcherExclude": {
-    "**/.git": true,
-    "**/node_modules": true,
-    "**/dist": true,
-    "**/coverage": true
+  "files.watcherExclude": {
+    "**/.git": true,
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/coverage": true
   },
-  "search.exclude": {
-    "common": true,
-    "**/node_modules": true,
-    "**/dist": true
-   },
-  "editor.wordWrap": "wordWrapColumn",
-  "editor.wordWrapColumn": 140,
-  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": false,
-  "editor.formatOnSave": true,
-  "typescript.tsdk": "./node_modules/typescript/lib",
-  "tslint.enable": true,
-  "tslint.rulesDirectory": "./node_modules/tslint-microsoft-contrib",
-  "tslint.autoFixOnSave": false,
-  "tslint.alwaysShowStatus": true,
+  "search.exclude": {
+    "common": true,
+    "**/node_modules": true,
+    "**/dist": true
+  },
+  "editor.wordWrap": "wordWrapColumn",
+  "editor.wordWrapColumn": 140,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": false,
+  "editor.formatOnSave": true,
+  "typescript.tsdk": "./node_modules/typescript/lib",
+  "tslint.enable": true,
+  "tslint.rulesDirectory": "./node_modules/tslint-microsoft-contrib",
+  "tslint.autoFixOnSave": false,
+  "tslint.alwaysShowStatus": true,
   "tslint.config": "./tslint.json"
 }
 ```
@@ -64,10 +64,10 @@ Using Visual Studio Code, the following settings will make the codebase more con
 The project should have a valid `tslint.json` which looks like the following. Rules could be overidden if included in the `rules` section.
 ```json
 {
- "extends": [
- "@uifabric/tslint-rules"
- ],
- "rules": {}
+  "extends": [
+    "@uifabric/tslint-rules"
+  ],
+  "rules": {}
 }
 ```
 
@@ -79,20 +79,19 @@ You can use [tslint-webpack-plugin](https://github.com/jrparish/tslint-webpack-p
 ```js
 var webpackConfig = {
   plugins: [
-    new TSLintPlugin({
-      files: ['./src/**/*.ts', './src/**/*.tsx'],
-      emitErrors: true,
-      config: './tslint.json',
-      project: './tsconfig.json',
-      format: 'stylish',
-      rulesDirectory: './node_modules/tslint-microsoft-contrib'
-    })
+    new TSLintPlugin({
+      files: ['./src/**/*.ts', './src/**/*.tsx'],
+      emitErrors: true,
+      config: './tslint.json',
+      project: './tsconfig.json',
+      format: 'stylish',
+      rulesDirectory: './node_modules/tslint-microsoft-contrib'
+    })
   ]
 }
 ```
 
 Or you can use [tslint-loader](https://github.com/wbuchwalter/tslint-loader)
-
 
 ```js
 var webpackConfig = {
@@ -108,7 +107,7 @@ var webpackConfig = {
               emitErrors: true,
               tsConfigFile: 'tsconfig.json',
               configFile: './tslint.json',
-              rulesDirectory: './node_modules/tslint-microsoft-contrib'
+              rulesDirectory: './node_modules/tslint-microsoft-contrib'
             }
           }
         ]
