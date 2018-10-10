@@ -5,8 +5,6 @@ export type Diff<T extends keyof any, U extends keyof any> = ({ [P in T]: P } & 
 
 export type Omit<U, K extends keyof U> = Pick<U, Diff<keyof U, K>>;
 
-export type __ReduceToFunction<T> = T extends (...args: any[]) => any ? T : never;
-
 /**
  * Helper function whose role is supposed to express that regardless if T is a style object or style function,
  * it will always map to a style function.
