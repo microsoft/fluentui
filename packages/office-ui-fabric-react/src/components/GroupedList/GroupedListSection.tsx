@@ -114,6 +114,9 @@ export interface IGroupedListSectionProps extends React.Props<GroupedListSection
    * The default implementation will virtualize when this callback is not provided.
    */
   onShouldVirtualize?: (props: IListProps) => boolean;
+
+  /** Stores group's sibling count. */
+  siblingCount?: number;
 }
 
 export interface IGroupedListSectionState {
@@ -186,7 +189,8 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       onRenderGroupHeader = this._onRenderGroupHeader,
       onRenderGroupShowAll = this._onRenderGroupShowAll,
       onRenderGroupFooter = this._onRenderGroupFooter,
-      onShouldVirtualize
+      onShouldVirtualize,
+      siblingCount
     } = this.props;
     const { isSelected } = this.state;
     const renderCount = group && getGroupItemLimit ? getGroupItemLimit(group) : Infinity;
@@ -200,7 +204,8 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       groupLevel: group ? group.level : 0,
       isSelected,
       viewport: viewport,
-      selectionMode: selectionMode
+      selectionMode: selectionMode,
+      siblingCount: siblingCount
     };
     const groupHeaderProps: IGroupDividerProps = assign({}, headerProps, dividerProps);
     const groupShowAllProps: IGroupDividerProps = assign({}, showAllProps, dividerProps);
@@ -343,8 +348,10 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       onRenderGroupHeader,
       onRenderGroupShowAll,
       onRenderGroupFooter,
-      onShouldVirtualize
+      onShouldVirtualize,
+      group
     } = this.props;
+    const siblingCount = group ? (group.children && group.children.length > -1 ? group.children.length - 1 : 0) : undefined;
 
     return (!subGroup || subGroup.count > 0) ? (
       <GroupedListSection
@@ -370,6 +377,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
         onRenderGroupShowAll={ onRenderGroupShowAll }
         onRenderGroupFooter={ onRenderGroupFooter }
         onShouldVirtualize={ onShouldVirtualize }
+        siblingCount={ siblingCount }
       />
     ) : null;
   }
