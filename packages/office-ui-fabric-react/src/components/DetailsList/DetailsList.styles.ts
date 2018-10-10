@@ -17,7 +17,7 @@ export const getStyles = (props: IDetailsListStyleProps): IDetailsListStyles => 
   return {
     root: [
       classNames.root,
-      theme.fonts.medium,
+      theme.fonts.small,
       {
         position: 'relative',
         fontSize: FontSizes.small,
