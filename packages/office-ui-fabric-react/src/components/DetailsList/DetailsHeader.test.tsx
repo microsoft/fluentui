@@ -12,7 +12,7 @@ const _columns: IColumn[] = [
   { key: 'a', name: 'a', fieldName: 'a', minWidth: 200, maxWidth: 400, calculatedWidth: 200, isResizable: true },
   { key: 'b', name: 'b', fieldName: 'a', minWidth: 200, maxWidth: 400, calculatedWidth: 200, isResizable: true }
 ];
-const _columnReorderOptions = {
+const _columnReorderProps = {
   frozenColumnCountFromStart: 1,
   handleColumnReorder: this._dummyFunction
 };
@@ -24,10 +24,10 @@ describe('DetailsHeader', () => {
   it('can render', () => {
     const component = renderer.create(
       <DetailsHeader
-        selection={_selection}
-        selectionMode={SelectionMode.multiple}
-        layoutMode={DetailsListLayoutMode.fixedColumns}
-        columns={_columns}
+        selection={ _selection }
+        selectionMode={ SelectionMode.multiple }
+        layoutMode={ DetailsListLayoutMode.fixedColumns }
+        columns={ _columns }
       />
     );
     expect(component.toJSON()).toMatchSnapshot();
@@ -45,13 +45,13 @@ describe('DetailsHeader', () => {
 
     const wrapper = mount(
       <DetailsHeader
-        componentRef={headerRef}
-        selection={_selection}
-        selectionMode={SelectionMode.multiple}
-        layoutMode={DetailsListLayoutMode.fixedColumns}
-        columns={_columns}
-        onColumnResized={onColumnResized}
-        columnReorderOptions={_columnReorderOptions}
+        componentRef={ headerRef }
+        selection={ _selection }
+        selectionMode={ SelectionMode.multiple }
+        layoutMode={ DetailsListLayoutMode.fixedColumns }
+        columns={ _columns }
+        onColumnResized={ onColumnResized }
+        columnReorderProps={ _columnReorderProps }
       />
     );
 

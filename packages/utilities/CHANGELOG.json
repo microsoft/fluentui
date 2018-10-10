@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.34.2",
+      "tag": "@uifabric/utilities_v5.34.2",
+      "date": "Wed, 03 Oct 2018 11:23:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Nick Durak <nickdurak@gmail.com>",
+            "commit": "038724b414db80b123703a79304d12389e8f8599",
+            "comment": "Add defaultRender to IComponentAs and add IComponentProps"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.34.1",
       "tag": "@uifabric/utilities_v5.34.1",
       "date": "Wed, 11 Jul 2018 13:26:02 GMT",

@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 01 Oct 2018 11:24:38 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Oct 2018 11:23:10 GMT and should not be manually modified.
+
+## 5.128.1
+Mon, 08 Oct 2018 11:23:10 GMT
+
+### Patches
+
+- Backporting changes from 6.0
+
+## 5.128.0
+Wed, 03 Oct 2018 11:23:42 GMT
+
+### Minor changes
+
+- Bring support for commandBarButtonAs to v5
 
 ## 5.127.0
 Mon, 01 Oct 2018 11:24:38 GMT
