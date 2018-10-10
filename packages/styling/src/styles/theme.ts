@@ -180,7 +180,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     disabledBodyText: p.neutralTertiaryAlt,
     disabledSubtext: p.neutralQuaternary,
 
-    focusBorder: p.black,
+    focusBorder: p.neutralSecondary,
     variantBorder: p.neutralLight,
     variantBorderHovered: p.neutralTertiary,
     defaultStateBackground: p.neutralLight,

@@ -2,6 +2,30 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.7.5",
+      "tag": "@uifabric/example-app-base_v6.7.5",
+      "date": "Wed, 10 Oct 2018 12:29:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ExampleCard: Replace Fabric Core classes with mixins",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "b2482883e5cdcfaf337427b756e0f87741d63f74"
+          },
+          {
+            "comment": "ExampleCard: Adds utility classes for spacing within examples",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "2ce7b14306b2a61b4c252676ff16c33d97c48d47"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.82.0 <7.0.0` to `>=6.83.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.7.4",
       "tag": "@uifabric/example-app-base_v6.7.4",
       "date": "Mon, 08 Oct 2018 12:24:15 GMT",

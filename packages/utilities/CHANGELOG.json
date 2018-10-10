@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.22.0",
+      "tag": "@uifabric/utilities_v6.22.0",
+      "date": "Wed, 10 Oct 2018 12:29:05 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add utilities.api.ts, update files to fix api-extractor errors",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "ab236eaebd256f37f03b7d2943e983a149023e81"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.21.2",
       "tag": "@uifabric/utilities_v6.21.2",
       "date": "Mon, 08 Oct 2018 12:24:15 GMT",

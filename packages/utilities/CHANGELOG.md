@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Mon, 08 Oct 2018 12:24:15 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Oct 2018 12:29:05 GMT and should not be manually modified.
+
+## 6.22.0
+Wed, 10 Oct 2018 12:29:05 GMT
+
+### Minor changes
+
+- Add utilities.api.ts, update files to fix api-extractor errors
 
 ## 6.21.2
 Mon, 08 Oct 2018 12:24:15 GMT

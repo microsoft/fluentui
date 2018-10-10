@@ -55,6 +55,9 @@ export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleP
       opacity: shouldHighlight ? '' : '0.1',
       cursor: href ? 'pointer' : 'default'
     },
+     legendContainer: {
+      marginTop: '5px'
+     },
     noData: {
       cursor: href ? 'pointer' : 'default'
     }

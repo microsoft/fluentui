@@ -21,7 +21,8 @@ import {
   getNativeProps,
   mergeAriaAttributeValues,
   classNamesFunction,
-  IStyleFunctionOrObject
+  IStyleFunctionOrObject,
+  getDocument
 } from '../../Utilities';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
@@ -439,7 +440,6 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     const { onRenderItem = this._onRenderItem } = this.props;
 
     const id = this._id;
-    const { selectedIndices = [] } = this.state;
 
     return (
       <div
@@ -452,7 +452,6 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
         <FocusZone
           ref={this._focusZone}
           direction={FocusZoneDirection.vertical}
-          defaultActiveElement={selectedIndices[0] !== undefined ? `#${id}-list${selectedIndices[0]}` : undefined}
           id={id + '-list'}
           className={this._classNames.dropdownItems}
           aria-labelledby={id + '-label'}
@@ -570,7 +569,17 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     if (this._focusZone.current) {
       // Focusing an element can trigger a reflow. Making this wait until there is an animation
       // frame can improve perf significantly.
-      this._async.requestAnimationFrame(() => this._focusZone.current!.focus());
+      this._async.requestAnimationFrame(() => {
+        const selectedIndices = this.state.selectedIndices;
+        if (selectedIndices && selectedIndices[0] && !this.props.options[selectedIndices[0]].disabled) {
+          const element: HTMLElement = getDocument()!.querySelector(
+            `#${this._id}-list${selectedIndices[0]}`
+          ) as HTMLElement;
+          this._focusZone.current!.focusElement(element);
+        } else {
+          this._focusZone.current!.focus();
+        }
+      });
     }
 
     if (!this.state.calloutRenderEdge || this.state.calloutRenderEdge !== positions!.targetEdge) {
