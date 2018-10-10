@@ -4,8 +4,7 @@
  * Usage:
  *
  * const AsyncDialog = asAsync({
- *   load: () => import('Dialog'),
- *   exportName: 'Dialog', // defaults to 'default'
+ *   load: () => import('Dialog').then(result => result.default),
  *   placeholder: () => <div>I am a placeholder</div>
  * });
  *
@@ -18,12 +17,7 @@ export interface IAsAsyncOptions<TProps> {
   /**
    * Callback which returns a promise resolving an object which exports the component.
    */
-  load: () => Promise<{ [key: string]: React.ReactType<TProps> }>;
-
-  /**
-   * The exportName to resolve from the result, defaults to "default".
-   */
-  exportName?: string;
+  load: () => Promise<React.ReactType<TProps>>;
 
   /**
    * An optional JSX rendering for placeholder content.
@@ -49,7 +43,7 @@ export interface IAsAsyncOptions<TProps> {
 const _syncModuleCache =
   typeof WeakMap !== 'undefined'
     ? // tslint:disable-next-line:no-any
-      new WeakMap<() => Promise<{ [key: string]: React.ReactType<any> }>, React.ReactType<any> | undefined>()
+      new WeakMap<() => Promise<React.ReactType<any>>, React.ReactType<any> | undefined>()
     : undefined;
 
 /**
@@ -78,17 +72,15 @@ export function asAsync<TProps>(options: IAsAsyncOptions<TProps>): React.Compone
       if (!Component) {
         options
           .load()
-          .then((result: { [key: string]: React.ReactType<TProps> }) => {
-            Component = result[options.exportName || 'default'];
-
-            if (Component) {
+          .then((LoadedComponent: React.ReactType<TProps>) => {
+            if (LoadedComponent) {
               // Cache component for future reference.
-              _syncModuleCache && _syncModuleCache.set(options.load, Component);
+              _syncModuleCache && _syncModuleCache.set(options.load, LoadedComponent);
 
               // Set state.
               this.setState(
                 {
-                  Component
+                  Component: LoadedComponent
                 },
                 options.onLoad
               );
