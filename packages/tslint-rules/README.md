@@ -5,7 +5,13 @@ This project contains the baseline standard tslint rules for UI Fabric projects.
 ## Using tslint-rules
 
 ### Install Dependencies
-We are using the [tslint-microsoft-contrib](https://github.com/Microsoft/tslint-microsoft-contrib) with additional rules.
+We are using the [tslint-microsoft-contrib](https://github.com/Microsoft/tslint-microsoft-contrib) with additional tslint rules.
+
+```
+npm install --save-dev tslint tslint-react tslint-microsoft-contrib
+```
+
+or
 
 ```
 yarn add -D tslint tslint-react tslint-microsoft-contrib
