@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { Dropdown, DropdownMenuItemType } from 'office-ui-fabric-react/lib/Dropdown';
 
+// tslint:disable-next-line:no-any
+const style = require('./FluentStyles.Example.scss') as any;
+
 export class FluentStylesDropdownExample extends React.Component<{}, {}> {
   constructor(props: {}) {
     super(props);
@@ -8,7 +11,7 @@ export class FluentStylesDropdownExample extends React.Component<{}, {}> {
 
   public render(): JSX.Element {
     return (
-      <div className="docs-DropdownExample">
+      <div className={style.sidebyside}>
         <Dropdown
           label="Basic"
           placeHolder="Select an Option"
