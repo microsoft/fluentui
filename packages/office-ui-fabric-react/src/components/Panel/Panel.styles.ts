@@ -103,6 +103,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
   const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
   const isCustomPanel = type === PanelType.custom;
+  const windowHeight = typeof window !== 'undefined' ? window.innerHeight : '100%';
 
   return {
     root: [
@@ -236,6 +237,24 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
           ]
         }
       },
+      {
+        display: 'flex',
+        flexDirection: 'column',
+        maxHeight: '100%',
+        selectors: {
+          ['@supports (-webkit-overflow-scrolling: touch)']: {
+            maxHeight: windowHeight
+          }
+        }
+      },
+      isFooterAtBottom && {
+        height: '100%',
+        selectors: {
+          ['@supports (-webkit-overflow-scrolling: touch)']: {
+            height: windowHeight
+          }
+        }
+      },
       isOpen && isAnimating && !isOnRightSide && AnimationClassNames.slideRightIn40,
       isOpen && isAnimating && isOnRightSide && AnimationClassNames.slideLeftIn40,
       !isOpen && isAnimating && !isOnRightSide && AnimationClassNames.slideLeftOut40,
@@ -243,29 +262,6 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       focusTrapZoneClassName
     ],
     commands: [classNames.commands],
-    contentInner: [
-      classNames.contentInner,
-      {
-        display: 'flex',
-        flexDirection: 'column',
-        minHeight: '100%',
-        WebkitOverflowScrolling: 'touch',
-        /* Force hw accelleration on scrollable region */
-        transform: 'translateZ(0)'
-      },
-      hasCloseButton && {
-        top: commandBarHeight,
-        minHeight: `calc(100% - ${commandBarHeight})`
-      }
-    ],
-    scrollableContent: [
-      classNames.scrollableContent,
-      {
-        height: '100%',
-        overflowY: 'auto',
-        flexGrow: 1
-      }
-    ],
     navigation: [
       classNames.navigation,
       {
@@ -276,6 +272,27 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       }
     ],
     closeButton: [classNames.closeButton],
+    contentInner: [
+      classNames.contentInner,
+      {
+        display: 'flex',
+        flexDirection: 'column',
+        maxHeight: '100%',
+        selectors: {
+          ['@supports (-webkit-overflow-scrolling: touch)']: {
+            maxHeight: windowHeight
+          }
+        }
+      },
+      isFooterAtBottom && {
+        height: '100%',
+        selectors: {
+          ['@supports (-webkit-overflow-scrolling: touch)']: {
+            height: windowHeight
+          }
+        }
+      }
+    ],
     header: [
       classNames.header,
       sharedPaddingStyles,
@@ -300,13 +317,24 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       },
       headerClassName
     ],
+    scrollableContent: [
+      classNames.scrollableContent,
+      {
+        overflowY: 'auto',
+        height: '100%',
+        selectors: {
+          ['@supports (-webkit-overflow-scrolling: touch)']: {
+            height: windowHeight
+          }
+        }
+      }
+    ],
     content: [
       classNames.content,
       sharedPaddingStyles,
       {
         marginBottom: 0,
-        paddingBottom: '20px',
-        overflowY: 'auto'
+        paddingBottom: 20
       },
       isFooterAtBottom && {
         flexGrow: 1

@@ -1,6 +1,14 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Mon, 08 Oct 2018 12:24:15 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Oct 2018 12:29:05 GMT and should not be manually modified.
+
+## 6.7.5
+Wed, 10 Oct 2018 12:29:05 GMT
+
+### Patches
+
+- ExampleCard: Replace Fabric Core classes with mixins
+- ExampleCard: Adds utility classes for spacing within examples
 
 ## 6.7.4
 Mon, 08 Oct 2018 12:24:15 GMT

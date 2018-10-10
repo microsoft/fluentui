@@ -1,6 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Mon, 08 Oct 2018 12:24:15 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Oct 2018 12:29:05 GMT and should not be manually modified.
+
+## 0.24.2
+Wed, 10 Oct 2018 12:29:05 GMT
+
+### Patches
+
+- css changes in charts for meeting the figma design
 
 ## 0.24.1
 Mon, 08 Oct 2018 12:24:15 GMT

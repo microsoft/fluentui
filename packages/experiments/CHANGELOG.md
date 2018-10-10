@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 08 Oct 2018 19:25:44 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Oct 2018 12:29:05 GMT and should not be manually modified.
+
+## 6.37.0
+Wed, 10 Oct 2018 12:29:05 GMT
+
+### Minor changes
+
+- Separator: change text size and add theming example
 
 ## 6.36.1
 Mon, 08 Oct 2018 19:25:44 GMT

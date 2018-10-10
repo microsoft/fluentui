@@ -20,7 +20,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
         >
           <div
             className="ms-DatePicker-dayPicker"
-            id="DatePickerDay-dayPicker10"
+            id="DatePickerDay-dayPicker1"
           >
             <div
               className="ms-DatePicker-header"
@@ -29,7 +29,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                 aria-atomic="true"
                 aria-live="polite"
                 aria-relevant="text"
-                id="DatePickerDay-monthAndYear11"
+                id="DatePickerDay-monthAndYear2"
               >
                 <div
                   className="ms-DatePicker-monthAndYear"
@@ -44,7 +44,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   className="ms-DatePicker-navContainer"
                 >
                   <button
-                    aria-controls="DatePickerDay-dayPicker10"
+                    aria-controls="DatePickerDay-dayPicker1"
                     aria-disabled={false}
                     className="ms-DatePicker-prevMonth js-prevMonth"
                     disabled={false}
@@ -72,7 +72,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </i>
                   </button>
                   <button
-                    aria-controls="DatePickerDay-dayPicker10"
+                    aria-controls="DatePickerDay-dayPicker1"
                     aria-disabled={false}
                     className="ms-DatePicker-nextMonth js-nextMonth"
                     disabled={false}
@@ -104,15 +104,15 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
             </div>
             <div
               className="ms-FocusZone"
-              data-focuszone-id="FocusZone12"
+              data-focuszone-id="FocusZone3"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
               role="presentation"
             >
               <table
-                aria-activedescendant="DatePickerDay-active9"
-                aria-labelledby="DatePickerDay-monthAndYear11"
+                aria-activedescendant="DatePickerDay-active0"
+                aria-labelledby="DatePickerDay-monthAndYear2"
                 aria-multiselectable="false"
                 aria-readonly="true"
                 className="ms-DatePicker-table"
@@ -242,7 +242,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         className="ms-DatePicker-day-button"
                         data-is-focusable={true}
                         disabled={false}
-                        id="DatePickerDay-active9"
+                        id="DatePickerDay-active0"
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
@@ -1046,7 +1046,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
             </div>
             <div
               className="ms-FocusZone"
-              data-focuszone-id="FocusZone13"
+              data-focuszone-id="FocusZone4"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}

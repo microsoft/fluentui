@@ -12,7 +12,7 @@ export interface IDatePicker {
   reset(): void;
 }
 
-export interface IDatePickerProps extends IBaseProps<IDatePicker> {
+export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAttributes<HTMLElement> {
   /**
    * Optional callback to access the IDatePicker interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

@@ -2,6 +2,31 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.37.0",
+      "tag": "@uifabric/experiments_v6.37.0",
+      "date": "Wed, 10 Oct 2018 12:29:05 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Separator: change text size and add theming example",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "c8572bc8f9e819a179cf40d2ff65c6080ec4bd40"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.24.1` to `^0.24.2`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.82.0 <7.0.0` to `>=6.83.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.7.4 <7.0.0` to `>=6.7.5 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.36.1",
       "tag": "@uifabric/experiments_v6.36.1",
       "date": "Mon, 08 Oct 2018 19:25:44 GMT",
