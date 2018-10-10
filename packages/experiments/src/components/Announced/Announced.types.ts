@@ -6,7 +6,8 @@ export interface IAnnounced {}
 
 export interface IAnnouncedProps extends React.Props<Announced> {
   /**
-   * All props for your component are to be defined here.
+   * Optional callback to access the IAnnounced interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
    */
   componentRef?: (component: IAnnounced) => void;
 
@@ -30,7 +31,7 @@ export interface IAnnouncedStyles {
 
 export interface IAnnouncedStyleProps {
   /**
-   * Root html container for this component.
+   * Root html container for Announced.
    */
   root?: string;
 }

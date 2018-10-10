@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 
 import { AnnouncedBasicExample } from './examples/Announced.Basic.Example';
-const AnnouncedBasicExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Separator/examples/Announced.Basic.Example.tsx') as string;
+const AnnouncedBasicExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Announced/examples/Announced.Basic.Example.tsx') as string;
 
 export class AnnouncedPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
