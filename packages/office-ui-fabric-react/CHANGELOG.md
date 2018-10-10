@@ -1,6 +1,29 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 08 Oct 2018 12:24:16 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Oct 2018 12:26:48 GMT and should not be manually modified.
+
+## 6.82.0
+Tue, 09 Oct 2018 12:26:48 GMT
+
+### Minor changes
+
+- Nav: Add custom group header renderer property
+
+### Patches
+
+- DocumentCard, Pivot, GroupHeader - replace instances of neutralSecondaryAlt with neutralSecondary
+- DocumentCardTitle: Fixes an infinite loop condition caused by componentDidUpdate calling _srinkTitle() over and over again due to setState being triggered every time without a stop condition.
+
+## 6.81.0
+Mon, 08 Oct 2018 19:25:44 GMT
+
+### Minor changes
+
+- Links that wrap aren't getting the proper focus rect. Added a conditional selector that changes the  outline and removed the getFocusStyles call  to fix this. This is for Links that are anchors. Links that are buttons do not wrap at the moment. Once Links that are buttons wrap we can address their focus rect issues if there are any.
+
+### Patches
+
+- TextField can no longer be resized to below its minimum height
 
 ## 6.80.0
 Mon, 08 Oct 2018 12:24:16 GMT
