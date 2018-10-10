@@ -16,7 +16,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 400;
             user-select: none;
           }
@@ -248,7 +248,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 400;
             user-select: none;
           }
@@ -447,7 +447,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 400;
             user-select: none;
           }
@@ -686,7 +686,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 12px;
+              font-size: 14px;
               font-weight: 400;
               margin-right: 8px;
               user-select: none;
@@ -940,7 +940,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 12px;
+              font-size: 14px;
               font-weight: 400;
               margin-right: 8px;
               user-select: none;
@@ -1161,7 +1161,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 12px;
+              font-size: 14px;
               font-weight: 400;
               margin-right: 8px;
               user-select: none;
