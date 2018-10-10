@@ -588,11 +588,13 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
       // frame can improve perf significantly.
       this._async.requestAnimationFrame(() => {
         const selectedIndices = this.state.selectedIndices;
-        if (selectedIndices && selectedIndices[0]) {
+        if (selectedIndices && selectedIndices[0] && !this.props.options[selectedIndices[0]].disabled) {
           const element: HTMLElement = getDocument()!.querySelector(
             `#${this._id}-list${selectedIndices[0]}`
           ) as HTMLElement;
           this._focusZone.current!.focusElement(element);
+        } else {
+          this._focusZone.current!.focus();
         }
       });
     }
