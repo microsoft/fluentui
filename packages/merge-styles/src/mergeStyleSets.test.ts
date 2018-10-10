@@ -296,11 +296,11 @@ describe('mergeStyleSets', () => {
       });
 
       // NOTE: The following test should be enabled when Fabric is upgraded to Typescript 3.
-      it.skip('IStyleSet/IProcessedStyleSet should work with legacy sub components that only take IStyleFunctions', () => {
+      it('IStyleSet/IProcessedStyleSet should work with legacy sub components that only take IStyleFunctions', () => {
         const classNames = mergeStyleSets<IStylesWithStyleObjectAsSubCommponent>(getStyles2());
 
         // NOTE: The following line should be uncommented when Fabric is upgraded to Typescript 3.
-        // LegacySubComponent({ styles: classNames.subComponentStyles.button({ isCollapsed: false }) });
+        LegacySubComponent({ styles: classNames.subComponentStyles.button({ isCollapsed: false }) });
 
         // this test primarily tests that the lines above do not result in a Typescript error.
         expect.assertions(0);

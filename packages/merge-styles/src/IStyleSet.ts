@@ -11,12 +11,9 @@ export type __ReduceToFunction<T> = T extends (...args: any[]) => any ? T : neve
  * Helper function whose role is supposed to express that regardless if T is a style object or style function,
  * it will always map to a style function.
  *
- * Note: the commmented segment is the right expression but it is buggy in 2.8.2. Once Fabric upgrades to Typescript 3,
- *  we should uncomment the commented segmment below as well as uncomment the test in mergeStyleSets.test.ts.
- *
- * See https://github.com/OfficeDev/office-ui-fabric-react/issues/6124.
+ * @author [Nimelrian](https://github.com/Nimelrian) in https://github.com/OfficeDev/office-ui-fabric-react/issues/6615
  */
-export type __MapToFunctionType<T> = /*[T] extends [IStyleSet<any>] ? (...args: any[]) => T :*/ __ReduceToFunction<T>;
+export type __MapToFunctionType<T> = Extract<T, Function> extends never ? (...args: any[]) => Partial<T> : Extract<T, Function>;
 
 /**
  * A style set is a dictionary of display areas to IStyle objects.
