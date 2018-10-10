@@ -19,6 +19,46 @@ export interface IProptertiesTableState {
   groups: IGroup[] | undefined;
 }
 
+const renderCell = (text: string) => {
+  // When the text is passed to this function, it has had newline characters removed,
+  // so this regex will match backtick sequences that span multiple lines.
+  const regex = new RegExp('`[^`]*`', 'g');
+  let regexResult: RegExpExecArray | null;
+  let codeBlocks: { index: number; text: string }[] = [];
+  while ((regexResult = regex.exec(text)) !== null) {
+    codeBlocks.push({
+      index: regexResult.index,
+      text: regexResult[0]
+    });
+  }
+
+  if (codeBlocks.length === 0) {
+    return <span>{text}</span>;
+  }
+
+  const eltChildren: JSX.Element[] = [];
+
+  let codeIndex = 0;
+  let textIndex = 0;
+  while (textIndex < text.length && codeIndex < codeBlocks.length) {
+    const codeBlock = codeBlocks[codeIndex];
+    if (textIndex < codeBlock.index) {
+      const str = text.substring(textIndex, codeBlock.index);
+      eltChildren.push(<span key={textIndex}>{str}</span>);
+      textIndex += str.length;
+    } else {
+      eltChildren.push(<code key={textIndex}>{codeBlock.text.substring(1, codeBlock.text.length - 1)}</code>);
+      codeIndex++;
+      textIndex += codeBlock.text.length;
+    }
+  }
+  if (textIndex < text.length) {
+    eltChildren.push(<span key={textIndex}>{text.substring(textIndex, text.length)}</span>);
+  }
+
+  return <span>{eltChildren}</span>;
+};
+
 const DEFAULT_COLUMNS: IColumn[] = [
   {
     key: 'name',
@@ -28,7 +68,8 @@ const DEFAULT_COLUMNS: IColumn[] = [
     maxWidth: 250,
     isCollapsable: false,
     isRowHeader: true,
-    isResizable: true
+    isResizable: true,
+    onRender: (item: IInterfaceProperty) => renderCell(item.name)
   },
   {
     key: 'type',
@@ -38,7 +79,8 @@ const DEFAULT_COLUMNS: IColumn[] = [
     maxWidth: 150,
     isCollapsable: false,
     isResizable: true,
-    isMultiline: true
+    isMultiline: true,
+    onRender: (item: IInterfaceProperty) => renderCell(item.type)
   },
   {
     key: 'defaultValue',
@@ -48,7 +90,8 @@ const DEFAULT_COLUMNS: IColumn[] = [
     maxWidth: 150,
     isCollapsable: false,
     isResizable: true,
-    isMultiline: true
+    isMultiline: true,
+    onRender: (item: IInterfaceProperty) => renderCell(item.defaultValue)
   },
   {
     key: 'description',
@@ -58,7 +101,8 @@ const DEFAULT_COLUMNS: IColumn[] = [
     maxWidth: 400,
     isCollapsable: false,
     isResizable: true,
-    isMultiline: true
+    isMultiline: true,
+    onRender: (item: IInterfaceProperty) => renderCell(item.description)
   }
 ];
 
@@ -71,7 +115,8 @@ const ENUM_COLUMNS: IColumn[] = [
     maxWidth: 250,
     isCollapsable: false,
     isRowHeader: true,
-    isResizable: true
+    isResizable: true,
+    onRender: (item: IEnumProperty) => renderCell(item.name)
   },
   {
     key: 'description',
@@ -80,7 +125,8 @@ const ENUM_COLUMNS: IColumn[] = [
     minWidth: 300,
     maxWidth: 400,
     isCollapsable: false,
-    isResizable: true
+    isResizable: true,
+    onRender: (item: IEnumProperty) => renderCell(item.description)
   }
 ];
 
