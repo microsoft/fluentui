@@ -3,7 +3,7 @@
     {
       "packageName": "@uifabric/experiments",
       "comment": "Fluent: updates the styles of Dropdown and CheckBox to follow fluent specs.",
-      "type": "patch"
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/experiments",
