@@ -88,7 +88,7 @@ export interface ICalendarProps extends IBaseProps<ICalendar>, React.HTMLAttribu
 
   /**
    * This property has been removed at 0.80.0 in place of the focus method, to be removed @ 1.0.0.
-   * @deprecated
+   * @deprecated Replaced with the focus method.
    */
   shouldFocusOnMount?: boolean;
 
@@ -237,19 +237,19 @@ export interface ICalendarStrings {
 export interface ICalendarIconStrings {
   /**
    * FabricMDL2Icons name for the left navigation icon.  Previous default: ChevronLeft.
-   * @defaultvalue  'Up'
+   * @defaultvalue 'Up'
    */
   leftNavigation?: string;
 
   /**
    * FabricMDL2Icons name for the right navigation icon.  Previous default: ChevronRight.
-   * @defaultvalue  'Down'
+   * @defaultvalue 'Down'
    */
   rightNavigation?: string;
 
   /**
    * Close icon
-   * @defaultvalue  'CalculatorMultiply'
+   * @defaultvalue 'CalculatorMultiply'
    */
   closeIcon?: string;
 }
