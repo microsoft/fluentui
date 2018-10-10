@@ -5,7 +5,8 @@ This project contains the baseline standard tslint rules for UI Fabric projects.
 ## Using tslint-rules
 
 ### Install Dependencies
-We are using the [tslint-microsoft-contrib](https://github.com/Microsoft/tslint-microsoft-contrib) with additional rules. The following packages are needed.
+We are using the [tslint-microsoft-contrib](https://github.com/Microsoft/tslint-microsoft-contrib) with additional rules.
+
 ```
 yarn add -D tslint tslint-react tslint-microsoft-contrib
 ```
@@ -22,7 +23,7 @@ For manual lint, add the following under scripts within `package.json`, and just
 ```
 
 ### VSCode Setup
-Using Visual Studio Code, the following settings will make the codebase more consistent. Add workspace settings to the following location `.vscode/settings.json`, the tslint rules are defined at the end.
+Using Visual Studio Code, make sure [TSLint](https://marketplace.visualstudio.com/items?itemName=eg2.tslint) Extension is installed from VSCode, and update the projects workspace settings, located `.vscode/settings.json`
 
 ```json
 {
