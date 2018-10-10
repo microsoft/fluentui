@@ -288,6 +288,9 @@ export interface IGroupDividerProps {
 
   /** Props for expand/collapse button */
   expandButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
+
+  /** Stores group's sibling count. */
+  siblingCount?: number;
 }
 
 export type IGroupedListStyleProps = Required<Pick<IGroupedListProps, 'theme'>> &

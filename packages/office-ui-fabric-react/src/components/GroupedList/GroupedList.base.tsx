@@ -1,12 +1,6 @@
 import * as React from 'react';
 import { BaseComponent, IRectangle, assign, createRef, classNamesFunction, IClassNames } from '../../Utilities';
-import {
-  IGroupedList,
-  IGroupedListProps,
-  IGroup,
-  IGroupedListStyleProps,
-  IGroupedListStyles
-} from './GroupedList.types';
+import { IGroupedList, IGroupedListProps, IGroup, IGroupedListStyleProps, IGroupedListStyles } from './GroupedList.types';
 import { GroupedListSection } from './GroupedListSection';
 import { List, ScrollToMode } from '../../List';
 import { SelectionMode } from '../../utilities/selection/index';
@@ -84,12 +78,7 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
     });
 
     return (
-      <div
-        className={this._classNames.root}
-        data-automationid="GroupedList"
-        data-is-scrollable="false"
-        role="presentation"
-      >
+      <div className={this._classNames.root} data-automationid="GroupedList" data-is-scrollable="false" role="presentation">
         {!groups ? (
           this._renderGroup(null, 0)
         ) : (
@@ -145,9 +134,10 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
       selectionMode,
       selection,
       viewport,
-      onShouldVirtualize
+      onShouldVirtualize,
+      groups
     } = this.props;
-
+    const siblingCount = groups ? (groups.length > -1 ? groups.length - 1 : 0) : undefined;
     // override group header/footer props as needed
     const dividerProps = {
       onToggleSelectGroup: this._onToggleSelectGroup,
@@ -190,6 +180,7 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
         viewport={viewport}
         onShouldVirtualize={onShouldVirtualize}
         groupedListClassNames={this._classNames}
+        siblingCount={siblingCount}
       />
     );
   };
@@ -294,10 +285,7 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
   };
 
   private _computeIsSomeGroupExpanded(groups: IGroup[] | undefined): boolean {
-    return !!(
-      groups &&
-      groups.some(group => (group.children ? this._computeIsSomeGroupExpanded(group.children) : !group.isCollapsed))
-    );
+    return !!(groups && groups.some(group => (group.children ? this._computeIsSomeGroupExpanded(group.children) : !group.isCollapsed)));
   }
 
   private _updateIsSomeGroupExpanded(): void {
