@@ -19,11 +19,11 @@
     "start": "cd packages && cd office-ui-fabric-react && npm start",
     "build": "npm run _rushRebuild",
     "buildfast": "npm run _rushBuild",
-    "change": "node node_modules/@microsoft/rush/bin/rush change -b 5.0",
+    "change": "node node_modules/@microsoft/rush/bin/rush change -b origin/5.0",
     "generate": "node node_modules/@microsoft/rush/bin/rush generate --force",
     "bundlesize": "cd scripts && npm run bundlesize",
     "create-component": "node scripts/create-component.js",
-    "checkchange": "node node_modules/@microsoft/rush/bin/rush change -v -b 5.0",
+    "checkchange": "node node_modules/@microsoft/rush/bin/rush change -v -b origin/5.0",
     "update-snapshots": "cd packages/office-ui-fabric-react && npm run update-snapshots"
   },
   "license": "MIT",
