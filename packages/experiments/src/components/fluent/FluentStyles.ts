@@ -1,4 +1,4 @@
-import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
+import { FontWeights, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { NeutralColors, CommunicationColors } from './FluentColors';
 import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
@@ -6,6 +6,7 @@ import { FontSizes } from './FluentType';
 import { Depths } from './FluentDepths';
 import { IDropdownStyleProps } from 'office-ui-fabric-react/lib/Dropdown';
 import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
+import { ICheckboxStyleProps, ICheckboxStyles } from 'office-ui-fabric-react/lib/Checkbox';
 
 const fluentBorderRadius = '2px';
 
@@ -22,10 +23,56 @@ const BreadcrumbStyles = {
   }
 };
 
-const CheckboxStyles = {
-  checkbox: {
-    borderRadius: fluentBorderRadius
-  }
+const CheckboxStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
+  const { disabled, checked } = props;
+
+  return {
+    checkbox: [
+      {
+        borderRadius: fluentBorderRadius,
+        borderColor: NeutralColors.gray160
+      },
+      !disabled &&
+        checked && {
+          borderColor: CommunicationColors.primary
+        },
+      disabled && {
+        borderColor: NeutralColors.gray60
+      },
+      checked &&
+        disabled && {
+          background: NeutralColors.gray60,
+          borderColor: NeutralColors.gray60
+        }
+    ],
+    checkmark: {
+      color: NeutralColors.white
+    },
+    text: {
+      color: disabled ? NeutralColors.gray60 : NeutralColors.gray160
+    },
+    root: [
+      !disabled && [
+        !checked && {
+          selectors: {
+            ':hover .ms-Checkbox-text': { color: NeutralColors.gray190 }
+          }
+        },
+        checked && {
+          selectors: {
+            ':hover .ms-Checkbox-checkbox': {
+              background: CommunicationColors.shade20,
+              borderColor: CommunicationColors.shade20
+            },
+            ':focus .ms-Checkbox-checkbox': {
+              background: CommunicationColors.shade20,
+              borderColor: CommunicationColors.shade20
+            }
+          }
+        }
+      ]
+    ]
+  };
 };
 
 const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOptionStyles => {
@@ -131,15 +178,40 @@ const DialogFooterStyles = {
 const DropdownStyles = (props: IDropdownStyleProps) => {
   const { disabled, hasError, theme, isOpen, calloutRenderEdge } = props;
   const { semanticColors } = theme!;
+  const ITEM_HEIGHT = '36px';
 
   const titleOpenBorderRadius =
     calloutRenderEdge === RectangleEdge.bottom
       ? `${fluentBorderRadius} ${fluentBorderRadius} 0 0`
       : `0 0 ${fluentBorderRadius} ${fluentBorderRadius}`;
+
   const calloutOpenBorderRadius =
     calloutRenderEdge === RectangleEdge.bottom
       ? `0 0 ${fluentBorderRadius} ${fluentBorderRadius}`
       : `${fluentBorderRadius} ${fluentBorderRadius} 0 0`;
+
+  const commonItemStyles: IStyle = {
+    minHeight: ITEM_HEIGHT,
+    lineHeight: '19px',
+    padding: '0 8px'
+  };
+
+  const itemSelectors = (isSelected: boolean = false): IStyle => {
+    return {
+      selectors: {
+        '&:hover': {
+          color: NeutralColors.gray190
+        },
+        '&:focus': {
+          backgroundColor: !isSelected ? NeutralColors.gray20 : NeutralColors.gray30
+        },
+        '&:active': {
+          color: NeutralColors.gray190,
+          backgroundColor: !isSelected ? NeutralColors.gray20 : NeutralColors.gray30
+        }
+      }
+    };
+  };
 
   return {
     dropdown: [
@@ -196,8 +268,30 @@ const DropdownStyles = (props: IDropdownStyleProps) => {
       borderRadius: calloutOpenBorderRadius,
       boxShadow: Depths.depth8,
       selectors: {
-        ['.ms-Callout-main']: { borderRadius: `0 0 ${fluentBorderRadius} ${fluentBorderRadius}` }
+        ['.ms-Callout-main']: { borderRadius: calloutOpenBorderRadius }
       }
+    },
+    dropdownItemHeader: {
+      padding: '0 8px',
+      height: ITEM_HEIGHT,
+      lineHeight: ITEM_HEIGHT
+    },
+    dropdownItem: [commonItemStyles, itemSelectors()],
+    dropdownItemSelected: [
+      {
+        backgroundColor: NeutralColors.gray30,
+        color: NeutralColors.gray190
+      },
+      commonItemStyles,
+      itemSelectors(true)
+    ],
+    dropdownItemDisabled: {
+      ...commonItemStyles,
+      color: NeutralColors.gray60
+    },
+    dropdownItemSelectedAndDisabled: {
+      ...commonItemStyles,
+      color: NeutralColors.gray60
     }
   };
 };
