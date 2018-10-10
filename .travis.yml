@@ -2,6 +2,7 @@ language: node_js
 node_js:
   - "8"
 script:
+  - git fetch origin 5.0
   - if [ $TRAVIS_BRANCH == "5.0" ] && [ $TRAVIS_PULL_REQUEST != "false" ];
     then npm run checkchange;
     fi
