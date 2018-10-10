@@ -2,6 +2,67 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.83.0",
+      "tag": "office-ui-fabric-react_v6.83.0",
+      "date": "Wed, 10 Oct 2018 12:29:05 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "DatePicker and Calendar: allowing native div props to be forwarded to container div.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "63f0aadc591bc29a4c68b645b7665a0bde41a670"
+          },
+          {
+            "comment": "Keytip: Fix TS 3.1 error by extending IBaseProps.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "e80a9196b724fed2959f85202374712ad3587110"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Facepile: fix precedence order for style and className props",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "d73f984f1f4d92e7784580e0c2060a5ed3f7078d"
+          },
+          {
+            "comment": "Added default font theme for Slider control to remove Fabric component dependency.",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "9a8582f4ec5fce1b1c54d4ffc0894bb6c3f447ba"
+          },
+          {
+            "comment": "Make ChoiceGroup's role configurable with default \"application\" for JAWS support.",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "61df85ee04eff5886930bfb122ed628321b18239"
+          },
+          {
+            "comment": "KeyTip: Adds space around examples to improve readability",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "2ce7b14306b2a61b4c252676ff16c33d97c48d47"
+          },
+          {
+            "comment": "Nav: add aria-label and aria-expanded to groups",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "e05c5f7e6a6ab411ad10bc8497400ddb72163c15"
+          },
+          {
+            "comment": "Panel: make scrollableContent the only scrollable div",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "b05be1c419a679f4f35763872636d22634db1703"
+          },
+          {
+            "comment": "TagPicker textbox is in the wrong position - middle instead of bottom. Added an align style to fix this.",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "e1232693b6a902def94fa71f2512dfcbbd082b4d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.21.2 <7.0.0` to `>=6.22.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.82.0",
       "tag": "office-ui-fabric-react_v6.82.0",
       "date": "Tue, 09 Oct 2018 12:26:48 GMT",
