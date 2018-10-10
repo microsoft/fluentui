@@ -108,6 +108,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
   return {
     root: [
       classNames.root,
+      theme.fonts.medium,
       isOpen && classNames.isOpen,
       hasCloseButton && classNames.hasCloseButton,
       {

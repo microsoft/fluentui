@@ -1,6 +1,24 @@
 // @codepen
 import * as React from 'react';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { createTheme, loadTheme } from '@uifabric/styling';
+
+const theme2 = createTheme({
+  palette: {
+    themePrimary: 'green'
+  },
+  fonts: {
+    small: {
+      fontFamily: 'Courier New'
+    },
+    medium: {
+      fontFamily: 'Courier New',
+      fontSize: 20
+    }
+  }
+});
+
+loadTheme(theme2);
 
 export interface ICheckboxBasicExampleState {
   isChecked: boolean;

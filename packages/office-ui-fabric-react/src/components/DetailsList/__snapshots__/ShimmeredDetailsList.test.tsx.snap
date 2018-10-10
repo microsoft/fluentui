@@ -15,10 +15,14 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
         ms-DetailsList
         is-horizontalConstrained
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
           background: #ffffff;
           color: #333333;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
+          font-weight: 400;
           overflow-x: auto;
           overflow-y: visible;
           position: relative;
@@ -146,6 +150,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                       opacity: 1;
                     }
                     {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
                       align-items: center;
                       background-color: transparent;
                       background: none;
@@ -153,6 +159,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                       box-sizing: border-box;
                       cursor: default;
                       display: flex;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
                       height: 32px;
                       justify-content: center;
                       margin-bottom: 0px;
@@ -197,6 +206,11 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                   className=
                       ms-Check
                       {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 14px;
+                        font-weight: 400;
                         height: 18px;
                         line-height: 1;
                         position: relative;
@@ -323,6 +337,13 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
             <div
               className=
                   ms-List
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                  }
                   &:after {
                     background-image: linear-gradient(to bottom, transparent 30%, rgba(255,255,255,.4) 65%,#ffffff 100%);
                     bottom: 0px;
@@ -363,6 +384,11 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                         className=
                             ms-Shimmer-container
                             {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 14px;
+                              font-weight: 400;
                               height: auto;
                               position: relative;
                             }
@@ -413,9 +439,14 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                               className=
                                   ms-ShimmerElementsGroup-root
                                   {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
                                     align-items: center;
                                     display: flex;
                                     flex-wrap: nowrap;
+                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                    font-size: 14px;
+                                    font-weight: 400;
                                   }
                               style={
                                 Object {
@@ -427,6 +458,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 className=
                                     ms-ShimmerGap-root
                                     {
+                                      -moz-osx-font-smoothing: grayscale;
+                                      -webkit-font-smoothing: antialiased;
                                       background-color: #ffffff;
                                       border-bottom-style: solid;
                                       border-bottom-width: 0px;
@@ -434,6 +467,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                       border-top-style: solid;
                                       border-top-width: 0px;
                                       box-sizing: content-box;
+                                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                      font-size: 14px;
+                                      font-weight: 400;
                                       height: 42px;
                                     }
                                     @media screen and (-ms-high-contrast: active){& {
@@ -473,6 +509,11 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                         className=
                             ms-Shimmer-container
                             {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 14px;
+                              font-weight: 400;
                               height: auto;
                               position: relative;
                             }
@@ -523,9 +564,14 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                               className=
                                   ms-ShimmerElementsGroup-root
                                   {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
                                     align-items: center;
                                     display: flex;
                                     flex-wrap: nowrap;
+                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                    font-size: 14px;
+                                    font-weight: 400;
                                   }
                               style={
                                 Object {
@@ -537,6 +583,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 className=
                                     ms-ShimmerGap-root
                                     {
+                                      -moz-osx-font-smoothing: grayscale;
+                                      -webkit-font-smoothing: antialiased;
                                       background-color: #ffffff;
                                       border-bottom-style: solid;
                                       border-bottom-width: 0px;
@@ -544,6 +592,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                       border-top-style: solid;
                                       border-top-width: 0px;
                                       box-sizing: content-box;
+                                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                      font-size: 14px;
+                                      font-weight: 400;
                                       height: 42px;
                                     }
                                     @media screen and (-ms-high-contrast: active){& {
@@ -583,6 +634,11 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                         className=
                             ms-Shimmer-container
                             {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 14px;
+                              font-weight: 400;
                               height: auto;
                               position: relative;
                             }
@@ -633,9 +689,14 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                               className=
                                   ms-ShimmerElementsGroup-root
                                   {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
                                     align-items: center;
                                     display: flex;
                                     flex-wrap: nowrap;
+                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                    font-size: 14px;
+                                    font-weight: 400;
                                   }
                               style={
                                 Object {
@@ -647,6 +708,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 className=
                                     ms-ShimmerGap-root
                                     {
+                                      -moz-osx-font-smoothing: grayscale;
+                                      -webkit-font-smoothing: antialiased;
                                       background-color: #ffffff;
                                       border-bottom-style: solid;
                                       border-bottom-width: 0px;
@@ -654,6 +717,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                       border-top-style: solid;
                                       border-top-width: 0px;
                                       box-sizing: content-box;
+                                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                      font-size: 14px;
+                                      font-weight: 400;
                                       height: 42px;
                                     }
                                     @media screen and (-ms-high-contrast: active){& {
@@ -693,6 +759,11 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                         className=
                             ms-Shimmer-container
                             {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 14px;
+                              font-weight: 400;
                               height: auto;
                               position: relative;
                             }
@@ -743,9 +814,14 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                               className=
                                   ms-ShimmerElementsGroup-root
                                   {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
                                     align-items: center;
                                     display: flex;
                                     flex-wrap: nowrap;
+                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                    font-size: 14px;
+                                    font-weight: 400;
                                   }
                               style={
                                 Object {
@@ -757,6 +833,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 className=
                                     ms-ShimmerGap-root
                                     {
+                                      -moz-osx-font-smoothing: grayscale;
+                                      -webkit-font-smoothing: antialiased;
                                       background-color: #ffffff;
                                       border-bottom-style: solid;
                                       border-bottom-width: 0px;
@@ -764,6 +842,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                       border-top-style: solid;
                                       border-top-width: 0px;
                                       box-sizing: content-box;
+                                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                      font-size: 14px;
+                                      font-weight: 400;
                                       height: 42px;
                                     }
                                     @media screen and (-ms-high-contrast: active){& {
@@ -803,6 +884,11 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                         className=
                             ms-Shimmer-container
                             {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 14px;
+                              font-weight: 400;
                               height: auto;
                               position: relative;
                             }
@@ -853,9 +939,14 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                               className=
                                   ms-ShimmerElementsGroup-root
                                   {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
                                     align-items: center;
                                     display: flex;
                                     flex-wrap: nowrap;
+                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                    font-size: 14px;
+                                    font-weight: 400;
                                   }
                               style={
                                 Object {
@@ -867,6 +958,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 className=
                                     ms-ShimmerGap-root
                                     {
+                                      -moz-osx-font-smoothing: grayscale;
+                                      -webkit-font-smoothing: antialiased;
                                       background-color: #ffffff;
                                       border-bottom-style: solid;
                                       border-bottom-width: 0px;
@@ -874,6 +967,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                       border-top-style: solid;
                                       border-top-width: 0px;
                                       box-sizing: content-box;
+                                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                      font-size: 14px;
+                                      font-weight: 400;
                                       height: 42px;
                                     }
                                     @media screen and (-ms-high-contrast: active){& {
@@ -913,6 +1009,11 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                         className=
                             ms-Shimmer-container
                             {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 14px;
+                              font-weight: 400;
                               height: auto;
                               position: relative;
                             }
@@ -963,9 +1064,14 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                               className=
                                   ms-ShimmerElementsGroup-root
                                   {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
                                     align-items: center;
                                     display: flex;
                                     flex-wrap: nowrap;
+                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                    font-size: 14px;
+                                    font-weight: 400;
                                   }
                               style={
                                 Object {
@@ -977,6 +1083,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 className=
                                     ms-ShimmerGap-root
                                     {
+                                      -moz-osx-font-smoothing: grayscale;
+                                      -webkit-font-smoothing: antialiased;
                                       background-color: #ffffff;
                                       border-bottom-style: solid;
                                       border-bottom-width: 0px;
@@ -984,6 +1092,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                       border-top-style: solid;
                                       border-top-width: 0px;
                                       box-sizing: content-box;
+                                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                      font-size: 14px;
+                                      font-weight: 400;
                                       height: 42px;
                                     }
                                     @media screen and (-ms-high-contrast: active){& {
@@ -1023,6 +1134,11 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                         className=
                             ms-Shimmer-container
                             {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 14px;
+                              font-weight: 400;
                               height: auto;
                               position: relative;
                             }
@@ -1073,9 +1189,14 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                               className=
                                   ms-ShimmerElementsGroup-root
                                   {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
                                     align-items: center;
                                     display: flex;
                                     flex-wrap: nowrap;
+                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                    font-size: 14px;
+                                    font-weight: 400;
                                   }
                               style={
                                 Object {
@@ -1087,6 +1208,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 className=
                                     ms-ShimmerGap-root
                                     {
+                                      -moz-osx-font-smoothing: grayscale;
+                                      -webkit-font-smoothing: antialiased;
                                       background-color: #ffffff;
                                       border-bottom-style: solid;
                                       border-bottom-width: 0px;
@@ -1094,6 +1217,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                       border-top-style: solid;
                                       border-top-width: 0px;
                                       box-sizing: content-box;
+                                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                      font-size: 14px;
+                                      font-weight: 400;
                                       height: 42px;
                                     }
                                     @media screen and (-ms-high-contrast: active){& {
@@ -1133,6 +1259,11 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                         className=
                             ms-Shimmer-container
                             {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 14px;
+                              font-weight: 400;
                               height: auto;
                               position: relative;
                             }
@@ -1183,9 +1314,14 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                               className=
                                   ms-ShimmerElementsGroup-root
                                   {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
                                     align-items: center;
                                     display: flex;
                                     flex-wrap: nowrap;
+                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                    font-size: 14px;
+                                    font-weight: 400;
                                   }
                               style={
                                 Object {
@@ -1197,6 +1333,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 className=
                                     ms-ShimmerGap-root
                                     {
+                                      -moz-osx-font-smoothing: grayscale;
+                                      -webkit-font-smoothing: antialiased;
                                       background-color: #ffffff;
                                       border-bottom-style: solid;
                                       border-bottom-width: 0px;
@@ -1204,6 +1342,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                       border-top-style: solid;
                                       border-top-width: 0px;
                                       box-sizing: content-box;
+                                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                      font-size: 14px;
+                                      font-weight: 400;
                                       height: 42px;
                                     }
                                     @media screen and (-ms-high-contrast: active){& {
@@ -1243,6 +1384,11 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                         className=
                             ms-Shimmer-container
                             {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 14px;
+                              font-weight: 400;
                               height: auto;
                               position: relative;
                             }
@@ -1293,9 +1439,14 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                               className=
                                   ms-ShimmerElementsGroup-root
                                   {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
                                     align-items: center;
                                     display: flex;
                                     flex-wrap: nowrap;
+                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                    font-size: 14px;
+                                    font-weight: 400;
                                   }
                               style={
                                 Object {
@@ -1307,6 +1458,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 className=
                                     ms-ShimmerGap-root
                                     {
+                                      -moz-osx-font-smoothing: grayscale;
+                                      -webkit-font-smoothing: antialiased;
                                       background-color: #ffffff;
                                       border-bottom-style: solid;
                                       border-bottom-width: 0px;
@@ -1314,6 +1467,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                       border-top-style: solid;
                                       border-top-width: 0px;
                                       box-sizing: content-box;
+                                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                      font-size: 14px;
+                                      font-weight: 400;
                                       height: 42px;
                                     }
                                     @media screen and (-ms-high-contrast: active){& {
@@ -1353,6 +1509,11 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                         className=
                             ms-Shimmer-container
                             {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 14px;
+                              font-weight: 400;
                               height: auto;
                               position: relative;
                             }
@@ -1403,9 +1564,14 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                               className=
                                   ms-ShimmerElementsGroup-root
                                   {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
                                     align-items: center;
                                     display: flex;
                                     flex-wrap: nowrap;
+                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                    font-size: 14px;
+                                    font-weight: 400;
                                   }
                               style={
                                 Object {
@@ -1417,6 +1583,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 className=
                                     ms-ShimmerGap-root
                                     {
+                                      -moz-osx-font-smoothing: grayscale;
+                                      -webkit-font-smoothing: antialiased;
                                       background-color: #ffffff;
                                       border-bottom-style: solid;
                                       border-bottom-width: 0px;
@@ -1424,6 +1592,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                       border-top-style: solid;
                                       border-top-width: 0px;
                                       box-sizing: content-box;
+                                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                      font-size: 14px;
+                                      font-weight: 400;
                                       height: 42px;
                                     }
                                     @media screen and (-ms-high-contrast: active){& {
