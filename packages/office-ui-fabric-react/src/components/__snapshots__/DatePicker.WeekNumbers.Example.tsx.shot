@@ -19,6 +19,7 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
           padding-right: 0px;
           padding-top: 0px;
         }
+    placeholder="Select a date..."
   >
     <div
       aria-expanded={false}

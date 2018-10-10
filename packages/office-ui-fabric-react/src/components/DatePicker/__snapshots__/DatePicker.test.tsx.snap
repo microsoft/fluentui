@@ -20,7 +20,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
   <div
     aria-expanded={false}
     aria-haspopup="true"
-    aria-owns="DatePicker-Callout4"
+    aria-owns="DatePicker-Callout0"
     role="combobox"
   >
     <div
@@ -117,7 +117,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
                   color: #666666;
                   opacity: 1;
                 }
-            id="TextField5"
+            id="TextField1"
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}

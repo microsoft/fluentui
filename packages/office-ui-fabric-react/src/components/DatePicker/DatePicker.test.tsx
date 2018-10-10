@@ -6,13 +6,24 @@ import { DatePickerBase } from './DatePicker.base';
 import { IDatePickerStrings } from './DatePicker.types';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { shallow, mount, ReactWrapper } from 'enzyme';
+import { resetIds } from '../../Utilities';
 
 describe('DatePicker', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+
   it('renders default DatePicker correctly', () => {
     // This will only render the input. Calendar component has its own snapshot.
     const component = renderer.create(<DatePicker />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('can add an id to the container', () => {
+    const wrapper = mount(<DatePickerBase id="foo" />);
+
+    expect(wrapper.getElement().props.id).toEqual('foo');
   });
 
   it('should not open DatePicker when disabled, no label', () => {
@@ -132,20 +143,7 @@ describe('DatePicker', () => {
     const minDate = new Date('Jan 1 2017');
     const maxDate = new Date('Dec 31 2017');
     const strings: IDatePickerStrings = {
-      months: [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December'
-      ],
+      months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
       shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
       days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
       shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
@@ -156,13 +154,7 @@ describe('DatePicker', () => {
 
     beforeEach(() => {
       datePicker = mount(
-        <DatePickerBase
-          allowTextInput={true}
-          minDate={minDate}
-          maxDate={maxDate}
-          value={defaultDate}
-          strings={strings}
-        />
+        <DatePickerBase allowTextInput={true} minDate={minDate} maxDate={maxDate} value={defaultDate} strings={strings} />
       );
     });
 
