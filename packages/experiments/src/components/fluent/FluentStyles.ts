@@ -202,11 +202,12 @@ const DropdownStyles = (props: IDropdownStyleProps) => {
       // After moving fluent to become the default design of Fabric we should revisit this selectors to match the fluent redlines.
       // Currently whenever you hover over an item it forces focus on it so we style the background change through focus selector.
       selectors: {
-        '&:hover': {
-          color: NeutralColors.gray190
+        '&:hover:focus': {
+          color: NeutralColors.gray190,
+          backgroundColor: !isSelected ? NeutralColors.gray20 : NeutralColors.gray30
         },
         '&:focus': {
-          backgroundColor: !isSelected ? NeutralColors.gray20 : NeutralColors.gray30
+          backgroundColor: !isSelected ? 'transparent' : NeutralColors.gray30
         },
         '&:active': {
           color: NeutralColors.gray190,
