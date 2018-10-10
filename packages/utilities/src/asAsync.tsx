@@ -14,7 +14,7 @@
 
 import * as React from 'react';
 
-interface IAsAsyncOptions<TProps> {
+export interface IAsAsyncOptions<TProps> {
   /**
    * Callback which returns a promise resolving an object which exports the component.
    */
