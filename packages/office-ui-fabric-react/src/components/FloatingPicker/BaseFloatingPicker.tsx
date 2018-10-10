@@ -281,6 +281,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
           ev.preventDefault();
           ev.stopPropagation();
         }
+        this._updateActiveDescendant();
         break;
 
       case KeyCodes.down:
@@ -288,9 +289,22 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
           ev.preventDefault();
           ev.stopPropagation();
         }
+        this._updateActiveDescendant();
         break;
     }
   };
+
+  private _updateActiveDescendant(): void {
+    if (this.props.inputElement) {
+      let activeId: string;
+      if (this.currentSelectedSuggestionIndex >= 0) {
+        activeId = `sug-${this.currentSelectedSuggestionIndex}`;
+      } else {
+        activeId = 'sug-footer1';
+      }
+      this.props.inputElement.setAttribute('aria-activedescendant', activeId);
+    }
+  }
 
   private _onResolveSuggestions(updatedValue: string): void {
     const suggestions: T[] | PromiseLike<T[]> | null = this.props.onResolveSuggestions(updatedValue, this.props.selectedItems);
