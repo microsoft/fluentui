@@ -176,8 +176,6 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   }
 
   public render(): JSX.Element {
-    console.log('ScrollablePaneBase -> render');
-
     const { className, theme, styles } = this.props;
     const { stickyTopHeight, stickyBottomHeight } = this.state;
     const classNames = getClassNames(styles!, {
@@ -383,7 +381,6 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   };
 
   private _getStickyContainerStyle = (height: number, isTop: boolean): React.CSSProperties => {
-    console.log('ScrollablePaneBase -> _getStickyContainerStyle()');
     return {
       height: height,
       ...(getRTL()

@@ -188,6 +188,9 @@ export class ScrollablePaneDetailsListExample extends React.Component<
     }
   }
 
+  // When the DetailsList columns are resized, this may cause a horizontal scroll bar to appear or
+  // disappear within ScrollablePane. This rerenders the component to ensure that the floating
+  // footer does not overlap with the scroll bar.
   private _onDetailsListColumnResized() {
     this.forceUpdate();
   }
