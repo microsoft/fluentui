@@ -1,10 +1,11 @@
 // tslint:disable:no-any
 import * as React from 'react';
 import { App as AppBase, IAppDefinition, IAppProps } from '@uifabric/example-app-base';
+import { AppCustomizations } from './Customizations';
 
 export const AppDefinition: IAppDefinition = {
   appTitle: 'Fabric - React',
-
+  customizations: AppCustomizations,
   testPages: [],
   examplePages: [
     {
