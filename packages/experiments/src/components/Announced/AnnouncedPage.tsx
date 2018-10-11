@@ -3,6 +3,12 @@ import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet
 
 import { AnnouncedBasicExample } from './examples/Announced.Basic.Example';
 const AnnouncedBasicExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Announced/examples/Announced.Basic.Example.tsx') as string;
+import { AnnouncedAsynchronousExample } from './examples/Announced.Asynchronous.Example';
+const AnnouncedAsynchronousExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Announced/examples/Announced.Asynchronous.Example.tsx') as string;
+import { AnnouncedBulkLongRunningExample } from './examples/Announced.BulkLongRunning.Example';
+const AnnouncedBulkLongRunningExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Announced/examples/Announced.BulkLongRunning.Example.tsx') as string;
+import { AnnouncedSearchResultsExample } from './examples/Announced.SearchResults.Example';
+const AnnouncedSearchResultsExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Announced/examples/Announced.SearchResults.Example.tsx') as string;
 
 export class AnnouncedPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -12,9 +18,21 @@ export class AnnouncedPage extends React.Component<IComponentDemoPageProps, {}> 
         componentName="Announced"
         exampleCards={
           <div>
-            <ExampleCard title="Basic Announced component used with [...]" isOptIn={true} code={AnnouncedBasicExampleCode}>
+            <ExampleCard title="Announced component used with editing text, deletion" isOptIn={true} code={AnnouncedBasicExampleCode}>
               <AnnouncedBasicExample />
             </ExampleCard>
+            {/* <ExampleCard title="Announced component used for asynchronous page/page content loading"
+            isOptIn={true} code={AnnouncedAsynchronousExampleCode}>
+              <AnnouncedAsynchronousExample />
+            </ExampleCard>
+            <ExampleCard title="Announced component used for bulk async long running operations"
+            isOptIn={true} code={AnnouncedBulkLongRunningExampleCode}>
+              <AnnouncedBulkLongRunningExample />
+            </ExampleCard>
+            <ExampleCard title="Announced component used for asynchronous resolution of contacts or search results"
+            isOptIn={true} code={AnnouncedSearchResultsExampleCode}>
+              <AnnouncedSearchResultsExample />
+            </ExampleCard> */}
           </div>
         }
         propertiesTables={
