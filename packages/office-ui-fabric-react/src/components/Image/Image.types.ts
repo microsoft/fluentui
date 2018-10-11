@@ -104,8 +104,8 @@ export enum ImageFit {
 
   /**
    * The image will be centered horizontally and vertically within the frame and maintains its aspect ratio. It will
-   * behave as ImageFit.center if the height or width is less than the Image frame's height or width, but if image is
-   * fully larger than the frame it will behave as ImageFit.cover.
+   * behave as ImageFit.center if the image's natural height or width is less than the Image frame's height or width,
+   * but if both natural height and width are larger than the frame it will behave as ImageFit.cover.
    */
   centerCover = 4
 }
