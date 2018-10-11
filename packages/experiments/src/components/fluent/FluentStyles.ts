@@ -176,8 +176,7 @@ const DialogFooterStyles = {
 };
 
 const DropdownStyles = (props: IDropdownStyleProps) => {
-  const { disabled, hasError, theme, isOpen, calloutRenderEdge } = props;
-  const { semanticColors } = theme!;
+  const { disabled, hasError, isOpen, calloutRenderEdge } = props;
   const ITEM_HEIGHT = '36px';
 
   const titleOpenBorderRadius =
