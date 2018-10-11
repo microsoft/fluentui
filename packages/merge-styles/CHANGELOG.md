@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Mon, 08 Oct 2018 12:24:15 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Oct 2018 23:13:31 GMT and should not be manually modified.
+
+## 6.10.0
+Thu, 11 Oct 2018 23:13:31 GMT
+
+### Minor changes
+
+- Enable api-extractor task for merge-styles
 
 ## 6.9.4
 Mon, 08 Oct 2018 12:24:15 GMT

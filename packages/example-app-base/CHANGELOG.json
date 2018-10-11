@@ -2,6 +2,25 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.7.6",
+      "tag": "@uifabric/example-app-base_v6.7.6",
+      "date": "Thu, 11 Oct 2018 23:13:31 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Documentation: remove unwanted backslashes and render backticks as code blocks",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "dd6e56c6bd02c2a130c9653ef6cb7f916de3ff2c"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.83.0 <7.0.0` to `>=6.84.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.7.5",
       "tag": "@uifabric/example-app-base_v6.7.5",
       "date": "Wed, 10 Oct 2018 12:29:05 GMT",

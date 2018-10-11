@@ -1,6 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Wed, 10 Oct 2018 12:29:05 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Oct 2018 23:13:31 GMT and should not be manually modified.
+
+## 0.24.3
+Thu, 11 Oct 2018 23:13:31 GMT
+
+### Patches
+
+- resolve console errors for horizontal bar chart
 
 ## 0.24.2
 Wed, 10 Oct 2018 12:29:05 GMT
