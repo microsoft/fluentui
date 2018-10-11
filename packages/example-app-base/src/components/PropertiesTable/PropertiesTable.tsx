@@ -59,6 +59,9 @@ const renderCell = (text: string) => {
   return <span>{eltChildren}</span>;
 };
 
+const createRenderCell = (propertyName: keyof IInterfaceProperty | keyof IEnumProperty) => (item: IInterfaceProperty | IEnumProperty) =>
+  renderCell(item[propertyName]);
+
 const DEFAULT_COLUMNS: IColumn[] = [
   {
     key: 'name',
@@ -69,7 +72,7 @@ const DEFAULT_COLUMNS: IColumn[] = [
     isCollapsable: false,
     isRowHeader: true,
     isResizable: true,
-    onRender: (item: IInterfaceProperty) => renderCell(item.name)
+    onRender: createRenderCell('name')
   },
   {
     key: 'type',
@@ -80,7 +83,7 @@ const DEFAULT_COLUMNS: IColumn[] = [
     isCollapsable: false,
     isResizable: true,
     isMultiline: true,
-    onRender: (item: IInterfaceProperty) => renderCell(item.type)
+    onRender: createRenderCell('type')
   },
   {
     key: 'defaultValue',
@@ -91,7 +94,7 @@ const DEFAULT_COLUMNS: IColumn[] = [
     isCollapsable: false,
     isResizable: true,
     isMultiline: true,
-    onRender: (item: IInterfaceProperty) => renderCell(item.defaultValue)
+    onRender: createRenderCell('defaultValue')
   },
   {
     key: 'description',
@@ -102,7 +105,7 @@ const DEFAULT_COLUMNS: IColumn[] = [
     isCollapsable: false,
     isResizable: true,
     isMultiline: true,
-    onRender: (item: IInterfaceProperty) => renderCell(item.description)
+    onRender: createRenderCell('description')
   }
 ];
 
@@ -116,7 +119,7 @@ const ENUM_COLUMNS: IColumn[] = [
     isCollapsable: false,
     isRowHeader: true,
     isResizable: true,
-    onRender: (item: IEnumProperty) => renderCell(item.name)
+    onRender: createRenderCell('name')
   },
   {
     key: 'description',
@@ -126,7 +129,7 @@ const ENUM_COLUMNS: IColumn[] = [
     maxWidth: 400,
     isCollapsable: false,
     isResizable: true,
-    onRender: (item: IEnumProperty) => renderCell(item.description)
+    onRender: createRenderCell('description')
   }
 ];
 

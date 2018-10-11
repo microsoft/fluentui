@@ -29,11 +29,11 @@ export function parse(source: string, propsInterfaceOrEnumName?: string): IPrope
 
   // Remove all backslashes that are not immediately followed by another backslash
   // E.g. "\text" becomes "text", "\\text" becomes "\text"
-  const escapeBackslashes = source.replace(/\\(?!\\)/g, '');
+  const escapedSource = source.replace(/\\(?!\\)/g, '');
 
   if (propsInterfaceOrEnumName) {
     regex = new RegExp(`^export (interface|(?:const )?enum) ${propsInterfaceOrEnumName}(?: extends .*?)? \\{( |.*[\\r\\n]*)*?\\}`, 'm');
-    let regexResult = regex.exec(escapeBackslashes);
+    let regexResult = regex.exec(escapedSource);
     if (regexResult && regexResult.length > 0) {
       parseInfo = _parseEnumOrInterface(regexResult);
       return [
@@ -49,7 +49,7 @@ export function parse(source: string, propsInterfaceOrEnumName?: string): IPrope
     regex = new RegExp(`^export (interface|(?:const )?enum) (\\S*?)(?: extends .*?)? \\{( |.*[\\r\\n]*)*?\\}`, 'gm');
     let regexResult: RegExpExecArray | null;
     let results: Array<IProperty> = [];
-    while ((regexResult = regex.exec(escapeBackslashes)) !== null) {
+    while ((regexResult = regex.exec(escapedSource)) !== null) {
       parseInfo = _parseEnumOrInterface(regexResult);
       results.push(<IProperty>{
         name: regexResult[2],
