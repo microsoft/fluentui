@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "Added default font theme for all controls to remove Fabric component dependency.",
+      "packageName": "office-ui-fabric-react",
+      "type": "none"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "aneeshak@microsoft.com"
+}
