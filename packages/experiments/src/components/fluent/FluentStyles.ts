@@ -1,4 +1,4 @@
-import { FontWeights, IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
 import { NeutralColors, CommunicationColors } from './FluentColors';
 import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
@@ -190,13 +190,13 @@ const DropdownStyles = (props: IDropdownStyleProps) => {
       ? `0 0 ${fluentBorderRadius} ${fluentBorderRadius}`
       : `${fluentBorderRadius} ${fluentBorderRadius} 0 0`;
 
-  const commonItemStyles: IStyle = {
+  const commonItemStyles = {
     minHeight: ITEM_HEIGHT,
     lineHeight: '19px',
     padding: '0 8px'
   };
 
-  const itemSelectors = (isSelected: boolean = false): IStyle => {
+  const itemSelectors = (isSelected: boolean = false) => {
     return {
       // TODO
       // After moving fluent to become the default design of Fabric we should revisit this selectors to match the fluent redlines.
