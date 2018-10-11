@@ -116,18 +116,18 @@ export interface IRawFontStyle {
    * See CSS 3 font-size property https://www.w3.org/TR/css-fonts-3/#propdef-font-size
    */
   fontSize?:
-    | ICSSRule
-    | 'xx-small'
-    | 'x-small'
-    | 'small'
-    | 'medium'
-    | 'large'
-    | 'x-large'
-    | 'xx-large'
-    | 'larger'
-    | 'smaller'
-    | ICSSPixelUnitRule
-    | ICSSPercentageRule;
+  | ICSSRule
+  | 'xx-small'
+  | 'x-small'
+  | 'small'
+  | 'medium'
+  | 'large'
+  | 'x-large'
+  | 'xx-large'
+  | 'larger'
+  | 'smaller'
+  | ICSSPixelUnitRule
+  | ICSSPercentageRule;
 
   /**
    * The font-size-adjust property adjusts the font-size of the fallback fonts defined
@@ -145,16 +145,16 @@ export interface IRawFontStyle {
    * https://drafts.csswg.org/css-fonts-3/#propdef-font-stretch
    */
   fontStretch?:
-    | ICSSRule
-    | 'normal'
-    | 'ultra-condensed'
-    | 'extra-condensed'
-    | 'condensed'
-    | 'semi-condensed'
-    | 'semi-expanded'
-    | 'expanded'
-    | 'extra-expanded'
-    | 'ultra-expanded';
+  | ICSSRule
+  | 'normal'
+  | 'ultra-condensed'
+  | 'extra-condensed'
+  | 'condensed'
+  | 'semi-condensed'
+  | 'semi-expanded'
+  | 'expanded'
+  | 'extra-expanded'
+  | 'ultra-expanded';
 
   /**
    * The font-style property allows normal, italic, or oblique faces to be selected.
@@ -203,7 +203,7 @@ export interface IFontFace extends IRawFontStyle {
 
   /**
    * unicode-range allows you to set a specific range of characters to be downloaded
-   * from a font (embedded using @font-face) and made available for use on the current
+   * from a font (embedded using \@font-face) and made available for use on the current
    * page.
    */
   unicodeRange?: ICSSRule | string;
@@ -1010,20 +1010,20 @@ export interface IRawStyleBase extends IRawFontStyle {
    * https://www.w3.org/TR/css-align-3/#propdef-justify-self
    */
   justifySelf?:
-    | ICSSRule
-    | 'auto'
-    | 'normal'
-    | 'stretch'
-    | ICSSBaselinePositionRule
-    | ICSSOverflowAndSelfPositionRule
-    | 'left'
-    | 'right'
-    // prefixed with <overflow-position> value 'safe'
-    | 'safe left'
-    | 'safe right'
-    // prefixed with <overflow-position> value 'unsafe'
-    | 'unsafe left'
-    | 'unsafe right';
+  | ICSSRule
+  | 'auto'
+  | 'normal'
+  | 'stretch'
+  | ICSSBaselinePositionRule
+  | ICSSOverflowAndSelfPositionRule
+  | 'left'
+  | 'right'
+  // prefixed with <overflow-position> value 'safe'
+  | 'safe left'
+  | 'safe right'
+  // prefixed with <overflow-position> value 'unsafe'
+  | 'unsafe left'
+  | 'unsafe right';
 
   /**
    * Sets the left position of an element relative to the nearest anscestor that is set

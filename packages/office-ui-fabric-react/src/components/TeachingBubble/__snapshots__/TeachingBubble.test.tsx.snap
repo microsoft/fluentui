@@ -642,7 +642,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
         }
         &:hover {
           background: transparent;
-          color: #004578;
+          color: #212121;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           border-color: Highlight;

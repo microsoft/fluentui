@@ -435,6 +435,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
+                    color: #333333;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -485,7 +486,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                   }
                   &:hover {
                     background-color: #f4f4f4;
-                    color: #004578;
+                    color: #212121;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
@@ -1157,6 +1158,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
+                    color: #333333;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1207,7 +1209,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                   }
                   &:hover {
                     background-color: #f4f4f4;
-                    color: #004578;
+                    color: #212121;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
@@ -1529,6 +1531,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
+                    color: #333333;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1579,7 +1582,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                   }
                   &:hover {
                     background-color: #f4f4f4;
-                    color: #004578;
+                    color: #212121;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
@@ -1743,6 +1746,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
+                    color: #333333;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1793,7 +1797,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
                   }
                   &:hover {
                     background-color: #f4f4f4;
-                    color: #004578;
+                    color: #212121;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;

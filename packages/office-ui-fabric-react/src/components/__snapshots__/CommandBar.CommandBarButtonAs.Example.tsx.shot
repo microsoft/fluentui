@@ -2274,7 +2274,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                           }
                                           &:hover {
                                             background: transparent;
-                                            color: #004578;
+                                            color: #212121;
                                           }
                                           @media screen and (-ms-high-contrast: active){&:hover {
                                             border-color: Highlight;
