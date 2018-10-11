@@ -124,6 +124,8 @@ export class ScrollablePaneDetailsListExample extends React.Component<
       items: items,
       selectionDetails: this._getSelectionDetails()
     };
+
+    this._onDetailsListColumnResized = this._onDetailsListColumnResized.bind(this);
   }
 
   public render(): JSX.Element {
@@ -152,6 +154,7 @@ export class ScrollablePaneDetailsListExample extends React.Component<
           </Sticky>
           <MarqueeSelection selection={this._selection}>
             <DetailsList
+              onColumnResize={this._onDetailsListColumnResized}
               items={items}
               columns={_columns}
               setKey="set"
@@ -184,12 +187,13 @@ export class ScrollablePaneDetailsListExample extends React.Component<
         return `${selectionCount} items selected`;
     }
   }
+
+  private _onDetailsListColumnResized() {
+    this.forceUpdate();
+  }
 }
 
-function onRenderDetailsHeader(
-  props: IDetailsHeaderProps,
-  defaultRender?: IRenderFunction<IDetailsHeaderProps>
-): JSX.Element {
+function onRenderDetailsHeader(props: IDetailsHeaderProps, defaultRender?: IRenderFunction<IDetailsHeaderProps>): JSX.Element {
   return (
     <Sticky stickyPosition={StickyPositionType.Header} isScrollSynced={true}>
       {defaultRender!({
@@ -200,10 +204,7 @@ function onRenderDetailsHeader(
   );
 }
 
-function onRenderDetailsFooter(
-  props: IDetailsFooterProps,
-  defaultRender?: IRenderFunction<IDetailsFooterProps>
-): JSX.Element {
+function onRenderDetailsFooter(props: IDetailsFooterProps, defaultRender?: IRenderFunction<IDetailsFooterProps>): JSX.Element {
   return (
     <Sticky stickyPosition={StickyPositionType.Footer} isScrollSynced={true}>
       <DetailsRow
