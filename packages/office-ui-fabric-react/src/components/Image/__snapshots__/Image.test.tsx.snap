@@ -41,6 +41,11 @@ exports[`Image renders ImageFit.centerCover correctly 1`] = `
   className=
       ms-Image
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
         overflow: hidden;
         position: relative;
       }
