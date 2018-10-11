@@ -319,7 +319,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       onShouldVirtualize,
       group
     } = this.props;
-    const siblingCount = group ? (group.children && group.children.length > -1 ? group.children.length - 1 : 0) : undefined;
+    const siblingCount = group && group.children && group.children.length > 0 ? group.children.length - 1 : 0;
     return !subGroup || subGroup.count > 0 || (groupProps && groupProps.showEmptyGroups) ? (
       <GroupedListSection
         ref={'subGroup_' + subGroupIndex}
