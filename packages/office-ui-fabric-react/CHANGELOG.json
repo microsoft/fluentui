@@ -2,6 +2,57 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.84.0",
+      "tag": "office-ui-fabric-react_v6.84.0",
+      "date": "Thu, 11 Oct 2018 23:13:31 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Calendar: accessibility fixes for month option grid",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "249627f9837bc55abecf6aacef9941d1e5bf8907"
+          },
+          {
+            "comment": "Dropdown: Fix issue where correct option wasn't selected",
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "3225f2fcc6ce985e05062095db5770910710e639"
+          },
+          {
+            "comment": "Fix ContextualMenu example broken charm icons and specify hover delay input as type=\"number\".",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "34dec3f214a209b9f5295db60a1ead8ee2b12a31"
+          },
+          {
+            "comment": "Remove 'Button Swap with Focus State' example",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "0322120032ebcf3f6b36b8a3f78718399874f2db"
+          },
+          {
+            "comment": "ScrollablePane: Update DetailsList example to fix bug where footer overlapped scroll bar",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "9787c03ee464e0ac35d713c7efcacb90c4d8dc1d"
+          },
+          {
+            "comment": "IconButton: Specifiy the color of the icon in IconButton so that it can be themed and change the hover color for the same reasons.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "a0f35e5b0a220940d13763594b779fe17305d012"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Implement ImageFit.centerCover",
+            "author": "P.J. Swesey <swese44@gmail.com>",
+            "commit": "438093206acc568b2581dcac5cb81769f6f38d14"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.9.4 <7.0.0` to `>=6.10.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.83.0",
       "tag": "office-ui-fabric-react_v6.83.0",
       "date": "Wed, 10 Oct 2018 12:29:05 GMT",
