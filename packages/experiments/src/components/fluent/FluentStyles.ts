@@ -1,5 +1,5 @@
 import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
-import { NeutralColors, CommunicationColors } from './FluentColors';
+import { NeutralColors, CommunicationColors, SharedColors } from './FluentColors';
 import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { FontSizes } from './FluentType';
@@ -247,13 +247,18 @@ const DropdownStyles = (props: IDropdownStyleProps) => {
           // Title placeholder states when not disabled.
           ['&:hover .ms-Dropdown-titleIsPlaceHolder, &:focus .ms-Dropdown-titleIsPlaceHolder, &:active .ms-Dropdown-titleIsPlaceHolder']: {
             color: NeutralColors.gray190
+          },
+
+          // Title has error states
+          ['&:hover .ms-Dropdown-title--hasError, &:focus .ms-Dropdown-title--hasError, &:active .ms-Dropdown-title--hasError']: {
+            borderColor: SharedColors.red20
           }
         }
       }
     ],
     title: [
       {
-        borderColor: !hasError ? NeutralColors.gray80 : semanticColors.errorText,
+        borderColor: !hasError ? NeutralColors.gray80 : SharedColors.red10,
         borderRadius: isOpen ? titleOpenBorderRadius : fluentBorderRadius,
         padding: `0 28px 0 8px`
       },
@@ -267,6 +272,7 @@ const DropdownStyles = (props: IDropdownStyleProps) => {
         color: NeutralColors.gray70
       }
     ],
+    errorMessage: { color: SharedColors.red20 },
     callout: {
       border: 'none',
       borderRadius: calloutOpenBorderRadius,
