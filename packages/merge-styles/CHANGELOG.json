@@ -2,6 +2,58 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.9.4",
+      "tag": "@uifabric/merge-styles_v6.9.4",
+      "date": "Mon, 08 Oct 2018 12:24:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Moving tslint/prettier dependencies ",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8ba9e22a7a8a2a1e7facda5aa7d91423c7af43ed"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.1.1 <2.0.0` to `>=1.1.2 <2.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.9.3",
+      "tag": "@uifabric/merge-styles_v6.9.3",
+      "date": "Mon, 01 Oct 2018 12:27:24 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Prettier cleanup",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "7eee9844e61fa75247af89fdff79bd23e2ca74bb"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.9.2",
+      "tag": "@uifabric/merge-styles_v6.9.2",
+      "date": "Fri, 28 Sep 2018 12:27:38 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Ignoring registering rules which are undefined.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "f2291fcd09a42295f7ccc0136ddaf40f0ad6cbe5"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.1.0 <2.0.0` to `>=1.1.1 <2.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.9.1",
       "tag": "@uifabric/merge-styles_v6.9.1",
       "date": "Fri, 21 Sep 2018 14:25:46 GMT",

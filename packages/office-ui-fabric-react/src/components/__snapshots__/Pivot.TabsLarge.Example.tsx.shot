@@ -11,7 +11,7 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
       onMouseDownCapture={[Function]}
       role="presentation"
     >
-      <ul
+      <div
         className=
             ms-Pivot
             ms-Pivot--large
@@ -141,7 +141,7 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
                 visibility: hidden;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #767676;
+                outline: 1px solid #666666;
               }
               .ms-Fabric--isFocusVisible &:focus::before {
                 background: transparent;
@@ -305,7 +305,7 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
                 visibility: hidden;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #767676;
+                outline: 1px solid #666666;
               }
               .ms-Fabric--isFocusVisible &:focus::before {
                 background: transparent;
@@ -464,7 +464,7 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
                 visibility: hidden;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #767676;
+                outline: 1px solid #666666;
               }
               .ms-Fabric--isFocusVisible &:focus::before {
                 background: transparent;
@@ -623,7 +623,7 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
                 visibility: hidden;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #767676;
+                outline: 1px solid #666666;
               }
               .ms-Fabric--isFocusVisible &:focus::before {
                 background: transparent;
@@ -679,7 +679,7 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
             </span>
           </div>
         </button>
-      </ul>
+      </div>
     </div>
     <div
       aria-labelledby="Pivot0-Tab0"

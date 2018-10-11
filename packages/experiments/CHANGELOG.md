@@ -1,6 +1,87 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 21 Sep 2018 14:25:46 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Oct 2018 12:29:05 GMT and should not be manually modified.
+
+## 6.37.0
+Wed, 10 Oct 2018 12:29:05 GMT
+
+### Minor changes
+
+- Separator: change text size and add theming example
+
+## 6.36.1
+Mon, 08 Oct 2018 19:25:44 GMT
+
+### Patches
+
+- Sidebar: added index export
+
+## 6.36.0
+Mon, 08 Oct 2018 12:24:15 GMT
+
+### Minor changes
+
+- Sidebar: Added new component
+
+### Patches
+
+- Moving tslint/prettier dependencies 
+- Fix a11y violations in Fluent ContextualMenu examples
+- Sidebar: Fixed filename and imports
+
+## 6.35.0
+Fri, 05 Oct 2018 23:29:26 GMT
+
+### Minor changes
+
+- Sidebar: Added new component
+
+## 6.34.2
+Thu, 04 Oct 2018 12:26:48 GMT
+
+*Version update only*
+
+## 6.34.1
+Wed, 03 Oct 2018 12:28:46 GMT
+
+*Version update only*
+
+## 6.34.0
+Tue, 02 Oct 2018 12:28:04 GMT
+
+### Minor changes
+
+- Separator: new experimental component
+
+### Patches
+
+- Changes to support Foundation interface refactoring.
+
+## 6.33.0
+Mon, 01 Oct 2018 12:27:24 GMT
+
+### Minor changes
+
+- Adding Button experiment, initial refactoring of BaseState component
+
+## 6.32.4
+Fri, 28 Sep 2018 12:27:38 GMT
+
+### Patches
+
+- HorizontalStack: remove padding as a fix for collapsing margins, remove unnecessary calc() calls
+
+## 6.32.3
+Thu, 27 Sep 2018 12:27:48 GMT
+
+*Version update only*
+
+## 6.32.2
+Tue, 25 Sep 2018 12:28:12 GMT
+
+### Patches
+
+- Stack: update styles to account for all margin collapsing on wrapped HorizontalStacks
 
 ## 6.32.1
 Fri, 21 Sep 2018 14:25:46 GMT

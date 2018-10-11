@@ -6,23 +6,11 @@ exports[`Link renders Link correctly 1`] = `
       ms-Link
       {
         color: #0078d4;
-        outline: transparent;
-        position: relative;
+        outline: none;
         text-decoration: none;
       }
-      &::-moz-focus-inner {
-        border: 0;
-      }
-      .ms-Fabric--isFocusVisible &:focus:after {
-        border: 1px solid #ffffff;
-        bottom: -1px;
-        content: "";
-        left: -1px;
+      .ms-Fabric--isFocusVisible &:focus {
         outline: 1px solid #666666;
-        position: absolute;
-        right: -1px;
-        top: -1px;
-        z-index: 1;
       }
       &:active, &:hover, &:active:hover {
         color: #004578;
@@ -58,30 +46,18 @@ exports[`Link renders Link with "as=div" a div element 1`] = `
         margin-left: 0px;
         margin-right: 0px;
         margin-top: 0px;
-        outline: transparent;
+        outline: none;
         overflow: inherit;
         padding-bottom: 0px;
         padding-left: 0px;
         padding-right: 0px;
         padding-top: 0px;
-        position: relative;
         text-align: left;
         text-overflow: inherit;
         user-select: text;
       }
-      &::-moz-focus-inner {
-        border: 0;
-      }
-      .ms-Fabric--isFocusVisible &:focus:after {
-        border: 1px solid #ffffff;
-        bottom: -1px;
-        content: "";
-        left: -1px;
+      .ms-Fabric--isFocusVisible &:focus {
         outline: 1px solid #666666;
-        position: absolute;
-        right: -1px;
-        top: -1px;
-        z-index: 1;
       }
       @media screen and (-ms-high-contrast: white-on-black){& {
         color: #FFFF00;
@@ -114,23 +90,11 @@ exports[`Link renders Link with a custom class name 1`] = `
       customClassName
       {
         color: #0078d4;
-        outline: transparent;
-        position: relative;
+        outline: none;
         text-decoration: none;
       }
-      &::-moz-focus-inner {
-        border: 0;
-      }
-      .ms-Fabric--isFocusVisible &:focus:after {
-        border: 1px solid #ffffff;
-        bottom: -1px;
-        content: "";
-        left: -1px;
+      .ms-Fabric--isFocusVisible &:focus {
         outline: 1px solid #666666;
-        position: absolute;
-        right: -1px;
-        top: -1px;
-        z-index: 1;
       }
       &:active, &:hover, &:active:hover {
         color: #004578;
@@ -165,30 +129,18 @@ exports[`Link renders Link with no href as a button 1`] = `
         margin-left: 0px;
         margin-right: 0px;
         margin-top: 0px;
-        outline: transparent;
+        outline: none;
         overflow: inherit;
         padding-bottom: 0px;
         padding-left: 0px;
         padding-right: 0px;
         padding-top: 0px;
-        position: relative;
         text-align: left;
         text-overflow: inherit;
         user-select: text;
       }
-      &::-moz-focus-inner {
-        border: 0;
-      }
-      .ms-Fabric--isFocusVisible &:focus:after {
-        border: 1px solid #ffffff;
-        bottom: -1px;
-        content: "";
-        left: -1px;
+      .ms-Fabric--isFocusVisible &:focus {
         outline: 1px solid #666666;
-        position: absolute;
-        right: -1px;
-        top: -1px;
-        z-index: 1;
       }
       @media screen and (-ms-high-contrast: white-on-black){& {
         color: #FFFF00;
@@ -223,23 +175,11 @@ exports[`Link renders disabled Link correctly 1`] = `
       {
         color: #a6a6a6;
         cursor: default;
-        outline: transparent;
-        position: relative;
+        outline: none;
         text-decoration: none;
       }
-      &::-moz-focus-inner {
-        border: 0;
-      }
-      .ms-Fabric--isFocusVisible &:focus:after {
-        border: 1px solid #ffffff;
-        bottom: -1px;
-        content: "";
-        left: -1px;
+      .ms-Fabric--isFocusVisible &:focus {
         outline: 1px solid #666666;
-        position: absolute;
-        right: -1px;
-        top: -1px;
-        z-index: 1;
       }
       &:link, &:visited {
         pointer-events: none;
@@ -270,30 +210,18 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
         margin-left: 0px;
         margin-right: 0px;
         margin-top: 0px;
-        outline: transparent;
+        outline: none;
         overflow: inherit;
         padding-bottom: 0px;
         padding-left: 0px;
         padding-right: 0px;
         padding-top: 0px;
-        position: relative;
         text-align: left;
         text-overflow: inherit;
         user-select: text;
       }
-      &::-moz-focus-inner {
-        border: 0;
-      }
-      .ms-Fabric--isFocusVisible &:focus:after {
-        border: 1px solid #ffffff;
-        bottom: -1px;
-        content: "";
-        left: -1px;
+      .ms-Fabric--isFocusVisible &:focus {
         outline: 1px solid #666666;
-        position: absolute;
-        right: -1px;
-        top: -1px;
-        z-index: 1;
       }
       @media screen and (-ms-high-contrast: white-on-black){& {
         color: #FFFF00;
@@ -333,30 +261,18 @@ exports[`Link supports non button/anchor html attributes when "as=" is used 1`] 
         margin-left: 0px;
         margin-right: 0px;
         margin-top: 0px;
-        outline: transparent;
+        outline: none;
         overflow: inherit;
         padding-bottom: 0px;
         padding-left: 0px;
         padding-right: 0px;
         padding-top: 0px;
-        position: relative;
         text-align: left;
         text-overflow: inherit;
         user-select: text;
       }
-      &::-moz-focus-inner {
-        border: 0;
-      }
-      .ms-Fabric--isFocusVisible &:focus:after {
-        border: 1px solid #ffffff;
-        bottom: -1px;
-        content: "";
-        left: -1px;
+      .ms-Fabric--isFocusVisible &:focus {
         outline: 1px solid #666666;
-        position: absolute;
-        right: -1px;
-        top: -1px;
-        z-index: 1;
       }
       @media screen and (-ms-high-contrast: white-on-black){& {
         color: #FFFF00;

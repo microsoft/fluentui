@@ -201,4 +201,13 @@ describe('styleToClassName', () => {
 
     expect(_stylesheet.getRules()).toEqual('@supports(display: grid){' + '.css-0{display:grid;}' + '}');
   });
+
+  it('ignores undefined property values', () => {
+    styleToClassName({
+      background: 'red',
+      color: undefined
+    });
+
+    expect(_stylesheet.getRules()).toEqual('.css-0{background:red;}');
+  });
 });

@@ -250,11 +250,7 @@ export class DashboardGridLayoutSectionsNoncollapsibleExample extends React.Comp
     ];
   }
 
-  private _onSectionChange = (
-    currentLayout: Layout[],
-    allLayouts: Layouts,
-    sectionMapping: DashboardSectionMapping
-  ): void => {
+  private _onSectionChange = (currentLayout: Layout[], allLayouts: Layouts, sectionMapping: DashboardSectionMapping): void => {
     console.log('nonCollapse-currentLayout', currentLayout);
     console.log('nonCollapse-sectionMapping', sectionMapping);
     this.setState({
@@ -269,14 +265,14 @@ export class DashboardGridLayoutSectionsNoncollapsibleExample extends React.Comp
   private _getLayout(): DashboardGridBreakpointLayouts {
     return {
       lg: [
-        { i: 'section1', y: 0, x: 0, size: CardSize.section },
         { i: '0', y: 1, x: 0, size: CardSize.small },
         { i: '1', y: 1, x: 1, size: CardSize.mediumTall },
-        { i: 'section2', y: 9, x: 0, size: CardSize.section },
         { i: '2', y: 10, x: 0, size: CardSize.mediumWide },
-        { i: 'section3', y: 12, x: 0, size: CardSize.section },
         { i: '3', y: 13, x: 0, size: CardSize.mediumWide },
-        { i: '4', y: 13, x: 6, size: CardSize.large }
+        { i: '4', y: 13, x: 6, size: CardSize.large },
+        { i: 'section1', y: 0, x: 0, size: CardSize.section },
+        { i: 'section2', y: 9, x: 0, size: CardSize.section },
+        { i: 'section3', y: 12, x: 0, size: CardSize.section }
       ]
     };
   }

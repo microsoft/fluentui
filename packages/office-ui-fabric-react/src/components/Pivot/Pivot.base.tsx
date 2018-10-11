@@ -118,9 +118,9 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
 
     return (
       <FocusZone componentRef={this.focusZone} direction={FocusZoneDirection.horizontal}>
-        <ul className={this._classNames.root} role="tablist">
+        <div className={this._classNames.root} role="tablist">
           {items}
-        </ul>
+        </div>
       </FocusZone>
     );
   }

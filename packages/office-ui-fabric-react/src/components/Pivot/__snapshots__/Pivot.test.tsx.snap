@@ -12,7 +12,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
     onMouseDownCapture={[Function]}
     role="presentation"
   >
-    <ul
+    <div
       className=
           ms-Pivot
           {
@@ -138,7 +138,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             @media screen and (-ms-high-contrast: active){&:before {
               border-bottom-color: Highlight;
@@ -289,7 +289,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             &:hover::before {
               border-bottom: 2px solid transparent;
@@ -337,7 +337,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
           </span>
         </div>
       </button>
-    </ul>
+    </div>
   </div>
   <div
     aria-labelledby="Pivot0-Tab0"
@@ -360,7 +360,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
     onMouseDownCapture={[Function]}
     role="presentation"
   >
-    <ul
+    <div
       className=
           ms-Pivot
           {
@@ -486,7 +486,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             @media screen and (-ms-high-contrast: active){&:before {
               border-bottom-color: Highlight;
@@ -638,7 +638,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             &:hover::before {
               border-bottom: 2px solid transparent;
@@ -800,7 +800,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             &:hover::before {
               border-bottom: 2px solid transparent;
@@ -874,7 +874,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
           </span>
         </div>
       </button>
-    </ul>
+    </div>
   </div>
   <div
     aria-labelledby="Pivot0-Tab0"
@@ -895,7 +895,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
     onMouseDownCapture={[Function]}
     role="presentation"
   >
-    <ul
+    <div
       className=
           ms-Pivot
           ms-Pivot--large
@@ -1022,7 +1022,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             @media screen and (-ms-high-contrast: active){&:before {
               border-bottom-color: Highlight;
@@ -1173,7 +1173,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             &:hover::before {
               border-bottom: 2px solid transparent;
@@ -1221,7 +1221,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
           </span>
         </div>
       </button>
-    </ul>
+    </div>
   </div>
   <div
     aria-labelledby="Pivot0-Tab0"
@@ -1242,7 +1242,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
     onMouseDownCapture={[Function]}
     role="presentation"
   >
-    <ul
+    <div
       className=
           ms-Pivot
           ms-Pivot--large
@@ -1372,7 +1372,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             .ms-Fabric--isFocusVisible &:focus::before {
               background: transparent;
@@ -1536,7 +1536,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             .ms-Fabric--isFocusVisible &:focus::before {
               background: transparent;
@@ -1592,7 +1592,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
           </span>
         </div>
       </button>
-    </ul>
+    </div>
   </div>
   <div
     aria-labelledby="Pivot0-Tab0"
@@ -1613,7 +1613,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
     onMouseDownCapture={[Function]}
     role="presentation"
   >
-    <ul
+    <div
       className=
           ms-Pivot
           {
@@ -1739,7 +1739,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             @media screen and (-ms-high-contrast: active){&:before {
               border-bottom-color: Highlight;
@@ -1890,7 +1890,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             &:hover::before {
               border-bottom: 2px solid transparent;
@@ -1938,7 +1938,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
           </span>
         </div>
       </button>
-    </ul>
+    </div>
   </div>
   <div
     aria-labelledby="Pivot0-Tab0"
@@ -1959,7 +1959,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
     onMouseDownCapture={[Function]}
     role="presentation"
   >
-    <ul
+    <div
       className=
           ms-Pivot
           ms-Pivot--tabs
@@ -2088,7 +2088,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             .ms-Fabric--isFocusVisible &:focus::before {
               background: transparent;
@@ -2252,7 +2252,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             .ms-Fabric--isFocusVisible &:focus::before {
               background: transparent;
@@ -2308,7 +2308,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
           </span>
         </div>
       </button>
-    </ul>
+    </div>
   </div>
   <div
     aria-labelledby="Pivot0-Tab0"

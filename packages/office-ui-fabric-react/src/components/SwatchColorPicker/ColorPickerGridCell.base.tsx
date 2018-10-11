@@ -21,7 +21,10 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
   public static defaultProps = {
     circle: true,
     disabled: false,
-    selected: false
+    selected: false,
+    height: 20,
+    width: 20,
+    borderWidth: 2
   } as IColorPickerGridCellProps;
 
   private _classNames: { [key in keyof IColorPickerGridCellStyles]: string };
@@ -43,7 +46,10 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
       onMouseMove,
       onMouseLeave,
       onWheel,
-      onKeyDown
+      onKeyDown,
+      height,
+      width,
+      borderWidth
     } = this.props;
 
     this._classNames = getClassNames(styles!, {
@@ -51,7 +57,10 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
       disabled,
       selected,
       circle,
-      isWhite: this._isWhiteCell(color)
+      isWhite: this._isWhiteCell(color),
+      height,
+      width,
+      borderWidth
     });
 
     return (
@@ -86,11 +95,7 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
   private _onRenderColorOption = (colorOption: IColorCellProps): JSX.Element => {
     // Build an SVG for the cell with the given shape and color properties
     return (
-      <svg
-        className={this._classNames.svg}
-        viewBox="0 0 20 20"
-        fill={getColorFromString(colorOption.color as string)!.str}
-      >
+      <svg className={this._classNames.svg} viewBox="0 0 20 20" fill={getColorFromString(colorOption.color as string)!.str}>
         {this.props.circle ? <circle cx="50%" cy="50%" r="50%" /> : <rect width="100%" height="100%" />}
       </svg>
     );
@@ -102,7 +107,8 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
    * @returns - Whether the cell's color is white or not.
    */
   private _isWhiteCell(inputColor: string | undefined): boolean {
-    return inputColor!.toLocaleLowerCase() === '#ffffff';
+    const color = getColorFromString(inputColor!);
+    return color!.hex === 'ffffff';
   }
 
   /**

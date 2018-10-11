@@ -64,6 +64,7 @@ export class CardFrame extends React.Component<ICardFrameProps, {}> {
               href={href}
               target={target}
               disabled={href === '#'}
+              onClick={this._handleTitleClick}
             >
               {cardTitle}
             </Link>
@@ -90,6 +91,10 @@ export class CardFrame extends React.Component<ICardFrameProps, {}> {
       </div>
     );
   }
+
+  private _handleTitleClick = () => {
+    this.props.cardTitleCallback ? this.props.cardTitleCallback() : '';
+  };
 
   private _onLinkMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();

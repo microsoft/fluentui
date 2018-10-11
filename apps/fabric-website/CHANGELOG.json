@@ -2,6 +2,69 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.5.0",
+      "tag": "@uifabric/fabric-website_v6.5.0",
+      "date": "Mon, 08 Oct 2018 12:24:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Moving tslint/prettier dependencies ",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8ba9e22a7a8a2a1e7facda5aa7d91423c7af43ed"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add temporary MessageBar to link to Fluent for Fabric",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "296d90b9166751ee04e8fa8a731c9c27993d7379"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `>=6.9.1 <7.0.0` to `>=6.9.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.7.3 <7.0.0` to `>=6.7.4 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.35.0 <7.0.0` to `>=6.36.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=6.1.1 <7.0.0` to `>=6.1.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.1.1 <2.0.0` to `>=1.1.2 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.79.0 <7.0.0` to `>=6.80.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.4.6",
+      "tag": "@uifabric/fabric-website_v6.4.6",
+      "date": "Tue, 02 Oct 2018 12:28:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Minor typing change to support Foundation refactor.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "3878b423fc86bbbab6322edc72e23a424013e642"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.33.0 <7.0.0` to `>=6.34.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.75.0 <7.0.0` to `>=6.76.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.4.5",
       "tag": "@uifabric/fabric-website_v6.4.5",
       "date": "Fri, 21 Sep 2018 14:25:46 GMT",

@@ -1,6 +1,20 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Fri, 21 Sep 2018 14:25:46 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Oct 2018 12:24:15 GMT and should not be manually modified.
+
+## 0.5.5
+Mon, 08 Oct 2018 12:24:15 GMT
+
+### Patches
+
+- Moving tslint/prettier dependencies 
+
+## 0.5.4
+Tue, 02 Oct 2018 12:28:04 GMT
+
+### Patches
+
+- Interface refactoring for reducing dev friction.
 
 ## 0.5.3
 Fri, 21 Sep 2018 14:25:46 GMT

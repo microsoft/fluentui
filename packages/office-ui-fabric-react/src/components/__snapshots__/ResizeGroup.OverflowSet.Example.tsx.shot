@@ -6,13 +6,13 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
 >
   <div
     aria-label="Resize Group with an Overflow Set"
-    className=
-        ms-ResizeGroup
-        {
-          display: block;
-          position: relative;
-        }
     role="tabpanel"
+    style={
+      Object {
+        "display": "block",
+        "position": "relative",
+      }
+    }
   >
     <div
       data-automation-id="visibleContent"

@@ -24,6 +24,28 @@ describe('memoizeFunction', () => {
     expect(combine(objB, objA)).toEqual('ba3');
   });
 
+  it('do not use a cached result if the function is different', () => {
+    let _timesCalled = 0;
+    let test = memoizeFunction((fn: Function) => {
+      fn();
+      return ++_timesCalled;
+    });
+
+    function createFunctionArg(): Function {
+      return () => 'test';
+    }
+
+    let fnA = createFunctionArg();
+    let fnB = createFunctionArg();
+
+    expect(test(fnA)).toEqual(1);
+    expect(test(fnA)).toEqual(1);
+    expect(test(fnB)).toEqual(2);
+    expect(test(fnA)).toEqual(1);
+    expect(test(fnB)).toEqual(2);
+    expect(test(fnB)).toEqual(2);
+  });
+
   it('can return a cached result with falsy args', () => {
     let _timesCalled = 0;
     let combine = memoizeFunction(

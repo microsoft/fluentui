@@ -9,7 +9,6 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
   <div
     aria-describedby="Dropdown0-option"
     aria-expanded="false"
-    aria-labelledby="Dropdown0-label"
     className=
         ms-Dropdown
         {
@@ -184,7 +183,6 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
     aria-activedescendant="Dropdown0-option"
     aria-describedby="Dropdown0-option"
     aria-expanded="false"
-    aria-labelledby="Dropdown0-label"
     className=
         ms-Dropdown
         {
