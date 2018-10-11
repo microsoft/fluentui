@@ -7,12 +7,12 @@ import { IStyle, ITheme } from '../../Styling';
 /**
  * Card common props.
  */
-export interface ICardProps<T, TStyles, TStyleProps> extends React.HTMLAttributes<HTMLDivElement> {
+export interface ICardProps<TComponent, TStyles, TStyleProps> extends React.HTMLAttributes<HTMLDivElement> {
   /**
-   * Optional callback to access the T interface. Use this instead of ref for accessing
+   * Optional callback to access the TComponent interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: IRefObject<T>;
+  componentRef?: IRefObject<TComponent>;
 
   /**
    * Additional CSS class(es) to apply to the Card content wrapper div.

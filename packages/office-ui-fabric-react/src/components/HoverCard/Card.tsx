@@ -10,8 +10,8 @@ import { ICardProps, ICardStyles, ICardStyleProps } from './Card.types';
  * Basic class for all types of hover cards providing the callout in which to render the content.
  */
 export abstract class Card<
-  T,
-  TProps extends ICardProps<T, TStyles, TStyleProps>,
+  TComponent,
+  TProps extends ICardProps<TComponent, TStyles, TStyleProps>,
   TStyles extends ICardStyles,
   TStyleProps extends ICardStyleProps,
   TState
@@ -26,10 +26,6 @@ export abstract class Card<
   protected _content: JSX.Element;
   protected _classNames: { [key in keyof TStyles]: string };
   protected _directionalHintFixed: boolean;
-
-  constructor(props: TProps) {
-    super(props);
-  }
 
   public render(): JSX.Element {
     const {
