@@ -160,7 +160,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                       cursor: default;
                       display: flex;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 14px;
+                      font-size: 12px;
                       font-weight: 400;
                       height: 32px;
                       justify-content: center;
@@ -315,7 +315,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   color: #333333;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
+                  font-size: 12px;
                   font-weight: 400;
                   height: 32px;
                   line-height: inherit;
@@ -448,7 +448,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   color: #333333;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
+                  font-size: 12px;
                   font-weight: 400;
                   height: 32px;
                   line-height: inherit;
@@ -581,7 +581,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   color: #333333;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
+                  font-size: 12px;
                   font-weight: 400;
                   height: 32px;
                   line-height: inherit;
@@ -967,7 +967,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                       cursor: default;
                       display: flex;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 14px;
+                      font-size: 12px;
                       font-weight: 400;
                       height: 32px;
                       justify-content: center;
@@ -1122,7 +1122,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   color: #333333;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
+                  font-size: 12px;
                   font-weight: 400;
                   height: 32px;
                   line-height: inherit;
@@ -1255,7 +1255,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   color: #333333;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
+                  font-size: 12px;
                   font-weight: 400;
                   height: 32px;
                   line-height: inherit;
@@ -1388,7 +1388,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   color: #333333;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
+                  font-size: 12px;
                   font-weight: 400;
                   height: 32px;
                   line-height: inherit;
@@ -1634,7 +1634,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
         color: #666666;
         display: inline-flex;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
+        font-size: 12px;
         font-weight: 400;
         min-height: 42px;
         min-width: 100%;
@@ -1768,7 +1768,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
             cursor: default;
             display: flex;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 400;
             height: 40px;
             justify-content: center;
@@ -2308,7 +2308,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                       cursor: default;
                       display: flex;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 14px;
+                      font-size: 12px;
                       font-weight: 400;
                       height: 32px;
                       justify-content: center;
@@ -2463,7 +2463,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   color: #333333;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
+                  font-size: 12px;
                   font-weight: 400;
                   height: 32px;
                   line-height: inherit;
@@ -2596,7 +2596,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   color: #333333;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
+                  font-size: 12px;
                   font-weight: 400;
                   height: 32px;
                   line-height: inherit;
@@ -2729,7 +2729,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   color: #333333;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
+                  font-size: 12px;
                   font-weight: 400;
                   height: 32px;
                   line-height: inherit;
@@ -3115,7 +3115,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                       cursor: default;
                       display: flex;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 14px;
+                      font-size: 12px;
                       font-weight: 400;
                       height: 32px;
                       justify-content: center;
@@ -3270,7 +3270,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   color: #333333;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
+                  font-size: 12px;
                   font-weight: 400;
                   height: 32px;
                   line-height: inherit;
@@ -3403,7 +3403,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   color: #333333;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
+                  font-size: 12px;
                   font-weight: 400;
                   height: 32px;
                   line-height: inherit;
@@ -3536,7 +3536,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   color: #333333;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
+                  font-size: 12px;
                   font-weight: 400;
                   height: 32px;
                   line-height: inherit;

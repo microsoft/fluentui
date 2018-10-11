@@ -160,7 +160,7 @@ exports[`DetailsList renders List correctly 1`] = `
                       cursor: default;
                       display: flex;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 14px;
+                      font-size: 12px;
                       font-weight: 400;
                       height: 32px;
                       justify-content: center;
@@ -315,7 +315,7 @@ exports[`DetailsList renders List correctly 1`] = `
                   color: #333333;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
+                  font-size: 12px;
                   font-weight: 400;
                   height: 32px;
                   line-height: inherit;
@@ -737,7 +737,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       cursor: default;
                       display: flex;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 14px;
+                      font-size: 12px;
                       font-weight: 400;
                       height: 32px;
                       justify-content: center;
@@ -892,7 +892,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   color: #333333;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
+                  font-size: 12px;
                   font-weight: 400;
                   height: 32px;
                   line-height: inherit;
@@ -1048,7 +1048,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   color: #333333;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
+                  font-size: 12px;
                   font-weight: 400;
                   height: 32px;
                   line-height: inherit;
@@ -1204,7 +1204,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   color: #333333;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
+                  font-size: 12px;
                   font-weight: 400;
                   height: 32px;
                   line-height: inherit;
@@ -1360,7 +1360,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   color: #333333;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
+                  font-size: 12px;
                   font-weight: 400;
                   height: 32px;
                   line-height: inherit;
@@ -1516,7 +1516,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   color: #333333;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
+                  font-size: 12px;
                   font-weight: 400;
                   height: 32px;
                   line-height: inherit;
@@ -1906,7 +1906,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                       cursor: default;
                       display: flex;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 14px;
+                      font-size: 12px;
                       font-weight: 400;
                       height: 32px;
                       justify-content: center;
@@ -2061,7 +2061,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                   color: #333333;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
+                  font-size: 12px;
                   font-weight: 400;
                   height: 32px;
                   line-height: inherit;
@@ -2484,7 +2484,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                       cursor: default;
                       display: flex;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 14px;
+                      font-size: 12px;
                       font-weight: 400;
                       height: 32px;
                       justify-content: center;
@@ -2639,7 +2639,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   color: #333333;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
+                  font-size: 12px;
                   font-weight: 400;
                   height: 32px;
                   line-height: inherit;
@@ -2828,7 +2828,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   color: #333333;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
+                  font-size: 12px;
                   font-weight: 400;
                   height: 32px;
                   line-height: inherit;
@@ -3017,7 +3017,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   color: #333333;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
+                  font-size: 12px;
                   font-weight: 400;
                   height: 32px;
                   line-height: inherit;
@@ -3439,7 +3439,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       cursor: default;
                       display: flex;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 14px;
+                      font-size: 12px;
                       font-weight: 400;
                       height: 32px;
                       justify-content: center;
@@ -3594,7 +3594,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   color: #333333;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
+                  font-size: 12px;
                   font-weight: 400;
                   height: 32px;
                   line-height: inherit;
@@ -3753,7 +3753,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   color: #333333;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
+                  font-size: 12px;
                   font-weight: 400;
                   height: 32px;
                   line-height: inherit;
@@ -3912,7 +3912,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   color: #333333;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
+                  font-size: 12px;
                   font-weight: 400;
                   height: 32px;
                   line-height: inherit;
@@ -4071,7 +4071,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   color: #333333;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
+                  font-size: 12px;
                   font-weight: 400;
                   height: 32px;
                   line-height: inherit;
@@ -4230,7 +4230,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   color: #333333;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
+                  font-size: 12px;
                   font-weight: 400;
                   height: 32px;
                   line-height: inherit;
@@ -4632,7 +4632,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                   color: #333333;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
+                  font-size: 12px;
                   font-weight: 400;
                   height: 32px;
                   line-height: inherit;
@@ -5112,7 +5112,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         cursor: default;
                                         display: inline-flex;
                                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                        font-size: 14px;
+                                        font-size: 12px;
                                         font-weight: 400;
                                         min-height: 42px;
                                         min-width: 100%;
@@ -5310,7 +5310,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         cursor: default;
                                         display: inline-flex;
                                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                        font-size: 14px;
+                                        font-size: 12px;
                                         font-weight: 400;
                                         min-height: 42px;
                                         min-width: 100%;
@@ -5733,7 +5733,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         cursor: default;
                                         display: inline-flex;
                                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                        font-size: 14px;
+                                        font-size: 12px;
                                         font-weight: 400;
                                         min-height: 42px;
                                         min-width: 100%;
@@ -5931,7 +5931,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         cursor: default;
                                         display: inline-flex;
                                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                        font-size: 14px;
+                                        font-size: 12px;
                                         font-weight: 400;
                                         min-height: 42px;
                                         min-width: 100%;
@@ -6129,7 +6129,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         cursor: default;
                                         display: inline-flex;
                                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                        font-size: 14px;
+                                        font-size: 12px;
                                         font-weight: 400;
                                         min-height: 42px;
                                         min-width: 100%;
