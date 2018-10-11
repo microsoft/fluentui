@@ -390,6 +390,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -436,7 +437,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 top: 0px;
               }
               &:hover {
-                color: #004578;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -511,6 +512,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -557,7 +559,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 top: 0px;
               }
               &:hover {
-                color: #004578;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -632,6 +634,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -678,7 +681,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 top: 0px;
               }
               &:hover {
-                color: #004578;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
