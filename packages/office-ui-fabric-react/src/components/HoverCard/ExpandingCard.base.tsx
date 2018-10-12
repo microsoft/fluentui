@@ -94,14 +94,12 @@ export class ExpandingCardBase extends BaseComponent<IExpandingCardProps, IExpan
 
   private _checkNeedsScroll = (): void => {
     const { expandedCardHeight } = this.props;
-    if (this._expandedElem.current) {
-      this._async.requestAnimationFrame(() => {
-        if (this._expandedElem.current && this._expandedElem.current.scrollHeight >= expandedCardHeight!) {
-          this.setState({
-            needsScroll: true
-          });
-        }
-      });
-    }
+    this._async.requestAnimationFrame(() => {
+      if (this._expandedElem.current && this._expandedElem.current.scrollHeight >= expandedCardHeight!) {
+        this.setState({
+          needsScroll: true
+        });
+      }
+    });
   };
 }
