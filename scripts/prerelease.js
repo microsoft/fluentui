@@ -27,5 +27,6 @@ function getOriginalCommitish() {
 }
 
 const originalCommitish = getOriginalCommitish();
-execSync(`${gitCmd} checkout -b prelease`);
-execSync(`${rushCmd} publish -a --prerelease-name prelease ${getPrereleaseName(originalCommitish)}`);
+const prereleaseName = getPrereleaseName(originalCommitish);
+execSync(`${gitCmd} checkout -b ${prereleaseName}`);
+execSync(`${rushCmd} publish -a --prerelease-name prelease ${prereleaseName}`);
