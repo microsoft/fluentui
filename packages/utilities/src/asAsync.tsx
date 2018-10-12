@@ -5,10 +5,12 @@
  *
  * const AsyncDialog = asAsync({
  *   load: () => import('Dialog').then(result => result.default),
- *   placeholder: () => <div>I am a placeholder</div>
  * });
  *
- * React.render(domElement, <AsyncDialog { ...dialogProps } />);
+ * React.render(domElement, <AsyncDialog asyncPlaceholder={ () => <Spinner/> } { ...dialogProps } />);
+ *
+ * Note the `asyncPlaceholder` prop will be respected when rendering the async component and it hasn't
+ * been loaded yet.
  */
 
 import * as React from 'react';
@@ -18,11 +20,6 @@ export interface IAsAsyncOptions<TProps> {
    * Callback which returns a promise resolving an object which exports the component.
    */
   load: () => Promise<React.ReactType<TProps>>;
-
-  /**
-   * An optional JSX rendering for placeholder content.
-   */
-  placeholder?: React.ReactType;
 
   /**
    * Callback executed when async loading is complete.
@@ -52,18 +49,25 @@ const _syncModuleCache =
  *
  * This overload accepts a module with a default export for the component.
  */
-export function asAsync<TProps>(options: IAsAsyncOptions<TProps>): React.ComponentType<TProps> {
-  class Async extends React.Component<TProps & { forwardedRef: React.Ref<TProps> }, { Component?: React.ReactType<TProps> }> {
+export function asAsync<TProps>(options: IAsAsyncOptions<TProps>): React.ComponentType<TProps & { asyncPlaceholder?: React.ReactType }> {
+  class Async extends React.Component<
+    TProps & {
+      asyncPlaceholder?: React.ReactType;
+      forwardedRef: React.Ref<TProps>;
+    },
+    { Component?: React.ReactType<TProps> }
+  > {
     public state = {
       Component: _syncModuleCache ? _syncModuleCache.get(options.load) : undefined
     };
 
     public render(): JSX.Element | null {
-      const { forwardedRef } = this.props;
+      // Typescript issue: the rest can't be pulled without the any cast, as TypeScript fails with rest on generics.
+      // tslint:disable-next-line:no-any
+      const { forwardedRef, asyncPlaceholder: Placeholder, ...rest } = this.props as any;
       const { Component } = this.state;
-      const Placeholder = options.placeholder;
 
-      return Component ? <Component ref={forwardedRef} {...this.props} /> : Placeholder ? <Placeholder /> : null;
+      return Component ? <Component ref={forwardedRef} {...rest} /> : Placeholder ? <Placeholder /> : null;
     }
 
     public componentDidMount(): void {
@@ -91,5 +95,7 @@ export function asAsync<TProps>(options: IAsAsyncOptions<TProps>): React.Compone
     }
   }
 
-  return React.forwardRef((props: TProps, ref: React.Ref<TProps>) => <Async {...props} forwardedRef={ref} />);
+  return React.forwardRef((props: TProps & { asyncPlaceholder?: React.ReactType }, ref: React.Ref<TProps>) => (
+    <Async {...props} forwardedRef={ref} />
+  ));
 }
