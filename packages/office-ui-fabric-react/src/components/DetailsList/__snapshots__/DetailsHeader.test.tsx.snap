@@ -96,7 +96,6 @@ exports[`DetailsHeader can render 1`] = `
 
     >
       <div
-        aria-describedby="header0-checkTooltip"
         className=
             ms-DetailsRow-check
             ms-DetailsRow-check--isHeader
@@ -944,7 +943,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
 
     >
       <div
-        aria-describedby="header4-checkTooltip"
         className=
             ms-DetailsRow-check
             ms-DetailsRow-check--isHeader
