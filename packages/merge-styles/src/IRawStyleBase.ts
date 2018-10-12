@@ -203,7 +203,7 @@ export interface IFontFace extends IRawFontStyle {
 
   /**
    * unicode-range allows you to set a specific range of characters to be downloaded
-   * from a font (embedded using @font-face) and made available for use on the current
+   * from a font (embedded using \@font-face) and made available for use on the current
    * page.
    */
   unicodeRange?: ICSSRule | string;

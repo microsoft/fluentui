@@ -57,6 +57,7 @@ export class DatePickerBoundedExample extends React.Component<{}, IDatePickerReq
           firstDayOfWeek={firstDayOfWeek}
           strings={DayPickerStrings}
           placeholder="Select a date..."
+          ariaLabel="Select a date"
           minDate={minDate}
           maxDate={maxDate}
           allowTextInput={true}

@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.10.0",
+      "tag": "@uifabric/merge-styles_v6.10.0",
+      "date": "Thu, 11 Oct 2018 23:13:31 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Enable api-extractor task for merge-styles",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "4c8e1118e9b94d8b6bd7e8dc0e44cf080d39d5ea"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.9.4",
       "tag": "@uifabric/merge-styles_v6.9.4",
       "date": "Mon, 08 Oct 2018 12:24:15 GMT",
