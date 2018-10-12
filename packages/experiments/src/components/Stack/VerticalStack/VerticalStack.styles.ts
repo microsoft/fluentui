@@ -1,12 +1,11 @@
-import { IThemedProps } from '../../../Foundation';
 import { getGlobalClassNames } from '../../../Styling';
-import { IVerticalStackProps, IVerticalStackStyles } from './VerticalStack.types';
+import { IVerticalStackComponent, IVerticalStackStyles } from './VerticalStack.types';
 
 const GlobalClassNames = {
   root: 'ms-VerticalStack'
 };
 
-export const styles = (props: IThemedProps<IVerticalStackProps>): IVerticalStackStyles => {
+export const styles: IVerticalStackComponent['styles'] = props => {
   const { className, theme } = props;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 

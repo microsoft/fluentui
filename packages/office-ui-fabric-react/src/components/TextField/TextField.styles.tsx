@@ -1,11 +1,4 @@
-import {
-  AnimationClassNames,
-  FontSizes,
-  getGlobalClassNames,
-  HighContrastSelector,
-  IStyle,
-  normalize
-} from '../../Styling';
+import { AnimationClassNames, FontSizes, getGlobalClassNames, HighContrastSelector, IStyle, normalize } from '../../Styling';
 import { ILabelStyles, ILabelStyleProps } from '../../Label';
 import { ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';

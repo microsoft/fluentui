@@ -34,6 +34,11 @@ export interface ICardFrameProps {
   cardTitle: string;
 
   /**
+   * the call back triggered upon clicking card title
+   */
+  cardTitleCallback?: VoidFunction;
+
+  /**
    * Contains the items that go into the dropdown of the frame
    */
   cardDropDownOptions?: ICardDropDownOption[] | undefined;

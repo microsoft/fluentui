@@ -45,6 +45,11 @@ export interface IArcProps {
    * Active Arc for chart
    */
   activeArc?: string;
+
+  /**
+   * internal prop for href
+   */
+  href?: string;
 }
 
 export interface IArcData {

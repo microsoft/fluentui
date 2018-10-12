@@ -1,6 +1,53 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 21 Sep 2018 14:25:46 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Oct 2018 12:26:48 GMT and should not be manually modified.
+
+## 6.34.2
+Thu, 04 Oct 2018 12:26:48 GMT
+
+*Version update only*
+
+## 6.34.1
+Wed, 03 Oct 2018 12:28:46 GMT
+
+*Version update only*
+
+## 6.34.0
+Tue, 02 Oct 2018 12:28:04 GMT
+
+### Minor changes
+
+- Separator: new experimental component
+
+### Patches
+
+- Changes to support Foundation interface refactoring.
+
+## 6.33.0
+Mon, 01 Oct 2018 12:27:24 GMT
+
+### Minor changes
+
+- Adding Button experiment, initial refactoring of BaseState component
+
+## 6.32.4
+Fri, 28 Sep 2018 12:27:38 GMT
+
+### Patches
+
+- HorizontalStack: remove padding as a fix for collapsing margins, remove unnecessary calc() calls
+
+## 6.32.3
+Thu, 27 Sep 2018 12:27:48 GMT
+
+*Version update only*
+
+## 6.32.2
+Tue, 25 Sep 2018 12:28:12 GMT
+
+### Patches
+
+- Stack: update styles to account for all margin collapsing on wrapped HorizontalStacks
 
 ## 6.32.1
 Fri, 21 Sep 2018 14:25:46 GMT

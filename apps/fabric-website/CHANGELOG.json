@@ -2,6 +2,28 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.4.6",
+      "tag": "@uifabric/fabric-website_v6.4.6",
+      "date": "Tue, 02 Oct 2018 12:28:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Minor typing change to support Foundation refactor.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "3878b423fc86bbbab6322edc72e23a424013e642"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.33.0 <7.0.0` to `>=6.34.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.75.0 <7.0.0` to `>=6.76.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.4.5",
       "tag": "@uifabric/fabric-website_v6.4.5",
       "date": "Fri, 21 Sep 2018 14:25:46 GMT",

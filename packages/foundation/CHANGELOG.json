@@ -2,6 +2,20 @@
   "name": "@uifabric/foundation",
   "entries": [
     {
+      "version": "0.5.4",
+      "tag": "@uifabric/foundation_v0.5.4",
+      "date": "Tue, 02 Oct 2018 12:28:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Interface refactoring for reducing dev friction.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "3878b423fc86bbbab6322edc72e23a424013e642"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.5.3",
       "tag": "@uifabric/foundation_v0.5.3",
       "date": "Fri, 21 Sep 2018 14:25:46 GMT",

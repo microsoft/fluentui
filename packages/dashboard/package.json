@@ -1,16 +1,17 @@
 {
   "name": "@uifabric/dashboard",
-  "version": "0.25.5",
+  "version": "0.29.0",
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
-    "@uifabric/charting": "^0.21.1",
+    "@uifabric/charting": "^0.24.0",
     "@uifabric/example-app-base": ">=6.7.3 <7.0.0",
-    "@uifabric/experiments": ">=6.32.1 <7.0.0",
-    "@uifabric/set-version": ">=1.1.0 <2.0.0",
+    "@uifabric/experiments": ">=6.34.2 <7.0.0",
+    "@uifabric/set-version": ">=1.1.1 <2.0.0",
     "auto-fontsize": "^1.0.18",
     "css-loader": "^0.15.1",
-    "office-ui-fabric-react": ">=6.72.2 <7.0.0",
+    "office-ui-fabric-react": ">=6.78.0 <7.0.0",
     "react-grid-layout": "samiyaakhtar/react-grid-layout",
+    "react-resizable": "^1.7.5",
     "style-loader": "^0.21.0",
     "tslib": "^1.7.1"
   },

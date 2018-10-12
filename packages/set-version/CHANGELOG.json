@@ -2,6 +2,20 @@
   "name": "@uifabric/set-version",
   "entries": [
     {
+      "version": "1.1.1",
+      "tag": "@uifabric/set-version_v1.1.1",
+      "date": "Fri, 28 Sep 2018 12:27:38 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "version files now expose a call that can be called by apps that don't do index import",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "8409a5b61b896b79a4d020a785a698a798d34a28"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.1.0",
       "tag": "@uifabric/set-version_v1.1.0",
       "date": "Fri, 21 Sep 2018 14:25:46 GMT",

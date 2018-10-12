@@ -138,7 +138,7 @@ describe('styled', () => {
     expect(_lastProps!.styles).not.toBe(originStyles);
     originStyles = _lastProps!.styles;
 
-    component.update(<TestCached cool styles={styles} />);
+    component.update(<TestCached styles={styles} />);
     expect(component.toJSON()).toMatchSnapshot();
     expect(_lastProps!.styles).toBe(originStyles);
   });

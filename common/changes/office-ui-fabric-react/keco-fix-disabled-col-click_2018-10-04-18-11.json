@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "make oufr also set sideeffects for version.js",
+      "comment": "Fixes DetailsHeader disabled columns invoking onColumnClick callbacks",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "kchau@microsoft.com"
+  "email": "keco@microsoft.com"
 }

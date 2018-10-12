@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.21.1",
+      "tag": "@uifabric/utilities_v6.21.1",
+      "date": "Wed, 26 Sep 2018 12:27:23 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Memoize: Do not use cached result when function instances are distinct.",
+            "author": "Pablo Núñez <pablonete@gmail.com>",
+            "commit": "74bfc90fdbfae64ba91a53e9bd9b47493e326d60"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.21.0",
       "tag": "@uifabric/utilities_v6.21.0",
       "date": "Fri, 21 Sep 2018 14:25:46 GMT",

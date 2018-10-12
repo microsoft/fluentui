@@ -32,8 +32,8 @@
     "react-dom": ">=16.3.2-0 <17.0.0"
   },
   "dependencies": {
-    "@uifabric/styling": ">=6.27.0 <7.0.0",
-    "@uifabric/set-version": ">=1.1.0 <2.0.0",
+    "@uifabric/styling": ">=6.29.0 <7.0.0",
+    "@uifabric/set-version": ">=1.1.1 <2.0.0",
     "tslib": "^1.7.1"
   },
   "peerDependencies": {

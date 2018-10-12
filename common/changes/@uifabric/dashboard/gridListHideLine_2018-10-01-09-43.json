@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/dashboard",
+      "comment": "removed the line inbetween the grid rows",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/dashboard",
+  "email": "polu.balakrishna96@gmail.com"
+}

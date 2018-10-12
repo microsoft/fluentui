@@ -2,6 +2,236 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.78.0",
+      "tag": "office-ui-fabric-react_v6.78.0",
+      "date": "Thu, 04 Oct 2018 12:26:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add explicit min-width of 0px to SearchBox input element, to prevent overflow when SearchBox has a fixed width.",
+            "author": "Ayrton Massey <ayrtonmassey@googlemail.com>",
+            "commit": "dc8006f130300a6dee7831e3e0166a4da8ff84a8"
+          },
+          {
+            "comment": "Modal: small topOffsetFixed changes and added example to Dialog",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "3d6d7e1213c9b402655376c61dc8782a01917af1"
+          },
+          {
+            "comment": "Dropdown: only apply an aria-labelledby attribute if a non-empty label property is given",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "8ea7b62a98c581a9c89a92160f5a84e6fa143ee0"
+          },
+          {
+            "comment": "Correct hover and highlight states for Calendar (DateRangeType.Week)",
+            "author": "Jeff Hellesen <jhellesen@gmail.com>",
+            "commit": "6de50bf9e453ba12b588bd5532e5bfad6564e995"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Coachmark: Add delayBeforeCoachmarkAnimation prop",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "a6d25782cd0b11a5f010b1409f8fa2a287a370e5"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.28.0 <7.0.0` to `>=6.29.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.77.0",
+      "tag": "office-ui-fabric-react_v6.77.0",
+      "date": "Wed, 03 Oct 2018 12:28:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "FocusZone: check for RTL before making top bottom comparisons",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "42d14e685d6dcc4e1ebc16a6aa643f873bcf9ce8"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Modal: add optional prop topOffsetFixed",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "2e0ccb4e91fb916e6393e303668811be025f9c46"
+          },
+          {
+            "comment": "SwatchColorPicker: let height and width be customizable",
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "af98084ea865dea7baf0c471d870a30fd69a5c0b"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.76.0",
+      "tag": "office-ui-fabric-react_v6.76.0",
+      "date": "Tue, 02 Oct 2018 12:28:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Layer: Don't block capture events, allowing onFocus and onBlur events to work as expected.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "297e3c73652fe3a6ccf2313c9fb8b096b5792381"
+          },
+          {
+            "comment": "TextField: prettier fixes",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "b972ca448de76d6e0c0998ef109342b1580911c8"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Pivot: update the wrapper holding the tab buttons from ul tags to div for HTML validation and keep the narrator working correctly.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "1aef8fc8bef6c15a0c01c33828750f1ff299076a"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.75.0",
+      "tag": "office-ui-fabric-react_v6.75.0",
+      "date": "Mon, 01 Oct 2018 12:27:24 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Improve _isWhiteCell logic to handle rgb(a) and hex shorthand  notation.",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "8b0a6acc0dcb4c4f86934b24e1567114c2edd280"
+          },
+          {
+            "comment": "Add native props support for input properties to  SearchBox's inner input element.",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "85162a93eb1e4abe5e8edd36fbf108990e89dbd3"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "semantic slot value updates per design direction",
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "4b31ba1706ff7b4a1b34399d3f1ffdb192737dbd"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.9.2 <7.0.0` to `>=6.9.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.27.0 <7.0.0` to `>=6.28.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.74.2",
+      "tag": "office-ui-fabric-react_v6.74.2",
+      "date": "Fri, 28 Sep 2018 12:27:38 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsList: replace the use of neutralSecondaryAlt color which was deprecated.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "0a4702e612f30cae0f098bec8c7954d93979464b"
+          },
+          {
+            "comment": "ComboBox: add logic to stop onBlur handler to be invoked when clicking on Callout's scrollbar.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "16ee7e1a2be22740d2ebb14cedebd8f540a5c572"
+          },
+          {
+            "comment": "now all the top level components will include version info for package",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "8409a5b61b896b79a4d020a785a698a798d34a28"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.9.1 <7.0.0` to `>=6.9.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.1.0 <2.0.0` to `>=1.1.1 <2.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.74.1",
+      "tag": "office-ui-fabric-react_v6.74.1",
+      "date": "Thu, 27 Sep 2018 12:27:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Layer: Do not render content until virtual parent is set.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "7c8f61240ceb45d2934a25a22931ea716a20397d"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.74.0",
+      "tag": "office-ui-fabric-react_v6.74.0",
+      "date": "Wed, 26 Sep 2018 12:27:23 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add currentRenderedQueryString to avoid discrepancy",
+            "author": "Francis Meng <meng.francis@gmail.com>",
+            "commit": "279f798a66462c382eadb816d8a25fe6ca96e861"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Sticky: second null check for currElem",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "d2778eb85f78a056e552fda52cda17c6bc273d5b"
+          },
+          {
+            "comment": "Dropdown: prevent dropdown to open on keyboard events when in disabled mode.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "ed76bda0e18f3a68c831383ef898e092e1e3a8f0"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.21.0 <7.0.0` to `>=6.21.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.73.0",
+      "tag": "office-ui-fabric-react_v6.73.0",
+      "date": "Tue, 25 Sep 2018 12:28:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ResizeGroup: Remove classNamesFunction from ResizeGroup",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "418fe4c38c2e18719446e1c53ebfdc544aac1d53"
+          },
+          {
+            "comment": "make oufr also set sideeffects for version.js",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "69138be4cf348b4597b252828c174940cbbcb508"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Allows callout props to be passed through the base picker",
+            "author": "kisiebel <40902158+kisiebel@users.noreply.github.com>",
+            "commit": "2eb1bb1c978f9e7ee69319038df415c349f530d8"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.72.2",
       "tag": "office-ui-fabric-react_v6.72.2",
       "date": "Mon, 24 Sep 2018 12:27:31 GMT",

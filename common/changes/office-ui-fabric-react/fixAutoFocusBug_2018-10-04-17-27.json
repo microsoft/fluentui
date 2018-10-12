@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ResizeGroup: Remove classNamesFunction from ResizeGroup",
+      "comment": "Fixed null ref error when autoFocus prop is used in SearchBox",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "edwl@microsoft.com"
+  "email": "dardis.greg@gmail.com"
 }

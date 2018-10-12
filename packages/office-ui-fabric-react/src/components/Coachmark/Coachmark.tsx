@@ -122,6 +122,7 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> i
     isCollapsed: true,
     mouseProximityOffset: 10,
     delayBeforeMouseOpen: 3600, // The approximate time the coachmark shows up
+    delayBeforeCoachmarkAnimation: 0,
     color: DefaultPalette.themePrimary,
     isPositionForced: true,
     positioningContainerProps: {
@@ -191,7 +192,8 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> i
       ariaDescribedByText,
       ariaLabelledBy,
       ariaLabelledByText,
-      ariaAlertText
+      ariaAlertText,
+      delayBeforeCoachmarkAnimation
     } = this.props;
 
     const {
@@ -218,7 +220,8 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> i
       height: `${COACHMARK_HEIGHT}px`,
       color: color,
       transformOrigin: transformOrigin,
-      isMeasured: isMeasured
+      isMeasured: isMeasured,
+      delayBeforeCoachmarkAnimation: `${delayBeforeCoachmarkAnimation}ms`
     });
 
     const finalHeight: number = isCollapsed ? COACHMARK_HEIGHT : entityInnerHostRect.height;

@@ -11,7 +11,7 @@ exports[`Component Examples renders Pivot.Basic.Example.tsx correctly 1`] = `
       onMouseDownCapture={[Function]}
       role="presentation"
     >
-      <ul
+      <div
         className=
             ms-Pivot
             {
@@ -487,7 +487,7 @@ exports[`Component Examples renders Pivot.Basic.Example.tsx correctly 1`] = `
             </span>
           </div>
         </button>
-      </ul>
+      </div>
     </div>
     <div
       aria-labelledby="Pivot0-Tab0"

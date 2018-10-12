@@ -1,6 +1,8 @@
 import { IPartialStackProps } from '../Stack.types';
-import { IStyleFunctionOrObject } from '../../../Utilities';
+import { IStatelessComponent, IStylesProp } from '../../../Foundation';
 import { IStyle } from '../../../Styling';
+
+export type IHorizontalStackComponent = IStatelessComponent<IHorizontalStackProps, IHorizontalStackStyles>;
 
 export interface IHorizontalStackProps extends IPartialStackProps {
   /**
@@ -32,7 +34,7 @@ export interface IHorizontalStackProps extends IPartialStackProps {
   /**
    * Custom styles to apply to the HorizontalStack.
    */
-  styles?: IStyleFunctionOrObject<IHorizontalStackProps, IHorizontalStackStyles>;
+  styles?: IStylesProp<IHorizontalStackProps, IHorizontalStackStyles>;
 }
 
 export interface IHorizontalStackStyles {

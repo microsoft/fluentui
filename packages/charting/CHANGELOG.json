@@ -2,6 +2,108 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.24.0",
+      "tag": "@uifabric/charting_v0.24.0",
+      "date": "Thu, 04 Oct 2018 12:26:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding optional href prop to dataviz, to redirect upon clicking on the dataviz",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "6194d6146cedf95ae666ce85fb84c0877963d8f2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.77.0 <7.0.0` to `>=6.78.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.23.0",
+      "tag": "@uifabric/charting_v0.23.0",
+      "date": "Wed, 03 Oct 2018 12:28:46 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Removing old legends component. Replaced in all data-viz with the new components which supports isolation and other states",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "327dd49d837d5065df25bb87a380d31033a8343a"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.76.0 <7.0.0` to `>=6.77.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.22.1",
+      "tag": "@uifabric/charting_v0.22.1",
+      "date": "Mon, 01 Oct 2018 12:27:24 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding timeout so that line chart can scale according to the container size and occupy the entire width thereby",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "c1b25e2da4dadca43e6b880407f6e9378d44ae52"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.74.2 <7.0.0` to `>=6.75.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.22.0",
+      "tag": "@uifabric/charting_v0.22.0",
+      "date": "Thu, 27 Sep 2018 12:27:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "donut chart legends padding issue fix",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "6ce5620e70a1da8a6d1a5c63ebf1fd45e81a766e"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "1)Making the line chart responsive 2)Correcting flex behavior 3)Curving corners of lines to get a smooth intersection between lines",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "ab1cbcae84ae0d91ef47d61189911c815ca872e1"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.74.0 <7.0.0` to `>=6.74.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.21.2",
+      "tag": "@uifabric/charting_v0.21.2",
+      "date": "Tue, 25 Sep 2018 12:28:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "change  barHeight for lessthan 2 data points and apply css for ratio txt",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "4e2e5f5b49f643bf17fe816bdd2faa91bd4e9f35"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.72.2 <7.0.0` to `>=6.73.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.21.1",
       "tag": "@uifabric/charting_v0.21.1",
       "date": "Fri, 21 Sep 2018 14:25:46 GMT",

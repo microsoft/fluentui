@@ -10,6 +10,12 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
+          component: require<any>('../components/Button/ButtonPage').ButtonPage,
+          key: 'Button',
+          name: 'Button',
+          url: '#/examples/button'
+        },
+        {
           component: require<any>('../components/CollapsibleSection/CollapsibleSectionPage').CollapsibleSectionPage,
           key: 'CollapsibleSection',
           name: 'CollapsibleSection',
@@ -50,6 +56,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'LayoutGroup',
           name: 'LayoutGroup',
           url: '#/examples/layoutgroup'
+        },
+        {
+          component: require<any>('../components/Separator/SeparatorPage').SeparatorPage,
+          key: 'Separator',
+          name: 'Separator',
+          url: '#/examples/separator'
         },
         {
           component: require<any>('../components/signals/SignalsPage').SignalsPage,

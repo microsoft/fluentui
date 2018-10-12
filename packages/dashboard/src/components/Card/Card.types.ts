@@ -104,6 +104,11 @@ export interface ICardFrameContent {
    * Target for Hyperlink URL for title
    */
   target?: string;
+
+  /**
+   * callback triggered upon clicking on the card title. Card title is clickable only when href is passed to it.
+   */
+  cardTitleCallback?: VoidFunction;
 }
 
 export interface ICardProps {
