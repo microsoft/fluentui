@@ -120,6 +120,18 @@ describe('styled', () => {
     expect(_lastProps!.styles).toBe(originStyles);
     originStyles = _lastProps!.styles;
 
+    // Not passing in "cool" should cause re-evaluation of styles.
+    component.update(<TestCached />);
+    expect(component.toJSON()).toMatchSnapshot();
+    expect(_lastProps!.styles).not.toBe(originStyles);
+    originStyles = _lastProps!.styles;
+
+    // Passing the same props in again should skip re-evaluation.
+    component.update(<TestCached />);
+    expect(component.toJSON()).toMatchSnapshot();
+    expect(_lastProps!.styles).toBe(originStyles);
+    originStyles = _lastProps!.styles;
+
     const styles = { root: { color: 'red' } };
     component.update(<TestCached cool styles={styles} />);
     expect(component.toJSON()).toMatchSnapshot();
