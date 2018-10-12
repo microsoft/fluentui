@@ -12,6 +12,7 @@ import {
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { createRef } from 'office-ui-fabric-react/lib/Utilities';
+import { IDragDropContext } from '../../../../../office-ui-fabric-react/lib/utilities/dragdrop';
 
 const _items: any[] = [];
 
@@ -73,7 +74,7 @@ export class AnnouncedBasicExample extends React.Component<
     selectionDetails: {};
     showItemIndexInView: boolean;
   }
-  > {
+> {
   private _selection: Selection;
   private _detailsList = createRef<IDetailsList>();
 
@@ -98,6 +99,7 @@ export class AnnouncedBasicExample extends React.Component<
     });
 
     this._onItemInvoked = this._onItemInvoked.bind(this);
+    this._onDeleteItem = this._onDeleteItem.bind(this);
 
     this.state = {
       items: _items,
@@ -132,6 +134,10 @@ export class AnnouncedBasicExample extends React.Component<
     );
   }
 
+  public _onDeleteItem(item?: any, index?: number, event?: React.KeyboardEvent<HTMLElement>): void {
+    console.log('delete item');
+  }
+
   public componentWillUnmount() {
     if (this.state.showItemIndexInView) {
       const itemIndexInView = this._detailsList!.current!.getStartItemIndexInView();
@@ -139,12 +145,19 @@ export class AnnouncedBasicExample extends React.Component<
     }
   }
 
-  public _onKeyDown(): void {
-    console.log('hello');
-  }
+  public _onClick = (): void => {
+    // console.log('hello');
+  };
 
   public _onRenderRow(props: IDetailsRowProps): JSX.Element {
-    return <DetailsRow {...props} />;
+    const eventMap = [
+      {
+        eventName: 'delete',
+        callback: (item?: any, index?: number, event?: React.KeyboardEvent<HTMLElement>) => this._onDeleteItem()
+      }
+    ];
+
+    return <DetailsRow {...props} eventsToRegister={eventMap} />;
   }
 
   public _onRenderItemColumn(item: any, index: number, column: IColumn) {
@@ -153,7 +166,7 @@ export class AnnouncedBasicExample extends React.Component<
     switch (column.key) {
       case 'column1':
         return (
-          <span>
+          <div>
             {fieldContent}
             <IconButton
               iconProps={{ iconName: 'MoreVertical' }}
@@ -170,6 +183,7 @@ export class AnnouncedBasicExample extends React.Component<
                   {
                     key: 'delete',
                     text: 'Delete'
+                    // onClick: this._onClick
                   },
                   {
                     key: 'rename',
@@ -178,7 +192,7 @@ export class AnnouncedBasicExample extends React.Component<
                 ]
               }}
             />
-          </span>
+          </div>
         );
 
       default:
