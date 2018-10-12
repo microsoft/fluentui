@@ -1,7 +1,11 @@
 const path = require('path');
-const execSync = require('child_process').execSync;
-const rushCmd = path.resolve('../common/scripts/install-run-rush.js');
+const cp = require('child_process');
+const rushCmd = path.resolve(__dirname, '../common/scripts/install-run-rush.js');
 const gitCmd = 'git';
+
+const execSync = function() {
+  return cp.execSync.apply(this, arguments).toString();
+};
 
 function getPrereleaseName(originalCommitish) {
   const now = new Date();
@@ -11,7 +15,13 @@ function getPrereleaseName(originalCommitish) {
   if (process.env.BUILD_BUILDID) {
     suffix = process.env.BUILD_BUILDID;
   } else {
-    suffix = `${now.getFullYear()}${now.getMonth().padStart(2, '0')}${now.getDate().padStart(2, '0')}`;
+    suffix = `${now.getFullYear()}${now
+      .getMonth()
+      .toString()
+      .padStart(2, '0')}${now
+      .getDate()
+      .toString()
+      .padStart(2, '0')}`;
   }
 
   return `prerelease-${originalCommitish}-${suffix}`;
@@ -29,4 +39,4 @@ function getOriginalCommitish() {
 const originalCommitish = getOriginalCommitish();
 const prereleaseName = getPrereleaseName(originalCommitish);
 execSync(`${gitCmd} checkout -b ${prereleaseName}`);
-execSync(`${rushCmd} publish -a --prerelease-name prelease ${prereleaseName}`);
+execSync(`${process.execPath} ${rushCmd} publish -a --prerelease-name prelease ${prereleaseName}`);
