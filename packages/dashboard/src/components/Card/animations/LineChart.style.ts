@@ -22,7 +22,7 @@ const lineChartLoadingSegmentAnimationSegment2Keyframes = keyframes({
   }
 });
 
-export interface IHorizontalBarGraphStyles {
+export interface ILineChartStyles {
   lineChartLoading: IStyle;
   lineChartLoadingSegment: IStyle;
   lineChartLoadingSegmentFirst: IStyle;
@@ -31,7 +31,7 @@ export interface IHorizontalBarGraphStyles {
   lineChartLoadingSegmentAnimation: any;
 }
 
-export const getStyles = (): IHorizontalBarGraphStyles => {
+export const getStyles = (): ILineChartStyles => {
   return {
     lineChartLoading: {
       height: '200px',

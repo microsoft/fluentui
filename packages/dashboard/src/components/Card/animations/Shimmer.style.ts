@@ -10,12 +10,12 @@ const shimmerLoadingAnimationKeyframes = keyframes({
   }
 });
 
-export interface IHorizontalBarGraphStyles {
+export interface IShimmerStyles {
   shimmerLoading: IStyle;
   shimmerLoadingBar: IStyle;
 }
 
-export const getStyles = (): IHorizontalBarGraphStyles => {
+export const getStyles = (): IShimmerStyles => {
   return {
     shimmerLoading: {
       height: '300px',

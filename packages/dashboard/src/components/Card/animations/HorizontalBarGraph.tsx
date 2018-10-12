@@ -2,7 +2,8 @@ import * as React from 'react';
 
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-import { getStyles } from '../animations/HorizontalBarGraph.style';
+import { getStyles, IHorizontalBarGraphStyles } from '../animations/HorizontalBarGraph.style';
+import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface IHorizontalBarGraph {}
 
@@ -12,8 +13,9 @@ export class HorizontalBarGraph extends React.Component<IHorizontalBarGraph> {
   }
 
   public render(): JSX.Element {
-    const horizontalBarGraphLoadingClassName = mergeStyles(getStyles().horizontalBarGraphLoading);
-    const horizontalBarGraphLoadingBarClassName = mergeStyles(getStyles().horizontalBarGraphLoadingBar);
+    const getClassNames = classNamesFunction<IHorizontalBarGraph, IHorizontalBarGraphStyles>();
+    const classNames = getClassNames(getStyles, {});
+
     const horizontalBarGraphLoadingBarFirstClassName = mergeStyles(
       getStyles().horizontalBarGraphLoadingBarFirst,
       getStyles().horizontalBarGraphLoadingAnimatedSegment
@@ -23,8 +25,8 @@ export class HorizontalBarGraph extends React.Component<IHorizontalBarGraph> {
       getStyles().horizontalBarGraphLoadingAnimatedSegment
     );
     return (
-      <div className={horizontalBarGraphLoadingClassName}>
-        <div className={horizontalBarGraphLoadingBarClassName}>
+      <div className={classNames.horizontalBarGraphLoading}>
+        <div className={classNames.horizontalBarGraphLoadingBar}>
           <div className={horizontalBarGraphLoadingBarFirstClassName} />
           <div className={horizontalBarGraphLoadingBarSecondClassName} />
         </div>
