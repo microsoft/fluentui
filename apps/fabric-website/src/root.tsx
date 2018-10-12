@@ -25,10 +25,20 @@ initializeIcons();
 
 let isProduction = process.argv.indexOf('--production') > -1;
 
+let isLocal = window.location.hostname === 'localhost' || window.location.hostname.indexOf('ngrok.io') > -1;
+declare let Flight; // Contains flight & CDN configuration loaded by manifest
+declare let __webpack_public_path__;
+
+// Final bundle location can be dynamic, so we need to update the public path
+// at runtime to point to the right CDN URL
+if (!isLocal && Flight.baseCDNUrl) {
+  __webpack_public_path__ = Flight.baseCDNUrl;
+}
+
 if (!isProduction) {
   setBaseUrl('./dist/');
 } else {
-  setBaseUrl('https://static2.sharepointonline.com/files/fabric/fabric-website/dist/');
+  setBaseUrl(__webpack_public_path__);
 }
 
 let rootElement;
