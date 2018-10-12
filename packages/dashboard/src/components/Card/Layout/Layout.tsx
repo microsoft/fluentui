@@ -36,7 +36,6 @@ export class Layout extends React.Component<ILayoutProps> {
       classNames.contentArea2,
       cardSize
     );
-    // const { chartType } = cardContent.content as IChartProps;
     const headerElement: JSX.Element | null = this._generateHeader(header!);
     const footerElement: JSX.Element | null = this._generateFooter(actions!, classNames.footer);
     return (

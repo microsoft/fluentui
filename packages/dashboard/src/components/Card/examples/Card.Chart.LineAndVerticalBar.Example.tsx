@@ -109,7 +109,7 @@ export class LineAndVerticalBarChartExample extends React.Component<{}, { loadin
     setTimeout(() => {
       that.setState({ loading: false });
     }, 10000);
-    
+
     return (
       <Card
         cardFrameContent={cardFrameContent}

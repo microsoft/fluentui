@@ -35,13 +35,13 @@ export class Card extends React.Component<ICardProps, ICardState> {
   public render(): JSX.Element {
     const { cardFrameContent, header, cardContentList, actions, disableDrag, loading } = this.props;
     cardContentList!.some(
-      // tslint:disable-next-line
-      (item: ICardContentDetails): any => {
+      (item: ICardContentDetails): boolean => {
         if (item.cardContentType === CardContentType.Chart) {
           const { chartType } = item.content as IChartProps;
           this._chartType = chartType;
           return true;
         }
+        return false;
       }
     );
     const animation: JSX.Element | undefined = this._getAnimation(this._chartType);
