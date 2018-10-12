@@ -334,8 +334,8 @@ describe('DetailsHeader', () => {
         .find(`#${selectAllCheckBoxAriaLabelledBy}`)
         .first()
         .getDOMNode()
-        .getAttribute('aria-describedby')
-    ).toBeNull();
+        .hasAttribute('aria-describedby')
+    ).toBe(false);
 
     expect(component.find(`#${selectAllCheckBoxAriaLabelledBy}Tooltip`).length).toEqual(0);
   });
