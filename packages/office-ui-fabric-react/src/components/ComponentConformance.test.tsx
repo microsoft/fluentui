@@ -23,8 +23,8 @@ const listProps = {
 
 // Props required by certain components in order for tests to pass
 const requiredProps: { [key: string]: any } = {
-  BasicCard: {
-    onRenderBasicCard: () => null
+  PlainCard: {
+    onRenderPlainCard: () => null
   },
   ColorPicker: {
     color: '#ffffff'
@@ -86,7 +86,6 @@ const requiredProps: { [key: string]: any } = {
 // Some components inject the className prop on a child DOM element rather than the root,
 // so the test needs to look for className on the child props object that has the given class name
 const classNameSelectors: { [key: string]: string } = {
-  BasicCard: 'ms-Callout',
   Breadcrumb: 'ms-Breadcrumb',
   Callout: 'ms-Callout',
   ContextualMenu: 'ms-ContextualMenu',
@@ -96,6 +95,7 @@ const classNameSelectors: { [key: string]: string } = {
   Modal: 'ms-Modal',
   Nav: 'ms-Nav',
   Panel: 'ms-Panel',
+  PlainCard: 'ms-Callout',
   Tooltip: 'ms-Tooltip'
 };
 
@@ -104,7 +104,7 @@ const classNameSelectors: { [key: string]: string } = {
 const excludedComponents: string[] = [
   'Beak', // className is not injected
   'Button', // deprecated, test Button variants instead
-  'Card', // helper abstract class, not meant to be instantiated
+  'CardCallout', // className injected one level above
   'ChoiceGroupOption', // className is not injected
   'Coachmark', // className is not injected
   'ColorRectangle', // className is not injected
