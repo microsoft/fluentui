@@ -54,6 +54,6 @@ const extraArgs = process.argv.slice(2).join(' ');
 const originalCommitish = getOriginalCommitish();
 const prereleaseName = getPrereleaseName(originalCommitish);
 execSync(`${gitCmd} checkout -b ${prereleaseName}`);
-execSync(`${process.execPath} ${rushCmd} publish --prerelease-name ${prereleaseName} ${extraArgs}`);
+console.log(execSync(`${process.execPath} ${rushCmd} publish --prerelease-name ${prereleaseName} ${extraArgs}`));
 execSync(`${gitCmd} reset --hard`);
 execSync(`${gitCmd} checkout ${originalCommitish}`);
