@@ -278,6 +278,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         display: 'flex',
         flexDirection: 'column',
         maxHeight: '100%',
+        overflowY: 'hidden',
         selectors: {
           ['@supports (-webkit-overflow-scrolling: touch)']: {
             maxHeight: windowHeight
@@ -335,9 +336,6 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       {
         marginBottom: 0,
         paddingBottom: 20
-      },
-      isFooterAtBottom && {
-        flexGrow: 1
       }
     ],
     footer: [
