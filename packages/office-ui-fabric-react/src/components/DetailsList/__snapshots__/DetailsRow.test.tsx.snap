@@ -139,7 +139,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
 
             >
               <div
-                aria-describedby="header0-checkTooltip"
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
@@ -946,7 +945,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
 
             >
               <div
-                aria-describedby="header9-checkTooltip"
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
@@ -2287,7 +2285,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
 
             >
               <div
-                aria-describedby="header3-checkTooltip"
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
@@ -3094,7 +3091,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
 
             >
               <div
-                aria-describedby="header6-checkTooltip"
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader

@@ -139,7 +139,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
 
             >
               <div
-                aria-describedby="header0-checkTooltip"
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
