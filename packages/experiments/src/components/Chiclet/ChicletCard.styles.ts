@@ -8,6 +8,7 @@ export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => 
   return {
     root: [
       'ms-ChicletCard',
+      theme.fonts.medium,
       normalize,
       {
         WebkitFontSmoothing: 'antialiased',

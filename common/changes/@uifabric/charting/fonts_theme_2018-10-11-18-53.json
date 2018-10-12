@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "Added font theme setting in styles of DonutChart, LineChart, PieChart, StackedBarChart, VerticalBarChart.",
+      "packageName": "@uifabric/charting",
+      "type": "none"
+    }
+  ],
+  "packageName": "@uifabric/charting",
+  "email": "aneeshak@microsoft.com"
+}

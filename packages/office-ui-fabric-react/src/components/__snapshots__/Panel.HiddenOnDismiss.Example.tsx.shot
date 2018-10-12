@@ -195,7 +195,12 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
               ms-Panel
               ms-Panel--hasCloseButton
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 bottom: 0px;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 left: 0px;
                 pointer-events: none;
                 position: absolute;

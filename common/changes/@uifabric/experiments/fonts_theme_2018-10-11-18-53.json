@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "Added font theme setting to Button, ChicletCard, CollapsibleSection, Shimmer, ShimmerCircle, ShimmerElementsGroup, ShimmerGap, ShimmerLine, HorizontalStack, Text. Snapshots updated in VerticalStack, Stack.",
+      "packageName": "@uifabric/experiments",
+      "type": "none"
+    }
+  ],
+  "packageName": "@uifabric/experiments",
+  "email": "aneeshak@microsoft.com"
+}

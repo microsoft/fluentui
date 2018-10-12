@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "Adding Styling for marginLeft in Nav.",
+      "packageName": "@uifabric/dashboard",
+      "type": "none"
+    }
+  ],
+  "packageName": "@uifabric/dashboard",
+  "email": "aneeshak@microsoft.com"
+}

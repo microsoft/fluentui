@@ -8,6 +8,7 @@ export const TextStyles: ITextComponent['styles'] = props => {
 
   return {
     root: [
+      theme.fonts.medium,
       {
         display: inline ? 'inline' : as === 'td' ? 'table-cell' : 'block',
         fontFamily: variantObject.family || 'inherit',
