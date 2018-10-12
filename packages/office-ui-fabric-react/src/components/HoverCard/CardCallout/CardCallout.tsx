@@ -1,9 +1,9 @@
 import * as React from 'react';
 
 import { divProperties, getNativeProps } from '../../../Utilities';
-import { Callout } from '../../Callout';
+import { Callout } from '../../../Callout';
 import { DirectionalHint } from '../../../common/DirectionalHint';
-import { FocusTrapZone } from '../../FocusTrapZone';
+import { FocusTrapZone } from '../../../FocusTrapZone';
 import { IBaseCardProps } from '../BaseCard.types';
 
 export interface ICardCalloutProps extends IBaseCardProps<{}, {}, {}> {
