@@ -2,13 +2,13 @@ import * as React from 'react';
 
 import { IDocPageProps } from '../../common/DocPage.types';
 import { HoverCardBasicExample } from './examples/HoverCard.Basic.Example';
-import { HoverCardBasicCardExample } from './examples/HoverCard.BasicCard.Example';
+import { HoverCardPlainCardExample } from './examples/HoverCard.PlainCard.Example';
 import { HoverCardTargetExample } from './examples/HoverCard.Target.Example';
 import { HoverCardStatus } from './HoverCard.checklist';
 
 const HoverCardBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/HoverCard/examples/HoverCard.Basic.Example.tsx') as string;
 const HoverCardTargetExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/HoverCard/examples/HoverCard.Target.Example.tsx') as string;
-const HoverCardBasicCardExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/HoverCard/examples/HoverCard.BasicCard.Example.tsx') as string;
+const HoverCardPlainCardExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/HoverCard/examples/HoverCard.PlainCard.Example.tsx') as string;
 
 export const HoverCardPageProps: IDocPageProps = {
   title: 'HoverCard',
@@ -28,14 +28,14 @@ export const HoverCardPageProps: IDocPageProps = {
     },
     {
       title: 'Example 3: Basic HoverCard wrapping an element',
-      code: HoverCardBasicCardExampleCode,
-      view: <HoverCardBasicCardExample />
+      code: HoverCardPlainCardExampleCode,
+      view: <HoverCardPlainCardExample />
     }
   ],
   propertiesTablesSources: [
     require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/HoverCard.types.ts'),
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/Card.types.ts'),
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/BasicCard/BasicCard.types.ts'),
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/BaseCard.types.ts'),
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/PlainCard/PlainCard.types.ts'),
     require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/ExpandingCard.types.ts')
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/docs/HoverCardOverview.md'),

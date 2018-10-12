@@ -4,8 +4,8 @@ import { BaseComponent, divProperties, getNativeProps, getId, KeyCodes, getDocum
 import { IHoverCardProps, IHoverCardStyles, IHoverCardStyleProps, OpenCardMode, HoverCardType } from './HoverCard.types';
 import { ExpandingCard } from './ExpandingCard';
 import { ExpandingCardMode, IExpandingCardProps } from './ExpandingCard.types';
-import { BasicCard } from './BasicCard/BasicCard';
-import { IBasicCardProps } from './BasicCard/BasicCard.types';
+import { PlainCard } from './PlainCard/PlainCard';
+import { IPlainCardProps } from './PlainCard/PlainCard.types';
 
 const getClassNames = classNamesFunction<IHoverCardStyleProps, IHoverCardStyles>();
 
@@ -93,7 +93,7 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
       theme,
       className,
       type,
-      basicCardProps,
+      plainCardProps,
       trapFocus,
       setInitialFocus
     } = this.props;
@@ -117,7 +117,7 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
     };
 
     const finalExpandedCardProps: IExpandingCardProps = { ...expandingCardProps, ...commonCardProps, mode };
-    const finalBasicCardProps: IBasicCardProps = { ...basicCardProps, ...commonCardProps };
+    const finalPlainCardProps: IPlainCardProps = { ...plainCardProps, ...commonCardProps };
 
     return (
       <div
@@ -128,7 +128,7 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
       >
         {children}
         {isHoverCardVisible &&
-          (type === HoverCardType.expanding ? <ExpandingCard {...finalExpandedCardProps} /> : <BasicCard {...finalBasicCardProps} />)}
+          (type === HoverCardType.expanding ? <ExpandingCard {...finalExpandedCardProps} /> : <PlainCard {...finalPlainCardProps} />)}
       </div>
     );
   }

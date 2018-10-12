@@ -3,8 +3,8 @@ import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { BasicCardBase } from './BasicCard/BasicCard.base';
-import { IBasicCardProps } from './BasicCard/BasicCard.types';
+import { PlainCardBase } from './PlainCard/PlainCard.base';
+import { IPlainCardProps } from './PlainCard/PlainCard.types';
 import { ExpandingCardBase } from './ExpandingCard.base';
 import { IExpandingCardProps } from './ExpandingCard.types';
 import { HoverCardBase } from './HoverCard.base';
@@ -25,8 +25,8 @@ const expandingCardProps: IExpandingCardProps = {
   gapSpace: 16
 };
 
-const basicCardProps: IBasicCardProps = {
-  onRenderBasicCard: (item: any) => {
+const PlainCardProps: IPlainCardProps = {
+  onRenderPlainCard: (item: any) => {
     return <div style={{ width: '200px', height: '500px' }}>{item.key}</div>;
   },
   renderData: { key: 'TEST' }
@@ -59,7 +59,7 @@ describe('HoverCard', () => {
     ReactDOM.createPortal = createPortal;
   });
 
-  it('renders BasicCard correctly', () => {
+  it('renders PlainCard correctly', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
     const ReactDOM = require('react-dom');
     const createPortal = ReactDOM.createPortal;
@@ -67,7 +67,7 @@ describe('HoverCard', () => {
       return element;
     });
 
-    const component = renderer.create(<BasicCardBase {...basicCardProps} trapFocus={true} />);
+    const component = renderer.create(<PlainCardBase {...PlainCardProps} trapFocus={true} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
 

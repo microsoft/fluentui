@@ -5,9 +5,9 @@ import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IStyle, ITheme } from '../../Styling';
 
 /**
- * Card common props.
+ * Interface containing props common for all types of cards.
  */
-export interface ICardProps<TComponent, TStyles, TStyleProps> extends React.HTMLAttributes<HTMLDivElement> {
+export interface IBaseCardProps<TComponent, TStyles, TStyleProps> extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the TComponent interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -78,7 +78,10 @@ export interface ICardProps<TComponent, TStyles, TStyleProps> extends React.HTML
   trapFocus?: boolean;
 }
 
-export interface ICardStyleProps {
+/**
+ * Interface containing styleProps common for all types of cards.
+ */
+export interface IBaseCardStyleProps {
   /**
    * ClassName to inject into wrapper div of the content.
    */
@@ -90,7 +93,10 @@ export interface ICardStyleProps {
   theme: ITheme;
 }
 
-export interface ICardStyles {
+/**
+ * Interface containing style sections common for all types of cards.
+ */
+export interface IBaseCardStyles {
   /**
    * Style for the root element in the default enabled, non-toggled state.
    */

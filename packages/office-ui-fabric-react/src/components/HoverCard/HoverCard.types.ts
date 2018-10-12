@@ -3,7 +3,7 @@ import * as React from 'react';
 import { IExpandingCardProps } from './ExpandingCard.types';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject, KeyCodes } from '../../Utilities';
-import { IBasicCardProps } from './BasicCard/BasicCard.types';
+import { IPlainCardProps } from './PlainCard/PlainCard.types';
 
 export interface IHoverCard {}
 
@@ -16,13 +16,6 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
    * the public methods and properties of the component.
    */
   componentRef?: IRefObject<IHoverCard>;
-
-  /**
-   * Additional BasicCard props to pass through HoverCard like renderers, target, gapSpace etc.
-   * Used along with 'type' prop set to HoverCardType.basic.
-   * See for more details ICardProps and IBasicCardProps interfaces.
-   */
-  basicCardProps?: IBasicCardProps;
 
   /**
    * Additional CSS class(es) to apply to the HoverCard root element.
@@ -75,6 +68,13 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
    * @default 'KeyCodes.c'
    */
   openHotKey?: KeyCodes;
+
+  /**
+   * Additional PlainCard props to pass through HoverCard like renderers, target, gapSpace etc.
+   * Used along with 'type' prop set to HoverCardType.basic.
+   * See for more details ICardProps and IPlainCardProps interfaces.
+   */
+  plainCardProps?: IPlainCardProps;
 
   /**
    * Whether or not to mark the container as described by the hover card.
@@ -143,9 +143,9 @@ export enum OpenCardMode {
 
 export enum HoverCardType {
   /**
-   * Basic card consisting of one part responsive to the size of content.
+   * Plain card consisting of one part responsive to the size of content.
    */
-  basic = 'BasicCard',
+  plain = 'PlainCard',
 
   /**
    * File card consisting of two parts: compact and expanded. Has some default sizes if not specified.

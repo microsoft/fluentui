@@ -1,38 +1,28 @@
 import * as React from 'react';
 
-import { Card } from './Card';
-import { classNamesFunction, createRef } from '../../Utilities';
-import {
-  ExpandingCardMode,
-  IExpandingCardProps,
-  IExpandingCardStyles,
-  IExpandingCardStyleProps,
-  IExpandingCard
-} from './ExpandingCard.types';
+import { classNamesFunction, createRef, BaseComponent, KeyCodes } from '../../Utilities';
+import { ExpandingCardMode, IExpandingCardProps, IExpandingCardStyles, IExpandingCardStyleProps } from './ExpandingCard.types';
+import { CardCallout } from './CardCallout/CardCallout';
 
 const getClassNames = classNamesFunction<IExpandingCardStyleProps, IExpandingCardStyles>();
-
-const COMPACT_CARD_HEIGHT = 156;
-const EXPANDED_CARD_HEIGHT = 384;
 
 export interface IExpandingCardState {
   firstFrameRendered: boolean;
   needsScroll: boolean;
 }
 
-export class ExpandingCardBase extends Card<
-  IExpandingCard,
-  IExpandingCardProps,
-  IExpandingCardStyles,
-  IExpandingCardStyleProps,
-  IExpandingCardState
-> {
+export class ExpandingCardBase extends BaseComponent<IExpandingCardProps, IExpandingCardState> {
+  public static defaultProps = {
+    compactCardHeight: 156,
+    expandedCardHeight: 384,
+    directionalHintFixed: true
+  };
+
+  private _classNames: { [key in keyof IExpandingCardStyles]: string };
   private _expandedElem = createRef<HTMLDivElement>();
 
   constructor(props: IExpandingCardProps) {
     super(props);
-
-    this._directionalHintFixed = true;
 
     this.state = {
       firstFrameRendered: false,
@@ -48,18 +38,11 @@ export class ExpandingCardBase extends Card<
     this._async.dispose();
   }
 
-  protected setStyles(): void {
-    const {
-      styles,
-      compactCardHeight = COMPACT_CARD_HEIGHT,
-      expandedCardHeight = EXPANDED_CARD_HEIGHT,
-      theme,
-      mode,
-      className
-    } = this.props;
+  public render(): JSX.Element {
+    const { styles, compactCardHeight, expandedCardHeight, theme, mode, className } = this.props;
     const { needsScroll, firstFrameRendered } = this.state;
 
-    this._finalHeight = compactCardHeight! + expandedCardHeight!;
+    const finalHeight = compactCardHeight! + expandedCardHeight!;
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
@@ -69,16 +52,22 @@ export class ExpandingCardBase extends Card<
       needsScroll: needsScroll,
       expandedCardFirstFrameRendered: mode === ExpandingCardMode.expanded && firstFrameRendered
     });
-  }
 
-  protected renderContent(): JSX.Element {
-    return (
-      <div onMouseEnter={this.props.onEnter} onMouseLeave={this.props.onLeave} onKeyDown={this.onKeyDown}>
+    const content: JSX.Element = (
+      <div onMouseEnter={this.props.onEnter} onMouseLeave={this.props.onLeave} onKeyDown={this._onKeyDown}>
         {this._onRenderCompactCard()}
         {this._onRenderExpandedCard()}
       </div>
     );
+
+    return <CardCallout {...this.props} content={content} finalHeight={finalHeight} className={this._classNames.root} />;
   }
+
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
+    if (ev.which === KeyCodes.escape) {
+      this.props.onLeave && this.props.onLeave(ev);
+    }
+  };
 
   private _onRenderCompactCard = (): JSX.Element => {
     return <div className={this._classNames.compactCard}>{this.props.onRenderCompactCard!(this.props.renderData)}</div>;
@@ -104,7 +93,7 @@ export class ExpandingCardBase extends Card<
   };
 
   private _checkNeedsScroll = (): void => {
-    const { expandedCardHeight = EXPANDED_CARD_HEIGHT } = this.props;
+    const { expandedCardHeight } = this.props;
     if (this._expandedElem.current) {
       this._async.requestAnimationFrame(() => {
         if (this._expandedElem.current && this._expandedElem.current.scrollHeight >= expandedCardHeight!) {

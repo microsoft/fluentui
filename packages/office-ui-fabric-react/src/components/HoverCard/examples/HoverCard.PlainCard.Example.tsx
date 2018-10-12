@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
-import { HoverCard, IBasicCardProps, HoverCardType } from 'office-ui-fabric-react/lib/HoverCard';
+import { HoverCard, IPlainCardProps, HoverCardType } from 'office-ui-fabric-react/lib/HoverCard';
 import { DetailsList, buildColumns, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { createListItems } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import './HoverCard.Example.scss';
@@ -14,7 +14,7 @@ export interface IHoverCardExampleState {
   columns?: IColumn[];
 }
 
-export class HoverCardBasicCardExample extends BaseComponent<{}, IHoverCardExampleState> {
+export class HoverCardPlainCardExample extends BaseComponent<{}, IHoverCardExampleState> {
   constructor(props: {}) {
     super(props);
 
@@ -40,14 +40,14 @@ export class HoverCardBasicCardExample extends BaseComponent<{}, IHoverCardExamp
   }
 
   private _onRenderItemColumn = (item: any, index: number, column: IColumn): JSX.Element => {
-    const basicCardProps: IBasicCardProps = {
-      onRenderBasicCard: this._onRenderBasicCard,
+    const plainCardProps: IPlainCardProps = {
+      onRenderPlainCard: this._onRenderPlainCard,
       renderData: item
     };
 
     if (column.key === 'color') {
       return (
-        <HoverCard id="myID1" basicCardProps={basicCardProps} instantOpenOnClick={true} type={HoverCardType.basic}>
+        <HoverCard id="myID1" plainCardProps={plainCardProps} instantOpenOnClick={true} type={HoverCardType.plain}>
           <div className="HoverCard-item" style={{ color: item.color }}>
             {item.color}
           </div>
@@ -58,7 +58,7 @@ export class HoverCardBasicCardExample extends BaseComponent<{}, IHoverCardExamp
     return item[column.key];
   };
 
-  private _onRenderBasicCard = (item: any): JSX.Element => {
+  private _onRenderPlainCard = (item: any): JSX.Element => {
     const src = item.thumbnail + `/${getColorFromString(item.color)!.hex}`;
 
     return <Image src={src} width={item.width} height={item.height} imageFit={ImageFit.cover} />;

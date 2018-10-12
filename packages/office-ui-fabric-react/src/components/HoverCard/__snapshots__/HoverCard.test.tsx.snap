@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HoverCard renders BasicCard correctly 1`] = `
+exports[`HoverCard renders PlainCard correctly 1`] = `
 <span
   className="ms-layer"
 >

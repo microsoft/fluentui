@@ -1,11 +1,11 @@
 import { getGlobalClassNames, HighContrastSelector } from '../../../Styling';
-import { IBasicCardStyles, IBasicCardStyleProps } from './BasicCard.types';
+import { IPlainCardStyles, IPlainCardStyleProps } from './PlainCard.types';
 
 const GlobalClassNames = {
-  root: 'ms-BasicCard-root'
+  root: 'ms-PlainCard-root'
 };
 
-export function getStyles(props: IBasicCardStyleProps): IBasicCardStyles {
+export function getStyles(props: IPlainCardStyleProps): IPlainCardStyles {
   const { theme, className } = props;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
