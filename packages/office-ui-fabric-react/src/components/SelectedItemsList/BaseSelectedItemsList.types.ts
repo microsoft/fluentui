@@ -56,7 +56,7 @@ export interface IBaseSelectedItemsListProps<T> extends React.Props<any> {
 
   /**
    * Aria label for the 'X' button in the selected item component.
-   * @default ''
+   * @defaultvalue ''
    */
   removeButtonAriaLabel?: string;
   /**

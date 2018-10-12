@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IStyle, IRawStyle, ITheme } from '../../../Styling';
 import { IStyleFunctionOrObject, IRefObject } from '../../../Utilities';
 
-export interface IShimmerLine {}
+export interface IShimmerLine { }
 
 /**
  * ShimmerLine component props.
@@ -16,13 +16,13 @@ export interface IShimmerLineProps extends React.AllHTMLAttributes<HTMLElement> 
 
   /**
    * Sets the height of the rectangle.
-   * @default 16px
+   * @defaultvalue 16px
    */
   height?: number;
 
   /**
    * Sets width value of the line.
-   * @default 100%
+   * @defaultvalue 100%
    */
   width?: number | string;
 

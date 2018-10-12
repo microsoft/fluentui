@@ -9,7 +9,7 @@ import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { ICSSRule, ICSSPixelUnitRule } from '@uifabric/merge-styles/lib/IRawStyleBase';
 
-export interface IDialog {}
+export interface IDialog { }
 
 export interface IDialogProps extends React.Props<DialogBase>, IWithResponsiveModeState, IAccessiblePopupProps {
   /**
@@ -41,7 +41,7 @@ export interface IDialogProps extends React.Props<DialogBase>, IWithResponsiveMo
 
   /**
    * Whether the dialog is hidden.
-   * @default true
+   * @defaultvalue true
    */
   hidden?: boolean;
 
@@ -52,14 +52,14 @@ export interface IDialogProps extends React.Props<DialogBase>, IWithResponsiveMo
 
   /**
    * Whether the dialog is displayed.
-   * @default false
+   * @defaultvalue false
    * @deprecated Use hidden instead
    */
   isOpen?: boolean;
 
   /**
    * Whether the overlay is dark themed.
-   * @default true
+   * @defaultvalue true
    * @deprecated Pass through via modalProps instead
    */
   isDarkOverlay?: boolean;
@@ -72,7 +72,7 @@ export interface IDialogProps extends React.Props<DialogBase>, IWithResponsiveMo
 
   /**
    * Whether the dialog can be light dismissed by clicking outside the dialog (on the overlay).
-   * @default false
+   * @defaultvalue false
    * @deprecated Pass through via modalProps instead
    */
   isBlocking?: boolean;
@@ -97,13 +97,13 @@ export interface IDialogProps extends React.Props<DialogBase>, IWithResponsiveMo
 
   /**
    * Deprecated at 0.81.2, use 'onLayerDidMount' instead.
-   * @deprecated
+   * @deprecated Use 'onLayerDidMount' instead.
    */
   onLayerMounted?: () => void;
 
   /**
    * The type of Dialog to display.
-   * @default DialogType.normal
+   * @defaultvalue DialogType.normal
    * @deprecated Pass through via dialogContentProps instead
    */
   type?: DialogType;
@@ -182,7 +182,7 @@ export interface IDialogStyleProps {
 
   /**
    * Whether the dialog is hidden.
-   * @default false
+   * @defaultvalue false
    */
   hidden?: boolean;
 

@@ -187,7 +187,7 @@ export interface IButtonProps
   onRenderMenuIcon?: IRenderFunction<IButtonProps>;
 
   /**
-   * Deprecated at v6.3.2, to be removed at >= v7.0.0. Use 'menuAs' instead.
+   * Deprecated at v6.3.2, to be removed at \>= v7.0.0. Use 'menuAs' instead.
    * @deprecated Use 'menuAs' instead.
    */
   onRenderMenu?: IRenderFunction<IContextualMenuProps>;
@@ -204,7 +204,7 @@ export interface IButtonProps
   secondaryText?: string;
 
   /**
-   * Deprecated at v1.2.3, to be removed at >= v2.0.0. Use specific button component instead
+   * Deprecated at v1.2.3, to be removed at \>= v2.0.0. Use specific button component instead.
    * @defaultvalue ButtonType.default
    * @deprecated Use specific button component instead.
    */
@@ -212,7 +212,7 @@ export interface IButtonProps
   buttonType?: ButtonType;
 
   /**
-   * Deprecated at v0.56.2, to be removed at >= v1.0.0. Just pass in button props instead;
+   * Deprecated at v0.56.2, to be removed at \>= v1.0.0. Just pass in button props instead.
    * they will be mixed into the button/anchor element rendered by the component.
    * @deprecated Use button props instead.
    */

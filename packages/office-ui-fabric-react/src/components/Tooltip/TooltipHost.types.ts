@@ -5,7 +5,7 @@ import { ICalloutProps } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IRefObject } from '../../Utilities';
 
-export interface ITooltipHost {}
+export interface ITooltipHost { }
 
 export enum TooltipOverflowMode {
   /** Only show tooltip if parent DOM element is overflowing */
@@ -43,7 +43,7 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
 
   /**
    * Length of delay
-   * @default medium
+   * @defaultvalue medium
    */
   delay?: TooltipDelay;
 

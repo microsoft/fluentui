@@ -88,7 +88,7 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
 
   /**
    * Sets focus to the first tabbable item in the OverflowSet.
-   * @param {boolean} forceIntoFirstElement If true, focus will be forced into the first element,
+   * @param forceIntoFirstElement - If true, focus will be forced into the first element,
    * even if focus is already in theOverflowSet
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
@@ -108,7 +108,7 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
 
   /**
    * Sets focus to a specific child element within the OverflowSet.
-   * @param {HTMLElement} childElement The child element within the zone to focus.
+   * @param childElement - The child element within the zone to focus.
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
   public focusElement(childElement?: HTMLElement): boolean {

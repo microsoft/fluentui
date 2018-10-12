@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IStyle, IRawStyle, ITheme } from '../../../Styling';
 import { IStyleFunctionOrObject, IRefObject } from '../../../Utilities';
 
-export interface IShimmerGap {}
+export interface IShimmerGap { }
 
 /**
  * ShimmerGap component props.
@@ -16,13 +16,13 @@ export interface IShimmerGapProps extends React.AllHTMLAttributes<HTMLElement> {
 
   /**
    * Sets the height of the gap.
-   * @default 16px
+   * @defaultvalue 16px
    */
   height?: number;
 
   /**
    * Sets width value of the gap.
-   * @default 10px
+   * @defaultvalue 10px
    */
   width?: number | string;
 

@@ -18,7 +18,7 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
 
   /**
    * Sets the HTMLElement to focus on when exiting the FocusTrapZone.
-   * @default The element.target that triggered the FTZ.
+   * @defaultvalue The element.target that triggered the FTZ.
    */
   elementToFocusOnDismiss?: HTMLElement;
 
@@ -29,19 +29,19 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
 
   /**
    * Indicates if this Trap Zone will allow clicks outside the FocusTrapZone
-   * @default false
+   * @defaultvalue false
    */
   isClickableOutsideFocusTrap?: boolean;
 
   /**
    * Indicates if this Trap Zone will ignore keeping track of HTMLElement that activated the Zone.
-   * @default false
+   * @defaultvalue false
    */
   ignoreExternalFocusing?: boolean;
 
   /**
    * Indicates whether focus trap zone should force focus inside the focus trap zone
-   * @default true
+   * @defaultvalue true
    */
   forceFocusInsideTrap?: boolean;
 
@@ -52,7 +52,7 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
 
   /**
    * Do not put focus onto first element when render focus trap zone
-   * @default false
+   * @defaultvalue false
    */
   disableFirstFocus?: boolean;
 
@@ -61,7 +61,7 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
    * If false, the first focusable descendant, filtered by the firstFocusableSelector property if present, is chosen.
    * If true, the element that was focused when the Trap Zone last had a focused descendant is chosen.
    * If it has never had a focused descendant before, behavior falls back to the first focused descendant.
-   * @default false
+   * @defaultvalue false
    */
   focusPreviouslyFocusedInnerElement?: boolean;
 }

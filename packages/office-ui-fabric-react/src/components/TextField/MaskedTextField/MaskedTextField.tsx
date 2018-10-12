@@ -27,10 +27,10 @@ import {
  *  their indices inside the display text, and their corresponding values.
  * Example:
  *  [
- *    { value: '1', displayIndex: 16, format: /[0-9]/ },
- *    { value: '2', displayIndex: 17, format: /[0-9]/ },
- *    { displayIndex: 18, format: /[0-9]/ },
- *    { value: '4', displayIndex: 22, format: /[0-9]/ },
+ *    \{ value: '1', displayIndex: 16, format: /[0-9]/ \},
+ *    \{ value: '2', displayIndex: 17, format: /[0-9]/ \},
+ *    \{ displayIndex: 18, format: /[0-9]/ \},
+ *    \{ value: '4', displayIndex: 22, format: /[0-9]/ \},
  *    ...
  *  ]
  */
@@ -130,7 +130,7 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
   }
 
   /**
-   * @return The value of all filled format characters or undefined if not all format characters are filled
+   * @returns The value of all filled format characters or undefined if not all format characters are filled
    */
   public get value(): string | undefined {
     let value = '';

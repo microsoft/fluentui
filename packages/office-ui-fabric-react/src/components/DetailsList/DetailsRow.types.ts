@@ -10,7 +10,7 @@ import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../Utilities'
 import { IDetailsRowCheckProps } from './DetailsRowCheck.types';
 import { IDetailsRowFieldsProps } from './DetailsRowFields.types';
 
-export interface IDetailsRow {}
+export interface IDetailsRow { }
 
 export interface IDetailsItemProps {
   /**
@@ -162,7 +162,7 @@ export interface IDetailsRowBaseProps extends IBaseProps<IDetailsRow>, IDetailsI
 
   /**
    * Rerender DetailsRow only when props changed. Might cause regression when depending on external updates.
-   * @default false
+   * @defaultvalue false
    */
   useReducedRowRenderer?: boolean;
 }

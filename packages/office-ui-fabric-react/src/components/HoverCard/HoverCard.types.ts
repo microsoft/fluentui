@@ -4,7 +4,7 @@ import { IExpandingCardProps } from './ExpandingCard.types';
 import { IStyle } from '../../Styling';
 import { IRefObject, KeyCodes } from '../../Utilities';
 
-export interface IHoverCard {}
+export interface IHoverCard { }
 
 /**
  * HoverCard component props.
@@ -29,31 +29,31 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement | H
 
   /**
    * Length of compact card delay
-   * @default 500
+   * @defaultvalue 500
    */
   cardOpenDelay?: number;
 
   /**
    * Length of card dismiss delay. A min number is necessary for pointer to hop between target and card
-   * @default 100
+   * @defaultvalue 100
    */
   cardDismissDelay?: number;
 
   /**
    * Time in ms when expanded card should open after compact card
-   * @default 1500
+   * @defaultvalue 1500
    */
   expandedCardOpenDelay?: number;
 
   /**
    * If true disables Card dismiss upon mouse leave, so that card sticks around.
-   * @default false
+   * @defaultvalue false
    */
   sticky?: boolean;
 
   /**
    * Enables instant open of the full card upon click
-   * @default false
+   * @defaultvalue false
    */
   instantOpenOnClick?: boolean;
 
@@ -89,13 +89,13 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement | H
 
   /**
    * Set first focus into hover card.
-   * @default false
+   * @defaultvalue false
    */
   setInitialFocus?: boolean;
 
   /**
    * HotKey used for opening the HoverCard when tabbed to target.
-   * @default 'KeyCodes.c'
+   * @defaultvalue 'KeyCodes.c'
    */
   openHotKey?: KeyCodes;
 }

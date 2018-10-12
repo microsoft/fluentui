@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IStyle, ITheme, IRawStyle } from '../../../Styling';
 import { IStyleFunctionOrObject, IRefObject } from '../../../Utilities';
 
-export interface IShimmerCircle {}
+export interface IShimmerCircle { }
 
 /**
  * ShimmerCircle component props.
@@ -16,7 +16,7 @@ export interface IShimmerCircleProps extends React.AllHTMLAttributes<HTMLElement
 
   /**
    * Sets the height of the circle.
-   * @default 24px
+   * @defaultvalue 24px
    */
   height?: number;
 

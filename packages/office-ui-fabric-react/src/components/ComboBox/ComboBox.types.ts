@@ -15,8 +15,8 @@ export interface IComboBox {
 
   /**
    * Sets focus to the input in the comboBox
-   * @param {boolean} shouldOpenOnFocus determines if we should open the ComboBox menu when the input gets focus
-   * @param {boolean} useFocusAsync determines if we should focus the input asynchronously
+   * @param shouldOpenOnFocus - Determines if we should open the ComboBox menu when the input gets focus
+   * @param useFocusAsync - Determines if we should focus the input asynchronously
    * @returns True if focus could be set, false if no operation was taken.
    */
   focus(shouldOpenOnFocus?: boolean, useFocusAsync?: boolean): boolean;
@@ -33,7 +33,7 @@ export interface IComboBoxOption extends ISelectableOption {
   /**
    * In scenarios where embedded data is used at the text prop, we will use the ariaLabel prop
    * to set the aria-label and preview text. Default to false
-   * @default false;
+   * @defaultvalue false;
    */
   useAriaLabelAsText?: boolean;
 }
@@ -98,7 +98,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * Whether the ComboBox auto completes. As the user is inputing text, it will be suggested potential matches from the list of options. If
    * the combo box is expanded, this will also scroll to the suggested option, and give it a selected style.
    *
-   * @default "on"
+   * @defaultvalue "on"
    */
   autoComplete?: 'on' | 'off';
 
@@ -151,7 +151,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   /**
    * When options are scrollable the selected option is positioned at the top of the callout when it is opened
    * (unless it has reached the end of the scrollbar).
-   * @default false;
+   * @defaultvalue false;
    */
   scrollSelectedToTop?: boolean;
 
@@ -184,7 +184,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * Sets the 'aria-hidden' attribute on the ComboBox's button element instructing screen readers how to handle the element.
    * This element is hidden by default because all functionality is handled by the input element and the arrow button is
    * only meant to be decorative.
-   * @default true
+   * @defaultvalue true
    */
   isButtonAriaHidden?: boolean;
 

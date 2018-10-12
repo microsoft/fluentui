@@ -4,7 +4,7 @@ import { IRefObject, IRenderFunction } from '../../Utilities';
 import { IStyle, ITheme } from '../../Styling';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
-export interface IExpandingCard {}
+export interface IExpandingCard { }
 
 /**
  * ExpandingCard component props.
@@ -48,19 +48,19 @@ export interface IExpandingCardProps extends React.HTMLAttributes<HTMLDivElement
 
   /**
    * Height of compact card
-   * @default 156
+   * @defaultvalue 156
    */
   compactCardHeight?: number;
 
   /**
    * Height of expanded card
-   * @default 384
+   * @defaultvalue 384
    */
   expandedCardHeight?: number;
 
   /**
    * Use to open the card in expanded format and not wait for the delay
-   * @default ExpandingCardMode.compact
+   * @defaultvalue ExpandingCardMode.compact
    */
   mode?: ExpandingCardMode;
 
@@ -71,13 +71,13 @@ export interface IExpandingCardProps extends React.HTMLAttributes<HTMLDivElement
 
   /**
    * How the element should be positioned
-   * @default DirectionalHint.bottomLeftEdge
+   * @defaultvalue DirectionalHint.bottomLeftEdge
    */
   directionalHint?: DirectionalHint;
 
   /**
    * The gap between the card and the target
-   * @default 0
+   * @defaultvalue 0
    */
   gapSpace?: number;
 
@@ -88,7 +88,7 @@ export interface IExpandingCardProps extends React.HTMLAttributes<HTMLDivElement
 
   /**
    * Make callout content show on the set side
-   * @default true
+   * @defaultvalue true
    */
   directionalHintFixed?: boolean;
 

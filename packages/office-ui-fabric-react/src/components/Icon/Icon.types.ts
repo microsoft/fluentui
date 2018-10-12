@@ -17,13 +17,13 @@ export enum IconType {
 
   /**
    * Deprecated, use default.
-   * @deprecated
+   * @deprecated Use default.
    */
   Default = 100000,
 
   /**
    * Deprecated, use image.
-   * @deprecated
+   * @deprecated Use image.
    */
   Image = 100001
 }
@@ -41,17 +41,11 @@ export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement
 
   /**
    * The type of icon to render (image or icon font).
-   *
-   * @type {IconType}
-   * @memberOf IIconProps
    */
   iconType?: IconType;
 
   /**
    * If rendering an image icon, these props will be passed to the Image component.
-   *
-   * @type {IImageProps}
-   * @memberOf IIconProps
    */
   imageProps?: IImageProps;
 
@@ -79,7 +73,7 @@ export interface IIconStyles {
 
   /**
    * Deprecated. Use 'root'.
-   * @deprecated
+   * @deprecated Use 'root'.
    */
   imageContainer?: IStyle;
 }

@@ -10,7 +10,7 @@ export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
 
   /**
    * The text displayed of each pivot link - renaming to 'headerText'.
-   * @deprecated
+   * @deprecated Use 'headerText' instead.
    */
   linkText?: string;
 
