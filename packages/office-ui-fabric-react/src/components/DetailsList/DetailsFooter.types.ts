@@ -19,9 +19,4 @@ export interface IDetailsFooterProps extends IDetailsFooterBaseProps {
    * Selection mode
    */
   selectionMode: SelectionMode;
-
-  /**
-   * CSS class name to apply on the root element
-   */
-  className?: string;
 }

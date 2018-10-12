@@ -38,7 +38,6 @@ import { IList, List, IListProps, ScrollToMode } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
 import { GetGroupCount } from '../../utilities/groupedList/GroupedListUtility';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
-import { IProcessedStyleSet } from '@uifabric/merge-styles';
 
 const getClassNames = classNamesFunction<IDetailsListStyleProps, IDetailsListStyles>();
 
@@ -326,6 +325,11 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
 
     const { onRenderDetailsHeader = this._onRenderDetailsHeader, onRenderDetailsFooter = this._onRenderDetailsFooter } = this.props;
 
+    const detailsFooterProps = this._getDetailsFooterProps();
+    const columnReorderProps = this._getColumnReorderProps();
+
+    const rowCount = (isHeaderVisible ? 1 : 0) + GetGroupCount(groups) + (items ? items.length : 0);
+
     const classNames = getClassNames(styles, {
       theme: theme!,
       compact,
@@ -333,11 +337,6 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       isHorizontalConstrained: constrainMode === ConstrainMode.horizontalConstrained,
       className
     });
-
-    const detailsFooterProps = this._getDetailsFooterProps(classNames);
-    const columnReorderProps = this._getColumnReorderProps();
-
-    const rowCount = (isHeaderVisible ? 1 : 0) + GetGroupCount(groups) + (items ? items.length : 0);
 
     const list = groups ? (
       <GroupedList
@@ -929,7 +928,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     return itemKey;
   }
 
-  private _getDetailsFooterProps(classNames: IProcessedStyleSet<IDetailsListStyles>): IDetailsFooterProps {
+  private _getDetailsFooterProps(): IDetailsFooterProps {
     const { adjustedColumns: columns } = this.state;
 
     const {
@@ -948,8 +947,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       viewport: viewport,
       checkboxVisibility,
       indentWidth,
-      cellStyleProps,
-      className: classNames.focusZone
+      cellStyleProps
     };
   }
 

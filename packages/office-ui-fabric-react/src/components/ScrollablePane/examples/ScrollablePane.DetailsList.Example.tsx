@@ -200,7 +200,7 @@ function onRenderDetailsHeader(props: IDetailsHeaderProps, defaultRender?: IRend
 function onRenderDetailsFooter(props: IDetailsFooterProps, defaultRender?: IRenderFunction<IDetailsFooterProps>): JSX.Element {
   return (
     <Sticky stickyPosition={StickyPositionType.Footer} isScrollSynced={true}>
-      <div className={props.className}>
+      <div style={{ display: 'inline-block' }}>
         <DetailsRow
           columns={props.columns}
           item={{
