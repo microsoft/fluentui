@@ -29,8 +29,7 @@ let isLocal = window.location.hostname === 'localhost' || window.location.hostna
 declare let Flight; // Contains flight & CDN configuration loaded by manifest
 declare let __webpack_public_path__;
 
-// Final bundle location can be dynamic, so we need to update the public path
-// at runtime to point to the right CDN URL
+// Final bundle location can be dynamic, so we need to update the public path at runtime to point to the right CDN URL
 if (!isLocal && Flight.baseCDNUrl) {
   __webpack_public_path__ = Flight.baseCDNUrl;
 }
