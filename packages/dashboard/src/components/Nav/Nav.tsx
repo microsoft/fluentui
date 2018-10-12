@@ -143,7 +143,6 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
   private _setScrollLayout(): void {
     const classNames = getClassNames(getStyles);
     if (this.containerRef.current && this.wrapperRef.current) {
-      console.log(this.containerRef.current);
       if (this.containerRef.current.scrollHeight > this.containerRef.current.clientHeight) {
         this.containerRef.current.classList.add(classNames.navContainerScroll);
         this.wrapperRef.current.classList.add(classNames.navWrapperScroll);

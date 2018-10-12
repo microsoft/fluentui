@@ -82,15 +82,19 @@ export class NavExample extends React.Component<{}, {}> {
     ];
 
     return (
-      <Nav
-        groups={navLinkGroups}
-        dataHint="PrimaryNavigation"
-        enableCustomization={true}
-        showMore={true}
-        editString={'Edit navigation'}
-        showMoreString={'Show more'}
-        showLessString={'Show less'}
-      />
+      /* tslint:disable */
+      <div style={{ height: '20vh', display: 'flex' }}>
+        <Nav
+          groups={navLinkGroups}
+          dataHint="PrimaryNavigation"
+          enableCustomization={true}
+          showMore={true}
+          editString={'Edit navigation'}
+          showMoreString={'Show more'}
+          showLessString={'Show less'}
+        />
+      </div>
+      /* tslint:enable */
     );
   }
 

@@ -184,13 +184,13 @@ export const getStyles = (props: INavLinkProps): INavStyles => {
     },
     nestedNavLinksWhenNavCollapsed: [
       {
-        padding: 0,
-        selectors: {
-          '@supports((backdrop-filter: blur(20px)) or (-webkit-backdrop-filter: blur(20px)))': {
-            WebkitBackdropFilter: 'blur(20px)',
-            backdropFilter: 'blur(20px)'
-          }
-        }
+        padding: 0
+        // selectors: {
+        //   ['@supports((backdrop-filter: blur(20px)) or (-webkit-backdrop-filter: blur(20px)))']: {
+        //     WebkitBackdropFilter: 'blur(20px)',
+        //     backdropFilter: 'blur(20px)'
+        //   }
+        // }
       },
       AnimationClassNames.slideRightIn10
     ],
