@@ -3,7 +3,7 @@ const fs = require('fs');
 
 exports.generateSizeData = function() {
   const projectName = path.basename(process.cwd());
-  const sizeFilePath = path.join(process.cwd(), 'dist', `${projectName}-sizedataaaaa.json`);
+  const sizeFilePath = path.join(process.cwd(), 'dist', `${projectName}-sizedata.json`);
   if (fs.existsSync(path.dirname(sizeFilePath))) {
     const result = {
       chunks: analyzeChunks()
