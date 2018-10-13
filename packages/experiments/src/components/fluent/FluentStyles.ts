@@ -4,20 +4,48 @@ import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from 'office-u
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { FontSizes } from './FluentType';
 import { Depths } from './FluentDepths';
+import { IBreadcrumbStyleProps } from '../../../../office-ui-fabric-react/lib/components/Breadcrumb/Breadcrumb.styles';
 
 const fluentBorderRadius = '2px';
 
-const BreadcrumbStyles = {
-  itemLink: {
-    fontSize: FontSizes.size18,
-    fontWeight: 400,
-    color: NeutralColors.gray130,
-    selectors: {
-      '&:last-child': {
-        fontWeight: 600
+const BreadcrumbStyles = (props: IBreadcrumbStyleProps) => {
+  const stateSelectors = {
+    ':hover': {
+      color: NeutralColors.gray160
+    },
+    ':active': {
+      backgroundColor: NeutralColors.gray30
+    }
+  };
+
+  return {
+    itemLink: {
+      outline: 'none',
+      fontSize: FontSizes.size18,
+      fontWeight: 400,
+      color: NeutralColors.gray130,
+      selectors: {
+        '&:last-child': {
+          fontWeight: 600,
+          color: NeutralColors.gray160
+        },
+        '.ms-Fabric--isFocusVisible &:focus': {
+          // Necessary due to changes of Link component not using getFocusStyle
+          outline: 'none'
+        },
+        '&:active:hover': {
+          color: NeutralColors.gray160
+        },
+        ...stateSelectors
+      }
+    },
+    overflowButton: {
+      color: NeutralColors.gray130,
+      selectors: {
+        ...stateSelectors
       }
     }
-  }
+  };
 };
 
 const PrimaryButtonStyles = {
