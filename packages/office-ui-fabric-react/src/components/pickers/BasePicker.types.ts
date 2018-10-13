@@ -142,6 +142,11 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * @default false
    */
   enableSelectedSuggestionAlert?: boolean;
+  /**
+   * Flag for auto resolving multiple items.
+   * @default false
+   */
+  autoResolveMultiple?: boolean;
 }
 
 export interface IBasePickerSuggestionsProps {

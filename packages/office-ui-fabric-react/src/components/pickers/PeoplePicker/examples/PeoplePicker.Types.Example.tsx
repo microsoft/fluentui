@@ -26,6 +26,7 @@ import './PeoplePicker.Types.Example.scss';
 export interface IPeoplePickerExampleState {
   currentPicker?: number | string;
   delayResults?: boolean;
+  autoResolveMultiple?: boolean;
   peopleList: IPersonaProps[];
   mostRecentlyUsed: IPersonaProps[];
   currentSelectedItems?: IPersonaProps[];
@@ -65,6 +66,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     this.state = {
       currentPicker: 1,
       delayResults: false,
+      autoResolveMultiple: false,
       peopleList: peopleList,
       mostRecentlyUsed: mru,
       currentSelectedItems: []
@@ -116,11 +118,18 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
             selectedKey={ this.state.currentPicker }
             onChanged={ this._dropDownSelected }
           />
-          <Toggle
-            label='Delay Suggestion Results'
-            defaultChecked={ false }
-            onChanged={ this._toggleDelayResultsChange }
-          />
+          <div className={ 'toggle-div' }>
+            <Toggle
+              label='Delay Suggestion Results'
+              defaultChecked={ false }
+              onChanged={ this._toggleDelayResultsChange }
+            />
+            <Toggle
+              label='Auto Resolve Multiple Suggestions'
+              defaultChecked={ false }
+              onChanged={ this._toggleAutoResolveMultipleChange }
+            />
+          </div>
         </div>
         <PrimaryButton
           text='Set focus'
@@ -175,6 +184,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         componentRef={ this._resolveRef('_picker') }
         onInputChange={ this._onInputChange }
         resolveDelay={ 300 }
+        autoResolveMultiple={ this.state.autoResolveMultiple }
       />
     );
   }
@@ -196,6 +206,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         } }
         componentRef={ this._resolveRef('_picker') }
         resolveDelay={ 300 }
+        autoResolveMultiple={ this.state.autoResolveMultiple }
       />
     );
   }
@@ -219,6 +230,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         } }
         componentRef={ this._resolveRef('_picker') }
         resolveDelay={ 300 }
+        autoResolveMultiple={ this.state.autoResolveMultiple }
       />
     );
   }
@@ -242,6 +254,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         } }
         componentRef={ this._resolveRef('_picker') }
         resolveDelay={ 300 }
+        autoResolveMultiple={ this.state.autoResolveMultiple }
       />
     );
   }
@@ -412,6 +425,10 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
 
   private _toggleDelayResultsChange = (toggleState: boolean): void => {
     this.setState({ delayResults: toggleState });
+  }
+
+  private _toggleAutoResolveMultipleChange = (toggleState: boolean): void => {
+    this.setState({ autoResolveMultiple: toggleState });
   }
 
   private _dropDownSelected = (option: IDropdownOption): void => {

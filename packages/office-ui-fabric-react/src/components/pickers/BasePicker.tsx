@@ -701,10 +701,37 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   private _onResolveSuggestions(updatedValue: string): void {
-    const suggestions: T[] | PromiseLike<T[]> | null = this.props.onResolveSuggestions(updatedValue, this.state.items);
+    if (this.props.autoResolveMultiple) {
+      this._onAutoResolveSuggestionsMultiple(updatedValue);
+    } else {
+      const suggestions: T[] | PromiseLike<T[]> | null = this.props.onResolveSuggestions(updatedValue, this.state.items);
 
-    if (suggestions !== null) {
-      this.updateSuggestionsList(suggestions, updatedValue);
+      if (suggestions !== null) {
+        this.updateSuggestionsList(suggestions, updatedValue);
+      }
+    }
+  }
+
+  private _onAutoResolveSuggestionsMultiple(updatedValue: string, separator: string = ';'): void {
+    const updatedValues = updatedValue.split(separator);
+    updatedValues.filter(value => value.length > 0).forEach(value => {
+      value = value.trim();
+      const currentSuggestions: T[] | PromiseLike<T[]> | null = this.props.onResolveSuggestions(value, this.state.items);
+      if (currentSuggestions !== null) {
+        Promise.resolve(currentSuggestions).then(currentSuggestion => {
+          const topSuggestion = currentSuggestion[0];
+          const items: T[] = this.state.items;
+          if (this.canAddItems() && topSuggestion && !items.includes(topSuggestion)) {
+            this.addItem(topSuggestion);
+          }
+        });
+      }
+    });
+
+    if (this.input.current) {
+      this.updateValue('');
+      this.input.current.clear();
+      this.dismissSuggestions();
     }
   }
 
