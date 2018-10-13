@@ -144,6 +144,23 @@ export function getPreviousElement(
     isCurrentElementVisible &&
     (includeElementsInFocusZones || !(isElementFocusZone(currentElement) || isElementFocusSubZone(currentElement)))
   ) {
+    // If current is a focus zone, check for first element, since only one is tabbable at a time
+    if ((tabbable && isElementFocusZone(currentElement)) || isElementFocusSubZone(currentElement)) {
+      const firstMatch = getNextElement(
+        rootElement,
+        currentElement.firstElementChild as HTMLElement,
+        true,
+        true,
+        true,
+        includeElementsInFocusZones,
+        allowFocusRoot,
+        tabbable
+      );
+      if (firstMatch) {
+        return firstMatch;
+      }
+    }
+
     const childMatch = getPreviousElement(
       rootElement,
       currentElement.lastElementChild as HTMLElement,
@@ -429,10 +446,7 @@ export function doesElementContainFocus(element: HTMLElement): boolean {
  * @param noWrapDataAttribute - the no wrap data attribute to match (either)
  * @returns true if focus should wrap, false otherwise
  */
-export function shouldWrapFocus(
-  element: HTMLElement,
-  noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap'
-): boolean {
+export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap'): boolean {
   return elementContainsAttribute(element, noWrapDataAttribute) === 'true' ? false : true;
 }
 

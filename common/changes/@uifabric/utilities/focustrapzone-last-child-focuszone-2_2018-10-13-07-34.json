@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/utilities",
+      "comment": "Handling the case where a FocusTrapZone would not properly trap when a FocusZone was the last element in the trap zone.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/utilities",
+  "email": "sllynn8907@gmail.com"
+}

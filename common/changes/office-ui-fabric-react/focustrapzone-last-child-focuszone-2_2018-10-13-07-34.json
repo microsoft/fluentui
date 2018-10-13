@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Updating a FocusTrapZone test to ensure focus is properly trapped with a FocusZone as the last child of the trap zone.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "sllynn8907@gmail.com"
+}
