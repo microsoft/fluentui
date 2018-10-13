@@ -61,10 +61,10 @@ executeTasks(firstTasks)
     logEndBuild(packageName, !hasFailures, buildStartTime);
   })
   .then(() => {
-    if (process.env['APPVEYOR']) {
+    //if (process.env['APPVEYOR']) {
       const { generateSizeData } = require('./tasks/size-audit');
       generateSizeData();
-    }
+    //}
   });
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
