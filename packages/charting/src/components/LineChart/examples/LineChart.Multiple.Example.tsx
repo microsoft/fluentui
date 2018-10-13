@@ -82,12 +82,12 @@ export class LineChartMultipleExample extends React.Component<ILineChartProps, {
     // passing tick values is optional. If you do not pass them the line chart will render them for you based on D3 standard
     // This is a optional prop for more control
     const tickValues: Date[] = [
-      new Date('2018-01-01'),
-      new Date('2018-02-01'),
-      new Date('2018-03-01'),
-      new Date('2018-04-01'),
-      new Date('2018-05-01'),
-      new Date('2018-06-01')
+      new Date('01-01-2018'),
+      new Date('02-01-2018'),
+      new Date('03-01-2018'),
+      new Date('04-01-2018'),
+      new Date('05-01-2018'),
+      new Date('06-01-2018')
     ];
     return (
       <div className={mergeStyles(rootStyle)}>
