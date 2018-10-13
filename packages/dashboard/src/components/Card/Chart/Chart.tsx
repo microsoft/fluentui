@@ -1,14 +1,16 @@
 import * as React from 'react';
-import { IChartInternalProps, IChartStyles, IChartProps, ChartType, ChartHeight, ChartWidth } from './Chart.types';
+import { IChartInternalProps, IChartStyles, IChartProps, ChartType, ChartHeight, ChartWidth, TimeRange } from './Chart.types';
 import {
   DonutChart,
   HorizontalBarChart,
   IDataPoint,
   ILegendDataItem,
+  ILineChartPoints,
   LineChart,
   MultiStackedBarChart,
   StackedBarChart,
-  VerticalBarChart
+  VerticalBarChart,
+  ILineChartDataPoint
 } from '@uifabric/charting';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
@@ -138,6 +140,64 @@ export class Chart extends React.Component<IChartInternalProps, { _width: number
   };
 
   private _getLineChart = (): JSX.Element => {
+    const { chartData, timeRange } = this.props;
+    if (chartData![0].lineChartData![0].data[0].x instanceof Date) {
+      let sDate = new Date();
+      // selecting least possible date. Using this to compute the farthest date among the data passed to render on x-axis
+      let lDate = new Date(-8640000000000000);
+      chartData![0].lineChartData!.map((singleChartData: ILineChartPoints) => {
+        singleChartData.data.map((dataPoint: ILineChartDataPoint) => {
+          if (dataPoint.x < sDate) {
+            sDate = dataPoint.x as Date;
+          }
+          if (dataPoint.x > lDate) {
+            lDate = dataPoint.x as Date;
+          }
+        });
+      });
+      const tickValues: Date[] = [sDate];
+      if (timeRange === TimeRange['7Days']) {
+        for (let i = 0; i < 6; i++) {
+          const nextDate = new Date(sDate);
+          nextDate.setDate(sDate.getDate() + 1);
+          sDate = nextDate;
+          tickValues.push(nextDate);
+        }
+      } else if (timeRange === TimeRange['30Days']) {
+        for (let i = 0; i < 5; i++) {
+          const nextDate = new Date(sDate);
+          nextDate.setDate(sDate.getDate() + 5);
+          sDate = nextDate;
+          tickValues.push(nextDate);
+        }
+      } else if (timeRange === TimeRange['90Days']) {
+        for (let i = 0; i < 5; i++) {
+          const nextDate = new Date(sDate);
+          nextDate.setDate(sDate.getDate() + 15);
+          sDate = nextDate;
+          tickValues.push(nextDate);
+        }
+      } else {
+        for (let i = 0; i < 5; i++) {
+          const nextDate = new Date(sDate);
+          nextDate.setMonth(sDate.getMonth() + 1);
+          sDate = nextDate;
+          tickValues.push(nextDate);
+        }
+      }
+      return (
+        <div className={mergeStyles({ width: this.state._width, height: this.state._height })}>
+          <LineChart
+            data={this.props.chartData![0]}
+            strokeWidth={this.props.strokeWidth}
+            width={this._getWidth()}
+            height={this._getHeight()}
+            tickValues={tickValues}
+            tickFormat={'%m/%d'}
+          />
+        </div>
+      );
+    }
     return (
       <div className={mergeStyles({ width: this.state._width, height: this.state._height })}>
         <LineChart
