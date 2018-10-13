@@ -98,7 +98,7 @@ export class MultipleLineChartExample extends React.Component<{}, {}> {
     const chartContent: IChartProps = {
       chartType: ChartType.LineChart,
       chartData: firstChartData,
-      timeRange: TimeRange['30Days']
+      timeRange: TimeRange['180Days']
     };
 
     const contentAreaList: ICardContentDetails[] = [
