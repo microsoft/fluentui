@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/merge-styles",
+      "comment": "IStyleSet: Now uses a form that works better in TS 2.8 and does not require TS 3.0 to work. Thanks [Nimelrian](https://github.com/Nimelrian)!",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/merge-styles",
+  "email": "cliff.koh@microsoft.com"
+}
