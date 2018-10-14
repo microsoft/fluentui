@@ -8,8 +8,6 @@ export type Omit<U, K extends keyof U> = Pick<U, Diff<keyof U, K>>;
 /**
  * Helper function whose role is supposed to express that regardless if T is a style object or style function,
  * it will always map to a style function.
- *
- * @author [Nimelrian](https://github.com/Nimelrian) in https://github.com/OfficeDev/office-ui-fabric-react/issues/6615
  */
 export type __MapToFunctionType<T> = Extract<T, Function> extends never ? (...args: any[]) => Partial<T> : Extract<T, Function>;
 
