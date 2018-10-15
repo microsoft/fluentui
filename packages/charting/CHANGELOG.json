@@ -2,6 +2,59 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.24.4",
+      "tag": "@uifabric/charting_v0.24.4",
+      "date": "Mon, 15 Oct 2018 12:29:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "updating snapshot tests in charting package",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "e83f082e86ab8a599f298dc1dfe343981bbebee5"
+          },
+          {
+            "comment": "Added font theme setting in styles of DonutChart, LineChart, PieChart, StackedBarChart, VerticalBarChart",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "e83f082e86ab8a599f298dc1dfe343981bbebee5"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Added font theme setting in styles of DonutChart, LineChart, PieChart, StackedBarChart, VerticalBarChart.",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "e83f082e86ab8a599f298dc1dfe343981bbebee5"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.84.0 <7.0.0` to `>=6.84.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.24.3",
+      "tag": "@uifabric/charting_v0.24.3",
+      "date": "Thu, 11 Oct 2018 23:13:31 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "resolve console errors for horizontal bar chart",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "0e18214dd25bffdab0c5eb79fbd4a870276b6ed6"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.83.0 <7.0.0` to `>=6.84.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.7.5 <7.0.0` to `>=6.7.6 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.24.2",
       "tag": "@uifabric/charting_v0.24.2",
       "date": "Wed, 10 Oct 2018 12:29:05 GMT",

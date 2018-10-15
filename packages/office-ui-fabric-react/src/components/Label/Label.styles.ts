@@ -7,6 +7,7 @@ export const getStyles = (props: ILabelStyleProps): ILabelStyles => {
   return {
     root: [
       'ms-Label',
+      theme.fonts.medium,
       {
         color: theme.semanticColors.bodyText,
         boxSizing: 'border-box',

@@ -17,6 +17,7 @@ export function getStyles(props: IShimmerCircleStyleProps): IShimmerCircleStyles
   return {
     root: [
       classNames.root,
+      theme.fonts.medium,
       styles,
       {
         width: `${height}px`,

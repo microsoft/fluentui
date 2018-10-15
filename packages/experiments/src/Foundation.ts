@@ -10,6 +10,7 @@ import {
   IStylingProviders,
   IViewComponent
 } from '@uifabric/foundation';
+export { IStateComponentProps } from '@uifabric/foundation';
 import { getSchemedContext, IProcessedStyleSet, ISchemeNames, IStyleSet, ITheme, mergeStyleSets } from './Styling';
 import { Customizations, CustomizerContext, ICustomizerContext } from './Utilities';
 

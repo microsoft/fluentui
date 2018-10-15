@@ -1053,153 +1053,158 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
               role="presentation"
             >
               <div
+                aria-readonly="true"
                 className="ms-DatePicker-optionGrid"
                 role="grid"
               >
-                <button
-                  aria-label="January 2000"
-                  aria-selected={false}
-                  className="ms-DatePicker-monthOption"
-                  data-is-focusable={true}
-                  disabled={false}
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  role="gridcell"
+                <div
+                  role="row"
                 >
-                  Jan
-                </button>
-                <button
-                  aria-label="February 2000"
-                  aria-selected={true}
-                  className="ms-DatePicker-monthOption"
-                  data-is-focusable={true}
-                  disabled={false}
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  role="gridcell"
-                >
-                  Feb
-                </button>
-                <button
-                  aria-label="March 2000"
-                  aria-selected={false}
-                  className="ms-DatePicker-monthOption"
-                  data-is-focusable={true}
-                  disabled={false}
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  role="gridcell"
-                >
-                  Mar
-                </button>
-                <button
-                  aria-label="April 2000"
-                  aria-selected={false}
-                  className="ms-DatePicker-monthOption"
-                  data-is-focusable={true}
-                  disabled={false}
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  role="gridcell"
-                >
-                  Apr
-                </button>
-                <button
-                  aria-label="May 2000"
-                  aria-selected={false}
-                  className="ms-DatePicker-monthOption"
-                  data-is-focusable={true}
-                  disabled={false}
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  role="gridcell"
-                >
-                  May
-                </button>
-                <button
-                  aria-label="June 2000"
-                  aria-selected={false}
-                  className="ms-DatePicker-monthOption"
-                  data-is-focusable={true}
-                  disabled={false}
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  role="gridcell"
-                >
-                  Jun
-                </button>
-                <button
-                  aria-label="July 2000"
-                  aria-selected={false}
-                  className="ms-DatePicker-monthOption"
-                  data-is-focusable={true}
-                  disabled={false}
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  role="gridcell"
-                >
-                  Jul
-                </button>
-                <button
-                  aria-label="August 2000"
-                  aria-selected={false}
-                  className="ms-DatePicker-monthOption"
-                  data-is-focusable={true}
-                  disabled={false}
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  role="gridcell"
-                >
-                  Aug
-                </button>
-                <button
-                  aria-label="September 2000"
-                  aria-selected={false}
-                  className="ms-DatePicker-monthOption"
-                  data-is-focusable={true}
-                  disabled={false}
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  role="gridcell"
-                >
-                  Sep
-                </button>
-                <button
-                  aria-label="October 2000"
-                  aria-selected={false}
-                  className="ms-DatePicker-monthOption"
-                  data-is-focusable={true}
-                  disabled={false}
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  role="gridcell"
-                >
-                  Oct
-                </button>
-                <button
-                  aria-label="November 2000"
-                  aria-selected={false}
-                  className="ms-DatePicker-monthOption"
-                  data-is-focusable={true}
-                  disabled={false}
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  role="gridcell"
-                >
-                  Nov
-                </button>
-                <button
-                  aria-label="December 2000"
-                  aria-selected={false}
-                  className="ms-DatePicker-monthOption"
-                  data-is-focusable={true}
-                  disabled={false}
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  role="gridcell"
-                >
-                  Dec
-                </button>
+                  <button
+                    aria-label="January 2000"
+                    aria-selected={false}
+                    className="ms-DatePicker-monthOption"
+                    data-is-focusable={true}
+                    disabled={false}
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    role="gridcell"
+                  >
+                    Jan
+                  </button>
+                  <button
+                    aria-label="February 2000"
+                    aria-selected={true}
+                    className="ms-DatePicker-monthOption"
+                    data-is-focusable={true}
+                    disabled={false}
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    role="gridcell"
+                  >
+                    Feb
+                  </button>
+                  <button
+                    aria-label="March 2000"
+                    aria-selected={false}
+                    className="ms-DatePicker-monthOption"
+                    data-is-focusable={true}
+                    disabled={false}
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    role="gridcell"
+                  >
+                    Mar
+                  </button>
+                  <button
+                    aria-label="April 2000"
+                    aria-selected={false}
+                    className="ms-DatePicker-monthOption"
+                    data-is-focusable={true}
+                    disabled={false}
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    role="gridcell"
+                  >
+                    Apr
+                  </button>
+                  <button
+                    aria-label="May 2000"
+                    aria-selected={false}
+                    className="ms-DatePicker-monthOption"
+                    data-is-focusable={true}
+                    disabled={false}
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    role="gridcell"
+                  >
+                    May
+                  </button>
+                  <button
+                    aria-label="June 2000"
+                    aria-selected={false}
+                    className="ms-DatePicker-monthOption"
+                    data-is-focusable={true}
+                    disabled={false}
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    role="gridcell"
+                  >
+                    Jun
+                  </button>
+                  <button
+                    aria-label="July 2000"
+                    aria-selected={false}
+                    className="ms-DatePicker-monthOption"
+                    data-is-focusable={true}
+                    disabled={false}
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    role="gridcell"
+                  >
+                    Jul
+                  </button>
+                  <button
+                    aria-label="August 2000"
+                    aria-selected={false}
+                    className="ms-DatePicker-monthOption"
+                    data-is-focusable={true}
+                    disabled={false}
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    role="gridcell"
+                  >
+                    Aug
+                  </button>
+                  <button
+                    aria-label="September 2000"
+                    aria-selected={false}
+                    className="ms-DatePicker-monthOption"
+                    data-is-focusable={true}
+                    disabled={false}
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    role="gridcell"
+                  >
+                    Sep
+                  </button>
+                  <button
+                    aria-label="October 2000"
+                    aria-selected={false}
+                    className="ms-DatePicker-monthOption"
+                    data-is-focusable={true}
+                    disabled={false}
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    role="gridcell"
+                  >
+                    Oct
+                  </button>
+                  <button
+                    aria-label="November 2000"
+                    aria-selected={false}
+                    className="ms-DatePicker-monthOption"
+                    data-is-focusable={true}
+                    disabled={false}
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    role="gridcell"
+                  >
+                    Nov
+                  </button>
+                  <button
+                    aria-label="December 2000"
+                    aria-selected={false}
+                    className="ms-DatePicker-monthOption"
+                    data-is-focusable={true}
+                    disabled={false}
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    role="gridcell"
+                  >
+                    Dec
+                  </button>
+                </div>
               </div>
             </div>
           </div>

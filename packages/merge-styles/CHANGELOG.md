@@ -1,6 +1,21 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Mon, 08 Oct 2018 12:24:15 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Oct 2018 12:29:12 GMT and should not be manually modified.
+
+## 6.10.1
+Mon, 15 Oct 2018 12:29:12 GMT
+
+### Patches
+
+- IStyleSet: Now uses a form that works better in TS 2.8 and does not require TS 3.0 to work. Thanks [Nimelrian](https://github.com/Nimelrian)!
+- Adding css grid properties to fill out the spec
+
+## 6.10.0
+Thu, 11 Oct 2018 23:13:31 GMT
+
+### Minor changes
+
+- Enable api-extractor task for merge-styles
 
 ## 6.9.4
 Mon, 08 Oct 2018 12:24:15 GMT

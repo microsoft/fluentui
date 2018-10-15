@@ -60,6 +60,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
     root: [
       classNames.root,
       className,
+      theme.fonts.medium,
       {
         overflowY: 'auto',
         userSelect: 'none',

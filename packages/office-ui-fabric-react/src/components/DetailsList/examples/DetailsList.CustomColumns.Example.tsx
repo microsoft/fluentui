@@ -35,6 +35,8 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
         onColumnHeaderClick={this._onColumnClick}
         onItemInvoked={this._onItemInvoked}
         onColumnHeaderContextMenu={this._onColumnHeaderContextMenu}
+        ariaLabelForSelectionColumn="Toggle selection"
+        ariaLabelForSelectAllCheckbox="Toggle selection for all items"
       />
     );
   }

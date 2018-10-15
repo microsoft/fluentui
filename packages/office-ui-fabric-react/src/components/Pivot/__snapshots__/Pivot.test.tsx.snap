@@ -16,9 +16,12 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
       className=
           ms-Pivot
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
             color: #0078d4;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
             margin-bottom: 0px;
@@ -364,9 +367,12 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
       className=
           ms-Pivot
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
             color: #0078d4;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
             margin-bottom: 0px;
@@ -900,9 +906,12 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
           ms-Pivot
           ms-Pivot--large
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
             color: #0078d4;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
             margin-bottom: 0px;
@@ -1248,9 +1257,12 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
           ms-Pivot--large
           ms-Pivot--tabs
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
             color: #0078d4;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
             margin-bottom: 0px;
@@ -1617,9 +1629,12 @@ exports[`Pivot renders link Pivot correctly 1`] = `
       className=
           ms-Pivot
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
             color: #0078d4;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
             margin-bottom: 0px;
@@ -1964,9 +1979,12 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
           ms-Pivot
           ms-Pivot--tabs
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
             color: #0078d4;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
             margin-bottom: 0px;
