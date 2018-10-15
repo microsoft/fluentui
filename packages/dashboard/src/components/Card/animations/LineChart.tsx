@@ -7,14 +7,15 @@ import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface ILineChartProps {}
 
+const getClassNames = classNamesFunction<ILineChartProps, ILineChartStyles>();
+const classNames = getClassNames(getStyles, {});
+
 export class LineChart extends React.Component<ILineChartProps> {
   constructor(props: ILineChartProps) {
     super(props);
   }
 
   public render(): JSX.Element {
-    const getClassNames = classNamesFunction<ILineChartProps, ILineChartStyles>();
-    const classNames = getClassNames(getStyles, {});
     const firstSegmentClassName = mergeStyles(
       getStyles().lineChartLoadingSegment,
       getStyles().lineChartLoadingSegmentFirst,

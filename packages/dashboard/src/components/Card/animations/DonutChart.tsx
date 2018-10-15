@@ -7,15 +7,15 @@ import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface IDonutChartProps {}
 
+const getClassNames = classNamesFunction<IDonutChartProps, IDonutChartStyles>();
+const classNames = getClassNames(getStyles, {});
+
 export class DonutChart extends React.Component<IDonutChartProps> {
   constructor(props: IDonutChartProps) {
     super(props);
   }
 
   public render(): JSX.Element {
-    const getClassNames = classNamesFunction<IDonutChartProps, IDonutChartStyles>();
-    const classNames = getClassNames(getStyles, {});
-
     const donutChartLoadingBaseClassName = mergeStyles(getStyles().donutChartLoadingBase, getStyles().donutChartLoadingSegment);
     const donutChartCircleFirstClassName = mergeStyles(
       getStyles().donutChartLoadingSegment,

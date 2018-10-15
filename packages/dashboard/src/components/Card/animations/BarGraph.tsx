@@ -7,14 +7,15 @@ import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface IBarGraphProps {}
 
+const getClassNames = classNamesFunction<IBarGraphProps, IBarGraphStyles>();
+const classNames = getClassNames(getStyles, {});
+
 export class BarGraph extends React.Component<IBarGraphProps> {
   constructor(props: IBarGraphProps) {
     super(props);
   }
 
   public render(): JSX.Element {
-    const getClassNames = classNamesFunction<IBarGraphProps, IBarGraphStyles>();
-    const classNames = getClassNames(getStyles, {});
     const barGraphLoadingBarFirstClassName = mergeStyles(getStyles().barGraphLoadingBarFirst, getStyles().barGraphLoadingAnimatedSegment);
     const barGraphLoadingBarSecondClassName = mergeStyles(getStyles().barGraphLoadingBarSecond, getStyles().barGraphLoadingAnimatedSegment);
 
