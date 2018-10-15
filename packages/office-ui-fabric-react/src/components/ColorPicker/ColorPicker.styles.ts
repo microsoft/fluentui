@@ -6,6 +6,7 @@ export const getStyles = (props: IColorPickerStyleProps): IColorPickerStyles => 
   return {
     root: [
       'ms-ColorPicker',
+      theme.fonts.medium,
       {
         position: 'relative',
         maxWidth: 300

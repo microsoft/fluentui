@@ -2,6 +2,28 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.6.0",
+      "tag": "@uifabric/fabric-website_v6.6.0",
+      "date": "Mon, 15 Oct 2018 12:29:12 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Enable website to load bundle scripts from manifest JS file",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "8380bebb2c2db21c6712d68d02cf2373a717c93a"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.37.0 <7.0.0` to `>=6.37.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.84.0 <7.0.0` to `>=6.84.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.5.0",
       "tag": "@uifabric/fabric-website_v6.5.0",
       "date": "Mon, 08 Oct 2018 12:24:15 GMT",

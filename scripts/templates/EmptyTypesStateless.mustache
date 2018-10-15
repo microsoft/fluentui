@@ -1,0 +1,27 @@
+import { IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
+
+export type I{{componentName}}Component = IStatelessComponent< I{{componentName}}Props, I{{componentName}}Styles>;
+
+// Extending IStyleableComponentProps will automatically add stylable props for you, such as styles and theme.
+//    If you don't want these props to be included in your component, just remove this extension.
+export interface I{{componentName}}Props extends IStyleableComponentProps< I{{componentName}}Props, I{{componentName}}Styles> {
+  // All props for your component are to be defined here.
+  /**
+   * Component sample prop. If provided, component is controlled.
+   * @default defaultText
+   */
+  text: string;
+  /**
+   * Component sample prop.
+   */
+  status?: string;
+}
+
+export interface I{{componentName}}Styles {
+  /**
+   * Styling for the root element.
+   */
+  root: IStyle;
+  // Add other styles elements for your component here.
+}

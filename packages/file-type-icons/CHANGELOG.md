@@ -1,6 +1,13 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Mon, 08 Oct 2018 12:24:15 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Oct 2018 12:29:12 GMT and should not be manually modified.
+
+## 6.2.0
+Mon, 15 Oct 2018 12:29:12 GMT
+
+### Minor changes
+
+- Fixing enum to avoid const enum.
 
 ## 6.1.3
 Mon, 08 Oct 2018 12:24:15 GMT
