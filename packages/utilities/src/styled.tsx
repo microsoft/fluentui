@@ -15,7 +15,7 @@ export interface ICustomizableProps {
 
   /**
    * List of fields which can be customized.
-   * @default [ 'theme', 'styles' ]
+   * @defaultvalue [ 'theme', 'styles' ]
    */
   fields?: string[];
 }

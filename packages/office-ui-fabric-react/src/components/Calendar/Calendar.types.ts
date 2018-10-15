@@ -7,7 +7,7 @@ export interface ICalendar {
   focus: () => void;
 }
 
-export interface ICalendarProps extends IBaseProps<ICalendar> {
+export interface ICalendarProps extends IBaseProps<ICalendar>, React.HTMLAttributes<HTMLElement> {
   /**
    * Optional callback to access the ICalendar interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

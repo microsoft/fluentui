@@ -127,4 +127,9 @@ export interface IBaseExtendedPickerProps<T> {
    * Focus zone props
    */
   focusZoneProps?: IFocusZoneProps;
+
+  /**
+   * Current rendered query string that's corealte to current rendered result
+   **/
+  currentRenderedQueryString?: string;
 }

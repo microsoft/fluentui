@@ -55,13 +55,13 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   }
 
   public render(): JSX.Element {
-    const { barHeight, data, theme, hideRatio, styles } = this.props;
+    const { barHeight, data, theme, hideRatio, styles, href } = this.props;
     this._adjustProps();
     const { palette } = theme!;
     const legends = this._getLegendData(data!, hideRatio!, palette);
     const bars: JSX.Element[] = [];
     data!.map((singleChartData: IChartProps, index: number) => {
-      const singleChartBars = this._createBarsAndLegends(singleChartData!, barHeight!, palette, hideRatio![index]);
+      const singleChartBars = this._createBarsAndLegends(singleChartData!, barHeight!, palette, hideRatio![index], href);
       bars.push(<div key={index}>{singleChartBars}</div>);
     });
     this._classNames = getClassNames(styles!, {
@@ -72,7 +72,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     return (
       <div className={this._classNames.root}>
         {bars}
-        {legends}
+        <div className={this._classNames.legendContainer}>{legends}</div>
         {isCalloutVisible ? (
           <Callout
             gapSpace={5}
@@ -91,7 +91,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     );
   }
 
-  private _createBarsAndLegends(data: IChartProps, barHeight: number, palette: IPalette, hideRatio: boolean): JSX.Element {
+  private _createBarsAndLegends(data: IChartProps, barHeight: number, palette: IPalette, hideRatio: boolean, href?: string): JSX.Element {
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     // calculating starting point of each bar and it's range
     const startingPoint: number[] = [];
@@ -113,7 +113,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       }
       this._classNames = getClassNames(styles!, {
         theme: this.props.theme!,
-        shouldHighlight: shouldHighlight
+        shouldHighlight: shouldHighlight,
+        href: href
       });
       return (
         <g
@@ -125,6 +126,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           onMouseOver={this._onBarHover.bind(this, point.legend!, pointData, color)}
           onMouseMove={this._onBarHover.bind(this, point.legend!, pointData, color)}
           onMouseLeave={this._onBarLeave}
+          onClick={this._redirectToUrl.bind(this, href)}
         >
           <rect key={index} x={startingPoint[index] + '%'} y={0} width={value + '%'} height={barHeight} fill={color} />
         </g>
@@ -132,7 +134,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     });
     if (data.chartData!.length === 0) {
       bars.push(
-        <g key={0}>
+        <g key={0} className={this._classNames.noData} onClick={this._redirectToUrl.bind(this, href)}>
           <rect key={0} x={'0%'} y={0} width={'100%'} height={barHeight} fill={palette.neutralTertiaryAlt} />
         </g>
       );
@@ -282,5 +284,9 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     this.setState({
       isCalloutVisible: false
     });
+  }
+
+  private _redirectToUrl(href: string | undefined): void {
+    href ? (window.location.href = href) : '';
   }
 }

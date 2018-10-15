@@ -6,7 +6,7 @@ import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import {
   CollapsibleSection,
   CollapsibleSectionTitle,
-  ICollapsibleSectionTitleStyleProps,
+  ICollapsibleSectionTitleComponent,
   ICollapsibleSectionTitleStyles
 } from '@uifabric/experiments';
 
@@ -43,6 +43,25 @@ const searchBoxStyles: IStyleSet<ISearchBoxStyles> = {
       }
     }
   }
+};
+
+const getTitleStyles: ICollapsibleSectionTitleComponent['styles'] = props => {
+  const { theme } = props;
+  return {
+    root: [
+      {
+        color: theme.palette.neutralQuaternaryAlt,
+        marginBottom: '8px',
+        selectors: {
+          ':hover': {
+            background: theme.palette.neutralPrimary,
+            cursor: 'pointer'
+          }
+        }
+      }
+    ],
+    text: theme.fonts.medium
+  };
 };
 
 export class Nav extends React.Component<INavProps, INavState> {
@@ -288,23 +307,4 @@ function _hasActiveChild(page: INavPage): boolean {
   }
 
   return hasActiveChild;
-}
-
-function getTitleStyles(props: ICollapsibleSectionTitleStyleProps): Partial<ICollapsibleSectionTitleStyles> {
-  const { theme } = props;
-  return {
-    root: [
-      {
-        color: theme.palette.neutralQuaternaryAlt,
-        marginBottom: '8px',
-        selectors: {
-          ':hover': {
-            background: theme.palette.neutralPrimary,
-            cursor: 'pointer'
-          }
-        }
-      }
-    ],
-    text: theme.fonts.medium
-  };
 }

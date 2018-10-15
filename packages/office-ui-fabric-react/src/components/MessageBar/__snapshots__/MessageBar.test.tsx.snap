@@ -7,11 +7,16 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
       ms-MessageBar
       ms-MessageBar-multiline
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
         background: #f4f4f4;
         box-sizing: border-box;
         color: #333333;
         display: flex;
         flex-direction: column;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
         min-height: 32px;
         position: relative;
         width: 100%;

@@ -5,6 +5,10 @@ exports[`Component Examples renders ProgressIndicator.Basic.Example.tsx correctl
   className=
       ms-ProgressIndicator
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
         font-weight: 400;
       }
 >

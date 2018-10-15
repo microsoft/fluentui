@@ -1,6 +1,34 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 21 Sep 2018 14:25:46 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Oct 2018 12:29:12 GMT and should not be manually modified.
+
+## 6.23.0
+Mon, 15 Oct 2018 12:29:12 GMT
+
+### Minor changes
+
+- Adding `asAsync` HOC wrapper to abstract async loading for components.
+
+## 6.22.0
+Wed, 10 Oct 2018 12:29:05 GMT
+
+### Minor changes
+
+- Add utilities.api.ts, update files to fix api-extractor errors
+
+## 6.21.2
+Mon, 08 Oct 2018 12:24:15 GMT
+
+### Patches
+
+- Moving tslint/prettier dependencies 
+
+## 6.21.1
+Wed, 26 Sep 2018 12:27:23 GMT
+
+### Patches
+
+- Memoize: Do not use cached result when function instances are distinct.
 
 ## 6.21.0
 Fri, 21 Sep 2018 14:25:46 GMT

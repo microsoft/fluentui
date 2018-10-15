@@ -2,6 +2,284 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.29.3",
+      "tag": "@uifabric/dashboard_v0.29.3",
+      "date": "Mon, 15 Oct 2018 12:29:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "updating dashboard package",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "e83f082e86ab8a599f298dc1dfe343981bbebee5"
+          },
+          {
+            "comment": "Styling for marginLeft in Nav",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "e83f082e86ab8a599f298dc1dfe343981bbebee5"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Adding Styling for marginLeft in Nav.",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "e83f082e86ab8a599f298dc1dfe343981bbebee5"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.24.3` to `^0.24.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.37.0 <7.0.0` to `>=6.37.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.84.0 <7.0.0` to `>=6.84.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.29.2",
+      "tag": "@uifabric/dashboard_v0.29.2",
+      "date": "Mon, 08 Oct 2018 12:24:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Moving tslint/prettier dependencies ",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8ba9e22a7a8a2a1e7facda5aa7d91423c7af43ed"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.24.0` to `^0.24.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.7.3 <7.0.0` to `>=6.7.4 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.35.0 <7.0.0` to `>=6.36.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.1.1 <2.0.0` to `>=1.1.2 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.79.0 <7.0.0` to `>=6.80.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=6.0.5 <7.0.0` to `>=6.0.6 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.29.1",
+      "tag": "@uifabric/dashboard_v0.29.1",
+      "date": "Fri, 05 Oct 2018 12:27:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removed the line inbetween the grid rows",
+            "author": "BalakrishnaReddyPolu <polu.balakrishna96@gmail.com>",
+            "commit": "c61c1ca08a7c66101006165001e9193419704af2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.78.0 <7.0.0` to `>=6.78.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.29.0",
+      "tag": "@uifabric/dashboard_v0.29.0",
+      "date": "Thu, 04 Oct 2018 12:26:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding common href for the entire multicount component. Removing href that was in before  that allowed passing href to every row seperately",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "99a969e67f1b0d396007f7ff0c5acb7a8dc20d00"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.23.0` to `^0.24.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.34.1 <7.0.0` to `>=6.34.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.77.0 <7.0.0` to `>=6.78.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.28.1",
+      "tag": "@uifabric/dashboard_v0.28.1",
+      "date": "Wed, 03 Oct 2018 12:28:46 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.22.1` to `^0.23.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.34.0 <7.0.0` to `>=6.34.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.76.0 <7.0.0` to `>=6.77.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.28.0",
+      "tag": "@uifabric/dashboard_v0.28.0",
+      "date": "Tue, 02 Oct 2018 12:28:04 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding callback upon clicking on the card title. This can be used in cases like if clicks needs to be instrumented.",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "3e2f1a5e99adb433cf786719a55aa49164920d1a"
+          },
+          {
+            "comment": "Add setup banner component for dashboard",
+            "author": "Kevin Chan <2591766+chankev@users.noreply.github.com>",
+            "commit": "e9f5f26d7d067d0ad64aadb422531b957c57e3df"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.33.0 <7.0.0` to `>=6.34.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.75.0 <7.0.0` to `>=6.76.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.27.0",
+      "tag": "@uifabric/dashboard_v0.27.0",
+      "date": "Mon, 01 Oct 2018 12:27:24 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "clean up not used code",
+            "author": "caradong <caradong1122@gmail.com>",
+            "commit": "d830f7c42d9f35b38c765c966d5be7e08a5e702c"
+          },
+          {
+            "comment": "improve the logic to determin first section",
+            "author": "caradong <caradong1122@gmail.com>",
+            "commit": "8f565bb03db16ad1eedbdda78d306800da7d64ad"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix transient dependency on react-resizable",
+            "author": "Wei Chen <xbtsw@users.noreply.github.com>",
+            "commit": "25614db7afcdee509aa37d5094ec452e22cb1748"
+          },
+          {
+            "comment": "resolved hover issue of thumbnailList ",
+            "author": "BalakrishnaReddyPolu <polu.balakrishna96@gmail.com>",
+            "commit": "92f15b7e3dffa730e7544e1407e885e5dd8b9b6b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.22.0` to `^0.22.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.32.4 <7.0.0` to `>=6.33.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.74.2 <7.0.0` to `>=6.75.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.26.2",
+      "tag": "@uifabric/dashboard_v0.26.2",
+      "date": "Thu, 27 Sep 2018 12:27:48 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.21.2` to `^0.22.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.32.2 <7.0.0` to `>=6.32.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.74.0 <7.0.0` to `>=6.74.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.26.1",
+      "tag": "@uifabric/dashboard_v0.26.1",
+      "date": "Wed, 26 Sep 2018 16:58:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "card content overflow issue fix",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "c2d3d6f69c8459387279584de7f185dfaf21dd7d"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.26.0",
+      "tag": "@uifabric/dashboard_v0.26.0",
+      "date": "Wed, 26 Sep 2018 12:27:23 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding props that take bolding for the content in each cell of gridlist",
+            "author": "dezverev <dbzverev@outlook.com>",
+            "commit": "0d208d1031f9af115576667aaeb279a97b8e5342"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.73.0 <7.0.0` to `>=6.74.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.25.6",
+      "tag": "@uifabric/dashboard_v0.25.6",
+      "date": "Tue, 25 Sep 2018 12:28:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bug fix: Multicount component body text is not rendered in IE when put inside a flex box with justifyContent of center",
+            "author": "Kevin Chan <2591766+chankev@users.noreply.github.com>",
+            "commit": "84ec86ff059bdf7abaacabe1ad095a3aa870243d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.21.1` to `^0.21.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.32.1 <7.0.0` to `>=6.32.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.72.2 <7.0.0` to `>=6.73.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.25.5",
       "tag": "@uifabric/dashboard_v0.25.5",
       "date": "Mon, 24 Sep 2018 12:27:31 GMT",

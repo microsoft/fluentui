@@ -1,6 +1,199 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 24 Sep 2018 12:27:31 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Oct 2018 12:29:12 GMT and should not be manually modified.
+
+## 6.84.1
+Mon, 15 Oct 2018 12:29:12 GMT
+
+### Patches
+
+- DetailsList: do not set select all button aria-describedby unless id it references exists
+- Added default font theme for Slider control to remove Fabric component dependency.
+- Fix ContextualMenuItem secondary text not read by screen reader due to aria-label containing only primary text."
+- Slider bug fix for min equals max
+- Panel: Fixed second scroll bar when content taller than panel
+- ShimmeredDetailsList: Added export to top level index file
+
+## 6.84.0
+Thu, 11 Oct 2018 23:13:31 GMT
+
+### Minor changes
+
+- Implement ImageFit.centerCover
+
+### Patches
+
+- Calendar: accessibility fixes for month option grid
+- Dropdown: Fix issue where correct option wasn't selected
+- Fix ContextualMenu example broken charm icons and specify hover delay input as type="number".
+- Remove 'Button Swap with Focus State' example
+- ScrollablePane: Update DetailsList example to fix bug where footer overlapped scroll bar
+- IconButton: Specifiy the color of the icon in IconButton so that it can be themed and change the hover color for the same reasons.
+
+## 6.83.0
+Wed, 10 Oct 2018 12:29:05 GMT
+
+### Minor changes
+
+- DatePicker and Calendar: allowing native div props to be forwarded to container div.
+- Keytip: Fix TS 3.1 error by extending IBaseProps.
+
+### Patches
+
+- Facepile: fix precedence order for style and className props
+- Added default font theme for Slider control to remove Fabric component dependency.
+- Make ChoiceGroup's role configurable with default "application" for JAWS support.
+- KeyTip: Adds space around examples to improve readability
+- Nav: add aria-label and aria-expanded to groups
+- Panel: make scrollableContent the only scrollable div
+- TagPicker textbox is in the wrong position - middle instead of bottom. Added an align style to fix this.
+
+## 6.82.0
+Tue, 09 Oct 2018 12:26:48 GMT
+
+### Minor changes
+
+- Nav: Add custom group header renderer property
+
+### Patches
+
+- DocumentCard, Pivot, GroupHeader - replace instances of neutralSecondaryAlt with neutralSecondary
+- DocumentCardTitle: Fixes an infinite loop condition caused by componentDidUpdate calling _srinkTitle() over and over again due to setState being triggered every time without a stop condition.
+
+## 6.81.0
+Mon, 08 Oct 2018 19:25:44 GMT
+
+### Minor changes
+
+- Links that wrap aren't getting the proper focus rect. Added a conditional selector that changes the  outline and removed the getFocusStyles call  to fix this. This is for Links that are anchors. Links that are buttons do not wrap at the moment. Once Links that are buttons wrap we can address their focus rect issues if there are any.
+
+### Patches
+
+- TextField can no longer be resized to below its minimum height
+
+## 6.80.0
+Mon, 08 Oct 2018 12:24:16 GMT
+
+### Minor changes
+
+- Typescript 3.1 type fixes.
+
+### Patches
+
+- Moving tslint/prettier dependencies to published packages.
+- Fix a11y violations in ContextualMenu examples
+- Fix Sliders' support for zero values.
+
+## 6.79.0
+Fri, 05 Oct 2018 23:29:26 GMT
+
+### Minor changes
+
+- Moving data property from IDropDownOption to ISelectableOption so anyone that uses ISelectableOption can use this property
+
+### Patches
+
+- Fixed initials not reappearing bug when image is removed from a PersonaCoin
+
+## 6.78.1
+Fri, 05 Oct 2018 12:27:02 GMT
+
+### Patches
+
+- DetailsList: header now reflects the theme defined in the font.
+- Facepile: allow FacepileButton to render custom styles
+- Fixed null ref error when autoFocus prop is used in SearchBox
+- Fixes DetailsHeader disabled columns invoking onColumnClick callbacks
+
+## 6.78.0
+Thu, 04 Oct 2018 12:26:48 GMT
+
+### Minor changes
+
+- Coachmark: Add delayBeforeCoachmarkAnimation prop
+
+### Patches
+
+- Add explicit min-width of 0px to SearchBox input element, to prevent overflow when SearchBox has a fixed width.
+- Modal: small topOffsetFixed changes and added example to Dialog
+- Dropdown: only apply an aria-labelledby attribute if a non-empty label property is given
+- Correct hover and highlight states for Calendar (DateRangeType.Week)
+
+## 6.77.0
+Wed, 03 Oct 2018 12:28:46 GMT
+
+### Minor changes
+
+- Modal: add optional prop topOffsetFixed
+- SwatchColorPicker: let height and width be customizable
+
+### Patches
+
+- FocusZone: check for RTL before making top bottom comparisons
+
+## 6.76.0
+Tue, 02 Oct 2018 12:28:04 GMT
+
+### Minor changes
+
+- Pivot: update the wrapper holding the tab buttons from ul tags to div for HTML validation and keep the narrator working correctly.
+
+### Patches
+
+- Layer: Don't block capture events, allowing onFocus and onBlur events to work as expected.
+- TextField: prettier fixes
+
+## 6.75.0
+Mon, 01 Oct 2018 12:27:24 GMT
+
+### Minor changes
+
+- semantic slot value updates per design direction
+
+### Patches
+
+- Improve _isWhiteCell logic to handle rgb(a) and hex shorthand  notation.
+- Add native props support for input properties to  SearchBox's inner input element.
+
+## 6.74.2
+Fri, 28 Sep 2018 12:27:38 GMT
+
+### Patches
+
+- DetailsList: replace the use of neutralSecondaryAlt color which was deprecated.
+- ComboBox: add logic to stop onBlur handler to be invoked when clicking on Callout's scrollbar.
+- now all the top level components will include version info for package
+
+## 6.74.1
+Thu, 27 Sep 2018 12:27:48 GMT
+
+### Patches
+
+- Layer: Do not render content until virtual parent is set.
+
+## 6.74.0
+Wed, 26 Sep 2018 12:27:23 GMT
+
+### Minor changes
+
+- Add currentRenderedQueryString to avoid discrepancy
+
+### Patches
+
+- Sticky: second null check for currElem
+- Dropdown: prevent dropdown to open on keyboard events when in disabled mode.
+
+## 6.73.0
+Tue, 25 Sep 2018 12:28:12 GMT
+
+### Minor changes
+
+- Allows callout props to be passed through the base picker
+
+### Patches
+
+- ResizeGroup: Remove classNamesFunction from ResizeGroup
+- make oufr also set sideeffects for version.js
 
 ## 6.72.2
 Mon, 24 Sep 2018 12:27:31 GMT

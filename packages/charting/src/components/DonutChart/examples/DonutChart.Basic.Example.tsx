@@ -20,6 +20,6 @@ export class DonutChartBasicExample extends React.Component<IDonutChartProps, {}
       chartTitle: chartTitle,
       chartData: points
     };
-    return <DonutChart data={data} innerRadius={30} />;
+    return <DonutChart data={data} innerRadius={30} href={'https://developer.microsoft.com/en-us/'} />;
   }
 }

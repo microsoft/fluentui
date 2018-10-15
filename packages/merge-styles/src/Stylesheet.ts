@@ -37,7 +37,7 @@ export interface IStyleSheetConfig {
 
   /**
    * Default 'displayName' to use for a className.
-   * @default 'css'
+   * @defaultvalue 'css'
    */
   defaultPrefix?: string;
 
