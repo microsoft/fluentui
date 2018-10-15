@@ -5,7 +5,7 @@ import { IAnnouncedProps, IAnnouncedStyles, IAnnouncedStyleProps } from './Annou
 
 const getClassNames = classNamesFunction<IAnnouncedStyleProps, IAnnouncedStyles>();
 
-export class Announced extends BaseComponent<IAnnouncedProps, {}> {
+export class AnnouncedBase extends BaseComponent<IAnnouncedProps, {}> {
   private _classNames: IProcessedStyleSet<IAnnouncedStyles>;
   public render(): JSX.Element {
     const { message, styles, theme, key } = this.props;
