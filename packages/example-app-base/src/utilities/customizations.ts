@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { ICustomizations } from 'office-ui-fabric-react/lib/Utilities';
+import { ICustomizations } from 'office-ui-fabric-react';
 
 export type IExampleCardCustomizations = {
   /**

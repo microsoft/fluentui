@@ -1,7 +1,16 @@
 import * as React from 'react';
 import { createStatelessComponent, IStatelessComponent, IStyleableComponentProps, IStylingProviders } from '@uifabric/foundation';
-import { getSchemedContext, IProcessedStyleSet, ISchemeNames, IStyle, ITheme, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
-import { Customizations, CustomizerContext, ICustomizerContext } from 'office-ui-fabric-react/lib/Utilities';
+import {
+  Customizations,
+  CustomizerContext,
+  getSchemedContext,
+  ICustomizerContext,
+  IProcessedStyleSet,
+  ISchemeNames,
+  IStyle,
+  ITheme,
+  mergeStyleSets
+} from 'office-ui-fabric-react';
 
 // This file exists only to create a temporary stateless component for applying schemes.
 // TODO: Once Stack (or any other Foundation created layout component) is promoted out of experiments,

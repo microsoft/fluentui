@@ -1,5 +1,4 @@
-import { createTheme, ITheme } from 'office-ui-fabric-react/lib/Styling';
-import { ICustomizations } from 'office-ui-fabric-react/lib/Utilities';
+import { createTheme, ICustomizations, ITheme } from 'office-ui-fabric-react';
 import { IExampleCardCustomizations, IAppCustomizations } from '@uifabric/example-app-base';
 import { getNeutralVariant, getSoftVariant, getStrongVariant } from '@uifabric/variants';
 

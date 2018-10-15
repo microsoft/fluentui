@@ -1,9 +1,15 @@
 import * as React from 'react';
-import { ISchemeNames } from 'office-ui-fabric-react/lib/Styling';
-import { css, Customizer } from 'office-ui-fabric-react/lib/Utilities';
+import {
+  CommandButton,
+  css,
+  Customizer,
+  Dropdown,
+  IDropdown,
+  IDropdownOption,
+  IDropdownStyles,
+  ISchemeNames
+} from 'office-ui-fabric-react';
 import './ExampleCard.scss';
-import { CommandButton } from 'office-ui-fabric-react/lib/Button';
-import { Dropdown, IDropdownOption, IDropdownStyles } from 'office-ui-fabric-react/lib/Dropdown';
 import { ExampleCardComponent, IExampleCardComponent } from './ExampleCardComponent';
 import { Highlight } from '../Highlight/Highlight';
 import { AppCustomizationsContext, IAppCustomizations } from '../../utilities/customizations';
