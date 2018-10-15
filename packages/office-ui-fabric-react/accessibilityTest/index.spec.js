@@ -1,16 +1,16 @@
 const ChiselWebdriverio = require('@mskeros/chisel-webdriverio');
 
-describe('Test index page', function() {
+describe('accessibility tests', function() {
   const chisel = new ChiselWebdriverio.ChiselWebdriverio();
-  const scanName = 'scan-index';
+  const scanNamePrefix = 'office-fabric-accessibility';
 
   it('should run chisel tests on accessibility university after', async () => {
     await browser.url('https://www.bing.com');
-    return chisel.scan(browser, { returnSarif: true }, scanName);
+    return chisel.scan(browser, { returnSarif: true }, `${scanNamePrefix} - 1`);
   });
 
   it('run chisel test on accessibility university before', async () => {
     await browser.url('https://www.washington.edu/accesscomputing/AU/before.html');
-    return chisel.scan(browser, { returnSarif: true }, scanName);
+    return chisel.scan(browser, { returnSarif: true }, `${scanNamePrefix} - 2`);
   });
 });
