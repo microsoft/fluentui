@@ -18,14 +18,14 @@ export class AnnouncedPage extends React.Component<IComponentDemoPageProps, {}> 
         componentName="Announced"
         exampleCards={
           <div>
-            <ExampleCard title="Announced component used with editing text, deletion" isOptIn={true} code={AnnouncedBasicExampleCode}>
+            {/* <ExampleCard title="Announced component used with editing text, deletion" isOptIn={true} code={AnnouncedBasicExampleCode}>
               <AnnouncedBasicExample />
-            </ExampleCard>
-            {/* <ExampleCard title="Announced component used for asynchronous page/page content loading"
-            isOptIn={true} code={AnnouncedAsynchronousExampleCode}>
+            </ExampleCard> */}
+            <ExampleCard title="Announced component used for asynchronous page/page content loading"
+              isOptIn={true} code={AnnouncedAsynchronousExampleCode}>
               <AnnouncedAsynchronousExample />
             </ExampleCard>
-            <ExampleCard title="Announced component used for bulk async long running operations"
+            {/* <ExampleCard title="Announced component used for bulk async long running operations"
             isOptIn={true} code={AnnouncedBulkLongRunningExampleCode}>
               <AnnouncedBulkLongRunningExample />
             </ExampleCard>

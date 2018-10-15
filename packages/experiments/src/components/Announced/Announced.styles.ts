@@ -3,6 +3,7 @@ import { IAnnouncedStyleProps, IAnnouncedStyles } from './Announced.types';
 
 export const getStyles = (props: IAnnouncedStyleProps): IAnnouncedStyles => {
   return {
+    root: [],
     screenReaderText: hiddenContentStyle
   };
 };
