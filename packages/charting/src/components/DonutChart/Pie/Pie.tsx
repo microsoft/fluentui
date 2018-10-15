@@ -20,7 +20,7 @@ export class Pie extends React.Component<IPieProps, {}> {
     this._hoverCallback = this._hoverCallback.bind(this);
   }
 
-  public arcGenerator = (d: IArcData, i: number): JSX.Element => {
+  public arcGenerator = (d: IArcData, i: number, href?: string): JSX.Element => {
     const color = d && d.data && d.data.color;
     return (
       <Arc
@@ -33,19 +33,20 @@ export class Pie extends React.Component<IPieProps, {}> {
         hoverLeaveCallback={this.props.hoverLeaveCallback}
         uniqText={this.props.uniqText}
         activeArc={this.props.activeArc}
+        href={href}
       />
     );
   };
 
   public render(): JSX.Element {
-    const { pie, data, width, height } = this.props;
+    const { pie, data, width, height, href } = this.props;
 
     const piechart = pie(data),
       translate = `translate(${width / 2}, ${height / 2})`;
 
-    return <g transform={translate}>{piechart.map((d: IArcData, i: number) => this.arcGenerator(d, i))}</g>;
+    return <g transform={translate}>{piechart.map((d: IArcData, i: number) => this.arcGenerator(d, i, href))}</g>;
   }
-  private _hoverCallback(data: IChartDataPoint): void {
-    this.props.hoverOnCallback!(data);
+  private _hoverCallback(data: IChartDataPoint, e: React.MouseEvent<SVGPathElement>): void {
+    this.props.hoverOnCallback!(data, e);
   }
 }

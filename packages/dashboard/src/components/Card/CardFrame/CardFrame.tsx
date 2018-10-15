@@ -38,11 +38,13 @@ export class CardFrame extends React.Component<ICardFrameProps, {}> {
       });
     }
     const href = this.props.href === undefined ? '#' : this.props.href;
+    const target = this.props.target === undefined ? '_self' : this.props.target;
     return (
       <div className={classNames.root}>
         <div className={classNames.cardTitleBox}>
           <div className={classNames.cardTitle}>
             <Link
+              onMouseDown={this._onLinkMouseDown}
               styles={{
                 root: {
                   fontFamily: 'Segoe UI',
@@ -60,12 +62,14 @@ export class CardFrame extends React.Component<ICardFrameProps, {}> {
                 }
               }}
               href={href}
+              target={target}
               disabled={href === '#'}
+              onClick={this._handleTitleClick}
             >
               {cardTitle}
             </Link>
           </div>
-          <div className={classNames.cardTitleEllipsisButton}>
+          <div className={classNames.cardTitleEllipsisButton} onMouseDown={this._onIconMouseDown}>
             <IconButton
               className={classNames.ellipsisButtonStyle}
               menuIconProps={{ iconName: 'More' }}
@@ -87,4 +91,16 @@ export class CardFrame extends React.Component<ICardFrameProps, {}> {
       </div>
     );
   }
+
+  private _handleTitleClick = () => {
+    this.props.cardTitleCallback ? this.props.cardTitleCallback() : '';
+  };
+
+  private _onLinkMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+  };
+
+  private _onIconMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+  };
 }

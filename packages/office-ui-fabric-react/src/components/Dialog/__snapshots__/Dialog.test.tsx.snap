@@ -38,7 +38,6 @@ exports[`Dialog renders Dialog correctly 1`] = `
             padding-right: 36px;
             padding-top: 20px;
           }
-      id={undefined}
       role="heading"
     />
     <div

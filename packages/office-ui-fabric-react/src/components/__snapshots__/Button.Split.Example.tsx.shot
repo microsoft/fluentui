@@ -19,10 +19,15 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
       className=
           ms-Label
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
             color: #333333;
             display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -38,13 +43,8 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
       Standard
     </label>
     <div
-      aria-describedby={undefined}
-      aria-disabled={undefined}
       aria-expanded={false}
       aria-haspopup={true}
-      aria-label={undefined}
-      aria-labelledby={undefined}
-      aria-pressed={undefined}
       aria-roledescription="split button"
       className=
 
@@ -82,7 +82,6 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           }
       data-automation-id="test"
       data-is-focusable={true}
-      data-ktp-target={undefined}
       onClick={[Function]}
       onFocusCapture={[Function]}
       onKeyDown={[Function]}
@@ -98,13 +97,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
         }
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           aria-roledescription="split button"
-          checked={undefined}
           className=
               ms-Button
               ms-Button--default
@@ -156,6 +149,11 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 background-color: #eaeaea;
                 color: #212121;
@@ -170,8 +168,6 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
               }
           data-automation-id="test"
           data-is-focusable={false}
-          disabled={undefined}
-          onClick={undefined}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
@@ -222,14 +218,9 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           </div>
         </button>
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
           aria-expanded={false}
           aria-haspopup={true}
           aria-label="See 2 sample options"
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
-          checked={undefined}
           className=
               ms-Button
               {
@@ -260,8 +251,6 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 color: Highlight;
               }
           data-is-focusable={false}
-          data-ktp-execute-target={undefined}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -334,10 +323,15 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
       className=
           ms-Label
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
             color: #333333;
             display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -353,13 +347,8 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
       Primary
     </label>
     <div
-      aria-describedby={undefined}
-      aria-disabled={undefined}
       aria-expanded={false}
       aria-haspopup={true}
-      aria-label={undefined}
-      aria-labelledby={undefined}
-      aria-pressed={undefined}
       aria-roledescription="split button"
       className=
 
@@ -397,7 +386,6 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           }
       data-automation-id="test"
       data-is-focusable={true}
-      data-ktp-target={undefined}
       onClick={[Function]}
       onFocusCapture={[Function]}
       onKeyDown={[Function]}
@@ -413,13 +401,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
         }
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           aria-roledescription="split button"
-          checked={undefined}
           className=
               ms-Button
               ms-Button--primary
@@ -471,6 +453,11 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               @media screen and (-ms-high-contrast: active){& {
                 -ms-high-contrast-adjust: none;
                 background-color: WindowText;
@@ -495,8 +482,6 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
               }
           data-automation-id="test"
           data-is-focusable={false}
-          disabled={undefined}
-          onClick={undefined}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
@@ -547,14 +532,8 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           </div>
         </button>
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
           aria-expanded={false}
           aria-haspopup={true}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
-          checked={undefined}
           className=
               ms-Button
               {
@@ -585,8 +564,6 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 color: Highlight;
               }
           data-is-focusable={false}
-          data-ktp-execute-target={undefined}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -659,10 +636,15 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
       className=
           ms-Label
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
             color: #333333;
             display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -678,13 +660,8 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
       Primary Action Disabled
     </label>
     <div
-      aria-describedby={undefined}
-      aria-disabled={undefined}
       aria-expanded={false}
       aria-haspopup={true}
-      aria-label={undefined}
-      aria-labelledby={undefined}
-      aria-pressed={undefined}
       aria-roledescription="split button"
       className=
 
@@ -722,8 +699,6 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           }
       data-automation-id="test"
       data-is-focusable={true}
-      data-ktp-target={undefined}
-      onClick={undefined}
       onFocusCapture={[Function]}
       onKeyDown={[Function]}
       onTouchStart={[Function]}
@@ -738,13 +713,8 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
         }
       >
         <button
-          aria-describedby={undefined}
           aria-disabled={true}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           aria-roledescription="split button"
-          checked={undefined}
           className=
               ms-Button
               ms-Button--primary
@@ -798,6 +768,11 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               @media screen and (-ms-high-contrast: active){& {
                 -ms-high-contrast-adjust: none;
                 background-color: Window;
@@ -814,7 +789,6 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           data-automation-id="test"
           data-is-focusable={false}
           disabled={true}
-          onClick={undefined}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
@@ -865,14 +839,8 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           </div>
         </button>
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
           aria-expanded={false}
           aria-haspopup={true}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
-          checked={undefined}
           className=
               ms-Button
               {
@@ -903,8 +871,6 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 color: Highlight;
               }
           data-is-focusable={false}
-          data-ktp-execute-target={undefined}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -977,10 +943,15 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
       className=
           ms-Label
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
             color: #333333;
             display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -996,13 +967,9 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
       Button Disabled
     </label>
     <div
-      aria-describedby={undefined}
       aria-disabled={true}
       aria-expanded={false}
       aria-haspopup={true}
-      aria-label={undefined}
-      aria-labelledby={undefined}
-      aria-pressed={undefined}
       aria-roledescription="split button"
       className=
 
@@ -1038,8 +1005,6 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           }
       data-automation-id="test"
       data-is-focusable={true}
-      data-ktp-target={undefined}
-      onClick={undefined}
       onFocusCapture={[Function]}
       onKeyDown={[Function]}
       onTouchStart={[Function]}
@@ -1054,13 +1019,8 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
         }
       >
         <button
-          aria-describedby={undefined}
           aria-disabled={true}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           aria-roledescription="split button"
-          checked={undefined}
           className=
               ms-Button
               ms-Button--primary
@@ -1114,6 +1074,11 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               @media screen and (-ms-high-contrast: active){& {
                 -ms-high-contrast-adjust: none;
                 background-color: Window;
@@ -1130,7 +1095,6 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           data-automation-id="test"
           data-is-focusable={false}
           disabled={false}
-          onClick={undefined}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
@@ -1181,14 +1145,9 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           </div>
         </button>
         <button
-          aria-describedby={undefined}
           aria-disabled={true}
           aria-expanded={false}
           aria-haspopup={true}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
-          checked={undefined}
           className=
               ms-Button
               is-disabled
@@ -1222,7 +1181,6 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 color: Highlight;
               }
           data-is-focusable={false}
-          data-ktp-execute-target={undefined}
           disabled={false}
           onClick={[Function]}
           onKeyDown={[Function]}
@@ -1300,10 +1258,15 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 2`] = `
     className=
         ms-Label
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
           color: #333333;
           display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -1319,13 +1282,8 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 2`] = `
     Split button with icon and custom styles
   </label>
   <div
-    aria-describedby={undefined}
-    aria-disabled={undefined}
     aria-expanded={false}
     aria-haspopup={true}
-    aria-label={undefined}
-    aria-labelledby={undefined}
-    aria-pressed={undefined}
     aria-roledescription="split button"
     className=
 
@@ -1363,7 +1321,6 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 2`] = `
         }
     data-automation-id="test"
     data-is-focusable={true}
-    data-ktp-target={undefined}
     onClick={[Function]}
     onFocusCapture={[Function]}
     onKeyDown={[Function]}
@@ -1379,13 +1336,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 2`] = `
       }
     >
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         aria-roledescription="split button"
-        checked={undefined}
         className=
             ms-Button
             ms-Button--icon
@@ -1396,6 +1347,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 2`] = `
               border-radius: 0px;
               border: none;
               box-sizing: border-box;
+              color: #333333;
               cursor: pointer;
               display: inline-block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1436,8 +1388,13 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 2`] = `
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
-              color: #004578;
+              color: #212121;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
@@ -1448,8 +1405,6 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 2`] = `
             }
         data-automation-id="test"
         data-is-focusable={false}
-        disabled={undefined}
-        onClick={undefined}
         onKeyDown={[Function]}
         onKeyPress={[Function]}
         onKeyUp={[Function]}
@@ -1507,14 +1462,8 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 2`] = `
         </div>
       </button>
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
         aria-expanded={false}
         aria-haspopup={true}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
-        checked={undefined}
         className=
             ms-Button
             {
@@ -1538,8 +1487,6 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 2`] = `
               width: 10px;
             }
         data-is-focusable={false}
-        data-ktp-execute-target={undefined}
-        disabled={undefined}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}

@@ -9,7 +9,8 @@ import { OverflowSetBase } from './OverflowSet.base';
 export interface IOverflowSet {
   /**
    * Sets focus to the first tabbable item in the zone.
-   * @param {boolean} forceIntoFirstElement If true, focus will be forced into the first element, even if focus is already in the focus zone.
+   * @param {boolean} forceIntoFirstElement If true, focus will be forced into the first element, even if
+   * focus is already in the focus zone.
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
   focus(forceIntoFirstElement?: boolean): boolean;

@@ -7,12 +7,10 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
-    style={undefined}
     tabIndex={0}
   >
     <div
       className="ms-DocumentCardPreview is-fileList undefined"
-      style={undefined}
     >
       <div>
         <ul
@@ -24,6 +22,11 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   ms-Image
                   ms-DocumentCardPreview-fileListIcon
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     overflow: hidden;
                   }
               style={
@@ -53,7 +56,32 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
               />
             </div>
             <a
+              className=
+                  ms-Link
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #0078d4;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    outline: none;
+                    text-decoration: none;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid #666666;
+                  }
+                  &:active, &:hover, &:active:hover {
+                    color: #004578;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                    text-decoration: underline;
+                  }
+                  &:focus {
+                    color: #0078d4;
+                  }
               href="http://bing.com"
+              onClick={[Function]}
             >
               Revenue stream proposal fiscal year 2016 version02.pptx
             </a>
@@ -64,6 +92,11 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   ms-Image
                   ms-DocumentCardPreview-fileListIcon
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     overflow: hidden;
                   }
               style={
@@ -93,7 +126,32 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
               />
             </div>
             <a
+              className=
+                  ms-Link
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #0078d4;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    outline: none;
+                    text-decoration: none;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid #666666;
+                  }
+                  &:active, &:hover, &:active:hover {
+                    color: #004578;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                    text-decoration: underline;
+                  }
+                  &:focus {
+                    color: #0078d4;
+                  }
               href="http://bing.com"
+              onClick={[Function]}
             >
               New Contoso Collaboration for Conference Presentation Draft
             </a>
@@ -104,6 +162,11 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   ms-Image
                   ms-DocumentCardPreview-fileListIcon
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     overflow: hidden;
                   }
               style={
@@ -133,7 +196,32 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
               />
             </div>
             <a
+              className=
+                  ms-Link
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #0078d4;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    outline: none;
+                    text-decoration: none;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid #666666;
+                  }
+                  &:active, &:hover, &:active:hover {
+                    color: #004578;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                    text-decoration: underline;
+                  }
+                  &:focus {
+                    color: #0078d4;
+                  }
               href="http://bing.com"
+              onClick={[Function]}
             >
               Spec Sheet for design
             </a>
@@ -188,15 +276,19 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                       text-align: center;
                       width: 32px;
                     }
-                style={undefined}
               >
                 <div
                   className=
                       ms-Image
                       ms-Persona-image
                       {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
                         border-radius: 50%;
                         border: 0px;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 14px;
+                        font-weight: 400;
                         height: 32px;
                         left: 0px;
                         margin-right: 10px;
@@ -233,7 +325,6 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                         }
                     onError={[Function]}
                     onLoad={[Function]}
-                    role={undefined}
                     src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
                   />
                 </div>
@@ -264,18 +355,21 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
-    style={undefined}
     tabIndex={0}
   >
     <div
       className="ms-DocumentCardPreview"
-      style={undefined}
     >
       <div>
         <div
           className=
               ms-Image
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 overflow: hidden;
               }
           style={
@@ -309,6 +403,11 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
               ms-Image
               ms-DocumentCardPreview-icon
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 overflow: hidden;
               }
           style={
@@ -379,15 +478,19 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                       text-align: center;
                       width: 32px;
                     }
-                style={undefined}
               >
                 <div
                   className=
                       ms-Image
                       ms-Persona-image
                       {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
                         border-radius: 50%;
                         border: 0px;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 14px;
+                        font-weight: 400;
                         height: 32px;
                         left: 0px;
                         margin-right: 10px;
@@ -424,7 +527,6 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                         }
                     onError={[Function]}
                     onLoad={[Function]}
-                    role={undefined}
                     src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
                   />
                 </div>
@@ -455,12 +557,10 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
-    style={undefined}
     tabIndex={0}
   >
     <div
       className="ms-DocumentCardPreview"
-      style={undefined}
     >
       <div
         className="ms-DocumentCardPreview-iconContainer"
@@ -535,15 +635,19 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                       text-align: center;
                       width: 32px;
                     }
-                style={undefined}
               >
                 <div
                   className=
                       ms-Image
                       ms-Persona-image
                       {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
                         border-radius: 50%;
                         border: 0px;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 14px;
+                        font-weight: 400;
                         height: 32px;
                         left: 0px;
                         margin-right: 10px;
@@ -580,7 +684,6 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                         }
                     onError={[Function]}
                     onLoad={[Function]}
-                    role={undefined}
                     src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
                   />
                 </div>
@@ -611,12 +714,10 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
-    style={undefined}
     tabIndex={0}
   >
     <div
       className="ms-DocumentCardPreview"
-      style={undefined}
     >
       <div
         className="ms-DocumentCardPreview-iconContainer2"
@@ -691,15 +792,19 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                       text-align: center;
                       width: 32px;
                     }
-                style={undefined}
               >
                 <div
                   className=
                       ms-Image
                       ms-Persona-image
                       {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
                         border-radius: 50%;
                         border: 0px;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 14px;
+                        font-weight: 400;
                         height: 32px;
                         left: 0px;
                         margin-right: 10px;
@@ -736,7 +841,6 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                         }
                     onError={[Function]}
                     onLoad={[Function]}
-                    role={undefined}
                     src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
                   />
                 </div>

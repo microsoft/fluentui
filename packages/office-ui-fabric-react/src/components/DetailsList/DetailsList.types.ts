@@ -151,7 +151,10 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   /** Callback for when a given row has been invoked (by pressing enter while it is selected.) */
   onItemInvoked?: (item?: any, index?: number, ev?: Event) => void;
 
-  /** Callback for when the context menu of an item has been accessed. If undefined or false are returned, ev.preventDefault() will be called.*/
+  /**
+   * Callback for when the context menu of an item has been accessed.
+   * If undefined or false are returned, ev.preventDefault() will be called.
+   */
   onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void | boolean;
 
   /**
@@ -513,7 +516,7 @@ export interface IColumnReorderOptions {
   /**
    * Callback to handle the column reorder
    * draggedIndex is the source column index, that need to be placed in targetIndex
-   * Use oncolumnDrop instead of this
+   * Use onColumnDrop instead of this
    * @deprecated
    */
   handleColumnReorder?: (draggedIndex: number, targetIndex: number) => void;

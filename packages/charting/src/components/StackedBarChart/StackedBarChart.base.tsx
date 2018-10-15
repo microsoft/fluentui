@@ -17,7 +17,8 @@ export interface IStackedBarChartState {
   isCalloutVisible: boolean;
   refArray: IRefArrayData[];
   selectedLegendTitle: string;
-  refSelected: SVGGElement | null | undefined;
+  // tslint:disable-next-line:no-any
+  refSelected: any;
   dataForHoverCard: number;
   color: string;
   isLegendHovered: boolean;
@@ -28,8 +29,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
   public static defaultProps: Partial<IStackedBarChartProps> = {
     barHeight: 16,
     hideNumberDisplay: false,
-    hideLegend: false,
-    isMultiStackedBarChart: false
+    hideLegend: false
   };
   private _classNames: IProcessedStyleSet<IStackedBarChartStyles>;
 
@@ -52,9 +52,10 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
 
   public render(): JSX.Element {
     this._adjustProps();
-    const { data, barHeight, hideNumberDisplay, hideLegend, theme, styles, barBackgroundColor } = this.props;
+    const { data, hideNumberDisplay, hideLegend, theme, styles, barBackgroundColor, href } = this.props;
     const { palette } = theme!;
-    const bars = this._createBarsAndLegends(data!, barHeight!, palette, barBackgroundColor);
+    const barHeight = data!.chartData!.length > 2 ? this.props.barHeight : 8;
+    const bars = this._createBarsAndLegends(data!, barHeight!, palette, barBackgroundColor, href);
     const showRatio = hideNumberDisplay === false && data!.chartData!.length === 2;
     const showNumber = hideNumberDisplay === false && data!.chartData!.length === 1;
     let total = 0;
@@ -77,7 +78,8 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           )}
           {showRatio && (
             <div>
-              <strong>{data!.chartData![0].data}</strong>/{total}
+              <span className={this._classNames.ratioNumerator}>{data!.chartData![0].data}</span>/
+              <span className={this._classNames.ratioDenominator}>{total}</span>
             </div>
           )}
           {showNumber && (
@@ -90,7 +92,13 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         <svg className={this._classNames.chart}>
           <g>{bars[0]}</g>
           {isCalloutVisible ? (
-            <Callout gapSpace={0} target={this.state.refSelected} setInitialFocus={true} directionalHint={DirectionalHint.topRightEdge}>
+            <Callout
+              gapSpace={5}
+              isBeakVisible={false}
+              target={this.state.refSelected}
+              setInitialFocus={true}
+              directionalHint={DirectionalHint.topRightEdge}
+            >
               <div className={this._classNames.hoverCardRoot}>
                 <div className={this._classNames.hoverCardTextStyles}>{this.state.selectedLegendTitle}</div>
                 <div className={this._classNames.hoverCardDataStyles}>{this.state.dataForHoverCard}</div>
@@ -118,7 +126,8 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     data: IChartProps,
     barHeight: number,
     palette: IPalette,
-    barBackgroundColor?: string
+    barBackgroundColor?: string,
+    href?: string
   ): [JSX.Element[], JSX.Element] {
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     const legendDataItems: ILegend[] = [];
@@ -137,13 +146,13 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         action:
           total > 0
             ? () => {
-                this._onClick(point.legend!, pointData, color);
+                this._onClick(point.legend!);
               }
             : undefined,
         hoverAction:
           total > 0
             ? () => {
-                this._onHover(point.legend!, pointData, color);
+                this._onHover(point.legend!);
               }
             : undefined,
         onMouseOutAction:
@@ -166,7 +175,8 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       }
       this._classNames = getClassNames(styles!, {
         theme: this.props.theme!,
-        shouldHighlight: shouldHighlight
+        shouldHighlight: shouldHighlight,
+        href: href
       });
       return (
         <g
@@ -176,7 +186,10 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
             this._refCallback(e, legend.title);
           }}
           onMouseOver={this._onBarHover.bind(this, point.legend!, pointData, color)}
+          onMouseMove={this._onBarHover.bind(this, point.legend!, pointData, color)}
           onMouseLeave={this._onBarLeave}
+          pointerEvents="all"
+          onClick={this._redirectToUrl.bind(this, href)}
         >
           <rect key={index} x={startingPoint[index] + '%'} y={0} width={value + '%'} height={barHeight} fill={color} />
         </g>
@@ -202,7 +215,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     this.state.refArray.push({ legendText: legendTitle, refElement: element });
   }
 
-  private _onClick(customMessage: string, pointData: number, color: string): void {
+  private _onClick(customMessage: string): void {
     if (this.state.isLegendSelected) {
       if (this.state.selectedLegendTitle === customMessage) {
         this.setState({
@@ -223,7 +236,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     }
   }
 
-  private _onHover(customMessage: string, pointData: number, color: string): void {
+  private _onHover(customMessage: string): void {
     if (this.state.isLegendSelected === false) {
       this.setState({
         isLegendHovered: true,
@@ -241,12 +254,11 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     }
   }
 
-  private _onBarHover(customMessage: string, pointData: number, color: string): void {
+  private _onBarHover(customMessage: string, pointData: number, color: string, mouseEvent: React.MouseEvent<SVGPathElement>): void {
+    mouseEvent.persist();
     if (this.state.isLegendSelected === false || (this.state.isLegendSelected && this.state.selectedLegendTitle === customMessage)) {
-      const refArray = this.state.refArray;
-      const currentHoveredElement = refArray.find((currentElement: IRefArrayData) => currentElement.legendText === customMessage);
       this.setState({
-        refSelected: currentHoveredElement!.refElement,
+        refSelected: mouseEvent,
         isCalloutVisible: true,
         selectedLegendTitle: customMessage,
         dataForHoverCard: pointData,
@@ -259,5 +271,9 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     this.setState({
       isCalloutVisible: false
     });
+  }
+
+  private _redirectToUrl(href: string | undefined): void {
+    href ? (window.location.href = href) : '';
   }
 }

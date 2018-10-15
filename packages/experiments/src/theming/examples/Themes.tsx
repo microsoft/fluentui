@@ -1,5 +1,14 @@
-import { createTheme, IPalette, ITheme, getTheme } from 'office-ui-fabric-react/lib/Styling';
 import { getNeutralVariant, getSoftVariant, getStrongVariant } from '@uifabric/variants';
+import { IHorizontalStackComponent } from '@uifabric/experiments/lib/Stack';
+
+import { createTheme, IPalette, ITheme, getTheme } from 'office-ui-fabric-react/lib/Styling';
+
+export const regionStyles: IHorizontalStackComponent['styles'] = props => ({
+  root: {
+    backgroundColor: props.theme.semanticColors.bodyBackground,
+    color: props.theme.semanticColors.bodyText
+  }
+});
 
 // TODO: what is our story with ThemeGeneratorPage? right now it creates palettes, but we don't want to support
 //        theming through different palette sets. ThemeGeneratorPage should probably be redone to create schemes
@@ -132,15 +141,7 @@ export const neutralTheme = getNeutralVariant(defaultTheme);
 export const softTheme = getSoftVariant(defaultTheme);
 export const strongTheme = getStrongVariant(defaultTheme);
 
-// TODO: what is our story on style coloring for new typography components? all coloring via props/styling with no use of semanticColors?
-// TODO: what is responsible for coloring regions? individual components or container components?
-//        * Stack does not apply any semantic coloring to root, like background
-//        * Text does not apply semantic coloring by default, seems ONLY to use color prop
-
 export const invertedDefaultTheme: ITheme = createTheme({
-  // TODO: Components need to be converted to use semanticColors instead of palette.
-  //        For now, we need to invert palette to style components like: CommandBar.
-  //        Comment this line out to see the effects.
   palette: invertedDefaultPalette,
   semanticColors: {
     bodyText: defaultTheme.palette.white,
@@ -149,9 +150,6 @@ export const invertedDefaultTheme: ITheme = createTheme({
 });
 
 export const invertedPrimaryTheme: ITheme = createTheme({
-  // TODO: Components need to be converted to use semanticColors instead of palette.
-  //        For now, we need to invert palette to style components like: CommandBar.
-  //        Comment this line out to see the effects.
   palette: invertedPrimaryPalette,
   semanticColors: {
     bodyText: defaultTheme.palette.white,
@@ -159,4 +157,22 @@ export const invertedPrimaryTheme: ITheme = createTheme({
   }
 });
 
-export const schemeTheme: ITheme = createTheme({});
+export const schemeThemeVariants: ITheme = {
+  ...defaultTheme,
+  schemes: {
+    default: defaultTheme,
+    neutral: neutralTheme,
+    soft: softTheme,
+    strong: strongTheme
+  }
+};
+
+export const schemeThemeCustom: ITheme = {
+  ...defaultTheme,
+  schemes: {
+    default: defaultTheme,
+    neutral: defaultTheme,
+    soft: invertedPrimaryTheme,
+    strong: invertedDefaultTheme
+  }
+};

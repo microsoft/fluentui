@@ -6,11 +6,6 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
     className="ms-FocusTrapComponent"
   >
     <button
-      aria-describedby={undefined}
-      aria-disabled={undefined}
-      aria-label={undefined}
-      aria-labelledby={undefined}
-      aria-pressed={undefined}
       className=
           ms-Button
           ms-Button--default
@@ -62,6 +57,11 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
             right: -2px;
             top: -2px;
           }
+          &:active > * {
+            left: 0px;
+            position: relative;
+            top: 0px;
+          }
           &:hover {
             background-color: #eaeaea;
             color: #212121;
@@ -75,7 +75,6 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
             color: #212121;
           }
       data-is-focusable={true}
-      disabled={undefined}
       onClick={[Function]}
       onKeyDown={[Function]}
       onKeyPress={[Function]}
@@ -138,10 +137,15 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
             ms-Label
             ms-Toggle-label
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
               color: #333333;
               display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -167,8 +171,6 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
       >
         <button
           aria-checked={false}
-          aria-disabled={undefined}
-          aria-label={undefined}
           className=
               ms-Toggle-background
               {
@@ -216,7 +218,6 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                 border-color: Highlight;
               }
           data-is-focusable={true}
-          disabled={undefined}
           id="Toggle3"
           onChange={[Function]}
           onClick={[Function]}
@@ -244,10 +245,15 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
               ms-Label
               ms-Toggle-stateText
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
                 color: #333333;
                 display: block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
@@ -279,11 +285,6 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
       className="ms-FocusTrapComponent"
     >
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         className=
             ms-Button
             ms-Button--default
@@ -335,6 +336,11 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               background-color: #eaeaea;
               color: #212121;
@@ -348,7 +354,6 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
               color: #212121;
             }
         data-is-focusable={true}
-        disabled={undefined}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}
@@ -411,10 +416,15 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
               ms-Label
               ms-Toggle-label
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
                 color: #333333;
                 display: block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
@@ -440,8 +450,6 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
         >
           <button
             aria-checked={false}
-            aria-disabled={undefined}
-            aria-label={undefined}
             className=
                 ms-Toggle-background
                 {
@@ -489,7 +497,6 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                   border-color: Highlight;
                 }
             data-is-focusable={true}
-            disabled={undefined}
             id="Toggle7"
             onChange={[Function]}
             onClick={[Function]}
@@ -517,10 +524,15 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                 ms-Label
                 ms-Toggle-stateText
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   box-shadow: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   margin-bottom: 0px;
                   margin-left: 0px;
                   margin-right: 0px;
@@ -552,11 +564,6 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
         className="ms-FocusTrapComponent"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--default
@@ -608,6 +615,11 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 background-color: #eaeaea;
                 color: #212121;
@@ -621,7 +633,6 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                 color: #212121;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -684,10 +695,15 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                 ms-Label
                 ms-Toggle-label
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   box-shadow: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   margin-bottom: 0px;
                   margin-left: 0px;
                   margin-right: 0px;
@@ -713,8 +729,6 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
           >
             <button
               aria-checked={false}
-              aria-disabled={undefined}
-              aria-label={undefined}
               className=
                   ms-Toggle-background
                   {
@@ -762,7 +776,6 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                     border-color: Highlight;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               id="Toggle11"
               onChange={[Function]}
               onClick={[Function]}
@@ -790,10 +803,15 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                   ms-Label
                   ms-Toggle-stateText
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     box-shadow: none;
                     box-sizing: border-box;
                     color: #333333;
                     display: block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     margin-bottom: 0px;
                     margin-left: 0px;
                     margin-right: 0px;
@@ -826,11 +844,6 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
         className="ms-FocusTrapComponent"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           className=
               ms-Button
               ms-Button--default
@@ -882,6 +895,11 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 background-color: #eaeaea;
                 color: #212121;
@@ -895,7 +913,6 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                 color: #212121;
               }
           data-is-focusable={true}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -958,10 +975,15 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                 ms-Label
                 ms-Toggle-label
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   box-shadow: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   margin-bottom: 0px;
                   margin-left: 0px;
                   margin-right: 0px;
@@ -987,8 +1009,6 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
           >
             <button
               aria-checked={false}
-              aria-disabled={undefined}
-              aria-label={undefined}
               className=
                   ms-Toggle-background
                   {
@@ -1036,7 +1056,6 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                     border-color: Highlight;
                   }
               data-is-focusable={true}
-              disabled={undefined}
               id="Toggle15"
               onChange={[Function]}
               onClick={[Function]}
@@ -1064,10 +1083,15 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                   ms-Label
                   ms-Toggle-stateText
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     box-shadow: none;
                     box-sizing: border-box;
                     color: #333333;
                     display: block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     margin-bottom: 0px;
                     margin-left: 0px;
                     margin-right: 0px;
@@ -1101,11 +1125,6 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
       className="ms-FocusTrapComponent"
     >
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         className=
             ms-Button
             ms-Button--default
@@ -1157,6 +1176,11 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               background-color: #eaeaea;
               color: #212121;
@@ -1170,7 +1194,6 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
               color: #212121;
             }
         data-is-focusable={true}
-        disabled={undefined}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}
@@ -1233,10 +1256,15 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
               ms-Label
               ms-Toggle-label
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
                 color: #333333;
                 display: block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
@@ -1262,8 +1290,6 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
         >
           <button
             aria-checked={false}
-            aria-disabled={undefined}
-            aria-label={undefined}
             className=
                 ms-Toggle-background
                 {
@@ -1311,7 +1337,6 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                   border-color: Highlight;
                 }
             data-is-focusable={true}
-            disabled={undefined}
             id="Toggle19"
             onChange={[Function]}
             onClick={[Function]}
@@ -1339,10 +1364,15 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                 ms-Label
                 ms-Toggle-stateText
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   box-shadow: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   margin-bottom: 0px;
                   margin-left: 0px;
                   margin-right: 0px;
@@ -1373,11 +1403,6 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
     </div>
   </div>
   <button
-    aria-describedby={undefined}
-    aria-disabled={undefined}
-    aria-label={undefined}
-    aria-labelledby={undefined}
-    aria-pressed={undefined}
     className=
         ms-Button
         ms-Button--default
@@ -1429,6 +1454,11 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
           right: -2px;
           top: -2px;
         }
+        &:active > * {
+          left: 0px;
+          position: relative;
+          top: 0px;
+        }
         &:hover {
           background-color: #eaeaea;
           color: #212121;
@@ -1442,7 +1472,6 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
           color: #212121;
         }
     data-is-focusable={true}
-    disabled={undefined}
     onClick={[Function]}
     onKeyDown={[Function]}
     onKeyPress={[Function]}

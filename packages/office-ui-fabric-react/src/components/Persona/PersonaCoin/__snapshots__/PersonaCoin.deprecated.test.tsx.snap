@@ -24,7 +24,6 @@ exports[`PersonaCoin renders correctly 1`] = `
           text-align: center;
           width: 48px;
         }
-    style={undefined}
   >
     <div
       aria-hidden="true"
@@ -46,7 +45,6 @@ exports[`PersonaCoin renders correctly 1`] = `
             box-sizing: border-box;
             color: WindowText;
           }
-      style={undefined}
     >
       <i
         aria-hidden={true}
@@ -95,15 +93,19 @@ exports[`PersonaCoin renders correctly with image 1`] = `
           text-align: center;
           width: 48px;
         }
-    style={undefined}
   >
     <div
       className=
           ms-Image
           ms-Persona-image
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             border-radius: 50%;
             border: 0px;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
             height: 48px;
             left: 0px;
             margin-right: 10px;
@@ -140,7 +142,6 @@ exports[`PersonaCoin renders correctly with image 1`] = `
             }
         onError={[Function]}
         onLoad={[Function]}
-        role={undefined}
         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII="
       />
     </div>
@@ -172,7 +173,6 @@ exports[`PersonaCoin renders correctly with provided initials 1`] = `
           text-align: center;
           width: 48px;
         }
-    style={undefined}
   >
     <div
       aria-hidden="true"
@@ -194,7 +194,6 @@ exports[`PersonaCoin renders correctly with provided initials 1`] = `
             box-sizing: border-box;
             color: WindowText;
           }
-      style={undefined}
     >
       <span>
         JG
@@ -228,7 +227,6 @@ exports[`PersonaCoin renders correctly with text 1`] = `
           text-align: center;
           width: 48px;
         }
-    style={undefined}
   >
     <div
       aria-hidden="true"
@@ -250,7 +248,6 @@ exports[`PersonaCoin renders correctly with text 1`] = `
             box-sizing: border-box;
             color: WindowText;
           }
-      style={undefined}
     >
       <span>
         KL

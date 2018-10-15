@@ -61,8 +61,6 @@ exports[`Panel renders Panel correctly 1`] = `
     onSubmit={[Function]}
   >
     <div
-      aria-describedby={undefined}
-      aria-label={undefined}
       aria-labelledby="Panel0-headerText"
       className=
 
@@ -81,7 +79,12 @@ exports[`Panel renders Panel correctly 1`] = `
             is-open
             ms-Panel--hasCloseButton
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               bottom: 0px;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               left: 0px;
               pointer-events: none;
               position: absolute;
@@ -94,6 +97,8 @@ exports[`Panel renders Panel correctly 1`] = `
           className=
               ms-Overlay
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 animation-duration: 0.267s;
                 animation-fill-mode: both;
                 animation-name: keyframes from{opacity:0;}to{opacity:1;};
@@ -101,6 +106,9 @@ exports[`Panel renders Panel correctly 1`] = `
                 background-color: rgba(255,255,255,.4);
                 bottom: 0px;
                 cursor: pointer;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 left: 0px;
                 opacity: 1;
                 pointer-events: auto;
@@ -112,10 +120,8 @@ exports[`Panel renders Panel correctly 1`] = `
               @media screen and (-ms-high-contrast: active){& {
                 border: 1px solid WindowText;
               }
-          onClick={undefined}
         />
         <div
-          aria-labelledby={undefined}
           className=
               ms-Panel-main
               {
@@ -126,6 +132,9 @@ exports[`Panel renders Panel correctly 1`] = `
                 animation-timing-function: cubic-bezier(.1,.9,.2,1);
                 background-color: #ffffff;
                 bottom: 0px;
+                display: flex;
+                flex-direction: column;
+                max-height: 100%;
                 overflow-x: hidden;
                 overflow-y: auto;
                 position: absolute;
@@ -148,226 +157,231 @@ exports[`Panel renders Panel correctly 1`] = `
               @media (min-width: 480px){$root & {
                 width: 340px;
               }
+              @supports (-webkit-overflow-scrolling: touch){& {
+                max-height: 768px;
+              }
           onFocusCapture={[Function]}
           onKeyDown={[Function]}
           style={Object {}}
         >
           <div
             className=
-                ms-Panel-scrollableContent
+                ms-Panel-commands
+
+            data-is-visible={true}
+          >
+            <div
+              className=
+                  ms-Panel-navigation
+                  {
+                    display: flex;
+                    height: 44px;
+                    justify-content: flex-end;
+                    padding-bottom: 0;
+                    padding-left: 5px;
+                    padding-right: 5px;
+                    padding-top: 0;
+                  }
+            >
+              <button
+                className=
+                    ms-Button
+                    ms-Button--icon
+                    ms-Panel-closeButton
+                    ms-PanelAction-close
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      background-color: transparent;
+                      border-radius: 0px;
+                      border: none;
+                      box-sizing: border-box;
+                      color: #666666;
+                      cursor: pointer;
+                      display: inline-block;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 20px;
+                      font-weight: 400;
+                      height: auto;
+                      outline: transparent;
+                      padding-bottom: 0;
+                      padding-left: 4px;
+                      padding-right: 4px;
+                      padding-top: 0;
+                      position: relative;
+                      text-align: center;
+                      text-decoration: none;
+                      user-select: none;
+                      vertical-align: top;
+                      width: 44px;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 0px;
+                      content: "";
+                      left: 0px;
+                      outline: 1px solid #666666;
+                      position: absolute;
+                      right: 0px;
+                      top: 0px;
+                      z-index: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      border: none;
+                      bottom: -2px;
+                      left: -2px;
+                      outline-color: ButtonText;
+                      right: -2px;
+                      top: -2px;
+                    }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
+                    }
+                    &:hover {
+                      color: #333333;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:hover {
+                      border-color: Highlight;
+                      color: Highlight;
+                    }
+                    &:active {
+                      color: #0078d4;
+                    }
+                data-is-focusable={true}
+                data-is-visible={true}
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseUp={[Function]}
+                type="button"
+              >
+                <div
+                  className=
+                      ms-Button-flexContainer
+                      {
+                        align-items: center;
+                        display: flex;
+                        flex-wrap: nowrap;
+                        height: 100%;
+                        justify-content: center;
+                      }
+                >
+                  <i
+                    aria-hidden={true}
+                    className=
+                        ms-Button-icon
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          display: inline-block;
+                          flex-shrink: 0;
+                          font-family: "FabricMDL2Icons";
+                          font-size: 16px;
+                          font-style: normal;
+                          font-weight: normal;
+                          height: 16px;
+                          line-height: 16px;
+                          margin-bottom: 0;
+                          margin-left: 4px;
+                          margin-right: 4px;
+                          margin-top: 0;
+                          speak: none;
+                          text-align: center;
+                          vertical-align: middle;
+                        }
+                    data-icon-name="Cancel"
+                    role="presentation"
+                  >
+                    
+                  </i>
+                </div>
+              </button>
+            </div>
+          </div>
+          <div
+            className=
+                ms-Panel-contentInner
                 {
-                  flex-grow: 1;
-                  height: 100%;
-                  overflow-y: auto;
+                  display: flex;
+                  flex-direction: column;
+                  max-height: 100%;
+                  overflow-y: hidden;
+                }
+                @supports (-webkit-overflow-scrolling: touch){& {
+                  max-height: 768px;
                 }
           >
             <div
               className=
-                  ms-Panel-commands
-
-              data-is-visible={true}
+                  ms-Panel-header
+                  {
+                    flex-grow: 0;
+                    margin-bottom: 14px;
+                    margin-left: 0;
+                    margin-right: 0;
+                    margin-top: 14px;
+                    padding-left: 16px;
+                    padding-right: 16px;
+                  }
+                  @media screen and (min-width: 768px){& {
+                    padding-left: 32px;
+                    padding-right: 32px;
+                  }
+                  @media screen and (min-width: 1366px){& {
+                    padding-left: 40px;
+                    padding-right: 40px;
+                  }
+                  @media (min-width: 1024px){& {
+                    margin-top: 30px;
+                  }
             >
-              <div
+              <p
+                aria-level={2}
                 className=
-                    ms-Panel-navigation
+                    ms-Panel-headerText
                     {
-                      display: flex;
-                      height: 44px;
-                      justify-content: flex-end;
-                      padding-bottom: 0;
-                      padding-left: 5px;
-                      padding-right: 5px;
-                      padding-top: 0;
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #333333;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 21px;
+                      font-weight: 100;
+                      line-height: 32px;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
                     }
+                id="Panel0-headerText"
+                role="heading"
               >
-                <button
-                  aria-describedby={undefined}
-                  aria-disabled={undefined}
-                  aria-label={undefined}
-                  aria-labelledby={undefined}
-                  aria-pressed={undefined}
-                  className=
-                      ms-Button
-                      ms-Button--icon
-                      ms-Panel-closeButton
-                      ms-PanelAction-close
-                      {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        background-color: transparent;
-                        border-radius: 0px;
-                        border: none;
-                        box-sizing: border-box;
-                        color: #666666;
-                        cursor: pointer;
-                        display: inline-block;
-                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 20px;
-                        font-weight: 400;
-                        height: auto;
-                        outline: transparent;
-                        padding-bottom: 0;
-                        padding-left: 4px;
-                        padding-right: 4px;
-                        padding-top: 0;
-                        position: relative;
-                        text-align: center;
-                        text-decoration: none;
-                        user-select: none;
-                        vertical-align: top;
-                        width: 44px;
-                      }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid #ffffff;
-                        bottom: 0px;
-                        content: "";
-                        left: 0px;
-                        outline: 1px solid #666666;
-                        position: absolute;
-                        right: 0px;
-                        top: 0px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        border: none;
-                        bottom: -2px;
-                        left: -2px;
-                        outline-color: ButtonText;
-                        right: -2px;
-                        top: -2px;
-                      }
-                      &:hover {
-                        color: #333333;
-                      }
-                      @media screen and (-ms-high-contrast: active){&:hover {
-                        border-color: Highlight;
-                        color: Highlight;
-                      }
-                      &:active {
-                        color: #0078d4;
-                      }
-                  data-is-focusable={true}
-                  data-is-visible={true}
-                  disabled={undefined}
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyPress={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseUp={[Function]}
-                  type="button"
-                >
-                  <div
-                    className=
-                        ms-Button-flexContainer
-                        {
-                          align-items: center;
-                          display: flex;
-                          flex-wrap: nowrap;
-                          height: 100%;
-                          justify-content: center;
-                        }
-                  >
-                    <i
-                      aria-hidden={true}
-                      className=
-                          ms-Button-icon
-                          {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
-                            display: inline-block;
-                            flex-shrink: 0;
-                            font-family: "FabricMDL2Icons";
-                            font-size: 16px;
-                            font-style: normal;
-                            font-weight: normal;
-                            height: 16px;
-                            line-height: 16px;
-                            margin-bottom: 0;
-                            margin-left: 4px;
-                            margin-right: 4px;
-                            margin-top: 0;
-                            speak: none;
-                            text-align: center;
-                            vertical-align: middle;
-                          }
-                      data-icon-name="Cancel"
-                      role="presentation"
-                    >
-                      
-                    </i>
-                  </div>
-                </button>
-              </div>
+                Test Panel
+              </p>
             </div>
             <div
               className=
-                  ms-Panel-contentInner
+                  ms-Panel-scrollableContent
                   {
-                    -webkit-overflow-scrolling: touch;
-                    display: flex;
-                    flex-direction: column;
-                    min-height: calc(100% - 44px);
-                    top: 44px;
-                    transform: translateZ(0);
+                    height: 100%;
+                    overflow-y: auto;
                   }
+                  @supports (-webkit-overflow-scrolling: touch){& {
+                    height: 768px;
+                  }
+              data-is-scrollable={true}
             >
-              <div
-                className=
-                    ms-Panel-header
-                    {
-                      flex-grow: 0;
-                      margin-bottom: 14px;
-                      margin-left: 0;
-                      margin-right: 0;
-                      margin-top: 14px;
-                      padding-left: 16px;
-                      padding-right: 16px;
-                    }
-                    @media screen and (min-width: 768px){& {
-                      padding-left: 32px;
-                      padding-right: 32px;
-                    }
-                    @media screen and (min-width: 1366px){& {
-                      padding-left: 40px;
-                      padding-right: 40px;
-                    }
-                    @media (min-width: 1024px){& {
-                      margin-top: 30px;
-                    }
-              >
-                <p
-                  aria-level={2}
-                  className=
-                      ms-Panel-headerText
-                      {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        color: #333333;
-                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 21px;
-                        font-weight: 100;
-                        line-height: 32px;
-                        margin-bottom: 0px;
-                        margin-left: 0px;
-                        margin-right: 0px;
-                        margin-top: 0px;
-                      }
-                  id="Panel0-headerText"
-                  role="heading"
-                >
-                  Test Panel
-                </p>
-              </div>
               <div
                 className=
                     ms-Panel-content
                     {
                       margin-bottom: 0px;
-                      overflow-y: auto;
                       padding-bottom: 20px;
                       padding-left: 16px;
                       padding-right: 16px;
@@ -380,7 +394,6 @@ exports[`Panel renders Panel correctly 1`] = `
                       padding-left: 40px;
                       padding-right: 40px;
                     }
-                data-is-scrollable={true}
               >
                 <span>
                   Content goes here

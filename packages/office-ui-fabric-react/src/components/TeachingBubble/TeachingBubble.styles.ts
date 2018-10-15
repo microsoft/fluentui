@@ -88,6 +88,7 @@ const rootStyle = (isWide?: boolean): IStyle[] => {
       display: 'block',
       maxWidth: 364,
       border: 0,
+      outline: 'transparent',
       boxShadow: 'none !important',
       width: 'calc(100% + 1px)',
       animationName: `${bounceAnimation}, ${opacityFadeIn}`,
@@ -108,7 +109,7 @@ export const calloutStyles = (props: ITeachingBubbleStyleProps): Partial<ICallou
   const { isWide, theme } = props;
   const { palette } = theme;
   return {
-    root: [...rootStyle(isWide)],
+    root: [...rootStyle(isWide), theme.fonts.medium],
     beak: [
       {
         background: palette.themePrimary
@@ -172,7 +173,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
   const classNames = getGlobalClassNames(globalClassNames, theme);
 
   return {
-    root: [classNames.root, calloutClassName],
+    root: [classNames.root, theme.fonts.medium, calloutClassName],
     body: [
       classNames.body,
       {

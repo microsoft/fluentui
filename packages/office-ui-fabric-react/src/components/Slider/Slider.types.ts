@@ -83,7 +83,8 @@ export interface ISliderProps extends React.Props<SliderBase> {
   ariaLabel?: string;
 
   /**
-   * A text description of the Slider number value for the benefit of screen readers. This should be used when the Slider number value is not accurately represented by a number.
+   * A text description of the Slider number value for the benefit of screen readers.
+   * This should be used when the Slider number value is not accurately represented by a number.
    */
   ariaValueText?: (value: number) => string;
   /**

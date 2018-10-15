@@ -34,10 +34,15 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
         className=
             ms-Label
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
               color: #333333;
               display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -50,7 +55,6 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
               word-wrap: break-word;
             }
         htmlFor="TextField0"
-        required={undefined}
       >
         Standard
       </label>
@@ -85,9 +89,7 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
             }
       >
         <textarea
-          aria-describedby={undefined}
           aria-invalid={false}
-          aria-label={undefined}
           className=
               ms-TextField-field
               {
@@ -105,6 +107,7 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
+                min-height: inherit;
                 min-width: 0px;
                 outline: 0px;
                 overflow: auto;
@@ -134,7 +137,6 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
-          readOnly={undefined}
           rows={4}
           value=""
         />
@@ -172,10 +174,15 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
         className=
             ms-Label
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
               color: #333333;
               display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -188,7 +195,6 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
               word-wrap: break-word;
             }
         htmlFor="TextField2"
-        required={undefined}
       >
         Disabled
       </label>
@@ -222,9 +228,7 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
             }
       >
         <textarea
-          aria-describedby={undefined}
           aria-invalid={false}
-          aria-label={undefined}
           className=
               ms-TextField-field
               {
@@ -243,6 +247,7 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
+                min-height: inherit;
                 min-width: 0px;
                 outline: 0px;
                 overflow: auto;
@@ -273,7 +278,6 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
-          readOnly={undefined}
           rows={4}
           value="lorem text"
         />
@@ -311,10 +315,15 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
         className=
             ms-Label
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
               color: #333333;
               display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -367,9 +376,7 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
             }
       >
         <textarea
-          aria-describedby={undefined}
           aria-invalid={false}
-          aria-label={undefined}
           className=
               ms-TextField-field
               {
@@ -387,6 +394,7 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
+                min-height: inherit;
                 min-width: 0px;
                 outline: 0px;
                 overflow: auto;
@@ -416,7 +424,6 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
-          readOnly={undefined}
           required={true}
           rows={4}
           value=""
@@ -459,10 +466,15 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
         className=
             ms-Label
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
               color: #333333;
               display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -475,7 +487,6 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
               word-wrap: break-word;
             }
         htmlFor="TextField6"
-        required={undefined}
       >
         With error message
       </label>
@@ -516,7 +527,6 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
         <textarea
           aria-describedby="TextFieldDescription7"
           aria-invalid={false}
-          aria-label={undefined}
           className=
               ms-TextField-field
               {
@@ -534,6 +544,7 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
+                min-height: inherit;
                 min-width: 0px;
                 outline: 0px;
                 overflow: auto;
@@ -563,7 +574,6 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
-          readOnly={undefined}
           rows={4}
           value=""
         />
@@ -607,10 +617,15 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
         className=
             ms-Label
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
               color: #333333;
               display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -623,7 +638,6 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
               word-wrap: break-word;
             }
         htmlFor="TextField8"
-        required={undefined}
       >
         Non-resizable
       </label>
@@ -658,9 +672,7 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
             }
       >
         <textarea
-          aria-describedby={undefined}
           aria-invalid={false}
-          aria-label={undefined}
           className=
               ms-TextField-field
               ms-TextField--unresizable
@@ -679,6 +691,7 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
+                min-height: inherit;
                 min-width: 0px;
                 outline: 0px;
                 overflow: auto;
@@ -709,7 +722,6 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
-          readOnly={undefined}
           value=""
         />
       </div>
@@ -745,10 +757,15 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
         className=
             ms-Label
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
               color: #333333;
               display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -761,7 +778,6 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
               word-wrap: break-word;
             }
         htmlFor="TextField10"
-        required={undefined}
       >
         With auto adjusting height
       </label>
@@ -796,9 +812,7 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
             }
       >
         <textarea
-          aria-describedby={undefined}
           aria-invalid={false}
-          aria-label={undefined}
           className=
               ms-TextField-field
               {
@@ -816,6 +830,7 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
+                min-height: inherit;
                 min-width: 0px;
                 outline: 0px;
                 overflow: auto;
@@ -845,7 +860,6 @@ exports[`Component Examples renders TextField.Multiline.Example.tsx correctly 1`
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
-          readOnly={undefined}
           value=""
         />
       </div>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AnnotationType, IMultiCountRow, MultiCount } from '../index';
+import { AnnotationType, IMultiCountRow, MultiCount } from '@uifabric/dashboard';
 
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
@@ -25,7 +25,8 @@ export class MultiCountExample extends React.Component<{}, {}> {
         bodyText: 'Risky sign-ins',
         annotaionText: 'Annotation',
         color: DefaultPalette.blue,
-        type: AnnotationType.neutral
+        type: AnnotationType.neutral,
+        hideIcon: true
       }
     ];
     return <MultiCount multiCountRows={rows} customMessage={'Updatd 6:20pm today'} />;

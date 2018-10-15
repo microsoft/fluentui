@@ -17,10 +17,15 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
       className=
           ms-Label
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
             color: #333333;
             display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -34,7 +39,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
           }
       htmlFor="Basicdrop6-input"
       id="Basicdrop6-label"
-      required={undefined}
     >
       Custom styled uncontrolled ComboBox (allowFreeform: T, AutoComplete: T):
     </label>
@@ -136,18 +140,12 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             right: -2px;
             top: -2px;
           }
-      data-ktp-target={undefined}
       id="Basicdrop6wrapper"
     >
       <input
-        aria-activedescendant={undefined}
         aria-autocomplete="inline"
-        aria-describedby={undefined}
-        aria-disabled={undefined}
         aria-expanded={false}
-        aria-label={undefined}
         aria-labelledby="Basicdrop6-label"
-        aria-owns={undefined}
         autoCapitalize="off"
         autoComplete="off"
         className=
@@ -168,7 +166,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
               width: 100%;
             }
         data-is-interactable={true}
-        data-ktp-execute-target={undefined}
         data-lpignore={true}
         id="Basicdrop6-input"
         onBlur={[Function]}
@@ -184,17 +181,11 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
         readOnly={false}
         role="combobox"
         spellCheck={false}
-        title={undefined}
         type="text"
         value="Comic Sans MS"
       />
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
         aria-hidden={true}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         checked={false}
         className=
             ms-Button
@@ -251,6 +242,11 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             @media screen and (-ms-high-contrast: active){& {
               -ms-high-contrast-adjust: none;
               background-color: ButtonFace;
@@ -271,7 +267,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
               color: #212121;
             }
         data-is-focusable={false}
-        disabled={undefined}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}

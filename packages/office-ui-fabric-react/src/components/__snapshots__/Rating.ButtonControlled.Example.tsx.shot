@@ -10,15 +10,19 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
         ms-Rating-star
         ms-RatingStar-root
         ms-RatingStar-root--small
-
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+        }
         {
           height: 22px;
         }
     id="Rating0"
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className=
           ms-FocusZone
           ms-Rating-focuszone
@@ -721,11 +725,6 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
     </div>
   </div>
   <button
-    aria-describedby={undefined}
-    aria-disabled={undefined}
-    aria-label={undefined}
-    aria-labelledby={undefined}
-    aria-pressed={undefined}
     className=
         ms-Button
         ms-Button--primary
@@ -777,6 +776,11 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
           right: -2px;
           top: -2px;
         }
+        &:active > * {
+          left: 0px;
+          position: relative;
+          top: 0px;
+        }
         @media screen and (-ms-high-contrast: active){& {
           -ms-high-contrast-adjust: none;
           background-color: WindowText;
@@ -800,7 +804,6 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
           color: Window;
         }
     data-is-focusable={true}
-    disabled={undefined}
     onClick={[Function]}
     onKeyDown={[Function]}
     onKeyPress={[Function]}

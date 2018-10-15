@@ -14,11 +14,8 @@ export const getStyles = (props: ICardHeaderProps): ICardHeaderStyles => {
     },
     headerText: {
       fontSize: fontSize === FontSize.medium ? '16px' : '28px',
-      lineHeight: fontSize === FontSize.medium ? '21px' : '36px',
+      lineHeight: '38px',
       fontFamily: 'Segoe UI',
-      whiteSpace: 'noWrap',
-      textOverflow: 'ellipsis',
-      overflow: 'hidden',
       marginRight: '16px',
       color: '#000000',
       fontWeight: 'bold'
@@ -31,7 +28,7 @@ export const getStyles = (props: ICardHeaderProps): ICardHeaderStyles => {
       fontSize: '12px',
       lineHeight: '16px',
       color: '#000000',
-      paddingTop: '9px'
+      paddingTop: '7px'
     }
   };
 };

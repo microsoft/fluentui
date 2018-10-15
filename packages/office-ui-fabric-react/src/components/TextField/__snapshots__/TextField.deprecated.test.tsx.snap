@@ -82,9 +82,7 @@ exports[`TextField deprecated renders with deprecated props affecting styling 1`
         </span>
       </div>
       <input
-        aria-describedby={undefined}
         aria-invalid={false}
-        aria-label={undefined}
         className=
             ms-TextField-field
             {
@@ -128,7 +126,6 @@ exports[`TextField deprecated renders with deprecated props affecting styling 1`
         onChange={[Function]}
         onFocus={[Function]}
         onInput={[Function]}
-        readOnly={undefined}
         type="text"
         value=""
       />
@@ -146,7 +143,6 @@ exports[`TextField deprecated renders with deprecated props affecting styling 1`
               right: 8px;
               top: auto;
             }
-        data-icon-name={undefined}
         role="presentation"
       />
     </div>

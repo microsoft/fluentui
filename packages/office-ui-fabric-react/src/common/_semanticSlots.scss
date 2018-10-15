@@ -1,7 +1,7 @@
 /* Base slots */
 
 $bodyBackgroundColor: '[theme:bodyBackground, default: #ffffff]';
-$bodyStandoutBackgroundColor: '[theme:bodyStandoutBackground, default: #ffffff]';
+$bodyStandoutBackgroundColor: '[theme:bodyStandoutBackground, default: ##f8f8f8]';
 $bodyFrameBackgroundColor: '[theme:bodyFrameBackground, default: #ffffff]';
 $bodyFrameDividerColor: '[theme:bodyFrameDivider, default: #eaeaea]';
 $bodyTextColor: '[theme:bodyText, default: #333333]';
@@ -67,9 +67,15 @@ $primarybuttonTextHoveredColor: '[theme:primaryButtonTextHovered, default: #ffff
 $primaryButtonTextPressedColor: '[theme:primaryButtonTextPressed, default: #ffffff]';
 
 /* Menus */
-$menuItemBackgroundHoveredColor: '[theme:menuItemBackgroundHovered, default: #f8f8f8]';
+
+$menuBackgroundColor: '[theme:menuBackground, default: #ffffff]';
+$menuDividerColor: '[theme:menuDivider, default: #c8c8c8]';
 $menuIconColor: '[theme:menuIcon, default: #0078d4]';
 $menuHeaderColor: '[theme:menuHeader, default: #0078d4]';
+$menuItemBackgroundHoveredColor: '[theme:menuItemBackgroundHovered, default: #f4f4f4]';
+$menuItemBackgroundPressedColor: '[theme:menuItemBackgroundPressed, default: #eaeaea]';
+$menuItemTextColor: '[theme:menuItemText, default: #333333]';
+$menuItemTextHoveredColor: '[theme:menuItemTextHovered, default: #212121]';
 
 /* Lists */
 $listBackgroundColor: '[theme:listBackground, default: #ffffff]';

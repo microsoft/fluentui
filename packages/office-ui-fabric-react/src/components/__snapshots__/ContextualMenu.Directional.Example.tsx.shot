@@ -9,12 +9,6 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
   >
     <button
       aria-checked={false}
-      aria-describedby={undefined}
-      aria-disabled={undefined}
-      aria-label={undefined}
-      aria-labelledby={undefined}
-      aria-posinset={undefined}
-      aria-setsize={undefined}
       checked={false}
       className=
           ms-Checkbox
@@ -76,15 +70,11 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
           &:focus .ms-Checkbox-text {
             color: #333333;
           }
-      data-ktp-execute-target={undefined}
-      disabled={undefined}
       id="checkbox-0"
-      name={undefined}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
       role="checkbox"
-      title={undefined}
       type="button"
     >
       <label
@@ -127,7 +117,6 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
                 transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                 width: 20px;
               }
-          data-ktp-target={undefined}
         >
           <i
             aria-hidden={true}
@@ -181,10 +170,15 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
             ms-Label
             ms-Dropdown-label
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
               color: #333333;
               display: inline-block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -198,18 +192,14 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
             }
         htmlFor="Dropdown1"
         id="Dropdown1-label"
-        required={undefined}
       >
         Directional hint
       </label>
       <div
         aria-activedescendant="Dropdown1-option"
         aria-describedby="Dropdown1-option"
-        aria-disabled={undefined}
         aria-expanded="false"
-        aria-label={undefined}
         aria-labelledby="Dropdown1-label"
-        aria-owns={undefined}
         className=
             ms-Dropdown
             {
@@ -386,14 +376,9 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
     className="ms-ContextualMenuDirectionalExample-buttonArea"
   >
     <button
-      aria-describedby={undefined}
-      aria-disabled={undefined}
       aria-expanded={false}
       aria-haspopup={true}
-      aria-label={undefined}
-      aria-labelledby={undefined}
       aria-owns={null}
-      aria-pressed={undefined}
       className=
           ms-Button
           ms-Button--default
@@ -445,6 +430,11 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
             right: -2px;
             top: -2px;
           }
+          &:active > * {
+            left: 0px;
+            position: relative;
+            top: 0px;
+          }
           &:hover {
             background-color: #eaeaea;
             color: #212121;
@@ -458,7 +448,6 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
             color: #212121;
           }
       data-is-focusable={true}
-      disabled={undefined}
       onClick={[Function]}
       onKeyDown={[Function]}
       onKeyPress={[Function]}

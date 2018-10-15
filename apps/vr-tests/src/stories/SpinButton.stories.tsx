@@ -18,7 +18,7 @@ storiesOf('SpinButton', module)
   .addDecorator(FabricDecoratorFixedWidth)
   .addDecorator(story => (
     <Screener
-      steps={ new Screener.Steps()
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-spinButton-input')
         .snapshot('hover input', { cropTo: '.testWrapper' })
@@ -32,25 +32,25 @@ storiesOf('SpinButton', module)
         .end()
       }
     >
-      { story() }
+      {story()}
     </Screener>
-  )).add('Root', () => (
+  )).addStory('Root', () => (
     <SpinButton
-      { ...props }
+      {...props}
     />
-  )).add('Disabled', () => (
+  )).addStory('Disabled', () => (
     <SpinButton
-      { ...props }
+      {...props}
       disabled
     />
-  )).add('With icon', () => (
+  )).addStory('With icon', () => (
     <SpinButton
-      { ...props }
-      iconProps={ { iconName: 'IncreaseIndentLegacy', } }
+      {...props}
+      iconProps={{ iconName: 'IncreaseIndentLegacy', }}
     />
-  )).add('Label at end', () => (
+  ), { rtl: true }).addStory('Label at end', () => (
     <SpinButton
-      { ...props }
-      labelPosition={ Position.end }
+      {...props}
+      labelPosition={Position.end}
     />
-  ));
+  ), { rtl: true });

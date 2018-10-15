@@ -27,6 +27,34 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
           ms-TextField-wrapper
 
     >
+      <label
+        className=
+            ms-Label
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #333333;
+              display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              overflow-wrap: break-word;
+              padding-bottom: 5px;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 5px;
+              word-wrap: break-word;
+            }
+        htmlFor="TextField0"
+      >
+        Hover delay (ms)
+      </label>
       <div
         className=
             ms-TextField-fieldGroup
@@ -57,9 +85,7 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
             }
       >
         <input
-          aria-describedby={undefined}
           aria-invalid={false}
-          aria-label={undefined}
           className=
               ms-TextField-field
               {
@@ -103,22 +129,16 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
-          readOnly={undefined}
-          type="text"
+          type="number"
           value="250"
         />
       </div>
     </div>
   </div>
   <button
-    aria-describedby={undefined}
-    aria-disabled={undefined}
     aria-expanded={false}
     aria-haspopup={true}
-    aria-label={undefined}
-    aria-labelledby={undefined}
     aria-owns={null}
-    aria-pressed={undefined}
     className=
         ms-Button
         ms-Button--default
@@ -170,6 +190,11 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
           right: -2px;
           top: -2px;
         }
+        &:active > * {
+          left: 0px;
+          position: relative;
+          top: 0px;
+        }
         &:hover {
           background-color: #eaeaea;
           color: #212121;
@@ -183,7 +208,6 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
           color: #212121;
         }
     data-is-focusable={true}
-    disabled={undefined}
     id="ContextualMenuButton2"
     onClick={[Function]}
     onKeyDown={[Function]}

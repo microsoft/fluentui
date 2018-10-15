@@ -25,6 +25,13 @@ export type DashboardSectionMapping = {
   [id: string]: string[];
 };
 
+export type CardSizeToRGLWidthHeightMapping = {
+  /**
+   * CardSize -> width height value map in React-Grid-Layout. P is @see CardSize
+   */
+  [P in CardSize]: { w: number; h: number }
+};
+
 export interface IDashboardCardLayout {
   /**
    * A string corresponding to the component key
@@ -80,6 +87,11 @@ export interface IDashboardGridLayoutProps {
    * # of cols. This is a breakpoint -> cols map, e.g. {lg: 12, md: 10, ...}
    */
   cols?: { [P in Breakpoints]: number };
+
+  /**
+   * Margin between items [x, y] in px.
+   */
+  margin?: [number, number];
 
   /**
    * the px value of break points
@@ -141,18 +153,33 @@ export interface IDashboardGridLayoutProps {
   isCollapsible?: boolean;
 
   /**
-   * Callback so you can save the layout.
+   * This is a CardSize -> width height value map in React-Grid-Layout.
    */
-  onLayoutChange?(currentLayout: Layout[], allLayouts: Layouts): void;
+  cardSizeToRGLWidthHeight?: CardSizeToRGLWidthHeightMapping;
+
+  /**
+   * Callback on the layout change.
+   * @param currentLayout the current layout used
+   * @param allLayouts all layouts for all breakpoints
+   */
+  onLayoutChange?: (currentLayout: Layout[], allLayouts: Layouts) => void;
+
+  /**
+   * Callback on the layout change. Compare to @see onLayoutChange, this callback returns one more value which captures
+   * the section to cards mapping
+   * @param currentLayout the current layout used
+   * @param allLayouts all layouts for all breakpoints
+   * @param sectionMapping section tp card mapping
+   */
+  onSectionChange?: (currentLayout: Layout[], allLayouts: Layouts, sectionMapping?: DashboardSectionMapping) => void;
 
   /**
    * Callback with breakpoint and new number of columns
    */
-  onBreakPointChange?(newBreakpoint: string, newCols: number): void;
+  onBreakPointChange?: (newBreakpoint: string, newCols: number) => void;
 
   /**
-   * On section change.
-   * @param newMapping
+   * Callback when the width changes, so you can modify the layout as needed.
    */
-  onSectionChange?(currentLayout: Layout[], allLayouts: Layouts, sectionMapping?: DashboardSectionMapping): void;
+  onWidthChange?: (containerWidth: number, margin: [number, number], cols: number, containerPadding: [number, number]) => void;
 }

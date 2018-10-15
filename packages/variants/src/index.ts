@@ -1,1 +1,3 @@
-export { getNeutralVariant, getSoftVariant, getStrongVariant } from './variants';
+export * from './variants';
+export * from './variantThemeType';
+import './version';

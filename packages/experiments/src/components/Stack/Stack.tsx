@@ -1,26 +1,17 @@
 import * as React from 'react';
-import { createStatelessComponent, IStyleableComponentProps, IViewComponentProps } from '../../Foundation';
+import { createStatelessComponent, IStyleableComponentProps } from '../../Foundation';
 import StackItem from './StackItem/StackItem';
 import { IStackItemProps, IStackItemStyles } from './StackItem/StackItem.types';
-import { IStackProps, IStackStyles } from './Stack.types';
+import { IStackComponent, IStackProps, IStackStyles } from './Stack.types';
 import { styles } from './Stack.styles';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { mergeStyles } from '../../Styling';
+import { getNativeProps, htmlElementProperties } from '../../Utilities';
 
 const StackItemType = (<StackItem /> as React.ReactElement<IStackItemProps> & IStyleableComponentProps<IStackItemProps, IStackItemStyles>)
   .type;
 
-const view = (props: IViewComponentProps<IStackProps, IStackStyles>) => {
-  const {
-    renderAs: RootType = 'div',
-    classNames,
-    gap,
-    horizontal,
-    shrinkItems,
-    verticalAlignment,
-    horizontalAlignment,
-    grow,
-    ...rest
-  } = props;
+const view: IStackComponent['view'] = props => {
+  const { as: RootType = 'div', classNames, shrinkItems, wrap, ...rest } = props;
 
   const stackChildren: (React.ReactChild | null)[] = React.Children.map(
     props.children,
@@ -30,8 +21,6 @@ const view = (props: IViewComponentProps<IStackProps, IStackStyles>) => {
       }
 
       const defaultItemProps: IStackItemProps = {
-        gap: index > 0 ? gap : 0,
-        horizontal,
         shrink: shrinkItems,
         className: child.props ? child.props.className : undefined
       };
@@ -55,12 +44,14 @@ const view = (props: IViewComponentProps<IStackProps, IStackStyles>) => {
         });
       }
 
-      return <StackItem {...defaultItemProps}>{child}</StackItem>;
+      return child;
     }
   );
 
+  const nativeProps = getNativeProps(rest, htmlElementProperties);
+
   return (
-    <RootType {...rest} className={classNames.root}>
+    <RootType {...nativeProps} className={classNames.root}>
       {stackChildren}
     </RootType>
   );

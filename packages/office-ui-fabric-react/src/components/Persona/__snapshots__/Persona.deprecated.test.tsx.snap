@@ -35,7 +35,6 @@ exports[`Persona renders Persona correctly with image 1`] = `
         color: #212121;
       }
   size={13}
-  style={undefined}
 >
   <div
     className=
@@ -60,15 +59,19 @@ exports[`Persona renders Persona correctly with image 1`] = `
             text-align: center;
             width: 48px;
           }
-      style={undefined}
     >
       <div
         className=
             ms-Image
             ms-Persona-image
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               border-radius: 50%;
               border: 0px;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               height: 48px;
               left: 0px;
               margin-right: 10px;
@@ -105,7 +108,6 @@ exports[`Persona renders Persona correctly with image 1`] = `
               }
           onError={[Function]}
           onLoad={[Function]}
-          role={undefined}
           src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII="
         />
       </div>
@@ -140,7 +142,6 @@ exports[`Persona renders Persona correctly with image 1`] = `
           }
     >
       <div
-        aria-describedby={undefined}
         className="ms-TooltipHost"
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
@@ -227,7 +228,6 @@ exports[`Persona renders Persona correctly with initials 1`] = `
         color: #212121;
       }
   size={13}
-  style={undefined}
 >
   <div
     className=
@@ -252,7 +252,6 @@ exports[`Persona renders Persona correctly with initials 1`] = `
             text-align: center;
             width: 48px;
           }
-      style={undefined}
     >
       <div
         aria-hidden="true"
@@ -274,7 +273,6 @@ exports[`Persona renders Persona correctly with initials 1`] = `
               box-sizing: border-box;
               color: WindowText;
             }
-        style={undefined}
       >
         <span>
           KL
@@ -311,7 +309,6 @@ exports[`Persona renders Persona correctly with initials 1`] = `
           }
     >
       <div
-        aria-describedby={undefined}
         className="ms-TooltipHost"
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
@@ -398,7 +395,6 @@ exports[`Persona renders Persona correctly with no props 1`] = `
         color: #212121;
       }
   size={13}
-  style={undefined}
 >
   <div
     className=
@@ -423,7 +419,6 @@ exports[`Persona renders Persona correctly with no props 1`] = `
             text-align: center;
             width: 48px;
           }
-      style={undefined}
     >
       <div
         aria-hidden="true"
@@ -445,7 +440,6 @@ exports[`Persona renders Persona correctly with no props 1`] = `
               box-sizing: border-box;
               color: WindowText;
             }
-        style={undefined}
       >
         <i
           aria-hidden={true}

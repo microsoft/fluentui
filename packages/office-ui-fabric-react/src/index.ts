@@ -56,6 +56,7 @@ export * from './ScrollablePane';
 export * from './SearchBox';
 export * from './SelectedItemsList';
 export * from './Shimmer';
+export * from './ShimmeredDetailsList';
 export * from './Slider';
 export * from './SpinButton';
 export * from './Spinner';
@@ -67,3 +68,5 @@ export * from './TextField';
 export * from './Toggle';
 export * from './Tooltip';
 export * from './Utilities';
+
+import './version';

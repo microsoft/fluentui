@@ -5,7 +5,7 @@ export const getStyles = (): IEditSectionsStyles => {
     root: {
       width: '100%'
     },
-    rightAlignedFlexContainer: {
+    topActionButtonsFlexContainer: {
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'flex-end',

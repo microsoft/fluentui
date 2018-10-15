@@ -9,14 +9,14 @@ storiesOf('Label', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
-      steps={ new Screener.Steps()
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .end()
       }
     >
-      { story() }
+      {story()}
     </Screener>
   ))
-  .add('Root', () => (<Label>I'm a label</Label>))
-  .add('Disabled', () => (<Label disabled>I'm a disabled label</Label>))
-  .add('Required', () => (<Label required>I'm a required label</Label>));
+  .addStory('Root', () => (<Label>I'm a label</Label>), { rtl: true })
+  .addStory('Disabled', () => (<Label disabled>I'm a disabled label</Label>))
+  .addStory('Required', () => (<Label required>I'm a required label</Label>));

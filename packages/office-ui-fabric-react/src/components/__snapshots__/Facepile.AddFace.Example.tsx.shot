@@ -5,6 +5,11 @@ exports[`Component Examples renders Facepile.AddFace.Example.tsx correctly 1`] =
   className=
       ms-Facepile
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
         width: auto;
       }
 >
@@ -38,26 +43,26 @@ exports[`Component Examples renders Facepile.AddFace.Example.tsx correctly 1`] =
         }
   >
     <button
-      aria-describedby={undefined}
-      aria-disabled={undefined}
       aria-label="Add a new person"
-      aria-labelledby={undefined}
-      aria-pressed={undefined}
       className=
           ms-Button
           ms-Facepile-addButton
           ms-Facepile-itemButton
+          ms-Button--facepile
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            background-color: #0078d4;
             border-radius: 50%;
-            border: 1px solid transparent;
+            border: none;
             box-sizing: border-box;
+            color: #ffffff;
             cursor: pointer;
-            display: inline-block;
+            display: inline;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
+            margin-right: 4px;
             outline: transparent;
             padding-bottom: 0px;
             padding-left: 0px;
@@ -95,6 +100,11 @@ exports[`Component Examples renders Facepile.AddFace.Example.tsx correctly 1`] =
             right: -2px;
             top: -2px;
           }
+          &:active > * {
+            left: 0px;
+            position: relative;
+            top: 0px;
+          }
           &:hover {
             background-color: #005a9e;
           }
@@ -104,25 +114,10 @@ exports[`Component Examples renders Facepile.AddFace.Example.tsx correctly 1`] =
           &:active {
             background-color: #004578;
           }
-          button& {
-            background-color: #0078d4;
-            background: none;
-            border: none;
-            color: #ffffff;
-            cursor: pointer;
-            display: inline;
-            font-size: 14px;
-            margin-right: 4px;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
-          }
           &:disabled {
             background-color: #c8c8c8;
           }
       data-is-focusable={true}
-      disabled={undefined}
       onClick={[Function]}
       onKeyDown={[Function]}
       onKeyPress={[Function]}
@@ -165,7 +160,6 @@ exports[`Component Examples renders Facepile.AddFace.Example.tsx correctly 1`] =
                   text-align: center;
                   width: 32px;
                 }
-            style={undefined}
           >
             <div
               aria-hidden="true"
@@ -187,7 +181,6 @@ exports[`Component Examples renders Facepile.AddFace.Example.tsx correctly 1`] =
                     box-sizing: border-box;
                     color: WindowText;
                   }
-              style={undefined}
             >
               <i
                 aria-hidden={true}
@@ -214,7 +207,6 @@ exports[`Component Examples renders Facepile.AddFace.Example.tsx correctly 1`] =
     </button>
     <div
       aria-describedby="id__0"
-      aria-labelledby={undefined}
       className="ms-FocusZone"
       data-focuszone-id="FocusZone4"
       onFocus={[Function]}

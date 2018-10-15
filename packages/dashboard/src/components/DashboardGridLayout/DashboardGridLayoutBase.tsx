@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Responsive, WidthProvider, Layout, Layouts } from 'react-grid-layout';
+import { Breakpoints, Responsive, WidthProvider, Layout, Layouts } from 'react-grid-layout';
 import {
   IDashboardGridLayoutProps,
   IDashboardGridLayoutStyles,
@@ -8,7 +8,7 @@ import {
 } from './DashboardGridLayout.types';
 import { getStyles } from './DashboardGridLayout.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { CardSizeToWidthHeight } from '../../utilities/DashboardGridLayoutUtils';
+import { CardSizeToWidthHeight, updateLayoutsFromLayout } from '../../utilities/DashboardGridLayoutUtils';
 
 require('style-loader!css-loader!react-grid-layout/css/styles.css');
 require('style-loader!css-loader!react-resizable/css/styles.css');
@@ -38,7 +38,9 @@ export class DashboardGridLayoutBase extends React.Component<IDashboardGridLayou
       sm: 1024,
       xs: 640,
       xxs: 480
-    }
+    },
+    cardSizeToRGLWidthHeight: CardSizeToWidthHeight,
+    margin: [24, 24]
   };
 
   constructor(props: IDashboardGridLayoutBaseProps) {
@@ -55,7 +57,7 @@ export class DashboardGridLayoutBase extends React.Component<IDashboardGridLayou
         breakpoints={this.props.breakpoints}
         cols={this.props.cols}
         className={classNames.root}
-        margin={[24, 24]}
+        margin={this.props.margin}
         containerPadding={[0, 0]}
         isResizable={this.props.isResizable || false}
         rowHeight={this.props.rowHeight}
@@ -67,6 +69,7 @@ export class DashboardGridLayoutBase extends React.Component<IDashboardGridLayou
         onDragStop={this.props.onDragStop}
         onBreakpointChange={this.props.onBreakPointChange}
         dragApiRef={this.props.dragApi}
+        onWidthChange={this.props.onWidthChange}
         {...this.props}
       >
         {this.props.children}
@@ -80,39 +83,23 @@ export class DashboardGridLayoutBase extends React.Component<IDashboardGridLayou
     }
   };
 
-  private _updateLayoutsFromLayout = (layouts: Layouts, layout: Layout[], key: string) => {
-    switch (key) {
-      case 'lg':
-        layouts.lg = layout;
-        break;
-      case 'md':
-        layouts.md = layout;
-        break;
-      case 'sm':
-        layouts.sm = layout;
-        break;
-      case 'xs':
-        layouts.xs = layout;
-        break;
-      case 'xxs':
-        layouts.xxs = layout;
-        break;
-    }
-  };
-
   private _createLayoutFromProp(layoutProp: IDashboardCardLayout): Layout {
     return {
       i: layoutProp.i,
       x: layoutProp.x,
       y: layoutProp.y,
-      w: CardSizeToWidthHeight[layoutProp.size].w,
-      h: CardSizeToWidthHeight[layoutProp.size].h,
+      w: this.props.cardSizeToRGLWidthHeight![layoutProp.size].w,
+      h: this.props.cardSizeToRGLWidthHeight![layoutProp.size].h,
       static: layoutProp.static === undefined ? false : layoutProp.static,
       isDraggable: layoutProp.disableDrag === undefined ? true : !layoutProp.disableDrag,
       isResizable: layoutProp.isResizable === undefined ? true : layoutProp.isResizable
     };
   }
 
+  /**
+   * Default function to create RGL layout from dashboard layout.
+   * If this.props.createRGLLayouts is provided, use the function in prop instead
+   */
   private _createLayout(): Layouts {
     if (this.props.createRGLLayouts) {
       // if the function to create layout is provided, use it; otherwise, use the default function to convert dashboard layout to RGL layout
@@ -129,7 +116,7 @@ export class DashboardGridLayoutBase extends React.Component<IDashboardGridLayou
         for (let i = 0; i < value.length; i++) {
           layout.push(this._createLayoutFromProp(value[i]));
         }
-        this._updateLayoutsFromLayout(layouts, layout, key);
+        updateLayoutsFromLayout(layouts, layout, key as Breakpoints);
       }
     }
 

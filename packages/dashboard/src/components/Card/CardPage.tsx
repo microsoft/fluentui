@@ -10,6 +10,8 @@ import { MultiCountExample } from './examples/Card.MultiCount.Example';
 import { StackedBarChartExample } from './examples/Card.Chart.StackedBar.Example';
 import { MultiStackedBarChartExample } from './examples/Card.Chart.MultiStackedBar.Example';
 import { MultipleLineChartExample } from './examples/Card.Chart.MultipleLineChart.Example';
+import { SmallCardLongHeaderExample } from './examples/Card.Small.LongHeader.Example';
+
 const SmallCardExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.Small.Basic.Example.tsx') as string;
 const MediumTallCardExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.MediumTall.Basic.Example.tsx') as string;
 const MediumWideCardExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.MediumWide.Basic.Example.tsx') as string;
@@ -20,6 +22,7 @@ const MultiCountExampleCode = require('!raw-loader!@uifabric/dashboard/src/compo
 const StackedBarChartExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.Chart.StackedBar.Example.tsx') as string;
 const MultiStackedBarChartExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.Chart.MultiStackedBar.Example.tsx') as string;
 const MultipleLineChartExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.Chart.MultipleLineChart.Example.tsx') as string;
+const SmallCardLongHeaderExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Card/examples/Card.Small.LongHeader.Example.tsx') as string;
 
 export class CardPage extends React.Component<{}, {}> {
   public render(): JSX.Element {
@@ -31,6 +34,9 @@ export class CardPage extends React.Component<{}, {}> {
           <div>
             <ExampleCard title="Small Card" code={SmallCardExampleCode}>
               <SmallCardBasicExample />
+            </ExampleCard>
+            <ExampleCard title="Small Card" code={SmallCardLongHeaderExampleCode}>
+              <SmallCardLongHeaderExample />
             </ExampleCard>
             <ExampleCard title="Medium Tall Card" code={MediumTallCardExampleCode}>
               <MediumTallCardBasicExample />
@@ -65,14 +71,10 @@ export class CardPage extends React.Component<{}, {}> {
           <PropertiesTableSet
             sources={[
               require<string>('!raw-loader!@uifabric/dashboard/src/components/Card/Card.types.ts'),
-              require<
-                string
-              >('!raw-loader!@uifabric/dashboard/src/components/Card/ThumbnailList/ThumbnailList.types.ts'),
+              require<string>('!raw-loader!@uifabric/dashboard/src/components/Card/ThumbnailList/ThumbnailList.types.ts'),
               require<string>('!raw-loader!@uifabric/dashboard/src/components/Card/GridList/GridList.types.ts'),
               require<string>('!raw-loader!@uifabric/dashboard/src/components/Card/Layout/Layout.types.ts'),
-              require<
-                string
-              >('!raw-loader!@uifabric/dashboard/src/components/Card/CompoundButtonStack/CompoundButtonStack.types.ts'),
+              require<string>('!raw-loader!@uifabric/dashboard/src/components/Card/CompoundButtonStack/CompoundButtonStack.types.ts'),
               require<string>('!raw-loader!@uifabric/dashboard/src/components/Card/BodyText/BodyText.types.ts'),
               require<string>('!raw-loader!@uifabric/dashboard/src/components/Card/ActionBar/ActionBar.types.ts')
             ]}
@@ -99,26 +101,19 @@ export class CardPage extends React.Component<{}, {}> {
             ]}
           />
         }
-        overview={
-          <div>
-            This react card is to be used with React-Grid-Layout(RGL) and will fill the RGL card size automatically.
-          </div>
-        }
+        overview={<div>This react card is to be used with React-Grid-Layout(RGL) and will fill the RGL card size automatically.</div>}
         bestPractices={<div />}
         dos={
           <div>
             <ul>
+              <li>We support the following card size: small, mediumTall, mediumWide and Large:import CardSize enum from Card.types </li>
               <li>
-                We support the following card size: small, mediumTall, mediumWide and Large:import CardSize enum from
-                Card.types{' '}
+                We support the following components: "BodyText", "ThumbnailList", "Compound Button": import CardContentType enum from
+                Card.types
               </li>
               <li>
-                We support the following components: "BodyText", "ThumbnailList", "Compound Button": import
-                CardContentType enum from Card.types
-              </li>
-              <li>
-                We support Priority 1 and Priority 2 to render content in the card. Use Priority 1 to render content in
-                small card: import Priority enum from Card.types
+                We support Priority 1 and Priority 2 to render content in the card. Use Priority 1 to render content in small card: import
+                Priority enum from Card.types
               </li>
             </ul>
           </div>
@@ -130,12 +125,10 @@ export class CardPage extends React.Component<{}, {}> {
                 Do not create your own <i>priority values</i>, use the <b>Priority</b> enum by importing from Card.Types
               </li>
               <li>
-                Do not create your own <i>ContentType values</i>, use the <b>ContentType</b> enum by importing from
-                Card.Types
+                Do not create your own <i>ContentType values</i>, use the <b>ContentType</b> enum by importing from Card.Types
               </li>
               <li>
-                Do not create your own <i>card size values</i>, use the <b>CardSize</b> enum by importing from
-                Card.Types
+                Do not create your own <i>card size values</i>, use the <b>CardSize</b> enum by importing from Card.Types
               </li>
             </ul>
           </div>

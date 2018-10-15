@@ -29,11 +29,14 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
         className=
             ms-ChoiceField
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               align-items: center;
               border: none;
               box-sizing: border-box;
               color: #333333;
               display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               margin-top: 8px;
@@ -62,7 +65,6 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
                 }
             data-automation-id="auto1"
             data-is-focusable={true}
-            disabled={undefined}
             id="ChoiceGroup0-1"
             name="ChoiceGroup0"
             onBlur={[Function]}
@@ -142,11 +144,14 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
         className=
             ms-ChoiceField
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               align-items: center;
               border: none;
               box-sizing: border-box;
               color: #333333;
               display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               margin-top: 8px;
@@ -174,7 +179,6 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
                   top: 8px;
                 }
             data-is-focusable={false}
-            disabled={undefined}
             id="ChoiceGroup0-2"
             name="ChoiceGroup0"
             onBlur={[Function]}
@@ -254,11 +258,14 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
         className=
             ms-ChoiceField
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               align-items: center;
               border: none;
               box-sizing: border-box;
               color: #333333;
               display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               margin-top: 8px;
@@ -286,7 +293,6 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
                   top: 8px;
                 }
             data-is-focusable={false}
-            disabled={undefined}
             id="ChoiceGroup0-3"
             name="ChoiceGroup0"
             onBlur={[Function]}

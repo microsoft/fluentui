@@ -66,17 +66,21 @@ exports[`Tooltip renders default Tooltip correctly 1`] = `
           {
             position: relative;
           }
-      style={undefined}
     >
       <div
         className=
             ms-Callout
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               border-color: #eaeaea;
               border-style: solid;
               border-width: 1px;
               box-shadow: 0 0 5px 0px rgba(0,0,0,0.4);
               box-sizing: border-box;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               outline: transparent;
               position: absolute;
             }
@@ -97,9 +101,6 @@ exports[`Tooltip renders default Tooltip correctly 1`] = `
         tabIndex={-1}
       >
         <div
-          aria-describedby={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
           className=
               ms-Callout-main
               {
@@ -109,8 +110,6 @@ exports[`Tooltip renders default Tooltip correctly 1`] = `
                 position: relative;
               }
           onKeyDown={[Function]}
-          onScroll={undefined}
-          role={undefined}
           style={
             Object {
               "maxHeight": 750,
@@ -119,15 +118,9 @@ exports[`Tooltip renders default Tooltip correctly 1`] = `
           }
         >
           <div
-            className={undefined}
-            id={undefined}
-            onMouseEnter={undefined}
-            onMouseLeave={undefined}
             role="tooltip"
           >
-            <p
-              className={undefined}
-            />
+            <p />
           </div>
         </div>
       </div>

@@ -10,10 +10,7 @@ export interface ICollapsibleSectionControlledExampleState {
 }
 
 // tslint:disable:jsx-no-lambda
-export class CollapsibleSectionControlledExample extends React.Component<
-  {},
-  ICollapsibleSectionControlledExampleState
-> {
+export class CollapsibleSectionControlledExample extends React.Component<{}, ICollapsibleSectionControlledExampleState> {
   constructor(props: {}) {
     super(props);
     this.state = {
@@ -27,10 +24,9 @@ export class CollapsibleSectionControlledExample extends React.Component<
       <div>
         <FocusZone>
           <p>
-            Even though we are using the same CollapsibleSection with the same state component, createComponent
-            overrides the state component's output when the controlled prop has a value passed in automatically. As a
-            result, clicking on the titles in this example does not affect collapsed state, only clicking on the Toggle
-            button does.
+            Even though we are using the same CollapsibleSection with the same state component, createComponent overrides the state
+            component's output when the controlled prop has a value passed in automatically. As a result, clicking on the titles in this
+            example does not affect collapsed state, only clicking on the Toggle button does.
           </p>
           <HorizontalStack gap={20} verticalAlign="center">
             <DefaultButton
@@ -45,7 +41,7 @@ export class CollapsibleSectionControlledExample extends React.Component<
             collapsed={this.state.collapsed}
             titleProps={{
               text: `Title 1`,
-              onToggleCollapse: () => {
+              onClick: () => {
                 this.setState((state: ICollapsibleSectionControlledExampleState) => ({ clicks: state.clicks + 1 }));
               }
             }}
@@ -56,7 +52,7 @@ export class CollapsibleSectionControlledExample extends React.Component<
             collapsed={this.state.collapsed}
             titleProps={{
               text: `Title 2`,
-              onToggleCollapse: () => {
+              onClick: () => {
                 this.setState((state: ICollapsibleSectionControlledExampleState) => ({ clicks: state.clicks + 1 }));
               }
             }}

@@ -2,13 +2,13 @@
 
 exports[`CommandBar renders commands correctly 1`] = `
 <div
-  className=
-      ms-ResizeGroup
-      TestClassName
-      {
-        display: block;
-        position: relative;
-      }
+  className="TestClassName"
+  style={
+    Object {
+      "display": "block",
+      "position": "relative",
+    }
+  }
 >
   <div
     data-automation-id="visibleContent"
@@ -20,16 +20,18 @@ exports[`CommandBar renders commands correctly 1`] = `
     }
   >
     <div
-      aria-describedby={undefined}
-      aria-label={undefined}
-      aria-labelledby={undefined}
       className=
           ms-FocusZone
           ms-CommandBar
           TestClassName
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             background-color: #f4f4f4;
             display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
             height: 40px;
             padding-bottom: 0;
             padding-left: 16px;
@@ -64,11 +66,6 @@ exports[`CommandBar renders commands correctly 1`] = `
               }
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
-            aria-label={undefined}
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             className=
                 ms-Button
                 ms-Button--commandBar
@@ -121,6 +118,11 @@ exports[`CommandBar renders commands correctly 1`] = `
                   right: 4px;
                   top: 4px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
                 }
@@ -136,7 +138,6 @@ exports[`CommandBar renders commands correctly 1`] = `
                   color: #000000;
                 }
             data-is-focusable={true}
-            disabled={undefined}
             name="asdf"
             onClick={[Function]}
             onKeyDown={[Function]}
@@ -144,6 +145,7 @@ exports[`CommandBar renders commands correctly 1`] = `
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseUp={[Function]}
+            role="menuitem"
             type="button"
           >
             <div
@@ -193,11 +195,6 @@ exports[`CommandBar renders commands correctly 1`] = `
               }
         >
           <button
-            aria-describedby={undefined}
-            aria-disabled={undefined}
-            aria-label={undefined}
-            aria-labelledby={undefined}
-            aria-pressed={undefined}
             className=
                 ms-Button
                 ms-Button--commandBar
@@ -250,6 +247,11 @@ exports[`CommandBar renders commands correctly 1`] = `
                   right: 4px;
                   top: 4px;
                 }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
                 @media screen and (-ms-high-contrast: active){& {
                   border: none;
                 }
@@ -265,7 +267,6 @@ exports[`CommandBar renders commands correctly 1`] = `
                   color: #000000;
                 }
             data-is-focusable={true}
-            disabled={undefined}
             name="asdf"
             onClick={[Function]}
             onKeyDown={[Function]}
@@ -273,6 +274,7 @@ exports[`CommandBar renders commands correctly 1`] = `
             onKeyUp={[Function]}
             onMouseDown={[Function]}
             onMouseUp={[Function]}
+            role="menuitem"
             type="button"
           >
             <div

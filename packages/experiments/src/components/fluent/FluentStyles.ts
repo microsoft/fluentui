@@ -1,6 +1,7 @@
 import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
 import { NeutralColors } from './FluentColors';
 import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from 'office-ui-fabric-react/lib/ChoiceGroup';
+import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { FontSizes } from './FluentType';
 import { Depths } from './FluentDepths';
 
@@ -31,16 +32,22 @@ const CompoundButtonStyles = {
   }
 };
 
-const DefaultButtonStyles = {
-  root: {
-    borderRadius: fluentBorderRadius,
-    backgroundColor: '#fff',
-    border: `1px solid ${NeutralColors.gray110}`
-  },
-  rootHovered: {
-    backgroundColor: '#f3f2f1',
-    border: `1px solid ${NeutralColors.gray110}`
-  }
+const DefaultButtonStyles = (props: IButtonProps) => {
+  const { primary, theme } = props;
+  const { palette, semanticColors } = theme!;
+
+  return {
+    root: {
+      borderRadius: fluentBorderRadius,
+      backgroundColor: primary ? semanticColors.primaryButtonBackground : palette.white,
+      border: primary ? '' : `1px solid ${NeutralColors.gray110}`,
+      color: primary ? semanticColors.buttonText : palette.white
+    },
+    rootHovered: {
+      backgroundColor: primary ? palette.themeDarkAlt : NeutralColors.gray20,
+      border: primary ? '' : `1px solid ${NeutralColors.gray110}`
+    }
+  };
 };
 
 const CheckboxStyles = {

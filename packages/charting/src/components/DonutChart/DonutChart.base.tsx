@@ -20,6 +20,7 @@ export class DonutChartBase extends React.Component<
     _height: number | undefined;
     activeLegend: string;
     color: string | undefined;
+    isLegendSelected: boolean;
   }
 > {
   public static defaultProps: Partial<IDonutChartProps> = {
@@ -29,6 +30,8 @@ export class DonutChartBase extends React.Component<
   private _classNames: IProcessedStyleSet<IDonutChartStyles>;
   private _rootElem: HTMLElement | null;
   private _uniqText: string;
+  // tslint:disable:no-any
+  private _currentHoverElement: any;
   constructor(props: IDonutChartProps) {
     super(props);
     this.state = {
@@ -38,7 +41,8 @@ export class DonutChartBase extends React.Component<
       _width: this.props.width || 200,
       _height: this.props.height || 200,
       activeLegend: '',
-      color: ''
+      color: '',
+      isLegendSelected: false
     };
     this._hoverCallback = this._hoverCallback.bind(this);
     this._hoverLeave = this._hoverLeave.bind(this);
@@ -51,11 +55,11 @@ export class DonutChartBase extends React.Component<
   public componentDidMount(): void {
     this.setState({
       _width: this._rootElem!.offsetWidth,
-      _height: this._rootElem!.offsetHeight - 32
+      _height: this._rootElem!.offsetHeight
     });
   }
   public render(): JSX.Element {
-    const { data } = this.props;
+    const { data, href } = this.props;
     const { _width, _height } = this.state;
 
     const { theme, className, styles, innerRadius } = this.props;
@@ -84,11 +88,12 @@ export class DonutChartBase extends React.Component<
             hoverLeaveCallback={this._hoverLeave}
             uniqText={this._uniqText}
             activeArc={this.state.activeLegend}
+            href={href}
           />
         </svg>
         {this.state.showHover ? (
           <Callout
-            target={'#' + this._uniqText + this.state.legend!.replace(/\s+/, '') + this.state.value}
+            target={this._currentHoverElement}
             coverTarget={true}
             isBeakVisible={false}
             directionalHint={DirectionalHint.bottomRightEdge}
@@ -113,9 +118,7 @@ export class DonutChartBase extends React.Component<
     const widthVal = node.parentElement ? node.parentElement.clientWidth : this.state._width;
 
     const heightVal =
-      node.parentElement && node.parentElement.offsetHeight > this.state._height!
-        ? node.parentElement.offsetHeight
-        : this.state._height;
+      node.parentElement && node.parentElement.offsetHeight > this.state._height! ? node.parentElement.offsetHeight : this.state._height;
     const viewbox = `0 0 ${widthVal!} ${heightVal!}`;
     node.setAttribute('viewBox', viewbox);
   }
@@ -129,18 +132,23 @@ export class DonutChartBase extends React.Component<
         const legend: ILegend = {
           title: point.legend!,
           color: color,
+          action: () => {
+            if (this.state.isLegendSelected) {
+              if (this.state.activeLegend !== point.legend || this.state.activeLegend === '') {
+                this.setState({ activeLegend: point.legend!, isLegendSelected: true });
+              } else {
+                this.setState({ activeLegend: point.legend });
+              }
+            } else {
+              this.setState({ activeLegend: point.legend!, isLegendSelected: true });
+            }
+          },
           hoverAction: () => {
             if (this.state.activeLegend !== point.legend || this.state.activeLegend === '') {
               this.setState({ activeLegend: point.legend! });
             } else {
               this.setState({ activeLegend: point.legend });
             }
-            this.setState({
-              showHover: true,
-              value: point.data!.toString(),
-              legend: point.legend!,
-              color: point.color!
-            });
           },
           onMouseOutAction: () => {
             this.setState({
@@ -151,18 +159,19 @@ export class DonutChartBase extends React.Component<
         };
         return legend;
       });
-    const legends = <Legends legends={legendDataItems} />;
+    const legends = <Legends legends={legendDataItems} centerLegends />;
     return legends;
   }
 
-  private _hoverCallback(data: IChartDataPoint): void {
+  private _hoverCallback = (data: IChartDataPoint, e: React.MouseEvent<SVGPathElement>): void => {
+    this._currentHoverElement = e;
     this.setState({
       showHover: true,
       value: data.data!.toString(),
       legend: data.legend,
       color: data.color!
     });
-  }
+  };
 
   private _hoverLeave(): void {
     this.setState({ showHover: false });

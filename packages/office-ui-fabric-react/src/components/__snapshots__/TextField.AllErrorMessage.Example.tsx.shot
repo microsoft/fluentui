@@ -38,10 +38,15 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
         className=
             ms-Label
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
               color: #333333;
               display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -54,7 +59,6 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
               word-wrap: break-word;
             }
         htmlFor="TextField0"
-        required={undefined}
       >
         Default with error message
       </label>
@@ -94,7 +98,6 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
         <input
           aria-describedby="TextFieldDescription1"
           aria-invalid={false}
-          aria-label={undefined}
           className=
               ms-TextField-field
               {
@@ -138,7 +141,6 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
-          readOnly={undefined}
           type="text"
           value=""
         />
@@ -218,7 +220,6 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
         <input
           aria-describedby="TextFieldDescription3"
           aria-invalid={false}
-          aria-label={undefined}
           className=
               ms-TextField-field
               {
@@ -263,7 +264,6 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
           onFocus={[Function]}
           onInput={[Function]}
           placeholder="Placeholder with error message"
-          readOnly={undefined}
           type="text"
           value=""
         />
@@ -331,11 +331,15 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
         className=
             ms-Label
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
               color: #333333;
               display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
+              font-weight: 400;
               height: 32px;
               line-height: 22px;
               margin-bottom: 0px;
@@ -350,7 +354,6 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
               word-wrap: break-word;
             }
         htmlFor="TextField4"
-        required={undefined}
       >
         Underlined with error message:
       </label>
@@ -393,7 +396,6 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
         <input
           aria-describedby="TextFieldDescription5"
           aria-invalid={false}
-          aria-label={undefined}
           className=
               ms-TextField-field
               {
@@ -438,7 +440,6 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
-          readOnly={undefined}
           type="text"
           value=""
         />
@@ -487,10 +488,15 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
         className=
             ms-Label
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
               color: #333333;
               display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -503,7 +509,6 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
               word-wrap: break-word;
             }
         htmlFor="TextField6"
-        required={undefined}
       >
         Multiline with error message
       </label>
@@ -544,7 +549,6 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
         <textarea
           aria-describedby="TextFieldDescription7"
           aria-invalid={false}
-          aria-label={undefined}
           className=
               ms-TextField-field
               {
@@ -562,6 +566,7 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
+                min-height: inherit;
                 min-width: 0px;
                 outline: 0px;
                 overflow: auto;
@@ -591,7 +596,6 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
-          readOnly={undefined}
           rows={4}
           value=""
         />

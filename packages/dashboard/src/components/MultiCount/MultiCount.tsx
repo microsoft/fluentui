@@ -29,10 +29,12 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
       annotationTextColor,
       bodyTextFontSize,
       bodyTextColor,
-      customMessage
+      customMessage,
+      href
     } = this.props;
     const data: JSX.Element[] = this.getGeneratedData(
       multiCountRows,
+      href,
       annotationTextFontSize,
       annotationTextColor,
       bodyTextFontSize,
@@ -44,6 +46,7 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
 
   public getGeneratedData(
     rows: IMultiCountRow[],
+    href?: string,
     annotationTextFontSize?: string,
     annotationTextColor?: string,
     bodyTextFontSize?: string,
@@ -82,7 +85,8 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
           bodyTextFontSize: bodyTextFontSize,
           hoveredText: this.state.hoveredText,
           currentText: row.data + row.bodyText + row.annotaionText,
-          href: row.href
+          href: href,
+          hideIcon: row.hideIcon
         })
       );
       const expandingCardProps: IExpandingCardProps = {
@@ -116,17 +120,15 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
           onCardHide={this._hoverStateUpdate.bind(this, hoverKey, false)}
           onCardVisible={this._hoverStateUpdate.bind(this, hoverKey, true)}
         >
-          <div key={index} className={classNames.root} onClick={this._redirectToUrl.bind(this, row.href)}>
-            <div className={classNames.bodyText}>
-              <span className={classNames.data}>{formattedData + units[indexForUnits]}</span>
-              <span>{row.bodyText}</span>
-            </div>
-            <div className={classNames.annotationText}>
-              <span className={classNames.icon}>
+          <div key={index} className={classNames.root} onClick={this._redirectToUrl.bind(this, href)}>
+            <div className={classNames.data}>{formattedData + units[indexForUnits]}</div>
+            <div className={classNames.bodyText}>{row.bodyText}</div>
+            {!row.hideIcon && (
+              <div className={classNames.icon}>
                 <img src={changeIconIndicator} />
-              </span>
-              <span className={classNames.annotationText}>{row.annotaionText}</span>
-            </div>
+              </div>
+            )}
+            <div className={classNames.annotationText}>{row.annotaionText}</div>
           </div>
         </HoverCard>
       );
@@ -173,9 +175,11 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
         <div className={classNames.customMessage}>{data[1]}</div>
         <div className={classNames.hoverCardText}>
           <div className={classNames.hoverCardBodyText}>{data[0].bodyText}</div>
-          <div className={classNames.icon}>
-            <img src={changeIconIndicator} />
-          </div>
+          {!data[0].hideIcon && (
+            <div className={classNames.hoverCardIcon}>
+              <img src={changeIconIndicator} />
+            </div>
+          )}
           <div className={classNames.hoverCardAnnotationText}>{data[0].annotaionText}</div>
         </div>
         <div className={classNames.hoverCardData}>{data[0].data.toLocaleString()}</div>

@@ -2,6 +2,138 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.10.1",
+      "tag": "@uifabric/merge-styles_v6.10.1",
+      "date": "Mon, 15 Oct 2018 12:29:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "IStyleSet: Now uses a form that works better in TS 2.8 and does not require TS 3.0 to work. Thanks [Nimelrian](https://github.com/Nimelrian)!",
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "11e886ae48f7846de6baf05d09752f6e7c49e16d"
+          },
+          {
+            "comment": "Adding css grid properties to fill out the spec",
+            "author": "Joe Day <joeday@microsoft.com>",
+            "commit": "46db8c850dd258ba70babd2ebd0158e6562d4c67"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.10.0",
+      "tag": "@uifabric/merge-styles_v6.10.0",
+      "date": "Thu, 11 Oct 2018 23:13:31 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Enable api-extractor task for merge-styles",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "4c8e1118e9b94d8b6bd7e8dc0e44cf080d39d5ea"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.9.4",
+      "tag": "@uifabric/merge-styles_v6.9.4",
+      "date": "Mon, 08 Oct 2018 12:24:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Moving tslint/prettier dependencies ",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8ba9e22a7a8a2a1e7facda5aa7d91423c7af43ed"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.1.1 <2.0.0` to `>=1.1.2 <2.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.9.3",
+      "tag": "@uifabric/merge-styles_v6.9.3",
+      "date": "Mon, 01 Oct 2018 12:27:24 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Prettier cleanup",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "7eee9844e61fa75247af89fdff79bd23e2ca74bb"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.9.2",
+      "tag": "@uifabric/merge-styles_v6.9.2",
+      "date": "Fri, 28 Sep 2018 12:27:38 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Ignoring registering rules which are undefined.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "f2291fcd09a42295f7ccc0136ddaf40f0ad6cbe5"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.1.0 <2.0.0` to `>=1.1.1 <2.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.9.1",
+      "tag": "@uifabric/merge-styles_v6.9.1",
+      "date": "Fri, 21 Sep 2018 14:25:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding a version stamp file",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "11c18bce52dba131548610c5eea0c1ab7fa4d1ca"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.0.0 <2.0.0` to `>=1.1.0 <2.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.9.0",
+      "tag": "@uifabric/merge-styles_v6.9.0",
+      "date": "Thu, 20 Sep 2018 12:25:33 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding support for feature queries in selectors.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "2c9c91288704828364eb022e04bdec9dbce008b0"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.8.4",
+      "tag": "@uifabric/merge-styles_v6.8.4",
+      "date": "Thu, 13 Sep 2018 17:38:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Added some missing styles. mix-blend-mode plus some padding-inline-*",
+            "author": "Manfred Nysted Berry <38347275+mberry73@users.noreply.github.com>",
+            "commit": "50a43b5d1e13e6d507ab15477316bb5742fa6dbb"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.8.3",
       "tag": "@uifabric/merge-styles_v6.8.3",
       "date": "Wed, 05 Sep 2018 10:29:25 GMT",

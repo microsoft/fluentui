@@ -6,11 +6,14 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
     className=
         ms-ChoiceField
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           align-items: center;
           border: none;
           box-sizing: border-box;
           color: #333333;
           display: flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
           margin-top: 8px;
@@ -29,7 +32,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
 
     >
       <input
-        checked={undefined}
         className=
             ms-ChoiceField-input
             {
@@ -37,13 +39,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               position: absolute;
               top: 8px;
             }
-        disabled={undefined}
-        id={undefined}
-        name={undefined}
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
-        required={undefined}
         type="radio"
       />
       <label
@@ -102,11 +100,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 0px;
             }
-        htmlFor={undefined}
       >
         <span
           className="ms-ChoiceFieldLabel"
-          id={undefined}
         >
           Option A
         </span>
@@ -117,11 +113,14 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
     className=
         ms-ChoiceField
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           align-items: center;
           border: none;
           box-sizing: border-box;
           color: #333333;
           display: flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
           margin-top: 8px;
@@ -161,7 +160,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           }
     >
       <input
-        checked={undefined}
         className=
             ms-ChoiceField-input
             {
@@ -169,13 +167,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               position: absolute;
               top: 8px;
             }
-        disabled={undefined}
-        id={undefined}
-        name={undefined}
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
-        required={undefined}
         type="radio"
       />
       <label
@@ -234,11 +228,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 0px;
             }
-        htmlFor={undefined}
       >
         <span
           className="ms-ChoiceFieldLabel"
-          id={undefined}
         >
           Option B
         </span>
@@ -249,11 +241,14 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
     className=
         ms-ChoiceField
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           align-items: center;
           border: none;
           box-sizing: border-box;
           color: #333333;
           display: flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
           margin-top: 8px;
@@ -301,13 +296,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               position: absolute;
               top: 8px;
             }
-        disabled={undefined}
-        id={undefined}
-        name={undefined}
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
-        required={undefined}
         type="radio"
       />
       <label
@@ -377,11 +368,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             @media screen and (-ms-high-contrast: active){&:after {
               border-color: Highlight;
             }
-        htmlFor={undefined}
       >
         <span
           className="ms-ChoiceFieldLabel"
-          id={undefined}
         >
           Option C
         </span>
@@ -392,11 +381,14 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
     className=
         ms-ChoiceField
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           align-items: center;
           border: none;
           box-sizing: border-box;
           color: #333333;
           display: flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
           margin-top: 8px;
@@ -415,7 +407,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
 
     >
       <input
-        checked={undefined}
         className=
             ms-ChoiceField-input
             {
@@ -424,12 +415,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               top: 8px;
             }
         disabled={true}
-        id={undefined}
-        name={undefined}
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
-        required={undefined}
         type="radio"
       />
       <label
@@ -485,11 +473,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             @media screen and (-ms-high-contrast: active){& {
               color: GrayText;
             }
-        htmlFor={undefined}
       >
         <span
           className="ms-ChoiceFieldLabel"
-          id={undefined}
         >
           Option D
         </span>
@@ -500,11 +486,14 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
     className=
         ms-ChoiceField
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           align-items: center;
           border: none;
           box-sizing: border-box;
           color: #333333;
           display: flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
           margin-top: 8px;
@@ -532,12 +521,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               top: 8px;
             }
         disabled={true}
-        id={undefined}
-        name={undefined}
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
-        required={undefined}
         type="radio"
       />
       <label
@@ -602,11 +588,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             @media screen and (-ms-high-contrast: active){& {
               color: GrayText;
             }
-        htmlFor={undefined}
       >
         <span
           className="ms-ChoiceFieldLabel"
-          id={undefined}
         >
           Option E
         </span>
@@ -618,12 +602,15 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         ms-ChoiceField
         ms-ChoiceField--icon
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           align-items: center;
           background-color: #f4f4f4;
           border: none;
           box-sizing: border-box;
           color: #333333;
           display: inline-flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 0px;
           font-weight: 400;
           height: 100%;
@@ -646,7 +633,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
 
     >
       <input
-        checked={undefined}
         className=
             ms-ChoiceField-input
             {
@@ -661,13 +647,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               top: 0px;
               width: 100%;
             }
-        disabled={undefined}
-        id={undefined}
-        name={undefined}
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
-        required={undefined}
         type="radio"
       />
       <label
@@ -750,7 +732,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 0px;
             }
-        htmlFor={undefined}
       >
         <div
           className=
@@ -817,7 +798,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         >
           <span
             className="ms-ChoiceFieldLabel"
-            id={undefined}
           >
             Option F
           </span>
@@ -830,12 +810,15 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         ms-ChoiceField
         ms-ChoiceField--icon
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           align-items: center;
           background-color: #f4f4f4;
           border: none;
           box-sizing: border-box;
           color: #333333;
           display: inline-flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 0px;
           font-weight: 400;
           height: 100%;
@@ -879,7 +862,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           }
     >
       <input
-        checked={undefined}
         className=
             ms-ChoiceField-input
             {
@@ -894,13 +876,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               top: 0px;
               width: 100%;
             }
-        disabled={undefined}
-        id={undefined}
-        name={undefined}
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
-        required={undefined}
         type="radio"
       />
       <label
@@ -983,7 +961,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 0px;
             }
-        htmlFor={undefined}
       >
         <div
           className=
@@ -1050,7 +1027,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         >
           <span
             className="ms-ChoiceFieldLabel"
-            id={undefined}
           >
             Option G
           </span>
@@ -1063,12 +1039,15 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         ms-ChoiceField
         ms-ChoiceField--icon
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           align-items: center;
           background-color: #f4f4f4;
           border: none;
           box-sizing: border-box;
           color: #333333;
           display: inline-flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 0px;
           font-weight: 400;
           height: 100%;
@@ -1106,13 +1085,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               top: 0px;
               width: 100%;
             }
-        disabled={undefined}
-        id={undefined}
-        name={undefined}
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
-        required={undefined}
         type="radio"
       />
       <label
@@ -1206,7 +1181,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             @media screen and (-ms-high-contrast: active){&:after {
               border-color: Highlight;
             }
-        htmlFor={undefined}
       >
         <div
           className=
@@ -1273,7 +1247,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         >
           <span
             className="ms-ChoiceFieldLabel"
-            id={undefined}
           >
             Option H
           </span>
@@ -1286,12 +1259,15 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         ms-ChoiceField
         ms-ChoiceField--icon
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           align-items: center;
           background-color: #f4f4f4;
           border: none;
           box-sizing: border-box;
           color: #333333;
           display: inline-flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 0px;
           font-weight: 400;
           height: 100%;
@@ -1314,7 +1290,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
 
     >
       <input
-        checked={undefined}
         className=
             ms-ChoiceField-input
             {
@@ -1330,12 +1305,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               width: 100%;
             }
         disabled={true}
-        id={undefined}
-        name={undefined}
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
-        required={undefined}
         type="radio"
       />
       <label
@@ -1407,7 +1379,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             @media screen and (-ms-high-contrast: active){& {
               color: GrayText;
             }
-        htmlFor={undefined}
       >
         <div
           className=
@@ -1479,7 +1450,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         >
           <span
             className="ms-ChoiceFieldLabel"
-            id={undefined}
           >
             Option I
           </span>

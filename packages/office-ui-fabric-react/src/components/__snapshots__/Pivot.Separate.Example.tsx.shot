@@ -16,8 +16,6 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
   />
   <div>
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className="ms-FocusZone"
       data-focuszone-id="FocusZone1"
       onFocus={[Function]}
@@ -25,13 +23,16 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
       onMouseDownCapture={[Function]}
       role="presentation"
     >
-      <ul
+      <div
         className=
             ms-Pivot
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
               color: #0078d4;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               margin-bottom: 0px;
@@ -48,11 +49,6 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
         role="tablist"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           aria-selected={true}
           className=
               ms-Button
@@ -109,6 +105,11 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #333333;
                 cursor: pointer;
@@ -151,7 +152,7 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                 visibility: hidden;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #767676;
+                outline: 1px solid #666666;
               }
               @media screen and (-ms-high-contrast: active){&:before {
                 border-bottom-color: Highlight;
@@ -160,7 +161,6 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                 color: Highlight;
               }
           data-is-focusable={true}
-          disabled={undefined}
           id="ShapeColorPivot_rectangleRed"
           name="Rectangle red"
           onClick={[Function]}
@@ -203,11 +203,6 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
           </div>
         </button>
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           aria-selected={false}
           className=
               ms-Button
@@ -263,6 +258,11 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #333333;
                 cursor: pointer;
@@ -303,14 +303,13 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                 visibility: hidden;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #767676;
+                outline: 1px solid #666666;
               }
               &:hover::before {
                 border-bottom: 2px solid transparent;
                 box-sizing: border-box;
               }
           data-is-focusable={true}
-          disabled={undefined}
           id="ShapeColorPivot_squareRed"
           name="Square red"
           onClick={[Function]}
@@ -353,11 +352,6 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
           </div>
         </button>
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           aria-selected={false}
           className=
               ms-Button
@@ -413,6 +407,11 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #333333;
                 cursor: pointer;
@@ -453,14 +452,13 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                 visibility: hidden;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #767676;
+                outline: 1px solid #666666;
               }
               &:hover::before {
                 border-bottom: 2px solid transparent;
                 box-sizing: border-box;
               }
           data-is-focusable={true}
-          disabled={undefined}
           id="ShapeColorPivot_rectangleGreen"
           name="Rectangle green"
           onClick={[Function]}
@@ -502,7 +500,7 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
             </span>
           </div>
         </button>
-      </ul>
+      </div>
     </div>
   </div>
 </div>

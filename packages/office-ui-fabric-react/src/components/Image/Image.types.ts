@@ -43,7 +43,8 @@ export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   /**
    * Used to determine how the image is scaled and cropped to fit the frame.
    *
-   * @defaultvalue If both dimensions are provided, then the image is fit using ImageFit.scale. Otherwise, the image won't be scaled or cropped.
+   * @defaultvalue If both dimensions are provided, then the image is fit using ImageFit.scale.
+   * Otherwise, the image won't be scaled or cropped.
    */
   imageFit?: ImageFit;
 
@@ -99,7 +100,14 @@ export enum ImageFit {
    * Neither the image nor the frame are scaled. If their sizes do not match, the image will either be cropped or the
    * frame will have empty space.
    */
-  none = 3
+  none = 3,
+
+  /**
+   * The image will be centered horizontally and vertically within the frame and maintains its aspect ratio. It will
+   * behave as ImageFit.center if the image's natural height or width is less than the Image frame's height or width,
+   * but if both natural height and width are larger than the frame it will behave as ImageFit.cover.
+   */
+  centerCover = 4
 }
 
 /**
@@ -181,11 +189,12 @@ export interface IImageStyleProps {
   isLandscape?: boolean;
 
   /**
-   * ImageFit booleans for center, cover, contain, none
+   * ImageFit booleans for center, cover, contain, centerCover, none
    */
   isCenter?: boolean;
   isContain?: boolean;
   isCover?: boolean;
+  isCenterCover?: boolean;
   isNone?: boolean;
 
   /**

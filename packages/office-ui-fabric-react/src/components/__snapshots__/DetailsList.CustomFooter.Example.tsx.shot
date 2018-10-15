@@ -8,12 +8,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
   <div>
     <button
       aria-checked={false}
-      aria-describedby={undefined}
-      aria-disabled={undefined}
-      aria-label={undefined}
-      aria-labelledby={undefined}
-      aria-posinset={undefined}
-      aria-setsize={undefined}
       checked={false}
       className=
           ms-Checkbox
@@ -75,15 +69,11 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
           &:focus .ms-Checkbox-text {
             color: #333333;
           }
-      data-ktp-execute-target={undefined}
-      disabled={undefined}
       id="checkbox-0"
-      name={undefined}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
       role="checkbox"
-      title={undefined}
       type="button"
     >
       <label
@@ -126,7 +116,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                 transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                 width: 20px;
               }
-          data-ktp-target={undefined}
         >
           <i
             aria-hidden={true}
@@ -200,10 +189,15 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
         className=
             ms-Label
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
               color: #333333;
               display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -216,7 +210,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
               word-wrap: break-word;
             }
         htmlFor="TextField1"
-        required={undefined}
       >
         Filter by name:
       </label>
@@ -250,9 +243,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
             }
       >
         <input
-          aria-describedby={undefined}
           aria-invalid={false}
-          aria-label={undefined}
           className=
               ms-TextField-field
               {
@@ -296,7 +287,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
-          readOnly={undefined}
           type="text"
           value=""
         />

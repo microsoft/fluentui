@@ -4,6 +4,7 @@ import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { Signal, ISignalProps } from './Signal';
 import * as SignalsStyles from './Signals.scss';
 import * as SignalStyles from './Signal.scss';
+import { getRTL } from '../../Utilities';
 
 export * from './Signal';
 export * from './SignalField';
@@ -17,7 +18,7 @@ export const BlockedSignal: Signal = (props: ISignalProps): JSX.Element => {
 };
 
 export const MissingMetadataSignal: Signal = (props: ISignalProps): JSX.Element => {
-  return <IconSignal {...props} signalClass={SignalsStyles.missingMetadata} iconName="info" />;
+  return <IconSignal {...props} signalClass={SignalsStyles.missingMetadata} iconName={getRTL() ? 'TagUnknown12Mirror' : 'TagUnknown12'} />;
 };
 
 export const WarningSignal: Signal = (props: ISignalProps): JSX.Element => {
@@ -131,7 +132,5 @@ type IIconSignalProps = ISignalProps &
 function IconSignal(props: IIconSignalProps): JSX.Element {
   const { ariaLabel, className, signalClass, ...spanProps } = props;
 
-  return (
-    <Icon {...spanProps} ariaLabel={props.ariaLabel} className={css(SignalStyles.signal, signalClass, className)} />
-  );
+  return <Icon {...spanProps} ariaLabel={props.ariaLabel} className={css(SignalStyles.signal, signalClass, className)} />;
 }

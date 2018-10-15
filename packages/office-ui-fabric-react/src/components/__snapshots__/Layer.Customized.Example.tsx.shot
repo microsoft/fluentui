@@ -11,12 +11,6 @@ exports[`Component Examples renders Layer.Customized.Example.tsx correctly 1`] =
   </p>
   <button
     aria-checked={false}
-    aria-describedby={undefined}
-    aria-disabled={undefined}
-    aria-label={undefined}
-    aria-labelledby={undefined}
-    aria-posinset={undefined}
-    aria-setsize={undefined}
     checked={false}
     className=
         ms-Checkbox
@@ -78,15 +72,11 @@ exports[`Component Examples renders Layer.Customized.Example.tsx correctly 1`] =
         &:focus .ms-Checkbox-text {
           color: #333333;
         }
-    data-ktp-execute-target={undefined}
-    disabled={undefined}
     id="checkbox-0"
-    name={undefined}
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
     role="checkbox"
-    title={undefined}
     type="button"
   >
     <label
@@ -129,7 +119,6 @@ exports[`Component Examples renders Layer.Customized.Example.tsx correctly 1`] =
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 20px;
             }
-        data-ktp-target={undefined}
       >
         <i
           aria-hidden={true}
@@ -175,12 +164,6 @@ exports[`Component Examples renders Layer.Customized.Example.tsx correctly 1`] =
   </button>
   <button
     aria-checked={false}
-    aria-describedby={undefined}
-    aria-disabled={undefined}
-    aria-label={undefined}
-    aria-labelledby={undefined}
-    aria-posinset={undefined}
-    aria-setsize={undefined}
     checked={false}
     className=
         ms-Checkbox
@@ -242,15 +225,11 @@ exports[`Component Examples renders Layer.Customized.Example.tsx correctly 1`] =
         &:focus .ms-Checkbox-text {
           color: #333333;
         }
-    data-ktp-execute-target={undefined}
-    disabled={undefined}
     id="checkbox-1"
-    name={undefined}
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
     role="checkbox"
-    title={undefined}
     type="button"
   >
     <label
@@ -293,7 +272,6 @@ exports[`Component Examples renders Layer.Customized.Example.tsx correctly 1`] =
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 20px;
             }
-        data-ktp-target={undefined}
       >
         <i
           aria-hidden={true}

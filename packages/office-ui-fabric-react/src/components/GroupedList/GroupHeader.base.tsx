@@ -92,6 +92,8 @@ export class GroupHeaderBase extends BaseComponent<IGroupHeaderProps, IGroupHead
             <button
               type="button"
               className={this._classNames.check}
+              role="checkbox"
+              aria-checked={!!currentlySelected}
               data-selection-toggle={true}
               onClick={this._onToggleSelectGroupClick}
             >
@@ -106,12 +108,7 @@ export class GroupHeaderBase extends BaseComponent<IGroupHeaderProps, IGroupHead
           <div className={this._classNames.dropIcon}>
             <Icon iconName="Tag" />
           </div>
-          <button
-            type="button"
-            className={this._classNames.expand}
-            onClick={this._onToggleCollapse}
-            {...expandButtonProps}
-          >
+          <button type="button" className={this._classNames.expand} onClick={this._onToggleCollapse} {...expandButtonProps}>
             <Icon className={this._classNames.expandIsCollapsed} iconName="ChevronDown" />
           </button>
 

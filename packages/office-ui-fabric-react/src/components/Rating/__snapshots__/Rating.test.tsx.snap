@@ -7,6 +7,13 @@ exports[`Rating Renders Rating correctly 1`] = `
       ms-Rating-star
       ms-RatingStar-root
       ms-RatingStar-root--small
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+      }
       &:hover .ms-RatingStar-back {
         color: #000000;
       }
@@ -19,8 +26,6 @@ exports[`Rating Renders Rating correctly 1`] = `
   id="Rating0"
 >
   <div
-    aria-describedby={undefined}
-    aria-labelledby={undefined}
     className=
         ms-FocusZone
         ms-Rating-focuszone

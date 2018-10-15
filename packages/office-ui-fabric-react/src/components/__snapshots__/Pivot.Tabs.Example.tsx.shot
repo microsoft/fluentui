@@ -4,8 +4,6 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
 <div>
   <div>
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className="ms-FocusZone"
       data-focuszone-id="FocusZone1"
       onFocus={[Function]}
@@ -13,14 +11,17 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
       onMouseDownCapture={[Function]}
       role="presentation"
     >
-      <ul
+      <div
         className=
             ms-Pivot
             ms-Pivot--tabs
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
               color: #0078d4;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               margin-bottom: 0px;
@@ -37,11 +38,6 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
         role="tablist"
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           aria-selected={true}
           className=
               ms-Button
@@ -98,6 +94,11 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #333333;
                 cursor: pointer;
@@ -142,7 +143,7 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
                 visibility: hidden;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #767676;
+                outline: 1px solid #666666;
               }
               .ms-Fabric--isFocusVisible &:focus::before {
                 background: transparent;
@@ -162,7 +163,6 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
                 color: #ffffff;
               }
           data-is-focusable={true}
-          disabled={undefined}
           id="Pivot0-Tab0"
           name="Foo"
           onClick={[Function]}
@@ -205,11 +205,6 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
           </div>
         </button>
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           aria-selected={false}
           className=
               ms-Button
@@ -265,6 +260,11 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #333333;
                 cursor: pointer;
@@ -307,7 +307,7 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
                 visibility: hidden;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #767676;
+                outline: 1px solid #666666;
               }
               .ms-Fabric--isFocusVisible &:focus::before {
                 background: transparent;
@@ -322,7 +322,6 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
                 color: #000000;
               }
           data-is-focusable={true}
-          disabled={undefined}
           id="Pivot0-Tab1"
           name="Bar"
           onClick={[Function]}
@@ -365,11 +364,6 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
           </div>
         </button>
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           aria-selected={false}
           className=
               ms-Button
@@ -425,6 +419,11 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #333333;
                 cursor: pointer;
@@ -467,7 +466,7 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
                 visibility: hidden;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #767676;
+                outline: 1px solid #666666;
               }
               .ms-Fabric--isFocusVisible &:focus::before {
                 background: transparent;
@@ -482,7 +481,6 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
                 color: #000000;
               }
           data-is-focusable={true}
-          disabled={undefined}
           id="Pivot0-Tab2"
           name="Bas"
           onClick={[Function]}
@@ -525,11 +523,6 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
           </div>
         </button>
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
           aria-selected={false}
           className=
               ms-Button
@@ -585,6 +578,11 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
                 right: -2px;
                 top: -2px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               &:hover {
                 color: #333333;
                 cursor: pointer;
@@ -627,7 +625,7 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
                 visibility: hidden;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #767676;
+                outline: 1px solid #666666;
               }
               .ms-Fabric--isFocusVisible &:focus::before {
                 background: transparent;
@@ -642,7 +640,6 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
                 color: #000000;
               }
           data-is-focusable={true}
-          disabled={undefined}
           id="Pivot0-Tab3"
           name="Biz"
           onClick={[Function]}
@@ -684,7 +681,7 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
             </span>
           </div>
         </button>
-      </ul>
+      </div>
     </div>
     <div
       aria-labelledby="Pivot0-Tab0"
@@ -695,10 +692,15 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
           className=
               ms-Label
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
                 color: #333333;
                 display: block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;

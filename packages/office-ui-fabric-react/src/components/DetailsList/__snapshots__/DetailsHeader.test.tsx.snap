@@ -2,18 +2,20 @@
 
 exports[`DetailsHeader can render 1`] = `
 <div
-  aria-describedby={undefined}
-  aria-label={undefined}
-  aria-labelledby={undefined}
   className=
       ms-FocusZone
       ms-DetailsHeader
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
         background: #ffffff;
         border-bottom: 1px solid #eaeaea;
         box-sizing: content-box;
         cursor: default;
         display: inline-block;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 12px;
+        font-weight: 400;
         height: 32px;
         line-height: 32px;
         min-width: 100%;
@@ -44,22 +46,16 @@ exports[`DetailsHeader can render 1`] = `
 >
   <div
     aria-colindex={1}
-    aria-hidden={undefined}
     aria-labelledby="header0-check"
     className=
         ms-DetailsHeader-cell
         ms-DetailsHeader-cellIsCheck
         {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
           align-items: center;
           border: none;
           box-sizing: border-box;
           color: #333333;
           display: inline-flex;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 12px;
-          font-weight: 400;
           height: 32px;
           line-height: inherit;
           margin-bottom: 0px;
@@ -100,9 +96,6 @@ exports[`DetailsHeader can render 1`] = `
 
     >
       <div
-        aria-checked={undefined}
-        aria-describedby="header0-checkTooltip"
-        aria-label={undefined}
         className=
             ms-DetailsRow-check
             ms-DetailsRow-check--isHeader
@@ -113,6 +106,8 @@ exports[`DetailsHeader can render 1`] = `
               opacity: 1;
             }
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               align-items: center;
               background-color: transparent;
               background: none;
@@ -120,6 +115,9 @@ exports[`DetailsHeader can render 1`] = `
               box-sizing: border-box;
               cursor: default;
               display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
               height: 32px;
               justify-content: center;
               margin-bottom: 0px;
@@ -164,6 +162,11 @@ exports[`DetailsHeader can render 1`] = `
           className=
               ms-Check
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 height: 18px;
                 line-height: 1;
                 position: relative;
@@ -335,9 +338,7 @@ exports[`DetailsHeader can render 1`] = `
           }
     >
       <span
-        aria-describedby={undefined}
         aria-haspopup={false}
-        aria-label={undefined}
         aria-labelledby="header0-a-name "
         className=
             ms-DetailsHeader-cellTitle
@@ -373,7 +374,6 @@ exports[`DetailsHeader can render 1`] = `
         id="header0-a"
         onClick={[Function]}
         onContextMenu={[Function]}
-        role={undefined}
       >
         <span
           className=
@@ -528,9 +528,7 @@ exports[`DetailsHeader can render 1`] = `
           }
     >
       <span
-        aria-describedby={undefined}
         aria-haspopup={false}
-        aria-label={undefined}
         aria-labelledby="header0-b-name "
         className=
             ms-DetailsHeader-cellTitle
@@ -566,7 +564,6 @@ exports[`DetailsHeader can render 1`] = `
         id="header0-b"
         onClick={[Function]}
         onContextMenu={[Function]}
-        role={undefined}
       >
         <span
           className=
@@ -743,9 +740,7 @@ exports[`DetailsHeader can render 1`] = `
           }
     >
       <span
-        aria-describedby={undefined}
         aria-haspopup={true}
-        aria-label={undefined}
         aria-labelledby="header0-c-name "
         className=
             ms-DetailsHeader-cellTitle
@@ -781,7 +776,6 @@ exports[`DetailsHeader can render 1`] = `
         id="header0-c"
         onClick={[Function]}
         onContextMenu={[Function]}
-        role={undefined}
       >
         <span
           className=
@@ -880,18 +874,20 @@ exports[`DetailsHeader can render 1`] = `
 
 exports[`DetailsHeader renders accessible labels 1`] = `
 <div
-  aria-describedby={undefined}
-  aria-label={undefined}
-  aria-labelledby={undefined}
   className=
       ms-FocusZone
       ms-DetailsHeader
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
         background: #ffffff;
         border-bottom: 1px solid #eaeaea;
         box-sizing: content-box;
         cursor: default;
         display: inline-block;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 12px;
+        font-weight: 400;
         height: 32px;
         line-height: 32px;
         min-width: 100%;
@@ -922,22 +918,16 @@ exports[`DetailsHeader renders accessible labels 1`] = `
 >
   <div
     aria-colindex={1}
-    aria-hidden={undefined}
     aria-labelledby="header4-check"
     className=
         ms-DetailsHeader-cell
         ms-DetailsHeader-cellIsCheck
         {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
           align-items: center;
           border: none;
           box-sizing: border-box;
           color: #333333;
           display: inline-flex;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 12px;
-          font-weight: 400;
           height: 32px;
           line-height: inherit;
           margin-bottom: 0px;
@@ -978,9 +968,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
 
     >
       <div
-        aria-checked={undefined}
-        aria-describedby="header4-checkTooltip"
-        aria-label={undefined}
         className=
             ms-DetailsRow-check
             ms-DetailsRow-check--isHeader
@@ -991,6 +978,8 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               opacity: 1;
             }
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               align-items: center;
               background-color: transparent;
               background: none;
@@ -998,6 +987,9 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               box-sizing: border-box;
               cursor: default;
               display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
               height: 32px;
               justify-content: center;
               margin-bottom: 0px;
@@ -1042,6 +1034,11 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           className=
               ms-Check
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 height: 18px;
                 line-height: 1;
                 position: relative;
@@ -1213,9 +1210,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           }
     >
       <span
-        aria-describedby={undefined}
         aria-haspopup={false}
-        aria-label={undefined}
         aria-labelledby="header4-a-name "
         className=
             ms-DetailsHeader-cellTitle
@@ -1251,7 +1246,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         id="header4-a"
         onClick={[Function]}
         onContextMenu={[Function]}
-        role={undefined}
       >
         <span
           className=
@@ -1408,7 +1402,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
       <span
         aria-describedby="header4-b-tooltip"
         aria-haspopup={false}
-        aria-label={undefined}
         aria-labelledby="header4-b-name "
         className=
             ms-DetailsHeader-cellTitle
@@ -1444,7 +1437,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         id="header4-b"
         onClick={[Function]}
         onContextMenu={[Function]}
-        role={undefined}
       >
         <span
           className=
@@ -1647,7 +1639,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
       <span
         aria-describedby="header4-c-tooltip"
         aria-haspopup={true}
-        aria-label={undefined}
         aria-labelledby="header4-c-name "
         className=
             ms-DetailsHeader-cellTitle
@@ -1683,7 +1674,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         id="header4-c"
         onClick={[Function]}
         onContextMenu={[Function]}
-        role={undefined}
       >
         <span
           className=

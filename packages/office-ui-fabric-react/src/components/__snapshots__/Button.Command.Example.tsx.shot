@@ -12,15 +12,9 @@ exports[`Component Examples renders Button.Command.Example.tsx correctly 1`] = `
     }
   >
     <button
-      aria-describedby={undefined}
-      aria-disabled={undefined}
       aria-expanded={false}
       aria-haspopup={true}
-      aria-label={undefined}
-      aria-labelledby={undefined}
       aria-owns={null}
-      aria-pressed={undefined}
-      checked={undefined}
       className=
           ms-Button
           ms-Button--action
@@ -72,6 +66,11 @@ exports[`Component Examples renders Button.Command.Example.tsx correctly 1`] = `
             right: -2px;
             top: -2px;
           }
+          &:active > * {
+            left: 0px;
+            position: relative;
+            top: 0px;
+          }
           &:hover {
             color: #0078d4;
           }
@@ -90,7 +89,6 @@ exports[`Component Examples renders Button.Command.Example.tsx correctly 1`] = `
           }
       data-automation-id="test"
       data-is-focusable={true}
-      disabled={undefined}
       onClick={[Function]}
       onKeyDown={[Function]}
       onKeyPress={[Function]}
@@ -193,12 +191,6 @@ exports[`Component Examples renders Button.Command.Example.tsx correctly 1`] = `
       </div>
     </button>
     <button
-      aria-describedby={undefined}
-      aria-disabled={undefined}
-      aria-label={undefined}
-      aria-labelledby={undefined}
-      aria-pressed={undefined}
-      checked={undefined}
       className=
           ms-Button
           ms-Button--action
@@ -250,6 +242,11 @@ exports[`Component Examples renders Button.Command.Example.tsx correctly 1`] = `
             right: -2px;
             top: -2px;
           }
+          &:active > * {
+            left: 0px;
+            position: relative;
+            top: 0px;
+          }
           &:hover {
             color: #0078d4;
           }
@@ -268,7 +265,6 @@ exports[`Component Examples renders Button.Command.Example.tsx correctly 1`] = `
           }
       data-automation-id="test2"
       data-is-focusable={true}
-      disabled={undefined}
       onClick={[Function]}
       onKeyDown={[Function]}
       onKeyPress={[Function]}

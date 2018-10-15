@@ -14,10 +14,15 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           ms-Label
           ms-Dropdown-label
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
             color: #333333;
             display: inline-block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -31,18 +36,15 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           }
       htmlFor="Basicdrop1"
       id="Basicdrop1-label"
-      required={undefined}
     >
       Basic uncontrolled example:
     </label>
     <div
       aria-activedescendant="Basicdrop1-option"
       aria-describedby="Basicdrop1-option"
-      aria-disabled={undefined}
       aria-expanded="false"
       aria-label="Basic dropdown example"
       aria-labelledby="Basicdrop1-label"
-      aria-owns={undefined}
       className=
           ms-Dropdown
           {
@@ -142,8 +144,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
         aria-atomic={true}
         aria-label="Select an Option"
         aria-live="off"
-        aria-posinset={undefined}
-        aria-selected={undefined}
         aria-setsize={10}
         className=
             ms-Dropdown-title
@@ -216,11 +216,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
     </div>
   </div>
   <button
-    aria-describedby={undefined}
-    aria-disabled={undefined}
-    aria-label={undefined}
-    aria-labelledby={undefined}
-    aria-pressed={undefined}
     className=
         ms-Button
         ms-Button--primary
@@ -272,6 +267,11 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           right: -2px;
           top: -2px;
         }
+        &:active > * {
+          left: 0px;
+          position: relative;
+          top: 0px;
+        }
         @media screen and (-ms-high-contrast: active){& {
           -ms-high-contrast-adjust: none;
           background-color: WindowText;
@@ -295,7 +295,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           color: Window;
         }
     data-is-focusable={true}
-    disabled={undefined}
     onClick={[Function]}
     onKeyDown={[Function]}
     onKeyPress={[Function]}
@@ -350,10 +349,15 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           ms-Label
           ms-Dropdown-label
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
             color: #333333;
             display: inline-block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -367,7 +371,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           }
       htmlFor="Dropdown3"
       id="Dropdown3-label"
-      required={undefined}
     >
       Disabled uncontrolled example with defaultSelectedKey:
     </label>
@@ -376,9 +379,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       aria-describedby="Dropdown3-option"
       aria-disabled={true}
       aria-expanded="false"
-      aria-label={undefined}
       aria-labelledby="Dropdown3-label"
-      aria-owns={undefined}
       className=
           ms-Dropdown
           is-disabled
@@ -557,10 +558,15 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           ms-Label
           ms-Dropdown-label
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
             color: #333333;
             display: inline-block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -574,18 +580,14 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           }
       htmlFor="Dropdown4"
       id="Dropdown4-label"
-      required={undefined}
     >
       Controlled example:
     </label>
     <div
       aria-activedescendant="Dropdown4-option"
       aria-describedby="Dropdown4-option"
-      aria-disabled={undefined}
       aria-expanded="false"
-      aria-label={undefined}
       aria-labelledby="Dropdown4-label"
-      aria-owns={undefined}
       className=
           ms-Dropdown
           {
@@ -686,8 +688,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
         aria-atomic={true}
         aria-label="Select an Option"
         aria-live="off"
-        aria-posinset={undefined}
-        aria-selected={undefined}
         aria-setsize={7}
         className=
             ms-Dropdown-title
@@ -769,10 +769,15 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           ms-Label
           ms-Dropdown-label
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
             color: #333333;
             display: inline-block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -786,18 +791,13 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           }
       htmlFor="Dropdown5"
       id="Dropdown5-label"
-      required={undefined}
     >
       Multi-Select uncontrolled example:
     </label>
     <div
-      aria-activedescendant={undefined}
       aria-describedby="Dropdown5-option"
-      aria-disabled={undefined}
       aria-expanded="false"
-      aria-label={undefined}
       aria-labelledby="Dropdown5-label"
-      aria-owns={undefined}
       className=
           ms-Dropdown
           {
@@ -890,16 +890,12 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
-      role={undefined}
       tabIndex={0}
     >
       <span
         aria-atomic={true}
         aria-label="apple"
         aria-live="off"
-        aria-posinset={undefined}
-        aria-selected={undefined}
-        aria-setsize={undefined}
         className=
             ms-Dropdown-title
             {
@@ -927,7 +923,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
               white-space: nowrap;
             }
         id="Dropdown5-option"
-        role={undefined}
       >
         <span>
           apple, banana, orange
@@ -978,10 +973,15 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           ms-Label
           ms-Dropdown-label
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
             color: #333333;
             display: inline-block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -995,18 +995,13 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           }
       htmlFor="Dropdown6"
       id="Dropdown6-label"
-      required={undefined}
     >
       Multi-Select controlled example:
     </label>
     <div
-      aria-activedescendant={undefined}
       aria-describedby="Dropdown6-option"
-      aria-disabled={undefined}
       aria-expanded="false"
-      aria-label={undefined}
       aria-labelledby="Dropdown6-label"
-      aria-owns={undefined}
       className=
           ms-Dropdown
           {
@@ -1100,16 +1095,12 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
-      role={undefined}
       tabIndex={0}
     >
       <span
         aria-atomic={true}
         aria-label="Select options"
         aria-live="off"
-        aria-posinset={undefined}
-        aria-selected={undefined}
-        aria-setsize={undefined}
         className=
             ms-Dropdown-title
             ms-Dropdown-titleIsPlaceHolder
@@ -1139,7 +1130,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
               white-space: nowrap;
             }
         id="Dropdown6-option"
-        role={undefined}
       >
         <span>
           Select options
@@ -1190,10 +1180,15 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           ms-Label
           ms-Dropdown-label
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
             color: #333333;
             display: inline-block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -1207,18 +1202,14 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
           }
       htmlFor="Dropdown7"
       id="Dropdown7-label"
-      required={undefined}
     >
       Disabled uncontrolled example with defaultSelectedKey:
     </label>
     <div
-      aria-activedescendant={undefined}
       aria-describedby="Dropdown7-option"
       aria-disabled={true}
       aria-expanded="false"
-      aria-label={undefined}
       aria-labelledby="Dropdown7-label"
-      aria-owns={undefined}
       className=
           ms-Dropdown
           is-disabled
@@ -1300,16 +1291,12 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
-      role={undefined}
       tabIndex={-1}
     >
       <span
         aria-atomic={true}
         aria-label="Option g"
         aria-live="off"
-        aria-posinset={undefined}
-        aria-selected={undefined}
-        aria-setsize={undefined}
         className=
             ms-Dropdown-title
             {
@@ -1343,7 +1330,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
               color: GrayText;
             }
         id="Dropdown7-option"
-        role={undefined}
       >
         <span>
           Option g, Option f

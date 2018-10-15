@@ -1,79 +1,157 @@
 import * as React from 'react';
 import { assign } from './utilities';
 
+export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
+
+// Technically since scheme is not directly used by Foundation it could be part of an injected
+//   IStyleComponentProps type. If this gets in the way of agnosticism it should be lifted out.
 /**
- * Props contract for themed components.
+ * Optional props for styleable components. If these props are present, they will automatically be
+ * used by Foundation when applying theming and styling.
  */
-export interface IThemedComponent<TTheme> {
+export interface IStyleableComponentProps<TViewProps, TStyleSet, TTheme, TScheme> {
+  styles?: IStylesProp<TViewProps, TStyleSet, TTheme>;
+  theme?: TTheme;
+  /**
+   * Optional scheme to apply to contextual theme. Specifying this prop
+   * will modify context and affect all children.
+   */
+  scheme?: TScheme;
+}
+
+/**
+ * Props added by Foundation for styles functions.
+ */
+export interface IStyledProps<TTheme> {
   theme: TTheme;
 }
+
+// TODO: Known TypeScript issue is widening return type checks when using function type declarations.
+//        Effect is that mistyped property keys on returned style objects will not generate errors.
+//        Existing issue: https://github.com/Microsoft/TypeScript/issues/241
+/**
+ * Styles functions that take in view props and foundation supplied properties for processing.
+ */
+export type IStylesFunction<TViewProps, TStyleSet, TTheme> = (props: TViewProps & IStyledProps<TTheme>) => Partial<TStyleSet>;
 
 /**
  * Styles can be a function or an object taking in TViewProps for processing.
  */
-export type IStyleFunction<TViewProps, TStyleSet> = (props: TViewProps) => Partial<TStyleSet>;
-
-export type IStylesProp<TViewProps, TStyleSet> = IStyleFunction<TViewProps, TStyleSet> | Partial<TStyleSet>;
-
-/**
- * Foundation interface for styleable components.
- */
-export interface IStyleableComponentProps<TProps, TStyleSet, TTheme> {
-  styles?: IStylesProp<TProps, TStyleSet>;
-  theme?: TTheme;
-}
-
-export type IStyleableComponentCombinedProps<TProps extends {}, TStyleSet, TTheme> = TProps &
-  IStyleableComponentProps<TProps, TStyleSet, TTheme>;
+export type IStylesProp<TViewProps, TStyleSet, TTheme> = IStylesFunction<TViewProps, TStyleSet, TTheme> | Partial<TStyleSet>;
 
 /**
  * Enforce props contract on state components, including the view prop and its shape.
  */
 export type IStateComponentProps<TComponentProps, TViewProps> = TComponentProps & {
-  // TOOD: when this function is called by state components, TypeScript does not error
-  //        on any prop names that are not part of TViewProps (contravariance, bivariance, etc.)
-  renderView: (props: TViewProps) => JSX.Element;
+  renderView: React.StatelessComponent<TViewProps>;
 };
 
 /**
  * Imposed state component props contract with styling props as well as a renderView
  * prop that the StateComponent should make use of in its render output (and should be its only render output.)
  */
-export type IStateComponent<
-  TComponentProps,
-  TViewProps extends IViewComponent<TViewProps, TProcessedStyleSet>,
-  TProcessedStyleSet
-> = React.ComponentType<IStateComponentProps<TComponentProps, TViewProps>>;
+export type IStateComponentType<TComponentProps, TViewProps, TProcessedStyleSet> = React.ComponentType<
+  IStateComponentProps<TComponentProps, TViewProps>
+>;
 
 /**
- * The extended view interface provided to views, including the component's children
- * and processed style.
+ * The props that get passed to view components.
  */
-export type IViewComponent<TViewProps, TProcessedStyleSet> = React.Props<TViewProps> & {
+export type IViewComponentProps<TViewProps, TProcessedStyleSet> = TViewProps & {
   classNames: TProcessedStyleSet;
 };
-export type IViewComponentProps<TViewProps, TProcessedStyledSet> = TViewProps & IViewComponent<TViewProps, TProcessedStyledSet>;
 
 /**
- * Component options used by foundation to tie elements together.
- * @param {IComponentOptions} displayName Display name to identify component in React hierarchy.
- * @param {IStylesProp<TViewProps, TStyleSet>} styles Styles prop to pass into component.
- * @param {IStateComponent} view Functional React view component.
- * @param {TStatics} statics Optional static object to pass into constructed component.
+ * A helper type for defining view components, including its properties.
  */
-export interface IComponentOptions<TViewProps, TStyleSet, TProcessedStyledSet, TTheme, TStatics> {
+export type IViewComponent<TViewProps, TProcessedStyleSet> = React.StatelessComponent<IViewComponentProps<TViewProps, TProcessedStyleSet>>;
+
+/**
+ * Component used by foundation to tie elements together.
+ * @see createComponent for generic type documentation.
+ */
+export interface IComponentOptions<TComponentProps, TViewProps, TStyleSet, TProcessedStyleSet, TTheme, TStatics> {
+  /**
+   * Display name to identify component in React hierarchy.
+   */
   displayName: string;
-  styles: IStylesProp<TViewProps, TStyleSet>;
-  view: (props: IViewComponentProps<TViewProps, TProcessedStyledSet>) => JSX.Element;
+  /**
+   * List of fields which can be customized.
+   */
+  fields?: string[];
+  /**
+   * Styles prop to pass into component.
+   */
+  styles: IStylesProp<TViewProps, TStyleSet, TTheme>;
+  /**
+   * React view stateless component.
+   */
+  view: IViewComponent<TViewProps, TProcessedStyleSet>;
+  /**
+   * Optional state component that processes TComponentProps into TViewProps.
+   */
+  state?: IStateComponentType<TComponentProps, TViewProps, TProcessedStyleSet>;
+  /**
+   * Optional static object to assign to constructed component.
+   */
   statics?: TStatics;
 }
 
 /**
+ * Variant of IComponentOptions for stateful components with appropriate typing and required properties.
+ */
+export type IComponent<TComponentProps, TViewProps, TStyleSet, TProcessedStyleSet, TTheme, TStatics> = IComponentOptions<
+  TComponentProps,
+  TViewProps,
+  TStyleSet,
+  TProcessedStyleSet,
+  TTheme,
+  TStatics
+> &
+  Required<Pick<IComponentOptions<TComponentProps, TComponentProps, TStyleSet, TProcessedStyleSet, TTheme, TStatics>, 'state'>>;
+
+/**
+ * Variant of IComponentOptions for stateless components with appropriate typing and required properties.
+ */
+export type IStatelessComponent<TComponentProps, TStyleSet, TProcessedStyleSet, TTheme, TStatics> = Omit<
+  IComponentOptions<TComponentProps, TComponentProps, TStyleSet, TProcessedStyleSet, TTheme, TStatics>,
+  'state'
+>;
+
+/**
  * Providers used by createComponent to process and apply styling.
  */
-export interface IStylingProviders<TViewProps, TStyleSet, TProcessedStyleSet, TContext, TTheme> {
+export interface IStylingProviders<TViewProps, TStyleSet, TProcessedStyleSet, TContext, TTheme, TScheme> {
+  /**
+   * A required provider that merges multiple TStyleSets to create a TProcessedStyleSet that will be passed onto views components.
+   */
   mergeStyleSets: (...styles: (Partial<TStyleSet> | undefined)[]) => TProcessedStyleSet;
-  getCustomizations: (scope: string, context: TContext) => IStyleableComponentCombinedProps<TViewProps, TStyleSet, TTheme>;
+  /**
+   * A required provider for accessing global customizations as a fallback for contextual customizations.
+   * @param {string} scope Name of scope for targeted customizations.
+   * @param {TContext} context Current context including any contextual customizations.
+   * @param {string[]} fields Optional list of props that can be customized.
+   */
+  getCustomizations: (
+    scope: string,
+    context: TContext,
+    fields?: string[]
+  ) => IStyleableComponentProps<TViewProps, TStyleSet, TTheme, TScheme>;
+  /**
+   * A provider that allows consumer to change context based on component's view props. If returned value is defined,
+   * foundation assumes context has changed and will automatically instantiate a CustomizerContext.Provider to provide new context.
+   * @param {IStyleableComponentProps} props Combined component and processed props.
+   * @param {TContext} context Current context including any contextual customizations.
+   * @param {IStyleableComponentProps} settings Customizations obtained from getCustomizations provider.
+   */
+  getContextFromProps: (
+    props: IStyleableComponentProps<TViewProps, TStyleSet, TTheme, TScheme>,
+    context: TContext,
+    settings: IStyleableComponentProps<TViewProps, TStyleSet, TTheme, TScheme>
+  ) => TContext | undefined;
+  /**
+   * React context provider based on TContext.
+   */
   CustomizerContext: React.Context<TContext>;
 }
 
@@ -96,154 +174,119 @@ export interface IStylingProviders<TViewProps, TStyleSet, TProcessedStyleSet, TC
  * TStyleSet: The type for styles properties.
  * TProcessedStyleSet: The type provided by mergeStyleSets provider after processing TStyleSet and provided to views.
  * TTheme: The type for theme properties as well as the getTheme provider.
+ * TScheme: The type for identifying schemes.
+ * TStatics: Static type for statics applied to created component object.
  *
- * @param {IComponentOptions} options
+ * @param {IComponent} component
  * @param {IStylingProviders} providers
- * @param {IStateComponent} StateComponent
- *
- * If your package has common types for any of the type arguments, such as TTheme and TProcessedStyleSet, it is strongly
- * recommended to make an interface file for your package that reduces the number of types individual components need
- * to provide. For example:
- * @example
- * export type IViewProps<TProps, TStyleSet extends IStyleSet<TStyleSet>> = IViewProps<TProps, IProcessedStyleSet<TStyleSet>>;
- * export type IStyleableComponent<TProps, TStyleSet> = IStyleableComponent<TProps, TStyleSet, ITheme>;
- *
  */
-// TODO: Combine these functions into one once conditional types (TS 2.8) can be used. This will allow us to define
-//        TComponentProps as being the same as TViewProps when StateComponent is not provided.
-// TODO: use theming prop when provided and reconcile with global theme
-// TODO: should userProps have higher priority over processedProps? or vice versa? tradeoff between styles priority and controlled values
-//        if user props take priority, this could cause some subtle issues like overriding callbacks that state component uses.
-// TODO: remove requirement of IStyleableComponent
-export function createComponent<
-  TComponentProps extends IStyleableComponentProps<TViewProps, TStyleSet, TTheme>,
-  TViewProps,
-  TStyleSet,
-  TProcessedStyleSet,
-  TContext,
-  TTheme,
-  TStatics
->(
-  options: IComponentOptions<TViewProps, TStyleSet, TProcessedStyleSet, TTheme, TStatics>,
-  providers: IStylingProviders<TViewProps, TStyleSet, TProcessedStyleSet, TContext, TTheme>,
-  StateComponent: IStateComponent<TComponentProps, TViewProps & IViewComponent<TViewProps, TProcessedStyleSet>, TProcessedStyleSet>
+export function createComponent<TComponentProps, TViewProps, TStyleSet, TProcessedStyleSet, TContext, TTheme, TScheme, TStatics>(
+  component: IComponent<TComponentProps, TViewProps, TStyleSet, TProcessedStyleSet, TTheme, TStatics>,
+  providers: IStylingProviders<TViewProps, TStyleSet, TProcessedStyleSet, TContext, TTheme, TScheme>
 ): React.StatelessComponent<TComponentProps> & TStatics {
   const { CustomizerContext } = providers;
-  const result: React.StatelessComponent<TComponentProps> = (userProps: TComponentProps) => {
-    // Theming and styling values are provided by state component and createComponent
-    type TProcessedProps = TViewProps & IStyleableComponentProps<TViewProps, TStyleSet, TTheme>;
-
+  const result: React.StatelessComponent<TComponentProps> = (componentProps: TComponentProps) => {
     return (
       <CustomizerContext.Consumer>
         {(context: TContext) => {
-          const settings = providers.getCustomizations(options.displayName, context);
-          const { styles: contextStyles, ...rest } = settings as IStyleableComponentProps<TViewProps, TStyleSet, TTheme>;
+          let settings: IStyleableComponentProps<TViewProps, TStyleSet, TTheme, TScheme> = providers.getCustomizations(
+            component.displayName,
+            context,
+            component.fields
+          );
 
-          const content = (processedProps: TProcessedProps) => {
+          const renderView = (viewProps?: TViewProps) => {
             // The approach here is to allow state components to provide only the props they care about, automatically
-            //    merging user props and processed props together. This ensures all props are passed properly to view,
+            //    merging user props and state props together. This ensures all props are passed properly to view,
             //    including children and styles.
-            // TODO: Should 'rest' props from customizations pass onto view? They are not currently.
-            //          (items like theme seem like they shouldn't)
-            const propStyles = processedProps.styles || userProps.styles;
-            const styleProps: TProcessedProps = { ...rest, ...(processedProps as any), ...(userProps as any) };
-            const viewProps: IViewComponentProps<TProcessedProps, TProcessedStyleSet> = {
-              ...(processedProps as any),
-              ...(userProps as any),
+            // What we really need to be able to do here either type force TViewProps to be TComponentProps when StateComponent
+            //    is undefined OR logically something like code below. Until we figure out how to do this, cast mergedProps as
+            //    IStyleableComponentProps since componentProps does not necessarily extend TViewProps. Until then we're sacrificing
+            //    a bit of type safety to prevent the need of duplicating this function.
+            // if (StateComponent) {
+            //   type TViewProps = TViewProps;
+            // } else {
+            //   type TViewProps = TComponentProps;
+            // }
+            // TODO: for full 'fields' support, 'rest' props from customizations need to pass onto view.
+            //        however, customized props like theme will break snapshots. how is styled not showing theme output in snapshots?
+            const mergedProps: IStyleableComponentProps<TViewProps, TStyleSet, TTheme, TScheme> = viewProps
+              ? {
+                  ...(componentProps as any),
+                  ...(viewProps as any)
+                }
+              : componentProps;
+
+            const newContext = providers.getContextFromProps(mergedProps, context, settings);
+
+            if (newContext) {
+              // If we have a new context we need to refresh our settings (to reflect new contextual theme, for example)
+              settings = providers.getCustomizations(component.displayName, newContext);
+            }
+
+            const { styles: settingsStyles, ...settingsRest } = settings;
+            // TODO: this next line is basically saying 'theme' prop will ALWAYS be available from getCustomizations.
+            //        is there mechanism that guarantees theme and other request fields will be defined?
+            //        is there a static init that guarantees theme will be provided?
+            //        what happens if createTheme/loadTheme is not called?
+            //        if so, convey through getCustomizations typing keying off fields. can we convey this
+            //          all the way from Customizations with something like { { K in fields }: object}? hmm
+            //        if not, how does existing "theme!" styles code work without risk of failing (assuming it doesn't fail)?
+            // For now cast return value as if theme is always available.
+            const styledProps: TViewProps & IStyledProps<TTheme> = { ...settingsRest, ...(mergedProps as any) };
+            const viewComponentProps: IViewComponentProps<TViewProps, TProcessedStyleSet> = {
+              ...(mergedProps as any),
               ...{
                 classNames: providers.mergeStyleSets(
-                  _evaluateStyle(styleProps, options.styles),
-                  _evaluateStyle(styleProps, contextStyles),
-                  _evaluateStyle(styleProps, propStyles)
+                  _evaluateStyle(styledProps, component.styles),
+                  _evaluateStyle(styledProps, settingsStyles),
+                  _evaluateStyle(styledProps, mergedProps.styles)
                 )
               }
             };
 
-            // TODO: consider rendering view as JSX component with display name in debug mode to aid in debugging
-            return options.view(viewProps);
+            // If a new context has been generated, instantiate a Provider to provide it.
+            return newContext ? (
+              <CustomizerContext.Provider value={newContext}>{component.view(viewComponentProps)}</CustomizerContext.Provider>
+            ) : (
+              component.view(viewComponentProps)
+            );
           };
-          return <StateComponent {...userProps} renderView={content} />;
+          return component.state ? <component.state {...componentProps} renderView={renderView} /> : renderView();
         }}
       </CustomizerContext.Consumer>
     );
   };
 
-  result.displayName = options.displayName;
+  result.displayName = component.displayName;
 
-  assign(result, options.statics);
+  assign(result, component.statics);
 
   // Later versions of TypeSript should allow us to merge objects in a type safe way and avoid this cast.
   return result as React.StatelessComponent<TComponentProps> & TStatics;
 }
 
 /**
- * This is essentially the same as createComponent. The primary differences are that TComponentProps and TViewProps
- * are equivalent and there is no state component argument.
+ * A wrapper function around createComponent to confine generics and component properties for stateless components.
  *
  * @see {@link createComponent} for more information.
  */
-export function createStatelessComponent<
-  TComponentProps extends IStyleableComponentProps<TComponentProps, TStyleSet, TTheme>,
-  TStyleSet,
-  TProcessedStyleSet,
-  TContext,
-  TTheme,
-  TStatics
->(
-  options: IComponentOptions<TComponentProps, TStyleSet, TProcessedStyleSet, TTheme, TStatics>,
-  providers: IStylingProviders<TComponentProps, TStyleSet, TProcessedStyleSet, TContext, TTheme>
+export function createStatelessComponent<TComponentProps, TStyleSet, TProcessedStyleSet, TContext, TTheme, TScheme, TStatics>(
+  component: IStatelessComponent<TComponentProps, TStyleSet, TProcessedStyleSet, TTheme, TStatics>,
+  providers: IStylingProviders<TComponentProps, TStyleSet, TProcessedStyleSet, TContext, TTheme, TScheme>
 ): React.StatelessComponent<TComponentProps> & TStatics {
-  const result: React.StatelessComponent<TComponentProps> = (userProps: TComponentProps) => {
-    // Theming and styling values are provided by state component and createComponent
-    const { CustomizerContext } = providers;
-    type TProcessedProps = TComponentProps & IStyleableComponentProps<TComponentProps, TStyleSet, TTheme>;
-
-    return (
-      <CustomizerContext.Consumer>
-        {(context: TContext) => {
-          const settings = providers.getCustomizations(options.displayName, context);
-          const { styles: contextStyles, ...rest } = settings as IStyleableComponentProps<TComponentProps, TStyleSet, TTheme>;
-
-          const content = (processedProps: TProcessedProps) => {
-            // TODO: Should 'rest' props from customizations pass onto view? They are not currently.
-            //          (items like theme seem like they shouldn't)
-            const { styles: propStyles } = processedProps;
-            const styleProps: TProcessedProps = { ...rest, ...(processedProps as any) };
-            const viewProps: IViewComponentProps<TProcessedProps, TProcessedStyleSet> = {
-              ...(processedProps as any),
-              ...{
-                classNames: providers.mergeStyleSets(
-                  _evaluateStyle(styleProps, options.styles),
-                  _evaluateStyle(styleProps, contextStyles),
-                  _evaluateStyle(styleProps, propStyles)
-                )
-              }
-            };
-
-            // TODO: consider rendering view as JSX component with display name in debug mode to aid in debugging
-            return options.view(viewProps);
-          };
-
-          return content(userProps);
-        }}
-      </CustomizerContext.Consumer>
-    );
-  };
-
-  result.displayName = options.displayName;
-
-  assign(result, options.statics);
-
-  // Later versions of TypeSript should allow us to merge objects in a type safe way and avoid this cast.
-  return result as React.StatelessComponent<TComponentProps> & TStatics;
+  return createComponent(
+    component as IComponent<TComponentProps, TComponentProps, TStyleSet, TProcessedStyleSet, TTheme, TStatics>,
+    providers
+  );
 }
 
 /**
  * Evaluate styles based on type to return consistent TStyleSet.
  */
-function _evaluateStyle<TViewProps, TStyleSet>(
-  props: TViewProps,
-  styles?: IStylesProp<TViewProps, TStyleSet>
+function _evaluateStyle<TViewProps, TStyledProps extends IStyledProps<TTheme>, TStyleSet, TTheme>(
+  props: TViewProps & TStyledProps,
+  styles?: IStylesProp<TViewProps, TStyleSet, TTheme>
 ): Partial<TStyleSet> | undefined {
   if (typeof styles === 'function') {
     return styles(props);

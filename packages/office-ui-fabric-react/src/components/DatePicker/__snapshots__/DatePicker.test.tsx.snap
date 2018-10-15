@@ -5,8 +5,13 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
   className=
       ms-DatePicker
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
         box-shadow: none;
         box-sizing: border-box;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
         margin-bottom: 0px;
         margin-left: 0px;
         margin-right: 0px;
@@ -17,7 +22,12 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
         padding-top: 0px;
       }
 >
-  <div>
+  <div
+    aria-expanded={false}
+    aria-haspopup="true"
+    aria-owns="DatePicker-Callout0"
+    role="combobox"
+  >
     <div
       className=
           ms-TextField
@@ -73,11 +83,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
               }
         >
           <input
-            aria-describedby={undefined}
-            aria-expanded={false}
-            aria-haspopup="true"
             aria-invalid={false}
-            aria-label={undefined}
             className=
                 ms-TextField-field
                 {
@@ -116,18 +122,15 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
                   color: #666666;
                   opacity: 1;
                 }
-            disabled={undefined}
-            id="TextField0"
+            id="TextField1"
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
             onInput={[Function]}
             onKeyDown={[Function]}
-            placeholder={undefined}
             readOnly={true}
             required={false}
-            role="button"
             type="text"
             value=""
           />

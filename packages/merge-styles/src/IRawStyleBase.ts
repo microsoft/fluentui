@@ -65,6 +65,25 @@ export type IFontWeight =
   | '900'
   | 900;
 
+export type IMixBlendModes =
+  | ICSSRule
+  | 'normal'
+  | 'multiply'
+  | 'screen'
+  | 'overlay'
+  | 'darken'
+  | 'lighten'
+  | 'color-dodge'
+  | 'color-burn'
+  | 'hard-light'
+  | 'soft-light'
+  | 'difference'
+  | 'exclusion'
+  | 'hue'
+  | 'saturation'
+  | 'color'
+  | 'luminosity';
+
 /**
  * The base font style.
  */
@@ -184,7 +203,7 @@ export interface IFontFace extends IRawFontStyle {
 
   /**
    * unicode-range allows you to set a specific range of characters to be downloaded
-   * from a font (embedded using @font-face) and made available for use on the current
+   * from a font (embedded using \@font-face) and made available for use on the current
    * page.
    */
   unicodeRange?: ICSSRule | string;
@@ -315,6 +334,18 @@ export interface IRawStyleBase extends IRawFontStyle {
    * vice versa.
    */
   appearance?: ICSSRule | string;
+
+  /**
+   * Lets you apply graphical effects such as blurring or color shifting to the area
+   * behind an element. Because it applies to everything behind the element, to see
+   * the effect you must make the element or its background at least partially transparent.
+   */
+  backdropFilter?: ICSSRule | string;
+
+  /**
+   * Edge requires the -webkit prefix backdrop-filter.
+   */
+  WebkitBackdropFilter?: ICSSRule | string;
 
   /**
    * Determines whether or not the “back” side of a transformed element is visible when
@@ -875,6 +906,22 @@ export interface IRawStyleBase extends IRawFontStyle {
   gridArea?: ICSSRule | string;
 
   /**
+   * Specifies the size of an implicitly-created grid column track
+   */
+  gridAutoColumns?: ICSSRule | string;
+
+  /**
+   * Controls how the auto-placement algorithm works,
+   * specifying exactly how auto-placed items get flowed into the grid.
+   */
+  gridAutoFlow?: ICSSRule | string;
+
+  /**
+   * Specifies the size of an implicitly-created grid column track
+   */
+  gridAutoRows?: ICSSRule | string;
+
+  /**
    * Controls a grid item's placement in a grid area, particularly grid position and a
    * grid span. Shorthand for setting grid-column-start and grid-column-end in a single
    * declaration.
@@ -890,12 +937,23 @@ export interface IRawStyleBase extends IRawFontStyle {
   gridColumnEnd?: ICSSRule | string;
 
   /**
+   * Sets the size of the gap (gutter) between an element's columns
+   */
+  gridColumnGap?: ICSSRule | string;
+
+  /**
    * Determines a grid item's placement by specifying the starting grid lines of a grid
    * item's grid area . A grid item's placement in a grid area consists of a grid
    * position and a grid span. See also ( grid-row-start, grid-row-end, and
    * grid-column-end)
    */
   gridColumnStart?: ICSSRule | string;
+
+  /**
+   * Specifies the gaps (gutters) between grid rows and columns. It is a shorthand
+   * for grid-row-gap and grid-column-gap.
+   */
+  gridGap?: ICSSRule | string;
 
   /**
    * Gets or sets a value that indicates which row an element within a Grid should
@@ -914,6 +972,18 @@ export interface IRawStyleBase extends IRawFontStyle {
   gridRowEnd?: ICSSRule | string;
 
   /**
+   * Sets the size of the gap (gutter) between an element's grid rows
+   */
+  gridRowGap?: ICSSRule | string;
+
+  /**
+   * Specifies a grid item’s start position within the grid row by contributing a line,
+   * a span, or nothing (automatic) to its grid placement, thereby specifying the
+   * inline-start edge of its grid area
+   */
+  gridRowStart?: ICSSRule | string;
+
+  /**
    * Specifies a row position based upon an integer location, string value, or desired
    * row size.
    * css/properties/grid-row is used as short-hand for grid-row-position and
@@ -926,6 +996,11 @@ export interface IRawStyleBase extends IRawFontStyle {
    * but can be referenced from the grid-placement properties. The syntax of the
    * grid-template-areas property also provides a visualization of the structure of the
    * grid, making the overall layout of the grid container easier to understand.
+   */
+  gridTemplate?: ICSSRule | string;
+
+  /**
+   * Specifies named grid areas
    */
   gridTemplateAreas?: ICSSRule | string;
 
@@ -1180,6 +1255,12 @@ export interface IRawStyleBase extends IRawFontStyle {
   minWidth?: ICSSRule | ICSSPixelUnitRule;
 
   /**
+   * The mix-blend-mode CSS property describes how an element's content should blend
+   * with the content of the element's direct parent and the element's background.
+   */
+  mixBlendMode?: ICSSRule | IMixBlendModes;
+
+  /**
    * Specifies the transparency of an element.
    * See CSS 3 opacity property https://drafts.csswg.org/css-color-3/#opacity
    */
@@ -1269,12 +1350,22 @@ export interface IRawStyleBase extends IRawFontStyle {
   padding?: ICSSRule | ICSSPixelUnitRule;
 
   /**
-   * The padding-bottom CSS property of an element sets the padding space required on
-   * the bottom of an element. The padding area is the space between the content of the
-   * element and its border. Contrary to margin-bottom values, negative values of
-   * padding-bottom are invalid.
+   * The padding-block-end CSS property defines the logical block end padding
+   * of an element, which maps to a physical padding depending on the element's
+   * writing mode, directionality, and text orientation. It corresponds to the
+   * padding-top, padding-right, padding-bottom, or padding-left property
+   * depending on the values defined for writing-mode, direction, and text-orientation.
    */
-  paddingBottom?: ICSSRule | ICSSPixelUnitRule;
+  paddingBlockEnd?: ICSSRule | ICSSPixelUnitRule;
+
+  /**
+   * The padding-block-start CSS property defines the logical block start padding
+   * of an element, which maps to a physical padding depending on the element's
+   * writing mode, directionality, and text orientation. It corresponds to the
+   * padding-top, padding-right, padding-bottom, or padding-left property depending
+   * on the values defined for writing-mode, direction, and text-orientation.
+   */
+  paddingBlockStart?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * The padding-left CSS property of an element sets the padding space required on the
@@ -1283,6 +1374,32 @@ export interface IRawStyleBase extends IRawFontStyle {
    * padding-left are invalid.
    */
   paddingLeft?: ICSSRule | ICSSPixelUnitRule;
+
+  /**
+   * The padding-bottom CSS property of an element sets the padding space required on
+   * the bottom of an element. The padding area is the space between the content of the
+   * element and its border. Contrary to margin-bottom values, negative values of
+   * padding-bottom are invalid.
+   */
+  paddingBottom?: ICSSRule | ICSSPixelUnitRule;
+
+  /**
+   * The padding-inline-end CSS property defines the logical inline end padding of an element,
+   * which maps to a physical padding depending on the element's writing mode, directionality,
+   * and text orientation. It corresponds to the padding-top, padding-right, padding-bottom,
+   * or padding-left property depending on the values defined for writing-mode, direction,
+   * and text-orientation.
+   */
+  paddingInlineEnd?: ICSSRule | ICSSPixelUnitRule;
+
+  /**
+   * The padding-inline-start CSS property defines the logical inline start padding of
+   * an element, which maps to a physical padding depending on the element's writing mode,
+   * directionality, and text orientation. It corresponds to the padding-top, padding-right,
+   * padding-bottom, or padding-left property depending on the values defined for writing-mode,
+   * direction, and text-orientation.
+   */
+  paddingInlineStart?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * The padding-right CSS property of an element sets the padding space required on the

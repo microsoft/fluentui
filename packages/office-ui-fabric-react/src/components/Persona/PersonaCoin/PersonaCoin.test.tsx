@@ -1,12 +1,13 @@
 /* tslint:disable-next-line:no-unused-variable */
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 import { setRTL } from '../../../Utilities';
 import { PersonaCoin } from './PersonaCoin';
+import { PersonaCoinBase } from './PersonaCoin.base';
 import { wrapPersona } from 'office-ui-fabric-react/lib/components/Persona/Persona.test';
 
-const testImage1x1 =
-  'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
+const testImage1x1 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
 
 const coinProp = {
   text: 'Swapnil Vaibhav',
@@ -46,17 +47,13 @@ describe('PersonaCoin', () => {
   });
 
   it('renders the initials before the image is loaded', () => {
-    const component = renderer.create(
-      <PersonaCoin text="Kat Larrson" imageUrl={testImage1x1} showInitialsUntilImageLoads={true} />
-    );
+    const component = renderer.create(<PersonaCoin text="Kat Larrson" imageUrl={testImage1x1} showInitialsUntilImageLoads={true} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('does not render the initials when showInitialsUntilImageLoads is false', () => {
-    const component = renderer.create(
-      <PersonaCoin text="Kat Larrson" imageUrl={testImage1x1} showInitialsUntilImageLoads={false} />
-    );
+    const component = renderer.create(<PersonaCoin text="Kat Larrson" imageUrl={testImage1x1} showInitialsUntilImageLoads={false} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -67,5 +64,13 @@ describe('PersonaCoin', () => {
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('sets isImageLoaded to false if imageUrl changes from valid to undefined', () => {
+    const component = shallow(<PersonaCoinBase imageUrl={testImage1x1} />);
+    component.setState({ isImageLoaded: true });
+    component.setProps({ imageUrl: undefined });
+    const isImageLoaded = component.state('isImageLoaded');
+    expect(isImageLoaded).toBe(false);
   });
 });

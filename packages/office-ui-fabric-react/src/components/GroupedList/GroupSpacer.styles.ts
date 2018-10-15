@@ -12,6 +12,6 @@ export const getStyles = (props: IGroupSpacerStyleProps): IGroupSpacerStyles => 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {
-    root: [classNames.root, { display: 'inline-block' }]
+    root: [classNames.root, theme.fonts.medium, { display: 'inline-block' }]
   };
 };

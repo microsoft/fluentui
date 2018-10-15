@@ -45,6 +45,7 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
   return {
     root: [
       'ms-Breadcrumb',
+      theme.fonts.medium,
       {
         margin: '23px 0 1px'
       },

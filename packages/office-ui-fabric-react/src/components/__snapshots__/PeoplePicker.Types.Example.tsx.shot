@@ -7,8 +7,6 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
     onKeyDown={[Function]}
   >
     <div
-      aria-describedby={undefined}
-      aria-labelledby={undefined}
       className="ms-FocusZone"
       data-focuszone-id="FocusZone1"
       onFocus={[Function]}
@@ -36,19 +34,16 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
             id="selected-items-id__0"
           />
           <input
-            aria-activedescendant={undefined}
             aria-autocomplete="both"
             aria-controls=" "
             aria-describedby="selected-items-id__0"
             aria-expanded={false}
             aria-haspopup="true"
             aria-label="People Picker"
-            aria-owns={undefined}
             autoCapitalize="off"
             autoComplete="off"
             className="ms-BasePicker-input"
             data-lpignore={true}
-            disabled={undefined}
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}
@@ -77,10 +72,15 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
             ms-Label
             ms-Dropdown-label
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
               color: #333333;
               display: inline-block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -94,18 +94,14 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
             }
         htmlFor="Dropdown2"
         id="Dropdown2-label"
-        required={undefined}
       >
         Select People Picker Type
       </label>
       <div
         aria-activedescendant="Dropdown2-option"
         aria-describedby="Dropdown2-option"
-        aria-disabled={undefined}
         aria-expanded="false"
-        aria-label={undefined}
         aria-labelledby="Dropdown2-label"
-        aria-owns={undefined}
         className=
             ms-Dropdown
             {
@@ -295,10 +291,15 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
             ms-Label
             ms-Toggle-label
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
               color: #333333;
               display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -324,8 +325,6 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
       >
         <button
           aria-checked={false}
-          aria-disabled={undefined}
-          aria-label={undefined}
           className=
               ms-Toggle-background
               {
@@ -373,7 +372,6 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
                 border-color: Highlight;
               }
           data-is-focusable={true}
-          disabled={undefined}
           id="Toggle3"
           onChange={[Function]}
           onClick={[Function]}
@@ -400,11 +398,6 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
     </div>
   </div>
   <button
-    aria-describedby={undefined}
-    aria-disabled={undefined}
-    aria-label={undefined}
-    aria-labelledby={undefined}
-    aria-pressed={undefined}
     className=
         ms-Button
         ms-Button--primary
@@ -456,6 +449,11 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
           right: -2px;
           top: -2px;
         }
+        &:active > * {
+          left: 0px;
+          position: relative;
+          top: 0px;
+        }
         @media screen and (-ms-high-contrast: active){& {
           -ms-high-contrast-adjust: none;
           background-color: WindowText;
@@ -479,7 +477,6 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
           color: Window;
         }
     data-is-focusable={true}
-    disabled={undefined}
     onClick={[Function]}
     onKeyDown={[Function]}
     onKeyPress={[Function]}

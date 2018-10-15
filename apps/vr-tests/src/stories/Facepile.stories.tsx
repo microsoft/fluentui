@@ -50,34 +50,67 @@ storiesOf('Facepile', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
-      steps={ new Screener.Steps()
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .end()
       }
     >
-      { story() }
+      {story()}
     </Screener>
   ))
-  .add('Root', () => (
+  .addStory('Root', () => (
     <Facepile {...facepileProps} />
+  ), { rtl: true })
+  .addStory('Extra extra small', () => (
+    <Facepile {...facepileProps} personaSize={PersonaSize.size24} />
   ))
-  .add('Extra extra small', () => (
-    <Facepile {...facepileProps} personaSize={ PersonaSize.size24 } />
-  ))
-  .add('Overflow', () => (
+  .addStory('Overflow', () => (
     <Facepile
       {...facepileProps}
-      maxDisplayablePersonas={ 3 }
-      overflowButtonType={ OverflowButtonType.downArrow }
-      overflowButtonProps={ {
+      maxDisplayablePersonas={3}
+      overflowButtonType={OverflowButtonType.downArrow}
+      overflowButtonProps={{
         ariaLabel: 'More users',
       }
       }
     />
   ))
-  .add('Add face', () => (
+  .addStory('Add face', () => (
     <Facepile
       {...facepileProps}
-      showAddButton={ true }
+      showAddButton={true}
     />
-  ));
+  ))
+  .addStory('Custom button styles', () => (
+    <Facepile
+      {...facepileProps}
+      showAddButton
+      overflowButtonType={OverflowButtonType.descriptive}
+      maxDisplayablePersonas={3}
+      overflowButtonProps={{
+        styles: {
+          root: {
+            background: 'yellow'
+          }
+        }
+      }}
+      addButtonProps={{
+        styles: {
+          root: {
+            boxShadow: '0px 0px 5px 5px gray'
+          }
+        }
+      }}
+      styles={{
+        descriptiveOverflowButton: {
+          background: 'red', // overridden by overflowButtonProps
+          boxShadow: '0px 0px 5px 5px gray', // not overridden
+          marginLeft: 8 // not overridden
+        },
+        addButton: {
+          boxShadow: '0px 0px 5px 5px red', // overridden by addButtonProps
+          marginRight: 8 // not overridden
+        }
+      }}
+    />
+  ))

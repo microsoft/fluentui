@@ -12,15 +12,9 @@ exports[`Component Examples renders Button.CommandBar.Example.tsx correctly 1`] 
     }
   >
     <button
-      aria-describedby={undefined}
-      aria-disabled={undefined}
       aria-expanded={false}
       aria-haspopup={true}
-      aria-label={undefined}
-      aria-labelledby={undefined}
       aria-owns={null}
-      aria-pressed={undefined}
-      checked={undefined}
       className=
           ms-Button
           ms-Button--commandBar
@@ -71,6 +65,11 @@ exports[`Component Examples renders Button.CommandBar.Example.tsx correctly 1`] 
             right: 4px;
             top: 4px;
           }
+          &:active > * {
+            left: 0px;
+            position: relative;
+            top: 0px;
+          }
           @media screen and (-ms-high-contrast: active){& {
             border: none;
           }
@@ -87,7 +86,6 @@ exports[`Component Examples renders Button.CommandBar.Example.tsx correctly 1`] 
           }
       data-automation-id="test"
       data-is-focusable={true}
-      disabled={undefined}
       onClick={[Function]}
       onKeyDown={[Function]}
       onKeyPress={[Function]}
@@ -191,14 +189,8 @@ exports[`Component Examples renders Button.CommandBar.Example.tsx correctly 1`] 
       </div>
     </button>
     <div
-      aria-describedby={undefined}
-      aria-disabled={undefined}
       aria-expanded={false}
       aria-haspopup={true}
-      aria-label={undefined}
-      aria-labelledby={undefined}
-      aria-pressed={undefined}
-      aria-roledescription={undefined}
       className=
 
           {
@@ -235,7 +227,6 @@ exports[`Component Examples renders Button.CommandBar.Example.tsx correctly 1`] 
           }
       data-automation-id="test"
       data-is-focusable={true}
-      data-ktp-target={undefined}
       onClick={[Function]}
       onFocusCapture={[Function]}
       onKeyDown={[Function]}
@@ -251,12 +242,6 @@ exports[`Component Examples renders Button.CommandBar.Example.tsx correctly 1`] 
         }
       >
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
-          checked={undefined}
           className=
               ms-Button
               ms-Button--commandBar
@@ -307,6 +292,11 @@ exports[`Component Examples renders Button.CommandBar.Example.tsx correctly 1`] 
                 right: 4px;
                 top: 4px;
               }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
               @media screen and (-ms-high-contrast: active){& {
                 border: none;
               }
@@ -323,8 +313,6 @@ exports[`Component Examples renders Button.CommandBar.Example.tsx correctly 1`] 
               }
           data-automation-id="test"
           data-is-focusable={false}
-          disabled={undefined}
-          onClick={undefined}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
@@ -399,14 +387,8 @@ exports[`Component Examples renders Button.CommandBar.Example.tsx correctly 1`] 
           </div>
         </button>
         <button
-          aria-describedby={undefined}
-          aria-disabled={undefined}
           aria-expanded={false}
           aria-haspopup={true}
-          aria-label={undefined}
-          aria-labelledby={undefined}
-          aria-pressed={undefined}
-          checked={undefined}
           className=
               ms-Button
               {
@@ -438,8 +420,6 @@ exports[`Component Examples renders Button.CommandBar.Example.tsx correctly 1`] 
                 color: Highlight;
               }
           data-is-focusable={false}
-          data-ktp-execute-target={undefined}
-          disabled={undefined}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -509,12 +489,6 @@ exports[`Component Examples renders Button.CommandBar.Example.tsx correctly 1`] 
       </span>
     </div>
     <button
-      aria-describedby={undefined}
-      aria-disabled={undefined}
-      aria-label={undefined}
-      aria-labelledby={undefined}
-      aria-pressed={undefined}
-      checked={undefined}
       className=
           ms-Button
           ms-Button--commandBar
@@ -565,6 +539,11 @@ exports[`Component Examples renders Button.CommandBar.Example.tsx correctly 1`] 
             right: 4px;
             top: 4px;
           }
+          &:active > * {
+            left: 0px;
+            position: relative;
+            top: 0px;
+          }
           @media screen and (-ms-high-contrast: active){& {
             border: none;
           }
@@ -581,7 +560,6 @@ exports[`Component Examples renders Button.CommandBar.Example.tsx correctly 1`] 
           }
       data-automation-id="test2"
       data-is-focusable={true}
-      disabled={undefined}
       onClick={[Function]}
       onKeyDown={[Function]}
       onKeyPress={[Function]}

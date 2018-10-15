@@ -9,17 +9,17 @@ storiesOf('ColorPicker', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
-      steps={ new Screener.Steps()
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .end()
       }
     >
-      { story() }
+      {story()}
     </Screener>
   ))
-  .add('Root', () => (
+  .addStory('Root', () => (
     <ColorPicker color='#FFF' />
-  ))
-  .add('Blue', () => (
+  ), { rtl: true })
+  .addStory('Blue', () => (
     <ColorPicker color='#48B' />
   ));

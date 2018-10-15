@@ -50,6 +50,24 @@ export interface IColorPickerGridCellProps {
   selected: boolean;
 
   /**
+   * Height of the cell, in pixels
+   * @default 20
+   */
+  height?: number;
+
+  /**
+   * Width of the cell, in pixels
+   * @default 20
+   */
+  width?: number;
+
+  /**
+   * Width of the border that indicates a selected/hovered cell, in pixels
+   * @default 2
+   */
+  borderWidth?: number;
+
+  /**
    * The on click handler
    */
   onClick?: (item: IColorCellProps) => void;
@@ -149,6 +167,21 @@ export interface IColorPickerGridCellStyleProps {
    * Whether the color being rendered is white or not. If it is white we show a border around it.
    */
   isWhite?: boolean;
+
+  /**
+   * The height of this cell, in pixels.
+   */
+  height?: number;
+
+  /**
+   * The width of this cell, in pixels.
+   */
+  width?: number;
+
+  /**
+   * The width of the border indicating a hovered or selected cell, in pixels.
+   */
+  borderWidth?: number;
 }
 
 /**

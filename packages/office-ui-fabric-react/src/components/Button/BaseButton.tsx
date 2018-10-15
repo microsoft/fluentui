@@ -10,17 +10,15 @@ import {
   KeyCodes,
   createRef,
   css,
-  mergeAriaAttributeValues
+  mergeAriaAttributeValues,
+  portalContainsElement
 } from '../../Utilities';
 import { Icon } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.types';
 import { IButtonClassNames, getBaseButtonClassNames } from './BaseButton.classNames';
-import {
-  getClassNames as getBaseSplitButtonClassNames,
-  ISplitButtonClassNames
-} from './SplitButton/SplitButton.classNames';
+import { getClassNames as getBaseSplitButtonClassNames, ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
 import { KeytipData } from '../../KeytipData';
 
 export interface IBaseButtonProps extends IButtonProps {
@@ -123,6 +121,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
           !!allowDisabledFocus
         )
       : getBaseButtonClassNames(
+          theme!,
           styles!,
           className!,
           variantClassName!,
@@ -177,9 +176,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
 
     const dataIsFocusable =
-      (this.props as any)['data-is-focusable'] === false || (disabled && !allowDisabledFocus) || this._isSplitButton
-        ? false
-        : true;
+      (this.props as any)['data-is-focusable'] === false || (disabled && !allowDisabledFocus) || this._isSplitButton ? false : true;
 
     const buttonProps = assign(nativeProps, {
       className: this._classNames.root,
@@ -220,11 +217,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     // For split buttons, touching anywhere in the button should drop the dropdown, which should contain the primary action.
     // This gives more hit target space for touch environments. We're setting the onpointerdown here, because React
     // does not support Pointer events yet.
-    if (
-      this._isSplitButton &&
-      this._splitButtonContainer.value &&
-      'onpointerdown' in this._splitButtonContainer.value
-    ) {
+    if (this._isSplitButton && this._splitButtonContainer.value && 'onpointerdown' in this._splitButtonContainer.value) {
       this._events.on(this._splitButtonContainer.value, 'pointerdown', this._onPointerDown, true);
     }
   }
@@ -309,10 +302,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     return Content;
   }
 
-  private _onRenderIcon = (
-    buttonProps?: IButtonProps,
-    defaultRender?: IRenderFunction<IButtonProps>
-  ): JSX.Element | null => {
+  private _onRenderIcon = (buttonProps?: IButtonProps, defaultRender?: IRenderFunction<IButtonProps>): JSX.Element | null => {
     const { iconProps } = this.props;
 
     if (iconProps) {
@@ -464,25 +454,14 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       shouldFocusOnMount = false;
     }
     if (this.props.persistMenu) {
-      currentMenuProps && currentMenuProps.hidden
-        ? this._openMenu(shouldFocusOnContainer, shouldFocusOnMount)
-        : this._dismissMenu();
+      currentMenuProps && currentMenuProps.hidden ? this._openMenu(shouldFocusOnContainer, shouldFocusOnMount) : this._dismissMenu();
     } else {
       currentMenuProps ? this._dismissMenu() : this._openMenu(shouldFocusOnContainer, shouldFocusOnMount);
     }
   };
 
   private _onRenderSplitButtonContent(tag: any, buttonProps: IButtonProps): JSX.Element {
-    const {
-      styles = {},
-      disabled,
-      allowDisabledFocus,
-      checked,
-      getSplitButtonClassNames,
-      primaryDisabled,
-      menuProps,
-      toggle
-    } = this.props;
+    const { styles = {}, disabled, allowDisabledFocus, checked, getSplitButtonClassNames, primaryDisabled, menuProps, toggle } = this.props;
     let { keytipProps } = this.props;
 
     const classNames = getSplitButtonClassNames
@@ -538,9 +517,16 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   private _onSplitContainerFocusCapture = (ev: React.FocusEvent<HTMLDivElement>) => {
+    const container = this._splitButtonContainer.current;
+
+    // If the target is coming from the portal we do not need to set focus on the container.
+    if (!container || (ev.target && portalContainsElement(ev.target, container))) {
+      return;
+    }
+
     // We should never be able to focus the individual buttons in a split button. Focus
     // should always remain on the container.
-    this._splitButtonContainer.current && this._splitButtonContainer.current.focus();
+    container.focus();
   };
 
   private _onSplitButtonPrimaryClick = (ev: React.MouseEvent<HTMLDivElement>) => {
@@ -562,10 +548,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     return null;
   }
 
-  private _onRenderSplitButtonMenuButton(
-    classNames: ISplitButtonClassNames | undefined,
-    keytipAttributes: any
-  ): JSX.Element {
+  private _onRenderSplitButtonMenuButton(classNames: ISplitButtonClassNames | undefined, keytipAttributes: any): JSX.Element {
     const { allowDisabledFocus, checked, disabled } = this.props;
     let menuIconProps = this.props.menuIconProps;
 
@@ -684,11 +667,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   };
 
   private _onTouchStart: () => void = () => {
-    if (
-      this._isSplitButton &&
-      this._splitButtonContainer.value &&
-      !('onpointerdown' in this._splitButtonContainer.value)
-    ) {
+    if (this._isSplitButton && this._splitButtonContainer.value && !('onpointerdown' in this._splitButtonContainer.value)) {
       this._handleTouchAndPointerEvent();
     }
   };
@@ -722,9 +701,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
    * @param ev - the keyboard event
    * @returns True if user clicks on custom trigger key if enabled or alt + down arrow if not. False otherwise.
    */
-  private _isValidMenuOpenKey(
-    ev: React.KeyboardEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>
-  ): boolean {
+  private _isValidMenuOpenKey(ev: React.KeyboardEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>): boolean {
     if (this.props.menuTriggerKeyCode) {
       return ev.which === this.props.menuTriggerKeyCode;
     } else if (this.props.menuProps) {

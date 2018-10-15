@@ -34,7 +34,8 @@ export interface IDialogProps extends React.Props<DialogBase>, IWithResponsiveMo
   dialogContentProps?: IDialogContentProps;
 
   /**
-   * A callback function for when the Dialog is dismissed from the close button or light dismiss. Can also be specified separately in content and modal.
+   * A callback function for when the Dialog is dismissed from the close button or light dismiss.
+   * Can also be specified separately in content and modal.
    */
   onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
 

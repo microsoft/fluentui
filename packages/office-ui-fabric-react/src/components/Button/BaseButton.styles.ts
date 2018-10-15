@@ -51,7 +51,16 @@ export const getStyles = memoizeFunction(
           cursor: 'pointer',
           verticalAlign: 'top',
           padding: '0 16px',
-          borderRadius: 0
+          borderRadius: 0,
+
+          selectors: {
+            // IE11 workaround for preventing shift of child elements of a button when active.
+            ':active > *': {
+              position: 'relative',
+              left: 0,
+              top: 0
+            }
+          }
         }
       ],
 

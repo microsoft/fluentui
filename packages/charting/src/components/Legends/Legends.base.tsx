@@ -86,6 +86,11 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         overflowItems={data.overflow}
         onRenderItem={this._renderButton}
         onRenderOverflowButton={this._renderOverflowItems}
+        styles={{
+          root: {
+            justifyContent: this.props.centerLegends ? 'center' : 'unset'
+          }
+        }}
       />
     );
   };

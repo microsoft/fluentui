@@ -5,8 +5,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
   className="ms-NavExample-LeftPane"
 >
   <div
-    aria-describedby={undefined}
-    aria-labelledby={undefined}
     className="ms-FocusZone"
     data-focuszone-id="FocusZone0"
     onFocus={[Function]}
@@ -15,11 +13,15 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
     role="presentation"
   >
     <nav
-      aria-label={undefined}
       className=
           ms-Nav
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             -webkit-overflow-scrolling: touch;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
             overflow-y: auto;
             user-select: none;
           }
@@ -80,7 +82,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
               >
                 <button
                   aria-expanded="true"
-                  aria-label={undefined}
+                  aria-label="Expand or collapse"
                   className=
                       ms-Nav-chevronButton
                       {
@@ -168,10 +170,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                 </button>
                 <a
                   aria-describedby="id__3"
-                  aria-disabled={undefined}
-                  aria-label={undefined}
-                  aria-labelledby={undefined}
-                  aria-pressed={undefined}
                   className=
                       ms-Button
                       ms-Button--action
@@ -229,6 +227,11 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                         right: -2px;
                         top: -2px;
                       }
+                      &:active > * {
+                        left: 0px;
+                        position: relative;
+                        top: 0px;
+                      }
                       &:hover {
                         color: #0078d4;
                       }
@@ -250,7 +253,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                         color: #333333;
                       }
                   data-is-focusable={true}
-                  disabled={undefined}
                   href="http://example.com"
                   onClick={[Function]}
                   onKeyDown={[Function]}
@@ -258,8 +260,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                   onKeyUp={[Function]}
                   onMouseDown={[Function]}
                   onMouseUp={[Function]}
-                  rel={undefined}
-                  target={undefined}
                   title="Home"
                 >
                   <div
@@ -372,10 +372,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                   >
                     <a
                       aria-describedby="id__6"
-                      aria-disabled={undefined}
-                      aria-label={undefined}
-                      aria-labelledby={undefined}
-                      aria-pressed={undefined}
                       className=
                           ms-Button
                           ms-Button--action
@@ -433,6 +429,11 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                             right: -2px;
                             top: -2px;
                           }
+                          &:active > * {
+                            left: 0px;
+                            position: relative;
+                            top: 0px;
+                          }
                           &:hover {
                             color: #0078d4;
                           }
@@ -454,7 +455,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                             color: #333333;
                           }
                       data-is-focusable={true}
-                      disabled={undefined}
                       href="http://msn.com"
                       onClick={[Function]}
                       onKeyDown={[Function]}
@@ -462,8 +462,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       onKeyUp={[Function]}
                       onMouseDown={[Function]}
                       onMouseUp={[Function]}
-                      rel={undefined}
-                      target={undefined}
                       title="Activity"
                     >
                       <div
@@ -565,10 +563,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                   >
                     <a
                       aria-describedby="id__9"
-                      aria-disabled={undefined}
-                      aria-label={undefined}
-                      aria-labelledby={undefined}
-                      aria-pressed={undefined}
                       className=
                           ms-Button
                           ms-Button--action
@@ -626,6 +620,11 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                             right: -2px;
                             top: -2px;
                           }
+                          &:active > * {
+                            left: 0px;
+                            position: relative;
+                            top: 0px;
+                          }
                           &:hover {
                             color: #0078d4;
                           }
@@ -647,7 +646,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                             color: #333333;
                           }
                       data-is-focusable={true}
-                      disabled={undefined}
                       href="http://msn.com"
                       onClick={[Function]}
                       onKeyDown={[Function]}
@@ -655,8 +653,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       onKeyUp={[Function]}
                       onMouseDown={[Function]}
                       onMouseUp={[Function]}
-                      rel={undefined}
-                      target={undefined}
                       title="MSN"
                     >
                       <div
@@ -762,10 +758,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
               >
                 <a
                   aria-describedby="id__12"
-                  aria-disabled={undefined}
-                  aria-label={undefined}
-                  aria-labelledby={undefined}
-                  aria-pressed={undefined}
                   className=
                       ms-Button
                       ms-Button--action
@@ -823,6 +815,11 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                         right: -2px;
                         top: -2px;
                       }
+                      &:active > * {
+                        left: 0px;
+                        position: relative;
+                        top: 0px;
+                      }
                       &:hover {
                         color: #0078d4;
                       }
@@ -853,7 +850,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                         top: 0px;
                       }
                   data-is-focusable={true}
-                  disabled={undefined}
                   href="http://example.com"
                   onClick={[Function]}
                   onKeyDown={[Function]}
@@ -861,8 +857,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                   onKeyUp={[Function]}
                   onMouseDown={[Function]}
                   onMouseUp={[Function]}
-                  rel={undefined}
-                  target={undefined}
                   title="Documents"
                 >
                   <div
@@ -964,10 +958,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
               >
                 <a
                   aria-describedby="id__15"
-                  aria-disabled={undefined}
-                  aria-label={undefined}
-                  aria-labelledby={undefined}
-                  aria-pressed={undefined}
                   className=
                       ms-Button
                       ms-Button--action
@@ -1025,6 +1015,11 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                         right: -2px;
                         top: -2px;
                       }
+                      &:active > * {
+                        left: 0px;
+                        position: relative;
+                        top: 0px;
+                      }
                       &:hover {
                         color: #0078d4;
                       }
@@ -1046,7 +1041,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                         color: #333333;
                       }
                   data-is-focusable={true}
-                  disabled={undefined}
                   href="http://msn.com"
                   onClick={[Function]}
                   onKeyDown={[Function]}
@@ -1054,8 +1048,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                   onKeyUp={[Function]}
                   onMouseDown={[Function]}
                   onMouseUp={[Function]}
-                  rel={undefined}
-                  target={undefined}
                   title="Pages"
                 >
                   <div
@@ -1157,10 +1149,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
               >
                 <a
                   aria-describedby="id__18"
-                  aria-disabled={undefined}
-                  aria-label={undefined}
-                  aria-labelledby={undefined}
-                  aria-pressed={undefined}
                   className=
                       ms-Button
                       ms-Button--action
@@ -1218,6 +1206,11 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                         right: -2px;
                         top: -2px;
                       }
+                      &:active > * {
+                        left: 0px;
+                        position: relative;
+                        top: 0px;
+                      }
                       &:hover {
                         color: #0078d4;
                       }
@@ -1239,7 +1232,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                         color: #333333;
                       }
                   data-is-focusable={true}
-                  disabled={undefined}
                   href="http://msn.com"
                   onClick={[Function]}
                   onKeyDown={[Function]}
@@ -1247,8 +1239,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                   onKeyUp={[Function]}
                   onMouseDown={[Function]}
                   onMouseUp={[Function]}
-                  rel={undefined}
-                  target={undefined}
                   title="Notebook"
                 >
                   <div
@@ -1350,10 +1340,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
               >
                 <a
                   aria-describedby="id__21"
-                  aria-disabled={undefined}
-                  aria-label={undefined}
-                  aria-labelledby={undefined}
-                  aria-pressed={undefined}
                   className=
                       ms-Button
                       ms-Button--action
@@ -1411,6 +1397,11 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                         right: -2px;
                         top: -2px;
                       }
+                      &:active > * {
+                        left: 0px;
+                        position: relative;
+                        top: 0px;
+                      }
                       &:hover {
                         color: #0078d4;
                       }
@@ -1432,7 +1423,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                         color: #333333;
                       }
                   data-is-focusable={true}
-                  disabled={undefined}
                   href="http://msn.com"
                   onClick={[Function]}
                   onKeyDown={[Function]}
@@ -1440,8 +1430,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                   onKeyUp={[Function]}
                   onMouseDown={[Function]}
                   onMouseUp={[Function]}
-                  rel={undefined}
-                  target={undefined}
                   title="Long Name Test for ellipse"
                 >
                   <div
@@ -1544,10 +1532,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
               >
                 <a
                   aria-describedby="id__24"
-                  aria-disabled={undefined}
-                  aria-label={undefined}
-                  aria-labelledby={undefined}
-                  aria-pressed={undefined}
                   className=
                       ms-Button
                       ms-Button--action
@@ -1605,6 +1589,11 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                         right: -2px;
                         top: -2px;
                       }
+                      &:active > * {
+                        left: 0px;
+                        position: relative;
+                        top: 0px;
+                      }
                       &:hover {
                         color: #0078d4;
                       }
@@ -1626,7 +1615,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                         color: #333333;
                       }
                   data-is-focusable={true}
-                  disabled={undefined}
                   href="http://cnn.com"
                   onClick={[Function]}
                   onKeyDown={[Function]}
@@ -1634,8 +1622,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                   onKeyUp={[Function]}
                   onMouseDown={[Function]}
                   onMouseUp={[Function]}
-                  rel={undefined}
-                  target={undefined}
                   title="News"
                 >
                   <div

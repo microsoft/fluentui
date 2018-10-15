@@ -1,4 +1,5 @@
 import { IChartProps as IChartingProps, IDataPoint, ILegendDataItem } from '@uifabric/charting/lib/StackedBarChart';
+import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 
 export enum ChartType {
   DonutChart,
@@ -101,4 +102,11 @@ export interface IChartProps {
 export interface IChartInternalProps extends IChartProps {
   width: ChartWidth;
   height: ChartHeight;
+}
+
+export interface IChartStyles {
+  /**
+   * wrapper component that sits on top of each chart
+   */
+  chartWrapper: IStyle;
 }

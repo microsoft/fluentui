@@ -1,0 +1,14 @@
+{
+  "name": "@uifabric/hooks",
+  "version": "1.0.0",
+  "description": "Git hooks for OUFR",
+  "private": true,
+  "scripts": {
+    "precommit": "cd .. && node hooks/node_modules/lint-staged/index.js"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "husky": "^0.14.3",
+    "lint-staged": "^7.0.5"
+  }
+}

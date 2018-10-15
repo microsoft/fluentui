@@ -48,11 +48,17 @@ export interface IGridCellItem {
    * The color for text in each cell
    */
   textColor?: string;
+
+  /**
+   * This sets the fontWeight to 'bold' the text if 'bold' is passed, otherwise normal
+   */
+  boldText?: string;
 }
 
 export interface ICustomCssForCells {
   iconColor?: string;
   textColor?: string;
+  boldText?: string;
 }
 
 /**

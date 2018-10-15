@@ -29,9 +29,9 @@ export const SignalField: React.StatelessComponent<ISignalFieldProps> = (props: 
         className
       )}
     >
-      {props.before}
+      <span className={SignalFieldStyles.signalFieldBefore}>{props.before}</span>
       <span className={SignalFieldStyles.signalFieldValue}>{props.children}</span>
-      {props.after}
+      <span>{props.after}</span>
     </span>
   );
 };

@@ -5,8 +5,6 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
   className="specialClassName"
 >
   <div
-    aria-describedby={undefined}
-    aria-labelledby={undefined}
     className="ms-FocusZone"
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
@@ -14,13 +12,16 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
     onMouseDownCapture={[Function]}
     role="presentation"
   >
-    <ul
+    <div
       className=
           ms-Pivot
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
             color: #0078d4;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
             margin-bottom: 0px;
@@ -37,11 +38,6 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
       role="tablist"
     >
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         aria-selected={true}
         className=
             ms-Button
@@ -98,6 +94,11 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               color: #333333;
               cursor: pointer;
@@ -140,7 +141,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             @media screen and (-ms-high-contrast: active){&:before {
               border-bottom-color: Highlight;
@@ -149,7 +150,6 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
               color: Highlight;
             }
         data-is-focusable={true}
-        disabled={undefined}
         id="Pivot0-Tab0"
         name="Test Link 1"
         onClick={[Function]}
@@ -192,11 +192,6 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
         </div>
       </button>
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         aria-selected={false}
         className=
             ms-Button
@@ -252,6 +247,11 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               color: #333333;
               cursor: pointer;
@@ -292,14 +292,13 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             &:hover::before {
               border-bottom: 2px solid transparent;
               box-sizing: border-box;
             }
         data-is-focusable={true}
-        disabled={undefined}
         id="Pivot0-Tab1"
         name="Test Link 2"
         onClick={[Function]}
@@ -341,7 +340,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
           </span>
         </div>
       </button>
-    </ul>
+    </div>
   </div>
   <div
     aria-labelledby="Pivot0-Tab0"
@@ -357,8 +356,6 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
 exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
 <div>
   <div
-    aria-describedby={undefined}
-    aria-labelledby={undefined}
     className="ms-FocusZone"
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
@@ -366,13 +363,16 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
     onMouseDownCapture={[Function]}
     role="presentation"
   >
-    <ul
+    <div
       className=
           ms-Pivot
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
             color: #0078d4;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
             margin-bottom: 0px;
@@ -389,11 +389,6 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
       role="tablist"
     >
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         aria-selected={true}
         className=
             ms-Button
@@ -450,6 +445,11 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               color: #333333;
               cursor: pointer;
@@ -492,7 +492,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             @media screen and (-ms-high-contrast: active){&:before {
               border-bottom-color: Highlight;
@@ -501,9 +501,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               color: Highlight;
             }
         data-is-focusable={true}
-        disabled={undefined}
         id="Pivot0-Tab0"
-        name={undefined}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}
@@ -546,11 +544,6 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
         </div>
       </button>
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         aria-selected={false}
         className=
             ms-Button
@@ -606,6 +599,11 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               color: #333333;
               cursor: pointer;
@@ -646,14 +644,13 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             &:hover::before {
               border-bottom: 2px solid transparent;
               box-sizing: border-box;
             }
         data-is-focusable={true}
-        disabled={undefined}
         id="Pivot0-Tab1"
         name="Test Link"
         onClick={[Function]}
@@ -709,11 +706,6 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
         </div>
       </button>
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         aria-selected={false}
         className=
             ms-Button
@@ -769,6 +761,11 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               color: #333333;
               cursor: pointer;
@@ -809,14 +806,13 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             &:hover::before {
               border-bottom: 2px solid transparent;
               box-sizing: border-box;
             }
         data-is-focusable={true}
-        disabled={undefined}
         id="Pivot0-Tab2"
         name="Text with icon"
         onClick={[Function]}
@@ -884,7 +880,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
           </span>
         </div>
       </button>
-    </ul>
+    </div>
   </div>
   <div
     aria-labelledby="Pivot0-Tab0"
@@ -898,8 +894,6 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
 exports[`Pivot renders large link Pivot correctly 1`] = `
 <div>
   <div
-    aria-describedby={undefined}
-    aria-labelledby={undefined}
     className="ms-FocusZone"
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
@@ -907,14 +901,17 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
     onMouseDownCapture={[Function]}
     role="presentation"
   >
-    <ul
+    <div
       className=
           ms-Pivot
           ms-Pivot--large
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
             color: #0078d4;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
             margin-bottom: 0px;
@@ -931,11 +928,6 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
       role="tablist"
     >
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         aria-selected={true}
         className=
             ms-Button
@@ -992,6 +984,11 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               color: #333333;
               cursor: pointer;
@@ -1034,7 +1031,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             @media screen and (-ms-high-contrast: active){&:before {
               border-bottom-color: Highlight;
@@ -1043,7 +1040,6 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
               color: Highlight;
             }
         data-is-focusable={true}
-        disabled={undefined}
         id="Pivot0-Tab0"
         name="Test Link 1"
         onClick={[Function]}
@@ -1086,11 +1082,6 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
         </div>
       </button>
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         aria-selected={false}
         className=
             ms-Button
@@ -1146,6 +1137,11 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               color: #333333;
               cursor: pointer;
@@ -1186,14 +1182,13 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             &:hover::before {
               border-bottom: 2px solid transparent;
               box-sizing: border-box;
             }
         data-is-focusable={true}
-        disabled={undefined}
         id="Pivot0-Tab1"
         name=""
         onClick={[Function]}
@@ -1235,7 +1230,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
           </span>
         </div>
       </button>
-    </ul>
+    </div>
   </div>
   <div
     aria-labelledby="Pivot0-Tab0"
@@ -1249,8 +1244,6 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
 exports[`Pivot renders large tabbed Pivot correctly 1`] = `
 <div>
   <div
-    aria-describedby={undefined}
-    aria-labelledby={undefined}
     className="ms-FocusZone"
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
@@ -1258,15 +1251,18 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
     onMouseDownCapture={[Function]}
     role="presentation"
   >
-    <ul
+    <div
       className=
           ms-Pivot
           ms-Pivot--large
           ms-Pivot--tabs
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
             color: #0078d4;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
             margin-bottom: 0px;
@@ -1283,11 +1279,6 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
       role="tablist"
     >
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         aria-selected={true}
         className=
             ms-Button
@@ -1344,6 +1335,11 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               color: #333333;
               cursor: pointer;
@@ -1388,7 +1384,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             .ms-Fabric--isFocusVisible &:focus::before {
               background: transparent;
@@ -1408,7 +1404,6 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               color: #ffffff;
             }
         data-is-focusable={true}
-        disabled={undefined}
         id="Pivot0-Tab0"
         name="Test Link 1"
         onClick={[Function]}
@@ -1451,11 +1446,6 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
         </div>
       </button>
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         aria-selected={false}
         className=
             ms-Button
@@ -1511,6 +1501,11 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               color: #333333;
               cursor: pointer;
@@ -1553,7 +1548,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             .ms-Fabric--isFocusVisible &:focus::before {
               background: transparent;
@@ -1568,7 +1563,6 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               color: #000000;
             }
         data-is-focusable={true}
-        disabled={undefined}
         id="Pivot0-Tab1"
         name=""
         onClick={[Function]}
@@ -1610,7 +1604,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
           </span>
         </div>
       </button>
-    </ul>
+    </div>
   </div>
   <div
     aria-labelledby="Pivot0-Tab0"
@@ -1624,8 +1618,6 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
 exports[`Pivot renders link Pivot correctly 1`] = `
 <div>
   <div
-    aria-describedby={undefined}
-    aria-labelledby={undefined}
     className="ms-FocusZone"
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
@@ -1633,13 +1625,16 @@ exports[`Pivot renders link Pivot correctly 1`] = `
     onMouseDownCapture={[Function]}
     role="presentation"
   >
-    <ul
+    <div
       className=
           ms-Pivot
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
             color: #0078d4;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
             margin-bottom: 0px;
@@ -1656,11 +1651,6 @@ exports[`Pivot renders link Pivot correctly 1`] = `
       role="tablist"
     >
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         aria-selected={true}
         className=
             ms-Button
@@ -1717,6 +1707,11 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               color: #333333;
               cursor: pointer;
@@ -1759,7 +1754,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             @media screen and (-ms-high-contrast: active){&:before {
               border-bottom-color: Highlight;
@@ -1768,7 +1763,6 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               color: Highlight;
             }
         data-is-focusable={true}
-        disabled={undefined}
         id="Pivot0-Tab0"
         name="Test Link 1"
         onClick={[Function]}
@@ -1811,11 +1805,6 @@ exports[`Pivot renders link Pivot correctly 1`] = `
         </div>
       </button>
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         aria-selected={false}
         className=
             ms-Button
@@ -1871,6 +1860,11 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               color: #333333;
               cursor: pointer;
@@ -1911,14 +1905,13 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             &:hover::before {
               border-bottom: 2px solid transparent;
               box-sizing: border-box;
             }
         data-is-focusable={true}
-        disabled={undefined}
         id="Pivot0-Tab1"
         name=""
         onClick={[Function]}
@@ -1960,7 +1953,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
           </span>
         </div>
       </button>
-    </ul>
+    </div>
   </div>
   <div
     aria-labelledby="Pivot0-Tab0"
@@ -1974,8 +1967,6 @@ exports[`Pivot renders link Pivot correctly 1`] = `
 exports[`Pivot renders tabbed Pivot correctly 1`] = `
 <div>
   <div
-    aria-describedby={undefined}
-    aria-labelledby={undefined}
     className="ms-FocusZone"
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
@@ -1983,14 +1974,17 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
     onMouseDownCapture={[Function]}
     role="presentation"
   >
-    <ul
+    <div
       className=
           ms-Pivot
           ms-Pivot--tabs
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
             color: #0078d4;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
             margin-bottom: 0px;
@@ -2007,11 +2001,6 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
       role="tablist"
     >
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         aria-selected={true}
         className=
             ms-Button
@@ -2068,6 +2057,11 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               color: #333333;
               cursor: pointer;
@@ -2112,7 +2106,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             .ms-Fabric--isFocusVisible &:focus::before {
               background: transparent;
@@ -2132,7 +2126,6 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               color: #ffffff;
             }
         data-is-focusable={true}
-        disabled={undefined}
         id="Pivot0-Tab0"
         name="Test Link 1"
         onClick={[Function]}
@@ -2175,11 +2168,6 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
         </div>
       </button>
       <button
-        aria-describedby={undefined}
-        aria-disabled={undefined}
-        aria-label={undefined}
-        aria-labelledby={undefined}
-        aria-pressed={undefined}
         aria-selected={false}
         className=
             ms-Button
@@ -2235,6 +2223,11 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               right: -2px;
               top: -2px;
             }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
             &:hover {
               color: #333333;
               cursor: pointer;
@@ -2277,7 +2270,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             .ms-Fabric--isFocusVisible &:focus::before {
               background: transparent;
@@ -2292,7 +2285,6 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               color: #000000;
             }
         data-is-focusable={true}
-        disabled={undefined}
         id="Pivot0-Tab1"
         name=""
         onClick={[Function]}
@@ -2334,7 +2326,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
           </span>
         </div>
       </button>
-    </ul>
+    </div>
   </div>
   <div
     aria-labelledby="Pivot0-Tab0"

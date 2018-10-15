@@ -3,10 +3,7 @@
 exports[`Button renders CompoundButton correctly 1`] = `
 <button
   aria-describedby="id__1"
-  aria-disabled={undefined}
-  aria-label={undefined}
   aria-labelledby="id__0"
-  aria-pressed={undefined}
   className=
       ms-Button
       ms-Button--compound
@@ -59,6 +56,11 @@ exports[`Button renders CompoundButton correctly 1`] = `
         right: -2px;
         top: -2px;
       }
+      &:active > * {
+        left: 0px;
+        position: relative;
+        top: 0px;
+      }
       &:hover {
         background-color: #eaeaea;
         color: #212121;
@@ -78,7 +80,6 @@ exports[`Button renders CompoundButton correctly 1`] = `
         color: inherit;
       }
   data-is-focusable={true}
-  disabled={undefined}
   onClick={[Function]}
   onKeyDown={[Function]}
   onKeyPress={[Function]}

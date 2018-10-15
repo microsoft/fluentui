@@ -2,22 +2,15 @@
 
 exports[`ContextualMenuSplitButton creates a normal split button renders the contextual menu split button correctly 1`] = `
 <div
-  aria-checked={undefined}
-  aria-describedby={undefined}
   aria-disabled={false}
-  aria-expanded={undefined}
   aria-haspopup={true}
-  aria-label={undefined}
   aria-posinset={1}
-  aria-roledescription={undefined}
   aria-setsize={1}
   className="splitContainer"
   data-is-focusable={true}
-  data-ktp-target={undefined}
   onClick={[Function]}
   onKeyDown={[Function]}
   onMouseEnter={[Function]}
-  onMouseLeave={undefined}
   onMouseMove={[Function]}
   onTouchStart={[Function]}
   role="menuitem"
@@ -25,11 +18,8 @@ exports[`ContextualMenuSplitButton creates a normal split button renders the con
 >
   <button
     aria-hidden={true}
-    checked={undefined}
     className="splitPrimary"
     data-is-focusable={false}
-    disabled={undefined}
-    name={undefined}
   >
     <div
       className="linkContent"
@@ -58,12 +48,10 @@ exports[`ContextualMenuSplitButton creates a normal split button renders the con
     aria-hidden={true}
     className="splitMenu"
     data-is-focusable={false}
-    data-ktp-execute-target={undefined}
     disabled={false}
     onClick={[Function]}
     onMouseDown={[Function]}
     onMouseEnter={[Function]}
-    onMouseLeave={undefined}
     onMouseMove={[Function]}
   >
     <div

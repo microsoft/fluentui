@@ -1,5 +1,5 @@
+import { AnimationClassNames, getGlobalClassNames, IStyle } from '../../Styling';
 import { IImageStyleProps, IImageStyles } from './Image.types';
-import { AnimationClassNames, IStyle, getGlobalClassNames } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-Image',
@@ -8,6 +8,7 @@ const GlobalClassNames = {
   imageCenter: 'ms-Image-image--center',
   imageContain: 'ms-Image-image--contain',
   imageCover: 'ms-Image-image--cover',
+  imageCenterCover: 'ms-Image-image--centerCover',
   imageNone: 'ms-Image-image--none',
   imageLandscape: 'ms-Image-image--landscape',
   imagePortrait: 'ms-Image-image--portrait'
@@ -26,6 +27,7 @@ export const getStyles = (props: IImageStyleProps): IImageStyles => {
     isCenter,
     isContain,
     isCover,
+    isCenterCover,
     isNone,
     isError,
     isNotImageFit,
@@ -44,6 +46,7 @@ export const getStyles = (props: IImageStyleProps): IImageStyles => {
   return {
     root: [
       classNames.root,
+      theme.fonts.medium,
       {
         overflow: 'hidden'
       },
@@ -54,7 +57,7 @@ export const getStyles = (props: IImageStyleProps): IImageStyles => {
           width: '100%'
         }
       ],
-      (isCenter || isContain || isCover) && {
+      (isCenter || isContain || isCover || isCenterCover) && {
         position: 'relative'
       },
       className
@@ -93,6 +96,16 @@ export const getStyles = (props: IImageStyleProps): IImageStyles => {
         !isLandscape && {
           width: '100%',
           height: 'auto'
+        },
+        ImageFitStyles
+      ],
+      isCenterCover && [
+        classNames.imageCenterCover,
+        isLandscape && {
+          maxHeight: '100%'
+        },
+        !isLandscape && {
+          maxWidth: '100%'
         },
         ImageFitStyles
       ],

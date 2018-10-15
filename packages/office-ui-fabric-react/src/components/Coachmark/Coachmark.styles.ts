@@ -26,6 +26,11 @@ export interface ICoachmarkStyleProps {
   isMeasuring: boolean;
 
   /**
+   * Is the Coachmark finished measuring the dimensions of innerHostElement
+   */
+  isMeasured: boolean;
+
+  /**
    * The height measured before the component has been mounted
    * in pixels
    */
@@ -65,6 +70,11 @@ export interface ICoachmarkStyleProps {
    * Transform origin for teaching bubble content
    */
   transformOrigin?: string;
+
+  /**
+   * Delay time for the animation to start
+   */
+  delayBeforeCoachmarkAnimation?: string;
 }
 
 export interface ICoachmarkStyles {
@@ -74,8 +84,7 @@ export interface ICoachmarkStyles {
   root?: IStyle;
 
   /**
-   * The pulsing beacon that animates when the coachmark
-   * is collapsed.
+   * The pulsing beacon that animates when the Coachmark is collapsed.
    */
   pulsingBeacon?: IStyle;
 
@@ -107,7 +116,12 @@ export interface ICoachmarkStyles {
   entityInnerHost: IStyle;
 
   /**
-   * The styles applied when the coachmark has collapsed.
+   * The layer that directly contains the TeachingBubbleContent
+   */
+  childrenContainer: IStyle;
+
+  /**
+   * The styles applied when the Coachmark has collapsed.
    */
   collapsed?: IStyle;
 
@@ -244,10 +258,14 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
     animationBorderWidth
   );
 
-  const ContinuousPulseAnimation = PulsingBeaconAnimationStyles.createDefaultAnimation(ContinuousPulse);
+  const ContinuousPulseAnimation = PulsingBeaconAnimationStyles.createDefaultAnimation(
+    ContinuousPulse,
+    props.delayBeforeCoachmarkAnimation
+  );
 
   return {
     root: [
+      theme.fonts.medium,
       {
         position: 'relative'
       }
@@ -357,6 +375,11 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
       },
       !props.isMeasuring && {
         visibility: 'visible'
+      }
+    ],
+    childrenContainer: [
+      {
+        display: props.isMeasured && props.isCollapsed ? 'none' : 'block'
       }
     ],
     ariaContainer: {

@@ -84,10 +84,19 @@ export function getNeutralVariant(theme: IPartialTheme): ITheme {
     bodyBackground: p.neutralLighter,
     bodyStandoutBackground: p.neutralLight,
     bodyFrameBackground: !fullTheme.isInverted ? p.neutralLight : p.neutralLighter,
-    bodyFrameDivider: !fullTheme.isInverted ? p.neutralLight : p.neutralQuaternary,
-    variantBorder: !fullTheme.isInverted ? p.neutralQuaternaryAlt : p.neutralLighterAlt,
+    bodyFrameDivider: !fullTheme.isInverted ? p.neutralLight : p.neutralQuaternaryAlt,
+    bodyText: p.neutralPrimary,
+    bodySubtext: p.neutralSecondary,
+    bodyDivider: p.neutralQuaternaryAlt,
+    variantBorder: p.neutralLight,
     variantBorderHovered: p.neutralTertiary,
-    defaultStateBackground: p.neutralQuaternaryAlt,
+    defaultStateBackground: p.neutralLight,
+
+    actionLink: p.neutralPrimary,
+    actionLinkHovered: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary,
+    link: p.themeDarkAlt,
+    linkHovered: p.themeDarker,
+    disabledText: p.neutralTertiary,
 
     buttonBackground: p.neutralQuaternaryAlt,
     buttonBackgroundHovered: p.neutralQuaternary,
@@ -105,7 +114,14 @@ export function getNeutralVariant(theme: IPartialTheme): ITheme {
     primaryButtonBorder: 'transparent',
     primaryButtonText: p.white,
     primaryButtonTextHovered: p.white,
-    primaryButtonTextPressed: p.white
+    primaryButtonTextPressed: p.white,
+
+    menuBackground: p.white,
+    menuDivider: p.neutralTertiaryAlt,
+    menuItemBackgroundHovered: p.neutralLighter,
+    menuItemBackgroundPressed: p.neutralLight,
+    menuItemText: p.neutralPrimary,
+    menuItemTextHovered: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary
   };
 
   return makeThemeFromPartials(fullTheme, partialPalette, partialSemantic);
@@ -159,8 +175,10 @@ export function getSoftVariant(theme: IPartialTheme): ITheme {
     bodyBackground: !fullTheme.isInverted ? p.themeLighterAlt : p.themeLight,
     bodyStandoutBackground: !fullTheme.isInverted ? p.themeLighter : p.themeTertiary,
     bodyFrameBackground: !fullTheme.isInverted ? p.themeLighter : p.themeLight,
-    bodyFrameDivider: !fullTheme.isInverted ? p.themeLighter : p.themeTertiary,
-
+    bodyFrameDivider: !fullTheme.isInverted ? p.themeLighter : p.neutralQuaternary,
+    bodyText: p.neutralPrimary,
+    bodySubtext: p.neutralSecondary,
+    bodyDivider: p.neutralQuaternaryAlt,
     inputBorder: p.themeLighter,
     // inputBorderHovered: p.neutralPrimary,
     inputBackground: p.themeLighter,
@@ -168,9 +186,15 @@ export function getSoftVariant(theme: IPartialTheme): ITheme {
     // inputBackgroundCheckedHovered: p.themeDarkAlt,
     inputForegroundChecked: p.themeLighter,
     // inputFocusBorderAlt: p.themePrimary,
-    variantBorder: !fullTheme.isInverted ? p.neutralLight : p.neutralLighterAlt,
+    variantBorder: p.neutralLight,
     variantBorderHovered: p.neutralTertiary,
-    defaultStateBackground: !fullTheme.isInverted ? p.themeLight : p.themeTertiary,
+    defaultStateBackground: p.neutralLight,
+
+    actionLink: p.neutralPrimary,
+    actionLinkHovered: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary,
+    link: p.themeDarkAlt,
+    linkHovered: p.themeDarker,
+    disabledText: p.neutralTertiary,
 
     buttonBackground: p.neutralQuaternaryAlt,
     buttonBackgroundHovered: p.neutralQuaternary,
@@ -188,7 +212,14 @@ export function getSoftVariant(theme: IPartialTheme): ITheme {
     primaryButtonBorder: 'transparent',
     primaryButtonText: p.white,
     primaryButtonTextHovered: p.white,
-    primaryButtonTextPressed: p.white
+    primaryButtonTextPressed: p.white,
+
+    menuBackground: p.white,
+    menuDivider: p.neutralTertiaryAlt,
+    menuItemBackgroundHovered: p.neutralLighter,
+    menuItemBackgroundPressed: p.neutralLight,
+    menuItemText: p.neutralPrimary,
+    menuItemTextHovered: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary
   };
 
   return makeThemeFromPartials(fullTheme, partialPalette, partialSemantic);
@@ -248,10 +279,9 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
     bodyStandoutBackground: p.themeDarkAlt,
     bodyFrameBackground: !fullTheme.isInverted ? p.themeDarkAlt : p.themePrimary,
     bodyFrameDivider: !fullTheme.isInverted ? p.themeDarkAlt : p.themeTertiary,
-
     bodyText: p.white,
     bodySubtext: p.white,
-
+    bodyDivider: p.themeTertiary,
     inputBorder: p.themeDark,
     // inputBorderHovered: p.neutralPrimary,
     inputBackground: p.themeDark,
@@ -259,9 +289,15 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
     // inputBackgroundCheckedHovered: p.themePrimary,
     inputForegroundChecked: p.themeDark,
     // inputFocusBorderAlt: p.themePrimary,
-    variantBorder: p.themeDark,
+    variantBorder: p.themeDarkAlt,
     variantBorderHovered: p.themeDarker,
-    defaultStateBackground: p.themeDark,
+    defaultStateBackground: p.neutralLighterAlt,
+
+    actionLink: p.white,
+    actionLinkHovered: p.white,
+    link: p.white,
+    linkHovered: p.white,
+    disabledText: p.neutralQuaternary,
 
     buttonBackground: p.themePrimary,
     buttonBackgroundHovered: p.themeDarkAlt,
@@ -279,7 +315,14 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
     primaryButtonBorder: 'transparent',
     primaryButtonText: !fullTheme.isInverted ? p.themePrimary : p.neutralPrimary,
     primaryButtonTextHovered: !fullTheme.isInverted ? p.themeDark : p.neutralPrimary,
-    primaryButtonTextPressed: !fullTheme.isInverted ? p.themeDark : p.neutralPrimary
+    primaryButtonTextPressed: !fullTheme.isInverted ? p.themeDark : p.neutralPrimary,
+
+    menuBackground: p.white,
+    menuDivider: p.neutralTertiaryAlt,
+    menuItemBackgroundHovered: p.neutralLighter,
+    menuItemBackgroundPressed: p.neutralLight,
+    menuItemText: p.neutralPrimary,
+    menuItemTextHovered: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary
   };
 
   // Strong variant is unique here, we've redefined the entire palette and are

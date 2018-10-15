@@ -7,7 +7,7 @@ export interface ICalendar {
   focus: () => void;
 }
 
-export interface ICalendarProps extends IBaseProps<ICalendar> {
+export interface ICalendarProps extends IBaseProps<ICalendar>, React.HTMLAttributes<HTMLElement> {
   /**
    * Optional callback to access the ICalendar interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -162,8 +162,15 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
 
   /**
    * Whether the close button should be shown or not
+   * @defaultvalue false
    */
   showCloseButton?: boolean;
+
+  /**
+   * Allows all dates and buttons to be focused, including disabled ones
+   * @defaultvalue false
+   */
+  allFocusable?: boolean;
 }
 
 export interface ICalendarStrings {
