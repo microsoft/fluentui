@@ -209,7 +209,8 @@ describe('FocusTrapZone', () => {
       expect(lastFocusedElement).toBe(buttonX);
     });
 
-    it('can trap focus when FTZ bookmark elements are FocusZones, and those elements have inner elements focused that are not the first inner element', async () => {
+    it(`can trap focus when FTZ bookmark elements are FocusZones, and those elements have inner elements focused that
+      are not the first inner element`, async () => {
       expect.assertions(4);
 
       const topLevelDiv = ReactTestUtils.renderIntoDocument(

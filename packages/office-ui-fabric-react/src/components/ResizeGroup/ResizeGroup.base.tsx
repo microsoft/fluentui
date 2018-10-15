@@ -2,13 +2,12 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import {
   BaseComponent,
-  classNamesFunction,
   divProperties,
   getNativeProps,
   provideContext,
   createRef
 } from '../../Utilities';
-import { IResizeGroupProps, IResizeGroupStyles, IResizeGroupStyleProps } from './ResizeGroup.types';
+import { IResizeGroupProps } from './ResizeGroup.types';
 
 const RESIZE_DELAY = 16;
 
@@ -316,8 +315,6 @@ const MeasuredContext = provideContext(
   }
 );
 
-const getClassNames = classNamesFunction<IResizeGroupStyleProps, IResizeGroupStyles>();
-
 // Styles for the hidden div used for measurement
 const hiddenDivStyles: React.CSSProperties = { position: 'fixed', visibility: 'hidden' };
 
@@ -338,13 +335,16 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
   constructor(props: IResizeGroupProps) {
     super(props);
     this.state = this._nextResizeGroupStateProvider.getInitialResizeGroupState(this.props.data);
+
+    this._warnDeprecations({
+      styles: 'className'
+    });
   }
 
   public render(): JSX.Element {
-    const { onRenderData, className, styles, theme } = this.props;
+    const { className, onRenderData } = this.props;
     const { dataToMeasure, renderedData } = this.state;
     const divProps = getNativeProps(this.props, divProperties, ['data']);
-    const classNames = getClassNames(styles!, { theme: theme!, className });
 
     const dataNeedsMeasuring = this._nextResizeGroupStateProvider.shouldRenderDataForMeasurement(dataToMeasure);
 
@@ -357,7 +357,7 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     // we mount a second version of the component just for measurement purposes and leave the rendered content untouched until we know the
     // next state sto show to the user.
     return (
-      <div {...divProps} className={classNames.root} ref={this._root}>
+      <div {...divProps} className={className} ref={this._root} style={{ display: 'block', position: 'relative' }}>
         {dataNeedsMeasuring &&
           !isInitialMeasure && (
             <div style={hiddenDivStyles} ref={this._updateHiddenDiv}>

@@ -70,4 +70,16 @@ describe('HorizontalStack', () => {
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
+
+  it('renders wrapped HorizontalStack correctly', () => {
+    const component = renderer.create(
+      <HorizontalStack wrap>
+        <HorizontalStack.Item>1</HorizontalStack.Item>
+        <HorizontalStack.Item>2</HorizontalStack.Item>
+        <HorizontalStack.Item>3</HorizontalStack.Item>
+      </HorizontalStack>
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });

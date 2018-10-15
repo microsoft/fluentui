@@ -1,7 +1,6 @@
-import { IThemedProps } from '../../Foundation';
-import { IAccordionProps, IAccordionStyles } from './Accordion.types';
+import { IAccordionComponent } from './Accordion.types';
 
-export const styles = (props: IThemedProps<IAccordionProps>): IAccordionStyles => {
+export const styles: IAccordionComponent['styles'] = props => {
   return {
     root: [props.className]
   };

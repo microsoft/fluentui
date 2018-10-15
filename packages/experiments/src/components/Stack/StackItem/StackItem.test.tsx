@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
-import { Stack } from '../index';
+import { Stack } from '../Stack';
 
 describe('Stack Item', () => {
   it('allows className from child component to be rendered', () => {

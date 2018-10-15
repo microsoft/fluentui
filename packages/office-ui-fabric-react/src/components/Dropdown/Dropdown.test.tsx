@@ -575,4 +575,36 @@ describe('Dropdown', () => {
       expect(titleElement.textContent).toEqual('3');
     });
   });
+
+  describe('Aria attributes', () => {
+    it('does not apply aria-labelledby if no label is provided', () => {
+      const container = document.createElement('div');
+      const options = [{ key: 0, text: '1' }, { key: 1, text: '2', disabled: true }, { key: 2, text: '3' }];
+
+      ReactDOM.render(<Dropdown options={options} />, container);
+      const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+
+      expect(dropdownRoot.attributes.getNamedItem('aria-labelledby')).toBeNull();
+    });
+
+    it('does not apply aria-labelledby if an empty label is provided', () => {
+      const container = document.createElement('div');
+      const options = [{ key: 0, text: '1' }, { key: 1, text: '2', disabled: true }, { key: 2, text: '3' }];
+
+      ReactDOM.render(<Dropdown label="" options={options} />, container);
+      const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+
+      expect(dropdownRoot.attributes.getNamedItem('aria-labelledby')).toBeNull();
+    });
+
+    it('applies aria-labelledby if a non-empty label is provided', () => {
+      const container = document.createElement('div');
+      const options = [{ key: 0, text: '1' }, { key: 1, text: '2', disabled: true }, { key: 2, text: '3' }];
+
+      ReactDOM.render(<Dropdown label="Test label" options={options} />, container);
+      const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+
+      expect(dropdownRoot.attributes.getNamedItem('aria-labelledby')).not.toBeNull();
+    });
+  });
 });

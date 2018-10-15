@@ -94,7 +94,7 @@ describe('Layer', () => {
     }
   });
 
-  it('stops events correctly', () => {
+  it('stops bubbling events', () => {
     // Simulate does not propagate events up the hierarchy.
     // Instead, let's check for calls to stopPropagation.
     // https://airbnb.io/enzyme/docs/api/ShallowWrapper/simulate.html
@@ -104,6 +104,7 @@ describe('Layer', () => {
 
     const eventObject = (event: string) => {
       return {
+        eventPhase: Event.BUBBLING_PHASE,
         stopPropagation: () => {
           // Debug code for figuring out which events are firing on test failures:
           // console.log(event);
@@ -129,7 +130,37 @@ describe('Layer', () => {
     expect(stopPropagationCount).toEqual(expectedStopPropagationCount);
   });
 
-  it('bubbles events correctly', () => {
+  it('does not stop non-bubbling events', () => {
+    // Simulate does not propagate events up the hierarchy.
+    // Instead, let's check for calls to stopPropagation.
+    // https://airbnb.io/enzyme/docs/api/ShallowWrapper/simulate.html
+    const targetClassName = 'ms-Layer-content';
+    const expectedStopPropagationCount = 0;
+    let stopPropagationCount = 0;
+
+    const eventObject = (event: string) => {
+      return {
+        eventPhase: Event.CAPTURING_PHASE,
+        stopPropagation: () => {
+          // Debug code for figuring out which events are firing on test failures:
+          // console.log(event);
+          stopPropagationCount++;
+        }
+      };
+    };
+
+    const wrapper = mount(<Layer />);
+
+    const targetContent = wrapper.find(`.${targetClassName}`).at(0);
+
+    testEvents.forEach(event => {
+      targetContent.simulate(event, eventObject(event));
+    });
+
+    expect(stopPropagationCount).toEqual(expectedStopPropagationCount);
+  });
+
+  it('allows events to bubble with eventBubblingEnabled prop', () => {
     // Simulate does not propagate events up the hierarchy.
     // Instead, let's check for calls to stopPropagation.
     // https://airbnb.io/enzyme/docs/api/ShallowWrapper/simulate.html
@@ -138,6 +169,7 @@ describe('Layer', () => {
 
     const eventObject = (event: string) => {
       return {
+        eventPhase: Event.BUBBLING_PHASE,
         stopPropagation: () => {
           // Debug code for figuring out which events are firing on test failures:
           // console.log(event);

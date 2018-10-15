@@ -3,9 +3,12 @@ import { BaseComponent, classNamesFunction } from '../../Utilities';
 import { DialogType, IDialogContentProps, IDialogContentStyleProps, IDialogContentStyles } from './DialogContent.types';
 import { IconButton } from '../../Button';
 import { DialogFooter } from './DialogFooter';
+import { IDialogFooterProps } from './DialogFooter.types';
 import { withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 
 const getClassNames = classNamesFunction<IDialogContentStyleProps, IDialogContentStyles>();
+
+const DialogFooterType = (<DialogFooter /> as React.ReactElement<IDialogFooterProps>).type;
 
 @withResponsiveMode
 export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
@@ -93,7 +96,7 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
     };
 
     React.Children.map(this.props.children, child => {
-      if (typeof child === 'object' && child !== null && child.type === DialogFooter) {
+      if (typeof child === 'object' && child !== null && child.type === DialogFooterType) {
         groupings.footers.push(child);
       } else {
         groupings.contents.push(child);

@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { PanelBase } from './Panel.base';
-import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import { IStyle, ITheme } from '../../Styling';
-import { ILayerProps } from '../../Layer';
 import { IFocusTrapZoneProps } from '../../FocusTrapZone';
+import { ILayerProps } from '../../Layer';
+import { IStyle, ITheme } from '../../Styling';
+import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import { PanelBase } from './Panel.base';
 
 export interface IPanel {
   /**
@@ -16,7 +16,7 @@ export interface IPanel {
    */
   dismiss: (ev?: React.KeyboardEvent<HTMLElement>) => void;
 }
-export interface IPanelProps extends React.Props<PanelBase> {
+export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
   /**
    * Optional callback to access the IPanel interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -70,7 +70,7 @@ export interface IPanelProps extends React.Props<PanelBase> {
    * A callback function for when the panel is closed, before the animation completes.
    * If the panel should NOT be dismissed based on some keyboard event, then simply call ev.preventDefault() on it
    */
-  onDismiss?: (ev?: React.KeyboardEvent<HTMLElement>) => void;
+  onDismiss?: (ev?: React.SyntheticEvent<HTMLElement>) => void;
 
   /**
    * A callback function which is called after the Panel is dismissed and the animation is complete.

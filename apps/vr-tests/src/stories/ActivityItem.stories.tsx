@@ -9,54 +9,54 @@ storiesOf('ActivityItem', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
-      steps={ new Steps()
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .end()
       }
     >
-      { story() }
+      {story()}
     </Screener>
   ))
-  .add('Root', () => (
+  .addStory('Root', () => (
     <ActivityItem
-      activityIcon={ <Icon iconName={ 'Message' } /> }
-      activityDescription={ <span>description text</span> }
-      comments={ <span>comment text</span> }
-      timeStamp={ 'timeStamp text' }
+      activityIcon={<Icon iconName={'Message'} />}
+      activityDescription={<span>description text</span>}
+      comments={<span>comment text</span>}
+      timeStamp={'timeStamp text'}
     />
-  ))
-  .add('Personas', () => (
+  ), { rtl: true })
+  .addStory('Personas', () => (
     <ActivityItem
-      activityPersonas={ [
+      activityPersonas={[
         { imageInitials: 'AB' },
         { imageInitials: 'CD' },
         { imageInitials: 'EF' },
         { imageInitials: 'GH' }
-      ] }
-      activityDescription={ <span>description text</span> }
-      comments={ <span>comment text</span> }
-      timeStamp={ 'timeStamp text' }
+      ]}
+      activityDescription={<span>description text</span>}
+      comments={<span>comment text</span>}
+      timeStamp={'timeStamp text'}
+    />
+  ), { rtl: true })
+  .addStory('Compact', () => (
+    <ActivityItem
+      activityIcon={<Icon iconName={'Message'} />}
+      isCompact={true}
+      activityDescription={<span>description text</span>}
+      comments={<span>comment text</span>}
+      timeStamp={'timeStamp text'}
     />
   ))
-  .add('Compact', () => (
+  .addStory('CompactPersonas', () => (
     <ActivityItem
-      activityIcon={ <Icon iconName={ 'Message' } /> }
-      isCompact={ true }
-      activityDescription={ <span>description text</span> }
-      comments={ <span>comment text</span> }
-      timeStamp={ 'timeStamp text' }
-    />
-  ))
-  .add('CompactPersonas', () => (
-    <ActivityItem
-      activityPersonas={ [
+      activityPersonas={[
         { imageInitials: 'AB' },
         { imageInitials: 'CD' },
         { imageInitials: 'EF' }
-      ] }
-      isCompact={ true }
-      activityDescription={ <span>description text</span> }
-      comments={ <span>comment text</span> }
-      timeStamp={ 'timeStamp text' }
+      ]}
+      isCompact={true}
+      activityDescription={<span>description text</span>}
+      comments={<span>comment text</span>}
+      timeStamp={'timeStamp text'}
     />
   ));

@@ -21,7 +21,7 @@ storiesOf('Dropdown', module)
       {story()}
     </Screener>
   ))
-  .add('Root', () => (
+  .addStory('Root', () => (
     <Dropdown
       placeHolder="Select an Option"
       label="Basic example:"
@@ -36,8 +36,8 @@ storiesOf('Dropdown', module)
         { key: 'G', text: 'Option g' }
       ]}
     />
-  ))
-  .add('Disabled', () => (
+  ), { rtl: true })
+  .addStory('Disabled', () => (
     <Dropdown
       placeHolder="Select an Option"
       label="Basic example:"
@@ -54,7 +54,7 @@ storiesOf('Dropdown', module)
       ]}
     />
   ))
-  .add('Disabled option selected', () => (
+  .addStory('Disabled option selected', () => (
     <Dropdown
       placeHolder="Select an Option"
       label="Basic example:"
@@ -71,7 +71,7 @@ storiesOf('Dropdown', module)
       ]}
     />
   ))
-  .add('Multiselect', () => (
+  .addStory('Multiselect', () => (
     <Dropdown
       placeHolder="Select options"
       label="Multi-Select example:"
@@ -85,8 +85,8 @@ storiesOf('Dropdown', module)
         { key: 'Orange', text: 'orange' }
       ]}
     />
-  ))
-  .add('Custom Dropdown', () => (
+  ), { rtl: true })
+  .addStory('Custom Dropdown', () => (
     <Dropdown
       placeHolder="Select an Option"
       label="Custom example:"
@@ -153,4 +153,4 @@ storiesOf('Dropdown', module)
         { key: 'J', text: 'Option j', data: { icon: 'AddGroup' } }
       ]}
     />
-  ));
+  ), { rtl: true });

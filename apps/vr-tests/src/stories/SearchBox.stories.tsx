@@ -13,7 +13,7 @@ import { SearchBox, Fabric } from 'office-ui-fabric-react';
 storiesOf('SearchBox', module)
   .addDecorator(story => (
     <Screener
-      steps={ new Screener.Steps()
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .click('.ms-SearchBox-field')
         .hover('.ms-SearchBox-field')
@@ -21,16 +21,16 @@ storiesOf('SearchBox', module)
         .end()
       }
     >
-      { story() }
+      {story()}
     </Screener>
-  )).add('Root', () => (
-    <Fabric style={ { display: 'flex' } }>
-      <div className='testWrapper' style={ { padding: '10px', overflow: 'hidden', width: '300px' } }>
+  )).addStory('Root', () => (
+    <Fabric style={{ display: 'flex' }}>
+      <div className='testWrapper' style={{ padding: '10px', overflow: 'hidden', width: '300px' }}>
         <SearchBox placeholder='Search' />
       </div>
     </Fabric>
-  )).add('Full', () => (
+  ), { rtl: true }).addStory('Full', () => (
     <Fabric className='testWrapper'>
       <SearchBox placeholder='Search' />
     </Fabric>
-  ));
+  ), { rtl: true });

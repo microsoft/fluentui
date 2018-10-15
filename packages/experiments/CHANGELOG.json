@@ -2,6 +2,455 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.37.1",
+      "tag": "@uifabric/experiments_v6.37.1",
+      "date": "Mon, 15 Oct 2018 12:29:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "updating snapshot tests in experiments package",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "e83f082e86ab8a599f298dc1dfe343981bbebee5"
+          },
+          {
+            "comment": "Added font theme setting to Button, ChicletCard, CollapsibleSection, Shimmer, ShimmerCircle, ShimmerElementsGroup, ShimmerGap, ShimmerLine, HorizontalStack, Text. Snapshots updated in VerticalStack, Stack.",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "e83f082e86ab8a599f298dc1dfe343981bbebee5"
+          },
+          {
+            "comment": "Improve BaseState typing and fix use by experimental components.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "9acc74dfac060f464357a56c61b6f0bfde025dfe"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Added font theme setting to Button, ChicletCard, CollapsibleSection, Shimmer, ShimmerCircle, ShimmerElementsGroup, ShimmerGap, ShimmerLine, HorizontalStack, Text. Snapshots updated in VerticalStack, Stack.",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "e83f082e86ab8a599f298dc1dfe343981bbebee5"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.24.3` to `^0.24.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `>=6.1.3 <7.0.0` to `>=6.2.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.10.0 <7.0.0` to `>=6.10.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.84.0 <7.0.0` to `>=6.84.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.37.0",
+      "tag": "@uifabric/experiments_v6.37.0",
+      "date": "Wed, 10 Oct 2018 12:29:05 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Separator: change text size and add theming example",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "c8572bc8f9e819a179cf40d2ff65c6080ec4bd40"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.24.1` to `^0.24.2`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.82.0 <7.0.0` to `>=6.83.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.7.4 <7.0.0` to `>=6.7.5 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.36.1",
+      "tag": "@uifabric/experiments_v6.36.1",
+      "date": "Mon, 08 Oct 2018 19:25:44 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Sidebar: added index export",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "2bb01951d9ead0e850b86ba30141dbf9e0ce4dee"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.80.0 <7.0.0` to `>=6.81.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.36.0",
+      "tag": "@uifabric/experiments_v6.36.0",
+      "date": "Mon, 08 Oct 2018 12:24:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Moving tslint/prettier dependencies ",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8ba9e22a7a8a2a1e7facda5aa7d91423c7af43ed"
+          },
+          {
+            "comment": "Fix a11y violations in Fluent ContextualMenu examples",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "a6d214e6d111fcc860e08caf3329620c698922fa"
+          },
+          {
+            "comment": "Sidebar: Fixed filename and imports",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "086555bea3760f2dd244c4351c85bc1717584149"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Sidebar: Added new component",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "086555bea3760f2dd244c4351c85bc1717584149"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.24.0` to `^0.24.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `>=6.1.2 <7.0.0` to `>=6.1.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.5.4 <1.0.0` to `>=0.5.5 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=6.1.1 <7.0.0` to `>=6.1.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `>=6.11.0 <7.0.0` to `>=6.11.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.1.1 <2.0.0` to `>=1.1.2 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.9.3 <7.0.0` to `>=6.9.4 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.79.0 <7.0.0` to `>=6.80.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.7.3 <7.0.0` to `>=6.7.4 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=6.0.5 <7.0.0` to `>=6.0.6 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.35.0",
+      "tag": "@uifabric/experiments_v6.35.0",
+      "date": "Fri, 05 Oct 2018 23:29:26 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Sidebar: Added new component",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "df26624e48824d005e5afff015e405773381272b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.78.1 <7.0.0` to `>=6.79.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.34.2",
+      "tag": "@uifabric/experiments_v6.34.2",
+      "date": "Thu, 04 Oct 2018 12:26:48 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.23.0` to `^0.24.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.77.0 <7.0.0` to `>=6.78.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.34.1",
+      "tag": "@uifabric/experiments_v6.34.1",
+      "date": "Wed, 03 Oct 2018 12:28:46 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.22.1` to `^0.23.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.76.0 <7.0.0` to `>=6.77.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.34.0",
+      "tag": "@uifabric/experiments_v6.34.0",
+      "date": "Tue, 02 Oct 2018 12:28:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Changes to support Foundation interface refactoring.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "3878b423fc86bbbab6322edc72e23a424013e642"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Separator: new experimental component",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "b972ca448de76d6e0c0998ef109342b1580911c8"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.5.3 <1.0.0` to `>=0.5.4 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.75.0 <7.0.0` to `>=6.76.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.33.0",
+      "tag": "@uifabric/experiments_v6.33.0",
+      "date": "Mon, 01 Oct 2018 12:27:24 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding Button experiment, initial refactoring of BaseState component",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "7eee9844e61fa75247af89fdff79bd23e2ca74bb"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.22.0` to `^0.22.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `>=6.10.0 <7.0.0` to `>=6.11.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.9.2 <7.0.0` to `>=6.9.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.74.2 <7.0.0` to `>=6.75.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.32.4",
+      "tag": "@uifabric/experiments_v6.32.4",
+      "date": "Fri, 28 Sep 2018 12:27:38 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "HorizontalStack: remove padding as a fix for collapsing margins, remove unnecessary calc() calls",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "9e45030357156e0469790bf08a35fd1a2f3e14dd"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.1.0 <2.0.0` to `>=1.1.1 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.9.1 <7.0.0` to `>=6.9.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.74.1 <7.0.0` to `>=6.74.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.32.3",
+      "tag": "@uifabric/experiments_v6.32.3",
+      "date": "Thu, 27 Sep 2018 12:27:48 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.21.2` to `^0.22.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.74.0 <7.0.0` to `>=6.74.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.32.2",
+      "tag": "@uifabric/experiments_v6.32.2",
+      "date": "Tue, 25 Sep 2018 12:28:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Stack: update styles to account for all margin collapsing on wrapped HorizontalStacks",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "be615412d1de62366ce034bbe4c89cb9e8c67420"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.21.1` to `^0.21.2`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.72.2 <7.0.0` to `>=6.73.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.32.1",
+      "tag": "@uifabric/experiments_v6.32.1",
+      "date": "Fri, 21 Sep 2018 14:25:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding a version stamp file",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "11c18bce52dba131548610c5eea0c1ab7fa4d1ca"
+          },
+          {
+            "comment": "Example modification to highlight scheming capability.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "7c45ef96439a8794586a6b338c2b2ee1e7080318"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.21.0` to `^0.21.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `>=6.1.1 <7.0.0` to `>=6.1.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.5.2 <1.0.0` to `>=0.5.3 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=6.1.0 <7.0.0` to `>=6.1.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `>=6.9.0 <7.0.0` to `>=6.10.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.0.0 <2.0.0` to `>=1.1.0 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.9.0 <7.0.0` to `>=6.9.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.72.0 <7.0.0` to `>=6.72.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.7.2 <7.0.0` to `>=6.7.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=6.0.4 <7.0.0` to `>=6.0.5 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.32.0",
+      "tag": "@uifabric/experiments_v6.32.0",
+      "date": "Wed, 19 Sep 2018 12:27:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Stack: add wrapping for HorizontalStack, support themed gap and padding, support native HTML properties, refactor StackItem so that its child does not require a class",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "813d94f140fdb8054136f3632d88f529e302ca09"
+          },
+          {
+            "comment": "StackItem: add fillHorizontal and fillVertical props",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "813d94f140fdb8054136f3632d88f529e302ca09"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.71.0 <7.0.0` to `>=6.71.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.31.0",
+      "tag": "@uifabric/experiments_v6.31.0",
+      "date": "Tue, 18 Sep 2018 12:26:03 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Stack: add wrapping for HorizontalStack, support themed gap and padding, support native HTML properties, refactor StackItem so that its child does not require a class",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "acab328b7c244a50ff2369c577b15008f1a75c1a"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `>=6.1.0 <7.0.0` to `>=6.1.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.70.0 <7.0.0` to `>=6.71.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.30.2",
+      "tag": "@uifabric/experiments_v6.30.2",
+      "date": "Mon, 17 Sep 2018 12:27:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Changes to support Foundation refactoring.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "25776c70eddcecb59d4d622c8d22bfa43a8c2d2a"
+          },
+          {
+            "comment": "nav fix",
+            "author": "exchangeadmin <yuz@microsoft.com>",
+            "commit": "e49c7543b6bdc409a461375ff540c1bbb99b30c2"
+          },
+          {
+            "comment": "improve nav per designer feedback",
+            "author": "exchangeadmin <yuz@microsoft.com>",
+            "commit": "e49c7543b6bdc409a461375ff540c1bbb99b30c2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.5.1 <1.0.0` to `>=0.5.2 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.69.0 <7.0.0` to `>=6.70.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.30.1",
       "tag": "@uifabric/experiments_v6.30.1",
       "date": "Fri, 14 Sep 2018 01:55:02 GMT",

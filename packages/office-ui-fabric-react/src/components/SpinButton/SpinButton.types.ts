@@ -104,13 +104,15 @@ export interface ISpinButtonProps {
   onValidate?: (value: string, event?: React.SyntheticEvent<HTMLElement>) => string | void;
 
   /**
-   * This callback is triggered when the increment button is pressed or if the user presses up arrow with focus on the input of the spinButton
+   * This callback is triggered when the increment button is pressed or if the user presses up arrow
+   * with focus on the input of the spinButton
    * @return {string | void} If a string is returned, it will be used as the value of the SpinButton.
    */
   onIncrement?: (value: string) => string | void;
 
   /**
-   * This callback is triggered when the decrement button is pressed or if the user presses down arrow with focus on the input of the spinButton
+   * This callback is triggered when the decrement button is pressed or if the user presses down arrow
+   * with focus on the input of the spinButton
    * @return {string | void} If a string is returned, it will be used as the value of the SpinButton.
    */
   onDecrement?: (value: string) => string | void;

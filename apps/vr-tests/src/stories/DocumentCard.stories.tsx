@@ -19,7 +19,9 @@ let previewProps = {
   previewImages: [
     {
       name: 'Revenue stream proposal fiscal year 2016 version02.pptx',
-      url: 'http://bing.com',
+      linkProps: {
+        href: 'http://bing.com'
+      },
       previewImageSrc: TestImages.documentPreview,
       iconSrc: TestImages.iconPpt,
       imageFit: ImageFit.cover,
@@ -34,28 +36,36 @@ let previewPropsCompact = {
   previewImages: [
     {
       name: 'Revenue stream proposal fiscal year 2016 version02.pptx',
-      url: 'http://bing.com',
+      linkProps: {
+        href: 'http://bing.com'
+      },
       previewImageSrc: TestImages.documentPreview,
       iconSrc: TestImages.iconPpt,
       width: 144
     },
     {
       name: 'New Contoso Collaboration for Conference Presentation Draft',
-      url: 'http://bing.com',
+      linkProps: {
+        href: 'http://bing.com'
+      },
       previewImageSrc: TestImages.documentPreviewTwo,
       iconSrc: TestImages.iconPpt,
       width: 144
     },
     {
       name: 'Spec Sheet for design',
-      url: 'http://bing.com',
+      linkProps: {
+        href: 'http://bing.com'
+      },
       previewImageSrc: TestImages.documentPreviewThree,
       iconSrc: TestImages.iconPpt,
       width: 144
     },
     {
       name: 'Contoso Marketing Presentation',
-      url: 'http://bing.com',
+      linkProps: {
+        href: 'http://bing.com'
+      },
       previewImageSrc: TestImages.documentPreview,
       iconSrc: TestImages.iconPpt,
       width: 144
@@ -75,7 +85,7 @@ storiesOf('DocumentCard', module)
   .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
   ))
-  .add('Root', () => (
+  .addStory('Root', () => (
     <DocumentCard onClickHref="http://bing.com">
       <DocumentCardPreview {...previewProps} />
       <DocumentCardTitle
@@ -85,7 +95,7 @@ storiesOf('DocumentCard', module)
       {DocActivity}
     </DocumentCard>
   ))
-  .add('Not truncated', () => (
+  .addStory('Not truncated', () => (
     <DocumentCard onClickHref="http://bing.com">
       <DocumentCardPreview {...previewProps} />
       <DocumentCardTitle
@@ -95,14 +105,21 @@ storiesOf('DocumentCard', module)
       {DocActivity}
     </DocumentCard>
   ))
-  .add('Compact', () => (
+  .addStory('With secondary title style', () => (
+    <DocumentCard onClickHref="http://bing.com">
+      <DocumentCardPreview {...previewProps} />
+      <DocumentCardTitle title="4 files were uploaded" showAsSecondaryTitle={true} />
+      {DocActivity}
+    </DocumentCard>
+  ))
+  .addStory('Compact', () => (
     <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
       <DocumentCardPreview {...previewPropsCompact} />
       <DocumentCardTitle title="4 files were uploaded" shouldTruncate={true} />
       {DocActivity}
     </DocumentCard>
   ))
-  .add('With Views', () => (
+  .addStory('With Views', () => (
     <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
       <DocumentCardPreview {...previewPropsCompact} />
       <DocumentCardTitle title="4 files were uploaded" shouldTruncate={true} />
@@ -117,4 +134,4 @@ storiesOf('DocumentCard', module)
         views={432}
       />
     </DocumentCard>
-  ));
+  ), { rtl: true });

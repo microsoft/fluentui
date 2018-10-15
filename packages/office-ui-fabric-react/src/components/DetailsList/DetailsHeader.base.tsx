@@ -6,7 +6,8 @@ import {
   IDetailsHeaderBaseProps,
   IColumnDragDropDetails,
   ColumnDragEndLocation,
-  IColumnReorderOptions
+  IColumnReorderOptions,
+  CheckboxVisibility
 } from './DetailsList.types';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Icon } from '../../Icon';
@@ -76,7 +77,6 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
 
     this._onToggleCollapseAll = this._onToggleCollapseAll.bind(this);
     this._onSelectAllClicked = this._onSelectAllClicked.bind(this);
-    this._setDraggedItemIndex = this._setDraggedItemIndex.bind(this);
     this._updateDragInfo = this._updateDragInfo.bind(this);
     this._onDragOver = this._onDragOver.bind(this);
     this._onDrop = this._onDrop.bind(this);
@@ -237,7 +237,9 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
                       <DetailsRowCheck
                         id={`${this._id}-check`}
                         aria-label={ariaLabelForSelectionColumn}
-                        aria-describedby={`${this._id}-checkTooltip`}
+                        aria-describedby={
+                          ariaLabelForSelectAllCheckbox && !this.props.onRenderColumnHeaderTooltip ? `${this._id}-checkTooltip` : undefined
+                        }
                         data-is-focusable={!isCheckboxHidden}
                         isHeader={true}
                         selected={isAllSelected}
@@ -337,45 +339,44 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
   }
 
   private _onDrop(item?: any, event?: DragEvent): void {
-    const draggedColumnIndex = this._draggedColumnIndex;
     const { columnReorderProps } = this.state;
+
     // Target index will not get changed if draggeditem is after target item.
     if (this._draggedColumnIndex >= 0 && event) {
-      const targetIndex = draggedColumnIndex > this._currentDropHintIndex! ? this._currentDropHintIndex! : this._currentDropHintIndex! - 1;
+      const targetIndex =
+        this._draggedColumnIndex > this._currentDropHintIndex! ? this._currentDropHintIndex! : this._currentDropHintIndex! - 1;
       let isValidDrop = false;
       event.stopPropagation();
       if (this._isValidCurrentDropHintIndex()) {
         isValidDrop = true;
-        this._onDropIndexInfo.sourceIndex = draggedColumnIndex;
+        this._onDropIndexInfo.sourceIndex = this._draggedColumnIndex;
         this._onDropIndexInfo.targetIndex = targetIndex;
       }
-      this._resetDropHints();
-      this._dropHintDetails = {};
-      this._draggedColumnIndex = -1;
       if (isValidDrop) {
         if (columnReorderProps && columnReorderProps.onColumnDrop) {
           const dragDropDetails: IColumnDragDropDetails = {
-            draggedIndex: draggedColumnIndex,
+            draggedIndex: this._draggedColumnIndex,
             targetIndex: targetIndex
           };
           columnReorderProps.onColumnDrop(dragDropDetails);
         } else if (columnReorderProps && columnReorderProps.handleColumnReorder) {
-          columnReorderProps.handleColumnReorder(draggedColumnIndex, targetIndex);
+          columnReorderProps.handleColumnReorder(this._draggedColumnIndex, targetIndex);
         }
       }
     }
+
+    this._resetDropHints();
+    this._dropHintDetails = {};
+    this._draggedColumnIndex = -1;
   }
 
-  private _setDraggedItemIndex(itemIndex: number) {
-    if (itemIndex >= 0) {
-      // Column index is set based on the checkbox
-      this._draggedColumnIndex = this.props.selectionMode !== SelectionMode.none ? itemIndex - 2 : itemIndex - 1;
-      this._getDropHintPositions();
-    } else {
-      this._resetDropHints();
-      this._draggedColumnIndex = -1;
-      this._dropHintDetails = {};
-    }
+  /**
+   * @returns whether or not the "Select All" checkbox column is hidden.
+   */
+  private _isCheckboxColumnHidden(): boolean {
+    const { selectionMode, checkboxVisibility } = this.props;
+
+    return selectionMode === SelectionMode.none || checkboxVisibility === CheckboxVisibility.hidden;
   }
 
   private _updateDragInfo(props: { itemIndex: number }, event?: MouseEvent) {
@@ -383,7 +384,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     const itemIndex = props.itemIndex;
     if (itemIndex >= 0) {
       // Column index is set based on the checkbox
-      this._draggedColumnIndex = this.props.selectionMode !== SelectionMode.none ? itemIndex - 2 : itemIndex - 1;
+      this._draggedColumnIndex = this._isCheckboxColumnHidden() ? itemIndex - 1 : itemIndex - 2;
       this._getDropHintPositions();
       if (columnReorderProps && columnReorderProps.onColumnDragStart) {
         columnReorderProps.onColumnDragStart(true);

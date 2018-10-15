@@ -38,12 +38,7 @@ describe('ResizeGroup', () => {
     expect(
       renderer
         .create(
-          <ResizeGroup
-            data={initialData}
-            onReduceData={onReduceScalingData}
-            onRenderData={onRenderData}
-            className={'TestClassName'}
-          />
+          <ResizeGroup data={initialData} onReduceData={onReduceScalingData} onRenderData={onRenderData} className={'TestClassName'} />
         )
         .toJSON()
     ).toMatchSnapshot();
@@ -54,9 +49,7 @@ describe('ResizeGroup', () => {
     const renderedDataId = 'onRenderDataId';
     const onRenderData = (data: any) => <div id={renderedDataId}> Rendered data: {data.content}</div>;
 
-    const wrapper = mount(
-      <ResizeGroup data={initialData} onReduceData={onReduceScalingData} onRenderData={onRenderData} />
-    );
+    const wrapper = mount(<ResizeGroup data={initialData} onReduceData={onReduceScalingData} onRenderData={onRenderData} />);
 
     expect(wrapper.find('#' + renderedDataId).length).toEqual(1);
   });
@@ -291,12 +284,7 @@ describe('ResizeGroup', () => {
         renderedData: renderedData
       };
 
-      const result = getNextResizeGroupState(
-        resizeGroupProps,
-        currentState,
-        getMeasuredElementWidthStub,
-        increasedWidth
-      );
+      const result = getNextResizeGroupState(resizeGroupProps, currentState, getMeasuredElementWidthStub, increasedWidth);
 
       expect(result).toEqual({
         renderedData: renderedData,
@@ -408,12 +396,7 @@ describe('ResizeGroup', () => {
         renderedData: renderedData
       };
 
-      const result = getNextResizeGroupState(
-        resizeGroupProps,
-        currentState,
-        getMeasuredElementWidthStub,
-        increasedWidth
-      );
+      const result = getNextResizeGroupState(resizeGroupProps, currentState, getMeasuredElementWidthStub, increasedWidth);
 
       expect(result).toEqual({
         renderedData: renderedData,
@@ -482,7 +465,8 @@ describe('ResizeGroup', () => {
       expect(measuredElementWidthStub.callCount).toEqual(0);
     });
 
-    it('sets dataToMeasure when the current data is in the cache but the onGrowData result is not in the cache in the grow resizeDirection', () => {
+    it(`sets dataToMeasure when the current data is in the cache but the onGrowData result is not in the cache
+      in the grow resizeDirection`, () => {
       const dataArray = [{ cacheKey: '5' }, { cacheKey: '6' }];
 
       const measurementCache = getMeasurementCache();

@@ -83,9 +83,7 @@ describe('mergeStyleSets', () => {
     expect(result.a).toBe('a-1');
     expect(result.b).toBe('b-2');
 
-    expect(_stylesheet.getRules()).toEqual(
-      '.root-0{background:red;}' + '.a-1{background:white;}' + '.b-2{background:blue;}'
-    );
+    expect(_stylesheet.getRules()).toEqual('.root-0{background:red;}' + '.a-1{background:white;}' + '.b-2{background:blue;}');
   });
 
   it('can merge correctly when all inputs are falsey', () => {
@@ -236,9 +234,9 @@ describe('mergeStyleSets', () => {
       return;
     };
 
-    const SubComponent: (
-      props: { styles: IStyleFunctionOrObject<ISubComponentStyleProps, ISubComponentStyles> }
-    ) => any = (props: { styles: IStyleFunctionOrObject<ISubComponentStyleProps, ISubComponentStyles> }) => {
+    const SubComponent: (props: { styles: IStyleFunctionOrObject<ISubComponentStyleProps, ISubComponentStyles> }) => any = (props: {
+      styles: IStyleFunctionOrObject<ISubComponentStyleProps, ISubComponentStyles>;
+    }) => {
       return;
     };
 
@@ -297,12 +295,10 @@ describe('mergeStyleSets', () => {
         expect.assertions(0);
       });
 
-      // NOTE: The following test should be enabled when Fabric is upgraded to Typescript 3.
-      it.skip('IStyleSet/IProcessedStyleSet should work with legacy sub components that only take IStyleFunctions', () => {
+      it('IStyleSet/IProcessedStyleSet should work with legacy sub components that only take IStyleFunctions', () => {
         const classNames = mergeStyleSets<IStylesWithStyleObjectAsSubCommponent>(getStyles2());
 
-        // NOTE: The following line should be uncommented when Fabric is upgraded to Typescript 3.
-        // LegacySubComponent({ styles: classNames.subComponentStyles.button({ isCollapsed: false }) });
+        LegacySubComponent({ styles: classNames.subComponentStyles.button({ isCollapsed: false }) });
 
         // this test primarily tests that the lines above do not result in a Typescript error.
         expect.assertions(0);

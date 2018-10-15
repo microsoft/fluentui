@@ -203,7 +203,7 @@ export interface IFontFace extends IRawFontStyle {
 
   /**
    * unicode-range allows you to set a specific range of characters to be downloaded
-   * from a font (embedded using @font-face) and made available for use on the current
+   * from a font (embedded using \@font-face) and made available for use on the current
    * page.
    */
   unicodeRange?: ICSSRule | string;
@@ -334,6 +334,18 @@ export interface IRawStyleBase extends IRawFontStyle {
    * vice versa.
    */
   appearance?: ICSSRule | string;
+
+  /**
+   * Lets you apply graphical effects such as blurring or color shifting to the area
+   * behind an element. Because it applies to everything behind the element, to see
+   * the effect you must make the element or its background at least partially transparent.
+   */
+  backdropFilter?: ICSSRule | string;
+
+  /**
+   * Edge requires the -webkit prefix backdrop-filter.
+   */
+  WebkitBackdropFilter?: ICSSRule | string;
 
   /**
    * Determines whether or not the “back” side of a transformed element is visible when
@@ -894,6 +906,22 @@ export interface IRawStyleBase extends IRawFontStyle {
   gridArea?: ICSSRule | string;
 
   /**
+   * Specifies the size of an implicitly-created grid column track
+   */
+  gridAutoColumns?: ICSSRule | string;
+
+  /**
+   * Controls how the auto-placement algorithm works,
+   * specifying exactly how auto-placed items get flowed into the grid.
+   */
+  gridAutoFlow?: ICSSRule | string;
+
+  /**
+   * Specifies the size of an implicitly-created grid column track
+   */
+  gridAutoRows?: ICSSRule | string;
+
+  /**
    * Controls a grid item's placement in a grid area, particularly grid position and a
    * grid span. Shorthand for setting grid-column-start and grid-column-end in a single
    * declaration.
@@ -909,12 +937,23 @@ export interface IRawStyleBase extends IRawFontStyle {
   gridColumnEnd?: ICSSRule | string;
 
   /**
+   * Sets the size of the gap (gutter) between an element's columns
+   */
+  gridColumnGap?: ICSSRule | string;
+
+  /**
    * Determines a grid item's placement by specifying the starting grid lines of a grid
    * item's grid area . A grid item's placement in a grid area consists of a grid
    * position and a grid span. See also ( grid-row-start, grid-row-end, and
    * grid-column-end)
    */
   gridColumnStart?: ICSSRule | string;
+
+  /**
+   * Specifies the gaps (gutters) between grid rows and columns. It is a shorthand
+   * for grid-row-gap and grid-column-gap.
+   */
+  gridGap?: ICSSRule | string;
 
   /**
    * Gets or sets a value that indicates which row an element within a Grid should
@@ -933,6 +972,18 @@ export interface IRawStyleBase extends IRawFontStyle {
   gridRowEnd?: ICSSRule | string;
 
   /**
+   * Sets the size of the gap (gutter) between an element's grid rows
+   */
+  gridRowGap?: ICSSRule | string;
+
+  /**
+   * Specifies a grid item’s start position within the grid row by contributing a line,
+   * a span, or nothing (automatic) to its grid placement, thereby specifying the
+   * inline-start edge of its grid area
+   */
+  gridRowStart?: ICSSRule | string;
+
+  /**
    * Specifies a row position based upon an integer location, string value, or desired
    * row size.
    * css/properties/grid-row is used as short-hand for grid-row-position and
@@ -945,6 +996,11 @@ export interface IRawStyleBase extends IRawFontStyle {
    * but can be referenced from the grid-placement properties. The syntax of the
    * grid-template-areas property also provides a visualization of the structure of the
    * grid, making the overall layout of the grid container easier to understand.
+   */
+  gridTemplate?: ICSSRule | string;
+
+  /**
+   * Specifies named grid areas
    */
   gridTemplateAreas?: ICSSRule | string;
 

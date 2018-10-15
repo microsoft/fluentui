@@ -150,7 +150,7 @@ Please take a look at our [contribution guidelines](https://github.com/OfficeDev
 
 ## Building the repo
 
-Before you get started, **make sure you have read the [Git branch setup instrucions](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Setup)**
+Before you get started, **make sure you have read the [Git branch setup instructions](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Setup)**
 
 To view the documentation including examples, contracts, component status, and to add functionality or fix issues locally, you can:
 

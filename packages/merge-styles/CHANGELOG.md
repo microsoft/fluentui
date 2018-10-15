@@ -1,6 +1,56 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Thu, 13 Sep 2018 17:38:04 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Oct 2018 12:29:12 GMT and should not be manually modified.
+
+## 6.10.1
+Mon, 15 Oct 2018 12:29:12 GMT
+
+### Patches
+
+- IStyleSet: Now uses a form that works better in TS 2.8 and does not require TS 3.0 to work. Thanks [Nimelrian](https://github.com/Nimelrian)!
+- Adding css grid properties to fill out the spec
+
+## 6.10.0
+Thu, 11 Oct 2018 23:13:31 GMT
+
+### Minor changes
+
+- Enable api-extractor task for merge-styles
+
+## 6.9.4
+Mon, 08 Oct 2018 12:24:15 GMT
+
+### Patches
+
+- Moving tslint/prettier dependencies 
+
+## 6.9.3
+Mon, 01 Oct 2018 12:27:24 GMT
+
+### Patches
+
+- Prettier cleanup
+
+## 6.9.2
+Fri, 28 Sep 2018 12:27:38 GMT
+
+### Patches
+
+- Ignoring registering rules which are undefined.
+
+## 6.9.1
+Fri, 21 Sep 2018 14:25:46 GMT
+
+### Patches
+
+- Adding a version stamp file
+
+## 6.9.0
+Thu, 20 Sep 2018 12:25:33 GMT
+
+### Minor changes
+
+- Adding support for feature queries in selectors.
 
 ## 6.8.4
 Thu, 13 Sep 2018 17:38:04 GMT

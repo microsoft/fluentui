@@ -6,13 +6,13 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
 >
   <div
     aria-label="Resize Group with an Overflow Set"
-    className=
-        ms-ResizeGroup
-        {
-          display: block;
-          position: relative;
-        }
     role="tabpanel"
+    style={
+      Object {
+        "display": "block",
+        "position": "relative",
+      }
+    }
   >
     <div
       data-automation-id="visibleContent"
@@ -3552,10 +3552,15 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               ms-Label
               ms-Dropdown-label
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
                 color: #333333;
                 display: inline-block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;

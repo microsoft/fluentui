@@ -5,6 +5,11 @@ exports[`Facepile renders Facepile correctly 1`] = `
   className=
       ms-Facepile
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
         width: auto;
       }
 >
@@ -57,17 +62,8 @@ exports[`Facepile renders Facepile correctly 1`] = `
                 ms-Facepile-itemButton
                 ms-Facepile-person
                 {
-                  border-radius: 50%;
-                  padding-bottom: 0px;
-                  padding-left: 0px;
-                  padding-right: 0px;
-                  padding-top: 0px;
-                  text-align: center;
-                  vertical-align: top;
-                }
-                button& {
                   background-color: transparent;
-                  background: none;
+                  border-radius: 50%;
                   border: none;
                   cursor: pointer;
                   display: inline;
@@ -75,6 +71,8 @@ exports[`Facepile renders Facepile correctly 1`] = `
                   padding-left: 0px;
                   padding-right: 0px;
                   padding-top: 0px;
+                  text-align: center;
+                  vertical-align: top;
                 }
                 &::-moz-focus-inner {
                   border: 0px;
@@ -119,8 +117,13 @@ exports[`Facepile renders Facepile correctly 1`] = `
                       ms-Image
                       ms-Persona-image
                       {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
                         border-radius: 50%;
                         border: 0px;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 14px;
+                        font-weight: 400;
                         height: 32px;
                         left: 0px;
                         margin-right: 10px;
@@ -181,17 +184,8 @@ exports[`Facepile renders Facepile correctly 1`] = `
                 ms-Facepile-itemButton
                 ms-Facepile-person
                 {
-                  border-radius: 50%;
-                  padding-bottom: 0px;
-                  padding-left: 0px;
-                  padding-right: 0px;
-                  padding-top: 0px;
-                  text-align: center;
-                  vertical-align: top;
-                }
-                button& {
                   background-color: transparent;
-                  background: none;
+                  border-radius: 50%;
                   border: none;
                   cursor: pointer;
                   display: inline;
@@ -199,6 +193,8 @@ exports[`Facepile renders Facepile correctly 1`] = `
                   padding-left: 0px;
                   padding-right: 0px;
                   padding-top: 0px;
+                  text-align: center;
+                  vertical-align: top;
                 }
                 &::-moz-focus-inner {
                   border: 0px;
@@ -243,8 +239,13 @@ exports[`Facepile renders Facepile correctly 1`] = `
                       ms-Image
                       ms-Persona-image
                       {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
                         border-radius: 50%;
                         border: 0px;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 14px;
+                        font-weight: 400;
                         height: 32px;
                         left: 0px;
                         margin-right: 10px;
@@ -305,14 +306,16 @@ exports[`Facepile renders Facepile correctly 1`] = `
                 ms-Button
                 ms-Facepile-itemButton
                 ms-Facepile-person
+                ms-Button--facepile
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  background-color: transparent;
                   border-radius: 50%;
-                  border: 1px solid transparent;
+                  border: none;
                   box-sizing: border-box;
                   cursor: pointer;
-                  display: inline-block;
+                  display: inline;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
@@ -357,17 +360,6 @@ exports[`Facepile renders Facepile correctly 1`] = `
                   left: 0px;
                   position: relative;
                   top: 0px;
-                }
-                button& {
-                  background-color: transparent;
-                  background: none;
-                  border: none;
-                  cursor: pointer;
-                  display: inline;
-                  padding-bottom: 0px;
-                  padding-left: 0px;
-                  padding-right: 0px;
-                  padding-top: 0px;
                 }
             data="75%"
             data-is-focusable={true}
