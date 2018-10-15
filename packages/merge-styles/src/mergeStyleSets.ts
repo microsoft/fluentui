@@ -44,11 +44,11 @@ export function mergeStyleSets<
   TStyleSet1 extends IStyleSet<TStyleSet1>,
   TStyleSet2 extends IStyleSet<TStyleSet2>,
   TStyleSet3 extends IStyleSet<TStyleSet3>
-  >(
-    styleSet1: TStyleSet1 | false | null | undefined,
-    styleSet2: TStyleSet2 | false | null | undefined,
-    styleSet3: TStyleSet3 | false | null | undefined
-  ): IProcessedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3>;
+>(
+  styleSet1: TStyleSet1 | false | null | undefined,
+  styleSet2: TStyleSet2 | false | null | undefined,
+  styleSet3: TStyleSet3 | false | null | undefined
+): IProcessedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3>;
 
 /**
  * Takes in one or more style set objects, each consisting of a set of areas,
@@ -66,12 +66,12 @@ export function mergeStyleSets<
   TStyleSet2 extends IStyleSet<TStyleSet2>,
   TStyleSet3 extends IStyleSet<TStyleSet3>,
   TStyleSet4 extends IStyleSet<TStyleSet4>
-  >(
-    styleSet1: TStyleSet1 | false | null | undefined,
-    styleSet2: TStyleSet2 | false | null | undefined,
-    styleSet3: TStyleSet3 | false | null | undefined,
-    styleSet4: TStyleSet4 | false | null | undefined
-  ): IProcessedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4>;
+>(
+  styleSet1: TStyleSet1 | false | null | undefined,
+  styleSet2: TStyleSet2 | false | null | undefined,
+  styleSet3: TStyleSet3 | false | null | undefined,
+  styleSet4: TStyleSet4 | false | null | undefined
+): IProcessedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4>;
 
 /**
  * Takes in one or more style set objects, each consisting of a set of areas,
@@ -91,9 +91,7 @@ export function mergeStyleSets(...styleSets: Array<IStyleSet<any> | undefined | 
  *
  * @param styleSets - One or more style sets to be merged.
  */
-export function mergeStyleSets(
-  ...styleSets: Array<IStyleSet<any> | undefined | false | null>
-): IProcessedStyleSet<any> {
+export function mergeStyleSets(...styleSets: Array<IStyleSet<any> | undefined | false | null>): IProcessedStyleSet<any> {
   // tslint:disable-next-line:no-any
   const classNameSet: IProcessedStyleSet<any> = { subComponentStyles: {} };
   const classMap: { [key: string]: string } = {};
@@ -108,9 +106,7 @@ export function mergeStyleSets(
     // we have guarded against falsey values just above.
     styleSet!;
 
-  if (styleSets.length > 1) {
-    concatenatedStyleSet = concatStyleSets(...styleSets);
-  }
+  concatenatedStyleSet = concatStyleSets(...styleSets);
 
   const registrations = [];
 

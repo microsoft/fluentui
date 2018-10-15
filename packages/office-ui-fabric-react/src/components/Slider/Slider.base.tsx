@@ -79,7 +79,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       theme
     } = this.props;
     const { value, renderedValue } = this.state;
-    const thumbOffsetPercent: number = ((renderedValue! - min!) / (max! - min!)) * 100;
+    const thumbOffsetPercent: number = min === max ? 0 : ((renderedValue! - min!) / (max! - min!)) * 100;
     const lengthString = vertical ? 'height' : 'width';
     const onMouseDownProp: {} = disabled ? {} : { onMouseDown: this._onMouseDownOrTouchStart };
     const onTouchStartProp: {} = disabled ? {} : { onTouchStart: this._onMouseDownOrTouchStart };

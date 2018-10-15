@@ -24,8 +24,13 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
           ms-FocusZone
           ms-CommandBar
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             background-color: #f4f4f4;
             display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
             height: 40px;
             padding-bottom: 0;
             padding-left: 16px;
@@ -1339,8 +1344,13 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
           ms-FocusZone
           ms-CommandBar
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             background-color: #f4f4f4;
             display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
             height: 40px;
             padding-bottom: 0;
             padding-left: 16px;
@@ -1967,6 +1977,11 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     className=
 
                         {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
                           position: relative;
                         }
                   >

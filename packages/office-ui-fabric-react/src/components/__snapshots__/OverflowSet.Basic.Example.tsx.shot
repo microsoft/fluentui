@@ -28,6 +28,8 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
       className=
           ms-Link
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             background-color: transparent;
             background: none;
             border-bottom: 1px solid transparent;
@@ -35,7 +37,9 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             color: #0078d4;
             cursor: pointer;
             display: inline;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: inherit;
+            font-weight: 400;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -88,6 +92,8 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
       className=
           ms-Link
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             background-color: transparent;
             background: none;
             border-bottom: 1px solid transparent;
@@ -95,7 +101,9 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             color: #0078d4;
             cursor: pointer;
             display: inline;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: inherit;
+            font-weight: 400;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -148,6 +156,8 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
       className=
           ms-Link
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             background-color: transparent;
             background: none;
             border-bottom: 1px solid transparent;
@@ -155,7 +165,9 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             color: #0078d4;
             cursor: pointer;
             display: inline;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: inherit;
+            font-weight: 400;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;

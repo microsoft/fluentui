@@ -2,6 +2,25 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.10.1",
+      "tag": "@uifabric/merge-styles_v6.10.1",
+      "date": "Mon, 15 Oct 2018 12:29:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "IStyleSet: Now uses a form that works better in TS 2.8 and does not require TS 3.0 to work. Thanks [Nimelrian](https://github.com/Nimelrian)!",
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "11e886ae48f7846de6baf05d09752f6e7c49e16d"
+          },
+          {
+            "comment": "Adding css grid properties to fill out the spec",
+            "author": "Joe Day <joeday@microsoft.com>",
+            "commit": "46db8c850dd258ba70babd2ebd0158e6562d4c67"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.10.0",
       "tag": "@uifabric/merge-styles_v6.10.0",
       "date": "Thu, 11 Oct 2018 23:13:31 GMT",

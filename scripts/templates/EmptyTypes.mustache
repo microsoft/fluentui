@@ -1,0 +1,45 @@
+import { IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { IComponent, IStyleableComponentProps } from '../../Foundation';
+
+export type I{{componentName}}Component = IComponent< I{{componentName}}Props, I{{componentName}}ViewProps, I{{componentName}}Styles>;
+
+// Extending IStyleableComponentProps will automatically add stylable props for you, such as styles and theme.
+//    If you don't want these props to be included in your component, just remove this extension.
+export interface I{{componentName}}Props extends IStyleableComponentProps< I{{componentName}}ViewProps, I{{componentName}}Styles> {
+  // All props for your component are to be defined here.
+  /**
+   * Component sample default prop for use if component is uncontrolled.
+   * @default 'Default Text'
+   */
+  defaultText?: string;
+
+  /**
+   * Component sample prop. If provided, component is controlled.
+   * @default defaultText
+   */
+  text?: string;
+}
+
+export type I{{componentName}}ViewProps =
+  // You can carry over props from your I{{componentName}}Props interface here.
+  // Typically props are required by the time they trickle down to the view,
+  //    which is reflected by using 'Required'.
+  Required< Pick< I{{componentName}}Props, 'text'>> &
+  // You can also optionally include props by removing 'Required':
+  // Pick< I{{componentName}}Props, 'text'>> &
+  {
+    // You can define view only props here.
+    /**
+    * Sample prop internal to component. These types of props aren't exposed
+    *   externally to consumers and their values are typically determined by component state.
+    */
+    status: string;
+  };
+
+export interface I{{componentName}}Styles {
+  /**
+   * Styling for the root element.
+   */
+  root: IStyle;
+  // Add other styles elements for your component here.
+}

@@ -97,8 +97,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
     },
     navItemNameColumn: {
       width: '100%',
-      marginLeft:
-        isChildLinkSelected || (!hasChildren && isSelected && !(nestingLevel && nestingLevel > 0)) ? '8px' : '0px',
+      marginLeft: isChildLinkSelected || (!hasChildren && isSelected && !(nestingLevel && nestingLevel > 0)) ? '8px' : '0px',
       lineHeight: !!nestingLevel && nestingLevel > 0 ? navChildItemHeight : navItemHeight,
       verticalAlign: 'top',
       display: 'inline-block',

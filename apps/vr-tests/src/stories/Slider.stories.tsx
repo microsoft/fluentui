@@ -55,4 +55,15 @@ storiesOf('Slider', module)
         vertical={true}
       />
     </div>
+  )).addStory('EqualMinMax', () => (
+    <div style={{ flexDirection: 'column', width: '300px', display: 'flex' }}>
+      <Slider
+        label='Basic example:'
+        min={1}
+        max={1}
+        step={1}
+        defaultValue={1}
+        showValue={true}
+      />
+    </div>
   ));
