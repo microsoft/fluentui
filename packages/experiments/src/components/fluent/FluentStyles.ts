@@ -15,6 +15,12 @@ const BreadcrumbStyles = (props: IBreadcrumbStyleProps) => {
     },
     ':active': {
       backgroundColor: NeutralColors.gray30
+    },
+    // Needs to be revised with designers when moving to default OUFR styles.
+    // Now used only to override the default ones to follow fluent specs.
+    '&:active:hover': {
+      color: NeutralColors.gray160,
+      backgroundColor: NeutralColors.gray30
     }
   };
 
@@ -32,9 +38,6 @@ const BreadcrumbStyles = (props: IBreadcrumbStyleProps) => {
         '.ms-Fabric--isFocusVisible &:focus': {
           // Necessary due to changes of Link component not using getFocusStyle
           outline: 'none'
-        },
-        '&:active:hover': {
-          color: NeutralColors.gray160
         },
         ...stateSelectors
       }
