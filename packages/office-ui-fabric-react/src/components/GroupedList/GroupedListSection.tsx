@@ -197,7 +197,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     const isShowAllVisible = group && !group.children && !group.isCollapsed && !group.isShowingAll &&
       (group.count > renderCount || group.hasMoreData);
     const hasNestedGroups = group && group.children && group.children.length > 0;
-    console.log('Divider props ', groups!.length);
+
     const dividerProps: IGroupDividerProps = {
       group: group,
       groupIndex: groupIndex,
