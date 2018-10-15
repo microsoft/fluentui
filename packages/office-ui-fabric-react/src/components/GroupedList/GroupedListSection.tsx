@@ -115,8 +115,8 @@ export interface IGroupedListSectionProps extends React.Props<GroupedListSection
    */
   onShouldVirtualize?: (props: IListProps) => boolean;
 
-  /** Stores group's sibling count. */
-  siblingCount?: number;
+  /** Stores parent group's children. */
+  groups?: IGroup[];
 }
 
 export interface IGroupedListSectionState {
@@ -190,14 +190,14 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       onRenderGroupShowAll = this._onRenderGroupShowAll,
       onRenderGroupFooter = this._onRenderGroupFooter,
       onShouldVirtualize,
-      siblingCount
+      groups
     } = this.props;
     const { isSelected } = this.state;
     const renderCount = group && getGroupItemLimit ? getGroupItemLimit(group) : Infinity;
     const isShowAllVisible = group && !group.children && !group.isCollapsed && !group.isShowingAll &&
       (group.count > renderCount || group.hasMoreData);
     const hasNestedGroups = group && group.children && group.children.length > 0;
-
+    console.log('Divider props ', groups!.length);
     const dividerProps: IGroupDividerProps = {
       group: group,
       groupIndex: groupIndex,
@@ -205,7 +205,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       isSelected,
       viewport: viewport,
       selectionMode: selectionMode,
-      siblingCount: siblingCount
+      groups: groups
     };
     const groupHeaderProps: IGroupDividerProps = assign({}, headerProps, dividerProps);
     const groupShowAllProps: IGroupDividerProps = assign({}, showAllProps, dividerProps);
@@ -351,8 +351,6 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       onShouldVirtualize,
       group
     } = this.props;
-    const siblingCount = group && group.children && group.children.length > 0 ? group.children.length - 1 : 0;
-
     return (!subGroup || subGroup.count > 0) ? (
       <GroupedListSection
         ref={ 'subGroup_' + subGroupIndex }
@@ -377,7 +375,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
         onRenderGroupShowAll={ onRenderGroupShowAll }
         onRenderGroupFooter={ onRenderGroupFooter }
         onShouldVirtualize={ onShouldVirtualize }
-        siblingCount={ siblingCount }
+        groups={ group!.children }
       />
     ) : null;
   }

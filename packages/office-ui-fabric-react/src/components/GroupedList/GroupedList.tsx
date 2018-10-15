@@ -158,8 +158,6 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
       groups
     } = this.props;
 
-    const siblingCount = groups && groups.length > 0 ? groups.length - 1 : 0;
-
     // override group header/footer props as needed
     const dividerProps = {
       onToggleSelectGroup: this._onToggleSelectGroup,
@@ -200,7 +198,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
         showAllProps={ showAllProps }
         viewport={ viewport }
         onShouldVirtualize={ onShouldVirtualize }
-        siblingCount={ siblingCount }
+        groups={ groups }
       />
     );
   }
