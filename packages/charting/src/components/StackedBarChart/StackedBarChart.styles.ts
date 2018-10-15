@@ -5,6 +5,7 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
   const { className, width, barHeight, legendColor, shouldHighlight, theme, href } = props;
   return {
     root: [
+      theme.fonts.medium,
       'ms-StackedBarChart',
       {
         width: width ? width : '100%',

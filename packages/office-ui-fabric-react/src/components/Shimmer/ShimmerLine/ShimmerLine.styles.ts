@@ -25,6 +25,7 @@ export function getStyles(props: IShimmerLineStyleProps): IShimmerLineStyles {
   return {
     root: [
       globalClassNames.root,
+      theme.fonts.medium,
       {
         height: `${height}px`,
         boxSizing: 'content-box',

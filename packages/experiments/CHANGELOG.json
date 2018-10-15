@@ -2,6 +2,51 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.37.1",
+      "tag": "@uifabric/experiments_v6.37.1",
+      "date": "Mon, 15 Oct 2018 12:29:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "updating snapshot tests in experiments package",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "e83f082e86ab8a599f298dc1dfe343981bbebee5"
+          },
+          {
+            "comment": "Added font theme setting to Button, ChicletCard, CollapsibleSection, Shimmer, ShimmerCircle, ShimmerElementsGroup, ShimmerGap, ShimmerLine, HorizontalStack, Text. Snapshots updated in VerticalStack, Stack.",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "e83f082e86ab8a599f298dc1dfe343981bbebee5"
+          },
+          {
+            "comment": "Improve BaseState typing and fix use by experimental components.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "9acc74dfac060f464357a56c61b6f0bfde025dfe"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Added font theme setting to Button, ChicletCard, CollapsibleSection, Shimmer, ShimmerCircle, ShimmerElementsGroup, ShimmerGap, ShimmerLine, HorizontalStack, Text. Snapshots updated in VerticalStack, Stack.",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "e83f082e86ab8a599f298dc1dfe343981bbebee5"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.24.3` to `^0.24.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `>=6.1.3 <7.0.0` to `>=6.2.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.10.0 <7.0.0` to `>=6.10.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.84.0 <7.0.0` to `>=6.84.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.37.0",
       "tag": "@uifabric/experiments_v6.37.0",
       "date": "Wed, 10 Oct 2018 12:29:05 GMT",

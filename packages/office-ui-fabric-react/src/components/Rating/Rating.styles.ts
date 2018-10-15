@@ -46,6 +46,7 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
   return {
     root: [
       classNames.root,
+      theme.fonts.medium,
       !disabled &&
         !readOnly && {
           selectors: {

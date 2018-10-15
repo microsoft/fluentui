@@ -1,6 +1,34 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 10 Oct 2018 12:29:05 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Oct 2018 12:29:12 GMT and should not be manually modified.
+
+## 6.84.1
+Mon, 15 Oct 2018 12:29:12 GMT
+
+### Patches
+
+- DetailsList: do not set select all button aria-describedby unless id it references exists
+- Added default font theme for Slider control to remove Fabric component dependency.
+- Fix ContextualMenuItem secondary text not read by screen reader due to aria-label containing only primary text."
+- Slider bug fix for min equals max
+- Panel: Fixed second scroll bar when content taller than panel
+- ShimmeredDetailsList: Added export to top level index file
+
+## 6.84.0
+Thu, 11 Oct 2018 23:13:31 GMT
+
+### Minor changes
+
+- Implement ImageFit.centerCover
+
+### Patches
+
+- Calendar: accessibility fixes for month option grid
+- Dropdown: Fix issue where correct option wasn't selected
+- Fix ContextualMenu example broken charm icons and specify hover delay input as type="number".
+- Remove 'Button Swap with Focus State' example
+- ScrollablePane: Update DetailsList example to fix bug where footer overlapped scroll bar
+- IconButton: Specifiy the color of the icon in IconButton so that it can be themed and change the hover color for the same reasons.
 
 ## 6.83.0
 Wed, 10 Oct 2018 12:29:05 GMT
