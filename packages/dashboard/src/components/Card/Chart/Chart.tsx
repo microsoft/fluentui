@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IChartInternalProps, IChartStyles, IChartProps, ChartType, ChartHeight, ChartWidth, TimeRange } from './Chart.types';
+import { IChartInternalProps, IChartStyles, IChartProps, ChartType, ChartHeight, ChartWidth } from './Chart.types';
 import {
   DonutChart,
   HorizontalBarChart,
@@ -156,21 +156,22 @@ export class Chart extends React.Component<IChartInternalProps, { _width: number
         });
       });
       const tickValues: Date[] = [sDate];
-      if (timeRange === TimeRange['7Days']) {
+      // comparing prop with string union type 7Days | 30Days | 90Days | 180Days
+      if (timeRange === '7Days') {
         for (let i = 0; i < 6; i++) {
           const nextDate = new Date(sDate);
           nextDate.setDate(sDate.getDate() + 1);
           sDate = nextDate;
           tickValues.push(nextDate);
         }
-      } else if (timeRange === TimeRange['30Days']) {
+      } else if (timeRange === '30Days') {
         for (let i = 0; i < 5; i++) {
           const nextDate = new Date(sDate);
           nextDate.setDate(sDate.getDate() + 5);
           sDate = nextDate;
           tickValues.push(nextDate);
         }
-      } else if (timeRange === TimeRange['90Days']) {
+      } else if (timeRange === '90Days') {
         for (let i = 0; i < 5; i++) {
           const nextDate = new Date(sDate);
           nextDate.setDate(sDate.getDate() + 15);

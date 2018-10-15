@@ -34,13 +34,6 @@ export enum ChartHeight {
   tall
 }
 
-export enum TimeRange {
-  '7Days',
-  '30Days',
-  '90Days',
-  '180Days'
-}
-
 export interface IChartProps {
   /**
    * Label to apply to the whole chart.
@@ -109,7 +102,7 @@ export interface IChartProps {
    * The time range for the x-axis data of line chart. Only '7, 30, 90, 180 day' formats are supported.
    * One of the timeRange must be specified to line chart when Date type data is selected for line chart. The default is 180Days format
    */
-  timeRange?: TimeRange;
+  timeRange?: '7Days' | '30Days' | '90Days' | '180Days';
 }
 
 export interface IChartInternalProps extends IChartProps {

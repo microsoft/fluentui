@@ -1,16 +1,6 @@
 import * as React from 'react';
 import { IChartProps as IChartingProps, ILineChartPoints } from '@uifabric/charting';
-import {
-  Card,
-  CardContentType,
-  CardSize,
-  ChartType,
-  ICardProps,
-  ICardContentDetails,
-  IChartProps,
-  Priority,
-  TimeRange
-} from '@uifabric/dashboard';
+import { Card, CardContentType, CardSize, ChartType, ICardProps, ICardContentDetails, IChartProps, Priority } from '@uifabric/dashboard';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export class MultipleLineChartExample extends React.Component<{}, {}> {
@@ -98,7 +88,7 @@ export class MultipleLineChartExample extends React.Component<{}, {}> {
     const chartContent: IChartProps = {
       chartType: ChartType.LineChart,
       chartData: firstChartData,
-      timeRange: TimeRange['180Days']
+      timeRange: '180Days'
     };
 
     const contentAreaList: ICardContentDetails[] = [
