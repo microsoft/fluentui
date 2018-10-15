@@ -12,6 +12,7 @@ export * from './components/PropertiesTable/PropertiesTableSet.types';
 export * from './components/templates';
 export * from './utilities/beep';
 export * from './utilities/createApp';
+export * from './utilities/customizations';
 export * from './utilities/data';
 export * from './utilities/debugging';
 export * from './utilities/examplesOf';
