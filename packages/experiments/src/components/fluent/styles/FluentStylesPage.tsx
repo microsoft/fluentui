@@ -18,6 +18,7 @@ import { FluentStylesToggleExample } from './examples/FluentStyles.Toggle.Exampl
 import { FluentStylesTextFieldExample } from './examples/FluentStyles.TextField.Example';
 import { FluentStylesPanelExample } from './examples/FluentStyles.Panel.Example';
 import { FluentStylesComboBoxExample } from './examples/FluentStyles.ComboBox.Example';
+import { FluentStylesDropdownExample } from './examples/FluentStyles.Dropdown.Example';
 
 const FluentBreadcrumbExampleCode = require('!raw-loader!./examples/FluentStyles.Breadcrumb.Example.tsx') as string;
 const FluentButtonExampleCode = require('!raw-loader!./examples/FluentStyles.Button.Example.tsx') as string;
@@ -29,11 +30,11 @@ const FluentLabelExampleCode = require('!raw-loader!./examples/FluentStyles.Labe
 const FluentRatingExampleCode = require('!raw-loader!./examples/FluentStyles.Rating.Example.tsx') as string;
 const FluentSliderExampleCode = require('!raw-loader!./examples/FluentStyles.Slider.Example.tsx') as string;
 const FluentStylesToggleExampleCode = require('!raw-loader!./examples/FluentStyles.Toggle.Example.tsx') as string;
-
 const FluentStylesContextualMenuExampleCode = require('!raw-loader!./examples/FluentStyles.ContextualMenu.Example.tsx') as string;
 const FluentStylesTextFieldExampleCode = require('!raw-loader!./examples/FluentStyles.TextField.Example.tsx') as string;
 const FluentStylesPanelExampleCode = require('!raw-loader!./examples/FluentStyles.Panel.Example.tsx') as string;
 const FluentStylesComboBoxExampleCode = require('!raw-loader!./examples/FluentStyles.ComboBox.Example.tsx') as string;
+const FluentStylesDropdownExampleCode = require('!raw-loader!./examples/FluentStyles.Dropdown.Example.tsx') as string;
 
 export interface IFabricStylesPageState {
   isFluent?: boolean;
@@ -76,6 +77,9 @@ export class FluentStylesPage extends React.Component<IComponentDemoPageProps, I
               </ExampleCard>
               <ExampleCard title="ChoiceGroup" code={FluentChoiceGroupExampleCode}>
                 <FluentStylesChoiceGroupExample />
+              </ExampleCard>
+              <ExampleCard title="Dropdown" code={FluentStylesDropdownExampleCode}>
+                <FluentStylesDropdownExample />
               </ExampleCard>
               <ExampleCard title="ComboBox" code={FluentStylesComboBoxExampleCode}>
                 <FluentStylesComboBoxExample />
