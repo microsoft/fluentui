@@ -30,6 +30,9 @@ export interface IAppDefinition {
   testPages: IAppLink[];
   examplePages: IAppLinkGroup[];
   headerLinks: IAppLink[];
+  /**
+   * Optional customizations to apply to the application.
+   */
   customizations?: IAppCustomizations;
 }
 

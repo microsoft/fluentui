@@ -3,7 +3,13 @@ import * as React from 'react';
 import { ICustomizations } from 'office-ui-fabric-react/lib/Utilities';
 
 export type IExampleCardCustomizations = {
+  /**
+   * Theme title used in selectors shown to user.
+   */
   title: string;
+  /**
+   * Associated customizations that will be applied to example card.
+   */
   customizations: ICustomizations;
 };
 
