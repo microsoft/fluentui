@@ -53,6 +53,25 @@
         }
       }
     }
+
+    // Modeled after ExampleCard-codeButton to look similar
+    .ms-Dropdown-title.ExampleCard-themeDropdown {
+      @include ms-margin-right(0);
+      background: none;
+      background-color: transparent;
+      border: 1px solid $ms-color-neutralTertiary;
+      border-bottom: 0;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+      padding: 4px 12px;
+      min-width: 100px;
+      transition: border $ms-animation-duration-3 $ms-animation-ease-1;
+
+      &:focus {
+        border-color: $ms-color-neutralDark;
+        outline-color: $ms-color-neutralDark;
+      }
+    }
   }
 
   .ExampleCard-example {

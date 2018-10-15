@@ -5,6 +5,7 @@ import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/
 import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { IKeytipProps } from '../../Keytip';
 import { ILabelStyleProps } from '../../Label';
+import { RectangleEdge } from '../../utilities/positioning';
 
 export { SelectableOptionMenuItemType as DropdownMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 
@@ -145,6 +146,11 @@ export type IDropdownStyleProps = Pick<IDropdownProps, 'theme' | 'className' | '
    * This is primarily provided for backwards compatibility.
    */
   calloutClassName?: string;
+
+  /**
+   * Prop to notify on what edge the dropdown callout was positioned respective to the title.
+   */
+  calloutRenderEdge?: RectangleEdge;
 };
 
 /**

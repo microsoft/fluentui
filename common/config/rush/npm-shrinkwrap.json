@@ -2719,6 +2719,11 @@
       "resolved": "https://registry.npmjs.org/@types/deep-assign/-/deep-assign-0.1.1.tgz",
       "integrity": "sha512-88jktQ7RJ96bJ4S8I2oeRylMXGeaZt/QBG0k8PiQ5UXCIliUQm0Pzlv3zcN1ZvEIuaLBgMkP0ynr8fAkwChgOQ=="
     },
+    "@types/d3-time-format": {
+      "version": "2.1.0",
+      "resolved": "https://registry.npmjs.org/@types/d3-time-format/-/d3-time-format-2.1.0.tgz",
+      "integrity": "sha512-/myT3I7EwlukNOX2xVdMzb8FRgNzRMpsZddwst9Ld/VFe6LyJyRp0s32l/V9XoUzk+Gqu56F/oGk6507+8BxrA=="
+    },
     "@types/enzyme": {
       "version": "3.1.13",
       "resolved": "https://registry.npmjs.org/@types/enzyme/-/enzyme-3.1.13.tgz",

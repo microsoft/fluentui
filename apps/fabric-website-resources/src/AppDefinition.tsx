@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { App as AppBase, IAppDefinition, IAppProps } from '@uifabric/example-app-base';
 import { DetailsListBasicExample } from 'office-ui-fabric-react/lib/components/DetailsList/examples/DetailsList.Basic.Example';
+import { AppCustomizations } from './customizations/customizations';
 
 export const AppDefinition: IAppDefinition = {
   appTitle: 'Fabric - React',
-
+  customizations: AppCustomizations,
   testPages: [
     {
       component: DetailsListBasicExample,
@@ -114,15 +115,13 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/detailslist/Compact'
         },
         {
-          component: require<any>('./components/pages/DetailsList/DetailsListCustomColumnsPage')
-            .DetailsListCustomColumnsPage,
+          component: require<any>('./components/pages/DetailsList/DetailsListCustomColumnsPage').DetailsListCustomColumnsPage,
           key: 'DetailsList - CustomColumns',
           name: 'DetailsList - CustomColumns',
           url: '#/examples/detailslist/CustomColumns'
         },
         {
-          component: require<any>('./components/pages/DetailsList/DetailsListCustomGroupHeadersPage')
-            .DetailsListCustomGroupHeadersPage,
+          component: require<any>('./components/pages/DetailsList/DetailsListCustomGroupHeadersPage').DetailsListCustomGroupHeadersPage,
           key: 'DetailsList - CustomGroupHeaders',
           name: 'DetailsList - CustomGroupHeaders',
           url: '#/examples/detailslist/CustomGroupHeaders'
@@ -134,8 +133,7 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/detailslist/CustomRows'
         },
         {
-          component: require<any>('./components/pages/DetailsList/DetailsListCustomFooterPage')
-            .DetailsListCustomFooterPage,
+          component: require<any>('./components/pages/DetailsList/DetailsListCustomFooterPage').DetailsListCustomFooterPage,
           key: 'DetailsList - CustomFooter',
           name: 'DetailsList - CustomFooter',
           url: '#/examples/detailslist/CustomFooter'
@@ -147,15 +145,13 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/detailslist/DragDrop'
         },
         {
-          component: require<any>('./components/pages/DetailsList/DetailsListLargeGroupedPage')
-            .DetailsListLargeGroupedPage,
+          component: require<any>('./components/pages/DetailsList/DetailsListLargeGroupedPage').DetailsListLargeGroupedPage,
           key: 'DetailsList - LargeGrouped',
           name: 'DetailsList - LargeGrouped',
           url: '#/examples/detailslist/LargeGrouped'
         },
         {
-          component: require<any>('./components/pages/DetailsList/DetailsListNavigatingFocusPage')
-            .DetailsListNavigatingFocusPage,
+          component: require<any>('./components/pages/DetailsList/DetailsListNavigatingFocusPage').DetailsListNavigatingFocusPage,
           key: 'DetailsList - NavigatingFocus',
           name: 'DetailsList - NavigatingFocus',
           url: '#/examples/detailslist/NavigatingFocus'
@@ -167,8 +163,7 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/detailslist/Shimmer'
         },
         {
-          component: require<any>('./components/pages/DetailsList/DetailsListSimpleGroupedPage')
-            .DetailsListSimpleGroupedPage,
+          component: require<any>('./components/pages/DetailsList/DetailsListSimpleGroupedPage').DetailsListSimpleGroupedPage,
           key: 'DetailsList - SimpleGrouped',
           name: 'DetailsList - SimpleGrouped',
           url: '#/examples/detailslist/SimpleGrouped'
