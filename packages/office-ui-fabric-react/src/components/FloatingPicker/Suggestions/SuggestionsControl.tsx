@@ -55,9 +55,9 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
   protected _searchForMoreButton: IButton;
   protected _selectedElement: HTMLDivElement;
   protected _suggestions: SuggestionsCore<T>;
-  private SuggestionsOfProperType: new (props: ISuggestionsCoreProps<T>) => SuggestionsCore<
-    T
-  > = SuggestionsCore as new (props: ISuggestionsCoreProps<T>) => SuggestionsCore<T>;
+  private SuggestionsOfProperType: new (props: ISuggestionsCoreProps<T>) => SuggestionsCore<T> = SuggestionsCore as new (
+    props: ISuggestionsCoreProps<T>
+  ) => SuggestionsCore<T>;
 
   constructor(suggestionsProps: ISuggestionsControlProps<T>) {
     super(suggestionsProps);
@@ -94,9 +94,6 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
 
     return (
       <div className={css('ms-Suggestions', className ? className : '', styles.root)}>
-        <div className={styles.screenReaderOnly} role="alert" id="selected-suggestion-alert" aria-live="assertive">
-          {this._getAriaLabel()}
-        </div>
         {headerItemsProps && this.renderHeaderItems()}
         {this._renderSuggestions()}
         {footerItemsProps && this.renderFooterItems()}
@@ -110,6 +107,10 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
 
   public get currentSuggestionIndex(): number {
     return this._suggestions ? this._suggestions.currentIndex : -1;
+  }
+
+  public get selectedElement(): HTMLDivElement | undefined {
+    return this._selectedElement ? this._selectedElement : this._suggestions.selectedElement;
   }
 
   public hasSuggestionSelected(): boolean {
@@ -470,18 +471,6 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
         return SuggestionItemType.header;
       case SuggestionItemType.footer:
         return SuggestionItemType.suggestion;
-    }
-  }
-
-  private _getAriaLabel(): string | undefined {
-    const { selectedHeaderIndex, selectedFooterIndex } = this.state;
-    const { headerItemsProps, footerItemsProps } = this.props;
-    if (headerItemsProps && selectedHeaderIndex !== -1) {
-      return headerItemsProps[selectedHeaderIndex].ariaLabel;
-    } else if (this.hasSuggestionSelected()) {
-      return this.currentSuggestion.ariaLabel;
-    } else if (footerItemsProps && selectedFooterIndex !== -1) {
-      return footerItemsProps[selectedFooterIndex].ariaLabel;
     }
   }
 }
