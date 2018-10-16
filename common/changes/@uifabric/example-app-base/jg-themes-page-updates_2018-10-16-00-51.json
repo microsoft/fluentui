@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/example-app-base",
-      "comment": "Add optional app customizations and apply to examples when provided.",
+      "comment": "Modify CodepenComponent for use by other packages.",
       "type": "minor"
     }
   ],
