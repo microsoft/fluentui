@@ -44,7 +44,7 @@ export class CodepenComponent extends React.Component<ICodepenProps> {
         <ButtonType
           type="submit"
           iconProps={{ iconName: 'OpenInNewWindow' }}
-          text="Export to Codepen"
+          text="Export to CodePen"
           className={css('ExampleCard-codeButton')}
         />
       </form>

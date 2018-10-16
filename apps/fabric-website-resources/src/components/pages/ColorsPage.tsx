@@ -389,19 +389,14 @@ export class ColorsPage extends BaseComponent<{}, IColorsPageState> {
       <div>
         <h2 id="Output">Output</h2>
         <div className={'ms-themer-output-root'}>
-          <Pivot styles={{ root: { padding: 10 } }} style={{ width: '100%' }}>
+          <Pivot styles={{ root: { padding: 10 } }}>
             <PivotItem linkText="Code">
+              <textarea readOnly={true} spellCheck={false} value={codeHeader + themeAsCode} style={{ width: 350 }} />
               <p>
                 This code block initializes the theme you have configured above and loads it using the loadTheme utility function. Calling
-                loadTheme will automatically apply the configured theming to any Fabric controls used within the same app.
+                loadTheme will automatically apply the configured theming to any Fabric controls used within the same app. You can also
+                export this example to CodePen with a few component examples below.
               </p>
-              <textarea
-                readOnly={true}
-                spellCheck={false}
-                value={codeHeader + themeAsCode}
-                // value={codepenSamples}
-                style={{ width: '100%' }}
-              />
               <CodepenComponent jsContent={codepenHeader + themeAsCode + codepenSamples} buttonAs={PrimaryButton} />
             </PivotItem>
             <PivotItem linkText="JSON">
@@ -409,18 +404,15 @@ export class ColorsPage extends BaseComponent<{}, IColorsPageState> {
                 readOnly={true}
                 spellCheck={false}
                 value={JSON.stringify(ThemeGenerator.getThemeAsJson(abridgedTheme), void 0, 2)}
-                style={{ width: '100%' }}
+                style={{ width: 350 }}
               />
-            </PivotItem>
-            <PivotItem linkText="Sass">
-              <textarea readOnly={true} spellCheck={false} value={ThemeGenerator.getThemeAsSass(abridgedTheme)} style={{ width: '100%' }} />
             </PivotItem>
             <PivotItem linkText="PowerShell">
               <textarea
                 readOnly={true}
                 spellCheck={false}
                 value={ThemeGenerator.getThemeForPowerShell(abridgedTheme)}
-                style={{ width: '100%' }}
+                style={{ width: 350 }}
               />
             </PivotItem>
           </Pivot>
