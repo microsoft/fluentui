@@ -105,9 +105,6 @@ $Calendar-dayPicker-margin: 10px;
   td {
     margin: 0;
     padding: 0;
-    &:hover {
-      outline: 1px solid transparent;
-    }
   }
 }
 
@@ -142,6 +139,17 @@ $Calendar-dayPicker-margin: 10px;
   padding: 0;
   background-color: transparent;
   line-height: 100%;
+  &:hover,
+  &:active {
+    @include high-contrast {
+      outline: 1px solid highlight;
+    }
+  }
+  &:active {
+    @include high-contrast {
+      color: highlight;
+    }
+  }
 }
 
 // Today.
