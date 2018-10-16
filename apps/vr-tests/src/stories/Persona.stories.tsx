@@ -175,4 +175,10 @@ storiesOf('Persona', module)
       {...examplePersona}
       imageUrl={undefined}
     />
-  ), { rtl: true });
+  ), { rtl: true }).addStory('Persona with children', () => (
+    <Persona
+      { ...examplePersona }
+    >
+      <span>This is Persona children</span>
+    </Persona>
+  ));
