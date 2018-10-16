@@ -53,7 +53,8 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
     checkboxCellClassName,
     compact,
     className,
-    cellStyleProps = DEFAULT_CELL_STYLE_PROPS
+    cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
+    viewport
   } = props;
 
   const {
@@ -298,7 +299,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
         background: colors.defaultBackgroundColor,
         color: colors.defaultMetaTextColor,
         display: 'inline-flex', // This ensures that the row always tries to consume is minimum width and does not compress.
-        minWidth: '100%',
+        minWidth: viewport ? viewport.width : '100%',
         minHeight: values.rowHeight,
         whiteSpace: 'nowrap',
         padding: 0,

@@ -184,36 +184,37 @@ export interface IDetailsRowProps extends IDetailsRowBaseProps {
   selectionMode: SelectionMode;
 }
 
-export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & {
-  /** Whether the row is selected  */
-  isSelected?: boolean;
+export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> &
+  Pick<IDetailsRowProps, 'viewport'> & {
+    /** Whether the row is selected  */
+    isSelected?: boolean;
 
-  /** Whether there are any rows in the list selected */
-  anySelected?: boolean;
+    /** Whether there are any rows in the list selected */
+    anySelected?: boolean;
 
-  /** Whether this row can be selected */
-  canSelect?: boolean;
+    /** Whether this row can be selected */
+    canSelect?: boolean;
 
-  /** Class name of when this becomes a drop target. */
-  droppingClassName?: string;
+    /** Class name of when this becomes a drop target. */
+    droppingClassName?: string;
 
-  /** Is the checkbox visible */
-  isCheckVisible?: boolean;
+    /** Is the checkbox visible */
+    isCheckVisible?: boolean;
 
-  /** Is this a row header */
-  isRowHeader?: boolean;
+    /** Is this a row header */
+    isRowHeader?: boolean;
 
-  /** A class name from the checkbox cell, so proper styling can be targeted */
-  checkboxCellClassName?: string;
+    /** A class name from the checkbox cell, so proper styling can be targeted */
+    checkboxCellClassName?: string;
 
-  /** CSS class name for the component */
-  className?: string;
+    /** CSS class name for the component */
+    className?: string;
 
-  /** Is list in compact mode */
-  compact?: boolean;
+    /** Is list in compact mode */
+    compact?: boolean;
 
-  cellStyleProps?: ICellStyleProps;
-};
+    cellStyleProps?: ICellStyleProps;
+  };
 
 export interface ICellStyleProps {
   cellLeftPadding: number;
