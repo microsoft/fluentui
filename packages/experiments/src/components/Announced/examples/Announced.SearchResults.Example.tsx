@@ -20,7 +20,7 @@ const _testTags = [
   'yellow'
 ].map(item => ({ key: item, name: item }));
 
-export class AnnouncedSearchResultsExample extends React.Component<{}, { seconds: number; numberOfSuggestions: number; }> {
+export class AnnouncedSearchResultsExample extends React.Component<{}, { seconds: number; numberOfSuggestions: number }> {
   constructor(props: {}) {
     super(props);
     this.state = {
@@ -82,14 +82,11 @@ export class AnnouncedSearchResultsExample extends React.Component<{}, { seconds
     return item.name;
   }
 
-  private _onFilterChanged = (
-    filterText: string,
-    tagList: { key: string; name: string }[]
-  ): { key: string; name: string }[] => {
+  private _onFilterChanged = (filterText: string, tagList: { key: string; name: string }[]): { key: string; name: string }[] => {
     return filterText
       ? _testTags
-        .filter(tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0)
-        .filter(tag => !this._listContainsDocument(tag, tagList))
+          .filter(tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0)
+          .filter(tag => !this._listContainsDocument(tag, tagList))
       : [];
   };
 

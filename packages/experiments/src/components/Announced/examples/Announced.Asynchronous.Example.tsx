@@ -12,7 +12,7 @@ export interface IAnnouncedAsynchronousExampleState {
   seconds: number;
 }
 
-export interface IAnnouncedAsynchronousExampleProps { }
+export interface IAnnouncedAsynchronousExampleProps {}
 
 /**
  * TODO: announce when focusing on a section that hasn't loaded yet
@@ -95,8 +95,8 @@ export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsyn
         {total > index ? (
           <Image src={photo.url} width={photo.width} height={photo.height} />
         ) : (
-            <Spinner size={SpinnerSize.small} style={{ width: 100, height: 100 }} />
-          )}
+          <Spinner size={SpinnerSize.small} style={{ width: 100, height: 100 }} />
+        )}
       </ul>
     ));
 
