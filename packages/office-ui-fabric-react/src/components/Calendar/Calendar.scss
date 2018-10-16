@@ -351,6 +351,15 @@ $Calendar-dayPicker-margin: 10px;
 .headerToggleView:hover {
   color: $ms-color-black;
   cursor: pointer;
+  @include high-contrast {
+    outline: 1px solid highlight;
+  }
+}
+
+.headerToggleView:hover:active {
+  @include high-contrast {
+    color: highlight;
+  }
 }
 
 // Text showing the currently-selected year.
@@ -396,6 +405,14 @@ $Calendar-dayPicker-margin: 10px;
     color: $ms-color-neutralDark;
     background-color: $ms-color-neutralLight;
     outline: 1px solid transparent;
+    @include high-contrast {
+      outline-color: highlight;
+    }
+  }
+  &:active {
+    @include high-contrast {
+      color: highlight;
+    }
   }
   &.isHighlighted {
     background-color: $ms-color-neutralPrimary;
@@ -673,9 +690,15 @@ $Calendar-dayPicker-margin: 10px;
   &:hover {
     background-color: $ms-color-neutralLight;
     color: $ms-color-neutralDark;
+    @include high-contrast {
+      outline: 1px solid highlight;
+    }
   }
   &:active {
     background-color: $ms-color-themeLight;
+    @include high-contrast {
+      color: highlight;
+    }
   }
 }
 
