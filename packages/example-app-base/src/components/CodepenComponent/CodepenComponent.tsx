@@ -1,11 +1,13 @@
 import * as React from 'react';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
+import { css, IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
 import '../ExampleCard/ExampleCard.scss';
-import { CommandButton } from 'office-ui-fabric-react/lib/Button';
+import { CommandButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
 export interface ICodepenProps {
   /* JS string to be passed into Codepen */
   jsContent: string;
+  /* Optional button type */
+  buttonAs?: IComponentAs<IButtonProps>;
 }
 
 export class CodepenComponent extends React.Component<ICodepenProps> {
@@ -14,7 +16,7 @@ export class CodepenComponent extends React.Component<ICodepenProps> {
   }
 
   public render(): JSX.Element {
-    const { jsContent } = this.props;
+    const { jsContent, buttonAs: ButtonType = CommandButton } = this.props;
 
     // boilerplate for codepen API
     const htmlContent =
@@ -39,7 +41,7 @@ export class CodepenComponent extends React.Component<ICodepenProps> {
     return (
       <form action="https://codepen.io/pen/define" method="POST" target="_blank">
         <input type="hidden" name="data" value={JSONstring} />
-        <CommandButton
+        <ButtonType
           type="submit"
           iconProps={{ iconName: 'OpenInNewWindow' }}
           text="Export to Codepen"
