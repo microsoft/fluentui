@@ -247,8 +247,13 @@ exports[`Persona renders Persona correctly with image 1`] = `
             ms-Image
             ms-Persona-image
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               border-radius: 50%;
               border: 0px;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               height: 48px;
               left: 0px;
               margin-right: 10px;
@@ -1052,8 +1057,13 @@ exports[`Persona renders correctly with onRender callback 1`] = `
             ms-Image
             ms-Persona-image
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               border-radius: 50%;
               border: 0px;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               height: 100px;
               left: 0px;
               margin-right: 10px;
@@ -1311,8 +1321,13 @@ exports[`PersonaCoin does not render the initials when showInitialsUntilImageLoa
           ms-Image
           ms-Persona-image
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             border-radius: 50%;
             border: 0px;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
             height: 48px;
             left: 0px;
             margin-right: 10px;
@@ -1455,8 +1470,13 @@ exports[`PersonaCoin renders correctly with image 1`] = `
           ms-Image
           ms-Persona-image
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             border-radius: 50%;
             border: 0px;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
             height: 48px;
             left: 0px;
             margin-right: 10px;
@@ -1717,8 +1737,13 @@ exports[`PersonaCoin renders the initials before the image is loaded 1`] = `
           ms-Image
           ms-Persona-image
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             border-radius: 50%;
             border: 0px;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
             height: 48px;
             left: 0px;
             margin-right: 10px;

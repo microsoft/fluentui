@@ -265,6 +265,7 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
 
   return {
     root: [
+      theme.fonts.medium,
       {
         position: 'relative'
       }

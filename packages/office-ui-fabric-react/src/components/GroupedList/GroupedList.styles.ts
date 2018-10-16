@@ -20,6 +20,7 @@ export const getStyles = (props: IGroupedListStyleProps): IGroupedListStyles => 
   return {
     root: [
       classNames.root,
+      theme.fonts.medium,
       {
         position: 'relative',
         fontSize: FontSizes.small,

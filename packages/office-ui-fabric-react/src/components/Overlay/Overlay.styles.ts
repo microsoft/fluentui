@@ -16,6 +16,7 @@ export const getStyles = (props: IOverlayStyleProps): IOverlayStyles => {
   return {
     root: [
       classNames.root,
+      theme.fonts.medium,
       {
         backgroundColor: palette.whiteTranslucent40,
         top: 0,

@@ -1,6 +1,28 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Mon, 08 Oct 2018 12:24:15 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Oct 2018 12:29:12 GMT and should not be manually modified.
+
+## 0.24.4
+Mon, 15 Oct 2018 12:29:12 GMT
+
+### Patches
+
+- updating snapshot tests in charting package
+- Added font theme setting in styles of DonutChart, LineChart, PieChart, StackedBarChart, VerticalBarChart
+
+## 0.24.3
+Thu, 11 Oct 2018 23:13:31 GMT
+
+### Patches
+
+- resolve console errors for horizontal bar chart
+
+## 0.24.2
+Wed, 10 Oct 2018 12:29:05 GMT
+
+### Patches
+
+- css changes in charts for meeting the figma design
 
 ## 0.24.1
 Mon, 08 Oct 2018 12:24:15 GMT

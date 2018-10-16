@@ -72,7 +72,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     return (
       <div className={this._classNames.root}>
         {bars}
-        {legends}
+        <div className={this._classNames.legendContainer}>{legends}</div>
         {isCalloutVisible ? (
           <Callout
             gapSpace={5}
