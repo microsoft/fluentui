@@ -1680,11 +1680,6 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
   role="row"
-  style={
-    Object {
-      "minWidth": 0,
-    }
-  }
 >
   <div
     aria-colindex={1}

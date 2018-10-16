@@ -5110,7 +5110,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         font-size: 12px;
                                         font-weight: 400;
                                         min-height: 42px;
-                                        min-width: 100%;
+                                        min-width: 0px;
                                         outline: transparent;
                                         padding-bottom: 0px;
                                         padding-left: 0px;
@@ -5156,11 +5156,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   onKeyDown={[Function]}
                                   onMouseDownCapture={[Function]}
                                   role="row"
-                                  style={
-                                    Object {
-                                      "minWidth": 0,
-                                    }
-                                  }
                                 >
                                   <span
                                     className=
@@ -5308,7 +5303,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         font-size: 12px;
                                         font-weight: 400;
                                         min-height: 42px;
-                                        min-width: 100%;
+                                        min-width: 0px;
                                         outline: transparent;
                                         padding-bottom: 0px;
                                         padding-left: 0px;
@@ -5354,11 +5349,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   onKeyDown={[Function]}
                                   onMouseDownCapture={[Function]}
                                   role="row"
-                                  style={
-                                    Object {
-                                      "minWidth": 0,
-                                    }
-                                  }
                                 >
                                   <span
                                     className=
@@ -5731,7 +5721,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         font-size: 12px;
                                         font-weight: 400;
                                         min-height: 42px;
-                                        min-width: 100%;
+                                        min-width: 0px;
                                         outline: transparent;
                                         padding-bottom: 0px;
                                         padding-left: 0px;
@@ -5777,11 +5767,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   onKeyDown={[Function]}
                                   onMouseDownCapture={[Function]}
                                   role="row"
-                                  style={
-                                    Object {
-                                      "minWidth": 0,
-                                    }
-                                  }
                                 >
                                   <span
                                     className=
@@ -5929,7 +5914,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         font-size: 12px;
                                         font-weight: 400;
                                         min-height: 42px;
-                                        min-width: 100%;
+                                        min-width: 0px;
                                         outline: transparent;
                                         padding-bottom: 0px;
                                         padding-left: 0px;
@@ -5975,11 +5960,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   onKeyDown={[Function]}
                                   onMouseDownCapture={[Function]}
                                   role="row"
-                                  style={
-                                    Object {
-                                      "minWidth": 0,
-                                    }
-                                  }
                                 >
                                   <span
                                     className=
@@ -6127,7 +6107,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         font-size: 12px;
                                         font-weight: 400;
                                         min-height: 42px;
-                                        min-width: 100%;
+                                        min-width: 0px;
                                         outline: transparent;
                                         padding-bottom: 0px;
                                         padding-left: 0px;
@@ -6173,11 +6153,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   onKeyDown={[Function]}
                                   onMouseDownCapture={[Function]}
                                   role="row"
-                                  style={
-                                    Object {
-                                      "minWidth": 0,
-                                    }
-                                  }
                                 >
                                   <span
                                     className=
