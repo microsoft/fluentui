@@ -1,0 +1,447 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly 1`] = `
+<div
+  className="ms-FocusZone"
+  data-focuszone-id="FocusZone0"
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseDownCapture={[Function]}
+  role="presentation"
+>
+  <nav
+    className=
+        ms-Nav
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          -webkit-overflow-scrolling: touch;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          overflow-y: auto;
+          user-select: none;
+        }
+    role="navigation"
+  >
+    <div
+      className=
+          ms-Nav-group
+          is-expanded
+
+    >
+      <h3>
+        Pages
+      </h3>
+      <div
+        className=
+            ms-Nav-groupContent
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(0,-20px,0);}to{transform:translate3d(0,0,0);};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
+              display: block;
+              margin-bottom: 40px;
+            }
+      >
+        <ul
+          className=
+              ms-Nav-navItems
+              {
+                list-style-type: none;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+              }
+          role="list"
+        >
+          <li
+            className=
+                ms-Nav-navItem
+                {
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                }
+            role="listitem"
+          >
+            <div
+              className=
+                  ms-Nav-compositeLink
+                  {
+                    background-color: #ffffff;
+                    color: #333333;
+                    display: block;
+                    position: relative;
+                  }
+              name="Activity"
+            >
+              <a
+                aria-describedby="id__3"
+                className=
+                    ms-Button
+                    ms-Button--action
+                    ms-Button--command
+                    ms-Nav-link
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      background-color: transparent;
+                      border-radius: 0px;
+                      border: none;
+                      box-sizing: border-box;
+                      color: #333333;
+                      cursor: pointer;
+                      display: block;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      height: 36px;
+                      line-height: 36px;
+                      outline: transparent;
+                      overflow: hidden;
+                      padding-bottom: 0;
+                      padding-left: 3px;
+                      padding-right: 20px;
+                      padding-top: 0;
+                      position: relative;
+                      text-align: center;
+                      text-decoration: none;
+                      text-overflow: ellipsis;
+                      user-select: none;
+                      vertical-align: top;
+                      white-space: nowrap;
+                      width: 100%;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #666666;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      border: none;
+                      bottom: -2px;
+                      left: -2px;
+                      outline-color: ButtonText;
+                      right: -2px;
+                      top: -2px;
+                    }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
+                    }
+                    &:hover {
+                      color: #0078d4;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:hover {
+                      border-color: Highlight;
+                      color: Highlight;
+                    }
+                    &:hover .ms-Button-icon {
+                      color: #0078d4;
+                    }
+                    &:active {
+                      color: #000000;
+                    }
+                    &:active .ms-Button-icon {
+                      color: #004578;
+                    }
+                    .ms-Nav-compositeLink:hover & {
+                      background-color: #f8f8f8;
+                      color: #333333;
+                    }
+                data-is-focusable={true}
+                href="http://msn.com"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseUp={[Function]}
+                title="Activity"
+              >
+                <div
+                  className=
+                      ms-Button-flexContainer
+                      {
+                        align-items: center;
+                        display: flex;
+                        flex-wrap: nowrap;
+                        height: 100%;
+                        justify-content: flex-start;
+                      }
+                >
+                  <i
+                    aria-hidden={true}
+                    className=
+                        ms-Icon-placeHolder
+                        ms-Button-icon
+                        {
+                          color: #106ebe;
+                          display: inline-block;
+                          flex-shrink: 0;
+                          font-size: 16px;
+                          height: 16px;
+                          line-height: 16px;
+                          margin-bottom: 0;
+                          margin-left: 4px;
+                          margin-right: 4px;
+                          margin-top: 0;
+                          text-align: center;
+                          vertical-align: middle;
+                          width: 1em;
+                        }
+                    data-icon-name=""
+                    role="presentation"
+                  />
+                  <span
+                    className=
+                        ms-Button-screenReaderText
+                        {
+                          border: 0px;
+                          height: 1px;
+                          margin-bottom: -1px;
+                          margin-left: -1px;
+                          margin-right: -1px;
+                          margin-top: -1px;
+                          overflow: hidden;
+                          padding-bottom: 0px;
+                          padding-left: 0px;
+                          padding-right: 0px;
+                          padding-top: 0px;
+                          position: absolute;
+                          width: 1px;
+                        }
+                    id="id__3"
+                  >
+                    Activity
+                  </span>
+                  <div
+                    className=
+                        ms-Nav-linkText
+                        {
+                          margin-bottom: 0;
+                          margin-left: 4px;
+                          margin-right: 4px;
+                          margin-top: 0;
+                          overflow: hidden;
+                          text-overflow: ellipsis;
+                          vertical-align: middle;
+                        }
+                  >
+                    Activity
+                  </div>
+                </div>
+              </a>
+            </div>
+          </li>
+          <li
+            className=
+                ms-Nav-navItem
+                {
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                }
+            role="listitem"
+          >
+            <div
+              className=
+                  ms-Nav-compositeLink
+                  {
+                    background-color: #ffffff;
+                    color: #333333;
+                    display: block;
+                    position: relative;
+                  }
+              name="News"
+            >
+              <a
+                aria-describedby="id__6"
+                className=
+                    ms-Button
+                    ms-Button--action
+                    ms-Button--command
+                    ms-Nav-link
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      background-color: transparent;
+                      border-radius: 0px;
+                      border: none;
+                      box-sizing: border-box;
+                      color: #333333;
+                      cursor: pointer;
+                      display: block;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      height: 36px;
+                      line-height: 36px;
+                      outline: transparent;
+                      overflow: hidden;
+                      padding-bottom: 0;
+                      padding-left: 3px;
+                      padding-right: 20px;
+                      padding-top: 0;
+                      position: relative;
+                      text-align: center;
+                      text-decoration: none;
+                      text-overflow: ellipsis;
+                      user-select: none;
+                      vertical-align: top;
+                      white-space: nowrap;
+                      width: 100%;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #666666;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      border: none;
+                      bottom: -2px;
+                      left: -2px;
+                      outline-color: ButtonText;
+                      right: -2px;
+                      top: -2px;
+                    }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
+                    }
+                    &:hover {
+                      color: #0078d4;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:hover {
+                      border-color: Highlight;
+                      color: Highlight;
+                    }
+                    &:hover .ms-Button-icon {
+                      color: #0078d4;
+                    }
+                    &:active {
+                      color: #000000;
+                    }
+                    &:active .ms-Button-icon {
+                      color: #004578;
+                    }
+                    .ms-Nav-compositeLink:hover & {
+                      background-color: #f8f8f8;
+                      color: #333333;
+                    }
+                data-is-focusable={true}
+                href="http://msn.com"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseUp={[Function]}
+                title="News"
+              >
+                <div
+                  className=
+                      ms-Button-flexContainer
+                      {
+                        align-items: center;
+                        display: flex;
+                        flex-wrap: nowrap;
+                        height: 100%;
+                        justify-content: flex-start;
+                      }
+                >
+                  <i
+                    aria-hidden={true}
+                    className=
+                        ms-Icon-placeHolder
+                        ms-Button-icon
+                        {
+                          color: #106ebe;
+                          display: inline-block;
+                          flex-shrink: 0;
+                          font-size: 16px;
+                          height: 16px;
+                          line-height: 16px;
+                          margin-bottom: 0;
+                          margin-left: 4px;
+                          margin-right: 4px;
+                          margin-top: 0;
+                          text-align: center;
+                          vertical-align: middle;
+                          width: 1em;
+                        }
+                    data-icon-name=""
+                    role="presentation"
+                  />
+                  <span
+                    className=
+                        ms-Button-screenReaderText
+                        {
+                          border: 0px;
+                          height: 1px;
+                          margin-bottom: -1px;
+                          margin-left: -1px;
+                          margin-right: -1px;
+                          margin-top: -1px;
+                          overflow: hidden;
+                          padding-bottom: 0px;
+                          padding-left: 0px;
+                          padding-right: 0px;
+                          padding-top: 0px;
+                          position: absolute;
+                          width: 1px;
+                        }
+                    id="id__6"
+                  >
+                    News
+                  </span>
+                  <div
+                    className=
+                        ms-Nav-linkText
+                        {
+                          margin-bottom: 0;
+                          margin-left: 4px;
+                          margin-right: 4px;
+                          margin-top: 0;
+                          overflow: hidden;
+                          text-overflow: ellipsis;
+                          vertical-align: middle;
+                        }
+                  >
+                    News
+                  </div>
+                </div>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+`;

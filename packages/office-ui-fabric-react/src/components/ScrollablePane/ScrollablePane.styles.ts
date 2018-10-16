@@ -28,7 +28,7 @@ export const getStyles = (props: IScrollablePaneStyleProps): IScrollablePaneStyl
   };
 
   return {
-    root: [classNames.root, positioningStyle, className],
+    root: [classNames.root, theme.fonts.medium, positioningStyle, className],
     contentContainer: [
       classNames.contentContainer,
       {

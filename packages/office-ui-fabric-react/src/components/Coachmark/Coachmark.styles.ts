@@ -258,11 +258,14 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
     animationBorderWidth
   );
 
-  const ContinuousPulseAnimation =
-    PulsingBeaconAnimationStyles.createDefaultAnimation(ContinuousPulse, props.delayBeforeCoachmarkAnimation);
+  const ContinuousPulseAnimation = PulsingBeaconAnimationStyles.createDefaultAnimation(
+    ContinuousPulse,
+    props.delayBeforeCoachmarkAnimation
+  );
 
   return {
     root: [
+      theme.fonts.medium,
       {
         position: 'relative'
       }

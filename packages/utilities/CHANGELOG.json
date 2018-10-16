@@ -2,6 +2,64 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.23.0",
+      "tag": "@uifabric/utilities_v6.23.0",
+      "date": "Mon, 15 Oct 2018 12:29:12 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding `asAsync` HOC wrapper to abstract async loading for components.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "5e5703df581b98dbb1e83147427d328682a493fc"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.10.0 <7.0.0` to `>=6.10.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.22.0",
+      "tag": "@uifabric/utilities_v6.22.0",
+      "date": "Wed, 10 Oct 2018 12:29:05 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add utilities.api.ts, update files to fix api-extractor errors",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "ab236eaebd256f37f03b7d2943e983a149023e81"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.21.2",
+      "tag": "@uifabric/utilities_v6.21.2",
+      "date": "Mon, 08 Oct 2018 12:24:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Moving tslint/prettier dependencies ",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8ba9e22a7a8a2a1e7facda5aa7d91423c7af43ed"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.1.1 <2.0.0` to `>=1.1.2 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.9.3 <7.0.0` to `>=6.9.4 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=6.0.5 <7.0.0` to `>=6.0.6 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.21.1",
       "tag": "@uifabric/utilities_v6.21.1",
       "date": "Wed, 26 Sep 2018 12:27:23 GMT",

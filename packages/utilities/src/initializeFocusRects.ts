@@ -15,7 +15,7 @@ export const IsFocusVisibleClassName = 'ms-Fabric--isFocusVisible';
  * This logic allows components on the page to conditionally render focus treatments only
  * if the global classname exists, which simplifies logic overall.
  *
- * @param window
+ * @param window - the window used to add the event listeners
  */
 export function initializeFocusRects(window?: Window): void {
   const win = (window || getWindow()) as Window & { __hasInitializeFocusRects__: boolean };

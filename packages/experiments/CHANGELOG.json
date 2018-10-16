@@ -2,6 +2,209 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.38.0",
+      "tag": "@uifabric/experiments_v6.38.0",
+      "date": "Tue, 16 Oct 2018 12:28:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add customizations for component examples. Remove redundant customizations from Button example.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "d268b0e3e4cbfde82ef56e60686cc6ad70090a8f"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Fluent: updates the styles of Dropdown and CheckBox to follow fluent specs.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "f0c0c48a5614af68b3efe2c310772f6900e34968"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.24.4` to `^0.25.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.84.1 <7.0.0` to `>=6.85.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.7.6 <7.0.0` to `>=6.8.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.37.1",
+      "tag": "@uifabric/experiments_v6.37.1",
+      "date": "Mon, 15 Oct 2018 12:29:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "updating snapshot tests in experiments package",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "e83f082e86ab8a599f298dc1dfe343981bbebee5"
+          },
+          {
+            "comment": "Added font theme setting to Button, ChicletCard, CollapsibleSection, Shimmer, ShimmerCircle, ShimmerElementsGroup, ShimmerGap, ShimmerLine, HorizontalStack, Text. Snapshots updated in VerticalStack, Stack.",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "e83f082e86ab8a599f298dc1dfe343981bbebee5"
+          },
+          {
+            "comment": "Improve BaseState typing and fix use by experimental components.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "9acc74dfac060f464357a56c61b6f0bfde025dfe"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Added font theme setting to Button, ChicletCard, CollapsibleSection, Shimmer, ShimmerCircle, ShimmerElementsGroup, ShimmerGap, ShimmerLine, HorizontalStack, Text. Snapshots updated in VerticalStack, Stack.",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "e83f082e86ab8a599f298dc1dfe343981bbebee5"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.24.3` to `^0.24.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `>=6.1.3 <7.0.0` to `>=6.2.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.10.0 <7.0.0` to `>=6.10.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.84.0 <7.0.0` to `>=6.84.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.37.0",
+      "tag": "@uifabric/experiments_v6.37.0",
+      "date": "Wed, 10 Oct 2018 12:29:05 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Separator: change text size and add theming example",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "c8572bc8f9e819a179cf40d2ff65c6080ec4bd40"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.24.1` to `^0.24.2`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.82.0 <7.0.0` to `>=6.83.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.7.4 <7.0.0` to `>=6.7.5 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.36.1",
+      "tag": "@uifabric/experiments_v6.36.1",
+      "date": "Mon, 08 Oct 2018 19:25:44 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Sidebar: added index export",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "2bb01951d9ead0e850b86ba30141dbf9e0ce4dee"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.80.0 <7.0.0` to `>=6.81.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.36.0",
+      "tag": "@uifabric/experiments_v6.36.0",
+      "date": "Mon, 08 Oct 2018 12:24:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Moving tslint/prettier dependencies ",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8ba9e22a7a8a2a1e7facda5aa7d91423c7af43ed"
+          },
+          {
+            "comment": "Fix a11y violations in Fluent ContextualMenu examples",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "a6d214e6d111fcc860e08caf3329620c698922fa"
+          },
+          {
+            "comment": "Sidebar: Fixed filename and imports",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "086555bea3760f2dd244c4351c85bc1717584149"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Sidebar: Added new component",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "086555bea3760f2dd244c4351c85bc1717584149"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.24.0` to `^0.24.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `>=6.1.2 <7.0.0` to `>=6.1.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.5.4 <1.0.0` to `>=0.5.5 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=6.1.1 <7.0.0` to `>=6.1.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `>=6.11.0 <7.0.0` to `>=6.11.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.1.1 <2.0.0` to `>=1.1.2 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.9.3 <7.0.0` to `>=6.9.4 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.79.0 <7.0.0` to `>=6.80.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.7.3 <7.0.0` to `>=6.7.4 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=6.0.5 <7.0.0` to `>=6.0.6 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.35.0",
+      "tag": "@uifabric/experiments_v6.35.0",
+      "date": "Fri, 05 Oct 2018 23:29:26 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Sidebar: Added new component",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "df26624e48824d005e5afff015e405773381272b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.78.1 <7.0.0` to `>=6.79.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.34.2",
       "tag": "@uifabric/experiments_v6.34.2",
       "date": "Thu, 04 Oct 2018 12:26:48 GMT",

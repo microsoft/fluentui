@@ -1,6 +1,24 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 02 Oct 2018 12:28:04 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Oct 2018 12:29:12 GMT and should not be manually modified.
+
+## 6.6.0
+Mon, 15 Oct 2018 12:29:12 GMT
+
+### Minor changes
+
+- Enable website to load bundle scripts from manifest JS file
+
+## 6.5.0
+Mon, 08 Oct 2018 12:24:15 GMT
+
+### Minor changes
+
+- Add temporary MessageBar to link to Fluent for Fabric
+
+### Patches
+
+- Moving tslint/prettier dependencies 
 
 ## 6.4.6
 Tue, 02 Oct 2018 12:28:04 GMT

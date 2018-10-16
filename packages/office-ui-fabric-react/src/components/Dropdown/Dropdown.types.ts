@@ -5,6 +5,7 @@ import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/
 import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { IKeytipProps } from '../../Keytip';
 import { ILabelStyleProps } from '../../Label';
+import { RectangleEdge } from '../../utilities/positioning';
 
 export { SelectableOptionMenuItemType as DropdownMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 
@@ -12,7 +13,7 @@ export interface IDropdown {
   focus: (shouldOpenOnFocus?: boolean) => void;
 }
 
-export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown> {
+export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDivElement> {
   /**
    * Input placeholder text. Displayed until option is selected.
    */
@@ -109,11 +110,6 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown>
 
 export interface IDropdownOption extends ISelectableOption {
   /**
-   * Data available to custom onRender functions.
-   */
-  data?: any;
-
-  /**
    * Deprecated at v.65.1, use 'selected' instead.
    * @deprecated
    */
@@ -150,6 +146,11 @@ export type IDropdownStyleProps = Pick<IDropdownProps, 'theme' | 'className' | '
    * This is primarily provided for backwards compatibility.
    */
   calloutClassName?: string;
+
+  /**
+   * Prop to notify on what edge the dropdown callout was positioned respective to the title.
+   */
+  calloutRenderEdge?: RectangleEdge;
 };
 
 /**

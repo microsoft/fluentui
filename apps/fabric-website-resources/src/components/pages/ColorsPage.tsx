@@ -1,8 +1,9 @@
 import * as React from 'react';
-import './ThemeGeneratorPage.global.scss';
+import './ColorsPage.global.scss';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 
 import { loadTheme } from 'office-ui-fabric-react/lib/Styling';
+import { CodepenComponent } from '@uifabric/example-app-base';
 import { IColor, getContrastRatio, isDark } from 'office-ui-fabric-react/lib/utilities/color/index';
 
 import {
@@ -14,23 +15,33 @@ import {
   IThemeRules
 } from 'office-ui-fabric-react/lib/ThemeGenerator';
 
+import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
 
 import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
+import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
 import { TeachingBubbleBasicExample } from 'office-ui-fabric-react/lib/components/TeachingBubble/examples/TeachingBubble.Basic.Example';
 import { TextFieldBasicExample } from 'office-ui-fabric-react/lib/components/TextField/examples/TextField.Basic.Example';
 import { ToggleBasicExample } from 'office-ui-fabric-react/lib/components/Toggle/examples/Toggle.Basic.Example';
 import { ProgressIndicatorBasicExample } from 'office-ui-fabric-react/lib/components/ProgressIndicator/examples/ProgressIndicator.Basic.Example';
 
-export interface IThemeGeneratorPageState {
+export interface IColorsPageState {
   themeRules: IThemeRules;
   colorPickerSlotRule: IThemeSlotRule | null;
   colorPickerElement: HTMLElement | null;
   colorPickerVisible: boolean;
 }
 
-export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageState> {
+const codeHeader = "import { loadTheme } from 'office-ui-fabric-react';\n\n";
+const codepenHeader = 'const { loadTheme, DefaultButton, PrimaryButton, Toggle, TooltipHost } = Fabric;\n\n';
+const codepenSamples =
+  '\n\nclass Content extends React.Component {\n  public render() {\n    return (<div>' +
+  '<DefaultButton text="DefaultButton"/><PrimaryButton text="PrimaryButton"/><Toggle label="Enabled"/><Toggle label="Disabled" disabled={true}/>' +
+  '</div>);\n  }\n}\n' +
+  "ReactDOM.render(<Content />,document.getElementById('content'));";
+
+export class ColorsPage extends BaseComponent<{}, IColorsPageState> {
   private _semanticSlotColorChangeTimeout: number;
 
   constructor(props: {}) {
@@ -100,14 +111,14 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
         <div className="overview">
           <h2 id="Overview">Overview</h2>
           <p>
-            This tool helps you easily create all the shades and slots for a custom theme. The theme can be used by
-            Fabric React's styling package, see the{' '}
+            This tool helps you easily create all the shades and slots for a custom theme. The theme can be used by Fabric React's styling
+            package, see the{' '}
             <a className={'themeGeneratorPageLink'} href={stylingUrl}>
               documentation
-            </a>.
-            <br />
-            As you modify one of the three base colors, the theme will update automatically based on predefined rules.
-            You can modify each individual slot below as well.
+            </a>
+            .<br />
+            As you modify one of the three base colors, the theme will update automatically based on predefined rules. You can modify each
+            individual slot below as well.
           </p>
         </div>
         {/* Hello! You've found hidden functionality for generating a theme from an image. This uses Microsoft's
@@ -150,9 +161,9 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
         {/* the three base slots, prominently displayed at the top of the page */}
         <div style={{ display: 'flex' }}>
           {[
-            this._baseColorSlotPicker(BaseSlots.primaryColor, 'Primary theme color'),
-            this._baseColorSlotPicker(BaseSlots.foregroundColor, 'Body text color'),
-            this._baseColorSlotPicker(BaseSlots.backgroundColor, 'Body background color')
+            this._baseColorSlotPicker(BaseSlots.primaryColor, 'Primary Theme Color'),
+            this._baseColorSlotPicker(BaseSlots.foregroundColor, 'Body Text Color'),
+            this._baseColorSlotPicker(BaseSlots.backgroundColor, 'Body Background Color')
           ]}
         </div>
         <br />
@@ -162,8 +173,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
 
         <h2 id="Fabric palette">Fabric palette</h2>
         <p>
-          The original Fabric palette slots. These are raw colors with no prescriptive uses. Each one is a shade or tint
-          of a base color.
+          The original Fabric palette slots. These are raw colors with no prescriptive uses. Each one is a shade or tint of a base color.
         </p>
         <div className={'ms-themer-fabricPalette-root'}>
           <div>{fabricThemeSlots}</div>
@@ -250,13 +260,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     this._semanticSlotColorChangeTimeout = this._async.setTimeout(() => {
       const { themeRules } = this.state;
 
-      ThemeGenerator.setSlot(
-        slotRule,
-        color,
-        isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!),
-        true,
-        true
-      );
+      ThemeGenerator.setSlot(slotRule, color, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!), true, true);
       this.setState({ themeRules: themeRules }, this._makeNewTheme);
     }, 20);
     // 20ms is low enough that you can slowly drag to change color and see that theme,
@@ -379,26 +383,39 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
       }
     }
 
+    const themeAsCode = ThemeGenerator.getThemeAsCode(abridgedTheme);
+
     return (
       <div>
         <h2 id="Output">Output</h2>
         <div className={'ms-themer-output-root'}>
-          <div>
-            <h3>JSON</h3>
-            <textarea
-              readOnly={true}
-              spellCheck={false}
-              value={JSON.stringify(ThemeGenerator.getThemeAsJson(abridgedTheme), void 0, 2)}
-            />
-          </div>
-          <div>
-            <h3>SASS</h3>
-            <textarea readOnly={true} spellCheck={false} value={ThemeGenerator.getThemeAsSass(abridgedTheme)} />
-          </div>
-          <div>
-            <h3>PowerShell</h3>
-            <textarea readOnly={true} spellCheck={false} value={ThemeGenerator.getThemeForPowerShell(abridgedTheme)} />
-          </div>
+          <Pivot styles={{ root: { padding: 10 } }}>
+            <PivotItem linkText="Code">
+              <textarea readOnly={true} spellCheck={false} value={codeHeader + themeAsCode} style={{ width: 350 }} />
+              <p>
+                This code block initializes the theme you have configured above and loads it using the loadTheme utility function. Calling
+                loadTheme will automatically apply the configured theming to any Fabric controls used within the same app. You can also
+                export this example to CodePen with a few component examples below.
+              </p>
+              <CodepenComponent jsContent={codepenHeader + themeAsCode + codepenSamples} buttonAs={PrimaryButton} />
+            </PivotItem>
+            <PivotItem linkText="JSON">
+              <textarea
+                readOnly={true}
+                spellCheck={false}
+                value={JSON.stringify(ThemeGenerator.getThemeAsJson(abridgedTheme), void 0, 2)}
+                style={{ width: 350 }}
+              />
+            </PivotItem>
+            <PivotItem linkText="PowerShell">
+              <textarea
+                readOnly={true}
+                spellCheck={false}
+                value={ThemeGenerator.getThemeForPowerShell(abridgedTheme)}
+                style={{ width: 350 }}
+              />
+            </PivotItem>
+          </Pivot>
         </div>
       </div>
     );
@@ -457,14 +474,8 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
             /* tslint:enable:jsx-no-bind */
           />
         </div>
-        <div
-          className="ms-themer-swatchBg"
-          style={{ backgroundColor: this.state.themeRules[BaseSlots[baseSlot]].color!.str }}
-        >
-          <div
-            className="ms-themer-swatch"
-            style={{ backgroundColor: this.state.themeRules[BaseSlots[baseSlot]].color!.str }}
-          />
+        <div className="ms-themer-swatchBg" style={{ backgroundColor: this.state.themeRules[BaseSlots[baseSlot]].color!.str }}>
+          <div className="ms-themer-swatch" style={{ backgroundColor: this.state.themeRules[BaseSlots[baseSlot]].color!.str }} />
           {[
             this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade1']),
             this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade2']),

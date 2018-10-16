@@ -1,10 +1,11 @@
 // tslint:disable:no-any
 import * as React from 'react';
 import { App as AppBase, IAppDefinition, IAppProps } from '@uifabric/example-app-base';
+import { AppCustomizations } from './customizations';
 
 export const AppDefinition: IAppDefinition = {
   appTitle: 'Fabric - React',
-
+  customizations: AppCustomizations,
   testPages: [],
   examplePages: [
     {
@@ -68,6 +69,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'Signals',
           name: 'Signals',
           url: '#/examples/signals'
+        },
+        {
+          component: require<any>('../components/Sidebar/SidebarPage').SidebarPage,
+          key: 'Sidebar',
+          name: 'Sidebar',
+          url: '#/examples/sidebar'
         },
         {
           component: require<any>('../components/Text/TextPage').TextPage,

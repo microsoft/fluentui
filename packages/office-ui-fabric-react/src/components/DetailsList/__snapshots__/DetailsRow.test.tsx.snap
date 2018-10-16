@@ -15,10 +15,14 @@ exports[`DetailsRow renders details list row correctly 1`] = `
         ms-DetailsList
         is-horizontalConstrained
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
           background: #ffffff;
           color: #333333;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
+          font-weight: 400;
           overflow-x: auto;
           overflow-y: visible;
           position: relative;
@@ -45,11 +49,16 @@ exports[`DetailsRow renders details list row correctly 1`] = `
               ms-FocusZone
               ms-DetailsHeader
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 background: #ffffff;
                 border-bottom: 1px solid #eaeaea;
                 box-sizing: content-box;
                 cursor: default;
                 display: inline-block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
                 height: 32px;
                 line-height: 32px;
                 min-width: 100%;
@@ -85,16 +94,11 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   align-items: center;
                   border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-flex;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
                   height: 32px;
                   line-height: inherit;
                   margin-bottom: 0px;
@@ -135,7 +139,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
 
             >
               <div
-                aria-describedby="header0-checkTooltip"
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
@@ -146,6 +149,8 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                       opacity: 1;
                     }
                     {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
                       align-items: center;
                       background-color: transparent;
                       background: none;
@@ -153,6 +158,9 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                       box-sizing: border-box;
                       cursor: default;
                       display: flex;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 12px;
+                      font-weight: 400;
                       height: 32px;
                       justify-content: center;
                       margin-bottom: 0px;
@@ -197,6 +205,11 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   className=
                       ms-Check
                       {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 14px;
+                        font-weight: 400;
                         height: 18px;
                         line-height: 1;
                         position: relative;
@@ -808,10 +821,14 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
         ms-DetailsList
         is-horizontalConstrained
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
           background: #ffffff;
           color: #333333;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
+          font-weight: 400;
           overflow-x: auto;
           overflow-y: visible;
           position: relative;
@@ -838,11 +855,16 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
               ms-FocusZone
               ms-DetailsHeader
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 background: #ffffff;
                 border-bottom: 1px solid #eaeaea;
                 box-sizing: content-box;
                 cursor: default;
                 display: inline-block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
                 height: 32px;
                 line-height: 32px;
                 min-width: 100%;
@@ -878,16 +900,11 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   align-items: center;
                   border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-flex;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
                   height: 32px;
                   line-height: inherit;
                   margin-bottom: 0px;
@@ -928,7 +945,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
 
             >
               <div
-                aria-describedby="header9-checkTooltip"
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
@@ -939,6 +955,8 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                       opacity: 1;
                     }
                     {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
                       align-items: center;
                       background-color: transparent;
                       background: none;
@@ -946,6 +964,9 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                       box-sizing: border-box;
                       cursor: default;
                       display: flex;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 12px;
+                      font-weight: 400;
                       height: 32px;
                       justify-content: center;
                       margin-bottom: 0px;
@@ -990,6 +1011,11 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   className=
                       ms-Check
                       {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 14px;
+                        font-weight: 400;
                         height: 18px;
                         line-height: 1;
                         position: relative;
@@ -1594,6 +1620,8 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
       ms-FocusZone
       ms-DetailsRow
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
         animation-duration: 0.367s;
         animation-fill-mode: both;
         animation-name: keyframes from{opacity:0;}to{opacity:1;};
@@ -1603,6 +1631,9 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
         box-sizing: border-box;
         color: #666666;
         display: inline-flex;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 12px;
+        font-weight: 400;
         min-height: 42px;
         min-width: 100%;
         outline: transparent;
@@ -1725,6 +1756,8 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
           ms-DetailsRow-check
 
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             align-items: center;
             background-color: transparent;
             background: none;
@@ -1732,6 +1765,9 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
             box-sizing: border-box;
             cursor: default;
             display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
             height: 40px;
             justify-content: center;
             margin-bottom: 0px;
@@ -1774,6 +1810,11 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
         className=
             ms-Check
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               height: 18px;
               line-height: 1;
               position: relative;
@@ -2120,10 +2161,14 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
         ms-DetailsList
         is-horizontalConstrained
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
           background: #ffffff;
           color: #333333;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
+          font-weight: 400;
           overflow-x: auto;
           overflow-y: visible;
           position: relative;
@@ -2150,11 +2195,16 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
               ms-FocusZone
               ms-DetailsHeader
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 background: #ffffff;
                 border-bottom: 1px solid #eaeaea;
                 box-sizing: content-box;
                 cursor: default;
                 display: inline-block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
                 height: 32px;
                 line-height: 32px;
                 min-width: 100%;
@@ -2190,16 +2240,11 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   align-items: center;
                   border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-flex;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
                   height: 32px;
                   line-height: inherit;
                   margin-bottom: 0px;
@@ -2240,7 +2285,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
 
             >
               <div
-                aria-describedby="header3-checkTooltip"
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
@@ -2251,6 +2295,8 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                       opacity: 1;
                     }
                     {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
                       align-items: center;
                       background-color: transparent;
                       background: none;
@@ -2258,6 +2304,9 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                       box-sizing: border-box;
                       cursor: default;
                       display: flex;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 12px;
+                      font-weight: 400;
                       height: 32px;
                       justify-content: center;
                       margin-bottom: 0px;
@@ -2302,6 +2351,11 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   className=
                       ms-Check
                       {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 14px;
+                        font-weight: 400;
                         height: 18px;
                         line-height: 1;
                         position: relative;
@@ -2913,10 +2967,14 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
         ms-DetailsList
         is-horizontalConstrained
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
           background: #ffffff;
           color: #333333;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
+          font-weight: 400;
           overflow-x: auto;
           overflow-y: visible;
           position: relative;
@@ -2943,11 +3001,16 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
               ms-FocusZone
               ms-DetailsHeader
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 background: #ffffff;
                 border-bottom: 1px solid #eaeaea;
                 box-sizing: content-box;
                 cursor: default;
                 display: inline-block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
                 height: 32px;
                 line-height: 32px;
                 min-width: 100%;
@@ -2983,16 +3046,11 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 ms-DetailsHeader-cell
                 ms-DetailsHeader-cellIsCheck
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   align-items: center;
                   border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-flex;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
                   height: 32px;
                   line-height: inherit;
                   margin-bottom: 0px;
@@ -3033,7 +3091,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
 
             >
               <div
-                aria-describedby="header6-checkTooltip"
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
@@ -3044,6 +3101,8 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                       opacity: 1;
                     }
                     {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
                       align-items: center;
                       background-color: transparent;
                       background: none;
@@ -3051,6 +3110,9 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                       box-sizing: border-box;
                       cursor: default;
                       display: flex;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 12px;
+                      font-weight: 400;
                       height: 32px;
                       justify-content: center;
                       margin-bottom: 0px;
@@ -3095,6 +3157,11 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   className=
                       ms-Check
                       {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 14px;
+                        font-weight: 400;
                         height: 18px;
                         line-height: 1;
                         position: relative;

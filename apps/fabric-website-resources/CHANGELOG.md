@@ -1,6 +1,20 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Fri, 21 Sep 2018 14:25:46 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Oct 2018 12:28:48 GMT and should not be manually modified.
+
+## 6.9.3
+Tue, 16 Oct 2018 12:28:48 GMT
+
+### Patches
+
+- Add customizations for component examples.
+
+## 6.9.2
+Mon, 08 Oct 2018 12:24:15 GMT
+
+### Patches
+
+- Moving tslint/prettier dependencies 
 
 ## 6.9.1
 Fri, 21 Sep 2018 14:25:46 GMT

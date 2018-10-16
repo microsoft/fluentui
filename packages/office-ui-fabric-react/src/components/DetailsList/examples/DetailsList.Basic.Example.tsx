@@ -1,12 +1,6 @@
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import {
-  DetailsList,
-  DetailsListLayoutMode,
-  Selection,
-  IColumn,
-  IDetailsList
-} from 'office-ui-fabric-react/lib/DetailsList';
+import { DetailsList, DetailsListLayoutMode, Selection, IColumn, IDetailsList } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { createRef } from 'office-ui-fabric-react/lib/Utilities';

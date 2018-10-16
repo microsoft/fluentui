@@ -52,14 +52,7 @@ export class DetailsListDragDropExample extends React.Component<
   }
 
   public render(): JSX.Element {
-    const {
-      items,
-      selectionDetails,
-      columns,
-      isColumnReorderEnabled,
-      frozenColumnCountFromStart,
-      frozenColumnCountFromEnd
-    } = this.state;
+    const { items, selectionDetails, columns, isColumnReorderEnabled, frozenColumnCountFromStart, frozenColumnCountFromEnd } = this.state;
 
     return (
       <div className={'detailsListDragDropExample'}>
@@ -94,6 +87,8 @@ export class DetailsListDragDropExample extends React.Component<
             onRenderItemColumn={this._onRenderItemColumn}
             dragDropEvents={this._getDragDropEvents()}
             columnReorderOptions={this.state.isColumnReorderEnabled ? this._getColumnReorderOptions() : undefined}
+            ariaLabelForSelectionColumn="Toggle selection"
+            ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           />
         </MarqueeSelection>
       </div>
@@ -122,17 +117,11 @@ export class DetailsListDragDropExample extends React.Component<
     return isNaN(Number(value)) ? `The value should be a number, actual is ${value}.` : '';
   }
 
-  private _onChangeStartCountText = (
-    event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
-    text: string
-  ): void => {
+  private _onChangeStartCountText = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string): void => {
     this.setState({ frozenColumnCountFromStart: text });
   };
 
-  private _onChangeEndCountText = (
-    event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
-    text: string
-  ): void => {
+  private _onChangeEndCountText = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string): void => {
     this.setState({ frozenColumnCountFromEnd: text });
   };
 
@@ -183,9 +172,7 @@ export class DetailsListDragDropExample extends React.Component<
   }
 
   private _insertBeforeItem(item: any): void {
-    const draggedItems = this._selection.isIndexSelected(_draggedIndex)
-      ? this._selection.getSelection()
-      : [_draggedItem];
+    const draggedItems = this._selection.isIndexSelected(_draggedIndex) ? this._selection.getSelection() : [_draggedItem];
 
     const items: any[] = this.state.items.filter((i: number) => draggedItems.indexOf(i) === -1);
     let insertIndex = items.indexOf(item);

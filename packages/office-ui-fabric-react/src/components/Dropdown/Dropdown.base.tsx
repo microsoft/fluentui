@@ -21,7 +21,8 @@ import {
   getNativeProps,
   mergeAriaAttributeValues,
   classNamesFunction,
-  IStyleFunctionOrObject
+  IStyleFunctionOrObject,
+  getDocument
 } from '../../Utilities';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
@@ -29,6 +30,7 @@ import { ResponsiveMode, withResponsiveMode } from '../../utilities/decorators/w
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 import { DropdownMenuItemType, IDropdownOption, IDropdownProps, IDropdownStyleProps, IDropdownStyles } from './Dropdown.types';
 import { DropdownSizePosCache } from './utilities/DropdownSizePosCache';
+import { RectangleEdge, ICalloutPositionedInfo } from '../../utilities/positioning';
 
 const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>();
 
@@ -40,6 +42,7 @@ export interface IDropdownState {
   selectedIndices: number[];
   /** Whether the root dropdown element has focus. */
   hasFocus: boolean;
+  calloutRenderEdge?: RectangleEdge;
 }
 
 @withResponsiveMode
@@ -96,7 +99,8 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     this.state = {
       isOpen: false,
       selectedIndices,
-      hasFocus: false
+      hasFocus: false,
+      calloutRenderEdge: undefined
     };
   }
 
@@ -157,7 +161,8 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
       onRenderPlaceHolder = this._onRenderPlaceHolder,
       onRenderCaretDown = this._onRenderCaretDown
     } = this.props;
-    const { isOpen, selectedIndices, hasFocus } = this.state;
+    const { isOpen, selectedIndices, hasFocus, calloutRenderEdge } = this.state;
+
     const selectedOptions = this._getAllSelectedOptions(options, selectedIndices);
     const divProps = getNativeProps(this.props, divProperties);
 
@@ -193,7 +198,8 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
       disabled,
       isRenderingPlaceholder: !selectedOptions.length,
       panelClassName: !!panelProps ? panelProps.className : undefined,
-      calloutClassName: !!calloutProps ? calloutProps.className : undefined
+      calloutClassName: !!calloutProps ? calloutProps.className : undefined,
+      calloutRenderEdge: calloutRenderEdge
     });
 
     const labelStyles = this._classNames.subComponentStyles
@@ -218,7 +224,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
               aria-expanded={isOpen ? 'true' : 'false'}
               role={ariaAttrs.role}
               aria-label={ariaLabel}
-              aria-labelledby={label ? (id + '-label') : undefined}
+              aria-labelledby={label ? id + '-label' : undefined}
               aria-describedby={mergeAriaAttributeValues(optionId, keytipAttributes['aria-describedby'])}
               aria-activedescendant={ariaAttrs.ariaActiveDescendant}
               aria-disabled={disabled}
@@ -434,7 +440,6 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     const { onRenderItem = this._onRenderItem } = this.props;
 
     const id = this._id;
-    const { selectedIndices = [] } = this.state;
 
     return (
       <div
@@ -447,7 +452,6 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
         <FocusZone
           ref={this._focusZone}
           direction={FocusZoneDirection.vertical}
-          defaultActiveElement={selectedIndices[0] !== undefined ? `#${id}-list${selectedIndices[0]}` : undefined}
           id={id + '-list'}
           className={this._classNames.dropdownItems}
           aria-labelledby={id + '-label'}
@@ -561,11 +565,27 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     return onRenderOption(item, this._onRenderOption);
   };
 
-  private _onPositioned = (): void => {
+  private _onPositioned = (positions?: ICalloutPositionedInfo): void => {
     if (this._focusZone.current) {
       // Focusing an element can trigger a reflow. Making this wait until there is an animation
       // frame can improve perf significantly.
-      this._async.requestAnimationFrame(() => this._focusZone.current!.focus());
+      this._async.requestAnimationFrame(() => {
+        const selectedIndices = this.state.selectedIndices;
+        if (selectedIndices && selectedIndices[0] && !this.props.options[selectedIndices[0]].disabled) {
+          const element: HTMLElement = getDocument()!.querySelector(
+            `#${this._id}-list${selectedIndices[0]}`
+          ) as HTMLElement;
+          this._focusZone.current!.focusElement(element);
+        } else {
+          this._focusZone.current!.focus();
+        }
+      });
+    }
+
+    if (!this.state.calloutRenderEdge || this.state.calloutRenderEdge !== positions!.targetEdge) {
+      this.setState({
+        calloutRenderEdge: positions!.targetEdge
+      });
     }
   };
 

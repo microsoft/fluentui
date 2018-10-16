@@ -109,7 +109,7 @@ export const calloutStyles = (props: ITeachingBubbleStyleProps): Partial<ICallou
   const { isWide, theme } = props;
   const { palette } = theme;
   return {
-    root: [...rootStyle(isWide)],
+    root: [...rootStyle(isWide), theme.fonts.medium],
     beak: [
       {
         background: palette.themePrimary
@@ -173,7 +173,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
   const classNames = getGlobalClassNames(globalClassNames, theme);
 
   return {
-    root: [classNames.root, calloutClassName],
+    root: [classNames.root, theme.fonts.medium, calloutClassName],
     body: [
       classNames.body,
       {

@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { ComboBox } from 'office-ui-fabric-react/lib/ComboBox';
 
+// tslint:disable-next-line:no-any
+const style = require('./FluentStyles.Example.scss') as any;
+
 export class FluentStylesComboBoxExample extends React.Component<{}, {}> {
   private _testOptions = [
     {
@@ -43,7 +46,7 @@ export class FluentStylesComboBoxExample extends React.Component<{}, {}> {
 
   public render(): JSX.Element {
     return (
-      <div className="ms-ComboBoxExample">
+      <div className={style.sidebyside}>
         <ComboBox
           defaultSelectedKey="C"
           label="Uncontrolled ComboBox (allowFreeform: T, AutoComplete: T):"

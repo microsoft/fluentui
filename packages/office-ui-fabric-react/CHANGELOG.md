@@ -1,6 +1,120 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 04 Oct 2018 12:26:48 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Oct 2018 12:28:48 GMT and should not be manually modified.
+
+## 6.85.0
+Tue, 16 Oct 2018 12:28:48 GMT
+
+### Minor changes
+
+- Dropdown: Adds a state property to be set when the Callout has been positioned identifying on what edge of the target it has rendered.
+
+### Patches
+
+- ScrollablePane: now uses React createRef, added test.
+
+## 6.84.1
+Mon, 15 Oct 2018 12:29:12 GMT
+
+### Patches
+
+- DetailsList: do not set select all button aria-describedby unless id it references exists
+- Added default font theme for Slider control to remove Fabric component dependency.
+- Fix ContextualMenuItem secondary text not read by screen reader due to aria-label containing only primary text."
+- Slider bug fix for min equals max
+- Panel: Fixed second scroll bar when content taller than panel
+- ShimmeredDetailsList: Added export to top level index file
+
+## 6.84.0
+Thu, 11 Oct 2018 23:13:31 GMT
+
+### Minor changes
+
+- Implement ImageFit.centerCover
+
+### Patches
+
+- Calendar: accessibility fixes for month option grid
+- Dropdown: Fix issue where correct option wasn't selected
+- Fix ContextualMenu example broken charm icons and specify hover delay input as type="number".
+- Remove 'Button Swap with Focus State' example
+- ScrollablePane: Update DetailsList example to fix bug where footer overlapped scroll bar
+- IconButton: Specifiy the color of the icon in IconButton so that it can be themed and change the hover color for the same reasons.
+
+## 6.83.0
+Wed, 10 Oct 2018 12:29:05 GMT
+
+### Minor changes
+
+- DatePicker and Calendar: allowing native div props to be forwarded to container div.
+- Keytip: Fix TS 3.1 error by extending IBaseProps.
+
+### Patches
+
+- Facepile: fix precedence order for style and className props
+- Added default font theme for Slider control to remove Fabric component dependency.
+- Make ChoiceGroup's role configurable with default "application" for JAWS support.
+- KeyTip: Adds space around examples to improve readability
+- Nav: add aria-label and aria-expanded to groups
+- Panel: make scrollableContent the only scrollable div
+- TagPicker textbox is in the wrong position - middle instead of bottom. Added an align style to fix this.
+
+## 6.82.0
+Tue, 09 Oct 2018 12:26:48 GMT
+
+### Minor changes
+
+- Nav: Add custom group header renderer property
+
+### Patches
+
+- DocumentCard, Pivot, GroupHeader - replace instances of neutralSecondaryAlt with neutralSecondary
+- DocumentCardTitle: Fixes an infinite loop condition caused by componentDidUpdate calling _srinkTitle() over and over again due to setState being triggered every time without a stop condition.
+
+## 6.81.0
+Mon, 08 Oct 2018 19:25:44 GMT
+
+### Minor changes
+
+- Links that wrap aren't getting the proper focus rect. Added a conditional selector that changes the  outline and removed the getFocusStyles call  to fix this. This is for Links that are anchors. Links that are buttons do not wrap at the moment. Once Links that are buttons wrap we can address their focus rect issues if there are any.
+
+### Patches
+
+- TextField can no longer be resized to below its minimum height
+
+## 6.80.0
+Mon, 08 Oct 2018 12:24:16 GMT
+
+### Minor changes
+
+- Typescript 3.1 type fixes.
+
+### Patches
+
+- Moving tslint/prettier dependencies to published packages.
+- Fix a11y violations in ContextualMenu examples
+- Fix Sliders' support for zero values.
+
+## 6.79.0
+Fri, 05 Oct 2018 23:29:26 GMT
+
+### Minor changes
+
+- Moving data property from IDropDownOption to ISelectableOption so anyone that uses ISelectableOption can use this property
+
+### Patches
+
+- Fixed initials not reappearing bug when image is removed from a PersonaCoin
+
+## 6.78.1
+Fri, 05 Oct 2018 12:27:02 GMT
+
+### Patches
+
+- DetailsList: header now reflects the theme defined in the font.
+- Facepile: allow FacepileButton to render custom styles
+- Fixed null ref error when autoFocus prop is used in SearchBox
+- Fixes DetailsHeader disabled columns invoking onColumnClick callbacks
 
 ## 6.78.0
 Thu, 04 Oct 2018 12:26:48 GMT

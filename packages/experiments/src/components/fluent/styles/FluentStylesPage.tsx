@@ -18,6 +18,7 @@ import { FluentStylesToggleExample } from './examples/FluentStyles.Toggle.Exampl
 import { FluentStylesTextFieldExample } from './examples/FluentStyles.TextField.Example';
 import { FluentStylesPanelExample } from './examples/FluentStyles.Panel.Example';
 import { FluentStylesComboBoxExample } from './examples/FluentStyles.ComboBox.Example';
+import { FluentStylesDropdownExample } from './examples/FluentStyles.Dropdown.Example';
 
 const FluentBreadcrumbExampleCode = require('!raw-loader!./examples/FluentStyles.Breadcrumb.Example.tsx') as string;
 const FluentButtonExampleCode = require('!raw-loader!./examples/FluentStyles.Button.Example.tsx') as string;
@@ -29,11 +30,11 @@ const FluentLabelExampleCode = require('!raw-loader!./examples/FluentStyles.Labe
 const FluentRatingExampleCode = require('!raw-loader!./examples/FluentStyles.Rating.Example.tsx') as string;
 const FluentSliderExampleCode = require('!raw-loader!./examples/FluentStyles.Slider.Example.tsx') as string;
 const FluentStylesToggleExampleCode = require('!raw-loader!./examples/FluentStyles.Toggle.Example.tsx') as string;
-
 const FluentStylesContextualMenuExampleCode = require('!raw-loader!./examples/FluentStyles.ContextualMenu.Example.tsx') as string;
 const FluentStylesTextFieldExampleCode = require('!raw-loader!./examples/FluentStyles.TextField.Example.tsx') as string;
 const FluentStylesPanelExampleCode = require('!raw-loader!./examples/FluentStyles.Panel.Example.tsx') as string;
 const FluentStylesComboBoxExampleCode = require('!raw-loader!./examples/FluentStyles.ComboBox.Example.tsx') as string;
+const FluentStylesDropdownExampleCode = require('!raw-loader!./examples/FluentStyles.Dropdown.Example.tsx') as string;
 
 export interface IFabricStylesPageState {
   isFluent?: boolean;
@@ -60,52 +61,83 @@ export class FluentStylesPage extends React.Component<IComponentDemoPageProps, I
         }
         isHeaderVisible={this.props.isHeaderVisible}
         exampleCards={
-          <Customizer {...(isFluent ? FluentCustomizations : undefined)}>
-            <div>
-              <ExampleCard title="Link - No Current Changes" code={FluentLinkExampleCode}>
+          <div>
+            <ExampleCard title="Link - No Current Changes" code={FluentLinkExampleCode}>
+              <Customizer {...(isFluent ? FluentCustomizations : undefined)}>
                 <FluentStylesLinkExample />
-              </ExampleCard>
-              <ExampleCard title="Breadcrumb" code={FluentBreadcrumbExampleCode}>
+              </Customizer>
+            </ExampleCard>
+            <ExampleCard title="Breadcrumb" code={FluentBreadcrumbExampleCode}>
+              <Customizer {...(isFluent ? FluentCustomizations : undefined)}>
                 <FluentStylesBreadcrumbExample />
-              </ExampleCard>
-              <ExampleCard title="Button" code={FluentButtonExampleCode}>
+              </Customizer>
+            </ExampleCard>
+            <ExampleCard title="Button" code={FluentButtonExampleCode}>
+              <Customizer {...(isFluent ? FluentCustomizations : undefined)}>
                 <FluentStylesButtonExample />
-              </ExampleCard>
-              <ExampleCard title="Checkbox" code={FluentCheckboxExampleCode}>
+              </Customizer>
+            </ExampleCard>
+            <ExampleCard title="Checkbox" code={FluentCheckboxExampleCode}>
+              <Customizer {...(isFluent ? FluentCustomizations : undefined)}>
                 <FluentStylesCheckboxExample />
-              </ExampleCard>
-              <ExampleCard title="ChoiceGroup" code={FluentChoiceGroupExampleCode}>
+              </Customizer>
+            </ExampleCard>
+            <ExampleCard title="ChoiceGroup" code={FluentChoiceGroupExampleCode}>
+              <Customizer {...(isFluent ? FluentCustomizations : undefined)}>
                 <FluentStylesChoiceGroupExample />
-              </ExampleCard>
-              <ExampleCard title="ComboBox" code={FluentStylesComboBoxExampleCode}>
+              </Customizer>
+            </ExampleCard>
+            <ExampleCard title="Dropdown" code={FluentStylesDropdownExampleCode}>
+              <Customizer {...(isFluent ? FluentCustomizations : undefined)}>
+                <FluentStylesDropdownExample />
+              </Customizer>
+            </ExampleCard>
+            <ExampleCard title="ComboBox" code={FluentStylesComboBoxExampleCode}>
+              <Customizer {...(isFluent ? FluentCustomizations : undefined)}>
                 <FluentStylesComboBoxExample />
-              </ExampleCard>
-              <ExampleCard title="ContextualMenu" code={FluentStylesContextualMenuExampleCode}>
+              </Customizer>
+            </ExampleCard>
+            <ExampleCard title="ContextualMenu" code={FluentStylesContextualMenuExampleCode}>
+              <Customizer {...(isFluent ? FluentCustomizations : undefined)}>
                 <FluentStylesContextualMenuExample />
-              </ExampleCard>
-              <ExampleCard title="Dialog" code={FluentDialogExampleCode}>
+              </Customizer>
+            </ExampleCard>
+            <ExampleCard title="Dialog" code={FluentDialogExampleCode}>
+              <Customizer {...(isFluent ? FluentCustomizations : undefined)}>
                 <FluentStylesDialogExample />
-              </ExampleCard>
-              <ExampleCard title="Label" code={FluentLabelExampleCode}>
+              </Customizer>
+            </ExampleCard>
+            <ExampleCard title="Label" code={FluentLabelExampleCode}>
+              <Customizer {...(isFluent ? FluentCustomizations : undefined)}>
                 <FluentStylesLabelExample />
-              </ExampleCard>
-              <ExampleCard title="Panel" code={FluentStylesPanelExampleCode}>
+              </Customizer>
+            </ExampleCard>
+            <ExampleCard title="Panel" code={FluentStylesPanelExampleCode}>
+              <Customizer {...(isFluent ? FluentCustomizations : undefined)}>
                 <FluentStylesPanelExample />
-              </ExampleCard>
-              <ExampleCard title="Rating - No Current Changes" code={FluentRatingExampleCode}>
+              </Customizer>
+            </ExampleCard>
+            <ExampleCard title="Rating - No Current Changes" code={FluentRatingExampleCode}>
+              <Customizer {...(isFluent ? FluentCustomizations : undefined)}>
                 <FluentStylesRatingExample />
-              </ExampleCard>
-              <ExampleCard title="Slider - No Current Changes" code={FluentSliderExampleCode}>
+              </Customizer>
+            </ExampleCard>
+            <ExampleCard title="Slider - No Current Changes" code={FluentSliderExampleCode}>
+              <Customizer {...(isFluent ? FluentCustomizations : undefined)}>
                 <FluentStylesSliderExample />
-              </ExampleCard>
-              <ExampleCard title="TextField" code={FluentStylesTextFieldExampleCode}>
+              </Customizer>
+            </ExampleCard>
+            <ExampleCard title="TextField" code={FluentStylesTextFieldExampleCode}>
+              <Customizer {...(isFluent ? FluentCustomizations : undefined)}>
                 <FluentStylesTextFieldExample />
-              </ExampleCard>
-              <ExampleCard title="Toggle" code={FluentStylesToggleExampleCode}>
+              </Customizer>
+            </ExampleCard>
+            <ExampleCard title="Toggle" code={FluentStylesToggleExampleCode}>
+              <Customizer {...(isFluent ? FluentCustomizations : undefined)}>
                 <FluentStylesToggleExample />
-              </ExampleCard>
-            </div>
-          </Customizer>
+              </Customizer>
+            </ExampleCard>
+          </div>
         }
       />
     );

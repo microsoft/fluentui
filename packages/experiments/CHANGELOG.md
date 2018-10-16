@@ -1,6 +1,60 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 04 Oct 2018 12:26:48 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Oct 2018 12:28:48 GMT and should not be manually modified.
+
+## 6.38.0
+Tue, 16 Oct 2018 12:28:48 GMT
+
+### Minor changes
+
+- Fluent: updates the styles of Dropdown and CheckBox to follow fluent specs.
+
+### Patches
+
+- Add customizations for component examples. Remove redundant customizations from Button example.
+
+## 6.37.1
+Mon, 15 Oct 2018 12:29:12 GMT
+
+### Patches
+
+- updating snapshot tests in experiments package
+- Added font theme setting to Button, ChicletCard, CollapsibleSection, Shimmer, ShimmerCircle, ShimmerElementsGroup, ShimmerGap, ShimmerLine, HorizontalStack, Text. Snapshots updated in VerticalStack, Stack.
+- Improve BaseState typing and fix use by experimental components.
+
+## 6.37.0
+Wed, 10 Oct 2018 12:29:05 GMT
+
+### Minor changes
+
+- Separator: change text size and add theming example
+
+## 6.36.1
+Mon, 08 Oct 2018 19:25:44 GMT
+
+### Patches
+
+- Sidebar: added index export
+
+## 6.36.0
+Mon, 08 Oct 2018 12:24:15 GMT
+
+### Minor changes
+
+- Sidebar: Added new component
+
+### Patches
+
+- Moving tslint/prettier dependencies 
+- Fix a11y violations in Fluent ContextualMenu examples
+- Sidebar: Fixed filename and imports
+
+## 6.35.0
+Fri, 05 Oct 2018 23:29:26 GMT
+
+### Minor changes
+
+- Sidebar: Added new component
 
 ## 6.34.2
 Thu, 04 Oct 2018 12:26:48 GMT

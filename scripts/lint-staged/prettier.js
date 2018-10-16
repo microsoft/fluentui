@@ -10,7 +10,7 @@ runPrettierOnStagedFiles(files);
  *  Gets the prettier config path from the tslint package
  */
 function getPrettierConfigPath() {
-  return path.join(process.cwd(), 'packages', 'office-ui-fabric-react-tslint', 'prettier.config.js');
+  return path.join(process.cwd(), 'packages', 'prettier-rules', 'prettier.config.js');
 }
 
 /**
@@ -20,14 +20,11 @@ function getPrettierConfigPath() {
  * @param {string[]} files Staged files passed in by lint-staged
  */
 function runPrettierOnStagedFiles(files) {
-  const prettierPath =
-    'node ' + path.resolve(path.join(__dirname, '..', 'node_modules', 'prettier', 'bin-prettier.js'));
+  const prettierPath = 'node ' + path.resolve(path.join(__dirname, '..', 'node_modules', 'prettier', 'bin-prettier.js'));
   const prettierIgnorePath = path.resolve(path.join(__dirname, '..', '..', '.prettierignore'));
 
-  // Get the config from office-ui-fabric-react-tslint
+  // Get the config from @uifabric/prettier-rules
   const prettierConfigPath = getPrettierConfigPath();
 
-  execSync(
-    `${prettierPath} --config ${prettierConfigPath} --ignore-path "${prettierIgnorePath}" --write ${files.join(' ')}`
-  );
+  execSync(`${prettierPath} --config ${prettierConfigPath} --ignore-path "${prettierIgnorePath}" --write ${files.join(' ')}`);
 }
