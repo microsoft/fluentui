@@ -1,4 +1,5 @@
 export * from './components/App/App';
+export * from './components/CodepenComponent/CodepenComponent';
 export * from './components/ComponentPage/ComponentPage';
 export * from './components/ComponentPage/IComponentDemoPageProps';
 export * from './components/EditSection';

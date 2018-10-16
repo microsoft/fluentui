@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { PageHeader } from '../../../components/PageHeader/PageHeader';
-import { ThemeGeneratorPage } from '@uifabric/fabric-website-resources/lib/components/pages/ThemeGeneratorPage';
-const pageStyles: any = require('../../PageStyles.module.scss');
+import { PageHeader } from '../../components/PageHeader/PageHeader';
+import { ColorsPage } from '@uifabric/fabric-website-resources/lib/components/pages/ColorsPage';
+const pageStyles: any = require('../PageStyles.module.scss');
 
-export class ThemeGeneratorToolPage extends React.Component<any, any> {
+export class ColorsCustomizationPage extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
       <div className={pageStyles.basePage}>
         <PageHeader
-          pageTitle="Theme Generator"
-          backgroundColor="#006f94"
+          pageTitle="Colors"
+          backgroundColor="#038387"
           links={[
             {
               text: 'Overview',
@@ -34,7 +34,7 @@ export class ThemeGeneratorToolPage extends React.Component<any, any> {
           ]}
         />
 
-        <ThemeGeneratorPage />
+        <ColorsPage />
       </div>
     );
   }
