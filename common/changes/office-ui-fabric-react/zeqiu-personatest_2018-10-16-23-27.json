@@ -3,7 +3,7 @@
     {
       "packageName": "office-ui-fabric-react",
       "comment": "Add two visual tests to Persona children.",
-      "type": "patch"
+      "type": "none"
     }
   ],
   "packageName": "office-ui-fabric-react",
