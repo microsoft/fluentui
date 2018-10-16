@@ -12,7 +12,6 @@ import {
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { createRef } from 'office-ui-fabric-react/lib/Utilities';
-import { IDragDropContext } from '../../../../../office-ui-fabric-react/lib/utilities/dragdrop';
 
 const _items: any[] = [];
 

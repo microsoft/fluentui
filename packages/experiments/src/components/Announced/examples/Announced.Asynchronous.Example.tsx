@@ -8,56 +8,71 @@ import './Announced.Example.scss';
 
 export interface IAnnouncedAsynchronousExampleState {
   photos: { url: string; width: number; height: number }[];
-  num: number;
-  renderAnnounced: boolean;
+  total: number;
+  seconds: number;
 }
 
-export interface IAnnouncedAsynchronousExampleProps {}
+export interface IAnnouncedAsynchronousExampleProps { }
 
+/**
+ * TODO: announce when focusing on a section that hasn't loaded yet
+ */
 export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsynchronousExampleProps, IAnnouncedAsynchronousExampleState> {
   constructor(props: {}) {
     super(props);
     this.state = {
-      photos: this._createPhotos(),
-      num: 0,
-      renderAnnounced: false
+      photos: this.createPhotos(),
+      total: 0,
+      seconds: 0
     };
 
-    this._renderPhotos = this._renderPhotos.bind(this);
-    this._increaseNum = this._increaseNum.bind(this);
+    this.renderPhotos = this.renderPhotos.bind(this);
+    this.renderAnnounced = this.renderAnnounced.bind(this);
 
-    this.timer = setInterval(this._increaseNum, 8000);
+    this.increaseTotal = setInterval(() => {
+      if (this.state.total < this.state.photos.length) {
+        this.setState({ total: this.state.total + 1 });
+      }
+    }, 2000);
+
+    this.timer = setInterval(() => {
+      this.setState({ seconds: this.state.seconds + 1 });
+    }, 1000);
+
+    this.delay = 10;
   }
 
   private timer: number;
+  private increaseTotal: number;
+  private delay: number;
 
   public render(): JSX.Element {
+    const { total } = this.state;
+
     return (
       <FocusZone elementType="ul" className="ms-AnnouncedExamples-photoList">
-        {this.state.renderAnnounced ? <Announced message="Photo loaded" key={'announced-' + this.state.num} /> : null}
-        {this._renderPhotos(this.state.num)}
+        {this.renderAnnounced(total)}
+        {this.renderPhotos(total)}
       </FocusZone>
     );
   }
 
   public componentWillUnmount() {
     clearTimeout(this.timer);
+    clearTimeout(this.increaseTotal);
   }
 
-  public componentWillUpdate(nextProps: IAnnouncedAsynchronousExampleProps, nextState: IAnnouncedAsynchronousExampleState) {
-    if (nextState.num !== this.state.num) {
-      this.setState({ renderAnnounced: true });
+  public renderAnnounced(num: number): JSX.Element | undefined {
+    if (this.state.seconds % this.delay === 0) {
+      // update after an amount of time specified by delay
+      const result = <Announced message={`${num}/${this.state.photos.length} photos loaded`} key={'announced-' + num} />;
+      return result;
     }
+    return;
   }
 
-  public _increaseNum(): void {
-    if (this.state.num < 20) {
-      this.setState({ num: this.state.num + 1 });
-    }
-  }
-
-  public _createPhotos(): { url: string; width: number; height: number }[] {
-    let result = createArray(20, () => {
+  public createPhotos(): { url: string; width: number; height: number }[] {
+    const result = createArray(20, () => {
       return {
         url: `http://placehold.it/100x100`,
         width: 100,
@@ -67,8 +82,8 @@ export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsyn
     return result;
   }
 
-  public _renderPhotos(num: number): JSX.Element[] {
-    let result = this.state.photos.map((photo: { url: string; width: number; height: number }, index: number) => (
+  public renderPhotos(total: number): JSX.Element[] {
+    const result = this.state.photos.map((photo: { url: string; width: number; height: number }, index: number) => (
       <ul
         key={index}
         className="ms-AnnouncedExamples-photoCell"
@@ -77,11 +92,11 @@ export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsyn
         aria-label="Photo"
         data-is-focusable={true}
       >
-        {num > index ? (
+        {total > index ? (
           <Image src={photo.url} width={photo.width} height={photo.height} />
         ) : (
-          <Spinner size={SpinnerSize.small} style={{ width: 100, height: 100 }} />
-        )}
+            <Spinner size={SpinnerSize.small} style={{ width: 100, height: 100 }} />
+          )}
       </ul>
     ));
 

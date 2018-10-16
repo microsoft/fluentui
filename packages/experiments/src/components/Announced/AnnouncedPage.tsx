@@ -31,9 +31,9 @@ export class AnnouncedPage extends React.Component<IComponentDemoPageProps, {}> 
             {/* <ExampleCard title="Announced component used for bulk async long running operations"
             isOptIn={true} code={AnnouncedBulkLongRunningExampleCode}>
               <AnnouncedBulkLongRunningExample />
-            </ExampleCard>
-            <ExampleCard title="Announced component used for asynchronous resolution of contacts or search results"
-            isOptIn={true} code={AnnouncedSearchResultsExampleCode}>
+            </ExampleCard> */}
+            {/* <ExampleCard title="Announced component used for asynchronous resolution of contacts or search results"
+              isOptIn={true} code={AnnouncedSearchResultsExampleCode}>
               <AnnouncedSearchResultsExample />
             </ExampleCard> */}
           </div>
