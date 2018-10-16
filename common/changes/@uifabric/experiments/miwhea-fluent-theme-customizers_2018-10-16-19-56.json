@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/experiments",
+      "comment": "Fix FluentStylesPage by wrapping a Customizer around each example",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/experiments",
+  "email": "miwhea@microsoft.com"
+}
