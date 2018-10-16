@@ -95,6 +95,12 @@ describe('Persona', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders Persona children correctly', () => {
+    const component = renderer.create(<Persona text='Kat Larrson' ><span>This is Persona children</span></Persona>);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   describe('initials and colors', () => {
     it('calculates an expected initials in LTR if one was not specified', () => {
       let wrapper = mount(<Persona text='Kat Larrson' />);
