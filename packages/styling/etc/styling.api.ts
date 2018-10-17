@@ -18,29 +18,63 @@ export function focusClear(): IRawStyle;
 // @public
 export function fontFace(font: IFontFace): void;
 
-// WARNING: Export "mini" is missing the "const" modifier. Currently the "namespace" block only supports constant variables.
-// WARNING: Export "xSmall" is missing the "const" modifier. Currently the "namespace" block only supports constant variables.
-// WARNING: Export "small" is missing the "const" modifier. Currently the "namespace" block only supports constant variables.
-// WARNING: Export "smallPlus" is missing the "const" modifier. Currently the "namespace" block only supports constant variables.
-// WARNING: Export "medium" is missing the "const" modifier. Currently the "namespace" block only supports constant variables.
-// WARNING: Export "mediumPlus" is missing the "const" modifier. Currently the "namespace" block only supports constant variables.
-// WARNING: Export "icon" is missing the "const" modifier. Currently the "namespace" block only supports constant variables.
-// WARNING: Export "large" is missing the "const" modifier. Currently the "namespace" block only supports constant variables.
-// WARNING: Export "xLarge" is missing the "const" modifier. Currently the "namespace" block only supports constant variables.
-// WARNING: Export "xxLarge" is missing the "const" modifier. Currently the "namespace" block only supports constant variables.
-// WARNING: Export "superLarge" is missing the "const" modifier. Currently the "namespace" block only supports constant variables.
-// WARNING: Export "mega" is missing the "const" modifier. Currently the "namespace" block only supports constant variables.
 // @public (undocumented)
 module FontSizes {
+  // (undocumented)
+  icon: string;
+
+  // (undocumented)
+  large: string;
+
+  // (undocumented)
+  medium: string;
+
+  // (undocumented)
+  mediumPlus: string;
+
+  // (undocumented)
+  mega: string;
+
+  // (undocumented)
+  mini: string;
+
+  // (undocumented)
+  small: string;
+
+  // (undocumented)
+  smallPlus: string;
+
+  // (undocumented)
+  superLarge: string;
+
+  // (undocumented)
+  xLarge: string;
+
+  // (undocumented)
+  xSmall: string;
+
+  // (undocumented)
+  xxLarge: string;
+
 }
 
-// WARNING: Export "light" is missing the "const" modifier. Currently the "namespace" block only supports constant variables.
-// WARNING: Export "semilight" is missing the "const" modifier. Currently the "namespace" block only supports constant variables.
-// WARNING: Export "regular" is missing the "const" modifier. Currently the "namespace" block only supports constant variables.
-// WARNING: Export "semibold" is missing the "const" modifier. Currently the "namespace" block only supports constant variables.
-// WARNING: Export "bold" is missing the "const" modifier. Currently the "namespace" block only supports constant variables.
 // @public (undocumented)
 module FontWeights {
+  // (undocumented)
+  bold: IFontWeight;
+
+  // (undocumented)
+  light: IFontWeight;
+
+  // (undocumented)
+  regular: IFontWeight;
+
+  // (undocumented)
+  semibold: IFontWeight;
+
+  // (undocumented)
+  semilight: IFontWeight;
+
 }
 
 // @public
@@ -163,12 +197,20 @@ interface IAnimationVariables {
   easeFunction2: string;
 }
 
-// WARNING: Export "xSmall" is missing the "const" modifier. Currently the "namespace" block only supports constant variables.
-// WARNING: Export "small" is missing the "const" modifier. Currently the "namespace" block only supports constant variables.
-// WARNING: Export "medium" is missing the "const" modifier. Currently the "namespace" block only supports constant variables.
-// WARNING: Export "large" is missing the "const" modifier. Currently the "namespace" block only supports constant variables.
 // @public (undocumented)
 module IconFontSizes {
+  // (undocumented)
+  large: string;
+
+  // (undocumented)
+  medium: string;
+
+  // (undocumented)
+  small: string;
+
+  // (undocumented)
+  xSmall: string;
+
 }
 
 // @public
@@ -600,12 +642,12 @@ class Stylesheet {
 // @public
 export function unregisterIcons(iconNames: string[]): void;
 
-// WARNING: Export "Nav" is missing the "const" modifier. Currently the "namespace" block only supports constant variables.
-// WARNING: Export "ScrollablePane" is missing the "const" modifier. Currently the "namespace" block only supports constant variables.
-// WARNING: Export "FocusStyle" is missing the "const" modifier. Currently the "namespace" block only supports constant variables.
-// WARNING: Export "Coachmark" is missing the "const" modifier. Currently the "namespace" block only supports constant variables.
-// WARNING: Export "Layer" is missing the "const" modifier. Currently the "namespace" block only supports constant variables.
-// WARNING: Export "KeytipLayer" is missing the "const" modifier. Currently the "namespace" block only supports constant variables.
+// WARNING: Export "Nav" must specify a type
+// WARNING: Export "ScrollablePane" must specify a type
+// WARNING: Export "FocusStyle" must specify a type
+// WARNING: Export "Coachmark" must specify a type
+// WARNING: Export "Layer" must specify a type
+// WARNING: Export "KeytipLayer" must specify a type
 // @public (undocumented)
 module ZIndexes {
 }
