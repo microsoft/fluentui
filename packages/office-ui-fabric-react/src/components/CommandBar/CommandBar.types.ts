@@ -57,6 +57,13 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
    * @defaultvalue undefined
    */
   className?: string;
+
+  /**
+   * Method to override the render of all command bar buttons. Note, is not used when rendered in overflow
+   * @default CommandBarButton
+   * @deprecated
+   */
+  commandBarButtonAs?: IComponentAs<ICommandBarItemProps>;
 }
 
 export interface ICommandBarItemProps extends IContextualMenuItem {
