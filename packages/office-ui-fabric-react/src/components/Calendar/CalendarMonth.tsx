@@ -50,6 +50,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
 
   private _selectMonthCallbacks: (() => void)[];
   private _calendarYearRef: CalendarYear;
+  private _focusOnUpdate: boolean;
 
   public constructor(props: ICalendarMonthProps) {
     super(props);
@@ -68,7 +69,10 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
   }
 
   public componentDidUpdate(): void {
-    this.focus();
+    if (this._focusOnUpdate) {
+      this.focus();
+      this._focusOnUpdate = false;
+    }
   }
 
   public render(): JSX.Element {
@@ -228,6 +232,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
   };
 
   private _onSelectYear = (selectedYear: number) => {
+    this._focusOnUpdate = true;
     const { navigatedDate, onNavigateDate } = this.props;
     const navYear = navigatedDate.getFullYear();
     if (navYear !== selectedYear) {
@@ -277,7 +282,8 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
   private _onHeaderSelect = (): void => {
     const { onHeaderSelect, yearPickerHidden } = this.props;
     if (!yearPickerHidden) {
-      this.setState({ isYearPickerVisible: !this.state.isYearPickerVisible });
+      this._focusOnUpdate = true;
+      this.setState({ isYearPickerVisible: true });
     } else if (onHeaderSelect) {
       onHeaderSelect(true);
     }
