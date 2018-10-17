@@ -1,6 +1,14 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 16 Oct 2018 12:28:48 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Oct 2018 01:29:55 GMT and should not be manually modified.
+
+## 6.38.1
+Wed, 17 Oct 2018 01:29:55 GMT
+
+### Patches
+
+- Updated Readme
+- Fix FluentStylesPage by wrapping a Customizer around each example
 
 ## 6.38.0
 Tue, 16 Oct 2018 12:28:48 GMT
