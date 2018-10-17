@@ -28,7 +28,11 @@ const BreadcrumbStyles = (props: IBreadcrumbStyleProps) => {
   };
 
   return {
+    root: {
+      marginTop: 11
+    },
     itemLink: {
+      lineHeight: '2',
       outline: 'none',
       fontSize: FontSizes.size18,
       fontWeight: 400,
@@ -353,7 +357,8 @@ const DropdownStyles = (props: IDropdownStyleProps) => {
 
           // Title has error states
           ['&:hover .ms-Dropdown-title--hasError, &:focus .ms-Dropdown-title--hasError, &:active .ms-Dropdown-title--hasError']: {
-            borderColor: SharedColors.red20
+            borderColor: SharedColors.red20,
+            color: 'red'
           }
         }
       }
