@@ -36,7 +36,7 @@ import { ContextualMenuSplitButton, ContextualMenuButton, ContextualMenuAnchor }
 import { IProcessedStyleSet, mergeStyleSets } from '../../Styling';
 import { IContextualMenuItemStyleProps, IContextualMenuItemStyles } from './ContextualMenuItem.types';
 
-import { getItemClassNames as getItemStyles } from './ContextualMenu.classNames';
+import { getItemStyles } from './ContextualMenu.classNames';
 
 const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualMenuStyles>();
 const getContextualMenuItemClassNames = classNamesFunction<IContextualMenuItemStyleProps, IContextualMenuItemStyles>();
