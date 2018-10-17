@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Fix Persona regression in Fabric V5: this.props.children was accidentally deleted from Persona in V5, put it back.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "zeqiu@microsoft.com"
+}
