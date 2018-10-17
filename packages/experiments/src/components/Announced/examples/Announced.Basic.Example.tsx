@@ -12,6 +12,7 @@ import {
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { createRef } from 'office-ui-fabric-react/lib/Utilities';
+// import { KeyboardShortcut } from '@ms/items-view';
 
 const _items: any[] = [];
 
@@ -73,7 +74,7 @@ export class AnnouncedBasicExample extends React.Component<
     selectionDetails: {};
     showItemIndexInView: boolean;
   }
-> {
+  > {
   private _selection: Selection;
   private _detailsList = createRef<IDetailsList>();
 

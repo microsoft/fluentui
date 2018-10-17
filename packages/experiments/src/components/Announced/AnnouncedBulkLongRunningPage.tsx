@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 
-import { AnnouncedBasicExample } from './examples/Announced.Basic.Example';
-const AnnouncedBasicExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Announced/examples/Announced.Basic.Example.tsx') as string;
+import { AnnouncedBulkLongRunningExample } from './examples/Announced.BulkLongRunning.Example';
+const AnnouncedBulkLongRunningExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Announced/examples/Announced.BulkLongRunning.Example.tsx') as string;
 
-export class AnnouncedPage extends React.Component<IComponentDemoPageProps, {}> {
+export class AnnouncedBulkLongRunningPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
       <ComponentPage
@@ -12,8 +12,9 @@ export class AnnouncedPage extends React.Component<IComponentDemoPageProps, {}> 
         componentName="Announced"
         exampleCards={
           <div>
-            <ExampleCard title="Announced component used with editing text, deletion" isOptIn={true} code={AnnouncedBasicExampleCode}>
-              <AnnouncedBasicExample />
+            <ExampleCard title="Announced component used for bulk async long running operations"
+              isOptIn={true} code={AnnouncedBulkLongRunningExampleCode}>
+              <AnnouncedBulkLongRunningExample />
             </ExampleCard>
           </div>
         }
