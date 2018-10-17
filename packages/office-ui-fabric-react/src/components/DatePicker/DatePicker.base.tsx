@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IDatePicker, IDatePickerProps, IDatePickerStrings, IDatePickerStyleProps, IDatePickerStyles } from './DatePicker.types';
-import { BaseComponent, KeyCodes, createRef, classNamesFunction, getId } from '../../Utilities';
+import { BaseComponent, KeyCodes, createRef, classNamesFunction, getId, getNativeProps, divProperties } from '../../Utilities';
 import { Calendar, ICalendar, DayOfWeek } from '../../Calendar';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { Callout } from '../../Callout';
@@ -170,9 +170,10 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     });
 
     const calloutId = getId('DatePicker-Callout');
+    const nativeProps = getNativeProps(this.props, divProperties, ['value']);
 
     return (
-      <div className={classNames.root}>
+      <div {...nativeProps} className={classNames.root}>
         <div ref={this._datePickerDiv} role="combobox" aria-expanded={isDatePickerShown} aria-haspopup="true" aria-owns={calloutId}>
           <TextField
             label={label}

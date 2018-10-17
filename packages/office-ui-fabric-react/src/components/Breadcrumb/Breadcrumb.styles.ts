@@ -1,29 +1,13 @@
 import {
   HighContrastSelector,
   IRawStyle,
-  IStyle,
-  ITheme,
   ScreenWidthMaxMedium,
   ScreenWidthMaxSmall,
   ScreenWidthMinMedium,
   getFocusStyle,
   getScreenSelector
 } from '../../Styling';
-
-export interface IBreadcrumbStyleProps {
-  className?: string;
-  theme: ITheme;
-}
-export interface IBreadcrumbStyles {
-  root: IStyle;
-  list: IStyle;
-  listItem: IStyle;
-  chevron: IStyle;
-  overflow: IStyle;
-  overflowButton: IStyle;
-  itemLink: IStyle;
-  item: IStyle;
-}
+import { IBreadcrumbStyleProps, IBreadcrumbStyles } from './Breadcrumb.types';
 
 const SingleLineTextStyle: IRawStyle = {
   whiteSpace: 'nowrap',
@@ -45,6 +29,7 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
   return {
     root: [
       'ms-Breadcrumb',
+      theme.fonts.medium,
       {
         margin: '23px 0 1px'
       },

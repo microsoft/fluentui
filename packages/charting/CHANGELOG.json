@@ -2,6 +2,103 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.25.0",
+      "tag": "@uifabric/charting_v0.25.0",
+      "date": "Tue, 16 Oct 2018 12:28:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding support for date format and ticks on x-axis  of line chart. Providin date format prop to users to show data in desired format. Optionally providing tickValues prop to override D3.js default behavior on deciding what data appears on the axis of chart. D3.js default behavior is not suitable in all cases and makes the chart axis look bad in certain cases. Providing tickValues prop to user so that user can override this default behavior.If he/she does not use this D3's default behavior will be used in rendering data on the xAxis",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "29ed1606b89cecfc376a2992eff59bff710ddca1"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.84.1 <7.0.0` to `>=6.85.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.7.6 <7.0.0` to `>=6.8.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.24.4",
+      "tag": "@uifabric/charting_v0.24.4",
+      "date": "Mon, 15 Oct 2018 12:29:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "updating snapshot tests in charting package",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "e83f082e86ab8a599f298dc1dfe343981bbebee5"
+          },
+          {
+            "comment": "Added font theme setting in styles of DonutChart, LineChart, PieChart, StackedBarChart, VerticalBarChart",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "e83f082e86ab8a599f298dc1dfe343981bbebee5"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Added font theme setting in styles of DonutChart, LineChart, PieChart, StackedBarChart, VerticalBarChart.",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "e83f082e86ab8a599f298dc1dfe343981bbebee5"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.84.0 <7.0.0` to `>=6.84.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.24.3",
+      "tag": "@uifabric/charting_v0.24.3",
+      "date": "Thu, 11 Oct 2018 23:13:31 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "resolve console errors for horizontal bar chart",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "0e18214dd25bffdab0c5eb79fbd4a870276b6ed6"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.83.0 <7.0.0` to `>=6.84.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.7.5 <7.0.0` to `>=6.7.6 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.24.2",
+      "tag": "@uifabric/charting_v0.24.2",
+      "date": "Wed, 10 Oct 2018 12:29:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "css changes in charts for meeting the figma design",
+            "author": "BalakrishnaReddyPolu <polu.balakrishna96@gmail.com>",
+            "commit": "8f3a0650b4dc1cf1aeb0e1c91ec7eb8e41bb60e3"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.82.0 <7.0.0` to `>=6.83.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.7.4 <7.0.0` to `>=6.7.5 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.24.1",
       "tag": "@uifabric/charting_v0.24.1",
       "date": "Mon, 08 Oct 2018 12:24:15 GMT",

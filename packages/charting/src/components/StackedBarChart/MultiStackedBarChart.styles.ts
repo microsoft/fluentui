@@ -5,6 +5,7 @@ export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleP
   const { className, width, barHeight, legendColor, shouldHighlight, theme, href } = props;
   return {
     root: [
+      theme.fonts.medium,
       'ms-StackedBarChart',
       {
         display: 'flex',
@@ -54,6 +55,9 @@ export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleP
     opacityChangeOnHover: {
       opacity: shouldHighlight ? '' : '0.1',
       cursor: href ? 'pointer' : 'default'
+    },
+    legendContainer: {
+      marginTop: '5px'
     },
     noData: {
       cursor: href ? 'pointer' : 'default'

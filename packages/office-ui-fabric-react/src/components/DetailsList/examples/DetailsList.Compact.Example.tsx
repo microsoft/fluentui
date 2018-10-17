@@ -78,6 +78,8 @@ export class DetailsListCompactExample extends React.Component<
             selectionPreservedOnEmptyClick={true}
             onItemInvoked={this._onItemInvoked}
             compact={true}
+            ariaLabelForSelectionColumn="Toggle selection"
+            ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           />
         </MarqueeSelection>
       </div>

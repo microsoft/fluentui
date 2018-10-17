@@ -134,7 +134,7 @@ class CalendarYearGrid extends React.Component<ICalendarYearGridProps, {}> imple
     return (
       <FocusZone>
         <div className={css('ms-DatePicker-optionGrid', styles.optionGrid)} role="grid">
-          {cells}
+          <div role="row">{cells}</div>
         </div>
       </FocusZone>
     );

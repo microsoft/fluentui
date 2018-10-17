@@ -1,6 +1,86 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 08 Oct 2018 19:25:44 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Oct 2018 01:29:55 GMT and should not be manually modified.
+
+## 6.86.0
+Wed, 17 Oct 2018 01:29:55 GMT
+
+### Minor changes
+
+- Update theme generator to generate valid code output. Fix Pivot API to accurately reflect div interface.
+
+### Patches
+
+- FocusTrapZone: Add/remove focus and click handlers when props change
+
+## 6.85.0
+Tue, 16 Oct 2018 12:28:48 GMT
+
+### Minor changes
+
+- Dropdown: Adds a state property to be set when the Callout has been positioned identifying on what edge of the target it has rendered.
+
+### Patches
+
+- ScrollablePane: now uses React createRef, added test.
+
+## 6.84.1
+Mon, 15 Oct 2018 12:29:12 GMT
+
+### Patches
+
+- DetailsList: do not set select all button aria-describedby unless id it references exists
+- Added default font theme for Slider control to remove Fabric component dependency.
+- Fix ContextualMenuItem secondary text not read by screen reader due to aria-label containing only primary text."
+- Slider bug fix for min equals max
+- Panel: Fixed second scroll bar when content taller than panel
+- ShimmeredDetailsList: Added export to top level index file
+
+## 6.84.0
+Thu, 11 Oct 2018 23:13:31 GMT
+
+### Minor changes
+
+- Implement ImageFit.centerCover
+
+### Patches
+
+- Calendar: accessibility fixes for month option grid
+- Dropdown: Fix issue where correct option wasn't selected
+- Fix ContextualMenu example broken charm icons and specify hover delay input as type="number".
+- Remove 'Button Swap with Focus State' example
+- ScrollablePane: Update DetailsList example to fix bug where footer overlapped scroll bar
+- IconButton: Specifiy the color of the icon in IconButton so that it can be themed and change the hover color for the same reasons.
+
+## 6.83.0
+Wed, 10 Oct 2018 12:29:05 GMT
+
+### Minor changes
+
+- DatePicker and Calendar: allowing native div props to be forwarded to container div.
+- Keytip: Fix TS 3.1 error by extending IBaseProps.
+
+### Patches
+
+- Facepile: fix precedence order for style and className props
+- Added default font theme for Slider control to remove Fabric component dependency.
+- Make ChoiceGroup's role configurable with default "application" for JAWS support.
+- KeyTip: Adds space around examples to improve readability
+- Nav: add aria-label and aria-expanded to groups
+- Panel: make scrollableContent the only scrollable div
+- TagPicker textbox is in the wrong position - middle instead of bottom. Added an align style to fix this.
+
+## 6.82.0
+Tue, 09 Oct 2018 12:26:48 GMT
+
+### Minor changes
+
+- Nav: Add custom group header renderer property
+
+### Patches
+
+- DocumentCard, Pivot, GroupHeader - replace instances of neutralSecondaryAlt with neutralSecondary
+- DocumentCardTitle: Fixes an infinite loop condition caused by componentDidUpdate calling _srinkTitle() over and over again due to setState being triggered every time without a stop condition.
 
 ## 6.81.0
 Mon, 08 Oct 2018 19:25:44 GMT

@@ -8,6 +8,7 @@ import { mount } from 'enzyme';
 import { Calendar } from './Calendar';
 import { DateRangeType, DayOfWeek } from './Calendar.types';
 import { addDays, compareDates } from '../../utilities/dateMath/DateMath';
+import { resetIds } from '../../Utilities';
 
 describe('Calendar', () => {
   const dayPickerStrings = {
@@ -21,6 +22,16 @@ describe('Calendar', () => {
 
     goToToday: 'Go to today'
   };
+
+  beforeEach(() => {
+    resetIds();
+  });
+
+  it('can append div attributes to container', () => {
+    const renderedComponent = mount(<Calendar strings={dayPickerStrings} id="foo" />);
+
+    expect(renderedComponent.getElement().props.id).toEqual('foo');
+  });
 
   it('can handle invalid starting dates', () => {
     // Arrange

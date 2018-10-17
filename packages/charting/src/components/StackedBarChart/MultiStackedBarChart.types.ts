@@ -129,6 +129,11 @@ export interface IMultiStackedBarChartStyles {
   opacityChangeOnHover: IStyle;
 
   /**
+   * Style for the legends container
+   */
+  legendContainer: IStyle;
+
+  /**
    * Style for stacked bar chart with no data
    */
   noData: IStyle;

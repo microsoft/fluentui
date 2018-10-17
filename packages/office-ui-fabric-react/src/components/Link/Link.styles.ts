@@ -14,6 +14,7 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
   return {
     root: [
       classNames.root,
+      theme.fonts.medium,
       {
         color: semanticColors.link,
         outline: 'none',

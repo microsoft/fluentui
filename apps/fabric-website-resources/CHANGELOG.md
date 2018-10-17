@@ -1,6 +1,20 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Mon, 08 Oct 2018 12:24:15 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Oct 2018 01:29:55 GMT and should not be manually modified.
+
+## 6.9.4
+Wed, 17 Oct 2018 01:29:55 GMT
+
+### Patches
+
+- Move theme generator page to color customization page.
+
+## 6.9.3
+Tue, 16 Oct 2018 12:28:48 GMT
+
+### Patches
+
+- Add customizations for component examples.
 
 ## 6.9.2
 Mon, 08 Oct 2018 12:24:15 GMT
