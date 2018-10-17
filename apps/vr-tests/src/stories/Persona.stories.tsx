@@ -179,6 +179,6 @@ storiesOf('Persona', module)
     <Persona
       { ...examplePersona }
     >
-      <span>This is Persona children</span>
+      <span>Persona Children</span>
     </Persona>
   ));
