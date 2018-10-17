@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Coachmark: Fix tabbing when Coachmark is mounted (backport from PR 6240)",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "miwhea@microsoft.com"
+}
