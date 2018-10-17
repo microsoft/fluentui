@@ -6,7 +6,9 @@
     "url": "https://github.com/OfficeDev/office-ui-fabric-react.git"
   },
   "eventHooks": {
-    "postRushInstall": ["node scripts/install-husky.js"]
+    "postRushInstall": [
+      "node scripts/install-husky.js"
+    ]
   },
   "nodeSupportedVersionRange": ">=6.9.0 <10.0.0",
   "projects": [
@@ -148,6 +150,12 @@
     {
       "packageName": "@uifabric/prettier-rules",
       "projectFolder": "packages/prettier-rules",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "@uifabric/theme-samples",
+      "projectFolder": "packages/theme-samples",
+      "versionPolicyName": "lockedMajor",
       "shouldPublish": false
     }
   ]
