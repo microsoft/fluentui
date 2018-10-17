@@ -165,8 +165,8 @@ class CalendarYearGrid extends React.Component<ICalendarYearGridProps, {}> imple
 }
 
 export interface ICalendarYearHeaderProps extends ICalendarYearProps, ICalendarYearRange {
-  onClickPrev?: () => void;
-  onClickNext?: () => void;
+  onSelectPrev?: () => void;
+  onSelectNext?: () => void;
 }
 
 class CalendarYearNavPrev extends React.Component<ICalendarYearHeaderProps, any> {
@@ -178,14 +178,15 @@ class CalendarYearNavPrev extends React.Component<ICalendarYearHeaderProps, any>
       typeof prevRangeAriaLabel === 'string'
         ? (prevRangeAriaLabel as string)
         : (prevRangeAriaLabel as ICalendarYearRangeToString)(this.props);
-    const { minYear } = this.props;
-    const disabled = minYear !== undefined && this.props.fromYear < minYear;
+    const disabled = this.isDisabled;
+    const { onSelectPrev } = this.props;
     return (
       <button
         className={css('ms-DatePicker-prevDecade', styles.prevDecade, {
           ['ms-DatePicker-prevDecade--disabled ' + styles.prevDecadeIsDisabled]: disabled
         })}
-        onClick={this.props.onClickPrev}
+        onClick={!disabled && onSelectPrev ? this._onSelectPrev : undefined}
+        onKeyDown={!disabled && onSelectPrev ? this._onKeyDown : undefined}
         type="button"
         tabIndex={0}
         aria-label={prevAriaLabel}
@@ -195,6 +196,20 @@ class CalendarYearNavPrev extends React.Component<ICalendarYearHeaderProps, any>
       </button>
     );
   }
+  get isDisabled() {
+    const { minYear } = this.props;
+    return minYear !== undefined && this.props.fromYear < minYear;
+  }
+  private _onSelectPrev = () => {
+    if (!this.isDisabled && this.props.onSelectPrev) {
+      this.props.onSelectPrev();
+    }
+  };
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
+    if (ev.which === KeyCodes.enter) {
+      this._onSelectPrev();
+    }
+  };
 }
 
 class CalendarYearNavNext extends React.Component<ICalendarYearHeaderProps, any> {
@@ -206,23 +221,38 @@ class CalendarYearNavNext extends React.Component<ICalendarYearHeaderProps, any>
       typeof nextRangeAriaLabel === 'string'
         ? (nextRangeAriaLabel as string)
         : (nextRangeAriaLabel as ICalendarYearRangeToString)(this.props);
-    const { maxYear } = this.props;
-    const disabled = maxYear !== undefined && this.props.fromYear + CELL_COUNT > maxYear;
+    const { onSelectNext } = this.props;
+    const disabled = this.isDisabled;
     return (
       <button
         className={css('ms-DatePicker-nextDecade', styles.nextDecade, {
           ['ms-DatePicker-nextDecade--disabled ' + styles.nextDecadeIsDisabled]: disabled
         })}
-        onClick={this.props.onClickNext}
+        onClick={!disabled && onSelectNext ? this._onSelectNext : undefined}
+        onKeyDown={!disabled && onSelectNext ? this._onKeyDown : undefined}
         type="button"
         tabIndex={0}
         aria-label={nextAriaLabel}
-        disabled={disabled}
+        disabled={this.isDisabled}
       >
         <Icon iconName={getRTL() ? iconStrings.leftNavigation : iconStrings.rightNavigation} />
       </button>
     );
   }
+  get isDisabled() {
+    const { maxYear } = this.props;
+    return maxYear !== undefined && this.props.fromYear + CELL_COUNT > maxYear;
+  }
+  private _onSelectNext = () => {
+    if (!this.isDisabled && this.props.onSelectNext) {
+      this.props.onSelectNext();
+    }
+  };
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
+    if (ev.which === KeyCodes.enter) {
+      this._onSelectNext();
+    }
+  };
 }
 
 class CalendarYearNav extends React.Component<ICalendarYearHeaderProps, any> {
@@ -308,8 +338,8 @@ export class CalendarYear extends React.Component<ICalendarYearProps, ICalendarY
         {...this.props}
         fromYear={this.state.fromYear}
         toYear={this.state.fromYear + CELL_COUNT - 1}
-        onClickPrev={this._onNavPrev}
-        onClickNext={this._onNavNext}
+        onSelectPrev={this._onNavPrev}
+        onSelectNext={this._onNavNext}
       />
     );
   };
