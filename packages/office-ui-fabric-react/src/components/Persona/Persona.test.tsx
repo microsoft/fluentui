@@ -6,7 +6,7 @@ import { Persona } from './Persona';
 import { mount, ReactWrapper } from 'enzyme';
 import { getIcon } from '../../Styling';
 import { IPersonaSharedProps, IPersonaProps, PersonaSize, PersonaPresence } from '../../Persona';
-import { TestImages } from 'office-ui-fabric-react/lib/common/TestImages';
+import { TestImages } from '../../common/TestImages';
 
 const testImage1x1 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
 const STYLES = {
