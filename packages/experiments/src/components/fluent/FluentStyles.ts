@@ -56,7 +56,8 @@ const CheckboxStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
       !disabled && [
         !checked && {
           selectors: {
-            ':hover .ms-Checkbox-text': { color: palette.neutralDark }
+            ':hover .ms-Checkbox-text': { color: palette.neutralDark },
+            ':hover .ms-Checkbox-checkmark': { color: NeutralColors.gray120 } // color not in the palette or semanticColors
           }
         },
         checked && {
@@ -95,20 +96,25 @@ const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGr
             checked &&
               !disabled && {
                 borderColor: semanticColors.inputBackgroundChecked
+              },
+            (hasIcon || hasImage) &&
+              disabled &&
+              checked && {
+                opacity: 1
               }
           ],
           // The dot
           ':after': [
             checked &&
               disabled && {
-                borderColor: NeutralColors.gray60
+                borderColor: palette.neutralTertiaryAlt
               }
           ],
           ':hover': [
             !disabled && {
               selectors: {
                 '.ms-ChoiceFieldLabel': {
-                  color: semanticColors.actionLinkHovered // This might need a new semantic slot. Using this one for the correct color.
+                  color: palette.neutralDark
                 },
                 ':before': {
                   borderColor: checked ? palette.themeDark : semanticColors.bodyText
@@ -123,28 +129,39 @@ const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGr
                       top: 5,
                       width: 10,
                       height: 10,
-                      backgroundColor: NeutralColors.gray120
+                      backgroundColor: NeutralColors.gray120 // color not in the palette or semanticColors
                     },
                   checked && {
                     borderColor: palette.themeDark
                   }
                 ]
               }
-            },
-            (hasIcon || hasImage) &&
-              !disabled && {
-                selectors: {
-                  ':hover': {
-                    borderColor: checked ? palette.themeDark : semanticColors.bodyText
-                  }
-                }
-              }
+            }
           ]
         }
       },
+      (hasIcon || hasImage) &&
+        !disabled && {
+          selectors: {
+            ':hover': {
+              borderColor: checked ? palette.themeDark : semanticColors.bodyText
+            }
+          }
+        },
       (hasIcon || hasImage) && {
         borderWidth: 1
-      }
+      },
+      disabled && {
+        selectors: {
+          '.ms-ChoiceFieldLabel': {
+            color: semanticColors.disabledText
+          }
+        }
+      },
+      checked &&
+        disabled && {
+          borderColor: semanticColors.disabledBackground
+        }
     ],
     choiceFieldWrapper: {
       selectors: {
@@ -156,14 +173,7 @@ const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGr
           }
         }
       }
-    },
-    innerField: [
-      hasIcon &&
-        disabled && {
-          opacity: 1,
-          color: semanticColors.disabledBodyText
-        }
-    ]
+    }
   };
 };
 

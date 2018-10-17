@@ -28,7 +28,6 @@ export class FluentStylesChoiceGroupExample extends React.Component<{}, {}> {
           <br />
           <ChoiceGroup
             label="Active"
-            defaultSelectedKey="week"
             options={[
               {
                 key: 'day',
