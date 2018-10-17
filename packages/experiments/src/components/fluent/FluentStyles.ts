@@ -12,18 +12,21 @@ import { IBreadcrumbStyleProps } from 'office-ui-fabric-react/lib/Breadcrumb';
 const fluentBorderRadius = '2px';
 
 const BreadcrumbStyles = (props: IBreadcrumbStyleProps) => {
+  const { theme } = props;
+  const { semanticColors } = theme;
+
   const stateSelectors = {
     ':hover': {
-      color: NeutralColors.gray160
+      color: semanticColors.bodyText
     },
     ':active': {
-      backgroundColor: NeutralColors.gray30
+      backgroundColor: semanticColors.buttonBackgroundPressed
     },
     // Needs to be revised with designers when moving to default OUFR styles.
     // Now used only to override the default ones to follow fluent specs.
     '&:active:hover': {
-      color: NeutralColors.gray160,
-      backgroundColor: NeutralColors.gray30
+      color: semanticColors.bodyText,
+      backgroundColor: semanticColors.buttonBackgroundPressed
     }
   };
 
@@ -36,11 +39,11 @@ const BreadcrumbStyles = (props: IBreadcrumbStyleProps) => {
       outline: 'none',
       fontSize: FontSizes.size18,
       fontWeight: 400,
-      color: NeutralColors.gray130,
+      color: semanticColors.bodySubtext,
       selectors: {
         '&:last-child': {
           fontWeight: 600,
-          color: NeutralColors.gray160
+          color: semanticColors.bodyText
         },
         '.ms-Fabric--isFocusVisible &:focus': {
           // Necessary due to changes of Link component not using getFocusStyle
@@ -50,7 +53,7 @@ const BreadcrumbStyles = (props: IBreadcrumbStyleProps) => {
       }
     },
     overflowButton: {
-      color: NeutralColors.gray130,
+      color: semanticColors.bodySubtext,
       selectors: {
         ...stateSelectors
       }
