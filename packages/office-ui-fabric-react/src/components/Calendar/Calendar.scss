@@ -742,6 +742,14 @@ $Calendar-dayPicker-margin: 10px;
   &.monthOption:hover {
     background-color: $ms-color-themeLight;
   }
+  @include high-contrast {
+    color: highlight;
+    border: 2px solid highlight;
+    border-radius: 2px;
+    &:hover {
+      outline: 0 !important;
+    }
+  }
 }
 
 .monthIsCurrentMonth {
