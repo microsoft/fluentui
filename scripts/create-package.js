@@ -27,33 +27,34 @@ const rushPath = path.join(__dirname, '..', 'rush.json');
 // rush.json contents
 let rushJson = require(rushPath);
 
-// Output Files
-const outputFiles = {
-  NpmIgnore: '.npmignore',
-  Npmrc: '.npmrc',
-  ChangelogJson: 'CHANGELOG.json',
-  ChangelogMarkdown: 'CHANGELOG.md',
-  License: 'LICENSE',
-  Readme: 'README.md',
-  IndexHtml: 'index.html',
-  JestConfig: 'jest.config.js',
-  JsConfig: 'jsconfig.json',
-  PackageJson: 'package.json',
-  TsConfig: 'tsconfig.json',
-  TsLint: 'tslint.json',
-  WebpackConfig: 'webpack.config.js',
-  WebpackServeConfig: 'webpack.serve.config.js',
-  VsCodeLaunch: path.join('.vscode', 'launch.json'),
-  VsCodeSettings: path.join('.vscode', 'settings.json'),
-  Tests: path.join('config', 'tests.js'),
-  TestsCommon: path.join('src', 'common', 'tests.js'),
-  AppDefinition: path.join('src', 'demo', 'AppDefinition.tsx'),
-  ColorStyles: path.join('src', 'demo', 'ColorStyles.scss'),
-  GettingStartedPageStyles: path.join('src', 'demo', 'GettingStartedPage.scss'),
-  GettingStartedPage: path.join('src', 'demo', 'GettingStartedPage.tsx'),
-  DemoStyles: path.join('src', 'demo', 'index.scss'),
-  Demo: path.join('src', 'demo', 'index.tsx')
-};
+// Steps (mustache template names and output file paths)
+const steps = [
+  { template: 'NpmIgnore', output: '.npmignore' },
+  { template: 'Npmrc', output: '.npmrc' },
+  { template: 'ChangelogJson', output: 'CHANGELOG.json' },
+  { template: 'ChangelogMarkdown', output: 'CHANGELOG.md' },
+  { template: 'License', output: 'LICENSE' },
+  { template: 'Readme', output: 'README' },
+  { template: 'IndexHtml', output: 'index.html' },
+  { template: 'JestConfig', output: 'jest.config.js' },
+  { template: 'JsConfig', output: 'jsconfig.json' },
+  { template: 'PackageJson', output: 'package.json' },
+  { template: 'TsConfig', output: 'tsconfig.json' },
+  { template: 'TsLint', output: 'tslint.json' },
+  { template: 'WebpackConfig', output: 'webpack.config.js' },
+  { template: 'WebpackServeConfig', output: 'webpack.serve.config.js' },
+  { template: 'VsCodeLaunch', output: path.join('.vscode', 'launch.json') },
+  { template: 'VsCodeSettings', output: path.join('.vscode', 'settings.json') },
+  { template: 'Tests', output: path.join('config', 'tests.js') },
+  { template: 'Tests', output: path.join('src', 'common', 'tests.js') },
+  { template: 'AppDefinition', output: path.join('src', 'demo', 'AppDefinition.tsx') },
+  { template: 'AppDefinitionTest', output: path.join('src', 'demo', 'AppDefinition.test.tsx') },
+  { template: 'ColorStyles', output: path.join('src', 'demo', 'ColorStyles.scss') },
+  { template: 'GettingStartedPageStyles', output: path.join('src', 'demo', 'GettingStartedPage.scss') },
+  { template: 'GettingStartedPage', output: path.join('src', 'demo', 'GettingStartedPage.tsx') },
+  { template: 'DemoStyles', output: path.join('src', 'demo', 'index.scss') },
+  { template: 'Demo', output: path.join('src', 'demo', 'index.tsx') }
+];
 
 // Strings
 const successCreatedPackage = `New package ${newPackageName} successfully created.`;
@@ -75,24 +76,25 @@ function handleError(error, errorPrependMessage) {
 }
 
 function performStep(stepIndex) {
-  if (stepIndex >= Object.keys(outputFiles).length) {
+  if (stepIndex >= steps.length) {
     updateRush();
     return;
   }
 
-  const step = Object.keys(outputFiles)[stepIndex];
-  const mustacheTemplateName = `Empty${step}.mustache`;
+  const step = steps[stepIndex];
 
-  console.log('Creating ' + outputFiles[step] + '...');
+  const mustacheTemplateName = `Empty${step.template}.mustache`;
+
+  console.log('Creating ' + step.output + '...');
 
   fs.readFile(path.join(templateFolderPath, mustacheTemplateName), 'utf8', (error, data) => {
     readFileCallback(
       error,
       data,
-      path.join(packagePath, outputFiles[step]),
+      path.join(packagePath, step.output),
       () => performStep(stepIndex + 1),
       errorUnableToOpenTemplate(mustacheTemplateName),
-      errorUnableToWriteFile(step)
+      errorUnableToWriteFile(step.output)
     );
   });
 }
