@@ -24,49 +24,50 @@ const BreadcrumbStyles = {
 };
 
 const CheckboxStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
-  const { disabled, checked } = props;
+  const { disabled, checked, theme } = props;
+  const { semanticColors, palette } = theme;
 
   return {
     checkbox: [
       {
         borderRadius: fluentBorderRadius,
-        borderColor: NeutralColors.gray160
+        borderColor: palette.neutralPrimary
       },
       !disabled &&
         checked && {
-          borderColor: CommunicationColors.primary
+          borderColor: semanticColors.inputBackgroundChecked
         },
       disabled && {
-        borderColor: NeutralColors.gray60
+        borderColor: palette.neutralTertiaryAlt
       },
       checked &&
         disabled && {
-          background: NeutralColors.gray60,
-          borderColor: NeutralColors.gray60
+          background: palette.neutralTertiaryAlt,
+          borderColor: palette.neutralTertiaryAlt
         }
     ],
     checkmark: {
-      color: NeutralColors.white
+      color: palette.white
     },
     text: {
-      color: disabled ? NeutralColors.gray60 : NeutralColors.gray160
+      color: disabled ? semanticColors.disabledText : semanticColors.bodyText
     },
     root: [
       !disabled && [
         !checked && {
           selectors: {
-            ':hover .ms-Checkbox-text': { color: NeutralColors.gray190 }
+            ':hover .ms-Checkbox-text': { color: palette.neutralDark }
           }
         },
         checked && {
           selectors: {
             ':hover .ms-Checkbox-checkbox': {
-              background: CommunicationColors.shade20,
-              borderColor: CommunicationColors.shade20
+              background: palette.themeDark,
+              borderColor: palette.themeDark
             },
             ':focus .ms-Checkbox-checkbox': {
-              background: CommunicationColors.shade20,
-              borderColor: CommunicationColors.shade20
+              background: palette.themeDark,
+              borderColor: palette.themeDark
             }
           }
         }
