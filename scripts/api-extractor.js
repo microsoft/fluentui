@@ -13,7 +13,7 @@ const config = {
     entryPointSourceFile: 'lib/index.d.ts'
   },
   validationRules: {
-    missingReleaseTags: 'ignore'
+    missingReleaseTags: 'allow'
   }
 };
 
