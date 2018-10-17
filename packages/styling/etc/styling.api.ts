@@ -642,14 +642,26 @@ class Stylesheet {
 // @public
 export function unregisterIcons(iconNames: string[]): void;
 
-// WARNING: Export "Nav" must specify a type
-// WARNING: Export "ScrollablePane" must specify a type
-// WARNING: Export "FocusStyle" must specify a type
-// WARNING: Export "Coachmark" must specify a type
-// WARNING: Export "Layer" must specify a type
-// WARNING: Export "KeytipLayer" must specify a type
 // @public (undocumented)
 module ZIndexes {
+  // (undocumented)
+  Coachmark: number;
+
+  // (undocumented)
+  FocusStyle: number;
+
+  // (undocumented)
+  KeytipLayer: number;
+
+  // (undocumented)
+  Layer: number;
+
+  // (undocumented)
+  Nav: number;
+
+  // (undocumented)
+  ScrollablePane: number;
+
 }
 
 // WARNING: Unsupported export: AnimationClassNames
