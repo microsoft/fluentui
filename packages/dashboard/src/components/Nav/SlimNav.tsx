@@ -162,7 +162,7 @@ class SlimNavComponent extends NavBase {
         dataHint={dataHint}
         dataValue={link.key}
         ariaLabel={linkText}
-        role="menu"
+        role="menuitem"
         onClick={this._onLinkClicked.bind(this, link)}
         rootClassName={classNames.navFloatingItemRoot}
         rightIconName={rightIconName}
@@ -181,7 +181,7 @@ class SlimNavComponent extends NavBase {
     const linkText = this.getLinkText(link, this.props.showMore);
 
     return (
-      <li role="listitem" key={link.key || linkIndex} title={linkText}>
+      <li role="menuitem" key={link.key || linkIndex} title={linkText}>
         {this._renderCompositeLink(link, linkIndex, nestingLevel)}
         {// show child links
         // 1. only for the first level
@@ -198,7 +198,7 @@ class SlimNavComponent extends NavBase {
     }
 
     return (
-      <ul role="list">
+      <ul role="menu">
         {links.map((link: INavLink, linkIndex: number) => {
           return this._renderFloatingLink(link, linkIndex, nestingLevel);
         })}
@@ -236,7 +236,7 @@ class SlimNavComponent extends NavBase {
 
     return (
       <li
-        role="listitem"
+        role="menuitem"
         key={link.key || linkIndex}
         onMouseEnter={this._onLinkMouseEnterOrLeave.bind(this, link)}
         onMouseLeave={this._onLinkMouseEnterOrLeave.bind(this, link)}
@@ -251,7 +251,7 @@ class SlimNavComponent extends NavBase {
           dataHint={dataHint}
           dataValue={link.key}
           ariaLabel={linkText}
-          role="menu"
+          role="menuitem"
           onClick={onClickHandler}
           rootClassName={classNames.navItemRoot}
           leftIconName={link.icon}
@@ -271,7 +271,7 @@ class SlimNavComponent extends NavBase {
     const { enableCustomization, showMore } = this.props;
 
     return (
-      <ul role="list">
+      <ul role="menu">
         {links.map((link: INavLink, linkIndex: number) => {
           if (enableCustomization && link.isHidden && !showMore) {
             // atleast one link is hidden

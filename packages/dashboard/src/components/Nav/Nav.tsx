@@ -1,15 +1,7 @@
 /* tslint:disable */
 import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
 import * as React from 'react';
-import {
-  ICustomNavLinkGroup,
-  INavProps,
-  INavState,
-  INavLink,
-  INavStyleProps,
-  INavStyles,
-  NavGroupType
-} from './Nav.types';
+import { ICustomNavLinkGroup, INavProps, INavState, INavLink, INavStyleProps, INavStyles, NavGroupType } from './Nav.types';
 import { getStyles } from './Nav.styles';
 import { NavBase } from './NavBase';
 import { styled, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
@@ -109,8 +101,7 @@ class NavComponent extends NavBase {
     const { styles, showMore, onShowMoreLinkClicked, dataHint } = this.props;
     const classNames = getClassNames(styles!, { isSelected, nestingLevel, isChildLinkSelected });
     const linkText = this.getLinkText(link, showMore);
-    const onClickHandler =
-      link.isShowMoreLink && onShowMoreLinkClicked ? onShowMoreLinkClicked : this._onLinkClicked.bind(this, link);
+    const onClickHandler = link.isShowMoreLink && onShowMoreLinkClicked ? onShowMoreLinkClicked : this._onLinkClicked.bind(this, link);
 
     return (
       <NavLink
@@ -123,7 +114,7 @@ class NavComponent extends NavBase {
         dataValue={link.key}
         ariaLabel={linkText}
         {...ariaProps}
-        role="menu"
+        role="menuitem"
         rootClassName={classNames.navItemRoot}
         leftIconName={leftIconName}
         rightIconName={rightIconName}
@@ -142,15 +133,13 @@ class NavComponent extends NavBase {
     const linkText = this.getLinkText(link, this.props.showMore);
 
     return (
-      <li role="listitem" key={link.key || linkIndex} title={linkText}>
+      <li role="menuitem" key={link.key || linkIndex} title={linkText}>
         {this._renderCompositeLink(link, linkIndex, nestingLevel)}
         {// show child links
         // 1. only for the first level and
         // 2. if the link is expanded
         nestingLevel == 0 && link.isExpanded ? (
-          <div className={AnimationClassNames.slideDownIn20}>
-            {this._renderLinks(link.links as INavLink[], ++nestingLevel)}
-          </div>
+          <div className={AnimationClassNames.slideDownIn20}>{this._renderLinks(link.links as INavLink[], ++nestingLevel)}</div>
         ) : null}
       </li>
     );
@@ -164,7 +153,7 @@ class NavComponent extends NavBase {
     const { enableCustomization, showMore } = this.props;
 
     return (
-      <ul role="list">
+      <ul role="menu">
         {links.map((link: INavLink, linkIndex: number) => {
           if (enableCustomization && link.isHidden && !showMore) {
             // atleast one link is hidden

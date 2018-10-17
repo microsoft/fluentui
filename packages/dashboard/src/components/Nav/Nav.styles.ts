@@ -146,7 +146,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
       paddingLeft: navFloatingItemIndentSize,
       selectors: {
         ':hover': {
-          backgroundColor: !!nestingLevel && nestingLevel > 0 ? navItemHoverColor : 'navItemHoverColor'
+          backgroundColor: navItemHoverColor
         },
         ':active': {
           backgroundColor: navItemSelectedColor
