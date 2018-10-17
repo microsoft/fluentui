@@ -158,7 +158,17 @@ $Calendar-dayPicker-margin: 10px;
   position: relative;
   background-color: $ms-color-themeLight;
   @include high-contrast {
-    border: 1px solid WindowText;
+    background-color: highlight;
+    border-radius: 2px;
+  }
+  span {
+    @include high-contrast {
+      -ms-high-contrast-adjust: none;
+      color: window;
+    }
+  }
+  &:hover {
+    border-radius: 0px;
   }
 }
 
@@ -187,6 +197,22 @@ $Calendar-dayPicker-margin: 10px;
   cursor: pointer;
   @include high-contrast {
     border: 2px solid Highlight;
+    span {
+      color: Highlight;
+    }
+  }
+}
+
+.dayIsHighlighted {
+  button.dayIsToday {
+    @include high-contrast {
+      border-radius: 0px;
+    }
+    span {
+      @include high-contrast {
+        color: Window;
+      }
+    }
   }
 }
 
@@ -248,7 +274,6 @@ $Calendar-dayPicker-margin: 10px;
 }
 
 // Today.
-.dayIsToday,
 .dayIsToday,
 .pickerIsFocused .dayIsToday,
 .dayIsToday.day:active {
