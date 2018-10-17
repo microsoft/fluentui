@@ -19,6 +19,8 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   private _root = createRef<HTMLDivElement>();
   private _previouslyFocusedElementOutsideTrapZone: HTMLElement;
   private _previouslyFocusedElementInTrapZone?: HTMLElement;
+  private _hasFocusHandler: boolean;
+  private _hasClickHandler: boolean;
 
   public componentWillMount(): void {
     FocusTrapZone._focusStack.push(this);
@@ -26,8 +28,6 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
 
   public componentDidMount(): void {
     const {
-      isClickableOutsideFocusTrap = false,
-      forceFocusInsideTrap = true,
       elementToFocusOnDismiss,
       disableFirstFocus = false
     } = this.props;
@@ -39,20 +39,16 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
       this.focus();
     }
 
-    if (forceFocusInsideTrap) {
-      this._events.on(window, 'focus', this._forceFocusInTrap, true);
+    this._updateEventHandlers(this.props);
     }
-
-    if (!isClickableOutsideFocusTrap) {
-      this._events.on(window, 'click', this._forceClickInTrap, true);
-    }
-  }
 
   public componentWillReceiveProps(nextProps: IFocusTrapZoneProps): void {
     const { elementToFocusOnDismiss } = nextProps;
     if (elementToFocusOnDismiss && this._previouslyFocusedElementOutsideTrapZone !== elementToFocusOnDismiss) {
       this._previouslyFocusedElementOutsideTrapZone = elementToFocusOnDismiss;
     }
+
+    this._updateEventHandlers(nextProps);
   }
 
   public componentWillUnmount(): void {
@@ -129,6 +125,24 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     if (_firstFocusableChild) {
       focusAsync(_firstFocusableChild);
     }
+  }
+
+  private _updateEventHandlers(newProps: IFocusTrapZoneProps): void {
+    const { isClickableOutsideFocusTrap = false, forceFocusInsideTrap = true } = newProps;
+
+    if (forceFocusInsideTrap && !this._hasFocusHandler) {
+      this._events.on(window, 'focus', this._forceFocusInTrap, true);
+    } else if (!forceFocusInsideTrap && this._hasFocusHandler) {
+      this._events.off(window, 'focus', this._forceFocusInTrap, true);
+    }
+    this._hasFocusHandler = forceFocusInsideTrap;
+
+    if (!isClickableOutsideFocusTrap && !this._hasClickHandler) {
+      this._events.on(window, 'click', this._forceClickInTrap, true);
+    } else if (isClickableOutsideFocusTrap && this._hasClickHandler) {
+      this._events.off(window, 'click', this._forceClickInTrap, true);
+    }
+    this._hasClickHandler = !isClickableOutsideFocusTrap;
   }
 
   private _onFocusCapture = (ev: React.FocusEvent<HTMLDivElement>) => {
