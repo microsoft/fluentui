@@ -65,7 +65,19 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
   }
 
   public render(): React.ReactElement<{}> {
-    const { ariaLabel, className, disabled, label, max, min, showValue, buttonProps, vertical, styles, theme } = this.props;
+    const {
+      ariaLabel,
+      className,
+      disabled,
+      label,
+      max,
+      min,
+      showValue,
+      buttonProps,
+      vertical,
+      styles,
+      theme
+    } = this.props;
     const { value, renderedValue } = this.state;
     const thumbOffsetPercent: number = min === max ? 0 : ((renderedValue! - min!) / (max! - min!)) * 100;
     const lengthString = vertical ? 'height' : 'width';
@@ -106,7 +118,11 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
             role="slider"
           >
             <div ref={this._sliderLine} className={classNames.line}>
-              <span ref={this._thumb} className={classNames.thumb} style={this._getThumbStyle(vertical, thumbOffsetPercent)} />
+              <span
+                ref={this._thumb}
+                className={classNames.thumb}
+                style={this._getThumbStyle(vertical, thumbOffsetPercent)}
+              />
               <span
                 className={css(classNames.lineContainer, classNames.activeSection)}
                 style={{ [lengthString]: thumbOffsetPercent + '%' }}
@@ -209,7 +225,9 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
         break;
       case 'touchstart':
       case 'touchmove':
-        currentPosition = !vertical ? (event as TouchEvent).touches[0].clientX : (event as TouchEvent).touches[0].clientY;
+        currentPosition = !vertical
+          ? (event as TouchEvent).touches[0].clientX
+          : (event as TouchEvent).touches[0].clientY;
         break;
     }
     return currentPosition;
