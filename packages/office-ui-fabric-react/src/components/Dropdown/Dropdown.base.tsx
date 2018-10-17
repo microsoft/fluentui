@@ -30,6 +30,7 @@ import { ResponsiveMode, withResponsiveMode } from '../../utilities/decorators/w
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 import { DropdownMenuItemType, IDropdownOption, IDropdownProps, IDropdownStyleProps, IDropdownStyles } from './Dropdown.types';
 import { DropdownSizePosCache } from './utilities/DropdownSizePosCache';
+import { RectangleEdge, ICalloutPositionedInfo } from '../../utilities/positioning';
 
 const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>();
 
@@ -41,6 +42,7 @@ export interface IDropdownState {
   selectedIndices: number[];
   /** Whether the root dropdown element has focus. */
   hasFocus: boolean;
+  calloutRenderEdge?: RectangleEdge;
 }
 
 @withResponsiveMode
@@ -97,7 +99,8 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     this.state = {
       isOpen: false,
       selectedIndices,
-      hasFocus: false
+      hasFocus: false,
+      calloutRenderEdge: undefined
     };
   }
 
@@ -158,7 +161,8 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
       onRenderPlaceHolder = this._onRenderPlaceHolder,
       onRenderCaretDown = this._onRenderCaretDown
     } = this.props;
-    const { isOpen, selectedIndices, hasFocus } = this.state;
+    const { isOpen, selectedIndices, hasFocus, calloutRenderEdge } = this.state;
+
     const selectedOptions = this._getAllSelectedOptions(options, selectedIndices);
     const divProps = getNativeProps(this.props, divProperties);
 
@@ -194,7 +198,8 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
       disabled,
       isRenderingPlaceholder: !selectedOptions.length,
       panelClassName: !!panelProps ? panelProps.className : undefined,
-      calloutClassName: !!calloutProps ? calloutProps.className : undefined
+      calloutClassName: !!calloutProps ? calloutProps.className : undefined,
+      calloutRenderEdge: calloutRenderEdge
     });
 
     const labelStyles = this._classNames.subComponentStyles
@@ -560,7 +565,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     return onRenderOption(item, this._onRenderOption);
   };
 
-  private _onPositioned = (): void => {
+  private _onPositioned = (positions?: ICalloutPositionedInfo): void => {
     if (this._focusZone.current) {
       // Focusing an element can trigger a reflow. Making this wait until there is an animation
       // frame can improve perf significantly.
@@ -572,6 +577,12 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
         } else {
           this._focusZone.current!.focus();
         }
+      });
+    }
+
+    if (!this.state.calloutRenderEdge || this.state.calloutRenderEdge !== positions!.targetEdge) {
+      this.setState({
+        calloutRenderEdge: positions!.targetEdge
       });
     }
   };

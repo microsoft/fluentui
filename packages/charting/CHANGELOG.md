@@ -1,6 +1,21 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 11 Oct 2018 23:13:31 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Oct 2018 12:28:48 GMT and should not be manually modified.
+
+## 0.25.0
+Tue, 16 Oct 2018 12:28:48 GMT
+
+### Minor changes
+
+- Adding support for date format and ticks on x-axis  of line chart. Providin date format prop to users to show data in desired format. Optionally providing tickValues prop to override D3.js default behavior on deciding what data appears on the axis of chart. D3.js default behavior is not suitable in all cases and makes the chart axis look bad in certain cases. Providing tickValues prop to user so that user can override this default behavior.If he/she does not use this D3's default behavior will be used in rendering data on the xAxis
+
+## 0.24.4
+Mon, 15 Oct 2018 12:29:12 GMT
+
+### Patches
+
+- updating snapshot tests in charting package
+- Added font theme setting in styles of DonutChart, LineChart, PieChart, StackedBarChart, VerticalBarChart
 
 ## 0.24.3
 Thu, 11 Oct 2018 23:13:31 GMT

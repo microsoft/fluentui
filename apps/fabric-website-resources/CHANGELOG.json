@@ -2,6 +2,50 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "version": "6.9.4",
+      "tag": "@uifabric/fabric-website-resources_v6.9.4",
+      "date": "Wed, 17 Oct 2018 01:29:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Move theme generator page to color customization page.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "a6221962c23ff48cebe654f89ecde0e2956f80cf"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.8.0 <7.0.0` to `>=6.9.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.85.0 <7.0.0` to `>=6.86.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.9.3",
+      "tag": "@uifabric/fabric-website-resources_v6.9.3",
+      "date": "Tue, 16 Oct 2018 12:28:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add customizations for component examples.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "d268b0e3e4cbfde82ef56e60686cc6ad70090a8f"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.7.6 <7.0.0` to `>=6.8.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.84.1 <7.0.0` to `>=6.85.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.9.2",
       "tag": "@uifabric/fabric-website-resources_v6.9.2",
       "date": "Mon, 08 Oct 2018 12:24:15 GMT",
