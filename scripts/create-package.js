@@ -3,6 +3,7 @@ const mustache = require('mustache');
 const argv = require('yargs').argv;
 const fs = require('fs');
 const exec = require('./exec-sync');
+const path = require('path');
 
 // Arguments
 const newPackageName = argv.name;
@@ -10,8 +11,8 @@ const generate = argv.generate === undefined;
 
 // Convert any package names given in dash-case (e.g. my-new-package) to PascalCase (e.g. MyNewPackage)
 // for display purposes in certain template files (e.g. README.md)
-let pascalCasePackage = newPackageName.replace(/-[a-zA-Z]/g, function(m, t) {
-  return newPackageName[t + 1].toUpperCase();
+let pascalCasePackage = newPackageName.replace(/-[a-zA-Z]/g, function(match, index) {
+  return newPackageName[index + 1].toUpperCase();
 });
 pascalCasePackage = pascalCasePackage.substring(0, 1).toUpperCase() + pascalCasePackage.substring(1);
 
@@ -19,40 +20,39 @@ pascalCasePackage = pascalCasePackage.substring(0, 1).toUpperCase() + pascalCase
 const today = new Date().toUTCString();
 
 // Paths
-const packagePath = `./packages/${newPackageName}`;
-const templateFolderPath = './scripts/templates/';
-const rushPath = __dirname + '/../rush.json';
+const packagePath = path.join(process.cwd(), 'packages', newPackageName);
+const templateFolderPath = path.join(process.cwd(), 'scripts', 'templates');
+const rushPath = path.join(__dirname, '..', 'rush.json');
 
 // rush.json contents
 let rushJson = require(rushPath);
 
 // Output Files
 const outputFiles = {
-  NpmIgnore: `${packagePath}/.npmignore`,
-  Npmrc: `${packagePath}/.npmrc`,
-  ChangelogJson: `${packagePath}/CHANGELOG.json`,
-  ChangelogMarkdown: `${packagePath}/CHANGELOG.md`,
-  License: `${packagePath}/LICENSE`,
-  Readme: `${packagePath}/README.md`,
-  IndexHtml: `${packagePath}/index.html`,
-  JestConfig: `${packagePath}/jest.config.js`,
-  JsConfig: `${packagePath}/jsconfig.json`,
-  PackageJson: `${packagePath}/package.json`,
-  TsConfig: `${packagePath}/tsconfig.json`,
-  TsLint: `${packagePath}/tslint.json`,
-  WebpackConfig: `${packagePath}/webpack.config.js`,
-  WebpackServeConfig: `${packagePath}/webpack.serve.config.js`,
-  VsCodeLaunch: `${packagePath}/.vscode/launch.json`,
-  VsCodeSettings: `${packagePath}/.vscode/settings.json`,
-  Tests: `${packagePath}/config/tests.js`,
-  ApiExtractorDisabled: `${packagePath}/config/api-extractor.json.disabled`,
-  TestsCommon: `${packagePath}/src/common/tests.js`,
-  AppDefinition: `${packagePath}/src/demo/AppDefinition.tsx`,
-  ColorStyles: `${packagePath}/src/demo/ColorStyles.scss`,
-  GettingStartedPageStyles: `${packagePath}/src/demo/GettingStartedPage.scss`,
-  GettingStartedPage: `${packagePath}/src/demo/GettingStartedPage.tsx`,
-  DemoStyles: `${packagePath}/src/demo/index.scss`,
-  Demo: `${packagePath}/src/demo/index.tsx`
+  NpmIgnore: '.npmignore',
+  Npmrc: '.npmrc',
+  ChangelogJson: 'CHANGELOG.json',
+  ChangelogMarkdown: 'CHANGELOG.md',
+  License: 'LICENSE',
+  Readme: 'README.md',
+  IndexHtml: 'index.html',
+  JestConfig: 'jest.config.js',
+  JsConfig: 'jsconfig.json',
+  PackageJson: 'package.json',
+  TsConfig: 'tsconfig.json',
+  TsLint: 'tslint.json',
+  WebpackConfig: 'webpack.config.js',
+  WebpackServeConfig: 'webpack.serve.config.js',
+  VsCodeLaunch: path.join('.vscode', 'launch.json'),
+  VsCodeSettings: path.join('.vscode', 'settings.json'),
+  Tests: path.join('config', 'tests.js'),
+  TestsCommon: path.join('src', 'common', 'tests.js'),
+  AppDefinition: path.join('src', 'demo', 'AppDefinition.tsx'),
+  ColorStyles: path.join('src', 'demo', 'ColorStyles.scss'),
+  GettingStartedPageStyles: path.join('src', 'demo', 'GettingStartedPage.scss'),
+  GettingStartedPage: path.join('src', 'demo', 'GettingStartedPage.tsx'),
+  DemoStyles: path.join('src', 'demo', 'index.scss'),
+  Demo: path.join('src', 'demo', 'index.tsx')
 };
 
 // Strings
@@ -85,11 +85,11 @@ function performStep(stepIndex) {
 
   console.log('Creating ' + outputFiles[step] + '...');
 
-  fs.readFile(`${templateFolderPath}${mustacheTemplateName}`, 'utf8', (error, data) => {
+  fs.readFile(path.join(templateFolderPath, mustacheTemplateName), 'utf8', (error, data) => {
     readFileCallback(
       error,
       data,
-      outputFiles[step],
+      path.join(packagePath, outputFiles[step]),
       () => performStep(stepIndex + 1),
       errorUnableToOpenTemplate(mustacheTemplateName),
       errorUnableToWriteFile(step)
