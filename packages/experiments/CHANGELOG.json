@@ -2,6 +2,38 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.38.0",
+      "tag": "@uifabric/experiments_v6.38.0",
+      "date": "Tue, 16 Oct 2018 12:28:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add customizations for component examples. Remove redundant customizations from Button example.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "d268b0e3e4cbfde82ef56e60686cc6ad70090a8f"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Fluent: updates the styles of Dropdown and CheckBox to follow fluent specs.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "f0c0c48a5614af68b3efe2c310772f6900e34968"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.24.4` to `^0.25.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.84.1 <7.0.0` to `>=6.85.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.7.6 <7.0.0` to `>=6.8.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.37.1",
       "tag": "@uifabric/experiments_v6.37.1",
       "date": "Mon, 15 Oct 2018 12:29:12 GMT",

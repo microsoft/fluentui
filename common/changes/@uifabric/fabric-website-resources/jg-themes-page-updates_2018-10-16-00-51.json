@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/fabric-website-resources",
-      "comment": "Add customizations for component examples.",
+      "comment": "Move theme generator page to color customization page.",
       "type": "patch"
     }
   ],
