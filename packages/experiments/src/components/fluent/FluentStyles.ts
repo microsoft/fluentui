@@ -76,32 +76,93 @@ const CheckboxStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
 };
 
 const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOptionStyles => {
-  const { checked, disabled, hasIcon, hasImage } = props;
-  const radioButtonSpacing = 1;
-  const radioButtonInnerSize = 6;
+  const { checked, disabled, theme, hasIcon, hasImage } = props;
+  const { semanticColors, palette } = theme;
   return {
-    field: {
-      selectors: {
-        ':before': [
-          disabled && {
-            backgroundColor: NeutralColors.white,
-            borderColor: NeutralColors.gray60
-          }
-        ],
-        ':after': [
-          checked &&
-            (hasIcon || hasImage) && {
-              top: radioButtonSpacing + radioButtonInnerSize,
-              right: radioButtonSpacing + radioButtonInnerSize,
-              left: 'auto' // To reset the value of 'left' to its default value, so that 'right' works
+    field: [
+      {
+        selectors: {
+          // The circle
+          ':before': [
+            {
+              borderColor: semanticColors.bodyText
             },
-          checked &&
             disabled && {
-              borderColor: NeutralColors.gray60
-            }
-        ]
+              backgroundColor: semanticColors.bodyBackground,
+              borderColor: semanticColors.disabledBodyText
+            },
+            checked &&
+              !disabled && {
+                borderColor: semanticColors.inputBackgroundChecked
+              }
+          ],
+          // The dot
+          ':after': [
+            checked &&
+              disabled && {
+                borderColor: NeutralColors.gray60
+              }
+          ],
+          ':hover': [
+            !disabled && {
+              selectors: {
+                '.ms-ChoiceFieldLabel': {
+                  color: semanticColors.actionLinkHovered // This might need a new semantic slot. Using this one for the correct color.
+                },
+                ':before': {
+                  borderColor: checked ? palette.themeDark : semanticColors.bodyText
+                },
+                ':after': [
+                  !hasIcon &&
+                    !hasImage &&
+                    !checked && {
+                      content: '""',
+                      transitionProperty: 'background-color',
+                      left: 5,
+                      top: 5,
+                      width: 10,
+                      height: 10,
+                      backgroundColor: NeutralColors.gray120
+                    },
+                  checked && {
+                    borderColor: palette.themeDark
+                  }
+                ]
+              }
+            },
+            (hasIcon || hasImage) &&
+              !disabled && {
+                selectors: {
+                  ':hover': {
+                    borderColor: checked ? palette.themeDark : semanticColors.bodyText
+                  }
+                }
+              }
+          ]
+        }
+      },
+      (hasIcon || hasImage) && {
+        borderWidth: 1
       }
-    }
+    ],
+    choiceFieldWrapper: {
+      selectors: {
+        '&.is-inFocus': {
+          selectors: {
+            ':after': {
+              borderColor: semanticColors.focusBorder
+            }
+          }
+        }
+      }
+    },
+    innerField: [
+      hasIcon &&
+        disabled && {
+          opacity: 1,
+          color: semanticColors.disabledBodyText
+        }
+    ]
   };
 };
 
