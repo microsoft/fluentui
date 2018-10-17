@@ -3,7 +3,7 @@ import { AnnouncedBase } from './Announced.base';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
 
-export interface IAnnounced { }
+export interface IAnnounced {}
 
 export interface IAnnouncedProps extends React.Props<AnnouncedBase> {
   /** Theme from the Higher Order Component */
@@ -27,9 +27,9 @@ export interface IAnnouncedProps extends React.Props<AnnouncedBase> {
   className?: string;
 
   /**
-   * A unique key for Announced
+   * A unique id for Announced
    */
-  key?: string;
+  id?: string;
 }
 
 export interface IAnnouncedStyles {

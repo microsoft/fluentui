@@ -65,6 +65,7 @@ export class AnnouncedSearchResultsExample extends React.Component<{}, { seconds
 
   public componentDidUpdate(): void {
     if (this.state.numberOfSuggestions === 0) {
+      // TODO: figure out why it doesn't like setState getting called so often here
       const suggestionsContainer = document.getElementsByClassName('ms-Suggestions-container');
       if (suggestionsContainer) {
         const suggestions = suggestionsContainer[0];
