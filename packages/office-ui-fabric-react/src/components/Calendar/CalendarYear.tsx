@@ -3,7 +3,7 @@ import { KeyCodes, css, getRTL } from '../../Utilities';
 import { ICalendarIconStrings } from './Calendar.types';
 import { FocusZone } from '../../FocusZone';
 import * as stylesImport from './Calendar.scss';
-import { Icon } from '../Icon';
+import { Icon } from '../../Icon';
 const styles: any = stylesImport;
 
 const CELL_COUNT = 12;
@@ -17,7 +17,7 @@ export interface ICalendarYearRangeToString {
   (range: ICalendarYearRange): string;
 }
 
-interface ICalendarYearStrings {
+export interface ICalendarYearStrings {
   prevRangeAriaLabel?: string | ICalendarYearRangeToString;
   nextRangeAriaLabel?: string | ICalendarYearRangeToString;
 }

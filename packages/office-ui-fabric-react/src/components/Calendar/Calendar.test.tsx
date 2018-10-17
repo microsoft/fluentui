@@ -325,16 +325,10 @@ describe('Calendar', () => {
   describe('Test Rendering Calendar with Year Picker', () => {
     let renderedComponent: Calendar;
     let defaultDate: Date;
-    let lastSelectedDate: Date;
     beforeAll(() => {
       defaultDate = new Date(2017, 2, 16);
-      const onSelectDate = (): ((date: Date, dateRangeArray: Date[]) => void) => {
-        return (date: Date, dateRangeArray: Date[]): void => {
-          lastSelectedDate = date;
-        };
-      };
       renderedComponent = ReactTestUtils.renderIntoDocument(
-        <Calendar strings={dayPickerStrings} isMonthPickerVisible={true} value={defaultDate} onSelectDate={onSelectDate()} />
+        <Calendar strings={dayPickerStrings} isMonthPickerVisible={true} value={defaultDate} />
       ) as Calendar;
     });
     it('month header should have button role', () => {
