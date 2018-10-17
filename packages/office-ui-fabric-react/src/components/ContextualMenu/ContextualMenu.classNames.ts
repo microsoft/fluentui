@@ -86,19 +86,21 @@ export const getItemStyles = (props: IContextualMenuItemStyleProps): IContextual
     className
   } = props;
 
-  return getItemClassNames(
-    theme,
-    disabled,
-    expanded,
-    checked,
-    isAnchorLink,
-    knownIcon,
-    itemClassName,
-    dividerClassName,
-    iconClassName,
-    subMenuClassName,
-    primaryDisabled,
-    className
+  return <IContextualMenuItemStyles>(
+    getItemClassNames(
+      theme,
+      disabled,
+      expanded,
+      checked,
+      isAnchorLink,
+      knownIcon,
+      itemClassName,
+      dividerClassName,
+      iconClassName,
+      subMenuClassName,
+      primaryDisabled,
+      className
+    )
   );
 };
 
@@ -118,7 +120,7 @@ export const getItemClassNames = memoizeFunction(
     subMenuClassName?: string,
     primaryDisabled?: boolean,
     className?: string
-  ): IContextualMenuItemStyles => {
+  ): IMenuItemClassNames => {
     const styles = getMenuItemStyles(theme);
     const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
