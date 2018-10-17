@@ -35,13 +35,13 @@
       "integrity": "sha1-H0XrYXv5Rj1IKywE00nZ5O2/SJI="
     },
     "@microsoft/api-extractor": {
-      "version": "6.0.3",
-      "resolved": "https://registry.npmjs.org/@microsoft/api-extractor/-/api-extractor-6.0.3.tgz",
-      "integrity": "sha512-YQnBRIGwrsHwUZmNa2ByuudfhlipS1UyFanyC3giTlHLqIgj0K2+87yDefY1YRADKuejxJBfOM72VdYwBy29Gg==",
+      "version": "6.0.4",
+      "resolved": "https://registry.npmjs.org/@microsoft/api-extractor/-/api-extractor-6.0.4.tgz",
+      "integrity": "sha512-36HCBJRIbA19aWBoUhqHHYOC75xDMQP0nGj8AnoZM4pACNhR6gav5EDFS1Kan9FX0aLb/JLZaozRHnR6oDVAaA==",
       "requires": {
         "@microsoft/node-core-library": "3.3.0",
         "@microsoft/ts-command-line": "4.2.2",
-        "@microsoft/tsdoc": "0.8.1",
+        "@microsoft/tsdoc": "0.9.2",
         "@types/node": "8.5.8",
         "@types/z-schema": "3.16.31",
         "colors": "1.2.5",
@@ -131,9 +131,9 @@
       }
     },
     "@microsoft/tsdoc": {
-      "version": "0.8.1",
-      "resolved": "https://registry.npmjs.org/@microsoft/tsdoc/-/tsdoc-0.8.1.tgz",
-      "integrity": "sha512-WxaPrxTdUTA0Td4Fg+0Fdxf/DvWiwYWpmrPYPtSJ6k6kFKi9vfDQAUd7DsLwNH4tjdZpwiexF4n7Dk3uFz+PDg=="
+      "version": "0.9.2",
+      "resolved": "https://registry.npmjs.org/@microsoft/tsdoc/-/tsdoc-0.9.2.tgz",
+      "integrity": "sha512-bdozNnQXIKZgT3fjCcOYSZSpH7zuh+Turv8uQxzXTj5G8AzgTJ/X3GnrYDbliXKgefL8LJeIj4vwdrOnt1J+Ng=="
     },
     "@mrmlnc/readdir-enhanced": {
       "version": "2.2.1",
@@ -153,7 +153,7 @@
       "version": "file:projects/build.tgz",
       "integrity": "sha1-JINGYnsPGhBgzXhLS9hJEQ1BdqE=",
       "requires": {
-        "@microsoft/api-extractor": "6.0.3",
+        "@microsoft/api-extractor": "6.0.4",
         "@microsoft/load-themed-styles": "1.8.9",
         "@microsoft/loader-load-themed-styles": "1.7.77",
         "autoprefixer": "7.2.6",
