@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 17 Oct 2018 01:29:55 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Oct 2018 12:29:40 GMT and should not be manually modified.
+
+## 6.87.0
+Wed, 17 Oct 2018 12:29:40 GMT
+
+### Minor changes
+
+- Breadcrumb: move style interfaces to the types file to be included in the export and documentation.
+- DetailsList: update the styles with 2 new regions headerWrapper and contentWrapper providing easy className hooks to pass custom styling.
+
+### Patches
+
+- Spinner: No longer appears to vibrate in Microsoft Edge (Oct 2018 Update).
 
 ## 6.86.0
 Wed, 17 Oct 2018 01:29:55 GMT

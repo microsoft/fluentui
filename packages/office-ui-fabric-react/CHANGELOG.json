@@ -2,6 +2,32 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.87.0",
+      "tag": "office-ui-fabric-react_v6.87.0",
+      "date": "Wed, 17 Oct 2018 12:29:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Spinner: No longer appears to vibrate in Microsoft Edge (Oct 2018 Update).",
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "ade370efab22ba4ee1d7f043af4bc37fec7debf1"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Breadcrumb: move style interfaces to the types file to be included in the export and documentation.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "f56a360083890a8a588961a4c1fb89a91cb2e09a"
+          },
+          {
+            "comment": "DetailsList: update the styles with 2 new regions headerWrapper and contentWrapper providing easy className hooks to pass custom styling.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "0542d4e0c498bfe972ac5dc3112ee0dbf82623af"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.86.0",
       "tag": "office-ui-fabric-react_v6.86.0",
       "date": "Wed, 17 Oct 2018 01:29:55 GMT",

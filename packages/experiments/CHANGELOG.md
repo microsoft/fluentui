@@ -1,6 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 17 Oct 2018 01:29:55 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Oct 2018 12:29:40 GMT and should not be manually modified.
+
+## 6.39.0
+Wed, 17 Oct 2018 12:29:40 GMT
+
+### Minor changes
+
+- Breadcrumb: fluent updates to breadcrumb styles.
+
+### Patches
+
+- revert PR 6258 for signal icon issues
 
 ## 6.38.1
 Wed, 17 Oct 2018 01:29:55 GMT
