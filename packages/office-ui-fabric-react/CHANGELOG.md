@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 16 Oct 2018 12:28:48 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Oct 2018 01:29:55 GMT and should not be manually modified.
+
+## 6.86.0
+Wed, 17 Oct 2018 01:29:55 GMT
+
+### Minor changes
+
+- Update theme generator to generate valid code output. Fix Pivot API to accurately reflect div interface.
+
+### Patches
+
+- FocusTrapZone: Add/remove focus and click handlers when props change
 
 ## 6.85.0
 Tue, 16 Oct 2018 12:28:48 GMT
