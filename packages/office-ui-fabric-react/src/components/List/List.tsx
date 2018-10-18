@@ -595,8 +595,8 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       }
 
       // Notify the caller that rendering the new pages has completed
-      if (props.onRenderComplete) {
-        props.onRenderComplete(this.state.pages as IPage[]);
+      if (props.onPagesUpdated) {
+        props.onPagesUpdated(this.state.pages as IPage[]);
       }
     });
   }
