@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
-import { MarqueeSelection } from './MarqueeSelection';
-import { Selection } from 'office-ui-fabric-react/lib/MarqueeSelection';
+import { Selection, MarqueeSelection } from '../../MarqueeSelection';
 
 describe('MarqueeSelection', () => {
   it('renders MarqueeSelection correctly', () => {

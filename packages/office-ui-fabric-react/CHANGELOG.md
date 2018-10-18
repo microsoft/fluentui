@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 08 Oct 2018 11:23:10 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Oct 2018 11:23:42 GMT and should not be manually modified.
+
+## 5.128.2
+Wed, 17 Oct 2018 11:23:42 GMT
+
+### Patches
+
+- Fix Persona regression in Fabric V5: this.props.children was accidentally deleted from Persona in V5, put it back.
 
 ## 5.128.1
 Mon, 08 Oct 2018 11:23:10 GMT
