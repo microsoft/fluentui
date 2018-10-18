@@ -43,7 +43,7 @@ exports[`Component Examples renders Spinner.Basic.Example.tsx correctly 1`] = `
           {
             animation-duration: 1.3s;
             animation-iteration-count: infinite;
-            animation-name: keyframes 0%{transform:rotateZ(0deg);}100%{transform:rotateZ(360deg);};
+            animation-name: keyframes 0%{transform:rotate(0deg);}100%{transform:rotate(360deg);};
             animation-timing-function: cubic-bezier(.53,.21,.29,.67);
             border-radius: 50%;
             border-top-color: #0078d4;
@@ -100,7 +100,7 @@ exports[`Component Examples renders Spinner.Basic.Example.tsx correctly 1`] = `
           {
             animation-duration: 1.3s;
             animation-iteration-count: infinite;
-            animation-name: keyframes 0%{transform:rotateZ(0deg);}100%{transform:rotateZ(360deg);};
+            animation-name: keyframes 0%{transform:rotate(0deg);}100%{transform:rotate(360deg);};
             animation-timing-function: cubic-bezier(.53,.21,.29,.67);
             border-radius: 50%;
             border-top-color: #0078d4;
@@ -157,7 +157,7 @@ exports[`Component Examples renders Spinner.Basic.Example.tsx correctly 1`] = `
           {
             animation-duration: 1.3s;
             animation-iteration-count: infinite;
-            animation-name: keyframes 0%{transform:rotateZ(0deg);}100%{transform:rotateZ(360deg);};
+            animation-name: keyframes 0%{transform:rotate(0deg);}100%{transform:rotate(360deg);};
             animation-timing-function: cubic-bezier(.53,.21,.29,.67);
             border-radius: 50%;
             border-top-color: #0078d4;
@@ -214,7 +214,7 @@ exports[`Component Examples renders Spinner.Basic.Example.tsx correctly 1`] = `
           {
             animation-duration: 1.3s;
             animation-iteration-count: infinite;
-            animation-name: keyframes 0%{transform:rotateZ(0deg);}100%{transform:rotateZ(360deg);};
+            animation-name: keyframes 0%{transform:rotate(0deg);}100%{transform:rotate(360deg);};
             animation-timing-function: cubic-bezier(.53,.21,.29,.67);
             border-radius: 50%;
             border-top-color: #0078d4;
@@ -271,7 +271,7 @@ exports[`Component Examples renders Spinner.Basic.Example.tsx correctly 1`] = `
           {
             animation-duration: 1.3s;
             animation-iteration-count: infinite;
-            animation-name: keyframes 0%{transform:rotateZ(0deg);}100%{transform:rotateZ(360deg);};
+            animation-name: keyframes 0%{transform:rotate(0deg);}100%{transform:rotate(360deg);};
             animation-timing-function: cubic-bezier(.53,.21,.29,.67);
             border-radius: 50%;
             border-top-color: #0078d4;
@@ -343,7 +343,7 @@ exports[`Component Examples renders Spinner.Basic.Example.tsx correctly 1`] = `
           {
             animation-duration: 1.3s;
             animation-iteration-count: infinite;
-            animation-name: keyframes 0%{transform:rotateZ(0deg);}100%{transform:rotateZ(360deg);};
+            animation-name: keyframes 0%{transform:rotate(0deg);}100%{transform:rotate(360deg);};
             animation-timing-function: cubic-bezier(.53,.21,.29,.67);
             border-radius: 50%;
             border-top-color: #0078d4;

@@ -129,7 +129,6 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
                   autoComplete="off"
                   role="combobox"
                   disabled={disabled}
-                  aria-controls="selected-suggestion-alert"
                   onPaste={this.onPaste}
                 />
               )}

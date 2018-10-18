@@ -1,11 +1,11 @@
 {
   "changes": [
     {
+      "comment": "",
       "packageName": "@uifabric/experiments",
-      "comment": "Updated Readme",
-      "type": "patch"
+      "type": "none"
     }
   ],
   "packageName": "@uifabric/experiments",
-  "email": "mgodbolt@microsoft.com"
+  "email": "cliff.koh@microsoft.com"
 }

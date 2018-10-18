@@ -37,7 +37,6 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
             TO:
           </div>
           <input
-            aria-controls="selected-suggestion-alert"
             aria-expanded={false}
             aria-haspopup="true"
             aria-label="People Picker"

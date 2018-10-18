@@ -84,8 +84,7 @@ export class Stylesheet {
    */
   public static getInstance(): Stylesheet {
     // tslint:disable-next-line:no-any
-    const global: any =
-      typeof window !== 'undefined' ? window : typeof process !== 'undefined' ? process : _fileScopedGlobal;
+    const global: any = typeof window !== 'undefined' ? window : typeof process !== 'undefined' ? process : _fileScopedGlobal;
     _stylesheet = global[STYLESHEET_SETTING] as Stylesheet;
 
     if (!_stylesheet || (_stylesheet._lastStyleElement && _stylesheet._lastStyleElement.ownerDocument !== document)) {
@@ -222,9 +221,7 @@ export class Stylesheet {
    * using InsertionMode.none.
    */
   public getRules(includePreservedRules?: boolean): string {
-    return (
-      (includePreservedRules ? this._preservedRules.join('') : '') + this._rules.join('') + this._rulesToInsert.join('')
-    );
+    return (includePreservedRules ? this._preservedRules.join('') : '') + this._rules.join('') + this._rulesToInsert.join('');
   }
 
   /**

@@ -7,20 +7,51 @@ import { Depths } from './FluentDepths';
 import { IDropdownStyleProps } from 'office-ui-fabric-react/lib/Dropdown';
 import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { ICheckboxStyleProps, ICheckboxStyles } from 'office-ui-fabric-react/lib/Checkbox';
+import { IBreadcrumbStyleProps } from 'office-ui-fabric-react/lib/Breadcrumb';
 
 const fluentBorderRadius = '2px';
 
-const BreadcrumbStyles = {
-  itemLink: {
-    fontSize: FontSizes.size18,
-    fontWeight: 400,
-    color: NeutralColors.gray130,
-    selectors: {
-      '&:last-child': {
-        fontWeight: 600
+const BreadcrumbStyles = (props: IBreadcrumbStyleProps) => {
+  const stateSelectors = {
+    ':hover': {
+      color: NeutralColors.gray160
+    },
+    ':active': {
+      backgroundColor: NeutralColors.gray30
+    },
+    // Needs to be revised with designers when moving to default OUFR styles.
+    // Now used only to override the default ones to follow fluent specs.
+    '&:active:hover': {
+      color: NeutralColors.gray160,
+      backgroundColor: NeutralColors.gray30
+    }
+  };
+
+  return {
+    itemLink: {
+      outline: 'none',
+      fontSize: FontSizes.size18,
+      fontWeight: 400,
+      color: NeutralColors.gray130,
+      selectors: {
+        '&:last-child': {
+          fontWeight: 600,
+          color: NeutralColors.gray160
+        },
+        '.ms-Fabric--isFocusVisible &:focus': {
+          // Necessary due to changes of Link component not using getFocusStyle
+          outline: 'none'
+        },
+        ...stateSelectors
+      }
+    },
+    overflowButton: {
+      color: NeutralColors.gray130,
+      selectors: {
+        ...stateSelectors
       }
     }
-  }
+  };
 };
 
 const CheckboxStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {

@@ -3,10 +3,10 @@ import { hiddenContentStyle, keyframes, HighContrastSelector } from '../../Styli
 
 const spinAnimation: string = keyframes({
   '0%': {
-    transform: 'rotateZ(0deg)'
+    transform: 'rotate(0deg)'
   },
   '100%': {
-    transform: 'rotateZ(360deg)'
+    transform: 'rotate(360deg)'
   }
 });
 

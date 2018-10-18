@@ -5,9 +5,9 @@ import { ISchemeNames, ITheme } from '../interfaces/index';
  * Modify context to activate the specified scheme, using scheme in context (if available)
  * and falling back to settingsTheme. If no scheme is available, undefined context will be returned.
  *
- * @param scheme Scheme to get customizations for.
- * @param context Context in which to get schemed customizations.
- * @param settingsTheme Themes setting fallback if context does not have schemed theme.
+ * @param scheme - Scheme to get customizations for.
+ * @param context - Context in which to get schemed customizations.
+ * @param settingsTheme - Themes setting fallback if context does not have schemed theme.
  */
 export function getSchemedContext(
   scheme: ISchemeNames,

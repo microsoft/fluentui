@@ -1,11 +1,11 @@
 {
   "changes": [
     {
+      "comment": "",
       "packageName": "@uifabric/fabric-website-resources",
-      "comment": "Move theme generator page to color customization page.",
-      "type": "patch"
+      "type": "none"
     }
   ],
   "packageName": "@uifabric/fabric-website-resources",
-  "email": "jagore@microsoft.com"
+  "email": "cliff.koh@microsoft.com"
 }
