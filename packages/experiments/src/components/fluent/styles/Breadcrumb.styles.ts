@@ -1,5 +1,6 @@
 import { IBreadcrumbStyleProps } from 'office-ui-fabric-react/lib/Breadcrumb';
 import { FontSizes } from '../FluentType';
+import { MediumScreenSelector, MinimumScreenSelector } from './styleConstants';
 
 export const BreadcrumbStyles = (props: IBreadcrumbStyleProps) => {
   const { theme } = props;
@@ -25,9 +26,9 @@ export const BreadcrumbStyles = (props: IBreadcrumbStyleProps) => {
       marginTop: 11
     },
     itemLink: {
-      lineHeight: '2',
+      lineHeight: 36,
+      fontSize: FontSizes.size20,
       outline: 'none',
-      fontSize: FontSizes.size18,
       fontWeight: 400,
       color: semanticColors.bodySubtext,
       selectors: {
@@ -39,6 +40,8 @@ export const BreadcrumbStyles = (props: IBreadcrumbStyleProps) => {
           // Necessary due to changes of Link component not using getFocusStyle
           outline: 'none'
         },
+        [MediumScreenSelector]: { fontSize: FontSizes.size18, lineHeight: 32 },
+        [MinimumScreenSelector]: { fontSize: FontSizes.size14, lineHeight: 24 },
         ...stateSelectors
       }
     },
