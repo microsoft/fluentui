@@ -64,6 +64,7 @@ const GlobalClassNames = {
 };
 
 /**
+ * @deprecated
  * @internal
  * This is a package-internal method that has been depended on.
  * It is being kept in this form for backwards compatibility.
