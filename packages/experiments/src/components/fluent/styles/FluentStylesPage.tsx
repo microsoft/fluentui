@@ -62,7 +62,7 @@ export class FluentStylesPage extends React.Component<IComponentDemoPageProps, I
         isHeaderVisible={this.props.isHeaderVisible}
         exampleCards={
           <div>
-            {/* <ExampleCard title="Link - No Current Changes" code={FluentLinkExampleCode}>
+            <ExampleCard title="Link - No Current Changes" code={FluentLinkExampleCode}>
               <Customizer {...(isFluent ? FluentCustomizations : undefined)}>
                 <FluentStylesLinkExample />
               </Customizer>
@@ -86,13 +86,13 @@ export class FluentStylesPage extends React.Component<IComponentDemoPageProps, I
               <Customizer {...(isFluent ? FluentCustomizations : undefined)}>
                 <FluentStylesChoiceGroupExample />
               </Customizer>
-            </ExampleCard> */}
+            </ExampleCard>
             <ExampleCard title="Dropdown" code={FluentStylesDropdownExampleCode}>
               <Customizer {...(isFluent ? FluentCustomizations : undefined)}>
                 <FluentStylesDropdownExample />
               </Customizer>
             </ExampleCard>
-            {/* <ExampleCard title="ComboBox" code={FluentStylesComboBoxExampleCode}>
+            <ExampleCard title="ComboBox" code={FluentStylesComboBoxExampleCode}>
               <Customizer {...(isFluent ? FluentCustomizations : undefined)}>
                 <FluentStylesComboBoxExample />
               </Customizer>
@@ -136,7 +136,7 @@ export class FluentStylesPage extends React.Component<IComponentDemoPageProps, I
               <Customizer {...(isFluent ? FluentCustomizations : undefined)}>
                 <FluentStylesToggleExample />
               </Customizer>
-            </ExampleCard> */}
+            </ExampleCard>
           </div>
         }
       />
