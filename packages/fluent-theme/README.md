@@ -1,4 +1,4 @@
-# [Office UI Fabric React ThemeSamples](http://dev.microsoft.com/fabric)
+# [Office UI Fabric React FluentTheme](http://dev.microsoft.com/fabric)
 
 ##### Fluent Theme package for Office UI Fabric React
 
