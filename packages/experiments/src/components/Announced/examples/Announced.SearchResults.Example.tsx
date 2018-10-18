@@ -22,12 +22,15 @@ const _testTags = [
 
 export interface IAnnouncedSearchResultsExampleState {
   seconds: number;
-  numberOfSuggestions: number
+  numberOfSuggestions: number;
 }
 
 export interface IAnnouncedSearchResultsExampleProps { }
 
-export class AnnouncedSearchResultsExample extends React.Component<IAnnouncedSearchResultsExampleProps, IAnnouncedSearchResultsExampleState> {
+export class AnnouncedSearchResultsExample extends React.Component<IAnnouncedSearchResultsExampleProps,
+  IAnnouncedSearchResultsExampleState> {
+  private timer: number;
+
   constructor(props: {}) {
     super(props);
     this.state = {
@@ -39,8 +42,6 @@ export class AnnouncedSearchResultsExample extends React.Component<IAnnouncedSea
       this.setState({ seconds: this.state.seconds + 1 });
     }, 1000);
   }
-
-  private timer: number;
 
   public render(): JSX.Element {
     const { numberOfSuggestions } = this.state;
@@ -79,11 +80,9 @@ export class AnnouncedSearchResultsExample extends React.Component<IAnnouncedSea
         this.setState({ numberOfSuggestions: results.length });
       }
     }
-    // else {
-    //   this.setState({ numberOfSuggestions: 0 });
-    // }
   }
 
+  // tslint:disable-next-line:no-any
   private _getTextFromItem(item: any): any {
     return item.name;
   }

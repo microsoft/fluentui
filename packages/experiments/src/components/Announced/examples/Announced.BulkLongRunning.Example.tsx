@@ -7,6 +7,7 @@ import { IColumn, buildColumns } from 'office-ui-fabric-react/lib/DetailsList';
 import { IDragDropEvents, IDragDropContext } from 'office-ui-fabric-react/lib/utilities/dragdrop/interfaces';
 import './Announced.Example.scss';
 
+/* tslint:disable:no-any */
 let _draggedItem: any = null;
 let _draggedIndex = -1;
 const _items: any[] = [];

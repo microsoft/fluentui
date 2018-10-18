@@ -11,7 +11,7 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
-          component: require<any>('../components/Announced/AnnouncedPage').AnnouncedPage,
+          component: require<any>('../components/Announced/AnnouncedSearchResultsPage').AnnouncedSearchResultsPage,
           key: 'Announced',
           name: 'Announced',
           url: '#/examples/announced'
@@ -27,12 +27,6 @@ export const AppDefinition: IAppDefinition = {
           key: 'Announced - Bulk Long Running',
           name: 'Announced - Bulk Long Running',
           url: '#/examples/announced/bulklongrunning'
-        },
-        {
-          component: require<any>('../components/Announced/AnnouncedSearchResultsPage').AnnouncedSearchResultsPage,
-          key: 'Announced - Search Results',
-          name: 'Announced - Search Results',
-          url: '#/examples/announced/searchresults'
         },
         {
           component: require<any>('../components/Button/ButtonPage').ButtonPage,

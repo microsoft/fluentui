@@ -12,6 +12,8 @@
     display: inline-block;
     padding: 2px;
     box-sizing: border-box;
+    width: 100px;
+    height: 100px;
 
     &:focus {
       outline: none;
@@ -26,6 +28,10 @@
         border: 1px solid white;
         outline: 2px solid black;
       }
+    }
+
+    .ms-spinnerExamples {
+      padding-top: 50%;
     }
   }
 
