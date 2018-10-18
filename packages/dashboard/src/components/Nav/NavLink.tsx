@@ -27,7 +27,8 @@ export const NavLink: React.SFC<INavLinkProps> = (props: INavLinkProps) => {
     barClassName,
     content,
     iconClassName,
-    textClassName
+    textClassName,
+    focusedStyle
   } = props;
 
   const computedTextWidth: IStyle = {
@@ -59,6 +60,7 @@ export const NavLink: React.SFC<INavLinkProps> = (props: INavLinkProps) => {
       aria-label={ariaLabel}
       aria-expanded={ariaExpanded}
       role={role}
+      className={focusedStyle}
     >
       <div className={rootClassName} aria-hidden="true">
         <hr className={barClassName} />
