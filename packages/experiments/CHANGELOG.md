@@ -1,6 +1,14 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 17 Oct 2018 12:29:40 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Oct 2018 20:22:36 GMT and should not be manually modified.
+
+## 6.39.1
+Thu, 18 Oct 2018 20:22:36 GMT
+
+### Patches
+
+- Remove api-extractor.disabled.json
+- Fluent: Updating fluent styles for ChoiceGroup plus addressing feedback on Breadcrumb, Checkbox and Dropdown.
 
 ## 6.39.0
 Wed, 17 Oct 2018 12:29:40 GMT

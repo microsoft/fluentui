@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Wed, 17 Oct 2018 01:29:55 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Oct 2018 20:22:36 GMT and should not be manually modified.
+
+## 6.9.5
+Thu, 18 Oct 2018 20:22:36 GMT
+
+### Patches
+
+- Remove api-extractor.disabled.json
 
 ## 6.9.4
 Wed, 17 Oct 2018 01:29:55 GMT

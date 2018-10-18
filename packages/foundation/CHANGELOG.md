@@ -1,6 +1,13 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Mon, 08 Oct 2018 12:24:15 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Oct 2018 20:22:36 GMT and should not be manually modified.
+
+## 0.5.6
+Thu, 18 Oct 2018 20:22:36 GMT
+
+### Patches
+
+- Remove api-extractor.disabled.json
 
 ## 0.5.5
 Mon, 08 Oct 2018 12:24:15 GMT

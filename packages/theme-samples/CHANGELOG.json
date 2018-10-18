@@ -1,4 +1,29 @@
 {
   "name": "@uifabric/theme-samples",
-  "entries": []
+  "entries": [
+    {
+      "version": "0.1.1",
+      "tag": "@uifabric/theme-samples_v0.1.1",
+      "date": "Thu, 18 Oct 2018 20:22:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Create new package for centralizing theme definitions.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "d68bb6afe698eba7fde0d76d6bc97a75f6047d6e"
+          },
+          {
+            "comment": "Add index file to fix release build.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "31c12b8b3456d782e067f9a6aaf01246dd11d8c0"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.84.1 <7.0.0` to `>=6.88.0 <7.0.0`"
+          }
+        ]
+      }
+    }
+  ]
 }
