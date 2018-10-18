@@ -6,9 +6,7 @@ import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { IColumn, buildColumns } from 'office-ui-fabric-react/lib/DetailsList';
 import { IDragDropEvents, IDragDropContext } from 'office-ui-fabric-react/lib/utilities/dragdrop/interfaces';
 import './Announced.Example.scss';
-import { IColumnReorderOptions } from 'office-ui-fabric-react/lib/DetailsList';
 import { createListItems } from 'office-ui-fabric-react/lib/utilities/exampleData';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
 
 let _draggedItem: any = null;
 let _draggedIndex = -1;
@@ -20,8 +18,6 @@ export class AnnouncedBulkLongRunningExample extends React.Component<
     items: {}[];
     selectionDetails?: string;
     columns: IColumn[];
-    frozenColumnCountFromStart: string;
-    frozenColumnCountFromEnd: string;
     numberOfItems: number;
   }
   > {
@@ -31,10 +27,6 @@ export class AnnouncedBulkLongRunningExample extends React.Component<
     super(props);
 
     this._onRenderItemColumn = this._onRenderItemColumn.bind(this);
-    this._handleColumnReorder = this._handleColumnReorder.bind(this);
-    this._getColumnReorderOptions = this._getColumnReorderOptions.bind(this);
-    this._onChangeStartCountText = this._onChangeStartCountText.bind(this);
-    this._onChangeEndCountText = this._onChangeEndCountText.bind(this);
 
     this._selection = new Selection();
 
@@ -44,29 +36,15 @@ export class AnnouncedBulkLongRunningExample extends React.Component<
     this.state = {
       items: createListItems(12),
       columns: _columns,
-      frozenColumnCountFromStart: '1',
-      frozenColumnCountFromEnd: '0',
       numberOfItems: 0
     };
   }
 
   public render(): JSX.Element {
-    const { items, selectionDetails, columns, frozenColumnCountFromStart, frozenColumnCountFromEnd, numberOfItems } = this.state;
+    const { items, selectionDetails, columns, numberOfItems } = this.state;
 
     return (
       <div className={'detailsListDragDropExample'}>
-        <TextField
-          label={'Number of Left frozen columns:'}
-          onGetErrorMessage={this._validateNumber}
-          value={frozenColumnCountFromStart}
-          onChange={this._onChangeStartCountText}
-        />
-        <TextField
-          label={'Number of Right frozen columns:'}
-          onGetErrorMessage={this._validateNumber}
-          value={frozenColumnCountFromEnd}
-          onChange={this._onChangeEndCountText}
-        />
         <div>{selectionDetails}</div>
         {this._renderAnnounced(numberOfItems)}
         <MarqueeSelection selection={this._selection}>
@@ -79,7 +57,6 @@ export class AnnouncedBulkLongRunningExample extends React.Component<
             onItemInvoked={this._onItemInvoked}
             onRenderItemColumn={this._onRenderItemColumn}
             dragDropEvents={this._getDragDropEvents()}
-            columnReorderOptions={this._getColumnReorderOptions()}
             ariaLabelForSelectionColumn="Toggle selection"
             ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           />
@@ -90,40 +67,10 @@ export class AnnouncedBulkLongRunningExample extends React.Component<
 
   private _renderAnnounced(numberofItems: number): JSX.Element | undefined {
     if (numberofItems > 0) {
-      return <Announced message={`${numberofItems} moved`} />;
+      return <Announced message={`${numberofItems} items moved`} />;
     }
     return;
   }
-
-  private _handleColumnReorder = (draggedIndex: number, targetIndex: number) => {
-    const draggedItems = this.state.columns[draggedIndex];
-    const newColumns: IColumn[] = [...this.state.columns];
-
-    // insert before the dropped item
-    newColumns.splice(draggedIndex, 1);
-    newColumns.splice(targetIndex, 0, draggedItems);
-    this.setState({ columns: newColumns });
-  };
-
-  private _getColumnReorderOptions(): IColumnReorderOptions {
-    return {
-      frozenColumnCountFromStart: parseInt(this.state.frozenColumnCountFromStart, 10),
-      frozenColumnCountFromEnd: parseInt(this.state.frozenColumnCountFromEnd, 10),
-      handleColumnReorder: this._handleColumnReorder
-    };
-  }
-
-  private _validateNumber(value: string): string {
-    return isNaN(Number(value)) ? `The value should be a number, actual is ${value}.` : '';
-  }
-
-  private _onChangeStartCountText = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string): void => {
-    this.setState({ frozenColumnCountFromStart: text });
-  };
-
-  private _onChangeEndCountText = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string): void => {
-    this.setState({ frozenColumnCountFromEnd: text });
-  };
 
   private _getDragDropEvents(): IDragDropEvents {
     return {
