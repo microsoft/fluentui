@@ -1,13 +1,15 @@
-import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
-import { NeutralColors, CommunicationColors, SharedColors } from './FluentColors';
-import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from 'office-ui-fabric-react/lib/ChoiceGroup';
-import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
-import { FontSizes } from './FluentType';
-import { Depths } from './FluentDepths';
-import { IDropdownStyleProps } from 'office-ui-fabric-react/lib/Dropdown';
-import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
-import { ICheckboxStyleProps, ICheckboxStyles } from 'office-ui-fabric-react/lib/Checkbox';
 import { IBreadcrumbStyleProps } from 'office-ui-fabric-react/lib/Breadcrumb';
+import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { ICheckboxStyleProps, ICheckboxStyles } from 'office-ui-fabric-react/lib/Checkbox';
+import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from 'office-ui-fabric-react/lib/ChoiceGroup';
+import { IDropdownStyleProps } from 'office-ui-fabric-react/lib/Dropdown';
+import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
+import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
+
+import { IToggleProps } from '../../../../office-ui-fabric-react/lib';
+import { CommunicationColors, NeutralColors, SharedColors } from './FluentColors';
+import { Depths } from './FluentDepths';
+import { FontSizes } from './FluentType';
 
 const fluentBorderRadius = '2px';
 
@@ -354,19 +356,48 @@ const TextFieldStyles = {
   }
 };
 
-const ToggleStyles = {
-  pill: {
-    width: '40px',
-    height: '20px',
-    borderRadius: '10px',
-    padding: '0 4px'
-  },
-  thumb: {
-    width: '12px',
-    height: '12px',
-    borderRadius: '12px',
-    borderColor: 'transparent'
-  }
+const ToggleStyles = (props: IToggleProps) => {
+  const { disabled, checked } = props;
+  return {
+    pill: [
+      {
+        width: '40px',
+        height: '20px',
+        borderRadius: '10px',
+        padding: '0 4px'
+      },
+      !disabled && [
+        checked && {
+          selectors: {
+            ':hover': [
+              {
+                backgroundColor: CommunicationColors.shade20
+              }
+            ]
+          }
+        },
+        !checked && {
+          selectors: {
+            ':hover .ms-Toggle-thumb': {
+              backgroundColor: NeutralColors.gray160
+            }
+          }
+        }
+      ]
+    ],
+    thumb: [
+      {
+        width: '12px',
+        height: '12px',
+        borderRadius: '12px',
+        borderColor: 'transparent'
+      },
+      !disabled &&
+        !checked && {
+          backgroundColor: NeutralColors.gray130
+        }
+    ]
+  };
 };
 
 // Roll up all style overrides in a single "Fluent theme" object
