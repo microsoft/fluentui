@@ -2,6 +2,25 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.23.1",
+      "tag": "@uifabric/utilities_v6.23.1",
+      "date": "Thu, 18 Oct 2018 20:22:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update api-extractor.json",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "e6b2514a003fb41c964fba14b071cb0046fd69eb"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.10.1 <7.0.0` to `>=6.10.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.23.0",
       "tag": "@uifabric/utilities_v6.23.0",
       "date": "Mon, 15 Oct 2018 12:29:12 GMT",

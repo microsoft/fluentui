@@ -63,24 +63,31 @@ const GlobalClassNames = {
   secondaryText: 'ms-ContextualMenu-secondaryText'
 };
 
-// TODO: Audit perf. impact of and potentially remove memoizeFunction.
-//       https://github.com/OfficeDev/office-ui-fabric-react/issues/5534
+/**
+ * @deprecated
+ * @internal
+ * This is a package-internal method that has been depended on.
+ * It is being kept in this form for backwards compatibility.
+ * It should be cleaned up in 7.0.
+ *
+ * TODO: Audit perf. impact of and potentially remove memoizeFunction.
+ * https://github.com/OfficeDev/office-ui-fabric-react/issues/5534
+ */
 export const getItemClassNames = memoizeFunction(
-  (props: IContextualMenuItemStyleProps): IContextualMenuItemStyles => {
-    const {
-      theme,
-      disabled,
-      expanded,
-      checked,
-      isAnchorLink,
-      knownIcon,
-      itemClassName,
-      dividerClassName,
-      iconClassName,
-      subMenuClassName,
-      primaryDisabled,
-      className
-    } = props;
+  (
+    theme: ITheme,
+    disabled: boolean,
+    expanded: boolean,
+    checked: boolean,
+    isAnchorLink: boolean,
+    knownIcon: boolean,
+    itemClassName?: string,
+    dividerClassName?: string,
+    iconClassName?: string,
+    subMenuClassName?: string,
+    primaryDisabled?: boolean,
+    className?: string
+  ): IContextualMenuItemStyles => {
     const styles = getMenuItemStyles(theme);
     const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -177,3 +184,42 @@ export const getItemClassNames = memoizeFunction(
     });
   }
 );
+
+/**
+ * Wrapper function for generating ContextualMenuItem classNames which adheres to
+ * the getStyles API, but invokes memoized className generator function with
+ * primitive values.
+ *
+ * @param props the ContextualMenuItem style props used to generate its styles.
+ */
+export const getItemStyles = (props: IContextualMenuItemStyleProps): IContextualMenuItemStyles => {
+  const {
+    theme,
+    disabled,
+    expanded,
+    checked,
+    isAnchorLink,
+    knownIcon,
+    itemClassName,
+    dividerClassName,
+    iconClassName,
+    subMenuClassName,
+    primaryDisabled,
+    className
+  } = props;
+
+  return getItemClassNames(
+    theme,
+    disabled,
+    expanded,
+    checked,
+    isAnchorLink,
+    knownIcon,
+    itemClassName,
+    dividerClassName,
+    iconClassName,
+    subMenuClassName,
+    primaryDisabled,
+    className
+  );
+};

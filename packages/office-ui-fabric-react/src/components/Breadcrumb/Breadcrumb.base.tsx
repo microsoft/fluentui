@@ -9,7 +9,7 @@ import { IBreadcrumbProps, IBreadcrumbItem, IDividerAsProps } from './Breadcrumb
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ResizeGroup } from '../../ResizeGroup';
 import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
-import { IBreadcrumbStyleProps, IBreadcrumbStyles } from './Breadcrumb.styles';
+import { IBreadcrumbStyleProps, IBreadcrumbStyles } from './Breadcrumb.types';
 
 const getClassNames = classNamesFunction<IBreadcrumbStyleProps, IBreadcrumbStyles>();
 
@@ -48,15 +48,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
   }
 
   public render(): JSX.Element {
-    const {
-      onReduceData = this._onReduceData,
-      overflowIndex,
-      maxDisplayedItems,
-      items,
-      className,
-      theme,
-      styles
-    } = this.props;
+    const { onReduceData = this._onReduceData, overflowIndex, maxDisplayedItems, items, className, theme, styles } = this.props;
     const renderedItems = [...items];
     const renderedOverflowItems = renderedItems.splice(overflowIndex!, renderedItems.length - maxDisplayedItems!);
     const breadCrumbData: IBreadCrumbData = {
@@ -118,11 +110,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
       <li className={this._classNames.listItem} key={item.key || String(index)}>
         {onRenderItem(item, this._onRenderItem)}
         {(index !== lastItemIndex || (hasOverflowItems && index === overflowIndex! - 1)) && (
-          <DividerType
-            className={this._classNames.chevron}
-            iconName={getRTL() ? 'ChevronLeft' : 'ChevronRight'}
-            item={item}
-          />
+          <DividerType className={this._classNames.chevron} iconName={getRTL() ? 'ChevronLeft' : 'ChevronRight'} item={item} />
         )}
       </li>
     ));

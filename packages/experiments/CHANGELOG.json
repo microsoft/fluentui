@@ -2,6 +2,92 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.39.1",
+      "tag": "@uifabric/experiments_v6.39.1",
+      "date": "Thu, 18 Oct 2018 20:22:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove api-extractor.disabled.json",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "e6b2514a003fb41c964fba14b071cb0046fd69eb"
+          },
+          {
+            "comment": "Fluent: Updating fluent styles for ChoiceGroup plus addressing feedback on Breadcrumb, Checkbox and Dropdown.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "1b150a00f86a233b9e895f75e4ea7a99eb9779eb"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.25.0` to `^0.25.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.5.5 <1.0.0` to `>=0.5.6 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.10.1 <7.0.0` to `>=6.10.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.87.0 <7.0.0` to `>=6.88.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.39.0",
+      "tag": "@uifabric/experiments_v6.39.0",
+      "date": "Wed, 17 Oct 2018 12:29:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "revert PR 6258 for signal icon issues",
+            "author": "Amy Hackett <ahackett@microsoft.com>",
+            "commit": "da47752a6216ee1b42377e67e11f265ccfb5d988"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Breadcrumb: fluent updates to breadcrumb styles.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "f56a360083890a8a588961a4c1fb89a91cb2e09a"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.86.0 <7.0.0` to `>=6.87.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.38.1",
+      "tag": "@uifabric/experiments_v6.38.1",
+      "date": "Wed, 17 Oct 2018 01:29:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updated Readme",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "3cbb872d05e63c633f7ab8d0f8fa864b6ed0a1a5"
+          },
+          {
+            "comment": "Fix FluentStylesPage by wrapping a Customizer around each example",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "ed4aac114da601235955bb39277bdd4c28b11dcd"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.85.0 <7.0.0` to `>=6.86.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.8.0 <7.0.0` to `>=6.9.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.38.0",
       "tag": "@uifabric/experiments_v6.38.0",
       "date": "Tue, 16 Oct 2018 12:28:48 GMT",
