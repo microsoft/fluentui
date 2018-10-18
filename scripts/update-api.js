@@ -1,3 +1,3 @@
 require('./tasks/api-extractor')({
-  args: '--debug'
+  args: '--local'
 });
