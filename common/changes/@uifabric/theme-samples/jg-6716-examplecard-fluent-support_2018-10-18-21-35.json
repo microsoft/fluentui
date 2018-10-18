@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/theme-samples",
+      "comment": "Add theme defintions for Word, Teams and Fluent.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/theme-samples",
+  "email": "jagore@microsoft.com"
+}
