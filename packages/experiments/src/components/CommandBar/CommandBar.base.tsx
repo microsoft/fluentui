@@ -219,8 +219,8 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
   }
 
   private _onRenderItems = (item: ICommandBarItemProps): JSX.Element | React.ReactNode => {
-    const { buttonStyles } = this.props;
-    const CommandButtonType = item.commandBarButtonAs || CommandBarButton;
+    const { buttonStyles, commandBarButtonAs } = this.props;
+    const CommandButtonType = item.commandBarButtonAs || commandBarButtonAs || CommandBarButton;
 
     if (item.onRender) {
       // These are the top level items, there is no relevant menu dismissing function to
