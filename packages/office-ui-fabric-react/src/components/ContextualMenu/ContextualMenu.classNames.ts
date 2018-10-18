@@ -63,8 +63,15 @@ const GlobalClassNames = {
   secondaryText: 'ms-ContextualMenu-secondaryText'
 };
 
-// TODO: Audit perf. impact of and potentially remove memoizeFunction.
-//       https://github.com/OfficeDev/office-ui-fabric-react/issues/5534
+/**
+ * @internal
+ * This is a package-internal method that has been depended on.
+ * It is being kept in this form for backwards compatibility.
+ * It should be cleaned up in 7.0.
+ *
+ * TODO: Audit perf. impact of and potentially remove memoizeFunction.
+ * https://github.com/OfficeDev/office-ui-fabric-react/issues/5534
+ */
 export const getItemClassNames = memoizeFunction(
   (
     theme: ITheme,
