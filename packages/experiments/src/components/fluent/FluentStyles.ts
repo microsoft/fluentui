@@ -1,4 +1,10 @@
-import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
+import {
+  FontWeights,
+  ScreenWidthMaxMedium,
+  ScreenWidthMaxSmall,
+  ScreenWidthMinMedium,
+  getScreenSelector
+} from 'office-ui-fabric-react/lib/Styling';
 import { NeutralColors, CommunicationColors, SharedColors } from './FluentColors';
 import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
@@ -10,6 +16,8 @@ import { ICheckboxStyleProps, ICheckboxStyles } from 'office-ui-fabric-react/lib
 import { IBreadcrumbStyleProps } from 'office-ui-fabric-react/lib/Breadcrumb';
 
 const fluentBorderRadius = '2px';
+const MinimumScreenSelector = getScreenSelector(0, ScreenWidthMaxSmall);
+const MediumScreenSelector = getScreenSelector(ScreenWidthMinMedium, ScreenWidthMaxMedium);
 
 const BreadcrumbStyles = (props: IBreadcrumbStyleProps) => {
   const { theme } = props;
@@ -35,9 +43,9 @@ const BreadcrumbStyles = (props: IBreadcrumbStyleProps) => {
       marginTop: 11
     },
     itemLink: {
-      lineHeight: '2',
+      lineHeight: 36,
+      fontSize: FontSizes.size20,
       outline: 'none',
-      fontSize: FontSizes.size18,
       fontWeight: 400,
       color: semanticColors.bodySubtext,
       selectors: {
@@ -49,6 +57,8 @@ const BreadcrumbStyles = (props: IBreadcrumbStyleProps) => {
           // Necessary due to changes of Link component not using getFocusStyle
           outline: 'none'
         },
+        [MediumScreenSelector]: { fontSize: FontSizes.size18, lineHeight: 32 },
+        [MinimumScreenSelector]: { fontSize: FontSizes.size14, lineHeight: 24 },
         ...stateSelectors
       }
     },
