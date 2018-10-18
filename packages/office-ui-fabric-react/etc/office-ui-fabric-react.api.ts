@@ -4844,6 +4844,7 @@ interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> {
   items?: any[];
   onPageAdded?: (page: IPage) => void;
   onPageRemoved?: (page: IPage) => void;
+  onPagesUpdated?: (pages: IPage[]) => void;
   onRenderCell?: (item?: any, index?: number, isScrolling?: boolean) => React.ReactNode;
   onRenderPage?: (pageProps: IPageProps, defaultRender?: IRenderFunction<IPageProps>) => React.ReactNode;
   onShouldVirtualize?: (props: IListProps) => boolean;
