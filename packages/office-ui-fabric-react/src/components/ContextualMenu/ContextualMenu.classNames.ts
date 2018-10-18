@@ -63,45 +63,6 @@ const GlobalClassNames = {
   secondaryText: 'ms-ContextualMenu-secondaryText'
 };
 
-/**
- * Wrapper function for generating ContextualMenuItem classNames which adheres to
- * the getStyles API, but invokes memoized className generator function with
- * primitive values.
- *
- * @param props the ContextualMenuItem style props used to generate its styles.
- */
-export const getItemStyles = (props: IContextualMenuItemStyleProps): IContextualMenuItemStyles => {
-  const {
-    theme,
-    disabled,
-    expanded,
-    checked,
-    isAnchorLink,
-    knownIcon,
-    itemClassName,
-    dividerClassName,
-    iconClassName,
-    subMenuClassName,
-    primaryDisabled,
-    className
-  } = props;
-
-  return getItemClassNames(
-    theme,
-    disabled,
-    expanded,
-    checked,
-    isAnchorLink,
-    knownIcon,
-    itemClassName,
-    dividerClassName,
-    iconClassName,
-    subMenuClassName,
-    primaryDisabled,
-    className
-  );
-};
-
 // TODO: Audit perf. impact of and potentially remove memoizeFunction.
 //       https://github.com/OfficeDev/office-ui-fabric-react/issues/5534
 export const getItemClassNames = memoizeFunction(
@@ -215,3 +176,42 @@ export const getItemClassNames = memoizeFunction(
     });
   }
 );
+
+/**
+ * Wrapper function for generating ContextualMenuItem classNames which adheres to
+ * the getStyles API, but invokes memoized className generator function with
+ * primitive values.
+ *
+ * @param props the ContextualMenuItem style props used to generate its styles.
+ */
+export const getItemStyles = (props: IContextualMenuItemStyleProps): IContextualMenuItemStyles => {
+  const {
+    theme,
+    disabled,
+    expanded,
+    checked,
+    isAnchorLink,
+    knownIcon,
+    itemClassName,
+    dividerClassName,
+    iconClassName,
+    subMenuClassName,
+    primaryDisabled,
+    className
+  } = props;
+
+  return getItemClassNames(
+    theme,
+    disabled,
+    expanded,
+    checked,
+    isAnchorLink,
+    knownIcon,
+    itemClassName,
+    dividerClassName,
+    iconClassName,
+    subMenuClassName,
+    primaryDisabled,
+    className
+  );
+};
