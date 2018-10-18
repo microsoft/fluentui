@@ -43,30 +43,32 @@ class NavTogglerComponent extends React.Component<INavProps, INavState> {
     return (
       <div className={classNames.root}>
         <FocusZone direction={FocusZoneDirection.vertical}>
-          {this._renderExpandCollapseNavItem(toggleNavGroups)}
-          {isNavCollapsed ? (
-            <SlimNav
-              groups={nonToggleNavGroups}
-              selectedKey={this.props.selectedKey}
-              navScrollerId={this.props.navScrollerId}
-              dataHint={this.props.dataHint}
-              enableCustomization={this.props.enableCustomization}
-              showMore={showMore}
-              onShowMoreLinkClicked={this._onShowMoreLinkClicked}
-              onEditLeftNavClickedCallback={this.props.onEditLeftNavClickedCallback}
-            />
-          ) : (
-            <Nav
-              groups={nonToggleNavGroups}
-              selectedKey={this.props.selectedKey}
-              dataHint={this.props.dataHint}
-              enableCustomization={this.props.enableCustomization}
-              showMore={showMore}
-              onShowMoreLinkClicked={this._onShowMoreLinkClicked}
-              onNavNodeExpandedCallback={this.props.onNavNodeExpandedCallback}
-              onEditLeftNavClickedCallback={this.props.onEditLeftNavClickedCallback}
-            />
-          )}
+          <nav role="navigation">
+            {this._renderExpandCollapseNavItem(toggleNavGroups)}
+            {isNavCollapsed ? (
+              <SlimNav
+                groups={nonToggleNavGroups}
+                selectedKey={this.props.selectedKey}
+                navScrollerId={this.props.navScrollerId}
+                dataHint={this.props.dataHint}
+                enableCustomization={this.props.enableCustomization}
+                showMore={showMore}
+                onShowMoreLinkClicked={this._onShowMoreLinkClicked}
+                onEditLeftNavClickedCallback={this.props.onEditLeftNavClickedCallback}
+              />
+            ) : (
+              <Nav
+                groups={nonToggleNavGroups}
+                selectedKey={this.props.selectedKey}
+                dataHint={this.props.dataHint}
+                enableCustomization={this.props.enableCustomization}
+                showMore={showMore}
+                onShowMoreLinkClicked={this._onShowMoreLinkClicked}
+                onNavNodeExpandedCallback={this.props.onNavNodeExpandedCallback}
+                onEditLeftNavClickedCallback={this.props.onEditLeftNavClickedCallback}
+              />
+            )}
+          </nav>
         </FocusZone>
       </div>
     );
@@ -91,11 +93,7 @@ class NavTogglerComponent extends React.Component<INavProps, INavState> {
   }
 
   private _renderExpandCollapseNavItem(toggleNavGroups: ICustomNavLinkGroup[]): React.ReactElement<{}> | null {
-    if (
-      (!!toggleNavGroups && toggleNavGroups.length === 0) ||
-      !toggleNavGroups[0].links ||
-      toggleNavGroups[0].links.length === 0
-    ) {
+    if ((!!toggleNavGroups && toggleNavGroups.length === 0) || !toggleNavGroups[0].links || toggleNavGroups[0].links.length === 0) {
       // There is no toggle group with links defined
       return null;
     }
@@ -125,14 +123,14 @@ class NavTogglerComponent extends React.Component<INavProps, INavState> {
   }
 
   private _onShowMoreLinkClicked(ev: React.MouseEvent<HTMLElement>): void {
+    ev.preventDefault();
+    ev.stopPropagation();
+
     this.setState((prevState: INavState) => {
       return {
         showMore: !prevState.showMore
       };
     });
-
-    ev.preventDefault();
-    ev.stopPropagation();
   }
 }
 
