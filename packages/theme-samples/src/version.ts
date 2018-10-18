@@ -1,4 +1,4 @@
-// office-ui-fabric-react@6.88.0
+// @uifabric/theme-samples@0.1.1
 // Do not modify this file, the file is generated as part of publish. The checked in version is a placeholder only.
 import { setVersion } from '@uifabric/set-version';
-setVersion('office-ui-fabric-react', '6.88.0');
+setVersion('@uifabric/theme-samples', '0.1.1');

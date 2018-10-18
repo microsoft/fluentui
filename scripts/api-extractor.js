@@ -6,11 +6,14 @@ const config = {
     configType: 'tsconfig',
     rootFolder: process.cwd()
   },
+  policies: {
+    namespaceSupport: 'conservative'
+  },
   project: {
     entryPointSourceFile: 'lib/index.d.ts'
   },
   validationRules: {
-    missingReleaseTags: 'ignore'
+    missingReleaseTags: 'allow'
   }
 };
 

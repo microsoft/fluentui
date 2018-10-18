@@ -2,6 +2,31 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.30.1",
+      "tag": "@uifabric/dashboard_v0.30.1",
+      "date": "Thu, 18 Oct 2018 20:22:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove api-extractor.disabled.json",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "e6b2514a003fb41c964fba14b071cb0046fd69eb"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.25.0` to `^0.25.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.39.0 <7.0.0` to `>=6.39.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.87.0 <7.0.0` to `>=6.88.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.30.0",
       "tag": "@uifabric/dashboard_v0.30.0",
       "date": "Tue, 16 Oct 2018 12:28:48 GMT",

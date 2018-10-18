@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.10.2",
+      "tag": "@uifabric/merge-styles_v6.10.2",
+      "date": "Thu, 18 Oct 2018 20:22:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update api-extractor",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "e6b2514a003fb41c964fba14b071cb0046fd69eb"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.10.1",
       "tag": "@uifabric/merge-styles_v6.10.1",
       "date": "Mon, 15 Oct 2018 12:29:12 GMT",
