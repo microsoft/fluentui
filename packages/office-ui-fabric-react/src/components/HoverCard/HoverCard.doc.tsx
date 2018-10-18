@@ -27,7 +27,7 @@ export const HoverCardPageProps: IDocPageProps = {
       view: <HoverCardTargetExample />
     },
     {
-      title: 'Example 3: Basic HoverCard wrapping an element',
+      title: 'Example 3: Plain HoverCard wrapping an element',
       code: HoverCardPlainCardExampleCode,
       view: <HoverCardPlainCardExample />
     }

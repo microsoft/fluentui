@@ -71,7 +71,7 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
 
   /**
    * Additional PlainCard props to pass through HoverCard like renderers, target, gapSpace etc.
-   * Used along with 'type' prop set to HoverCardType.basic.
+   * Used along with 'type' prop set to HoverCardType.plain.
    * See for more details ICardProps and IPlainCardProps interfaces.
    */
   plainCardProps?: IPlainCardProps;
