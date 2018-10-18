@@ -125,6 +125,7 @@ export const getButtonStyles: IButtonComponent['styles'] = props => {
     if (state) {
       return {
         root: [
+          theme.fonts.medium,
           {
             padding: 0,
             backgroundColor: state.backgroundColor,

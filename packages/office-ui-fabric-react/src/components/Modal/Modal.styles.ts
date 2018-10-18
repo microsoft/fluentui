@@ -40,6 +40,7 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
   return {
     root: [
       classNames.root,
+      theme.fonts.medium,
       {
         backgroundColor: 'transparent',
         position: 'fixed',

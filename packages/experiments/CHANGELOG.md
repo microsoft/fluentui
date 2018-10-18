@@ -1,6 +1,45 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 10 Oct 2018 12:29:05 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Oct 2018 12:29:40 GMT and should not be manually modified.
+
+## 6.39.0
+Wed, 17 Oct 2018 12:29:40 GMT
+
+### Minor changes
+
+- Breadcrumb: fluent updates to breadcrumb styles.
+
+### Patches
+
+- revert PR 6258 for signal icon issues
+
+## 6.38.1
+Wed, 17 Oct 2018 01:29:55 GMT
+
+### Patches
+
+- Updated Readme
+- Fix FluentStylesPage by wrapping a Customizer around each example
+
+## 6.38.0
+Tue, 16 Oct 2018 12:28:48 GMT
+
+### Minor changes
+
+- Fluent: updates the styles of Dropdown and CheckBox to follow fluent specs.
+
+### Patches
+
+- Add customizations for component examples. Remove redundant customizations from Button example.
+
+## 6.37.1
+Mon, 15 Oct 2018 12:29:12 GMT
+
+### Patches
+
+- updating snapshot tests in experiments package
+- Added font theme setting to Button, ChicletCard, CollapsibleSection, Shimmer, ShimmerCircle, ShimmerElementsGroup, ShimmerGap, ShimmerLine, HorizontalStack, Text. Snapshots updated in VerticalStack, Stack.
+- Improve BaseState typing and fix use by experimental components.
 
 ## 6.37.0
 Wed, 10 Oct 2018 12:29:05 GMT

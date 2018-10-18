@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/experiments",
+      "comment": "Fluent: Updating fluent styles for ChoiceGroup plus addressing feedback on Breadcrumb, Checkbox and Dropdown.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/experiments",
+  "email": "v-vibr@microsoft.com"
+}

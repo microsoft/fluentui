@@ -2,6 +2,71 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.30.0",
+      "tag": "@uifabric/dashboard_v0.30.0",
+      "date": "Tue, 16 Oct 2018 12:28:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding support for different date formats to line chart in dashboard card. Calculating datapoints to render a line chart with evenly spaced ticks. Updated examples for cards",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "29ed1606b89cecfc376a2992eff59bff710ddca1"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.24.4` to `^0.25.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.7.6 <7.0.0` to `>=6.8.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.37.1 <7.0.0` to `>=6.38.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.84.1 <7.0.0` to `>=6.85.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.29.3",
+      "tag": "@uifabric/dashboard_v0.29.3",
+      "date": "Mon, 15 Oct 2018 12:29:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "updating dashboard package",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "e83f082e86ab8a599f298dc1dfe343981bbebee5"
+          },
+          {
+            "comment": "Styling for marginLeft in Nav",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "e83f082e86ab8a599f298dc1dfe343981bbebee5"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Adding Styling for marginLeft in Nav.",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "e83f082e86ab8a599f298dc1dfe343981bbebee5"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.24.3` to `^0.24.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.37.0 <7.0.0` to `>=6.37.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.84.0 <7.0.0` to `>=6.84.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.29.2",
       "tag": "@uifabric/dashboard_v0.29.2",
       "date": "Mon, 08 Oct 2018 12:24:15 GMT",

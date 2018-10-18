@@ -11,6 +11,13 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
         ms-Rating-star
         ms-RatingStar-root
         ms-RatingStar-root--large
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+        }
         &:hover .ms-RatingStar-back {
           color: #000000;
         }
@@ -822,6 +829,13 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
         ms-Rating-star
         ms-RatingStar-root
         ms-RatingStar-root--small
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+        }
         &:hover .ms-RatingStar-back {
           color: #000000;
         }
@@ -1633,6 +1647,13 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
         ms-Rating-star
         ms-RatingStar-root
         ms-RatingStar-root--small
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+        }
         &:hover .ms-RatingStar-back {
           color: #000000;
         }
@@ -3214,7 +3235,13 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
         ms-Rating-star
         ms-RatingStar-root
         ms-RatingStar-root--small
-
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+        }
         {
           height: 22px;
         }
@@ -3775,7 +3802,13 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
         ms-Rating-star
         ms-RatingStar-root
         ms-RatingStar-root--small
-
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+        }
         {
           height: 22px;
         }
@@ -4491,6 +4524,13 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
         ms-Rating-star
         ms-RatingStar-root
         ms-RatingStar-root--small
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+        }
         &:hover .ms-RatingStar-back {
           color: #1E9FE8;
         }

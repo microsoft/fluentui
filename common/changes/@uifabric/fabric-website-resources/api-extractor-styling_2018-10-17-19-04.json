@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/fabric-website-resources",
+      "comment": "Remove api-extractor.disabled.json",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/fabric-website-resources",
+  "email": "kakje@microsoft.com"
+}

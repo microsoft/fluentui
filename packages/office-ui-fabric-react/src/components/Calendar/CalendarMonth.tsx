@@ -82,11 +82,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
         <div className={css('ms-DatePicker-header', styles.header)}>
           {this.props.onHeaderSelect ? (
             <div
-              className={css(
-                'ms-DatePicker-currentYear js-showYearPicker',
-                styles.currentYear,
-                styles.headerToggleView
-              )}
+              className={css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear, styles.headerToggleView)}
               onClick={this._onHeaderSelect}
               onKeyDown={this._onHeaderKeyDown}
               aria-label={dateTimeFormatter.formatYear(navigatedDate)}
@@ -138,40 +134,41 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
           </div>
         </div>
         <FocusZone>
-          <div className={css('ms-DatePicker-optionGrid', styles.optionGrid)} role="grid">
-            {strings.shortMonths.map((month, index) => {
-              const indexedMonth = setMonth(navigatedDate, index);
-              const isCurrentMonth = this._isCurrentMonth(index, navigatedDate.getFullYear(), today!);
-              const isNavigatedMonth = navigatedDate.getMonth() === index;
-              const isSelectedMonth = selectedDate.getMonth() === index;
-              const isSelectedYear = selectedDate.getFullYear() === navigatedDate.getFullYear();
-              const isInBounds =
-                (minDate ? compareDatePart(minDate, getMonthEnd(indexedMonth)) < 1 : true) &&
-                (maxDate ? compareDatePart(getMonthStart(indexedMonth), maxDate) < 1 : true);
+          <div className={css('ms-DatePicker-optionGrid', styles.optionGrid)} role="grid" aria-readonly="true">
+            <div role="row">
+              {strings.shortMonths.map((month, index) => {
+                const indexedMonth = setMonth(navigatedDate, index);
+                const isCurrentMonth = this._isCurrentMonth(index, navigatedDate.getFullYear(), today!);
+                const isNavigatedMonth = navigatedDate.getMonth() === index;
+                const isSelectedMonth = selectedDate.getMonth() === index;
+                const isSelectedYear = selectedDate.getFullYear() === navigatedDate.getFullYear();
+                const isInBounds =
+                  (minDate ? compareDatePart(minDate, getMonthEnd(indexedMonth)) < 1 : true) &&
+                  (maxDate ? compareDatePart(getMonthStart(indexedMonth), maxDate) < 1 : true);
 
-              return (
-                <button
-                  role={'gridcell'}
-                  className={css('ms-DatePicker-monthOption', styles.monthOption, {
-                    ['ms-DatePicker-day--today ' + styles.monthIsCurrentMonth]:
-                      highlightCurrentMonth && isCurrentMonth!,
-                    ['ms-DatePicker-day--highlighted ' + styles.monthIsHighlighted]:
-                      (highlightCurrentMonth || highlightSelectedMonth) && isSelectedMonth && isSelectedYear,
-                    ['ms-DatePicker-monthOption--disabled ' + styles.monthOptionIsDisabled]: !isInBounds
-                  })}
-                  disabled={!isInBounds}
-                  key={index}
-                  onClick={isInBounds ? this._selectMonthCallbacks[index] : undefined}
-                  onKeyDown={isInBounds ? this._onSelectMonthKeyDown(index) : undefined}
-                  aria-label={dateTimeFormatter.formatMonthYear(indexedMonth, strings)}
-                  aria-selected={isCurrentMonth || isNavigatedMonth}
-                  data-is-focusable={isInBounds ? true : undefined}
-                  ref={isNavigatedMonth ? 'navigatedMonth' : undefined}
-                >
-                  {month}
-                </button>
-              );
-            })}
+                return (
+                  <button
+                    role={'gridcell'}
+                    className={css('ms-DatePicker-monthOption', styles.monthOption, {
+                      ['ms-DatePicker-day--today ' + styles.monthIsCurrentMonth]: highlightCurrentMonth && isCurrentMonth!,
+                      ['ms-DatePicker-day--highlighted ' + styles.monthIsHighlighted]:
+                        (highlightCurrentMonth || highlightSelectedMonth) && isSelectedMonth && isSelectedYear,
+                      ['ms-DatePicker-monthOption--disabled ' + styles.monthOptionIsDisabled]: !isInBounds
+                    })}
+                    disabled={!isInBounds}
+                    key={index}
+                    onClick={isInBounds ? this._selectMonthCallbacks[index] : undefined}
+                    onKeyDown={isInBounds ? this._onSelectMonthKeyDown(index) : undefined}
+                    aria-label={dateTimeFormatter.formatMonthYear(indexedMonth, strings)}
+                    aria-selected={isCurrentMonth || isNavigatedMonth}
+                    data-is-focusable={isInBounds ? true : undefined}
+                    ref={isNavigatedMonth ? 'navigatedMonth' : undefined}
+                  >
+                    {month}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </FocusZone>
       </div>

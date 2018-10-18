@@ -15,11 +15,12 @@ export const getStyles = memoizeFunction(
         width: '32px',
         height: '32px',
         backgroundColor: 'transparent',
-        border: 'none'
+        border: 'none',
+        color: semanticColors.actionLink
       },
 
       rootHovered: {
-        color: palette.themeDarker,
+        color: semanticColors.actionLinkHovered,
         selectors: {
           [HighContrastSelector]: {
             borderColor: 'Highlight',
