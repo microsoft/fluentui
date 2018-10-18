@@ -6,12 +6,60 @@ import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { IColumn, buildColumns } from 'office-ui-fabric-react/lib/DetailsList';
 import { IDragDropEvents, IDragDropContext } from 'office-ui-fabric-react/lib/utilities/dragdrop/interfaces';
 import './Announced.Example.scss';
-import { createListItems } from 'office-ui-fabric-react/lib/utilities/exampleData';
 
 let _draggedItem: any = null;
 let _draggedIndex = -1;
-let _items: any[];
-let _columns: IColumn[];
+const _items: any[] = [];
+
+let _columns: IColumn[] = [
+  {
+    key: 'column1',
+    name: 'Name',
+    fieldName: 'name',
+    minWidth: 100,
+    maxWidth: 200,
+    isResizable: true,
+    ariaLabel: 'Operations for name'
+  },
+  {
+    key: 'column2',
+    name: 'Modified',
+    fieldName: 'modified',
+    minWidth: 100,
+    maxWidth: 200,
+    isResizable: true,
+    ariaLabel: 'Operations for modified'
+  },
+  {
+    key: 'column3',
+    name: 'Modified By',
+    fieldName: 'modifiedby',
+    minWidth: 100,
+    maxWidth: 200,
+    isResizable: true,
+    ariaLabel: 'Operations for modifiedby'
+  },
+  {
+    key: 'column4',
+    name: 'File Size',
+    fieldName: 'filesize',
+    minWidth: 100,
+    maxWidth: 200,
+    isResizable: true,
+    ariaLabel: 'Operations for filesize'
+  }
+];
+
+const _names: string[] = [
+  'Annie Lindqvist',
+  'Aaron Reid',
+  'Alex Lundberg',
+  'Roko Kolar',
+  'Christian Bergqvist',
+  'Valentina Lovric',
+  'Makenzie Sharett'
+];
+
 export class AnnouncedBulkLongRunningExample extends React.Component<
   {},
   {
@@ -30,11 +78,22 @@ export class AnnouncedBulkLongRunningExample extends React.Component<
 
     this._selection = new Selection();
 
-    _items = _items || createListItems(12, 0);
+    if (_items.length === 0) {
+      for (let i = 0; i < 20; i++) {
+        _items.push({
+          key: i,
+          name: 'Item ' + i,
+          modified: i,
+          modifiedby: _names[Math.floor(Math.random() * _names.length)],
+          filesize: Math.floor(Math.random() * 30).toString() + ' MB'
+        });
+      }
+    }
+
     _columns = buildColumns(_items, true);
 
     this.state = {
-      items: createListItems(12),
+      items: _items,
       columns: _columns,
       numberOfItems: 0
     };

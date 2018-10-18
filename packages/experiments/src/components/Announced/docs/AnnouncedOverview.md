@@ -1,8 +1,9 @@
-# Announced Component
+The Announced component aims to fill several of the accessibility gaps that exist in various web application experiences.
+It provides text for the screen reader in certain scenarios that are lacking comprehensive updates, particularly those showing
+the completion status or progress of operation(s).
 
-The Announced component aims to fill several of the accessibility gaps that exist in various web application experiences. It provides text for the screen reader in certain scenarios that are lacking comprehensive updates, particularly those showing the completion status or progress of operation(s).
-
-Some real-world applications of the component include copying, uploading, deleting, or moving many files, "lazy loading" of page sections that do not appear all at once, and appearance of search results.
+Some real-world applications of the component include copying, uploading, deleting, or moving many files, "lazy loading" of
+page sections that do not appear all at once, and appearance of search results.
 
 ## Use cases
 
@@ -19,11 +20,11 @@ Editing text, deletion
 #### Scenarios
 1. User renames a file
 
-    When the file is renamed successfully, use the Announced component, coupled with a key, to announce the message immediately. Providing a key will ensure that the announcement is re-read.
+    When the file is renamed successfully, use the Announced component, coupled with a id, to announce the message immediately. Providing a id will ensure that the announcement is re-read.
 
     Usage:
     ```
-    <Announced key={announcementId} message='Mail deleted' />
+    <Announced id={announcementId} message='Mail deleted' />
     ```
 
     By default, the announced component should wait for .5 seconds.
@@ -34,7 +35,7 @@ Editing text, deletion
 
     Usage:
     ```
-    <Announced key={sequenceId} message='5 mails deleted' delay={500} />
+    <Announced id={sequenceId} message='5 mails deleted' delay={500} />
     ```
 
 ***
@@ -53,7 +54,7 @@ Pages, custom lists and libraries
 
     Usage:
     ```
-    <Announced key={announcementId} message='Cards are loading' />
+    <Announced id={announcementId} message='Cards are loading' />
     ```
 
 ***
@@ -74,7 +75,7 @@ Copying, uploading, or moving many items
 
     Usage:
     ```
-    <Announced key={sequenceId} message='30 items moved' delay={500} />
+    <Announced id={sequenceId} message='30 items moved' delay={500} />
     ```
 
     Announced would also handle the "completed" status.
@@ -97,7 +98,7 @@ To: line in mail clients, search boxes
 
     Usage:
     ```
-    <Announced key={announcementId} message='7 items found' />
+    <Announced id={announcementId} message='7 items found' />
     ```
 
     By default, the announced component should wait for .5 seconds before sending out the status message, in case the user keeps typing in the picker, to avoid reading unneccessary updates.
@@ -105,14 +106,10 @@ To: line in mail clients, search boxes
 ***
 ## Props
 
-`key`
+`id`
 
-A unique key for Announced
+A unique id for Announced
 
 `message`
 
 The status message provided as screen reader output
-
-`delay`
-
-The time to wait until providing another status message for the screen reader to avoid overwhelming the user with extraneous updates.
