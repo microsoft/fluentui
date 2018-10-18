@@ -60,11 +60,7 @@ const slideDownInKeyframes: string = keyframes({
   to: { transform: 'translate3d(0, 0, 0)' }
 });
 
-function _createAnimation(
-  animationName: string,
-  animationDuration: string,
-  animationTimingFunction: string
-): IRawStyle {
+function _createAnimation(animationName: string, animationDuration: string, animationTimingFunction: string): IRawStyle {
   return {
     animationName,
     animationDuration,
@@ -90,46 +86,14 @@ export namespace MotionTimings {
 export namespace MotionAnimations {
   export const fadeIn = _createAnimation(fadeInKeyframes, MotionDurations.duration1, MotionTimings.linear);
   export const fadeOut = _createAnimation(fadeOutKeyframes, MotionDurations.duration1, MotionTimings.linear);
-  export const scaleDownIn = _createAnimation(
-    scaleDownInKeyframes,
-    MotionDurations.duration3,
-    MotionTimings.decelerate
-  );
-  export const scaleDownOut = _createAnimation(
-    scaleDownOutKeyframes,
-    MotionDurations.duration3,
-    MotionTimings.decelerate
-  );
-  export const slideLeftOut = _createAnimation(
-    slideLeftOutKeyframes,
-    MotionDurations.duration1,
-    MotionTimings.accelerate
-  );
-  export const slideRightOut = _createAnimation(
-    slideRightOutKeyframes,
-    MotionDurations.duration1,
-    MotionTimings.accelerate
-  );
-  export const slideLeftIn = _createAnimation(
-    slideLeftInKeyframes,
-    MotionDurations.duration1,
-    MotionTimings.decelerate
-  );
-  export const slideRightIn = _createAnimation(
-    slideRightInKeyframes,
-    MotionDurations.duration1,
-    MotionTimings.decelerate
-  );
+  export const scaleDownIn = _createAnimation(scaleDownInKeyframes, MotionDurations.duration3, MotionTimings.decelerate);
+  export const scaleDownOut = _createAnimation(scaleDownOutKeyframes, MotionDurations.duration3, MotionTimings.decelerate);
+  export const slideLeftOut = _createAnimation(slideLeftOutKeyframes, MotionDurations.duration1, MotionTimings.accelerate);
+  export const slideRightOut = _createAnimation(slideRightOutKeyframes, MotionDurations.duration1, MotionTimings.accelerate);
+  export const slideLeftIn = _createAnimation(slideLeftInKeyframes, MotionDurations.duration1, MotionTimings.decelerate);
+  export const slideRightIn = _createAnimation(slideRightInKeyframes, MotionDurations.duration1, MotionTimings.decelerate);
   export const slideUpOut = _createAnimation(slideUpOutKeyframes, MotionDurations.duration1, MotionTimings.accelerate);
-  export const slideDownOut = _createAnimation(
-    slideDownOutKeyframes,
-    MotionDurations.duration1,
-    MotionTimings.accelerate
-  );
+  export const slideDownOut = _createAnimation(slideDownOutKeyframes, MotionDurations.duration1, MotionTimings.accelerate);
   export const slideUpIn = _createAnimation(slideUpInKeyframes, MotionDurations.duration1, MotionTimings.decelerate);
-  export const slideDownIn = _createAnimation(
-    slideDownInKeyframes,
-    MotionDurations.duration1,
-    MotionTimings.decelerate
-  );
+  export const slideDownIn = _createAnimation(slideDownInKeyframes, MotionDurations.duration1, MotionTimings.decelerate);
 }
