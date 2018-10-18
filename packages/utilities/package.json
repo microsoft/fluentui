@@ -14,11 +14,11 @@
   },
   "license": "MIT",
   "scripts": {
-    "api-extractor": "node ../../scripts/api-extractor.js",
     "build": "node ../../scripts/build.js",
     "code-style": "node ../../scripts/code-style.js",
     "clean": "node ../../scripts/clean.js",
     "start-test": "node ../../scripts/start-test.js",
+    "update-api": "node ../../scripts/update-api.js",
     "update-snapshots": "node ../../scripts/build.js jest -u"
   },
   "disabledTasks": [
