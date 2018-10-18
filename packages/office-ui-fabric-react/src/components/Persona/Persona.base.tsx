@@ -110,6 +110,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
         { this._renderElement(classNames.secondaryText, onRenderSecondaryText, _onRenderSecondaryText) }
         { this._renderElement(classNames.tertiaryText, onRenderTertiaryText, _onRenderTertiaryText) }
         { this._renderElement(classNames.optionalText, onRenderOptionalText, _onRenderOptionalText) }
+        { this.props.children }
       </div>
     );
 
