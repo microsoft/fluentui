@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/theme-samples",
+      "comment": "Add index file to fix release build.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/theme-samples",
+  "email": "jagore@microsoft.com"
+}
