@@ -1,4 +1,10 @@
-import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
+import {
+  FontWeights,
+  ScreenWidthMaxMedium,
+  ScreenWidthMaxSmall,
+  ScreenWidthMinMedium,
+  getScreenSelector
+} from 'office-ui-fabric-react/lib/Styling';
 import { NeutralColors, CommunicationColors, SharedColors } from './FluentColors';
 import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
@@ -10,43 +16,54 @@ import { ICheckboxStyleProps, ICheckboxStyles } from 'office-ui-fabric-react/lib
 import { IBreadcrumbStyleProps } from 'office-ui-fabric-react/lib/Breadcrumb';
 
 const fluentBorderRadius = '2px';
+const MinimumScreenSelector = getScreenSelector(0, ScreenWidthMaxSmall);
+const MediumScreenSelector = getScreenSelector(ScreenWidthMinMedium, ScreenWidthMaxMedium);
 
 const BreadcrumbStyles = (props: IBreadcrumbStyleProps) => {
+  const { theme } = props;
+  const { semanticColors } = theme;
+
   const stateSelectors = {
     ':hover': {
-      color: NeutralColors.gray160
+      color: semanticColors.bodyText
     },
     ':active': {
-      backgroundColor: NeutralColors.gray30
+      backgroundColor: semanticColors.buttonBackgroundPressed
     },
     // Needs to be revised with designers when moving to default OUFR styles.
     // Now used only to override the default ones to follow fluent specs.
     '&:active:hover': {
-      color: NeutralColors.gray160,
-      backgroundColor: NeutralColors.gray30
+      color: semanticColors.bodyText,
+      backgroundColor: semanticColors.buttonBackgroundPressed
     }
   };
 
   return {
+    root: {
+      marginTop: 11
+    },
     itemLink: {
+      lineHeight: 36,
+      fontSize: FontSizes.size20,
       outline: 'none',
-      fontSize: FontSizes.size18,
       fontWeight: 400,
-      color: NeutralColors.gray130,
+      color: semanticColors.bodySubtext,
       selectors: {
         '&:last-child': {
           fontWeight: 600,
-          color: NeutralColors.gray160
+          color: semanticColors.bodyText
         },
         '.ms-Fabric--isFocusVisible &:focus': {
           // Necessary due to changes of Link component not using getFocusStyle
           outline: 'none'
         },
+        [MediumScreenSelector]: { fontSize: FontSizes.size18, lineHeight: 32 },
+        [MinimumScreenSelector]: { fontSize: FontSizes.size14, lineHeight: 24 },
         ...stateSelectors
       }
     },
     overflowButton: {
-      color: NeutralColors.gray130,
+      color: semanticColors.bodySubtext,
       selectors: {
         ...stateSelectors
       }
@@ -55,49 +72,51 @@ const BreadcrumbStyles = (props: IBreadcrumbStyleProps) => {
 };
 
 const CheckboxStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
-  const { disabled, checked } = props;
+  const { disabled, checked, theme } = props;
+  const { semanticColors, palette } = theme;
 
   return {
     checkbox: [
       {
         borderRadius: fluentBorderRadius,
-        borderColor: NeutralColors.gray160
+        borderColor: palette.neutralPrimary
       },
       !disabled &&
         checked && {
-          borderColor: CommunicationColors.primary
+          borderColor: semanticColors.inputBackgroundChecked
         },
       disabled && {
-        borderColor: NeutralColors.gray60
+        borderColor: palette.neutralTertiaryAlt
       },
       checked &&
         disabled && {
-          background: NeutralColors.gray60,
-          borderColor: NeutralColors.gray60
+          background: palette.neutralTertiaryAlt,
+          borderColor: palette.neutralTertiaryAlt
         }
     ],
     checkmark: {
-      color: NeutralColors.white
+      color: palette.white
     },
     text: {
-      color: disabled ? NeutralColors.gray60 : NeutralColors.gray160
+      color: disabled ? semanticColors.disabledText : semanticColors.bodyText
     },
     root: [
       !disabled && [
         !checked && {
           selectors: {
-            ':hover .ms-Checkbox-text': { color: NeutralColors.gray190 }
+            ':hover .ms-Checkbox-text': { color: palette.neutralDark },
+            ':hover .ms-Checkbox-checkmark': { color: NeutralColors.gray120 } // color not in the palette or semanticColors
           }
         },
         checked && {
           selectors: {
             ':hover .ms-Checkbox-checkbox': {
-              background: CommunicationColors.shade20,
-              borderColor: CommunicationColors.shade20
+              background: palette.themeDark,
+              borderColor: palette.themeDark
             },
             ':focus .ms-Checkbox-checkbox': {
-              background: CommunicationColors.shade20,
-              borderColor: CommunicationColors.shade20
+              background: palette.themeDark,
+              borderColor: palette.themeDark
             }
           }
         }
@@ -107,30 +126,100 @@ const CheckboxStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
 };
 
 const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOptionStyles => {
-  const { checked, disabled, hasIcon, hasImage } = props;
-  const radioButtonSpacing = 1;
-  const radioButtonInnerSize = 6;
+  const { checked, disabled, theme, hasIcon, hasImage } = props;
+  const { semanticColors, palette } = theme;
   return {
-    field: {
-      selectors: {
-        ':before': [
-          disabled && {
-            backgroundColor: NeutralColors.white,
-            borderColor: NeutralColors.gray60
-          }
-        ],
-        ':after': [
-          checked &&
-            (hasIcon || hasImage) && {
-              top: radioButtonSpacing + radioButtonInnerSize,
-              right: radioButtonSpacing + radioButtonInnerSize,
-              left: 'auto' // To reset the value of 'left' to its default value, so that 'right' works
+    field: [
+      {
+        selectors: {
+          // The circle
+          ':before': [
+            {
+              borderColor: semanticColors.bodyText
             },
-          checked &&
             disabled && {
-              borderColor: NeutralColors.gray60
+              backgroundColor: semanticColors.bodyBackground,
+              borderColor: semanticColors.disabledBodyText
+            },
+            checked &&
+              !disabled && {
+                borderColor: semanticColors.inputBackgroundChecked
+              },
+            (hasIcon || hasImage) &&
+              disabled &&
+              checked && {
+                opacity: 1
+              }
+          ],
+          // The dot
+          ':after': [
+            checked &&
+              disabled && {
+                borderColor: palette.neutralTertiaryAlt
+              }
+          ],
+          ':hover': [
+            !disabled && {
+              selectors: {
+                '.ms-ChoiceFieldLabel': {
+                  color: palette.neutralDark
+                },
+                ':before': {
+                  borderColor: checked ? palette.themeDark : semanticColors.bodyText
+                },
+                ':after': [
+                  !hasIcon &&
+                    !hasImage &&
+                    !checked && {
+                      content: '""',
+                      transitionProperty: 'background-color',
+                      left: 5,
+                      top: 5,
+                      width: 10,
+                      height: 10,
+                      backgroundColor: NeutralColors.gray120 // color not in the palette or semanticColors
+                    },
+                  checked && {
+                    borderColor: palette.themeDark
+                  }
+                ]
+              }
             }
-        ]
+          ]
+        }
+      },
+      (hasIcon || hasImage) &&
+        !disabled && {
+          selectors: {
+            ':hover': {
+              borderColor: checked ? palette.themeDark : semanticColors.bodyText
+            }
+          }
+        },
+      (hasIcon || hasImage) && {
+        borderWidth: 1
+      },
+      disabled && {
+        selectors: {
+          '.ms-ChoiceFieldLabel': {
+            color: semanticColors.disabledText
+          }
+        }
+      },
+      checked &&
+        disabled && {
+          borderColor: semanticColors.disabledBackground
+        }
+    ],
+    choiceFieldWrapper: {
+      selectors: {
+        '&.is-inFocus': {
+          selectors: {
+            ':after': {
+              borderColor: semanticColors.focusBorder
+            }
+          }
+        }
       }
     }
   };
@@ -207,7 +296,13 @@ const DialogFooterStyles = {
 };
 
 const DropdownStyles = (props: IDropdownStyleProps) => {
-  const { disabled, hasError, isOpen, calloutRenderEdge } = props;
+  const { disabled, hasError, isOpen, calloutRenderEdge, theme, isRenderingPlaceholder } = props;
+
+  if (!theme) {
+    throw new Error('theme is undefined or null in base Dropdown getStyles function.');
+  }
+
+  const { semanticColors, palette } = theme;
   const ITEM_HEIGHT = '36px';
 
   const titleOpenBorderRadius =
@@ -233,15 +328,15 @@ const DropdownStyles = (props: IDropdownStyleProps) => {
       // Currently whenever you hover over an item it forces focus on it so we style the background change through focus selector.
       selectors: {
         '&:hover:focus': {
-          color: NeutralColors.gray190,
-          backgroundColor: !isSelected ? NeutralColors.gray20 : NeutralColors.gray30
+          color: semanticColors.menuItemTextHovered,
+          backgroundColor: !isSelected ? semanticColors.menuItemBackgroundHovered : semanticColors.menuItemBackgroundPressed
         },
         '&:focus': {
-          backgroundColor: !isSelected ? 'transparent' : NeutralColors.gray30
+          backgroundColor: !isSelected ? 'transparent' : semanticColors.menuItemBackgroundPressed
         },
         '&:active': {
-          color: NeutralColors.gray190,
-          backgroundColor: !isSelected ? NeutralColors.gray20 : NeutralColors.gray30
+          color: semanticColors.menuItemTextHovered,
+          backgroundColor: !isSelected ? semanticColors.menuItemBackgroundHovered : semanticColors.menuItemBackgroundPressed
         }
       }
     };
@@ -252,36 +347,37 @@ const DropdownStyles = (props: IDropdownStyleProps) => {
       disabled && {
         selectors: {
           // Title placeholder states when disabled.
-          ['&:hover .ms-Dropdown-titleIsPlaceHolder']: { color: NeutralColors.gray70 },
-          ['&:focus .ms-Dropdown-titleIsPlaceHolder']: { color: NeutralColors.gray70 },
-          ['&:active .ms-Dropdown-titleIsPlaceHolder']: { color: NeutralColors.gray70 }
+          ['&:hover .ms-Dropdown-titleIsPlaceHolder']: { color: semanticColors.disabledText },
+          ['&:focus .ms-Dropdown-titleIsPlaceHolder']: { color: semanticColors.disabledText },
+          ['&:active .ms-Dropdown-titleIsPlaceHolder']: { color: semanticColors.disabledText }
         }
       },
       !disabled && {
         selectors: {
           // Title and border states. For :hover and :focus even if the styles are the same we need to keep them separate for specificity
           // reasons in order :active borderColor to work.
-          ['&:hover .ms-Dropdown-title']: { color: NeutralColors.gray190, borderColor: NeutralColors.gray160 },
-          ['&:focus .ms-Dropdown-title']: { color: NeutralColors.gray190, borderColor: NeutralColors.gray160 },
+          ['&:hover .ms-Dropdown-title']: { color: semanticColors.menuItemTextHovered, borderColor: palette.neutralPrimary },
+          ['&:focus .ms-Dropdown-title']: { color: semanticColors.menuItemTextHovered, borderColor: palette.neutralPrimary },
           ['&:active .ms-Dropdown-title']: {
-            color: NeutralColors.gray190,
+            color: semanticColors.menuItemTextHovered,
             fontWeight: FontWeights.semibold,
             borderColor: CommunicationColors.primary
           },
 
           // CaretDown states are the same for focus, hover, active.
           ['&:hover .ms-Dropdown-caretDown, &:focus .ms-Dropdown-caretDown, &:active .ms-Dropdown-caretDown']: {
-            color: NeutralColors.gray160
+            color: palette.neutralPrimary
           },
 
           // Title placeholder states when not disabled.
           ['&:hover .ms-Dropdown-titleIsPlaceHolder, &:focus .ms-Dropdown-titleIsPlaceHolder, &:active .ms-Dropdown-titleIsPlaceHolder']: {
-            color: NeutralColors.gray190
+            color: semanticColors.menuItemTextHovered
           },
 
           // Title has error states
           ['&:hover .ms-Dropdown-title--hasError, &:focus .ms-Dropdown-title--hasError, &:active .ms-Dropdown-title--hasError']: {
-            borderColor: SharedColors.red20
+            borderColor: SharedColors.red20,
+            color: isRenderingPlaceholder ? semanticColors.inputPlaceholderText : palette.neutralPrimary
           }
         }
       }
@@ -292,14 +388,14 @@ const DropdownStyles = (props: IDropdownStyleProps) => {
         borderRadius: isOpen ? titleOpenBorderRadius : fluentBorderRadius,
         padding: `0 28px 0 8px`
       },
-      disabled && { color: NeutralColors.gray70 }
+      disabled && { color: semanticColors.disabledText }
     ],
     caretDownWrapper: {
       right: 8
     },
     caretDown: [
       disabled && {
-        color: NeutralColors.gray70
+        color: semanticColors.disabledText
       }
     ],
     errorMessage: { color: SharedColors.red20 },
@@ -319,19 +415,19 @@ const DropdownStyles = (props: IDropdownStyleProps) => {
     dropdownItem: [commonItemStyles, itemSelectors()],
     dropdownItemSelected: [
       {
-        backgroundColor: NeutralColors.gray30,
-        color: NeutralColors.gray190
+        backgroundColor: semanticColors.menuItemBackgroundPressed,
+        color: palette.neutralDark
       },
       commonItemStyles,
       itemSelectors(true)
     ],
     dropdownItemDisabled: {
       ...commonItemStyles,
-      color: NeutralColors.gray60
+      color: semanticColors.disabledText
     },
     dropdownItemSelectedAndDisabled: {
       ...commonItemStyles,
-      color: NeutralColors.gray60
+      color: semanticColors.disabledText
     }
   };
 };

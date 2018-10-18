@@ -27,6 +27,28 @@ export class FluentStylesChoiceGroupExample extends React.Component<{}, {}> {
           />
           <br />
           <ChoiceGroup
+            label="Active"
+            options={[
+              {
+                key: 'day',
+                iconProps: { iconName: 'CalendarDay' },
+                text: 'Day'
+              },
+              {
+                key: 'week',
+                iconProps: { iconName: 'CalendarWeek' },
+                text: 'Week'
+              },
+              {
+                key: 'month',
+                iconProps: { iconName: 'Calendar' },
+                text: 'Month'
+              }
+            ]}
+          />
+        </div>
+        <div className={style.sidebyside}>
+          <ChoiceGroup
             defaultSelectedKey="D"
             options={[
               {
@@ -42,20 +64,22 @@ export class FluentStylesChoiceGroupExample extends React.Component<{}, {}> {
             ]}
             label="Disabled"
           />
-        </div>
-        <div className={style.sidebyside}>
+          <br />
           <ChoiceGroup
-            label="Pick one icon"
+            label="Disabled"
+            defaultSelectedKey="week"
             options={[
               {
                 key: 'day',
                 iconProps: { iconName: 'CalendarDay' },
-                text: 'Day'
+                text: 'Day',
+                disabled: true
               },
               {
                 key: 'week',
                 iconProps: { iconName: 'CalendarWeek' },
-                text: 'Week'
+                text: 'Week',
+                disabled: true
               },
               {
                 key: 'month',
