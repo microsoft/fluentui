@@ -12,7 +12,7 @@ import {
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { createRef } from 'office-ui-fabric-react/lib/Utilities';
-// import { KeyboardShortcut } from '@ms/items-view';
+// import { KeyboardZone } from '@ms/items-view/lib/private/components/keyboard/KeyboardZone'
 
 const _items: any[] = [];
 

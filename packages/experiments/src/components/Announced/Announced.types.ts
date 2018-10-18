@@ -3,7 +3,7 @@ import { AnnouncedBase } from './Announced.base';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
 
-export interface IAnnounced {}
+export interface IAnnounced { }
 
 export interface IAnnouncedProps extends React.Props<AnnouncedBase> {
   /** Theme from the Higher Order Component */

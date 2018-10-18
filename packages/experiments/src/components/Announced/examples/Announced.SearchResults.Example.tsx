@@ -20,7 +20,14 @@ const _testTags = [
   'yellow'
 ].map(item => ({ key: item, name: item }));
 
-export class AnnouncedSearchResultsExample extends React.Component<{}, { seconds: number; numberOfSuggestions: number }> {
+export interface IAnnouncedSearchResultsExampleState {
+  seconds: number;
+  numberOfSuggestions: number
+}
+
+export interface IAnnouncedSearchResultsExampleProps { }
+
+export class AnnouncedSearchResultsExample extends React.Component<IAnnouncedSearchResultsExampleProps, IAnnouncedSearchResultsExampleState> {
   constructor(props: {}) {
     super(props);
     this.state = {
@@ -41,13 +48,14 @@ export class AnnouncedSearchResultsExample extends React.Component<{}, { seconds
     return (
       <div>
         Filter items in suggestions: This picker will filter added items from the search suggestions.
+        <Announced message={`${numberOfSuggestions} Suggestions Available`} id={`announced-${numberOfSuggestions}`} />
         <TagPicker
           onResolveSuggestions={this._onFilterChanged}
           getTextFromItem={this._getTextFromItem}
           pickerSuggestionsProps={{
             suggestionsHeaderText: 'Suggested Tags',
             noResultsFoundText: 'No Color Tags Found',
-            suggestionsAvailableAlertText: `${numberOfSuggestions} Suggestions Available`
+            // suggestionsAvailableAlertText: `${numberOfSuggestions} Suggestions Available`
           }}
           inputProps={{
             onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
@@ -63,20 +71,17 @@ export class AnnouncedSearchResultsExample extends React.Component<{}, { seconds
     clearTimeout(this.timer);
   }
 
-  public componentDidUpdate(): void {
-    if (this.state.numberOfSuggestions === 0) {
-      // TODO: figure out why it doesn't like setState getting called so often here
-      const suggestionsContainer = document.getElementsByClassName('ms-Suggestions-container');
-      if (suggestionsContainer) {
-        const suggestions = suggestionsContainer[0];
-        if (suggestions) {
-          const results = suggestions.children;
-          if (results) {
-            this.setState({ numberOfSuggestions: results.length });
-          }
-        }
+  public componentDidUpdate(prevProps: IAnnouncedSearchResultsExampleProps, prevState: IAnnouncedSearchResultsExampleState): void {
+    const suggestionsContainer = document.getElementsByClassName('ms-Suggestions-container');
+    if (suggestionsContainer && suggestionsContainer[0]) {
+      const results = suggestionsContainer[0].children;
+      if (results.length !== this.state.numberOfSuggestions) {
+        this.setState({ numberOfSuggestions: results.length });
       }
     }
+    // else {
+    //   this.setState({ numberOfSuggestions: 0 });
+    // }
   }
 
   private _getTextFromItem(item: any): any {
@@ -86,8 +91,8 @@ export class AnnouncedSearchResultsExample extends React.Component<{}, { seconds
   private _onFilterChanged = (filterText: string, tagList: { key: string; name: string }[]): { key: string; name: string }[] => {
     return filterText
       ? _testTags
-          .filter(tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0)
-          .filter(tag => !this._listContainsDocument(tag, tagList))
+        .filter(tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0)
+        .filter(tag => !this._listContainsDocument(tag, tagList))
       : [];
   };
 
