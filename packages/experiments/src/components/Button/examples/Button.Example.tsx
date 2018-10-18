@@ -59,6 +59,12 @@ const ButtonSet = () => (
           <Button disabled text="Menu disabled button" />
           <Button expanded text="Menu expanded button" />
         </ButtonStack>
+        <ButtonStack>
+          <Button text="Red button" styleVariables={{ textColor: 'red' }} />
+          <Button disabled text="Disabled red button" />
+          <Button primary text="Primary red button" styleVariables={{ textColor: 'red' }} />
+          <Button disabled primary text="Primary red disabled button" />
+        </ButtonStack>
         <CommandBar items={[{ key: '0', text: 'Button 1', iconProps: { iconName: 'Upload' } }]} />
       </VerticalStack>
     </div>

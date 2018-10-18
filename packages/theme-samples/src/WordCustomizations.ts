@@ -14,6 +14,24 @@ export const WordCustomizations: ICustomizations = {
         buttonBackgroundPressed: 'rgb(240, 240, 240)',
         buttonText: 'rgb(43, 87, 154)',
         buttonBorder: 'rgb(237, 235, 233)'
+      },
+      layers: {
+        Button: {
+          parent: 'base',
+          borderWidth: 1,
+          minHeight: 26,
+          fontSize: 13.5,
+          lineHeight: 13.5,
+          fontWeight: 600,
+          slots: {
+            icon: {
+              fontSize: 12
+            },
+            stack: {
+              padding: '0px 6px'
+            }
+          }
+        }
       }
     })
   },

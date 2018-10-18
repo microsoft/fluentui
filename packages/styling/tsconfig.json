@@ -14,11 +14,22 @@
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
     "preserveConstEnums": true,
-    "lib": ["es2017", "dom"],
-    "types": ["jest", "webpack-env", "react"],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "types": [
+      "jest",
+      "webpack-env",
+      "react"
+    ],
     "paths": {
-      "@uifabric/styling": ["./src"]
+      "@uifabric/styling": [
+        "./src"
+      ]
     }
   },
-  "include": ["src"]
+  "include": [
+    "src"
+  ]
 }

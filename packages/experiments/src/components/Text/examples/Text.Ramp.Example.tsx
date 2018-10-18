@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Text, VerticalStack } from '@uifabric/experiments';
-import { IFontVariants, IFontSizes, IFontWeights, IFontFamilies, IStyle } from '@uifabric/experiments/lib/Styling';
+import { IFontVariants, IFontSizes, IFontWeights, IFontFamilies } from '@uifabric/theming-core';
+import { IStyle } from '@uifabric/merge-styles';
 import { ISemanticTextColors, IPalette } from '@uifabric/experiments/lib/Styling';
 import { createStatelessComponent, IStyleableComponentProps, IStatelessComponent } from '@uifabric/experiments/lib/Foundation';
 
@@ -12,13 +13,18 @@ interface ISetting<TType> {
 }
 
 const Variants: ISetting<keyof IFontVariants>[] = [
-  { name: 'default', usage: 'default' },
+  { name: 'standard', usage: 'standard' },
   { name: 'caption', usage: 'caption' },
-  { name: 'h1', usage: 'h1' },
-  { name: 'h2', usage: 'h2' },
-  { name: 'h3', usage: 'h3' },
-  { name: 'h4', usage: 'h4' },
-  { name: 'h5', usage: 'h5' },
+  { name: 'tiny', usage: 'tiny' },
+  { name: 'xSmall', usage: 'xSmall' },
+  { name: 'small', usage: 'small' },
+  { name: 'smallPlus', usage: 'smallPlus' },
+  { name: 'standardPlus', usage: 'standardPlus' },
+  { name: 'large', usage: 'large' },
+  { name: 'xLarge', usage: 'xLarge' },
+  { name: 'xxLarge', usage: 'xxLarge' },
+  { name: 'superLarge', usage: 'superLarge' },
+  { name: 'mega', usage: 'mega' },
   { name: 'link', usage: 'link' }
 ];
 
@@ -36,14 +42,14 @@ const Sizes: ISetting<keyof IFontSizes>[] = [
 ];
 
 const Weights: ISetting<keyof IFontWeights>[] = [
-  { name: 'default', usage: '' },
   { name: 'light', usage: '' },
-  { name: 'regular', usage: '' },
+  { name: 'semilight', usage: '' },
+  { name: 'medium', usage: '' },
   { name: 'semibold', usage: '' },
   { name: 'bold', usage: '' }
 ];
 
-const Families: ISetting<keyof IFontFamilies>[] = [{ name: 'default', usage: '' }, { name: 'monospace', usage: '' }];
+const Families: ISetting<keyof IFontFamilies>[] = [{ name: 'standard', usage: '' }, { name: 'monospace', usage: '' }];
 
 const Colors: ISetting<keyof ISemanticTextColors | keyof IPalette>[] = [
   { name: 'bodyText', usage: '' },
@@ -71,7 +77,7 @@ type ITableComponent = IStatelessComponent<ITableProps, ITableStyles>;
 
 const TableView: ITableComponent['view'] = props => (
   <VerticalStack className={props.className} gap={20}>
-    <Text variant="h3">{props.title}</Text>
+    <Text variant="xLarge">{props.title}</Text>
     <table className={props.classNames.table}>
       <thead>
         <tr className={props.classNames.header}>

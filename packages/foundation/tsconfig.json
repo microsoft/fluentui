@@ -12,7 +12,7 @@
     "noUnusedLocals": true,
     "forceConsistentCasingInFileNames": true,
     "strictNullChecks": true,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "lib": [

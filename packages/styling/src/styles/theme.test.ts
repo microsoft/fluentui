@@ -1,6 +1,6 @@
-import { registerOnThemeChangeCallback, removeOnThemeChangeCallback, loadTheme, createTheme } from './theme';
-import { DefaultTypography } from './DefaultTypography';
-import { IPartialTheme, ITypography } from '../interfaces/index';
+import { registerOnThemeChangeCallback, removeOnThemeChangeCallback, loadTheme, createTheme, getTheme } from './theme';
+import { IPartialTheme } from '../interfaces/index';
+import { resolveFontChoice } from '@uifabric/theming-core';
 
 describe('registerOnThemeChangeCallback', () => {
   let callback = jest.fn();
@@ -34,15 +34,17 @@ describe('registerOnThemeChangeCallback', () => {
 });
 
 describe('theme.typography', () => {
+  const defaultTheme = getTheme();
+  const defaultTypography = defaultTheme.typography;
+
   it('expands sizes', () => {
     const userTheme: IPartialTheme = {
       typography: {
         variants: {
-          default: {
-            family: 'monospace',
-            size: 'small',
-            weight: 'bold',
-            color: 'link'
+          standard: {
+            fontFamily: 'monospace',
+            fontSize: 'small',
+            fontWeight: 'bold'
           }
         }
       }
@@ -50,30 +52,32 @@ describe('theme.typography', () => {
 
     const newTheme = createTheme(userTheme);
 
-    expect(newTheme.typography.variants.default.size).toEqual(DefaultTypography.sizes.small);
+    const fontStyle = resolveFontChoice({ fontVariant: 'standard' }, newTheme.typography);
+    expect(fontStyle.fontSize).toEqual(defaultTypography.sizes.small);
   });
 
   it('updates the variants when sizes are adjusted', () => {
     const userTheme = {
       typography: {
         sizes: {
-          [DefaultTypography.variants.default.size!]: '100px'
+          [defaultTypography.variants.standard.fontSize!]: '100px'
         }
       }
     } as IPartialTheme;
 
     const newTheme = createTheme(userTheme);
 
-    expect(newTheme.typography.variants.default.size).toEqual('100px');
+    const fontStyle = resolveFontChoice({ fontVariant: 'standard' }, newTheme.typography);
+    expect(fontStyle.fontSize).toEqual('100px');
   });
 
   it('does not modify DefaultTypography when given a theme with no typography', () => {
-    const previousDefault = { ...DefaultTypography };
+    const previousDefault = { ...defaultTypography };
     const newTheme = createTheme({
       palette: {
         themePrimary: '#ff0000'
       }
     });
-    expect(DefaultTypography).toEqual(previousDefault);
+    expect(defaultTypography).toEqual(previousDefault);
   });
 });

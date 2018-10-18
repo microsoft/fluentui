@@ -1,0 +1,11 @@
+# [Office UI Fabric React ThemingCore](http://dev.microsoft.com/fabric)
+
+##### ThemingCore interfaces and utilities for Office UI Fabric React
+
+These are not production read interfaces and __should never be used in product__.
+
+To import ThemingCore interfaces:
+
+```js
+import { InterfaceName } from '@uifabric/theming-core';
+```

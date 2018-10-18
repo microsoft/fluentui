@@ -1,5 +1,6 @@
 import { IRawStyle, IFontWeight } from '@uifabric/merge-styles';
-import { IFontStyles } from '../interfaces/index';
+import { IFontFamilies } from '@uifabric/theming-core';
+import { IFontStyles } from '../index';
 
 // Fallback fonts, if specified system or web fonts are unavailable.
 const FontFamilyFallbacks = `'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif`;
@@ -104,31 +105,59 @@ function _fontFamilyWithFallbacks(fontFamily: string): string {
   return `${fontFamily}, ${FontFamilyFallbacks}`;
 }
 
-export function createFontStyles(localeCode: string | null): IFontStyles {
+interface IFontFamilyHelperValues {
+  fontFamily: string;
+  semilightFamily: string;
+}
+
+function _getFamiliesWithFallbacks(localeCode: string | null): IFontFamilyHelperValues {
   const localizedFont = _getLocalizedFontFamily(localeCode);
-  let fontFamilyWithFallback = _fontFamilyWithFallbacks(localizedFont);
-  let semilightFontFamilyWithFallback = fontFamilyWithFallback;
+  const fontFamily = _fontFamilyWithFallbacks(localizedFont);
+  let semilightFamily = fontFamily;
 
   // Chrome has a bug where it does not render Segoe UI Semilight correctly, so we force the webfont to be used in that case
   if (localizedFont === defaultFontFamily) {
-    semilightFontFamilyWithFallback = _fontFamilyWithFallbacks(LocalizedFontFamilies.WestEuropean);
+    semilightFamily = _fontFamilyWithFallbacks(LocalizedFontFamilies.WestEuropean);
   }
 
+  return { fontFamily, semilightFamily };
+}
+
+export function createFontStyles(localeCode: string | null): IFontStyles {
+  const { fontFamily, semilightFamily } = _getFamiliesWithFallbacks(localeCode);
+
   const fontStyles = {
-    tiny: _createFont(FontSizes.mini, FontWeights.semibold, fontFamilyWithFallback),
-    xSmall: _createFont(FontSizes.xSmall, FontWeights.regular, fontFamilyWithFallback),
-    small: _createFont(FontSizes.small, FontWeights.regular, fontFamilyWithFallback),
-    smallPlus: _createFont(FontSizes.smallPlus, FontWeights.regular, fontFamilyWithFallback),
-    medium: _createFont(FontSizes.medium, FontWeights.regular, fontFamilyWithFallback),
-    mediumPlus: _createFont(FontSizes.mediumPlus, FontWeights.regular, fontFamilyWithFallback),
-    large: _createFont(FontSizes.large, FontWeights.semilight, semilightFontFamilyWithFallback),
-    xLarge: _createFont(FontSizes.xLarge, FontWeights.light, fontFamilyWithFallback),
-    xxLarge: _createFont(FontSizes.xxLarge, FontWeights.light, fontFamilyWithFallback),
-    superLarge: _createFont(FontSizes.superLarge, FontWeights.light, fontFamilyWithFallback),
-    mega: _createFont(FontSizes.mega, FontWeights.light, fontFamilyWithFallback)
+    tiny: _createFont(FontSizes.mini, FontWeights.semibold, fontFamily),
+    xSmall: _createFont(FontSizes.xSmall, FontWeights.regular, fontFamily),
+    small: _createFont(FontSizes.small, FontWeights.regular, fontFamily),
+    smallPlus: _createFont(FontSizes.smallPlus, FontWeights.regular, fontFamily),
+    medium: _createFont(FontSizes.medium, FontWeights.regular, fontFamily),
+    mediumPlus: _createFont(FontSizes.mediumPlus, FontWeights.regular, fontFamily),
+    large: _createFont(FontSizes.large, FontWeights.semilight, semilightFamily),
+    xLarge: _createFont(FontSizes.xLarge, FontWeights.light, fontFamily),
+    xxLarge: _createFont(FontSizes.xxLarge, FontWeights.light, fontFamily),
+    superLarge: _createFont(FontSizes.superLarge, FontWeights.light, fontFamily),
+    mega: _createFont(FontSizes.mega, FontWeights.light, fontFamily)
   };
 
   return fontStyles;
+}
+
+/**
+ * Create the font families for typography
+ * @param localeCode - language code
+ *
+ * @internal experimental interface, subject to API review
+ */
+export function createFontFamilies(localeCode: string | null): IFontFamilies {
+  const { fontFamily, semilightFamily } = _getFamiliesWithFallbacks(localeCode);
+
+  return {
+    standard: fontFamily,
+    heading: fontFamily,
+    semilight: semilightFamily,
+    monospace: 'Menlo, Monaco, "Courier New", monospace'
+  };
 }
 
 /**
@@ -145,12 +174,12 @@ function _getLocalizedFontFamily(language: string | null): string {
   return defaultFontFamily;
 }
 
-function _createFont(size: string, weight: IFontWeight, fontFamily: string): IRawStyle {
+function _createFont(fontSize: string, fontWeight: IFontWeight, fontFamily: string): IRawStyle {
   return {
-    fontFamily: fontFamily,
+    fontFamily,
     MozOsxFontSmoothing: 'grayscale',
     WebkitFontSmoothing: 'antialiased',
-    fontSize: size,
-    fontWeight: weight
+    fontSize,
+    fontWeight
   };
 }

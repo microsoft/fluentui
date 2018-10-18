@@ -1,9 +1,8 @@
-import { IPalette } from './IPalette';
 import { IFontStyles } from './IFontStyles';
 import { ISemanticColors } from './ISemanticColors';
-import { ITypography, IPartialTypography } from './ITypography';
 import { ISpacing } from './ISpacing';
 import { IEffects } from './IEffects';
+import { IThemeCore, IPartialThemeCore } from '@uifabric/theming-core';
 
 /**
  * @internal
@@ -13,11 +12,11 @@ import { IEffects } from './IEffects';
  */
 export type ISchemeNames = 'default' | 'neutral' | 'soft' | 'strong';
 
-export interface IScheme {
-  palette: IPalette;
+export interface IScheme extends IThemeCore {
   fonts: IFontStyles;
   semanticColors: ISemanticColors;
   isInverted: boolean;
+  addDeprecatedComments: boolean;
 
   /**
    * This setting is for a very narrow use case and you probably don't need to worry about,
@@ -28,14 +27,6 @@ export interface IScheme {
    * Customizer will not get the global styles applied to them.
    */
   disableGlobalClassNames: boolean;
-
-  /**
-   * @internal
-   * The typography property is still in an experimental phase. The intent is to have it
-   * eventually replace IFontStyles in a future release, but it is still undergoing review.
-   * Avoid using it until it is finalized.
-   */
-  typography: ITypography;
 
   /**
    * @internal
@@ -58,10 +49,10 @@ export interface ITheme extends IScheme {
   schemes?: { [P in ISchemeNames]?: IScheme };
 }
 
-export type IPartialTheme = {
-  [P in keyof Pick<
-    ITheme,
-    'palette' | 'fonts' | 'semanticColors' | 'isInverted' | 'disableGlobalClassNames' | 'spacing' | 'schemes' | 'effects'
-  >]?: Partial<ITheme[P]>
-} &
-  { [P in keyof Pick<ITheme, 'typography'>]?: IPartialTypography };
+export type IPartialTheme = IPartialThemeCore &
+  {
+    [P in keyof Pick<
+      ITheme,
+      'fonts' | 'semanticColors' | 'isInverted' | 'disableGlobalClassNames' | 'addDeprecatedComments' | 'spacing' | 'effects' | 'schemes'
+    >]?: Partial<ITheme[P]>
+  };

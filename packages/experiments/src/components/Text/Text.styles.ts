@@ -1,31 +1,16 @@
 import { ISemanticTextColors } from '../../Styling';
 import { ITextComponent } from './Text.types';
+import { resolveFontChoice } from 'office-ui-fabric-react';
 
 export const TextStyles: ITextComponent['styles'] = props => {
   const { as, className, inline, theme, wrap, variant, family, weight, size, color, hoverColor } = props;
   const { semanticColors, typography } = theme;
-  const variantObject = typography.variants[variant!] || typography.variants.default;
 
   return {
     root: [
-      theme.fonts.medium,
+      resolveFontChoice({ fontVariant: variant, fontSize: size, fontFamily: family, fontWeight: weight }, typography),
       {
-        display: inline ? 'inline' : as === 'td' ? 'table-cell' : 'block',
-        fontFamily: variantObject.family || 'inherit',
-        fontSize: variantObject.size || 'inherit',
-        // tslint:disable-next-line:no-any
-        fontWeight: (variantObject.weight as any) || 'inherit',
-        color: variantObject.color || 'inherit'
-      },
-      family && {
-        // TODO: How are language specific font families configured?
-        fontFamily: typography.families[family]
-      },
-      size && {
-        fontSize: typography.sizes[size]
-      },
-      weight && {
-        fontWeight: typography.weights[weight]
+        display: inline ? 'inline' : as === 'td' ? 'table-cell' : 'block'
       },
       color && {
         color: semanticColors[color as keyof ISemanticTextColors]

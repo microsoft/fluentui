@@ -231,40 +231,6 @@ interface IFontFace extends IRawFontStyle {
   unicodeRange?: ICSSRule | string;
 }
 
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
-interface IFontFamilies {
-  // (undocumented)
-  default: string;
-  // (undocumented)
-  monospace: string;
-}
-
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
-interface IFontSizes {
-  // (undocumented)
-  large: string;
-  // (undocumented)
-  medium: string;
-  // (undocumented)
-  mediumPlus: string;
-  // (undocumented)
-  mega: string;
-  // (undocumented)
-  mini: string;
-  // (undocumented)
-  small: string;
-  // (undocumented)
-  smallPlus: string;
-  // (undocumented)
-  xLarge: string;
-  // (undocumented)
-  xSmall: string;
-  // (undocumented)
-  xxLarge: string;
-}
-
 // @public
 interface IFontStyles {
   // (undocumented)
@@ -289,59 +255,6 @@ interface IFontStyles {
   xSmall: IRawStyle;
   // (undocumented)
   xxLarge: IRawStyle;
-}
-
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
-interface IFontVariant {
-  // (undocumented)
-  color?: keyof ISemanticTextColors;
-  // (undocumented)
-  disabledColor?: keyof ISemanticTextColors;
-  // (undocumented)
-  family: keyof IFontFamilies | string;
-  // (undocumented)
-  hoverColor?: keyof ISemanticTextColors;
-  // (undocumented)
-  size: keyof IFontSizes | number | string;
-  // (undocumented)
-  weight: keyof IFontWeights | number;
-}
-
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
-interface IFontVariants {
-  // (undocumented)
-  caption: Partial<IFontVariant>;
-  // (undocumented)
-  default: Partial<IFontVariant>;
-  // (undocumented)
-  h1: Partial<IFontVariant>;
-  // (undocumented)
-  h2: Partial<IFontVariant>;
-  // (undocumented)
-  h3: Partial<IFontVariant>;
-  // (undocumented)
-  h4: Partial<IFontVariant>;
-  // (undocumented)
-  h5: Partial<IFontVariant>;
-  // (undocumented)
-  link: Partial<IFontVariant>;
-}
-
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
-interface IFontWeights {
-  // (undocumented)
-  bold: IFontWeight;
-  // (undocumented)
-  default: IFontWeight;
-  // (undocumented)
-  light: IFontWeight;
-  // (undocumented)
-  regular: IFontWeight;
-  // (undocumented)
-  semibold: IFontWeight;
 }
 
 // @public (undocumented)
@@ -433,7 +346,9 @@ interface IRawStyle extends IRawStyleBase {
 }
 
 // @public (undocumented)
-interface IScheme {
+interface IScheme extends IThemeCore {
+  // (undocumented)
+  addDeprecatedComments: boolean;
   disableGlobalClassNames: boolean;
   // (undocumented)
   effects: IEffects;
@@ -442,15 +357,10 @@ interface IScheme {
   // (undocumented)
   isInverted: boolean;
   // (undocumented)
-  palette: IPalette;
-  // (undocumented)
   semanticColors: ISemanticColors;
   // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
   // @internal
   spacing: ISpacing;
-  // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-  // @internal
-  typography: ITypography;
 }
 
 // @public
@@ -618,6 +528,10 @@ export function registerOnThemeChangeCallback(callback: (theme: ITheme) => void)
 
 // @public
 export function removeOnThemeChangeCallback(callback: (theme: ITheme) => void): void;
+
+// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
+// @internal
+export function resolveFontChoice(fontChoice: IFontChoice, typography: ITypography): IRawFontStyle;
 
 // @public
 export function setIconOptions(options: Partial<IIconOptions>): void;

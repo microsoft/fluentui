@@ -440,6 +440,12 @@
       "packageName": "@uifabric/test-utilities",
       "projectFolder": "packages/test-utilities",
       "versionPolicyName": "lockedMajor"
+    },
+    {
+      "packageName": "@uifabric/theming-core",
+      "projectFolder": "packages/theming-core",
+      "versionPolicyName": "lockedMajor",
+      "shouldPublish": false
     }
   ]
 }

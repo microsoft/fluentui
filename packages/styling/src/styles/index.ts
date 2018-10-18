@@ -12,3 +12,4 @@ export * from './CommonStyles';
 export * from './GeneralStyles';
 export * from './getFadedOverflowStyle';
 export * from './zIndexes';
+export { resolveFontChoice } from '@uifabric/theming-core';

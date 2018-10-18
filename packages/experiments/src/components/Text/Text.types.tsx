@@ -1,6 +1,6 @@
 import { IStyle, IPalette, ISemanticColors } from '../../Styling';
 import { IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
-import { IFontVariants, IFontFamilies, IFontSizes, IFontWeights } from '../../Styling';
+import { IFontVariants, IFontFamilies, IFontSizes, IFontWeights } from '@uifabric/theming-core';
 
 export type ITextComponent = IStatelessComponent<ITextProps, ITextStyles>;
 

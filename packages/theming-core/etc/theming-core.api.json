@@ -1,0 +1,3205 @@
+{
+  "kind": "package",
+  "name": "@uifabric/theming-core",
+  "summary": [],
+  "remarks": [],
+  "exports": {
+    "adjustForContrast": {
+      "kind": "function",
+      "signature": "export function adjustForContrast(baseline: IRGB, target: IRGB, desiredRatio?: number): IRGB;",
+      "returnValue": {
+        "type": "IRGB",
+        "description": []
+      },
+      "parameters": {
+        "baseline": {
+          "name": "baseline",
+          "description": [],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "IRGB"
+        },
+        "target": {
+          "name": "target",
+          "description": [],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "IRGB"
+        },
+        "desiredRatio": {
+          "name": "desiredRatio",
+          "description": [
+            {
+              "kind": "text",
+              "text": "a desired contrast ratio (default is WCAG 2 AA standard for normal text)"
+            }
+          ],
+          "isOptional": true,
+          "isSpread": false,
+          "type": "number"
+        }
+      },
+      "deprecatedMessage": [],
+      "summary": [
+        {
+          "kind": "text",
+          "text": "If possible, this will return a valid color to use to contrast against a background The returned color attempts to maintain the chromaticity of the baseline color If the desired ratio is unachievable white or black (dependent on target's relative luminance) will be used"
+        }
+      ],
+      "remarks": [],
+      "isBeta": false
+    },
+    "calcContrastRatio": {
+      "kind": "function",
+      "signature": "export function calcContrastRatio(c1: IRGB, c2: IRGB): number;",
+      "returnValue": {
+        "type": "number",
+        "description": []
+      },
+      "parameters": {
+        "c1": {
+          "name": "c1",
+          "description": [
+            {
+              "kind": "text",
+              "text": "first color"
+            }
+          ],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "IRGB"
+        },
+        "c2": {
+          "name": "c2",
+          "description": [
+            {
+              "kind": "text",
+              "text": "second color"
+            }
+          ],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "IRGB"
+        }
+      },
+      "deprecatedMessage": [],
+      "summary": [
+        {
+          "kind": "text",
+          "text": "A wrapper around contrast ratio calculation using the IRGB interface"
+        }
+      ],
+      "remarks": [],
+      "isBeta": false
+    },
+    "contrastRatio": {
+      "kind": "function",
+      "signature": "export function contrastRatio(relLumA: number, relLumB: number): number;",
+      "returnValue": {
+        "type": "number",
+        "description": []
+      },
+      "parameters": {
+        "relLumA": {
+          "name": "relLumA",
+          "description": [
+            {
+              "kind": "text",
+              "text": "a relative luminance value"
+            }
+          ],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "number"
+        },
+        "relLumB": {
+          "name": "relLumB",
+          "description": [
+            {
+              "kind": "text",
+              "text": "a relative luminacne value"
+            }
+          ],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "number"
+        }
+      },
+      "deprecatedMessage": [],
+      "summary": [
+        {
+          "kind": "text",
+          "text": "A contrast ratio calculator Contrast ratios (text on background) are fundamental for determining the readability of text Formula from https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html"
+        }
+      ],
+      "remarks": [],
+      "isBeta": false
+    },
+    "createThemeCore": {
+      "kind": "function",
+      "signature": "export function createThemeCore(): IThemeCore;",
+      "returnValue": {
+        "type": "IThemeCore",
+        "description": []
+      },
+      "parameters": {},
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false
+    },
+    "createThemeRegistry": {
+      "kind": "function",
+      "signature": "export function createThemeRegistry<ITheme, IThemeDefinition>(platformDefaults: ITheme, resolver: ResolveTheme<ITheme, IThemeDefinition>): IThemeRegistry<ITheme, IThemeDefinition>;",
+      "returnValue": {
+        "type": "IThemeRegistry<ITheme, IThemeDefinition>",
+        "description": []
+      },
+      "parameters": {
+        "platformDefaults": {
+          "name": "platformDefaults",
+          "description": [
+            {
+              "kind": "text",
+              "text": "A fully defined theme with default values for the given platform"
+            }
+          ],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "ITheme"
+        },
+        "resolver": {
+          "name": "resolver",
+          "description": [
+            {
+              "kind": "text",
+              "text": "A function which takes a partial theme, a fully defined parent theme, and produces a fully resolved theme."
+            }
+          ],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "ResolveTheme<ITheme, IThemeDefinition>"
+        }
+      },
+      "deprecatedMessage": [],
+      "summary": [
+        {
+          "kind": "text",
+          "text": "Creates a theme registry object which caches theme information and provides typed functions for working with themes in the registry."
+        }
+      ],
+      "remarks": [],
+      "isBeta": false
+    },
+    "createTypography": {
+      "kind": "function",
+      "signature": "export function createTypography(localeCode: string | null): ITypography;",
+      "returnValue": {
+        "type": "ITypography",
+        "description": []
+      },
+      "parameters": {
+        "localeCode": {
+          "name": "localeCode",
+          "description": [],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "string | null"
+        }
+      },
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false
+    },
+    "cssColor": {
+      "kind": "function",
+      "signature": "export function cssColor(color: string): IRGB | undefined;",
+      "returnValue": {
+        "type": "IRGB | undefined",
+        "description": []
+      },
+      "parameters": {
+        "color": {
+          "name": "color",
+          "description": [],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "string"
+        }
+      },
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false
+    },
+    "getColorFromRGBA": {
+      "kind": "function",
+      "signature": "export function getColorFromRGBA(rgba: {\n    r: number;\n    g: number;\n    b: number;\n    a: number;\n}): IColor;",
+      "returnValue": {
+        "type": "IColor",
+        "description": []
+      },
+      "parameters": {
+        "rgba": {
+          "name": "rgba",
+          "description": [],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "{\n    r: number;\n    g: number;\n    b: number;\n    a: number;\n}"
+        }
+      },
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false
+    },
+    "getColorFromString": {
+      "kind": "function",
+      "signature": "export function getColorFromString(inputColor: string): IColor | undefined;",
+      "returnValue": {
+        "type": "IColor | undefined",
+        "description": []
+      },
+      "parameters": {
+        "inputColor": {
+          "name": "inputColor",
+          "description": [],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "string"
+        }
+      },
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false
+    },
+    "getComponentStyles": {
+      "kind": "function",
+      "signature": "export function getComponentStyles(theme: IThemeCore, props: IGetComponentStyleProps): object;",
+      "returnValue": {
+        "type": "object",
+        "description": []
+      },
+      "parameters": {
+        "theme": {
+          "name": "theme",
+          "description": [
+            {
+              "kind": "text",
+              "text": "current theme to extract information from"
+            }
+          ],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "IThemeCore"
+        },
+        "props": {
+          "name": "props",
+          "description": [
+            {
+              "kind": "text",
+              "text": "parameters that drive behavior for the worker function"
+            }
+          ],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "IGetComponentStyleProps"
+        }
+      },
+      "deprecatedMessage": [],
+      "summary": [
+        {
+          "kind": "text",
+          "text": "This does the full process of resolving a layer to an actual style. There are options for adding selectors, providing additional states/overrides to the layer, and merging with a base layer. The result will be a style suitable for use in fabric's merge-styles code"
+        }
+      ],
+      "remarks": [],
+      "isBeta": false
+    },
+    "getContrastingColor": {
+      "kind": "function",
+      "signature": "export function getContrastingColor(color: string, backgroundColor: string, desiredRatio?: number): string;",
+      "returnValue": {
+        "type": "string",
+        "description": []
+      },
+      "parameters": {
+        "color": {
+          "name": "color",
+          "description": [
+            {
+              "kind": "text",
+              "text": "foreground color to potentially adjust for contrast"
+            }
+          ],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "string"
+        },
+        "backgroundColor": {
+          "name": "backgroundColor",
+          "description": [
+            {
+              "kind": "text",
+              "text": "background color to that the color needs to be shown on"
+            }
+          ],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "string"
+        },
+        "desiredRatio": {
+          "name": "desiredRatio",
+          "description": [
+            {
+              "kind": "text",
+              "text": "desired contrast ratio, defaults to 4.5"
+            }
+          ],
+          "isOptional": true,
+          "isSpread": false,
+          "type": "number"
+        }
+      },
+      "deprecatedMessage": [],
+      "summary": [
+        {
+          "kind": "text",
+          "text": "Take two strings representing a foreground and background color and potentially return a new foreground color value which has an acceptable level of contrast with the background. Because this can be expensive it has an internal cache."
+        }
+      ],
+      "remarks": [],
+      "isBeta": false
+    },
+    "getResolvedLayer": {
+      "kind": "function",
+      "signature": "export function getResolvedLayer(theme: IThemeCore, input?: string | ILayer, base?: ILayer, mixins?: string[]): ILayer;",
+      "returnValue": {
+        "type": "ILayer",
+        "description": []
+      },
+      "parameters": {
+        "theme": {
+          "name": "theme",
+          "description": [],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "IThemeCore"
+        },
+        "input": {
+          "name": "input",
+          "description": [],
+          "isOptional": true,
+          "isSpread": false,
+          "type": "string | ILayer"
+        },
+        "base": {
+          "name": "base",
+          "description": [],
+          "isOptional": true,
+          "isSpread": false,
+          "type": "ILayer"
+        },
+        "mixins": {
+          "name": "mixins",
+          "description": [],
+          "isOptional": true,
+          "isSpread": false,
+          "type": "string[]"
+        }
+      },
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false
+    },
+    "hsl2hsv": {
+      "kind": "function",
+      "signature": "export function hsl2hsv(h: number, s: number, l: number): IHSV;",
+      "returnValue": {
+        "type": "IHSV",
+        "description": []
+      },
+      "parameters": {
+        "h": {
+          "name": "h",
+          "description": [],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "number"
+        },
+        "s": {
+          "name": "s",
+          "description": [],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "number"
+        },
+        "l": {
+          "name": "l",
+          "description": [],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "number"
+        }
+      },
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false
+    },
+    "hsl2rgb": {
+      "kind": "function",
+      "signature": "export function hsl2rgb(hsl: IHSL): IRGB;",
+      "returnValue": {
+        "type": "IRGB",
+        "description": []
+      },
+      "parameters": {
+        "hsl": {
+          "name": "hsl",
+          "description": [
+            {
+              "kind": "text",
+              "text": "hsl an IHSL"
+            }
+          ],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "IHSL"
+        }
+      },
+      "deprecatedMessage": [],
+      "summary": [
+        {
+          "kind": "text",
+          "text": "Given an IHSl will generate an IColor with filled in r g and b"
+        }
+      ],
+      "remarks": [],
+      "isBeta": false
+    },
+    "hsv2hex": {
+      "kind": "function",
+      "signature": "export function hsv2hex(h: number, s: number, v: number): string;",
+      "returnValue": {
+        "type": "string",
+        "description": []
+      },
+      "parameters": {
+        "h": {
+          "name": "h",
+          "description": [],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "number"
+        },
+        "s": {
+          "name": "s",
+          "description": [],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "number"
+        },
+        "v": {
+          "name": "v",
+          "description": [],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "number"
+        }
+      },
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false
+    },
+    "hsv2hsl": {
+      "kind": "function",
+      "signature": "export function hsv2hsl(h: number, s: number, v: number): {\n    h: number;\n    s: number;\n    l: number;\n};",
+      "returnValue": {
+        "type": "{\n    h: number;\n    s: number;\n    l: number;\n}",
+        "description": []
+      },
+      "parameters": {
+        "h": {
+          "name": "h",
+          "description": [],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "number"
+        },
+        "s": {
+          "name": "s",
+          "description": [],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "number"
+        },
+        "v": {
+          "name": "v",
+          "description": [],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "number"
+        }
+      },
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false
+    },
+    "hsv2rgb": {
+      "kind": "function",
+      "signature": "export function hsv2rgb(h: number, s: number, v: number): IRGB;",
+      "returnValue": {
+        "type": "IRGB",
+        "description": []
+      },
+      "parameters": {
+        "h": {
+          "name": "h",
+          "description": [],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "number"
+        },
+        "s": {
+          "name": "s",
+          "description": [],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "number"
+        },
+        "v": {
+          "name": "v",
+          "description": [],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "number"
+        }
+      },
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false
+    },
+    "ICollectibleStyles": {
+      "kind": "interface",
+      "extends": "",
+      "implements": "",
+      "typeParameters": [],
+      "deprecatedMessage": [],
+      "summary": [
+        {
+          "kind": "text",
+          "text": "properties that will be cascaded down as part of the style generation process. This is primarily for background color to ensure that code to automatically ensure text is visible can work correctly across parts and expanders"
+        }
+      ],
+      "remarks": [],
+      "isBeta": false,
+      "isSealed": false,
+      "members": {
+        "backgroundColor": {
+          "kind": "property",
+          "signature": "backgroundColor?: string;",
+          "isOptional": true,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "textColor": {
+          "kind": "property",
+          "signature": "textColor?: string;",
+          "isOptional": true,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        }
+      }
+    },
+    "IColor": {
+      "kind": "interface",
+      "extends": "IRGB",
+      "implements": "",
+      "typeParameters": [],
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false,
+      "isSealed": false,
+      "members": {
+        "hex": {
+          "kind": "property",
+          "signature": "hex: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "str": {
+          "kind": "property",
+          "signature": "str: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        }
+      }
+    },
+    "IGetComponentStyleProps": {
+      "kind": "interface",
+      "extends": "",
+      "implements": "",
+      "typeParameters": [],
+      "deprecatedMessage": [],
+      "summary": [
+        {
+          "kind": "text",
+          "text": "properties for the get component style helper function."
+        }
+      ],
+      "remarks": [],
+      "isBeta": false,
+      "isSealed": false,
+      "members": {
+        "constLayer": {
+          "kind": "property",
+          "signature": "constLayer?: ILayer;",
+          "isOptional": true,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "ILayer",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "A constant layer to use as a baseline"
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "layer": {
+          "kind": "property",
+          "signature": "layer?: string | ILayer;",
+          "isOptional": true,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string | ILayer",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Name of the layer to query from the theme"
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "selectors": {
+          "kind": "property",
+          "signature": "selectors?: boolean;",
+          "isOptional": true,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "boolean",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Should selectors be applied to the resulting style, ignored if disabled is set"
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "slots": {
+          "kind": "property",
+          "signature": "slots?:",
+          "isOptional": true,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "{\n        [slot: string]: string | undefined;\n    }",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "A list of slots to include in the resulting style. The key values are the actual slot names, if a string is set it should be the class name for that slot"
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "states": {
+          "kind": "property",
+          "signature": "states?: string;",
+          "isOptional": true,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "A set of states or overrides to apply to the layer. Typically these are things like disabled or primary though any layer name is valid. Stored in a space delimited string"
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "style": {
+          "kind": "property",
+          "signature": "style?: IPartialComponentStyle;",
+          "isOptional": true,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "IPartialComponentStyle",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "A baseline component style to use for extracting background color for custom coloring. This is expected to have styles grouped under root and part names"
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        }
+      }
+    },
+    "IHSL": {
+      "kind": "interface",
+      "extends": "",
+      "implements": "",
+      "typeParameters": [],
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false,
+      "isSealed": false,
+      "members": {
+        "h": {
+          "kind": "property",
+          "signature": "h: number;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "number",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "l": {
+          "kind": "property",
+          "signature": "l: number;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "number",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "s": {
+          "kind": "property",
+          "signature": "s: number;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "number",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        }
+      }
+    },
+    "IHSV": {
+      "kind": "interface",
+      "extends": "",
+      "implements": "",
+      "typeParameters": [],
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false,
+      "isSealed": false,
+      "members": {
+        "h": {
+          "kind": "property",
+          "signature": "h: number;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "number",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "s": {
+          "kind": "property",
+          "signature": "s: number;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "number",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "v": {
+          "kind": "property",
+          "signature": "v: number;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "number",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        }
+      }
+    },
+    "IOtherProps": {
+      "kind": "interface",
+      "extends": "",
+      "implements": "",
+      "typeParameters": [],
+      "deprecatedMessage": [],
+      "summary": [
+        {
+          "kind": "text",
+          "text": "I know one might ponder how the amazing name of this interface was arrived at, but shockingly enough it was simply pure laziness. (Just putting some stuff in here until it can be appropriately organized)"
+        }
+      ],
+      "remarks": [],
+      "isBeta": false,
+      "isSealed": false,
+      "members": {
+        "borderRadius": {
+          "kind": "property",
+          "signature": "borderRadius?: number | string;",
+          "isOptional": true,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "number | string",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "borderStyle": {
+          "kind": "property",
+          "signature": "borderStyle?: string;",
+          "isOptional": true,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "borderWidth": {
+          "kind": "property",
+          "signature": "borderWidth?: number | string;",
+          "isOptional": true,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "number | string",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "boxSizing": {
+          "kind": "property",
+          "signature": "boxSizing?: string;",
+          "isOptional": true,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "className": {
+          "kind": "property",
+          "signature": "className?: string;",
+          "isOptional": true,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "contentPadding": {
+          "kind": "property",
+          "signature": "contentPadding?: number | string;",
+          "isOptional": true,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "number | string",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "display": {
+          "kind": "property",
+          "signature": "display?: string;",
+          "isOptional": true,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "fill": {
+          "kind": "property",
+          "signature": "fill?: string;",
+          "isOptional": true,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "height": {
+          "kind": "property",
+          "signature": "height?: number | string;",
+          "isOptional": true,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "number | string",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "iconSize": {
+          "kind": "property",
+          "signature": "iconSize?: number | string;",
+          "isOptional": true,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "number | string",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "iconWeight": {
+          "kind": "property",
+          "signature": "iconWeight?: number;",
+          "isOptional": true,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "number",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "justifyContent": {
+          "kind": "property",
+          "signature": "justifyContent?: string;",
+          "isOptional": true,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "lineHeight": {
+          "kind": "property",
+          "signature": "lineHeight?: number | string;",
+          "isOptional": true,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "number | string",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "minHeight": {
+          "kind": "property",
+          "signature": "minHeight?: number | string;",
+          "isOptional": true,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "number | string",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "minWidth": {
+          "kind": "property",
+          "signature": "minWidth?: number | string;",
+          "isOptional": true,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "number | string",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "overflow": {
+          "kind": "property",
+          "signature": "overflow?: string;",
+          "isOptional": true,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "textAlign": {
+          "kind": "property",
+          "signature": "textAlign?: string;",
+          "isOptional": true,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "textDecoration": {
+          "kind": "property",
+          "signature": "textDecoration?: string;",
+          "isOptional": true,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "userSelect": {
+          "kind": "property",
+          "signature": "userSelect?: string;",
+          "isOptional": true,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "verticalAlign": {
+          "kind": "property",
+          "signature": "verticalAlign?: string;",
+          "isOptional": true,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "width": {
+          "kind": "property",
+          "signature": "width?: number | string;",
+          "isOptional": true,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "number | string",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        }
+      }
+    },
+    "IPalette": {
+      "kind": "interface",
+      "extends": "",
+      "implements": "",
+      "typeParameters": [],
+      "deprecatedMessage": [],
+      "summary": [
+        {
+          "kind": "text",
+          "text": "Color palette"
+        }
+      ],
+      "remarks": [],
+      "isBeta": false,
+      "isSealed": false,
+      "members": {
+        "accent": {
+          "kind": "property",
+          "signature": "accent: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for the accent."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "black": {
+          "kind": "property",
+          "signature": "black: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for the strongest color, which is black in the default theme. This is a very light color in inverted themes."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "blackTranslucent40": {
+          "kind": "property",
+          "signature": "blackTranslucent40: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for blackTranslucent40."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "blue": {
+          "kind": "property",
+          "signature": "blue: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for blue."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "blueDark": {
+          "kind": "property",
+          "signature": "blueDark: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for blueDark."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "blueLight": {
+          "kind": "property",
+          "signature": "blueLight: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for blueLight."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "blueMid": {
+          "kind": "property",
+          "signature": "blueMid: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for blueMid."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "green": {
+          "kind": "property",
+          "signature": "green: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for green."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "greenDark": {
+          "kind": "property",
+          "signature": "greenDark: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for greenDark."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "greenLight": {
+          "kind": "property",
+          "signature": "greenLight: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for greenLight."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "magenta": {
+          "kind": "property",
+          "signature": "magenta: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for magenta."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "magentaDark": {
+          "kind": "property",
+          "signature": "magentaDark: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for magentaDark."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "magentaLight": {
+          "kind": "property",
+          "signature": "magentaLight: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for magentaLight."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "neutralDark": {
+          "kind": "property",
+          "signature": "neutralDark: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for neutralDark."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "neutralLight": {
+          "kind": "property",
+          "signature": "neutralLight: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for neutralLight."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "neutralLighter": {
+          "kind": "property",
+          "signature": "neutralLighter: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for neutralLighter."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "neutralLighterAlt": {
+          "kind": "property",
+          "signature": "neutralLighterAlt: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for neutralLighterAlt."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "neutralPrimary": {
+          "kind": "property",
+          "signature": "neutralPrimary: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for neutralPrimary."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "neutralPrimaryAlt": {
+          "kind": "property",
+          "signature": "neutralPrimaryAlt: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for neutralPrimaryAlt."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "neutralQuaternary": {
+          "kind": "property",
+          "signature": "neutralQuaternary: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for neutralQuaternary."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "neutralQuaternaryAlt": {
+          "kind": "property",
+          "signature": "neutralQuaternaryAlt: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for neutralQuaternaryAlt."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "neutralSecondary": {
+          "kind": "property",
+          "signature": "neutralSecondary: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for neutralSecondary."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "neutralSecondaryAlt": {
+          "kind": "property",
+          "signature": "neutralSecondaryAlt: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for neutralSecondaryAlt."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "neutralTertiary": {
+          "kind": "property",
+          "signature": "neutralTertiary: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for neutralTertiary."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "neutralTertiaryAlt": {
+          "kind": "property",
+          "signature": "neutralTertiaryAlt: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for neutralTertiaryAlt."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "orange": {
+          "kind": "property",
+          "signature": "orange: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for orange."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "orangeLight": {
+          "kind": "property",
+          "signature": "orangeLight: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for orangeLight."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "orangeLighter": {
+          "kind": "property",
+          "signature": "orangeLighter: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for orangeLighter."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "purple": {
+          "kind": "property",
+          "signature": "purple: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for purple."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "purpleDark": {
+          "kind": "property",
+          "signature": "purpleDark: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for purpleDark."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "purpleLight": {
+          "kind": "property",
+          "signature": "purpleLight: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for purpleLight."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "red": {
+          "kind": "property",
+          "signature": "red: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for red."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "redDark": {
+          "kind": "property",
+          "signature": "redDark: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for redDark."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "teal": {
+          "kind": "property",
+          "signature": "teal: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for teal."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "tealDark": {
+          "kind": "property",
+          "signature": "tealDark: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for tealDark."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "tealLight": {
+          "kind": "property",
+          "signature": "tealLight: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for tealLight."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "themeDark": {
+          "kind": "property",
+          "signature": "themeDark: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for themeDark."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "themeDarkAlt": {
+          "kind": "property",
+          "signature": "themeDarkAlt: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for themeDarkAlt."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "themeDarker": {
+          "kind": "property",
+          "signature": "themeDarker: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for themeDarker."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "themeLight": {
+          "kind": "property",
+          "signature": "themeLight: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for themeLight."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "themeLighter": {
+          "kind": "property",
+          "signature": "themeLighter: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for themeLighter."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "themeLighterAlt": {
+          "kind": "property",
+          "signature": "themeLighterAlt: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for themeLighterAlt."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "themePrimary": {
+          "kind": "property",
+          "signature": "themePrimary: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for themePrimary."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "themeSecondary": {
+          "kind": "property",
+          "signature": "themeSecondary: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for themeSecondary."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "themeTertiary": {
+          "kind": "property",
+          "signature": "themeTertiary: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for themeTertiary."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "white": {
+          "kind": "property",
+          "signature": "white: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for the softest color, which is white in the default theme. This is a very dark color in dark themes. This is the page background."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "whiteTranslucent40": {
+          "kind": "property",
+          "signature": "whiteTranslucent40: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for whiteTranslucent40"
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "yellow": {
+          "kind": "property",
+          "signature": "yellow: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for yellow."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "yellowLight": {
+          "kind": "property",
+          "signature": "yellowLight: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Color code for yellowLight."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        }
+      }
+    },
+    "IPartialComponentStyle": {
+      "kind": "interface",
+      "extends": "",
+      "implements": "",
+      "typeParameters": [],
+      "deprecatedMessage": [],
+      "summary": [
+        {
+          "kind": "text",
+          "text": "A partial structural generalization of fabric's component styles. A button might have root, stack, icon and so on and this allows mapping of that structure."
+        }
+      ],
+      "remarks": [],
+      "isBeta": false,
+      "isSealed": false,
+      "members": {
+        "__index": {
+          "kind": "method",
+          "signature": "[key: string]: IPartialStyle;",
+          "accessModifier": "",
+          "isOptional": false,
+          "isStatic": false,
+          "returnValue": {
+            "type": "IPartialStyle",
+            "description": []
+          },
+          "parameters": {
+            "key": {
+              "name": "key",
+              "description": [],
+              "isOptional": false,
+              "isSpread": false,
+              "type": "string"
+            }
+          },
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false
+        },
+        "root": {
+          "kind": "property",
+          "signature": "root: IPartialStyle;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "IPartialStyle",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        }
+      }
+    },
+    "IPartialStyle": {
+      "kind": "interface",
+      "extends": "ICollectibleStyles",
+      "implements": "",
+      "typeParameters": [],
+      "deprecatedMessage": [],
+      "summary": [
+        {
+          "kind": "text",
+          "text": "Effectively a subset of IRawStyle or another platform specific style interface. The only requirement is that the collectible styles are standardized here"
+        }
+      ],
+      "remarks": [],
+      "isBeta": false,
+      "isSealed": false,
+      "members": {
+        "selectors": {
+          "kind": "property",
+          "signature": "selectors?:",
+          "isOptional": true,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "{\n        [key: string]: ICollectibleStyles;\n    }",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        }
+      }
+    },
+    "IRGB": {
+      "kind": "interface",
+      "extends": "",
+      "implements": "",
+      "typeParameters": [],
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false,
+      "isSealed": false,
+      "members": {
+        "a": {
+          "kind": "property",
+          "signature": "a?: number;",
+          "isOptional": true,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "number",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "b": {
+          "kind": "property",
+          "signature": "b: number;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "number",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "g": {
+          "kind": "property",
+          "signature": "g: number;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "number",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "r": {
+          "kind": "property",
+          "signature": "r: number;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "number",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        }
+      }
+    },
+    "ISpace": {
+      "kind": "interface",
+      "extends": "",
+      "implements": "",
+      "typeParameters": [],
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false,
+      "isSealed": false,
+      "members": {
+        "margin": {
+          "kind": "property",
+          "signature": "margin?: number | string;",
+          "isOptional": true,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "number | string",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "padding": {
+          "kind": "property",
+          "signature": "padding?: number | string;",
+          "isOptional": true,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "number | string",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        }
+      }
+    },
+    "IThemeCore": {
+      "kind": "interface",
+      "extends": "",
+      "implements": "",
+      "typeParameters": [],
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false,
+      "isSealed": false,
+      "members": {
+        "cache": {
+          "kind": "property",
+          "signature": "cache: IThemeLayersBase<ILayerContents>;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "IThemeLayersBase<ILayerContents>",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "layers": {
+          "kind": "property",
+          "signature": "layers: ILayers;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "ILayers",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "palette": {
+          "kind": "property",
+          "signature": "palette: IPalette;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "IPalette",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "typography": {
+          "kind": "property",
+          "signature": "typography: ITypography;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "ITypography",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        }
+      }
+    },
+    "LocalizedFontFamilies": {
+      "kind": "namespace",
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false,
+      "exports": {
+        "Arabic": {
+          "kind": "module variable",
+          "signature": "Arabic: string",
+          "type": "string",
+          "value": "",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "Cyrillic": {
+          "kind": "module variable",
+          "signature": "Cyrillic: string",
+          "type": "string",
+          "value": "",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "EastEuropean": {
+          "kind": "module variable",
+          "signature": "EastEuropean: string",
+          "type": "string",
+          "value": "",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "Greek": {
+          "kind": "module variable",
+          "signature": "Greek: string",
+          "type": "string",
+          "value": "",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "Hebrew": {
+          "kind": "module variable",
+          "signature": "Hebrew: string",
+          "type": "string",
+          "value": "",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "Selawik": {
+          "kind": "module variable",
+          "signature": "Selawik: string",
+          "type": "string",
+          "value": "",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "Vietnamese": {
+          "kind": "module variable",
+          "signature": "Vietnamese: string",
+          "type": "string",
+          "value": "",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "WestEuropean": {
+          "kind": "module variable",
+          "signature": "WestEuropean: string",
+          "type": "string",
+          "value": "",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        }
+      }
+    },
+    "LocalizedFontNames": {
+      "kind": "namespace",
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false,
+      "exports": {}
+    },
+    "mergeLayerCollections": {
+      "kind": "function",
+      "signature": "export function mergeLayerCollections(partial: ILayers | undefined, parent: ILayers): ILayers;",
+      "returnValue": {
+        "type": "ILayers",
+        "description": []
+      },
+      "parameters": {
+        "partial": {
+          "name": "partial",
+          "description": [
+            {
+              "kind": "text",
+              "text": "a partial or potentially undefined collection of layers. This will be added on top of the parent."
+            }
+          ],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "ILayers | undefined"
+        },
+        "parent": {
+          "name": "parent",
+          "description": [
+            {
+              "kind": "text",
+              "text": "a parent collection of layers, this will be used as the baseline"
+            }
+          ],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "ILayers"
+        }
+      },
+      "deprecatedMessage": [],
+      "summary": [
+        {
+          "kind": "text",
+          "text": "Merge two layer collections together"
+        }
+      ],
+      "remarks": [],
+      "isBeta": false
+    },
+    "mergeLayers": {
+      "kind": "function",
+      "signature": "export function mergeLayers(...layers: ILayer[]): ILayer;",
+      "returnValue": {
+        "type": "ILayer",
+        "description": []
+      },
+      "parameters": {
+        "layers": {
+          "name": "layers",
+          "description": [
+            {
+              "kind": "text",
+              "text": "one or more layers to merge together into a single layer"
+            }
+          ],
+          "isOptional": false,
+          "isSpread": true,
+          "type": "ILayer[]"
+        }
+      },
+      "deprecatedMessage": [],
+      "summary": [
+        {
+          "kind": "text",
+          "text": "Take a number of layers and merge them together from first to last"
+        }
+      ],
+      "remarks": [],
+      "isBeta": false
+    },
+    "relativeLuminance": {
+      "kind": "function",
+      "signature": "export function relativeLuminance(r: number, g: number, b: number): number;",
+      "returnValue": {
+        "type": "number",
+        "description": []
+      },
+      "parameters": {
+        "r": {
+          "name": "r",
+          "description": [
+            {
+              "kind": "text",
+              "text": "standard red value 0 to 255"
+            }
+          ],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "number"
+        },
+        "g": {
+          "name": "g",
+          "description": [
+            {
+              "kind": "text",
+              "text": "standard green value 0 to 255"
+            }
+          ],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "number"
+        },
+        "b": {
+          "name": "b",
+          "description": [
+            {
+              "kind": "text",
+              "text": "standard blue value 0 to 255"
+            }
+          ],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "number"
+        }
+      },
+      "deprecatedMessage": [],
+      "summary": [
+        {
+          "kind": "text",
+          "text": "Calculate the relative luminance which is how bright the color is from the perspective of a human eye. Blue is much darker than green for instance so (0, 0, 255) is perceived to be significantly darker than (0, 255, 0). This is used to calculate contrast ratios between two colors to ensure text is readable."
+        }
+      ],
+      "remarks": [],
+      "isBeta": false
+    },
+    "resolveFontChoice": {
+      "kind": "function",
+      "signature": "export function resolveFontChoice(fontChoice: IFontChoice, typography: ITypography): IRawFontStyle;",
+      "returnValue": {
+        "type": "IRawFontStyle",
+        "description": []
+      },
+      "parameters": {
+        "fontChoice": {
+          "name": "fontChoice",
+          "description": [],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "IFontChoice"
+        },
+        "typography": {
+          "name": "typography",
+          "description": [
+            {
+              "kind": "text",
+              "text": "current typography settings for the current theme/scheme"
+            }
+          ],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "ITypography"
+        }
+      },
+      "deprecatedMessage": [],
+      "summary": [
+        {
+          "kind": "text",
+          "text": "This can be used in two ways. The default behavior is onlySpecified being falsy. In this mode a full font definition will be provided falling back to the standard font variant, patched with any overriden font variants, then patched with specified properties such as family."
+        },
+        {
+          "kind": "paragraph"
+        },
+        {
+          "kind": "text",
+          "text": "If onlySpecified is true this will exclude the font smoothing settings and only provide result values for things that are set in the fontChoice. This is designed to produce the minimum set of properties to apply on top of a base definition."
+        }
+      ],
+      "remarks": [],
+      "isBeta": false
+    },
+    "resolveLayerToComponentStyle": {
+      "kind": "function",
+      "signature": "export function resolveLayerToComponentStyle(theme: IThemeCore, layer: ILayer, addSelectors: boolean, baseStyle?: IPartialComponentStyle, slots?: IGetComponentStyleProps['slots']): object;",
+      "returnValue": {
+        "type": "object",
+        "description": []
+      },
+      "parameters": {
+        "theme": {
+          "name": "theme",
+          "description": [
+            {
+              "kind": "text",
+              "text": "current theme, used to resolve values in the layer"
+            }
+          ],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "IThemeCore"
+        },
+        "layer": {
+          "name": "layer",
+          "description": [
+            {
+              "kind": "text",
+              "text": "finalized layer, should have all parent resolution and state promotion already done"
+            }
+          ],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "ILayer"
+        },
+        "addSelectors": {
+          "name": "addSelectors",
+          "description": [
+            {
+              "kind": "text",
+              "text": "should selectors be added for this style"
+            }
+          ],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "boolean"
+        },
+        "baseStyle": {
+          "name": "baseStyle",
+          "description": [
+            {
+              "kind": "text",
+              "text": "are there any inherited style values that need to be taken into account"
+            }
+          ],
+          "isOptional": true,
+          "isSpread": false,
+          "type": "IPartialComponentStyle"
+        },
+        "slots": {
+          "name": "slots",
+          "description": [
+            {
+              "kind": "text",
+              "text": "list of slots to add to the component style. Existence in the list, even as an undefined string, will cause the slot to be emitted"
+            }
+          ],
+          "isOptional": true,
+          "isSpread": false,
+          "type": "IGetComponentStyleProps['slots']"
+        }
+      },
+      "deprecatedMessage": [],
+      "summary": [
+        {
+          "kind": "text",
+          "text": "This will take a layer, which optionally may have parts, and return a set of styles grouped in parts"
+        }
+      ],
+      "remarks": [],
+      "isBeta": false
+    },
+    "resolveLayerToStyle": {
+      "kind": "function",
+      "signature": "export function resolveLayerToStyle(theme: IThemeCore, layer: ILayer, style?: IPartialStyle): IPartialStyle;",
+      "returnValue": {
+        "type": "IPartialStyle",
+        "description": []
+      },
+      "parameters": {
+        "theme": {
+          "name": "theme",
+          "description": [
+            {
+              "kind": "text",
+              "text": "theme to use for lookup purposes"
+            }
+          ],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "IThemeCore"
+        },
+        "layer": {
+          "name": "layer",
+          "description": [
+            {
+              "kind": "text",
+              "text": "current layer to be turned into a style"
+            }
+          ],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "ILayer"
+        },
+        "style": {
+          "name": "style",
+          "description": [
+            {
+              "kind": "text",
+              "text": "baseline style to use for things such as bg color for text processing"
+            }
+          ],
+          "isOptional": true,
+          "isSpread": false,
+          "type": "IPartialStyle"
+        }
+      },
+      "deprecatedMessage": [],
+      "summary": [
+        {
+          "kind": "text",
+          "text": "Take a theme layer and turn it into a resolved style suitable for sending to the system"
+        }
+      ],
+      "remarks": [],
+      "isBeta": false
+    },
+    "rgb2hex": {
+      "kind": "function",
+      "signature": "export function rgb2hex(r: number, g: number, b: number): string;",
+      "returnValue": {
+        "type": "string",
+        "description": []
+      },
+      "parameters": {
+        "r": {
+          "name": "r",
+          "description": [],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "number"
+        },
+        "g": {
+          "name": "g",
+          "description": [],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "number"
+        },
+        "b": {
+          "name": "b",
+          "description": [],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "number"
+        }
+      },
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false
+    },
+    "rgb2hsl": {
+      "kind": "function",
+      "signature": "export function rgb2hsl(rgb: IRGB): IHSL;",
+      "returnValue": {
+        "type": "IHSL",
+        "description": []
+      },
+      "parameters": {
+        "rgb": {
+          "name": "rgb",
+          "description": [],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "IRGB"
+        }
+      },
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false
+    },
+    "rgb2hsv": {
+      "kind": "function",
+      "signature": "export function rgb2hsv(r: number, g: number, b: number): IHSV;",
+      "returnValue": {
+        "type": "IHSV",
+        "description": []
+      },
+      "parameters": {
+        "r": {
+          "name": "r",
+          "description": [],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "number"
+        },
+        "g": {
+          "name": "g",
+          "description": [],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "number"
+        },
+        "b": {
+          "name": "b",
+          "description": [],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "number"
+        }
+      },
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false
+    },
+    "rgbToString": {
+      "kind": "function",
+      "signature": "export function rgbToString(r: number, g: number, b: number, a?: number): string;",
+      "returnValue": {
+        "type": "string",
+        "description": []
+      },
+      "parameters": {
+        "r": {
+          "name": "r",
+          "description": [],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "number"
+        },
+        "g": {
+          "name": "g",
+          "description": [],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "number"
+        },
+        "b": {
+          "name": "b",
+          "description": [],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "number"
+        },
+        "a": {
+          "name": "a",
+          "description": [],
+          "isOptional": true,
+          "isSpread": false,
+          "type": "number"
+        }
+      },
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false
+    },
+    "stripNonStyleProps": {
+      "kind": "function",
+      "signature": "export function stripNonStyleProps(target: object): void;",
+      "returnValue": {
+        "type": "void",
+        "description": []
+      },
+      "parameters": {
+        "target": {
+          "name": "target",
+          "description": [],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "object"
+        }
+      },
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false
+    }
+  }
+}

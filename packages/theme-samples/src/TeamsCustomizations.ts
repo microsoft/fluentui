@@ -26,7 +26,9 @@ export const TeamsCustomizations: ICustomizations = {
         neutralPrimary: '#282424',
         neutralDark: '#585151',
         black: '#403b3b',
-        white: '#fff'
+        white: '#fff',
+        TeamsControlText: '#252424',
+        TeamsHoverBorderBg: '#bdbdbd'
       },
       semanticColors: {
         buttonBackground: 'transparent',
@@ -40,6 +42,43 @@ export const TeamsCustomizations: ICustomizations = {
         buttonBorder: '#bdbdbd',
 
         primaryBorder: 'transparent'
+      },
+      layers: {
+        Button: {
+          borderRadius: 3,
+          borderWidth: 2,
+          fontWeight: 400,
+          overrides: {
+            primary: {
+              borderWidth: 0
+            }
+          },
+          slots: {
+            stack: {
+              padding: '4px 32px'
+            },
+            icon: {
+              fontSize: 16,
+              fontWeight: 700
+            }
+          }
+        },
+        CircularButton: {
+          borderWidth: 1,
+          selectors: {
+            ':hover': { backgroundColor: '#464775' },
+            ':hover:active': { backgroundColor: '#464775' }
+          },
+          slots: {
+            icon: {
+              fontSize: 16,
+              selectors: {
+                ':hover': { color: 'white' },
+                ':hover:active': { color: 'white' }
+              }
+            }
+          }
+        }
       }
     })
   },

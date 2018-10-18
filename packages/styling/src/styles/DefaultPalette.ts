@@ -1,4 +1,4 @@
-import { IPalette } from '../interfaces/index';
+import { IPalette } from '@uifabric/theming-core';
 
 // When adding or removing a color, make sure you keep this consistent with IColorClassNames by adding the color variants.
 export const DefaultPalette: IPalette = {
