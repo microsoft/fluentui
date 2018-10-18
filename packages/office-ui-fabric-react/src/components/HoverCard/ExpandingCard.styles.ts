@@ -1,11 +1,23 @@
-import { IExpandingCardStyles } from './ExpandingCard.types';
-import { memoizeFunction } from '../../Utilities';
-import { concatStyleSets, ITheme, HighContrastSelector } from '../../Styling';
+import { getGlobalClassNames, HighContrastSelector } from '../../Styling';
+import { IExpandingCardStyles, IExpandingCardStyleProps } from './ExpandingCard.types';
 
-export const getStyles = memoizeFunction(
-  (theme: ITheme, customStyles?: IExpandingCardStyles): IExpandingCardStyles => {
-    const styles: IExpandingCardStyles = {
-      root: {
+const GlobalClassNames = {
+  root: 'ms-ExpandingCard-root',
+  compactCard: 'ms-ExpandingCard-compactCard',
+  expandedCard: 'ms-ExpandingCard-expandedCard',
+  expandedCardScroll: 'ms-ExpandingCard-expandedCardScrollRegion'
+};
+
+export function getStyles(props: IExpandingCardStyleProps): IExpandingCardStyles {
+  const { theme, needsScroll, expandedCardFirstFrameRendered, compactCardHeight, expandedCardHeight, className } = props;
+
+  const { palette } = theme;
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
+  return {
+    root: [
+      classNames.root,
+      {
         width: '340px',
         pointerEvents: 'none',
         selectors: {
@@ -20,37 +32,47 @@ export const getStyles = memoizeFunction(
           }
         }
       },
-      compactCard: {
+      className
+    ],
+    compactCard: [
+      classNames.compactCard,
+      {
         pointerEvents: 'auto',
-        position: 'relative'
-      },
-      expandedCard: [
-        {
-          height: '1px',
-          overflowY: 'hidden',
-          pointerEvents: 'auto',
-          transition: 'height 0.467s cubic-bezier(0.5, 0, 0, 1)',
-          selectors: {
-            ':before': {
-              content: '""',
-              position: 'relative',
-              display: 'block',
-              top: '0',
-              left: '24px',
-              width: '292px',
-              height: '1px',
-              backgroundColor: theme.palette.neutralLighter
-            }
+        position: 'relative',
+        height: compactCardHeight
+      }
+    ],
+    expandedCard: [
+      classNames.expandedCard,
+      {
+        height: '1px',
+        overflowY: 'hidden',
+        pointerEvents: 'auto',
+        transition: 'height 0.467s cubic-bezier(0.5, 0, 0, 1)',
+        selectors: {
+          ':before': {
+            content: '""',
+            position: 'relative',
+            display: 'block',
+            top: '0',
+            left: '24px',
+            width: '292px',
+            height: '1px',
+            backgroundColor: palette.neutralLighter
           }
         }
-      ],
-      expandedCardScroll: {
+      },
+      expandedCardFirstFrameRendered && {
+        height: expandedCardHeight
+      }
+    ],
+    expandedCardScroll: [
+      classNames.expandedCardScroll,
+      needsScroll && {
         height: '100%',
         boxSizing: 'border-box',
         overflowY: 'auto'
       }
-    };
-
-    return concatStyleSets(styles, customStyles)!;
-  }
-);
+    ]
+  };
+}
