@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Tue, 16 Oct 2018 12:28:48 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Oct 2018 01:29:55 GMT and should not be manually modified.
+
+## 6.9.0
+Wed, 17 Oct 2018 01:29:55 GMT
+
+### Minor changes
+
+- Modify CodepenComponent for use by other packages.
 
 ## 6.8.0
 Tue, 16 Oct 2018 12:28:48 GMT

@@ -280,6 +280,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
         if (this.suggestionsControl && this.suggestionsControl.handleKeyDown(keyCode)) {
           ev.preventDefault();
           ev.stopPropagation();
+          this._updateActiveDescendant();
         }
         break;
 
@@ -287,10 +288,20 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
         if (this.suggestionsControl && this.suggestionsControl.handleKeyDown(keyCode)) {
           ev.preventDefault();
           ev.stopPropagation();
+          this._updateActiveDescendant();
         }
         break;
     }
   };
+
+  private _updateActiveDescendant(): void {
+    if (this.props.inputElement && this.suggestionsControl && this.suggestionsControl.selectedElement) {
+      const selectedElId = this.suggestionsControl.selectedElement.getAttribute('id');
+      if (selectedElId) {
+        this.props.inputElement.setAttribute('aria-activedescendant', selectedElId as string);
+      }
+    }
+  }
 
   private _onResolveSuggestions(updatedValue: string): void {
     const suggestions: T[] | PromiseLike<T[]> | null = this.props.onResolveSuggestions(updatedValue, this.props.selectedItems);
