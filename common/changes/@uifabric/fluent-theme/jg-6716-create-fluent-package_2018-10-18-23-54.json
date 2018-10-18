@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/fluent-theme",
+      "comment": "Create new package for housing Fluent customizations.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/fluent-theme",
+  "email": "jagore@microsoft.com"
+}
