@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add onRenderComplete optional prop to List component",
+      "comment": "Add onPagesUpdated optional prop to List component",
       "type": "minor"
     }
   ],
