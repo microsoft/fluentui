@@ -4,6 +4,8 @@ import { getGlobalClassNames, FontSizes } from '../../Styling';
 const GlobalClassNames = {
   root: 'ms-DetailsList',
   compact: 'ms-DetailsList--Compact',
+  contentWrapper: 'ms-DetailsList-contentWrapper',
+  headerWrapper: 'ms-DetailsList-headerWrapper',
   isFixed: 'is-fixed',
   isHorizontalConstrained: 'is-horizontalConstrained',
   listCell: 'ms-List-cell'
@@ -17,6 +19,7 @@ export const getStyles = (props: IDetailsListStyleProps): IDetailsListStyles => 
   return {
     root: [
       classNames.root,
+      theme.fonts.small,
       {
         position: 'relative',
         fontSize: FontSizes.small,
@@ -61,6 +64,8 @@ export const getStyles = (props: IDetailsListStyleProps): IDetailsListStyles => 
         minWidth: '100%',
         minHeight: 1
       }
-    ]
+    ],
+    headerWrapper: [classNames.headerWrapper],
+    contentWrapper: [classNames.contentWrapper]
   };
 };

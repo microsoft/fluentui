@@ -613,6 +613,8 @@ export type IDetailsListStyleProps = Required<Pick<IDetailsListProps, 'theme'>> 
 export interface IDetailsListStyles {
   root: IStyle;
   focusZone: IStyle;
+  headerWrapper: IStyle;
+  contentWrapper: IStyle;
 }
 
 export interface IDetailsGroupRenderProps extends IGroupRenderProps {
@@ -620,4 +622,4 @@ export interface IDetailsGroupRenderProps extends IGroupRenderProps {
   onRenderHeader?: IRenderFunction<IDetailsGroupDividerProps>;
 }
 
-export interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsItemProps { }
+export interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsItemProps {}

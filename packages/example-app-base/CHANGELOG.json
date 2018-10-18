@@ -2,6 +2,63 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.9.0",
+      "tag": "@uifabric/example-app-base_v6.9.0",
+      "date": "Wed, 17 Oct 2018 01:29:55 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Modify CodepenComponent for use by other packages.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "a6221962c23ff48cebe654f89ecde0e2956f80cf"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.85.0 <7.0.0` to `>=6.86.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.8.0",
+      "tag": "@uifabric/example-app-base_v6.8.0",
+      "date": "Tue, 16 Oct 2018 12:28:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add optional app customizations and apply to examples when provided.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "d268b0e3e4cbfde82ef56e60686cc6ad70090a8f"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.84.1 <7.0.0` to `>=6.85.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.7.6",
+      "tag": "@uifabric/example-app-base_v6.7.6",
+      "date": "Thu, 11 Oct 2018 23:13:31 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Documentation: remove unwanted backslashes and render backticks as code blocks",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "dd6e56c6bd02c2a130c9653ef6cb7f916de3ff2c"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.83.0 <7.0.0` to `>=6.84.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.7.5",
       "tag": "@uifabric/example-app-base_v6.7.5",
       "date": "Wed, 10 Oct 2018 12:29:05 GMT",

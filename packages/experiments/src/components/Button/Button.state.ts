@@ -4,8 +4,8 @@ import { BaseState } from '../../utilities/BaseState';
 
 export type IButtonState = Pick<IButtonViewProps, 'expanded' | 'onClick' | 'onMenuDismiss' | 'menuTarget'>;
 
-export class ButtonState extends BaseState<IButtonProps, IButtonState> {
-  constructor(props: IButtonProps) {
+export class ButtonState extends BaseState<IButtonProps, IButtonViewProps, IButtonState> {
+  constructor(props: ButtonState['props']) {
     super(props, {
       controlledProps: ['expanded']
     });

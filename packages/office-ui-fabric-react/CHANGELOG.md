@@ -1,6 +1,68 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 10 Oct 2018 12:29:05 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Oct 2018 12:29:40 GMT and should not be manually modified.
+
+## 6.87.0
+Wed, 17 Oct 2018 12:29:40 GMT
+
+### Minor changes
+
+- Breadcrumb: move style interfaces to the types file to be included in the export and documentation.
+- DetailsList: update the styles with 2 new regions headerWrapper and contentWrapper providing easy className hooks to pass custom styling.
+
+### Patches
+
+- Spinner: No longer appears to vibrate in Microsoft Edge (Oct 2018 Update).
+
+## 6.86.0
+Wed, 17 Oct 2018 01:29:55 GMT
+
+### Minor changes
+
+- Update theme generator to generate valid code output. Fix Pivot API to accurately reflect div interface.
+
+### Patches
+
+- FocusTrapZone: Add/remove focus and click handlers when props change
+
+## 6.85.0
+Tue, 16 Oct 2018 12:28:48 GMT
+
+### Minor changes
+
+- Dropdown: Adds a state property to be set when the Callout has been positioned identifying on what edge of the target it has rendered.
+
+### Patches
+
+- ScrollablePane: now uses React createRef, added test.
+
+## 6.84.1
+Mon, 15 Oct 2018 12:29:12 GMT
+
+### Patches
+
+- DetailsList: do not set select all button aria-describedby unless id it references exists
+- Added default font theme for Slider control to remove Fabric component dependency.
+- Fix ContextualMenuItem secondary text not read by screen reader due to aria-label containing only primary text."
+- Slider bug fix for min equals max
+- Panel: Fixed second scroll bar when content taller than panel
+- ShimmeredDetailsList: Added export to top level index file
+
+## 6.84.0
+Thu, 11 Oct 2018 23:13:31 GMT
+
+### Minor changes
+
+- Implement ImageFit.centerCover
+
+### Patches
+
+- Calendar: accessibility fixes for month option grid
+- Dropdown: Fix issue where correct option wasn't selected
+- Fix ContextualMenu example broken charm icons and specify hover delay input as type="number".
+- Remove 'Button Swap with Focus State' example
+- ScrollablePane: Update DetailsList example to fix bug where footer overlapped scroll bar
+- IconButton: Specifiy the color of the icon in IconButton so that it can be themed and change the hover color for the same reasons.
 
 ## 6.83.0
 Wed, 10 Oct 2018 12:29:05 GMT

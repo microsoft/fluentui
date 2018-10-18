@@ -48,6 +48,7 @@ export const styles: IStackComponent['styles'] = props => {
 
   return {
     root: [
+      theme.fonts.medium,
       {
         display: 'flex',
         flexDirection: horizontal ? 'row' : 'column',

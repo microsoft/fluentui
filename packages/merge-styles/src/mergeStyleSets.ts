@@ -106,9 +106,7 @@ export function mergeStyleSets(...styleSets: Array<IStyleSet<any> | undefined | 
     // we have guarded against falsey values just above.
     styleSet!;
 
-  if (styleSets.length > 1) {
-    concatenatedStyleSet = concatStyleSets(...styleSets);
-  }
+  concatenatedStyleSet = concatStyleSets(...styleSets);
 
   const registrations = [];
 
