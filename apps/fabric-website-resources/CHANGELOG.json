@@ -2,6 +2,34 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "version": "6.9.5",
+      "tag": "@uifabric/fabric-website-resources_v6.9.5",
+      "date": "Thu, 18 Oct 2018 20:22:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove api-extractor.disabled.json",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "e6b2514a003fb41c964fba14b071cb0046fd69eb"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.10.1 <7.0.0` to `>=6.10.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.30.0 <7.0.0` to `>=6.31.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.23.0 <7.0.0` to `>=6.23.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.87.0 <7.0.0` to `>=6.88.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.9.4",
       "tag": "@uifabric/fabric-website-resources_v6.9.4",
       "date": "Wed, 17 Oct 2018 01:29:55 GMT",

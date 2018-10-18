@@ -2,6 +2,39 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.39.1",
+      "tag": "@uifabric/experiments_v6.39.1",
+      "date": "Thu, 18 Oct 2018 20:22:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove api-extractor.disabled.json",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "e6b2514a003fb41c964fba14b071cb0046fd69eb"
+          },
+          {
+            "comment": "Fluent: Updating fluent styles for ChoiceGroup plus addressing feedback on Breadcrumb, Checkbox and Dropdown.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "1b150a00f86a233b9e895f75e4ea7a99eb9779eb"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.25.0` to `^0.25.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.5.5 <1.0.0` to `>=0.5.6 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.10.1 <7.0.0` to `>=6.10.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.87.0 <7.0.0` to `>=6.88.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.39.0",
       "tag": "@uifabric/experiments_v6.39.0",
       "date": "Wed, 17 Oct 2018 12:29:40 GMT",

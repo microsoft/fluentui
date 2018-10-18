@@ -438,8 +438,8 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       ...(getPageStyle ? getPageStyle(page) : {}),
       ...(!page.items
         ? {
-          height: page.height
-        }
+            height: page.height
+          }
         : {})
     };
   }
@@ -592,6 +592,11 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       } else {
         // Enqueue an idle bump
         this._onAsyncIdle();
+      }
+
+      // Notify the caller that rendering the new pages has completed
+      if (props.onPagesUpdated) {
+        props.onPagesUpdated(this.state.pages as IPage[]);
       }
     });
   }
@@ -820,12 +825,12 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     itemIndex: number,
     visibleRect: IRectangle
   ): {
-      // These return values are now no longer optional.
-      itemCount: number;
-      height: number;
-      data?: any;
-      key?: string;
-    } {
+    // These return values are now no longer optional.
+    itemCount: number;
+    height: number;
+    data?: any;
+    key?: string;
+  } {
     const { getPageSpecification } = this.props;
     if (getPageSpecification) {
       const pageData = getPageSpecification(itemIndex, visibleRect);
