@@ -1148,7 +1148,7 @@ class EventGroup {
 }
 
 // @public (undocumented)
-class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpandingCardState> {
+class ExpandingCardBase extends BaseComponent<IExpandingCardProps, IExpandingCardState> {
   constructor(props: IExpandingCardProps);
   // (undocumented)
   componentDidMount(): void;
@@ -1157,10 +1157,8 @@ class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpandingCardSta
   // (undocumented)
   static defaultProps: {
     compactCardHeight: number;
-    directionalHint: DirectionalHint;
     directionalHintFixed: boolean;
     expandedCardHeight: number;
-    gapSpace: number;
   }
   // (undocumented)
   render(): JSX.Element;
@@ -1526,7 +1524,7 @@ export function hoistMethods(destination: any, source: any, exclusions?: string[
 export function hoistStatics<TSource, TDest>(source: TSource, dest: TDest): TDest;
 
 // @public (undocumented)
-class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
+class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardState> {
   constructor(props: IHoverCardProps);
   // (undocumented)
   componentDidMount(): void;
@@ -1540,9 +1538,16 @@ class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
     instantOpenOnClick: boolean;
     openHotKey: KeyCodes;
     setInitialFocus: boolean;
+    type: HoverCardType;
   }
   // (undocumented)
   render(): JSX.Element;
+}
+
+// @public (undocumented)
+enum HoverCardType {
+  expanding = "ExpandingCard",
+  plain = "PlainCard"
 }
 
 // @public (undocumented)
@@ -3996,24 +4001,12 @@ interface IExpandingCard {
 }
 
 // @public
-interface IExpandingCardProps extends React.HTMLAttributes<HTMLDivElement | ExpandingCard> {
+interface IExpandingCardProps extends IBaseCardProps<IExpandingCard, IExpandingCardStyles, IExpandingCardStyleProps> {
   compactCardHeight?: number;
-  componentRef?: IRefObject<IExpandingCard>;
-  directionalHint?: DirectionalHint;
-  directionalHintFixed?: boolean;
   expandedCardHeight?: number;
-  firstFocus?: boolean;
-  gapSpace?: number;
   mode?: ExpandingCardMode;
-  onEnter?: (ev?: any) => void;
-  onLeave?: (ev?: any) => void;
   onRenderCompactCard?: IRenderFunction<IExpandingCardProps>;
   onRenderExpandedCard?: IRenderFunction<IExpandingCardProps>;
-  renderData?: any;
-  styles?: IExpandingCardStyles;
-  targetElement?: HTMLElement;
-  theme?: ITheme;
-  trapFocus?: boolean;
 }
 
 // @public (undocumented)
@@ -4025,11 +4018,18 @@ interface IExpandingCardState {
 }
 
 // @public (undocumented)
-interface IExpandingCardStyles {
+interface IExpandingCardStyleProps extends IBaseCardStyleProps {
+  compactCardHeight?: number;
+  expandedCardFirstFrameRendered?: boolean;
+  expandedCardHeight?: number;
+  needsScroll?: boolean;
+}
+
+// @public (undocumented)
+interface IExpandingCardStyles extends IBaseCardStyles {
   compactCard?: IStyle;
   expandedCard?: IStyle;
   expandedCardScroll?: IStyle;
-  root?: IStyle;
 }
 
 // @public (undocumented)
@@ -4452,9 +4452,10 @@ interface IHoverCard {
 }
 
 // @public
-interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement | HoverCard> {
+interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
   cardDismissDelay?: number;
   cardOpenDelay?: number;
+  className?: string;
   componentRef?: IRefObject<IHoverCard>;
   expandedCardOpenDelay?: number;
   expandingCardProps?: IExpandingCardProps;
@@ -4462,13 +4463,16 @@ interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement | HoverCar
   onCardHide?: () => void;
   onCardVisible?: () => void;
   openHotKey?: KeyCodes;
+  plainCardProps?: IPlainCardProps;
   setAriaDescribedBy?: boolean;
   setInitialFocus?: boolean;
   shouldBlockHoverCard?: () => void;
   sticky?: boolean;
-  styles?: IHoverCardStyles;
+  styles?: IStyleFunctionOrObject<IHoverCardStyleProps, IHoverCardStyles>;
   target?: HTMLElement | string;
+  theme?: ITheme;
   trapFocus?: boolean;
+  type?: HoverCardType;
 }
 
 // @public (undocumented)
@@ -4479,6 +4483,12 @@ interface IHoverCardState {
   mode?: ExpandingCardMode;
   // (undocumented)
   openMode?: OpenCardMode;
+}
+
+// @public (undocumented)
+interface IHoverCardStyleProps {
+  className?: string;
+  theme: ITheme;
 }
 
 // @public (undocumented)
@@ -5674,6 +5684,23 @@ interface IPivotStyles {
   root: IStyle;
   // (undocumented)
   text: IStyle;
+}
+
+// @public (undocumented)
+interface IPlainCard {
+}
+
+// @public
+interface IPlainCardProps extends IBaseCardProps<IPlainCard, IPlainCardStyles, IPlainCardStyleProps> {
+  onRenderPlainCard?: IRenderFunction<IPlainCardProps>;
+}
+
+// @public (undocumented)
+interface IPlainCardStyleProps extends IBaseCardStyleProps {
+}
+
+// @public (undocumented)
+interface IPlainCardStyles extends IBaseCardStyles {
 }
 
 // @public
@@ -7856,6 +7883,12 @@ enum PivotLinkSize {
   normal = 0
 }
 
+// @public (undocumented)
+class PlainCardBase extends BaseComponent<IPlainCardProps, {}> {
+  // (undocumented)
+  render(): JSX.Element;
+}
+
 // @public
 export function portalContainsElement(target: HTMLElement, parent?: HTMLElement): boolean;
 
@@ -8836,6 +8869,9 @@ module ZIndexes {
 // WARNING: Unsupported export: Fabric
 // WARNING: Unsupported export: Facepile
 // WARNING: Unsupported export: GroupedList
+// WARNING: Unsupported export: HoverCard
+// WARNING: Unsupported export: ExpandingCard
+// WARNING: Unsupported export: PlainCard
 // WARNING: Unsupported export: Icon
 // WARNING: Unsupported export: Image
 // WARNING: Unsupported export: KeytipLayer
