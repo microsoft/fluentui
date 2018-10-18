@@ -26,6 +26,16 @@ export interface ICalendarDayProps extends IBaseProps<ICalendarDay> {
   styles?: IStyleFunctionOrObject<ICalendarDayStyleProps, ICalendarDayStyles>;
 
   /**
+ * Theme (provided through customization).
+ */
+  theme?: ITheme;
+
+  /**
+   * Additional CSS class(es) to apply to the CalendarDay.
+   */
+  className?: string;
+
+  /**
    * Localized strings to use in the Calendar
    */
   strings: ICalendarStrings;
@@ -63,26 +73,26 @@ export interface ICalendarDayProps extends IBaseProps<ICalendarDay> {
    * The first day of the week for your locale.
    * @defaultvalue DayOfWeek.Sunday
    */
-  firstDayOfWeek?: DayOfWeek;
+  firstDayOfWeek: DayOfWeek;
 
   /**
    * Defines when the first week of the year should start, FirstWeekOfYear.FirstDay,
    * FirstWeekOfYear.FirstFullWeek or FirstWeekOfYear.FirstFourDayWeek are the possible values
    * @defaultvalue FirstWeekOfYear.FirstDay
    */
-  firstWeekOfYear?: FirstWeekOfYear;
+  firstWeekOfYear: FirstWeekOfYear;
 
   /**
    * The date range type indicating how  many days should be selected as the user
    * selects days
    * @defaultValue DateRangeType.Day
    */
-  dateRangeType?: DateRangeType;
+  dateRangeType: DateRangeType;
 
   /**
    * Customize navigation icons using ICalendarIconStrings
    */
-  navigationIcons?: ICalendarIconStrings;
+  navigationIcons: ICalendarIconStrings;
 
   /**
    * Value of today. If null, current time in client machine will be used.
@@ -91,9 +101,8 @@ export interface ICalendarDayProps extends IBaseProps<ICalendarDay> {
 
   /**
    * Callback function when the header is selected
-   * @param focus whether to set focus when executing the callback
    */
-  onHeaderSelect?: (focus: boolean) => void;
+  onHeaderSelect?: () => void;
 
   /**
    * Whether the calendar should show the week number (weeks 1 to 53) before each week row
@@ -104,7 +113,7 @@ export interface ICalendarDayProps extends IBaseProps<ICalendarDay> {
   /**
    * Apply additional formating to dates, for example localized date formatting.
    */
-  dateTimeFormatter?: ICalendarFormatDateCallbacks;
+  dateTimeFormatter: ICalendarFormatDateCallbacks;
 
   /**
    * Whether the calendar should show 6 weeks by default.
@@ -153,6 +162,21 @@ export interface ICalendarDayStyleProps {
   className?: string;
 
   // Insert CalendarDay style props below
+
+  /**
+   * Whether the header is clickable
+   */
+  headerIsClickable?: boolean;
+
+  /**
+   * The date range type
+   */
+  dateRangeType?: DateRangeType;
+
+  /**
+   * Whether week numbers are being shown
+   */
+  showWeekNumbers?: boolean;
 }
 
 export interface ICalendarDayStyles {
@@ -160,4 +184,77 @@ export interface ICalendarDayStyles {
    * Style for the root element.
    */
   root: IStyle;
+
+  /**
+   * The style for the header button and forward/back navigation button container
+   */
+  header: IStyle;
+
+  /**
+   * The style for the title text inside the header
+   */
+  monthAndYear: IStyle;
+
+  /**
+   * The style for the table containing the grid
+   */
+  table: IStyle;
+
+  /**
+   * The style for the wrapper around forward/back/close buttons
+   */
+  monthComponents: IStyle;
+
+  /**
+   * The style for the forward/back/close buttons
+   */
+  headerIconButton: IStyle;
+
+  /**
+   * The style to apply for disabled elements
+   */
+  disabledStyle: IStyle;
+
+  /**
+   * The style to apply to the grid cells for days
+   */
+  dayCell: IStyle;
+
+  /**
+   * The style to apply to grid cells for days in the selected range
+   */
+  daySelected: IStyle;
+
+  /**
+   * The style to apply to grid cells for week numbers
+   */
+  weekNumberCell: IStyle;
+
+  /**
+   * The style to apply to individual days that are outside the min/max date range
+   */
+  dayOutsideBounds: IStyle;
+
+  /**
+   * The style to apply to individual days that are outside the current month
+   */
+  dayOutsideNavigatedMonth: IStyle;
+
+  /**
+   * The style to apply to the button element within the day cells
+   */
+  dayButton: IStyle;
+
+  /**
+   * The style to apply to the individual button element that matches the "today" parameter
+   */
+  dayIsToday: IStyle;
+
+  /**
+   * The styles to apply to days for rounded corners. Can apply multiple to round multiple corners
+   */
+  topRightCornerDate: IStyle;
+  topLeftCornerDate: IStyle;
+  bottomRightCornerDate: IStyle;
+  bottomLeftCornerDate: IStyle;
 }

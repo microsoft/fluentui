@@ -290,15 +290,13 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
     }
   };
 
-  private _onHeaderSelect = (focus: boolean): void => {
+  private _onHeaderSelect = (): void => {
     this.setState({
       isDayPickerVisible: !this.state.isDayPickerVisible,
       isMonthPickerVisible: !this.state.isMonthPickerVisible
     });
 
-    if (focus) {
-      this._focusOnUpdate = true;
-    }
+    this._focusOnUpdate = true;
   };
 
   private _onGotoToday = (): void => {

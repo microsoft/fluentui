@@ -64,9 +64,8 @@ export interface ICalendarMonthProps extends IBaseProps<ICalendarMonth> {
 
   /**
    * Callback function when the header is selected
-   * @param focus whether to set focus when executing the callback
    */
-  onHeaderSelect?: (focus: boolean) => void;
+  onHeaderSelect?: () => void;
 
   /**
    * Apply additional formating to dates, for example localized date formatting.

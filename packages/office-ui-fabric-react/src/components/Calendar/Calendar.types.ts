@@ -1,9 +1,10 @@
 import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { IRefObject, IBaseProps, IStyleFunctionOrObject } from '../../Utilities';
-export { DayOfWeek, DateRangeType, FirstWeekOfYear };
 import { IStyle, ITheme } from '../../Styling';
 import { ICalendarDayProps } from './CalendarDay/CalendarDay.types';
 import { ICalendarMonthProps } from './CalendarMonth/CalendarMonth.types';
+
+export { DayOfWeek, DateRangeType, FirstWeekOfYear };
 
 export interface ICalendar {
   /** Sets focus to the selected date. */
