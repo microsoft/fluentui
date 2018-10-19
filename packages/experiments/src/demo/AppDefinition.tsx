@@ -11,22 +11,10 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
-          component: require<any>('../components/Announced/AnnouncedSearchResultsPage').AnnouncedSearchResultsPage,
+          component: require<any>('../components/Announced/AnnouncedPage').AnnouncedPage,
           key: 'Announced',
           name: 'Announced',
           url: '#/examples/announced'
-        },
-        {
-          component: require<any>('../components/Announced/AnnouncedAsynchronousPage').AnnouncedAsynchronousPage,
-          key: 'Announced - Asynchronous',
-          name: 'Announced - Asynchronous',
-          url: '#/examples/announced/asynchronous'
-        },
-        {
-          component: require<any>('../components/Announced/AnnouncedBulkLongRunningPage').AnnouncedBulkLongRunningPage,
-          key: 'Announced - Bulk Long Running',
-          name: 'Announced - Bulk Long Running',
-          url: '#/examples/announced/bulklongrunning'
         },
         {
           component: require<any>('../components/Button/ButtonPage').ButtonPage,

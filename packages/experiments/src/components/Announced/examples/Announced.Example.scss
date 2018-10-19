@@ -4,7 +4,7 @@
     border: 1px solid black;
     padding: 10px;
     line-height: 0;
-    overflow: hidden;
+    overflow: auto;
   }
 
   .ms-AnnouncedExamples-photoCell {
@@ -14,6 +14,7 @@
     box-sizing: border-box;
     width: 100px;
     height: 100px;
+    margin: 5px;
 
     &:focus {
       outline: none;
@@ -28,10 +29,6 @@
         border: 1px solid white;
         outline: 2px solid black;
       }
-    }
-
-    .ms-spinnerExamples {
-      padding-top: 50%;
     }
   }
 

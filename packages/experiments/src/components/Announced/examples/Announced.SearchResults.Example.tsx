@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Announced } from '../Announced';
+import { VerticalStack } from '../../Stack';
 import { TagPicker } from 'office-ui-fabric-react/lib/Pickers';
 
 const _testTags = [
@@ -25,10 +26,12 @@ export interface IAnnouncedSearchResultsExampleState {
   numberOfSuggestions: number;
 }
 
-export interface IAnnouncedSearchResultsExampleProps { }
+export interface IAnnouncedSearchResultsExampleProps {}
 
-export class AnnouncedSearchResultsExample extends React.Component<IAnnouncedSearchResultsExampleProps,
-  IAnnouncedSearchResultsExampleState> {
+export class AnnouncedSearchResultsExample extends React.Component<
+  IAnnouncedSearchResultsExampleProps,
+  IAnnouncedSearchResultsExampleState
+> {
   private timer: number;
 
   constructor(props: {}) {
@@ -44,26 +47,26 @@ export class AnnouncedSearchResultsExample extends React.Component<IAnnouncedSea
   }
 
   public render(): JSX.Element {
-    const { numberOfSuggestions } = this.state;
-
     return (
       <div>
-        Filter items in suggestions: This picker will filter added items from the search suggestions.
-        <Announced message={`${numberOfSuggestions} Suggestions Available`} id={`announced-${numberOfSuggestions}`} />
-        <TagPicker
-          onResolveSuggestions={this._onFilterChanged}
-          getTextFromItem={this._getTextFromItem}
-          pickerSuggestionsProps={{
-            suggestionsHeaderText: 'Suggested Tags',
-            noResultsFoundText: 'No Color Tags Found',
-            // suggestionsAvailableAlertText: `${numberOfSuggestions} Suggestions Available`
-          }}
-          inputProps={{
-            onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
-            onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
-            'aria-label': 'Tag Picker'
-          }}
-        />
+        <VerticalStack gap={10}>
+          <div>
+            Turn on Narrator and type a letter or two into the TagPicker. This picker will filter added items from the search suggestions.
+          </div>
+          <div>The Announced component should announce the number of search results found.</div>
+          {this._renderAnnounced()}
+          <TagPicker
+            onResolveSuggestions={this._onFilterChanged}
+            getTextFromItem={this._getTextFromItem}
+            pickerSuggestionsProps={{
+              suggestionsHeaderText: 'Suggested Tags',
+              noResultsFoundText: 'No Color Tags Found' // this alert handles the case when there are no suggestions available
+            }}
+            inputProps={{
+              'aria-label': 'Tag Picker'
+            }}
+          />
+        </VerticalStack>
       </div>
     );
   }
@@ -82,6 +85,20 @@ export class AnnouncedSearchResultsExample extends React.Component<IAnnouncedSea
     }
   }
 
+  private _renderAnnounced(): JSX.Element | undefined {
+    const { numberOfSuggestions } = this.state;
+    // only render if the suggestions have been rendered
+    const suggestions = document.getElementsByClassName('ms-Suggestions');
+    if (suggestions && suggestions[0]) {
+      return (
+        <Announced
+          message={numberOfSuggestions === 1 ? `${numberOfSuggestions} Color Tag Found` : `${numberOfSuggestions} Color Tags Found`}
+          id={`announced-${numberOfSuggestions}`}
+        />
+      );
+    }
+  }
+
   // tslint:disable-next-line:no-any
   private _getTextFromItem(item: any): any {
     return item.name;
@@ -90,8 +107,8 @@ export class AnnouncedSearchResultsExample extends React.Component<IAnnouncedSea
   private _onFilterChanged = (filterText: string, tagList: { key: string; name: string }[]): { key: string; name: string }[] => {
     return filterText
       ? _testTags
-        .filter(tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0)
-        .filter(tag => !this._listContainsDocument(tag, tagList))
+          .filter(tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0)
+          .filter(tag => !this._listContainsDocument(tag, tagList))
       : [];
   };
 

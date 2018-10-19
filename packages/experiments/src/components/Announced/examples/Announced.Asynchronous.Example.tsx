@@ -3,22 +3,22 @@ import { Announced } from '../Announced';
 import { createArray, createRef } from 'office-ui-fabric-react/lib/Utilities';
 import { Image } from 'office-ui-fabric-react/lib/Image';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import './Announced.Example.scss';
 import { ProgressIndicator } from 'office-ui-fabric-react/lib/ProgressIndicator';
+import { VerticalStack } from '../../Stack';
 
 export interface IAnnouncedAsynchronousExampleState {
   photos: { url: string; width: number; height: number }[];
   total: number;
   seconds: number;
-  announced: JSX.Element;
+  announced: JSX.Element | undefined;
   percentComplete: number;
+  loading: boolean;
 }
 
-export interface IAnnouncedAsynchronousExampleProps { }
+export interface IAnnouncedAsynchronousExampleProps {}
 
-/**
- * TODO: announce when focusing on a section that hasn't loaded yet
- */
 export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsynchronousExampleProps, IAnnouncedAsynchronousExampleState> {
   private _root = createRef<HTMLElement>();
   private timer: number;
@@ -31,22 +31,36 @@ export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsyn
       photos: this._createPhotos(),
       total: 0,
       seconds: 0,
-      announced: <Announced message="" />,
-      percentComplete: 0
+      announced: undefined,
+      percentComplete: 0,
+      loading: false
     };
 
     this._renderPhotos = this._renderPhotos.bind(this);
     this._renderAnnounced = this._renderAnnounced.bind(this);
     this._onFocusPhotoCell = this._onFocusPhotoCell.bind(this);
+    this._onToggleChange = this._onToggleChange.bind(this);
 
     this.increaseTotal = setInterval(() => {
-      if (this.state.total < this.state.photos.length) {
+      if (this.state.loading && this.state.total < this.state.photos.length) {
         this.setState({ total: this.state.total + 1 });
       }
     }, 2000);
 
     this.timer = setInterval(() => {
-      this.setState({ seconds: this.state.seconds + 1 });
+      if (this.state.loading) {
+        this.setState({ seconds: this.state.seconds + 1 });
+
+        if (this.state.seconds % this.delay === 0) {
+          this.setState({
+            announced: (
+              <Announced message={`${this.state.total}/${this.state.photos.length} photos loaded`} id={'announced-' + this.state.total} />
+            )
+          });
+        } else {
+          this.setState({ announced: undefined });
+        }
+      }
     }, 1000);
 
     this.delay = 10;
@@ -56,13 +70,19 @@ export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsyn
     const { percentComplete } = this.state;
 
     return (
-      <div>
+      <VerticalStack gap={10}>
+        <div>
+          Turn on Narrator and check the toggle to start loading photos. Announced should announce the number of photos loaded every 10
+          seconds.
+        </div>
+        <div>When focusing on a photo that hasn't loaded yet, the Announced component should announce "Photo loading".</div>
+        <Toggle label="Check to start loading photos" onText="Start/Resume" offText="Pause" onChange={this._onToggleChange} />
         <ProgressIndicator label={percentComplete < 1 ? 'Loading photos' : 'Finished loading photos'} percentComplete={percentComplete} />
         <FocusZone elementType="ul" className="ms-AnnouncedExamples-photoList">
           {this._renderAnnounced()}
           {this._renderPhotos()}
         </FocusZone>
-      </div>
+      </VerticalStack>
     );
   }
 
@@ -78,15 +98,14 @@ export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsyn
     }
   }
 
-  private _renderAnnounced(): JSX.Element {
-    const { seconds, total, photos } = this.state;
+  private _onToggleChange(): void {
+    this.setState({ loading: !this.state.loading });
+  }
 
-    if (seconds % this.delay === 0) {
-      // update after an amount of time specified by delay
-      const result = <Announced message={`${total}/${photos.length} photos loaded`} id={'announced-' + total} />;
-      return result;
-    }
-    return this.state.announced;
+  private _renderAnnounced(): JSX.Element | undefined {
+    const { announced } = this.state;
+
+    return announced;
   }
 
   private _createPhotos(): { url: string; width: number; height: number }[] {
@@ -104,7 +123,8 @@ export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsyn
     if (
       document.activeElement &&
       document.activeElement.children &&
-      document.activeElement.children[0].className.startsWith('ms-Spinner')
+      document.activeElement.children[0] &&
+      document.activeElement.children[0].children.length === 0
     ) {
       this.setState({ announced: <Announced message={`Photo loading`} /> });
     }
@@ -122,11 +142,7 @@ export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsyn
         ref={this._root}
         onFocus={this._onFocusPhotoCell}
       >
-        {this.state.total > index ? (
-          <Image src={photo.url} width={photo.width} height={photo.height} />
-        ) : (
-            <div />
-          )}
+        {this.state.total > index ? <Image src={photo.url} width={photo.width} height={photo.height} /> : <div />}
       </ul>
     ));
 
