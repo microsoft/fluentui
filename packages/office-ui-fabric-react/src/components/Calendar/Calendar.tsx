@@ -218,7 +218,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                     onKeyDown={this._onGotoTodayKeyDown}
                     tabIndex={0}
                   >
-                    {strings!.goToToday}
+                    <a href="#"> {strings!.goToToday}</a>
                   </button>
                 )}
               </div>

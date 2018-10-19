@@ -139,6 +139,9 @@ $Calendar-dayPicker-margin: 10px;
   padding: 0;
   background-color: transparent;
   line-height: 100%;
+}
+
+.daySelection .day {
   &:hover,
   &:active {
     @include high-contrast {
@@ -192,12 +195,12 @@ $Calendar-dayPicker-margin: 10px;
 }
 
 // Highlighted and hovered/focused dates.
-.dayIsHighlighted:hover,
-.pickerIsFocused .dayIsHighlighted {
+.daySelection.dayIsHighlighted:hover,
+.pickerIsFocused .dayIsHighlighted.daySelection {
   cursor: pointer;
   @include high-contrast {
     border: 2px solid Highlight;
-    span {
+    :not(.dayIsToday) span {
       color: Highlight;
     }
   }
@@ -783,4 +786,77 @@ $Calendar-dayPicker-margin: 10px;
 
 .bottomRightCornerDate {
   border-bottom-right-radius: 2px;
+}
+
+@include high-contrast {
+  // Selected week
+  .weekBackground {
+    border-top: 1px solid highlight;
+    border-bottom: 1px solid highlight;
+
+    &.bottomRightCornerDate.topRightCornerDate {
+      border-right: 1px solid highlight;
+      border-left: none;
+    }
+
+    &.bottomLeftCornerDate.topLeftCornerDate {
+      border-left: 1px solid highlight;
+      border-right: none;
+    }
+
+    :not(.dayIsToday) span {
+      color: highlight;
+    }
+  }
+
+  // Week hover
+  .weekSelection.dayHover {
+    border-top: 1px solid highlight;
+    border-bottom: 1px solid highlight;
+    &.bottomLeftCornerDate.topLeftCornerDate {
+      border-left: 1px solid highlight;
+    }
+    &.bottomRightCornerDate.topRightCornerDate {
+      border-right: 1px solid highlight;
+    }
+
+    &.dayPress :not(.dayIsToday) span {
+      color: highlight;
+    }
+  }
+
+  .monthSelection.dayHover {
+    &.bottomLeftCornerDate,
+    &.topLeftCornerDate {
+      border-left: 1px solid highlight;
+    }
+    &.bottomRightCornerDate,
+    &.topRightCornerDate {
+      border-right: 1px solid highlight;
+    }
+  }
+
+  .monthSelection.dayIsFocused.dayHover,
+  .monthSelection.dayIsUnfocused.dayHover {
+    &.topDate {
+      border-top: 1px solid highlight;
+      border-radius: 0px;
+    }
+    &.rightDate {
+      border-right: 1px solid highlight;
+      border-radius: 0px;
+    }
+    &.bottomDate {
+      border-bottom: 1px solid highlight;
+      border-radius: 0px;
+    }
+    &.leftdate {
+      border-left: 1px solid highlight;
+      border-radius: 0px;
+    }
+
+    &.dayPress :not(.dayIsToday) span {
+      color: highlight;
+    }
+  }
 }
