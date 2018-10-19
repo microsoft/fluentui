@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Fixed the column total vertical sync issue while resizing the column header by dragging them to the right until it gets overflowed and also make the vertical overflow as auto to make sure that the scroll bar  appears  only when there is a vertical overflow.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "momahesh@microsoft.com"
+}

@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/fluent-theme",
-      "comment": "Create new package for housing Fluent customizations.",
+      "comment": "Use variants addVariants utility function.",
       "type": "patch"
     }
   ],
