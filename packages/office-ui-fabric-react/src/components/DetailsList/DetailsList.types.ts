@@ -413,6 +413,11 @@ export interface IColumn {
   onColumnContextMenu?: (column?: IColumn, ev?: React.MouseEvent<HTMLElement>) => any;
 
   /**
+   * If provided, will be executed when the column is resized with the column's current width.
+   */
+  onColumnResize?: (width?: number) => void;
+
+  /**
    * If set will show a grouped icon next to the column header name.
    */
   isGrouped?: boolean;
