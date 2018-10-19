@@ -162,7 +162,7 @@
       "packageName": "@uifabric/fluent-theme",
       "projectFolder": "packages/fluent-theme",
       "versionPolicyName": "lockedMajor",
-      "shouldPublish": false
+      "shouldPublish": true
     }
   ]
 }
