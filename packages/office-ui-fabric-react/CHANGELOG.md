@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 17 Oct 2018 11:23:42 GMT and should not be manually modified.
+This log was last generated on Fri, 19 Oct 2018 11:27:30 GMT and should not be manually modified.
+
+## 5.129.0
+Fri, 19 Oct 2018 11:27:30 GMT
+
+### Minor changes
+
+- Add onPagesUpdated optional prop to List component
+
+### Patches
+
+- FocusTrapZone: Add/remove focus and click handlers when props change
+- adding commandBarButtonAs to the correct interface
+- Spinner: No longer appears to vibrate in place in Edge (Oct 2018 Update)
 
 ## 5.128.2
 Wed, 17 Oct 2018 11:23:42 GMT
