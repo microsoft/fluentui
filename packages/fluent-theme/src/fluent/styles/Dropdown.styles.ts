@@ -1,5 +1,4 @@
 import { IDropdownStyleProps } from 'office-ui-fabric-react/lib/Dropdown';
-import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
 import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { fluentBorderRadius } from './styleConstants';
 import { CommunicationColors, SharedColors, NeutralColors } from '../FluentColors';
@@ -66,11 +65,16 @@ export const DropdownStyles = (props: IDropdownStyleProps) => {
         selectors: {
           // Title and border states. For :hover and :focus even if the styles are the same we need to keep them separate for specificity
           // reasons in order :active borderColor to work.
-          ['&:hover .ms-Dropdown-title']: { color: semanticColors.menuItemTextHovered, borderColor: palette.neutralPrimary },
-          ['&:focus .ms-Dropdown-title']: { color: semanticColors.menuItemTextHovered, borderColor: palette.neutralPrimary },
+          ['&:hover .ms-Dropdown-title']: {
+            color: semanticColors.menuItemTextHovered,
+            borderColor: !isOpen ? palette.neutralPrimary : CommunicationColors.primary
+          },
+          ['&:focus .ms-Dropdown-title']: {
+            color: semanticColors.menuItemTextHovered,
+            borderColor: !isOpen ? palette.neutralPrimary : CommunicationColors.primary
+          },
           ['&:active .ms-Dropdown-title']: {
             color: semanticColors.menuItemTextHovered,
-            fontWeight: FontWeights.semibold,
             borderColor: CommunicationColors.primary
           },
 
@@ -94,10 +98,12 @@ export const DropdownStyles = (props: IDropdownStyleProps) => {
     ],
     title: [
       {
-        borderColor: !hasError ? NeutralColors.gray80 : SharedColors.red10,
+        borderColor: NeutralColors.gray80,
         borderRadius: isOpen ? titleOpenBorderRadius : fluentBorderRadius,
         padding: `0 28px 0 8px`
       },
+      hasError && { borderColor: !isOpen ? SharedColors.red10 : SharedColors.red20 },
+      isOpen && !hasError && { borderColor: CommunicationColors.primary },
       disabled && { color: semanticColors.disabledText }
     ],
     caretDownWrapper: {

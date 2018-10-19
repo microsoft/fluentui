@@ -27,7 +27,7 @@ export const BreadcrumbStyles = (props: IBreadcrumbStyleProps) => {
     },
     itemLink: {
       lineHeight: 36,
-      fontSize: FontSizes.size20,
+      fontSize: FontSizes.size18,
       outline: 'none',
       fontWeight: 400,
       color: semanticColors.bodySubtext,
@@ -40,8 +40,9 @@ export const BreadcrumbStyles = (props: IBreadcrumbStyleProps) => {
           // Necessary due to changes of Link component not using getFocusStyle
           outline: 'none'
         },
-        [MediumScreenSelector]: { fontSize: FontSizes.size18, lineHeight: 32 },
-        [MinimumScreenSelector]: { fontSize: FontSizes.size14, lineHeight: 24 },
+        // Leaving this breakpoint selectors here as there might be some design discussions regarding scaling breadcrumb.
+        [MediumScreenSelector]: { fontSize: FontSizes.size18, lineHeight: 36 },
+        [MinimumScreenSelector]: { fontSize: FontSizes.size18, lineHeight: 36 },
         ...stateSelectors
       }
     },
