@@ -1,11 +1,13 @@
 import * as React from 'react';
-import { BaseComponent, divProperties, getNativeProps, getId, KeyCodes, getDocument, createRef } from '../../Utilities';
-import { mergeStyles } from '../../Styling';
 
-import { IHoverCardProps, IHoverCardStyles } from './HoverCard.types';
+import { BaseComponent, divProperties, getNativeProps, getId, KeyCodes, getDocument, createRef, classNamesFunction } from '../../Utilities';
+import { IHoverCardProps, IHoverCardStyles, IHoverCardStyleProps, OpenCardMode, HoverCardType } from './HoverCard.types';
 import { ExpandingCard } from './ExpandingCard';
-import { ExpandingCardMode, OpenCardMode } from './ExpandingCard.types';
-import { getStyles } from './HoverCard.styles';
+import { ExpandingCardMode, IExpandingCardProps } from './ExpandingCard.types';
+import { PlainCard } from './PlainCard/PlainCard';
+import { IPlainCardProps } from './PlainCard/PlainCard.types';
+
+const getClassNames = classNamesFunction<IHoverCardStyleProps, IHoverCardStyles>();
 
 export interface IHoverCardState {
   isHoverCardVisible?: boolean;
@@ -13,14 +15,15 @@ export interface IHoverCardState {
   openMode?: OpenCardMode;
 }
 
-export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
+export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardState> {
   public static defaultProps = {
     cardOpenDelay: 500,
     cardDismissDelay: 100,
     expandedCardOpenDelay: 1500,
     instantOpenOnClick: false,
     setInitialFocus: false,
-    openHotKey: KeyCodes.c
+    openHotKey: KeyCodes.c,
+    type: HoverCardType.expanding
   };
 
   // The wrapping div that gets the hover events
@@ -29,7 +32,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
   private _openTimerId: number;
   private _currentMouseTarget: EventTarget | null;
 
-  private _styles: IHoverCardStyles;
+  private _classNames: { [key in keyof IHoverCardStyles]: string };
 
   // Constructor
   constructor(props: IHoverCardProps) {
@@ -81,33 +84,51 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
 
   // Render
   public render(): JSX.Element {
-    const { expandingCardProps, children, id, setAriaDescribedBy = true, styles: customStyles } = this.props;
+    const {
+      expandingCardProps,
+      children,
+      id,
+      setAriaDescribedBy = true,
+      styles: customStyles,
+      theme,
+      className,
+      type,
+      plainCardProps,
+      trapFocus,
+      setInitialFocus
+    } = this.props;
     const { isHoverCardVisible, mode, openMode } = this.state;
     const hoverCardId = id || getId('hoverCard');
 
-    this._styles = getStyles(customStyles);
+    this._classNames = getClassNames(customStyles, {
+      theme: theme!,
+      className
+    });
+
+    // Common props for both card types.
+    const commonCardProps = {
+      ...getNativeProps(this.props, divProperties),
+      id: hoverCardId,
+      trapFocus: !!trapFocus,
+      firstFocus: setInitialFocus || openMode === OpenCardMode.hotKey,
+      targetElement: this._getTargetElement(),
+      onEnter: this._cardOpen,
+      onLeave: this._executeCardDismiss
+    };
+
+    const finalExpandedCardProps: IExpandingCardProps = { ...expandingCardProps, ...commonCardProps, mode };
+    const finalPlainCardProps: IPlainCardProps = { ...plainCardProps, ...commonCardProps };
 
     return (
       <div
-        className={mergeStyles(this._styles.host)}
+        className={this._classNames.host}
         ref={this._hoverCard}
         aria-describedby={setAriaDescribedBy && isHoverCardVisible ? hoverCardId : undefined}
         data-is-focusable={!Boolean(this.props.target)}
       >
         {children}
-        {isHoverCardVisible && (
-          <ExpandingCard
-            {...getNativeProps(this.props, divProperties)}
-            id={hoverCardId}
-            trapFocus={!!this.props.trapFocus}
-            firstFocus={this.props.setInitialFocus || openMode === OpenCardMode.hotKey}
-            targetElement={this._getTargetElement()}
-            onEnter={this._cardOpen}
-            onLeave={this._executeCardDimiss}
-            mode={mode}
-            {...expandingCardProps}
-          />
-        )}
+        {isHoverCardVisible &&
+          (type === HoverCardType.expanding ? <ExpandingCard {...finalExpandedCardProps} /> : <PlainCard {...finalPlainCardProps} />)}
       </div>
     );
   }
@@ -169,11 +190,11 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
 
     // Dismiss if not sticky and currentTarget is the same element that mouse last entered
     if (!this.props.sticky && (this._currentMouseTarget === ev.currentTarget || ev.which === KeyCodes.escape)) {
-      this._executeCardDimiss();
+      this._executeCardDismiss();
     }
   };
 
-  private _executeCardDimiss = (): void => {
+  private _executeCardDismiss = (): void => {
     this._async.clearTimeout(this._openTimerId);
     this._async.clearTimeout(this._dismissTimerId);
     this._dismissTimerId = this._async.setTimeout(() => {
