@@ -53,7 +53,8 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
           }
         },
         a: {
-          color: `${navTextColor} !important`
+          color: `${navTextColor} !important`,
+          outline: 'none'
         }
       }
     },
@@ -139,7 +140,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
       paddingLeft: navFloatingItemIndentSize,
       selectors: {
         ':hover': {
-          backgroundColor: !!nestingLevel && nestingLevel > 0 ? navItemHoverColor : 'navItemHoverColor'
+          backgroundColor: !!nestingLevel && nestingLevel > 0 ? navItemHoverColor : 'unset'
         },
         ':active': {
           backgroundColor: navItemSelectedColor
