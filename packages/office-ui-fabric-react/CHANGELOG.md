@@ -1,6 +1,26 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 08 Oct 2018 11:23:10 GMT and should not be manually modified.
+This log was last generated on Fri, 19 Oct 2018 11:27:30 GMT and should not be manually modified.
+
+## 5.129.0
+Fri, 19 Oct 2018 11:27:30 GMT
+
+### Minor changes
+
+- Add onPagesUpdated optional prop to List component
+
+### Patches
+
+- FocusTrapZone: Add/remove focus and click handlers when props change
+- adding commandBarButtonAs to the correct interface
+- Spinner: No longer appears to vibrate in place in Edge (Oct 2018 Update)
+
+## 5.128.2
+Wed, 17 Oct 2018 11:23:42 GMT
+
+### Patches
+
+- Fix Persona regression in Fabric V5: this.props.children was accidentally deleted from Persona in V5, put it back.
 
 ## 5.128.1
 Mon, 08 Oct 2018 11:23:10 GMT
