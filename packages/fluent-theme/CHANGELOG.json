@@ -1,0 +1,24 @@
+{
+  "name": "@uifabric/fluent-theme",
+  "entries": [
+    {
+      "version": "0.1.2",
+      "tag": "@uifabric/fluent-theme_v0.1.2",
+      "date": "Fri, 19 Oct 2018 12:29:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Create new package for housing Fluent customizations.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "355208349a3fe8dc1d6437a40c2b7122015f2bec"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.88.0 <7.0.0` to `>=6.89.0 <7.0.0`"
+          }
+        ]
+      }
+    }
+  ]
+}
