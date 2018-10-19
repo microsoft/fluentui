@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/styling",
+      "comment": "Fix unnecessary `IRGB` export. This interface is only used by internals. Use the `IRGB` interface declaration from office-ui-fabric-react package instead.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/styling",
+  "email": "cliff.koh@microsoft.com"
+}
