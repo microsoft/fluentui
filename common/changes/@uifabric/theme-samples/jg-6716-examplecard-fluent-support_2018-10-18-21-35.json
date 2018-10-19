@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/theme-samples",
-      "comment": "Add theme defintions for Word, Teams and Fluent.",
+      "comment": "Add sample theme defintions for Word and Teams.",
       "type": "patch"
     }
   ],
