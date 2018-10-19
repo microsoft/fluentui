@@ -671,15 +671,26 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     }
   }
 
+  private _notifyColumnsResized(): void {
+    this.state.adjustedColumns.forEach(column => {
+      if (column.onColumnResize) {
+        column.onColumnResize(column.currentWidth);
+      }
+    });
+  }
+
   private _adjustColumns(newProps: IDetailsListProps, forceUpdate?: boolean, resizingColumnIndex?: number): void {
     const adjustedColumns = this._getAdjustedColumns(newProps, forceUpdate, resizingColumnIndex);
     const { width: viewportWidth } = this.props.viewport!;
 
     if (adjustedColumns) {
-      this.setState({
-        adjustedColumns: adjustedColumns,
-        lastWidth: viewportWidth
-      });
+      this.setState(
+        {
+          adjustedColumns: adjustedColumns,
+          lastWidth: viewportWidth
+        },
+        this._notifyColumnsResized
+      );
     }
   }
 
