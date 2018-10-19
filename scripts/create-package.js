@@ -11,10 +11,13 @@ const generate = argv.generate === undefined;
 
 // Convert any package names given in dash-case (e.g. my-new-package) to PascalCase (e.g. MyNewPackage)
 // for display purposes in certain template files (e.g. README.md)
-let pascalCasePackage = newPackageName.replace(/-[a-zA-Z]/g, function(match, index) {
-  return newPackageName[index + 1].toUpperCase();
-});
-pascalCasePackage = pascalCasePackage.substring(0, 1).toUpperCase() + pascalCasePackage.substring(1);
+let pascalCasePackage = '';
+if (newPackageName) {
+  pascalCasePackage = newPackageName.replace(/-[a-zA-Z]/g, function(match, index) {
+    return newPackageName[index + 1].toUpperCase();
+  });
+  pascalCasePackage = pascalCasePackage.substring(0, 1).toUpperCase() + pascalCasePackage.substring(1);
+}
 
 // Current date used in CHANGELOG.md
 const today = new Date().toUTCString();
@@ -44,7 +47,6 @@ const steps = [
   { template: 'WebpackConfig', output: 'webpack.config.js' },
   { template: 'WebpackServeConfig', output: 'webpack.serve.config.js' },
   { template: 'VsCodeLaunch', output: path.join('.vscode', 'launch.json') },
-  { template: 'VsCodeSettings', output: path.join('.vscode', 'settings.json') },
   { template: 'Tests', output: path.join('config', 'tests.js') },
   { template: 'Tests', output: path.join('src', 'common', 'tests.js') },
   { template: 'IndexTs', output: path.join('src', 'index.ts') },
