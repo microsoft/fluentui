@@ -7,7 +7,6 @@ import { getNeutralVariant, getSoftVariant, getStrongVariant } from './variants'
  *
  * @export
  * @param {ITheme} theme Theme for which variants will be added.
- * @returns {ITheme} Theme with variants in schemes property.
  */
 export function addVariants(theme: ITheme): void {
   theme.schemes = {
