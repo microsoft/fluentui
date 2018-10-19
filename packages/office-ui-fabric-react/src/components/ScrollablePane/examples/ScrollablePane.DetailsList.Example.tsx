@@ -138,7 +138,7 @@ export class ScrollablePaneDetailsListExample extends React.Component<
           position: 'relative'
         }}
       >
-        <ScrollablePane componentRef={this._scrollablePane} scrollbarVisibility={ScrollbarVisibility.always}>
+        <ScrollablePane componentRef={this._scrollablePane} scrollbarVisibility={ScrollbarVisibility.auto}>
           <Sticky stickyPosition={StickyPositionType.Header}>{selectionDetails}</Sticky>
           <TextField
             label="Filter by name:"
@@ -210,21 +210,24 @@ function onRenderDetailsHeader(props: IDetailsHeaderProps, defaultRender?: IRend
 function onRenderDetailsFooter(props: IDetailsFooterProps, defaultRender?: IRenderFunction<IDetailsFooterProps>): JSX.Element {
   return (
     <Sticky stickyPosition={StickyPositionType.Footer} isScrollSynced={true}>
-      <DetailsRow
-        columns={props.columns}
-        item={{
-          key: 'footer',
-          test1: 'Total 1',
-          test2: 'Total 2',
-          test3: 'Total 3',
-          test4: 'Total 4',
-          test5: 'Total 5',
-          test6: 'Total 6'
-        }}
-        itemIndex={-1}
-        selection={props.selection}
-        selectionMode={(props.selection && props.selection.mode) || SelectionMode.none}
-      />
+      <div style={{ display: 'inline-block' }}>
+        <DetailsRow
+          columns={props.columns}
+          item={{
+            key: 'footer',
+            test1: 'Total 1',
+            test2: 'Total 2',
+            test3: 'Total 3',
+            test4: 'Total 4',
+            test5: 'Total 5',
+            test6: 'Total 6'
+          }}
+          itemIndex={-1}
+          selection={props.selection}
+          selectionMode={(props.selection && props.selection.mode) || SelectionMode.none}
+          viewport={props.viewport}
+        />
+      </div>
     </Sticky>
   );
 }

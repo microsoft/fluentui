@@ -1,5 +1,5 @@
 /* tslint:disable */
-import { IStyle, AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
+import { IStyle, AnimationClassNames, getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
 import { INavStyleProps, INavStyles } from './Nav.types';
 
 export type INavItemStyle = {
@@ -33,7 +33,7 @@ const navFloatingItemIndentSize = 20;
 const BackDropSelector = '@supports (backdrop-filter: blur(20px)) or (-webkit-backdrop-filter: blur(20px))';
 
 export const getStyles = (props: INavStyleProps): INavStyles => {
-  const { isSelected, hasChildren, nestingLevel, isCollapsed, scrollTop, isChildLinkSelected, hasGroupName } = props;
+  const { isSelected, hasChildren, nestingLevel, isCollapsed, scrollTop, isChildLinkSelected, hasGroupName, theme } = props;
 
   return {
     root: {
@@ -54,12 +54,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         },
         a: {
           color: `${navTextColor} !important`,
-          outline: 'none',
-          selectors: {
-            ':focus': {
-              backgroundColor: navItemSelectedColor
-            }
-          }
+          outline: 'none'
         }
       }
     },
@@ -67,7 +62,6 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
       height: !!nestingLevel && nestingLevel > 0 ? navChildItemHeight : navItemHeight,
       cursor: 'pointer',
       paddingLeft: !!nestingLevel && nestingLevel > 0 ? nestingLevel * navItemIndentSize : 'inherit',
-
       selectors: {
         ':hover': {
           backgroundColor: hasChildren ? navItemWithChildBgColor : navItemHoverColor
@@ -146,7 +140,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
       paddingLeft: navFloatingItemIndentSize,
       selectors: {
         ':hover': {
-          backgroundColor: !!nestingLevel && nestingLevel > 0 ? navItemHoverColor : 'navItemHoverColor'
+          backgroundColor: !!nestingLevel && nestingLevel > 0 ? navItemHoverColor : 'unset'
         },
         ':active': {
           backgroundColor: navItemSelectedColor
@@ -179,7 +173,17 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         }
       },
       textAlign: 'left'
-    }
+    },
+    focusedStyle: [
+      getFocusStyle(theme, undefined, undefined, undefined, 'transparent', undefined),
+      {
+        display: 'block',
+        position: 'relative',
+        height: !!nestingLevel && nestingLevel > 0 ? navChildItemHeight : navItemHeight,
+        width: '100%',
+        lineHeight: !!nestingLevel && nestingLevel > 0 ? navChildItemHeight : navItemHeight
+      }
+    ]
   };
 };
 

@@ -23,10 +23,11 @@
     };
 
     var isProduction = (
-      document.location.search.indexOf('?min=0') === -1 && (
+      (document.location.search.indexOf('localhost') === -1 && document.location.search.indexOf('127.0.0.1') === -1)
+      || (document.location.search.indexOf('?min=0') === -1 && (
         document.location.search.indexOf('?min=1') > -1 ||
         location.pathname === '/fabric-react/master/'
-      ));
+      )));
 
     function loadScript(n) {
       for (var i = 0; i < n.length; i++) {
@@ -37,12 +38,12 @@
       }
     }
     loadScript(isProduction ? [
-      '//cdnjs.cloudflare.com/ajax/libs/react/16.3.1/umd/react.production.min.js',
-      '//cdnjs.cloudflare.com/ajax/libs/react-dom/16.3.1/umd/react-dom.production.min.js',
+      '//cdnjs.cloudflare.com/ajax/libs/react/16.3.2/umd/react.production.min.js',
+      '//cdnjs.cloudflare.com/ajax/libs/react-dom/16.3.2/umd/react-dom.production.min.js',
       'demo-app.js'
     ] : [
-        '//cdnjs.cloudflare.com/ajax/libs/react/16.3.1/umd/react.development.js',
-        '//cdnjs.cloudflare.com/ajax/libs/react-dom/16.3.1/umd/react-dom.development.js',
+        './node_modules/react/umd/react.development.js',
+        './node_modules/react-dom/umd/react-dom.development.js',
         'demo-app.js'
       ]);
   </script>

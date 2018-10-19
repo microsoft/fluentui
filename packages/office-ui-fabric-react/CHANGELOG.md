@@ -1,6 +1,54 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 16 Oct 2018 12:28:48 GMT and should not be manually modified.
+This log was last generated on Fri, 19 Oct 2018 12:29:20 GMT and should not be manually modified.
+
+## 6.89.0
+Fri, 19 Oct 2018 12:29:20 GMT
+
+### Minor changes
+
+- HoverCard: Add BasicCard as an option when need to render a non-expanding HoverCard. Refactor mergeStyle API plus refactor file organization.
+
+### Patches
+
+- Revert getItemClassNames API change to fix memoization bug due to Object usage rather than primitive arguments list."
+- Added 'break' statement in PeoplePicker component example. Without it, changing picker type to 'Process Selection' was rendering 'Controlled Picker' instead.
+
+## 6.88.0
+Thu, 18 Oct 2018 20:22:36 GMT
+
+### Minor changes
+
+- adding groups prop to pass parent group's children info
+- Add onPagesUpdated optional prop to List component
+
+### Patches
+
+- Remove api-extractor.disabled.json
+- Fix accessibility issue when user arrow down suggestion, screen reader is not announcing the selected result
+
+## 6.87.0
+Wed, 17 Oct 2018 12:29:40 GMT
+
+### Minor changes
+
+- Breadcrumb: move style interfaces to the types file to be included in the export and documentation.
+- DetailsList: update the styles with 2 new regions headerWrapper and contentWrapper providing easy className hooks to pass custom styling.
+
+### Patches
+
+- Spinner: No longer appears to vibrate in Microsoft Edge (Oct 2018 Update).
+
+## 6.86.0
+Wed, 17 Oct 2018 01:29:55 GMT
+
+### Minor changes
+
+- Update theme generator to generate valid code output. Fix Pivot API to accurately reflect div interface.
+
+### Patches
+
+- FocusTrapZone: Add/remove focus and click handlers when props change
 
 ## 6.85.0
 Tue, 16 Oct 2018 12:28:48 GMT
