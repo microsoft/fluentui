@@ -126,9 +126,9 @@ export class AnnouncedBulkLongRunningExample extends React.Component<
     );
   }
 
-  private _renderAnnounced(numberofItems: number): JSX.Element | undefined {
-    if (numberofItems > 0) {
-      return <Announced message={`${numberofItems} items moved`} />;
+  private _renderAnnounced(numberOfItems: number): JSX.Element | undefined {
+    if (numberOfItems > 0) {
+      return <Announced message={numberOfItems === 1 ? `${numberOfItems} item moved` : `${numberOfItems} items moved`} />;
     }
     return;
   }
