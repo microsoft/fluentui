@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 03 Oct 2018 11:23:42 GMT and should not be manually modified.
+This log was last generated on Fri, 19 Oct 2018 11:27:30 GMT and should not be manually modified.
+
+## 5.45.1
+Fri, 19 Oct 2018 11:27:30 GMT
+
+### Patches
+
+- Move commandBarButtonAs property to the correct ICommandBarItemProps interface
 
 ## 5.45.0
 Wed, 03 Oct 2018 11:23:42 GMT
