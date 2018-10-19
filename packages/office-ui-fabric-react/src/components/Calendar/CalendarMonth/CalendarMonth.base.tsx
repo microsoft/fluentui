@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, css, getRTL, createRef, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent, css, getRTL, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { FocusZone } from '../../FocusZone';
 import {
   addYears,
@@ -14,13 +14,12 @@ import { Icon } from '../../Icon';
 import { ICalendarMonthProps, ICalendarMonthStyles, ICalendarMonthStyleProps } from './CalendarMonth.types';
 import { getStyles } from './CalendarMonth.styles';
 import { defaultIconStrings, defaultDateTimeFormatterCallbacks } from '../Calendar.base';
-import { DefaultButton, IButton, BaseButton } from 'office-ui-fabric-react/lib/Button';
 import { KeyCodes } from '@uifabric/utilities';
 
 const getClassNames = classNamesFunction<ICalendarMonthStyleProps, ICalendarMonthStyles>();
 
 export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, {}> {
-  private _navigatedMonth = createRef<IButton>();
+  private _navigatedMonth: HTMLButtonElement;
 
   public static defaultProps: Partial<ICalendarMonthProps> = {
     styles: getStyles,
@@ -68,7 +67,7 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, {}> {
     return (
       <div className={classNames.root}>
         <div className={classNames.headerContainer}>
-          <DefaultButton
+          <button
             className={classNames.currentYearButton}
             onClick={this._onHeaderSelect}
             onKeyDown={this._onButtonKeyDown(this._onHeaderSelect)}
@@ -77,9 +76,9 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, {}> {
             tabIndex={!!onHeaderSelect ? 0 : -1} // prevent focus if there's no action for the button
           >
             {dateFormatter.formatYear(navigatedDate)}
-          </DefaultButton>
+          </button>
           <div className={classNames.yearNavigationButtonsContainer}>
-            <DefaultButton
+            <button
               className={css(classNames.yearNavigationButton, {
                 [classNames.disabledStyle]: !isPrevYearInBounds
               })}
@@ -93,8 +92,8 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, {}> {
               }
             >
               <Icon iconName={getRTL() ? rightNavigationIcon : leftNavigationIcon} />
-            </DefaultButton>
-            <DefaultButton
+            </button>
+            <button
               className={css(classNames.yearNavigationButton, {
                 [classNames.disabledStyle]: !isNextYearInBounds
               })}
@@ -108,7 +107,7 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, {}> {
               }
             >
               <Icon iconName={getRTL() ? leftNavigationIcon : rightNavigationIcon} />
-            </DefaultButton>
+            </button>
           </div>
         </div>
         <FocusZone>
@@ -124,8 +123,8 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, {}> {
                 (maxDate ? compareDatePart(getMonthStart(indexedMonth), maxDate) < 1 : true);
 
               return (
-                <DefaultButton
-                  componentRef={isNavigatedMonth ? this._navigatedMonth : undefined}
+                <button
+                  ref={isNavigatedMonth ? this._setNavigatedMonthRef : undefined}
                   role={'gridcell'}
                   className={css(classNames.monthButton, {
                     [classNames.currentMonth]: highlightCurrentMonth && isCurrentMonth!,
@@ -141,7 +140,7 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, {}> {
                   data-is-focusable={isInBounds ? true : undefined}
                 >
                   {month}
-                </DefaultButton>
+                </button>
               );
             })}
           </div>
@@ -152,12 +151,16 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, {}> {
 
   public focus = () => {
     if (this._navigatedMonth && this._navigatedMonth.value) {
-      this._navigatedMonth.value.focus();
+      this._navigatedMonth.focus();
     }
   };
 
-  private _onButtonKeyDown = (callback: () => void): ((ev: React.KeyboardEvent<BaseButton>) => void) => {
-    return (ev: React.KeyboardEvent<BaseButton>) => {
+  private _setNavigatedMonthRef = (element: HTMLButtonElement) => {
+    this._navigatedMonth = element;
+  }
+
+  private _onButtonKeyDown = (callback: () => void): ((ev: React.KeyboardEvent<HTMLButtonElement>) => void) => {
+    return (ev: React.KeyboardEvent<HTMLButtonElement>) => {
       switch (ev.which) {
         case KeyCodes.enter:
         case KeyCodes.space:

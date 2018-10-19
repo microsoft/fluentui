@@ -90,10 +90,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
     });
 
     return (
-      <div
-        className={classNames.root}
-        id={dayPickerId}
-      >
+      <div className={classNames.root} id={dayPickerId}>
         <div className={classNames.header}>
           <button
             aria-live="polite"
@@ -102,7 +99,9 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
             id={monthAndYearId}
             className={classNames.monthAndYear}
             onClick={this._onHeaderSelect}
-            onKeyDown={this._onButtonKeyDown(this._onHeaderSelect)}>
+            data-is-focusable={!!onHeaderSelect}
+            onKeyDown={this._onButtonKeyDown(this._onHeaderSelect)}
+          >
             {dateTimeFormatter.formatMonthYear(navigatedDate, strings)}
           </button>
           {this.renderMonthNavigationButtons(classNames, dayPickerId)}
@@ -159,7 +158,6 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
               ? strings.prevMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate, -1).getMonth()]
               : undefined
           }
-          role="button"
         >
           <Icon iconName={leftNavigationIcon} />
         </button>
@@ -177,7 +175,6 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
               ? strings.nextMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate, 1).getMonth()]
               : undefined
           }
-          role="button"
         >
           <Icon iconName={rightNavigationIcon} />
         </button>
@@ -187,13 +184,13 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
             onClick={this._onClose}
             onKeyDown={this._onButtonKeyDown(this._onClose)}
             aria-label={strings.closeButtonAriaLabel}
-            role="button"
           >
             <Icon iconName={closeNavigationIcon} />
           </button>
         )}
-      </div>);
-  }
+      </div>
+    );
+  };
 
   private renderMonthHeaderRow = (classNames: IProcessedStyleSet<ICalendarDayStyles>): JSX.Element => {
     const { showWeekNumbers, strings, firstDayOfWeek, allFocusable } = this.props;
@@ -203,7 +200,6 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
         {strings.shortDays.map((val, index) => (
           <th
             className={classNames.dayCell}
-            role="gridcell"
             scope="col"
             key={index}
             title={strings.days[(index + firstDayOfWeek) % DAYS_IN_WEEK]}
@@ -215,41 +211,34 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
         ))}
       </tr>
     );
-  }
+  };
 
   private renderWeekRow = (classNames: IProcessedStyleSet<ICalendarDayStyles>, week: IDayInfo[], weekIndex: number): JSX.Element => {
     const { showWeekNumbers, firstDayOfWeek, firstWeekOfYear, navigatedDate, strings } = this.props;
     const { weeks } = this.state;
     const weekNumbers = showWeekNumbers ? getWeekNumbersInMonth(weeks!.length, firstDayOfWeek, firstWeekOfYear, navigatedDate) : null;
 
-    const titleString = weekNumbers
-      ? strings.weekNumberFormatString && format(strings.weekNumberFormatString, weekNumbers[weekIndex])
-      : '';
+    const titleString = weekNumbers ? strings.weekNumberFormatString && format(strings.weekNumberFormatString, weekNumbers[weekIndex]) : '';
 
     return (
       <tr key={weekNumbers ? weekNumbers[weekIndex] : weekIndex}>
         {showWeekNumbers &&
           weekNumbers && (
-            <th
-              className={classNames.weekNumberCell}
-              key={weekIndex}
-              title={titleString}
-              aria-label={titleString}
-              scope="row"
-            >
+            <th className={classNames.weekNumberCell} key={weekIndex} title={titleString} aria-label={titleString} scope="row">
               <span>{weekNumbers[weekIndex]}</span>
             </th>
           )}
         {week.map((day, dayIndex) => this.renderDayCells(classNames, day, dayIndex, weekIndex))}
       </tr>
     );
-  }
+  };
 
   private renderDayCells = (
     classNames: IProcessedStyleSet<ICalendarDayStyles>,
     day: IDayInfo,
     dayIndex: number,
-    weekIndex: number): JSX.Element => {
+    weekIndex: number
+  ): JSX.Element => {
     const { navigatedDate, dateRangeType, dateTimeFormatter, allFocusable, strings } = this.props;
     const { activeDescendantId, weeks } = this.state;
     const isNavigatedDate = compareDates(navigatedDate, day.originalDate);
@@ -260,17 +249,12 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
     return (
       <td
         key={day.key}
-        className={css(
-          classNames.dayCell,
-          this._getHighlightedCornerStyle(weekCorners, dayIndex, weekIndex),
-          {
-            [classNames.daySelected]: day.isSelected,
-            [classNames.dayOutsideBounds]: !day.isInBounds,
-            [classNames.dayOutsideNavigatedMonth]: !day.isInMonth
-          }
-        )}
+        className={css(classNames.dayCell, this._getHighlightedCornerStyle(weekCorners, dayIndex, weekIndex), {
+          [classNames.daySelected]: day.isSelected,
+          [classNames.dayOutsideBounds]: !day.isInBounds,
+          [classNames.dayOutsideNavigatedMonth]: !day.isInMonth
+        })}
         ref={element => this._setDayCellRef(element, day, isNavigatedDate)}
-        role={'gridcell'}
         onClick={day.isInBounds ? day.onSelected : undefined}
         onMouseOver={this.onMouseOverDay(day)}
         onMouseDown={this.onMouseDownDay(day)}
@@ -282,7 +266,6 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
           className={css(classNames.dayButton, {
             [classNames.dayIsToday]: day.isToday
           })}
-          role={'button'}
           onKeyDown={this._onDayKeyDown(day.originalDate, weekIndex, dayIndex)}
           onClick={day.isInBounds ? day.onSelected : undefined}
           aria-label={dateTimeFormatter.formatMonthDayYear(day.originalDate, strings)}
@@ -297,7 +280,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
         </button>
       </td>
     );
-  }
+  };
 
   private _setDayRef(element: HTMLElement | null, day: IDayInfo, isNavigatedDate: boolean): void {
     if (isNavigatedDate) {
@@ -345,14 +328,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
   };
 
   private _onSelectDate = (selectedDate: Date): void => {
-    const {
-      onSelectDate,
-      dateRangeType,
-      firstDayOfWeek,
-      minDate,
-      maxDate,
-      workWeekDays
-    } = this.props;
+    const { onSelectDate, dateRangeType, firstDayOfWeek, minDate, maxDate, workWeekDays, onNavigateDate } = this.props;
 
     let dateRange = getDateRangeArray(selectedDate, dateRangeType, firstDayOfWeek, workWeekDays);
     if (dateRangeType !== DateRangeType.Day) {
@@ -361,6 +337,10 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
 
     if (onSelectDate) {
       onSelectDate(selectedDate, dateRange);
+    }
+
+    if (onNavigateDate) {
+      onNavigateDate(selectedDate, true);
     }
   };
 
@@ -489,7 +469,11 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
    *
    */
 
-  private _getWeekCornerStyles(classNames: IProcessedStyleSet<ICalendarDayStyles>, weeks: IDayInfo[][], dateRangeType: DateRangeType): IWeekCorners {
+  private _getWeekCornerStyles(
+    classNames: IProcessedStyleSet<ICalendarDayStyles>,
+    weeks: IDayInfo[][],
+    dateRangeType: DateRangeType
+  ): IWeekCorners {
     const weekCornersStyled: any = {};
     /* need to handle setting all of the corners on arbitrarily shaped blobs
           __
@@ -554,7 +538,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
     let dateRange = getDateRangeArray(date1, dateRangeType, firstDayOfWeek, workWeekDays);
 
     return dateRange.filter(date => date.getTime() == date2.getTime()).length > 0;
-  }
+  };
 
   private _getHighlightedCornerStyle(weekCorners: IWeekCorners, dayIndex: number, weekIndex: number): string {
     const cornerStyle = weekCorners[weekIndex + '_' + dayIndex] ? weekCorners[weekIndex + '_' + dayIndex] : '';
@@ -587,7 +571,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
     }
 
     return dayRefs;
-  }
+  };
 
   private onMouseOverDay = (day: IDayInfo) => {
     return (ev: React.MouseEvent<HTMLElement>) => {
@@ -597,9 +581,9 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
         if (dayRef) {
           dayRef.classList.add('ms-CalendarDay-hoverStyle');
         }
-      })
-    }
-  }
+      });
+    };
+  };
 
   private onMouseDownDay = (day: IDayInfo) => {
     return (ev: React.MouseEvent<HTMLElement>) => {
@@ -609,9 +593,9 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
         if (dayRef) {
           dayRef.classList.add('ms-CalendarDay-pressedStyle');
         }
-      })
-    }
-  }
+      });
+    };
+  };
 
   private onMouseUpDay = (day: IDayInfo) => {
     return (ev: React.MouseEvent<HTMLElement>) => {
@@ -621,9 +605,9 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
         if (dayRef) {
           dayRef.classList.remove('ms-CalendarDay-pressedStyle');
         }
-      })
-    }
-  }
+      });
+    };
+  };
 
   private onMouseOutDay = (day: IDayInfo) => {
     return (ev: React.MouseEvent<HTMLElement>) => {
@@ -634,7 +618,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
           dayRef.classList.remove('ms-CalendarDay-hoverStyle');
           dayRef.classList.remove('ms-CalendarDay-pressedStyle');
         }
-      })
-    }
-  }
+      });
+    };
+  };
 }

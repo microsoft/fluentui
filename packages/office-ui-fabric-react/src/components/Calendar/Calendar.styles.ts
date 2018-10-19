@@ -1,40 +1,65 @@
 import { ICalendarStyleProps, ICalendarStyles } from './Calendar.types';
-import { normalize, FontSizes } from '../../Styling';
+import { normalize, FontSizes, getFocusStyle } from '../../Styling';
 
 export const styles = (props: ICalendarStyleProps): ICalendarStyles => {
-  const { className, theme } = props;
+  const { className, theme, isDayPickerVisible, isMonthPickerVisible, showWeekNumbers } = props;
   const { palette } = theme;
 
+  let totalWidth = isDayPickerVisible && isMonthPickerVisible ? 440 : 220;
+  if (showWeekNumbers) {
+    totalWidth += 30;
+  }
+
   return {
-    root: [normalize, className],
+    root: [
+      normalize,
+      {
+        display: 'flex',
+        width: totalWidth,
+      },
+      !isMonthPickerVisible && {
+        flexDirection: 'column',
+      },
+      className,
+    ],
     divider: {
       top: 0,
-      marginTop: -12,
-      marginBottom: -12,
       borderRight: '1px solid',
       borderColor: palette.neutralLight
     },
-    goTodayButton: {
-      bottom: 0,
-      color: palette.neutralPrimary,
-      height: 30,
-      lineHeight: 30,
-      backgroundColor: 'transparent',
-      position: 'absolute',
-      boxSizing: 'content-box',
-      padding: 0,
-      selectors: {
-        '& div': {
-          fontSize: FontSizes.small
-        },
-        '&:hover': {
-          color: palette.themePrimary,
-          backgroundColor: 'transparent'
-        },
-        '&:active': {
-          color: palette.themeDark
+    monthPickerWrapper: [
+      {
+        display: 'flex',
+        flexDirection: 'column',
+      }
+    ],
+    goTodayButton: [
+      getFocusStyle(theme, -1, 'relative'),
+      {
+        bottom: 0,
+        color: palette.neutralPrimary,
+        height: 30,
+        lineHeight: 30,
+        backgroundColor: 'transparent',
+        border: 'none',
+        boxSizing: 'content-box',
+        padding: '0 4px',
+        alignSelf: 'flex-end',
+        marginRight: 16,
+        fontSize: FontSizes.small,
+        selectors: {
+          '& div': {
+            fontSize: FontSizes.small
+          },
+          '&:hover': {
+            color: palette.themePrimary,
+            backgroundColor: 'transparent'
+          },
+          '&:active': {
+            color: palette.themeDark
+          }
         }
       }
-    }
+    ],
   };
 };

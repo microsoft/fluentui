@@ -302,6 +302,8 @@ export interface ICalendarStyleProps {
   overlayedWithButton?: boolean;
 
   showGoToToday?: boolean;
+
+  showWeekNumbers?: boolean;
 }
 
 export interface ICalendarStyles {
@@ -313,4 +315,6 @@ export interface ICalendarStyles {
   divider: IStyle;
 
   goTodayButton: IStyle;
+
+  monthPickerWrapper: IStyle;
 }

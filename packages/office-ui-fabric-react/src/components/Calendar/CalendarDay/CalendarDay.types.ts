@@ -26,8 +26,8 @@ export interface ICalendarDayProps extends IBaseProps<ICalendarDay> {
   styles?: IStyleFunctionOrObject<ICalendarDayStyleProps, ICalendarDayStyles>;
 
   /**
- * Theme (provided through customization).
- */
+   * Theme (provided through customization).
+   */
   theme?: ITheme;
 
   /**
