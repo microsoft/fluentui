@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link, Customizer, Breadcrumb } from 'office-ui-fabric-react';
-import { FluentCustomizations } from '@uifabric/experiments/lib/components/fluent/FluentCustomizations';
+import { FluentCustomizations } from '@uifabric/fluent-theme';
 
 export class FluentThemeBasicExample extends React.Component<{}, {}> {
   public render(): JSX.Element {

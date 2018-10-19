@@ -14,8 +14,6 @@ module.exports = resources.createConfig(BUNDLE_NAME, IS_PRODUCTION, {
     library: 'FabricThemeSamples'
   },
 
-  externals: [{ react: 'React' }, { 'react-dom': 'ReactDOM' }],
-
   resolve: {
     alias: {
       '@uifabric/theme-samples/src': path.join(__dirname, 'src'),

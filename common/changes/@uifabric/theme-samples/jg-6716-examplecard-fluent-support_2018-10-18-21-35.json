@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/theme-samples",
+      "comment": "Add sample theme defintions for Word and Teams.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/theme-samples",
+  "email": "jagore@microsoft.com"
+}
