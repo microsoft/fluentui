@@ -1,8 +1,14 @@
 import { IToggleProps } from '../../../../office-ui-fabric-react/lib';
-import { CommunicationColors, NeutralColors } from '../FluentColors';
 
 export const ToggleStyles = (props: IToggleProps) => {
-  const { disabled, checked } = props;
+  const { disabled, checked, theme } = props;
+
+  if (!theme) {
+    throw new Error('Theme is undefined or null in Fluent theme Toggle getStyles function.');
+  }
+
+  const { palette } = theme;
+
   return {
     pill: [
       {
@@ -16,7 +22,7 @@ export const ToggleStyles = (props: IToggleProps) => {
           selectors: {
             ':hover': [
               {
-                backgroundColor: CommunicationColors.shade20
+                backgroundColor: palette.themeDark
               }
             ]
           }
@@ -24,7 +30,7 @@ export const ToggleStyles = (props: IToggleProps) => {
         !checked && {
           selectors: {
             ':hover .ms-Toggle-thumb': {
-              backgroundColor: NeutralColors.gray160
+              backgroundColor: palette.neutralPrimary
             }
           }
         }
@@ -39,7 +45,7 @@ export const ToggleStyles = (props: IToggleProps) => {
       },
       !disabled &&
         !checked && {
-          backgroundColor: NeutralColors.gray130
+          backgroundColor: palette.neutralSecondary
         }
     ]
   };
