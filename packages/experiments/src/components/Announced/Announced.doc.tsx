@@ -32,7 +32,7 @@ export const AnnouncedPageProps: IDocPageProps = {
       view: <AnnouncedBulkLongRunningExample />
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/DetailsList.types.ts')],
+  propertiesTablesSources: [require<string>('!raw-loader!@uifabric/experiments/src/components/Announced/Announced.types.ts')],
   overview: `The Announced component aims to fill several of the accessibility gaps that exist in various web application experiences.
   It provides text for the screen reader in certain scenarios that are lacking comprehensive updates, particularly those showing the
   completion status or progress of operation(s).
@@ -44,26 +44,3 @@ export const AnnouncedPageProps: IDocPageProps = {
   donts: '',
   isHeaderVisible: true
 };
-
-function generateProps(example: { title: string; code: string; view: JSX.Element }): IDocPageProps {
-  return {
-    title: example.title,
-    componentName: 'DetailsList',
-    componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/experiments/src/components/Announced',
-    examples: [example],
-    isHeaderVisible: false,
-    isFeedbackVisible: true
-  };
-}
-
-// export const AnnouncedAsynchronousPageProps: IDocPageProps = generateProps({
-//   title: 'Announced component used for asynchronous page/page content loading',
-//   code: AnnouncedAsynchronousExampleCode,
-//   view: <AnnouncedAsynchronousExample />
-// });
-
-// export const AnnouncedBulkLongRunningPageProps: IDocPageProps = generateProps({
-//   title: 'Announced component used for bulk async long running operations',
-//   code: AnnouncedBulkLongRunningExampleCode,
-//   view: <AnnouncedBulkLongRunningExample />
-// });

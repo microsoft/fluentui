@@ -31,11 +31,11 @@ Editing text, deletion
 
 2. User deletes more than 1 email in a short amount of time
 
-    In this case, we want the Announced component to debounce so that there is only one status message per sequence of operations instead of one per individual operation. The `delay` prop specifies the time at which the Announced component will kick of a status message if one has not been sent in that amount of time. This way, the component can still push relevant status messages without making them overwhelming.
+    In this case, we want to debounce the Announced component's status message so that there is only one message per sequence of operations instead of one per individual operation. This way, the component can still push relevant status messages without making them overwhelming.
 
     Usage:
     ```
-    <Announced id={sequenceId} message='5 mails deleted' delay={500} />
+    <Announced id={sequenceId} message='5 mails deleted' />
     ```
 
 ***
@@ -71,11 +71,11 @@ Copying, uploading, or moving many items
 #### Scenarios
 1. User moves 100 items to another folder
 
-    Similar to some previous scenarios mentioned above, we want to debounce so that there is only one annouced message per group of items instead of per item operation. It would not be desirable to read off when every single item is moved to the other folder. Instead, a user can provide a message and a `delay` prop that sends out a status message after that specified amount of time has passed.
+    Similar to some previous scenarios mentioned above, we want to debounce so that there is only one annouced message per group of items instead of per item operation. It would not be desirable to read off when every single item is moved to the other folder. Instead, a user can provide a message that sends out a status message after a chosen amount of time has passed.
 
     Usage:
     ```
-    <Announced id={sequenceId} message='30 items moved' delay={500} />
+    <Announced id={sequenceId} message='30 items moved' />
     ```
 
     Announced would also handle the "completed" status.

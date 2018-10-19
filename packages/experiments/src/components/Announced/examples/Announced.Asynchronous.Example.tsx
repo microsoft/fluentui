@@ -73,7 +73,7 @@ export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsyn
       <VerticalStack gap={10}>
         <div>
           Turn on Narrator and check the toggle to start loading photos. Announced should announce the number of photos loaded every 10
-          seconds.
+          seconds, as that is the delay chosen for this example.
         </div>
         <div>When focusing on a photo that hasn't loaded yet, the Announced component should announce "Photo loading".</div>
         <Toggle label="Check to start loading photos" onText="Start/Resume" offText="Pause" onChange={this._onToggleChange} />
