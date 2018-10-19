@@ -3,7 +3,9 @@ import { fluentBorderRadius } from './styleConstants';
 import { NeutralColors, SharedColors } from '../FluentColors';
 
 export const TextFieldStyles = (props: ITextFieldStyleProps) => {
-  const { focused, disabled, hasErrorMessage, multiline } = props;
+  const { focused, disabled, hasErrorMessage, multiline, theme } = props;
+  const { palette } = theme;
+
   return {
     fieldGroup: [
       {
@@ -29,11 +31,11 @@ export const TextFieldStyles = (props: ITextFieldStyleProps) => {
       ]
     ],
     field: {
-      color: NeutralColors.gray190,
+      color: palette.neutralDark,
       padding: !multiline ? '0 8px' : '6px 8px',
       selectors: {
-        '::placeholder': [disabled && { color: NeutralColors.gray90 }],
-        ':-ms-input-placeholder': [disabled && { color: NeutralColors.gray90 }]
+        '::placeholder': [disabled && { color: palette.neutralTertiary }],
+        ':-ms-input-placeholder': [disabled && { color: palette.neutralTertiary }]
       }
     },
     errorMessage: {

@@ -4,20 +4,20 @@ import { MediumScreenSelector, MinimumScreenSelector } from './styleConstants';
 
 export const BreadcrumbStyles = (props: IBreadcrumbStyleProps) => {
   const { theme } = props;
-  const { semanticColors } = theme;
+  const { palette } = theme;
 
   const stateSelectors = {
     ':hover': {
-      color: semanticColors.bodyText
+      color: palette.neutralPrimary
     },
     ':active': {
-      backgroundColor: semanticColors.buttonBackgroundPressed
+      backgroundColor: palette.neutralLight
     },
     // Needs to be revised with designers when moving to default OUFR styles.
     // Now used only to override the default ones to follow fluent specs.
     '&:active:hover': {
-      color: semanticColors.bodyText,
-      backgroundColor: semanticColors.buttonBackgroundPressed
+      color: palette.neutralPrimary,
+      backgroundColor: palette.neutralLight
     }
   };
 
@@ -30,14 +30,14 @@ export const BreadcrumbStyles = (props: IBreadcrumbStyleProps) => {
       fontSize: FontSizes.size18,
       outline: 'none',
       fontWeight: 400,
-      color: semanticColors.bodySubtext,
+      color: palette.neutralSecondary,
       selectors: {
         '&:last-child': {
           fontWeight: 600,
-          color: semanticColors.bodyText
+          color: palette.neutralPrimary
         },
         '.ms-Fabric--isFocusVisible &:focus': {
-          // Necessary due to changes of Link component not using getFocusStyle
+          // Necessary due to changes of Link component not using getFocusStyle.
           outline: 'none'
         },
         // Leaving this breakpoint selectors here as there might be some design discussions regarding scaling breadcrumb.
@@ -47,7 +47,7 @@ export const BreadcrumbStyles = (props: IBreadcrumbStyleProps) => {
       }
     },
     overflowButton: {
-      color: semanticColors.bodySubtext,
+      color: palette.neutralSecondary,
       selectors: {
         ...stateSelectors
       }

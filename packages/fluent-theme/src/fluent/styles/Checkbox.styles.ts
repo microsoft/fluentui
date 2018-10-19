@@ -14,7 +14,7 @@ export const CheckboxStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
       },
       !disabled &&
         checked && {
-          borderColor: semanticColors.inputBackgroundChecked
+          borderColor: semanticColors.inputBackgroundChecked // using semanticColor because I am setting a new color above
         },
       disabled && {
         borderColor: palette.neutralTertiaryAlt
@@ -26,10 +26,7 @@ export const CheckboxStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
         }
     ],
     checkmark: {
-      color: palette.white
-    },
-    text: {
-      color: disabled ? semanticColors.disabledText : semanticColors.bodyText
+      color: semanticColors.inputForegroundChecked // using semanticColor to override original behavior on checked/disabled
     },
     root: [
       !disabled && [
