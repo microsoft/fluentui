@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Added 'break' statement in PeoplePicker component example. Without it, changing picker type to 'Process Selection' was rendering 'Controlled Picker' instead.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com"
+}
