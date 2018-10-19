@@ -180,8 +180,9 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
             { overlay }
             <FocusTrapZone
               ignoreExternalFocusing={ ignoreExternalFocusing }
-              forceFocusInsideTrap={ forceFocusInsideTrap }
+              forceFocusInsideTrap={ isHiddenOnDismiss && !isOpen ? false : forceFocusInsideTrap }
               firstFocusableSelector={ firstFocusableSelector }
+              isClickableOutsideFocusTrap={ true }
               { ...focusTrapZoneProps }
               className={
                 css(
@@ -195,7 +196,6 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
                 ) }
               style={ customWidthStyles }
               elementToFocusOnDismiss={ elementToFocusOnDismiss }
-              isClickableOutsideFocusTrap={ focusTrapZoneProps && !focusTrapZoneProps.isClickableOutsideFocusTrap ? false : true }
             >
               <div className={ css('ms-Panel-commands') } data-is-visible={ true } >
                 { onRenderNavigation(this.props, this._onRenderNavigation) }

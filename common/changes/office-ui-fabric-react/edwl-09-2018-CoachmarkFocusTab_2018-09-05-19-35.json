@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "adding commandBarButtonAs to the correct interface",
+      "comment": "Coachmark: Fix tabbing when Coachmark is mounted (backport from PR 6240)",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "nidurak@microsoft.com"
+  "email": "miwhea@microsoft.com"
 }
