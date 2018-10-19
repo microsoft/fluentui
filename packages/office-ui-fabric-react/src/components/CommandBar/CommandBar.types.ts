@@ -59,8 +59,9 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
 
   /**
-   * Method to override the render of the individual command bar button. Note, is not used when rendered in overflow
+   * Method to override the render of all command bar buttons. Note, is not used when rendered in overflow
    * @default CommandBarButton
+   * @deprecated
    */
   commandBarButtonAs?: IComponentAs<ICommandBarItemProps>;
 }
@@ -71,4 +72,10 @@ export interface ICommandBarItemProps extends IContextualMenuItem {
    * @defaultvalue false
    */
   iconOnly?: boolean;
+
+  /**
+   * Method to override the render of the individual command bar button. Note, is not used when rendered in overflow
+   * @default CommandBarButton
+   */
+  commandBarButtonAs?: IComponentAs<ICommandBarItemProps>;
 }
