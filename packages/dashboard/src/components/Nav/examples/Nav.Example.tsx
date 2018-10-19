@@ -83,7 +83,7 @@ export class NavExample extends React.Component<{}, {}> {
 
     return (
       /* tslint:disable */
-      <div style={{ height: '20vh', display: 'flex' }}>
+      <div style={{ display: 'flex', height: '400px' }}>
         <Nav
           groups={navLinkGroups}
           dataHint="PrimaryNavigation"
@@ -93,12 +93,9 @@ export class NavExample extends React.Component<{}, {}> {
           showMoreString={'Show more'}
           showLessString={'Show less'}
         />
+        <div style={{ flex: '1 1 auto', backgroundColor: 'pink' }} />
       </div>
       /* tslint:enable */
     );
   }
-
-  // private _onEditClick(): void {
-  //   alert('open edit nav view / flyout');
-  // }
 }

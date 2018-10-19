@@ -48,6 +48,14 @@ export const getStyles = (props: INavLinkProps): INavStyles => {
       overflow: 'hidden',
       height: '100%'
     },
+    navWrapperScroll: {
+      selectors: {
+        ':hover': {
+          overflow: 'unset',
+          marginRight: -scrollBarWidth + 'px'
+        }
+      }
+    },
     navContainer: [
       {
         width: navWidth,
@@ -77,10 +85,6 @@ export const getStyles = (props: INavLinkProps): INavStyles => {
                 backgroundColor: navItemSelectedColor
               }
             }
-          },
-          // This is needed because some versions of Chrome hide the scrollbar event with overflow set to scroll
-          '::-webkit-scrollbar': {
-            display: 'block'
           }
         }
       },
@@ -88,14 +92,6 @@ export const getStyles = (props: INavLinkProps): INavStyles => {
         width: navCollapsedWidth
       }
     ],
-    navWrapperScroll: {
-      selectors: {
-        ':hover': {
-          overflow: 'unset',
-          marginRight: -scrollBarWidth + 'px'
-        }
-      }
-    },
     navContainerScroll: {
       selectors: {
         ':hover': {
