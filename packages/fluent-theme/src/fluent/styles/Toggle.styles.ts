@@ -1,4 +1,4 @@
-import { IToggleProps } from '../../../../office-ui-fabric-react/lib/Toggle';
+import { IToggleProps } from 'office-ui-fabric-react/lib/Toggle';
 
 export const ToggleStyles = (props: IToggleProps) => {
   const { disabled, checked, theme } = props;
