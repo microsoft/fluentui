@@ -8,6 +8,7 @@ import { DialogStyles, DialogContentStyles, DialogFooterStyles } from './styles/
 import { DropdownStyles } from './styles/Dropdown.styles';
 import { LabelStyles } from './styles/Label.styles';
 import { PrimaryButtonStyles } from './styles/PrimaryButton.styles';
+import { RatingStyles } from './styles/Rating.styles';
 import { TextFieldStyles } from './styles/TextField.styles';
 import { ToggleStyles } from './styles/Toggle.styles';
 
@@ -52,6 +53,9 @@ export const FluentStyles: any = {
   },
   PrimaryButton: {
     styles: PrimaryButtonStyles
+  },
+  Rating: {
+    styles: RatingStyles
   },
   TextField: {
     styles: TextFieldStyles
