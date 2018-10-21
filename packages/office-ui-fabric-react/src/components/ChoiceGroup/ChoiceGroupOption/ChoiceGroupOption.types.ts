@@ -58,6 +58,11 @@ export interface IChoiceGroupOptionProps extends IChoiceGroupOption {
    * This value is used to group each ChoiceGroupOption into the same logical ChoiceGroup
    */
   name?: string;
+
+  /**
+   * Accessible label for the ChoiceGroupOption.
+   */
+  ariaLabel?: string;
 }
 
 export interface IChoiceGroupOptionStyleProps {

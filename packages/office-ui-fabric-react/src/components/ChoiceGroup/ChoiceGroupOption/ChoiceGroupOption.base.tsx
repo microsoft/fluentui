@@ -21,6 +21,7 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
 
   public render(): JSX.Element {
     const {
+      ariaLabel,
       focused,
       required,
       theme,
@@ -49,6 +50,7 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
       <div className={this._classNames.root}>
         <div className={this._classNames.choiceFieldWrapper}>
           <input
+            aria-label={ariaLabel || this.props.text}
             ref={this._inputElement}
             id={id}
             className={this._classNames.input}
@@ -123,8 +125,8 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
             {onRenderLabel!(props)}
           </div>
         ) : (
-          onRenderLabel!(props)
-        )}
+            onRenderLabel!(props)
+          )}
       </label>
     );
   };
