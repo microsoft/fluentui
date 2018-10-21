@@ -125,8 +125,8 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
             {onRenderLabel!(props)}
           </div>
         ) : (
-            onRenderLabel!(props)
-          )}
+          onRenderLabel!(props)
+        )}
       </label>
     );
   };
