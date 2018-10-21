@@ -91,6 +91,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
 
           >
             <input
+              aria-label="Mark displayed items as read after"
               checked={false}
               className=
                   ms-ChoiceField-input
@@ -389,6 +390,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
 
           >
             <input
+              aria-label="Option B"
               checked={true}
               className=
                   ms-ChoiceField-input
@@ -514,6 +516,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
 
           >
             <input
+              aria-label="Option C"
               checked={false}
               className=
                   ms-ChoiceField-input
@@ -626,6 +629,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
 
           >
             <input
+              aria-label="Option D"
               checked={false}
               className=
                   ms-ChoiceField-input

@@ -128,6 +128,11 @@ export interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | H
    * Should be used for 'aria-owns' and other such uses, rather than direct reference for programmatic purposes.
    */
   labelId?: string;
+
+  /**
+   * Accessible label text for ChoiceGroupOption.
+   */
+  ariaLabel?: string;
 }
 
 export interface IChoiceGroupStyleProps {

@@ -55,6 +55,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
 
         >
           <input
+            aria-label="1"
             checked={false}
             className=
                 ms-ChoiceField-input
@@ -170,6 +171,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
 
         >
           <input
+            aria-label="2"
             checked={false}
             className=
                 ms-ChoiceField-input
@@ -284,6 +286,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
 
         >
           <input
+            aria-label="3"
             checked={false}
             className=
                 ms-ChoiceField-input
