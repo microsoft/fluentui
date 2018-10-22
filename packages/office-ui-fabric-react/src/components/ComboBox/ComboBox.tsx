@@ -1158,6 +1158,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const checkboxStyles = () => {
       return optionStyles;
     };
+    const ariaLabel = item.ariaLabel ? item.ariaLabel : item.text;
     const title = this._getPreviewText(item);
 
     const getOptionComponent = () => {
@@ -1175,7 +1176,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           onMouseLeave={this._onOptionMouseLeave}
           role="option"
           aria-selected={isSelected ? 'true' : 'false'}
-          ariaLabel={this._getPreviewText(item)}
+          ariaLabel={ariaLabel}
           disabled={item.disabled}
           title={title}
         >
@@ -1189,7 +1190,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       ) : (
         <Checkbox
           id={id + '-list' + item.index}
-          ariaLabel={this._getPreviewText(item)}
+          ariaLabel={ariaLabel}
           key={item.key}
           data-index={item.index}
           styles={checkboxStyles}
