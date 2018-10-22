@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import { BaseComponent, classNamesFunction, divProperties, getNativeProps, createRef, getRTL } from '../../Utilities';
+import { BaseComponent, classNamesFunction, divProperties, getNativeProps, getRTL } from '../../Utilities';
 import { IScrollablePane, IScrollablePaneProps, IScrollablePaneStyles, IScrollablePaneStyleProps } from './ScrollablePane.types';
 import { Sticky } from '../../Sticky';
 
@@ -30,10 +30,10 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     scrollablePane: PropTypes.object
   };
 
-  private _root = createRef<HTMLDivElement>();
-  private _stickyAboveRef = createRef<HTMLDivElement>();
-  private _stickyBelowRef = createRef<HTMLDivElement>();
-  private _contentContainer = createRef<HTMLDivElement>();
+  private _root = React.createRef<HTMLDivElement>();
+  private _stickyAboveRef = React.createRef<HTMLDivElement>();
+  private _stickyBelowRef = React.createRef<HTMLDivElement>();
+  private _contentContainer = React.createRef<HTMLDivElement>();
   private _subscribers: Set<Function>;
   private _stickies: Set<Sticky>;
   private _mutationObserver: MutationObserver;

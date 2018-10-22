@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Mon, 15 Oct 2018 12:29:12 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Oct 2018 01:29:55 GMT and should not be manually modified.
+
+## 6.6.1
+Wed, 17 Oct 2018 01:29:55 GMT
+
+### Patches
+
+- Modify theme generator output and add codepen export option.
 
 ## 6.6.0
 Mon, 15 Oct 2018 12:29:12 GMT

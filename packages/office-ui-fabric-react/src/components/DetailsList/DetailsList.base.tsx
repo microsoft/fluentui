@@ -386,7 +386,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
           aria-colcount={(selectAllVisibility !== SelectAllVisibility.none ? 1 : 0) + (adjustedColumns ? adjustedColumns.length : 0)}
           aria-readonly="true"
         >
-          <div onKeyDown={this._onHeaderKeyDown} role="presentation">
+          <div onKeyDown={this._onHeaderKeyDown} role="presentation" className={classNames.headerWrapper}>
             {isHeaderVisible &&
               onRenderDetailsHeader(
                 {
@@ -418,7 +418,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
                 this._onRenderDetailsHeader
               )}
           </div>
-          <div onKeyDown={this._onContentKeyDown} role="presentation">
+          <div onKeyDown={this._onContentKeyDown} role="presentation" className={classNames.contentWrapper}>
             <FocusZone
               componentRef={this._focusZone}
               className={classNames.focusZone}

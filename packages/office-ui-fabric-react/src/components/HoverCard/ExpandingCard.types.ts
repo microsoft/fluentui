@@ -1,51 +1,13 @@
-import * as React from 'react';
-import { ExpandingCard } from './ExpandingCard';
-import { IRefObject, IRenderFunction } from '../../Utilities';
-import { IStyle, ITheme } from '../../Styling';
-import { DirectionalHint } from '../../common/DirectionalHint';
+import { IBaseCardProps, IBaseCardStyles, IBaseCardStyleProps } from './BaseCard.types';
+import { IRenderFunction } from '../../Utilities';
+import { IStyle } from '../../Styling';
 
 export interface IExpandingCard {}
 
 /**
  * ExpandingCard component props.
  */
-export interface IExpandingCardProps extends React.HTMLAttributes<HTMLDivElement | ExpandingCard> {
-  /**
-   * Optional callback to access the IExpandingCard interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
-   */
-  componentRef?: IRefObject<IExpandingCard>;
-
-  /**
-   *  Item to be returned with onRender functions
-   */
-  renderData?: any;
-
-  /**
-   *  Render function to populate compact content area
-   */
-  onRenderCompactCard?: IRenderFunction<IExpandingCardProps>;
-
-  /**
-   *  Render function to populate expanded content area
-   */
-  onRenderExpandedCard?: IRenderFunction<IExpandingCardProps>;
-
-  /**
-   * Element to anchor the ExpandingCard to.
-   */
-  targetElement?: HTMLElement;
-
-  /**
-   * Callback upon focus or mouse enter event
-   */
-  onEnter?: (ev?: any) => void;
-
-  /**
-   * Callback upon blur or mouse leave event
-   */
-  onLeave?: (ev?: any) => void;
-
+export interface IExpandingCardProps extends IBaseCardProps<IExpandingCard, IExpandingCardStyles, IExpandingCardStyleProps> {
   /**
    * Height of compact card
    * @default 156
@@ -65,42 +27,14 @@ export interface IExpandingCardProps extends React.HTMLAttributes<HTMLDivElement
   mode?: ExpandingCardMode;
 
   /**
-   * Theme provided by HOC.
+   *  Render function to populate compact content area
    */
-  theme?: ITheme;
+  onRenderCompactCard?: IRenderFunction<IExpandingCardProps>;
 
   /**
-   * How the element should be positioned
-   * @default DirectionalHint.bottomLeftEdge
+   *  Render function to populate expanded content area
    */
-  directionalHint?: DirectionalHint;
-
-  /**
-   * The gap between the card and the target
-   * @default 0
-   */
-  gapSpace?: number;
-
-  /**
-   * Custom styles for this component
-   */
-  styles?: IExpandingCardStyles;
-
-  /**
-   * Make callout content show on the set side
-   * @default true
-   */
-  directionalHintFixed?: boolean;
-
-  /**
-   * Trap focus or not
-   */
-  trapFocus?: boolean;
-
-  /**
-   * Focus on first element by default on card or not
-   */
-  firstFocus?: boolean;
+  onRenderExpandedCard?: IRenderFunction<IExpandingCardProps>;
 }
 
 export enum ExpandingCardMode {
@@ -115,36 +49,41 @@ export enum ExpandingCardMode {
   expanded = 1
 }
 
-export enum OpenCardMode {
+export interface IExpandingCardStyleProps extends IBaseCardStyleProps {
   /**
-   * Open card by hover
+   * Height of the compact section of the card.
    */
-  hover = 0,
+  compactCardHeight?: number;
 
   /**
-   * Open card by hot key
+   * Boolean flag that expanded card is in Expanded.mode === expanded && first frame was rendered.
    */
-  hotKey = 1
+  expandedCardFirstFrameRendered?: boolean;
+
+  /**
+   * Height of the expanded section of the card.
+   */
+  expandedCardHeight?: number;
+
+  /**
+   * Whether the content of the expanded card overflows vertically.
+   */
+  needsScroll?: boolean;
 }
 
-export interface IExpandingCardStyles {
-  /**
-   * Style for the root element in the default enabled, non-toggled state.
-   */
-  root?: IStyle;
-
+export interface IExpandingCardStyles extends IBaseCardStyles {
   /**
    * Style for the main card element.
    */
   compactCard?: IStyle;
 
   /**
-   * Base Style for the expanded card content
+   * Base Style for the expanded card content.
    */
   expandedCard?: IStyle;
 
   /**
-   * Style for the expanded card scroll content
+   * Style for the expanded card scroll content.
    */
   expandedCardScroll?: IStyle;
 }
