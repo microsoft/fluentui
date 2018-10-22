@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 19 Oct 2018 11:27:30 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Oct 2018 11:23:55 GMT and should not be manually modified.
+
+## 5.130.0
+Mon, 22 Oct 2018 11:23:55 GMT
+
+### Minor changes
+
+- adding groups prop to pass parent group's children info
+
+### Patches
+
+- Coachmark: Fix tabbing when Coachmark is mounted (backport from PR 6240)
 
 ## 5.129.0
 Fri, 19 Oct 2018 11:27:30 GMT
