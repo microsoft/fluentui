@@ -1,6 +1,29 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 18 Oct 2018 20:22:36 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Oct 2018 12:29:57 GMT and should not be manually modified.
+
+## 6.90.0
+Mon, 22 Oct 2018 12:29:57 GMT
+
+### Minor changes
+
+- Add in missing exports in index.ts
+
+### Patches
+
+- Fixed the column total vertical sync issue while resizing the column header by dragging them to the right until it gets overflowed and also make the vertical overflow as auto to make sure that the scroll bar  appears  only when there is a vertical overflow.
+
+## 6.89.0
+Fri, 19 Oct 2018 12:29:20 GMT
+
+### Minor changes
+
+- HoverCard: Add BasicCard as an option when need to render a non-expanding HoverCard. Refactor mergeStyle API plus refactor file organization.
+
+### Patches
+
+- Revert getItemClassNames API change to fix memoization bug due to Object usage rather than primitive arguments list."
+- Added 'break' statement in PeoplePicker component example. Without it, changing picker type to 'Process Selection' was rendering 'Controlled Picker' instead.
 
 ## 6.88.0
 Thu, 18 Oct 2018 20:22:36 GMT

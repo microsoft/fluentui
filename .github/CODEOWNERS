@@ -71,6 +71,7 @@ DocumentCard/ @yiminwu @mikewheaton
 # Dropdown/
 # Fabric/
 # FacePile/
+FolderCover/ @ThomasMichon
 # FocusTrapZone/
 # FocusZone/
 GroupedList/  @aditima
@@ -98,6 +99,7 @@ pickers/  @joschect
 # Rating/
 ResizeGroup/  @micahgodbolt
 # SearchBox/
+Signals/ @ThomasMichon
 # Slider/
 # SpinButton/
 # Spinner/
@@ -105,6 +107,8 @@ ResizeGroup/  @micahgodbolt
 TeachingBubble/   @micahgodbolt
 # TextField/
 # Theme/
+Tile/ @ThomasMichon
+TileList/ @ThomasMichon
 Toggle/  @phkuo
 Tooltip/  @micahgodbolt
 
