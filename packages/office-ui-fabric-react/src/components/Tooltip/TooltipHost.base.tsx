@@ -73,7 +73,7 @@ export class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHo
 
     return (
       <div
-        className={this._classNames.host}
+        className={this._classNames.root}
         ref={this._tooltipHost}
         {...{ onFocusCapture: this._onTooltipMouseEnter }}
         {...{ onBlurCapture: this._hideTooltip }}

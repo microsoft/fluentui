@@ -115,5 +115,5 @@ export interface ITooltipHostStyles {
   /**
    * Style for the host wrapper element.
    */
-  host: IStyle;
+  root: IStyle;
 }
