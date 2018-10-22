@@ -108,8 +108,8 @@ export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsyn
   }
 
   private _createPhotos(): { url: string; width: number; height: number }[] {
-    const width: number = 100;
-    const height: number = 100;
+    const width = 100;
+    const height = 100;
 
     const result = createArray(30, () => {
       return {
