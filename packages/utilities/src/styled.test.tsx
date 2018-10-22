@@ -123,7 +123,8 @@ describe('styled', () => {
     // Not passing in "cool" should cause re-evaluation of styles.
     component.update(<TestCached />);
     expect(component.toJSON()).toMatchSnapshot();
-    expect(_lastProps!.styles).not.toBe(originStyles);
+    expect(_lastProps!.styles).toBe(originStyles);
+    expect(typeof _lastProps!.styles).toBe('function');
     originStyles = _lastProps!.styles;
 
     // Passing the same props in again should skip re-evaluation.

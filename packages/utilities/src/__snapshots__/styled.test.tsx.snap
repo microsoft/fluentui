@@ -66,13 +66,33 @@ exports[`styled can produce same styles object if cached 3`] = `
   className=
 
       {
+        background: red;
+      }
+/>
+`;
+
+exports[`styled can produce same styles object if cached 4`] = `
+<div
+  className=
+
+      {
+        background: red;
+      }
+/>
+`;
+
+exports[`styled can produce same styles object if cached 5`] = `
+<div
+  className=
+
+      {
         background: blue;
         color: red;
       }
 />
 `;
 
-exports[`styled can produce same styles object if cached 4`] = `
+exports[`styled can produce same styles object if cached 6`] = `
 <div
   className=
 
