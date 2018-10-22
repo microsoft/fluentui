@@ -534,7 +534,6 @@ describe('ComboBox', () => {
     buttonElement.simulate('click');
 
     const secondItemElement: Element = wrapper.getDOMNode().ownerDocument.querySelector('.ms-ComboBox-option[data-index="1"]')!;
-    let ariaLabel = secondItemElement.getAttribute('aria-label');
-    expect(ariaLabel).toBe('Label');
+    expect(secondItemElement.getAttribute('aria-label')).toBe('Label');
   });
 });
