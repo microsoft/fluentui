@@ -4,7 +4,6 @@ import { Link } from 'office-ui-fabric-react/lib/Link';
 import { DetailsList, Selection } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { IColumn, buildColumns } from 'office-ui-fabric-react/lib/DetailsList';
-import { VerticalStack } from '../../Stack';
 import { IDragDropEvents, IDragDropContext } from 'office-ui-fabric-react/lib/utilities/dragdrop/interfaces';
 import './Announced.Example.scss';
 
@@ -104,9 +103,9 @@ export class AnnouncedBulkLongRunningExample extends React.Component<
     const { items, columns, numberOfItems } = this.state;
 
     return (
-      <VerticalStack gap={10} className={'detailsListDragDropExample'}>
-        <div>Turn on Narrator and drag and drop the items.</div>
-        <div>The Announced component should announce the number of items moved.</div>
+      <>
+        <p>Turn on Narrator and drag and drop the items.</p>
+        <p>The Announced component should announce the number of items moved.</p>
         {this._renderAnnounced(numberOfItems)}
         <MarqueeSelection selection={this._selection}>
           <DetailsList
@@ -122,7 +121,7 @@ export class AnnouncedBulkLongRunningExample extends React.Component<
             ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           />
         </MarqueeSelection>
-      </VerticalStack>
+      </>
     );
   }
 

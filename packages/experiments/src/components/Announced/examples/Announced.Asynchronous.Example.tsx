@@ -6,13 +6,12 @@ import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import './Announced.Example.scss';
 import { ProgressIndicator } from 'office-ui-fabric-react/lib/ProgressIndicator';
-import { VerticalStack } from '../../Stack';
 
 export interface IAnnouncedAsynchronousExampleState {
   photos: { url: string; width: number; height: number }[];
   total: number;
   seconds: number;
-  announced: JSX.Element | undefined;
+  announced?: JSX.Element;
   percentComplete: number;
   loading: boolean;
 }
@@ -70,19 +69,19 @@ export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsyn
     const { percentComplete } = this.state;
 
     return (
-      <VerticalStack gap={10}>
-        <div>
+      <>
+        <p>
           Turn on Narrator and check the toggle to start loading photos. Announced should announce the number of photos loaded every 10
           seconds, as that is the delay chosen for this example.
-        </div>
-        <div>When focusing on a photo that hasn't loaded yet, the Announced component should announce "Photo loading".</div>
+        </p>
+        <p>When focusing on a photo that hasn't loaded yet, the Announced component should announce "Photo loading".</p>
         <Toggle label="Check to start loading photos" onText="Start/Resume" offText="Pause" onChange={this._onToggleChange} />
         <ProgressIndicator label={percentComplete < 1 ? 'Loading photos' : 'Finished loading photos'} percentComplete={percentComplete} />
         <FocusZone elementType="ul" className="ms-AnnouncedExamples-photoList">
           {this._renderAnnounced()}
           {this._renderPhotos()}
         </FocusZone>
-      </VerticalStack>
+      </>
     );
   }
 
@@ -109,11 +108,14 @@ export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsyn
   }
 
   private _createPhotos(): { url: string; width: number; height: number }[] {
+    const width: number = 100;
+    const height: number = 100;
+
     const result = createArray(30, () => {
       return {
-        url: `http://placehold.it/100x100`,
-        width: 100,
-        height: 100
+        url: `http://placehold.it/${width}x${height}`,
+        width: width,
+        height: height
       };
     });
     return result;

@@ -5,7 +5,7 @@ import { IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IAnnounced {}
 
-export interface IAnnouncedProps extends React.Props<AnnouncedBase> {
+export interface IAnnouncedProps extends React.Props<AnnouncedBase>, React.HTMLAttributes<HTMLDivElement> {
   /** Theme from the Higher Order Component */
   theme?: ITheme;
 
@@ -22,16 +22,6 @@ export interface IAnnouncedProps extends React.Props<AnnouncedBase> {
    * The status message provided as screen reader output
    */
   message?: string;
-
-  /**
-   * Additional CSS class(es) to apply to the Announced component.
-   */
-  className?: string;
-
-  /**
-   * A unique id for Announced
-   */
-  id?: string;
 }
 
 export interface IAnnouncedStyles {

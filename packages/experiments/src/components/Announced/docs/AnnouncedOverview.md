@@ -20,7 +20,7 @@ Editing text, deletion
 #### Scenarios
 1. User renames a file
 
-    When the file is renamed successfully, use the Announced component, coupled with a id, to announce the message immediately. Providing a id will ensure that the announcement is re-read.
+    When the file is renamed successfully, use the Announced component, coupled with an id, to announce the message immediately. Providing an id will ensure that the announcement is re-read.
 
     Usage:
     ```

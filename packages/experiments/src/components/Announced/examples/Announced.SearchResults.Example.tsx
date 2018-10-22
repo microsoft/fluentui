@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Announced } from '../Announced';
-import { VerticalStack } from '../../Stack';
 import { TagPicker } from 'office-ui-fabric-react/lib/Pickers';
 
 const _testTags = [
@@ -48,26 +47,24 @@ export class AnnouncedSearchResultsExample extends React.Component<
 
   public render(): JSX.Element {
     return (
-      <div>
-        <VerticalStack gap={10}>
-          <div>
-            Turn on Narrator and type a letter or two into the TagPicker. This picker will filter added items from the search suggestions.
-          </div>
-          <div>The Announced component should announce the number of search results found.</div>
-          {this._renderAnnounced()}
-          <TagPicker
-            onResolveSuggestions={this._onFilterChanged}
-            getTextFromItem={this._getTextFromItem}
-            pickerSuggestionsProps={{
-              suggestionsHeaderText: 'Suggested Tags',
-              noResultsFoundText: 'No Color Tags Found' // this alert handles the case when there are no suggestions available
-            }}
-            inputProps={{
-              'aria-label': 'Tag Picker'
-            }}
-          />
-        </VerticalStack>
-      </div>
+      <>
+        <p>
+          Turn on Narrator and type a letter or two into the TagPicker. This picker will filter added items from the search suggestions.
+        </p>
+        <p>The Announced component should announce the number of search results found.</p>
+        {this._renderAnnounced()}
+        <TagPicker
+          onResolveSuggestions={this._onFilterChanged}
+          getTextFromItem={this._getTextFromItem}
+          pickerSuggestionsProps={{
+            suggestionsHeaderText: 'Suggested Tags',
+            noResultsFoundText: 'No Color Tags Found' // this alert handles the case when there are no suggestions available
+          }}
+          inputProps={{
+            'aria-label': 'Tag Picker'
+          }}
+        />
+      </>
     );
   }
 
