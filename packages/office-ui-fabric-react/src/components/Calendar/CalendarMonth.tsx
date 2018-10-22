@@ -19,7 +19,7 @@ export interface ICalendarMonth {
   focus(): void;
 }
 
-export interface ICalendarMonthProps extends React.Props<CalendarMonth> {
+export interface ICalendarMonthProps extends React.ClassAttributes<CalendarMonth> {
   componentRef?: (c: ICalendarMonth) => void;
   navigatedDate: Date;
   selectedDate: Date;

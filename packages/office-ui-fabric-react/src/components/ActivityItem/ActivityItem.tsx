@@ -53,7 +53,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
   private _onRenderActivityDescription = (props: IActivityItemProps): JSX.Element | null => {
     const classNames = this._getClassNames(props);
 
-    const activityDescription = props.activityDescription || props.activityDescriptionText;
+    const activityDescription = props.activityDescription;
 
     if (activityDescription) {
       return <span className={classNames.activityText}>{activityDescription}</span>;
@@ -65,7 +65,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
   private _onRenderComments = (props: IActivityItemProps): JSX.Element | null => {
     const classNames = this._getClassNames(props);
 
-    const comments = props.comments || props.commentText;
+    const comments = props.comments;
 
     if (!props.isCompact && comments) {
       return <div className={classNames.commentText}>{comments}</div>;
@@ -124,14 +124,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
 
   private _getClassNames(props: IActivityItemProps): IActivityItemClassNames {
     return getClassNames(
-      getStyles(
-        undefined,
-        props.styles,
-        props.animateBeaconSignal,
-        props.beaconColorOne,
-        props.beaconColorTwo,
-        props.isCompact
-      ),
+      getStyles(undefined, props.styles, props.animateBeaconSignal, props.beaconColorOne, props.beaconColorTwo, props.isCompact),
       props.className!,
       props.activityPersonas!,
       props.isCompact!

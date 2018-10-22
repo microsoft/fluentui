@@ -8,7 +8,6 @@ import {
   getId,
   getNativeProps,
   KeyCodes,
-  createRef,
   css,
   mergeAriaAttributeValues,
   portalContainsElement
@@ -50,8 +49,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     split: false
   };
 
-  private _buttonElement = createRef<HTMLElement>();
-  private _splitButtonContainer = createRef<HTMLDivElement>();
+  private _buttonElement = React.createRef<HTMLElement>();
+  private _splitButtonContainer = React.createRef<HTMLDivElement>();
   private _labelId: string;
   private _descriptionId: string;
   private _ariaDescriptionId: string;
@@ -140,7 +139,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     const tag = renderAsAnchor ? 'a' : 'button';
 
     const nativeProps = getNativeProps(
-      assign(renderAsAnchor ? {} : { type: 'button' }, this.props.rootProps, this.props),
+      assign(renderAsAnchor ? {} : { type: 'button' }, this.props),
       renderAsAnchor ? anchorProperties : buttonProperties,
       [
         'disabled' // let disabled buttons be focused and styled as disabled.
@@ -217,8 +216,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     // For split buttons, touching anywhere in the button should drop the dropdown, which should contain the primary action.
     // This gives more hit target space for touch environments. We're setting the onpointerdown here, because React
     // does not support Pointer events yet.
-    if (this._isSplitButton && this._splitButtonContainer.value && 'onpointerdown' in this._splitButtonContainer.value) {
-      this._events.on(this._splitButtonContainer.value, 'pointerdown', this._onPointerDown, true);
+    if (this._isSplitButton && this._splitButtonContainer.current && 'onpointerdown' in this._splitButtonContainer.current) {
+      this._events.on(this._splitButtonContainer.current, 'pointerdown', this._onPointerDown, true);
     }
   }
 
@@ -317,7 +316,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     const {
       text,
       children,
-      secondaryText = this.props.description,
+      secondaryText = this.props.secondaryText,
       onRenderText = this._onRenderText,
       onRenderDescription = this._onRenderDescription
     } = this.props;
@@ -667,7 +666,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   };
 
   private _onTouchStart: () => void = () => {
-    if (this._isSplitButton && this._splitButtonContainer.value && !('onpointerdown' in this._splitButtonContainer.value)) {
+    if (this._isSplitButton && this._splitButtonContainer.current && !('onpointerdown' in this._splitButtonContainer.current)) {
       this._handleTouchAndPointerEvent();
     }
   };
