@@ -87,6 +87,12 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
   multiSelectDelimiter?: string;
 
   /**
+   * Optional preference to have onChanged still be called when an already selected item is
+   * clicked in single select mode.  Default to false
+   */
+  notifyOnReselect?: boolean;
+
+  /**
    * Deprecated at v0.52.0, use 'disabled' instead.
    * @deprecated
    */
