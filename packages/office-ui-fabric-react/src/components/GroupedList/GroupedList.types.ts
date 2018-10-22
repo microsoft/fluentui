@@ -274,4 +274,7 @@ export interface IGroupDividerProps {
 
   /** Determines if the group selection check box is shown for collapsed groups. */
   isCollapsedGroupSelectVisible?: boolean;
+
+  /** Stores parent group's children. */
+  groups?: IGroup[];
 }

@@ -5,7 +5,7 @@ import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { ICommandBarData } from './CommandBar.base';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IStyleFunction, IComponentAs } from '../../Utilities';
 
 export interface ICommandBar {
   /**
@@ -117,6 +117,13 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
    * @defaultvalue undefined
    */
   className?: string;
+
+  /**
+   * Method to override the render of all command bar buttons. Note, is not used when rendered in overflow
+   * @default CommandBarButton
+   * @deprecated
+   */
+  commandBarButtonAs?: IComponentAs<ICommandBarItemProps>;
 }
 
 export interface ICommandBarItemProps extends IContextualMenuItem {
@@ -143,6 +150,11 @@ export interface ICommandBarItemProps extends IContextualMenuItem {
    */
   renderedInOverflow?: boolean;
 
+  /**
+   * Method to override the render of the individual command bar button. Note, is not used when rendered in overflow
+   * @default CommandBarButton
+   */
+  commandBarButtonAs?: IComponentAs<ICommandBarItemProps>;
 }
 
 export interface ICommandBarStyleProps {

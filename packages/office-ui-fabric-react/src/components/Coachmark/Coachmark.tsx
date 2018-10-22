@@ -52,6 +52,11 @@ export interface ICoachmarkState {
   isMeasuring: boolean;
 
   /**
+   * Is the Coachmark done measuring the hosted entity
+   */
+  isMeasured: boolean;
+
+  /**
    * Cached width and height of _entityInnerHostElement
    */
   entityInnerHostRect: IEntityRect;
@@ -118,9 +123,11 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
    * The cached HTMLElement reference to the Entity Inner Host
    * element.
    */
+  private _entityHost = createRef<HTMLDivElement>();
   private _entityInnerHostElement = createRef<HTMLDivElement>();
   private _translateAnimationContainer = createRef<HTMLDivElement>();
   private _ariaAlertContainer = createRef<HTMLDivElement>();
+  private _childrenContainer = createRef<HTMLDivElement>();
   private _positioningContainer = createRef<IPositioningContainer>();
 
   /**
@@ -141,7 +148,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
         width: 0,
         height: 0
       },
-      isMouseInProximity: false
+      isMouseInProximity: false,
+      isMeasured: false
     };
   }
 
@@ -177,7 +185,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       isMeasuring,
       entityInnerHostRect,
       transformOrigin,
-      alertText
+      alertText,
+      isMeasured
     } = this.state;
 
     const classNames = getClassNames(getStyles, {
@@ -189,7 +198,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       width: `${COACHMARK_WIDTH}px`,
       height: `${COACHMARK_HEIGHT}px`,
       color: color,
-      transformOrigin: transformOrigin
+      transformOrigin: transformOrigin,
+      isMeasured: isMeasured
     });
 
     const finalHeight: number = isCollapsed ? COACHMARK_HEIGHT : entityInnerHostRect.height;
@@ -214,54 +224,55 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
             >
               { alertText }
             </div>
-          ) }
-          <div className={ classNames.pulsingBeacon } />
-          <div
-            className={ classNames.translateAnimationContainer }
-            ref={ this._translateAnimationContainer }
-          >
-            <div className={ classNames.scaleAnimationLayer }>
-              <div className={ classNames.rotateAnimationLayer }>
-                {
-                  this._positioningContainer.current && <Beak
-                    left={ beakLeft }
-                    top={ beakTop }
-                    right={ beakRight }
-                    bottom={ beakBottom }
-                    direction={ this._beakDirection }
-                    color={ color }
-                  />
-                }
-                <FocusTrapZone isClickableOutsideFocusTrap={ true }>
-                  <div
-                    className={ classNames.entityHost }
-                    tabIndex={ -1 }
-                    data-is-focusable={ true }
-                    role='dialog'
-                    aria-labelledby={ ariaLabelledBy }
-                    aria-describedby={ ariaDescribedBy }
-                  >
-                    { isCollapsed && [
-                      ariaLabelledBy && (
-                        <p id={ ariaLabelledBy } className={ classNames.ariaContainer }>
-                          { ariaLabelledByText }
-                        </p>
-                      ),
-                      ariaDescribedBy && (
-                        <p id={ ariaDescribedBy } className={ classNames.ariaContainer }>
-                          { ariaDescribedByText }
-                        </p>
-                      )
-                    ] }
-                    <div
-                      className={ classNames.entityInnerHost }
-                      ref={ this._entityInnerHostElement }
-                      aria-hidden={ isCollapsed }
-                    >
-                      { children }
+          )}
+          <div className={classNames.pulsingBeacon} />
+          <div className={classNames.translateAnimationContainer} ref={this._translateAnimationContainer}>
+            <div className={classNames.scaleAnimationLayer}>
+              <div className={classNames.rotateAnimationLayer}>
+                {this._positioningContainer.current &&
+                  isCollapsed && (
+                    <Beak
+                      left={beakLeft}
+                      top={beakTop}
+                      right={beakRight}
+                      bottom={beakBottom}
+                      direction={this._beakDirection}
+                      color={color}
+                    />
+                  )}
+                <div
+                  className={classNames.entityHost}
+                  ref={this._entityHost}
+                  tabIndex={-1}
+                  data-is-focusable={true}
+                  role='dialog'
+                  aria-labelledby={ariaLabelledBy}
+                  aria-describedby={ariaDescribedBy}
+                >
+                  {isCollapsed && [
+                    ariaLabelledBy && (
+                      <p id={ariaLabelledBy} key={0} className={classNames.ariaContainer}>
+                        {ariaLabelledByText}
+                      </p>
+                    ),
+                    ariaDescribedBy && (
+                      <p id={ariaDescribedBy} key={1} className={classNames.ariaContainer}>
+                        {ariaDescribedByText}
+                      </p>
+                    )
+                  ]}
+                  <FocusTrapZone isClickableOutsideFocusTrap={true} forceFocusInsideTrap={false}>
+                    <div className={classNames.entityInnerHost} ref={this._entityInnerHostElement}>
+                      <div
+                        className={classNames.childrenContainer}
+                        ref={this._childrenContainer}
+                        aria-hidden={isCollapsed}
+                      >
+                        {children}
+                      </div>
                     </div>
-                  </div>
-                </FocusTrapZone>
+                  </FocusTrapZone>
+                </div>
               </div>
             </div>
           </div>
@@ -299,7 +310,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
             entityInnerHostRect: {
               width: this._entityInnerHostElement.current.offsetWidth,
               height: this._entityInnerHostElement.current.offsetHeight
-            }
+            },
+            isMeasured: true
           });
           this._setBeakPosition();
           this.forceUpdate();
@@ -322,6 +334,11 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
             }
           }, 0);
         }
+        this._async.setTimeout(() => {
+          if (this._entityHost.current) {
+            this._entityHost.current.focus();
+          }
+        }, 1000);
       }
     );
   }

@@ -1,6 +1,30 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 17 Oct 2018 11:23:42 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Oct 2018 11:23:55 GMT and should not be manually modified.
+
+## 5.130.0
+Mon, 22 Oct 2018 11:23:55 GMT
+
+### Minor changes
+
+- adding groups prop to pass parent group's children info
+
+### Patches
+
+- Coachmark: Fix tabbing when Coachmark is mounted (backport from PR 6240)
+
+## 5.129.0
+Fri, 19 Oct 2018 11:27:30 GMT
+
+### Minor changes
+
+- Add onPagesUpdated optional prop to List component
+
+### Patches
+
+- FocusTrapZone: Add/remove focus and click handlers when props change
+- adding commandBarButtonAs to the correct interface
+- Spinner: No longer appears to vibrate in place in Edge (Oct 2018 Update)
 
 ## 5.128.2
 Wed, 17 Oct 2018 11:23:42 GMT
