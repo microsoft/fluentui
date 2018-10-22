@@ -146,7 +146,7 @@ describe('Dropdown', () => {
 
       document.body.appendChild(container);
 
-      const onChangeSpy = jasmine.createSpy('onChange');
+      const onChangeSpy = jest.fn();
 
       try {
         ReactDOM.render(<Dropdown label="testgroup" defaultSelectedKey="1" onChange={onChangeSpy} options={DEFAULT_OPTIONS} />, container);
@@ -167,7 +167,7 @@ describe('Dropdown', () => {
 
       document.body.appendChild(container);
 
-      const onChangeSpy = jasmine.createSpy('onChange');
+      const onChangeSpy = jest.fn();
 
       try {
         ReactDOM.render(
@@ -191,7 +191,7 @@ describe('Dropdown', () => {
 
       document.body.appendChild(container);
 
-      const onDismissSpy = jasmine.createSpy('onDismiss');
+      const onDismissSpy = jest.fn();
 
       try {
         ReactDOM.render(
@@ -232,7 +232,7 @@ describe('Dropdown', () => {
 
       document.body.appendChild(container);
 
-      const onChangeSpy = jasmine.createSpy('onChange');
+      const onChangeSpy = jest.fn();
 
       try {
         ReactDOM.render(<Dropdown label="testgroup" defaultSelectedKey="1" onChange={onChangeSpy} options={DEFAULT_OPTIONS} />, container);
@@ -496,7 +496,7 @@ describe('Dropdown', () => {
 
       document.body.appendChild(container);
 
-      const onChangedSpy = jasmine.createSpy('onChanged');
+      const onChangedSpy = jest.fn();
 
       try {
         ReactDOM.render(
@@ -526,7 +526,7 @@ describe('Dropdown', () => {
 
       document.body.appendChild(container);
 
-      const onChangedSpy = jasmine.createSpy('onChanged');
+      const onChangedSpy = jest.fn();
 
       try {
         ReactDOM.render(
