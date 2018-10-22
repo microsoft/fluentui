@@ -25,10 +25,11 @@
     };
 
     var isProduction = (
-      document.location.search.indexOf('?min=0') === -1 && (
+      (document.location.search.indexOf('localhost') === -1 && document.location.search.indexOf('127.0.0.1') === -1)
+      || (document.location.search.indexOf('?min=0') === -1 && (
         document.location.search.indexOf('?min=1') > -1 ||
         location.pathname === '/fabric-react/master/'
-      ));
+      )));
 
     function loadScript(n) {
       for (var i = 0; i < n.length; i++) {

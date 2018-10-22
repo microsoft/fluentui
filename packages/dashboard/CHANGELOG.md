@@ -1,6 +1,13 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Thu, 18 Oct 2018 20:22:36 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Oct 2018 12:29:57 GMT and should not be manually modified.
+
+## 0.30.2
+Mon, 22 Oct 2018 12:29:57 GMT
+
+### Patches
+
+- "Dashboard/Nav component - added focus style to support keyboard inputs"
 
 ## 0.30.1
 Thu, 18 Oct 2018 20:22:36 GMT

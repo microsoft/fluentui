@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/fluent-theme",
-      "comment": "Use variants addVariants utility function.",
+      "comment": "TextField: update the fluent styles.",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/fluent-theme",
-  "email": "jagore@microsoft.com"
+  "email": "v-vibr@microsoft.com"
 }
