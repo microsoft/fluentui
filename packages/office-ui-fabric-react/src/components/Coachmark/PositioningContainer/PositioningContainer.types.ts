@@ -18,7 +18,7 @@ export interface IPositioningContainerProps extends IBaseProps<IPositioningConta
 
   /**
    * How the element should be positioned
-   * @default DirectionalHint.BottomAutoEdge
+   * @defaultvalue DirectionalHint.BottomAutoEdge
    */
   directionalHint?: DirectionalHint;
 
@@ -30,19 +30,19 @@ export interface IPositioningContainerProps extends IBaseProps<IPositioningConta
 
   /**
    * The gap between the positioningContainer and the target
-   * @default 0
+   * @defaultvalue 0
    */
   offsetFromTarget?: number;
 
   /**
    * Custom width for positioningContainer including borders. If value is 0, no width is applied.
-   * @default 0
+   * @defaultvalue 0
    */
   positioningContainerWidth?: number;
 
   /**
    * The background color of the positioningContainer in hex format ie. #ffffff.
-   * @default $ms-color-white
+   * @defaultvalue $ms-color-white
    */
   backgroundColor?: string;
 
@@ -53,7 +53,7 @@ export interface IPositioningContainerProps extends IBaseProps<IPositioningConta
 
   /**
    * The minimum distance the positioningContainer will be away from the edge of the screen.
-   *  @default 8
+   *  @defaultvalue 8
    */
   minPagePadding?: number;
 
@@ -72,14 +72,14 @@ export interface IPositioningContainerProps extends IBaseProps<IPositioningConta
 
   /**
    * If true then the onClose will not not dismiss on scroll
-   * @default false
+   * @defaultvalue false
    */
   preventDismissOnScroll?: boolean;
 
   /**
    * If true the position returned will have the menu element cover the target.
    * If false then it will position next to the target;
-   * @default false
+   * @defaultvalue false
    */
   coverTarget?: boolean;
 
@@ -105,7 +105,7 @@ export interface IPositioningContainerProps extends IBaseProps<IPositioningConta
 
   /**
    * CSS class to apply to the positioningContainer.
-   * @default null
+   * @defaultvalue null
    */
   className?: string;
 
@@ -116,7 +116,7 @@ export interface IPositioningContainerProps extends IBaseProps<IPositioningConta
 
   /**
    * Optional callback that is called once the positioningContainer has been correctly positioned.
-   * @param {IPositionedData} positions gives the user information about how the container is positioned such
+   * @param positions - gives the user information about how the container is positioned such
    * as the element position, the target edge, and the alignment edge of the container.
    */
   onPositioned?: (positions?: IPositionedData) => void;
@@ -135,7 +135,7 @@ export interface IPositioningContainerProps extends IBaseProps<IPositioningConta
   /**
    * If true the position will not change sides in an attempt to fit the positioningContainer within bounds.
    * It will still attempt to align it to whatever bounds are given.
-   * @default false
+   * @defaultvalue false
    */
   directionalHintFixed?: boolean;
 

@@ -482,6 +482,16 @@ class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> extends
 }
 
 // @public (undocumented)
+enum BaseSlots {
+  // (undocumented)
+  backgroundColor = 1,
+  // (undocumented)
+  foregroundColor = 2,
+  // (undocumented)
+  primaryColor = 0
+}
+
+// @public (undocumented)
 class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
   constructor(props: IBreadcrumbProps);
   // (undocumented)
@@ -800,6 +810,9 @@ export function createTheme(theme: IPartialTheme, depComments?: boolean): ITheme
 
 // @public
 export function css(...args: ICssInput[]): string;
+
+// @public (undocumented)
+export function cssColor(color: string): IRGB | undefined;
 
 // @public (undocumented)
 export function customizable(scope: string, fields: string[], concatStyles?: boolean): <P>(ComposedComponent: React.ComponentType<P>) => any;
@@ -1209,6 +1222,54 @@ class FabricPerformance {
   static summary: IPerfSummary;
 }
 
+// @public (undocumented)
+enum FabricSlots {
+  // (undocumented)
+  black = 20,
+  // (undocumented)
+  neutralDark = 19,
+  // (undocumented)
+  neutralLight = 11,
+  // (undocumented)
+  neutralLighter = 10,
+  // (undocumented)
+  neutralLighterAlt = 9,
+  // (undocumented)
+  neutralPrimary = 18,
+  // (undocumented)
+  neutralPrimaryAlt = 17,
+  // (undocumented)
+  neutralQuaternary = 13,
+  // (undocumented)
+  neutralQuaternaryAlt = 12,
+  // (undocumented)
+  neutralSecondary = 16,
+  // (undocumented)
+  neutralTertiary = 15,
+  // (undocumented)
+  neutralTertiaryAlt = 14,
+  // (undocumented)
+  themeDark = 7,
+  // (undocumented)
+  themeDarkAlt = 6,
+  // (undocumented)
+  themeDarker = 8,
+  // (undocumented)
+  themeLight = 3,
+  // (undocumented)
+  themeLighter = 2,
+  // (undocumented)
+  themeLighterAlt = 1,
+  // (undocumented)
+  themePrimary = 0,
+  // (undocumented)
+  themeSecondary = 5,
+  // (undocumented)
+  themeTertiary = 4,
+  // (undocumented)
+  white = 21
+}
+
 // @public
 class FacepileBase extends BaseComponent<IFacepileProps, {}> {
   constructor(props: IFacepileProps);
@@ -1378,8 +1439,25 @@ module FontWeights {
 // @public
 export function format(s: string, ...values: any[]): string;
 
+// @public (undocumented)
+export function getBackgroundShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
+
 // @public
 export function getChildren(parent: HTMLElement, allowVirtualChildren?: boolean): HTMLElement[];
+
+// @public (undocumented)
+export function getColorFromRGBA(rgba: {
+    r: number;
+    g: number;
+    b: number;
+    a: number;
+}): IColor;
+
+// @public (undocumented)
+export function getColorFromString(inputColor: string): IColor | undefined;
+
+// @public (undocumented)
+export function getContrastRatio(color1: IColor, color2: IColor): number;
 
 // @public
 export function getDistanceBetweenPoints(point1: IPoint, point2: IPoint): number;
@@ -1398,6 +1476,9 @@ export function getFirstTabbable(rootElement: HTMLElement, currentElement: HTMLE
 
 // @public
 export function getFocusStyle(theme: ITheme, inset?: number, position?: 'relative' | 'absolute', highContrastStyle?: IRawStyle | undefined, borderColor?: string, outlineColor?: string, isFocusedOnly?: boolean): IRawStyle;
+
+// @public (undocumented)
+export function getFullColorString(color: IColor): string;
 
 // @public
 export function getGlobalClassNames<T>(classNames: GlobalClassNames<T>, theme: ITheme, disableGlobalClassNames?: boolean): Partial<GlobalClassNames<T>>;
@@ -1456,6 +1537,9 @@ export function getScreenSelector(min: number, max: number): string;
 // @public
 export function getScrollbarWidth(): number;
 
+// @public
+export function getShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
+
 // @public (undocumented)
 export function getSubmenuItems(item: IContextualMenuItem): any;
 
@@ -1478,6 +1562,17 @@ class GlobalSettings {
   static removeChangeListener(cb: IChangeEventCallback): void;
   // (undocumented)
   static setValue<T>(key: string, value: T): T;
+}
+
+// @public (undocumented)
+class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P, {}> {
+  // (undocumented)
+  static defaultProps: {
+    disabled: boolean;
+    id: string;
+  }
+  // (undocumented)
+  render(): JSX.Element;
 }
 
 // @public (undocumented)
@@ -1549,6 +1644,25 @@ enum HoverCardType {
   expanding = "ExpandingCard",
   plain = "PlainCard"
 }
+
+// @public (undocumented)
+export function hsl2hsv(h: number, s: number, l: number): IHSV;
+
+// @public (undocumented)
+export function hsl2rgb(h: number, s: number, l: number): IRGB;
+
+// @public (undocumented)
+export function hsv2hex(h: number, s: number, v: number): string;
+
+// @public (undocumented)
+export function hsv2hsl(h: number, s: number, v: number): {
+    h: number;
+    s: number;
+    l: number;
+};
+
+// @public (undocumented)
+export function hsv2rgb(h: number, s: number, v: number): IRGB;
 
 // @public (undocumented)
 interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement> {
@@ -2599,6 +2713,14 @@ interface ICoachmarkState {
 }
 
 // @public (undocumented)
+interface IColor extends IRGB, IHSV {
+  // (undocumented)
+  hex: string;
+  // (undocumented)
+  str: string;
+}
+
+// @public (undocumented)
 interface IColorCellProps {
   color?: string;
   id: string;
@@ -2930,6 +3052,3000 @@ module IconFontSizes {
   // (undocumented)
   xSmall: string;
 
+}
+
+// @public (undocumented)
+enum IconNames {
+  // (undocumented)
+  AADLogo = "AADLogo",
+  // (undocumented)
+  Accept = "Accept",
+  // (undocumented)
+  AccessLogo = "AccessLogo",
+  // (undocumented)
+  AccessLogoFill = "AccessLogoFill",
+  // (undocumented)
+  AccountManagement = "AccountManagement",
+  // (undocumented)
+  Accounts = "Accounts",
+  // (undocumented)
+  ActivateOrders = "ActivateOrders",
+  // (undocumented)
+  ActivityFeed = "ActivityFeed",
+  // (undocumented)
+  Add = "Add",
+  // (undocumented)
+  AddBookmark = "AddBookmark",
+  // (undocumented)
+  AddEvent = "AddEvent",
+  // (undocumented)
+  AddFavorite = "AddFavorite",
+  // (undocumented)
+  AddFavoriteFill = "AddFavoriteFill",
+  // (undocumented)
+  AddFriend = "AddFriend",
+  // (undocumented)
+  AddGroup = "AddGroup",
+  // (undocumented)
+  AddNotes = "AddNotes",
+  // (undocumented)
+  AddOnlineMeeting = "AddOnlineMeeting",
+  // (undocumented)
+  AddPhone = "AddPhone",
+  // (undocumented)
+  AddTo = "AddTo",
+  // (undocumented)
+  Admin = "Admin",
+  // (undocumented)
+  AdminALogo32 = "AdminALogo32",
+  // (undocumented)
+  AdminALogoFill32 = "AdminALogoFill32",
+  // (undocumented)
+  AdminALogoInverse32 = "AdminALogoInverse32",
+  // (undocumented)
+  AdminCLogoInverse32 = "AdminCLogoInverse32",
+  // (undocumented)
+  AdminDLogoInverse32 = "AdminDLogoInverse32",
+  // (undocumented)
+  AdminELogoInverse32 = "AdminELogoInverse32",
+  // (undocumented)
+  AdminLLogoInverse32 = "AdminLLogoInverse32",
+  // (undocumented)
+  AdminMLogoInverse32 = "AdminMLogoInverse32",
+  // (undocumented)
+  AdminOLogoInverse32 = "AdminOLogoInverse32",
+  // (undocumented)
+  AdminPLogoInverse32 = "AdminPLogoInverse32",
+  // (undocumented)
+  AdminSLogoInverse32 = "AdminSLogoInverse32",
+  // (undocumented)
+  AdminYLogoInverse32 = "AdminYLogoInverse32",
+  // (undocumented)
+  Airplane = "Airplane",
+  // (undocumented)
+  AirplaneSolid = "AirplaneSolid",
+  // (undocumented)
+  AirTickets = "AirTickets",
+  // (undocumented)
+  AlarmClock = "AlarmClock",
+  // (undocumented)
+  Album = "Album",
+  // (undocumented)
+  AlbumRemove = "AlbumRemove",
+  // (undocumented)
+  AlertSolid = "AlertSolid",
+  // (undocumented)
+  AlignCenter = "AlignCenter",
+  // (undocumented)
+  AlignHorizontalCenter = "AlignHorizontalCenter",
+  // (undocumented)
+  AlignHorizontalLeft = "AlignHorizontalLeft",
+  // (undocumented)
+  AlignHorizontalRight = "AlignHorizontalRight",
+  // (undocumented)
+  AlignJustify = "AlignJustify",
+  // (undocumented)
+  AlignLeft = "AlignLeft",
+  // (undocumented)
+  AlignRight = "AlignRight",
+  // (undocumented)
+  AlignVerticalBottom = "AlignVerticalBottom",
+  // (undocumented)
+  AlignVerticalCenter = "AlignVerticalCenter",
+  // (undocumented)
+  AlignVerticalTop = "AlignVerticalTop",
+  // (undocumented)
+  AllApps = "AllApps",
+  // (undocumented)
+  AllAppsMirrored = "AllAppsMirrored",
+  // (undocumented)
+  AllCurrency = "AllCurrency",
+  // (undocumented)
+  AnalyticsLogo = "AnalyticsLogo",
+  // (undocumented)
+  AnalyticsQuery = "AnalyticsQuery",
+  // (undocumented)
+  AnalyticsReport = "AnalyticsReport",
+  // (undocumented)
+  AnalyticsView = "AnalyticsView",
+  // (undocumented)
+  AnchorLock = "AnchorLock",
+  // (undocumented)
+  Annotation = "Annotation",
+  // (undocumented)
+  AppIconDefault = "AppIconDefault",
+  // (undocumented)
+  Archive = "Archive",
+  // (undocumented)
+  AreaChart = "AreaChart",
+  // (undocumented)
+  ArrangeBringForward = "ArrangeBringForward",
+  // (undocumented)
+  ArrangeBringToFront = "ArrangeBringToFront",
+  // (undocumented)
+  ArrangeByFrom = "ArrangeByFrom",
+  // (undocumented)
+  ArrangeSendBackward = "ArrangeSendBackward",
+  // (undocumented)
+  ArrangeSendToBack = "ArrangeSendToBack",
+  // (undocumented)
+  Arrivals = "Arrivals",
+  // (undocumented)
+  ArrowDownRight8 = "ArrowDownRight8",
+  // (undocumented)
+  ArrowDownRightMirrored8 = "ArrowDownRightMirrored8",
+  // (undocumented)
+  ArrowTallDownLeft = "ArrowTallDownLeft",
+  // (undocumented)
+  ArrowTallDownRight = "ArrowTallDownRight",
+  // (undocumented)
+  ArrowTallUpLeft = "ArrowTallUpLeft",
+  // (undocumented)
+  ArrowTallUpRight = "ArrowTallUpRight",
+  // (undocumented)
+  ArrowUpRight = "ArrowUpRight",
+  // (undocumented)
+  ArrowUpRight8 = "ArrowUpRight8",
+  // (undocumented)
+  ArrowUpRightMirrored8 = "ArrowUpRightMirrored8",
+  // (undocumented)
+  Articles = "Articles",
+  // (undocumented)
+  Ascending = "Ascending",
+  // (undocumented)
+  AspectRatio = "AspectRatio",
+  // (undocumented)
+  AssessmentGroup = "AssessmentGroup",
+  // (undocumented)
+  AssessmentGroupTemplate = "AssessmentGroupTemplate",
+  // (undocumented)
+  AssetLibrary = "AssetLibrary",
+  // (undocumented)
+  Assign = "Assign",
+  // (undocumented)
+  Asterisk = "Asterisk",
+  // (undocumented)
+  AsteriskSolid = "AsteriskSolid",
+  // (undocumented)
+  ATPLogo = "ATPLogo",
+  // (undocumented)
+  Attach = "Attach",
+  // (undocumented)
+  AustralianRules = "AustralianRules",
+  // (undocumented)
+  AutoEnhanceOff = "AutoEnhanceOff",
+  // (undocumented)
+  AutoEnhanceOn = "AutoEnhanceOn",
+  // (undocumented)
+  AutoFillTemplate = "AutoFillTemplate",
+  // (undocumented)
+  AutoHeight = "AutoHeight",
+  // (undocumented)
+  AutoRacing = "AutoRacing",
+  // (undocumented)
+  AwayStatus = "AwayStatus",
+  // (undocumented)
+  AzureAPIManagement = "AzureAPIManagement",
+  // (undocumented)
+  AzureKeyVault = "AzureKeyVault",
+  // (undocumented)
+  AzureLogo = "AzureLogo",
+  // (undocumented)
+  AzureServiceEndpoint = "AzureServiceEndpoint",
+  // (undocumented)
+  Back = "Back",
+  // (undocumented)
+  BackgroundColor = "BackgroundColor",
+  // (undocumented)
+  Backlog = "Backlog",
+  // (undocumented)
+  BacklogBoard = "BacklogBoard",
+  // (undocumented)
+  BacklogList = "BacklogList",
+  // (undocumented)
+  BackToWindow = "BackToWindow",
+  // (undocumented)
+  Badge = "Badge",
+  // (undocumented)
+  Balloons = "Balloons",
+  // (undocumented)
+  BankSolid = "BankSolid",
+  // (undocumented)
+  BarChart4 = "BarChart4",
+  // (undocumented)
+  BarChartHorizontal = "BarChartHorizontal",
+  // (undocumented)
+  BarChartVertical = "BarChartVertical",
+  // (undocumented)
+  Baseball = "Baseball",
+  // (undocumented)
+  BeerMug = "BeerMug",
+  // (undocumented)
+  BIDashboard = "BIDashboard",
+  // (undocumented)
+  BidiLtr = "BidiLtr",
+  // (undocumented)
+  BidiRtl = "BidiRtl",
+  // (undocumented)
+  BingLogo = "BingLogo",
+  // (undocumented)
+  BirthdayCake = "BirthdayCake",
+  // (undocumented)
+  BlockContact = "BlockContact",
+  // (undocumented)
+  Blocked = "Blocked",
+  // (undocumented)
+  Blocked12 = "Blocked12",
+  // (undocumented)
+  Blocked2 = "Blocked2",
+  // (undocumented)
+  BlockedSite = "BlockedSite",
+  // (undocumented)
+  BlockedSiteSolid12 = "BlockedSiteSolid12",
+  // (undocumented)
+  BlockedSolid = "BlockedSolid",
+  // (undocumented)
+  BlowingSnow = "BlowingSnow",
+  // (undocumented)
+  Blur = "Blur",
+  // (undocumented)
+  Boards = "Boards",
+  // (undocumented)
+  Bold = "Bold",
+  // (undocumented)
+  BookingsLogo = "BookingsLogo",
+  // (undocumented)
+  Bookmarks = "Bookmarks",
+  // (undocumented)
+  BookmarksMirrored = "BookmarksMirrored",
+  // (undocumented)
+  BorderDash = "BorderDash",
+  // (undocumented)
+  BorderDot = "BorderDot",
+  // (undocumented)
+  BoxAdditionSolid = "BoxAdditionSolid",
+  // (undocumented)
+  BoxCheckmarkSolid = "BoxCheckmarkSolid",
+  // (undocumented)
+  BoxMultiplySolid = "BoxMultiplySolid",
+  // (undocumented)
+  BoxPlaySolid = "BoxPlaySolid",
+  // (undocumented)
+  BoxSubtractSolid = "BoxSubtractSolid",
+  // (undocumented)
+  BranchCommit = "BranchCommit",
+  // (undocumented)
+  BranchCompare = "BranchCompare",
+  // (undocumented)
+  BranchFork = "BranchFork",
+  // (undocumented)
+  BranchFork2 = "BranchFork2",
+  // (undocumented)
+  BranchLocked = "BranchLocked",
+  // (undocumented)
+  BranchMerge = "BranchMerge",
+  // (undocumented)
+  BranchPullRequest = "BranchPullRequest",
+  // (undocumented)
+  BranchSearch = "BranchSearch",
+  // (undocumented)
+  BranchShelveset = "BranchShelveset",
+  // (undocumented)
+  Breadcrumb = "Breadcrumb",
+  // (undocumented)
+  Breakfast = "Breakfast",
+  // (undocumented)
+  Brightness = "Brightness",
+  // (undocumented)
+  Broom = "Broom",
+  // (undocumented)
+  BrowserScreenShot = "BrowserScreenShot",
+  // (undocumented)
+  BrowserTab = "BrowserTab",
+  // (undocumented)
+  BrowserTabScreenshot = "BrowserTabScreenshot",
+  // (undocumented)
+  Brunch = "Brunch",
+  // (undocumented)
+  BucketColor = "BucketColor",
+  // (undocumented)
+  BucketColorFill = "BucketColorFill",
+  // (undocumented)
+  BufferTimeAfter = "BufferTimeAfter",
+  // (undocumented)
+  BufferTimeBefore = "BufferTimeBefore",
+  // (undocumented)
+  BufferTimeBoth = "BufferTimeBoth",
+  // (undocumented)
+  Bug = "Bug",
+  // (undocumented)
+  BugSolid = "BugSolid",
+  // (undocumented)
+  Build = "Build",
+  // (undocumented)
+  BuildDefinition = "BuildDefinition",
+  // (undocumented)
+  BuildIssue = "BuildIssue",
+  // (undocumented)
+  BuildQueue = "BuildQueue",
+  // (undocumented)
+  BuildQueueNew = "BuildQueueNew",
+  // (undocumented)
+  BulkUpload = "BulkUpload",
+  // (undocumented)
+  BulletedList = "BulletedList",
+  // (undocumented)
+  BulletedList2 = "BulletedList2",
+  // (undocumented)
+  BulletedList2Mirrored = "BulletedList2Mirrored",
+  // (undocumented)
+  BulletedListMirrored = "BulletedListMirrored",
+  // (undocumented)
+  Bullseye = "Bullseye",
+  // (undocumented)
+  Bus = "Bus",
+  // (undocumented)
+  BusinessCenterLogo = "BusinessCenterLogo",
+  // (undocumented)
+  BusinessHoursSign = "BusinessHoursSign",
+  // (undocumented)
+  BusSolid = "BusSolid",
+  // (undocumented)
+  ButtonControl = "ButtonControl",
+  // (undocumented)
+  Cafe = "Cafe",
+  // (undocumented)
+  Cake = "Cake",
+  // (undocumented)
+  Calculator = "Calculator",
+  // (undocumented)
+  CalculatorAddition = "CalculatorAddition",
+  // (undocumented)
+  CalculatorEqualTo = "CalculatorEqualTo",
+  // (undocumented)
+  CalculatorMultiply = "CalculatorMultiply",
+  // (undocumented)
+  CalculatorNotEqualTo = "CalculatorNotEqualTo",
+  // (undocumented)
+  CalculatorSubtract = "CalculatorSubtract",
+  // (undocumented)
+  Calendar = "Calendar",
+  // (undocumented)
+  CalendarAgenda = "CalendarAgenda",
+  // (undocumented)
+  CalendarDay = "CalendarDay",
+  // (undocumented)
+  CalendarMirrored = "CalendarMirrored",
+  // (undocumented)
+  CalendarReply = "CalendarReply",
+  // (undocumented)
+  CalendarSettings = "CalendarSettings",
+  // (undocumented)
+  CalendarSettingsMirrored = "CalendarSettingsMirrored",
+  // (undocumented)
+  CalendarWeek = "CalendarWeek",
+  // (undocumented)
+  CalendarWorkWeek = "CalendarWorkWeek",
+  // (undocumented)
+  CaloriesAdd = "CaloriesAdd",
+  // (undocumented)
+  Camera = "Camera",
+  // (undocumented)
+  Cancel = "Cancel",
+  // (undocumented)
+  CannedChat = "CannedChat",
+  // (undocumented)
+  Car = "Car",
+  // (undocumented)
+  CaretBottomLeftCenter8 = "CaretBottomLeftCenter8",
+  // (undocumented)
+  CaretBottomLeftSolid8 = "CaretBottomLeftSolid8",
+  // (undocumented)
+  CaretBottomRightCenter8 = "CaretBottomRightCenter8",
+  // (undocumented)
+  CaretBottomRightSolid8 = "CaretBottomRightSolid8",
+  // (undocumented)
+  CaretDown8 = "CaretDown8",
+  // (undocumented)
+  CaretDownSolid8 = "CaretDownSolid8",
+  // (undocumented)
+  CaretHollow = "CaretHollow",
+  // (undocumented)
+  CaretHollowMirrored = "CaretHollowMirrored",
+  // (undocumented)
+  CaretLeft8 = "CaretLeft8",
+  // (undocumented)
+  CaretLeftSolid8 = "CaretLeftSolid8",
+  // (undocumented)
+  CaretRight = "CaretRight",
+  // (undocumented)
+  CaretRight8 = "CaretRight8",
+  // (undocumented)
+  CaretRightSolid8 = "CaretRightSolid8",
+  // (undocumented)
+  CaretSolid = "CaretSolid",
+  // (undocumented)
+  CaretSolid16 = "CaretSolid16",
+  // (undocumented)
+  CaretSolidDown = "CaretSolidDown",
+  // (undocumented)
+  CaretSolidLeft = "CaretSolidLeft",
+  // (undocumented)
+  CaretSolidMirrored = "CaretSolidMirrored",
+  // (undocumented)
+  CaretSolidRight = "CaretSolidRight",
+  // (undocumented)
+  CaretSolidUp = "CaretSolidUp",
+  // (undocumented)
+  CaretTopLeftCenter8 = "CaretTopLeftCenter8",
+  // (undocumented)
+  CaretTopLeftSolid8 = "CaretTopLeftSolid8",
+  // (undocumented)
+  CaretTopRightCenter8 = "CaretTopRightCenter8",
+  // (undocumented)
+  CaretTopRightSolid8 = "CaretTopRightSolid8",
+  // (undocumented)
+  CaretUp8 = "CaretUp8",
+  // (undocumented)
+  CaretUpSolid8 = "CaretUpSolid8",
+  // (undocumented)
+  Cat = "Cat",
+  // (undocumented)
+  CellPhone = "CellPhone",
+  // (undocumented)
+  Certificate = "Certificate",
+  // (undocumented)
+  CertifiedDatabase = "CertifiedDatabase",
+  // (undocumented)
+  Chart = "Chart",
+  // (undocumented)
+  ChartSeries = "ChartSeries",
+  // (undocumented)
+  ChartXAngle = "ChartXAngle",
+  // (undocumented)
+  ChartYAngle = "ChartYAngle",
+  // (undocumented)
+  Chat = "Chat",
+  // (undocumented)
+  ChatInviteFriend = "ChatInviteFriend",
+  // (undocumented)
+  ChatSolid = "ChatSolid",
+  // (undocumented)
+  Checkbox = "Checkbox",
+  // (undocumented)
+  CheckboxComposite = "CheckboxComposite",
+  // (undocumented)
+  CheckboxCompositeReversed = "CheckboxCompositeReversed",
+  // (undocumented)
+  CheckboxIndeterminate = "CheckboxIndeterminate",
+  // (undocumented)
+  CheckedOutByOther12 = "CheckedOutByOther12",
+  // (undocumented)
+  CheckedOutByYou12 = "CheckedOutByYou12",
+  // (undocumented)
+  CheckList = "CheckList",
+  // (undocumented)
+  CheckMark = "CheckMark",
+  // (undocumented)
+  ChevronDown = "ChevronDown",
+  // (undocumented)
+  ChevronDownEnd6 = "ChevronDownEnd6",
+  // (undocumented)
+  ChevronDownMed = "ChevronDownMed",
+  // (undocumented)
+  ChevronDownSmall = "ChevronDownSmall",
+  // (undocumented)
+  ChevronFold10 = "ChevronFold10",
+  // (undocumented)
+  ChevronLeft = "ChevronLeft",
+  // (undocumented)
+  ChevronLeftEnd6 = "ChevronLeftEnd6",
+  // (undocumented)
+  ChevronLeftMed = "ChevronLeftMed",
+  // (undocumented)
+  ChevronLeftSmall = "ChevronLeftSmall",
+  // (undocumented)
+  ChevronRight = "ChevronRight",
+  // (undocumented)
+  ChevronRightEnd6 = "ChevronRightEnd6",
+  // (undocumented)
+  ChevronRightMed = "ChevronRightMed",
+  // (undocumented)
+  ChevronRightSmall = "ChevronRightSmall",
+  // (undocumented)
+  ChevronUnfold10 = "ChevronUnfold10",
+  // (undocumented)
+  ChevronUp = "ChevronUp",
+  // (undocumented)
+  ChevronUpEnd6 = "ChevronUpEnd6",
+  // (undocumented)
+  ChevronUpMed = "ChevronUpMed",
+  // (undocumented)
+  ChevronUpSmall = "ChevronUpSmall",
+  // (undocumented)
+  Chopsticks = "Chopsticks",
+  // (undocumented)
+  ChromeBack = "ChromeBack",
+  // (undocumented)
+  ChromeBackMirrored = "ChromeBackMirrored",
+  // (undocumented)
+  ChromeClose = "ChromeClose",
+  // (undocumented)
+  ChromeMinimize = "ChromeMinimize",
+  // (undocumented)
+  CircleAddition = "CircleAddition",
+  // (undocumented)
+  CircleAdditionSolid = "CircleAdditionSolid",
+  // (undocumented)
+  CircleFill = "CircleFill",
+  // (undocumented)
+  CircleHalfFull = "CircleHalfFull",
+  // (undocumented)
+  CirclePause = "CirclePause",
+  // (undocumented)
+  CirclePauseSolid = "CirclePauseSolid",
+  // (undocumented)
+  CirclePlus = "CirclePlus",
+  // (undocumented)
+  CircleRing = "CircleRing",
+  // (undocumented)
+  CircleShapeSolid = "CircleShapeSolid",
+  // (undocumented)
+  CircleStop = "CircleStop",
+  // (undocumented)
+  CircleStopSolid = "CircleStopSolid",
+  // (undocumented)
+  CityNext = "CityNext",
+  // (undocumented)
+  ClassNotebookLogo16 = "ClassNotebookLogo16",
+  // (undocumented)
+  ClassNotebookLogo32 = "ClassNotebookLogo32",
+  // (undocumented)
+  ClassNotebookLogoFill16 = "ClassNotebookLogoFill16",
+  // (undocumented)
+  ClassNotebookLogoFill32 = "ClassNotebookLogoFill32",
+  // (undocumented)
+  ClassNotebookLogoInverse = "ClassNotebookLogoInverse",
+  // (undocumented)
+  ClassNotebookLogoInverse16 = "ClassNotebookLogoInverse16",
+  // (undocumented)
+  ClassNotebookLogoInverse32 = "ClassNotebookLogoInverse32",
+  // (undocumented)
+  ClassroomLogo = "ClassroomLogo",
+  // (undocumented)
+  Clear = "Clear",
+  // (undocumented)
+  ClearFilter = "ClearFilter",
+  // (undocumented)
+  ClearFormatting = "ClearFormatting",
+  // (undocumented)
+  ClearNight = "ClearNight",
+  // (undocumented)
+  ClipboardSolid = "ClipboardSolid",
+  // (undocumented)
+  Clock = "Clock",
+  // (undocumented)
+  CloneToDesktop = "CloneToDesktop",
+  // (undocumented)
+  ClosedCaption = "ClosedCaption",
+  // (undocumented)
+  ClosePane = "ClosePane",
+  // (undocumented)
+  ClosePaneMirrored = "ClosePaneMirrored",
+  // (undocumented)
+  Cloud = "Cloud",
+  // (undocumented)
+  CloudAdd = "CloudAdd",
+  // (undocumented)
+  CloudDownload = "CloudDownload",
+  // (undocumented)
+  CloudUpload = "CloudUpload",
+  // (undocumented)
+  CloudWeather = "CloudWeather",
+  // (undocumented)
+  Cloudy = "Cloudy",
+  // (undocumented)
+  Cocktails = "Cocktails",
+  // (undocumented)
+  Code = "Code",
+  // (undocumented)
+  CodeEdit = "CodeEdit",
+  // (undocumented)
+  Coffee = "Coffee",
+  // (undocumented)
+  CoffeeScript = "CoffeeScript",
+  // (undocumented)
+  CollapseContent = "CollapseContent",
+  // (undocumented)
+  CollapseContentSingle = "CollapseContentSingle",
+  // (undocumented)
+  CollapseMenu = "CollapseMenu",
+  // (undocumented)
+  CollegeFootball = "CollegeFootball",
+  // (undocumented)
+  CollegeHoops = "CollegeHoops",
+  // (undocumented)
+  Color = "Color",
+  // (undocumented)
+  ColorSolid = "ColorSolid",
+  // (undocumented)
+  ColumnLeftTwoThirds = "ColumnLeftTwoThirds",
+  // (undocumented)
+  ColumnLeftTwoThirdsEdit = "ColumnLeftTwoThirdsEdit",
+  // (undocumented)
+  ColumnOptions = "ColumnOptions",
+  // (undocumented)
+  ColumnRightTwoThirds = "ColumnRightTwoThirds",
+  // (undocumented)
+  ColumnRightTwoThirdsEdit = "ColumnRightTwoThirdsEdit",
+  // (undocumented)
+  Combine = "Combine",
+  // (undocumented)
+  Combobox = "Combobox",
+  // (undocumented)
+  CommandPrompt = "CommandPrompt",
+  // (undocumented)
+  Comment = "Comment",
+  // (undocumented)
+  CommentAdd = "CommentAdd",
+  // (undocumented)
+  CommentNext = "CommentNext",
+  // (undocumented)
+  CommentPrevious = "CommentPrevious",
+  // (undocumented)
+  CommentUrgent = "CommentUrgent",
+  // (undocumented)
+  Commitments = "Commitments",
+  // (undocumented)
+  Communications = "Communications",
+  // (undocumented)
+  CompanyDirectory = "CompanyDirectory",
+  // (undocumented)
+  CompanyDirectoryMirrored = "CompanyDirectoryMirrored",
+  // (undocumented)
+  CompassNW = "CompassNW",
+  // (undocumented)
+  Completed = "Completed",
+  // (undocumented)
+  CompletedSolid = "CompletedSolid",
+  // (undocumented)
+  ConfigurationSolid = "ConfigurationSolid",
+  // (undocumented)
+  ConnectContacts = "ConnectContacts",
+  // (undocumented)
+  ConstructionCone = "ConstructionCone",
+  // (undocumented)
+  ConstructionConeSolid = "ConstructionConeSolid",
+  // (undocumented)
+  Contact = "Contact",
+  // (undocumented)
+  ContactCard = "ContactCard",
+  // (undocumented)
+  ContactCardSettings = "ContactCardSettings",
+  // (undocumented)
+  ContactCardSettingsMirrored = "ContactCardSettingsMirrored",
+  // (undocumented)
+  ContactInfo = "ContactInfo",
+  // (undocumented)
+  ContactLink = "ContactLink",
+  // (undocumented)
+  ContextMenu = "ContextMenu",
+  // (undocumented)
+  Contrast = "Contrast",
+  // (undocumented)
+  Copy = "Copy",
+  // (undocumented)
+  Cotton = "Cotton",
+  // (undocumented)
+  CPlusPlus = "CPlusPlus",
+  // (undocumented)
+  CPlusPlusLanguage = "CPlusPlusLanguage",
+  // (undocumented)
+  CreateMailRule = "CreateMailRule",
+  // (undocumented)
+  Cricket = "Cricket",
+  // (undocumented)
+  CRMReport = "CRMReport",
+  // (undocumented)
+  Crop = "Crop",
+  // (undocumented)
+  Crown = "Crown",
+  // (undocumented)
+  CrownSolid = "CrownSolid",
+  // (undocumented)
+  CSharp = "CSharp",
+  // (undocumented)
+  CSharpLanguage = "CSharpLanguage",
+  // (undocumented)
+  CSS = "CSS",
+  // (undocumented)
+  CustomList = "CustomList",
+  // (undocumented)
+  CustomListMirrored = "CustomListMirrored",
+  // (undocumented)
+  Cut = "Cut",
+  // (undocumented)
+  Cycling = "Cycling",
+  // (undocumented)
+  D365TalentHRCore = "D365TalentHRCore",
+  // (undocumented)
+  D365TalentInsight = "D365TalentInsight",
+  // (undocumented)
+  D365TalentLearn = "D365TalentLearn",
+  // (undocumented)
+  DashboardAdd = "DashboardAdd",
+  // (undocumented)
+  Database = "Database",
+  // (undocumented)
+  DataConnectionLibrary = "DataConnectionLibrary",
+  // (undocumented)
+  DateTime = "DateTime",
+  // (undocumented)
+  DateTime2 = "DateTime2",
+  // (undocumented)
+  DateTimeMirrored = "DateTimeMirrored",
+  // (undocumented)
+  DeactivateOrders = "DeactivateOrders",
+  // (undocumented)
+  Decimals = "Decimals",
+  // (undocumented)
+  DecisionSolid = "DecisionSolid",
+  // (undocumented)
+  DeclineCall = "DeclineCall",
+  // (undocumented)
+  DecreaseIndentLegacy = "DecreaseIndentLegacy",
+  // (undocumented)
+  DefaultRatio = "DefaultRatio",
+  // (undocumented)
+  DefectSolid = "DefectSolid",
+  // (undocumented)
+  Delete = "Delete",
+  // (undocumented)
+  DeleteColumns = "DeleteColumns",
+  // (undocumented)
+  DeleteRows = "DeleteRows",
+  // (undocumented)
+  DeleteRowsMirrored = "DeleteRowsMirrored",
+  // (undocumented)
+  DeleteTable = "DeleteTable",
+  // (undocumented)
+  DeliveryTruck = "DeliveryTruck",
+  // (undocumented)
+  DelveAnalytics = "DelveAnalytics",
+  // (undocumented)
+  DelveAnalyticsLogo = "DelveAnalyticsLogo",
+  // (undocumented)
+  DelveLogo = "DelveLogo",
+  // (undocumented)
+  DelveLogoFill = "DelveLogoFill",
+  // (undocumented)
+  DelveLogoInverse = "DelveLogoInverse",
+  // (undocumented)
+  Deploy = "Deploy",
+  // (undocumented)
+  Descending = "Descending",
+  // (undocumented)
+  Design = "Design",
+  // (undocumented)
+  DesktopScreenshot = "DesktopScreenshot",
+  // (undocumented)
+  DeveloperTools = "DeveloperTools",
+  // (undocumented)
+  Devices3 = "Devices3",
+  // (undocumented)
+  Devices4 = "Devices4",
+  // (undocumented)
+  Diagnostic = "Diagnostic",
+  // (undocumented)
+  Dialpad = "Dialpad",
+  // (undocumented)
+  Diamond = "Diamond",
+  // (undocumented)
+  DiamondSolid = "DiamondSolid",
+  // (undocumented)
+  Dictionary = "Dictionary",
+  // (undocumented)
+  DictionaryRemove = "DictionaryRemove",
+  // (undocumented)
+  DietPlanNotebook = "DietPlanNotebook",
+  // (undocumented)
+  DiffInline = "DiffInline",
+  // (undocumented)
+  DiffSideBySide = "DiffSideBySide",
+  // (undocumented)
+  DisableUpdates = "DisableUpdates",
+  // (undocumented)
+  Dislike = "Dislike",
+  // (undocumented)
+  DislikeSolid = "DislikeSolid",
+  // (undocumented)
+  DockLeft = "DockLeft",
+  // (undocumented)
+  DockLeftMirrored = "DockLeftMirrored",
+  // (undocumented)
+  DockRight = "DockRight",
+  // (undocumented)
+  DocLibrary = "DocLibrary",
+  // (undocumented)
+  DocsLogoInverse = "DocsLogoInverse",
+  // (undocumented)
+  Document = "Document",
+  // (undocumented)
+  DocumentApproval = "DocumentApproval",
+  // (undocumented)
+  Documentation = "Documentation",
+  // (undocumented)
+  DocumentManagement = "DocumentManagement",
+  // (undocumented)
+  DocumentReply = "DocumentReply",
+  // (undocumented)
+  DocumentSearch = "DocumentSearch",
+  // (undocumented)
+  DocumentSet = "DocumentSet",
+  // (undocumented)
+  DOM = "DOM",
+  // (undocumented)
+  DonutChart = "DonutChart",
+  // (undocumented)
+  Door = "Door",
+  // (undocumented)
+  DoubleBookmark = "DoubleBookmark",
+  // (undocumented)
+  DoubleChevronDown = "DoubleChevronDown",
+  // (undocumented)
+  DoubleChevronDown12 = "DoubleChevronDown12",
+  // (undocumented)
+  DoubleChevronDown8 = "DoubleChevronDown8",
+  // (undocumented)
+  DoubleChevronLeft = "DoubleChevronLeft",
+  // (undocumented)
+  DoubleChevronLeft12 = "DoubleChevronLeft12",
+  // (undocumented)
+  DoubleChevronLeft8 = "DoubleChevronLeft8",
+  // (undocumented)
+  DoubleChevronLeftMed = "DoubleChevronLeftMed",
+  // (undocumented)
+  DoubleChevronLeftMedMirrored = "DoubleChevronLeftMedMirrored",
+  // (undocumented)
+  DoubleChevronRight = "DoubleChevronRight",
+  // (undocumented)
+  DoubleChevronRight12 = "DoubleChevronRight12",
+  // (undocumented)
+  DoubleChevronRight8 = "DoubleChevronRight8",
+  // (undocumented)
+  DoubleChevronUp = "DoubleChevronUp",
+  // (undocumented)
+  DoubleChevronUp12 = "DoubleChevronUp12",
+  // (undocumented)
+  DoubleChevronUp8 = "DoubleChevronUp8",
+  // (undocumented)
+  DoubleColumn = "DoubleColumn",
+  // (undocumented)
+  DoubleColumnEdit = "DoubleColumnEdit",
+  // (undocumented)
+  Down = "Down",
+  // (undocumented)
+  Download = "Download",
+  // (undocumented)
+  DownloadDocument = "DownloadDocument",
+  // (undocumented)
+  DragObject = "DragObject",
+  // (undocumented)
+  DrillDown = "DrillDown",
+  // (undocumented)
+  DrillDownSolid = "DrillDownSolid",
+  // (undocumented)
+  DrillExpand = "DrillExpand",
+  // (undocumented)
+  DrillShow = "DrillShow",
+  // (undocumented)
+  DrillThrough = "DrillThrough",
+  // (undocumented)
+  DRM = "DRM",
+  // (undocumented)
+  Drop = "Drop",
+  // (undocumented)
+  Dropdown = "Dropdown",
+  // (undocumented)
+  DropShapeSolid = "DropShapeSolid",
+  // (undocumented)
+  Duststorm = "Duststorm",
+  // (undocumented)
+  Dynamics365Logo = "Dynamics365Logo",
+  // (undocumented)
+  DynamicSMBLogo = "DynamicSMBLogo",
+  // (undocumented)
+  EatDrink = "EatDrink",
+  // (undocumented)
+  EdgeLogo = "EdgeLogo",
+  // (undocumented)
+  Edit = "Edit",
+  // (undocumented)
+  EditContact = "EditContact",
+  // (undocumented)
+  EditMail = "EditMail",
+  // (undocumented)
+  EditMirrored = "EditMirrored",
+  // (undocumented)
+  EditNote = "EditNote",
+  // (undocumented)
+  EditPhoto = "EditPhoto",
+  // (undocumented)
+  EditSolid12 = "EditSolid12",
+  // (undocumented)
+  EditSolidMirrored12 = "EditSolidMirrored12",
+  // (undocumented)
+  EditStyle = "EditStyle",
+  // (undocumented)
+  Education = "Education",
+  // (undocumented)
+  Ellipse = "Ellipse",
+  // (undocumented)
+  Embed = "Embed",
+  // (undocumented)
+  EMI = "EMI",
+  // (undocumented)
+  Emoji = "Emoji",
+  // (undocumented)
+  Emoji2 = "Emoji2",
+  // (undocumented)
+  EmojiDisappointed = "EmojiDisappointed",
+  // (undocumented)
+  EmojiNeutral = "EmojiNeutral",
+  // (undocumented)
+  EmojiTabSymbols = "EmojiTabSymbols",
+  // (undocumented)
+  EmptyRecycleBin = "EmptyRecycleBin",
+  // (undocumented)
+  Encryption = "Encryption",
+  // (undocumented)
+  EngineeringGroup = "EngineeringGroup",
+  // (undocumented)
+  EntryDecline = "EntryDecline",
+  // (undocumented)
+  EntryView = "EntryView",
+  // (undocumented)
+  Equalizer = "Equalizer",
+  // (undocumented)
+  EraseTool = "EraseTool",
+  // (undocumented)
+  Error = "Error",
+  // (undocumented)
+  ErrorBadge = "ErrorBadge",
+  // (undocumented)
+  Event = "Event",
+  // (undocumented)
+  EventAccepted = "EventAccepted",
+  // (undocumented)
+  EventDate = "EventDate",
+  // (undocumented)
+  EventDeclined = "EventDeclined",
+  // (undocumented)
+  EventInfo = "EventInfo",
+  // (undocumented)
+  EventTentative = "EventTentative",
+  // (undocumented)
+  EventTentativeMirrored = "EventTentativeMirrored",
+  // (undocumented)
+  ExcelDocument = "ExcelDocument",
+  // (undocumented)
+  ExcelLogo = "ExcelLogo",
+  // (undocumented)
+  ExcelLogo16 = "ExcelLogo16",
+  // (undocumented)
+  ExcelLogoFill = "ExcelLogoFill",
+  // (undocumented)
+  ExcelLogoFill16 = "ExcelLogoFill16",
+  // (undocumented)
+  ExcelLogoInverse = "ExcelLogoInverse",
+  // (undocumented)
+  ExcelLogoInverse16 = "ExcelLogoInverse16",
+  // (undocumented)
+  ExchangeLogo = "ExchangeLogo",
+  // (undocumented)
+  ExchangeLogoFill = "ExchangeLogoFill",
+  // (undocumented)
+  ExchangeLogoInverse = "ExchangeLogoInverse",
+  // (undocumented)
+  ExerciseTracker = "ExerciseTracker",
+  // (undocumented)
+  ExpandMenu = "ExpandMenu",
+  // (undocumented)
+  ExploreContent = "ExploreContent",
+  // (undocumented)
+  ExploreContentSingle = "ExploreContentSingle",
+  // (undocumented)
+  ExploreData = "ExploreData",
+  // (undocumented)
+  Export = "Export",
+  // (undocumented)
+  ExportMirrored = "ExportMirrored",
+  // (undocumented)
+  ExternalBuild = "ExternalBuild",
+  // (undocumented)
+  ExternalTFVC = "ExternalTFVC",
+  // (undocumented)
+  ExternalXAML = "ExternalXAML",
+  // (undocumented)
+  Eyedropper = "Eyedropper",
+  // (undocumented)
+  F12DevTools = "F12DevTools",
+  // (undocumented)
+  FabricAssetLibrary = "FabricAssetLibrary",
+  // (undocumented)
+  FabricDataConnectionLibrary = "FabricDataConnectionLibrary",
+  // (undocumented)
+  FabricDocLibrary = "FabricDocLibrary",
+  // (undocumented)
+  FabricFolder = "FabricFolder",
+  // (undocumented)
+  FabricFolderFill = "FabricFolderFill",
+  // (undocumented)
+  FabricFolderSearch = "FabricFolderSearch",
+  // (undocumented)
+  FabricFormLibrary = "FabricFormLibrary",
+  // (undocumented)
+  FabricFormLibraryMirrored = "FabricFormLibraryMirrored",
+  // (undocumented)
+  FabricMovetoFolder = "FabricMovetoFolder",
+  // (undocumented)
+  FabricNewFolder = "FabricNewFolder",
+  // (undocumented)
+  FabricOpenFolderHorizontal = "FabricOpenFolderHorizontal",
+  // (undocumented)
+  FabricPictureLibrary = "FabricPictureLibrary",
+  // (undocumented)
+  FabricPublicFolder = "FabricPublicFolder",
+  // (undocumented)
+  FabricReportLibrary = "FabricReportLibrary",
+  // (undocumented)
+  FabricReportLibraryMirrored = "FabricReportLibraryMirrored",
+  // (undocumented)
+  FabricSyncFolder = "FabricSyncFolder",
+  // (undocumented)
+  FabricUnsyncFolder = "FabricUnsyncFolder",
+  // (undocumented)
+  Family = "Family",
+  // (undocumented)
+  FangBody = "FangBody",
+  // (undocumented)
+  FastForward = "FastForward",
+  // (undocumented)
+  FastMode = "FastMode",
+  // (undocumented)
+  Favicon = "Favicon",
+  // (undocumented)
+  FavoriteList = "FavoriteList",
+  // (undocumented)
+  FavoriteStar = "FavoriteStar",
+  // (undocumented)
+  FavoriteStarFill = "FavoriteStarFill",
+  // (undocumented)
+  Fax = "Fax",
+  // (undocumented)
+  Feedback = "Feedback",
+  // (undocumented)
+  FeedbackRequestMirroredSolid = "FeedbackRequestMirroredSolid",
+  // (undocumented)
+  FeedbackRequestSolid = "FeedbackRequestSolid",
+  // (undocumented)
+  FeedbackResponseSolid = "FeedbackResponseSolid",
+  // (undocumented)
+  Ferry = "Ferry",
+  // (undocumented)
+  FerrySolid = "FerrySolid",
+  // (undocumented)
+  FieldChanged = "FieldChanged",
+  // (undocumented)
+  FieldEmpty = "FieldEmpty",
+  // (undocumented)
+  FieldFilled = "FieldFilled",
+  // (undocumented)
+  FieldNotChanged = "FieldNotChanged",
+  // (undocumented)
+  FieldReadOnly = "FieldReadOnly",
+  // (undocumented)
+  FieldRequired = "FieldRequired",
+  // (undocumented)
+  FileASPX = "FileASPX",
+  // (undocumented)
+  FileBug = "FileBug",
+  // (undocumented)
+  FileCode = "FileCode",
+  // (undocumented)
+  FileComment = "FileComment",
+  // (undocumented)
+  FileCSS = "FileCSS",
+  // (undocumented)
+  FileHTML = "FileHTML",
+  // (undocumented)
+  FileImage = "FileImage",
+  // (undocumented)
+  FileJAVA = "FileJAVA",
+  // (undocumented)
+  FileLess = "FileLess",
+  // (undocumented)
+  FilePDB = "FilePDB",
+  // (undocumented)
+  FileSass = "FileSass",
+  // (undocumented)
+  FileSQL = "FileSQL",
+  // (undocumented)
+  FileSymlink = "FileSymlink",
+  // (undocumented)
+  FileTemplate = "FileTemplate",
+  // (undocumented)
+  FileTypeSolution = "FileTypeSolution",
+  // (undocumented)
+  FileYML = "FileYML",
+  // (undocumented)
+  Filter = "Filter",
+  // (undocumented)
+  Filters = "Filters",
+  // (undocumented)
+  FilterSolid = "FilterSolid",
+  // (undocumented)
+  FiltersSolid = "FiltersSolid",
+  // (undocumented)
+  Financial = "Financial",
+  // (undocumented)
+  FinancialMirroredSolid = "FinancialMirroredSolid",
+  // (undocumented)
+  FinancialSolid = "FinancialSolid",
+  // (undocumented)
+  Fingerprint = "Fingerprint",
+  // (undocumented)
+  FiveTileGrid = "FiveTileGrid",
+  // (undocumented)
+  Flag = "Flag",
+  // (undocumented)
+  FlameSolid = "FlameSolid",
+  // (undocumented)
+  FlickDown = "FlickDown",
+  // (undocumented)
+  FlickLeft = "FlickLeft",
+  // (undocumented)
+  FlickRight = "FlickRight",
+  // (undocumented)
+  FlickUp = "FlickUp",
+  // (undocumented)
+  Flow = "Flow",
+  // (undocumented)
+  FocalPoint = "FocalPoint",
+  // (undocumented)
+  Fog = "Fog",
+  // (undocumented)
+  Folder = "Folder",
+  // (undocumented)
+  FolderFill = "FolderFill",
+  // (undocumented)
+  FolderHorizontal = "FolderHorizontal",
+  // (undocumented)
+  FolderList = "FolderList",
+  // (undocumented)
+  FolderListMirrored = "FolderListMirrored",
+  // (undocumented)
+  FolderOpen = "FolderOpen",
+  // (undocumented)
+  FolderQuery = "FolderQuery",
+  // (undocumented)
+  FolderSearch = "FolderSearch",
+  // (undocumented)
+  FollowUser = "FollowUser",
+  // (undocumented)
+  Font = "Font",
+  // (undocumented)
+  FontColor = "FontColor",
+  // (undocumented)
+  FontColorA = "FontColorA",
+  // (undocumented)
+  FontColorSwatch = "FontColorSwatch",
+  // (undocumented)
+  FontDecrease = "FontDecrease",
+  // (undocumented)
+  FontIncrease = "FontIncrease",
+  // (undocumented)
+  FontSize = "FontSize",
+  // (undocumented)
+  FormLibrary = "FormLibrary",
+  // (undocumented)
+  FormLibraryMirrored = "FormLibraryMirrored",
+  // (undocumented)
+  Forward = "Forward",
+  // (undocumented)
+  ForwardEvent = "ForwardEvent",
+  // (undocumented)
+  Freezing = "Freezing",
+  // (undocumented)
+  Frigid = "Frigid",
+  // (undocumented)
+  FSharp = "FSharp",
+  // (undocumented)
+  FSharpLanguage = "FSharpLanguage",
+  // (undocumented)
+  FullCircleMask = "FullCircleMask",
+  // (undocumented)
+  FullHistory = "FullHistory",
+  // (undocumented)
+  FullScreen = "FullScreen",
+  // (undocumented)
+  FullWidth = "FullWidth",
+  // (undocumented)
+  FullWidthEdit = "FullWidthEdit",
+  // (undocumented)
+  FunctionalManagerDashboard = "FunctionalManagerDashboard",
+  // (undocumented)
+  GallatinLogo = "GallatinLogo",
+  // (undocumented)
+  Generate = "Generate",
+  // (undocumented)
+  GenericScan = "GenericScan",
+  // (undocumented)
+  Giftbox = "Giftbox",
+  // (undocumented)
+  GiftboxOpen = "GiftboxOpen",
+  // (undocumented)
+  GiftBoxSolid = "GiftBoxSolid",
+  // (undocumented)
+  GiftCard = "GiftCard",
+  // (undocumented)
+  GitGraph = "GitGraph",
+  // (undocumented)
+  Glasses = "Glasses",
+  // (undocumented)
+  Glimmer = "Glimmer",
+  // (undocumented)
+  GlobalNavButton = "GlobalNavButton",
+  // (undocumented)
+  Globe = "Globe",
+  // (undocumented)
+  Globe2 = "Globe2",
+  // (undocumented)
+  GlobeFavorite = "GlobeFavorite",
+  // (undocumented)
+  Golf = "Golf",
+  // (undocumented)
+  GotoToday = "GotoToday",
+  // (undocumented)
+  GridViewLarge = "GridViewLarge",
+  // (undocumented)
+  GridViewMedium = "GridViewMedium",
+  // (undocumented)
+  GridViewSmall = "GridViewSmall",
+  // (undocumented)
+  GripperBarHorizontal = "GripperBarHorizontal",
+  // (undocumented)
+  GripperBarVertical = "GripperBarVertical",
+  // (undocumented)
+  GripperTool = "GripperTool",
+  // (undocumented)
+  Group = "Group",
+  // (undocumented)
+  GroupedAscending = "GroupedAscending",
+  // (undocumented)
+  GroupedDescending = "GroupedDescending",
+  // (undocumented)
+  GroupedList = "GroupedList",
+  // (undocumented)
+  GroupObject = "GroupObject",
+  // (undocumented)
+  GUID = "GUID",
+  // (undocumented)
+  Guitar = "Guitar",
+  // (undocumented)
+  HailDay = "HailDay",
+  // (undocumented)
+  HailNight = "HailNight",
+  // (undocumented)
+  HalfAlpha = "HalfAlpha",
+  // (undocumented)
+  HalfCircle = "HalfCircle",
+  // (undocumented)
+  HandsFree = "HandsFree",
+  // (undocumented)
+  Handwriting = "Handwriting",
+  // (undocumented)
+  HardDrive = "HardDrive",
+  // (undocumented)
+  HardDriveGroup = "HardDriveGroup",
+  // (undocumented)
+  HardDriveLock = "HardDriveLock",
+  // (undocumented)
+  HardDriveUnlock = "HardDriveUnlock",
+  // (undocumented)
+  Header1 = "Header1",
+  // (undocumented)
+  Header2 = "Header2",
+  // (undocumented)
+  Header3 = "Header3",
+  // (undocumented)
+  Header4 = "Header4",
+  // (undocumented)
+  Headset = "Headset",
+  // (undocumented)
+  HeadsetSolid = "HeadsetSolid",
+  // (undocumented)
+  Health = "Health",
+  // (undocumented)
+  HealthSolid = "HealthSolid",
+  // (undocumented)
+  Heart = "Heart",
+  // (undocumented)
+  HeartBroken = "HeartBroken",
+  // (undocumented)
+  HeartFill = "HeartFill",
+  // (undocumented)
+  Help = "Help",
+  // (undocumented)
+  HelpMirrored = "HelpMirrored",
+  // (undocumented)
+  Hexagon = "Hexagon",
+  // (undocumented)
+  Hide = "Hide",
+  // (undocumented)
+  Hide2 = "Hide2",
+  // (undocumented)
+  Highlight = "Highlight",
+  // (undocumented)
+  HighlightMappedShapes = "HighlightMappedShapes",
+  // (undocumented)
+  HintText = "HintText",
+  // (undocumented)
+  History = "History",
+  // (undocumented)
+  Home = "Home",
+  // (undocumented)
+  HomeSolid = "HomeSolid",
+  // (undocumented)
+  HorizontalDistributeCenter = "HorizontalDistributeCenter",
+  // (undocumented)
+  Hospital = "Hospital",
+  // (undocumented)
+  Hotel = "Hotel",
+  // (undocumented)
+  HourGlass = "HourGlass",
+  // (undocumented)
+  IconSetsFlag = "IconSetsFlag",
+  // (undocumented)
+  IDBadge = "IDBadge",
+  // (undocumented)
+  ImageCrosshair = "ImageCrosshair",
+  // (undocumented)
+  ImageDiff = "ImageDiff",
+  // (undocumented)
+  ImagePixel = "ImagePixel",
+  // (undocumented)
+  ImageSearch = "ImageSearch",
+  // (undocumented)
+  Import = "Import",
+  // (undocumented)
+  Important = "Important",
+  // (undocumented)
+  ImportMirrored = "ImportMirrored",
+  // (undocumented)
+  Inbox = "Inbox",
+  // (undocumented)
+  InboxCheck = "InboxCheck",
+  // (undocumented)
+  IncidentTriangle = "IncidentTriangle",
+  // (undocumented)
+  IncreaseIndentLegacy = "IncreaseIndentLegacy",
+  // (undocumented)
+  Info = "Info",
+  // (undocumented)
+  Info2 = "Info2",
+  // (undocumented)
+  InfoSolid = "InfoSolid",
+  // (undocumented)
+  InsertColumnsLeft = "InsertColumnsLeft",
+  // (undocumented)
+  InsertColumnsRight = "InsertColumnsRight",
+  // (undocumented)
+  InsertRowsAbove = "InsertRowsAbove",
+  // (undocumented)
+  InsertRowsBelow = "InsertRowsBelow",
+  // (undocumented)
+  InsertSignatureLine = "InsertSignatureLine",
+  // (undocumented)
+  InsertTextBox = "InsertTextBox",
+  // (undocumented)
+  InstallToDrive = "InstallToDrive",
+  // (undocumented)
+  InternetSharing = "InternetSharing",
+  // (undocumented)
+  IRMForward = "IRMForward",
+  // (undocumented)
+  IRMForwardMirrored = "IRMForwardMirrored",
+  // (undocumented)
+  IRMReply = "IRMReply",
+  // (undocumented)
+  IRMReplyMirrored = "IRMReplyMirrored",
+  // (undocumented)
+  IssueSolid = "IssueSolid",
+  // (undocumented)
+  IssueTracking = "IssueTracking",
+  // (undocumented)
+  IssueTrackingMirrored = "IssueTrackingMirrored",
+  // (undocumented)
+  Italic = "Italic",
+  // (undocumented)
+  JavaScriptLanguage = "JavaScriptLanguage",
+  // (undocumented)
+  JoinOnlineMeeting = "JoinOnlineMeeting",
+  // (undocumented)
+  JS = "JS",
+  // (undocumented)
+  KaizalaLogo = "KaizalaLogo",
+  // (undocumented)
+  KeyboardClassic = "KeyboardClassic",
+  // (undocumented)
+  Label = "Label",
+  // (undocumented)
+  LadybugSolid = "LadybugSolid",
+  // (undocumented)
+  Lamp = "Lamp",
+  // (undocumented)
+  LandscapeOrientation = "LandscapeOrientation",
+  // (undocumented)
+  LaptopSecure = "LaptopSecure",
+  // (undocumented)
+  LaptopSelected = "LaptopSelected",
+  // (undocumented)
+  LargeGrid = "LargeGrid",
+  // (undocumented)
+  Leave = "Leave",
+  // (undocumented)
+  Library = "Library",
+  // (undocumented)
+  Lifesaver = "Lifesaver",
+  // (undocumented)
+  LifesaverLock = "LifesaverLock",
+  // (undocumented)
+  Light = "Light",
+  // (undocumented)
+  Lightbulb = "Lightbulb",
+  // (undocumented)
+  LightningBolt = "LightningBolt",
+  // (undocumented)
+  LightWeight = "LightWeight",
+  // (undocumented)
+  Like = "Like",
+  // (undocumented)
+  LikeSolid = "LikeSolid",
+  // (undocumented)
+  Line = "Line",
+  // (undocumented)
+  LineChart = "LineChart",
+  // (undocumented)
+  LineSpacing = "LineSpacing",
+  // (undocumented)
+  LineStyle = "LineStyle",
+  // (undocumented)
+  LineThickness = "LineThickness",
+  // (undocumented)
+  Link = "Link",
+  // (undocumented)
+  Link12 = "Link12",
+  // (undocumented)
+  LinkedInLogo = "LinkedInLogo",
+  // (undocumented)
+  List = "List",
+  // (undocumented)
+  ListMirrored = "ListMirrored",
+  // (undocumented)
+  LocaleLanguage = "LocaleLanguage",
+  // (undocumented)
+  Location = "Location",
+  // (undocumented)
+  LocationCircle = "LocationCircle",
+  // (undocumented)
+  LocationDot = "LocationDot",
+  // (undocumented)
+  LocationFill = "LocationFill",
+  // (undocumented)
+  LocationOutline = "LocationOutline",
+  // (undocumented)
+  Lock = "Lock",
+  // (undocumented)
+  Lock12 = "Lock12",
+  // (undocumented)
+  LockSolid = "LockSolid",
+  // (undocumented)
+  LogRemove = "LogRemove",
+  // (undocumented)
+  LookupEntities = "LookupEntities",
+  // (undocumented)
+  LowerBrightness = "LowerBrightness",
+  // (undocumented)
+  LyncLogo = "LyncLogo",
+  // (undocumented)
+  Mail = "Mail",
+  // (undocumented)
+  MailAlert = "MailAlert",
+  // (undocumented)
+  MailCheck = "MailCheck",
+  // (undocumented)
+  MailFill = "MailFill",
+  // (undocumented)
+  MailForward = "MailForward",
+  // (undocumented)
+  MailForwardMirrored = "MailForwardMirrored",
+  // (undocumented)
+  MailLowImportance = "MailLowImportance",
+  // (undocumented)
+  MailPause = "MailPause",
+  // (undocumented)
+  MailReminder = "MailReminder",
+  // (undocumented)
+  MailRepeat = "MailRepeat",
+  // (undocumented)
+  MailReply = "MailReply",
+  // (undocumented)
+  MailReplyAll = "MailReplyAll",
+  // (undocumented)
+  MailReplyAllMirrored = "MailReplyAllMirrored",
+  // (undocumented)
+  MailReplyMirrored = "MailReplyMirrored",
+  // (undocumented)
+  MailSchedule = "MailSchedule",
+  // (undocumented)
+  MailSolid = "MailSolid",
+  // (undocumented)
+  MailTentative = "MailTentative",
+  // (undocumented)
+  MailTentativeMirrored = "MailTentativeMirrored",
+  // (undocumented)
+  MailUndelivered = "MailUndelivered",
+  // (undocumented)
+  ManagerSelfService = "ManagerSelfService",
+  // (undocumented)
+  Manufacturing = "Manufacturing",
+  // (undocumented)
+  MapDirections = "MapDirections",
+  // (undocumented)
+  MapPin = "MapPin",
+  // (undocumented)
+  MapPinSolid = "MapPinSolid",
+  // (undocumented)
+  MarkDownLanguage = "MarkDownLanguage",
+  // (undocumented)
+  Market = "Market",
+  // (undocumented)
+  MarketDown = "MarketDown",
+  // (undocumented)
+  MasterDatabase = "MasterDatabase",
+  // (undocumented)
+  MaximumValue = "MaximumValue",
+  // (undocumented)
+  Medal = "Medal",
+  // (undocumented)
+  MediaAdd = "MediaAdd",
+  // (undocumented)
+  Medical = "Medical",
+  // (undocumented)
+  Megaphone = "Megaphone",
+  // (undocumented)
+  MegaphoneSolid = "MegaphoneSolid",
+  // (undocumented)
+  Memo = "Memo",
+  // (undocumented)
+  Merge = "Merge",
+  // (undocumented)
+  MergeDuplicate = "MergeDuplicate",
+  // (undocumented)
+  Message = "Message",
+  // (undocumented)
+  MessageFill = "MessageFill",
+  // (undocumented)
+  MicOff = "MicOff",
+  // (undocumented)
+  Microphone = "Microphone",
+  // (undocumented)
+  MicrosoftFlowLogo = "MicrosoftFlowLogo",
+  // (undocumented)
+  MicrosoftStaffhubLogo = "MicrosoftStaffhubLogo",
+  // (undocumented)
+  MiniContract = "MiniContract",
+  // (undocumented)
+  MiniExpand = "MiniExpand",
+  // (undocumented)
+  MiniLink = "MiniLink",
+  // (undocumented)
+  MinimumValue = "MinimumValue",
+  // (undocumented)
+  MobileReport = "MobileReport",
+  // (undocumented)
+  MobileSelected = "MobileSelected",
+  // (undocumented)
+  Money = "Money",
+  // (undocumented)
+  More = "More",
+  // (undocumented)
+  MoreSports = "MoreSports",
+  // (undocumented)
+  MoreVertical = "MoreVertical",
+  // (undocumented)
+  MountainClimbing = "MountainClimbing",
+  // (undocumented)
+  Move = "Move",
+  // (undocumented)
+  Movers = "Movers",
+  // (undocumented)
+  MoveToFolder = "MoveToFolder",
+  // (undocumented)
+  MSNLogo = "MSNLogo",
+  // (undocumented)
+  MSNVideos = "MSNVideos",
+  // (undocumented)
+  MSNVideosSolid = "MSNVideosSolid",
+  // (undocumented)
+  MultiSelect = "MultiSelect",
+  // (undocumented)
+  MultiSelectMirrored = "MultiSelectMirrored",
+  // (undocumented)
+  MusicInCollection = "MusicInCollection",
+  // (undocumented)
+  MusicInCollectionFill = "MusicInCollectionFill",
+  // (undocumented)
+  MusicNote = "MusicNote",
+  // (undocumented)
+  MyMoviesTV = "MyMoviesTV",
+  // (undocumented)
+  Nav2DMapView = "Nav2DMapView",
+  // (undocumented)
+  NavigateBack = "NavigateBack",
+  // (undocumented)
+  NavigateBackMirrored = "NavigateBackMirrored",
+  // (undocumented)
+  NavigateExternalInline = "NavigateExternalInline",
+  // (undocumented)
+  NavigateForward = "NavigateForward",
+  // (undocumented)
+  NavigateForwardMirrored = "NavigateForwardMirrored",
+  // (undocumented)
+  NavigationFlipper = "NavigationFlipper",
+  // (undocumented)
+  NetworkTower = "NetworkTower",
+  // (undocumented)
+  NewAnalyticsQuery = "NewAnalyticsQuery",
+  // (undocumented)
+  NewFolder = "NewFolder",
+  // (undocumented)
+  News = "News",
+  // (undocumented)
+  NewsSearch = "NewsSearch",
+  // (undocumented)
+  NewTeamProject = "NewTeamProject",
+  // (undocumented)
+  Next = "Next",
+  // (undocumented)
+  NormalWeight = "NormalWeight",
+  // (undocumented)
+  NoteForward = "NoteForward",
+  // (undocumented)
+  NotePinned = "NotePinned",
+  // (undocumented)
+  NoteReply = "NoteReply",
+  // (undocumented)
+  NotExecuted = "NotExecuted",
+  // (undocumented)
+  NotImpactedSolid = "NotImpactedSolid",
+  // (undocumented)
+  NugetLogo = "NugetLogo",
+  // (undocumented)
+  NumberedList = "NumberedList",
+  // (undocumented)
+  NumberField = "NumberField",
+  // (undocumented)
+  NumberSequence = "NumberSequence",
+  // (undocumented)
+  Octagon = "Octagon",
+  // (undocumented)
+  OEM = "OEM",
+  // (undocumented)
+  OfficeAddinsLogo = "OfficeAddinsLogo",
+  // (undocumented)
+  OfficeAssistantLogo = "OfficeAssistantLogo",
+  // (undocumented)
+  OfficeChat = "OfficeChat",
+  // (undocumented)
+  OfficeChatSolid = "OfficeChatSolid",
+  // (undocumented)
+  OfficeFormsLogo = "OfficeFormsLogo",
+  // (undocumented)
+  OfficeFormsLogo16 = "OfficeFormsLogo16",
+  // (undocumented)
+  OfficeFormsLogo24 = "OfficeFormsLogo24",
+  // (undocumented)
+  OfficeFormsLogoFill = "OfficeFormsLogoFill",
+  // (undocumented)
+  OfficeFormsLogoFill16 = "OfficeFormsLogoFill16",
+  // (undocumented)
+  OfficeFormsLogoFill24 = "OfficeFormsLogoFill24",
+  // (undocumented)
+  OfficeFormsLogoInverse = "OfficeFormsLogoInverse",
+  // (undocumented)
+  OfficeFormsLogoInverse16 = "OfficeFormsLogoInverse16",
+  // (undocumented)
+  OfficeFormsLogoInverse24 = "OfficeFormsLogoInverse24",
+  // (undocumented)
+  OfficeLogo = "OfficeLogo",
+  // (undocumented)
+  OfficeStoreLogo = "OfficeStoreLogo",
+  // (undocumented)
+  OfficeVideoLogo = "OfficeVideoLogo",
+  // (undocumented)
+  OfficeVideoLogoFill = "OfficeVideoLogoFill",
+  // (undocumented)
+  OfficeVideoLogoInverse = "OfficeVideoLogoInverse",
+  // (undocumented)
+  OfflineOneDriveParachute = "OfflineOneDriveParachute",
+  // (undocumented)
+  OfflineOneDriveParachuteDisabled = "OfflineOneDriveParachuteDisabled",
+  // (undocumented)
+  OfflineStorageSolid = "OfflineStorageSolid",
+  // (undocumented)
+  OneDriveAdd = "OneDriveAdd",
+  // (undocumented)
+  OneDriveFolder16 = "OneDriveFolder16",
+  // (undocumented)
+  OneDriveLogo = "OneDriveLogo",
+  // (undocumented)
+  OneNoteEduLogoInverse = "OneNoteEduLogoInverse",
+  // (undocumented)
+  OneNoteLogo = "OneNoteLogo",
+  // (undocumented)
+  OneNoteLogo16 = "OneNoteLogo16",
+  // (undocumented)
+  OneNoteLogoFill = "OneNoteLogoFill",
+  // (undocumented)
+  OneNoteLogoFill16 = "OneNoteLogoFill16",
+  // (undocumented)
+  OneNoteLogoInverse = "OneNoteLogoInverse",
+  // (undocumented)
+  OneNoteLogoInverse16 = "OneNoteLogoInverse16",
+  // (undocumented)
+  OpenFile = "OpenFile",
+  // (undocumented)
+  OpenFolderHorizontal = "OpenFolderHorizontal",
+  // (undocumented)
+  OpenInNewWindow = "OpenInNewWindow",
+  // (undocumented)
+  OpenPane = "OpenPane",
+  // (undocumented)
+  OpenPaneMirrored = "OpenPaneMirrored",
+  // (undocumented)
+  OpenSource = "OpenSource",
+  // (undocumented)
+  Org = "Org",
+  // (undocumented)
+  Orientation = "Orientation",
+  // (undocumented)
+  OutlookLogo = "OutlookLogo",
+  // (undocumented)
+  OutlookLogo16 = "OutlookLogo16",
+  // (undocumented)
+  OutlookLogoFill = "OutlookLogoFill",
+  // (undocumented)
+  OutlookLogoFill16 = "OutlookLogoFill16",
+  // (undocumented)
+  OutlookLogoInverse = "OutlookLogoInverse",
+  // (undocumented)
+  OutlookLogoInverse16 = "OutlookLogoInverse16",
+  // (undocumented)
+  OutOfOffice = "OutOfOffice",
+  // (undocumented)
+  Package = "Package",
+  // (undocumented)
+  Packages = "Packages",
+  // (undocumented)
+  Padding = "Padding",
+  // (undocumented)
+  PaddingBottom = "PaddingBottom",
+  // (undocumented)
+  PaddingLeft = "PaddingLeft",
+  // (undocumented)
+  PaddingRight = "PaddingRight",
+  // (undocumented)
+  PaddingTop = "PaddingTop",
+  // (undocumented)
+  Page = "Page",
+  // (undocumented)
+  PageAdd = "PageAdd",
+  // (undocumented)
+  PageCheckedin = "PageCheckedin",
+  // (undocumented)
+  PageCheckedOut = "PageCheckedOut",
+  // (undocumented)
+  PageEdit = "PageEdit",
+  // (undocumented)
+  PageLeft = "PageLeft",
+  // (undocumented)
+  PageListMirroredSolid = "PageListMirroredSolid",
+  // (undocumented)
+  PageListSolid = "PageListSolid",
+  // (undocumented)
+  PageLock = "PageLock",
+  // (undocumented)
+  PageRemove = "PageRemove",
+  // (undocumented)
+  PageRight = "PageRight",
+  // (undocumented)
+  PageSolid = "PageSolid",
+  // (undocumented)
+  PanoIndicator = "PanoIndicator",
+  // (undocumented)
+  Parachute = "Parachute",
+  // (undocumented)
+  ParachuteSolid = "ParachuteSolid",
+  // (undocumented)
+  Parameter = "Parameter",
+  // (undocumented)
+  ParkingLocation = "ParkingLocation",
+  // (undocumented)
+  ParkingLocationMirrored = "ParkingLocationMirrored",
+  // (undocumented)
+  ParkingMirroredSolid = "ParkingMirroredSolid",
+  // (undocumented)
+  ParkingSolid = "ParkingSolid",
+  // (undocumented)
+  PartlyCloudyDay = "PartlyCloudyDay",
+  // (undocumented)
+  PartlyCloudyNight = "PartlyCloudyNight",
+  // (undocumented)
+  PartyLeader = "PartyLeader",
+  // (undocumented)
+  PassiveAuthentication = "PassiveAuthentication",
+  // (undocumented)
+  Paste = "Paste",
+  // (undocumented)
+  PasteAsCode = "PasteAsCode",
+  // (undocumented)
+  PasteAsText = "PasteAsText",
+  // (undocumented)
+  Pause = "Pause",
+  // (undocumented)
+  PaymentCard = "PaymentCard",
+  // (undocumented)
+  PC1 = "PC1",
+  // (undocumented)
+  PDF = "PDF",
+  // (undocumented)
+  PencilReply = "PencilReply",
+  // (undocumented)
+  Pentagon = "Pentagon",
+  // (undocumented)
+  People = "People",
+  // (undocumented)
+  PeopleAdd = "PeopleAdd",
+  // (undocumented)
+  PeopleAlert = "PeopleAlert",
+  // (undocumented)
+  PeopleBlock = "PeopleBlock",
+  // (undocumented)
+  PeoplePause = "PeoplePause",
+  // (undocumented)
+  PeopleRepeat = "PeopleRepeat",
+  // (undocumented)
+  Permissions = "Permissions",
+  // (undocumented)
+  PermissionsSolid = "PermissionsSolid",
+  // (undocumented)
+  Personalize = "Personalize",
+  // (undocumented)
+  Phishing = "Phishing",
+  // (undocumented)
+  Phone = "Phone",
+  // (undocumented)
+  Photo = "Photo",
+  // (undocumented)
+  Photo2 = "Photo2",
+  // (undocumented)
+  Photo2Add = "Photo2Add",
+  // (undocumented)
+  Photo2Remove = "Photo2Remove",
+  // (undocumented)
+  PhotoCollection = "PhotoCollection",
+  // (undocumented)
+  Picture = "Picture",
+  // (undocumented)
+  PictureCenter = "PictureCenter",
+  // (undocumented)
+  PictureFill = "PictureFill",
+  // (undocumented)
+  PictureLibrary = "PictureLibrary",
+  // (undocumented)
+  PicturePosition = "PicturePosition",
+  // (undocumented)
+  PictureStretch = "PictureStretch",
+  // (undocumented)
+  PictureTile = "PictureTile",
+  // (undocumented)
+  PieDouble = "PieDouble",
+  // (undocumented)
+  PieSingle = "PieSingle",
+  // (undocumented)
+  PieSingleSolid = "PieSingleSolid",
+  // (undocumented)
+  Pill = "Pill",
+  // (undocumented)
+  Pin = "Pin",
+  // (undocumented)
+  Pinned = "Pinned",
+  // (undocumented)
+  PinnedFill = "PinnedFill",
+  // (undocumented)
+  PivotChart = "PivotChart",
+  // (undocumented)
+  PlannerLogo = "PlannerLogo",
+  // (undocumented)
+  PlanView = "PlanView",
+  // (undocumented)
+  Play = "Play",
+  // (undocumented)
+  PlayerSettings = "PlayerSettings",
+  // (undocumented)
+  PlayResume = "PlayResume",
+  // (undocumented)
+  Plug = "Plug",
+  // (undocumented)
+  PlugConnected = "PlugConnected",
+  // (undocumented)
+  PlugDisconnected = "PlugDisconnected",
+  // (undocumented)
+  PlugSolid = "PlugSolid",
+  // (undocumented)
+  POI = "POI",
+  // (undocumented)
+  POISolid = "POISolid",
+  // (undocumented)
+  PostUpdate = "PostUpdate",
+  // (undocumented)
+  PowerApps = "PowerApps",
+  // (undocumented)
+  PowerApps2Logo = "PowerApps2Logo",
+  // (undocumented)
+  PowerAppsLogo = "PowerAppsLogo",
+  // (undocumented)
+  PowerBILogo = "PowerBILogo",
+  // (undocumented)
+  PowerButton = "PowerButton",
+  // (undocumented)
+  PowerPointDocument = "PowerPointDocument",
+  // (undocumented)
+  PowerPointLogo = "PowerPointLogo",
+  // (undocumented)
+  PowerPointLogo16 = "PowerPointLogo16",
+  // (undocumented)
+  PowerPointLogoFill = "PowerPointLogoFill",
+  // (undocumented)
+  PowerPointLogoFill16 = "PowerPointLogoFill16",
+  // (undocumented)
+  PowerPointLogoInverse = "PowerPointLogoInverse",
+  // (undocumented)
+  PowerPointLogoInverse16 = "PowerPointLogoInverse16",
+  // (undocumented)
+  Precipitation = "Precipitation",
+  // (undocumented)
+  PresenceChickletVideo = "PresenceChickletVideo",
+  // (undocumented)
+  Presentation = "Presentation",
+  // (undocumented)
+  Presentation12 = "Presentation12",
+  // (undocumented)
+  Preview = "Preview",
+  // (undocumented)
+  PreviewLink = "PreviewLink",
+  // (undocumented)
+  Previous = "Previous",
+  // (undocumented)
+  PrimaryCalendar = "PrimaryCalendar",
+  // (undocumented)
+  Print = "Print",
+  // (undocumented)
+  PrintfaxPrinterFile = "PrintfaxPrinterFile",
+  // (undocumented)
+  Processing = "Processing",
+  // (undocumented)
+  ProcessMetaTask = "ProcessMetaTask",
+  // (undocumented)
+  Product = "Product",
+  // (undocumented)
+  ProfileSearch = "ProfileSearch",
+  // (undocumented)
+  ProFootball = "ProFootball",
+  // (undocumented)
+  ProgressLoopInner = "ProgressLoopInner",
+  // (undocumented)
+  ProgressLoopOuter = "ProgressLoopOuter",
+  // (undocumented)
+  ProgressRingDots = "ProgressRingDots",
+  // (undocumented)
+  ProHockey = "ProHockey",
+  // (undocumented)
+  ProjectCollection = "ProjectCollection",
+  // (undocumented)
+  ProjectLogo16 = "ProjectLogo16",
+  // (undocumented)
+  ProjectLogo32 = "ProjectLogo32",
+  // (undocumented)
+  ProjectLogoFill16 = "ProjectLogoFill16",
+  // (undocumented)
+  ProjectLogoFill32 = "ProjectLogoFill32",
+  // (undocumented)
+  ProjectLogoInverse = "ProjectLogoInverse",
+  // (undocumented)
+  ProtectedDocument = "ProtectedDocument",
+  // (undocumented)
+  ProtectionCenterLogo32 = "ProtectionCenterLogo32",
+  // (undocumented)
+  ProtectRestrict = "ProtectRestrict",
+  // (undocumented)
+  PublicCalendar = "PublicCalendar",
+  // (undocumented)
+  PublicContactCard = "PublicContactCard",
+  // (undocumented)
+  PublicContactCardMirrored = "PublicContactCardMirrored",
+  // (undocumented)
+  PublicEmail = "PublicEmail",
+  // (undocumented)
+  PublicFolder = "PublicFolder",
+  // (undocumented)
+  PublishCourse = "PublishCourse",
+  // (undocumented)
+  PublisherLogo = "PublisherLogo",
+  // (undocumented)
+  PublisherLogo16 = "PublisherLogo16",
+  // (undocumented)
+  PublisherLogoFill = "PublisherLogoFill",
+  // (undocumented)
+  PublisherLogoFill16 = "PublisherLogoFill16",
+  // (undocumented)
+  PublisherLogoInverse16 = "PublisherLogoInverse16",
+  // (undocumented)
+  Puzzle = "Puzzle",
+  // (undocumented)
+  PY = "PY",
+  // (undocumented)
+  PythonLanguage = "PythonLanguage",
+  // (undocumented)
+  QuarterCircle = "QuarterCircle",
+  // (undocumented)
+  QueryList = "QueryList",
+  // (undocumented)
+  Questionnaire = "Questionnaire",
+  // (undocumented)
+  QuestionnaireMirrored = "QuestionnaireMirrored",
+  // (undocumented)
+  QuickNote = "QuickNote",
+  // (undocumented)
+  QuickNoteSolid = "QuickNoteSolid",
+  // (undocumented)
+  R = "R",
+  // (undocumented)
+  RadioBtnOff = "RadioBtnOff",
+  // (undocumented)
+  RadioBtnOn = "RadioBtnOn",
+  // (undocumented)
+  RadioBullet = "RadioBullet",
+  // (undocumented)
+  Rain = "Rain",
+  // (undocumented)
+  RainShowersDay = "RainShowersDay",
+  // (undocumented)
+  RainShowersNight = "RainShowersNight",
+  // (undocumented)
+  RainSnow = "RainSnow",
+  // (undocumented)
+  RawSource = "RawSource",
+  // (undocumented)
+  Read = "Read",
+  // (undocumented)
+  ReadingMode = "ReadingMode",
+  // (undocumented)
+  ReadingModeSolid = "ReadingModeSolid",
+  // (undocumented)
+  ReadOutLoud = "ReadOutLoud",
+  // (undocumented)
+  ReceiptCheck = "ReceiptCheck",
+  // (undocumented)
+  ReceiptForward = "ReceiptForward",
+  // (undocumented)
+  ReceiptReply = "ReceiptReply",
+  // (undocumented)
+  ReceiptTentative = "ReceiptTentative",
+  // (undocumented)
+  ReceiptTentativeMirrored = "ReceiptTentativeMirrored",
+  // (undocumented)
+  ReceiptUndelivered = "ReceiptUndelivered",
+  // (undocumented)
+  Recent = "Recent",
+  // (undocumented)
+  Record2 = "Record2",
+  // (undocumented)
+  RecruitmentManagement = "RecruitmentManagement",
+  // (undocumented)
+  RectangleShapeSolid = "RectangleShapeSolid",
+  // (undocumented)
+  RectangularClipping = "RectangularClipping",
+  // (undocumented)
+  RecurringEvent = "RecurringEvent",
+  // (undocumented)
+  RecurringTask = "RecurringTask",
+  // (undocumented)
+  RecycleBin = "RecycleBin",
+  // (undocumented)
+  Redeploy = "Redeploy",
+  // (undocumented)
+  RedEye = "RedEye",
+  // (undocumented)
+  Redo = "Redo",
+  // (undocumented)
+  Refresh = "Refresh",
+  // (undocumented)
+  ReleaseDefinition = "ReleaseDefinition",
+  // (undocumented)
+  ReminderGroup = "ReminderGroup",
+  // (undocumented)
+  ReminderPerson = "ReminderPerson",
+  // (undocumented)
+  Remote = "Remote",
+  // (undocumented)
+  Remove = "Remove",
+  // (undocumented)
+  RemoveEvent = "RemoveEvent",
+  // (undocumented)
+  RemoveFilter = "RemoveFilter",
+  // (undocumented)
+  RemoveLink = "RemoveLink",
+  // (undocumented)
+  RemoveOccurrence = "RemoveOccurrence",
+  // (undocumented)
+  Rename = "Rename",
+  // (undocumented)
+  RenewalCurrent = "RenewalCurrent",
+  // (undocumented)
+  RenewalFuture = "RenewalFuture",
+  // (undocumented)
+  ReopenPages = "ReopenPages",
+  // (undocumented)
+  Repair = "Repair",
+  // (undocumented)
+  Reply = "Reply",
+  // (undocumented)
+  ReplyAll = "ReplyAll",
+  // (undocumented)
+  ReplyAllAlt = "ReplyAllAlt",
+  // (undocumented)
+  ReplyAllMirrored = "ReplyAllMirrored",
+  // (undocumented)
+  ReplyAlt = "ReplyAlt",
+  // (undocumented)
+  ReplyMirrored = "ReplyMirrored",
+  // (undocumented)
+  Repo = "Repo",
+  // (undocumented)
+  ReportAdd = "ReportAdd",
+  // (undocumented)
+  ReportHacked = "ReportHacked",
+  // (undocumented)
+  ReportLibrary = "ReportLibrary",
+  // (undocumented)
+  ReportLibraryMirrored = "ReportLibraryMirrored",
+  // (undocumented)
+  RepoSolid = "RepoSolid",
+  // (undocumented)
+  ReturnToSession = "ReturnToSession",
+  // (undocumented)
+  ReviewRequestMirroredSolid = "ReviewRequestMirroredSolid",
+  // (undocumented)
+  ReviewRequestSolid = "ReviewRequestSolid",
+  // (undocumented)
+  ReviewResponseSolid = "ReviewResponseSolid",
+  // (undocumented)
+  ReviewSolid = "ReviewSolid",
+  // (undocumented)
+  RevToggleKey = "RevToggleKey",
+  // (undocumented)
+  Rewind = "Rewind",
+  // (undocumented)
+  Ribbon = "Ribbon",
+  // (undocumented)
+  RibbonSolid = "RibbonSolid",
+  // (undocumented)
+  RightDoubleQuote = "RightDoubleQuote",
+  // (undocumented)
+  RightTriangle = "RightTriangle",
+  // (undocumented)
+  Ringer = "Ringer",
+  // (undocumented)
+  RingerOff = "RingerOff",
+  // (undocumented)
+  RingerRemove = "RingerRemove",
+  // (undocumented)
+  Robot = "Robot",
+  // (undocumented)
+  Rocket = "Rocket",
+  // (undocumented)
+  Room = "Room",
+  // (undocumented)
+  Rotate = "Rotate",
+  // (undocumented)
+  RowsChild = "RowsChild",
+  // (undocumented)
+  RowsGroup = "RowsGroup",
+  // (undocumented)
+  Rugby = "Rugby",
+  // (undocumented)
+  Running = "Running",
+  // (undocumented)
+  Sad = "Sad",
+  // (undocumented)
+  SadSolid = "SadSolid",
+  // (undocumented)
+  Save = "Save",
+  // (undocumented)
+  SaveAll = "SaveAll",
+  // (undocumented)
+  SaveAndClose = "SaveAndClose",
+  // (undocumented)
+  SaveAs = "SaveAs",
+  // (undocumented)
+  SaveTemplate = "SaveTemplate",
+  // (undocumented)
+  Savings = "Savings",
+  // (undocumented)
+  ScaleUp = "ScaleUp",
+  // (undocumented)
+  ScheduleEventAction = "ScheduleEventAction",
+  // (undocumented)
+  ScopeTemplate = "ScopeTemplate",
+  // (undocumented)
+  Script = "Script",
+  // (undocumented)
+  ScrollUpDown = "ScrollUpDown",
+  // (undocumented)
+  Search = "Search",
+  // (undocumented)
+  SearchAndApps = "SearchAndApps",
+  // (undocumented)
+  SearchBookmark = "SearchBookmark",
+  // (undocumented)
+  SearchCalendar = "SearchCalendar",
+  // (undocumented)
+  SearchIssue = "SearchIssue",
+  // (undocumented)
+  SearchIssueMirrored = "SearchIssueMirrored",
+  // (undocumented)
+  Section = "Section",
+  // (undocumented)
+  Sections = "Sections",
+  // (undocumented)
+  SecurityGroup = "SecurityGroup",
+  // (undocumented)
+  SelectAll = "SelectAll",
+  // (undocumented)
+  Sell = "Sell",
+  // (undocumented)
+  SemiboldWeight = "SemiboldWeight",
+  // (undocumented)
+  Send = "Send",
+  // (undocumented)
+  SendMirrored = "SendMirrored",
+  // (undocumented)
+  Separator = "Separator",
+  // (undocumented)
+  Server = "Server",
+  // (undocumented)
+  ServerEnviroment = "ServerEnviroment",
+  // (undocumented)
+  ServerProcesses = "ServerProcesses",
+  // (undocumented)
+  SetAction = "SetAction",
+  // (undocumented)
+  Settings = "Settings",
+  // (undocumented)
+  Share = "Share",
+  // (undocumented)
+  ShareiOS = "ShareiOS",
+  // (undocumented)
+  SharepointLogo = "SharepointLogo",
+  // (undocumented)
+  SharepointLogoFill = "SharepointLogoFill",
+  // (undocumented)
+  SharepointLogoInverse = "SharepointLogoInverse",
+  // (undocumented)
+  Shield = "Shield",
+  // (undocumented)
+  ShieldSolid = "ShieldSolid",
+  // (undocumented)
+  Shop = "Shop",
+  // (undocumented)
+  ShoppingCart = "ShoppingCart",
+  // (undocumented)
+  ShoppingCartSolid = "ShoppingCartSolid",
+  // (undocumented)
+  ShopServer = "ShopServer",
+  // (undocumented)
+  ShowResults = "ShowResults",
+  // (undocumented)
+  ShowResultsMirrored = "ShowResultsMirrored",
+  // (undocumented)
+  SidePanel = "SidePanel",
+  // (undocumented)
+  SidePanelMirrored = "SidePanelMirrored",
+  // (undocumented)
+  SignOut = "SignOut",
+  // (undocumented)
+  SingleBookmark = "SingleBookmark",
+  // (undocumented)
+  SingleBookmarkSolid = "SingleBookmarkSolid",
+  // (undocumented)
+  SingleColumn = "SingleColumn",
+  // (undocumented)
+  SingleColumnEdit = "SingleColumnEdit",
+  // (undocumented)
+  SIPMove = "SIPMove",
+  // (undocumented)
+  SiteScan = "SiteScan",
+  // (undocumented)
+  SixPointStar = "SixPointStar",
+  // (undocumented)
+  SizeLegacy = "SizeLegacy",
+  // (undocumented)
+  SkiResorts = "SkiResorts",
+  // (undocumented)
+  SkypeCheck = "SkypeCheck",
+  // (undocumented)
+  SkypeCircleCheck = "SkypeCircleCheck",
+  // (undocumented)
+  SkypeCircleClock = "SkypeCircleClock",
+  // (undocumented)
+  SkypeCircleMinus = "SkypeCircleMinus",
+  // (undocumented)
+  SkypeClock = "SkypeClock",
+  // (undocumented)
+  SkypeForBusinessLogo = "SkypeForBusinessLogo",
+  // (undocumented)
+  SkypeForBusinessLogo16 = "SkypeForBusinessLogo16",
+  // (undocumented)
+  SkypeForBusinessLogoFill = "SkypeForBusinessLogoFill",
+  // (undocumented)
+  SkypeForBusinessLogoFill16 = "SkypeForBusinessLogoFill16",
+  // (undocumented)
+  SkypeLogo = "SkypeLogo",
+  // (undocumented)
+  SkypeLogo16 = "SkypeLogo16",
+  // (undocumented)
+  SkypeMessage = "SkypeMessage",
+  // (undocumented)
+  SkypeMinus = "SkypeMinus",
+  // (undocumented)
+  Slider = "Slider",
+  // (undocumented)
+  SliderHandleSize = "SliderHandleSize",
+  // (undocumented)
+  SliderThumb = "SliderThumb",
+  // (undocumented)
+  Snooze = "Snooze",
+  // (undocumented)
+  Snow = "Snow",
+  // (undocumented)
+  Snowflake = "Snowflake",
+  // (undocumented)
+  SnowShowerDay = "SnowShowerDay",
+  // (undocumented)
+  SnowShowerNight = "SnowShowerNight",
+  // (undocumented)
+  Soccer = "Soccer",
+  // (undocumented)
+  SocialListeningLogo = "SocialListeningLogo",
+  // (undocumented)
+  Sort = "Sort",
+  // (undocumented)
+  SortDown = "SortDown",
+  // (undocumented)
+  SortLines = "SortLines",
+  // (undocumented)
+  SortUp = "SortUp",
+  // (undocumented)
+  Source = "Source",
+  // (undocumented)
+  Spacer = "Spacer",
+  // (undocumented)
+  Speakers = "Speakers",
+  // (undocumented)
+  SpeedHigh = "SpeedHigh",
+  // (undocumented)
+  Split = "Split",
+  // (undocumented)
+  SplitObject = "SplitObject",
+  // (undocumented)
+  Sprint = "Sprint",
+  // (undocumented)
+  Squalls = "Squalls",
+  // (undocumented)
+  SquareShapeSolid = "SquareShapeSolid",
+  // (undocumented)
+  Stack = "Stack",
+  // (undocumented)
+  StackedBarChart = "StackedBarChart",
+  // (undocumented)
+  StackedLineChart = "StackedLineChart",
+  // (undocumented)
+  StackIndicator = "StackIndicator",
+  // (undocumented)
+  StaffNotebookLogo16 = "StaffNotebookLogo16",
+  // (undocumented)
+  StaffNotebookLogo32 = "StaffNotebookLogo32",
+  // (undocumented)
+  StaffNotebookLogoFill16 = "StaffNotebookLogoFill16",
+  // (undocumented)
+  StaffNotebookLogoFill32 = "StaffNotebookLogoFill32",
+  // (undocumented)
+  StaffNotebookLogoInverted16 = "StaffNotebookLogoInverted16",
+  // (undocumented)
+  StaffNotebookLogoInverted32 = "StaffNotebookLogoInverted32",
+  // (undocumented)
+  Starburst = "Starburst",
+  // (undocumented)
+  StarburstSolid = "StarburstSolid",
+  // (undocumented)
+  StatusCircleBlock2 = "StatusCircleBlock2",
+  // (undocumented)
+  StatusCircleCheckmark = "StatusCircleCheckmark",
+  // (undocumented)
+  StatusCircleErrorX = "StatusCircleErrorX",
+  // (undocumented)
+  StatusCircleExclamation = "StatusCircleExclamation",
+  // (undocumented)
+  StatusCircleInfo = "StatusCircleInfo",
+  // (undocumented)
+  StatusCircleInner = "StatusCircleInner",
+  // (undocumented)
+  StatusCircleOuter = "StatusCircleOuter",
+  // (undocumented)
+  StatusCircleQuestionMark = "StatusCircleQuestionMark",
+  // (undocumented)
+  StatusCircleRing = "StatusCircleRing",
+  // (undocumented)
+  StatusErrorFull = "StatusErrorFull",
+  // (undocumented)
+  StatusTriangle = "StatusTriangle",
+  // (undocumented)
+  StatusTriangleExclamation = "StatusTriangleExclamation",
+  // (undocumented)
+  StatusTriangleInner = "StatusTriangleInner",
+  // (undocumented)
+  StatusTriangleOuter = "StatusTriangleOuter",
+  // (undocumented)
+  Step = "Step",
+  // (undocumented)
+  StepInsert = "StepInsert",
+  // (undocumented)
+  StepShared = "StepShared",
+  // (undocumented)
+  StepSharedAdd = "StepSharedAdd",
+  // (undocumented)
+  StepSharedInsert = "StepSharedInsert",
+  // (undocumented)
+  StockDown = "StockDown",
+  // (undocumented)
+  StockUp = "StockUp",
+  // (undocumented)
+  Stop = "Stop",
+  // (undocumented)
+  StopSolid = "StopSolid",
+  // (undocumented)
+  Stopwatch = "Stopwatch",
+  // (undocumented)
+  StoreLogo16 = "StoreLogo16",
+  // (undocumented)
+  StoreLogoMed20 = "StoreLogoMed20",
+  // (undocumented)
+  Storyboard = "Storyboard",
+  // (undocumented)
+  Streaming = "Streaming",
+  // (undocumented)
+  StreamingOff = "StreamingOff",
+  // (undocumented)
+  StreamLogo = "StreamLogo",
+  // (undocumented)
+  Strikethrough = "Strikethrough",
+  // (undocumented)
+  Subscribe = "Subscribe",
+  // (undocumented)
+  Subscript = "Subscript",
+  // (undocumented)
+  SubstitutionsIn = "SubstitutionsIn",
+  // (undocumented)
+  Suitcase = "Suitcase",
+  // (undocumented)
+  SunAdd = "SunAdd",
+  // (undocumented)
+  Sunny = "Sunny",
+  // (undocumented)
+  SunQuestionMark = "SunQuestionMark",
+  // (undocumented)
+  Superscript = "Superscript",
+  // (undocumented)
+  SurveyQuestions = "SurveyQuestions",
+  // (undocumented)
+  SwayLogo16 = "SwayLogo16",
+  // (undocumented)
+  SwayLogo32 = "SwayLogo32",
+  // (undocumented)
+  SwayLogoFill16 = "SwayLogoFill16",
+  // (undocumented)
+  SwayLogoFill32 = "SwayLogoFill32",
+  // (undocumented)
+  SwayLogoInverse = "SwayLogoInverse",
+  // (undocumented)
+  Switch = "Switch",
+  // (undocumented)
+  SwitcherStartEnd = "SwitcherStartEnd",
+  // (undocumented)
+  Sync = "Sync",
+  // (undocumented)
+  SyncFolder = "SyncFolder",
+  // (undocumented)
+  SyncOccurence = "SyncOccurence",
+  // (undocumented)
+  SyncToPC = "SyncToPC",
+  // (undocumented)
+  System = "System",
+  // (undocumented)
+  Tab = "Tab",
+  // (undocumented)
+  Table = "Table",
+  // (undocumented)
+  TableGroup = "TableGroup",
+  // (undocumented)
+  Tablet = "Tablet",
+  // (undocumented)
+  TabletMode = "TabletMode",
+  // (undocumented)
+  TabletSelected = "TabletSelected",
+  // (undocumented)
+  Tag = "Tag",
+  // (undocumented)
+  TagSolid = "TagSolid",
+  // (undocumented)
+  TagUnknown = "TagUnknown",
+  // (undocumented)
+  TagUnknown12 = "TagUnknown12",
+  // (undocumented)
+  TagUnknown12Mirror = "TagUnknown12Mirror",
+  // (undocumented)
+  TagUnknownMirror = "TagUnknownMirror",
+  // (undocumented)
+  Taskboard = "Taskboard",
+  // (undocumented)
+  TaskGroup = "TaskGroup",
+  // (undocumented)
+  TaskGroupMirrored = "TaskGroupMirrored",
+  // (undocumented)
+  TaskLogo = "TaskLogo",
+  // (undocumented)
+  TaskManager = "TaskManager",
+  // (undocumented)
+  TaskManagerMirrored = "TaskManagerMirrored",
+  // (undocumented)
+  TaskSolid = "TaskSolid",
+  // (undocumented)
+  Taxi = "Taxi",
+  // (undocumented)
+  TeamFavorite = "TeamFavorite",
+  // (undocumented)
+  TeamsLogo = "TeamsLogo",
+  // (undocumented)
+  TeamsLogo16 = "TeamsLogo16",
+  // (undocumented)
+  TeamsLogoFill = "TeamsLogoFill",
+  // (undocumented)
+  TeamsLogoFill16 = "TeamsLogoFill16",
+  // (undocumented)
+  TeamsLogoInverse = "TeamsLogoInverse",
+  // (undocumented)
+  Teamwork = "Teamwork",
+  // (undocumented)
+  Teeth = "Teeth",
+  // (undocumented)
+  TemporaryUser = "TemporaryUser",
+  // (undocumented)
+  Tennis = "Tennis",
+  // (undocumented)
+  TestAutoSolid = "TestAutoSolid",
+  // (undocumented)
+  TestBeaker = "TestBeaker",
+  // (undocumented)
+  TestBeakerSolid = "TestBeakerSolid",
+  // (undocumented)
+  TestCase = "TestCase",
+  // (undocumented)
+  TestExploreSolid = "TestExploreSolid",
+  // (undocumented)
+  TestImpactSolid = "TestImpactSolid",
+  // (undocumented)
+  TestParameter = "TestParameter",
+  // (undocumented)
+  TestPlan = "TestPlan",
+  // (undocumented)
+  TestStep = "TestStep",
+  // (undocumented)
+  TestSuite = "TestSuite",
+  // (undocumented)
+  TestUserSolid = "TestUserSolid",
+  // (undocumented)
+  TextBox = "TextBox",
+  // (undocumented)
+  TextCallout = "TextCallout",
+  // (undocumented)
+  TextDocument = "TextDocument",
+  // (undocumented)
+  TextDocumentShared = "TextDocumentShared",
+  // (undocumented)
+  TextField = "TextField",
+  // (undocumented)
+  TextOverflow = "TextOverflow",
+  // (undocumented)
+  TFVCLogo = "TFVCLogo",
+  // (undocumented)
+  ThisPC = "ThisPC",
+  // (undocumented)
+  ThreeQuarterCircle = "ThreeQuarterCircle",
+  // (undocumented)
+  ThumbnailView = "ThumbnailView",
+  // (undocumented)
+  ThumbnailViewMirrored = "ThumbnailViewMirrored",
+  // (undocumented)
+  Thunderstorms = "Thunderstorms",
+  // (undocumented)
+  Ticket = "Ticket",
+  // (undocumented)
+  Tiles = "Tiles",
+  // (undocumented)
+  Tiles2 = "Tiles2",
+  // (undocumented)
+  TimeEntry = "TimeEntry",
+  // (undocumented)
+  Timeline = "Timeline",
+  // (undocumented)
+  TimelineDelivery = "TimelineDelivery",
+  // (undocumented)
+  TimelineMatrixView = "TimelineMatrixView",
+  // (undocumented)
+  TimelineProgress = "TimelineProgress",
+  // (undocumented)
+  Timer = "Timer",
+  // (undocumented)
+  TimeSheet = "TimeSheet",
+  // (undocumented)
+  ToDoLogoBottom = "ToDoLogoBottom",
+  // (undocumented)
+  ToDoLogoInverse = "ToDoLogoInverse",
+  // (undocumented)
+  ToDoLogoTop = "ToDoLogoTop",
+  // (undocumented)
+  ToggleBorder = "ToggleBorder",
+  // (undocumented)
+  ToggleFilled = "ToggleFilled",
+  // (undocumented)
+  ToggleOff = "ToggleOff",
+  // (undocumented)
+  ToggleOn = "ToggleOn",
+  // (undocumented)
+  ToggleThumb = "ToggleThumb",
+  // (undocumented)
+  Toll = "Toll",
+  // (undocumented)
+  Touch = "Touch",
+  // (undocumented)
+  TouchPointer = "TouchPointer",
+  // (undocumented)
+  Trackers = "Trackers",
+  // (undocumented)
+  TrackersMirrored = "TrackersMirrored",
+  // (undocumented)
+  Train = "Train",
+  // (undocumented)
+  TrainSolid = "TrainSolid",
+  // (undocumented)
+  TransferCall = "TransferCall",
+  // (undocumented)
+  Transition = "Transition",
+  // (undocumented)
+  TransitionEffect = "TransitionEffect",
+  // (undocumented)
+  TransitionPop = "TransitionPop",
+  // (undocumented)
+  TransitionPush = "TransitionPush",
+  // (undocumented)
+  Trending12 = "Trending12",
+  // (undocumented)
+  TriangleDown12 = "TriangleDown12",
+  // (undocumented)
+  TriangleLeft12 = "TriangleLeft12",
+  // (undocumented)
+  TriangleRight12 = "TriangleRight12",
+  // (undocumented)
+  TriangleShapeSolid = "TriangleShapeSolid",
+  // (undocumented)
+  TriangleSolid = "TriangleSolid",
+  // (undocumented)
+  TriangleSolidDown12 = "TriangleSolidDown12",
+  // (undocumented)
+  TriangleSolidLeft12 = "TriangleSolidLeft12",
+  // (undocumented)
+  TriangleSolidRight12 = "TriangleSolidRight12",
+  // (undocumented)
+  TriangleSolidUp12 = "TriangleSolidUp12",
+  // (undocumented)
+  TriangleUp12 = "TriangleUp12",
+  // (undocumented)
+  TriggerApproval = "TriggerApproval",
+  // (undocumented)
+  TriggerAuto = "TriggerAuto",
+  // (undocumented)
+  TriggerUser = "TriggerUser",
+  // (undocumented)
+  TripleColumn = "TripleColumn",
+  // (undocumented)
+  TripleColumnEdit = "TripleColumnEdit",
+  // (undocumented)
+  Trophy = "Trophy",
+  // (undocumented)
+  Trophy2 = "Trophy2",
+  // (undocumented)
+  Trophy2Solid = "Trophy2Solid",
+  // (undocumented)
+  TurnRight = "TurnRight",
+  // (undocumented)
+  TVMonitor = "TVMonitor",
+  // (undocumented)
+  TVMonitorSelected = "TVMonitorSelected",
+  // (undocumented)
+  TwelvePointStar = "TwelvePointStar",
+  // (undocumented)
+  TypeScriptLanguage = "TypeScriptLanguage",
+  // (undocumented)
+  Umbrella = "Umbrella",
+  // (undocumented)
+  Underline = "Underline",
+  // (undocumented)
+  Undo = "Undo",
+  // (undocumented)
+  Uneditable = "Uneditable",
+  // (undocumented)
+  UneditableMirrored = "UneditableMirrored",
+  // (undocumented)
+  UneditableSolid12 = "UneditableSolid12",
+  // (undocumented)
+  UneditableSolidMirrored12 = "UneditableSolidMirrored12",
+  // (undocumented)
+  Unfavorite = "Unfavorite",
+  // (undocumented)
+  UngroupObject = "UngroupObject",
+  // (undocumented)
+  Unknown = "Unknown",
+  // (undocumented)
+  UnknownCall = "UnknownCall",
+  // (undocumented)
+  UnknownMirrored = "UnknownMirrored",
+  // (undocumented)
+  UnknownMirroredSolid = "UnknownMirroredSolid",
+  // (undocumented)
+  UnknownSolid = "UnknownSolid",
+  // (undocumented)
+  Unlock = "Unlock",
+  // (undocumented)
+  UnlockSolid = "UnlockSolid",
+  // (undocumented)
+  Unpin = "Unpin",
+  // (undocumented)
+  UnSetColor = "UnSetColor",
+  // (undocumented)
+  Unsubscribe = "Unsubscribe",
+  // (undocumented)
+  UnsyncFolder = "UnsyncFolder",
+  // (undocumented)
+  UnsyncOccurence = "UnsyncOccurence",
+  // (undocumented)
+  Up = "Up",
+  // (undocumented)
+  Upload = "Upload",
+  // (undocumented)
+  UserEvent = "UserEvent",
+  // (undocumented)
+  UserFollowed = "UserFollowed",
+  // (undocumented)
+  UserGauge = "UserGauge",
+  // (undocumented)
+  UserPause = "UserPause",
+  // (undocumented)
+  UserRemove = "UserRemove",
+  // (undocumented)
+  UserSync = "UserSync",
+  // (undocumented)
+  Vacation = "Vacation",
+  // (undocumented)
+  Variable = "Variable",
+  // (undocumented)
+  VariableGroup = "VariableGroup",
+  // (undocumented)
+  VB = "VB",
+  // (undocumented)
+  VennDiagram = "VennDiagram",
+  // (undocumented)
+  VersionControlPush = "VersionControlPush",
+  // (undocumented)
+  VerticalDistributeCenter = "VerticalDistributeCenter",
+  // (undocumented)
+  Video = "Video",
+  // (undocumented)
+  VideoOff = "VideoOff",
+  // (undocumented)
+  VideoSearch = "VideoSearch",
+  // (undocumented)
+  VideoSolid = "VideoSolid",
+  // (undocumented)
+  View = "View",
+  // (undocumented)
+  ViewAll = "ViewAll",
+  // (undocumented)
+  ViewAll2 = "ViewAll2",
+  // (undocumented)
+  ViewDashboard = "ViewDashboard",
+  // (undocumented)
+  ViewList = "ViewList",
+  // (undocumented)
+  ViewListGroup = "ViewListGroup",
+  // (undocumented)
+  ViewListTree = "ViewListTree",
+  // (undocumented)
+  VisioDiagram = "VisioDiagram",
+  // (undocumented)
+  VisioDocument = "VisioDocument",
+  // (undocumented)
+  VisioLogo = "VisioLogo",
+  // (undocumented)
+  VisioLogo16 = "VisioLogo16",
+  // (undocumented)
+  VisioLogoFill = "VisioLogoFill",
+  // (undocumented)
+  VisioLogoFill16 = "VisioLogoFill16",
+  // (undocumented)
+  VisioLogoInverse = "VisioLogoInverse",
+  // (undocumented)
+  VisioLogoInverse16 = "VisioLogoInverse16",
+  // (undocumented)
+  VisualBasicLanguage = "VisualBasicLanguage",
+  // (undocumented)
+  VisualsFolder = "VisualsFolder",
+  // (undocumented)
+  VisualsStore = "VisualsStore",
+  // (undocumented)
+  VisualStudioIDELogo32 = "VisualStudioIDELogo32",
+  // (undocumented)
+  VisualStudioLogo = "VisualStudioLogo",
+  // (undocumented)
+  VoicemailForward = "VoicemailForward",
+  // (undocumented)
+  VoicemailIRM = "VoicemailIRM",
+  // (undocumented)
+  VoicemailReply = "VoicemailReply",
+  // (undocumented)
+  Volume0 = "Volume0",
+  // (undocumented)
+  Volume1 = "Volume1",
+  // (undocumented)
+  Volume2 = "Volume2",
+  // (undocumented)
+  Volume3 = "Volume3",
+  // (undocumented)
+  VolumeDisabled = "VolumeDisabled",
+  // (undocumented)
+  VSTSAltLogo1 = "VSTSAltLogo1",
+  // (undocumented)
+  VSTSAltLogo2 = "VSTSAltLogo2",
+  // (undocumented)
+  VSTSLogo = "VSTSLogo",
+  // (undocumented)
+  Waffle = "Waffle",
+  // (undocumented)
+  WaffleOffice365 = "WaffleOffice365",
+  // (undocumented)
+  WaitlistConfirm = "WaitlistConfirm",
+  // (undocumented)
+  WaitlistConfirmMirrored = "WaitlistConfirmMirrored",
+  // (undocumented)
+  Warning = "Warning",
+  // (undocumented)
+  Warning12 = "Warning12",
+  // (undocumented)
+  WebPublish = "WebPublish",
+  // (undocumented)
+  Website = "Website",
+  // (undocumented)
+  Weights = "Weights",
+  // (undocumented)
+  WhiteBoardApp16 = "WhiteBoardApp16",
+  // (undocumented)
+  WhiteBoardApp32 = "WhiteBoardApp32",
+  // (undocumented)
+  WifiEthernet = "WifiEthernet",
+  // (undocumented)
+  WindDirection = "WindDirection",
+  // (undocumented)
+  WindowEdit = "WindowEdit",
+  // (undocumented)
+  WindowsLogo = "WindowsLogo",
+  // (undocumented)
+  Wines = "Wines",
+  // (undocumented)
+  WipePhone = "WipePhone",
+  // (undocumented)
+  WordDocument = "WordDocument",
+  // (undocumented)
+  WordLogo = "WordLogo",
+  // (undocumented)
+  WordLogo16 = "WordLogo16",
+  // (undocumented)
+  WordLogoFill = "WordLogoFill",
+  // (undocumented)
+  WordLogoFill16 = "WordLogoFill16",
+  // (undocumented)
+  WordLogoInverse = "WordLogoInverse",
+  // (undocumented)
+  WordLogoInverse16 = "WordLogoInverse16",
+  // (undocumented)
+  Work = "Work",
+  // (undocumented)
+  WorkFlow = "WorkFlow",
+  // (undocumented)
+  WorkforceManagement = "WorkforceManagement",
+  // (undocumented)
+  WorkItem = "WorkItem",
+  // (undocumented)
+  WorkItemBar = "WorkItemBar",
+  // (undocumented)
+  WorkItemBarSolid = "WorkItemBarSolid",
+  // (undocumented)
+  WorkItemBug = "WorkItemBug",
+  // (undocumented)
+  World = "World",
+  // (undocumented)
+  WorldClock = "WorldClock",
+  // (undocumented)
+  YammerLogo = "YammerLogo",
+  // (undocumented)
+  ZipFolder = "ZipFolder",
+  // (undocumented)
+  Zoom = "Zoom",
+  // (undocumented)
+  ZoomIn = "ZoomIn",
+  // (undocumented)
+  ZoomOut = "ZoomOut"
 }
 
 // @public (undocumented)
@@ -4336,6 +7452,63 @@ interface IGenericItem {
 }
 
 // @public (undocumented)
+interface IGrid {
+}
+
+// @public (undocumented)
+interface IGridCellProps<T> {
+  cellDisabledStyle?: string[];
+  cellIsSelectedStyle?: string[];
+  className?: string;
+  disabled?: boolean;
+  getClassNames?: (theme: ITheme, className: string, variantClassName: string, iconClassName: string | undefined, menuIconClassName: string | undefined, disabled: boolean, checked: boolean, expanded: boolean, isSplit: boolean | undefined) => IButtonClassNames;
+  id: string;
+  index?: number;
+  item: T;
+  label?: string;
+  onClick?: (item: T) => void;
+  onFocus?: (item: T) => void;
+  onHover?: (item?: T) => void;
+  onKeyDown?: (ev: React.KeyboardEvent<HTMLButtonElement>) => void;
+  onMouseEnter?: (ev: React.MouseEvent<HTMLButtonElement>) => boolean;
+  onMouseLeave?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
+  onMouseMove?: (ev: React.MouseEvent<HTMLButtonElement>) => boolean;
+  onRenderItem: (item: T) => JSX.Element;
+  onWheel?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
+  role?: string;
+  selected?: boolean;
+}
+
+// @public (undocumented)
+interface IGridProps {
+  columnCount: number;
+  componentRef?: IRefObject<IGrid>;
+  // @deprecated
+  containerClassName?: string;
+  doNotContainWithinFocusZone?: boolean;
+  items: any[];
+  onBlur?: () => void;
+  onRenderItem: (item: any, index: number) => JSX.Element;
+  positionInSet?: number;
+  setSize?: number;
+  shouldFocusCircularNavigate?: boolean;
+  styles?: IStyleFunctionOrObject<IGridStyleProps, IGridStyles>;
+  theme?: ITheme;
+}
+
+// @public
+interface IGridStyleProps {
+  theme: ITheme;
+}
+
+// @public
+interface IGridStyles {
+  focusedContainer?: IStyle;
+  root: IStyle;
+  tableCell: IStyle;
+}
+
+// @public (undocumented)
 interface IGroup {
   ariaLabel?: string;
   children?: IGroup[];
@@ -4494,6 +7667,26 @@ interface IHoverCardStyleProps {
 // @public (undocumented)
 interface IHoverCardStyles {
   host?: IStyle;
+}
+
+// @public (undocumented)
+interface IHSL {
+  // (undocumented)
+  h: number;
+  // (undocumented)
+  l: number;
+  // (undocumented)
+  s: number;
+}
+
+// @public (undocumented)
+interface IHSV {
+  // (undocumented)
+  h: number;
+  // (undocumented)
+  s: number;
+  // (undocumented)
+  v: number;
 }
 
 // @public (undocumented)
@@ -5169,6 +8362,9 @@ interface INavStyles {
 // @public
 export function initializeFocusRects(window?: Window): void;
 
+// @public (undocumented)
+export function initializeIcons(baseUrl?: string, options?: IIconOptions): void;
+
 // @public
 enum InjectionMode {
   appendChild = 2,
@@ -5712,6 +8908,70 @@ interface IPoint {
 }
 
 // @public (undocumented)
+interface IPopup {
+}
+
+// @public (undocumented)
+interface IPopupProps extends React.HTMLAttributes<Popup> {
+  ariaDescribedBy?: string;
+  ariaLabel?: string;
+  ariaLabelledBy?: string;
+  className?: string;
+  componentRef?: IRefObject<IPopup>;
+  onDismiss?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => any;
+  role?: string;
+  shouldRestoreFocus?: boolean;
+}
+
+// @public (undocumented)
+interface IPopupState {
+  // (undocumented)
+  needsVerticalScrollBar?: boolean;
+}
+
+// @public (undocumented)
+interface IPositioningContainer {
+}
+
+// @public (undocumented)
+interface IPositioningContainerProps extends IBaseProps<IPositioningContainer> {
+  ariaDescribedBy?: string;
+  ariaLabel?: string;
+  ariaLabelledBy?: string;
+  backgroundColor?: string;
+  bounds?: IRectangle;
+  className?: string;
+  componentRef?: IRefObject<IPositioningContainer>;
+  coverTarget?: boolean;
+  directionalHint?: DirectionalHint;
+  directionalHintFixed?: boolean;
+  directionalHintForRTL?: DirectionalHint;
+  doNotLayer?: boolean;
+  finalHeight?: number;
+  minPagePadding?: number;
+  offsetFromTarget?: number;
+  onDismiss?: (ev?: any) => void;
+  onLayerMounted?: () => void;
+  onPositioned?: (positions?: IPositionedData) => void;
+  positioningContainerMaxHeight?: number;
+  positioningContainerWidth?: number;
+  preventDismissOnScroll?: boolean;
+  role?: string;
+  setInitialFocus?: boolean;
+  target?: HTMLElement | string | MouseEvent | IPoint | null;
+  // @deprecated
+  targetPoint?: IPoint;
+  // @deprecated
+  useTargetPoint?: boolean;
+}
+
+// @public (undocumented)
+interface IPositioningContainerState {
+  heightOffset?: number;
+  positions?: IPositionedData;
+}
+
+// @public (undocumented)
 interface IProgressIndicator {
   // (undocumented)
   focus: () => void;
@@ -5910,6 +9170,8 @@ interface IResizeGroupStyles {
 // @public (undocumented)
 interface IRGB {
   // (undocumented)
+  a?: number;
+  // (undocumented)
   b: number;
   // (undocumented)
   g: number;
@@ -5996,6 +9258,9 @@ interface IScrollablePaneStyles {
   stickyBelowItems: IStyle;
 }
 
+// @public (undocumented)
+export function isDark(color: IColor): boolean;
+
 // @public
 export function isDirectionalKeyCode(which: number): boolean;
 
@@ -6070,6 +9335,40 @@ interface ISearchBoxStyles {
   iconContainer?: IStyle;
   // (undocumented)
   root?: IStyle;
+}
+
+// @public
+interface ISelectableDroppableTextProps<TComponent, TListenerElement = TComponent> extends React.HTMLAttributes<TListenerElement> {
+  ariaLabel?: string;
+  calloutProps?: ICalloutProps;
+  className?: string;
+  componentRef?: IRefObject<TComponent>;
+  defaultSelectedKey?: string | number | string[] | number[];
+  disabled?: boolean;
+  errorMessage?: string;
+  id?: string;
+  label?: string;
+  onRenderContainer?: IRenderFunction<ISelectableDroppableTextProps<TComponent>>;
+  onRenderItem?: IRenderFunction<ISelectableOption>;
+  onRenderList?: IRenderFunction<ISelectableDroppableTextProps<TComponent>>;
+  onRenderOption?: IRenderFunction<ISelectableOption>;
+  options?: any;
+  panelProps?: IPanelProps;
+  required?: boolean;
+  selectedKey?: string | number | string[] | number[];
+}
+
+// @public (undocumented)
+interface ISelectableOption {
+  ariaLabel?: string;
+  data?: any;
+  disabled?: boolean;
+  index?: number;
+  itemType?: SelectableOptionMenuItemType;
+  key: string | number;
+  selected?: boolean;
+  text: string;
+  title?: string;
 }
 
 // @public (undocumented)
@@ -6833,6 +10132,9 @@ interface ISuggestionsState {
   selectedActionType: SuggestionActionType;
 }
 
+// @public
+export function isValidShade(shade?: Shade): boolean;
+
 // @public (undocumented)
 interface ISwatchColorPicker {
 }
@@ -7064,6 +10366,32 @@ interface ITheme extends IScheme {
 }
 
 // @public (undocumented)
+interface IThemeRules {
+  // (undocumented)
+  [key: string]: IThemeSlotRule;
+}
+
+// @public (undocumented)
+interface IThemeSlotRule {
+  // (undocumented)
+  asShade?: Shade;
+  // (undocumented)
+  color?: IColor;
+  // (undocumented)
+  dependentRules: IThemeSlotRule[];
+  // (undocumented)
+  inherits?: IThemeSlotRule;
+  // (undocumented)
+  isBackgroundShade?: boolean;
+  // (undocumented)
+  isCustomized?: boolean;
+  // (undocumented)
+  name: string;
+  // (undocumented)
+  value?: string;
+}
+
+// @public (undocumented)
 interface IToggle {
   // (undocumented)
   focus: () => void;
@@ -7187,6 +10515,19 @@ interface ITypography {
   variants: IFontVariants;
   // (undocumented)
   weights: IFontWeights;
+}
+
+// @public (undocumented)
+interface IVerticalDividerClassNames {
+  // (undocumented)
+  divider: string;
+  // (undocumented)
+  wrapper: string;
+}
+
+// @public (undocumented)
+interface IVerticalDividerProps {
+  getClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
 }
 
 // @public (undocumented)
@@ -7890,7 +11231,59 @@ class PlainCardBase extends BaseComponent<IPlainCardProps, {}> {
 }
 
 // @public
+class Popup extends BaseComponent<IPopupProps, IPopupState> {
+  constructor(props: IPopupProps);
+  // (undocumented)
+  _root: {
+    (component: HTMLDivElement | null): void;
+    current: HTMLDivElement | null;
+    value: HTMLDivElement | null;
+  }
+  // (undocumented)
+  componentDidMount(): void;
+  // (undocumented)
+  componentDidUpdate(): void;
+  // (undocumented)
+  componentWillMount(): void;
+  // (undocumented)
+  componentWillUnmount(): void;
+  // (undocumented)
+  static defaultProps: IPopupProps;
+  // (undocumented)
+  render(): JSX.Element;
+}
+
+// @public
 export function portalContainsElement(target: HTMLElement, parent?: HTMLElement): boolean;
+
+// @public (undocumented)
+class PositioningContainer extends BaseComponent<IPositioningContainerProps, IPositioningContainerState>, implements PositioningContainer {
+  constructor(props: IPositioningContainerProps);
+  // (undocumented)
+  protected _dismissOnLostFocus(ev: Event): void;
+  // (undocumented)
+  protected _dismissOnScroll(ev: Event): void;
+  // (undocumented)
+  protected _onComponentDidMount: () => void;
+  // (undocumented)
+  protected _setInitialFocus: () => void;
+  // (undocumented)
+  componentDidMount(): void;
+  // (undocumented)
+  componentDidUpdate(): void;
+  // (undocumented)
+  componentWillMount(): void;
+  // (undocumented)
+  componentWillUpdate(newProps: IPositioningContainerProps): void;
+  // (undocumented)
+  static defaultProps: IPositioningContainerProps;
+  // @deprecated
+  dismiss: (ev?: Event | React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement> | undefined) => void;
+  // (undocumented)
+  onResize: (ev?: Event | React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement> | undefined) => void;
+  // (undocumented)
+  render(): JSX.Element | null;
+}
 
 // @public
 export function precisionRound(value: number, precision: number, base?: number): number;
@@ -7994,6 +11387,12 @@ class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGroupState
   // (undocumented)
   render(): JSX.Element;
 }
+
+// @public (undocumented)
+export function rgb2hex(r: number, g: number, b: number): string;
+
+// @public (undocumented)
+export function rgb2hsv(r: number, g: number, b: number): IHSV;
 
 // @public (undocumented)
 class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScrollablePaneState>, implements IScrollablePane {
@@ -8178,6 +11577,18 @@ class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   render(): JSX.Element;
 }
 
+// @public (undocumented)
+enum SemanticColorSlots {
+  // (undocumented)
+  bodyBackground = 0,
+  // (undocumented)
+  bodyText = 1,
+  // (undocumented)
+  disabledBackground = 2,
+  // (undocumented)
+  disabledText = 3
+}
+
 // @public
 export function setBaseUrl(baseUrl: string): void;
 
@@ -8205,6 +11616,28 @@ export function setVirtualParent(child: HTMLElement, parent: HTMLElement): void;
 
 // @public
 export function setWarningCallback(warningCallback?: (message: string) => void): void;
+
+// @public
+enum Shade {
+  // (undocumented)
+  Shade1 = 1,
+  // (undocumented)
+  Shade2 = 2,
+  // (undocumented)
+  Shade3 = 3,
+  // (undocumented)
+  Shade4 = 4,
+  // (undocumented)
+  Shade5 = 5,
+  // (undocumented)
+  Shade6 = 6,
+  // (undocumented)
+  Shade7 = 7,
+  // (undocumented)
+  Shade8 = 8,
+  // (undocumented)
+  Unshaded = 0
+}
 
 // @public
 export function shallowCompare<TA, TB>(a: TA, b: TB): boolean;
@@ -8710,6 +12143,25 @@ class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldState>, imp
 }
 
 // @public (undocumented)
+class ThemeGenerator {
+  // (undocumented)
+  static getThemeAsCode(slotRules: IThemeRules): any;
+  // (undocumented)
+  static getThemeAsJson(slotRules: IThemeRules): any;
+  // (undocumented)
+  static getThemeAsSass(slotRules: IThemeRules): any;
+  // (undocumented)
+  static getThemeForPowerShell(slotRules: IThemeRules): any;
+  // (undocumented)
+  static insureSlots(slotRules: IThemeRules, isInverted: boolean): void;
+  // (undocumented)
+  static setSlot(rule: IThemeSlotRule, color: string | IColor, isInverted?: boolean, isCustomization?: boolean, overwriteCustomColor?: boolean): void;
+}
+
+// @public (undocumented)
+export function themeRulesStandardCreator(): IThemeRules;
+
+// @public (undocumented)
 class ToggleBase extends BaseComponent<IToggleProps, IToggleState>, implements IToggle {
   constructor(props: IToggleProps);
   readonly checked: boolean;
@@ -8764,6 +12216,15 @@ export function unhoistMethods(source: any, methodNames: string[]): void;
 
 // @public
 export function unregisterIcons(iconNames: string[]): void;
+
+// @public (undocumented)
+export function updateA(color: IColor, a: number): IColor;
+
+// @public (undocumented)
+export function updateH(color: IColor, h: number): IColor;
+
+// @public (undocumented)
+export function updateSV(color: IColor, s: number, v: number): IColor;
 
 // @public (undocumented)
 enum ValidationState {
@@ -8844,6 +12305,10 @@ module ZIndexes {
 // WARNING: Unsupported export: OnChangeCallback
 // WARNING: Unsupported export: COACHMARK_ATTRIBUTE_NAME
 // WARNING: Unsupported export: ICoachmarkTypes
+// WARNING: Unsupported export: MAX_COLOR_SATURATION
+// WARNING: Unsupported export: MAX_COLOR_HUE
+// WARNING: Unsupported export: MAX_COLOR_VALUE
+// WARNING: Unsupported export: MAX_COLOR_RGBA
 // WARNING: Unsupported export: ColorPicker
 // WARNING: Unsupported export: CommandBar
 // WARNING: Unsupported export: ContextualMenu
@@ -8860,6 +12325,7 @@ module ZIndexes {
 // WARNING: Unsupported export: Dialog
 // WARNING: Unsupported export: DialogContent
 // WARNING: Unsupported export: DialogFooter
+// WARNING: Unsupported export: VerticalDivider
 // WARNING: Unsupported export: Dropdown
 // WARNING: Unsupported export: IDropdownStyleProps
 // WARNING: Unsupported export: people
@@ -8868,6 +12334,7 @@ module ZIndexes {
 // WARNING: Unsupported export: groupTwo
 // WARNING: Unsupported export: Fabric
 // WARNING: Unsupported export: Facepile
+// WARNING: Unsupported export: Grid
 // WARNING: Unsupported export: GroupedList
 // WARNING: Unsupported export: HoverCard
 // WARNING: Unsupported export: ExpandingCard
@@ -8879,8 +12346,8 @@ module ZIndexes {
 // WARNING: Unsupported export: Layer
 // WARNING: Unsupported export: ILayerBaseState
 // WARNING: Unsupported export: Link
-// WARNING: Unsupported export: MessageBar
 // WARNING: Unsupported export: MarqueeSelection
+// WARNING: Unsupported export: MessageBar
 // WARNING: Unsupported export: Modal
 // WARNING: Unsupported export: IModalStyleProps
 // WARNING: Unsupported export: Nav
@@ -8888,15 +12355,16 @@ module ZIndexes {
 // WARNING: Unsupported export: IOverflowSetStyleProps
 // WARNING: Unsupported export: Overlay
 // WARNING: Unsupported export: Panel
-// WARNING: Unsupported export: IPickerAriaIds
-// WARNING: Unsupported export: TagItem
 // WARNING: Unsupported export: Persona
 // WARNING: Unsupported export: PersonaCoin
 // WARNING: Unsupported export: sizeBoolean
 // WARNING: Unsupported export: sizeToPixels
 // WARNING: Unsupported export: presenceBoolean
+// WARNING: Unsupported export: IPickerAriaIds
+// WARNING: Unsupported export: TagItem
 // WARNING: Unsupported export: Pivot
 // WARNING: Unsupported export: IPivotStyleProps
+// WARNING: Unsupported export: IPositioningContainerTypes
 // WARNING: Unsupported export: ProgressIndicator
 // WARNING: Unsupported export: Rating
 // WARNING: Unsupported export: ResizeGroup
