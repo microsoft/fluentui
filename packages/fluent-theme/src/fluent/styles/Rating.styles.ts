@@ -5,6 +5,13 @@ export const RatingStyles = (props: IRatingStyleProps) => {
   const { disabled, readOnly, theme } = props;
   const { semanticColors } = theme;
 
+  // Copied over from the source default styles
+  const ratingSmallIconSize = 16;
+  const ratingLargeIconSize = 20;
+  // New padding sizes following fluent toolkit specs
+  const ratingVerticalPadding = 8;
+  const ratingHorizontalPadding = 2;
+
   return {
     root: [
       !disabled &&
@@ -19,6 +26,12 @@ export const RatingStyles = (props: IRatingStyleProps) => {
           }
         }
     ],
+    rootIsSmall: {
+      height: ratingSmallIconSize + ratingVerticalPadding * 2
+    },
+    rootIsLarge: {
+      height: ratingLargeIconSize + ratingVerticalPadding * 2
+    },
     ratingStarBack: [
       {
         color: NeutralColors.gray80
