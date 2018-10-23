@@ -21,7 +21,6 @@ exports[`Component Examples renders Tooltip.Display.Example.tsx correctly 1`] = 
       style={
         Object {
           "fontSize": "2em",
-          "height": "60px",
         }
       }
     >
