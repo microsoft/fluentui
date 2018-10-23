@@ -109,11 +109,12 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
           return false;
         }
 
+        // Compute the scrollbar height which might have changed due to some action like a column resize which might cause overflow
         const scrollbarHeight = this._getScrollbarHeight();
-        // check if the scroll bar height has changed and update the state to re-render it
+        // check if the scroll bar height has changed and update the state so that it's postioned correctly below sticky footer
         if (scrollbarHeight !== this.state.scrollbarHeight) {
           this.setState({
-            scrollbarHeight
+            scrollbarHeight: scrollbarHeight
           });
         }
 
@@ -393,20 +394,20 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
       height: height,
       ...(getRTL()
         ? {
-          right: '0',
-          left: `${this.state.scrollbarWidth || this._getScrollbarWidth() || 0}px`
-        }
+            right: '0',
+            left: `${this.state.scrollbarWidth || this._getScrollbarWidth() || 0}px`
+          }
         : {
-          left: '0',
-          right: `${this.state.scrollbarWidth || this._getScrollbarWidth() || 0}px`
-        }),
+            left: '0',
+            right: `${this.state.scrollbarWidth || this._getScrollbarWidth() || 0}px`
+          }),
       ...(isTop
         ? {
-          top: '0'
-        }
+            top: '0'
+          }
         : {
-          bottom: `${this.state.scrollbarHeight || this._getScrollbarHeight() || 0}px`
-        })
+            bottom: `${this.state.scrollbarHeight || this._getScrollbarHeight() || 0}px`
+          })
     };
   };
 
