@@ -67,9 +67,6 @@ export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsyn
             timeSinceLastAnnounce: 0
           });
         }
-        // else {
-        //   this.setState({ announced: undefined });
-        // }
       }
     }, 1000);
   }
