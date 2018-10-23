@@ -1,6 +1,24 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 19 Oct 2018 12:29:20 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Oct 2018 12:32:16 GMT and should not be manually modified.
+
+## 6.91.0
+Tue, 23 Oct 2018 12:32:16 GMT
+
+### Minor changes
+
+- TooltipHost: convert to CSS-in-JS
+
+## 6.90.0
+Mon, 22 Oct 2018 12:29:57 GMT
+
+### Minor changes
+
+- Add in missing exports in index.ts
+
+### Patches
+
+- Fixed the column total vertical sync issue while resizing the column header by dragging them to the right until it gets overflowed and also make the vertical overflow as auto to make sure that the scroll bar  appears  only when there is a vertical overflow.
 
 ## 6.89.0
 Fri, 19 Oct 2018 12:29:20 GMT

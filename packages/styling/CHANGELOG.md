@@ -1,6 +1,20 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Thu, 18 Oct 2018 20:22:36 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Oct 2018 12:32:16 GMT and should not be manually modified.
+
+## 6.32.1
+Tue, 23 Oct 2018 12:32:16 GMT
+
+### Patches
+
+- Fix an issue with the demo site not being able to load (in npm start or aka.ms/fabricdemo).
+
+## 6.32.0
+Mon, 22 Oct 2018 12:29:57 GMT
+
+### Minor changes
+
+- Fix unnecessary `IRGB` export. This interface is only used by internals. Use the `IRGB` interface declaration from office-ui-fabric-react package instead.
 
 ## 6.31.0
 Thu, 18 Oct 2018 20:22:36 GMT

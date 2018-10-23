@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/fluent-theme",
-      "comment": "Use variants addVariants utility function.",
+      "comment": "Fluent experiment: Change the color of disabled Labels",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/fluent-theme",
-  "email": "jagore@microsoft.com"
+  "email": "miwhea@microsoft.com"
 }

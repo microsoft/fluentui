@@ -7,6 +7,7 @@ import { DefaultButtonStyles } from './styles/DefaultButton.styles';
 import { DialogStyles, DialogContentStyles, DialogFooterStyles } from './styles/Dialog.styles';
 import { DropdownStyles } from './styles/Dropdown.styles';
 import { LabelStyles } from './styles/Label.styles';
+import { LinkStyles } from './styles/Link.styles';
 import { PrimaryButtonStyles } from './styles/PrimaryButton.styles';
 import { TextFieldStyles } from './styles/TextField.styles';
 import { ToggleStyles } from './styles/Toggle.styles';
@@ -49,6 +50,9 @@ export const FluentStyles: any = {
   },
   Label: {
     styles: LabelStyles
+  },
+  Link: {
+    styles: LinkStyles
   },
   PrimaryButton: {
     styles: PrimaryButtonStyles
