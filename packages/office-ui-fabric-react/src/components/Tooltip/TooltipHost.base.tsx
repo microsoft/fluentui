@@ -22,8 +22,7 @@ const getClassNames = classNamesFunction<ITooltipHostStyleProps, ITooltipHostSty
 
 export class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHostState> {
   public static defaultProps = {
-    delay: TooltipDelay.medium,
-    display: 'inline'
+    delay: TooltipDelay.medium
   };
 
   // The wrapping div that gets the hover events
