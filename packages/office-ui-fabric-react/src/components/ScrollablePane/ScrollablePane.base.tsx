@@ -109,6 +109,13 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
           return false;
         }
 
+        const scrollbarHeight = this._getScrollbarHeight();
+        if (scrollbarHeight !== this.state.scrollbarHeight) {
+          this.setState({
+            scrollbarHeight
+          });
+        }
+
         // Notify subscribers again to re-check whether Sticky should be Sticky'd or not
         this.notifySubscribers();
 
@@ -385,20 +392,20 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
       height: height,
       ...(getRTL()
         ? {
-            right: '0',
-            left: `${this.state.scrollbarWidth || this._getScrollbarWidth() || 0}px`
-          }
+          right: '0',
+          left: `${this.state.scrollbarWidth || this._getScrollbarWidth() || 0}px`
+        }
         : {
-            left: '0',
-            right: `${this.state.scrollbarWidth || this._getScrollbarWidth() || 0}px`
-          }),
+          left: '0',
+          right: `${this.state.scrollbarWidth || this._getScrollbarWidth() || 0}px`
+        }),
       ...(isTop
         ? {
-            top: '0'
-          }
+          top: '0'
+        }
         : {
-            bottom: `${this.state.scrollbarHeight || this._getScrollbarHeight() || 0}px`
-          })
+          bottom: `${this.state.scrollbarHeight || this._getScrollbarHeight() || 0}px`
+        })
     };
   };
 
