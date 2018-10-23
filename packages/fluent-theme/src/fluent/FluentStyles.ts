@@ -4,7 +4,7 @@ import { ChoiceGroupOptionStyles } from './styles/ChoiceGroupOption.styles';
 import { ComboBoxStyles } from './styles/ComboBox.styles';
 import { CompoundButtonStyles } from './styles/CompoundButton.styles';
 import { DefaultButtonStyles } from './styles/DefaultButton.styles';
-import { DialogContentStyles, DialogFooterStyles, DialogStyles } from './styles/Dialog.styles';
+import { DialogStyles, DialogContentStyles, DialogFooterStyles } from './styles/Dialog.styles';
 import { DropdownStyles } from './styles/Dropdown.styles';
 import { LabelStyles } from './styles/Label.styles';
 import { LinkStyles } from './styles/Link.styles';
