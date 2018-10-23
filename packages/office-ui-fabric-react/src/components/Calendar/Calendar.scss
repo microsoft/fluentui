@@ -426,7 +426,7 @@ $Calendar-dayPicker-margin: 10px;
 .yearOption {
   width: 60px;
   height: 60px;
-  line-height: 60px;
+  line-height: 100%;
   cursor: pointer;
   @include float(left);
   @include margin(0, 10px, 10px, 0);
@@ -616,7 +616,7 @@ $Calendar-dayPicker-margin: 10px;
     .yearOption {
       width: $Calendar-month;
       height: $Calendar-month;
-      line-height: $Calendar-month;
+      line-height: 100%;
       font-size: $ms-font-size-s;
       @include margin(0, 12px, 16px, 0);
       &:hover {
@@ -797,11 +797,13 @@ $Calendar-dayPicker-margin: 10px;
     &.bottomRightCornerDate.topRightCornerDate {
       border-right: 1px solid highlight;
       border-left: none;
+      padding-left: 1px;
     }
 
     &.bottomLeftCornerDate.topLeftCornerDate {
       border-left: 1px solid highlight;
       border-right: none;
+      padding-right: 1px;
     }
 
     :not(.dayIsToday) span {
@@ -815,9 +817,11 @@ $Calendar-dayPicker-margin: 10px;
     border-bottom: 1px solid highlight;
     &.bottomLeftCornerDate.topLeftCornerDate {
       border-left: 1px solid highlight;
+      padding-right: 1px;
     }
     &.bottomRightCornerDate.topRightCornerDate {
       border-right: 1px solid highlight;
+      padding-left: 1px;
     }
 
     &.dayPress :not(.dayIsToday) span {
@@ -829,10 +833,12 @@ $Calendar-dayPicker-margin: 10px;
     &.bottomLeftCornerDate,
     &.topLeftCornerDate {
       border-left: 1px solid highlight;
+      padding-right: 1px;
     }
     &.bottomRightCornerDate,
     &.topRightCornerDate {
       border-right: 1px solid highlight;
+      padding-left: 1px;
     }
   }
 
@@ -840,19 +846,19 @@ $Calendar-dayPicker-margin: 10px;
   .monthSelection.dayIsUnfocused.dayHover {
     &.topDate {
       border-top: 1px solid highlight;
-      border-radius: 0px;
+      padding-bottom: 1px;
     }
     &.rightDate {
       border-right: 1px solid highlight;
-      border-radius: 0px;
+      padding-left: 1px;
     }
     &.bottomDate {
       border-bottom: 1px solid highlight;
-      border-radius: 0px;
+      padding-top: 1px;
     }
     &.leftdate {
       border-left: 1px solid highlight;
-      border-radius: 0px;
+      padding-right: 1px;
     }
 
     &.dayPress :not(.dayIsToday) span {
