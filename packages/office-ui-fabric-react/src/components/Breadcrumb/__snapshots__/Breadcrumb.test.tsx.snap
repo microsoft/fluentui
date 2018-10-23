@@ -107,11 +107,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                 onFocusCapture={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
-                style={
-                  Object {
-                    "display": "inline",
-                  }
-                }
               >
                 TestText1
               </div>
@@ -195,11 +190,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                 onFocusCapture={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
-                style={
-                  Object {
-                    "display": "inline",
-                  }
-                }
               >
                 TestText2
               </div>
@@ -283,11 +273,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                 onFocusCapture={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
-                style={
-                  Object {
-                    "display": "inline",
-                  }
-                }
               >
                 TestText3
               </div>
@@ -371,11 +356,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                 onFocusCapture={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
-                style={
-                  Object {
-                    "display": "inline",
-                  }
-                }
               >
                 TestText4
               </div>
@@ -674,11 +654,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                 onFocusCapture={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
-                style={
-                  Object {
-                    "display": "inline",
-                  }
-                }
               >
                 TestText3
               </div>
@@ -762,11 +737,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                 onFocusCapture={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
-                style={
-                  Object {
-                    "display": "inline",
-                  }
-                }
               >
                 TestText4
               </div>
@@ -886,11 +856,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 3 1`] = `
                 onFocusCapture={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
-                style={
-                  Object {
-                    "display": "inline",
-                  }
-                }
               >
                 TestText1
               </div>
@@ -947,11 +912,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 3 1`] = `
                 onFocusCapture={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
-                style={
-                  Object {
-                    "display": "inline",
-                  }
-                }
               >
                 TestText2
               </div>
@@ -1008,11 +968,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 3 1`] = `
                 onFocusCapture={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
-                style={
-                  Object {
-                    "display": "inline",
-                  }
-                }
               >
                 TestText3
               </div>
@@ -1069,11 +1024,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 3 1`] = `
                 onFocusCapture={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
-                style={
-                  Object {
-                    "display": "inline",
-                  }
-                }
               >
                 TestText4
               </div>
@@ -1193,11 +1143,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                 onFocusCapture={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
-                style={
-                  Object {
-                    "display": "inline",
-                  }
-                }
               >
                 TestText1
               </div>
@@ -1460,11 +1405,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                 onFocusCapture={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
-                style={
-                  Object {
-                    "display": "inline",
-                  }
-                }
               >
                 TestText4
               </div>
@@ -1584,11 +1524,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                 onFocusCapture={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
-                style={
-                  Object {
-                    "display": "inline",
-                  }
-                }
               >
                 TestText1
               </div>

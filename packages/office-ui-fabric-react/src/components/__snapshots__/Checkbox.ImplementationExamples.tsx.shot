@@ -1188,11 +1188,6 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
               onFocusCapture={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
-              style={
-                Object {
-                  "display": "inline",
-                }
-              }
             >
               Persona Checkbox
             </div>

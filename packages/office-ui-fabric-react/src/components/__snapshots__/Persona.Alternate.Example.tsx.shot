@@ -157,11 +157,6 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Annie Reid
         </div>
@@ -192,11 +187,6 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Designer
         </div>
@@ -224,11 +214,6 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           In a meeting
         </div>
@@ -256,11 +241,6 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Available at 4:00pm
         </div>
@@ -420,11 +400,6 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Annie Reid
         </div>
@@ -455,11 +430,6 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Designer
         </div>
@@ -487,11 +457,6 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           In a meeting
         </div>
@@ -519,11 +484,6 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Available at 4:00pm
         </div>
@@ -707,11 +667,6 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Annie Reid
         </div>
@@ -742,11 +697,6 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Designer
         </div>
@@ -774,11 +724,6 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           In a meeting
         </div>
@@ -806,11 +751,6 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Available at 4:00pm
         </div>

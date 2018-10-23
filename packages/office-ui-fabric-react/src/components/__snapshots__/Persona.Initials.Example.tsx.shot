@@ -128,11 +128,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Kat Larrson
         </div>
@@ -159,11 +154,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Designer
         </div>
@@ -191,11 +181,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           In a meeting
         </div>
@@ -223,11 +208,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Available at 4:00pm
         </div>
@@ -358,11 +338,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Annie
         </div>
@@ -389,11 +364,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Designer
         </div>
@@ -421,11 +391,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           In a meeting
         </div>
@@ -453,11 +418,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Available at 4:00pm
         </div>
@@ -588,11 +548,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Annie Lindqvist
         </div>
@@ -619,11 +574,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Designer
         </div>
@@ -651,11 +601,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           In a meeting
         </div>
@@ -683,11 +628,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Available at 4:00pm
         </div>
@@ -818,11 +758,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Annie Boyl Lindqvist
         </div>
@@ -849,11 +784,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Designer
         </div>
@@ -881,11 +811,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           In a meeting
         </div>
@@ -913,11 +838,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Available at 4:00pm
         </div>
@@ -1048,11 +968,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Annie Boyl Carrie Lindqvist
         </div>
@@ -1079,11 +994,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Designer
         </div>
@@ -1111,11 +1021,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           In a meeting
         </div>
@@ -1143,11 +1048,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Available at 4:00pm
         </div>
@@ -1293,11 +1193,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           +1 (555) 123-4567 X4567
         </div>
@@ -1324,11 +1219,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Designer
         </div>
@@ -1356,11 +1246,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           In a meeting
         </div>
@@ -1388,11 +1273,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Available at 4:00pm
         </div>
@@ -1523,11 +1403,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           +1 (555) 123-4567 X4567
         </div>
@@ -1554,11 +1429,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Designer
         </div>
@@ -1586,11 +1456,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           In a meeting
         </div>
@@ -1618,11 +1483,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Available at 4:00pm
         </div>
@@ -1768,11 +1628,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           宋智洋
         </div>
@@ -1799,11 +1654,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Designer
         </div>
@@ -1831,11 +1681,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           In a meeting
         </div>
@@ -1863,11 +1708,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Available at 4:00pm
         </div>
@@ -2013,11 +1853,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           남궁 성종
         </div>
@@ -2044,11 +1879,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Designer
         </div>
@@ -2076,11 +1906,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           In a meeting
         </div>
@@ -2108,11 +1933,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Available at 4:00pm
         </div>
@@ -2258,11 +2078,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           خسرو رحیمی
         </div>
@@ -2289,11 +2104,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Designer
         </div>
@@ -2321,11 +2131,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           In a meeting
         </div>
@@ -2353,11 +2158,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Available at 4:00pm
         </div>
@@ -2488,11 +2288,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Maor Sharett
         </div>
@@ -2519,11 +2314,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Designer
         </div>
@@ -2551,11 +2341,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           In a meeting
         </div>
@@ -2583,11 +2368,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Available at 4:00pm
         </div>
@@ -2718,11 +2498,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Maor Sharett
         </div>
@@ -2749,11 +2524,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Designer
         </div>
@@ -2781,11 +2551,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           In a meeting
         </div>
@@ -2813,11 +2578,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Available at 4:00pm
         </div>
@@ -2966,11 +2726,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Maor Sharett
         </div>
@@ -2997,11 +2752,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Designer
         </div>
@@ -3029,11 +2779,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           In a meeting
         </div>
@@ -3061,11 +2806,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          style={
-            Object {
-              "display": "inline",
-            }
-          }
         >
           Available at 4:00pm
         </div>

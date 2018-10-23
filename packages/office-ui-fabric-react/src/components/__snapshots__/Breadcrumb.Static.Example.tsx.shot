@@ -373,11 +373,6 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                   onFocusCapture={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
-                  style={
-                    Object {
-                      "display": "inline",
-                    }
-                  }
                 >
                   This is folder 3
                 </div>
@@ -540,11 +535,6 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                   onFocusCapture={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
-                  style={
-                    Object {
-                      "display": "inline",
-                    }
-                  }
                 >
                   This is folder 4
                 </div>
@@ -708,11 +698,6 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                   onFocusCapture={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
-                  style={
-                    Object {
-                      "display": "inline",
-                    }
-                  }
                 >
                   This is folder 5
                 </div>

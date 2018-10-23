@@ -314,11 +314,6 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        style={
-          Object {
-            "display": "inline",
-          }
-        }
       >
         Kat Larrson
       </div>
@@ -516,11 +511,6 @@ exports[`Persona renders Persona correctly with image 1`] = `
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        style={
-          Object {
-            "display": "inline",
-          }
-        }
       >
         Kat Larrson
       </div>
@@ -692,11 +682,6 @@ exports[`Persona renders Persona correctly with initials 1`] = `
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        style={
-          Object {
-            "display": "inline",
-          }
-        }
       >
         Kat Larrson
       </div>
@@ -1120,11 +1105,6 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        style={
-          Object {
-            "display": "inline",
-          }
-        }
       >
         Swapnil Vaibhav
       </div>
@@ -1151,11 +1131,6 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        style={
-          Object {
-            "display": "inline",
-          }
-        }
       >
         Software Engineer
       </div>
@@ -1183,11 +1158,6 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        style={
-          Object {
-            "display": "inline",
-          }
-        }
       >
         In a meeting
       </div>
@@ -1215,11 +1185,6 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        style={
-          Object {
-            "display": "inline",
-          }
-        }
       >
         Available at 4:00pm
       </div>
@@ -1456,11 +1421,6 @@ exports[`Persona renders correctly with onRender callback 1`] = `
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        style={
-          Object {
-            "display": "inline",
-          }
-        }
       >
         Swapnil Vaibhav
       </div>
@@ -1487,11 +1447,6 @@ exports[`Persona renders correctly with onRender callback 1`] = `
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        style={
-          Object {
-            "display": "inline",
-          }
-        }
       >
         Software Engineer
       </div>
@@ -1519,11 +1474,6 @@ exports[`Persona renders correctly with onRender callback 1`] = `
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        style={
-          Object {
-            "display": "inline",
-          }
-        }
       >
         In a meeting
       </div>
@@ -1551,11 +1501,6 @@ exports[`Persona renders correctly with onRender callback 1`] = `
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        style={
-          Object {
-            "display": "inline",
-          }
-        }
       >
         Available at 4:00pm
       </div>

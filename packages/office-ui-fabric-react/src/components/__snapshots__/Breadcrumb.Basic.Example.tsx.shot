@@ -215,11 +215,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   onFocusCapture={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
-                  style={
-                    Object {
-                      "display": "inline",
-                    }
-                  }
                 >
                   Files
                 </div>
@@ -382,11 +377,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   onFocusCapture={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
-                  style={
-                    Object {
-                      "display": "inline",
-                    }
-                  }
                 >
                   This is folder 1
                 </div>
@@ -549,11 +539,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   onFocusCapture={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
-                  style={
-                    Object {
-                      "display": "inline",
-                    }
-                  }
                 >
                   This is folder 2
                 </div>
@@ -716,11 +701,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   onFocusCapture={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
-                  style={
-                    Object {
-                      "display": "inline",
-                    }
-                  }
                 >
                   This is folder 3
                 </div>
@@ -883,11 +863,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   onFocusCapture={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
-                  style={
-                    Object {
-                      "display": "inline",
-                    }
-                  }
                 >
                   This is folder 4
                 </div>
@@ -1051,11 +1026,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   onFocusCapture={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
-                  style={
-                    Object {
-                      "display": "inline",
-                    }
-                  }
                 >
                   This is folder 5
                 </div>
@@ -1284,11 +1254,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   onFocusCapture={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
-                  style={
-                    Object {
-                      "display": "inline",
-                    }
-                  }
                 >
                   Files
                 </div>
@@ -1303,11 +1268,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                 onFocusCapture={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
-                style={
-                  Object {
-                    "display": "inline",
-                  }
-                }
               >
                 <span
                   style={
@@ -1447,11 +1407,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   onFocusCapture={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
-                  style={
-                    Object {
-                      "display": "inline",
-                    }
-                  }
                 >
                   This is folder 1
                 </div>
@@ -1466,11 +1421,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                 onFocusCapture={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
-                style={
-                  Object {
-                    "display": "inline",
-                  }
-                }
               >
                 <span
                   style={
@@ -1610,11 +1560,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   onFocusCapture={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
-                  style={
-                    Object {
-                      "display": "inline",
-                    }
-                  }
                 >
                   This is folder 2
                 </div>
@@ -1629,11 +1574,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                 onFocusCapture={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
-                style={
-                  Object {
-                    "display": "inline",
-                  }
-                }
               >
                 <span
                   style={
@@ -1773,11 +1713,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   onFocusCapture={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
-                  style={
-                    Object {
-                      "display": "inline",
-                    }
-                  }
                 >
                   This is folder 3
                 </div>
@@ -1792,11 +1727,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                 onFocusCapture={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
-                style={
-                  Object {
-                    "display": "inline",
-                  }
-                }
               >
                 <span
                   style={
@@ -1936,11 +1866,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   onFocusCapture={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
-                  style={
-                    Object {
-                      "display": "inline",
-                    }
-                  }
                 >
                   This is folder 4
                 </div>
@@ -1955,11 +1880,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                 onFocusCapture={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
-                style={
-                  Object {
-                    "display": "inline",
-                  }
-                }
               >
                 <span
                   style={
@@ -2100,11 +2020,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   onFocusCapture={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
-                  style={
-                    Object {
-                      "display": "inline",
-                    }
-                  }
                 >
                   This is folder 5
                 </div>
@@ -2492,11 +2407,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   onFocusCapture={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
-                  style={
-                    Object {
-                      "display": "inline",
-                    }
-                  }
                 >
                   This is link 3 with a long name
                 </div>
@@ -2639,11 +2549,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   onFocusCapture={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
-                  style={
-                    Object {
-                      "display": "inline",
-                    }
-                  }
                 >
                   This is link 4
                 </div>
@@ -2787,11 +2692,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   onFocusCapture={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
-                  style={
-                    Object {
-                      "display": "inline",
-                    }
-                  }
                 >
                   This is link 5
                 </div>
@@ -2940,11 +2840,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   onFocusCapture={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
-                  style={
-                    Object {
-                      "display": "inline",
-                    }
-                  }
                 >
                   TestText1
                 </div>
@@ -3207,11 +3102,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   onFocusCapture={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
-                  style={
-                    Object {
-                      "display": "inline",
-                    }
-                  }
                 >
                   TestText4
                 </div>
