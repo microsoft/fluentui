@@ -47,6 +47,8 @@ export const RatingStyles = (props: IRatingStyleProps) => {
       {
         padding: `${ratingVerticalPadding}px ${ratingHorizontalPadding}px`,
         boxSizing: 'content-box',
+        // Very dirty selectors nesting in order to get a proper height with the new padding measurements.
+        // Might need some refactor in the source default styles.
         selectors: {
           '&.ms-Rating--small': {
             height: ratingSmallIconSize,
