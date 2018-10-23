@@ -110,6 +110,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
         }
 
         const scrollbarHeight = this._getScrollbarHeight();
+        // check if the scroll bar height has changed and update the state to re-render it
         if (scrollbarHeight !== this.state.scrollbarHeight) {
           this.setState({
             scrollbarHeight
