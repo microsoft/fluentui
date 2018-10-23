@@ -45,7 +45,26 @@ export const RatingStyles = (props: IRatingStyleProps) => {
     },
     ratingButton: [
       {
-        // padding: '7px 2px'
+        padding: `${ratingVerticalPadding}px ${ratingHorizontalPadding}px`,
+        boxSizing: 'content-box',
+        selectors: {
+          '&.ms-Rating--small': {
+            height: ratingSmallIconSize,
+            selectors: {
+              '.ms-RatingStar-container': {
+                height: ratingSmallIconSize
+              }
+            }
+          },
+          '&.ms-Rating--large': {
+            height: ratingLargeIconSize,
+            selectors: {
+              '.ms-RatingStar-container': {
+                height: ratingLargeIconSize
+              }
+            }
+          }
+        }
       },
       !disabled &&
         !readOnly && {
@@ -59,6 +78,9 @@ export const RatingStyles = (props: IRatingStyleProps) => {
             }
           }
         }
-    ]
+    ],
+    ratingFocusZone: {
+      padding: 0
+    }
   };
 };
