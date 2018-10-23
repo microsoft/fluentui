@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
-import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
+import { SearchBox, ISearchBoxStyles } from 'office-ui-fabric-react/lib/SearchBox';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import {
   CollapsibleSection,
@@ -15,6 +15,7 @@ import * as stylesImport from './Nav.module.scss';
 const styles: any = stylesImport;
 import { INavProps, INavPage } from './Nav.types';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
+import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
 
 export interface INavState {
   searchQuery: string;
@@ -22,7 +23,7 @@ export interface INavState {
   filterState: boolean;
 }
 
-const searchBoxStyles = {
+const searchBoxStyles: IStyleSet<ISearchBoxStyles> = {
   root: {
     marginBottom: '5px',
     width: '152px',

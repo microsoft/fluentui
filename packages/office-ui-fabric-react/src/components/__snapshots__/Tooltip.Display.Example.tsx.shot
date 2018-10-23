@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders Tooltip.Display.Example.tsx correctly 1`] = `
+<div>
+  <p>
+    In some cases when TooltipHost is wrapping inline-block or inline elements the positioning of the Tooltip may be off so it is recommended to modify the display property of the TooltipHost as in the following example.
+  </p>
+  <div
+    className=
+        ms-TooltipHost
+        {
+          display: inline;
+        }
+    onBlurCapture={[Function]}
+    onFocusCapture={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <button
+      aria-describedby="myID"
+      style={
+        Object {
+          "fontSize": "2em",
+        }
+      }
+    >
+      Hover Over Me
+    </button>
+  </div>
+   
+  <div
+    className=
+        ms-TooltipHost
+        {
+          display: inline-block;
+        }
+    onBlurCapture={[Function]}
+    onFocusCapture={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <button
+      aria-describedby="myID"
+      style={
+        Object {
+          "fontSize": "2em",
+        }
+      }
+    >
+      Hover Over Me
+    </button>
+  </div>
+</div>
+`;
