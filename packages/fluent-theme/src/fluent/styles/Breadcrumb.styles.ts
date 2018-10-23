@@ -8,16 +8,19 @@ export const BreadcrumbStyles = (props: IBreadcrumbStyleProps) => {
 
   const stateSelectors = {
     ':hover': {
-      color: palette.neutralPrimary
+      color: palette.neutralPrimary,
+      textDecoration: 'none'
     },
     ':active': {
-      backgroundColor: palette.neutralLight
+      backgroundColor: palette.neutralLight,
+      textDecoration: 'none'
     },
     // Needs to be revised with designers when moving to default OUFR styles.
     // Now used only to override the default ones to follow fluent specs.
     '&:active:hover': {
       color: palette.neutralPrimary,
-      backgroundColor: palette.neutralLight
+      backgroundColor: palette.neutralLight,
+      textDecoration: 'none'
     }
   };
 
@@ -41,7 +44,7 @@ export const BreadcrumbStyles = (props: IBreadcrumbStyleProps) => {
           outline: 'none'
         },
         // Leaving this breakpoint selectors here as there might be some design discussions regarding scaling breadcrumb.
-        [MediumScreenSelector]: { fontSize: FontSizes.size18, lineHeight: 36 },
+        [MediumScreenSelector]: { fontSize: FontSizes.size18, fontWeight: 400, lineHeight: 36 },
         [MinimumScreenSelector]: { fontSize: FontSizes.size18, lineHeight: 36 },
         ...stateSelectors
       }
