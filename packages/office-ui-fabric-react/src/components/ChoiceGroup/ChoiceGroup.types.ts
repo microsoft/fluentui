@@ -130,7 +130,8 @@ export interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | H
   labelId?: string;
 
   /**
-   * Accessible label text for ChoiceGroupOption.
+   * The aria label of the ChoiceGroup for the benefit of screen readers.
+   *  @defaultvalue text
    */
   ariaLabel?: string;
 }
