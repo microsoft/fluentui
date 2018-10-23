@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 22 Oct 2018 12:29:57 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Oct 2018 12:32:16 GMT and should not be manually modified.
+
+## 6.39.3
+Tue, 23 Oct 2018 12:32:16 GMT
+
+### Patches
+
+- Fix an issue with the demo site not being able to load (in npm start or aka.ms/fabricdemo).
 
 ## 6.39.2
 Mon, 22 Oct 2018 12:29:57 GMT

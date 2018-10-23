@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.91.0",
+      "tag": "office-ui-fabric-react_v6.91.0",
+      "date": "Tue, 23 Oct 2018 12:32:16 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "TooltipHost: convert to CSS-in-JS",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "191360a0c34ff17e68905b9ce2f5993cf8c56561"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.32.0 <7.0.0` to `>=6.32.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.90.0",
       "tag": "office-ui-fabric-react_v6.90.0",
       "date": "Mon, 22 Oct 2018 12:29:57 GMT",
