@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Pickers: A variety of accessibility and bug fixes",
+      "comment": "Pickers: A variety of accessibility and bug fixes, ported from 6.0",
       "type": "minor"
     }
   ],
