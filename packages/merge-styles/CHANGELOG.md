@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Thu, 18 Oct 2018 20:22:36 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Oct 2018 12:29:57 GMT and should not be manually modified.
+
+## 6.10.3
+Mon, 22 Oct 2018 12:29:57 GMT
+
+### Patches
+
+- Added 'stretch' as valid value for justifyContent in IRawStyleBase.
 
 ## 6.10.2
 Thu, 18 Oct 2018 20:22:36 GMT

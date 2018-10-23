@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { TooltipHost } from './TooltipHost';
+import { TooltipHostBase } from './TooltipHost.base';
 import { TooltipDelay, ITooltipProps } from './Tooltip.types';
 import { ICalloutProps } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { IRefObject } from '../../Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { IStyle, ITheme } from '../../Styling';
 
 export interface ITooltipHost {}
 
@@ -18,7 +19,7 @@ export enum TooltipOverflowMode {
 /**
  * Tooltip component props.
  */
-export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement | TooltipHost> {
+export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement | TooltipHostBase> {
   /**
    * Optional callback to access the ITooltipHost interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -83,7 +84,36 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
   closeDelay?: number;
 
   /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  styles?: IStyleFunctionOrObject<ITooltipHostStyleProps, ITooltipHostStyles>;
+
+  /**
+   * Theme provided by High-Order Component.
+   */
+  theme?: ITheme;
+
+  /**
    * Notifies when tooltip becomes visible or hidden, whatever the trigger was.
    */
   onTooltipToggle?(isTooltipVisible: boolean): void;
+}
+
+export interface ITooltipHostStyleProps {
+  /**
+   * Accept theme prop.
+   */
+  theme: ITheme;
+
+  /**
+   * Accept optional classNames for the host wrapper
+   */
+  className?: string;
+}
+
+export interface ITooltipHostStyles {
+  /**
+   * Style for the host wrapper element.
+   */
+  root: IStyle;
 }

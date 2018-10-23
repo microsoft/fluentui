@@ -54,11 +54,16 @@ import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 ReactDOM.render(<PrimaryButton>I am a button.</PrimaryButton>, document.body.firstChild);
 ```
 
+## Version policy
+
+Fabric React adheres to [semantic versioning](http://www.semver.org/). However, we only consider constructs directly importable at the package level or from files at the root (e.g. `office-ui-fabric-react/lib/Utilities` or `office-ui-fabric-react/lib-amd/Styling`) to be part of our API surface. Everything else is considered package-internal and may be subjected to changes, moves, renames, etc.
+
 ## Browser support
 
 Fabric React supports all evergreen browsers, with IE 11 as the min-bar version of Internet Explorer. See the [browser support doc](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Browser-Support) for more information.
 
 ## Right-to-left support
+
 All components can render in LTR or RTL, depending on the `dir` attribute set on the `html` element. (`dir="rtl"` will flip the direction of everything.
 
 You can also import the `setRTL` api to manually set it, if you don't have control over what gets renders for the `html` element. Example:
