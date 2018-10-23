@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  KeyCodes,
-  css,
-  createRef,
-  elementContains
-} from '../../Utilities';
+import { BaseComponent, KeyCodes, css, createRef, elementContains, getId } from '../../Utilities';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Callout, DirectionalHint } from '../../Callout';
 import { Selection, SelectionZone, SelectionMode } from '../../utilities/selection/index';
@@ -29,10 +23,29 @@ export interface IBasePickerState {
   suggestionsVisible?: boolean;
   suggestionsLoading?: boolean;
   isResultsFooterVisible?: boolean;
+  selectedIndices?: number[];
 }
 
-export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBasePickerState> implements IBasePicker<T> {
+/**
+ * Aria id's for internal picker components
+ */
+export type IPickerAriaIds = {
+  /**
+   * Aria id for selected suggestion alert component
+   */
+  selectedSuggestionAlert: string;
+  /**
+   * Aria id for selected items container component
+   */
+  selectedItems: string;
+  /**
+   * Aria id for suggestions list component
+   */
+  suggestionList: string;
+};
 
+export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBasePickerState>
+  implements IBasePicker<T> {
   protected selection: Selection;
 
   protected root = createRef<HTMLDivElement>();
@@ -42,14 +55,21 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   protected suggestionStore: SuggestionsController<T>;
   protected SuggestionOfProperType = Suggestions as new (props: ISuggestionsProps<T>) => Suggestions<T>;
-  protected loadingTimer: number | undefined;
   protected currentPromise: PromiseLike<any> | undefined;
+  protected _ariaMap: IPickerAriaIds;
+  private _id: string;
 
   constructor(basePickerProps: P) {
     super(basePickerProps);
 
     const items: T[] = basePickerProps.selectedItems || basePickerProps.defaultSelectedItems || [];
 
+    this._id = getId();
+    this._ariaMap = {
+      selectedItems: `selected-items-${this._id}`,
+      selectedSuggestionAlert: `selected-suggestion-alert-${this._id}`,
+      suggestionList: `suggestion-list-${this._id}`
+    };
     this.suggestionStore = new SuggestionsController<T>();
     this.selection = new Selection({ onSelectionChanged: () => this.onSelectionChange() });
     this.selection.setItems(items);
@@ -59,7 +79,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       isMostRecentlyUsedVisible: false,
       moreSuggestionsAvailable: false,
       isFocused: false,
-      isSearching: false
+      isSearching: false,
+      selectedIndices: []
     };
   }
 
@@ -102,9 +123,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   public componentWillUnmount(): void {
     super.componentWillUnmount();
-    if (this.loadingTimer) {
-      this._async.clearTimeout(this.loadingTimer);
-    }
     if (this.currentPromise) {
       this.currentPromise = undefined;
     }
@@ -174,15 +192,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       disabled
     } = this.props;
 
-    const currentIndex = this.suggestionStore.currentIndex;
-    const activeDescendant = currentIndex > -1 ? 'sug-' + currentIndex : undefined;
-
-    let selectedSuggestionAlert = undefined;
-    if (this.props.enableSelectedSuggestionAlert) {
-      const selectedSuggestion = currentIndex > -1 ? this.suggestionStore.getSuggestionAtIndex(this.suggestionStore.currentIndex) : undefined;
-      const selectedSuggestionAlertText = selectedSuggestion ? selectedSuggestion.ariaLabel : undefined;
-      selectedSuggestionAlert = (<div className={ styles.screenReaderOnly } role='alert' id='selected-suggestion-alert' aria-live='assertive'>{ selectedSuggestionAlertText } </div>);
-    }
+    const selectedSuggestionAlertId = this.props.enableSelectedSuggestionAlert
+      ? this._ariaMap.selectedSuggestionAlert
+      : '';
+    const suggestionsAvailable = this.state.suggestionsVisible ? this._ariaMap.suggestionList : '';
 
     return (
       <div
@@ -197,29 +210,36 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           direction={ FocusZoneDirection.bidirectional }
           isInnerZoneKeystroke={ this._isFocusZoneInnerKeystroke }
         >
-          { selectedSuggestionAlert }
+          { this.getSuggestionsAlert() }
           <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple }>
-            <div className={ css('ms-BasePicker-text', styles.pickerText, this.state.isFocused && styles.inputFocused) } role={ 'list' }>
-              { this.renderItems() }
-              { this.canAddItems() && (<Autofill
-                { ...inputProps as any }
-                className={ css('ms-BasePicker-input', styles.pickerInput) }
-                ref={ this.input }
-                onFocus={ this.onInputFocus }
-                onBlur={ this.onInputBlur }
-                onInputValueChange={ this.onInputChange }
-                suggestedDisplayValue={ suggestedDisplayValue }
-                aria-activedescendant={ activeDescendant }
-                aria-owns={ this.state.suggestionsVisible ? 'suggestion-list' : undefined }
-                aria-expanded={ !!this.state.suggestionsVisible }
-                aria-haspopup='true'
-                autoCapitalize='off'
-                autoComplete='off'
-                role='combobox'
-                disabled={ disabled }
-                aria-controls='selected-suggestion-alert'
-                onInputChange={ this.props.onInputChange }
-              />) }
+            <div
+              className={ css('ms-BasePicker-text', styles.pickerText, this.state.isFocused && styles.inputFocused) }
+              role={ 'list' }
+            >
+              <span id={ this._ariaMap.selectedItems }>{ this.renderItems() }</span>
+              { this.canAddItems() && (
+                <Autofill
+                  { ...inputProps as any }
+                  className={ css('ms-BasePicker-input', styles.pickerInput) }
+                  ref={ this.input }
+                  onFocus={ this.onInputFocus }
+                  onBlur={ this.onInputBlur }
+                  onInputValueChange={ this.onInputChange }
+                  suggestedDisplayValue={ suggestedDisplayValue }
+                  aria-activedescendant={ this.getActiveDescendant() }
+                  aria-expanded={ !!this.state.suggestionsVisible }
+                  aria-haspopup='true'
+                  aria-describedby={ this._ariaMap.selectedItems }
+                  autoCapitalize='off'
+                  autoComplete='off'
+                  role={ 'combobox' }
+                  disabled={ disabled }
+                  aria-controls={ `${suggestionsAvailable} ${selectedSuggestionAlertId}` || undefined }
+                  aria-owns={ suggestionsAvailable || undefined }
+                  aria-autocomplete={ 'both' }
+                  onInputChange={ this.props.onInputChange }
+                />
+              ) }
             </div>
           </SelectionZone>
         </FocusZone>
@@ -259,6 +279,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           isResultsFooterVisible={ this.state.isResultsFooterVisible }
           refocusSuggestions={ this.refocusSuggestions }
           removeSuggestionAriaLabel={ this.props.removeButtonAriaLabel }
+          suggestionsListId={ this._ariaMap.suggestionList }
           { ...this.props.pickerSuggestionsProps as any }
         />
       </Callout>
@@ -269,17 +290,19 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     const { disabled, removeButtonAriaLabel } = this.props;
     const onRenderItem = this.props.onRenderItem as (props: IPickerItemProps<T>) => JSX.Element;
 
-    const { items } = this.state;
-    return items.map((item: any, index: number) => onRenderItem({
-      item,
-      index,
-      key: item.key ? item.key : index,
-      selected: this.selection.isIndexSelected(index),
-      onRemoveItem: () => this.removeItem(item),
-      disabled: disabled,
-      onItemChange: this.onItemChange,
-      removeButtonAriaLabel: removeButtonAriaLabel
-    }));
+    const { items, selectedIndices } = this.state;
+    return items.map((item: any, index: number) =>
+      onRenderItem({
+        item,
+        index,
+        key: item.key ? item.key : index,
+        selected: selectedIndices!.indexOf(index) !== -1,
+        onRemoveItem: () => this.removeItem(item, true),
+        disabled: disabled,
+        onItemChange: this.onItemChange,
+        removeButtonAriaLabel: removeButtonAriaLabel
+      })
+    );
   }
 
   protected resetFocus(index?: number) {
@@ -309,7 +332,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   protected onSelectionChange() {
-    this.forceUpdate();
+    this.setState({
+      selectedIndices: this.selection.getSelectedIndices()
+    });
   }
 
   protected updateSuggestions(suggestions: any[]) {
@@ -331,22 +356,14 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     const suggestionsArray: T[] = suggestions as T[];
     const suggestionsPromiseLike: PromiseLike<T[]> = suggestions as PromiseLike<T[]>;
 
-    // Check to see if the returned value is an array, if it is then just pass it into the next function.
+    // Check to see if the returned value is an array, if it is then just pass it into the next function .
     // If the returned value is not an array then check to see if it's a promise or PromiseLike. If it is then resolve it asynchronously.
     if (Array.isArray(suggestionsArray)) {
-      if (updatedValue !== undefined) {
-        this.resolveNewValue(updatedValue, suggestionsArray);
-      } else {
-        this.suggestionStore.updateSuggestions(suggestionsArray, 0);
-      }
+      this._updateAndResolveValue(updatedValue, suggestionsArray);
     } else if (suggestionsPromiseLike && suggestionsPromiseLike.then) {
-      if (!this.loadingTimer) {
-        this.loadingTimer = this._async.setTimeout(() => {
-          this.setState({
-            suggestionsLoading: true
-          });
-        }, 500);
-      }
+      this.setState({
+        suggestionsLoading: true
+      });
 
       // Clear suggestions
       this.suggestionStore.updateSuggestions([]);
@@ -365,36 +382,32 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       const promise: PromiseLike<T[]> = this.currentPromise = suggestionsPromiseLike;
       promise.then((newSuggestions: T[]) => {
         if (promise === this.currentPromise) {
-          if (updatedValue !== undefined) {
-            this.resolveNewValue(updatedValue, newSuggestions);
-          } else {
-            this.suggestionStore.updateSuggestions(newSuggestions);
-            this.setState({
-              suggestionsLoading: false
-            });
-          }
-          if (this.loadingTimer) {
-            this._async.clearTimeout(this.loadingTimer);
-            this.loadingTimer = undefined;
-          }
+          this._updateAndResolveValue(updatedValue, newSuggestions);
         }
       });
     }
   }
 
   protected resolveNewValue(updatedValue: string, suggestions: T[]) {
-    this.suggestionStore.updateSuggestions(suggestions, 0);
+    this.updateSuggestions(suggestions);
     let itemValue: string | undefined = undefined;
 
     if (this.suggestionStore.currentSuggestion) {
       itemValue = this._getTextFromItem(this.suggestionStore.currentSuggestion.item, updatedValue);
     }
 
-    this.setState({
-      suggestionsLoading: false,
-      suggestedDisplayValue: itemValue,
-      suggestionsVisible: this.input.current ? (this.input.current.value !== '' && this.input.current.inputElement === document.activeElement) : false
-    });
+    // Only set suggestionloading to false after there has been time for the new suggestions to flow
+    // to the suggestions list. This is to ensure that the suggestions are available before aria-activedescendant
+    // is set so that screen readers will read out the first selected option.
+    this.setState(
+      {
+        suggestedDisplayValue: itemValue,
+        suggestionsVisible: this.input.current
+          ? this.input.current.value !== '' && this.input.current.inputElement === document.activeElement
+          : false
+      },
+      () => this.setState({ suggestionsLoading: false })
+    );
   }
 
   protected onChange(items?: T[]) {
@@ -632,13 +645,13 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     this.setState({ suggestedDisplayValue: '' });
   }
 
-  protected removeItem = (item: IPickerItemProps<T>): void => {
+  protected removeItem = (item: IPickerItemProps<T>, focusNextItem?: boolean): void => {
     const { items } = this.state;
     const index: number = items.indexOf(item);
 
     if (index >= 0) {
       const newItems: T[] = items.slice(0, index).concat(items.slice(index + 1));
-      this._updateSelectedItems(newItems);
+      this._updateSelectedItems(newItems, focusNextItem ? index : undefined);
     }
   }
 
@@ -678,6 +691,46 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     }
 
     return false;
+  }
+
+  protected getActiveDescendant() {
+    const currentIndex = this.suggestionStore.currentIndex;
+    return currentIndex > -1 && !this.state.suggestionsLoading ? 'sug-' + currentIndex : undefined;
+  }
+
+  protected getSuggestionsAlert() {
+    const currentIndex = this.suggestionStore.currentIndex;
+    if (this.props.enableSelectedSuggestionAlert) {
+      const selectedSuggestion =
+        currentIndex > -1 ? this.suggestionStore.getSuggestionAtIndex(this.suggestionStore.currentIndex) : undefined;
+      const selectedSuggestionAlertText = selectedSuggestion ? selectedSuggestion.ariaLabel : undefined;
+      return (
+        <div
+          className={ styles.screenReaderOnly }
+          role='alert'
+          id={ this._ariaMap.selectedSuggestionAlert }
+          aria-live='assertive'
+        >
+          { selectedSuggestionAlertText }{ ' ' }
+        </div>
+      );
+    }
+  }
+  /**
+   * Takes in the current updated value and either resolves it with the new suggestions
+   * or if updated value is undefined then it clears out currently suggested items
+   */
+  private _updateAndResolveValue(updatedValue: string | undefined, newSuggestions: T[]) {
+    if (updatedValue !== undefined) {
+      this.resolveNewValue(updatedValue, newSuggestions);
+    } else {
+      this.suggestionStore.updateSuggestions(newSuggestions, -1);
+      if (this.state.suggestionsLoading) {
+        this.setState({
+          suggestionsLoading: false
+        });
+      }
+    }
   }
 
   /**
@@ -734,49 +787,50 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
       disabled
     } = this.props;
 
+    const selectedSuggestionAlertId: string | undefined = this.props.enableSelectedSuggestionAlert
+      ? this._ariaMap.selectedSuggestionAlert
+      : '';
+    const suggestionsAvailable: string | undefined = this.state.suggestionsVisible ? this._ariaMap.suggestionList : '';
+
     return (
-      <div>
-        <div
-          ref={ this.root }
-          className={ css('ms-BasePicker', className ? className : '') }
-          onKeyDown={ this.onKeyDown }
-        >
-          <SelectionZone
-            selection={ this.selection }
-            selectionMode={ SelectionMode.multiple }
-          >
-            <div className={ css('ms-BasePicker-text', styles.pickerText, this.state.isFocused && styles.inputFocused) }>
-              <Autofill
-                { ...inputProps as any }
-                className={ css('ms-BasePicker-input', styles.pickerInput) }
-                ref={ this.input }
-                onFocus={ this.onInputFocus }
-                onBlur={ this.onInputBlur }
-                onInputValueChange={ this.onInputChange }
-                suggestedDisplayValue={ suggestedDisplayValue }
-                aria-activedescendant={ this.state.suggestionsVisible ? 'sug-' + this.suggestionStore.currentIndex : undefined }
-                aria-owns={ this.state.suggestionsVisible ? 'suggestion-list' : undefined }
-                aria-expanded={ !!this.state.suggestionsVisible }
-                aria-haspopup='true'
-                autoCapitalize='off'
-                autoComplete='off'
-                role='combobox'
-                disabled={ disabled }
-              />
-            </div>
-          </SelectionZone>
+      <div ref={ this.root }>
+        <div className={ css('ms-BasePicker', className ? className : '') } onKeyDown={ this.onKeyDown }>
+          { this.getSuggestionsAlert() }
+          <div className={ css('ms-BasePicker-text', styles.pickerText, this.state.isFocused && styles.inputFocused) }>
+            <Autofill
+              { ...inputProps as any }
+              className={ css('ms-BasePicker-input', styles.pickerInput) }
+              ref={ this.input }
+              onFocus={ this.onInputFocus }
+              onBlur={ this.onInputBlur }
+              onInputValueChange={ this.onInputChange }
+              suggestedDisplayValue={ suggestedDisplayValue }
+              aria-activedescendant={ this.getActiveDescendant() }
+              aria-expanded={ !!this.state.suggestionsVisible }
+              aria-haspopup='true'
+              autoCapitalize='off'
+              autoComplete='off'
+              role='combobox'
+              disabled={ disabled }
+              aria-controls={ `${suggestionsAvailable} ${selectedSuggestionAlertId}` || undefined }
+              aria-owns={ suggestionsAvailable || undefined }
+              onInputChange={ this.props.onInputChange }
+            />
+          </div>
         </div>
         { this.renderSuggestions() }
-        <FocusZone
-          componentRef={ this.focusZone }
-          className='ms-BasePicker-selectedItems'
-          isCircularNavigation={ true }
-          direction={ FocusZoneDirection.bidirectional }
-          isInnerZoneKeystroke={ this._isFocusZoneInnerKeystroke }
-        >
-          { this.renderItems() }
-        </FocusZone>
-
+        <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.single }>
+          <FocusZone
+            componentRef={ this.focusZone }
+            className='ms-BasePicker-selectedItems'
+            isCircularNavigation={ true }
+            direction={ FocusZoneDirection.bidirectional }
+            isInnerZoneKeystroke={ this._isFocusZoneInnerKeystroke }
+            id={ this._ariaMap.selectedItems }
+          >
+            { this.renderItems() }
+          </FocusZone>
+        </SelectionZone>
       </div>
     );
   }
