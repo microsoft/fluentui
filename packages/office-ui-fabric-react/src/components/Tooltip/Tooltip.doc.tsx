@@ -30,7 +30,7 @@ export const TooltipPageProps: IDocPageProps = {
       codepenJS: TooltipBasicExampleCodepen
     },
     {
-      title: 'Tooltip with display prop',
+      title: 'Tooltip wrapping inline or inline-block elements',
       code: TooltipDisplayExampleCode,
       view: <TooltipDisplayExample />
     },
