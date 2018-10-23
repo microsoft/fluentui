@@ -316,7 +316,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     const {
       text,
       children,
-      secondaryText = this.props.secondaryText,
+      secondaryText = this.props.description,
       onRenderText = this._onRenderText,
       onRenderDescription = this._onRenderDescription
     } = this.props;
