@@ -7,6 +7,8 @@ import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import './Announced.Example.scss';
 import { ProgressIndicator } from 'office-ui-fabric-react/lib/ProgressIndicator';
 
+const DELAY = 10;
+
 export interface IAnnouncedAsynchronousExampleState {
   photos: { url: string; width: number; height: number }[];
   total: number;
@@ -14,6 +16,8 @@ export interface IAnnouncedAsynchronousExampleState {
   announced?: JSX.Element;
   percentComplete: number;
   loading: boolean;
+  complete: boolean;
+  timeSinceLastFocusAnnounce: number;
 }
 
 export interface IAnnouncedAsynchronousExampleProps {}
@@ -32,7 +36,9 @@ export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsyn
       seconds: 0,
       announced: undefined,
       percentComplete: 0,
-      loading: false
+      loading: false,
+      complete: false,
+      timeSinceLastFocusAnnounce: DELAY
     };
 
     this._renderPhotos = this._renderPhotos.bind(this);
@@ -43,14 +49,17 @@ export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsyn
     this.increaseTotal = setInterval(() => {
       if (this.state.loading && this.state.total < this.state.photos.length) {
         this.setState({ total: this.state.total + 1 });
+      } else if (this.state.total === this.state.photos.length && this.state.complete !== true) {
+        this.setState({ complete: true });
+        this.setState({ announced: undefined });
       }
     }, 2000);
 
     this.timer = setInterval(() => {
-      if (this.state.loading) {
-        this.setState({ seconds: this.state.seconds + 1 });
+      if (this.state.loading && !this.state.complete) {
+        this.setState({ seconds: this.state.seconds + 1, timeSinceLastFocusAnnounce: this.state.timeSinceLastFocusAnnounce + 1 });
 
-        if (this.state.seconds % this.delay === 0) {
+        if (this.state.seconds % this.delay === 0 && this.state.timeSinceLastFocusAnnounce >= DELAY) {
           this.setState({
             announced: (
               <Announced message={`${this.state.total}/${this.state.photos.length} photos loaded`} id={'announced-' + this.state.total} />
@@ -62,7 +71,7 @@ export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsyn
       }
     }, 1000);
 
-    this.delay = 10;
+    this.delay = DELAY;
   }
 
   public render(): JSX.Element {
@@ -92,7 +101,7 @@ export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsyn
 
   public componentDidUpdate(): void {
     const percentComplete = this.state.total / this.state.photos.length;
-    if (percentComplete !== this.state.percentComplete) {
+    if (percentComplete !== this.state.percentComplete && this.state.percentComplete < 1) {
       this.setState({ percentComplete: percentComplete });
     }
   }
@@ -128,7 +137,7 @@ export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsyn
       document.activeElement.children[0] &&
       document.activeElement.children[0].children.length === 0
     ) {
-      this.setState({ announced: <Announced message={`Photo loading`} /> });
+      this.setState({ timeSinceLastFocusAnnounce: 0, announced: <Announced message={`Photo loading`} /> });
     }
   }
 
