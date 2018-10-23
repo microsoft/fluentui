@@ -212,6 +212,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
 
   public componentWillReceiveProps(newProps: IDetailsListProps): void {
     const { checkboxVisibility, items, setKey, selectionMode = this._selection.mode, columns, viewport, compact } = this.props;
+    const { isAllGroupsCollapsed = undefined } = this.props.groupProps || {};
+
     const shouldResetSelection = newProps.setKey !== setKey || newProps.setKey === undefined;
     let shouldForceUpdates = false;
 
@@ -244,6 +246,12 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
 
     if (newProps.selectionMode !== selectionMode) {
       shouldForceUpdates = true;
+    }
+
+    if (isAllGroupsCollapsed === undefined && (newProps.groupProps && newProps.groupProps.isAllGroupsCollapsed !== undefined)) {
+      this.setState({
+        isCollapsed: newProps.groupProps.isAllGroupsCollapsed
+      });
     }
 
     if (shouldForceUpdates) {
