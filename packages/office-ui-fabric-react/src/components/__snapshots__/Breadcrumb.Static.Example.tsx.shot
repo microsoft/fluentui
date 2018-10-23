@@ -364,7 +364,11 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                 onClick={[Function]}
               >
                 <div
-                  className="ms-TooltipHost"
+                  className=
+                      ms-TooltipHost
+                      {
+                        display: inline;
+                      }
                   onBlurCapture={[Function]}
                   onFocusCapture={[Function]}
                   onMouseEnter={[Function]}
@@ -522,7 +526,11 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                 onClick={[Function]}
               >
                 <div
-                  className="ms-TooltipHost"
+                  className=
+                      ms-TooltipHost
+                      {
+                        display: inline;
+                      }
                   onBlurCapture={[Function]}
                   onFocusCapture={[Function]}
                   onMouseEnter={[Function]}
@@ -681,7 +689,11 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                 onClick={[Function]}
               >
                 <div
-                  className="ms-TooltipHost"
+                  className=
+                      ms-TooltipHost
+                      {
+                        display: inline;
+                      }
                   onBlurCapture={[Function]}
                   onFocusCapture={[Function]}
                   onMouseEnter={[Function]}

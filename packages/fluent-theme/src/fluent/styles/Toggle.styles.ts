@@ -1,3 +1,4 @@
+import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
 import { IToggleProps } from 'office-ui-fabric-react/lib/Toggle';
 
 export const ToggleStyles = (props: IToggleProps) => {
@@ -30,7 +31,7 @@ export const ToggleStyles = (props: IToggleProps) => {
         !checked && {
           selectors: {
             ':hover .ms-Toggle-thumb': {
-              backgroundColor: palette.neutralPrimary
+              backgroundColor: palette.neutralDark
             }
           }
         }
@@ -47,6 +48,13 @@ export const ToggleStyles = (props: IToggleProps) => {
         !checked && {
           backgroundColor: palette.neutralSecondary
         }
-    ]
+    ],
+    text: {
+      selectors: {
+        '&.ms-Toggle-stateText': {
+          fontWeight: FontWeights.regular
+        }
+      }
+    }
   };
 };
