@@ -4,11 +4,12 @@ import { ChoiceGroupOptionStyles } from './styles/ChoiceGroupOption.styles';
 import { ComboBoxStyles } from './styles/ComboBox.styles';
 import { CompoundButtonStyles } from './styles/CompoundButton.styles';
 import { DefaultButtonStyles } from './styles/DefaultButton.styles';
-import { DialogStyles, DialogContentStyles, DialogFooterStyles } from './styles/Dialog.styles';
+import { DialogContentStyles, DialogFooterStyles, DialogStyles } from './styles/Dialog.styles';
 import { DropdownStyles } from './styles/Dropdown.styles';
 import { LabelStyles } from './styles/Label.styles';
 import { LinkStyles } from './styles/Link.styles';
 import { PrimaryButtonStyles } from './styles/PrimaryButton.styles';
+import { SliderStyles } from './styles/Slider.styles';
 import { TextFieldStyles } from './styles/TextField.styles';
 import { ToggleStyles } from './styles/Toggle.styles';
 
@@ -56,6 +57,9 @@ export const FluentStyles: any = {
   },
   PrimaryButton: {
     styles: PrimaryButtonStyles
+  },
+  Slider: {
+    styles: SliderStyles
   },
   TextField: {
     styles: TextFieldStyles
