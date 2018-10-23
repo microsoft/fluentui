@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { BaseButton } from './BaseButton';
+import { Button } from './Button';
 import { IButtonClassNames } from './BaseButton.classNames';
 import { ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
 import { IRefObject, IRenderFunction, KeyCodes, IComponentAs } from '../../Utilities';
@@ -30,7 +31,8 @@ export interface IButton {
   openMenu: (shouldFocusOnContainer?: boolean, shouldFocusOnMount?: boolean) => void;
 }
 
-export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement | BaseButton> {
+export interface IButtonProps
+  extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement | BaseButton | Button> {
   /**
    * Optional callback to access the IButton interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

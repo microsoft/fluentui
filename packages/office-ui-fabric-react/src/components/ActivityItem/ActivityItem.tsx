@@ -53,7 +53,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
   private _onRenderActivityDescription = (props: IActivityItemProps): JSX.Element | null => {
     const classNames = this._getClassNames(props);
 
-    const activityDescription = props.activityDescription;
+    const activityDescription = props.activityDescription || props.activityDescriptionText;
 
     if (activityDescription) {
       return <span className={classNames.activityText}>{activityDescription}</span>;
@@ -65,7 +65,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
   private _onRenderComments = (props: IActivityItemProps): JSX.Element | null => {
     const classNames = this._getClassNames(props);
 
-    const comments = props.comments;
+    const comments = props.comments || props.commentText;
 
     if (!props.isCompact && comments) {
       return <div className={classNames.commentText}>{comments}</div>;

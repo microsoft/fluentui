@@ -139,7 +139,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     const tag = renderAsAnchor ? 'a' : 'button';
 
     const nativeProps = getNativeProps(
-      assign(renderAsAnchor ? {} : { type: 'button' }, this.props),
+      assign(renderAsAnchor ? {} : { type: 'button' }, this.props.rootProps, this.props),
       renderAsAnchor ? anchorProperties : buttonProperties,
       [
         'disabled' // let disabled buttons be focused and styled as disabled.
