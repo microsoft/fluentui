@@ -89,6 +89,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         break;
       case 6:
         currentPicker = this._renderProcessSelectionPicker();
+        break;
       case 7:
         currentPicker = this._renderControlledPicker();
         break;
@@ -326,9 +327,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     const indexMostRecentlyUsed: number = mruState.indexOf(item);
 
     if (indexPeopleList >= 0) {
-      const newPeople: IPersonaProps[] = peopleList
-        .slice(0, indexPeopleList)
-        .concat(peopleList.slice(indexPeopleList + 1));
+      const newPeople: IPersonaProps[] = peopleList.slice(0, indexPeopleList).concat(peopleList.slice(indexPeopleList + 1));
       this.setState({ peopleList: newPeople });
     }
 
@@ -368,9 +367,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     return this._filterPromise(mostRecentlyUsed);
   };
 
-  private _returnMostRecentlyUsedWithLimit = (
-    currentPersonas: IPersonaProps[]
-  ): IPersonaProps[] | Promise<IPersonaProps[]> => {
+  private _returnMostRecentlyUsedWithLimit = (currentPersonas: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> => {
     let { mostRecentlyUsed } = this.state;
     mostRecentlyUsed = this._removeDuplicates(mostRecentlyUsed, currentPersonas);
     mostRecentlyUsed = mostRecentlyUsed.splice(0, 3);

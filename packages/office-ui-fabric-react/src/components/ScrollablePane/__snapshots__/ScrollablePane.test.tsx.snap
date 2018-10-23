@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScrollablePane renders correctly 1`] = `
+<div
+  className=
+      ms-ScrollablePane
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        -webkit-overflow-scrolling: touch;
+        bottom: 0px;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        left: 0px;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        z-index: 1;
+      }
+>
+  <div
+    className=
+        ms-ScrollablePane--contentContainer
+        {
+          -webkit-overflow-scrolling: touch;
+          bottom: 0px;
+          left: 0px;
+          overflow-y: auto;
+          position: absolute;
+          right: 0px;
+          top: 0px;
+          z-index: 1;
+        }
+    data-is-scrollable={true}
+  />
+  <div
+    className=
+
+        {
+          pointer-events: auto;
+          position: absolute;
+          top: 0px;
+          z-index: 1;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          border-bottom: 1px solid WindowText;
+        }
+    style={
+      Object {
+        "height": 0,
+        "left": "0",
+        "right": "0px",
+        "top": "0",
+      }
+    }
+  />
+  <div
+    className=
+
+        {
+          bottom: 0px;
+          pointer-events: auto;
+          position: absolute;
+          z-index: 1;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          border-top: 1px solid WindowText;
+        }
+    style={
+      Object {
+        "bottom": "0px",
+        "height": 0,
+        "left": "0",
+        "right": "0px",
+      }
+    }
+  >
+    <div
+      className=
+
+          {
+            bottom: 0px;
+            pointer-events: auto;
+            position: absolute;
+            width: 100%;
+            z-index: 1;
+          }
+    />
+  </div>
+</div>
+`;

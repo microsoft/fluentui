@@ -41,6 +41,9 @@ exports[`DetailsList renders List correctly 1`] = `
       role="grid"
     >
       <div
+        className=
+            ms-DetailsList-headerWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -492,6 +495,9 @@ exports[`DetailsList renders List correctly 1`] = `
         </div>
       </div>
       <div
+        className=
+            ms-DetailsList-contentWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -617,6 +623,9 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
       role="grid"
     >
       <div
+        className=
+            ms-DetailsList-headerWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -1659,6 +1668,9 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
         </div>
       </div>
       <div
+        className=
+            ms-DetailsList-contentWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -1785,6 +1797,9 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
       role="grid"
     >
       <div
+        className=
+            ms-DetailsList-headerWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -2236,6 +2251,9 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
         </div>
       </div>
       <div
+        className=
+            ms-DetailsList-contentWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -2362,6 +2380,9 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
       role="grid"
     >
       <div
+        className=
+            ms-DetailsList-headerWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -3191,6 +3212,9 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
         </div>
       </div>
       <div
+        className=
+            ms-DetailsList-contentWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -3316,6 +3340,9 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
       role="grid"
     >
       <div
+        className=
+            ms-DetailsList-headerWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -4373,6 +4400,9 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
         </div>
       </div>
       <div
+        className=
+            ms-DetailsList-contentWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -4498,6 +4528,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
       role="grid"
     >
       <div
+        className=
+            ms-DetailsList-headerWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -4805,6 +4838,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
         </div>
       </div>
       <div
+        className=
+            ms-DetailsList-contentWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >

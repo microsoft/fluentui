@@ -2,6 +2,81 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.30.2",
+      "tag": "@uifabric/dashboard_v0.30.2",
+      "date": "Mon, 22 Oct 2018 12:29:57 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "\"Dashboard/Nav component - added focus style to support keyboard inputs\"",
+            "author": "Sivaraman Krishnan <12967315+sikrishn@users.noreply.github.com>",
+            "commit": "9ba3578fc643ff7044af84759fbe163aa7a2a89f"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.39.1 <7.0.0` to `>=6.39.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.89.0 <7.0.0` to `>=6.90.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.30.1",
+      "tag": "@uifabric/dashboard_v0.30.1",
+      "date": "Thu, 18 Oct 2018 20:22:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove api-extractor.disabled.json",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "e6b2514a003fb41c964fba14b071cb0046fd69eb"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.25.0` to `^0.25.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.39.0 <7.0.0` to `>=6.39.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.87.0 <7.0.0` to `>=6.88.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.30.0",
+      "tag": "@uifabric/dashboard_v0.30.0",
+      "date": "Tue, 16 Oct 2018 12:28:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding support for different date formats to line chart in dashboard card. Calculating datapoints to render a line chart with evenly spaced ticks. Updated examples for cards",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "29ed1606b89cecfc376a2992eff59bff710ddca1"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.24.4` to `^0.25.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.7.6 <7.0.0` to `>=6.8.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.37.1 <7.0.0` to `>=6.38.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.84.1 <7.0.0` to `>=6.85.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.29.3",
       "tag": "@uifabric/dashboard_v0.29.3",
       "date": "Mon, 15 Oct 2018 12:29:12 GMT",

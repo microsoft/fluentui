@@ -9,7 +9,8 @@ import { ContextualMenu } from './ContextualMenu';
 import { canAnyMenuItemsCheck } from './ContextualMenu.base';
 import { ContextualMenuItemType } from './ContextualMenu.types';
 import { IContextualMenuRenderItem } from './ContextualMenuItem.types';
-import { IMenuItemClassNames } from './ContextualMenu.classNames';
+import { IMenuItemClassNames, getItemClassNames } from './ContextualMenu.classNames';
+import { createTheme } from '../../Styling';
 
 let customClassNames: () => IMenuItemClassNames;
 
@@ -75,9 +76,7 @@ describe('ContextualMenu', () => {
       };
     };
 
-    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(
-      <ContextualMenu items={items} getMenuClassNames={getClassNames} />
-    );
+    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} getMenuClassNames={getClassNames} />);
 
     const container = document.querySelector('.containerFoo') as HTMLElement;
     const rootEl = document.querySelector('.rootFoo') as HTMLElement;
@@ -251,9 +250,7 @@ describe('ContextualMenu', () => {
       spyCalled = true;
     };
 
-    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(
-      <ContextualMenu items={items} isSubMenu={true} onDismiss={onDismissSpy} />
-    );
+    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} isSubMenu={true} onDismiss={onDismissSpy} />);
 
     const menuList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
     ReactTestUtils.Simulate.keyDown(menuList, { which: KeyCodes.left });
@@ -879,9 +876,7 @@ describe('ContextualMenu', () => {
     ];
     const customRenderer = jest.fn(() => null);
 
-    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(
-      <ContextualMenu items={items} contextualMenuItemAs={customRenderer} />
-    );
+    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} contextualMenuItemAs={customRenderer} />);
 
     const menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
     ReactTestUtils.Simulate.click(menuItem);
@@ -925,11 +920,7 @@ describe('ContextualMenu', () => {
           key: 'Item 3',
           sectionProps: {
             key: 'Section1',
-            items: [
-              { name: 'Item 1', key: 'Item 1' },
-              { name: 'Item 2', key: 'Item 2', canCheck: true },
-              { name: 'Item 3', key: 'Item 3' }
-            ]
+            items: [{ name: 'Item 1', key: 'Item 1' }, { name: 'Item 2', key: 'Item 2', canCheck: true }, { name: 'Item 3', key: 'Item 3' }]
           }
         }
       ];
@@ -1081,5 +1072,64 @@ describe('ContextualMenu', () => {
         expect(menuDismissed).toEqual(true);
       });
     });
+  });
+});
+
+describe('getItemClassNames', () => {
+  // This test exists to validate that getItemClassNames signature has not changed
+  // to avoid breaking internal partners relying on this private API.
+  // See: https://github.com/OfficeDev/office-ui-fabric-react/pull/6738
+  it('accepts an argument list of style props values', () => {
+    const NoClassNamesTheme = createTheme({ disableGlobalClassNames: true });
+    const isDisabled = false;
+    const isExpanded = false;
+    const isChecked = false;
+    const isAnchorLink = false;
+    const isKnownIcon = true;
+    const dividerClassName = 'dividerFoo';
+    const itemClassName = 'foo';
+    const iconClassName = 'iconFoo';
+
+    const itemClassNames = getItemClassNames(
+      NoClassNamesTheme,
+      isDisabled,
+      isExpanded,
+      isChecked,
+      isAnchorLink,
+      isKnownIcon,
+      itemClassName,
+      dividerClassName,
+      iconClassName
+    );
+
+    expect(itemClassNames).toBeDefined();
+  });
+
+  it('applies custom classNames to style slots', () => {
+    const NoClassNamesTheme = createTheme({ disableGlobalClassNames: true });
+    const isDisabled = false;
+    const isExpanded = false;
+    const isChecked = false;
+    const isAnchorLink = false;
+    const isKnownIcon = true;
+    const dividerClassName = 'dividerFoo';
+    const itemClassName = 'foo';
+    const iconClassName = 'iconFoo';
+
+    const itemClassNames = getItemClassNames(
+      NoClassNamesTheme,
+      isDisabled,
+      isExpanded,
+      isChecked,
+      isAnchorLink,
+      isKnownIcon,
+      itemClassName,
+      dividerClassName,
+      iconClassName
+    );
+
+    expect(itemClassNames.item).toContain('foo');
+    expect(itemClassNames.divider).toContain('dividerFoo');
+    expect(itemClassNames.icon).toContain('iconFoo');
   });
 });

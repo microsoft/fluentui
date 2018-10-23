@@ -1039,7 +1039,11 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               }
         >
           <div
-            className="ms-TooltipHost"
+            className=
+                ms-TooltipHost
+                {
+                  display: inline;
+                }
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onMouseEnter={[Function]}
@@ -1186,7 +1190,11 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               }
         >
           <div
-            className="ms-TooltipHost"
+            className=
+                ms-TooltipHost
+                {
+                  display: inline;
+                }
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onMouseEnter={[Function]}
@@ -2831,7 +2839,11 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               }
         >
           <div
-            className="ms-TooltipHost"
+            className=
+                ms-TooltipHost
+                {
+                  display: inline;
+                }
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onMouseEnter={[Function]}
@@ -2978,7 +2990,11 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               }
         >
           <div
-            className="ms-TooltipHost"
+            className=
+                ms-TooltipHost
+                {
+                  display: inline;
+                }
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onMouseEnter={[Function]}

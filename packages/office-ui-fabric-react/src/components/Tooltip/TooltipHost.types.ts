@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { TooltipHost } from './TooltipHost';
+import { TooltipHostBase } from './TooltipHost.base';
 import { TooltipDelay, ITooltipProps } from './Tooltip.types';
 import { ICalloutProps } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { IRefObject } from '../../Utilities';
-import { IRawStyle } from '../../Styling';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { IStyle, ITheme } from '../../Styling';
 
-export interface ITooltipHost {}
+export interface ITooltipHost { }
 
 export enum TooltipOverflowMode {
   /** Only show tooltip if parent DOM element is overflowing */
@@ -19,7 +19,7 @@ export enum TooltipOverflowMode {
 /**
  * Tooltip component props.
  */
-export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement | TooltipHost> {
+export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement | TooltipHostBase> {
   /**
    * Optional callback to access the ITooltipHost interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -62,15 +62,6 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
   directionalHintForRTL?: DirectionalHint;
 
   /**
-   * Display property to be applied to the host wrapper div.
-   * When wrapping elements which have display 'inline' or 'inline-block' there are instances when Tooltip covers the target when rendered.
-   * This happens due to default value 'inline' of the wrapper which computes it's line-height from the inherited font-size and being placed
-   * at the base line of the wrapped element. If line-heights of both don't match it will render not in the intended position.
-   * @default 'inline'
-   */
-  display?: IRawStyle['display'];
-
-  /**
    * Optional class name to apply to tooltip host.
    */
   hostClassName?: string;
@@ -93,7 +84,36 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
   tooltipProps?: ITooltipProps;
 
   /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  styles?: IStyleFunctionOrObject<ITooltipHostStyleProps, ITooltipHostStyles>;
+
+  /**
+   * Theme provided by High-Order Component.
+   */
+  theme?: ITheme;
+
+  /**
    * Notifies when tooltip becomes visible or hidden, whatever the trigger was.
    */
   onTooltipToggle?(isTooltipVisible: boolean): void;
+}
+
+export interface ITooltipHostStyleProps {
+  /**
+   * Accept theme prop.
+   */
+  theme: ITheme;
+
+  /**
+   * Accept optional classNames for the host wrapper
+   */
+  className?: string;
+}
+
+export interface ITooltipHostStyles {
+  /**
+   * Style for the host wrapper element.
+   */
+  root: IStyle;
 }

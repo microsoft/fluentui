@@ -1,10 +1,11 @@
 // tslint:disable:no-any
 import * as React from 'react';
 import { App as AppBase, IAppDefinition, IAppProps } from '@uifabric/example-app-base';
+import { AppCustomizations } from './customizations';
 
 export const AppDefinition: IAppDefinition = {
   appTitle: 'Fabric - React',
-
+  customizations: AppCustomizations,
   testPages: [],
   examplePages: [
     {
@@ -118,16 +119,10 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/staticlist'
         },
         {
-          component: require<any>('../components/fluent/theme/FluentThemePage').FluentThemePage,
+          component: require<any>('../components/fluent/examplePages/FluentThemePage').FluentThemePage,
           key: 'FluentColorTheme',
           name: 'Fluent Color Theme',
           url: '#/examples/fluent-color-theme'
-        },
-        {
-          component: require<any>('../components/fluent/styles/FluentStylesPage').FluentStylesPage,
-          key: 'FluentStyles',
-          name: 'Fluent Component Styles',
-          url: '#/examples/fluent-styles'
         },
         {
           component: require<any>('../theming/ThemingPage').ThemingPage,
