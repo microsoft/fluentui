@@ -142,8 +142,8 @@ export class Chart extends React.Component<IChartInternalProps, { _width: number
   private _getLineChart = (): JSX.Element => {
     const { chartData, timeRange } = this.props;
     let dateDataType = false;
-    if (chartData && chartData[0].lineChartData) {
-      chartData[0].lineChartData.forEach((lineData: ILineChartPoints) => {
+    if (chartData && chartData[0] && chartData[0].lineChartData) {
+      chartData[0].lineChartData!.forEach((lineData: ILineChartPoints) => {
         if (lineData.data.length > 0) {
           dateDataType = lineData.data[0].x instanceof Date;
           return;
