@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/fluent-theme",
+      "comment": "Fluent theme: Update Toggle font weight and hover color",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/fluent-theme",
+  "email": "miwhea@microsoft.com"
+}
