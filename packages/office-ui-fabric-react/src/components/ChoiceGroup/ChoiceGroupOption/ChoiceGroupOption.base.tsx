@@ -1,18 +1,14 @@
 import * as React from 'react';
 import { Image } from '../../../Image';
 import { Icon } from '../../../Icon';
-import {
-  IChoiceGroupOptionProps,
-  IChoiceGroupOptionStyleProps,
-  IChoiceGroupOptionStyles
-} from './ChoiceGroupOption.types';
-import { BaseComponent, classNamesFunction, getNativeProps, inputProperties, createRef } from '../../../Utilities';
+import { IChoiceGroupOptionProps, IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from './ChoiceGroupOption.types';
+import { BaseComponent, classNamesFunction, getNativeProps, inputProperties } from '../../../Utilities';
 import { IProcessedStyleSet } from '../../../Styling';
 
 const getClassNames = classNamesFunction<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>();
 
 export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps, any> {
-  private _inputElement = createRef<HTMLInputElement>();
+  private _inputElement = React.createRef<HTMLInputElement>();
   private _classNames: IProcessedStyleSet<IChoiceGroupOptionStyles>;
 
   constructor(props: IChoiceGroupOptionProps) {
@@ -102,12 +98,7 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
               <Image src={imageSrc} alt={imageAlt ? imageAlt : ''} width={imageSize.width} height={imageSize.height} />
             </div>
             <div className={this._classNames.selectedImageWrapper}>
-              <Image
-                src={selectedImageSrc}
-                alt={imageAlt ? imageAlt : ''}
-                width={imageSize.width}
-                height={imageSize.height}
-              />
+              <Image src={selectedImageSrc} alt={imageAlt ? imageAlt : ''} width={imageSize.width} height={imageSize.height} />
             </div>
           </div>
         )}

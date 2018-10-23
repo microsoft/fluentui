@@ -8,7 +8,6 @@ import { Label } from '../../Label';
 import {
   BaseComponent,
   KeyCodes,
-  createRef,
   css,
   customizable,
   divProperties,
@@ -109,19 +108,19 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     buttonIconProps: { iconName: 'ChevronDown' }
   };
 
-  private _root = createRef<HTMLDivElement>();
+  private _root = React.createRef<HTMLDivElement>();
 
   // The input aspect of the comboBox
-  private _autofill = createRef<IAutofill>();
+  private _autofill = React.createRef<IAutofill>();
 
   // The wrapping div of the input and button
-  private _comboBoxWrapper = createRef<HTMLDivElement>();
+  private _comboBoxWrapper = React.createRef<HTMLDivElement>();
 
   // The callout element
-  private _comboBoxMenu = createRef<HTMLDivElement>();
+  private _comboBoxMenu = React.createRef<HTMLDivElement>();
 
   // The menu item element that is currently selected
-  private _selectedElement = createRef<HTMLSpanElement>();
+  private _selectedElement = React.createRef<HTMLSpanElement>();
 
   // The base id for the comboBox
   private _id: string;
@@ -204,7 +203,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         // For ComboBoxes, touching anywhere in the combo box should drop the dropdown, including the input element.
         // This gives more hit target space for touch environments. We're setting the onpointerdown here, because React
         // does not support Pointer events yet.
-        this._events.on(this._comboBoxWrapper.value, 'pointerdown', this._onPointerDown, true);
+        this._events.on(this._comboBoxWrapper.current, 'pointerdown', this._onPointerDown, true);
       }
     }
   }
@@ -1855,7 +1854,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   };
 
   private _onTouchStart: () => void = () => {
-    if (this._comboBoxWrapper.value && !('onpointerdown' in this._comboBoxWrapper)) {
+    if (this._comboBoxWrapper.current && !('onpointerdown' in this._comboBoxWrapper)) {
       this._handleTouchAndPointerEvent();
     }
   };
