@@ -98,7 +98,11 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                     }
               >
                 <div
-                  className="ms-TooltipHost"
+                  className=
+                      ms-TooltipHost
+                      {
+                        display: inline;
+                      }
                   onBlurCapture={[Function]}
                   onFocusCapture={[Function]}
                   onMouseEnter={[Function]}
@@ -177,7 +181,11 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                     }
               >
                 <div
-                  className="ms-TooltipHost"
+                  className=
+                      ms-TooltipHost
+                      {
+                        display: inline;
+                      }
                   onBlurCapture={[Function]}
                   onFocusCapture={[Function]}
                   onMouseEnter={[Function]}
@@ -256,7 +264,11 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                     }
               >
                 <div
-                  className="ms-TooltipHost"
+                  className=
+                      ms-TooltipHost
+                      {
+                        display: inline;
+                      }
                   onBlurCapture={[Function]}
                   onFocusCapture={[Function]}
                   onMouseEnter={[Function]}
@@ -335,7 +347,11 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                     }
               >
                 <div
-                  className="ms-TooltipHost"
+                  className=
+                      ms-TooltipHost
+                      {
+                        display: inline;
+                      }
                   onBlurCapture={[Function]}
                   onFocusCapture={[Function]}
                   onMouseEnter={[Function]}
@@ -630,7 +646,11 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                     }
               >
                 <div
-                  className="ms-TooltipHost"
+                  className=
+                      ms-TooltipHost
+                      {
+                        display: inline;
+                      }
                   onBlurCapture={[Function]}
                   onFocusCapture={[Function]}
                   onMouseEnter={[Function]}
@@ -709,7 +729,11 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                     }
               >
                 <div
-                  className="ms-TooltipHost"
+                  className=
+                      ms-TooltipHost
+                      {
+                        display: inline;
+                      }
                   onBlurCapture={[Function]}
                   onFocusCapture={[Function]}
                   onMouseEnter={[Function]}
@@ -825,7 +849,11 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 3 1`] = `
                     }
               >
                 <div
-                  className="ms-TooltipHost"
+                  className=
+                      ms-TooltipHost
+                      {
+                        display: inline;
+                      }
                   onBlurCapture={[Function]}
                   onFocusCapture={[Function]}
                   onMouseEnter={[Function]}
@@ -877,7 +905,11 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 3 1`] = `
                     }
               >
                 <div
-                  className="ms-TooltipHost"
+                  className=
+                      ms-TooltipHost
+                      {
+                        display: inline;
+                      }
                   onBlurCapture={[Function]}
                   onFocusCapture={[Function]}
                   onMouseEnter={[Function]}
@@ -929,7 +961,11 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 3 1`] = `
                     }
               >
                 <div
-                  className="ms-TooltipHost"
+                  className=
+                      ms-TooltipHost
+                      {
+                        display: inline;
+                      }
                   onBlurCapture={[Function]}
                   onFocusCapture={[Function]}
                   onMouseEnter={[Function]}
@@ -981,7 +1017,11 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 3 1`] = `
                     }
               >
                 <div
-                  className="ms-TooltipHost"
+                  className=
+                      ms-TooltipHost
+                      {
+                        display: inline;
+                      }
                   onBlurCapture={[Function]}
                   onFocusCapture={[Function]}
                   onMouseEnter={[Function]}
@@ -1097,7 +1137,11 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                     }
               >
                 <div
-                  className="ms-TooltipHost"
+                  className=
+                      ms-TooltipHost
+                      {
+                        display: inline;
+                      }
                   onBlurCapture={[Function]}
                   onFocusCapture={[Function]}
                   onMouseEnter={[Function]}
@@ -1355,7 +1399,11 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                     }
               >
                 <div
-                  className="ms-TooltipHost"
+                  className=
+                      ms-TooltipHost
+                      {
+                        display: inline;
+                      }
                   onBlurCapture={[Function]}
                   onFocusCapture={[Function]}
                   onMouseEnter={[Function]}
@@ -1471,7 +1519,11 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                     }
               >
                 <div
-                  className="ms-TooltipHost"
+                  className=
+                      ms-TooltipHost
+                      {
+                        display: inline;
+                      }
                   onBlurCapture={[Function]}
                   onFocusCapture={[Function]}
                   onMouseEnter={[Function]}
