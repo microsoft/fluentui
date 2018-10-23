@@ -142,7 +142,11 @@ exports[`Persona renders Persona correctly with image 1`] = `
           }
     >
       <div
-        className="ms-TooltipHost"
+        className=
+            ms-TooltipHost
+            {
+              display: inline;
+            }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}
@@ -309,7 +313,11 @@ exports[`Persona renders Persona correctly with initials 1`] = `
           }
     >
       <div
-        className="ms-TooltipHost"
+        className=
+            ms-TooltipHost
+            {
+              display: inline;
+            }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}
