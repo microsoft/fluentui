@@ -2,6 +2,44 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.25.2",
+      "tag": "@uifabric/charting_v0.25.2",
+      "date": "Tue, 23 Oct 2018 12:32:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix an issue with the demo site not being able to load (in npm start or aka.ms/fabricdemo).",
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "b23bf4ef703ae9fef95dd41a1f7b3d0906a04344"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.90.0 <7.0.0` to `>=6.91.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.25.1",
+      "tag": "@uifabric/charting_v0.25.1",
+      "date": "Thu, 18 Oct 2018 20:22:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove api-extractor.disabled.json",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "e6b2514a003fb41c964fba14b071cb0046fd69eb"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.87.0 <7.0.0` to `>=6.88.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.25.0",
       "tag": "@uifabric/charting_v0.25.0",
       "date": "Tue, 16 Oct 2018 12:28:48 GMT",

@@ -2,6 +2,163 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.92.0",
+      "tag": "office-ui-fabric-react_v6.92.0",
+      "date": "Wed, 24 Oct 2018 12:28:58 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add an optional parameter to allow Dropdown to call onChanged when an item is clicked, even if that item was already selected",
+            "author": "janormanms <40806783+janormanms@users.noreply.github.com>",
+            "commit": "093e6e2f275dbdcb6017a3dbf4ec74cfef1131f6"
+          },
+          {
+            "comment": "Tooltip: change display property of TooltipHost to inline-block to properly behave when wrapping inline or inline-block children.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "e8ac70df6f544134a4e8cbccf87a66d37327d9f6"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "ResizeGroup: Moved relative style to inner wrapper div",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "0880b0d495ff0b671df5af4a469a9276786a76dc"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.10.3 <7.0.0` to `>=6.10.4 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.32.1 <7.0.0` to `>=6.32.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.91.0",
+      "tag": "office-ui-fabric-react_v6.91.0",
+      "date": "Tue, 23 Oct 2018 12:32:16 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "TooltipHost: convert to CSS-in-JS",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "191360a0c34ff17e68905b9ce2f5993cf8c56561"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.32.0 <7.0.0` to `>=6.32.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.90.0",
+      "tag": "office-ui-fabric-react_v6.90.0",
+      "date": "Mon, 22 Oct 2018 12:29:57 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add in missing exports in index.ts",
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "f22320d539d3173b2cd8084ec36767d4da7b47e2"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fixed the column total vertical sync issue while resizing the column header by dragging them to the right until it gets overflowed and also make the vertical overflow as auto to make sure that the scroll bar  appears  only when there is a vertical overflow.",
+            "author": "mohanmaheshwari1 <44065420+mohanmaheshwari1@users.noreply.github.com>",
+            "commit": "94dce5fc2489e673509946950b2448a63d5ff883"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.10.2 <7.0.0` to `>=6.10.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.31.0 <7.0.0` to `>=6.32.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.89.0",
+      "tag": "office-ui-fabric-react_v6.89.0",
+      "date": "Fri, 19 Oct 2018 12:29:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Revert getItemClassNames API change to fix memoization bug due to Object usage rather than primitive arguments list.\"",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "1204d4ea47fb7673016b1029bc1e0c2f2b2bba4e"
+          },
+          {
+            "comment": "Added 'break' statement in PeoplePicker component example. Without it, changing picker type to 'Process Selection' was rendering 'Controlled Picker' instead.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "24345b292206e349f926733ea0b045efdcac7ffb"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "HoverCard: Add BasicCard as an option when need to render a non-expanding HoverCard. Refactor mergeStyle API plus refactor file organization.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "e8e12b1b6d7918cb17fbc56992db85b891cb7bd3"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.88.0",
+      "tag": "office-ui-fabric-react_v6.88.0",
+      "date": "Thu, 18 Oct 2018 20:22:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove api-extractor.disabled.json",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "e6b2514a003fb41c964fba14b071cb0046fd69eb"
+          },
+          {
+            "comment": "Fix accessibility issue when user arrow down suggestion, screen reader is not announcing the selected result",
+            "author": "Francis Meng <meng.francis@gmail.com>",
+            "commit": "0b56a7b6b88c55984cd9e3a8b6d54ef079a0a53d"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "adding groups prop to pass parent group's children info",
+            "author": "ht <41147089+tharshada@users.noreply.github.com>",
+            "commit": "86645c953e162c7c3d8fb58a75e43dfbd7ace765"
+          },
+          {
+            "comment": "Add onPagesUpdated optional prop to List component",
+            "author": "davguerr <davguerr@exchange.microsoft.com>",
+            "commit": "4b2e44d41e1cba8d4ca5e7542d3cc66f961e0b43"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Add two visual tests to Persona children.",
+            "author": "Wilbert Qiu <zeqiu-mirage@users.noreply.github.com>",
+            "commit": "a02e3a312ebcf3850228e359c29961a09e1bdb1c"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.10.1 <7.0.0` to `>=6.10.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.30.0 <7.0.0` to `>=6.31.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.23.0 <7.0.0` to `>=6.23.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.87.0",
       "tag": "office-ui-fabric-react_v6.87.0",
       "date": "Wed, 17 Oct 2018 12:29:40 GMT",

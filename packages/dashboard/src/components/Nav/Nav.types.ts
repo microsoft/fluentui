@@ -1,5 +1,5 @@
 ﻿/* tslint:disable */
-import { IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { INavLink, INavLinkGroup, INavState } from 'office-ui-fabric-react/lib/Nav';
 /* tslint:enable */
@@ -60,6 +60,11 @@ export interface INavProps {
    * Used to override isHidden property of the Nav link when the "Show More" link is clicked
    */
   showMore?: boolean;
+
+  /**
+   * Theme provided by HOC.
+   */
+  theme?: ITheme;
 
   /**
    * (Optional) callback for the parent component when the nav component is toggled between expanded and collapsed state
@@ -131,6 +136,11 @@ export interface ICustomNavLinkGroup extends INavLinkGroup {
 }
 
 export interface INavStyleProps {
+  /**
+   * Accept theme prop.
+   */
+  theme: ITheme;
+
   /**
    * is element selected boolean
    */
@@ -227,6 +237,11 @@ export interface INavStyles {
    * Style set for the nav toggler which toggles expanded and slim nav
    */
   navToggler: IStyle;
+
+  /**
+   * Style set to apply border on keyboard focus
+   */
+  focusedStyle: IStyle;
 }
 
 export interface INavLinkProps extends React.AllHTMLAttributes<HTMLAnchorElement> {
@@ -279,4 +294,9 @@ export interface INavLinkProps extends React.AllHTMLAttributes<HTMLAnchorElement
    * CSS class for the bar marker part of the nav link
    */
   barClassName?: string;
+
+  /**
+   * Style to apply border on keyboard focus
+   */
+  focusedStyle?: string;
 }

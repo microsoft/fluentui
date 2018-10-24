@@ -2,6 +2,98 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "version": "6.9.7",
+      "tag": "@uifabric/fabric-website-resources_v6.9.7",
+      "date": "Tue, 23 Oct 2018 12:32:16 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix an issue with the demo site not being able to load (in npm start or aka.ms/fabricdemo).",
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "b23bf4ef703ae9fef95dd41a1f7b3d0906a04344"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.1.3 <1.0.0` to `>=0.1.4 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.32.0 <7.0.0` to `>=6.32.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.90.0 <7.0.0` to `>=6.91.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.9.6",
+      "tag": "@uifabric/fabric-website-resources_v6.9.6",
+      "date": "Mon, 22 Oct 2018 12:29:57 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Move theme definitions to theme-samples package.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "6505775ab433ec7e1fca27621be96dd6c026796d"
+          },
+          {
+            "comment": "Use fluent-theme package customizations.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "6505775ab433ec7e1fca27621be96dd6c026796d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.1.2 <1.0.0` to `>=0.1.3 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.10.2 <7.0.0` to `>=6.10.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.31.0 <7.0.0` to `>=6.32.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/theme-samples\" from `>=0.1.1 <1.0.0` to `>=0.1.2 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `>=6.11.0 <7.0.0` to `>=6.12.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.89.0 <7.0.0` to `>=6.90.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.9.5",
+      "tag": "@uifabric/fabric-website-resources_v6.9.5",
+      "date": "Thu, 18 Oct 2018 20:22:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove api-extractor.disabled.json",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "e6b2514a003fb41c964fba14b071cb0046fd69eb"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.10.1 <7.0.0` to `>=6.10.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.30.0 <7.0.0` to `>=6.31.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.23.0 <7.0.0` to `>=6.23.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.87.0 <7.0.0` to `>=6.88.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.9.4",
       "tag": "@uifabric/fabric-website-resources_v6.9.4",
       "date": "Wed, 17 Oct 2018 01:29:55 GMT",

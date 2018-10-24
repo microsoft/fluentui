@@ -11,45 +11,62 @@ export const NavLink: React.SFC<INavLinkProps> = (props: INavLinkProps) => {
     return null;
   }
 
+  const {
+    rightIconName,
+    leftIconName,
+    id,
+    href,
+    target,
+    onClick,
+    dataHint,
+    dataValue,
+    ariaLabel,
+    ariaExpanded,
+    role,
+    rootClassName,
+    barClassName,
+    content,
+    iconClassName,
+    textClassName,
+    focusedStyle
+  } = props;
+
   const computedTextWidth: IStyle = {
     // 100px to accomodate left and right icons (48px each)
     width: 'calc(100% - 96px)'
   };
 
-  if (!props.rightIconName && !props.leftIconName) {
+  if (!rightIconName && !leftIconName) {
     // no icons, take full with to text
     computedTextWidth.width = '100%';
-  } else if (!props.leftIconName || !props.rightIconName) {
+  } else if (!leftIconName || !rightIconName) {
     // 48px to the left or right icon
     computedTextWidth.width = 'calc(100% - 48px)';
   }
 
   const fixedIconWidth: IStyle = {
     width: '48px',
-    display: props.rightIconName === 'OpenInNewWindow' ? 'none' : 'inline-block'
+    display: rightIconName === 'OpenInNewWindow' ? 'none' : 'inline-block'
   };
 
   return (
     <a
-      id={props.id}
-      href={props.href}
-      target={props.target}
-      onClick={props.onClick}
-      data-hint={props.dataHint}
-      data-value={props.dataValue}
-      aria-label={props.ariaLabel}
-      aria-expanded={props.ariaExpanded}
-      role={props.role}
+      id={id}
+      href={href}
+      target={target}
+      onClick={onClick}
+      data-hint={dataHint}
+      data-value={dataValue}
+      aria-label={ariaLabel}
+      aria-expanded={ariaExpanded}
+      role={role}
+      className={focusedStyle}
     >
-      <div className={props.rootClassName} aria-hidden="true">
-        <hr className={props.barClassName} />
-        {props.leftIconName ? <Icon iconName={props.leftIconName} className={props.iconClassName} /> : null}
-        {props.content ? (
-          <div className={mergeStyles(props.textClassName, computedTextWidth)}>{props.content}</div>
-        ) : null}
-        {props.rightIconName ? (
-          <Icon iconName={props.rightIconName} className={mergeStyles(props.iconClassName, fixedIconWidth)} />
-        ) : null}
+      <div className={rootClassName} aria-hidden="true">
+        <hr className={barClassName} />
+        {leftIconName ? <Icon iconName={leftIconName} className={iconClassName} /> : null}
+        {content ? <div className={mergeStyles(textClassName, computedTextWidth)}>{content}</div> : null}
+        {rightIconName ? <Icon iconName={rightIconName} className={mergeStyles(iconClassName, fixedIconWidth)} /> : null}
       </div>
     </a>
   );

@@ -10,7 +10,7 @@ export interface ILineChartProps {
   /**
    * Data to render in the chart.
    */
-  data?: IChartProps;
+  data: IChartProps;
 
   /**
    * Width of the chart.

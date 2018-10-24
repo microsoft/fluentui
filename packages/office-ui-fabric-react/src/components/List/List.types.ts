@@ -68,6 +68,16 @@ export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> 
    */
   onRenderCell?: (item?: any, index?: number, isScrolling?: boolean) => React.ReactNode;
 
+  /**
+   * Optional callback invoked when List rendering completed.
+   * This can be on initial mount or on re-render due to scrolling.
+   * This method will be called as a result of changes in List pages (added or removed),
+   * and after ALL the changes complete.
+   * To track individual page Add / Remove use onPageAdded / onPageRemoved instead.
+   * @param {IPage[]} pages - The current array of pages in the List.
+   */
+  onPagesUpdated?: (pages: IPage[]) => void;
+
   /** Optional callback for monitoring when a page is added. */
   onPageAdded?: (page: IPage) => void;
 
