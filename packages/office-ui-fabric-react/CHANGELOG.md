@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 22 Oct 2018 11:23:55 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Oct 2018 11:28:06 GMT and should not be manually modified.
+
+## 5.131.0
+Wed, 24 Oct 2018 11:28:06 GMT
+
+### Minor changes
+
+- Pickers: A variety of accessibility and bug fixes, ported from 6.0
 
 ## 5.130.0
 Mon, 22 Oct 2018 11:23:55 GMT
