@@ -56,7 +56,7 @@ export class LineChartBase extends React.Component<
       refSelected: '',
       hoveredLineColor: ''
     };
-    this._points = this.props.data!.lineChartData || [];
+    this._points = this.props.data.lineChartData || [];
     this._uniqLineText =
       '_line_' +
       Math.random()
@@ -72,11 +72,24 @@ export class LineChartBase extends React.Component<
 
   public render(): JSX.Element {
     const { theme, className, styles, tickValues, tickFormat } = this.props;
-    const isNumeric = this._points[0].data[0] ? typeof this._points[0].data[0]!.x === 'number' : false;
-    isNumeric ? this._createNumericXAxis() : this._createDateXAxis(tickValues, tickFormat);
-    this._createYAxis();
-    const strokeWidth = this.props.strokeWidth ? this.props.strokeWidth : 4;
-    const lines = this._createLines(strokeWidth);
+    let dataPresent = false;
+    let dataType = false;
+    if (this._points && this._points.length > 0) {
+      this._points.map((chartData: ILineChartPoints) => {
+        if (chartData.data.length > 0) {
+          dataPresent = true;
+          dataType = chartData.data[0].x instanceof Date;
+          return;
+        }
+      });
+    }
+    let lines: JSX.Element[] = [];
+    if (dataPresent) {
+      dataType ? this._createDateXAxis(tickValues, tickFormat) : this._createNumericXAxis();
+      const strokeWidth = this.props.strokeWidth ? this.props.strokeWidth : 4;
+      this._createYAxis();
+      lines = this._createLines(strokeWidth);
+    }
     const legendBars = this._createLegends(this._points!);
     this._classNames = getClassNames(styles!, {
       theme: theme!,
