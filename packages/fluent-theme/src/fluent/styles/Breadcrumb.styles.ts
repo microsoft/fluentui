@@ -1,4 +1,5 @@
 import { IBreadcrumbStyleProps } from 'office-ui-fabric-react/lib/Breadcrumb';
+import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
 import { FontSizes } from '../FluentType';
 import { MediumScreenSelector, MinimumScreenSelector } from './styleConstants';
 
@@ -32,11 +33,11 @@ export const BreadcrumbStyles = (props: IBreadcrumbStyleProps) => {
       lineHeight: 36,
       fontSize: FontSizes.size18,
       outline: 'none',
-      fontWeight: 400,
+      fontWeight: FontWeights.regular,
       color: palette.neutralSecondary,
       selectors: {
         '&:last-child': {
-          fontWeight: 600,
+          fontWeight: FontWeights.semibold,
           color: palette.neutralPrimary
         },
         '.ms-Fabric--isFocusVisible &:focus': {
@@ -44,7 +45,7 @@ export const BreadcrumbStyles = (props: IBreadcrumbStyleProps) => {
           outline: 'none'
         },
         // Leaving this breakpoint selectors here as there might be some design discussions regarding scaling breadcrumb.
-        [MediumScreenSelector]: { fontSize: FontSizes.size18, fontWeight: 400, lineHeight: 36 },
+        [MediumScreenSelector]: { fontSize: FontSizes.size18, fontWeight: FontWeights.regular, lineHeight: 36 },
         [MinimumScreenSelector]: { fontSize: FontSizes.size18, lineHeight: 36 },
         ...stateSelectors
       }
