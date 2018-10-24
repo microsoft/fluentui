@@ -13,7 +13,7 @@ import {
 } from '../../utilities/dateMath/DateMath';
 import { Icon } from '../../Icon';
 import * as stylesImport from './Calendar.scss';
-import { CalendarYear } from './CalendarYear';
+import { CalendarYear, ICalendarYearProps } from './CalendarYear';
 const styles: any = stylesImport;
 
 export interface ICalendarMonth {
@@ -35,6 +35,7 @@ export interface ICalendarMonthProps extends React.Props<CalendarMonth> {
   minDate?: Date;
   maxDate?: Date;
   yearPickerHidden?: boolean;
+  yearPickerProps?: ICalendarYearProps;
 }
 
 export interface ICalendarMonthState {
@@ -87,17 +88,20 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
       dateTimeFormatter,
       minDate,
       maxDate,
-      yearPickerHidden
+      yearPickerHidden,
+      yearPickerProps
     } = this.props;
 
     if (this.state.isYearPickerVisible) {
       return (
         <CalendarYear
+          {...yearPickerProps}
           minYear={minDate ? minDate.getFullYear() : undefined}
           maxYear={maxDate ? maxDate.getFullYear() : undefined}
           onSelectYear={this._onSelectYear}
           navigationIcons={navigationIcons}
           selectedYear={selectedDate ? selectedDate.getFullYear() : navigatedDate ? navigatedDate.getFullYear() : undefined}
+          onRenderYear={this._onRenderYear}
           ref={this._onCalendarYearRef}
         />
       );
@@ -241,6 +245,13 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
       onNavigateDate(newNavigationDate, false);
     }
     this.setState({ isYearPickerVisible: false });
+  };
+
+  private _onRenderYear = (year: number) => {
+    // create a date based on the current nav date
+    const yearFormattingDate = new Date(this.props.navigatedDate.getTime());
+    yearFormattingDate.setFullYear(year);
+    return this.props.dateTimeFormatter.formatYear(yearFormattingDate);
   };
 
   private _onSelectNextYear = (): void => {

@@ -342,16 +342,19 @@ describe('Calendar', () => {
         <Calendar strings={dayPickerStrings} isMonthPickerVisible={true} value={defaultDate} />
       ) as Calendar;
     });
+
     it('month header should have button role', () => {
       const monthHeader = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-currentYear');
       expect(monthHeader.getAttribute('role')).toBe('button');
     });
+
     it('year picker should show when clicking month header', () => {
       const monthHeader = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-currentYear');
       ReactTestUtils.Simulate.click(monthHeader);
       const yearHeader = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-currentDecade');
       expect(yearHeader).toBeTruthy();
     });
+
     it('year picker cells render as expected', () => {
       // working with the year grid
       const grid = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-optionGrid');

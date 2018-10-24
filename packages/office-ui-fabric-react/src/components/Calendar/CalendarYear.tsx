@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { KeyCodes, css, getRTL } from '../../Utilities';
-import { ICalendarIconStrings } from './Calendar.types';
+import { ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.types';
 import { FocusZone } from '../../FocusZone';
 import * as stylesImport from './Calendar.scss';
 import { Icon } from '../../Icon';
@@ -34,13 +34,14 @@ export interface ICalendarYearProps {
   maxYear?: number;
   onSelectYear?: (year: number) => void;
   onRenderTitle?: (props: ICalendarYearHeaderProps) => React.ReactNode;
+  onRenderYear?: (year: number) => React.ReactNode;
   className?: string;
   strings?: ICalendarYearStrings;
 }
 
 const DefaultCalendarYearStrings: ICalendarYearStrings = {
-  prevRangeAriaLabel: 'Previous Year Range',
-  nextRangeAriaLabel: 'Next Year Range'
+  prevRangeAriaLabel: undefined,
+  nextRangeAriaLabel: undefined
 };
 
 const DefaultNavigationIcons: ICalendarIconStrings = {
@@ -59,6 +60,7 @@ interface ICalendarYearGridCellProps {
   selected?: boolean;
   disabled?: boolean;
   onSelectYear?: (year: number) => void;
+  onRenderYear?: (year: number) => React.ReactNode;
 }
 
 class CalendarYearGridCell extends React.Component<ICalendarYearGridCellProps, {}> implements ICalendarYearGridCell {
@@ -86,10 +88,17 @@ class CalendarYearGridCell extends React.Component<ICalendarYearGridCellProps, {
         aria-selected={selected}
         ref={this._onButtonRef}
       >
-        {year}
+        {this._onRenderYear()}
       </button>
     );
   }
+  private _onRenderYear = () => {
+    const { year, onRenderYear } = this.props;
+    if (onRenderYear) {
+      return onRenderYear(year);
+    }
+    return year;
+  };
   private _onButtonRef = (ref: HTMLButtonElement) => {
     this._buttonRef = ref;
   };
@@ -174,10 +183,11 @@ class CalendarYearNavPrev extends React.Component<ICalendarYearHeaderProps, any>
     const iconStrings = this.props.navigationIcons || DefaultNavigationIcons;
     const strings = this.props.strings || DefaultCalendarYearStrings;
     const prevRangeAriaLabel = strings.prevRangeAriaLabel;
-    const prevAriaLabel =
-      typeof prevRangeAriaLabel === 'string'
+    const prevAriaLabel = prevRangeAriaLabel
+      ? typeof prevRangeAriaLabel === 'string'
         ? (prevRangeAriaLabel as string)
-        : (prevRangeAriaLabel as ICalendarYearRangeToString)(this.props);
+        : (prevRangeAriaLabel as ICalendarYearRangeToString)(this.props)
+      : undefined;
     const disabled = this.isDisabled;
     const { onSelectPrev } = this.props;
     return (
@@ -217,10 +227,11 @@ class CalendarYearNavNext extends React.Component<ICalendarYearHeaderProps, any>
     const iconStrings = this.props.navigationIcons || DefaultNavigationIcons;
     const strings = this.props.strings || DefaultCalendarYearStrings;
     const nextRangeAriaLabel = strings.nextRangeAriaLabel;
-    const nextAriaLabel =
-      typeof nextRangeAriaLabel === 'string'
+    const nextAriaLabel = nextRangeAriaLabel
+      ? typeof nextRangeAriaLabel === 'string'
         ? (nextRangeAriaLabel as string)
-        : (nextRangeAriaLabel as ICalendarYearRangeToString)(this.props);
+        : (nextRangeAriaLabel as ICalendarYearRangeToString)(this.props)
+      : undefined;
     const { onSelectNext } = this.props;
     const disabled = this.isDisabled;
     return (
@@ -272,10 +283,16 @@ class CalendarYearTitle extends React.Component<ICalendarYearHeaderProps, any> {
   public render() {
     return (
       <div className={css('ms-DatePicker-currentDecade js-showYearPicker', styles.currentDecade)}>
-        {`${this.props.fromYear} - ${this.props.toYear}`}
+        {this._onRenderYear(this.props.fromYear)} - {this._onRenderYear(this.props.toYear)}
       </div>
     );
   }
+  private _onRenderYear = (year: number) => {
+    if (this.props.onRenderYear) {
+      return this.props.onRenderYear(year);
+    }
+    return year;
+  };
 }
 
 class CalendarYearHeader extends React.Component<ICalendarYearHeaderProps, any> {
