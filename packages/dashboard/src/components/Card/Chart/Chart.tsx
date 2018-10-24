@@ -96,7 +96,7 @@ export class Chart extends React.Component<IChartInternalProps, { _width: number
       case ChartType.DonutChart: {
         return (
           <div className={mergeStyles({ width: 300, height: 250 })}>
-            <DonutChart data={this.props.chartData![0]} innerRadius={70} />
+            <DonutChart data={this.props.chartData![0]} innerRadius={88} />
           </div>
         );
       }
