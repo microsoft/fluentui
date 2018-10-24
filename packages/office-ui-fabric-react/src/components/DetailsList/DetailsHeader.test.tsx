@@ -3,7 +3,7 @@ import { DetailsHeader } from './DetailsHeader';
 import { IDetailsHeader, IDropHintDetails } from './DetailsHeader.types';
 import { DetailsListLayoutMode, IColumn, ColumnActionsMode } from './DetailsList.types';
 import { Selection, SelectionMode } from '../../utilities/selection/index';
-import { EventGroup, createRef } from '../../Utilities';
+import { EventGroup } from '../../Utilities';
 import { mount } from 'enzyme';
 import * as renderer from 'react-test-renderer';
 
@@ -252,7 +252,7 @@ describe('DetailsHeader', () => {
 
     const onColumnResized = (column: IColumn, size: number, index: number): { size: number; index: number } =>
       (lastResize = { size, index });
-    const headerRef = createRef<IDetailsHeader>();
+    const headerRef = React.createRef<IDetailsHeader>();
 
     const wrapper = mount(
       <DetailsHeader
@@ -371,7 +371,7 @@ describe('DetailsHeader', () => {
   });
 
   it('should mark the columns as draggable', () => {
-    const headerRef = createRef<IDetailsHeader>();
+    const headerRef = React.createRef<IDetailsHeader>();
 
     const component = mount(
       <DetailsHeader
@@ -404,7 +404,7 @@ describe('DetailsHeader', () => {
   });
 
   it('should not let frozen columns to be dragged', () => {
-    const headerRef = createRef<IDetailsHeader>();
+    const headerRef = React.createRef<IDetailsHeader>();
 
     const component = mount(
       <DetailsHeader
@@ -440,7 +440,7 @@ describe('DetailsHeader', () => {
   });
 
   it('should perform dragstart and dragend correctly', () => {
-    const headerRef = createRef<IDetailsHeader>();
+    const headerRef = React.createRef<IDetailsHeader>();
 
     const component = mount(
       <DetailsHeader
@@ -477,7 +477,7 @@ describe('DetailsHeader', () => {
   });
 
   it('should perform dragOver correctly', () => {
-    const headerRef = createRef<IDetailsHeader>();
+    const headerRef = React.createRef<IDetailsHeader>();
 
     const component = mount(
       <DetailsHeader
@@ -581,7 +581,7 @@ describe('DetailsHeader', () => {
       _targetIndex = targetIndex;
     };
 
-    const headerRef = createRef<IDetailsHeader>();
+    const headerRef = React.createRef<IDetailsHeader>();
 
     const _columnReorderPropsForDrop = {
       frozenColumnCountFromStart: 1,

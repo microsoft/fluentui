@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Icon } from '../../Icon';
-import { BaseComponent, IRenderFunction, createRef, IDisposable, classNamesFunction, IClassNames } from '../../Utilities';
+import { BaseComponent, IRenderFunction, IDisposable, classNamesFunction, IClassNames } from '../../Utilities';
 import { IColumn, ColumnActionsMode } from './DetailsList.types';
 
 import { ITooltipHostProps } from '../../Tooltip';
@@ -21,7 +21,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
   constructor(props: IDetailsColumnProps) {
     super(props);
 
-    this._root = createRef();
+    this._root = React.createRef();
     this._onDragStart = this._onDragStart.bind(this);
     this._onDragEnd = this._onDragEnd.bind(this);
     this._onRootMouseDown = this._onRootMouseDown.bind(this);

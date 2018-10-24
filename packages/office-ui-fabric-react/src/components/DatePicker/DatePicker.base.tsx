@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IDatePicker, IDatePickerProps, IDatePickerStrings, IDatePickerStyleProps, IDatePickerStyles } from './DatePicker.types';
-import { BaseComponent, KeyCodes, createRef, classNamesFunction, getId, getNativeProps, divProperties } from '../../Utilities';
+import { BaseComponent, KeyCodes, classNamesFunction, getId, getNativeProps, divProperties } from '../../Utilities';
 import { Calendar, ICalendar, DayOfWeek } from '../../Calendar';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { Callout } from '../../Callout';
@@ -72,9 +72,9 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     allFocusable: false
   };
 
-  private _calendar = createRef<ICalendar>();
-  private _datePickerDiv = createRef<HTMLDivElement>();
-  private _textField = createRef<ITextField>();
+  private _calendar = React.createRef<ICalendar>();
+  private _datePickerDiv = React.createRef<HTMLDivElement>();
+  private _textField = React.createRef<ITextField>();
   private _preventFocusOpeningPicker: boolean;
 
   constructor(props: IDatePickerProps) {
