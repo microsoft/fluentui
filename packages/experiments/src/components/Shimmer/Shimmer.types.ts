@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject, IRefObject } from '../../Utilities';
 
-export interface IShimmer { }
+export interface IShimmer {}
 
 /**
  * Shimmer component props.
@@ -64,24 +64,24 @@ export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
 
   /**
    * Elements to render in one line of the Shimmer.
-   * Deprecated, use `shimmerElements` for better semantic meaning.
-   * @deprecated Use `shimmerElements` instead.
+   * Deprecated, use 'shimmerElements' for better semantic meaning.
+   * @deprecated Use 'shimmerElements' instead.
    */
   lineElements?: IShimmerElement[];
 
   /**
    * Sets the width of the shimmer wave wrapper in percentages.
-   * Deprecated, use a more specific width like `widthInPixel` or `widthInPercentage`.
+   * Deprecated, use a more specific width like 'widthInPixel' or 'widthInPercentage'.
    * @default 100%
-   * @deprecated Use a more specific width like `widthInPixel` or `widthInPercentage`.
+   * @deprecated Use a more specific width like 'widthInPixel' or 'widthInPercentage'.
    */
   width?: number;
 
   /**
    * Use when providing custom skeleton as children wrapped by shimmer.
-   * Deprecated, use `customElementsGroup` instead.
+   * Deprecated in favor of 'customElementsGroup'
    * @default false
-   * @deprecated Use `customElementsGroup` instead.
+   * @deprecated Use 'customElementsGroup' instead.
    */
   isBaseStyle?: boolean;
 }
@@ -202,40 +202,34 @@ export enum ShimmerElementType {
   gap = 3,
 
   /**
-   * Deprecated, use `line` instead.
-   * @deprecated Use `line` instead
+   * @deprecated Use 'line' instead
    */
   LINE = 1,
 
   /**
-   * Deprecated, use `circle` instead.
-   * @deprecated Use `circle` instead
+   * @deprecated Use 'circle' instead
    */
   CIRCLE = 2,
 
   /**
-   * Deprecated, use `gap` instead.
-   * @deprecated Use `gap` instead
+   * @deprecated Use 'gap' instead
    */
   GAP = 3
 }
 
 export enum ShimmerElementVerticalAlign {
   /**
-   * Deprecated, use `center` instead.
-   * @deprecated Use `center` instead
+   * @deprecated Use 'center' instead
    */
   CENTER = 1,
 
   /**
-   * Deprecated, use `bottom` instead.
-   * @deprecated Use `bottom` instead
+   * @deprecated Use 'bottom' instead
    */
   BOTTOM = 2,
 
   /**
-   * Deprecated, use `top` instead.
-   * @deprecated Use `top` instead
+   * @deprecated Use 'top' instead
    */
   TOP = 3,
 
