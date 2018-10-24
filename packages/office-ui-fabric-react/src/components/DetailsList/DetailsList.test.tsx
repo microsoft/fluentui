@@ -197,13 +197,22 @@ describe('DetailsList', () => {
     jest.runOnlyPendingTimers();
   });
 
-  it('invokes optional onRenderMissingItem once per missing item rendered', () => {
+  it('invokes optional onRenderMissingItem prop once per missing item rendered', () => {
     const onRenderMissingItem = jest.fn();
     const items = [...mockData(5), null, null];
 
     mount(<DetailsList items={items} skipViewportMeasures={true} onRenderMissingItem={onRenderMissingItem} />);
 
     expect(onRenderMissingItem).toHaveBeenCalledTimes(2);
+  });
+
+  it('does not invoke optional onRenderMissingItem prop if no missing items are rendered', () => {
+    const onRenderMissingItem = jest.fn();
+    const items = mockData(5);
+
+    mount(<DetailsList items={items} skipViewportMeasures={true} onRenderMissingItem={onRenderMissingItem} />);
+
+    expect(onRenderMissingItem).toHaveBeenCalledTimes(0);
   });
 
   it('focuses into row element', () => {
