@@ -2,6 +2,80 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "6.32.2",
+      "tag": "@uifabric/styling_v6.32.2",
+      "date": "Wed, 24 Oct 2018 12:28:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "getIconClassName: Strongly type the use of IStyle constant.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "e8ac70df6f544134a4e8cbccf87a66d37327d9f6"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.10.3 <7.0.0` to `>=6.10.4 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.32.1",
+      "tag": "@uifabric/styling_v6.32.1",
+      "date": "Tue, 23 Oct 2018 12:32:16 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix an issue with the demo site not being able to load (in npm start or aka.ms/fabricdemo).",
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "b23bf4ef703ae9fef95dd41a1f7b3d0906a04344"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.32.0",
+      "tag": "@uifabric/styling_v6.32.0",
+      "date": "Mon, 22 Oct 2018 12:29:57 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Fix unnecessary `IRGB` export. This interface is only used by internals. Use the `IRGB` interface declaration from office-ui-fabric-react package instead.",
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "f22320d539d3173b2cd8084ec36767d4da7b47e2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.10.2 <7.0.0` to `>=6.10.3 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.31.0",
+      "tag": "@uifabric/styling_v6.31.0",
+      "date": "Thu, 18 Oct 2018 20:22:36 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Enable api-extractor task for styling",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "e6b2514a003fb41c964fba14b071cb0046fd69eb"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.23.0 <7.0.0` to `>=6.23.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.10.1 <7.0.0` to `>=6.10.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.30.0",
       "tag": "@uifabric/styling_v6.30.0",
       "date": "Tue, 09 Oct 2018 12:26:48 GMT",

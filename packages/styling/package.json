@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/styling",
-  "version": "6.30.0",
+  "version": "6.32.2",
   "description": "Defines the core Office UI Fabric styles through a JavaScript interface.",
   "repository": {
     "type": "git",
@@ -12,6 +12,7 @@
   "sideEffects": true,
   "typings": "lib/index.d.ts",
   "scripts": {
+    "api-extractor": "node ../../scripts/api-extractor.js",
     "build": "node ../../scripts/build.js",
     "clean": "node ../../scripts/clean.js",
     "code-style": "node ../../scripts/code-style.js",
@@ -33,8 +34,8 @@
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
     "@uifabric/set-version": ">=1.1.3 <2.0.0",
-    "@uifabric/utilities": ">=6.23.0 <7.0.0",
-    "@uifabric/merge-styles": ">=6.10.1 <7.0.0",
+    "@uifabric/utilities": ">=6.23.1 <7.0.0",
+    "@uifabric/merge-styles": ">=6.10.4 <7.0.0",
     "tslib": "^1.7.1"
   }
 }

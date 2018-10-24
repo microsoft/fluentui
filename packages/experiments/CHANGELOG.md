@@ -1,6 +1,66 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 15 Oct 2018 12:29:12 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Oct 2018 12:28:58 GMT and should not be manually modified.
+
+## 6.39.4
+Wed, 24 Oct 2018 12:28:58 GMT
+
+### Patches
+
+- fix breaking changes for odsp
+
+## 6.39.3
+Tue, 23 Oct 2018 12:32:16 GMT
+
+### Patches
+
+- Fix an issue with the demo site not being able to load (in npm start or aka.ms/fabricdemo).
+
+## 6.39.2
+Mon, 22 Oct 2018 12:29:57 GMT
+
+### Patches
+
+- Move theme definitions to theme-samples package. Remove Fluent styles page.
+- Use fluent-theme package customizations.
+
+## 6.39.1
+Thu, 18 Oct 2018 20:22:36 GMT
+
+### Patches
+
+- Remove api-extractor.disabled.json
+- Fluent: Updating fluent styles for ChoiceGroup plus addressing feedback on Breadcrumb, Checkbox and Dropdown.
+
+## 6.39.0
+Wed, 17 Oct 2018 12:29:40 GMT
+
+### Minor changes
+
+- Breadcrumb: fluent updates to breadcrumb styles.
+
+### Patches
+
+- revert PR 6258 for signal icon issues
+
+## 6.38.1
+Wed, 17 Oct 2018 01:29:55 GMT
+
+### Patches
+
+- Updated Readme
+- Fix FluentStylesPage by wrapping a Customizer around each example
+
+## 6.38.0
+Tue, 16 Oct 2018 12:28:48 GMT
+
+### Minor changes
+
+- Fluent: updates the styles of Dropdown and CheckBox to follow fluent specs.
+
+### Patches
+
+- Add customizations for component examples. Remove redundant customizations from Button example.
 
 ## 6.37.1
 Mon, 15 Oct 2018 12:29:12 GMT

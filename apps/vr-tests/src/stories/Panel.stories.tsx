@@ -33,7 +33,7 @@ storiesOf('Panel', module)
       steps={new Screener.Steps()
         .snapshot('default')
         .click('.ms-SearchBox-field')
-        .snapshot('default')
+        .snapshot('click')
         .end()}
     >
       {story()}

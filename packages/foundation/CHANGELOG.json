@@ -2,6 +2,20 @@
   "name": "@uifabric/foundation",
   "entries": [
     {
+      "version": "0.5.6",
+      "tag": "@uifabric/foundation_v0.5.6",
+      "date": "Thu, 18 Oct 2018 20:22:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove api-extractor.disabled.json",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "e6b2514a003fb41c964fba14b071cb0046fd69eb"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.5.5",
       "tag": "@uifabric/foundation_v0.5.5",
       "date": "Mon, 08 Oct 2018 12:24:15 GMT",

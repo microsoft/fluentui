@@ -1,6 +1,34 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Mon, 15 Oct 2018 12:29:12 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Oct 2018 12:32:16 GMT and should not be manually modified.
+
+## 0.30.3
+Tue, 23 Oct 2018 12:32:16 GMT
+
+### Patches
+
+- Fix an issue with the demo site not being able to load (in npm start or aka.ms/fabricdemo).
+
+## 0.30.2
+Mon, 22 Oct 2018 12:29:57 GMT
+
+### Patches
+
+- "Dashboard/Nav component - added focus style to support keyboard inputs"
+
+## 0.30.1
+Thu, 18 Oct 2018 20:22:36 GMT
+
+### Patches
+
+- Remove api-extractor.disabled.json
+
+## 0.30.0
+Tue, 16 Oct 2018 12:28:48 GMT
+
+### Minor changes
+
+- Adding support for different date formats to line chart in dashboard card. Calculating datapoints to render a line chart with evenly spaced ticks. Updated examples for cards
 
 ## 0.29.3
 Mon, 15 Oct 2018 12:29:12 GMT

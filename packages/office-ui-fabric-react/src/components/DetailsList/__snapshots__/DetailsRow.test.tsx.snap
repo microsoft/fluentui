@@ -41,6 +41,9 @@ exports[`DetailsRow renders details list row correctly 1`] = `
       role="grid"
     >
       <div
+        className=
+            ms-DetailsList-headerWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -702,6 +705,9 @@ exports[`DetailsRow renders details list row correctly 1`] = `
         </div>
       </div>
       <div
+        className=
+            ms-DetailsList-contentWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -847,6 +853,9 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
       role="grid"
     >
       <div
+        className=
+            ms-DetailsList-headerWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -1508,6 +1517,9 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
         </div>
       </div>
       <div
+        className=
+            ms-DetailsList-contentWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -2182,6 +2194,9 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
       role="grid"
     >
       <div
+        className=
+            ms-DetailsList-headerWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -2843,6 +2858,9 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
         </div>
       </div>
       <div
+        className=
+            ms-DetailsList-contentWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -2988,6 +3006,9 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
       role="grid"
     >
       <div
+        className=
+            ms-DetailsList-headerWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -3649,6 +3670,9 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
         </div>
       </div>
       <div
+        className=
+            ms-DetailsList-contentWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >

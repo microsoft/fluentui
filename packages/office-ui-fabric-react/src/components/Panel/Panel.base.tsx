@@ -166,11 +166,11 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
               ignoreExternalFocusing={ignoreExternalFocusing}
               forceFocusInsideTrap={isHiddenOnDismiss && !isOpen ? false : forceFocusInsideTrap}
               firstFocusableSelector={firstFocusableSelector}
+              isClickableOutsideFocusTrap={true}
               {...focusTrapZoneProps}
               className={_classNames.main}
               style={customWidthStyles}
               elementToFocusOnDismiss={elementToFocusOnDismiss}
-              isClickableOutsideFocusTrap={focusTrapZoneProps && !focusTrapZoneProps.isClickableOutsideFocusTrap ? false : true}
             >
               <div className={_classNames.commands} data-is-visible={true}>
                 {onRenderNavigation(this.props, this._onRenderNavigation)}

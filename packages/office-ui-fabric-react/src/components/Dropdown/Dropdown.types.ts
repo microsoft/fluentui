@@ -5,6 +5,7 @@ import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/
 import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { IKeytipProps } from '../../Keytip';
 import { ILabelStyleProps } from '../../Label';
+import { RectangleEdge } from '../../utilities/positioning';
 
 export { SelectableOptionMenuItemType as DropdownMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 
@@ -86,6 +87,12 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
   multiSelectDelimiter?: string;
 
   /**
+   * Optional preference to have onChanged still be called when an already selected item is
+   * clicked in single select mode.  Default to false
+   */
+  notifyOnReselect?: boolean;
+
+  /**
    * Deprecated at v0.52.0, use 'disabled' instead.
    * @deprecated
    */
@@ -145,6 +152,11 @@ export type IDropdownStyleProps = Pick<IDropdownProps, 'theme' | 'className' | '
    * This is primarily provided for backwards compatibility.
    */
   calloutClassName?: string;
+
+  /**
+   * Prop to notify on what edge the dropdown callout was positioned respective to the title.
+   */
+  calloutRenderEdge?: RectangleEdge;
 };
 
 /**

@@ -612,6 +612,8 @@ export type IDetailsListStyleProps = Required<Pick<IDetailsListProps, 'theme'>> 
 export interface IDetailsListStyles {
   root: IStyle;
   focusZone: IStyle;
+  headerWrapper: IStyle;
+  contentWrapper: IStyle;
 }
 
 export interface IDetailsGroupRenderProps extends IGroupRenderProps {
