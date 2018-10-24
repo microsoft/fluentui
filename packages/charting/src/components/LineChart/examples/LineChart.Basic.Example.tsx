@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { LineChart, ILineChartProps } from '@uifabric/charting/lib/LineChart';
-import { IChartProps, ILineChartPoints } from '@uifabric/charting';
+import { IChartProps, ILineChartPoints, ILineChartProps, LineChart } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
@@ -9,7 +8,7 @@ interface IRootStyles {
   width: string;
 }
 
-export class LineChartBasicExample extends React.Component<ILineChartProps, {}> {
+export class LineChartBasicExample extends React.Component<{}, {}> {
   constructor(props: ILineChartProps) {
     super(props);
   }

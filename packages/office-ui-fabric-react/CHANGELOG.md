@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 23 Oct 2018 12:32:16 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Oct 2018 12:28:59 GMT and should not be manually modified.
+
+## 6.92.0
+Wed, 24 Oct 2018 12:28:58 GMT
+
+### Minor changes
+
+- Add an optional parameter to allow Dropdown to call onChanged when an item is clicked, even if that item was already selected
+- Tooltip: change display property of TooltipHost to inline-block to properly behave when wrapping inline or inline-block children.
+
+### Patches
+
+- ResizeGroup: Moved relative style to inner wrapper div
 
 ## 6.91.0
 Tue, 23 Oct 2018 12:32:16 GMT

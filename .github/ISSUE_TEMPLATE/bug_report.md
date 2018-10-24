@@ -14,6 +14,7 @@ about: Found a bug in Fabric? Please let us know.
  
  <!-- 
   ** If using the website, note that the website is often behind. You can find the current version the website uses at the home page (i.e. at the landing page of uifabric.io).
+  ** You can also use https://aka.ms/fabricdemo to get version numbers and permanent repo links.
  -->
 - __Package version(s)__: (fill this out) 
 - __Browser and OS versions__: (fill this out if relevant)
