@@ -197,6 +197,15 @@ describe('DetailsList', () => {
     jest.runOnlyPendingTimers();
   });
 
+  it('invokes optional onRenderMissingItem once per missing item rendered', () => {
+    const onRenderMissingItem = jest.fn();
+    const items = [...mockData(5), null, null];
+
+    mount(<DetailsList items={items} skipViewportMeasures={true} onRenderMissingItem={onRenderMissingItem} />);
+
+    expect(onRenderMissingItem).toHaveBeenCalledTimes(2);
+  });
+
   it('focuses into row element', () => {
     const onRenderColumn = (item: any, index: number, column: IColumn) => {
       let value = item && column && column.fieldName ? item[column.fieldName] : '';
