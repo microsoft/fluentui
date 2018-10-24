@@ -7,7 +7,7 @@ import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IDialogContent {}
 
-export interface IDialogContentProps extends React.Props<DialogContentBase> {
+export interface IDialogContentProps extends React.ClassAttributes<DialogContentBase> {
   /**
    * Optional callback to access the IDialogContent interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

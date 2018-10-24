@@ -51,9 +51,9 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     options: [] as any[]
   };
 
-  private _host = createRef<HTMLDivElement>();
+  private _host = React.createRef<HTMLDivElement>();
   private _focusZone = createRef<IFocusZone>();
-  private _dropDown = createRef<HTMLDivElement>();
+  private _dropDown = React.createRef<HTMLDivElement>();
   private _id: string;
   private _isScrollIdle: boolean;
   private readonly _scrollIdleDelay: number = 250 /* ms */;

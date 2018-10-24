@@ -31,7 +31,7 @@ export interface IBaseFloatingPicker {
 // and searched for by the people picker. For example, if the picker is
 // displaying persona's than type T could either be of Persona or Ipersona props
 // tslint:disable-next-line:no-any
-export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
+export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> {
   componentRef?: (component?: IBaseFloatingPicker | null) => void;
 
   /**

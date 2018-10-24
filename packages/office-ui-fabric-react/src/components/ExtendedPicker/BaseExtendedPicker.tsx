@@ -20,10 +20,10 @@ export interface IBaseExtendedPickerState<T> {
 export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends BaseComponent<P, IBaseExtendedPickerState<T>>
   implements IBaseExtendedPicker<T> {
   public floatingPicker = createRef<BaseFloatingPicker<T, IBaseFloatingPickerProps<T>>>();
-  public selectedItemsList = createRef<BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>>>();
+  public selectedItemsList = React.createRef<BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>>>();
 
-  protected root = createRef<HTMLDivElement>();
-  protected input = createRef<Autofill>();
+  protected root = React.createRef<HTMLDivElement>();
+  protected input = React.createRef<Autofill>();
   protected selection: Selection;
   protected floatingPickerProps: IBaseFloatingPickerProps<T>;
   protected selectedItemsListProps: IBaseSelectedItemsListProps<T>;

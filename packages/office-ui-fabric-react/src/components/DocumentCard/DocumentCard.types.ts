@@ -158,7 +158,7 @@ export interface IDocumentCardPreviewImage {
   previewIconContainerClass?: string;
 }
 
-export interface IDocumentCardTitleProps extends React.Props<DocumentCardTitle> {
+export interface IDocumentCardTitleProps extends React.ClassAttributes<DocumentCardTitle> {
   /**
    * Gets the component ref.
    */
@@ -183,7 +183,7 @@ export interface IDocumentCardTitleProps extends React.Props<DocumentCardTitle> 
   showAsSecondaryTitle?: boolean;
 }
 
-export interface IDocumentCardLocationProps extends React.Props<DocumentCardLocation> {
+export interface IDocumentCardLocationProps extends React.ClassAttributes<DocumentCardLocation> {
   /**
    * Gets the component ref.
    */
@@ -210,7 +210,7 @@ export interface IDocumentCardLocationProps extends React.Props<DocumentCardLoca
   ariaLabel?: string;
 }
 
-export interface IDocumentCardActivityProps extends React.Props<DocumentCardActivity> {
+export interface IDocumentCardActivityProps extends React.ClassAttributes<DocumentCardActivity> {
   /**
    * Gets the component ref.
    */
@@ -257,7 +257,7 @@ export interface IDocumentCardActivityPerson {
   initialsColor?: PersonaInitialsColor;
 }
 
-export interface IDocumentCardActionsProps extends React.Props<DocumentCardActions> {
+export interface IDocumentCardActionsProps extends React.ClassAttributes<DocumentCardActions> {
   /**
    * Gets the component ref.
    */
@@ -274,7 +274,7 @@ export interface IDocumentCardActionsProps extends React.Props<DocumentCardActio
   views?: Number;
 }
 
-export interface IDocumentCardLogoProps extends React.Props<DocumentCardLogo> {
+export interface IDocumentCardLogoProps extends React.ClassAttributes<DocumentCardLogo> {
   /**
    * Gets the component ref.
    */
@@ -290,7 +290,7 @@ export interface IDocumentCardLogoProps extends React.Props<DocumentCardLogo> {
   logoName?: string;
 }
 
-export interface IDocumentCardStatusProps extends React.Props<DocumentCardStatus> {
+export interface IDocumentCardStatusProps extends React.ClassAttributes<DocumentCardStatus> {
   /**
    * Gets the component ref.
    */
