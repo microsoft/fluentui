@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 22 Oct 2018 12:29:57 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Oct 2018 12:32:16 GMT and should not be manually modified.
+
+## 6.91.0
+Tue, 23 Oct 2018 12:32:16 GMT
+
+### Minor changes
+
+- TooltipHost: convert to CSS-in-JS
 
 ## 6.90.0
 Mon, 22 Oct 2018 12:29:57 GMT
