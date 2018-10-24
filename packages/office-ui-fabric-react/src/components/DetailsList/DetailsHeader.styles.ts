@@ -40,7 +40,7 @@ export const getCellStyles = (props: { theme: ITheme; cellStyleProps?: ICellStyl
     {
       color: semanticColors.bodyText,
       position: 'relative',
-      display: 'inline-block;',
+      display: 'inline-block',
       boxSizing: 'border-box',
       padding: `0 ${cellStyleProps.cellRightPadding}px 0 ${cellStyleProps.cellLeftPadding}px`,
       border: 'none',

@@ -16,7 +16,7 @@ export const ToggleStyles = (props: IToggleProps) => {
         width: '40px',
         height: '20px',
         borderRadius: '10px',
-        padding: '0 4px'
+        padding: '0 3px'
       },
       !disabled && [
         checked && {
