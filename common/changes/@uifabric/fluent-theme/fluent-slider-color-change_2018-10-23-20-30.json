@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/fluent-theme",
-      "comment": "TextField: update the fluent styles.",
+      "comment": "Fluent theme: Update Slider colors",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/fluent-theme",
-  "email": "v-vibr@microsoft.com"
+  "email": "miwhea@microsoft.com"
 }

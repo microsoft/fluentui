@@ -1,6 +1,20 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Mon, 22 Oct 2018 12:29:57 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Oct 2018 12:28:58 GMT and should not be manually modified.
+
+## 6.32.2
+Wed, 24 Oct 2018 12:28:58 GMT
+
+### Patches
+
+- getIconClassName: Strongly type the use of IStyle constant.
+
+## 6.32.1
+Tue, 23 Oct 2018 12:32:16 GMT
+
+### Patches
+
+- Fix an issue with the demo site not being able to load (in npm start or aka.ms/fabricdemo).
 
 ## 6.32.0
 Mon, 22 Oct 2018 12:29:57 GMT
