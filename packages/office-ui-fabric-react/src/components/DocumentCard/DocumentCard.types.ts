@@ -95,7 +95,7 @@ export interface IDocumentCardPreviewImage {
 
   /**
    * URL to view the file.
-   * @deprecated Use href inside of linkProps instead.
+   * @deprecated Use `href` inside of `linkProps` instead.
    */
   url?: string;
 

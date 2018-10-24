@@ -7014,6 +7014,7 @@ interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDi
   keytipProps?: IKeytipProps;
   multiSelect?: boolean;
   multiSelectDelimiter?: string;
+  notifyOnReselect?: boolean;
   onChange?: (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption, index?: number) => void;
   // @deprecated (undocumented)
   onChanged?: (option: IDropdownOption, index?: number) => void;
