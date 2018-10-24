@@ -79,6 +79,7 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                 <button
                   aria-expanded={false}
                   aria-haspopup={true}
+                  aria-label="More items"
                   aria-owns={null}
                   className=
                       ms-Button
