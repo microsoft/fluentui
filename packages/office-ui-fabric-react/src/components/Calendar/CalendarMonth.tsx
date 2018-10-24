@@ -248,10 +248,14 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
   };
 
   private _onRenderYear = (year: number) => {
+    const { yearPickerProps, navigatedDate, dateTimeFormatter } = this.props;
+    if (yearPickerProps && yearPickerProps.onRenderYear) {
+      return yearPickerProps.onRenderYear(year);
+    }
     // create a date based on the current nav date
-    const yearFormattingDate = new Date(this.props.navigatedDate.getTime());
+    const yearFormattingDate = new Date(navigatedDate.getTime());
     yearFormattingDate.setFullYear(year);
-    return this.props.dateTimeFormatter.formatYear(yearFormattingDate);
+    return dateTimeFormatter.formatYear(yearFormattingDate);
   };
 
   private _onSelectNextYear = (): void => {
