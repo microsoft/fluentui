@@ -93,7 +93,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   onRenderDescription?: IRenderFunction<ITextFieldProps>;
 
   /**
-   * @deprecated Use prefix instead.
+   * @deprecated Use `prefix` instead.
    */
   addonString?: string;
 
@@ -108,7 +108,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   suffix?: string;
 
   /**
-   * @deprecated Use onRenderPrefix instead.
+   * @deprecated Use `onRenderPrefix` instead.
    */
   onRenderAddon?: IRenderFunction<ITextFieldProps>;
 
@@ -162,7 +162,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   onChange?: (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void;
 
   /**
-   * @deprecated Use onChange instead.
+   * @deprecated Use `onChange` instead.
    */
   onChanged?: (newValue: any) => void;
 
@@ -241,7 +241,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   styles?: IStyleFunctionOrObject<ITextFieldStyleProps, ITextFieldStyles>;
 
   /**
-   * @deprecated Use iconProps instead.
+   * @deprecated Use `iconProps` instead.
    */
   iconClass?: string;
 

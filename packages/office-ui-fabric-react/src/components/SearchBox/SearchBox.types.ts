@@ -29,8 +29,8 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
   placeholder?: string;
 
   /**
-   * Deprecated. Use placeholder instead.
-   * @deprecated Use placeholder instead.
+   * Deprecated. Use `placeholder` instead.
+   * @deprecated Use `placeholder` instead.
    */
   labelText?: string;
 
@@ -55,8 +55,8 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
   onEscape?: (ev?: any) => void;
 
   /**
-   * Deprecated at v0.52.2, use 'onChange' instead.
-   * @deprecated Use 'onChange' instead.
+   * Deprecated at v0.52.2, use `onChange` instead.
+   * @deprecated Use `onChange` instead.
    */
   onChanged?: (newValue: any) => void;
 

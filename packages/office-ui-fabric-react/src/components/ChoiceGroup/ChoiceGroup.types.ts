@@ -39,8 +39,8 @@ export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement
   label?: string;
 
   /**
-   * Deprecated and will be removed by 07/17/2017 Use 'onChange' instead.
-   * @deprecated Use 'onChange' instead.
+   * Deprecated and will be removed by 07/17/2017. Use `onChange` instead.
+   * @deprecated Use `onChange` instead.
    */
   onChanged?: (option: IChoiceGroupOption, evt?: React.FormEvent<HTMLElement | HTMLInputElement>) => void;
 

@@ -87,8 +87,8 @@ export interface ICalendarProps extends IBaseProps<ICalendar>, React.HTMLAttribu
   showGoToToday?: boolean;
 
   /**
-   * This property has been removed at 0.80.0 in place of the focus method, to be removed \@ 1.0.0.
-   * @deprecated Replaced with the focus method.
+   * This property has been removed at 0.80.0 in place of the `focus` method, to be removed \@ 1.0.0.
+   * @deprecated Replaced with the `focus` method.
    */
   shouldFocusOnMount?: boolean;
 

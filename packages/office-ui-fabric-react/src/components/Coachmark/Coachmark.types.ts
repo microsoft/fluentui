@@ -42,9 +42,9 @@ export interface ICoachmarkProps extends React.Props<Coachmark> {
   isPositionForced?: boolean;
 
   /**
-   * The starting collapsed state for the Coachmark.  Use isCollapsed instead.
+   * The starting collapsed state for the Coachmark.  Use `isCollapsed` instead.
    * @defaultvalue true
-   * @deprecated Use isCollapsed instead.
+   * @deprecated Use `isCollapsed` instead.
    */
   collapsed?: boolean;
 

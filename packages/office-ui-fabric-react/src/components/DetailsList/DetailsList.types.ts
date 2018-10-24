@@ -517,8 +517,8 @@ export interface IColumnReorderOptions {
   /**
    * Callback to handle the column reorder
    * draggedIndex is the source column index, that need to be placed in targetIndex
-   * Use onColumnDrop instead of this
-   * @deprecated Use onColumnDrop instead.
+   * Deprecated, use `onColumnDrop` instead.
+   * @deprecated Use `onColumnDrop` instead.
    */
   handleColumnReorder?: (draggedIndex: number, targetIndex: number) => void;
 
@@ -622,4 +622,4 @@ export interface IDetailsGroupRenderProps extends IGroupRenderProps {
   onRenderHeader?: IRenderFunction<IDetailsGroupDividerProps>;
 }
 
-export interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsItemProps {}
+export interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsItemProps { }

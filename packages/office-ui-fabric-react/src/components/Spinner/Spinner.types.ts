@@ -12,8 +12,8 @@ export interface ISpinnerProps extends React.HTMLAttributes<HTMLElement> {
   componentRef?: IRefObject<ISpinner>;
 
   /**
-   * Deprecated and will be removed at \>= 2.0.0. Use SpinnerSize instead.
-   * @deprecated Use SpinnerSize instead.
+   * Deprecated and will be removed at \>= 2.0.0. Use `SpinnerSize` instead.
+   * @deprecated Use `SpinnerSize` instead.
    */
   type?: SpinnerType;
 
@@ -79,19 +79,19 @@ export enum SpinnerSize {
 }
 
 /**
- * Deprecated at v2.0.0, use 'SpinnerSize' instead.
- * @deprecated Use 'SpinnerSize' instead.
+ * Deprecated at v2.0.0, use `SpinnerSize` instead.
+ * @deprecated Use `SpinnerSize` instead.
  */
 export enum SpinnerType {
   /**
-   * Deprecated and will be removed at \>= 2.0.0. Use SpinnerSize.medium instead.
-   * @deprecated Use SpinnerSize.medium instead.
+   * Deprecated and will be removed at \>= 2.0.0. Use `SpinnerSize.medium` instead.
+   * @deprecated Use `SpinnerSize.medium` instead.
    */
   normal = 0,
 
   /**
-   * Deprecated and will be removed at \>= 2.0.0. Use SpinnerSize.large instead.
-   * @deprecated Use SpinnerSize.large instead.
+   * Deprecated and will be removed at \>= 2.0.0. Use `SpinnerSize.large` instead.
+   * @deprecated Use `SpinnerSize.large` instead.
    */
   large = 1
 }

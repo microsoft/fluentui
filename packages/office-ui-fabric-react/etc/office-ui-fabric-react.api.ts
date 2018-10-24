@@ -1840,11 +1840,11 @@ interface IAutofillState {
   displayValue?: string;
 }
 
-// @public @deprecated (undocumented)
+// @public @deprecated
 interface IBaseAutoFill extends IAutofill {
 }
 
-// @public @deprecated (undocumented)
+// @public @deprecated
 interface IBaseAutoFillProps extends IAutofillProps {
 }
 
@@ -2901,7 +2901,7 @@ interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox> {
   keytipProps?: IKeytipProps;
   multiSelect?: boolean;
   onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
-  // @deprecated (undocumented)
+  // @deprecated
   onChanged?: (option?: IComboBoxOption, index?: number, value?: string, submitPendingValueEvent?: any) => void;
   onMenuDismissed?: () => void;
   onMenuOpen?: () => void;
@@ -10453,7 +10453,7 @@ interface ITooltipHost {
 }
 
 // @public
-interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement | TooltipHost> {
+interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement | TooltipHostBase> {
   calloutProps?: ICalloutProps;
   closeDelay?: number;
   componentRef?: IRefObject<ITooltipHost>;
@@ -10465,6 +10465,8 @@ interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement | Toolti
   onTooltipToggle?(isTooltipVisible: boolean): void;
   overflowMode?: TooltipOverflowMode;
   setAriaDescribedBy?: boolean;
+  styles?: IStyleFunctionOrObject<ITooltipHostStyleProps, ITooltipHostStyles>;
+  theme?: ITheme;
   tooltipProps?: ITooltipProps;
 }
 
@@ -10472,6 +10474,17 @@ interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement | Toolti
 interface ITooltipHostState {
   // (undocumented)
   isTooltipVisible: boolean;
+}
+
+// @public (undocumented)
+interface ITooltipHostStyleProps {
+  className?: string;
+  theme: ITheme;
+}
+
+// @public (undocumented)
+interface ITooltipHostStyles {
+  root: IStyle;
 }
 
 // @public
@@ -12195,7 +12208,7 @@ enum TooltipDelay {
 }
 
 // @public (undocumented)
-class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostState> {
+class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHostState> {
   constructor(props: ITooltipHostProps);
   // (undocumented)
   static defaultProps: {
@@ -12428,6 +12441,7 @@ module ZIndexes {
 // WARNING: Unsupported export: DEFAULT_MASK_CHAR
 // WARNING: Unsupported export: Toggle
 // WARNING: Unsupported export: Tooltip
+// WARNING: Unsupported export: TooltipHost
 // WARNING: Unsupported export: IStyleFunctionOrObject
 // WARNING: Unsupported export: ICancelable
 // WARNING: Unsupported export: Settings

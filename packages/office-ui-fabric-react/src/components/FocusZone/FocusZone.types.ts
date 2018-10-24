@@ -110,7 +110,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
    * Allows tab key to be handled to tab through a list of items in the focus zone,
    * an unfortunate side effect is that users will not be able to tab out of the focus zone
    * and have to hit escape or some other key.
-   * @deprecated Use 'handleTabKey' instead.
+   * @deprecated Use `handleTabKey` instead.
    *
    */
   allowTabKey?: boolean;

@@ -187,8 +187,8 @@ export interface IButtonProps
   onRenderMenuIcon?: IRenderFunction<IButtonProps>;
 
   /**
-   * Deprecated at v6.3.2, to be removed at \>= v7.0.0. Use 'menuAs' instead.
-   * @deprecated Use 'menuAs' instead.
+   * Deprecated at v6.3.2, to be removed at \>= v7.0.0. Use `menuAs` instead.
+   * @deprecated Use `menuAs` instead.
    */
   onRenderMenu?: IRenderFunction<IContextualMenuProps>;
 
@@ -220,7 +220,7 @@ export interface IButtonProps
 
   /**
    * Any custom data the developer wishes to associate with the menu item.
-   *
+   * Deprecated, use `checked` if setting state.
    * @deprecated unused, use `checked` if setting state.
    */
   toggled?: boolean;
@@ -284,7 +284,8 @@ export interface IButtonProps
 
   /**
    * Style for the description text if applicable (for compound buttons.)
-   * @deprecated Use 'secondaryText' instead.
+   * Deprecated, use `secondaryText` instead.
+   * @deprecated Use `secondaryText` instead.
    */
   description?: IStyle;
 }

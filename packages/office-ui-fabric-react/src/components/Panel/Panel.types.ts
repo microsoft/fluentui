@@ -122,24 +122,24 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
 
   /**
    * Indicates if this Panel will ignore keeping track of HTMLElement that activated the Zone.
-   * Deprecated, use focusTrapZoneProps.
+   * Deprecated, use `focusTrapZoneProps`.
    * @defaultvalue false
-   * @deprecated Use focusTrapZoneProps.
+   * @deprecated Use `focusTrapZoneProps`.
    */
   ignoreExternalFocusing?: boolean;
 
   /**
    * Indicates whether Panel should force focus inside the focus trap zone
-   * Deprecated, use focusTrapZoneProps.
+   * Deprecated, use `focusTrapZoneProps`.
    * @defaultvalue true
-   * @deprecated Use focusTrapZoneProps.
+   * @deprecated Use `focusTrapZoneProps`.
    */
   forceFocusInsideTrap?: boolean;
 
   /**
    * Indicates the selector for first focusable item.
-   * Deprecated, use focusTrapZoneProps.
-   * @deprecated Use focusTrapZoneProps.
+   * Deprecated, use `focusTrapZoneProps`.
+   * @deprecated Use `focusTrapZoneProps`.
    */
   firstFocusableSelector?: string;
 

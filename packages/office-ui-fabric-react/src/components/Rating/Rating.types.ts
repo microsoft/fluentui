@@ -51,7 +51,7 @@ export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
   onChange?: (event: React.FocusEvent<HTMLElement>, rating?: number) => void;
 
   /**
-   * @deprecated Use onChange instead.
+   * @deprecated Use `onChange` instead.
    */
   onChanged?: (rating: number) => void;
 
@@ -63,8 +63,8 @@ export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
   ariaLabelFormat?: string;
 
   /**
-   * Deprecated: Optional id of label describing this instance of Rating. Instead of this use getArialabel
-   * @deprecated Use getAriaLabel instead.
+   * Deprecated: Optional id of label describing this instance of Rating. Use `getAriaLabel` instead.
+   * @deprecated Use `getAriaLabel` instead.
    */
   ariaLabelId?: string;
 

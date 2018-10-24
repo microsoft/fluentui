@@ -17,7 +17,7 @@ export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITea
     /**
      * Default calloutProps is deprecated in favor of private _defaultCalloutProps.
      * Remove in next release.
-     * @deprecated
+     * @deprecated In favor of private _defaultCalloutProps.
      */
     calloutProps: {
       beakWidth: 16,

@@ -16,14 +16,14 @@ export enum IconType {
   image = 1,
 
   /**
-   * Deprecated, use default.
-   * @deprecated Use default.
+   * Deprecated, use `default`.
+   * @deprecated Use `default`.
    */
   Default = 100000,
 
   /**
-   * Deprecated, use image.
-   * @deprecated Use image.
+   * Deprecated, use `image`.
+   * @deprecated Use `image`.
    */
   Image = 100001
 }
@@ -72,8 +72,8 @@ export interface IIconStyles {
   root?: IStyle;
 
   /**
-   * Deprecated. Use 'root'.
-   * @deprecated Use 'root'.
+   * Deprecated. Use `root`.
+   * @deprecated Use `root`.
    */
   imageContainer?: IStyle;
 }

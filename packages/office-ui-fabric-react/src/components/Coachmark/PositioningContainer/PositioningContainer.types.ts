@@ -2,7 +2,7 @@ import { DirectionalHint } from '../../../common/DirectionalHint';
 import { IRefObject, IBaseProps, IPoint, IRectangle } from '../../../Utilities';
 import { IPositionedData } from '../../../utilities/positioning';
 
-export interface IPositioningContainer {}
+export interface IPositioningContainer { }
 
 export interface IPositioningContainerProps extends IBaseProps<IPositioningContainer> {
   /**
@@ -60,13 +60,14 @@ export interface IPositioningContainerProps extends IBaseProps<IPositioningConta
   /**
    * If true use a point rather than rectangle to position the positioningContainer.
    * For example it can be used to position based on a click.
-   * @deprecated Use 'target' instead
+   * @deprecated Do not use.
    */
   useTargetPoint?: boolean;
 
   /**
-   * Point used to position the positioningContainer
-   * @deprecated Use 'target' instead
+   * Point used to position the positioningContainer.
+   * Deprecated, use `target` instead.
+   * @deprecated Use `target` instead.
    */
   targetPoint?: IPoint;
 

@@ -251,8 +251,8 @@ export interface IGroupDividerProps {
   selected?: boolean;
 
   /**
-   * Deprecated at v.65.1 and will be removed by v 1.0. Use 'selected' instead.
-   * @deprecated Use 'selected' instead.
+   * Deprecated at v.65.1 and will be removed by v 1.0. Use `selected` instead.
+   * @deprecated Use `selected` instead.
    */
   isSelected?: boolean;
 

@@ -12,8 +12,8 @@ export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement>
 
   /**
    * Text describing the activity that occurred and naming the people involved in it.
-   * Deprecated, use 'activityDescription' instead.
-   * @deprecated Use activityDescription instead.
+   * Deprecated, use `activityDescription` instead.
+   * @deprecated Use `activityDescription` instead.
    */
   activityDescriptionText?: string;
 
@@ -35,8 +35,8 @@ export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement>
 
   /**
    * Text of comments or \@mention messages.
-   * Deprecated, use 'comments' instead.
-   * @deprecated Use 'comments' instead.
+   * Deprecated, use `comments` instead.
+   * @deprecated Use `comments` instead.
    */
   commentText?: string;
 

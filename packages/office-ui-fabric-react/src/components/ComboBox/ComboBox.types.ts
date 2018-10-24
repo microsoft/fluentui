@@ -59,7 +59,8 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
 
   /**
-   * @deprecated Use onChange instead.
+   * Deprecated, use `onChange` instead.
+   * @deprecated Use `onChange` instead.
    */
   onChanged?: (option?: IComboBoxOption, index?: number, value?: string, submitPendingValueEvent?: any) => void;
 
@@ -195,6 +196,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
 
   /**
    * Value to show in the input, does not have to map to a combobox option
+   * Deprecated, use `text` instead.
    * @deprecated Use `text` instead.
    */
   value?: string;
