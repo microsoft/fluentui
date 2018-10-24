@@ -19,11 +19,12 @@
       // fontBaseUrl: ''
     };
 
-    var isProduction = (
-      document.location.search.indexOf('?min=0') === -1 && (
-        document.location.search.indexOf('?min=1') > -1 ||
-        location.pathname === '/fabric-react/master/'
-      ));
+    var isLocalHost = (document.location.href.indexOf('localhost') !== -1 || document.location.href.indexOf('127.0.0.1') !== -1);
+
+    var useMinified = document.location.search.indexOf('?min=0') === -1 && (
+      document.location.search.indexOf('?min=1') > -1 ||
+      location.pathname === '/fabric-react/master/'
+    );
 
     function loadScript(n) {
       for (var i = 0; i < n.length; i++) {
@@ -33,15 +34,24 @@
         document.body.appendChild(s);
       }
     }
-    loadScript(isProduction ? [
-      '//cdnjs.cloudflare.com/ajax/libs/react/16.3.1/umd/react.production.min.js',
-      '//cdnjs.cloudflare.com/ajax/libs/react-dom/16.3.1/umd/react-dom.production.min.js',
-      'demo-app.min.js'
-    ] : [
-        '//cdnjs.cloudflare.com/ajax/libs/react/16.3.1/umd/react.development.js',
-        '//cdnjs.cloudflare.com/ajax/libs/react-dom/16.3.1/umd/react-dom.development.js',
-        'demo-app.js'
-      ]);
+
+    const scripts = [];
+
+    if (isLocalHost) {
+      scripts.push('./node_modules/react/umd/react.development.js');
+      scripts.push('./node_modules/react-dom/umd/react-dom.development.js');
+    } else {
+      scripts.push('//cdnjs.cloudflare.com/ajax/libs/react/16.3.2/umd/react.production.min.js');
+      scripts.push('//cdnjs.cloudflare.com/ajax/libs/react-dom/16.3.2/umd/react-dom.production.min.js');
+    }
+
+    if (useMinified) {
+      scripts.push('demo-app.min.js');
+    } else {
+      scripts.push('demo-app.js');
+    }
+
+    loadScript(scripts);
   </script>
 </body>
 

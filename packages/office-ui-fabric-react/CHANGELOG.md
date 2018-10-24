@@ -1,6 +1,61 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 17 Oct 2018 01:29:55 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Oct 2018 12:32:16 GMT and should not be manually modified.
+
+## 6.91.0
+Tue, 23 Oct 2018 12:32:16 GMT
+
+### Minor changes
+
+- TooltipHost: convert to CSS-in-JS
+
+## 6.90.0
+Mon, 22 Oct 2018 12:29:57 GMT
+
+### Minor changes
+
+- Add in missing exports in index.ts
+
+### Patches
+
+- Fixed the column total vertical sync issue while resizing the column header by dragging them to the right until it gets overflowed and also make the vertical overflow as auto to make sure that the scroll bar  appears  only when there is a vertical overflow.
+
+## 6.89.0
+Fri, 19 Oct 2018 12:29:20 GMT
+
+### Minor changes
+
+- HoverCard: Add BasicCard as an option when need to render a non-expanding HoverCard. Refactor mergeStyle API plus refactor file organization.
+
+### Patches
+
+- Revert getItemClassNames API change to fix memoization bug due to Object usage rather than primitive arguments list."
+- Added 'break' statement in PeoplePicker component example. Without it, changing picker type to 'Process Selection' was rendering 'Controlled Picker' instead.
+
+## 6.88.0
+Thu, 18 Oct 2018 20:22:36 GMT
+
+### Minor changes
+
+- adding groups prop to pass parent group's children info
+- Add onPagesUpdated optional prop to List component
+
+### Patches
+
+- Remove api-extractor.disabled.json
+- Fix accessibility issue when user arrow down suggestion, screen reader is not announcing the selected result
+
+## 6.87.0
+Wed, 17 Oct 2018 12:29:40 GMT
+
+### Minor changes
+
+- Breadcrumb: move style interfaces to the types file to be included in the export and documentation.
+- DetailsList: update the styles with 2 new regions headerWrapper and contentWrapper providing easy className hooks to pass custom styling.
+
+### Patches
+
+- Spinner: No longer appears to vibrate in Microsoft Edge (Oct 2018 Update).
 
 ## 6.86.0
 Wed, 17 Oct 2018 01:29:55 GMT

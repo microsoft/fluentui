@@ -1,6 +1,20 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Tue, 16 Oct 2018 12:28:48 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Oct 2018 12:32:16 GMT and should not be manually modified.
+
+## 0.25.2
+Tue, 23 Oct 2018 12:32:15 GMT
+
+### Patches
+
+- Fix an issue with the demo site not being able to load (in npm start or aka.ms/fabricdemo).
+
+## 0.25.1
+Thu, 18 Oct 2018 20:22:36 GMT
+
+### Patches
+
+- Remove api-extractor.disabled.json
 
 ## 0.25.0
 Tue, 16 Oct 2018 12:28:48 GMT

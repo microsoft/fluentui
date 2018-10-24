@@ -35,11 +35,11 @@ class SlimNavComponent extends NavBase {
     this._hasAtleastOneHiddenLink = false;
 
     return (
-      <nav role="navigation">
+      <>
         {this.props.groups.map((group: ICustomNavLinkGroup, groupIndex: number) => {
           return this._renderGroup(group, groupIndex);
         })}
-      </nav>
+      </>
     );
   }
 
@@ -149,9 +149,10 @@ class SlimNavComponent extends NavBase {
     }
 
     const isSelected = nestingLevel > 0 && this.isLinkSelected(link, false /* includeChildren */);
-    const { styles, showMore, dataHint } = this.props;
-    const classNames = getClassNames(styles!, { isSelected, nestingLevel });
+    const { styles, showMore, dataHint, onShowMoreLinkClicked, theme } = this.props;
+    const classNames = getClassNames(styles!, { isSelected, nestingLevel, theme: theme! });
     const linkText = this.getLinkText(link, showMore);
+    const onClickHandler = link.isShowMoreLink && onShowMoreLinkClicked ? onShowMoreLinkClicked : this._onLinkClicked.bind(this, link);
 
     return (
       <NavLink
@@ -163,12 +164,13 @@ class SlimNavComponent extends NavBase {
         dataValue={link.key}
         ariaLabel={linkText}
         role="menu"
-        onClick={this._onLinkClicked.bind(this, link)}
+        onClick={onClickHandler}
         rootClassName={classNames.navFloatingItemRoot}
         rightIconName={rightIconName}
         textClassName={classNames.navItemNameColumn}
         iconClassName={classNames.navItemIconColumn}
         barClassName={classNames.navItemBarMarker}
+        focusedStyle={classNames.focusedStyle}
       />
     );
   }
@@ -193,8 +195,6 @@ class SlimNavComponent extends NavBase {
   private _renderFloatingLinks(links: INavLink[], nestingLevel: number): React.ReactElement<{}> | null {
     if (!links || links.length === 0) {
       return null;
-    } else if (links[0].isShowMoreLink) {
-      return null;
     }
 
     return (
@@ -212,8 +212,8 @@ class SlimNavComponent extends NavBase {
     }
 
     const hasChildren = !!link.links && link.links.length > 0;
-    const { styles } = this.props;
-    const classNames = getClassNames(styles!, { hasChildren, scrollTop: link.scrollTop });
+    const { styles, theme } = this.props;
+    const classNames = getClassNames(styles!, { hasChildren, scrollTop: link.scrollTop, theme: theme! });
 
     return (
       <div className={classNames.navFloatingRoot} data-floating-nav>
@@ -229,8 +229,8 @@ class SlimNavComponent extends NavBase {
 
     const isSelected = this.isLinkSelected(link, true /* includeChildren */);
     const hasChildren = !!link.links && link.links.length > 0;
-    const { styles, showMore, onShowMoreLinkClicked, dataHint } = this.props;
-    const classNames = getClassNames(styles!, { isSelected, hasChildren });
+    const { styles, showMore, onShowMoreLinkClicked, dataHint, theme } = this.props;
+    const classNames = getClassNames(styles!, { isSelected, hasChildren, theme: theme! });
     const linkText = this.getLinkText(link, showMore);
     const onClickHandler = link.isShowMoreLink && onShowMoreLinkClicked ? onShowMoreLinkClicked : this._onLinkClicked.bind(this, link);
 
@@ -257,6 +257,7 @@ class SlimNavComponent extends NavBase {
           leftIconName={link.icon}
           iconClassName={classNames.navItemIconColumn}
           barClassName={classNames.navItemBarMarker}
+          focusedStyle={classNames.focusedStyle}
         />
         {this._renderFloatingNav(link, linkIndex)}
       </li>
@@ -295,14 +296,14 @@ class SlimNavComponent extends NavBase {
       return null;
     }
 
-    const { styles, enableCustomization } = this.props;
+    const { styles, enableCustomization, theme } = this.props;
 
     // skip customization group if customization is not enabled
     if (!enableCustomization && group.groupType === NavGroupType.CustomizationGroup) {
       return null;
     }
 
-    const classNames = getClassNames(styles!, {});
+    const classNames = getClassNames(styles!, { theme: theme! });
 
     let isGroupHeaderVisible = false;
 

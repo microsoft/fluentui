@@ -63,10 +63,7 @@
       "jsx-double",
       "avoid-escape"
     ],
-    "no-inferrable-types": [
-      true,
-      "ignore-params"
-    ],
+    "no-inferrable-types": false,
     "no-null-keyword": false,
     "export-name": false,
     "trailing-comma": [
