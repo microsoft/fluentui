@@ -3,7 +3,7 @@ import { IGroup, IGroupDividerProps, IGroupRenderProps, IGroupedListStyles } fro
 
 import { IDragDropContext, IDragDropEvents, IDragDropHelper } from '../../utilities/dragdrop/index';
 
-import { BaseComponent, IRenderFunction, IDisposable, createRef, IClassNames } from '../../Utilities';
+import { BaseComponent, IRenderFunction, IDisposable, IClassNames } from '../../Utilities';
 
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/index';
 
@@ -17,7 +17,7 @@ import { assign, css } from '../../Utilities';
 import { IViewport } from '../../utilities/decorators/withViewport';
 import { IListProps } from '../List/index';
 
-export interface IGroupedListSectionProps extends React.Props<GroupedListSection> {
+export interface IGroupedListSectionProps extends React.ClassAttributes<GroupedListSection> {
   /** GroupedList resolved class names */
   groupedListClassNames?: IClassNames<IGroupedListStyles>;
 
@@ -106,8 +106,8 @@ export interface IGroupedListSectionState {
 const DEFAULT_DROPPING_CSS_CLASS = 'is-dropping';
 
 export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, IGroupedListSectionState> {
-  private _root = createRef<HTMLDivElement>();
-  private _list = createRef<List>();
+  private _root = React.createRef<HTMLDivElement>();
+  private _list = React.createRef<List>();
 
   private _dragDropSubscription: IDisposable;
 
