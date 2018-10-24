@@ -40,6 +40,54 @@ export type ICSSOverflowAndSelfPositionRule =
   | 'unsafe flex-start'
   | 'unsafe flex-end';
 
+// See CSS Box Layout Modes: the 'display' property https://www.w3.org/TR/css-display-3/#the-display-properties
+export type ICSSDisplayRule =
+  // <display-outside> values
+  | 'block'
+  | 'inline'
+  | 'run-in'
+  // <display-inside> values
+  | 'flow'
+  | 'flow-root'
+  | 'table'
+  | 'flex'
+  | 'grid'
+  | 'ruby'
+  // <display-outside> plus <display-inside> values
+  | 'block flow'
+  | 'inline table'
+  | 'flex run-in'
+  // <display-listitem> values
+  | 'list-item'
+  | 'list-item block'
+  | 'list-item inline'
+  | 'list-item flow'
+  | 'list-item flow-root'
+  | 'list-item block flow'
+  | 'list-item block flow-root'
+  | 'flow list-item block'
+  // <display-internal> values
+  | 'table-row-group'
+  | 'table-header-group'
+  | 'table-footer-group'
+  | 'table-row'
+  | 'table-cell'
+  | 'table-column-group'
+  | 'table-column'
+  | 'table-caption'
+  | 'ruby-base'
+  | 'ruby-text'
+  | 'ruby-base-container'
+  | 'ruby-text-container'
+  // <display-box> values
+  | 'contents'
+  | 'none'
+  // <display-legacy> values
+  | 'inline-block'
+  | 'inline-table'
+  | 'inline-flex'
+  | 'inline-grid';
+
 export type IFontWeight =
   | ICSSRule
   | 'normal'
@@ -802,8 +850,10 @@ export interface IRawStyleBase extends IRawFontStyle {
   /**
    * This property specifies the type of rendering box used for an element. It is a
    * shorthand property for many other display properties.
+   * W3: https://www.w3.org/TR/css-display-3/#the-display-properties
+   * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/display
    */
-  display?: ICSSRule | string;
+  display?: ICSSRule | ICSSDisplayRule;
 
   /**
    * The ‘fill’ property paints the interior of the given graphical element. The area to
