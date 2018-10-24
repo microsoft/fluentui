@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { KeyCodes, css, getRTL } from '../../Utilities';
-import { ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.types';
+import { ICalendarIconStrings } from './Calendar.types';
 import { FocusZone } from '../../FocusZone';
 import * as stylesImport from './Calendar.scss';
 import { Icon } from '../../Icon';

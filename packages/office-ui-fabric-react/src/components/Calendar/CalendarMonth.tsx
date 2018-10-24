@@ -13,7 +13,7 @@ import {
 } from '../../utilities/dateMath/DateMath';
 import { Icon } from '../../Icon';
 import * as stylesImport from './Calendar.scss';
-import { CalendarYear, ICalendarYearProps } from './CalendarYear';
+import { CalendarYear } from './CalendarYear';
 const styles: any = stylesImport;
 
 export interface ICalendarMonth {
@@ -35,7 +35,6 @@ export interface ICalendarMonthProps extends React.Props<CalendarMonth> {
   minDate?: Date;
   maxDate?: Date;
   yearPickerHidden?: boolean;
-  yearPickerProps?: ICalendarYearProps;
 }
 
 export interface ICalendarMonthState {
@@ -88,14 +87,12 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
       dateTimeFormatter,
       minDate,
       maxDate,
-      yearPickerHidden,
-      yearPickerProps
+      yearPickerHidden
     } = this.props;
 
     if (this.state.isYearPickerVisible) {
       return (
         <CalendarYear
-          {...yearPickerProps}
           minYear={minDate ? minDate.getFullYear() : undefined}
           maxYear={maxDate ? maxDate.getFullYear() : undefined}
           onSelectYear={this._onSelectYear}
@@ -248,14 +245,15 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
   };
 
   private _onRenderYear = (year: number) => {
-    const { yearPickerProps, navigatedDate, dateTimeFormatter } = this.props;
-    if (yearPickerProps && yearPickerProps.onRenderYear) {
-      return yearPickerProps.onRenderYear(year);
+    const { navigatedDate, dateTimeFormatter } = this.props;
+    // date time formatter's actually a mandatory prop - but just in case
+    if (dateTimeFormatter) {
+      // create a date based on the current nav date
+      const yearFormattingDate = new Date(navigatedDate.getTime());
+      yearFormattingDate.setFullYear(year);
+      return dateTimeFormatter.formatYear(yearFormattingDate);
     }
-    // create a date based on the current nav date
-    const yearFormattingDate = new Date(navigatedDate.getTime());
-    yearFormattingDate.setFullYear(year);
-    return dateTimeFormatter.formatYear(yearFormattingDate);
+    return year;
   };
 
   private _onSelectNextYear = (): void => {
