@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { IGroup, IGroupDividerProps, IGroupRenderProps, IGroupedListStyles } from './GroupedList.types';
+import { IGroupHeaderProps } from './GroupHeader.types';
 
 import { IDragDropContext, IDragDropEvents, IDragDropHelper } from '../../utilities/dragdrop/index';
 
@@ -193,7 +194,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       groups: groups
     };
 
-    const ariaControlsProps: IGroupDividerProps = {
+    const ariaControlsProps: IGroupHeaderProps = {
       groupedListId: this._id
     };
 
