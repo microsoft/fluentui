@@ -6251,6 +6251,7 @@ interface IContextualMenuStyleProps {
 
 // @public (undocumented)
 interface IContextualMenuStyles {
+  callout: IStyle;
   container: IStyle;
   header: IStyle;
   list: IStyle;
