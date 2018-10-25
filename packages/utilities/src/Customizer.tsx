@@ -56,7 +56,13 @@ export type ICustomizerProps = IBaseProps &
      * ```
      */
     scopedSettings: Settings | SettingsFunction;
-  }>;
+  }> & {
+    /**
+     * Optional transform function for context. Any implementations should take care to return context without
+     * mutating it.
+     */
+    contextPlugin?: (context: Readonly<ICustomizerContext>) => ICustomizerContext;
+  };
 
 /**
  * The Customizer component allows for default props to be mixed into components which
@@ -82,10 +88,15 @@ export class Customizer extends BaseComponent<ICustomizerProps> {
   }
 
   public render(): React.ReactElement<{}> {
+    const { contextPlugin } = this.props;
     return (
       <CustomizerContext.Consumer>
         {(parentContext: ICustomizerContext) => {
-          const newContext = mergeCustomizations(this.props, parentContext);
+          let newContext = mergeCustomizations(this.props, parentContext);
+
+          if (contextPlugin) {
+            newContext = contextPlugin(newContext);
+          }
 
           return <CustomizerContext.Provider value={newContext}>{this.props.children}</CustomizerContext.Provider>;
         }}
@@ -96,6 +107,7 @@ export class Customizer extends BaseComponent<ICustomizerProps> {
   private _onCustomizationChange = () => this.forceUpdate();
 }
 
+// TODO: consider folding this back into Customizer if no longer used
 export function mergeCustomizations(props: ICustomizerProps, parentContext: ICustomizerContext): ICustomizerContext {
   const { customizations = { settings: {}, scopedSettings: {} } } = parentContext || {};
 
@@ -107,7 +119,7 @@ export function mergeCustomizations(props: ICustomizerProps, parentContext: ICus
   };
 }
 
-function mergeSettings(oldSettings: Settings = {}, newSettings?: Settings | SettingsFunction): Settings {
+export function mergeSettings(oldSettings: Settings = {}, newSettings?: Settings | SettingsFunction): Settings {
   const mergeSettingsWith = isSettingsFunction(newSettings) ? newSettings : settingsMergeWith(newSettings);
 
   return mergeSettingsWith(oldSettings);
