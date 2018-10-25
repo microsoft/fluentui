@@ -250,7 +250,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
 
     if (isAllGroupsCollapsed === undefined && (newProps.groupProps && newProps.groupProps.isAllGroupsCollapsed !== undefined)) {
       this.setState({
-        isCollapsed: newProps.groupProps.isAllGroupsCollapsed
+        isCollapsed: newProps.groupProps.isAllGroupsCollapsed,
+        isSomeGroupExpanded: !newProps.groupProps.isAllGroupsCollapsed
       });
     }
 
