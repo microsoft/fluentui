@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "onFocus on Dropdown",
+      "comment": "Dropdown: Add support for onFocus callback",
       "type": "patch"
     }
   ],
