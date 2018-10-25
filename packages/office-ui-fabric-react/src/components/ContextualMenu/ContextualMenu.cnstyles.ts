@@ -1,12 +1,4 @@
-import {
-  concatStyleSets,
-  FontSizes,
-  FontWeights,
-  getFocusStyle,
-  HighContrastSelector,
-  IRawStyle,
-  ITheme
-} from '../../Styling';
+import { concatStyleSets, FontSizes, FontWeights, getFocusStyle, HighContrastSelector, IRawStyle, ITheme } from '../../Styling';
 import { IContextualMenuStyles, IMenuItemStyles } from './ContextualMenu.types';
 import { memoizeFunction } from '../../Utilities';
 
@@ -238,7 +230,8 @@ export const getStyles = memoizeFunction(
           userSelect: 'none',
           textAlign: 'left'
         }
-      ]
+      ],
+      callout: {}
     };
     return concatStyleSets(styles);
   }
