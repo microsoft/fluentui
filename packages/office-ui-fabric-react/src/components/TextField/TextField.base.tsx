@@ -292,8 +292,8 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
 
   /**
    * Sets the start and end positions of a selection in a text field.
-   * @param start Index of the start of the selection.
-   * @param end Index of the end of the selection.
+   * @param start - Index of the start of the selection.
+   * @param end - Index of the end of the selection.
    */
   public setSelectionRange(start: number, end: number): void {
     if (this._textElement.current) {

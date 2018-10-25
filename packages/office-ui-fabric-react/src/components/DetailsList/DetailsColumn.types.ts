@@ -18,7 +18,7 @@ export interface IDetailsColumnProps extends React.Props<DetailsColumnBase> {
   onColumnContextMenu?: (column: IColumn, ev: React.MouseEvent<HTMLElement>) => void;
   dragDropHelper?: IDragDropHelper | null;
   isDraggable?: boolean;
-  // @deprecated, use updateDragInfo
+  // @deprecated, use `updateDragInfo`
   setDraggedItemIndex?: (itemIndex: number) => void;
   updateDragInfo?: (props: { itemIndex: number }, event?: MouseEvent) => void;
   isDropped?: boolean;

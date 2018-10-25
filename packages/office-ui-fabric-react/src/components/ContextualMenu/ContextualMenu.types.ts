@@ -20,7 +20,7 @@ export enum ContextualMenuItemType {
   Section = 3
 }
 
-export interface IContextualMenu {}
+export interface IContextualMenu { }
 
 /**
  * React.Props is deprecated and we're removing it in 6.0. Usage of 'any' should go away with it.
@@ -57,7 +57,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
 
   /**
    * How the element should be positioned
-   * @default DirectionalHint.bottomAutoEdge
+   * @defaultvalue DirectionalHint.bottomAutoEdge
    */
   directionalHint?: DirectionalHint;
 
@@ -69,25 +69,25 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
 
   /**
    * The gap between the ContextualMenu and the target
-   * @default 0
+   * @defaultvalue 0
    */
   gapSpace?: number;
 
   /**
    * The width of the beak.
-   * @default 16
+   * @defaultvalue 16
    */
   beakWidth?: number;
 
   /**
    * If true the context menu will render as the same width as the target element
-   * @default false
+   * @defaultvalue false
    */
   useTargetWidth?: boolean;
 
   /**
    * If true the context menu will have a minimum width equal to the width of the target element
-   * @default false
+   * @defaultvalue false
    */
   useTargetAsMinWidth?: boolean;
 
@@ -104,32 +104,32 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
   /**
    * If true the position returned will have the menu element cover the target.
    * If false then it will position next to the target;
-   * @default false
+   * @defaultvalue false
    */
 
   coverTarget?: boolean;
 
   /**
    * Collection of menu items.
-   * @default []
+   * @defaultvalue []
    */
   items: IContextualMenuItem[];
 
   /**
    * Aria Labelled by labelElementId
-   * @default null
+   * @defaultvalue null
    */
   labelElementId?: string;
 
   /**
    * Whether to focus on the menu when mounted.
-   * @default true
+   * @defaultvalue true
    */
   shouldFocusOnMount?: boolean;
 
   /**
    * Whether to focus on the contextual menu container (as opposed to the first menu item).
-   * @default null
+   * @defaultvalue null
    */
   shouldFocusOnContainer?: boolean;
 
@@ -165,14 +165,14 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
 
   /**
    * If true do not render on a new layer. If false render on a new layer.
-   * @default false
+   * @defaultvalue false
    */
   doNotLayer?: boolean;
 
   /**
    * If true the position will not change sides in an attempt to fit the ContextualMenu within bounds.
    * It will still attempt to align it to whatever bounds are given.
-   * @default false
+   * @defaultvalue false
    */
   directionalHintFixed?: boolean;
 
@@ -199,7 +199,8 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
   /**
    * Method to provide the classnames to style the contextual menu. Default value is the getMenuClassnames func
    * defined in ContextualMenu.classnames.
-   * @deprecated Use `styles` prop of `IContextualMenuProps` to leverage mergeStyle API.
+   * Deprecated, use `styles` prop of `IContextualMenuProps` to leverage mergeStyles API.
+   * @deprecated Use `styles` prop of `IContextualMenuProps` to leverage mergeStyles API.
    */
   getMenuClassNames?: (theme: ITheme, className?: string) => IContextualMenuClassNames;
 
@@ -218,7 +219,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
 
   /**
    * Method to override the render of the individual menu items
-   * @default ContextualMenuItem
+   * @defaultvalue ContextualMenuItem
    */
   contextualMenuItemAs?: React.ComponentClass<IContextualMenuItemProps> | React.StatelessComponent<IContextualMenuItemProps>;
 
@@ -226,7 +227,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
    * Props to pass down to the FocusZone.
    * NOTE: the default FocusZoneDirection will be used unless a direction
    * is specified in the focusZoneProps (even if other focusZoneProps are defined)
-   * @default {direction: FocusZoneDirection.vertical}
+   * @defaultvalue \{direction: FocusZoneDirection.vertical\}
    */
   focusZoneProps?: IFocusZoneProps;
 
@@ -243,7 +244,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
    * If true, the contextual menu will not be updated until
    * focus enters the menu via other means. This will only result
    * in different behavior when shouldFocusOnMount = false
-   * @default null
+   * @defaultvalue null
    */
   delayUpdateFocusOnHover?: boolean;
 }
@@ -364,7 +365,8 @@ export interface IContextualMenuItem {
 
   /**
    * Method to provide the classnames to style the individual items inside a menu.
-   * @deprecated Use `styles` prop of `IContextualMenuItemProps` to leverage mergeStyle API.
+   * Deprecated, use `styles` prop of `IContextualMenuItemProps` to leverage mergeStyles API.
+   * @deprecated Use `styles` prop of `IContextualMenuItemProps` to leverage mergeStyles API.
    */
   getItemClassNames?: (
     theme: ITheme,
@@ -388,7 +390,7 @@ export interface IContextualMenuItem {
   /**
    * Method to provide the classnames to style the Vertical Divider of a split button inside a menu.
    * Default value is the getVerticalDividerClassnames func defined in ContextualMenu.classnames
-   * @default getSplitButtonVerticalDividerClassNames
+   * @defaultvalue getSplitButtonVerticalDividerClassNames
    */
   getSplitButtonVerticalDividerClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
 
@@ -406,8 +408,9 @@ export interface IContextualMenuItem {
 
   /**
    * Additional styles to apply to the menu item
+   * Deprecated, use `styles` instead.
    * @defaultvalue undefined
-   * @deprecated in favor of the styles prop to leverage mergeStyles API.
+   * @deprecated in favor of the `styles` prop to leverage mergeStyles API.
    */
   style?: React.CSSProperties;
 
@@ -471,6 +474,7 @@ export interface IContextualMenuItem {
 
   /**
    * Text description for the menu item to display
+   * Deprecated, use `text` instead.
    * @deprecated Use `text` instead.
    */
   name?: string;

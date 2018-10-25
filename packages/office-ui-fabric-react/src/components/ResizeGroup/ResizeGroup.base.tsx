@@ -1,12 +1,6 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import {
-  BaseComponent,
-  divProperties,
-  getNativeProps,
-  provideContext,
-  createRef
-} from '../../Utilities';
+import { BaseComponent, divProperties, getNativeProps, provideContext, createRef } from '../../Utilities';
 import { IResizeGroupProps } from './ResizeGroup.types';
 
 const RESIZE_DELAY = 16;
@@ -262,12 +256,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
       if (currentState.resizeDirection === 'grow' && props.onGrowData) {
         nextState = {
           ...nextState,
-          ..._growDataUntilItDoesNotFit(
-            currentState.dataToMeasure,
-            props.onGrowData,
-            getElementToMeasureWidth,
-            props.onReduceData
-          )
+          ..._growDataUntilItDoesNotFit(currentState.dataToMeasure, props.onGrowData, getElementToMeasureWidth, props.onReduceData)
         };
       } else {
         nextState = {
@@ -317,6 +306,7 @@ const MeasuredContext = provideContext(
 
 // Styles for the hidden div used for measurement
 const hiddenDivStyles: React.CSSProperties = { position: 'fixed', visibility: 'hidden' };
+const hiddenParentStyles: React.CSSProperties = { position: 'relative' };
 
 export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGroupState> {
   private _nextResizeGroupStateProvider = getNextResizeGroupStateProvider();
@@ -357,20 +347,18 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     // we mount a second version of the component just for measurement purposes and leave the rendered content untouched until we know the
     // next state sto show to the user.
     return (
-      <div {...divProps} className={className} ref={this._root} style={{ display: 'block', position: 'relative' }}>
-        {dataNeedsMeasuring &&
-          !isInitialMeasure && (
-            <div style={hiddenDivStyles} ref={this._updateHiddenDiv}>
-              <MeasuredContext>{onRenderData(dataToMeasure)}</MeasuredContext>
-            </div>
-          )}
+      <div {...divProps} className={className} ref={this._root}>
+        <div style={hiddenParentStyles}>
+          {dataNeedsMeasuring &&
+            !isInitialMeasure && (
+              <div style={hiddenDivStyles} ref={this._updateHiddenDiv}>
+                <MeasuredContext>{onRenderData(dataToMeasure)}</MeasuredContext>
+              </div>
+            )}
 
-        <div
-          ref={this._initialHiddenDiv}
-          style={isInitialMeasure ? hiddenDivStyles : undefined}
-          data-automation-id="visibleContent"
-        >
-          {isInitialMeasure ? onRenderData(dataToMeasure) : renderedData && onRenderData(renderedData)}
+          <div ref={this._initialHiddenDiv} style={isInitialMeasure ? hiddenDivStyles : undefined} data-automation-id="visibleContent">
+            {isInitialMeasure ? onRenderData(dataToMeasure) : renderedData && onRenderData(renderedData)}
+          </div>
         </div>
       </div>
     );
