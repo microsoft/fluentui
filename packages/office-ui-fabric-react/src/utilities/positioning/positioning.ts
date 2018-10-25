@@ -264,6 +264,32 @@ function _flipToFit(
 }
 
 /**
+ * Flips only the alignment edge of an element rectangle. This is used instead of nudging the alignment edges into position,
+ * when alignPerfectlyWithTarget is specified.
+ * This returns the initial elementEstimate if the flipping does not work.
+ * @param elementEstimate
+ * @param target
+ * @param bounding
+ * @param gap
+ */
+function _flipAlignmentEdgeOnly(elementEstimate: IElementPosition, target: Rectangle, bounding: Rectangle, gap: number): IElementPosition {
+  let { alignmentEdge, targetEdge, elementRectangle } = elementEstimate;
+  if (alignmentEdge !== undefined) {
+    let newEstimate = _estimatePosition(elementRectangle, target, { targetEdge: targetEdge, alignmentEdge: alignmentEdge * -1 }, gap);
+
+    if (_isEdgeInBounds(newEstimate, bounding, alignmentEdge) && _isEdgeInBounds(newEstimate, bounding, alignmentEdge * -1)) {
+      return {
+        elementRectangle: newEstimate,
+        targetEdge: targetEdge,
+        alignmentEdge: alignmentEdge * -1
+      };
+    }
+  }
+
+  return elementEstimate;
+}
+
+/**
  * Adjusts a element rectangle to fit within the bounds given. If directionalHintFixed or covertarget is passed in
  * then the element will not flip sides on the target. They will, however, be nudged to fit within the bounds given.
  *
@@ -285,7 +311,7 @@ function _adjustFitWithinBounds(
   directionalHintFixed?: boolean,
   coverTarget?: boolean
 ): IElementPosition {
-  const { alignmentEdge } = positionData;
+  const { alignmentEdge, alignPerfectlyWithTarget } = positionData;
   let elementEstimate: IElementPosition = {
     elementRectangle: element,
     targetEdge: positionData.targetEdge,
@@ -298,8 +324,15 @@ function _adjustFitWithinBounds(
 
   const outOfBounds = _getOutOfBoundsEdges(element, bounding);
 
-  for (const direction of outOfBounds) {
-    elementEstimate.elementRectangle = _alignEdges(elementEstimate.elementRectangle, bounding, direction);
+  if (alignPerfectlyWithTarget) {
+    // The edge opposite to the alignment edge might be out of bounds. Flip alignment to see if we can get it within bounds.
+    if (elementEstimate.alignmentEdge && outOfBounds.indexOf(elementEstimate.alignmentEdge * -1) > -1) {
+      elementEstimate = _flipAlignmentEdgeOnly(elementEstimate, target, bounding, gap);
+    }
+  } else {
+    for (const direction of outOfBounds) {
+      elementEstimate.elementRectangle = _alignEdges(elementEstimate.elementRectangle, bounding, direction);
+    }
   }
 
   return elementEstimate;
@@ -432,16 +465,18 @@ function _calculateActualBeakWidthInPixels(beakWidth: number): number {
 function _getPositionData(
   directionalHint: DirectionalHint = DirectionalHint.bottomAutoEdge,
   directionalHintForRTL?: DirectionalHint,
+  alignPerfectlyWithTarget?: boolean,
   previousPositions?: IPositionDirectionalHintData
 ): IPositionDirectionalHintData {
   if (previousPositions) {
     return {
       alignmentEdge: previousPositions.alignmentEdge,
       isAuto: previousPositions.isAuto,
-      targetEdge: previousPositions.targetEdge
+      targetEdge: previousPositions.targetEdge,
+      alignPerfectlyWithTarget: previousPositions.alignPerfectlyWithTarget
     };
   }
-  const positionInformation: IPositionDirectionalHintData = { ...DirectionalDictionary[directionalHint] };
+  const positionInformation: IPositionDirectionalHintData = { ...DirectionalDictionary[directionalHint], alignPerfectlyWithTarget };
   if (getRTL()) {
     // If alignment edge exists and that alignment edge is -2 or 2, right or left, then flip it.
     if (positionInformation.alignmentEdge && positionInformation.alignmentEdge % 2 === 0) {
@@ -643,7 +678,7 @@ function _positionElementRelative(
     : new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
   const targetRect: Rectangle = _getTargetRect(boundingRect, props.target);
   const positionData: IPositionDirectionalHintData = _getAlignmentData(
-    _getPositionData(props.directionalHint, props.directionalHintForRTL, previousPositions)!,
+    _getPositionData(props.directionalHint, props.directionalHintForRTL, props.alignPerfectlyWithTarget, previousPositions)!,
     targetRect,
     boundingRect,
     props.coverTarget

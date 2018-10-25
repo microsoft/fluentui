@@ -98,6 +98,12 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
   coverTarget?: boolean;
 
   /**
+   * If true the positioning logic will prefer flipping edges over nudging the rectangle to fit within bounds.
+   * thus making sure the the element align perfectly with target.
+   */
+  alignPerfectlyWithTarget?: boolean;
+
+  /**
    * Aria role assigned to the callout (Eg. dialog, alertdialog).
    */
   role?: string;
