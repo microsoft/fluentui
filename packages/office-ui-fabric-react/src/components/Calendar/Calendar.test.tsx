@@ -353,6 +353,9 @@ describe('Calendar', () => {
       ReactTestUtils.Simulate.click(monthHeader);
       const yearHeader = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-currentDecade');
       expect(yearHeader).toBeTruthy();
+      // month header shouldn't actually be rendered
+      const monthHeaders = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-currentYear');
+      expect(monthHeaders.length).toBe(0);
     });
 
     it('year picker cells render as expected', () => {
@@ -376,6 +379,17 @@ describe('Calendar', () => {
           visitedYears.push(year);
         }
       }
+    });
+
+    it('month picker on non-overlay calendar should show when clicking year header', () => {
+      const yearHeader = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-currentDecade');
+      expect(yearHeader).toBeTruthy();
+      const monthHeaders = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-currentYear');
+      expect(monthHeaders.length).toBe(0);
+      // click year header - month picker should become visible again
+      ReactTestUtils.Simulate.click(yearHeader);
+      const monthHeader = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-currentYear');
+      expect(monthHeader).toBeTruthy();
     });
   });
 });
