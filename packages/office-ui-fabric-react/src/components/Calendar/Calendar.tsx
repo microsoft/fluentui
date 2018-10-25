@@ -206,7 +206,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                     minDate={minDate}
                     maxDate={maxDate}
                     componentRef={this._monthPicker}
-                    yearPickerHidden={yearPickerHidden}
+                    yearPickerHidden={yearPickerHidden || showMonthPickerAsOverlay}
                   />
                 )}
 

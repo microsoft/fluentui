@@ -18,6 +18,7 @@ export interface ICalendarYearRangeToString {
 }
 
 export interface ICalendarYearStrings {
+  rangeAriaLabel?: string | ICalendarYearRangeToString;
   prevRangeAriaLabel?: string | ICalendarYearRangeToString;
   nextRangeAriaLabel?: string | ICalendarYearRangeToString;
 }
@@ -32,6 +33,7 @@ export interface ICalendarYearProps {
   selectedYear?: number;
   minYear?: number;
   maxYear?: number;
+  onHeaderSelect?: (focus: boolean) => void;
   onSelectYear?: (year: number) => void;
   onRenderTitle?: (props: ICalendarYearHeaderProps) => React.ReactNode;
   onRenderYear?: (year: number) => React.ReactNode;
@@ -71,11 +73,10 @@ class CalendarYearGridCell extends React.Component<ICalendarYearGridCellProps, {
     }
   }
   public render() {
-    const { year, current, selected, disabled, onSelectYear } = this.props;
+    const { year, selected, disabled, onSelectYear } = this.props;
     return (
       <button
         className={css('ms-DatePicker-yearOption', styles.yearOption, {
-          ['ms-DatePicker-year--current ' + styles.yearIsCurrentYear]: current,
           ['ms-DatePicker-day--highlighted ' + styles.yearIsHighlighted]: selected,
           ['ms-DatePicker-yearOption--disabled ' + styles.yearOptionIsDisabled]: disabled
         })}
@@ -182,7 +183,7 @@ class CalendarYearNavPrev extends React.Component<ICalendarYearHeaderProps, any>
   public render() {
     const iconStrings = this.props.navigationIcons || DefaultNavigationIcons;
     const strings = this.props.strings || DefaultCalendarYearStrings;
-    const prevRangeAriaLabel = strings.prevRangeAriaLabel;
+    const prevRangeAriaLabel = strings.prevRangeAriaLabel || strings.rangeAriaLabel;
     const prevAriaLabel = prevRangeAriaLabel
       ? typeof prevRangeAriaLabel === 'string'
         ? (prevRangeAriaLabel as string)
@@ -226,7 +227,7 @@ class CalendarYearNavNext extends React.Component<ICalendarYearHeaderProps, any>
   public render() {
     const iconStrings = this.props.navigationIcons || DefaultNavigationIcons;
     const strings = this.props.strings || DefaultCalendarYearStrings;
-    const nextRangeAriaLabel = strings.nextRangeAriaLabel;
+    const nextRangeAriaLabel = strings.nextRangeAriaLabel || strings.rangeAriaLabel;
     const nextAriaLabel = nextRangeAriaLabel
       ? typeof nextRangeAriaLabel === 'string'
         ? (nextRangeAriaLabel as string)
@@ -281,12 +282,44 @@ class CalendarYearNav extends React.Component<ICalendarYearHeaderProps, any> {
 
 class CalendarYearTitle extends React.Component<ICalendarYearHeaderProps, any> {
   public render() {
+    const { fromYear, toYear, onHeaderSelect } = this.props;
+    if (onHeaderSelect) {
+      const strings = this.props.strings || DefaultCalendarYearStrings;
+      const rangeAriaLabel = strings.rangeAriaLabel;
+      const ariaLabel = rangeAriaLabel
+        ? typeof rangeAriaLabel === 'string'
+          ? (rangeAriaLabel as string)
+          : (rangeAriaLabel as ICalendarYearRangeToString)(this.props)
+        : undefined;
+      return (
+        <div
+          className={css('ms-DatePicker-currentDecade js-showYearPicker', styles.currentDecade, styles.headerToggleView)}
+          onClick={this._onHeaderSelect}
+          onKeyDown={this._onHeaderKeyDown}
+          aria-label={ariaLabel}
+          role="button"
+          tabIndex={0}
+        >
+          {this._onRenderYear(fromYear)} - {this._onRenderYear(toYear)}
+        </div>
+      );
+    }
     return (
       <div className={css('ms-DatePicker-currentDecade js-showYearPicker', styles.currentDecade)}>
-        {this._onRenderYear(this.props.fromYear)} - {this._onRenderYear(this.props.toYear)}
+        {this._onRenderYear(fromYear)} - {this._onRenderYear(toYear)}
       </div>
     );
   }
+  private _onHeaderSelect = () => {
+    if (this.props.onHeaderSelect) {
+      this.props.onHeaderSelect(true);
+    }
+  };
+  private _onHeaderKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
+    if (this.props.onHeaderSelect && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
+      this.props.onHeaderSelect(true);
+    }
+  };
   private _onRenderYear = (year: number) => {
     if (this.props.onRenderYear) {
       return this.props.onRenderYear(year);

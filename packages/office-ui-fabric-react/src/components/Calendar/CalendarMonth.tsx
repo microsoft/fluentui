@@ -13,7 +13,7 @@ import {
 } from '../../utilities/dateMath/DateMath';
 import { Icon } from '../../Icon';
 import * as stylesImport from './Calendar.scss';
-import { CalendarYear } from './CalendarYear';
+import { CalendarYear, ICalendarYearRange } from './CalendarYear';
 const styles: any = stylesImport;
 
 export interface ICalendarMonth {
@@ -97,8 +97,12 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
           maxYear={maxDate ? maxDate.getFullYear() : undefined}
           onSelectYear={this._onSelectYear}
           navigationIcons={navigationIcons}
+          onHeaderSelect={this._onYearPickerHeaderSelect}
           selectedYear={selectedDate ? selectedDate.getFullYear() : navigatedDate ? navigatedDate.getFullYear() : undefined}
           onRenderYear={this._onRenderYear}
+          strings={{
+            rangeAriaLabel: this._yearRangeToString
+          }}
           ref={this._onCalendarYearRef}
         />
       );
@@ -239,21 +243,28 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
     if (navYear !== selectedYear) {
       const newNavigationDate = new Date(navigatedDate.getTime());
       newNavigationDate.setFullYear(selectedYear);
-      onNavigateDate(newNavigationDate, false);
+      onNavigateDate(newNavigationDate, true);
     }
     this.setState({ isYearPickerVisible: false });
   };
 
-  private _onRenderYear = (year: number) => {
+  private _yearToString = (year: number) => {
     const { navigatedDate, dateTimeFormatter } = this.props;
-    // date time formatter's actually a mandatory prop - but just in case
     if (dateTimeFormatter) {
       // create a date based on the current nav date
       const yearFormattingDate = new Date(navigatedDate.getTime());
       yearFormattingDate.setFullYear(year);
       return dateTimeFormatter.formatYear(yearFormattingDate);
     }
-    return year;
+    return String(year);
+  };
+
+  private _yearRangeToString = (yearRange: ICalendarYearRange) => {
+    return `${this._yearToString(yearRange.fromYear)} - ${this._yearToString(yearRange.toYear)}`;
+  };
+
+  private _onRenderYear = (year: number) => {
+    return this._yearToString(year);
   };
 
   private _onSelectNextYear = (): void => {
@@ -300,6 +311,11 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
     } else if (onHeaderSelect) {
       onHeaderSelect(true);
     }
+  };
+
+  private _onYearPickerHeaderSelect = (focus: boolean): void => {
+    this._focusOnUpdate = focus;
+    this.setState({ isYearPickerVisible: false });
   };
 
   private _onHeaderKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
