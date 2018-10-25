@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Mon, 22 Oct 2018 12:29:57 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Oct 2018 12:28:58 GMT and should not be manually modified.
+
+## 6.10.4
+Wed, 24 Oct 2018 12:28:58 GMT
+
+### Patches
+
+- IRawStyleBase: Replace string type on display property with a more specific type of possible values.
 
 ## 6.10.3
 Mon, 22 Oct 2018 12:29:57 GMT

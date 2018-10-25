@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.10.4",
+      "tag": "@uifabric/merge-styles_v6.10.4",
+      "date": "Wed, 24 Oct 2018 12:28:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "IRawStyleBase: Replace string type on display property with a more specific type of possible values.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "e8ac70df6f544134a4e8cbccf87a66d37327d9f6"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.10.3",
       "tag": "@uifabric/merge-styles_v6.10.3",
       "date": "Mon, 22 Oct 2018 12:29:57 GMT",

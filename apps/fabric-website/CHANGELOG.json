@@ -2,6 +2,28 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.6.2",
+      "tag": "@uifabric/fabric-website_v6.6.2",
+      "date": "Wed, 24 Oct 2018 12:28:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Nav: fix loosely typed const after changes in display property type of IRawStyleBase.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "e8ac70df6f544134a4e8cbccf87a66d37327d9f6"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.39.3 <7.0.0` to `>=6.39.4 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.91.0 <7.0.0` to `>=6.92.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.6.1",
       "tag": "@uifabric/fabric-website_v6.6.1",
       "date": "Wed, 17 Oct 2018 01:29:55 GMT",

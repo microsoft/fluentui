@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ResizeGroup: Moved relative style to inner wrapper div",
+      "comment": "CommandBar: Remove duplicate className prop application.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com"
+  "email": "jagore@microsoft.com"
 }

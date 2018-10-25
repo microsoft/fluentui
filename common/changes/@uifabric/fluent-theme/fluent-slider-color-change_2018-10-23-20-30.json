@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/fluent-theme",
-      "comment": "Fluent theme: Update Toggle font weight and hover color",
+      "comment": "Fluent theme: Update Slider colors",
       "type": "patch"
     }
   ],
