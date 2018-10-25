@@ -40,7 +40,7 @@ export enum Shade {
 
 /**
  * Returns true if the argument is a valid Shade value
- * @param {Shade} shade The Shade value to validate.
+ * @param shade - The Shade value to validate.
  */
 export function isValidShade(shade?: Shade): boolean {
   'use strict';
@@ -92,9 +92,9 @@ export function isDark(color: IColor): boolean {
  *  soften
  * else default
  *  soften or strongen depending on shade#
- * @param {IColor} color The base color whose shade is to be computed
- * @param {Shade} shade The shade of the base color to compute
- * @param {Boolean} isInverted Default false. Whether the given theme is inverted (reverse strongen/soften logic)
+ * @param color - The base color whose shade is to be computed
+ * @param shade - The shade of the base color to compute
+ * @param isInverted - Default false. Whether the given theme is inverted (reverse strongen/soften logic)
  */
 export function getShade(color: IColor, shade: Shade, isInverted: boolean = false): IColor | null {
   'use strict';

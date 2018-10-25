@@ -1,6 +1,34 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 22 Oct 2018 12:29:57 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Oct 2018 12:30:06 GMT and should not be manually modified.
+
+## 6.92.1
+Thu, 25 Oct 2018 12:30:06 GMT
+
+### Patches
+
+- CommandBar: Remove duplicate className prop application.
+- Add unit tests for DetailsList onRenderMissingItem prop.
+- Dropdown: Add support for onFocus callback
+
+## 6.92.0
+Wed, 24 Oct 2018 12:28:58 GMT
+
+### Minor changes
+
+- Add an optional parameter to allow Dropdown to call onChanged when an item is clicked, even if that item was already selected
+- Tooltip: change display property of TooltipHost to inline-block to properly behave when wrapping inline or inline-block children.
+
+### Patches
+
+- ResizeGroup: Moved relative style to inner wrapper div
+
+## 6.91.0
+Tue, 23 Oct 2018 12:32:16 GMT
+
+### Minor changes
+
+- TooltipHost: convert to CSS-in-JS
 
 ## 6.90.0
 Mon, 22 Oct 2018 12:29:57 GMT

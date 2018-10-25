@@ -116,7 +116,11 @@ exports[`Persona renders Persona children correctly 1`] = `
           }
     >
       <div
-        className="ms-TooltipHost"
+        className=
+            ms-TooltipHost
+            {
+              display: inline;
+            }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}
@@ -301,7 +305,11 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
           }
     >
       <div
-        className="ms-TooltipHost"
+        className=
+            ms-TooltipHost
+            {
+              display: inline;
+            }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}
@@ -494,7 +502,11 @@ exports[`Persona renders Persona correctly with image 1`] = `
           }
     >
       <div
-        className="ms-TooltipHost"
+        className=
+            ms-TooltipHost
+            {
+              display: inline;
+            }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}
@@ -661,7 +673,11 @@ exports[`Persona renders Persona correctly with initials 1`] = `
           }
     >
       <div
-        className="ms-TooltipHost"
+        className=
+            ms-TooltipHost
+            {
+              display: inline;
+            }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}
@@ -1080,7 +1096,11 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
           }
     >
       <div
-        className="ms-TooltipHost"
+        className=
+            ms-TooltipHost
+            {
+              display: inline;
+            }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}
@@ -1102,7 +1122,11 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
           }
     >
       <div
-        className="ms-TooltipHost"
+        className=
+            ms-TooltipHost
+            {
+              display: inline;
+            }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}
@@ -1125,7 +1149,11 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
           }
     >
       <div
-        className="ms-TooltipHost"
+        className=
+            ms-TooltipHost
+            {
+              display: inline;
+            }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}
@@ -1148,7 +1176,11 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
           }
     >
       <div
-        className="ms-TooltipHost"
+        className=
+            ms-TooltipHost
+            {
+              display: inline;
+            }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}
@@ -1380,7 +1412,11 @@ exports[`Persona renders correctly with onRender callback 1`] = `
           }
     >
       <div
-        className="ms-TooltipHost"
+        className=
+            ms-TooltipHost
+            {
+              display: inline;
+            }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}
@@ -1402,7 +1438,11 @@ exports[`Persona renders correctly with onRender callback 1`] = `
           }
     >
       <div
-        className="ms-TooltipHost"
+        className=
+            ms-TooltipHost
+            {
+              display: inline;
+            }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}
@@ -1425,7 +1465,11 @@ exports[`Persona renders correctly with onRender callback 1`] = `
           }
     >
       <div
-        className="ms-TooltipHost"
+        className=
+            ms-TooltipHost
+            {
+              display: inline;
+            }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}
@@ -1448,7 +1492,11 @@ exports[`Persona renders correctly with onRender callback 1`] = `
           }
     >
       <div
-        className="ms-TooltipHost"
+        className=
+            ms-TooltipHost
+            {
+              display: inline;
+            }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}

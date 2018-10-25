@@ -64,7 +64,7 @@ const GlobalClassNames = {
 };
 
 /**
- * @deprecated
+ * @deprecated To be removed in 7.0.
  * @internal
  * This is a package-internal method that has been depended on.
  * It is being kept in this form for backwards compatibility.
@@ -102,16 +102,16 @@ export const getItemClassNames = memoizeFunction(
         expanded && [classNames.isExpanded, styles.rootExpanded],
         disabled && [classNames.isDisabled, styles.rootDisabled],
         !disabled &&
-          !expanded && [
-            {
-              selectors: {
-                ':hover': styles.rootHovered,
-                ':active': styles.rootPressed,
-                [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus:hover`]: styles.rootFocused,
-                [`.${IsFocusVisibleClassName} &:hover`]: { background: 'inherit;' }
-              }
+        !expanded && [
+          {
+            selectors: {
+              ':hover': styles.rootHovered,
+              ':active': styles.rootPressed,
+              [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus:hover`]: styles.rootFocused,
+              [`.${IsFocusVisibleClassName} &:hover`]: { background: 'inherit;' }
             }
-          ],
+          }
+        ],
         className
       ],
       splitPrimary: [
@@ -119,16 +119,16 @@ export const getItemClassNames = memoizeFunction(
         checked && ['is-checked', styles.rootChecked],
         (disabled || primaryDisabled) && ['is-disabled', styles.rootDisabled],
         !(disabled || primaryDisabled) &&
-          !checked && [
-            {
-              selectors: {
-                ':hover': styles.rootHovered,
-                ':active': styles.rootPressed,
-                [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus:hover`]: styles.rootFocused,
-                [`.${IsFocusVisibleClassName} &:hover`]: { background: 'inherit;' }
-              }
+        !checked && [
+          {
+            selectors: {
+              ':hover': styles.rootHovered,
+              ':active': styles.rootPressed,
+              [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus:hover`]: styles.rootFocused,
+              [`.${IsFocusVisibleClassName} &:hover`]: { background: 'inherit;' }
             }
-          ]
+          }
+        ]
       ],
       splitMenu: [
         styles.root,
@@ -138,16 +138,16 @@ export const getItemClassNames = memoizeFunction(
         expanded && ['is-expanded', styles.rootExpanded],
         disabled && ['is-disabled', styles.rootDisabled],
         !disabled &&
-          !expanded && [
-            {
-              selectors: {
-                ':hover': styles.rootHovered,
-                ':active': styles.rootPressed,
-                [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus:hover`]: styles.rootFocused,
-                [`.${IsFocusVisibleClassName} &:hover`]: { background: 'inherit;' }
-              }
+        !expanded && [
+          {
+            selectors: {
+              ':hover': styles.rootHovered,
+              ':active': styles.rootPressed,
+              [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus:hover`]: styles.rootFocused,
+              [`.${IsFocusVisibleClassName} &:hover`]: { background: 'inherit;' }
             }
-          ]
+          }
+        ]
       ],
       anchorLink: styles.anchorLink,
       linkContent: [classNames.linkContent, styles.linkContent],
@@ -173,13 +173,13 @@ export const getItemClassNames = memoizeFunction(
       splitContainer: [
         styles.splitButtonFlexContainer,
         !disabled &&
-          !checked && [
-            {
-              selectors: {
-                [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus:hover`]: styles.rootFocused
-              }
+        !checked && [
+          {
+            selectors: {
+              [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus:hover`]: styles.rootFocused
             }
-          ]
+          }
+        ]
       ]
     });
   }
