@@ -9,6 +9,9 @@ export interface ITextField {
   /** Sets focus to the input. */
   focus: () => void;
 
+  /** Blurs the input */
+  blur: () => void;
+
   /** Select the value of the text field. */
   select: () => void;
 
@@ -286,16 +289,8 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
 
 export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> &
   Pick<
-  ITextFieldProps,
-  | 'className'
-  | 'disabled'
-  | 'inputClassName'
-  | 'required'
-  | 'multiline'
-  | 'borderless'
-  | 'resizable'
-  | 'underlined'
-  | 'iconClass'
+    ITextFieldProps,
+    'className' | 'disabled' | 'inputClassName' | 'required' | 'multiline' | 'borderless' | 'resizable' | 'underlined' | 'iconClass'
   > & {
     /** Element has an error message. */
     hasErrorMessage?: boolean;
