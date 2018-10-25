@@ -1,8 +1,5 @@
 {
   "extends": ["@uifabric/tslint-rules"],
-  "linterOptions": {
-    "exclude": ["temp/*.ts", "etc/*.ts"]
-  },
   "rules": {
     "deprecation": false,
     "jsx-ban-props": false,
