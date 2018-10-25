@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
-export interface IImage {}
+export interface IImage { }
 
 export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   /**
@@ -49,9 +49,10 @@ export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   imageFit?: ImageFit;
 
   /**
-   * Deprecated at v1.3.6, to replace the src in case of errors, use onLoadingStateChange instead and
+   * Deprecated at v1.3.6, to replace the src in case of errors, use `onLoadingStateChange` instead and
    * rerender the Image with a difference src.
-   * @deprecated
+   * @deprecated Use `onLoadingStateChange` instead and
+   * rerender the Image with a difference src.
    */
   errorSrc?: string;
 
@@ -142,9 +143,10 @@ export enum ImageLoadState {
   error = 2,
 
   /**
-   * Deprecated at v1.3.6, to replace the src in case of errors, use onLoadingStateChange instead
+   * Deprecated at v1.3.6, to replace the src in case of errors, use `onLoadingStateChange` instead
    * and rerender the Image with a difference src.
-   * @deprecated
+   * @deprecated Use `onLoadingStateChange` instead
+   * and rerender the Image with a difference src.
    */
   errorLoaded = 3
 }

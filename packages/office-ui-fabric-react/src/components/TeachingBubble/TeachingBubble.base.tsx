@@ -15,9 +15,9 @@ export interface ITeachingBubbleState {
 export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITeachingBubbleState> {
   public static defaultProps = {
     /**
-     * Default calloutProps is deprecated in favor of private _defaultCalloutProps.
+     * Default calloutProps is deprecated in favor of private `_defaultCalloutProps`.
      * Remove in next release.
-     * @deprecated
+     * @deprecated In favor of private `_defaultCalloutProps`.
      */
     calloutProps: {
       beakWidth: 16,

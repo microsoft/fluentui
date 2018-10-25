@@ -46,7 +46,7 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
 
   /**
    * Length of delay
-   * @default medium
+   * @defaultvalue medium
    */
   delay?: TooltipDelay;
 

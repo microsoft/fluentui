@@ -2,7 +2,7 @@ import { ITheme, IStyle } from '../../Styling';
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IColor } from '../../utilities/color/colors';
 
-export interface IColorPicker {}
+export interface IColorPicker { }
 
 export interface IColorPickerProps extends IBaseProps<IColorPicker> {
   /**
@@ -27,31 +27,31 @@ export interface IColorPickerProps extends IBaseProps<IColorPicker> {
 
   /**
    * Label for the hex textfield.
-   * @default Hex
+   * @defaultvalue Hex
    */
   hexLabel?: string;
 
   /**
    * Label for the red textfield.
-   * @default Red
+   * @defaultvalue Red
    */
   redLabel?: string;
 
   /**
    * Label for the green textfield.
-   * @default Green
+   * @defaultvalue Green
    */
   greenLabel?: string;
 
   /**
    * Label for the blue textfield.
-   * @default Blue
+   * @defaultvalue Blue
    */
   blueLabel?: string;
 
   /**
    * Label for the alpha textfield.
-   * @default Alpha
+   * @defaultvalue Alpha
    */
   alphaLabel?: string;
 

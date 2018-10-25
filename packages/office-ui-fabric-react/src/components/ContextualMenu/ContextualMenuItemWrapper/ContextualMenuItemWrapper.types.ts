@@ -47,11 +47,11 @@ export interface IContextualMenuItemWrapperProps extends React.Props<IContextual
 
   /**
    * Method to override the render of the individual menu items.
-   * @default ContextualMenuItem
+   * @defaultvalue ContextualMenuItem
    */
   contextualMenuItemAs?:
-    | React.ComponentClass<IContextualMenuItemProps>
-    | React.StatelessComponent<IContextualMenuItemProps>;
+  | React.ComponentClass<IContextualMenuItemProps>
+  | React.StatelessComponent<IContextualMenuItemProps>;
 
   /**
    * Callback for when the user's mouse enters the wrapper.

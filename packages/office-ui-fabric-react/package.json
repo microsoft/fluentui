@@ -23,6 +23,7 @@
     "start": "cd ../../apps/fabric-website-resources && npm start",
     "start-test": "node ../../scripts/start-test.js",
     "update-snapshots": "node ../../scripts/build.js jest -u",
+    "update-api": "node ../../scripts/update-api.js",
     "codepen": "node ../../scripts/local-codepen.js"
   },
   "devDependencies": {
