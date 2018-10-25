@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 23 Oct 2018 12:32:16 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Oct 2018 12:28:58 GMT and should not be manually modified.
+
+## 6.39.4
+Wed, 24 Oct 2018 12:28:58 GMT
+
+### Patches
+
+- fix breaking changes for odsp
 
 ## 6.39.3
 Tue, 23 Oct 2018 12:32:16 GMT
