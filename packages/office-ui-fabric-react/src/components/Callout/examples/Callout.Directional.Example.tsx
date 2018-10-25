@@ -80,7 +80,6 @@ export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirec
             beakWidth={beakWidth}
             onDismiss={this._onCalloutDismiss}
             directionalHint={directionalHint}
-            alignPerfectlyWithTarget={true}
           >
             <div className="ms-CalloutExample-header">
               <p className="ms-CalloutExample-title">All of your favorite people</p>

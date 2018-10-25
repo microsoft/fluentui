@@ -266,7 +266,7 @@ function _flipToFit(
 /**
  * Flips only the alignment edge of an element rectangle. This is used instead of nudging the alignment edges into position,
  * when alignPerfectlyWithTarget is specified.
- * This returns the initial elementEstimate if the flipping does not work.
+ * Returns the initial elementEstimate if the flipping does not work.
  * @param elementEstimate
  * @param target
  * @param bounding
