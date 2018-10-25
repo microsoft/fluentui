@@ -1,6 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Tue, 23 Oct 2018 12:32:16 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Oct 2018 12:30:05 GMT and should not be manually modified.
+
+## 0.26.0
+Thu, 25 Oct 2018 12:30:05 GMT
+
+### Minor changes
+
+- Added support to line chart for edge case scenario like when no data is passed to line chart
 
 ## 0.25.2
 Tue, 23 Oct 2018 12:32:15 GMT

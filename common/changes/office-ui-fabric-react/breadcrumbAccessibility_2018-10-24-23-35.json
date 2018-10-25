@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add unit tests for DetailsList onRenderMissingItem prop.",
+      "comment": "Breadcrumb: add overflowAriaLabel to examples",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "keco@microsoft.com"
+  "email": "naethell@microsoft.com"
 }

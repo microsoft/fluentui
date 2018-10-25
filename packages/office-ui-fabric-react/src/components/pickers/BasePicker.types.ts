@@ -88,7 +88,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   pickerCalloutProps?: ICalloutProps;
   /**
    * AutoFill input native props
-   * @default undefined
+   * @defaultvalue undefined
    */
   inputProps?: IInputProps;
   /**
@@ -105,13 +105,13 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   searchingText?: ((props: { input: string }) => string) | string;
   /**
    * Flag for disabling the picker.
-   * @default false
+   * @defaultvalue false
    */
   disabled?: boolean;
 
   /**
    * Restrict the amount of selectable items.
-   * @default undefined
+   * @defaultvalue undefined
    */
   itemLimit?: number;
   /**
@@ -120,7 +120,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   createGenericItem?: (input: string, ValidationState: ValidationState) => ISuggestionModel<T> | T;
   /**
    * Aria label for the "X" button in the selected item component.
-   * @default ''
+   * @defaultvalue ''
    */
   removeButtonAriaLabel?: string;
   /**
@@ -145,7 +145,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * Adds an additional alert for the currently selected suggestion. This prop should be set to true for IE11 and below, as it
    * enables proper screen reader behavior for each suggestion (since aria-activedescendant does not work with IE11).
    * It should not be set for modern browsers (Edge, Chrome).
-   * @default false
+   * @defaultvalue false
    */
   enableSelectedSuggestionAlert?: boolean;
 }

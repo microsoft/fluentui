@@ -17,6 +17,11 @@ export interface IGroupHeaderProps extends IGroupDividerProps {
    * Custom classname
    */
   className?: string;
+
+  /**
+   * GroupedList id for aria-controls
+   */
+  groupedListId?: string;
 }
 
 export type IGroupHeaderStyleProps = Required<Pick<IGroupHeaderProps, 'theme'>> &

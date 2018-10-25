@@ -303,8 +303,8 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
   /**
    * measure cell at index. and call the call back with the measured cell width when finish measure
    *
-   * @param {number} index (the cell index)
-   * @param {(width: number) => void} onMeasureDone (the call back function when finish measure)
+   * @param index - The cell index
+   * @param onMeasureDone - The call back function when finish measure
    */
   public measureCell(index: number, onMeasureDone: (width: number) => void): void {
     const { columns = NO_COLUMNS } = this.props;
@@ -394,8 +394,8 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
    * when change to false, that means drag leave. we will remove the dropping class name from root element.
    *
    * @private
-   * @param {boolean} newValue (new isDropping state value)
-   * @param {DragEvent} event (the event trigger dropping state change which can be dragenter, dragleave etc)
+   * @param newValue - New isDropping state value
+   * @param event - The event trigger dropping state change which can be dragenter, dragleave etc
    */
   private _updateDroppingState(newValue: boolean, event: DragEvent): void {
     const { selectionState, isDropping } = this.state;

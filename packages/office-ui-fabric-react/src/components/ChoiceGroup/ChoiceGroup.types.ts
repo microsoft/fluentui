@@ -3,7 +3,7 @@ import { IIconProps } from '../../Icon';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { ITheme, IStyle } from '../../Styling';
 
-export interface IChoiceGroup {}
+export interface IChoiceGroup { }
 
 export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement> {
   /**
@@ -39,8 +39,8 @@ export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement
   label?: string;
 
   /**
-   * Deprecated and will be removed by 07/17/2017 Use 'onChange' instead.
-   * @deprecated
+   * Deprecated and will be removed by 07/17/2017. Use `onChange` instead.
+   * @deprecated Use `onChange` instead.
    */
   onChanged?: (option: IChoiceGroupOption, evt?: React.FormEvent<HTMLElement | HTMLInputElement>) => void;
 
@@ -103,7 +103,7 @@ export interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | H
 
   /**
    * The width and height of the image in px for choice field.
-   * @default { width: 32, height: 32 }
+   * @defaultvalue \{ width: 32, height: 32 \}
    */
   imageSize?: { width: number; height: number };
 

@@ -2,6 +2,30 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.92.1",
+      "tag": "office-ui-fabric-react_v6.92.1",
+      "date": "Thu, 25 Oct 2018 12:30:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "CommandBar: Remove duplicate className prop application.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "ba457b8bb24332cdd51e92aaadf2dd9c66582892"
+          },
+          {
+            "comment": "Add unit tests for DetailsList onRenderMissingItem prop.",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "55ccc1e50cd31474c6d8102f7882dd469e511cc8"
+          },
+          {
+            "comment": "Dropdown: Add support for onFocus callback",
+            "author": "Michael Sadahiro <michaelsadahiro@gmail.com>",
+            "commit": "5c8c85e594be0f0d780158d6d7c8fe480e35ba8a"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.92.0",
       "tag": "office-ui-fabric-react_v6.92.0",
       "date": "Wed, 24 Oct 2018 12:28:58 GMT",

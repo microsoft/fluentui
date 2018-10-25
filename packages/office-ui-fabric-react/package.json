@@ -1,6 +1,6 @@
 {
   "name": "office-ui-fabric-react",
-  "version": "6.92.0",
+  "version": "6.92.1",
   "description": "Reusable React components for building experiences for Office 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -23,6 +23,7 @@
     "start": "cd ../../apps/fabric-website-resources && npm start",
     "start-test": "node ../../scripts/start-test.js",
     "update-snapshots": "node ../../scripts/build.js jest -u",
+    "update-api": "node ../../scripts/update-api.js",
     "codepen": "node ../../scripts/local-codepen.js"
   },
   "devDependencies": {
