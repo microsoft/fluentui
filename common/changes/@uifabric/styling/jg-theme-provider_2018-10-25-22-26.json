@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "@uifabric/styling",
-      "comment": "Adapt scheme functionality for use by theme provider.",
-      "type": "patch"
+      "comment": "API changes to getSchemedContext for use by theme provider.",
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/styling",
