@@ -2396,6 +2396,7 @@ interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
   hidden?: boolean;
   hideOverflow?: boolean;
   isBeakVisible?: boolean;
+  layerProps?: ILayerProps;
   minPagePadding?: number;
   onDismiss?: (ev?: any) => void;
   onLayerMounted?: () => void;
@@ -2845,6 +2846,7 @@ interface IColumn {
   name: string;
   onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => any;
   onColumnContextMenu?: (column?: IColumn, ev?: React.MouseEvent<HTMLElement>) => any;
+  onColumnResize?: (width?: number) => void;
   onRender?: (item?: any, index?: number, column?: IColumn) => any;
   onRenderDivider?: IRenderFunction<IDetailsColumnProps>;
   sortAscendingAriaLabel?: string;
