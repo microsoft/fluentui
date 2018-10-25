@@ -414,6 +414,9 @@ export interface IColumn {
 
   /**
    * If provided, will be executed when the column is resized with the column's current width.
+   * Prefer this callback over `DetailsList` `onColumnResize` if you require the `IColumn` to
+   * report its width after every resize event. Consider debouncing the callback if resize events
+   * occur frequently.
    */
   onColumnResize?: (width?: number) => void;
 
