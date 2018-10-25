@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode, createRef } from '../../Utilities';
+import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode } from '../../Utilities';
 import { ISliderProps, ISlider, ISliderStyleProps, ISliderStyles } from './Slider.types';
 import { classNamesFunction } from '../../Utilities';
 import { Label } from '../../Label';
@@ -29,8 +29,8 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     buttonProps: {}
   };
 
-  private _sliderLine = createRef<HTMLDivElement>();
-  private _thumb = createRef<HTMLSpanElement>();
+  private _sliderLine = React.createRef<HTMLDivElement>();
+  private _thumb = React.createRef<HTMLSpanElement>();
   private _id: string;
 
   constructor(props: ISliderProps) {
@@ -65,19 +65,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
   }
 
   public render(): React.ReactElement<{}> {
-    const {
-      ariaLabel,
-      className,
-      disabled,
-      label,
-      max,
-      min,
-      showValue,
-      buttonProps,
-      vertical,
-      styles,
-      theme
-    } = this.props;
+    const { ariaLabel, className, disabled, label, max, min, showValue, buttonProps, vertical, styles, theme } = this.props;
     const { value, renderedValue } = this.state;
     const thumbOffsetPercent: number = min === max ? 0 : ((renderedValue! - min!) / (max! - min!)) * 100;
     const lengthString = vertical ? 'height' : 'width';
@@ -118,11 +106,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
             role="slider"
           >
             <div ref={this._sliderLine} className={classNames.line}>
-              <span
-                ref={this._thumb}
-                className={classNames.thumb}
-                style={this._getThumbStyle(vertical, thumbOffsetPercent)}
-              />
+              <span ref={this._thumb} className={classNames.thumb} style={this._getThumbStyle(vertical, thumbOffsetPercent)} />
               <span
                 className={css(classNames.lineContainer, classNames.activeSection)}
                 style={{ [lengthString]: thumbOffsetPercent + '%' }}
@@ -225,9 +209,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
         break;
       case 'touchstart':
       case 'touchmove':
-        currentPosition = !vertical
-          ? (event as TouchEvent).touches[0].clientX
-          : (event as TouchEvent).touches[0].clientY;
+        currentPosition = !vertical ? (event as TouchEvent).touches[0].clientX : (event as TouchEvent).touches[0].clientY;
         break;
     }
     return currentPosition;
