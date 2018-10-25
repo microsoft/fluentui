@@ -429,16 +429,6 @@ interface IRawStyle extends IRawStyleBase {
 }
 
 // @public (undocumented)
-interface IRGB {
-  // (undocumented)
-  b: number;
-  // (undocumented)
-  g: number;
-  // (undocumented)
-  r: number;
-}
-
-// @public (undocumented)
 interface IScheme {
   disableGlobalClassNames: boolean;
   // (undocumented)

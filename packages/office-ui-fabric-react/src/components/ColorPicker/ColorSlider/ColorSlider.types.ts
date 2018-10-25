@@ -1,7 +1,7 @@
 import { ITheme, IStyle } from '../../../Styling';
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
 
-export interface IColorSlider {}
+export interface IColorSlider { }
 
 export interface IColorSliderProps extends IBaseProps<IColorSlider> {
   /**
@@ -40,7 +40,8 @@ export interface IColorSliderProps extends IBaseProps<IColorSlider> {
   onChange?: (event: React.MouseEvent<HTMLElement>, newValue?: number) => void;
 
   /**
-   * @deprecated Use onChange instead.
+   * Deprecated, use `onChange` instead.
+   * @deprecated Use `onChange` instead.
    */
   onChanged?: (newValue: number) => void;
 

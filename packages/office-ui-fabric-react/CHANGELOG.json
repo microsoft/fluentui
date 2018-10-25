@@ -2,6 +2,64 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.92.1",
+      "tag": "office-ui-fabric-react_v6.92.1",
+      "date": "Thu, 25 Oct 2018 12:30:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "CommandBar: Remove duplicate className prop application.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "ba457b8bb24332cdd51e92aaadf2dd9c66582892"
+          },
+          {
+            "comment": "Add unit tests for DetailsList onRenderMissingItem prop.",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "55ccc1e50cd31474c6d8102f7882dd469e511cc8"
+          },
+          {
+            "comment": "Dropdown: Add support for onFocus callback",
+            "author": "Michael Sadahiro <michaelsadahiro@gmail.com>",
+            "commit": "5c8c85e594be0f0d780158d6d7c8fe480e35ba8a"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.92.0",
+      "tag": "office-ui-fabric-react_v6.92.0",
+      "date": "Wed, 24 Oct 2018 12:28:58 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add an optional parameter to allow Dropdown to call onChanged when an item is clicked, even if that item was already selected",
+            "author": "janormanms <40806783+janormanms@users.noreply.github.com>",
+            "commit": "093e6e2f275dbdcb6017a3dbf4ec74cfef1131f6"
+          },
+          {
+            "comment": "Tooltip: change display property of TooltipHost to inline-block to properly behave when wrapping inline or inline-block children.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "e8ac70df6f544134a4e8cbccf87a66d37327d9f6"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "ResizeGroup: Moved relative style to inner wrapper div",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "0880b0d495ff0b671df5af4a469a9276786a76dc"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.10.3 <7.0.0` to `>=6.10.4 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.32.1 <7.0.0` to `>=6.32.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.91.0",
       "tag": "office-ui-fabric-react_v6.91.0",
       "date": "Tue, 23 Oct 2018 12:32:16 GMT",
