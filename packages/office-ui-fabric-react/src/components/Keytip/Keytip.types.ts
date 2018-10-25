@@ -2,7 +2,7 @@ import { ICalloutProps } from '../../Callout';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject, IPoint } from '../../Utilities';
 
-export interface IKeytip {}
+export interface IKeytip { }
 
 export interface IKeytipProps {
   /**
@@ -13,29 +13,21 @@ export interface IKeytipProps {
 
   /**
    * Content to put inside the keytip
-   *
-   * @type {string}
    */
   content: string;
 
   /**
    * Theme for the component
-   *
-   * @type {ITheme}
    */
   theme?: ITheme;
 
   /**
    * T/F if the corresponding control for this keytip is disabled
-   *
-   * @type {boolean}
    */
   disabled?: boolean;
 
   /**
    * T/F if the keytip is visible
-   *
-   * @type {boolean}
    */
   visible?: boolean;
 
@@ -43,8 +35,6 @@ export interface IKeytipProps {
    * Function to call when this keytip is activated.
    * 'executeTarget' is the DOM element marked with 'data-ktp-execute-target'.
    * 'target' is the DOM element marked with 'data-ktp-target'.
-   *
-   * @type {(HTMLElement | null, HTMLElement | null) => void}
    */
   onExecute?: (executeTarget: HTMLElement | null, target: HTMLElement | null) => void;
 
@@ -52,61 +42,45 @@ export interface IKeytipProps {
    * Function to call when the keytip is the currentKeytip and a return sequence is pressed.
    * 'executeTarget' is the DOM element marked with 'data-ktp-execute-target'.
    * 'target' is the DOM element marked with 'data-ktp-target'.
-   *
-   * @type {(HTMLElement | null, HTMLElement | null) => void}
    */
   onReturn?: (executeTarget: HTMLElement | null, target: HTMLElement | null) => void;
 
   /**
    * Array of KeySequences which is the full key sequence to trigger this keytip
    * Should not include initial 'start' key sequence
-   *
-   * @type {string[]}
    */
   keySequences: string[];
 
   /**
    * Full KeySequence of the overflow set button, will be set automatically if this keytip is inside an overflow
-   *
-   * @type {string[]}
    */
   overflowSetSequence?: string[];
 
   /**
    * ICalloutProps to pass to the callout element
-   *
-   * @type {string}
    */
   calloutProps?: ICalloutProps;
 
   /**
    * Optional styles for the component.
-   *
-   * @type {IStyleFunctionOrObject<IKeytipStyleProps, IKeytipStyles>}
    */
   styles?: IStyleFunctionOrObject<IKeytipStyleProps, IKeytipStyles>;
 
   /**
    * Offset x and y for the keytip, added from the top-left corner
    * By default the keytip will be anchored to the bottom-center of the element
-   *
-   * @type {IPoint}
    */
   offset?: IPoint;
 
   /**
    * Whether or not this keytip will have children keytips that are dynamically created (DOM is generated on keytip activation)
    * Common cases are a Pivot or Modal
-   *
-   * @type {boolean}
    */
   hasDynamicChildren?: boolean;
 
   /**
    * Whether or not this keytip belongs to a component that has a menu
    * Keytip mode will stay on when a menu is opened, even if the items in that menu have no keytips
-   *
-   * @type {boolean}
    */
   hasMenu?: boolean;
 }
@@ -117,22 +91,16 @@ export interface IKeytipProps {
 export interface IKeytipStyleProps {
   /**
    * The theme for the keytip.
-   *
-   * @type {ITheme}
    */
   theme: ITheme;
 
   /**
    * Whether the keytip is disabled or not.
-   *
-   * @type {boolean}
    */
   disabled?: boolean;
 
   /**
    * T/F if the keytip is visible
-   *
-   * @type {boolean}
    */
   visible?: boolean;
 }
@@ -140,15 +108,11 @@ export interface IKeytipStyleProps {
 export interface IKeytipStyles {
   /**
    * Style for the div container surrounding the keytip content.
-   *
-   * @type {IStyle}
    */
   container: IStyle;
 
   /**
    * Style for the keytip content element.
-   *
-   * @type {IStyle}
    */
   root: IStyle;
 }

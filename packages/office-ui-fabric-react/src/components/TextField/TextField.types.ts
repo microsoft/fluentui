@@ -20,8 +20,8 @@ export interface ITextField {
 
   /**
    * Sets the start and end positions of a selection in a text field.
-   * @param start Index of the start of the selection.
-   * @param end Index of the end of the selection.
+   * @param start - Index of the start of the selection.
+   * @param end - Index of the end of the selection.
    */
   setSelectionRange: (start: number, end: number) => void;
 
@@ -44,31 +44,31 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
 
   /**
    * Whether or not the textfield is a multiline textfield.
-   * @default false
+   * @defaultvalue false
    */
   multiline?: boolean;
 
   /**
    * Whether or not the multiline textfield is resizable.
-   * @default true
+   * @defaultvalue true
    */
   resizable?: boolean;
 
   /**
    * Whether or not to auto adjust textField height. Applies only to multiline textfield.
-   * @default false
+   * @defaultvalue false
    */
   autoAdjustHeight?: boolean;
 
   /**
    * Whether or not the textfield is underlined.
-   * @default false
+   * @defaultvalue false
    */
   underlined?: boolean;
 
   /**
    * Whether or not the textfield is borderless.
-   * @default false
+   * @defaultvalue false
    */
   borderless?: boolean;
 
@@ -93,8 +93,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   onRenderDescription?: IRenderFunction<ITextFieldProps>;
 
   /**
-   * @deprecated
-   * Deprecated; use prefix instead.
+   * @deprecated Use `prefix` instead.
    */
   addonString?: string;
 
@@ -109,8 +108,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   suffix?: string;
 
   /**
-   * @deprecated
-   * Deprecated; use onRenderPrefix instead.
+   * @deprecated Use `onRenderPrefix` instead.
    */
   onRenderAddon?: IRenderFunction<ITextFieldProps>;
 
@@ -143,13 +141,13 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
 
   /**
    * Disabled state of the textfield.
-   * @default false
+   * @defaultvalue false
    */
   disabled?: boolean;
 
   /**
    * If true, the textfield is readonly.
-   * @default false
+   * @defaultvalue false
    */
   readOnly?: boolean;
 
@@ -164,7 +162,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   onChange?: (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void;
 
   /**
-   * @deprecated Use onChange instead.
+   * @deprecated Use `onChange` instead.
    */
   onChanged?: (newValue: any) => void;
 
@@ -195,7 +193,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
 
   /**
    * Text field will start to validate after users stop typing for `deferredValidationTime` milliseconds.
-   * @default 200
+   * @defaultvalue 200
    */
   deferredValidationTime?: number;
 
@@ -216,19 +214,19 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
 
   /**
    * Run validation only on input focus
-   * @default false
+   * @defaultvalue false
    */
   validateOnFocusIn?: boolean;
 
   /**
    * Run validation only on input focus out
-   * @default false
+   * @defaultvalue false
    */
   validateOnFocusOut?: boolean;
 
   /**
    * Optional flag to disable onload validation
-   * @default true
+   * @defaultvalue true
    */
   validateOnLoad?: boolean;
 
@@ -243,8 +241,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   styles?: IStyleFunctionOrObject<ITextFieldStyleProps, ITextFieldStyles>;
 
   /**
-   * @deprecated
-   * Deprecated; use iconProps instead.
+   * @deprecated Use `iconProps` instead.
    */
   iconClass?: string;
 
@@ -266,39 +263,39 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
 
   /**
    * The character to show in place of unfilled characters of the mask.
-   * @default '_'
+   * @defaultvalue '_'
    */
   maskChar?: string;
 
   /**
    * An object defining the format characters and corresponding regexp values.
-   * Default format characters: {
+   * Default format characters: \{
    *  '9': /[0-9]/,
    *  'a': /[a-zA-Z]/,
    *  '*': /[a-zA-Z0-9]/
-   * }
+   * \}
    */
   maskFormat?: { [key: string]: RegExp };
 
   /**
    * Deprecated property. Serves no function.
-   * @deprecated
+   * @deprecated Serves no function.
    */
   componentId?: string;
 }
 
 export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> &
   Pick<
-    ITextFieldProps,
-    | 'className'
-    | 'disabled'
-    | 'inputClassName'
-    | 'required'
-    | 'multiline'
-    | 'borderless'
-    | 'resizable'
-    | 'underlined'
-    | 'iconClass'
+  ITextFieldProps,
+  | 'className'
+  | 'disabled'
+  | 'inputClassName'
+  | 'required'
+  | 'multiline'
+  | 'borderless'
+  | 'resizable'
+  | 'underlined'
+  | 'iconClass'
   > & {
     /** Element has an error message. */
     hasErrorMessage?: boolean;

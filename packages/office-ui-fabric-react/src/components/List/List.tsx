@@ -174,9 +174,9 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
    * Note: with items of variable height and no passed in `getPageHeight` method, the list might jump after scrolling
    * when windows before/ahead are being rendered, and the estimated height is replaced using actual elements.
    *
-   * @param index Index of item to scroll to
-   * @param measureItem Optional callback to measure the height of an individual item
-   * @param scrollToMode Optional defines where in the window the item should be positioned to when scrolling
+   * @param index - Index of item to scroll to
+   * @param measureItem - Optional callback to measure the height of an individual item
+   * @param scrollToMode - Optional defines where in the window the item should be positioned to when scrolling
    */
   public scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode: ScrollToMode = ScrollToMode.auto): void {
     const startIndex = this.props.startIndex as number;
@@ -603,9 +603,9 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
 
   /**
    * Notify consumers that the rendered pages have changed
-   * @param oldPages The old pages
-   * @param newPages The new pages
-   * @param props The props to use
+   * @param oldPages - The old pages
+   * @param newPages - The new pages
+   * @param props - The props to use
    */
   private _notifyPageChanges(oldPages: IPage[], newPages: IPage[], props: IListProps = this.props): void {
     const { onPageAdded, onPageRemoved } = props;

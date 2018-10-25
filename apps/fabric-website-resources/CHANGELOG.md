@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Tue, 23 Oct 2018 12:32:16 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Oct 2018 12:30:06 GMT and should not be manually modified.
+
+## 6.9.8
+Thu, 25 Oct 2018 12:30:05 GMT
+
+### Patches
+
+- Organize pages for development site
 
 ## 6.9.7
 Tue, 23 Oct 2018 12:32:16 GMT

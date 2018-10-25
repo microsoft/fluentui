@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
-export interface IShimmer {}
+export interface IShimmer { }
 
 /**
  * Shimmer component props.
@@ -16,13 +16,13 @@ export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
 
   /**
    * Sets the width value of the shimmer wave wrapper.
-   * @default 100%
+   * @defaultvalue 100%
    */
   width?: number | string;
 
   /**
    * Controls when the shimmer is swapped with actual data through an animated transition.
-   * @default false
+   * @defaultvalue false
    */
   isDataLoaded?: boolean;
 
@@ -80,7 +80,7 @@ export interface IShimmerElement {
 
   /**
    * The vertical alignemt of the element (ICircle, ILine).
-   * @default center
+   * @defaultvalue center
    */
   verticalAlign?: 'top' | 'center' | 'bottom';
 }
@@ -88,13 +88,13 @@ export interface IShimmerElement {
 export interface ILine extends IShimmerElement {
   /**
    * Sets the height of the shimmer line in pixels.
-   * @default 16px
+   * @defaultvalue 16px
    */
   height?: number;
 
   /**
    * Line width value.
-   * @default 100%
+   * @defaultvalue 100%
    */
   width?: number | string;
 }
@@ -103,7 +103,7 @@ export interface ICircle extends IShimmerElement {
   /**
    * Sets the height of the shimmer circle in pixels.
    * Minimum supported 10px.
-   * @default 24px
+   * @defaultvalue 24px
    */
   height?: number;
 }
@@ -111,13 +111,13 @@ export interface ICircle extends IShimmerElement {
 export interface IGap extends IShimmerElement {
   /**
    * Sets the height of the shimmer gap in pixels.
-   * @default 16px
+   * @defaultvalue 16px
    */
   height?: number;
 
   /**
    * Gap width value.
-   * @default 10px
+   * @defaultvalue 10px
    */
   width?: number | string;
 }

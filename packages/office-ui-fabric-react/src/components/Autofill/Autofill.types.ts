@@ -61,7 +61,7 @@ export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputEleme
    * Since the user has taken control. It is automatically reenabled when the user enters text and the
    * cursor is at the end of the text in the input box. This specifies other key presses that will reenabled
    * autofill.
-   * @default [KeyCodes.down, KeyCodes.up]
+   * @defaultvalue [KeyCodes.down, KeyCodes.up]
    */
   enableAutofillOnKeyPress?: KeyCodes[];
 
@@ -77,9 +77,9 @@ export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputEleme
    * Handler for checking and updating the value if needed
    * in componentWillReceiveProps
    *
-   * @param {IAutofillProps} defaultVisibleValue - the defaultVisibleValue that got passed
+   * @param defaultVisibleValue - The defaultVisibleValue that got passed
    *  in to the auto fill's componentWillReceiveProps
-   * @returns {string} - the updated value to set, if needed
+   * @returns - the updated value to set, if needed
    */
   updateValueInWillReceiveProps?: () => string | null;
 
@@ -87,7 +87,7 @@ export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputEleme
    * Handler for checking if the full value of the input should
    * be seleced in componentDidUpdate
    *
-   * @returns {boolean} - should the full value of the input be selected?
+   * @returns - should the full value of the input be selected?
    */
   shouldSelectFullInputValueInComponentDidUpdate?: () => boolean;
 
@@ -98,11 +98,13 @@ export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputEleme
 }
 
 /**
+ * Deprecated, do not use.
  * @deprecated do not use, will be removed in 6.0
  */
-export interface IBaseAutoFill extends IAutofill {}
+export interface IBaseAutoFill extends IAutofill { }
 
 /**
+ * Deprecated, do not use.
  * @deprecated do not use, will be removed in 6.0
  */
-export interface IBaseAutoFillProps extends IAutofillProps {}
+export interface IBaseAutoFillProps extends IAutofillProps { }

@@ -19,13 +19,14 @@ import {
 /**
  * props.mask:
  *  The string containing the prompt and format characters.
- * Example:
- *  'Phone Number: (999) 9999'
+ * @example
+ *  `Phone Number: (999) 9999`
  *
  * _maskCharData
  *  An array of data containing information regarding the format characters,
  *  their indices inside the display text, and their corresponding values.
- * Example:
+ * @example
+ * ```
  *  [
  *    { value: '1', displayIndex: 16, format: /[0-9]/ },
  *    { value: '2', displayIndex: 17, format: /[0-9]/ },
@@ -33,13 +34,14 @@ import {
  *    { value: '4', displayIndex: 22, format: /[0-9]/ },
  *    ...
  *  ]
+ * ```
  */
 export interface IMaskedTextFieldState {
   /**
    * The mask string formatted with the input value.
    * This is what is displayed inside the TextField
-   * Example:
-   *  'Phone Number: 12_ - 4___'
+   * @example
+   *  `Phone Number: 12_ - 4___`
    */
   displayValue: string;
   /** The index into the rendered value of the first unfilled format character */
@@ -130,7 +132,7 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
   }
 
   /**
-   * @return The value of all filled format characters or undefined if not all format characters are filled
+   * @returns The value of all filled format characters or undefined if not all format characters are filled
    */
   public get value(): string | undefined {
     let value = '';

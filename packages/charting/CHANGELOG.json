@@ -2,6 +2,25 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.26.0",
+      "tag": "@uifabric/charting_v0.26.0",
+      "date": "Thu, 25 Oct 2018 12:30:05 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Added support to line chart for edge case scenario like when no data is passed to line chart",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "c29af951bf77d71c552ec3b35c90914b46e02432"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.92.0 <7.0.0` to `>=6.92.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.25.2",
       "tag": "@uifabric/charting_v0.25.2",
       "date": "Tue, 23 Oct 2018 12:32:15 GMT",

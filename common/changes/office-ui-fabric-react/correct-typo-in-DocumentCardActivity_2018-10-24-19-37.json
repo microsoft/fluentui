@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "CommandBar: Remove duplicate className prop application.",
+      "comment": "Fix typo in role attribute in DocumentCardActivity",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "jagore@microsoft.com"
+  "email": "mark@thedutchies.com"
 }

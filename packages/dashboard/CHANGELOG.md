@@ -1,6 +1,13 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Tue, 23 Oct 2018 12:32:16 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Oct 2018 12:30:05 GMT and should not be manually modified.
+
+## 0.31.0
+Thu, 25 Oct 2018 12:30:05 GMT
+
+### Minor changes
+
+- Adding support when there is no data for line chart, removing unwanted div's that is not letting flex do it job
 
 ## 0.30.3
 Tue, 23 Oct 2018 12:32:16 GMT

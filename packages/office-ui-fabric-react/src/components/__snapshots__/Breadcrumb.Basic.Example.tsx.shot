@@ -2135,6 +2135,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                 <button
                   aria-expanded={false}
                   aria-haspopup={true}
+                  aria-label="More links"
                   aria-owns={null}
                   className=
                       ms-Button
@@ -2890,6 +2891,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                 <button
                   aria-expanded={false}
                   aria-haspopup={true}
+                  aria-label="More items"
                   aria-owns={null}
                   className=
                       ms-Button
