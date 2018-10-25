@@ -2846,6 +2846,7 @@ interface IColumn {
   name: string;
   onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => any;
   onColumnContextMenu?: (column?: IColumn, ev?: React.MouseEvent<HTMLElement>) => any;
+  onColumnResize?: (width?: number) => void;
   onRender?: (item?: any, index?: number, column?: IColumn) => any;
   onRenderDivider?: IRenderFunction<IDetailsColumnProps>;
   sortAscendingAriaLabel?: string;
