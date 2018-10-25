@@ -2,6 +2,7 @@ import { IStyle, ITheme } from '../../Styling';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IRefObject, IPoint, IRectangle, IStyleFunctionOrObject } from '../../Utilities';
 import { ICalloutPositionedInfo } from '../../utilities/positioning';
+import { ILayerProps } from '../../Layer';
 
 export interface ICallout { }
 
@@ -132,6 +133,11 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
    * Optional callback when the layer content has mounted.
    */
   onLayerMounted?: () => void;
+
+  /**
+   * Optional props to pass to the Layer component hosting the panel.
+   */
+  layerProps?: ILayerProps;
 
   /**
    * Optional callback that is called once the callout has been correctly positioned.
