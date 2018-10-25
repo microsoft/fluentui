@@ -2396,6 +2396,7 @@ interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
   hidden?: boolean;
   hideOverflow?: boolean;
   isBeakVisible?: boolean;
+  layerProps?: ILayerProps;
   minPagePadding?: number;
   onDismiss?: (ev?: any) => void;
   onLayerMounted?: () => void;
