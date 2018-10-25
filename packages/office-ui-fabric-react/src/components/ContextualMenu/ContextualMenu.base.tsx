@@ -296,7 +296,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
           gapSpace={gapSpace}
           coverTarget={coverTarget}
           doNotLayer={doNotLayer}
-          className={css('ms-ContextualMenu-Callout', calloutProps ? calloutProps.className : undefined)}
+          className={css('ms-ContextualMenu-Callout', this._classNames.callout, calloutProps ? calloutProps.className : undefined)}
           setInitialFocus={shouldFocusOnMount}
           onDismiss={this.props.onDismiss}
           onScroll={this._onScroll}

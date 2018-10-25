@@ -577,4 +577,9 @@ export interface IContextualMenuStyles {
    * Styles for the list that contains all menuItems.
    */
   list: IStyle;
+
+  /**
+   * Styles for the Callout hosting the container with all menu items
+   */
+  callout: IStyle;
 }
