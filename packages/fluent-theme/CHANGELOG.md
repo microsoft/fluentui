@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Wed, 24 Oct 2018 12:28:58 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Oct 2018 12:30:06 GMT and should not be manually modified.
+
+## 0.1.6
+Thu, 25 Oct 2018 12:30:06 GMT
+
+### Patches
+
+- Fluent theme: Update Slider colors
 
 ## 0.1.5
 Wed, 24 Oct 2018 12:28:58 GMT
