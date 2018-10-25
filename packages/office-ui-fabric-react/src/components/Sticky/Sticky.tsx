@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import { BaseComponent, createRef } from '../../Utilities';
+import { BaseComponent } from '../../Utilities';
 import { IStickyProps, StickyPositionType } from './Sticky.types';
 import { IScrollablePaneContext } from '../ScrollablePane/ScrollablePane.base';
 
@@ -27,10 +27,10 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
   public distanceFromTop: number;
 
-  private _root = createRef<HTMLDivElement>();
-  private _stickyContentTop = createRef<HTMLDivElement>();
-  private _stickyContentBottom = createRef<HTMLDivElement>();
-  private _nonStickyContent = createRef<HTMLDivElement>();
+  private _root = React.createRef<HTMLDivElement>();
+  private _stickyContentTop = React.createRef<HTMLDivElement>();
+  private _stickyContentBottom = React.createRef<HTMLDivElement>();
+  private _nonStickyContent = React.createRef<HTMLDivElement>();
 
   constructor(props: IStickyProps) {
     super(props);

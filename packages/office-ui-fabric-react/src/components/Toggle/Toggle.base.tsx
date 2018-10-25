@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, createRef, getId, inputProperties, getNativeProps } from '../../Utilities';
+import { BaseComponent, classNamesFunction, getId, inputProperties, getNativeProps } from '../../Utilities';
 import { IToggleProps, IToggle, IToggleStyleProps, IToggleStyles } from './Toggle.types';
 import { Label } from '../../Label';
 import { KeytipData } from '../../KeytipData';
@@ -12,7 +12,7 @@ const getClassNames = classNamesFunction<IToggleStyleProps, IToggleStyles>();
 
 export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implements IToggle {
   private _id: string;
-  private _toggleButton = createRef<HTMLButtonElement>();
+  private _toggleButton = React.createRef<HTMLButtonElement>();
 
   constructor(props: IToggleProps) {
     super(props);
@@ -83,11 +83,7 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
         )}
 
         <div className={classNames.container}>
-          <KeytipData
-            keytipProps={keytipProps}
-            ariaDescribedBy={(toggleNativeProps as any)['aria-describedby']}
-            disabled={disabled}
-          >
+          <KeytipData keytipProps={keytipProps} ariaDescribedBy={(toggleNativeProps as any)['aria-describedby']} disabled={disabled}>
             {(keytipAttributes: any): JSX.Element => (
               <button
                 {...toggleNativeProps}

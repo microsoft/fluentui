@@ -5,14 +5,14 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 
-import { createRef, resetIds } from '../../Utilities';
+import { resetIds } from '../../Utilities';
 
 import { TextField } from './TextField';
 import { TextFieldBase } from './TextField.base';
 import { ITextFieldStyles } from './TextField.types';
 
 describe('TextField', () => {
-  const textFieldRef = createRef<TextFieldBase>();
+  const textFieldRef = React.createRef<TextFieldBase>();
 
   beforeEach(() => {
     resetIds();
@@ -42,9 +42,7 @@ describe('TextField', () => {
   it('renders TextField correctly', () => {
     const className = 'testClassName';
     const inputClassName = 'testInputClassName';
-    const component = renderer.create(
-      <TextField label="Label" className={className} inputClassName={inputClassName} />
-    );
+    const component = renderer.create(<TextField label="Label" className={className} inputClassName={inputClassName} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -63,13 +61,7 @@ describe('TextField', () => {
 
   it('renders multiline TextField correctly with props affecting styling', () => {
     const component = renderer.create(
-      <TextField
-        label="Label"
-        errorMessage={'test message'}
-        underlined={true}
-        prefix={'test prefix'}
-        suffix={'test suffix'}
-      />
+      <TextField label="Label" errorMessage={'test message'} underlined={true} prefix={'test prefix'} suffix={'test suffix'} />
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -77,13 +69,7 @@ describe('TextField', () => {
 
   it('renders multiline TextField correctly with errorMessage', () => {
     const component = renderer.create(
-      <TextField
-        label="Label"
-        errorMessage={'test message'}
-        underlined={true}
-        prefix={'test prefix'}
-        suffix={'test suffix'}
-      />
+      <TextField label="Label" errorMessage={'test message'} underlined={true} prefix={'test prefix'} suffix={'test suffix'} />
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -239,9 +225,7 @@ describe('TextField', () => {
         return value.length > 3 ? errorMessage : '';
       }
 
-      const textField = mount(
-        <TextField label="text-field-label" value="whatever value" onGetErrorMessage={validator} />
-      );
+      const textField = mount(<TextField label="text-field-label" value="whatever value" onGetErrorMessage={validator} />);
 
       const inputDOM = textField.getDOMNode().querySelector('input');
       ReactTestUtils.Simulate.change(inputDOM as Element, mockEvent('the input value'));
@@ -255,9 +239,7 @@ describe('TextField', () => {
         return Promise.resolve(value.length > 3 ? errorMessage : '');
       }
 
-      const textField = mount(
-        <TextField label="text-field-label" value="whatever value" onGetErrorMessage={validator} />
-      );
+      const textField = mount(<TextField label="text-field-label" value="whatever value" onGetErrorMessage={validator} />);
 
       const inputDOM = textField.getDOMNode().querySelector('input');
       ReactTestUtils.Simulate.change(inputDOM as Element, mockEvent('the input value'));
@@ -447,9 +429,7 @@ describe('TextField', () => {
         return value.length > 3 ? errorMessage : '';
       };
 
-      const textField = mount(
-        <TextField value="initial value" onGetErrorMessage={validatorSpy} validateOnFocusOut validateOnFocusIn />
-      );
+      const textField = mount(<TextField value="initial value" onGetErrorMessage={validatorSpy} validateOnFocusOut validateOnFocusIn />);
 
       const inputDOM = textField.getDOMNode().querySelector('input') as Element;
       ReactTestUtils.Simulate.input(inputDOM, mockEvent('value before focus'));

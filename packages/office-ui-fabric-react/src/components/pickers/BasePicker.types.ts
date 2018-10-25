@@ -20,7 +20,7 @@ export interface IBasePicker<T> {
 // Type T is the type of the item that is displayed
 // and searched for by the people picker. For example, if the picker is
 // displaying persona's than type T could either be of Persona or Ipersona props
-export interface IBasePickerProps<T> extends React.Props<any> {
+export interface IBasePickerProps<T> extends React.ClassAttributes<any> {
   componentRef?: IRefObject<IBasePicker<T>>;
 
   /**

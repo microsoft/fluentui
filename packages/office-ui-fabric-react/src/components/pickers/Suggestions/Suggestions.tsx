@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, css, KeyCodes, createRef } from '../../../Utilities';
+import { BaseComponent, css, KeyCodes } from '../../../Utilities';
 import { CommandButton, IconButton, IButton } from '../../../Button';
 import { Spinner } from '../../../Spinner';
 import { ISuggestionItemProps, ISuggestionsProps } from './Suggestions.types';
@@ -18,15 +18,7 @@ export interface ISuggestionsState {
 
 export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {}> {
   public render(): JSX.Element {
-    const {
-      suggestionModel,
-      RenderSuggestion,
-      onClick,
-      className,
-      onRemoveItem,
-      isSelectedOverride,
-      removeButtonAriaLabel
-    } = this.props;
+    const { suggestionModel, RenderSuggestion, onClick, className, onRemoveItem, isSelectedOverride, removeButtonAriaLabel } = this.props;
     return (
       <div
         className={css(
@@ -56,9 +48,9 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
 }
 
 export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggestionsState> {
-  protected _forceResolveButton = createRef<IButton>();
-  protected _searchForMoreButton = createRef<IButton>();
-  protected _selectedElement = createRef<HTMLDivElement>();
+  protected _forceResolveButton = React.createRef<IButton>();
+  protected _searchForMoreButton = React.createRef<IButton>();
+  protected _selectedElement = React.createRef<HTMLDivElement>();
   private SuggestionsItemOfProperType = SuggestionsItem as new (props: ISuggestionItemProps<T>) => SuggestionsItem<T>;
   private activeSelectedElement: HTMLDivElement | null;
   constructor(suggestionsProps: ISuggestionsProps<T>) {
@@ -131,29 +123,21 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
             <CommandButton
               componentRef={this._forceResolveButton}
               className={css('ms-forceResolve-button', styles.actionButton, {
-                ['is-selected ' + styles.buttonSelected]:
-                  this.state.selectedActionType === SuggestionActionType.forceResolve
+                ['is-selected ' + styles.buttonSelected]: this.state.selectedActionType === SuggestionActionType.forceResolve
               })}
               onClick={this._forceResolve}
             >
               {forceResolveText}
             </CommandButton>
           )}
-        {isLoading && (
-          <Spinner className={css('ms-Suggestions-spinner', styles.suggestionsSpinner)} label={loadingText} />
-        )}
-        {hasNoSuggestions
-          ? onRenderNoResultFound
-            ? onRenderNoResultFound(undefined, noResults)
-            : noResults()
-          : this._renderSuggestions()}
+        {isLoading && <Spinner className={css('ms-Suggestions-spinner', styles.suggestionsSpinner)} label={loadingText} />}
+        {hasNoSuggestions ? (onRenderNoResultFound ? onRenderNoResultFound(undefined, noResults) : noResults()) : this._renderSuggestions()}
         {searchForMoreText &&
           moreSuggestionsAvailable && (
             <CommandButton
               componentRef={this._searchForMoreButton}
               className={css('ms-SearchMore-button', styles.actionButton, {
-                ['is-selected ' + styles.buttonSelected]:
-                  this.state.selectedActionType === SuggestionActionType.searchMore
+                ['is-selected ' + styles.buttonSelected]: this.state.selectedActionType === SuggestionActionType.searchMore
               })}
               iconProps={{ iconName: 'Search' }}
               onClick={this._getMoreResults}
@@ -161,18 +145,12 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
               {searchForMoreText}
             </CommandButton>
           )}
-        {isSearching ? (
-          <Spinner className={css('ms-Suggestions-spinner', styles.suggestionsSpinner)} label={searchingText} />
-        ) : null}
+        {isSearching ? <Spinner className={css('ms-Suggestions-spinner', styles.suggestionsSpinner)} label={searchingText} /> : null}
         {footerTitle && !moreSuggestionsAvailable && !isMostRecentlyUsedVisible && !isSearching ? (
           <div className={css('ms-Suggestions-title', styles.suggestionsTitle)}>{footerTitle(this.props)}</div>
         ) : null}
         {
-          <span
-            role="alert"
-            aria-live="polite"
-            className={css('ms-Suggestions-suggestionsAvailable', styles.suggestionsAvailable)}
-          >
+          <span role="alert" aria-live="polite" className={css('ms-Suggestions-suggestionsAvailable', styles.suggestionsAvailable)}>
             {!isLoading && !isSearching && suggestions && suggestions.length > 0 && suggestionsAvailableAlertText
               ? suggestionsAvailableAlertText
               : null}

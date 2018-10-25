@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, createRef, elementContains, getId } from '../../Utilities';
+import { BaseComponent, KeyCodes, css, elementContains, getId } from '../../Utilities';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Callout, DirectionalHint } from '../../Callout';
 import { Selection, SelectionZone, SelectionMode } from '../../utilities/selection/index';
@@ -47,10 +47,10 @@ export type IPickerAriaIds = {
 export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBasePickerState> implements IBasePicker<T> {
   protected selection: Selection;
 
-  protected root = createRef<HTMLDivElement>();
-  protected input = createRef<IAutofill>();
-  protected focusZone = createRef<IFocusZone>();
-  protected suggestionElement = createRef<Suggestions<T>>();
+  protected root = React.createRef<HTMLDivElement>();
+  protected input = React.createRef<IAutofill>();
+  protected focusZone = React.createRef<IFocusZone>();
+  protected suggestionElement = React.createRef<Suggestions<T>>();
 
   protected suggestionStore: SuggestionsController<T>;
   protected SuggestionOfProperType = Suggestions as new (props: ISuggestionsProps<T>) => Suggestions<T>;
@@ -455,7 +455,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       this.props.inputProps.onBlur(ev as React.FocusEvent<HTMLInputElement>);
     }
     // Only blur the entire component if an unrelated element gets focus. Otherwise treat it as though it still has focus.
-    if (!elementContains(this.root.value!, ev.relatedTarget as HTMLElement)) {
+    if (!elementContains(this.root.current!, ev.relatedTarget as HTMLElement)) {
       this.setState({ isFocused: false });
       if (this.props.onBlur) {
         this.props.onBlur(ev as React.FocusEvent<HTMLInputElement>);

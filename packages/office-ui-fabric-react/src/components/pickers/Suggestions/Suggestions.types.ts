@@ -3,7 +3,7 @@ import { ISuggestionModel } from './SuggestionsController';
 import { IRefObject, IRenderFunction, KeyCodes } from '../../../Utilities';
 import { IPersonaProps } from '../../Persona/Persona.types';
 
-export interface ISuggestionsProps<T> extends React.Props<any> {
+export interface ISuggestionsProps<T> extends React.ClassAttributes<any> {
   /**
    * Gets the component ref.
    */

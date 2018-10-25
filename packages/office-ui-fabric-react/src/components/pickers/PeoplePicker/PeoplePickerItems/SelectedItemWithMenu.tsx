@@ -1,7 +1,7 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import { BaseComponent, css, createRef } from '../../../../Utilities';
+import { BaseComponent, css } from '../../../../Utilities';
 import { IPeoplePickerItemWithMenuProps } from './PeoplePickerItem.types';
 import { Persona, PersonaPresence } from '../../../../Persona';
 import { ContextualMenu, DirectionalHint } from '../../../../ContextualMenu';
@@ -19,7 +19,7 @@ export class SelectedItemWithMenu extends BaseComponent<IPeoplePickerItemWithMen
     [key: string]: any;
   };
 
-  private _ellipsisRef = createRef<HTMLDivElement>();
+  private _ellipsisRef = React.createRef<HTMLDivElement>();
 
   constructor(props: IPeoplePickerItemWithMenuProps) {
     super(props);
