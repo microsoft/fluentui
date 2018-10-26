@@ -1,6 +1,20 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 18 Oct 2018 20:22:36 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Oct 2018 12:30:05 GMT and should not be manually modified.
+
+## 0.26.0
+Thu, 25 Oct 2018 12:30:05 GMT
+
+### Minor changes
+
+- Added support to line chart for edge case scenario like when no data is passed to line chart
+
+## 0.25.2
+Tue, 23 Oct 2018 12:32:15 GMT
+
+### Patches
+
+- Fix an issue with the demo site not being able to load (in npm start or aka.ms/fabricdemo).
 
 ## 0.25.1
 Thu, 18 Oct 2018 20:22:36 GMT

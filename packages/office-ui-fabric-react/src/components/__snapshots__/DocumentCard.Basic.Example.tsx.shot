@@ -119,7 +119,7 @@ exports[`Component Examples renders DocumentCard.Basic.Example.tsx correctly 1`]
                 font-size: 14px;
                 font-weight: 400;
               }
-          role="persentation"
+          role="presentation"
           size={11}
         >
           <div

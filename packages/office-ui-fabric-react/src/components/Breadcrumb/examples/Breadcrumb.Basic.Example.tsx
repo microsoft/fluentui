@@ -82,6 +82,7 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
           ]}
           maxDisplayedItems={3}
           ariaLabel={'Website breadcrumb'}
+          overflowAriaLabel={'More links'}
         />
 
         <Label className={exampleStyles.exampleLabel} style={{ marginTop: '24px' }}>
@@ -96,6 +97,7 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
           ]}
           maxDisplayedItems={2}
           overflowIndex={1}
+          overflowAriaLabel={'More items'}
         />
       </div>
     );
