@@ -4,7 +4,7 @@ import { IRefObject, IPoint, IRectangle, IStyleFunctionOrObject } from '../../Ut
 import { ICalloutPositionedInfo } from '../../utilities/positioning';
 import { ILayerProps } from '../../Layer';
 
-export interface ICallout { }
+export interface ICallout {}
 
 export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
   /**

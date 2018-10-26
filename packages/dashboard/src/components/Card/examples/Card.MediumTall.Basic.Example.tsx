@@ -63,13 +63,6 @@ export class MediumTallCardBasicExample extends React.Component<{}, {}> {
       annotationText: 'Annotation Text ',
       fontSize: 1
     };
-    return (
-      <Card
-        cardFrameContent={cardFrameContent}
-        header={header}
-        cardContentList={contentAreaList}
-        cardSize={CardSize.mediumTall}
-      />
-    );
+    return <Card cardFrameContent={cardFrameContent} header={header} cardContentList={contentAreaList} cardSize={CardSize.mediumTall} />;
   }
 }

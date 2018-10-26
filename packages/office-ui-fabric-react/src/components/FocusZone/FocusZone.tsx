@@ -122,10 +122,10 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         role="presentation"
         {...divProps}
         {
-        // root props has been deprecated and should get removed.
-        // it needs to be marked as "any" since root props expects a div element, but really Tag can
-        // be any native element so typescript rightly flags this as a problem.
-        ...rootProps as any
+          // root props has been deprecated and should get removed.
+          // it needs to be marked as "any" since root props expects a div element, but really Tag can
+          // be any native element so typescript rightly flags this as a problem.
+          ...rootProps as any
         }
         className={css('ms-FocusZone', className)}
         ref={this._root}

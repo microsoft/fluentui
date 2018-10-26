@@ -5,7 +5,7 @@ import { ImageLoadState } from '../../Image';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
 
-export interface IPersona { }
+export interface IPersona {}
 
 export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
   /**

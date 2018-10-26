@@ -14,8 +14,7 @@ const DropdownErrorExampleCode = require('!raw-loader!office-ui-fabric-react/src
 export const DropdownPageProps: IDocPageProps = {
   title: 'Dropdown',
   componentName: 'Dropdown',
-  componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Dropdown',
+  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Dropdown',
   componentStatus: DropdownStatus,
   examples: [
     {
@@ -37,9 +36,7 @@ export const DropdownPageProps: IDocPageProps = {
   ],
   propertiesTablesSources: [
     require<string>('!raw-loader!office-ui-fabric-react/src/components/Dropdown/Dropdown.types.ts'),
-    require<
-      string
-    >('!raw-loader!office-ui-fabric-react/src/utilities/selectableOption/SelectableDroppableText.types.ts')
+    require<string>('!raw-loader!office-ui-fabric-react/src/utilities/selectableOption/SelectableDroppableText.types.ts')
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Dropdown/docs/DropdownOverview.md'),
   bestPractices: '',

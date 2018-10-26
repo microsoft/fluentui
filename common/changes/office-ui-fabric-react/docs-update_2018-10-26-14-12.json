@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix typo in role attribute in DocumentCardActivity",
+      "comment": "DetailsList/List: updating documentation.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "mark@thedutchies.com"
+  "email": "dzearing@microsoft.com"
 }

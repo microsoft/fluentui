@@ -414,6 +414,14 @@ export interface IColumn {
   onColumnContextMenu?: (column?: IColumn, ev?: React.MouseEvent<HTMLElement>) => any;
 
   /**
+   * If provided, will be executed when the column is resized with the column's current width.
+   * Prefer this callback over `DetailsList` `onColumnResize` if you require the `IColumn` to
+   * report its width after every resize event. Consider debouncing the callback if resize events
+   * occur frequently.
+   */
+  onColumnResize?: (width?: number) => void;
+
+  /**
    * If set will show a grouped icon next to the column header name.
    */
   isGrouped?: boolean;
@@ -622,4 +630,4 @@ export interface IDetailsGroupRenderProps extends IGroupRenderProps {
   onRenderHeader?: IRenderFunction<IDetailsGroupDividerProps>;
 }
 
-export interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsItemProps { }
+export interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsItemProps {}
