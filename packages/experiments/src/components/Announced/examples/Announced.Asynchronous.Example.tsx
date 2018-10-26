@@ -47,8 +47,7 @@ export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsyn
       if (this.state.loading && this.state.total < this.state.photos.length) {
         this.setState({ total: this.state.total + 1 });
       } else if (this.state.total === this.state.photos.length && this.state.complete !== true) {
-        this.setState({ complete: true });
-        this.setState({ announced: undefined });
+        this.setState({ complete: true, announced: undefined });
       }
     }, 2000);
 
@@ -88,8 +87,8 @@ export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsyn
         </p>
         <Toggle label="Check to start loading photos" onText="Start/Resume" offText="Pause" onChange={this._onToggleChange} />
         <ProgressIndicator label={percentComplete < 1 ? 'Loading photos' : 'Finished loading photos'} percentComplete={percentComplete} />
+        {this._renderAnnounced()}
         <FocusZone elementType="ul" className="ms-AnnouncedExamples-photoList">
-          {this._renderAnnounced()}
           {this._renderPhotos()}
         </FocusZone>
       </>

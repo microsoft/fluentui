@@ -32,11 +32,6 @@ export interface IAnnouncedProps extends React.Props<AnnouncedBase>, React.HTMLA
 
 export interface IAnnouncedStyles {
   /**
-   * Style for the root element.
-   */
-  root: IStyle;
-
-  /**
    * Style override for the screen reader text.
    */
   screenReaderText: IStyle;
