@@ -273,9 +273,9 @@ function _flipToFit(
  * @param gap
  */
 function _flipAlignmentEdgeOnly(elementEstimate: IElementPosition, target: Rectangle, bounding: Rectangle, gap: number): IElementPosition {
-  let { alignmentEdge, targetEdge, elementRectangle } = elementEstimate;
+  const { alignmentEdge, targetEdge, elementRectangle } = elementEstimate;
   if (alignmentEdge !== undefined) {
-    let newEstimate = _estimatePosition(elementRectangle, target, { targetEdge: targetEdge, alignmentEdge: alignmentEdge * -1 }, gap);
+    const newEstimate = _estimatePosition(elementRectangle, target, { targetEdge: targetEdge, alignmentEdge: alignmentEdge * -1 }, gap);
 
     if (_isEdgeInBounds(newEstimate, bounding, alignmentEdge) && _isEdgeInBounds(newEstimate, bounding, alignmentEdge * -1)) {
       return {
