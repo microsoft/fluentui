@@ -271,7 +271,9 @@ export function getNativeProps<T>(props: {}, allowedPropNames: string[], exclude
     (propName: string) => {
       return (
         (!excludedPropNames || excludedPropNames.indexOf(propName) < 0) &&
-        (propName.indexOf('data-') === 0 || propName.indexOf('aria-') === 0 || allowedPropNames.indexOf(propName) >= 0)
+        (propName.indexOf('data-') === 0 || propName.indexOf('aria-') === 0 || allowedPropNames.indexOf(propName) >= 0) &&
+        // tslint:disable-next-line:no-any
+        (props as any)[propName] !== undefined
       );
     },
     {},

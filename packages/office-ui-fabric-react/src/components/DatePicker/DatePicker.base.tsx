@@ -157,7 +157,8 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       showCloseButton,
       calendarProps,
       underlined,
-      allFocusable
+      allFocusable,
+      labelId
     } = this.props;
     const { isDatePickerShown, formattedDate, selectedDate, errorMessage } = this.state;
 
@@ -176,6 +177,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       <div {...nativeProps} className={classNames.root}>
         <div ref={this._datePickerDiv} role="combobox" aria-expanded={isDatePickerShown} aria-haspopup="true" aria-owns={calloutId}>
           <TextField
+            id={labelId}
             label={label}
             ariaLabel={ariaLabel}
             aria-controls={isDatePickerShown ? calloutId : undefined}
