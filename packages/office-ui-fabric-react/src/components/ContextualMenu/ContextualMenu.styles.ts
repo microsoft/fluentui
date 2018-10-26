@@ -73,17 +73,6 @@ export const getStyles = (props: IContextualMenuStyleProps): IContextualMenuStyl
         backgroundColor: palette.neutralLight
       }
     ],
-    subComponentStyles: {
-      callout: {
-        root: {
-          border: 'none',
-          borderRadius: 2,
-          boxShadow: '0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108)',
-          selectors: {
-            ['.ms-Callout-main']: { borderRadius: 2 }
-          }
-        }
-      }
-    }
+    subComponentStyles: { callout: {} }
   };
 };
