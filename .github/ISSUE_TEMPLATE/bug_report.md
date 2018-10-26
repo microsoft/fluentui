@@ -5,11 +5,19 @@ about: Found a bug in Fabric? Please let us know.
 ---
 <!-- 🚨 STOP 🚨 𝗦𝗧𝗢𝗣 🚨 𝑺𝑻𝑶𝑷 🚨
 
-We are not able to take action on a bug report if we do not have enough information to reproduce the issue. 
+We’re here to help, but we need a few things from you! 
 
 Please help us reduce duplicates by doing the following steps before logging an issue:
   * Search: https://github.com/OfficeDev/office-ui-fabric-react/search?type=Issues
   * Search by area or component: https://github.com/OfficeDev/office-ui-fabric-react/issues/labels
+  
+Please provide a reproduction of the bug in a codepen, if possible. Here’s how:
+  * See https://codepen.io/FabricReact/ for a starting template 
+  * See http://codepen.io/dzearing/pens/public/?grid_type=list 
+  * Alternatively, you can also use https://aka.ms/fabricdemo to get permanent repro links if the repro occurs with an example. 
+    (A permanent link is preferable to "use the website" as the website can change)
+ 
+Note that if you do not provide enough information to reproduce the issue, we may not be able to take action on your report.
 -->
 
 ### Environment Information 
@@ -34,7 +42,6 @@ Please help us reduce duplicates by doing the following steps before logging an 
  
 <!-- fill this out -->
 
- 
 #### Priorities and help requested:
  
 Are you willing to submit a PR to fix? (Yes, No)
