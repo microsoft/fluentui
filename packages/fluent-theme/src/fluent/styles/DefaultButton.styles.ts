@@ -1,21 +1,23 @@
-import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { fluentBorderRadius } from './styleConstants';
+import { getFocusStyle } from '../../../../styling/lib';
+import FluentTheme from '../FluentTheme';
 import { NeutralColors } from '../FluentColors';
 
-export const DefaultButtonStyles = (props: IButtonProps) => {
-  const { primary, theme } = props;
-  const { palette, semanticColors } = theme!;
-
-  return {
-    root: {
-      borderRadius: fluentBorderRadius,
-      backgroundColor: primary ? semanticColors.primaryButtonBackground : palette.white,
-      border: primary ? '' : `1px solid ${NeutralColors.gray110}`,
-      color: primary ? semanticColors.buttonText : palette.white
-    },
-    rootHovered: {
-      backgroundColor: primary ? palette.themeDarkAlt : NeutralColors.gray20,
-      border: primary ? '' : `1px solid ${NeutralColors.gray110}`
-    }
-  };
+export const DefaultButtonStyles = {
+  root: {
+    borderRadius: fluentBorderRadius,
+    backgroundColor: NeutralColors.white,
+    border: `1px solid ${NeutralColors.gray110}`,
+    ...getFocusStyle(FluentTheme, 1)
+  },
+  rootHovered: {
+    backgroundColor: NeutralColors.gray20
+  },
+  rootPressed: {
+    backgroundColor: NeutralColors.gray30
+  },
+  rootDisabled: {
+    backgroundColor: NeutralColors.gray20,
+    borderColor: NeutralColors.gray20
+  }
 };
