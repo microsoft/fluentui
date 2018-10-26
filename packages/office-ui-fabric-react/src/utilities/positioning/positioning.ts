@@ -319,8 +319,8 @@ function _adjustFitWithinBounds(
     alignmentEdge: alignmentEdge
   };
 
-  if (!directionalHintFixed) {
-    elementEstimate = _flipToFit(element, target, bounding, positionData, gap, coverTarget);
+  if (!directionalHintFixed && !coverTarget) {
+    elementEstimate = _flipToFit(element, target, bounding, positionData, gap);
   }
 
   const outOfBounds = _getOutOfBoundsEdges(element, bounding);
