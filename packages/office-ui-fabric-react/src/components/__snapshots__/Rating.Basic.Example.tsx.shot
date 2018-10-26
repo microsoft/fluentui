@@ -25,7 +25,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           color: Highlight;
         }
         {
-          height: 26px;
+          height: 36px;
         }
     id="Rating0"
   >
@@ -36,10 +36,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           ms-RatingStar-root--large
           {
             display: inline-block;
-            padding-bottom: 1px;
           }
           {
-            height: 26px;
+            height: 36px;
           }
       data-focuszone-id="FocusZone2"
       data-is-focusable={false}
@@ -56,16 +55,17 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: pointer;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -108,6 +108,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             }
             {
               font-size: 20px;
+              height: 20px;
               line-height: 20px;
             }
         data-is-current={true}
@@ -145,6 +146,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -211,16 +213,17 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: pointer;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -263,6 +266,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             }
             {
               font-size: 20px;
+              height: 20px;
               line-height: 20px;
             }
         disabled={false}
@@ -299,6 +303,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -365,16 +370,17 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: pointer;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -417,6 +423,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             }
             {
               font-size: 20px;
+              height: 20px;
               line-height: 20px;
             }
         disabled={false}
@@ -453,6 +460,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -519,16 +527,17 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: pointer;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -571,6 +580,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             }
             {
               font-size: 20px;
+              height: 20px;
               line-height: 20px;
             }
         disabled={false}
@@ -607,6 +617,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -673,16 +684,17 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: pointer;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -725,6 +737,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             }
             {
               font-size: 20px;
+              height: 20px;
               line-height: 20px;
             }
         disabled={false}
@@ -761,6 +774,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -843,7 +857,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           color: Highlight;
         }
         {
-          height: 22px;
+          height: 32px;
         }
     id="Rating3"
   >
@@ -854,10 +868,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           ms-RatingStar-root--small
           {
             display: inline-block;
-            padding-bottom: 1px;
           }
           {
-            height: 22px;
+            height: 32px;
           }
       data-focuszone-id="FocusZone5"
       data-is-focusable={false}
@@ -874,16 +887,17 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: pointer;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -926,6 +940,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             }
             {
               font-size: 16px;
+              height: 16px;
               line-height: 16px;
             }
         disabled={false}
@@ -962,6 +977,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -1028,16 +1044,17 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: pointer;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -1080,6 +1097,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             }
             {
               font-size: 16px;
+              height: 16px;
               line-height: 16px;
             }
         disabled={false}
@@ -1116,6 +1134,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -1182,16 +1201,17 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: pointer;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -1234,6 +1254,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             }
             {
               font-size: 16px;
+              height: 16px;
               line-height: 16px;
             }
         data-is-current={true}
@@ -1271,6 +1292,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -1337,16 +1359,17 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: pointer;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -1389,6 +1412,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             }
             {
               font-size: 16px;
+              height: 16px;
               line-height: 16px;
             }
         disabled={false}
@@ -1425,6 +1449,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -1491,16 +1516,17 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: pointer;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -1543,6 +1569,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             }
             {
               font-size: 16px;
+              height: 16px;
               line-height: 16px;
             }
         disabled={false}
@@ -1579,6 +1606,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -1661,7 +1689,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           color: Highlight;
         }
         {
-          height: 22px;
+          height: 32px;
         }
     id="Rating6"
   >
@@ -1672,10 +1700,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           ms-RatingStar-root--small
           {
             display: inline-block;
-            padding-bottom: 1px;
           }
           {
-            height: 22px;
+            height: 32px;
           }
       data-focuszone-id="FocusZone8"
       data-is-focusable={false}
@@ -1692,16 +1719,17 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: pointer;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -1744,6 +1772,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             }
             {
               font-size: 16px;
+              height: 16px;
               line-height: 16px;
             }
         data-is-current={true}
@@ -1781,6 +1810,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -1847,16 +1877,17 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: pointer;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -1899,6 +1930,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             }
             {
               font-size: 16px;
+              height: 16px;
               line-height: 16px;
             }
         disabled={false}
@@ -1935,6 +1967,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -2001,16 +2034,17 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: pointer;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -2053,6 +2087,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             }
             {
               font-size: 16px;
+              height: 16px;
               line-height: 16px;
             }
         disabled={false}
@@ -2089,6 +2124,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -2155,16 +2191,17 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: pointer;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -2207,6 +2244,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             }
             {
               font-size: 16px;
+              height: 16px;
               line-height: 16px;
             }
         disabled={false}
@@ -2243,6 +2281,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -2309,16 +2348,17 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: pointer;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -2361,6 +2401,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             }
             {
               font-size: 16px;
+              height: 16px;
               line-height: 16px;
             }
         disabled={false}
@@ -2397,6 +2438,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -2463,16 +2505,17 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: pointer;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -2515,6 +2558,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             }
             {
               font-size: 16px;
+              height: 16px;
               line-height: 16px;
             }
         disabled={false}
@@ -2551,6 +2595,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -2617,16 +2662,17 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: pointer;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -2669,6 +2715,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             }
             {
               font-size: 16px;
+              height: 16px;
               line-height: 16px;
             }
         disabled={false}
@@ -2705,6 +2752,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -2771,16 +2819,17 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: pointer;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -2823,6 +2872,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             }
             {
               font-size: 16px;
+              height: 16px;
               line-height: 16px;
             }
         disabled={false}
@@ -2859,6 +2909,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -2925,16 +2976,17 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: pointer;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -2977,6 +3029,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             }
             {
               font-size: 16px;
+              height: 16px;
               line-height: 16px;
             }
         disabled={false}
@@ -3013,6 +3066,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -3079,16 +3133,17 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: pointer;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -3131,6 +3186,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             }
             {
               font-size: 16px;
+              height: 16px;
               line-height: 16px;
             }
         disabled={false}
@@ -3167,6 +3223,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -3243,7 +3300,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           font-weight: 400;
         }
         {
-          height: 22px;
+          height: 32px;
         }
     id="Rating9"
   >
@@ -3254,10 +3311,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           ms-RatingStar-root--small
           {
             display: inline-block;
-            padding-bottom: 1px;
           }
           {
-            height: 22px;
+            height: 32px;
           }
       data-focuszone-id="FocusZone11"
       data-is-focusable={false}
@@ -3274,16 +3330,17 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: default;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -3308,6 +3365,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             }
             {
               font-size: 16px;
+              height: 16px;
               line-height: 16px;
             }
         data-is-current={true}
@@ -3345,6 +3403,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -3380,16 +3439,17 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: default;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -3414,6 +3474,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             }
             {
               font-size: 16px;
+              height: 16px;
               line-height: 16px;
             }
         disabled={true}
@@ -3450,6 +3511,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -3485,16 +3547,17 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: default;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -3519,6 +3582,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             }
             {
               font-size: 16px;
+              height: 16px;
               line-height: 16px;
             }
         disabled={true}
@@ -3555,6 +3619,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -3590,16 +3655,17 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: default;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -3624,6 +3690,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             }
             {
               font-size: 16px;
+              height: 16px;
               line-height: 16px;
             }
         disabled={true}
@@ -3660,6 +3727,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -3695,16 +3763,17 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: default;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -3729,6 +3798,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             }
             {
               font-size: 16px;
+              height: 16px;
               line-height: 16px;
             }
         disabled={true}
@@ -3765,6 +3835,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -3810,7 +3881,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           font-weight: 400;
         }
         {
-          height: 22px;
+          height: 32px;
         }
     id="Rating12"
   >
@@ -3821,10 +3892,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           ms-RatingStar-root--small
           {
             display: inline-block;
-            padding-bottom: 1px;
           }
           {
-            height: 22px;
+            height: 32px;
           }
       data-focuszone-id="FocusZone14"
       data-is-focusable={true}
@@ -3841,16 +3911,17 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: pointer;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -3875,6 +3946,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             }
             {
               font-size: 16px;
+              height: 16px;
               line-height: 16px;
             }
         disabled={true}
@@ -3911,6 +3983,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -3977,16 +4050,17 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: pointer;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -4011,6 +4085,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             }
             {
               font-size: 16px;
+              height: 16px;
               line-height: 16px;
             }
         disabled={true}
@@ -4047,6 +4122,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -4113,16 +4189,17 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: pointer;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -4147,6 +4224,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             }
             {
               font-size: 16px;
+              height: 16px;
               line-height: 16px;
             }
         data-is-current={true}
@@ -4184,6 +4262,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -4250,16 +4329,17 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: pointer;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -4284,6 +4364,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             }
             {
               font-size: 16px;
+              height: 16px;
               line-height: 16px;
             }
         disabled={true}
@@ -4320,6 +4401,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -4386,16 +4468,17 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: pointer;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -4420,6 +4503,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             }
             {
               font-size: 16px;
+              height: 16px;
               line-height: 16px;
             }
         disabled={true}
@@ -4456,6 +4540,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -4538,7 +4623,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           color: Highlight;
         }
         {
-          height: 22px;
+          height: 32px;
         }
     id="Rating15"
   >
@@ -4549,10 +4634,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           ms-RatingStar-root--small
           {
             display: inline-block;
-            padding-bottom: 1px;
           }
           {
-            height: 22px;
+            height: 32px;
           }
       data-focuszone-id="FocusZone17"
       data-is-focusable={false}
@@ -4569,16 +4653,17 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: pointer;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -4621,6 +4706,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             }
             {
               font-size: 16px;
+              height: 16px;
               line-height: 16px;
             }
         data-is-current={true}
@@ -4658,6 +4744,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -4724,16 +4811,17 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: pointer;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -4776,6 +4864,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             }
             {
               font-size: 16px;
+              height: 16px;
               line-height: 16px;
             }
         disabled={false}
@@ -4812,6 +4901,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -4878,16 +4968,17 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: pointer;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -4930,6 +5021,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             }
             {
               font-size: 16px;
+              height: 16px;
               line-height: 16px;
             }
         disabled={false}
@@ -4966,6 +5058,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -5032,16 +5125,17 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: pointer;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -5084,6 +5178,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             }
             {
               font-size: 16px;
+              height: 16px;
               line-height: 16px;
             }
         disabled={false}
@@ -5120,6 +5215,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -5186,16 +5282,17 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: pointer;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -5238,6 +5335,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             }
             {
               font-size: 16px;
+              height: 16px;
               line-height: 16px;
             }
         disabled={false}
@@ -5274,6 +5372,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
