@@ -6251,12 +6251,17 @@ interface IContextualMenuStyleProps {
 
 // @public (undocumented)
 interface IContextualMenuStyles {
-  callout: IStyle;
   container: IStyle;
   header: IStyle;
   list: IStyle;
   root: IStyle;
+  subComponentStyles: IContextualMenuSubComponentStyles;
   title: IStyle;
+}
+
+// @public (undocumented)
+interface IContextualMenuSubComponentStyles {
+  callout: IStyleFunctionOrObject<ICalloutContentStyleProps, any>;
 }
 
 // @public (undocumented)
