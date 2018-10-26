@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Image } from '../../../Image';
 import { Icon } from '../../../Icon';
 import { IChoiceGroupOptionProps, IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from './ChoiceGroupOption.types';
+import { IChoiceGroupOptionProps, IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from './ChoiceGroupOption.types';
 import { BaseComponent, classNamesFunction, getNativeProps, inputProperties, createRef } from '../../../Utilities';
 import { IProcessedStyleSet } from '../../../Styling';
 
