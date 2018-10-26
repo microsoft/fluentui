@@ -32,7 +32,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
 
     >
       <input
-        aria-label="Option A"
         className=
             ms-ChoiceField-input
             {
@@ -161,7 +160,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           }
     >
       <input
-        aria-label="Option B"
         className=
             ms-ChoiceField-input
             {
@@ -290,7 +288,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           }
     >
       <input
-        aria-label="Option C"
         checked={true}
         className=
             ms-ChoiceField-input
@@ -410,7 +407,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
 
     >
       <input
-        aria-label="Option D"
         className=
             ms-ChoiceField-input
             {
@@ -516,7 +512,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
 
     >
       <input
-        aria-label="Option E"
         checked={true}
         className=
             ms-ChoiceField-input
@@ -638,7 +633,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
 
     >
       <input
-        aria-label="Option F"
         className=
             ms-ChoiceField-input
             {
@@ -868,7 +862,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           }
     >
       <input
-        aria-label="Option G"
         className=
             ms-ChoiceField-input
             {
@@ -1077,7 +1070,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
 
     >
       <input
-        aria-label="Option H"
         checked={true}
         className=
             ms-ChoiceField-input
@@ -1298,7 +1290,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
 
     >
       <input
-        aria-label="Option I"
         className=
             ms-ChoiceField-input
             {

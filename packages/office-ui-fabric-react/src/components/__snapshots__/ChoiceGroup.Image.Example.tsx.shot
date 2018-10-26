@@ -95,7 +95,6 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
 
           >
             <input
-              aria-label="Clustered bar chart"
               checked={true}
               className=
                   ms-ChoiceField-input
@@ -409,7 +408,6 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
 
           >
             <input
-              aria-label="Pie chart"
               checked={false}
               className=
                   ms-ChoiceField-input
