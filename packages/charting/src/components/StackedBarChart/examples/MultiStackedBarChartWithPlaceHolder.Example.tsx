@@ -15,7 +15,7 @@ export const MultiStackedBarChartWithPlaceholderExample: React.SFC<{}> = () => {
     { data: 106, placeHolder: true }
   ];
 
-  const hideRatio: boolean[] = [true, false];
+  const hideRatio: boolean[] = [true, true];
 
   const data: IChartProps[] = [
     {
