@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DatePicker: Add labelId prop for passing in label ids to TextField component.",
-      "type": "minor"
+      "comment": "DatePicker: Pass id prop to TextField component.",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
