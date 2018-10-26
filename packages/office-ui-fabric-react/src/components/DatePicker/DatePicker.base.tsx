@@ -76,10 +76,13 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
   private _datePickerDiv = createRef<HTMLDivElement>();
   private _textField = createRef<ITextField>();
   private _preventFocusOpeningPicker: boolean;
+  private _id: string;
 
   constructor(props: IDatePickerProps) {
     super(props);
     this.state = this._getDefaultState();
+
+    this._id = props.id || getId('DatePicker');
 
     this._preventFocusOpeningPicker = false;
   }
@@ -103,6 +106,8 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     if (!errorMessage && value) {
       errorMessage = this._isDateOutOfBounds(value!, minDate, maxDate) ? strings!.isOutOfBoundsErrorMessage || ' ' : undefined;
     }
+
+    this._id = nextProps.id || this._id;
 
     // Set error message
     this.setState({
@@ -176,6 +181,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       <div {...nativeProps} className={classNames.root}>
         <div ref={this._datePickerDiv} role="combobox" aria-expanded={isDatePickerShown} aria-haspopup="true" aria-owns={calloutId}>
           <TextField
+            id={this._id + '-label'}
             label={label}
             ariaLabel={ariaLabel}
             aria-controls={isDatePickerShown ? calloutId : undefined}
