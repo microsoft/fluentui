@@ -3,7 +3,7 @@ import * as PropTypes from 'prop-types';
 import { BaseComponent, classNamesFunction, divProperties, getNativeProps, getRTL } from '../../Utilities';
 import { IScrollablePane, IScrollablePaneProps, IScrollablePaneStyles, IScrollablePaneStyleProps } from './ScrollablePane.types';
 import { Sticky } from '../../Sticky';
-
+import { css } from 'office-ui-fabric-react/lib/Utilities';
 export interface IScrollablePaneContext {
   scrollablePane?: {
     subscribe: (handler: (container: HTMLElement, stickyContainer: HTMLElement) => void) => void;
@@ -21,6 +21,7 @@ export interface IScrollablePaneState {
   stickyBottomHeight: number;
   scrollbarWidth: number | undefined;
   scrollbarHeight: number | undefined;
+  stickyAboveClassName: string | undefined;
 }
 
 const getClassNames = classNamesFunction<IScrollablePaneStyleProps, IScrollablePaneStyles>();
@@ -48,7 +49,8 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
       stickyTopHeight: 0,
       stickyBottomHeight: 0,
       scrollbarWidth: undefined,
-      scrollbarHeight: undefined
+      scrollbarHeight: undefined,
+      stickyAboveClassName: ''
     };
 
     this._notifyThrottled = this._async.throttle(this.notifySubscribers, 50);
@@ -157,7 +159,8 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
       this.state.stickyTopHeight !== nextState.stickyTopHeight ||
       this.state.stickyBottomHeight !== nextState.stickyBottomHeight ||
       this.state.scrollbarWidth !== nextState.scrollbarWidth ||
-      this.state.scrollbarHeight !== nextState.scrollbarHeight
+      this.state.scrollbarHeight !== nextState.scrollbarHeight ||
+      this.state.stickyAboveClassName !== nextState.stickyAboveClassName
     );
   }
 
@@ -177,7 +180,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
 
   public render(): JSX.Element {
     const { className, theme, styles } = this.props;
-    const { stickyTopHeight, stickyBottomHeight } = this.state;
+    const { stickyTopHeight, stickyBottomHeight, stickyAboveClassName } = this.state;
     const classNames = getClassNames(styles!, {
       theme: theme!,
       className,
@@ -189,7 +192,11 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
         <div ref={this._contentContainer} className={classNames.contentContainer} data-is-scrollable={true}>
           {this.props.children}
         </div>
-        <div ref={this._stickyAboveRef} className={classNames.stickyAbove} style={this._getStickyContainerStyle(stickyTopHeight, true)} />
+        <div
+          ref={this._stickyAboveRef}
+          className={css(classNames.stickyAbove, stickyTopHeight > 0 ? stickyAboveClassName : '')}
+          style={this._getStickyContainerStyle(stickyTopHeight, true)}
+        />
         <div className={classNames.stickyBelow} style={this._getStickyContainerStyle(stickyBottomHeight, false)}>
           <div ref={this._stickyBelowRef} className={classNames.stickyBelowItems} />
         </div>
@@ -414,11 +421,24 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
 
   private _onScroll = () => {
     const { contentContainer } = this;
-
     if (contentContainer) {
       this._stickies.forEach((sticky: Sticky) => {
         sticky.syncScroll(contentContainer);
       });
+    }
+    const { stickyTopHeight, stickyAboveClassName } = this.state;
+    if (this.props.onScrollStickyAboveClassName !== undefined && stickyAboveClassName !== undefined && stickyTopHeight > 0) {
+      const scrollPosition = this.getScrollPosition();
+      const isOnScrollClassApplied = stickyAboveClassName.includes(this.props.onScrollStickyAboveClassName);
+      if (scrollPosition > 0 && !isOnScrollClassApplied) {
+        this.setState({
+          stickyAboveClassName: this.props.onScrollStickyAboveClassName
+        });
+      } else if (scrollPosition === 0 && isOnScrollClassApplied) {
+        this.setState({
+          stickyAboveClassName: ''
+        });
+      }
     }
 
     this._notifyThrottled();
