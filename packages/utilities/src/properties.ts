@@ -271,11 +271,7 @@ export function getNativeProps<T>(props: {}, allowedPropNames: string[], exclude
     (propName: string) => {
       return (
         (!excludedPropNames || excludedPropNames.indexOf(propName) < 0) &&
-        (propName.indexOf('data-') === 0 || propName.indexOf('aria-') === 0 || allowedPropNames.indexOf(propName) >= 0) &&
-        // Prevent undefined properties from appearing in returned object. This helps reduce unintentional overwrite errors when
-        //   spreading and combining the result of this function with other properties.
-        // tslint:disable-next-line:no-any
-        (props as any)[propName] !== undefined
+        (propName.indexOf('data-') === 0 || propName.indexOf('aria-') === 0 || allowedPropNames.indexOf(propName) >= 0)
       );
     },
     {},

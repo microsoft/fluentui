@@ -65,13 +65,5 @@ describe('getNativeProps', () => {
 
     expect(result.a).toBeDefined();
     expect(result.b).toBeUndefined();
-    expect(result.hasOwnProperty('b')).toBeFalsy();
-  });
-
-  it('excludes undefined properties', () => {
-    // tslint:disable-next-line:no-any
-    let result = getNativeProps<any>({ a: 1, b: undefined }, ['a', 'b']);
-
-    expect(result.hasOwnProperty('b')).toBeFalsy();
   });
 });
