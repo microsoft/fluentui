@@ -106,6 +106,10 @@ export class AnnouncedBulkLongRunningExample extends React.Component<
       <>
         <p>Turn on Narrator and drag and drop the items.</p>
         <p>The Announced component should announce the number of items moved.</p>
+        <p>
+          Note: This example is to showcase the concept of copying, uploading, or moving many items and not full illustrative of the real
+          world scenario.
+        </p>
         {this._renderAnnounced(numberOfItems)}
         <MarqueeSelection selection={this._selection}>
           <DetailsList

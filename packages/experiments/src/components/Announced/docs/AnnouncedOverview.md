@@ -20,7 +20,7 @@ Editing text, deletion
 #### Scenarios
 1. User renames a file
 
-    When the file is renamed successfully, use the Announced component, coupled with an id, to announce the message immediately. Providing an id will ensure that the announcement is re-read.
+    When the file is renamed successfully, use the Announced component to announce the message immediately.
 
     Usage:
     ```
@@ -89,7 +89,7 @@ To: line in mail clients, search boxes
 
 | Do                | Don't             |
 | ----------------- | ----------------- |
-|                   |                   |
+| Announce the number of search results found | Announce every search result unless focus is placed on the result |
 
 #### Scenarios
 1. User types the letter 'A' into a picker
