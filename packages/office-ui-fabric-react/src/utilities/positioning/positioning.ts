@@ -231,8 +231,7 @@ function _flipToFit(
   target: Rectangle,
   bounding: Rectangle,
   positionData: IPositionDirectionalHintData,
-  gap: number = 0,
-  coverTarget?: boolean
+  gap: number = 0
 ): IElementPosition {
   const directions: RectangleEdge[] = [RectangleEdge.left, RectangleEdge.right, RectangleEdge.bottom, RectangleEdge.top];
   let currentEstimate = rect;
@@ -248,7 +247,7 @@ function _flipToFit(
         currentAlignment = currentEdge;
         currentEdge = directions.slice(-1)[0];
       }
-      currentEstimate = _estimatePosition(rect, target, { targetEdge: currentEdge, alignmentEdge: currentAlignment }, gap, coverTarget);
+      currentEstimate = _estimatePosition(rect, target, { targetEdge: currentEdge, alignmentEdge: currentAlignment }, gap);
     } else {
       return {
         elementRectangle: currentEstimate,
