@@ -16,6 +16,9 @@ export const DefaultButtonStyles = {
   rootPressed: {
     backgroundColor: NeutralColors.gray30
   },
+  rootChecked: {
+    backgroundColor: NeutralColors.gray30
+  },
   rootDisabled: {
     backgroundColor: NeutralColors.gray20,
     borderColor: NeutralColors.gray20

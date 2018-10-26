@@ -13,5 +13,8 @@ export const PrimaryButtonStyles = {
   },
   rootPressed: {
     backgroundColor: CommunicationColors.shade20
+  },
+  rootChecked: {
+    backgroundColor: CommunicationColors.shade20
   }
 };
