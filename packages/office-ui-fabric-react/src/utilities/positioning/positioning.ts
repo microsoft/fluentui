@@ -231,7 +231,8 @@ function _flipToFit(
   target: Rectangle,
   bounding: Rectangle,
   positionData: IPositionDirectionalHintData,
-  gap: number = 0
+  gap: number = 0,
+  coverTarget?: boolean
 ): IElementPosition {
   const directions: RectangleEdge[] = [RectangleEdge.left, RectangleEdge.right, RectangleEdge.bottom, RectangleEdge.top];
   let currentEstimate = rect;
@@ -247,7 +248,7 @@ function _flipToFit(
         currentAlignment = currentEdge;
         currentEdge = directions.slice(-1)[0];
       }
-      currentEstimate = _estimatePosition(rect, target, { targetEdge: currentEdge, alignmentEdge: currentAlignment }, gap);
+      currentEstimate = _estimatePosition(rect, target, { targetEdge: currentEdge, alignmentEdge: currentAlignment }, gap, coverTarget);
     } else {
       return {
         elementRectangle: currentEstimate,
@@ -271,10 +272,16 @@ function _flipToFit(
  * @param bounding
  * @param gap
  */
-function _flipAlignmentEdge(elementEstimate: IElementPosition, target: Rectangle, gap: number): IElementPosition {
+function _flipAlignmentEdge(elementEstimate: IElementPosition, target: Rectangle, gap: number, coverTarget?: boolean): IElementPosition {
   const { alignmentEdge, targetEdge, elementRectangle } = elementEstimate;
   const oppositeEdge = alignmentEdge! * -1;
-  const newEstimate = _estimatePosition(elementRectangle, target, { targetEdge: targetEdge, alignmentEdge: oppositeEdge }, gap);
+  const newEstimate = _estimatePosition(
+    elementRectangle,
+    target,
+    { targetEdge: targetEdge, alignmentEdge: oppositeEdge },
+    gap,
+    coverTarget
+  );
 
   return {
     elementRectangle: newEstimate,
@@ -312,8 +319,8 @@ function _adjustFitWithinBounds(
     alignmentEdge: alignmentEdge
   };
 
-  if (!directionalHintFixed && !coverTarget) {
-    elementEstimate = _flipToFit(element, target, bounding, positionData, gap);
+  if (!directionalHintFixed) {
+    elementEstimate = _flipToFit(element, target, bounding, positionData, gap, coverTarget);
   }
 
   const outOfBounds = _getOutOfBoundsEdges(element, bounding);
@@ -321,7 +328,7 @@ function _adjustFitWithinBounds(
   if (alignPerfectlyWithTarget) {
     // The edge opposite to the alignment edge might be out of bounds. Flip alignment to see if we can get it within bounds.
     if (elementEstimate.alignmentEdge && outOfBounds.indexOf(elementEstimate.alignmentEdge * -1) > -1) {
-      const flippedElementEstimate = _flipAlignmentEdge(elementEstimate, target, gap);
+      const flippedElementEstimate = _flipAlignmentEdge(elementEstimate, target, gap, coverTarget);
       if (_isRectangleWithinBounds(flippedElementEstimate.elementRectangle, bounding)) {
         return flippedElementEstimate;
       }
