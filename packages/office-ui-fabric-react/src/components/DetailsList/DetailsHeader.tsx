@@ -459,7 +459,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     const itemIndex = props.itemIndex;
     if (itemIndex >= 0) {
       // Column index is set based on the checkbox
-      this._draggedColumnIndex = this.props.selectionMode !== SelectionMode.none ? itemIndex - 2 : itemIndex - 1;
+      this._draggedColumnIndex = this.props.selectionMode !== SelectionMode.none ? itemIndex - 1 : itemIndex - 0;
       this._getDropHintPositions();
       if (columnReorderProps && columnReorderProps.onColumnDragStart) {
         columnReorderProps.onColumnDragStart(true);
