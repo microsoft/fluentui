@@ -73,7 +73,7 @@ describe('ContextualMenu', () => {
         list: 'listFoo',
         header: 'headerFoo',
         title: 'titleFoo',
-        callout: 'calloutFoo'
+        subComponentStyles: { callout: { root: ['calloutFoo'] } }
       };
     };
 

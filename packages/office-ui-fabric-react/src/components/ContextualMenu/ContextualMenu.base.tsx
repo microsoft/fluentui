@@ -25,11 +25,12 @@ import {
   IRenderFunction,
   IPoint,
   KeyCodes,
-  shouldWrapFocus
+  shouldWrapFocus,
+  IStyleFunctionOrObject
 } from '../../Utilities';
 import { hasSubmenu, getIsChecked, isItemDisabled } from '../../utilities/contextualMenu/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
-import { Callout } from '../../Callout';
+import { Callout, ICalloutContentStyleProps, ICalloutContentStyles } from '../../Callout';
 import { ContextualMenu } from './ContextualMenu';
 import { ContextualMenuItem } from './ContextualMenuItem';
 import { ContextualMenuSplitButton, ContextualMenuButton, ContextualMenuAnchor } from './ContextualMenuItemWrapper/index';
@@ -229,9 +230,9 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     this._classNames = getMenuClassNames
       ? getMenuClassNames(theme!, className)
       : getClassNames(styles, {
-          theme: theme!,
-          className: className
-        });
+        theme: theme!,
+        className: className
+      });
 
     const hasIcons = itemsHaveIcons(items);
 
@@ -285,8 +286,13 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
         }
       }
 
+      const calloutStyles = !getMenuClassNames && this._classNames.subComponentStyles
+        ? (this._classNames.subComponentStyles.callout as IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>)
+        : undefined;
+
       return (
         <Callout
+          styles={calloutStyles}
           {...calloutProps}
           target={target}
           isBeakVisible={isBeakVisible}
@@ -296,7 +302,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
           gapSpace={gapSpace}
           coverTarget={coverTarget}
           doNotLayer={doNotLayer}
-          className={css('ms-ContextualMenu-Callout', this._classNames.callout, calloutProps ? calloutProps.className : undefined)}
+          className={css('ms-ContextualMenu-Callout', calloutProps ? calloutProps.className : undefined)}
           setInitialFocus={shouldFocusOnMount}
           onDismiss={this.props.onDismiss}
           onScroll={this._onScroll}
