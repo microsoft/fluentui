@@ -5,7 +5,7 @@ import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IButtonProps } from '../../Button';
 import { IPersonaSharedProps, PersonaInitialsColor, PersonaSize } from '../../Persona';
 
-export interface IFacepile {}
+export interface IFacepile { }
 
 export interface IFacepileProps extends React.Props<FacepileBase> {
   /**
@@ -56,8 +56,8 @@ export interface IFacepileProps extends React.Props<FacepileBase> {
   addButtonProps?: IButtonProps;
 
   /**
-   * Deprecated at v0.70, use 'overflowButtonProps' instead;
-   * @deprecated
+   * Deprecated at v0.70, use `overflowButtonProps` instead.
+   * @deprecated Use `overflowButtonProps` instead.
    */
   chevronButtonProps?: IButtonProps;
 

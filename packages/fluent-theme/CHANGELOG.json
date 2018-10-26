@@ -2,6 +2,54 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.1.6",
+      "tag": "@uifabric/fluent-theme_v0.1.6",
+      "date": "Thu, 25 Oct 2018 12:30:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fluent theme: Update Slider colors",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "f486b9f249bc7cfc39cdcc4d95f642c22eea371e"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.92.0 <7.0.0` to `>=6.92.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.1.5",
+      "tag": "@uifabric/fluent-theme_v0.1.5",
+      "date": "Wed, 24 Oct 2018 12:28:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fluent experiment: Change the color of disabled Labels",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "6efb792398395739e319eef31d3693b5424e24e0"
+          },
+          {
+            "comment": "Fluent theme: Update Toggle font weight and hover color",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "e224ec016e45db9b94061c1c4a81853a501ceb19"
+          },
+          {
+            "comment": "Rating: adds fluent style updates.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "34648c26640f253b8da2bdd2f48909e230db8b33"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.91.0 <7.0.0` to `>=6.92.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.1.4",
       "tag": "@uifabric/fluent-theme_v0.1.4",
       "date": "Tue, 23 Oct 2018 12:32:16 GMT",

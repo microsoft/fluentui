@@ -32,26 +32,23 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
   calloutProps?: ICalloutProps;
 
   /**
-   * Additional properties to pass through for Tooltip, reference detail properties in ITooltipProps
+   * Optionally a number of milliseconds to delay closing the tooltip, so that
+   * the user has time to hover over the tooltip and interact with it. Hovering
+   * over the tooltip will count as hovering over the host, so that the tooltip
+   * will stay open if the user is actively interacting with it.
    */
-  tooltipProps?: ITooltipProps;
-
-  /**
-   * Whether or not to mark the container as described by the tooltip.
-   * If not specified, the caller should mark as element as described by the tooltip id.
-   */
-  setAriaDescribedBy?: boolean;
-
-  /**
-   * Length of delay
-   * @default medium
-   */
-  delay?: TooltipDelay;
+  closeDelay?: number;
 
   /**
    * String to be passed to the tooltip
    */
   content?: string;
+
+  /**
+   * Length of delay
+   * @defaultvalue medium
+   */
+  delay?: TooltipDelay;
 
   /**
    * Indicator of how the tooltip should be anchored to its targetElement.
@@ -65,23 +62,26 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
   directionalHintForRTL?: DirectionalHint;
 
   /**
+   * Optional class name to apply to tooltip host.
+   */
+  hostClassName?: string;
+
+  /**
    * Only show if there is overflow. If set, the tooltip hosts observes  and only shows the tooltip if this element has overflow.
    * It also uses the parent as target element for the tooltip.
    */
   overflowMode?: TooltipOverflowMode;
 
   /**
-   * Optional class name to apply to tooltip host.
+   * Whether or not to mark the container as described by the tooltip.
+   * If not specified, the caller should mark as element as described by the tooltip id.
    */
-  hostClassName?: string;
+  setAriaDescribedBy?: boolean;
 
   /**
-   * Optionally a number of milliseconds to delay closing the tooltip, so that
-   * the user has time to hover over the tooltip and interact with it. Hovering
-   * over the tooltip will count as hovering over the host, so that the tooltip
-   * will stay open if the user is actively interacting with it.
+   * Additional properties to pass through for Tooltip, reference detail properties in ITooltipProps
    */
-  closeDelay?: number;
+  tooltipProps?: ITooltipProps;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.

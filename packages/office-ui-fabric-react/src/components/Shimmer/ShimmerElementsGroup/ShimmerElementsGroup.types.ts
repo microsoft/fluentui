@@ -3,7 +3,7 @@ import { IStyle, ITheme } from '../../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
 import { IShimmerElement } from '../Shimmer.types';
 
-export interface IShimmerElementsGroup {}
+export interface IShimmerElementsGroup { }
 
 /**
  * ShimmerElementsGroup component props.
@@ -27,7 +27,7 @@ export interface IShimmerElementsGroupProps extends React.AllHTMLAttributes<HTML
 
   /**
    * Optional boolean for enabling flexWrap of the container containing the shimmerElements.
-   * @default false
+   * @defaultvalue false
    */
   flexWrap?: boolean;
 

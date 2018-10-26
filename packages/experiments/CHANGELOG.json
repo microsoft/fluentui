@@ -2,6 +2,49 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.39.5",
+      "tag": "@uifabric/experiments_v6.39.5",
+      "date": "Thu, 25 Oct 2018 12:30:06 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.25.2` to `^0.26.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.1.5 <1.0.0` to `>=0.1.6 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.92.0 <7.0.0` to `>=6.92.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.39.4",
+      "tag": "@uifabric/experiments_v6.39.4",
+      "date": "Wed, 24 Oct 2018 12:28:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix breaking changes for odsp",
+            "author": "jijizz <liu_zhi8@hotmail.com>",
+            "commit": "e55fa9d49512b4264cbcd1c2337dc4a64b068650"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.1.4 <1.0.0` to `>=0.1.5 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.10.3 <7.0.0` to `>=6.10.4 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.91.0 <7.0.0` to `>=6.92.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.39.3",
       "tag": "@uifabric/experiments_v6.39.3",
       "date": "Tue, 23 Oct 2018 12:32:16 GMT",
