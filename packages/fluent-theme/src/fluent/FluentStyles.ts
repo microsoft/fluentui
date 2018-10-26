@@ -13,6 +13,7 @@ import { RatingStyles } from './styles/Rating.styles';
 import { SliderStyles } from './styles/Slider.styles';
 import { TextFieldStyles } from './styles/TextField.styles';
 import { ToggleStyles } from './styles/Toggle.styles';
+import { IconButtonStyles } from './styles/IconButton.styles';
 
 // Roll up all style overrides in a single "Fluent theme" object
 
@@ -49,6 +50,9 @@ export const FluentStyles: any = {
   },
   Dropdown: {
     styles: DropdownStyles
+  },
+  IconButton: {
+    styles: IconButtonStyles
   },
   Label: {
     styles: LabelStyles
