@@ -52,17 +52,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
   }
 
   public render(): JSX.Element {
-    const {
-      styles,
-      shimmerElements,
-      children,
-      isDataLoaded,
-      width,
-      className,
-      customElementsGroup,
-      theme,
-      ariaLabel
-    } = this.props;
+    const { styles, shimmerElements, children, isDataLoaded, width, className, customElementsGroup, theme, ariaLabel } = this.props;
 
     const { contentLoaded } = this.state;
 

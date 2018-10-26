@@ -104,16 +104,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
   public render(): JSX.Element {
     const { cells } = this.state;
 
-    const {
-      className,
-      onActiveElementChanged,
-      items,
-      cellsPerPage,
-      ref,
-      role,
-      focusZoneComponentRef,
-      ...divProps
-    } = this.props;
+    const { className, onActiveElementChanged, items, cellsPerPage, ref, role, focusZoneComponentRef, ...divProps } = this.props;
 
     return (
       <FocusZone
@@ -294,13 +285,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         </div>
       );
 
-      grids.push(
-        isPlaceholder ? (
-          <Shimmer key={i} customElementsGroup={finalGrid} widthInPixel={shimmerWrapperWidth} />
-        ) : (
-          finalGrid
-        )
-      );
+      grids.push(isPlaceholder ? <Shimmer key={i} customElementsGroup={finalGrid} widthInPixel={shimmerWrapperWidth} /> : finalGrid);
     }
 
     return (
@@ -460,8 +445,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
       if (
         !isAtGridEnd &&
-        currentRow.scaleFactor >
-          (grid.mode === TilesGridMode.fill || grid.mode === TilesGridMode.fillHorizontal ? grid.maxScaleFactor : 1)
+        currentRow.scaleFactor > (grid.mode === TilesGridMode.fill || grid.mode === TilesGridMode.fillHorizontal ? grid.maxScaleFactor : 1)
       ) {
         // If the last computed row is not the end of the grid, and the content cannot scale to fit the width,
         // declare these cells as 'extra' and let them be pushed into the next page.
@@ -611,8 +595,6 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
   }
 }
 
-function isGridSegment<TItem>(
-  item: ITilesGridSegment<TItem> | ITilesGridItem<TItem>
-): item is ITilesGridSegment<TItem> {
+function isGridSegment<TItem>(item: ITilesGridSegment<TItem> | ITilesGridItem<TItem>): item is ITilesGridSegment<TItem> {
   return !!(item as ITilesGridSegment<TItem>).items;
 }

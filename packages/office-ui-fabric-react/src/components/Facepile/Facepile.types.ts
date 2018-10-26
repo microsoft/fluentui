@@ -5,7 +5,7 @@ import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IButtonProps } from '../../Button';
 import { IPersonaSharedProps, PersonaInitialsColor, PersonaSize } from '../../Persona';
 
-export interface IFacepile { }
+export interface IFacepile {}
 
 export interface IFacepileProps extends React.Props<FacepileBase> {
   /**

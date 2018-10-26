@@ -12,7 +12,7 @@ import { IIconProps } from '../../Icon';
 import { IBaseProps, IRefObject } from '../../Utilities';
 import { ILinkProps } from '../../Link';
 
-export interface IDocumentCard { }
+export interface IDocumentCard {}
 
 export interface IDocumentCardProps extends IBaseProps<IDocumentCard> {
   /**

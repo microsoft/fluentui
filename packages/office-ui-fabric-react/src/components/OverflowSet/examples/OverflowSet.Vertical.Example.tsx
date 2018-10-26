@@ -64,11 +64,7 @@ export class OverflowSetVerticalExample extends BaseComponent<any, any> {
   private _onRenderItem(item: IOverflowSetItemProps): JSX.Element {
     return (
       <TooltipHost content={item.name} calloutProps={{ directionalHint: DirectionalHint.rightCenter, beakWidth: 12 }}>
-        <CommandBarButton
-          styles={{ root: { padding: '10px' } }}
-          iconProps={{ iconName: item.icon }}
-          onClick={item.onClick}
-        />
+        <CommandBarButton styles={{ root: { padding: '10px' } }} iconProps={{ iconName: item.icon }} onClick={item.onClick} />
       </TooltipHost>
     );
   }

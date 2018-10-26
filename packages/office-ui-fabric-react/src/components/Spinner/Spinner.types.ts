@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ITheme, IStyle } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
-export interface ISpinner { }
+export interface ISpinner {}
 
 export interface ISpinnerProps extends React.HTMLAttributes<HTMLElement> {
   /**

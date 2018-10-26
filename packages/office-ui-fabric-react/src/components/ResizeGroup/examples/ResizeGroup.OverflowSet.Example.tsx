@@ -87,12 +87,7 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
                 overflowItems={data.overflow.length ? data.overflow : null}
                 onRenderItem={item => {
                   return (
-                    <DefaultButton
-                      text={item.name}
-                      iconProps={{ iconName: item.icon }}
-                      onClick={item.onClick}
-                      checked={item.checked}
-                    />
+                    <DefaultButton text={item.name} iconProps={{ iconName: item.icon }} onClick={item.onClick} checked={item.checked} />
                   );
                 }}
                 onRenderOverflowButton={overflowItems => {

@@ -10,7 +10,7 @@ import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../Utilities'
 import { IDetailsRowCheckProps } from './DetailsRowCheck.types';
 import { IDetailsRowFieldsProps } from './DetailsRowFields.types';
 
-export interface IDetailsRow { }
+export interface IDetailsRow {}
 
 export interface IDetailsItemProps {
   /**
