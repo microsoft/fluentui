@@ -2,6 +2,31 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.31.0",
+      "tag": "@uifabric/dashboard_v0.31.0",
+      "date": "Thu, 25 Oct 2018 12:30:05 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding support when there is no data for line chart, removing unwanted div's that is not letting flex do it job",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "c29af951bf77d71c552ec3b35c90914b46e02432"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.25.2` to `^0.26.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.39.4 <7.0.0` to `>=6.39.5 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.92.0 <7.0.0` to `>=6.92.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.30.3",
       "tag": "@uifabric/dashboard_v0.30.3",
       "date": "Tue, 23 Oct 2018 12:32:16 GMT",

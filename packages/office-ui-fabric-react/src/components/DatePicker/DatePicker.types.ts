@@ -52,7 +52,7 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAtt
 
   /**
    * Disabled state of the DatePicker.
-   * @default false
+   * @defaultvalue false
    */
   disabled?: boolean;
 
@@ -63,7 +63,7 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAtt
 
   /**
    * Whether or not the Textfield of the DatePicker is underlined.
-   * @default false
+   * @defaultvalue false
    */
   underlined?: boolean;
 

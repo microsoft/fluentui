@@ -22,8 +22,8 @@ export class CheckboxBase extends BaseComponent<ICheckboxProps, ICheckboxState> 
 
   /**
    * Initialize a new instance of the TopHeaderV2
-   * @param props Props for the component
-   * @param context Context or initial state for the base component.
+   * @param props - Props for the component
+   * @param context - Context or initial state for the base component.
    */
   constructor(props: ICheckboxProps, context?: any) {
     super(props, context);
