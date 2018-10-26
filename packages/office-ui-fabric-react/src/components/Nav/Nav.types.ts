@@ -89,14 +89,14 @@ export interface INavProps {
   expandButtonAriaLabel?: string;
 
   /**
-   * Deprecated at v0.68.1 and will be removed at >= V1.0.0.
-   * @deprecated
+   * Deprecated at v0.68.1 and will be removed at \>= v1.0.0.
+   * @deprecated Removed at v1.0.0.
    **/
   expandedStateText?: string;
 
   /**
-   * Deprecated at v0.68.1 and will be removed at >= V1.0.0.
-   * @deprecated
+   * Deprecated at v0.68.1 and will be removed at \>= v1.0.0.
+   * @deprecated Removed at v1.0.0.
    **/
   collapsedStateText?: string;
 }
@@ -162,8 +162,8 @@ export interface INavLink {
   icon?: string;
 
   /**
-   * Deprecated. Use iconProps.className instead.
-   * @deprecated
+   * Deprecated. Use `iconProps.className` instead.
+   * @deprecated Use `iconProps.className` instead.
    */
   iconClassName?: string;
 
@@ -173,14 +173,14 @@ export interface INavLink {
   iconProps?: IIconProps;
 
   /**
-   * Deprecated at v0.68.1 and will be removed at >= v1.0.0.
-   * @deprecated
+   * Deprecated at v0.68.1 and will be removed at \>= v1.0.0.
+   * @deprecated Removed at v1.0.0.
    */
   engagementName?: string;
 
   /**
-   * Deprecated at v0.68.1 and will be removed at >= v1.0.0.
-   * @deprecated
+   * Deprecated at v0.68.1 and will be removed at \>= v1.0.0.
+   * @deprecated Removed at v1.0.0.
    */
   altText?: string;
 

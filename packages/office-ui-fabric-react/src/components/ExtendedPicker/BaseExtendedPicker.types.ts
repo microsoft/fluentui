@@ -81,19 +81,19 @@ export interface IBaseExtendedPickerProps<T> {
 
   /**
    * Autofill input native props
-   * @default undefined
+   * @defaultvalue undefined
    */
   inputProps?: IInputProps;
 
   /**
    * Flag for disabling the picker.
-   * @default false
+   * @defaultvalue false
    */
   disabled?: boolean;
 
   /**
    * Restrict the amount of selectable items.
-   * @default undefined
+   * @defaultvalue undefined
    */
   itemLimit?: number;
 

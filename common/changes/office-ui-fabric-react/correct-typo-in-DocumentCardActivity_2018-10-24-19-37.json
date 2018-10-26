@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ResizeGroup: Moved relative style to inner wrapper div",
+      "comment": "Fix typo in role attribute in DocumentCardActivity",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com"
+  "email": "mark@thedutchies.com"
 }

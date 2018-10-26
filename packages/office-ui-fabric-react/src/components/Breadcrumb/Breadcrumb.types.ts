@@ -29,7 +29,7 @@ export interface IBreadcrumbProps extends React.Props<BreadcrumbBase> {
   className?: string;
 
   /**
-   * Render a custom divider in place of the default chevron '>'
+   * Render a custom divider in place of the default chevron `>`
    */
   dividerAs?: IComponentAs<IDividerAsProps>;
 
