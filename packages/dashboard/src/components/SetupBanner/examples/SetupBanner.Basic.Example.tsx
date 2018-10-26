@@ -3,6 +3,8 @@ import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { SetupBanner } from '../SetupBanner';
 import { ISetupBannerAction, SetupBannerActionType } from '../SetupBanner.types';
+import { SetupCards } from '../SetupCards';
+import { ISetupCardProps } from '../SetupCard.types';
 
 interface ISetupBannerBasicExampleStyle {
   sectionMargin: IStyle;
@@ -60,6 +62,26 @@ export class SetupBannerBasicExample extends React.Component<{}, {}> {
   };
 
   private _onRenderVisualization = (): JSX.Element => {
-    return <div>Visualization</div>;
+    const cards: ISetupCardProps[] = [
+      {
+        id: '1',
+        title: 'first one',
+        selected: false,
+        checked: false
+      },
+      {
+        id: '1',
+        title: 'first one',
+        selected: false,
+        checked: false
+      },
+      {
+        id: '1',
+        title: 'first one',
+        selected: false,
+        checked: false
+      }
+    ];
+    return <SetupCards cardData={cards} cardWidth={34} />;
   };
 }

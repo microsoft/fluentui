@@ -9,7 +9,6 @@ export const getStyles = (): ISetupBannerStyles => {
       flexWrap: 'wrap'
     },
     visualizationPartition: {
-      display: 'flex',
       minWidth: '400px',
       alignItems: 'center',
       justifyContent: 'center',
