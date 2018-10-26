@@ -3,7 +3,7 @@
     {
       "packageName": "@uifabric/jest-serializer-merge-styles",
       "comment": "Running Prettier on all .ts and .tsx files in the packages folder.",
-      "type": "patch"
+      "type": "none"
     }
   ],
   "packageName": "@uifabric/jest-serializer-merge-styles",
