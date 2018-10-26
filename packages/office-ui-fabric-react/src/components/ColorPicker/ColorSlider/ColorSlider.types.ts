@@ -1,7 +1,7 @@
 import { ITheme, IStyle } from '../../../Styling';
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
 
-export interface IColorSlider { }
+export interface IColorSlider {}
 
 export interface IColorSliderProps extends IBaseProps<IColorSlider> {
   /**

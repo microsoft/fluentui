@@ -3,7 +3,7 @@ import { ISelection } from '../../utilities/selection/interfaces';
 import { ITheme, IStyle } from '../../Styling';
 import { IRefObject, IStyleFunction } from '../../Utilities';
 
-export interface IMarqueeSelection { }
+export interface IMarqueeSelection {}
 
 export interface IMarqueeSelectionProps extends React.HTMLAttributes<HTMLDivElement> {
   /**

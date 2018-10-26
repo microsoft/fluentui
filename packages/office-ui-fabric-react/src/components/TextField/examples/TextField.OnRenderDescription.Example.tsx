@@ -6,10 +6,7 @@ export class TextFieldOnRenderDescriptionExample extends React.Component<{}, {}>
   public render() {
     return (
       <div className="docs-TextFieldExample">
-        <TextField
-          description={'A custom description that appends a link.'}
-          onRenderDescription={this._onRenderDescription}
-        />
+        <TextField description={'A custom description that appends a link.'} onRenderDescription={this._onRenderDescription} />
       </div>
     );
   }

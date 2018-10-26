@@ -3,13 +3,7 @@ import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import { Check } from 'office-ui-fabric-react/lib/Check';
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import {
-  IObjectWithKey,
-  ISelection,
-  Selection,
-  SelectionMode,
-  SelectionZone
-} from 'office-ui-fabric-react/lib/Selection';
+import { IObjectWithKey, ISelection, Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
 import { createListItems } from 'office-ui-fabric-react/lib/utilities/exampleData';
 
 import './Selection.Example.scss';
@@ -55,12 +49,7 @@ export class SelectionItemExample extends React.Component<ISelectionItemExampleP
         <a className="ms-SelectionItemExample-link" href="https://bing.com" target="_blank">
           Link that avoids selection
         </a>
-        <a
-          className="ms-SelectionItemExample-link"
-          data-selection-select={true}
-          href="https://bing.com"
-          target="_blank"
-        >
+        <a className="ms-SelectionItemExample-link" data-selection-select={true} href="https://bing.com" target="_blank">
           Link that selects first
         </a>
       </div>
@@ -110,13 +99,7 @@ export class SelectionBasicExample extends React.Component<{}, ISelectionBasicEx
             onItemInvoked={this._alertItem}
           >
             {items.map((item: { key: string | number }, index: number) => (
-              <SelectionItemExample
-                ref={'detailsGroup_' + index}
-                key={item.key}
-                item={item}
-                itemIndex={index}
-                selection={selection}
-              />
+              <SelectionItemExample ref={'detailsGroup_' + index} key={item.key} item={item} itemIndex={index} selection={selection} />
             ))}
           </SelectionZone>
         </MarqueeSelection>

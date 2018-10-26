@@ -622,4 +622,4 @@ export interface IDetailsGroupRenderProps extends IGroupRenderProps {
   onRenderHeader?: IRenderFunction<IDetailsGroupDividerProps>;
 }
 
-export interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsItemProps { }
+export interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsItemProps {}

@@ -2,7 +2,7 @@ import { ICalloutProps } from '../../Callout';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject, IPoint } from '../../Utilities';
 
-export interface IKeytip { }
+export interface IKeytip {}
 
 export interface IKeytipProps {
   /**

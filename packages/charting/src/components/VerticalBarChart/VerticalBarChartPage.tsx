@@ -31,11 +31,7 @@ export class VerticalBarChartPage extends React.Component<IComponentDemoPageProp
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={[
-              require<
-                string
-              >('!raw-loader!@uifabric/charting/src/components/VerticalBarChart/VerticalBarChart.types.ts')
-            ]}
+            sources={[require<string>('!raw-loader!@uifabric/charting/src/components/VerticalBarChart/VerticalBarChart.types.ts')]}
           />
         }
         /* tslint:disable:max-line-length */
@@ -60,9 +56,7 @@ export class VerticalBarChartPage extends React.Component<IComponentDemoPageProp
             </ul>
           </div>
         }
-        related={
-          <a href="https://dev.office.com/fabric-js/Components/VerticalBarChart/VerticalBarChart.html">Fabric JS</a>
-        }
+        related={<a href="https://dev.office.com/fabric-js/Components/VerticalBarChart/VerticalBarChart.html">Fabric JS</a>}
         isHeaderVisible={this.props.isHeaderVisible}
       />
     );

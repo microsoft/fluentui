@@ -1,12 +1,5 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  getId,
-  toMatrix,
-  classNamesFunction,
-  getNativeProps,
-  htmlElementProperties
-} from '../../Utilities';
+import { BaseComponent, getId, toMatrix, classNamesFunction, getNativeProps, htmlElementProperties } from '../../Utilities';
 import { FocusZone } from '../../FocusZone';
 import { IGrid, IGridProps, IGridStyleProps, IGridStyles } from './Grid.types';
 
@@ -31,25 +24,14 @@ export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
     const rowsOfItems: any[][] = toMatrix(items, columnCount);
 
     const content = (
-      <table
-        {...htmlProps}
-        aria-posinset={positionInSet}
-        aria-setsize={setSize}
-        id={this._id}
-        role={'grid'}
-        className={classNames.root}
-      >
+      <table {...htmlProps} aria-posinset={positionInSet} aria-setsize={setSize} id={this._id} role={'grid'} className={classNames.root}>
         <tbody>
           {rowsOfItems.map((rows: any[], rowIndex: number) => {
             return (
               <tr role={'row'} key={this._id + '-' + rowIndex + '-row'}>
                 {rows.map((cell: any, cellIndex: number) => {
                   return (
-                    <td
-                      role={'presentation'}
-                      key={this._id + '-' + cellIndex + '-cell'}
-                      className={classNames.tableCell}
-                    >
+                    <td role={'presentation'} key={this._id + '-' + cellIndex + '-cell'} className={classNames.tableCell}>
                       {onRenderItem(cell, cellIndex)}
                     </td>
                   );

@@ -11,11 +11,7 @@ const alertClicked = (): void => {
 export const FocusZoneTabbableExample = () => (
   <div className="ms-FocusZoneTabbableExample">
     <div className="ms-Row">
-      <FocusZone
-        direction={FocusZoneDirection.horizontal}
-        handleTabKey={FocusZoneTabbableElements.all}
-        isCircularNavigation={true}
-      >
+      <FocusZone direction={FocusZoneDirection.horizontal} handleTabKey={FocusZoneTabbableElements.all} isCircularNavigation={true}>
         <span>Circular Tabbable FocusZone: </span>
         <DefaultButton>Button 1</DefaultButton>
         <DefaultButton>Button 2</DefaultButton>
@@ -44,11 +40,7 @@ export const FocusZoneTabbableExample = () => (
       </FocusZone>
     </div>
     <div className="ms-Row">
-      <FocusZone
-        direction={FocusZoneDirection.horizontal}
-        handleTabKey={FocusZoneTabbableElements.inputOnly}
-        isCircularNavigation={false}
-      >
+      <FocusZone direction={FocusZoneDirection.horizontal} handleTabKey={FocusZoneTabbableElements.inputOnly} isCircularNavigation={false}>
         <span>Input Only FocusZone: </span>
         <DefaultButton>Button 1</DefaultButton>
         <DefaultButton>Button 2</DefaultButton>

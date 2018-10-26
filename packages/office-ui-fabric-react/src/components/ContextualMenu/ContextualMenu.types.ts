@@ -20,7 +20,7 @@ export enum ContextualMenuItemType {
   Section = 3
 }
 
-export interface IContextualMenu { }
+export interface IContextualMenu {}
 
 /**
  * React.Props is deprecated and we're removing it in 6.0. Usage of 'any' should go away with it.

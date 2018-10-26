@@ -9,8 +9,7 @@ const LabelBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/co
 export const LabelPageProps: IDocPageProps = {
   title: 'Label',
   componentName: 'Label',
-  componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Label',
+  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Label',
   componentStatus: LabelStatus,
   examples: [
     {
