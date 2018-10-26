@@ -79,6 +79,8 @@ export class AnnouncedSearchResultsExample extends React.Component<
       if (results.length !== this.state.numberOfSuggestions) {
         this.setState({ numberOfSuggestions: results.length });
       }
+    } else if (this.state.numberOfSuggestions !== 0) {
+      this.setState({ numberOfSuggestions: 0 });
     }
   }
 
