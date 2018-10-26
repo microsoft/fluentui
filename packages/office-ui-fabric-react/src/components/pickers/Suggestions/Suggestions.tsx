@@ -328,14 +328,17 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
     }
   }
 
-  private _renderSuggestions(): JSX.Element {
+  private _renderSuggestions(): JSX.Element | null {
     const {
       onRenderSuggestion,
       removeSuggestionAriaLabel,
       suggestionsItemClassName,
       resultsMaximumNumber,
       showRemoveButtons,
-      suggestionsContainerAriaLabel } = this.props;
+      suggestionsContainerAriaLabel,
+      suggestionsListId,
+      suggestionsClassName
+    } = this.props;
     let { suggestions } = this.props;
     const TypedSuggestionsItem = this.SuggestionsItemOfProperType;
 
@@ -343,11 +346,15 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
       suggestions = suggestions.slice(0, resultsMaximumNumber);
     }
 
+    if (suggestions.length === 0) {
+      return null;
+    }
+
     return (
       <div
-        className={ css('ms-Suggestions-container', styles.suggestionsContainer) }
-        id='suggestion-list'
-        role='list'
+        className={ css('ms-Suggestions-container', styles.suggestionsContainer, suggestionsClassName) }
+        id={ suggestionsListId }
+        role='listbox'
         aria-label={ suggestionsContainerAriaLabel }
       >
         { suggestions.map((suggestion, index) =>
@@ -356,11 +363,11 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
             // tslint:disable-next-line:no-string-literal
             key={ (suggestion.item as any)['key'] ? (suggestion.item as any)['key'] : index }
             id={ 'sug-' + index }
-            role='listitem'
+            aria-selected={ suggestion.selected }
+            role='option'
             aria-label={ suggestion.ariaLabel }
           >
             <TypedSuggestionsItem
-              id={ 'sug-item' + index }
               suggestionModel={ suggestion }
               RenderSuggestion={ onRenderSuggestion as any }
               onClick={ this._onClickTypedSuggestionsItem(suggestion.item, index) }

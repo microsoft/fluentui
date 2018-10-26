@@ -9,7 +9,7 @@ exports[`Pickers BasePicker renders BasePicker correctly 1`] = `
     aria-describedby={undefined}
     aria-labelledby={undefined}
     className="ms-FocusZone"
-    data-focuszone-id="FocusZone0"
+    data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -31,9 +31,14 @@ exports[`Pickers BasePicker renders BasePicker correctly 1`] = `
         className="ms-BasePicker-text"
         role="list"
       >
+        <span
+          id="selected-items-id__0"
+        />
         <input
           aria-activedescendant={undefined}
-          aria-controls="selected-suggestion-alert"
+          aria-autocomplete="both"
+          aria-controls=" "
+          aria-describedby="selected-items-id__0"
           aria-expanded={false}
           aria-haspopup="true"
           aria-owns={undefined}
@@ -68,7 +73,7 @@ exports[`Pickers TagPicker renders TagPicker correctly 1`] = `
     aria-describedby={undefined}
     aria-labelledby={undefined}
     className="ms-FocusZone"
-    data-focuszone-id="FocusZone17"
+    data-focuszone-id="FocusZone70"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -90,9 +95,14 @@ exports[`Pickers TagPicker renders TagPicker correctly 1`] = `
         className="ms-BasePicker-text"
         role="list"
       >
+        <span
+          id="selected-items-id__69"
+        />
         <input
           aria-activedescendant={undefined}
-          aria-controls="selected-suggestion-alert"
+          aria-autocomplete="both"
+          aria-controls=" "
+          aria-describedby="selected-items-id__69"
           aria-expanded={false}
           aria-haspopup="true"
           aria-owns={undefined}
