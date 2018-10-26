@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/charting",
+      "comment": "Add placeholder mode to MultiStackBardChart data point in order to render the bar chart with a progress gray color(default)  area",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/charting",
+  "email": "timto@corp.microsoft.com"
+}
