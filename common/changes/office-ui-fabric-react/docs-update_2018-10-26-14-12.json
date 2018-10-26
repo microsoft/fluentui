@@ -3,7 +3,7 @@
     {
       "packageName": "office-ui-fabric-react",
       "comment": "DetailsList/List: updating documentation.",
-      "type": "none"
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
