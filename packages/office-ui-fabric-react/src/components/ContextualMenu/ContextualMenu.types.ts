@@ -110,6 +110,12 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
   coverTarget?: boolean;
 
   /**
+   * If true the positioning logic will prefer flipping edges over nudging the rectangle to fit within bounds,
+   * thus making sure the the element align perfectly with target.
+   */
+  alignPerfectlyWithTarget?: boolean;
+
+  /**
    * Collection of menu items.
    * @defaultvalue []
    */

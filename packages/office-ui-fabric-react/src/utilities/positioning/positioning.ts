@@ -266,27 +266,21 @@ function _flipToFit(
 /**
  * Flips only the alignment edge of an element rectangle. This is used instead of nudging the alignment edges into position,
  * when alignPerfectlyWithTarget is specified.
- * Returns the initial elementEstimate if the flipping does not work.
  * @param elementEstimate
  * @param target
  * @param bounding
  * @param gap
  */
-function _flipAlignmentEdgeOnly(elementEstimate: IElementPosition, target: Rectangle, bounding: Rectangle, gap: number): IElementPosition {
+function _flipAlignmentEdge(elementEstimate: IElementPosition, target: Rectangle, gap: number): IElementPosition {
   const { alignmentEdge, targetEdge, elementRectangle } = elementEstimate;
-  if (alignmentEdge !== undefined) {
-    const newEstimate = _estimatePosition(elementRectangle, target, { targetEdge: targetEdge, alignmentEdge: alignmentEdge * -1 }, gap);
+  const oppositeEdge = alignmentEdge! * -1;
+  const newEstimate = _estimatePosition(elementRectangle, target, { targetEdge: targetEdge, alignmentEdge: oppositeEdge }, gap);
 
-    if (_isEdgeInBounds(newEstimate, bounding, alignmentEdge) && _isEdgeInBounds(newEstimate, bounding, alignmentEdge * -1)) {
-      return {
-        elementRectangle: newEstimate,
-        targetEdge: targetEdge,
-        alignmentEdge: alignmentEdge * -1
-      };
-    }
-  }
-
-  return elementEstimate;
+  return {
+    elementRectangle: newEstimate,
+    targetEdge: targetEdge,
+    alignmentEdge: oppositeEdge
+  };
 }
 
 /**
@@ -327,7 +321,10 @@ function _adjustFitWithinBounds(
   if (alignPerfectlyWithTarget) {
     // The edge opposite to the alignment edge might be out of bounds. Flip alignment to see if we can get it within bounds.
     if (elementEstimate.alignmentEdge && outOfBounds.indexOf(elementEstimate.alignmentEdge * -1) > -1) {
-      elementEstimate = _flipAlignmentEdgeOnly(elementEstimate, target, bounding, gap);
+      const flippedElementEstimate = _flipAlignmentEdge(elementEstimate, target, gap);
+      if (_isRectangleWithinBounds(flippedElementEstimate.elementRectangle, bounding)) {
+        return flippedElementEstimate;
+      }
     }
   } else {
     for (const direction of outOfBounds) {
@@ -465,18 +462,16 @@ function _calculateActualBeakWidthInPixels(beakWidth: number): number {
 function _getPositionData(
   directionalHint: DirectionalHint = DirectionalHint.bottomAutoEdge,
   directionalHintForRTL?: DirectionalHint,
-  alignPerfectlyWithTarget?: boolean,
   previousPositions?: IPositionDirectionalHintData
 ): IPositionDirectionalHintData {
   if (previousPositions) {
     return {
       alignmentEdge: previousPositions.alignmentEdge,
       isAuto: previousPositions.isAuto,
-      targetEdge: previousPositions.targetEdge,
-      alignPerfectlyWithTarget: previousPositions.alignPerfectlyWithTarget
+      targetEdge: previousPositions.targetEdge
     };
   }
-  const positionInformation: IPositionDirectionalHintData = { ...DirectionalDictionary[directionalHint], alignPerfectlyWithTarget };
+  const positionInformation: IPositionDirectionalHintData = { ...DirectionalDictionary[directionalHint] };
   if (getRTL()) {
     // If alignment edge exists and that alignment edge is -2 or 2, right or left, then flip it.
     if (positionInformation.alignmentEdge && positionInformation.alignmentEdge % 2 === 0) {
@@ -503,12 +498,14 @@ function _getAlignmentData(
   positionData: IPositionDirectionalHintData,
   target: Rectangle,
   boundingRect: Rectangle,
-  coverTarget?: boolean
+  coverTarget?: boolean,
+  alignPerfectlyWithTarget?: boolean
 ): IPositionDirectionalHintData {
   if (positionData.isAuto) {
     positionData.alignmentEdge = getClosestEdge(positionData.targetEdge, target, boundingRect);
   }
 
+  positionData.alignPerfectlyWithTarget = alignPerfectlyWithTarget;
   return positionData;
 }
 
@@ -678,10 +675,11 @@ function _positionElementRelative(
     : new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
   const targetRect: Rectangle = _getTargetRect(boundingRect, props.target);
   const positionData: IPositionDirectionalHintData = _getAlignmentData(
-    _getPositionData(props.directionalHint, props.directionalHintForRTL, props.alignPerfectlyWithTarget, previousPositions)!,
+    _getPositionData(props.directionalHint, props.directionalHintForRTL, previousPositions)!,
     targetRect,
     boundingRect,
-    props.coverTarget
+    props.coverTarget,
+    props.alignPerfectlyWithTarget
   );
   const positionedElement: IElementPosition = _positionElementWithinBounds(
     _getRectangleFromElement(elementToPosition),

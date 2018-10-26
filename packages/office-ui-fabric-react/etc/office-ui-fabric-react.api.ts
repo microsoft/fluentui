@@ -6165,6 +6165,7 @@ interface IContextualMenuListProps {
 
 // @public
 interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWithResponsiveModeState {
+  alignPerfectlyWithTarget?: boolean;
   ariaLabel?: string;
   beakWidth?: number;
   bounds?: IRectangle;
