@@ -31,6 +31,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   private _stickyContentTop = createRef<HTMLDivElement>();
   private _stickyContentBottom = createRef<HTMLDivElement>();
   private _nonStickyContent = createRef<HTMLDivElement>();
+  private prevNonStickyContentOffsetHeight: number;
 
   constructor(props: IStickyProps) {
     super(props);
@@ -39,6 +40,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       isStickyBottom: false
     };
     this.distanceFromTop = 0;
+    this.prevNonStickyContentOffsetHeight = 0;
   }
 
   public get root(): HTMLDivElement | null {
@@ -102,7 +104,13 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       return;
     }
 
-    if (prevState.isStickyTop !== this.state.isStickyTop || prevState.isStickyBottom !== this.state.isStickyBottom) {
+    const currNonStickyContentOffsetHeight = this.nonStickyContent ? this.nonStickyContent.offsetHeight : undefined;
+    if (
+      prevState.isStickyTop !== this.state.isStickyTop ||
+      prevState.isStickyBottom !== this.state.isStickyBottom ||
+      this.prevNonStickyContentOffsetHeight !== currNonStickyContentOffsetHeight
+    ) {
+      this._updatePrevNonStickyContentOffsetHeight(currNonStickyContentOffsetHeight ? currNonStickyContentOffsetHeight : 0);
       scrollablePane.updateStickyRefHeights();
     }
   }
@@ -111,13 +119,20 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     if (!this.context.scrollablePane) {
       return true;
     }
-
     const { isStickyTop, isStickyBottom } = this.state;
+    const nonStickyContent = this.nonStickyContent;
+    const nonStickyContentOffsetHeight = nonStickyContent ? nonStickyContent.offsetHeight : undefined;
+    const nonStickyRoot = this.root;
+    const nonStickyRootOffsetHeight = nonStickyRoot ? nonStickyRoot.offsetHeight : undefined;
+    const stickyContent = this.canStickyTop ? this.stickyContentTop : this.canStickyBottom ? this.stickyContentBottom : undefined;
+    const stickyContentOffsetHeight = stickyContent ? stickyContent.offsetHeight : undefined;
     return (
       isStickyTop !== nextState.isStickyTop ||
       isStickyBottom !== nextState.isStickyBottom ||
       this.props.stickyPosition !== nextProps.stickyPosition ||
-      this.props.children !== nextProps.children
+      this.props.children !== nextProps.children ||
+      nonStickyContentOffsetHeight !== nonStickyRootOffsetHeight ||
+      nonStickyContentOffsetHeight !== stickyContentOffsetHeight
     );
   }
 
@@ -130,7 +145,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     }
 
     return (
-      <div ref={this._root}>
+      <div>
         {this.canStickyTop && (
           <div ref={this._stickyContentTop} aria-hidden={!isStickyTop} style={{ pointerEvents: isStickyTop ? 'auto' : 'none' }}>
             <div style={this._getStickyPlaceholderHeight(isStickyTop)} />
@@ -170,6 +185,9 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     this.distanceFromTop = this._getNonStickyDistanceFromTop(container);
   }
 
+  private _updatePrevNonStickyContentOffsetHeight(offsetHeight: number): void {
+    this.prevNonStickyContentOffsetHeight = offsetHeight;
+  }
   private _getContentStyles(isSticky: boolean): React.CSSProperties {
     return {
       backgroundColor: this.props.stickyBackgroundColor || this._getBackground(),
