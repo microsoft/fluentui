@@ -93,13 +93,7 @@ export class ActionBar extends React.Component<IActionBarProps, {}> {
   private _renderButton = (action: IOverflowSetItemProps) => {
     const customStyles = getCustomActionBarButtonStyles();
     return (
-      <DefaultButton
-        ariaLabel={action.title}
-        primary={action.primary}
-        text={action.title}
-        onClick={action.action}
-        styles={customStyles}
-      />
+      <DefaultButton ariaLabel={action.title} primary={action.primary} text={action.title} onClick={action.action} styles={customStyles} />
     );
   };
 }

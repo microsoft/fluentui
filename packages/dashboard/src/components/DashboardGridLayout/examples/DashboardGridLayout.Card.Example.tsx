@@ -199,12 +199,7 @@ export class DashboardGridLayoutCardExample extends React.Component<{}, {}> {
           />
         </div>
         <div key="2">
-          <Card
-            cardFrameContent={cardFrameContent}
-            header={header}
-            cardContentList={contentAreaList}
-            cardSize={CardSize.small}
-          />
+          <Card cardFrameContent={cardFrameContent} header={header} cardContentList={contentAreaList} cardSize={CardSize.small} />
         </div>
         <div key="3">
           <Card

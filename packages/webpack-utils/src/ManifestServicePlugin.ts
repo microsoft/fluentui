@@ -98,9 +98,7 @@ class ManifestServicePlugin {
   }
 
   private _appendModuleDefine(module: any): void {
-    const isModuleAmd: boolean = module.dependencies.some(
-      (dependency: any) => dependency.constructor.name === 'AMDDefineDependency'
-    );
+    const isModuleAmd: boolean = module.dependencies.some((dependency: any) => dependency.constructor.name === 'AMDDefineDependency');
     const moduleName: string = this.moduleRequestMap[module.request];
 
     const exportValue: string = isModuleAmd ? '__WEBPACK_AMD_DEFINE_RESULT__' : 'module.exports';

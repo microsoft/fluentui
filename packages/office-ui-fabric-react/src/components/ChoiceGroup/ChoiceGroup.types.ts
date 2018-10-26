@@ -3,7 +3,7 @@ import { IIconProps } from '../../Icon';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { ITheme, IStyle } from '../../Styling';
 
-export interface IChoiceGroup { }
+export interface IChoiceGroup {}
 
 export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement> {
   /**

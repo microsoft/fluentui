@@ -1,13 +1,4 @@
-import {
-  findIndex,
-  find,
-  createArray,
-  removeIndex,
-  flatten,
-  replaceElement,
-  addElementAtIndex,
-  arraysEqual
-} from './array';
+import { findIndex, find, createArray, removeIndex, flatten, replaceElement, addElementAtIndex, arraysEqual } from './array';
 
 describe('array utils tests', () => {
   describe('findIndex tests', () => {

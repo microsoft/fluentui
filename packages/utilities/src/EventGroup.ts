@@ -153,9 +153,7 @@ export class EventGroup {
   }
 
   private static _isElement(target: HTMLElement): boolean {
-    return (
-      !!target && (!!target.addEventListener || (typeof HTMLElement !== 'undefined' && target instanceof HTMLElement))
-    );
+    return !!target && (!!target.addEventListener || (typeof HTMLElement !== 'undefined' && target instanceof HTMLElement));
   }
 
   /** parent: the context in which events attached to non-HTMLElements are called */
@@ -305,11 +303,7 @@ export class EventGroup {
 
         if (eventRecord.elementCallback) {
           if (eventRecord.target.removeEventListener) {
-            eventRecord.target.removeEventListener(
-              eventRecord.eventName,
-              eventRecord.elementCallback,
-              eventRecord.useCapture
-            );
+            eventRecord.target.removeEventListener(eventRecord.eventName, eventRecord.elementCallback, eventRecord.useCapture);
           } else if (eventRecord.target.detachEvent) {
             // IE8
             eventRecord.target.detachEvent('on' + eventRecord.eventName, eventRecord.elementCallback);

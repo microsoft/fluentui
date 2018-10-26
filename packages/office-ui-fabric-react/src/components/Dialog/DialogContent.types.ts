@@ -5,7 +5,7 @@ import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
-export interface IDialogContent { }
+export interface IDialogContent {}
 
 export interface IDialogContentProps extends React.Props<DialogContentBase> {
   /**

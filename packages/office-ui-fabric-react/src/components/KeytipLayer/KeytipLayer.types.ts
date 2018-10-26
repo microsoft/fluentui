@@ -3,7 +3,7 @@ import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IStyle } from '../../Styling';
 import { IKeytipTransitionKey } from '../../utilities/keytips/IKeytipTransitionKey';
 
-export interface IKeytipLayer { }
+export interface IKeytipLayer {}
 
 export interface IKeytipLayerProps extends React.Props<IKeytipLayer> {
   /**
@@ -54,4 +54,4 @@ export interface IKeytipLayerStyles {
   innerContent: IStyle;
 }
 
-export interface IKeytipLayerStyleProps { }
+export interface IKeytipLayerStyleProps {}
