@@ -90,8 +90,9 @@ $Calendar-dayPicker-margin: 10px;
 }
 
 .monthAndYear:hover,
-.currentYear:hover {
-  color: $ms-color-black;
+.currentYear:hover,
+.currentDecade:hover {
+  cursor: default;
 }
 
 // The calendar table of dates.
@@ -126,6 +127,7 @@ $Calendar-dayPicker-margin: 10px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  cursor: default;
 
   * {
     @include focus-border(-2px, $color: $ms-color-neutralSecondary);
