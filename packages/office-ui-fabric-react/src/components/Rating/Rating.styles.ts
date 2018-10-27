@@ -35,7 +35,8 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
 
   const ratingSmallIconSize = 16;
   const ratingLargeIconSize = 20;
-  const ratingPadding = 3;
+  const ratingVerticalPadding = 8;
+  const ratingHorizontalPadding = 2;
 
   const ratingStarUncheckedColor = palette.neutralTertiary;
   const ratingStarUncheckedHoverColor = palette.themePrimary;
@@ -62,20 +63,21 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
     rootIsSmall: [
       classNames.rootIsSmall,
       {
-        height: ratingSmallIconSize + ratingPadding * 2 + 'px'
+        height: ratingSmallIconSize + ratingVerticalPadding * 2 + 'px'
       }
     ],
     rootIsLarge: [
       classNames.rootIsLarge,
       {
-        height: ratingLargeIconSize + ratingPadding * 2 + 'px'
+        height: ratingLargeIconSize + ratingVerticalPadding * 2 + 'px'
       }
     ],
     ratingStar: [
       classNames.ratingStar,
       {
         display: 'inline-block',
-        position: 'relative'
+        position: 'relative',
+        height: 'inherit'
       }
     ],
     ratingStarBack: [
@@ -105,7 +107,8 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
       classNames.ratingButton,
       {
         backgroundColor: 'transparent',
-        padding: `${ratingPadding}px ${ratingPadding}px ${ratingPadding}px 0px`,
+        padding: `${ratingVerticalPadding}px ${ratingHorizontalPadding}px`,
+        boxSizing: 'content-box',
         margin: '0px',
         border: 'none',
         cursor: 'pointer',
@@ -148,22 +151,23 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
       classNames.ratingStarIsSmall,
       {
         fontSize: ratingSmallIconSize + 'px',
-        lineHeight: ratingSmallIconSize + 'px'
+        lineHeight: ratingSmallIconSize + 'px',
+        height: ratingSmallIconSize + 'px'
       }
     ],
     ratingStarIsLarge: [
       classNames.ratingStartIsLarge,
       {
         fontSize: ratingLargeIconSize + 'px',
-        lineHeight: ratingLargeIconSize + 'px'
+        lineHeight: ratingLargeIconSize + 'px',
+        height: ratingLargeIconSize + 'px'
       }
     ],
     labelText: [classNames.labelText, hiddenContentStyle],
     ratingFocusZone: [
       classNames.ratingFocusZone,
       {
-        display: 'inline-block',
-        paddingBottom: '1px'
+        display: 'inline-block'
       }
     ]
   };

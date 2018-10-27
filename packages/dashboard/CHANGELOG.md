@@ -1,6 +1,27 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Thu, 18 Oct 2018 20:22:36 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Oct 2018 12:30:05 GMT and should not be manually modified.
+
+## 0.31.0
+Thu, 25 Oct 2018 12:30:05 GMT
+
+### Minor changes
+
+- Adding support when there is no data for line chart, removing unwanted div's that is not letting flex do it job
+
+## 0.30.3
+Tue, 23 Oct 2018 12:32:16 GMT
+
+### Patches
+
+- Fix an issue with the demo site not being able to load (in npm start or aka.ms/fabricdemo).
+
+## 0.30.2
+Mon, 22 Oct 2018 12:29:57 GMT
+
+### Patches
+
+- "Dashboard/Nav component - added focus style to support keyboard inputs"
 
 ## 0.30.1
 Thu, 18 Oct 2018 20:22:36 GMT

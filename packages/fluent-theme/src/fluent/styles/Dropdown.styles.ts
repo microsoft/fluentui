@@ -1,8 +1,7 @@
 import { IDropdownStyleProps } from 'office-ui-fabric-react/lib/Dropdown';
-import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
 import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { fluentBorderRadius } from './styleConstants';
-import { CommunicationColors, SharedColors, NeutralColors } from '../FluentColors';
+import { SharedColors, NeutralColors } from '../FluentColors';
 import { Depths } from '../FluentDepths';
 
 export const DropdownStyles = (props: IDropdownStyleProps) => {
@@ -12,7 +11,7 @@ export const DropdownStyles = (props: IDropdownStyleProps) => {
     throw new Error('theme is undefined or null in base Dropdown getStyles function.');
   }
 
-  const { semanticColors, palette } = theme;
+  const { palette } = theme;
   const ITEM_HEIGHT = '36px';
 
   const titleOpenBorderRadius =
@@ -38,15 +37,15 @@ export const DropdownStyles = (props: IDropdownStyleProps) => {
       // Currently whenever you hover over an item it forces focus on it so we style the background change through focus selector.
       selectors: {
         '&:hover:focus': {
-          color: semanticColors.menuItemTextHovered,
-          backgroundColor: !isSelected ? semanticColors.menuItemBackgroundHovered : semanticColors.menuItemBackgroundPressed
+          color: palette.neutralDark,
+          backgroundColor: !isSelected ? palette.neutralLighter : palette.neutralLight
         },
         '&:focus': {
-          backgroundColor: !isSelected ? 'transparent' : semanticColors.menuItemBackgroundPressed
+          backgroundColor: !isSelected ? 'transparent' : palette.neutralLight
         },
         '&:active': {
-          color: semanticColors.menuItemTextHovered,
-          backgroundColor: !isSelected ? semanticColors.menuItemBackgroundHovered : semanticColors.menuItemBackgroundPressed
+          color: palette.neutralDark,
+          backgroundColor: !isSelected ? palette.neutralLighter : palette.neutralLight
         }
       }
     };
@@ -57,21 +56,26 @@ export const DropdownStyles = (props: IDropdownStyleProps) => {
       disabled && {
         selectors: {
           // Title placeholder states when disabled.
-          ['&:hover .ms-Dropdown-titleIsPlaceHolder']: { color: semanticColors.disabledText },
-          ['&:focus .ms-Dropdown-titleIsPlaceHolder']: { color: semanticColors.disabledText },
-          ['&:active .ms-Dropdown-titleIsPlaceHolder']: { color: semanticColors.disabledText }
+          ['&:hover .ms-Dropdown-titleIsPlaceHolder']: { color: palette.neutralTertiary },
+          ['&:focus .ms-Dropdown-titleIsPlaceHolder']: { color: palette.neutralTertiary },
+          ['&:active .ms-Dropdown-titleIsPlaceHolder']: { color: palette.neutralTertiary }
         }
       },
       !disabled && {
         selectors: {
           // Title and border states. For :hover and :focus even if the styles are the same we need to keep them separate for specificity
           // reasons in order :active borderColor to work.
-          ['&:hover .ms-Dropdown-title']: { color: semanticColors.menuItemTextHovered, borderColor: palette.neutralPrimary },
-          ['&:focus .ms-Dropdown-title']: { color: semanticColors.menuItemTextHovered, borderColor: palette.neutralPrimary },
+          ['&:hover .ms-Dropdown-title']: {
+            color: palette.neutralDark,
+            borderColor: !isOpen ? palette.neutralPrimary : palette.themePrimary
+          },
+          ['&:focus .ms-Dropdown-title']: {
+            color: palette.neutralDark,
+            borderColor: !isOpen ? palette.neutralPrimary : palette.themePrimary
+          },
           ['&:active .ms-Dropdown-title']: {
-            color: semanticColors.menuItemTextHovered,
-            fontWeight: FontWeights.semibold,
-            borderColor: CommunicationColors.primary
+            color: palette.neutralDark,
+            borderColor: palette.themePrimary
           },
 
           // CaretDown states are the same for focus, hover, active.
@@ -81,31 +85,33 @@ export const DropdownStyles = (props: IDropdownStyleProps) => {
 
           // Title placeholder states when not disabled.
           ['&:hover .ms-Dropdown-titleIsPlaceHolder, &:focus .ms-Dropdown-titleIsPlaceHolder, &:active .ms-Dropdown-titleIsPlaceHolder']: {
-            color: semanticColors.menuItemTextHovered
+            color: palette.neutralDark
           },
 
           // Title has error states
           ['&:hover .ms-Dropdown-title--hasError, &:focus .ms-Dropdown-title--hasError, &:active .ms-Dropdown-title--hasError']: {
             borderColor: SharedColors.red20,
-            color: isRenderingPlaceholder ? semanticColors.inputPlaceholderText : palette.neutralPrimary
+            color: isRenderingPlaceholder ? palette.neutralSecondary : palette.neutralPrimary
           }
         }
       }
     ],
     title: [
       {
-        borderColor: !hasError ? NeutralColors.gray80 : SharedColors.red10,
+        borderColor: NeutralColors.gray80,
         borderRadius: isOpen ? titleOpenBorderRadius : fluentBorderRadius,
         padding: `0 28px 0 8px`
       },
-      disabled && { color: semanticColors.disabledText }
+      hasError && { borderColor: !isOpen ? SharedColors.red10 : SharedColors.red20 },
+      isOpen && !hasError && { borderColor: palette.themePrimary },
+      disabled && { color: palette.neutralTertiary }
     ],
     caretDownWrapper: {
       right: 8
     },
     caretDown: [
       disabled && {
-        color: semanticColors.disabledText
+        color: palette.neutralTertiary
       }
     ],
     errorMessage: { color: SharedColors.red20 },
@@ -125,7 +131,7 @@ export const DropdownStyles = (props: IDropdownStyleProps) => {
     dropdownItem: [commonItemStyles, itemSelectors()],
     dropdownItemSelected: [
       {
-        backgroundColor: semanticColors.menuItemBackgroundPressed,
+        backgroundColor: palette.neutralLight,
         color: palette.neutralDark
       },
       commonItemStyles,
@@ -133,11 +139,11 @@ export const DropdownStyles = (props: IDropdownStyleProps) => {
     ],
     dropdownItemDisabled: {
       ...commonItemStyles,
-      color: semanticColors.disabledText
+      color: palette.neutralTertiary
     },
     dropdownItemSelectedAndDisabled: {
       ...commonItemStyles,
-      color: semanticColors.disabledText
+      color: palette.neutralTertiary
     }
   };
 };

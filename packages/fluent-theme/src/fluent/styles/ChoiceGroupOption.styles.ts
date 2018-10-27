@@ -11,15 +11,15 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): IC
           // The circle
           ':before': [
             {
-              borderColor: semanticColors.bodyText
+              borderColor: palette.neutralPrimary
             },
             disabled && {
-              backgroundColor: semanticColors.bodyBackground,
-              borderColor: semanticColors.disabledBodyText
+              backgroundColor: semanticColors.bodyBackground, // using semanticColor to override unnecessary ternary check at source styles
+              borderColor: palette.neutralTertiaryAlt
             },
             checked &&
               !disabled && {
-                borderColor: semanticColors.inputBackgroundChecked
+                borderColor: semanticColors.inputBackgroundChecked // re-assign the semanticColor after changing it above
               },
             (hasIcon || hasImage) &&
               disabled &&
@@ -41,7 +41,7 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): IC
                   color: palette.neutralDark
                 },
                 ':before': {
-                  borderColor: checked ? palette.themeDark : semanticColors.bodyText
+                  borderColor: checked ? palette.themeDark : palette.neutralPrimary
                 },
                 ':after': [
                   !hasIcon &&
@@ -68,7 +68,7 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): IC
         !disabled && {
           selectors: {
             ':hover': {
-              borderColor: checked ? palette.themeDark : semanticColors.bodyText
+              borderColor: checked ? palette.themeDark : palette.neutralPrimary
             }
           }
         },
@@ -78,13 +78,13 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): IC
       disabled && {
         selectors: {
           '.ms-ChoiceFieldLabel': {
-            color: semanticColors.disabledText
+            color: palette.neutralTertiary
           }
         }
       },
       checked &&
         disabled && {
-          borderColor: semanticColors.disabledBackground
+          borderColor: palette.neutralLighter
         }
     ],
     choiceFieldWrapper: {
@@ -92,7 +92,7 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): IC
         '&.is-inFocus': {
           selectors: {
             ':after': {
-              borderColor: semanticColors.focusBorder
+              borderColor: palette.neutralSecondary
             }
           }
         }

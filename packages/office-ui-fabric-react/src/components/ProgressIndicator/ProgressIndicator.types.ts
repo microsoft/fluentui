@@ -60,14 +60,14 @@ export interface IProgressIndicatorProps extends React.Props<ProgressIndicatorBa
   ariaValueText?: string;
 
   /**
-   * Deprecated at v0.43.0, to be removed at >= v0.53.0. Use 'label' instead.
-   * @deprecated
+   * Deprecated at v0.43.0, to be removed at \>= v0.53.0. Use `label` instead.
+   * @deprecated Use `label` instead.
    */
   title?: string;
 
   /**
    * Height of the ProgressIndicator
-   * @default 2
+   * @defaultvalue 2
    */
   barHeight?: number;
 }

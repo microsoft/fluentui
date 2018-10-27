@@ -545,6 +545,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
           role="separator"
           key={'separator-' + index + (top === undefined ? '' : top ? '-top' : '-bottom')}
           className={classNames.divider}
+          aria-hidden="true"
         />
       );
     }

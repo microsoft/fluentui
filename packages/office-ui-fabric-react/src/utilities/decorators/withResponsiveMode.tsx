@@ -58,13 +58,7 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
     public render(): JSX.Element {
       const { responsiveMode } = this.state;
 
-      return (
-        <ComposedComponent
-          ref={this._updateComposedComponentRef}
-          responsiveMode={responsiveMode}
-          {...this.props as any}
-        />
-      );
+      return <ComposedComponent ref={this._updateComposedComponentRef} responsiveMode={responsiveMode} {...this.props as any} />;
     }
 
     private _getResponsiveMode(): ResponsiveMode {

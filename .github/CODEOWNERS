@@ -17,6 +17,8 @@
 
 #### Core build stuff
 scripts/ @dzearing
+package.json @cliffkoh
+*/package.json @cliffkoh
 
 #### Apps
 # component-demo/

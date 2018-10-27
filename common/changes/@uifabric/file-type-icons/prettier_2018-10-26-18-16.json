@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/file-type-icons",
+      "comment": "Running Prettier on all .ts and .tsx files in the packages folder.",
+      "type": "none"
+    }
+  ],
+  "packageName": "@uifabric/file-type-icons",
+  "email": "Humberto.Morimoto@microsoft.com"
+}

@@ -5,14 +5,7 @@ import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { Selection, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
-import {
-  IExampleGroup,
-  IExampleItem,
-  createGroup,
-  createDocumentItems,
-  getTileCells,
-  createShimmerGroups
-} from './ExampleHelpers';
+import { IExampleGroup, IExampleItem, createGroup, createDocumentItems, getTileCells, createShimmerGroups } from './ExampleHelpers';
 import { ISize } from '@uifabric/experiments/lib/Utilities';
 import { ShimmerElementType as ElemType, ShimmerElementsGroup } from '@uifabric/experiments/lib/Shimmer';
 
@@ -55,10 +48,7 @@ export interface ITilesListDocumentExampleProps {
   tileSize: 'large' | 'small';
 }
 
-export class TilesListDocumentExample extends React.Component<
-  ITilesListDocumentExampleProps,
-  ITilesListDocumentExampleState
-> {
+export class TilesListDocumentExample extends React.Component<ITilesListDocumentExampleProps, ITilesListDocumentExampleState> {
   private _selection: Selection;
 
   constructor(props: ITilesListDocumentExampleProps) {
@@ -212,15 +202,7 @@ export class TilesListDocumentExample extends React.Component<
   private _onRenderShimmerCell = (item: IExampleItem, finalSize: ISize): JSX.Element => {
     const { tileSize } = this.props;
 
-    return (
-      <ShimmerTile
-        contentSize={finalSize}
-        itemName={true}
-        itemActivity={true}
-        itemThumbnail={true}
-        tileSize={tileSize}
-      />
-    );
+    return <ShimmerTile contentSize={finalSize} itemName={true} itemActivity={true} itemThumbnail={true} tileSize={tileSize} />;
   };
 
   private _onRenderHeader = (item: IExampleItem): JSX.Element => {

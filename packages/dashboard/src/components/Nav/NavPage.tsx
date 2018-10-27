@@ -30,8 +30,8 @@ export class NavPage extends React.Component<IComponentDemoPageProps, {}> {
               <li>Use the hamburger icon at the top to switch between expanded and collapsed state</li>
               <li>Use the optional named second menu group if needed to split/categorize the menu items.</li>
               <li>
-                Use only supported actions on leaf nodes - expand if there is child menu or script execution through
-                onClick props or open url (includes hashtag) based on target property
+                Use only supported actions on leaf nodes - expand if there is child menu or script execution through onClick props or open
+                url (includes hashtag) based on target property
               </li>
             </ul>
           </div>
@@ -39,9 +39,7 @@ export class NavPage extends React.Component<IComponentDemoPageProps, {}> {
         donts={
           <div>
             <ul>
-              <li>
-                Provide script or url for the parent node. Parent node is used to expand/collapse it's child nodes.
-              </li>
+              <li>Provide script or url for the parent node. Parent node is used to expand/collapse it's child nodes.</li>
             </ul>
           </div>
         }

@@ -23,8 +23,8 @@ export class LayerCustomizedExample extends React.Component<{}, ILayerCustomized
     return (
       <div>
         <p>
-          A <code>Panel</code> is rendered, trapped in a specified container. Use 'Show panel' to show/hide the panel
-          (or click the X to dismiss it). Use 'Trap panel' to release the panel from its bounds.
+          A <code>Panel</code> is rendered, trapped in a specified container. Use 'Show panel' to show/hide the panel (or click the X to
+          dismiss it). Use 'Trap panel' to release the panel from its bounds.
         </p>
         <Checkbox label="Show panel" checked={this.state.showPanel} onChange={this._onShowPanelChange} />
         <Checkbox label="Trap panel" checked={this.state.trapPanel} onChange={this._onTrapPanelChange} />

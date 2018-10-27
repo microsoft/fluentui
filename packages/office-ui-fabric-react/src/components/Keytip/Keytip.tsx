@@ -9,10 +9,6 @@ import { getCalloutStyles, getCalloutOffsetStyles } from './Keytip.styles';
 
 /**
  * A callout corresponding to another Fabric component to describe a key sequence that will activate that component
- *
- * @export
- * @class Keytip
- * @extends {BaseComponent<IKeytipProps, {}}>}
  */
 export class Keytip extends BaseComponent<IKeytipProps, {}> implements IKeytip {
   public render(): JSX.Element {
