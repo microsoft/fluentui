@@ -238,11 +238,18 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
 
   private _onSelectYear = (selectedYear: number) => {
     this._focusOnUpdate = true;
-    const { navigatedDate, onNavigateDate } = this.props;
+    const { navigatedDate, onNavigateDate, maxDate, minDate } = this.props;
     const navYear = navigatedDate.getFullYear();
     if (navYear !== selectedYear) {
-      const newNavigationDate = new Date(navigatedDate.getTime());
+      let newNavigationDate = new Date(navigatedDate.getTime());
       newNavigationDate.setFullYear(selectedYear);
+      // for min and max dates, adjust the new navigation date - perhaps this should be
+      // checked on the master navigation date handler (i.e. in Calendar)
+      if (maxDate && newNavigationDate > maxDate) {
+        newNavigationDate = setMonth(newNavigationDate, maxDate.getMonth());
+      } else if (minDate && newNavigationDate < minDate) {
+        newNavigationDate = setMonth(newNavigationDate, minDate.getMonth());
+      }
       onNavigateDate(newNavigationDate, true);
     }
     this.setState({ isYearPickerVisible: false });
