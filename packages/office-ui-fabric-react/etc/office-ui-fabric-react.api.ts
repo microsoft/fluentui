@@ -2532,6 +2532,7 @@ interface IChoiceGroup {
 
 // @public (undocumented)
 interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | HTMLInputElement> {
+  ariaLabel?: string;
   checked?: boolean;
   disabled?: boolean;
   iconProps?: IIconProps;
