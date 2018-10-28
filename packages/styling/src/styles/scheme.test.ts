@@ -1,7 +1,8 @@
 import { getSchemedContext } from './scheme';
 import { createTheme } from './theme';
 import { IPartialTheme, ISchemeNames, ITheme, ITypography } from '../interfaces/index';
-import { mergeCustomizations, ICustomizerContext } from '@uifabric/utilities';
+import { loadTheme } from './theme';
+import { Customizations, mergeCustomizations, ICustomizerContext } from '@uifabric/utilities';
 
 describe('getSchemedCustomizations', () => {
   const testSchemeNameInvalid = 'neutral';
@@ -10,42 +11,30 @@ describe('getSchemedCustomizations', () => {
 
   let emptyContext: ICustomizerContext;
   let testContextScheme: ITheme;
-  let testSettingsScheme: ITheme;
-
-  let testSettingsSchemes: { [P in ISchemeNames]?: ITheme };
   let testContextSchemes: { [P in ISchemeNames]?: ITheme };
-
   let testContextTheme: ITheme;
-  let testSettingsTheme: ITheme;
-
   let testContext: ICustomizerContext;
+
+  let testSettingsScheme: ITheme;
+  let testSettingsSchemes: { [P in ISchemeNames]?: ITheme };
+  let testSettingsTheme: ITheme;
 
   beforeEach(() => {
     // Reinit on every test to guard against false positives due to mutation
     emptyContext = {
       customizations: {
-        settings: {
-          theme: {}
-        },
+        settings: {},
         scopedSettings: {}
       }
     };
 
     testContextScheme = createTheme({ semanticColors: { bodyBackground: 'testContextSchemeValue' } });
-    testSettingsScheme = createTheme({ semanticColors: { bodyBackground: 'testSettingsSchemeValue' } });
-
     testContextSchemes = {
       [testSchemeName]: testContextScheme
     };
-    testSettingsSchemes = {
-      [testSchemeName]: testSettingsScheme
-    };
 
     testContextTheme = createTheme({ semanticColors: { bodyBackground: 'this value should be overwritten' } });
-    testSettingsTheme = createTheme({ semanticColors: { bodyBackground: 'this value should be overwritten' } });
-
     testContextTheme.schemes = testContextSchemes;
-    testSettingsTheme.schemes = testSettingsSchemes;
 
     testContext = {
       customizations: {
@@ -55,6 +44,12 @@ describe('getSchemedCustomizations', () => {
         scopedSettings: {}
       }
     };
+
+    testSettingsScheme = createTheme({ semanticColors: { bodyBackground: 'testSettingsSchemeValue' } });
+    testSettingsSchemes = {
+      [testSchemeName]: testSettingsScheme
+    };
+    testSettingsTheme = createTheme({ semanticColors: { bodyBackground: 'this value should be overwritten' } });
   });
 
   it('gets scheme from context', () => {
@@ -64,28 +59,42 @@ describe('getSchemedCustomizations', () => {
       schemes: testContextSchemes
     };
 
+    loadTheme({});
+
     expect(newContext).toBeDefined();
     expect(newContext!.customizations.settings.theme).toEqual(expectedTheme);
   });
 
-  // TODO: replace these tests with testing for fallback to customizations (mock getCustomizations)
-  // it('gets scheme from context over theme', () => {
-  //   const newContext = getSchemedContext(testSchemeName, testContext, testSettingsTheme);
-  //   const expectedTheme = {
-  //     ...testContextScheme,
-  //     schemes: testContextSchemes
-  //   };
-  //   expect(newContext).toBeDefined();
-  //   expect(newContext!.customizations.settings.theme).toEqual(expectedTheme);
-  // });
+  it('gets scheme from context over settings', () => {
+    const expectedTheme = {
+      ...testContextScheme,
+      schemes: testContextSchemes
+    };
 
-  // it('gets scheme from theme when not in context', () => {
-  //   const newContext = getSchemedContext(testSchemeName, emptyContext, testSettingsTheme);
-  //   const expectedTheme = {
-  //     ...testSettingsScheme,
-  //     schemes: testSettingsSchemes
-  //   };
-  //   expect(newContext).toBeDefined();
-  //   expect(newContext!.customizations.settings.theme).toEqual(expectedTheme);
-  // });
+    const loadedTheme = loadTheme(testSettingsTheme);
+
+    // loadTheme strips out schemes so add them after load:
+    loadedTheme.schemes = testSettingsSchemes;
+
+    const newContext = getSchemedContext(testSchemeName, testContext);
+
+    expect(newContext).toBeDefined();
+    expect(newContext!.customizations.settings.theme).toEqual(expectedTheme);
+  });
+
+  it('falls back to Customizations when scheme is not in context', () => {
+    const expectedTheme = {
+      ...testSettingsScheme,
+      schemes: testSettingsSchemes
+    };
+    const loadedTheme = loadTheme(testSettingsTheme);
+
+    // loadTheme strips out schemes so add them after load:
+    loadedTheme.schemes = testSettingsSchemes;
+
+    const newContext = getSchemedContext(testSchemeName, emptyContext);
+
+    expect(newContext).toBeDefined();
+    expect(newContext!.customizations.settings.theme).toEqual(expectedTheme);
+  });
 });

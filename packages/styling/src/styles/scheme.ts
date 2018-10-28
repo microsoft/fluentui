@@ -11,15 +11,14 @@ import { ISchemeNames, ITheme } from '../interfaces/index';
  */
 export function getSchemedContext(scheme: ISchemeNames, context: ICustomizerContext): ICustomizerContext {
   let newContext: ICustomizerContext = context;
-  const contextTheme: ITheme | undefined = context.customizations.settings.theme;
 
   const settingsTheme = Customizations.getSettings(['theme'], undefined, context.customizations).theme;
   const schemeTheme: ITheme | undefined = settingsTheme && settingsTheme.schemes && settingsTheme.schemes[scheme];
 
   // These first two checks are logically redundant but TS doesn't infer schemeSource.schemes is defined when schemeTheme is defined.
-  if (contextTheme && schemeTheme && contextTheme !== schemeTheme) {
+  if (settingsTheme && schemeTheme && settingsTheme !== schemeTheme) {
     const newSettings = { theme: schemeTheme };
-    newSettings.theme.schemes = contextTheme.schemes;
+    newSettings.theme.schemes = settingsTheme.schemes;
 
     newContext = {
       customizations: {
