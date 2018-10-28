@@ -88,9 +88,4 @@ describe('getSchemedCustomizations', () => {
   //   expect(newContext).toBeDefined();
   //   expect(newContext!.customizations.settings.theme).toEqual(expectedTheme);
   // });
-
-  // it('returns undefined context for unavailable scheme', () => {
-  //   const newContext = getSchemedContext(testSchemeNameInvalid, testContext, testSettingsTheme);
-  //   expect(newContext).toBeUndefined();
-  // });
 });

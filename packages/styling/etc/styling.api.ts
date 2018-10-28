@@ -93,7 +93,7 @@ export function getIcon(name?: string): IIconRecord | undefined;
 export function getIconClassName(name: string): string;
 
 // @public
-export function getSchemedContext(scheme: ISchemeNames, context: ICustomizerContext, settingsTheme?: ITheme): ICustomizerContext | undefined;
+export function getSchemedContext(scheme: ISchemeNames, context: ICustomizerContext): ICustomizerContext;
 
 // @public (undocumented)
 export function getScreenSelector(min: number, max: number): string;

@@ -61,7 +61,7 @@ export type ICustomizerProps = IBaseProps &
      * Optional transform function for context. Any implementations should take care to return context without
      * mutating it.
      */
-    contextPlugin?: (context: Readonly<ICustomizerContext>) => ICustomizerContext;
+    contextTransform?: (context: Readonly<ICustomizerContext>) => ICustomizerContext;
   };
 
 /**
@@ -88,14 +88,14 @@ export class Customizer extends BaseComponent<ICustomizerProps> {
   }
 
   public render(): React.ReactElement<{}> {
-    const { contextPlugin } = this.props;
+    const { contextTransform } = this.props;
     return (
       <CustomizerContext.Consumer>
         {(parentContext: ICustomizerContext) => {
           let newContext = mergeCustomizations(this.props, parentContext);
 
-          if (contextPlugin) {
-            newContext = contextPlugin(newContext);
+          if (contextTransform) {
+            newContext = contextTransform(newContext);
           }
 
           return <CustomizerContext.Provider value={newContext}>{this.props.children}</CustomizerContext.Provider>;
@@ -107,7 +107,13 @@ export class Customizer extends BaseComponent<ICustomizerProps> {
   private _onCustomizationChange = () => this.forceUpdate();
 }
 
-// TODO: consider folding this back into Customizer if no longer used
+/**
+ * Merge props and customizations giving priority to props over context.
+ * NOTE: This function will always perform multiple merge operations. Use with caution.
+ * @param props - contains new settings to merge in
+ * @param parentContext - context containing current settings
+ * @returns merged customizations
+ */
 export function mergeCustomizations(props: ICustomizerProps, parentContext: ICustomizerContext): ICustomizerContext {
   const { customizations = { settings: {}, scopedSettings: {} } } = parentContext || {};
 
@@ -119,6 +125,13 @@ export function mergeCustomizations(props: ICustomizerProps, parentContext: ICus
   };
 }
 
+/**
+ * Merge new and old settings, giving priority to new settings.
+ * New settings is optional in which case oldSettings is returned as-is.
+ * @param oldSettings - old settings to fall back to
+ * @param newSettings - new settings that will be merged over oldSettings
+ * @returns merged settings
+ */
 export function mergeSettings(oldSettings: Settings = {}, newSettings?: Settings | SettingsFunction): Settings {
   const mergeSettingsWith = isSettingsFunction(newSettings) ? newSettings : settingsMergeWith(newSettings);
 

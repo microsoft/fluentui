@@ -11,7 +11,7 @@ export interface ICustomizerProps<TContext> {
    * Optional transform function for context. Any implementations should take care to return context without
    * mutating it.
    */
-  contextPlugin?: (context: Readonly<TContext>) => TContext;
+  contextTransform?: (context: Readonly<TContext>) => TContext;
 }
 
 export interface IThemeProviders<TContext, TTheme, TScheme, TCustomizerProps extends ICustomizerProps<TContext>> {
@@ -41,11 +41,11 @@ export function themeProvider<TContext, TTheme, TScheme, TCustomizerProps extend
     const { scheme, ...rest } = props;
 
     // tslint:disable-next-line:typedef
-    const contextPlugin: ICustomizerProps<TContext>['contextPlugin'] = context => {
+    const contextTransform: ICustomizerProps<TContext>['contextTransform'] = context => {
       return providers.getSchemedContext(scheme, context);
     };
 
-    return <Customizer {...rest} contextPlugin={contextPlugin} />;
+    return <Customizer {...rest} contextTransform={contextTransform} />;
   };
   return result;
 }

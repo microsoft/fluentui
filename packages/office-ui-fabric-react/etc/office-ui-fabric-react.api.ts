@@ -1529,7 +1529,7 @@ export function getRTL(): boolean;
 export function getRTLSafeKeyCode(key: number): number;
 
 // @public
-export function getSchemedContext(scheme: ISchemeNames, context: ICustomizerContext, settingsTheme?: ITheme): ICustomizerContext | undefined;
+export function getSchemedContext(scheme: ISchemeNames, context: ICustomizerContext): ICustomizerContext;
 
 // @public (undocumented)
 export function getScreenSelector(min: number, max: number): string;
@@ -10947,8 +10947,11 @@ export function merge<T = {}>(target: Partial<T>, ...args: (Partial<T> | null | 
 // @public
 export function mergeAriaAttributeValues(...ariaAttributes: (string | undefined)[]): string | undefined;
 
-// @public (undocumented)
+// @public
 export function mergeCustomizations(props: ICustomizerProps, parentContext: ICustomizerContext): ICustomizerContext;
+
+// @public
+export function mergeSettings(oldSettings?: Settings, newSettings?: Settings | SettingsFunction): Settings;
 
 // @public
 export function mergeStyles(...args: (IStyle | IStyleBaseArray | false | null | undefined)[]): string;
