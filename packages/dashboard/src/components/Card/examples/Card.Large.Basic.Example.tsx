@@ -111,15 +111,11 @@ export class LargeCardBasicExample extends React.Component<{}, {}> {
       },
       {
         chartTitle: 'four',
-        chartData: [
-          { legend: 'four', horizontalBarChartdata: { x: 15888, y: 15000 }, color: DefaultPalette.themeDarkAlt }
-        ]
+        chartData: [{ legend: 'four', horizontalBarChartdata: { x: 15888, y: 15000 }, color: DefaultPalette.themeDarkAlt }]
       },
       {
         chartTitle: 'five',
-        chartData: [
-          { legend: 'five', horizontalBarChartdata: { x: 11444, y: 15000 }, color: DefaultPalette.themePrimary }
-        ]
+        chartData: [{ legend: 'five', horizontalBarChartdata: { x: 11444, y: 15000 }, color: DefaultPalette.themePrimary }]
       },
       {
         chartTitle: 'six',

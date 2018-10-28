@@ -39,8 +39,7 @@ const TextFieldOnRenderDescriptionExampleCode = require('!raw-loader!office-ui-f
 export const TextFieldPageProps: IDocPageProps = {
   title: 'TextField',
   componentName: 'TextField',
-  componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/TextField',
+  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/TextField',
   componentStatus: TextFieldStatus,
   examples: [
     {
@@ -120,9 +119,7 @@ export const TextFieldPageProps: IDocPageProps = {
       view: <TextFieldStyledExample />
     }
   ],
-  propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/TextField.types.ts')
-  ],
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/TextField.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldDos.md'),

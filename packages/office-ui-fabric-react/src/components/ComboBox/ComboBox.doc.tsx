@@ -12,8 +12,7 @@ const ComboBoxCustomStyledExampleCode = require('!raw-loader!office-ui-fabric-re
 export const ComboBoxPageProps: IDocPageProps = {
   title: 'ComboBox',
   componentName: 'ComboBox',
-  componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ComboBox',
+  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ComboBox',
   componentStatus: ComboBoxStatus,
   examples: [
     {
@@ -28,9 +27,7 @@ export const ComboBoxPageProps: IDocPageProps = {
       view: <ComboBoxCustomStyledExample />
     }
   ],
-  propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/ComboBox/ComboBox.types.ts')
-  ],
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/ComboBox/ComboBox.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/ComboBox/docs/ComboBoxOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/ComboBox/docs/ComboBoxDos.md'),

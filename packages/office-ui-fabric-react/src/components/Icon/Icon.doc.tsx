@@ -16,8 +16,7 @@ const IconImageSheetExampleCode = require('!raw-loader!office-ui-fabric-react/sr
 export const IconPageProps: IDocPageProps = {
   title: 'Icon',
   componentName: 'Icon',
-  componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Icon',
+  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Icon',
   componentStatus: IconStatus,
   examples: [
     {

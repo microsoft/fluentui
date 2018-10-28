@@ -31,33 +31,33 @@ export interface ICoachmarkProps extends React.Props<Coachmark> {
   /**
    * Props to pass to the PositioningContainer component. Specify the `directionalHint` to indicate
    * on which edge the Coachmark/TeachingBubble should be positioned.
-   * @default directionalHint: DirectionalHint.bottomAutoEdge
+   * @defaultvalue directionalHint: DirectionalHint.bottomAutoEdge
    */
   positioningContainerProps?: IPositioningContainerProps;
 
   /**
    * Whether or not to force the Coachmark/TeachingBubble content to fit within the window bounds.
-   * @default true
+   * @defaultvalue true
    */
   isPositionForced?: boolean;
 
   /**
-   * The starting collapsed state for the Coachmark.  Use isCollapsed instead.
-   * @default true
-   * @deprecated
+   * The starting collapsed state for the Coachmark.  Use `isCollapsed` instead.
+   * @defaultvalue true
+   * @deprecated Use `isCollapsed` instead.
    */
   collapsed?: boolean;
 
   /**
    * The starting collapsed state for the Coachmark.
-   * @default true
+   * @defaultvalue true
    */
   isCollapsed?: boolean;
 
   /**
    * The distance in pixels the mouse is located
    * before opening up the Coachmark.
-   * @default 10
+   * @defaultvalue 10
    */
   mouseProximityOffset?: number;
 
@@ -73,25 +73,25 @@ export interface ICoachmarkProps extends React.Props<Coachmark> {
 
   /**
    * The width of the Beak component.
-   * @deprecated
+   * @deprecated No longer used.
    */
   beakWidth?: number;
 
   /**
    * The height of the Beak component.
-   * @deprecated
+   * @deprecated No longer used.
    */
   beakHeight?: number;
 
   /**
    * Delay before allowing mouse movements to open the Coachmark.
-   * @default 3600
+   * @defaultvalue 3600
    */
   delayBeforeMouseOpen?: number;
 
   /**
    * Delay in milliseconds before Coachmark animation appears.
-   * @default 0
+   * @defaultvalue 0
    */
   delayBeforeCoachmarkAnimation?: number;
 
@@ -102,13 +102,13 @@ export interface ICoachmarkProps extends React.Props<Coachmark> {
 
   /**
    * The width of the Coachmark.
-   * @deprecated
+   * @deprecated No longer used.
    */
   width?: number;
 
   /**
    * The height of the Coachmark.
-   * @deprecated
+   * @deprecated No longer used.
    */
   height?: number;
 
@@ -134,7 +134,7 @@ export interface ICoachmarkProps extends React.Props<Coachmark> {
 
   /**
    * Ref for TeachingBubble
-   * @deprecated Coachmark uses focusFirstChild utility instead to focus on TeachingBubbleContent
+   * @deprecated Coachmark uses `focusFirstChild` utility instead to focus on TeachingBubbleContent
    */
   teachingBubbleRef?: ITeachingBubble;
 
@@ -160,7 +160,7 @@ export interface ICoachmarkProps extends React.Props<Coachmark> {
 
   /**
    * If true then the Coachmark will not dismiss when it loses focus
-   * @default false
+   * @defaultvalue false
    */
   preventDismissOnLostFocus?: boolean;
 

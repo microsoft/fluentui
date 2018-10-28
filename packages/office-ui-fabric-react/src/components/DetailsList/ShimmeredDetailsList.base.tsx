@@ -5,11 +5,7 @@ import { SelectionMode } from '../../utilities/selection/interfaces';
 import { DetailsList } from './DetailsList';
 import { IDetailsRowProps } from './DetailsRow';
 import { Shimmer, ShimmerElementsGroup, ShimmerElementType, IShimmerElement } from '../../Shimmer';
-import {
-  IShimmeredDetailsListProps,
-  IShimmeredDetailsListStyleProps,
-  IShimmeredDetailsListStyles
-} from './ShimmeredDetailsList.types';
+import { IShimmeredDetailsListProps, IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles } from './ShimmeredDetailsList.types';
 import { CheckboxVisibility } from './DetailsList.types';
 
 import { IDetailsRowStyleProps, IDetailsRowStyles } from './DetailsRow.types';
@@ -37,16 +33,7 @@ export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsLis
   }
 
   public render(): JSX.Element {
-    const {
-      items,
-      listProps,
-      styles,
-      theme,
-      shimmerLines,
-      onRenderCustomPlaceholder,
-      enableShimmer,
-      ...detailsListProps
-    } = this.props;
+    const { items, listProps, styles, theme, shimmerLines, onRenderCustomPlaceholder, enableShimmer, ...detailsListProps } = this.props;
 
     // Adds to the optional listProp classname a fading out overlay classname only when shimmer enabled.
     const classNames = getClassNames(styles, {
@@ -90,9 +77,7 @@ export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsLis
       : this._renderDefaultShimmerPlaceholder(rowProps);
 
     return (
-      <div
-        className={css(showCheckbox && rowClassNames.shimmerLeftBorder, !compact && rowClassNames.shimmerBottomBorder)}
-      >
+      <div className={css(showCheckbox && rowClassNames.shimmerLeftBorder, !compact && rowClassNames.shimmerBottomBorder)}>
         <Shimmer customElementsGroup={placeholderElements} />
       </div>
     );
@@ -143,9 +128,7 @@ export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsLis
           height: gapHeight
         });
       }
-      shimmerElementsRow.push(
-        <ShimmerElementsGroup key={columnIdx} width={`${groupWidth}px`} shimmerElements={shimmerElements} />
-      );
+      shimmerElementsRow.push(<ShimmerElementsGroup key={columnIdx} width={`${groupWidth}px`} shimmerElements={shimmerElements} />);
     });
     // When resizing the window from narrow to wider, we need to cover the exposed Shimmer wave until the column resizing logic is done.
     shimmerElementsRow.push(

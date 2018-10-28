@@ -1,6 +1,6 @@
 /**
- * Deprecated at 2.0.0. Use SpinnerSize instead.
- * @deprecated
+ * Deprecated at 2.0.0. Use `SpinnerSize` instead.
+ * @deprecated Use `SpinnerSize` instead.
  */
 export enum SpinnerType {
   normal = 0,

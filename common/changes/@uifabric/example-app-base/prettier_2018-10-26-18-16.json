@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/example-app-base",
+      "comment": "Running Prettier on all .ts and .tsx files in the packages folder.",
+      "type": "none"
+    }
+  ],
+  "packageName": "@uifabric/example-app-base",
+  "email": "Humberto.Morimoto@microsoft.com"
+}
