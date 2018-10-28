@@ -2,24 +2,35 @@ import { Customizations, mergeSettings, ICustomizerContext } from '@uifabric/uti
 import { ISchemeNames, ITheme } from '../interfaces/index';
 
 /**
- * Modify context to activate the specified scheme, using scheme in context (if available)
- * and falling back to global Customizations. If no scheme is available, undefined context will be returned.
+ * Modify context to activate the specified scheme or theme. For schemes, look in context (if available) and fall back to global
+ * Customizations. If both scheme and theme are specified, scheme will be looked up in theme. In this case, scheme must be
+ * present in theme arg, otherwise new context will default to theme arg (there is no fallback to settings to look up scheme.)
  *
- * @param scheme - Scheme to get customizations for.
  * @param context - Context in which to get schemed customizations.
- * @returns modified schemed context if scheme is valid and not already applied, unmodified context otherwise
+ * @param scheme - Scheme to get customizations for from theme arg (if supplied) OR from context and global settings.
+ * @param theme - Theme to merge into context.
+ * @returns modified schemed context if scheme is valid and not already applied, unmodified context otherwise.
  */
-export function getSchemedContext(scheme: ISchemeNames, context: ICustomizerContext): ICustomizerContext {
+export function getThemedContext(context: ICustomizerContext, scheme?: ISchemeNames, theme?: ITheme): ICustomizerContext {
   let newContext: ICustomizerContext = context;
+  let newSettings;
 
-  const settingsTheme = Customizations.getSettings(['theme'], undefined, context.customizations).theme;
-  const schemeTheme: ITheme | undefined = settingsTheme && settingsTheme.schemes && settingsTheme.schemes[scheme];
+  // Only fall back to context and customizations when theme arg is not provided.
+  let schemeSource = theme || Customizations.getSettings(['theme'], undefined, context.customizations).theme;
+
+  if (theme) {
+    newSettings = { theme };
+  }
+
+  const schemeTheme: ITheme | undefined = scheme && schemeSource && schemeSource.schemes && schemeSource.schemes[scheme];
 
   // These first two checks are logically redundant but TS doesn't infer schemeSource.schemes is defined when schemeTheme is defined.
-  if (settingsTheme && schemeTheme && settingsTheme !== schemeTheme) {
-    const newSettings = { theme: schemeTheme };
-    newSettings.theme.schemes = settingsTheme.schemes;
+  if (schemeSource && schemeTheme && schemeSource !== schemeTheme) {
+    newSettings = { theme: schemeTheme };
+    newSettings.theme.schemes = schemeSource.schemes;
+  }
 
+  if (newSettings) {
     newContext = {
       customizations: {
         settings: mergeSettings(context.customizations.settings, newSettings),
@@ -27,5 +38,6 @@ export function getSchemedContext(scheme: ISchemeNames, context: ICustomizerCont
       }
     };
   }
+
   return newContext;
 }

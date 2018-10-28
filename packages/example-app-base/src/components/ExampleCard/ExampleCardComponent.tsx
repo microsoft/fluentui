@@ -3,7 +3,7 @@ import { createStatelessComponent, IStatelessComponent, IStyleableComponentProps
 import {
   Customizations,
   CustomizerContext,
-  getSchemedContext,
+  getThemedContext,
   ICustomizerContext,
   IProcessedStyleSet,
   ISchemeNames,
@@ -21,10 +21,10 @@ export type IExampleCardComponent = IStatelessComponent<
   IProcessedStyleSet<IExampleCardComponentStyles>,
   ITheme,
   {}
->;
+  >;
 
 export interface IExampleCardComponentProps
-  extends IStyleableComponentProps<IExampleCardComponentProps, IExampleCardComponentStyles, ITheme, ISchemeNames> {}
+  extends IStyleableComponentProps<IExampleCardComponentProps, IExampleCardComponentStyles, ITheme, ISchemeNames> { }
 
 export interface IExampleCardComponentStyles {
   root: IStyle;

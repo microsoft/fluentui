@@ -4,7 +4,7 @@ import {
   css,
   Customizer,
   Dropdown,
-  getSchemedContext,
+  getThemedContext,
   ICustomizerContext,
   ICustomizerProps,
   IDropdownOption,
@@ -51,16 +51,16 @@ const _schemes: ISchemeNames[] = ['default', 'strong', 'soft', 'neutral'];
 // TODO: once Foundation is promoted and in OUFR, ThemeProvider can be imported directly from OUFR
 //        and themeProviders/ThemeProvider can be removed here
 const themeProviders: IThemeProviders<ICustomizerContext, ITheme, ISchemeNames, ICustomizerProps> = {
-  getSchemedContext,
+  getThemedContext,
   CustomizerComponent: Customizer
 };
 
-export const ThemeProvider: React.StatelessComponent<IThemeProviderProps<ISchemeNames>> = themeProvider<
+export const ThemeProvider: React.StatelessComponent<IThemeProviderProps<ISchemeNames, ITheme>> = themeProvider<
   ICustomizerContext,
   ITheme,
   ISchemeNames,
   ICustomizerProps
->(themeProviders);
+  >(themeProviders);
 
 // tslint:disable-next-line:typedef
 const regionStyles: IExampleCardComponent['styles'] = props => ({
@@ -175,8 +175,8 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
                   <ExampleCardComponent styles={regionStyles}>{exampleCardContent}</ExampleCardComponent>
                 </ThemeProvider>
               ) : (
-                exampleCardContent
-              )}
+                  exampleCardContent
+                )}
 
               {this._getDosAndDonts()}
             </div>

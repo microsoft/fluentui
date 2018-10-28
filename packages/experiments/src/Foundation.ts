@@ -14,7 +14,7 @@ import {
   themeProvider
 } from '@uifabric/foundation';
 export { IStateComponentProps } from '@uifabric/foundation';
-import { getSchemedContext, IProcessedStyleSet, ISchemeNames, IStyleSet, ITheme, mergeStyleSets } from './Styling';
+import { getThemedContext, IProcessedStyleSet, ISchemeNames, IStyleSet, ITheme, mergeStyleSets } from './Styling';
 import { Customizations, Customizer, CustomizerContext, ICustomizerContext, ICustomizerProps } from './Utilities';
 
 // This module centralizes Foundation interaction for use throughout this package. These convenience types automatically
@@ -45,7 +45,7 @@ export type IStylesProp<TViewProps, TStyleSet> = IStylesProp<TViewProps, TStyleS
 export type IStateComponentType<TComponentProps, TViewProps, TStyleSet extends IStyleSet<TStyleSet>> = IStateComponentType<
   TComponentProps,
   TViewProps
->;
+  >;
 
 /**
  * A helper type for defining view components, including its properties.
@@ -63,7 +63,7 @@ export type IComponent<TComponentProps, TViewProps, TStyleSet extends IStyleSet<
   IProcessedStyleSet<TStyleSet>,
   ITheme,
   TStatics
->;
+  >;
 
 /**
  * Primary type for defining stateless components.
@@ -74,7 +74,7 @@ export type IStatelessComponent<TComponentProps, TStyleSet extends IStyleSet<TSt
   IProcessedStyleSet<TStyleSet>,
   ITheme,
   TStatics
->;
+  >;
 
 // tslint:disable-next-line:no-any
 const providers: IComponentProviders<any, any, any, ICustomizerContext, ITheme, ISchemeNames> = {
@@ -84,7 +84,7 @@ const providers: IComponentProviders<any, any, any, ICustomizerContext, ITheme, 
 };
 
 const themeProviders: IThemeProviders<ICustomizerContext, ITheme, ISchemeNames, ICustomizerProps> = {
-  getSchemedContext,
+  getThemedContext,
   CustomizerComponent: Customizer
 };
 
@@ -104,7 +104,7 @@ export function createStatelessComponent<TComponentProps, TStyleSet extends ISty
     ITheme,
     ISchemeNames,
     TStatics
-  >(component, providers);
+    >(component, providers);
 }
 
 /**
@@ -125,15 +125,15 @@ export function createComponent<TComponentProps, TViewProps, TStyleSet extends I
     ITheme,
     ISchemeNames,
     TStatics
-  >(component, providers);
+    >(component, providers);
 }
 
-export const ThemeProvider: React.StatelessComponent<IThemeProviderProps<ISchemeNames>> = themeProvider<
+export const ThemeProvider: React.StatelessComponent<IThemeProviderProps<ISchemeNames, ITheme>> = themeProvider<
   ICustomizerContext,
   ITheme,
   ISchemeNames,
   ICustomizerProps
->(themeProviders);
+  >(themeProviders);
 
 function getCustomizations<TViewProps, TStyleSet>(
   displayName: string,

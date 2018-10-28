@@ -1528,9 +1528,6 @@ export function getRTL(): boolean;
 // @public
 export function getRTLSafeKeyCode(key: number): number;
 
-// @public
-export function getSchemedContext(scheme: ISchemeNames, context: ICustomizerContext): ICustomizerContext;
-
 // @public (undocumented)
 export function getScreenSelector(min: number, max: number): string;
 
@@ -1545,6 +1542,9 @@ export function getSubmenuItems(item: IContextualMenuItem): any;
 
 // @public
 export function getTheme(depComments?: boolean): ITheme;
+
+// @public
+export function getThemedContext(context: ICustomizerContext, scheme?: ISchemeNames, theme?: ITheme): ICustomizerContext;
 
 // @public
 export function getVirtualParent(child: HTMLElement): HTMLElement | undefined;

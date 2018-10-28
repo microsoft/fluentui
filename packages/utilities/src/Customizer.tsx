@@ -110,9 +110,9 @@ export class Customizer extends BaseComponent<ICustomizerProps> {
 /**
  * Merge props and customizations giving priority to props over context.
  * NOTE: This function will always perform multiple merge operations. Use with caution.
- * @param props - contains new settings to merge in
- * @param parentContext - context containing current settings
- * @returns merged customizations
+ * @param props - New settings to merge in.
+ * @param parentContext - Context containing current settings.
+ * @returns Merged customizations.
  */
 export function mergeCustomizations(props: ICustomizerProps, parentContext: ICustomizerContext): ICustomizerContext {
   const { customizations = { settings: {}, scopedSettings: {} } } = parentContext || {};
@@ -128,9 +128,9 @@ export function mergeCustomizations(props: ICustomizerProps, parentContext: ICus
 /**
  * Merge new and old settings, giving priority to new settings.
  * New settings is optional in which case oldSettings is returned as-is.
- * @param oldSettings - old settings to fall back to
- * @param newSettings - new settings that will be merged over oldSettings
- * @returns merged settings
+ * @param oldSettings - Old settings to fall back to.
+ * @param newSettings - New settings that will be merged over oldSettings.
+ * @returns Merged settings.
  */
 export function mergeSettings(oldSettings: Settings = {}, newSettings?: Settings | SettingsFunction): Settings {
   const mergeSettingsWith = isSettingsFunction(newSettings) ? newSettings : settingsMergeWith(newSettings);

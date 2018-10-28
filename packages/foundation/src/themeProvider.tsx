@@ -1,7 +1,8 @@
 import * as React from 'react';
 
-export interface IThemeProviderProps<TScheme> {
-  scheme: TScheme;
+export interface IThemeProviderProps<TScheme, TTheme> {
+  scheme?: TScheme;
+  theme?: TTheme;
 }
 
 // TODO: typing this interface doesn't ensure type safety against Customizer props in 2.8.x but it is left
@@ -19,7 +20,7 @@ export interface IThemeProviders<TContext, TTheme, TScheme, TCustomizerProps ext
    * A provider that applies the given scheme to the given context and returns the resutling context. This provider
    * should automatically handle falling back to theme data from the global store (outside of context) if applicable.
    */
-  getSchemedContext: (scheme: TScheme, context: TContext) => TContext;
+  getThemedContext: (context: TContext, scheme?: TScheme, theme?: TTheme) => TContext;
 
   /**
    * A customizer component that supplies the underlying implementation for themeProvider.
@@ -35,14 +36,14 @@ export interface IThemeProviders<TContext, TTheme, TScheme, TCustomizerProps ext
  */
 export function themeProvider<TContext, TTheme, TScheme, TCustomizerProps extends ICustomizerProps<TContext>>(
   providers: IThemeProviders<TContext, TTheme, TScheme, TCustomizerProps>
-): React.StatelessComponent<IThemeProviderProps<TScheme>> {
+): React.StatelessComponent<IThemeProviderProps<TScheme, TTheme>> {
   const { CustomizerComponent: Customizer } = providers;
-  const result: React.StatelessComponent<IThemeProviderProps<TScheme>> = (props: IThemeProviderProps<TScheme>) => {
-    const { scheme, ...rest } = props;
+  const result: React.StatelessComponent<IThemeProviderProps<TScheme, TTheme>> = (props: IThemeProviderProps<TScheme, TTheme>) => {
+    const { scheme, theme, ...rest } = props;
 
     // tslint:disable-next-line:typedef
     const contextTransform: ICustomizerProps<TContext>['contextTransform'] = context => {
-      return providers.getSchemedContext(scheme, context);
+      return providers.getThemedContext(context, scheme, theme);
     };
 
     return <Customizer {...rest} contextTransform={contextTransform} />;
