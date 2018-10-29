@@ -2322,6 +2322,7 @@ interface ICalendarProps extends IBaseProps<ICalendar>, React.HTMLAttributes<HTM
   today?: Date;
   value?: Date;
   workWeekDays?: DayOfWeek[];
+  yearPickerHidden?: boolean;
 }
 
 // @public (undocumented)
