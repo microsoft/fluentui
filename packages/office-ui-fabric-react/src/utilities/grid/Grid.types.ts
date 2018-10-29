@@ -1,7 +1,7 @@
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
-export interface IGrid { }
+export interface IGrid {}
 
 export interface IGridProps {
   /**

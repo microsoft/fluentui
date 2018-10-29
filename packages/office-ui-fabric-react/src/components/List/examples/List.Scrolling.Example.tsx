@@ -72,12 +72,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
           />
         </div>
         <div className="ms-ListScrollingExample-container" data-is-scrollable={true}>
-          <List
-            ref={this._resolveList}
-            items={items}
-            getPageHeight={this._getPageHeight}
-            onRenderCell={this._onRenderCell}
-          />
+          <List ref={this._resolveList} items={items} getPageHeight={this._getPageHeight} onRenderCell={this._onRenderCell} />
         </div>
       </FocusZone>
     );
@@ -156,11 +151,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
         scrollToMode: scrollToMode
       },
       () => {
-        this._list.scrollToIndex(
-          updatedSelectedIndex,
-          idx => (idx % 2 === 0 ? evenItemHeight : oddItemHeight),
-          scrollToMode
-        );
+        this._list.scrollToIndex(updatedSelectedIndex, idx => (idx % 2 === 0 ? evenItemHeight : oddItemHeight), scrollToMode);
       }
     );
   };

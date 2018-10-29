@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix typo in role attribute in DocumentCardActivity",
+      "comment": "ContextualMenu: Fix separator announcement in Narrator scan mode.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "mark@thedutchies.com"
+  "email": "jagore@microsoft.com"
 }

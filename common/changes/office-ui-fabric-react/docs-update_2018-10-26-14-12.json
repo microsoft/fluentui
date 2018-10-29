@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Callout: Added layerProps to interface",
-      "type": "minor"
+      "comment": "DetailsList/List: updating documentation.",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com"
+  "email": "dzearing@microsoft.com"
 }

@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Breadcrumb: add overflowAriaLabel to examples",
+      "comment": "DatePicker: Pass id prop to TextField component.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "naethell@microsoft.com"
+  "email": "jagore@microsoft.com"
 }

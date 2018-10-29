@@ -72,9 +72,7 @@ describe('DetailsRow', () => {
     const selection = new Selection();
     selection.setKeySelected('0', true, true);
 
-    const component = renderer.create(
-      <DetailsList {...mockProps} selectionMode={SelectionMode.multiple} selection={selection} />
-    );
+    const component = renderer.create(<DetailsList {...mockProps} selectionMode={SelectionMode.multiple} selection={selection} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -85,9 +83,7 @@ describe('DetailsRow', () => {
     const selection = new Selection();
     selection.setAllSelected(true);
 
-    const component = renderer.create(
-      <DetailsList {...mockProps} selectionMode={SelectionMode.multiple} selection={selection} />
-    );
+    const component = renderer.create(<DetailsList {...mockProps} selectionMode={SelectionMode.multiple} selection={selection} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

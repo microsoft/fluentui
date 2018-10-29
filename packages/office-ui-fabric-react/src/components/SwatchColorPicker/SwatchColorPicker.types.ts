@@ -2,7 +2,7 @@ import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IColorCellProps, IColorPickerGridCellStyleProps, IColorPickerGridCellStyles } from './ColorPickerGridCell.types';
 
-export interface ISwatchColorPicker { }
+export interface ISwatchColorPicker {}
 
 export interface ISwatchColorPickerProps {
   /**

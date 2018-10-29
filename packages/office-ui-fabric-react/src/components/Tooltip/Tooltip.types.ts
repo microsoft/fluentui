@@ -6,7 +6,7 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
-export interface ITooltip { }
+export interface ITooltip {}
 
 /**
  * Tooltip component props.
