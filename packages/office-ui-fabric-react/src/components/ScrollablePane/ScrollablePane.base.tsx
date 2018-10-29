@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import { BaseComponent, classNamesFunction, divProperties, getNativeProps, getRTL } from '../../Utilities';
+import { BaseComponent, classNamesFunction, divProperties, getNativeProps, getRTL, css } from '../../Utilities';
 import { IScrollablePane, IScrollablePaneProps, IScrollablePaneStyles, IScrollablePaneStyleProps } from './ScrollablePane.types';
 import { Sticky } from '../../Sticky';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
+
 export interface IScrollablePaneContext {
   scrollablePane?: {
     subscribe: (handler: (container: HTMLElement, stickyContainer: HTMLElement) => void) => void;
@@ -421,6 +421,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
 
   private _onScroll = () => {
     const { contentContainer } = this;
+
     if (contentContainer) {
       this._stickies.forEach((sticky: Sticky) => {
         sticky.syncScroll(contentContainer);
