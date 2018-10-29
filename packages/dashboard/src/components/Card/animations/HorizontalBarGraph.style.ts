@@ -41,8 +41,8 @@ export interface IHorizontalBarGraphStyles {
 export const getStyles = (): IHorizontalBarGraphStyles => {
   return {
     horizontalBarGraphLoading: {
-      height: '200px',
-      width: '200px',
+      height: '300px',
+      width: '300px',
       display: 'flex',
       justifyContent: 'space-between',
       flexWrap: 'nowrap',

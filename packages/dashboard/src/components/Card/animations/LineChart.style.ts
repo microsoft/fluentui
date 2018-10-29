@@ -34,8 +34,8 @@ export interface ILineChartStyles {
 export const getStyles = (): ILineChartStyles => {
   return {
     lineChartLoading: {
-      height: '200px',
-      width: '200px',
+      height: '100%',
+      width: '100%',
       opacity: '0.6',
       selectors: {
         ':nth-child(1) :nth-child(2)': {

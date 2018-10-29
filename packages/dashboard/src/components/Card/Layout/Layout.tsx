@@ -15,18 +15,37 @@ import { ICardHeaderProps } from '../CardHeader/CardHeader.types';
 import { IAction } from '../ActionBar/ActionBar.types';
 import { IGridListProps } from '../GridList/GridList.types';
 import { GridList } from '../GridList/GridList';
-import { IChartProps, ChartWidth, ChartHeight } from '../Chart/Chart.types';
+import { IChartProps, ChartWidth, ChartHeight, ChartType } from '../Chart/Chart.types';
 import { Chart } from '../Chart/Chart';
 import { MultiCount, IMultiCountProps } from '@uifabric/dashboard';
 
-export class Layout extends React.Component<ILayoutProps> {
+import { DonutChart } from '../animations/DonutChart';
+import { HorizontalBarGraph } from '../animations/HorizontalBarGraph';
+import { LineChart } from '../animations/LineChart';
+import { Shimmer } from '../animations/Shimmer';
+
+export class Layout extends React.Component<ILayoutProps, { _width: number; _height: number }> {
+  private _rootElem: HTMLElement | null;
   constructor(props: ILayoutProps) {
     super(props);
+    this.state = {
+      _width: 200,
+      _height: 200
+    };
+  }
+
+  public componentDidMount(): void {
+    if (this._rootElem) {
+      this.setState({
+        _width: this._rootElem!.offsetWidth,
+        _height: this._rootElem!.offsetHeight
+      });
+    }
   }
 
   public render(): JSX.Element {
     const getClassNames = classNamesFunction<ILayoutProps, ILayoutStyles>();
-    const { header, contentArea, actions, cardSize, animation, loading } = this.props;
+    const { header, contentArea, actions, cardSize, loading } = this.props;
     const classNames = getClassNames(getStyles, { cardSize, header });
     const content: JSX.Element | null = this._generateContentArea(
       contentArea!,
@@ -34,15 +53,15 @@ export class Layout extends React.Component<ILayoutProps> {
       classNames.contentArea1,
       classNames.dataVizLastUpdatedOn,
       classNames.contentArea2,
+      classNames.chartWrapper,
       cardSize
     );
     const headerElement: JSX.Element | null = this._generateHeader(header!);
     const footerElement: JSX.Element | null = this._generateFooter(actions!, classNames.footer);
     return (
       <div className={classNames.root} onMouseDown={this.onMouseDown}>
-        {headerElement}
-        {loading ? animation : <div className={classNames.contentAreaLayout}>{content}</div>}
-
+        {loading ? null : headerElement}
+        <div className={classNames.contentAreaLayout}>{content}</div>
         {footerElement}
       </div>
     );
@@ -52,7 +71,11 @@ export class Layout extends React.Component<ILayoutProps> {
     e.stopPropagation();
   };
 
-  private _generateContentElement(cardContentList: ICardContentDetails[], dataVizLastUpdateClassName: string): JSX.Element[] {
+  private _generateContentElement(
+    cardContentList: ICardContentDetails[],
+    dataVizLastUpdateClassName: string,
+    chartWrapperClassName: string
+  ): JSX.Element[] {
     const contentArea: JSX.Element[] = [];
     // This works because we have priority is defined in enum as numbers if it is string this will not work
     for (const priority in Priority) {
@@ -110,23 +133,32 @@ export class Layout extends React.Component<ILayoutProps> {
                   compactChartWidth,
                   chartUpdatedOn
                 } = cardContent.content as IChartProps;
+                const animation = this._getAnimation(chartType);
                 contentArea.push(
                   <React.Fragment>
-                    {chartUpdatedOn && <div className={dataVizLastUpdateClassName}>{chartUpdatedOn}</div>}
-                    <Chart
-                      chartLabels={chartLabels}
-                      chartType={chartType}
-                      legendColors={legendColors}
-                      chartData={chartData}
-                      hideRatio={hideRatio}
-                      barWidth={barWidth}
-                      barHeight={barHeight}
-                      data={data}
-                      dataPoints={dataPoints}
-                      compactChartWidth={compactChartWidth}
-                      width={this._getChartWidth(cardContentList.length)}
-                      height={this._getChartHeight(cardContentList.length)}
-                    />
+                    {this.props.loading ? (
+                      <div ref={(rootElem: HTMLElement | null) => (this._rootElem = rootElem)} className={chartWrapperClassName}>
+                        {animation}
+                      </div>
+                    ) : (
+                      <div>
+                        {chartUpdatedOn && <div className={dataVizLastUpdateClassName}>{chartUpdatedOn}</div>}
+                        <Chart
+                          chartLabels={chartLabels}
+                          chartType={chartType}
+                          legendColors={legendColors}
+                          chartData={chartData}
+                          hideRatio={hideRatio}
+                          barWidth={barWidth}
+                          barHeight={barHeight}
+                          data={data}
+                          dataPoints={dataPoints}
+                          compactChartWidth={compactChartWidth}
+                          width={this._getChartWidth(cardContentList.length)}
+                          height={this._getChartHeight(cardContentList.length)}
+                        />
+                      </div>
+                    )}
                   </React.Fragment>
                 );
                 break;
@@ -179,13 +211,14 @@ export class Layout extends React.Component<ILayoutProps> {
     contentArea1ClassName: string,
     dataVizLastUpdateClassName: string,
     contentArea2ClassName: string,
+    chartWrapperClassName: string,
     cardSize: CardSize
   ): JSX.Element | null {
     if (cardContentList === null || cardContentList === undefined) {
       return null;
     }
 
-    const contentAreaContents = this._generateContentElement(cardContentList, dataVizLastUpdateClassName);
+    const contentAreaContents = this._generateContentElement(cardContentList, dataVizLastUpdateClassName, chartWrapperClassName);
     if (contentAreaContents.length === 0) {
       return null;
     }
@@ -199,6 +232,28 @@ export class Layout extends React.Component<ILayoutProps> {
       );
     } else {
       return <div className={contentArea1ClassName}>{contentAreaContents[0]}</div>;
+    }
+  }
+
+  private _getAnimation(chartType: ChartType): JSX.Element | undefined {
+    switch (chartType) {
+      case ChartType.DonutChart: {
+        return <DonutChart />;
+      }
+      case ChartType.HorizontalBarChart: {
+        return <HorizontalBarGraph />;
+      }
+      case ChartType.LineChart: {
+        return <LineChart />;
+      }
+      case ChartType.PieChart: {
+        return <DonutChart />;
+      }
+      case ChartType.StackedBarChart: {
+        return <HorizontalBarGraph />;
+      }
+      default:
+        return <Shimmer />;
     }
   }
 }

@@ -35,8 +35,8 @@ export interface IDonutChartStyles {
 export const getStyles = (): IDonutChartStyles => {
   return {
     donutChartLoading: {
-      height: '200px',
-      width: '200px',
+      height: '100%',
+      width: '100%',
       transform: 'rotate(-0.25turn)',
       opacity: '0.6',
       selectors: {

@@ -43,6 +43,10 @@ export const getStyles = (props: ILayoutProps): ILayoutStyles => {
     footer: {
       width: '100%',
       minHeight: '32px'
+    },
+    chartWrapper: {
+      display: 'flex',
+      justifyContent: 'center'
     }
   };
 };

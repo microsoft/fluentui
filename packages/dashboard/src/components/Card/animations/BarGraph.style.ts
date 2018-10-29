@@ -105,8 +105,8 @@ export interface IBarGraphStyles {
 export const getStyles = (): IBarGraphStyles => {
   return {
     barGraphLoading: {
-      height: '100px',
-      width: '100px',
+      height: '200px',
+      width: '200px',
       display: 'flex',
       alignItems: 'flex-end',
       flexWrap: 'nowrap',
