@@ -13,13 +13,7 @@ import {
 } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { KeytipManager } from '../../utilities/keytips/KeytipManager';
-import {
-  IOverflowSet,
-  IOverflowSetItemProps,
-  IOverflowSetProps,
-  IOverflowSetStyles,
-  IOverflowSetStyleProps
-} from './OverflowSet.types';
+import { IOverflowSet, IOverflowSetItemProps, IOverflowSetProps, IOverflowSetStyles, IOverflowSetStyleProps } from './OverflowSet.types';
 
 const getClassNames = classNamesFunction<IOverflowSetStyleProps, IOverflowSetStyles>();
 
@@ -46,16 +40,7 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
   }
 
   public render(): JSX.Element {
-    const {
-      items,
-      overflowItems,
-      className,
-      focusZoneProps,
-      styles,
-      vertical,
-      role,
-      doNotContainWithinFocusZone
-    } = this.props;
+    const { items, overflowItems, className, focusZoneProps, styles, vertical, role, doNotContainWithinFocusZone } = this.props;
 
     this._classNames = getClassNames(styles, { className, vertical });
 

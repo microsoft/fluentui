@@ -1,7 +1,7 @@
 import { IBaseProps } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
 
-export interface IKeytip { }
+export interface IKeytip {}
 
 export interface IKeytipDataProps extends IBaseProps<IKeytip> {
   /**

@@ -12,11 +12,7 @@ import { expectOne, expectMissing } from '../../common/testUtilities';
 
 const DEFAULT_OPTIONS: IComboBoxOption[] = [{ key: '1', text: '1' }, { key: '2', text: '2' }, { key: '3', text: '3' }];
 
-const DEFAULT_OPTIONS2: IComboBoxOption[] = [
-  { key: '1', text: 'One' },
-  { key: '2', text: 'Foo' },
-  { key: '3', text: 'Bar' }
-];
+const DEFAULT_OPTIONS2: IComboBoxOption[] = [{ key: '1', text: 'One' }, { key: '2', text: 'Foo' }, { key: '3', text: 'Bar' }];
 const DEFAULT_OPTIONS3: IComboBoxOption[] = [
   { key: '0', text: 'Zero', itemType: SelectableOptionMenuItemType.Header },
   { key: '1', text: 'One' },
@@ -110,21 +106,13 @@ describe('ComboBox', () => {
     };
 
     const wrapper = mount(
-      <ComboBox
-        label="testgroup"
-        options={DEFAULT_OPTIONS}
-        allowFreeform={true}
-        onChanged={returnUndefined}
-        componentRef={setRef}
-      />
+      <ComboBox label="testgroup" options={DEFAULT_OPTIONS} allowFreeform={true} onChanged={returnUndefined} componentRef={setRef} />
     );
     comboBoxRoot = wrapper.find('.ms-ComboBox');
     inputElement = comboBoxRoot.find('input');
     inputElement.simulate('input', { target: { value: 'f' } });
     inputElement.simulate('keydown', { which: KeyCodes.enter });
-    expect((comboBoxComponent as React.Component<any, any>).state.currentOptions.length).toEqual(
-      DEFAULT_OPTIONS.length
-    );
+    expect((comboBoxComponent as React.Component<any, any>).state.currentOptions.length).toEqual(DEFAULT_OPTIONS.length);
   });
 
   it('New options are automatically added when allowFreeform on in uncontrolled case', () => {
@@ -135,9 +123,7 @@ describe('ComboBox', () => {
       comboBoxComponent = ref;
     };
 
-    const wrapper = mount(
-      <ComboBox label="testgroup" options={DEFAULT_OPTIONS} allowFreeform={true} componentRef={setRef} />
-    );
+    const wrapper = mount(<ComboBox label="testgroup" options={DEFAULT_OPTIONS} allowFreeform={true} componentRef={setRef} />);
     comboBoxRoot = wrapper.find('.ms-ComboBox');
     inputElement = comboBoxRoot.find('input');
     inputElement.simulate('input', { target: { value: 'f' } });
@@ -173,9 +159,7 @@ describe('ComboBox', () => {
 
     const buttonElement = wrapper.find('button');
     buttonElement.simulate('click');
-    const secondItemElement: Element = wrapper
-      .getDOMNode()
-      .ownerDocument.querySelector('.ms-ComboBox-option[data-index="1"]')!;
+    const secondItemElement: Element = wrapper.getDOMNode().ownerDocument.querySelector('.ms-ComboBox-option[data-index="1"]')!;
 
     ReactTestUtils.Simulate.click(secondItemElement);
 
@@ -187,13 +171,7 @@ describe('ComboBox', () => {
 
   it('Can insert text in uncontrolled case with autoComplete and allowFreeform on', () => {
     const wrapper = mount(
-      <ComboBox
-        label="testgroup"
-        defaultSelectedKey="1"
-        options={DEFAULT_OPTIONS2}
-        autoComplete="on"
-        allowFreeform={true}
-      />
+      <ComboBox label="testgroup" defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="on" allowFreeform={true} />
     );
 
     wrapper.find('input').simulate('input', { target: { value: 'f' } });
@@ -203,13 +181,7 @@ describe('ComboBox', () => {
 
   it('Can insert text in uncontrolled case with autoComplete on and allowFreeform off', () => {
     const wrapper = mount(
-      <ComboBox
-        label="testgroup"
-        defaultSelectedKey="1"
-        options={DEFAULT_OPTIONS2}
-        autoComplete="on"
-        allowFreeform={false}
-      />
+      <ComboBox label="testgroup" defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="on" allowFreeform={false} />
     );
 
     wrapper.find('input').simulate('input', { target: { value: 'f' } });
@@ -219,13 +191,7 @@ describe('ComboBox', () => {
 
   it('Can insert text in uncontrolled case with autoComplete off and allowFreeform on', () => {
     const wrapper = mount(
-      <ComboBox
-        label="testgroup"
-        defaultSelectedKey="1"
-        options={DEFAULT_OPTIONS2}
-        autoComplete="off"
-        allowFreeform={true}
-      />
+      <ComboBox label="testgroup" defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="off" allowFreeform={true} />
     );
     wrapper.find('input').simulate('input', { target: { value: 'f' } });
     wrapper.update();
@@ -234,13 +200,7 @@ describe('ComboBox', () => {
 
   it('Can insert text in uncontrolled case with autoComplete and allowFreeform off', () => {
     const wrapper = mount(
-      <ComboBox
-        label="testgroup"
-        defaultSelectedKey="1"
-        options={DEFAULT_OPTIONS2}
-        autoComplete="off"
-        allowFreeform={false}
-      />
+      <ComboBox label="testgroup" defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="off" allowFreeform={false} />
     );
     wrapper.find('input').simulate('keydown', { which: 'f' });
     wrapper.update();
@@ -276,27 +236,21 @@ describe('ComboBox', () => {
   });
 
   it('Cannot insert text while disabled', () => {
-    const wrapper = mount(
-      <ComboBox label="testgroup" defaultSelectedKey="1" options={DEFAULT_OPTIONS2} disabled={true} />
-    );
+    const wrapper = mount(<ComboBox label="testgroup" defaultSelectedKey="1" options={DEFAULT_OPTIONS2} disabled={true} />);
     wrapper.find('input').simulate('keydown', { which: KeyCodes.a });
     wrapper.update();
     expect(wrapper.find('input').props().value).toEqual('One');
   });
 
   it('Cannot change selected option with keyboard while disabled', () => {
-    const wrapper = mount(
-      <ComboBox label="testgroup" defaultSelectedKey="1" options={DEFAULT_OPTIONS2} disabled={true} />
-    );
+    const wrapper = mount(<ComboBox label="testgroup" defaultSelectedKey="1" options={DEFAULT_OPTIONS2} disabled={true} />);
     wrapper.find('input').simulate('keydown', { which: KeyCodes.down });
     wrapper.update();
     expect(wrapper.find('input').props().value).toEqual('One');
   });
 
   it('Cannot expand the menu when clicking on the input while disabled', () => {
-    const wrapper = mount(
-      <ComboBox label="testgroup" defaultSelectedKey="1" options={DEFAULT_OPTIONS2} disabled={true} />
-    );
+    const wrapper = mount(<ComboBox label="testgroup" defaultSelectedKey="1" options={DEFAULT_OPTIONS2} disabled={true} />);
     wrapper.find('input').simulate('click');
     expect(wrapper.find('.is-opened').length).toEqual(0);
   });
@@ -304,9 +258,7 @@ describe('ComboBox', () => {
   it('Cannot expand the menu when clicking on the button while disabled', () => {
     let comboBoxRoot;
     let buttonElement;
-    const wrapper = mount(
-      <ComboBox label="testgroup" defaultSelectedKey="1" options={DEFAULT_OPTIONS2} disabled={true} />
-    );
+    const wrapper = mount(<ComboBox label="testgroup" defaultSelectedKey="1" options={DEFAULT_OPTIONS2} disabled={true} />);
     comboBoxRoot = wrapper.find('.ms-ComboBox');
     buttonElement = comboBoxRoot.find('button');
     buttonElement.simulate('click');
@@ -318,9 +270,7 @@ describe('ComboBox', () => {
     let buttonElement;
     const returnUndefined = jest.fn();
 
-    const wrapper = mount(
-      <ComboBox label="testgroup" defaultSelectedKey="1" options={DEFAULT_OPTIONS2} onMenuOpen={returnUndefined} />
-    );
+    const wrapper = mount(<ComboBox label="testgroup" defaultSelectedKey="1" options={DEFAULT_OPTIONS2} onMenuOpen={returnUndefined} />);
     comboBoxRoot = wrapper.find('.ms-ComboBox');
     buttonElement = comboBoxRoot.find('button');
     buttonElement.simulate('click');
@@ -333,13 +283,7 @@ describe('ComboBox', () => {
     const returnUndefined = jest.fn();
 
     const wrapper = mount(
-      <ComboBox
-        label="testgroup"
-        defaultSelectedKey="1"
-        options={DEFAULT_OPTIONS2}
-        onMenuOpen={returnUndefined}
-        allowFreeform={true}
-      />
+      <ComboBox label="testgroup" defaultSelectedKey="1" options={DEFAULT_OPTIONS2} onMenuOpen={returnUndefined} allowFreeform={true} />
     );
     comboBoxRoot = wrapper.find('.ms-ComboBox');
 
@@ -392,9 +336,7 @@ describe('ComboBox', () => {
   });
 
   it('merges callout classNames', () => {
-    ReactTestUtils.renderIntoDocument<ComboBox>(
-      <ComboBox options={DEFAULT_OPTIONS} calloutProps={{ className: 'foo' }} />
-    );
+    ReactTestUtils.renderIntoDocument<ComboBox>(<ComboBox options={DEFAULT_OPTIONS} calloutProps={{ className: 'foo' }} />);
 
     setTimeout(() => {
       const callout = document.querySelector('.ms-Callout') as HTMLElement;

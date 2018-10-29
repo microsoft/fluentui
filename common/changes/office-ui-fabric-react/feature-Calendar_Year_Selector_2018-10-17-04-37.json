@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsList/List: updating documentation.",
-      "type": "patch"
+      "comment": "Addition of year picker to Calendar",
+      "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "dzearing@microsoft.com"
+  "email": "mfisher.au@gmail.com"
 }

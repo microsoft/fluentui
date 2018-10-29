@@ -250,6 +250,15 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
   }
 
   /**
+   * Blurs the text field.
+   */
+  public blur() {
+    if (this._textElement.current) {
+      this._textElement.current.blur();
+    }
+  }
+
+  /**
    * Selects the text field
    */
   public select() {
@@ -408,9 +417,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
   }
 
   private _renderInput(): React.ReactElement<React.HTMLAttributes<HTMLInputElement>> {
-    const inputProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties, [
-      'defaultValue'
-    ]);
+    const inputProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties, ['defaultValue']);
 
     return (
       <input
@@ -478,9 +485,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
     }
 
     this._latestValidateValue = value;
-    const onGetErrorMessage = this.props.onGetErrorMessage as (
-      value: string
-    ) => string | PromiseLike<string> | undefined;
+    const onGetErrorMessage = this.props.onGetErrorMessage as (value: string) => string | PromiseLike<string> | undefined;
     const result = onGetErrorMessage(value || '');
 
     if (result !== undefined) {

@@ -171,6 +171,12 @@ export interface ICalendarProps extends IBaseProps<ICalendar>, React.HTMLAttribu
    * @defaultvalue false
    */
   allFocusable?: boolean;
+
+  /**
+   * Whether the year picker is enabled
+   * @defaultvalue false
+   */
+  yearPickerHidden?: boolean;
 }
 
 export interface ICalendarStrings {

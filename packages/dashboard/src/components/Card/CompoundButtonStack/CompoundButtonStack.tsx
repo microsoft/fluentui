@@ -1,12 +1,7 @@
 import * as React from 'react';
 import { CompoundButton } from 'office-ui-fabric-react/lib/Button';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-import {
-  ICompoundButtonStackProps,
-  ICompoundButtonStackStyles,
-  ICompoundAction,
-  ButtonSize
-} from './CompoundButtonStack.types';
+import { ICompoundButtonStackProps, ICompoundButtonStackStyles, ICompoundAction, ButtonSize } from './CompoundButtonStack.types';
 import { getStyles } from './CompoundButtonStack.styles';
 import { getCustomCompoundButtonStyles } from './CompoundButton.styles';
 

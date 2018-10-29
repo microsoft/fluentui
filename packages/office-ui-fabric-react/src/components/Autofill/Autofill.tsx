@@ -78,12 +78,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     const { suggestedDisplayValue, shouldSelectFullInputValueInComponentDidUpdate } = this.props;
     let differenceIndex = 0;
 
-    if (
-      this._autoFillEnabled &&
-      value &&
-      suggestedDisplayValue &&
-      this._doesTextStartWith(suggestedDisplayValue, value)
-    ) {
+    if (this._autoFillEnabled && value && suggestedDisplayValue && this._doesTextStartWith(suggestedDisplayValue, value)) {
       let shouldSelectFullRange = false;
 
       if (shouldSelectFullInputValueInComponentDidUpdate) {
@@ -100,11 +95,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
           differenceIndex++;
         }
         if (differenceIndex > 0 && this._inputElement.current) {
-          this._inputElement.current.setSelectionRange(
-            differenceIndex,
-            suggestedDisplayValue.length,
-            SELECTION_BACKWARD
-          );
+          this._inputElement.current.setSelectionRange(differenceIndex, suggestedDisplayValue.length, SELECTION_BACKWARD);
         }
       }
     }
@@ -284,12 +275,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
    */
   private _getDisplayValue(inputValue: string, suggestedDisplayValue?: string): string {
     let displayValue = inputValue;
-    if (
-      suggestedDisplayValue &&
-      inputValue &&
-      this._doesTextStartWith(suggestedDisplayValue, displayValue) &&
-      this._autoFillEnabled
-    ) {
+    if (suggestedDisplayValue && inputValue && this._doesTextStartWith(suggestedDisplayValue, displayValue) && this._autoFillEnabled) {
       displayValue = suggestedDisplayValue;
     }
     return displayValue;
@@ -306,4 +292,4 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
 /**
  *  @deprecated do not use.
  */
-export class BaseAutoFill extends Autofill { }
+export class BaseAutoFill extends Autofill {}

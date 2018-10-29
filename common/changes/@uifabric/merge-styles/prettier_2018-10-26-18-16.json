@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/merge-styles",
+      "comment": "Running Prettier on all .ts and .tsx files in the packages folder.",
+      "type": "none"
+    }
+  ],
+  "packageName": "@uifabric/merge-styles",
+  "email": "Humberto.Morimoto@microsoft.com"
+}

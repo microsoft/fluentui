@@ -2,7 +2,7 @@ import { ITheme, IStyle } from '../../Styling';
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IColor } from '../../utilities/color/colors';
 
-export interface IColorPicker { }
+export interface IColorPicker {}
 
 export interface IColorPickerProps extends IBaseProps<IColorPicker> {
   /**
