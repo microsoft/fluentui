@@ -1,6 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 25 Oct 2018 12:30:05 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Oct 2018 18:04:30 GMT and should not be manually modified.
+
+## 0.26.1
+Mon, 29 Oct 2018 18:04:30 GMT
+
+### Patches
+
+- Add placeholder mode to MultiStackBardChart data point in order to render the bar chart with a progress gray color(default)  area
 
 ## 0.26.0
 Thu, 25 Oct 2018 12:30:05 GMT
