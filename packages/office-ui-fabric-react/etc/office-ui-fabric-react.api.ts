@@ -2375,7 +2375,7 @@ interface ICalloutContentStyles {
 
 // @public (undocumented)
 interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
-  alignPerfectlyWithTarget?: boolean;
+  alignPerfectly?: boolean;
   ariaDescribedBy?: string;
   ariaLabel?: string;
   ariaLabelledBy?: string;
@@ -6166,7 +6166,7 @@ interface IContextualMenuListProps {
 
 // @public
 interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWithResponsiveModeState {
-  alignPerfectlyWithTarget?: boolean;
+  alignPerfectly?: boolean;
   ariaLabel?: string;
   beakWidth?: number;
   bounds?: IRectangle;

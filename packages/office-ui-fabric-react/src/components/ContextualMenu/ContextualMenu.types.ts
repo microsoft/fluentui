@@ -20,7 +20,7 @@ export enum ContextualMenuItemType {
   Section = 3
 }
 
-export interface IContextualMenu { }
+export interface IContextualMenu {}
 
 /**
  * React.Props is deprecated and we're removing it in 6.0. Usage of 'any' should go away with it.
@@ -110,10 +110,10 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
   coverTarget?: boolean;
 
   /**
-   * If true the positioning logic will prefer flipping edges over nudging the rectangle to fit within bounds,
-   * thus making sure the the element align perfectly with target.
+   * If true the positioning logic will prefer to flip edges rather than to nudge the rectangle to fit within bounds,
+   * thus making sure the element aligns perfectly with target's alignment edge
    */
-  alignPerfectlyWithTarget?: boolean;
+  alignPerfectly?: boolean;
 
   /**
    * Collection of menu items.
