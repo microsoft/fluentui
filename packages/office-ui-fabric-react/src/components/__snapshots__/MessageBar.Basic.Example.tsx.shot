@@ -8,10 +8,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     className=
         ms-Label
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
           color: #333333;
           display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -32,11 +37,16 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         ms-MessageBar
         ms-MessageBar-multiline
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           background: #f4f4f4;
           box-sizing: border-box;
           color: #333333;
           display: flex;
           flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           min-height: 32px;
           position: relative;
           width: 100%;
@@ -164,10 +174,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     className=
         ms-Label
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
           color: #333333;
           display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -189,10 +204,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         ms-MessageBar-singleline
         ms-MessageBar-dismissalSingleLine
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           background: rgba(232, 17, 35, .2);
           box-sizing: border-box;
           color: #333333;
           display: flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           min-height: 32px;
           position: relative;
           width: 100%;
@@ -352,6 +372,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 flex-shrink: 0;
@@ -403,7 +424,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 top: 0px;
               }
               &:hover {
-                color: #004578;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -484,10 +505,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     className=
         ms-Label
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
           color: #333333;
           display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -511,11 +537,16 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         ms-MessageBar-dismissalSingleLine
         ms-MessageBar-expandingSingleLine
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           background: rgba(232, 17, 35, .2);
           box-sizing: border-box;
           color: #333333;
           display: flex;
           flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           min-height: 32px;
           position: relative;
           width: 100%;
@@ -678,6 +709,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 flex-shrink: 0;
@@ -729,7 +761,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 top: 0px;
               }
               &:hover {
-                color: #004578;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -830,6 +862,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 flex-shrink: 0;
@@ -881,7 +914,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 top: 0px;
               }
               &:hover {
-                color: #004578;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -962,10 +995,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     className=
         ms-Label
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
           color: #333333;
           display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -987,11 +1025,16 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         ms-MessageBar--severeWarning
         ms-MessageBar-multiline
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           background: rgba(234, 67, 0, .2);
           box-sizing: border-box;
           color: #333333;
           display: flex;
           flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           min-height: 32px;
           position: relative;
           width: 100%;
@@ -1369,10 +1412,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     className=
         ms-Label
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
           color: #333333;
           display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -1393,10 +1441,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         ms-MessageBar--success
         ms-MessageBar-singleline
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           background: rgba(186, 216, 10, .2);
           box-sizing: border-box;
           color: #333333;
           display: flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           min-height: 32px;
           position: relative;
           width: 100%;
@@ -1786,10 +1839,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     className=
         ms-Label
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
           color: #333333;
           display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -1811,10 +1869,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         ms-MessageBar-singleline
         ms-MessageBar-dismissalSingleLine
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           background: rgba(255, 185, 0, .2);
           box-sizing: border-box;
           color: #333333;
           display: flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           min-height: 32px;
           position: relative;
           width: 100%;
@@ -2110,6 +2173,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 flex-shrink: 0;
@@ -2161,7 +2225,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 top: 0px;
               }
               &:hover {
-                color: #004578;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -2242,10 +2306,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     className=
         ms-Label
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
           color: #333333;
           display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -2267,11 +2336,16 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         ms-MessageBar--warning
         ms-MessageBar-multiline
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           background: rgba(255, 185, 0, .2);
           box-sizing: border-box;
           color: #333333;
           display: flex;
           flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           min-height: 32px;
           position: relative;
           width: 100%;
@@ -2406,6 +2480,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               border-radius: 0px;
               border: none;
               box-sizing: border-box;
+              color: #333333;
               cursor: pointer;
               display: inline-block;
               flex-shrink: 0;
@@ -2457,7 +2532,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               top: 0px;
             }
             &:hover {
-              color: #004578;
+              color: #212121;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
@@ -2787,10 +2862,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     className=
         ms-Label
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
           color: #333333;
           display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -2811,11 +2891,16 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         ms-MessageBar
         ms-MessageBar-multiline
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           background: rgba(113, 175, 229, 0.2);
           box-sizing: border-box;
           color: #00188f;
           display: flex;
           flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           min-height: 32px;
           position: relative;
           width: 100%;
@@ -2943,10 +3028,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     className=
         ms-Label
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
           color: #333333;
           display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -2968,10 +3058,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         ms-MessageBar-singleline
         ms-MessageBar-dismissalSingleLine
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           background: rgba(232, 17, 35, .2);
           box-sizing: border-box;
           color: #333333;
           display: flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           min-height: 32px;
           position: relative;
           width: 100%;
@@ -3133,6 +3228,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 flex-shrink: 0;
@@ -3184,7 +3280,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 top: 0px;
               }
               &:hover {
-                color: #004578;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -3265,10 +3361,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     className=
         ms-Label
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
           color: #333333;
           display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -3292,11 +3393,16 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         ms-MessageBar-dismissalSingleLine
         ms-MessageBar-expandingSingleLine
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           background: rgba(0, 178, 148, 0.2);
           box-sizing: border-box;
           color: #333333;
           display: flex;
           flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           min-height: 32px;
           position: relative;
           width: 100%;
@@ -3461,6 +3567,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 flex-shrink: 0;
@@ -3512,7 +3619,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 top: 0px;
               }
               &:hover {
-                color: #004578;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -3614,6 +3721,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 flex-shrink: 0;
@@ -3665,7 +3773,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 top: 0px;
               }
               &:hover {
-                color: #004578;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -3746,10 +3854,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     className=
         ms-Label
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
           color: #333333;
           display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -3771,11 +3884,16 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         ms-MessageBar--severeWarning
         ms-MessageBar-multiline
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           background: rgba(227, 0, 140, 0.2);
           box-sizing: border-box;
           color: #333333;
           display: flex;
           flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           min-height: 32px;
           position: relative;
           width: 100%;
@@ -4154,10 +4272,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     className=
         ms-Label
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
           color: #333333;
           display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -4178,10 +4301,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         ms-MessageBar--success
         ms-MessageBar-singleline
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           background: rgba(186, 216, 10, .2);
           box-sizing: border-box;
           color: #333333;
           display: flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           min-height: 32px;
           position: relative;
           width: 100%;
@@ -4573,10 +4701,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     className=
         ms-Label
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
           color: #333333;
           display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -4598,10 +4731,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         ms-MessageBar-singleline
         ms-MessageBar-dismissalSingleLine
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           background: rgba(255, 185, 0, .2);
           box-sizing: border-box;
           color: #333333;
           display: flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           min-height: 32px;
           position: relative;
           width: 100%;
@@ -4900,6 +5038,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 flex-shrink: 0;
@@ -4951,7 +5090,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 top: 0px;
               }
               &:hover {
-                color: #004578;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -5032,10 +5171,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     className=
         ms-Label
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
           color: #333333;
           display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -5057,11 +5201,16 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         ms-MessageBar--warning
         ms-MessageBar-multiline
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           background: rgba(0, 188, 242, 0.4);
           box-sizing: border-box;
           color: #333333;
           display: flex;
           flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           min-height: 32px;
           position: relative;
           width: 100%;
@@ -5196,6 +5345,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               border-radius: 0px;
               border: 1px solid #00188f;
               box-sizing: border-box;
+              color: #333333;
               cursor: pointer;
               display: inline-block;
               flex-shrink: 0;
@@ -5247,7 +5397,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               top: 0px;
             }
             &:hover {
-              color: #004578;
+              color: #212121;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;

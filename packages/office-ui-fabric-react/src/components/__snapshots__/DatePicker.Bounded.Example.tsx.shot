@@ -13,8 +13,13 @@ Wed, 06 Dec 2017 04:41:20 GMT-Wed, 06 Dec 2017 04:41:20 GMT
     className=
         ms-DatePicker
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -29,7 +34,7 @@ Wed, 06 Dec 2017 04:41:20 GMT-Wed, 06 Dec 2017 04:41:20 GMT
     <div
       aria-expanded={false}
       aria-haspopup="true"
-      aria-owns="DatePicker-Callout0"
+      aria-owns="DatePicker-Callout1"
       role="combobox"
     >
       <div
@@ -88,6 +93,7 @@ Wed, 06 Dec 2017 04:41:20 GMT-Wed, 06 Dec 2017 04:41:20 GMT
           >
             <input
               aria-invalid={false}
+              aria-label="Select a date"
               className=
                   ms-TextField-field
                   {
@@ -126,7 +132,7 @@ Wed, 06 Dec 2017 04:41:20 GMT-Wed, 06 Dec 2017 04:41:20 GMT
                     color: #666666;
                     opacity: 1;
                   }
-              id="TextField1"
+              id="DatePicker0-label"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}

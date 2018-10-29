@@ -5,8 +5,7 @@ import * as WarnUtil from '@uifabric/utilities/lib-commonjs/warn';
 import { setRTL } from '../../../Utilities';
 import { PersonaCoin } from './PersonaCoin';
 
-const testImage1x1 =
-  'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
+const testImage1x1 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
 
 describe('PersonaCoin', () => {
   beforeEach(() => {

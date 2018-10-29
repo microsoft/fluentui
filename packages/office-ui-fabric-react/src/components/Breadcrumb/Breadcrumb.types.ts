@@ -2,8 +2,7 @@ import * as React from 'react';
 import { BreadcrumbBase, IBreadCrumbData } from './Breadcrumb.base';
 import { IIconProps } from '../../Icon';
 import { IRefObject, IRenderFunction, IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
-import { IBreadcrumbStyleProps, IBreadcrumbStyles } from './Breadcrumb.styles';
-import { ITheme } from '../../Styling';
+import { ITheme, IStyle } from '../../Styling';
 
 export interface IBreadcrumb {
   /**
@@ -30,7 +29,7 @@ export interface IBreadcrumbProps extends React.Props<BreadcrumbBase> {
   className?: string;
 
   /**
-   * Render a custom divider in place of the default chevron '>'
+   * Render a custom divider in place of the default chevron `>`
    */
   dividerAs?: IComponentAs<IDividerAsProps>;
 
@@ -103,4 +102,19 @@ export interface IDividerAsProps extends IIconProps {
    * For overflowed items, it will be last item in the list
    */
   item?: IBreadcrumbItem;
+}
+
+export interface IBreadcrumbStyleProps {
+  className?: string;
+  theme: ITheme;
+}
+export interface IBreadcrumbStyles {
+  root: IStyle;
+  list: IStyle;
+  listItem: IStyle;
+  chevron: IStyle;
+  overflow: IStyle;
+  overflowButton: IStyle;
+  itemLink: IStyle;
+  item: IStyle;
 }

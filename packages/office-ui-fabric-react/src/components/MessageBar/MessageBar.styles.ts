@@ -34,11 +34,7 @@ const GlobalClassNames = {
 };
 
 // Returns the background color of the MessageBar root element based on the type of MessageBar.
-const getRootBackground = (
-  messageBarType: MessageBarType | undefined,
-  palette: IPalette,
-  semanticColors: ISemanticColors
-): string => {
+const getRootBackground = (messageBarType: MessageBarType | undefined, palette: IPalette, semanticColors: ISemanticColors): string => {
   switch (messageBarType) {
     case MessageBarType.error:
     case MessageBarType.blocked:
@@ -54,11 +50,7 @@ const getRootBackground = (
 };
 
 // Returns the icon color based on the type of MessageBar.
-const getIconColor = (
-  messageBarType: MessageBarType | undefined,
-  palette: IPalette,
-  semanticColors: ISemanticColors
-): string => {
+const getIconColor = (messageBarType: MessageBarType | undefined, palette: IPalette, semanticColors: ISemanticColors): string => {
   switch (messageBarType) {
     case MessageBarType.error:
     case MessageBarType.blocked:
@@ -114,6 +106,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
   return {
     root: [
       classNames.root,
+      theme.fonts.medium,
       messageBarType === MessageBarType.error && classNames.error,
       messageBarType === MessageBarType.blocked && classNames.blocked,
       messageBarType === MessageBarType.severeWarning && classNames.severeWarning,

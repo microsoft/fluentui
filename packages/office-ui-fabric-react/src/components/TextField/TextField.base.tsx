@@ -292,8 +292,8 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
 
   /**
    * Sets the start and end positions of a selection in a text field.
-   * @param start Index of the start of the selection.
-   * @param end Index of the end of the selection.
+   * @param start - Index of the start of the selection.
+   * @param end - Index of the end of the selection.
    */
   public setSelectionRange(start: number, end: number): void {
     if (this._textElement.current) {
@@ -408,9 +408,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
   }
 
   private _renderInput(): React.ReactElement<React.HTMLAttributes<HTMLInputElement>> {
-    const inputProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties, [
-      'defaultValue'
-    ]);
+    const inputProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties, ['defaultValue']);
 
     return (
       <input
@@ -478,9 +476,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
     }
 
     this._latestValidateValue = value;
-    const onGetErrorMessage = this.props.onGetErrorMessage as (
-      value: string
-    ) => string | PromiseLike<string> | undefined;
+    const onGetErrorMessage = this.props.onGetErrorMessage as (value: string) => string | PromiseLike<string> | undefined;
     const result = onGetErrorMessage(value || '');
 
     if (result !== undefined) {

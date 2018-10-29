@@ -19,6 +19,7 @@ export const getStyles = (props: IContextualMenuStyleProps): IContextualMenuStyl
 
   return {
     root: [
+      theme.fonts.medium,
       classNames.root,
       classNames.isopen,
       {

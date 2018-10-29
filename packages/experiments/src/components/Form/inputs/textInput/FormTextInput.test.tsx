@@ -100,10 +100,7 @@ describe('FormTextInput Unit Tests', () => {
         </Form>
       ) as Form;
 
-      const form: HTMLFormElement = ReactTestUtils.findRenderedDOMComponentWithTag(
-        renderedForm,
-        'form'
-      ) as HTMLFormElement;
+      const form: HTMLFormElement = ReactTestUtils.findRenderedDOMComponentWithTag(renderedForm, 'form') as HTMLFormElement;
       ReactTestUtils.Simulate.submit(form);
 
       // Find the TextField component

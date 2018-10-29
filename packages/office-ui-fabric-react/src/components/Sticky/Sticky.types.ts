@@ -20,13 +20,13 @@ export interface IStickyProps extends React.Props<Sticky> {
 
   /**
    * Region to render sticky component in.
-   * @default Both
+   * @defaultvalue Both
    */
   stickyPosition?: StickyPositionType;
 
   /**
    * If true, then match scrolling position of placeholder element in Sticky.
-   * @default true
+   * @defaultvalue true
    */
   isScrollSynced?: boolean;
 }

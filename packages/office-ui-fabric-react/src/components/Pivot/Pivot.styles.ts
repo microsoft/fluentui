@@ -107,6 +107,7 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
   return {
     root: [
       classNames.root,
+      theme.fonts.medium,
       normalize,
       {
         fontSize: FontSizes.medium,

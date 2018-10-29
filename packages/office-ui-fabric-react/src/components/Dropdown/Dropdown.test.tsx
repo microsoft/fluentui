@@ -146,7 +146,7 @@ describe('Dropdown', () => {
 
       document.body.appendChild(container);
 
-      const onChangeSpy = jasmine.createSpy('onChange');
+      const onChangeSpy = jest.fn();
 
       try {
         ReactDOM.render(<Dropdown label="testgroup" defaultSelectedKey="1" onChange={onChangeSpy} options={DEFAULT_OPTIONS} />, container);
@@ -161,13 +161,37 @@ describe('Dropdown', () => {
       }
     });
 
+    it('issues the onChange callback when the selected item is the same if notifyOnReselect is true', () => {
+      const container = document.createElement('div');
+      let dropdownRoot: HTMLElement | undefined;
+
+      document.body.appendChild(container);
+
+      const onChangeSpy = jest.fn();
+
+      try {
+        ReactDOM.render(
+          <Dropdown label="testgroup" defaultSelectedKey="3" onChange={onChangeSpy} options={DEFAULT_OPTIONS} notifyOnReselect={true} />,
+          container
+        );
+        dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+
+        ReactTestUtils.Simulate.click(dropdownRoot);
+
+        const secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="3"]') as HTMLElement;
+        ReactTestUtils.Simulate.click(secondItemElement);
+      } finally {
+        expect(onChangeSpy).toHaveBeenCalledWith(expect.anything(), DEFAULT_OPTIONS[3], 3);
+      }
+    });
+
     it('issues the onDismiss callback when dismissing options callout', () => {
       const container = document.createElement('div');
       let dropdownRoot: HTMLElement | undefined;
 
       document.body.appendChild(container);
 
-      const onDismissSpy = jasmine.createSpy('onDismiss');
+      const onDismissSpy = jest.fn();
 
       try {
         ReactDOM.render(
@@ -208,7 +232,7 @@ describe('Dropdown', () => {
 
       document.body.appendChild(container);
 
-      const onChangeSpy = jasmine.createSpy('onChange');
+      const onChangeSpy = jest.fn();
 
       try {
         ReactDOM.render(<Dropdown label="testgroup" defaultSelectedKey="1" onChange={onChangeSpy} options={DEFAULT_OPTIONS} />, container);
@@ -472,7 +496,7 @@ describe('Dropdown', () => {
 
       document.body.appendChild(container);
 
-      const onChangedSpy = jasmine.createSpy('onChanged');
+      const onChangedSpy = jest.fn();
 
       try {
         ReactDOM.render(
@@ -502,7 +526,7 @@ describe('Dropdown', () => {
 
       document.body.appendChild(container);
 
-      const onChangedSpy = jasmine.createSpy('onChanged');
+      const onChangedSpy = jest.fn();
 
       try {
         ReactDOM.render(

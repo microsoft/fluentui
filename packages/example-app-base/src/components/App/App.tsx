@@ -3,6 +3,7 @@ import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import { Nav } from 'office-ui-fabric-react/lib/Nav';
+import { AppCustomizationsContext, IAppCustomizations } from '../../utilities/customizations';
 import { withResponsiveMode, ResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
 import { INavLink, INavLinkGroup } from 'office-ui-fabric-react/lib/Nav';
 import { Header } from '../Header/Header';
@@ -14,7 +15,6 @@ export enum ExampleStatus {
   beta = 2,
   release = 3
 }
-
 export interface IAppLink extends INavLink {
   // tslint:disable-next-line:no-any
   getComponent?: (cb: (obj: any) => void) => any;
@@ -30,6 +30,10 @@ export interface IAppDefinition {
   testPages: IAppLink[];
   examplePages: IAppLinkGroup[];
   headerLinks: IAppLink[];
+  /**
+   * Optional customizations to apply to the application.
+   */
+  customizations?: IAppCustomizations;
 }
 
 export interface IAppProps extends React.Props<App> {
@@ -52,18 +56,13 @@ export class App extends React.Component<IAppProps, IAppState> {
   }
 
   public render(): JSX.Element {
-    let { appDefinition, responsiveMode } = this.props;
-    let { isMenuVisible } = this.state;
+    const { appDefinition, responsiveMode = ResponsiveMode.large } = this.props;
+    const { customizations } = appDefinition;
+    const { isMenuVisible } = this.state;
 
-    if (responsiveMode === undefined) {
-      responsiveMode = ResponsiveMode.large;
-    }
+    const navPanel = <Nav groups={appDefinition.examplePages} onLinkClick={this._onLinkClick} onRenderLink={this._onRenderLink} />;
 
-    let navPanel = (
-      <Nav groups={appDefinition.examplePages} onLinkClick={this._onLinkClick} onRenderLink={this._onRenderLink} />
-    );
-
-    return (
+    const app = (
       <Fabric className={css('ms-App', 'ms-App--' + ResponsiveMode[responsiveMode])}>
         <div className="ms-App-header">
           <Header
@@ -93,6 +92,8 @@ export class App extends React.Component<IAppProps, IAppState> {
         ) : null}
       </Fabric>
     );
+
+    return customizations ? <AppCustomizationsContext.Provider value={customizations}>{app}</AppCustomizationsContext.Provider> : app;
   }
 
   private _onIsMenuVisibleChanged = (isMenuVisible: boolean): void => {

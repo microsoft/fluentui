@@ -131,7 +131,8 @@ export class Layout extends React.Component<ILayoutProps, { _width: number; _hei
                   chartType,
                   dataPoints,
                   compactChartWidth,
-                  chartUpdatedOn
+                  chartUpdatedOn,
+                  timeRange
                 } = cardContent.content as IChartProps;
                 const animation = this._getAnimation(chartType);
                 contentArea.push(

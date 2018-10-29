@@ -28,51 +28,51 @@ export class MultipleLineChartExample extends React.Component<{}, { loading: boo
     const points: ILineChartPoints[] = [
       {
         data: [
-          { x: '28/08', y: 10 },
-          { x: '29/08', y: 18 },
-          { x: '30/08', y: 24 },
-          { x: '31/08', y: 25 },
-          { x: '01/09', y: 15 },
-          { x: '02/09', y: 30 },
-          { x: '03/09', y: 18 },
-          { x: '04/09', y: 32 },
-          { x: '05/09', y: 29 },
-          { x: '06/09', y: 43 },
-          { x: '07/09', y: 45 }
+          { x: new Date('01-01-2018'), y: 10 },
+          { x: new Date('01-15-2018'), y: 18 },
+          { x: new Date('01-28-2018'), y: 24 },
+          { x: new Date('02-01-2018'), y: 25 },
+          { x: new Date('03-01-2018'), y: 15 },
+          { x: new Date('03-15-2018'), y: 30 },
+          { x: new Date('03-28-2018'), y: 18 },
+          { x: new Date('04-04-2018'), y: 32 },
+          { x: new Date('04-15-2018'), y: 29 },
+          { x: new Date('05-05-2018'), y: 43 },
+          { x: new Date('06-01-2018'), y: 45 }
         ],
         legend: 'First',
         color: DefaultPalette.blue
       },
       {
         data: [
-          { x: '28/08', y: 18 },
-          { x: '29/08', y: 20 },
-          { x: '30/08', y: 40 },
-          { x: '31/08', y: 30 },
-          { x: '01/09', y: 18 },
-          { x: '02/09', y: 20 },
-          { x: '03/09', y: 40 },
-          { x: '04/09', y: 30 },
-          { x: '05/09', y: 18 },
-          { x: '06/09', y: 40 },
-          { x: '07/09', y: 30 }
+          { x: new Date('01-01-2018'), y: 10 },
+          { x: new Date('01-7-2018'), y: 18 },
+          { x: new Date('01-15-2018'), y: 24 },
+          { x: new Date('02-01-2018'), y: 25 },
+          { x: new Date('03-10-2018'), y: 15 },
+          { x: new Date('03-15-2018'), y: 30 },
+          { x: new Date('03-20-2018'), y: 18 },
+          { x: new Date('04-10-2018'), y: 32 },
+          { x: new Date('04-20-2018'), y: 29 },
+          { x: new Date('05-16-2018'), y: 43 },
+          { x: new Date('06-01-2018'), y: 45 }
         ],
         legend: 'Second',
         color: DefaultPalette.green
       },
       {
         data: [
-          { x: '28/08', y: 20 },
-          { x: '29/08', y: 15 },
-          { x: '30/08', y: 30 },
-          { x: '31/08', y: 35 },
-          { x: '01/09', y: 30 },
-          { x: '02/09', y: 15 },
-          { x: '03/09', y: 30 },
-          { x: '04/09', y: 27 },
-          { x: '05/09', y: 29 },
-          { x: '06/09', y: 35 },
-          { x: '07/09', y: 42 }
+          { x: new Date('01-06-2018'), y: 10 },
+          { x: new Date('01-18-2018'), y: 18 },
+          { x: new Date('01-25-2018'), y: 24 },
+          { x: new Date('02-10-2018'), y: 25 },
+          { x: new Date('03-03-2018'), y: 15 },
+          { x: new Date('03-07-2018'), y: 30 },
+          { x: new Date('03-15-2018'), y: 18 },
+          { x: new Date('04-10-2018'), y: 32 },
+          { x: new Date('04-17-2018'), y: 29 },
+          { x: new Date('05-10-2018'), y: 43 },
+          { x: new Date('06-01-2018'), y: 45 }
         ],
         legend: 'Third',
         color: DefaultPalette.red
@@ -86,16 +86,17 @@ export class MultipleLineChartExample extends React.Component<{}, { loading: boo
       }
     ];
 
-    const chartContent1: IChartProps = {
+    const chartContent: IChartProps = {
       chartType: ChartType.LineChart,
-      chartData: firstChartData
+      chartData: firstChartData,
+      timeRange: '180Days'
     };
 
     const contentAreaList: ICardContentDetails[] = [
       {
         priority: Priority.Priority1,
         cardContentType: CardContentType.Chart,
-        content: chartContent1
+        content: chartContent
       }
     ];
 

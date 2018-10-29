@@ -7,6 +7,7 @@ export const getStyles: ICollapsibleSectionTitleComponent['styles'] = props => {
   return {
     root: [
       getFocusStyle(theme),
+      theme.fonts.medium,
       {
         width: '100%',
         display: 'flex',
