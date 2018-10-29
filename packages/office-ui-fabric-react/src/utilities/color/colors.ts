@@ -31,15 +31,7 @@ export interface IColor extends IRGB, IHSV {
 }
 
 export function cssColor(color: string): IRGB | undefined {
-  return (
-    _named(color) ||
-    _hex3(color) ||
-    _hex6(color) ||
-    _rgb(color) ||
-    _rgba(color) ||
-    _hsl(color) ||
-    (_hsla(color) as IRGB)
-  );
+  return _named(color) || _hex3(color) || _hex6(color) || _rgb(color) || _rgba(color) || _hsl(color) || (_hsla(color) as IRGB);
 }
 
 export function rgb2hex(r: number, g: number, b: number): string {

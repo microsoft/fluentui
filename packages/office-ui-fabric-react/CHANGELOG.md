@@ -1,6 +1,49 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 24 Oct 2018 12:28:59 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Oct 2018 18:04:30 GMT and should not be manually modified.
+
+## 6.94.0
+Mon, 29 Oct 2018 18:04:30 GMT
+
+### Minor changes
+
+- Add blur to ITextField and implement to support programmatic blur."
+
+## 6.93.1
+Mon, 29 Oct 2018 12:31:29 GMT
+
+### Patches
+
+- DetailsList/List: updating documentation.
+- DatePicker: Pass id prop to TextField component.
+- ContextualMenu: Fix separator announcement in Narrator scan mode.
+
+## 6.93.0
+Fri, 26 Oct 2018 12:32:36 GMT
+
+### Minor changes
+
+- Enable api-extractor build task
+- Callout: Added layerProps to interface
+- GroupedList: add aria-expanded and aria-controls
+- Add optional onColumnResize callback to IColumn which reports resized column's current width
+
+### Patches
+
+- Fix the issue of DetailLists and DetailHeadder property about isAllGroupsCollapsed changed after initial constructor , they are not reflected in the state.
+- Breadcrumb: add overflowAriaLabel to examples
+- Fix typo in role attribute in DocumentCardActivity
+- Updated Fabric API file
+- Rating: Updating padding on each star to fix clipping focus outline and adjust height to follow redlines.
+
+## 6.92.1
+Thu, 25 Oct 2018 12:30:06 GMT
+
+### Patches
+
+- CommandBar: Remove duplicate className prop application.
+- Add unit tests for DetailsList onRenderMissingItem prop.
+- Dropdown: Add support for onFocus callback
 
 ## 6.92.0
 Wed, 24 Oct 2018 12:28:58 GMT

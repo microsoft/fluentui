@@ -27,10 +27,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   }
 
   public componentDidMount(): void {
-    const {
-      elementToFocusOnDismiss,
-      disableFirstFocus = false
-    } = this.props;
+    const { elementToFocusOnDismiss, disableFirstFocus = false } = this.props;
 
     this._previouslyFocusedElementOutsideTrapZone = elementToFocusOnDismiss
       ? elementToFocusOnDismiss
@@ -40,7 +37,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     }
 
     this._updateEventHandlers(this.props);
-    }
+  }
 
   public componentWillReceiveProps(nextProps: IFocusTrapZoneProps): void {
     const { elementToFocusOnDismiss } = nextProps;
@@ -102,9 +99,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     }
 
     const focusSelector =
-      typeof firstFocusableSelector === 'string'
-        ? firstFocusableSelector
-        : firstFocusableSelector && firstFocusableSelector();
+      typeof firstFocusableSelector === 'string' ? firstFocusableSelector : firstFocusableSelector && firstFocusableSelector();
 
     let _firstFocusableChild;
 
@@ -112,14 +107,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
       if (focusSelector) {
         _firstFocusableChild = this._root.current.querySelector('.' + focusSelector);
       } else {
-        _firstFocusableChild = getNextElement(
-          this._root.current,
-          this._root.current.firstChild as HTMLElement,
-          true,
-          false,
-          false,
-          true
-        );
+        _firstFocusableChild = getNextElement(this._root.current, this._root.current.firstChild as HTMLElement, true, false, false, true);
       }
     }
     if (_firstFocusableChild) {
@@ -174,11 +162,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
       return;
     }
 
-    const _firstTabbableChild = getFirstTabbable(
-      this._root.current,
-      this._root.current.firstChild as HTMLElement,
-      true
-    );
+    const _firstTabbableChild = getFirstTabbable(this._root.current, this._root.current.firstChild as HTMLElement, true);
     const _lastTabbableChild = getLastTabbable(this._root.current, this._root.current.lastChild as HTMLElement, true);
 
     if (ev.shiftKey && _firstTabbableChild === ev.target) {

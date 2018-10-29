@@ -30,9 +30,7 @@ export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> 
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet
-            sources={[require<string>('!raw-loader!@uifabric/charting/src/components/LineChart/LineChart.types.ts')]}
-          />
+          <PropertiesTableSet sources={[require<string>('!raw-loader!@uifabric/charting/src/components/LineChart/LineChart.types.ts')]} />
         }
         /* tslint:disable:max-line-length */
         overview={

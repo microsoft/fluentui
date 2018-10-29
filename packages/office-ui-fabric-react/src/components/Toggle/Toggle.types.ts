@@ -43,22 +43,22 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
   ariaLabel?: string;
 
   /**
-   * @deprecated Use ariaLabel for name, and let the metadata convey state
+   * @deprecated Use `ariaLabel` for name, and let the metadata convey state
    */
   onAriaLabel?: string;
 
   /**
-   * @deprecated Use ariaLabel for name, and let the metadata convey state
+   * @deprecated Use `ariaLabel` for name, and let the metadata convey state
    */
   offAriaLabel?: string;
 
   /**
-   * Checked state of the toggle. If you are maintaining state yourself, use this property. Otherwise refer to 'defaultChecked'.
+   * Checked state of the toggle. If you are maintaining state yourself, use this property. Otherwise refer to `defaultChecked`.
    */
   checked?: boolean;
 
   /**
-   * Initial state of the toggle. If you want the toggle to maintain its own state, use this. Otherwise refer to 'checked'.
+   * Initial state of the toggle. If you want the toggle to maintain its own state, use this. Otherwise refer to `checked`.
    */
   defaultChecked?: boolean;
 
@@ -73,7 +73,7 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
   onChange?: (event: React.MouseEvent<HTMLElement>, checked?: boolean) => void;
 
   /**
-   * @deprecated Use onChange instead.
+   * @deprecated Use `onChange` instead.
    */
   onChanged?: (checked: boolean) => void;
 

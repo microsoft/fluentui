@@ -2,6 +2,44 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.1.7",
+      "tag": "@uifabric/fluent-theme_v0.1.7",
+      "date": "Mon, 29 Oct 2018 12:31:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "TextField, Breadcrumb: Updating some font weight for Breadcrumb and border color for TextField",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "1de1a780d3f805070d8c583bd8a5b78d83e5e357"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.93.0 <7.0.0` to `>=6.93.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.1.6",
+      "tag": "@uifabric/fluent-theme_v0.1.6",
+      "date": "Thu, 25 Oct 2018 12:30:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fluent theme: Update Slider colors",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "f486b9f249bc7cfc39cdcc4d95f642c22eea371e"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.92.0 <7.0.0` to `>=6.92.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.1.5",
       "tag": "@uifabric/fluent-theme_v0.1.5",
       "date": "Wed, 24 Oct 2018 12:28:58 GMT",

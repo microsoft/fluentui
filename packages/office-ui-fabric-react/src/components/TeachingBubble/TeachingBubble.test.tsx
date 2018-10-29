@@ -9,11 +9,7 @@ import { mount } from 'enzyme';
 describe('TeachingBubble', () => {
   it('renders TeachingBubble using a <div> for the child content if the child is not a string', () => {
     const component = mount(
-      <TeachingBubble
-        isWide={true}
-        calloutProps={{ doNotLayer: true, className: 'specialClassName' }}
-        ariaDescribedBy="content"
-      >
+      <TeachingBubble isWide={true} calloutProps={{ doNotLayer: true, className: 'specialClassName' }} ariaDescribedBy="content">
         <div>Not a string child</div>
       </TeachingBubble>
     );
@@ -23,11 +19,7 @@ describe('TeachingBubble', () => {
 
   it('renders TeachingBubble using a <p> for the child content if the child is a string', () => {
     const component = mount(
-      <TeachingBubble
-        isWide={true}
-        calloutProps={{ doNotLayer: true, className: 'specialClassName' }}
-        ariaDescribedBy="content"
-      >
+      <TeachingBubble isWide={true} calloutProps={{ doNotLayer: true, className: 'specialClassName' }} ariaDescribedBy="content">
         Not a string child
       </TeachingBubble>
     );
@@ -46,9 +38,7 @@ describe('TeachingBubble', () => {
   });
 
   it('renders TeachingBubbleContent correctly', () => {
-    const componentContent = renderer.create(
-      <TeachingBubbleContent headline="Test Title">Content</TeachingBubbleContent>
-    );
+    const componentContent = renderer.create(<TeachingBubbleContent headline="Test Title">Content</TeachingBubbleContent>);
     const treeContent = componentContent.toJSON();
     expect(treeContent).toMatchSnapshot();
   });

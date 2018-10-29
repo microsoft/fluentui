@@ -70,10 +70,7 @@ describe('FormDatePicker Unit Tests', () => {
       ) as Form;
 
       renderedInput = ReactTestUtils.findRenderedDOMComponentWithClass(renderedForm, 'ms-DatePicker') as HTMLElement;
-      const form: HTMLFormElement = ReactTestUtils.findRenderedDOMComponentWithTag(
-        renderedForm,
-        'form'
-      ) as HTMLFormElement;
+      const form: HTMLFormElement = ReactTestUtils.findRenderedDOMComponentWithTag(renderedForm, 'form') as HTMLFormElement;
       ReactTestUtils.Simulate.submit(form);
 
       expect(result['name']).toEqual(now);
@@ -103,10 +100,7 @@ describe('FormDatePicker Unit Tests', () => {
         </Form>
       ) as Form;
 
-      const datePicker: ExtendsDatePicker = ReactTestUtils.findRenderedComponentWithType(
-        renderedForm,
-        ExtendsDatePicker
-      );
+      const datePicker: ExtendsDatePicker = ReactTestUtils.findRenderedComponentWithType(renderedForm, ExtendsDatePicker);
       datePicker.setValue(new Date('2015-05-05'));
       expect(updateStub.callCount).toEqual(1);
       datePicker.setValue(new Date('2014-05-05'));

@@ -1,15 +1,6 @@
 import * as React from 'react';
 import { IChartProps as IChartingProps, IChartDataPoint } from '@uifabric/charting';
-import {
-  Card,
-  CardContentType,
-  CardSize,
-  ChartType,
-  IChartProps,
-  ICardContentDetails,
-  ICardProps,
-  Priority
-} from '@uifabric/dashboard';
+import { Card, CardContentType, CardSize, ChartType, IChartProps, ICardContentDetails, ICardProps, Priority } from '@uifabric/dashboard';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export class MultiStackedBarChartExample extends React.Component<{}, {}> {
@@ -88,13 +79,6 @@ export class MultiStackedBarChartExample extends React.Component<{}, {}> {
       headerText: 'Sensitive info types'
     };
 
-    return (
-      <Card
-        cardFrameContent={cardFrameContent}
-        header={header}
-        cardContentList={contentAreaList}
-        cardSize={CardSize.mediumTall}
-      />
-    );
+    return <Card cardFrameContent={cardFrameContent} header={header} cardContentList={contentAreaList} cardSize={CardSize.mediumTall} />;
   }
 }

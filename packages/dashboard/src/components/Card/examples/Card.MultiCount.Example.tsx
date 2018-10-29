@@ -1,13 +1,5 @@
 import * as React from 'react';
-import {
-  AnnotationType,
-  Card,
-  CardContentType,
-  CardSize,
-  ICardProps,
-  IMultiCountRow,
-  Priority
-} from '@uifabric/dashboard';
+import { AnnotationType, Card, CardContentType, CardSize, ICardProps, IMultiCountRow, Priority } from '@uifabric/dashboard';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export class MultiCountExample extends React.Component<{}, {}> {
@@ -71,13 +63,6 @@ export class MultiCountExample extends React.Component<{}, {}> {
       annotationText: 'Annotation Text '
     };
 
-    return (
-      <Card
-        cardFrameContent={cardFrameContent}
-        header={header}
-        cardContentList={contentAreaList}
-        cardSize={CardSize.small}
-      />
-    );
+    return <Card cardFrameContent={cardFrameContent} header={header} cardContentList={contentAreaList} cardSize={CardSize.small} />;
   }
 }

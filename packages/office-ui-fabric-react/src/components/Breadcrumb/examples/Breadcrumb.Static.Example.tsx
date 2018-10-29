@@ -19,6 +19,7 @@ export class BreadcrumbStaticExample extends React.Component {
           onReduceData={this._returnUndefined}
           maxDisplayedItems={3}
           ariaLabel={'Website breadcrumb'}
+          overflowAriaLabel={'More items'}
         />
       </div>
     );

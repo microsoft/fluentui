@@ -6,10 +6,6 @@ import { mergeOverflows, sequencesToID, getAriaDescribedBy } from '../../utiliti
 
 /**
  * A small element to help the target component correctly read out its aria-describedby for its Keytip
- *
- * @export
- * @class KeytipData
- * @extends {BaseComponent<IKeytipDataProps & IRenderComponent<{}>, {}>}
  */
 export class KeytipData extends BaseComponent<IKeytipDataProps & IRenderComponent<{}>, {}> {
   private _uniqueId: string;

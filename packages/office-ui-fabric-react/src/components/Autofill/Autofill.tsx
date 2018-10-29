@@ -290,6 +290,6 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
 }
 
 /**
- *  Legacy, @deprecated, do not use.
+ *  @deprecated do not use.
  */
 export class BaseAutoFill extends Autofill {}
