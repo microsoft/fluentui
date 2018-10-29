@@ -80,7 +80,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
 
     // We need to explicitly not select the text in the autofill if we are no longer focused. In IE11, selecting
     // a input will also focus the input, causing other element's focus to be stolen.
-    if (shouldSelectValueInComponentDidUpdate !== undefined && !shouldSelectValueInComponentDidUpdate()) {
+    if (shouldSelectValueInComponentDidUpdate && !shouldSelectValueInComponentDidUpdate()) {
       return;
     }
 

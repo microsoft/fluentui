@@ -86,7 +86,7 @@ export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputEleme
   /**
    * componentDidUpdate handler for selecting auto fill range
    *
-   * @return { boolean } - should the value of the input be selected?
+   * @returns - should the value of the input be selected?
    * True if we're focused on our input, false otherwise.
    */
   shouldSelectValueInComponentDidUpdate?: () => boolean;

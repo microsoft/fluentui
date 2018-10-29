@@ -1830,6 +1830,7 @@ interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputElement | Au
   onInputChange?: (value: string) => string;
   onInputValueChange?: (newValue?: string) => void;
   shouldSelectFullInputValueInComponentDidUpdate?: () => boolean;
+  shouldSelectValueInComponentDidUpdate?: () => boolean;
   suggestedDisplayValue?: string;
   updateValueInWillReceiveProps?: () => string | null;
 }
