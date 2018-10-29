@@ -84,6 +84,14 @@ export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputEleme
   updateValueInWillReceiveProps?: () => string | null;
 
   /**
+   * componentDidUpdate handler for selecting auto fill range
+   *
+   * @return { boolean } - should the value of the input be selected?
+   * True if we're focused on our input, false otherwise.
+   */
+  shouldSelectValueInComponentDidUpdate?: () => boolean;
+
+  /**
    * Handler for checking if the full value of the input should
    * be seleced in componentDidUpdate
    *
@@ -101,10 +109,10 @@ export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputEleme
  * Deprecated, do not use.
  * @deprecated do not use, will be removed in 6.0
  */
-export interface IBaseAutoFill extends IAutofill {}
+export interface IBaseAutoFill extends IAutofill { }
 
 /**
  * Deprecated, do not use.
  * @deprecated do not use, will be removed in 6.0
  */
-export interface IBaseAutoFillProps extends IAutofillProps {}
+export interface IBaseAutoFillProps extends IAutofillProps { }
