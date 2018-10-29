@@ -2111,7 +2111,7 @@ interface IBreadcrumbItem {
 }
 
 // @public (undocumented)
-interface IBreadcrumbProps extends React.Props<BreadcrumbBase> {
+interface IBreadcrumbProps extends React.ClassAttributes<BreadcrumbBase> {
   ariaLabel?: string;
   className?: string;
   componentRef?: IRefObject<IBreadcrumb>;
@@ -2500,7 +2500,7 @@ interface ICheckboxStyles {
 }
 
 // @public (undocumented)
-interface ICheckProps extends React.Props<CheckBase> {
+interface ICheckProps extends React.ClassAttributes<CheckBase> {
   alwaysShowCheck?: boolean;
   checked?: boolean;
   className?: string;
