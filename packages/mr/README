@@ -1,0 +1,17 @@
+# [Office UI Fabric React Mr](http://dev.microsoft.com/fabric)
+
+##### Mr components for Office UI Fabric React
+
+These are not production ready components and __should never be used in product__. This Mr space is useful for testing new components whose APIs might change before final release.
+
+To import Mr components:
+
+```js
+import { ComponentName } from '@uifabric/mr';
+```
+
+Once the Mr component graduates to a production release, the component will be available at:
+
+```js
+import { ComponentName } from 'office-ui-fabric-react';
+```
