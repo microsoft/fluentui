@@ -380,9 +380,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 defaultVisibleValue={this._currentVisibleValue}
                 suggestedDisplayValue={suggestedDisplayValue}
                 updateValueInWillReceiveProps={this._onUpdateValueInAutofillWillReceiveProps}
-                shouldSelectValueInComponentDidUpdate={this._shouldSelectValueInComponentDidUpdate}
                 shouldSelectFullInputValueInComponentDidUpdate={this._onShouldSelectFullInputValueInAutofillComponentDidUpdate}
                 title={title}
+                preventValueSelection={!focused}
               />
               <IconButton
                 className={'ms-ComboBox-CaretDown-button'}
@@ -481,16 +481,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    */
   private _onShouldSelectFullInputValueInAutofillComponentDidUpdate = (): boolean => {
     return this._currentVisibleValue === this.state.suggestedDisplayValue;
-  };
-
-  /**
-   * componentDidUpdate handler for selecting auto fill range
-   *
-   * @return { boolean } - should the value of the input be selected?
-   * True if we're focused on our input, false otherwise.
-   */
-  private _shouldSelectValueInComponentDidUpdate = (): boolean => {
-    return !!this.state.focused;
   };
 
   /**

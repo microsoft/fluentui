@@ -75,12 +75,10 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
 
   public componentDidUpdate() {
     const value = this._value;
-    const { suggestedDisplayValue, shouldSelectFullInputValueInComponentDidUpdate, shouldSelectValueInComponentDidUpdate } = this.props;
+    const { suggestedDisplayValue, shouldSelectFullInputValueInComponentDidUpdate, preventValueSelection } = this.props;
     let differenceIndex = 0;
 
-    // We need to explicitly not select the text in the autofill if we are no longer focused. In IE11, selecting
-    // a input will also focus the input, causing other element's focus to be stolen.
-    if (shouldSelectValueInComponentDidUpdate && !shouldSelectValueInComponentDidUpdate()) {
+    if (preventValueSelection) {
       return;
     }
 
