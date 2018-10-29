@@ -230,9 +230,9 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     this._classNames = getMenuClassNames
       ? getMenuClassNames(theme!, className)
       : getClassNames(styles, {
-        theme: theme!,
-        className: className
-      });
+          theme: theme!,
+          className: className
+        });
 
     const hasIcons = itemsHaveIcons(items);
 
@@ -286,7 +286,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
         }
       }
 
-      const calloutStyles = !getMenuClassNames && this._classNames.subComponentStyles
+      const calloutStyles = !getMenuClassNames
         ? (this._classNames.subComponentStyles.callout as IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>)
         : undefined;
 
