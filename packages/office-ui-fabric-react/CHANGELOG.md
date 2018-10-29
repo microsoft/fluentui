@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 24 Oct 2018 11:28:06 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Oct 2018 11:24:40 GMT and should not be manually modified.
+
+## 5.131.1
+Mon, 29 Oct 2018 11:24:40 GMT
+
+### Patches
+
+- Backporting changes from 6.0
+- Fixing the column index bug fix
 
 ## 5.131.0
 Wed, 24 Oct 2018 11:28:06 GMT
