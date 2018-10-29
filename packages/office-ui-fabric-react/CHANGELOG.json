@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.93.1",
+      "tag": "office-ui-fabric-react_v6.93.1",
+      "date": "Mon, 29 Oct 2018 12:31:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsList/List: updating documentation.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "fc7c28fc7727cba1628183f0a1a2753d913e2034"
+          },
+          {
+            "comment": "DatePicker: Pass id prop to TextField component.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "a955641b06159f6a3e3113019d1d9cb70bfd2935"
+          },
+          {
+            "comment": "ContextualMenu: Fix separator announcement in Narrator scan mode.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "866caf6e1a1a021b8034457e4789681b732cc5e5"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Running Prettier on all .ts and .tsx files in the packages folder.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "2ce6c5ac3ccf4e62d4866841317b4aa55b8fb541"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.93.0",
       "tag": "office-ui-fabric-react_v6.93.0",
       "date": "Fri, 26 Oct 2018 12:32:36 GMT",

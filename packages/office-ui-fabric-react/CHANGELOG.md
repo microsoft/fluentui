@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 26 Oct 2018 12:32:36 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Oct 2018 12:31:29 GMT and should not be manually modified.
+
+## 6.93.1
+Mon, 29 Oct 2018 12:31:29 GMT
+
+### Patches
+
+- DetailsList/List: updating documentation.
+- DatePicker: Pass id prop to TextField component.
+- ContextualMenu: Fix separator announcement in Narrator scan mode.
 
 ## 6.93.0
 Fri, 26 Oct 2018 12:32:36 GMT
