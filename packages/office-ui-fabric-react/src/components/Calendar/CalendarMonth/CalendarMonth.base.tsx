@@ -157,7 +157,7 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, {}> {
 
   private _setNavigatedMonthRef = (element: HTMLButtonElement) => {
     this._navigatedMonth = element;
-  }
+  };
 
   private _onButtonKeyDown = (callback: () => void): ((ev: React.KeyboardEvent<HTMLButtonElement>) => void) => {
     return (ev: React.KeyboardEvent<HTMLButtonElement>) => {

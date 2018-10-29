@@ -17,9 +17,9 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
     selectors: {
       '&, &:disabled, & button': {
         color: palette.neutralTertiaryAlt,
-        pointerEvents: 'none',
+        pointerEvents: 'none'
       }
-    },
+    }
   };
 
   return {
@@ -33,7 +33,7 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
       showWeekNumbers && {
         width: 226
       },
-      className,
+      className
     ],
     header: {
       position: 'relative',

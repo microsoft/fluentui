@@ -114,7 +114,7 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
     this.setState({
       selectedDate: value || today,
       navigatedDayDate: value || today,
-      navigatedMonthDate: value || today,
+      navigatedMonthDate: value || today
     });
   }
 
@@ -168,7 +168,7 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
         role="application"
         onKeyDown={this._onDatePickerPopupKeyDown}
       >
-        {isDayPickerVisible &&
+        {isDayPickerVisible && (
           <CalendarDay
             selectedDate={selectedDate!}
             navigatedDate={navigatedDayDate!}
@@ -192,10 +192,10 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
             showCloseButton={showCloseButton}
             allFocusable={allFocusable}
           />
-        }
+        )}
         {isDayPickerVisible && isMonthPickerVisible && <div className={classes.divider} />}
-        {isMonthPickerVisible ?
-          (<div className={classes.monthPickerWrapper}>
+        {isMonthPickerVisible ? (
+          <div className={classes.monthPickerWrapper}>
             <CalendarMonth
               navigatedDate={navigatedMonthDate!}
               selectedDate={navigatedDayDate!}
@@ -212,9 +212,10 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
               componentRef={this._monthPicker}
             />
             {this._renderGoToTodayButton(classes)}
-          </div>)
-          : this._renderGoToTodayButton(classes)
-        }
+          </div>
+        ) : (
+          this._renderGoToTodayButton(classes)
+        )}
       </div>
     );
   }
@@ -234,8 +235,9 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
         <button className={css('js-goToday', classes.goTodayButton)} onClick={this._onGotoTodayClick}>
           {strings!.goToToday}
         </button>
-      ));
-  }
+      )
+    );
+  };
 
   private _navigateDayPickerDay = (date: Date): void => {
     this.setState({

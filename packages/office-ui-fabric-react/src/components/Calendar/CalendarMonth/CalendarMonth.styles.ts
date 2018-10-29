@@ -9,9 +9,9 @@ export const getStyles = (props: ICalendarMonthStyleProps): ICalendarMonthStyles
     selectors: {
       '&, &:disabled, & button': {
         color: palette.neutralTertiaryAlt,
-        pointerEvents: 'none',
+        pointerEvents: 'none'
       }
-    },
+    }
   };
 
   return {
@@ -20,9 +20,9 @@ export const getStyles = (props: ICalendarMonthStyleProps): ICalendarMonthStyles
       {
         width: 196,
         padding: 12,
-        boxSizing: 'content-box',
+        boxSizing: 'content-box'
       },
-      className,
+      className
     ],
     headerContainer: {
       display: 'flex'
@@ -36,7 +36,7 @@ export const getStyles = (props: ICalendarMonthStyleProps): ICalendarMonthStyles
         backgroundColor: 'transparent',
         flexGrow: 1,
         padding: '0 4px 0 10px',
-        border: 'none',
+        border: 'none'
       },
       hasHeaderClickCallback && {
         selectors: {
@@ -44,8 +44,8 @@ export const getStyles = (props: ICalendarMonthStyleProps): ICalendarMonthStyles
             cursor: !hasHeaderClickCallback ? 'default' : 'pointer',
             color: palette.neutralDark,
             outline: '1px solid transparent',
-            backgroundColor: palette.neutralLight,
-          },
+            backgroundColor: palette.neutralLight
+          }
         }
       }
     ],
@@ -75,7 +75,7 @@ export const getStyles = (props: ICalendarMonthStyleProps): ICalendarMonthStyles
             color: palette.neutralDark,
             cursor: 'pointer',
             outline: '1px solid transparent',
-            backgroundColor: palette.neutralLight,
+            backgroundColor: palette.neutralLight
           }
         }
       }
@@ -121,33 +121,33 @@ export const getStyles = (props: ICalendarMonthStyleProps): ICalendarMonthStyles
     ],
     currentMonth: highlightCurrentMonth
       ? {
-        color: palette.white,
-        backgroundColor: palette.themePrimary,
-        selectors: {
-          '& div': {
-            fontWeight: FontWeights.semibold
-          },
-          '&:hover': {
-            backgroundColor: palette.themePrimary
+          color: palette.white,
+          backgroundColor: palette.themePrimary,
+          selectors: {
+            '& div': {
+              fontWeight: FontWeights.semibold
+            },
+            '&:hover': {
+              backgroundColor: palette.themePrimary
+            }
           }
         }
-      }
       : {},
     selectedMonth: highlightSelectedMonth
       ? {
-        color: palette.neutralPrimary,
-        backgroundColor: palette.themeLight,
-        fontWeight: FontWeights.semibold,
-        selectors: {
-          '& div': {
-            fontWeight: FontWeights.semibold
-          },
-          '&:hover, &:active': {
-            backgroundColor: palette.themeLight
+          color: palette.neutralPrimary,
+          backgroundColor: palette.themeLight,
+          fontWeight: FontWeights.semibold,
+          selectors: {
+            '& div': {
+              fontWeight: FontWeights.semibold
+            },
+            '&:hover, &:active': {
+              backgroundColor: palette.themeLight
+            }
           }
         }
-      }
       : {},
-    disabledStyle: disabledStyle,
+    disabledStyle: disabledStyle
   };
 };

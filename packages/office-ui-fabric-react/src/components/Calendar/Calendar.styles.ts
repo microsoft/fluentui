@@ -15,12 +15,12 @@ export const styles = (props: ICalendarStyleProps): ICalendarStyles => {
       normalize,
       {
         display: 'flex',
-        width: totalWidth,
+        width: totalWidth
       },
       !isMonthPickerVisible && {
-        flexDirection: 'column',
+        flexDirection: 'column'
       },
-      className,
+      className
     ],
     divider: {
       top: 0,
@@ -30,7 +30,7 @@ export const styles = (props: ICalendarStyleProps): ICalendarStyles => {
     monthPickerWrapper: [
       {
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'column'
       }
     ],
     goTodayButton: [
@@ -60,6 +60,6 @@ export const styles = (props: ICalendarStyleProps): ICalendarStyles => {
           }
         }
       }
-    ],
+    ]
   };
 };
