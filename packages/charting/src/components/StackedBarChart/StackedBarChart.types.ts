@@ -61,9 +61,9 @@ export interface IStackedBarChartProps {
   href?: string;
 
   /**
-   * If this value is set, the display pattern for less than 2 data points chart will be override
+   * If this value is set, the fixed display pattern for less than 2 data points chart will be ignore
    */
-  overrideFixStyle?: boolean;
+  ignoreFixStyle?: boolean;
 }
 
 export interface IStackedBarChartStyleProps {

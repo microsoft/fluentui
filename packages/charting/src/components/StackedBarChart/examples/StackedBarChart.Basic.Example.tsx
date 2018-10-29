@@ -15,15 +15,15 @@ export class StackedBarChartBasicExample extends React.Component<{}, {}> {
     };
 
     const data1: IChartProps = {
-      chartTitle: 'Stacked Bar chart example with override fix style',
+      chartTitle: 'Stacked Bar chart example with ignore fix style',
       chartData: points
     };
 
     return (
       <>
-        <StackedBarChart data={data0} href={'https://developer.microsoft.com/en-us/'} overrideFixStyle={false} />
+        <StackedBarChart data={data0} href={'https://developer.microsoft.com/en-us/'} ignoreFixStyle={false} />
         <br />
-        <StackedBarChart data={data1} href={'https://developer.microsoft.com/en-us/'} overrideFixStyle={true} />
+        <StackedBarChart data={data1} href={'https://developer.microsoft.com/en-us/'} ignoreFixStyle={true} />
       </>
     );
   }
