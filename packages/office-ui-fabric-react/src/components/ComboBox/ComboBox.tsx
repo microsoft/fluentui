@@ -327,15 +327,15 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     this._classNames = this.props.getClassNames
       ? this.props.getClassNames(theme!, !!isOpen, !!disabled, !!required, !!focused, !!allowFreeform, !!hasErrorMessage, className)
       : getClassNames(
-        getStyles(theme!, customStyles),
-        className!,
-        !!isOpen,
-        !!disabled,
-        !!required,
-        !!focused,
-        !!allowFreeform,
-        !!hasErrorMessage
-      );
+          getStyles(theme!, customStyles),
+          className!,
+          !!isOpen,
+          !!disabled,
+          !!required,
+          !!focused,
+          !!allowFreeform,
+          !!hasErrorMessage
+        );
 
     return (
       <div {...divProps} ref={this._root} className={this._classNames.container}>
@@ -1198,24 +1198,24 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           }
         </CommandButton>
       ) : (
-          <Checkbox
-            id={id + '-list' + item.index}
-            ariaLabel={this._getPreviewText(item)}
-            key={item.key}
-            data-index={item.index}
-            styles={checkboxStyles}
-            className={'ms-ComboBox-option'}
-            data-is-focusable={true}
-            onChange={this._onItemClick(item.index!)}
-            label={item.text}
-            role="option"
-            aria-selected={isSelected ? 'true' : 'false'}
-            checked={isSelected}
-            title={title}
-          >
-            {onRenderOption(item, this._onRenderOptionContent)}
-          </Checkbox>
-        );
+        <Checkbox
+          id={id + '-list' + item.index}
+          ariaLabel={this._getPreviewText(item)}
+          key={item.key}
+          data-index={item.index}
+          styles={checkboxStyles}
+          className={'ms-ComboBox-option'}
+          data-is-focusable={true}
+          onChange={this._onItemClick(item.index!)}
+          label={item.text}
+          role="option"
+          aria-selected={isSelected ? 'true' : 'false'}
+          checked={isSelected}
+          title={title}
+        >
+          {onRenderOption(item, this._onRenderOptionContent)}
+        </Checkbox>
+      );
     };
 
     return (
