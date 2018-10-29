@@ -155,6 +155,7 @@ export class Layout extends React.Component<ILayoutProps, { _width: number; _hei
                           data={data}
                           dataPoints={dataPoints}
                           compactChartWidth={compactChartWidth}
+                          timeRange={timeRange}
                           width={this._getChartWidth(cardContentList.length)}
                           height={this._getChartHeight(cardContentList.length)}
                         />
