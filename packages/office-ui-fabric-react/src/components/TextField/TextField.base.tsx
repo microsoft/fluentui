@@ -250,6 +250,15 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
   }
 
   /**
+   * Blurs the text field.
+   */
+  public blur() {
+    if (this._textElement.current) {
+      this._textElement.current.blur();
+    }
+  }
+
+  /**
    * Selects the text field
    */
   public select() {

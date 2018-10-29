@@ -10269,6 +10269,7 @@ interface ITeachingBubbleStyles {
 
 // @public (undocumented)
 interface ITextField {
+  blur: () => void;
   focus: () => void;
   select: () => void;
   selectionEnd: number | null;
@@ -10900,6 +10901,8 @@ export function mapEnumByName<T>(theEnum: any, callback: (name?: string, value?:
 class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextFieldState>, implements ITextField {
   constructor(props: ITextFieldProps);
   protected _skipComponentRefResolution: boolean;
+  // (undocumented)
+  blur(): void;
   // (undocumented)
   componentDidUpdate(): void;
   // (undocumented)
@@ -12138,6 +12141,7 @@ class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProps, ITea
 // @public (undocumented)
 class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldState>, implements ITextField {
   constructor(props: ITextFieldProps);
+  blur(): void;
   // (undocumented)
   componentDidMount(): void;
   // (undocumented)

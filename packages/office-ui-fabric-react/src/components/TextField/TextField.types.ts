@@ -9,6 +9,9 @@ export interface ITextField {
   /** Sets focus to the input. */
   focus: () => void;
 
+  /** Blurs the input */
+  blur: () => void;
+
   /** Select the value of the text field. */
   select: () => void;
 
