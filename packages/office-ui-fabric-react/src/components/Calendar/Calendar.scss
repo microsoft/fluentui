@@ -79,7 +79,8 @@ $Calendar-dayPicker-margin: 10px;
 
 // The month and year labels.
 .monthAndYear,
-.year {
+.year,
+.decade {
   display: inline-flex;
   flex-grow: 1;
   @include ms-font-m;
@@ -89,8 +90,9 @@ $Calendar-dayPicker-margin: 10px;
 }
 
 .monthAndYear:hover,
-.currentYear:hover {
-  color: $ms-color-black;
+.currentYear:hover,
+.currentDecade:hover {
+  cursor: default;
 }
 
 // The calendar table of dates.
@@ -125,6 +127,7 @@ $Calendar-dayPicker-margin: 10px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  cursor: default;
 
   * {
     @include focus-border(-2px, $color: $ms-color-neutralSecondary);
@@ -501,7 +504,8 @@ $Calendar-dayPicker-margin: 10px;
     overflow: hidden;
   }
   .monthAndYear,
-  .year {
+  .year,
+  .decade {
     font-size: $ms-font-size-m;
     color: $ms-color-neutralPrimary;
   }
@@ -615,6 +619,9 @@ $Calendar-dayPicker-margin: 10px;
     .monthPicker {
       @include margin-left(12px);
     }
+    .yearPicker {
+      @include margin-left(12px)
+    }
     .goToday {
       @include ms-right(14px);
       padding: 0 10px;
@@ -667,7 +674,9 @@ $Calendar-dayPicker-margin: 10px;
 .nextMonth,
 .prevMonth,
 .nextYear,
-.prevYear {
+.prevYear,
+.nextDecade,
+.prevDecade {
   display: inline-block;
 
   &:hover {
@@ -700,6 +709,31 @@ $Calendar-dayPicker-margin: 10px;
 }
 
 .monthOption:active {
+  background-color: $ms-color-themeLight;
+  color: $ms-color-neutralDark;
+}
+
+.yearIsHighlighted {
+  font-weight: $ms-font-weight-semibold;
+  background-color: $ms-color-themeLight;
+  color: $ms-color-neutralPrimary;
+  &.yearOption:hover {
+    background-color: $ms-color-themeLight;
+  }
+}
+
+.yearIsCurrentYear {
+  font-weight: $ms-font-weight-semibold;
+  color: $ms-color-white;
+  background-color: $ms-color-themePrimary;
+  &.yearOption:hover {
+    font-weight: $ms-font-weight-semibold;
+    color: $ms-color-white;
+    background-color: $ms-color-themePrimary;
+  }
+}
+
+.yearOption:active {
   background-color: $ms-color-themeLight;
   color: $ms-color-neutralDark;
 }

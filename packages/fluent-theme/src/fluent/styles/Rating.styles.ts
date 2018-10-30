@@ -5,13 +5,6 @@ export const RatingStyles = (props: IRatingStyleProps) => {
   const { disabled, readOnly, theme } = props;
   const { semanticColors } = theme;
 
-  // Copied over from the source default styles
-  const ratingSmallIconSize = 16;
-  const ratingLargeIconSize = 20;
-  // New padding sizes following fluent toolkit specs
-  const ratingVerticalPadding = 8;
-  const ratingHorizontalPadding = 2;
-
   return {
     root: [
       !disabled &&
@@ -26,12 +19,6 @@ export const RatingStyles = (props: IRatingStyleProps) => {
           }
         }
     ],
-    rootIsSmall: {
-      height: ratingSmallIconSize + ratingVerticalPadding * 2
-    },
-    rootIsLarge: {
-      height: ratingLargeIconSize + ratingVerticalPadding * 2
-    },
     ratingStarBack: [
       {
         color: NeutralColors.gray80
@@ -44,30 +31,6 @@ export const RatingStyles = (props: IRatingStyleProps) => {
       color: NeutralColors.gray160
     },
     ratingButton: [
-      {
-        padding: `${ratingVerticalPadding}px ${ratingHorizontalPadding}px`,
-        boxSizing: 'content-box',
-        // Very dirty selectors nesting in order to get a proper height with the new padding measurements.
-        // Might need some refactor in the source default styles.
-        selectors: {
-          '&.ms-Rating--small': {
-            height: ratingSmallIconSize,
-            selectors: {
-              '.ms-RatingStar-container': {
-                height: ratingSmallIconSize
-              }
-            }
-          },
-          '&.ms-Rating--large': {
-            height: ratingLargeIconSize,
-            selectors: {
-              '.ms-RatingStar-container': {
-                height: ratingLargeIconSize
-              }
-            }
-          }
-        }
-      },
       !disabled &&
         !readOnly && {
           selectors: {
@@ -80,9 +43,6 @@ export const RatingStyles = (props: IRatingStyleProps) => {
             }
           }
         }
-    ],
-    ratingFocusZone: {
-      padding: 0
-    }
+    ]
   };
 };

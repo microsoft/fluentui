@@ -965,6 +965,9 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
         // Per aria
         this._moveIndex(ev, 1, 0, -1);
       }
+      if (this.props.onFocus) {
+        this.props.onFocus(ev);
+      }
       this.setState({ hasFocus: true });
     }
   };

@@ -49,12 +49,7 @@ export class DropdownCustomExample extends React.Component {
       <div className="dropdownExample-option">
         {option.data &&
           option.data.icon && (
-            <Icon
-              style={{ marginRight: '8px' }}
-              iconName={option.data.icon}
-              aria-hidden="true"
-              title={option.data.icon}
-            />
+            <Icon style={{ marginRight: '8px' }} iconName={option.data.icon} aria-hidden="true" title={option.data.icon} />
           )}
         <span>{option.text}</span>
       </div>
@@ -68,12 +63,7 @@ export class DropdownCustomExample extends React.Component {
       <div className="dropdownExample-option">
         {option.data &&
           option.data.icon && (
-            <Icon
-              style={{ marginRight: '8px' }}
-              iconName={option.data.icon}
-              aria-hidden="true"
-              title={option.data.icon}
-            />
+            <Icon style={{ marginRight: '8px' }} iconName={option.data.icon} aria-hidden="true" title={option.data.icon} />
           )}
         <span>{option.text}</span>
       </div>

@@ -1,15 +1,6 @@
 import * as React from 'react';
 import { IChartProps as IChartingProps } from '@uifabric/charting';
-import {
-  Card,
-  CardContentType,
-  CardSize,
-  ChartType,
-  ICardProps,
-  ICardContentDetails,
-  IChartProps,
-  Priority
-} from '@uifabric/dashboard';
+import { Card, CardContentType, CardSize, ChartType, ICardProps, ICardContentDetails, IChartProps, Priority } from '@uifabric/dashboard';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export class StackedBarChartExample extends React.Component<{}, {}> {
@@ -91,13 +82,6 @@ export class StackedBarChartExample extends React.Component<{}, {}> {
       headerText: 'Header Text '
     };
 
-    return (
-      <Card
-        cardFrameContent={cardFrameContent}
-        header={header}
-        cardContentList={contentAreaList}
-        cardSize={CardSize.large}
-      />
-    );
+    return <Card cardFrameContent={cardFrameContent} header={header} cardContentList={contentAreaList} cardSize={CardSize.large} />;
   }
 }

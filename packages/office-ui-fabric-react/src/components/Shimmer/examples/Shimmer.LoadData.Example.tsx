@@ -29,12 +29,7 @@ export class ShimmerLoadDataExample extends React.Component<{}, IShimmerLoadData
 
     return (
       <div className={ShimmerExampleStyles.shimmerExampleContainer}>
-        <Toggle
-          checked={isDataLoadedOne}
-          onChange={this._getContentOne}
-          onText="Toggle to show shimmer"
-          offText="Toggle to load content"
-        />
+        <Toggle checked={isDataLoadedOne} onChange={this._getContentOne} onText="Toggle to show shimmer" offText="Toggle to load content" />
         <Shimmer isDataLoaded={isDataLoadedOne} ariaLabel={'Loading content'}>
           <div
             // tslint:disable-next-line:jsx-ban-props
@@ -51,12 +46,7 @@ export class ShimmerLoadDataExample extends React.Component<{}, IShimmerLoadData
             {contentOne}
           </div>
         </Shimmer>
-        <Toggle
-          checked={isDataLoadedTwo}
-          onChange={this._getContentTwo}
-          onText="Toggle to show shimmer"
-          offText="Toggle to load content"
-        />
+        <Toggle checked={isDataLoadedTwo} onChange={this._getContentTwo} onText="Toggle to show shimmer" offText="Toggle to load content" />
         <Shimmer customElementsGroup={this._getCustomElements()} width={300} isDataLoaded={isDataLoadedTwo}>
           <Persona {...examplePersona} size={PersonaSize.size40} presence={PersonaPresence.away} />
         </Shimmer>
@@ -86,9 +76,7 @@ export class ShimmerLoadDataExample extends React.Component<{}, IShimmerLoadData
         // tslint:disable-next-line:jsx-ban-props
         style={{ display: 'flex' }}
       >
-        <ShimmerElementsGroup
-          shimmerElements={[{ type: ElemType.circle, height: 40 }, { type: ElemType.gap, width: 16, height: 40 }]}
-        />
+        <ShimmerElementsGroup shimmerElements={[{ type: ElemType.circle, height: 40 }, { type: ElemType.gap, width: 16, height: 40 }]} />
         <ShimmerElementsGroup
           flexWrap={true}
           width={'100%'}

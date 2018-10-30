@@ -11,8 +11,7 @@ const CheckboxImplementationExamplesCode = require('!raw-loader!office-ui-fabric
 export const CheckboxPageProps: IDocPageProps = {
   title: 'Checkbox',
   componentName: 'Checkbox',
-  componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Checkbox',
+  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Checkbox',
   componentStatus: CheckboxStatus,
   examples: [
     {
@@ -27,9 +26,7 @@ export const CheckboxPageProps: IDocPageProps = {
       view: <CheckboxImplementationExamples />
     }
   ],
-  propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/Checkbox.types.ts')
-  ],
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/Checkbox.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/docs/CheckboxOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/docs/CheckboxDos.md'),

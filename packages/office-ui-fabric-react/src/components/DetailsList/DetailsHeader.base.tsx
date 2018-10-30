@@ -149,6 +149,12 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     } else {
       this.setState({ columnReorderProps });
     }
+
+    if (newProps.isAllCollapsed !== undefined) {
+      this.setState({
+        isAllCollapsed: newProps.isAllCollapsed
+      });
+    }
   }
 
   public componentWillUnmount(): void {

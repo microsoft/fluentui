@@ -2,6 +2,53 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.40.0",
+      "tag": "@uifabric/experiments_v6.40.0",
+      "date": "Mon, 29 Oct 2018 12:31:29 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Announced: add initial component prototype and examples",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "5f35f444f054f7d65d900a2e9b8cf546842ce090"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Running Prettier on all .ts and .tsx files in the packages folder.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "2ce6c5ac3ccf4e62d4866841317b4aa55b8fb541"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.1.6 <1.0.0` to `>=0.1.7 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.93.0 <7.0.0` to `>=6.93.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.39.5",
+      "tag": "@uifabric/experiments_v6.39.5",
+      "date": "Thu, 25 Oct 2018 12:30:06 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.25.2` to `^0.26.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.1.5 <1.0.0` to `>=0.1.6 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.92.0 <7.0.0` to `>=6.92.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.39.4",
       "tag": "@uifabric/experiments_v6.39.4",
       "date": "Wed, 24 Oct 2018 12:28:58 GMT",

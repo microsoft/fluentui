@@ -106,7 +106,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
 
   /**
    * In some cases, the consuming scenario requires to set focus on a row without having SelectionZone
-   * react to the event. Note that focus events in IE <= 11 will occur asynchronously after .focus() has
+   * react to the event. Note that focus events in IE \<= 11 will occur asynchronously after .focus() has
    * been called on an element, so we need a flag to store the idea that we will bypass the "next"
    * focus event that occurs. This method does that.
    */

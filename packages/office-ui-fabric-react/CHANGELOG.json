@@ -2,6 +2,189 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.96.0",
+      "tag": "office-ui-fabric-react_v6.96.0",
+      "date": "Tue, 30 Oct 2018 18:45:48 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Breadcrumb Example: distinct aria labels",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "b513ec0049c8e7edf4118e8032816e83894adaaa"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "ComboBox/Autofill: prevent text from being selected when focus is not on the input box",
+            "author": "Josh Chang <coralbue@gmail.com>",
+            "commit": "d4e75d10c41e7ed21a2d828ebf581192a4981cde"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Removing some of the deprecated components flaged when turning the tslint deprecation flag to true in the office-ui-fabric-react package.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "21d8683b5bc3d8359ac8de5513a5e4e19be70762"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.95.0",
+      "tag": "office-ui-fabric-react_v6.95.0",
+      "date": "Tue, 30 Oct 2018 12:27:52 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Addition of year picker to Calendar",
+            "author": "Michael Fisher <mfisher.au@gmail.com>",
+            "commit": "22370158802541a2b1afe0ac84a41aaee2123009"
+          },
+          {
+            "comment": "ContextualMenu: adding a subComponentStyles hook to enable styling of the components used within ContextualMenu. Removing an unused style function.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "1882ecb9c772a19ab6c75bdddc1ca539c932e9c4"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.94.0",
+      "tag": "office-ui-fabric-react_v6.94.0",
+      "date": "Mon, 29 Oct 2018 18:04:30 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add blur to ITextField and implement to support programmatic blur.\"",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "a161bc94e75e8322b6d42c0e2141eda664ca9ed6"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.93.1",
+      "tag": "office-ui-fabric-react_v6.93.1",
+      "date": "Mon, 29 Oct 2018 12:31:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsList/List: updating documentation.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "fc7c28fc7727cba1628183f0a1a2753d913e2034"
+          },
+          {
+            "comment": "DatePicker: Pass id prop to TextField component.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "a955641b06159f6a3e3113019d1d9cb70bfd2935"
+          },
+          {
+            "comment": "ContextualMenu: Fix separator announcement in Narrator scan mode.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "866caf6e1a1a021b8034457e4789681b732cc5e5"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Running Prettier on all .ts and .tsx files in the packages folder.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "2ce6c5ac3ccf4e62d4866841317b4aa55b8fb541"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.93.0",
+      "tag": "office-ui-fabric-react_v6.93.0",
+      "date": "Fri, 26 Oct 2018 12:32:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix the issue of DetailLists and DetailHeadder property about isAllGroupsCollapsed changed after initial constructor , they are not reflected in the state.",
+            "author": "Amy Hackett <ahackett@microsoft.com>",
+            "commit": "8550b2af55042cfe584360a33c15177148022c65"
+          },
+          {
+            "comment": "Breadcrumb: add overflowAriaLabel to examples",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "772e3acd1429c343ed38cc8f01d176f63bbeda89"
+          },
+          {
+            "comment": "Fix typo in role attribute in DocumentCardActivity",
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "390016127a846218807dca574f7c8641392be4a3"
+          },
+          {
+            "comment": "Updated Fabric API file",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "58a6c8f2073ae5c5aa969f66e89f833051bed7b4"
+          },
+          {
+            "comment": "Rating: Updating padding on each star to fix clipping focus outline and adjust height to follow redlines.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "d13c3f19b0e2fd3389e73e070ff70d9dac674fd4"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Enable api-extractor build task",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "c691b7b89fcfc5a28c211b29c7ba236887ab8256"
+          },
+          {
+            "comment": "Callout: Added layerProps to interface",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "447b1edd11463803c22e9b3e842cf325345fef82"
+          },
+          {
+            "comment": "GroupedList: add aria-expanded and aria-controls",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "bdbb58658c4aa53c73ffafd283d7acaa316f2781"
+          },
+          {
+            "comment": "Add optional onColumnResize callback to IColumn which reports resized column's current width",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "f21221abb991de5a92637efa6c7f2cb38ded2ec4"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.10.4 <7.0.0` to `>=6.11.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.32.2 <7.0.0` to `>=6.33.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.23.1 <7.0.0` to `>=6.24.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.92.1",
+      "tag": "office-ui-fabric-react_v6.92.1",
+      "date": "Thu, 25 Oct 2018 12:30:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "CommandBar: Remove duplicate className prop application.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "ba457b8bb24332cdd51e92aaadf2dd9c66582892"
+          },
+          {
+            "comment": "Add unit tests for DetailsList onRenderMissingItem prop.",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "55ccc1e50cd31474c6d8102f7882dd469e511cc8"
+          },
+          {
+            "comment": "Dropdown: Add support for onFocus callback",
+            "author": "Michael Sadahiro <michaelsadahiro@gmail.com>",
+            "commit": "5c8c85e594be0f0d780158d6d7c8fe480e35ba8a"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.92.0",
       "tag": "office-ui-fabric-react_v6.92.0",
       "date": "Wed, 24 Oct 2018 12:28:58 GMT",
