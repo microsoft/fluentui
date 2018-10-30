@@ -423,20 +423,6 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
         sticky.syncScroll(contentContainer);
       });
     }
-    // const { stickyTopHeight, stickyAboveClassName } = this.state;
-    // if (this.props.onScrollStickyAboveClassName !== undefined && stickyAboveClassName !== undefined && stickyTopHeight > 0) {
-    //   const scrollPosition = this.getScrollPosition();
-    //   const isOnScrollClassApplied = stickyAboveClassName.includes(this.props.onScrollStickyAboveClassName);
-    //   if (scrollPosition > 0 && !isOnScrollClassApplied) {
-    //     this.setState({
-    //       stickyAboveClassName: this.props.onScrollStickyAboveClassName
-    //     });
-    //   } else if (scrollPosition === 0 && isOnScrollClassApplied) {
-    //     this.setState({
-    //       stickyAboveClassName: ''
-    //     });
-    //   }
-    // }
 
     this._notifyThrottled();
   };

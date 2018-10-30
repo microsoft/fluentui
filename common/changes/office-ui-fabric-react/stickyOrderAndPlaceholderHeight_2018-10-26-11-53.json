@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Adding onScrollStickyAboveClassName for ScrollablePane",
+      "comment": "Adding onScrollStickyClassName for Sticky",
       "type": "minor"
     }
   ],
