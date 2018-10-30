@@ -9,8 +9,8 @@ export interface IStickyState {
   isStickyBottom: boolean;
   /**
    * if scrollablePane context is undefined then undefined
-   * else if scrollablePane.getScrollPosition -gt 0 then false
-   * else true.
+   * else if scrollablePane.getScrollPosition === 0 then true
+   * else false.
    */
   isScrollPositionZero: boolean | undefined;
 }
@@ -37,7 +37,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   private _stickyContentTop = createRef<HTMLDivElement>();
   private _stickyContentBottom = createRef<HTMLDivElement>();
   private _nonStickyContent = createRef<HTMLDivElement>();
-  private prevNonStickyContentOffsetHeight: number;
+  private _prevNonStickyContentOffsetHeight: number | undefined;
 
   constructor(props: IStickyProps) {
     super(props);
@@ -47,7 +47,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       isScrollPositionZero: undefined
     };
     this.distanceFromTop = 0;
-    this.prevNonStickyContentOffsetHeight = 0;
+    this._prevNonStickyContentOffsetHeight = undefined;
   }
 
   public get root(): HTMLDivElement | null {
@@ -115,9 +115,10 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     if (
       prevState.isStickyTop !== this.state.isStickyTop ||
       prevState.isStickyBottom !== this.state.isStickyBottom ||
-      this.prevNonStickyContentOffsetHeight !== currNonStickyContentOffsetHeight
+      this._prevNonStickyContentOffsetHeight !== currNonStickyContentOffsetHeight ||
+      prevState.isScrollPositionZero !== this.state.isScrollPositionZero
     ) {
-      this._updatePrevNonStickyContentOffsetHeight(currNonStickyContentOffsetHeight ? currNonStickyContentOffsetHeight : 0);
+      this._updatePrevNonStickyContentOffsetHeight(currNonStickyContentOffsetHeight);
       scrollablePane.updateStickyRefHeights();
     }
   }
@@ -129,16 +130,17 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     const { isStickyTop, isStickyBottom, isScrollPositionZero } = this.state;
     const nonStickyContent = this.nonStickyContent;
     const nonStickyContentOffsetHeight = nonStickyContent ? nonStickyContent.offsetHeight : undefined;
-    const nonStickyRoot = this.root;
-    const nonStickyRootOffsetHeight = nonStickyRoot ? nonStickyRoot.offsetHeight : undefined;
+    const root = this.root;
+    const rootOffsetHeight = root ? root.offsetHeight : undefined;
     const stickyContent = this.canStickyTop ? this.stickyContentTop : this.canStickyBottom ? this.stickyContentBottom : undefined;
     const stickyContentOffsetHeight = stickyContent ? stickyContent.offsetHeight : undefined;
+
     return (
       isStickyTop !== nextState.isStickyTop ||
       isStickyBottom !== nextState.isStickyBottom ||
       this.props.stickyPosition !== nextProps.stickyPosition ||
       this.props.children !== nextProps.children ||
-      nonStickyContentOffsetHeight !== nonStickyRootOffsetHeight ||
+      nonStickyContentOffsetHeight !== rootOffsetHeight ||
       nonStickyContentOffsetHeight !== stickyContentOffsetHeight ||
       nextProps.onScrollStickyClassName !== this.props.onScrollStickyClassName ||
       isScrollPositionZero !== nextState.isScrollPositionZero
@@ -201,8 +203,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     this.distanceFromTop = this._getNonStickyDistanceFromTop(container);
   }
 
-  private _updatePrevNonStickyContentOffsetHeight(offsetHeight: number): void {
-    this.prevNonStickyContentOffsetHeight = offsetHeight;
+  private _updatePrevNonStickyContentOffsetHeight(offsetHeight?: number): void {
+    this._prevNonStickyContentOffsetHeight = offsetHeight;
   }
   private _getContentStyles(isSticky: boolean): React.CSSProperties {
     return {
@@ -252,7 +254,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       this.setState({
         isStickyTop: this.canStickyTop && isStickyTop,
         isStickyBottom: isStickyBottom,
-        isScrollPositionZero: scrollPosition !== undefined ? (scrollPosition > 0 ? false : true) : undefined
+        isScrollPositionZero: scrollPosition !== undefined ? scrollPosition === 0 : undefined
       });
     }
   };
