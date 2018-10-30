@@ -219,7 +219,7 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
         this._keyToIndexMapping[itemKey] = index;
         this._keyToTabIds[itemKey] = this._getTabId(itemKey, index);
       } else {
-        warn('The children of a Pivot component must be of type PivotItem. Other types are not rendered.');
+        warn('The children of a Pivot component must be of type PivotItem.');
       }
     });
 
