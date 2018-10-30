@@ -14,4 +14,11 @@ export interface ISetupCardProps {
 export interface ISetupCardStyles {
   root: IStyle;
   title: IStyle;
+  cardBackground: IStyle;
+  checkmark: IStyle;
+}
+
+export interface ISetupCardStylesProps {
+  checked: boolean;
+  selected: boolean;
 }

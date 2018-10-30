@@ -2,8 +2,10 @@ import * as React from 'react';
 import { mergeStyles } from 'office-ui-fabric-react';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { SetupCard } from './SetupCard';
+import { getStyles } from './SetupCards.styles';
 import { ISetupCardProps } from './SetupCard.types';
-import { ISetupCardsProps } from './SetupCards.types';
+import { ISetupCardsProps, ISetupCardsStyles } from './SetupCards.types';
+import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 export class SetupCards extends React.PureComponent<ISetupCardsProps> {
   public static defaultProps: Partial<ISetupCardsProps> = {
@@ -18,11 +20,13 @@ export class SetupCards extends React.PureComponent<ISetupCardsProps> {
   };
 
   public render(): JSX.Element {
+    const getClassNames = classNamesFunction<{}, ISetupCardsStyles>();
+    const classNames = getClassNames(getStyles);
     const containerStyle: IStyle = {
       width: this.props.cardWidth! + this.props.cardHorizontalSpacing! * (this.props.cardData.length - 1)
     };
     return (
-      <div className={mergeStyles(containerStyle)}>
+      <div className={mergeStyles(classNames.root, containerStyle)}>
         {this.props.cardData.map((item: ISetupCardProps, index: number) => {
           const reverseIndex = this.props.cardData.length - 1 - index;
 

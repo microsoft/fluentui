@@ -1,3 +1,5 @@
+import { IStyle } from 'office-ui-fabric-react/lib/Styling';
+
 import { ISetupCardProps } from './SetupCard.types';
 
 export interface ISetupCardsProps {
@@ -10,4 +12,8 @@ export interface ISetupCardsProps {
   cardAnimationDelay?: number;
   cardVerticalOffset?: number;
   cardHoritonztalOffset?: number;
+}
+
+export interface ISetupCardsStyles {
+  root: IStyle;
 }

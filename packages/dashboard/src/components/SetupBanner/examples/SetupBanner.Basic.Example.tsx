@@ -70,18 +70,18 @@ export class SetupBannerBasicExample extends React.Component<{}, {}> {
         checked: false
       },
       {
-        id: '1',
+        id: '2',
         title: 'first one',
         selected: false,
         checked: false
       },
       {
-        id: '1',
+        id: '3',
         title: 'first one',
         selected: false,
         checked: false
       }
     ];
-    return <SetupCards cardData={cards} cardWidth={34} />;
+    return <SetupCards cardData={cards} />;
   };
 }

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getStyles } from './SetupCard.styles';
-import { ISetupCardProps, ISetupCardStyles } from './SetupCard.types';
+import { ISetupCardProps, ISetupCardStyles, ISetupCardStylesProps } from './SetupCard.types';
 import { mergeStyles } from 'office-ui-fabric-react';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
@@ -12,13 +12,8 @@ export class SetupCard extends React.PureComponent<ISetupCardProps> {
     this.bgRef = React.createRef();
   }
   public render(): JSX.Element {
-    const getClassNames = classNamesFunction<{}, ISetupCardStyles>();
-    const classNames = getClassNames(getStyles);
-    const backgroundStyle = this.props.selected
-      ? this.props.checked
-        ? 'freCardBackgroundSelectedChecked'
-        : 'freCardBackgroundSelected'
-      : 'freCardBackground';
+    const getClassNames = classNamesFunction<ISetupCardStylesProps, ISetupCardStyles>();
+    const classNames = getClassNames(getStyles, { checked: this.props.checked, selected: this.props.selected });
     return (
       <svg
         className={mergeStyles(classNames.root, this.props.customStyle, this.props.className)}
@@ -36,10 +31,10 @@ export class SetupCard extends React.PureComponent<ISetupCardProps> {
           <path d="M159.202 98.968L7 10.355L12.7621 7L164.964 95.613L159.202 98.968Z" fill="#EFEFEB" />
           <g mask="url(#cardMask)">
             <circle fill="#00000000" transform="skewY(18) skewX(7)" cx="69.5" cy="93.5" r="100" />
-            <line x1="69.5" x2="69.5" y1="93.5" y2="93.5" transform="skewY(18) skewX(7)" className={backgroundStyle} />
+            <line x1="69.5" x2="69.5" y1="93.5" y2="93.5" transform="skewY(18) skewX(7)" className={classNames.cardBackground} />
           </g>
           <path
-            className={this.props.checked ? (this.props.selected ? 'freCheckMark' : 'freCheckMarkCompleted') : 'freCheckMarkHidden'}
+            className={classNames.checkmark}
             d="M81 102.428C82.6534 103.173 84.2444 104.068 85.773 105.171C87.3016 106.275 88.7366 107.497 90.078 108.839C91.4194 110.181
             92.636 111.612 93.7279 113.163C94.8198 114.713 95.7556 116.264 96.5355 117.904C97.3154 119.514 97.9393 121.154 98.3449
             122.824C98.7816 124.494 99 126.104 99 127.685C99 129.265 98.7816 130.696 98.3449 131.979C97.9081 133.261 97.3154 134.364
@@ -88,10 +83,24 @@ export class SetupCard extends React.PureComponent<ISetupCardProps> {
   }
 
   public componentDidMount(): void {
-    this.bgRef.current!.addEventListener('transitionend', (event: TransitionEvent) => {
-      if (this.props.transitionEnd) {
-        this.props.transitionEnd(event);
-      }
-    });
+    this.bgRef.current!.addEventListener('transitionend', this._transitionEnd);
+    this.bgRef.current!.addEventListener('transitionstart', this._transitionStart);
+  }
+
+  public componentWillUnmount(): void {
+    this.bgRef.current!.removeEventListener('transitionend', this._transitionEnd);
+    this.bgRef.current!.removeEventListener('transitionstart', this._transitionStart);
+  }
+
+  private _transitionEnd(event: TransitionEvent): void {
+    if (this.props.transitionEnd) {
+      this.props.transitionEnd(event);
+    }
+  }
+
+  private _transitionStart(event: TransitionEvent): void {
+    if (this.props.transitionStart) {
+      this.props.transitionStart(event);
+    }
   }
 }
