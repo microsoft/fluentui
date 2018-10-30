@@ -43,6 +43,14 @@
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
     "@uifabric/set-version": ">=1.1.3 <2.0.0",
+    "babylonjs": "4.0.0-alpha.2",
+    "babylonjs-gui": "4.0.0-alpha.2",
+    "babylonjs-inspector": "4.0.0-alpha.2",
+    "babylonjs-gltf2interface": "4.0.0-alpha.2",
+    "babylonjs-loaders": "4.0.0-alpha.2",
+    "babylonjs-materials": "4.0.0-alpha.2",
+    "babylonjs-serializers": "4.0.0-alpha.2",
+    "nucleus3d": "^0.5.13",
     "office-ui-fabric-react": ">=6.84.1 <7.0.0",
     "tslib": "^1.7.1"
   },
