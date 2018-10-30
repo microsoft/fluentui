@@ -13,7 +13,7 @@ Please help us reduce duplicates by doing the following steps before logging an 
   
 Please provide a reproduction of the bug in a codepen, if possible. Here’s how:
   * Goto https://aka.ms/fabricpen for a starting codepen 
-  * See http://codepen.io/dzearing/pens/public/?grid_type=list 
+  * You can also use the "Export to Codepen" feature for the various components in our documentation site.
   * Alternatively, you can also use https://aka.ms/fabricdemo to get permanent repro links if the repro occurs with an example. 
     (A permanent link is preferable to "use the website" as the website can change)
  
