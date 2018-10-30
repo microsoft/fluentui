@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DatePicker: Pass id prop to TextField component.",
-      "type": "patch"
+      "comment": "Addition of year picker to Calendar",
+      "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "jagore@microsoft.com"
+  "email": "mfisher.au@gmail.com"
 }

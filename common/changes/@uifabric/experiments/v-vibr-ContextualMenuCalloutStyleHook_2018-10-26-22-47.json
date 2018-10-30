@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Running Prettier on all .ts and .tsx files in the packages folder.",
+      "comment": "Prettier changes unrelated to the PR",
       "type": "none"
     }
   ],
   "packageName": "@uifabric/experiments",
-  "email": "Humberto.Morimoto@microsoft.com"
+  "email": "v-vibr@microsoft.com"
 }

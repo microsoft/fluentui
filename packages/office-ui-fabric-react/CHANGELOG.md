@@ -1,6 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 26 Oct 2018 12:32:36 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Oct 2018 18:04:30 GMT and should not be manually modified.
+
+## 6.94.0
+Mon, 29 Oct 2018 18:04:30 GMT
+
+### Minor changes
+
+- Add blur to ITextField and implement to support programmatic blur."
+
+## 6.93.1
+Mon, 29 Oct 2018 12:31:29 GMT
+
+### Patches
+
+- DetailsList/List: updating documentation.
+- DatePicker: Pass id prop to TextField component.
+- ContextualMenu: Fix separator announcement in Narrator scan mode.
 
 ## 6.93.0
 Fri, 26 Oct 2018 12:32:36 GMT

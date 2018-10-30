@@ -9,7 +9,7 @@ import { createRef, resetIds } from '../../Utilities';
 
 import { TextField } from './TextField';
 import { TextFieldBase } from './TextField.base';
-import { ITextFieldStyles } from './TextField.types';
+import { ITextFieldStyles, ITextField } from './TextField.types';
 
 describe('TextField', () => {
   const textFieldRef = createRef<TextFieldBase>();
@@ -610,5 +610,27 @@ describe('TextField', () => {
     renderIntoDocument(<TextField componentRef={textFieldRef} defaultValue={initialValue} onSelect={onSelect} />);
 
     textFieldRef.current!.setSelectionRange(0, initialValue.length);
+  });
+
+  it('sets focus to the input via ITextField focus', () => {
+    const wrapper = mount(<TextField componentRef={textFieldRef} />);
+    const textField = textFieldRef.current as ITextField;
+    const inputEl = wrapper.find('input').getDOMNode();
+
+    textField.focus();
+
+    expect(inputEl).toBe(document.activeElement);
+  });
+
+  it('blurs the input via ITextField blur', () => {
+    const wrapper = mount(<TextField componentRef={textFieldRef} />);
+    const textField = textFieldRef.current as ITextField;
+    const inputEl = wrapper.find('input').getDOMNode();
+
+    textField.focus();
+    expect(inputEl).toBe(document.activeElement);
+
+    textField.blur();
+    expect(document.activeElement).toBe(document.body);
   });
 });

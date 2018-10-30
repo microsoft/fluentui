@@ -168,6 +168,10 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
     this._textField && this._textField.focus();
   }
 
+  public blur(): void {
+    this._textField && this._textField.blur();
+  }
+
   public select(): void {
     this._textField && this._textField.select();
   }
