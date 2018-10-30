@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 29 Oct 2018 18:04:30 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Oct 2018 12:27:52 GMT and should not be manually modified.
+
+## 6.95.0
+Tue, 30 Oct 2018 12:27:52 GMT
+
+### Minor changes
+
+- Addition of year picker to Calendar
+- ContextualMenu: adding a subComponentStyles hook to enable styling of the components used within ContextualMenu. Removing an unused style function.
 
 ## 6.94.0
 Mon, 29 Oct 2018 18:04:30 GMT

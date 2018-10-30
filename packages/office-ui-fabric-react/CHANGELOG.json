@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.95.0",
+      "tag": "office-ui-fabric-react_v6.95.0",
+      "date": "Tue, 30 Oct 2018 12:27:52 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Addition of year picker to Calendar",
+            "author": "Michael Fisher <mfisher.au@gmail.com>",
+            "commit": "22370158802541a2b1afe0ac84a41aaee2123009"
+          },
+          {
+            "comment": "ContextualMenu: adding a subComponentStyles hook to enable styling of the components used within ContextualMenu. Removing an unused style function.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "1882ecb9c772a19ab6c75bdddc1ca539c932e9c4"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.94.0",
       "tag": "office-ui-fabric-react_v6.94.0",
       "date": "Mon, 29 Oct 2018 18:04:30 GMT",
