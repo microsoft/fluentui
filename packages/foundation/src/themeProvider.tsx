@@ -41,6 +41,9 @@ export function themeProvider<TContext, TTheme, TScheme, TCustomizerProps extend
   const result: React.StatelessComponent<IThemeProviderProps<TScheme, TTheme>> = (props: IThemeProviderProps<TScheme, TTheme>) => {
     const { scheme, theme, ...rest } = props;
 
+    // TODO: consider merging implementation with theme-proto, which only stores a reference / scheme name to theme in context
+    //        and uses quick global store accessor to trigger change by passing in theme object as child and triggering re-render.
+    //        (perf benefits need verification)
     // tslint:disable-next-line:typedef
     const contextTransform: ICustomizerProps<TContext>['contextTransform'] = context => {
       return providers.getThemedContext(context, scheme, theme);

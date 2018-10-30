@@ -2,6 +2,10 @@ import { Customizations, mergeSettings, ICustomizerContext } from '@uifabric/uti
 import { ISchemeNames, ITheme } from '../interfaces/index';
 
 /**
+ * @internal
+ * This function is still in experimental phase in support of Foundation experimental development. Its API signature and existence
+ * are subject to change.
+ *
  * Modify context to activate the specified scheme or theme. For schemes, look in context (if available) and fall back to global
  * Customizations. If both scheme and theme are specified, scheme will be looked up in theme. In this case, scheme must be
  * present in theme arg, otherwise new context will default to theme arg (there is no fallback to settings to look up scheme.)
