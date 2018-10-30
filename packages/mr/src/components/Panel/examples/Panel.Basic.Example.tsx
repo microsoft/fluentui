@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as BABYLON from 'babylonjs';
-import { classNameFunction } from 'office-ui-fabric-react/lib/Utilities';
 import Panel from '../Panel';
 
 export type SceneEventArgs = {
