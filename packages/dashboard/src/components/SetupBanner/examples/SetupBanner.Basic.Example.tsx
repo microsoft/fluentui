@@ -65,21 +65,27 @@ export class SetupBannerBasicExample extends React.Component<{}, {}> {
     const cards: ISetupCardProps[] = [
       {
         id: '1',
-        title: 'first one',
+        title: 'first',
         selected: false,
         checked: false
       },
       {
         id: '2',
-        title: 'first one',
+        title: 'second: checked',
         selected: false,
-        checked: false
+        checked: true
       },
       {
         id: '3',
-        title: 'first one',
-        selected: false,
+        title: 'third: selected',
+        selected: true,
         checked: false
+      },
+      {
+        id: '4',
+        title: 'fourth: selected and checked',
+        selected: true,
+        checked: true
       }
     ];
     return <SetupCards cardData={cards} />;
