@@ -2660,7 +2660,7 @@ interface ICoachmark {
 }
 
 // @public (undocumented)
-interface ICoachmarkProps extends React.Props<Coachmark> {
+interface ICoachmarkProps extends React.ClassAttributes<Coachmark> {
   ariaAlertText?: string;
   ariaDescribedBy?: string;
   ariaDescribedByText?: string;
@@ -6215,7 +6215,7 @@ interface IContextualMenuRenderItem {
 }
 
 // @public
-interface IContextualMenuSection extends React.Props<any> {
+interface IContextualMenuSection extends React.ClassAttributes<any> {
   bottomDivider?: boolean;
   items: IContextualMenuItem[];
   title?: string;
