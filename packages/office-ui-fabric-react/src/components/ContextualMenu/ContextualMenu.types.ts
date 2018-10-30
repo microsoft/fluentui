@@ -2,7 +2,7 @@ import * as React from 'react';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IFocusZoneProps } from '../../FocusZone';
 import { IIconProps } from '../Icon/Icon.types';
-import { ICalloutProps } from '../../Callout';
+import { ICalloutProps, ICalloutContentStyleProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
 import { IButtonStyles } from '../../Button';
 import { IRefObject, IBaseProps, IPoint, IRectangle, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
@@ -581,4 +581,14 @@ export interface IContextualMenuStyles {
    * Styles for the list that contains all menuItems.
    */
   list: IStyle;
+
+  /**
+   * SubComponent styles.
+   */
+  subComponentStyles: IContextualMenuSubComponentStyles;
+}
+
+export interface IContextualMenuSubComponentStyles {
+  /** Refers to the callout that hosts the ContextualMenu options */
+  callout: IStyleFunctionOrObject<ICalloutContentStyleProps, any>;
 }

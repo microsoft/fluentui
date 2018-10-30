@@ -1829,6 +1829,7 @@ interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputElement | Au
   enableAutofillOnKeyPress?: KeyCodes[];
   onInputChange?: (value: string) => string;
   onInputValueChange?: (newValue?: string) => void;
+  preventValueSelection?: boolean;
   shouldSelectFullInputValueInComponentDidUpdate?: () => boolean;
   suggestedDisplayValue?: string;
   updateValueInWillReceiveProps?: () => string | null;
@@ -6257,7 +6258,13 @@ interface IContextualMenuStyles {
   header: IStyle;
   list: IStyle;
   root: IStyle;
+  subComponentStyles: IContextualMenuSubComponentStyles;
   title: IStyle;
+}
+
+// @public (undocumented)
+interface IContextualMenuSubComponentStyles {
+  callout: IStyleFunctionOrObject<ICalloutContentStyleProps, any>;
 }
 
 // @public (undocumented)

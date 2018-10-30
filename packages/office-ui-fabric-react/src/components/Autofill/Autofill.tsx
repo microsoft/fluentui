@@ -75,8 +75,12 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
 
   public componentDidUpdate() {
     const value = this._value;
-    const { suggestedDisplayValue, shouldSelectFullInputValueInComponentDidUpdate } = this.props;
+    const { suggestedDisplayValue, shouldSelectFullInputValueInComponentDidUpdate, preventValueSelection } = this.props;
     let differenceIndex = 0;
+
+    if (preventValueSelection) {
+      return;
+    }
 
     if (this._autoFillEnabled && value && suggestedDisplayValue && this._doesTextStartWith(suggestedDisplayValue, value)) {
       let shouldSelectFullRange = false;
@@ -292,4 +296,4 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
 /**
  *  @deprecated do not use.
  */
-export class BaseAutoFill extends Autofill {}
+export class BaseAutoFill extends Autofill { }
