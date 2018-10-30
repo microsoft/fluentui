@@ -29,11 +29,12 @@ export const SpinButtonStyles = {
   },
   input: {
     padding: '0 8px',
-    width: 'calc(100% - 23px)',
+    width: 'calc(100% - 23px)', // -23px because buttons width changed
     borderRadius: `${fluentBorderRadius} 0 0 ${fluentBorderRadius}`
   },
   arrowButtonsContainer: {
     selectors: {
+      // No direct style section available so need to target a global className
       '.ms-DownButton': {
         ...buttonStyles,
         borderRadius: `0 0 ${fluentBorderRadius} 0`
