@@ -1,6 +1,24 @@
 import { fluentBorderRadius } from './styleConstants';
 import { NeutralColors } from '../FluentColors';
 
+const buttonStyles = {
+  color: NeutralColors.gray130,
+  width: 23,
+  selectors: {
+    ':hover': {
+      backgroundColor: NeutralColors.gray20,
+      color: NeutralColors.gray130
+    },
+    ':active': {
+      backgroundColor: NeutralColors.gray30,
+      color: NeutralColors.gray130
+    },
+    '.ms-Button-icon': {
+      fontSize: 8
+    }
+  }
+};
+
 export const SpinButtonStyles = {
   spinButtonWrapper: {
     borderRadius: fluentBorderRadius,
@@ -10,6 +28,20 @@ export const SpinButtonStyles = {
     borderColor: NeutralColors.gray160
   },
   input: {
-    padding: '0 8px'
+    padding: '0 8px',
+    width: 'calc(100% - 23px)',
+    borderRadius: `${fluentBorderRadius} 0 0 ${fluentBorderRadius}`
+  },
+  arrowButtonsContainer: {
+    selectors: {
+      '.ms-DownButton': {
+        ...buttonStyles,
+        borderRadius: `0 0 ${fluentBorderRadius} 0`
+      },
+      '.ms-UpButton': {
+        ...buttonStyles,
+        borderRadius: `0 ${fluentBorderRadius} 0 0`
+      }
+    }
   }
 };
