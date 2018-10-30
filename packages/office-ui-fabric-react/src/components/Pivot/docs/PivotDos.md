@@ -1,2 +1,3 @@
 - Use on content-heavy pages that require a significant amount of scrolling to access the various sections.
 - Be concise on the navigation labels, ideally one or two words rather than a phrase.
+- Pass only PivotItems as children to Pivot.
