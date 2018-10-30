@@ -181,8 +181,11 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
       : // single select
         {
           role: 'listbox',
-          ariaActiveDescendant:
-            isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0 ? this._id + '-list' + selectedIndices[0] : optionId,
+          ariaActiveDescendant: disabled
+            ? undefined
+            : isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0
+              ? this._id + '-list' + selectedIndices[0]
+              : optionId,
           childRole: 'option',
           ariaSetSize: this._sizePosCache.optionSetSize,
           ariaPosInSet: this._sizePosCache.positionInSet(selectedIndices[0]),
