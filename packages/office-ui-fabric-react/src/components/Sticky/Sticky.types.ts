@@ -29,6 +29,11 @@ export interface IStickyProps extends React.Props<Sticky> {
    * @defaultvalue true
    */
   isScrollSynced?: boolean;
+
+  /**
+   * Class name to apply to the sticky element if component is sticky & scroll position is non-zero.
+   */
+  onScrollStickyClassName?: string;
 }
 
 export enum StickyPositionType {
