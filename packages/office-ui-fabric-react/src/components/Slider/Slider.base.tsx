@@ -215,10 +215,15 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     return currentPosition;
   }
   private _updateValue(value: number, renderedValue: number): void {
-    const interval: number = 1.0 / this.props.step!;
-    // Make sure value has correct number of decimal places based on steps without JS's floating point issues
-    const roundedValue: number = Math.round((value * interval) / interval);
+    const { step } = this.props;
 
+    let numDec = 0;
+    if (Math.floor(step!) !== step!) {
+      numDec = step!.toString().split('.')[1].length;
+    }
+
+    // Make sure value has correct number of decimal places based on steps without JS's floating point issues
+    const roundedValue = Math.round(value * Math.pow(10, numDec)) / Math.pow(10, numDec);
     const valueChanged = roundedValue !== this.state.value;
 
     this.setState(
