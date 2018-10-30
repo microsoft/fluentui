@@ -40,10 +40,6 @@ export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement |
   initialScrollPosition?: number;
 
   scrollbarVisibility?: ScrollbarVisibility;
-  /**
-   * Class to be applied to stickyAbove when scroll position is non zero
-   */
-  onScrollStickyAboveClassName?: string;
 }
 
 export interface IScrollablePaneStyleProps {
