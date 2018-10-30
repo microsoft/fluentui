@@ -9219,6 +9219,7 @@ interface IScrollablePaneContext {
   // (undocumented)
   scrollablePane?: {
     addSticky: (sticky: Sticky) => void;
+    getScrollPosition: () => number;
     notifySubscribers: (sort?: boolean) => void;
     removeSticky: (sticky: Sticky) => void;
     sortSticky: (sticky: Sticky) => void;
@@ -9978,6 +9979,7 @@ interface IStickyContext {
 interface IStickyProps extends React.Props<Sticky> {
   componentRef?: IRefObject<IStickyProps>;
   isScrollSynced?: boolean;
+  onScrollStickyClassName?: string;
   stickyBackgroundColor?: string;
   stickyClassName?: string;
   stickyPosition?: StickyPositionType;
@@ -9985,6 +9987,7 @@ interface IStickyProps extends React.Props<Sticky> {
 
 // @public (undocumented)
 interface IStickyState {
+  isScrollPositionZero: boolean | undefined;
   // (undocumented)
   isStickyBottom: boolean;
   // (undocumented)
