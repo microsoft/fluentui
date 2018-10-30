@@ -24,9 +24,7 @@ describe('Button', () => {
   });
 
   it('renders CompoundButton correctly', () => {
-    const component = renderer.create(
-      <CompoundButton description="You can create a new account here.">Create account</CompoundButton>
-    );
+    const component = renderer.create(<CompoundButton description="You can create a new account here.">Create account</CompoundButton>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

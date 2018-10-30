@@ -56,6 +56,10 @@ export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleP
       opacity: shouldHighlight ? '' : '0.1',
       cursor: href ? 'pointer' : 'default'
     },
+    placeHolderOnHover: {
+      opacity: shouldHighlight ? '' : '0.1',
+      cursor: 'default'
+    },
     legendContainer: {
       marginTop: '5px'
     },

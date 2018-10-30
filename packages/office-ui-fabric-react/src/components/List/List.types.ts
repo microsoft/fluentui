@@ -34,9 +34,9 @@ export interface IList {
    * Note: with items of variable height and no passed in `getPageHeight` method, the list might jump after scrolling
    * when windows before/ahead are being rendered, and the estimated height is replaced using actual elements.
    *
-   * @param index Index of item to scroll to
-   * @param measureItem Optional callback to measure the height of an individual item
-   * @param scrollToMode Optional defines the behavior of the scrolling alignment. Defaults to auto.
+   * @param index - Index of item to scroll to
+   * @param measureItem - Optional callback to measure the height of an individual item
+   * @param scrollToMode - Optional defines the behavior of the scrolling alignment. Defaults to auto.
    *  Note: The scrollToMode requires the measureItem callback is provided to function.
    */
   scrollToIndex: (index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode) => void;
@@ -62,9 +62,9 @@ export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> 
 
   /**
    * Method to call when trying to render an item.
-   * @param {any} item - The the data associated with the cell that is being rendered.
-   * @param {number} index - The index of the cell being rendered.
-   * @param {boolean} isScrolling - True if the list is being scrolled. May be useful for rendering a placeholder if your cells are complex.
+   * @param item - The the data associated with the cell that is being rendered.
+   * @param index - The index of the cell being rendered.
+   * @param isScrolling - True if the list is being scrolled. May be useful for rendering a placeholder if your cells are complex.
    */
   onRenderCell?: (item?: any, index?: number, isScrolling?: boolean) => React.ReactNode;
 
@@ -74,7 +74,7 @@ export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> 
    * This method will be called as a result of changes in List pages (added or removed),
    * and after ALL the changes complete.
    * To track individual page Add / Remove use onPageAdded / onPageRemoved instead.
-   * @param {IPage[]} pages - The current array of pages in the List.
+   * @param pages - The current array of pages in the List.
    */
   onPagesUpdated?: (pages: IPage[]) => void;
 
@@ -118,13 +118,13 @@ export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> 
 
   /**
    * In addition to the visible window, how many windowHeights should we render ahead.
-   * @default 2
+   * @defaultvalue 2
    */
   renderedWindowsAhead?: number;
 
   /**
    * In addition to the visible window, how many windowHeights should we render behind.
-   * @default 2
+   * @defaultvalue 2
    */
   renderedWindowsBehind?: number;
 
@@ -137,7 +137,7 @@ export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> 
   /**
    * Boolean value to enable render page caching. This is an experimental performance optimization
    * that is off by default.
-   * @defaultValue false
+   * @defaultvalue false
    */
   usePageCache?: boolean;
 

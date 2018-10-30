@@ -133,7 +133,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
       maxDate,
       className,
       showCloseButton,
-      allFocusable
+      allFocusable,
+      yearPickerHidden
     } = this.props;
     const nativeProps = getNativeProps(this.props, divProperties, ['value']);
 
@@ -205,6 +206,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                     minDate={minDate}
                     maxDate={maxDate}
                     componentRef={this._monthPicker}
+                    yearPickerHidden={yearPickerHidden || showMonthPickerAsOverlay}
                   />
                 )}
 

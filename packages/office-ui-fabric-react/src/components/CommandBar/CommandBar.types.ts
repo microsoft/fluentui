@@ -139,7 +139,7 @@ export interface ICommandBarItemProps extends IContextualMenuItem {
 
   /**
    * Method to override the render of the individual command bar button. Note, is not used when rendered in overflow
-   * @default CommandBarButton
+   * @defaultvalue CommandBarButton
    */
   commandBarButtonAs?: IComponentAs<ICommandBarItemProps>;
 }

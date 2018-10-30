@@ -19,8 +19,7 @@ const UnknownPersonaExampleCode = require('!raw-loader!office-ui-fabric-react/sr
 export const PersonaPageProps: IDocPageProps = {
   title: 'Persona',
   componentName: 'Persona',
-  componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Persona',
+  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Persona',
   componentStatus: PersonaStatus,
   examples: [
     {
@@ -55,9 +54,7 @@ export const PersonaPageProps: IDocPageProps = {
       view: <UnknownPersonaExample />
     }
   ],
-  propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/Persona.types.ts')
-  ],
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/Persona.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/docs/PersonaOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/docs/PersonaDos.md'),

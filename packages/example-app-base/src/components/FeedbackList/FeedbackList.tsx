@@ -88,20 +88,10 @@ export class FeedbackList extends React.Component<IFeedbackListProps, IFeedbackL
         {submitButton}
         <Pivot className="FeedbackList-pivot">
           <PivotItem linkText="Open Issues">
-            <List
-              items={openIssues}
-              onRenderCell={this._onRenderCell}
-              data-is-scrollable={true}
-              className="FeedbackList-issueList"
-            />
+            <List items={openIssues} onRenderCell={this._onRenderCell} data-is-scrollable={true} className="FeedbackList-issueList" />
           </PivotItem>
           <PivotItem linkText="Closed Issues">
-            <List
-              items={closedIssues}
-              onRenderCell={this._onRenderCell}
-              data-is-scrollable={true}
-              className="FeedbackList-issueList"
-            />
+            <List items={closedIssues} onRenderCell={this._onRenderCell} data-is-scrollable={true} className="FeedbackList-issueList" />
           </PivotItem>
         </Pivot>
       </div>

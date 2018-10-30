@@ -140,11 +140,7 @@ export const AnimationStyles: IAnimationStyles = {
   // expandCollapse 100/200/400, delay 100/200
 };
 
-function _createAnimation(
-  animationName: string,
-  animationDuration: string,
-  animationTimingFunction: string
-): IRawStyle {
+function _createAnimation(animationName: string, animationDuration: string, animationTimingFunction: string): IRawStyle {
   return {
     animationName,
     animationDuration,

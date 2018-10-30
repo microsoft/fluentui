@@ -64,7 +64,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       cacheKey: ''
     };
 
-    this._classNames = getClassNames(styles!, { theme: theme!, className });
+    this._classNames = getClassNames(styles!, { theme: theme! });
 
     return (
       <ResizeGroup

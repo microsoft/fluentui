@@ -16,9 +16,7 @@ export const PositioningContainerPageProps: IDocPageProps = {
       view: <PositioningContainerBasicExample />
     }
   ],
-  propertiesTablesSources: [
-    require<string>('!raw-loader!experiments/src/components/PositioningContainer/PositioningContainer.types.ts')
-  ],
+  propertiesTablesSources: [require<string>('!raw-loader!experiments/src/components/PositioningContainer/PositioningContainer.types.ts')],
   overview: '',
   bestPractices: '',
   dos: '',

@@ -4,6 +4,7 @@ import { ITheme, mergeStyleSets, getGlobalClassNames } from '../../Styling';
 import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
 import { memoizeFunction, IsFocusVisibleClassName } from '../../Utilities';
 import { IContextualMenuItemStyles, IContextualMenuItemStyleProps } from './ContextualMenuItem.types';
+import { IContextualMenuSubComponentStyles } from './ContextualMenu.types';
 
 /**
  * @deprecated in favor of mergeStyles API.
@@ -14,6 +15,7 @@ export interface IContextualMenuClassNames {
   list: string;
   header: string;
   title: string;
+  subComponentStyles: IContextualMenuSubComponentStyles;
 }
 
 /**
@@ -64,7 +66,7 @@ const GlobalClassNames = {
 };
 
 /**
- * @deprecated
+ * @deprecated To be removed in 7.0.
  * @internal
  * This is a package-internal method that has been depended on.
  * It is being kept in this form for backwards compatibility.

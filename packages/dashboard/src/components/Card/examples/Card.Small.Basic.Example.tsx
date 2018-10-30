@@ -63,13 +63,6 @@ export class SmallCardBasicExample extends React.Component<{}, {}> {
       headerText: 'Header Text ',
       annotationText: 'Annotation Text '
     };
-    return (
-      <Card
-        cardFrameContent={cardFrameContent}
-        header={header}
-        cardContentList={contentAreaList}
-        cardSize={CardSize.small}
-      />
-    );
+    return <Card cardFrameContent={cardFrameContent} header={header} cardContentList={contentAreaList} cardSize={CardSize.small} />;
   }
 }

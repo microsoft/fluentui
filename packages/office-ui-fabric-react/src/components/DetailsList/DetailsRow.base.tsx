@@ -1,15 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import {
-  BaseComponent,
-  IDisposable,
-  assign,
-  css,
-  shallowCompare,
-  getNativeProps,
-  divProperties,
-  createRef
-} from '../../Utilities';
+import { BaseComponent, IDisposable, assign, css, shallowCompare, getNativeProps, divProperties, createRef } from '../../Utilities';
 import { IColumn, CheckboxVisibility } from './DetailsList.types';
 import { DetailsRowCheck } from './DetailsRowCheck';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
@@ -73,11 +64,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
     const { dragDropHelper } = this.props;
 
     if (dragDropHelper) {
-      this._dragDropSubscription = dragDropHelper.subscribe(
-        this._root as HTMLElement,
-        this._events,
-        this._getRowDragDropOptions()
-      );
+      this._dragDropSubscription = dragDropHelper.subscribe(this._root as HTMLElement, this._events, this._getRowDragDropOptions());
     }
 
     this._events.on(this.props.selection, SELECTION_CHANGE, this._onSelectionChanged);
@@ -192,11 +179,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
     const { columnMeasureInfo, isDropping, groupNestingDepth } = this.state;
     const { isSelected = false, isSelectionModal = false } = this.state.selectionState as IDetailsRowSelectionState;
     const isDraggable = Boolean(dragDropEvents && dragDropEvents.canDrag && dragDropEvents.canDrag(item));
-    const droppingClassName = isDropping
-      ? this._droppingClassNames
-        ? this._droppingClassNames
-        : DEFAULT_DROPPING_CSS_CLASS
-      : '';
+    const droppingClassName = isDropping ? (this._droppingClassNames ? this._droppingClassNames : DEFAULT_DROPPING_CSS_CLASS) : '';
     const ariaLabel = getRowAriaLabel ? getRowAriaLabel(item) : undefined;
     const ariaDescribedBy = getRowAriaDescribedBy ? getRowAriaDescribedBy(item) : undefined;
     const canSelect = !!selection && selection.canSelectItem!(item, itemIndex);
@@ -229,9 +212,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
     // Rendering Shimmer Animation outside the focus zone
     if (shimmer) {
       return (
-        <div className={css(showCheckbox && classNames.shimmerLeftBorder, !compact && classNames.shimmerBottomBorder)}>
-          {rowFields}
-        </div>
+        <div className={css(showCheckbox && classNames.shimmerLeftBorder, !compact && classNames.shimmerBottomBorder)}>{rowFields}</div>
       );
     }
 
@@ -290,12 +271,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
           </span>
         )}
 
-        <span
-          role="checkbox"
-          className={css(classNames.checkCover)}
-          aria-checked={isSelected}
-          data-selection-toggle={true}
-        />
+        <span role="checkbox" className={css(classNames.checkCover)} aria-checked={isSelected} data-selection-toggle={true} />
       </FocusZone>
     );
   }
@@ -303,8 +279,8 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
   /**
    * measure cell at index. and call the call back with the measured cell width when finish measure
    *
-   * @param {number} index (the cell index)
-   * @param {(width: number) => void} onMeasureDone (the call back function when finish measure)
+   * @param index - The cell index
+   * @param onMeasureDone - The call back function when finish measure
    */
   public measureCell(index: number, onMeasureDone: (width: number) => void): void {
     const { columns = NO_COLUMNS } = this.props;
@@ -394,8 +370,8 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
    * when change to false, that means drag leave. we will remove the dropping class name from root element.
    *
    * @private
-   * @param {boolean} newValue (new isDropping state value)
-   * @param {DragEvent} event (the event trigger dropping state change which can be dragenter, dragleave etc)
+   * @param newValue - New isDropping state value
+   * @param event - The event trigger dropping state change which can be dragenter, dragleave etc
    */
   private _updateDroppingState(newValue: boolean, event: DragEvent): void {
     const { selectionState, isDropping } = this.state;

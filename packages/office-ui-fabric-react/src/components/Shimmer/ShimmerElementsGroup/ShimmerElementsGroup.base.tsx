@@ -1,10 +1,6 @@
 import * as React from 'react';
 import { BaseComponent, classNamesFunction } from '../../../Utilities';
-import {
-  IShimmerElementsGroupProps,
-  IShimmerElementsGroupStyleProps,
-  IShimmerElementsGroupStyles
-} from './ShimmerElementsGroup.types';
+import { IShimmerElementsGroupProps, IShimmerElementsGroupStyleProps, IShimmerElementsGroupStyles } from './ShimmerElementsGroup.types';
 import { IRawStyle } from '../../../Styling';
 import { ShimmerElementType, ShimmerElementsDefaultHeights, IShimmerElement } from '../Shimmer.types';
 import { ShimmerLine } from '../ShimmerLine/ShimmerLine';
@@ -67,10 +63,7 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
     return renderedElements;
   };
 
-  private _getBorderStyles = (
-    elem: IShimmerElement,
-    rowHeight?: number
-  ): IShimmerCircleStyles | IShimmerGapStyles | IShimmerLineStyles => {
+  private _getBorderStyles = (elem: IShimmerElement, rowHeight?: number): IShimmerCircleStyles | IShimmerGapStyles | IShimmerLineStyles => {
     const elemHeight: number | undefined = elem.height;
     const dif: number = rowHeight && elemHeight ? rowHeight - elemHeight : 0;
 
