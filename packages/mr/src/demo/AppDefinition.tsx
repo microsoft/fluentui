@@ -8,7 +8,14 @@ export const AppDefinition: IAppDefinition = {
   testPages: [],
   examplePages: [
     {
-      links: []
+      links: [
+        {
+          component: require<any>('../components/Panel/PanelPage').PanelPage,
+          key: 'Panel',
+          name: 'Panel',
+          url: '#/examples/panel'
+        }
+      ]
     }
   ],
   headerLinks: [

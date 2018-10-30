@@ -50,7 +50,9 @@
     "babylonjs-loaders": "4.0.0-alpha.2",
     "babylonjs-materials": "4.0.0-alpha.2",
     "babylonjs-serializers": "4.0.0-alpha.2",
-    "nucleus3d": "^0.5.13",
+    "cannon": "^0.6.2",
+    "earcut": "^2.1.3",
+    "oimo": "^1.0.9",
     "office-ui-fabric-react": ">=6.84.1 <7.0.0",
     "tslib": "^1.7.1"
   },
