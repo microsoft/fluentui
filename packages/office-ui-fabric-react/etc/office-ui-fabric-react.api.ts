@@ -1829,6 +1829,7 @@ interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputElement | Au
   enableAutofillOnKeyPress?: KeyCodes[];
   onInputChange?: (value: string) => string;
   onInputValueChange?: (newValue?: string) => void;
+  preventValueSelection?: boolean;
   shouldSelectFullInputValueInComponentDidUpdate?: () => boolean;
   suggestedDisplayValue?: string;
   updateValueInWillReceiveProps?: () => string | null;
@@ -2111,7 +2112,7 @@ interface IBreadcrumbItem {
 }
 
 // @public (undocumented)
-interface IBreadcrumbProps extends React.Props<BreadcrumbBase> {
+interface IBreadcrumbProps extends React.ClassAttributes<BreadcrumbBase> {
   ariaLabel?: string;
   className?: string;
   componentRef?: IRefObject<IBreadcrumb>;
@@ -2501,7 +2502,7 @@ interface ICheckboxStyles {
 }
 
 // @public (undocumented)
-interface ICheckProps extends React.Props<CheckBase> {
+interface ICheckProps extends React.ClassAttributes<CheckBase> {
   alwaysShowCheck?: boolean;
   checked?: boolean;
   className?: string;
@@ -6257,7 +6258,13 @@ interface IContextualMenuStyles {
   header: IStyle;
   list: IStyle;
   root: IStyle;
+  subComponentStyles: IContextualMenuSubComponentStyles;
   title: IStyle;
+}
+
+// @public (undocumented)
+interface IContextualMenuSubComponentStyles {
+  callout: IStyleFunctionOrObject<ICalloutContentStyleProps, any>;
 }
 
 // @public (undocumented)

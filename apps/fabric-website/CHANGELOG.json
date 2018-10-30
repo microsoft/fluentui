@@ -2,6 +2,25 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.7.0",
+      "tag": "@uifabric/fabric-website_v6.7.0",
+      "date": "Tue, 30 Oct 2018 18:45:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Carry over website pipeline improvements to prod-deployed index",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "bda21112a764910c54fcba11cae5a4d2e282124b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.95.0 <7.0.0` to `>=6.96.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.6.2",
       "tag": "@uifabric/fabric-website_v6.6.2",
       "date": "Wed, 24 Oct 2018 12:28:58 GMT",

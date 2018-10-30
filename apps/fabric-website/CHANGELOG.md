@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 24 Oct 2018 12:28:58 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Oct 2018 18:45:48 GMT and should not be manually modified.
+
+## 6.7.0
+Tue, 30 Oct 2018 18:45:48 GMT
+
+### Minor changes
+
+- Carry over website pipeline improvements to prod-deployed index
 
 ## 6.6.2
 Wed, 24 Oct 2018 12:28:58 GMT

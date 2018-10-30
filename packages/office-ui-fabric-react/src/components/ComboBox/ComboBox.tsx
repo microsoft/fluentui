@@ -382,6 +382,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 updateValueInWillReceiveProps={this._onUpdateValueInAutofillWillReceiveProps}
                 shouldSelectFullInputValueInComponentDidUpdate={this._onShouldSelectFullInputValueInAutofillComponentDidUpdate}
                 title={title}
+                preventValueSelection={!focused}
               />
               <IconButton
                 className={'ms-ComboBox-CaretDown-button'}
@@ -1002,7 +1003,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             (this._autofill.current &&
               this._autofill.current.isValueSelected &&
               currentPendingValue.length + (this._autofill.current.selectionEnd! - this._autofill.current.selectionStart!) ===
-                pendingOptionText.length)) ||
+              pendingOptionText.length)) ||
             (this._autofill.current &&
               this._autofill.current.inputElement &&
               this._autofill.current.inputElement.value.toLocaleLowerCase() === pendingOptionText))

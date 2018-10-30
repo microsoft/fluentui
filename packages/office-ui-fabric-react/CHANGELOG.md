@@ -1,6 +1,25 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 29 Oct 2018 18:04:30 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Oct 2018 18:45:48 GMT and should not be manually modified.
+
+## 6.96.0
+Tue, 30 Oct 2018 18:45:48 GMT
+
+### Minor changes
+
+- ComboBox/Autofill: prevent text from being selected when focus is not on the input box
+
+### Patches
+
+- Removing some of the deprecated components flaged when turning the tslint deprecation flag to true in the office-ui-fabric-react package.
+
+## 6.95.0
+Tue, 30 Oct 2018 12:27:52 GMT
+
+### Minor changes
+
+- Addition of year picker to Calendar
+- ContextualMenu: adding a subComponentStyles hook to enable styling of the components used within ContextualMenu. Removing an unused style function.
 
 ## 6.94.0
 Mon, 29 Oct 2018 18:04:30 GMT
