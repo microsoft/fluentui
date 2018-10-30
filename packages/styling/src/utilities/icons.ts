@@ -192,9 +192,7 @@ export function getIcon(name?: string): IIconRecord | undefined {
       }
     } else {
       if (!options.disableWarnings && options.warnOnMissingIcons) {
-        warn(
-          `The icon "${name}" was used but not registered. See http://aka.ms/fabric-icon-usage for more information.`
-        );
+        warn(`The icon "${name}" was used but not registered. See http://aka.ms/fabric-icon-usage for more information.`);
       }
     }
   }

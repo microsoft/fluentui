@@ -93,10 +93,7 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
         </div>
 
         <div className={classNames.buttonContainer} ref={this._targetButton}>
-          <DefaultButton
-            onClick={this._onShowMenuClicked}
-            text={isCoachmarkVisible ? 'Hide Coachmark' : 'Show Coachmark'}
-          />
+          <DefaultButton onClick={this._onShowMenuClicked} text={isCoachmarkVisible ? 'Hide Coachmark' : 'Show Coachmark'} />
         </div>
         {isCoachmarkVisible && (
           <Coachmark

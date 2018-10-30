@@ -300,11 +300,7 @@ export class DragDropHelper implements IDragDropHelper {
         // So, check if the last dropTarget is not a child of the current.
 
         if (this._dragData) {
-          if (
-            this._dragData.dropTarget &&
-            this._dragData.dropTarget.key !== key &&
-            !this._isChild(root, this._dragData.dropTarget.root)
-          ) {
+          if (this._dragData.dropTarget && this._dragData.dropTarget.key !== key && !this._isChild(root, this._dragData.dropTarget.root)) {
             if (this._dragEnterCounts[this._dragData.dropTarget.key] > 0) {
               EventGroup.raise(this._dragData.dropTarget.root, 'dragleave');
               EventGroup.raise(root, 'dragenter');
@@ -380,8 +376,7 @@ export class DragDropHelper implements IDragDropHelper {
   private _isDroppable(target: IDragDropTarget): boolean {
     // TODO: take the drag item into consideration to prevent dragging an item into the same group
     const { options } = target;
-    const dragContext =
-      this._dragData && this._dragData.dragTarget ? this._dragData.dragTarget.options.context : undefined;
+    const dragContext = this._dragData && this._dragData.dragTarget ? this._dragData.dragTarget.options.context : undefined;
     return !!(options.canDrop && options.canDrop(options.context, dragContext));
   }
 }

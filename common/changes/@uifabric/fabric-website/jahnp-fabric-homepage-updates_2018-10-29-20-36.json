@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/fabric-website",
+      "comment": "Carry over website pipeline improvements to prod-deployed index",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/fabric-website",
+  "email": "pejahn@microsoft.com"
+}

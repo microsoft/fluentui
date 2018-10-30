@@ -34,8 +34,8 @@ describe('List', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('can complete rendering', (done) => {
+  it('can complete rendering', done => {
     const wrapper = mount(<List items={mockData(50)} />);
-    wrapper.setProps({ items: mockData(100), onPagesUpdated: (pages: any) => done()});
+    wrapper.setProps({ items: mockData(100), onPagesUpdated: (pages: any) => done() });
   });
 });

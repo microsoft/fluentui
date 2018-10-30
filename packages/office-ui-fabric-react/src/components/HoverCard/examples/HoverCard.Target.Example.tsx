@@ -35,10 +35,7 @@ class HoverCardField extends BaseComponent<IHoverCardFieldProps, IHoverCardField
 
   public render() {
     return (
-      <div
-        ref={(c: HTMLDivElement) => !this.state.contentRendered && this.setState({ contentRendered: c })}
-        data-is-focusable={true}
-      >
+      <div ref={(c: HTMLDivElement) => !this.state.contentRendered && this.setState({ contentRendered: c })} data-is-focusable={true}>
         {this.props.content}
         {this.state.contentRendered && (
           <HoverCard
@@ -83,8 +80,8 @@ export class HoverCardTargetExample extends BaseComponent<{}, IHoverCardExampleS
           Hover over the <i>key</i> cell of a row item to see the card or use the keyboard to navigate to it.
         </p>
         <p>
-          When using the keyboard to tab to it, open the card with the hotKey and it will automatically focus the first
-          focusable element in the card allowing further navigation inside the card.
+          When using the keyboard to tab to it, open the card with the hotKey and it will automatically focus the first focusable element in
+          the card allowing further navigation inside the card.
         </p>
         <DetailsList
           setKey="hoverSet"

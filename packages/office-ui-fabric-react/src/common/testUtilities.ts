@@ -9,8 +9,6 @@ export const findNodes = (wrapper: ReactWrapper<any, any>, className: string): R
 export const expectNodes = (wrapper: ReactWrapper<any, any>, className: string, n: number): void =>
   expect(findNodes(wrapper, className).length).toEqual(n);
 
-export const expectOne = (wrapper: ReactWrapper<any, any>, className: string): void =>
-  expectNodes(wrapper, className, 1);
+export const expectOne = (wrapper: ReactWrapper<any, any>, className: string): void => expectNodes(wrapper, className, 1);
 
-export const expectMissing = (wrapper: ReactWrapper<any, any>, className: string): void =>
-  expectNodes(wrapper, className, 0);
+export const expectMissing = (wrapper: ReactWrapper<any, any>, className: string): void => expectNodes(wrapper, className, 0);
