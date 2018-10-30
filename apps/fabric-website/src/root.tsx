@@ -14,6 +14,7 @@ import { AppState } from './components/App/AppState';
 import FluentMessageBar from './components/FluentMessageBar/FluentMessageBar';
 import { HomePage } from './pages/HomePage/HomePage';
 import WindowWidthUtility from './utilities/WindowWidthUtility';
+import { TopNav } from './components/TopNav/TopNav';
 
 require('es6-promise').polyfill();
 /* tslint:disable:no-unused-variable */
@@ -93,6 +94,7 @@ function _onLoad(): void {
 
   ReactDOM.render(
     <Fabric>
+      <TopNav pages={AppState.pages} />
       <FluentMessageBar />
       <Router onNewRouteLoaded={_routerDidMount}>
         <Route component={App}>{_getAppRoutes()}</Route>

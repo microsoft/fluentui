@@ -187,7 +187,8 @@ export class Nav extends React.Component<INavProps, INavState> {
           )}
           key={linkIndex}
         >
-          {!(page.isUhfLink && location.hostname !== 'localhost') &&
+          {!page.isUhfLink &&
+            // {!(page.isUhfLink && location.hostname !== 'localhost') &&
             (page.isFilterable && searchQuery !== '' ? matchIndex > -1 : true) && (
               <a href={page.url} onClick={this._onLinkClick} title={title} aria-label={ariaLabel}>
                 {linkText}

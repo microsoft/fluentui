@@ -1,0 +1,141 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '~office-ui-fabric-react/src/common/common';
+
+// TopNav variables
+$TopNav-height: 52px;
+$TopNav-backgroundColor: $ms-color-white;
+$TopNav-height-full-uhf: $TopNav-height * 2;
+
+// Local variables--REMOVE later
+// Padding matches padding used by UHF at the same (lg / sm) UHF breakpoints
+$App-padding-md: 40px;
+
+$App-padding-left-lg: 5%;
+$App-padding-right-lg: 5%;
+$App-padding-left-sm: 6px;
+$App-padding-right-sm: 6px;
+
+$linkPadding: 16px;
+
+.topNavWrapper {
+  background: $TopNav-backgroundColor;
+  box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.06);
+  position: relative;
+  z-index: 100;
+  max-width: 100vw;
+  overflow: hidden;
+}
+
+.topNav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: $TopNav-height;
+  margin: 0 auto;
+  max-width: $App-maximumWidth;
+  padding: 0 $contentPadding-sm 0 $contentPadding-sm;
+}
+
+.homeLinkSection,
+.linkListSection {
+  display: flex;
+}
+
+.links,
+.link {
+  height: $TopNav-height;
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+}
+
+.link {
+  display: inline-flex;
+  font-size: $ms-font-size-m;
+  line-height: 1.5;
+  align-items: center;
+
+  a {
+    color: $ms-color-neutralPrimary;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    position: relative;
+    top: 2px;
+    height: $TopNav-height;
+    padding: 0 $linkPadding;
+
+    @include focus-border(-6px);
+
+    &:hover .linkTitle {
+      border-bottom: 2px solid black;
+    }
+  }
+
+  &:not(.isActive):hover a {
+    border-color: $ms-color-neutralSecondary;
+  }
+
+  &.isActive a {
+    border-color: $ms-color-neutralDark;
+  }
+}
+
+.linkTitle {
+  border-bottom: 2px solid transparent;
+}
+
+.isHomePage {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+
+  a {
+    font-size: $ms-font-size-l;
+    font-weight: $ms-font-weight-semibold;
+    color: $ms-color-neutralDark;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    height: $TopNav-height;
+
+    @include focus-border(-6px);
+  }
+}
+
+.isFabricLink {
+  padding-left: 16px;
+
+  &:before {
+    content: '|';
+    font-size: 24px;
+    margin-right: 16px;
+    font-weight: normal;
+  }
+}
+
+.microsoftLogo {
+  width: 108px;
+  padding: 0;
+
+  img {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: $uhf-screen-min-mobile) {
+  .topNav {
+    @include ms-padding-left(30px);
+  }
+}
+
+@media only screen and (min-width: $uhf-screen-max-lg) {
+  .topNav {
+    @include ms-padding-left(5%);
+    @include ms-margin-left(8px);
+  }
+}

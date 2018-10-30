@@ -816,6 +816,7 @@ export const AppState: IAppState = {
       url: '#/blog',
       className: 'blogPage',
       isUhfLink: true,
+      isHiddenFromMainNav: true,
       getComponent: cb => require.ensure([], require => cb(require<any>('../../pages/BlogPage/BlogPage').BlogPage))
     },
     {
