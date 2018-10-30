@@ -50,14 +50,14 @@ common/_themeOverrides.scss @phkuo
 common/_common.scss @phkuo
 
 ### Utilities
-dateMath/     @lorejoh12 @sathi23
-dateValues/   @lorejoh12 @sathi23
+dateMath/     @microsoft/uifabric-calendar
+dateValues/   @microsoft/uifabric-calendar
 
 ## Components
 # ActivityItem/
 # Breadcrumb/
 # Button/
-Calendar/   @lorejoh12 @sathi23
+Calendar/   @microsoft/uifabric-calendar
 Callout/  @joschect
 # Check/
 # Checkbox/
@@ -66,7 +66,7 @@ ChoiceGroup/   @srideshpande
 # ComboBox/
 CommandBar/   @micahgodbolt @JasonGore
 ContextualMenu/  @joschect
-DatePicker/   @lorejoh12 @sathi23
+DatePicker/   @microsoft/uifabric-calendar
 # DetailsList/
 # Dialog/
 DocumentCard/ @yiminwu @mikewheaton
@@ -118,7 +118,7 @@ Tooltip/  @micahgodbolt
 # ActivityItem/docs/
 # Breadcrumb/docs/
 # Button/docs/
-Calendar/docs/   @lorejoh12 @sathi23
+Calendar/docs/   @microsoft/uifabric-calendar
 Callout/docs/  @joschect
 # Check/docs/
 # Checkbox/docs/
@@ -127,7 +127,7 @@ ChoiceGroup/docs/   @srideshpande
 # ComboBox/docs/
 CommandBar/docs/   @micahgodbolt
 ContextualMenu/docs/  @joschect
-DatePicker/docs/   @lorejoh12 @sathi23
+DatePicker/docs/   @microsoft/uifabric-calendar
 # DetailsList/docs/
 # Dialog/docs/
 DocumentCard/docs/ @yiminwu @mikewheaton
