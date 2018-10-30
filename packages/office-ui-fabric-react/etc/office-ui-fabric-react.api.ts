@@ -9987,7 +9987,7 @@ interface IStickyProps extends React.Props<Sticky> {
 
 // @public (undocumented)
 interface IStickyState {
-  isScrollPositionZero: boolean | undefined;
+  isScrollPositionNonZero: boolean | undefined;
   // (undocumented)
   isStickyBottom: boolean;
   // (undocumented)
