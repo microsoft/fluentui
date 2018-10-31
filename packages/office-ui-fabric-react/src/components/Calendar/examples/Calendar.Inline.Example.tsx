@@ -98,6 +98,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
           onDismiss={this._onDismiss}
           isMonthPickerVisible={this.props.isMonthPickerVisible}
           dateRangeType={this.props.dateRangeType}
+          autoNavigateOnSelection={this.props.autoNavigateOnSelection}
           showGoToToday={this.props.showGoToToday}
           value={this.state.selectedDate!}
           firstDayOfWeek={this.props.firstDayOfWeek ? this.props.firstDayOfWeek : DayOfWeek.Sunday}

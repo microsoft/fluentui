@@ -19,14 +19,14 @@ import { KeyCodes } from '@uifabric/utilities';
 const getClassNames = classNamesFunction<ICalendarMonthStyleProps, ICalendarMonthStyles>();
 
 export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, {}> {
-  private _navigatedMonth: HTMLButtonElement;
-
   public static defaultProps: Partial<ICalendarMonthProps> = {
     styles: getStyles,
     strings: undefined,
     navigationIcons: defaultIconStrings,
     dateTimeFormatter: defaultDateTimeFormatterCallbacks
   };
+
+  private _navigatedMonth: HTMLButtonElement;
 
   public render(): JSX.Element {
     const {

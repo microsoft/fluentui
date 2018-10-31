@@ -535,9 +535,9 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
 
   private isInSameRange = (date1: Date, date2: Date): boolean => {
     const { dateRangeType, firstDayOfWeek, workWeekDays } = this.props;
-    let dateRange = getDateRangeArray(date1, dateRangeType, firstDayOfWeek, workWeekDays);
+    const dateRange = getDateRangeArray(date1, dateRangeType, firstDayOfWeek, workWeekDays);
 
-    return dateRange.filter(date => date.getTime() == date2.getTime()).length > 0;
+    return dateRange.filter(date => date.getTime() === date2.getTime()).length > 0;
   };
 
   private _getHighlightedCornerStyle(weekCorners: IWeekCorners, dayIndex: number, weekIndex: number): string {
@@ -558,11 +558,11 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
     const { dateRangeType, firstDayOfWeek, workWeekDays } = this.props;
 
     // gets all the dates for the given date range type that are in the same date range as the given day
-    let dateRange = getDateRangeArray(day.originalDate, dateRangeType, firstDayOfWeek, workWeekDays).map(date => date.getTime());
+    const dateRange = getDateRangeArray(day.originalDate, dateRangeType, firstDayOfWeek, workWeekDays).map(date => date.getTime());
 
     // gets all the day refs for the given dates
-    let dayInfosInRange = weeks!.reduce((accumulatedValue: IDayInfo[], currentWeek: IDayInfo[]) => {
-      return accumulatedValue.concat(currentWeek.filter(day => dateRange.includes(day.originalDate.getTime())));
+    const dayInfosInRange = weeks!.reduce((accumulatedValue: IDayInfo[], currentWeek: IDayInfo[]) => {
+      return accumulatedValue.concat(currentWeek.filter(weekDay => dateRange.includes(weekDay.originalDate.getTime())));
     }, []);
 
     let dayRefs: (HTMLElement | null)[] = [];
@@ -575,7 +575,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
 
   private onMouseOverDay = (day: IDayInfo) => {
     return (ev: React.MouseEvent<HTMLElement>) => {
-      let dayRefs = this.getRefsInRangeOfDay(day);
+      const dayRefs = this.getRefsInRangeOfDay(day);
 
       dayRefs.forEach(dayRef => {
         if (dayRef) {
@@ -587,7 +587,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
 
   private onMouseDownDay = (day: IDayInfo) => {
     return (ev: React.MouseEvent<HTMLElement>) => {
-      let dayRefs = this.getRefsInRangeOfDay(day);
+      const dayRefs = this.getRefsInRangeOfDay(day);
 
       dayRefs.forEach(dayRef => {
         if (dayRef) {
@@ -599,7 +599,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
 
   private onMouseUpDay = (day: IDayInfo) => {
     return (ev: React.MouseEvent<HTMLElement>) => {
-      let dayRefs = this.getRefsInRangeOfDay(day);
+      const dayRefs = this.getRefsInRangeOfDay(day);
 
       dayRefs.forEach(dayRef => {
         if (dayRef) {
@@ -611,7 +611,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
 
   private onMouseOutDay = (day: IDayInfo) => {
     return (ev: React.MouseEvent<HTMLElement>) => {
-      let dayRefs = this.getRefsInRangeOfDay(day);
+      const dayRefs = this.getRefsInRangeOfDay(day);
 
       dayRefs.forEach(dayRef => {
         if (dayRef) {

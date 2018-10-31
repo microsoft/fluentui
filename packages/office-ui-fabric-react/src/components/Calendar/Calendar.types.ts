@@ -1,9 +1,5 @@
 import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
-import { IRefObject, IBaseProps, IStyleFunctionOrObject } from '../../Utilities';
-import { IStyle, ITheme } from '../../Styling';
-import { ICalendarDayProps } from './CalendarDay/CalendarDay.types';
-import { ICalendarMonthProps } from './CalendarMonth/CalendarMonth.types';
-
+import { IRefObject, IBaseProps } from '../../Utilities';
 export { DayOfWeek, DateRangeType, FirstWeekOfYear };
 
 export interface ICalendar {
@@ -17,26 +13,6 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
    * the public methods and properties of the component.
    */
   componentRef?: IRefObject<ICalendar>;
-
-  /**
-   * Customized styles for the calendar component
-   */
-  styles?: IStyleFunctionOrObject<ICalendarStyleProps, ICalendarStyles>;
-
-  /**
-   * Customized props for the calendar day
-   */
-  calendarDayProps?: ICalendarDayProps;
-
-  /**
-   * Customized props for the calendar month
-   */
-  calendarMonthProps?: ICalendarMonthProps;
-
-  /**
-   * Theme provided by High-Order Component.
-   */
-  theme?: ITheme;
 
   /**
    * Optional class name to add to the root element.
@@ -54,36 +30,6 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
    * Callback issued when calendar is closed
    */
   onDismiss?: () => void;
-
-  /**
-   * Default value of the Calendar, if any
-   */
-  value?: Date;
-
-  /**
-   * Value of today. If null, current time in client machine will be used.
-   */
-  today?: Date;
-
-  /**
-   * The date range type indicating how  many days should be selected as the user
-   * selects days
-   * @defaultValue DateRangeType.Day
-   */
-  dateRangeType?: DateRangeType;
-
-  /**
-   * The first day of the week for your locale.
-   * @defaultvalue DayOfWeek.Sunday
-   */
-  firstDayOfWeek?: DayOfWeek;
-
-  /**
-   * Defines when the first week of the year should start, FirstWeekOfYear.FirstDay,
-   * FirstWeekOfYear.FirstFullWeek or FirstWeekOfYear.FirstFourDayWeek are the possible values
-   * @defaultvalue FirstWeekOfYear.FirstDay
-   */
-  firstWeekOfYear?: FirstWeekOfYear;
 
   /**
    * Whether the month picker is shown beside the day picker or hidden.
@@ -104,9 +50,69 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
   showMonthPickerAsOverlay?: boolean;
 
   /**
+   * Value of today. If null, current time in client machine will be used.
+   */
+  today?: Date;
+
+  /**
+   * Default value of the Calendar, if any
+   */
+  value?: Date;
+
+  /**
+   * The first day of the week for your locale.
+   * @defaultvalue DayOfWeek.Sunday
+   */
+  firstDayOfWeek?: DayOfWeek;
+
+  /**
+   * The date range type indicating how  many days should be selected as the user
+   * selects days
+   * @defaultValue DateRangeType.Day
+   */
+  dateRangeType?: DateRangeType;
+
+  /**
+   * Whether the month view should automatically navigate to the next or previous date range
+   * depending on the selected date. If this property is set to true and the currently displayed
+   * month is March 2017, if the user clicks on a day outside the month, i.e., April 1st, the
+   * picker will automatically navigate to the month of April.
+   * @defaultValue false
+   */
+  autoNavigateOnSelection?: boolean;
+
+  /**
    * Whether the "Go to today" link should be shown or not
    */
   showGoToToday?: boolean;
+
+  /**
+   * This property has been removed at 0.80.0 in place of the focus method, to be removed @ 1.0.0.
+   * @deprecated
+   */
+  shouldFocusOnMount?: boolean;
+
+  /**
+   * Localized strings to use in the Calendar
+   */
+  strings: ICalendarStrings | null;
+
+  /**
+   * Whether the month picker should highlight the current month
+   * @defaultvalue false
+   */
+  highlightCurrentMonth?: boolean;
+
+  /**
+   * Whether the month picker should highlight the selected month
+   * @defaultvalue false
+   */
+  highlightSelectedMonth?: boolean;
+
+  /**
+   * Customize navigation icons using ICalendarIconStrings
+   */
+  navigationIcons?: ICalendarIconStrings;
 
   /**
    * Whether the calendar should show the week number (weeks 1 to 53) before each week row
@@ -115,14 +121,11 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
   showWeekNumbers?: boolean;
 
   /**
-   * Localized strings to use in the Calendar
+   * Defines when the first week of the year should start, FirstWeekOfYear.FirstDay,
+   * FirstWeekOfYear.FirstFullWeek or FirstWeekOfYear.FirstFourDayWeek are the possible values
+   * @defaultvalue FirstWeekOfYear.FirstDay
    */
-  strings: ICalendarStrings | null;
-
-  /**
-   * Customize navigation icons using ICalendarIconStrings
-   */
-  navigationIcons?: ICalendarIconStrings;
+  firstWeekOfYear?: FirstWeekOfYear;
 
   /**
    * Apply additional formating to dates, for example localized date formatting.
@@ -152,16 +155,10 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
   workWeekDays?: DayOfWeek[];
 
   /**
-   * Whether the month picker should highlight the current month
+   * When clicking on "Today", select the date and close the calendar.
    * @defaultvalue false
    */
-  highlightCurrentMonth?: boolean;
-
-  /**
-   * Whether the month picker should highlight the selected month
-   * @defaultvalue false
-   */
-  highlightSelectedMonth?: boolean;
+  selectDateOnClick?: boolean;
 
   /**
    * Whether the close button should be shown or not
@@ -277,44 +274,4 @@ export interface ICalendarFormatDateCallbacks {
    * Callback to apply formatting to the year in the Month Picker header
    */
   formatYear: (date: Date) => string;
-}
-
-export interface ICalendarStyleProps {
-  /**
-   * Theme provided by High-Order Component.
-   */
-  theme: ITheme;
-
-  /**
-   * Accept custom classNames
-   */
-  className?: string;
-
-  // Insert Calendar style props below
-  isMonthPickerVisible?: boolean;
-
-  isDayPickerVisible?: boolean;
-
-  monthPickerOnly?: boolean;
-
-  showMonthPickerAsOverlay?: boolean;
-
-  overlayedWithButton?: boolean;
-
-  showGoToToday?: boolean;
-
-  showWeekNumbers?: boolean;
-}
-
-export interface ICalendarStyles {
-  /**
-   * Style for the root element.
-   */
-  root: IStyle;
-
-  divider: IStyle;
-
-  goTodayButton: IStyle;
-
-  monthPickerWrapper: IStyle;
 }

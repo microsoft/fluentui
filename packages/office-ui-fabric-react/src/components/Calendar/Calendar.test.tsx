@@ -8,7 +8,6 @@ import { mount } from 'enzyme';
 import { Calendar } from './Calendar';
 import { DateRangeType, DayOfWeek } from './Calendar.types';
 import { addDays, compareDates } from '../../utilities/dateMath/DateMath';
-import { CalendarBase } from 'office-ui-fabric-react/lib/components/Calendar/Calendar.base';
 
 describe('Calendar', () => {
   const dayPickerStrings = {
@@ -36,12 +35,12 @@ describe('Calendar', () => {
   });
 
   describe('Test rendering simplest calendar', () => {
-    let renderedComponent: CalendarBase;
+    let renderedComponent: Calendar;
 
     beforeAll(() => {
       renderedComponent = ReactTestUtils.renderIntoDocument(
         <Calendar strings={dayPickerStrings} isMonthPickerVisible={false} />
-      ) as CalendarBase;
+      ) as Calendar;
     });
 
     it('Renders simple calendar correctly', () => {
@@ -96,7 +95,7 @@ describe('Calendar', () => {
   });
 
   describe('Test rendering most complicated calendar', () => {
-    let renderedComponent: CalendarBase;
+    let renderedComponent: Calendar;
     let defaultDate: Date;
     let lastSelectedDateRange: Date[] | null = null;
 
@@ -115,10 +114,11 @@ describe('Calendar', () => {
           value={defaultDate}
           firstDayOfWeek={DayOfWeek.Tuesday}
           dateRangeType={DateRangeType.Week}
+          autoNavigateOnSelection={true}
           onSelectDate={onSelectDate()}
           className="CalendarTestClass"
         />
-      ) as CalendarBase;
+      ) as Calendar;
     });
 
     it('Verify day picker header', () => {
@@ -218,7 +218,7 @@ describe('Calendar', () => {
           minDate={minDate}
           maxDate={maxDate}
         />
-      ) as CalendarBase;
+      ) as Calendar;
 
       const days = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-day-button');
 
@@ -247,7 +247,7 @@ describe('Calendar', () => {
           maxDate={maxDate}
           onSelectDate={onSelectDate()}
         />
-      ) as CalendarBase;
+      ) as Calendar;
 
       const days = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-day-button');
       ReactTestUtils.Simulate.click(days[18]);
@@ -269,7 +269,7 @@ describe('Calendar', () => {
         minDate={minDate}
         maxDate={maxDate}
       />
-    ) as CalendarBase;
+    ) as Calendar;
 
     const prevMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-prevMonth');
     const nextMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-nextMonth');
@@ -291,7 +291,7 @@ describe('Calendar', () => {
         minDate={minDate}
         maxDate={maxDate}
       />
-    ) as CalendarBase;
+    ) as Calendar;
 
     const months = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-monthOption');
 
@@ -313,7 +313,7 @@ describe('Calendar', () => {
         minDate={minDate}
         maxDate={maxDate}
       />
-    ) as CalendarBase;
+    ) as Calendar;
 
     const prevMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-prevYear');
     const nextMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-nextYear');
