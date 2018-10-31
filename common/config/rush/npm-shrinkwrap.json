@@ -86,6 +86,28 @@
         "z-schema": "3.18.4"
       }
     },
+    "@microsoft/sp-lodash-subset": {
+      "version": "1.6.0",
+      "resolved": "https://registry.npmjs.org/@microsoft/sp-lodash-subset/-/sp-lodash-subset-1.6.0.tgz",
+      "integrity": "sha512-3SJYqSLwF3Lv9UlRkXjswLuO/Tizgj4xay1IFD1OVmzXDufigKjSfkkyHrX5hpPaobvJy1PasDtnatDtEADZ3w==",
+      "requires": {
+        "@types/lodash": "4.14.74",
+        "@types/webpack-env": "1.13.1",
+        "tslib": "1.8.1"
+      },
+      "dependencies": {
+        "@types/webpack-env": {
+          "version": "1.13.1",
+          "resolved": "https://registry.npmjs.org/@types/webpack-env/-/webpack-env-1.13.1.tgz",
+          "integrity": "sha512-oHyg0NssP2RCpCvE35hhbSqMJRsc5lSW+GFe+Vc65JL+kHII1VMYM+0KeV/z4utFuUqPoQRmq8KMMp7ba0dj6Q=="
+        },
+        "tslib": {
+          "version": "1.8.1",
+          "resolved": "https://registry.npmjs.org/tslib/-/tslib-1.8.1.tgz",
+          "integrity": "sha1-aUavLR1lGnsYY7Ux1uWvpBqkTqw="
+        }
+      }
+    },
     "@microsoft/ts-command-line": {
       "version": "4.2.2",
       "resolved": "https://registry.npmjs.org/@microsoft/ts-command-line/-/ts-command-line-4.2.2.tgz",
@@ -117,55 +139,6 @@
       "integrity": "sha512-yprFYuno9FtNsSHVlSWd+nRlmGoAbqbeCwOryP6sC/zoCjhpArcRMYp19EvpSUSizJAlsXEwJv+wcWS9XaXdMw=="
     },
     "@rush-temp/build": {
-      "version": "file:projects/build.tgz",
-      "integrity": "sha1-xpOXacLLGwCRrWuj5oJVch8YgA8=",
-      "requires": {
-        "@microsoft/api-extractor": "6.0.9",
-        "@microsoft/load-themed-styles": "1.8.29",
-        "@microsoft/loader-load-themed-styles": "1.7.97",
-        "autoprefixer": "7.2.6",
-        "babylon": "7.0.0-beta.47",
-        "bundlesize": "0.15.3",
-        "chalk": "2.4.1",
-        "codecov": "3.1.0",
-        "command-line-args": "4.0.7",
-        "cpx": "1.5.0",
-        "css-loader": "0.28.11",
-        "fork-ts-checker-webpack-plugin": "0.4.14",
-        "github": "7.3.2",
-        "glob": "7.1.3",
-        "gzip-size": "3.0.0",
-        "husky": "0.14.3",
-        "jest": "23.6.0",
-        "jscodeshift": "0.5.1",
-        "json-loader": "0.5.7",
-        "lint-staged": "7.3.0",
-        "mustache": "2.3.2",
-        "ngrok": "3.1.0",
-        "node-sass": "4.9.4",
-        "open": "0.0.5",
-        "postcss": "6.0.23",
-        "postcss-loader": "2.1.6",
-        "postcss-modules": "0.8.0",
-        "prettier": "1.14.3",
-        "raf": "3.4.0",
-        "raw-loader": "0.5.1",
-        "resolve": "1.8.1",
-        "sass-loader": "6.0.7",
-        "source-map-loader": "0.2.4",
-        "style-loader": "0.19.1",
-        "ts-jest": "22.4.6",
-        "ts-loader": "4.5.0",
-        "tslint": "5.11.0",
-        "tslint-microsoft-contrib": "5.2.1",
-        "typescript": "2.8.4",
-        "webpack": "4.7.0",
-        "webpack-bundle-analyzer": "2.13.1",
-        "webpack-cli": "2.1.2",
-        "webpack-dev-server": "3.1.4",
-        "webpack-notifier": "1.7.0",
-        "yargs": "6.6.0"
-      },
       "dependencies": {
         "ajv": {
           "version": "6.5.4",
@@ -840,71 +813,8 @@
         }
       }
     },
-    "@rush-temp/charting": {
-      "version": "file:projects/charting.tgz",
-      "integrity": "sha1-GzlVopuSOSyDzmsEirsa5/Ywl/A=",
-      "requires": {
-        "@microsoft/load-themed-styles": "1.8.29",
-        "@types/d3-array": "1.2.1",
-        "@types/d3-axis": "1.0.10",
-        "@types/d3-scale": "2.0.0",
-        "@types/d3-selection": "1.3.0",
-        "@types/d3-shape": "1.2.4",
-        "@types/d3-time-format": "2.1.0",
-        "@types/enzyme": "3.1.13",
-        "@types/enzyme-adapter-react-16": "1.0.3",
-        "@types/es6-promise": "0.0.32",
-        "@types/jest": "23.0.0",
-        "@types/prop-types": "15.5.3",
-        "@types/react": "16.3.16",
-        "@types/react-addons-test-utils": "0.14.18",
-        "@types/react-dom": "16.0.5",
-        "@types/react-test-renderer": "16.0.3",
-        "@types/resemblejs": "1.3.28",
-        "@types/sinon": "2.2.2",
-        "@types/webpack-env": "1.13.0",
-        "d3-array": "1.2.1",
-        "d3-axis": "1.0.8",
-        "d3-scale": "2.0.0",
-        "d3-selection": "1.3.0",
-        "d3-shape": "1.2.2",
-        "d3-time-format": "2.1.3",
-        "enzyme": "3.7.0",
-        "enzyme-adapter-react-16": "1.6.0",
-        "es6-weak-map": "2.0.2",
-        "prop-types": "15.6.2",
-        "react": "16.6.0",
-        "react-dom": "16.6.0",
-        "react-highlight": "0.10.0",
-        "react-test-renderer": "16.6.0",
-        "sinon": "4.5.0",
-        "tslib": "1.9.3"
-      }
-    },
+    "@rush-temp/charting": {},
     "@rush-temp/dashboard": {
-      "version": "file:projects/dashboard.tgz",
-      "integrity": "sha1-2ArRbW3PL2XIRom6ZF3NXGDlSc8=",
-      "requires": {
-        "@microsoft/load-themed-styles": "1.8.29",
-        "@types/enzyme": "3.1.13",
-        "@types/enzyme-adapter-react-16": "1.0.3",
-        "@types/jest": "23.0.0",
-        "@types/react": "16.3.16",
-        "@types/react-dom": "16.0.5",
-        "@types/react-test-renderer": "16.0.3",
-        "@types/webpack-env": "1.13.0",
-        "auto-fontsize": "1.0.18",
-        "css-loader": "0.15.6",
-        "enzyme": "3.7.0",
-        "enzyme-adapter-react-16": "1.6.0",
-        "react": "16.6.0",
-        "react-dom": "16.6.0",
-        "react-grid-layout": "github:samiyaakhtar/react-grid-layout#6ed4e54bcb5236f78bf181433ad36aea971e5891",
-        "react-resizable": "1.7.5",
-        "react-test-renderer": "16.6.0",
-        "style-loader": "0.21.0",
-        "tslib": "1.9.3"
-      },
       "dependencies": {
         "balanced-match": {
           "version": "0.2.1",
@@ -1265,81 +1175,9 @@
         }
       }
     },
-    "@rush-temp/example-app-base": {
-      "version": "file:projects/example-app-base.tgz",
-      "integrity": "sha1-urSuZhC/WCLcbB7ghGHSJeF01Cc=",
-      "requires": {
-        "@microsoft/load-themed-styles": "1.8.29",
-        "@types/es6-promise": "0.0.32",
-        "@types/highlight.js": "9.12.2",
-        "@types/jest": "23.0.0",
-        "@types/react": "16.3.16",
-        "@types/react-dom": "16.0.5",
-        "@types/webpack-env": "1.13.0",
-        "es6-map": "0.1.5",
-        "es6-promise": "4.2.5",
-        "es6-weak-map": "2.0.2",
-        "highlight.js": "9.13.1",
-        "markdown-to-jsx": "6.6.1",
-        "react": "16.6.0",
-        "react-dom": "16.6.0",
-        "react-syntax-highlighter": "7.0.4",
-        "tslib": "1.9.3",
-        "whatwg-fetch": "2.0.4"
-      }
-    },
-    "@rush-temp/experiments": {
-      "version": "file:projects/experiments.tgz",
-      "integrity": "sha1-3uKOoAhvC/Q/8Rb29L8sdRG62nk=",
-      "requires": {
-        "@microsoft/load-themed-styles": "1.8.29",
-        "@types/deep-assign": "0.1.1",
-        "@types/enzyme": "3.1.13",
-        "@types/enzyme-adapter-react-16": "1.0.3",
-        "@types/es6-promise": "0.0.32",
-        "@types/jest": "23.0.0",
-        "@types/react": "16.3.16",
-        "@types/react-addons-test-utils": "0.14.18",
-        "@types/react-dom": "16.0.5",
-        "@types/react-test-renderer": "16.0.3",
-        "@types/resemblejs": "1.3.28",
-        "@types/sinon": "2.2.2",
-        "@types/webpack-env": "1.13.0",
-        "deep-assign": "2.0.0",
-        "enzyme": "3.7.0",
-        "enzyme-adapter-react-16": "1.6.0",
-        "es6-weak-map": "2.0.2",
-        "react": "16.6.0",
-        "react-dom": "16.6.0",
-        "react-highlight": "0.10.0",
-        "react-test-renderer": "16.6.0",
-        "sinon": "4.5.0",
-        "tslib": "1.9.3"
-      }
-    },
+    "@rush-temp/example-app-base": {},
+    "@rush-temp/experiments": {},
     "@rush-temp/fabric-website": {
-      "version": "file:projects/fabric-website.tgz",
-      "integrity": "sha1-cW66ciNeeS5civb9DmxkhMlEdgE=",
-      "requires": {
-        "@microsoft/load-themed-styles": "1.8.29",
-        "@types/es6-promise": "0.0.32",
-        "@types/node": "8.0.26",
-        "@types/react": "16.3.16",
-        "@types/react-dom": "16.0.5",
-        "@types/resemblejs": "1.3.28",
-        "@types/webpack-env": "1.13.0",
-        "color-functions": "1.1.0",
-        "es6-promise": "4.2.5",
-        "es6-weak-map": "2.0.2",
-        "highlight.js": "9.13.1",
-        "json-loader": "0.5.7",
-        "office-ui-fabric-core": "9.6.1",
-        "react": "16.6.0",
-        "react-dom": "16.6.0",
-        "react-highlight": "0.10.0",
-        "tslib": "1.9.3",
-        "write-file-webpack-plugin": "4.4.1"
-      },
       "dependencies": {
         "@types/node": {
           "version": "8.0.26",
@@ -1348,168 +1186,15 @@
         }
       }
     },
-    "@rush-temp/fabric-website-resources": {
-      "version": "file:projects/fabric-website-resources.tgz",
-      "integrity": "sha1-SKHsJIqtK/iTABXpn0RxI46CbLE=",
-      "requires": {
-        "@microsoft/load-themed-styles": "1.8.29",
-        "@types/enzyme": "3.1.13",
-        "@types/enzyme-adapter-react-16": "1.0.3",
-        "@types/es6-promise": "0.0.32",
-        "@types/jest": "23.0.0",
-        "@types/prop-types": "15.5.3",
-        "@types/react": "16.3.16",
-        "@types/react-dom": "16.0.5",
-        "@types/react-test-renderer": "16.0.3",
-        "@types/resemblejs": "1.3.28",
-        "@types/sinon": "2.2.2",
-        "@types/webpack-env": "1.13.0",
-        "enzyme": "3.7.0",
-        "enzyme-adapter-react-16": "1.6.0",
-        "enzyme-to-json": "3.3.4",
-        "es6-map": "0.1.5",
-        "es6-promise": "4.2.5",
-        "es6-weak-map": "2.0.2",
-        "highlight.js": "9.13.1",
-        "office-ui-fabric-core": "9.6.1",
-        "prop-types": "15.6.2",
-        "react": "16.6.0",
-        "react-dom": "16.6.0",
-        "react-highlight": "0.10.0",
-        "react-test-renderer": "16.6.0",
-        "resemblejs": "2.2.6",
-        "sinon": "4.5.0",
-        "tslib": "1.9.3"
-      }
-    },
-    "@rush-temp/file-type-icons": {
-      "version": "file:projects/file-type-icons.tgz",
-      "integrity": "sha1-XJU8pLQXuDqA+nQd90pamOf26NI=",
-      "requires": {
-        "@types/react": "16.3.16",
-        "@types/react-dom": "16.0.5",
-        "react": "16.6.0",
-        "react-dom": "16.6.0",
-        "tslib": "1.9.3"
-      }
-    },
-    "@rush-temp/fluent-theme": {
-      "version": "file:projects/fluent-theme.tgz",
-      "integrity": "sha1-moiyqQRGq8yVHmWRUMlHyePro10=",
-      "requires": {
-        "@types/jest": "23.0.0",
-        "tslib": "1.9.3"
-      }
-    },
-    "@rush-temp/foundation": {
-      "version": "file:projects/foundation.tgz",
-      "integrity": "sha1-n7vUl9ARWV2YvS7E1LDPG5kxU5k=",
-      "requires": {
-        "@types/enzyme": "3.1.13",
-        "@types/enzyme-adapter-react-16": "1.0.3",
-        "@types/jest": "23.0.0",
-        "@types/react": "16.3.16",
-        "@types/react-dom": "16.0.5",
-        "@types/react-test-renderer": "16.0.3",
-        "@types/sinon": "2.2.2",
-        "enzyme": "3.7.0",
-        "enzyme-adapter-react-16": "1.6.0",
-        "react": "16.6.0",
-        "react-dom": "16.6.0",
-        "react-test-renderer": "16.6.0",
-        "sinon": "4.5.0",
-        "tslib": "1.9.3"
-      }
-    },
-    "@rush-temp/icons": {
-      "version": "file:projects/icons.tgz",
-      "integrity": "sha1-gYqP0b/+JtO0QBvraMB26VR8keE=",
-      "requires": {
-        "tslib": "1.9.3"
-      }
-    },
-    "@rush-temp/jest-serializer-merge-styles": {
-      "version": "file:projects/jest-serializer-merge-styles.tgz",
-      "integrity": "sha1-bV8z33aA61WIL2r8OfTva+l4Pvk=",
-      "requires": {
-        "@types/jest": "23.0.0"
-      }
-    },
-    "@rush-temp/merge-styles": {
-      "version": "file:projects/merge-styles.tgz",
-      "integrity": "sha1-/U/qzOTUat3fOowetjAkbEGMjsY=",
-      "requires": {
-        "@types/jest": "23.0.0",
-        "tslib": "1.9.3"
-      }
-    },
-    "@rush-temp/mr": {
-      "version": "file:projects/mr.tgz",
-      "integrity": "sha1-S52uVXkQhqE8yVUBo6HXdpKcvYA=",
-      "requires": {
-        "@microsoft/load-themed-styles": "1.8.29",
-        "@types/enzyme": "3.1.13",
-        "@types/enzyme-adapter-react-16": "1.0.3",
-        "@types/es6-promise": "0.0.32",
-        "@types/jest": "23.0.0",
-        "@types/react": "16.3.16",
-        "@types/react-dom": "16.0.5",
-        "@types/react-test-renderer": "16.0.3",
-        "@types/webpack-env": "1.13.0",
-        "babylonjs": "4.0.0-alpha.2",
-        "babylonjs-gltf2interface": "4.0.0-alpha.2",
-        "babylonjs-gui": "4.0.0-alpha.2",
-        "babylonjs-inspector": "4.0.0-alpha.2",
-        "babylonjs-loaders": "4.0.0-alpha.2",
-        "babylonjs-materials": "4.0.0-alpha.2",
-        "babylonjs-serializers": "4.0.0-alpha.2",
-        "cannon": "0.6.2",
-        "earcut": "2.1.3",
-        "enzyme": "3.7.0",
-        "enzyme-adapter-react-16": "1.6.0",
-        "es6-weak-map": "2.0.2",
-        "oimo": "1.0.9",
-        "react": "16.6.0",
-        "react-dom": "16.6.0",
-        "react-test-renderer": "16.6.0",
-        "tslib": "1.9.3"
-      }
-    },
+    "@rush-temp/fabric-website-resources": {},
+    "@rush-temp/file-type-icons": {},
+    "@rush-temp/fluent-theme": {},
+    "@rush-temp/foundation": {},
+    "@rush-temp/icons": {},
+    "@rush-temp/jest-serializer-merge-styles": {},
+    "@rush-temp/merge-styles": {},
+    "@rush-temp/mr": {},
     "@rush-temp/office-ui-fabric-react": {
-      "version": "file:projects/office-ui-fabric-react.tgz",
-      "integrity": "sha1-TLOKLDS2jBnAkqHCYcMikMOuVy4=",
-      "requires": {
-        "@microsoft/load-themed-styles": "1.8.29",
-        "@types/enzyme": "3.1.13",
-        "@types/enzyme-adapter-react-16": "1.0.3",
-        "@types/es6-promise": "0.0.32",
-        "@types/glob": "5.0.36",
-        "@types/jest": "23.0.0",
-        "@types/node": "8.10.36",
-        "@types/prop-types": "15.5.3",
-        "@types/react": "16.3.16",
-        "@types/react-dom": "16.0.5",
-        "@types/react-test-renderer": "16.0.3",
-        "@types/resemblejs": "1.3.28",
-        "@types/sinon": "2.2.2",
-        "@types/webpack-env": "1.13.0",
-        "enzyme": "3.7.0",
-        "enzyme-adapter-react-16": "1.6.0",
-        "enzyme-to-json": "3.3.4",
-        "es6-map": "0.1.5",
-        "es6-promise": "4.2.5",
-        "es6-weak-map": "2.0.2",
-        "highlight.js": "9.13.1",
-        "office-ui-fabric-core": "9.6.1",
-        "prop-types": "15.6.2",
-        "react": "16.6.0",
-        "react-dom": "16.6.0",
-        "react-highlight": "0.10.0",
-        "react-test-renderer": "16.6.0",
-        "resemblejs": "2.2.6",
-        "sinon": "4.5.0",
-        "tslib": "1.9.3"
-      },
       "dependencies": {
         "@types/node": {
           "version": "8.10.36",
@@ -1518,52 +1203,10 @@
         }
       }
     },
-    "@rush-temp/prettier-rules": {
-      "version": "file:projects/prettier-rules.tgz",
-      "integrity": "sha1-eo7/qOUOd9+6qZxs4r7ZUj2PdHU="
-    },
-    "@rush-temp/server-rendered-app": {
-      "version": "file:projects/server-rendered-app.tgz",
-      "integrity": "sha1-yBpNvlMdyQHt29qy1fjAsqn4aIg=",
-      "requires": {
-        "@microsoft/load-themed-styles": "1.8.29",
-        "@types/es6-promise": "0.0.32",
-        "@types/react": "16.3.16",
-        "@types/react-dom": "16.0.5",
-        "@types/webpack-env": "1.13.0",
-        "compression": "1.7.3",
-        "es6-promise": "4.2.5",
-        "express": "4.16.4",
-        "immutability-helper": "2.8.1",
-        "react": "16.6.0",
-        "react-dom": "16.6.0",
-        "tslib": "1.9.3"
-      }
-    },
-    "@rush-temp/set-version": {
-      "version": "file:projects/set-version.tgz",
-      "integrity": "sha1-+2rmd+nDSsASCS94JQ9VXedQM7Y=",
-      "requires": {
-        "@types/jest": "23.0.0",
-        "tslib": "1.9.3"
-      }
-    },
+    "@rush-temp/prettier-rules": {},
+    "@rush-temp/server-rendered-app": {},
+    "@rush-temp/set-version": {},
     "@rush-temp/ssr-tests": {
-      "version": "file:projects/ssr-tests.tgz",
-      "integrity": "sha1-5JRWtnXpFHYIMZKkiloZ1ek5J/4=",
-      "requires": {
-        "@microsoft/load-themed-styles": "1.8.29",
-        "@types/es6-promise": "0.0.32",
-        "@types/mocha": "2.2.39",
-        "@types/webpack-env": "1.13.0",
-        "es6-promise": "4.2.5",
-        "mocha": "3.5.3",
-        "raw-loader": "0.5.1",
-        "react": "16.6.0",
-        "react-dom": "16.6.0",
-        "tslib": "1.9.3",
-        "webpack": "4.23.1"
-      },
       "dependencies": {
         "ajv": {
           "version": "6.5.4",
@@ -1892,130 +1535,15 @@
         }
       }
     },
-    "@rush-temp/styling": {
-      "version": "file:projects/styling.tgz",
-      "integrity": "sha1-p7nkFSZc6tyVGxfAXoXFgDX6Y1I=",
-      "requires": {
-        "@microsoft/load-themed-styles": "1.8.29",
-        "@types/jest": "23.0.0",
-        "@types/react": "16.3.16",
-        "@types/webpack-env": "1.13.0",
-        "es6-map": "0.1.5",
-        "es6-weak-map": "2.0.2",
-        "react": "16.6.0",
-        "react-dom": "16.6.0",
-        "tslib": "1.9.3"
-      }
-    },
-    "@rush-temp/test-bundle-button": {
-      "version": "file:projects/test-bundle-button.tgz",
-      "integrity": "sha1-ipvYnIQKQhDbHJagqbTH0hif9QE=",
-      "requires": {
-        "@types/react": "16.3.16",
-        "@types/react-dom": "16.0.5",
-        "@types/webpack-env": "1.13.0",
-        "react": "16.6.0",
-        "react-dom": "16.6.0",
-        "tslib": "1.9.3"
-      }
-    },
-    "@rush-temp/theme-samples": {
-      "version": "file:projects/theme-samples.tgz",
-      "integrity": "sha1-E6PAoERH3G8pbCy0zGjd9aXrH3c=",
-      "requires": {
-        "@types/jest": "23.0.0",
-        "tslib": "1.9.3"
-      }
-    },
-    "@rush-temp/todo-app": {
-      "version": "file:projects/todo-app.tgz",
-      "integrity": "sha1-u1IQOCddYPyIGhsCjQTdnX6qUxY=",
-      "requires": {
-        "@microsoft/load-themed-styles": "1.8.29",
-        "@types/es6-promise": "0.0.32",
-        "@types/react": "16.3.16",
-        "@types/react-dom": "16.0.5",
-        "@types/webpack-env": "1.13.0",
-        "es6-promise": "4.2.5",
-        "immutability-helper": "2.8.1",
-        "react": "16.6.0",
-        "react-dom": "16.6.0",
-        "tslib": "1.9.3",
-        "typescript": "2.8.4"
-      }
-    },
-    "@rush-temp/tslint-rules": {
-      "version": "file:projects/tslint-rules.tgz",
-      "integrity": "sha1-63eDdt1d/ZsGC4csYrqSPPJkXzw=",
-      "requires": {
-        "tslint-react": "3.6.0"
-      }
-    },
-    "@rush-temp/utilities": {
-      "version": "file:projects/utilities.tgz",
-      "integrity": "sha1-1tzT4sHOfQMnRxUkzBZJpSweNjE=",
-      "requires": {
-        "@types/enzyme": "3.1.13",
-        "@types/enzyme-adapter-react-16": "1.0.3",
-        "@types/jest": "23.0.0",
-        "@types/prop-types": "15.5.3",
-        "@types/react": "16.3.16",
-        "@types/react-dom": "16.0.5",
-        "@types/react-test-renderer": "16.0.3",
-        "@types/sinon": "2.2.2",
-        "enzyme": "3.7.0",
-        "enzyme-adapter-react-16": "1.6.0",
-        "prop-types": "15.6.2",
-        "react": "16.6.0",
-        "react-dom": "16.6.0",
-        "react-test-renderer": "16.6.0",
-        "sinon": "4.5.0",
-        "tslib": "1.9.3"
-      }
-    },
-    "@rush-temp/variants": {
-      "version": "file:projects/variants.tgz",
-      "integrity": "sha1-EdYePG6tpY03QDNobNrYyjmTdJg=",
-      "requires": {
-        "@types/jest": "23.0.0",
-        "tslib": "1.9.3"
-      }
-    },
-    "@rush-temp/vr-tests": {
-      "version": "file:projects/vr-tests.tgz",
-      "integrity": "sha1-xJhJyXCMjCwUFm6xxK49E6MEKGc=",
-      "requires": {
-        "@storybook/addon-options": "3.2.3",
-        "@storybook/react": "3.4.11",
-        "@types/react": "16.3.16",
-        "@types/react-dom": "16.0.5",
-        "@types/storybook__react": "3.0.5",
-        "awesome-typescript-loader": "3.5.0",
-        "css-loader": "0.28.11",
-        "file-loader": "0.11.2",
-        "postcss-loader": "2.1.6",
-        "raw-loader": "0.5.1",
-        "react": "16.6.0",
-        "react-dom": "16.6.0",
-        "screener-runner": "0.10.21",
-        "screener-storybook": "0.14.13",
-        "storybook-readme": "3.0.6",
-        "style-loader": "0.19.1",
-        "tslib": "1.9.3",
-        "typescript": "2.8.4"
-      }
-    },
+    "@rush-temp/styling": {},
+    "@rush-temp/test-bundle-button": {},
+    "@rush-temp/theme-samples": {},
+    "@rush-temp/todo-app": {},
+    "@rush-temp/tslint-rules": {},
+    "@rush-temp/utilities": {},
+    "@rush-temp/variants": {},
+    "@rush-temp/vr-tests": {},
     "@rush-temp/webpack-utils": {
-      "version": "file:projects/webpack-utils.tgz",
-      "integrity": "sha1-sQF33xKnRFYE3XpPV8YyNjxflPQ=",
-      "requires": {
-        "@types/jest": "23.0.0",
-        "@types/loader-utils": "1.1.3",
-        "@types/webpack": "4.4.0",
-        "loader-utils": "1.1.0",
-        "tslib": "1.9.3",
-        "webpack": "4.23.1"
-      },
       "dependencies": {
         "ajv": {
           "version": "6.5.4",
@@ -2781,6 +2309,11 @@
         "@types/node": "8.5.8",
         "@types/webpack": "4.4.0"
       }
+    },
+    "@types/lodash": {
+      "version": "4.14.74",
+      "resolved": "https://registry.npmjs.org/@types/lodash/-/lodash-4.14.74.tgz",
+      "integrity": "sha512-BZknw3E/z3JmCLqQVANcR17okqVTPZdlxvcIz0fJiJVLUCbSH1hK3zs9r634PVSmrzAxN+n/fxlVRiYoArdOIQ=="
     },
     "@types/minimatch": {
       "version": "3.0.3",
