@@ -12,10 +12,7 @@ export interface IFocusTrapZoneDialogInPanelExampleState {
   showPanel: boolean;
 }
 
-export default class FocusTrapDialogInPanelExample extends React.Component<
-  {},
-  IFocusTrapZoneDialogInPanelExampleState
-> {
+export default class FocusTrapDialogInPanelExample extends React.Component<{}, IFocusTrapZoneDialogInPanelExampleState> {
   constructor(props: {}) {
     super(props);
 

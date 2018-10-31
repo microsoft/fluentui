@@ -136,12 +136,27 @@ export class Chart extends React.Component<IChartInternalProps, { _width: number
       return <MultiStackedBarChart data={this.props.chartData!} barHeight={this.props.barHeight} hideRatio={this.props.hideRatio} />;
     }
 
-    return <StackedBarChart data={this.props.chartData![0]} barHeight={this.props.barHeight} />;
+    return (
+      <StackedBarChart
+        data={this.props.chartData![0]}
+        barHeight={this.props.barHeight}
+        ignoreFixStyle={this.props.ignoreStackBarChartDefaultStyle}
+      />
+    );
   };
 
   private _getLineChart = (): JSX.Element => {
     const { chartData, timeRange } = this.props;
-    if (chartData![0].lineChartData![0].data[0].x instanceof Date) {
+    let dateDataType = false;
+    if (chartData && chartData[0] && chartData[0].lineChartData) {
+      chartData[0].lineChartData!.forEach((lineData: ILineChartPoints) => {
+        if (lineData.data.length > 0) {
+          dateDataType = lineData.data[0].x instanceof Date;
+          return;
+        }
+      });
+    }
+    if (dateDataType) {
       let sDate = new Date();
       // selecting least possible date. Using this to compute the farthest date among the data passed to render on x-axis
       let lDate = new Date(-8640000000000000);
@@ -187,27 +202,18 @@ export class Chart extends React.Component<IChartInternalProps, { _width: number
         }
       }
       return (
-        <div className={mergeStyles({ width: this.state._width, height: this.state._height })}>
-          <LineChart
-            data={this.props.chartData![0]}
-            strokeWidth={this.props.strokeWidth}
-            width={this._getWidth()}
-            height={this._getHeight()}
-            tickValues={tickValues}
-            tickFormat={'%m/%d'}
-          />
-        </div>
-      );
-    }
-    return (
-      <div className={mergeStyles({ width: this.state._width, height: this.state._height })}>
         <LineChart
           data={this.props.chartData![0]}
           strokeWidth={this.props.strokeWidth}
           width={this._getWidth()}
           height={this._getHeight()}
+          tickValues={tickValues}
+          tickFormat={'%m/%d'}
         />
-      </div>
+      );
+    }
+    return (
+      <LineChart data={this.props.chartData![0]} strokeWidth={this.props.strokeWidth} width={this._getWidth()} height={this._getHeight()} />
     );
   };
 }

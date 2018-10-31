@@ -2,6 +2,75 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.7.0",
+      "tag": "@uifabric/fabric-website_v6.7.0",
+      "date": "Tue, 30 Oct 2018 18:45:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Carry over website pipeline improvements to prod-deployed index",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "bda21112a764910c54fcba11cae5a4d2e282124b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.95.0 <7.0.0` to `>=6.96.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.6.2",
+      "tag": "@uifabric/fabric-website_v6.6.2",
+      "date": "Wed, 24 Oct 2018 12:28:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Nav: fix loosely typed const after changes in display property type of IRawStyleBase.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "e8ac70df6f544134a4e8cbccf87a66d37327d9f6"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.39.3 <7.0.0` to `>=6.39.4 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.91.0 <7.0.0` to `>=6.92.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.6.1",
+      "tag": "@uifabric/fabric-website_v6.6.1",
+      "date": "Wed, 17 Oct 2018 01:29:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Modify theme generator output and add codepen export option.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "a6221962c23ff48cebe654f89ecde0e2956f80cf"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `>=6.9.3 <7.0.0` to `>=6.9.4 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.8.0 <7.0.0` to `>=6.9.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.38.0 <7.0.0` to `>=6.38.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.85.0 <7.0.0` to `>=6.86.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.6.0",
       "tag": "@uifabric/fabric-website_v6.6.0",
       "date": "Mon, 15 Oct 2018 12:29:12 GMT",

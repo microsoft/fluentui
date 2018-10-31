@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders HoverCard.PlainCard.Example.tsx correctly 1`] = `
+<div>
+  <p>
+    Hover over the 
+    <i>
+      color
+    </i>
+     cell of a row item to see the card.
+  </p>
+  <div
+    className="ms-Viewport"
+    style={
+      Object {
+        "minHeight": 1,
+        "minWidth": 1,
+      }
+    }
+  />
+</div>
+`;

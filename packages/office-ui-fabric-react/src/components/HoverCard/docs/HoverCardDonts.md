@@ -1,1 +1,0 @@
-- If not specifying `target` prop and using the HoverCard as a wrapper, don't provide `data-is-focusable='true'` attribute to the root of the wrapped child. When no target given, HoverCard will use it's root as a target and become the focusable element with a `focus` listener attached to it. See Example 1.

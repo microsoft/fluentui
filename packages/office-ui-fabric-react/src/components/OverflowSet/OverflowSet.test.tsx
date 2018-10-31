@@ -31,9 +31,7 @@ describe('OverflowSet', () => {
     test('basicSnapshot', () => {
       const onRenderItem = sinon.spy();
       const onRenderOverflowButton = sinon.spy();
-      const component = renderer.create(
-        <OverflowSet onRenderItem={onRenderItem} onRenderOverflowButton={onRenderOverflowButton} />
-      );
+      const component = renderer.create(<OverflowSet onRenderItem={onRenderItem} onRenderOverflowButton={onRenderOverflowButton} />);
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
@@ -52,12 +50,7 @@ describe('OverflowSet', () => {
       const onRenderItem = sinon.spy();
       const onRenderOverflowButton = sinon.spy();
       const component = renderer.create(
-        <OverflowSet
-          className="foobar"
-          vertical={true}
-          onRenderItem={onRenderItem}
-          onRenderOverflowButton={onRenderOverflowButton}
-        />
+        <OverflowSet className="foobar" vertical={true} onRenderItem={onRenderItem} onRenderOverflowButton={onRenderOverflowButton} />
       );
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
@@ -75,9 +68,7 @@ describe('OverflowSet', () => {
   it('does not render overflow when overflow items is an empty array', () => {
     const onRenderItem = sinon.spy();
     const onRenderOverflowButton = sinon.spy();
-    shallow(
-      <OverflowSet onRenderItem={onRenderItem} onRenderOverflowButton={onRenderOverflowButton} overflowItems={[]} />
-    );
+    shallow(<OverflowSet onRenderItem={onRenderItem} onRenderOverflowButton={onRenderOverflowButton} overflowItems={[]} />);
 
     expect(onRenderOverflowButton.called).toEqual(false);
   });
@@ -309,14 +300,10 @@ describe('OverflowSet', () => {
         delay(750).then(() => {
           // item3
           const item3Keytip = getKeytip(keytipManager, overflowKeytips.overflowItemKeytip3.keySequences);
-          expect(
-            arraysEqual(item3Keytip!.overflowSetSequence!, overflowKeytips.overflowButtonKeytip.keySequences)
-          ).toEqual(true);
+          expect(arraysEqual(item3Keytip!.overflowSetSequence!, overflowKeytips.overflowButtonKeytip.keySequences)).toEqual(true);
           // item4
           const item4Keytip = getKeytip(keytipManager, overflowKeytips.overflowItemKeytip4.keySequences);
-          expect(
-            arraysEqual(item4Keytip!.overflowSetSequence!, overflowKeytips.overflowButtonKeytip.keySequences)
-          ).toEqual(true);
+          expect(arraysEqual(item4Keytip!.overflowSetSequence!, overflowKeytips.overflowButtonKeytip.keySequences)).toEqual(true);
         });
       });
 
@@ -491,9 +478,7 @@ describe('OverflowSet', () => {
             const submenuKeytips = layerRef.value!.state.visibleKeytips;
             submenuKeytips.forEach((submenuKeytip: IKeytipProps) => {
               expect(submenuKeytip.visible).toEqual(true);
-              expect(
-                arraysEqual(submenuKeytip.overflowSetSequence!, overflowKeytips.overflowButtonKeytip.keySequences)
-              ).toEqual(true);
+              expect(arraysEqual(submenuKeytip.overflowSetSequence!, overflowKeytips.overflowButtonKeytip.keySequences)).toEqual(true);
             });
           });
         });
@@ -573,9 +558,7 @@ describe('OverflowSet', () => {
             const submenuKeytips = layerRef.value!.state.visibleKeytips;
             submenuKeytips.forEach((submenuKeytip: IKeytipProps) => {
               expect(submenuKeytip.visible).toEqual(true);
-              expect(
-                arraysEqual(submenuKeytip.overflowSetSequence!, overflowKeytips.overflowButtonKeytip.keySequences)
-              ).toEqual(true);
+              expect(arraysEqual(submenuKeytip.overflowSetSequence!, overflowKeytips.overflowButtonKeytip.keySequences)).toEqual(true);
             });
           });
         });

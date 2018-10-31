@@ -51,6 +51,11 @@ export interface IChartDataPoint {
    * color for the legend in the chart
    */
   color?: string;
+
+  /**
+   * placeholder data point
+   */
+  placeHolder?: boolean;
 }
 
 export interface ILineChartDataPoint {

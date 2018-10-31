@@ -276,13 +276,13 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   }
 
   public setSelectedIndex(event: React.FormEvent<HTMLDivElement>, index: number): void {
-    const { onChange, onChanged, options, selectedKey, selectedKeys, multiSelect } = this.props;
+    const { onChange, onChanged, options, selectedKey, selectedKeys, multiSelect, notifyOnReselect } = this.props;
     const { selectedIndices = [] } = this.state;
     const checked: boolean = selectedIndices ? selectedIndices.indexOf(index) > -1 : false;
 
     index = Math.max(0, Math.min(options.length - 1, index));
 
-    if (!multiSelect && index === selectedIndices[0]) {
+    if (!multiSelect && !notifyOnReselect && index === selectedIndices[0]) {
       return;
     } else if (!multiSelect && selectedKey === undefined) {
       // Set the selected option if this is an uncontrolled component
@@ -572,9 +572,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
       this._async.requestAnimationFrame(() => {
         const selectedIndices = this.state.selectedIndices;
         if (selectedIndices && selectedIndices[0] && !this.props.options[selectedIndices[0]].disabled) {
-          const element: HTMLElement = getDocument()!.querySelector(
-            `#${this._id}-list${selectedIndices[0]}`
-          ) as HTMLElement;
+          const element: HTMLElement = getDocument()!.querySelector(`#${this._id}-list${selectedIndices[0]}`) as HTMLElement;
           this._focusZone.current!.focusElement(element);
         } else {
           this._focusZone.current!.focus();
@@ -966,6 +964,9 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
       if (!isOpen && selectedIndices.length === 0 && !multiSelect) {
         // Per aria
         this._moveIndex(ev, 1, 0, -1);
+      }
+      if (this.props.onFocus) {
+        this.props.onFocus(ev);
       }
       this.setState({ hasFocus: true });
     }

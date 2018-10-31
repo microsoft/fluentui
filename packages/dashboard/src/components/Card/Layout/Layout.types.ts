@@ -24,13 +24,7 @@ export interface ICardContentDetails {
   /**
    * Content for component we want to render
    */
-  content:
-    | IBodyTextProps
-    | IThumbnailListProps
-    | ICompoundButtonStackProps
-    | IGridListProps
-    | IChartProps
-    | IMultiCountProps;
+  content: IBodyTextProps | IThumbnailListProps | ICompoundButtonStackProps | IGridListProps | IChartProps | IMultiCountProps;
 }
 
 export interface ILayoutProps {

@@ -1,6 +1,42 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Tue, 16 Oct 2018 12:28:48 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Oct 2018 12:30:06 GMT and should not be manually modified.
+
+## 6.9.8
+Thu, 25 Oct 2018 12:30:05 GMT
+
+### Patches
+
+- Organize pages for development site
+
+## 6.9.7
+Tue, 23 Oct 2018 12:32:16 GMT
+
+### Patches
+
+- Fix an issue with the demo site not being able to load (in npm start or aka.ms/fabricdemo).
+
+## 6.9.6
+Mon, 22 Oct 2018 12:29:57 GMT
+
+### Patches
+
+- Move theme definitions to theme-samples package.
+- Use fluent-theme package customizations.
+
+## 6.9.5
+Thu, 18 Oct 2018 20:22:36 GMT
+
+### Patches
+
+- Remove api-extractor.disabled.json
+
+## 6.9.4
+Wed, 17 Oct 2018 01:29:55 GMT
+
+### Patches
+
+- Move theme generator page to color customization page.
 
 ## 6.9.3
 Tue, 16 Oct 2018 12:28:48 GMT

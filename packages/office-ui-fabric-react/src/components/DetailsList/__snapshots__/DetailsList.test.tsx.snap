@@ -41,6 +41,9 @@ exports[`DetailsList renders List correctly 1`] = `
       role="grid"
     >
       <div
+        className=
+            ms-DetailsList-headerWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -492,6 +495,9 @@ exports[`DetailsList renders List correctly 1`] = `
         </div>
       </div>
       <div
+        className=
+            ms-DetailsList-contentWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -617,6 +623,9 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
       role="grid"
     >
       <div
+        className=
+            ms-DetailsList-headerWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -1659,6 +1668,9 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
         </div>
       </div>
       <div
+        className=
+            ms-DetailsList-contentWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -1785,6 +1797,9 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
       role="grid"
     >
       <div
+        className=
+            ms-DetailsList-headerWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -2236,6 +2251,9 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
         </div>
       </div>
       <div
+        className=
+            ms-DetailsList-contentWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -2362,6 +2380,9 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
       role="grid"
     >
       <div
+        className=
+            ms-DetailsList-headerWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -3191,6 +3212,9 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
         </div>
       </div>
       <div
+        className=
+            ms-DetailsList-contentWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -3316,6 +3340,9 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
       role="grid"
     >
       <div
+        className=
+            ms-DetailsList-headerWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -4373,6 +4400,9 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
         </div>
       </div>
       <div
+        className=
+            ms-DetailsList-contentWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -4498,6 +4528,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
       role="grid"
     >
       <div
+        className=
+            ms-DetailsList-headerWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -4805,6 +4838,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
         </div>
       </div>
       <div
+        className=
+            ms-DetailsList-contentWrapper
+
         onKeyDown={[Function]}
         role="presentation"
       >
@@ -4936,7 +4972,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   display: flex;
                                   height: 40px;
                                 }
-                            data-focuszone-id="FocusZone18"
+                            data-focuszone-id="FocusZone19"
                             onFocus={[Function]}
                             onKeyDown={[Function]}
                             onMouseDownCapture={[Function]}
@@ -4979,6 +5015,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               </i>
                             </div>
                             <button
+                              aria-controls="GroupedListSection18"
+                              aria-expanded={true}
                               aria-label="expand collapse group"
                               className=
                                   ms-GroupHeader-expand
@@ -5069,6 +5107,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                         </div>
                         <div
                           className="ms-List"
+                          id="GroupedListSection18"
                           role="list"
                         >
                           <div
@@ -5146,7 +5185,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
-                                  data-focuszone-id="FocusZone20"
+                                  data-focuszone-id="FocusZone22"
                                   data-is-draggable={false}
                                   data-is-focusable={true}
                                   data-item-index={0}
@@ -5344,7 +5383,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
-                                  data-focuszone-id="FocusZone21"
+                                  data-focuszone-id="FocusZone23"
                                   data-is-draggable={false}
                                   data-is-focusable={true}
                                   data-item-index={1}
@@ -5557,7 +5596,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   display: flex;
                                   height: 40px;
                                 }
-                            data-focuszone-id="FocusZone19"
+                            data-focuszone-id="FocusZone21"
                             onFocus={[Function]}
                             onKeyDown={[Function]}
                             onMouseDownCapture={[Function]}
@@ -5600,6 +5639,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               </i>
                             </div>
                             <button
+                              aria-controls="GroupedListSection20"
+                              aria-expanded={true}
                               aria-label="expand collapse group"
                               className=
                                   ms-GroupHeader-expand
@@ -5690,6 +5731,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                         </div>
                         <div
                           className="ms-List"
+                          id="GroupedListSection20"
                           role="list"
                         >
                           <div
@@ -5767,7 +5809,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
-                                  data-focuszone-id="FocusZone22"
+                                  data-focuszone-id="FocusZone24"
                                   data-is-draggable={false}
                                   data-is-focusable={true}
                                   data-item-index={2}
@@ -5965,7 +6007,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
-                                  data-focuszone-id="FocusZone23"
+                                  data-focuszone-id="FocusZone25"
                                   data-is-draggable={false}
                                   data-is-focusable={true}
                                   data-item-index={3}
@@ -6163,7 +6205,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
-                                  data-focuszone-id="FocusZone24"
+                                  data-focuszone-id="FocusZone26"
                                   data-is-draggable={false}
                                   data-is-focusable={true}
                                   data-item-index={4}

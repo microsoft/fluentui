@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  IPersonaProps,
-  IPersonaSharedProps,
-  Persona,
-  PersonaSize,
-  PersonaPresence
-} from 'office-ui-fabric-react/lib/Persona';
+import { IPersonaProps, IPersonaSharedProps, Persona, PersonaSize, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
 import { TestImages } from '../../../common/TestImages';
 import './PersonaExample.scss';
 import * as exampleStylesImport from '../../../common/_exampleStyles.scss';

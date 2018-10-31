@@ -31,13 +31,13 @@ export interface IModalProps extends React.Props<ModalBase>, IWithResponsiveMode
 
   /**
    * Whether the dialog is displayed.
-   * @default false
+   * @defaultvalue false
    */
   isOpen?: boolean;
 
   /**
    * Whether the overlay is dark themed.
-   * @default true
+   * @defaultvalue true
    */
   isDarkOverlay?: boolean;
 
@@ -53,7 +53,7 @@ export interface IModalProps extends React.Props<ModalBase>, IWithResponsiveMode
 
   /**
    * Whether the dialog can be light dismissed by clicking outside the dialog (on the overlay).
-   * @default false
+   * @defaultvalue false
    */
   isBlocking?: boolean;
 

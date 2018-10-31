@@ -38,7 +38,7 @@ export interface ICalendarDay {
   focus(): void;
 }
 
-export interface ICalendarDayProps extends React.Props<CalendarDay> {
+export interface ICalendarDayProps extends React.ClassAttributes<CalendarDay> {
   componentRef?: (c: ICalendarDay) => void;
   strings: ICalendarStrings;
   selectedDate: Date;
