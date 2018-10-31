@@ -15,6 +15,12 @@ export interface ISetupCardStyles {
   root: IStyle;
   title: IStyle;
   cardBackground: IStyle;
+  cardContentBackground: IStyle;
+  cardRightEdge: IStyle;
+  cardRightEdgeSeparator: IStyle;
+  cardRightEdgeShadow: IStyle;
+  cardTopEdge: IStyle;
+  cardTopEdgeSeparator: IStyle;
   checkmark: IStyle;
 }
 

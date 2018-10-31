@@ -23,15 +23,16 @@ export class SetupCard extends React.PureComponent<ISetupCardProps> {
         ref={this.bgRef}
       >
         <g filter="url(#filter0_dd)">
-          <path d="M159.202 207.999L7 119.386V10.3594L159.202 98.9724V207.999Z" fill="white" />
+          <path d="M159.202 207.999L7 119.386V10.3594L159.202 98.9724V207.999Z" className={classNames.cardBackground} />
           <text y="48" x="10" transform="translate(0 -20) skewY(30) scale(1 0.86)" className={classNames.title}>
             {this.props.title}
           </text>
-          <path d="M165 204.623L159.202 207.998V98.9714L165 95.5957V204.623Z" fill="white" />
-          <path d="M159.202 98.968L7 10.355L12.7621 7L164.964 95.613L159.202 98.968Z" fill="#EFEFEB" />
+          <path d="M165 204.623L159.202 207.998V98.9714L165 95.5957V204.623Z" className={classNames.cardRightEdge} />
+          <path d="M159.202 98.968L7 10.355L12.7621 7L164.964 95.613L159.202 98.968Z" className={classNames.cardTopEdge} />
           <g mask="url(#cardMask)">
+            {/* we need this transparent circle for the line to render within the mask */}
             <circle fill="#00000000" transform="skewY(18) skewX(7)" cx="69.5" cy="93.5" r="100" />
-            <line x1="69.5" x2="69.5" y1="93.5" y2="93.5" transform="skewY(18) skewX(7)" className={classNames.cardBackground} />
+            <line x1="69.5" x2="69.5" y1="93.5" y2="93.5" transform="skewY(18) skewX(7)" className={classNames.cardContentBackground} />
           </g>
           <path
             className={classNames.checkmark}
@@ -54,9 +55,9 @@ export class SetupCard extends React.PureComponent<ISetupCardProps> {
             118.202L77.5685 123.003C77.7556 123.242 77.9428 123.48 78.1924 123.689C78.4731 123.868 78.6915 124.047 78.9411 124.136Z"
           />
 
-          <path opacity="0.1" d="M165 118.452L159.202 121.828V120.151L165 116.775V118.452Z" fill="black" />
-          <path opacity="0.1" d="M159.202 121.83L7 33.2165V31.5391L159.202 120.153V121.83Z" fill="black" />
-          <path d="M165 204.623L159.202 207.998V98.9714L165 95.5957V204.623Z" fill="#00000034" />
+          <path d="M165 118.452L159.202 121.828V120.151L165 116.775V118.452Z" className={classNames.cardRightEdgeSeparator} />
+          <path d="M159.202 121.83L7 33.2165V31.5391L159.202 120.153V121.83Z" className={classNames.cardTopEdgeSeparator} />
+          <path d="M165 204.623L159.202 207.998V98.9714L165 95.5957V204.623Z" className={classNames.cardRightEdgeShadow} />
         </g>
         <mask id="cardMask">
           <path d="M159.202 208L7 119.387L7.00019 32.9941L159.202 121.607L159.202 208Z" fill="white" />
