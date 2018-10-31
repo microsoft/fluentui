@@ -3,7 +3,7 @@ import { Panel } from '@uifabric/mr/lib/components/Panel/Panel';
 import { FabricSceneEntity, Scene } from '@uifabric/mr/lib/Scene';
 import { FluentTheme } from '../Panel.types';
 
-class MyScene extends FabricSceneEntity {
+class MySceneEntity extends FabricSceneEntity {
   /**
    * The main entry point for the 3D example.
    */
@@ -36,4 +36,4 @@ class MyScene extends FabricSceneEntity {
   }
 }
 
-export const PanelBasicExample = () => <Scene scene={new MyScene()} />;
+export const PanelBasicExample = () => <Scene sceneEntity={new MySceneEntity()} />;

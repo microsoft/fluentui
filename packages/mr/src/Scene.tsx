@@ -14,7 +14,7 @@ export type SceneEventArgs = {
 export type SceneProps = {
   engineOptions?: BABYLON.EngineOptions;
   adaptToDeviceRatio?: boolean;
-  scene: FabricSceneEntity;
+  sceneEntity: FabricSceneEntity;
 };
 
 export class Scene extends React.Component<SceneProps & React.HTMLAttributes<HTMLCanvasElement>, {}> {
@@ -26,7 +26,7 @@ export class Scene extends React.Component<SceneProps & React.HTMLAttributes<HTM
     this.engine = new BABYLON.Engine(this.canvas, true, this.props.engineOptions, this.props.adaptToDeviceRatio);
     this.scene = new BABYLON.Scene(this.engine);
 
-    this.props.scene.mount(this.engine, this.scene);
+    this.props.sceneEntity.mount(this.engine, this.scene);
     this.engine.runRenderLoop(() => {
       if (this.scene) {
         this.scene.render();
