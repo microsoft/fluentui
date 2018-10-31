@@ -4,7 +4,7 @@ import { Calendar, ICalendarStrings } from '../../Calendar';
 import { DatePicker } from './DatePicker';
 import { DatePickerBase } from './DatePicker.base';
 import { IDatePickerStrings } from './DatePicker.types';
-import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
+import { FirstWeekOfYear, DayOfWeek } from '../../utilities/dateValues/DateValues';
 import { shallow, mount, ReactWrapper } from 'enzyme';
 
 describe('DatePicker', () => {
@@ -132,20 +132,7 @@ describe('DatePicker', () => {
     const minDate = new Date('Jan 1 2017');
     const maxDate = new Date('Dec 31 2017');
     const strings: IDatePickerStrings = {
-      months: [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December'
-      ],
+      months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
       shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
       days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
       shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
@@ -156,13 +143,7 @@ describe('DatePicker', () => {
 
     beforeEach(() => {
       datePicker = mount(
-        <DatePickerBase
-          allowTextInput={true}
-          minDate={minDate}
-          maxDate={maxDate}
-          value={defaultDate}
-          strings={strings}
-        />
+        <DatePickerBase allowTextInput={true} minDate={minDate} maxDate={maxDate} value={defaultDate} strings={strings} />
       );
     });
 
@@ -205,6 +186,103 @@ describe('DatePicker', () => {
     it('should throw validation error if boundaries are moved to intersect selected date', () => {
       datePicker.setProps({ minDate: new Date('Dec 16 2017') });
       expect(datePicker.state('errorMessage')).toBe('out of bounds');
+    });
+  });
+
+  describe('when Calendar value are specified (controlled component)', () => {
+    const value = new Date(2017, 10, 1);
+
+    it(`renders Calendar with given value: ${value}`, () => {
+      const onSelectDate = (date: Date) => null;
+      const datePicker = shallow(
+        <DatePickerBase
+          isMonthPickerVisible={false}
+          showMonthPickerAsOverlay={true}
+          value={value}
+          firstDayOfWeek={DayOfWeek.Monday}
+          highlightCurrentMonth={true}
+          showWeekNumbers={true}
+          firstWeekOfYear={FirstWeekOfYear.FirstFullWeek}
+          showGoToToday={false}
+          onSelectDate={onSelectDate}
+        />
+      );
+      datePicker.setState({ isDatePickerShown: true });
+      const calendarShallowWrapper = datePicker.find(Calendar);
+      const calendarProps = calendarShallowWrapper.props();
+      expect(calendarProps.value).toBe(value);
+    });
+
+    it(`renders Calendar with given value: ${value} when change triggered via input`, () => {
+      const onSelectDate = (date: Date) => null;
+      const datePicker = mount(
+        <DatePickerBase
+          isMonthPickerVisible={false}
+          showMonthPickerAsOverlay={true}
+          value={value}
+          firstDayOfWeek={DayOfWeek.Monday}
+          highlightCurrentMonth={true}
+          showWeekNumbers={true}
+          firstWeekOfYear={FirstWeekOfYear.FirstFullWeek}
+          showGoToToday={false}
+          onSelectDate={onSelectDate}
+        />
+      );
+      datePicker.setState({ isDatePickerShown: true });
+      datePicker
+        .find('input')
+        .simulate('change', { target: { value: 'Jan 1 2010' } })
+        .simulate('blur');
+
+      expect(datePicker.state('selectedDate')).toBe(value);
+    });
+
+    it(`renders Calendar with given value: ${value} when _onSelectDate called with other value`, () => {
+      const otherValue = new Date(2018, 10, 1);
+      const onSelectDate = (date: Date) => null;
+
+      const datePicker = mount(
+        <DatePickerBase
+          isMonthPickerVisible={false}
+          showMonthPickerAsOverlay={true}
+          value={value}
+          firstDayOfWeek={DayOfWeek.Monday}
+          highlightCurrentMonth={true}
+          showWeekNumbers={true}
+          firstWeekOfYear={FirstWeekOfYear.FirstFullWeek}
+          showGoToToday={false}
+          onSelectDate={onSelectDate}
+        />
+      );
+      datePicker.setState({ isDatePickerShown: true });
+      const datePickerInstance = datePicker.instance();
+      datePickerInstance._calendar.current._dayPicker.current._onSelectDate(otherValue);
+      expect(datePicker.state('selectedDate')).toBe(value);
+    });
+
+    it(`renders Calendar with new value, when onSelectDate prop changes parent component data value`, () => {
+      const otherValue = new Date(2018, 10, 1);
+      const onSelectDate = (date: Date) => {
+        datePicker.setProps({ value: otherValue });
+      };
+
+      const datePicker = mount(
+        <DatePickerBase
+          isMonthPickerVisible={false}
+          showMonthPickerAsOverlay={true}
+          value={value}
+          firstDayOfWeek={DayOfWeek.Monday}
+          highlightCurrentMonth={true}
+          showWeekNumbers={true}
+          firstWeekOfYear={FirstWeekOfYear.FirstFullWeek}
+          showGoToToday={false}
+          onSelectDate={onSelectDate}
+        />
+      );
+      datePicker.setState({ isDatePickerShown: true });
+      const datePickerInstance = datePicker.instance();
+      datePickerInstance._calendar.current._dayPicker.current._onSelectDate(otherValue);
+      expect(datePicker.state('selectedDate')).toBe(otherValue);
     });
   });
 });
