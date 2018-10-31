@@ -7,12 +7,14 @@ import { StackedBarChartMultipleExample } from './examples/StackedBarChart.Multi
 import { StackedBarChartDynamicExample } from './examples/StackedBarChart.Dynamic.Example';
 import { MultiStackedBarChartExample } from './examples/MultiStackedBarChart.Example';
 import { StackedBarChartBaseBarExample } from './examples/StackedBarChart.BaseBar.Example';
+import { MultiStackedBarChartWithPlaceholderExample } from './examples/MultiStackedBarChartWithPlaceHolder.Example';
 
 const StackedBarChartBasicExampleCode = require('!raw-loader!@uifabric/charting/src/components/StackedBarChart/examples/StackedBarChart.Basic.Example.tsx') as string;
 const StackedBarChartMultipleExampleCode = require('!raw-loader!@uifabric/charting/src/components/StackedBarChart/examples/StackedBarChart.Multiple.Example.tsx') as string;
 const StackedBarChartDynamicExampleCode = require('!raw-loader!@uifabric/charting/src/components/StackedBarChart/examples/StackedBarChart.Dynamic.Example.tsx') as string;
 const MultiStackedBarChartExampleCode = require('!raw-loader!@uifabric/charting/src/components/StackedBarChart/examples/MultiStackedBarChart.Example.tsx') as string;
 const StackedBarChartBaseBarExampleCode = require('!raw-loader!@uifabric/charting/src/components/StackedBarChart/examples/StackedBarChart.BaseBar.Example.tsx') as string;
+const MultiStackedBarChartWithPlaceholderExampleCode = require('!raw-loader!@uifabric/charting/src/components/StackedBarChart/examples/MultiStackedBarChartWithPlaceHolder.Example.tsx') as string;
 
 export class StackedBarChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -36,6 +38,9 @@ export class StackedBarChartPage extends React.Component<IComponentDemoPageProps
             </ExampleCard>
             <ExampleCard title="Multiple StackedBarCharts" code={MultiStackedBarChartExampleCode}>
               <MultiStackedBarChartExample />
+            </ExampleCard>
+            <ExampleCard title="Multiple StackedBarCharts with placeholder" code={MultiStackedBarChartWithPlaceholderExampleCode}>
+              <MultiStackedBarChartWithPlaceholderExample />
             </ExampleCard>
           </div>
         }

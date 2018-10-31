@@ -2,6 +2,27 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.25.0",
+      "tag": "@uifabric/utilities_v6.25.0",
+      "date": "Wed, 31 Oct 2018 12:32:41 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Customizer: Add optional context transform prop.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "fc5a1f4620c93499a41abe8377ff61161cf5bd76"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Running Prettier on all .ts and .tsx files in the packages folder.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "2ce6c5ac3ccf4e62d4866841317b4aa55b8fb541"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.24.0",
       "tag": "@uifabric/utilities_v6.24.0",
       "date": "Fri, 26 Oct 2018 12:32:35 GMT",

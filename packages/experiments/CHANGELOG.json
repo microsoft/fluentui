@@ -2,6 +2,41 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.40.1",
+      "tag": "@uifabric/experiments_v6.40.1",
+      "date": "Wed, 31 Oct 2018 12:32:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add theme provider helper and replace usage of scheme prop with theme provider.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "fc5a1f4620c93499a41abe8377ff61161cf5bd76"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Prettier changes unrelated to the PR",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "1882ecb9c772a19ab6c75bdddc1ca539c932e9c4"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.26.1` to `^0.26.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.5.6 <1.0.0` to `>=0.5.7 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.96.0 <7.0.0` to `>=6.97.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.9.0 <7.0.0` to `>=6.9.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.40.0",
       "tag": "@uifabric/experiments_v6.40.0",
       "date": "Mon, 29 Oct 2018 12:31:29 GMT",

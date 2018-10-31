@@ -47,7 +47,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
         }
       >
         <div
-          aria-label="Website breadcrumb"
+          aria-label="Breadcrumb with no maxDisplayedItems"
           className=
               ms-Breadcrumb
               {
@@ -1087,7 +1087,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
         }
       >
         <div
-          aria-label="Website breadcrumb"
+          aria-label="Breadcrumb with custom divider icon"
           className=
               ms-Breadcrumb
               {
@@ -2082,7 +2082,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
         }
       >
         <div
-          aria-label="Website breadcrumb"
+          aria-label="Breadcrumb with maxDisplayedItems set to three"
           className=
               ms-Breadcrumb
               {
@@ -2756,6 +2756,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
         }
       >
         <div
+          aria-label="Breadcrumb with maxDisplayedItems set to two and overflowIndex set to 1"
           className=
               ms-Breadcrumb
               {
