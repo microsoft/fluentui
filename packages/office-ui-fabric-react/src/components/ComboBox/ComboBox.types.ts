@@ -51,7 +51,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   options: IComboBoxOption[];
 
   /**
-   * Callback issued when item in comboBox is clicked:
+   * Callback issued when a ComboBox item is clicked.
    */
   onItemClick?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => void;
 
