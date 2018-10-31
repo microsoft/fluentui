@@ -9,7 +9,7 @@ export interface IStickyState {
   isStickyBottom: boolean;
   /**
    * if scrollablePane context is undefined then undefined
-   * else if scrollablePane.getScrollPosition === 0 then true
+   * else if scrollablePane.getScrollPosition !== 0 then true
    * else false.
    */
   isScrollPositionNonZero: boolean | undefined;
@@ -128,12 +128,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       return true;
     }
     const { isStickyTop, isStickyBottom, isScrollPositionNonZero } = this.state;
-    const nonStickyContent = this.nonStickyContent;
-    const nonStickyContentOffsetHeight = nonStickyContent ? nonStickyContent.offsetHeight : undefined;
-    const root = this.root;
-    const rootOffsetHeight = root ? root.offsetHeight : undefined;
-    const stickyContentTop = this.stickyContentTop;
-    const stickyContentBottom = this.stickyContentBottom;
+    const nonStickyContentOffsetHeight = this._getHtmlDivElementOffsetHeight(this.nonStickyContent);
+    const rootOffsetHeight = this._getHtmlDivElementOffsetHeight(this.root);
 
     return (
       isStickyTop !== nextState.isStickyTop ||
@@ -141,8 +137,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       this.props.stickyPosition !== nextProps.stickyPosition ||
       this.props.children !== nextProps.children ||
       nonStickyContentOffsetHeight !== rootOffsetHeight ||
-      (this.canStickyTop && stickyContentTop !== null && nonStickyContentOffsetHeight !== stickyContentTop.offsetHeight) ||
-      (this.canStickyBottom && stickyContentBottom !== null && nonStickyContentOffsetHeight !== stickyContentBottom.offsetHeight) ||
+      (this.canStickyTop && nonStickyContentOffsetHeight !== this._getHtmlDivElementOffsetHeight(this.stickyContentTop)) ||
+      (this.canStickyBottom && nonStickyContentOffsetHeight !== this._getHtmlDivElementOffsetHeight(this.stickyContentBottom)) ||
       nextProps.onScrollStickyClassName !== this.props.onScrollStickyClassName ||
       isScrollPositionNonZero !== nextState.isScrollPositionNonZero
     );
@@ -155,8 +151,6 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     if (!this.context.scrollablePane) {
       return <div>{this.props.children}</div>;
     }
-
-    const onScrollStickyClass = isScrollPositionNonZero ? onScrollStickyClassName : undefined;
 
     return (
       <div>
@@ -173,7 +167,11 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
         <div style={this._getNonStickyPlaceholderHeight()} ref={this._root}>
           <div
             ref={this._nonStickyContent}
-            className={isStickyTop || isStickyBottom ? css(stickyClassName, onScrollStickyClass) : undefined}
+            className={
+              isStickyTop || isStickyBottom
+                ? css(stickyClassName, isScrollPositionNonZero ? onScrollStickyClassName : undefined)
+                : undefined
+            }
             style={this._getContentStyles(isStickyTop || isStickyBottom)}
           >
             {children}
@@ -202,6 +200,11 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   private _updatePrevNonStickyContentOffsetHeight(offsetHeight?: number): void {
     this._prevNonStickyContentOffsetHeight = offsetHeight;
   }
+
+  private _getHtmlDivElementOffsetHeight(divRef?: HTMLDivElement | null): number | undefined {
+    return divRef ? divRef.offsetHeight : undefined;
+  }
+
   private _getContentStyles(isSticky: boolean): React.CSSProperties {
     return {
       backgroundColor: this.props.stickyBackgroundColor || this._getBackground(),
