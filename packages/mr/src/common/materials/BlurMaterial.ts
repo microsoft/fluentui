@@ -1,22 +1,21 @@
-import * as BABYLON from 'babylonjs';
-import BlurTexture from '../textures/BlurTexture';
+import { Component } from '../../common/nucleus3d/core';
+import BlurMaterialSystem from './BlurMaterialSystem';
 
-export default class BlurMaterial {
-  private _acrylicMaterial: BABYLON.StandardMaterial;
+export interface IBlurMaterialProps {}
 
-  constructor(name: string, cameraExposure: number, scene: BABYLON.Scene) {
-    this._acrylicMaterial = new BABYLON.StandardMaterial(name, scene);
-    this._acrylicMaterial.refractionTexture = BlurTexture.instance(scene).texture;
-    this._acrylicMaterial.disableLighting = true;
-    this._acrylicMaterial.imageProcessingConfiguration = new BABYLON.ImageProcessingConfiguration();
-    this._acrylicMaterial.cameraExposure = cameraExposure;
+export default class BlurMaterial extends Component<IBlurMaterialProps, BlurMaterialSystem> {
+  private _material: BABYLON.StandardMaterial;
+
+  protected didMount(): void {
+    if (this.system) {
+      this._material = this.system.createBlurMaterial('blurMaterial');
+    }
+    this.entity.node.material = this._material;
   }
 
-  public get material(): BABYLON.StandardMaterial {
-    return this._acrylicMaterial;
-  }
-
-  public dispose(acrylicMaterial: BABYLON.StandardMaterial): void {
-    this._acrylicMaterial.dispose();
+  protected willUnmount(): void {
+    if (this.system) {
+      this.system.disposeBlurMaterial(this._material);
+    }
   }
 }
