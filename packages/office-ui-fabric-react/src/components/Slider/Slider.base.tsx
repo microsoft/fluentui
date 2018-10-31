@@ -218,12 +218,14 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     const { step } = this.props;
 
     let numDec = 0;
-    if (Math.floor(step!) !== step!) {
-      numDec = step!.toString().split('.')[1].length;
+    if (isFinite(step!)) {
+      while (Math.round(step! * Math.pow(10, numDec)) / Math.pow(10, numDec) !== step!) {
+        numDec++;
+      }
     }
 
     // Make sure value has correct number of decimal places based on steps without JS's floating point issues
-    const roundedValue = Math.round(value * Math.pow(10, numDec)) / Math.pow(10, numDec);
+    const roundedValue = Number.parseFloat(value.toFixed(numDec));
     const valueChanged = roundedValue !== this.state.value;
 
     this.setState(
