@@ -7,15 +7,22 @@ import { IHorizontalBarChartStyleProps } from '@uifabric/charting/lib/components
 
 const getClassNames = classNamesFunction<IHorizontalBarChartStyleProps, IHorizontalBarChartStyles>();
 
-export class HorizontalBarChartBase extends React.Component<
-  IHorizontalBarChartProps,
-  {
-    isCalloutVisible: boolean;
-    hoverValue: string | number | Date | null;
-    activeLine: string;
-    lineColor: string;
-  }
-> {
+export interface IRefArrayData {
+  legendText?: string;
+  refElement?: SVGGElement;
+}
+
+export interface IHorizontalBarChartState {
+  isCalloutVisible: boolean;
+  refArray: IRefArrayData[];
+  refSelected: SVGGElement | null | undefined;
+  color: string;
+  hoverValue: string | number | Date | null;
+  lineColor: string;
+  legend: string | null;
+}
+
+export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartProps, IHorizontalBarChartState> {
   private _barHeight: number;
   private _classNames: IProcessedStyleSet<IHorizontalBarChartStyles>;
   private _uniqLineText: string;
@@ -25,8 +32,11 @@ export class HorizontalBarChartBase extends React.Component<
     this.state = {
       isCalloutVisible: false,
       hoverValue: '',
-      activeLine: '',
-      lineColor: ''
+      lineColor: '',
+      legend: '',
+      refArray: [],
+      refSelected: null,
+      color: ''
     };
     this._uniqLineText =
       '_HorizontalLine_' +
@@ -47,21 +57,16 @@ export class HorizontalBarChartBase extends React.Component<
           if (points.chartData && points.chartData![0] && points.chartData![0].horizontalBarChartdata!.x) {
             datapoint = points.chartData![0].horizontalBarChartdata!.x;
           } else {
-            points.chartData!.push({
-              legend: '',
-              horizontalBarChartdata: { x: 0, y: 0 },
-              color: palette.neutralTertiaryAlt
-            });
             datapoint = 0;
           }
-          points.chartData!.push({
+          points.chartData![1] = {
             legend: '',
             horizontalBarChartdata: {
               x: points.chartData![0].horizontalBarChartdata!.y - datapoint!,
               y: points.chartData![0].horizontalBarChartdata!.y
             },
             color: palette.neutralTertiaryAlt
-          });
+          };
           const bars = this._createBars(points!, palette);
           const keyVal = this._uniqLineText + '_' + index;
           return (
@@ -83,11 +88,14 @@ export class HorizontalBarChartBase extends React.Component<
                   <g
                     id={keyVal}
                     key={keyVal}
+                    ref={(e: SVGGElement) => {
+                      this._refCallback(e, points!.chartData![0].legend);
+                    }}
                     onMouseOver={this._hoverOn.bind(
                       this,
                       points!.chartData![0].horizontalBarChartdata!.x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
-                      keyVal,
-                      points!.chartData![0].color
+                      points!.chartData![0].color,
+                      points!.chartData![0].legend
                     )}
                     onMouseLeave={this._hoverOff}
                   >
@@ -100,15 +108,15 @@ export class HorizontalBarChartBase extends React.Component<
         })}
         {this.state.isCalloutVisible ? (
           <Callout
-            target={`#${this.state.activeLine}`}
+            target={this.state.refSelected}
             coverTarget={true}
             isBeakVisible={false}
             gapSpace={30}
-            className={this._classNames.calloutPadding}
             directionalHint={DirectionalHint.rightTopEdge}
           >
-            <div>
-              <span>{this.state.hoverValue}</span>
+            <div className={this._classNames.hoverCardRoot}>
+              <div className={this._classNames.hoverCardTextStyles}>{this.state.legend}</div>
+              <div className={this._classNames.hoverCardDataStyles}>{this.state.hoverValue}</div>
             </div>
           </Callout>
         ) : null}
@@ -116,11 +124,36 @@ export class HorizontalBarChartBase extends React.Component<
     );
   }
 
-  private _hoverOn(hoverValue: string | number | Date | null, activeLine: string, lineColor: string): void {
-    this.setState({ isCalloutVisible: true, hoverValue: hoverValue, activeLine: activeLine, lineColor: lineColor });
+  private _refCallback(element: SVGGElement, legendTitle: string | undefined): void {
+    this.state.refArray.push({ legendText: legendTitle, refElement: element });
   }
+
+  private _hoverOn(hoverValue: string | number | Date | null, lineColor: string, legend: string): void {
+    if (!this.state.isCalloutVisible || this.state.legend !== legend) {
+      const refArray = this.state.refArray;
+      const currentHoveredElement = refArray.find(
+        (currentElement: IRefArrayData) => currentElement.legendText === legend
+      );
+      this.setState({
+        isCalloutVisible: true,
+        hoverValue: hoverValue,
+        lineColor: lineColor,
+        legend: legend,
+        refSelected: currentHoveredElement!.refElement
+      });
+    }
+  }
+
   private _hoverOff(): void {
-    this.setState({ isCalloutVisible: false, hoverValue: '', activeLine: '', lineColor: '' });
+    if (this.state.isCalloutVisible) {
+      this.setState({
+        isCalloutVisible: false,
+        hoverValue: '',
+        refSelected: null,
+        lineColor: '',
+        legend: ''
+      });
+    }
   }
 
   private _adjustProps = (): void => {
@@ -153,6 +186,7 @@ export class HorizontalBarChartBase extends React.Component<
         prevPosition += value;
       }
       value = (pointData / total) * 100;
+      value >= 0 ? (value = value) : (value = 0);
       startingPoint.push(prevPosition);
       return (
         <rect

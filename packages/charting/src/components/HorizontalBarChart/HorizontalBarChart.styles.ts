@@ -2,7 +2,7 @@ import { IHorizontalBarChartStyleProps, IHorizontalBarChartStyles } from './Hori
 
 export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps): IHorizontalBarChartStyles => {
   const { className, theme, width, color } = props;
-  const { palette, fonts } = theme!;
+  const { palette } = theme!;
 
   return {
     root: [
@@ -28,16 +28,22 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
       marginBottom: '5px',
       fontSize: '12px'
     },
-    calloutPadding: [
-      {
-        padding: '10px 16px 10px 16px',
-        backgroundColor: palette.white,
-        fontSize: fonts.xxLarge.fontSize,
-        color: color !== '' ? `${color}` : palette.black,
-        fontFamily: fonts.xxLarge.fontFamily,
-        fontWeight: 'bold',
-        border: color !== '' ? `1px solid ${color}` : `unset`
-      }
-    ]
+    hoverCardTextStyles: {
+      ...theme.fonts.medium,
+      lineHeight: '14px'
+    },
+    hoverCardDataStyles: {
+      color: color !== '' ? `${color}` : palette.black,
+      fontSize: '28px',
+      fontFamily: 'Segoe UI',
+      fontWeight: 'bold',
+      lineHeight: '31px'
+    },
+    hoverCardRoot: {
+      paddingLeft: '16px',
+      paddingRight: '22px',
+      paddingTop: '15px',
+      paddingBottom: '8px'
+    }
   };
 };

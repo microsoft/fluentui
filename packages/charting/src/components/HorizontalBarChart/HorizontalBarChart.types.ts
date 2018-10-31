@@ -89,7 +89,17 @@ export interface IHorizontalBarChartStyles {
   chartTitle: IStyle;
 
   /**
-   * styles for callout in horizontal bar chart
+   * styles for hover card root
    */
-  calloutPadding?: IStyle;
+  hoverCardRoot?: IStyle;
+
+  /**
+   * styles for hover card text
+   */
+  hoverCardTextStyles?: IStyle;
+
+  /**
+   * styles for hover card data
+   */
+  hoverCardDataStyles?: IStyle;
 }
