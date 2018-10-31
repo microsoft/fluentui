@@ -32,13 +32,14 @@ export const getStyles = (): ISetupBannerStyles => {
       paddingBottom: '16px',
       alignItems: 'center'
     },
-    actionButton: {
-      marginRight: '32px'
-    },
-    actionLink: {
-      marginRight: '32px',
-      top: '7px',
-      fontSize: '14px !important'
+    actionSection: {
+      display: 'flex',
+      alignItems: 'center',
+      selectors: {
+        '&>:nth-child(1n)': {
+          marginRight: '32px'
+        }
+      }
     }
   };
 };

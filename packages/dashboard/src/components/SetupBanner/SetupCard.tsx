@@ -24,7 +24,7 @@ export class SetupCard extends React.PureComponent<ISetupCardProps> {
       >
         <g filter="url(#filter0_dd)">
           <path d="M159.202 207.999L7 119.386V10.3594L159.202 98.9724V207.999Z" className={classNames.cardBackground} />
-          <text y="48" x="10" transform="translate(0 -20) skewY(30) scale(1 0.86)" className={classNames.title}>
+          <text y="48" x="10" transform="translate(0 -20) skewY(30.5) scale(1 0.86)" className={classNames.title}>
             {this.props.title}
           </text>
           <path d="M165 204.623L159.202 207.998V98.9714L165 95.5957V204.623Z" className={classNames.cardRightEdge} />

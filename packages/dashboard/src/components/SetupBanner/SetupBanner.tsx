@@ -15,36 +15,27 @@ export class SetupBanner extends React.Component<ISetupBannerProps, {}> {
         <div className={classNames.textPartition}>
           <div className={classNames.headerSection}>{headerText}</div>
           <div className={classNames.bodySection}>{onRenderBody()}</div>
-          {this._renderActions()}
+          <div className={classNames.actionSection}>
+            {this.props.actions.map((action: ISetupBannerAction, actionIndex: number) => {
+              return this._renderAction(action, actionIndex);
+            })}
+          </div>
         </div>
       </div>
     );
   }
 
-  private _renderActions(): JSX.Element {
-    return (
-      <div>
-        {this.props.actions.map((action: ISetupBannerAction, actionIndex: number) => (
-          <span key={actionIndex}>{this._renderAction(action)}</span>
-        ))}
-      </div>
-    );
-  }
-
-  private _renderAction(action: ISetupBannerAction): JSX.Element | undefined {
-    const getClassNames = classNamesFunction<{}, ISetupBannerStyles>();
-    const classNames = getClassNames(getStyles);
-
+  private _renderAction(action: ISetupBannerAction, actionIndex: number): JSX.Element | undefined {
     if (action.actionType === SetupBannerActionType.DefaultButton) {
-      return <DefaultButton className={classNames.actionButton} onClick={action.action} text={action.text} />;
+      return <DefaultButton onClick={action.action} text={action.text} key={actionIndex} />;
     } else if (action.actionType === SetupBannerActionType.Link) {
       return (
-        <Link className={classNames.actionLink} onClick={action.action}>
+        <Link onClick={action.action} key={actionIndex} styles={{ root: { fontSize: '14px' } }}>
           {action.text}
         </Link>
       );
     } else if (action.actionType === SetupBannerActionType.PrimaryButton) {
-      return <PrimaryButton className={classNames.actionButton} onClick={action.action} text={action.text} />;
+      return <PrimaryButton onClick={action.action} text={action.text} key={actionIndex} />;
     }
 
     return undefined;
