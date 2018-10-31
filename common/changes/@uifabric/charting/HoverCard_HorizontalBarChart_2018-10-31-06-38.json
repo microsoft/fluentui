@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/charting",
+      "comment": "added hovercard for horizontalBar chart",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/charting",
+  "email": "polu.balakrishna96@gmail.com"
+}
