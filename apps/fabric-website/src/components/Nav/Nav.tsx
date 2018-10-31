@@ -183,12 +183,13 @@ export class Nav extends React.Component<INavProps, INavState> {
             _isPageActive(page) && searchQuery === '' ? styles.isActive : '',
             _hasActiveChild(page) ? styles.hasActiveChild : '',
             page.isHomePage ? styles.isHomePage : '',
-            page.className ? styles[page.className] : ''
+            page.className ? styles[page.className] : '',
+            page.isUhfLink ? styles.isUhfLink : ''
           )}
           key={linkIndex}
         >
-          {!page.isUhfLink &&
-            // {!(page.isUhfLink && location.hostname !== 'localhost') &&
+          {/* {!page.isUhfLink && */}
+          {!(page.isUhfLink && location.hostname !== 'localhost') &&
             (page.isFilterable && searchQuery !== '' ? matchIndex > -1 : true) && (
               <a href={page.url} onClick={this._onLinkClick} title={title} aria-label={ariaLabel}>
                 {linkText}
