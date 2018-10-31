@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/utilities",
-  "version": "6.24.0",
+  "version": "6.25.0",
   "description": "Office UI Fabric utilities for building React components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
