@@ -1,13 +1,16 @@
-import { IHoverCardStyles } from './HoverCard.types';
-import { memoizeFunction } from '../../Utilities';
-import { mergeStyleSets } from '../../Styling';
+import { getGlobalClassNames } from '../../Styling';
+import { IHoverCardStyles, IHoverCardStyleProps } from './HoverCard.types';
 
-export const getStyles = memoizeFunction(
-  (customStyles: IHoverCardStyles = {}): IHoverCardStyles => {
-    const styles: IHoverCardStyles = {
-      host: {}
-    };
+const GlobalClassNames = {
+  host: 'ms-HoverCard-host'
+};
 
-    return mergeStyleSets<IHoverCardStyles, IHoverCardStyles>(styles, customStyles);
-  }
-);
+export function getStyles(props: IHoverCardStyleProps): IHoverCardStyles {
+  const { className, theme } = props;
+
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
+  return {
+    host: [classNames.host, className]
+  };
+}

@@ -1,13 +1,7 @@
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import {
-  DetailsList,
-  DetailsListLayoutMode,
-  Selection,
-  SelectionMode,
-  IColumn
-} from 'office-ui-fabric-react/lib/DetailsList';
+import { DetailsList, DetailsListLayoutMode, Selection, SelectionMode, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { lorem } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import './DetailsListExample.scss';
@@ -224,6 +218,8 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
             selectionPreservedOnEmptyClick={true}
             onItemInvoked={this._onItemInvoked}
             enterModalSelectionOnTouch={true}
+            ariaLabelForSelectionColumn="Toggle selection"
+            ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           />
         </MarqueeSelection>
       </div>

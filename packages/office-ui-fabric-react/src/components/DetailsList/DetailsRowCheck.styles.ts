@@ -20,6 +20,7 @@ export const getStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckSt
       !canSelect && [classNames.isDisabled, { visibility: 'hidden' }],
       isHeader && classNames.isHeader,
       getFocusStyle(theme),
+      theme.fonts.small,
       {
         display: 'flex',
         alignItems: 'center',

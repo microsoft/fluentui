@@ -212,6 +212,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
 
   public componentWillReceiveProps(newProps: IDetailsListProps): void {
     const { checkboxVisibility, items, setKey, selectionMode = this._selection.mode, columns, viewport, compact } = this.props;
+    const { isAllGroupsCollapsed = undefined } = this.props.groupProps || {};
+
     const shouldResetSelection = newProps.setKey !== setKey || newProps.setKey === undefined;
     let shouldForceUpdates = false;
 
@@ -244,6 +246,13 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
 
     if (newProps.selectionMode !== selectionMode) {
       shouldForceUpdates = true;
+    }
+
+    if (isAllGroupsCollapsed === undefined && (newProps.groupProps && newProps.groupProps.isAllGroupsCollapsed !== undefined)) {
+      this.setState({
+        isCollapsed: newProps.groupProps.isAllGroupsCollapsed,
+        isSomeGroupExpanded: !newProps.groupProps.isAllGroupsCollapsed
+      });
     }
 
     if (shouldForceUpdates) {
@@ -386,7 +395,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
           aria-colcount={(selectAllVisibility !== SelectAllVisibility.none ? 1 : 0) + (adjustedColumns ? adjustedColumns.length : 0)}
           aria-readonly="true"
         >
-          <div onKeyDown={this._onHeaderKeyDown} role="presentation">
+          <div onKeyDown={this._onHeaderKeyDown} role="presentation" className={classNames.headerWrapper}>
             {isHeaderVisible &&
               onRenderDetailsHeader(
                 {
@@ -418,7 +427,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
                 this._onRenderDetailsHeader
               )}
           </div>
-          <div onKeyDown={this._onContentKeyDown} role="presentation">
+          <div onKeyDown={this._onContentKeyDown} role="presentation" className={classNames.contentWrapper}>
             <FocusZone
               componentRef={this._focusZone}
               className={classNames.focusZone}
@@ -671,15 +680,26 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     }
   }
 
+  private _notifyColumnsResized(): void {
+    this.state.adjustedColumns.forEach(column => {
+      if (column.onColumnResize) {
+        column.onColumnResize(column.currentWidth);
+      }
+    });
+  }
+
   private _adjustColumns(newProps: IDetailsListProps, forceUpdate?: boolean, resizingColumnIndex?: number): void {
     const adjustedColumns = this._getAdjustedColumns(newProps, forceUpdate, resizingColumnIndex);
     const { width: viewportWidth } = this.props.viewport!;
 
     if (adjustedColumns) {
-      this.setState({
-        adjustedColumns: adjustedColumns,
-        lastWidth: viewportWidth
-      });
+      this.setState(
+        {
+          adjustedColumns: adjustedColumns,
+          lastWidth: viewportWidth
+        },
+        this._notifyColumnsResized
+      );
     }
   }
 

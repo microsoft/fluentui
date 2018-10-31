@@ -3,6 +3,8 @@ import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet
 
 import { SeparatorBasicExample } from './examples/Separator.Basic.Example';
 const SeparatorBasicExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Separator/examples/Separator.Basic.Example.tsx') as string;
+import { SeparatorThemingExample } from './examples/Separator.Theming.Example';
+const SeparatorThemingExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Separator/examples/Separator.Theming.Example.tsx') as string;
 
 export class SeparatorPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -14,6 +16,9 @@ export class SeparatorPage extends React.Component<IComponentDemoPageProps, {}> 
           <div>
             <ExampleCard title="Basic Separator with Text" isOptIn={true} code={SeparatorBasicExampleCode}>
               <SeparatorBasicExample />
+            </ExampleCard>
+            <ExampleCard title="Basic Themed Separator with Text" isOptIn={true} code={SeparatorThemingExampleCode}>
+              <SeparatorThemingExample />
             </ExampleCard>
           </div>
         }

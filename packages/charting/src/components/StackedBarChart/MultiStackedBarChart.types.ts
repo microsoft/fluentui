@@ -129,6 +129,16 @@ export interface IMultiStackedBarChartStyles {
   opacityChangeOnHover: IStyle;
 
   /**
+   * Style to change the opacity of placeholder data point when we hover a single bar or legend
+   */
+  placeHolderOnHover: IStyle;
+
+  /**
+   * Style for the legends container
+   */
+  legendContainer: IStyle;
+
+  /**
    * Style for stacked bar chart with no data
    */
   noData: IStyle;

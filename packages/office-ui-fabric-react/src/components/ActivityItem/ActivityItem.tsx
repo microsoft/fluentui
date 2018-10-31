@@ -124,14 +124,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
 
   private _getClassNames(props: IActivityItemProps): IActivityItemClassNames {
     return getClassNames(
-      getStyles(
-        undefined,
-        props.styles,
-        props.animateBeaconSignal,
-        props.beaconColorOne,
-        props.beaconColorTwo,
-        props.isCompact
-      ),
+      getStyles(undefined, props.styles, props.animateBeaconSignal, props.beaconColorOne, props.beaconColorTwo, props.isCompact),
       props.className!,
       props.activityPersonas!,
       props.isCompact!

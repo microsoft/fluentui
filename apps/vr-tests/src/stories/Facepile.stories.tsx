@@ -80,4 +80,37 @@ storiesOf('Facepile', module)
       {...facepileProps}
       showAddButton={true}
     />
-  ));
+  ))
+  .addStory('Custom button styles', () => (
+    <Facepile
+      {...facepileProps}
+      showAddButton
+      overflowButtonType={OverflowButtonType.descriptive}
+      maxDisplayablePersonas={3}
+      overflowButtonProps={{
+        styles: {
+          root: {
+            background: 'yellow'
+          }
+        }
+      }}
+      addButtonProps={{
+        styles: {
+          root: {
+            boxShadow: '0px 0px 5px 5px gray'
+          }
+        }
+      }}
+      styles={{
+        descriptiveOverflowButton: {
+          background: 'red', // overridden by overflowButtonProps
+          boxShadow: '0px 0px 5px 5px gray', // not overridden
+          marginLeft: 8 // not overridden
+        },
+        addButton: {
+          boxShadow: '0px 0px 5px 5px red', // overridden by addButtonProps
+          marginRight: 8 // not overridden
+        }
+      }}
+    />
+  ))

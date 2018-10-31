@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/foundation",
+      "comment": "Add theme provider for using schemes. Remove implicit scheme prop for all components using Foundation.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/foundation",
+  "email": "jagore@microsoft.com"
+}
