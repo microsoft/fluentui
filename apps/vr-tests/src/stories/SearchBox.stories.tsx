@@ -18,19 +18,18 @@ storiesOf('SearchBox', module)
         .click('.ms-SearchBox-field')
         .hover('.ms-SearchBox-field')
         .snapshot('default', { cropTo: '.testWrapper' })
-        .end()
-      }
+        .end()}
     >
       {story()}
     </Screener>
-  )).addStory('Root', () => (
-    <Fabric style={{ display: 'flex' }}>
-      <div className='testWrapper' style={{ padding: '10px', overflow: 'hidden', width: '300px' }}>
-        <SearchBox placeholder='Search' />
+  ))
+  .addStory(
+    'Root',
+    () => (
+      <div className="testWrapper" style={{ padding: '10px', overflow: 'hidden', width: '300px' }}>
+        <SearchBox placeholder="Search" />
       </div>
-    </Fabric>
-  ), { rtl: true }).addStory('Full', () => (
-    <Fabric className='testWrapper'>
-      <SearchBox placeholder='Search' />
-    </Fabric>
-  ), { rtl: true });
+    ),
+    { rtl: true }
+  )
+  .addStory('Full', () => <SearchBox placeholder="Search" />, { rtl: true });
