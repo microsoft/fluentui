@@ -200,8 +200,7 @@ npm install office-ui-fabric-react`}
             <li>
               <p>
                 Import and use DefaultButton, a Fabric React control. Make sure to import controls alongside React, then use them in your
-                render method. Wrap your app in the <code>&lt;Fabric&gt;</code> component to support RTL, keyboard focus indicator, text
-                styles, and more.
+                render method.
               </p>
               <CodeBlock language="javascript" isLightTheme={true}>
                 {`import * as React from 'react';
@@ -210,11 +209,9 @@ import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
 const MyPage = () => (
-  <Fabric>
-    <DefaultButton>
-      I am a button.
-    </DefaultButton>
-  </Fabric>
+  <DefaultButton>
+    I am a button.
+  </DefaultButton>
 );
 
 ReactDOM.render(<MyPage />, document.body.firstChild);`}
