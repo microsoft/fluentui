@@ -174,6 +174,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
       suffix,
       theme,
       styles,
+      autoAdjustHeight,
       onRenderAddon = this._onRenderAddon, // @deprecated
       onRenderPrefix = this._onRenderPrefix,
       onRenderSuffix = this._onRenderSuffix,
@@ -197,7 +198,8 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
       hasIcon: !!iconProps,
       underlined,
       iconClass,
-      inputClassName
+      inputClassName,
+      autoAdjustHeight
     });
 
     // If a custom description render function is supplied then treat description as always available.
