@@ -1,4 +1,11 @@
 {
-  "extends": ["@uifabric/tslint-rules"],
-  "rules": {}
+  "extends": [
+    "@uifabric/tslint-rules"
+  ],
+  "rules": {},
+  "linterOptions": {
+    "exclude": [
+      "*.d.ts"
+    ]
+  }
 }

@@ -15,12 +15,27 @@
     "noImplicitAny": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
-    "lib": ["es2017", "dom"],
-    "types": ["jest", "webpack-env"],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "types": [
+      "jest",
+      "webpack-env"
+    ],
     "paths": {
-      "@uifabric/mr/lib/*": ["./src/*"],
-      "@uifabric/mr": ["./src"]
+      "@uifabric/mr/lib/*": [
+        "./src/*"
+      ],
+      "@uifabric/mr": [
+        "./src"
+      ],
+      "babylonjs": [
+        "./src/types/babylon.d.ts"
+      ]
     }
   },
-  "include": ["src"]
+  "include": [
+    "src"
+  ]
 }
