@@ -98,7 +98,8 @@ export function getScreenSelector(min: number, max: number): string;
 // @public
 export function getTheme(depComments?: boolean): ITheme;
 
-// @public
+// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
+// @internal
 export function getThemedContext(context: ICustomizerContext, scheme?: ISchemeNames, theme?: ITheme): ICustomizerContext;
 
 // @public
