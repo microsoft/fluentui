@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Adding warning and updating documentation on Pivot children needing to be PivotItems.",
+      "comment": "Adding warning and updating documentation on Pivot children needing to be of type PivotItem to be rendered.",
       "type": "patch"
     }
   ],
