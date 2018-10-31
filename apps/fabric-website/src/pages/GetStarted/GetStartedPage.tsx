@@ -184,9 +184,8 @@ export class GetStartedPage extends React.Component<any, any> {
             </li>
             <li>
               <p>
-                Use npm to create a React app that uses TypeScript. Consider using Facebook'
-                <a href="https://github.com/facebook/create-react-app">Create React App</a>
-                to get started quickly:
+                Use npm to create a React app that uses TypeScript. Consider using Facebook's{' '}
+                <a href="https://github.com/facebook/create-react-app">Create React App</a> to get started quickly:
               </p>
               <CodeBlock language="bash" isLightTheme={true}>
                 {`npx create-react-app my-app --typescript`}
