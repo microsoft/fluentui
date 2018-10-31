@@ -108,7 +108,8 @@ export class Layout extends React.Component<ILayoutProps> {
                   dataPoints,
                   compactChartWidth,
                   chartUpdatedOn,
-                  timeRange
+                  timeRange,
+                  ignoreStackBarChartDefaultStyle
                 } = cardContent.content as IChartProps;
                 contentArea.push(
                   <React.Fragment>
@@ -127,6 +128,7 @@ export class Layout extends React.Component<ILayoutProps> {
                       timeRange={timeRange}
                       width={this._getChartWidth(cardContentList.length)}
                       height={this._getChartHeight(cardContentList.length)}
+                      ignoreStackBarChartDefaultStyle={ignoreStackBarChartDefaultStyle}
                     />
                   </React.Fragment>
                 );
