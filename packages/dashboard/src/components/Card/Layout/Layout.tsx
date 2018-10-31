@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { ILayoutProps, ILayoutStyles, ICardContentDetails } from './Layout.types';
+import {
+  IContentAreasInfo,
+  IContentAreaHasDataviz,
+  ILayoutProps,
+  ILayoutStyles,
+  ILayoutStyleProps,
+  ICardContentDetails
+} from './Layout.types';
 import { getStyles } from './Layout.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { BodyText } from '../BodyText/BodyText';
@@ -28,14 +35,7 @@ export class Layout extends React.Component<ILayoutProps> {
     const getClassNames = classNamesFunction<ILayoutProps, ILayoutStyles>();
     const { header, contentArea, actions, cardSize } = this.props;
     const classNames = getClassNames(getStyles, { cardSize, header });
-    const content: JSX.Element | null = this._generateContentArea(
-      contentArea!,
-      classNames.contentLayout,
-      classNames.contentArea1,
-      classNames.dataVizLastUpdatedOn,
-      classNames.contentArea2,
-      cardSize
-    );
+    const content: JSX.Element | null = this._generateContentArea(contentArea!, cardSize, header);
     const headerElement: JSX.Element | null = this._generateHeader(header!);
     const footerElement: JSX.Element | null = this._generateFooter(actions!, classNames.footer);
     return (
@@ -51,8 +51,9 @@ export class Layout extends React.Component<ILayoutProps> {
     e.stopPropagation();
   };
 
-  private _generateContentElement(cardContentList: ICardContentDetails[], dataVizLastUpdateClassName: string): JSX.Element[] {
+  private _generateContentElement(cardContentList: ICardContentDetails[], dataVizLastUpdateClassName: string): IContentAreasInfo {
     const contentArea: JSX.Element[] = [];
+    const hasDataviz: IContentAreaHasDataviz = { contentArea1HasDataviz: false, contentArea2HasDataviz: false };
     // This works because we have priority is defined in enum as numbers if it is string this will not work
     for (const priority in Priority) {
       if (!isNaN(Number(priority))) {
@@ -110,6 +111,9 @@ export class Layout extends React.Component<ILayoutProps> {
                   chartUpdatedOn,
                   timeRange
                 } = cardContent.content as IChartProps;
+                priority === Priority.Priority1.toString()
+                  ? (hasDataviz.contentArea1HasDataviz = true)
+                  : (hasDataviz.contentArea2HasDataviz = true);
                 contentArea.push(
                   <React.Fragment>
                     {chartUpdatedOn && <div className={dataVizLastUpdateClassName}>{chartUpdatedOn}</div>}
@@ -143,7 +147,7 @@ export class Layout extends React.Component<ILayoutProps> {
       }
     }
 
-    return contentArea;
+    return { contentAreas: contentArea, hasDataviz: hasDataviz };
   }
 
   private _getChartHeight(numberOfContentAreas: number): ChartHeight {
@@ -174,32 +178,29 @@ export class Layout extends React.Component<ILayoutProps> {
     );
   }
 
-  private _generateContentArea(
-    cardContentList: ICardContentDetails[],
-    contentLayoutClassName: string,
-    contentArea1ClassName: string,
-    dataVizLastUpdateClassName: string,
-    contentArea2ClassName: string,
-    cardSize: CardSize
-  ): JSX.Element | null {
+  private _generateContentArea(cardContentList: ICardContentDetails[], cardSize: CardSize, header?: ICardHeaderProps): JSX.Element | null {
     if (cardContentList === null || cardContentList === undefined) {
       return null;
     }
-
-    const contentAreaContents = this._generateContentElement(cardContentList, dataVizLastUpdateClassName);
+    const getClassNames = classNamesFunction<ILayoutStyleProps, ILayoutStyles>();
+    let classNames = getClassNames(getStyles, { cardSize, header });
+    const contentAreaData = this._generateContentElement(cardContentList, classNames.dataVizLastUpdatedOn);
+    const contentAreaContents = contentAreaData.contentAreas;
+    const hasDataviz = contentAreaData.hasDataviz;
+    classNames = getClassNames(getStyles, { cardSize, header, hasDataviz });
     if (contentAreaContents.length === 0) {
       return null;
     }
 
     if (contentAreaContents.length > 1 && cardSize !== CardSize.small) {
       return (
-        <div className={contentLayoutClassName}>
-          <div className={contentArea1ClassName}>{contentAreaContents[0]}</div>
-          <div className={contentArea2ClassName}>{contentAreaContents[1]}</div>
+        <div className={classNames.contentLayout}>
+          <div className={classNames.contentArea1}>{contentAreaContents[0]}</div>
+          <div className={classNames.contentArea2}>{contentAreaContents[1]}</div>
         </div>
       );
     } else {
-      return <div className={contentArea1ClassName}>{contentAreaContents[0]}</div>;
+      return <div className={classNames.contentArea1}>{contentAreaContents[0]}</div>;
     }
   }
 }

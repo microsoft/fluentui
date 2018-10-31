@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IChartInternalProps, IChartStyles, IChartProps, ChartType, ChartHeight, ChartWidth } from './Chart.types';
+import { IChartInternalProps, IChartProps, IChartStyles, ChartType, ChartHeight, ChartWidth } from './Chart.types';
 import {
   DonutChart,
   HorizontalBarChart,
@@ -101,7 +101,11 @@ export class Chart extends React.Component<IChartInternalProps, { _width: number
         );
       }
       case ChartType.PieChart: {
-        return <DonutChart data={this.props.chartData![0]} innerRadius={0} />;
+        return (
+          <div className={mergeStyles({ width: 300, height: 250 })}>
+            <DonutChart data={this.props.chartData![0]} innerRadius={0} />
+          </div>
+        );
       }
       case ChartType.StackedBarChart: {
         return this._getStackedBarChart();
@@ -142,6 +146,8 @@ export class Chart extends React.Component<IChartInternalProps, { _width: number
   private _getLineChart = (): JSX.Element => {
     const { chartData, timeRange } = this.props;
     let dateDataType = false;
+    const getClassNames = classNamesFunction<IChartProps, IChartStyles>();
+    const classNames = getClassNames(getStyles);
     if (chartData && chartData[0] && chartData[0].lineChartData) {
       chartData[0].lineChartData!.forEach((lineData: ILineChartPoints) => {
         if (lineData.data.length > 0) {
@@ -196,18 +202,32 @@ export class Chart extends React.Component<IChartInternalProps, { _width: number
         }
       }
       return (
-        <LineChart
-          data={this.props.chartData![0]}
-          strokeWidth={this.props.strokeWidth}
-          width={this._getWidth()}
-          height={this._getHeight()}
-          tickValues={tickValues}
-          tickFormat={'%m/%d'}
-        />
+        <div
+          ref={(e: HTMLElement | null) => {
+            this._rootElem = e;
+          }}
+          className={classNames.chartWrapper}
+        >
+          <LineChart
+            parentRef={this._rootElem}
+            data={this.props.chartData![0]}
+            strokeWidth={this.props.strokeWidth}
+            tickValues={tickValues}
+            tickFormat={'%m/%d'}
+          />
+        </div>
+      );
+    } else {
+      return (
+        <div
+          ref={(e: HTMLElement | null) => {
+            this._rootElem = e;
+          }}
+          className={classNames.chartWrapper}
+        >
+          <LineChart parentRef={this._rootElem} data={this.props.chartData![0]} strokeWidth={this.props.strokeWidth} />
+        </div>
       );
     }
-    return (
-      <LineChart data={this.props.chartData![0]} strokeWidth={this.props.strokeWidth} width={this._getWidth()} height={this._getHeight()} />
-    );
   };
 }

@@ -24,13 +24,7 @@ export interface ICardContentDetails {
   /**
    * Content for component we want to render
    */
-  content:
-    | IBodyTextProps
-    | IThumbnailListProps
-    | ICompoundButtonStackProps
-    | IGridListProps
-    | IChartProps
-    | IMultiCountProps;
+  content: IBodyTextProps | IThumbnailListProps | ICompoundButtonStackProps | IGridListProps | IChartProps | IMultiCountProps;
 }
 
 export interface ILayoutProps {
@@ -53,6 +47,34 @@ export interface ILayoutProps {
    * Defines the current card size
    */
   cardSize: CardSize;
+}
+
+/**
+ * Internal interface to check whether if a content area has dataviz
+ */
+export interface IContentAreaHasDataviz {
+  contentArea1HasDataviz: boolean;
+
+  contentArea2HasDataviz: boolean;
+}
+
+/**
+ * internal interface for card layout
+ * The hasDataviz variable denotes whether a particular content area has dataviz in it and is used for appropriate styling
+ */
+
+export interface IContentAreasInfo {
+  contentAreas: JSX.Element[];
+
+  hasDataviz: IContentAreaHasDataviz;
+}
+
+export interface ILayoutStyleProps {
+  header?: ICardHeaderProps;
+
+  cardSize?: CardSize;
+
+  hasDataviz?: IContentAreaHasDataviz;
 }
 
 export interface ILayoutStyles {
