@@ -15,7 +15,7 @@ export class SetupCards extends React.PureComponent<ISetupCardsProps> {
     cardHorizontalSpacing: 96,
     cardDualVerticalSpacing: 37,
     cardAnimationDelay: 0.167,
-    cardVerticalOffset: -7,
+    cardVerticalOffset: 0,
     cardHoritonztalOffset: -7
   };
 
