@@ -6,7 +6,7 @@ import {
   DateRangeType,
   ICalendarIconStrings,
   ICalendarFormatDateCallbacks
-} from 'office-ui-fabric-react/lib/Calendar';
+} from '../Calendar.types';
 import { IStyle, ITheme } from '@uifabric/styling';
 
 export interface ICalendarDay {

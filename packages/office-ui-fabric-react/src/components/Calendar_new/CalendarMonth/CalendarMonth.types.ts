@@ -1,5 +1,5 @@
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
-import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from 'office-ui-fabric-react/lib/Calendar';
+import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from '../Calendar.types';
 import { IStyle, ITheme } from '@uifabric/styling';
 
 export interface ICalendarMonth {
