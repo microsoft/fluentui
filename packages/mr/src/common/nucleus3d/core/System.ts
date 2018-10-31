@@ -116,7 +116,7 @@ export default abstract class System<TProps = {}> {
    * @internal
    */
   // tslint:disable-next-line:no-unused-variable
-  private _internalInit(context: INucleusContext): void {
+  protected _internalInit(context: INucleusContext): void {
     this._context = context;
     this._isInitialized = true;
     this.onInit();
@@ -126,7 +126,7 @@ export default abstract class System<TProps = {}> {
    * @internal
    */
   // tslint:disable-next-line:no-unused-variable
-  private _internalDispose(): void {
+  protected _internalDispose(): void {
     this._context = undefined;
     this.onDispose();
     this._isInitialized = false;

@@ -242,7 +242,7 @@ export default abstract class Component<TProps = {}, TSystem extends System = an
    * @internal
    */
   // tslint:disable-next-line:no-unused-variable
-  private _internalMount(entity: Entity, system?: TSystem): void {
+  protected _internalMount(entity: Entity, system?: TSystem): void {
     if (this._isMounted) {
       throw new Error('This component is already mounted.');
     }
@@ -260,7 +260,7 @@ export default abstract class Component<TProps = {}, TSystem extends System = an
    * @internal
    */
   // tslint:disable-next-line:no-unused-variable
-  private _internalUnmount(disposeMaterialAndTextures: boolean): void {
+  protected _internalUnmount(disposeMaterialAndTextures: boolean): void {
     if (!this._isMounted) {
       throw new Error('This component is not mounted.');
     }

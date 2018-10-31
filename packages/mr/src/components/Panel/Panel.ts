@@ -36,29 +36,29 @@ export class Panel extends Entity<IPanelProps> {
     blurPlane.alphaIndex = 1;
     Entity.for(blurPlane).mountComponent(new BlurMaterial());
 
-    // const tintPlane: BABYLON.Mesh = BABYLON.MeshBuilder.CreatePlane(
-    //   'tintPlane',
-    //   {
-    //     height: this.props.height,
-    //     width: this.props.width
-    //   },
-    //   this.context.scene
-    // );
-    // tintPlane.alphaIndex = 2;
-    // tintPlane.parent = this.node;
-    // tintPlane.position.z += layerSeparation;
+    const tintPlane: BABYLON.Mesh = BABYLON.MeshBuilder.CreatePlane(
+      'tintPlane',
+      {
+        height: this.props.height,
+        width: this.props.width
+      },
+      this.context.scene
+    );
+    tintPlane.alphaIndex = 2;
+    tintPlane.parent = this.node;
+    tintPlane.position.z += layerSeparation;
 
-    // if (!this.props.receiveInput) {
-    //   BABYLON.Tags.AddTagsTo(blurPlane, 'IGNORE_INPUT');
-    //   BABYLON.Tags.AddTagsTo(tintPlane, 'IGNORE_INPUT');
-    // }
+    if (!this.props.receiveInput) {
+      BABYLON.Tags.AddTagsTo(blurPlane, 'IGNORE_INPUT');
+      BABYLON.Tags.AddTagsTo(tintPlane, 'IGNORE_INPUT');
+    }
 
-    // const tintMat: BABYLON.StandardMaterial = new BABYLON.StandardMaterial('tintMat', this.context.scene);
-    // tintMat.backFaceCulling = false;
-    // tintMat.alpha = this.props.alpha || 0.6;
-    // tintMat.emissiveColor = this._getTintColor();
-    // tintMat.disableLighting = true;
-    // tintPlane.material = tintMat;
+    const tintMat: BABYLON.StandardMaterial = new BABYLON.StandardMaterial('tintMat', this.context.scene);
+    tintMat.backFaceCulling = false;
+    tintMat.alpha = this.props.alpha || 0.6;
+    tintMat.emissiveColor = this._getTintColor();
+    tintMat.disableLighting = true;
+    tintPlane.material = tintMat;
   }
 
   private _getTintColor(): BABYLON.Color3 {

@@ -150,7 +150,7 @@ export default class SceneEntity extends Entity {
    * @internal
    */
   // tslint:disable-next-line:no-unused-variable
-  private _internalRegisterEntity(entity: Entity): void {
+  protected _internalRegisterEntity(entity: Entity): void {
     this._mountedEntities.push(entity);
   }
 
@@ -158,7 +158,7 @@ export default class SceneEntity extends Entity {
    * @internal
    */
   // tslint:disable-next-line:no-unused-variable
-  private _internalUnregisterEntity(entity: Entity): void {
+  protected _internalUnregisterEntity(entity: Entity): void {
     this._mountedEntities.splice(this._mountedEntities.indexOf(entity), 1);
   }
 
