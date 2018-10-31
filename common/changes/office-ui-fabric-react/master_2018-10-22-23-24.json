@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Removing some of the deprecated components flaged when turning the tslint deprecation flag to true in the office-ui-fabric-react package.",
+      "comment": "Adding warning and updating documentation on Pivot children needing to be PivotItems.",
       "type": "patch"
     }
   ],
