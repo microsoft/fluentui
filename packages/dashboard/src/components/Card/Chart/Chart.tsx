@@ -64,13 +64,7 @@ export class Chart extends React.Component<IChartInternalProps, { _width: number
   }
 
   public render(): JSX.Element {
-    const getClassNames = classNamesFunction<IChartProps, IChartStyles>();
-    const classNames = getClassNames(getStyles);
-    return (
-      <div ref={(rootElem: HTMLElement | null) => (this._rootElem = rootElem)} className={classNames.chartWrapper}>
-        {this._getChartByType(this.props.chartType)}
-      </div>
-    );
+    return this._getChartByType(this.props.chartType);
   }
 
   private _getChartByType = (chartType: ChartType): JSX.Element => {

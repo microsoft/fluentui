@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/charting",
+      "comment": "Changes to line chart component, adding optional prop for users to which they can pass a html element based on which the dataviz will scale. This helps when the parent element is formed using flex or after a timeout. Also eliminates the glitch feel.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/charting",
+  "email": "nulikarthik@gmail.com"
+}

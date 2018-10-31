@@ -103,6 +103,11 @@ export class MultipleLineChartExample extends React.Component<{}, {}> {
       headerText: 'Header Text '
     };
 
-    return <Card cardFrameContent={cardFrameContent} header={header} cardContentList={contentAreaList} cardSize={CardSize.mediumWide} />;
+    return (
+      // tslint:disable-next-line
+      <div style={{ width: '700px', height: '700px', border: '1px solid #c0c1c4' }}>
+        <Card cardFrameContent={cardFrameContent} header={header} cardContentList={contentAreaList} cardSize={CardSize.mediumWide} />
+      </div>
+    );
   }
 }

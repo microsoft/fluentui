@@ -90,13 +90,14 @@ export class ActionBar extends React.Component<IActionBarProps, {}> {
     return (
       <DefaultButton
         menuProps={{
-          items: items!,
-          styles: {
-            root: {
-              boxShadow: '0px 1.2px 3.6px rgba(0,0,0,0.18), 0px 6.4px 14.4px rgba(0,0,0,0.22)',
-              backgroundColor: 'red'
+          calloutProps: {
+            styles: {
+              root: {
+                boxShadow: '0px 1.2px 3.6px rgba(0,0,0,0.18), 0px 6.4px 14.4px rgba(0,0,0,0.22)'
+              }
             }
-          }
+          },
+          items: items!
         }}
         onClick={this._onClick}
         styles={overflowButtonStyles}

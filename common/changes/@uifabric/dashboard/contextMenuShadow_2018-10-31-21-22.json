@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/dashboard",
+      "comment": "Making changes to layout of card to support scaling of dataviz. Dataviz scale as per the parent element they sit in and in this case the parent element is formed using flex css. Added constraints to check if part of card will have dataviz and changes styles accordingly",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/dashboard",
+  "email": "nulikarthik@gmail.com"
+}
