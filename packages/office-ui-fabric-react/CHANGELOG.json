@@ -2,6 +2,35 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.97.0",
+      "tag": "office-ui-fabric-react_v6.97.0",
+      "date": "Wed, 31 Oct 2018 12:32:41 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Calendar: update descriptions on demo page",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "4f7257e1806c82a2f325f54d56d95cd62e01fc2e"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Expose existing mergeSettings utility function.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "fc5a1f4620c93499a41abe8377ff61161cf5bd76"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.33.0 <7.0.0` to `>=6.34.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.24.0 <7.0.0` to `>=6.25.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.96.0",
       "tag": "office-ui-fabric-react_v6.96.0",
       "date": "Tue, 30 Oct 2018 18:45:48 GMT",
