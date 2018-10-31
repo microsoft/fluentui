@@ -178,8 +178,7 @@ export class GetStartedPage extends React.Component<any, any> {
           <ol className={styles.steps}>
             <li>
               <p>
-                Install Node.js (at least 8.x) from the
-                <a href="https://nodejs.org">Node.js website</a>.
+                Install Node.js (at least 8.x) from the <a href="https://nodejs.org">Node.js website</a>.
               </p>
             </li>
             <li>
@@ -192,9 +191,10 @@ export class GetStartedPage extends React.Component<any, any> {
               </CodeBlock>
             </li>
             <li>
-              <p>Install Fabric React:</p>
+              <p>Navigate to your project and install Fabric React:</p>
               <CodeBlock language="bash" isLightTheme={true}>
-                {`npx create-react-app my-app --typescript`}
+                {`cd my-app
+npm install office-ui-fabric-react`}
               </CodeBlock>
             </li>
             <li>
