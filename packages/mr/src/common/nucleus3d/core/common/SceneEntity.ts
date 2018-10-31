@@ -24,7 +24,7 @@ export default class SceneEntity extends Entity {
       throw new Error('This scene has been disposed.');
     }
 
-    let entity: SceneEntity = SceneEntity.extractFrom(scene) as SceneEntity;
+    let entity: SceneEntity = SceneEntity._extractFrom(scene) as SceneEntity;
     if (entity) {
       return entity;
     }
@@ -33,11 +33,11 @@ export default class SceneEntity extends Entity {
     return entity;
   }
 
-  private static extractFrom(scene: BABYLON.Scene): Entity {
+  private static _extractFrom(scene: BABYLON.Scene): Entity {
     return (scene as any).__entity__; // tslint:disable-line:no-any
   }
 
-  private static setTo(scene: BABYLON.Scene, entity: Entity): void {
+  private static _setTo(scene: BABYLON.Scene, entity: Entity): void {
     (scene as any).__entity__ = entity; // tslint:disable-line:no-any
   }
 
@@ -60,7 +60,7 @@ export default class SceneEntity extends Entity {
    */
   public get systems(): System[] {
     const systems: System[] = [];
-    this._systems.forEach(system => {
+    this._systems.forEach((system: System) => {
       systems.push(system);
     });
     return systems;
@@ -72,12 +72,12 @@ export default class SceneEntity extends Entity {
    * @param scene - The BABYLON scene
    */
   public mount(engine: BABYLON.Engine, scene: BABYLON.Scene): void {
-    if (SceneEntity.extractFrom(scene)) {
+    if (SceneEntity._extractFrom(scene)) {
       throw new Error('The passed scene has an associated entity. Use SceneEntity.from(scene).');
     }
-    SceneEntity.setTo(scene, this);
+    SceneEntity._setTo(scene, this);
+    // tslint:disable-next-line:no-any
     (this as any)._mount({
-      // tslint:disable-line no-any
       engine,
       scene,
       sceneEntity: this
@@ -98,7 +98,7 @@ export default class SceneEntity extends Entity {
    * @param systems - the systems
    */
   public registerSystems(systems: System[]): void {
-    systems.forEach(system => this.registerSystem(system));
+    systems.forEach((system: System) => this.registerSystem(system));
   }
 
   /**
@@ -136,7 +136,7 @@ export default class SceneEntity extends Entity {
   }
 
   public unmount(): void {
-    this._systems.forEach(system => {
+    this._systems.forEach((system: System) => {
       this._disposeSystem(system);
     });
     super.unmount();
@@ -163,7 +163,7 @@ export default class SceneEntity extends Entity {
   }
 
   private _initializeSystems(): void {
-    this._systems.forEach(system => {
+    this._systems.forEach((system: System) => {
       this._initializeSystem(system);
     });
   }
@@ -181,8 +181,8 @@ export default class SceneEntity extends Entity {
     this.context.scene.onBeforeRenderObservable.add(internalSystem.onUpdate);
 
     // intiailize any mounted entities
-    this._mountedEntities.forEach(entity => {
-      entity.components.forEach(component => {
+    this._mountedEntities.forEach((entity: Entity) => {
+      entity.components.forEach((component: Component) => {
         if (component.constructor === system.componentType) {
           const internalComponent: IInternalComponent = component as any; // tslint:disable-line:no-any
           internalComponent._system = system;

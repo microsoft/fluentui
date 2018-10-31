@@ -55,7 +55,7 @@ describe('Component class', () => {
   });
 
   afterEach(() => {
-    sceneEntity.systems.forEach(system => {
+    sceneEntity.systems.forEach((system: System) => {
       sceneEntity.unregisterSystem(system);
     });
     sceneEntity.unmount();

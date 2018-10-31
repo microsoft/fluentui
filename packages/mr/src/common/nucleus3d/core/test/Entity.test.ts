@@ -49,10 +49,10 @@ describe('Entity class', () => {
       expect(entity.isMounted).toBeFalsy();
     });
 
-    it('should call willUnmount before dispose of mesh', done => {
+    it('should call willUnmount before dispose of mesh', (done: jest.DoneCallback) => {
       const entity: Entity = sceneEntity.mountChild(new Entity());
+      // tslint:disable-next-line:no-any
       (entity as any).willUnmount = () => {
-        // tslint:disable-line:no-any
         expect(entity.node.isDisposed()).toBeFalsy();
         done();
       };
@@ -75,8 +75,8 @@ describe('Entity class', () => {
     it('should have a custom node if onMount overriden', () => {
       const customNode: BABYLON.Mesh = new BABYLON.Mesh('CustomNode');
       const entity: Entity = new Entity();
+      // tslint:disable-next-line:no-any
       (entity as any).onMount = () => {
-        // tslint:disable-line:no-any
         return customNode;
       };
       sceneEntity.mountChild(entity);
@@ -155,7 +155,7 @@ describe('Entity class', () => {
       expect(fakeEntity.willUpdateCalled).toBeTruthy();
     });
 
-    it('should call onUpdate', done => {
+    it('should call onUpdate', (done: jest.DoneCallback) => {
       const fakeEntity: FakeEntity = sceneEntity.mountChild(new FakeEntity(true));
       const observable: BABYLON.Observer<BABYLON.Scene> = scene.onBeforeRenderObservable.add(() => {
         scene.onBeforeRenderObservable.remove(observable);
@@ -213,8 +213,8 @@ describe('Entity class', () => {
     });
 
     it('should deep copy properties', () => {
+      // tslint:disable-next-line:no-any
       const props: any = {
-        // tslint:disable-line:no-any
         test: {
           a: 1,
           b: {

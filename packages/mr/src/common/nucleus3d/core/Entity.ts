@@ -43,7 +43,7 @@ export default class Entity<TProps = {}, TParentContext = {}> {
       throw new Error('This node has been disposed.');
     }
 
-    let entity: Entity = Entity.extract(node);
+    let entity: Entity = Entity._extract(node);
     if (entity) {
       return entity;
     }
@@ -51,7 +51,7 @@ export default class Entity<TProps = {}, TParentContext = {}> {
     entity.onMount = () => {
       return node;
     };
-    Entity.set(node, entity);
+    Entity._set(node, entity);
 
     // auto mount all the way up
     if (node.parent instanceof BABYLON.AbstractMesh) {
@@ -62,11 +62,11 @@ export default class Entity<TProps = {}, TParentContext = {}> {
     return entity;
   }
 
-  private static extract(node: BABYLON.AbstractMesh): Entity {
+  private static _extract(node: BABYLON.AbstractMesh): Entity {
     return (node as any).__entity__; // tslint:disable-line:no-any
   }
 
-  private static set(node: BABYLON.AbstractMesh, entity: Entity | undefined): void {
+  private static _set(node: BABYLON.AbstractMesh, entity: Entity | undefined): void {
     (node as any).__entity__ = entity; // tslint:disable-line:no-any
   }
 
@@ -180,7 +180,7 @@ export default class Entity<TProps = {}, TParentContext = {}> {
       this._onBeforeRenderObserver = undefined;
     }
 
-    Entity.set(this._node!, undefined);
+    Entity._set(this._node!, undefined);
 
     if (!this._node!.isDisposed()) {
       this._node!.dispose(
@@ -258,7 +258,7 @@ export default class Entity<TProps = {}, TParentContext = {}> {
    * @remarks Throws if a component of the same type is already mounted.
    */
   public mountComponents(components: Component[]): void {
-    components.forEach(component => {
+    components.forEach((component: Component) => {
       if (this._components.map.has(component.constructor)) {
         throw new Error('A component of this type is already mounted. Type: ' + component.constructor.name);
       } else {
@@ -361,7 +361,7 @@ export default class Entity<TProps = {}, TParentContext = {}> {
   }
 
   private _notifyChildren(): void {
-    this.children.forEach(child => {
+    this.children.forEach((child: Entity) => {
       child._parentContext = this.getChildContext();
       child.parentUpdated(this._isMounted);
     });
@@ -375,8 +375,8 @@ export default class Entity<TProps = {}, TParentContext = {}> {
     this._context = context;
     this._isMounted = true;
     this._node = this.onMount();
-    if (!Entity.extract(this.node)) {
-      Entity.set(this.node, this);
+    if (!Entity._extract(this.node)) {
+      Entity._set(this.node, this);
     }
 
     // Set to parent
@@ -389,7 +389,7 @@ export default class Entity<TProps = {}, TParentContext = {}> {
     }
 
     // Mount children
-    this.children.forEach(child => {
+    this.children.forEach((child: Entity) => {
       child._parentContext = this.getChildContext();
       child._mount(this.context);
     });
@@ -419,7 +419,7 @@ export default class Entity<TProps = {}, TParentContext = {}> {
 
   private _onBeforeRender(): void {
     if (this.components) {
-      this._components.map.forEach(component => {
+      this._components.map.forEach((component: Component) => {
         if (component.isEnabled) {
           this._tryExecute((component as any).onUpdate.bind(component)); // tslint:disable-line:no-any
         }
@@ -432,7 +432,9 @@ export default class Entity<TProps = {}, TParentContext = {}> {
   private _tryExecute(func: () => void): void {
     try {
       func();
-    } catch (e) {}
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   private _throwNotMounted(): never {

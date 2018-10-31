@@ -23,7 +23,7 @@ export default class InternalComponentCollection {
 
   public get array(): Component[] {
     const arr: Component[] = [];
-    this._internalMap.forEach(component => {
+    this._internalMap.forEach((component: IInternalComponent) => {
       arr.push(component as any); // tslint:disable-line:no-any
     });
     return arr;
@@ -40,8 +40,8 @@ export default class InternalComponentCollection {
     this._isMounted = true;
 
     // Loop through array in cases where a component, mounted before the entity was mounted, mounts another component.
-    ((this.array as any) as IInternalComponent[]).forEach(component => {
-      // tslint:disable-line:no-any
+    // tslint:disable-next-line:no-any
+    ((this.array as any) as IInternalComponent[]).forEach((component: IInternalComponent) => {
       component._internalMount(entity, sceneEntity.getSystem(component.constructor as new () => Component));
     });
   }
@@ -59,7 +59,7 @@ export default class InternalComponentCollection {
   }
 
   public onEntityPropsWillUpdate(oldProps: {}): void {
-    this._internalMap.forEach(component => {
+    this._internalMap.forEach((component: IInternalComponent) => {
       if (component.isEnabled) {
         component.onEntityPropsWillUpdate(oldProps);
       }
@@ -67,7 +67,7 @@ export default class InternalComponentCollection {
   }
 
   public onEntityPropsUpdated(): void {
-    this._internalMap.forEach(component => {
+    this._internalMap.forEach((component: IInternalComponent) => {
       if (component.isEnabled) {
         component.onEntityPropsUpdated();
       }
@@ -82,7 +82,7 @@ export default class InternalComponentCollection {
   }
 
   public unmount(disposeMaterialAndTextures: boolean): void {
-    this._internalMap.forEach(component => {
+    this._internalMap.forEach((component: IInternalComponent) => {
       component._internalUnmount(disposeMaterialAndTextures);
     });
     this._internalMap.clear();

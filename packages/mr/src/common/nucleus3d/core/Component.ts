@@ -197,8 +197,8 @@ export default abstract class Component<TProps = {}, TSystem extends System = an
    * Called before an entity's props are updated
    * @deprecated Components should rely on their own props.
    */
+  // tslint:disable-next-line:no-any
   protected onEntityPropsWillUpdate(oldProps: any): void {
-    // tslint:disable-line:no-any
     // EMPTY BLOCK
   }
 
@@ -269,7 +269,7 @@ export default abstract class Component<TProps = {}, TSystem extends System = an
       this.willUnmount();
     }
 
-    this._nodes.forEach(node => {
+    this._nodes.forEach((node: BABYLON.Node) => {
       if (!node.isDisposed()) {
         node.dispose(
           false, // doNotRecurse
