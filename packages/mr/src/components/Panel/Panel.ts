@@ -5,7 +5,7 @@ import { FluentTheme, IPanelProps } from './Panel.types';
 
 export class Panel extends Entity<IPanelProps> {
   protected didMount(): void {
-    const layerSeparation: number = this.props.layerSeparation || 0.03;
+    const layerSeparation: number = this.props.layerSeparation || 0.001;
     const depth: number = this.props.depth || 0.05;
 
     const blurPlane: BABYLON.Mesh = BABYLON.MeshBuilder.CreateBox(

@@ -60,14 +60,17 @@ export class Scene extends React.Component<SceneProps & React.HTMLAttributes<HTM
 }
 
 export abstract class FabricSceneEntity extends SceneEntity {
+  private _blurTexture: BlurTexture;
+
   public didMount(): void {
-    this.registerSystem(new BlurMaterialSystem());
+    this._blurTexture = new BlurTexture(this.context.scene);
+    this.registerSystem(new BlurMaterialSystem(this._blurTexture));
     this.render();
   }
 
   public addEnvironmentMeshes(meshes: BABYLON.AbstractMesh[]): void {
     meshes.forEach((mesh: BABYLON.AbstractMesh) => {
-      BlurTexture.instance(this.context.scene).add(mesh);
+      this._blurTexture.add(mesh);
     });
   }
   protected abstract render(): void;

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Panel } from '@uifabric/mr/lib/components/Panel/Panel';
 import { FabricSceneEntity, Scene } from '@uifabric/mr/lib/Scene';
+import { FluentTheme } from '../Panel.types';
 
 class MySceneEntity extends FabricSceneEntity {
   /**
@@ -26,13 +27,13 @@ class MySceneEntity extends FabricSceneEntity {
     this.addEnvironmentMeshes(this.context.scene.meshes);
 
     // Fluent Panels
-    const panel1 = new Panel({ height: 1, width: 2, alpha: 0.4 });
+    const panel1 = new Panel({ height: 1, width: 2, alpha: 0.4, theme: FluentTheme.Dark });
     this.mountChild(panel1);
     panel1.node.position = new BABYLON.Vector3(0, 1.6, 0);
-    const panel2 = new Panel({ height: 1, width: 2, alpha: 0.8 });
+    const panel2 = new Panel({ height: 1, width: 2, alpha: 0.8, theme: FluentTheme.Dark });
     this.mountChild(panel2);
     panel2.node.position = new BABYLON.Vector3(0, 0.5, 0);
   }
 }
 
-export const PanelBasicExample = () => <Scene sceneEntity={new MySceneEntity()} />;
+export const PanelDarkExample = () => <Scene sceneEntity={new MySceneEntity()} />;

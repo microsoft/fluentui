@@ -5,18 +5,14 @@ import * as BABYLON from 'babylonjs';
  * @alpha
  */
 export default class BlurTexture {
-  private static _instance: BlurTexture;
   private _blurTexture: BABYLON.RenderTargetTexture;
+
+  constructor(babylonScene: BABYLON.Scene) {
+    this._blurTexture = this._createBlurTexture(babylonScene);
+  }
 
   public get texture(): BABYLON.RenderTargetTexture {
     return this._blurTexture;
-  }
-
-  public static instance(babylonScene: BABYLON.Scene): BlurTexture {
-    if (!BlurTexture._instance) {
-      BlurTexture._instance = new BlurTexture(babylonScene);
-    }
-    return BlurTexture._instance;
   }
 
   public dispose(): void {
@@ -39,10 +35,6 @@ export default class BlurTexture {
     if (this._blurTexture.renderList) {
       this._blurTexture.renderList = this._blurTexture.renderList.filter((m: BABYLON.AbstractMesh) => m !== mesh);
     }
-  }
-
-  private constructor(babylonScene: BABYLON.Scene) {
-    this._blurTexture = this._createBlurTexture(babylonScene);
   }
 
   /**
