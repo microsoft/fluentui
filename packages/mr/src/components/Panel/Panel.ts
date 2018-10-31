@@ -1,21 +1,7 @@
 import * as BABYLON from 'babylonjs';
 import BlurMaterial from '../../common/materials/BlurMaterial';
 import { Entity } from '../../common/nucleus3d/core';
-
-export enum FluentTheme {
-  Light,
-  Dark
-}
-
-export interface IPanelProps {
-  width: number;
-  height: number;
-  depth?: number;
-  layerSeparation?: number;
-  alpha?: 0.4 | 0.6 | 0.8 | 1;
-  theme?: FluentTheme;
-  receiveInput?: boolean;
-}
+import { FluentTheme, IPanelProps } from './Panel.types';
 
 export class Panel extends Entity<IPanelProps> {
   protected didMount(): void {

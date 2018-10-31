@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentPage, ExampleCard, IComponentDemoPageProps } from '@uifabric/example-app-base';
+import { ComponentPage, ExampleCard, IComponentDemoPageProps, PropertiesTableSet } from '@uifabric/example-app-base';
 import { PanelBasicExample } from './examples/Panel.Basic.Example';
 
 const PanelBasicExampleCode = require('!raw-loader!@uifabric/mr/src/components/Panel/examples/Panel.Basic.Example.tsx') as string;
@@ -18,9 +18,9 @@ export class PanelPage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         /* tslint:disable:max-line-length */
-        // propertiesTables={
-        //   <PropertiesTableSet sources={[require<string>('!raw-loader!@uifabric/charting/src/components/LineChart/LineChart.types.ts')]} />
-        // }
+        propertiesTables={
+          <PropertiesTableSet sources={[require<string>('!raw-loader!@uifabric/mr/src/components/Panel/Panel.types.ts')]} />
+        }
         overview={
           <div>
             <p>Panel description</p>
