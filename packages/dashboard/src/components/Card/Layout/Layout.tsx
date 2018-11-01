@@ -145,7 +145,7 @@ export class Layout extends React.Component<ILayoutProps, { _width: number; _hei
                         {animation}
                       </div>
                     ) : (
-                      <div>
+                      <>
                         {chartUpdatedOn && <div className={dataVizLastUpdateClassName}>{chartUpdatedOn}</div>}
                         <Chart
                           chartLabels={chartLabels}
@@ -163,7 +163,7 @@ export class Layout extends React.Component<ILayoutProps, { _width: number; _hei
                           height={this._getChartHeight(cardContentList.length)}
                           ignoreStackBarChartDefaultStyle={ignoreStackBarChartDefaultStyle}
                         />
-                      </div>
+                      </>
                     )}
                   </React.Fragment>
                 );
