@@ -521,8 +521,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
     if (this._textElement.current && this.props.autoAdjustHeight && this.props.multiline) {
       const textField = this._textElement.current;
       textField.style.height = '';
-      const scrollHeight = textField.scrollHeight + 2; // +2 to avoid vertical scroll bars
-      textField.style.height = scrollHeight + 'px';
+      textField.style.height = textField.scrollHeight + 'px';
     }
   }
 }
