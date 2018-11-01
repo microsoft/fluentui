@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Fri, 26 Oct 2018 12:32:35 GMT and should not be manually modified.
+This log was last generated on Wed, 31 Oct 2018 12:32:41 GMT and should not be manually modified.
+
+## 6.34.0
+Wed, 31 Oct 2018 12:32:41 GMT
+
+### Minor changes
+
+- API changes to getSchemedContext for use by theme provider.
 
 ## 6.33.0
 Fri, 26 Oct 2018 12:32:35 GMT

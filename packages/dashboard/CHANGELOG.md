@@ -1,6 +1,13 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Thu, 25 Oct 2018 12:30:05 GMT and should not be manually modified.
+This log was last generated on Wed, 31 Oct 2018 22:35:10 GMT and should not be manually modified.
+
+## 0.31.1
+Wed, 31 Oct 2018 22:35:10 GMT
+
+### Patches
+
+- Add opitional switch for Dashboard Chart -- stack bar chart to not apply default style while data points count is less two
 
 ## 0.31.0
 Thu, 25 Oct 2018 12:30:05 GMT

@@ -1528,9 +1528,6 @@ export function getRTL(): boolean;
 // @public
 export function getRTLSafeKeyCode(key: number): number;
 
-// @public
-export function getSchemedContext(scheme: ISchemeNames, context: ICustomizerContext, settingsTheme?: ITheme): ICustomizerContext | undefined;
-
 // @public (undocumented)
 export function getScreenSelector(min: number, max: number): string;
 
@@ -1545,6 +1542,10 @@ export function getSubmenuItems(item: IContextualMenuItem): any;
 
 // @public
 export function getTheme(depComments?: boolean): ITheme;
+
+// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
+// @internal
+export function getThemedContext(context: ICustomizerContext, scheme?: ISchemeNames, theme?: ITheme): ICustomizerContext;
 
 // @public
 export function getVirtualParent(child: HTMLElement): HTMLElement | undefined;
@@ -1829,6 +1830,7 @@ interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputElement | Au
   enableAutofillOnKeyPress?: KeyCodes[];
   onInputChange?: (value: string) => string;
   onInputValueChange?: (newValue?: string) => void;
+  preventValueSelection?: boolean;
   shouldSelectFullInputValueInComponentDidUpdate?: () => boolean;
   suggestedDisplayValue?: string;
   updateValueInWillReceiveProps?: () => string | null;
@@ -2111,7 +2113,7 @@ interface IBreadcrumbItem {
 }
 
 // @public (undocumented)
-interface IBreadcrumbProps extends React.Props<BreadcrumbBase> {
+interface IBreadcrumbProps extends React.ClassAttributes<BreadcrumbBase> {
   ariaLabel?: string;
   className?: string;
   componentRef?: IRefObject<IBreadcrumb>;
@@ -2502,7 +2504,7 @@ interface ICheckboxStyles {
 }
 
 // @public (undocumented)
-interface ICheckProps extends React.Props<CheckBase> {
+interface ICheckProps extends React.ClassAttributes<CheckBase> {
   alwaysShowCheck?: boolean;
   checked?: boolean;
   className?: string;
@@ -6259,7 +6261,13 @@ interface IContextualMenuStyles {
   header: IStyle;
   list: IStyle;
   root: IStyle;
+  subComponentStyles: IContextualMenuSubComponentStyles;
   title: IStyle;
+}
+
+// @public (undocumented)
+interface IContextualMenuSubComponentStyles {
+  callout: IStyleFunctionOrObject<ICalloutContentStyleProps, any>;
 }
 
 // @public (undocumented)
@@ -10953,8 +10961,11 @@ export function merge<T = {}>(target: Partial<T>, ...args: (Partial<T> | null | 
 // @public
 export function mergeAriaAttributeValues(...ariaAttributes: (string | undefined)[]): string | undefined;
 
-// @public (undocumented)
+// @public
 export function mergeCustomizations(props: ICustomizerProps, parentContext: ICustomizerContext): ICustomizerContext;
+
+// @public
+export function mergeSettings(oldSettings?: Settings, newSettings?: Settings | SettingsFunction): Settings;
 
 // @public
 export function mergeStyles(...args: (IStyle | IStyleBaseArray | false | null | undefined)[]): string;

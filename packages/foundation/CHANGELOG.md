@@ -1,6 +1,13 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Thu, 18 Oct 2018 20:22:36 GMT and should not be manually modified.
+This log was last generated on Wed, 31 Oct 2018 12:32:41 GMT and should not be manually modified.
+
+## 0.5.7
+Wed, 31 Oct 2018 12:32:41 GMT
+
+### Patches
+
+- Add theme provider for using schemes. Remove implicit scheme prop for all components using Foundation.
 
 ## 0.5.6
 Thu, 18 Oct 2018 20:22:36 GMT

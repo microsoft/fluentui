@@ -2,6 +2,42 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.26.3",
+      "tag": "@uifabric/charting_v0.26.3",
+      "date": "Thu, 01 Nov 2018 12:31:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "added hovercard for horizontalBar chart",
+            "author": "BalakrishnaReddyPolu <polu.balakrishna96@gmail.com>",
+            "commit": "a19b4559d8c8daf16f80e31d95d3eb7c82a28b4d"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.26.2",
+      "tag": "@uifabric/charting_v0.26.2",
+      "date": "Wed, 31 Oct 2018 12:32:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Enable ignore fixed stackbarchart style when data point is less than 2",
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "ada8851602bb6af4186a289fbf2aeae5808a6ec0"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.96.0 <7.0.0` to `>=6.97.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.9.0 <7.0.0` to `>=6.9.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.26.1",
       "tag": "@uifabric/charting_v0.26.1",
       "date": "Mon, 29 Oct 2018 18:04:30 GMT",

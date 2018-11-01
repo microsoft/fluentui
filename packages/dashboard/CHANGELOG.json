@@ -2,6 +2,32 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.31.1",
+      "tag": "@uifabric/dashboard_v0.31.1",
+      "date": "Wed, 31 Oct 2018 22:35:10 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Running Prettier on all .ts and .tsx files in the packages folder.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "2ce6c5ac3ccf4e62d4866841317b4aa55b8fb541"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Add opitional switch for Dashboard Chart -- stack bar chart to not apply default style while data points count is less two",
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "9850d03a2a3ae37be85a2f12e04a464c7151ac71"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.97.0 <7.0.0` to `>=6.97.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.31.0",
       "tag": "@uifabric/dashboard_v0.31.0",
       "date": "Thu, 25 Oct 2018 12:30:05 GMT",

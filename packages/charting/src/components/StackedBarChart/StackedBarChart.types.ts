@@ -59,6 +59,11 @@ export interface IStackedBarChartProps {
    * Url that the data-viz needs to redirect to upon clicking on it
    */
   href?: string;
+
+  /**
+   * If this value is set, the fixed display pattern for less than 2 data points chart will be ignore
+   */
+  ignoreFixStyle?: boolean;
 }
 
 export interface IStackedBarChartStyleProps {
