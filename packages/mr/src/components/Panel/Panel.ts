@@ -34,8 +34,8 @@ export class Panel extends Entity<IPanelProps> {
     tintPlane.position.z += layerSeparation;
 
     if (!this.props.receiveInput) {
-      BABYLON.Tags.AddTagsTo(blurPlane, 'IGNORE_INPUT');
-      BABYLON.Tags.AddTagsTo(tintPlane, 'IGNORE_INPUT');
+      BABYLON.Tags.AddTagsTo(blurPlane, 'IgnoreInput');
+      BABYLON.Tags.AddTagsTo(tintPlane, 'IgnoreInput');
     }
 
     const tintMat: BABYLON.StandardMaterial = new BABYLON.StandardMaterial('tintMat', this.context.scene);
