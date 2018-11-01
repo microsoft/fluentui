@@ -22,7 +22,11 @@ const DAYS_IN_WEEK = 7;
 
 const getClassNames = classNamesFunction<ICalendarDayStyleProps, ICalendarDayStyles>();
 
-interface IDayInfo {
+interface IWeekCorners {
+  [key: string]: string;
+}
+
+export interface IDayInfo {
   key: string;
   date: string;
   originalDate: Date;
@@ -33,13 +37,9 @@ interface IDayInfo {
   onSelected: () => void;
 }
 
-interface ICalendarDayState {
+export interface ICalendarDayState {
   activeDescendantId?: string;
   weeks?: IDayInfo[][];
-}
-
-interface IWeekCorners {
-  [key: string]: string;
 }
 
 export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarDayState> {
