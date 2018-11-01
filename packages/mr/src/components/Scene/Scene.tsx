@@ -1,23 +1,8 @@
 import * as React from 'react';
 import * as BABYLON from 'babylonjs';
+import { ISceneProps } from './Scene.types';
 
-import { SceneEntity } from '@uifabric/mr/lib/common/nucleus3d/core';
-import BlurMaterialSystem from '@uifabric/mr/lib/common/materials/BlurMaterialSystem';
-import BlurTexture from '@uifabric/mr/lib/common/textures/BlurTexture';
-
-export type SceneEventArgs = {
-  engine: BABYLON.Engine;
-  scene: BABYLON.Scene;
-  canvas: HTMLCanvasElement;
-};
-
-export type SceneProps = {
-  engineOptions?: BABYLON.EngineOptions;
-  adaptToDeviceRatio?: boolean;
-  sceneEntity: FabricSceneEntity;
-};
-
-export class Scene extends React.Component<SceneProps & React.HTMLAttributes<HTMLCanvasElement>, {}> {
+export class Scene extends React.Component<ISceneProps & React.HTMLAttributes<HTMLCanvasElement>, {}> {
   private scene: BABYLON.Scene;
   private engine: BABYLON.Engine;
   private canvas: HTMLCanvasElement;
@@ -57,21 +42,4 @@ export class Scene extends React.Component<SceneProps & React.HTMLAttributes<HTM
       this.engine.resize();
     }
   };
-}
-
-export abstract class FabricSceneEntity extends SceneEntity {
-  private _blurTexture: BlurTexture;
-
-  public didMount(): void {
-    this._blurTexture = new BlurTexture(this.context.scene);
-    this.registerSystem(new BlurMaterialSystem(this._blurTexture));
-    this.render();
-  }
-
-  public addEnvironmentMeshes(meshes: BABYLON.AbstractMesh[]): void {
-    meshes.forEach((mesh: BABYLON.AbstractMesh) => {
-      this._blurTexture.add(mesh);
-    });
-  }
-  protected abstract render(): void;
 }

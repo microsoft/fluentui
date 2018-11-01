@@ -1,8 +1,3 @@
-export enum FluentTheme {
-  Light,
-  Dark
-}
-
 export interface IPanelProps {
   width: number;
   height: number;
@@ -11,4 +6,9 @@ export interface IPanelProps {
   alpha?: 0.4 | 0.6 | 0.8 | 1;
   theme?: FluentTheme;
   receiveInput?: boolean;
+}
+
+export enum FluentTheme {
+  Light,
+  Dark
 }

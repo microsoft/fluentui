@@ -4,7 +4,7 @@ import * as BABYLON from 'babylonjs';
  * Handles blur texture related functionality in the scene.
  * @alpha
  */
-export default class BlurTexture {
+export class BlurTexture {
   private _blurTexture: BABYLON.RenderTargetTexture;
 
   constructor(babylonScene: BABYLON.Scene) {

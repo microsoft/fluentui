@@ -1,9 +1,9 @@
 import { Component } from '../../common/nucleus3d/core';
-import BlurMaterialSystem from './BlurMaterialSystem';
+import { BlurMaterialSystem } from './BlurMaterialSystem';
 
 export interface IBlurMaterialProps {}
 
-export default class BlurMaterial extends Component<IBlurMaterialProps, BlurMaterialSystem> {
+export class BlurMaterial extends Component<IBlurMaterialProps, BlurMaterialSystem> {
   private _material: BABYLON.StandardMaterial;
 
   protected didMount(): void {

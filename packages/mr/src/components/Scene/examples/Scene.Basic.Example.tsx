@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Scene, FabricSceneEntity, Panel, FluentTheme } from '@uifabric/mr';
+import { Scene, FabricSceneEntity } from '@uifabric/mr';
 
 class MySceneEntity extends FabricSceneEntity {
   /**
@@ -22,16 +22,7 @@ class MySceneEntity extends FabricSceneEntity {
     // Default Environment
     const environment = this.context.scene.createDefaultEnvironment({ enableGroundShadow: true, groundYBias: 1 });
     environment && environment.setMainColor(BABYLON.Color3.FromHexString('#74b9ff'));
-    this.addEnvironmentMeshes(this.context.scene.meshes);
-
-    // Fluent Panels
-    const panel1 = new Panel({ height: 1, width: 2, alpha: 0.4, theme: FluentTheme.Dark });
-    this.mountChild(panel1);
-    panel1.node.position = new BABYLON.Vector3(0, 1.6, 0);
-    const panel2 = new Panel({ height: 1, width: 2, alpha: 0.8, theme: FluentTheme.Dark });
-    this.mountChild(panel2);
-    panel2.node.position = new BABYLON.Vector3(0, 0.5, 0);
   }
 }
 
-export const PanelDarkExample = () => <Scene sceneEntity={new MySceneEntity()} />;
+export const SceneBasicExample = () => <Scene sceneEntity={new MySceneEntity()} />;
