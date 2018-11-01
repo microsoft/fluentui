@@ -20,12 +20,7 @@ export class PivotIconCountExample extends React.Component<any, any> {
           <PivotItem linkText="Shared with me" itemIcon="Ringer" itemCount={1}>
             <Label>Pivot #4</Label>
           </PivotItem>
-          <PivotItem
-            linkText="Customized Rendering"
-            itemIcon="Globe"
-            itemCount={10}
-            onRenderItemLink={this._customRenderer}
-          >
+          <PivotItem linkText="Customized Rendering" itemIcon="Globe" itemCount={10} onRenderItemLink={this._customRenderer}>
             <Label>Customized Rendering</Label>
           </PivotItem>
         </Pivot>

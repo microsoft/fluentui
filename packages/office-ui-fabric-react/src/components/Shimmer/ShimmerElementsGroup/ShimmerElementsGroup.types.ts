@@ -27,7 +27,7 @@ export interface IShimmerElementsGroupProps extends React.AllHTMLAttributes<HTML
 
   /**
    * Optional boolean for enabling flexWrap of the container containing the shimmerElements.
-   * @default false
+   * @defaultvalue false
    */
   flexWrap?: boolean;
 

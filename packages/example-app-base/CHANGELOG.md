@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Wed, 17 Oct 2018 01:29:55 GMT and should not be manually modified.
+This log was last generated on Wed, 31 Oct 2018 12:32:41 GMT and should not be manually modified.
+
+## 6.9.1
+Wed, 31 Oct 2018 12:32:41 GMT
+
+### Patches
+
+- Replace usage of scheme prop with theme provider.
 
 ## 6.9.0
 Wed, 17 Oct 2018 01:29:55 GMT

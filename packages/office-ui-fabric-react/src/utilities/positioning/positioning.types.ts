@@ -38,7 +38,7 @@ export interface IPositionProps {
   /**
    * If true the position will not change edges in an attempt to fit the rectangle within bounds.
    * It will still attempt to align it to whatever bounds are given.
-   * @default false
+   * @defaultvalue false
    */
   directionalHintFixed?: boolean;
 }

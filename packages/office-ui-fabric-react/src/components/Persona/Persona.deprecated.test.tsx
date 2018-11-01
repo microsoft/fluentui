@@ -7,8 +7,7 @@ import { Persona } from './Persona';
 import { mount, ReactWrapper } from 'enzyme';
 import { getIcon } from '../../Styling';
 
-const testImage1x1 =
-  'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
+const testImage1x1 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
 const STYLES = {
   green: '.ms-Persona-initials--green',
   initials: '.ms-Persona-initials',

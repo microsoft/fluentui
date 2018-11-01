@@ -2,6 +2,28 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "version": "6.9.8",
+      "tag": "@uifabric/fabric-website-resources_v6.9.8",
+      "date": "Thu, 25 Oct 2018 12:30:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Organize pages for development site",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "9bd602a7db805c488e82c974a9416ab6cf93a96b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.1.5 <1.0.0` to `>=0.1.6 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.92.0 <7.0.0` to `>=6.92.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.9.7",
       "tag": "@uifabric/fabric-website-resources_v6.9.7",
       "date": "Tue, 23 Oct 2018 12:32:16 GMT",
