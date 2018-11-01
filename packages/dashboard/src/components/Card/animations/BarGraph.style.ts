@@ -99,7 +99,6 @@ export interface IBarGraphStyles {
   barGraphLoadingBar: IStyle;
   barGraphLoadingBarFirst: IStyle;
   barGraphLoadingBarSecond: IStyle;
-  barGraphLoadingAnimatedSegment: IStyle;
 }
 
 export const getStyles = (): IBarGraphStyles => {
@@ -161,12 +160,17 @@ export const getStyles = (): IBarGraphStyles => {
       flex: '0 1 auto'
     },
     barGraphLoadingBarFirst: {
-      background: '#62b2ed'
+      background: '#62b2ed',
+      position: 'absolute',
+      height: '80%',
+      width: '100%',
+      transform: 'translateY(125%)',
+      animationIterationCount: 'infinite',
+      animationTimingFunction: 'cubic-bezier(0.61, 0, 0.57, 1)',
+      animationDuration: '3.5s'
     },
     barGraphLoadingBarSecond: {
-      background: '#0078d4'
-    },
-    barGraphLoadingAnimatedSegment: {
+      background: '#0078d4',
       position: 'absolute',
       height: '80%',
       width: '100%',

@@ -35,7 +35,6 @@ export interface IHorizontalBarGraphStyles {
   horizontalBarGraphLoadingBar: IStyle;
   horizontalBarGraphLoadingBarFirst: IStyle;
   horizontalBarGraphLoadingBarSecond: IStyle;
-  horizontalBarGraphLoadingAnimatedSegment: IStyle;
 }
 
 export const getStyles = (): IHorizontalBarGraphStyles => {
@@ -68,12 +67,17 @@ export const getStyles = (): IHorizontalBarGraphStyles => {
       flex: '0 1 auto'
     },
     horizontalBarGraphLoadingBarFirst: {
-      background: '#62b2ed'
+      background: '#62b2ed',
+      position: 'absolute',
+      display: 'inline-block',
+      height: '190%',
+      width: '65%',
+      transform: 'translateX(-100%)',
+      animationDuration: '3.5s',
+      animationIterationCount: 'infinite'
     },
     horizontalBarGraphLoadingBarSecond: {
-      background: '#0078d4'
-    },
-    horizontalBarGraphLoadingAnimatedSegment: {
+      background: '#0078d4',
       position: 'absolute',
       display: 'inline-block',
       height: '190%',

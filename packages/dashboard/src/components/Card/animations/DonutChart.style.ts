@@ -26,10 +26,10 @@ export interface IDonutChartStyles {
   donutChartLoading: IStyle;
   donutChartLoadingSegment: IStyle;
   donutChartLoadingBase: IStyle;
-  donutChartLoadingSegmentFirst: IStyle;
-  donutChartLoadingSegmentSecond: IStyle;
   // tslint:disable-next-line:no-any
-  donutChartLoadingSegmentAnimation: any;
+  donutChartCircleFirst?: any;
+  // tslint:disable-next-line:no-any
+  donutChartCircleSecond?: any;
 }
 
 export const getStyles = (): IDonutChartStyles => {
@@ -52,21 +52,31 @@ export const getStyles = (): IDonutChartStyles => {
       strokeWidth: '8px',
       fill: 'none'
     },
-    donutChartLoadingBase: {
-      stroke: '#c2c2c2'
-    },
-    donutChartLoadingSegmentFirst: {
-      stroke: '#62b2ed'
-    },
-    donutChartLoadingSegmentSecond: {
-      stroke: '#0078d4'
-    },
-    donutChartLoadingSegmentAnimation: {
+    donutChartCircleFirst: {
+      strokeWidth: '8px',
+      fill: 'none',
+      stroke: '#62b2ed',
       animationDuration: '3.5s',
       animationIterationCount: 'infinite',
       strokeDasharray: '23 100',
       strokeDashoffset: '23',
       animationTimingFunction: 'cubic-bezier(0.45, 0, 0.37, 1)'
+    },
+    donutChartCircleSecond: {
+      strokeWidth: '8px',
+      fill: 'none',
+      stroke: '#0078d4',
+      animationDuration: '3.5s',
+      animationIterationCount: 'infinite',
+      strokeDasharray: '23 100',
+      strokeDashoffset: '23',
+      animationTimingFunction: 'cubic-bezier(0.45, 0, 0.37, 1)'
+    },
+
+    donutChartLoadingBase: {
+      stroke: '#c2c2c2',
+      strokeWidth: '8px',
+      fill: 'none'
     }
   };
 };

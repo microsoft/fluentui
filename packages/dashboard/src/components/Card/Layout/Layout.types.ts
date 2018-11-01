@@ -94,4 +94,14 @@ export interface ILayoutStyles {
    * Style set for animation chartWrapper
    */
   chartWrapper: IStyle;
+
+  /**
+   * Style set for shimmer
+   */
+  shimmerWrapper: IStyle;
+
+  /**
+   * Style set for shimmer container
+   */
+  shimmerContainer: IStyle;
 }

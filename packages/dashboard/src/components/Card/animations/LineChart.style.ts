@@ -25,10 +25,10 @@ const lineChartLoadingSegmentAnimationSegment2Keyframes = keyframes({
 export interface ILineChartStyles {
   lineChartLoading: IStyle;
   lineChartLoadingSegment: IStyle;
-  lineChartLoadingSegmentFirst: IStyle;
-  lineChartLoadingSegmentSecond: IStyle;
   // tslint:disable-next-line:no-any
-  lineChartLoadingSegmentAnimation: any;
+  lineChartLoadingSegmentFirst: any;
+  // tslint:disable-next-line:no-any
+  lineChartLoadingSegmentSecond: any;
 }
 
 export const getStyles = (): ILineChartStyles => {
@@ -52,12 +52,19 @@ export const getStyles = (): ILineChartStyles => {
       stroke: '#c2c2c2'
     },
     lineChartLoadingSegmentFirst: {
-      stroke: '#62b2ed'
+      fill: 'none',
+      strokeWidth: '5px',
+      stroke: '#62b2ed',
+      strokeDasharray: '65% 110%',
+      strokeDashoffset: '65%',
+      animationDuration: '3.5s',
+      animationIterationCount: 'infinite',
+      animationTimingFunction: 'cubic-bezier(0.45, 0, 0.37, 1)'
     },
     lineChartLoadingSegmentSecond: {
-      stroke: '#0078d4'
-    },
-    lineChartLoadingSegmentAnimation: {
+      fill: 'none',
+      strokeWidth: '5px',
+      stroke: '#0078d4',
       strokeDasharray: '65% 110%',
       strokeDashoffset: '65%',
       animationDuration: '3.5s',

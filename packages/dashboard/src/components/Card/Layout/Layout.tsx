@@ -19,10 +19,11 @@ import { IChartProps, ChartWidth, ChartHeight, ChartType } from '../Chart/Chart.
 import { Chart } from '../Chart/Chart';
 import { MultiCount, IMultiCountProps } from '@uifabric/dashboard';
 
+import { BarGraph } from '../animations/BarGraph';
 import { DonutChart } from '../animations/DonutChart';
 import { HorizontalBarGraph } from '../animations/HorizontalBarGraph';
 import { LineChart } from '../animations/LineChart';
-import { Shimmer } from '../animations/Shimmer';
+import { Shimmer } from 'office-ui-fabric-react/lib/Shimmer';
 
 export class Layout extends React.Component<ILayoutProps, { _width: number; _height: number }> {
   private _rootElem: HTMLElement | null;
@@ -54,6 +55,8 @@ export class Layout extends React.Component<ILayoutProps, { _width: number; _hei
       classNames.dataVizLastUpdatedOn,
       classNames.contentArea2,
       classNames.chartWrapper,
+      classNames.shimmerWrapper,
+      classNames.shimmerContainer,
       cardSize
     );
     const headerElement: JSX.Element | null = this._generateHeader(header!);
@@ -74,7 +77,9 @@ export class Layout extends React.Component<ILayoutProps, { _width: number; _hei
   private _generateContentElement(
     cardContentList: ICardContentDetails[],
     dataVizLastUpdateClassName: string,
-    chartWrapperClassName: string
+    chartWrapperClassName: string,
+    shimmerWrapperClassName: string,
+    shimmerContainerClassName: string
   ): JSX.Element[] {
     const contentArea: JSX.Element[] = [];
     // This works because we have priority is defined in enum as numbers if it is string this will not work
@@ -134,7 +139,7 @@ export class Layout extends React.Component<ILayoutProps, { _width: number; _hei
                   chartUpdatedOn,
                   timeRange
                 } = cardContent.content as IChartProps;
-                const animation = this._getAnimation(chartType);
+                const animation = this._getAnimation(chartType, shimmerWrapperClassName, shimmerContainerClassName);
                 contentArea.push(
                   <React.Fragment>
                     {this.props.loading ? (
@@ -214,13 +219,21 @@ export class Layout extends React.Component<ILayoutProps, { _width: number; _hei
     dataVizLastUpdateClassName: string,
     contentArea2ClassName: string,
     chartWrapperClassName: string,
+    shimmerWrapperClassName: string,
+    shimmerContainerClassName: string,
     cardSize: CardSize
   ): JSX.Element | null {
     if (cardContentList === null || cardContentList === undefined) {
       return null;
     }
 
-    const contentAreaContents = this._generateContentElement(cardContentList, dataVizLastUpdateClassName, chartWrapperClassName);
+    const contentAreaContents = this._generateContentElement(
+      cardContentList,
+      dataVizLastUpdateClassName,
+      chartWrapperClassName,
+      shimmerWrapperClassName,
+      shimmerContainerClassName
+    );
     if (contentAreaContents.length === 0) {
       return null;
     }
@@ -237,7 +250,7 @@ export class Layout extends React.Component<ILayoutProps, { _width: number; _hei
     }
   }
 
-  private _getAnimation(chartType: ChartType): JSX.Element | undefined {
+  private _getAnimation(chartType: ChartType, shimmerWrapperClassName: string, shimmerContainerClassName: string): JSX.Element | undefined {
     switch (chartType) {
       case ChartType.DonutChart: {
         return <DonutChart />;
@@ -254,8 +267,23 @@ export class Layout extends React.Component<ILayoutProps, { _width: number; _hei
       case ChartType.StackedBarChart: {
         return <HorizontalBarGraph />;
       }
+      case ChartType.VerticalBarChart: {
+        return <BarGraph />;
+      }
       default:
-        return <Shimmer />;
+        return this._generateShimmer(shimmerWrapperClassName, shimmerContainerClassName);
     }
   }
+
+  private _generateShimmer = (shimmerWrapperClassName: string, shimmerContainerClassName: string): JSX.Element | undefined => {
+    return (
+      <div className={shimmerContainerClassName}>
+        <Shimmer width={'75%'} className={shimmerWrapperClassName} />
+        <Shimmer width={'75%'} className={shimmerWrapperClassName} />
+        <Shimmer width={'75%'} className={shimmerWrapperClassName} />
+        <Shimmer width={'75%'} className={shimmerWrapperClassName} />
+        <Shimmer width={'75%'} className={shimmerWrapperClassName} />
+      </div>
+    );
+  };
 }
