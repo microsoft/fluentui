@@ -47,6 +47,11 @@ export interface ILayoutProps {
    * Defines the current card size
    */
   cardSize: CardSize;
+
+  /**
+   * loading for card animations
+   */
+  loading?: boolean;
 }
 
 export interface ILayoutStyles {
@@ -84,4 +89,19 @@ export interface ILayoutStyles {
    * Style set for card footer
    */
   footer: IStyle;
+
+  /**
+   * Style set for animation chartWrapper
+   */
+  chartWrapper: IStyle;
+
+  /**
+   * Style set for shimmer
+   */
+  shimmerWrapper: IStyle;
+
+  /**
+   * Style set for shimmer container
+   */
+  shimmerContainer: IStyle;
 }
