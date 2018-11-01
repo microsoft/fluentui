@@ -2,6 +2,20 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.2.0",
+      "tag": "@uifabric/fluent-theme_v0.2.0",
+      "date": "Thu, 01 Nov 2018 12:31:45 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "SpinButton: add SpinButton fluent styles.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "77c184f42d70f12e32c23cb9f6438c4a7f42d8ba"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.1.7",
       "tag": "@uifabric/fluent-theme_v0.1.7",
       "date": "Mon, 29 Oct 2018 12:31:29 GMT",
