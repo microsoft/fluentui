@@ -495,4 +495,18 @@ describe('ComboBox', () => {
 
     expect(updatedText).toEqual('');
   });
+
+  it('invokes optional onItemClick callback on option select', () => {
+    const onItemClickMock = jest.fn();
+    const wrapper = mount(<ComboBox options={DEFAULT_OPTIONS} onItemClick={onItemClickMock} />);
+    wrapper.find('input').simulate('keydown', { which: KeyCodes.enter });
+    const buttons = document.querySelectorAll('.ms-ComboBox-option');
+
+    // ComboBox components are not being cleaned up per test.
+    // Therefore, select the last option button which belongs
+    // to this ComboBox's unit test and invoke 'click' on it.
+    (buttons[buttons.length - 1] as HTMLButtonElement).click();
+
+    expect(onItemClickMock).toHaveBeenCalledTimes(1);
+  });
 });
