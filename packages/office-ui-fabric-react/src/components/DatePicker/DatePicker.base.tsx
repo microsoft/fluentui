@@ -403,14 +403,6 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       return;
     }
 
-    // Check when DatePicker is a required field but has NO input value
-    if (isRequired && !inputValue) {
-      this.setState({
-        errorMessage: strings!.isRequiredErrorMessage || ' '
-      });
-      return;
-    }
-
     if (allowTextInput) {
       let date = null;
       if (inputValue) {
@@ -458,9 +450,9 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
           }
         }
       } else {
-        // No input date string shouldn't be an error if field is not required
+        // Only show error for empty inputValue if it is a required field
         this.setState({
-          errorMessage: ''
+          errorMessage: isRequired ? strings!.isRequiredErrorMessage || ' ' : ''
         });
       }
 
@@ -470,6 +462,11 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
         // date variable will be null, callback should expect null value for this case
         onSelectDate(date);
       }
+    } else if (isRequired && !inputValue) {
+      // Check when DatePicker is a required field but has NO input value
+      this.setState({
+        errorMessage: strings!.isRequiredErrorMessage || ' '
+      });
     }
   };
 
