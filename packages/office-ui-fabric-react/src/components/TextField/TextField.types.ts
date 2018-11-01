@@ -290,7 +290,16 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
 export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> &
   Pick<
     ITextFieldProps,
-    'className' | 'disabled' | 'inputClassName' | 'required' | 'multiline' | 'borderless' | 'resizable' | 'underlined' | 'iconClass'
+    | 'className'
+    | 'disabled'
+    | 'inputClassName'
+    | 'required'
+    | 'multiline'
+    | 'borderless'
+    | 'resizable'
+    | 'underlined'
+    | 'iconClass'
+    | 'autoAdjustHeight'
   > & {
     /** Element has an error message. */
     hasErrorMessage?: boolean;
