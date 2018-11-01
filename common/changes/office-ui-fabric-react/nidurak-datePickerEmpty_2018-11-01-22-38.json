@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "propagate empty input in DatePicker to onSelectedDate even when input required",
+      "comment": "DatePicker: onSelectedDate now propagates empty values even when input is required.",
       "type": "patch"
     }
   ],
