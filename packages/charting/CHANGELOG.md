@@ -1,6 +1,105 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 27 Sep 2018 12:27:48 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Nov 2018 12:31:45 GMT and should not be manually modified.
+
+## 0.26.3
+Thu, 01 Nov 2018 12:31:45 GMT
+
+### Patches
+
+- added hovercard for horizontalBar chart
+
+## 0.26.2
+Wed, 31 Oct 2018 12:32:41 GMT
+
+### Patches
+
+- Enable ignore fixed stackbarchart style when data point is less than 2
+
+## 0.26.1
+Mon, 29 Oct 2018 18:04:30 GMT
+
+### Patches
+
+- Add placeholder mode to MultiStackBardChart data point in order to render the bar chart with a progress gray color(default)  area
+
+## 0.26.0
+Thu, 25 Oct 2018 12:30:05 GMT
+
+### Minor changes
+
+- Added support to line chart for edge case scenario like when no data is passed to line chart
+
+## 0.25.2
+Tue, 23 Oct 2018 12:32:15 GMT
+
+### Patches
+
+- Fix an issue with the demo site not being able to load (in npm start or aka.ms/fabricdemo).
+
+## 0.25.1
+Thu, 18 Oct 2018 20:22:36 GMT
+
+### Patches
+
+- Remove api-extractor.disabled.json
+
+## 0.25.0
+Tue, 16 Oct 2018 12:28:48 GMT
+
+### Minor changes
+
+- Adding support for date format and ticks on x-axis  of line chart. Providin date format prop to users to show data in desired format. Optionally providing tickValues prop to override D3.js default behavior on deciding what data appears on the axis of chart. D3.js default behavior is not suitable in all cases and makes the chart axis look bad in certain cases. Providing tickValues prop to user so that user can override this default behavior.If he/she does not use this D3's default behavior will be used in rendering data on the xAxis
+
+## 0.24.4
+Mon, 15 Oct 2018 12:29:12 GMT
+
+### Patches
+
+- updating snapshot tests in charting package
+- Added font theme setting in styles of DonutChart, LineChart, PieChart, StackedBarChart, VerticalBarChart
+
+## 0.24.3
+Thu, 11 Oct 2018 23:13:31 GMT
+
+### Patches
+
+- resolve console errors for horizontal bar chart
+
+## 0.24.2
+Wed, 10 Oct 2018 12:29:05 GMT
+
+### Patches
+
+- css changes in charts for meeting the figma design
+
+## 0.24.1
+Mon, 08 Oct 2018 12:24:15 GMT
+
+### Patches
+
+- Moving tslint/prettier dependencies 
+
+## 0.24.0
+Thu, 04 Oct 2018 12:26:48 GMT
+
+### Minor changes
+
+- Adding optional href prop to dataviz, to redirect upon clicking on the dataviz
+
+## 0.23.0
+Wed, 03 Oct 2018 12:28:46 GMT
+
+### Minor changes
+
+- Removing old legends component. Replaced in all data-viz with the new components which supports isolation and other states
+
+## 0.22.1
+Mon, 01 Oct 2018 12:27:24 GMT
+
+### Patches
+
+- Adding timeout so that line chart can scale according to the container size and occupy the entire width thereby
 
 ## 0.22.0
 Thu, 27 Sep 2018 12:27:48 GMT

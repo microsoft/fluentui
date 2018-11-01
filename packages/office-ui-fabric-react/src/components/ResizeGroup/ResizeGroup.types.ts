@@ -19,7 +19,7 @@ export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroupBase 
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules
-   * @deprecated Removed to reduce bundle size.  Please use className and add css rules to className instead.
+   * @deprecated Removed to reduce bundle size.  Please use `className` and add css rules to `className` instead.
    */
   styles?: IStyleFunctionOrObject<IResizeGroupStyleProps, IResizeGroupStyles>;
 

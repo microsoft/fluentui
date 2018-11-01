@@ -258,8 +258,8 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
             Native Props Allowed
             {componentString}
           </strong>{' '}
-          - all HTML attributes native to the {elementString}, including all aria and custom data attributes, can be
-          applied as native props on
+          - all HTML attributes native to the {elementString}, including all aria and custom data attributes, can be applied as native props
+          on
           {componentString || <> this component</>}.
         </MessageBar>
       );

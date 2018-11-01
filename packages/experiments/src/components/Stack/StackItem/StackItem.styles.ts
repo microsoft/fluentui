@@ -1,6 +1,5 @@
-import { IThemedProps } from '../../../Foundation';
 import { getGlobalClassNames } from '../../../Styling';
-import { IStackItemProps, IStackItemStyles } from './StackItem.types';
+import { IStackItemComponent, IStackItemStyles } from './StackItem.types';
 
 const GlobalClassNames = {
   root: 'ms-StackItem'
@@ -11,13 +10,14 @@ const alignMap: { [key: string]: string } = {
   end: 'flex-end'
 };
 
-export const styles = (props: IThemedProps<IStackItemProps>): IStackItemStyles => {
+export const styles: IStackItemComponent['styles'] = props => {
   const { grow, shrink, preventShrink, align, fillHorizontal, fillVertical, className, theme } = props;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {
     root: [
+      theme.fonts.medium,
       classNames.root,
       {
         width: fillHorizontal ? '100%' : 'auto',

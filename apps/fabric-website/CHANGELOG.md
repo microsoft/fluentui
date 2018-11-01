@@ -1,6 +1,52 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 21 Sep 2018 14:25:46 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Oct 2018 18:45:48 GMT and should not be manually modified.
+
+## 6.7.0
+Tue, 30 Oct 2018 18:45:48 GMT
+
+### Minor changes
+
+- Carry over website pipeline improvements to prod-deployed index
+
+## 6.6.2
+Wed, 24 Oct 2018 12:28:58 GMT
+
+### Patches
+
+- Nav: fix loosely typed const after changes in display property type of IRawStyleBase.
+
+## 6.6.1
+Wed, 17 Oct 2018 01:29:55 GMT
+
+### Patches
+
+- Modify theme generator output and add codepen export option.
+
+## 6.6.0
+Mon, 15 Oct 2018 12:29:12 GMT
+
+### Minor changes
+
+- Enable website to load bundle scripts from manifest JS file
+
+## 6.5.0
+Mon, 08 Oct 2018 12:24:15 GMT
+
+### Minor changes
+
+- Add temporary MessageBar to link to Fluent for Fabric
+
+### Patches
+
+- Moving tslint/prettier dependencies 
+
+## 6.4.6
+Tue, 02 Oct 2018 12:28:04 GMT
+
+### Patches
+
+- Minor typing change to support Foundation refactor.
 
 ## 6.4.5
 Fri, 21 Sep 2018 14:25:46 GMT

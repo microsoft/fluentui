@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, getId, getNativeProps, divProperties, createRef, classNamesFunction } from '../../Utilities';
+import { BaseComponent, KeyCodes, getId, getNativeProps, divProperties, createRef, classNamesFunction, warn } from '../../Utilities';
 import { CommandButton } from '../../Button';
 import { IPivotProps, IPivotStyleProps, IPivotStyles } from './Pivot.types';
 import { IPivotItemProps } from './PivotItem.types';
@@ -118,9 +118,9 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
 
     return (
       <FocusZone componentRef={this.focusZone} direction={FocusZoneDirection.horizontal}>
-        <ul className={this._classNames.root} role="tablist">
+        <div className={this._classNames.root} role="tablist">
           {items}
-        </ul>
+        </div>
       </FocusZone>
     );
   }
@@ -218,6 +218,8 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
         });
         this._keyToIndexMapping[itemKey] = index;
         this._keyToTabIds[itemKey] = this._getTabId(itemKey, index);
+      } else {
+        warn('The children of a Pivot component must be of type PivotItem to be rendered.');
       }
     });
 

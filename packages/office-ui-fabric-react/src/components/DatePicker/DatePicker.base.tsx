@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IDatePicker, IDatePickerProps, IDatePickerStrings, IDatePickerStyleProps, IDatePickerStyles } from './DatePicker.types';
-import { BaseComponent, KeyCodes, createRef, classNamesFunction, getId } from '../../Utilities';
+import { BaseComponent, KeyCodes, createRef, classNamesFunction, getId, getNativeProps, divProperties } from '../../Utilities';
 import { Calendar, ICalendar, DayOfWeek } from '../../Calendar';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { Callout } from '../../Callout';
@@ -76,10 +76,13 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
   private _datePickerDiv = createRef<HTMLDivElement>();
   private _textField = createRef<ITextField>();
   private _preventFocusOpeningPicker: boolean;
+  private _id: string;
 
   constructor(props: IDatePickerProps) {
     super(props);
     this.state = this._getDefaultState();
+
+    this._id = props.id || getId('DatePicker');
 
     this._preventFocusOpeningPicker = false;
   }
@@ -103,6 +106,8 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     if (!errorMessage && value) {
       errorMessage = this._isDateOutOfBounds(value!, minDate, maxDate) ? strings!.isOutOfBoundsErrorMessage || ' ' : undefined;
     }
+
+    this._id = nextProps.id || this._id;
 
     // Set error message
     this.setState({
@@ -170,11 +175,13 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     });
 
     const calloutId = getId('DatePicker-Callout');
+    const nativeProps = getNativeProps(this.props, divProperties, ['value']);
 
     return (
-      <div className={classNames.root}>
+      <div {...nativeProps} className={classNames.root}>
         <div ref={this._datePickerDiv} role="combobox" aria-expanded={isDatePickerShown} aria-haspopup="true" aria-owns={calloutId}>
           <TextField
+            id={this._id + '-label'}
             label={label}
             ariaLabel={ariaLabel}
             aria-controls={isDatePickerShown ? calloutId : undefined}

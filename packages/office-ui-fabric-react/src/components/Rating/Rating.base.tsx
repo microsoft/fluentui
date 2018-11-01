@@ -22,11 +22,7 @@ const RatingStar = (props: IRatingStarProps) => (
   <div className={props.classNames.ratingStar} key={props.id}>
     <Icon className={props.classNames.ratingStarBack} iconName="FavoriteStarFill" />
     {!props.disabled && (
-      <Icon
-        className={props.classNames.ratingStarFront}
-        iconName="FavoriteStarFill"
-        style={{ width: props.fillPercentage + '%' }}
-      />
+      <Icon className={props.classNames.ratingStarFront} iconName="FavoriteStarFill" style={{ width: props.fillPercentage + '%' }} />
     )}
   </div>
 );
@@ -119,9 +115,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
           [this._classNames.rootIsLarge]: size === RatingSize.Large,
           [this._classNames.rootIsSmall]: size !== RatingSize.Large
         })}
-        aria-label={
-          getAriaLabel ? getAriaLabel(this.state.rating ? this.state.rating : 0, this.props.max as number) : ''
-        }
+        aria-label={getAriaLabel ? getAriaLabel(this.state.rating ? this.state.rating : 0, this.props.max as number) : ''}
         id={id}
       >
         <FocusZone

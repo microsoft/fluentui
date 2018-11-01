@@ -17,6 +17,8 @@
 
 #### Core build stuff
 scripts/ @dzearing
+package.json @cliffkoh
+*/package.json @cliffkoh
 
 #### Apps
 # component-demo/
@@ -33,7 +35,8 @@ packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
 # packages/icons/
 # packages/jest-serializer-merge-styles/
 # packages/merge-styles/
-# packages/office-ui-fabric-react-tslint/
+# packages/prettier-rules/
+# packages/tslint-rules/
 packages/styling/ @dzearing
 packages/styling/src/interfaces/ @phkuo
 packages/styling/src/styles/ @phkuo
@@ -47,14 +50,14 @@ common/_themeOverrides.scss @phkuo
 common/_common.scss @phkuo
 
 ### Utilities
-dateMath/     @lorejoh12 @sathi23
-dateValues/   @lorejoh12 @sathi23
+dateMath/     @OfficeDev/uifabric-calendar
+dateValues/   @OfficeDev/uifabric-calendar
 
 ## Components
 # ActivityItem/
 # Breadcrumb/
 # Button/
-Calendar/   @lorejoh12 @sathi23
+Calendar/   @OfficeDev/uifabric-calendar
 Callout/  @joschect
 # Check/
 # Checkbox/
@@ -63,13 +66,14 @@ ChoiceGroup/   @srideshpande
 # ComboBox/
 CommandBar/   @micahgodbolt @JasonGore
 ContextualMenu/  @joschect
-DatePicker/   @lorejoh12 @sathi23
+DatePicker/   @OfficeDev/uifabric-calendar
 # DetailsList/
 # Dialog/
 DocumentCard/ @yiminwu @mikewheaton
 # Dropdown/
 # Fabric/
 # FacePile/
+FolderCover/ @ThomasMichon
 # FocusTrapZone/
 # FocusZone/
 GroupedList/  @aditima
@@ -97,6 +101,7 @@ pickers/  @joschect
 # Rating/
 ResizeGroup/  @micahgodbolt
 # SearchBox/
+Signals/ @ThomasMichon
 # Slider/
 # SpinButton/
 # Spinner/
@@ -104,6 +109,8 @@ ResizeGroup/  @micahgodbolt
 TeachingBubble/   @micahgodbolt
 # TextField/
 # Theme/
+Tile/ @ThomasMichon
+TileList/ @ThomasMichon
 Toggle/  @phkuo
 Tooltip/  @micahgodbolt
 
@@ -111,7 +118,7 @@ Tooltip/  @micahgodbolt
 # ActivityItem/docs/
 # Breadcrumb/docs/
 # Button/docs/
-Calendar/docs/   @lorejoh12 @sathi23
+Calendar/docs/   @OfficeDev/uifabric-calendar
 Callout/docs/  @joschect
 # Check/docs/
 # Checkbox/docs/
@@ -120,7 +127,7 @@ ChoiceGroup/docs/   @srideshpande
 # ComboBox/docs/
 CommandBar/docs/   @micahgodbolt
 ContextualMenu/docs/  @joschect
-DatePicker/docs/   @lorejoh12 @sathi23
+DatePicker/docs/   @OfficeDev/uifabric-calendar
 # DetailsList/docs/
 # Dialog/docs/
 DocumentCard/docs/ @yiminwu @mikewheaton
@@ -136,7 +143,7 @@ HoverCard/docs/   @atneik @Jahnp
 # Label/docs/
 Layer/docs/  @ThomasMichon
 # Link/docs/
-# List/docs/  
+# List/docs/
 # MarqueeSelection/docs/
 # MessageBar/docs/
 # Modal/docs/
@@ -161,5 +168,3 @@ TeachingBubble/docs/   @micahgodbolt
 # Theme/docs/
 Toggle/docs/  @phkuo
 Tooltip/docs/  @micahgodbolt
-
-

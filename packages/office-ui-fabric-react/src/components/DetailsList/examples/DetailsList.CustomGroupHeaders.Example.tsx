@@ -27,9 +27,7 @@ export class DetailsListCustomGroupHeadersExample extends React.Component {
           groupProps={{
             onRenderHeader: props => (
               <div className="DetailsListExample-customHeader">
-                <div className="DetailsListExample-customHeaderTitle">{`I am a custom header for: ${
-                  props!.group!.name
-                }`}</div>
+                <div className="DetailsListExample-customHeaderTitle">{`I am a custom header for: ${props!.group!.name}`}</div>
                 <div className="DetailsListExample-customHeaderLinkSet">
                   <Link className="DetailsListExample-customHeaderLink" onClick={this._onToggleSelectGroup(props!)}>
                     {props!.isSelected ? 'Remove selection' : 'Select group'}
@@ -42,12 +40,12 @@ export class DetailsListCustomGroupHeadersExample extends React.Component {
             ),
             onRenderFooter: props => (
               <div className="DetailsListExample-customHeader">
-                <div className="DetailsListExample-customHeaderTitle">{`I'm a custom footer for: ${
-                  props!.group!.name
-                }`}</div>
+                <div className="DetailsListExample-customHeaderTitle">{`I'm a custom footer for: ${props!.group!.name}`}</div>
               </div>
             )
           }}
+          ariaLabelForSelectionColumn="Toggle selection"
+          ariaLabelForSelectAllCheckbox="Toggle selection for all items"
         />
       </div>
     );

@@ -31,13 +31,13 @@ export interface IModalProps extends React.Props<ModalBase>, IWithResponsiveMode
 
   /**
    * Whether the dialog is displayed.
-   * @default false
+   * @defaultvalue false
    */
   isOpen?: boolean;
 
   /**
    * Whether the overlay is dark themed.
-   * @default true
+   * @defaultvalue true
    */
   isDarkOverlay?: boolean;
 
@@ -53,7 +53,7 @@ export interface IModalProps extends React.Props<ModalBase>, IWithResponsiveMode
 
   /**
    * Whether the dialog can be light dismissed by clicking outside the dialog (on the overlay).
-   * @default false
+   * @defaultvalue false
    */
   isBlocking?: boolean;
 
@@ -86,14 +86,24 @@ export interface IModalProps extends React.Props<ModalBase>, IWithResponsiveMode
    * ARIA id for the subtitle of the Modal, if any
    */
   subtitleAriaId?: string;
+
+  /**
+   * Whether the modal should have top offset fixed once opened and expand from the bottom only
+   * when the content changes dynamically.
+   */
+  topOffsetFixed?: boolean;
 }
 
 export type IModalStyleProps = Required<Pick<IModalProps, 'theme'>> &
-  Pick<IModalProps, 'className' | 'containerClassName' | 'scrollableContentClassName'> & {
+  Pick<IModalProps, 'className' | 'containerClassName' | 'scrollableContentClassName' | 'topOffsetFixed'> & {
     /** Modal open state. */
     isOpen?: boolean;
     /** Modal visible state. */
     isVisible?: boolean;
+    /** Modal has been opened state. */
+    hasBeenOpened?: boolean;
+    /** Positioning of modal on first render */
+    modalRectangleTop?: number;
   };
 
 export interface IModalStyles {

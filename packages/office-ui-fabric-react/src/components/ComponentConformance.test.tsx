@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import * as glob from 'glob';
 import * as path from 'path';
+import * as fs from 'fs';
 
 /**
  * These tests verify that Fabric components fulfill the following conditions:
@@ -22,6 +23,9 @@ const listProps = {
 
 // Props required by certain components in order for tests to pass
 const requiredProps: { [key: string]: any } = {
+  PlainCard: {
+    onRenderPlainCard: () => null
+  },
   ColorPicker: {
     color: '#ffffff'
   },
@@ -38,6 +42,10 @@ const requiredProps: { [key: string]: any } = {
     items: [{ text: 'TestText', key: 'TestKey', canCheck: true, isChecked: true }]
   },
   DetailsList: listProps,
+  ExpandingCard: {
+    onRenderCompactCard: () => null,
+    onRenderExpandedCard: () => null
+  },
   GroupedList: {
     ...listProps,
     groups: []
@@ -83,9 +91,11 @@ const classNameSelectors: { [key: string]: string } = {
   ContextualMenu: 'ms-ContextualMenu',
   DetailsList: 'ms-DetailsList',
   Dropdown: 'ms-Dropdown',
+  ExpandingCard: 'ms-Callout',
   Modal: 'ms-Modal',
   Nav: 'ms-Nav',
   Panel: 'ms-Panel',
+  PlainCard: 'ms-Callout',
   Tooltip: 'ms-Tooltip'
 };
 
@@ -94,12 +104,12 @@ const classNameSelectors: { [key: string]: string } = {
 const excludedComponents: string[] = [
   'Beak', // className is not injected
   'Button', // deprecated, test Button variants instead
+  'CardCallout', // className injected one level above
   'ChoiceGroupOption', // className is not injected
   'Coachmark', // className is not injected
   'ColorRectangle', // className is not injected
   'ContextualMenuItemWrapper', // className is not injected
   'Dialog', // className is deprecated
-  'HoverCard', // className is not injected
   'Keytip', // helper component, not meant to take a className
   'KeytipData', // helper component, not meant to take a className
   'KeytipLayer', // helper component, not meant to take a className
@@ -142,7 +152,7 @@ const mockNodeComponents = ['ScrollablePane'];
  * In any case, adding your component to the exclusion list is discouraged as this will make regression
  *    harder to catch.
  */
-describe('Conformance', () => {
+describe('Component File Conformance', () => {
   beforeAll(() => {
     // Mock Layer since otherwise components that use Layer will have empty JSON representations
     jest.mock('./Layer', () => {
@@ -207,13 +217,63 @@ describe('Conformance', () => {
       } catch (e) {
         console.warn(
           'ERROR: ' +
-          e +
-          ', TEST NOTE: Failure with ' +
-          componentName +
-          '. ' +
-          'Have you recently added a component? If so, please see notes in Conformance.test.tsx.'
+            e +
+            ', TEST NOTE: Failure with ' +
+            componentName +
+            '. ' +
+            'Have you recently added a component? If so, please see notes in Conformance.test.tsx.'
         );
       }
+    });
+  });
+});
+
+describe('Top Level Component File Conformance', () => {
+  const privateComponents = new Set(['ContextualMenuItemWrapper']);
+
+  const components: string[] = glob
+    .sync(path.resolve(process.cwd(), 'src/components/**/index.ts*'))
+    .map(file => {
+      const componentName = path.basename(path.dirname(file));
+      return componentName[0] === componentName[0].toUpperCase() ? path.basename(path.dirname(file)) : '';
+    })
+    .filter(f => f && !privateComponents.has(f));
+
+  const topLevelComponentFiles = components
+    .map(f => {
+      for (const fileName of [`${f}.ts`, `${f}.tsx`]) {
+        const fullPath = path.resolve(__dirname, '..', fileName);
+        if (fs.existsSync(fullPath)) {
+          return fullPath;
+        }
+      }
+      return '';
+    })
+    .filter(f => f);
+
+  beforeEach(() => {
+    jest.resetModules();
+  });
+
+  // Top Level Compoennt File Compliance -
+  // make sure that there is a corresponding top level component file for each component in the directory
+  components.forEach(componentName => {
+    it(`${componentName} has a corresponding top level component file`, () => {
+      expect(
+        fs.existsSync(path.resolve(__dirname, `../${componentName}.ts`)) ||
+          fs.existsSync(path.resolve(__dirname, `../${componentName}.tsx`))
+      ).toBeTruthy();
+    });
+  });
+
+  // make sure that there is a version import in each corresponding top level component file
+  topLevelComponentFiles.forEach(file => {
+    const componentName = path.basename(file).split('.')[0];
+
+    it(componentName + ' imports the OUFR version file', () => {
+      (window as any).__packages__ = null;
+      require(file);
+      expect((window as any).__packages__['office-ui-fabric-react']).not.toBeUndefined();
     });
   });
 });

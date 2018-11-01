@@ -1,5 +1,179 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Persona renders Persona children correctly 1`] = `
+<div
+  className=
+      ms-Persona
+      ms-Persona--size48
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        align-items: center;
+        box-shadow: none;
+        box-sizing: border-box;
+        color: #333333;
+        display: flex;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        height: 48px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        min-width: 48px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
+        position: relative;
+      }
+      & .contextualHost {
+        display: none;
+      }
+      &:hover $primaryText {
+        color: #212121;
+      }
+  size={13}
+>
+  <div
+    className=
+        ms-Persona-coin
+        ms-Persona--size48
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+        }
+    size={13}
+  >
+    <div
+      className=
+          ms-Persona-imageArea
+          {
+            flex: 0 0 auto;
+            height: 48px;
+            position: relative;
+            text-align: center;
+            width: 48px;
+          }
+    >
+      <div
+        aria-hidden="true"
+        className=
+            ms-Persona-initials
+            {
+              background-color: #5E4B8B;
+              border-radius: 50%;
+              color: #ffffff;
+              font-size: 17px;
+              font-weight: 400;
+              height: 48px;
+              line-height: 46px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: Window !important;
+              border: 1px solid WindowText;
+              box-sizing: border-box;
+              color: WindowText;
+            }
+      >
+        <span>
+          KL
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    className=
+        ms-Persona-details
+        {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          min-width: 0px;
+          padding-bottom: 0;
+          padding-left: 16px;
+          padding-right: 24px;
+          padding-top: 0;
+          text-align: left;
+          width: 100%;
+        }
+  >
+    <div
+      className=
+          ms-Persona-primaryText
+          {
+            color: #333333;
+            font-size: 17px;
+            font-weight: 400;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+    >
+      <div
+        className=
+            ms-TooltipHost
+            {
+              display: inline;
+            }
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        Kat Larrson
+      </div>
+    </div>
+    <div
+      className=
+          ms-Persona-secondaryText
+          {
+            color: #666666;
+            font-size: 12px;
+            font-weight: 400;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+    />
+    <div
+      className=
+          ms-Persona-tertiaryText
+          {
+            color: #666666;
+            display: none;
+            font-size: 12px;
+            font-weight: 400;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+    />
+    <div
+      className=
+          ms-Persona-optionalText
+          {
+            color: #666666;
+            display: none;
+            font-size: 12px;
+            font-weight: 400;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+    />
+    <span>
+      Persona Children
+    </span>
+  </div>
+</div>
+`;
+
 exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
 <div
   className=
@@ -131,7 +305,11 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
           }
     >
       <div
-        className="ms-TooltipHost"
+        className=
+            ms-TooltipHost
+            {
+              display: inline;
+            }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}
@@ -247,8 +425,13 @@ exports[`Persona renders Persona correctly with image 1`] = `
             ms-Image
             ms-Persona-image
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               border-radius: 50%;
               border: 0px;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               height: 48px;
               left: 0px;
               margin-right: 10px;
@@ -319,7 +502,11 @@ exports[`Persona renders Persona correctly with image 1`] = `
           }
     >
       <div
-        className="ms-TooltipHost"
+        className=
+            ms-TooltipHost
+            {
+              display: inline;
+            }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}
@@ -486,7 +673,11 @@ exports[`Persona renders Persona correctly with initials 1`] = `
           }
     >
       <div
-        className="ms-TooltipHost"
+        className=
+            ms-TooltipHost
+            {
+              display: inline;
+            }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}
@@ -905,7 +1096,11 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
           }
     >
       <div
-        className="ms-TooltipHost"
+        className=
+            ms-TooltipHost
+            {
+              display: inline;
+            }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}
@@ -927,7 +1122,11 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
           }
     >
       <div
-        className="ms-TooltipHost"
+        className=
+            ms-TooltipHost
+            {
+              display: inline;
+            }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}
@@ -950,7 +1149,11 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
           }
     >
       <div
-        className="ms-TooltipHost"
+        className=
+            ms-TooltipHost
+            {
+              display: inline;
+            }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}
@@ -973,7 +1176,11 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
           }
     >
       <div
-        className="ms-TooltipHost"
+        className=
+            ms-TooltipHost
+            {
+              display: inline;
+            }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}
@@ -1052,8 +1259,13 @@ exports[`Persona renders correctly with onRender callback 1`] = `
             ms-Image
             ms-Persona-image
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               border-radius: 50%;
               border: 0px;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               height: 100px;
               left: 0px;
               margin-right: 10px;
@@ -1200,7 +1412,11 @@ exports[`Persona renders correctly with onRender callback 1`] = `
           }
     >
       <div
-        className="ms-TooltipHost"
+        className=
+            ms-TooltipHost
+            {
+              display: inline;
+            }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}
@@ -1222,7 +1438,11 @@ exports[`Persona renders correctly with onRender callback 1`] = `
           }
     >
       <div
-        className="ms-TooltipHost"
+        className=
+            ms-TooltipHost
+            {
+              display: inline;
+            }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}
@@ -1245,7 +1465,11 @@ exports[`Persona renders correctly with onRender callback 1`] = `
           }
     >
       <div
-        className="ms-TooltipHost"
+        className=
+            ms-TooltipHost
+            {
+              display: inline;
+            }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}
@@ -1268,7 +1492,11 @@ exports[`Persona renders correctly with onRender callback 1`] = `
           }
     >
       <div
-        className="ms-TooltipHost"
+        className=
+            ms-TooltipHost
+            {
+              display: inline;
+            }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
         onMouseEnter={[Function]}

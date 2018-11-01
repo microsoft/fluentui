@@ -8,7 +8,7 @@ import { IRefObject } from '../../Utilities';
 export interface IFocusZone {
   /**
    * Sets focus to the first tabbable item in the zone.
-   * @param {boolean} forceIntoFirstElement If true, focus will be forced into the first element, even
+   * @param forceIntoFirstElement - If true, focus will be forced into the first element, even
    * if focus is already in the focus zone.
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
@@ -18,7 +18,7 @@ export interface IFocusZone {
    * Sets focus to a specific child element within the zone. This can be used in conjunction with
    * onBeforeFocus to created delayed focus scenarios (like animate the scroll position to the correct
    * location and then focus.)
-   * @param {HTMLElement} element The child element within the zone to focus.
+   * @param element - The child element within the zone to focus.
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
   focusElement(childElement?: HTMLElement): boolean;
@@ -41,7 +41,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
 
   /**
    * Defines which arrows to react to.
-   * @default FocusZoneDirection.bidriectional
+   * @defaultvalue FocusZoneDirection.bidriectional
    */
   direction?: FocusZoneDirection;
 
@@ -92,13 +92,13 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
 
   /**
    * Deprecated at v1.12.1. DIV props provided to the FocusZone will be mixed into the root element.
-   * @deprecated
+   * @deprecated DIV props provided to the FocusZone will be mixed into the root element.
    */
   rootProps?: React.HTMLAttributes<HTMLDivElement>;
 
   /**
    * Callback method for determining if focus should indeed be set on the given element.
-   * @param {HTMLElement} element The child element within the zone to focus.
+   * @param element - The child element within the zone to focus.
    * @returns True if focus should be set to the given element, false to avoid setting focus.
    */
   onBeforeFocus?: (childElement?: HTMLElement) => boolean;
@@ -110,7 +110,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
    * Allows tab key to be handled to tab through a list of items in the focus zone,
    * an unfortunate side effect is that users will not be able to tab out of the focus zone
    * and have to hit escape or some other key.
-   * @deprecated Use 'handleTabKey' instead.
+   * @deprecated Use `handleTabKey` instead.
    *
    */
   allowTabKey?: boolean;
@@ -124,7 +124,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
 
   /**
    * A callback method to determine if the input element should lose focus on arrow keys
-   *  @param {HTMLInputElement} inputElement The input element which is to loose focus.
+   *  @param inputElement - The input element which is to loose focus.
    *  @returns True if input element should loose focus or false otherwise.
    */
   shouldInputLoseFocusOnArrowKey?: (inputElement: HTMLInputElement) => boolean;
@@ -132,7 +132,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
   /**
    * Whether the to check for data-no-horizontal-wrap or data-no-vertical-wrap attributes
    * when determining how to move focus
-   * @default false
+   * @defaultvalue false
    */
   checkForNoWrap?: boolean;
 

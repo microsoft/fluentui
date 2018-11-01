@@ -15,18 +15,38 @@ import { ICardHeaderProps } from '../CardHeader/CardHeader.types';
 import { IAction } from '../ActionBar/ActionBar.types';
 import { IGridListProps } from '../GridList/GridList.types';
 import { GridList } from '../GridList/GridList';
-import { IChartProps, ChartWidth, ChartHeight } from '../Chart/Chart.types';
+import { IChartProps, ChartWidth, ChartHeight, ChartType } from '../Chart/Chart.types';
 import { Chart } from '../Chart/Chart';
 import { MultiCount, IMultiCountProps } from '@uifabric/dashboard';
 
-export class Layout extends React.Component<ILayoutProps> {
+import { BarGraph } from '../animations/BarGraph';
+import { DonutChart } from '../animations/DonutChart';
+import { HorizontalBarGraph } from '../animations/HorizontalBarGraph';
+import { LineChart } from '../animations/LineChart';
+import { Shimmer } from 'office-ui-fabric-react/lib/Shimmer';
+
+export class Layout extends React.Component<ILayoutProps, { _width: number; _height: number }> {
+  private _rootElem: HTMLElement | null;
   constructor(props: ILayoutProps) {
     super(props);
+    this.state = {
+      _width: 200,
+      _height: 200
+    };
+  }
+
+  public componentDidMount(): void {
+    if (this._rootElem) {
+      this.setState({
+        _width: this._rootElem!.offsetWidth,
+        _height: this._rootElem!.offsetHeight
+      });
+    }
   }
 
   public render(): JSX.Element {
     const getClassNames = classNamesFunction<ILayoutProps, ILayoutStyles>();
-    const { header, contentArea, actions, cardSize } = this.props;
+    const { header, contentArea, actions, cardSize, loading } = this.props;
     const classNames = getClassNames(getStyles, { cardSize, header });
     const content: JSX.Element | null = this._generateContentArea(
       contentArea!,
@@ -34,13 +54,16 @@ export class Layout extends React.Component<ILayoutProps> {
       classNames.contentArea1,
       classNames.dataVizLastUpdatedOn,
       classNames.contentArea2,
+      classNames.chartWrapper,
+      classNames.shimmerWrapper,
+      classNames.shimmerContainer,
       cardSize
     );
     const headerElement: JSX.Element | null = this._generateHeader(header!);
     const footerElement: JSX.Element | null = this._generateFooter(actions!, classNames.footer);
     return (
       <div className={classNames.root} onMouseDown={this.onMouseDown}>
-        {headerElement}
+        {loading ? null : headerElement}
         <div className={classNames.contentAreaLayout}>{content}</div>
         {footerElement}
       </div>
@@ -53,7 +76,10 @@ export class Layout extends React.Component<ILayoutProps> {
 
   private _generateContentElement(
     cardContentList: ICardContentDetails[],
-    dataVizLastUpdateClassName: string
+    dataVizLastUpdateClassName: string,
+    chartWrapperClassName: string,
+    shimmerWrapperClassName: string,
+    shimmerContainerClassName: string
   ): JSX.Element[] {
     const contentArea: JSX.Element[] = [];
     // This works because we have priority is defined in enum as numbers if it is string this will not work
@@ -110,25 +136,38 @@ export class Layout extends React.Component<ILayoutProps> {
                   chartType,
                   dataPoints,
                   compactChartWidth,
-                  chartUpdatedOn
+                  chartUpdatedOn,
+                  timeRange,
+                  ignoreStackBarChartDefaultStyle
                 } = cardContent.content as IChartProps;
+                const animation = this._getAnimation(chartType, shimmerWrapperClassName, shimmerContainerClassName);
                 contentArea.push(
                   <React.Fragment>
-                    {chartUpdatedOn && <div className={dataVizLastUpdateClassName}>{chartUpdatedOn}</div>}
-                    <Chart
-                      chartLabels={chartLabels}
-                      chartType={chartType}
-                      legendColors={legendColors}
-                      chartData={chartData}
-                      hideRatio={hideRatio}
-                      barWidth={barWidth}
-                      barHeight={barHeight}
-                      data={data}
-                      dataPoints={dataPoints}
-                      compactChartWidth={compactChartWidth}
-                      width={this._getChartWidth(cardContentList.length)}
-                      height={this._getChartHeight(cardContentList.length)}
-                    />
+                    {this.props.loading ? (
+                      <div ref={(rootElem: HTMLElement | null) => (this._rootElem = rootElem)} className={chartWrapperClassName}>
+                        {animation}
+                      </div>
+                    ) : (
+                      <div>
+                        {chartUpdatedOn && <div className={dataVizLastUpdateClassName}>{chartUpdatedOn}</div>}
+                        <Chart
+                          chartLabels={chartLabels}
+                          chartType={chartType}
+                          legendColors={legendColors}
+                          chartData={chartData}
+                          hideRatio={hideRatio}
+                          barWidth={barWidth}
+                          barHeight={barHeight}
+                          data={data}
+                          dataPoints={dataPoints}
+                          compactChartWidth={compactChartWidth}
+                          timeRange={timeRange}
+                          width={this._getChartWidth(cardContentList.length)}
+                          height={this._getChartHeight(cardContentList.length)}
+                          ignoreStackBarChartDefaultStyle={ignoreStackBarChartDefaultStyle}
+                        />
+                      </div>
+                    )}
                   </React.Fragment>
                 );
                 break;
@@ -148,15 +187,11 @@ export class Layout extends React.Component<ILayoutProps> {
   }
 
   private _getChartHeight(numberOfContentAreas: number): ChartHeight {
-    return this.props.cardSize === CardSize.mediumTall && numberOfContentAreas > 1
-      ? ChartHeight.tall
-      : ChartHeight.short;
+    return this.props.cardSize === CardSize.mediumTall && numberOfContentAreas > 1 ? ChartHeight.tall : ChartHeight.short;
   }
 
   private _getChartWidth(numberOfContentAreas: number): ChartWidth {
-    return numberOfContentAreas > 1 ||
-      this.props.cardSize === CardSize.small ||
-      this.props.cardSize === CardSize.mediumTall
+    return numberOfContentAreas > 1 || this.props.cardSize === CardSize.small || this.props.cardSize === CardSize.mediumTall
       ? ChartWidth.compact
       : ChartWidth.wide;
   }
@@ -165,9 +200,7 @@ export class Layout extends React.Component<ILayoutProps> {
     if (header === null || header === undefined) {
       return null;
     }
-    return (
-      <CardHeader headerText={header.headerText} annotationText={header.annotationText} fontSize={header.fontSize} />
-    );
+    return <CardHeader headerText={header.headerText} annotationText={header.annotationText} fontSize={header.fontSize} />;
   }
 
   private _generateFooter(actions: IAction[], className: string): JSX.Element | null {
@@ -187,13 +220,22 @@ export class Layout extends React.Component<ILayoutProps> {
     contentArea1ClassName: string,
     dataVizLastUpdateClassName: string,
     contentArea2ClassName: string,
+    chartWrapperClassName: string,
+    shimmerWrapperClassName: string,
+    shimmerContainerClassName: string,
     cardSize: CardSize
   ): JSX.Element | null {
     if (cardContentList === null || cardContentList === undefined) {
       return null;
     }
 
-    const contentAreaContents = this._generateContentElement(cardContentList, dataVizLastUpdateClassName);
+    const contentAreaContents = this._generateContentElement(
+      cardContentList,
+      dataVizLastUpdateClassName,
+      chartWrapperClassName,
+      shimmerWrapperClassName,
+      shimmerContainerClassName
+    );
     if (contentAreaContents.length === 0) {
       return null;
     }
@@ -209,4 +251,41 @@ export class Layout extends React.Component<ILayoutProps> {
       return <div className={contentArea1ClassName}>{contentAreaContents[0]}</div>;
     }
   }
+
+  private _getAnimation(chartType: ChartType, shimmerWrapperClassName: string, shimmerContainerClassName: string): JSX.Element | undefined {
+    switch (chartType) {
+      case ChartType.DonutChart: {
+        return <DonutChart />;
+      }
+      case ChartType.HorizontalBarChart: {
+        return <HorizontalBarGraph />;
+      }
+      case ChartType.LineChart: {
+        return <LineChart />;
+      }
+      case ChartType.PieChart: {
+        return <DonutChart />;
+      }
+      case ChartType.StackedBarChart: {
+        return <HorizontalBarGraph />;
+      }
+      case ChartType.VerticalBarChart: {
+        return <BarGraph />;
+      }
+      default:
+        return this._generateShimmer(shimmerWrapperClassName, shimmerContainerClassName);
+    }
+  }
+
+  private _generateShimmer = (shimmerWrapperClassName: string, shimmerContainerClassName: string): JSX.Element | undefined => {
+    return (
+      <div className={shimmerContainerClassName}>
+        <Shimmer width={'75%'} className={shimmerWrapperClassName} />
+        <Shimmer width={'75%'} className={shimmerWrapperClassName} />
+        <Shimmer width={'75%'} className={shimmerWrapperClassName} />
+        <Shimmer width={'75%'} className={shimmerWrapperClassName} />
+        <Shimmer width={'75%'} className={shimmerWrapperClassName} />
+      </div>
+    );
+  };
 }

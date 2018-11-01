@@ -1,6 +1,5 @@
-import { IThemedProps } from '../../../Foundation';
 import { getGlobalClassNames } from '../../../Styling';
-import { IHorizontalStackProps, IHorizontalStackStyles } from './HorizontalStack.types';
+import { IHorizontalStackComponent, IHorizontalStackStyles } from './HorizontalStack.types';
 import { parseGap } from '../StackUtils';
 
 const GlobalClassNames = {
@@ -8,7 +7,7 @@ const GlobalClassNames = {
   inner: 'ms-HorizontalStack-inner'
 };
 
-export const styles = (props: IThemedProps<IHorizontalStackProps>): IHorizontalStackStyles => {
+export const styles: IHorizontalStackComponent['styles'] = props => {
   const { wrap, gap, verticalGap, fillHorizontal, fillVertical, maxWidth, maxHeight, className, theme } = props;
 
   const vertGap = verticalGap !== undefined ? verticalGap : gap;
@@ -25,6 +24,7 @@ export const styles = (props: IThemedProps<IHorizontalStackProps>): IHorizontalS
     return {
       root: [
         classNames.root,
+        theme.fonts.medium,
         {
           maxWidth,
           maxHeight,
@@ -52,16 +52,14 @@ export const styles = (props: IThemedProps<IHorizontalStackProps>): IHorizontalS
           maxWidth: '100vw',
 
           // avoid unnecessary calc() calls if vertical gap is 0
-          height: fillVertical ?
-            (vGap.value === 0 ? '100%' : `calc(100% + ${vGap.value}${vGap.unit})`)
-            : 'auto'
+          height: fillVertical ? (vGap.value === 0 ? '100%' : `calc(100% + ${vGap.value}${vGap.unit})`) : 'auto'
         }
       ]
     } as IHorizontalStackStyles;
   }
 
   return {
-    root: [classNames.root, className]
+    root: [classNames.root, className, theme.fonts.medium]
     // TODO: this cast may be hiding some potential issues with styling and name
     //        lookups and should be removed
   } as IHorizontalStackStyles;

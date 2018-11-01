@@ -26,8 +26,7 @@ export class DialogBlockingExample extends React.Component<
           dialogContentProps={{
             type: DialogType.normal,
             title: 'All emails together',
-            subText:
-              'Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
+            subText: 'Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
           }}
           modalProps={{
             isBlocking: true,

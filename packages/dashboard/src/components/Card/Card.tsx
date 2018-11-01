@@ -24,7 +24,7 @@ export class Card extends React.Component<ICardProps, ICardState> {
   }
 
   public render(): JSX.Element {
-    const { cardFrameContent, header, cardContentList, actions, disableDrag } = this.props;
+    const { cardFrameContent, header, cardContentList, actions, disableDrag, loading } = this.props;
     const getClassNames = classNamesFunction<ICardProps, ICardStyles>();
     const classNames = getClassNames(getStyles);
     return (
@@ -35,8 +35,9 @@ export class Card extends React.Component<ICardProps, ICardState> {
           href={cardFrameContent.href}
           target={cardFrameContent.target}
           disableDrag={disableDrag === undefined ? false : disableDrag}
+          cardTitleCallback={cardFrameContent.cardTitleCallback}
         >
-          <Layout header={header} contentArea={cardContentList} cardSize={this.state.cardSize} actions={actions} />
+          <Layout header={header} contentArea={cardContentList} cardSize={this.state.cardSize} actions={actions} loading={loading} />
         </CardFrame>
       </div>
     );

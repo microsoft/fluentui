@@ -20,6 +20,43 @@ describe('ContextualMenu', () => {
     }
   });
 
+  it('allows setting aria-label per ContextualMenuItem', () => {
+    const items: IContextualMenuItem[] = [{ text: 'Later Today', key: 'Today', secondaryText: '7:00 PM', ariaLabel: 'foo' }];
+
+    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
+
+    const menuItemButtonEl = document.querySelector('.ms-ContextualMenu-link') as HTMLButtonElement;
+    const ariaLabel = menuItemButtonEl.getAttribute('aria-label');
+
+    expect(ariaLabel).toBe('foo');
+  });
+
+  // By default, do not set aria-label with value set to item text only.
+  // This is to ensure that screen-readers read both primary and (optional) secondary text,
+  // unless aria-label set explicitly. See https://github.com/OfficeDev/office-ui-fabric-react/pull/6670.
+  it('by default aria-label is undefined per ContextualMenuItem', () => {
+    const items: IContextualMenuItem[] = [{ text: 'Later Today', key: 'Today', secondaryText: '7:00 PM' }];
+
+    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
+
+    const menuItemButtonEl = document.querySelector('.ms-ContextualMenu-link') as HTMLButtonElement;
+    const hasAriaLabel = menuItemButtonEl.hasAttribute('aria-label');
+
+    expect(hasAriaLabel).toBe(false);
+  });
+
+  it('renders secondary text if provided per ContextualMenuItem', () => {
+    const items: IContextualMenuItem[] = [{ text: 'Later Today', key: 'Today', secondaryText: 'foo' }];
+
+    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
+
+    const menuItemPrimaryText = document.querySelector('.ms-ContextualMenu-itemText') as HTMLSpanElement;
+    const menuItemSecondaryText = document.querySelector('.ms-ContextualMenu-secondaryText') as HTMLSpanElement;
+
+    expect(menuItemPrimaryText.textContent).toBe('Later Today');
+    expect(menuItemSecondaryText.textContent).toBe('foo');
+  });
+
   it('does not have a scrollbar due to an overflowing icon', () => {
     const items: IContextualMenuItem[] = [
       { text: 'TestText 1', key: 'TestKey1', canCheck: true, isChecked: true },
@@ -48,9 +85,7 @@ describe('ContextualMenu', () => {
       spyCalled = true;
     };
 
-    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(
-      <ContextualMenu items={items} isSubMenu={true} onDismiss={onDismissSpy} />
-    );
+    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} isSubMenu={true} onDismiss={onDismissSpy} />);
 
     const menuList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
     ReactTestUtils.Simulate.keyDown(menuList, { which: KeyCodes.left });
@@ -918,9 +953,7 @@ describe('ContextualMenu', () => {
     ];
     const customRenderer = jest.fn(() => null);
 
-    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(
-      <ContextualMenu items={items} contextualMenuItemAs={customRenderer} />
-    );
+    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} contextualMenuItemAs={customRenderer} />);
 
     const menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
     ReactTestUtils.Simulate.click(menuItem);
@@ -964,11 +997,7 @@ describe('ContextualMenu', () => {
           key: 'Item 3',
           sectionProps: {
             key: 'Section1',
-            items: [
-              { text: 'Item 1', key: 'Item 1' },
-              { text: 'Item 2', key: 'Item 2', canCheck: true },
-              { text: 'Item 3', key: 'Item 3' }
-            ]
+            items: [{ text: 'Item 1', key: 'Item 1' }, { text: 'Item 2', key: 'Item 2', canCheck: true }, { text: 'Item 3', key: 'Item 3' }]
           }
         }
       ];
@@ -1136,7 +1165,8 @@ describe('ContextualMenu', () => {
         root: 'rootFoo',
         list: 'listFoo',
         header: 'headerFoo',
-        title: 'titleFoo'
+        title: 'titleFoo',
+        subComponentStyles: { callout: { root: ['calloutFoo'] } }
       };
     };
 

@@ -1,6 +1,103 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Thu, 27 Sep 2018 12:27:48 GMT and should not be manually modified.
+This log was last generated on Wed, 31 Oct 2018 22:35:10 GMT and should not be manually modified.
+
+## 0.31.1
+Wed, 31 Oct 2018 22:35:10 GMT
+
+### Patches
+
+- Add opitional switch for Dashboard Chart -- stack bar chart to not apply default style while data points count is less two
+
+## 0.31.0
+Thu, 25 Oct 2018 12:30:05 GMT
+
+### Minor changes
+
+- Adding support when there is no data for line chart, removing unwanted div's that is not letting flex do it job
+
+## 0.30.3
+Tue, 23 Oct 2018 12:32:16 GMT
+
+### Patches
+
+- Fix an issue with the demo site not being able to load (in npm start or aka.ms/fabricdemo).
+
+## 0.30.2
+Mon, 22 Oct 2018 12:29:57 GMT
+
+### Patches
+
+- "Dashboard/Nav component - added focus style to support keyboard inputs"
+
+## 0.30.1
+Thu, 18 Oct 2018 20:22:36 GMT
+
+### Patches
+
+- Remove api-extractor.disabled.json
+
+## 0.30.0
+Tue, 16 Oct 2018 12:28:48 GMT
+
+### Minor changes
+
+- Adding support for different date formats to line chart in dashboard card. Calculating datapoints to render a line chart with evenly spaced ticks. Updated examples for cards
+
+## 0.29.3
+Mon, 15 Oct 2018 12:29:12 GMT
+
+### Patches
+
+- updating dashboard package
+- Styling for marginLeft in Nav
+
+## 0.29.2
+Mon, 08 Oct 2018 12:24:15 GMT
+
+### Patches
+
+- Moving tslint/prettier dependencies 
+
+## 0.29.1
+Fri, 05 Oct 2018 12:27:02 GMT
+
+### Patches
+
+- removed the line inbetween the grid rows
+
+## 0.29.0
+Thu, 04 Oct 2018 12:26:48 GMT
+
+### Minor changes
+
+- Adding common href for the entire multicount component. Removing href that was in before  that allowed passing href to every row seperately
+
+## 0.28.1
+Wed, 03 Oct 2018 12:28:46 GMT
+
+*Version update only*
+
+## 0.28.0
+Tue, 02 Oct 2018 12:28:04 GMT
+
+### Minor changes
+
+- Adding callback upon clicking on the card title. This can be used in cases like if clicks needs to be instrumented.
+- Add setup banner component for dashboard
+
+## 0.27.0
+Mon, 01 Oct 2018 12:27:24 GMT
+
+### Minor changes
+
+- clean up not used code
+- improve the logic to determin first section
+
+### Patches
+
+- Fix transient dependency on react-resizable
+- resolved hover issue of thumbnailList 
 
 ## 0.26.2
 Thu, 27 Sep 2018 12:27:48 GMT

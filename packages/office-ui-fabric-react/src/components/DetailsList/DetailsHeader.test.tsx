@@ -312,6 +312,64 @@ describe('DetailsHeader', () => {
     expect(component.toJSON()).toMatchSnapshot();
   });
 
+  // if ariaLabelForSelectAllCheckbox is not provided, the select all checkbox label should not
+  // be rendered and therefore aria-describedby should not exist on the select all checkbox
+  it('does not accessible label for select all checkbox or aria-describedby', () => {
+    const component = mount(
+      <DetailsHeader
+        selection={_selection}
+        selectionMode={SelectionMode.multiple}
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        columns={columns}
+      />
+    );
+
+    const selectAllCheckBoxAriaLabelledBy = component
+      .find('[aria-colindex=1]')
+      .getDOMNode()
+      .getAttribute('aria-labelledby');
+
+    expect(
+      component
+        .find(`#${selectAllCheckBoxAriaLabelledBy}`)
+        .first()
+        .getDOMNode()
+        .hasAttribute('aria-describedby')
+    ).toBe(false);
+
+    expect(component.find(`#${selectAllCheckBoxAriaLabelledBy}Tooltip`).length).toEqual(0);
+  });
+
+  // if ariaLabelForSelectAllCheckbox is passed in and onRenderColumnHeaderTooltip is not,
+  // the select all checkbox label should be rendered and aria-describedby on select all
+  // checkbox should exist with a valid id
+  it('renders accessible label for select all checkbox and valid aria-describedby', () => {
+    const component = mount(
+      <DetailsHeader
+        selection={_selection}
+        selectionMode={SelectionMode.multiple}
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        columns={columns}
+        ariaLabelForSelectAllCheckbox={'Toggle selection for all items'}
+      />
+    );
+
+    const selectAllCheckBoxAriaLabelledBy = component
+      .find('[aria-colindex=1]')
+      .getDOMNode()
+      .getAttribute('aria-labelledby');
+
+    expect(
+      component
+        .find(`#${selectAllCheckBoxAriaLabelledBy}`)
+        .first()
+        .getDOMNode()
+        .getAttribute('aria-describedby')!
+    ).toEqual(`${selectAllCheckBoxAriaLabelledBy}Tooltip`);
+
+    expect(component.find(`#${selectAllCheckBoxAriaLabelledBy}Tooltip`).length).toEqual(1);
+  });
+
   it('should mark the columns as draggable', () => {
     const headerRef = createRef<IDetailsHeader>();
 

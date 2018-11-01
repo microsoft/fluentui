@@ -1,5 +1,7 @@
 import { IStyle } from '../../../Styling';
-import { IStyleableComponentProps } from '../../../Foundation';
+import { IStatelessComponent, IStyleableComponentProps } from '../../../Foundation';
+
+export type IStackItemComponent = IStatelessComponent<IStackItemProps, IStackItemStyles>;
 
 export interface IStackItemProps extends IStyleableComponentProps<IStackItemProps, IStackItemStyles> {
   /**

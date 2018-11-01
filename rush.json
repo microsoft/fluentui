@@ -6,7 +6,9 @@
     "url": "https://github.com/OfficeDev/office-ui-fabric-react.git"
   },
   "eventHooks": {
-    "postRushInstall": ["node scripts/install-husky.js"]
+    "postRushInstall": [
+      "node scripts/install-husky.js"
+    ]
   },
   "nodeSupportedVersionRange": ">=6.9.0 <10.0.0",
   "projects": [
@@ -141,9 +143,26 @@
       "shouldPublish": false
     },
     {
-      "packageName": "office-ui-fabric-react-tslint",
-      "projectFolder": "packages/office-ui-fabric-react-tslint",
+      "packageName": "@uifabric/tslint-rules",
+      "projectFolder": "packages/tslint-rules",
       "shouldPublish": false
+    },
+    {
+      "packageName": "@uifabric/prettier-rules",
+      "projectFolder": "packages/prettier-rules",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "@uifabric/theme-samples",
+      "projectFolder": "packages/theme-samples",
+      "versionPolicyName": "lockedMajor",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@uifabric/fluent-theme",
+      "projectFolder": "packages/fluent-theme",
+      "versionPolicyName": "lockedMajor",
+      "shouldPublish": true
     }
   ]
 }

@@ -44,6 +44,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'MultiCount',
           name: 'MultiCount',
           url: '#/examples/multiCount'
+        },
+        {
+          component: require<any>('../components/SetupBanner/SetupBannerPage').SetupBannerPage,
+          key: 'SetupBanner',
+          name: 'SetupBanner',
+          url: '#/examples/setupbanner'
         }
       ]
     }

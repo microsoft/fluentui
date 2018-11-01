@@ -1,6 +1,333 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 27 Sep 2018 12:27:48 GMT and should not be manually modified.
+This log was last generated on Wed, 31 Oct 2018 22:35:10 GMT and should not be manually modified.
+
+## 6.97.1
+Wed, 31 Oct 2018 22:35:10 GMT
+
+### Patches
+
+- Adding warning and updating documentation on Pivot children needing to be of type PivotItem to be rendered.
+
+## 6.97.0
+Wed, 31 Oct 2018 12:32:41 GMT
+
+### Minor changes
+
+- Expose existing mergeSettings utility function.
+
+## 6.96.0
+Tue, 30 Oct 2018 18:45:48 GMT
+
+### Minor changes
+
+- ComboBox/Autofill: prevent text from being selected when focus is not on the input box
+
+### Patches
+
+- Removing some of the deprecated components flaged when turning the tslint deprecation flag to true in the office-ui-fabric-react package.
+
+## 6.95.0
+Tue, 30 Oct 2018 12:27:52 GMT
+
+### Minor changes
+
+- Addition of year picker to Calendar
+- ContextualMenu: adding a subComponentStyles hook to enable styling of the components used within ContextualMenu. Removing an unused style function.
+
+## 6.94.0
+Mon, 29 Oct 2018 18:04:30 GMT
+
+### Minor changes
+
+- Add blur to ITextField and implement to support programmatic blur."
+
+## 6.93.1
+Mon, 29 Oct 2018 12:31:29 GMT
+
+### Patches
+
+- DetailsList/List: updating documentation.
+- DatePicker: Pass id prop to TextField component.
+- ContextualMenu: Fix separator announcement in Narrator scan mode.
+
+## 6.93.0
+Fri, 26 Oct 2018 12:32:36 GMT
+
+### Minor changes
+
+- Enable api-extractor build task
+- Callout: Added layerProps to interface
+- GroupedList: add aria-expanded and aria-controls
+- Add optional onColumnResize callback to IColumn which reports resized column's current width
+
+### Patches
+
+- Fix the issue of DetailLists and DetailHeadder property about isAllGroupsCollapsed changed after initial constructor , they are not reflected in the state.
+- Breadcrumb: add overflowAriaLabel to examples
+- Fix typo in role attribute in DocumentCardActivity
+- Updated Fabric API file
+- Rating: Updating padding on each star to fix clipping focus outline and adjust height to follow redlines.
+
+## 6.92.1
+Thu, 25 Oct 2018 12:30:06 GMT
+
+### Patches
+
+- CommandBar: Remove duplicate className prop application.
+- Add unit tests for DetailsList onRenderMissingItem prop.
+- Dropdown: Add support for onFocus callback
+
+## 6.92.0
+Wed, 24 Oct 2018 12:28:58 GMT
+
+### Minor changes
+
+- Add an optional parameter to allow Dropdown to call onChanged when an item is clicked, even if that item was already selected
+- Tooltip: change display property of TooltipHost to inline-block to properly behave when wrapping inline or inline-block children.
+
+### Patches
+
+- ResizeGroup: Moved relative style to inner wrapper div
+
+## 6.91.0
+Tue, 23 Oct 2018 12:32:16 GMT
+
+### Minor changes
+
+- TooltipHost: convert to CSS-in-JS
+
+## 6.90.0
+Mon, 22 Oct 2018 12:29:57 GMT
+
+### Minor changes
+
+- Add in missing exports in index.ts
+
+### Patches
+
+- Fixed the column total vertical sync issue while resizing the column header by dragging them to the right until it gets overflowed and also make the vertical overflow as auto to make sure that the scroll bar  appears  only when there is a vertical overflow.
+
+## 6.89.0
+Fri, 19 Oct 2018 12:29:20 GMT
+
+### Minor changes
+
+- HoverCard: Add BasicCard as an option when need to render a non-expanding HoverCard. Refactor mergeStyle API plus refactor file organization.
+
+### Patches
+
+- Revert getItemClassNames API change to fix memoization bug due to Object usage rather than primitive arguments list."
+- Added 'break' statement in PeoplePicker component example. Without it, changing picker type to 'Process Selection' was rendering 'Controlled Picker' instead.
+
+## 6.88.0
+Thu, 18 Oct 2018 20:22:36 GMT
+
+### Minor changes
+
+- adding groups prop to pass parent group's children info
+- Add onPagesUpdated optional prop to List component
+
+### Patches
+
+- Remove api-extractor.disabled.json
+- Fix accessibility issue when user arrow down suggestion, screen reader is not announcing the selected result
+
+## 6.87.0
+Wed, 17 Oct 2018 12:29:40 GMT
+
+### Minor changes
+
+- Breadcrumb: move style interfaces to the types file to be included in the export and documentation.
+- DetailsList: update the styles with 2 new regions headerWrapper and contentWrapper providing easy className hooks to pass custom styling.
+
+### Patches
+
+- Spinner: No longer appears to vibrate in Microsoft Edge (Oct 2018 Update).
+
+## 6.86.0
+Wed, 17 Oct 2018 01:29:55 GMT
+
+### Minor changes
+
+- Update theme generator to generate valid code output. Fix Pivot API to accurately reflect div interface.
+
+### Patches
+
+- FocusTrapZone: Add/remove focus and click handlers when props change
+
+## 6.85.0
+Tue, 16 Oct 2018 12:28:48 GMT
+
+### Minor changes
+
+- Dropdown: Adds a state property to be set when the Callout has been positioned identifying on what edge of the target it has rendered.
+
+### Patches
+
+- ScrollablePane: now uses React createRef, added test.
+
+## 6.84.1
+Mon, 15 Oct 2018 12:29:12 GMT
+
+### Patches
+
+- DetailsList: do not set select all button aria-describedby unless id it references exists
+- Added default font theme for Slider control to remove Fabric component dependency.
+- Fix ContextualMenuItem secondary text not read by screen reader due to aria-label containing only primary text."
+- Slider bug fix for min equals max
+- Panel: Fixed second scroll bar when content taller than panel
+- ShimmeredDetailsList: Added export to top level index file
+
+## 6.84.0
+Thu, 11 Oct 2018 23:13:31 GMT
+
+### Minor changes
+
+- Implement ImageFit.centerCover
+
+### Patches
+
+- Calendar: accessibility fixes for month option grid
+- Dropdown: Fix issue where correct option wasn't selected
+- Fix ContextualMenu example broken charm icons and specify hover delay input as type="number".
+- Remove 'Button Swap with Focus State' example
+- ScrollablePane: Update DetailsList example to fix bug where footer overlapped scroll bar
+- IconButton: Specifiy the color of the icon in IconButton so that it can be themed and change the hover color for the same reasons.
+
+## 6.83.0
+Wed, 10 Oct 2018 12:29:05 GMT
+
+### Minor changes
+
+- DatePicker and Calendar: allowing native div props to be forwarded to container div.
+- Keytip: Fix TS 3.1 error by extending IBaseProps.
+
+### Patches
+
+- Facepile: fix precedence order for style and className props
+- Added default font theme for Slider control to remove Fabric component dependency.
+- Make ChoiceGroup's role configurable with default "application" for JAWS support.
+- KeyTip: Adds space around examples to improve readability
+- Nav: add aria-label and aria-expanded to groups
+- Panel: make scrollableContent the only scrollable div
+- TagPicker textbox is in the wrong position - middle instead of bottom. Added an align style to fix this.
+
+## 6.82.0
+Tue, 09 Oct 2018 12:26:48 GMT
+
+### Minor changes
+
+- Nav: Add custom group header renderer property
+
+### Patches
+
+- DocumentCard, Pivot, GroupHeader - replace instances of neutralSecondaryAlt with neutralSecondary
+- DocumentCardTitle: Fixes an infinite loop condition caused by componentDidUpdate calling _srinkTitle() over and over again due to setState being triggered every time without a stop condition.
+
+## 6.81.0
+Mon, 08 Oct 2018 19:25:44 GMT
+
+### Minor changes
+
+- Links that wrap aren't getting the proper focus rect. Added a conditional selector that changes the  outline and removed the getFocusStyles call  to fix this. This is for Links that are anchors. Links that are buttons do not wrap at the moment. Once Links that are buttons wrap we can address their focus rect issues if there are any.
+
+### Patches
+
+- TextField can no longer be resized to below its minimum height
+
+## 6.80.0
+Mon, 08 Oct 2018 12:24:16 GMT
+
+### Minor changes
+
+- Typescript 3.1 type fixes.
+
+### Patches
+
+- Moving tslint/prettier dependencies to published packages.
+- Fix a11y violations in ContextualMenu examples
+- Fix Sliders' support for zero values.
+
+## 6.79.0
+Fri, 05 Oct 2018 23:29:26 GMT
+
+### Minor changes
+
+- Moving data property from IDropDownOption to ISelectableOption so anyone that uses ISelectableOption can use this property
+
+### Patches
+
+- Fixed initials not reappearing bug when image is removed from a PersonaCoin
+
+## 6.78.1
+Fri, 05 Oct 2018 12:27:02 GMT
+
+### Patches
+
+- DetailsList: header now reflects the theme defined in the font.
+- Facepile: allow FacepileButton to render custom styles
+- Fixed null ref error when autoFocus prop is used in SearchBox
+- Fixes DetailsHeader disabled columns invoking onColumnClick callbacks
+
+## 6.78.0
+Thu, 04 Oct 2018 12:26:48 GMT
+
+### Minor changes
+
+- Coachmark: Add delayBeforeCoachmarkAnimation prop
+
+### Patches
+
+- Add explicit min-width of 0px to SearchBox input element, to prevent overflow when SearchBox has a fixed width.
+- Modal: small topOffsetFixed changes and added example to Dialog
+- Dropdown: only apply an aria-labelledby attribute if a non-empty label property is given
+- Correct hover and highlight states for Calendar (DateRangeType.Week)
+
+## 6.77.0
+Wed, 03 Oct 2018 12:28:46 GMT
+
+### Minor changes
+
+- Modal: add optional prop topOffsetFixed
+- SwatchColorPicker: let height and width be customizable
+
+### Patches
+
+- FocusZone: check for RTL before making top bottom comparisons
+
+## 6.76.0
+Tue, 02 Oct 2018 12:28:04 GMT
+
+### Minor changes
+
+- Pivot: update the wrapper holding the tab buttons from ul tags to div for HTML validation and keep the narrator working correctly.
+
+### Patches
+
+- Layer: Don't block capture events, allowing onFocus and onBlur events to work as expected.
+- TextField: prettier fixes
+
+## 6.75.0
+Mon, 01 Oct 2018 12:27:24 GMT
+
+### Minor changes
+
+- semantic slot value updates per design direction
+
+### Patches
+
+- Improve _isWhiteCell logic to handle rgb(a) and hex shorthand  notation.
+- Add native props support for input properties to  SearchBox's inner input element.
+
+## 6.74.2
+Fri, 28 Sep 2018 12:27:38 GMT
+
+### Patches
+
+- DetailsList: replace the use of neutralSecondaryAlt color which was deprecated.
+- ComboBox: add logic to stop onBlur handler to be invoked when clicking on Callout's scrollbar.
+- now all the top level components will include version info for package
 
 ## 6.74.1
 Thu, 27 Sep 2018 12:27:48 GMT
