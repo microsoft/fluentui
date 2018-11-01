@@ -2909,6 +2909,7 @@ interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox> {
   onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
   // @deprecated
   onChanged?: (option?: IComboBoxOption, index?: number, value?: string, submitPendingValueEvent?: any) => void;
+  onItemClick?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => void;
   onMenuDismissed?: () => void;
   onMenuOpen?: () => void;
   onPendingValueChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;

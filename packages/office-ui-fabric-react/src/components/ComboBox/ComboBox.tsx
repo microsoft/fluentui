@@ -1170,7 +1170,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           styles={this._getCurrentOptionStyles(item)}
           checked={isSelected}
           className={'ms-ComboBox-option'}
-          onClick={this._onItemClick(item.index)}
+          onClick={this._onItemClick(item)}
           onMouseEnter={this._onOptionMouseEnter.bind(this, item.index)}
           onMouseMove={this._onOptionMouseMove.bind(this, item.index)}
           onMouseLeave={this._onOptionMouseLeave}
@@ -1196,7 +1196,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           styles={checkboxStyles}
           className={'ms-ComboBox-option'}
           data-is-focusable={true}
-          onChange={this._onItemClick(item.index!)}
+          onChange={this._onItemClick(item)}
           label={item.text}
           role="option"
           aria-selected={isSelected ? 'true' : 'false'}
@@ -1340,14 +1340,20 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * to select the item and also close the menu
    * @param index - the index of the item that was clicked
    */
-  private _onItemClick(index: number | undefined): (ev: any) => void {
+  private _onItemClick(item: IComboBoxOption): (ev: any) => void {
+    const { onItemClick } = this.props;
+    const { index } = item;
+
     return (ev: any): void => {
-      this._setSelectedIndex(index as number, ev);
-      if (!this.props.multiSelect) {
-        // only close the callout when it's in single-select mode
-        this.setState({
-          isOpen: false
-        });
+      onItemClick && onItemClick(ev, item, index);
+      if (!ev.defaultPrevented) {
+        this._setSelectedIndex(index as number, ev);
+        if (!this.props.multiSelect) {
+          // only close the callout when it's in single-select mode
+          this.setState({
+            isOpen: false
+          });
+        }
       }
     };
   }
