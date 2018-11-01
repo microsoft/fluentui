@@ -18,5 +18,5 @@ export abstract class FabricSceneEntity extends SceneEntity implements IFabricSc
     });
   }
 
-  abstract render(): void;
+  public abstract render(): void;
 }
