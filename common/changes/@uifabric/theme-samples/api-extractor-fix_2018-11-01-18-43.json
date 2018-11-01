@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/theme-samples",
+      "comment": "Disable api-extractor build task",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/theme-samples",
+  "email": "kakje@microsoft.com"
+}
