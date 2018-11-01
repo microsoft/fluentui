@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ContextualMenu: Add fix for subComponentStyles being optional in a deprecated prop.",
+      "comment": "ContextualMenu: Add fix for subComponentStyles. It is now optional in the `IContextualMenuClassNames` interface.",
       "type": "minor"
     }
   ],
