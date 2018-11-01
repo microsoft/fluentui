@@ -104,7 +104,7 @@ export class MultipleLineChartExample extends React.Component<{}, {}> {
     };
 
     return (
-      // tslint:disable-next-line
+      // tslint:disable-next-line:jsx-ban-props
       <div style={{ width: '700px', height: '700px', border: '1px solid #c0c1c4' }}>
         <Card cardFrameContent={cardFrameContent} header={header} cardContentList={contentAreaList} cardSize={CardSize.mediumWide} />
       </div>

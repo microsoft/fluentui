@@ -27,14 +27,15 @@ import { Chart } from '../Chart/Chart';
 import { MultiCount, IMultiCountProps } from '@uifabric/dashboard';
 
 export class Layout extends React.Component<ILayoutProps> {
+  private getClassNames = classNamesFunction<ILayoutStyleProps, ILayoutStyles>();
+
   constructor(props: ILayoutProps) {
     super(props);
   }
 
   public render(): JSX.Element {
-    const getClassNames = classNamesFunction<ILayoutProps, ILayoutStyles>();
     const { header, contentArea, actions, cardSize } = this.props;
-    const classNames = getClassNames(getStyles, { cardSize, header });
+    const classNames = this.getClassNames(getStyles, { cardSize, header });
     const content: JSX.Element | null = this._generateContentArea(contentArea!, cardSize, header);
     const headerElement: JSX.Element | null = this._generateHeader(header!);
     const footerElement: JSX.Element | null = this._generateFooter(actions!, classNames.footer);
@@ -182,12 +183,11 @@ export class Layout extends React.Component<ILayoutProps> {
     if (cardContentList === null || cardContentList === undefined) {
       return null;
     }
-    const getClassNames = classNamesFunction<ILayoutStyleProps, ILayoutStyles>();
-    let classNames = getClassNames(getStyles, { cardSize, header });
+    let classNames = this.getClassNames(getStyles, { cardSize, header });
     const contentAreaData = this._generateContentElement(cardContentList, classNames.dataVizLastUpdatedOn);
     const contentAreaContents = contentAreaData.contentAreas;
     const hasDataviz = contentAreaData.hasDataviz;
-    classNames = getClassNames(getStyles, { cardSize, header, hasDataviz });
+    classNames = this.getClassNames(getStyles, { cardSize, header, hasDataviz });
     if (contentAreaContents.length === 0) {
       return null;
     }
