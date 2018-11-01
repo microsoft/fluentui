@@ -1,0 +1,427 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sticky sticky components are rendered in correct order when there is Breadcrumb 1`] = `
+
+  <div
+  class="ms-ScrollablePane
+  scrollable-pane-test
+  root-38"><div
+  class="ms-ScrollablePane--contentContainer
+  contentContainer-39"
+  data-is-scrollable="true"><div><div
+  style="height:
+  0px;"></div></div><div
+  class="ms-Viewport"
+  style="min-width:
+  1px;
+  min-height:
+  1px;"><div
+  class="ms-DetailsList
+  is-horizontalConstrained
+  root-54"
+  data-automationid="DetailsList"
+  data-is-scrollable="false"><div
+  role="grid"
+  aria-rowcount="6"
+  aria-colcount="6"
+  aria-readonly="true"><div
+  role="presentation"
+  class="ms-DetailsList-headerWrapper
+  headerWrapper-56"><div><div
+  style="height:
+  0px;"></div></div></div><div
+  role="presentation"
+  class="ms-DetailsList-contentWrapper
+  contentWrapper-57"><div
+  role="presentation"
+  class="ms-FocusZone
+  focusZone-55"
+  data-focuszone-id="FocusZone9"><div
+  class="ms-SelectionZone"
+  role="presentation"><div
+  role="presentation"
+  class="ms-List"><div
+  class="ms-List-surface"
+  role="presentation"><div
+  class="ms-List-page"
+  role="presentation"><div
+  role="presentation"
+  class="ms-List-cell"
+  data-list-index="0"
+  data-automationid="ListCell"></div><div
+  role="presentation"
+  class="ms-List-cell"
+  data-list-index="1"
+  data-automationid="ListCell"></div><div
+  role="presentation"
+  class="ms-List-cell"
+  data-list-index="2"
+  data-automationid="ListCell"></div><div
+  role="presentation"
+  class="ms-List-cell"
+  data-list-index="3"
+  data-automationid="ListCell"></div><div
+  role="presentation"
+  class="ms-List-cell"
+  data-list-index="4"
+  data-automationid="ListCell"></div></div></div></div></div></div></div></div></div></div></div><div
+  class="stickyAbove-40"
+  style="height:
+  0px;
+  left:
+  0px;
+  right:
+  0px;
+  top:
+  0px;"><div
+  aria-hidden="false"
+  style="pointer-events:
+  auto;"><div
+  style="visibility:
+  hidden;
+  height:
+  0px;"></div><div
+  class="breadcrumb--sticky-test"
+  style="overflow:
+  hidden;"><div><div
+  style="position:
+  relative;"><div
+  style="position:
+  fixed;
+  visibility:
+  hidden;"
+  data-automation-id="visibleContent"><div
+  class="ms-Breadcrumb
+  root-43"
+  role="navigation"
+  aria-label="breadcrumb-test"><div
+  role="presentation"
+  class="ms-FocusZone"
+  data-focuszone-id="FocusZone0"><ol
+  class="ms-Breadcrumb-list
+  list-44"><li
+  class="ms-Breadcrumb-listItem
+  listItem-45"><span
+  class="ms-Breadcrumb-item
+  item-50"><div
+  class="ms-TooltipHost
+  root-51">Files</div></span><i
+  data-icon-name="ChevronRight"
+  class="ms-Breadcrumb-chevron
+  chevron-53"
+  role="presentation"
+  aria-hidden="true"></i></li><li
+  class="ms-Breadcrumb-listItem
+  listItem-45"><span
+  class="ms-Breadcrumb-item
+  item-50"><div
+  class="ms-TooltipHost
+  root-51">This
+  is
+  folder
+  1</div></span><i
+  data-icon-name="ChevronRight"
+  class="ms-Breadcrumb-chevron
+  chevron-53"
+  role="presentation"
+  aria-hidden="true"></i></li><li
+  class="ms-Breadcrumb-listItem
+  listItem-45"><span
+  class="ms-Breadcrumb-item
+  item-50"><div
+  class="ms-TooltipHost
+  root-51">This
+  is
+  folder
+  2</div></span><i
+  data-icon-name="ChevronRight"
+  class="ms-Breadcrumb-chevron
+  chevron-53"
+  role="presentation"
+  aria-hidden="true"></i></li><li
+  class="ms-Breadcrumb-listItem
+  listItem-45"><span
+  class="ms-Breadcrumb-item
+  item-50"><div
+  class="ms-TooltipHost
+  root-51">This
+  is
+  folder
+  3</div></span><i
+  data-icon-name="ChevronRight"
+  class="ms-Breadcrumb-chevron
+  chevron-53"
+  role="presentation"
+  aria-hidden="true"></i></li><li
+  class="ms-Breadcrumb-listItem
+  listItem-45"><span
+  class="ms-Breadcrumb-item
+  item-50"><div
+  class="ms-TooltipHost
+  root-51">This
+  is
+  folder
+  4</div></span><i
+  data-icon-name="ChevronRight"
+  class="ms-Breadcrumb-chevron
+  chevron-53"
+  role="presentation"
+  aria-hidden="true"></i></li><li
+  class="ms-Breadcrumb-listItem
+  listItem-45"><span
+  class="ms-Breadcrumb-item
+  item-50"><div
+  class="ms-TooltipHost
+  root-51">This
+  is
+  folder
+  5</div></span></li></ol></div></div></div></div></div></div></div><div
+  aria-hidden="false"
+  style="pointer-events:
+  auto;"><div
+  style="visibility:
+  hidden;
+  height:
+  0px;"></div><div
+  class="details-header--sticky-test"
+  style="overflow:
+  hidden;"><div
+  role="row"
+  class="ms-FocusZone
+  ms-DetailsHeader
+  root-58"
+  data-automationid="DetailsHeader"
+  style="min-width:
+  0;"
+  data-focuszone-id="FocusZone8"><div
+  class="ms-DetailsHeader-cell
+  ms-DetailsHeader-cellIsCheck
+  cellIsCheck-61"
+  aria-labelledby="header7-check"
+  aria-colindex="1"
+  role="columnheader"><span
+  class="checkTooltip-70"><div
+  id="header7-check"
+  data-is-focusable="true"
+  role="checkbox"
+  class="ms-DetailsRow-check
+  ms-DetailsRow-check--isHeader
+  checkHost-80"
+  data-selection-toggle="true"
+  data-automationid="DetailsRowCheck"
+  tabindex="0"><div
+  class="ms-Check
+  root-77"><i
+  data-icon-name="CircleRing"
+  class="ms-Check-circle
+  circle-83"
+  role="presentation"
+  aria-hidden="true"></i><i
+  data-icon-name="StatusCircleCheckmark"
+  class="ms-Check-check
+  check-84"
+  role="presentation"
+  aria-hidden="true"></i></div></div></span></div><div
+  role="columnheader"
+  aria-sort="none"
+  aria-colindex="2"
+  class="ms-DetailsHeader-cell
+  is-actionable
+  root-87"
+  data-is-draggable="false"
+  draggable="false"
+  style="width:
+  120px;"
+  data-automationid="ColumnsHeaderColumn"
+  data-item-key="column_key_0"><span
+  class="cellTooltip-95"><span
+  id="header7-column_key_0"
+  aria-labelledby="header7-column_key_0-name
+  "
+  class="ms-DetailsHeader-cellTitle
+  cellTitle-93"
+  data-is-focusable="true"
+  aria-describedby="header7-column_key_0-tooltip"
+  aria-haspopup="false"
+  tabindex="-1"><span
+  id="header7-column_key_0-name"
+  class="ms-DetailsHeader-cellName
+  cellName-94">Item
+  0</span></span></span></div><label
+  id="header7-column_key_0-tooltip"
+  class="accessibleLabel-72">column_0</label><div
+  role="columnheader"
+  aria-sort="none"
+  aria-colindex="3"
+  class="ms-DetailsHeader-cell
+  is-actionable
+  root-87"
+  data-is-draggable="false"
+  draggable="false"
+  style="width:
+  120px;"
+  data-automationid="ColumnsHeaderColumn"
+  data-item-key="column_key_1"><span
+  class="cellTooltip-95"><span
+  id="header7-column_key_1"
+  aria-labelledby="header7-column_key_1-name
+  "
+  class="ms-DetailsHeader-cellTitle
+  cellTitle-93"
+  data-is-focusable="true"
+  aria-describedby="header7-column_key_1-tooltip"
+  aria-haspopup="false"
+  tabindex="-1"><span
+  id="header7-column_key_1-name"
+  class="ms-DetailsHeader-cellName
+  cellName-94">Item
+  1</span></span></span></div><label
+  id="header7-column_key_1-tooltip"
+  class="accessibleLabel-72">column_1</label><div
+  role="columnheader"
+  aria-sort="none"
+  aria-colindex="4"
+  class="ms-DetailsHeader-cell
+  is-actionable
+  root-87"
+  data-is-draggable="false"
+  draggable="false"
+  style="width:
+  120px;"
+  data-automationid="ColumnsHeaderColumn"
+  data-item-key="column_key_2"><span
+  class="cellTooltip-95"><span
+  id="header7-column_key_2"
+  aria-labelledby="header7-column_key_2-name
+  "
+  class="ms-DetailsHeader-cellTitle
+  cellTitle-93"
+  data-is-focusable="true"
+  aria-describedby="header7-column_key_2-tooltip"
+  aria-haspopup="false"
+  tabindex="-1"><span
+  id="header7-column_key_2-name"
+  class="ms-DetailsHeader-cellName
+  cellName-94">Item
+  2</span></span></span></div><label
+  id="header7-column_key_2-tooltip"
+  class="accessibleLabel-72">column_2</label><div
+  role="columnheader"
+  aria-sort="none"
+  aria-colindex="5"
+  class="ms-DetailsHeader-cell
+  is-actionable
+  root-87"
+  data-is-draggable="false"
+  draggable="false"
+  style="width:
+  120px;"
+  data-automationid="ColumnsHeaderColumn"
+  data-item-key="column_key_3"><span
+  class="cellTooltip-95"><span
+  id="header7-column_key_3"
+  aria-labelledby="header7-column_key_3-name
+  "
+  class="ms-DetailsHeader-cellTitle
+  cellTitle-93"
+  data-is-focusable="true"
+  aria-describedby="header7-column_key_3-tooltip"
+  aria-haspopup="false"
+  tabindex="-1"><span
+  id="header7-column_key_3-name"
+  class="ms-DetailsHeader-cellName
+  cellName-94">Item
+  3</span></span></span></div><label
+  id="header7-column_key_3-tooltip"
+  class="accessibleLabel-72">column_3</label><div
+  role="columnheader"
+  aria-sort="none"
+  aria-colindex="6"
+  class="ms-DetailsHeader-cell
+  is-actionable
+  root-87"
+  data-is-draggable="false"
+  draggable="false"
+  style="width:
+  120px;"
+  data-automationid="ColumnsHeaderColumn"
+  data-item-key="column_key_4"><span
+  class="cellTooltip-95"><span
+  id="header7-column_key_4"
+  aria-labelledby="header7-column_key_4-name
+  "
+  class="ms-DetailsHeader-cellTitle
+  cellTitle-93"
+  data-is-focusable="true"
+  aria-describedby="header7-column_key_4-tooltip"
+  aria-haspopup="false"
+  tabindex="-1"><span
+  id="header7-column_key_4-name"
+  class="ms-DetailsHeader-cellName
+  cellName-94">Item
+  4</span></span></span></div><label
+  id="header7-column_key_4-tooltip"
+  class="accessibleLabel-72">column_4</label></div></div></div></div><div
+  class="stickyBelow-41"
+  style="height:
+  0px;
+  left:
+  0px;
+  right:
+  0px;
+  bottom:
+  0px;"><div
+  class="stickyBelowItems-42"></div></div></div>
+  {
+    height: 32px;
+  }
+  .ms-Fabric--isFocusVisible &:focus {
+    opacity: 1;
+  }
+  {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    align-items: center;
+    background-color: transparent;
+    background: none;
+    border: none;
+    box-sizing: border-box;
+    cursor: default;
+    display: flex;
+    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    height: 32px;
+    justify-content: center;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    opacity: 0;
+    outline: transparent;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    position: relative;
+    vertical-align: top;
+    width: 40px;
+  }
+  &::-moz-focus-inner {
+    border: 0;
+  }
+  .ms-Fabric--isFocusVisible &:focus:after {
+    border: 1px solid #ffffff;
+    bottom: 1px;
+    content: "";
+    left: 1px;
+    outline: 1px solid #666666;
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    z-index: 1;
+  }
+  &:hover {
+    opacity: 1;
+  }
+`;
