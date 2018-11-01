@@ -225,7 +225,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
       if (this.canStickyTop) {
         const distanceToStickTop = this.distanceFromTop - this._getStickyDistanceFromTop();
-        isStickyTop = distanceToStickTop <= container.scrollTop;
+        isStickyTop = distanceToStickTop < container.scrollTop;
       }
 
       // Can sticky bottom if the scrollablePane - total sticky footer height is smaller than the sticky's distance from the top of the pane

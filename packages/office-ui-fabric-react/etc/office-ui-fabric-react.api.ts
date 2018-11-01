@@ -23,7 +23,7 @@ export function arraysEqual<T>(array1: T[], array2: T[]): boolean;
 
 // @public
 export function asAsync<TProps>(options: IAsAsyncOptions<TProps>): React.ComponentType<TProps & {
-    asyncPlaceholder?: React.ReactType;
+  asyncPlaceholder?: React.ReactType;
 }>;
 
 // @public
@@ -43,10 +43,10 @@ class Async {
   clearInterval(id: number): void;
   clearTimeout(id: number): void;
   debounce<T extends Function>(func: T, wait?: number, options?: {
-          leading?: boolean;
-          maxWait?: number;
-          trailing?: boolean;
-      }): ICancelable<T> & (() => void);
+    leading?: boolean;
+    maxWait?: number;
+    trailing?: boolean;
+  }): ICancelable<T> & (() => void);
   dispose(): void;
   // (undocumented)
   requestAnimationFrame(callback: () => void): number;
@@ -54,16 +54,16 @@ class Async {
   setInterval(callback: () => void, duration: number): number;
   setTimeout(callback: () => void, duration: number): number;
   throttle<T extends Function>(func: T, wait?: number, options?: {
-          leading?: boolean;
-          trailing?: boolean;
-      }): T | (() => void);
+    leading?: boolean;
+    trailing?: boolean;
+  }): T | (() => void);
 }
 
 // @public @deprecated
 export function autobind<T extends Function>(target: any, key: string, descriptor: TypedPropertyDescriptor<T>): {
-    configurable: boolean;
-    get(): T;
-    set(newValue: any): void;
+  configurable: boolean;
+  get(): T;
+  set(newValue: any): void;
 } | void;
 
 // @public (undocumented)
@@ -505,7 +505,7 @@ class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
 
 // @public
 export function buildClassMap<T>(styles: T): {
-    [key in keyof T]?: string;
+  [key in keyof T]?: string;
 };
 
 // @public (undocumented)
@@ -796,7 +796,7 @@ export function createFontStyles(localeCode: string | null): IFontStyles;
 
 // @public (undocumented)
 export function createGenericItem(name: string, currentValidationState: ValidationState, allowPhoneInitials: boolean): IGenericItem & {
-    key: React.Key;
+  key: React.Key;
 };
 
 // @public (undocumented)
@@ -1153,8 +1153,8 @@ class EventGroup {
   off(target?: any, eventName?: string, callback?: (args?: any) => void, useCapture?: boolean): void;
   on(target: any, eventName: string, callback: (args?: any) => void, useCapture?: boolean): void;
   onAll(target: any, events: {
-          [key: string]: (args?: any) => void;
-      }, useCapture?: boolean): void;
+    [key: string]: (args?: any) => void;
+  }, useCapture?: boolean): void;
   static raise(target: any, eventName: string, eventArgs?: any, bubbleEvent?: boolean): boolean | undefined;
   // (undocumented)
   static stopPropagation(event: any): void;
@@ -1202,7 +1202,7 @@ class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps, IPeop
 
 // @public (undocumented)
 class FabricBase extends BaseComponent<IFabricProps, {
-    isFocusVisible: boolean;
+  isFocusVisible: boolean;
 }> {
   constructor(props: IFabricProps);
   // (undocumented)
@@ -1320,7 +1320,7 @@ class FloatingPeoplePicker extends BaseFloatingPeoplePicker {
 
 // @public
 export function focusAsync(element: HTMLElement | {
-    focus: () => void;
+  focus: () => void;
 } | undefined | null): void;
 
 // @public
@@ -1447,10 +1447,10 @@ export function getChildren(parent: HTMLElement, allowVirtualChildren?: boolean)
 
 // @public (undocumented)
 export function getColorFromRGBA(rgba: {
-    r: number;
-    g: number;
-    b: number;
-    a: number;
+  r: number;
+  g: number;
+  b: number;
+  a: number;
 }): IColor;
 
 // @public (undocumented)
@@ -1657,9 +1657,9 @@ export function hsv2hex(h: number, s: number, v: number): string;
 
 // @public (undocumented)
 export function hsv2hsl(h: number, s: number, v: number): {
-    h: number;
-    s: number;
-    l: number;
+  h: number;
+  s: number;
+  l: number;
 };
 
 // @public (undocumented)
@@ -1938,8 +1938,8 @@ interface IBaseFloatingPickerProps<T> extends React.Props<any> {
   pickerSuggestionsProps?: IBaseFloatingPickerSuggestionProps;
   resolveDelay?: number;
   searchingText?: ((props: {
-          input: string;
-      }) => string) | string;
+    input: string;
+  }) => string) | string;
   selectedItems?: T[];
   showForceResolve?: () => boolean;
   suggestionItems?: T[];
@@ -2000,8 +2000,8 @@ interface IBasePickerProps<T> extends React.Props<any> {
   removeButtonAriaLabel?: string;
   resolveDelay?: number;
   searchingText?: ((props: {
-          input: string;
-      }) => string) | string;
+    input: string;
+  }) => string) | string;
   selectedItems?: T[];
 }
 
@@ -6541,9 +6541,9 @@ interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewportProps
   onRowWillUnmount?: (item?: any, index?: number) => void;
   onShouldVirtualize?: (props: IListProps) => boolean;
   rowElementEventMap?: {
-          eventName: string;
-          callback: (context: IDragDropContext, event?: any) => void;
-      }[];
+    eventName: string;
+    callback: (context: IDragDropContext, event?: any) => void;
+  }[];
   selection?: ISelection;
   selectionMode?: SelectionMode;
   selectionPreservedOnEmptyClick?: boolean;
@@ -6604,9 +6604,9 @@ interface IDetailsRowBaseProps extends IBaseProps<IDetailsRow>, IDetailsItemProp
   dragDropEvents?: IDragDropEvents;
   dragDropHelper?: IDragDropHelper;
   eventsToRegister?: {
-          eventName: string;
-          callback: (item?: any, index?: number, event?: any) => void;
-      }[];
+    eventName: string;
+    callback: (item?: any, index?: number, event?: any) => void;
+  }[];
   getRowAriaDescribedBy?: (item: any) => string;
   getRowAriaLabel?: (item: any) => string;
   item: any;
@@ -7578,9 +7578,9 @@ interface IGroupedListProps extends React.Props<GroupedListBase> {
   dragDropEvents?: IDragDropEvents;
   dragDropHelper?: IDragDropHelper;
   eventsToRegister?: {
-          eventName: string;
-          callback: (context: IDragDropContext, event?: any) => void;
-      }[];
+    eventName: string;
+    callback: (context: IDragDropContext, event?: any) => void;
+  }[];
   getGroupHeight?: (group: IGroup, groupIndex: number) => number;
   groupProps?: IGroupRenderProps;
   groups?: IGroup[];
@@ -7825,8 +7825,8 @@ interface IImageStyles {
 // @public (undocumented)
 interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   // WARNING: The name "aria-label" contains unsupported characters; API names should use only letters, numbers, and underscores
-  aria-label?: string;
-  defaultVisibleValue?: string;
+  aria - label ?: string;
+defaultVisibleValue ?: string;
 }
 
 // @public (undocumented)
@@ -9223,7 +9223,7 @@ interface IScrollablePaneContext {
     addSticky: (sticky: Sticky) => void;
     notifySubscribers: (sort?: boolean) => void;
     removeSticky: (sticky: Sticky) => void;
-    sortSticky: (sticky: Sticky) => void;
+    sortSticky: (sticky: Sticky, reSort?: boolean) => void;
     subscribe: (handler: (container: HTMLElement, stickyContainer: HTMLElement) => void) => void;
     unsubscribe: (handler: (container: HTMLElement, stickyContainer: HTMLElement) => void) => void;
     updateStickyRefHeights: () => void;
@@ -10374,8 +10374,8 @@ interface ITheme extends IScheme {
   // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
   // @internal
   schemes?: {
-          [P in ISchemeNames]?: IScheme;
-      };
+    [P in ISchemeNames]?: IScheme;
+  };
 }
 
 // @public (undocumented)
@@ -10770,7 +10770,7 @@ enum KeyCodes {
 
 // @public
 export function keyframes(timeline: {
-    [key: string]: {};
+  [key: string]: {};
 }): string;
 
 // @public
@@ -10946,8 +10946,8 @@ class MemberListPeoplePicker extends BasePickerListBelow<IPersonaProps, IPeopleP
 
 // @public
 export function memoize<T extends Function>(target: any, key: string, descriptor: TypedPropertyDescriptor<T>): {
-    configurable: boolean;
-    get(): T;
+  configurable: boolean;
+  get(): T;
 };
 
 // @public
