@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "@uifabric/fluent-theme",
-      "comment": "TextField, Breadcrumb: Updating some font weight for Breadcrumb and border color for TextField",
-      "type": "patch"
+      "comment": "SpinButton: add SpinButton fluent styles.",
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/fluent-theme",

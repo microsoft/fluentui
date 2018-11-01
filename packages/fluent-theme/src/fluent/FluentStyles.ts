@@ -11,6 +11,7 @@ import { LinkStyles } from './styles/Link.styles';
 import { PrimaryButtonStyles } from './styles/PrimaryButton.styles';
 import { RatingStyles } from './styles/Rating.styles';
 import { SliderStyles } from './styles/Slider.styles';
+import { SpinButtonStyles } from './styles/SpinButton.styles';
 import { TextFieldStyles } from './styles/TextField.styles';
 import { ToggleStyles } from './styles/Toggle.styles';
 
@@ -64,6 +65,9 @@ export const FluentStyles: any = {
   },
   Slider: {
     styles: SliderStyles
+  },
+  SpinButton: {
+    styles: SpinButtonStyles
   },
   TextField: {
     styles: TextFieldStyles

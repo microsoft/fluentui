@@ -1,6 +1,20 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 25 Oct 2018 12:30:06 GMT and should not be manually modified.
+This log was last generated on Wed, 31 Oct 2018 12:32:41 GMT and should not be manually modified.
+
+## 6.40.1
+Wed, 31 Oct 2018 12:32:41 GMT
+
+### Patches
+
+- Add theme provider helper and replace usage of scheme prop with theme provider.
+
+## 6.40.0
+Mon, 29 Oct 2018 12:31:29 GMT
+
+### Minor changes
+
+- Announced: add initial component prototype and examples
 
 ## 6.39.5
 Thu, 25 Oct 2018 12:30:06 GMT

@@ -137,7 +137,8 @@ export class Layout extends React.Component<ILayoutProps, { _width: number; _hei
                   dataPoints,
                   compactChartWidth,
                   chartUpdatedOn,
-                  timeRange
+                  timeRange,
+                  ignoreStackBarChartDefaultStyle
                 } = cardContent.content as IChartProps;
                 const animation = this._getAnimation(chartType, shimmerWrapperClassName, shimmerContainerClassName);
                 contentArea.push(

@@ -136,7 +136,13 @@ export class Chart extends React.Component<IChartInternalProps, { _width: number
       return <MultiStackedBarChart data={this.props.chartData!} barHeight={this.props.barHeight} hideRatio={this.props.hideRatio} />;
     }
 
-    return <StackedBarChart data={this.props.chartData![0]} barHeight={this.props.barHeight} />;
+    return (
+      <StackedBarChart
+        data={this.props.chartData![0]}
+        barHeight={this.props.barHeight}
+        ignoreFixStyle={this.props.ignoreStackBarChartDefaultStyle}
+      />
+    );
   };
 
   private _getLineChart = (): JSX.Element => {

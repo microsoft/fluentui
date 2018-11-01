@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Thu, 25 Oct 2018 12:30:06 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Oct 2018 12:31:29 GMT and should not be manually modified.
+
+## 0.1.7
+Mon, 29 Oct 2018 12:31:29 GMT
+
+### Patches
+
+- TextField, Breadcrumb: Updating some font weight for Breadcrumb and border color for TextField
 
 ## 0.1.6
 Thu, 25 Oct 2018 12:30:06 GMT
