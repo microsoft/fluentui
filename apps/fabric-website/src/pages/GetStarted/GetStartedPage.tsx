@@ -178,13 +178,20 @@ export class GetStartedPage extends React.Component<any, any> {
           <ol className={styles.steps}>
             <li>
               <p>
-                Install Node.js (at least 8.x) from the <a href="https://nodejs.org">Node.js website</a>.
+                Install Node.js (at least 8.x) from the{' '}
+                <a href="https://nodejs.org" target="_blank">
+                  Node.js website
+                </a>
+                .
               </p>
             </li>
             <li>
               <p>
                 Use npm to create a React app that uses TypeScript. Consider using Facebook's{' '}
-                <a href="https://github.com/facebook/create-react-app">Create React App</a> to get started quickly:
+                <a href="https://github.com/facebook/create-react-app" target="_blank">
+                  Create React App
+                </a>{' '}
+                to get started quickly:
               </p>
               <CodeBlock language="bash" isLightTheme={true}>
                 {`npx create-react-app my-app --typescript`}
@@ -228,10 +235,10 @@ ReactDOM.render(<MyPage />, document.body.firstChild);`}
               </CodeBlock>
               <DefaultButton text="See Button" primary={true} href="#/components/button" />
               <p>
-                Check out the
+                Check out the{' '}
                 <a className={styles.getStartedLink} href="#/components">
                   components page
-                </a>
+                </a>{' '}
                 for more design and technical docs for each component.
               </p>
             </li>
@@ -239,7 +246,7 @@ ReactDOM.render(<MyPage />, document.body.firstChild);`}
               <p>
                 If you are using Fabric React components that have icons, you can make all icons available by calling the{' '}
                 <code>initializeIcons</code> function from the{' '}
-                <a href="https://www.npmjs.com/package/@uifabric/icons">
+                <a href="https://www.npmjs.com/package/@uifabric/icons" target="_blank">
                   <code>@uifabric/icons</code>
                 </a>{' '}
                 package.
