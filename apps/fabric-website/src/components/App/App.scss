@@ -9,6 +9,13 @@
     position: relative;
   }
 
+  .App-mobileNavMenu {
+    height: 34px;
+    background-color: $ms-color-white;
+    border-bottom: 1px solid $ms-color-neutralTertiary;
+    display: none;
+  }
+
   // Nav is hidden off screen by default
   .App-nav {
     -webkit-overflow-scrolling: touch; // Improves scrolling performance
@@ -18,6 +25,15 @@
     width: $Nav-width;
     @include ms-float(left);
     z-index: 999; // This z-index needs to be high to prevent jittery scrolling in Edge.
+  }
+
+  .ms-App-navPanel {
+    top: 50px;
+
+    .ms-Panel-main {
+      background-color: $ms-color-neutralDark;
+      border-color: $ms-color-neutralDark;
+    }
   }
 
   .App-content {
@@ -80,7 +96,15 @@
       padding: 0;
     }
 
+    .App-mobileNavMenu {
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+    }
+
     .App-nav {
+      background-color: $ms-color-neutralLight;
+      max-width: 320px;
       display: none;
     }
   }
