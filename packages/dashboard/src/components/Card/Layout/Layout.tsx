@@ -164,6 +164,7 @@ export class Layout extends React.Component<ILayoutProps, { _width: number; _hei
                           timeRange={timeRange}
                           width={this._getChartWidth(cardContentList.length)}
                           height={this._getChartHeight(cardContentList.length)}
+                          ignoreStackBarChartDefaultStyle={ignoreStackBarChartDefaultStyle}
                         />
                       </div>
                     )}
