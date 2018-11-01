@@ -249,11 +249,11 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
         isStickyBottom =
           this.distanceFromTop - container.scrollTop >= this._getStickyDistanceFromTopForFooter(container, footerStickyContainer);
       }
-      const scrollPosition = this.context && this.context.scrollablePane ? this.context.scrollablePane.getScrollPosition() : undefined;
+
       this.setState({
         isStickyTop: this.canStickyTop && isStickyTop,
         isStickyBottom: isStickyBottom,
-        isScrollPositionNonZero: scrollPosition !== undefined ? scrollPosition !== 0 : undefined
+        isScrollPositionNonZero: container.scrollTop !== 0
       });
     }
   };
