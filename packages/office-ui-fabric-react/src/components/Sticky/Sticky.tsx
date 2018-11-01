@@ -32,6 +32,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   private _stickyContentTop = createRef<HTMLDivElement>();
   private _stickyContentBottom = createRef<HTMLDivElement>();
   private _nonStickyContent = createRef<HTMLDivElement>();
+  private _placeHolder = createRef<HTMLDivElement>();
 
   constructor(props: IStickyProps) {
     super(props);
@@ -119,13 +120,21 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     }
 
     const { isStickyTop, isStickyBottom, distanceFromTop } = this.state;
-    return (
-      isStickyTop !== nextState.isStickyTop ||
-      isStickyBottom !== nextState.isStickyBottom ||
-      distanceFromTop !== nextState.distanceFromTop ||
-      this.props.stickyPosition !== nextProps.stickyPosition ||
-      this.props.children !== nextProps.children
-    );
+
+    if (this._nonStickyContent && this._nonStickyContent.current && this._placeHolder && this._placeHolder.current) {
+      const nonStickyContentHeight = this._nonStickyContent.current.offsetHeight;
+
+      return (
+        isStickyTop !== nextState.isStickyTop ||
+        isStickyBottom !== nextState.isStickyBottom ||
+        distanceFromTop !== nextState.distanceFromTop ||
+        this.props.stickyPosition !== nextProps.stickyPosition ||
+        this.props.children !== nextProps.children ||
+        nonStickyContentHeight !== this._placeHolder.current.offsetHeight
+      );
+    }
+
+    return false;
   }
 
   public render(): JSX.Element {
@@ -148,7 +157,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
             <div style={this._getStickyPlaceholderHeight(isStickyBottom)} />
           </div>
         )}
-        <div style={this._getNonStickyPlaceholderHeight()} ref={this._root}>
+        <div style={this._getNonStickyPlaceholderHeight()} ref={this._placeHolder}>
           <div
             ref={this._nonStickyContent}
             className={isStickyTop || isStickyBottom ? stickyClassName : undefined}
