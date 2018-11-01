@@ -130,10 +130,10 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
               {dateTimeFormatter.formatYear(navigatedDate)}
             </div>
           ) : (
-              <div className={css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear)}>
-                {dateTimeFormatter.formatYear(navigatedDate)}
-              </div>
-            )}
+            <div className={css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear)}>
+              {dateTimeFormatter.formatYear(navigatedDate)}
+            </div>
+          )}
           <div className={css('ms-DatePicker-yearComponents', styles.yearComponents)}>
             <div className={css('ms-DatePicker-navContainer', styles.navContainer)}>
               <button

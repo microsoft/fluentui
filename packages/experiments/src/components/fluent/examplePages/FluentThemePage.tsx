@@ -20,8 +20,7 @@ export class FluentThemePage extends React.Component<IComponentDemoPageProps, {}
             <p>
               For components that have been converted to{' '}
               <a href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/mergeStyles">mergeStyles</a>, the Customizer component can
-              be used to apply the theme. See the examples below. For all other components (including your app's custom components),
-              use the{' '}
+              be used to apply the theme. See the examples below. For all other components (including your app's custom components), use the{' '}
               <a href="https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/styling/src/styles/theme.ts#L80">
                 loadTheme()
               </a>{' '}
