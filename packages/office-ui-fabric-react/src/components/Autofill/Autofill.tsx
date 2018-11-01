@@ -296,4 +296,4 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
 /**
  *  @deprecated do not use.
  */
-export class BaseAutoFill extends Autofill {}
+export class BaseAutoFill extends Autofill { }
