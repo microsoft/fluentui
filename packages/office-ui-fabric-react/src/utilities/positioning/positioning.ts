@@ -265,7 +265,7 @@ function _flipToFit(
 
 /**
  * Flips only the alignment edge of an element rectangle. This is used instead of nudging the alignment edges into position,
- * when alignPerfectly is specified.
+ * when alignTargetEdge is specified.
  * @param elementEstimate
  * @param target
  * @param bounding
@@ -311,7 +311,7 @@ function _adjustFitWithinBounds(
   directionalHintFixed?: boolean,
   coverTarget?: boolean
 ): IElementPosition {
-  const { alignmentEdge, alignPerfectly } = positionData;
+  const { alignmentEdge, alignTargetEdge } = positionData;
   let elementEstimate: IElementPosition = {
     elementRectangle: element,
     targetEdge: positionData.targetEdge,
@@ -324,7 +324,7 @@ function _adjustFitWithinBounds(
 
   const outOfBounds = _getOutOfBoundsEdges(element, bounding);
 
-  if (alignPerfectly) {
+  if (alignTargetEdge) {
     // The edge opposite to the alignment edge might be out of bounds. Flip alignment to see if we can get it within bounds.
     if (elementEstimate.alignmentEdge && outOfBounds.indexOf(elementEstimate.alignmentEdge * -1) > -1) {
       const flippedElementEstimate = _flipAlignmentEdge(elementEstimate, target, gap, coverTarget);
@@ -505,13 +505,13 @@ function _getAlignmentData(
   target: Rectangle,
   boundingRect: Rectangle,
   coverTarget?: boolean,
-  alignPerfectly?: boolean
+  alignTargetEdge?: boolean
 ): IPositionDirectionalHintData {
   if (positionData.isAuto) {
     positionData.alignmentEdge = getClosestEdge(positionData.targetEdge, target, boundingRect);
   }
 
-  positionData.alignPerfectly = alignPerfectly;
+  positionData.alignTargetEdge = alignTargetEdge;
   return positionData;
 }
 
@@ -685,7 +685,7 @@ function _positionElementRelative(
     targetRect,
     boundingRect,
     props.coverTarget,
-    props.alignPerfectly
+    props.alignTargetEdge
   );
   const positionedElement: IElementPosition = _positionElementWithinBounds(
     _getRectangleFromElement(elementToPosition),

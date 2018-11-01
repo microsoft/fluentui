@@ -46,7 +46,7 @@ export interface IPositionProps {
    * If true the positioning logic will prefer flipping edges over nudging the rectangle to fit within bounds,
    * thus making sure the the element align perfectly with target.
    */
-  alignPerfectly?: boolean;
+  alignTargetEdge?: boolean;
 }
 
 export interface ICalloutPositionProps extends IPositionProps {
@@ -110,7 +110,7 @@ export interface IPositionDirectionalHintData {
   targetEdge: RectangleEdge;
   alignmentEdge?: RectangleEdge;
   isAuto?: boolean;
-  alignPerfectly?: boolean;
+  alignTargetEdge?: boolean;
 }
 
 export interface IRelativePositions {

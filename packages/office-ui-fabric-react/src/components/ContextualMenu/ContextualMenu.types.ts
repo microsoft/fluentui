@@ -113,7 +113,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
    * If true the positioning logic will prefer to flip edges rather than to nudge the rectangle to fit within bounds,
    * thus making sure the element aligns perfectly with target's alignment edge
    */
-  alignPerfectly?: boolean;
+  alignTargetEdge?: boolean;
 
   /**
    * Collection of menu items.
