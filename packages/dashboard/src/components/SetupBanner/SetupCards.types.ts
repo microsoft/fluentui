@@ -11,7 +11,7 @@ export interface ISetupCardsProps {
   cardDualVerticalSpacing?: number;
   cardAnimationDelay?: number;
   cardVerticalOffset?: number;
-  cardHoritonztalOffset?: number;
+  cardHorizontalOffset?: number;
 }
 
 export interface ISetupCardsStyles {

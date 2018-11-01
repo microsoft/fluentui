@@ -16,7 +16,7 @@ export class SetupCards extends React.PureComponent<ISetupCardsProps> {
     cardDualVerticalSpacing: 37,
     cardAnimationDelay: 0.167,
     cardVerticalOffset: 0,
-    cardHoritonztalOffset: -7
+    cardHorizontalOffset: -7
   };
 
   public render(): JSX.Element {
@@ -46,7 +46,7 @@ export class SetupCards extends React.PureComponent<ISetupCardsProps> {
           const cardStyle: IStyle = {
             zIndex: reverseIndex,
             animationDelay: reverseIndex * this.props.cardAnimationDelay! + 's',
-            left: index * this.props.cardHorizontalSpacing! + this.props.cardHoritonztalOffset!,
+            left: index * this.props.cardHorizontalSpacing! + this.props.cardHorizontalOffset!,
             top: newTop + this.props.cardVerticalOffset!
           };
           return (

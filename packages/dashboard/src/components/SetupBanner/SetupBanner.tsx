@@ -15,11 +15,7 @@ export class SetupBanner extends React.Component<ISetupBannerProps, {}> {
         <div className={classNames.textPartition}>
           <div className={classNames.headerSection}>{headerText}</div>
           <div className={classNames.bodySection}>{onRenderBody()}</div>
-          <div className={classNames.actionSection}>
-            {this.props.actions.map((action: ISetupBannerAction, actionIndex: number) => {
-              return this._renderAction(action, actionIndex);
-            })}
-          </div>
+          <div className={classNames.actionSection}>{this.props.actions.map(this._renderAction)}</div>
         </div>
       </div>
     );
