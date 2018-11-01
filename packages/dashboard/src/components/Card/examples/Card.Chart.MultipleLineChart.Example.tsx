@@ -3,9 +3,10 @@ import { IChartProps as IChartingProps, ILineChartPoints } from '@uifabric/chart
 import { Card, CardContentType, CardSize, ChartType, ICardProps, ICardContentDetails, IChartProps, Priority } from '@uifabric/dashboard';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
-export class MultipleLineChartExample extends React.Component<{}, {}> {
+export class MultipleLineChartExample extends React.Component<{}, { loading: boolean }> {
   constructor(props: ICardProps) {
     super(props);
+    this.state = { loading: true };
   }
 
   public render(): JSX.Element {
@@ -102,7 +103,18 @@ export class MultipleLineChartExample extends React.Component<{}, {}> {
     const header = {
       headerText: 'Header Text '
     };
-
-    return <Card cardFrameContent={cardFrameContent} header={header} cardContentList={contentAreaList} cardSize={CardSize.mediumWide} />;
+    const that = this;
+    setTimeout(() => {
+      that.setState({ loading: false });
+    }, 10000);
+    return (
+      <Card
+        cardFrameContent={cardFrameContent}
+        header={header}
+        cardContentList={contentAreaList}
+        cardSize={CardSize.mediumWide}
+        loading={this.state.loading}
+      />
+    );
   }
 }
