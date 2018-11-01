@@ -9219,7 +9219,6 @@ interface IScrollablePaneContext {
   // (undocumented)
   scrollablePane?: {
     addSticky: (sticky: Sticky) => void;
-    getScrollPosition: () => number;
     notifySubscribers: (sort?: boolean) => void;
     removeSticky: (sticky: Sticky) => void;
     sortSticky: (sticky: Sticky) => void;
