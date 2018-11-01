@@ -12,7 +12,7 @@ export interface IStickyState {
    * else if scrollablePane.getScrollPosition !== 0 then true
    * else false.
    */
-  isScrollPositionNonZero: boolean | undefined;
+  isScrollPositionNonZero?: boolean;
 }
 
 export interface IStickyContext {
@@ -37,17 +37,15 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   private _stickyContentTop = createRef<HTMLDivElement>();
   private _stickyContentBottom = createRef<HTMLDivElement>();
   private _nonStickyContent = createRef<HTMLDivElement>();
-  private _prevNonStickyContentOffsetHeight: number | undefined;
+  private _prevNonStickyContentOffsetHeight?: number;
 
   constructor(props: IStickyProps) {
     super(props);
     this.state = {
       isStickyTop: false,
-      isStickyBottom: false,
-      isScrollPositionNonZero: undefined
+      isStickyBottom: false
     };
     this.distanceFromTop = 0;
-    this._prevNonStickyContentOffsetHeight = undefined;
   }
 
   public get root(): HTMLDivElement | null {
@@ -111,12 +109,14 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       return;
     }
 
-    const currNonStickyContentOffsetHeight = this.nonStickyContent ? this.nonStickyContent.offsetHeight : undefined;
+    const { isStickyTop, isStickyBottom, isScrollPositionNonZero } = this.state;
+    const currNonStickyContentOffsetHeight = this._getHtmlDivElementOffsetHeight(this.nonStickyContent);
+
     if (
-      prevState.isStickyTop !== this.state.isStickyTop ||
-      prevState.isStickyBottom !== this.state.isStickyBottom ||
+      prevState.isStickyTop !== isStickyTop ||
+      prevState.isStickyBottom !== isStickyBottom ||
       this._prevNonStickyContentOffsetHeight !== currNonStickyContentOffsetHeight ||
-      prevState.isScrollPositionNonZero !== this.state.isScrollPositionNonZero
+      prevState.isScrollPositionNonZero !== isScrollPositionNonZero
     ) {
       this._updatePrevNonStickyContentOffsetHeight(currNonStickyContentOffsetHeight);
       scrollablePane.updateStickyRefHeights();
