@@ -1,6 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Wed, 31 Oct 2018 12:32:41 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Nov 2018 12:31:45 GMT and should not be manually modified.
+
+## 0.26.3
+Thu, 01 Nov 2018 12:31:45 GMT
+
+### Patches
+
+- added hovercard for horizontalBar chart
 
 ## 0.26.2
 Wed, 31 Oct 2018 12:32:41 GMT
