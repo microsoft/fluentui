@@ -98,15 +98,12 @@ export class Nav extends React.Component<INavProps, INavState> {
 
     const links = pages
       .filter(page => {
-        if (page.hasOwnProperty('isHiddenFromMainNav')) {
+        // Don't render pages that are explicitly told not to, as well as top-level pages that aren't active.
+        if (page.hasOwnProperty('isHiddenFromMainNav') || (page.isUhfLink && !_hasActiveChild(page) && !_isPageActive(page))) {
           return false;
         }
 
-        if (page.isUhfLink && !_hasActiveChild(page)) {
-          return false;
-        } else {
-          return true;
-        }
+        return true;
       })
       .map((page: INavPage, linkIndex: number) => {
         if (page.isCategory && !filterState) {
@@ -202,9 +199,10 @@ export class Nav extends React.Component<INavProps, INavState> {
           )}
           key={linkIndex}
         >
+          {/* {!(page.isUhfLink && location.hostname !== 'localhost') && */}
           {!page.isUhfLink &&
             (page.isFilterable && searchQuery !== '' ? matchIndex > -1 : true) && (
-              <a className="fooBar" href={page.url} onClick={this._onLinkClick} title={title} aria-label={ariaLabel}>
+              <a href={page.url} onClick={this._onLinkClick} title={title} aria-label={ariaLabel}>
                 {linkText}
               </a>
             )}
@@ -217,13 +215,7 @@ export class Nav extends React.Component<INavProps, INavState> {
   private _getSearchBox() {
     return (
       <div className={styles.searchBox}>
-        <SearchBox
-          data-is-focusable="true"
-          placeholder="Filter components"
-          underlined
-          styles={searchBoxStyles}
-          onChange={this._onChangeQuery}
-        />
+        <SearchBox placeholder="Filter components" underlined styles={searchBoxStyles} onChange={this._onChangeQuery} />
         <IconButton
           iconProps={{ iconName: 'filter' }}
           style={{ color: 'white', marginLeft: '5px' }}
