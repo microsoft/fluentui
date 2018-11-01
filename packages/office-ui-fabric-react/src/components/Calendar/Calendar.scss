@@ -142,6 +142,7 @@ $Calendar-dayPicker-margin: 10px;
   padding: 0;
   background-color: transparent;
   line-height: 100%;
+  font-size: inherit;
 }
 
 .daySelection .day {
@@ -673,7 +674,7 @@ $Calendar-dayPicker-margin: 10px;
       @include margin-left(12px);
     }
     .yearPicker {
-      @include margin-left(12px)
+      @include margin-left(12px);
     }
     .goToday {
       @include ms-right(14px);
