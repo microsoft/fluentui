@@ -129,9 +129,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   private _hoverOn(hoverValue: string | number | Date | null, lineColor: string, legend: string): void {
     if (!this.state.isCalloutVisible || this.state.legend !== legend) {
       const refArray = this.state.refArray;
-      const currentHoveredElement = refArray.find(
-        (currentElement: IRefArrayData) => currentElement.legendText === legend
-      );
+      const currentHoveredElement = refArray.find((currentElement: IRefArrayData) => currentElement.legendText === legend);
       this.setState({
         isCalloutVisible: true,
         hoverValue: hoverValue,
