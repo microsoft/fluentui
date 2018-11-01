@@ -19,7 +19,8 @@
   },
   "disabledTasks": [
     "jest",
-    "sass"
+    "sass",
+    "api-extractor"
   ],
   "devDependencies": {
     "@types/jest": "23.0.0",
