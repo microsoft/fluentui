@@ -7,6 +7,7 @@ import { IScrollablePaneContext } from '../ScrollablePane/ScrollablePane.base';
 export interface IStickyState {
   isStickyTop: boolean;
   isStickyBottom: boolean;
+  distanceFromTop: number;
 }
 
 export interface IStickyContext {
@@ -36,7 +37,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     super(props);
     this.state = {
       isStickyTop: false,
-      isStickyBottom: false
+      isStickyBottom: false,
+      distanceFromTop: 0
     };
     this.distanceFromTop = 0;
   }
@@ -105,6 +107,10 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     if (prevState.isStickyTop !== this.state.isStickyTop || prevState.isStickyBottom !== this.state.isStickyBottom) {
       scrollablePane.updateStickyRefHeights();
     }
+
+    if (this.state.distanceFromTop !== prevState.distanceFromTop) {
+      scrollablePane.sortSticky(this, true);
+    }
   }
 
   public shouldComponentUpdate(nextProps: IStickyProps, nextState: IStickyState): boolean {
@@ -112,10 +118,11 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       return true;
     }
 
-    const { isStickyTop, isStickyBottom } = this.state;
+    const { isStickyTop, isStickyBottom, distanceFromTop } = this.state;
     return (
       isStickyTop !== nextState.isStickyTop ||
       isStickyBottom !== nextState.isStickyBottom ||
+      distanceFromTop !== nextState.distanceFromTop ||
       this.props.stickyPosition !== nextProps.stickyPosition ||
       this.props.children !== nextProps.children
     );
@@ -168,6 +175,9 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
   public setDistanceFromTop(container: HTMLDivElement): void {
     this.distanceFromTop = this._getNonStickyDistanceFromTop(container);
+    this.setState({
+      distanceFromTop: this._getNonStickyDistanceFromTop(container)
+    });
   }
 
   private _getContentStyles(isSticky: boolean): React.CSSProperties {
@@ -217,7 +227,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
       this.setState({
         isStickyTop: this.canStickyTop && isStickyTop,
-        isStickyBottom: isStickyBottom
+        isStickyBottom: isStickyBottom,
+        distanceFromTop: this.distanceFromTop
       });
     }
   };
