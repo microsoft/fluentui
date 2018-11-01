@@ -4,7 +4,7 @@ import { IIconProps, IContextualMenuProps, IFontWeight } from 'office-ui-fabric-
 
 export type IButtonComponent = IComponent<IButtonProps, IButtonViewProps, IButtonStyles>;
 
-// States should only be javascript evluated states. (Not css states.)
+// States should only be javascript evaluated states. (Not css states.)
 export type IButtonStates = 'baseState' | 'enabled' | 'disabled' | 'expanded';
 
 export type IButtonVariants = 'baseVariant' | 'primary' | 'circular';

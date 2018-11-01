@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { IStyle } from 'office-ui-fabric-react';
 import { IComponent, IStyleableComponentProps } from '../../Foundation';
-import { RefObject } from '../../Utilities';
 
 import { ICollapsibleSectionTitleProps } from './CollapsibleSectionTitle.types';
 
@@ -44,7 +43,7 @@ export type ICollapsibleSectionViewProps = Pick<ICollapsibleSectionProps, 'title
      * Optional callback to access the Title element interface. Use this instead of ref for accessing
      * the public methods and properties of the component.
      */
-    titleElementRef?: RefObject<HTMLElement>;
+    titleElementRef?: React.RefObject<HTMLElement>;
 
     /**
      * Toggle input callback triggered by mouse and keyboard input.
