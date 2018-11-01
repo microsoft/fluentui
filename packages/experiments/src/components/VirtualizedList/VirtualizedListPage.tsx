@@ -25,20 +25,14 @@ export class VirtualizedListPage extends React.Component<IComponentDemoPageProps
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={[
-              require<
-                string
-              >('!raw-loader!@uifabric/experiments/src/components/VirtualizedList/VirtualizedList.types.ts')
-            ]}
+            sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/VirtualizedList/VirtualizedList.types.ts')]}
           />
         }
         overview={<div />}
         bestPractices={<div />}
         dos={<div />}
         donts={<div />}
-        related={
-          <a href="https://dev.office.com/fabric-js/Components/VirtualizedList/VirtualizedList.html">Fabric JS</a>
-        }
+        related={<a href="https://dev.office.com/fabric-js/Components/VirtualizedList/VirtualizedList.html">Fabric JS</a>}
         isHeaderVisible={this.props.isHeaderVisible}
       />
     );

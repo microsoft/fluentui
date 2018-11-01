@@ -38,8 +38,7 @@ export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
   [index: string]: any;
 }
 
-export interface ILinkProps
-  extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement | LinkBase> {
+export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement | LinkBase> {
   /**
    * Optional callback to access the ILink interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

@@ -119,7 +119,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -141,7 +145,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -164,7 +172,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -187,7 +199,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -313,7 +329,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -335,7 +355,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -358,7 +382,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -381,7 +409,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -507,7 +539,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -529,7 +565,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -552,7 +592,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -575,7 +619,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -701,7 +749,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -723,7 +775,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -746,7 +802,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -769,7 +829,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -895,7 +959,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -917,7 +985,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -940,7 +1012,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -963,7 +1039,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -1104,7 +1184,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -1126,7 +1210,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -1149,7 +1237,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -1172,7 +1264,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -1298,7 +1394,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -1320,7 +1420,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -1343,7 +1447,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -1366,7 +1474,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -1507,7 +1619,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -1529,7 +1645,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -1552,7 +1672,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -1575,7 +1699,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -1716,7 +1844,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -1738,7 +1870,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -1761,7 +1897,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -1784,7 +1924,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -1925,7 +2069,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -1947,7 +2095,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -1970,7 +2122,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -1993,7 +2149,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -2119,7 +2279,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -2141,7 +2305,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -2164,7 +2332,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -2187,7 +2359,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -2313,7 +2489,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -2335,7 +2515,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -2358,7 +2542,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -2381,7 +2569,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -2525,7 +2717,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -2547,7 +2743,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -2570,7 +2770,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -2593,7 +2797,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}

@@ -2,6 +2,337 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.40.1",
+      "tag": "@uifabric/experiments_v6.40.1",
+      "date": "Wed, 31 Oct 2018 12:32:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add theme provider helper and replace usage of scheme prop with theme provider.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "fc5a1f4620c93499a41abe8377ff61161cf5bd76"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Prettier changes unrelated to the PR",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "1882ecb9c772a19ab6c75bdddc1ca539c932e9c4"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.26.1` to `^0.26.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.5.6 <1.0.0` to `>=0.5.7 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.96.0 <7.0.0` to `>=6.97.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.9.0 <7.0.0` to `>=6.9.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.40.0",
+      "tag": "@uifabric/experiments_v6.40.0",
+      "date": "Mon, 29 Oct 2018 12:31:29 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Announced: add initial component prototype and examples",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "5f35f444f054f7d65d900a2e9b8cf546842ce090"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Running Prettier on all .ts and .tsx files in the packages folder.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "2ce6c5ac3ccf4e62d4866841317b4aa55b8fb541"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.1.6 <1.0.0` to `>=0.1.7 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.93.0 <7.0.0` to `>=6.93.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.39.5",
+      "tag": "@uifabric/experiments_v6.39.5",
+      "date": "Thu, 25 Oct 2018 12:30:06 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.25.2` to `^0.26.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.1.5 <1.0.0` to `>=0.1.6 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.92.0 <7.0.0` to `>=6.92.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.39.4",
+      "tag": "@uifabric/experiments_v6.39.4",
+      "date": "Wed, 24 Oct 2018 12:28:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix breaking changes for odsp",
+            "author": "jijizz <liu_zhi8@hotmail.com>",
+            "commit": "e55fa9d49512b4264cbcd1c2337dc4a64b068650"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.1.4 <1.0.0` to `>=0.1.5 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.10.3 <7.0.0` to `>=6.10.4 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.91.0 <7.0.0` to `>=6.92.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.39.3",
+      "tag": "@uifabric/experiments_v6.39.3",
+      "date": "Tue, 23 Oct 2018 12:32:16 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix an issue with the demo site not being able to load (in npm start or aka.ms/fabricdemo).",
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "b23bf4ef703ae9fef95dd41a1f7b3d0906a04344"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.25.1` to `^0.25.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.1.3 <1.0.0` to `>=0.1.4 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.90.0 <7.0.0` to `>=6.91.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.39.2",
+      "tag": "@uifabric/experiments_v6.39.2",
+      "date": "Mon, 22 Oct 2018 12:29:57 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Move theme definitions to theme-samples package. Remove Fluent styles page.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "6505775ab433ec7e1fca27621be96dd6c026796d"
+          },
+          {
+            "comment": "Use fluent-theme package customizations.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "6505775ab433ec7e1fca27621be96dd6c026796d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.1.2 <1.0.0` to `>=0.1.3 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/theme-samples\" from `>=0.1.1 <1.0.0` to `>=0.1.2 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `>=6.11.1 <7.0.0` to `>=6.12.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.10.2 <7.0.0` to `>=6.10.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.89.0 <7.0.0` to `>=6.90.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.39.1",
+      "tag": "@uifabric/experiments_v6.39.1",
+      "date": "Thu, 18 Oct 2018 20:22:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove api-extractor.disabled.json",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "e6b2514a003fb41c964fba14b071cb0046fd69eb"
+          },
+          {
+            "comment": "Fluent: Updating fluent styles for ChoiceGroup plus addressing feedback on Breadcrumb, Checkbox and Dropdown.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "1b150a00f86a233b9e895f75e4ea7a99eb9779eb"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.25.0` to `^0.25.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.5.5 <1.0.0` to `>=0.5.6 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.10.1 <7.0.0` to `>=6.10.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.87.0 <7.0.0` to `>=6.88.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.39.0",
+      "tag": "@uifabric/experiments_v6.39.0",
+      "date": "Wed, 17 Oct 2018 12:29:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "revert PR 6258 for signal icon issues",
+            "author": "Amy Hackett <ahackett@microsoft.com>",
+            "commit": "da47752a6216ee1b42377e67e11f265ccfb5d988"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Breadcrumb: fluent updates to breadcrumb styles.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "f56a360083890a8a588961a4c1fb89a91cb2e09a"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.86.0 <7.0.0` to `>=6.87.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.38.1",
+      "tag": "@uifabric/experiments_v6.38.1",
+      "date": "Wed, 17 Oct 2018 01:29:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updated Readme",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "3cbb872d05e63c633f7ab8d0f8fa864b6ed0a1a5"
+          },
+          {
+            "comment": "Fix FluentStylesPage by wrapping a Customizer around each example",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "ed4aac114da601235955bb39277bdd4c28b11dcd"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.85.0 <7.0.0` to `>=6.86.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.8.0 <7.0.0` to `>=6.9.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.38.0",
+      "tag": "@uifabric/experiments_v6.38.0",
+      "date": "Tue, 16 Oct 2018 12:28:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add customizations for component examples. Remove redundant customizations from Button example.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "d268b0e3e4cbfde82ef56e60686cc6ad70090a8f"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Fluent: updates the styles of Dropdown and CheckBox to follow fluent specs.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "f0c0c48a5614af68b3efe2c310772f6900e34968"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.24.4` to `^0.25.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.84.1 <7.0.0` to `>=6.85.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.7.6 <7.0.0` to `>=6.8.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.37.1",
+      "tag": "@uifabric/experiments_v6.37.1",
+      "date": "Mon, 15 Oct 2018 12:29:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "updating snapshot tests in experiments package",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "e83f082e86ab8a599f298dc1dfe343981bbebee5"
+          },
+          {
+            "comment": "Added font theme setting to Button, ChicletCard, CollapsibleSection, Shimmer, ShimmerCircle, ShimmerElementsGroup, ShimmerGap, ShimmerLine, HorizontalStack, Text. Snapshots updated in VerticalStack, Stack.",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "e83f082e86ab8a599f298dc1dfe343981bbebee5"
+          },
+          {
+            "comment": "Improve BaseState typing and fix use by experimental components.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "9acc74dfac060f464357a56c61b6f0bfde025dfe"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Added font theme setting to Button, ChicletCard, CollapsibleSection, Shimmer, ShimmerCircle, ShimmerElementsGroup, ShimmerGap, ShimmerLine, HorizontalStack, Text. Snapshots updated in VerticalStack, Stack.",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "e83f082e86ab8a599f298dc1dfe343981bbebee5"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.24.3` to `^0.24.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `>=6.1.3 <7.0.0` to `>=6.2.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.10.0 <7.0.0` to `>=6.10.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.84.0 <7.0.0` to `>=6.84.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.37.0",
       "tag": "@uifabric/experiments_v6.37.0",
       "date": "Wed, 10 Oct 2018 12:29:05 GMT",

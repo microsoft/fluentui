@@ -15,7 +15,7 @@ export interface IGroupShowAllProps extends IGroupDividerProps {
 
   /**
    * The Show All link text.
-   * @default 'Show All'
+   * @defaultvalue 'Show All'
    */
   showAllLinkText?: string;
 }

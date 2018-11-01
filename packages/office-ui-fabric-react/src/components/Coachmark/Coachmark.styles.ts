@@ -5,8 +5,9 @@ export const COACHMARK_HEIGHT = 32;
 
 export interface ICoachmarkStyleProps {
   /**
-   * Is the Coachmark collapsed.  Deprecated: use isCollapsed instead.
-   * @deprecated
+   * Is the Coachmark collapsed.
+   * Deprecated, use `isCollapsed` instead.
+   * @deprecated Use `isCollapsed` instead.
    */
   collapsed?: boolean;
 
@@ -265,6 +266,7 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
 
   return {
     root: [
+      theme.fonts.medium,
       {
         position: 'relative'
       }

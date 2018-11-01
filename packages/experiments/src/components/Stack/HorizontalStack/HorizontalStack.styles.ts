@@ -24,6 +24,7 @@ export const styles: IHorizontalStackComponent['styles'] = props => {
     return {
       root: [
         classNames.root,
+        theme.fonts.medium,
         {
           maxWidth,
           maxHeight,
@@ -58,7 +59,7 @@ export const styles: IHorizontalStackComponent['styles'] = props => {
   }
 
   return {
-    root: [classNames.root, className]
+    root: [classNames.root, className, theme.fonts.medium]
     // TODO: this cast may be hiding some potential issues with styling and name
     //        lookups and should be removed
   } as IHorizontalStackStyles;

@@ -17,6 +17,7 @@ export const styles: IStackItemComponent['styles'] = props => {
 
   return {
     root: [
+      theme.fonts.medium,
       classNames.root,
       {
         width: fillHorizontal ? '100%' : 'auto',
