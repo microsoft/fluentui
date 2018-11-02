@@ -204,7 +204,7 @@ export class ContextualMenu extends Entity<IContextMenuProps> {
     if (action.isActionable) {
       button.mesh!.isPickable = true;
       button.onPointerClickObservable.add(() => {
-        action.invoke();
+        action.onClick();
       });
     } else {
       button.mesh!.isPickable = false;

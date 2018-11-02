@@ -10,6 +10,12 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
+          component: require<any>('../components/ContextualMenu/ContextualMenuPage').ContextualMenuPage,
+          key: 'ContextualMenu',
+          name: 'ContextualMenu',
+          url: '#/examples/contextualmenu'
+        },
+        {
           component: require<any>('../components/Panel/PanelPage').PanelPage,
           key: 'Panel',
           name: 'Panel',
@@ -22,10 +28,10 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/scene'
         },
         {
-          component: require<any>('../components/ContextualMenu/ContextualMenuPage').ContextualMenuPage,
-          key: 'ContextualMenu',
-          name: 'ContextualMenu',
-          url: '#/examples/contextualmenu'
+          component: require<any>('../components/Video360/Video360Page').Video360Page,
+          key: 'Video360',
+          name: 'Video360',
+          url: '#/examples/video360'
         }
       ]
     }

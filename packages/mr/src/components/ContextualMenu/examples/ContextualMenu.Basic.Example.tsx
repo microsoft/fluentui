@@ -20,7 +20,7 @@ class MySceneEntity extends FabricSceneEntity {
         description: 'Add',
         isActionable: true,
         iconName: 'Add',
-        invoke: () => {
+        onClick: () => {
           console.log('Add cliked');
         }
       },
@@ -28,7 +28,7 @@ class MySceneEntity extends FabricSceneEntity {
         description: 'Remove',
         isActionable: true,
         iconName: 'Remove',
-        invoke: () => {
+        onClick: () => {
           console.log('Remove cliked');
         }
       },
@@ -36,7 +36,7 @@ class MySceneEntity extends FabricSceneEntity {
         description: 'Share',
         isActionable: true,
         iconName: 'Share',
-        invoke: () => {
+        onClick: () => {
           console.log('Share cliked');
         }
       }

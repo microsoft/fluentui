@@ -19,7 +19,7 @@ export interface IMRAction {
   /**
    * Performs the action.
    */
-  invoke: () => void;
+  onClick: () => void;
 }
 
 export interface IActionGroup {
