@@ -4,98 +4,100 @@ import * as sinon from 'sinon';
 
 import { Toggle } from './Toggle';
 
-it('can call the callback on a change of toggle', () => {
-  let isToggledValue;
-  const callback = (ev: React.MouseEvent<HTMLElement>, isToggled: boolean) => {
-    isToggledValue = isToggled;
-  };
+describe('ToggleState', () => {
+  it('can call the callback on a change of toggle', () => {
+    let isToggledValue;
+    const callback = (ev: React.MouseEvent<HTMLElement>, isToggled: boolean) => {
+      isToggledValue = isToggled;
+    };
 
-  const component = mount<React.ReactInstance>(<Toggle label="Label" onChange={callback} />);
+    const component = mount<React.ReactInstance>(<Toggle label="Label" onChange={callback} />);
 
-  expect(
+    expect(
+      component
+        .find('button')
+        .first()
+        .getDOMNode()
+        .getAttribute('aria-checked')
+    ).toEqual('false');
+
     component
       .find('button')
       .first()
-      .getDOMNode()
-      .getAttribute('aria-checked')
-  ).toEqual('false');
+      .simulate('click');
 
-  component
-    .find('button')
-    .first()
-    .simulate('click');
+    expect(isToggledValue).toEqual(true);
 
-  expect(isToggledValue).toEqual(true);
+    expect(
+      component
+        .find('button')
+        .first()
+        .getDOMNode()
+        .getAttribute('aria-checked')
+    ).toEqual('true');
+  });
 
-  expect(
+  it(`doesn't update the state if the user provides checked`, () => {
+    const component = mount(<Toggle label="Label" checked={false} />);
+
+    expect(
+      component
+        .find('button')
+        .first()
+        .getDOMNode()
+        .getAttribute('aria-checked')
+    ).toEqual('false');
+
     component
       .find('button')
       .first()
-      .getDOMNode()
-      .getAttribute('aria-checked')
-  ).toEqual('true');
-});
+      .simulate('click');
 
-it(`doesn't update the state if the user provides checked`, () => {
-  const component = mount(<Toggle label="Label" checked={false} />);
+    expect(
+      component
+        .update()
+        .find('button')
+        .first()
+        .getDOMNode()
+        .getAttribute('aria-checked')
+    ).toEqual('false');
+  });
 
-  expect(
-    component
-      .find('button')
-      .first()
-      .getDOMNode()
-      .getAttribute('aria-checked')
-  ).toEqual('false');
+  it(`doesn't render a label element if none is provided`, () => {
+    const component = mount(<Toggle checked={false} />);
 
-  component
-    .find('button')
-    .first()
-    .simulate('click');
+    expect(component.find('label').length).toEqual(0);
+  });
 
-  expect(
-    component
-      .update()
-      .find('button')
-      .first()
-      .getDOMNode()
-      .getAttribute('aria-checked')
-  ).toEqual('false');
-});
+  it(`doesn't trigger onSubmit when placed inside a form`, () => {
+    const onSubmit = sinon.spy();
 
-it(`doesn't render a label element if none is provided`, () => {
-  const component = mount(<Toggle checked={false} />);
-
-  expect(component.find('label').length).toEqual(0);
-});
-
-it(`doesn't trigger onSubmit when placed inside a form`, () => {
-  const onSubmit = sinon.spy();
-
-  const wrapper = mount(
-    <form
-      action="#"
-      // tslint:disable-next-line:jsx-no-lambda
-      onSubmit={e => {
-        onSubmit();
-        e.preventDefault();
-      }}
-    >
-      <Toggle
+    const wrapper = mount(
+      <form
+        action="#"
         // tslint:disable-next-line:jsx-no-lambda
-        label="Label"
-      />
-    </form>
-  );
-  const button: any = wrapper.find('button');
+        onSubmit={e => {
+          onSubmit();
+          e.preventDefault();
+        }}
+      >
+        <Toggle
+          // tslint:disable-next-line:jsx-no-lambda
+          label="Label"
+        />
+      </form>
+    );
+    const button: any = wrapper.find('button');
 
-  // simulate to change toggle state
-  button.simulate('click');
+    // simulate to change toggle state
+    button.simulate('click');
 
-  expect(
-    button
-      .first()
-      .getDOMNode()
-      .getAttribute('aria-checked')
-  ).toEqual('true');
-  expect(onSubmit.called).toEqual(false);
+    expect(
+      button
+        .first()
+        .getDOMNode()
+        .getAttribute('aria-checked')
+    ).toEqual('true');
+    expect(onSubmit.called).toEqual(false);
+  });
 });
