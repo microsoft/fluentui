@@ -70,10 +70,7 @@ export interface IToggleProps extends IStyleableComponentProps<IToggleViewProps,
   keytipProps?: IKeytipProps;
 }
 
-export type IToggleViewProps = Pick<
-  IToggleProps,
-  'as' /*| 'componentRef'*/ | 'label' | 'ariaLabel' | 'disabled' | 'onChange' | 'keytipProps'
-> &
+export type IToggleViewProps = Pick<IToggleProps, 'as' | 'label' | 'ariaLabel' | 'disabled' | 'onChange' | 'keytipProps'> &
   Required<Pick<IToggleProps, 'checked'>> & {
     /**
      * Toggle input callback triggered by mouse and keyboard input.
