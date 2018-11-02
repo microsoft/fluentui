@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/mr",
+      "comment": "Add new package",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/mr",
+  "email": "anihan@microsoft.com"
+}
