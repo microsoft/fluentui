@@ -1,12 +1,12 @@
 import * as React from 'react';
 
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
-import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
+import { SearchBox, ISearchBoxStyles } from 'office-ui-fabric-react/lib/SearchBox';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import {
   CollapsibleSection,
   CollapsibleSectionTitle,
-  ICollapsibleSectionTitleStyleProps,
+  ICollapsibleSectionTitleComponent,
   ICollapsibleSectionTitleStyles
 } from '@uifabric/experiments';
 
@@ -15,6 +15,7 @@ import * as stylesImport from './Nav.module.scss';
 const styles: any = stylesImport;
 import { INavProps, INavPage } from './Nav.types';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
+import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
 
 export interface INavState {
   searchQuery: string;
@@ -22,7 +23,7 @@ export interface INavState {
   filterState: boolean;
 }
 
-const searchBoxStyles = {
+const searchBoxStyles: IStyleSet<ISearchBoxStyles> = {
   root: {
     marginBottom: '5px',
     width: '152px',
@@ -42,6 +43,25 @@ const searchBoxStyles = {
       }
     }
   }
+};
+
+const getTitleStyles: ICollapsibleSectionTitleComponent['styles'] = props => {
+  const { theme } = props;
+  return {
+    root: [
+      {
+        color: theme.palette.neutralQuaternaryAlt,
+        marginBottom: '8px',
+        selectors: {
+          ':hover': {
+            background: theme.palette.neutralPrimary,
+            cursor: 'pointer'
+          }
+        }
+      }
+    ],
+    text: theme.fonts.medium
+  };
 };
 
 export class Nav extends React.Component<INavProps, INavState> {
@@ -76,20 +96,12 @@ export class Nav extends React.Component<INavProps, INavState> {
   private _renderLinkList(pages: INavPage[], isSubMenu: boolean, title?: string): React.ReactElement<{}> {
     const { filterState } = this.state;
 
-    const links = pages
-      .filter(page => !page.hasOwnProperty('isHiddenFromMainNav'))
-      .map((page: INavPage, linkIndex: number) => {
-        if (page.isCategory && !filterState) {
-          return (
-            <span>
-              {page.pages.map((innerPage: INavPage, innerLinkIndex) => this._renderLink(innerPage, innerLinkIndex))}
-            </span>
-          );
-        }
-        return page.isCategory && filterState
-          ? this._renderCategory(page, linkIndex)
-          : this._renderLink(page, linkIndex);
-      });
+    const links = pages.filter(page => !page.hasOwnProperty('isHiddenFromMainNav')).map((page: INavPage, linkIndex: number) => {
+      if (page.isCategory && !filterState) {
+        return <span>{page.pages.map((innerPage: INavPage, innerLinkIndex) => this._renderLink(innerPage, innerLinkIndex))}</span>;
+      }
+      return page.isCategory && filterState ? this._renderCategory(page, linkIndex) : this._renderLink(page, linkIndex);
+    });
 
     return (
       <ul className={css(styles.links, isSubMenu ? styles.isSubMenu : '')} aria-label="Main website navigation">
@@ -295,23 +307,4 @@ function _hasActiveChild(page: INavPage): boolean {
   }
 
   return hasActiveChild;
-}
-
-function getTitleStyles(props: ICollapsibleSectionTitleStyleProps): Partial<ICollapsibleSectionTitleStyles> {
-  const { theme } = props;
-  return {
-    root: [
-      {
-        color: theme.palette.neutralQuaternaryAlt,
-        marginBottom: '8px',
-        selectors: {
-          ':hover': {
-            background: theme.palette.neutralPrimary,
-            cursor: 'pointer'
-          }
-        }
-      }
-    ],
-    text: theme.fonts.medium
-  };
 }

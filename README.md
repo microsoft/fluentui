@@ -54,11 +54,16 @@ import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 ReactDOM.render(<PrimaryButton>I am a button.</PrimaryButton>, document.body.firstChild);
 ```
 
+## Version policy
+
+Fabric React adheres to [semantic versioning](http://www.semver.org/). However, we only consider constructs directly importable at the package level or from files at the root (e.g. `office-ui-fabric-react/lib/Utilities` or `office-ui-fabric-react/lib-amd/Styling`) to be part of our API surface. Everything else is considered package-internal and may be subjected to changes, moves, renames, etc.
+
 ## Browser support
 
 Fabric React supports all evergreen browsers, with IE 11 as the min-bar version of Internet Explorer. See the [browser support doc](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Browser-Support) for more information.
 
 ## Right-to-left support
+
 All components can render in LTR or RTL, depending on the `dir` attribute set on the `html` element. (`dir="rtl"` will flip the direction of everything.
 
 You can also import the `setRTL` api to manually set it, if you don't have control over what gets renders for the `html` element. Example:
@@ -104,7 +109,7 @@ console.log(
 );
 ```
 
-Note: we are evaluating a more robust theming and style loading approach, which will allow a much more flexible server rendering approach, so this syntax may be simplified in the future.
+Note: We are evaluating a more robust theming and style loading approach, which will allow a much more flexible server rendering approach, so this syntax may be simplified in the future.
 
 ### Browserless Testing
 
@@ -150,7 +155,7 @@ Please take a look at our [contribution guidelines](https://github.com/OfficeDev
 
 ## Building the repo
 
-Before you get started, **make sure you have read the [Git branch setup instrucions](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Setup)**
+Before you get started, **make sure you have read the [Git branch setup instructions](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Setup)**
 
 To view the documentation including examples, contracts, component status, and to add functionality or fix issues locally, you can:
 

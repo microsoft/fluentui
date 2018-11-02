@@ -1102,8 +1102,13 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
                   ms-Image
                   ms-Persona-image
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     border-radius: 50%;
                     border: 0px;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     height: 32px;
                     left: 0px;
                     margin-right: 10px;
@@ -1174,7 +1179,11 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
                 }
           >
             <div
-              className="ms-TooltipHost"
+              className=
+                  ms-TooltipHost
+                  {
+                    display: inline;
+                  }
               onBlurCapture={[Function]}
               onFocusCapture={[Function]}
               onMouseEnter={[Function]}

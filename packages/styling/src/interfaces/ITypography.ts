@@ -52,7 +52,7 @@ export interface IFontVariant {
  * @internal This is an experimental interface and will be changed post design review.
  */
 export interface IFontVariants {
-  default: IFontVariant;
+  default: Partial<IFontVariant>;
   caption: Partial<IFontVariant>;
   link: Partial<IFontVariant>;
   h1: Partial<IFontVariant>;

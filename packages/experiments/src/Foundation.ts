@@ -1,94 +1,147 @@
-import { mergeStyleSets, ITheme } from 'office-ui-fabric-react';
 import {
   createComponent as foundationCreateComponent,
-  IComponentOptions,
-  IViewComponentProps,
+  createStatelessComponent as foundationCreateStatelessComponent,
+  IComponent,
+  IStateComponentType,
+  IStatelessComponent,
   IStyleableComponentProps,
-  IStylingProviders,
-  IThemedComponent
+  IStylesFunction,
+  IStylesProp,
+  IComponentProviders,
+  IThemeProviderProps,
+  IThemeProviders,
+  IViewComponent,
+  themeProvider
 } from '@uifabric/foundation';
 export { IStateComponentProps } from '@uifabric/foundation';
-import { IProcessedStyleSet, IStyleSet } from './Styling';
-import { Customizations, CustomizerContext, ICustomizations } from './Utilities';
+import { getThemedContext, IProcessedStyleSet, ISchemeNames, IStyleSet, ITheme, mergeStyleSets } from './Styling';
+import { Customizations, Customizer, CustomizerContext, ICustomizerContext, ICustomizerProps } from './Utilities';
 
-// Centralize Foundation interaction for use throughout this package. These convenience types provide types
-//  that are global for all of OUFR, such as ITheme and IProcessedStyleSet.
-
-/**
- * Required properties for views.
- */
-export type IViewComponentProps<TProps, TStyleSet extends IStyleSet<TStyleSet>> = IViewComponentProps<
-  TProps,
-  IProcessedStyleSet<TStyleSet>
->;
+// This module centralizes Foundation interaction for use throughout this package. These convenience types automatically
+//  inject types that are global for all of OUFR, such as ITheme and IProcessedStyleSet.
 
 /**
- * Required properties for styleable components.
+ * Helper extension for declaring common props for styleable components.
+ * If these props are present, they will automatically be used by Foundation when applying theming and styling.
  */
-export type IStyleableComponentProps<TProps, TStyleSet> = IStyleableComponentProps<TProps, TStyleSet, ITheme>;
+export type IStyleableComponentProps<TViewProps, TStyleSet> = IStyleableComponentProps<TViewProps, TStyleSet, ITheme, ISchemeNames>;
 
 /**
- * Required properties for themed components.
+ * Styles functions that take in view props and foundation supplied properties for processing.
+ * This type should rarely need to be used directly. In most cases using IComponent and lookup types should suffice.
  */
-export type IThemedProps<TProps> = TProps & IThemedComponent<ITheme>;
+export type IStylesFunction<TViewProps, TStyleSet> = IStylesFunction<TViewProps, TStyleSet, ITheme>;
 
 /**
- * The shape of customizations within context.
+ * Styles can be a function or an object taking in TViewProps for processing.
+ * This type should rarely need to be used directly. In most cases using IComponent and lookup types should suffice.
  */
-type IContextCustomization = { customizations: ICustomizations };
+export type IStylesProp<TViewProps, TStyleSet> = IStylesProp<TViewProps, TStyleSet, ITheme>;
 
-// TODO: remove any if possible
+/**
+ * Enforce props contract on state components, including the view prop and its shape.
+ * Required properties for state components.
+ */
+export type IStateComponentType<TComponentProps, TViewProps, TStyleSet extends IStyleSet<TStyleSet>> = IStateComponentType<
+  TComponentProps,
+  TViewProps
+  >;
+
+/**
+ * A helper type for defining view components, including its properties.
+ * This type should rarely need to be used directly. In most cases using IComponent and lookup types should suffice.
+ */
+export type IViewComponent<TViewProps, TStyleSet extends IStyleSet<TStyleSet>> = IViewComponent<TViewProps, IProcessedStyleSet<TStyleSet>>;
+
+/**
+ * Primary type for defining stateful components.
+ */
+export type IComponent<TComponentProps, TViewProps, TStyleSet extends IStyleSet<TStyleSet>, TStatics = {}> = IComponent<
+  TComponentProps,
+  TViewProps,
+  TStyleSet,
+  IProcessedStyleSet<TStyleSet>,
+  ITheme,
+  TStatics
+  >;
+
+/**
+ * Primary type for defining stateless components.
+ */
+export type IStatelessComponent<TComponentProps, TStyleSet extends IStyleSet<TStyleSet>, TStatics = {}> = IStatelessComponent<
+  TComponentProps,
+  TStyleSet,
+  IProcessedStyleSet<TStyleSet>,
+  ITheme,
+  TStatics
+  >;
+
 // tslint:disable-next-line:no-any
-const providers: IStylingProviders<any, any, any, IContextCustomization, ITheme> = {
+const providers: IComponentProviders<any, any, any, ICustomizerContext, ITheme, ISchemeNames> = {
   mergeStyleSets,
   getCustomizations,
   CustomizerContext
 };
 
+const themeProviders: IThemeProviders<ICustomizerContext, ITheme, ISchemeNames, ICustomizerProps> = {
+  getThemedContext,
+  CustomizerComponent: Customizer
+};
+
 /**
  * A helper for Foundation's createComponent that automatically passes in constant types.
  * See Foundation's createComponent for more detail.
- * @param {IComponentOptions} options
+ * @param {IComponent} component
  */
 export function createStatelessComponent<TComponentProps, TStyleSet extends IStyleSet<TStyleSet>, TStatics = {}>(
-  options: IComponentOptions<TComponentProps, TComponentProps, TStyleSet, IProcessedStyleSet<TStyleSet>, ITheme, TStatics>
+  component: IStatelessComponent<TComponentProps, TStyleSet, IProcessedStyleSet<TStyleSet>, ITheme, TStatics>
 ): React.StatelessComponent<TComponentProps> & TStatics {
-  return foundationCreateComponent<
+  return foundationCreateStatelessComponent<
     TComponentProps,
-    TComponentProps, // TViewProps === TComponentProps for stateless components
     TStyleSet,
     IProcessedStyleSet<TStyleSet>,
-    IContextCustomization,
+    ICustomizerContext,
     ITheme,
+    ISchemeNames,
     TStatics
-  >(options, providers);
+    >(component, providers);
 }
 
 /**
  * A helper for Foundation's createComponent that automatically passes in constant types.
  * See Foundation's createComponent for more detail.
- * @param {IComponentOptions} options
+ * @param {IComponent} component
  * @param {IStateComponent} state
  */
 export function createComponent<TComponentProps, TViewProps, TStyleSet extends IStyleSet<TStyleSet>, TStatics = {}>(
-  options: IComponentOptions<TComponentProps, TViewProps, TStyleSet, IProcessedStyleSet<TStyleSet>, ITheme, TStatics>
+  component: IComponent<TComponentProps, TViewProps, TStyleSet, IProcessedStyleSet<TStyleSet>, ITheme, TStatics>
 ): React.StatelessComponent<TComponentProps> & TStatics {
   return foundationCreateComponent<
     TComponentProps,
     TViewProps,
     TStyleSet,
     IProcessedStyleSet<TStyleSet>,
-    IContextCustomization,
+    ICustomizerContext,
     ITheme,
+    ISchemeNames,
     TStatics
-  >(options, providers);
+    >(component, providers);
 }
 
-// TODO: remove any if possible
-// tslint:disable-next-line:no-any
-function getCustomizations(displayName: string, context: IContextCustomization): any {
-  // TODO: do we want field props? should fields be part of IComponentOptions and used here?
+export const ThemeProvider: React.StatelessComponent<IThemeProviderProps<ISchemeNames, ITheme>> = themeProvider<
+  ICustomizerContext,
+  ITheme,
+  ISchemeNames,
+  ICustomizerProps
+  >(themeProviders);
+
+function getCustomizations<TViewProps, TStyleSet>(
+  displayName: string,
+  context: ICustomizerContext,
+  fields?: string[]
+): IStyleableComponentProps<TViewProps, TStyleSet, ITheme, ISchemeNames> {
+  // TODO: do we want field props? should fields be part of IComponent and used here?
   // TODO: should we centrally define DefaultFields? (not exported from styling)
-  const DefaultFields = ['theme', 'styles'];
-  return Customizations.getSettings(DefaultFields, displayName, context.customizations);
+  const DefaultFields = ['theme', 'styles', 'styleVariables'];
+  return Customizations.getSettings(fields || DefaultFields, displayName, context.customizations);
 }

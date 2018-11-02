@@ -12,13 +12,16 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
     onMouseDownCapture={[Function]}
     role="presentation"
   >
-    <ul
+    <div
       className=
           ms-Pivot
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
             color: #0078d4;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
             margin-bottom: 0px;
@@ -138,7 +141,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             @media screen and (-ms-high-contrast: active){&:before {
               border-bottom-color: Highlight;
@@ -289,7 +292,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             &:hover::before {
               border-bottom: 2px solid transparent;
@@ -337,7 +340,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
           </span>
         </div>
       </button>
-    </ul>
+    </div>
   </div>
   <div
     aria-labelledby="Pivot0-Tab0"
@@ -360,13 +363,16 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
     onMouseDownCapture={[Function]}
     role="presentation"
   >
-    <ul
+    <div
       className=
           ms-Pivot
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
             color: #0078d4;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
             margin-bottom: 0px;
@@ -486,7 +492,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             @media screen and (-ms-high-contrast: active){&:before {
               border-bottom-color: Highlight;
@@ -638,7 +644,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             &:hover::before {
               border-bottom: 2px solid transparent;
@@ -800,7 +806,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             &:hover::before {
               border-bottom: 2px solid transparent;
@@ -874,7 +880,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
           </span>
         </div>
       </button>
-    </ul>
+    </div>
   </div>
   <div
     aria-labelledby="Pivot0-Tab0"
@@ -895,14 +901,17 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
     onMouseDownCapture={[Function]}
     role="presentation"
   >
-    <ul
+    <div
       className=
           ms-Pivot
           ms-Pivot--large
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
             color: #0078d4;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
             margin-bottom: 0px;
@@ -1022,7 +1031,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             @media screen and (-ms-high-contrast: active){&:before {
               border-bottom-color: Highlight;
@@ -1173,7 +1182,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             &:hover::before {
               border-bottom: 2px solid transparent;
@@ -1221,7 +1230,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
           </span>
         </div>
       </button>
-    </ul>
+    </div>
   </div>
   <div
     aria-labelledby="Pivot0-Tab0"
@@ -1242,15 +1251,18 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
     onMouseDownCapture={[Function]}
     role="presentation"
   >
-    <ul
+    <div
       className=
           ms-Pivot
           ms-Pivot--large
           ms-Pivot--tabs
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
             color: #0078d4;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
             margin-bottom: 0px;
@@ -1372,7 +1384,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             .ms-Fabric--isFocusVisible &:focus::before {
               background: transparent;
@@ -1536,7 +1548,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             .ms-Fabric--isFocusVisible &:focus::before {
               background: transparent;
@@ -1592,7 +1604,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
           </span>
         </div>
       </button>
-    </ul>
+    </div>
   </div>
   <div
     aria-labelledby="Pivot0-Tab0"
@@ -1613,13 +1625,16 @@ exports[`Pivot renders link Pivot correctly 1`] = `
     onMouseDownCapture={[Function]}
     role="presentation"
   >
-    <ul
+    <div
       className=
           ms-Pivot
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
             color: #0078d4;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
             margin-bottom: 0px;
@@ -1739,7 +1754,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             @media screen and (-ms-high-contrast: active){&:before {
               border-bottom-color: Highlight;
@@ -1890,7 +1905,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             &:hover::before {
               border-bottom: 2px solid transparent;
@@ -1938,7 +1953,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
           </span>
         </div>
       </button>
-    </ul>
+    </div>
   </div>
   <div
     aria-labelledby="Pivot0-Tab0"
@@ -1959,14 +1974,17 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
     onMouseDownCapture={[Function]}
     role="presentation"
   >
-    <ul
+    <div
       className=
           ms-Pivot
           ms-Pivot--tabs
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
             color: #0078d4;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
             margin-bottom: 0px;
@@ -2088,7 +2106,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             .ms-Fabric--isFocusVisible &:focus::before {
               background: transparent;
@@ -2252,7 +2270,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               visibility: hidden;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #767676;
+              outline: 1px solid #666666;
             }
             .ms-Fabric--isFocusVisible &:focus::before {
               background: transparent;
@@ -2308,7 +2326,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
           </span>
         </div>
       </button>
-    </ul>
+    </div>
   </div>
   <div
     aria-labelledby="Pivot0-Tab0"

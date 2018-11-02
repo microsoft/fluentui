@@ -1,13 +1,20 @@
 import * as React from 'react';
-import { BaseComponent } from '../../Utilities';
 import { BaseButton, IButtonProps } from '../../Button';
-import { getTheme } from '../../Styling';
-import { getStyles } from '../Button/BaseButton.styles';
+import { BaseComponent, customizable, nullRender } from '../../Utilities';
+import { getStyles } from './FacepileButton.styles';
 
+@customizable('FacepileButton', ['theme', 'styles'], true)
 export class FacepileButton extends BaseComponent<IButtonProps, {}> {
-  public render(): JSX.Element {
-    const baseButtonStyles = getStyles(getTheme());
+  /**
+   * Tell BaseComponent to bypass resolution of componentRef.
+   */
+  protected _skipComponentRefResolution = true;
 
-    return <BaseButton {...this.props} styles={baseButtonStyles} />;
+  public render(): JSX.Element {
+    const { className, styles, ...rest } = this.props;
+
+    const customStyles = getStyles(this.props.theme!, className, styles);
+
+    return <BaseButton {...rest} variantClassName="ms-Button--facepile" styles={customStyles} onRenderDescription={nullRender} />;
   }
 }

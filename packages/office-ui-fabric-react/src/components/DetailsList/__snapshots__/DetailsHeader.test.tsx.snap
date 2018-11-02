@@ -6,11 +6,16 @@ exports[`DetailsHeader can render 1`] = `
       ms-FocusZone
       ms-DetailsHeader
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
         background: #ffffff;
         border-bottom: 1px solid #eaeaea;
         box-sizing: content-box;
         cursor: default;
         display: inline-block;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 12px;
+        font-weight: 400;
         height: 32px;
         line-height: 32px;
         min-width: 100%;
@@ -46,16 +51,11 @@ exports[`DetailsHeader can render 1`] = `
         ms-DetailsHeader-cell
         ms-DetailsHeader-cellIsCheck
         {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
           align-items: center;
           border: none;
           box-sizing: border-box;
           color: #333333;
           display: inline-flex;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 12px;
-          font-weight: 400;
           height: 32px;
           line-height: inherit;
           margin-bottom: 0px;
@@ -96,7 +96,6 @@ exports[`DetailsHeader can render 1`] = `
 
     >
       <div
-        aria-describedby="header0-checkTooltip"
         className=
             ms-DetailsRow-check
             ms-DetailsRow-check--isHeader
@@ -107,6 +106,8 @@ exports[`DetailsHeader can render 1`] = `
               opacity: 1;
             }
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               align-items: center;
               background-color: transparent;
               background: none;
@@ -114,6 +115,9 @@ exports[`DetailsHeader can render 1`] = `
               box-sizing: border-box;
               cursor: default;
               display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
               height: 32px;
               justify-content: center;
               margin-bottom: 0px;
@@ -158,6 +162,11 @@ exports[`DetailsHeader can render 1`] = `
           className=
               ms-Check
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 height: 18px;
                 line-height: 1;
                 position: relative;
@@ -869,11 +878,16 @@ exports[`DetailsHeader renders accessible labels 1`] = `
       ms-FocusZone
       ms-DetailsHeader
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
         background: #ffffff;
         border-bottom: 1px solid #eaeaea;
         box-sizing: content-box;
         cursor: default;
         display: inline-block;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 12px;
+        font-weight: 400;
         height: 32px;
         line-height: 32px;
         min-width: 100%;
@@ -909,16 +923,11 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         ms-DetailsHeader-cell
         ms-DetailsHeader-cellIsCheck
         {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
           align-items: center;
           border: none;
           box-sizing: border-box;
           color: #333333;
           display: inline-flex;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 12px;
-          font-weight: 400;
           height: 32px;
           line-height: inherit;
           margin-bottom: 0px;
@@ -959,7 +968,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
 
     >
       <div
-        aria-describedby="header4-checkTooltip"
         className=
             ms-DetailsRow-check
             ms-DetailsRow-check--isHeader
@@ -970,6 +978,8 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               opacity: 1;
             }
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               align-items: center;
               background-color: transparent;
               background: none;
@@ -977,6 +987,9 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               box-sizing: border-box;
               cursor: default;
               display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
               height: 32px;
               justify-content: center;
               margin-bottom: 0px;
@@ -1021,6 +1034,11 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           className=
               ms-Check
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 height: 18px;
                 line-height: 1;
                 position: relative;

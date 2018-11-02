@@ -1,14 +1,5 @@
 import { IDetailsHeaderStyleProps, IDetailsHeaderStyles } from './DetailsHeader.types';
-import {
-  getFocusStyle,
-  focusClear,
-  FontClassNames,
-  IStyle,
-  getGlobalClassNames,
-  HighContrastSelector,
-  hiddenContentStyle,
-  ITheme
-} from '../../Styling';
+import { getFocusStyle, focusClear, IStyle, getGlobalClassNames, HighContrastSelector, hiddenContentStyle, ITheme } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import { ICellStyleProps } from './DetailsRow.types';
@@ -46,11 +37,10 @@ export const getCellStyles = (props: { theme: ITheme; cellStyleProps?: ICellStyl
   return [
     classNames.cell,
     getFocusStyle(theme),
-    FontClassNames.small,
     {
       color: semanticColors.bodyText,
       position: 'relative',
-      display: 'inline-block;',
+      display: 'inline-block',
       boxSizing: 'border-box',
       padding: `0 ${cellStyleProps.cellRightPadding}px 0 ${cellStyleProps.cellLeftPadding}px`,
       border: 'none',
@@ -98,6 +88,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
   return {
     root: [
       classNames.root,
+      theme.fonts.small,
       {
         display: 'inline-block',
         background: colors.headerBackgroundColor,

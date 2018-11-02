@@ -1,11 +1,4 @@
-import {
-  AnimationClassNames,
-  FontSizes,
-  getGlobalClassNames,
-  HighContrastSelector,
-  IStyle,
-  normalize
-} from '../../Styling';
+import { AnimationClassNames, FontSizes, getGlobalClassNames, HighContrastSelector, IStyle, normalize } from '../../Styling';
 import { ILabelStyles, ILabelStyleProps } from '../../Label';
 import { ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';
@@ -65,7 +58,8 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
     resizable,
     hasErrorMessage,
     iconClass,
-    inputClassName
+    inputClassName,
+    autoAdjustHeight
   } = props;
 
   const { semanticColors, palette } = theme;
@@ -296,12 +290,17 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
           }
         ],
       multiline && {
+        minHeight: 'inherit',
         lineHeight: 17,
         flexGrow: 1,
         paddingTop: 6,
         overflow: 'auto',
         width: '100%'
       },
+      multiline &&
+        autoAdjustHeight && {
+          overflow: 'hidden'
+        },
       hasIcon && {
         paddingRight: 24
       },

@@ -15,8 +15,8 @@ export interface IComboBox {
 
   /**
    * Sets focus to the input in the comboBox
-   * @param {boolean} shouldOpenOnFocus determines if we should open the ComboBox menu when the input gets focus
-   * @param {boolean} useFocusAsync determines if we should focus the input asynchronously
+   * @param shouldOpenOnFocus - Determines if we should open the ComboBox menu when the input gets focus
+   * @param useFocusAsync - Determines if we should focus the input asynchronously
    * @returns True if focus could be set, false if no operation was taken.
    */
   focus(shouldOpenOnFocus?: boolean, useFocusAsync?: boolean): boolean;
@@ -33,7 +33,7 @@ export interface IComboBoxOption extends ISelectableOption {
   /**
    * In scenarios where embedded data is used at the text prop, we will use the ariaLabel prop
    * to set the aria-label and preview text. Default to false
-   * @default false;
+   * @defaultvalue false;
    */
   useAriaLabelAsText?: boolean;
 }
@@ -51,6 +51,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   options: IComboBoxOption[];
 
   /**
+   * Callback issued when a ComboBox item is clicked.
+   */
+  onItemClick?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => void;
+
+  /**
    * Callback issued when either:
    * 1) the selected option changes
    * 2) a manually edited value is submitted. In this case there may not be a matched option if allowFreeform is also true
@@ -59,7 +64,8 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
 
   /**
-   * @deprecated Use onChange instead.
+   * Deprecated, use `onChange` instead.
+   * @deprecated Use `onChange` instead.
    */
   onChanged?: (option?: IComboBoxOption, index?: number, value?: string, submitPendingValueEvent?: any) => void;
 
@@ -98,7 +104,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * Whether the ComboBox auto completes. As the user is inputing text, it will be suggested potential matches from the list of options. If
    * the combo box is expanded, this will also scroll to the suggested option, and give it a selected style.
    *
-   * @default "on"
+   * @defaultvalue "on"
    */
   autoComplete?: 'on' | 'off';
 
@@ -149,8 +155,9 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   comboBoxOptionStyles?: Partial<IComboBoxOptionStyles>;
 
   /**
-   * When options are scrollable the selected option is positioned at the top of the callout when it is opened (unless it has reached the end of the scrollbar).
-   * @default false;
+   * When options are scrollable the selected option is positioned at the top of the callout when it is opened
+   * (unless it has reached the end of the scrollbar).
+   * @defaultvalue false;
    */
   scrollSelectedToTop?: boolean;
 
@@ -180,8 +187,10 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   multiSelect?: boolean;
 
   /**
-   * Sets the 'aria-hidden' attribute on the ComboBox's button element instructing screen readers how to handle the element. This element is hidden by default because all functionality is handled by the input element and the arrow button is only meant to be decorative.
-   * @default true
+   * Sets the 'aria-hidden' attribute on the ComboBox's button element instructing screen readers how to handle the element.
+   * This element is hidden by default because all functionality is handled by the input element and the arrow button is
+   * only meant to be decorative.
+   * @defaultvalue true
    */
   isButtonAriaHidden?: boolean;
 
@@ -192,6 +201,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
 
   /**
    * Value to show in the input, does not have to map to a combobox option
+   * Deprecated, use `text` instead.
    * @deprecated Use `text` instead.
    */
   value?: string;

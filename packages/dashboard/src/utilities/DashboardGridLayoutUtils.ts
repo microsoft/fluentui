@@ -1,6 +1,6 @@
 import { CardSize } from '@uifabric/dashboard';
 import { IDashboardCardLayout, DashboardGridBreakpointLayouts } from '../components/DashboardGridLayout/DashboardGridLayout.types';
-import { Layout, Layouts } from 'react-grid-layout';
+import { Breakpoints, Layout, Layouts } from 'react-grid-layout';
 
 /**
  * The is the default CardSizeToWidthHeight. In case this prop is not provided in the control
@@ -49,4 +49,45 @@ export const getFirstDefinedLayout = (layouts: Layouts): Layout[] => {
     return layouts.xxs;
   }
   return [];
+};
+
+/**
+ * compare two layout object by y value
+ * @param a layout to be compared
+ * @param b layout to be compared
+ */
+export const compareLayoutY = (a: IDashboardCardLayout | Layout, b: IDashboardCardLayout | Layout): number => {
+  if (a.y < b.y) {
+    return -1;
+  }
+  if (a.y > b.y) {
+    return 1;
+  }
+  return 0;
+};
+
+/**
+ * Update layouts for the given breakpoint
+ * @param layouts the layouts object
+ * @param layout the layout for the given breakpoint
+ * @param breakpoint the breakpoint tobe updated
+ */
+export const updateLayoutsFromLayout = (layouts: Layouts, layout: Layout[], breakpoint: Breakpoints) => {
+  switch (breakpoint) {
+    case 'lg':
+      layouts.lg = layout;
+      break;
+    case 'md':
+      layouts.md = layout;
+      break;
+    case 'sm':
+      layouts.sm = layout;
+      break;
+    case 'xs':
+      layouts.xs = layout;
+      break;
+    case 'xxs':
+      layouts.xxs = layout;
+      break;
+  }
 };

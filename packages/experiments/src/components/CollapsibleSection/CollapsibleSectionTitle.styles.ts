@@ -1,21 +1,24 @@
-import { ICollapsibleSectionTitleProps, ICollapsibleSectionTitleStyles } from './CollapsibleSectionTitle.types';
+import { ICollapsibleSectionTitleComponent } from './CollapsibleSectionTitle.types';
 import { getFocusStyle } from 'office-ui-fabric-react';
-import { IThemedProps } from '../../Foundation';
 
-export const getStyles = (props: IThemedProps<ICollapsibleSectionTitleProps>): ICollapsibleSectionTitleStyles => {
+export const getStyles: ICollapsibleSectionTitleComponent['styles'] = props => {
   const { theme } = props;
 
   return {
     root: [
       getFocusStyle(theme),
+      theme.fonts.medium,
       {
         width: '100%',
         display: 'flex',
         alignItems: 'center',
         background: 'none',
         border: 'none',
+        color: 'inherit',
         height: 24,
         margin: 0,
+        paddingLeft: 4 + (props.indent || 0) * 18,
+
         selectors: {
           ':hover': {
             background: theme.palette.neutralLight

@@ -16,7 +16,7 @@ export class ContextualMenuWithCustomMenuItemExample extends React.Component {
     return (
       <div>
         <DefaultButton
-          id="ContextualMenuButton1"
+          id="ContextualMenuWithCustomMenuItemExample"
           text="Click for ContextualMenu"
           menuProps={{
             shouldFocusOnMount: true,

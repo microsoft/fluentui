@@ -6,3 +6,5 @@ export * from './PieChart';
 export * from './StackedBarChart';
 export * from './VerticalBarChart';
 export * from './types';
+
+import './version';

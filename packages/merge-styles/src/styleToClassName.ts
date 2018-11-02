@@ -56,7 +56,7 @@ function extractRules(args: IStyle[], rules: IRuleSet = { __order: [] }, current
 
               if (newSelector.indexOf(':global(') === 0) {
                 newSelector = newSelector.replace(/:global\(|\)$/g, '');
-              } else if (newSelector.indexOf('@media') === 0) {
+              } else if (newSelector.indexOf('@') === 0) {
                 newSelector = newSelector + '{' + currentSelector;
               } else if (newSelector.indexOf(':') === 0) {
                 newSelector = currentSelector + newSelector;
@@ -68,13 +68,15 @@ function extractRules(args: IStyle[], rules: IRuleSet = { __order: [] }, current
             }
           }
         } else {
-          // Else, add the rule to the currentSelector.
-          if (prop === 'margin' || prop === 'padding') {
-            // tslint:disable-next-line:no-any
-            expandQuads(currentRules, prop, (arg as any)[prop]);
-          } else {
-            // tslint:disable-next-line:no-any
-            (currentRules as any)[prop] = (arg as any)[prop] as any;
+          if ((arg as any)[prop] !== undefined) {
+            // Else, add the rule to the currentSelector.
+            if (prop === 'margin' || prop === 'padding') {
+              // tslint:disable-next-line:no-any
+              expandQuads(currentRules, prop, (arg as any)[prop]);
+            } else {
+              // tslint:disable-next-line:no-any
+              (currentRules as any)[prop] = (arg as any)[prop] as any;
+            }
           }
         }
       }
@@ -199,7 +201,7 @@ export function applyRegistration(registration: IRegistration, classMap?: { [key
         );
 
         // Insert. Note if a media query, we must close the query with a final bracket.
-        const processedRule = `${selector}{${rules}}${selector.indexOf('@media') === 0 ? '}' : ''}`;
+        const processedRule = `${selector}{${rules}}${selector.indexOf('@') === 0 ? '}' : ''}`;
 
         stylesheet.insertRule(processedRule);
       }

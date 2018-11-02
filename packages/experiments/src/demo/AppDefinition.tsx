@@ -1,14 +1,27 @@
 // tslint:disable:no-any
 import * as React from 'react';
 import { App as AppBase, IAppDefinition, IAppProps } from '@uifabric/example-app-base';
+import { AppCustomizations } from './customizations';
 
 export const AppDefinition: IAppDefinition = {
   appTitle: 'Fabric - React',
-
+  customizations: AppCustomizations,
   testPages: [],
   examplePages: [
     {
       links: [
+        {
+          component: require<any>('../components/Announced/AnnouncedPage').AnnouncedPage,
+          key: 'Announced',
+          name: 'Announced',
+          url: '#/examples/announced'
+        },
+        {
+          component: require<any>('../components/Button/ButtonPage').ButtonPage,
+          key: 'Button',
+          name: 'Button',
+          url: '#/examples/button'
+        },
         {
           component: require<any>('../components/CollapsibleSection/CollapsibleSectionPage').CollapsibleSectionPage,
           key: 'CollapsibleSection',
@@ -52,10 +65,22 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/layoutgroup'
         },
         {
+          component: require<any>('../components/Separator/SeparatorPage').SeparatorPage,
+          key: 'Separator',
+          name: 'Separator',
+          url: '#/examples/separator'
+        },
+        {
           component: require<any>('../components/signals/SignalsPage').SignalsPage,
           key: 'Signals',
           name: 'Signals',
           url: '#/examples/signals'
+        },
+        {
+          component: require<any>('../components/Sidebar/SidebarPage').SidebarPage,
+          key: 'Sidebar',
+          name: 'Sidebar',
+          url: '#/examples/sidebar'
         },
         {
           component: require<any>('../components/Text/TextPage').TextPage,
@@ -100,16 +125,10 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/staticlist'
         },
         {
-          component: require<any>('../components/fluent/theme/FluentThemePage').FluentThemePage,
+          component: require<any>('../components/fluent/examplePages/FluentThemePage').FluentThemePage,
           key: 'FluentColorTheme',
           name: 'Fluent Color Theme',
           url: '#/examples/fluent-color-theme'
-        },
-        {
-          component: require<any>('../components/fluent/styles/FluentStylesPage').FluentStylesPage,
-          key: 'FluentStyles',
-          name: 'Fluent Component Styles',
-          url: '#/examples/fluent-styles'
         },
         {
           component: require<any>('../theming/ThemingPage').ThemingPage,

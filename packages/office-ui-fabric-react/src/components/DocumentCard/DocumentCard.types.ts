@@ -10,6 +10,7 @@ import { ImageFit } from '../../Image';
 import { IButtonProps } from '../../Button';
 import { IIconProps } from '../../Icon';
 import { IBaseProps, IRefObject } from '../../Utilities';
+import { ILinkProps } from '../../Link';
 
 export interface IDocumentCard {}
 
@@ -22,7 +23,7 @@ export interface IDocumentCardProps extends IBaseProps<IDocumentCard> {
 
   /**
    * The type of DocumentCard to display.
-   * @default DocumentCardType.normal
+   * @defaultvalue DocumentCardType.normal
    */
   type?: DocumentCardType;
 
@@ -46,8 +47,8 @@ export interface IDocumentCardProps extends IBaseProps<IDocumentCard> {
    * Hex color value of the line below the card, which should correspond to the document type.
    * This should only be supplied when using the 'compact' card layout.
    *
-   * Deprecated at v4.17.1, to be removed at >= v5.0.0.
-   * @deprecated
+   * Deprecated at v4.17.1, to be removed at \>= v5.0.0.
+   * @deprecated To be removed at v5.0.0.
    */
   accentColor?: string;
 }
@@ -76,7 +77,7 @@ export interface IDocumentCardPreviewProps extends IBaseProps<{}> {
 
   /**
    * The function return string that will describe the number of overflow documents.
-   * such as  (overflowCount: number) => `+${ overflowCount } more`,
+   * such as  (overflowCount: number) =\> `+${ overflowCount } more`,
    */
   getOverflowDocumentCountText?: (overflowCount: number) => string;
 }
@@ -94,8 +95,14 @@ export interface IDocumentCardPreviewImage {
 
   /**
    * URL to view the file.
+   * @deprecated Use `href` inside of `linkProps` instead.
    */
   url?: string;
+
+  /**
+   * Props to pass to Link component
+   */
+  linkProps?: ILinkProps;
 
   /**
    * Path to the preview image.
@@ -103,8 +110,8 @@ export interface IDocumentCardPreviewImage {
   previewImageSrc?: string;
 
   /**
-   * Deprecated at v1.3.6, to be removed at >= v2.0.0.
-   * @deprecated
+   * Deprecated at v1.3.6, to be removed at \>= v2.0.0.
+   * @deprecated To be removed at v2.0.0.
    */
   errorImageSrc?: string;
 
@@ -133,8 +140,8 @@ export interface IDocumentCardPreviewImage {
   /**
    * Hex color value of the line below the preview, which should correspond to the document type.
    *
-   * Deprecated at v4.17.1, to be removed at >= v5.0.0.
-   * @deprecated
+   * Deprecated at v4.17.1, to be removed at \>= v5.0.0.
+   * @deprecated To be removed at v5.0.0.
    */
   accentColor?: string;
 
@@ -158,7 +165,8 @@ export interface IDocumentCardTitleProps extends React.Props<DocumentCardTitle> 
   componentRef?: IRefObject<{}>;
 
   /**
-   * Title text. If the card represents more than one document, this should be the title of one document and a "+X" string. For example, a collection of four documents would have a string of "Document.docx +3".
+   * Title text. If the card represents more than one document, this should be the title of one document and a "+X" string.
+   * For example, a collection of four documents would have a string of "Document.docx +3".
    */
   title: string;
 

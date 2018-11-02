@@ -2,6 +2,95 @@
   "name": "@uifabric/variants",
   "entries": [
     {
+      "version": "6.12.0",
+      "tag": "@uifabric/variants_v6.12.0",
+      "date": "Mon, 22 Oct 2018 12:29:57 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add addVariants utility function.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "6505775ab433ec7e1fca27621be96dd6c026796d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.89.0 <7.0.0` to `>=6.90.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.11.1",
+      "tag": "@uifabric/variants_v6.11.1",
+      "date": "Mon, 08 Oct 2018 12:24:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Moving tslint/prettier dependencies ",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8ba9e22a7a8a2a1e7facda5aa7d91423c7af43ed"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.1.1 <2.0.0` to `>=1.1.2 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.79.0 <7.0.0` to `>=6.80.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.11.0",
+      "tag": "@uifabric/variants_v6.11.0",
+      "date": "Mon, 01 Oct 2018 12:27:24 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "semantic slot value updates per design direction",
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "4b31ba1706ff7b4a1b34399d3f1ffdb192737dbd"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.74.2 <7.0.0` to `>=6.75.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.10.0",
+      "tag": "@uifabric/variants_v6.10.0",
+      "date": "Fri, 21 Sep 2018 14:25:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding a version stamp file",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "11c18bce52dba131548610c5eea0c1ab7fa4d1ca"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Variants: export everything",
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "fd0c554b1456d9ecfcfc8deea0b4c31496ad4acc"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.0.0 <2.0.0` to `>=1.1.0 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.72.0 <7.0.0` to `>=6.72.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.9.0",
       "tag": "@uifabric/variants_v6.9.0",
       "date": "Thu, 13 Sep 2018 17:38:04 GMT",

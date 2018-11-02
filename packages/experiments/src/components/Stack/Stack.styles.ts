@@ -1,5 +1,4 @@
-import { IThemedProps } from '../../Foundation';
-import { IStackProps, IStackStyles } from './Stack.types';
+import { IStackComponent, IStackStyles } from './Stack.types';
 import { parseGap, parsePadding } from './StackUtils';
 
 const nameMap: { [key: string]: string } = {
@@ -7,7 +6,7 @@ const nameMap: { [key: string]: string } = {
   end: 'flex-end'
 };
 
-export const styles = (props: IThemedProps<IStackProps>): IStackStyles => {
+export const styles: IStackComponent['styles'] = props => {
   const {
     fillHorizontal,
     fillVertical,
@@ -49,12 +48,13 @@ export const styles = (props: IThemedProps<IStackProps>): IStackStyles => {
 
   return {
     root: [
+      theme.fonts.medium,
       {
         display: 'flex',
         flexDirection: horizontal ? 'row' : 'column',
         flexWrap: 'nowrap',
-        width: (fillHorizontal && !wrap) ? '100%' : 'auto',
-        height: (fillVertical && !wrap) ? '100%' : 'auto',
+        width: fillHorizontal && !wrap ? '100%' : 'auto',
+        height: fillVertical && !wrap ? '100%' : 'auto',
         maxWidth,
         maxHeight,
         padding: parsePadding(padding, theme),
@@ -74,7 +74,10 @@ export const styles = (props: IThemedProps<IStackProps>): IStackStyles => {
         selectors: {
           '> *': {
             margin: `${0.5 * vGap.value}${vGap.unit} ${0.5 * hGap.value}${hGap.unit}`,
-            maxWidth: `calc(100% - ${hGap.value}${hGap.unit})`,
+
+            // avoid unnecessary calc() calls if horizontal gap is 0
+            maxWidth: hGap.value === 0 ? '100%' : `calc(100% - ${hGap.value}${hGap.unit})`,
+
             ...childStyles
           },
           ...commonSelectors

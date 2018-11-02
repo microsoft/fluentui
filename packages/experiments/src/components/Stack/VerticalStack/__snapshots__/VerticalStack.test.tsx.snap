@@ -5,10 +5,15 @@ exports[`VerticalStack renders default VerticalStack correctly 1`] = `
   className=
       ms-VerticalStack
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
         height: auto;
         width: auto;
       }
@@ -40,10 +45,15 @@ exports[`VerticalStack renders gap correctly 1`] = `
   className=
       ms-VerticalStack
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
         height: auto;
         width: auto;
       }
@@ -75,10 +85,15 @@ exports[`VerticalStack renders growing items correctly 1`] = `
   className=
       ms-VerticalStack
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
         height: auto;
         width: auto;
       }
@@ -100,7 +115,14 @@ exports[`VerticalStack renders growing items correctly 1`] = `
     className=
         ms-StackItem
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           flex-shrink: 0;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: auto;
+          width: auto;
         }
   >
     Item 1
@@ -109,7 +131,14 @@ exports[`VerticalStack renders growing items correctly 1`] = `
     className=
         ms-StackItem
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           flex-shrink: 0;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: auto;
+          width: auto;
         }
   >
     Item 2
@@ -122,10 +151,15 @@ exports[`VerticalStack renders item alignments correctly 1`] = `
   className=
       ms-VerticalStack
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
         height: auto;
         width: auto;
       }
@@ -147,8 +181,15 @@ exports[`VerticalStack renders item alignments correctly 1`] = `
     className=
         ms-StackItem
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           align-self: auto;
           flex-shrink: 0;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: auto;
+          width: auto;
         }
   >
     Auto
@@ -157,8 +198,15 @@ exports[`VerticalStack renders item alignments correctly 1`] = `
     className=
         ms-StackItem
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           align-self: stretch;
           flex-shrink: 0;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: auto;
+          width: auto;
         }
   >
     Stretch
@@ -167,8 +215,15 @@ exports[`VerticalStack renders item alignments correctly 1`] = `
     className=
         ms-StackItem
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           align-self: baseline;
           flex-shrink: 0;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: auto;
+          width: auto;
         }
   >
     Baseline
@@ -177,8 +232,15 @@ exports[`VerticalStack renders item alignments correctly 1`] = `
     className=
         ms-StackItem
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           align-self: flex-start;
           flex-shrink: 0;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: auto;
+          width: auto;
         }
   >
     Start
@@ -187,8 +249,15 @@ exports[`VerticalStack renders item alignments correctly 1`] = `
     className=
         ms-StackItem
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           align-self: center;
           flex-shrink: 0;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: auto;
+          width: auto;
         }
   >
     Center
@@ -197,8 +266,15 @@ exports[`VerticalStack renders item alignments correctly 1`] = `
     className=
         ms-StackItem
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           align-self: flex-end;
           flex-shrink: 0;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: auto;
+          width: auto;
         }
   >
     End
@@ -211,10 +287,15 @@ exports[`VerticalStack renders shrinking items correctly 1`] = `
   className=
       ms-VerticalStack
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
         height: auto;
         width: auto;
       }
@@ -236,7 +317,14 @@ exports[`VerticalStack renders shrinking items correctly 1`] = `
     className=
         ms-StackItem
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           flex-shrink: 1;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: auto;
+          width: auto;
         }
   >
     Item 1
@@ -245,7 +333,14 @@ exports[`VerticalStack renders shrinking items correctly 1`] = `
     className=
         ms-StackItem
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           flex-shrink: 0;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: auto;
+          width: auto;
         }
   >
     Item 2

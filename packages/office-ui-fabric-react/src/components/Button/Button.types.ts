@@ -24,7 +24,8 @@ export interface IButton {
    * If there is a menu associated with this button and it is visible, this will open the menu.
    * Params are optional overrides to the ones defined in 'menuProps' to apply to just this instance of opening the menu.
    *
-   * @param shouldFocusOnContainer - override to the ContextualMenu shouldFocusOnContainer prop. BaseButton implementation defaults to 'undefined'.
+   * @param shouldFocusOnContainer - override to the ContextualMenu shouldFocusOnContainer prop.
+   * BaseButton implementation defaults to 'undefined'.
    * @param shouldFocusOnMount - override to the ContextualMenu shouldFocusOnMount prop. BaseButton implementation defaults to 'true'.
    */
   openMenu: (shouldFocusOnContainer?: boolean, shouldFocusOnMount?: boolean) => void;
@@ -40,13 +41,13 @@ export interface IButtonProps
 
   /**
    * If provided, this component will be rendered as an anchor.
-   * @default ElementType.anchor
+   * @defaultvalue ElementType.anchor
    */
   href?: string;
 
   /**
    * Changes the visual presentation of the button to be emphasized (if defined)
-   * @default false
+   * @defaultvalue false
    */
   primary?: boolean;
 
@@ -114,7 +115,8 @@ export interface IButtonProps
   ariaHidden?: boolean;
 
   /**
-   * Text to render button label. If text is supplied, it will override any string in button children. Other children components will be passed through after the text.
+   * Text to render button label. If text is supplied, it will override any string in button children.
+   * Other children components will be passed through after the text.
    */
   text?: string;
 
@@ -185,8 +187,8 @@ export interface IButtonProps
   onRenderMenuIcon?: IRenderFunction<IButtonProps>;
 
   /**
-   * Deprecated at v6.3.2, to be removed at >= v7.0.0. Use menuAs instead.
-   * @deprecated
+   * Deprecated at v6.3.2, to be removed at \>= v7.0.0. Use `menuAs` instead.
+   * @deprecated Use `menuAs` instead.
    */
   onRenderMenu?: IRenderFunction<IContextualMenuProps>;
 
@@ -202,23 +204,23 @@ export interface IButtonProps
   secondaryText?: string;
 
   /**
-   * Deprecated at v1.2.3, to be removed at >= v2.0.0. Use specific button component instead
+   * Deprecated at v1.2.3, to be removed at \>= v2.0.0. Use specific button component instead.
    * @defaultvalue ButtonType.default
-   * @deprecated
+   * @deprecated Use specific button component instead.
    */
 
   buttonType?: ButtonType;
 
   /**
-   * Deprecated at v0.56.2, to be removed at >= v1.0.0. Just pass in button props instead;
+   * Deprecated at v0.56.2, to be removed at \>= v1.0.0. Just pass in button props instead.
    * they will be mixed into the button/anchor element rendered by the component.
-   * @deprecated
+   * @deprecated Use button props instead.
    */
   rootProps?: React.ButtonHTMLAttributes<HTMLButtonElement> | React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
   /**
    * Any custom data the developer wishes to associate with the menu item.
-   *
+   * Deprecated, use `checked` if setting state.
    * @deprecated unused, use `checked` if setting state.
    */
   toggled?: boolean;
@@ -232,7 +234,7 @@ export interface IButtonProps
    * Method to provide the classnames to style a button.
    * The default value for this prop is the getClassnames func
    * defined in BaseButton.classnames.
-   * @default getBaseButtonClassNames
+   * @defaultvalue getBaseButtonClassNames
    */
   getClassNames?: (
     theme: ITheme,
@@ -251,7 +253,7 @@ export interface IButtonProps
    * Method to provide the classnames to style a button.
    * The default value for this prop is the getClassnames func
    * defined in BaseButton.classnames.
-   * @default getBaseSplitButtonClassNames
+   * @defaultvalue getBaseSplitButtonClassNames
    */
   getSplitButtonClassNames?: (
     disabled: boolean,
@@ -282,7 +284,8 @@ export interface IButtonProps
 
   /**
    * Style for the description text if applicable (for compound buttons.)
-   * @deprecated Use 'secondaryText' instead.
+   * Deprecated, use `secondaryText` instead.
+   * @deprecated Use `secondaryText` instead.
    */
   description?: IStyle;
 }
@@ -326,7 +329,7 @@ export interface IButtonStyles {
   rootHovered?: IStyle;
 
   /**
-   * Style override applied to the root on hover in the default, enabled, non-toggled state.
+   * Style override applied to the root on focus in the default, enabled, non-toggled state.
    */
   rootFocused?: IStyle;
 

@@ -23,10 +23,10 @@ export const getStyles = (props: IMultiCountStyleProps): IMultiCountStyles => {
       opacity: hoveredText === '' ? '' : hoveredText === currentText ? '' : '0.1',
       cursor: href ? 'pointer' : 'default',
       fontSize: bodyTextSize,
-      height: '1.286em'
+      height: '1.3em'
     },
     bodyText: {
-      flex: '1 1 50%',
+      flex: '1 1 auto',
       overflow: 'hidden',
       whiteSpace: 'nowrap',
       textOverflow: 'ellipsis',
@@ -34,7 +34,8 @@ export const getStyles = (props: IMultiCountStyleProps): IMultiCountStyles => {
       fontFamily: 'Segoe UI',
       fontWeight: 600,
       lineHeight: '1.286em',
-      marginLeft: '8px'
+      marginLeft: '8px',
+      width: '50%'
     },
     data: {
       flex: '0 0 auto',

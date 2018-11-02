@@ -11,7 +11,6 @@ import {
   getWindow,
   getDocument,
   css,
-  createRef,
   getNativeProps,
   divProperties
 } from '../../Utilities';
@@ -62,8 +61,8 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
 
   private _classNames: { [key in keyof ICalloutContentStyles]: string };
   private _didSetInitialFocus: boolean;
-  private _hostElement = createRef<HTMLDivElement>();
-  private _calloutElement = createRef<HTMLDivElement>();
+  private _hostElement = React.createRef<HTMLDivElement>();
+  private _calloutElement = React.createRef<HTMLDivElement>();
   private _targetWindow: Window;
   private _bounds: IRectangle;
   private _positionAttempts: number;
@@ -105,7 +104,8 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   }
 
   public componentWillUpdate(newProps: ICalloutProps): void {
-    // If the target element changed, find the new one. If we are tracking target with class name, always find element because we do not know if fabric has rendered a new element and disposed the old element.
+    // If the target element changed, find the new one. If we are tracking target with class name, always find element because we
+    // do not know if fabric has rendered a new element and disposed the old element.
     const newTarget = this._getTarget(newProps);
     const oldTarget = this._getTarget();
     if (newTarget !== oldTarget || typeof newTarget === 'string' || newTarget instanceof String) {
@@ -162,13 +162,9 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     target = this._getTarget();
     const { positions } = this.state;
 
-    const getContentMaxHeight: number | undefined = this._getMaxHeight()
-      ? this._getMaxHeight()! + this.state.heightOffset!
-      : undefined;
+    const getContentMaxHeight: number | undefined = this._getMaxHeight() ? this._getMaxHeight()! + this.state.heightOffset! : undefined;
     const contentMaxHeight: number | undefined =
-      calloutMaxHeight! && getContentMaxHeight && calloutMaxHeight! < getContentMaxHeight
-        ? calloutMaxHeight!
-        : getContentMaxHeight!;
+      calloutMaxHeight! && getContentMaxHeight && calloutMaxHeight! < getContentMaxHeight ? calloutMaxHeight! : getContentMaxHeight!;
     const overflowYHidden = hideOverflow;
 
     const beakVisible = isBeakVisible && !!target;
@@ -258,12 +254,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   }
 
   protected _setInitialFocus = (): void => {
-    if (
-      this.props.setInitialFocus &&
-      !this._didSetInitialFocus &&
-      this.state.positions &&
-      this._calloutElement.current
-    ) {
+    if (this.props.setInitialFocus && !this._didSetInitialFocus && this.state.positions && this._calloutElement.current) {
       this._didSetInitialFocus = true;
       this._async.requestAnimationFrame(() => focusFirstChild(this._calloutElement.current!));
     }
@@ -337,12 +328,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
       currentProps = assign(currentProps, this.props);
       currentProps!.bounds = this._getBounds();
       currentProps!.target = this._target!;
-      const newPositions: ICalloutPositionedInfo = positionCallout(
-        currentProps!,
-        hostElement,
-        calloutElement,
-        positions
-      );
+      const newPositions: ICalloutPositionedInfo = positionCallout(currentProps!, hostElement, calloutElement, positions);
 
       // Set the new position only when the positions are not exists or one of the new callout positions are different.
       // The position should not change if the position is within 2 decimal places.
@@ -356,7 +342,8 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
         this.setState({
           positions: newPositions
         });
-      } else {
+      } else if (this._positionAttempts > 0) {
+        // Only call the onPositioned callback if the callout has been re-positioned at least once.
         this._positionAttempts = 0;
         if (this.props.onPositioned) {
           this.props.onPositioned(this.state.positions);
@@ -396,13 +383,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
         const totalGap = gapSpace + beakWidth! + BORDER_WIDTH * 2;
         this._async.requestAnimationFrame(() => {
           if (this._target) {
-            this._maxHeight = getMaxHeight(
-              this._target,
-              this.props.directionalHint!,
-              totalGap,
-              this._getBounds(),
-              this.props.coverTarget
-            );
+            this._maxHeight = getMaxHeight(this._target, this.props.directionalHint!, totalGap, this._getBounds(), this.props.coverTarget);
             this.forceUpdate();
           }
         });

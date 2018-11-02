@@ -7,22 +7,22 @@ import { Keytip } from 'office-ui-fabric-react';
 
 storiesOf('Keytip', module)
   .addDecorator(story => (
-    <div style={ { width: '50px', height: '50px' } }>
-      <span data-ktp-target={ 'ktp-a' } />
-      { story() }
+    <div style={{ width: '50px', height: '50px' }}>
+      <span data-ktp-target={'ktp-a'} />
+      {story()}
     </div>
   ))
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
-      steps={ new Screener.Steps()
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .end()
       }
     >
-      { story() }
+      {story()}
     </Screener>
   ))
-  .add('Root', () => (<Keytip content={ 'A' } keySequences={ ['a'] } visible={ true } />))
-  .add('Disabled', () => (<Keytip content={ 'A' } keySequences={ ['a'] } visible={ true } disabled={ true } />))
-  .add('Offset', () => (<Keytip content={ 'A' } keySequences={ ['a'] } visible={ true } offset={ { x: 15, y: 15 } } />));
+  .addStory('Root', () => (<Keytip content={'A'} keySequences={['a']} visible={true} />))
+  .addStory('Disabled', () => (<Keytip content={'A'} keySequences={['a']} visible={true} disabled={true} />))
+  .addStory('Offset', () => (<Keytip content={'A'} keySequences={['a']} visible={true} offset={{ x: 15, y: 15 }} />));

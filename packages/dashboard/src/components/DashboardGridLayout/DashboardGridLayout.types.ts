@@ -25,6 +25,13 @@ export type DashboardSectionMapping = {
   [id: string]: string[];
 };
 
+export type CardSizeToRGLWidthHeightMapping = {
+  /**
+   * CardSize -> width height value map in React-Grid-Layout. P is @see CardSize
+   */
+  [P in CardSize]: { w: number; h: number }
+};
+
 export interface IDashboardCardLayout {
   /**
    * A string corresponding to the component key
@@ -146,9 +153,9 @@ export interface IDashboardGridLayoutProps {
   isCollapsible?: boolean;
 
   /**
-   * This is a CardSize -> width height value map in React-Grid-Layout. P is @see CardSize
+   * This is a CardSize -> width height value map in React-Grid-Layout.
    */
-  cardSizeToRGLWidthHeight?: { [P in CardSize]: { w: number; h: number } };
+  cardSizeToRGLWidthHeight?: CardSizeToRGLWidthHeightMapping;
 
   /**
    * Callback on the layout change.

@@ -1,25 +1,17 @@
 import * as React from 'react';
 import { IChartProps as IChartingProps, ILineChartPoints, IDataPoint, ILegendDataItem } from '@uifabric/charting';
-import {
-  Card,
-  CardContentType,
-  CardSize,
-  ChartType,
-  ICardProps,
-  ICardContentDetails,
-  IChartProps,
-  Priority
-} from '../../../index';
+import { Card, CardContentType, CardSize, ChartType, ICardProps, ICardContentDetails, IChartProps, Priority } from '@uifabric/dashboard';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
-export class LineAndVerticalBarChartExample extends React.Component<{}, {}> {
+export class LineAndVerticalBarChartExample extends React.Component<{}, { loading: boolean }> {
   constructor(props: ICardProps) {
     super(props);
+    this.state = { loading: true };
   }
 
   public render(): JSX.Element {
     const cardFrameContent = {
-      cardTitle: 'Stacked bar chart example',
+      cardTitle: 'Line and vertical bar chart example',
       cardDropDownOptions: [
         {
           key: 'Remove',
@@ -31,7 +23,11 @@ export class LineAndVerticalBarChartExample extends React.Component<{}, {}> {
             alert('Remove clicked');
           }
         }
-      ]
+      ],
+      cardTitleCallback: () => {
+        alert('Card title callback example');
+      },
+      href: '/'
     };
     const points: ILineChartPoints[] = [
       {
@@ -109,6 +105,10 @@ export class LineAndVerticalBarChartExample extends React.Component<{}, {}> {
     const header = {
       headerText: 'Header Text '
     };
+    const that = this;
+    setTimeout(() => {
+      that.setState({ loading: false });
+    }, 10000);
 
     return (
       <Card
@@ -116,6 +116,7 @@ export class LineAndVerticalBarChartExample extends React.Component<{}, {}> {
         header={header}
         cardContentList={contentAreaList}
         cardSize={CardSize.mediumWide}
+        loading={this.state.loading}
       />
     );
   }

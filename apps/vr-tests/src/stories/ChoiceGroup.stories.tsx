@@ -41,20 +41,20 @@ storiesOf('ChoiceGroup', module)
       { story() }
     </Screener>
   ))
-  .add('Root', () => (
+  .addStory('Root', () => (
     <ChoiceGroup
       options={ options }
       label='Pick one'
     />
   ))
-  .add('Required', () => (
+  .addStory('Required', () => (
     <ChoiceGroup
       options={ options }
       label='Pick one'
       required
     />
   ))
-  .add('With icons', () => (
+  .addStory('With icons', () => (
     <ChoiceGroup
       label='Pick one icon'
       options={ [
@@ -76,8 +76,8 @@ storiesOf('ChoiceGroup', module)
         }
       ] }
     />
-  ))
-  .add('With default size images', () => (
+  ), { rtl: true })
+  .addStory('With default size images', () => (
     <ChoiceGroup
       label='Pick one image'
       options={ [
@@ -96,7 +96,7 @@ storiesOf('ChoiceGroup', module)
       ] }
     />
   ))
-  .add('With large size images', () => (
+  .addStory('With large size images', () => (
     <ChoiceGroup
       label='Pick one image'
       options={ [

@@ -31,8 +31,7 @@ export const DefaultFontWeights: IFontWeights = {
 export const DefaultFontVariants: IFontVariants = {
   default: {
     family: 'default',
-    size: 'medium',
-    weight: 'default'
+    size: 'inherit'
   },
 
   caption: {

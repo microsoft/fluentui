@@ -50,12 +50,20 @@ export interface IStackedBarChartProps {
    */
   styles?: IStyleFunctionOrObject<IStackedBarChartStyleProps, IStackedBarChartStyles>;
 
-  isMultiStackedBarChart?: boolean;
-
   /**
    * Color setting of bar background color, this will show while all data points value is 0
    */
   barBackgroundColor?: string;
+
+  /**
+   * Url that the data-viz needs to redirect to upon clicking on it
+   */
+  href?: string;
+
+  /**
+   * If this value is set, the fixed display pattern for less than 2 data points chart will be ignore
+   */
+  ignoreFixStyle?: boolean;
 }
 
 export interface IStackedBarChartStyleProps {
@@ -93,6 +101,11 @@ export interface IStackedBarChartStyleProps {
    * prop to check which specific section of the stacked bar chart is selected or hovered upon
    */
   isChartSelected?: boolean;
+
+  /**
+   * prop to check to decide cursor type
+   */
+  href?: string;
 }
 
 export interface IStackedBarChartStyles {
@@ -135,4 +148,14 @@ export interface IStackedBarChartStyles {
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends
    */
   opacityChangeOnHover: IStyle;
+
+  /**
+   * Style for the chart ratio numerator
+   */
+  ratioNumerator: IStyle;
+
+  /**
+   * Style for the chart ratio denominator
+   */
+  ratioDenominator: IStyle;
 }

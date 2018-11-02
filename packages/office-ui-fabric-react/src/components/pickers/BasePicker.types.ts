@@ -4,6 +4,7 @@ import { IPersonaProps } from '../Persona/Persona.types';
 import { IRefObject, IRenderFunction } from '../../Utilities';
 import { ISuggestionModel } from './Suggestions/SuggestionsController';
 import { BaseAutoFill } from './AutoFill/BaseAutoFill';
+import { ICalloutProps } from '../../Callout';
 
 export interface IBasePicker<T> {
   /** Gets the current value of the input. */
@@ -37,7 +38,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    */
   onResolveSuggestions: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]>;
   /**
-   * The delay time in ms before resolving suggestions, which is kicked off when input has been cahnged.
+   * The delay time in ms before resolving suggestions, which is kicked off when input has been changed.
    * e.g. If a second input change happens within the resolveDelay time, the timer will start over.
    * Only until after the timer completes will onResolveSuggestions be called.
    */
@@ -82,8 +83,12 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    */
   pickerSuggestionsProps?: IBasePickerSuggestionsProps;
   /**
+   * The properties that will get passed to the Callout component.
+   */
+  pickerCalloutProps?: ICalloutProps;
+  /**
    * AutoFill input native props
-   * @default undefined
+   * @defaultvalue undefined
    */
   inputProps?: IInputProps;
   /**
@@ -100,13 +105,13 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   searchingText?: ((props: { input: string }) => string) | string;
   /**
    * Flag for disabling the picker.
-   * @default false
+   * @defaultvalue false
    */
   disabled?: boolean;
 
   /**
    * Restrict the amount of selectable items.
-   * @default undefined
+   * @defaultvalue undefined
    */
   itemLimit?: number;
   /**
@@ -115,7 +120,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   createGenericItem?: (input: string, ValidationState: ValidationState) => ISuggestionModel<T> | T;
   /**
    * Aria label for the "X" button in the selected item component.
-   * @default ''
+   * @defaultvalue ''
    */
   removeButtonAriaLabel?: string;
   /**
@@ -124,7 +129,8 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    */
   onItemSelected?: (selectedItem?: T) => T | PromiseLike<T> | null;
   /**
-   * The items that the base picker should currently display as selected. If this is provided then the picker will act as a controlled component.
+   * The items that the base picker should currently display as selected.
+   * If this is provided then the picker will act as a controlled component.
    */
   selectedItems?: T[];
   /**
@@ -139,7 +145,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * Adds an additional alert for the currently selected suggestion. This prop should be set to true for IE11 and below, as it
    * enables proper screen reader behavior for each suggestion (since aria-activedescendant does not work with IE11).
    * It should not be set for modern browsers (Edge, Chrome).
-   * @default false
+   * @defaultvalue false
    */
   enableSelectedSuggestionAlert?: boolean;
 }

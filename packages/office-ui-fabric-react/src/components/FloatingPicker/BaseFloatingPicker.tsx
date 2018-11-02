@@ -2,11 +2,7 @@ import * as React from 'react';
 import * as stylesImport from './BaseFloatingPicker.scss';
 import { BaseComponent, createRef, css, KeyCodes } from '../../Utilities';
 import { Callout, DirectionalHint } from '../../Callout';
-import {
-  IBaseFloatingPicker,
-  IBaseFloatingPickerProps,
-  IBaseFloatingPickerSuggestionProps
-} from './BaseFloatingPicker.types';
+import { IBaseFloatingPicker, IBaseFloatingPickerProps, IBaseFloatingPickerSuggestionProps } from './BaseFloatingPicker.types';
 import { ISuggestionModel } from '../../Pickers';
 import { ISuggestionsControlProps } from './Suggestions/Suggestions.types';
 import { SuggestionsControl } from './Suggestions/SuggestionsControl';
@@ -20,17 +16,16 @@ export interface IBaseFloatingPickerState {
   didBind: boolean;
 }
 
-export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
-  extends BaseComponent<P, IBaseFloatingPickerState>
+export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extends BaseComponent<P, IBaseFloatingPickerState>
   implements IBaseFloatingPicker {
   protected selection: Selection;
 
   protected root = createRef<HTMLDivElement>();
   protected suggestionStore: SuggestionsStore<T>;
   protected suggestionsControl: SuggestionsControl<T>;
-  protected SuggestionsControlOfProperType: new (props: ISuggestionsControlProps<T>) => SuggestionsControl<
-    T
-  > = SuggestionsControl as new (props: ISuggestionsControlProps<T>) => SuggestionsControl<T>;
+  protected SuggestionsControlOfProperType: new (props: ISuggestionsControlProps<T>) => SuggestionsControl<T> = SuggestionsControl as new (
+    props: ISuggestionsControlProps<T>
+  ) => SuggestionsControl<T>;
   // tslint:disable-next-line:no-any
   protected currentPromise: PromiseLike<any>;
 
@@ -285,6 +280,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
         if (this.suggestionsControl && this.suggestionsControl.handleKeyDown(keyCode)) {
           ev.preventDefault();
           ev.stopPropagation();
+          this._updateActiveDescendant();
         }
         break;
 
@@ -292,16 +288,23 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
         if (this.suggestionsControl && this.suggestionsControl.handleKeyDown(keyCode)) {
           ev.preventDefault();
           ev.stopPropagation();
+          this._updateActiveDescendant();
         }
         break;
     }
   };
 
+  private _updateActiveDescendant(): void {
+    if (this.props.inputElement && this.suggestionsControl && this.suggestionsControl.selectedElement) {
+      const selectedElId = this.suggestionsControl.selectedElement.getAttribute('id');
+      if (selectedElId) {
+        this.props.inputElement.setAttribute('aria-activedescendant', selectedElId as string);
+      }
+    }
+  }
+
   private _onResolveSuggestions(updatedValue: string): void {
-    const suggestions: T[] | PromiseLike<T[]> | null = this.props.onResolveSuggestions(
-      updatedValue,
-      this.props.selectedItems
-    );
+    const suggestions: T[] | PromiseLike<T[]> | null = this.props.onResolveSuggestions(updatedValue, this.props.selectedItems);
 
     this._updateSuggestionsVisible(true /*shouldShow*/);
     if (suggestions !== null) {

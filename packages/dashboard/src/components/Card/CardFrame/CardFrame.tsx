@@ -38,11 +38,13 @@ export class CardFrame extends React.Component<ICardFrameProps, {}> {
       });
     }
     const href = this.props.href === undefined ? '#' : this.props.href;
+    const target = this.props.target === undefined ? '_self' : this.props.target;
     return (
       <div className={classNames.root}>
         <div className={classNames.cardTitleBox}>
           <div className={classNames.cardTitle}>
             <Link
+              onMouseDown={this._onLinkMouseDown}
               styles={{
                 root: {
                   fontFamily: 'Segoe UI',
@@ -60,18 +62,27 @@ export class CardFrame extends React.Component<ICardFrameProps, {}> {
                 }
               }}
               href={href}
+              target={target}
               disabled={href === '#'}
+              onClick={this._handleTitleClick}
             >
               {cardTitle}
             </Link>
           </div>
-          <div className={classNames.cardTitleEllipsisButton}>
+          <div className={classNames.cardTitleEllipsisButton} onMouseDown={this._onIconMouseDown}>
             <IconButton
               className={classNames.ellipsisButtonStyle}
               menuIconProps={{ iconName: 'More' }}
               split={false}
               aria-label={'More'}
               menuProps={{
+                calloutProps: {
+                  styles: {
+                    root: {
+                      boxShadow: '0px 1.2px 3.6px rgba(0,0,0,0.18), 0px 6.4px 14.4px rgba(0,0,0,0.22)'
+                    }
+                  }
+                },
                 items: cardDropDownOptions
               }}
               styles={{
@@ -87,4 +98,16 @@ export class CardFrame extends React.Component<ICardFrameProps, {}> {
       </div>
     );
   }
+
+  private _handleTitleClick = () => {
+    this.props.cardTitleCallback ? this.props.cardTitleCallback() : '';
+  };
+
+  private _onLinkMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+  };
+
+  private _onIconMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+  };
 }

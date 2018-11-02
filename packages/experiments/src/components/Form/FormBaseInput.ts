@@ -30,11 +30,7 @@ export type GenericFormInput = FormBaseInput<any, IFormBaseInputProps<any>, IFor
  * The base class that all simple form inputs should inherit from
  * The T generic should be the type of value this input accepts. For example, a TextBox would probably define T as string
  */
-export abstract class FormBaseInput<
-  T,
-  P extends IFormBaseInputProps<T>,
-  S extends IFormBaseInputState<T>
-> extends BaseComponent<P, S> {
+export abstract class FormBaseInput<T, P extends IFormBaseInputProps<T>, S extends IFormBaseInputState<T>> extends BaseComponent<P, S> {
   public static contextTypes: React.ValidationMap<IFormContext> = {
     isFormValid: PropTypes.func.isRequired,
     mountInput: PropTypes.func.isRequired,
@@ -65,9 +61,7 @@ export abstract class FormBaseInput<
     this.formContext = context;
     this.debouncedSubmitValue = this._async.debounce(
       this.formContext.submitValue,
-      this.props.debounceInterval !== null && this.props.debounceInterval !== undefined
-        ? this.props.debounceInterval
-        : DEFAULT_DEBOUNCE,
+      this.props.debounceInterval !== null && this.props.debounceInterval !== undefined ? this.props.debounceInterval : DEFAULT_DEBOUNCE,
       {
         leading: leadingDebounce === null || leadingDebounce === undefined ? true : leadingDebounce
       }

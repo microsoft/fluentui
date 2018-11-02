@@ -2,6 +2,160 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.9.1",
+      "tag": "@uifabric/example-app-base_v6.9.1",
+      "date": "Wed, 31 Oct 2018 12:32:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace usage of scheme prop with theme provider.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "fc5a1f4620c93499a41abe8377ff61161cf5bd76"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Running Prettier on all .ts and .tsx files in the packages folder.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "2ce6c5ac3ccf4e62d4866841317b4aa55b8fb541"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.5.6 <1.0.0` to `>=0.5.7 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.96.0 <7.0.0` to `>=6.97.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.9.0",
+      "tag": "@uifabric/example-app-base_v6.9.0",
+      "date": "Wed, 17 Oct 2018 01:29:55 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Modify CodepenComponent for use by other packages.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "a6221962c23ff48cebe654f89ecde0e2956f80cf"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.85.0 <7.0.0` to `>=6.86.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.8.0",
+      "tag": "@uifabric/example-app-base_v6.8.0",
+      "date": "Tue, 16 Oct 2018 12:28:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add optional app customizations and apply to examples when provided.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "d268b0e3e4cbfde82ef56e60686cc6ad70090a8f"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.84.1 <7.0.0` to `>=6.85.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.7.6",
+      "tag": "@uifabric/example-app-base_v6.7.6",
+      "date": "Thu, 11 Oct 2018 23:13:31 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Documentation: remove unwanted backslashes and render backticks as code blocks",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "dd6e56c6bd02c2a130c9653ef6cb7f916de3ff2c"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.83.0 <7.0.0` to `>=6.84.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.7.5",
+      "tag": "@uifabric/example-app-base_v6.7.5",
+      "date": "Wed, 10 Oct 2018 12:29:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ExampleCard: Replace Fabric Core classes with mixins",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "b2482883e5cdcfaf337427b756e0f87741d63f74"
+          },
+          {
+            "comment": "ExampleCard: Adds utility classes for spacing within examples",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "2ce7b14306b2a61b4c252676ff16c33d97c48d47"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.82.0 <7.0.0` to `>=6.83.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.7.4",
+      "tag": "@uifabric/example-app-base_v6.7.4",
+      "date": "Mon, 08 Oct 2018 12:24:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Moving tslint/prettier dependencies ",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8ba9e22a7a8a2a1e7facda5aa7d91423c7af43ed"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.1.1 <2.0.0` to `>=1.1.2 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.79.0 <7.0.0` to `>=6.80.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.7.3",
+      "tag": "@uifabric/example-app-base_v6.7.3",
+      "date": "Fri, 21 Sep 2018 14:25:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding a version stamp file",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "11c18bce52dba131548610c5eea0c1ab7fa4d1ca"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.0.0 <2.0.0` to `>=1.1.0 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.72.0 <7.0.0` to `>=6.72.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.7.2",
       "tag": "@uifabric/example-app-base_v6.7.2",
       "date": "Fri, 10 Aug 2018 10:26:08 GMT",

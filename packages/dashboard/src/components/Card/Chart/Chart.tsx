@@ -1,14 +1,16 @@
 import * as React from 'react';
-import { IChartInternalProps, IChartStyles, IChartProps, ChartType, ChartHeight, ChartWidth } from './Chart.types';
+import { IChartInternalProps, IChartProps, IChartStyles, ChartType, ChartHeight, ChartWidth } from './Chart.types';
 import {
   DonutChart,
   HorizontalBarChart,
   IDataPoint,
   ILegendDataItem,
+  ILineChartPoints,
   LineChart,
   MultiStackedBarChart,
   StackedBarChart,
-  VerticalBarChart
+  VerticalBarChart,
+  ILineChartDataPoint
 } from '@uifabric/charting';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
@@ -25,6 +27,7 @@ export class Chart extends React.Component<IChartInternalProps, { _width: number
   private _singleChartDataPoints: IDataPoint[] | undefined;
   private _rootElem: HTMLElement | null;
 
+  private getClassNames = classNamesFunction<IChartProps, IChartStyles>();
   public constructor(props: IChartInternalProps) {
     super(props);
 
@@ -62,13 +65,7 @@ export class Chart extends React.Component<IChartInternalProps, { _width: number
   }
 
   public render(): JSX.Element {
-    const getClassNames = classNamesFunction<IChartProps, IChartStyles>();
-    const classNames = getClassNames(getStyles);
-    return (
-      <div ref={(rootElem: HTMLElement | null) => (this._rootElem = rootElem)} className={classNames.chartWrapper}>
-        {this._getChartByType(this.props.chartType)}
-      </div>
-    );
+    return this._getChartByType(this.props.chartType);
   }
 
   private _getChartByType = (chartType: ChartType): JSX.Element => {
@@ -94,12 +91,16 @@ export class Chart extends React.Component<IChartInternalProps, { _width: number
       case ChartType.DonutChart: {
         return (
           <div className={mergeStyles({ width: 300, height: 250 })}>
-            <DonutChart data={this.props.chartData![0]} innerRadius={70} />
+            <DonutChart data={this.props.chartData![0]} innerRadius={88} />
           </div>
         );
       }
       case ChartType.PieChart: {
-        return <DonutChart data={this.props.chartData![0]} innerRadius={0} />;
+        return (
+          <div className={mergeStyles({ width: 300, height: 250 })}>
+            <DonutChart data={this.props.chartData![0]} innerRadius={0} />
+          </div>
+        );
       }
       case ChartType.StackedBarChart: {
         return this._getStackedBarChart();
@@ -134,19 +135,99 @@ export class Chart extends React.Component<IChartInternalProps, { _width: number
       return <MultiStackedBarChart data={this.props.chartData!} barHeight={this.props.barHeight} hideRatio={this.props.hideRatio} />;
     }
 
-    return <StackedBarChart data={this.props.chartData![0]} barHeight={this.props.barHeight} />;
+    return (
+      <StackedBarChart
+        data={this.props.chartData![0]}
+        barHeight={this.props.barHeight}
+        ignoreFixStyle={this.props.ignoreStackBarChartDefaultStyle}
+      />
+    );
   };
 
   private _getLineChart = (): JSX.Element => {
-    return (
-      <div className={mergeStyles({ width: this.state._width, height: this.state._height })}>
-        <LineChart
-          data={this.props.chartData![0]}
-          strokeWidth={this.props.strokeWidth}
-          width={this._getWidth()}
-          height={this._getHeight()}
-        />
-      </div>
-    );
+    const { chartData, timeRange } = this.props;
+    let dateDataType = false;
+    const classNames = this.getClassNames(getStyles);
+    if (chartData && chartData[0] && chartData[0].lineChartData) {
+      chartData[0].lineChartData!.forEach((lineData: ILineChartPoints) => {
+        if (lineData.data.length > 0) {
+          dateDataType = lineData.data[0].x instanceof Date;
+          return;
+        }
+      });
+    }
+    if (dateDataType) {
+      let sDate = new Date();
+      // selecting least possible date. Using this to compute the farthest date among the data passed to render on x-axis
+      let lDate = new Date(-8640000000000000);
+      chartData![0].lineChartData!.map((singleChartData: ILineChartPoints) => {
+        singleChartData.data.map((dataPoint: ILineChartDataPoint) => {
+          if (dataPoint.x < sDate) {
+            sDate = dataPoint.x as Date;
+          }
+          if (dataPoint.x > lDate) {
+            lDate = dataPoint.x as Date;
+          }
+        });
+      });
+      const tickValues: Date[] = [sDate];
+      // comparing prop with string union type 7Days | 30Days | 90Days | 180Days
+      if (timeRange === '7Days') {
+        for (let i = 0; i < 6; i++) {
+          const nextDate = new Date(sDate);
+          nextDate.setDate(sDate.getDate() + 1);
+          sDate = nextDate;
+          tickValues.push(nextDate);
+        }
+      } else if (timeRange === '30Days') {
+        for (let i = 0; i < 5; i++) {
+          const nextDate = new Date(sDate);
+          nextDate.setDate(sDate.getDate() + 5);
+          sDate = nextDate;
+          tickValues.push(nextDate);
+        }
+      } else if (timeRange === '90Days') {
+        for (let i = 0; i < 5; i++) {
+          const nextDate = new Date(sDate);
+          nextDate.setDate(sDate.getDate() + 15);
+          sDate = nextDate;
+          tickValues.push(nextDate);
+        }
+      } else {
+        for (let i = 0; i < 5; i++) {
+          const nextDate = new Date(sDate);
+          nextDate.setMonth(sDate.getMonth() + 1);
+          sDate = nextDate;
+          tickValues.push(nextDate);
+        }
+      }
+      return (
+        <div
+          ref={(e: HTMLElement | null) => {
+            this._rootElem = e;
+          }}
+          className={classNames.chartWrapper}
+        >
+          <LineChart
+            parentRef={this._rootElem}
+            data={this.props.chartData![0]}
+            strokeWidth={this.props.strokeWidth}
+            tickValues={tickValues}
+            tickFormat={'%m/%d'}
+          />
+        </div>
+      );
+    } else {
+      return (
+        <div
+          ref={(e: HTMLElement | null) => {
+            this._rootElem = e;
+          }}
+          className={classNames.chartWrapper}
+        >
+          <LineChart parentRef={this._rootElem} data={this.props.chartData![0]} strokeWidth={this.props.strokeWidth} />
+        </div>
+      );
+    }
   };
 }

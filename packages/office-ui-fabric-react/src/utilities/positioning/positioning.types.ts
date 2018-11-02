@@ -38,9 +38,15 @@ export interface IPositionProps {
   /**
    * If true the position will not change edges in an attempt to fit the rectangle within bounds.
    * It will still attempt to align it to whatever bounds are given.
-   * @default false
+   * @defaultvalue false
    */
   directionalHintFixed?: boolean;
+
+  /**
+   * If true the positioning logic will prefer flipping edges over nudging the rectangle to fit within bounds,
+   * thus making sure the the element align perfectly with target.
+   */
+  alignTargetEdge?: boolean;
 }
 
 export interface ICalloutPositionProps extends IPositionProps {
@@ -104,6 +110,7 @@ export interface IPositionDirectionalHintData {
   targetEdge: RectangleEdge;
   alignmentEdge?: RectangleEdge;
   isAuto?: boolean;
+  alignTargetEdge?: boolean;
 }
 
 export interface IRelativePositions {

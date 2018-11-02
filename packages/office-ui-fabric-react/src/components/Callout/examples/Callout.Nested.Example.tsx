@@ -53,8 +53,7 @@ export class CalloutNestedExample extends React.Component<
               <div className="ms-CalloutExample-inner">
                 <div className="ms-CalloutExample-content">
                   <p className="ms-CalloutExample-subText">
-                    Message body is optional. If help documentation is available, consider adding a link to learn more
-                    at the bottom.
+                    Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
                   </p>
                 </div>
               </div>

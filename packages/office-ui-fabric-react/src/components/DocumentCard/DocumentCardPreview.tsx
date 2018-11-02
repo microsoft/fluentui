@@ -2,6 +2,7 @@ import * as React from 'react';
 import { IDocumentCardPreviewProps, IDocumentCardPreviewImage } from './DocumentCard.types';
 import { Image } from '../../Image';
 import { Icon } from '../../Icon';
+import { Link } from '../../Link';
 import { BaseComponent, css } from '../../Utilities';
 import * as stylesImport from './DocumentCard.scss';
 const styles: any = stylesImport;
@@ -31,26 +32,15 @@ export class DocumentCardPreview extends BaseComponent<IDocumentCardPreviewProps
     }
 
     return (
-      <div
-        className={css(
-          'ms-DocumentCardPreview',
-          styles.preview,
-          isFileList && 'is-fileList ' + styles.previewIsFileList
-        )}
-        style={style}
-      >
+      <div className={css('ms-DocumentCardPreview', styles.preview, isFileList && 'is-fileList ' + styles.previewIsFileList)} style={style}>
         {preview}
       </div>
     );
   }
 
-  private _renderPreviewImage(
-    previewImage: IDocumentCardPreviewImage
-  ): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
+  private _renderPreviewImage(previewImage: IDocumentCardPreviewImage): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
     const { width, height, imageFit, previewIconProps, previewIconContainerClass } = previewImage;
-    const iconContainerClass = previewIconContainerClass
-      ? previewIconContainerClass
-      : 'ms-DocumentCardPreview-iconContainer';
+    const iconContainerClass = previewIconContainerClass ? previewIconContainerClass : 'ms-DocumentCardPreview-iconContainer';
 
     if (previewIconProps) {
       return (
@@ -60,27 +50,11 @@ export class DocumentCardPreview extends BaseComponent<IDocumentCardPreviewProps
       );
     }
 
-    const image = (
-      <Image
-        width={width}
-        height={height}
-        imageFit={imageFit}
-        src={previewImage.previewImageSrc}
-        role="presentation"
-        alt=""
-      />
-    );
+    const image = <Image width={width} height={height} imageFit={imageFit} src={previewImage.previewImageSrc} role="presentation" alt="" />;
 
     let icon;
     if (previewImage.iconSrc) {
-      icon = (
-        <Image
-          className={css('ms-DocumentCardPreview-icon', styles.icon)}
-          src={previewImage.iconSrc}
-          role="presentation"
-          alt=""
-        />
-      );
+      icon = <Image className={css('ms-DocumentCardPreview-icon', styles.icon)} src={previewImage.iconSrc} role="presentation" alt="" />;
     }
 
     return (
@@ -91,9 +65,7 @@ export class DocumentCardPreview extends BaseComponent<IDocumentCardPreviewProps
     );
   }
 
-  private _renderPreviewList = (
-    previewImages: IDocumentCardPreviewImage[]
-  ): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> => {
+  private _renderPreviewList = (previewImages: IDocumentCardPreviewImage[]): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> => {
     const { getOverflowDocumentCountText } = this.props;
 
     // Determine how many documents we won't be showing
@@ -117,16 +89,14 @@ export class DocumentCardPreview extends BaseComponent<IDocumentCardPreviewProps
           width="16px"
           height="16px"
         />
-        <a href={file.url}>{file.name}</a>
+        <Link {...(file.linkProps, { href: file.url || (file.linkProps && file.linkProps.href) })}>{file.name}</Link>
       </li>
     ));
 
     return (
       <div>
         <ul className={css('ms-DocumentCardPreview-fileList', styles.fileList)}>{fileListItems}</ul>
-        {overflowText && (
-          <span className={css('ms-DocumentCardPreview-fileListMore', styles.fileListMore)}>{overflowText}</span>
-        )}
+        {overflowText && <span className={css('ms-DocumentCardPreview-fileListMore', styles.fileListMore)}>{overflowText}</span>}
       </div>
     );
   };

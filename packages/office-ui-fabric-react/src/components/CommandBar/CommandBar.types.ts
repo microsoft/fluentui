@@ -136,6 +136,12 @@ export interface ICommandBarItemProps extends IContextualMenuItem {
    * This value is controlled by the component and useful for adjusting onRender function
    */
   renderedInOverflow?: boolean;
+
+  /**
+   * Method to override the render of the individual command bar button. Note, is not used when rendered in overflow
+   * @defaultvalue CommandBarButton
+   */
+  commandBarButtonAs?: IComponentAs<ICommandBarItemProps>;
 }
 
 export interface ICommandBarStyleProps {

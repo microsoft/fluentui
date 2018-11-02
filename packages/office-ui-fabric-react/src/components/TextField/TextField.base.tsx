@@ -174,6 +174,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
       suffix,
       theme,
       styles,
+      autoAdjustHeight,
       onRenderAddon = this._onRenderAddon, // @deprecated
       onRenderPrefix = this._onRenderPrefix,
       onRenderSuffix = this._onRenderSuffix,
@@ -197,7 +198,8 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
       hasIcon: !!iconProps,
       underlined,
       iconClass,
-      inputClassName
+      inputClassName,
+      autoAdjustHeight
     });
 
     // If a custom description render function is supplied then treat description as always available.
@@ -250,6 +252,15 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
   }
 
   /**
+   * Blurs the text field.
+   */
+  public blur() {
+    if (this._textElement.current) {
+      this._textElement.current.blur();
+    }
+  }
+
+  /**
    * Selects the text field
    */
   public select() {
@@ -292,8 +303,8 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
 
   /**
    * Sets the start and end positions of a selection in a text field.
-   * @param start Index of the start of the selection.
-   * @param end Index of the end of the selection.
+   * @param start - Index of the start of the selection.
+   * @param end - Index of the end of the selection.
    */
   public setSelectionRange(start: number, end: number): void {
     if (this._textElement.current) {
@@ -408,9 +419,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
   }
 
   private _renderInput(): React.ReactElement<React.HTMLAttributes<HTMLInputElement>> {
-    const inputProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties, [
-      'defaultValue'
-    ]);
+    const inputProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties, ['defaultValue']);
 
     return (
       <input
@@ -478,9 +487,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
     }
 
     this._latestValidateValue = value;
-    const onGetErrorMessage = this.props.onGetErrorMessage as (
-      value: string
-    ) => string | PromiseLike<string> | undefined;
+    const onGetErrorMessage = this.props.onGetErrorMessage as (value: string) => string | PromiseLike<string> | undefined;
     const result = onGetErrorMessage(value || '');
 
     if (result !== undefined) {
@@ -514,8 +521,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
     if (this._textElement.current && this.props.autoAdjustHeight && this.props.multiline) {
       const textField = this._textElement.current;
       textField.style.height = '';
-      const scrollHeight = textField.scrollHeight + 2; // +2 to avoid vertical scroll bars
-      textField.style.height = scrollHeight + 'px';
+      textField.style.height = textField.scrollHeight + 'px';
     }
   }
 }

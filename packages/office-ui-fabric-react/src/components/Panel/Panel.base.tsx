@@ -1,24 +1,22 @@
 import * as React from 'react';
-
-import {
-  BaseComponent,
-  classNamesFunction,
-  divProperties,
-  getId,
-  getNativeProps,
-  getRTL,
-  createRef,
-  elementContains,
-  allowScrollOnElement,
-  isIOS
-} from '../../Utilities';
-import { IProcessedStyleSet, getTheme, IconFontSizes } from '../../Styling';
-import { FocusTrapZone } from '../FocusTrapZone/index';
-import { IPanel, IPanelProps, PanelType, IPanelStyleProps, IPanelStyles } from './Panel.types';
+import { IconButton } from '../../Button';
 import { Layer } from '../../Layer';
 import { Overlay } from '../../Overlay';
 import { Popup } from '../../Popup';
-import { IconButton } from '../../Button';
+import { getTheme, IconFontSizes, IProcessedStyleSet } from '../../Styling';
+import {
+  allowScrollOnElement,
+  BaseComponent,
+  classNamesFunction,
+  createRef,
+  divProperties,
+  elementContains,
+  getId,
+  getNativeProps,
+  getRTL
+} from '../../Utilities';
+import { FocusTrapZone } from '../FocusTrapZone/index';
+import { IPanel, IPanelProps, IPanelStyleProps, IPanelStyles, PanelType } from './Panel.types';
 
 const getClassNames = classNamesFunction<IPanelStyleProps, IPanelStyles>();
 
@@ -39,7 +37,6 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
   };
 
   private _panel = createRef<HTMLDivElement>();
-  private _content = createRef<HTMLDivElement>();
   private _classNames: IProcessedStyleSet<IPanelStyles>;
   private _scrollableContent: HTMLDivElement | null;
 
@@ -150,13 +147,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
 
     let overlay;
     if (isBlocking && isOpen) {
-      overlay = (
-        <Overlay
-          className={_classNames.overlay}
-          isDarkThemed={false}
-          onClick={isLightDismiss ? onLightDismissClick : undefined}
-        />
-      );
+      overlay = <Overlay className={_classNames.overlay} isDarkThemed={false} onClick={isLightDismiss ? onLightDismissClick : undefined} />;
     }
 
     const header = onRenderHeader(this.props, this._onRenderHeader, headerTextId);
@@ -175,23 +166,21 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
               ignoreExternalFocusing={ignoreExternalFocusing}
               forceFocusInsideTrap={isHiddenOnDismiss && !isOpen ? false : forceFocusInsideTrap}
               firstFocusableSelector={firstFocusableSelector}
+              isClickableOutsideFocusTrap={true}
               {...focusTrapZoneProps}
               className={_classNames.main}
               style={customWidthStyles}
               elementToFocusOnDismiss={elementToFocusOnDismiss}
-              isClickableOutsideFocusTrap={
-                focusTrapZoneProps && !focusTrapZoneProps.isClickableOutsideFocusTrap ? false : true
-              }
             >
-              <div ref={this._allowScrollOnPanel} className={_classNames.scrollableContent}>
-                <div className={_classNames.commands} data-is-visible={true}>
-                  {onRenderNavigation(this.props, this._onRenderNavigation)}
-                </div>
-                <div className={_classNames.contentInner}>
-                  {header}
+              <div className={_classNames.commands} data-is-visible={true}>
+                {onRenderNavigation(this.props, this._onRenderNavigation)}
+              </div>
+              <div className={_classNames.contentInner}>
+                {header}
+                <div ref={this._allowScrollOnPanel} className={_classNames.scrollableContent} data-is-scrollable={true}>
                   {onRenderBody(this.props, this._onRenderBody)}
-                  {onRenderFooter(this.props, this._onRenderFooter)}
                 </div>
+                {onRenderFooter(this.props, this._onRenderFooter)}
               </div>
             </FocusTrapZone>
           </div>
@@ -214,7 +203,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     }
   }
 
-  public dismiss = (ev?: React.KeyboardEvent<HTMLElement>): void => {
+  public dismiss = (ev?: React.SyntheticEvent<HTMLElement>): void => {
     if (this.state.isOpen) {
       if (this.props.onDismiss) {
         this.props.onDismiss(ev);
@@ -238,9 +227,6 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
   private _allowScrollOnPanel = (elt: HTMLDivElement | null): void => {
     if (elt) {
       allowScrollOnElement(elt, this._events);
-      if (isIOS()) {
-        elt.style.height = window.innerHeight + 'px';
-      }
     } else {
       this._events.off(this._scrollableContent);
     }
@@ -307,11 +293,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
   };
 
   private _onRenderBody = (props: IPanelProps): JSX.Element => {
-    return (
-      <div ref={this._content} className={this._classNames.content} data-is-scrollable={true}>
-        {props.children}
-      </div>
-    );
+    return <div className={this._classNames.content}>{props.children}</div>;
   };
 
   private _onRenderFooter = (props: IPanelProps): JSX.Element | null => {
@@ -327,10 +309,10 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
   };
 
   private _updateFooterPosition(): void {
-    const _content = this._content.current;
-    if (_content) {
-      const height = _content.clientHeight;
-      const innerHeight = _content.scrollHeight;
+    const scrollableContent = this._scrollableContent;
+    if (scrollableContent) {
+      const height = scrollableContent.clientHeight;
+      const innerHeight = scrollableContent.scrollHeight;
 
       this.setState({
         isFooterSticky: height < innerHeight ? true : false
@@ -352,11 +334,12 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     }
   }
 
-  private _onPanelClick = (): void => {
-    this.dismiss();
+  private _onPanelClick = (ev?: any): void => {
+    this.dismiss(ev);
   };
 
   private _onTransitionComplete = (): void => {
+    this._updateFooterPosition();
     this.setState({
       isAnimating: false
     });
