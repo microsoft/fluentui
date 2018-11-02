@@ -363,10 +363,10 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   };
 
   private _removeStickyFromContainers = (sticky: Sticky): void => {
-    if (this.stickyAbove && sticky.stickyContentTop) {
+    if (this.stickyAbove && sticky.stickyContentTop && this.stickyAbove.contains(sticky.stickyContentTop)) {
       this.stickyAbove.removeChild(sticky.stickyContentTop);
     }
-    if (this.stickyBelow && sticky.stickyContentBottom) {
+    if (this.stickyBelow && sticky.stickyContentBottom && this.stickyBelow.contains(sticky.stickyContentBottom)) {
       this.stickyBelow.removeChild(sticky.stickyContentBottom);
     }
   };
