@@ -1,4 +1,4 @@
-import { IMRAction } from '../ContextualMenu';
+import { IMRAction } from '../ContextualMenu/ContextualMenu.types';
 
 export enum Video360Mode {
   Loading = 0,

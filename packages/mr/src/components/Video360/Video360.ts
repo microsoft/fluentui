@@ -1,6 +1,6 @@
 import * as BABYLON from 'babylonjs';
-import { Entity } from '../../common/nucleus3d/core';
-import { ContextualMenu } from '../ContextualMenu';
+import { Entity } from '../../common/nucleus3d/core/Entity';
+import { ContextualMenu } from '../ContextualMenu/ContextualMenu';
 import { IVideo360, Video360Mode } from './Video360.types';
 
 export class Video360 extends Entity<IVideo360> {
