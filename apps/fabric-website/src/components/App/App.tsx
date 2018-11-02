@@ -65,8 +65,8 @@ export class App extends React.Component<IAppProps, any> {
   public render(): JSX.Element {
     return (
       <Fabric className="App">
+        {this._renderLeftNav()}
         <div className="App-wrapper">
-          {this._renderLeftNav()}
           <div className="App-content" data-is-scrollable="true" ref={el => (this._appContent = el)} data-app-content-div="true">
             {this.props.children}
           </div>
@@ -89,7 +89,7 @@ export class App extends React.Component<IAppProps, any> {
       this.setState({
         isAttached: isAttached,
         navHeight: navHeight,
-        isSmallScreen: window.innerWidth < UHFBreakPoints.mobile
+        isSmallScreen: window.innerWidth <= UHFBreakPoints.mobile
       });
     }, 100);
   };

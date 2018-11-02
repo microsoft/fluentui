@@ -87,7 +87,7 @@ export class TopNavBase extends React.Component<ITopNavProps, ITopNavState> {
 
     resizeTimer = setTimeout(() => {
       this.setState({
-        isSmallScreen: window.innerWidth < UHFBreakPoints.mobile
+        isSmallScreen: window.innerWidth <= UHFBreakPoints.mobile
       });
     }, 100);
   };

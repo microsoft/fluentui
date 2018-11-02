@@ -2,6 +2,10 @@
 @import '../../styles/mixins';
 
 :global {
+  .App {
+    position: relative;
+  }
+
   // Element that wraps everything except for the header
   .App-wrapper {
     margin: 0 auto;
@@ -14,6 +18,10 @@
     background-color: $ms-color-white;
     border-bottom: 1px solid $ms-color-neutralTertiary;
     display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 999;
   }
 
   // Nav is hidden off screen by default
