@@ -1,0 +1,17 @@
+# [Office UI Fabric React DateTime](http://dev.microsoft.com/fabric)
+
+##### DateTime components for Office UI Fabric React
+
+These are not production ready components and __should never be used in product__. This DateTime space is useful for testing new components whose APIs might change before final release.
+
+To import DateTime components:
+
+```js
+import { ComponentName } from '@uifabric/date-time';
+```
+
+Once the DateTime component graduates to a production release, the component will be available at:
+
+```js
+import { ComponentName } from 'office-ui-fabric-react';
+```

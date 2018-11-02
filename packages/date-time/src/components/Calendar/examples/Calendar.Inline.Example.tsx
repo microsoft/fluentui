@@ -5,6 +5,8 @@ import { addDays, getDateRangeArray } from 'office-ui-fabric-react/lib/utilities
 import { Calendar } from '../Calendar';
 import { DateRangeType, DayOfWeek } from '../Calendar.types';
 
+import * as styles from './Calendar.Example.scss';
+
 const DayPickerStrings = {
   months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
 
@@ -57,14 +59,6 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
   }
 
   public render(): JSX.Element {
-    const divStyle: React.CSSProperties = {
-      height: '340px'
-    };
-
-    const buttonStyle: React.CSSProperties = {
-      margin: '17px 10px 0 0'
-    };
-
     let dateRangeString: string | null = null;
     if (this.state.selectedDateRange) {
       const rangeStart = this.state.selectedDateRange[0];
@@ -73,7 +67,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
     }
 
     return (
-      <div style={divStyle}>
+      <div className={styles.wrapper}>
         {
           <div>
             Selected date(s): <span>{!this.state.selectedDate ? 'Not set' : this.state.selectedDate.toLocaleString()}</span>
@@ -114,8 +108,8 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
         />
         {this.props.showNavigateButtons && (
           <div>
-            <DefaultButton style={buttonStyle} onClick={this._goPrevious} text="Previous" />
-            <DefaultButton style={buttonStyle} onClick={this._goNext} text="Next" />
+            <DefaultButton className={styles.button} onClick={this._goPrevious} text="Previous" />
+            <DefaultButton className={styles.button} onClick={this._goNext} text="Next" />
           </div>
         )}
       </div>

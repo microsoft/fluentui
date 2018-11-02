@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseComponent, css, getRTL, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { FocusZone } from '../../FocusZone';
+import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import {
   addYears,
   setMonth,
@@ -10,7 +10,7 @@ import {
   getMonthEnd,
   compareDatePart
 } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
-import { Icon } from '../../Icon';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { ICalendarMonthProps, ICalendarMonthStyles, ICalendarMonthStyleProps } from './CalendarMonth.types';
 import { getStyles } from './CalendarMonth.styles';
 import { defaultIconStrings, defaultDateTimeFormatterCallbacks } from '../Calendar.base';
@@ -112,7 +112,7 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, {}> {
         </div>
         <FocusZone>
           <div className={classNames.monthGridContainer} role="grid">
-            {strings.shortMonths.map((month, index) => {
+            {strings.shortMonths.map((month: string, index: number) => {
               const indexedMonth = setMonth(navigatedDate, index);
               const isCurrentMonth = this._isCurrentMonth(index, navigatedDate.getFullYear(), today!);
               const isNavigatedMonth = navigatedDate.getMonth() === index;

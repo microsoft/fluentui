@@ -1,5 +1,5 @@
 import { ICalendarStyleProps, ICalendarStyles } from './Calendar.types';
-import { normalize, FontSizes, getFocusStyle } from '../../Styling';
+import { normalize, FontSizes, getFocusStyle } from '@uifabric/Styling';
 
 export const styles = (props: ICalendarStyleProps): ICalendarStyles => {
   const { className, theme, isDayPickerVisible, isMonthPickerVisible, showWeekNumbers } = props;

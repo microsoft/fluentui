@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode, format, classNamesFunction } from '../../../Utilities';
-import { DateRangeType } from '../../../utilities/dateValues/DateValues';
-import { FocusZone } from '../../FocusZone';
-import { Icon } from '../../Icon';
+import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode, format, classNamesFunction } from '@uifabric/utilities';
+import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import {
   addDays,
   addWeeks,
@@ -17,6 +16,7 @@ import {
 } from '../../../utilities/dateMath/DateMath';
 import { ICalendarDayProps, ICalendarDayStyleProps, ICalendarDayStyles } from './CalendarDay.types';
 import { IProcessedStyleSet } from '@uifabric/styling';
+import { DateRangeType } from '../Calendar.types';
 
 const DAYS_IN_WEEK = 7;
 
@@ -117,7 +117,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
           >
             <tbody>
               {this.renderMonthHeaderRow(classNames)}
-              {weeks!.map((week, weekIndex) => this.renderWeekRow(classNames, week, weekIndex))}
+              {weeks!.map((week: IDayInfo[], weekIndex: number) => this.renderWeekRow(classNames, week, weekIndex))}
             </tbody>
           </table>
         </FocusZone>
@@ -125,7 +125,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
     );
   }
 
-  public focus() {
+  public focus(): void {
     if (this.navigatedDay) {
       this.navigatedDay.tabIndex = 0;
       this.navigatedDay.focus();
@@ -197,7 +197,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
     return (
       <tr>
         {showWeekNumbers && <th className={classNames.dayCell} />}
-        {strings.shortDays.map((val, index) => (
+        {strings.shortDays.map((val: string, index: number) => (
           <th
             className={classNames.dayCell}
             scope="col"
@@ -228,7 +228,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
               <span>{weekNumbers[weekIndex]}</span>
             </th>
           )}
-        {week.map((day, dayIndex) => this.renderDayCells(classNames, day, dayIndex, weekIndex))}
+        {week.map((day: IDayInfo, dayIndex: number) => this.renderDayCells(classNames, day, dayIndex, weekIndex))}
       </tr>
     );
   };
@@ -254,7 +254,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
           [classNames.dayOutsideBounds]: !day.isInBounds,
           [classNames.dayOutsideNavigatedMonth]: !day.isInMonth
         })}
-        ref={element => this._setDayCellRef(element, day, isNavigatedDate)}
+        ref={(element: HTMLTableCellElement) => this._setDayCellRef(element, day, isNavigatedDate)}
         onClick={day.isInBounds ? day.onSelected : undefined}
         onMouseOver={this.onMouseOverDay(day)}
         onMouseDown={this.onMouseDownDay(day)}
@@ -272,7 +272,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
           id={isNavigatedDate ? activeDescendantId : undefined}
           aria-selected={day.isInBounds ? day.isSelected : undefined}
           data-is-focusable={allFocusable || (day.isInBounds ? true : undefined)}
-          ref={element => this._setDayRef(element, day, isNavigatedDate)}
+          ref={(element: HTMLButtonElement) => this._setDayRef(element, day, isNavigatedDate)}
           disabled={!allFocusable && !day.isInBounds}
           aria-disabled={!day.isInBounds}
         >
@@ -452,10 +452,10 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
   private _getBoundedDateRange(dateRange: Date[], minDate?: Date, maxDate?: Date): Date[] {
     let boundedDateRange = [...dateRange];
     if (minDate) {
-      boundedDateRange = boundedDateRange.filter(date => compareDatePart(date, minDate as Date) >= 0);
+      boundedDateRange = boundedDateRange.filter((date: Date) => compareDatePart(date, minDate as Date) >= 0);
     }
     if (maxDate) {
-      boundedDateRange = boundedDateRange.filter(date => compareDatePart(date, maxDate as Date) <= 0);
+      boundedDateRange = boundedDateRange.filter((date: Date) => compareDatePart(date, maxDate as Date) <= 0);
     }
     return boundedDateRange;
   }
@@ -474,7 +474,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
     weeks: IDayInfo[][],
     dateRangeType: DateRangeType
   ): IWeekCorners {
-    const weekCornersStyled: any = {};
+    const weekCornersStyled: { [key: string]: string } = {};
     /* need to handle setting all of the corners on arbitrarily shaped blobs
           __
        __|A |
@@ -537,7 +537,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
     const { dateRangeType, firstDayOfWeek, workWeekDays } = this.props;
     const dateRange = getDateRangeArray(date1, dateRangeType, firstDayOfWeek, workWeekDays);
 
-    return dateRange.filter(date => date.getTime() === date2.getTime()).length > 0;
+    return dateRange.filter((date: Date) => date.getTime() === date2.getTime()).length > 0;
   };
 
   private _getHighlightedCornerStyle(weekCorners: IWeekCorners, dayIndex: number, weekIndex: number): string {
@@ -558,16 +558,16 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
     const { dateRangeType, firstDayOfWeek, workWeekDays } = this.props;
 
     // gets all the dates for the given date range type that are in the same date range as the given day
-    const dateRange = getDateRangeArray(day.originalDate, dateRangeType, firstDayOfWeek, workWeekDays).map(date => date.getTime());
+    const dateRange = getDateRangeArray(day.originalDate, dateRangeType, firstDayOfWeek, workWeekDays).map((date: Date) => date.getTime());
 
     // gets all the day refs for the given dates
     const dayInfosInRange = weeks!.reduce((accumulatedValue: IDayInfo[], currentWeek: IDayInfo[]) => {
-      return accumulatedValue.concat(currentWeek.filter(weekDay => dateRange.includes(weekDay.originalDate.getTime())));
+      return accumulatedValue.concat(currentWeek.filter((weekDay: IDayInfo) => dateRange.includes(weekDay.originalDate.getTime())));
     }, []);
 
     let dayRefs: (HTMLElement | null)[] = [];
     if (this.days) {
-      dayRefs = dayInfosInRange.map(dayInfo => this.days[dayInfo.key]);
+      dayRefs = dayInfosInRange.map((dayInfo: IDayInfo) => this.days[dayInfo.key]);
     }
 
     return dayRefs;
@@ -577,7 +577,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
     return (ev: React.MouseEvent<HTMLElement>) => {
       const dayRefs = this.getRefsInRangeOfDay(day);
 
-      dayRefs.forEach(dayRef => {
+      dayRefs.forEach((dayRef: HTMLElement) => {
         if (dayRef) {
           dayRef.classList.add('ms-CalendarDay-hoverStyle');
         }
@@ -589,7 +589,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
     return (ev: React.MouseEvent<HTMLElement>) => {
       const dayRefs = this.getRefsInRangeOfDay(day);
 
-      dayRefs.forEach(dayRef => {
+      dayRefs.forEach((dayRef: HTMLElement) => {
         if (dayRef) {
           dayRef.classList.add('ms-CalendarDay-pressedStyle');
         }
@@ -601,7 +601,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
     return (ev: React.MouseEvent<HTMLElement>) => {
       const dayRefs = this.getRefsInRangeOfDay(day);
 
-      dayRefs.forEach(dayRef => {
+      dayRefs.forEach((dayRef: HTMLElement) => {
         if (dayRef) {
           dayRef.classList.remove('ms-CalendarDay-pressedStyle');
         }
@@ -613,7 +613,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
     return (ev: React.MouseEvent<HTMLElement>) => {
       const dayRefs = this.getRefsInRangeOfDay(day);
 
-      dayRefs.forEach(dayRef => {
+      dayRefs.forEach((dayRef: HTMLElement) => {
         if (dayRef) {
           dayRef.classList.remove('ms-CalendarDay-hoverStyle');
           dayRef.classList.remove('ms-CalendarDay-pressedStyle');

@@ -13,8 +13,8 @@ import { CalendarDay } from './CalendarDay/CalendarDay';
 import { CalendarMonth } from './CalendarMonth/CalendarMonth';
 import { ICalendarDay } from './CalendarDay/CalendarDay.types';
 import { ICalendarMonth } from './CalendarMonth/CalendarMonth.types';
-import { css, BaseComponent, KeyCodes, createRef, classNamesFunction } from '../../Utilities';
-import { IProcessedStyleSet } from '../../Styling';
+import { css, BaseComponent, KeyCodes, classNamesFunction } from '@uifabric/Utilities';
+import { IProcessedStyleSet } from '@uifabric/Styling';
 
 const getClassNames = classNamesFunction<ICalendarStyleProps, ICalendarStyles>();
 
@@ -85,8 +85,8 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
     allFocusable: false
   };
 
-  private _dayPicker = createRef<ICalendarDay>();
-  private _monthPicker = createRef<ICalendarMonth>();
+  private _dayPicker = React.createRef<ICalendarDay>();
+  private _monthPicker = React.createRef<ICalendarMonth>();
 
   private _focusOnUpdate: boolean;
 
@@ -220,7 +220,7 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
     );
   }
 
-  public focus() {
+  public focus(): void {
     if (this.state.isDayPickerVisible && this._dayPicker.current) {
       this._dayPicker.current.focus();
     } else if (this.state.isMonthPickerVisible && this._monthPicker.current) {

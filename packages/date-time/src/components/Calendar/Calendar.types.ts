@@ -1,6 +1,6 @@
 import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
-import { IRefObject, IBaseProps, IStyleFunctionOrObject } from '../../Utilities';
-import { IStyle, ITheme } from '../../Styling';
+import { IRefObject, IBaseProps, IStyleFunctionOrObject } from '@uifabric/Utilities';
+import { IStyle, ITheme } from '@uifabric/Styling';
 import { ICalendarDayProps } from './CalendarDay/CalendarDay.types';
 import { ICalendarMonthProps } from './CalendarMonth/CalendarMonth.types';
 

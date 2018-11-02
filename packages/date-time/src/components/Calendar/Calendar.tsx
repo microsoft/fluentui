@@ -1,4 +1,4 @@
-import { styled } from '../../Utilities';
+import { styled } from '@uifabric/Utilities';
 import { ICalendarProps, ICalendarStyleProps, ICalendarStyles } from './Calendar.types';
 import { CalendarBase } from './Calendar.base';
 import { styles } from './Calendar.styles';

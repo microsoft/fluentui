@@ -178,7 +178,7 @@ describe('Calendar', () => {
       ReactTestUtils.Simulate.click(day);
       expect(lastSelectedDateRange).not.toBeNull();
       expect(lastSelectedDateRange!.length).toEqual(7);
-      lastSelectedDateRange!.forEach((val, i) => expect(compareDates(val, new Date(2017, 2, 7 + i))).toEqual(true));
+      lastSelectedDateRange!.forEach((val: Date, i: number) => expect(compareDates(val, new Date(2017, 2, 7 + i))).toEqual(true));
     });
 
     it('Verify navigate to day in different month', () => {
@@ -189,7 +189,7 @@ describe('Calendar', () => {
       ReactTestUtils.Simulate.click(day);
       expect(lastSelectedDateRange).not.toBeNull();
       expect(lastSelectedDateRange!.length).toEqual(7);
-      lastSelectedDateRange!.forEach((val, i) => expect(compareDates(val, addDays(firstDate, i))).toEqual(true));
+      lastSelectedDateRange!.forEach((val: Date, i: number) => expect(compareDates(val, addDays(firstDate, i))).toEqual(true));
     });
 
     it('Verify class name', () => {
@@ -222,9 +222,9 @@ describe('Calendar', () => {
 
       const days = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-day-button');
 
-      expect(days.slice(0, 7).every(e => e.classList.contains('ms-DatePicker-day--disabled'))).toBe(true);
-      expect(days.slice(8, 26).every(e => e.classList.contains('ms-DatePicker-day--disabled'))).toBe(false);
-      expect(days.slice(27).every(e => e.classList.contains('ms-DatePicker-day--disabled'))).toBe(true);
+      expect(days.slice(0, 7).every((e: Element) => e.classList.contains('ms-DatePicker-day--disabled'))).toBe(true);
+      expect(days.slice(8, 26).every((e: Element) => e.classList.contains('ms-DatePicker-day--disabled'))).toBe(false);
+      expect(days.slice(27).every((e: Element) => e.classList.contains('ms-DatePicker-day--disabled'))).toBe(true);
     });
 
     it('out-of-bounds days should not be part of selected range', () => {
@@ -252,7 +252,7 @@ describe('Calendar', () => {
       const days = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-day-button');
       ReactTestUtils.Simulate.click(days[18]);
       expect(lastSelectedDateRange!.length).toEqual(19);
-      lastSelectedDateRange!.forEach((val, i) => expect(compareDates(val, addDays(minDate, i))).toEqual(true));
+      lastSelectedDateRange!.forEach((val: Date, i: number) => expect(compareDates(val, addDays(minDate, i))).toEqual(true));
     });
   });
 
@@ -295,9 +295,9 @@ describe('Calendar', () => {
 
     const months = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-monthOption');
 
-    expect(months.slice(0, 1).every(e => e.classList.contains('ms-DatePicker-monthOption--disabled'))).toBe(true);
-    expect(months.slice(2, 9).some(e => e.classList.contains('ms-DatePicker-monthOption--disabled'))).toBe(false);
-    expect(months.slice(10).every(e => e.classList.contains('ms-DatePicker-monthOption--disabled'))).toBe(true);
+    expect(months.slice(0, 1).every((e: Element) => e.classList.contains('ms-DatePicker-monthOption--disabled'))).toBe(true);
+    expect(months.slice(2, 9).some((e: Element) => e.classList.contains('ms-DatePicker-monthOption--disabled'))).toBe(false);
+    expect(months.slice(10).every((e: Element) => e.classList.contains('ms-DatePicker-monthOption--disabled'))).toBe(true);
   });
 
   it('navigators to out-of-bounds years should be disabled', () => {
