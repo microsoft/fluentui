@@ -54,6 +54,34 @@ export interface ILayoutProps {
   loading?: boolean;
 }
 
+/**
+ * Internal interface to check whether if a content area has dataviz
+ */
+export interface IContentAreaHasDataviz {
+  contentArea1HasDataviz: boolean;
+
+  contentArea2HasDataviz: boolean;
+}
+
+/**
+ * internal interface for card layout
+ * The hasDataviz variable denotes whether a particular content area has dataviz in it and is used for appropriate styling
+ */
+
+export interface IContentAreasInfo {
+  contentAreas: JSX.Element[];
+
+  hasDataviz: IContentAreaHasDataviz;
+}
+
+export interface ILayoutStyleProps {
+  header?: ICardHeaderProps;
+
+  cardSize?: CardSize;
+
+  hasDataviz?: IContentAreaHasDataviz;
+}
+
 export interface ILayoutStyles {
   /**
    * Style set for the layout of the card
