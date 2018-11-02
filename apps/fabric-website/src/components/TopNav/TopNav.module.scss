@@ -40,17 +40,26 @@ $linkPadding: 16px;
 .homeLinkSection,
 .linkListSection {
   display: flex;
+  align-items: center;
 }
 
 .links,
 .link {
   height: $TopNav-height;
+
+  &.isStacked {
+    height: initial;
+  }
 }
 
 .links {
   display: flex;
   flex-direction: row;
   margin: 0;
+
+  &.isStacked {
+    flex-direction: column;
+  }
 }
 
 .link {
@@ -65,11 +74,10 @@ $linkPadding: 16px;
     align-items: center;
     white-space: nowrap;
     position: relative;
-    top: 2px;
     height: $TopNav-height;
     padding: 0 $linkPadding;
 
-    @include focus-border(-6px);
+    @include focus-border(2px);
 
     &:hover .linkTitle {
       border-bottom: 2px solid black;
@@ -83,10 +91,32 @@ $linkPadding: 16px;
   &.isActive a {
     border-color: $ms-color-neutralDark;
   }
+
+  &.isStacked {
+    a {
+      width: 100%;
+      border-bottom: 1px solid $ms-color-neutralLight;
+
+      &:hover {
+        border-color: $ms-color-neutralLight;
+        background-color: $ms-color-neutralLighterAlt;
+      }
+
+      .linkTitle {
+        border: 0;
+      }
+    }
+
+    &:first-child a {
+      border-top: 1px solid $ms-color-neutralLight;
+    }
+  }
 }
 
 .linkTitle {
   border-bottom: 2px solid transparent;
+  position: relative;
+  bottom: -2px;
 }
 
 .isHomePage {
@@ -98,29 +128,31 @@ $linkPadding: 16px;
     font-size: $ms-font-size-l;
     font-weight: $ms-font-weight-semibold;
     color: $ms-color-neutralDark;
-    line-height: 1;
     display: flex;
     align-items: center;
     height: $TopNav-height;
-
-    @include focus-border(-6px);
   }
 }
 
 .isFabricLink {
-  padding-left: 16px;
+  margin-left: 16px;
+  padding: 0 $linkPadding;
+  @include focus-border(2px);
 
   &:before {
     content: '|';
     font-size: 24px;
-    margin-right: 16px;
+    position: relative;
+    left: -16px;
     font-weight: normal;
   }
 }
 
 .microsoftLogo {
-  width: 108px;
-  padding: 0;
+  width: 114px;
+  padding: 6px;
+  margin: auto;
+  @include focus-border(2px);
 
   img {
     width: 100%;
