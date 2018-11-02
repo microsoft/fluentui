@@ -89,7 +89,7 @@ export class App extends React.Component<IAppProps, any> {
       this.setState({
         isAttached: isAttached,
         navHeight: navHeight,
-        isSmallScreen: window.innerWidth <= UHFBreakPoints.mobile
+        isSmallScreen: window.innerWidth < UHFBreakPoints.mobile
       });
     }, 100);
   };
