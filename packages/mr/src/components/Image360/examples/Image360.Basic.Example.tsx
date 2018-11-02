@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Scene, FabricSceneEntity, Video360, Video360Mode } from '@uifabric/mr';
+import { Scene, FabricSceneEntity, Image360 } from '@uifabric/mr';
 
 class MySceneEntity extends FabricSceneEntity {
   /**
@@ -12,16 +12,15 @@ class MySceneEntity extends FabricSceneEntity {
     const camera = new BABYLON.FreeCamera('camera1', new BABYLON.Vector3(0, 1, 0), this.context.scene);
     camera.attachControl(this.canvas, false);
 
-    // 360 Video player
-    const video = new Video360('https://yoda.blob.core.windows.net/videos/uptale360.mp4');
-    this.mountChild(video);
-    video.updateProps({
+    // 360 Image viewer
+    const image = new Image360('https://casuallypersistent.blob.core.windows.net/photos/536014562.478292.jpg');
+    this.mountChild(image);
+    image.updateProps({
       description: 'Loading...',
       menuVisible: true,
-      onClick: () => video.updateProps({ mode: Video360Mode.Play }),
-      onReady: () => video.updateProps({ menuVisible: false })
+      onReady: () => image.updateProps({ menuVisible: false })
     });
   }
 }
 
-export const Video360BasicExample = () => <Scene sceneEntity={new MySceneEntity()} />;
+export const Image360BasicExample = () => <Scene sceneEntity={new MySceneEntity()} />;

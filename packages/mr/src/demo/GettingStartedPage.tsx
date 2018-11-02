@@ -10,16 +10,16 @@ export class GettingStartedPage extends React.Component<{}, {}> {
     return (
       <div className="ms-GettingStartedPage">
         <div className="ms-GettingStartedPage-banner">
-          <h1>Office UI Fabric React Mr!</h1>
-          <h3>A library of reusable, generic React components</h3>
+          <h1>Fabric - Mixed Reality!</h1>
+          <h3>A library of reusable, generic 3D components</h3>
         </div>
 
         <h2>Overview</h2>
 
         <p>
-          Fabric React components are built as production ready components to be used in Microsoft products, but generalized, documented,
-          and reusable. This enables us and our partners to more easily build great applications without spending a ton of time implementing
-          the same things over and over.
+          Fabric MR components are built as production ready components to be used in Microsoft products, but generalized, documented, and
+          reusable. This enables us and our partners to more easily build great applications without spending a ton of time implementing the
+          same things over and over.
         </p>
 
         <p>

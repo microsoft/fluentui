@@ -1,10 +1,10 @@
 import * as BABYLON from 'babylonjs';
 import { Entity } from '../../common/nucleus3d/core/Entity';
 import { ContextualMenu } from '../ContextualMenu/ContextualMenu';
-import { IVideo360, Video360Mode } from './Video360.types';
+import { IImage360 } from './Image360.types';
 
-export class Video360 extends Entity<IVideo360> {
-  private _video: BABYLON.VideoDome;
+export class Image360 extends Entity<IImage360> {
+  private _image: BABYLON.PhotoDome;
   private _menu: ContextualMenu;
   private _url: string;
 
@@ -13,16 +13,9 @@ export class Video360 extends Entity<IVideo360> {
     this._url = url;
   }
 
-  protected onPropsUpdated(oldProps: IVideo360): void {
+  protected onPropsUpdated(oldProps: IImage360): void {
     if (oldProps.actions !== this.props.actions) {
       this.props.actions && this._menu.updateActions(this.props.actions);
-    }
-    if (oldProps.mode !== this.props.mode) {
-      if (this.props.mode === Video360Mode.Play) {
-        this._video.videoTexture.video.play();
-      } else {
-        this._video.videoTexture.video.pause();
-      }
     }
     if (oldProps.description !== this.props.description) {
       this._menu.updateProps({ description: this.props.description });
@@ -37,12 +30,11 @@ export class Video360 extends Entity<IVideo360> {
   }
 
   protected didMount(): void {
-    this._video = new BABYLON.VideoDome(
-      'Video360',
-      [this._url],
+    this._image = new BABYLON.PhotoDome(
+      'Image360',
+      this._url,
       {
-        resolution: 16,
-        clickToPlay: false
+        resolution: 16
       },
       this.context.scene
     );
@@ -51,7 +43,7 @@ export class Video360 extends Entity<IVideo360> {
     this._menu.node.position = this.context.scene.activeCamera!.position.add(new BABYLON.Vector3(0, 0, 1.5));
     this._menu.node.scaling.scaleInPlace(2);
 
-    this._video.onReady = () => this.props.onReady && this.props.onReady();
+    this._image.onReady = () => this.props.onReady && this.props.onReady();
 
     this.context.scene.onPointerUp = (evt: PointerEvent, pickInfo: BABYLON.PickingInfo) => {
       if (pickInfo && pickInfo.ray) {

@@ -27,21 +27,21 @@ export class ScenePage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         /* tslint:enable:max-line-length */
-        bestPractices={<div />}
-        dos={
-          <div>
-            <ul>
-              <li />
-            </ul>
-          </div>
-        }
-        donts={
-          <div>
-            <ul>
-              <li />
-            </ul>
-          </div>
-        }
+        // bestPractices={<div />}
+        // dos={
+        //   <div>
+        //     <ul>
+        //       <li />
+        //     </ul>
+        //   </div>
+        // }
+        // donts={
+        //   <div>
+        //     <ul>
+        //       <li />
+        //     </ul>
+        //   </div>
+        // }
         isHeaderVisible={this.props.isHeaderVisible}
       />
     );

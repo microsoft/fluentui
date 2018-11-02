@@ -3,7 +3,7 @@ import * as React from 'react';
 import { App as AppBase, IAppDefinition, IAppProps } from '@uifabric/example-app-base';
 
 export const AppDefinition: IAppDefinition = {
-  appTitle: 'Fabric - React',
+  appTitle: 'Fabric - Mixed Reality',
 
   testPages: [],
   examplePages: [
@@ -14,6 +14,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'ContextualMenu',
           name: 'ContextualMenu',
           url: '#/examples/contextualmenu'
+        },
+        {
+          component: require<any>('../components/Image360/Image360Page').Image360Page,
+          key: 'Image360',
+          name: 'Image360',
+          url: '#/examples/image360'
         },
         {
           component: require<any>('../components/Panel/PanelPage').PanelPage,
