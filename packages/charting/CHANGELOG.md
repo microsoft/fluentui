@@ -1,6 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 01 Nov 2018 12:31:45 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Nov 2018 12:28:54 GMT and should not be manually modified.
+
+## 0.27.0
+Fri, 02 Nov 2018 12:28:54 GMT
+
+### Minor changes
+
+- Changes to line chart component, adding optional prop for users to which they can pass a html element based on which the dataviz will scale. This helps when the parent element is formed using flex or after a timeout. Also eliminates the glitch feel.
+
+### Patches
+
+- css changes for legends component
 
 ## 0.26.3
 Thu, 01 Nov 2018 12:31:45 GMT
