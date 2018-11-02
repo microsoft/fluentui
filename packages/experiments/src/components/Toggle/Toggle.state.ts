@@ -2,7 +2,6 @@ import * as React from 'react';
 import { IToggleProps, IToggleViewProps } from './Toggle.types';
 import { BaseState } from '../../utilities/BaseState';
 
-// Internal state will most likely include a subset of your ViewProps. This template just equates them to start with.
 export type IToggleState = Pick<IToggleViewProps, 'checked' | 'onChange' | 'onClick'>;
 
 export class ToggleState extends BaseState<IToggleProps, IToggleViewProps, IToggleState> {

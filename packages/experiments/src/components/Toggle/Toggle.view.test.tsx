@@ -4,8 +4,6 @@ import * as renderer from 'react-test-renderer';
 
 import { Toggle } from './Toggle';
 
-// Views are just pure functions with no statefulness, which means they can get full code coverage
-//    with snapshot tests exercising permutations of the props.
 describe('ToggleView', () => {
   it('renders a label', () => {
     const component = mount(<Toggle label="Label" />);
