@@ -46,6 +46,10 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     return this._root.current;
   }
 
+  public get placeholder(): HTMLDivElement | null {
+    return this._placeHolder.current;
+  }
+
   public get stickyContentTop(): HTMLDivElement | null {
     return this._stickyContentTop.current;
   }
@@ -137,19 +141,30 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     }
 
     return (
-      <div ref={this._root}>
+      <div ref={this._root} data-id="root">
         {this.canStickyTop && (
-          <div ref={this._stickyContentTop} aria-hidden={!isStickyTop} style={{ pointerEvents: isStickyTop ? 'auto' : 'none' }}>
+          <div
+            data-id="stickycontenttop"
+            ref={this._stickyContentTop}
+            aria-hidden={!isStickyTop}
+            style={{ pointerEvents: isStickyTop ? 'auto' : 'none' }}
+          >
             <div style={this._getStickyPlaceholderHeight(isStickyTop)} />
           </div>
         )}
         {this.canStickyBottom && (
-          <div ref={this._stickyContentBottom} aria-hidden={!isStickyBottom} style={{ pointerEvents: isStickyBottom ? 'auto' : 'none' }}>
+          <div
+            data-id="stickycontentbottom"
+            ref={this._stickyContentBottom}
+            aria-hidden={!isStickyBottom}
+            style={{ pointerEvents: isStickyBottom ? 'auto' : 'none' }}
+          >
             <div style={this._getStickyPlaceholderHeight(isStickyBottom)} />
           </div>
         )}
-        <div style={this._getNonStickyPlaceholderHeight()} ref={this._placeHolder}>
+        <div style={this._getNonStickyPlaceholderHeight()} data-id="placeholder" ref={this._placeHolder}>
           <div
+            data-id="nonstickycontent"
             ref={this._nonStickyContent}
             className={isStickyTop || isStickyBottom ? stickyClassName : undefined}
             style={this._getContentStyles(isStickyTop || isStickyBottom)}
@@ -168,8 +183,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   }
 
   public resetSticky(): void {
-    if (this.nonStickyContent && this.root) {
-      this.root.appendChild(this.nonStickyContent);
+    if (this.nonStickyContent && this.placeholder) {
+      this.placeholder.appendChild(this.nonStickyContent);
     }
   }
 
