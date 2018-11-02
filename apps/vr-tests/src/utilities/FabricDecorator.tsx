@@ -6,31 +6,41 @@ import { Fabric } from 'office-ui-fabric-react';
 
 // tslint:disable:jsx-ban-props
 export const FabricDecorator = story => (
-  <div className="testWrapper" style={{ padding: '10px', overflow: 'hidden' }}>
-    {story()}
+  <div style={{ display: 'flex' }}>
+    <div className="testWrapper" style={{ padding: '10px', overflow: 'hidden' }}>
+      {story()}
+    </div>
   </div>
 );
 
 export const FabricDecoratorTall = story => (
-  <div className="testWrapper" style={{ padding: '10px 10px 120px' }}>
-    {story()}
+  <div style={{ display: 'flex' }}>
+    <div className="testWrapper" style={{ padding: '10px 10px 120px' }}>
+      {story()}
+    </div>
   </div>
 );
 
 export const FabricDecoratorTallFixedWdith = story => (
-  <div className="testWrapper" style={{ padding: '10px 10px 120px', width: '300px' }}>
-    {story()}
+  <div style={{ display: 'flex' }}>
+    <div className="testWrapper" style={{ padding: '10px 10px 120px', width: '300px' }}>
+      {story()}
+    </div>
   </div>
 );
 
 export const FabricDecoratorFixedWidth = story => (
-  <div className="testWrapper" style={{ padding: '10px', width: '300px' }}>
-    {story()}
+  <div style={{ display: 'flex' }}>
+    <div className="testWrapper" style={{ padding: '10px', width: '300px' }}>
+      {story()}
+    </div>
   </div>
 );
 
 export const FabricDecoratorFullWidth = story => (
-  <div className="testWrapper" style={{ padding: '10px', width: '100%', overflow: 'hidden' }}>
-    {story()}
+  <div style={{ display: 'flex' }}>
+    <div className="testWrapper" style={{ padding: '10px', width: '100%', overflow: 'hidden' }}>
+      {story()}
+    </div>
   </div>
 );
