@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IComponent, IStyleableComponentProps } from '../../Foundation';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { IComponentAs } from '../../Utilities';
+import { IComponentAs, IRefObject } from '../../Utilities';
 
 export type IToggleComponent = IComponent<IToggleProps, IToggleViewProps, IToggleStyles>;
 
@@ -14,6 +14,12 @@ export interface IToggleProps extends IStyleableComponentProps<IToggleViewProps,
    * Render the root element as another type.
    */
   as?: IComponentAs<React.HTMLAttributes<HTMLElement>>;
+
+  /**
+   * Optional callback to access the IToggleComponent interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: IRefObject<IToggleComponent>;
 
   /**
    * A label for the toggle.
@@ -37,7 +43,7 @@ export interface IToggleProps extends IStyleableComponentProps<IToggleViewProps,
 
   /**
    * Initial state of the toggle. If you want the toggle to maintain its own state, use this. Otherwise refer to `checked`.
-   * @default true
+   * @default false
    */
   defaultChecked?: boolean;
 
@@ -56,36 +62,27 @@ export interface IToggleProps extends IStyleableComponentProps<IToggleViewProps,
    * Callback issued when the value changes.
    */
   onChange?: (event: React.MouseEvent<HTMLElement>, checked?: boolean) => void;
+
+  /**
+   * Optional keytip for this toggle
+   */
+  keytipProps?: IKeytipProps;
 }
 
-export type IToggleViewProps = Pick<IToggleProps, 'disabled' | 'onChange'> &
-  Required<Pick<IToggleProps, 'label' | 'onText' | 'offText' | 'ariaLabel' | 'checked'>> & {
-    /**
-     * Render the root element as another type.
-     */
-    as?: IComponentAs<React.HTMLAttributes<HTMLElement>>;
+export type IToggleViewProps = Pick<
+  IToggleProps,
+  'as' | 'componentRef' | 'label' | 'onText' | 'offText' | 'ariaLabel' | 'checked' | 'disabled' | 'onChange' | 'keytipProps'
+> & {
+  /**
+   * Toggle input callback triggered by mouse and keyboard input.
+   */
+  onClick?: (ev: React.MouseEvent<Element>) => void;
 
-    /**
-     * Optional callback to access the IToggle interface. Use this instead of ref for accessing
-     * the public methods and properties of the component.
-     */
-    componentRef?: React.RefObject<HTMLElement>;
-
-    /**
-     * Toggle input callback triggered by mouse and keyboard input.
-     */
-    onClick?: (ev: React.MouseEvent<Element>) => void;
-
-    /**
-     * Optional keytip for this toggle
-     */
-    keytipProps?: IKeytipProps;
-
-    /**
-     * Root element class name.
-     */
-    className?: string;
-  };
+  /**
+   * Root element class name.
+   */
+  className?: string;
+};
 
 /**
  * Styles for the Toggle component.

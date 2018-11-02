@@ -1,29 +1,43 @@
 import * as React from 'react';
+import { mount } from 'enzyme';
 import * as renderer from 'react-test-renderer';
 
-import { IToggleStyles } from './Toggle.types';
-import { ToggleView } from './Toggle.view';
-import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
-
-// These tests will ensure that your styles regions have classname representation in snapshot output.
-// (Also, classNames is a required prop for views, so we have to supply it for tests.)
-const testToggleClassNames: IProcessedStyleSet<IToggleStyles> = {
-  root: 'test-cn-root',
-  label: 'test-cn-label',
-  container: 'test-cn-container',
-  pill: 'test-cn-pill',
-  thumb: 'test-cn-thumb',
-  text: 'test-cn-text',
-  subComponentStyles: {}
-};
+import { Toggle } from './Toggle';
 
 // Views are just pure functions with no statefulness, which means they can get full code coverage
 //    with snapshot tests exercising permutations of the props.
 describe('ToggleView', () => {
-  it('renders correctly', () => {
-    const tree = renderer
-      .create(<ToggleView label="LabelProp" onText="On" offText="Off" checked={true} classNames={testToggleClassNames} />)
-      .toJSON();
+  it('renders a label', () => {
+    const component = mount(<Toggle label="Label" />);
+    expect(
+      component
+        .find('.ms-Toggle-label')
+        .first()
+        .text()
+    ).toEqual('Label');
+  });
+
+  it('renders toggle correctly', () => {
+    const component = renderer.create(<Toggle label="Label" />);
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('renders aria-label', () => {
+    const component = mount(<Toggle label="Label" ariaLabel="AriaLabel" />);
+
+    expect(
+      component
+        .find('button')
+        .first()
+        .getDOMNode()
+        .getAttribute('aria-label')
+    ).toEqual('AriaLabel');
+  });
+
+  it(`doesn't render a label element if none is provided`, () => {
+    const component = mount(<Toggle checked={false} />);
+
+    expect(component.find('label').length).toEqual(0);
   });
 });

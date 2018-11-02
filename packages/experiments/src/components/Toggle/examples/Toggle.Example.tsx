@@ -4,7 +4,7 @@ import { Toggle } from '../index';
 export class ToggleExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
-      <div style={{ padding: '2px' }}>
+      <div>
         <Toggle defaultChecked={true} label="Enabled and checked" onText="On" offText="Off" onChange={this._onChange} />
         <Toggle defaultChecked={false} label="Enabled and unchecked" onText="On" offText="Off" onChange={this._onChange} />
         <Toggle defaultChecked={true} disabled={true} label="Disabled and checked" onText="On" offText="Off" />

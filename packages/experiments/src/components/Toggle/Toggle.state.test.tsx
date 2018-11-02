@@ -1,20 +1,101 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
-import { ToggleState } from './Toggle.state';
+import * as sinon from 'sinon';
 
-const testView = () => {
-  return <div />;
-};
+import { Toggle } from './Toggle';
 
-// States do not generate rendered output so unit tests test that state initializes and reacts
-//  to inputs and events as expected.
-describe('ToggleState', () => {
-  it('initializes default state correctly', () => {
-    const testToggleState = mount(<ToggleState renderView={testView} />);
+it('can call the callback on a change of toggle', () => {
+  let isToggledValue;
+  const callback = (ev: React.MouseEvent<HTMLElement>, isToggled: boolean) => {
+    isToggledValue = isToggled;
+  };
 
-    expect(testToggleState.state('label')).toBe('Default Text');
-    expect(testToggleState.state('onText')).toBe('On');
-    expect(testToggleState.state('offText')).toBe('Off');
-    expect(testToggleState.state('checked')).toBe(true);
-  });
+  const component = mount<React.ReactInstance>(<Toggle label="Label" onChange={callback} />);
+
+  expect(
+    component
+      .find('button')
+      .first()
+      .getDOMNode()
+      .getAttribute('aria-checked')
+  ).toEqual('false');
+
+  component
+    .find('button')
+    .first()
+    .simulate('click');
+
+  expect(isToggledValue).toEqual(true);
+
+  expect(
+    component
+      .find('button')
+      .first()
+      .getDOMNode()
+      .getAttribute('aria-checked')
+  ).toEqual('true');
+});
+
+it(`doesn't update the state if the user provides checked`, () => {
+  const component = mount(<Toggle label="Label" checked={false} />);
+
+  expect(
+    component
+      .find('button')
+      .first()
+      .getDOMNode()
+      .getAttribute('aria-checked')
+  ).toEqual('false');
+
+  component
+    .find('button')
+    .first()
+    .simulate('click');
+
+  expect(
+    component
+      .update()
+      .find('button')
+      .first()
+      .getDOMNode()
+      .getAttribute('aria-checked')
+  ).toEqual('false');
+});
+
+it(`doesn't render a label element if none is provided`, () => {
+  const component = mount(<Toggle checked={false} />);
+
+  expect(component.find('label').length).toEqual(0);
+});
+
+it(`doesn't trigger onSubmit when placed inside a form`, () => {
+  const onSubmit = sinon.spy();
+
+  const wrapper = mount(
+    <form
+      action="#"
+      // tslint:disable-next-line:jsx-no-lambda
+      onSubmit={e => {
+        onSubmit();
+        e.preventDefault();
+      }}
+    >
+      <Toggle
+        // tslint:disable-next-line:jsx-no-lambda
+        label="Label"
+      />
+    </form>
+  );
+  const button: any = wrapper.find('button');
+
+  // simulate to change toggle state
+  button.simulate('click');
+
+  expect(
+    button
+      .first()
+      .getDOMNode()
+      .getAttribute('aria-checked')
+  ).toEqual('true');
+  expect(onSubmit.called).toEqual(false);
 });
