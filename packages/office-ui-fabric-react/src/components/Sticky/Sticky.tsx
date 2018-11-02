@@ -7,7 +7,7 @@ import { IScrollablePaneContext } from '../ScrollablePane/ScrollablePane.base';
 export interface IStickyState {
   isStickyTop: boolean;
   isStickyBottom: boolean;
-  distanceFromTop: number;
+  distanceFromTopOfPane: number;
 }
 
 export interface IStickyContext {
@@ -39,7 +39,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     this.state = {
       isStickyTop: false,
       isStickyBottom: false,
-      distanceFromTop: 0
+      distanceFromTopOfPane: 0
     };
     this.distanceFromTop = 0;
   }
@@ -109,7 +109,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       scrollablePane.updateStickyRefHeights();
     }
 
-    if (this.state.distanceFromTop !== prevState.distanceFromTop) {
+    if (this.state.distanceFromTopOfPane !== prevState.distanceFromTopOfPane) {
       scrollablePane.sortSticky(this, true);
     }
   }
@@ -119,18 +119,16 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       return true;
     }
 
-    const { isStickyTop, isStickyBottom, distanceFromTop } = this.state;
+    const { isStickyTop, isStickyBottom, distanceFromTopOfPane } = this.state;
 
     if (this._nonStickyContent && this._nonStickyContent.current && this._placeHolder && this._placeHolder.current) {
-      const nonStickyContentHeight = this._nonStickyContent.current.offsetHeight;
-
       return (
         isStickyTop !== nextState.isStickyTop ||
         isStickyBottom !== nextState.isStickyBottom ||
-        distanceFromTop !== nextState.distanceFromTop ||
+        distanceFromTopOfPane !== nextState.distanceFromTopOfPane ||
         this.props.stickyPosition !== nextProps.stickyPosition ||
         this.props.children !== nextProps.children ||
-        nonStickyContentHeight !== this._placeHolder.current.offsetHeight
+        this._nonStickyContent.current.offsetHeight !== this._placeHolder.current.offsetHeight
       );
     }
 
@@ -185,7 +183,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   public setDistanceFromTop(container: HTMLDivElement): void {
     this.distanceFromTop = this._getNonStickyDistanceFromTop(container);
     this.setState({
-      distanceFromTop: this._getNonStickyDistanceFromTop(container)
+      distanceFromTopOfPane: this._getNonStickyDistanceFromTop(container)
     });
   }
 
@@ -237,7 +235,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       this.setState({
         isStickyTop: this.canStickyTop && isStickyTop,
         isStickyBottom: isStickyBottom,
-        distanceFromTop: this.distanceFromTop
+        distanceFromTopOfPane: this.distanceFromTop
       });
     }
   };
