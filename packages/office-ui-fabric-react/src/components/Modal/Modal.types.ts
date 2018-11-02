@@ -3,6 +3,7 @@ import { ModalBase } from './Modal.base';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import { IStyle, ITheme } from '../../Styling';
+import { ILayerProps } from '../../Layer';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IModal {
@@ -50,6 +51,11 @@ export interface IModalProps extends React.Props<ModalBase>, IWithResponsiveMode
    * A callback function which is called after the Modal is dismissed and the animation is complete.
    */
   onDismissed?: () => any;
+
+  /**
+   * Props to be passed through to Layer
+   */
+  layerProps?: ILayerProps;
 
   /**
    * Whether the dialog can be light dismissed by clicking outside the dialog (on the overlay).

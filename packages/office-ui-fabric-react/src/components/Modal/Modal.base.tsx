@@ -4,11 +4,15 @@ import { FocusTrapZone, IFocusTrapZone } from '../FocusTrapZone/index';
 import { animationDuration, getOverlayStyles } from './Modal.styles';
 import { IModalProps, IModalStyleProps, IModalStyles, IModal } from './Modal.types';
 import { Overlay } from '../../Overlay';
-import { Layer } from '../../Layer';
+import { ILayerProps, Layer } from '../../Layer';
 import { Popup } from '../Popup/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 
 // @TODO - need to change this to a panel whenever the breakpoint is under medium (verify the spec)
+
+const DefaultLayerProps: ILayerProps = {
+  eventBubblingEnabled: false
+};
 
 export interface IDialogState {
   isOpen?: boolean;
@@ -116,13 +120,18 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
     } = this.props;
     const { isOpen, isVisible, hasBeenOpened, modalRectangleTop } = this.state;
 
+    const layerProps = {
+      ...DefaultLayerProps,
+      ...this.props.layerProps
+    };
+
     if (!isOpen) {
       return null;
     }
 
     const classNames = getClassNames(styles, {
       theme: theme!,
-      className,
+      className: className || layerProps!.className,
       containerClassName,
       scrollableContentClassName,
       isOpen,
@@ -135,7 +144,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
     // @temp tuatology - Will adjust this to be a panel at certain breakpoints
     if (responsiveMode! >= ResponsiveMode.small) {
       return (
-        <Layer onLayerDidMount={onLayerDidMount}>
+        <Layer {...layerProps} onLayerDidMount={onLayerDidMount}>
           <Popup
             role={isBlocking ? 'alertdialog' : 'dialog'}
             ariaLabelledBy={titleAriaId}
