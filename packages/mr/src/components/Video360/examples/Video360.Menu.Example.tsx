@@ -60,7 +60,7 @@ class MySceneEntity extends FabricSceneEntity {
   };
 
   private _onPlay = () => {
-    console.log('Play cliked');
+    console.log('Play clicked');
     this._video.updateProps({
       mode: Video360Mode.Play,
       menuVisible: false,
@@ -69,7 +69,7 @@ class MySceneEntity extends FabricSceneEntity {
   };
 
   private _onPause = () => {
-    console.log('Pause cliked');
+    console.log('Pause clicked');
     this._video.updateProps({
       mode: Video360Mode.Pause,
       menuVisible: false,

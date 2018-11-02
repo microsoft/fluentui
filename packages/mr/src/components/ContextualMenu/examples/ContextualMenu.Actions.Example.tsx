@@ -15,6 +15,32 @@ class MySceneEntity extends FabricSceneEntity {
     // Fluent Contextual Menu
     const menu = new ContextualMenu({ description: 'An archival image of the old campus with the iconic X shaped buildings.' });
     this.mountChild(menu);
+    menu.updateActions([
+      {
+        description: 'Add',
+        isActionable: true,
+        iconName: 'Add',
+        onClick: () => {
+          console.log('Add clicked');
+        }
+      },
+      {
+        description: 'Remove',
+        isActionable: true,
+        iconName: 'Remove',
+        onClick: () => {
+          console.log('Remove clicked');
+        }
+      },
+      {
+        description: 'Share',
+        isActionable: true,
+        iconName: 'Share',
+        onClick: () => {
+          console.log('Share clicked');
+        }
+      }
+    ]);
     menu.node.position = new BABYLON.Vector3(0, 1, 0);
     menu.node.scaling.scaleInPlace(2);
 
@@ -25,4 +51,4 @@ class MySceneEntity extends FabricSceneEntity {
   }
 }
 
-export const ContextualMenuBasicExample = () => <Scene sceneEntity={new MySceneEntity()} />;
+export const ContextualMenuActionsExample = () => <Scene sceneEntity={new MySceneEntity()} />;

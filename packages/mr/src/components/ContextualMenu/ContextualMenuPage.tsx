@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { ComponentPage, ExampleCard, IComponentDemoPageProps, PropertiesTableSet } from '@uifabric/example-app-base';
 import { ContextualMenuBasicExample } from './examples/ContextualMenu.Basic.Example';
+import { ContextualMenuActionsExample } from './examples/ContextualMenu.Actions.Example';
 
 const ContextualMenuBasicExampleCode = require('!raw-loader!@uifabric/mr/src/components/ContextualMenu/examples/ContextualMenu.Basic.Example.tsx') as string;
+const ContextualMenuActionsExampleCode = require('!raw-loader!@uifabric/mr/src/components/ContextualMenu/examples/ContextualMenu.Actions.Example.tsx') as string;
 
 export class ContextualMenuPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -14,6 +16,9 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
           <div>
             <ExampleCard title="ContextualMenu Basic" code={ContextualMenuBasicExampleCode}>
               <ContextualMenuBasicExample />
+            </ExampleCard>
+            <ExampleCard title="ContextualMenu Actions" code={ContextualMenuActionsExampleCode}>
+              <ContextualMenuActionsExample />
             </ExampleCard>
           </div>
         }

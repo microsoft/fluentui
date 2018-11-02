@@ -73,7 +73,7 @@ export class ContextualMenu extends Entity<IContextMenuProps> {
       height: ContextualMenu.TEXT_PLANE_HEIGHT,
       depth: ContextualMenu.MENU_DEPTH,
       layerSeparation: ContextualMenu.LAYER_SEPARATION,
-      alpha: 1
+      alpha: 0.8
     });
     this.mountChild(this._textPanel);
     this._textPanel.node.position.y = (ContextualMenu.TEXT_PLANE_HEIGHT + ContextualMenu.PLANE_SEPARATION) / 2;
@@ -121,7 +121,7 @@ export class ContextualMenu extends Entity<IContextMenuProps> {
       height: ContextualMenu.BUTTON_PLANE_HEIGHT,
       depth: ContextualMenu.MENU_DEPTH,
       layerSeparation: ContextualMenu.LAYER_SEPARATION,
-      alpha: 0.6
+      alpha: 0.4
     });
     this.mountChild(this._buttonPanel);
     this._buttonPanel.node.position.y = -(ContextualMenu.BUTTON_PLANE_HEIGHT + ContextualMenu.PLANE_SEPARATION) / 2;
