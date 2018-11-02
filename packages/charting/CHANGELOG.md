@@ -1,6 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Fri, 02 Nov 2018 12:28:54 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Nov 2018 18:11:37 GMT and should not be manually modified.
+
+## 0.28.0
+Fri, 02 Nov 2018 18:11:37 GMT
+
+### Minor changes
+
+- Using new props of hover card. Removing timeout which was introduced as temporary fix until new props were provided for scaling the hover card as per content.
 
 ## 0.27.0
 Fri, 02 Nov 2018 12:28:54 GMT

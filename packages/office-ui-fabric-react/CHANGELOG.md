@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 02 Nov 2018 12:28:55 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Nov 2018 18:11:37 GMT and should not be manually modified.
+
+## 6.98.1
+Fri, 02 Nov 2018 18:11:37 GMT
+
+### Patches
+
+- Panel: fix box-shadow value
 
 ## 6.98.0
 Fri, 02 Nov 2018 12:28:55 GMT
