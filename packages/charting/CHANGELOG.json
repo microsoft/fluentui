@@ -2,6 +2,51 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.28.0",
+      "tag": "@uifabric/charting_v0.28.0",
+      "date": "Fri, 02 Nov 2018 18:11:37 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Using new props of hover card. Removing timeout which was introduced as temporary fix until new props were provided for scaling the hover card as per content.",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "e2fde54fb8f2ace3f46333edb105ab7c80365766"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.98.0 <7.0.0` to `>=6.98.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.27.0",
+      "tag": "@uifabric/charting_v0.27.0",
+      "date": "Fri, 02 Nov 2018 12:28:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "css changes for legends component",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "6990bab342ff4181034af6d9775a43665602a0b0"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Changes to line chart component, adding optional prop for users to which they can pass a html element based on which the dataviz will scale. This helps when the parent element is formed using flex or after a timeout. Also eliminates the glitch feel.",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "6990bab342ff4181034af6d9775a43665602a0b0"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.97.1 <7.0.0` to `>=6.98.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.26.3",
       "tag": "@uifabric/charting_v0.26.3",
       "date": "Thu, 01 Nov 2018 12:31:45 GMT",

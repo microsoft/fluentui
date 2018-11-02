@@ -2,6 +2,68 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.98.1",
+      "tag": "office-ui-fabric-react_v6.98.1",
+      "date": "Fri, 02 Nov 2018 18:11:37 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Panel: fix box-shadow value",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "af3ca4d877de3b225819ba0607c9bf0f8f1a663a"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.98.0",
+      "tag": "office-ui-fabric-react_v6.98.0",
+      "date": "Fri, 02 Nov 2018 12:28:55 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove outdated import warning.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "811a15cf78221ffb133db4dd87c6e46430aa2da6"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add optional onItemClick callback to ComboBox.",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "9c1f52878668544cdaebaac9b897c5be8ec7c076"
+          },
+          {
+            "comment": "Callout Positioning fixes - OnPositioned should not be called on every frame and adding a new prop called alignPerfectlyWithTarget to disallow nudging of callout",
+            "author": "Kushal Yarlagadda <whykushal93@gmail.com>",
+            "commit": "f4bbc26014e178ba0b2563b3d2c9421f67258bcc"
+          },
+          {
+            "comment": "TextField: set overflow to hidden when autoAdjustHeight is set to avoid flashing scrollbar",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "826bc836279215c29f76deed899c925da670824d"
+          },
+          {
+            "comment": "ContextualMenu: Add fix for subComponentStyles. It is now optional in the `IContextualMenuClassNames` interface.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "9d35dc30a699316cb50f3b37f24680ff2264e0c1"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Pickers: Fix IE 11 focus and a few css issues",
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "de9d46e1bcb1647068e1084132da87302119fbe5"
+          },
+          {
+            "comment": "Slider: fix value calculations",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "c1583c37a507fbd16508d5475f4b26faa1a2ef16"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.97.1",
       "tag": "office-ui-fabric-react_v6.97.1",
       "date": "Wed, 31 Oct 2018 22:35:10 GMT",

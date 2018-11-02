@@ -1,6 +1,28 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 31 Oct 2018 22:35:10 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Nov 2018 18:11:37 GMT and should not be manually modified.
+
+## 6.98.1
+Fri, 02 Nov 2018 18:11:37 GMT
+
+### Patches
+
+- Panel: fix box-shadow value
+
+## 6.98.0
+Fri, 02 Nov 2018 12:28:55 GMT
+
+### Minor changes
+
+- Add optional onItemClick callback to ComboBox.
+- Callout Positioning fixes - OnPositioned should not be called on every frame and adding a new prop called alignPerfectlyWithTarget to disallow nudging of callout
+- TextField: set overflow to hidden when autoAdjustHeight is set to avoid flashing scrollbar
+- ContextualMenu: Add fix for subComponentStyles. It is now optional in the `IContextualMenuClassNames` interface.
+
+### Patches
+
+- Pickers: Fix IE 11 focus and a few css issues
+- Slider: fix value calculations
 
 ## 6.97.1
 Wed, 31 Oct 2018 22:35:10 GMT
