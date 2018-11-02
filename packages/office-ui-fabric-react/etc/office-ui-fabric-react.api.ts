@@ -9988,8 +9988,6 @@ interface IStickyProps extends React.Props<Sticky> {
 // @public (undocumented)
 interface IStickyState {
   // (undocumented)
-  distanceFromTop: number;
-  // (undocumented)
   isStickyBottom: boolean;
   // (undocumented)
   isStickyTop: boolean;
@@ -11818,6 +11816,8 @@ class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   distanceFromTop: number;
   // (undocumented)
   readonly nonStickyContent: HTMLDivElement | null;
+  // (undocumented)
+  readonly placeholder: HTMLDivElement | null;
   // (undocumented)
   render(): JSX.Element;
   // (undocumented)
