@@ -4,18 +4,18 @@
  */
 
 import * as BABYLON from 'babylonjs';
-import { cloneDeep } from '@microsoft/sp-lodash-subset';
+import cloneDeep from 'lodash-es/cloneDeep';
 
-import INucleusContext from './common/INucleusContext';
-import Component from './Component';
-import InternalComponentCollection from './internals/InternalComponentCollection';
-import IInternalSceneEntity from './internals/IInternalSceneEntity';
+import { INucleusContext } from './common/INucleusContext';
+import { Component } from './Component';
+import { InternalComponentCollection } from './internals/InternalComponentCollection';
+import { IInternalSceneEntity } from './internals/IInternalSceneEntity';
 
 /**
  * A thing in the 3D world. The mounting point for components.
  * @public
  */
-export default class Entity<TProps = {}, TParentContext = {}> {
+export class Entity<TProps = {}, TParentContext = {}> {
   private readonly _children: Entity[] = [];
   private readonly _components: InternalComponentCollection = new InternalComponentCollection();
   private readonly _key?: string;

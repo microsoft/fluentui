@@ -5,13 +5,13 @@
 
 import * as BABYLON from 'babylonjs';
 
-import SceneEntity from './SceneEntity';
+import { SceneEntity } from './SceneEntity';
 
 /**
  * The Nucleus context.
  * @public
  */
-export default interface INucleusContext {
+export interface INucleusContext {
   /**
    * The engine
    */

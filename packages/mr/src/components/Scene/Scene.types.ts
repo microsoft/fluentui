@@ -1,4 +1,4 @@
-import { SceneEntity } from '../../common/nucleus3d/core';
+import { SceneEntity } from '../../common/nucleus3d/core/common/SceneEntity';
 
 export interface ISceneProps {
   engineOptions?: BABYLON.EngineOptions;

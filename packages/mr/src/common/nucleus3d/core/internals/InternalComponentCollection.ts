@@ -3,12 +3,12 @@
  * See https://github.com/haroldma/nucleus3d/blob/master/LICENSE for license information.
  */
 
-import SceneEntity from '../common/SceneEntity';
-import Component from '../Component';
-import Entity from '../Entity';
-import IInternalComponent from '../internals/IInternalComponent';
+import { SceneEntity } from '../common/SceneEntity';
+import { Component } from '../Component';
+import { Entity } from '../Entity';
+import { IInternalComponent } from '../internals/IInternalComponent';
 
-export default class InternalComponentCollection {
+export class InternalComponentCollection {
   private _isMounted: boolean;
   private _entity?: Entity;
   private _sceneEntity?: SceneEntity;

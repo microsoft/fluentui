@@ -1,10 +1,10 @@
 import * as BABYLON from 'babylonjs';
 import * as GUI from 'babylonjs-gui';
 import { getIcon, IIconRecord } from 'office-ui-fabric-react';
-import { Entity } from '../../common/nucleus3d/core';
-import { IContextMenuProps, IActionGroup, IMRAction } from './ContextualMenu.types';
 
-import { Panel } from '@uifabric/mr';
+import { Entity } from '../../common/nucleus3d/core/Entity';
+import { IContextMenuProps, IActionGroup, IMRAction } from './ContextualMenu.types';
+import { Panel } from '../Panel/Panel';
 
 /**
  * The context menu entity. This class houses all of the visuals for the context menu.

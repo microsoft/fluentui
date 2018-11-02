@@ -1,4 +1,4 @@
-import { Component } from '../../common/nucleus3d/core';
+import { Component } from '../nucleus3d/core/Component';
 import { BlurMaterialSystem } from './BlurMaterialSystem';
 
 export interface IBlurMaterialProps {}

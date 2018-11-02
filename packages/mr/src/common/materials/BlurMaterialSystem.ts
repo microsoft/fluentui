@@ -1,6 +1,8 @@
 import * as BABYLON from 'babylonjs';
-import { System } from '../../common/nucleus3d/core';
-import { BlurMaterial, BlurTexture } from '@uifabric/mr';
+
+import { System } from '../nucleus3d/core/System';
+import { BlurTexture } from '../textures/BlurTexture';
+import { BlurMaterial } from './BlurMaterial';
 
 export class BlurMaterialSystem extends System {
   private _blurTexture: BlurTexture;

@@ -3,9 +3,9 @@
  * See https://github.com/haroldma/nucleus3d/blob/master/LICENSE for license information.
  */
 
-import Entity from '../Entity';
+import { Entity } from '../Entity';
 
-export default interface IInternalSceneEntity {
+export interface IInternalSceneEntity {
   _internalRegisterEntity(entity: Entity): void;
   _internalUnregisterEntity(entity: Entity): void;
 }
