@@ -37,5 +37,8 @@
     "react-dom": ">=16.3.2-0 <17.0.0",
     "typescript": "2.8.4",
     "tslib": "^1.7.1"
-  }
+  },
+  "disabledTasks": [
+    "api-extractor"
+  ]
 }

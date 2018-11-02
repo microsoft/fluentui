@@ -22,7 +22,8 @@
   "disabledTasks": [
     "copy",
     "sass",
-    "karma"
+    "karma",
+    "api-extractor"
   ],
   "devDependencies": {
     "@types/jest": "23.0.0",
