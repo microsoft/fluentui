@@ -3,9 +3,9 @@
  * See https://github.com/haroldma/nucleus3d/blob/master/LICENSE for license information.
  */
 
-import INucleusContext from '../common/INucleusContext';
+import { INucleusContext } from '../common/INucleusContext';
 
-export default interface IInternalSystem {
+export interface IInternalSystem {
   _internalInit(context: INucleusContext): void;
   _internalDispose(): void;
   onUpdate(): void;

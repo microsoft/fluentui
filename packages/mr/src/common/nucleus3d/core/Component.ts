@@ -4,18 +4,18 @@
  */
 
 import * as BABYLON from 'babylonjs';
-import { cloneDeep } from '@microsoft/sp-lodash-subset';
+import cloneDeep from 'lodash-es/cloneDeep';
 
-import INucleusContext from './common/INucleusContext';
-import Entity from './Entity';
-import System from './System';
+import { INucleusContext } from './common/INucleusContext';
+import { Entity } from './Entity';
+import { System } from './System';
 
 /**
  * Modular chunks of data that can add appearance, behaviors and/or functionality to an entity.
  * @public
  */
 // tslint:disable-next-line:no-any
-export default abstract class Component<TProps = {}, TSystem extends System = any> {
+export abstract class Component<TProps = {}, TSystem extends System = any> {
   private _isEnabled: boolean = true;
   private _props: TProps;
   private _isMounted: boolean;

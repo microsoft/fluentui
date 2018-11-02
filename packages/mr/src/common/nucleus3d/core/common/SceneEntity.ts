@@ -3,19 +3,19 @@
  * See https://github.com/haroldma/nucleus3d/blob/master/LICENSE for license information.
  */
 
-import { clone } from '@microsoft/sp-lodash-subset';
+import clone from 'lodash-es/clone';
 
-import Component from '../Component';
-import Entity from '../Entity';
-import IInternalComponent from '../internals/IInternalComponent';
-import IInternalSystem from '../internals/IInternalSystem';
-import System from '../System';
+import { Component } from '../Component';
+import { Entity } from '../Entity';
+import { IInternalComponent } from '../internals/IInternalComponent';
+import { IInternalSystem } from '../internals/IInternalSystem';
+import { System } from '../System';
 
 /**
  * Represents the root of any nucleus tree.
  * @public
  */
-export default class SceneEntity extends Entity {
+export class SceneEntity extends Entity {
   private _mountedEntities: Entity[] = [];
   private _systems: Map<new () => Component, System> = new Map<new () => Component, System>();
 

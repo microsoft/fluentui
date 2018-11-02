@@ -1,6 +1,7 @@
 import * as BABYLON from 'babylonjs';
-import { Entity } from '../../common/nucleus3d/core';
-import { BlurMaterial, FluentTheme, IPanelProps } from '@uifabric/mr';
+import { Entity } from '../../common/nucleus3d/core/Entity';
+import { IPanelProps, FluentTheme } from './Panel.types';
+import { BlurMaterial } from '../../common/materials/BlurMaterial';
 
 export class Panel extends Entity<IPanelProps> {
   protected didMount(): void {

@@ -3,16 +3,16 @@
  * See https://github.com/haroldma/nucleus3d/blob/master/LICENSE for license information.
  */
 
-import { cloneDeep } from '@microsoft/sp-lodash-subset';
+import cloneDeep from 'lodash-es/cloneDeep';
 
-import INucleusContext from './common/INucleusContext';
-import Component from './Component';
+import { INucleusContext } from './common/INucleusContext';
+import { Component } from './Component';
 
 /**
  * Provide global scope, services, and management to classes of components.
  * @public
  */
-export default abstract class System<TProps = {}> {
+export abstract class System<TProps = {}> {
   // tslint:disable-next-line:no-any
   private _componentType: new (...args: any[]) => Component;
   private _props: TProps;

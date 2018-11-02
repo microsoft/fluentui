@@ -1,7 +1,8 @@
 import * as BABYLON from 'babylonjs';
-import { SceneEntity } from '../../common/nucleus3d/core';
-import { BlurMaterialSystem, BlurTexture } from '@uifabric/mr';
 import { IFabricSceneEntity } from './Scene.types';
+import { BlurTexture } from '../../common/textures/BlurTexture';
+import { BlurMaterialSystem } from '../../common/materials/BlurMaterialSystem';
+import { SceneEntity } from '../../common/nucleus3d/core/common/SceneEntity';
 
 export abstract class FabricSceneEntity extends SceneEntity implements IFabricSceneEntity {
   private _blurTexture: BlurTexture;
