@@ -1,6 +1,11 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Fri, 02 Nov 2018 12:28:54 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Nov 2018 18:11:37 GMT and should not be manually modified.
+
+## 0.32.1
+Fri, 02 Nov 2018 18:11:37 GMT
+
+*Version update only*
 
 ## 0.32.0
 Fri, 02 Nov 2018 12:28:54 GMT
