@@ -7,6 +7,9 @@ const yellow = '\x1b[33m%s\x1b[0m';
 const red = '\x1b[31m%s\x1b[0m';
 const cyan = '\x1b[36m%s\x1b[0m';
 
+/**
+ * Run the ts build task so that API Extractor is using the most recent package lib files.
+ */
 require('./tasks/ts')({})
   .then(() => {
     console.log(cyan, `- Update API: compiled successfully, checking ${apiFileName}...`);
@@ -16,7 +19,9 @@ require('./tasks/ts')({})
     console.error(red, 'Update API: failed to compile.');
   });
 
-// Checks the api.ts file to see whether it needs to be updated.
+/**
+ * Checks the api.ts file to see whether it needs to be updated.
+ */
 function checkApi() {
   try {
     require('./tasks/api-extractor')({});
@@ -27,7 +32,9 @@ function checkApi() {
   }
 }
 
-// Updates the api.ts file by running api-extractor with the --local option.
+/**
+ * Updates the api.ts file by running api-extractor with the --local option.
+ */
 function updateApi() {
   try {
     require('./tasks/api-extractor')({
@@ -40,7 +47,9 @@ function updateApi() {
   }
 }
 
-// Verifies that the updated api.ts file passes the api-extractor task.
+/**
+ * Verifies that the updated api.ts file passes the api-extractor task.
+ */
 function verifyApi() {
   try {
     require('./tasks/api-extractor')({});

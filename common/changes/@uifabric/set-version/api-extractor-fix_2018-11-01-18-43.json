@@ -3,7 +3,7 @@
     {
       "packageName": "@uifabric/set-version",
       "comment": "Disable api-extractor build task",
-      "type": "patch"
+      "type": "none"
     }
   ],
   "packageName": "@uifabric/set-version",
