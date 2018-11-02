@@ -3,7 +3,7 @@
     {
       "packageName": "@uifabric/charting",
       "comment": "Disable api-extractor build task",
-      "type": "patch"
+      "type": "none"
     }
   ],
   "packageName": "@uifabric/charting",

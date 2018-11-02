@@ -3,7 +3,7 @@
     {
       "packageName": "@uifabric/fluent-theme",
       "comment": "Disable api-extractor build task",
-      "type": "patch"
+      "type": "none"
     }
   ],
   "packageName": "@uifabric/fluent-theme",

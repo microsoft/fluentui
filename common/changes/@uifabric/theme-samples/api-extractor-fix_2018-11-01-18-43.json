@@ -3,7 +3,7 @@
     {
       "packageName": "@uifabric/theme-samples",
       "comment": "Disable api-extractor build task",
-      "type": "patch"
+      "type": "none"
     }
   ],
   "packageName": "@uifabric/theme-samples",

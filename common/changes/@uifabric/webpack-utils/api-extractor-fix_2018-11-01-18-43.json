@@ -3,7 +3,7 @@
     {
       "packageName": "@uifabric/webpack-utils",
       "comment": "Disable api-extractor build task",
-      "type": "patch"
+      "type": "none"
     }
   ],
   "packageName": "@uifabric/webpack-utils",

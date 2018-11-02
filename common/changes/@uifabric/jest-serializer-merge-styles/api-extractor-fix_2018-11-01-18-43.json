@@ -3,7 +3,7 @@
     {
       "packageName": "@uifabric/jest-serializer-merge-styles",
       "comment": "Disable api-extractor build task",
-      "type": "patch"
+      "type": "none"
     }
   ],
   "packageName": "@uifabric/jest-serializer-merge-styles",
