@@ -5,8 +5,7 @@ import { IToggleComponent } from './Toggle.types';
 import { inputProperties, getNativeProps } from '../../Utilities';
 
 export const ToggleView: IToggleComponent['view'] = props => {
-  const { as: RootType = 'div', label, onText, offText, ariaLabel, checked, disabled, onChange, keytipProps, onClick } = props;
-  const stateText = checked ? onText : offText;
+  const { as: RootType = 'div', label, text, ariaLabel, checked, disabled, onChange, keytipProps, onClick } = props;
   const toggleNativeProps = getNativeProps(this.props, inputProperties, ['defaultChecked']);
 
   return (
@@ -40,7 +39,7 @@ export const ToggleView: IToggleComponent['view'] = props => {
             </button>
           )}
         </KeytipData>
-        {stateText && <Label className={props.classNames.text}>{stateText}</Label>}
+        {text && <Label className={props.classNames.text}>{text}</Label>}
       </div>
     </RootType>
   );

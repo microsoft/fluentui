@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IComponent, IStyleableComponentProps } from '../../Foundation';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { IComponentAs, IRefObject } from '../../Utilities';
+import { IComponentAs /*, IRefObject*/ } from '../../Utilities';
 
 export type IToggleComponent = IComponent<IToggleProps, IToggleViewProps, IToggleStyles>;
 
@@ -19,7 +19,7 @@ export interface IToggleProps extends IStyleableComponentProps<IToggleViewProps,
    * Optional callback to access the IToggleComponent interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: IRefObject<IToggleComponent>;
+  // componentRef?: IRefObject<IToggleComponent>;
 
   /**
    * A label for the toggle.
@@ -55,6 +55,7 @@ export interface IToggleProps extends IStyleableComponentProps<IToggleViewProps,
 
   /**
    * Optional disabled flag.
+   * @default false
    */
   disabled?: boolean;
 
@@ -71,18 +72,24 @@ export interface IToggleProps extends IStyleableComponentProps<IToggleViewProps,
 
 export type IToggleViewProps = Pick<
   IToggleProps,
-  'as' | 'componentRef' | 'label' | 'onText' | 'offText' | 'ariaLabel' | 'checked' | 'disabled' | 'onChange' | 'keytipProps'
-> & {
-  /**
-   * Toggle input callback triggered by mouse and keyboard input.
-   */
-  onClick?: (ev: React.MouseEvent<Element>) => void;
+  'as' /*| 'componentRef'*/ | 'label' | 'ariaLabel' | 'disabled' | 'onChange' | 'keytipProps'
+> &
+  Required<Pick<IToggleProps, 'checked'>> & {
+    /**
+     * Toggle input callback triggered by mouse and keyboard input.
+     */
+    onClick?: (ev: React.MouseEvent<Element>) => void;
 
-  /**
-   * Root element class name.
-   */
-  className?: string;
-};
+    /**
+     * Root element class name.
+     */
+    className?: string;
+
+    /**
+     * Text to display next to the toggle.
+     */
+    text?: string;
+  };
 
 /**
  * Styles for the Toggle component.
