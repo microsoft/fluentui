@@ -187,14 +187,14 @@ export class GetStartedPage extends React.Component<any, any> {
             </li>
             <li>
               <p>
-                Use npm to create a React app that uses TypeScript. Consider using Facebook's{' '}
+                Use npm to create a React app. Consider using Facebook's{' '}
                 <a href="https://github.com/facebook/create-react-app" target="_blank">
                   Create React App
                 </a>{' '}
                 to get started quickly:
               </p>
               <CodeBlock language="bash" isLightTheme={true}>
-                {`npx create-react-app my-app --typescript`}
+                {`npx create-react-app my-app`}
               </CodeBlock>
             </li>
             <li>
@@ -212,7 +212,6 @@ npm install office-ui-fabric-react`}
               <CodeBlock language="javascript" isLightTheme={true}>
                 {`import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
 const MyPage = () => (
