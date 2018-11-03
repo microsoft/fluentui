@@ -20,6 +20,9 @@
     "startuhf": "node ../../scripts/start.js --webpackConfig webpack.uhf.serve.config.js"
   },
   "license": "MIT",
+  "disabledTasks": [
+    "api-extractor"
+  ],
   "devDependencies": {
     "@types/es6-promise": "0.0.32",
     "@types/node": "8.0.26",

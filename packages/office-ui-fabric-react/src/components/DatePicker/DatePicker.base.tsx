@@ -62,7 +62,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     highlightCurrentMonth: false,
     highlightSelectedMonth: false,
     borderless: false,
-    pickerAriaLabel: 'Calender',
+    pickerAriaLabel: 'Calendar',
     showWeekNumbers: false,
     firstWeekOfYear: FirstWeekOfYear.FirstDay,
     showGoToToday: true,
