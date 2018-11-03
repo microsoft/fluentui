@@ -3,8 +3,4 @@ import { IAnnouncedProps, IAnnouncedStyleProps, IAnnouncedStyles } from './Annou
 import { AnnouncedBase } from './Announced.base';
 import { getStyles } from './Announced.styles';
 
-export const Announced = styled<IAnnouncedProps, IAnnouncedStyleProps, IAnnouncedStyles>(
-  AnnouncedBase,
-  getStyles,
-  undefined
-);
+export const Announced = styled<IAnnouncedProps, IAnnouncedStyleProps, IAnnouncedStyles>(AnnouncedBase, getStyles, undefined);

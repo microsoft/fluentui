@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/charting",
-      "comment": "Running Prettier on all .ts and .tsx files in the packages folder.",
+      "comment": "Disable api-extractor build task",
       "type": "none"
     }
   ],
   "packageName": "@uifabric/charting",
-  "email": "Humberto.Morimoto@microsoft.com"
+  "email": "kakje@microsoft.com"
 }

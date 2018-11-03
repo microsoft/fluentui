@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/styling",
-      "comment": "Running Prettier on all .ts and .tsx files in the packages folder.",
+      "comment": "Update missed API change from PR #6854.",
       "type": "none"
     }
   ],
   "packageName": "@uifabric/styling",
-  "email": "Humberto.Morimoto@microsoft.com"
+  "email": "jagore@microsoft.com"
 }

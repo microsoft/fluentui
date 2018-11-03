@@ -230,7 +230,7 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                 @media (min-width: 480px){& {
                   border-left: 1px solid #eaeaea;
                   border-right: 1px solid #eaeaea;
-                  box-shadow: -30px 0px 30px -30px rgba(0,0,0,0.2);
+                  box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.2);
                   left: auto;
                   pointer-events: auto;
                   width: 340px;
