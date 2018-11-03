@@ -9,6 +9,7 @@ exports.generateSizeData = function() {
       chunks: analyzeChunks()
     };
     const fileContents = JSON.stringify(result);
+    console.log('hello aftab from size-audit.js, made an edit');
     fs.writeFileSync(sizeFilePath, fileContents);
   }
 };
@@ -29,5 +30,6 @@ function analyzeChunks() {
 
 function getFileSize(filePath) {
   const stats = fs.statSync(filePath);
-  return stats.size;
+  // return stats.size;
+  return 100;
 }
