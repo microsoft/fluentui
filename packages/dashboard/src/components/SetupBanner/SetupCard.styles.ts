@@ -1,4 +1,4 @@
-import { keyframes } from 'office-ui-fabric-react/lib/Styling';
+import { DefaultPalette, keyframes } from 'office-ui-fabric-react/lib/Styling';
 
 import { ISetupCardStyles, ISetupCardStylesProps } from './SetupCard.types';
 
@@ -28,12 +28,12 @@ export const getStyles = (props: ISetupCardStylesProps): ISetupCardStyles => {
       position: 'absolute'
     },
     title: {
-      fill: 'black',
+      fill: DefaultPalette.black,
       fontFamily: 'Segoe UI Semibold',
       fontSize: '10px'
     },
     cardBackground: {
-      fill: 'white'
+      fill: DefaultPalette.white
     },
     cardContentBackground: {
       stroke: props.selected ? (props.checked ? '#6BB700' : '#0078D4') : '#FFF',
@@ -46,10 +46,10 @@ export const getStyles = (props: ISetupCardStylesProps): ISetupCardStyles => {
         : 'all .333s cubic-bezier(.38,.52,.68,.81)'
     },
     cardRightEdge: {
-      fill: 'white'
+      fill: DefaultPalette.white
     },
     cardRightEdgeSeparator: {
-      fill: 'black',
+      fill: DefaultPalette.black,
       opacity: '0.1'
     },
     cardRightEdgeShadow: {
@@ -59,7 +59,7 @@ export const getStyles = (props: ISetupCardStylesProps): ISetupCardStyles => {
       fill: '#EFEFEB'
     },
     cardTopEdgeSeparator: {
-      fill: 'black',
+      fill: DefaultPalette.black,
       opacity: '0.1'
     },
     checkmark: {

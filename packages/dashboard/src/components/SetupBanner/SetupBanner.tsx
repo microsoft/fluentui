@@ -1,8 +1,10 @@
 import * as React from 'react';
+import { mergeStyles, PrimaryButton, DefaultButton, Link } from 'office-ui-fabric-react';
+import { FontSizes } from 'office-ui-fabric-react/lib/Styling';
+import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+
 import { getStyles } from './SetupBanner.styles';
 import { ISetupBannerAction, ISetupBannerProps, ISetupBannerStyles, SetupBannerActionType } from './SetupBanner.types';
-import { mergeStyles, PrimaryButton, DefaultButton, Link } from 'office-ui-fabric-react';
-import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 export class SetupBanner extends React.Component<ISetupBannerProps, {}> {
   public render(): JSX.Element {
@@ -26,7 +28,7 @@ export class SetupBanner extends React.Component<ISetupBannerProps, {}> {
       return <DefaultButton onClick={action.action} text={action.text} key={actionIndex} />;
     } else if (action.actionType === SetupBannerActionType.Link) {
       return (
-        <Link onClick={action.action} key={actionIndex} styles={{ root: { fontSize: '14px' } }}>
+        <Link onClick={action.action} key={actionIndex} styles={{ root: { fontSize: FontSizes.medium } }}>
           {action.text}
         </Link>
       );
