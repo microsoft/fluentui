@@ -1,6 +1,13 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Fri, 02 Nov 2018 18:11:37 GMT and should not be manually modified.
+This log was last generated on Sun, 04 Nov 2018 02:27:52 GMT and should not be manually modified.
+
+## 0.32.2
+Sun, 04 Nov 2018 02:27:52 GMT
+
+### Patches
+
+- Adding necessary wrapper classes for charting in dashboard package
 
 ## 0.32.1
 Fri, 02 Nov 2018 18:11:37 GMT

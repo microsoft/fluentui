@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 02 Nov 2018 18:11:37 GMT and should not be manually modified.
+This log was last generated on Sun, 04 Nov 2018 02:27:52 GMT and should not be manually modified.
+
+## 6.99.0
+Sun, 04 Nov 2018 02:27:52 GMT
+
+### Minor changes
+
+- add ariaLabel prop for ChoiceGroupOption
+
+### Patches
+
+- Fix typo with DatePicker Callout aria-label.
 
 ## 6.98.1
 Fri, 02 Nov 2018 18:11:37 GMT
