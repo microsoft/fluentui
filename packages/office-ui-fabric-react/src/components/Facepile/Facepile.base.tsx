@@ -36,7 +36,15 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
 
   public render(): JSX.Element {
     let { overflowButtonProps } = this.props;
-    const { ariaDescription, chevronButtonProps, maxDisplayablePersonas, personas, overflowPersonas, showAddButton } = this.props;
+    const {
+      ariaDescription,
+      chevronButtonProps,
+      maxDisplayablePersonas,
+      personas,
+      overflowPersonas,
+      showAddButton,
+      doNotWrapInFocusZone
+    } = this.props;
 
     const { _classNames } = this;
 
@@ -56,11 +64,21 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
         {this.onRenderAriaDescription()}
         <div className={_classNames.itemContainer}>
           {showAddButton ? this._getAddNewElement() : null}
-          <FocusZone ariaDescribedBy={ariaDescription && this._ariaDescriptionId} role="listbox" direction={FocusZoneDirection.horizontal}>
+          {doNotWrapInFocusZone ? (
             <ul className={_classNames.members}>
               {this._onRenderVisiblePersonas(personasPrimary, personasOverflow.length === 0 && personas.length === 1)}
             </ul>
-          </FocusZone>
+          ) : (
+            <FocusZone
+              ariaDescribedBy={ariaDescription && this._ariaDescriptionId}
+              role="listbox"
+              direction={FocusZoneDirection.horizontal}
+            >
+              <ul className={_classNames.members}>
+                {this._onRenderVisiblePersonas(personasPrimary, personasOverflow.length === 0 && personas.length === 1)}
+              </ul>
+            </FocusZone>
+          )}
           {overflowButtonProps ? this._getOverflowElement(personasOverflow) : null}
         </div>
       </div>
