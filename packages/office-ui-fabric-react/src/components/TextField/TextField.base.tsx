@@ -174,6 +174,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
       suffix,
       theme,
       styles,
+      autoAdjustHeight,
       onRenderAddon = this._onRenderAddon, // @deprecated
       onRenderPrefix = this._onRenderPrefix,
       onRenderSuffix = this._onRenderSuffix,
@@ -197,7 +198,8 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
       hasIcon: !!iconProps,
       underlined,
       iconClass,
-      inputClassName
+      inputClassName,
+      autoAdjustHeight
     });
 
     // If a custom description render function is supplied then treat description as always available.
@@ -519,8 +521,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
     if (this._textElement.current && this.props.autoAdjustHeight && this.props.multiline) {
       const textField = this._textElement.current;
       textField.style.height = '';
-      const scrollHeight = textField.scrollHeight + 2; // +2 to avoid vertical scroll bars
-      textField.style.height = scrollHeight + 'px';
+      textField.style.height = textField.scrollHeight + 'px';
     }
   }
 }

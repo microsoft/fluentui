@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Prettier changes unrelated to the PR",
+      "comment": "Disable api-extractor build task",
       "type": "none"
     }
   ],
   "packageName": "@uifabric/experiments",
-  "email": "v-vibr@microsoft.com"
+  "email": "kakje@microsoft.com"
 }

@@ -1,6 +1,64 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 30 Oct 2018 12:27:52 GMT and should not be manually modified.
+This log was last generated on Sun, 04 Nov 2018 02:27:52 GMT and should not be manually modified.
+
+## 6.99.0
+Sun, 04 Nov 2018 02:27:52 GMT
+
+### Minor changes
+
+- add ariaLabel prop for ChoiceGroupOption
+
+### Patches
+
+- Fix typo with DatePicker Callout aria-label.
+
+## 6.98.1
+Fri, 02 Nov 2018 18:11:37 GMT
+
+### Patches
+
+- Panel: fix box-shadow value
+
+## 6.98.0
+Fri, 02 Nov 2018 12:28:55 GMT
+
+### Minor changes
+
+- Add optional onItemClick callback to ComboBox.
+- Callout Positioning fixes - OnPositioned should not be called on every frame and adding a new prop called alignPerfectlyWithTarget to disallow nudging of callout
+- TextField: set overflow to hidden when autoAdjustHeight is set to avoid flashing scrollbar
+- ContextualMenu: Add fix for subComponentStyles. It is now optional in the `IContextualMenuClassNames` interface.
+
+### Patches
+
+- Pickers: Fix IE 11 focus and a few css issues
+- Slider: fix value calculations
+
+## 6.97.1
+Wed, 31 Oct 2018 22:35:10 GMT
+
+### Patches
+
+- Adding warning and updating documentation on Pivot children needing to be of type PivotItem to be rendered.
+
+## 6.97.0
+Wed, 31 Oct 2018 12:32:41 GMT
+
+### Minor changes
+
+- Expose existing mergeSettings utility function.
+
+## 6.96.0
+Tue, 30 Oct 2018 18:45:48 GMT
+
+### Minor changes
+
+- ComboBox/Autofill: prevent text from being selected when focus is not on the input box
+
+### Patches
+
+- Removing some of the deprecated components flaged when turning the tslint deprecation flag to true in the office-ui-fabric-react package.
 
 ## 6.95.0
 Tue, 30 Oct 2018 12:27:52 GMT

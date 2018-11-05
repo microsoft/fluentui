@@ -23,7 +23,7 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
             { text: 'This is folder 4', key: 'f4', onClick: this._onBreadcrumbItemClicked },
             { text: 'This is folder 5', key: 'f5', onClick: this._onBreadcrumbItemClicked, isCurrentItem: true }
           ]}
-          ariaLabel={'Website breadcrumb'}
+          ariaLabel={'Breadcrumb with no maxDisplayedItems'}
         />
 
         <Label className={exampleStyles.exampleLabel} style={{ marginTop: '24px' }}>
@@ -39,7 +39,7 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
             { text: 'This is folder 5', key: 'f5', onClick: this._onBreadcrumbItemClicked, isCurrentItem: true }
           ]}
           dividerAs={this._getCustomDivider}
-          ariaLabel={'Website breadcrumb'}
+          ariaLabel={'Breadcrumb with custom divider icon'}
         />
 
         <Label className={exampleStyles.exampleLabel} style={{ marginTop: '24px' }}>
@@ -81,7 +81,7 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
             }
           ]}
           maxDisplayedItems={3}
-          ariaLabel={'Website breadcrumb'}
+          ariaLabel={'Breadcrumb with maxDisplayedItems set to three'}
           overflowAriaLabel={'More links'}
         />
 
@@ -98,6 +98,7 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
           maxDisplayedItems={2}
           overflowIndex={1}
           overflowAriaLabel={'More items'}
+          ariaLabel={'Breadcrumb with maxDisplayedItems set to two and overflowIndex set to 1'}
         />
       </div>
     );

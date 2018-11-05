@@ -755,8 +755,11 @@ export function merge<T = {}>(target: Partial<T>, ...args: (Partial<T> | null | 
 // @public
 export function mergeAriaAttributeValues(...ariaAttributes: (string | undefined)[]): string | undefined;
 
-// @public (undocumented)
+// @public
 export function mergeCustomizations(props: ICustomizerProps, parentContext: ICustomizerContext): ICustomizerContext;
+
+// @public
+export function mergeSettings(oldSettings?: Settings, newSettings?: Settings | SettingsFunction): Settings;
 
 // @public
 export function nullRender(): JSX.Element | null;

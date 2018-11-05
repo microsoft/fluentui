@@ -28,7 +28,8 @@ fabric-website/ @jordandrako
 # todo-app/
 
 #### Packages
-packages/charting/ @kkjeer
+packages/charting/ @Raghurk
+packages/dashboard/ @Raghurk
 packages/foundation/ @jagore
 # packages/example-app-base/
 packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
@@ -50,14 +51,14 @@ common/_themeOverrides.scss @phkuo
 common/_common.scss @phkuo
 
 ### Utilities
-dateMath/     @Microsoft/uifabric-calendar
-dateValues/   @Microsoft/uifabric-calendar
+dateMath/     @OfficeDev/uifabric-calendar
+dateValues/   @OfficeDev/uifabric-calendar
 
 ## Components
 # ActivityItem/
 # Breadcrumb/
 # Button/
-Calendar/   @Microsoft/uifabric-calendar
+Calendar/   @OfficeDev/uifabric-calendar
 Callout/  @joschect
 # Check/
 # Checkbox/
@@ -66,7 +67,7 @@ ChoiceGroup/   @srideshpande
 # ComboBox/
 CommandBar/   @micahgodbolt @JasonGore
 ContextualMenu/  @joschect
-DatePicker/   @Microsoft/uifabric-calendar
+DatePicker/   @OfficeDev/uifabric-calendar
 # DetailsList/
 # Dialog/
 DocumentCard/ @yiminwu @mikewheaton
@@ -118,7 +119,7 @@ Tooltip/  @micahgodbolt
 # ActivityItem/docs/
 # Breadcrumb/docs/
 # Button/docs/
-Calendar/docs/   @Microsoft/uifabric-calendar
+Calendar/docs/   @OfficeDev/uifabric-calendar
 Callout/docs/  @joschect
 # Check/docs/
 # Checkbox/docs/
@@ -127,7 +128,7 @@ ChoiceGroup/docs/   @srideshpande
 # ComboBox/docs/
 CommandBar/docs/   @micahgodbolt
 ContextualMenu/docs/  @joschect
-DatePicker/docs/   @Microsoft/uifabric-calendar
+DatePicker/docs/   @OfficeDev/uifabric-calendar
 # DetailsList/docs/
 # Dialog/docs/
 DocumentCard/docs/ @yiminwu @mikewheaton
@@ -168,5 +169,3 @@ TeachingBubble/docs/   @micahgodbolt
 # Theme/docs/
 Toggle/docs/  @phkuo
 Tooltip/docs/  @micahgodbolt
-
-

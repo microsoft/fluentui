@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IAutofillProps, IAutofill } from './Autofill.types';
-import { BaseComponent, KeyCodes, getNativeProps, inputProperties, createRef } from '../../Utilities';
+import { BaseComponent, KeyCodes, getNativeProps, inputProperties } from '../../Utilities';
 
 export interface IAutofillState {
   displayValue?: string;
@@ -14,7 +14,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     enableAutofillOnKeyPress: [KeyCodes.down, KeyCodes.up]
   };
 
-  private _inputElement = createRef<HTMLInputElement>();
+  private _inputElement = React.createRef<HTMLInputElement>();
   private _autoFillEnabled = true;
   private _value: string;
 
@@ -75,8 +75,12 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
 
   public componentDidUpdate() {
     const value = this._value;
-    const { suggestedDisplayValue, shouldSelectFullInputValueInComponentDidUpdate } = this.props;
+    const { suggestedDisplayValue, shouldSelectFullInputValueInComponentDidUpdate, preventValueSelection } = this.props;
     let differenceIndex = 0;
+
+    if (preventValueSelection) {
+      return;
+    }
 
     if (this._autoFillEnabled && value && suggestedDisplayValue && this._doesTextStartWith(suggestedDisplayValue, value)) {
       let shouldSelectFullRange = false;

@@ -29,7 +29,7 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
     },
     text: {
       fontSize: '12px',
-      lineHeight: '14px',
+      lineHeight: '16px',
       fontFamily: 'Segoe UI',
       marginRight: '16px',
       color: palette.black,

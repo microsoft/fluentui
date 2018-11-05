@@ -2,6 +2,32 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "6.34.0",
+      "tag": "@uifabric/styling_v6.34.0",
+      "date": "Wed, 31 Oct 2018 12:32:41 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "API changes to getSchemedContext for use by theme provider.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "fc5a1f4620c93499a41abe8377ff61161cf5bd76"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Running Prettier on all .ts and .tsx files in the packages folder.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "2ce6c5ac3ccf4e62d4866841317b4aa55b8fb541"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.24.0 <7.0.0` to `>=6.25.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.33.0",
       "tag": "@uifabric/styling_v6.33.0",
       "date": "Fri, 26 Oct 2018 12:32:35 GMT",

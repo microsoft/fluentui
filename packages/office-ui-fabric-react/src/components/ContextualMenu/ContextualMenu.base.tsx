@@ -286,9 +286,10 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
         }
       }
 
-      const calloutStyles = !getMenuClassNames
-        ? (this._classNames.subComponentStyles.callout as IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>)
-        : undefined;
+      const calloutStyles =
+        !getMenuClassNames && this._classNames.subComponentStyles
+          ? (this._classNames.subComponentStyles.callout as IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>)
+          : undefined;
 
       return (
         <Callout

@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/fabric-website",
+      "comment": "Disable api-extractor build task",
+      "type": "none"
+    }
+  ],
+  "packageName": "@uifabric/fabric-website",
+  "email": "kakje@microsoft.com"
+}
