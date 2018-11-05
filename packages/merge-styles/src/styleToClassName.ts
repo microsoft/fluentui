@@ -22,6 +22,20 @@ function getDisplayName(rules?: { [key: string]: IRawStyle }): string | undefine
   return rootStyle ? (rootStyle as IRawStyle).displayName : undefined;
 }
 
+function expandSelector(newSelector: string, currentSelector: string): string {
+  if (newSelector.indexOf(':global(') === 0) {
+    return newSelector.replace(/:global\(|\)$/g, '');
+  } else if (newSelector.indexOf('@') === 0) {
+    return newSelector + '{' + currentSelector;
+  } else if (newSelector.indexOf(':') === 0) {
+    return currentSelector + newSelector;
+  } else if (newSelector.indexOf('&') < 0) {
+    return currentSelector + ' ' + newSelector;
+  }
+
+  return newSelector;
+}
+
 function extractRules(args: IStyle[], rules: IRuleSet = { __order: [] }, currentSelector: string = '&'): IRuleSet {
   const stylesheet = Stylesheet.getInstance();
   let currentRules: IDictionary | undefined = rules[currentSelector] as IDictionary;
@@ -50,21 +64,22 @@ function extractRules(args: IStyle[], rules: IRuleSet = { __order: [] }, current
           // tslint:disable-next-line:no-any
           const selectors: { [key: string]: IStyle } = (arg as any).selectors;
 
-          for (let newSelector in selectors) {
+          for (const newSelector in selectors) {
             if (selectors.hasOwnProperty(newSelector)) {
               const selectorValue = selectors[newSelector];
 
-              if (newSelector.indexOf(':global(') === 0) {
-                newSelector = newSelector.replace(/:global\(|\)$/g, '');
-              } else if (newSelector.indexOf('@') === 0) {
-                newSelector = newSelector + '{' + currentSelector;
-              } else if (newSelector.indexOf(':') === 0) {
-                newSelector = currentSelector + newSelector;
-              } else if (newSelector.indexOf('&') < 0) {
-                newSelector = currentSelector + ' ' + newSelector;
+              if (newSelector.indexOf(',') > -1) {
+                const commaSeparatedSelectors = newSelector.split(/,/g).map((s: string) => s.trim());
+                extractRules(
+                  [selectorValue],
+                  rules,
+                  commaSeparatedSelectors
+                    .map((commaSeparatedSelector: string) => expandSelector(commaSeparatedSelector, currentSelector))
+                    .join(', ')
+                );
+              } else {
+                extractRules([selectorValue], rules, expandSelector(newSelector, currentSelector));
               }
-
-              extractRules([selectorValue], rules, newSelector);
             }
           }
         } else {

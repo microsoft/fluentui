@@ -39,6 +39,16 @@ describe('styleToClassName', () => {
     expect(_stylesheet.getRules()).toEqual('.css-0 .foo{background:red;}');
   });
 
+  it('can have child selectors with comma', () => {
+    styleToClassName({
+      selectors: {
+        '.foo, .bar': { background: 'red' }
+      }
+    });
+
+    expect(_stylesheet.getRules()).toEqual('.css-0 .foo, .css-0 .bar{background:red;}');
+  });
+
   it('can have same element class selectors', () => {
     styleToClassName({
       selectors: {
