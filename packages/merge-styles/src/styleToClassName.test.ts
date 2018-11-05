@@ -2,6 +2,7 @@ import { InjectionMode, Stylesheet } from './Stylesheet';
 
 import { setRTL } from './transforms/rtlifyRules';
 import { styleToClassName } from './styleToClassName';
+import { renderStatic } from './server';
 
 const _stylesheet: Stylesheet = Stylesheet.getInstance();
 
@@ -47,6 +48,20 @@ describe('styleToClassName', () => {
     });
 
     expect(_stylesheet.getRules()).toEqual('.css-0 .foo, .css-0 .bar{background:red;}');
+  });
+
+  it('can have child selectors with comma with @media query', () => {
+    styleToClassName({
+      selectors: {
+        '@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)': {
+          background: 'red'
+        }
+      }
+    });
+
+    expect(_stylesheet.getRules()).toEqual(
+      '@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){.css-0{background:red;}}'
+    );
   });
 
   it('can have same element class selectors', () => {
