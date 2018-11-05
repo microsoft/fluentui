@@ -42,6 +42,7 @@ packages/styling/src/interfaces/ @phkuo
 packages/styling/src/styles/ @phkuo
 # packages/utilities/
 packages/utilities/positioning/ @joschect
+packages/date-time @OfficeDev/uifabric-calendar
 
 ### Fabric
 # common/
