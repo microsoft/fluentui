@@ -1,5 +1,6 @@
 @import '~office-ui-fabric-react/dist/sass/References';
 @import './variables';
+@import './mixins';
 
 //== Fabric overrides and additions
 
@@ -54,9 +55,6 @@
       }
     }
   }
-
-  // @media screen and (-ms-high-contrast: active) {
-  // }
 
   // @TODO: Fix this in fabric ui core, or add prop to Panel to have user specify z-index
   // Set to 600 to place over header
