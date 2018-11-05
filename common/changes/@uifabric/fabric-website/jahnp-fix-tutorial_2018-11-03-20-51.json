@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/fabric-website",
-      "comment": "Remove TypeScript from get started tutorial",
+      "comment": "Update TypeScript instructions in getting started tutorial",
       "type": "patch"
     }
   ],
