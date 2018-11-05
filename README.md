@@ -51,7 +51,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 
-ReactDOM.render(<PrimaryButton>I am a button.</PrimaryButton>, document.body.firstChild);
+ReactDOM.render(<PrimaryButton>I am a button.</PrimaryButton>, document.body.firstElementChild);
 ```
 
 ## Version policy

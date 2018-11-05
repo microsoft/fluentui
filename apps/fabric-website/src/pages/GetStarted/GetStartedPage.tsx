@@ -221,7 +221,7 @@ const MyPage = () => (
   </DefaultButton>
 );
 
-ReactDOM.render(<MyPage />, document.body.firstChild);`}
+ReactDOM.render(<MyPage />, document.body.firstElementChild);`}
               </CodeBlock>
             </li>
             <li>
@@ -365,7 +365,7 @@ initializeIcons('https://my.cdn.com/path/to/icons/');`}
             <a className={styles.getStartedLink} href="https://github.com/OfficeDev/office-ui-fabric-react/projects">
               projects
             </a>
-             to see if your component has already been requested or is being worked on. If you don't see an existing issue or project for
+            to see if your component has already been requested or is being worked on. If you don't see an existing issue or project for
             the component you're looking for, please{' '}
             <a className={styles.getStartedLink} href="https://github.com/OfficeDev/office-ui-fabric-react/issues">
               {' '}

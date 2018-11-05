@@ -26,7 +26,7 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
 const MyPage = () => (<Fabric><DefaultButton>I am a button.</DefaultButton></Fabric>);
 
-ReactDOM.render(<MyPage />, document.body.firstChild);
+ReactDOM.render(<MyPage />, document.body.firstElementChild);
 ```
 
 ## Notes on module vs path-based imports

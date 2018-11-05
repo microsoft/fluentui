@@ -45,7 +45,7 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
 const MyPage = () => <DefaultButton>I am a button</DefaultButton>;
 
-ReactDOM.render(<MyPage />, document.body.firstChild);
+ReactDOM.render(<MyPage />, document.body.firstElementChild);
 ```
 
 ## Rendering Fabric components on the server (SSR)
