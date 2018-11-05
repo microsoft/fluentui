@@ -13,8 +13,8 @@ import { CalendarDay } from './CalendarDay/CalendarDay';
 import { CalendarMonth } from './CalendarMonth/CalendarMonth';
 import { ICalendarDay } from './CalendarDay/CalendarDay.types';
 import { ICalendarMonth } from './CalendarMonth/CalendarMonth.types';
-import { css, BaseComponent, KeyCodes, classNamesFunction } from '@uifabric/Utilities';
-import { IProcessedStyleSet } from '@uifabric/Styling';
+import { css, BaseComponent, KeyCodes, classNamesFunction } from '@uifabric/utilities';
+import { IProcessedStyleSet } from '@uifabric/styling';
 
 const getClassNames = classNamesFunction<ICalendarStyleProps, ICalendarStyles>();
 
@@ -232,7 +232,11 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
     const { showGoToToday, strings } = this.props;
     return (
       showGoToToday && (
-        <button className={css('js-goToday', classes.goTodayButton)} onClick={this._onGotoTodayClick}>
+        <button
+          className={css('js-goToday', classes.goTodayButton)}
+          onClick={this._onGotoToday}
+          onKeyDown={this._onButtonKeyDown(this._onGotoToday)}
+        >
           {strings!.goToToday}
         </button>
       )
@@ -301,8 +305,15 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
     this._navigateDayPickerDay(today!);
   };
 
-  private _onGotoTodayClick = (): void => {
-    this._onGotoToday();
+  private _onButtonKeyDown = (callback: () => void): ((ev: React.KeyboardEvent<HTMLButtonElement>) => void) => {
+    return (ev: React.KeyboardEvent<HTMLButtonElement>) => {
+      switch (ev.which) {
+        case KeyCodes.enter:
+        case KeyCodes.space:
+          callback();
+          break;
+      }
+    };
   };
 
   private _onDatePickerPopupKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {

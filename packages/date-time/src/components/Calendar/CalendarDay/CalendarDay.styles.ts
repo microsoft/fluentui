@@ -1,5 +1,5 @@
 import { ICalendarDayStyleProps, ICalendarDayStyles } from './CalendarDay.types';
-import { normalize, FontSizes, FontWeights, getFocusStyle, getGlobalClassNames } from '@uifabric/Styling';
+import { normalize, FontSizes, FontWeights, getFocusStyle, getGlobalClassNames } from '@uifabric/styling';
 import { DateRangeType } from '../../../utilities/dateValues/DateValues';
 
 const GlobalClassNames = {

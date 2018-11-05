@@ -1,5 +1,5 @@
 import { ICalendarStyleProps, ICalendarStyles } from './Calendar.types';
-import { normalize, FontSizes, getFocusStyle } from '@uifabric/Styling';
+import { normalize, FontSizes, getFocusStyle } from '@uifabric/styling';
 
 export const styles = (props: ICalendarStyleProps): ICalendarStyles => {
   const { className, theme, isDayPickerVisible, isMonthPickerVisible, showWeekNumbers } = props;
@@ -53,7 +53,8 @@ export const styles = (props: ICalendarStyleProps): ICalendarStyles => {
           },
           '&:hover': {
             color: palette.themePrimary,
-            backgroundColor: 'transparent'
+            backgroundColor: 'transparent',
+            cursor: 'pointer'
           },
           '&:active': {
             color: palette.themeDark

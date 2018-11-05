@@ -1,6 +1,6 @@
 import { DayOfWeek, MonthOfYear, FirstWeekOfYear, DateRangeType } from '../dateValues/DateValues';
 import TimeConstants from '../dateValues/TimeConstants';
-import { assertNever } from '@uifabric/Utilities';
+import { assertNever } from '@uifabric/utilities';
 
 /**
  * Returns a date offset from the given date by the specified number of days.

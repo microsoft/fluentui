@@ -15,3 +15,14 @@ Once the DateTime component graduates to a production release, the component wil
 ```js
 import { ComponentName } from 'office-ui-fabric-react';
 ```
+
+#### Development Notes
+
+Initial refactor in progress, still TODO:
+- Move the DatePicker control in to the date-time package
+- Refactoring the Calendar control:
+  - Unit tests all need to be copied over and updated to work with the refactor
+  - Styling pass needs to be done to make sure we didn't drop styles
+  - Integrate the latest missing changes from OUFR version
+    - Year picker
+    - Accessibility updates

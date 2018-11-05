@@ -100,6 +100,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
             className={classNames.monthAndYear}
             onClick={this._onHeaderSelect}
             data-is-focusable={!!onHeaderSelect}
+            tabIndex={!!onHeaderSelect ? 0 : -1} // prevent focus if there's no action for the button
             onKeyDown={this._onButtonKeyDown(this._onHeaderSelect)}
           >
             {dateTimeFormatter.formatMonthYear(navigatedDate, strings)}
@@ -495,17 +496,17 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
         const above =
           weeks[weekIndex - 1] &&
           weeks[weekIndex - 1][dayIndex] &&
-          this.isInSameRange(weeks[weekIndex - 1][dayIndex].originalDate, weeks[weekIndex][dayIndex].originalDate);
+          this.isInSameHoverRange(weeks[weekIndex - 1][dayIndex].originalDate, weeks[weekIndex][dayIndex].originalDate);
         const below =
           weeks[weekIndex + 1] &&
           weeks[weekIndex + 1][dayIndex] &&
-          this.isInSameRange(weeks[weekIndex + 1][dayIndex].originalDate, weeks[weekIndex][dayIndex].originalDate);
+          this.isInSameHoverRange(weeks[weekIndex + 1][dayIndex].originalDate, weeks[weekIndex][dayIndex].originalDate);
         const left =
           weeks[weekIndex][dayIndex - 1] &&
-          this.isInSameRange(weeks[weekIndex][dayIndex - 1].originalDate, weeks[weekIndex][dayIndex].originalDate);
+          this.isInSameHoverRange(weeks[weekIndex][dayIndex - 1].originalDate, weeks[weekIndex][dayIndex].originalDate);
         const right =
           weeks[weekIndex][dayIndex + 1] &&
-          this.isInSameRange(weeks[weekIndex][dayIndex + 1].originalDate, weeks[weekIndex][dayIndex].originalDate);
+          this.isInSameHoverRange(weeks[weekIndex][dayIndex + 1].originalDate, weeks[weekIndex][dayIndex].originalDate);
 
         const roundedTopLeft = !above && !left;
         const roundedTopRight = !above && !right;
@@ -533,9 +534,13 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
     return weekCornersStyled;
   }
 
-  private isInSameRange = (date1: Date, date2: Date): boolean => {
+  private isInSameHoverRange = (date1: Date, date2: Date): boolean => {
     const { dateRangeType, firstDayOfWeek, workWeekDays } = this.props;
-    const dateRange = getDateRangeArray(date1, dateRangeType, firstDayOfWeek, workWeekDays);
+
+    // The hover state looks weird with non-contiguous days in work week view. In work week, show week hover state
+    const dateRangeHoverType = dateRangeType === DateRangeType.WorkWeek ? DateRangeType.Week : dateRangeType;
+
+    const dateRange = getDateRangeArray(date1, dateRangeHoverType, firstDayOfWeek, workWeekDays);
 
     return dateRange.filter((date: Date) => date.getTime() === date2.getTime()).length > 0;
   };
@@ -557,8 +562,13 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
     const { weeks } = this.state;
     const { dateRangeType, firstDayOfWeek, workWeekDays } = this.props;
 
+    // The hover state looks weird with non-contiguous days in work week view. In work week, show week hover state
+    const dateRangeHoverType = dateRangeType === DateRangeType.WorkWeek ? DateRangeType.Week : dateRangeType;
+
     // gets all the dates for the given date range type that are in the same date range as the given day
-    const dateRange = getDateRangeArray(day.originalDate, dateRangeType, firstDayOfWeek, workWeekDays).map((date: Date) => date.getTime());
+    const dateRange = getDateRangeArray(day.originalDate, dateRangeHoverType, firstDayOfWeek, workWeekDays).map((date: Date) =>
+      date.getTime()
+    );
 
     // gets all the day refs for the given dates
     const dayInfosInRange = weeks!.reduce((accumulatedValue: IDayInfo[], currentWeek: IDayInfo[]) => {

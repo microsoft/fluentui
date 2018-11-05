@@ -8,7 +8,14 @@ export const AppDefinition: IAppDefinition = {
   testPages: [],
   examplePages: [
     {
-      links: []
+      links: [
+        {
+          component: require<any>('../components/pages/CalendarPage').CalendarPage,
+          key: 'Calendar',
+          name: 'Calendar',
+          url: '#/examples/calendar'
+        }
+      ]
     }
   ],
   headerLinks: [

@@ -1,5 +1,5 @@
 import { ICalendarMonthStyleProps, ICalendarMonthStyles } from './CalendarMonth.types';
-import { normalize, FontSizes, FontWeights, getFocusStyle } from '@uifabric/Styling';
+import { normalize, FontSizes, FontWeights, getFocusStyle } from '@uifabric/styling';
 
 export const getStyles = (props: ICalendarMonthStyleProps): ICalendarMonthStyles => {
   const { className, theme, hasHeaderClickCallback, highlightCurrentMonth, highlightSelectedMonth } = props;
