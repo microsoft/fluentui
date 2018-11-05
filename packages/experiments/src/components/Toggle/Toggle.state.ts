@@ -6,7 +6,7 @@ export type IToggleState = Pick<IToggleViewProps, 'checked' | 'onChange' | 'onCl
 
 export class ToggleState extends BaseState<IToggleProps, IToggleViewProps, IToggleState> {
   constructor(props: ToggleState['props']) {
-    super(props);
+    super(props, { controlledProps: ['checked'] });
 
     this.state = {
       checked: !!props.defaultChecked,
@@ -14,20 +14,20 @@ export class ToggleState extends BaseState<IToggleProps, IToggleViewProps, ITogg
       onChange: this._noop,
       onClick: this._onClick
     };
+
+    this.transformDerivedProps = (newProps: IToggleViewProps) => {
+      newProps.text = newProps.checked ? props.onText : props.offText;
+      return newProps;
+    };
   }
 
   private _onClick = (ev: React.MouseEvent<HTMLElement>) => {
-    const { checked: checkedProp, onText, offText, disabled, onChange } = this.props;
+    const { disabled, onChange } = this.props;
     const { checked } = this.state;
 
     if (!disabled) {
       // Only update the state if the user hasn't provided it.
-      if (checkedProp === undefined) {
-        this.setState({
-          checked: !checked,
-          text: checked ? offText : onText
-        });
-      }
+      this.setState({ checked: !checked });
 
       if (onChange) {
         onChange(ev, !checked);
