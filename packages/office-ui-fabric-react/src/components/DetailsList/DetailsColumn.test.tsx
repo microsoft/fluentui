@@ -125,4 +125,30 @@ describe('DetailsColumn', () => {
 
     expect(mockOnColumnClick.mock.calls.length).toBe(0);
   });
+
+  it('renders tooltip when title prop is provided', () => {
+    const title = 'tooltip';
+    const column = assign({}, baseColumn, { title });
+    const columns = [column];
+    let component: any;
+
+    component = mount(
+      <DetailsList
+        items={[]}
+        setKey={'key1'}
+        initialFocusedIndex={0}
+        skipViewportMeasures={true}
+        columns={columns}
+        // tslint:disable-next-line:jsx-no-lambda
+        componentRef={ref => (component = ref)}
+        // tslint:disable-next-line:jsx-no-lambda
+        onShouldVirtualize={() => false}
+      />
+    );
+
+    const columnHeader = component.find(DetailsColumn);
+    const columnHeaderTitle = columnHeader.find(`.ms-DetailsHeader-cellTitle[title="${title}"]`);
+
+    expect(columnHeaderTitle).toHaveLength(1);
+  });
 });

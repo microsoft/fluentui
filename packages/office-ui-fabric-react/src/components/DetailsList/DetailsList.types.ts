@@ -308,6 +308,11 @@ export interface IColumn {
   name: string;
 
   /**
+   * Tooltip to render on the column header.
+   */
+  title?: string;
+
+  /**
    * The field to pull the text value from for the column. This can be null if a custom
    * onRender method is provided.
    */

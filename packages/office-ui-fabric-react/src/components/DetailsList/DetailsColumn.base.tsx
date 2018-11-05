@@ -77,6 +77,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
               children: (
                 <span
                   id={`${parentId}-${column.key}`}
+                  title={column.title}
                   aria-label={column.isIconOnly ? column.name : undefined}
                   aria-labelledby={column.isIconOnly ? undefined : `${parentId}-${column.key}-name `}
                   className={classNames.cellTitle}

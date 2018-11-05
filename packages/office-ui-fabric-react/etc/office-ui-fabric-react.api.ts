@@ -2856,6 +2856,7 @@ interface IColumn {
   onRenderDivider?: IRenderFunction<IDetailsColumnProps>;
   sortAscendingAriaLabel?: string;
   sortDescendingAriaLabel?: string;
+  title?: string;
 }
 
 // @public (undocumented)
