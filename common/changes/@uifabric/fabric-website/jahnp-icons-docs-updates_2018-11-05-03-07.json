@@ -1,11 +1,11 @@
 {
   "changes": [
     {
-      "packageName": "office-ui-fabric-react",
+      "packageName": "@uifabric/fabric-website",
       "comment": "Website: Update iconography implementation documentation",
       "type": "patch"
     }
   ],
-  "packageName": "office-ui-fabric-react",
+  "packageName": "@uifabric/fabric-website",
   "email": "pejahn@microsoft.com"
 }
