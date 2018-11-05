@@ -80,6 +80,7 @@ export interface IModalProps extends React.Props<ModalBase>, IWithResponsiveMode
 
   /**
    * A callback function for when the Modal content is mounted on the overlay layer
+   * @deprecated Use layerProps.onLayerDidMount instead
    */
   onLayerDidMount?: () => void;
 

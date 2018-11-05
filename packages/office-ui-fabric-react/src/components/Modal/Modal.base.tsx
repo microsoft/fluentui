@@ -110,7 +110,6 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       isClickableOutsideFocusTrap,
       isDarkOverlay,
       onDismiss,
-      onLayerDidMount,
       responsiveMode,
       titleAriaId,
       styles,
@@ -131,7 +130,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
 
     const classNames = getClassNames(styles, {
       theme: theme!,
-      className: className || layerProps!.className,
+      className,
       containerClassName,
       scrollableContentClassName,
       isOpen,
@@ -144,7 +143,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
     // @temp tuatology - Will adjust this to be a panel at certain breakpoints
     if (responsiveMode! >= ResponsiveMode.small) {
       return (
-        <Layer {...layerProps} onLayerDidMount={onLayerDidMount}>
+        <Layer {...layerProps} onLayerDidMount={this._onLayerDidMount}>
           <Popup
             role={isBlocking ? 'alertdialog' : 'dialog'}
             ariaLabelledBy={titleAriaId}
@@ -201,4 +200,17 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       this.props.onDismissed();
     }
   }
+
+  // Handle onLayerDidMount and layerProps.onLayerDidMount
+  // Can be deleted once IModalProps.onLayerDidMount has been removed
+  private _onLayerDidMount = (): void => {
+    const { layerProps, onLayerDidMount } = this.props;
+
+    if (layerProps && layerProps.onLayerDidMount) {
+      layerProps.onLayerDidMount();
+    }
+    if (onLayerDidMount) {
+      onLayerDidMount();
+    }
+  };
 }
