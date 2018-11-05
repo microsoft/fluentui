@@ -15,4 +15,5 @@ export interface IFontStyles {
   xxLarge: IRawStyle;
   superLarge: IRawStyle;
   mega: IRawStyle;
+  inherit: IRawStyle;
 }

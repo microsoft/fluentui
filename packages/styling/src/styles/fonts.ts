@@ -81,6 +81,7 @@ export namespace FontSizes {
   export const xxLarge: string = '28px';
   export const superLarge: string = '42px';
   export const mega: string = '72px';
+  export const inherit: string = 'inherit';
 }
 
 // Standard font weights.
@@ -90,6 +91,7 @@ export namespace FontWeights {
   export const regular: IFontWeight = 400;
   export const semibold: IFontWeight = 600;
   export const bold: IFontWeight = 700;
+  export const inherit = 'inherit';
 }
 
 // Standard Icon Sizes.
@@ -125,7 +127,8 @@ export function createFontStyles(localeCode: string | null): IFontStyles {
     xLarge: _createFont(FontSizes.xLarge, FontWeights.light, fontFamilyWithFallback),
     xxLarge: _createFont(FontSizes.xxLarge, FontWeights.light, fontFamilyWithFallback),
     superLarge: _createFont(FontSizes.superLarge, FontWeights.light, fontFamilyWithFallback),
-    mega: _createFont(FontSizes.mega, FontWeights.light, fontFamilyWithFallback)
+    mega: _createFont(FontSizes.mega, FontWeights.light, fontFamilyWithFallback),
+    inherit: _createFont(FontSizes.inherit, FontWeights.inherit, fontFamilyWithFallback)
   };
 
   return fontStyles;
