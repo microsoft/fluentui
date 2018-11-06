@@ -2,6 +2,135 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.33.0",
+      "tag": "@uifabric/dashboard_v0.33.0",
+      "date": "Tue, 06 Nov 2018 13:31:09 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Fixing change in hover card behavior, this change in behavior was caused due  to fabric version update in dashbaord package by fabric bot",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "c2b04379c1be09edf2c02e1edc562ab98bacfcbe"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.9.1 <7.0.0` to `>=6.9.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.99.0 <7.0.0` to `>=6.99.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.32.2",
+      "tag": "@uifabric/dashboard_v0.32.2",
+      "date": "Sun, 04 Nov 2018 02:27:52 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Disable api-extractor build task",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "7b1ab4cf4295fce57364338746b066496acc9ce8"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Adding necessary wrapper classes for charting in dashboard package",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "f5ff24af670830779b42d256984f3033b56a92bb"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.98.1 <7.0.0` to `>=6.99.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.32.1",
+      "tag": "@uifabric/dashboard_v0.32.1",
+      "date": "Fri, 02 Nov 2018 18:11:37 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.27.0` to `^0.28.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.40.2 <7.0.0` to `>=6.40.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.98.0 <7.0.0` to `>=6.98.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.32.0",
+      "tag": "@uifabric/dashboard_v0.32.0",
+      "date": "Fri, 02 Nov 2018 12:28:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "css changes in card components",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "6990bab342ff4181034af6d9775a43665602a0b0"
+          },
+          {
+            "comment": "render animations for card charts",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "de24579013545f1bc4678ab48dc7ea8484c1acc9"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Making changes to layout of card to support scaling of dataviz. Dataviz scale as per the parent element they sit in and in this case the parent element is formed using flex css. Added constraints to check if part of card will have dataviz and changes styles accordingly",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "6990bab342ff4181034af6d9775a43665602a0b0"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.26.3` to `^0.27.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.40.1 <7.0.0` to `>=6.40.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.97.1 <7.0.0` to `>=6.98.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.31.1",
+      "tag": "@uifabric/dashboard_v0.31.1",
+      "date": "Wed, 31 Oct 2018 22:35:10 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Running Prettier on all .ts and .tsx files in the packages folder.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "2ce6c5ac3ccf4e62d4866841317b4aa55b8fb541"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Add opitional switch for Dashboard Chart -- stack bar chart to not apply default style while data points count is less two",
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "9850d03a2a3ae37be85a2f12e04a464c7151ac71"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.97.0 <7.0.0` to `>=6.97.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.31.0",
       "tag": "@uifabric/dashboard_v0.31.0",
       "date": "Thu, 25 Oct 2018 12:30:05 GMT",

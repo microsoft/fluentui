@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Label } from '../../Label';
 import { ChoiceGroupOption, OnFocusCallback, OnChangeCallback } from './ChoiceGroupOption/index';
 import { IChoiceGroupOption, IChoiceGroupProps, IChoiceGroupStyleProps, IChoiceGroupStyles } from './ChoiceGroup.types';
-import { BaseComponent, classNamesFunction, createRef, getId, find } from '../../Utilities';
+import { BaseComponent, classNamesFunction, getId, find } from '../../Utilities';
 
 const getClassNames = classNamesFunction<IChoiceGroupStyleProps, IChoiceGroupStyles>();
 
@@ -20,7 +20,7 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
 
   private _id: string;
   private _labelId: string;
-  private _inputElement = createRef<HTMLInputElement>();
+  private _inputElement = React.createRef<HTMLInputElement>();
   private focusedVars: { [key: string]: OnFocusCallback } = {};
   private changedVars: { [key: string]: OnChangeCallback } = {};
 
