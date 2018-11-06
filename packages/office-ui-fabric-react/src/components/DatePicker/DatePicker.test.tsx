@@ -39,6 +39,20 @@ describe('DatePicker', () => {
     expect(wrapper.state('isDatePickerShown')).toBe(false);
   });
 
+  it('should call onSelectDate even when required input is empty when allowTextInput is true', done => {
+    const onSelectDate = (date?: Date) => {
+      if (!date) {
+        done();
+      }
+    };
+    const datePicker = mount(<DatePickerBase isRequired={true} allowTextInput={true} onSelectDate={onSelectDate} />);
+    const textField = datePicker.find('input');
+    expect(textField).toBeDefined();
+    textField.simulate('change', { target: { value: 'Jan 1 2030' } }).simulate('blur');
+    textField.simulate('change', { target: { value: '' } }).simulate('blur');
+    datePicker.unmount();
+  });
+
   describe('when Calendar properties are not specified', () => {
     const datePicker = shallow(<DatePickerBase />);
     datePicker.setState({ isDatePickerShown: true });
