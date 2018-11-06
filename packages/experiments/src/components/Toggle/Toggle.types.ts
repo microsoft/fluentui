@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IComponent, IStyleableComponentProps } from '../../Foundation';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { IComponentAs /*, IRefObject*/ } from '../../Utilities';
+import { IComponentAs, IRefObject } from '../../Utilities';
 
 export type IToggleComponent = IComponent<IToggleProps, IToggleViewProps, IToggleStyles>;
 
@@ -19,7 +19,7 @@ export interface IToggleProps extends IStyleableComponentProps<IToggleViewProps,
    * Optional callback to access the IToggleComponent interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  // componentRef?: IRefObject<IToggleComponent>;
+  componentRef?: IRefObject<IToggleComponent>;
 
   /**
    * A label for the toggle.

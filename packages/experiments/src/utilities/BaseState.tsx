@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { BaseComponentMin } from './BaseComponentMin';
 import { IStateComponentProps } from '../Foundation';
 
 export interface IBaseStateOptions<TViewProps, TState> {
@@ -6,10 +6,7 @@ export interface IBaseStateOptions<TViewProps, TState> {
   transformViewProps: (newProps: TViewProps) => TViewProps;
 }
 
-export class BaseState<TComponentProps, TViewProps, TState> extends React.Component<
-  IStateComponentProps<TComponentProps, TViewProps>,
-  TState
-> {
+export class BaseState<TComponentProps, TViewProps, TState> extends BaseComponentMin<TComponentProps, TViewProps, TState> {
   private _controlledProps: (keyof TState)[];
   private _transformViewProps: (newProps: TViewProps) => TViewProps;
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
-// import * as sinon from 'sinon';
+import * as sinon from 'sinon';
 
 import { Toggle } from './Toggle';
 
@@ -69,7 +69,7 @@ describe('ToggleState', () => {
     expect(component.find('label').length).toEqual(0);
   });
 
-  /*it(`doesn't trigger onSubmit when placed inside a form`, () => {
+  it(`doesn't trigger onSubmit when placed inside a form`, () => {
     let component: any;
     const onSubmit = sinon.spy();
 
@@ -94,5 +94,5 @@ describe('ToggleState', () => {
     button.simulate('click');
     expect((component as React.Component<any, any>).state.checked).toEqual(true);
     expect(onSubmit.called).toEqual(false);
-  });*/
+  });
 });
