@@ -2642,8 +2642,6 @@ interface IChoiceGroupStyleProps {
 // @public (undocumented)
 interface IChoiceGroupStyles {
   // (undocumented)
-  applicationRole?: IStyle;
-  // (undocumented)
   flexContainer?: IStyle;
   // (undocumented)
   label?: IStyle;

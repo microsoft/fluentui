@@ -53,7 +53,7 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
   }
 
   public render(): JSX.Element {
-    const { className, theme, styles, options, label, required, disabled, name, role = 'application' } = this.props;
+    const { className, theme, styles, options, label, required, disabled, name } = this.props;
     const { keyChecked, keyFocused } = this.state;
 
     const classNames = getClassNames(styles!, {
@@ -74,40 +74,36 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
     const keyDefaultFocusable = keyChecked === undefined && firstEnabledOption ? firstEnabledOption.key : undefined;
 
     return (
-      // By default, we need to assign the role 'application' on the containing div
-      // because JAWS doesn't call OnKeyDown without this role
-      <div role={role} className={classNames.applicationRole}>
-        <div className={classNames.root} role="radiogroup" {...ariaLabelledBy && { 'aria-labelledby': ariaLabelledBy }}>
-          {label && (
-            <Label className={classNames.label} required={required} id={this._id + '-label'}>
-              {label}
-            </Label>
-          )}
-          <div className={classNames.flexContainer}>
-            {options!.map((option: IChoiceGroupOption) => {
-              const innerOptionProps = {
-                ...option,
-                focused: option.key === keyFocused,
-                checked: option.key === keyChecked,
-                'data-is-focusable': option.key === keyChecked || option.key === keyDefaultFocusable ? true : false,
-                disabled: option.disabled || disabled,
-                id: `${this._id}-${option.key}`,
-                labelId: `${this._labelId}-${option.key}`,
-                name: name || this._id,
-                required
-              };
+      <div className={classNames.root} role="radiogroup" {...ariaLabelledBy && { 'aria-labelledby': ariaLabelledBy }}>
+        {label && (
+          <Label className={classNames.label} required={required} id={this._id + '-label'}>
+            {label}
+          </Label>
+        )}
+        <div className={classNames.flexContainer}>
+          {options!.map((option: IChoiceGroupOption) => {
+            const innerOptionProps = {
+              ...option,
+              focused: option.key === keyFocused,
+              checked: option.key === keyChecked,
+              'data-is-focusable': option.key === keyChecked || option.key === keyDefaultFocusable ? true : false,
+              disabled: option.disabled || disabled,
+              id: `${this._id}-${option.key}`,
+              labelId: `${this._labelId}-${option.key}`,
+              name: name || this._id,
+              required
+            };
 
-              return (
-                <ChoiceGroupOption
-                  key={option.key}
-                  onBlur={this._onBlur}
-                  onFocus={this._onFocus(option.key)}
-                  onChange={this._onChange(option.key)}
-                  {...innerOptionProps}
-                />
-              );
-            })}
-          </div>
+            return (
+              <ChoiceGroupOption
+                key={option.key}
+                onBlur={this._onBlur}
+                onFocus={this._onFocus(option.key)}
+                onChange={this._onChange(option.key)}
+                {...innerOptionProps}
+              />
+            );
+          })}
         </div>
       </div>
     );

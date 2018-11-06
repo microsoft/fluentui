@@ -12,13 +12,13 @@ export const getStyles = (props: IChoiceGroupStyleProps): IChoiceGroupStyles => 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {
-    applicationRole: className,
     root: [
       classNames.root,
       theme.fonts.medium,
       {
         display: 'block'
-      }
+      },
+      className
     ],
     label: className,
     flexContainer: [
