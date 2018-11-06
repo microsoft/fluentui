@@ -47,6 +47,10 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       isVisible: props.isOpen,
       hasBeenOpened: props.isOpen
     };
+
+    this._warnDeprecations({
+      onLayerDidMount: 'layerProps.onLayerDidMount'
+    });
   }
 
   public componentWillReceiveProps(newProps: IModalProps): void {
@@ -110,18 +114,21 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       isClickableOutsideFocusTrap,
       isDarkOverlay,
       onDismiss,
+      layerProps,
       responsiveMode,
       titleAriaId,
       styles,
       subtitleAriaId,
       theme,
-      topOffsetFixed
+      topOffsetFixed,
+      onLayerDidMount
     } = this.props;
     const { isOpen, isVisible, hasBeenOpened, modalRectangleTop } = this.state;
 
-    const layerProps = {
+    const mergedLayerProps = {
       ...DefaultLayerProps,
-      ...this.props.layerProps
+      ...this.props.layerProps,
+      onLayerDidMount: layerProps && layerProps.onLayerDidMount ? layerProps.onLayerDidMount : onLayerDidMount
     };
 
     if (!isOpen) {
@@ -143,7 +150,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
     // @temp tuatology - Will adjust this to be a panel at certain breakpoints
     if (responsiveMode! >= ResponsiveMode.small) {
       return (
-        <Layer {...layerProps} onLayerDidMount={this._onLayerDidMount}>
+        <Layer {...mergedLayerProps}>
           <Popup
             role={isBlocking ? 'alertdialog' : 'dialog'}
             ariaLabelledBy={titleAriaId}
@@ -200,17 +207,4 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       this.props.onDismissed();
     }
   }
-
-  // Handle onLayerDidMount and layerProps.onLayerDidMount
-  // Can be deleted once IModalProps.onLayerDidMount has been removed
-  private _onLayerDidMount = (): void => {
-    const { layerProps, onLayerDidMount } = this.props;
-
-    if (layerProps && layerProps.onLayerDidMount) {
-      layerProps.onLayerDidMount();
-    }
-    if (onLayerDidMount) {
-      onLayerDidMount();
-    }
-  };
 }
