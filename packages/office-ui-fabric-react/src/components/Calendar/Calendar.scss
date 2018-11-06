@@ -489,6 +489,17 @@ $Calendar-dayPicker-margin: 10px;
   &:active {
     color: $ms-color-themeDark;
   }
+  a {
+    color: inherit;
+    text-decoration: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+  }
+}
+
+.goToTodayIsDisabled {
+  color: $ms-color-neutralTertiaryAlt;
+  pointer-events: none;
 }
 
 .goTodayInlineMonth {

@@ -143,6 +143,13 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     const monthPickerOnly = !showMonthPickerAsOverlay && !isDayPickerVisible;
     const overlayedWithButton = showMonthPickerAsOverlay && showGoToToday;
 
+    let goTodayEnabled = showGoToToday;
+
+    if (goTodayEnabled && navigatedDayDate && selectedDate) {
+      goTodayEnabled =
+        navigatedDayDate.getFullYear() !== selectedDate.getFullYear() || navigatedDayDate.getMonth() !== selectedDate.getMonth();
+    }
+
     return (
       <div className={css(rootClass, styles.root, className)} role="application">
         <div
@@ -214,11 +221,13 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   <button
                     role="button"
                     className={css('ms-DatePicker-goToday js-goToday', styles.goToday, {
-                      [styles.goTodayInlineMonth]: isMonthPickerVisible
+                      [styles.goTodayInlineMonth]: isMonthPickerVisible,
+                      [styles.goToTodayIsDisabled]: !goTodayEnabled
                     })}
                     onClick={this._onGotoTodayClick}
                     onKeyDown={this._onGotoTodayKeyDown}
                     tabIndex={0}
+                    disabled={!goTodayEnabled}
                   >
                     <a href="javascript:void(0);"> {strings!.goToToday}</a>
                   </button>
