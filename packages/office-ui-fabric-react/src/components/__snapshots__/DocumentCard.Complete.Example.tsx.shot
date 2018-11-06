@@ -63,8 +63,8 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     -webkit-font-smoothing: antialiased;
                     color: #0078d4;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
+                    font-size: inherit;
+                    font-weight: inherit;
                     outline: none;
                     text-decoration: none;
                   }
@@ -133,8 +133,8 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     -webkit-font-smoothing: antialiased;
                     color: #0078d4;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
+                    font-size: inherit;
+                    font-weight: inherit;
                     outline: none;
                     text-decoration: none;
                   }
@@ -203,8 +203,8 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     -webkit-font-smoothing: antialiased;
                     color: #0078d4;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
+                    font-size: inherit;
+                    font-weight: inherit;
                     outline: none;
                     text-decoration: none;
                   }

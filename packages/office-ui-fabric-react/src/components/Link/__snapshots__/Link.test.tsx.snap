@@ -9,8 +9,8 @@ exports[`Link renders Link correctly 1`] = `
         -webkit-font-smoothing: antialiased;
         color: #0078d4;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 400;
+        font-size: inherit;
+        font-weight: inherit;
         outline: none;
         text-decoration: none;
       }
@@ -102,8 +102,8 @@ exports[`Link renders Link with a custom class name 1`] = `
         -webkit-font-smoothing: antialiased;
         color: #0078d4;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 400;
+        font-size: inherit;
+        font-weight: inherit;
         outline: none;
         text-decoration: none;
       }
@@ -196,8 +196,8 @@ exports[`Link renders disabled Link correctly 1`] = `
         color: #a6a6a6;
         cursor: default;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 400;
+        font-size: inherit;
+        font-weight: inherit;
         outline: none;
         text-decoration: none;
       }
