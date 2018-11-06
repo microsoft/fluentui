@@ -240,6 +240,17 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
   hidden?: boolean;
 
   /**
+   * If true, this will skip updating the Popup component inside Callout
+   * Use this only to improve rendering performance.
+   */
+  skipPopupUpdate?: boolean;
+
+  /**
+   * Callback that runs after contextualmenu was dismissed (from not hidden to hidden)
+   */
+  onAfterMenuDismiss?: () => void;
+
+  /**
    * If true, the contextual menu will not be updated until
    * focus enters the menu via other means. This will only result
    * in different behavior when shouldFocusOnMount = false

@@ -86,7 +86,12 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     this._positionAttempts = 0;
   }
 
-  public componentDidUpdate() {
+  public componentDidUpdate(prevProps: ICalloutProps) {
+    if (prevProps.hidden && !this.props.hidden) {
+      // Reset initial focus because the callout transitioned from hidden to visible
+      this._didSetInitialFocus = false;
+    }
+
     this._setInitialFocus();
     if (!this.props.hidden) {
       if (!this._hasListeners) {
@@ -200,7 +205,9 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
         >
           {beakVisible && <div className={this._classNames.beak} style={this._getBeakPosition()} />}
           {beakVisible && <div className={this._classNames.beakCurtain} />}
-          {!this.props.hidden && (
+          {(!this.props.hidden ||
+            // If skipPopupUpdate is true, we need to do an initial render of Popup even if it's hidden
+            this.props.skipPopupUpdate) && (
             <Popup
               role={role}
               ariaLabel={ariaLabel}
@@ -211,6 +218,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
               onScroll={onScroll}
               shouldRestoreFocus={true}
               style={overflowStyle}
+              skipUpdate={this.props.skipPopupUpdate}
             >
               {children}
             </Popup>
@@ -301,7 +309,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   private _getBeakPosition(): React.CSSProperties {
     const { positions } = this.state;
     const beakPostionStyle: React.CSSProperties = {
-      ...(positions && positions.beakPosition ? positions.beakPosition.elementPosition : null)
+      ...positions && positions.beakPosition ? positions.beakPosition.elementPosition : null
     };
 
     if (!beakPostionStyle.top && !beakPostionStyle.bottom && !beakPostionStyle.left && !beakPostionStyle.right) {
@@ -424,7 +432,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     if (target) {
       if (typeof target === 'string') {
         const currentDoc: Document = getDocument()!;
-        this._target = currentDoc ? (currentDoc.querySelector(target) as Element) : null;
+        this._target = currentDoc ? currentDoc.querySelector(target) as Element : null;
         this._targetWindow = getWindow()!;
       } else if ((target as MouseEvent).stopPropagation) {
         this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement)!;

@@ -104,6 +104,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     } = this.props;
 
     const { menuProps } = this.state;
+    const isExpanded = !!menuProps && !!!menuProps.hidden;
+
     // Button is disabled if the whole button (in case of splitbutton is disabled) or if the primary action is disabled
     const isPrimaryButtonDisabled = disabled || primaryDisabled;
 
@@ -116,7 +118,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
           menuIconProps && menuIconProps.className,
           isPrimaryButtonDisabled!,
           checked!,
-          !!menuProps,
+          isExpanded,
           this.props.split,
           !!allowDisabledFocus
         )
@@ -129,7 +131,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
           menuIconProps && menuIconProps.className,
           isPrimaryButtonDisabled!,
           checked!,
-          !!menuProps,
+          isExpanded,
           this.props.split
         );
 
@@ -283,7 +285,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
               {!this._isSplitButton &&
                 (menuProps || menuIconProps || this.props.onRenderMenuIcon) &&
                 onRenderMenuIcon(this.props, this._onRenderMenuIcon)}
-              {this.state.menuProps && !this.state.menuProps.doNotLayer && onRenderMenu(menuProps, this._onRenderMenu)}
+              {this.state.menuProps && !this.state.menuProps.doNotLayer && onRenderMenu(this.state.menuProps, this._onRenderMenu)}
             </div>
           </Tag>
         )}
@@ -294,7 +296,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       return (
         <div style={{ display: 'inline-block' }}>
           {Content}
-          {this.state.menuProps && onRenderMenu(menuProps, this._onRenderMenu)}
+          {this.state.menuProps && onRenderMenu(this.state.menuProps, this._onRenderMenu)}
         </div>
       );
     }
@@ -424,6 +426,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         className={css('ms-BaseButton-menuhost', menuProps.className)}
         target={this._isSplitButton ? this._splitButtonContainer.current : this._buttonElement.current}
         onDismiss={onDismiss}
+        onAfterMenuDismiss={this.props.persistMenu ? this.props.onAfterMenuDismiss : undefined}
       />
     );
   };

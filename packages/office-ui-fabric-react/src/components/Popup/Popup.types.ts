@@ -47,4 +47,10 @@ export interface IPopupProps extends React.HTMLAttributes<Popup> {
    * @default true
    */
   shouldRestoreFocus?: boolean;
+
+  /**
+   * If true, we will skip re-rendering the componene using shouldComponentUpdate.
+   * This should be used only to improve performance in a static Popup content.
+   */
+  skipUpdate?: boolean;
 }

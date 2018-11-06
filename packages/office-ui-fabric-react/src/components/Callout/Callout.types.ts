@@ -208,6 +208,12 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
    * once the callout is visible.
    */
   hidden?: boolean;
+
+  /**
+   * If true, this will skip updating the Popup component inside Callout
+   * Use this only to improve rendering performance.
+   */
+  skipPopupUpdate?: boolean;
 }
 
 export interface ICalloutContentStyleProps {

@@ -1,13 +1,5 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  KeyCodes,
-  divProperties,
-  doesElementContainFocus,
-  getDocument,
-  getNativeProps,
-  createRef
-} from '../../Utilities';
+import { BaseComponent, KeyCodes, divProperties, doesElementContainFocus, getDocument, getNativeProps, createRef } from '../../Utilities';
 import { IPopupProps } from './Popup.types';
 
 export interface IPopupState {
@@ -34,6 +26,13 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
 
   public componentWillMount(): void {
     this._originalFocusedElement = getDocument()!.activeElement as HTMLElement;
+  }
+
+  public shouldComponentUpdate(nextProps: IPopupProps): boolean {
+    if (!!this.props.skipUpdate) {
+      return false;
+    }
+    return true;
   }
 
   public componentDidMount(): void {
