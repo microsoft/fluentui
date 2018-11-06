@@ -14,6 +14,8 @@ import { SliderStyles } from './styles/Slider.styles';
 import { SpinButtonStyles } from './styles/SpinButton.styles';
 import { TextFieldStyles } from './styles/TextField.styles';
 import { ToggleStyles } from './styles/Toggle.styles';
+import { IconButtonStyles } from './styles/IconButton.styles';
+import { CommandBarButtonStyles } from './styles/CommandBarButton.styles';
 
 // Roll up all style overrides in a single "Fluent theme" object
 
@@ -23,6 +25,9 @@ import { ToggleStyles } from './styles/Toggle.styles';
 export const FluentStyles: any = {
   Breadcrumb: {
     styles: BreadcrumbStyles
+  },
+  CommandBarButton: {
+    styles: CommandBarButtonStyles
   },
   CompoundButton: {
     styles: CompoundButtonStyles
@@ -50,6 +55,9 @@ export const FluentStyles: any = {
   },
   Dropdown: {
     styles: DropdownStyles
+  },
+  IconButton: {
+    styles: IconButtonStyles
   },
   Label: {
     styles: LabelStyles

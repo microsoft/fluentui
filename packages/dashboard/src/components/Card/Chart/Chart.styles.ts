@@ -5,6 +5,10 @@ export const getStyles = (): IChartStyles => {
     chartWrapper: {
       width: '100%',
       height: '100%'
+    },
+    donutWrapper: {
+      display: 'flex',
+      justifyContent: 'center'
     }
   };
 };
