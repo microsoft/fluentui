@@ -1215,6 +1215,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
           </div>
           <button
             className="ms-DatePicker-goToday js-goToday undefined"
+            disabled={true}
             onClick={[Function]}
             onKeyDown={[Function]}
             role="button"
