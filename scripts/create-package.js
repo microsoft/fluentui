@@ -52,7 +52,6 @@ const steps = [
   { template: 'IndexTs', output: path.join('src', 'index.ts') },
   { template: 'Version', output: path.join('src', 'version.ts') },
   { template: 'AppDefinition', output: path.join('src', 'demo', 'AppDefinition.tsx') },
-  { template: 'AppDefinitionTest', output: path.join('src', 'demo', 'AppDefinition.test.tsx') },
   { template: 'ColorStyles', output: path.join('src', 'demo', 'ColorStyles.scss') },
   { template: 'GettingStartedPageStyles', output: path.join('src', 'demo', 'GettingStartedPage.scss') },
   { template: 'GettingStartedPage', output: path.join('src', 'demo', 'GettingStartedPage.tsx') },
