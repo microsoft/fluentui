@@ -6270,6 +6270,7 @@ interface IContextualMenuStyles {
 // @public (undocumented)
 interface IContextualMenuSubComponentStyles {
   callout: IStyleFunctionOrObject<ICalloutContentStyleProps, any>;
+  menuItem: IStyleFunctionOrObject<IContextualMenuItemStyleProps, any>;
 }
 
 // @public (undocumented)
