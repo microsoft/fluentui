@@ -879,6 +879,7 @@ export function warnMutuallyExclusive<P>(componentName: string, props: P, exclus
 // WARNING: Unsupported export: anchorProperties
 // WARNING: Unsupported export: buttonProperties
 // WARNING: Unsupported export: divProperties
+// WARNING: Unsupported export: labelProperties
 // WARNING: Unsupported export: inputProperties
 // WARNING: Unsupported export: textAreaProperties
 // WARNING: Unsupported export: imageProperties
