@@ -2378,6 +2378,7 @@ interface ICalloutContentStyles {
 
 // @public (undocumented)
 interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
+  alignTargetEdge?: boolean;
   ariaDescribedBy?: string;
   ariaLabel?: string;
   ariaLabelledBy?: string;
@@ -2535,6 +2536,7 @@ interface IChoiceGroup {
 
 // @public (undocumented)
 interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | HTMLInputElement> {
+  ariaLabel?: string;
   checked?: boolean;
   disabled?: boolean;
   iconProps?: IIconProps;
@@ -2908,6 +2910,7 @@ interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox> {
   onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
   // @deprecated
   onChanged?: (option?: IComboBoxOption, index?: number, value?: string, submitPendingValueEvent?: any) => void;
+  onItemClick?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => void;
   onMenuDismissed?: () => void;
   onMenuOpen?: () => void;
   onPendingValueChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
@@ -6168,6 +6171,7 @@ interface IContextualMenuListProps {
 
 // @public
 interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWithResponsiveModeState {
+  alignTargetEdge?: boolean;
   ariaLabel?: string;
   beakWidth?: number;
   bounds?: IRectangle;

@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Pickers: Fix IE 11 focus and a few css issues",
+      "comment": "Increase height on Persona card primary text to make room for descenders",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "joschect@microsoft.com"
+  "email": "nathnovi@microsoft.com"
 }
