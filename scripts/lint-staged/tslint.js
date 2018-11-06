@@ -39,6 +39,7 @@ function groupFilesByPackage(files) {
 
 /**
  * Runs tslint for the staged files in the packages that require it.
+ * Excludes all API extractor files.
  *
  * @param {[packageName: string]: string[]} filesGroupedByPackage
  */

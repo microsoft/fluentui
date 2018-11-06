@@ -1,6 +1,20 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Fri, 02 Nov 2018 18:11:37 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Nov 2018 13:31:09 GMT and should not be manually modified.
+
+## 0.33.0
+Tue, 06 Nov 2018 13:31:09 GMT
+
+### Minor changes
+
+- Fixing change in hover card behavior, this change in behavior was caused due  to fabric version update in dashbaord package by fabric bot
+
+## 0.32.2
+Sun, 04 Nov 2018 02:27:52 GMT
+
+### Patches
+
+- Adding necessary wrapper classes for charting in dashboard package
 
 ## 0.32.1
 Fri, 02 Nov 2018 18:11:37 GMT
