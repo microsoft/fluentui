@@ -15,7 +15,7 @@ export class ToggleState extends BaseState<IToggleProps, IToggleViewProps, ITogg
       onClick: this._onClick
     };
 
-    this.transformDerivedProps = (newProps: IToggleViewProps) => {
+    this.transformViewProps = (newProps: IToggleViewProps) => {
       newProps.text = newProps.checked ? props.onText : props.offText;
       return newProps;
     };

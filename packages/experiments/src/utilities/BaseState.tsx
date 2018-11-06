@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { IStateComponentProps } from '../Foundation';
 
-export interface IBaseStateOptions<TState> {
+export interface IBaseStateOptions<TViewProps, TState> {
   controlledProps: (keyof TState)[];
+  transformViewProps: (newProps: TViewProps) => TViewProps;
 }
 
 export class BaseState<TComponentProps, TViewProps, TState> extends React.Component<
@@ -10,10 +11,16 @@ export class BaseState<TComponentProps, TViewProps, TState> extends React.Compon
   TState
 > {
   private _controlledProps: (keyof TState)[];
+  private _transformViewProps: (newProps: TViewProps) => TViewProps;
 
-  constructor(props: IStateComponentProps<TComponentProps, TViewProps>, options: Partial<IBaseStateOptions<TState>> = {}) {
+  constructor(props: IStateComponentProps<TComponentProps, TViewProps>, options: Partial<IBaseStateOptions<TViewProps, TState>> = {}) {
     super(props);
     this._controlledProps = options.controlledProps || [];
+    this._transformViewProps =
+      options.transformViewProps ||
+      ((newProps: TViewProps) => {
+        return newProps;
+      });
   }
 
   public componentWillReceiveProps(newProps: IStateComponentProps<TComponentProps, TViewProps>): void {
@@ -32,7 +39,7 @@ export class BaseState<TComponentProps, TViewProps, TState> extends React.Compon
   }
 
   // Unless overwritten by the component, the props stay the same.
-  public transformDerivedProps(newProps: TViewProps): TViewProps {
+  public transformViewProps(newProps: TViewProps): TViewProps {
     return newProps;
   }
 
@@ -42,7 +49,7 @@ export class BaseState<TComponentProps, TViewProps, TState> extends React.Compon
       ...(this._getControlledProps() as {})
     } as TViewProps;
 
-    newProps = this.transformDerivedProps(newProps);
+    newProps = this._transformViewProps(newProps);
 
     return this.props.renderView(newProps);
   }
