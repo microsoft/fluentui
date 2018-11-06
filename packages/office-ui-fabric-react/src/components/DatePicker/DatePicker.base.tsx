@@ -324,6 +324,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
         ev.preventDefault();
         ev.stopPropagation();
         if (!this.state.isDatePickerShown) {
+          this._validateTextInput();
           this._showDatePickerPopup();
         } else {
           // When DatePicker allows input date string directly,
@@ -372,11 +373,15 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
 
   private _dismissDatePickerPopup = (): void => {
     if (this.state.isDatePickerShown) {
-      this.setState({
-        isDatePickerShown: false
-      });
-
-      this._validateTextInput();
+      this.setState(
+        {
+          isDatePickerShown: false
+        },
+        () => {
+          // setState is async, so we must call validate in a callback
+          this._validateTextInput();
+        }
+      );
     }
   };
 
