@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/fabric-website",
-      "comment": "Update TypeScript instructions in getting started tutorial",
+      "comment": "Website: Update iconography implementation documentation",
       "type": "patch"
     }
   ],

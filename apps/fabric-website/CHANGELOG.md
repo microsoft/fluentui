@@ -1,6 +1,14 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 02 Nov 2018 12:28:54 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Nov 2018 13:31:09 GMT and should not be manually modified.
+
+## 6.7.2
+Tue, 06 Nov 2018 13:31:09 GMT
+
+### Patches
+
+- Update TypeScript instructions in getting started tutorial
+- Fix visual bugs caused by MWF overrides on Fabric site
 
 ## 6.7.1
 Fri, 02 Nov 2018 12:28:54 GMT
