@@ -135,7 +135,7 @@ $linkPadding: 16px;
 }
 
 .isFabricLink {
-  margin-left: 16px;
+  @include margin-left(16px);
   padding: 0 $linkPadding;
   @include focus-border(2px);
 
@@ -143,7 +143,7 @@ $linkPadding: 16px;
     content: '|';
     font-size: 24px;
     position: relative;
-    left: -16px;
+    @include left(-16px);
     font-weight: normal;
   }
 }
