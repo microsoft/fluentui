@@ -139,12 +139,7 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
       return;
     }
 
-    if (
-      !this._isTouch &&
-      isEnabled &&
-      !this._isDragStartInSelection(ev) &&
-      (!onShouldStartSelection || onShouldStartSelection(ev))
-    ) {
+    if (!this._isTouch && isEnabled && !this._isDragStartInSelection(ev) && (!onShouldStartSelection || onShouldStartSelection(ev))) {
       if (this._scrollableSurface && ev.button === 0 && this._root.current) {
         this._selectedIndicies = {};
         this._preservedIndicies = undefined;
@@ -270,9 +265,7 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
   }
 
   private _isPointInRectangle(rectangle: IRectangle, point: IPoint): boolean {
-    return (
-      rectangle.top < point.y && rectangle.bottom! > point.y && rectangle.left < point.x && rectangle.right! > point.x
-    );
+    return rectangle.top < point.y && rectangle.bottom! > point.y && rectangle.left < point.x && rectangle.right! > point.x;
   }
 
   /**

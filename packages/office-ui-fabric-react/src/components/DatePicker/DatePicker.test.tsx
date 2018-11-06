@@ -7,6 +7,7 @@ import { IDatePickerStrings } from './DatePicker.types';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { shallow, mount, ReactWrapper } from 'enzyme';
 import { resetIds } from '../../Utilities';
+import { Callout } from '../Callout/Callout';
 
 describe('DatePicker', () => {
   beforeEach(() => {
@@ -37,6 +38,14 @@ describe('DatePicker', () => {
     const wrapper = mount(<DatePickerBase disabled label="label" />);
     wrapper.find('i').simulate('click');
     expect(wrapper.state('isDatePickerShown')).toBe(false);
+  });
+
+  it('should set "Calendar" as the Callout\'s aria-label', () => {
+    const datePicker = shallow(<DatePickerBase />);
+    datePicker.setState({ isDatePickerShown: true });
+    const calloutProps = datePicker.find(Callout).props();
+
+    expect(calloutProps.ariaLabel).toBe('Calendar');
   });
 
   describe('when Calendar properties are not specified', () => {

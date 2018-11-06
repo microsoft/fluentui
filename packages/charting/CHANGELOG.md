@@ -1,6 +1,81 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 11 Oct 2018 23:13:31 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Nov 2018 18:11:37 GMT and should not be manually modified.
+
+## 0.28.0
+Fri, 02 Nov 2018 18:11:37 GMT
+
+### Minor changes
+
+- Using new props of hover card. Removing timeout which was introduced as temporary fix until new props were provided for scaling the hover card as per content.
+
+## 0.27.0
+Fri, 02 Nov 2018 12:28:54 GMT
+
+### Minor changes
+
+- Changes to line chart component, adding optional prop for users to which they can pass a html element based on which the dataviz will scale. This helps when the parent element is formed using flex or after a timeout. Also eliminates the glitch feel.
+
+### Patches
+
+- css changes for legends component
+
+## 0.26.3
+Thu, 01 Nov 2018 12:31:45 GMT
+
+### Patches
+
+- added hovercard for horizontalBar chart
+
+## 0.26.2
+Wed, 31 Oct 2018 12:32:41 GMT
+
+### Patches
+
+- Enable ignore fixed stackbarchart style when data point is less than 2
+
+## 0.26.1
+Mon, 29 Oct 2018 18:04:30 GMT
+
+### Patches
+
+- Add placeholder mode to MultiStackBardChart data point in order to render the bar chart with a progress gray color(default)  area
+
+## 0.26.0
+Thu, 25 Oct 2018 12:30:05 GMT
+
+### Minor changes
+
+- Added support to line chart for edge case scenario like when no data is passed to line chart
+
+## 0.25.2
+Tue, 23 Oct 2018 12:32:15 GMT
+
+### Patches
+
+- Fix an issue with the demo site not being able to load (in npm start or aka.ms/fabricdemo).
+
+## 0.25.1
+Thu, 18 Oct 2018 20:22:36 GMT
+
+### Patches
+
+- Remove api-extractor.disabled.json
+
+## 0.25.0
+Tue, 16 Oct 2018 12:28:48 GMT
+
+### Minor changes
+
+- Adding support for date format and ticks on x-axis  of line chart. Providin date format prop to users to show data in desired format. Optionally providing tickValues prop to override D3.js default behavior on deciding what data appears on the axis of chart. D3.js default behavior is not suitable in all cases and makes the chart axis look bad in certain cases. Providing tickValues prop to user so that user can override this default behavior.If he/she does not use this D3's default behavior will be used in rendering data on the xAxis
+
+## 0.24.4
+Mon, 15 Oct 2018 12:29:12 GMT
+
+### Patches
+
+- updating snapshot tests in charting package
+- Added font theme setting in styles of DonutChart, LineChart, PieChart, StackedBarChart, VerticalBarChart
 
 ## 0.24.3
 Thu, 11 Oct 2018 23:13:31 GMT

@@ -1,14 +1,6 @@
 import { IDropdownStyles, IDropdownStyleProps } from './Dropdown.types';
 import { IStyleFunction } from '../../Utilities';
-import {
-  FontSizes,
-  FontWeights,
-  HighContrastSelector,
-  IRawStyle,
-  IStyle,
-  getGlobalClassNames,
-  normalize
-} from '../../Styling';
+import { FontSizes, FontWeights, HighContrastSelector, IRawStyle, IStyle, getGlobalClassNames, normalize } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-Dropdown-container',
@@ -63,17 +55,7 @@ const highContrastBorderState: IRawStyle = {
 };
 
 export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = props => {
-  const {
-    theme,
-    hasError,
-    className,
-    isOpen,
-    disabled,
-    required,
-    isRenderingPlaceholder,
-    panelClassName,
-    calloutClassName
-  } = props;
+  const { theme, hasError, className, isOpen, disabled, required, isRenderingPlaceholder, panelClassName, calloutClassName } = props;
 
   if (!theme) {
     throw new Error('theme is undefined or null in base Dropdown getStyles function.');

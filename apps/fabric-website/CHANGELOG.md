@@ -1,6 +1,49 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Mon, 08 Oct 2018 12:24:15 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Nov 2018 13:31:09 GMT and should not be manually modified.
+
+## 6.7.2
+Tue, 06 Nov 2018 13:31:09 GMT
+
+### Patches
+
+- Update TypeScript instructions in getting started tutorial
+- Fix visual bugs caused by MWF overrides on Fabric site
+
+## 6.7.1
+Fri, 02 Nov 2018 12:28:54 GMT
+
+### Patches
+
+- Update website getting started docs
+
+## 6.7.0
+Tue, 30 Oct 2018 18:45:48 GMT
+
+### Minor changes
+
+- Carry over website pipeline improvements to prod-deployed index
+
+## 6.6.2
+Wed, 24 Oct 2018 12:28:58 GMT
+
+### Patches
+
+- Nav: fix loosely typed const after changes in display property type of IRawStyleBase.
+
+## 6.6.1
+Wed, 17 Oct 2018 01:29:55 GMT
+
+### Patches
+
+- Modify theme generator output and add codepen export option.
+
+## 6.6.0
+Mon, 15 Oct 2018 12:29:12 GMT
+
+### Minor changes
+
+- Enable website to load bundle scripts from manifest JS file
 
 ## 6.5.0
 Mon, 08 Oct 2018 12:24:15 GMT

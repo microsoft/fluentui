@@ -18,11 +18,7 @@ export class ThumbnailItem extends React.Component<IThumbnailItemProps> {
       <div className={classNames.root}>
         <div className={classNames.image}>
           <Image src={imageSource} />
-          <CompoundButton
-            secondaryText={description}
-            styles={customStyles}
-            onClick={this.props.handleThumbnailItemClick}
-          >
+          <CompoundButton secondaryText={description} styles={customStyles} onClick={this.props.handleThumbnailItemClick}>
             {subheaderText}
           </CompoundButton>
         </div>

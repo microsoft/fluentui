@@ -1,0 +1,51 @@
+{
+  "name": "@uifabric/theme-samples",
+  "entries": [
+    {
+      "version": "0.1.2",
+      "tag": "@uifabric/theme-samples_v0.1.2",
+      "date": "Mon, 22 Oct 2018 12:29:57 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add sample theme defintions for Word and Teams.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "6505775ab433ec7e1fca27621be96dd6c026796d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `>=6.11.1 <7.0.0` to `>=6.12.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.89.0 <7.0.0` to `>=6.90.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.1.1",
+      "tag": "@uifabric/theme-samples_v0.1.1",
+      "date": "Thu, 18 Oct 2018 20:22:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Create new package for centralizing theme definitions.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "d68bb6afe698eba7fde0d76d6bc97a75f6047d6e"
+          },
+          {
+            "comment": "Add index file to fix release build.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "31c12b8b3456d782e067f9a6aaf01246dd11d8c0"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.84.1 <7.0.0` to `>=6.88.0 <7.0.0`"
+          }
+        ]
+      }
+    }
+  ]
+}

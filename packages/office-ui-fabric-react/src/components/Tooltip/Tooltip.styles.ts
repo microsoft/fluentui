@@ -8,6 +8,7 @@ export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
   return {
     root: [
       'ms-Tooltip',
+      theme.fonts.medium,
       AnimationClassNames.fadeIn200,
       {
         background: palette.white,

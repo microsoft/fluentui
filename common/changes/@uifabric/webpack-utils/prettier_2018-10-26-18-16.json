@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/webpack-utils",
+      "comment": "Running Prettier on all .ts and .tsx files in the packages folder.",
+      "type": "none"
+    }
+  ],
+  "packageName": "@uifabric/webpack-utils",
+  "email": "Humberto.Morimoto@microsoft.com"
+}

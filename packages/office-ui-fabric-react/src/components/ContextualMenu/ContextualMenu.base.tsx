@@ -25,18 +25,19 @@ import {
   IRenderFunction,
   IPoint,
   KeyCodes,
-  shouldWrapFocus
+  shouldWrapFocus,
+  IStyleFunctionOrObject
 } from '../../Utilities';
 import { hasSubmenu, getIsChecked, isItemDisabled } from '../../utilities/contextualMenu/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
-import { Callout } from '../../Callout';
+import { Callout, ICalloutContentStyleProps, ICalloutContentStyles } from '../../Callout';
 import { ContextualMenu } from './ContextualMenu';
 import { ContextualMenuItem } from './ContextualMenuItem';
 import { ContextualMenuSplitButton, ContextualMenuButton, ContextualMenuAnchor } from './ContextualMenuItemWrapper/index';
 import { IProcessedStyleSet, mergeStyleSets } from '../../Styling';
 import { IContextualMenuItemStyleProps, IContextualMenuItemStyles } from './ContextualMenuItem.types';
 
-import { getItemClassNames as getItemStyles } from './ContextualMenu.classNames';
+import { getItemStyles } from './ContextualMenu.classNames';
 
 const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualMenuStyles>();
 const getContextualMenuItemClassNames = classNamesFunction<IContextualMenuItemStyleProps, IContextualMenuItemStyles>();
@@ -292,8 +293,14 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
         }
       }
 
+      const calloutStyles =
+        !getMenuClassNames && this._classNames.subComponentStyles
+          ? this._classNames.subComponentStyles.callout as IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>
+          : undefined;
+
       return (
         <Callout
+          styles={calloutStyles}
           {...calloutProps}
           target={target}
           isBeakVisible={isBeakVisible}
@@ -553,6 +560,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
           role="separator"
           key={'separator-' + index + (top === undefined ? '' : top ? '-top' : '-bottom')}
           className={classNames.divider}
+          aria-hidden="true"
         />
       );
     }

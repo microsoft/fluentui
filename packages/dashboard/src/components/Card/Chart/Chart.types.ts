@@ -97,6 +97,17 @@ export interface IChartProps {
    * Width of each stroke in the line chart
    */
   strokeWidth?: number;
+
+  /**
+   * The time range for the x-axis data of line chart. Only '7, 30, 90, 180 day' formats are supported.
+   * One of the timeRange must be specified to line chart when Date type data is selected for line chart. The default is 180Days format
+   */
+  timeRange?: '7Days' | '30Days' | '90Days' | '180Days';
+
+  /**
+   * Ignore stack bar chart default style when data points count is less than two
+   */
+  ignoreStackBarChartDefaultStyle?: boolean;
 }
 
 export interface IChartInternalProps extends IChartProps {
@@ -109,4 +120,9 @@ export interface IChartStyles {
    * wrapper component that sits on top of each chart
    */
   chartWrapper: IStyle;
+
+  /**
+   * wrapper for donut chart
+   */
+  donutWrapper: IStyle;
 }

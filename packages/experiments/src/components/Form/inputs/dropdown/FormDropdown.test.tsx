@@ -76,10 +76,7 @@ describe('FormDropdown Unit Tests', () => {
       ) as Form;
 
       renderedInput = ReactTestUtils.findRenderedDOMComponentWithClass(renderedForm, 'ms-Dropdown') as HTMLElement;
-      const form: HTMLFormElement = ReactTestUtils.findRenderedDOMComponentWithTag(
-        renderedForm,
-        'form'
-      ) as HTMLFormElement;
+      const form: HTMLFormElement = ReactTestUtils.findRenderedDOMComponentWithTag(renderedForm, 'form') as HTMLFormElement;
       ReactTestUtils.Simulate.submit(form);
 
       expect(result['name']).toEqual(0);

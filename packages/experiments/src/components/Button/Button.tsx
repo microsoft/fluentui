@@ -7,11 +7,8 @@ import { getButtonStyles as styles } from './Button.styles';
 
 export const Button: React.StatelessComponent<IButtonProps> = createComponent<IButtonProps, IButtonViewProps, IButtonStyles>({
   displayName: 'Button',
-  // RAGE, typings fail
-  // tslint:disable-next-line:no-any
-  styles: styles as any,
-  // tslint:disable-next-line:no-any
-  state: state as any,
+  styles,
+  state,
   view
 });
 
