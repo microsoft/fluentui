@@ -1,9 +1,12 @@
 import { fluentBorderRadius } from './styleConstants';
-import { getFocusStyle } from '../../../../styling/lib';
+import { getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
 import FluentTheme from '../FluentTheme';
 import { NeutralColors, CommunicationColors } from '../FluentColors';
 
-export const DefaultButtonStyles = {
+// TODO: "any" is used here to get around "is using xxx but cannot be named" TS error. Should be able to remove
+//        this 'any' once we upgrade to TS3.1+
+// tslint:disable-next-line:no-any
+export const DefaultButtonStyles: any = {
   root: {
     borderRadius: fluentBorderRadius,
     backgroundColor: NeutralColors.white,

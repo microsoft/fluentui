@@ -1,7 +1,7 @@
 import { fluentBorderRadius } from './styleConstants';
 import { NeutralColors, CommunicationColors } from '../FluentColors';
 import FluentTheme from '../FluentTheme';
-import { getFocusStyle } from '../../../../styling/lib';
+import { getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
 
 export const CompoundButtonStyles = {
   root: {
