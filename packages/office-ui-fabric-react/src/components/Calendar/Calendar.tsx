@@ -229,7 +229,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                     tabIndex={0}
                     disabled={!goTodayEnabled}
                   >
-                    <a href="javascript:void(0);"> {strings!.goToToday}</a>
+                    {strings!.goToToday}
                   </button>
                 )}
               </div>

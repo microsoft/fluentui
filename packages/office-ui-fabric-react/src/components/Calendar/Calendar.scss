@@ -485,15 +485,15 @@ $Calendar-dayPicker-margin: 10px;
   &:hover {
     color: $ms-color-themePrimary;
     outline: 1px solid transparent;
+    @include high-contrast {
+      outline-color: highlight;
+    }
   }
   &:active {
     color: $ms-color-themeDark;
-  }
-  a {
-    color: inherit;
-    text-decoration: inherit;
-    font-size: inherit;
-    font-weight: inherit;
+    @include high-contrast {
+      color: highlight;
+    }
   }
 }
 
