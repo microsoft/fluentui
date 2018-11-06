@@ -48,6 +48,10 @@ export interface INavProps {
    */
   onRenderGroupHeader?: IRenderFunction<INavLinkGroup>;
 
+  /**
+   * Render a custom link in place of the normal one.
+   * This replaces the entire button rather than simply button content
+   */
   linkAs?: IComponentAs<IButtonProps>;
 
   /**
