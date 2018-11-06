@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { IStateComponentProps } from '../Foundation';
 import { IDisposable, IRefObject } from '../Utilities';
 
 /**
@@ -17,10 +16,7 @@ export interface IBaseProps<T = any> {
  *
  * @public
  */
-export class BaseComponentMin<TComponentProps extends IBaseProps = {}, TViewProps = {}, TState = {}> extends React.Component<
-  IStateComponentProps<TComponentProps, TViewProps>,
-  TState
-> {
+export class BaseComponentMin<TComponentProps extends IBaseProps = {}, TState = {}> extends React.Component<TComponentProps, TState> {
   /**
    * Controls whether the componentRef prop will be resolved by this component instance. If you are
    * implementing a passthrough (higher-order component), you would set this to false and pass through
@@ -30,7 +26,6 @@ export class BaseComponentMin<TComponentProps extends IBaseProps = {}, TViewProp
 
   // tslint:disable:variable-name
   private __disposables: IDisposable[] | null;
-  private __resolves: { [name: string]: (ref: React.ReactNode) => React.ReactNode };
   // tslint:enable:variable-name
 
   /**
@@ -39,26 +34,17 @@ export class BaseComponentMin<TComponentProps extends IBaseProps = {}, TViewProp
    * @param context - The context for the component.
    */
   // tslint:disable-next-line:no-any
-  constructor(props: IStateComponentProps<TComponentProps, TViewProps>, context?: any) {
+  constructor(props: TComponentProps, context?: any) {
     super(props, context);
 
-    _makeAllSafe(this, BaseComponentMin.prototype, [
-      'componentWillMount',
-      'componentDidMount',
-      'shouldComponentUpdate',
-      'componentWillUpdate',
-      'componentWillReceiveProps',
-      'render',
-      'componentDidUpdate',
-      'componentWillUnmount'
-    ]);
+    _makeAllSafe(this, BaseComponentMin.prototype, ['componentWillReceiveProps', 'componentDidMount', 'componentWillUnmount']);
   }
 
   /**
    * When the component will receive props, make sure the componentRef is updated.
    */
   // tslint:disable-next-line:no-any
-  public componentWillReceiveProps(newProps: Readonly<IStateComponentProps<TComponentProps, TViewProps>>, newContext: any): void {
+  public componentWillReceiveProps(newProps: Readonly<TComponentProps>, newContext: any): void {
     this._updateComponentRef(this.props, newProps);
   }
 
@@ -95,28 +81,6 @@ export class BaseComponentMin<TComponentProps extends IBaseProps = {}, TViewProp
       this.__disposables = [];
     }
     return this.__disposables;
-  }
-
-  /**
-   * Helper to return a memoized ref resolver function.
-   * @param refName - Name of the member to assign the ref to.
-   * @returns A function instance keyed from the given refname.
-   * @deprecated Use `createRef` from React.createRef.
-   */
-  protected _resolveRef(refName: string): (ref: React.ReactNode) => React.ReactNode {
-    if (!this.__resolves) {
-      this.__resolves = {};
-    }
-
-    if (!this.__resolves[refName]) {
-      // tslint:disable-next-line:no-any
-      this.__resolves[refName] = (ref: React.ReactNode) => {
-        // tslint:disable-next-line:no-any
-        return ((this as any)[refName] = ref);
-      };
-    }
-
-    return this.__resolves[refName];
   }
 
   /**

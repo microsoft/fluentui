@@ -1,4 +1,4 @@
-import { BaseComponentMin } from './BaseComponentMin';
+import { BaseComponentMin, IBaseProps } from './BaseComponentMin';
 import { IStateComponentProps } from '../Foundation';
 
 export interface IBaseStateOptions<TViewProps, TState> {
@@ -6,7 +6,10 @@ export interface IBaseStateOptions<TViewProps, TState> {
   transformViewProps: (newProps: TViewProps) => TViewProps;
 }
 
-export class BaseState<TComponentProps, TViewProps, TState> extends BaseComponentMin<TComponentProps, TViewProps, TState> {
+export class BaseState<TComponentProps extends IBaseProps, TViewProps, TState> extends BaseComponentMin<
+  IStateComponentProps<TComponentProps, TViewProps>,
+  TState
+> {
   private _controlledProps: (keyof TState)[];
   private _transformViewProps: (newProps: TViewProps) => TViewProps;
 
