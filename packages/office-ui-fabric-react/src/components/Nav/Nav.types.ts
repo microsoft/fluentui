@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IRenderFunction, IStyleFunctionOrObject, IComponentAs } from '../../Utilities';
 import { IIconProps } from '../Icon/Icon.types';
+import { IButtonProps } from '../../Button';
 
 export interface INav {
   /**
@@ -46,6 +47,8 @@ export interface INavProps {
    * @defaultvalue Default group header rendering
    */
   onRenderGroupHeader?: IRenderFunction<INavLinkGroup>;
+
+  linkAs?: IComponentAs<IButtonProps>;
 
   /**
    * Used to customize how content inside the link tag is rendered
