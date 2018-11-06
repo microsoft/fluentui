@@ -236,7 +236,7 @@ export const divProperties = htmlElementProperties.concat(['align', 'noWrap']);
  *
  * @public
  */
-export const labelProperties = divProperties.concat(['for']);
+export const labelProperties = htmlElementProperties.concat(['for', 'form']);
 
 /**
  * An array of INPUT tag properties and events.
