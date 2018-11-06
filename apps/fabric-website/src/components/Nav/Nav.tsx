@@ -97,14 +97,8 @@ export class Nav extends React.Component<INavProps, INavState> {
     const { filterState } = this.state;
 
     const links = pages
-      .filter(page => {
-        // Don't render pages that are explicitly told not to, as well as top-level pages that aren't active.
-        if (page.hasOwnProperty('isHiddenFromMainNav') || (page.isUhfLink && !_hasActiveChild(page) && !_isPageActive(page))) {
-          return false;
-        }
-
-        return true;
-      })
+      // Don't render pages that are explicitly told not to, as well as top-level pages that aren't active.
+      .filter(page => (!page.hasOwnProperty('isHiddenFromMainNav') && !(page.isUhfLink && !_hasActiveChild(page))) || _isPageActive(page))
       .map((page: INavPage, linkIndex: number) => {
         if (page.isCategory && !filterState) {
           return <>{page.pages.map((innerPage: INavPage, innerLinkIndex) => this._renderLink(innerPage, innerLinkIndex))}</>;
