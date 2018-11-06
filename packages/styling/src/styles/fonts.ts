@@ -91,7 +91,7 @@ export namespace FontWeights {
   export const regular: IFontWeight = 400;
   export const semibold: IFontWeight = 600;
   export const bold: IFontWeight = 700;
-  export const inherit = 'inherit';
+  export const inherit: IFontWeight = 'inherit';
 }
 
 // Standard Icon Sizes.
