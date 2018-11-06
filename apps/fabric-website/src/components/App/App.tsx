@@ -119,13 +119,18 @@ export class App extends React.Component<IAppProps, any> {
     return height;
   }
 
-  // Gets the section title by comparing the first part of the current URL to
-  // the URLs of the "section" pages
+  /**
+   * Gets the title of the current section.
+   */
   private _getSectionTitle(): string {
     let { currentSection } = this.state;
     return currentSection.title;
   }
 
+  /**
+   * Gets an object representation of the current section (i.e. top-level page)
+   * by comparing the first part of the current URL to the URLs of the "section" pages.
+   */
   private _getCurrentSection(): object {
     const hashUrlParts = window.location.hash.split('/');
     const pages = AppState.pages;
@@ -147,6 +152,9 @@ export class App extends React.Component<IAppProps, any> {
     }
   }
 
+  /**
+   * Sets the current section object to state.
+   */
   private _updateCurrentSection = (): void => {
     const _currentSection = this._getCurrentSection();
 
