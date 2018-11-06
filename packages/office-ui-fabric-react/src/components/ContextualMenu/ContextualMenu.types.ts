@@ -10,7 +10,7 @@ import { IWithResponsiveModeState } from '../../utilities/decorators/withRespons
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
 export { DirectionalHint } from '../../common/DirectionalHint';
 import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
-import { IContextualMenuItemProps, IContextualMenuRenderItem } from './ContextualMenuItem.types';
+import { IContextualMenuItemProps, IContextualMenuRenderItem, IContextualMenuItemStyleProps } from './ContextualMenuItem.types';
 import { IKeytipProps } from '../../Keytip';
 
 export enum ContextualMenuItemType {
@@ -597,4 +597,7 @@ export interface IContextualMenuStyles {
 export interface IContextualMenuSubComponentStyles {
   /** Refers to the callout that hosts the ContextualMenu options */
   callout: IStyleFunctionOrObject<ICalloutContentStyleProps, any>;
+
+  /** Refers to the item in the list */
+  menuItem: IStyleFunctionOrObject<IContextualMenuItemStyleProps, any>;
 }
