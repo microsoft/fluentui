@@ -38,11 +38,6 @@ export class BaseState<TComponentProps, TViewProps, TState> extends React.Compon
     }
   }
 
-  // Unless overwritten by the component, the props stay the same.
-  public transformViewProps(newProps: TViewProps): TViewProps {
-    return newProps;
-  }
-
   public render(): JSX.Element | null {
     let newProps = {
       ...(this.state as {}),
