@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ExampleCard, ComponentPage, PropertiesTableSet, PageMarkdown } from '@uifabric/example-app-base';
-import { DateRangeType, DayOfWeek } from '../Calendar';
+import { DateRangeType, DayOfWeek } from '../Calendar/Calendar.types';
 import { CalendarButtonExample } from '../Calendar/examples/Calendar.Button.Example';
 import { CalendarInlineExample } from '../Calendar/examples/Calendar.Inline.Example';
 import { addMonths, addYears } from '../../utilities/dateMath/DateMath';
