@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.99.1",
+      "tag": "office-ui-fabric-react_v6.99.1",
+      "date": "Tue, 06 Nov 2018 13:31:09 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown: change aria attributes on listbox when disabled",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "519e7034e7cab9d0f6683dbf6b2e1cad092e7a5e"
+          },
+          {
+            "comment": "Increase height on Persona card primary text to make room for descenders",
+            "author": "Nathan Novielli <nathannovielli@outlook.com>",
+            "commit": "03826c7cc6f24587c7d176f75bf3207669ba2e9e"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.99.0",
       "tag": "office-ui-fabric-react_v6.99.0",
       "date": "Sun, 04 Nov 2018 02:27:52 GMT",
