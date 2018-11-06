@@ -112,10 +112,6 @@
 }
 
 @media screen and (min-width: $uhf-screen-min-mobile) {
-  // img {
-  // margin-bottom: 20px;
-  // }
-
   .contentInGrid {
     @include ms-padding-left($contentInGrid);
   }
