@@ -1,4 +1,4 @@
-import { DefaultPalette, keyframes } from 'office-ui-fabric-react/lib/Styling';
+import { DefaultFontStyles, FontWeights, DefaultPalette, keyframes } from 'office-ui-fabric-react/lib/Styling';
 
 import { ISetupCardStyles, ISetupCardStylesProps } from './SetupCard.types';
 
@@ -29,8 +29,8 @@ export const getStyles = (props: ISetupCardStylesProps): ISetupCardStyles => {
     },
     title: {
       fill: DefaultPalette.black,
-      fontFamily: 'Segoe UI Semibold',
-      fontSize: '10px'
+      ...DefaultFontStyles.tiny,
+      fontWeight: FontWeights.semibold
     },
     cardBackground: {
       fill: DefaultPalette.white
