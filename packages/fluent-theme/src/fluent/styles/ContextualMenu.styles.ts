@@ -9,6 +9,18 @@ export const ContextualMenuStyles = (props: IContextualMenuStyleProps) => {
   const { palette } = theme;
   const CONTEXTUAL_MENU_ITEM_HEIGHT = 36;
 
+  const iconStyles = {
+    maxHeight: CONTEXTUAL_MENU_ITEM_HEIGHT,
+    fontSize: FontSizes.size16,
+    width: FontSizes.size16,
+    selectors: {
+      [MinimumScreenSelector]: {
+        fontSize: FontSizes.size20,
+        width: FontSizes.size20
+      }
+    }
+  };
+
   return {
     subComponentStyles: {
       callout: {
@@ -110,33 +122,8 @@ export const ContextualMenuStyles = (props: IContextualMenuStyleProps) => {
               width: CONTEXTUAL_MENU_ITEM_HEIGHT // to match the numbers from the default styles
             }
           ],
-          icon: [
-            {
-              maxHeight: CONTEXTUAL_MENU_ITEM_HEIGHT,
-              fontSize: FontSizes.size16,
-              width: FontSizes.size16,
-              selectors: {
-                [MinimumScreenSelector]: {
-                  fontSize: FontSizes.size20,
-                  width: FontSizes.size20
-                }
-              }
-            },
-            disabled && { color: palette.neutralTertiary }
-          ],
-          checkmarkIcon: [
-            {
-              maxHeight: CONTEXTUAL_MENU_ITEM_HEIGHT,
-              fontSize: FontSizes.size16,
-              width: FontSizes.size16,
-              selectors: {
-                [MinimumScreenSelector]: {
-                  fontSize: FontSizes.size20,
-                  width: FontSizes.size20
-                }
-              }
-            }
-          ],
+          icon: [{ ...iconStyles }, disabled && { color: palette.neutralTertiary }],
+          checkmarkIcon: [{ ...iconStyles }],
           splitContainer: {
             height: CONTEXTUAL_MENU_ITEM_HEIGHT,
             selectors: {
