@@ -249,7 +249,16 @@ export const ExternalSignal: Signal = (props: ISignalProps): JSX.Element => {
   );
 };
 
-type IIconSignalProps = ISignalProps & Pick<IIconProps, 'iconName'> & {
+export const NotFollowedSignal: Signal = (props: ISignalProps): JSX.Element => {
+  return <IconSignal { ...props } signalClass={ SignalsStyles.bookmarkOutline } iconName="SingleBookmark" />;
+};
+
+export const FollowedSignal: Signal = (props: ISignalProps): JSX.Element => {
+  return <IconSignal { ...props } signalClass={ SignalsStyles.bookmarkFilled } iconName="SingleBookmarkSolid" />;
+};
+
+type IIconSignalProps = ISignalProps &
+  Pick<IIconProps, 'iconName'> & {
   /**
    * The class name to use for the Signal type.
    */
