@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { IToggleProps, IToggleViewProps } from './Toggle.types';
+import { IToggle, IToggleProps, IToggleViewProps } from './Toggle.types';
 import { BaseState } from '../../utilities/BaseState';
 
 export type IToggleState = Pick<IToggleViewProps, 'checked' | 'onChange' | 'onClick' | 'text'>;
 
-export class ToggleState extends BaseState<IToggleProps, IToggleViewProps, IToggleState> {
+export class ToggleState extends BaseState<IToggleProps, IToggleViewProps, IToggleState> implements IToggle {
   constructor(props: ToggleState['props']) {
     super(props, {
       controlledProps: ['checked'],

@@ -11,9 +11,11 @@ export type IButtonVariants = 'baseVariant' | 'primary' | 'circular';
 
 export type IButtonSlots = 'root' | 'stack' | 'text' | 'icon' | 'menuIcon';
 
+export interface IButton {}
+
 export interface IButtonProps extends IStyleableComponentProps<IButtonProps, IButtonStyles> {
   as?: keyof JSX.IntrinsicElements;
-  componentRef?: IRefObject<IButtonComponent>;
+  componentRef?: IRefObject<IButton>;
   className?: string;
   href?: string;
   text?: string;

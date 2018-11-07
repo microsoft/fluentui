@@ -7,12 +7,14 @@ import { ICollapsibleSectionTitleProps } from './CollapsibleSectionTitle.types';
 
 export type ICollapsibleSectionComponent = IComponent<ICollapsibleSectionProps, ICollapsibleSectionViewProps, ICollapsibleSectionStyles>;
 
+export interface ICollapsibleSection {}
+
 export interface ICollapsibleSectionProps extends IStyleableComponentProps<ICollapsibleSectionViewProps, ICollapsibleSectionStyles> {
   /**
    * Optional callback to access the ICollapsibleSectionComponent interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: IRefObject<ICollapsibleSectionComponent>;
+  componentRef?: IRefObject<ICollapsibleSection>;
 
   /**
    * Additional class name to provide on the root element.

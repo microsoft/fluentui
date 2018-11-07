@@ -6,6 +6,8 @@ import { IComponentAs, IRefObject } from '../../Utilities';
 
 export type IToggleComponent = IComponent<IToggleProps, IToggleViewProps, IToggleStyles>;
 
+export interface IToggle {}
+
 /**
  * Toggle component props.
  */
