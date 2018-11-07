@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/date-time",
+      "comment": "Creating the initial date-time package, including the first stage of the Calendar component css-in-js refactor, and creating the example page.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/date-time",
+  "email": "lorejoh12@gmail.com"
+}
