@@ -61,6 +61,7 @@ exports[`Modal renders Modal correctly 1`] = `
     onSubmit={[Function]}
   >
     <div
+      aria-modal="true"
       onKeyDown={[Function]}
       role="dialog"
       style={
