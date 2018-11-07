@@ -26,13 +26,7 @@ module.exports = resources.createServeConfig({
             loader: '@microsoft/loader-load-themed-styles' // creates style nodes from JS strings
           },
           {
-            loader: 'css-loader', // translates CSS into CommonJS
-            options: {
-              modules: true,
-              importLoaders: 2,
-              localIdentName: '[name]_[local]_[hash:base64:5]',
-              minimize: false
-            }
+            loader: 'css-loader' // translates CSS into CommonJS
           }
         ]
       }

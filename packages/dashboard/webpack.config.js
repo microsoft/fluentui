@@ -24,12 +24,7 @@ module.exports = resources.createConfig(BUNDLE_NAME, IS_PRODUCTION, {
             loader: '@microsoft/loader-load-themed-styles' // creates style nodes from JS strings
           },
           {
-            loader: 'css-loader', // translates CSS into CommonJS
-            options: {
-              modules: true,
-              importLoaders: 2,
-              minimize: false
-            }
+            loader: 'css-loader' // translates CSS into CommonJS
           }
         ]
       }
