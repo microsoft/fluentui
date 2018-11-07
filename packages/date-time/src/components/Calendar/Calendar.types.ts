@@ -290,19 +290,40 @@ export interface ICalendarStyleProps {
    */
   className?: string;
 
-  // Insert Calendar style props below
+  /**
+   * Whether the month picker is visible
+   */
   isMonthPickerVisible?: boolean;
 
+  /**
+   * Whether the day picker is visible
+   */
   isDayPickerVisible?: boolean;
 
+  /**
+   * Whether only month picker is shown
+   */
   monthPickerOnly?: boolean;
 
+  /**
+   * Whether the month picker is overlayed on the day picker
+   */
   showMonthPickerAsOverlay?: boolean;
 
+  /**
+   * Whether the month and day picker are overlayed and the 'go to today' button
+   * is shown
+   */
   overlayedWithButton?: boolean;
 
+  /**
+   * Whether the go to today button is shown
+   */
   showGoToToday?: boolean;
 
+  /**
+   * Whether the week numbers are shown
+   */
   showWeekNumbers?: boolean;
 }
 

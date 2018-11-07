@@ -470,11 +470,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
    *
    */
 
-  private _getWeekCornerStyles(
-    classNames: IProcessedStyleSet<ICalendarDayStyles>,
-    weeks: IDayInfo[][],
-    dateRangeType: DateRangeType
-  ): IWeekCorners {
+  private _getWeekCornerStyles(classNames: IProcessedStyleSet<ICalendarDayStyles>, weeks: IDayInfo[][]): IWeekCorners {
     const weekCornersStyled: { [key: string]: string } = {};
     /* need to handle setting all of the corners on arbitrarily shaped blobs
           __

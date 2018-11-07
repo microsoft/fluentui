@@ -163,11 +163,7 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
     });
 
     return (
-      <div
-        className={css(rootClass, classes.root, className, 'ms-slideDownIn10')}
-        role="application"
-        onKeyDown={this._onDatePickerPopupKeyDown}
-      >
+      <div className={css(rootClass, classes.root, className, 'ms-slideDownIn10')} onKeyDown={this._onDatePickerPopupKeyDown}>
         {isDayPickerVisible && (
           <CalendarDay
             selectedDate={selectedDate!}
