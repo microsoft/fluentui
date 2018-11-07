@@ -21,7 +21,7 @@ export interface IToggleProps extends IStyleableComponentProps<IToggleViewProps,
    * Optional callback to access the IToggleComponent interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: IRefObject<IToggleComponent>;
+  componentRef?: IRefObject<IToggle>;
 
   /**
    * A label for the toggle.
