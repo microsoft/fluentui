@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { BaseComponent, buttonProperties, classNamesFunction, getId, getNativeProps } from '../../Utilities';
 import { IFacepileProps, IFacepilePersona, IFacepileStyleProps, IFacepileStyles, OverflowButtonType } from './Facepile.types';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { FacepileButton } from './FacepileButton';
 import { Icon } from '../../Icon';
 import { Persona, IPersonaStyles } from '../../Persona';
@@ -36,7 +35,7 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
 
   public render(): JSX.Element {
     let { overflowButtonProps } = this.props;
-    const { ariaDescription, chevronButtonProps, maxDisplayablePersonas, personas, overflowPersonas, showAddButton } = this.props;
+    const { chevronButtonProps, maxDisplayablePersonas, personas, overflowPersonas, showAddButton } = this.props;
 
     const { _classNames } = this;
 
