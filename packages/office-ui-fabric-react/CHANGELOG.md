@@ -1,6 +1,30 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sun, 04 Nov 2018 02:27:52 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Nov 2018 13:31:01 GMT and should not be manually modified.
+
+## 6.100.0
+Wed, 07 Nov 2018 13:31:01 GMT
+
+### Minor changes
+
+- Nav: Added linkAs to support custom buttons and React Router
+- ContextualMenu: Add menuItem subComponentStyles to enable each item styling from the ContextualMenu styles.
+
+### Patches
+
+- update to fix bug when footer covered horizontal scroll bar
+- Button: Update example to use PrimaryButton component
+- Add unit tests for ComboBox multiSelect onItemClicked callback and on select via mouse click.
+- Remove defaultPrevented check in ComboBox item click due to multiSelect regression.
+- Set GroupedList List page key to IGroup key instead of name for uniqueness.
+
+## 6.99.1
+Tue, 06 Nov 2018 13:31:09 GMT
+
+### Patches
+
+- Dropdown: change aria attributes on listbox when disabled
+- Increase height on Persona card primary text to make room for descenders
 
 ## 6.99.0
 Sun, 04 Nov 2018 02:27:52 GMT

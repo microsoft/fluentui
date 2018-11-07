@@ -1003,7 +1003,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             (this._autofill.current &&
               this._autofill.current.isValueSelected &&
               currentPendingValue.length + (this._autofill.current.selectionEnd! - this._autofill.current.selectionStart!) ===
-              pendingOptionText.length)) ||
+                pendingOptionText.length)) ||
             (this._autofill.current &&
               this._autofill.current.inputElement &&
               this._autofill.current.inputElement.value.toLocaleLowerCase() === pendingOptionText))
@@ -1346,14 +1346,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     return (ev: any): void => {
       onItemClick && onItemClick(ev, item, index);
-      if (!ev.defaultPrevented) {
-        this._setSelectedIndex(index as number, ev);
-        if (!this.props.multiSelect) {
-          // only close the callout when it's in single-select mode
-          this.setState({
-            isOpen: false
-          });
-        }
+      this._setSelectedIndex(index as number, ev);
+      if (!this.props.multiSelect) {
+        // only close the callout when it's in single-select mode
+        this.setState({
+          isOpen: false
+        });
       }
     };
   }

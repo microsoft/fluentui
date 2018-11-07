@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Wed, 31 Oct 2018 12:32:41 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Nov 2018 13:31:09 GMT and should not be manually modified.
+
+## 6.9.2
+Tue, 06 Nov 2018 13:31:09 GMT
+
+### Patches
+
+- Fix visual bugs caused by MWF overrides on Fabric site
 
 ## 6.9.1
 Wed, 31 Oct 2018 12:32:41 GMT

@@ -6270,6 +6270,7 @@ interface IContextualMenuStyles {
 // @public (undocumented)
 interface IContextualMenuSubComponentStyles {
   callout: IStyleFunctionOrObject<ICalloutContentStyleProps, any>;
+  menuItem: IStyleFunctionOrObject<IContextualMenuItemStyleProps, any>;
 }
 
 // @public (undocumented)
@@ -8321,6 +8322,7 @@ interface INavProps {
   groups: INavLinkGroup[] | null;
   initialSelectedKey?: string;
   isOnTop?: boolean;
+  linkAs?: IComponentAs<IButtonProps>;
   onLinkClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
   onLinkExpandClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
   onRenderGroupHeader?: IRenderFunction<INavLinkGroup>;
