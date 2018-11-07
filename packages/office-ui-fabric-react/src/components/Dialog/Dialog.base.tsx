@@ -97,7 +97,7 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
     const mergedModalProps = {
       ...DefaultModalProps,
       ...modalProps,
-      ...{ layerProps: mergedLayerProps }
+      layerProps: mergedLayerProps
     };
 
     const dialogContentProps: IDialogContentProps = {
