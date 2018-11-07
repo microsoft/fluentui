@@ -3,6 +3,7 @@ import { CheckboxStyles } from './styles/Checkbox.styles';
 import { ChoiceGroupOptionStyles } from './styles/ChoiceGroupOption.styles';
 import { ComboBoxStyles } from './styles/ComboBox.styles';
 import { CompoundButtonStyles } from './styles/CompoundButton.styles';
+import { ContextualMenuStyles } from './styles/ContextualMenu.styles';
 import { DefaultButtonStyles } from './styles/DefaultButton.styles';
 import { DialogStyles, DialogContentStyles, DialogFooterStyles } from './styles/Dialog.styles';
 import { DropdownStyles } from './styles/Dropdown.styles';
@@ -40,6 +41,9 @@ export const FluentStyles: any = {
   },
   ComboBox: {
     styles: ComboBoxStyles
+  },
+  ContextualMenu: {
+    styles: ContextualMenuStyles
   },
   DefaultButton: {
     styles: DefaultButtonStyles
