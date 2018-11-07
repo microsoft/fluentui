@@ -240,12 +240,12 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
     dayIndex: number,
     weekIndex: number
   ): JSX.Element => {
-    const { navigatedDate, dateRangeType, dateTimeFormatter, allFocusable, strings } = this.props;
+    const { navigatedDate, dateTimeFormatter, allFocusable, strings } = this.props;
     const { activeDescendantId, weeks } = this.state;
     const isNavigatedDate = compareDates(navigatedDate, day.originalDate);
 
     // When the month is highlighted get the corner dates so that styles can be added to them
-    const weekCorners: IWeekCorners = this._getWeekCornerStyles(classNames, weeks!, dateRangeType);
+    const weekCorners: IWeekCorners = this._getWeekCornerStyles(classNames, weeks!);
 
     return (
       <td
