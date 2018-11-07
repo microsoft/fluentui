@@ -232,13 +232,6 @@ export const buttonProperties = htmlElementProperties.concat(['disabled']);
 export const divProperties = htmlElementProperties.concat(['align', 'noWrap']);
 
 /**
- * An array of LABEL tag properties and events.
- *
- * @public
- */
-export const labelProperties = htmlElementProperties.concat(['for', 'form']);
-
-/**
  * An array of INPUT tag properties and events.
  *
  * @public
