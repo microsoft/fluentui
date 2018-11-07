@@ -50,6 +50,16 @@ describe('styleToClassName', () => {
     expect(_stylesheet.getRules()).toEqual('.css-0 .foo, .css-0 .bar{background:red;}');
   });
 
+  it('can have child selectors with comma with pseudo selectors', () => {
+    styleToClassName({
+      selectors: {
+        ':hover, :active': { background: 'red' }
+      }
+    });
+
+    expect(_stylesheet.getRules()).toEqual('.css-0:hover, .css-0:active{background:red;}');
+  });
+
   it('can have child selectors with comma with @media query', () => {
     styleToClassName({
       selectors: {
