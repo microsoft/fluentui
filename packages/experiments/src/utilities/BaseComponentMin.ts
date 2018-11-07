@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IDisposable, IRefObject } from '../Utilities';
+import { IRefObject } from '../Utilities';
 
 /**
  * BaseProps interface.
@@ -23,10 +23,6 @@ export class BaseComponentMin<TComponentProps extends IBaseProps = {}, TState = 
    * the props to the inner component, allowing it to resolve the componentRef.
    */
   protected _skipComponentRefResolution: boolean;
-
-  // tslint:disable:variable-name
-  private __disposables: IDisposable[] | null;
-  // tslint:enable:variable-name
 
   /**
    * BaseComponent constructor
@@ -60,27 +56,6 @@ export class BaseComponentMin<TComponentProps extends IBaseProps = {}, TState = 
    */
   public componentWillUnmount(): void {
     this._setComponentRef(this.props.componentRef, null);
-
-    if (this.__disposables) {
-      for (let i = 0, len = this._disposables.length; i < len; i++) {
-        const disposable = this.__disposables[i];
-
-        if (disposable.dispose) {
-          disposable.dispose();
-        }
-      }
-      this.__disposables = null;
-    }
-  }
-
-  /**
-   * Allows subclasses to push things to this._disposables to be auto disposed.
-   */
-  protected get _disposables(): IDisposable[] {
-    if (!this.__disposables) {
-      this.__disposables = [];
-    }
-    return this.__disposables;
   }
 
   /**
