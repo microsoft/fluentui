@@ -1,6 +1,6 @@
 import { IContextualMenuStyleProps, IContextualMenuItemStyleProps } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { IsFocusVisibleClassName } from 'office-ui-fabric-react/lib/Utilities';
-import { fluentBorderRadius, MediumScreenSelector, MinimumScreenSelector } from './styleConstants';
+import { fluentBorderRadius, MinimumScreenSelector } from './styleConstants';
 import { Depths } from '../FluentDepths';
 import { FontSizes } from '../FluentType';
 
