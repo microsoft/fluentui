@@ -33,6 +33,7 @@ export class ModalBasicExample extends React.Component<
             <span id="titleId">Lorem Ipsum</span>
           </div>
           <div id="subtitleId" className="ms-modalExample-body">
+            <DefaultButton onClick={this._closeModal} text="Close" />
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lorem nulla, malesuada ut sagittis sit amet, vulputate in
               leo. Maecenas vulputate congue sapien eu tincidunt. Etiam eu sem turpis. Fusce tempor sagittis nunc, ut interdum ipsum
