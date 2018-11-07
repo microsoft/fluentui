@@ -39,15 +39,16 @@
   }
 }
 
-
 //== Design section
 
 .designSection {
   @include headerAngles($ms-color-neutralPrimary);
-  background-color:$color-getStarted-darker;
+  background-color: $color-getStarted-darker;
   color: $ms-color-neutralLighter;
 
-  a:not(.title), a:visited, a:hover.title,
+  a:not(.title),
+  a:visited,
+  a:hover.title,
   .getStartedLink {
     border-bottom: 1px solid $ms-color-neutralLight;
   }
@@ -56,7 +57,9 @@
     border-bottom: 1px solid transparent;
   }
 
-  a, a:hover, a:active,
+  a,
+  a:hover,
+  a:active,
   .getStartedLink {
     color: $ms-color-neutralLight;
   }
@@ -109,10 +112,6 @@
 }
 
 @media screen and (min-width: $uhf-screen-min-mobile) {
-  img {
-    margin-bottom: 20px;
-  }
-
   .contentInGrid {
     @include ms-padding-left($contentInGrid);
   }
@@ -124,7 +123,6 @@
   color: $ms-color-neutralLighter;
   background-color: $ms-color-neutralPrimary;
 }
-
 
 //== Instructions section
 

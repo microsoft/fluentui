@@ -2536,6 +2536,7 @@ interface IChoiceGroup {
 
 // @public (undocumented)
 interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | HTMLInputElement> {
+  ariaLabel?: string;
   checked?: boolean;
   disabled?: boolean;
   iconProps?: IIconProps;
@@ -2909,6 +2910,7 @@ interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox> {
   onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
   // @deprecated
   onChanged?: (option?: IComboBoxOption, index?: number, value?: string, submitPendingValueEvent?: any) => void;
+  onItemClick?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => void;
   onMenuDismissed?: () => void;
   onMenuOpen?: () => void;
   onPendingValueChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
@@ -6268,6 +6270,7 @@ interface IContextualMenuStyles {
 // @public (undocumented)
 interface IContextualMenuSubComponentStyles {
   callout: IStyleFunctionOrObject<ICalloutContentStyleProps, any>;
+  menuItem: IStyleFunctionOrObject<IContextualMenuItemStyleProps, any>;
 }
 
 // @public (undocumented)
@@ -8319,6 +8322,7 @@ interface INavProps {
   groups: INavLinkGroup[] | null;
   initialSelectedKey?: string;
   isOnTop?: boolean;
+  linkAs?: IComponentAs<IButtonProps>;
   onLinkClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
   onLinkExpandClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
   onRenderGroupHeader?: IRenderFunction<INavLinkGroup>;

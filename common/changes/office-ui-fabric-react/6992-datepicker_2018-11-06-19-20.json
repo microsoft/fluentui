@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Pickers: Fix IE 11 focus and a few css issues",
+      "comment": "fixes #6992: pressing enter in textinput datepicker should change the selection",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "joschect@microsoft.com"
+  "email": "kchau@microsoft.com"
 }

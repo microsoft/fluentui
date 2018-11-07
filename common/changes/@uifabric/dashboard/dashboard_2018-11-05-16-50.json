@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/dashboard",
-      "comment": "render animations for card charts",
+      "comment": "Fixes #5849: get rid of explicit loader syntax inside component file",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/dashboard",
-  "email": "gorigarajesh@gmail.com"
+  "email": "kchau@microsoft.com"
 }

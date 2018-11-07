@@ -1,6 +1,37 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Wed, 31 Oct 2018 22:35:10 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Nov 2018 13:31:09 GMT and should not be manually modified.
+
+## 0.33.0
+Tue, 06 Nov 2018 13:31:09 GMT
+
+### Minor changes
+
+- Fixing change in hover card behavior, this change in behavior was caused due  to fabric version update in dashbaord package by fabric bot
+
+## 0.32.2
+Sun, 04 Nov 2018 02:27:52 GMT
+
+### Patches
+
+- Adding necessary wrapper classes for charting in dashboard package
+
+## 0.32.1
+Fri, 02 Nov 2018 18:11:37 GMT
+
+*Version update only*
+
+## 0.32.0
+Fri, 02 Nov 2018 12:28:54 GMT
+
+### Minor changes
+
+- Making changes to layout of card to support scaling of dataviz. Dataviz scale as per the parent element they sit in and in this case the parent element is formed using flex css. Added constraints to check if part of card will have dataviz and changes styles accordingly
+
+### Patches
+
+- css changes in card components
+- render animations for card charts
 
 ## 0.31.1
 Wed, 31 Oct 2018 22:35:10 GMT

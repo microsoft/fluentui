@@ -7,6 +7,7 @@ import { IDatePickerStrings } from './DatePicker.types';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { shallow, mount, ReactWrapper } from 'enzyme';
 import { resetIds } from '../../Utilities';
+import { Callout } from '../Callout/Callout';
 
 describe('DatePicker', () => {
   beforeEach(() => {
@@ -51,6 +52,14 @@ describe('DatePicker', () => {
     textField.simulate('change', { target: { value: 'Jan 1 2030' } }).simulate('blur');
     textField.simulate('change', { target: { value: '' } }).simulate('blur');
     datePicker.unmount();
+  });
+
+  it('should set "Calendar" as the Callout\'s aria-label', () => {
+    const datePicker = shallow(<DatePickerBase />);
+    datePicker.setState({ isDatePickerShown: true });
+    const calloutProps = datePicker.find(Callout).props();
+
+    expect(calloutProps.ariaLabel).toBe('Calendar');
   });
 
   describe('when Calendar properties are not specified', () => {

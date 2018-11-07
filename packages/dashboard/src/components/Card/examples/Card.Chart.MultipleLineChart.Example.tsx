@@ -108,13 +108,16 @@ export class MultipleLineChartExample extends React.Component<{}, { loading: boo
       that.setState({ loading: false });
     }, 10000);
     return (
-      <Card
-        cardFrameContent={cardFrameContent}
-        header={header}
-        cardContentList={contentAreaList}
-        cardSize={CardSize.mediumWide}
-        loading={this.state.loading}
-      />
+      // tslint:disable-next-line:jsx-ban-props
+      <div style={{ width: '700px', height: '700px', border: '1px solid #c0c1c4' }}>
+        <Card
+          cardFrameContent={cardFrameContent}
+          header={header}
+          cardContentList={contentAreaList}
+          cardSize={CardSize.mediumWide}
+          loading={this.state.loading}
+        />
+      </div>
     );
   }
 }

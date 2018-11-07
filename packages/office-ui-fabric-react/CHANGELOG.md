@@ -1,6 +1,63 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 31 Oct 2018 22:35:10 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Nov 2018 13:31:01 GMT and should not be manually modified.
+
+## 6.100.0
+Wed, 07 Nov 2018 13:31:01 GMT
+
+### Minor changes
+
+- Nav: Added linkAs to support custom buttons and React Router
+- ContextualMenu: Add menuItem subComponentStyles to enable each item styling from the ContextualMenu styles.
+
+### Patches
+
+- update to fix bug when footer covered horizontal scroll bar
+- Button: Update example to use PrimaryButton component
+- Add unit tests for ComboBox multiSelect onItemClicked callback and on select via mouse click.
+- Remove defaultPrevented check in ComboBox item click due to multiSelect regression.
+- Set GroupedList List page key to IGroup key instead of name for uniqueness.
+
+## 6.99.1
+Tue, 06 Nov 2018 13:31:09 GMT
+
+### Patches
+
+- Dropdown: change aria attributes on listbox when disabled
+- Increase height on Persona card primary text to make room for descenders
+
+## 6.99.0
+Sun, 04 Nov 2018 02:27:52 GMT
+
+### Minor changes
+
+- add ariaLabel prop for ChoiceGroupOption
+
+### Patches
+
+- Fix typo with DatePicker Callout aria-label.
+
+## 6.98.1
+Fri, 02 Nov 2018 18:11:37 GMT
+
+### Patches
+
+- Panel: fix box-shadow value
+
+## 6.98.0
+Fri, 02 Nov 2018 12:28:55 GMT
+
+### Minor changes
+
+- Add optional onItemClick callback to ComboBox.
+- Callout Positioning fixes - OnPositioned should not be called on every frame and adding a new prop called alignPerfectlyWithTarget to disallow nudging of callout
+- TextField: set overflow to hidden when autoAdjustHeight is set to avoid flashing scrollbar
+- ContextualMenu: Add fix for subComponentStyles. It is now optional in the `IContextualMenuClassNames` interface.
+
+### Patches
+
+- Pickers: Fix IE 11 focus and a few css issues
+- Slider: fix value calculations
 
 ## 6.97.1
 Wed, 31 Oct 2018 22:35:10 GMT
