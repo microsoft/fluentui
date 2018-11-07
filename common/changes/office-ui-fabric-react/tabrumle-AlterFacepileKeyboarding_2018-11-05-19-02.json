@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add prop to Facepile that allows the members to be rendered outside of a FocusZone",
+      "comment": "Remove the FocusZone wrapping the FacepileMembers",
       "type": "minor"
     }
   ],
