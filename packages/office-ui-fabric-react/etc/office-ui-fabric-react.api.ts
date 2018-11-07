@@ -7231,7 +7231,6 @@ interface IFacepileProps extends React.Props<FacepileBase> {
   chevronButtonProps?: IButtonProps;
   className?: string;
   componentRef?: IRefObject<IFacepile>;
-  doNotWrapInFocusZone?: boolean;
   getPersonaProps?: (persona: IFacepilePersona) => IPersonaSharedProps;
   maxDisplayablePersonas?: number;
   overflowButtonProps?: IButtonProps;

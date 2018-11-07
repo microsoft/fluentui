@@ -69,9 +69,6 @@ export interface IFacepileProps extends React.Props<FacepileBase> {
 
   /** Method to access properties on the underlying Persona control */
   getPersonaProps?: (persona: IFacepilePersona) => IPersonaSharedProps;
-
-  /** Set to true to allow for keyboarding to the facepile members when the facepile is placed inside of a focus zone */
-  doNotWrapInFocusZone?: boolean;
 }
 
 export interface IFacepilePersona extends React.ButtonHTMLAttributes<HTMLButtonElement | HTMLDivElement> {
