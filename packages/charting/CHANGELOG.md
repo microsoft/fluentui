@@ -1,6 +1,45 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 25 Oct 2018 12:30:05 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Nov 2018 18:11:37 GMT and should not be manually modified.
+
+## 0.28.0
+Fri, 02 Nov 2018 18:11:37 GMT
+
+### Minor changes
+
+- Using new props of hover card. Removing timeout which was introduced as temporary fix until new props were provided for scaling the hover card as per content.
+
+## 0.27.0
+Fri, 02 Nov 2018 12:28:54 GMT
+
+### Minor changes
+
+- Changes to line chart component, adding optional prop for users to which they can pass a html element based on which the dataviz will scale. This helps when the parent element is formed using flex or after a timeout. Also eliminates the glitch feel.
+
+### Patches
+
+- css changes for legends component
+
+## 0.26.3
+Thu, 01 Nov 2018 12:31:45 GMT
+
+### Patches
+
+- added hovercard for horizontalBar chart
+
+## 0.26.2
+Wed, 31 Oct 2018 12:32:41 GMT
+
+### Patches
+
+- Enable ignore fixed stackbarchart style when data point is less than 2
+
+## 0.26.1
+Mon, 29 Oct 2018 18:04:30 GMT
+
+### Patches
+
+- Add placeholder mode to MultiStackBardChart data point in order to render the bar chart with a progress gray color(default)  area
 
 ## 0.26.0
 Thu, 25 Oct 2018 12:30:05 GMT

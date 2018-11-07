@@ -1,6 +1,24 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Mon, 29 Oct 2018 12:31:29 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Nov 2018 13:31:00 GMT and should not be manually modified.
+
+## 0.3.0
+Wed, 07 Nov 2018 13:31:00 GMT
+
+### Minor changes
+
+- Export all Fluent styles
+
+### Patches
+
+- Add Fluent button styles
+
+## 0.2.0
+Thu, 01 Nov 2018 12:31:45 GMT
+
+### Minor changes
+
+- SpinButton: add SpinButton fluent styles.
 
 ## 0.1.7
 Mon, 29 Oct 2018 12:31:29 GMT

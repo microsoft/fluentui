@@ -25,11 +25,12 @@ import {
   IRenderFunction,
   IPoint,
   KeyCodes,
-  shouldWrapFocus
+  shouldWrapFocus,
+  IStyleFunctionOrObject
 } from '../../Utilities';
 import { hasSubmenu, getIsChecked, isItemDisabled } from '../../utilities/contextualMenu/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
-import { Callout } from '../../Callout';
+import { Callout, ICalloutContentStyleProps, ICalloutContentStyles } from '../../Callout';
 import { ContextualMenu } from './ContextualMenu';
 import { ContextualMenuItem } from './ContextualMenuItem';
 import { ContextualMenuSplitButton, ContextualMenuButton, ContextualMenuAnchor } from './ContextualMenuItemWrapper/index';
@@ -285,8 +286,14 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
         }
       }
 
+      const calloutStyles =
+        !getMenuClassNames && this._classNames.subComponentStyles
+          ? (this._classNames.subComponentStyles.callout as IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>)
+          : undefined;
+
       return (
         <Callout
+          styles={calloutStyles}
           {...calloutProps}
           target={target}
           isBeakVisible={isBeakVisible}
@@ -450,10 +457,15 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
         primaryDisabled: item.primaryDisabled
       };
 
+      const menuItemStyles = this._classNames.subComponentStyles
+        ? (this._classNames.subComponentStyles.menuItem as IStyleFunctionOrObject<IContextualMenuItemStyleProps, IContextualMenuItemStyles>)
+        : undefined;
+
       // We need to generate default styles then override if styles are provided
       // since the ContextualMenu currently handles item classNames.
       itemClassNames = mergeStyleSets(
         getContextualMenuItemClassNames(getItemStyles, itemStyleProps),
+        getContextualMenuItemClassNames(menuItemStyles, itemStyleProps),
         getContextualMenuItemClassNames(styles, itemStyleProps)
       );
     }
