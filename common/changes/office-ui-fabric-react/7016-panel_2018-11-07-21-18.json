@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fixes #7016: adding a documentation about having a minimum 340px width",
+      "comment": "Panel documentation: updated docs to recommend having a minimum 340px width on the container.",
       "type": "patch"
     }
   ],
