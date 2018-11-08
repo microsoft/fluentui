@@ -348,4 +348,24 @@ describe('DetailsList', () => {
 
     expect(onRenderDetailsHeaderMock).toHaveBeenCalledTimes(1);
   });
+
+  it('invokes optional onRenderColumnHeaderTooltip prop to customize DetailsColumn tooltip rendering when provided', () => {
+    const NUM_COLUMNS = 2;
+    const onRenderColumnHeaderTooltipMock = jest.fn();
+    const onRenderDetailsHeader = (props: IDetailsHeaderProps, defaultRenderer?: IRenderFunction<IDetailsHeaderProps>) => {
+      return <DetailsHeader {...props} onRenderColumnHeaderTooltip={onRenderColumnHeaderTooltipMock} />;
+    };
+
+    mount(
+      <DetailsList
+        items={mockData(NUM_COLUMNS)}
+        skipViewportMeasures={true}
+        // tslint:disable-next-line:jsx-no-lambda
+        onShouldVirtualize={() => false}
+        onRenderDetailsHeader={onRenderDetailsHeader}
+      />
+    );
+
+    expect(onRenderColumnHeaderTooltipMock).toHaveBeenCalledTimes(NUM_COLUMNS);
+  });
 });
