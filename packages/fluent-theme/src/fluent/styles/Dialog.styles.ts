@@ -1,5 +1,5 @@
 import { IDialogContentStyleProps } from 'office-ui-fabric-react/lib/Dialog';
-import { DefaultPalette, FontWeights } from 'office-ui-fabric-react/lib/Styling';
+import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
 
 import { Depths } from '../FluentDepths';
 import { FontSizes } from '../FluentType';
