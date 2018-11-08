@@ -31,9 +31,7 @@ export class StackedBarChartExample extends React.Component<{}, { loading: boole
         chartTitle: 'Monitored',
         chartData: [
           { legend: 'Legend 1 text', data: 40, color: DefaultPalette.accent },
-          { legend: 'Legend 2 text', data: 23, color: DefaultPalette.green },
-          { legend: 'Legend 3 text', data: 35, color: DefaultPalette.orange },
-          { legend: 'Legend 4 text', data: 87, color: DefaultPalette.blue }
+          { legend: 'Legend 2 text', data: 23, color: DefaultPalette.green }
         ]
       }
     ];
@@ -57,7 +55,8 @@ export class StackedBarChartExample extends React.Component<{}, { loading: boole
     const chartContent1: IChartProps = {
       chartType: ChartType.StackedBarChart,
       chartData: firstChartData,
-      chartUpdatedOn: 'Updated 6:20 pm today'
+      chartUpdatedOn: 'Updated 6:20 pm today',
+      hideDenominator: [true]
     };
 
     const chartContent2: IChartProps = {

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Fri, 02 Nov 2018 18:11:37 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Nov 2018 04:17:34 GMT and should not be manually modified.
+
+## 0.28.2
+Thu, 08 Nov 2018 04:17:34 GMT
+
+### Patches
+
+- Update to line chart to re-render on prop updates and addition of new prop to stacked and multistacked bar chart
 
 ## 0.28.0
 Fri, 02 Nov 2018 18:11:37 GMT

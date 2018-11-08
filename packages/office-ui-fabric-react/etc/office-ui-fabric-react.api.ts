@@ -1027,10 +1027,12 @@ enum DirectionalHint {
 export function disableBodyScroll(): void;
 
 // @public (undocumented)
-class DocumentCard extends BaseComponent<IDocumentCardProps, any> {
+class DocumentCard extends BaseComponent<IDocumentCardProps, any>, implements IDocumentCard {
   constructor(props: IDocumentCardProps);
   // (undocumented)
   static defaultProps: IDocumentCardProps;
+  // (undocumented)
+  focus(): void;
   // (undocumented)
   render(): JSX.Element;
 }
@@ -2663,7 +2665,7 @@ interface ICoachmark {
 }
 
 // @public (undocumented)
-interface ICoachmarkProps extends React.Props<Coachmark> {
+interface ICoachmarkProps extends React.ClassAttributes<Coachmark> {
   ariaAlertText?: string;
   ariaDescribedBy?: string;
   ariaDescribedByText?: string;
@@ -6220,7 +6222,7 @@ interface IContextualMenuRenderItem {
 }
 
 // @public
-interface IContextualMenuSection extends React.Props<any> {
+interface IContextualMenuSection extends React.ClassAttributes<any> {
   bottomDivider?: boolean;
   items: IContextualMenuItem[];
   title?: string;
@@ -6270,6 +6272,7 @@ interface IContextualMenuStyles {
 // @public (undocumented)
 interface IContextualMenuSubComponentStyles {
   callout: IStyleFunctionOrObject<ICalloutContentStyleProps, any>;
+  menuItem: IStyleFunctionOrObject<IContextualMenuItemStyleProps, any>;
 }
 
 // @public (undocumented)
@@ -6902,6 +6905,7 @@ interface IDividerAsProps extends IIconProps {
 
 // @public (undocumented)
 interface IDocumentCard {
+  focus: () => void;
 }
 
 // @public (undocumented)
@@ -8321,6 +8325,7 @@ interface INavProps {
   groups: INavLinkGroup[] | null;
   initialSelectedKey?: string;
   isOnTop?: boolean;
+  linkAs?: IComponentAs<IButtonProps>;
   onLinkClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
   onLinkExpandClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
   onRenderGroupHeader?: IRenderFunction<INavLinkGroup>;

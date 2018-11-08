@@ -138,6 +138,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
         <Layer onLayerDidMount={onLayerDidMount}>
           <Popup
             role={isBlocking ? 'alertdialog' : 'dialog'}
+            aria-modal="true"
             ariaLabelledBy={titleAriaId}
             ariaDescribedBy={subtitleAriaId}
             onDismiss={onDismiss}

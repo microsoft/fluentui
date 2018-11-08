@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, createRef } from '../../Utilities';
+import { BaseComponent, classNamesFunction } from '../../Utilities';
 import { IColorPickerProps, IColorPickerStyleProps, IColorPickerStyles } from './ColorPicker.types';
 import { ITextField, TextField } from '../../TextField';
 import { ColorRectangle } from './ColorRectangle/ColorRectangle';
@@ -22,11 +22,11 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
     alphaLabel: 'Alpha'
   };
 
-  private _hexText = createRef<ITextField>();
-  private _rText = createRef<ITextField>();
-  private _gText = createRef<ITextField>();
-  private _bText = createRef<ITextField>();
-  private _aText = createRef<ITextField>();
+  private _hexText = React.createRef<ITextField>();
+  private _rText = React.createRef<ITextField>();
+  private _gText = React.createRef<ITextField>();
+  private _bText = React.createRef<ITextField>();
+  private _aText = React.createRef<ITextField>();
 
   constructor(props: IColorPickerProps) {
     super(props);

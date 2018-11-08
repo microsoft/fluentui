@@ -56,7 +56,7 @@ export class LineChartBase extends React.Component<
       refSelected: '',
       hoveredLineColor: ''
     };
-    this._points = this.props.data.lineChartData || [];
+    this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
     this._uniqLineText =
       '_line_' +
       Math.random()
@@ -72,6 +72,7 @@ export class LineChartBase extends React.Component<
 
   public render(): JSX.Element {
     const { theme, className, styles, tickValues, tickFormat } = this.props;
+    this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
     if (this.props.parentRef) {
       this._fitParentContainer();
     }

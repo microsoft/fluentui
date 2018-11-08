@@ -504,6 +504,35 @@ describe('ComboBox', () => {
     expect(updatedText).toEqual('');
   });
 
+  it('in multiSelect mode, selectedIndices are correct after performing multiple selections using mouse click', () => {
+    const comboBoxRef = React.createRef<any>();
+    wrapper = mount(<ComboBox multiSelect options={DEFAULT_OPTIONS} componentRef={comboBoxRef} />);
+
+    const comboBoxRoot = wrapper.find('.ms-ComboBox');
+    const inputElement = comboBoxRoot.find('input');
+    inputElement.simulate('keydown', { which: KeyCodes.enter });
+    const buttons = document.querySelectorAll('.ms-ComboBox-option');
+
+    ReactTestUtils.Simulate.click(buttons[0]);
+    ReactTestUtils.Simulate.click(buttons[1]);
+    ReactTestUtils.Simulate.click(buttons[2]);
+
+    expect((comboBoxRef.current as ComboBox).state.selectedIndices).toEqual([0, 1, 2]);
+  });
+
+  it('in multiSelect mode, optional onItemClick callback invoked per option select', () => {
+    const onItemClickMock = jest.fn();
+    wrapper = mount(<ComboBox multiSelect options={DEFAULT_OPTIONS} onItemClick={onItemClickMock} />);
+    wrapper.find('input').simulate('keydown', { which: KeyCodes.enter });
+    const buttons = document.querySelectorAll('.ms-ComboBox-option');
+
+    ReactTestUtils.Simulate.click(buttons[0]);
+    ReactTestUtils.Simulate.click(buttons[1]);
+    ReactTestUtils.Simulate.click(buttons[2]);
+
+    expect(onItemClickMock).toHaveBeenCalledTimes(3);
+  });
+
   it('invokes optional onItemClick callback on option select', () => {
     const onItemClickMock = jest.fn();
     wrapper = mount(<ComboBox options={DEFAULT_OPTIONS} onItemClick={onItemClickMock} />);

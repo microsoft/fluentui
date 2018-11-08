@@ -76,6 +76,11 @@ export interface IChartProps {
   hideRatio?: boolean[];
 
   /**
+   * This property tells whether to show denominator for ratio on top of stacked bar chart or not.
+   */
+  hideDenominator?: boolean[];
+
+  /**
    * Type of chart to render
    */
   chartType: ChartType;

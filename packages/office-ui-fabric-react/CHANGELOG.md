@@ -1,6 +1,33 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 06 Nov 2018 13:31:09 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Nov 2018 04:17:34 GMT and should not be manually modified.
+
+## 6.100.2
+Thu, 08 Nov 2018 04:17:34 GMT
+
+### Patches
+
+- Label examples: updated to illustrate good accessibility patterns.
+- DatePicker: pressing enter now changes the selection.
+- Panel documentation: updated docs to recommend having a minimum 340px width on the container.
+- Modal: Set aria-modal=true for a better screen reader experience.
+- Modal examples: Adding aria labels title & description.
+
+## 6.100.0
+Wed, 07 Nov 2018 13:31:01 GMT
+
+### Minor changes
+
+- Nav: Added linkAs to support custom buttons and React Router
+- ContextualMenu: Add menuItem subComponentStyles to enable each item styling from the ContextualMenu styles.
+
+### Patches
+
+- update to fix bug when footer covered horizontal scroll bar
+- Button: Update example to use PrimaryButton component
+- Add unit tests for ComboBox multiSelect onItemClicked callback and on select via mouse click.
+- Remove defaultPrevented check in ComboBox item click due to multiSelect regression.
+- Set GroupedList List page key to IGroup key instead of name for uniqueness.
 
 ## 6.99.1
 Tue, 06 Nov 2018 13:31:09 GMT
