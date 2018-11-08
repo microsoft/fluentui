@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Set aria-modal=true on Modal dialog",
+      "comment": "Modal: Set aria-modal=true for a better screen reader experience.",
       "type": "patch"
     }
   ],
