@@ -134,10 +134,12 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
   }
 
   private _getElementWithOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
+    const { keytipProps } = persona;
     return (
       <FacepileButton
         {...getNativeProps(persona, buttonProperties)}
         {...this._getElementProps(persona, index)}
+        keytipProps={keytipProps}
         onClick={this._onPersonaClick.bind(this, persona)}
       >
         {personaControl}
