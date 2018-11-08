@@ -107,8 +107,8 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
 
     const classNames = getClassNames(styles!, {
       theme: theme!,
-      className: className || mergedModalProps!.className,
-      containerClassName: containerClassName || mergedModalProps!.containerClassName,
+      className: className || mergedModalProps.className,
+      containerClassName: containerClassName || mergedModalProps.containerClassName,
       hidden,
       dialogDefaultMinWidth: minWidth,
       dialogDefaultMaxWidth: maxWidth
@@ -124,12 +124,12 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
         onDismissed={onDismissed}
         responsiveMode={responsiveMode}
         {...mergedModalProps}
-        isDarkOverlay={isDarkOverlay !== undefined ? isDarkOverlay : mergedModalProps!.isDarkOverlay}
-        isBlocking={isBlocking !== undefined ? isBlocking : mergedModalProps!.isBlocking}
+        isDarkOverlay={isDarkOverlay !== undefined ? isDarkOverlay : mergedModalProps.isDarkOverlay}
+        isBlocking={isBlocking !== undefined ? isBlocking : mergedModalProps.isBlocking}
         isOpen={isOpen !== undefined ? isOpen : !hidden}
         className={classNames.root}
         containerClassName={classNames.main}
-        onDismiss={onDismiss ? onDismiss : mergedModalProps!.onDismiss}
+        onDismiss={onDismiss ? onDismiss : mergedModalProps.onDismiss}
         subtitleAriaId={this._getSubTextId()}
         titleAriaId={this._getTitleTextId()}
       >
@@ -138,7 +138,7 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
           subTextId={this._defaultSubTextId}
           title={title}
           subText={subText}
-          showCloseButton={isBlocking !== undefined ? !isBlocking : !mergedModalProps!.isBlocking}
+          showCloseButton={isBlocking !== undefined ? !isBlocking : !mergedModalProps.isBlocking}
           topButtonsProps={topButtonsProps ? topButtonsProps : dialogContentProps!.topButtonsProps}
           type={type !== undefined ? type : dialogContentProps!.type}
           onDismiss={onDismiss ? onDismiss : dialogContentProps!.onDismiss}
