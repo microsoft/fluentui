@@ -2,6 +2,25 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.28.2",
+      "tag": "@uifabric/charting_v0.28.2",
+      "date": "Thu, 08 Nov 2018 04:17:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update to line chart to re-render on prop updates and addition of new prop to stacked and multistacked bar chart",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "dd4dc1df273e8b93f2411446225fb4fc39b5dd1a"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.100.0 <7.0.0` to `>=6.100.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.28.0",
       "tag": "@uifabric/charting_v0.28.0",
       "date": "Fri, 02 Nov 2018 18:11:37 GMT",

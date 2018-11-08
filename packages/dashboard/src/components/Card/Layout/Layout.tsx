@@ -126,6 +126,7 @@ export class Layout extends React.Component<ILayoutProps, { _width: number; _hei
                   barHeight,
                   chartData,
                   hideRatio,
+                  hideDenominator,
                   data,
                   chartType,
                   dataPoints,
@@ -153,6 +154,7 @@ export class Layout extends React.Component<ILayoutProps, { _width: number; _hei
                           legendColors={legendColors}
                           chartData={chartData}
                           hideRatio={hideRatio}
+                          hideDenominator={hideDenominator}
                           barWidth={barWidth}
                           barHeight={barHeight}
                           data={data}

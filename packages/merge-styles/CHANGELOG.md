@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Fri, 26 Oct 2018 12:32:35 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Nov 2018 04:17:34 GMT and should not be manually modified.
+
+## 6.13.0
+Thu, 08 Nov 2018 04:17:34 GMT
+
+### Minor changes
+
+- Fixes #6975: adds ability for mergestyles to handle commas in selectors
 
 ## 6.11.0
 Fri, 26 Oct 2018 12:32:35 GMT

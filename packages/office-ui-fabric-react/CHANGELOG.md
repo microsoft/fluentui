@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 07 Nov 2018 13:31:01 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Nov 2018 04:17:34 GMT and should not be manually modified.
+
+## 6.100.2
+Thu, 08 Nov 2018 04:17:34 GMT
+
+### Patches
+
+- Label examples: updated to illustrate good accessibility patterns.
+- DatePicker: pressing enter now changes the selection.
+- Panel documentation: updated docs to recommend having a minimum 340px width on the container.
+- Modal: Set aria-modal=true for a better screen reader experience.
+- Modal examples: Adding aria labels title & description.
 
 ## 6.100.0
 Wed, 07 Nov 2018 13:31:01 GMT

@@ -134,7 +134,7 @@ function updateRush() {
   rushJson.projects.push({
     packageName: `@uifabric/${newPackageName}`,
     projectFolder: `packages/${newPackageName}`,
-    versionPolicyName: 'lockedMajor',
+    // versionPolicyName: 'lockedMajor',
     shouldPublish: false
   });
 

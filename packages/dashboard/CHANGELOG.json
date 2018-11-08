@@ -2,6 +2,36 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.33.2",
+      "tag": "@uifabric/dashboard_v0.33.2",
+      "date": "Thu, 08 Nov 2018 04:17:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixes #5849: get rid of explicit loader syntax inside component file",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "bba0a5bebe235660cf3ab89bb947e8d9f1c6f315"
+          },
+          {
+            "comment": "Updating context menu shadow styling for card frame and action bar",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "dd4dc1df273e8b93f2411446225fb4fc39b5dd1a"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.28.0` to `^0.28.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.40.3 <7.0.0` to `>=6.41.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.100.0 <7.0.0` to `>=6.100.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.33.0",
       "tag": "@uifabric/dashboard_v0.33.0",
       "date": "Tue, 06 Nov 2018 13:31:09 GMT",

@@ -1,6 +1,14 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Tue, 06 Nov 2018 13:31:09 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Nov 2018 04:17:34 GMT and should not be manually modified.
+
+## 0.33.2
+Thu, 08 Nov 2018 04:17:34 GMT
+
+### Patches
+
+- Fixes #5849: get rid of explicit loader syntax inside component file
+- Updating context menu shadow styling for card frame and action bar
 
 ## 0.33.0
 Tue, 06 Nov 2018 13:31:09 GMT

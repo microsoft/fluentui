@@ -36,8 +36,7 @@ export class MultiStackedBarChartExample extends React.Component<{}, { loading: 
 
     const secondChartPoints: IChartDataPoint[] = [
       { legend: 'Phone Numbers', data: 40, color: DefaultPalette.blue },
-      { legend: 'Credit card Numbers', data: 23, color: DefaultPalette.green },
-      { legend: 'Asset Numbers', data: 35, color: DefaultPalette.yellow }
+      { legend: 'Credit card Numbers', data: 23, color: DefaultPalette.green }
     ];
 
     const data: IChartingProps[] = [
@@ -60,7 +59,8 @@ export class MultiStackedBarChartExample extends React.Component<{}, { loading: 
     const chartContent2: IChartProps = {
       chartType: ChartType.StackedBarChart,
       chartData: data,
-      chartUpdatedOn: 'Updated 6:20 pm today'
+      chartUpdatedOn: 'Updated 6:20 pm today',
+      hideDenominator: [true, false]
     };
 
     const contentAreaList: ICardContentDetails[] = [
