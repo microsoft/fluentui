@@ -175,6 +175,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
       viewport,
       onColumnClick,
       onColumnContextMenu,
+      onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip,
       styles,
       theme
     } = this.props;
@@ -182,7 +183,6 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     const showCheckbox = selectAllVisibility !== SelectAllVisibility.none;
     const isCheckboxHidden = selectAllVisibility === SelectAllVisibility.hidden;
 
-    const { onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip } = this.props;
     if (!this._dragDropHelper && columnReorderProps) {
       this._dragDropHelper = new DragDropHelper({
         selection: {
