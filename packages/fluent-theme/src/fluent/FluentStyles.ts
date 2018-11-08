@@ -8,6 +8,7 @@ import { DialogStyles, DialogContentStyles, DialogFooterStyles } from './styles/
 import { DropdownStyles } from './styles/Dropdown.styles';
 import { LabelStyles } from './styles/Label.styles';
 import { LinkStyles } from './styles/Link.styles';
+import { PivotStyles } from './styles/Pivot.styles';
 import { PrimaryButtonStyles } from './styles/PrimaryButton.styles';
 import { RatingStyles } from './styles/Rating.styles';
 import { SliderStyles } from './styles/Slider.styles';
@@ -64,6 +65,9 @@ export const FluentStyles: any = {
   },
   Link: {
     styles: LinkStyles
+  },
+  Pivot: {
+    styles: PivotStyles
   },
   PrimaryButton: {
     styles: PrimaryButtonStyles
