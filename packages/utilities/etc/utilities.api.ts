@@ -8,6 +8,11 @@ export function addElementAtIndex<T>(array: T[], index: number, itemToAdd: T): T
 export function arraysEqual<T>(array1: T[], array2: T[]): boolean;
 
 // @public
+export function asAsync<TProps>(options: IAsAsyncOptions<TProps>): React.ComponentType<TProps & {
+    asyncPlaceholder?: React.ReactType;
+}>;
+
+// @public
 export function assertNever(x: never): never;
 
 // @public
@@ -301,6 +306,13 @@ export function hoistMethods(destination: any, source: any, exclusions?: string[
 
 // @public
 export function hoistStatics<TSource, TDest>(source: TSource, dest: TDest): TDest;
+
+// @public (undocumented)
+interface IAsAsyncOptions<TProps> {
+  load: () => Promise<React.ReactType<TProps>>;
+  onError?: (error: Error) => void;
+  onLoad?: () => void;
+}
 
 // @public
 interface IBaseProps<T = any> {
@@ -743,8 +755,11 @@ export function merge<T = {}>(target: Partial<T>, ...args: (Partial<T> | null | 
 // @public
 export function mergeAriaAttributeValues(...ariaAttributes: (string | undefined)[]): string | undefined;
 
-// @public (undocumented)
+// @public
 export function mergeCustomizations(props: ICustomizerProps, parentContext: ICustomizerContext): ICustomizerContext;
+
+// @public
+export function mergeSettings(oldSettings?: Settings, newSettings?: Settings | SettingsFunction): Settings;
 
 // @public
 export function nullRender(): JSX.Element | null;

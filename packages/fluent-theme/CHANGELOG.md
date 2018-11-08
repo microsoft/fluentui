@@ -1,6 +1,38 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Wed, 24 Oct 2018 12:28:58 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Nov 2018 13:31:00 GMT and should not be manually modified.
+
+## 0.3.0
+Wed, 07 Nov 2018 13:31:00 GMT
+
+### Minor changes
+
+- Export all Fluent styles
+
+### Patches
+
+- Add Fluent button styles
+
+## 0.2.0
+Thu, 01 Nov 2018 12:31:45 GMT
+
+### Minor changes
+
+- SpinButton: add SpinButton fluent styles.
+
+## 0.1.7
+Mon, 29 Oct 2018 12:31:29 GMT
+
+### Patches
+
+- TextField, Breadcrumb: Updating some font weight for Breadcrumb and border color for TextField
+
+## 0.1.6
+Thu, 25 Oct 2018 12:30:06 GMT
+
+### Patches
+
+- Fluent theme: Update Slider colors
 
 ## 0.1.5
 Wed, 24 Oct 2018 12:28:58 GMT

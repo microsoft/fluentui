@@ -59,9 +59,7 @@ export class FormDropdown extends FormBaseInput<DropdownValue, IFormDropdownProp
         // These props cannot be overridden
         key={this.props.inputKey}
         onChange={this._onChange}
-        {...(currentValue && Array.isArray(currentValue)
-          ? { selectedKeys: currentValue }
-          : { selectedKey: currentValue })}
+        {...(currentValue && Array.isArray(currentValue) ? { selectedKeys: currentValue } : { selectedKey: currentValue })}
       />
     );
   }

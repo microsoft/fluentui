@@ -197,6 +197,24 @@ describe('DetailsList', () => {
     jest.runOnlyPendingTimers();
   });
 
+  it('invokes optional onRenderMissingItem prop once per missing item rendered', () => {
+    const onRenderMissingItem = jest.fn();
+    const items = [...mockData(5), null, null];
+
+    mount(<DetailsList items={items} skipViewportMeasures={true} onRenderMissingItem={onRenderMissingItem} />);
+
+    expect(onRenderMissingItem).toHaveBeenCalledTimes(2);
+  });
+
+  it('does not invoke optional onRenderMissingItem prop if no missing items are rendered', () => {
+    const onRenderMissingItem = jest.fn();
+    const items = mockData(5);
+
+    mount(<DetailsList items={items} skipViewportMeasures={true} onRenderMissingItem={onRenderMissingItem} />);
+
+    expect(onRenderMissingItem).toHaveBeenCalledTimes(0);
+  });
+
   it('focuses into row element', () => {
     const onRenderColumn = (item: any, index: number, column: IColumn) => {
       let value = item && column && column.fieldName ? item[column.fieldName] : '';
@@ -286,5 +304,30 @@ describe('DetailsList', () => {
       expect(document.activeElement.className.split(' ')).toContain('ms-DetailsRow');
     }, 0);
     jest.runOnlyPendingTimers();
+  });
+
+  it('invokes optional onColumnResize callback per IColumn if defined when columns are adjusted', () => {
+    const detailsList = mount(
+      <DetailsList
+        items={mockData(2)}
+        skipViewportMeasures={true}
+        // tslint:disable-next-line:jsx-no-lambda
+        onShouldVirtualize={() => false}
+      />
+    );
+
+    const columns: IColumn[] = mockData(2, true);
+    columns[0].onColumnResize = jest.fn();
+    columns[1].onColumnResize = jest.fn();
+
+    // componentWillReceiveProps not executed on initial render in test
+    // so we need to force one via setProps and update.
+    const newProps = { columns };
+
+    detailsList.setProps(newProps);
+    detailsList.update();
+
+    expect(columns[0].onColumnResize).toHaveBeenCalledTimes(1);
+    expect(columns[1].onColumnResize).toHaveBeenCalledTimes(1);
   });
 });

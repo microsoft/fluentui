@@ -10,19 +10,19 @@ export interface IExpandingCard {}
 export interface IExpandingCardProps extends IBaseCardProps<IExpandingCard, IExpandingCardStyles, IExpandingCardStyleProps> {
   /**
    * Height of compact card
-   * @default 156
+   * @defaultvalue 156
    */
   compactCardHeight?: number;
 
   /**
    * Height of expanded card
-   * @default 384
+   * @defaultvalue 384
    */
   expandedCardHeight?: number;
 
   /**
    * Use to open the card in expanded format and not wait for the delay
-   * @default ExpandingCardMode.compact
+   * @defaultvalue ExpandingCardMode.compact
    */
   mode?: ExpandingCardMode;
 

@@ -76,13 +76,13 @@ export interface IDialogContentProps extends React.Props<DialogContentBase> {
 
   /**
    * Label to be passed to to aria-label of close button
-   * @default Close
+   * @defaultvalue Close
    */
   closeButtonAriaLabel?: string;
 
   /**
    * The type of Dialog to display.
-   * @default DialogType.normal
+   * @defaultvalue DialogType.normal
    */
   type?: DialogType;
 }

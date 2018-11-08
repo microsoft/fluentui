@@ -76,6 +76,14 @@ export class CardFrame extends React.Component<ICardFrameProps, {}> {
               split={false}
               aria-label={'More'}
               menuProps={{
+                calloutProps: {
+                  styles: {
+                    root: {
+                      boxShadow: '0px 1.2px 3.6px rgba(0,0,0,0.18), 0px 6.4px 14.4px rgba(0,0,0,0.22)',
+                      border: 'none'
+                    }
+                  }
+                },
                 items: cardDropDownOptions
               }}
               styles={{

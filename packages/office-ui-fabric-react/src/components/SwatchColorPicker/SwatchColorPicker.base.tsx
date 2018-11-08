@@ -138,7 +138,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
    * Get the selected item's index
    * @param items - The items to search
    * @param selectedId - The selected item's id to find
-   * @returns {number} - The index of the selected item's id, -1 if there was no match
+   * @returns - The index of the selected item's id, -1 if there was no match
    */
   private _getSelectedIndex(items: IColorCellProps[], selectedId: string): number | undefined {
     const selectedIndex = findIndex(items, item => item.id === selectedId);
@@ -148,7 +148,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
   /**
    * Render a color cell
    * @param item - The item to render
-   * @returns {JSX.Element} - Element representing the item
+   * @returns - Element representing the item
    */
   private _renderOption = (item: IColorCellProps): JSX.Element => {
     const id = this._id;

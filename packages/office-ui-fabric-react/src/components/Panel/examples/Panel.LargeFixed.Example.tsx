@@ -19,12 +19,7 @@ export class PanelLargeFixedExample extends React.Component<
     return (
       <div>
         <DefaultButton secondaryText="Opens the Sample Panel" onClick={this._showPanel} text="Open Panel" />
-        <Panel
-          isOpen={this.state.showPanel}
-          onDismiss={this._closePanel}
-          type={PanelType.largeFixed}
-          headerText="Large Panel"
-        >
+        <Panel isOpen={this.state.showPanel} onDismiss={this._closePanel} type={PanelType.largeFixed} headerText="Large Panel">
           <span>Content goes here.</span>
         </Panel>
       </div>

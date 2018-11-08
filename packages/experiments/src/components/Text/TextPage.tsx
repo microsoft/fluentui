@@ -18,9 +18,7 @@ export class TextPage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet
-            sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/Text/Text.types.tsx')]}
-          />
+          <PropertiesTableSet sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/Text/Text.types.tsx')]} />
         }
         overview={<div />}
         bestPractices={<div />}

@@ -48,9 +48,7 @@ function _onLoad(): void {
 }
 
 function _getRoutes(): JSX.Element[] {
-  const routes = AppDefinition.testPages.map((page: IAppLink) => (
-    <Route key={page.key} path={page.url} component={page.component} />
-  ));
+  const routes = AppDefinition.testPages.map((page: IAppLink) => <Route key={page.key} path={page.url} component={page.component} />);
   const appRoutes: JSX.Element[] = [];
 
   AppDefinition.examplePages.forEach((group: IAppLinkGroup) => {

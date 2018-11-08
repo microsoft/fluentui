@@ -65,12 +65,7 @@ export class CheckboxImplementationExamples extends React.Component<{}, ICheckbo
           styles={checkboxStyles}
         />
 
-        <Checkbox
-          label="Controlled checkbox"
-          checked={isChecked}
-          onChange={this._onControlledCheckboxChange}
-          styles={checkboxStyles}
-        />
+        <Checkbox label="Controlled checkbox" checked={isChecked} onChange={this._onControlledCheckboxChange} styles={checkboxStyles} />
 
         <Checkbox label="Checkbox rendered with boxSide &quot;end&quot;" boxSide="end" styles={checkboxStyles} />
 
