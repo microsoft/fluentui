@@ -23,6 +23,9 @@ const listProps = {
 
 // Props required by certain components in order for tests to pass
 const requiredProps: { [key: string]: any } = {
+  PlainCard: {
+    onRenderPlainCard: () => null
+  },
   ColorPicker: {
     color: '#ffffff'
   },
@@ -39,6 +42,10 @@ const requiredProps: { [key: string]: any } = {
     items: [{ text: 'TestText', key: 'TestKey', canCheck: true, isChecked: true }]
   },
   DetailsList: listProps,
+  ExpandingCard: {
+    onRenderCompactCard: () => null,
+    onRenderExpandedCard: () => null
+  },
   GroupedList: {
     ...listProps,
     groups: []
@@ -84,9 +91,11 @@ const classNameSelectors: { [key: string]: string } = {
   ContextualMenu: 'ms-ContextualMenu',
   DetailsList: 'ms-DetailsList',
   Dropdown: 'ms-Dropdown',
+  ExpandingCard: 'ms-Callout',
   Modal: 'ms-Modal',
   Nav: 'ms-Nav',
   Panel: 'ms-Panel',
+  PlainCard: 'ms-Callout',
   Tooltip: 'ms-Tooltip'
 };
 
@@ -95,12 +104,12 @@ const classNameSelectors: { [key: string]: string } = {
 const excludedComponents: string[] = [
   'Beak', // className is not injected
   'Button', // deprecated, test Button variants instead
+  'CardCallout', // className injected one level above
   'ChoiceGroupOption', // className is not injected
   'Coachmark', // className is not injected
   'ColorRectangle', // className is not injected
   'ContextualMenuItemWrapper', // className is not injected
   'Dialog', // className is deprecated
-  'HoverCard', // className is not injected
   'Keytip', // helper component, not meant to take a className
   'KeytipData', // helper component, not meant to take a className
   'KeytipLayer', // helper component, not meant to take a className

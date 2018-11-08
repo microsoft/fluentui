@@ -87,19 +87,29 @@ export class ActionBar extends React.Component<IActionBarProps, {}> {
     overflowItems.forEach((action: IAction, i: number) => {
       items.push({ key: i.toString(), name: action.title, onClick: action.action });
     });
-    return <DefaultButton menuProps={{ items: items! }} onClick={this._onClick} styles={overflowButtonStyles} />;
+    return (
+      <DefaultButton
+        menuProps={{
+          calloutProps: {
+            styles: {
+              root: {
+                boxShadow: '0px 1.2px 3.6px rgba(0,0,0,0.18), 0px 6.4px 14.4px rgba(0,0,0,0.22)',
+                border: 'none'
+              }
+            }
+          },
+          items: items!
+        }}
+        onClick={this._onClick}
+        styles={overflowButtonStyles}
+      />
+    );
   };
 
   private _renderButton = (action: IOverflowSetItemProps) => {
     const customStyles = getCustomActionBarButtonStyles();
     return (
-      <DefaultButton
-        ariaLabel={action.title}
-        primary={action.primary}
-        text={action.title}
-        onClick={action.action}
-        styles={customStyles}
-      />
+      <DefaultButton ariaLabel={action.title} primary={action.primary} text={action.title} onClick={action.action} styles={customStyles} />
     );
   };
 }

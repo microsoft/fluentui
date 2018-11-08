@@ -22,10 +22,7 @@ export interface IVirtualizedListState {
   items: React.ReactNode[];
 }
 
-export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent<
-  IVirtualizedListProps<TItem>,
-  IVirtualizedListState
-> {
+export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent<IVirtualizedListProps<TItem>, IVirtualizedListState> {
   public static contextTypes: typeof ScrollContainerContextTypes = ScrollContainerContextTypes;
   public context: IScrollContainerContext;
 

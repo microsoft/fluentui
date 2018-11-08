@@ -363,24 +363,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   },
   txt: { extensions: ['dif', 'diff', 'readme', 'out', 'plist', 'properties', 'text', 'txt'] },
   vector: {
-    extensions: [
-      'ai',
-      'dgn',
-      'gdraw',
-      'pd',
-      'emf',
-      'eps',
-      'indd',
-      'indt',
-      'ps',
-      'svg',
-      'svgz',
-      'wmf',
-      'oxps',
-      'xps',
-      'xd',
-      'sketch'
-    ]
+    extensions: ['ai', 'dgn', 'gdraw', 'pd', 'emf', 'eps', 'indd', 'indt', 'ps', 'svg', 'svgz', 'wmf', 'oxps', 'xps', 'xd', 'sketch']
   },
   video: {
     extensions: [

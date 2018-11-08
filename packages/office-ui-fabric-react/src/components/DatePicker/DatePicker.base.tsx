@@ -62,7 +62,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     highlightCurrentMonth: false,
     highlightSelectedMonth: false,
     borderless: false,
-    pickerAriaLabel: 'Calender',
+    pickerAriaLabel: 'Calendar',
     showWeekNumbers: false,
     firstWeekOfYear: FirstWeekOfYear.FirstDay,
     showGoToToday: true,
@@ -76,10 +76,13 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
   private _datePickerDiv = createRef<HTMLDivElement>();
   private _textField = createRef<ITextField>();
   private _preventFocusOpeningPicker: boolean;
+  private _id: string;
 
   constructor(props: IDatePickerProps) {
     super(props);
     this.state = this._getDefaultState();
+
+    this._id = props.id || getId('DatePicker');
 
     this._preventFocusOpeningPicker = false;
   }
@@ -103,6 +106,8 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     if (!errorMessage && value) {
       errorMessage = this._isDateOutOfBounds(value!, minDate, maxDate) ? strings!.isOutOfBoundsErrorMessage || ' ' : undefined;
     }
+
+    this._id = nextProps.id || this._id;
 
     // Set error message
     this.setState({
@@ -176,6 +181,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       <div {...nativeProps} className={classNames.root}>
         <div ref={this._datePickerDiv} role="combobox" aria-expanded={isDatePickerShown} aria-haspopup="true" aria-owns={calloutId}>
           <TextField
+            id={this._id + '-label'}
             label={label}
             ariaLabel={ariaLabel}
             aria-controls={isDatePickerShown ? calloutId : undefined}
@@ -318,6 +324,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
         ev.preventDefault();
         ev.stopPropagation();
         if (!this.state.isDatePickerShown) {
+          this._validateTextInput();
           this._showDatePickerPopup();
         } else {
           // When DatePicker allows input date string directly,
@@ -366,11 +373,15 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
 
   private _dismissDatePickerPopup = (): void => {
     if (this.state.isDatePickerShown) {
-      this.setState({
-        isDatePickerShown: false
-      });
-
-      this._validateTextInput();
+      this.setState(
+        {
+          isDatePickerShown: false
+        },
+        () => {
+          // setState is async, so we must call validate in a callback
+          this._validateTextInput();
+        }
+      );
     }
   };
 

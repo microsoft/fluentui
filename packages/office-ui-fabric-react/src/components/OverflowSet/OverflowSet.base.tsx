@@ -13,13 +13,7 @@ import {
 } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { KeytipManager } from '../../utilities/keytips/KeytipManager';
-import {
-  IOverflowSet,
-  IOverflowSetItemProps,
-  IOverflowSetProps,
-  IOverflowSetStyles,
-  IOverflowSetStyleProps
-} from './OverflowSet.types';
+import { IOverflowSet, IOverflowSetItemProps, IOverflowSetProps, IOverflowSetStyles, IOverflowSetStyleProps } from './OverflowSet.types';
 
 const getClassNames = classNamesFunction<IOverflowSetStyleProps, IOverflowSetStyles>();
 
@@ -46,16 +40,7 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
   }
 
   public render(): JSX.Element {
-    const {
-      items,
-      overflowItems,
-      className,
-      focusZoneProps,
-      styles,
-      vertical,
-      role,
-      doNotContainWithinFocusZone
-    } = this.props;
+    const { items, overflowItems, className, focusZoneProps, styles, vertical, role, doNotContainWithinFocusZone } = this.props;
 
     this._classNames = getClassNames(styles, { className, vertical });
 
@@ -88,7 +73,7 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
 
   /**
    * Sets focus to the first tabbable item in the OverflowSet.
-   * @param {boolean} forceIntoFirstElement If true, focus will be forced into the first element,
+   * @param forceIntoFirstElement - If true, focus will be forced into the first element,
    * even if focus is already in theOverflowSet
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
@@ -108,7 +93,7 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
 
   /**
    * Sets focus to a specific child element within the OverflowSet.
-   * @param {HTMLElement} childElement The child element within the zone to focus.
+   * @param childElement - The child element within the zone to focus.
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
   public focusElement(childElement?: HTMLElement): boolean {

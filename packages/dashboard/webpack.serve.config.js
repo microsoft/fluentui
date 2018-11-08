@@ -16,6 +16,23 @@ module.exports = resources.createServeConfig({
     'react-dom': 'ReactDOM'
   },
 
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        enforce: 'pre',
+        use: [
+          {
+            loader: '@microsoft/loader-load-themed-styles' // creates style nodes from JS strings
+          },
+          {
+            loader: 'css-loader' // translates CSS into CommonJS
+          }
+        ]
+      }
+    ]
+  },
+
   resolve: {
     alias: {
       '@uifabric/dashboard/src': path.join(__dirname, 'src'),

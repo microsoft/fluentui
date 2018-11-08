@@ -124,8 +124,6 @@ export class ScrollablePaneDetailsListExample extends React.Component<
       items: items,
       selectionDetails: this._getSelectionDetails()
     };
-
-    this._onDetailsListColumnResized = this._onDetailsListColumnResized.bind(this);
   }
 
   public render(): JSX.Element {
@@ -138,7 +136,7 @@ export class ScrollablePaneDetailsListExample extends React.Component<
           position: 'relative'
         }}
       >
-        <ScrollablePane componentRef={this._scrollablePane} scrollbarVisibility={ScrollbarVisibility.always}>
+        <ScrollablePane componentRef={this._scrollablePane} scrollbarVisibility={ScrollbarVisibility.auto}>
           <Sticky stickyPosition={StickyPositionType.Header}>{selectionDetails}</Sticky>
           <TextField
             label="Filter by name:"
@@ -154,7 +152,6 @@ export class ScrollablePaneDetailsListExample extends React.Component<
           </Sticky>
           <MarqueeSelection selection={this._selection}>
             <DetailsList
-              onColumnResize={this._onDetailsListColumnResized}
               items={items}
               columns={_columns}
               setKey="set"
@@ -187,13 +184,6 @@ export class ScrollablePaneDetailsListExample extends React.Component<
         return `${selectionCount} items selected`;
     }
   }
-
-  // When the DetailsList columns are resized, this may cause a horizontal scroll bar to appear or
-  // disappear within ScrollablePane. This rerenders the component to ensure that the floating
-  // footer does not overlap with the scroll bar.
-  private _onDetailsListColumnResized() {
-    this.forceUpdate();
-  }
 }
 
 function onRenderDetailsHeader(props: IDetailsHeaderProps, defaultRender?: IRenderFunction<IDetailsHeaderProps>): JSX.Element {
@@ -210,21 +200,24 @@ function onRenderDetailsHeader(props: IDetailsHeaderProps, defaultRender?: IRend
 function onRenderDetailsFooter(props: IDetailsFooterProps, defaultRender?: IRenderFunction<IDetailsFooterProps>): JSX.Element {
   return (
     <Sticky stickyPosition={StickyPositionType.Footer} isScrollSynced={true}>
-      <DetailsRow
-        columns={props.columns}
-        item={{
-          key: 'footer',
-          test1: 'Total 1',
-          test2: 'Total 2',
-          test3: 'Total 3',
-          test4: 'Total 4',
-          test5: 'Total 5',
-          test6: 'Total 6'
-        }}
-        itemIndex={-1}
-        selection={props.selection}
-        selectionMode={(props.selection && props.selection.mode) || SelectionMode.none}
-      />
+      <div style={{ display: 'inline-block' }}>
+        <DetailsRow
+          columns={props.columns}
+          item={{
+            key: 'footer',
+            test1: 'Total 1',
+            test2: 'Total 2',
+            test3: 'Total 3',
+            test4: 'Total 4',
+            test5: 'Total 5',
+            test6: 'Total 6'
+          }}
+          itemIndex={-1}
+          selection={props.selection}
+          selectionMode={(props.selection && props.selection.mode) || SelectionMode.none}
+          viewport={props.viewport}
+        />
+      </div>
     </Sticky>
   );
 }

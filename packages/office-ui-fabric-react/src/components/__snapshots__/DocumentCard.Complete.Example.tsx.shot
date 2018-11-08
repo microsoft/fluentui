@@ -4,6 +4,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
 <div>
   <div
     className="ms-DocumentCard ms-DocumentCard--actionable undefined"
+    data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
     role="button"
@@ -267,7 +268,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   font-size: 14px;
                   font-weight: 400;
                 }
-            role="persentation"
+            role="presentation"
             size={11}
           >
             <div
@@ -323,7 +324,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   font-size: 14px;
                   font-weight: 400;
                 }
-            role="persentation"
+            role="presentation"
             size={11}
           >
             <div
@@ -806,6 +807,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
   <p />
   <div
     className="ms-DocumentCard ms-DocumentCard--actionable undefined"
+    data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
@@ -898,7 +900,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   font-size: 14px;
                   font-weight: 400;
                 }
-            role="persentation"
+            role="presentation"
             size={11}
           >
             <div
@@ -954,7 +956,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   font-size: 14px;
                   font-weight: 400;
                 }
-            role="persentation"
+            role="presentation"
             size={11}
           >
             <div
@@ -1042,6 +1044,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
   <p />
   <div
     className="ms-DocumentCard ms-DocumentCard--actionable undefined"
+    data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
@@ -1132,7 +1135,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   font-size: 14px;
                   font-weight: 400;
                 }
-            role="persentation"
+            role="presentation"
             size={11}
           >
             <div
@@ -1188,7 +1191,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   font-size: 14px;
                   font-weight: 400;
                 }
-            role="persentation"
+            role="presentation"
             size={11}
           >
             <div
@@ -1276,6 +1279,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
   <p />
   <div
     className="ms-DocumentCard ms-DocumentCard--actionable undefined"
+    data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
@@ -1339,7 +1343,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   font-size: 14px;
                   font-weight: 400;
                 }
-            role="persentation"
+            role="presentation"
             size={11}
           >
             <div
@@ -1395,7 +1399,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   font-size: 14px;
                   font-weight: 400;
                 }
-            role="persentation"
+            role="presentation"
             size={11}
           >
             <div
@@ -1483,6 +1487,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
   <p />
   <div
     className="ms-DocumentCard ms-DocumentCard--actionable undefined"
+    data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
@@ -1551,7 +1556,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     font-size: 14px;
                     font-weight: 400;
                   }
-              role="persentation"
+              role="presentation"
               size={11}
             >
               <div

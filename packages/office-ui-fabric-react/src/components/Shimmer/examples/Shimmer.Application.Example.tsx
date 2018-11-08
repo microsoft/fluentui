@@ -100,13 +100,7 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
             onText="Compact"
             offText="Normal"
           />
-          <Toggle
-            label="Enable content loading"
-            checked={isDataLoaded}
-            onChange={this._onLoadData}
-            onText="Content"
-            offText="Shimmer"
-          />
+          <Toggle label="Enable content loading" checked={isDataLoaded} onChange={this._onLoadData} onText="Content" offText="Shimmer" />
         </div>
         <div>
           <ShimmeredDetailsList
@@ -131,9 +125,7 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
       const itemsCopy = ([] as any[]).concat(this.state.items);
       itemsCopy.splice.apply(
         itemsCopy,
-        [this._lastIndexWithData, randomQuantity].concat(
-          _items.slice(this._lastIndexWithData, this._lastIndexWithData + randomQuantity)
-        )
+        [this._lastIndexWithData, randomQuantity].concat(_items.slice(this._lastIndexWithData, this._lastIndexWithData + randomQuantity))
       );
       this._lastIndexWithData += randomQuantity;
       this.setState({

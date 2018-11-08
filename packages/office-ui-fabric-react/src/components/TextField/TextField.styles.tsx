@@ -58,7 +58,8 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
     resizable,
     hasErrorMessage,
     iconClass,
-    inputClassName
+    inputClassName,
+    autoAdjustHeight
   } = props;
 
   const { semanticColors, palette } = theme;
@@ -296,6 +297,10 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         overflow: 'auto',
         width: '100%'
       },
+      multiline &&
+        autoAdjustHeight && {
+          overflow: 'hidden'
+        },
       hasIcon && {
         paddingRight: 24
       },

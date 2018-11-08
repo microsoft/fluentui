@@ -5,7 +5,7 @@ import { ICommandBar, ICommandBarItemProps, ICommandBarProps, ICommandBarStylePr
 import { IOverflowSet, OverflowSet } from '../../OverflowSet';
 import { IResizeGroup, ResizeGroup } from '../../ResizeGroup';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { classNamesFunction, createRef } from '../../Utilities';
+import { classNamesFunction } from '../../Utilities';
 import { CommandBarButton, IButtonProps } from '../../Button';
 import { TooltipHost } from '../../Tooltip';
 
@@ -40,8 +40,8 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     overflowItems: []
   };
 
-  private _overflowSet = createRef<IOverflowSet>();
-  private _resizeGroup = createRef<IResizeGroup>();
+  private _overflowSet = React.createRef<IOverflowSet>();
+  private _resizeGroup = React.createRef<IResizeGroup>();
   private _classNames: { [key in keyof ICommandBarStyles]: string };
 
   public render(): JSX.Element {
@@ -64,7 +64,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       cacheKey: ''
     };
 
-    this._classNames = getClassNames(styles!, { theme: theme!, className });
+    this._classNames = getClassNames(styles!, { theme: theme! });
 
     return (
       <ResizeGroup

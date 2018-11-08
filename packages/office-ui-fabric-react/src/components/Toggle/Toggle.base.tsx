@@ -83,11 +83,7 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
         )}
 
         <div className={classNames.container}>
-          <KeytipData
-            keytipProps={keytipProps}
-            ariaDescribedBy={(toggleNativeProps as any)['aria-describedby']}
-            disabled={disabled}
-          >
+          <KeytipData keytipProps={keytipProps} ariaDescribedBy={(toggleNativeProps as any)['aria-describedby']} disabled={disabled}>
             {(keytipAttributes: any): JSX.Element => (
               <button
                 {...toggleNativeProps}

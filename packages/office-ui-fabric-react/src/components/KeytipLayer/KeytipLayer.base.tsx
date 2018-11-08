@@ -37,10 +37,6 @@ const getClassNames = classNamesFunction<IKeytipLayerStyleProps, IKeytipLayerSty
 
 /**
  * A layer that holds all keytip items
- *
- * @export
- * @class KeytipLayer
- * @extends {BaseComponent<IKeytipLayerProps>}
  */
 export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLayerState> {
   public static defaultProps: IKeytipLayerProps = {
@@ -580,7 +576,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
    * This will make 'keytipProps' the new currentKeytip
    *
    * @param keytipProps - Keytip props to check
-   * @returns {boolean} - T/F if this keytip should become the currentKeytip
+   * @returns - T/F if this keytip should become the currentKeytip
    */
   private _isCurrentKeytipAnAlias(keytipProps: IKeytipProps): boolean {
     const currKtp = this._keytipTree.currentKeytip;
@@ -616,7 +612,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
    * If the returned array is empty, no duplicates were found
    *
    * @param keytipIds - Array of keytip IDs to find duplicates for
-   * @returns {string[]} - Array of duplicates that were found. If multiple duplicates were found it will only be added once to this array
+   * @returns - Array of duplicates that were found. If multiple duplicates were found it will only be added once to this array
    */
   private _getDuplicateIds = (keytipIds: string[]): string[] => {
     const seenIds: { [id: string]: number } = {};

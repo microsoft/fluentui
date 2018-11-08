@@ -60,7 +60,8 @@ export class GroupHeaderBase extends BaseComponent<IGroupHeaderProps, IGroupHead
       expandButtonProps,
       theme,
       styles,
-      className
+      className,
+      groupedListId
     } = this.props;
 
     const { isCollapsed, isLoadingVisible } = this.state;
@@ -108,7 +109,14 @@ export class GroupHeaderBase extends BaseComponent<IGroupHeaderProps, IGroupHead
           <div className={this._classNames.dropIcon}>
             <Icon iconName="Tag" />
           </div>
-          <button type="button" className={this._classNames.expand} onClick={this._onToggleCollapse} {...expandButtonProps}>
+          <button
+            type="button"
+            className={this._classNames.expand}
+            onClick={this._onToggleCollapse}
+            aria-expanded={group ? !group.isCollapsed : undefined}
+            aria-controls={group && !group.isCollapsed ? groupedListId : undefined}
+            {...expandButtonProps}
+          >
             <Icon className={this._classNames.expandIsCollapsed} iconName="ChevronDown" />
           </button>
 

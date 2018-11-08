@@ -280,7 +280,7 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
     const groups = this.state.groups;
     const pageGroup = groups && groups[itemIndex];
     return {
-      key: pageGroup && pageGroup.name
+      key: pageGroup && pageGroup.key
     };
   };
 

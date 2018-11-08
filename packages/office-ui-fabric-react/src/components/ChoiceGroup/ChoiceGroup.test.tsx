@@ -164,4 +164,18 @@ describe('ChoiceGroup', () => {
 
     expect(role).toEqual('');
   });
+
+  it('can assign a custom aria label', () => {
+    const option4: IChoiceGroupOption[] = [{ key: '4', text: '4', ariaLabel: 'Custom aria label' }];
+    const choiceGroup = mount(<ChoiceGroup label="testgroup" options={TEST_OPTIONS.concat(option4)} required={true} />);
+
+    const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(QUERY_SELECTOR);
+
+    expect(choiceOptions.length).toBe(4);
+
+    expect((choiceOptions[0] as HTMLInputElement).getAttribute('aria-label')).toBeNull();
+    expect((choiceOptions[1] as HTMLInputElement).getAttribute('aria-label')).toBeNull();
+    expect((choiceOptions[2] as HTMLInputElement).getAttribute('aria-label')).toBeNull();
+    expect((choiceOptions[3] as HTMLInputElement).getAttribute('aria-label')).toEqual('Custom aria label');
+  });
 });

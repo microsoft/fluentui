@@ -1,6 +1,80 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Tue, 16 Oct 2018 12:28:48 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Nov 2018 04:17:34 GMT and should not be manually modified.
+
+## 0.33.2
+Thu, 08 Nov 2018 04:17:34 GMT
+
+### Patches
+
+- Fixes #5849: get rid of explicit loader syntax inside component file
+- Updating context menu shadow styling for card frame and action bar
+
+## 0.33.0
+Tue, 06 Nov 2018 13:31:09 GMT
+
+### Minor changes
+
+- Fixing change in hover card behavior, this change in behavior was caused due  to fabric version update in dashbaord package by fabric bot
+
+## 0.32.2
+Sun, 04 Nov 2018 02:27:52 GMT
+
+### Patches
+
+- Adding necessary wrapper classes for charting in dashboard package
+
+## 0.32.1
+Fri, 02 Nov 2018 18:11:37 GMT
+
+*Version update only*
+
+## 0.32.0
+Fri, 02 Nov 2018 12:28:54 GMT
+
+### Minor changes
+
+- Making changes to layout of card to support scaling of dataviz. Dataviz scale as per the parent element they sit in and in this case the parent element is formed using flex css. Added constraints to check if part of card will have dataviz and changes styles accordingly
+
+### Patches
+
+- css changes in card components
+- render animations for card charts
+
+## 0.31.1
+Wed, 31 Oct 2018 22:35:10 GMT
+
+### Patches
+
+- Add opitional switch for Dashboard Chart -- stack bar chart to not apply default style while data points count is less two
+
+## 0.31.0
+Thu, 25 Oct 2018 12:30:05 GMT
+
+### Minor changes
+
+- Adding support when there is no data for line chart, removing unwanted div's that is not letting flex do it job
+
+## 0.30.3
+Tue, 23 Oct 2018 12:32:16 GMT
+
+### Patches
+
+- Fix an issue with the demo site not being able to load (in npm start or aka.ms/fabricdemo).
+
+## 0.30.2
+Mon, 22 Oct 2018 12:29:57 GMT
+
+### Patches
+
+- "Dashboard/Nav component - added focus style to support keyboard inputs"
+
+## 0.30.1
+Thu, 18 Oct 2018 20:22:36 GMT
+
+### Patches
+
+- Remove api-extractor.disabled.json
 
 ## 0.30.0
 Tue, 16 Oct 2018 12:28:48 GMT

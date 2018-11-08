@@ -11,6 +11,12 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
+          component: require<any>('../components/Announced/AnnouncedPage').AnnouncedPage,
+          key: 'Announced',
+          name: 'Announced',
+          url: '#/examples/announced'
+        },
+        {
           component: require<any>('../components/Button/ButtonPage').ButtonPage,
           key: 'Button',
           name: 'Button',
@@ -95,6 +101,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/tileslist'
         },
         {
+          component: require<any>('../components/Toggle/TogglePage').TogglePage,
+          key: 'Toggle',
+          name: 'Toggle',
+          url: '#/examples/toggle'
+        },
+        {
           component: require<any>('../components/Shimmer/ShimmerPage').ShimmerPage,
           key: 'Shimmer',
           name: 'Shimmer',
@@ -119,16 +131,10 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/staticlist'
         },
         {
-          component: require<any>('../components/fluent/theme/FluentThemePage').FluentThemePage,
+          component: require<any>('../components/fluent/examplePages/FluentThemePage').FluentThemePage,
           key: 'FluentColorTheme',
           name: 'Fluent Color Theme',
           url: '#/examples/fluent-color-theme'
-        },
-        {
-          component: require<any>('../components/fluent/styles/FluentStylesPage').FluentStylesPage,
-          key: 'FluentStyles',
-          name: 'Fluent Component Styles',
-          url: '#/examples/fluent-styles'
         },
         {
           component: require<any>('../theming/ThemingPage').ThemingPage,
