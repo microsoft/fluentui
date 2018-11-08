@@ -135,7 +135,7 @@ function updateRush() {
     packageName: `@uifabric/${newPackageName}`,
     projectFolder: `packages/${newPackageName}`,
     versionPolicyName: 'lockedMajor',
-    shouldPublish: false
+    shouldPublish: true
   });
 
   fs.writeFile(rushPath, JSON.stringify(rushJson, null, 2), error => {
