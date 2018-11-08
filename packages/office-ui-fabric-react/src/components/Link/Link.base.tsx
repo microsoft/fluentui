@@ -4,6 +4,7 @@ import { ILink, ILinkProps, ILinkStyleProps, ILinkStyles } from './Link.types';
 import { KeytipData } from '../../KeytipData';
 
 const getClassNames = classNamesFunction<ILinkStyleProps, ILinkStyles>();
+
 export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
   private _link = createRef<HTMLAnchorElement | HTMLButtonElement | null>();
 
