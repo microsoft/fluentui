@@ -1027,10 +1027,12 @@ enum DirectionalHint {
 export function disableBodyScroll(): void;
 
 // @public (undocumented)
-class DocumentCard extends BaseComponent<IDocumentCardProps, any> {
+class DocumentCard extends BaseComponent<IDocumentCardProps, any>, implements IDocumentCard {
   constructor(props: IDocumentCardProps);
   // (undocumented)
   static defaultProps: IDocumentCardProps;
+  // (undocumented)
+  focus(): void;
   // (undocumented)
   render(): JSX.Element;
 }
@@ -6903,6 +6905,7 @@ interface IDividerAsProps extends IIconProps {
 
 // @public (undocumented)
 interface IDocumentCard {
+  focus: () => void;
 }
 
 // @public (undocumented)
