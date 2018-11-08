@@ -125,7 +125,7 @@ export interface IFacepilePersona extends React.ButtonHTMLAttributes<HTMLButtonE
   data?: any;
 
   /**
-   * Optional keytip for this button
+   * Optional keytip for this button that is only added when 'onClick' is defined for the persona
    */
   keytipProps?: IKeytipProps;
 }
