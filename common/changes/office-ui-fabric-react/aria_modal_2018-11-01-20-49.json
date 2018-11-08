@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add aria labels title & description to Modal example.",
+      "comment": "Modal examples: Adding aria labels title & description.",
       "type": "patch"
     }
   ],
