@@ -2,6 +2,45 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.100.2",
+      "tag": "office-ui-fabric-react_v6.100.2",
+      "date": "Thu, 08 Nov 2018 04:17:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Label examples: updated to illustrate good accessibility patterns.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "c7bd9f1c94b87ea2407ad11f6c3eec3f5ab98e8d"
+          },
+          {
+            "comment": "DatePicker: pressing enter now changes the selection.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8935b63be3b51bdbe7fe290119aa96c7b758c6b5"
+          },
+          {
+            "comment": "Panel documentation: updated docs to recommend having a minimum 340px width on the container.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "af115e8798c1dc905b271a5af210762602627459"
+          },
+          {
+            "comment": "Modal: Set aria-modal=true for a better screen reader experience.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "f6dcd199cf54dd758ec03976d65b038d2b9138b3"
+          },
+          {
+            "comment": "Modal examples: Adding aria labels title & description.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "ac6a804c4236998e0c0b2b827e398d97c3ee42a1"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.11.0 <7.0.0` to `>=6.13.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.100.0",
       "tag": "office-ui-fabric-react_v6.100.0",
       "date": "Wed, 07 Nov 2018 13:31:01 GMT",

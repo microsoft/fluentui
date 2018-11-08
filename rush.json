@@ -163,6 +163,16 @@
       "projectFolder": "packages/fluent-theme",
       "versionPolicyName": "lockedMajor",
       "shouldPublish": true
+    },
+    {
+      "packageName": "@uifabric/date-time",
+      "projectFolder": "packages/date-time",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "@uifabric/foundation-scenarios",
+      "projectFolder": "packages/foundation-scenarios",
+      "shouldPublish": false
     }
   ]
 }

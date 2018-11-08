@@ -206,6 +206,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
       beakWidth,
       directionalHint,
       directionalHintForRTL,
+      alignTargetEdge,
       gapSpace,
       coverTarget,
       ariaLabel,
@@ -309,6 +310,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
           onScroll={this._onScroll}
           bounds={bounds}
           directionalHintFixed={directionalHintFixed}
+          alignTargetEdge={alignTargetEdge}
           hidden={this.props.hidden}
         >
           <div

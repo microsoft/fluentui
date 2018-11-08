@@ -60,7 +60,7 @@ export const ThemeProvider: React.StatelessComponent<IThemeProviderProps<IScheme
   ITheme,
   ISchemeNames,
   ICustomizerProps
-  >(themeProviders);
+>(themeProviders);
 
 // tslint:disable-next-line:typedef
 const regionStyles: IExampleCardComponent['styles'] = props => ({
@@ -175,8 +175,8 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
                   <ExampleCardComponent styles={regionStyles}>{exampleCardContent}</ExampleCardComponent>
                 </ThemeProvider>
               ) : (
-                  exampleCardContent
-                )}
+                exampleCardContent
+              )}
 
               {this._getDosAndDonts()}
             </div>
