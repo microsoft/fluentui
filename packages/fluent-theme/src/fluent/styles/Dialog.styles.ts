@@ -32,6 +32,10 @@ export const DialogContentStyles = (props: IDialogContentStyleProps) => {
       selectors: {
         '.ms-Dialog-button': {
           color: palette.neutralSecondary
+        },
+        '.ms-Dialog-button:hover': {
+          color: palette.neutralDark,
+          borderRadius: fluentBorderRadius
         }
       }
     },
