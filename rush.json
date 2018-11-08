@@ -167,7 +167,6 @@
     {
       "packageName": "@uifabric/date-time",
       "projectFolder": "packages/date-time",
-      "versionPolicyName": "lockedMajor",
       "shouldPublish": false
     }
   ]
