@@ -6448,7 +6448,7 @@ interface IDetailsGroupRenderProps extends IGroupRenderProps {
 
 // WARNING: The type "DetailsHeaderBase" needs to be exported by the package (e.g. added to index.ts)
 // @public (undocumented)
-interface IDetailsHeaderBaseProps extends React.Props<DetailsHeaderBase>, IDetailsItemProps {
+interface IDetailsHeaderBaseProps extends React.ClassAttributes<DetailsHeaderBase>, IDetailsItemProps {
   ariaLabel?: string;
   ariaLabelForSelectAllCheckbox?: string;
   ariaLabelForSelectionColumn?: string;
