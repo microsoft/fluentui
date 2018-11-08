@@ -40,7 +40,7 @@ describe('DatePicker', () => {
     expect(wrapper.state('isDatePickerShown')).toBe(false);
   });
 
-  it('should call onSelectDate even when required input is empty when allowTextInput is true', done => {
+  it('should call onSelectDate even when required input is empty when allowTextInput is true', () => {
     const onSelectDate = jest.fn();
     const datePicker = mount(<DatePickerBase isRequired={true} allowTextInput={true} onSelectDate={onSelectDate} />);
     const textField = datePicker.find('input');
