@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "fixes #6992: pressing enter in textinput datepicker should change the selection",
+      "comment": "DatePicker: pressing enter now changes the selection.",
       "type": "patch"
     }
   ],
