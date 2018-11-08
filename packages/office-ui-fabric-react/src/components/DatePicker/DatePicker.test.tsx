@@ -41,16 +41,17 @@ describe('DatePicker', () => {
   });
 
   it('should call onSelectDate even when required input is empty when allowTextInput is true', done => {
-    const onSelectDate = (date?: Date) => {
-      if (!date) {
-        done();
-      }
-    };
+    const onSelectDate = jest.fn();
     const datePicker = mount(<DatePickerBase isRequired={true} allowTextInput={true} onSelectDate={onSelectDate} />);
     const textField = datePicker.find('input');
+
     expect(textField).toBeDefined();
+
     textField.simulate('change', { target: { value: 'Jan 1 2030' } }).simulate('blur');
     textField.simulate('change', { target: { value: '' } }).simulate('blur');
+
+    expect(onSelectDate).toHaveBeenCalledTimes(2);
+
     datePicker.unmount();
   });
 
