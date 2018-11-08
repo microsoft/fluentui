@@ -18,7 +18,7 @@
     "clean": "node ../../scripts/clean.js",
     "start": "node ../../scripts/start.js",
     "start-test": "node ../../scripts/start-test.js",
-    "update-snapshots": "node ../../scripts/build.js jest -u"
+    "update-api": "node ../../scripts/update-api.js"
   },
   "devDependencies": {
     "@types/enzyme": "3.1.13",
