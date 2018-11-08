@@ -33,7 +33,8 @@ export interface IMultiStackedBarChartState {
 export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarChartProps, IMultiStackedBarChartState> {
   public static defaultProps: Partial<IMultiStackedBarChartProps> = {
     barHeight: 16,
-    hideRatio: []
+    hideRatio: [],
+    hideDenominator: []
   };
 
   private _classNames: IProcessedStyleSet<IMultiStackedBarChartStyles>;
@@ -61,7 +62,14 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     const legends = this._getLegendData(data!, hideRatio!, palette);
     const bars: JSX.Element[] = [];
     data!.map((singleChartData: IChartProps, index: number) => {
-      const singleChartBars = this._createBarsAndLegends(singleChartData!, barHeight!, palette, hideRatio![index], href, hideDenominator);
+      const singleChartBars = this._createBarsAndLegends(
+        singleChartData!,
+        barHeight!,
+        palette,
+        hideRatio![index],
+        hideDenominator![index],
+        href
+      );
       bars.push(<div key={index}>{singleChartBars}</div>);
     });
     this._classNames = getClassNames(styles!, {
@@ -96,8 +104,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     barHeight: number,
     palette: IPalette,
     hideRatio: boolean,
-    href?: string,
-    hideDenominator?: boolean
+    hideDenominator: boolean,
+    href?: string
   ): JSX.Element {
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     // calculating starting point of each bar and it's range
