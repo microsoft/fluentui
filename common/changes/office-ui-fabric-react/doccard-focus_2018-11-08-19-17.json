@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DocumentCard: Adding focus method to `IDocumentCard`, which can be accessed via `componentRef`.",
+      "comment": "DocumentCard: Adding `focus` method to `IDocumentCard`, which can be accessed via `componentRef`.",
       "type": "minor"
     }
   ],
