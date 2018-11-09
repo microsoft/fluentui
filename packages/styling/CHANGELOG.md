@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Mon, 01 Oct 2018 11:24:38 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Nov 2018 02:51:19 GMT and should not be manually modified.
+
+## 5.36.1
+Fri, 09 Nov 2018 02:51:19 GMT
+
+### Patches
+
+- Icon: warnings from duplicate registrations are now throttled into a single message.
 
 ## 5.36.0
 Mon, 01 Oct 2018 11:24:38 GMT
