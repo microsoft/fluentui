@@ -134,7 +134,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
       className,
       showCloseButton,
       allFocusable,
-      yearPickerHidden
+      yearPickerHidden,
+      today
     } = this.props;
     const nativeProps = getNativeProps(this.props, divProperties, ['value']);
 
@@ -145,9 +146,12 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 
     let goTodayEnabled = showGoToToday;
 
-    if (goTodayEnabled && navigatedDayDate && selectedDate) {
+    if (goTodayEnabled && navigatedDayDate && navigatedMonthDate && today) {
       goTodayEnabled =
-        navigatedDayDate.getFullYear() !== selectedDate.getFullYear() || navigatedDayDate.getMonth() !== selectedDate.getMonth();
+        navigatedDayDate.getFullYear() !== today.getFullYear() ||
+        navigatedDayDate.getMonth() !== today.getMonth() ||
+        navigatedMonthDate.getFullYear() !== today.getFullYear() ||
+        navigatedMonthDate.getMonth() !== today.getMonth();
     }
 
     return (
