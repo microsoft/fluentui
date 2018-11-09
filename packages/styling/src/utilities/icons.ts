@@ -215,6 +215,8 @@ let _missingIconsTimer: number | undefined = undefined;
 
 function _warnDuplicateIcon(iconName: string): void {
   const options = _iconSettings.__options;
+  const warningDelay = 2000;
+  const maxIconsInMessage = 10;
 
   if (!options.disableWarnings) {
     _missingIcons.push(iconName);
@@ -224,12 +226,12 @@ function _warnDuplicateIcon(iconName: string): void {
           `Some icons were re-registered. Applications should only call registerIcons for any given ` +
             `icon once. Redefining what an icon is may have unintended consequences. Duplicates ` +
             `include: \n` +
-            _missingIcons.slice(0, 10).join(', ') +
-            (_missingIcons.length > 10 ? ` (+ ${_missingIcons.length - 10} more)` : '')
+            _missingIcons.slice(0, maxIconsInMessage).join(', ') +
+            (_missingIcons.length > maxIconsInMessage ? ` (+ ${_missingIcons.length - maxIconsInMessage} more)` : '')
         );
         _missingIconsTimer = undefined;
         _missingIcons = [];
-      }, 2000);
+      }, warningDelay);
     }
   }
 }
