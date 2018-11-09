@@ -48,6 +48,13 @@ export const ComboBoxStyles = {
             backgroundColor: NeutralColors.gray20
           }
         }
+      },
+      '.ms-Checkbox': {
+        selectors: {
+          ':hover': {
+            backgroundColor: NeutralColors.gray20
+          }
+        }
       }
     }
   }
