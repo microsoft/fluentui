@@ -250,11 +250,11 @@ export const ExternalSignal: Signal = (props: ISignalProps): JSX.Element => {
 };
 
 export const NotFollowedSignal: Signal = (props: ISignalProps): JSX.Element => {
-  return <IconSignal { ...props } signalClass={ SignalsStyles.unfollow } iconName="SingleBookmark" />;
+  return <IconSignal { ...props } signalClass={ SignalsStyles.unfollow } iconName='SingleBookmark' />;
 };
 
 export const FollowedSignal: Signal = (props: ISignalProps): JSX.Element => {
-  return <IconSignal { ...props } signalClass={ SignalsStyles.follow } iconName="SingleBookmarkSolid" />;
+  return <IconSignal { ...props } signalClass={ SignalsStyles.follow } iconName='SingleBookmarkSolid' />;
 };
 
 type IIconSignalProps = ISignalProps &
