@@ -84,6 +84,7 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
         ) : (
           <List
             ref={this._list}
+            role="presentation"
             items={groups}
             onRenderCell={this._renderGroup}
             getItemCountForPage={this._returnOne}
