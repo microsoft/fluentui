@@ -199,8 +199,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         >
           {this.getSuggestionsAlert()}
           <SelectionZone selection={this.selection} selectionMode={SelectionMode.multiple}>
-            <div className={css('ms-BasePicker-text', styles.pickerText, this.state.isFocused && styles.inputFocused)} role={'list'}>
-              <span id={this._ariaMap.selectedItems} className={styles.pickerItems}>
+            <div className={css('ms-BasePicker-text', styles.pickerText, this.state.isFocused && styles.inputFocused)}>
+              <span id={this._ariaMap.selectedItems} className={styles.pickerItems} role={'list'}>
                 {this.renderItems()}
               </span>
               {this.canAddItems() && (
