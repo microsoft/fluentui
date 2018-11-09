@@ -162,7 +162,14 @@ export class Layout extends React.Component<ILayoutProps> {
     if (header === null || header === undefined) {
       return null;
     }
-    return <CardHeader headerText={header.headerText} annotationText={header.annotationText} fontSize={header.fontSize} />;
+    return (
+      <CardHeader
+        headerText={header.headerText}
+        annotationText={header.annotationText}
+        fontSize={header.fontSize}
+        fontColor={header.fontColor}
+      />
+    );
   }
 
   private _generateFooter(actions: IAction[], className: string): JSX.Element | null {

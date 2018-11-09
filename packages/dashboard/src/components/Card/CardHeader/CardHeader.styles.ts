@@ -2,7 +2,7 @@ import { ICardHeaderProps, ICardHeaderStyles } from './CardHeader.types';
 import { FontSize } from './CardHeader.types';
 
 export const getStyles = (props: ICardHeaderProps): ICardHeaderStyles => {
-  const { fontSize } = props;
+  const { fontSize, fontColor } = props;
 
   return {
     root: {
@@ -17,7 +17,7 @@ export const getStyles = (props: ICardHeaderProps): ICardHeaderStyles => {
       lineHeight: '38px',
       fontFamily: 'Segoe UI',
       marginRight: '16px',
-      color: '#000000',
+      color: fontColor ? fontColor : '#000000',
       fontWeight: 'bold'
     },
     annotationText: {

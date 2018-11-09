@@ -12,6 +12,11 @@ export interface ICardHeaderProps {
   fontSize?: FontSize;
 
   /**
+   * The font color for the card header
+   */
+  fontColor?: string;
+
+  /**
    * The header text
    */
   headerText?: string;

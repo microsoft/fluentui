@@ -11,10 +11,8 @@ export class CardHeader extends React.Component<ICardHeaderProps, {}> {
 
   public render(): JSX.Element {
     const getClassNames = classNamesFunction<ICardHeaderProps, ICardHeaderStyles>();
-    const fontSize = this.props.fontSize;
-    const headerText = this.props.headerText;
-    const annotationText = this.props.annotationText;
-    const classNames = getClassNames(getStyles, { fontSize });
+    const { fontSize, headerText, annotationText, fontColor } = this.props;
+    const classNames = getClassNames(getStyles, { fontSize, fontColor });
 
     let fontSizeMapping = [{ fontSize: 28, lineHeight: '36px' }, { fontSize: 16, lineHeight: '21px' }];
     if (fontSize === FontSize.medium) {

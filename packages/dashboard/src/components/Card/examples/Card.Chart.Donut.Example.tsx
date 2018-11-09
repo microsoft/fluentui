@@ -73,7 +73,8 @@ export class DonutChartExample extends React.Component<{}, {}> {
     ];
 
     const header = {
-      headerText: 'Donut Chart and Pie chart '
+      headerText: 'Donut Chart and Pie chart ',
+      fontColor: '#C50F1F'
     };
 
     return <Card cardFrameContent={cardFrameContent} header={header} cardContentList={contentAreaList} cardSize={CardSize.large} />;
