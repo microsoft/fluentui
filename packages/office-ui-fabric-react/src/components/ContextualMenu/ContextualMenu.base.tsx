@@ -98,7 +98,8 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   private _target: Element | MouseEvent | IPoint | null;
   private _isScrollIdle: boolean;
   private _scrollIdleTimeoutId: number | undefined;
-  private _processingExpandCollapseKeyOnly: boolean;
+  /** True if the most recent keydown event was for alt (option) or meta (command). */
+  private _lastKeyDownWasAltOrMeta: boolean;
   private _shouldUpdateFocusOnMouseEvent: boolean;
   private _gotMouseMove: boolean;
   private _mounted = false;
@@ -121,7 +122,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
     this._isFocusingPreviousElement = false;
     this._isScrollIdle = true;
-    this._processingExpandCollapseKeyOnly = false;
+    this._lastKeyDownWasAltOrMeta = false;
     this._shouldUpdateFocusOnMouseEvent = !this.props.delayUpdateFocusOnHover;
     this._gotMouseMove = false;
   }
@@ -729,9 +730,9 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   }
 
   private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
-    // Take note if we are processing a altKey or metaKey keydown
-    // so that the menu does not collapse if no other keys are pressed
-    this._processingExpandCollapseKeyOnly = this._isExpandCollapseKey(ev);
+    // Take note if we are processing an alt (option) or meta (command) keydown.
+    // See comment in _shouldHandleKeyUp for reasoning.
+    this._lastKeyDownWasAltOrMeta = this._isAltOrMeta(ev);
 
     return this._keyHandler(ev, this._shouldHandleKeyDown);
   };
@@ -751,15 +752,33 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   };
 
   private _shouldHandleKeyUp = (ev: React.KeyboardEvent<HTMLElement>) => {
-    const shouldHandleKey = this._processingExpandCollapseKeyOnly && this._isExpandCollapseKey(ev);
-    this._processingExpandCollapseKeyOnly = false;
-    return shouldHandleKey;
+    // We close the menu on key up only if the most recent key *down* was alt or meta (command) and
+    // it was *not* followed by some other key (such as up/down arrow to collapse/expand the menu),
+    // AND we're not on a Mac. This is because on Windows, pressing alt moves focus to the application
+    // menu bar or similar, closing any open context menus. There is not a similar behavior on Macs.
+    const keyPressIsAltOrMetaAlone = this._lastKeyDownWasAltOrMeta && this._isAltOrMeta(ev);
+    this._lastKeyDownWasAltOrMeta = false;
+
+    // This will catch Mac desktop as well as iPhone/iPad with external keyboard
+    // (iPhone/iPad have "like Mac OS X" in user agent).
+    const isMac = typeof navigator !== 'undefined' && navigator.userAgent.indexOf('Mac OS X') >= 0;
+
+    return keyPressIsAltOrMetaAlone && !isMac;
   };
 
-  private _isExpandCollapseKey(ev: React.KeyboardEvent<HTMLElement>) {
+  private _isAltOrMeta(ev: React.KeyboardEvent<HTMLElement>) {
     return ev.which === KeyCodes.alt || ev.key === 'Meta';
   }
 
+  /**
+   * Calls `shouldHandleKey` to determine whether the keyboard event should be handled;
+   * if so, stops event propagation and dismisses menu(s).
+   * @param ev The keyboard event.
+   * @param shouldHandleKey Returns whether we should handle this keyboard event.
+   * @param dismissAllMenus If true, dismiss all menus. Otherwise, dismiss only the current menu.
+   * Only does anything if `shouldHandleKey` returns true.
+   * @returns Whether the event was handled.
+   */
   private _keyHandler = (
     ev: React.KeyboardEvent<HTMLElement>,
     shouldHandleKey: (ev: React.KeyboardEvent<HTMLElement>) => boolean,
