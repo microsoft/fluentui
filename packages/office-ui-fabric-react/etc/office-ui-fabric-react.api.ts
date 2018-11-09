@@ -9229,6 +9229,7 @@ interface IScrollablePaneContext {
     removeSticky: (sticky: Sticky) => void;
     sortSticky: (sticky: Sticky) => void;
     subscribe: (handler: (container: HTMLElement, stickyContainer: HTMLElement) => void) => void;
+    syncScrollSticky: (sticky: Sticky) => void;
     unsubscribe: (handler: (container: HTMLElement, stickyContainer: HTMLElement) => void) => void;
     updateStickyRefHeights: () => void;
   }
@@ -11470,6 +11471,8 @@ class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScrollable
   readonly stickyBelow: HTMLDivElement | null;
   // (undocumented)
   subscribe: (handler: Function) => void;
+  // (undocumented)
+  syncScrollSticky: (sticky: Sticky) => void;
   // (undocumented)
   unsubscribe: (handler: Function) => void;
   // (undocumented)
