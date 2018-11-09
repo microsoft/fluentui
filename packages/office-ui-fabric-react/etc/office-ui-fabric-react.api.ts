@@ -1383,9 +1383,6 @@ module FontSizes {
   icon: string;
 
   // (undocumented)
-  inherit: string;
-
-  // (undocumented)
   large: string;
 
   // (undocumented)
@@ -1424,9 +1421,6 @@ module FontSizes {
 module FontWeights {
   // (undocumented)
   bold: IFontWeight;
-
-  // (undocumented)
-  inherit: IFontWeight;
 
   // (undocumented)
   light: IFontWeight;
@@ -7380,8 +7374,6 @@ interface IFontSizes {
 
 // @public
 interface IFontStyles {
-  // (undocumented)
-  inherit: IRawStyle;
   // (undocumented)
   large: IRawStyle;
   // (undocumented)

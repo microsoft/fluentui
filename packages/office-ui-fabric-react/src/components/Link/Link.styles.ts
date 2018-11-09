@@ -15,10 +15,12 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
   return {
     root: [
       classNames.root,
-      theme.fonts.inherit,
+      theme.fonts.medium,
       {
         color: semanticColors.link,
         outline: 'none',
+        fontSize: 'inherit',
+        fontWeight: 'inherit',
         selectors: {
           [`.${IsFocusVisibleClassName} &:focus`]: {
             // Can't use getFocusStyle because it doesn't support wrapping links
