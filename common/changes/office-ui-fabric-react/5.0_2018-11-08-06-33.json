@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Reinitialize PersonaCoin when props changed",
+      "comment": "PersonaCoin: image load state is now reset when the image url is changed.",
       "type": "patch"
     }
   ],
