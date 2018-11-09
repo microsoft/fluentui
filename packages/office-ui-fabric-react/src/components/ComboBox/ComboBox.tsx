@@ -16,7 +16,9 @@ import {
   getId,
   getNativeProps,
   shallowCompare,
-  findElementRecursive
+  findElementRecursive,
+  isMac,
+  isIOS
 } from '../../Utilities';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
@@ -26,31 +28,34 @@ import { getCaretDownButtonStyles, getOptionStyles, getStyles } from './ComboBox
 import { IComboBoxOption, IComboBoxOptionStyles, IComboBoxProps } from './ComboBox.types';
 
 export interface IComboBoxState {
-  // The open state
+  /** The open state */
   isOpen?: boolean;
 
-  // The currently selected indices
+  /** The currently selected indices */
   selectedIndices?: number[];
 
-  // The focused state of the comboBox
+  /** The focused state of the comboBox */
   focused?: boolean;
 
-  // This value is used for the autocomplete hint value
+  /** This value is used for the autocomplete hint value */
   suggestedDisplayValue?: string;
 
-  // The options currently available for the callout
+  /** The options currently available for the callout */
   currentOptions: IComboBoxOption[];
 
-  // when taking input, this will store the index the
-  // that the options input matches (-1 if no input or match)
+  /**
+   * When taking input, this will store the index that the options input matches
+   * (-1 if no input or match)
+   */
   currentPendingValueValidIndex: number;
 
-  // This will store the hovered over value in the dropdown
-  // it is used for styling the options without updating the input
+  /**
+   * Stores the hovered over value in the dropdown
+   * (used for styling the options without updating the input)
+   */
   currentPendingValueValidIndexOnHover: number;
 
-  // when taking input, this will store
-  // the actual text that is being entered
+  /** When taking input, this will store the actual text that is being entered */
   currentPendingValue?: string;
 }
 
@@ -61,33 +66,38 @@ enum SearchDirection {
 }
 
 enum HoverStatus {
-  // This is used when the user was hovering
-  // and has since moused out of the menu items
+  /** Used when the user was hovering and has since moused out of the menu items */
   clearAll = -2,
-  // This is the default "normal" state
-  // when no hover has happened or a hover is in progress
+  /** Default "normal" state, when no hover has happened or a hover is in progress */
   default = -1
 }
 
 const ScrollIdleDelay = 250 /* ms */;
 const TouchIdleDelay = 500; /* ms */
 
-// This is used to clear any pending autocomplete
-// text (used when autocomplete is true and allowFreeform is false)
+/**
+ * This is used to clear any pending autocomplete text (used when autocomplete is true and
+ * allowFreeform is false)
+ */
 const ReadOnlyPendingAutoCompleteTimeout = 1000 /* ms */;
+
 interface IComboBoxOptionWrapperProps extends IComboBoxOption {
-  // True if the option is currently selected
+  /** True if the option is currently selected */
   isSelected: boolean;
 
-  // A function that returns the children of the OptionWrapper. We pass this in as a function to ensure that
-  // children methods don't get called unnecessarily if the component doesn't need to be updated. This leads
-  // to a significant performance increase in ComboBoxes with many options and/or complex onRenderOption functions
+  /**
+   * A function that returns the children of the OptionWrapper. We pass this in as a function to ensure that
+   * children methods don't get called unnecessarily if the component doesn't need to be updated. This leads
+   * to a significant performance increase in ComboBoxes with many options and/or complex onRenderOption functions
+   */
   render: () => JSX.Element;
 }
 
-// Internal class that is used to wrap all ComboBox options
-// This is used to customize when we want to rerender components,
-// so we don't rerender every option every time render is executed
+/**
+ * Internal class that is used to wrap all ComboBox options.
+ * This is used to customize when we want to rerender components,
+ * so we don't rerender every option every time render is executed.
+ */
 class ComboBoxOptionWrapper extends React.Component<IComboBoxOptionWrapperProps, {}> {
   public render(): React.ReactNode {
     return this.props.render();
@@ -110,30 +120,31 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   private _root = React.createRef<HTMLDivElement>();
 
-  // The input aspect of the comboBox
+  /** The input aspect of the comboBox */
   private _autofill = React.createRef<IAutofill>();
 
-  // The wrapping div of the input and button
+  /** The wrapping div of the input and button */
   private _comboBoxWrapper = React.createRef<HTMLDivElement>();
 
-  // The callout element
+  /** The callout element */
   private _comboBoxMenu = React.createRef<HTMLDivElement>();
 
-  // The menu item element that is currently selected
+  /** The menu item element that is currently selected */
   private _selectedElement = React.createRef<HTMLSpanElement>();
 
-  // The base id for the comboBox
+  /** The base id for the comboBox */
   private _id: string;
 
-  // After a character is inserted when autocomplete is true and
-  // allowFreeform is false, remember the task that will clear
-  // the pending string of characters
+  /**
+   * After a character is inserted when autocomplete is true and allowFreeform is false,
+   * remember the task that will clear the pending string of characters.
+   */
   private _lastReadOnlyAutoCompleteChangeTimeoutId: number | undefined;
 
-  // Promise used when resolving the comboBox options
+  /** Promise used when resolving the comboBox options */
   private _currentPromise: PromiseLike<IComboBoxOption[]>;
 
-  // The current visible value sent to the auto fill on render
+  /** The current visible value sent to the auto fill on render */
   private _currentVisibleValue: string | undefined;
   private _classNames: IComboBoxClassNames;
   private _isScrollIdle: boolean;
@@ -141,17 +152,17 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   private _scrollIdleTimeoutId: number | undefined;
   private _processingTouch: boolean;
   private _lastTouchTimeoutId: number | undefined;
-  private _processingExpandCollapseKeyOnly: boolean;
+  /** True if the most recent keydown event was for alt (option) or meta (command). */
+  private _lastKeyDownWasAltOrMeta: boolean | undefined;
 
-  // Determines if we should be setting
-  // focus back to the input when the menu closes.
-  // The general rule of thumb is if the menu was launched
-  // vai the keyboard focus should go back to the input,
-  // if it was dropped via the mouse focus should not be
-  // forced back to the input
+  /**
+   * Determines if we should be setting focus back to the input when the menu closes.
+   * The general rule of thumb is if the menu was launched via the keyboard focus should go back
+   * to the input, if it was dropped via the mouse focus should not be forced back to the input.
+   */
   private _focusInputAfterClose: boolean;
 
-  // Flag for when we get the first mouseMove
+  /** Flag for when we get the first mouseMove */
   private _gotMouseMove: boolean;
 
   private _processingClearPendingInfo: boolean;
@@ -177,7 +188,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     this._isScrollIdle = true;
     this._processingTouch = false;
-    this._processingExpandCollapseKeyOnly = false;
     this._gotMouseMove = false;
     this._processingClearPendingInfo = false;
 
@@ -1557,9 +1567,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const { disabled, allowFreeform, autoComplete } = this.props;
     const { isOpen, currentOptions, currentPendingValueValidIndexOnHover } = this.state;
 
-    // Take note if we are processing a altKey or metaKey keydown
-    // so that the menu does not collapse if no other keys are pressed
-    this._processingExpandCollapseKeyOnly = this._isExpandCollapseKey(ev);
+    // Take note if we are processing an alt (option) or meta (command) keydown.
+    // See comment in _onInputKeyUp for reasoning.
+    this._lastKeyDownWasAltOrMeta = this._isAltOrMeta(ev);
 
     if (disabled) {
       this._handleInputWhenDisabled(ev);
@@ -1726,7 +1736,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     ev.preventDefault();
   };
 
-  private _isExpandCollapseKey(ev: React.KeyboardEvent<HTMLElement | Autofill>) {
+  private _isAltOrMeta(ev: React.KeyboardEvent<HTMLElement | Autofill>) {
     return ev.which === KeyCodes.alt || ev.key === 'Meta';
   }
 
@@ -1738,10 +1748,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const { disabled, allowFreeform, autoComplete } = this.props;
     const isOpen = this.state.isOpen;
 
-    // If we get here and have only gotten the expand/collapse key
-    // and are processing the keyup of that event we should collapse
-    const shouldHandleKey = this._processingExpandCollapseKeyOnly && this._isExpandCollapseKey(ev);
-    this._processingExpandCollapseKeyOnly = false;
+    // We close the menu on key up only if the most recent key *down* was alt or meta (command) and
+    // it was *not* followed by some other key (such as up/down arrow to collapse/expand the menu),
+    // AND we're not on a Mac. This is because on Windows, pressing alt moves focus to the application
+    // menu bar or similar, closing any open context menus. There is not a similar behavior on Macs.
+    const keyPressIsAltOrMetaAlone = this._lastKeyDownWasAltOrMeta && this._isAltOrMeta(ev);
+    this._lastKeyDownWasAltOrMeta = false;
+    const shouldHandleKey = keyPressIsAltOrMetaAlone && !(isMac() || isIOS());
 
     if (disabled) {
       this._handleInputWhenDisabled(ev);

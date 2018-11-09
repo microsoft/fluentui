@@ -26,7 +26,9 @@ import {
   IPoint,
   KeyCodes,
   shouldWrapFocus,
-  IStyleFunctionOrObject
+  IStyleFunctionOrObject,
+  isIOS,
+  isMac
 } from '../../Utilities';
 import { hasSubmenu, getIsChecked, isItemDisabled } from '../../utilities/contextualMenu/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
@@ -99,7 +101,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   private _isScrollIdle: boolean;
   private _scrollIdleTimeoutId: number | undefined;
   /** True if the most recent keydown event was for alt (option) or meta (command). */
-  private _lastKeyDownWasAltOrMeta: boolean;
+  private _lastKeyDownWasAltOrMeta: boolean | undefined;
   private _shouldUpdateFocusOnMouseEvent: boolean;
   private _gotMouseMove: boolean;
   private _mounted = false;
@@ -122,7 +124,6 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
     this._isFocusingPreviousElement = false;
     this._isScrollIdle = true;
-    this._lastKeyDownWasAltOrMeta = false;
     this._shouldUpdateFocusOnMouseEvent = !this.props.delayUpdateFocusOnHover;
     this._gotMouseMove = false;
   }
@@ -758,12 +759,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     // menu bar or similar, closing any open context menus. There is not a similar behavior on Macs.
     const keyPressIsAltOrMetaAlone = this._lastKeyDownWasAltOrMeta && this._isAltOrMeta(ev);
     this._lastKeyDownWasAltOrMeta = false;
-
-    // This will catch Mac desktop as well as iPhone/iPad with external keyboard
-    // (iPhone/iPad have "like Mac OS X" in user agent).
-    const isMac = typeof navigator !== 'undefined' && navigator.userAgent.indexOf('Mac OS X') >= 0;
-
-    return keyPressIsAltOrMetaAlone && !isMac;
+    return keyPressIsAltOrMetaAlone && !(isMac() || isIOS());
   };
 
   private _isAltOrMeta(ev: React.KeyboardEvent<HTMLElement>) {

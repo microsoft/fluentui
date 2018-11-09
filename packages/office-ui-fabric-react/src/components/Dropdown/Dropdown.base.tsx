@@ -22,7 +22,9 @@ import {
   mergeAriaAttributeValues,
   classNamesFunction,
   IStyleFunctionOrObject,
-  getDocument
+  getDocument,
+  isMac,
+  isIOS
 } from '../../Utilities';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
@@ -34,7 +36,7 @@ import { RectangleEdge, ICalloutPositionedInfo } from '../../utilities/positioni
 
 const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>();
 
-// Internal only props interface to support mixing in responsive mode
+/** Internal only props interface to support mixing in responsive mode */
 export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {}
 
 export interface IDropdownState {
@@ -58,11 +60,11 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   private _isScrollIdle: boolean;
   private readonly _scrollIdleDelay: number = 250 /* ms */;
   private _scrollIdleTimeoutId: number | undefined;
-  private _processingExpandCollapseKeyOnly: boolean;
+  private _lastKeyDownWasAltOrMeta: boolean | undefined;
   private _sizePosCache: DropdownSizePosCache = new DropdownSizePosCache();
   private _classNames: IProcessedStyleSet<IDropdownStyles>;
 
-  // Flag for when we get the first mouseMove
+  /** Flag for when we get the first mouseMove */
   private _gotMouseMove: boolean;
 
   constructor(props: IDropdownProps) {
@@ -83,7 +85,6 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
 
     this._id = props.id || getId('Dropdown');
     this._isScrollIdle = true;
-    this._processingExpandCollapseKeyOnly = false;
 
     let selectedIndices: number[];
 
@@ -748,9 +749,9 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
       return;
     }
 
-    // Take note if we are processing a altKey or metaKey keydown
-    // so that the menu does not collapse if no other keys are pressed
-    this._processingExpandCollapseKeyOnly = this._isExpandCollapseKey(ev);
+    // Take note if we are processing an alt (option) or meta (command) keydown.
+    // See comment in _wasAltOrMetaNotOnMac for reasoning.
+    this._lastKeyDownWasAltOrMeta = this._isAltOrMeta(ev);
 
     if (this.props.onKeyDown) {
       this.props.onKeyDown(ev);
@@ -835,6 +836,16 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     }
   };
 
+  private _wasAltOrMetaNotOnMac(ev: React.KeyboardEvent<HTMLElement>): boolean {
+    // We close the menu on key up only if the most recent key *down* was alt or meta (command) and
+    // it was *not* followed by some other key (such as up/down arrow to collapse/expand the menu),
+    // AND we're not on a Mac. This is because on Windows, pressing alt moves focus to the application
+    // menu bar or similar, closing any open context menus. There is not a similar behavior on Macs.
+    const keyPressIsAltOrMetaAlone = this._lastKeyDownWasAltOrMeta && this._isAltOrMeta(ev);
+    this._lastKeyDownWasAltOrMeta = false;
+    return !!keyPressIsAltOrMetaAlone && !(isMac() || isIOS());
+  }
+
   private _onDropdownKeyUp = (ev: React.KeyboardEvent<HTMLDivElement>): void => {
     // If Dropdown disabled do not process any keyboard events.
     const disabled = this._isDisabled();
@@ -842,8 +853,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
       return;
     }
 
-    const shouldHandleKey = this._processingExpandCollapseKeyOnly && this._isExpandCollapseKey(ev);
-    this._processingExpandCollapseKeyOnly = false;
+    const shouldHandleKey = this._wasAltOrMetaNotOnMac(ev);
     const isOpen = this.state.isOpen;
 
     if (this.props.onKeyUp) {
@@ -870,16 +880,16 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     ev.preventDefault();
   };
 
-  private _isExpandCollapseKey(ev: React.KeyboardEvent<HTMLElement>) {
+  private _isAltOrMeta(ev: React.KeyboardEvent<HTMLElement>) {
     return ev.which === KeyCodes.alt || ev.key === 'Meta';
   }
 
   private _onZoneKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     let elementToFocus;
 
-    // Take note if we are processing a altKey or metaKey keydown
-    // so that the menu does not collapse if no other keys are pressed
-    this._processingExpandCollapseKeyOnly = this._isExpandCollapseKey(ev);
+    // Take note if we are processing an alt (option) or meta (command) keydown.
+    // See comment in _wasAltOrMetaNotOnMac for reasoning.
+    this._lastKeyDownWasAltOrMeta = this._isAltOrMeta(ev);
     const containsExpandCollapseModifier = ev.altKey || ev.metaKey;
 
     switch (ev.which) {
@@ -928,8 +938,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   };
 
   private _onZoneKeyUp = (ev: React.KeyboardEvent<HTMLElement>): void => {
-    const shouldHandleKey = this._processingExpandCollapseKeyOnly && this._isExpandCollapseKey(ev);
-    this._processingExpandCollapseKeyOnly = false;
+    const shouldHandleKey = this._wasAltOrMetaNotOnMac(ev);
 
     if (shouldHandleKey && this.state.isOpen) {
       this.setState({ isOpen: false });
