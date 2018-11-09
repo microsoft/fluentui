@@ -2,6 +2,77 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.101.0",
+      "tag": "office-ui-fabric-react_v6.101.0",
+      "date": "Fri, 09 Nov 2018 13:32:57 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ChoiceGroupOption: component mergeStyled class names no longer gets overridden by choicegroupoption item className prop",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "4bea1a88a1b20267242d5a46335a96ebdefb726a"
+          },
+          {
+            "comment": "Button: example updated with proper styling for a custom split button",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "a682a1e382dff877d4874f0570642e503442b5c3"
+          },
+          {
+            "comment": "Passing the prop alignTargetEdge to contextualMenu's callout",
+            "author": "Kushal Yarlagadda <whykushal93@gmail.com>",
+            "commit": "bd5944ff01433b9ca1522e4d005992c7f44f08d8"
+          },
+          {
+            "comment": "Link: Fix bug where componentRef property was passed through to the dom element",
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "33e9ae7ebc06c070240fb4c34bfd86dd913811fc"
+          },
+          {
+            "comment": "Improve conditions of re-initialize state",
+            "author": "qiangh <nif_tony@outlook.com>",
+            "commit": "d9bd8f4d42ab91a47c3c0a2d61f0567799dcebbf"
+          },
+          {
+            "comment": "BasePicker: give selected items element role \"list\"",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "fd00dbb0f90ef3df0b2072da40f4724643906be6"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Removing more deprecated components flagged when turning the tslint deprecation flag to true in the office-ui-fabric-react package.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "06dd8c92b22ceee35ce5d5d1299bb7533ca9463d"
+          },
+          {
+            "comment": "DocumentCard: Adding `focus` method to `IDocumentCard`, which can be accessed via `componentRef`.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "99016cc07ee5f75975908527ab8d4cdfbce2bb17"
+          },
+          {
+            "comment": "Removing some of the deprecated components flaged when turning the tslint deprecation flag to true in the office-ui-fabric-react package.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "e9b6ce9d465f3b9342e7b1d1af27a96fd8c8b922"
+          },
+          {
+            "comment": "Add keytips to Facepile personas",
+            "author": "jofrey-a-msft-production <44853701+jofrey-a-msft-production@users.noreply.github.com>",
+            "commit": "48a9f9f83a47994c736c5474ddfbbab3bd952d97"
+          },
+          {
+            "comment": "Remove the FocusZone wrapping the FacepileMembers",
+            "author": "tabrumle <42159057+tabrumle@users.noreply.github.com>",
+            "commit": "5f0595ddd3ed63af2b4af5ea09f1e770fe05a547"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.34.0 <7.0.0` to `>=6.34.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.100.2",
       "tag": "office-ui-fabric-react_v6.100.2",
       "date": "Thu, 08 Nov 2018 04:17:34 GMT",

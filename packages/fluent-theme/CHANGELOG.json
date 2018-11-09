@@ -2,6 +2,37 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.4.0",
+      "tag": "@uifabric/fluent-theme_v0.4.0",
+      "date": "Fri, 09 Nov 2018 13:32:57 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "ContextualMenu: add fluent styles.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "86c5a1d1a3867620c808f18ee9af2950c568f3d3"
+          },
+          {
+            "comment": "Pivot: add fluent styles.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "3c896ff9ca2e2d1d6e67a88c983d991f622a9a36"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update Dialog styles",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "92132e7c22c132dee0a0592f3d2f9acf6e535152"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.100.2 <7.0.0` to `>=6.101.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.3.0",
       "tag": "@uifabric/fluent-theme_v0.3.0",
       "date": "Wed, 07 Nov 2018 13:31:00 GMT",
