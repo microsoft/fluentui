@@ -74,11 +74,11 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
   };
 
   // References
-  private _root = createRef<HTMLDivElement>();
-  private _header = createRef<IDetailsHeader>();
-  private _groupedList = createRef<IGroupedList>();
+  private _root = React.createRef<HTMLDivElement>();
+  private _header = React.createRef<IDetailsHeader>();
+  private _groupedList = React.createRef<IGroupedList>();
   private _list = createRef<IList>();
-  private _focusZone = createRef<IFocusZone>();
+  private _focusZone = React.createRef<IFocusZone>();
   private _selectionZone = createRef<ISelectionZone>();
 
   private _selection: ISelection;
