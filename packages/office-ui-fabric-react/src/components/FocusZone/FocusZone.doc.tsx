@@ -14,8 +14,7 @@ const FocusZoneTabbableCode = require('!raw-loader!office-ui-fabric-react/src/co
 export const FocusZonePageProps: IDocPageProps = {
   title: 'FocusZone',
   componentName: 'FocusZone',
-  componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/FocusZone',
+  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/FocusZone',
   examples: [
     {
       title: 'Non-uniform photos within bidirectional FocusZone',
@@ -38,9 +37,7 @@ export const FocusZonePageProps: IDocPageProps = {
       view: <FocusZoneTabbableExample />
     }
   ],
-  propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/FocusZone/FocusZone.types.ts')
-  ],
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/FocusZone/FocusZone.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/FocusZone/docs/FocusZoneOverview.md'),
   bestPractices: '',
   dos: '',

@@ -2,6 +2,123 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.25.0",
+      "tag": "@uifabric/utilities_v6.25.0",
+      "date": "Wed, 31 Oct 2018 12:32:41 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Customizer: Add optional context transform prop.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "fc5a1f4620c93499a41abe8377ff61161cf5bd76"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Running Prettier on all .ts and .tsx files in the packages folder.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "2ce6c5ac3ccf4e62d4866841317b4aa55b8fb541"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.24.0",
+      "tag": "@uifabric/utilities_v6.24.0",
+      "date": "Fri, 26 Oct 2018 12:32:35 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add api-extractor.json",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "c691b7b89fcfc5a28c211b29c7ba236887ab8256"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.10.4 <7.0.0` to `>=6.11.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.23.1",
+      "tag": "@uifabric/utilities_v6.23.1",
+      "date": "Thu, 18 Oct 2018 20:22:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update api-extractor.json",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "e6b2514a003fb41c964fba14b071cb0046fd69eb"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.10.1 <7.0.0` to `>=6.10.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.23.0",
+      "tag": "@uifabric/utilities_v6.23.0",
+      "date": "Mon, 15 Oct 2018 12:29:12 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding `asAsync` HOC wrapper to abstract async loading for components.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "5e5703df581b98dbb1e83147427d328682a493fc"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.10.0 <7.0.0` to `>=6.10.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.22.0",
+      "tag": "@uifabric/utilities_v6.22.0",
+      "date": "Wed, 10 Oct 2018 12:29:05 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add utilities.api.ts, update files to fix api-extractor errors",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "ab236eaebd256f37f03b7d2943e983a149023e81"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.21.2",
+      "tag": "@uifabric/utilities_v6.21.2",
+      "date": "Mon, 08 Oct 2018 12:24:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Moving tslint/prettier dependencies ",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8ba9e22a7a8a2a1e7facda5aa7d91423c7af43ed"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.1.1 <2.0.0` to `>=1.1.2 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.9.3 <7.0.0` to `>=6.9.4 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=6.0.5 <7.0.0` to `>=6.0.6 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.21.1",
       "tag": "@uifabric/utilities_v6.21.1",
       "date": "Wed, 26 Sep 2018 12:27:23 GMT",

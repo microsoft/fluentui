@@ -11,8 +11,13 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
     className=
         ms-DatePicker
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -22,11 +27,12 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
           padding-right: 0px;
           padding-top: 0px;
         }
+    placeholder="Select a date..."
   >
     <div
       aria-expanded={false}
       aria-haspopup="true"
-      aria-owns="DatePicker-Callout0"
+      aria-owns="DatePicker-Callout1"
       role="combobox"
     >
       <div
@@ -59,10 +65,15 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
             className=
                 ms-Label
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   box-shadow: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   margin-bottom: 0px;
                   margin-left: 0px;
                   margin-right: 0px;
@@ -79,7 +90,7 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
                   content: ' *';
                   padding-right: 12px;
                 }
-            htmlFor="TextField1"
+            htmlFor="DatePicker0-label"
             required={true}
           >
             Date required (with label)
@@ -115,6 +126,7 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
           >
             <input
               aria-invalid={false}
+              aria-label="Select a date"
               className=
                   ms-TextField-field
                   {
@@ -153,7 +165,7 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
                     color: #666666;
                     opacity: 1;
                   }
-              id="TextField1"
+              id="DatePicker0-label"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}
@@ -203,8 +215,13 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
     className=
         ms-DatePicker
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -214,11 +231,12 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
           padding-right: 0px;
           padding-top: 0px;
         }
+    placeholder="Date required with no label..."
   >
     <div
       aria-expanded={false}
       aria-haspopup="true"
-      aria-owns="DatePicker-Callout3"
+      aria-owns="DatePicker-Callout4"
       role="combobox"
     >
       <div
@@ -285,6 +303,7 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
           >
             <input
               aria-invalid={false}
+              aria-label="Select a date"
               className=
                   ms-TextField-field
                   {
@@ -323,7 +342,7 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
                     color: #666666;
                     opacity: 1;
                   }
-              id="TextField4"
+              id="DatePicker3-label"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}

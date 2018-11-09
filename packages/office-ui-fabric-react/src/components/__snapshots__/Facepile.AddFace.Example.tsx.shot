@@ -5,6 +5,11 @@ exports[`Component Examples renders Facepile.AddFace.Example.tsx correctly 1`] =
   className=
       ms-Facepile
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
         width: auto;
       }
 >
@@ -43,17 +48,21 @@ exports[`Component Examples renders Facepile.AddFace.Example.tsx correctly 1`] =
           ms-Button
           ms-Facepile-addButton
           ms-Facepile-itemButton
+          ms-Button--facepile
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            background-color: #0078d4;
             border-radius: 50%;
-            border: 1px solid transparent;
+            border: none;
             box-sizing: border-box;
+            color: #ffffff;
             cursor: pointer;
-            display: inline-block;
+            display: inline;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
+            margin-right: 4px;
             outline: transparent;
             padding-bottom: 0px;
             padding-left: 0px;
@@ -104,20 +113,6 @@ exports[`Component Examples renders Facepile.AddFace.Example.tsx correctly 1`] =
           }
           &:active {
             background-color: #004578;
-          }
-          button& {
-            background-color: #0078d4;
-            background: none;
-            border: none;
-            color: #ffffff;
-            cursor: pointer;
-            display: inline;
-            font-size: 14px;
-            margin-right: 4px;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
           }
           &:disabled {
             background-color: #c8c8c8;
@@ -210,33 +205,23 @@ exports[`Component Examples renders Facepile.AddFace.Example.tsx correctly 1`] =
         </div>
       </div>
     </button>
-    <div
-      aria-describedby="id__0"
-      className="ms-FocusZone"
-      data-focuszone-id="FocusZone4"
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onMouseDownCapture={[Function]}
-      role="listbox"
-    >
-      <ul
-        className=
-            ms-Facepile-members
-            {
-              display: flex;
-              list-style-type: none;
-              margin-bottom: -2px;
-              margin-left: -2px;
-              margin-right: -2px;
-              margin-top: -2px;
-              overflow: hidden;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-            }
-      />
-    </div>
+    <ul
+      className=
+          ms-Facepile-members
+          {
+            display: flex;
+            list-style-type: none;
+            margin-bottom: -2px;
+            margin-left: -2px;
+            margin-right: -2px;
+            margin-top: -2px;
+            overflow: hidden;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+          }
+    />
   </div>
 </div>
 `;

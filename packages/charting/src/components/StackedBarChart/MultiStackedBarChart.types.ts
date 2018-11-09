@@ -38,6 +38,16 @@ export interface IMultiStackedBarChartProps {
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>;
+
+  /**
+   * Url that the data-viz needs to redirect to upon clicking on it
+   */
+  href?: string;
+
+  /**
+   * If this value is set to true the denominator will not be shown for the ratio above the chart
+   */
+  hideDenominator?: boolean[];
 }
 
 export interface IMultiStackedBarChartStyleProps {
@@ -70,6 +80,11 @@ export interface IMultiStackedBarChartStyleProps {
    * prop to check if the chart is selcted or hovered upon to determine opacity
    */
   shouldHighlight?: boolean;
+
+  /**
+   * prop to check to decide cursor type
+   */
+  href?: string;
 }
 
 export interface IMultiStackedBarChartStyles {
@@ -117,4 +132,19 @@ export interface IMultiStackedBarChartStyles {
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends
    */
   opacityChangeOnHover: IStyle;
+
+  /**
+   * Style to change the opacity of placeholder data point when we hover a single bar or legend
+   */
+  placeHolderOnHover: IStyle;
+
+  /**
+   * Style for the legends container
+   */
+  legendContainer: IStyle;
+
+  /**
+   * Style for stacked bar chart with no data
+   */
+  noData: IStyle;
 }

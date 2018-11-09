@@ -5,8 +5,13 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
   className=
       ms-DatePicker
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
         box-shadow: none;
         box-sizing: border-box;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
         margin-bottom: 0px;
         margin-left: 0px;
         margin-right: 0px;
@@ -20,7 +25,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
   <div
     aria-expanded={false}
     aria-haspopup="true"
-    aria-owns="DatePicker-Callout4"
+    aria-owns="DatePicker-Callout1"
     role="combobox"
   >
     <div
@@ -117,7 +122,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
                   color: #666666;
                   opacity: 1;
                 }
-            id="TextField5"
+            id="DatePicker0-label"
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}

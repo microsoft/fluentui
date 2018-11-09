@@ -2,11 +2,7 @@ import * as React from 'react';
 import { Recommendation } from '../Recommendation';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-import {
-  wrappingContainerHeight,
-  wrappingContainerWidth,
-  IRecommendationExampleState
-} from './RecommendationExamples.Common';
+import { wrappingContainerHeight, wrappingContainerWidth, IRecommendationExampleState } from './RecommendationExamples.Common';
 import { passwordExpiryBase64Image } from './RecommendationSampleImages';
 
 interface IPasswordRecommendationStyles {

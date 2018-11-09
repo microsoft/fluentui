@@ -13,7 +13,12 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
     className=
         ms-Nav
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           overflow-y: auto;
           user-select: none;
         }
@@ -73,6 +78,7 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
             >
               <button
                 aria-expanded="false"
+                aria-label="Expand or collapse"
                 className=
                     ms-Nav-chevronButton
                     {
@@ -350,6 +356,7 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
             >
               <button
                 aria-expanded="false"
+                aria-label="Expand or collapse"
                 className=
                     ms-Nav-chevronButton
                     {

@@ -21,7 +21,10 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
   public static defaultProps = {
     circle: true,
     disabled: false,
-    selected: false
+    selected: false,
+    height: 20,
+    width: 20,
+    borderWidth: 2
   } as IColorPickerGridCellProps;
 
   private _classNames: { [key in keyof IColorPickerGridCellStyles]: string };
@@ -43,7 +46,10 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
       onMouseMove,
       onMouseLeave,
       onWheel,
-      onKeyDown
+      onKeyDown,
+      height,
+      width,
+      borderWidth
     } = this.props;
 
     this._classNames = getClassNames(styles!, {
@@ -51,7 +57,10 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
       disabled,
       selected,
       circle,
-      isWhite: this._isWhiteCell(color)
+      isWhite: this._isWhiteCell(color),
+      height,
+      width,
+      borderWidth
     });
 
     return (
@@ -81,7 +90,7 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
 
   /**
    * Render the core of a color cell
-   * @returns {JSX.Element} - Element representing the core of the item
+   * @returns - Element representing the core of the item
    */
   private _onRenderColorOption = (colorOption: IColorCellProps): JSX.Element => {
     // Build an SVG for the cell with the given shape and color properties

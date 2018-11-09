@@ -6,26 +6,33 @@ import { negativeStateChange } from './NegativeStateChange';
 import { noStateChange } from './NoStateChange';
 
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { HoverCard, IExpandingCardProps, ExpandingCardMode } from 'office-ui-fabric-react/lib/HoverCard';
+import { HoverCard, HoverCardType } from 'office-ui-fabric-react/lib/HoverCard';
 
 export interface IMultiCountState {
   hoveredText: string;
-  hoverCardHeight: number;
 }
 
 export class MultiCount extends React.Component<IMultiCountProps, IMultiCountState> {
   constructor(props: IMultiCountProps) {
     super(props);
     this.state = {
-      hoveredText: '',
-      hoverCardHeight: 0
+      hoveredText: ''
     };
   }
 
   public render(): JSX.Element {
-    const { multiCountRows, annotationTextFontSize, annotationTextColor, bodyTextFontSize, bodyTextColor, customMessage } = this.props;
+    const {
+      multiCountRows,
+      annotationTextFontSize,
+      annotationTextColor,
+      bodyTextFontSize,
+      bodyTextColor,
+      customMessage,
+      href
+    } = this.props;
     const data: JSX.Element[] = this.getGeneratedData(
       multiCountRows,
+      href,
       annotationTextFontSize,
       annotationTextColor,
       bodyTextFontSize,
@@ -37,6 +44,7 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
 
   public getGeneratedData(
     rows: IMultiCountRow[],
+    href?: string,
     annotationTextFontSize?: string,
     annotationTextColor?: string,
     bodyTextFontSize?: string,
@@ -75,42 +83,24 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
           bodyTextFontSize: bodyTextFontSize,
           hoveredText: this.state.hoveredText,
           currentText: row.data + row.bodyText + row.annotaionText,
-          href: row.href,
+          href: href,
           hideIcon: row.hideIcon
         })
       );
-      const expandingCardProps: IExpandingCardProps = {
-        compactCardHeight: this.state.hoverCardHeight,
-        onRenderCompactCard: this._onRenderCompactCard,
-        renderData: [row, customMessage],
-        mode: ExpandingCardMode.compact,
-        styles: {
-          root: {
-            width: 'auto',
-            height: 'auto',
-            margin: 0
-          },
-          compactCard: {
-            width: 'auto',
-            height: 'auto',
-            margin: 0
-          },
-          expandedCard: {
-            width: 0,
-            margin: 0
-          }
-        }
-      };
       const hoverKey = row.data + row.bodyText + row.annotaionText;
+      const plainCardProps = {
+        onRenderPlainCard: this._onRenderCompactCard,
+        renderData: [row, customMessage]
+      };
       formattedRows.push(
         <HoverCard
           key={index}
-          expandingCardProps={expandingCardProps}
-          instantOpenOnClick={true}
+          type={HoverCardType.plain}
+          plainCardProps={plainCardProps}
           onCardHide={this._hoverStateUpdate.bind(this, hoverKey, false)}
           onCardVisible={this._hoverStateUpdate.bind(this, hoverKey, true)}
         >
-          <div key={index} className={classNames.root} onClick={this._redirectToUrl.bind(this, row.href)}>
+          <div key={index} className={classNames.root} onClick={this._redirectToUrl.bind(this, href)}>
             <div className={classNames.data}>{formattedData + units[indexForUnits]}</div>
             <div className={classNames.bodyText}>{row.bodyText}</div>
             {!row.hideIcon && (
@@ -130,14 +120,12 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
     if (hoverState) {
       setTimeout(() => {
         this.setState({
-          hoveredText: hoverKey,
-          hoverCardHeight: document.getElementsByClassName('hoverCardRoot')[0].clientHeight
+          hoveredText: hoverKey
         });
       }, 10);
     } else {
       this.setState({
-        hoveredText: '',
-        hoverCardHeight: 0
+        hoveredText: ''
       });
     }
   };

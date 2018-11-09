@@ -1,6 +1,20 @@
 # Change Log - @uifabric/variants
 
-This log was last generated on Mon, 01 Oct 2018 12:27:24 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Oct 2018 12:29:57 GMT and should not be manually modified.
+
+## 6.12.0
+Mon, 22 Oct 2018 12:29:57 GMT
+
+### Minor changes
+
+- Add addVariants utility function.
+
+## 6.11.1
+Mon, 08 Oct 2018 12:24:15 GMT
+
+### Patches
+
+- Moving tslint/prettier dependencies 
 
 ## 6.11.0
 Mon, 01 Oct 2018 12:27:24 GMT

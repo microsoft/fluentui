@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "dist",
+    "target": "es5",
+    "module": "commonjs",
+    "jsx": "react",
+    "declaration": true,
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "noUnusedLocals": true,
+    "forceConsistentCasingInFileNames": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "preserveConstEnums": true,
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "paths": {
+      "@uifabric/fluent-theme/lib/*": [
+        "./src/*"
+      ],
+      "@uifabric/fluent-theme": [
+        "./src"
+      ]
+    }
+  },
+  "include": [
+    "src"
+  ]
+}

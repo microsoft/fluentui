@@ -1,6 +1,48 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 26 Sep 2018 12:27:23 GMT and should not be manually modified.
+This log was last generated on Wed, 31 Oct 2018 12:32:41 GMT and should not be manually modified.
+
+## 6.25.0
+Wed, 31 Oct 2018 12:32:41 GMT
+
+### Minor changes
+
+- Customizer: Add optional context transform prop.
+
+## 6.24.0
+Fri, 26 Oct 2018 12:32:35 GMT
+
+### Minor changes
+
+- Add api-extractor.json
+
+## 6.23.1
+Thu, 18 Oct 2018 20:22:36 GMT
+
+### Patches
+
+- Update api-extractor.json
+
+## 6.23.0
+Mon, 15 Oct 2018 12:29:12 GMT
+
+### Minor changes
+
+- Adding `asAsync` HOC wrapper to abstract async loading for components.
+
+## 6.22.0
+Wed, 10 Oct 2018 12:29:05 GMT
+
+### Minor changes
+
+- Add utilities.api.ts, update files to fix api-extractor errors
+
+## 6.21.2
+Mon, 08 Oct 2018 12:24:15 GMT
+
+### Patches
+
+- Moving tslint/prettier dependencies 
 
 ## 6.21.1
 Wed, 26 Sep 2018 12:27:23 GMT

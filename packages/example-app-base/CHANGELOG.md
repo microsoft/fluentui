@@ -1,6 +1,56 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Fri, 21 Sep 2018 14:25:46 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Nov 2018 13:31:09 GMT and should not be manually modified.
+
+## 6.9.2
+Tue, 06 Nov 2018 13:31:09 GMT
+
+### Patches
+
+- Fix visual bugs caused by MWF overrides on Fabric site
+
+## 6.9.1
+Wed, 31 Oct 2018 12:32:41 GMT
+
+### Patches
+
+- Replace usage of scheme prop with theme provider.
+
+## 6.9.0
+Wed, 17 Oct 2018 01:29:55 GMT
+
+### Minor changes
+
+- Modify CodepenComponent for use by other packages.
+
+## 6.8.0
+Tue, 16 Oct 2018 12:28:48 GMT
+
+### Minor changes
+
+- Add optional app customizations and apply to examples when provided.
+
+## 6.7.6
+Thu, 11 Oct 2018 23:13:31 GMT
+
+### Patches
+
+- Documentation: remove unwanted backslashes and render backticks as code blocks
+
+## 6.7.5
+Wed, 10 Oct 2018 12:29:05 GMT
+
+### Patches
+
+- ExampleCard: Replace Fabric Core classes with mixins
+- ExampleCard: Adds utility classes for spacing within examples
+
+## 6.7.4
+Mon, 08 Oct 2018 12:24:15 GMT
+
+### Patches
+
+- Moving tslint/prettier dependencies 
 
 ## 6.7.3
 Fri, 21 Sep 2018 14:25:46 GMT

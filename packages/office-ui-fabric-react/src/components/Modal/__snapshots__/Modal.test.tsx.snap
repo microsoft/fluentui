@@ -61,6 +61,7 @@ exports[`Modal renders Modal correctly 1`] = `
     onSubmit={[Function]}
   >
     <div
+      aria-modal="true"
       onKeyDown={[Function]}
       role="dialog"
       style={
@@ -75,9 +76,14 @@ exports[`Modal renders Modal correctly 1`] = `
             is-open
             test-className
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               align-items: center;
               background-color: transparent;
               display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               height: 100%;
               justify-content: center;
               opacity: 1;
@@ -92,8 +98,13 @@ exports[`Modal renders Modal correctly 1`] = `
               ms-Overlay
               ms-Overlay--dark
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 background-color: rgba(0,0,0,.4);
                 bottom: 0px;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 left: 0px;
                 position: absolute;
                 right: 0px;

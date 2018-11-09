@@ -19,6 +19,7 @@ export const getStyles = (props: IContextualMenuStyleProps): IContextualMenuStyl
 
   return {
     root: [
+      theme.fonts.medium,
       classNames.root,
       classNames.isopen,
       {
@@ -71,6 +72,7 @@ export const getStyles = (props: IContextualMenuStyleProps): IContextualMenuStyl
         paddingTop: '5px',
         backgroundColor: palette.neutralLight
       }
-    ]
+    ],
+    subComponentStyles: { callout: {}, menuItem: {} }
   };
 };

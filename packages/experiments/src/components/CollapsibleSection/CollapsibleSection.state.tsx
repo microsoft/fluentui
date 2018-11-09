@@ -1,4 +1,4 @@
-import { createRef } from 'office-ui-fabric-react';
+import * as React from 'react';
 import { ICollapsibleSectionProps, ICollapsibleSectionViewProps } from './CollapsibleSection.types';
 import { BaseState } from '../../utilities/BaseState';
 import { getRTL, KeyCodes } from '../../Utilities';
@@ -21,12 +21,12 @@ import { getRTL, KeyCodes } from '../../Utilities';
 export type ICollapsibleSectionState = Pick<
   ICollapsibleSectionViewProps,
   'collapsed' | 'titleElementRef' | 'onClick' | 'onKeyDown' | 'onRootKeyDown'
-  >;
+>;
 
-export class CollapsibleSectionState extends BaseState<ICollapsibleSectionProps, ICollapsibleSectionState> {
-  private _titleElement = createRef<HTMLElement>();
+export class CollapsibleSectionState extends BaseState<ICollapsibleSectionProps, ICollapsibleSectionViewProps, ICollapsibleSectionState> {
+  private _titleElement = React.createRef<HTMLElement>();
 
-  constructor(props: ICollapsibleSectionProps) {
+  constructor(props: CollapsibleSectionState['props']) {
     super(props, {
       controlledProps: ['collapsed']
     });

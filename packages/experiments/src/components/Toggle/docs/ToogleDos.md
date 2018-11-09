@@ -1,0 +1,2 @@
+- Only replace the On and Off labels if there are more specific labels for the setting. If there are short (3-4 characters) labels that represent binary opposites that are more appropriate for a particular setting, use them. For example, you might use "Show/Hide" if the setting is "Show images."
+- Let the label serve as the aria-label for the Toggle if possible. If necessary, set an aria-label that describes the ON action of the Toggle (e.g., Show images) and let the metadata (i.e., aria-checked) tell the screen reader the state.

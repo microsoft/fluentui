@@ -23,7 +23,7 @@ export const getStyles = (props: IMultiCountStyleProps): IMultiCountStyles => {
       opacity: hoveredText === '' ? '' : hoveredText === currentText ? '' : '0.1',
       cursor: href ? 'pointer' : 'default',
       fontSize: bodyTextSize,
-      height: '1.286em'
+      height: '1.3em'
     },
     bodyText: {
       flex: '1 1 auto',

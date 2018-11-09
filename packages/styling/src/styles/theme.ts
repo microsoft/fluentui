@@ -34,7 +34,7 @@ if (!Customizations.getSettings([ThemeSettingName]).theme) {
 
 /**
  * Gets the theme object
- * @param {boolean} depComments - Whether to include deprecated tags as comments for deprecated slots.
+ * @param depComments - Whether to include deprecated tags as comments for deprecated slots.
  */
 export function getTheme(depComments: boolean = false): ITheme {
   if (depComments === true) {
@@ -69,8 +69,8 @@ export function removeOnThemeChangeCallback(callback: (theme: ITheme) => void): 
 
 /**
  * Applies the theme, while filling in missing slots.
- * @param {object} theme - Partial theme object.
- * @param {boolean} depComments - Whether to include deprecated tags as comments for deprecated slots.
+ * @param theme - Partial theme object.
+ * @param depComments - Whether to include deprecated tags as comments for deprecated slots.
  */
 export function loadTheme(theme: IPartialTheme, depComments: boolean = false): ITheme {
   _theme = createTheme(theme, depComments);
@@ -93,8 +93,8 @@ export function loadTheme(theme: IPartialTheme, depComments: boolean = false): I
 
 /**
  * Creates a custom theme definition which can be used with the Customizer.
- * @param {object} theme - Partial theme object.
- * @param {boolean} depComments - Whether to include deprecated tags as comments for deprecated slots.
+ * @param theme - Partial theme object.
+ * @param depComments - Whether to include deprecated tags as comments for deprecated slots.
  */
 export function createTheme(theme: IPartialTheme, depComments: boolean = false): ITheme {
   let newPalette = { ...DefaultPalette, ...theme.palette };
@@ -180,7 +180,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     disabledBodyText: p.neutralTertiaryAlt,
     disabledSubtext: p.neutralQuaternary,
 
-    focusBorder: p.black,
+    focusBorder: p.neutralSecondary,
     variantBorder: p.neutralLight,
     variantBorderHovered: p.neutralTertiary,
     defaultStateBackground: p.neutralLight,

@@ -78,9 +78,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
 
       return (
         <div className="ms-Viewport" ref={this._root} style={{ minWidth: 1, minHeight: 1 }}>
-          {isViewportVisible && (
-            <ComposedComponent ref={this._updateComposedComponentRef} viewport={viewport} {...this.props as any} />
-          )}
+          {isViewportVisible && <ComposedComponent ref={this._updateComposedComponentRef} viewport={viewport} {...this.props as any} />}
         </div>
       );
     }
@@ -106,8 +104,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
         }
       };
 
-      const isSizeChanged =
-        (clientRect && clientRect.width) !== viewport!.width || (scrollRect && scrollRect.height) !== viewport!.height;
+      const isSizeChanged = (clientRect && clientRect.width) !== viewport!.width || (scrollRect && scrollRect.height) !== viewport!.height;
 
       if (isSizeChanged && this._resizeAttempts < MAX_RESIZE_ATTEMPTS && clientRect && scrollRect) {
         this._resizeAttempts++;

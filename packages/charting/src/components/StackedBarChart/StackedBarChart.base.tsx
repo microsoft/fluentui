@@ -30,7 +30,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     barHeight: 16,
     hideNumberDisplay: false,
     hideLegend: false,
-    isMultiStackedBarChart: false
+    ignoreFixStyle: false
   };
   private _classNames: IProcessedStyleSet<IStackedBarChartStyles>;
 
@@ -53,17 +53,17 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
 
   public render(): JSX.Element {
     this._adjustProps();
-    const { data, hideNumberDisplay, hideLegend, theme, styles, barBackgroundColor } = this.props;
+    const { data, hideNumberDisplay, hideLegend, theme, styles, barBackgroundColor, href, ignoreFixStyle, hideDenominator } = this.props;
     const { palette } = theme!;
-    const barHeight = data!.chartData!.length > 2 ? this.props.barHeight : 8;
-    const bars = this._createBarsAndLegends(data!, barHeight!, palette, barBackgroundColor);
-    const showRatio = hideNumberDisplay === false && data!.chartData!.length === 2;
-    const showNumber = hideNumberDisplay === false && data!.chartData!.length === 1;
+    const barHeight = ignoreFixStyle || data!.chartData!.length > 2 ? this.props.barHeight : 8;
+    const bars = this._createBarsAndLegends(data!, barHeight!, palette, barBackgroundColor, href);
+    const showRatio = hideNumberDisplay === false && (!ignoreFixStyle && data!.chartData!.length === 2);
+    const showNumber = hideNumberDisplay === false && (!ignoreFixStyle && data!.chartData!.length === 1);
     let total = 0;
     if (showRatio === true) {
       total = data!.chartData!.reduce((acc: number, value: IChartDataPoint) => acc + (value.data ? value.data : 0), 0);
     }
-    const showLegend = hideLegend === false && data!.chartData!.length > 2;
+    const showLegend = hideLegend === false && (ignoreFixStyle || data!.chartData!.length > 2);
     const { isCalloutVisible } = this.state;
     this._classNames = getClassNames(styles!, {
       legendColor: this.state.color,
@@ -79,8 +79,12 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           )}
           {showRatio && (
             <div>
-              <span className={this._classNames.ratioNumerator}>{data!.chartData![0].data}</span>/
-              <span className={this._classNames.ratioDenominator}>{total}</span>
+              <span className={this._classNames.ratioNumerator}>{data!.chartData![0].data}</span>
+              {!hideDenominator && (
+                <span>
+                  /<span className={this._classNames.ratioDenominator}>{total}</span>
+                </span>
+              )}
             </div>
           )}
           {showNumber && (
@@ -127,7 +131,8 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     data: IChartProps,
     barHeight: number,
     palette: IPalette,
-    barBackgroundColor?: string
+    barBackgroundColor?: string,
+    href?: string
   ): [JSX.Element[], JSX.Element] {
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     const legendDataItems: ILegend[] = [];
@@ -175,7 +180,8 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       }
       this._classNames = getClassNames(styles!, {
         theme: this.props.theme!,
-        shouldHighlight: shouldHighlight
+        shouldHighlight: shouldHighlight,
+        href: href
       });
       return (
         <g
@@ -188,6 +194,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           onMouseMove={this._onBarHover.bind(this, point.legend!, pointData, color)}
           onMouseLeave={this._onBarLeave}
           pointerEvents="all"
+          onClick={this._redirectToUrl.bind(this, href)}
         >
           <rect key={index} x={startingPoint[index] + '%'} y={0} width={value + '%'} height={barHeight} fill={color} />
         </g>
@@ -269,5 +276,9 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     this.setState({
       isCalloutVisible: false
     });
+  }
+
+  private _redirectToUrl(href: string | undefined): void {
+    href ? (window.location.href = href) : '';
   }
 }

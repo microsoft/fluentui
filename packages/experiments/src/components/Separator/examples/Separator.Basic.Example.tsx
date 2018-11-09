@@ -3,10 +3,6 @@ import { Separator } from '../Separator';
 import { mergeStyles } from 'office-ui-fabric-react';
 
 export class SeparatorBasicExample extends React.Component<{}, {}> {
-  constructor(props: {}) {
-    super(props);
-  }
-
   public render(): JSX.Element {
     const message = 'Today';
 

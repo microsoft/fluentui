@@ -1,15 +1,7 @@
 /* tslint:disable */
 import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
 import * as React from 'react';
-import {
-  ICustomNavLinkGroup,
-  INavProps,
-  INavState,
-  INavLink,
-  INavStyleProps,
-  INavStyles,
-  NavGroupType
-} from './Nav.types';
+import { ICustomNavLinkGroup, INavProps, INavState, INavLink, INavStyleProps, INavStyles, NavGroupType } from './Nav.types';
 import { getStyles } from './Nav.styles';
 import { NavBase } from './NavBase';
 import { styled, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
@@ -37,11 +29,11 @@ class NavComponent extends NavBase {
     this._hasAtleastOneHiddenLink = false;
 
     return (
-      <nav role="navigation">
+      <>
         {this.props.groups.map((group: ICustomNavLinkGroup, groupIndex: number) => {
           return this._renderGroup(group, groupIndex);
         })}
-      </nav>
+      </>
     );
   }
 
@@ -106,11 +98,10 @@ class NavComponent extends NavBase {
     const isChildLinkSelected = this.isChildLinkSelected(link);
     const hasChildren = !!link.links && link.links.length > 0;
     const isSelected = (isLinkSelected && !hasChildren) || (isChildLinkSelected && !link.isExpanded);
-    const { styles, showMore, onShowMoreLinkClicked, dataHint } = this.props;
-    const classNames = getClassNames(styles!, { isSelected, nestingLevel, isChildLinkSelected });
+    const { styles, showMore, onShowMoreLinkClicked, dataHint, theme } = this.props;
+    const classNames = getClassNames(styles!, { isSelected, nestingLevel, isChildLinkSelected, theme: theme! });
     const linkText = this.getLinkText(link, showMore);
-    const onClickHandler =
-      link.isShowMoreLink && onShowMoreLinkClicked ? onShowMoreLinkClicked : this._onLinkClicked.bind(this, link);
+    const onClickHandler = link.isShowMoreLink && onShowMoreLinkClicked ? onShowMoreLinkClicked : this._onLinkClicked.bind(this, link);
 
     return (
       <NavLink
@@ -130,6 +121,7 @@ class NavComponent extends NavBase {
         textClassName={classNames.navItemNameColumn}
         iconClassName={classNames.navItemIconColumn}
         barClassName={classNames.navItemBarMarker}
+        focusedStyle={classNames.focusedStyle}
       />
     );
   }
@@ -148,9 +140,7 @@ class NavComponent extends NavBase {
         // 1. only for the first level and
         // 2. if the link is expanded
         nestingLevel == 0 && link.isExpanded ? (
-          <div className={AnimationClassNames.slideDownIn20}>
-            {this._renderLinks(link.links as INavLink[], ++nestingLevel)}
-          </div>
+          <div className={AnimationClassNames.slideDownIn20}>{this._renderLinks(link.links as INavLink[], ++nestingLevel)}</div>
         ) : null}
       </li>
     );
@@ -188,7 +178,7 @@ class NavComponent extends NavBase {
       return null;
     }
 
-    const { styles, enableCustomization } = this.props;
+    const { styles, enableCustomization, theme } = this.props;
     const hasGroupName = !!group.name;
 
     // skip customization group if customization is not enabled
@@ -196,7 +186,7 @@ class NavComponent extends NavBase {
       return null;
     }
 
-    const classNames = getClassNames(styles!, { hasGroupName });
+    const classNames = getClassNames(styles!, { hasGroupName, theme: theme! });
 
     let isGroupHeaderVisible = false;
 

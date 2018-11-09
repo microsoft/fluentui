@@ -2,6 +2,47 @@
   "name": "@uifabric/variants",
   "entries": [
     {
+      "version": "6.12.0",
+      "tag": "@uifabric/variants_v6.12.0",
+      "date": "Mon, 22 Oct 2018 12:29:57 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add addVariants utility function.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "6505775ab433ec7e1fca27621be96dd6c026796d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.89.0 <7.0.0` to `>=6.90.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.11.1",
+      "tag": "@uifabric/variants_v6.11.1",
+      "date": "Mon, 08 Oct 2018 12:24:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Moving tslint/prettier dependencies ",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8ba9e22a7a8a2a1e7facda5aa7d91423c7af43ed"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.1.1 <2.0.0` to `>=1.1.2 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.79.0 <7.0.0` to `>=6.80.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.11.0",
       "tag": "@uifabric/variants_v6.11.0",
       "date": "Mon, 01 Oct 2018 12:27:24 GMT",

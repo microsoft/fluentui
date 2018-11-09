@@ -25,44 +25,44 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
 
   /**
    * Whether the panel is displayed.
-   * @default false
+   * @defaultvalue false
    */
   isOpen?: boolean;
 
   /**
    * Has the close button visible.
-   * @default true
+   * @defaultvalue true
    */
   hasCloseButton?: boolean;
 
   /**
    * Whether the panel can be light dismissed.
-   * @default false
+   * @defaultvalue false
    */
   isLightDismiss?: boolean;
 
   /**
    * Whether the panel is hidden on dismiss, instead of destroyed in the DOM.
    * Protects the contents from being destroyed when the panel is dismissed.
-   * @default false
+   * @defaultvalue false
    */
   isHiddenOnDismiss?: boolean;
 
   /**
    * Whether the panel uses a modal overlay or not
-   * @default true
+   * @defaultvalue true
    */
   isBlocking?: boolean;
 
   /**
    * Determines if content should stretch to fill available space putting footer at the bottom of the page
-   * @default false
+   * @defaultvalue false
    */
   isFooterAtBottom?: boolean;
 
   /**
    * Header text for the Panel.
-   * @default ""
+   * @defaultvalue ""
    */
   headerText?: string;
 
@@ -95,7 +95,7 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
 
   /**
    * Type of the panel.
-   * @default PanelType.smallFixedRight
+   * @defaultvalue PanelType.smallFixedRight
    */
   type?: PanelType;
 
@@ -116,30 +116,30 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
 
   /**
    * Sets the HTMLElement to focus on when exiting the FocusTrapZone.
-   * @default The element.target that triggered the Panel.
+   * @defaultvalue The element.target that triggered the Panel.
    */
   elementToFocusOnDismiss?: HTMLElement;
 
   /**
    * Indicates if this Panel will ignore keeping track of HTMLElement that activated the Zone.
-   * Deprecated, use focusTrapZoneProps.
-   * @default false
-   * @deprecated
+   * Deprecated, use `focusTrapZoneProps`.
+   * @defaultvalue false
+   * @deprecated Use `focusTrapZoneProps`.
    */
   ignoreExternalFocusing?: boolean;
 
   /**
    * Indicates whether Panel should force focus inside the focus trap zone
-   * Deprecated, use focusTrapZoneProps.
-   * @default true
-   * @deprecated
+   * Deprecated, use `focusTrapZoneProps`.
+   * @defaultvalue true
+   * @deprecated Use `focusTrapZoneProps`.
    */
   forceFocusInsideTrap?: boolean;
 
   /**
    * Indicates the selector for first focusable item.
-   * Deprecated, use focusTrapZoneProps.
-   * @deprecated
+   * Deprecated, use `focusTrapZoneProps`.
+   * @deprecated Use `focusTrapZoneProps`.
    */
   firstFocusableSelector?: string;
 
@@ -190,7 +190,7 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
 
   /**
    * Deprecated property. Serves no function.
-   * @deprecated
+   * @deprecated Serves no function.
    */
   componentId?: string;
 }
@@ -203,10 +203,10 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
  */
 export interface IPanelHeaderRenderer extends IRenderFunction<IPanelProps> {
   /**
-   * @param props Props given to the panel
-   * @param defaultRender Default header renderer. If using this renderer in code that does not
+   * @param props - Props given to the panel
+   * @param defaultRender - Default header renderer. If using this renderer in code that does not
    * assign `headerTextId` to an element elsewhere, it **must** be passed to this function.
-   * @param headerTextId If provided, this **must** be used as the ID of an element containing the
+   * @param headerTextId - If provided, this **must** be used as the ID of an element containing the
    * panel's title, because the panel popup uses this ID as its aria-labelledby.
    */
   (props?: IPanelProps, defaultRender?: IPanelHeaderRenderer, headerTextId?: string | undefined): JSX.Element | null;
@@ -217,10 +217,10 @@ export enum PanelType {
    * Renders the panel in 'small' mode, anchored to the far side (right in LTR mode), and has a fluid width.
    * Only used on Small screen breakpoints.
    * Small: 320-479px width (full screen), 16px Left/Right padding
-   * Medium: <unused>
-   * Large: <unused>
-   * XLarge: <unused>
-   * XXLarge: <unused>
+   * Medium: \<unused\>
+   * Large: \<unused\>
+   * XLarge: \<unused\>
+   * XXLarge: \<unused\>
    */
   smallFluid = 0,
 
@@ -246,8 +246,8 @@ export enum PanelType {
 
   /**
    * Renders the panel in 'medium' mode, anchored to the far side (right in LTR mode).
-   * Small: <adapts to smallFluid>
-   * Medium: <adapts to smallFixedFar>
+   * Small: \<adapts to smallFluid\>
+   * Medium: \<adapts to smallFixedFar\>
    * Large: 48px fixed left margin, 32px Left/Right padding
    * XLarge: 644px width, 32px Left/Right padding
    * XXLarge: 643px width, 40px Left/Right padding
@@ -256,9 +256,9 @@ export enum PanelType {
 
   /**
    * Renders the panel in 'large' mode, anchored to the far side (right in LTR mode), and is fluid at XXX-Large breakpoint.
-   * Small: <adapts to smallFluid>
-   * Medium:  <adapts to smallFixedFar>
-   * Large: <adapts to medium>
+   * Small: \<adapts to smallFluid\>
+   * Medium:  \<adapts to smallFixedFar\>
+   * Large: \<adapts to medium\>
    * XLarge: 48px fixed left margin, 32px Left/Right padding
    * XXLarge: 48px fixed left margin, 32px Left/Right padding
    * XXXLarge: 48px fixed left margin, (no redlines for padding, assuming previous breakpoint)
@@ -267,9 +267,9 @@ export enum PanelType {
 
   /**
    * Renders the panel in 'large' mode, anchored to the far side (right in LTR mode), and is fixed at XXX-Large breakpoint.
-   * Small: <adapts to smallFluid>
-   * Medium:  <adapts to smallFixedFar>
-   * Large: <adapts to medium>
+   * Small: \<adapts to smallFluid\>
+   * Medium: \<adapts to smallFixedFar\>
+   * Large: \<adapts to medium\>
    * XLarge: 48px fixed left margin, 32px Left/Right padding
    * XXLarge: 48px fixed left margin, 32px Left/Right padding
    * XXXLarge: 940px width, (no redlines for padding, assuming previous breakpoint)
@@ -278,10 +278,10 @@ export enum PanelType {
 
   /**
    * Renders the panel in 'extra large' mode, anchored to the far side (right in LTR mode).
-   * Small: <adapts to smallFluid>
-   * Medium: <adapts to smallFixedFar>
-   * Large: <adapts to medium>
-   * XLarge: <adapts to large>
+   * Small: \<adapts to smallFluid\>
+   * Medium: \<adapts to smallFixedFar\>
+   * Large: \<adapts to medium\>
+   * XLarge: \<adapts to large\>
    * XXLarge: 176px fixed left margin, 40px Left/Right padding
    * XXXLarge: 176px fixed left margin, 40px Left/Right padding
    */
@@ -289,8 +289,8 @@ export enum PanelType {
 
   /**
    * Renders the panel in 'custom' mode using customWidth, anchored to the far side (right in LTR mode).
-   * Small: <adapts to smallFluid>
-   * Medium: <adapts to smallFixedFar>
+   * Small: \<adapts to smallFluid\>
+   * Medium: \<adapts to smallFixedFar\>
    * Large: 48px fixed left margin, 32px Left/Right padding
    * XLarge: 644px width, 32px Left/Right padding
    * XXLarge: 643px width, 40px Left/Right padding

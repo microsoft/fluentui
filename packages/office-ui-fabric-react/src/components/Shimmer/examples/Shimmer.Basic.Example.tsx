@@ -17,9 +17,7 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
         <Shimmer width={'75%'} />
         <Shimmer width={'50%'} />
         Basic Shimmer with elements provided.
-        <Shimmer
-          shimmerElements={[{ type: ElemType.circle }, { type: ElemType.gap, width: '2%' }, { type: ElemType.line }]}
-        />
+        <Shimmer shimmerElements={[{ type: ElemType.circle }, { type: ElemType.gap, width: '2%' }, { type: ElemType.line }]} />
         <Shimmer
           shimmerElements={[
             { type: ElemType.circle, height: 24 },

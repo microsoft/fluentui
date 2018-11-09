@@ -1,20 +1,24 @@
-require('es6-promise').polyfill();
-/* tslint:disable:no-unused-variable */
+import './styles/styles.scss';
+import './version';
+import 'whatwg-fetch';
+
+import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
+import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
+import { setBaseUrl } from 'office-ui-fabric-react/lib/Utilities';
+import { Route, Router } from 'office-ui-fabric-react/lib/utilities/router/index';
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import * as ReactDOM from 'react-dom';
+
 import { App } from './components/App/App';
 import { AppState } from './components/App/AppState';
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import { Route, Router } from 'office-ui-fabric-react/lib/utilities/router/index';
-import { setBaseUrl } from 'office-ui-fabric-react/lib/Utilities';
+import FluentMessageBar from './components/FluentMessageBar/FluentMessageBar';
 import { HomePage } from './pages/HomePage/HomePage';
 import WindowWidthUtility from './utilities/WindowWidthUtility';
-import './styles/styles.scss';
-import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
-import 'whatwg-fetch';
-import './version';
+import { isLocal, hasUHF } from './utilities/location';
 
+require('es6-promise').polyfill();
+/* tslint:disable:no-unused-variable */
+/* tslint:enable:no-unused-variable */
 const corePackageData = require('../node_modules/office-ui-fabric-core/package.json');
 const corePackageVersion: string = (corePackageData && corePackageData.version) || '9.2.0';
 
@@ -22,10 +26,18 @@ initializeIcons();
 
 let isProduction = process.argv.indexOf('--production') > -1;
 
+declare let Flight; // Contains flight & CDN configuration loaded by manifest
+declare let __webpack_public_path__;
+
+// Final bundle location can be dynamic, so we need to update the public path at runtime to point to the right CDN URL
+if (!isLocal && Flight.baseCDNUrl) {
+  __webpack_public_path__ = Flight.baseCDNUrl;
+}
+
 if (!isProduction) {
   setBaseUrl('./dist/');
 } else {
-  setBaseUrl('https://static2.sharepointonline.com/files/fabric/fabric-website/dist/');
+  setBaseUrl(__webpack_public_path__);
 }
 
 let rootElement;
@@ -75,12 +87,26 @@ function _extractAnchorLink(path): string {
 }
 
 function _onLoad(): void {
+  // Don't load the TopNav if viewed on the Office Dev Portal, which uses the UHF.
+  if (!hasUHF) {
+    require.ensure([], require => {
+      let _topNav = require<any>('./components/TopNav/TopNav').TopNav;
+      _renderApp(_topNav);
+    });
+  } else {
+    _renderApp();
+  }
+}
+
+function _renderApp(TopNav?) {
   // Load the app into this element.
   rootElement = rootElement || document.getElementById('main');
   _getBreakpoint();
 
   ReactDOM.render(
     <Fabric>
+      {TopNav && <TopNav pages={AppState.pages} />}
+      <FluentMessageBar />
       <Router onNewRouteLoaded={_routerDidMount}>
         <Route component={App}>{_getAppRoutes()}</Route>
       </Router>

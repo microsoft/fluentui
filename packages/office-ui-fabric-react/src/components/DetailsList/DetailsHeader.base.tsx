@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { findDOMNode } from 'react-dom';
-import { BaseComponent, css, getRTL, getId, KeyCodes, IRenderFunction, createRef, IClassNames } from '../../Utilities';
+import { BaseComponent, css, getRTL, getId, KeyCodes, IRenderFunction, IClassNames } from '../../Utilities';
 import {
   IColumn,
   IDetailsHeaderBaseProps,
@@ -50,7 +50,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
   };
   private _classNames: IClassNames<IDetailsHeaderStyles>;
   private _rootElement: HTMLElement | undefined;
-  private _rootComponent = createRef<IFocusZone>();
+  private _rootComponent = React.createRef<IFocusZone>();
   private _id: string;
   private _draggedColumnIndex = -1;
   private _dropHintDetails: { [key: number]: IDropHintDetails } = {};
@@ -149,6 +149,12 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     } else {
       this.setState({ columnReorderProps });
     }
+
+    if (newProps.isAllCollapsed !== undefined) {
+      this.setState({
+        isAllCollapsed: newProps.isAllCollapsed
+      });
+    }
   }
 
   public componentWillUnmount(): void {
@@ -237,7 +243,9 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
                       <DetailsRowCheck
                         id={`${this._id}-check`}
                         aria-label={ariaLabelForSelectionColumn}
-                        aria-describedby={`${this._id}-checkTooltip`}
+                        aria-describedby={
+                          ariaLabelForSelectAllCheckbox && !this.props.onRenderColumnHeaderTooltip ? `${this._id}-checkTooltip` : undefined
+                        }
                         data-is-focusable={!isCheckboxHidden}
                         isHeader={true}
                         selected={isAllSelected}

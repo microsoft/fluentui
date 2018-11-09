@@ -1,6 +1,129 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Mon, 01 Oct 2018 12:27:24 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Nov 2018 04:17:34 GMT and should not be manually modified.
+
+## 0.33.2
+Thu, 08 Nov 2018 04:17:34 GMT
+
+### Patches
+
+- Fixes #5849: get rid of explicit loader syntax inside component file
+- Updating context menu shadow styling for card frame and action bar
+
+## 0.33.0
+Tue, 06 Nov 2018 13:31:09 GMT
+
+### Minor changes
+
+- Fixing change in hover card behavior, this change in behavior was caused due  to fabric version update in dashbaord package by fabric bot
+
+## 0.32.2
+Sun, 04 Nov 2018 02:27:52 GMT
+
+### Patches
+
+- Adding necessary wrapper classes for charting in dashboard package
+
+## 0.32.1
+Fri, 02 Nov 2018 18:11:37 GMT
+
+*Version update only*
+
+## 0.32.0
+Fri, 02 Nov 2018 12:28:54 GMT
+
+### Minor changes
+
+- Making changes to layout of card to support scaling of dataviz. Dataviz scale as per the parent element they sit in and in this case the parent element is formed using flex css. Added constraints to check if part of card will have dataviz and changes styles accordingly
+
+### Patches
+
+- css changes in card components
+- render animations for card charts
+
+## 0.31.1
+Wed, 31 Oct 2018 22:35:10 GMT
+
+### Patches
+
+- Add opitional switch for Dashboard Chart -- stack bar chart to not apply default style while data points count is less two
+
+## 0.31.0
+Thu, 25 Oct 2018 12:30:05 GMT
+
+### Minor changes
+
+- Adding support when there is no data for line chart, removing unwanted div's that is not letting flex do it job
+
+## 0.30.3
+Tue, 23 Oct 2018 12:32:16 GMT
+
+### Patches
+
+- Fix an issue with the demo site not being able to load (in npm start or aka.ms/fabricdemo).
+
+## 0.30.2
+Mon, 22 Oct 2018 12:29:57 GMT
+
+### Patches
+
+- "Dashboard/Nav component - added focus style to support keyboard inputs"
+
+## 0.30.1
+Thu, 18 Oct 2018 20:22:36 GMT
+
+### Patches
+
+- Remove api-extractor.disabled.json
+
+## 0.30.0
+Tue, 16 Oct 2018 12:28:48 GMT
+
+### Minor changes
+
+- Adding support for different date formats to line chart in dashboard card. Calculating datapoints to render a line chart with evenly spaced ticks. Updated examples for cards
+
+## 0.29.3
+Mon, 15 Oct 2018 12:29:12 GMT
+
+### Patches
+
+- updating dashboard package
+- Styling for marginLeft in Nav
+
+## 0.29.2
+Mon, 08 Oct 2018 12:24:15 GMT
+
+### Patches
+
+- Moving tslint/prettier dependencies 
+
+## 0.29.1
+Fri, 05 Oct 2018 12:27:02 GMT
+
+### Patches
+
+- removed the line inbetween the grid rows
+
+## 0.29.0
+Thu, 04 Oct 2018 12:26:48 GMT
+
+### Minor changes
+
+- Adding common href for the entire multicount component. Removing href that was in before  that allowed passing href to every row seperately
+
+## 0.28.1
+Wed, 03 Oct 2018 12:28:46 GMT
+
+*Version update only*
+
+## 0.28.0
+Tue, 02 Oct 2018 12:28:04 GMT
+
+### Minor changes
+
+- Adding callback upon clicking on the card title. This can be used in cases like if clicks needs to be instrumented.
+- Add setup banner component for dashboard
 
 ## 0.27.0
 Mon, 01 Oct 2018 12:27:24 GMT

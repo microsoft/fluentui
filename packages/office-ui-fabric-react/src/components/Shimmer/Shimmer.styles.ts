@@ -39,6 +39,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
   return {
     root: [
       classNames.root,
+      theme.fonts.medium,
       {
         position: 'relative',
         height: 'auto'

@@ -4,6 +4,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
 <div>
   <div
     className="ms-DocumentCard ms-DocumentCard--actionable undefined"
+    data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
     role="button"
@@ -22,6 +23,11 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   ms-Image
                   ms-DocumentCardPreview-fileListIcon
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     overflow: hidden;
                   }
               style={
@@ -54,24 +60,17 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               className=
                   ms-Link
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     color: #0078d4;
-                    outline: transparent;
-                    position: relative;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    outline: none;
                     text-decoration: none;
                   }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-                  .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid #ffffff;
-                    bottom: -1px;
-                    content: "";
-                    left: -1px;
+                  .ms-Fabric--isFocusVisible &:focus {
                     outline: 1px solid #666666;
-                    position: absolute;
-                    right: -1px;
-                    top: -1px;
-                    z-index: 1;
                   }
                   &:active, &:hover, &:active:hover {
                     color: #004578;
@@ -94,6 +93,11 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   ms-Image
                   ms-DocumentCardPreview-fileListIcon
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     overflow: hidden;
                   }
               style={
@@ -126,24 +130,17 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               className=
                   ms-Link
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     color: #0078d4;
-                    outline: transparent;
-                    position: relative;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    outline: none;
                     text-decoration: none;
                   }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-                  .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid #ffffff;
-                    bottom: -1px;
-                    content: "";
-                    left: -1px;
+                  .ms-Fabric--isFocusVisible &:focus {
                     outline: 1px solid #666666;
-                    position: absolute;
-                    right: -1px;
-                    top: -1px;
-                    z-index: 1;
                   }
                   &:active, &:hover, &:active:hover {
                     color: #004578;
@@ -166,6 +163,11 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   ms-Image
                   ms-DocumentCardPreview-fileListIcon
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     overflow: hidden;
                   }
               style={
@@ -198,24 +200,17 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               className=
                   ms-Link
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     color: #0078d4;
-                    outline: transparent;
-                    position: relative;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    outline: none;
                     text-decoration: none;
                   }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-                  .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid #ffffff;
-                    bottom: -1px;
-                    content: "";
-                    left: -1px;
+                  .ms-Fabric--isFocusVisible &:focus {
                     outline: 1px solid #666666;
-                    position: absolute;
-                    right: -1px;
-                    top: -1px;
-                    z-index: 1;
                   }
                   &:active, &:hover, &:active:hover {
                     color: #004578;
@@ -273,7 +268,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   font-size: 14px;
                   font-weight: 400;
                 }
-            role="persentation"
+            role="presentation"
             size={11}
           >
             <div
@@ -329,7 +324,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   font-size: 14px;
                   font-weight: 400;
                 }
-            role="persentation"
+            role="presentation"
             size={11}
           >
             <div
@@ -348,8 +343,13 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     ms-Image
                     ms-Persona-image
                     {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
                       border-radius: 50%;
                       border: 0px;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
                       height: 32px;
                       left: 0px;
                       margin-right: 10px;
@@ -426,6 +426,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -472,7 +473,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 top: 0px;
               }
               &:hover {
-                color: #004578;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -547,6 +548,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -593,7 +595,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 top: 0px;
               }
               &:hover {
-                color: #004578;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -668,6 +670,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -714,7 +717,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 top: 0px;
               }
               &:hover {
-                color: #004578;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -804,6 +807,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
   <p />
   <div
     className="ms-DocumentCard ms-DocumentCard--actionable undefined"
+    data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
@@ -896,7 +900,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   font-size: 14px;
                   font-weight: 400;
                 }
-            role="persentation"
+            role="presentation"
             size={11}
           >
             <div
@@ -952,7 +956,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   font-size: 14px;
                   font-weight: 400;
                 }
-            role="persentation"
+            role="presentation"
             size={11}
           >
             <div
@@ -971,8 +975,13 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     ms-Image
                     ms-Persona-image
                     {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
                       border-radius: 50%;
                       border: 0px;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
                       height: 32px;
                       left: 0px;
                       margin-right: 10px;
@@ -1035,6 +1044,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
   <p />
   <div
     className="ms-DocumentCard ms-DocumentCard--actionable undefined"
+    data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
@@ -1125,7 +1135,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   font-size: 14px;
                   font-weight: 400;
                 }
-            role="persentation"
+            role="presentation"
             size={11}
           >
             <div
@@ -1181,7 +1191,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   font-size: 14px;
                   font-weight: 400;
                 }
-            role="persentation"
+            role="presentation"
             size={11}
           >
             <div
@@ -1200,8 +1210,13 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     ms-Image
                     ms-Persona-image
                     {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
                       border-radius: 50%;
                       border: 0px;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
                       height: 32px;
                       left: 0px;
                       margin-right: 10px;
@@ -1264,6 +1279,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
   <p />
   <div
     className="ms-DocumentCard ms-DocumentCard--actionable undefined"
+    data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
@@ -1327,7 +1343,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   font-size: 14px;
                   font-weight: 400;
                 }
-            role="persentation"
+            role="presentation"
             size={11}
           >
             <div
@@ -1383,7 +1399,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   font-size: 14px;
                   font-weight: 400;
                 }
-            role="persentation"
+            role="presentation"
             size={11}
           >
             <div
@@ -1402,8 +1418,13 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     ms-Image
                     ms-Persona-image
                     {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
                       border-radius: 50%;
                       border: 0px;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
                       height: 32px;
                       left: 0px;
                       margin-right: 10px;
@@ -1466,6 +1487,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
   <p />
   <div
     className="ms-DocumentCard ms-DocumentCard--actionable undefined"
+    data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
@@ -1534,7 +1556,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     font-size: 14px;
                     font-weight: 400;
                   }
-              role="persentation"
+              role="presentation"
               size={11}
             >
               <div
@@ -1553,8 +1575,13 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                       ms-Image
                       ms-Persona-image
                       {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
                         border-radius: 50%;
                         border: 0px;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 14px;
+                        font-weight: 400;
                         height: 32px;
                         left: 0px;
                         margin-right: 10px;

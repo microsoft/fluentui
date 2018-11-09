@@ -26,9 +26,7 @@ export class LayerHostedExample extends React.Component<
 
   public render(): JSX.Element {
     const { showLayer, showLayerNoId, showHost } = this.state;
-    const content = (
-      <div className={'LayerExample-content ' + AnimationClassNames.scaleUpIn100}>This is example layer content.</div>
-    );
+    const content = <div className={'LayerExample-content ' + AnimationClassNames.scaleUpIn100}>This is example layer content.</div>;
 
     return (
       <div>
@@ -37,9 +35,9 @@ export class LayerHostedExample extends React.Component<
         {showHost && <LayerHost id="layerhost1" className="LayerExample-customHost" />}
 
         <p id="foo">
-          In some cases, you may need to contain layered content within an area. Create an instance of a LayerHost along
-          with an id, and provide a hostId on the layer to render it within the specific host. (Note that it's important
-          that you don't include children within the LayerHost. It's meant to contain Layered content only.)
+          In some cases, you may need to contain layered content within an area. Create an instance of a LayerHost along with an id, and
+          provide a hostId on the layer to render it within the specific host. (Note that it's important that you don't include children
+          within the LayerHost. It's meant to contain Layered content only.)
         </p>
 
         <Checkbox

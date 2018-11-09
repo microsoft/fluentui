@@ -2,6 +2,28 @@
   "name": "@uifabric/jest-serializer-merge-styles",
   "entries": [
     {
+      "version": "6.0.6",
+      "tag": "@uifabric/jest-serializer-merge-styles_v6.0.6",
+      "date": "Mon, 08 Oct 2018 12:24:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Moving tslint/prettier dependencies ",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8ba9e22a7a8a2a1e7facda5aa7d91423c7af43ed"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.1.1 <2.0.0` to `>=1.1.2 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.9.3 <7.0.0` to `>=6.9.4 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.0.5",
       "tag": "@uifabric/jest-serializer-merge-styles_v6.0.5",
       "date": "Fri, 21 Sep 2018 14:25:46 GMT",

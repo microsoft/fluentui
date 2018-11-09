@@ -59,7 +59,7 @@ export class DonutChartBase extends React.Component<
     });
   }
   public render(): JSX.Element {
-    const { data } = this.props;
+    const { data, href } = this.props;
     const { _width, _height } = this.state;
 
     const { theme, className, styles, innerRadius } = this.props;
@@ -88,6 +88,7 @@ export class DonutChartBase extends React.Component<
             hoverLeaveCallback={this._hoverLeave}
             uniqText={this._uniqText}
             activeArc={this.state.activeLegend}
+            href={href}
           />
         </svg>
         {this.state.showHover ? (

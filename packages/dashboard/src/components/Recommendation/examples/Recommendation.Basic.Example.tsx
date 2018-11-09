@@ -2,11 +2,7 @@ import * as React from 'react';
 import { Recommendation } from '../Recommendation';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-import {
-  wrappingContainerHeight,
-  wrappingContainerWidth,
-  IRecommendationExampleState
-} from './RecommendationExamples.Common';
+import { wrappingContainerHeight, wrappingContainerWidth, IRecommendationExampleState } from './RecommendationExamples.Common';
 
 interface IRecommendationBasicStyles {
   sampleContainerStyle: IStyle;
@@ -44,8 +40,7 @@ export class RecommendationBasicExample extends React.Component<{}, IRecommendat
 
     const recommendationBarTitle = 'Recommended based on your lorem ipsum';
     const recommendationDescriptionHeader = 'Lorem ipsum dolor sit amet';
-    const recommendationDescriptionHeaderLong =
-      'The quick brown fox jumps over the lazy dog, The quick brown fox jumps over the lazy dog';
+    const recommendationDescriptionHeaderLong = 'The quick brown fox jumps over the lazy dog, The quick brown fox jumps over the lazy dog';
     // tslint:disable-next-line:max-line-length
     const recommendationDescription = `I am a recommendation template common control example. My title is above, and this is my content area for descriptive text.`;
 

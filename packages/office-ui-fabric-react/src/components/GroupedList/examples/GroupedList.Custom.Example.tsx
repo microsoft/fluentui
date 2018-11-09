@@ -53,10 +53,6 @@ export class GroupedListCustomExample extends React.Component {
   }
 
   private _onRenderFooter(props: IGroupDividerProps): JSX.Element {
-    return (
-      <div className={css('ms-GroupedListExample-footer', FontClassNames.large)}>
-        This is a custom footer for {props.group!.name}
-      </div>
-    );
+    return <div className={css('ms-GroupedListExample-footer', FontClassNames.large)}>This is a custom footer for {props.group!.name}</div>;
   }
 }

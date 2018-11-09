@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "ChoiceGroupOption: component mergeStyled class names no longer gets overridden by choicegroupoption item className prop",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "kchau@microsoft.com"
+}

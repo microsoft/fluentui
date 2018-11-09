@@ -3,7 +3,7 @@ import { DetailsHeader } from './DetailsHeader';
 import { IDetailsHeader, IDropHintDetails } from './DetailsHeader.types';
 import { DetailsListLayoutMode, IColumn, ColumnActionsMode } from './DetailsList.types';
 import { Selection, SelectionMode } from '../../utilities/selection/index';
-import { EventGroup, createRef } from '../../Utilities';
+import { EventGroup } from '../../Utilities';
 import { mount } from 'enzyme';
 import * as renderer from 'react-test-renderer';
 
@@ -252,7 +252,7 @@ describe('DetailsHeader', () => {
 
     const onColumnResized = (column: IColumn, size: number, index: number): { size: number; index: number } =>
       (lastResize = { size, index });
-    const headerRef = createRef<IDetailsHeader>();
+    const headerRef = React.createRef<IDetailsHeader>();
 
     const wrapper = mount(
       <DetailsHeader
@@ -312,8 +312,66 @@ describe('DetailsHeader', () => {
     expect(component.toJSON()).toMatchSnapshot();
   });
 
+  // if ariaLabelForSelectAllCheckbox is not provided, the select all checkbox label should not
+  // be rendered and therefore aria-describedby should not exist on the select all checkbox
+  it('does not accessible label for select all checkbox or aria-describedby', () => {
+    const component = mount(
+      <DetailsHeader
+        selection={_selection}
+        selectionMode={SelectionMode.multiple}
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        columns={columns}
+      />
+    );
+
+    const selectAllCheckBoxAriaLabelledBy = component
+      .find('[aria-colindex=1]')
+      .getDOMNode()
+      .getAttribute('aria-labelledby');
+
+    expect(
+      component
+        .find(`#${selectAllCheckBoxAriaLabelledBy}`)
+        .first()
+        .getDOMNode()
+        .hasAttribute('aria-describedby')
+    ).toBe(false);
+
+    expect(component.find(`#${selectAllCheckBoxAriaLabelledBy}Tooltip`).length).toEqual(0);
+  });
+
+  // if ariaLabelForSelectAllCheckbox is passed in and onRenderColumnHeaderTooltip is not,
+  // the select all checkbox label should be rendered and aria-describedby on select all
+  // checkbox should exist with a valid id
+  it('renders accessible label for select all checkbox and valid aria-describedby', () => {
+    const component = mount(
+      <DetailsHeader
+        selection={_selection}
+        selectionMode={SelectionMode.multiple}
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        columns={columns}
+        ariaLabelForSelectAllCheckbox={'Toggle selection for all items'}
+      />
+    );
+
+    const selectAllCheckBoxAriaLabelledBy = component
+      .find('[aria-colindex=1]')
+      .getDOMNode()
+      .getAttribute('aria-labelledby');
+
+    expect(
+      component
+        .find(`#${selectAllCheckBoxAriaLabelledBy}`)
+        .first()
+        .getDOMNode()
+        .getAttribute('aria-describedby')!
+    ).toEqual(`${selectAllCheckBoxAriaLabelledBy}Tooltip`);
+
+    expect(component.find(`#${selectAllCheckBoxAriaLabelledBy}Tooltip`).length).toEqual(1);
+  });
+
   it('should mark the columns as draggable', () => {
-    const headerRef = createRef<IDetailsHeader>();
+    const headerRef = React.createRef<IDetailsHeader>();
 
     const component = mount(
       <DetailsHeader
@@ -346,7 +404,7 @@ describe('DetailsHeader', () => {
   });
 
   it('should not let frozen columns to be dragged', () => {
-    const headerRef = createRef<IDetailsHeader>();
+    const headerRef = React.createRef<IDetailsHeader>();
 
     const component = mount(
       <DetailsHeader
@@ -382,7 +440,7 @@ describe('DetailsHeader', () => {
   });
 
   it('should perform dragstart and dragend correctly', () => {
-    const headerRef = createRef<IDetailsHeader>();
+    const headerRef = React.createRef<IDetailsHeader>();
 
     const component = mount(
       <DetailsHeader
@@ -419,7 +477,7 @@ describe('DetailsHeader', () => {
   });
 
   it('should perform dragOver correctly', () => {
-    const headerRef = createRef<IDetailsHeader>();
+    const headerRef = React.createRef<IDetailsHeader>();
 
     const component = mount(
       <DetailsHeader
@@ -523,7 +581,7 @@ describe('DetailsHeader', () => {
       _targetIndex = targetIndex;
     };
 
-    const headerRef = createRef<IDetailsHeader>();
+    const headerRef = React.createRef<IDetailsHeader>();
 
     const _columnReorderPropsForDrop = {
       frozenColumnCountFromStart: 1,

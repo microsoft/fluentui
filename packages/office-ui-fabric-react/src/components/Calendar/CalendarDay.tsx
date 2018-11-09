@@ -38,7 +38,7 @@ export interface ICalendarDay {
   focus(): void;
 }
 
-export interface ICalendarDayProps extends React.Props<CalendarDay> {
+export interface ICalendarDayProps extends React.ClassAttributes<CalendarDay> {
   componentRef?: (c: ICalendarDay) => void;
   strings: ICalendarStrings;
   selectedDate: Date;
@@ -284,22 +284,22 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                         )}
                         ref={element => this._setDayCellRef(element, day, isNavigatedDate)}
                         onMouseOver={
-                          dateRangeType !== DateRangeType.Day
+                          dateRangeType !== DateRangeType.Day && day.isInBounds
                             ? this._onDayMouseOver(day.originalDate, weekIndex, dayIndex, dateRangeType)
                             : undefined
                         }
                         onMouseLeave={
-                          dateRangeType !== DateRangeType.Day
+                          dateRangeType !== DateRangeType.Day && day.isInBounds
                             ? this._onDayMouseLeave(day.originalDate, weekIndex, dayIndex, dateRangeType)
                             : undefined
                         }
                         onMouseDown={
-                          dateRangeType !== DateRangeType.Day
+                          dateRangeType !== DateRangeType.Day && day.isInBounds
                             ? this._onDayMouseDown(day.originalDate, weekIndex, dayIndex, dateRangeType)
                             : undefined
                         }
                         onMouseUp={
-                          dateRangeType !== DateRangeType.Day
+                          dateRangeType !== DateRangeType.Day && day.isInBounds
                             ? this._onDayMouseUp(day.originalDate, weekIndex, dayIndex, dateRangeType)
                             : undefined
                         }
@@ -483,14 +483,14 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       // set the press styling
       if (dateRangeType === DateRangeType.Month) {
         this._applyFunctionToDayRefs((ref, day) => {
-          if (ref && day.originalDate.getMonth() === originalDate.getMonth()) {
+          if (ref && day.originalDate.getMonth() === originalDate.getMonth() && day.isInBounds) {
             ref.classList.add(styles.dayPress);
           }
         });
       } else {
         // week or work week view
         this._applyFunctionToDayRefs((ref, day, dayWeekIndex) => {
-          if (ref && dayWeekIndex === weekIndex) {
+          if (ref && dayWeekIndex === weekIndex && day.isInBounds) {
             ref.classList.add(styles.dayPress);
             ref.classList.add(styles.dayIsHighlighted);
           } else if (ref) {
@@ -511,14 +511,14 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       // remove press styling
       if (dateRangeType === DateRangeType.Month) {
         this._applyFunctionToDayRefs((ref, day) => {
-          if (ref && day.originalDate.getMonth() === originalDate.getMonth()) {
+          if (ref && day.originalDate.getMonth() === originalDate.getMonth() && day.isInBounds) {
             ref.classList.remove(styles.dayPress);
           }
         });
       } else {
         // week or work week view
         this._applyFunctionToDayRefs((ref, day, dayWeekIndex) => {
-          if (ref && dayWeekIndex === weekIndex) {
+          if (ref && dayWeekIndex === weekIndex && day.isInBounds) {
             ref.classList.remove(styles.dayPress);
           }
         });
@@ -536,14 +536,14 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       // set the hover styling on every day in the same month
       if (dateRangeType === DateRangeType.Month) {
         this._applyFunctionToDayRefs((ref, day) => {
-          if (ref && day.originalDate.getMonth() === originalDate.getMonth()) {
+          if (ref && day.originalDate.getMonth() === originalDate.getMonth() && day.isInBounds) {
             ref.classList.add(styles.dayHover);
           }
         });
       } else {
         // week or work week view
         this._applyFunctionToDayRefs((ref, day, dayWeekIndex) => {
-          if (ref && dayWeekIndex === weekIndex) {
+          if (ref && dayWeekIndex === weekIndex && day.isInBounds) {
             ref.classList.add(styles.dayHover);
           }
         });
@@ -561,14 +561,14 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       // remove the hover and pressed styling
       if (dateRangeType === DateRangeType.Month) {
         this._applyFunctionToDayRefs((ref, day) => {
-          if (ref && day.originalDate.getMonth() === originalDate.getMonth()) {
+          if (ref && day.originalDate.getMonth() === originalDate.getMonth() && day.isInBounds) {
             ref.classList.remove(styles.dayHover);
           }
         });
       } else {
         // week or work week view
         this._applyFunctionToDayRefs((ref, day, dayWeekIndex) => {
-          if (ref && dayWeekIndex === weekIndex) {
+          if (ref && dayWeekIndex === weekIndex && day.isInBounds) {
             ref.classList.remove(styles.dayHover);
           }
         });

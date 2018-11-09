@@ -1,6 +1,170 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 01 Oct 2018 12:27:24 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Nov 2018 04:17:34 GMT and should not be manually modified.
+
+## 6.41.0
+Thu, 08 Nov 2018 04:17:34 GMT
+
+### Minor changes
+
+- Converting existing Toggle component to use Foundation.
+
+### Patches
+
+- added bookmark signal icons
+
+## 6.40.3
+Fri, 02 Nov 2018 18:11:37 GMT
+
+*Version update only*
+
+## 6.40.2
+Fri, 02 Nov 2018 12:28:55 GMT
+
+*Version update only*
+
+## 6.40.1
+Wed, 31 Oct 2018 12:32:41 GMT
+
+### Patches
+
+- Add theme provider helper and replace usage of scheme prop with theme provider.
+
+## 6.40.0
+Mon, 29 Oct 2018 12:31:29 GMT
+
+### Minor changes
+
+- Announced: add initial component prototype and examples
+
+## 6.39.5
+Thu, 25 Oct 2018 12:30:06 GMT
+
+*Version update only*
+
+## 6.39.4
+Wed, 24 Oct 2018 12:28:58 GMT
+
+### Patches
+
+- fix breaking changes for odsp
+
+## 6.39.3
+Tue, 23 Oct 2018 12:32:16 GMT
+
+### Patches
+
+- Fix an issue with the demo site not being able to load (in npm start or aka.ms/fabricdemo).
+
+## 6.39.2
+Mon, 22 Oct 2018 12:29:57 GMT
+
+### Patches
+
+- Move theme definitions to theme-samples package. Remove Fluent styles page.
+- Use fluent-theme package customizations.
+
+## 6.39.1
+Thu, 18 Oct 2018 20:22:36 GMT
+
+### Patches
+
+- Remove api-extractor.disabled.json
+- Fluent: Updating fluent styles for ChoiceGroup plus addressing feedback on Breadcrumb, Checkbox and Dropdown.
+
+## 6.39.0
+Wed, 17 Oct 2018 12:29:40 GMT
+
+### Minor changes
+
+- Breadcrumb: fluent updates to breadcrumb styles.
+
+### Patches
+
+- revert PR 6258 for signal icon issues
+
+## 6.38.1
+Wed, 17 Oct 2018 01:29:55 GMT
+
+### Patches
+
+- Updated Readme
+- Fix FluentStylesPage by wrapping a Customizer around each example
+
+## 6.38.0
+Tue, 16 Oct 2018 12:28:48 GMT
+
+### Minor changes
+
+- Fluent: updates the styles of Dropdown and CheckBox to follow fluent specs.
+
+### Patches
+
+- Add customizations for component examples. Remove redundant customizations from Button example.
+
+## 6.37.1
+Mon, 15 Oct 2018 12:29:12 GMT
+
+### Patches
+
+- updating snapshot tests in experiments package
+- Added font theme setting to Button, ChicletCard, CollapsibleSection, Shimmer, ShimmerCircle, ShimmerElementsGroup, ShimmerGap, ShimmerLine, HorizontalStack, Text. Snapshots updated in VerticalStack, Stack.
+- Improve BaseState typing and fix use by experimental components.
+
+## 6.37.0
+Wed, 10 Oct 2018 12:29:05 GMT
+
+### Minor changes
+
+- Separator: change text size and add theming example
+
+## 6.36.1
+Mon, 08 Oct 2018 19:25:44 GMT
+
+### Patches
+
+- Sidebar: added index export
+
+## 6.36.0
+Mon, 08 Oct 2018 12:24:15 GMT
+
+### Minor changes
+
+- Sidebar: Added new component
+
+### Patches
+
+- Moving tslint/prettier dependencies 
+- Fix a11y violations in Fluent ContextualMenu examples
+- Sidebar: Fixed filename and imports
+
+## 6.35.0
+Fri, 05 Oct 2018 23:29:26 GMT
+
+### Minor changes
+
+- Sidebar: Added new component
+
+## 6.34.2
+Thu, 04 Oct 2018 12:26:48 GMT
+
+*Version update only*
+
+## 6.34.1
+Wed, 03 Oct 2018 12:28:46 GMT
+
+*Version update only*
+
+## 6.34.0
+Tue, 02 Oct 2018 12:28:04 GMT
+
+### Minor changes
+
+- Separator: new experimental component
+
+### Patches
+
+- Changes to support Foundation interface refactoring.
 
 ## 6.33.0
 Mon, 01 Oct 2018 12:27:24 GMT

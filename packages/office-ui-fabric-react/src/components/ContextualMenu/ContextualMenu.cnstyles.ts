@@ -1,13 +1,5 @@
-import {
-  concatStyleSets,
-  FontSizes,
-  FontWeights,
-  getFocusStyle,
-  HighContrastSelector,
-  IRawStyle,
-  ITheme
-} from '../../Styling';
-import { IContextualMenuStyles, IMenuItemStyles } from './ContextualMenu.types';
+import { concatStyleSets, FontSizes, getFocusStyle, HighContrastSelector, IRawStyle, ITheme } from '../../Styling';
+import { IMenuItemStyles } from './ContextualMenu.types';
 import { memoizeFunction } from '../../Utilities';
 
 export const CONTEXTUAL_MENU_ITEM_HEIGHT = '32px';
@@ -193,53 +185,5 @@ export const getMenuItemStyles = memoizeFunction(
     };
 
     return concatStyleSets(menuItemStyles);
-  }
-);
-
-export const getStyles = memoizeFunction(
-  (theme: ITheme): IContextualMenuStyles => {
-    const { semanticColors, fonts } = theme;
-
-    const ContextualMenuBackground = semanticColors.bodyBackground;
-    const ContextualMenuHeaderColor = semanticColors.menuHeader;
-
-    const styles: IContextualMenuStyles = {
-      root: {
-        backgroundColor: ContextualMenuBackground,
-        minWidth: '180px'
-      },
-      container: {},
-      list: {
-        listStyleType: 'none',
-        margin: '0',
-        padding: '0',
-        lineHeight: '0'
-      },
-      title: {
-        fontSize: '16px',
-        paddingRight: '14px',
-        paddingLeft: '14px',
-        paddingBottom: '5px',
-        paddingTop: '5px',
-        backgroundColor: theme.palette.neutralLight
-      },
-      header: [
-        fonts.small,
-        {
-          fontWeight: FontWeights.semibold,
-          color: ContextualMenuHeaderColor,
-          background: 'none',
-          backgroundColor: 'transparent',
-          border: 'none',
-          height: CONTEXTUAL_MENU_ITEM_HEIGHT,
-          lineHeight: CONTEXTUAL_MENU_ITEM_HEIGHT,
-          cursor: 'default',
-          padding: '0px 6px',
-          userSelect: 'none',
-          textAlign: 'left'
-        }
-      ]
-    };
-    return concatStyleSets(styles);
   }
 );

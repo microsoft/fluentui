@@ -33,23 +33,12 @@ export class TextFieldCustomRenderExample extends React.Component<
     return (
       <div className="ms-CustomRenderExample" style={{ display: 'flex', alignItems: 'center' }}>
         <span>TextField with custom label render</span>
-        <span
-          className="ms-CustomRenderExample-labelIconArea"
-          ref={menuButton => (this._iconButtonElement = menuButton!)}
-        >
+        <span className="ms-CustomRenderExample-labelIconArea" ref={menuButton => (this._iconButtonElement = menuButton!)}>
           <IconButton iconProps={{ iconName: 'Info' }} title="Info" ariaLabel="Info" onClick={this._onClick} />
         </span>
         {isCalloutVisible && (
-          <Callout
-            className="ms-CustomRenderExample-callout"
-            target={this._iconButtonElement}
-            onDismiss={this._onDismiss}
-          >
-            <text>
-              {' '}
-              In additon to the label itself, this label includes an iconbutton which pops out more information in a
-              callout
-            </text>
+          <Callout className="ms-CustomRenderExample-callout" target={this._iconButtonElement} onDismiss={this._onDismiss}>
+            <text> In additon to the label itself, this label includes an iconbutton which pops out more information in a callout</text>
           </Callout>
         )}
       </div>

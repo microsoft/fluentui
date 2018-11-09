@@ -1,6 +1,76 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Mon, 01 Oct 2018 12:27:24 GMT and should not be manually modified.
+This log was last generated on Wed, 31 Oct 2018 12:32:41 GMT and should not be manually modified.
+
+## 6.34.0
+Wed, 31 Oct 2018 12:32:41 GMT
+
+### Minor changes
+
+- API changes to getSchemedContext for use by theme provider.
+
+## 6.33.0
+Fri, 26 Oct 2018 12:32:35 GMT
+
+### Minor changes
+
+- Add api-extractor.json
+
+## 6.32.2
+Wed, 24 Oct 2018 12:28:58 GMT
+
+### Patches
+
+- getIconClassName: Strongly type the use of IStyle constant.
+
+## 6.32.1
+Tue, 23 Oct 2018 12:32:16 GMT
+
+### Patches
+
+- Fix an issue with the demo site not being able to load (in npm start or aka.ms/fabricdemo).
+
+## 6.32.0
+Mon, 22 Oct 2018 12:29:57 GMT
+
+### Minor changes
+
+- Fix unnecessary `IRGB` export. This interface is only used by internals. Use the `IRGB` interface declaration from office-ui-fabric-react package instead.
+
+## 6.31.0
+Thu, 18 Oct 2018 20:22:36 GMT
+
+### Minor changes
+
+- Enable api-extractor task for styling
+
+## 6.30.0
+Tue, 09 Oct 2018 12:26:48 GMT
+
+### Minor changes
+
+- focusBorder changed to neutralSecondary
+
+## 6.29.2
+Mon, 08 Oct 2018 12:24:15 GMT
+
+### Patches
+
+- Moving tslint/prettier dependencies 
+
+## 6.29.1
+Fri, 05 Oct 2018 23:29:26 GMT
+
+### Patches
+
+- Fixing getGlobalClassNames to return the correct class names even when the theme object is different.
+
+## 6.29.0
+Thu, 04 Oct 2018 12:26:48 GMT
+
+### Minor changes
+
+- add delayLength parameter to _createDefaultAnimation in PulsingBeaconAnimationStyles
 
 ## 6.28.0
 Mon, 01 Oct 2018 12:27:24 GMT

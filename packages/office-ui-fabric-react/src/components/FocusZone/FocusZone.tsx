@@ -143,7 +143,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
   /**
    * Sets focus to the first tabbable item in the zone.
-   * @param {boolean} forceIntoFirstElement If true, focus will be forced into the first element, even
+   * @param forceIntoFirstElement - If true, focus will be forced into the first element, even
    * if focus is already in the focus zone.
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
@@ -180,7 +180,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
    * Sets focus to a specific child element within the zone. This can be used in conjunction with
    * onBeforeFocus to created delayed focus scenarios (like animate the scroll position to the correct
    * location and then focus.)
-   * @param {HTMLElement} element The child element within the zone to focus.
+   * @param element - The child element within the zone to focus.
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
   public focusElement(element: HTMLElement): boolean {
@@ -660,12 +660,19 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         getRTL(),
         (activeRect: ClientRect, targetRect: ClientRect) => {
           let distance = -1;
+          let topBottomComparison;
 
-          if (
-            targetRect.bottom > activeRect.top &&
-            targetRect.right <= activeRect.right &&
-            this.props.direction !== FocusZoneDirection.vertical
-          ) {
+          if (getRTL()) {
+            // When in RTL, this comparison should be the same as the one in _moveFocusRight for LTR.
+            // Going left at a leftmost rectangle will go down a line instead of up a line like in LTR.
+            // This is important, because we want to be comparing the top of the target rect
+            // with the bottom of the active rect.
+            topBottomComparison = targetRect.top.toFixed(3) < activeRect.bottom.toFixed(3);
+          } else {
+            topBottomComparison = targetRect.bottom.toFixed(3) > activeRect.top.toFixed(3);
+          }
+
+          if (topBottomComparison && targetRect.right <= activeRect.right && this.props.direction !== FocusZoneDirection.vertical) {
             distance = activeRect.right - targetRect.right;
           } else {
             if (!shouldWrap) {
@@ -693,12 +700,19 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         !getRTL(),
         (activeRect: ClientRect, targetRect: ClientRect) => {
           let distance = -1;
+          let topBottomComparison;
 
-          if (
-            targetRect.top < activeRect.bottom &&
-            targetRect.left >= activeRect.left &&
-            this.props.direction !== FocusZoneDirection.vertical
-          ) {
+          if (getRTL()) {
+            // When in RTL, this comparison should be the same as the one in _moveFocusLeft for LTR.
+            // Going right at a rightmost rectangle will go up a line instead of down a line like in LTR.
+            // This is important, because we want to be comparing the bottom of the target rect
+            // with the top of the active rect.
+            topBottomComparison = targetRect.bottom.toFixed(3) > activeRect.top.toFixed(3);
+          } else {
+            topBottomComparison = targetRect.top.toFixed(3) < activeRect.bottom.toFixed(3);
+          }
+
+          if (topBottomComparison && targetRect.left >= activeRect.left && this.props.direction !== FocusZoneDirection.vertical) {
             distance = targetRect.left - activeRect.left;
           } else if (!shouldWrap) {
             distance = LARGE_NEGATIVE_DISTANCE_FROM_CENTER;

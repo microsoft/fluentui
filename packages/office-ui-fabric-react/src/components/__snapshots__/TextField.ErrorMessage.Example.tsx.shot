@@ -33,10 +33,15 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
         className=
             ms-Label
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
               color: #333333;
               display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -161,10 +166,15 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
         className=
             ms-Label
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
               color: #333333;
               display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -294,10 +304,15 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
         className=
             ms-Label
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
               color: #333333;
               display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -434,10 +449,15 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
         className=
             ms-Label
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
               color: #333333;
               display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -562,10 +582,15 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
         className=
             ms-Label
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
               color: #333333;
               display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -695,10 +720,15 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
         className=
             ms-Label
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
               color: #333333;
               display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -845,10 +875,15 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
         className=
             ms-Label
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
               color: #333333;
               display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -974,10 +1009,15 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
         className=
             ms-Label
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
               color: #333333;
               display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -1103,10 +1143,15 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
         className=
             ms-Label
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
               color: #333333;
               display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -1246,11 +1291,15 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
         className=
             ms-Label
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
               color: #333333;
               display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
+              font-weight: 400;
               height: 32px;
               line-height: 22px;
               margin-bottom: 0px;
@@ -1386,10 +1435,15 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
         className=
             ms-Label
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
               color: #333333;
               display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -1531,10 +1585,15 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
           className=
               ms-Label
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
                 color: #333333;
                 display: block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
@@ -1787,10 +1846,15 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
           className=
               ms-Label
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
                 color: #333333;
                 display: block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;

@@ -1,23 +1,35 @@
-import * as React from 'react';
+import { BaseComponentMin, IBaseProps } from './BaseComponentMin';
+import { IStateComponentProps } from '../Foundation';
 
-export interface IBaseStateOptions<TState> {
+export interface IBaseStateOptions<TViewProps, TState> {
   controlledProps: (keyof TState)[];
+  transformViewProps: (newProps: TViewProps) => TViewProps;
 }
 
-export class BaseState<TProps, TState> extends React.Component<TProps, TState> {
+export class BaseState<TComponentProps extends IBaseProps, TViewProps, TState> extends BaseComponentMin<
+  IStateComponentProps<TComponentProps, TViewProps>,
+  TState
+> {
   private _controlledProps: (keyof TState)[];
+  private _transformViewProps: (newProps: TViewProps) => TViewProps;
 
-  constructor(props: TProps, options: Partial<IBaseStateOptions<TState>> = {}) {
+  constructor(props: IStateComponentProps<TComponentProps, TViewProps>, options: Partial<IBaseStateOptions<TViewProps, TState>> = {}) {
     super(props);
     this._controlledProps = options.controlledProps || [];
+    this._transformViewProps =
+      options.transformViewProps ||
+      ((newProps: TViewProps) => {
+        return newProps;
+      });
   }
 
-  public componentWillReceiveProps(newProps: TProps): void {
+  public componentWillReceiveProps(newProps: IStateComponentProps<TComponentProps, TViewProps>): void {
     for (const propName of this._controlledProps) {
       // tslint:disable-next-line:no-any
       const controlledPropValue = (newProps as any)[propName];
 
       if (controlledPropValue !== undefined && controlledPropValue !== this.state[propName]) {
+        // TODO: should we consolidate this into one setState call?
         this.setState({
           [propName]: controlledPropValue
           // tslint:disable-next-line:no-any
@@ -27,20 +39,18 @@ export class BaseState<TProps, TState> extends React.Component<TProps, TState> {
   }
 
   public render(): JSX.Element | null {
-    // tslint:disable-next-line:no-any
-    const { renderView, ...rest } = this.props as any;
-
-    const newProps: TProps = {
-      ...rest,
+    let newProps = {
       ...(this.state as {}),
-      ...this._getControlledProps()
-    };
+      ...(this._getControlledProps() as {})
+    } as TViewProps;
 
-    return renderView(newProps);
+    newProps = this._transformViewProps(newProps);
+
+    return this.props.renderView(newProps);
   }
 
-  private _getControlledProps(): {} {
-    const result = {};
+  private _getControlledProps(): Partial<TViewProps> {
+    const result: Partial<TViewProps> = {};
 
     for (const propName of this._controlledProps) {
       // tslint:disable-next-line:no-any
