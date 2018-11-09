@@ -3,11 +3,13 @@ import { CheckboxStyles } from './styles/Checkbox.styles';
 import { ChoiceGroupOptionStyles } from './styles/ChoiceGroupOption.styles';
 import { ComboBoxStyles } from './styles/ComboBox.styles';
 import { CompoundButtonStyles } from './styles/CompoundButton.styles';
+import { ContextualMenuStyles } from './styles/ContextualMenu.styles';
 import { DefaultButtonStyles } from './styles/DefaultButton.styles';
 import { DialogStyles, DialogContentStyles, DialogFooterStyles } from './styles/Dialog.styles';
 import { DropdownStyles } from './styles/Dropdown.styles';
 import { LabelStyles } from './styles/Label.styles';
 import { LinkStyles } from './styles/Link.styles';
+import { PivotStyles } from './styles/Pivot.styles';
 import { PrimaryButtonStyles } from './styles/PrimaryButton.styles';
 import { RatingStyles } from './styles/Rating.styles';
 import { SliderStyles } from './styles/Slider.styles';
@@ -41,6 +43,9 @@ export const FluentStyles: any = {
   ComboBox: {
     styles: ComboBoxStyles
   },
+  ContextualMenu: {
+    styles: ContextualMenuStyles
+  },
   DefaultButton: {
     styles: DefaultButtonStyles
   },
@@ -64,6 +69,9 @@ export const FluentStyles: any = {
   },
   Link: {
     styles: LinkStyles
+  },
+  Pivot: {
+    styles: PivotStyles
   },
   PrimaryButton: {
     styles: PrimaryButtonStyles

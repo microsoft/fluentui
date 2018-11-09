@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, assign, createRef, classNamesFunction } from '../../../Utilities';
+import { BaseComponent, assign, classNamesFunction } from '../../../Utilities';
 import { IColor, MAX_COLOR_SATURATION, MAX_COLOR_VALUE, getFullColorString, hsv2hex } from '../../../utilities/color/colors';
 import { IColorRectangleProps, IColorRectangleStyleProps, IColorRectangleStyles } from './ColorRectangle.types';
 
@@ -17,7 +17,7 @@ export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, ICol
     minSize: 220
   };
 
-  private _root = createRef<HTMLDivElement>();
+  private _root = React.createRef<HTMLDivElement>();
 
   constructor(props: IColorRectangleProps) {
     super(props);

@@ -3,6 +3,7 @@
 exports[`DocumentCard renders DocumentCard correctly 1`] = `
 <div
   className="ms-DocumentCard"
+  data-is-focusable={false}
 >
   <div
     className="ms-DocumentCardPreview"

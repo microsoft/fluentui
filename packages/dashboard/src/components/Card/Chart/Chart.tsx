@@ -137,11 +137,19 @@ export class Chart extends React.Component<IChartInternalProps, { _width: number
 
   private _getStackedBarChart = (): JSX.Element => {
     if (this.props.chartData!.length > 1) {
-      return <MultiStackedBarChart data={this.props.chartData!} barHeight={this.props.barHeight} hideRatio={this.props.hideRatio} />;
+      return (
+        <MultiStackedBarChart
+          data={this.props.chartData!}
+          barHeight={this.props.barHeight}
+          hideRatio={this.props.hideRatio}
+          hideDenominator={this.props.hideDenominator}
+        />
+      );
     }
 
     return (
       <StackedBarChart
+        hideDenominator={this.props.hideDenominator ? this.props.hideDenominator[0] : false}
         data={this.props.chartData![0]}
         barHeight={this.props.barHeight}
         ignoreFixStyle={this.props.ignoreStackBarChartDefaultStyle}
