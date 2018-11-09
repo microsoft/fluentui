@@ -7221,6 +7221,7 @@ interface IFacepilePersona extends React.ButtonHTMLAttributes<HTMLButtonElement 
   imageInitials?: string;
   imageUrl?: string;
   initialsColor?: PersonaInitialsColor;
+  keytipProps?: IKeytipProps;
   onClick?: (ev?: React.MouseEvent<HTMLElement>, persona?: IFacepilePersona) => void;
   onMouseMove?: (ev?: React.MouseEvent<HTMLElement>, persona?: IFacepilePersona) => void;
   onMouseOut?: (ev?: React.MouseEvent<HTMLElement>, persona?: IFacepilePersona) => void;
