@@ -182,10 +182,10 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
       >
         <div
           className="ms-BasePicker-text"
-          role="list"
         >
           <span
             id="selected-items-id__1"
+            role="list"
           />
           <input
             aria-autocomplete="both"
@@ -242,10 +242,10 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
       >
         <div
           className="ms-BasePicker-text"
-          role="list"
         >
           <span
             id="selected-items-id__3"
+            role="list"
           />
           <input
             aria-autocomplete="both"
