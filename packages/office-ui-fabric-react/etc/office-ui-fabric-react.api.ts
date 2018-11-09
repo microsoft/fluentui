@@ -8252,8 +8252,10 @@ interface IModalProps extends React.Props<ModalBase>, IWithResponsiveModeState, 
   isBlocking?: boolean;
   isDarkOverlay?: boolean;
   isOpen?: boolean;
+  layerProps?: ILayerProps;
   onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
   onDismissed?: () => any;
+  // @deprecated
   onLayerDidMount?: () => void;
   scrollableContentClassName?: string;
   styles?: IStyleFunctionOrObject<IModalStyleProps, IModalStyles>;
