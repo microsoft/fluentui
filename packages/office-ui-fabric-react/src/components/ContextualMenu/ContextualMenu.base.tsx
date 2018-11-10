@@ -735,7 +735,10 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     // See comment in _shouldHandleKeyUp for reasoning.
     this._lastKeyDownWasAltOrMeta = this._isAltOrMeta(ev);
 
-    return this._keyHandler(ev, this._shouldHandleKeyDown);
+    // On Mac, pressing escape dismisses all levels of native context menus
+    const dismissAllMenus = ev.which === KeyCodes.escape && isMac();
+
+    return this._keyHandler(ev, this._shouldHandleKeyDown, dismissAllMenus);
   };
 
   private _shouldHandleKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
@@ -759,7 +762,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     // menu bar or similar, closing any open context menus. There is not a similar behavior on Macs.
     const keyPressIsAltOrMetaAlone = this._lastKeyDownWasAltOrMeta && this._isAltOrMeta(ev);
     this._lastKeyDownWasAltOrMeta = false;
-    return keyPressIsAltOrMetaAlone && !(isMac() || isIOS());
+    return !!keyPressIsAltOrMetaAlone && !(isMac() || isIOS());
   };
 
   private _isAltOrMeta(ev: React.KeyboardEvent<HTMLElement>) {

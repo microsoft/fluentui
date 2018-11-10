@@ -10,7 +10,7 @@ function testIsMac(agent: string, result: boolean): void {
       return agent;
     }
   );
-  expect(isMac()).toBe(result);
+  expect(isMac(true)).toBe(result);
 }
 
 describe('isMac', () => {
