@@ -24,7 +24,7 @@ export const ComboBoxStyles = {
     border: 'none',
     boxShadow: Depths.depth8,
     selectors: {
-      ['.ms-Callout-main']: { borderRadius: fluentBorderRadius }
+      '.ms-Callout-main': { borderRadius: fluentBorderRadius }
     }
   },
   header: {
