@@ -4,6 +4,7 @@ import { ChoiceGroupOptionStyles } from './styles/ChoiceGroupOption.styles';
 import { ComboBoxStyles } from './styles/ComboBox.styles';
 import { CompoundButtonStyles } from './styles/CompoundButton.styles';
 import { ContextualMenuStyles } from './styles/ContextualMenu.styles';
+import { DatePickerStyles } from './styles/DatePicker.styles';
 import { DefaultButtonStyles } from './styles/DefaultButton.styles';
 import { DialogStyles, DialogContentStyles, DialogFooterStyles } from './styles/Dialog.styles';
 import { DropdownStyles } from './styles/Dropdown.styles';
@@ -45,6 +46,9 @@ export const FluentStyles: any = {
   },
   ContextualMenu: {
     styles: ContextualMenuStyles
+  },
+  DatePicker: {
+    styles: DatePickerStyles
   },
   DefaultButton: {
     styles: DefaultButtonStyles
