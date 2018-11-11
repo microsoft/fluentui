@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction } from '../../Utilities';
-import { IColorPickerProps, IColorPickerStyleProps, IColorPickerStyles } from './ColorPicker.types';
+
 import { ITextField, TextField } from '../../TextField';
+import { BaseComponent, classNamesFunction } from '../../Utilities';
+import { getColorFromRGBA, getColorFromString, IColor, MAX_COLOR_HUE, updateA, updateH, updateSV } from '../../utilities/color/colors';
+import { IColorPickerProps, IColorPickerStyleProps, IColorPickerStyles } from './ColorPicker.types';
 import { ColorRectangle } from './ColorRectangle/ColorRectangle';
 import { ColorSlider } from './ColorSlider/ColorSlider';
-import { MAX_COLOR_HUE, IColor, getColorFromString, getColorFromRGBA, updateA, updateH, updateSV } from '../../utilities/color/colors';
 
 export interface IColorPickerState {
   isOpen: boolean;
@@ -60,7 +61,7 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
             <ColorSlider
               className="is-alpha"
               isAlpha
-              overlayStyle={{ background: `linear-gradient(to right, transparent 0, ${color.str} 100%)` }}
+              overlayStyle={{ background: `linear-gradient(to right, transparent 0, #${color.hex} 100%)` }}
               minValue={0}
               maxValue={100}
               value={color.a}
