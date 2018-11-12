@@ -172,7 +172,7 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
             }
         style={
           Object {
-            "background": "linear-gradient(to right, transparent 0, #FFFFFF 100%)",
+            "background": "linear-gradient(to right, transparent 0, #ffffff 100%)",
           }
         }
       />
