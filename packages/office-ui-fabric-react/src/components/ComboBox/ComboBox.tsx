@@ -1736,7 +1736,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     ev.preventDefault();
   };
 
-  private _isAltOrMeta(ev: React.KeyboardEvent<HTMLElement | Autofill>) {
+  /**
+   * Returns true if the key for the event is alt (Mac option) or meta (Mac command).
+   */
+  private _isAltOrMeta(ev: React.KeyboardEvent<HTMLElement | Autofill>): boolean {
     return ev.which === KeyCodes.alt || ev.key === 'Meta';
   }
 
@@ -1748,10 +1751,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const { disabled, allowFreeform, autoComplete } = this.props;
     const isOpen = this.state.isOpen;
 
-    // We close the menu on key up only if the most recent key *down* was alt or meta (command) and
-    // it was *not* followed by some other key (such as up/down arrow to collapse/expand the menu),
-    // AND we're not on a Mac. This is because on Windows, pressing alt moves focus to the application
-    // menu bar or similar, closing any open context menus. There is not a similar behavior on Macs.
+    // We close the menu on key up only if ALL of the following are true:
+    // - Most recent key down was alt or meta (command)
+    // - The alt/meta key down was NOT followed by some other key (such as down/up arrow to
+    //   expand/collapse the menu)
+    // - We're not on a Mac (or iOS)
+    // This is because on Windows, pressing alt moves focus to the application menu bar or similar,
+    // closing any open context menus. There is not a similar behavior on Macs.
     const keyPressIsAltOrMetaAlone = this._lastKeyDownWasAltOrMeta && this._isAltOrMeta(ev);
     this._lastKeyDownWasAltOrMeta = false;
     const shouldHandleKey = keyPressIsAltOrMetaAlone && !(isMac() || isIOS());

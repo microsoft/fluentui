@@ -736,7 +736,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     this._lastKeyDownWasAltOrMeta = this._isAltOrMeta(ev);
 
     // On Mac, pressing escape dismisses all levels of native context menus
-    const dismissAllMenus = ev.which === KeyCodes.escape && isMac();
+    const dismissAllMenus = ev.which === KeyCodes.escape && (isMac() || isIOS());
 
     return this._keyHandler(ev, this._shouldHandleKeyDown, dismissAllMenus);
   };
@@ -755,17 +755,26 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     return this._keyHandler(ev, this._shouldHandleKeyUp, true /* dismissAllMenus */);
   };
 
+  /**
+   * We close the menu on key up only if ALL of the following are true:
+   * - Most recent key down was alt or meta (command)
+   * - The alt/meta key down was NOT followed by some other key (such as down/up arrow to
+   *   expand/collapse the menu)
+   * - We're not on a Mac (or iOS)
+   *
+   * This is because on Windows, pressing alt moves focus to the application menu bar or similar,
+   * closing any open context menus. There is not a similar behavior on Macs.
+   */
   private _shouldHandleKeyUp = (ev: React.KeyboardEvent<HTMLElement>) => {
-    // We close the menu on key up only if the most recent key *down* was alt or meta (command) and
-    // it was *not* followed by some other key (such as up/down arrow to collapse/expand the menu),
-    // AND we're not on a Mac. This is because on Windows, pressing alt moves focus to the application
-    // menu bar or similar, closing any open context menus. There is not a similar behavior on Macs.
     const keyPressIsAltOrMetaAlone = this._lastKeyDownWasAltOrMeta && this._isAltOrMeta(ev);
     this._lastKeyDownWasAltOrMeta = false;
-    return !!keyPressIsAltOrMetaAlone && !(isMac() || isIOS());
+    return !!keyPressIsAltOrMetaAlone && !(isIOS() || isMac());
   };
 
-  private _isAltOrMeta(ev: React.KeyboardEvent<HTMLElement>) {
+  /**
+   * Returns true if the key for the event is alt (Mac option) or meta (Mac command).
+   */
+  private _isAltOrMeta(ev: React.KeyboardEvent<HTMLElement>): boolean {
     return ev.which === KeyCodes.alt || ev.key === 'Meta';
   }
 
@@ -813,8 +822,8 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   };
 
   private _onMenuKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
-    // Mark as handled if onKeyDown (for handling collapse cases) return true
-    // or if we are attempting to expand a submenu (otherwise)
+    // Mark as handled if onKeyDown returns true (for handling collapse cases)
+    // or if we are attempting to expand a submenu
     const handled = this._onKeyDown(ev);
 
     if (handled || !this._host) {
@@ -822,20 +831,20 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     }
 
     // If we have a modifier key being pressed, we do not want to move focus.
-    // Otherwise, handle up and down keys
-    const elementToFocus =
-      ev.altKey || ev.metaKey
-        ? null
-        : ev.which === KeyCodes.up
-          ? getLastFocusable(this._host, this._host.lastChild as HTMLElement, true)
-          : ev.which === KeyCodes.down
-            ? getFirstFocusable(this._host, this._host.firstChild as HTMLElement, true)
-            : null;
+    // Otherwise, handle up and down keys.
+    const hasModifier = !!(ev.altKey || ev.metaKey);
+    const isUp = ev.which === KeyCodes.up;
+    const isDown = ev.which === KeyCodes.down;
+    if (!hasModifier && (isUp || isDown)) {
+      const elementToFocus = isUp
+        ? getLastFocusable(this._host, this._host.lastChild as HTMLElement, true)
+        : getFirstFocusable(this._host, this._host.firstChild as HTMLElement, true);
 
-    if (elementToFocus) {
-      elementToFocus.focus();
-      ev.preventDefault();
-      ev.stopPropagation();
+      if (elementToFocus) {
+        elementToFocus.focus();
+        ev.preventDefault();
+        ev.stopPropagation();
+      }
     }
   };
 

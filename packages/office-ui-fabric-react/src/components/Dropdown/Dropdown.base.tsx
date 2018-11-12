@@ -60,6 +60,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   private _isScrollIdle: boolean;
   private readonly _scrollIdleDelay: number = 250 /* ms */;
   private _scrollIdleTimeoutId: number | undefined;
+  /** True if the most recent keydown event was for alt (option) or meta (command). */
   private _lastKeyDownWasAltOrMeta: boolean | undefined;
   private _sizePosCache: DropdownSizePosCache = new DropdownSizePosCache();
   private _classNames: IProcessedStyleSet<IDropdownStyles>;
@@ -750,7 +751,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     }
 
     // Take note if we are processing an alt (option) or meta (command) keydown.
-    // See comment in _wasAltOrMetaNotOnMac for reasoning.
+    // See comment in _shouldHandleKeyUp for reasoning.
     this._lastKeyDownWasAltOrMeta = this._isAltOrMeta(ev);
 
     if (this.props.onKeyDown) {
@@ -836,16 +837,6 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     }
   };
 
-  private _wasAltOrMetaNotOnMac(ev: React.KeyboardEvent<HTMLElement>): boolean {
-    // We close the menu on key up only if the most recent key *down* was alt or meta (command) and
-    // it was *not* followed by some other key (such as up/down arrow to collapse/expand the menu),
-    // AND we're not on a Mac. This is because on Windows, pressing alt moves focus to the application
-    // menu bar or similar, closing any open context menus. There is not a similar behavior on Macs.
-    const keyPressIsAltOrMetaAlone = this._lastKeyDownWasAltOrMeta && this._isAltOrMeta(ev);
-    this._lastKeyDownWasAltOrMeta = false;
-    return !!keyPressIsAltOrMetaAlone && !(isMac() || isIOS());
-  }
-
   private _onDropdownKeyUp = (ev: React.KeyboardEvent<HTMLDivElement>): void => {
     // If Dropdown disabled do not process any keyboard events.
     const disabled = this._isDisabled();
@@ -853,7 +844,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
       return;
     }
 
-    const shouldHandleKey = this._wasAltOrMetaNotOnMac(ev);
+    const shouldHandleKey = this._shouldHandleKeyUp(ev);
     const isOpen = this.state.isOpen;
 
     if (this.props.onKeyUp) {
@@ -880,15 +871,34 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     ev.preventDefault();
   };
 
-  private _isAltOrMeta(ev: React.KeyboardEvent<HTMLElement>) {
+  /**
+   * Returns true if the key for the event is alt (Mac option) or meta (Mac command).
+   */
+  private _isAltOrMeta(ev: React.KeyboardEvent<HTMLElement>): boolean {
     return ev.which === KeyCodes.alt || ev.key === 'Meta';
+  }
+
+  /**
+   * We close the menu on key up only if ALL of the following are true:
+   * - Most recent key down was alt or meta (command)
+   * - The alt/meta key down was NOT followed by some other key (such as down/up arrow to
+   *   expand/collapse the menu)
+   * - We're not on a Mac (or iOS)
+   *
+   * This is because on Windows, pressing alt moves focus to the application menu bar or similar,
+   * closing any open context menus. There is not a similar behavior on Macs.
+   */
+  private _shouldHandleKeyUp(ev: React.KeyboardEvent<HTMLElement>): boolean {
+    const keyPressIsAltOrMetaAlone = this._lastKeyDownWasAltOrMeta && this._isAltOrMeta(ev);
+    this._lastKeyDownWasAltOrMeta = false;
+    return !!keyPressIsAltOrMetaAlone && !(isMac() || isIOS());
   }
 
   private _onZoneKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     let elementToFocus;
 
     // Take note if we are processing an alt (option) or meta (command) keydown.
-    // See comment in _wasAltOrMetaNotOnMac for reasoning.
+    // See comment in _shouldHandleKeyUp for reasoning.
     this._lastKeyDownWasAltOrMeta = this._isAltOrMeta(ev);
     const containsExpandCollapseModifier = ev.altKey || ev.metaKey;
 
@@ -938,7 +948,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   };
 
   private _onZoneKeyUp = (ev: React.KeyboardEvent<HTMLElement>): void => {
-    const shouldHandleKey = this._wasAltOrMetaNotOnMac(ev);
+    const shouldHandleKey = this._shouldHandleKeyUp(ev);
 
     if (shouldHandleKey && this.state.isOpen) {
       this.setState({ isOpen: false });
