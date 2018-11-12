@@ -2,6 +2,32 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.102.0",
+      "tag": "office-ui-fabric-react_v6.102.0",
+      "date": "Mon, 12 Nov 2018 13:31:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "SearchBox: IE now will consistently focus when click between icon and placeholder text",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "4c5b71cc4254d94f3cb16023c5b1a953d683184d"
+          },
+          {
+            "comment": "DetailsHeader: Support optional tooltip rendering for column headers.",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "d0caaa94fae3456740d69d84cc4fe4fabb7eb763"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Modal: Allow defining layer props",
+            "author": "stue <stues@users.noreply.github.com>",
+            "commit": "932690979bc694b8666bc6ad19dadd8c3f5c5268"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.101.0",
       "tag": "office-ui-fabric-react_v6.101.0",
       "date": "Fri, 09 Nov 2018 13:32:57 GMT",

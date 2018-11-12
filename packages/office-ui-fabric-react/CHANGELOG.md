@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 09 Nov 2018 13:32:57 GMT and should not be manually modified.
+This log was last generated on Mon, 12 Nov 2018 13:31:40 GMT and should not be manually modified.
+
+## 6.102.0
+Mon, 12 Nov 2018 13:31:40 GMT
+
+### Minor changes
+
+- Modal: Allow defining layer props
+
+### Patches
+
+- SearchBox: IE now will consistently focus when click between icon and placeholder text
+- DetailsHeader: Support optional tooltip rendering for column headers.
 
 ## 6.101.0
 Fri, 09 Nov 2018 13:32:57 GMT

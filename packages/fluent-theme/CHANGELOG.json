@@ -2,6 +2,25 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.4.1",
+      "tag": "@uifabric/fluent-theme_v0.4.1",
+      "date": "Mon, 12 Nov 2018 13:31:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Reduce top padding of Dialog",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "b60a690112de2a0339def2d56008b45d2de7446f"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.101.0 <7.0.0` to `>=6.102.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.4.0",
       "tag": "@uifabric/fluent-theme_v0.4.0",
       "date": "Fri, 09 Nov 2018 13:32:57 GMT",
