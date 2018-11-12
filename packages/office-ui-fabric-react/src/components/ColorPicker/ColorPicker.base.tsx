@@ -60,7 +60,7 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
             <ColorSlider
               className="is-alpha"
               isAlpha
-              overlayStyle={{ background: `linear-gradient(to right, transparent 0, ${color.str} 100%)` }}
+              overlayStyle={{ background: `linear-gradient(to right, transparent 0, #${color.hex} 100%)` }}
               minValue={0}
               maxValue={100}
               value={color.a}
