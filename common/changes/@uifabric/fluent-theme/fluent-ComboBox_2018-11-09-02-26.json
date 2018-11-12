@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/fluent-theme",
+      "comment": "ComboBox: added fluent styles.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/fluent-theme",
+  "email": "v-vibr@microsoft.com"
+}
