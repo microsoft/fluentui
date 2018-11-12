@@ -536,7 +536,7 @@ interface ISize {
 }
 
 // @public
-export function isMac(): boolean;
+export function isMac(reset?: boolean): boolean;
 
 // @public
 enum KeyCodes {
