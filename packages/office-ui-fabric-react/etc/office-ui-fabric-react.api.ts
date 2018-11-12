@@ -2931,21 +2931,13 @@ interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox> {
 
 // @public (undocumented)
 interface IComboBoxState {
-  // (undocumented)
   currentOptions: IComboBoxOption[];
-  // (undocumented)
   currentPendingValue?: string;
-  // (undocumented)
   currentPendingValueValidIndex: number;
-  // (undocumented)
   currentPendingValueValidIndexOnHover: number;
-  // (undocumented)
   focused?: boolean;
-  // (undocumented)
   isOpen?: boolean;
-  // (undocumented)
   selectedIndices?: number[];
-  // (undocumented)
   suggestedDisplayValue?: string;
 }
 
@@ -7014,7 +7006,7 @@ interface IDropdown {
   focus: (shouldOpenOnFocus?: boolean) => void;
 }
 
-// @public (undocumented)
+// @public
 interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {
 }
 
@@ -9844,6 +9836,9 @@ interface ISliderStyles {
   // (undocumented)
   valueLabel: IStyle;
 }
+
+// @public
+export function isMac(reset?: boolean): boolean;
 
 // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
 // @internal
