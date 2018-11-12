@@ -2824,6 +2824,69 @@ interface IColorPickerStyles {
 }
 
 // @public (undocumented)
+interface IColorRectangle {
+}
+
+// @public (undocumented)
+interface IColorRectangleProps extends IBaseProps<IColorRectangle> {
+  className?: string;
+  color: IColor;
+  componentRef?: IRefObject<IColorRectangle>;
+  minSize?: number;
+  onSVChanged?: (s: number, v: number) => void;
+  styles?: IStyleFunctionOrObject<IColorRectangleStyleProps, IColorRectangleStyles>;
+  theme?: ITheme;
+}
+
+// @public (undocumented)
+interface IColorRectangleStyleProps {
+  className?: string;
+  theme: ITheme;
+}
+
+// @public (undocumented)
+interface IColorRectangleStyles {
+  dark?: IStyle;
+  light?: IStyle;
+  root?: IStyle;
+  thumb?: IStyle;
+}
+
+// @public (undocumented)
+interface IColorSlider {
+}
+
+// @public (undocumented)
+interface IColorSliderProps extends IBaseProps<IColorSlider> {
+  className?: string;
+  componentRef?: IRefObject<IColorSlider>;
+  isAlpha?: boolean;
+  maxValue?: number;
+  minValue?: number;
+  onChange?: (event: React.MouseEvent<HTMLElement>, newValue?: number) => void;
+  // @deprecated
+  onChanged?: (newValue: number) => void;
+  overlayStyle?: any;
+  styles?: IStyleFunctionOrObject<IColorSliderStyleProps, IColorSliderStyles>;
+  theme?: ITheme;
+  thumbColor?: string;
+  value?: number;
+}
+
+// @public (undocumented)
+interface IColorSliderStyleProps {
+  className?: string;
+  theme: ITheme;
+}
+
+// @public (undocumented)
+interface IColorSliderStyles {
+  root?: IStyle;
+  sliderOverlay?: IStyle;
+  sliderThumb?: IStyle;
+}
+
+// @public (undocumented)
 interface IColumn {
   ariaLabel?: string;
   calculatedWidth?: number;
@@ -12354,6 +12417,8 @@ module ZIndexes {
 // WARNING: Unsupported export: MAX_COLOR_VALUE
 // WARNING: Unsupported export: MAX_COLOR_RGBA
 // WARNING: Unsupported export: ColorPicker
+// WARNING: Unsupported export: ColorRectangle
+// WARNING: Unsupported export: ColorSlider
 // WARNING: Unsupported export: CommandBar
 // WARNING: Unsupported export: ContextualMenu
 // WARNING: Unsupported export: ContextualMenuItem
