@@ -1,16 +1,32 @@
 module.exports = function(options) {
-  const path = require('path');
-  const fs = require('fs');
-  const resolve = require('resolve');
-  const exec = require('../exec-sync');
+  const { Extractor } = require('@microsoft/api-extractor');
 
-  const apiConfigPath = path.join(process.cwd(), 'config', 'api-extractor.json');
+  // This interface represents the API Extractor config file contents
+  const config = {
+    compiler: {
+      configType: 'tsconfig',
+      rootFolder: './'
+    },
+    policies: {
+      namespaceSupport: 'conservative'
+    },
+    project: {
+      entryPointSourceFile: 'lib/index.d.ts'
+    },
+    validationRules: {
+      missingReleaseTags: 'allow'
+    }
+  };
 
-  if (fs.existsSync(apiConfigPath)) {
-    const apiExtractorPath = resolve.sync('@microsoft/api-extractor/bin/api-extractor');
-    const customArgs = options.args || '';
-    exec(`node ${apiExtractorPath} run --config ${apiConfigPath} ${customArgs}`);
-  } else {
-    console.log('No api-extractor config file found at ' + apiConfigPath);
+  // This interface provides additional runtime state
+  // that is NOT part of the config file
+  const extractorOptions = {
+    localBuild: options.args && options.args.indexOf('--local') >= 0
+  };
+
+  const extractor = new Extractor(config, extractorOptions);
+  const success = extractor.processProject();
+  if (!success) {
+    throw 'The public API file is out of date. Please run "npm run update-api" and commit the updated API file.';
   }
 };

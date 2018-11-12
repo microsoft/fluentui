@@ -169,25 +169,26 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     const disabled = this._isDisabled();
 
     const optionId = id + '-option';
-    const ariaAttrs = multiSelect
-      ? {
-          role: undefined,
-          ariaActiveDescendant: undefined,
-          childRole: undefined,
-          ariaSetSize: undefined,
-          ariaPosInSet: undefined,
-          ariaSelected: undefined
-        }
-      : // single select
-        {
-          role: 'listbox',
-          ariaActiveDescendant:
-            isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0 ? this._id + '-list' + selectedIndices[0] : optionId,
-          childRole: 'option',
-          ariaSetSize: this._sizePosCache.optionSetSize,
-          ariaPosInSet: this._sizePosCache.positionInSet(selectedIndices[0]),
-          ariaSelected: selectedIndices[0] === undefined ? undefined : true
-        };
+    const ariaAttrs =
+      multiSelect || disabled
+        ? {
+            role: undefined,
+            ariaActiveDescendant: undefined,
+            childRole: undefined,
+            ariaSetSize: undefined,
+            ariaPosInSet: undefined,
+            ariaSelected: undefined
+          }
+        : // single select
+          {
+            role: 'listbox',
+            ariaActiveDescendant:
+              isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0 ? this._id + '-list' + selectedIndices[0] : optionId,
+            childRole: 'option',
+            ariaSetSize: this._sizePosCache.optionSetSize,
+            ariaPosInSet: this._sizePosCache.positionInSet(selectedIndices[0]),
+            ariaSelected: selectedIndices[0] === undefined ? undefined : true
+          };
 
     this._classNames = getClassNames(propStyles, {
       theme,

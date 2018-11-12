@@ -21,11 +21,19 @@ export class ModalBasicExample extends React.Component<
     return (
       <div>
         <DefaultButton secondaryText="Opens the Sample Modal" onClick={this._showModal} text="Open Modal" />
-        <Modal isOpen={this.state.showModal} onDismiss={this._closeModal} isBlocking={false} containerClassName="ms-modalExample-container">
+        <Modal
+          titleAriaId="titleId"
+          subtitleAriaId="subtitleId"
+          isOpen={this.state.showModal}
+          onDismiss={this._closeModal}
+          isBlocking={false}
+          containerClassName="ms-modalExample-container"
+        >
           <div className="ms-modalExample-header">
-            <span>Lorem Ipsum</span>
+            <span id="titleId">Lorem Ipsum</span>
           </div>
-          <div className="ms-modalExample-body">
+          <div id="subtitleId" className="ms-modalExample-body">
+            <DefaultButton onClick={this._closeModal} text="Close" />
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lorem nulla, malesuada ut sagittis sit amet, vulputate in
               leo. Maecenas vulputate congue sapien eu tincidunt. Etiam eu sem turpis. Fusce tempor sagittis nunc, ut interdum ipsum

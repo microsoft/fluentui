@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { anchorProperties, getNativeProps, createRef } from '../../../Utilities';
+import { anchorProperties, getNativeProps } from '../../../Utilities';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 import { KeytipData } from '../../../KeytipData';
 import { isItemDisabled, hasSubmenu } from '../../../utilities/contextualMenu/index';
 import { ContextualMenuItem } from '../ContextualMenuItem';
 
 export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
-  private _anchor = createRef<HTMLAnchorElement>();
+  private _anchor = React.createRef<HTMLAnchorElement>();
 
   public render() {
     const {

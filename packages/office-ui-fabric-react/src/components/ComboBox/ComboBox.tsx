@@ -8,7 +8,6 @@ import { Label } from '../../Label';
 import {
   BaseComponent,
   KeyCodes,
-  createRef,
   css,
   customizable,
   divProperties,
@@ -109,19 +108,19 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     buttonIconProps: { iconName: 'ChevronDown' }
   };
 
-  private _root = createRef<HTMLDivElement>();
+  private _root = React.createRef<HTMLDivElement>();
 
   // The input aspect of the comboBox
-  private _autofill = createRef<IAutofill>();
+  private _autofill = React.createRef<IAutofill>();
 
   // The wrapping div of the input and button
-  private _comboBoxWrapper = createRef<HTMLDivElement>();
+  private _comboBoxWrapper = React.createRef<HTMLDivElement>();
 
   // The callout element
-  private _comboBoxMenu = createRef<HTMLDivElement>();
+  private _comboBoxMenu = React.createRef<HTMLDivElement>();
 
   // The menu item element that is currently selected
-  private _selectedElement = createRef<HTMLSpanElement>();
+  private _selectedElement = React.createRef<HTMLSpanElement>();
 
   // The base id for the comboBox
   private _id: string;
@@ -204,7 +203,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         // For ComboBoxes, touching anywhere in the combo box should drop the dropdown, including the input element.
         // This gives more hit target space for touch environments. We're setting the onpointerdown here, because React
         // does not support Pointer events yet.
-        this._events.on(this._comboBoxWrapper.value, 'pointerdown', this._onPointerDown, true);
+        this._events.on(this._comboBoxWrapper.current, 'pointerdown', this._onPointerDown, true);
       }
     }
   }
@@ -382,6 +381,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 updateValueInWillReceiveProps={this._onUpdateValueInAutofillWillReceiveProps}
                 shouldSelectFullInputValueInComponentDidUpdate={this._onShouldSelectFullInputValueInAutofillComponentDidUpdate}
                 title={title}
+                preventValueSelection={!focused}
               />
               <IconButton
                 className={'ms-ComboBox-CaretDown-button'}
@@ -1169,7 +1169,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           styles={this._getCurrentOptionStyles(item)}
           checked={isSelected}
           className={'ms-ComboBox-option'}
-          onClick={this._onItemClick(item.index)}
+          onClick={this._onItemClick(item)}
           onMouseEnter={this._onOptionMouseEnter.bind(this, item.index)}
           onMouseMove={this._onOptionMouseMove.bind(this, item.index)}
           onMouseLeave={this._onOptionMouseLeave}
@@ -1195,7 +1195,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           styles={checkboxStyles}
           className={'ms-ComboBox-option'}
           data-is-focusable={true}
-          onChange={this._onItemClick(item.index!)}
+          onChange={this._onItemClick(item)}
           label={item.text}
           role="option"
           aria-selected={isSelected ? 'true' : 'false'}
@@ -1339,8 +1339,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * to select the item and also close the menu
    * @param index - the index of the item that was clicked
    */
-  private _onItemClick(index: number | undefined): (ev: any) => void {
+  private _onItemClick(item: IComboBoxOption): (ev: any) => void {
+    const { onItemClick } = this.props;
+    const { index } = item;
+
     return (ev: any): void => {
+      onItemClick && onItemClick(ev, item, index);
       this._setSelectedIndex(index as number, ev);
       if (!this.props.multiSelect) {
         // only close the callout when it's in single-select mode
@@ -1855,7 +1859,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   };
 
   private _onTouchStart: () => void = () => {
-    if (this._comboBoxWrapper.value && !('onpointerdown' in this._comboBoxWrapper)) {
+    if (this._comboBoxWrapper.current && !('onpointerdown' in this._comboBoxWrapper)) {
       this._handleTouchAndPointerEvent();
     }
   };

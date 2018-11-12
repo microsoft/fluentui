@@ -4,11 +4,15 @@ import {
   css,
   Customizer,
   Dropdown,
-  IDropdown,
+  getThemedContext,
+  ICustomizerContext,
+  ICustomizerProps,
   IDropdownOption,
   IDropdownStyles,
-  ISchemeNames
+  ISchemeNames,
+  ITheme
 } from 'office-ui-fabric-react';
+import { IThemeProviders, IThemeProviderProps, themeProvider } from '@uifabric/foundation';
 import './ExampleCard.scss';
 import { ExampleCardComponent, IExampleCardComponent } from './ExampleCardComponent';
 import { Highlight } from '../Highlight/Highlight';
@@ -43,6 +47,20 @@ export interface IExampleCardState {
 }
 
 const _schemes: ISchemeNames[] = ['default', 'strong', 'soft', 'neutral'];
+
+// TODO: once Foundation is promoted and in OUFR, ThemeProvider can be imported directly from OUFR
+//        and themeProviders/ThemeProvider can be removed here
+const themeProviders: IThemeProviders<ICustomizerContext, ITheme, ISchemeNames, ICustomizerProps> = {
+  getThemedContext,
+  CustomizerComponent: Customizer
+};
+
+export const ThemeProvider: React.StatelessComponent<IThemeProviderProps<ISchemeNames, ITheme>> = themeProvider<
+  ICustomizerContext,
+  ITheme,
+  ISchemeNames,
+  ICustomizerProps
+>(themeProviders);
 
 // tslint:disable-next-line:typedef
 const regionStyles: IExampleCardComponent['styles'] = props => ({
@@ -95,6 +113,18 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
             exampleCardCustomizations && exampleCardCustomizations[themeIndex] && exampleCardCustomizations[themeIndex].customizations;
 
           const exampleCardContent = (
+            <div
+              className={css('ExampleCard-example', {
+                'is-right-aligned': isRightAligned,
+                'is-scrollable': isScrollable
+              })}
+              data-is-scrollable={isScrollable}
+            >
+              {children}
+            </div>
+          );
+
+          const exampleCard = (
             <div className={rootClass}>
               <div className="ExampleCard-header">
                 <span className="ExampleCard-title">{title}</span>
@@ -140,23 +170,19 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
 
               <div className="ExampleCard-code">{isCodeVisible && <Highlight>{code}</Highlight>}</div>
 
-              <ExampleCardComponent scheme={_schemes[schemeIndex]} styles={regionStyles}>
-                <div
-                  className={css('ExampleCard-example', {
-                    'is-right-aligned': isRightAligned,
-                    'is-scrollable': isScrollable
-                  })}
-                  data-is-scrollable={isScrollable}
-                >
-                  {children}
-                </div>
-              </ExampleCardComponent>
+              {activeCustomizations ? (
+                <ThemeProvider scheme={_schemes[schemeIndex]}>
+                  <ExampleCardComponent styles={regionStyles}>{exampleCardContent}</ExampleCardComponent>
+                </ThemeProvider>
+              ) : (
+                exampleCardContent
+              )}
 
               {this._getDosAndDonts()}
             </div>
           );
 
-          return activeCustomizations ? <Customizer {...activeCustomizations}>{exampleCardContent}</Customizer> : exampleCardContent;
+          return activeCustomizations ? <Customizer {...activeCustomizations}>{exampleCard}</Customizer> : exampleCard;
         }}
       </AppCustomizationsContext.Consumer>
     );

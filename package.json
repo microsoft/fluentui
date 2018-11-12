@@ -30,6 +30,7 @@
     "create-component": "node scripts/create-component.js",
     "create-package": "node scripts/create-package.js",
     "checkchange": "node common/scripts/install-run-rush.js change -v",
+    "update-api": "cd packages/office-ui-fabric-react && npm run update-api",
     "update-snapshots": "cd packages/office-ui-fabric-react && npm run update-snapshots",
     "check-for-changed-files": "node ./scripts/check-for-modified-files.js",
     "prettier": "node scripts/prettier.js",

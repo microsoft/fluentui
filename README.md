@@ -109,7 +109,7 @@ console.log(
 );
 ```
 
-Note: we are evaluating a more robust theming and style loading approach, which will allow a much more flexible server rendering approach, so this syntax may be simplified in the future.
+Note: We are evaluating a more robust theming and style loading approach, which will allow a much more flexible server rendering approach, so this syntax may be simplified in the future.
 
 ### Browserless Testing
 

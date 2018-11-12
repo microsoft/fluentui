@@ -1,6 +1,43 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Mon, 29 Oct 2018 12:31:29 GMT and should not be manually modified.
+This log was last generated on Mon, 12 Nov 2018 13:31:40 GMT and should not be manually modified.
+
+## 0.4.1
+Mon, 12 Nov 2018 13:31:40 GMT
+
+### Patches
+
+- Reduce top padding of Dialog
+
+## 0.4.0
+Fri, 09 Nov 2018 13:32:57 GMT
+
+### Minor changes
+
+- ContextualMenu: add fluent styles.
+- Pivot: add fluent styles.
+
+### Patches
+
+- Update Dialog styles
+
+## 0.3.0
+Wed, 07 Nov 2018 13:31:00 GMT
+
+### Minor changes
+
+- Export all Fluent styles
+
+### Patches
+
+- Add Fluent button styles
+
+## 0.2.0
+Thu, 01 Nov 2018 12:31:45 GMT
+
+### Minor changes
+
+- SpinButton: add SpinButton fluent styles.
 
 ## 0.1.7
 Mon, 29 Oct 2018 12:31:29 GMT

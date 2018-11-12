@@ -1027,10 +1027,12 @@ enum DirectionalHint {
 export function disableBodyScroll(): void;
 
 // @public (undocumented)
-class DocumentCard extends BaseComponent<IDocumentCardProps, any> {
+class DocumentCard extends BaseComponent<IDocumentCardProps, any>, implements IDocumentCard {
   constructor(props: IDocumentCardProps);
   // (undocumented)
   static defaultProps: IDocumentCardProps;
+  // (undocumented)
+  focus(): void;
   // (undocumented)
   render(): JSX.Element;
 }
@@ -1528,9 +1530,6 @@ export function getRTL(): boolean;
 // @public
 export function getRTLSafeKeyCode(key: number): number;
 
-// @public
-export function getSchemedContext(scheme: ISchemeNames, context: ICustomizerContext, settingsTheme?: ITheme): ICustomizerContext | undefined;
-
 // @public (undocumented)
 export function getScreenSelector(min: number, max: number): string;
 
@@ -1545,6 +1544,10 @@ export function getSubmenuItems(item: IContextualMenuItem): any;
 
 // @public
 export function getTheme(depComments?: boolean): ITheme;
+
+// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
+// @internal
+export function getThemedContext(context: ICustomizerContext, scheme?: ISchemeNames, theme?: ITheme): ICustomizerContext;
 
 // @public
 export function getVirtualParent(child: HTMLElement): HTMLElement | undefined;
@@ -1829,6 +1832,7 @@ interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputElement | Au
   enableAutofillOnKeyPress?: KeyCodes[];
   onInputChange?: (value: string) => string;
   onInputValueChange?: (newValue?: string) => void;
+  preventValueSelection?: boolean;
   shouldSelectFullInputValueInComponentDidUpdate?: () => boolean;
   suggestedDisplayValue?: string;
   updateValueInWillReceiveProps?: () => string | null;
@@ -2111,7 +2115,7 @@ interface IBreadcrumbItem {
 }
 
 // @public (undocumented)
-interface IBreadcrumbProps extends React.Props<BreadcrumbBase> {
+interface IBreadcrumbProps extends React.ClassAttributes<BreadcrumbBase> {
   ariaLabel?: string;
   className?: string;
   componentRef?: IRefObject<IBreadcrumb>;
@@ -2376,6 +2380,7 @@ interface ICalloutContentStyles {
 
 // @public (undocumented)
 interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
+  alignTargetEdge?: boolean;
   ariaDescribedBy?: string;
   ariaLabel?: string;
   ariaLabelledBy?: string;
@@ -2501,7 +2506,7 @@ interface ICheckboxStyles {
 }
 
 // @public (undocumented)
-interface ICheckProps extends React.Props<CheckBase> {
+interface ICheckProps extends React.ClassAttributes<CheckBase> {
   alwaysShowCheck?: boolean;
   checked?: boolean;
   className?: string;
@@ -2533,6 +2538,7 @@ interface IChoiceGroup {
 
 // @public (undocumented)
 interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | HTMLInputElement> {
+  ariaLabel?: string;
   checked?: boolean;
   disabled?: boolean;
   iconProps?: IIconProps;
@@ -2659,7 +2665,7 @@ interface ICoachmark {
 }
 
 // @public (undocumented)
-interface ICoachmarkProps extends React.Props<Coachmark> {
+interface ICoachmarkProps extends React.ClassAttributes<Coachmark> {
   ariaAlertText?: string;
   ariaDescribedBy?: string;
   ariaDescribedByText?: string;
@@ -2906,6 +2912,7 @@ interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox> {
   onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
   // @deprecated
   onChanged?: (option?: IComboBoxOption, index?: number, value?: string, submitPendingValueEvent?: any) => void;
+  onItemClick?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => void;
   onMenuDismissed?: () => void;
   onMenuOpen?: () => void;
   onPendingValueChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
@@ -6166,6 +6173,7 @@ interface IContextualMenuListProps {
 
 // @public
 interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWithResponsiveModeState {
+  alignTargetEdge?: boolean;
   ariaLabel?: string;
   beakWidth?: number;
   bounds?: IRectangle;
@@ -6214,7 +6222,7 @@ interface IContextualMenuRenderItem {
 }
 
 // @public
-interface IContextualMenuSection extends React.Props<any> {
+interface IContextualMenuSection extends React.ClassAttributes<any> {
   bottomDivider?: boolean;
   items: IContextualMenuItem[];
   title?: string;
@@ -6264,6 +6272,7 @@ interface IContextualMenuStyles {
 // @public (undocumented)
 interface IContextualMenuSubComponentStyles {
   callout: IStyleFunctionOrObject<ICalloutContentStyleProps, any>;
+  menuItem: IStyleFunctionOrObject<IContextualMenuItemStyleProps, any>;
 }
 
 // @public (undocumented)
@@ -6439,7 +6448,7 @@ interface IDetailsGroupRenderProps extends IGroupRenderProps {
 
 // WARNING: The type "DetailsHeaderBase" needs to be exported by the package (e.g. added to index.ts)
 // @public (undocumented)
-interface IDetailsHeaderBaseProps extends React.Props<DetailsHeaderBase>, IDetailsItemProps {
+interface IDetailsHeaderBaseProps extends React.ClassAttributes<DetailsHeaderBase>, IDetailsItemProps {
   ariaLabel?: string;
   ariaLabelForSelectAllCheckbox?: string;
   ariaLabelForSelectionColumn?: string;
@@ -6896,6 +6905,7 @@ interface IDividerAsProps extends IIconProps {
 
 // @public (undocumented)
 interface IDocumentCard {
+  focus: () => void;
 }
 
 // @public (undocumented)
@@ -7211,6 +7221,7 @@ interface IFacepilePersona extends React.ButtonHTMLAttributes<HTMLButtonElement 
   imageInitials?: string;
   imageUrl?: string;
   initialsColor?: PersonaInitialsColor;
+  keytipProps?: IKeytipProps;
   onClick?: (ev?: React.MouseEvent<HTMLElement>, persona?: IFacepilePersona) => void;
   onMouseMove?: (ev?: React.MouseEvent<HTMLElement>, persona?: IFacepilePersona) => void;
   onMouseOut?: (ev?: React.MouseEvent<HTMLElement>, persona?: IFacepilePersona) => void;
@@ -8241,8 +8252,10 @@ interface IModalProps extends React.Props<ModalBase>, IWithResponsiveModeState, 
   isBlocking?: boolean;
   isDarkOverlay?: boolean;
   isOpen?: boolean;
+  layerProps?: ILayerProps;
   onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
   onDismissed?: () => any;
+  // @deprecated
   onLayerDidMount?: () => void;
   scrollableContentClassName?: string;
   styles?: IStyleFunctionOrObject<IModalStyleProps, IModalStyles>;
@@ -8315,6 +8328,7 @@ interface INavProps {
   groups: INavLinkGroup[] | null;
   initialSelectedKey?: string;
   isOnTop?: boolean;
+  linkAs?: IComponentAs<IButtonProps>;
   onLinkClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
   onLinkExpandClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
   onRenderGroupHeader?: IRenderFunction<INavLinkGroup>;
@@ -10957,8 +10971,11 @@ export function merge<T = {}>(target: Partial<T>, ...args: (Partial<T> | null | 
 // @public
 export function mergeAriaAttributeValues(...ariaAttributes: (string | undefined)[]): string | undefined;
 
-// @public (undocumented)
+// @public
 export function mergeCustomizations(props: ICustomizerProps, parentContext: ICustomizerContext): ICustomizerContext;
+
+// @public
+export function mergeSettings(oldSettings?: Settings, newSettings?: Settings | SettingsFunction): Settings;
 
 // @public
 export function mergeStyles(...args: (IStyle | IStyleBaseArray | false | null | undefined)[]): string;
