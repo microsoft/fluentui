@@ -12417,8 +12417,6 @@ module ZIndexes {
 // WARNING: Unsupported export: MAX_COLOR_VALUE
 // WARNING: Unsupported export: MAX_COLOR_RGBA
 // WARNING: Unsupported export: ColorPicker
-// WARNING: Unsupported export: ColorRectangle
-// WARNING: Unsupported export: ColorSlider
 // WARNING: Unsupported export: CommandBar
 // WARNING: Unsupported export: ContextualMenu
 // WARNING: Unsupported export: ContextualMenuItem
