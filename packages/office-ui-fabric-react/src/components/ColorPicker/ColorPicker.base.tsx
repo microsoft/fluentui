@@ -1,11 +1,10 @@
 import * as React from 'react';
-
-import { ITextField, TextField } from '../../TextField';
 import { BaseComponent, classNamesFunction } from '../../Utilities';
-import { getColorFromRGBA, getColorFromString, IColor, MAX_COLOR_HUE, updateA, updateH, updateSV } from '../../utilities/color/colors';
 import { IColorPickerProps, IColorPickerStyleProps, IColorPickerStyles } from './ColorPicker.types';
+import { ITextField, TextField } from '../../TextField';
 import { ColorRectangle } from './ColorRectangle/ColorRectangle';
 import { ColorSlider } from './ColorSlider/ColorSlider';
+import { MAX_COLOR_HUE, IColor, getColorFromString, getColorFromRGBA, updateA, updateH, updateSV } from '../../utilities/color/colors';
 
 export interface IColorPickerState {
   isOpen: boolean;
