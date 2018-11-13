@@ -147,6 +147,7 @@ exports[`Slider renders correctly 1`] = `
       onMouseDown={[Function]}
       onTouchStart={[Function]}
       role="slider"
+      tabIndex={1}
     >
       <div
         className=

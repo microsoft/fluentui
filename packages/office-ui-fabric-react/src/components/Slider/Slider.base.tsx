@@ -102,6 +102,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
             className={css(classNames.slideBox, buttonProps!.className)}
             id={this._id}
             role="slider"
+            tabIndex={disabled ? -1 : 1}
           >
             <div ref={this._sliderLine} className={classNames.line}>
               <span ref={this._thumb} className={classNames.thumb} style={this._getThumbStyle(vertical, thumbOffsetPercent)} />

@@ -153,6 +153,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
           onMouseDown={[Function]}
           onTouchStart={[Function]}
           role="slider"
+          tabIndex={1}
         >
           <div
             className=
@@ -359,6 +360,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
               }
           id="Slider1"
           role="slider"
+          tabIndex={-1}
         >
           <div
             className=
@@ -604,6 +606,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
           onMouseDown={[Function]}
           onTouchStart={[Function]}
           role="slider"
+          tabIndex={1}
         >
           <div
             className=
@@ -865,6 +868,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             onMouseDown={[Function]}
             onTouchStart={[Function]}
             role="slider"
+            tabIndex={1}
           >
             <div
               className=
@@ -1093,6 +1097,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
                 }
             id="Slider4"
             role="slider"
+            tabIndex={-1}
           >
             <div
               className=
@@ -1360,6 +1365,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             onMouseDown={[Function]}
             onTouchStart={[Function]}
             role="slider"
+            tabIndex={1}
           >
             <div
               className=
