@@ -119,17 +119,15 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
     const { isStickyTop, isStickyBottom } = this.state;
 
-    if (this._nonStickyContent && this._nonStickyContent.current && this._placeHolder && this._placeHolder.current) {
-      return (
-        isStickyTop !== nextState.isStickyTop ||
-        isStickyBottom !== nextState.isStickyBottom ||
-        this.props.stickyPosition !== nextProps.stickyPosition ||
-        this.props.children !== nextProps.children ||
-        this._nonStickyContent.current.offsetHeight !== this._placeHolder.current.offsetHeight
-      );
-    }
-
-    return false;
+    return (isStickyTop !== nextState.isStickyTop ||
+      isStickyBottom !== nextState.isStickyBottom ||
+      this.props.stickyPosition !== nextProps.stickyPosition ||
+      this.props.children !== nextProps.children ||
+      (this._nonStickyContent &&
+        this._nonStickyContent.current &&
+        this._placeHolder &&
+        this._placeHolder.current &&
+        this._nonStickyContent.current.offsetHeight !== this._placeHolder.current.offsetHeight)) as boolean;
   }
 
   public render(): JSX.Element {
