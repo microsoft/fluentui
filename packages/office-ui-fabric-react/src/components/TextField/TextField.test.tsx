@@ -619,7 +619,7 @@ describe('TextField', () => {
 
     textField.focus();
 
-    expect(inputEl).toBe(document.activeElement);
+    expect(document.activeElement).toBe(inputEl);
   });
 
   it('blurs the input via ITextField blur', () => {
@@ -628,9 +628,31 @@ describe('TextField', () => {
     const inputEl = wrapper.find('input').getDOMNode();
 
     textField.focus();
-    expect(inputEl).toBe(document.activeElement);
+    expect(document.activeElement).toBe(inputEl);
 
     textField.blur();
     expect(document.activeElement).toBe(document.body);
+  });
+
+  it('can switch from single to multi line and back', () => {
+    // start as single line
+    const wrapper = mount(<TextField componentRef={textFieldRef} />);
+    let input = wrapper.getDOMNode().querySelector('input');
+    expect(input).toBeTruthy();
+
+    // switch to multiline
+    wrapper.setProps({ multiline: true });
+    const textarea = wrapper.getDOMNode().querySelector('textarea');
+    expect(textarea).toBeTruthy();
+
+    // switch back
+    wrapper.setProps({ multiline: false });
+    input = wrapper.getDOMNode().querySelector('input');
+    expect(input).toBeTruthy();
+
+    // Also tried writing tests to verify that focus is maintained after the field type switch
+    // (textFieldRef.current.focus() after initial render, switch to multiline, then verify the
+    // new textarea is document.activeElement), but the tests kept failing even though it works
+    // properly in the browser. Not sure why.
   });
 });
