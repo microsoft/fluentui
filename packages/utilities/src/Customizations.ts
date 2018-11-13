@@ -8,7 +8,7 @@ export type SettingsFunction = (settings: Settings) => Settings;
 export interface ICustomizations {
   settings: Settings;
   scopedSettings: { [key: string]: Settings };
-  inCustomizerContext: boolean;
+  inCustomizerContext?: boolean;
 }
 
 const CustomizationsGlobalKey = 'customizations';

@@ -65,7 +65,7 @@ export function styled<
       return (
         <CustomizerContext.Consumer>
           {(context: ICustomizerContext) => {
-            this._inCustomizerContext = context.customizations.inCustomizerContext;
+            this._inCustomizerContext = !!context.customizations.inCustomizerContext;
 
             const settings = Customizations.getSettings(fields, scope, context.customizations);
             const { styles: customizedStyles, ...rest } = settings;
