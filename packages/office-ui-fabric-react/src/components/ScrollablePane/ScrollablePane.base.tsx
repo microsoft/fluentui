@@ -11,7 +11,7 @@ export interface IScrollablePaneContext {
     addSticky: (sticky: Sticky) => void;
     removeSticky: (sticky: Sticky) => void;
     updateStickyRefHeights: () => void;
-    sortSticky: (sticky: Sticky, reSort?: boolean) => void;
+    sortSticky: (sticky: Sticky, sortAgain?: boolean) => void;
     notifySubscribers: (sort?: boolean) => void;
   };
 }
@@ -234,9 +234,9 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     this.notifySubscribers();
   };
 
-  public sortSticky = (sticky: Sticky, reSort?: boolean): void => {
+  public sortSticky = (sticky: Sticky, sortAgain?: boolean): void => {
     if (this.stickyAbove && this.stickyBelow) {
-      if (reSort) {
+      if (sortAgain) {
         this._removeStickyFromContainers(sticky);
       }
       if (sticky.canStickyTop && sticky.stickyContentTop) {
