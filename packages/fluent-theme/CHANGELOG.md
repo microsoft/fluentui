@@ -1,6 +1,17 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Mon, 12 Nov 2018 13:31:40 GMT and should not be manually modified.
+This log was last generated on Tue, 13 Nov 2018 13:30:53 GMT and should not be manually modified.
+
+## 0.5.0
+Tue, 13 Nov 2018 13:30:53 GMT
+
+### Minor changes
+
+- ComboBox: added fluent styles.
+
+### Patches
+
+- DatePicker: adds fluent styles.
 
 ## 0.4.1
 Mon, 12 Nov 2018 13:31:40 GMT

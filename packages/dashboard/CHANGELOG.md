@@ -1,6 +1,13 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Fri, 09 Nov 2018 13:32:57 GMT and should not be manually modified.
+This log was last generated on Tue, 13 Nov 2018 13:30:53 GMT and should not be manually modified.
+
+## 0.35.0
+Tue, 13 Nov 2018 13:30:53 GMT
+
+### Minor changes
+
+- Adding SetupCard and SetupCardBanner.
 
 ## 0.34.0
 Fri, 09 Nov 2018 13:32:57 GMT

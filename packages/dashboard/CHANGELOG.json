@@ -2,6 +2,25 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.35.0",
+      "tag": "@uifabric/dashboard_v0.35.0",
+      "date": "Tue, 13 Nov 2018 13:30:53 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding SetupCard and SetupCardBanner.",
+            "author": "brandonthomas <brandonthomas@users.noreply.github.com>",
+            "commit": "4fa50fa0c3f001f57a4b497821799521d05c26bc"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.102.0 <7.0.0` to `>=6.103.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.34.0",
       "tag": "@uifabric/dashboard_v0.34.0",
       "date": "Fri, 09 Nov 2018 13:32:57 GMT",

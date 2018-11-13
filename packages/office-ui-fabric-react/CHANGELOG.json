@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.103.0",
+      "tag": "office-ui-fabric-react_v6.103.0",
+      "date": "Tue, 13 Nov 2018 13:30:53 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix bug in ColorPicker opacity slider and improve demo page",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "629bfb130d125e5d3185a9969e838d1e0e30077c"
+          },
+          {
+            "comment": "DatePicker: onSelectedDate now propagates empty values even when input is required.",
+            "author": "Nick Durak <nickdurak@gmail.com>",
+            "commit": "e776ce16a91cfee610a75b1f578d48d96f7c7166"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "ColorPicker: Export sub-components",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "af6bd63a163020115e111d8d3fc87323e7846490"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.13.0 <7.0.0` to `>=6.14.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.102.0",
       "tag": "office-ui-fabric-react_v6.102.0",
       "date": "Mon, 12 Nov 2018 13:31:40 GMT",
