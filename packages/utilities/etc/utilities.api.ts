@@ -347,7 +347,7 @@ interface ICustomizableProps {
 // @public (undocumented)
 interface ICustomizations {
   // (undocumented)
-  inCustomizerContext: boolean;
+  inCustomizerContext?: boolean;
   // (undocumented)
   scopedSettings: {
     [key: string]: Settings;
