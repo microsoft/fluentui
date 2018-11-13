@@ -1,6 +1,7 @@
 import { BreadcrumbStyles } from './styles/Breadcrumb.styles';
 import { CheckboxStyles } from './styles/Checkbox.styles';
 import { ChoiceGroupOptionStyles } from './styles/ChoiceGroupOption.styles';
+import { ColorPickerStyles, ColorRectangleStyles, ColorSliderStyles } from './styles/ColorPicker.styles';
 import { ComboBoxStyles } from './styles/ComboBox.styles';
 import { CompoundButtonStyles } from './styles/CompoundButton.styles';
 import { ContextualMenuStyles } from './styles/ContextualMenu.styles';
@@ -28,6 +29,15 @@ import { CommandBarButtonStyles } from './styles/CommandBarButton.styles';
 export const FluentStyles: any = {
   Breadcrumb: {
     styles: BreadcrumbStyles
+  },
+  ColorPicker: {
+    styles: ColorPickerStyles
+  },
+  ColorRectangle: {
+    styles: ColorRectangleStyles
+  },
+  ColorSlider: {
+    styles: ColorSliderStyles
   },
   CommandBarButton: {
     styles: CommandBarButtonStyles
