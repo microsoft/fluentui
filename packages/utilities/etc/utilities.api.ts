@@ -536,6 +536,9 @@ interface ISize {
 }
 
 // @public
+export function isMac(reset?: boolean): boolean;
+
+// @public
 enum KeyCodes {
   // (undocumented)
   a = 65,
