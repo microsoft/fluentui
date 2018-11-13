@@ -235,8 +235,10 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
               ms-Slider-showValue
               ms-Slider-showTransitions
               {
+                align-items: center;
                 background: transparent;
                 border: none;
+                display: flex;
                 flex-grow: 1;
                 height: 28px;
                 line-height: 28px;
@@ -475,8 +477,10 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
               ms-Slider-showValue
               ms-Slider-showTransitions
               {
+                align-items: center;
                 background: transparent;
                 border: none;
+                display: flex;
                 flex-grow: 1;
                 height: 28px;
                 line-height: 28px;
