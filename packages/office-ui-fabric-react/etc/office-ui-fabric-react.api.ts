@@ -9860,7 +9860,7 @@ interface ISlider {
 interface ISliderProps extends React.Props<SliderBase> {
   ariaLabel?: string;
   ariaValueText?: (value: number) => string;
-  buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
+  buttonProps?: React.HTMLAttributes<HTMLDivElement>;
   className?: string;
   componentRef?: IRefObject<ISlider>;
   defaultValue?: number;
