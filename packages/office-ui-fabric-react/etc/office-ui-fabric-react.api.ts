@@ -2824,6 +2824,69 @@ interface IColorPickerStyles {
 }
 
 // @public (undocumented)
+interface IColorRectangle {
+}
+
+// @public (undocumented)
+interface IColorRectangleProps extends IBaseProps<IColorRectangle> {
+  className?: string;
+  color: IColor;
+  componentRef?: IRefObject<IColorRectangle>;
+  minSize?: number;
+  onSVChanged?: (s: number, v: number) => void;
+  styles?: IStyleFunctionOrObject<IColorRectangleStyleProps, IColorRectangleStyles>;
+  theme?: ITheme;
+}
+
+// @public (undocumented)
+interface IColorRectangleStyleProps {
+  className?: string;
+  theme: ITheme;
+}
+
+// @public (undocumented)
+interface IColorRectangleStyles {
+  dark?: IStyle;
+  light?: IStyle;
+  root?: IStyle;
+  thumb?: IStyle;
+}
+
+// @public (undocumented)
+interface IColorSlider {
+}
+
+// @public (undocumented)
+interface IColorSliderProps extends IBaseProps<IColorSlider> {
+  className?: string;
+  componentRef?: IRefObject<IColorSlider>;
+  isAlpha?: boolean;
+  maxValue?: number;
+  minValue?: number;
+  onChange?: (event: React.MouseEvent<HTMLElement>, newValue?: number) => void;
+  // @deprecated
+  onChanged?: (newValue: number) => void;
+  overlayStyle?: any;
+  styles?: IStyleFunctionOrObject<IColorSliderStyleProps, IColorSliderStyles>;
+  theme?: ITheme;
+  thumbColor?: string;
+  value?: number;
+}
+
+// @public (undocumented)
+interface IColorSliderStyleProps {
+  className?: string;
+  theme: ITheme;
+}
+
+// @public (undocumented)
+interface IColorSliderStyles {
+  root?: IStyle;
+  sliderOverlay?: IStyle;
+  sliderThumb?: IStyle;
+}
+
+// @public (undocumented)
 interface IColumn {
   ariaLabel?: string;
   calculatedWidth?: number;
@@ -6448,7 +6511,7 @@ interface IDetailsGroupRenderProps extends IGroupRenderProps {
 
 // WARNING: The type "DetailsHeaderBase" needs to be exported by the package (e.g. added to index.ts)
 // @public (undocumented)
-interface IDetailsHeaderBaseProps extends React.Props<DetailsHeaderBase>, IDetailsItemProps {
+interface IDetailsHeaderBaseProps extends React.ClassAttributes<DetailsHeaderBase>, IDetailsItemProps {
   ariaLabel?: string;
   ariaLabelForSelectAllCheckbox?: string;
   ariaLabelForSelectionColumn?: string;
@@ -8252,8 +8315,10 @@ interface IModalProps extends React.Props<ModalBase>, IWithResponsiveModeState, 
   isBlocking?: boolean;
   isDarkOverlay?: boolean;
   isOpen?: boolean;
+  layerProps?: ILayerProps;
   onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
   onDismissed?: () => any;
+  // @deprecated
   onLayerDidMount?: () => void;
   scrollableContentClassName?: string;
   styles?: IStyleFunctionOrObject<IModalStyleProps, IModalStyles>;

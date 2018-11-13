@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/dashboard",
-      "comment": "Adding props for card to send props to dataviz in charting package",
+      "comment": "Adding SetupCard and SetupCardBanner.",
       "type": "minor"
     }
   ],
   "packageName": "@uifabric/dashboard",
-  "email": "v-kanuli@microsoft.com"
+  "email": "dzearing@microsoft.com"
 }

@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "@uifabric/fluent-theme",
-      "comment": "Pivot: add fluent styles.",
-      "type": "minor"
+      "comment": "DatePicker: adds fluent styles.",
+      "type": "patch"
     }
   ],
   "packageName": "@uifabric/fluent-theme",

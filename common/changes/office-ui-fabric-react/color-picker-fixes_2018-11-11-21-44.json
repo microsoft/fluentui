@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Passing the prop alignTargetEdge to contextualMenu's callout",
+      "comment": "Fix bug in ColorPicker opacity slider and improve demo page",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "kushaly@microsoft.com"
+  "email": "miwhea@microsoft.com"
 }

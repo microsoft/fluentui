@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "6.34.1",
+      "tag": "@uifabric/styling_v6.34.1",
+      "date": "Fri, 09 Nov 2018 13:32:57 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Icon: warnings from duplicate registrations are now throttled into a single message.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "ca8766ccb65a0e2855555b929b1e0d5c9aabe4cf"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.34.0",
       "tag": "@uifabric/styling_v6.34.0",
       "date": "Wed, 31 Oct 2018 12:32:41 GMT",

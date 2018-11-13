@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IDatePicker, IDatePickerProps, IDatePickerStrings, IDatePickerStyleProps, IDatePickerStyles } from './DatePicker.types';
-import { BaseComponent, KeyCodes, createRef, classNamesFunction, getId, getNativeProps, divProperties } from '../../Utilities';
+import { BaseComponent, KeyCodes, classNamesFunction, getId, getNativeProps, divProperties } from '../../Utilities';
 import { Calendar, ICalendar, DayOfWeek } from '../../Calendar';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { Callout } from '../../Callout';
@@ -72,9 +72,9 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     allFocusable: false
   };
 
-  private _calendar = createRef<ICalendar>();
-  private _datePickerDiv = createRef<HTMLDivElement>();
-  private _textField = createRef<ITextField>();
+  private _calendar = React.createRef<ICalendar>();
+  private _datePickerDiv = React.createRef<HTMLDivElement>();
+  private _textField = React.createRef<ITextField>();
   private _preventFocusOpeningPicker: boolean;
   private _id: string;
 
@@ -408,14 +408,6 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       return;
     }
 
-    // Check when DatePicker is a required field but has NO input value
-    if (isRequired && !inputValue) {
-      this.setState({
-        errorMessage: strings!.isRequiredErrorMessage || ' '
-      });
-      return;
-    }
-
     if (allowTextInput) {
       let date = null;
       if (inputValue) {
@@ -463,9 +455,9 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
           }
         }
       } else {
-        // No input date string shouldn't be an error if field is not required
+        // Only show error for empty inputValue if it is a required field
         this.setState({
-          errorMessage: ''
+          errorMessage: isRequired ? strings!.isRequiredErrorMessage || ' ' : ''
         });
       }
 
@@ -475,6 +467,11 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
         // date variable will be null, callback should expect null value for this case
         onSelectDate(date);
       }
+    } else if (isRequired && !inputValue) {
+      // Check when DatePicker is a required field but has NO input value
+      this.setState({
+        errorMessage: strings!.isRequiredErrorMessage || ' '
+      });
     }
   };
 

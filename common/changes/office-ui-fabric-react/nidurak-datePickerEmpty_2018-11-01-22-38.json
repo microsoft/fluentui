@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Button: example updated with proper styling for a custom split button",
+      "comment": "DatePicker: onSelectedDate now propagates empty values even when input is required.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "kchau@microsoft.com"
+  "email": "nidurak@microsoft.com"
 }

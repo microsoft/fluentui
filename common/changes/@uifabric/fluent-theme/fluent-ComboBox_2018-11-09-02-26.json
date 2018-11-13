@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/fluent-theme",
-      "comment": "Update Dialog styles",
-      "type": "patch"
+      "comment": "ComboBox: added fluent styles.",
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/fluent-theme",
-  "email": "miwhea@microsoft.com"
+  "email": "v-vibr@microsoft.com"
 }
