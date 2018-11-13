@@ -89,7 +89,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
           </Label>
         )}
         <div className={classNames.container}>
-          <button
+          <div
             aria-valuenow={value}
             aria-valuemin={min}
             aria-valuemax={max}
@@ -101,8 +101,6 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
             {...buttonProps}
             className={css(classNames.slideBox, buttonProps!.className)}
             id={this._id}
-            disabled={disabled}
-            type="button"
             role="slider"
           >
             <div ref={this._sliderLine} className={classNames.line}>
@@ -116,7 +114,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
                 style={{ [lengthString]: 100 - thumbOffsetPercent + '%' }}
               />
             </div>
-          </button>
+          </div>
           {showValue && <Label className={classNames.valueLabel}>{value}</Label>}
         </div>
       </div>
