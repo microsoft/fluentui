@@ -2,12 +2,14 @@ import { BreadcrumbStyles } from './styles/Breadcrumb.styles';
 import { CheckboxStyles } from './styles/Checkbox.styles';
 import { ChoiceGroupOptionStyles } from './styles/ChoiceGroupOption.styles';
 import { ComboBoxStyles } from './styles/ComboBox.styles';
+import { CommandBarButtonStyles } from './styles/CommandBarButton.styles';
 import { CompoundButtonStyles } from './styles/CompoundButton.styles';
 import { ContextualMenuStyles } from './styles/ContextualMenu.styles';
 import { DatePickerStyles } from './styles/DatePicker.styles';
 import { DefaultButtonStyles } from './styles/DefaultButton.styles';
 import { DialogStyles, DialogContentStyles, DialogFooterStyles } from './styles/Dialog.styles';
 import { DropdownStyles } from './styles/Dropdown.styles';
+import { IconButtonStyles } from './styles/IconButton.styles';
 import { LabelStyles } from './styles/Label.styles';
 import { LinkStyles } from './styles/Link.styles';
 import { PivotStyles } from './styles/Pivot.styles';
@@ -17,8 +19,7 @@ import { SliderStyles } from './styles/Slider.styles';
 import { SpinButtonStyles } from './styles/SpinButton.styles';
 import { TextFieldStyles } from './styles/TextField.styles';
 import { ToggleStyles } from './styles/Toggle.styles';
-import { IconButtonStyles } from './styles/IconButton.styles';
-import { CommandBarButtonStyles } from './styles/CommandBarButton.styles';
+import { ColorPickerGridCellStyles } from './styles/ColorPickerGridCell.styles';
 
 // Roll up all style overrides in a single "Fluent theme" object
 
@@ -40,6 +41,9 @@ export const FluentStyles: any = {
   },
   ChoiceGroupOption: {
     styles: ChoiceGroupOptionStyles
+  },
+  ColorPickerGridCell: {
+    styles: ColorPickerGridCellStyles
   },
   ComboBox: {
     styles: ComboBoxStyles
