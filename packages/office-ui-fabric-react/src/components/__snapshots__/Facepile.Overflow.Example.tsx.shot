@@ -706,7 +706,7 @@ exports[`Component Examples renders Facepile.Overflow.Example.tsx correctly 1`] 
               flex-wrap: nowrap;
             }
       >
-        <button
+        <div
           aria-label="Number of Personas:"
           aria-valuemax={5}
           aria-valuemin={1}
@@ -794,13 +794,11 @@ exports[`Component Examples renders Facepile.Overflow.Example.tsx correctly 1`] 
                 transition: left 0.367s cubic-bezier(.1,.9,.2,1);
                 width: 16px;
               }
-          disabled={false}
           id="Slider4"
           onKeyDown={[Function]}
           onMouseDown={[Function]}
           onTouchStart={[Function]}
           role="slider"
-          type="button"
         >
           <div
             className=
@@ -862,7 +860,7 @@ exports[`Component Examples renders Facepile.Overflow.Example.tsx correctly 1`] 
               }
             />
           </div>
-        </button>
+        </div>
         <label
           className=
               ms-Label

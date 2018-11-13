@@ -105,7 +105,7 @@ export interface ISliderProps extends React.Props<SliderBase> {
   /**
    * Optional mixin for additional props on the thumb button within the slider.
    */
-  buttonProps?: React.HTMLAttributes<HTMLDivElement>; // todo change this to HTMLButtonElement or HTMLDivElement
+  buttonProps?: React.HTMLAttributes<HTMLDivElement>;
 }
 
 export type ISliderStyleProps = Required<Pick<ISliderProps, 'theme'>> &

@@ -52,7 +52,7 @@ exports[`Slider renders correctly 1`] = `
           flex-wrap: nowrap;
         }
   >
-    <button
+    <div
       aria-label="I am a slider"
       aria-valuemax={10}
       aria-valuemin={0}
@@ -140,13 +140,11 @@ exports[`Slider renders correctly 1`] = `
             transition: left 0.367s cubic-bezier(.1,.9,.2,1);
             width: 16px;
           }
-      disabled={false}
       id="Slider0"
       onKeyDown={[Function]}
       onMouseDown={[Function]}
       onTouchStart={[Function]}
       role="slider"
-      type="button"
     >
       <div
         className=
@@ -208,7 +206,7 @@ exports[`Slider renders correctly 1`] = `
           }
         />
       </div>
-    </button>
+    </div>
     <label
       className=
           ms-Label
