@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.14.0",
+      "tag": "@uifabric/merge-styles_v6.14.0",
+      "date": "Tue, 13 Nov 2018 13:30:53 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "`strokeLinecap` added to IRawStyles.",
+            "author": "brandonthomas <brandonthomas@users.noreply.github.com>",
+            "commit": "4fa50fa0c3f001f57a4b497821799521d05c26bc"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.13.0",
       "tag": "@uifabric/merge-styles_v6.13.0",
       "date": "Thu, 08 Nov 2018 04:17:34 GMT",

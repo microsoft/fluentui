@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Thu, 08 Nov 2018 04:17:34 GMT and should not be manually modified.
+This log was last generated on Tue, 13 Nov 2018 13:30:53 GMT and should not be manually modified.
+
+## 6.14.0
+Tue, 13 Nov 2018 13:30:53 GMT
+
+### Minor changes
+
+- `strokeLinecap` added to IRawStyles.
 
 ## 6.13.0
 Thu, 08 Nov 2018 04:17:34 GMT

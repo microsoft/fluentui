@@ -1,6 +1,20 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Thu, 08 Nov 2018 04:17:34 GMT and should not be manually modified.
+This log was last generated on Tue, 13 Nov 2018 13:30:53 GMT and should not be manually modified.
+
+## 0.35.0
+Tue, 13 Nov 2018 13:30:53 GMT
+
+### Minor changes
+
+- Adding SetupCard and SetupCardBanner.
+
+## 0.34.0
+Fri, 09 Nov 2018 13:32:57 GMT
+
+### Minor changes
+
+- Adding props for card to send props to dataviz in charting package
 
 ## 0.33.2
 Thu, 08 Nov 2018 04:17:34 GMT

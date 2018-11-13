@@ -2,6 +2,47 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.35.0",
+      "tag": "@uifabric/dashboard_v0.35.0",
+      "date": "Tue, 13 Nov 2018 13:30:53 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding SetupCard and SetupCardBanner.",
+            "author": "brandonthomas <brandonthomas@users.noreply.github.com>",
+            "commit": "4fa50fa0c3f001f57a4b497821799521d05c26bc"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.102.0 <7.0.0` to `>=6.103.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.34.0",
+      "tag": "@uifabric/dashboard_v0.34.0",
+      "date": "Fri, 09 Nov 2018 13:32:57 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding props for card to send props to dataviz in charting package",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "1b32a57f0135257d9df873409df2c86435457829"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.28.2` to `^0.28.3`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.100.2 <7.0.0` to `>=6.101.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.33.2",
       "tag": "@uifabric/dashboard_v0.33.2",
       "date": "Thu, 08 Nov 2018 04:17:34 GMT",

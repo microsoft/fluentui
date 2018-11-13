@@ -24,7 +24,7 @@ export const DialogContentStyles = (props: IDialogContentStyleProps) => {
     title: {
       fontSize: FontSizes.size20,
       fontWeight: FontWeights.semibold,
-      padding: '24px',
+      padding: '16px 24px 24px 24px',
       lineHeight: 'normal'
     },
     topButton: {
