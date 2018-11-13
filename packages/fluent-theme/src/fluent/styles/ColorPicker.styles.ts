@@ -42,8 +42,6 @@ export const ColorPickerStyles = (props: IColorPickerStyleProps): IColorPickerSt
   };
 };
 
-// @todo: There are interfaces for props and styles, but they
-//        are currently not exported from ColorPicker's index.ts.
 export const ColorRectangleStyles = (props: IColorRectangleStyleProps): IColorRectangleStyles => {
   const { theme } = props;
   const { palette } = theme;
@@ -60,8 +58,6 @@ export const ColorRectangleStyles = (props: IColorRectangleStyleProps): IColorRe
   };
 };
 
-// @todo: There are interfaces for props and styles, but they
-//        are currently not exported from ColorPicker's index.ts.
 export const ColorSliderStyles = (props: IColorSliderStyleProps): IColorSliderStyles => {
   return {
     root: {
