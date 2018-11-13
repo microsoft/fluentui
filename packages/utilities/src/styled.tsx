@@ -2,7 +2,6 @@ import * as React from 'react';
 import { concatStyleSets, IStyleSet, IStyleFunctionOrObject, IConcatenatedStyleSet } from '@uifabric/merge-styles';
 import { Customizations } from './Customizations';
 import { CustomizerContext, ICustomizerContext } from './Customizer';
-import { shallowCompare } from './object';
 
 export interface IPropsWithStyles<TStyleProps, TStyleSet extends IStyleSet<TStyleSet>> {
   styles?: IStyleFunctionOrObject<TStyleProps, TStyleSet>;
@@ -22,7 +21,6 @@ export interface ICustomizableProps {
 }
 
 const DefaultFields = ['theme', 'styles'];
-let _count = 0;
 
 /**
  * The styled HOC wrapper allows you to create a functional wrapper around a given component which will resolve
@@ -57,6 +55,8 @@ export function styled<
   class Wrapped extends React.Component<TComponentProps, {}> {
     public static displayName = `Styled${Component.displayName || Component.name}`;
 
+    private _inCustomizerContext = false;
+
     constructor(props: TComponentProps) {
       super(props);
     }
@@ -65,6 +65,8 @@ export function styled<
       return (
         <CustomizerContext.Consumer>
           {(context: ICustomizerContext) => {
+            this._inCustomizerContext = context.customizations.inCustomizerContext;
+
             const settings = Customizations.getSettings(fields, scope, context.customizations);
             const { styles: customizedStyles, ...rest } = settings;
             const styles = (styleProps: TStyleProps) => _resolve(styleProps, baseStyles, customizedStyles, this.props.styles);
@@ -77,16 +79,18 @@ export function styled<
     }
 
     public componentDidMount(): void {
-      Customizations.observe(this._onSettingsChanged);
+      if (!this._inCustomizerContext) {
+        Customizations.observe(this._onSettingsChanged);
+      }
     }
 
     public componentWillUnmount(): void {
-      Customizations.unobserve(this._onSettingsChanged);
+      if (!this._inCustomizerContext) {
+        Customizations.unobserve(this._onSettingsChanged);
+      }
     }
 
-    private _onSettingsChanged = () => {
-      this.forceUpdate();
-    };
+    private _onSettingsChanged = () => this.forceUpdate();
   }
 
   return Wrapped;

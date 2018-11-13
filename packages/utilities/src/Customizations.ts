@@ -8,37 +8,34 @@ export type SettingsFunction = (settings: Settings) => Settings;
 export interface ICustomizations {
   settings: Settings;
   scopedSettings: { [key: string]: Settings };
+  inCustomizerContext: boolean;
 }
 
 const CustomizationsGlobalKey = 'customizations';
-const NO_CUSTOMIZATIONS = { settings: {}, scopedSettings: {} };
+const NO_CUSTOMIZATIONS = { settings: {}, scopedSettings: {}, inCustomizerContext: false };
 
 let _allSettings = GlobalSettings.getValue<ICustomizations>(CustomizationsGlobalKey, {
   settings: {},
-  scopedSettings: {}
+  scopedSettings: {},
+  inCustomizerContext: false
 });
 
 const _events = new EventGroup(_allSettings);
 
 export class Customizations {
-  public static appliedCount = 0;
-
   public static reset(): void {
     _allSettings.settings = {};
     _allSettings.scopedSettings = {};
-    Customizations.appliedCount = 0;
   }
 
   // tslint:disable-next-line:no-any
   public static applySettings(settings: Settings): void {
     _allSettings.settings = { ..._allSettings.settings, ...settings };
-    Customizations.appliedCount++;
     Customizations._raiseChange();
   }
 
   // tslint:disable-next-line:no-any
   public static applyScopedSettings(scopeName: string, settings: Settings): void {
-    Customizations.appliedCount++;
     _allSettings.scopedSettings[scopeName] = { ..._allSettings.scopedSettings[scopeName], ...settings };
     Customizations._raiseChange();
   }

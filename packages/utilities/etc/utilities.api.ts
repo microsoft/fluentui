@@ -101,8 +101,6 @@ export function customizable(scope: string, fields: string[], concatStyles?: boo
 // @public (undocumented)
 class Customizations {
   // (undocumented)
-  static appliedCount: number;
-  // (undocumented)
   static applyScopedSettings(scopeName: string, settings: Settings): void;
   // (undocumented)
   static applySettings(settings: Settings): void;
@@ -348,6 +346,8 @@ interface ICustomizableProps {
 
 // @public (undocumented)
 interface ICustomizations {
+  // (undocumented)
+  inCustomizerContext: boolean;
   // (undocumented)
   scopedSettings: {
     [key: string]: Settings;

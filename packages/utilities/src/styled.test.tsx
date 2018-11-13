@@ -25,12 +25,19 @@ class TestBase extends React.Component<ITestProps> {
     super(props);
     _lastProps = props;
   }
+
   public render(): JSX.Element {
     _renderCount++;
 
     const classNames = getClassNames(this.props.styles, this.props);
 
-    return <div className={classNames.root} />;
+    return <div className={classNames.root}>{this.props.children}</div>;
+  }
+}
+
+class ShortCircuit extends React.PureComponent {
+  public render(): JSX.Element {
+    return <div>{this.props.children}</div>;
   }
 }
 
@@ -120,5 +127,49 @@ describe('styled', () => {
       Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
       expect(_renderCount).toEqual(2);
     });
+  });
+
+  it('can re-render the minimal times when nesting', () => {
+    safeCreate(
+      <Test>
+        <Test />
+        <Test />
+      </Test>,
+      () => {
+        expect(_renderCount).toEqual(3);
+        Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
+        expect(_renderCount).toEqual(6);
+      }
+    );
+  });
+
+  it('can re-render the minimal times when nesting and in a Customizer', () => {
+    safeCreate(
+      <Customizer>
+        <Test />
+      </Customizer>,
+      () => {
+        expect(_renderCount).toEqual(1);
+        Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
+        expect(_renderCount).toEqual(2);
+      }
+    );
+  });
+
+  it('can re-render the minimal times when inside of a pure component', () => {
+    safeCreate(
+      <Customizer>
+        <Test>
+          <ShortCircuit>
+            <Test />
+          </ShortCircuit>
+        </Test>
+      </Customizer>,
+      () => {
+        expect(_renderCount).toEqual(2);
+        Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
+        expect(_renderCount).toEqual(4);
+      }
+    );
   });
 });
