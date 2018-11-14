@@ -435,8 +435,9 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                     -webkit-font-smoothing: antialiased;
                     background-color: transparent;
                     border-radius: 0px;
-                    border: 1px solid transparent;
+                    border: none;
                     box-sizing: border-box;
+                    color: #333333;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -482,7 +483,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                   }
                   &:hover {
                     background-color: #f4f4f4;
-                    color: #004578;
+                    color: #212121;
                   }
                   &:active {
                     background-color: #c8c8c8;
@@ -1154,8 +1155,9 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                     -webkit-font-smoothing: antialiased;
                     background-color: transparent;
                     border-radius: 0px;
-                    border: 1px solid transparent;
+                    border: none;
                     box-sizing: border-box;
+                    color: #333333;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1201,7 +1203,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                   }
                   &:hover {
                     background-color: #f4f4f4;
-                    color: #004578;
+                    color: #212121;
                   }
                   &:active {
                     background-color: #c8c8c8;
@@ -1521,8 +1523,9 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                     -webkit-font-smoothing: antialiased;
                     background-color: transparent;
                     border-radius: 0px;
-                    border: 1px solid transparent;
+                    border: none;
                     box-sizing: border-box;
+                    color: #333333;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1568,7 +1571,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                   }
                   &:hover {
                     background-color: #f4f4f4;
-                    color: #004578;
+                    color: #212121;
                   }
                   &:active {
                     background-color: #c8c8c8;
@@ -1728,8 +1731,9 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
                     -webkit-font-smoothing: antialiased;
                     background-color: transparent;
                     border-radius: 0px;
-                    border: 1px solid transparent;
+                    border: none;
                     box-sizing: border-box;
+                    color: #333333;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1775,7 +1779,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
                   }
                   &:hover {
                     background-color: #f4f4f4;
-                    color: #004578;
+                    color: #212121;
                   }
                   &:active {
                     background-color: #c8c8c8;

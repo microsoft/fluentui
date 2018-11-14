@@ -1,6 +1,64 @@
 # Change Log - @uifabric/variants
 
-This log was last generated on Mon, 16 Jul 2018 11:28:06 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Oct 2018 11:24:38 GMT and should not be manually modified.
+
+## 5.13.0
+Mon, 01 Oct 2018 11:24:38 GMT
+
+### Minor changes
+
+- semantic slot value updates per design direction
+
+## 5.12.0
+Mon, 24 Sep 2018 11:27:12 GMT
+
+### Minor changes
+
+- Variants: export everything
+
+## 5.11.0
+Tue, 18 Sep 2018 11:25:16 GMT
+
+### Minor changes
+
+- Adds new semantic slots per design direction
+
+## 5.10.0
+Fri, 07 Sep 2018 01:32:10 GMT
+
+### Minor changes
+
+- Updates button slots with correct pre-fluent palette values and scss fallbacks
+- add buttonBackgroundDisabled semantic slot
+
+## 5.9.0
+Tue, 28 Aug 2018 11:24:56 GMT
+
+### Minor changes
+
+- fixes makeThemeFromPartials function to create theme in steps, so palette can be updated, then the updated palette informs the creation of the semantic slots, then the re st of the theme is filled in'
+- cherry picked for 5.0
+
+## 5.8.0
+Wed, 22 Aug 2018 11:23:37 GMT
+
+### Minor changes
+
+- adds variantBorderHovered and emptyStateBackground semantic slots to theme and variants logic
+
+## 5.7.0
+Tue, 21 Aug 2018 11:25:20 GMT
+
+### Minor changes
+
+- removes opacity function and import from color utilities from variants.ts
+
+## 5.6.0
+Sat, 11 Aug 2018 01:52:57 GMT
+
+### Minor changes
+
+- adds variantThemeType.ts and getVariant() function to variants.ts to handle variant control; adds changeOpacity() function to variants.ts to handle opacity control in semantic slot settings; adds semantic slots and fallback values to variants.ts
 
 ## 5.5.4
 Mon, 16 Jul 2018 11:28:06 GMT

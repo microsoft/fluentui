@@ -114,6 +114,9 @@ export interface IGroupedListSectionProps extends React.Props<GroupedListSection
    * The default implementation will virtualize when this callback is not provided.
    */
   onShouldVirtualize?: (props: IListProps) => boolean;
+
+  /** Stores parent group's children. */
+  groups?: IGroup[];
 }
 
 export interface IGroupedListSectionState {
@@ -186,7 +189,8 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       onRenderGroupHeader = this._onRenderGroupHeader,
       onRenderGroupShowAll = this._onRenderGroupShowAll,
       onRenderGroupFooter = this._onRenderGroupFooter,
-      onShouldVirtualize
+      onShouldVirtualize,
+      groups
     } = this.props;
     const { isSelected } = this.state;
     const renderCount = group && getGroupItemLimit ? getGroupItemLimit(group) : Infinity;
@@ -200,7 +204,8 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       groupLevel: group ? group.level : 0,
       isSelected,
       viewport: viewport,
-      selectionMode: selectionMode
+      selectionMode: selectionMode,
+      groups: groups
     };
     const groupHeaderProps: IGroupDividerProps = assign({}, headerProps, dividerProps);
     const groupShowAllProps: IGroupDividerProps = assign({}, showAllProps, dividerProps);
@@ -343,9 +348,9 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       onRenderGroupHeader,
       onRenderGroupShowAll,
       onRenderGroupFooter,
-      onShouldVirtualize
+      onShouldVirtualize,
+      group
     } = this.props;
-
     return (!subGroup || subGroup.count > 0) ? (
       <GroupedListSection
         ref={ 'subGroup_' + subGroupIndex }
@@ -370,6 +375,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
         onRenderGroupShowAll={ onRenderGroupShowAll }
         onRenderGroupFooter={ onRenderGroupFooter }
         onShouldVirtualize={ onShouldVirtualize }
+        groups={ group!.children }
       />
     ) : null;
   }

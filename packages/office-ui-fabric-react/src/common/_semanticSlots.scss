@@ -1,11 +1,16 @@
 /* Base slots */
+
 $bodyBackgroundColor: "[theme:bodyBackground, default: #ffffff]";
+$bodyStandoutBackgroundColor: "[theme:bodyStandoutBackground, default: ##f8f8f8]";
 $bodyFrameBackgroundColor: "[theme:bodyFrameBackground, default: #ffffff]";
 $bodyFrameDividerColor: "[theme:bodyFrameDivider, default: #eaeaea]";
 $bodyTextColor: "[theme:bodyText, default: #333333]";
 $bodyTextCheckedColor: "[theme:bodyTextChecked, default: #000000]";
 $bodySubtextColor: "[theme:bodySubtext, default: #666666]";
-$bodyDividerColor: "[theme:bodyDivider, default: #c8c8c8]";
+$bodyDividerColor: "[theme:bodyDivider, default: #eaeaea]";
+
+$actionLinkColor: "[theme:actionLink, default: #333333]";
+$actionLinkHoveredColor: "[theme:actionLinkHovered, default: #212121]";
 $linkColor: "[theme:link, default: #0078d4]";
 $linkHoveredColor: "[theme:linkHovered, default: #004578]";
 
@@ -15,6 +20,9 @@ $disabledBodyTextColor: "[theme:disabledText, default: #c8c8c8]";
 $disabledSubtextColor: "[theme:disabledSubtext, default: #dadada]";
 
 $focusBorderColor: "[theme:focusBorder, default: #000000]";
+$variantBorderColor: "[theme:variantBorder, default: #eaeaea]";
+$variantBorderHoveredColor: "[theme:variantBorderHovered, default: #a6a6a6]";
+$defaultStateBackgroundColor: "[theme:defaultStateBackground, default: #eaeaea]";
 
 $errorTextColor: "[theme:errorText, default: #a80000]";
 $warningTextColor: "[theme:warningText, default: #333333]";
@@ -36,20 +44,37 @@ $inputFocusBorderAltColor: "[theme:inputFocusBorderAlt, default: #0078d4]";
 $inputPlaceholderTextColor: "[theme:inputPlaceholderText, default: #666666]";
 
 /* Buttons */
-$buttonBackgroundColor: "[theme:buttonBackground, default: #f4f4f4]";
-$buttonBackgroundHoveredColor: "[theme:buttonBackgroundHovered, default: #eaeaea]";
+$buttonBackgroundColor: "[theme:buttonBackground, default: #eaeaea]";
+$buttonBackgroundHoveredColor: "[theme:buttonBackgroundHovered, default: #dadada]";
 $buttonBackgroundCheckedColor: "[theme:buttonBackgroundChecked, default: #c8c8c8]";
 $buttonBackgroundCheckedHoveredColor: "[theme:buttonBackgroundCheckedHovered, default: #eaeaea]";
+$buttonBackgroundPressedColor: "[theme:buttonBackgroundPressed, default: #d0d0d0]";
+$buttonBackgroundDisabledColor: "[theme:buttonBackgroundDisabled, default: #eaeaea]";
 $buttonBorderColor: "[theme:buttonBorder, default: transparent]";
 $buttonTextColor: "[theme:buttonText, default: #333333]";
-$buttonTextHoveredColor: "[theme:buttonTextHovered, default: #000000]";
+$buttonTextHoveredColor: "[theme:buttonTextHovered, default: #212121]";
 $buttonTextCheckedColor: "[theme:buttonTextChecked, default: #212121]";
 $buttonTextCheckedHoveredColor: "[theme:buttonTextCheckedHovered, default: #000000]";
+$buttonTextPressedColor: "[theme:buttonTextPressed, default: #212121]";
+$buttonBorderDisabledColor: "[theme:buttonBorderDisabled, default: #767676]";
+$buttonTextDisabledColor: "[theme:buttonTextDisabled, default: #a6a6a6]";
+$primaryButtonBackgroundColor: "[theme:primaryButtonBackground, default: #0078d4]";
+$primaryButtonBackgroundHoveredColor: "[theme:primaryButtonBackgroundHovered, default: #106ebe]";
+$primaryButtonBackgroundPressedColor: "[theme:primaryButtonBackgroundPressed, default: #005a9e]";
+$primaryButtonBorderColor: "[theme:primaryButtonText, default: transparent]";
+$primaryButtonTextColor: "[theme:primaryButtonText, default: #ffffff]";
+$primarybuttonTextHoveredColor: "[theme:primaryButtonTextHovered, default: #ffffff]";
+$primaryButtonTextPressedColor: "[theme:primaryButtonTextPressed, default: #ffffff]";
 
 /* Menus */
-$menuItemBackgroundHoveredColor: "[theme:menuItemBackgroundHovered, default: #f8f8f8]";
+$menuBackgroundColor: "[theme:menuBackground, default: #ffffff]";
+$menuDividerColor: "[theme:menuDivider, default: #c8c8c8]";
 $menuIconColor: "[theme:menuIcon, default: #0078d4]";
 $menuHeaderColor: "[theme:menuHeader, default: #0078d4]";
+$menuItemBackgroundHoveredColor: "[theme:menuItemBackgroundHovered, default: #f4f4f4]";
+$menuItemBackgroundPressedColor: "[theme:menuItemBackgroundPressed, default: #eaeaea]";
+$menuItemTextColor: "[theme:menuItemText, default: #333333]";
+$menuItemTextHoveredColor: "[theme:menuItemTextHovered, default: #212121]";
 
 /* Lists */
 $listBackgroundColor: "[theme:listBackground, default: #ffffff]";

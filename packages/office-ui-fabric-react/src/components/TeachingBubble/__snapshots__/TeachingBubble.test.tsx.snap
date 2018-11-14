@@ -8,7 +8,12 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
 
 exports[`TeachingBubble renders TeachingBubble correctly 2`] = `
 <div
+  aria-describedby={undefined}
+  aria-labelledby={undefined}
   className="ms-TeachingBubble-content"
+  data-is-focusable={true}
+  role="dialog"
+  tabIndex={-1}
 >
   <div
     className="ms-TeachingBubble-bodycontent"
@@ -18,6 +23,7 @@ exports[`TeachingBubble renders TeachingBubble correctly 2`] = `
     >
       <p
         className="ms-TeachingBubble-headline"
+        id={undefined}
       >
         Title
       </p>
@@ -27,6 +33,7 @@ exports[`TeachingBubble renders TeachingBubble correctly 2`] = `
     >
       <p
         className="ms-TeachingBubble-subText"
+        id={undefined}
       >
         Content
       </p>

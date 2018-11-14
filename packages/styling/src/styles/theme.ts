@@ -149,12 +149,13 @@ function _makeSemanticColorsFromPalette(
 ): ISemanticColors {
   let toReturn: ISemanticColors = {
     bodyBackground: p.white,
+    bodyStandoutBackground: p.neutralLighterAlt,
     bodyFrameBackground: p.white,
     bodyFrameDivider: p.neutralLight,
     bodyText: p.neutralPrimary,
     bodyTextChecked: p.black,
     bodySubtext: p.neutralSecondary,
-    bodyDivider: p.neutralTertiaryAlt,
+    bodyDivider: p.neutralLight,
 
     disabledBackground: p.neutralLighter,
     disabledText: p.neutralTertiary,
@@ -162,6 +163,9 @@ function _makeSemanticColorsFromPalette(
     disabledSubtext: p.neutralQuaternary,
 
     focusBorder: p.black,
+    variantBorder: p.neutralLight,
+    variantBorderHovered: p.neutralTertiary,
+    defaultStateBackground: p.neutralLight,
 
     errorText: !isInverted ? p.redDark : '#ff5f5f',
     warningText: !isInverted ? '#333333' : '#ffffff',
@@ -193,15 +197,32 @@ function _makeSemanticColorsFromPalette(
     buttonBackgroundChecked: p.neutralTertiaryAlt,
     buttonBackgroundHovered: p.neutralLight,
     buttonBackgroundCheckedHovered: p.neutralLight,
+    buttonBackgroundPressed: p.neutralTertiaryAlt,
+    buttonBackgroundDisabled: p.neutralLighter,
     buttonBorder: 'transparent',
     buttonText: p.neutralPrimary,
-    buttonTextHovered: p.black,
+    buttonTextHovered: p.neutralDark,
     buttonTextChecked: p.neutralDark,
     buttonTextCheckedHovered: p.black,
+    buttonTextPressed: p.neutralDark,
+    buttonTextDisabled: p.neutralTertiary,
+    buttonBorderDisabled: 'transparent',
+    primaryButtonBackground: p.themePrimary,
+    primaryButtonBackgroundHovered: p.themeDarkAlt,
+    primaryButtonBackgroundPressed: p.themeDark,
+    primaryButtonBorder: 'transparent',
+    primaryButtonText: p.white,
+    primaryButtonTextHovered: p.white,
+    primaryButtonTextPressed: p.white,
 
-    menuItemBackgroundHovered: p.neutralLighter,
+    menuBackground: p.white,
+    menuDivider: p.neutralTertiaryAlt,
     menuIcon: p.themePrimary,
     menuHeader: p.themePrimary,
+    menuItemBackgroundHovered: p.neutralLighter,
+    menuItemBackgroundPressed: p.neutralLight,
+    menuItemText: p.neutralPrimary,
+    menuItemTextHovered: p.neutralDark,
 
     listBackground: p.white,
     listText: p.neutralPrimary,
@@ -212,6 +233,8 @@ function _makeSemanticColorsFromPalette(
     listHeaderBackgroundHovered: p.neutralLighter,
     listHeaderBackgroundPressed: p.neutralLight,
 
+    actionLink: p.neutralPrimary,
+    actionLinkHovered: p.neutralDark,
     link: p.themePrimary,
     linkHovered: p.themeDarker,
 

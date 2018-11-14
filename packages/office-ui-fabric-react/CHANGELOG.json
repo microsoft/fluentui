@@ -2,6 +2,466 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.131.2",
+      "tag": "office-ui-fabric-react_v5.131.2",
+      "date": "Fri, 09 Nov 2018 12:26:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "qiangh <nif_tony@outlook.com>",
+            "commit": "f81d2a479d04491a74af809d55c88a829a0c2970",
+            "comment": "PersonaCoin: image load state is now reset when the image url is changed."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.131.1",
+      "tag": "office-ui-fabric-react_v5.131.1",
+      "date": "Mon, 29 Oct 2018 11:24:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "laxmikankanala <39089979+laxmikankanala@users.noreply.github.com>",
+            "commit": "4c63151a239ec1ca3929be7a66e04660969da68b",
+            "comment": "Backporting changes from 6.0"
+          },
+          {
+            "author": "laxmikankanala <39089979+laxmikankanala@users.noreply.github.com>",
+            "commit": "4c63151a239ec1ca3929be7a66e04660969da68b",
+            "comment": "Fixing the column index bug fix"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.131.0",
+      "tag": "office-ui-fabric-react_v5.131.0",
+      "date": "Wed, 24 Oct 2018 11:28:06 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "fca644a8604c9e67364a9f9c97a61eb0f5dd200f",
+            "comment": "Pickers: A variety of accessibility and bug fixes, ported from 6.0"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.130.0",
+      "tag": "office-ui-fabric-react_v5.130.0",
+      "date": "Mon, 22 Oct 2018 11:23:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "a27164dbaec25e1b7c26a07c340e3ded8c47afab",
+            "comment": "Coachmark: Fix tabbing when Coachmark is mounted (backport from PR 6240)"
+          }
+        ],
+        "minor": [
+          {
+            "author": "ht <41147089+tharshada@users.noreply.github.com>",
+            "commit": "0184fcf53f5701e4ab105d8f80de4364d33739db",
+            "comment": "adding groups prop to pass parent group's children info"
+          }
+        ],
+        "none": [
+          {
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "a27164dbaec25e1b7c26a07c340e3ded8c47afab",
+            "comment": "Coachmark: Fix tabbing when Coachmark is mounted (backport from PR 6240)"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.129.0",
+      "tag": "office-ui-fabric-react_v5.129.0",
+      "date": "Fri, 19 Oct 2018 11:27:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "11c92ca47c5a1b6d3afa819bd10238841695b8d9",
+            "comment": "FocusTrapZone: Add/remove focus and click handlers when props change"
+          },
+          {
+            "author": "Nick Durak <nickdurak@gmail.com>",
+            "commit": "1fbe29167f81331ddbe7678d783341c5090f8595",
+            "comment": "adding commandBarButtonAs to the correct interface"
+          },
+          {
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "ab469f2fafe30707f20b7c5ed3f7da6f8ef7f12a",
+            "comment": "Spinner: No longer appears to vibrate in place in Edge (Oct 2018 Update)"
+          }
+        ],
+        "minor": [
+          {
+            "author": "davguerr <davguerr@exchange.microsoft.com>",
+            "commit": "417807d02eafcee773cd409eb83baec03d31a944",
+            "comment": "Add onPagesUpdated optional prop to List component"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.128.2",
+      "tag": "office-ui-fabric-react_v5.128.2",
+      "date": "Wed, 17 Oct 2018 11:23:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Wilbert Qiu <zeqiu-mirage@users.noreply.github.com>",
+            "commit": "86ec8b07c35cf5d8d0f245e9c6550ec79d109397",
+            "comment": "Fix Persona regression in Fabric V5: this.props.children was accidentally deleted from Persona in V5, put it back."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.128.1",
+      "tag": "office-ui-fabric-react_v5.128.1",
+      "date": "Mon, 08 Oct 2018 11:23:10 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "laxmikankanala <39089979+laxmikankanala@users.noreply.github.com>",
+            "commit": "203640ba39b5a71c38b94a77774484a952341cbf",
+            "comment": "Backporting changes from 6.0"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.128.0",
+      "tag": "office-ui-fabric-react_v5.128.0",
+      "date": "Wed, 03 Oct 2018 11:23:42 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Nick Durak <nickdurak@gmail.com>",
+            "commit": "038724b414db80b123703a79304d12389e8f8599",
+            "comment": "Bring support for commandBarButtonAs to v5"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.34.1 <6.0.0` to `>=5.34.2 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.127.0",
+      "tag": "office-ui-fabric-react_v5.127.0",
+      "date": "Mon, 01 Oct 2018 11:24:38 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "788a1ce8f81bdc7711c9c22583f4e90d384a76db",
+            "comment": "semantic slot value updates per design direction"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "38cb4711f2df5f903591c3cf57289ae9dc740991",
+            "comment": "IconButton: add semantic slot color to icon in IconButton so that it can be themed."
+          },
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "eeac6a5e805b2375f8bd9719a790146e75ce172c",
+            "comment": "DetailsRow: remove the use of neutralSecondaryAlt deprecated color slot."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.35.0 <6.0.0` to `>=5.36.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.126.0",
+      "tag": "office-ui-fabric-react_v5.126.0",
+      "date": "Fri, 21 Sep 2018 11:24:29 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Swapnil Vaibhav <swapnil.vaibhav@microsoft.com>",
+            "commit": "7bd72d9cbbf071859af2f62c6d3cf62a65618c17",
+            "comment": "onRenderDivider prop added to DetailsList, onRender*Text types of callbacks in Persona can be used to override default behaviour"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.125.0",
+      "tag": "office-ui-fabric-react_v5.125.0",
+      "date": "Tue, 18 Sep 2018 11:25:16 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "560e620644aeb3a3cb876ce4aab44eac585b14d6",
+            "comment": "Adds new semantic slots per design direction"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.34.0 <6.0.0` to `>=5.35.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.124.0",
+      "tag": "office-ui-fabric-react_v5.124.0",
+      "date": "Tue, 11 Sep 2018 11:25:00 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "ht <41147089+tharshada@users.noreply.github.com>",
+            "commit": "2fbd6da42c0ddfd17dc54f1de3a4c8eaa3d52e04",
+            "comment": "adding viewport to IDetailsFooterProps"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.123.0",
+      "tag": "office-ui-fabric-react_v5.123.0",
+      "date": "Fri, 07 Sep 2018 01:32:10 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "bded61c48dac02e7f7dc50b8276ec912327224c6",
+            "comment": "Updates button slots with correct pre-fluent palette values and scss fallbacks"
+          },
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "6e45f444c56510050df017746042ca41f6410cc6",
+            "comment": "add buttonBackgroundDisabled semantic slot"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.33.1 <6.0.0` to `>=5.34.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.122.4",
+      "tag": "office-ui-fabric-react_v5.122.4",
+      "date": "Thu, 06 Sep 2018 11:26:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "d77bd5de3b80e84fcb58c19e94c3390fec0830d7",
+            "comment": "Change bodyDivider value from neutralTertiaryAlt back to neutralLight"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.33.0 <6.0.0` to `>=5.33.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.122.3",
+      "tag": "office-ui-fabric-react_v5.122.3",
+      "date": "Thu, 30 Aug 2018 11:28:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "e326de8007d70cb8a93d6e43971abefe413f7fd6",
+            "comment": "Remove borders from buttons (in a variant theme) that should not have borders."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.122.2",
+      "tag": "office-ui-fabric-react_v5.122.2",
+      "date": "Wed, 29 Aug 2018 11:23:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "laxmikankanala <39089979+laxmikankanala@users.noreply.github.com>",
+            "commit": "5abdae1198c8f7bd1616f7610caa8f698b839ba7",
+            "comment": "dragStart callback will be in sync with browser, instaed of calling it in mousemove"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.122.1",
+      "tag": "office-ui-fabric-react_v5.122.1",
+      "date": "Mon, 27 Aug 2018 11:28:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "laxmikankanala <39089979+laxmikankanala@users.noreply.github.com>",
+            "commit": "cc2816f9298a025f33fb160f5b12c135590c4e0d",
+            "comment": "'Cherry picking drophint ICON changes for column drag and drop'"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.122.0",
+      "tag": "office-ui-fabric-react_v5.122.0",
+      "date": "Wed, 22 Aug 2018 11:23:37 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "35e1b098d6c5934bd08183e6a01e94e8420508c9",
+            "comment": "adds variantBorderHovered and emptyStateBackground semantic slots to theme and variants logic"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.32.0 <6.0.0` to `>=5.33.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.121.0",
+      "tag": "office-ui-fabric-react_v5.121.0",
+      "date": "Fri, 17 Aug 2018 11:25:01 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "d08e230ef676aaec91f6b370f25d0d84ed3c7919",
+            "comment": "ShimmeredDetailsList: adding a wrapper for DetailsList when want to use Shimmer with it."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.120.0",
+      "tag": "office-ui-fabric-react_v5.120.0",
+      "date": "Sat, 11 Aug 2018 01:52:57 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "07329c5a3ca4a11fd9bb86f4f249456f643aff2a",
+            "comment": "adds semantic slots for buttons"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.31.2 <6.0.0` to `>=5.32.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.119.0",
+      "tag": "office-ui-fabric-react_v5.119.0",
+      "date": "Fri, 10 Aug 2018 11:26:02 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "db6bb9fa90dc2f5afa60d38bdb79fa826d7cfd02",
+            "comment": "Adds a new Shimmer component to OUFR 5.0"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.118.3",
+      "tag": "office-ui-fabric-react_v5.118.3",
+      "date": "Mon, 06 Aug 2018 18:19:56 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "4a67e6dcad6433af963a9126fccaa62e7ef2e7dc",
+            "comment": "Fix DetailsHeader rendering more than one root element"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.118.2",
+      "tag": "office-ui-fabric-react_v5.118.2",
+      "date": "Wed, 01 Aug 2018 11:25:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "ht <41147089+tharshada@users.noreply.github.com>",
+            "commit": "18198b95ced9cc581a774c81630e58e4b9cd3bee",
+            "comment": "Adding Callback for details list footer custom render"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.118.1",
+      "tag": "office-ui-fabric-react_v5.118.1",
+      "date": "Mon, 30 Jul 2018 11:24:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "ht <41147089+tharshada@users.noreply.github.com>",
+            "commit": "f689d18df30442cc32ce1784b437e5a591b76bde",
+            "comment": "Adding interfaces IDetailsGroupRenderProps, IDetailsGroupDividerProps, which extends existing interfaces  IGroupRenderProps, IGroupDividerProps respectively, allowing group header/footer for DetailsList to be displayed as a DetailsRow."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.118.0",
+      "tag": "office-ui-fabric-react_v5.118.0",
+      "date": "Tue, 24 Jul 2018 11:25:45 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "6536c5a866cdec883628c9ccdf75b93033137bfa",
+            "comment": "Coachmark: Add accessibility features to component, ARIA props, narrator support, and keyboarding controls"
+          },
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "6536c5a866cdec883628c9ccdf75b93033137bfa",
+            "comment": "Coachmark: Fix positioning bugs and add in support for different Coachmark directions."
+          }
+        ],
+        "patch": [
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "6536c5a866cdec883628c9ccdf75b93033137bfa",
+            "comment": "TeachingBubble: Fix content from wrapping to next line unncessarily"
+          },
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "6536c5a866cdec883628c9ccdf75b93033137bfa",
+            "comment": "Fix import paths to use relative paths for office-ui-fabric-react"
+          },
+          {
+            "author": "Pablo Núñez <pablonete@gmail.com>",
+            "commit": "1c7b3e073b0dcf938060afc354b9418f7ee6a8bd",
+            "comment": "Popup: Skip scroll computation if style.overflowY is provided."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.117.1",
       "tag": "office-ui-fabric-react_v5.117.1",
       "date": "Wed, 18 Jul 2018 11:27:52 GMT",

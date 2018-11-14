@@ -6,11 +6,20 @@ import {
   getTheme
 } from '../../Styling';
 
+export const COACHMARK_WIDTH = 32;
+export const COACHMARK_HEIGHT = 32;
+
 export interface ICoachmarkStyleProps {
+  /**
+   * Is the Coachmark collapsed.  Deprecated: use isCollapsed instead.
+   * @deprecated
+   */
+  collapsed?: boolean;
+
   /**
    * Is the Coachmark collapsed
    */
-  collapsed: boolean;
+  isCollapsed: boolean;
 
   /**
    * Is the beacon currently animating.
@@ -21,6 +30,11 @@ export interface ICoachmarkStyleProps {
    * Is the component taking measurements
    */
   isMeasuring: boolean;
+
+  /**
+   * Is the Coachmark finished measuring the dimensions of innerHostElement
+   */
+  isMeasured: boolean;
 
   /**
    * The height measured before the component has been mounted
@@ -57,6 +71,11 @@ export interface ICoachmarkStyleProps {
    * Beacon color two
    */
   beaconColorTwo?: string;
+
+  /**
+   * Transform origin for teaching bubble content
+   */
+  transformOrigin?: string;
 }
 
 export interface ICoachmarkStyles {
@@ -66,8 +85,7 @@ export interface ICoachmarkStyles {
   root?: IStyle;
 
   /**
-   * The pulsing beacon that animates when the coachmark
-   * is collapsed.
+   * The pulsing beacon that animates when the Coachmark is collapsed.
    */
   pulsingBeacon?: IStyle;
 
@@ -99,9 +117,19 @@ export interface ICoachmarkStyles {
   entityInnerHost: IStyle;
 
   /**
-   * The styles applied when the coachmark has collapsed.
+   * The layer that directly contains the TeachingBubbleContent
+   */
+  childrenContainer: IStyle;
+
+  /**
+   * The styles applied when the Coachmark has collapsed.
    */
   collapsed?: IStyle;
+
+  /**
+   * The styles applied to the ARIA attribute container
+   */
+  ariaContainer?: IStyle;
 }
 
 export const translateOne: string = keyframes({
@@ -252,7 +280,7 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
         borderStyle: 'solid',
         opacity: '0'
       },
-      (props.collapsed && props.isBeaconAnimating) && ContinuousPulseAnimation
+      (props.isCollapsed && props.isBeaconAnimating) && ContinuousPulseAnimation
     ],
     // Translate Animation Layer
     translateAnimationContainer: [
@@ -260,7 +288,7 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
         width: '100%',
         height: '100%'
       },
-      props.collapsed && {
+      props.isCollapsed && {
         animationDuration: '14s',
         animationTimingFunction: 'linear',
         animationDirection: 'normal',
@@ -270,7 +298,7 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
         animationName: translateOne,
         transition: 'opacity 0.5s ease-in-out'
       },
-      (!props.collapsed) && {
+      (!props.isCollapsed) && {
         opacity: '1'
       }
     ],
@@ -280,7 +308,7 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
         width: '100%',
         height: '100%'
       },
-      props.collapsed && {
+      props.isCollapsed && {
         animationDuration: '14s',
         animationTimingFunction: 'linear',
         animationDirection: 'normal',
@@ -294,10 +322,9 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
     rotateAnimationLayer: [
       {
         width: '100%',
-        height: '100%',
-        opacity: '0.8'
+        height: '100%'
       },
-      props.collapsed && {
+      props.isCollapsed && {
         animationDuration: '14s',
         animationTimingFunction: 'linear',
         animationDirection: 'normal',
@@ -306,7 +333,7 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
         animationFillMode: 'forwards',
         animationName: rotateOne
       },
-      !props.collapsed && {
+      !props.isCollapsed && {
         opacity: '1'
       }
     ],
@@ -317,16 +344,16 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
         outline: 'none',
         overflow: 'hidden',
         backgroundColor: props.color,
-        borderRadius: props.width,
+        borderRadius: COACHMARK_WIDTH,
         transition: 'border-radius 250ms, width 500ms, height 500ms cubic-bezier(0.5, 0, 0, 1)',
         visibility: 'hidden'
       },
       !props.isMeasuring && {
-        width: props.width,
-        height: props.height,
+        width: COACHMARK_WIDTH,
+        height: COACHMARK_HEIGHT,
         visibility: 'visible'
       },
-      !props.collapsed && {
+      !props.isCollapsed && {
         borderRadius: '1px',
         opacity: '1',
         width: props.entityHostWidth,
@@ -336,10 +363,10 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
     entityInnerHost: [
       {
         transition: 'transform 500ms cubic-bezier(0.5, 0, 0, 1)',
-        transformOrigin: 'top left',
+        transformOrigin: props.transformOrigin,
         transform: 'scale(0)'
       },
-      (!props.collapsed) && {
+      (!props.isCollapsed) && {
         width: props.entityHostWidth,
         height: props.entityHostHeight,
         transform: 'scale(1)'
@@ -347,6 +374,15 @@ export function getStyles(props: ICoachmarkStyleProps, theme: ITheme = getTheme(
       (!props.isMeasuring) && {
         visibility: 'visible',
       }
-    ]
+    ],
+    childrenContainer: [
+      {
+        display: props.isMeasured && props.isCollapsed ? 'none' : 'block'
+      }
+    ],
+    ariaContainer: {
+      position: 'fixed',
+      opacity: 0
+    }
   };
 }

@@ -44,6 +44,7 @@ export const AllComponentsStatus: IComponentStatusState = {
   ResizeGroup: require<any>('../../components/ResizeGroup/ResizeGroup.checklist').ResizeGroupStatus,
   ScrollablePane: require<any>('../../components/ScrollablePane/ScrollablePane.checklist').ScrollablePaneStatus,
   SearchBox: require<any>('../../components/SearchBox/SearchBox.checklist').SearchBoxStatus,
+  Shimmer: require<any>('../../components/Shimmer/Shimmer.checklist').ShimmerStatus,
   Slider: require<any>('../../components/Slider/Slider.checklist').SliderStatus,
   Spinner: require<any>('../../components/Spinner/Spinner.checklist').SpinnerStatus,
   SpinButton: require<any>('../../components/SpinButton/SpinButton.checklist').SpinButtonStatus,

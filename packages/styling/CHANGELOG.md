@@ -1,6 +1,57 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Mon, 16 Jul 2018 11:28:06 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Nov 2018 02:51:19 GMT and should not be manually modified.
+
+## 5.36.1
+Fri, 09 Nov 2018 02:51:19 GMT
+
+### Patches
+
+- Icon: warnings from duplicate registrations are now throttled into a single message.
+
+## 5.36.0
+Mon, 01 Oct 2018 11:24:38 GMT
+
+### Minor changes
+
+- semantic slot value updates per design direction
+
+## 5.35.0
+Tue, 18 Sep 2018 11:25:16 GMT
+
+### Minor changes
+
+- Adds new semantic slots per design direction
+
+## 5.34.0
+Fri, 07 Sep 2018 01:32:10 GMT
+
+### Minor changes
+
+- Updates button slots with correct pre-fluent palette values and scss fallbacks
+- add buttonBackgroundDisabled semantic slot
+
+## 5.33.1
+Thu, 06 Sep 2018 11:26:20 GMT
+
+### Patches
+
+- Change bodyDivider value from neutralTertiaryAlt back to neutralLight
+
+## 5.33.0
+Wed, 22 Aug 2018 11:23:37 GMT
+
+### Minor changes
+
+- adds variantBorderHovered and emptyStateBackground semantic slots to theme and variants logic
+
+## 5.32.0
+Sat, 11 Aug 2018 01:52:57 GMT
+
+### Minor changes
+
+- adds button semantic slots
+- adds 4 new semantic slots, based on designs from SP-Client events webpart, and with approval from Philip Kuo; actionLink, actionLinkHovered, cardBackground, variantBorder
 
 ## 5.31.2
 Mon, 16 Jul 2018 11:28:06 GMT

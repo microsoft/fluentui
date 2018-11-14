@@ -1,10 +1,12 @@
 /* tslint:disable-next-line:no-unused-variable */
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { setRTL } from '../../Utilities';
+import { setRTL, IRenderFunction } from '../../Utilities';
 import { Persona } from './Persona';
 import { mount, ReactWrapper } from 'enzyme';
 import { getIcon } from '../../Styling';
+import { IPersonaSharedProps, IPersonaProps, PersonaSize, PersonaPresence } from '../../Persona';
+import { TestImages } from '../../common/TestImages';
 
 const testImage1x1 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
 const STYLES = {
@@ -12,12 +14,61 @@ const STYLES = {
   initials: '.ms-Persona-initials',
   black: '.ms-Persona-initials--black',
   red: '.ms-Persona-initials--red',
+};
 
+/**
+ * function to override the default onRender callbacks
+ */
+export const wrapPersona = (
+  example: IPersonaSharedProps,
+  shouldWrapPersonaCoin: boolean = false
+): ((coinProps: IPersonaProps, defaultRenderer: IRenderFunction<IPersonaProps>) => JSX.Element | null) => {
+  return (coinProps, defaultCoinRenderer): JSX.Element | null => {
+    return shouldWrapPersonaCoin ? (
+      <span id='persona-coin-container'>{ defaultCoinRenderer(coinProps) }</span>
+    ) : (
+        defaultCoinRenderer(coinProps)
+      );
+  };
+};
+
+const examplePersona: IPersonaSharedProps = {
+  imageUrl: TestImages.personaMale,
+  imageInitials: 'SV',
+  text: 'Swapnil Vaibhav',
+  secondaryText: 'Software Engineer',
+  tertiaryText: 'In a meeting',
+  optionalText: 'Available at 4:00pm',
+  size: PersonaSize.size100,
+  presence: PersonaPresence.blocked
 };
 
 describe('Persona', () => {
   beforeEach(() => {
     setRTL(false);
+  });
+
+  it('renders Persona which calls onRenderCoin callback without imageUrl', () => {
+    // removing imageUrl prop from example
+    const { imageUrl, ...exampleWithoutImage } = examplePersona;
+    const component = renderer.create(
+      <Persona { ...exampleWithoutImage } onRenderCoin={ wrapPersona(exampleWithoutImage, true) } />
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders correctly with onRender callback', () => {
+    const component = renderer.create(
+      <Persona
+        { ...examplePersona }
+        onRenderPrimaryText={ wrapPersona(examplePersona) }
+        onRenderSecondaryText={ wrapPersona(examplePersona) }
+        onRenderTertiaryText={ wrapPersona(examplePersona) }
+      />
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
   });
 
   it('renders Persona correctly with no props', () => {
@@ -40,6 +91,12 @@ describe('Persona', () => {
 
   it('renders Persona correctly with UnknownPersona coin', () => {
     const component = renderer.create(<Persona text='Kat Larrson' showUnknownPersonaCoin={ true } />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders Persona children correctly', () => {
+    const component = renderer.create(<Persona text='Kat Larrson' ><span>This is Persona children</span></Persona>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

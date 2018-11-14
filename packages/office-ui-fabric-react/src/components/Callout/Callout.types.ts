@@ -131,6 +131,11 @@ export interface ICalloutProps {
   className?: string;
 
   /**
+   * CSS style to apply to the callout.
+   */
+  style?: React.CSSProperties;
+
+  /**
    * Optional callback when the layer content has mounted.
    */
   onLayerMounted?: () => void;

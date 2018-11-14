@@ -20,8 +20,10 @@ import {
   IColumn,
   IDetailsList,
   IDetailsListProps,
+  IDetailsGroupRenderProps,
+  ColumnDragEndLocation
 } from '../DetailsList/DetailsList.types';
-import { DetailsHeader, IDetailsHeader, SelectAllVisibility, IDetailsHeaderProps } from '../DetailsList/DetailsHeader';
+import { DetailsHeader, IDetailsHeader, SelectAllVisibility, IDetailsHeaderProps, IColumnReorderHeaderProps } from '../DetailsList/DetailsHeader';
 import { DetailsRow, IDetailsRowProps } from '../DetailsList/DetailsRow';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import {
@@ -34,7 +36,7 @@ import {
 } from '../../utilities/selection/index';
 
 import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
-import { IGroupedList, GroupedList } from '../../GroupedList';
+import { IGroupedList, GroupedList, IGroupRenderProps, IGroupDividerProps } from '../../GroupedList';
 import {
   IList,
   List,
@@ -43,6 +45,7 @@ import {
 } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
 import { GetGroupCount } from '../../utilities/groupedList/GroupedListUtility';
+import { IDetailsFooterProps } from '../DetailsList/DetailsFooter.types';
 
 const styles: any = stylesImport;
 
@@ -115,6 +118,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     this._onContentKeyDown = this._onContentKeyDown.bind(this);
     this._onRenderCell = this._onRenderCell.bind(this);
     this._onGroupExpandStateChanged = this._onGroupExpandStateChanged.bind(this);
+    this._onColumnDragEnd = this._onColumnDragEnd.bind(this);
 
     this.state = {
       focusedItemIndex: -1,
@@ -212,7 +216,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       setKey,
       selectionMode,
       columns,
-      viewport
+      viewport,
+      compact
     } = this.props;
     const shouldResetSelection = (newProps.setKey !== setKey) || newProps.setKey === undefined;
     let shouldForceUpdates = false;
@@ -236,7 +241,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     if (
       newProps.checkboxVisibility !== checkboxVisibility ||
       newProps.columns !== columns ||
-      newProps.viewport!.width !== viewport!.width
+      newProps.viewport!.width !== viewport!.width ||
+      newProps.compact !== compact
     ) {
       shouldForceUpdates = true;
     }
@@ -289,7 +295,6 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       usePageCache,
       onShouldVirtualize,
       enableShimmer,
-      columnReorderOptions,
       minimumPixelsForDrag
     } = this.props;
     const {
@@ -328,11 +333,13 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     }
 
     const {
-      onRenderDetailsHeader = this._onRenderDetailsHeader
+      onRenderDetailsHeader = this._onRenderDetailsHeader,
+      onRenderDetailsFooter = this._onRenderDetailsFooter
     } = this.props;
 
+    const detailsFooterProps = this._getDetailsFooterProps();
+    const columnReorderProps = this._getColumnReorderProps();
     const rowCount = (isHeaderVisible ? 1 : 0) + GetGroupCount(groups) + (items ? items.length : 0);
-
     return (
       // If shouldApplyApplicationRole is true, role application will be applied to make arrow keys work
       // with JAWS.
@@ -381,7 +388,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                   ariaLabelForSelectionColumn: ariaLabelForSelectionColumn,
                   selectAllVisibility: selectAllVisibility,
                   collapseAllVisibility: groupProps && groupProps.collapseAllVisibility,
-                  columnReorderOptions: columnReorderOptions,
+                  columnReorderProps: columnReorderProps,
                   minimumPixelsForDrag: minimumPixelsForDrag
                 },
                 this._onRenderDetailsHeader
@@ -410,7 +417,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                   <GroupedList
                     ref={ this._groupedList }
                     groups={ groups }
-                    groupProps={ groupProps }
+                    groupProps={ groupProps ? this._getGroupProps(groupProps) : undefined }
                     items={ items }
                     onRenderCell={ this._onRenderCell }
                     selection={ selection }
@@ -437,6 +444,12 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
               </SelectionZone>
             </FocusZone>
           </div>
+          { onRenderDetailsFooter(
+            {
+              ...detailsFooterProps
+            },
+            this._onRenderDetailsFooter
+          ) }
         </div>
       </div>
     );
@@ -453,6 +466,13 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
   private _onRenderDetailsHeader = (detailsHeaderProps: IDetailsHeaderProps, defaultRender?: IRenderFunction<IDetailsHeaderProps>): JSX.Element => {
     return <DetailsHeader { ...detailsHeaderProps } />;
+  }
+
+  private _onRenderDetailsFooter = (
+    detailsFooterProps: IDetailsFooterProps,
+    defaultRender?: IRenderFunction<IDetailsFooterProps>
+  ): JSX.Element | null => {
+    return null;
   }
 
   private _onRenderListCell = (nestingDepth: number)
@@ -607,6 +627,27 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     });
     if (this._groupedList.current) {
       this._groupedList.current.toggleCollapseAll(collapsed);
+    }
+  }
+
+  private _onColumnDragEnd(props: { dropLocation?: ColumnDragEndLocation }, event: MouseEvent): void {
+    const { columnReorderOptions } = this.props;
+    let finalDropLocation: ColumnDragEndLocation = ColumnDragEndLocation.outside;
+    if (columnReorderOptions && columnReorderOptions.onDragEnd) {
+      if (props.dropLocation && props.dropLocation !== ColumnDragEndLocation.header) {
+        finalDropLocation = props.dropLocation;
+      } else if (this._root.current) {
+        const clientRect = this._root.current.getBoundingClientRect();
+        if (
+          event.clientX > clientRect.left &&
+          event.clientX < clientRect.right &&
+          event.clientY > clientRect.top &&
+          event.clientY < clientRect.bottom
+        ) {
+          finalDropLocation = ColumnDragEndLocation.surface;
+        }
+      }
+      columnReorderOptions.onDragEnd(finalDropLocation);
     }
   }
 
@@ -880,6 +921,71 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     }
 
     return itemKey;
+  }
+
+  private _getDetailsFooterProps(): IDetailsFooterProps | undefined {
+    const { adjustedColumns: columns } = this.state;
+    const detailsFooterProps: IDetailsFooterProps = {
+      columns: columns as IColumn[],
+      groupNestingDepth: this._getGroupNestingDepth(),
+      selection: this._selection
+    };
+    return {
+      ...detailsFooterProps
+    };
+  }
+
+  private _getColumnReorderProps(): IColumnReorderHeaderProps | undefined {
+    const { columnReorderOptions } = this.props;
+    if (columnReorderOptions) {
+      return {
+        ...columnReorderOptions,
+        onColumnDragEnd: this._onColumnDragEnd
+      };
+    }
+  }
+
+  private _getGroupProps(detailsGroupProps: IDetailsGroupRenderProps): IGroupRenderProps {
+    const {
+      onRenderFooter: onRenderDetailsGroupFooter,
+      onRenderHeader: onRenderDetailsGroupHeader
+    } = detailsGroupProps;
+    const { adjustedColumns: columns } = this.state;
+    const groupNestingDepth = this._getGroupNestingDepth();
+    const onRenderFooter = onRenderDetailsGroupFooter
+      ? (props: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
+        return onRenderDetailsGroupFooter(
+          {
+            ...props,
+            columns: columns,
+            groupNestingDepth: groupNestingDepth,
+            selection: this._selection
+          },
+          defaultRender
+        );
+      }
+      : undefined;
+
+    const onRenderHeader = onRenderDetailsGroupHeader
+      ? (props: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
+        return onRenderDetailsGroupHeader(
+          {
+            ...props,
+            columns: columns,
+            groupNestingDepth: groupNestingDepth,
+            selection: this._selection
+          },
+          defaultRender
+        );
+      }
+      : undefined;
+
+    const groupProps = detailsGroupProps as IGroupRenderProps;
+    return {
+      ...groupProps,
+      onRenderFooter,
+      onRenderHeader
+    };
   }
 }
 

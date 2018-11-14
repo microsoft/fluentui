@@ -1,20 +1,21 @@
-import * as React from 'react';
-import { TeachingBubble } from './TeachingBubble';
-import { TeachingBubbleContent } from './TeachingBubbleContent';
 import { IImageProps } from '../../Image';
 import { IButtonProps } from '../../Button';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import { ICalloutProps } from '../../Callout';
+import { RefObject } from '../../Utilities';
 
 export interface ITeachingBubble {
+  rootElement: RefObject<HTMLDivElement>;
 
+  /** Sets focus to the TeachingBubble root element */
+  focus(): void;
 }
 
 /**
  * TeachingBubble component props.
  */
 
-export interface ITeachingBubbleProps extends React.Props<TeachingBubble | TeachingBubbleContent>, IAccessiblePopupProps {
+export interface ITeachingBubbleProps extends React.Props<any>, IAccessiblePopupProps {
   /**
    * Optional callback to access the ISlider interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -75,4 +76,14 @@ export interface ITeachingBubbleProps extends React.Props<TeachingBubble | Teach
    * A variation with smaller bold headline and margins to the body (hasCondensedHeadline takes precedence if it is also set to true).
    */
   hasSmallHeadline?: boolean;
+
+  /**
+   *  Defines the element id referencing the element containing label text for TeachingBubble.
+   */
+  ariaLabelledBy?: string;
+
+  /**
+   * Defines the element id referencing the element containing the description for the TeachingBubble.
+   */
+  ariaDescribedBy?: string;
 }

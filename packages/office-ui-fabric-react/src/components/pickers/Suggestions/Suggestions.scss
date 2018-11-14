@@ -149,6 +149,9 @@
   @include high-contrast {
     color: WindowText;
   }
+  &:hover {
+    color: $ms-color-neutralDark;
+  }
 }
 
 .closeButton.closeButton {

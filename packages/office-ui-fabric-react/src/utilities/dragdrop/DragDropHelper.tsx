@@ -10,7 +10,6 @@ import {
 } from './interfaces';
 import { ISelection } from '../../utilities/selection/interfaces';
 
-const DISTANCE_FOR_DRAG_SQUARED = 25; // the minimum mouse move distance to treat it as drag event
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
 const MOUSEMOVE_PRIMARY_BUTTON = 1; // for mouse move event we are using ev.buttons property, 1 means left button
 
@@ -21,7 +20,6 @@ export interface IDragDropHelperParams {
 
 export class DragDropHelper implements IDragDropHelper {
   private _dragEnterCounts: { [key: string]: number };
-  private readonly _distanceSquaredForDrag: number;
   private _isDragging: boolean;
   private _dragData: {
     eventTarget: EventTarget | null;
@@ -46,8 +44,6 @@ export class DragDropHelper implements IDragDropHelper {
     this._dragEnterCounts = {};
     this._activeTargets = {};
     this._lastId = 0;
-    this._distanceSquaredForDrag = typeof params.minimumPixelsForDrag === 'number' ?
-      params.minimumPixelsForDrag * params.minimumPixelsForDrag : DISTANCE_FOR_DRAG_SQUARED;
 
     this._events = new EventGroup(this);
     // clear drag data when mouse up, use capture event to ensure it will be run
@@ -183,6 +179,11 @@ export class DragDropHelper implements IDragDropHelper {
 
         // We need to add in data so that on Firefox we show the ghost element when dragging
         onDragStart = (event: DragEvent) => {
+          const { options } = this._dragData!.dragTarget!;
+          if (options && options.onDragStart) {
+            options.onDragStart(options.context.data, options.context.index, this._selection.getSelection(), event);
+          }
+          this._isDragging = true;
           event.dataTransfer.setData('id', root.id);
         };
 
@@ -299,7 +300,7 @@ export class DragDropHelper implements IDragDropHelper {
       return;
     }
 
-    const { root, options, key } = target;
+    const { root, key } = target;
     if (this._isDragging) {
       if (this._isDroppable(target)) {
         // we can have nested drop targets in the DOM, like a folder inside a group. In that case, when we drag into
@@ -311,25 +312,10 @@ export class DragDropHelper implements IDragDropHelper {
           if (this._dragData.dropTarget &&
             this._dragData.dropTarget.key !== key &&
             !this._isChild(root, this._dragData.dropTarget.root)) {
-            EventGroup.raise(this._dragData.dropTarget.root, 'dragleave');
-            this._dragData.dropTarget = undefined;
-          }
-
-          if (!this._dragData.dropTarget) {
-            EventGroup.raise(root, 'dragenter');
-            this._dragData.dropTarget = target;
-          }
-        }
-      }
-    } else if (this._dragData) {
-      if (this._isDraggable(target)) {
-        const xDiff = this._dragData.clientX - event.clientX;
-        const yDiff = this._dragData.clientY - event.clientY;
-        if (xDiff * xDiff + yDiff * yDiff >= this._distanceSquaredForDrag) {
-          if (this._dragData.dragTarget) {
-            this._isDragging = true;
-            if (options.onDragStart) {
-              options.onDragStart(options.context.data, options.context.index, this._selection.getSelection(), event);
+            if (this._dragEnterCounts[this._dragData.dropTarget.key] > 0) {
+              EventGroup.raise(this._dragData.dropTarget.root, 'dragleave');
+              EventGroup.raise(root, 'dragenter');
+              this._dragData.dropTarget = target;
             }
           }
         }

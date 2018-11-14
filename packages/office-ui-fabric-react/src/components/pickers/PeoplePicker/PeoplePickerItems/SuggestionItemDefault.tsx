@@ -3,7 +3,7 @@ import * as React from 'react';
 /* tslint:enable */
 import { css } from '../../../../Utilities';
 import { Persona, PersonaSize, IPersonaProps, PersonaPresence } from '../../../../Persona';
-import { IBasePickerSuggestionsProps, ISuggestionItemProps } from 'office-ui-fabric-react/lib/Pickers';
+import { IBasePickerSuggestionsProps, ISuggestionItemProps } from '../../../../Pickers';
 import * as stylesImport from '../PeoplePicker.scss';
 const styles: any = stylesImport;
 

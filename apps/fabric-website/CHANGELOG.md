@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 11 Jul 2018 13:26:02 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Aug 2018 11:26:02 GMT and should not be manually modified.
+
+## 5.8.0
+Fri, 10 Aug 2018 11:26:02 GMT
+
+### Minor changes
+
+- Adds new Shimmer component to fabric-website.
 
 ## 5.7.6
 Wed, 11 Jul 2018 13:26:02 GMT

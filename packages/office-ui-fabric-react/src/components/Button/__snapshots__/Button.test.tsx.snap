@@ -15,7 +15,7 @@ exports[`Button renders ActionButton correctly 1`] = `
         -webkit-font-smoothing: antialiased;
         background-color: transparent;
         border-radius: 0px;
-        border: 1px solid transparent;
+        border: none;
         box-sizing: border-box;
         color: #333333;
         cursor: pointer;
@@ -346,7 +346,7 @@ exports[`Button renders CompoundButton correctly 1`] = `
       }
       &:hover {
         background-color: #eaeaea;
-        color: #000000;
+        color: #212121;
       }
       @media screen and (-ms-high-contrast: active){&:hover {
         border-color: Highlight;
@@ -486,7 +486,7 @@ exports[`Button renders DefaultButton correctly 1`] = `
       }
       &:hover {
         background-color: #eaeaea;
-        color: #000000;
+        color: #212121;
       }
       @media screen and (-ms-high-contrast: active){&:hover {
         border-color: Highlight;
@@ -552,8 +552,9 @@ exports[`Button renders IconButton correctly 1`] = `
         -webkit-font-smoothing: antialiased;
         background-color: transparent;
         border-radius: 0px;
-        border: 1px solid transparent;
+        border: none;
         box-sizing: border-box;
+        color: #333333;
         cursor: pointer;
         display: inline-block;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -595,7 +596,7 @@ exports[`Button renders IconButton correctly 1`] = `
         top: -2px;
       }
       &:hover {
-        color: #004578;
+        color: #212121;
       }
       @media screen and (-ms-high-contrast: active){&:hover {
         border-color: Highlight;
@@ -711,7 +712,7 @@ exports[`Button renders a DefaultButton with a keytip correctly 1`] = `
       }
       &:hover {
         background-color: #eaeaea;
-        color: #000000;
+        color: #212121;
       }
       @media screen and (-ms-high-contrast: active){&:hover {
         border-color: Highlight;

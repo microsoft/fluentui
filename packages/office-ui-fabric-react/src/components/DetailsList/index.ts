@@ -4,3 +4,4 @@ export * from './DetailsList';
 export * from './DetailsList.types';
 export * from './DetailsRow';
 export * from './DetailsRowCheck';
+export * from './DetailsFooter.types';

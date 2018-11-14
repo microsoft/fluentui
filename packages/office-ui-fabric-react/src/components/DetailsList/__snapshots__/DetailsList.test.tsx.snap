@@ -33,6 +33,293 @@ exports[`DetailsList renders List correctly 1`] = `
           aria-labelledby={undefined}
           className="ms-FocusZone ms-DetailsHeader"
           data-automationid="DetailsHeader"
+          data-focuszone-id="FocusZone7"
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onMouseDownCapture={[Function]}
+          onMouseMove={[Function]}
+          role="row"
+        >
+          <div
+            aria-colindex={1}
+            aria-labelledby="header6-check"
+            className="ms-DetailsHeader-cell ms-DetailsHeader-cellIsCheck"
+            onClick={[Function]}
+            role="columnheader"
+          >
+            <span
+              className=""
+            >
+              <div
+                aria-checked={undefined}
+                aria-describedby="header6-checkTooltip"
+                aria-label={undefined}
+                className="ms-DetailsRow-check ms-DetailsRow-check--isHeader undefined"
+                data-automationid="DetailsRowCheck"
+                data-is-focusable={true}
+                data-selection-toggle={true}
+                id="header6-check"
+                role="checkbox"
+              >
+                <div
+                  className=
+                      ms-Check
+                      {
+                        height: 18px;
+                        line-height: 1;
+                        position: relative;
+                        user-select: none;
+                        vertical-align: top;
+                        width: 18px;
+                      }
+                      &:before {
+                        background: #ffffff;
+                        border-radius: 50%;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        opacity: 1;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                      }
+                      .checkHost:hover &, .checkHost:focus &, &:hover, &:focus {
+                        opacity: 1;
+                      }
+                >
+                  <i
+                    aria-hidden={true}
+                    className=
+                        ms-Check-circle
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          color: #c8c8c8;
+                          display: inline-block;
+                          font-family: "FabricMDL2Icons";
+                          font-size: 18px;
+                          font-style: normal;
+                          font-weight: normal;
+                          height: 18px;
+                          left: 0px;
+                          position: absolute;
+                          speak: none;
+                          text-align: center;
+                          top: 0px;
+                          vertical-align: middle;
+                          width: 18px;
+                        }
+                        @media screen and (-ms-high-contrast: active){& {
+                          color: WindowText;
+                        }
+                    data-icon-name="CircleRing"
+                    role="presentation"
+                  >
+                    
+                  </i>
+                  <i
+                    aria-hidden={true}
+                    className=
+                        ms-Check-check
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          color: #c8c8c8;
+                          display: inline-block;
+                          font-family: "FabricMDL2Icons";
+                          font-size: 16px;
+                          font-style: normal;
+                          font-weight: normal;
+                          height: 18px;
+                          left: .5px;
+                          opacity: 0;
+                          position: absolute;
+                          speak: none;
+                          text-align: center;
+                          top: 0px;
+                          vertical-align: middle;
+                          width: 18px;
+                        }
+                        &:hover {
+                          opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){& {
+                          -ms-high-contrast-adjust: none;
+                        }
+                    data-icon-name="StatusCircleCheckmark"
+                    role="presentation"
+                  >
+                    
+                  </i>
+                </div>
+              </div>
+            </span>
+          </div>
+          <div
+            aria-colindex={2}
+            aria-sort="none"
+            className="ms-DetailsHeader-cell is-actionable undefined"
+            data-automationid="ColumnsHeaderColumn"
+            data-is-draggable={false}
+            data-item-key="key"
+            draggable={false}
+            role="columnheader"
+            style={
+              Object {
+                "width": 116,
+              }
+            }
+          >
+            <span
+              className=""
+            >
+              <span
+                aria-describedby={undefined}
+                aria-haspopup={false}
+                aria-label={undefined}
+                aria-labelledby="header6-key-name "
+                className="ms-DetailsHeader-cellTitle"
+                data-is-focusable={true}
+                id="header6-key"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                role="button"
+              >
+                <span
+                  className="ms-DetailsHeader-cellName"
+                  id="header6-key-name"
+                >
+                  key
+                </span>
+              </span>
+            </span>
+          </div>
+          <div
+            aria-hidden={true}
+            className="ms-DetailsHeader-cellSizer"
+            data-is-focusable={false}
+            data-sizer-index={0}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDoubleClick={[Function]}
+            role="button"
+          />
+        </div>
+      </div>
+      <div
+        onKeyDown={[Function]}
+        role="presentation"
+      >
+        <div
+          aria-describedby={undefined}
+          aria-labelledby={undefined}
+          className="ms-FocusZone"
+          data-focuszone-id="FocusZone8"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onMouseDownCapture={[Function]}
+          role="presentation"
+        >
+          <div
+            className="ms-SelectionZone"
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onDoubleClick={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onKeyDownCapture={[Function]}
+            onMouseDown={[Function]}
+            onMouseDownCapture={[Function]}
+            role="presentation"
+          >
+            <div
+              className="ms-List"
+              role="presentation"
+            >
+              <div
+                className="ms-List-surface"
+                role="presentation"
+              >
+                <div
+                  className="ms-List-page"
+                  role="presentation"
+                  style={Object {}}
+                >
+                  <div
+                    className="ms-List-cell"
+                    data-automationid="ListCell"
+                    data-list-index={0}
+                    role="presentation"
+                  />
+                  <div
+                    className="ms-List-cell"
+                    data-automationid="ListCell"
+                    data-list-index={1}
+                    role="presentation"
+                  />
+                  <div
+                    className="ms-List-cell"
+                    data-automationid="ListCell"
+                    data-list-index={2}
+                    role="presentation"
+                  />
+                  <div
+                    className="ms-List-cell"
+                    data-automationid="ListCell"
+                    data-list-index={3}
+                    role="presentation"
+                  />
+                  <div
+                    className="ms-List-cell"
+                    data-automationid="ListCell"
+                    data-list-index={4}
+                    role="presentation"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
+<div
+  className="ms-Viewport"
+  style={
+    Object {
+      "minHeight": 1,
+      "minWidth": 1,
+    }
+  }
+>
+  <div
+    aria-label={undefined}
+    className="ms-DetailsList is-horizontalConstrained undefined"
+    data-automationid="DetailsList"
+    data-is-scrollable="false"
+  >
+    <div
+      aria-colcount={6}
+      aria-label={undefined}
+      aria-readonly="true"
+      aria-rowcount={6}
+      role="grid"
+    >
+      <div
+        onKeyDown={[Function]}
+        role="presentation"
+      >
+        <div
+          aria-describedby={undefined}
+          aria-label={undefined}
+          aria-labelledby={undefined}
+          className="ms-FocusZone ms-DetailsHeader"
+          data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone1"
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -161,7 +448,7 @@ exports[`DetailsList renders List correctly 1`] = `
             className="ms-DetailsHeader-cell is-actionable undefined"
             data-automationid="ColumnsHeaderColumn"
             data-is-draggable={false}
-            data-item-key="key"
+            data-item-key="column_key_0"
             draggable={false}
             role="columnheader"
             style={
@@ -177,33 +464,194 @@ exports[`DetailsList renders List correctly 1`] = `
                 aria-describedby={undefined}
                 aria-haspopup={false}
                 aria-label={undefined}
-                aria-labelledby="header0-key-name "
+                aria-labelledby="header0-column_key_0-name "
                 className="ms-DetailsHeader-cellTitle"
                 data-is-focusable={true}
-                id="header0-key"
+                id="header0-column_key_0"
                 onClick={[Function]}
                 onContextMenu={[Function]}
                 role="button"
               >
                 <span
                   className="ms-DetailsHeader-cellName"
-                  id="header0-key-name"
+                  id="header0-column_key_0-name"
                 >
-                  key
+                  Item 0
                 </span>
               </span>
             </span>
+            <span
+              className="ms-Layer"
+            />
           </div>
           <div
-            aria-hidden={true}
-            className="ms-DetailsHeader-cellSizer"
-            data-is-focusable={false}
-            data-sizer-index={0}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDoubleClick={[Function]}
-            role="button"
-          />
+            aria-colindex={3}
+            aria-sort="none"
+            className="ms-DetailsHeader-cell is-actionable undefined"
+            data-automationid="ColumnsHeaderColumn"
+            data-is-draggable={false}
+            data-item-key="column_key_1"
+            draggable={false}
+            role="columnheader"
+            style={
+              Object {
+                "width": 116,
+              }
+            }
+          >
+            <span
+              className=""
+            >
+              <span
+                aria-describedby={undefined}
+                aria-haspopup={false}
+                aria-label={undefined}
+                aria-labelledby="header0-column_key_1-name "
+                className="ms-DetailsHeader-cellTitle"
+                data-is-focusable={true}
+                id="header0-column_key_1"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                role="button"
+              >
+                <span
+                  className="ms-DetailsHeader-cellName"
+                  id="header0-column_key_1-name"
+                >
+                  Item 1
+                </span>
+              </span>
+            </span>
+            <span
+              className="ms-Layer"
+            />
+          </div>
+          <div
+            aria-colindex={4}
+            aria-sort="none"
+            className="ms-DetailsHeader-cell is-actionable undefined"
+            data-automationid="ColumnsHeaderColumn"
+            data-is-draggable={false}
+            data-item-key="column_key_2"
+            draggable={false}
+            role="columnheader"
+            style={
+              Object {
+                "width": 116,
+              }
+            }
+          >
+            <span
+              className=""
+            >
+              <span
+                aria-describedby={undefined}
+                aria-haspopup={false}
+                aria-label={undefined}
+                aria-labelledby="header0-column_key_2-name "
+                className="ms-DetailsHeader-cellTitle"
+                data-is-focusable={true}
+                id="header0-column_key_2"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                role="button"
+              >
+                <span
+                  className="ms-DetailsHeader-cellName"
+                  id="header0-column_key_2-name"
+                >
+                  Item 2
+                </span>
+              </span>
+            </span>
+            <span
+              className="ms-Layer"
+            />
+          </div>
+          <div
+            aria-colindex={5}
+            aria-sort="none"
+            className="ms-DetailsHeader-cell is-actionable undefined"
+            data-automationid="ColumnsHeaderColumn"
+            data-is-draggable={false}
+            data-item-key="column_key_3"
+            draggable={false}
+            role="columnheader"
+            style={
+              Object {
+                "width": 116,
+              }
+            }
+          >
+            <span
+              className=""
+            >
+              <span
+                aria-describedby={undefined}
+                aria-haspopup={false}
+                aria-label={undefined}
+                aria-labelledby="header0-column_key_3-name "
+                className="ms-DetailsHeader-cellTitle"
+                data-is-focusable={true}
+                id="header0-column_key_3"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                role="button"
+              >
+                <span
+                  className="ms-DetailsHeader-cellName"
+                  id="header0-column_key_3-name"
+                >
+                  Item 3
+                </span>
+              </span>
+            </span>
+            <span
+              className="ms-Layer"
+            />
+          </div>
+          <div
+            aria-colindex={6}
+            aria-sort="none"
+            className="ms-DetailsHeader-cell is-actionable undefined"
+            data-automationid="ColumnsHeaderColumn"
+            data-is-draggable={false}
+            data-item-key="column_key_4"
+            draggable={false}
+            role="columnheader"
+            style={
+              Object {
+                "width": 116,
+              }
+            }
+          >
+            <span
+              className=""
+            >
+              <span
+                aria-describedby={undefined}
+                aria-haspopup={false}
+                aria-label={undefined}
+                aria-labelledby="header0-column_key_4-name "
+                className="ms-DetailsHeader-cellTitle"
+                data-is-focusable={true}
+                id="header0-column_key_4"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                role="button"
+              >
+                <span
+                  className="ms-DetailsHeader-cellName"
+                  id="header0-column_key_4-name"
+                >
+                  Item 4
+                </span>
+              </span>
+            </span>
+            <span
+              className="ms-Layer"
+            />
+          </div>
         </div>
       </div>
       <div
@@ -215,6 +663,469 @@ exports[`DetailsList renders List correctly 1`] = `
           aria-labelledby={undefined}
           className="ms-FocusZone"
           data-focuszone-id="FocusZone2"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onMouseDownCapture={[Function]}
+          role="presentation"
+        >
+          <div
+            className="ms-SelectionZone"
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onDoubleClick={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onKeyDownCapture={[Function]}
+            onMouseDown={[Function]}
+            onMouseDownCapture={[Function]}
+            role="presentation"
+          >
+            <div
+              className="ms-List"
+              role="presentation"
+            >
+              <div
+                className="ms-List-surface"
+                role="presentation"
+              >
+                <div
+                  className="ms-List-page"
+                  role="presentation"
+                  style={Object {}}
+                >
+                  <div
+                    className="ms-List-cell"
+                    data-automationid="ListCell"
+                    data-list-index={0}
+                    role="presentation"
+                  />
+                  <div
+                    className="ms-List-cell"
+                    data-automationid="ListCell"
+                    data-list-index={1}
+                    role="presentation"
+                  />
+                  <div
+                    className="ms-List-cell"
+                    data-automationid="ListCell"
+                    data-list-index={2}
+                    role="presentation"
+                  />
+                  <div
+                    className="ms-List-cell"
+                    data-automationid="ListCell"
+                    data-list-index={3}
+                    role="presentation"
+                  />
+                  <div
+                    className="ms-List-cell"
+                    data-automationid="ListCell"
+                    data-list-index={4}
+                    role="presentation"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DetailsList renders List with custom icon as column divider 1`] = `
+<div
+  className="ms-Viewport"
+  style={
+    Object {
+      "minHeight": 1,
+      "minWidth": 1,
+    }
+  }
+>
+  <div
+    aria-label={undefined}
+    className="ms-DetailsList is-horizontalConstrained undefined"
+    data-automationid="DetailsList"
+    data-is-scrollable="false"
+  >
+    <div
+      aria-colcount={6}
+      aria-label={undefined}
+      aria-readonly="true"
+      aria-rowcount={6}
+      role="grid"
+    >
+      <div
+        onKeyDown={[Function]}
+        role="presentation"
+      >
+        <div
+          aria-describedby={undefined}
+          aria-label={undefined}
+          aria-labelledby={undefined}
+          className="ms-FocusZone ms-DetailsHeader"
+          data-automationid="DetailsHeader"
+          data-focuszone-id="FocusZone4"
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onMouseDownCapture={[Function]}
+          onMouseMove={[Function]}
+          role="row"
+        >
+          <div
+            aria-colindex={1}
+            aria-labelledby="header3-check"
+            className="ms-DetailsHeader-cell ms-DetailsHeader-cellIsCheck"
+            onClick={[Function]}
+            role="columnheader"
+          >
+            <span
+              className=""
+            >
+              <div
+                aria-checked={undefined}
+                aria-describedby="header3-checkTooltip"
+                aria-label={undefined}
+                className="ms-DetailsRow-check ms-DetailsRow-check--isHeader undefined"
+                data-automationid="DetailsRowCheck"
+                data-is-focusable={true}
+                data-selection-toggle={true}
+                id="header3-check"
+                role="checkbox"
+              >
+                <div
+                  className=
+                      ms-Check
+                      {
+                        height: 18px;
+                        line-height: 1;
+                        position: relative;
+                        user-select: none;
+                        vertical-align: top;
+                        width: 18px;
+                      }
+                      &:before {
+                        background: #ffffff;
+                        border-radius: 50%;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        opacity: 1;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                      }
+                      .checkHost:hover &, .checkHost:focus &, &:hover, &:focus {
+                        opacity: 1;
+                      }
+                >
+                  <i
+                    aria-hidden={true}
+                    className=
+                        ms-Check-circle
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          color: #c8c8c8;
+                          display: inline-block;
+                          font-family: "FabricMDL2Icons";
+                          font-size: 18px;
+                          font-style: normal;
+                          font-weight: normal;
+                          height: 18px;
+                          left: 0px;
+                          position: absolute;
+                          speak: none;
+                          text-align: center;
+                          top: 0px;
+                          vertical-align: middle;
+                          width: 18px;
+                        }
+                        @media screen and (-ms-high-contrast: active){& {
+                          color: WindowText;
+                        }
+                    data-icon-name="CircleRing"
+                    role="presentation"
+                  >
+                    
+                  </i>
+                  <i
+                    aria-hidden={true}
+                    className=
+                        ms-Check-check
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          color: #c8c8c8;
+                          display: inline-block;
+                          font-family: "FabricMDL2Icons";
+                          font-size: 16px;
+                          font-style: normal;
+                          font-weight: normal;
+                          height: 18px;
+                          left: .5px;
+                          opacity: 0;
+                          position: absolute;
+                          speak: none;
+                          text-align: center;
+                          top: 0px;
+                          vertical-align: middle;
+                          width: 18px;
+                        }
+                        &:hover {
+                          opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){& {
+                          -ms-high-contrast-adjust: none;
+                        }
+                    data-icon-name="StatusCircleCheckmark"
+                    role="presentation"
+                  >
+                    
+                  </i>
+                </div>
+              </div>
+            </span>
+          </div>
+          <div
+            aria-colindex={2}
+            aria-sort="none"
+            className="ms-DetailsHeader-cell is-actionable undefined"
+            data-automationid="ColumnsHeaderColumn"
+            data-is-draggable={false}
+            data-item-key="column_key_0"
+            draggable={false}
+            role="columnheader"
+            style={
+              Object {
+                "width": 116,
+              }
+            }
+          >
+            <span
+              className=""
+            >
+              <span
+                aria-describedby={undefined}
+                aria-haspopup={false}
+                aria-label={undefined}
+                aria-labelledby="header3-column_key_0-name "
+                className="ms-DetailsHeader-cellTitle"
+                data-is-focusable={true}
+                id="header3-column_key_0"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                role="button"
+              >
+                <span
+                  className="ms-DetailsHeader-cellName"
+                  id="header3-column_key_0-name"
+                >
+                  Item 0
+                </span>
+              </span>
+            </span>
+            <span
+              className="ms-Layer"
+            />
+          </div>
+          <span>
+            |
+          </span>
+          <div
+            aria-colindex={3}
+            aria-sort="none"
+            className="ms-DetailsHeader-cell is-actionable undefined"
+            data-automationid="ColumnsHeaderColumn"
+            data-is-draggable={false}
+            data-item-key="column_key_1"
+            draggable={false}
+            role="columnheader"
+            style={
+              Object {
+                "width": 116,
+              }
+            }
+          >
+            <span
+              className=""
+            >
+              <span
+                aria-describedby={undefined}
+                aria-haspopup={false}
+                aria-label={undefined}
+                aria-labelledby="header3-column_key_1-name "
+                className="ms-DetailsHeader-cellTitle"
+                data-is-focusable={true}
+                id="header3-column_key_1"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                role="button"
+              >
+                <span
+                  className="ms-DetailsHeader-cellName"
+                  id="header3-column_key_1-name"
+                >
+                  Item 1
+                </span>
+              </span>
+            </span>
+            <span
+              className="ms-Layer"
+            />
+          </div>
+          <span>
+            |
+          </span>
+          <div
+            aria-colindex={4}
+            aria-sort="none"
+            className="ms-DetailsHeader-cell is-actionable undefined"
+            data-automationid="ColumnsHeaderColumn"
+            data-is-draggable={false}
+            data-item-key="column_key_2"
+            draggable={false}
+            role="columnheader"
+            style={
+              Object {
+                "width": 116,
+              }
+            }
+          >
+            <span
+              className=""
+            >
+              <span
+                aria-describedby={undefined}
+                aria-haspopup={false}
+                aria-label={undefined}
+                aria-labelledby="header3-column_key_2-name "
+                className="ms-DetailsHeader-cellTitle"
+                data-is-focusable={true}
+                id="header3-column_key_2"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                role="button"
+              >
+                <span
+                  className="ms-DetailsHeader-cellName"
+                  id="header3-column_key_2-name"
+                >
+                  Item 2
+                </span>
+              </span>
+            </span>
+            <span
+              className="ms-Layer"
+            />
+          </div>
+          <span>
+            |
+          </span>
+          <div
+            aria-colindex={5}
+            aria-sort="none"
+            className="ms-DetailsHeader-cell is-actionable undefined"
+            data-automationid="ColumnsHeaderColumn"
+            data-is-draggable={false}
+            data-item-key="column_key_3"
+            draggable={false}
+            role="columnheader"
+            style={
+              Object {
+                "width": 116,
+              }
+            }
+          >
+            <span
+              className=""
+            >
+              <span
+                aria-describedby={undefined}
+                aria-haspopup={false}
+                aria-label={undefined}
+                aria-labelledby="header3-column_key_3-name "
+                className="ms-DetailsHeader-cellTitle"
+                data-is-focusable={true}
+                id="header3-column_key_3"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                role="button"
+              >
+                <span
+                  className="ms-DetailsHeader-cellName"
+                  id="header3-column_key_3-name"
+                >
+                  Item 3
+                </span>
+              </span>
+            </span>
+            <span
+              className="ms-Layer"
+            />
+          </div>
+          <span>
+            |
+          </span>
+          <div
+            aria-colindex={6}
+            aria-sort="none"
+            className="ms-DetailsHeader-cell is-actionable undefined"
+            data-automationid="ColumnsHeaderColumn"
+            data-is-draggable={false}
+            data-item-key="column_key_4"
+            draggable={false}
+            role="columnheader"
+            style={
+              Object {
+                "width": 116,
+              }
+            }
+          >
+            <span
+              className=""
+            >
+              <span
+                aria-describedby={undefined}
+                aria-haspopup={false}
+                aria-label={undefined}
+                aria-labelledby="header3-column_key_4-name "
+                className="ms-DetailsHeader-cellTitle"
+                data-is-focusable={true}
+                id="header3-column_key_4"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                role="button"
+              >
+                <span
+                  className="ms-DetailsHeader-cellName"
+                  id="header3-column_key_4-name"
+                >
+                  Item 4
+                </span>
+              </span>
+            </span>
+            <span
+              className="ms-Layer"
+            />
+          </div>
+          <span>
+            |
+          </span>
+        </div>
+      </div>
+      <div
+        onKeyDown={[Function]}
+        role="presentation"
+      >
+        <div
+          aria-describedby={undefined}
+          aria-labelledby={undefined}
+          className="ms-FocusZone"
+          data-focuszone-id="FocusZone5"
           onBlur={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}

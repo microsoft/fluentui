@@ -1,6 +1,205 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 18 Jul 2018 11:27:52 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Nov 2018 12:26:42 GMT and should not be manually modified.
+
+## 5.131.2
+Fri, 09 Nov 2018 12:26:42 GMT
+
+### Patches
+
+- PersonaCoin: image load state is now reset when the image url is changed.
+
+## 5.131.1
+Mon, 29 Oct 2018 11:24:40 GMT
+
+### Patches
+
+- Backporting changes from 6.0
+- Fixing the column index bug fix
+
+## 5.131.0
+Wed, 24 Oct 2018 11:28:06 GMT
+
+### Minor changes
+
+- Pickers: A variety of accessibility and bug fixes, ported from 6.0
+
+## 5.130.0
+Mon, 22 Oct 2018 11:23:55 GMT
+
+### Minor changes
+
+- adding groups prop to pass parent group's children info
+
+### Patches
+
+- Coachmark: Fix tabbing when Coachmark is mounted (backport from PR 6240)
+
+## 5.129.0
+Fri, 19 Oct 2018 11:27:30 GMT
+
+### Minor changes
+
+- Add onPagesUpdated optional prop to List component
+
+### Patches
+
+- FocusTrapZone: Add/remove focus and click handlers when props change
+- adding commandBarButtonAs to the correct interface
+- Spinner: No longer appears to vibrate in place in Edge (Oct 2018 Update)
+
+## 5.128.2
+Wed, 17 Oct 2018 11:23:42 GMT
+
+### Patches
+
+- Fix Persona regression in Fabric V5: this.props.children was accidentally deleted from Persona in V5, put it back.
+
+## 5.128.1
+Mon, 08 Oct 2018 11:23:10 GMT
+
+### Patches
+
+- Backporting changes from 6.0
+
+## 5.128.0
+Wed, 03 Oct 2018 11:23:42 GMT
+
+### Minor changes
+
+- Bring support for commandBarButtonAs to v5
+
+## 5.127.0
+Mon, 01 Oct 2018 11:24:38 GMT
+
+### Minor changes
+
+- semantic slot value updates per design direction
+
+### Patches
+
+- IconButton: add semantic slot color to icon in IconButton so that it can be themed.
+- DetailsRow: remove the use of neutralSecondaryAlt deprecated color slot.
+
+## 5.126.0
+Fri, 21 Sep 2018 11:24:29 GMT
+
+### Minor changes
+
+- onRenderDivider prop added to DetailsList, onRender*Text types of callbacks in Persona can be used to override default behaviour
+
+## 5.125.0
+Tue, 18 Sep 2018 11:25:16 GMT
+
+### Minor changes
+
+- Adds new semantic slots per design direction
+
+## 5.124.0
+Tue, 11 Sep 2018 11:25:00 GMT
+
+### Minor changes
+
+- adding viewport to IDetailsFooterProps
+
+## 5.123.0
+Fri, 07 Sep 2018 01:32:10 GMT
+
+### Minor changes
+
+- Updates button slots with correct pre-fluent palette values and scss fallbacks
+- add buttonBackgroundDisabled semantic slot
+
+## 5.122.4
+Thu, 06 Sep 2018 11:26:20 GMT
+
+### Patches
+
+- Change bodyDivider value from neutralTertiaryAlt back to neutralLight
+
+## 5.122.3
+Thu, 30 Aug 2018 11:28:40 GMT
+
+### Patches
+
+- Remove borders from buttons (in a variant theme) that should not have borders.
+
+## 5.122.2
+Wed, 29 Aug 2018 11:23:45 GMT
+
+### Patches
+
+- dragStart callback will be in sync with browser, instaed of calling it in mousemove
+
+## 5.122.1
+Mon, 27 Aug 2018 11:28:29 GMT
+
+### Patches
+
+- 'Cherry picking drophint ICON changes for column drag and drop'
+
+## 5.122.0
+Wed, 22 Aug 2018 11:23:37 GMT
+
+### Minor changes
+
+- adds variantBorderHovered and emptyStateBackground semantic slots to theme and variants logic
+
+## 5.121.0
+Fri, 17 Aug 2018 11:25:01 GMT
+
+### Minor changes
+
+- ShimmeredDetailsList: adding a wrapper for DetailsList when want to use Shimmer with it.
+
+## 5.120.0
+Sat, 11 Aug 2018 01:52:57 GMT
+
+### Minor changes
+
+- adds semantic slots for buttons
+
+## 5.119.0
+Fri, 10 Aug 2018 11:26:02 GMT
+
+### Minor changes
+
+- Adds a new Shimmer component to OUFR 5.0
+
+## 5.118.3
+Mon, 06 Aug 2018 18:19:56 GMT
+
+### Patches
+
+- Fix DetailsHeader rendering more than one root element
+
+## 5.118.2
+Wed, 01 Aug 2018 11:25:30 GMT
+
+### Patches
+
+- Adding Callback for details list footer custom render
+
+## 5.118.1
+Mon, 30 Jul 2018 11:24:42 GMT
+
+### Patches
+
+- Adding interfaces IDetailsGroupRenderProps, IDetailsGroupDividerProps, which extends existing interfaces  IGroupRenderProps, IGroupDividerProps respectively, allowing group header/footer for DetailsList to be displayed as a DetailsRow.
+
+## 5.118.0
+Tue, 24 Jul 2018 11:25:45 GMT
+
+### Minor changes
+
+- Coachmark: Add accessibility features to component, ARIA props, narrator support, and keyboarding controls
+- Coachmark: Fix positioning bugs and add in support for different Coachmark directions.
+
+### Patches
+
+- TeachingBubble: Fix content from wrapping to next line unncessarily
+- Fix import paths to use relative paths for office-ui-fabric-react
+- Popup: Skip scroll computation if style.overflowY is provided.
 
 ## 5.117.1
 Wed, 18 Jul 2018 11:27:52 GMT

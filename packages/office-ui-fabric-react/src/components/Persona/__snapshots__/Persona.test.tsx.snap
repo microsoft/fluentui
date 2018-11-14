@@ -1,5 +1,170 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Persona renders Persona children correctly 1`] = `
+<div
+  className=
+      ms-Persona
+      ms-Persona--size48
+      {
+        align-items: center;
+        box-shadow: none;
+        box-sizing: border-box;
+        color: #333333;
+        display: flex;
+        font-size: 14px;
+        font-weight: 400;
+        height: 48px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        min-width: 48px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
+        position: relative;
+      }
+      & .contextualHost {
+        display: none;
+      }
+      &:hover $primaryText {
+        color: #212121;
+      }
+  size={13}
+  style={undefined}
+>
+  <div
+    className=
+        ms-Persona-coin
+        ms-Persona--size48
+
+    size={13}
+  >
+    <div
+      className=
+          ms-Persona-imageArea
+          {
+            flex: 0 0 auto;
+            height: 48px;
+            position: relative;
+            text-align: center;
+            width: 48px;
+          }
+      style={undefined}
+    >
+      <div
+        aria-hidden="true"
+        className=
+            ms-Persona-initials
+            {
+              background-color: #1D1D1D;
+              border-radius: 50%;
+              color: #ffffff;
+              font-size: 17px;
+              font-weight: 400;
+              height: 48px;
+              line-height: 46px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: Window !important;
+              border: 1px solid WindowText;
+              box-sizing: border-box;
+              color: WindowText;
+            }
+        style={undefined}
+      >
+        <span>
+          KL
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    className=
+        ms-Persona-details
+        {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          min-width: 0px;
+          padding-bottom: 0;
+          padding-left: 16px;
+          padding-right: 24px;
+          padding-top: 0;
+          text-align: left;
+          width: 100%;
+        }
+  >
+    <div
+      className=
+          ms-Persona-primaryText
+          {
+            color: #333333;
+            font-size: 17px;
+            font-weight: 400;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+    >
+      <div
+        aria-describedby={undefined}
+        className="ms-TooltipHost"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        Kat Larrson
+      </div>
+    </div>
+    <div
+      className=
+          ms-Persona-secondaryText
+          {
+            color: #666666;
+            font-size: 12px;
+            font-weight: 400;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+    />
+    <div
+      className=
+          ms-Persona-tertiaryText
+          {
+            color: #666666;
+            display: none;
+            font-size: 12px;
+            font-weight: 400;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+    />
+    <div
+      className=
+          ms-Persona-optionalText
+          {
+            color: #666666;
+            display: none;
+            font-size: 12px;
+            font-weight: 400;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+    />
+    <span>
+      This is Persona children
+    </span>
+  </div>
+</div>
+`;
+
 exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
 <div
   className=
@@ -93,53 +258,6 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
         >
           
         </i>
-      </div>
-      <div
-        className=
-            ms-Image
-            ms-Persona-image
-            {
-              border-radius: 50%;
-              border: 0px;
-              height: 100%;
-              left: 0px;
-              margin-right: 10px;
-              overflow: hidden;
-              perspective: 1px;
-              position: absolute;
-              top: 0px;
-              width: 100%;
-            }
-        style={
-          Object {
-            "height": 48,
-            "width": 48,
-          }
-        }
-      >
-        <img
-          alt=""
-          className=
-              ms-Image-image
-              ms-Image-image--cover
-              ms-Image-image--portrait
-              is-notLoaded
-              is-fadeIn
-              {
-                display: block;
-                height: auto;
-                left: 50% /* @noflip */;
-                opacity: 0;
-                position: absolute;
-                top: 50%;
-                transform: translate(-50%,-50%);
-                width: 100%;
-              }
-          onError={[Function]}
-          onLoad={[Function]}
-          role={undefined}
-          src={undefined}
-        />
       </div>
     </div>
   </div>
@@ -486,53 +604,6 @@ exports[`Persona renders Persona correctly with initials 1`] = `
           KL
         </span>
       </div>
-      <div
-        className=
-            ms-Image
-            ms-Persona-image
-            {
-              border-radius: 50%;
-              border: 0px;
-              height: 100%;
-              left: 0px;
-              margin-right: 10px;
-              overflow: hidden;
-              perspective: 1px;
-              position: absolute;
-              top: 0px;
-              width: 100%;
-            }
-        style={
-          Object {
-            "height": 48,
-            "width": 48,
-          }
-        }
-      >
-        <img
-          alt=""
-          className=
-              ms-Image-image
-              ms-Image-image--cover
-              ms-Image-image--portrait
-              is-notLoaded
-              is-fadeIn
-              {
-                display: block;
-                height: auto;
-                left: 50% /* @noflip */;
-                opacity: 0;
-                position: absolute;
-                top: 50%;
-                transform: translate(-50%,-50%);
-                width: 100%;
-              }
-          onError={[Function]}
-          onLoad={[Function]}
-          role={undefined}
-          src={undefined}
-        />
-      </div>
     </div>
   </div>
   <div
@@ -710,53 +781,6 @@ exports[`Persona renders Persona correctly with no props 1`] = `
           
         </i>
       </div>
-      <div
-        className=
-            ms-Image
-            ms-Persona-image
-            {
-              border-radius: 50%;
-              border: 0px;
-              height: 100%;
-              left: 0px;
-              margin-right: 10px;
-              overflow: hidden;
-              perspective: 1px;
-              position: absolute;
-              top: 0px;
-              width: 100%;
-            }
-        style={
-          Object {
-            "height": 48,
-            "width": 48,
-          }
-        }
-      >
-        <img
-          alt=""
-          className=
-              ms-Image-image
-              ms-Image-image--cover
-              ms-Image-image--portrait
-              is-notLoaded
-              is-fadeIn
-              {
-                display: block;
-                height: auto;
-                left: 50% /* @noflip */;
-                opacity: 0;
-                position: absolute;
-                top: 50%;
-                transform: translate(-50%,-50%);
-                width: 100%;
-              }
-          onError={[Function]}
-          onLoad={[Function]}
-          role={undefined}
-          src={undefined}
-        />
-      </div>
     </div>
   </div>
   <div
@@ -786,9 +810,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
             text-overflow: ellipsis;
             white-space: nowrap;
           }
-    >
-      
-    </div>
+    />
     <div
       className=
           ms-Persona-secondaryText
@@ -827,6 +849,578 @@ exports[`Persona renders Persona correctly with no props 1`] = `
             white-space: nowrap;
           }
     />
+  </div>
+</div>
+`;
+
+exports[`Persona renders Persona which calls onRenderCoin callback without imageUrl 1`] = `
+<div
+  className=
+      ms-Persona
+      ms-Persona--size100
+      ms-Persona--blocked
+      {
+        align-items: center;
+        box-shadow: none;
+        box-sizing: border-box;
+        color: #333333;
+        display: flex;
+        font-size: 14px;
+        font-weight: 400;
+        height: 100px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        min-width: 100px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
+        position: relative;
+      }
+      & .contextualHost {
+        display: none;
+      }
+      &:hover $primaryText {
+        color: #212121;
+      }
+  size={15}
+  style={undefined}
+>
+  <div
+    className=
+        ms-Persona-coin
+        ms-Persona--size100
+
+    size={15}
+  >
+    <div
+      className=
+          ms-Persona-imageArea
+          {
+            flex: 0 0 auto;
+            height: 100px;
+            position: relative;
+            text-align: center;
+            width: 100px;
+          }
+      style={undefined}
+    >
+      <div
+        aria-hidden="true"
+        className=
+            ms-Persona-initials
+            {
+              background-color:  #7E3878;
+              border-radius: 50%;
+              color: #ffffff;
+              font-size: 42px;
+              font-weight: 400;
+              height: 100px;
+              line-height: 100px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: Window !important;
+              border: 1px solid WindowText;
+              box-sizing: border-box;
+              color: WindowText;
+            }
+        style={undefined}
+      >
+        <span>
+          SV
+        </span>
+      </div>
+      <span
+        id="persona-coin-container"
+      />
+      <div
+        className=
+            ms-Persona-presence
+            {
+              -ms-high-contrast-adjust: none;
+              background-clip: content-box;
+              background-color: #ffffff;
+              border-radius: 50%;
+              border: 2px solid #ffffff;
+              bottom: -2px;
+              box-sizing: content-box;
+              height: 28px;
+              position: absolute;
+              right: -2px;
+              text-align: center;
+              top: auto;
+              width: 28px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              background-color: WindowText;
+              border-color: Window;
+            }
+            &:before {
+              border-radius: 50%;
+              border: 2px solid #D93B3B;
+              box-sizing: border-box;
+              content: "";
+              height: 100%;
+              left: 0px;
+              position: absolute;
+              top: 0px;
+              width: 100%;
+            }
+            &:after {
+              background-color: #D93B3B;
+              content: "";
+              height: 2px;
+              left: 0px;
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%) rotate(-45deg);
+              width: 100%;
+            }
+            @media screen and (-ms-high-contrast: active){&:before {
+              border-color: Window;
+              height: calc(100% - 2px);
+              left: 1px;
+              top: 1px;
+              width: calc(100% - 2px);
+            }
+            @media screen and (-ms-high-contrast: active){&:after {
+              background-color: Window;
+              left: 2px;
+              width: calc(100% - 4px);
+            }
+        style={undefined}
+      >
+        <i
+          aria-hidden={true}
+          className=
+              ms-Icon-placeHolder
+              ms-Persona-presenceIcon
+              {
+                color: #ffffff;
+                display: inline-block;
+                font-size: 14px;
+                line-height: 28px;
+                vertical-align: top;
+                width: 1em;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: Window;
+              }
+          data-icon-name=""
+          role="presentation"
+          style={undefined}
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className=
+        ms-Persona-details
+        {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          min-width: 0px;
+          padding-bottom: 0;
+          padding-left: 16px;
+          padding-right: 24px;
+          padding-top: 0;
+          text-align: left;
+          width: 100%;
+        }
+  >
+    <div
+      className=
+          ms-Persona-primaryText
+          {
+            color: #333333;
+            font-size: 21px;
+            font-weight: 300;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+    >
+      <div
+        aria-describedby={undefined}
+        className="ms-TooltipHost"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        Swapnil Vaibhav
+      </div>
+    </div>
+    <div
+      className=
+          ms-Persona-secondaryText
+          {
+            color: #666666;
+            font-size: 14px;
+            font-weight: 400;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+    >
+      <div
+        aria-describedby={undefined}
+        className="ms-TooltipHost"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        Software Engineer
+      </div>
+    </div>
+    <div
+      className=
+          ms-Persona-tertiaryText
+          {
+            color: #666666;
+            display: block;
+            font-size: 12px;
+            font-weight: 400;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+    >
+      <div
+        aria-describedby={undefined}
+        className="ms-TooltipHost"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        In a meeting
+      </div>
+    </div>
+    <div
+      className=
+          ms-Persona-optionalText
+          {
+            color: #666666;
+            display: block;
+            font-size: 12px;
+            font-weight: 400;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+    >
+      <div
+        aria-describedby={undefined}
+        className="ms-TooltipHost"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        Available at 4:00pm
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Persona renders correctly with onRender callback 1`] = `
+<div
+  className=
+      ms-Persona
+      ms-Persona--size100
+      ms-Persona--blocked
+      {
+        align-items: center;
+        box-shadow: none;
+        box-sizing: border-box;
+        color: #333333;
+        display: flex;
+        font-size: 14px;
+        font-weight: 400;
+        height: 100px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        min-width: 100px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
+        position: relative;
+      }
+      & .contextualHost {
+        display: none;
+      }
+      &:hover $primaryText {
+        color: #212121;
+      }
+  size={15}
+  style={undefined}
+>
+  <div
+    className=
+        ms-Persona-coin
+        ms-Persona--size100
+
+    size={15}
+  >
+    <div
+      className=
+          ms-Persona-imageArea
+          {
+            flex: 0 0 auto;
+            height: 100px;
+            position: relative;
+            text-align: center;
+            width: 100px;
+          }
+      style={undefined}
+    >
+      <div
+        className=
+            ms-Image
+            ms-Persona-image
+            {
+              border-radius: 50%;
+              border: 0px;
+              height: 100px;
+              left: 0px;
+              margin-right: 10px;
+              overflow: hidden;
+              perspective: 1px;
+              position: absolute;
+              top: 0px;
+              width: 100px;
+            }
+        style={
+          Object {
+            "height": 100,
+            "width": 100,
+          }
+        }
+      >
+        <img
+          alt=""
+          className=
+              ms-Image-image
+              ms-Image-image--cover
+              ms-Image-image--portrait
+              is-notLoaded
+              is-fadeIn
+              {
+                display: block;
+                height: auto;
+                left: 50% /* @noflip */;
+                opacity: 0;
+                position: absolute;
+                top: 50%;
+                transform: translate(-50%,-50%);
+                width: 100%;
+              }
+          onError={[Function]}
+          onLoad={[Function]}
+          role={undefined}
+          src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-male.png"
+        />
+      </div>
+      <div
+        className=
+            ms-Persona-presence
+            {
+              -ms-high-contrast-adjust: none;
+              background-clip: content-box;
+              background-color: #ffffff;
+              border-radius: 50%;
+              border: 2px solid #ffffff;
+              bottom: -2px;
+              box-sizing: content-box;
+              height: 28px;
+              position: absolute;
+              right: -2px;
+              text-align: center;
+              top: auto;
+              width: 28px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              background-color: WindowText;
+              border-color: Window;
+            }
+            &:before {
+              border-radius: 50%;
+              border: 2px solid #D93B3B;
+              box-sizing: border-box;
+              content: "";
+              height: 100%;
+              left: 0px;
+              position: absolute;
+              top: 0px;
+              width: 100%;
+            }
+            &:after {
+              background-color: #D93B3B;
+              content: "";
+              height: 2px;
+              left: 0px;
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%) rotate(-45deg);
+              width: 100%;
+            }
+            @media screen and (-ms-high-contrast: active){&:before {
+              border-color: Window;
+              height: calc(100% - 2px);
+              left: 1px;
+              top: 1px;
+              width: calc(100% - 2px);
+            }
+            @media screen and (-ms-high-contrast: active){&:after {
+              background-color: Window;
+              left: 2px;
+              width: calc(100% - 4px);
+            }
+        style={undefined}
+      >
+        <i
+          aria-hidden={true}
+          className=
+              ms-Icon-placeHolder
+              ms-Persona-presenceIcon
+              {
+                color: #ffffff;
+                display: inline-block;
+                font-size: 14px;
+                line-height: 28px;
+                vertical-align: top;
+                width: 1em;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: Window;
+              }
+          data-icon-name=""
+          role="presentation"
+          style={undefined}
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className=
+        ms-Persona-details
+        {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          min-width: 0px;
+          padding-bottom: 0;
+          padding-left: 16px;
+          padding-right: 24px;
+          padding-top: 0;
+          text-align: left;
+          width: 100%;
+        }
+  >
+    <div
+      className=
+          ms-Persona-primaryText
+          {
+            color: #333333;
+            font-size: 21px;
+            font-weight: 300;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+    >
+      <div
+        aria-describedby={undefined}
+        className="ms-TooltipHost"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        Swapnil Vaibhav
+      </div>
+    </div>
+    <div
+      className=
+          ms-Persona-secondaryText
+          {
+            color: #666666;
+            font-size: 14px;
+            font-weight: 400;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+    >
+      <div
+        aria-describedby={undefined}
+        className="ms-TooltipHost"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        Software Engineer
+      </div>
+    </div>
+    <div
+      className=
+          ms-Persona-tertiaryText
+          {
+            color: #666666;
+            display: block;
+            font-size: 12px;
+            font-weight: 400;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+    >
+      <div
+        aria-describedby={undefined}
+        className="ms-TooltipHost"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        In a meeting
+      </div>
+    </div>
+    <div
+      className=
+          ms-Persona-optionalText
+          {
+            color: #666666;
+            display: block;
+            font-size: 12px;
+            font-weight: 400;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+    >
+      <div
+        aria-describedby={undefined}
+        className="ms-TooltipHost"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        Available at 4:00pm
+      </div>
+    </div>
   </div>
 </div>
 `;
