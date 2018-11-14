@@ -13,6 +13,7 @@ interface ITestStyles {
 interface ITestProps {
   cool?: boolean;
   styles?: IStyleFunctionOrObject<{}, ITestStyles>;
+  children?: React.ReactNode;
 }
 
 let _lastProps: ITestProps | undefined;

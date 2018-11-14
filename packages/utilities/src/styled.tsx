@@ -47,7 +47,7 @@ export function styled<
   baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>,
   getProps?: (props: TComponentProps) => Partial<TComponentProps>,
   customizable?: ICustomizableProps
-): React.ComponentType<TComponentProps> {
+): (props: TComponentProps) => JSX.Element {
   customizable = customizable || { scope: '', fields: undefined };
 
   const { scope, fields = DefaultFields } = customizable;
@@ -89,7 +89,9 @@ export function styled<
     private _onSettingsChanged = () => this.forceUpdate();
   }
 
-  return Wrapped;
+  // This preserves backwards compatibility.
+  // tslint:disable-next-line:no-any
+  return Wrapped as any;
 }
 
 function _resolve<TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(
