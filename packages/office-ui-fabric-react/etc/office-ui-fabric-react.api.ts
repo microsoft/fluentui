@@ -10368,7 +10368,7 @@ interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElement | HTM
   autoComplete?: 'on' | 'off';
   borderless?: boolean;
   className?: string;
-  // @deprecated
+  // @deprecated (undocumented)
   componentId?: string;
   componentRef?: IRefObject<ITextField>;
   defaultValue?: string;
@@ -12226,6 +12226,8 @@ class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldState>, imp
   blur(): void;
   // (undocumented)
   componentDidMount(): void;
+  // (undocumented)
+  componentDidUpdate(): void;
   // (undocumented)
   componentWillReceiveProps(newProps: ITextFieldProps): void;
   // (undocumented)
