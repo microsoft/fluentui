@@ -23,7 +23,13 @@ describe('ChoiceGroup', () => {
   });
 
   it('renders ChoiceGroup correctly', () => {
-    const component = renderer.create(<ChoiceGroup options={TEST_OPTIONS} required />);
+    const component = renderer.create(<ChoiceGroup className="testClassName" options={TEST_OPTIONS} required />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('label does not have className prop from parent', () => {
+    const component = renderer.create(<ChoiceGroup className="testClassName" label="testLabel" options={TEST_OPTIONS} required />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
