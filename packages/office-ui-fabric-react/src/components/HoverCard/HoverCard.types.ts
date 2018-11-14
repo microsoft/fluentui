@@ -83,7 +83,7 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
   setAriaDescribedBy?: boolean;
 
   /**
-   * Callback when expand card becomes visible
+   * Callback when visible card becomes expand
    */
   onCardExpand?: () => void;
 
