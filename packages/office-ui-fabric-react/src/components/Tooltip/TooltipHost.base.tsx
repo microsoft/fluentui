@@ -95,6 +95,7 @@ export class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHo
             })}
             onMouseEnter={this._onTooltipMouseEnter}
             onMouseLeave={this._onTooltipMouseLeave}
+            dismiss={this._hideTooltip}
             {...getNativeProps(this.props, divProperties)}
             {...tooltipProps}
           />

@@ -6,7 +6,12 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
-export interface ITooltip {}
+export interface ITooltip {
+  /**
+   * Forces the tooltip to dismiss.
+   */
+  dismiss: () => void;
+}
 
 /**
  * Tooltip component props.
@@ -72,6 +77,11 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | Too
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<ITooltipStyleProps, ITooltipStyles>;
+
+  /**
+   * Forces the tooltip to dismiss.
+   */
+  dismiss?: () => void;
 }
 
 export enum TooltipDelay {

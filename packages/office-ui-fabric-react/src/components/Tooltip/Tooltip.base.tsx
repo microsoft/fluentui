@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { BaseComponent, classNamesFunction, divProperties, getNativeProps } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
-import { ITooltipProps, ITooltipStyleProps, ITooltipStyles, TooltipDelay } from './Tooltip.types';
+import { ITooltipProps, ITooltipStyleProps, ITooltipStyles, TooltipDelay, ITooltip } from './Tooltip.types';
 import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
 const getClassNames = classNamesFunction<ITooltipStyleProps, ITooltipStyles>();
 
-export class TooltipBase extends BaseComponent<ITooltipProps, any> {
+export class TooltipBase extends BaseComponent<ITooltipProps, any> implements ITooltip {
   // Specify default props values
   public static defaultProps: Partial<ITooltipProps> = {
     directionalHint: DirectionalHint.topCenter,
@@ -22,7 +22,18 @@ export class TooltipBase extends BaseComponent<ITooltipProps, any> {
     }
   };
 
+  private static _currentVisibleTooltip: ITooltip | undefined;
   private _classNames: IProcessedStyleSet<ITooltipStyles>;
+
+  constructor(props: ITooltipProps) {
+    super(props);
+
+    this.dismiss = this.dismiss.bind(this);
+
+    if (TooltipBase._currentVisibleTooltip && TooltipBase._currentVisibleTooltip !== this) {
+      TooltipBase._currentVisibleTooltip.dismiss();
+    }
+  }
 
   public render(): JSX.Element {
     const {
@@ -66,6 +77,20 @@ export class TooltipBase extends BaseComponent<ITooltipProps, any> {
         </div>
       </Callout>
     );
+  }
+
+  public componentDidMount(): void {
+    TooltipBase._currentVisibleTooltip = this;
+  }
+
+  public componentWillUnmount(): void {
+    TooltipBase._currentVisibleTooltip = undefined;
+  }
+
+  public dismiss(): void {
+    if (this.props.dismiss) {
+      this.props.dismiss();
+    }
   }
 
   private _onRenderContent = (props: ITooltipProps): JSX.Element => {
