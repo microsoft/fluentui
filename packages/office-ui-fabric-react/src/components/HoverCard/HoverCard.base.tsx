@@ -71,6 +71,7 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
           this.setState({
             mode: ExpandingCardMode.expanded
           });
+          this.props.onCardExpand && this.props.onCardExpand();
         }, this.props.expandedCardOpenDelay!);
         this.props.onCardVisible && this.props.onCardVisible();
       } else {
