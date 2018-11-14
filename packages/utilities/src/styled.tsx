@@ -57,10 +57,6 @@ export function styled<
 
     private _inCustomizerContext = false;
 
-    constructor(props: TComponentProps) {
-      super(props);
-    }
-
     public render(): JSX.Element {
       return (
         <CustomizerContext.Consumer>
