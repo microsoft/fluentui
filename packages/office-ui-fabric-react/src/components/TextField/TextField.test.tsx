@@ -28,6 +28,16 @@ describe('TextField', () => {
     return renderedDOM as HTMLElement;
   }
 
+  /**
+   * Mounts the element attached to a child of document.body. This is primarily for tests involving
+   * event handlers (which don't work right unless the element is attached).
+   */
+  function mountAttached(element: React.ReactElement<any>) {
+    const parent = document.createElement('div');
+    document.body.appendChild(parent);
+    return mount(element, { attachTo: parent });
+  }
+
   function mockEvent(targetValue: string = ''): ReactTestUtils.SyntheticEventData {
     const target: EventTarget = { value: targetValue } as HTMLInputElement;
     const event: ReactTestUtils.SyntheticEventData = { target };
@@ -225,13 +235,15 @@ describe('TextField', () => {
         return value.length > 3 ? errorMessage : '';
       }
 
-      const textField = mount(<TextField label="text-field-label" value="whatever value" onGetErrorMessage={validator} />);
+      const textField = mount(
+        <TextField label="text-field-label" value="whatever value" onGetErrorMessage={validator} deferredValidationTime={5} />
+      );
 
       const inputDOM = textField.getDOMNode().querySelector('input');
       ReactTestUtils.Simulate.change(inputDOM as Element, mockEvent('the input value'));
 
       // The value is delayed to validate, so it must to query error message after a while.
-      return delay(250).then(() => assertErrorMessage(textField.getDOMNode(), errorMessage));
+      return delay(20).then(() => assertErrorMessage(textField.getDOMNode(), errorMessage));
     });
 
     it('should render error message when onGetErrorMessage returns a Promise<string>', () => {
@@ -239,13 +251,15 @@ describe('TextField', () => {
         return Promise.resolve(value.length > 3 ? errorMessage : '');
       }
 
-      const textField = mount(<TextField label="text-field-label" value="whatever value" onGetErrorMessage={validator} />);
+      const textField = mount(
+        <TextField label="text-field-label" value="whatever value" onGetErrorMessage={validator} deferredValidationTime={5} />
+      );
 
       const inputDOM = textField.getDOMNode().querySelector('input');
       ReactTestUtils.Simulate.change(inputDOM as Element, mockEvent('the input value'));
 
       // The value is delayed to validate, so it must to query error message after a while.
-      return delay(250).then(() => assertErrorMessage(textField.getDOMNode(), errorMessage));
+      return delay(20).then(() => assertErrorMessage(textField.getDOMNode(), errorMessage));
     });
 
     it('should render error message on first render when onGetErrorMessage returns a string', () => {
@@ -649,10 +663,50 @@ describe('TextField', () => {
     wrapper.setProps({ multiline: false });
     input = wrapper.getDOMNode().querySelector('input');
     expect(input).toBeTruthy();
+  });
 
-    // Also tried writing tests to verify that focus is maintained after the field type switch
-    // (textFieldRef.current.focus() after initial render, switch to multiline, then verify the
-    // new textarea is document.activeElement), but the tests kept failing even though it works
-    // properly in the browser. Not sure why.
+  it('maintains focus when switching single to multi line and back', () => {
+    const wrapper = mountAttached(<TextField componentRef={textFieldRef} />);
+    const textField = textFieldRef.current as ITextField;
+    // focus input
+    textField.focus();
+    let input = wrapper.find('input').getDOMNode();
+    expect(document.activeElement).toBe(input);
+
+    // switch to multiline
+    wrapper.setProps({ multiline: true });
+    // verify still focused
+    const textarea = wrapper.find('textarea').getDOMNode();
+    expect(document.activeElement).toBe(textarea);
+
+    // back to single line
+    wrapper.setProps({ multiline: false });
+    // verify still focused
+    input = wrapper.find('input').getDOMNode();
+    expect(document.activeElement).toBe(input);
+  });
+
+  it('maintains selection when switching single to multi line and back', () => {
+    const start = 1;
+    const end = 3;
+    const wrapper = mountAttached(<TextField componentRef={textFieldRef} defaultValue="some text" />);
+    const textField = textFieldRef.current as ITextField;
+    // select
+    textField.focus();
+    textField.setSelectionRange(start, end);
+    expect(textField.selectionStart).toBe(start);
+    expect(textField.selectionEnd).toBe(end);
+
+    // switch to multiline
+    wrapper.setProps({ multiline: true });
+    // verify still selected
+    expect(textField.selectionStart).toBe(start);
+    expect(textField.selectionEnd).toBe(end);
+
+    // back to single line
+    wrapper.setProps({ multiline: false });
+    // verify still selected
+    expect(textField.selectionStart).toBe(start);
+    expect(textField.selectionEnd).toBe(end);
   });
 });
