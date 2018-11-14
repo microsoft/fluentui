@@ -79,7 +79,7 @@ class Autofill extends BaseComponent<IAutofillProps, IAutofillState>, implements
   readonly cursorLocation: number | null;
   // (undocumented)
   static defaultProps: {
-    enableAutofillOnKeyPress: (38 | 40)[];
+    enableAutofillOnKeyPress: number[];
   }
   // (undocumented)
   focus(): void;
@@ -1609,7 +1609,7 @@ class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardState> {
     cardOpenDelay: number;
     expandedCardOpenDelay: number;
     instantOpenOnClick: boolean;
-    openHotKey: 67;
+    openHotKey: number;
     setInitialFocus: boolean;
     type: HoverCardType;
   }
