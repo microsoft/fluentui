@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/merge-styles",
+      "comment": "DevExp: get rid of const enum so that tsloader works in transpileOnly mode",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/merge-styles",
+  "email": "kchau@microsoft.com"
+}
