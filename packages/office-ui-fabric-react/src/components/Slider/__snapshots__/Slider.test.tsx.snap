@@ -142,12 +142,13 @@ exports[`Slider renders correctly 1`] = `
             transition: left 0.367s cubic-bezier(.1,.9,.2,1);
             width: 16px;
           }
+      data-is-focusable={true}
       id="Slider0"
       onKeyDown={[Function]}
       onMouseDown={[Function]}
       onTouchStart={[Function]}
       role="slider"
-      tabIndex={1}
+      tabIndex={0}
     >
       <div
         className=
