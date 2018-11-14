@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Removing label's setting to classname because it's a child element and shouldn't have the parent choicegroup's classname applied to it.",
+      "comment": "Choicegroup: Fix an issue where the child label component was incorrectly getting the className prop.",
       "type": "patch"
     }
   ],
