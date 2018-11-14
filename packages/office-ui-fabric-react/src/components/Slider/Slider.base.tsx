@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode, createRef } from '../../Utilities';
 import { ISliderProps, ISlider, ISliderStyleProps, ISliderStyles } from './Slider.types';
-import { classNamesFunction } from '../../Utilities';
+import { classNamesFunction, getNativeProps, divProperties } from '../../Utilities';
 import { Label } from '../../Label';
 
 export interface ISliderState {
@@ -80,6 +80,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       showValue,
       theme: theme!
     });
+    const divButtonProps = buttonProps ? getNativeProps(buttonProps, divProperties) : undefined;
 
     return (
       <div className={classNames.root}>
@@ -98,7 +99,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
             {...onMouseDownProp}
             {...onTouchStartProp}
             {...onKeyDownProp}
-            {...buttonProps}
+            {...divButtonProps}
             className={css(classNames.slideBox, buttonProps!.className)}
             id={this._id}
             role="slider"
