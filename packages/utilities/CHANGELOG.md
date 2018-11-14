@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 31 Oct 2018 12:32:41 GMT and should not be manually modified.
+This log was last generated on Wed, 14 Nov 2018 13:34:01 GMT and should not be manually modified.
+
+## 6.26.0
+Wed, 14 Nov 2018 13:34:01 GMT
+
+### Minor changes
+
+- Add osDetector utility
 
 ## 6.25.0
 Wed, 31 Oct 2018 12:32:41 GMT

@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.26.0",
+      "tag": "@uifabric/utilities_v6.26.0",
+      "date": "Wed, 14 Nov 2018 13:34:01 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add osDetector utility",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "7e5dab85401ffdd107514d593d02c0c8df299678"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.25.0",
       "tag": "@uifabric/utilities_v6.25.0",
       "date": "Wed, 31 Oct 2018 12:32:41 GMT",

@@ -2,6 +2,32 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.6.0",
+      "tag": "@uifabric/fluent-theme_v0.6.0",
+      "date": "Wed, 14 Nov 2018 13:34:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add styles for ColorPicker",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "c86eaba1c53ae6be8533859f6583f1fe5a03d040"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "SwatchColorPicker: add fluent styles.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "9a294000f20a8acb2aad62dad3c08bd55642f8a4"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.103.0 <7.0.0` to `>=6.103.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.5.0",
       "tag": "@uifabric/fluent-theme_v0.5.0",
       "date": "Tue, 13 Nov 2018 13:30:53 GMT",
