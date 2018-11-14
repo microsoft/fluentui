@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/utilities",
-      "comment": "DevExp: get rid of const enum so that tsloader works in transpileOnly mode",
+      "comment": "DevExp: get rid of const enum so the library is compatible with Typescript's isolatedModule compilation mode",
       "type": "minor"
     }
   ],
