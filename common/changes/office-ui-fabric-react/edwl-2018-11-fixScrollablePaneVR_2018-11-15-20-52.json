@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ContextualMenu, ComboBox, Dropdown: on Mac, don't close on alt or command",
+      "comment": "Update lorem generator to not use randomly generated text",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "elcraig@microsoft.com"
+  "email": "edwl@microsoft.com"
 }

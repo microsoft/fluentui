@@ -2,6 +2,77 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.104.0",
+      "tag": "office-ui-fabric-react_v6.104.0",
+      "date": "Thu, 15 Nov 2018 13:36:22 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "DevExp: get rid of const enum so the library is compatible with Typescript's isolatedModule compilation mode",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "a995de20dcd7b3a8967e6d33ccffd6f12dae0ed5"
+          },
+          {
+            "comment": "ScrollablePane and Sticky: Fix placeholder height, Sticky sorting, and stickyClassName",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "a336f17aaadf2598f6d0a824c13727a5b5fa15c5"
+          },
+          {
+            "comment": "Slider: replace button with div so vertical Sliders render on Safari",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "f0fdecc8ff9f8619dc4d5849e4cf370c71046d7e"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Updating snapshots from `styled` helper changes.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "c1b673ecb52030b4af42ca51077ca5cebc49246d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.14.0 <7.0.0` to `>=6.15.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.34.1 <7.0.0` to `>=6.35.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.26.0 <7.0.0` to `>=6.27.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.103.1",
+      "tag": "office-ui-fabric-react_v6.103.1",
+      "date": "Wed, 14 Nov 2018 13:34:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Choicegroup: Fix an issue where the child label component was incorrectly getting the className prop.",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "ffb937b4108d11cb19dc5f3e5895ded18ee72adf"
+          },
+          {
+            "comment": "ContextualMenu, ComboBox, Dropdown: on Mac, don't close on alt or command",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "7e5dab85401ffdd107514d593d02c0c8df299678"
+          },
+          {
+            "comment": "TextField: fix multiline bug, update docs",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "e9182f5cf8e3c75a7074d4bcd1d5dc05187bd1b9"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.25.0 <7.0.0` to `>=6.26.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.103.0",
       "tag": "office-ui-fabric-react_v6.103.0",
       "date": "Tue, 13 Nov 2018 13:30:53 GMT",

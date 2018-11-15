@@ -1,6 +1,28 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 13 Nov 2018 13:30:53 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Nov 2018 13:36:22 GMT and should not be manually modified.
+
+## 6.104.0
+Thu, 15 Nov 2018 13:36:22 GMT
+
+### Minor changes
+
+- DevExp: get rid of const enum so the library is compatible with Typescript's isolatedModule compilation mode
+- ScrollablePane and Sticky: Fix placeholder height, Sticky sorting, and stickyClassName
+- Slider: replace button with div so vertical Sliders render on Safari
+
+### Patches
+
+- Updating snapshots from `styled` helper changes.
+
+## 6.103.1
+Wed, 14 Nov 2018 13:34:01 GMT
+
+### Patches
+
+- Choicegroup: Fix an issue where the child label component was incorrectly getting the className prop.
+- ContextualMenu, ComboBox, Dropdown: on Mac, don't close on alt or command
+- TextField: fix multiline bug, update docs
 
 ## 6.103.0
 Tue, 13 Nov 2018 13:30:53 GMT

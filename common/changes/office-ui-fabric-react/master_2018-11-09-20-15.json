@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "TextField: fix multiline bug, update docs",
+      "comment": "\"Fix scrollable pane sticky alignment issue\"",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "elcraig@microsoft.com"
+  "email": "rusarkar@microsoft.com"
 }
