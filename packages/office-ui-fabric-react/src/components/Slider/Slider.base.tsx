@@ -96,6 +96,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
             aria-valuemax={max}
             aria-valuetext={this._getAriaValueText(value)}
             aria-label={ariaLabel || label}
+            aria-disabled={disabled}
             {...onMouseDownProp}
             {...onTouchStartProp}
             {...onKeyDownProp}
@@ -103,7 +104,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
             className={css(classNames.slideBox, buttonProps!.className)}
             id={this._id}
             role="slider"
-            tabIndex={disabled ? -1 : 0}
+            tabIndex={disabled ? undefined : 0}
             data-is-focusable={!disabled}
           >
             <div ref={this._sliderLine} className={classNames.line}>

@@ -53,6 +53,7 @@ exports[`Slider renders correctly 1`] = `
         }
   >
     <div
+      aria-disabled={false}
       aria-label="I am a slider"
       aria-valuemax={10}
       aria-valuemin={0}
