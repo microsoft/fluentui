@@ -79,7 +79,7 @@ class Autofill extends BaseComponent<IAutofillProps, IAutofillState>, implements
   readonly cursorLocation: number | null;
   // (undocumented)
   static defaultProps: {
-    enableAutofillOnKeyPress: KeyCodes[];
+    enableAutofillOnKeyPress: number[];
   }
   // (undocumented)
   focus(): void;
@@ -384,7 +384,7 @@ class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBas
   // (undocumented)
   protected onSuggestionSelect(): void;
   // (undocumented)
-  refocusSuggestions: (keyCode: KeyCodes) => void;
+  refocusSuggestions: (keyCode: number) => void;
   // (undocumented)
   protected removeItem: (item: IPickerItemProps<T>, focusNextItem?: boolean | undefined) => void;
   // (undocumented)
@@ -1005,24 +1005,6 @@ enum DialogType {
   normal = 0
 }
 
-// @public (undocumented)
-enum DirectionalHint {
-  bottomAutoEdge = 7,
-  bottomCenter = 5,
-  bottomLeftEdge = 4,
-  bottomRightEdge = 6,
-  leftBottomEdge = 10,
-  leftCenter = 9,
-  leftTopEdge = 8,
-  rightBottomEdge = 13,
-  rightCenter = 12,
-  rightTopEdge = 11,
-  topAutoEdge = 3,
-  topCenter = 1,
-  topLeftEdge = 0,
-  topRightEdge = 2
-}
-
 // @public
 export function disableBodyScroll(): void;
 
@@ -1369,13 +1351,6 @@ enum FocusZoneDirection {
   vertical = 0
 }
 
-// @public (undocumented)
-enum FocusZoneTabbableElements {
-  all = 1,
-  inputOnly = 2,
-  none = 0
-}
-
 // @public
 export function fontFace(font: IFontFace): void;
 
@@ -1634,7 +1609,7 @@ class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardState> {
     cardOpenDelay: number;
     expandedCardOpenDelay: number;
     instantOpenOnClick: boolean;
-    openHotKey: KeyCodes;
+    openHotKey: number;
     setInitialFocus: boolean;
     type: HoverCardType;
   }
@@ -8446,13 +8421,6 @@ export function initializeFocusRects(window?: Window): void;
 // @public (undocumented)
 export function initializeIcons(baseUrl?: string, options?: IIconOptions): void;
 
-// @public
-enum InjectionMode {
-  appendChild = 2,
-  insertNode = 1,
-  none = 0
-}
-
 // @public (undocumented)
 interface IObjectWithKey {
   // (undocumented)
@@ -10639,208 +10607,6 @@ enum KeyboardSpinDirection {
 }
 
 // @public
-enum KeyCodes {
-  // (undocumented)
-  a = 65,
-  // (undocumented)
-  add = 107,
-  // (undocumented)
-  alt = 18,
-  // (undocumented)
-  b = 66,
-  // (undocumented)
-  backSlash = 220,
-  // (undocumented)
-  backspace = 8,
-  // (undocumented)
-  c = 67,
-  // (undocumented)
-  capslock = 20,
-  // (undocumented)
-  closeBracket = 221,
-  // (undocumented)
-  comma = 188,
-  // (undocumented)
-  ctrl = 17,
-  // (undocumented)
-  d = 68,
-  // (undocumented)
-  dash = 189,
-  // (undocumented)
-  decimalPoint = 110,
-  // (undocumented)
-  del = 46,
-  // (undocumented)
-  divide = 111,
-  // (undocumented)
-  down = 40,
-  // (undocumented)
-  e = 69,
-  // (undocumented)
-  eight = 56,
-  // (undocumented)
-  eight_numpad = 104,
-  // (undocumented)
-  end = 35,
-  // (undocumented)
-  enter = 13,
-  // (undocumented)
-  equalSign = 187,
-  // (undocumented)
-  escape = 27,
-  // (undocumented)
-  f = 70,
-  // (undocumented)
-  f1 = 112,
-  // (undocumented)
-  f10 = 121,
-  // (undocumented)
-  f11 = 122,
-  // (undocumented)
-  f12 = 123,
-  // (undocumented)
-  f2 = 113,
-  // (undocumented)
-  f3 = 114,
-  // (undocumented)
-  f4 = 115,
-  // (undocumented)
-  f5 = 116,
-  // (undocumented)
-  f6 = 117,
-  // (undocumented)
-  f7 = 118,
-  // (undocumented)
-  f8 = 119,
-  // (undocumented)
-  f9 = 120,
-  // (undocumented)
-  five = 53,
-  // (undocumented)
-  five_numpad = 101,
-  // (undocumented)
-  forwardSlash = 191,
-  // (undocumented)
-  four = 52,
-  // (undocumented)
-  four_numpad = 100,
-  // (undocumented)
-  g = 71,
-  // (undocumented)
-  graveAccent = 192,
-  // (undocumented)
-  h = 72,
-  // (undocumented)
-  home = 36,
-  // (undocumented)
-  i = 73,
-  // (undocumented)
-  insert = 45,
-  // (undocumented)
-  j = 74,
-  // (undocumented)
-  k = 75,
-  // (undocumented)
-  l = 76,
-  // (undocumented)
-  left = 37,
-  // (undocumented)
-  leftWindow = 91,
-  // (undocumented)
-  m = 77,
-  // (undocumented)
-  multiply = 106,
-  // (undocumented)
-  n = 78,
-  // (undocumented)
-  nine = 57,
-  // (undocumented)
-  nine_numpad = 105,
-  // (undocumented)
-  numlock = 144,
-  // (undocumented)
-  o = 79,
-  // (undocumented)
-  one = 49,
-  // (undocumented)
-  one_numpad = 97,
-  // (undocumented)
-  openBracket = 219,
-  // (undocumented)
-  p = 80,
-  // (undocumented)
-  pageDown = 34,
-  // (undocumented)
-  pageUp = 33,
-  // (undocumented)
-  pauseBreak = 19,
-  // (undocumented)
-  period = 190,
-  // (undocumented)
-  q = 81,
-  // (undocumented)
-  r = 82,
-  // (undocumented)
-  right = 39,
-  // (undocumented)
-  rightWindow = 92,
-  // (undocumented)
-  s = 83,
-  // (undocumented)
-  scrollLock = 145,
-  // (undocumented)
-  select = 93,
-  // (undocumented)
-  semicolon = 186,
-  // (undocumented)
-  seven = 55,
-  // (undocumented)
-  seven_numpad = 103,
-  // (undocumented)
-  shift = 16,
-  // (undocumented)
-  singleQuote = 222,
-  // (undocumented)
-  six = 54,
-  // (undocumented)
-  six_numpad = 102,
-  // (undocumented)
-  space = 32,
-  // (undocumented)
-  subtract = 109,
-  // (undocumented)
-  t = 84,
-  // (undocumented)
-  tab = 9,
-  // (undocumented)
-  three = 51,
-  // (undocumented)
-  three_numpad = 99,
-  // (undocumented)
-  two = 50,
-  // (undocumented)
-  two_numpad = 98,
-  // (undocumented)
-  u = 85,
-  // (undocumented)
-  up = 38,
-  // (undocumented)
-  v = 86,
-  // (undocumented)
-  w = 87,
-  // (undocumented)
-  x = 88,
-  // (undocumented)
-  y = 89,
-  // (undocumented)
-  z = 90,
-  // (undocumented)
-  zero = 48,
-  // (undocumented)
-  zero_numpad = 96
-}
-
-// @public
 export function keyframes(timeline: {
     [key: string]: {};
 }): string;
@@ -11545,22 +11311,6 @@ class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScrollable
 }
 
 // @public (undocumented)
-enum ScrollbarVisibility {
-  // (undocumented)
-  always = "always",
-  // (undocumented)
-  auto = "auto"
-}
-
-// @public (undocumented)
-enum ScrollToMode {
-  auto = 0,
-  bottom = 2,
-  center = 3,
-  top = 1
-}
-
-// @public (undocumented)
 class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
   constructor(props: ISearchBoxProps);
   // (undocumented)
@@ -12178,7 +11928,7 @@ class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITeachingBu
   static defaultProps: {
     calloutProps: {
       beakWidth: number;
-      directionalHint: DirectionalHint;
+      directionalHint: 12;
       doNotLayer: boolean;
       gapSpace: number;
       setInitialFocus: boolean;
@@ -12405,6 +12155,8 @@ module ZIndexes {
 
 // WARNING: Unsupported export: Breadcrumb
 // WARNING: Unsupported export: CommandButton
+// WARNING: Unsupported export: DirectionalHint
+// WARNING: Unsupported export: DirectionalHint
 // WARNING: Unsupported export: Check
 // WARNING: Unsupported export: Checkbox
 // WARNING: Unsupported export: ChoiceGroup
@@ -12442,6 +12194,8 @@ module ZIndexes {
 // WARNING: Unsupported export: groupTwo
 // WARNING: Unsupported export: Fabric
 // WARNING: Unsupported export: Facepile
+// WARNING: Unsupported export: FocusZoneTabbableElements
+// WARNING: Unsupported export: FocusZoneTabbableElements
 // WARNING: Unsupported export: Grid
 // WARNING: Unsupported export: GroupedList
 // WARNING: Unsupported export: HoverCard
@@ -12454,6 +12208,8 @@ module ZIndexes {
 // WARNING: Unsupported export: Layer
 // WARNING: Unsupported export: ILayerBaseState
 // WARNING: Unsupported export: Link
+// WARNING: Unsupported export: ScrollToMode
+// WARNING: Unsupported export: ScrollToMode
 // WARNING: Unsupported export: MarqueeSelection
 // WARNING: Unsupported export: MessageBar
 // WARNING: Unsupported export: Modal
@@ -12479,6 +12235,8 @@ module ZIndexes {
 // WARNING: Unsupported export: getMeasurementCache
 // WARNING: Unsupported export: getNextResizeGroupStateProvider
 // WARNING: Unsupported export: ScrollablePane
+// WARNING: Unsupported export: ScrollbarVisibility
+// WARNING: Unsupported export: ScrollbarVisibility
 // WARNING: Unsupported export: SearchBox
 // WARNING: Unsupported export: Shimmer
 // WARNING: Unsupported export: ShimmerLine
@@ -12526,6 +12284,8 @@ module ZIndexes {
 // WARNING: Unsupported export: IStyle
 // WARNING: Unsupported export: IStyleSet
 // WARNING: Unsupported export: IProcessedStyleSet
+// WARNING: Unsupported export: InjectionMode
+// WARNING: Unsupported export: InjectionMode
 // WARNING: Unsupported export: SwatchColorPicker
 // WARNING: Unsupported export: ColorPickerGridCell
 // WARNING: Unsupported export: TeachingBubble
@@ -12547,6 +12307,8 @@ module ZIndexes {
 // WARNING: Unsupported export: IComponentAsProps
 // WARNING: Unsupported export: IComponentAs
 // WARNING: Unsupported export: IStyleFunction
+// WARNING: Unsupported export: KeyCodes
+// WARNING: Unsupported export: KeyCodes
 // WARNING: Unsupported export: IRefObject
 // WARNING: Unsupported export: RefObject
 // WARNING: Unsupported export: ICssInput
