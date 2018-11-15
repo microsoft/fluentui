@@ -104,7 +104,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
   };
 
   private _renderNavLink(link: INavLink, linkIndex: number, nestingLevel: number): JSX.Element {
-    const { styles, groups, theme, onRenderLink = this._onRenderLink } = this.props;
+    const { styles, groups, theme, onRenderLink = this._onRenderLink, linkAs: LinkAs = ActionButton } = this.props;
 
     const classNames = getClassNames(styles!, {
       theme: theme!,
@@ -118,7 +118,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
     const rel = link.url && link.target && !isRelativeUrl(link.url) ? 'noopener noreferrer' : undefined;
 
     return (
-      <ActionButton
+      <LinkAs
         className={classNames.link}
         styles={buttonStyles}
         href={link.url || (link.forceAnchor ? 'javascript:' : undefined)}
@@ -131,7 +131,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
         aria-label={link.ariaLabel}
       >
         {onRenderLink(link, this._onRenderLink)}
-      </ActionButton>
+      </LinkAs>
     );
   }
 

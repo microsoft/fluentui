@@ -8,6 +8,9 @@
     "build": "node -v",
     "code-style": "node -v"
   },
+  "disabledTasks": [
+    "api-extractor"
+  ],
   "devDependencies": {
     "tslint-react": "^3.2.0"
   }

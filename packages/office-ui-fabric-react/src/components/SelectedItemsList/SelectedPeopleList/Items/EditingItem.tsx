@@ -93,10 +93,7 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
   private _onInputBlur = (ev: React.FocusEvent<HTMLElement>): void => {
     if (this._editingFloatingPicker.current && ev.relatedTarget !== null) {
       const target = ev.relatedTarget as HTMLElement;
-      if (
-        target.className.indexOf('ms-Suggestions-itemButton') === -1 &&
-        target.className.indexOf('ms-Suggestions-sectionButton') === -1
-      ) {
+      if (target.className.indexOf('ms-Suggestions-itemButton') === -1 && target.className.indexOf('ms-Suggestions-sectionButton') === -1) {
         this._editingFloatingPicker.current.forceResolveSuggestion();
       }
     }

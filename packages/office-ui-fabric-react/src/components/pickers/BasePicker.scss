@@ -27,6 +27,11 @@
   align-self: flex-end;
 }
 
+.pickerItems {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .screenReaderOnly {
   @include ms-screenReaderOnly;
 }

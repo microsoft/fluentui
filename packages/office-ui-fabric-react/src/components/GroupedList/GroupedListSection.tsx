@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { IGroup, IGroupDividerProps, IGroupRenderProps, IGroupedListStyles } from './GroupedList.types';
+import { IGroupHeaderProps } from './GroupHeader.types';
 
 import { IDragDropContext, IDragDropEvents, IDragDropHelper } from '../../utilities/dragdrop/index';
 
@@ -13,7 +14,7 @@ import { GroupFooter } from './GroupFooter';
 
 import { List } from '../../List';
 import { IDragDropOptions } from './../../utilities/dragdrop/interfaces';
-import { assign, css } from '../../Utilities';
+import { assign, css, getId } from '../../Utilities';
 import { IViewport } from '../../utilities/decorators/withViewport';
 import { IListProps } from '../List/index';
 
@@ -108,6 +109,7 @@ const DEFAULT_DROPPING_CSS_CLASS = 'is-dropping';
 export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, IGroupedListSectionState> {
   private _root = createRef<HTMLDivElement>();
   private _list = createRef<List>();
+  private _id: string;
 
   private _dragDropSubscription: IDisposable;
 
@@ -115,6 +117,8 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     super(props);
 
     const { selection, group } = props;
+
+    this._id = getId('GroupedListSection');
 
     this.state = {
       isDropping: false,
@@ -189,7 +193,12 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       selectionMode: selectionMode,
       groups: groups
     };
-    const groupHeaderProps: IGroupDividerProps = assign({}, headerProps, dividerProps);
+
+    const ariaControlsProps: IGroupHeaderProps = {
+      groupedListId: this._id
+    };
+
+    const groupHeaderProps: IGroupDividerProps = assign({}, headerProps, dividerProps, ariaControlsProps);
     const groupShowAllProps: IGroupDividerProps = assign({}, showAllProps, dividerProps);
     const groupFooterProps: IGroupDividerProps = assign({}, footerProps, dividerProps);
 
@@ -207,6 +216,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
             onRenderCell={this._renderSubGroup}
             getItemCountForPage={this._returnOne}
             onShouldVirtualize={onShouldVirtualize}
+            id={this._id}
           />
         ) : (
           this._onRenderGroup(renderCount)
@@ -291,6 +301,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
         renderCount={Math.min(count, renderCount)}
         startIndex={startIndex}
         onShouldVirtualize={onShouldVirtualize}
+        id={this._id}
         {...listProps}
       />
     );

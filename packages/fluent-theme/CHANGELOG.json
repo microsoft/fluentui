@@ -2,6 +2,141 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.4.1",
+      "tag": "@uifabric/fluent-theme_v0.4.1",
+      "date": "Mon, 12 Nov 2018 13:31:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Reduce top padding of Dialog",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "b60a690112de2a0339def2d56008b45d2de7446f"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.101.0 <7.0.0` to `>=6.102.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.4.0",
+      "tag": "@uifabric/fluent-theme_v0.4.0",
+      "date": "Fri, 09 Nov 2018 13:32:57 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "ContextualMenu: add fluent styles.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "86c5a1d1a3867620c808f18ee9af2950c568f3d3"
+          },
+          {
+            "comment": "Pivot: add fluent styles.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "3c896ff9ca2e2d1d6e67a88c983d991f622a9a36"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update Dialog styles",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "92132e7c22c132dee0a0592f3d2f9acf6e535152"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.100.2 <7.0.0` to `>=6.101.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.3.0",
+      "tag": "@uifabric/fluent-theme_v0.3.0",
+      "date": "Wed, 07 Nov 2018 13:31:00 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Disable api-extractor build task",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "7b1ab4cf4295fce57364338746b066496acc9ce8"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Add Fluent button styles",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "62a8d0e16b925543125c5aa568fed7f21b957455"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Export all Fluent styles",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "2e1ce3f98acda16ae3943309028c6d8e583a61b6"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.99.1 <7.0.0` to `>=6.100.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.2.0",
+      "tag": "@uifabric/fluent-theme_v0.2.0",
+      "date": "Thu, 01 Nov 2018 12:31:45 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "SpinButton: add SpinButton fluent styles.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "77c184f42d70f12e32c23cb9f6438c4a7f42d8ba"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.1.7",
+      "tag": "@uifabric/fluent-theme_v0.1.7",
+      "date": "Mon, 29 Oct 2018 12:31:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "TextField, Breadcrumb: Updating some font weight for Breadcrumb and border color for TextField",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "1de1a780d3f805070d8c583bd8a5b78d83e5e357"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.93.0 <7.0.0` to `>=6.93.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.1.6",
+      "tag": "@uifabric/fluent-theme_v0.1.6",
+      "date": "Thu, 25 Oct 2018 12:30:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fluent theme: Update Slider colors",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "f486b9f249bc7cfc39cdcc4d95f642c22eea371e"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.92.0 <7.0.0` to `>=6.92.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.1.5",
       "tag": "@uifabric/fluent-theme_v0.1.5",
       "date": "Wed, 24 Oct 2018 12:28:58 GMT",

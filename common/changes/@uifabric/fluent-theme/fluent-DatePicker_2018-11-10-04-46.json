@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/fluent-theme",
+      "comment": "DatePicker: adds fluent styles.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/fluent-theme",
+  "email": "v-vibr@microsoft.com"
+}

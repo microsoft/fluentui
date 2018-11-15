@@ -15,7 +15,7 @@ export interface IBaseFloatingPicker {
   hidePicker: () => void;
 
   /** Shows the picker
-   * @param updateValue optional param to indicate whether to update the query string
+   * @param updateValue - Optional param to indicate whether to update the query string
    */
   showPicker: (updateValue?: boolean) => void;
 

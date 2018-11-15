@@ -14,7 +14,12 @@ export const TextFieldStyles = (props: ITextFieldStyleProps) => {
       !focused &&
         !disabled &&
         !hasErrorMessage && {
-          borderColor: NeutralColors.gray80
+          borderColor: NeutralColors.gray80,
+          selectors: {
+            ':hover': {
+              borderColor: palette.neutralPrimary
+            }
+          }
         },
       hasErrorMessage && [
         {

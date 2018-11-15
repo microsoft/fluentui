@@ -162,9 +162,7 @@ export class Async {
         }
       };
 
-      immediateId = window.setImmediate
-        ? window.setImmediate(setImmediateCallback)
-        : window.setTimeout(setImmediateCallback, 0);
+      immediateId = window.setImmediate ? window.setImmediate(setImmediateCallback) : window.setTimeout(setImmediateCallback, 0);
       /* tslint:enable:ban-native-functions */
 
       this._immediateIds[immediateId] = true;

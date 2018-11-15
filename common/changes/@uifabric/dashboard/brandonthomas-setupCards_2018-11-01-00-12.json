@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/dashboard",
+      "comment": "Adding SetupCard and SetupCardBanner.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/dashboard",
+  "email": "dzearing@microsoft.com"
+}

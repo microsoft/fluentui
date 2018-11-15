@@ -1,12 +1,6 @@
 /* tslint:disable:no-any */
 import * as React from 'react';
-import {
-  Form,
-  FormConditionalSubmitButton,
-  FormDatePicker,
-  FormTextInput,
-  Validators
-} from '@uifabric/experiments/lib/Form';
+import { Form, FormConditionalSubmitButton, FormDatePicker, FormTextInput, Validators } from '@uifabric/experiments/lib/Form';
 
 export interface IFormValidationExampleState {
   formResults: any;

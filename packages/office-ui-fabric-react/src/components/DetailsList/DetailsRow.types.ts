@@ -162,7 +162,7 @@ export interface IDetailsRowBaseProps extends IBaseProps<IDetailsRow>, IDetailsI
 
   /**
    * Rerender DetailsRow only when props changed. Might cause regression when depending on external updates.
-   * @default false
+   * @defaultvalue false
    */
   useReducedRowRenderer?: boolean;
 }

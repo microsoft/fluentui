@@ -56,7 +56,7 @@ export class LineChartBase extends React.Component<
       refSelected: '',
       hoveredLineColor: ''
     };
-    this._points = this.props.data.lineChartData || [];
+    this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
     this._uniqLineText =
       '_line_' +
       Math.random()
@@ -72,6 +72,10 @@ export class LineChartBase extends React.Component<
 
   public render(): JSX.Element {
     const { theme, className, styles, tickValues, tickFormat } = this.props;
+    this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
+    if (this.props.parentRef) {
+      this._fitParentContainer();
+    }
     let dataPresent = false;
     let dataType = false;
     if (this._points && this._points.length > 0) {
@@ -98,10 +102,9 @@ export class LineChartBase extends React.Component<
       color: this.state.lineColor,
       className
     });
-
     const svgDimensions = {
-      width: this.state.containerWidth ? this.state.containerWidth : 800,
-      height: this.state.containerHeight ? this.state.containerHeight : 500
+      width: this.state.containerWidth,
+      height: this.state.containerHeight
     };
     return (
       <div ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)} className={this._classNames.root}>
@@ -136,18 +139,32 @@ export class LineChartBase extends React.Component<
   }
 
   private _fitParentContainer(): void {
-    setTimeout(() => {
-      const { containerWidth, containerHeight } = this.state;
-      const currentContainerWidth = this.chartContainer.getBoundingClientRect().width;
-      const currentContainerHeight = this.chartContainer.getBoundingClientRect().height;
-      const shouldResize = containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight;
-      if (shouldResize) {
-        this.setState({
-          containerWidth: currentContainerWidth,
-          containerHeight: currentContainerHeight - 26
-        });
-      }
-    }, 100);
+    const { containerWidth, containerHeight } = this.state;
+    if (this.props.parentRef) {
+      setTimeout(() => {
+        const currentContainerWidth = this.props.parentRef!.getBoundingClientRect().width;
+        const currentContainerHeight = this.props.parentRef!.getBoundingClientRect().height;
+        const shouldResize = containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight - 26;
+        if (shouldResize) {
+          this.setState({
+            containerWidth: currentContainerWidth,
+            containerHeight: currentContainerHeight - 26
+          });
+        }
+      }, 100);
+    } else {
+      setTimeout(() => {
+        const currentContainerWidth = this.chartContainer.getBoundingClientRect().width;
+        const currentContainerHeight = this.chartContainer.getBoundingClientRect().height;
+        const shouldResize = containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight - 26;
+        if (shouldResize) {
+          this.setState({
+            containerWidth: currentContainerWidth,
+            containerHeight: currentContainerHeight - 26
+          });
+        }
+      }, 100);
+    }
   }
 
   private _createLegends(data: ILineChartPoints[]): JSX.Element {
