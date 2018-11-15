@@ -11,7 +11,7 @@ export interface IScrollablePaneContext {
     addSticky: (sticky: Sticky) => void;
     removeSticky: (sticky: Sticky) => void;
     updateStickyRefHeights: () => void;
-    sortSticky: (sticky: Sticky) => void;
+    sortSticky: (sticky: Sticky, sortAgain?: boolean) => void;
     notifySubscribers: (sort?: boolean) => void;
   };
 }
@@ -243,8 +243,11 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     this.notifySubscribers();
   };
 
-  public sortSticky = (sticky: Sticky): void => {
+  public sortSticky = (sticky: Sticky, sortAgain?: boolean): void => {
     if (this.stickyAbove && this.stickyBelow) {
+      if (sortAgain) {
+        this._removeStickyFromContainers(sticky);
+      }
       if (sticky.canStickyTop && sticky.stickyContentTop) {
         this._addToStickyContainer(sticky, this.stickyAbove, sticky.stickyContentTop);
       }
@@ -369,10 +372,10 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   };
 
   private _removeStickyFromContainers = (sticky: Sticky): void => {
-    if (this.stickyAbove && sticky.stickyContentTop) {
+    if (this.stickyAbove && sticky.stickyContentTop && this.stickyAbove.contains(sticky.stickyContentTop)) {
       this.stickyAbove.removeChild(sticky.stickyContentTop);
     }
-    if (this.stickyBelow && sticky.stickyContentBottom) {
+    if (this.stickyBelow && sticky.stickyContentBottom && this.stickyBelow.contains(sticky.stickyContentBottom)) {
       this.stickyBelow.removeChild(sticky.stickyContentBottom);
     }
   };

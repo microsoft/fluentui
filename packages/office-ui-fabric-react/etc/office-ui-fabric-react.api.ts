@@ -9292,7 +9292,7 @@ interface IScrollablePaneContext {
     addSticky: (sticky: Sticky) => void;
     notifySubscribers: (sort?: boolean) => void;
     removeSticky: (sticky: Sticky) => void;
-    sortSticky: (sticky: Sticky) => void;
+    sortSticky: (sticky: Sticky, sortAgain?: boolean) => void;
     subscribe: (handler: (container: HTMLElement, stickyContainer: HTMLElement) => void) => void;
     unsubscribe: (handler: (container: HTMLElement, stickyContainer: HTMLElement) => void) => void;
     updateStickyRefHeights: () => void;
@@ -11531,7 +11531,7 @@ class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScrollable
   // (undocumented)
   shouldComponentUpdate(nextProps: IScrollablePaneProps, nextState: IScrollablePaneState): boolean;
   // (undocumented)
-  sortSticky: (sticky: Sticky) => void;
+  sortSticky: (sticky: Sticky, sortAgain?: boolean | undefined) => void;
   // (undocumented)
   readonly stickyAbove: HTMLDivElement | null;
   // (undocumented)
@@ -11888,6 +11888,8 @@ class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   distanceFromTop: number;
   // (undocumented)
   readonly nonStickyContent: HTMLDivElement | null;
+  // (undocumented)
+  readonly placeholder: HTMLDivElement | null;
   // (undocumented)
   render(): JSX.Element;
   // (undocumented)
