@@ -47,7 +47,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
           <DefaultButton onClick={this._scrollRelative(10)}>+10</DefaultButton>
         </div>
         <Dropdown
-          placeHolder="Select an Option"
+          placeholder="Select an Option"
           label="Scroll To Mode:"
           id="Scrolldrop1"
           ariaLabel="Scroll To Mode"

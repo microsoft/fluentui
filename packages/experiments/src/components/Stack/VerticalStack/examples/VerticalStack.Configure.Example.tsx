@@ -142,7 +142,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
                 <HorizontalStack.Item grow>
                   <Dropdown
                     selectedKey={verticalAlignment}
-                    placeHolder="Select Vertical Alignment"
+                    placeholder="Select Vertical Alignment"
                     label="Vertical alignment:"
                     options={[
                       { key: 'top', text: 'Top' },
@@ -158,7 +158,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
                 <HorizontalStack.Item grow>
                   <Dropdown
                     selectedKey={horizontalAlignment}
-                    placeHolder="Select Horizontal Alignment"
+                    placeholder="Select Horizontal Alignment"
                     label="Horizontal alignment:"
                     options={[{ key: 'left', text: 'Left' }, { key: 'center', text: 'Center' }, { key: 'right', text: 'Right' }]}
                     onChange={this._onHorizontalAlignChange}

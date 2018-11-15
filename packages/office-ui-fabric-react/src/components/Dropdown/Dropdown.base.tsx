@@ -73,7 +73,8 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
 
     this._warnDeprecations({
       isDisabled: 'disabled',
-      onChanged: 'onChange'
+      onChanged: 'onChange',
+      placeHolder: 'placeholder'
     });
 
     this._warnMutuallyExclusive({
@@ -141,7 +142,6 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     }
   }
 
-  // Primary Render
   public render(): JSX.Element {
     const id = this._id;
 
@@ -160,7 +160,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
       calloutProps,
       onRenderTitle = this._onRenderTitle,
       onRenderContainer = this._onRenderContainer,
-      onRenderPlaceHolder = this._onRenderPlaceHolder,
+      onRenderPlaceHolder = this._onRenderPlaceholder,
       onRenderCaretDown = this._onRenderCaretDown
     } = this.props;
     const { isOpen, selectedIndices, hasFocus, calloutRenderEdge } = this.state;
@@ -246,7 +246,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
                 aria-atomic={true}
                 role={ariaAttrs.childRole}
                 aria-live={!hasFocus || disabled || multiSelect || isOpen ? 'off' : 'assertive'}
-                aria-label={selectedOptions.length ? selectedOptions[0].text : this.props.placeHolder}
+                aria-label={selectedOptions.length ? selectedOptions[0].text : this._placeholder}
                 aria-setsize={ariaAttrs.ariaSetSize}
                 aria-posinset={ariaAttrs.ariaPosInSet}
                 aria-selected={ariaAttrs.ariaSelected}
@@ -254,7 +254,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
                 {// If option is selected render title, otherwise render the placeholder text
                 selectedOptions.length
                   ? onRenderTitle(selectedOptions, this._onRenderTitle)
-                  : onRenderPlaceHolder(this.props, this._onRenderPlaceHolder)}
+                  : onRenderPlaceHolder(this.props, this._onRenderPlaceholder)}
               </span>
               <span className={this._classNames.caretDownWrapper}>{onRenderCaretDown(this.props, this._onRenderCaretDown)}</span>
             </div>
@@ -324,6 +324,11 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     }
   }
 
+  /** Get either props.placeholder (new name) or props.placeHolder (old name) */
+  private get _placeholder(): string | undefined {
+    return this.props.placeholder || this.props.placeHolder;
+  }
+
   private _copyArray(array: any[]): any[] {
     const newArray = [];
     for (const element of array) {
@@ -380,7 +385,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     return index;
   }
 
-  // Render text in dropdown input
+  /** Render text in dropdown input */
   private _onRenderTitle = (item: IDropdownOption[]): JSX.Element => {
     const { multiSelectDelimiter = ', ' } = this.props;
 
@@ -388,15 +393,15 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     return <span>{displayTxt}</span>;
   };
 
-  // Render placeHolder text in dropdown input
-  private _onRenderPlaceHolder = (props: IDropdownProps): JSX.Element | null => {
-    if (!props.placeHolder) {
+  /** Render placeholder text in dropdown input */
+  private _onRenderPlaceholder = (props: IDropdownProps): JSX.Element | null => {
+    if (!this._placeholder) {
       return null;
     }
-    return <span>{props.placeHolder}</span>;
+    return <span>{this._placeholder}</span>;
   };
 
-  // Render Callout or Panel container and pass in list
+  /** Render Callout or Panel container and pass in list */
   private _onRenderContainer = (props: IDropdownProps): JSX.Element => {
     const { onRenderList = this._onRenderList, responsiveMode, calloutProps, panelProps, dropdownWidth } = this.props;
 
@@ -433,12 +438,12 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     );
   };
 
-  // Render Caret Down Icon
+  /** Render Caret Down Icon */
   private _onRenderCaretDown = (props: IDropdownProps): JSX.Element => {
     return <Icon className={this._classNames.caretDown} iconName="ChevronDown" />;
   };
 
-  // Render List of items
+  /** Render List of items */
   private _onRenderList = (props: IDropdownProps): JSX.Element => {
     const { onRenderItem = this._onRenderItem } = this.props;
 
@@ -466,7 +471,6 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     );
   };
 
-  // Render items
   private _onRenderItem = (item: IDropdownOption): JSX.Element | null => {
     switch (item.itemType) {
       case SelectableOptionMenuItemType.Divider:
@@ -478,7 +482,6 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     }
   };
 
-  // Render separator
   private _renderSeparator(item: IDropdownOption): JSX.Element | null {
     const { index, key } = item;
     if (index! > 0) {
@@ -497,7 +500,6 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     );
   }
 
-  // Render menu item
   private _renderOption = (item: IDropdownOption): JSX.Element => {
     const { onRenderOption = this._onRenderOption } = this.props;
     const { selectedIndices = [] } = this.state;
@@ -557,12 +559,12 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     );
   };
 
-  // Render content of item (i.e. text/icon inside of button)
+  /** Render content of item (i.e. text/icon inside of button) */
   private _onRenderOption = (item: IDropdownOption): JSX.Element => {
     return <span className={this._classNames.dropdownOptionText}>{item.text}</span>;
   };
 
-  // Render custom label for drop down item
+  /** Render custom label for drop down item */
   private _onRenderLabel = (item: IDropdownOption): JSX.Element | null => {
     const { onRenderOption = this._onRenderOption } = this.props;
     return onRenderOption(item, this._onRenderOption);
@@ -676,7 +678,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     }
   };
 
-  // Get all selected indexes for multi-select mode
+  /** Get all selected indexes for multi-select mode */
   private _getSelectedIndexes(options: IDropdownOption[], selectedKey: string | number | string[] | number[] | undefined): number[] {
     if (selectedKey === undefined) {
       if (this.props.multiSelect) {
@@ -695,7 +697,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     return selectedIndices;
   }
 
-  // Get all selected options for multi-select mode
+  /** Get all selected options for multi-select mode */
   private _getAllSelectedOptions(options: IDropdownOption[], selectedIndices: number[]): IDropdownOption[] {
     const selectedOptions: IDropdownOption[] = [];
     for (const index of selectedIndices) {
