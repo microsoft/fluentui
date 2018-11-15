@@ -1,6 +1,154 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 30 Oct 2018 18:45:48 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Nov 2018 13:36:22 GMT and should not be manually modified.
+
+## 6.104.0
+Thu, 15 Nov 2018 13:36:22 GMT
+
+### Minor changes
+
+- DevExp: get rid of const enum so the library is compatible with Typescript's isolatedModule compilation mode
+- ScrollablePane and Sticky: Fix placeholder height, Sticky sorting, and stickyClassName
+- Slider: replace button with div so vertical Sliders render on Safari
+
+### Patches
+
+- Updating snapshots from `styled` helper changes.
+
+## 6.103.1
+Wed, 14 Nov 2018 13:34:01 GMT
+
+### Patches
+
+- Choicegroup: Fix an issue where the child label component was incorrectly getting the className prop.
+- ContextualMenu, ComboBox, Dropdown: on Mac, don't close on alt or command
+- TextField: fix multiline bug, update docs
+
+## 6.103.0
+Tue, 13 Nov 2018 13:30:53 GMT
+
+### Minor changes
+
+- ColorPicker: Export sub-components
+
+### Patches
+
+- Fix bug in ColorPicker opacity slider and improve demo page
+- DatePicker: onSelectedDate now propagates empty values even when input is required.
+
+## 6.102.0
+Mon, 12 Nov 2018 13:31:40 GMT
+
+### Minor changes
+
+- Modal: Allow defining layer props
+
+### Patches
+
+- SearchBox: IE now will consistently focus when click between icon and placeholder text
+- DetailsHeader: Support optional tooltip rendering for column headers.
+
+## 6.101.0
+Fri, 09 Nov 2018 13:32:57 GMT
+
+### Minor changes
+
+- Removing more deprecated components flagged when turning the tslint deprecation flag to true in the office-ui-fabric-react package.
+- DocumentCard: Adding `focus` method to `IDocumentCard`, which can be accessed via `componentRef`.
+- Removing some of the deprecated components flaged when turning the tslint deprecation flag to true in the office-ui-fabric-react package.
+- Add keytips to Facepile personas
+- Remove the FocusZone wrapping the FacepileMembers
+
+### Patches
+
+- ChoiceGroupOption: component mergeStyled class names no longer gets overridden by choicegroupoption item className prop
+- Button: example updated with proper styling for a custom split button
+- Passing the prop alignTargetEdge to contextualMenu's callout
+- Link: Fix bug where componentRef property was passed through to the dom element
+- Improve conditions of re-initialize state
+- BasePicker: give selected items element role "list"
+
+## 6.100.2
+Thu, 08 Nov 2018 04:17:34 GMT
+
+### Patches
+
+- Label examples: updated to illustrate good accessibility patterns.
+- DatePicker: pressing enter now changes the selection.
+- Panel documentation: updated docs to recommend having a minimum 340px width on the container.
+- Modal: Set aria-modal=true for a better screen reader experience.
+- Modal examples: Adding aria labels title & description.
+
+## 6.100.0
+Wed, 07 Nov 2018 13:31:01 GMT
+
+### Minor changes
+
+- Nav: Added linkAs to support custom buttons and React Router
+- ContextualMenu: Add menuItem subComponentStyles to enable each item styling from the ContextualMenu styles.
+
+### Patches
+
+- update to fix bug when footer covered horizontal scroll bar
+- Button: Update example to use PrimaryButton component
+- Add unit tests for ComboBox multiSelect onItemClicked callback and on select via mouse click.
+- Remove defaultPrevented check in ComboBox item click due to multiSelect regression.
+- Set GroupedList List page key to IGroup key instead of name for uniqueness.
+
+## 6.99.1
+Tue, 06 Nov 2018 13:31:09 GMT
+
+### Patches
+
+- Dropdown: change aria attributes on listbox when disabled
+- Increase height on Persona card primary text to make room for descenders
+
+## 6.99.0
+Sun, 04 Nov 2018 02:27:52 GMT
+
+### Minor changes
+
+- add ariaLabel prop for ChoiceGroupOption
+
+### Patches
+
+- Fix typo with DatePicker Callout aria-label.
+
+## 6.98.1
+Fri, 02 Nov 2018 18:11:37 GMT
+
+### Patches
+
+- Panel: fix box-shadow value
+
+## 6.98.0
+Fri, 02 Nov 2018 12:28:55 GMT
+
+### Minor changes
+
+- Add optional onItemClick callback to ComboBox.
+- Callout Positioning fixes - OnPositioned should not be called on every frame and adding a new prop called alignPerfectlyWithTarget to disallow nudging of callout
+- TextField: set overflow to hidden when autoAdjustHeight is set to avoid flashing scrollbar
+- ContextualMenu: Add fix for subComponentStyles. It is now optional in the `IContextualMenuClassNames` interface.
+
+### Patches
+
+- Pickers: Fix IE 11 focus and a few css issues
+- Slider: fix value calculations
+
+## 6.97.1
+Wed, 31 Oct 2018 22:35:10 GMT
+
+### Patches
+
+- Adding warning and updating documentation on Pivot children needing to be of type PivotItem to be rendered.
+
+## 6.97.0
+Wed, 31 Oct 2018 12:32:41 GMT
+
+### Minor changes
+
+- Expose existing mergeSettings utility function.
 
 ## 6.96.0
 Tue, 30 Oct 2018 18:45:48 GMT

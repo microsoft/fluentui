@@ -54,6 +54,11 @@ export interface ILineChartProps {
    * Please look at https://www.npmjs.com/package/d3-time-format for all the formats supported
    */
   tickFormat?: string;
+
+  /**
+   * this prop takes its parent as a HTML element to define the width and height of the line chart
+   */
+  parentRef?: HTMLElement | null;
 }
 
 export interface ILineChartStyleProps {

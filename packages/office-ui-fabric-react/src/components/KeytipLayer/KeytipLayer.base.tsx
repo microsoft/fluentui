@@ -3,7 +3,7 @@ import { IKeytipLayerProps, IKeytipLayerStyles, IKeytipLayerStyleProps } from '.
 import { getLayerStyles } from './KeytipLayer.styles';
 import { Keytip, IKeytipProps } from '../../Keytip';
 import { Layer } from '../../Layer';
-import { BaseComponent, classNamesFunction, getDocument, arraysEqual, warn } from '../../Utilities';
+import { BaseComponent, classNamesFunction, getDocument, arraysEqual, warn, isMac } from '../../Utilities';
 import { KeytipManager } from '../../utilities/keytips/KeytipManager';
 import { KeytipTree } from './KeytipTree';
 import { IKeytipTreeNode } from './IKeytipTreeNode';
@@ -17,11 +17,9 @@ export interface IKeytipLayerState {
   visibleKeytips: IKeytipProps[];
 }
 
-const isMac = typeof navigator !== 'undefined' && navigator.userAgent.indexOf('Macintosh') >= 0;
-
 // Default sequence is Alt-Windows (Alt-Meta) in Windows, Option-Control (Alt-Control) in Mac
 const defaultStartSequence: IKeytipTransitionKey = {
-  key: isMac ? 'Control' : 'Meta',
+  key: isMac() ? 'Control' : 'Meta',
   modifierKeys: [KeytipTransitionModifier.alt]
 };
 

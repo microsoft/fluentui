@@ -15,7 +15,7 @@ export interface IContextualMenuClassNames {
   list: string;
   header: string;
   title: string;
-  subComponentStyles: IContextualMenuSubComponentStyles;
+  subComponentStyles?: IContextualMenuSubComponentStyles;
 }
 
 /**

@@ -166,7 +166,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
             borderRight: `1px solid ${palette.neutralLight}`,
             pointerEvents: 'auto',
             width: panelSize.width.sm,
-            boxShadow: '-30px 0px 30px -30px rgba(0,0,0,0.2)',
+            boxShadow: '0px 0px 30px 0px rgba(0,0,0,0.2)',
             left: 'auto'
           },
           '$root &': [
@@ -180,7 +180,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
               right: 'auto',
               left: 0,
               width: panelSize.width.xs,
-              boxShadow: '30px 0px 30px -30px rgba(0,0,0,0.2)'
+              boxShadow: '0px 0px 30px 0px rgba(0,0,0,0.2)'
             },
             type === PanelType.smallFixedFar && {
               width: panelSize.width.xs,

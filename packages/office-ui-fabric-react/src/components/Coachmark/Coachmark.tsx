@@ -3,7 +3,6 @@ import * as React from 'react';
 import {
   BaseComponent,
   classNamesFunction,
-  createRef,
   elementContains,
   focusFirstChild,
   getDocument,
@@ -128,12 +127,12 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> i
    * The cached HTMLElement reference to the Entity Inner Host
    * element.
    */
-  private _entityHost = createRef<HTMLDivElement>();
-  private _entityInnerHostElement = createRef<HTMLDivElement>();
-  private _translateAnimationContainer = createRef<HTMLDivElement>();
-  private _ariaAlertContainer = createRef<HTMLDivElement>();
-  private _childrenContainer = createRef<HTMLDivElement>();
-  private _positioningContainer = createRef<IPositioningContainer>();
+  private _entityHost = React.createRef<HTMLDivElement>();
+  private _entityInnerHostElement = React.createRef<HTMLDivElement>();
+  private _translateAnimationContainer = React.createRef<HTMLDivElement>();
+  private _ariaAlertContainer = React.createRef<HTMLDivElement>();
+  private _childrenContainer = React.createRef<HTMLDivElement>();
+  private _positioningContainer = React.createRef<IPositioningContainer>();
 
   /**
    * The target element the mouse would be in

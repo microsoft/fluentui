@@ -4,8 +4,9 @@ import * as React from 'react';
 
 import { mount } from 'enzyme';
 import { BaseState } from './BaseState';
+import { IBaseProps } from './BaseComponentMin';
 
-interface ITestComponentProps {
+interface ITestComponentProps extends IBaseProps {
   propControlled?: string;
   propUncontrolled?: string;
 }

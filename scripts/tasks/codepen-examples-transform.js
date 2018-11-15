@@ -84,13 +84,10 @@ function transform(file, api) {
   source = j(recast.parse(source, { parser: { parse } }));
 
   let exampleName;
-
   // remove exports and replace with variable or class declarations, whichever the original example used
   source.find(j.ExportNamedDeclaration, node => node.declaration.type == 'VariableDeclaration').replaceWith(p => {
     exampleName = p.node.declaration.declarations[0].id.name;
-    source = source
-      .find(j.ExportNamedDeclaration, node => node.declaration.type == 'VariableDeclaration')
-      .replaceWith(p.node.declaration);
+    return p.node.declaration;
   });
 
   source
@@ -107,8 +104,7 @@ function transform(file, api) {
     .toSource();
 
   // add React Render footer
-  const sourceWithFooter =
-    source.toSource() + '\n' + 'ReactDOM.render(<' + exampleName + '/>, document.getElementById("content"));';
+  const sourceWithFooter = source.toSource() + '\n' + 'ReactDOM.render(<' + exampleName + '/>, document.getElementById("content"));';
 
   return prettier.format(sourceWithFooter, {
     parser: 'typescript',

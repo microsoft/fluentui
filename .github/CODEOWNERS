@@ -28,7 +28,8 @@ fabric-website/ @jordandrako
 # todo-app/
 
 #### Packages
-packages/charting/ @kkjeer
+packages/charting/ @Raghurk
+packages/dashboard/ @Raghurk
 packages/foundation/ @jagore
 # packages/example-app-base/
 packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
@@ -42,6 +43,7 @@ packages/styling/src/interfaces/ @phkuo
 packages/styling/src/styles/ @phkuo
 # packages/utilities/
 packages/utilities/positioning/ @joschect
+packages/date-time @OfficeDev/uifabric-calendar
 
 ### Fabric
 # common/
@@ -111,7 +113,8 @@ TeachingBubble/   @micahgodbolt
 # Theme/
 Tile/ @ThomasMichon
 TileList/ @ThomasMichon
-Toggle/  @phkuo
+office-ui-fabric-react/src/components/Toggle/  @phkuo
+experiments/src/components/Toggle/  @khmakoto @jasongore
 Tooltip/  @micahgodbolt
 
 ## Docs
@@ -166,5 +169,5 @@ ResizeGroup/docs/  @micahgodbolt
 TeachingBubble/docs/   @micahgodbolt
 # TextField/docs/
 # Theme/docs/
-Toggle/docs/  @phkuo
+office-ui-fabric-react/src/components/Toggle/docs/  @phkuo
 Tooltip/docs/  @micahgodbolt

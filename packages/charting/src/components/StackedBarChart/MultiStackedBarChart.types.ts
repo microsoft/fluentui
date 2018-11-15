@@ -43,6 +43,11 @@ export interface IMultiStackedBarChartProps {
    * Url that the data-viz needs to redirect to upon clicking on it
    */
   href?: string;
+
+  /**
+   * If this value is set to true the denominator will not be shown for the ratio above the chart
+   */
+  hideDenominator?: boolean[];
 }
 
 export interface IMultiStackedBarChartStyleProps {
