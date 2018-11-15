@@ -109,6 +109,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
     if (prevState.isStickyTop !== this.state.isStickyTop || prevState.isStickyBottom !== this.state.isStickyBottom) {
       scrollablePane.updateStickyRefHeights();
+      // Sync Sticky scroll position with content container on each update
+      scrollablePane.syncScrollSticky(this);
     }
   }
 
