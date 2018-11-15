@@ -60,7 +60,9 @@ export function createGroups(
 
 export function lorem(wordCount: number): string {
   return Array.apply(null, Array(wordCount))
-    .map((item: number) => _randWord(LOREM_IPSUM))
+    .map((item: number, idx: number) => {
+      return LOREM_IPSUM[idx % LOREM_IPSUM.length];
+    })
     .join(' ');
 }
 
