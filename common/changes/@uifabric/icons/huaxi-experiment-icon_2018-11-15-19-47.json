@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/icons",
+      "comment": "added bookmark icon to ui/experiment",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/icons",
+  "email": "huaxi@microsoft.com"
+}

@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "",
+      "packageName": "@uifabric/set-version",
+      "type": "none"
+    }
+  ],
+  "packageName": "@uifabric/set-version",
+  "email": "huaxi@microsoft.com"
+}

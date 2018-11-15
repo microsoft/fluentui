@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "added bookmark icon to ui/experiment",
+      "packageName": "@uifabric/fluent-theme",
+      "type": "none"
+    }
+  ],
+  "packageName": "@uifabric/fluent-theme",
+  "email": "huaxi@microsoft.com"
+}
