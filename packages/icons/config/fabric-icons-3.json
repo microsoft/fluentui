@@ -408,6 +408,14 @@
     {
       "name": "SubstitutionsIn",
       "unicode": "EB31"
+    },
+    {
+      "name": "SingleBookmark",
+      "unicode": "EDFF"
+    },
+    {
+      "name": "SingleBookmarkSolid",
+      "unicode": "EE00"
     }
   ]
 }

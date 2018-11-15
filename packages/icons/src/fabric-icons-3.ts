@@ -117,7 +117,9 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       ProFootball: '\uEB27',
       ProHockey: '\uEB28',
       Rugby: '\uEB2D',
-      SubstitutionsIn: '\uEB31'
+      SubstitutionsIn: '\uEB31',
+      SingleBookmark: '\uEDFF',
+      SingleBookmarkSolid: '\uEE00'
     }
   };
 
