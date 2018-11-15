@@ -1,6 +1,14 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 14 Nov 2018 13:34:01 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Nov 2018 13:36:22 GMT and should not be manually modified.
+
+## 6.27.0
+Thu, 15 Nov 2018 13:36:22 GMT
+
+### Minor changes
+
+- DevExp: get rid of const enum so the library is compatible with Typescript's isolatedModule compilation mode
+- Styled: now reacts to loadTheme changes even when not wrapped in a Customizer.
 
 ## 6.26.0
 Wed, 14 Nov 2018 13:34:01 GMT

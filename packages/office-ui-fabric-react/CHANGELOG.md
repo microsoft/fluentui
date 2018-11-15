@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 14 Nov 2018 13:34:01 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Nov 2018 13:36:22 GMT and should not be manually modified.
+
+## 6.104.0
+Thu, 15 Nov 2018 13:36:22 GMT
+
+### Minor changes
+
+- DevExp: get rid of const enum so the library is compatible with Typescript's isolatedModule compilation mode
+- ScrollablePane and Sticky: Fix placeholder height, Sticky sorting, and stickyClassName
+- Slider: replace button with div so vertical Sliders render on Safari
+
+### Patches
+
+- Updating snapshots from `styled` helper changes.
 
 ## 6.103.1
 Wed, 14 Nov 2018 13:34:01 GMT

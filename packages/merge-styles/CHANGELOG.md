@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Tue, 13 Nov 2018 13:30:53 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Nov 2018 13:36:22 GMT and should not be manually modified.
+
+## 6.15.0
+Thu, 15 Nov 2018 13:36:22 GMT
+
+### Minor changes
+
+- DevExp: get rid of const enum so the library is compatible with Typescript's isolatedModule compilation mode
 
 ## 6.14.0
 Tue, 13 Nov 2018 13:30:53 GMT
