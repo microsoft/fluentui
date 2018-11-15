@@ -7709,6 +7709,7 @@ interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
   expandedCardOpenDelay?: number;
   expandingCardProps?: IExpandingCardProps;
   instantOpenOnClick?: boolean;
+  onCardExpand?: () => void;
   onCardHide?: () => void;
   onCardVisible?: () => void;
   openHotKey?: KeyCodes;
