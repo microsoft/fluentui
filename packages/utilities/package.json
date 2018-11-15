@@ -38,6 +38,7 @@
     "@types/sinon": "2.2.2",
     "@uifabric/jest-serializer-merge-styles": ">=6.0.6 <7.0.0",
     "@uifabric/prettier-rules": ">=1.0.0 <2.0.0",
+    "@uifabric/test-utilities": ">=6.0.0 <7.0.0",
     "@uifabric/tslint-rules": ">=1.0.0 <2.0.0",
     "enzyme": "^3.4.1",
     "enzyme-adapter-react-16": "^1.2.0",

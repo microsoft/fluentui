@@ -6349,6 +6349,8 @@ interface ICustomizableProps {
 // @public (undocumented)
 interface ICustomizations {
   // (undocumented)
+  inCustomizerContext?: boolean;
+  // (undocumented)
   scopedSettings: {
     [key: string]: Settings;
   }
