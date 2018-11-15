@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "add a callback function to log hover card expand time",
+      "comment": "HoverCard: A new callback called onCardExpand has been added that occurs after the expanded hover card is rendered",
       "type": "minor"
     }
   ],
