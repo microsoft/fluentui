@@ -3,6 +3,7 @@ import { CheckboxStyles } from './styles/Checkbox.styles';
 import { ChoiceGroupOptionStyles } from './styles/ChoiceGroupOption.styles';
 import { ColorPickerStyles, ColorRectangleStyles, ColorSliderStyles } from './styles/ColorPicker.styles';
 import { ComboBoxStyles } from './styles/ComboBox.styles';
+import { CommandBarStyles } from './styles/CommandBar.styles';
 import { CommandBarButtonStyles } from './styles/CommandBarButton.styles';
 import { CompoundButtonStyles } from './styles/CompoundButton.styles';
 import { ContextualMenuStyles } from './styles/ContextualMenu.styles';
@@ -39,6 +40,9 @@ export const FluentStyles: any = {
   },
   ColorSlider: {
     styles: ColorSliderStyles
+  },
+  CommandBar: {
+    styles: CommandBarStyles
   },
   CommandBarButton: {
     styles: CommandBarButtonStyles
