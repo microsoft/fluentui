@@ -1,18 +1,20 @@
 import * as React from 'react';
 import { IPageNumberProps } from './PageNumber.types';
 
+import { buttonProperties, getNativeProps } from '../../Utilities';
+
 export class PageNumber extends React.Component<IPageNumberProps, {}> {
   constructor(props: IPageNumberProps) {
     super(props);
   }
 
   public render(): JSX.Element {
-    const { className, ariaLabel, page, selected } = this.props;
+    const { ariaLabel, page, selected } = this.props;
 
     return (
       <button
+        {...getNativeProps(this.props, buttonProperties)}
         key={page}
-        className={className}
         onClick={this.onClick}
         aria-selected={selected}
         aria-label={ariaLabel}
