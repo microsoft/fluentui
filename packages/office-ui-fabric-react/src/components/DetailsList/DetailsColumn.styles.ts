@@ -47,15 +47,6 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
     resizerColor: palette.neutralTertiaryAlt
   };
 
-  const fadeOut: string = keyframes({
-    from: {
-      borderColor: palette.themePrimary
-    },
-    to: {
-      borderColor: 'transparent'
-    }
-  });
-
   const nearIconStyle: IStyle = {
     color: colors.iconForegroundColor,
     opacity: 1,
@@ -194,8 +185,7 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
         borderWidth: 1,
         borderColor: palette.themePrimary,
         left: -1,
-        lineHeight: 31,
-        animation: `${fadeOut} 1.5s forwards`
+        lineHeight: 31
       }
     ],
 
@@ -203,8 +193,7 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
       {
         borderStyle: 'solid',
         borderWidth: 1,
-        borderColor: palette.themePrimary,
-        animation: `${fadeOut} 0.2s forwards`
+        borderColor: palette.themePrimary
       }
     ]
   };
