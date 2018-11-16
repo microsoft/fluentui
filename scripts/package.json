@@ -59,8 +59,8 @@
   },
   "bundlesize": [
     {
-      "path": "../apps/test-bundle-button/dist/test-bundle-button.min.js",
-      "maxSize": "51.5 kB"
+      "path": "../apps/test-bundles/dist/office-ui-fabric-react-Button.min.js",
+      "maxSize": "49.5 kB"
     }
   ]
 }

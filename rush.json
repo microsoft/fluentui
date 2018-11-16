@@ -136,8 +136,8 @@
       "shouldPublish": false
     },
     {
-      "packageName": "test-bundle-button",
-      "projectFolder": "apps/test-bundle-button",
+      "packageName": "test-bundles",
+      "projectFolder": "apps/test-bundles",
       "shouldPublish": false
     },
     {
