@@ -20,7 +20,7 @@ export const ExpandingCardStyles = (props: IExpandingCardStyleProps) => {
     expandedCard: {
       selectors: {
         ':before': {
-          width: 272
+          width: 272 // needs to change due to above change
         }
       }
     }
