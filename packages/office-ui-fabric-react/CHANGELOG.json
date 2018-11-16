@@ -2,6 +2,47 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.105.0",
+      "tag": "office-ui-fabric-react_v6.105.0",
+      "date": "Fri, 16 Nov 2018 13:35:41 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Dropdown: add placeholder prop, deprecate placeHolder",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "d4dbd2fd64874544d4acad374207d369b66d5821"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update lorem generator to not use randomly generated text",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "21eba7c7d70fe564c5b5d94aaa126285fa1de9da"
+          },
+          {
+            "comment": "GroupedList: rendered with aria-role grid instead of list",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "f067e5d479d320afd3715ebbf4bb5d62bbe99f88"
+          },
+          {
+            "comment": "DetailsList: Remove drag and drop border animation causing style mutations on re-render.",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "aa9193ca301f03d49cbb6e59d2f9cfe37aefcf65"
+          },
+          {
+            "comment": "\"Fix scrollable pane sticky alignment issue\"",
+            "author": "RupamSarkar <rupam11111@gmail.com>",
+            "commit": "47a50c87014d2bde18c31b75a95ba157ec82bae2"
+          },
+          {
+            "comment": "HoverCard: Fixes a style selector to properly remove the border from the Callout holding card's content and add a different shadow to it.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "7fde56075e424b75c5d5f7deea0d76f4fcfb56cd"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.104.0",
       "tag": "office-ui-fabric-react_v6.104.0",
       "date": "Thu, 15 Nov 2018 13:36:22 GMT",

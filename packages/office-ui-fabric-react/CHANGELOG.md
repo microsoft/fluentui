@@ -1,6 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 15 Nov 2018 13:36:22 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Nov 2018 13:35:41 GMT and should not be manually modified.
+
+## 6.105.0
+Fri, 16 Nov 2018 13:35:41 GMT
+
+### Minor changes
+
+- Dropdown: add placeholder prop, deprecate placeHolder
+
+### Patches
+
+- Update lorem generator to not use randomly generated text
+- GroupedList: rendered with aria-role grid instead of list
+- DetailsList: Remove drag and drop border animation causing style mutations on re-render.
+- "Fix scrollable pane sticky alignment issue"
+- HoverCard: Fixes a style selector to properly remove the border from the Callout holding card's content and add a different shadow to it.
 
 ## 6.104.0
 Thu, 15 Nov 2018 13:36:22 GMT
