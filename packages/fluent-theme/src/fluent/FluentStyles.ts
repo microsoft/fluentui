@@ -10,6 +10,7 @@ import { DatePickerStyles } from './styles/DatePicker.styles';
 import { DefaultButtonStyles } from './styles/DefaultButton.styles';
 import { DialogStyles, DialogContentStyles, DialogFooterStyles } from './styles/Dialog.styles';
 import { DropdownStyles } from './styles/Dropdown.styles';
+import { ExpandingCardStyles, PlainCardStyles } from './styles/HoverCard.styles';
 import { IconButtonStyles } from './styles/IconButton.styles';
 import { LabelStyles } from './styles/Label.styles';
 import { LinkStyles } from './styles/Link.styles';
@@ -79,6 +80,9 @@ export const FluentStyles: any = {
   Dropdown: {
     styles: DropdownStyles
   },
+  ExpandingCard: {
+    styles: ExpandingCardStyles
+  },
   IconButton: {
     styles: IconButtonStyles
   },
@@ -90,6 +94,9 @@ export const FluentStyles: any = {
   },
   Pivot: {
     styles: PivotStyles
+  },
+  PlainCard: {
+    styles: PlainCardStyles
   },
   PrimaryButton: {
     styles: PrimaryButtonStyles
