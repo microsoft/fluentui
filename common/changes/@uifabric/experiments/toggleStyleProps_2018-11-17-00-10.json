@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Toggle: Reestructured Toggle to use styled variables.",
+      "comment": "Toggle: Reetructured Toggle to use style variables.",
       "type": "patch"
     }
   ],
