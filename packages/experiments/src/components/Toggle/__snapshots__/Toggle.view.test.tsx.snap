@@ -12,6 +12,22 @@ exports[`ToggleView renders toggle correctly 1`] = `
         font-size: 14px;
         font-weight: 400;
         margin-bottom: 8px;
+        outline: transparent;
+        position: relative;
+      }
+      &::-moz-focus-inner {
+        border: 0;
+      }
+      .ms-Fabric--isFocusVisible &:focus:after {
+        border: 1px solid #ffffff;
+        bottom: 1px;
+        content: "";
+        left: 1px;
+        outline: 1px solid #666666;
+        position: absolute;
+        right: 1px;
+        top: 1px;
+        z-index: 1;
       }
 >
   <label
@@ -92,10 +108,10 @@ exports[`ToggleView renders toggle correctly 1`] = `
           &:hover {
             border-color: #212121;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+          @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
             border-color: Highlight;
           }
       data-is-focusable={true}

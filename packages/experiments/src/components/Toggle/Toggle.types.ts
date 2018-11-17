@@ -6,7 +6,13 @@ import { IComponentAs, IRefObject } from '../../Utilities';
 
 export type IToggleComponent = IComponent<IToggleProps, IToggleViewProps, IToggleStyles>;
 
-export interface IToggle {}
+export type IToggleStates = 'baseState' | 'enabled' | 'disabled' | 'checked' | 'checkedDisabled';
+
+export type IToggleSlots = 'root' | 'label' | 'container' | 'pill' | 'thumb' | 'text';
+
+export interface IToggle {
+  focus: () => void;
+}
 
 /**
  * Toggle component props.
@@ -70,10 +76,15 @@ export interface IToggleProps extends IStyleableComponentProps<IToggleViewProps,
    * Optional keytip for this toggle
    */
   keytipProps?: IKeytipProps;
+
+  /**
+   * Style variables for Toggle.
+   */
+  styleVariables?: IToggleStyleVariables;
 }
 
 export type IToggleViewProps = Pick<IToggleProps, 'as' | 'label' | 'ariaLabel' | 'disabled' | 'onChange' | 'keytipProps'> &
-  Required<Pick<IToggleProps, 'checked'>> & {
+  Required<Pick<IToggleProps, 'checked' | 'styleVariables'>> & {
     /**
      * Toggle input callback triggered by mouse and keyboard input.
      */
@@ -88,39 +99,46 @@ export type IToggleViewProps = Pick<IToggleProps, 'as' | 'label' | 'ariaLabel' |
      * Text to display next to the toggle.
      */
     text?: string;
+
+    /**
+     * Reference to the toggle button.
+     */
+    toggleButton?: React.RefObject<HTMLButtonElement>;
   };
 
 /**
  * Styles for the Toggle component.
  */
-export interface IToggleStyles {
-  /**
-   * Root element.
-   */
-  root: IStyle;
+export interface IToggleStyleVariablesTypes {
+  pillBackground?: string;
+  pillHoveredBackground?: string;
+  pillBorderColor?: string;
+  pillHoveredBorderColor?: string;
+  pillJustifyContent?:
+    | 'initial'
+    | 'inherit'
+    | 'unset'
+    | 'flex-start'
+    | 'flex-end'
+    | 'center'
+    | 'space-between'
+    | 'space-around'
+    | 'space-evenly'
+    | 'stretch'
+    | undefined;
+  pillHighContrastBackground?: string;
+  pillHighContrastHoveredBackground?: string;
+  pillHighContrastBorderColor?: string;
+  pillHighContrastHoveredBorderColor?: string;
 
-  /**
-   * Label element above the toggle.
-   */
-  label: IStyle;
+  thumbBackground?: string;
+  thumbHighContrastBackground?: string;
+  thumbHighContrastBorderColor?: string;
 
-  /**
-   * Container for the toggle pill and the text next to it.
-   */
-  container: IStyle;
-
-  /**
-   * Pill, rendered as a button.
-   */
-  pill: IStyle;
-
-  /**
-   * Thumb inside of the pill.
-   */
-  thumb: IStyle;
-
-  /**
-   * Text next to the pill.
-   */
-  text: IStyle;
+  textColor?: string;
+  textHighContrastColor?: string;
 }
+
+export type IToggleStyleVariables = { [PState in IToggleStates]?: IToggleStyleVariablesTypes };
+
+export type IToggleStyles = { [key in IToggleSlots]: IStyle };
