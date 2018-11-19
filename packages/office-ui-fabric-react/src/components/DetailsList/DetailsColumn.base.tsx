@@ -143,7 +143,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
       if (this._root!.current!) {
         this._root!.current!.classList!.add(classNames.borderAfterDropping);
       }
-      setTimeout(() => {
+      this._async.setTimeout(() => {
         if (this._root!.current!) {
           this._root!.current!.classList!.remove(classNames.borderAfterDropping);
         }
