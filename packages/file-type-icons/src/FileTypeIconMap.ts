@@ -4,6 +4,8 @@
  * Track icon accuracy status here: https://msft-my.spoppe.com/personal/caperez_microsoft_com/Documents/Missing%20List.xlsx?web=1
  */
 export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
+  photo360: {},
+  video360: {},
   accdb: { extensions: ['accdb', 'mdb'] },
   archive: {
     extensions: ['7z', 'ace', 'arc', 'arj', 'dmg', 'gz', 'iso', 'lzh', 'pkg', 'rar', 'sit', 'tgz', 'tar', 'z']
