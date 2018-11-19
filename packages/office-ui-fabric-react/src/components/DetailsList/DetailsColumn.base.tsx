@@ -106,8 +106,9 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
 
                   {column.isGrouped && <Icon className={classNames.nearIcon} iconName={'GroupedDescending'} />}
 
-                  {column.columnActionsMode === ColumnActionsMode.hasDropdown &&
-                    !column.isIconOnly && <Icon aria-hidden={true} className={classNames.filterChevron} iconName={'ChevronDown'} />}
+                  {column.columnActionsMode === ColumnActionsMode.hasDropdown && !column.isIconOnly && (
+                    <Icon aria-hidden={true} className={classNames.filterChevron} iconName={'ChevronDown'} />
+                  )}
                 </span>
               )
             },
@@ -142,7 +143,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
       if (this._root!.current!) {
         this._root!.current!.classList!.add(classNames.borderAfterDropping);
       }
-      setTimeout(() => {
+      this._async.setTimeout(() => {
         if (this._root!.current!) {
           this._root!.current!.classList!.remove(classNames.borderAfterDropping);
         }
