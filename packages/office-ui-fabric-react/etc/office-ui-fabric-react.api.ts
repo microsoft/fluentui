@@ -168,11 +168,7 @@ class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends BaseC
   // (undocumented)
   componentWillReceiveProps(newProps: P): void;
   // (undocumented)
-  floatingPicker: {
-    (component: BaseFloatingPicker<T, IBaseFloatingPickerProps<T>> | null): void;
-    current: BaseFloatingPicker<T, IBaseFloatingPickerProps<T>> | null;
-    value: BaseFloatingPicker<T, IBaseFloatingPickerProps<T>> | null;
-  }
+  floatingPicker: React.RefObject<BaseFloatingPicker<T, IBaseFloatingPickerProps<T>>>;
   // (undocumented)
   protected floatingPickerProps: IBaseFloatingPickerProps<T>;
   // (undocumented)
@@ -1908,7 +1904,7 @@ interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> {
   calloutWidth?: number;
   className?: string;
   // (undocumented)
-  componentRef?: (component?: IBaseFloatingPicker | null) => void;
+  componentRef?: IRefObject<IBaseFloatingPicker>;
   createGenericItem?: (input: string, isValid: boolean) => ISuggestionModel<T>;
   getTextFromItem?: (item: T, currentValue?: string) => string;
   inputElement?: HTMLInputElement | null;
