@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.45.2",
+      "tag": "@uifabric/experiments_v5.45.2",
+      "date": "Mon, 19 Nov 2018 12:25:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Yumiko Huang <dayumikoda@gmail.com>",
+            "commit": "7a9e7566fafc7f42a9a658eaabef0576ec9824e3",
+            "comment": "added bookmark signal icons"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.45.1",
       "tag": "@uifabric/experiments_v5.45.1",
       "date": "Fri, 19 Oct 2018 11:27:30 GMT",
