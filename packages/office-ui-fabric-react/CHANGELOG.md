@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 16 Nov 2018 13:35:41 GMT and should not be manually modified.
+This log was last generated on Mon, 19 Nov 2018 13:36:25 GMT and should not be manually modified.
+
+## 6.105.1
+Mon, 19 Nov 2018 13:36:25 GMT
+
+### Patches
+
+- ProgressIndicator: Fixes bug when transparent color used in a gradient in Safari browser treats it not as intended.
 
 ## 6.105.0
 Fri, 16 Nov 2018 13:35:41 GMT
