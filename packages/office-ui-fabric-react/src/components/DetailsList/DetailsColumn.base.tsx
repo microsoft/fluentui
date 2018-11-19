@@ -106,8 +106,9 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
 
                   {column.isGrouped && <Icon className={classNames.nearIcon} iconName={'GroupedDescending'} />}
 
-                  {column.columnActionsMode === ColumnActionsMode.hasDropdown &&
-                    !column.isIconOnly && <Icon aria-hidden={true} className={classNames.filterChevron} iconName={'ChevronDown'} />}
+                  {column.columnActionsMode === ColumnActionsMode.hasDropdown && !column.isIconOnly && (
+                    <Icon aria-hidden={true} className={classNames.filterChevron} iconName={'ChevronDown'} />
+                  )}
                 </span>
               )
             },
@@ -160,7 +161,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
   public componentDidUpdate(): void {
     if (!this._dragDropSubscription && this.props.dragDropHelper && this.props.isDraggable!) {
       this._dragDropSubscription = this.props.dragDropHelper.subscribe(
-        this._root.value as HTMLElement,
+        this._root.current as HTMLElement,
         this._events,
         this._getColumnDragDropOptions()
       );
