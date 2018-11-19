@@ -4,6 +4,8 @@
  * Always use getFileTypeIconProps to get the most up-to-date icon at the right pixel density.
  */
 export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
+  photo360: {},
+  video360: {},
   accdb: { extensions: ['accdb', 'mdb'] },
   archive: {
     extensions: ['7z', 'ace', 'arc', 'arj', 'dmg', 'gz', 'iso', 'lzh', 'pkg', 'rar', 'sit', 'tgz', 'tar', 'z']
