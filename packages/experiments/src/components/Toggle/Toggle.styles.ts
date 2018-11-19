@@ -1,6 +1,6 @@
 import { IToggleComponent, IToggleStyles, IToggleStyleVariablesTypes } from './Toggle.types';
 import { getFocusStyle, getGlobalClassNames, HighContrastSelector, concatStyleSets } from '../../Styling';
-import { merge } from '../../Utilities';
+import { processVariables } from '../../utilities/VariableProcessing';
 
 const GlobalClassNames = {
   root: 'ms-Toggle',
@@ -17,7 +17,7 @@ export const ToggleStyles: IToggleComponent['styles'] = props => {
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  const toggleVariables = _processVariables({
+  const toggleVariables = processVariables({
     baseState: {},
 
     enabled: {
@@ -218,12 +218,3 @@ export const ToggleStyles: IToggleComponent['styles'] = props => {
 
   return concatStyleSets({ root: getFocusStyle(theme) }, getToggleStylesFromVariant(), { root: className });
 };
-
-type IProcessedVariables<T> = { [P in keyof T]-?: IProcessedVariables<T[P]> };
-
-function _processVariables<T>(partialVariables: T, customVariables?: T): IProcessedVariables<T> {
-  // tslint:disable-next-line:no-any
-  const result = customVariables ? merge({}, partialVariables, customVariables) : partialVariables;
-
-  return result as IProcessedVariables<T>;
-}
