@@ -3,7 +3,7 @@ import * as React from 'react';
 import { CommandButton } from '../../Button';
 import { Callout } from '../../Callout';
 import { Checkbox } from '../../Checkbox';
-import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Icon } from '../../Icon';
 import { KeytipData } from '../../KeytipData';
 import { Label, ILabelStyleProps, ILabelStyles } from '../../Label';
@@ -12,7 +12,6 @@ import { IProcessedStyleSet } from '../../Styling';
 import {
   BaseComponent,
   KeyCodes,
-  createRef,
   divProperties,
   findIndex,
   getFirstFocusable,
@@ -52,7 +51,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   };
 
   private _host = React.createRef<HTMLDivElement>();
-  private _focusZone = createRef<IFocusZone>();
+  private _focusZone = React.createRef<FocusZone>();
   private _dropDown = React.createRef<HTMLDivElement>();
   private _id: string;
   private _isScrollIdle: boolean;
@@ -507,10 +506,10 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
       isItemSelected && item.disabled === true // preciate: both selected and disabled
         ? this._classNames.dropdownItemSelectedAndDisabled
         : isItemSelected // preciate: selected only
-          ? this._classNames.dropdownItemSelected
-          : item.disabled === true // predicate: disabled only
-            ? this._classNames.dropdownItemDisabled
-            : this._classNames.dropdownItem;
+        ? this._classNames.dropdownItemSelected
+        : item.disabled === true // predicate: disabled only
+        ? this._classNames.dropdownItemDisabled
+        : this._classNames.dropdownItem;
 
     return !this.props.multiSelect ? (
       <CommandButton

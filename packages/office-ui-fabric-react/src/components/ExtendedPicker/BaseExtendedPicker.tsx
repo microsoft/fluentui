@@ -39,8 +39,8 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
       selectedItems: this.props.defaultSelectedItems
         ? (this.props.defaultSelectedItems as T[])
         : this.props.selectedItems
-          ? (this.props.selectedItems as T[])
-          : null
+        ? (this.props.selectedItems as T[])
+        : null
     };
 
     this.floatingPickerProps = this.props.floatingPickerProps;
@@ -52,8 +52,8 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     return this.state.selectedItems
       ? this.state.selectedItems
       : this.selectedItemsList.current
-        ? this.selectedItemsList.current.items
-        : null;
+      ? this.selectedItemsList.current.items
+      : null;
   }
 
   public componentDidMount(): void {

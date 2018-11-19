@@ -3,6 +3,7 @@ import { ISuggestionModel } from '../../Pickers';
 import { IPersonaProps } from '../../Persona';
 import { ISuggestionsHeaderFooterProps } from './Suggestions/Suggestions.types';
 import { SuggestionsStore } from './Suggestions/SuggestionsStore';
+import { IRefObject } from '../../Utilities';
 
 export interface IBaseFloatingPicker {
   /** Whether the suggestions are shown */
@@ -32,7 +33,7 @@ export interface IBaseFloatingPicker {
 // displaying persona's than type T could either be of Persona or Ipersona props
 // tslint:disable-next-line:no-any
 export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> {
-  componentRef?: (component?: IBaseFloatingPicker | null) => void;
+  componentRef?: IRefObject<IBaseFloatingPicker>;
 
   /**
    * The suggestions store

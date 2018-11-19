@@ -2,7 +2,6 @@ import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { Link } from 'office-ui-fabric-react/lib/Link';
-import { createRef } from 'office-ui-fabric-react/lib/Utilities';
 import { getTheme, FontWeights, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 export interface ICalloutBasicExampleState {
@@ -51,7 +50,7 @@ const styles = mergeStyleSets({
 
 // Example code
 export class CalloutBasicExample extends React.Component<{}, ICalloutBasicExampleState> {
-  private _menuButtonElement = createRef<HTMLElement>();
+  private _menuButtonElement = React.createRef<HTMLDivElement>();
 
   public constructor(props: {}) {
     super(props);
