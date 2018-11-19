@@ -20,15 +20,11 @@ export function getStyles(props: IExpandingCardStyleProps): IExpandingCardStyles
       {
         width: '340px',
         pointerEvents: 'none',
+        boxShadow: '0 0 20px rgba(0, 0, 0, .2)',
+        border: 'none',
         selectors: {
-          '.ms-Callout': {
-            boxShadow: '0 0 20px rgba(0, 0, 0, .2)',
-            border: 'none',
-            selectors: {
-              [HighContrastSelector]: {
-                border: '1px solid WindowText'
-              }
-            }
+          [HighContrastSelector]: {
+            border: '1px solid WindowText'
           }
         }
       },

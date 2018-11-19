@@ -1,3 +1,5 @@
+@import '~office-ui-fabric-react/dist/sass/_themeOverrides';
+
 :global {
   .FeedbackList-pivot {
     padding-top: 20px;
@@ -10,6 +12,11 @@
 
   .FeedbackList-button {
     margin-bottom: 10px;
+  }
+
+  // Temporary workaround for https://github.com/OfficeDev/office-ui-fabric-react/issues/6782.
+  a.FeedbackList-button {
+    color: $ms-color-white;
   }
 
   .FeedbackList-listElement {

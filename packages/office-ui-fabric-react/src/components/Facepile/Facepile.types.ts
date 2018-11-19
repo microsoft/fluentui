@@ -4,8 +4,9 @@ import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IButtonProps } from '../../Button';
 import { IPersonaSharedProps, PersonaInitialsColor, PersonaSize } from '../../Persona';
+import { IKeytipProps } from '../../Keytip';
 
-export interface IFacepile {}
+export interface IFacepile { }
 
 export interface IFacepileProps extends React.Props<FacepileBase> {
   /**
@@ -122,6 +123,11 @@ export interface IFacepilePersona extends React.ButtonHTMLAttributes<HTMLButtonE
    * handlers.
    */
   data?: any;
+
+  /**
+   * Optional keytip for this button that is only added when 'onClick' is defined for the persona
+   */
+  keytipProps?: IKeytipProps;
 }
 
 export enum OverflowButtonType {

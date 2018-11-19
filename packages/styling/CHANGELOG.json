@@ -2,6 +2,42 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "6.35.0",
+      "tag": "@uifabric/styling_v6.35.0",
+      "date": "Thu, 15 Nov 2018 13:36:22 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "DevExp: get rid of const enum so the library is compatible with Typescript's isolatedModule compilation mode",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "a995de20dcd7b3a8967e6d33ccffd6f12dae0ed5"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.26.0 <7.0.0` to `>=6.27.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.14.0 <7.0.0` to `>=6.15.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.34.1",
+      "tag": "@uifabric/styling_v6.34.1",
+      "date": "Fri, 09 Nov 2018 13:32:57 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Icon: warnings from duplicate registrations are now throttled into a single message.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "ca8766ccb65a0e2855555b929b1e0d5c9aabe4cf"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.34.0",
       "tag": "@uifabric/styling_v6.34.0",
       "date": "Wed, 31 Oct 2018 12:32:41 GMT",

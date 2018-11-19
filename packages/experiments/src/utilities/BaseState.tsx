@@ -1,19 +1,26 @@
-import * as React from 'react';
+import { BaseComponentMin, IBaseProps } from './BaseComponentMin';
 import { IStateComponentProps } from '../Foundation';
 
-export interface IBaseStateOptions<TState> {
+export interface IBaseStateOptions<TViewProps, TState> {
   controlledProps: (keyof TState)[];
+  transformViewProps: (newProps: TViewProps) => TViewProps;
 }
 
-export class BaseState<TComponentProps, TViewProps, TState> extends React.Component<
+export class BaseState<TComponentProps extends IBaseProps, TViewProps, TState> extends BaseComponentMin<
   IStateComponentProps<TComponentProps, TViewProps>,
   TState
 > {
   private _controlledProps: (keyof TState)[];
+  private _transformViewProps: (newProps: TViewProps) => TViewProps;
 
-  constructor(props: IStateComponentProps<TComponentProps, TViewProps>, options: Partial<IBaseStateOptions<TState>> = {}) {
+  constructor(props: IStateComponentProps<TComponentProps, TViewProps>, options: Partial<IBaseStateOptions<TViewProps, TState>> = {}) {
     super(props);
     this._controlledProps = options.controlledProps || [];
+    this._transformViewProps =
+      options.transformViewProps ||
+      ((newProps: TViewProps) => {
+        return newProps;
+      });
   }
 
   public componentWillReceiveProps(newProps: IStateComponentProps<TComponentProps, TViewProps>): void {
@@ -32,10 +39,12 @@ export class BaseState<TComponentProps, TViewProps, TState> extends React.Compon
   }
 
   public render(): JSX.Element | null {
-    const newProps = {
+    let newProps = {
       ...(this.state as {}),
       ...(this._getControlledProps() as {})
     } as TViewProps;
+
+    newProps = this._transformViewProps(newProps);
 
     return this.props.renderView(newProps);
   }

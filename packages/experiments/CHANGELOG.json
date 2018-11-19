@@ -2,6 +2,68 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.41.0",
+      "tag": "@uifabric/experiments_v6.41.0",
+      "date": "Thu, 08 Nov 2018 04:17:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "added bookmark signal icons",
+            "author": "Yumiko Huang <dayumikoda@gmail.com>",
+            "commit": "eef17a7a11df7c970b24a7c8f5781cafc0e7d7fc"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Converting existing Toggle component to use Foundation.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "d6be1268e199a6ec8355e1e94b45a6a10bac49da"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.28.0` to `^0.28.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.11.0 <7.0.0` to `>=6.13.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.100.0 <7.0.0` to `>=6.100.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.40.3",
+      "tag": "@uifabric/experiments_v6.40.3",
+      "date": "Fri, 02 Nov 2018 18:11:37 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.27.0` to `^0.28.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.98.0 <7.0.0` to `>=6.98.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.40.2",
+      "tag": "@uifabric/experiments_v6.40.2",
+      "date": "Fri, 02 Nov 2018 12:28:55 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.26.3` to `^0.27.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.97.1 <7.0.0` to `>=6.98.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.40.1",
       "tag": "@uifabric/experiments_v6.40.1",
       "date": "Wed, 31 Oct 2018 12:32:41 GMT",
