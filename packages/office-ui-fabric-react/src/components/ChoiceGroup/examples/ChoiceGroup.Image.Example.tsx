@@ -20,15 +20,15 @@ export class ChoiceGroupImageExample extends React.Component<{}, IChoiceGroupIma
     this._onImageChoiceGroupChange = this._onImageChoiceGroupChange.bind(this);
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { selectedKey } = this.state;
 
     return (
       <div>
         <ChoiceGroup
-          label='Pick one image'
-          selectedKey={ selectedKey }
-          options={ [
+          label="Pick one image"
+          selectedKey={selectedKey}
+          options={[
             {
               key: 'bar',
               imageSrc: TestImages.choiceGroupBarUnselected,
@@ -44,14 +44,14 @@ export class ChoiceGroupImageExample extends React.Component<{}, IChoiceGroupIma
               imageSize: { width: 32, height: 32 },
               text: 'Pie chart'
             }
-          ] }
-          onChange={ this._onImageChoiceGroupChange }
+          ]}
+          onChange={this._onImageChoiceGroupChange}
         />
       </div>
     );
   }
 
-  private _onImageChoiceGroupChange(ev: React.SyntheticEvent<HTMLElement>, option: IChoiceGroupOption) {
+  private _onImageChoiceGroupChange(ev: React.SyntheticEvent<HTMLElement>, option: IChoiceGroupOption): void {
     this.setState({
       selectedKey: option.key
     });

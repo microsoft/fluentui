@@ -1,6 +1,291 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Fri, 02 Mar 2018 11:25:35 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Nov 2018 13:31:09 GMT and should not be manually modified.
+
+## 6.9.2
+Tue, 06 Nov 2018 13:31:09 GMT
+
+### Patches
+
+- Fix visual bugs caused by MWF overrides on Fabric site
+
+## 6.9.1
+Wed, 31 Oct 2018 12:32:41 GMT
+
+### Patches
+
+- Replace usage of scheme prop with theme provider.
+
+## 6.9.0
+Wed, 17 Oct 2018 01:29:55 GMT
+
+### Minor changes
+
+- Modify CodepenComponent for use by other packages.
+
+## 6.8.0
+Tue, 16 Oct 2018 12:28:48 GMT
+
+### Minor changes
+
+- Add optional app customizations and apply to examples when provided.
+
+## 6.7.6
+Thu, 11 Oct 2018 23:13:31 GMT
+
+### Patches
+
+- Documentation: remove unwanted backslashes and render backticks as code blocks
+
+## 6.7.5
+Wed, 10 Oct 2018 12:29:05 GMT
+
+### Patches
+
+- ExampleCard: Replace Fabric Core classes with mixins
+- ExampleCard: Adds utility classes for spacing within examples
+
+## 6.7.4
+Mon, 08 Oct 2018 12:24:15 GMT
+
+### Patches
+
+- Moving tslint/prettier dependencies 
+
+## 6.7.3
+Fri, 21 Sep 2018 14:25:46 GMT
+
+### Patches
+
+- Adding a version stamp file
+
+## 6.7.2
+Fri, 10 Aug 2018 10:26:08 GMT
+
+### Patches
+
+- Added optional feedback section for component pages
+
+## 6.7.1
+Wed, 08 Aug 2018 10:25:07 GMT
+
+### Patches
+
+- Autodoc: improve regex to handle certain edge cases of declaring interfaces.
+
+## 6.7.0
+Tue, 24 Jul 2018 10:24:36 GMT
+
+### Minor changes
+
+- Updating example pages to provide codepen script content.
+
+## 6.6.0
+Mon, 23 Jul 2018 10:28:08 GMT
+
+### Minor changes
+
+- Addressing bad imports.
+
+## 6.5.2
+Thu, 19 Jul 2018 19:04:38 GMT
+
+### Patches
+
+- Added optional feedback section for component pages
+
+## 6.5.1
+Wed, 18 Jul 2018 10:25:50 GMT
+
+### Patches
+
+- Fix typing bugs in example-app-base
+
+## 6.5.0
+Tue, 17 Jul 2018 10:28:40 GMT
+
+### Minor changes
+
+- Removing most `@customizable` decorator usage. This change should reduce extra React dom elements from being created. Also updating `componentRef` resolution to support `React.createRef()` usage.
+
+## 6.4.0
+Mon, 16 Jul 2018 10:27:18 GMT
+
+### Minor changes
+
+- Variant section lists have same style as best practices section lists. ComponentPage Overview now marked optional prop.
+- EditSection: Remove ComponentPageSection enum to make EditSection easier to use.
+
+## 6.3.0
+Fri, 13 Jul 2018 21:32:37 GMT
+
+### Minor changes
+
+- Reverting the TypeScript bump, to un
+
+## 6.2.1
+Thu, 14 Jun 2018 20:52:57 GMT
+
+### Patches
+
+- Consumes data from OUFR
+
+## 6.2.0
+Fri, 08 Jun 2018 18:34:17 GMT
+
+### Minor changes
+
+- add style arg to customizable
+- Fixing package dependencies
+
+## 6.1.0
+Thu, 07 Jun 2018 16:35:34 GMT
+
+### Minor changes
+
+- Tweaked the lint rules.
+
+## 6.0.2
+Tue, 05 Jun 2018 00:44:30 GMT
+
+### Patches
+
+- Added Prettier
+
+## 6.0.1
+Mon, 04 Jun 2018 10:16:13 GMT
+
+### Patches
+
+- Updating react typings.
+
+## 6.0.0
+Wed, 30 May 2018 20:28:33 GMT
+
+### Breaking changes
+
+- Minimum React version is now 16.3.2.
+
+## 5.11.5
+Thu, 17 May 2018 10:28:07 GMT
+
+### Patches
+
+- Fixed a bug in the documentation generator code that skipped const enums (parser)
+
+## 5.11.4
+Fri, 11 May 2018 04:21:29 GMT
+
+### Patches
+
+- Pin markdown-to-jsx dependency
+
+## 5.11.3
+Tue, 08 May 2018 10:17:01 GMT
+
+### Patches
+
+- Pin markdown-to-jsx dependency
+
+## 5.11.2
+Fri, 04 May 2018 15:58:38 GMT
+
+### Patches
+
+- Updating React build version.
+
+## 5.11.1
+Wed, 02 May 2018 23:55:40 GMT
+
+### Patches
+
+- Refactors String.prototype.includes usage in favor of  String.prototype.indexOf for IE compat.
+
+## 5.11.0
+Mon, 23 Apr 2018 10:24:54 GMT
+
+### Minor changes
+
+- Updating the focus styling to use the generalized `ms-Fabric--isFocusVisibl
+
+## 5.10.2
+Thu, 19 Apr 2018 18:25:59 GMT
+
+### Patches
+
+- Update createRef to match React.createRef api
+
+## 5.10.1
+Wed, 18 Apr 2018 10:15:04 GMT
+
+### Patches
+
+- Fix code block line-height
+
+## 5.10.0
+Mon, 16 Apr 2018 10:23:25 GMT
+
+### Minor changes
+
+- Add new APIs for editing sections on GitHub.
+
+### Patches
+
+- Removing module entry temporarily. (Will be added back in 6.0.)
+- Updating build to React 16.3.1.
+
+## 5.9.0
+Thu, 12 Apr 2018 10:15:54 GMT
+
+### Minor changes
+
+- HTML button tags will be overridden with DefaultButton component.
+
+## 5.8.0
+Thu, 05 Apr 2018 10:15:39 GMT
+
+### Minor changes
+
+- Add ability to disable scrolling for an ExampleCard
+
+## 5.7.1
+Sat, 31 Mar 2018 17:40:00 GMT
+
+### Patches
+
+- We need to temporarily remove `sideEffects: false` flag from package.json which will disable w
+
+## 5.7.0
+Wed, 28 Mar 2018 19:26:19 GMT
+
+### Minor changes
+
+- Add markdown-to-jsx for use in documentation.
+
+## 5.6.0
+Tue, 27 Mar 2018 20:22:53 GMT
+
+### Minor changes
+
+- Add markdown-to-jsx for use in documentation.
+
+## 5.5.0
+Sun, 25 Mar 2018 03:08:03 GMT
+
+### Minor changes
+
+- Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` fl
+
+## 5.4.0
+Mon, 19 Mar 2018 10:27:55 GMT
+
+### Minor changes
+
+- ThemePrimary: Updating this color along with an Office branding update.
+
+### Patches
+
+- Use arrow function properties instead of @autobind
 
 ## 5.3.0
 Fri, 02 Mar 2018 11:25:35 GMT

@@ -1,0 +1,4089 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctly 1`] = `
+<div>
+  <div>
+    Simple circle swatch color picker:
+  </div>
+  <div
+    className=
+        ms-FocusZone
+        ms-swatchColorPickerBodyContainer
+        {
+          clear: both;
+          display: block;
+          min-width: 180px;
+        }
+    data-focuszone-id="FocusZone2"
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+    role="presentation"
+  >
+    <table
+      className=
+
+          {
+            border-collapse: collapse;
+            margin-bottom: 8px;
+            margin-left: 0;
+            margin-right: 0;
+            margin-top: 8px;
+            outline: none;
+            padding-bottom: 2px;
+            padding-left: 2px;
+            padding-right: 2px;
+            padding-top: 2px;
+          }
+      id="id__1"
+      onBlur={[Function]}
+      role="grid"
+    >
+      <tbody>
+        <tr
+          role="row"
+        >
+          <td
+            className=
+
+                {
+                  padding-bottom: 5px;
+                  padding-left: 5px;
+                  padding-right: 5px;
+                  padding-top: 5px;
+                }
+            role="presentation"
+          >
+            <button
+              aria-label="green"
+              aria-selected={false}
+              className=
+                  ms-Button
+                  ms-Button--action
+                  ms-Button--command
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: #ffffff;
+                    border-radius: 100%;
+                    border: none;
+                    box-sizing: border-box;
+                    color: #333333;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 20px;
+                    outline: transparent;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                    width: 20px;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: -2px;
+                    left: -2px;
+                    outline-color: ButtonText;
+                    right: -2px;
+                    top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus::after {
+                    display: none;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid #666666;
+                  }
+                  &:hover, &:active, &:focus {
+                    background-color: #ffffff;
+                    border: 2px solid #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
+                  &:hover {
+                    color: #0078d4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                    color: Highlight;
+                  }
+                  &:active {
+                    color: #000000;
+                  }
+              data-index={0}
+              data-is-focusable={true}
+              id="swatchColorPicker0-a-0"
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseUp={[Function]}
+              role="gridcell"
+              title="green"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: flex-start;
+                    }
+              >
+                <svg
+                  className=
+
+                      {
+                        border-radius: 100%;
+                        height: 100%;
+                        width: 100%;
+                      }
+                  fill="#00ff00"
+                  viewBox="0 0 20 20"
+                >
+                  <circle
+                    cx="50%"
+                    cy="50%"
+                    r="50%"
+                  />
+                </svg>
+              </div>
+            </button>
+          </td>
+          <td
+            className=
+
+                {
+                  padding-bottom: 5px;
+                  padding-left: 5px;
+                  padding-right: 5px;
+                  padding-top: 5px;
+                }
+            role="presentation"
+          >
+            <button
+              aria-label="orange"
+              aria-selected={false}
+              className=
+                  ms-Button
+                  ms-Button--action
+                  ms-Button--command
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: #ffffff;
+                    border-radius: 100%;
+                    border: none;
+                    box-sizing: border-box;
+                    color: #333333;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 20px;
+                    outline: transparent;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                    width: 20px;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: -2px;
+                    left: -2px;
+                    outline-color: ButtonText;
+                    right: -2px;
+                    top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus::after {
+                    display: none;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid #666666;
+                  }
+                  &:hover, &:active, &:focus {
+                    background-color: #ffffff;
+                    border: 2px solid #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
+                  &:hover {
+                    color: #0078d4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                    color: Highlight;
+                  }
+                  &:active {
+                    color: #000000;
+                  }
+              data-index={1}
+              data-is-focusable={true}
+              id="swatchColorPicker0-b-1"
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseUp={[Function]}
+              role="gridcell"
+              title="orange"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: flex-start;
+                    }
+              >
+                <svg
+                  className=
+
+                      {
+                        border-radius: 100%;
+                        height: 100%;
+                        width: 100%;
+                      }
+                  fill="#ffa500"
+                  viewBox="0 0 20 20"
+                >
+                  <circle
+                    cx="50%"
+                    cy="50%"
+                    r="50%"
+                  />
+                </svg>
+              </div>
+            </button>
+          </td>
+          <td
+            className=
+
+                {
+                  padding-bottom: 5px;
+                  padding-left: 5px;
+                  padding-right: 5px;
+                  padding-top: 5px;
+                }
+            role="presentation"
+          >
+            <button
+              aria-label="blue"
+              aria-selected={false}
+              className=
+                  ms-Button
+                  ms-Button--action
+                  ms-Button--command
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: #ffffff;
+                    border-radius: 100%;
+                    border: none;
+                    box-sizing: border-box;
+                    color: #333333;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 20px;
+                    outline: transparent;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                    width: 20px;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: -2px;
+                    left: -2px;
+                    outline-color: ButtonText;
+                    right: -2px;
+                    top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus::after {
+                    display: none;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid #666666;
+                  }
+                  &:hover, &:active, &:focus {
+                    background-color: #ffffff;
+                    border: 2px solid #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
+                  &:hover {
+                    color: #0078d4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                    color: Highlight;
+                  }
+                  &:active {
+                    color: #000000;
+                  }
+              data-index={2}
+              data-is-focusable={true}
+              id="swatchColorPicker0-c-2"
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseUp={[Function]}
+              role="gridcell"
+              title="blue"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: flex-start;
+                    }
+              >
+                <svg
+                  className=
+
+                      {
+                        border-radius: 100%;
+                        height: 100%;
+                        width: 100%;
+                      }
+                  fill="#0000ff"
+                  viewBox="0 0 20 20"
+                >
+                  <circle
+                    cx="50%"
+                    cy="50%"
+                    r="50%"
+                  />
+                </svg>
+              </div>
+            </button>
+          </td>
+          <td
+            className=
+
+                {
+                  padding-bottom: 5px;
+                  padding-left: 5px;
+                  padding-right: 5px;
+                  padding-top: 5px;
+                }
+            role="presentation"
+          >
+            <button
+              aria-label="red"
+              aria-selected={false}
+              className=
+                  ms-Button
+                  ms-Button--action
+                  ms-Button--command
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: #ffffff;
+                    border-radius: 100%;
+                    border: none;
+                    box-sizing: border-box;
+                    color: #333333;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 20px;
+                    outline: transparent;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                    width: 20px;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: -2px;
+                    left: -2px;
+                    outline-color: ButtonText;
+                    right: -2px;
+                    top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus::after {
+                    display: none;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid #666666;
+                  }
+                  &:hover, &:active, &:focus {
+                    background-color: #ffffff;
+                    border: 2px solid #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
+                  &:hover {
+                    color: #0078d4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                    color: Highlight;
+                  }
+                  &:active {
+                    color: #000000;
+                  }
+              data-index={3}
+              data-is-focusable={true}
+              id="swatchColorPicker0-d-3"
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseUp={[Function]}
+              role="gridcell"
+              title="red"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: flex-start;
+                    }
+              >
+                <svg
+                  className=
+
+                      {
+                        border-radius: 100%;
+                        height: 100%;
+                        width: 100%;
+                      }
+                  fill="#ff0000"
+                  viewBox="0 0 20 20"
+                >
+                  <circle
+                    cx="50%"
+                    cy="50%"
+                    r="50%"
+                  />
+                </svg>
+              </div>
+            </button>
+          </td>
+          <td
+            className=
+
+                {
+                  padding-bottom: 5px;
+                  padding-left: 5px;
+                  padding-right: 5px;
+                  padding-top: 5px;
+                }
+            role="presentation"
+          >
+            <button
+              aria-label="white"
+              aria-selected={false}
+              className=
+                  ms-Button
+                  ms-Button--action
+                  ms-Button--command
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: #eaeaea;
+                    border-radius: 100%;
+                    border: none;
+                    box-sizing: border-box;
+                    color: #333333;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 20px;
+                    outline: transparent;
+                    padding-bottom: 1px;
+                    padding-left: 1px;
+                    padding-right: 1px;
+                    padding-top: 1px;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                    width: 20px;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: -2px;
+                    left: -2px;
+                    outline-color: ButtonText;
+                    right: -2px;
+                    top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus::after {
+                    display: none;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid #666666;
+                  }
+                  &:hover, &:active, &:focus {
+                    background-color: #ffffff;
+                    border: 2px solid #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
+                  &:hover {
+                    color: #0078d4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                    color: Highlight;
+                  }
+                  &:active {
+                    color: #000000;
+                  }
+              data-index={4}
+              data-is-focusable={true}
+              id="swatchColorPicker0-e-4"
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseUp={[Function]}
+              role="gridcell"
+              title="white"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: flex-start;
+                    }
+              >
+                <svg
+                  className=
+
+                      {
+                        border-radius: 100%;
+                        height: 100%;
+                        width: 100%;
+                      }
+                  fill="#ffffff"
+                  viewBox="0 0 20 20"
+                >
+                  <circle
+                    cx="50%"
+                    cy="50%"
+                    r="50%"
+                  />
+                </svg>
+              </div>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    Simple square swatch color picker:
+  </div>
+  <div
+    className=
+        ms-FocusZone
+        ms-swatchColorPickerBodyContainer
+        {
+          clear: both;
+          display: block;
+          min-width: 180px;
+        }
+    data-focuszone-id="FocusZone20"
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+    role="presentation"
+  >
+    <table
+      className=
+
+          {
+            border-collapse: collapse;
+            margin-bottom: 8px;
+            margin-left: 0;
+            margin-right: 0;
+            margin-top: 8px;
+            outline: none;
+            padding-bottom: 2px;
+            padding-left: 2px;
+            padding-right: 2px;
+            padding-top: 2px;
+          }
+      id="id__19"
+      onBlur={[Function]}
+      role="grid"
+    >
+      <tbody>
+        <tr
+          role="row"
+        >
+          <td
+            className=
+
+                {
+                  padding-bottom: 5px;
+                  padding-left: 5px;
+                  padding-right: 5px;
+                  padding-top: 5px;
+                }
+            role="presentation"
+          >
+            <button
+              aria-label="green"
+              aria-selected={false}
+              className=
+                  ms-Button
+                  ms-Button--action
+                  ms-Button--command
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: #ffffff;
+                    border-radius: 0px;
+                    border: none;
+                    box-sizing: border-box;
+                    color: #333333;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 20px;
+                    outline: transparent;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                    width: 20px;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: -2px;
+                    left: -2px;
+                    outline-color: ButtonText;
+                    right: -2px;
+                    top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus::after {
+                    display: none;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid #666666;
+                  }
+                  &:hover, &:active, &:focus {
+                    background-color: #ffffff;
+                    border: 2px solid #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
+                  &:hover {
+                    color: #0078d4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                    color: Highlight;
+                  }
+                  &:active {
+                    color: #000000;
+                  }
+              data-index={0}
+              data-is-focusable={true}
+              id="swatchColorPicker18-a-0"
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseUp={[Function]}
+              role="gridcell"
+              title="green"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: flex-start;
+                    }
+              >
+                <svg
+                  className=
+
+                      {
+                        height: 100%;
+                        width: 100%;
+                      }
+                  fill="#00ff00"
+                  viewBox="0 0 20 20"
+                >
+                  <rect
+                    height="100%"
+                    width="100%"
+                  />
+                </svg>
+              </div>
+            </button>
+          </td>
+          <td
+            className=
+
+                {
+                  padding-bottom: 5px;
+                  padding-left: 5px;
+                  padding-right: 5px;
+                  padding-top: 5px;
+                }
+            role="presentation"
+          >
+            <button
+              aria-label="orange"
+              aria-selected={false}
+              className=
+                  ms-Button
+                  ms-Button--action
+                  ms-Button--command
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: #ffffff;
+                    border-radius: 0px;
+                    border: none;
+                    box-sizing: border-box;
+                    color: #333333;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 20px;
+                    outline: transparent;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                    width: 20px;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: -2px;
+                    left: -2px;
+                    outline-color: ButtonText;
+                    right: -2px;
+                    top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus::after {
+                    display: none;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid #666666;
+                  }
+                  &:hover, &:active, &:focus {
+                    background-color: #ffffff;
+                    border: 2px solid #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
+                  &:hover {
+                    color: #0078d4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                    color: Highlight;
+                  }
+                  &:active {
+                    color: #000000;
+                  }
+              data-index={1}
+              data-is-focusable={true}
+              id="swatchColorPicker18-b-1"
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseUp={[Function]}
+              role="gridcell"
+              title="orange"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: flex-start;
+                    }
+              >
+                <svg
+                  className=
+
+                      {
+                        height: 100%;
+                        width: 100%;
+                      }
+                  fill="#ffa500"
+                  viewBox="0 0 20 20"
+                >
+                  <rect
+                    height="100%"
+                    width="100%"
+                  />
+                </svg>
+              </div>
+            </button>
+          </td>
+          <td
+            className=
+
+                {
+                  padding-bottom: 5px;
+                  padding-left: 5px;
+                  padding-right: 5px;
+                  padding-top: 5px;
+                }
+            role="presentation"
+          >
+            <button
+              aria-label="blue"
+              aria-selected={false}
+              className=
+                  ms-Button
+                  ms-Button--action
+                  ms-Button--command
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: #ffffff;
+                    border-radius: 0px;
+                    border: none;
+                    box-sizing: border-box;
+                    color: #333333;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 20px;
+                    outline: transparent;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                    width: 20px;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: -2px;
+                    left: -2px;
+                    outline-color: ButtonText;
+                    right: -2px;
+                    top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus::after {
+                    display: none;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid #666666;
+                  }
+                  &:hover, &:active, &:focus {
+                    background-color: #ffffff;
+                    border: 2px solid #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
+                  &:hover {
+                    color: #0078d4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                    color: Highlight;
+                  }
+                  &:active {
+                    color: #000000;
+                  }
+              data-index={2}
+              data-is-focusable={true}
+              id="swatchColorPicker18-c-2"
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseUp={[Function]}
+              role="gridcell"
+              title="blue"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: flex-start;
+                    }
+              >
+                <svg
+                  className=
+
+                      {
+                        height: 100%;
+                        width: 100%;
+                      }
+                  fill="#0000ff"
+                  viewBox="0 0 20 20"
+                >
+                  <rect
+                    height="100%"
+                    width="100%"
+                  />
+                </svg>
+              </div>
+            </button>
+          </td>
+          <td
+            className=
+
+                {
+                  padding-bottom: 5px;
+                  padding-left: 5px;
+                  padding-right: 5px;
+                  padding-top: 5px;
+                }
+            role="presentation"
+          >
+            <button
+              aria-label="red"
+              aria-selected={false}
+              className=
+                  ms-Button
+                  ms-Button--action
+                  ms-Button--command
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: #ffffff;
+                    border-radius: 0px;
+                    border: none;
+                    box-sizing: border-box;
+                    color: #333333;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 20px;
+                    outline: transparent;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                    width: 20px;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: -2px;
+                    left: -2px;
+                    outline-color: ButtonText;
+                    right: -2px;
+                    top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus::after {
+                    display: none;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid #666666;
+                  }
+                  &:hover, &:active, &:focus {
+                    background-color: #ffffff;
+                    border: 2px solid #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
+                  &:hover {
+                    color: #0078d4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                    color: Highlight;
+                  }
+                  &:active {
+                    color: #000000;
+                  }
+              data-index={3}
+              data-is-focusable={true}
+              id="swatchColorPicker18-d-3"
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseUp={[Function]}
+              role="gridcell"
+              title="red"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: flex-start;
+                    }
+              >
+                <svg
+                  className=
+
+                      {
+                        height: 100%;
+                        width: 100%;
+                      }
+                  fill="#ff0000"
+                  viewBox="0 0 20 20"
+                >
+                  <rect
+                    height="100%"
+                    width="100%"
+                  />
+                </svg>
+              </div>
+            </button>
+          </td>
+          <td
+            className=
+
+                {
+                  padding-bottom: 5px;
+                  padding-left: 5px;
+                  padding-right: 5px;
+                  padding-top: 5px;
+                }
+            role="presentation"
+          >
+            <button
+              aria-label="white"
+              aria-selected={false}
+              className=
+                  ms-Button
+                  ms-Button--action
+                  ms-Button--command
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: #eaeaea;
+                    border-radius: 0px;
+                    border: none;
+                    box-sizing: border-box;
+                    color: #333333;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 20px;
+                    outline: transparent;
+                    padding-bottom: 1px;
+                    padding-left: 1px;
+                    padding-right: 1px;
+                    padding-top: 1px;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                    width: 20px;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: -2px;
+                    left: -2px;
+                    outline-color: ButtonText;
+                    right: -2px;
+                    top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus::after {
+                    display: none;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid #666666;
+                  }
+                  &:hover, &:active, &:focus {
+                    background-color: #ffffff;
+                    border: 2px solid #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
+                  &:hover {
+                    color: #0078d4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                    color: Highlight;
+                  }
+                  &:active {
+                    color: #000000;
+                  }
+              data-index={4}
+              data-is-focusable={true}
+              id="swatchColorPicker18-e-4"
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseUp={[Function]}
+              role="gridcell"
+              title="white"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: flex-start;
+                    }
+              >
+                <svg
+                  className=
+
+                      {
+                        height: 100%;
+                        width: 100%;
+                      }
+                  fill="#ffffff"
+                  viewBox="0 0 20 20"
+                >
+                  <rect
+                    height="100%"
+                    width="100%"
+                  />
+                </svg>
+              </div>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    Simple swatch color picker with multiple rows and larger cells that updates its icon color and shows a preview color:
+  </div>
+  <div
+    style={
+      Object {
+        "color": undefined,
+        "fontSize": "24px",
+      }
+    }
+  >
+    Sample Text
+  </div>
+  <div
+    className=
+        ms-FocusZone
+        ms-swatchColorPickerBodyContainer
+        {
+          clear: both;
+          display: block;
+          min-width: 180px;
+        }
+    data-focuszone-id="FocusZone38"
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+    role="presentation"
+  >
+    <table
+      className=
+
+          {
+            border-collapse: collapse;
+            margin-bottom: 8px;
+            margin-left: 0;
+            margin-right: 0;
+            margin-top: 8px;
+            outline: none;
+            padding-bottom: 2px;
+            padding-left: 2px;
+            padding-right: 2px;
+            padding-top: 2px;
+          }
+      id="id__37"
+      onBlur={[Function]}
+      role="grid"
+    >
+      <tbody>
+        <tr
+          role="row"
+        >
+          <td
+            className=
+
+                {
+                  padding-bottom: 5px;
+                  padding-left: 5px;
+                  padding-right: 5px;
+                  padding-top: 5px;
+                }
+            role="presentation"
+          >
+            <button
+              aria-label="green"
+              aria-selected={false}
+              className=
+                  ms-Button
+                  ms-Button--action
+                  ms-Button--command
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: #ffffff;
+                    border-radius: 100%;
+                    border: none;
+                    box-sizing: border-box;
+                    color: #333333;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 35px;
+                    outline: transparent;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                    width: 35px;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: -2px;
+                    left: -2px;
+                    outline-color: ButtonText;
+                    right: -2px;
+                    top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus::after {
+                    display: none;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid #666666;
+                  }
+                  &:hover, &:active, &:focus {
+                    background-color: #ffffff;
+                    border: 3px solid #eaeaea;
+                    padding-bottom: 3px;
+                    padding-left: 3px;
+                    padding-right: 3px;
+                    padding-top: 3px;
+                  }
+                  &:hover {
+                    color: #0078d4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                    color: Highlight;
+                  }
+                  &:active {
+                    color: #000000;
+                  }
+              data-index={0}
+              data-is-focusable={true}
+              id="swatchColorPicker36-a-0"
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseUp={[Function]}
+              role="gridcell"
+              title="green"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: flex-start;
+                    }
+              >
+                <svg
+                  className=
+
+                      {
+                        border-radius: 100%;
+                        height: 100%;
+                        width: 100%;
+                      }
+                  fill="#00ff00"
+                  viewBox="0 0 20 20"
+                >
+                  <circle
+                    cx="50%"
+                    cy="50%"
+                    r="50%"
+                  />
+                </svg>
+              </div>
+            </button>
+          </td>
+          <td
+            className=
+
+                {
+                  padding-bottom: 5px;
+                  padding-left: 5px;
+                  padding-right: 5px;
+                  padding-top: 5px;
+                }
+            role="presentation"
+          >
+            <button
+              aria-label="orange"
+              aria-selected={false}
+              className=
+                  ms-Button
+                  ms-Button--action
+                  ms-Button--command
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: #ffffff;
+                    border-radius: 100%;
+                    border: none;
+                    box-sizing: border-box;
+                    color: #333333;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 35px;
+                    outline: transparent;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                    width: 35px;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: -2px;
+                    left: -2px;
+                    outline-color: ButtonText;
+                    right: -2px;
+                    top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus::after {
+                    display: none;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid #666666;
+                  }
+                  &:hover, &:active, &:focus {
+                    background-color: #ffffff;
+                    border: 3px solid #eaeaea;
+                    padding-bottom: 3px;
+                    padding-left: 3px;
+                    padding-right: 3px;
+                    padding-top: 3px;
+                  }
+                  &:hover {
+                    color: #0078d4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                    color: Highlight;
+                  }
+                  &:active {
+                    color: #000000;
+                  }
+              data-index={1}
+              data-is-focusable={true}
+              id="swatchColorPicker36-b-1"
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseUp={[Function]}
+              role="gridcell"
+              title="orange"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: flex-start;
+                    }
+              >
+                <svg
+                  className=
+
+                      {
+                        border-radius: 100%;
+                        height: 100%;
+                        width: 100%;
+                      }
+                  fill="#ffa500"
+                  viewBox="0 0 20 20"
+                >
+                  <circle
+                    cx="50%"
+                    cy="50%"
+                    r="50%"
+                  />
+                </svg>
+              </div>
+            </button>
+          </td>
+          <td
+            className=
+
+                {
+                  padding-bottom: 5px;
+                  padding-left: 5px;
+                  padding-right: 5px;
+                  padding-top: 5px;
+                }
+            role="presentation"
+          >
+            <button
+              aria-label="blue"
+              aria-selected={false}
+              className=
+                  ms-Button
+                  ms-Button--action
+                  ms-Button--command
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: #ffffff;
+                    border-radius: 100%;
+                    border: none;
+                    box-sizing: border-box;
+                    color: #333333;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 35px;
+                    outline: transparent;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                    width: 35px;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: -2px;
+                    left: -2px;
+                    outline-color: ButtonText;
+                    right: -2px;
+                    top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus::after {
+                    display: none;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid #666666;
+                  }
+                  &:hover, &:active, &:focus {
+                    background-color: #ffffff;
+                    border: 3px solid #eaeaea;
+                    padding-bottom: 3px;
+                    padding-left: 3px;
+                    padding-right: 3px;
+                    padding-top: 3px;
+                  }
+                  &:hover {
+                    color: #0078d4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                    color: Highlight;
+                  }
+                  &:active {
+                    color: #000000;
+                  }
+              data-index={2}
+              data-is-focusable={true}
+              id="swatchColorPicker36-c-2"
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseUp={[Function]}
+              role="gridcell"
+              title="blue"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: flex-start;
+                    }
+              >
+                <svg
+                  className=
+
+                      {
+                        border-radius: 100%;
+                        height: 100%;
+                        width: 100%;
+                      }
+                  fill="#0000ff"
+                  viewBox="0 0 20 20"
+                >
+                  <circle
+                    cx="50%"
+                    cy="50%"
+                    r="50%"
+                  />
+                </svg>
+              </div>
+            </button>
+          </td>
+          <td
+            className=
+
+                {
+                  padding-bottom: 5px;
+                  padding-left: 5px;
+                  padding-right: 5px;
+                  padding-top: 5px;
+                }
+            role="presentation"
+          >
+            <button
+              aria-label="red"
+              aria-selected={false}
+              className=
+                  ms-Button
+                  ms-Button--action
+                  ms-Button--command
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: #ffffff;
+                    border-radius: 100%;
+                    border: none;
+                    box-sizing: border-box;
+                    color: #333333;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 35px;
+                    outline: transparent;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                    width: 35px;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: -2px;
+                    left: -2px;
+                    outline-color: ButtonText;
+                    right: -2px;
+                    top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus::after {
+                    display: none;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid #666666;
+                  }
+                  &:hover, &:active, &:focus {
+                    background-color: #ffffff;
+                    border: 3px solid #eaeaea;
+                    padding-bottom: 3px;
+                    padding-left: 3px;
+                    padding-right: 3px;
+                    padding-top: 3px;
+                  }
+                  &:hover {
+                    color: #0078d4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                    color: Highlight;
+                  }
+                  &:active {
+                    color: #000000;
+                  }
+              data-index={3}
+              data-is-focusable={true}
+              id="swatchColorPicker36-d-3"
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseUp={[Function]}
+              role="gridcell"
+              title="red"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: flex-start;
+                    }
+              >
+                <svg
+                  className=
+
+                      {
+                        border-radius: 100%;
+                        height: 100%;
+                        width: 100%;
+                      }
+                  fill="#ff0000"
+                  viewBox="0 0 20 20"
+                >
+                  <circle
+                    cx="50%"
+                    cy="50%"
+                    r="50%"
+                  />
+                </svg>
+              </div>
+            </button>
+          </td>
+        </tr>
+        <tr
+          role="row"
+        >
+          <td
+            className=
+
+                {
+                  padding-bottom: 5px;
+                  padding-left: 5px;
+                  padding-right: 5px;
+                  padding-top: 5px;
+                }
+            role="presentation"
+          >
+            <button
+              aria-label="green"
+              aria-selected={false}
+              className=
+                  ms-Button
+                  ms-Button--action
+                  ms-Button--command
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: #ffffff;
+                    border-radius: 100%;
+                    border: none;
+                    box-sizing: border-box;
+                    color: #333333;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 35px;
+                    outline: transparent;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                    width: 35px;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: -2px;
+                    left: -2px;
+                    outline-color: ButtonText;
+                    right: -2px;
+                    top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus::after {
+                    display: none;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid #666666;
+                  }
+                  &:hover, &:active, &:focus {
+                    background-color: #ffffff;
+                    border: 3px solid #eaeaea;
+                    padding-bottom: 3px;
+                    padding-left: 3px;
+                    padding-right: 3px;
+                    padding-top: 3px;
+                  }
+                  &:hover {
+                    color: #0078d4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                    color: Highlight;
+                  }
+                  &:active {
+                    color: #000000;
+                  }
+              data-index={4}
+              data-is-focusable={true}
+              id="swatchColorPicker36-g-4"
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseUp={[Function]}
+              role="gridcell"
+              title="green"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: flex-start;
+                    }
+              >
+                <svg
+                  className=
+
+                      {
+                        border-radius: 100%;
+                        height: 100%;
+                        width: 100%;
+                      }
+                  fill="green"
+                  viewBox="0 0 20 20"
+                >
+                  <circle
+                    cx="50%"
+                    cy="50%"
+                    r="50%"
+                  />
+                </svg>
+              </div>
+            </button>
+          </td>
+          <td
+            className=
+
+                {
+                  padding-bottom: 5px;
+                  padding-left: 5px;
+                  padding-right: 5px;
+                  padding-top: 5px;
+                }
+            role="presentation"
+          >
+            <button
+              aria-label="orange"
+              aria-selected={false}
+              className=
+                  ms-Button
+                  ms-Button--action
+                  ms-Button--command
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: #ffffff;
+                    border-radius: 100%;
+                    border: none;
+                    box-sizing: border-box;
+                    color: #333333;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 35px;
+                    outline: transparent;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                    width: 35px;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: -2px;
+                    left: -2px;
+                    outline-color: ButtonText;
+                    right: -2px;
+                    top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus::after {
+                    display: none;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid #666666;
+                  }
+                  &:hover, &:active, &:focus {
+                    background-color: #ffffff;
+                    border: 3px solid #eaeaea;
+                    padding-bottom: 3px;
+                    padding-left: 3px;
+                    padding-right: 3px;
+                    padding-top: 3px;
+                  }
+                  &:hover {
+                    color: #0078d4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                    color: Highlight;
+                  }
+                  &:active {
+                    color: #000000;
+                  }
+              data-index={5}
+              data-is-focusable={true}
+              id="swatchColorPicker36-h-5"
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseUp={[Function]}
+              role="gridcell"
+              title="orange"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: flex-start;
+                    }
+              >
+                <svg
+                  className=
+
+                      {
+                        border-radius: 100%;
+                        height: 100%;
+                        width: 100%;
+                      }
+                  fill="orange"
+                  viewBox="0 0 20 20"
+                >
+                  <circle
+                    cx="50%"
+                    cy="50%"
+                    r="50%"
+                  />
+                </svg>
+              </div>
+            </button>
+          </td>
+          <td
+            className=
+
+                {
+                  padding-bottom: 5px;
+                  padding-left: 5px;
+                  padding-right: 5px;
+                  padding-top: 5px;
+                }
+            role="presentation"
+          >
+            <button
+              aria-label="blue"
+              aria-selected={false}
+              className=
+                  ms-Button
+                  ms-Button--action
+                  ms-Button--command
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: #ffffff;
+                    border-radius: 100%;
+                    border: none;
+                    box-sizing: border-box;
+                    color: #333333;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 35px;
+                    outline: transparent;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                    width: 35px;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: -2px;
+                    left: -2px;
+                    outline-color: ButtonText;
+                    right: -2px;
+                    top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus::after {
+                    display: none;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid #666666;
+                  }
+                  &:hover, &:active, &:focus {
+                    background-color: #ffffff;
+                    border: 3px solid #eaeaea;
+                    padding-bottom: 3px;
+                    padding-left: 3px;
+                    padding-right: 3px;
+                    padding-top: 3px;
+                  }
+                  &:hover {
+                    color: #0078d4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                    color: Highlight;
+                  }
+                  &:active {
+                    color: #000000;
+                  }
+              data-index={6}
+              data-is-focusable={true}
+              id="swatchColorPicker36-i-6"
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseUp={[Function]}
+              role="gridcell"
+              title="blue"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: flex-start;
+                    }
+              >
+                <svg
+                  className=
+
+                      {
+                        border-radius: 100%;
+                        height: 100%;
+                        width: 100%;
+                      }
+                  fill="blue"
+                  viewBox="0 0 20 20"
+                >
+                  <circle
+                    cx="50%"
+                    cy="50%"
+                    r="50%"
+                  />
+                </svg>
+              </div>
+            </button>
+          </td>
+          <td
+            className=
+
+                {
+                  padding-bottom: 5px;
+                  padding-left: 5px;
+                  padding-right: 5px;
+                  padding-top: 5px;
+                }
+            role="presentation"
+          >
+            <button
+              aria-label="red"
+              aria-selected={false}
+              className=
+                  ms-Button
+                  ms-Button--action
+                  ms-Button--command
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: #ffffff;
+                    border-radius: 100%;
+                    border: none;
+                    box-sizing: border-box;
+                    color: #333333;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 35px;
+                    outline: transparent;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                    width: 35px;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: -2px;
+                    left: -2px;
+                    outline-color: ButtonText;
+                    right: -2px;
+                    top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus::after {
+                    display: none;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid #666666;
+                  }
+                  &:hover, &:active, &:focus {
+                    background-color: #ffffff;
+                    border: 3px solid #eaeaea;
+                    padding-bottom: 3px;
+                    padding-left: 3px;
+                    padding-right: 3px;
+                    padding-top: 3px;
+                  }
+                  &:hover {
+                    color: #0078d4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                    color: Highlight;
+                  }
+                  &:active {
+                    color: #000000;
+                  }
+              data-index={7}
+              data-is-focusable={true}
+              id="swatchColorPicker36-j-7"
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseUp={[Function]}
+              role="gridcell"
+              title="red"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: flex-start;
+                    }
+              >
+                <svg
+                  className=
+
+                      {
+                        border-radius: 100%;
+                        height: 100%;
+                        width: 100%;
+                      }
+                  fill="red"
+                  viewBox="0 0 20 20"
+                >
+                  <circle
+                    cx="50%"
+                    cy="50%"
+                    r="50%"
+                  />
+                </svg>
+              </div>
+            </button>
+          </td>
+        </tr>
+        <tr
+          role="row"
+        >
+          <td
+            className=
+
+                {
+                  padding-bottom: 5px;
+                  padding-left: 5px;
+                  padding-right: 5px;
+                  padding-top: 5px;
+                }
+            role="presentation"
+          >
+            <button
+              aria-label="black"
+              aria-selected={false}
+              className=
+                  ms-Button
+                  ms-Button--action
+                  ms-Button--command
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: #ffffff;
+                    border-radius: 100%;
+                    border: none;
+                    box-sizing: border-box;
+                    color: #333333;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 35px;
+                    outline: transparent;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                    width: 35px;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: -2px;
+                    left: -2px;
+                    outline-color: ButtonText;
+                    right: -2px;
+                    top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus::after {
+                    display: none;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid #666666;
+                  }
+                  &:hover, &:active, &:focus {
+                    background-color: #ffffff;
+                    border: 3px solid #eaeaea;
+                    padding-bottom: 3px;
+                    padding-left: 3px;
+                    padding-right: 3px;
+                    padding-top: 3px;
+                  }
+                  &:hover {
+                    color: #0078d4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                    color: Highlight;
+                  }
+                  &:active {
+                    color: #000000;
+                  }
+              data-index={8}
+              data-is-focusable={true}
+              id="swatchColorPicker36-k-8"
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseUp={[Function]}
+              role="gridcell"
+              title="black"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: flex-start;
+                    }
+              >
+                <svg
+                  className=
+
+                      {
+                        border-radius: 100%;
+                        height: 100%;
+                        width: 100%;
+                      }
+                  fill="black"
+                  viewBox="0 0 20 20"
+                >
+                  <circle
+                    cx="50%"
+                    cy="50%"
+                    r="50%"
+                  />
+                </svg>
+              </div>
+            </button>
+          </td>
+          <td
+            className=
+
+                {
+                  padding-bottom: 5px;
+                  padding-left: 5px;
+                  padding-right: 5px;
+                  padding-top: 5px;
+                }
+            role="presentation"
+          >
+            <button
+              aria-label="grey"
+              aria-selected={false}
+              className=
+                  ms-Button
+                  ms-Button--action
+                  ms-Button--command
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: #ffffff;
+                    border-radius: 100%;
+                    border: none;
+                    box-sizing: border-box;
+                    color: #333333;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 35px;
+                    outline: transparent;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                    width: 35px;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: -2px;
+                    left: -2px;
+                    outline-color: ButtonText;
+                    right: -2px;
+                    top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus::after {
+                    display: none;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid #666666;
+                  }
+                  &:hover, &:active, &:focus {
+                    background-color: #ffffff;
+                    border: 3px solid #eaeaea;
+                    padding-bottom: 3px;
+                    padding-left: 3px;
+                    padding-right: 3px;
+                    padding-top: 3px;
+                  }
+                  &:hover {
+                    color: #0078d4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                    color: Highlight;
+                  }
+                  &:active {
+                    color: #000000;
+                  }
+              data-index={9}
+              data-is-focusable={true}
+              id="swatchColorPicker36-l-9"
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseUp={[Function]}
+              role="gridcell"
+              title="grey"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: flex-start;
+                    }
+              >
+                <svg
+                  className=
+
+                      {
+                        border-radius: 100%;
+                        height: 100%;
+                        width: 100%;
+                      }
+                  fill="grey"
+                  viewBox="0 0 20 20"
+                >
+                  <circle
+                    cx="50%"
+                    cy="50%"
+                    r="50%"
+                  />
+                </svg>
+              </div>
+            </button>
+          </td>
+          <td
+            className=
+
+                {
+                  padding-bottom: 5px;
+                  padding-left: 5px;
+                  padding-right: 5px;
+                  padding-top: 5px;
+                }
+            role="presentation"
+          >
+            <button
+              aria-label="purple"
+              aria-selected={false}
+              className=
+                  ms-Button
+                  ms-Button--action
+                  ms-Button--command
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: #ffffff;
+                    border-radius: 100%;
+                    border: none;
+                    box-sizing: border-box;
+                    color: #333333;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 35px;
+                    outline: transparent;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                    width: 35px;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: -2px;
+                    left: -2px;
+                    outline-color: ButtonText;
+                    right: -2px;
+                    top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus::after {
+                    display: none;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid #666666;
+                  }
+                  &:hover, &:active, &:focus {
+                    background-color: #ffffff;
+                    border: 3px solid #eaeaea;
+                    padding-bottom: 3px;
+                    padding-left: 3px;
+                    padding-right: 3px;
+                    padding-top: 3px;
+                  }
+                  &:hover {
+                    color: #0078d4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                    color: Highlight;
+                  }
+                  &:active {
+                    color: #000000;
+                  }
+              data-index={10}
+              data-is-focusable={true}
+              id="swatchColorPicker36-m-10"
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseUp={[Function]}
+              role="gridcell"
+              title="purple"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: flex-start;
+                    }
+              >
+                <svg
+                  className=
+
+                      {
+                        border-radius: 100%;
+                        height: 100%;
+                        width: 100%;
+                      }
+                  fill="purple"
+                  viewBox="0 0 20 20"
+                >
+                  <circle
+                    cx="50%"
+                    cy="50%"
+                    r="50%"
+                  />
+                </svg>
+              </div>
+            </button>
+          </td>
+          <td
+            className=
+
+                {
+                  padding-bottom: 5px;
+                  padding-left: 5px;
+                  padding-right: 5px;
+                  padding-top: 5px;
+                }
+            role="presentation"
+          >
+            <button
+              aria-label="yellow"
+              aria-selected={false}
+              className=
+                  ms-Button
+                  ms-Button--action
+                  ms-Button--command
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: #ffffff;
+                    border-radius: 100%;
+                    border: none;
+                    box-sizing: border-box;
+                    color: #333333;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 35px;
+                    outline: transparent;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                    width: 35px;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: -2px;
+                    left: -2px;
+                    outline-color: ButtonText;
+                    right: -2px;
+                    top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus::after {
+                    display: none;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid #666666;
+                  }
+                  &:hover, &:active, &:focus {
+                    background-color: #ffffff;
+                    border: 3px solid #eaeaea;
+                    padding-bottom: 3px;
+                    padding-left: 3px;
+                    padding-right: 3px;
+                    padding-top: 3px;
+                  }
+                  &:hover {
+                    color: #0078d4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                    color: Highlight;
+                  }
+                  &:active {
+                    color: #000000;
+                  }
+              data-index={11}
+              data-is-focusable={true}
+              id="swatchColorPicker36-n-11"
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseUp={[Function]}
+              role="gridcell"
+              title="yellow"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: flex-start;
+                    }
+              >
+                <svg
+                  className=
+
+                      {
+                        border-radius: 100%;
+                        height: 100%;
+                        width: 100%;
+                      }
+                  fill="yellow"
+                  viewBox="0 0 20 20"
+                >
+                  <circle
+                    cx="50%"
+                    cy="50%"
+                    r="50%"
+                  />
+                </svg>
+              </div>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    Simple disabled circle swatch color picker:
+  </div>
+  <div
+    className=
+        ms-FocusZone
+        ms-swatchColorPickerBodyContainer
+        {
+          clear: both;
+          display: block;
+          min-width: 180px;
+        }
+    data-focuszone-id="FocusZone77"
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+    role="presentation"
+  >
+    <table
+      className=
+
+          {
+            border-collapse: collapse;
+            margin-bottom: 8px;
+            margin-left: 0;
+            margin-right: 0;
+            margin-top: 8px;
+            outline: none;
+            padding-bottom: 2px;
+            padding-left: 2px;
+            padding-right: 2px;
+            padding-top: 2px;
+          }
+      id="id__76"
+      onBlur={[Function]}
+      role="grid"
+    >
+      <tbody>
+        <tr
+          role="row"
+        >
+          <td
+            className=
+
+                {
+                  padding-bottom: 5px;
+                  padding-left: 5px;
+                  padding-right: 5px;
+                  padding-top: 5px;
+                }
+            role="presentation"
+          >
+            <button
+              aria-disabled={true}
+              aria-label="green"
+              aria-selected={false}
+              className=
+                  ms-Button
+                  ms-Button--action
+                  ms-Button--command
+                  undefined
+                  is-disabled
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: transparent;
+                    border-radius: 100%;
+                    border: none;
+                    box-sizing: border-box;
+                    color: #a6a6a6;
+                    cursor: default;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 20px;
+                    opacity: 0.3;
+                    outline: transparent;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    pointer-events: none;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                    width: 20px;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: -2px;
+                    left: -2px;
+                    outline-color: ButtonText;
+                    right: -2px;
+                    top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus::after {
+                    display: none;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid #666666;
+                  }
+                  &:hover, &:active, &:focus {
+                    background-color: #ffffff;
+                    border: 2px solid #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
+                  &:hover {
+                    outline: 0px;
+                  }
+                  &:focus {
+                    outline: 0px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    bordercolor: grayText;
+                    color: grayText;
+                  }
+              data-index={0}
+              data-is-focusable={false}
+              disabled={true}
+              id="swatchColorPicker75-a-0"
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseUp={[Function]}
+              role="gridcell"
+              title="green"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: flex-start;
+                    }
+              >
+                <svg
+                  className=
+
+                      {
+                        border-radius: 100%;
+                        height: 100%;
+                        width: 100%;
+                      }
+                  fill="#00ff00"
+                  viewBox="0 0 20 20"
+                >
+                  <circle
+                    cx="50%"
+                    cy="50%"
+                    r="50%"
+                  />
+                </svg>
+              </div>
+            </button>
+          </td>
+          <td
+            className=
+
+                {
+                  padding-bottom: 5px;
+                  padding-left: 5px;
+                  padding-right: 5px;
+                  padding-top: 5px;
+                }
+            role="presentation"
+          >
+            <button
+              aria-disabled={true}
+              aria-label="orange"
+              aria-selected={false}
+              className=
+                  ms-Button
+                  ms-Button--action
+                  ms-Button--command
+                  undefined
+                  is-disabled
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: transparent;
+                    border-radius: 100%;
+                    border: none;
+                    box-sizing: border-box;
+                    color: #a6a6a6;
+                    cursor: default;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 20px;
+                    opacity: 0.3;
+                    outline: transparent;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    pointer-events: none;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                    width: 20px;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: -2px;
+                    left: -2px;
+                    outline-color: ButtonText;
+                    right: -2px;
+                    top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus::after {
+                    display: none;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid #666666;
+                  }
+                  &:hover, &:active, &:focus {
+                    background-color: #ffffff;
+                    border: 2px solid #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
+                  &:hover {
+                    outline: 0px;
+                  }
+                  &:focus {
+                    outline: 0px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    bordercolor: grayText;
+                    color: grayText;
+                  }
+              data-index={1}
+              data-is-focusable={false}
+              disabled={true}
+              id="swatchColorPicker75-b-1"
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseUp={[Function]}
+              role="gridcell"
+              title="orange"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: flex-start;
+                    }
+              >
+                <svg
+                  className=
+
+                      {
+                        border-radius: 100%;
+                        height: 100%;
+                        width: 100%;
+                      }
+                  fill="#ffa500"
+                  viewBox="0 0 20 20"
+                >
+                  <circle
+                    cx="50%"
+                    cy="50%"
+                    r="50%"
+                  />
+                </svg>
+              </div>
+            </button>
+          </td>
+          <td
+            className=
+
+                {
+                  padding-bottom: 5px;
+                  padding-left: 5px;
+                  padding-right: 5px;
+                  padding-top: 5px;
+                }
+            role="presentation"
+          >
+            <button
+              aria-disabled={true}
+              aria-label="blue"
+              aria-selected={false}
+              className=
+                  ms-Button
+                  ms-Button--action
+                  ms-Button--command
+                  undefined
+                  is-disabled
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: transparent;
+                    border-radius: 100%;
+                    border: none;
+                    box-sizing: border-box;
+                    color: #a6a6a6;
+                    cursor: default;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 20px;
+                    opacity: 0.3;
+                    outline: transparent;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    pointer-events: none;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                    width: 20px;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: -2px;
+                    left: -2px;
+                    outline-color: ButtonText;
+                    right: -2px;
+                    top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus::after {
+                    display: none;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid #666666;
+                  }
+                  &:hover, &:active, &:focus {
+                    background-color: #ffffff;
+                    border: 2px solid #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
+                  &:hover {
+                    outline: 0px;
+                  }
+                  &:focus {
+                    outline: 0px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    bordercolor: grayText;
+                    color: grayText;
+                  }
+              data-index={2}
+              data-is-focusable={false}
+              disabled={true}
+              id="swatchColorPicker75-c-2"
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseUp={[Function]}
+              role="gridcell"
+              title="blue"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: flex-start;
+                    }
+              >
+                <svg
+                  className=
+
+                      {
+                        border-radius: 100%;
+                        height: 100%;
+                        width: 100%;
+                      }
+                  fill="#0000ff"
+                  viewBox="0 0 20 20"
+                >
+                  <circle
+                    cx="50%"
+                    cy="50%"
+                    r="50%"
+                  />
+                </svg>
+              </div>
+            </button>
+          </td>
+          <td
+            className=
+
+                {
+                  padding-bottom: 5px;
+                  padding-left: 5px;
+                  padding-right: 5px;
+                  padding-top: 5px;
+                }
+            role="presentation"
+          >
+            <button
+              aria-disabled={true}
+              aria-label="red"
+              aria-selected={false}
+              className=
+                  ms-Button
+                  ms-Button--action
+                  ms-Button--command
+                  undefined
+                  is-disabled
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: transparent;
+                    border-radius: 100%;
+                    border: none;
+                    box-sizing: border-box;
+                    color: #a6a6a6;
+                    cursor: default;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 20px;
+                    opacity: 0.3;
+                    outline: transparent;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    pointer-events: none;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                    width: 20px;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: -2px;
+                    left: -2px;
+                    outline-color: ButtonText;
+                    right: -2px;
+                    top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus::after {
+                    display: none;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid #666666;
+                  }
+                  &:hover, &:active, &:focus {
+                    background-color: #ffffff;
+                    border: 2px solid #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
+                  &:hover {
+                    outline: 0px;
+                  }
+                  &:focus {
+                    outline: 0px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    bordercolor: grayText;
+                    color: grayText;
+                  }
+              data-index={3}
+              data-is-focusable={false}
+              disabled={true}
+              id="swatchColorPicker75-d-3"
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseUp={[Function]}
+              role="gridcell"
+              title="red"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: flex-start;
+                    }
+              >
+                <svg
+                  className=
+
+                      {
+                        border-radius: 100%;
+                        height: 100%;
+                        width: 100%;
+                      }
+                  fill="#ff0000"
+                  viewBox="0 0 20 20"
+                >
+                  <circle
+                    cx="50%"
+                    cy="50%"
+                    r="50%"
+                  />
+                </svg>
+              </div>
+            </button>
+          </td>
+          <td
+            className=
+
+                {
+                  padding-bottom: 5px;
+                  padding-left: 5px;
+                  padding-right: 5px;
+                  padding-top: 5px;
+                }
+            role="presentation"
+          >
+            <button
+              aria-disabled={true}
+              aria-label="white"
+              aria-selected={false}
+              className=
+                  ms-Button
+                  ms-Button--action
+                  ms-Button--command
+                  undefined
+                  is-disabled
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: transparent;
+                    border-radius: 100%;
+                    border: none;
+                    box-sizing: border-box;
+                    color: #a6a6a6;
+                    cursor: default;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 20px;
+                    opacity: 0.3;
+                    outline: transparent;
+                    padding-bottom: 1px;
+                    padding-left: 1px;
+                    padding-right: 1px;
+                    padding-top: 1px;
+                    pointer-events: none;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                    width: 20px;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: -2px;
+                    left: -2px;
+                    outline-color: ButtonText;
+                    right: -2px;
+                    top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus::after {
+                    display: none;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid #666666;
+                  }
+                  &:hover, &:active, &:focus {
+                    background-color: #ffffff;
+                    border: 2px solid #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
+                  &:hover {
+                    outline: 0px;
+                  }
+                  &:focus {
+                    outline: 0px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    bordercolor: grayText;
+                    color: grayText;
+                  }
+              data-index={4}
+              data-is-focusable={false}
+              disabled={true}
+              id="swatchColorPicker75-e-4"
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseUp={[Function]}
+              role="gridcell"
+              title="white"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: flex-start;
+                    }
+              >
+                <svg
+                  className=
+
+                      {
+                        border-radius: 100%;
+                        height: 100%;
+                        width: 100%;
+                      }
+                  fill="#ffffff"
+                  viewBox="0 0 20 20"
+                >
+                  <circle
+                    cx="50%"
+                    cy="50%"
+                    r="50%"
+                  />
+                </svg>
+              </div>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;

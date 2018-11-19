@@ -1,6 +1,7 @@
-module.exports = function (options) {
+module.exports = function(options) {
   const glob = require('glob');
   const path = require('path');
+  const requireResolveCwd = require('../require-resolve-cwd');
 
   const _fileNameToClassMap = {};
 
@@ -12,7 +13,6 @@ module.exports = function (options) {
     const files = glob.sync(path.resolve(process.cwd(), 'src/**/*.scss'));
 
     if (files.length) {
-      const execSync = require('../exec-sync');
       const sass = require('node-sass');
       const fs = require('fs');
       const postcss = require('postcss');
@@ -23,34 +23,34 @@ module.exports = function (options) {
       });
 
       files.forEach(fileName => {
-
         fileName = path.resolve(fileName);
 
-        promises.push(new Promise((resolve, reject) => {
-          sass.render(
-            {
-              file: fileName,
-              outputStyle: 'compressed',
-              importer: patchSassUrl,
-              includePaths: [
-                path.resolve(process.cwd(), 'node_modules')
-              ]
-            },
-            (err, result) => {
-              if (err) {
-                reject(path.relative(process.cwd(), fileName) + ': ' + err);
-              } else {
-                const css = result.css.toString();
+        promises.push(
+          new Promise((resolve, reject) => {
+            sass.render(
+              {
+                file: fileName,
+                outputStyle: 'compressed',
+                importer: patchSassUrl,
+                includePaths: [path.resolve(process.cwd(), 'node_modules')]
+              },
+              (err, result) => {
+                if (err) {
+                  reject(path.relative(process.cwd(), fileName) + ': ' + err);
+                } else {
+                  const css = result.css.toString();
 
-                postcss([autoprefixer, modules])
-                  .process(css, { from: fileName })
-                  .then(result => {
-                    fs.writeFileSync(fileName + '.ts', createTypeScriptModule(fileName, result.css));
-                    resolve();
-                  });
+                  postcss([autoprefixer, modules])
+                    .process(css, { from: fileName })
+                    .then(result => {
+                      fs.writeFileSync(fileName + '.ts', createTypeScriptModule(fileName, result.css));
+                      resolve();
+                    });
+                }
               }
-            });
-        }));
+            );
+          })
+        );
       });
     }
 
@@ -60,7 +60,15 @@ module.exports = function (options) {
   function generateScopedName(name, fileName, css) {
     const crypto = require('crypto');
 
-    return name + '_' + crypto.createHmac('sha1', fileName).update(css).digest('hex').substring(0, 8);
+    return (
+      name +
+      '_' +
+      crypto
+        .createHmac('sha1', fileName)
+        .update(css)
+        .digest('hex')
+        .substring(0, 8)
+    );
   }
 
   function getJSON(cssFileName, json) {
@@ -68,7 +76,7 @@ module.exports = function (options) {
   }
 
   function createTypeScriptModule(fileName, css) {
-    const { splitStyles } = require("@microsoft/load-themed-styles");
+    const { splitStyles } = require('@microsoft/load-themed-styles');
 
     // Create a source file.
     const source = [
@@ -86,13 +94,23 @@ module.exports = function (options) {
     return source.join('\n');
   }
 
+  function requireResolvePackageUrl(packageUrl) {
+    const fullName = packageUrl + (packageUrl.endsWith('.scss') ? '' : '.scss');
+
+    try {
+      return requireResolveCwd(fullName);
+    } catch (e) {
+      // try again with a private reference
+      return requireResolveCwd(path.join(path.dirname(fullName), `_${path.basename(fullName)}`));
+    }
+  }
+
   function patchSassUrl(url, prev, done) {
     let newUrl = url;
 
     if (url[0] === '~') {
-      newUrl = path.resolve(process.cwd(), 'node_modules', url.substr(1));
-    }
-    else if (url === 'stdin') {
+      newUrl = requireResolvePackageUrl(url.substr(1));
+    } else if (url === 'stdin') {
       newUrl = '';
     }
 

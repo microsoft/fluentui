@@ -1,17 +1,16 @@
-
 import * as React from 'react';
-import {
-  TilesList,
-  ITilesGridItem,
-  ITilesGridSegment
-} from '../../TilesList';
-import { Tile } from '../../../Tile';
+import { TilesList, ITilesGridItem, ITilesGridSegment } from '@uifabric/experiments/lib/TilesList';
+import { Tile, ShimmerTile } from '@uifabric/experiments/lib/Tile';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { Selection, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
-import { IExampleGroup, IExampleItem, createGroup, createDocumentItems, getTileCells } from './ExampleHelpers';
+import { IExampleGroup, IExampleItem, createGroup, createDocumentItems, getTileCells, createShimmerGroups } from './ExampleHelpers';
+import { ISize } from '@uifabric/experiments/lib/Utilities';
+import { ShimmerElementType as ElemType, ShimmerElementsGroup } from '@uifabric/experiments/lib/Shimmer';
+
+const HEADER_VERTICAL_PADDING = 13;
+const HEADER_FONT_SIZE = 18;
 
 function createGroups(): IExampleGroup[] {
   let offset = 0;
@@ -31,21 +30,28 @@ function createGroups(): IExampleGroup[] {
 
 const GROUPS = createGroups();
 
-const ITEMS = ([] as IExampleItem[]).concat(...GROUPS.map((group: { items: IExampleItem[]; }) => group.items));
+const SHIMMER_GROUPS = createShimmerGroups('document', 0);
 
-declare class TilesListClass extends TilesList<IExampleItem> { }
+const ITEMS = ([] as IExampleItem[]).concat(...GROUPS.map((group: { items: IExampleItem[] }) => group.items));
+
+declare class TilesListClass extends TilesList<IExampleItem> {}
 
 const TilesListType: typeof TilesListClass = TilesList;
 
 export interface ITilesListDocumentExampleState {
   isModalSelection: boolean;
+  isDataLoaded: boolean;
   cells: (ITilesGridItem<IExampleItem> | ITilesGridSegment<IExampleItem>)[];
 }
 
-export class TilesListDocumentExample extends React.Component<{}, ITilesListDocumentExampleState> {
+export interface ITilesListDocumentExampleProps {
+  tileSize: 'large' | 'small';
+}
+
+export class TilesListDocumentExample extends React.Component<ITilesListDocumentExampleProps, ITilesListDocumentExampleState> {
   private _selection: Selection;
 
-  constructor(props: {}) {
+  constructor(props: ITilesListDocumentExampleProps) {
     super(props);
 
     this._selection = new Selection({
@@ -57,99 +63,173 @@ export class TilesListDocumentExample extends React.Component<{}, ITilesListDocu
 
     this.state = {
       isModalSelection: this._selection.isModal(),
-      cells: getTileCells(GROUPS, {
-        onRenderCell: this._onRenderDocumentCell,
-        onRenderHeader: this._onRenderHeader
+      isDataLoaded: false,
+      cells: getTileCells(SHIMMER_GROUPS, {
+        onRenderCell: this._onRenderShimmerCell,
+        onRenderHeader: this._onRenderShimmerHeader,
+        size: props.tileSize,
+        shimmerMode: true
       })
     };
+  }
+
+  public componentDidUpdate(previousProps: ITilesListDocumentExampleProps): void {
+    const { isDataLoaded } = this.state;
+    if (this.props.tileSize !== previousProps.tileSize) {
+      if (!isDataLoaded) {
+        this.setState({
+          cells: getTileCells(SHIMMER_GROUPS, {
+            onRenderCell: this._onRenderShimmerCell,
+            onRenderHeader: this._onRenderShimmerHeader,
+            size: this.props.tileSize,
+            shimmerMode: true
+          })
+        });
+      } else {
+        this.setState({
+          cells: getTileCells(GROUPS, {
+            onRenderCell: this._onRenderDocumentCell,
+            onRenderHeader: this._onRenderHeader,
+            size: this.props.tileSize
+          })
+        });
+      }
+    }
   }
 
   public render(): JSX.Element {
     return (
       // tslint:disable-next-line:jsx-ban-props
-      <div style={ { padding: '4px' } }>
+      <div style={{ padding: '4px' }}>
         <Toggle
-          label='Enable Modal Selection'
-          checked={ this.state.isModalSelection }
-          onChanged={ this._onToggleIsModalSelection }
-          onText='Modal'
-          offText='Normal'
+          label="Enable Modal Selection"
+          checked={this.state.isModalSelection}
+          onChange={this._onToggleIsModalSelection}
+          onText="Modal"
+          offText="Normal"
         />
-        <MarqueeSelection selection={ this._selection }>
-          <SelectionZone
-            selection={ this._selection }
-            onItemInvoked={ this._onItemInvoked }
-            enterModalOnTouch={ true }
-          >
-            <TilesListType
-              role='list'
-              items={ this.state.cells }
-            />
+        <Toggle
+          label="Load Data Switch"
+          checked={this.state.isDataLoaded}
+          onChange={this._onToggleIsDataLoaded}
+          onText="Loaded"
+          offText="Loading..."
+        />
+        <MarqueeSelection selection={this._selection}>
+          <SelectionZone selection={this._selection} onItemInvoked={this._onItemInvoked} enterModalOnTouch={true}>
+            <TilesListType role="list" items={this.state.cells} />
           </SelectionZone>
         </MarqueeSelection>
       </div>
     );
   }
 
-  @autobind
-  private _onToggleIsModalSelection(checked: boolean): void {
+  private _onToggleIsModalSelection = (event: React.MouseEvent<HTMLElement>, checked: boolean): void => {
     this._selection.setModal(checked);
-  }
+  };
 
-  @autobind
-  private _onSelectionChange(): void {
+  private _onToggleIsDataLoaded = (event: React.MouseEvent<HTMLElement>, checked: boolean): void => {
+    const { tileSize } = this.props;
+    const { isDataLoaded } = this.state;
+    let { cells } = this.state;
+
+    if (cells.length && !cells[0].isPlaceholder) {
+      cells = getTileCells(SHIMMER_GROUPS, {
+        onRenderCell: this._onRenderShimmerCell,
+        onRenderHeader: this._onRenderShimmerHeader,
+        shimmerMode: true,
+        size: tileSize
+      });
+    } else {
+      cells = getTileCells(GROUPS, {
+        onRenderCell: this._onRenderDocumentCell,
+        onRenderHeader: this._onRenderHeader,
+        size: tileSize
+      });
+    }
+
+    this.setState({
+      isDataLoaded: !isDataLoaded,
+      cells: cells
+    });
+  };
+
+  private _onSelectionChange = (): void => {
     this.setState({
       isModalSelection: this._selection.isModal()
     });
-  }
+  };
 
-  @autobind
-  private _onItemInvoked(item: IExampleItem, index: number, event: Event): void {
+  private _onItemInvoked = (item: IExampleItem, index: number, event: Event): void => {
     event.stopPropagation();
     event.preventDefault();
 
     alert(`Invoked item '${item.name}'`);
-  }
+  };
 
-  @autobind
-  private _onRenderDocumentCell(item: IExampleItem): JSX.Element {
+  private _onRenderDocumentCell = (item: IExampleItem): JSX.Element => {
+    const { tileSize } = this.props;
+    const imgSize = tileSize === 'large' ? 64 : 48;
+
     return (
       <Tile
-        role='listitem'
-        aria-setsize={ ITEMS.length }
-        aria-posinset={ item.index }
-        className={ AnimationClassNames.fadeIn400 }
-        selection={ this._selection }
-        selectionIndex={ item.index }
-        invokeSelection={ true }
+        role="listitem"
+        aria-setsize={ITEMS.length}
+        aria-posinset={item.index}
+        className={AnimationClassNames.fadeIn400}
+        selection={this._selection}
+        selectionIndex={item.index}
+        invokeSelection={true}
         foreground={
           <img
-            src={
-              `https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/docx_48x1.svg`
-            }
-            style={
-              {
-                display: 'block',
-                width: '40px',
-                height: '40px',
-                margin: '11px'
-              }
-            }
+            src={`https://spoprod-a.akamaihd.net/files/odsp-next-prod_2018-04-06_20180406.004/odsp-media/images/itemtypes/${imgSize}/docx.png`}
+            style={{
+              display: 'block',
+              width: `${imgSize}px`,
+              height: `${imgSize}px`,
+              margin: tileSize === 'large' ? '16px' : '7px'
+            }}
           />
         }
-        showForegroundFrame={ true }
-        itemName={ item.name }
-        itemActivity={ item.key }
+        showForegroundFrame={true}
+        itemName={item.name}
+        itemActivity={item.key}
+        tileSize={tileSize}
       />
     );
-  }
+  };
 
-  @autobind
-  private _onRenderHeader(item: IExampleItem): JSX.Element {
+  private _onRenderShimmerCell = (item: IExampleItem, finalSize: ISize): JSX.Element => {
+    const { tileSize } = this.props;
+
+    return <ShimmerTile contentSize={finalSize} itemName={true} itemActivity={true} itemThumbnail={true} tileSize={tileSize} />;
+  };
+
+  private _onRenderHeader = (item: IExampleItem): JSX.Element => {
     return (
-      <div role='presentation'>
-        <h3>{ item.name }</h3>
+      <div
+        role="presentation"
+        // tslint:disable-next-line:jsx-ban-props
+        style={{
+          padding: `${HEADER_VERTICAL_PADDING}px 0`,
+          fontSize: `${HEADER_FONT_SIZE}px`,
+          fontWeight: 700,
+          lineHeight: `${HEADER_FONT_SIZE}px`
+        }}
+      >
+        {item.name}
       </div>
     );
-  }
+  };
+
+  private _onRenderShimmerHeader = (item: IExampleItem): JSX.Element => {
+    return (
+      <ShimmerElementsGroup
+        shimmerElements={[
+          { type: ElemType.line, height: HEADER_FONT_SIZE, widthInPercentage: 100 }, // gap is given to maintain height
+          { type: ElemType.gap, height: HEADER_VERTICAL_PADDING * 2 + HEADER_FONT_SIZE, widthInPixel: 0 }
+        ]}
+      />
+    );
+  };
 }

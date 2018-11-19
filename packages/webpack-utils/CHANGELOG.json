@@ -1,0 +1,141 @@
+{
+  "name": "@uifabric/webpack-utils",
+  "entries": [
+    {
+      "version": "0.7.4",
+      "tag": "@uifabric/webpack-utils_v0.7.4",
+      "date": "Mon, 08 Oct 2018 12:24:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Moving tslint/prettier dependencies ",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8ba9e22a7a8a2a1e7facda5aa7d91423c7af43ed"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.1.1 <2.0.0` to `>=1.1.2 <2.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.7.3",
+      "tag": "@uifabric/webpack-utils_v0.7.3",
+      "date": "Fri, 21 Sep 2018 14:25:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding a version stamp file",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "11c18bce52dba131548610c5eea0c1ab7fa4d1ca"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.0.0 <2.0.0` to `>=1.1.0 <2.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.7.2",
+      "tag": "@uifabric/webpack-utils_v0.7.2",
+      "date": "Tue, 14 Aug 2018 10:27:33 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Avital Baral <avitalbaral99@gmail.com>",
+            "commit": "cf0f728d0b28540b7a42aa9121a840605ee04670",
+            "comment": "exposing codepen examples, disabling codepen tasks in packages != ouifr"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.7.1",
+      "tag": "@uifabric/webpack-utils_v0.7.1",
+      "date": "Mon, 16 Jul 2018 10:27:18 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <1581488+christiango@users.noreply.github.com>",
+            "commit": "0a4f97dbcbb34c5c6661abe6170b6c8a8c12bd65",
+            "comment": "Use var instead of const in the ui fabric plugin to make it compatible with Safari 9"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.7.0",
+      "tag": "@uifabric/webpack-utils_v0.7.0",
+      "date": "Fri, 06 Jul 2018 19:07:51 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "a3bdf358b64ef1d67c4806ab7c3cf9ab93302867",
+            "comment": "Addes a manifest service plugin"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.6.0",
+      "tag": "@uifabric/webpack-utils_v0.6.0",
+      "date": "Mon, 02 Jul 2018 20:41:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Christian Gonzalez <1581488+christiango@users.noreply.github.com>",
+            "commit": "5177a84049a1885d3afbacf7e33a9d5ff955493c",
+            "comment": "Add Callout to the list of components that can be lazy loaded to reduce bundle sizes"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.5.0",
+      "tag": "@uifabric/webpack-utils_v0.5.0",
+      "date": "Mon, 02 Jul 2018 10:21:36 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "1c2ebc522eaefb6e3dd743e2d12a0cfe65cc13ad",
+            "comment": "replaced await with promise so this async loader is more IE compatible"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.4.0",
+      "tag": "@uifabric/webpack-utils_v0.4.0",
+      "date": "Thu, 14 Jun 2018 20:52:57 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "716fb49dd65f4ca23972af98481dc4c5a8d4b0f0",
+            "comment": "Adding useful fabricAsyncLoader options to make it more flexible"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.0.1",
+      "tag": "@uifabric/webpack-utils_v0.0.1",
+      "date": "Fri, 08 Jun 2018 18:34:17 GMT",
+      "comments": {
+        "none": [
+          {
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "08cd29eeb9f6f97b52a7ad88810db27c91c31e34",
+            "comment": "Creates a new webpack-utils package"
+          }
+        ]
+      }
+    }
+  ]
+}

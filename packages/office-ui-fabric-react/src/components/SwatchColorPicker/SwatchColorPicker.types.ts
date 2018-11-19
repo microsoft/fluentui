@@ -1,14 +1,14 @@
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IColorCellProps, IColorPickerGridCellStyleProps, IColorPickerGridCellStyles } from './ColorPickerGridCell.types';
 
-export interface ISwatchColorPicker { }
+export interface ISwatchColorPicker {}
 
 export interface ISwatchColorPickerProps {
   /**
    * Gets the component ref.
    */
-  componentRef?: (componentRef?: ISwatchColorPicker) => void;
+  componentRef?: IRefObject<ISwatchColorPicker>;
 
   /**
    * the number of columns for the swatch color picker
@@ -75,9 +75,9 @@ export interface ISwatchColorPickerProps {
   setSize?: number;
 
   /**
-   * Should focus cycle to the beginning of once the user navigates past the end (and visa vsersa).
+   * Should focus cycle to the beginning of once the user navigates past the end (and vice versa).
    * This prop is only relevant if doNotcontainWithinFocusZone is not true
-   * @default to true
+   * @defaultvalue true
    */
   shouldFocusCircularNavigate?: boolean;
 
@@ -88,6 +88,30 @@ export interface ISwatchColorPickerProps {
   doNotContainWithinFocusZone?: boolean;
 
   /**
+   * The distance between cells, in pixels
+   * @defaultvalue 10
+   */
+  cellMargin?: number;
+
+  /**
+   * Height of an individual cell, in pixels
+   * @defaultvalue 20
+   */
+  cellHeight?: number;
+
+  /**
+   * Width of an individual cell, in pixels
+   * @defaultvalue 20
+   */
+  cellWidth?: number;
+
+  /**
+   * Width of the border indicating a hovered/selected cell, in pixels
+   * @defaultvalue 2
+   */
+  cellBorderWidth?: number;
+
+  /**
    * Theme to apply to the component.
    */
   theme?: ITheme;
@@ -95,16 +119,16 @@ export interface ISwatchColorPickerProps {
   /**
    * Optional styles for the component.
    */
-  getStyles?: IStyleFunction<ISwatchColorPickerStyleProps, ISwatchColorPickerStyles>;
+  styles?: IStyleFunctionOrObject<ISwatchColorPickerStyleProps, ISwatchColorPickerStyles>;
 
   /**
-  * Optional styles for the component.
-  */
-  getColorGridCellStyles?: IStyleFunction<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>;
+   * Optional styles for the component.
+   */
+  getColorGridCellStyles?: IStyleFunctionOrObject<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>;
 
   /**
    * Optional, whether to update focus when a cell is hovered.
-   * @default false
+   * @defaultvalue false
    */
   focusOnHover?: boolean;
 
@@ -128,6 +152,11 @@ export interface ISwatchColorPickerStyleProps {
    * Custom className to apply to the container.
    */
   className?: string;
+
+  /**
+   * The distance between cells
+   */
+  cellMargin?: number;
 }
 
 /**
@@ -140,12 +169,12 @@ export interface ISwatchColorPickerStyles {
   root: IStyle;
 
   /**
-  * Style for the table cells of the grid.
-  */
+   * Style for the table cells of the grid.
+   */
   tableCell: IStyle;
 
   /**
-  * Optional, style for the FocusZone container for the grid
-  */
+   * Optional, style for the FocusZone container for the grid
+   */
   focusedContainer?: IStyle;
 }

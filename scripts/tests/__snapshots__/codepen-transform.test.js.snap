@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Codepen Transform correctly transforms code examples with class exports 1`] = `
+"let { TextField, MaskedTextField, Fabric } = window.Fabric;
+
+class TextFieldBasicExample extends React.Component<any, any> {
+  public render(): JSX.Element {
+    return (
+      <div className=\\"docs-TextFieldExample\\">
+        <TextField label=\\"Standard\\" />
+        <TextField label=\\"Disabled\\" disabled={true} />
+        <TextField label=\\"Read Only\\" readOnly={true} />
+        <TextField label=\\"Required \\" required={true} />
+        <TextField label=\\"With error message\\" errorMessage=\\"Error message\\" />
+        <MaskedTextField label=\\"With input mask\\" mask=\\"m\\\\ask: (999) 999 - 9999\\" />
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<TextFieldBasicExample />, document.getElementById('content'));
+"
+`;
+
+exports[`Codepen Transform correctly transforms code examples with variable exports 1`] = `
+"let { Label, Fabric } = window.Fabric;
+
+ReactDOM.render(<LabelBasicExample />, document.getElementById('content'));
+"
+`;

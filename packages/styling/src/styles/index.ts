@@ -4,13 +4,11 @@ export { DefaultFontStyles, registerDefaultFontFaces } from './DefaultFontStyles
 export { FontSizes, FontWeights, IconFontSizes, createFontStyles } from './fonts';
 export { getFocusStyle, focusClear } from './getFocusStyle';
 export { hiddenContentStyle } from './hiddenContentStyle';
-export {
-  ThemeSettingName,
-  getTheme,
-  loadTheme,
-  createTheme,
-  registerOnThemeChangeCallback,
-  removeOnThemeChangeCallback
-} from './theme';
+export { PulsingBeaconAnimationStyles } from './PulsingBeaconAnimationStyles';
+export { getGlobalClassNames, GlobalClassNames } from './getGlobalClassNames';
+export * from './scheme';
+export { ThemeSettingName, getTheme, loadTheme, createTheme, registerOnThemeChangeCallback, removeOnThemeChangeCallback } from './theme';
 export * from './CommonStyles';
-export { normalize } from './GeneralStyles';
+export * from './GeneralStyles';
+export * from './getFadedOverflowStyle';
+export * from './zIndexes';

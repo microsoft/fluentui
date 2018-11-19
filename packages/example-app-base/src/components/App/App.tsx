@@ -1,11 +1,9 @@
 import * as React from 'react';
-import {
-  css
-} from 'office-ui-fabric-react/lib/Utilities';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
+import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import { Nav } from 'office-ui-fabric-react/lib/Nav';
+import { AppCustomizationsContext, IAppCustomizations } from '../../utilities/customizations';
 import { withResponsiveMode, ResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
 import { INavLink, INavLinkGroup } from 'office-ui-fabric-react/lib/Nav';
 import { Header } from '../Header/Header';
@@ -17,7 +15,6 @@ export enum ExampleStatus {
   beta = 2,
   release = 3
 }
-
 export interface IAppLink extends INavLink {
   // tslint:disable-next-line:no-any
   getComponent?: (cb: (obj: any) => void) => any;
@@ -33,6 +30,10 @@ export interface IAppDefinition {
   testPages: IAppLink[];
   examplePages: IAppLinkGroup[];
   headerLinks: IAppLink[];
+  /**
+   * Optional customizations to apply to the application.
+   */
+  customizations?: IAppCustomizations;
 }
 
 export interface IAppProps extends React.Props<App> {
@@ -46,7 +47,6 @@ export interface IAppState {
 
 @withResponsiveMode
 export class App extends React.Component<IAppProps, IAppState> {
-
   constructor(props: IAppProps) {
     super(props);
 
@@ -56,78 +56,65 @@ export class App extends React.Component<IAppProps, IAppState> {
   }
 
   public render(): JSX.Element {
-    let { appDefinition, responsiveMode } = this.props;
-    let { isMenuVisible } = this.state;
+    const { appDefinition, responsiveMode = ResponsiveMode.large } = this.props;
+    const { customizations } = appDefinition;
+    const { isMenuVisible } = this.state;
 
-    if (responsiveMode === undefined) {
-      responsiveMode = ResponsiveMode.large;
-    }
+    const navPanel = <Nav groups={appDefinition.examplePages} onLinkClick={this._onLinkClick} onRenderLink={this._onRenderLink} />;
 
-    let navPanel = (
-      <Nav
-        groups={ appDefinition.examplePages }
-        onLinkClick={ this._onLinkClick }
-        onRenderLink={ this._onRenderLink }
-      />
-    );
-
-    return (
-      <Fabric className={ css('ms-App', 'ms-App--' + ResponsiveMode[responsiveMode]) }>
-
-        <div className='ms-App-header'>
+    const app = (
+      <Fabric className={css('ms-App', 'ms-App--' + ResponsiveMode[responsiveMode])}>
+        <div className="ms-App-header">
           <Header
-            title={ appDefinition.appTitle }
-            sideLinks={ appDefinition.headerLinks }
-            isMenuVisible={ isMenuVisible }
-            onIsMenuVisibleChanged={ this._onIsMenuVisibleChanged }
+            title={appDefinition.appTitle}
+            sideLinks={appDefinition.headerLinks}
+            isMenuVisible={isMenuVisible}
+            onIsMenuVisibleChanged={this._onIsMenuVisibleChanged}
           />
         </div>
 
-        { (responsiveMode > ResponsiveMode.large) ? (
-          <div className='ms-App-nav'>
-            { navPanel }
-          </div>
-        ) : (null) }
+        {responsiveMode > ResponsiveMode.large ? <div className="ms-App-nav">{navPanel}</div> : null}
 
-        <div className='ms-App-content' data-is-scrollable='true'>
-          { this.props.children }
+        <div className="ms-App-content" data-is-scrollable="true">
+          {this.props.children}
         </div>
 
-        { (responsiveMode <= ResponsiveMode.large) ? (
+        {responsiveMode <= ResponsiveMode.large ? (
           <Panel
-            className='ms-App-navPanel'
-            isOpen={ isMenuVisible }
-            isLightDismiss={ true }
-            type={ PanelType.smallFixedNear }
-            onDismiss={ this._onIsMenuVisibleChanged.bind(this, false) }
+            className="ms-App-navPanel"
+            isOpen={isMenuVisible}
+            isLightDismiss={true}
+            type={PanelType.smallFixedNear}
+            onDismiss={this._onIsMenuVisibleChanged.bind(this, false)}
           >
-            { navPanel }
+            {navPanel}
           </Panel>
-        ) : (null) }
+        ) : null}
       </Fabric>
     );
+
+    return customizations ? <AppCustomizationsContext.Provider value={customizations}>{app}</AppCustomizationsContext.Provider> : app;
   }
 
-  @autobind
-  private _onIsMenuVisibleChanged(isMenuVisible: boolean): void {
+  private _onIsMenuVisibleChanged = (isMenuVisible: boolean): void => {
     this.setState({ isMenuVisible });
-  }
+  };
 
-  @autobind
-  private _onLinkClick(): void {
+  private _onLinkClick = (): void => {
     this.setState({ isMenuVisible: false });
-  }
+  };
 
-  @autobind
   // tslint:disable-next-line:no-any
-  private _onRenderLink(link: INavLink): any {
-    return (
-      [
-        <span key={ 1 } className='Nav-linkText'>{ link.name }</span>,
-        (link.status !== undefined ?
-          <span key={ 2 } className={ 'Nav-linkFlair ' + 'is-state' + link.status } >{ ExampleStatus[link.status] }</span> :
-          null)
-      ]
-    );
-  }
+  private _onRenderLink = (link: INavLink): any => {
+    return [
+      <span key={1} className="Nav-linkText">
+        {link.name}
+      </span>,
+      link.status !== undefined ? (
+        <span key={2} className={'Nav-linkFlair ' + 'is-state' + link.status}>
+          {ExampleStatus[link.status]}
+        </span>
+      ) : null
+    ];
+  };
 }

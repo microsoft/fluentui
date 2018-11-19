@@ -9,7 +9,7 @@ export namespace Validators {
   export function required(errorMessage: string): (value?: any | null) => string | undefined {
     'use strict';
     return (value?: any): string | undefined => {
-      if (value === null || value === undefined || value === '') {
+      if (value === null || value === undefined || value === '' || (Array.isArray(value) && value.length === 0)) {
         return errorMessage;
       }
     };
@@ -23,7 +23,7 @@ export namespace Validators {
   export function length(desiredLength: number, formatError: (length: number) => string): (value?: string | null) => string | undefined {
     'use strict';
     return (value?: string | null): string | undefined => {
-      value = ((value !== null && value !== undefined) ? value : '');
+      value = value !== null && value !== undefined ? value : '';
       if (value.length !== desiredLength) {
         return formatError(value.length);
       }
@@ -38,7 +38,7 @@ export namespace Validators {
   export function minLength(lengthBound: number, formatError: (length: number) => string): (value?: string | null) => string | undefined {
     'use strict';
     return (value?: string | null): string | undefined => {
-      value = ((value !== null && value !== undefined) ? value : '');
+      value = value !== null && value !== undefined ? value : '';
       if (value.length < lengthBound) {
         return formatError(value.length);
       }
@@ -53,7 +53,7 @@ export namespace Validators {
   export function maxLength(lengthBound: number, formatError: (length: number) => string): (value?: string | null) => string | undefined {
     'use strict';
     return (value?: string | null): string | undefined => {
-      value = ((value !== null && value !== undefined) ? value : '');
+      value = value !== null && value !== undefined ? value : '';
       if (value.length > lengthBound) {
         return formatError(value.length);
       }
@@ -69,7 +69,7 @@ export namespace Validators {
     'use strict';
     return (value?: string | null): string | undefined => {
       if (value) {
-        let match = expression.exec(value);
+        const match = expression.exec(value);
         if (match === null || match === undefined) {
           return errorMessage;
         }
@@ -86,7 +86,7 @@ export namespace Validators {
     'use strict';
     return (value?: string | null): string | undefined => {
       if (value) {
-        let intValue: number = Number(value);
+        const intValue: number = Number(value);
         if (!isNaN(intValue) && intValue < bound) {
           return formatError(intValue);
         }
@@ -103,7 +103,7 @@ export namespace Validators {
     'use strict';
     return (value?: string | null): string | undefined => {
       if (value) {
-        let intValue: number = Number(value);
+        const intValue: number = Number(value);
         if (!isNaN(intValue) && intValue > bound) {
           return formatError(intValue);
         }

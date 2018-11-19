@@ -1,0 +1,3687 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly 1`] = `
+<div
+  className=
+
+      {
+        cursor: default;
+        position: relative;
+      }
+>
+  <button
+    aria-checked={true}
+    className=
+        ms-Checkbox
+        is-checked
+        is-enabled
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          background: none;
+          border: none;
+          cursor: pointer;
+          display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 0;
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: 0;
+          outline: none;
+          padding-bottom: 0;
+          padding-left: 0;
+          padding-right: 0;
+          padding-top: 0;
+          position: relative;
+        }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: -2px;
+          content: "";
+          left: -2px;
+          outline: 1px solid #666666;
+          position: absolute;
+          right: -2px;
+          top: -2px;
+          z-index: 1;
+        }
+        &:hover .ms-Checkbox-checkbox {
+          background: #106ebe;
+          border-color: #106ebe;
+        }
+        &:focus .ms-Checkbox-checkbox {
+          background: #106ebe;
+          border-color: #106ebe;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+          background: Window;
+          border-color: Highlight;
+        }
+        @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-checkbox {
+          background: Highlight;
+        }
+        @media screen and (-ms-high-contrast: active){&:focus:hover .ms-Checkbox-checkbox {
+          background: Highlight;
+        }
+        @media screen and (-ms-high-contrast: active){&:focus:hover .ms-Checkbox-checkmark {
+          color: Window;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+          color: Highlight;
+        }
+        &:hover .ms-Checkbox-text {
+          color: #333333;
+        }
+        &:focus .ms-Checkbox-text {
+          color: #333333;
+        }
+    defaultChecked={true}
+    id="checkbox-0"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    role="checkbox"
+    type="button"
+  >
+    <label
+      className=
+          ms-Checkbox-label
+          {
+            align-items: flex-start;
+            cursor: pointer;
+            display: flex;
+            margin-bottom: 0;
+            margin-left: -4px;
+            margin-right: -4px;
+            margin-top: 0;
+            position: relative;
+            text-align: left;
+            user-select: none;
+          }
+      htmlFor="checkbox-0"
+    >
+      <div
+        className=
+            ms-Checkbox-checkbox
+            {
+              align-items: center;
+              background: #0078d4;
+              border-color: #0078d4;
+              border-style: solid;
+              border-width: 1px;
+              box-sizing: border-box;
+              display: flex;
+              flex-shrink: 0;
+              height: 20px;
+              justify-content: center;
+              margin-bottom: 0;
+              margin-left: 4px;
+              margin-right: 4px;
+              margin-top: 0;
+              overflow: hidden;
+              transition-duration: 200ms;
+              transition-property: background, border, border-color;
+              transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+              width: 20px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              background: Highlight;
+              border-color: Highlight;
+            }
+      >
+        <i
+          aria-hidden={true}
+          className=
+              ms-Checkbox-checkmark
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #ffffff;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                opacity: 1;
+                speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                color: Window;
+              }
+          data-icon-name="CheckMark"
+          role="presentation"
+        >
+          
+        </i>
+      </div>
+      <span
+        className=
+            ms-Checkbox-text
+            {
+              color: #333333;
+              font-size: 14px;
+              line-height: 20px;
+              margin-bottom: 0;
+              margin-left: 4px;
+              margin-right: 4px;
+              margin-top: 0;
+            }
+      >
+        Is marquee enabled
+      </span>
+    </label>
+  </button>
+  <p>
+    Drag a rectangle around the items below to select them:
+  </p>
+  <ul
+    className="ms-MarqueeSelectionBasicExample-photoList"
+  >
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={0}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      0
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={1}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      1
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={2}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      2
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={3}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      3
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={4}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      4
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={5}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      5
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={6}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      6
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={7}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      7
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={8}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      8
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={9}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      9
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={10}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      10
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={11}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      11
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={12}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      12
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={13}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      13
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={14}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      14
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={15}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      15
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={16}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      16
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={17}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      17
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={18}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      18
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={19}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      19
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={20}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      20
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={21}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      21
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={22}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      22
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={23}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      23
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={24}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      24
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={25}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      25
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={26}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      26
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={27}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      27
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={28}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      28
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={29}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      29
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={30}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      30
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={31}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      31
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={32}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      32
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={33}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      33
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={34}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      34
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={35}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      35
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={36}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      36
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={37}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      37
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={38}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      38
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={39}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      39
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={40}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      40
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={41}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      41
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={42}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      42
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={43}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      43
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={44}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      44
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={45}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      45
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={46}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      46
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={47}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      47
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={48}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      48
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={49}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      49
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={50}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      50
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={51}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      51
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={52}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      52
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={53}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      53
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={54}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      54
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={55}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      55
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={56}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      56
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={57}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      57
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={58}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      58
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={59}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      59
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={60}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      60
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={61}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      61
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={62}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      62
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={63}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      63
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={64}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      64
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={65}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      65
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={66}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      66
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={67}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      67
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={68}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      68
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={69}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      69
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={70}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      70
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={71}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      71
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={72}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      72
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={73}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      73
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={74}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      74
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={75}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      75
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={76}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      76
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={77}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      77
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={78}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      78
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={79}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      79
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={80}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      80
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={81}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      81
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={82}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      82
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={83}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      83
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={84}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      84
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={85}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      85
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={86}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      86
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={87}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      87
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={88}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      88
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={89}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      89
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={90}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      90
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={91}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      91
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={92}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      92
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={93}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      93
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={94}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      94
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={95}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      95
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={96}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      96
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={97}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      97
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={98}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      98
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={99}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      99
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={100}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      100
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={101}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      101
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={102}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      102
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={103}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      103
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={104}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      104
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={105}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      105
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={106}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      106
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={107}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      107
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={108}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      108
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={109}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      109
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={110}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      110
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={111}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      111
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={112}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      112
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={113}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      113
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={114}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      114
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={115}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      115
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={116}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      116
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={117}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      117
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={118}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      118
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={119}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      119
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={120}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      120
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={121}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      121
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={122}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      122
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={123}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      123
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={124}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      124
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={125}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      125
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={126}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      126
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={127}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      127
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={128}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      128
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={129}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      129
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={130}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      130
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={131}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      131
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={132}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      132
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={133}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      133
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={134}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      134
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={135}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      135
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={136}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      136
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={137}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      137
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={138}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      138
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={139}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      139
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={140}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      140
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={141}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      141
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={142}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      142
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={143}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      143
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={144}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      144
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={145}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      145
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={146}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      146
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={147}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      147
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={148}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      148
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={149}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      149
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={150}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      150
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={151}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      151
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={152}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      152
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={153}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      153
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={154}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      154
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={155}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      155
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={156}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      156
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={157}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      157
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={158}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      158
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={159}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      159
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={160}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      160
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={161}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      161
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={162}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      162
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={163}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      163
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={164}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      164
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={165}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      165
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={166}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      166
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={167}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      167
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={168}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      168
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={169}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      169
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={170}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      170
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={171}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      171
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={172}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      172
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={173}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      173
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={174}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      174
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={175}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      175
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={176}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      176
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={177}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      177
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={178}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      178
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={179}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      179
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={180}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      180
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={181}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      181
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={182}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      182
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={183}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      183
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={184}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      184
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={185}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      185
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={186}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      186
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={187}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      187
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={188}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      188
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={189}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      189
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={190}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      190
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={191}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      191
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={192}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      192
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={193}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      193
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={194}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      194
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={195}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      195
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={196}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      196
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={197}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      197
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={198}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      198
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={199}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      199
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={200}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      200
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={201}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      201
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={202}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      202
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={203}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      203
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={204}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      204
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={205}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      205
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={206}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      206
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={207}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      207
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={208}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      208
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={209}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      209
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={210}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      210
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={211}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      211
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={212}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      212
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={213}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      213
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={214}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      214
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={215}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      215
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={216}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      216
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={217}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      217
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={218}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      218
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={219}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      219
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={220}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      220
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={221}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      221
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={222}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      222
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={223}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      223
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={224}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      224
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={225}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      225
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={226}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      226
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={227}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      227
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={228}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      228
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={229}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      229
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={230}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      230
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={231}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      231
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={232}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      232
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={233}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      233
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={234}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      234
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={235}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      235
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={236}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      236
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={237}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      237
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={238}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      238
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={239}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      239
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={240}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      240
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={241}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      241
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={242}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      242
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={243}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      243
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={244}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      244
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={245}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      245
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={246}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      246
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={247}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      247
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={248}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      248
+    </div>
+    <div
+      className="ms-MarqueeSelectionBasicExample-photoCell"
+      data-is-focusable={true}
+      data-selection-index={249}
+      onClick={[Function]}
+      style={
+        Object {
+          "height": 100,
+          "width": 50,
+        }
+      }
+    >
+      249
+    </div>
+  </ul>
+</div>
+`;

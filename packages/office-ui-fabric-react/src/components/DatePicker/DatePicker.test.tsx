@@ -1,12 +1,19 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { Calendar, ICalendarStrings } from '../Calendar';
+import { Calendar, ICalendarStrings } from '../../Calendar';
 import { DatePicker } from './DatePicker';
+import { DatePickerBase } from './DatePicker.base';
 import { IDatePickerStrings } from './DatePicker.types';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { shallow, mount, ReactWrapper } from 'enzyme';
+import { resetIds } from '../../Utilities';
+import { Callout } from '../Callout/Callout';
 
 describe('DatePicker', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+
   it('renders default DatePicker correctly', () => {
     // This will only render the input. Calendar component has its own snapshot.
     const component = renderer.create(<DatePicker />);
@@ -14,21 +21,50 @@ describe('DatePicker', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('can add an id to the container', () => {
+    const wrapper = mount(<DatePickerBase id="foo" />);
+
+    expect(wrapper.getElement().props.id).toEqual('foo');
+  });
+
   it('should not open DatePicker when disabled, no label', () => {
-    const wrapper = mount(<DatePicker disabled />);
+    const wrapper = mount(<DatePickerBase disabled />);
     wrapper.find('i').simulate('click');
 
     expect(wrapper.state('isDatePickerShown')).toBe(false);
   });
 
   it('should not open DatePicker when disabled, with label', () => {
-    const wrapper = mount(<DatePicker disabled label='label' />);
+    const wrapper = mount(<DatePickerBase disabled label="label" />);
     wrapper.find('i').simulate('click');
     expect(wrapper.state('isDatePickerShown')).toBe(false);
   });
 
+  it('should call onSelectDate even when required input is empty when allowTextInput is true', () => {
+    const onSelectDate = jest.fn();
+    const datePicker = mount(<DatePickerBase isRequired={true} allowTextInput={true} onSelectDate={onSelectDate} />);
+    const textField = datePicker.find('input');
+
+    expect(textField).toBeDefined();
+
+    textField.simulate('change', { target: { value: 'Jan 1 2030' } }).simulate('blur');
+    textField.simulate('change', { target: { value: '' } }).simulate('blur');
+
+    expect(onSelectDate).toHaveBeenCalledTimes(2);
+
+    datePicker.unmount();
+  });
+
+  it('should set "Calendar" as the Callout\'s aria-label', () => {
+    const datePicker = shallow(<DatePickerBase />);
+    datePicker.setState({ isDatePickerShown: true });
+    const calloutProps = datePicker.find(Callout).props();
+
+    expect(calloutProps.ariaLabel).toBe('Calendar');
+  });
+
   describe('when Calendar properties are not specified', () => {
-    const datePicker = shallow(<DatePicker />);
+    const datePicker = shallow(<DatePickerBase />);
     datePicker.setState({ isDatePickerShown: true });
     const calendarProps = datePicker.find(Calendar).props();
 
@@ -68,17 +104,17 @@ describe('DatePicker', () => {
     };
 
     const datePicker = shallow(
-      <DatePicker
-        isMonthPickerVisible={ false }
-        showMonthPickerAsOverlay={ true }
-        value={ value }
-        today={ today }
-        firstDayOfWeek={ 2 }
-        highlightCurrentMonth={ true }
-        showWeekNumbers={ true }
-        firstWeekOfYear={ FirstWeekOfYear.FirstFullWeek }
-        showGoToToday={ false }
-        dateTimeFormatter={ dateTimeFormatter }
+      <DatePickerBase
+        isMonthPickerVisible={false}
+        showMonthPickerAsOverlay={true}
+        value={value}
+        today={today}
+        firstDayOfWeek={2}
+        highlightCurrentMonth={true}
+        showWeekNumbers={true}
+        firstWeekOfYear={FirstWeekOfYear.FirstFullWeek}
+        showGoToToday={false}
+        dateTimeFormatter={dateTimeFormatter}
       />
     );
     datePicker.setState({ isDatePickerShown: true });
@@ -131,52 +167,10 @@ describe('DatePicker', () => {
     const minDate = new Date('Jan 1 2017');
     const maxDate = new Date('Dec 31 2017');
     const strings: IDatePickerStrings = {
-      months: [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December'
-      ],
-      shortMonths: [
-        'Jan',
-        'Feb',
-        'Mar',
-        'Apr',
-        'May',
-        'Jun',
-        'Jul',
-        'Aug',
-        'Sep',
-        'Oct',
-        'Nov',
-        'Dec'
-      ],
-      days: [
-        'Sunday',
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday'
-      ],
-      shortDays: [
-        'S',
-        'M',
-        'T',
-        'W',
-        'T',
-        'F',
-        'S'
-      ],
+      months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+      shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
       goToToday: 'Go to today',
       isOutOfBoundsErrorMessage: 'out of bounds'
     };
@@ -184,13 +178,8 @@ describe('DatePicker', () => {
 
     beforeEach(() => {
       datePicker = mount(
-        <DatePicker
-          allowTextInput={ true }
-          minDate={ minDate }
-          maxDate={ maxDate }
-          value={ defaultDate }
-          strings={ strings }
-        />);
+        <DatePickerBase allowTextInput={true} minDate={minDate} maxDate={maxDate} value={defaultDate} strings={strings} />
+      );
     });
 
     afterEach(() => {
@@ -199,13 +188,15 @@ describe('DatePicker', () => {
 
     it('should throw validation error for date outside boundary', () => {
       // before minDate
-      datePicker.find('input')
+      datePicker
+        .find('input')
         .simulate('change', { target: { value: 'Jan 1 2010' } })
         .simulate('blur');
       expect(datePicker.state('errorMessage')).toBe('out of bounds');
 
       // after maxDate
-      datePicker.find('input')
+      datePicker
+        .find('input')
         .simulate('change', { target: { value: 'Jan 1 2020' } })
         .simulate('blur');
       expect(datePicker.state('errorMessage')).toBe('out of bounds');
@@ -213,13 +204,15 @@ describe('DatePicker', () => {
 
     it('should not throw validation error for date inside boundary', () => {
       // in boundary
-      datePicker.find('input')
+      datePicker
+        .find('input')
         .simulate('change', { target: { value: 'Dec 16 2017' } })
         .simulate('blur');
       expect(datePicker.state('errorMessage')).toBeFalsy();
 
       // on boundary
-      datePicker.find('input')
+      datePicker
+        .find('input')
         .simulate('change', { target: { value: 'Jan 1 2017' } })
         .simulate('blur');
       expect(datePicker.state('errorMessage')).toBeFalsy();

@@ -14,7 +14,7 @@
     position: relative;
   }
 
-  :global(.ms-Fabric.is-focusVisible) &:focus:after {
+  :global(.ms-Fabric--isFocusVisible) &:focus:after {
     // Wrap the parent element with $padding pixels.
     content: '';
     position: absolute;
@@ -33,7 +33,7 @@
 
 // When focus is set using the keyboard, apply an outline.
 @mixin focus-outline {
-  :global(.ms-Fabric.is-focusVisible) &:focus {
+  :global(.ms-Fabric--isFocusVisible) &:focus {
     outline: 1px solid $focusedBorderColor;
   }
 }

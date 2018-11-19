@@ -2,7 +2,11 @@ import * as React from 'react';
 import { EventGroup } from '../../Utilities';
 
 export interface IDragDropHelper {
-  subscribe: (root: HTMLElement, events: EventGroup, options: IDragDropOptions) => {
+  subscribe: (
+    root: HTMLElement,
+    events: EventGroup,
+    options: IDragDropOptions
+  ) => {
     key: string;
     dispose: () => void;
   };
@@ -34,7 +38,7 @@ export interface IDragDropTarget {
 
 export interface IDragDropOptions {
   key?: string;
-  eventMap?: { eventName: string, callback: (context: IDragDropContext, event?: any) => void }[];
+  eventMap?: { eventName: string; callback: (context: IDragDropContext, event?: any) => void }[];
   selectionIndex: number;
   context: IDragDropContext;
   updateDropState: (isDropping: boolean, event: DragEvent) => void;
@@ -43,6 +47,7 @@ export interface IDragDropOptions {
   onDragStart?: (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent) => void;
   onDrop?: (item?: any, event?: DragEvent) => void;
   onDragEnd?: (item?: any, event?: DragEvent) => void;
+  onDragOver?: (item?: any, event?: DragEvent) => void;
 }
 
 export interface IDragDropEvent {

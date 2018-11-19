@@ -1,37 +1,45 @@
-import { IExpandingCardStyles } from './ExpandingCard.types';
-import { memoizeFunction } from '../../Utilities';
-import {
-  concatStyleSets,
-  ITheme,
-  HighContrastSelector
-} from '../../Styling';
+import { getGlobalClassNames, HighContrastSelector } from '../../Styling';
+import { IExpandingCardStyles, IExpandingCardStyleProps } from './ExpandingCard.types';
 
-export const getStyles = memoizeFunction((
-  theme: ITheme,
-  customStyles?: IExpandingCardStyles
-): IExpandingCardStyles => {
+const GlobalClassNames = {
+  root: 'ms-ExpandingCard-root',
+  compactCard: 'ms-ExpandingCard-compactCard',
+  expandedCard: 'ms-ExpandingCard-expandedCard',
+  expandedCardScroll: 'ms-ExpandingCard-expandedCardScrollRegion'
+};
 
-  const styles: IExpandingCardStyles = {
-    root: {
-      width: '340px',
-      pointerEvents: 'none',
-      selectors: {
-        '.ms-Callout': {
-          boxShadow: '0 0 20px rgba(0, 0, 0, .2)',
-          border: 'none',
-          selectors: {
-            [HighContrastSelector]: {
-              border: '1px solid WindowText',
-            }
+export function getStyles(props: IExpandingCardStyleProps): IExpandingCardStyles {
+  const { theme, needsScroll, expandedCardFirstFrameRendered, compactCardHeight, expandedCardHeight, className } = props;
+
+  const { palette } = theme;
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
+  return {
+    root: [
+      classNames.root,
+      {
+        width: '340px',
+        pointerEvents: 'none',
+        boxShadow: '0 0 20px rgba(0, 0, 0, .2)',
+        border: 'none',
+        selectors: {
+          [HighContrastSelector]: {
+            border: '1px solid WindowText'
           }
         }
+      },
+      className
+    ],
+    compactCard: [
+      classNames.compactCard,
+      {
+        pointerEvents: 'auto',
+        position: 'relative',
+        height: compactCardHeight
       }
-    },
-    compactCard: {
-      pointerEvents: 'auto',
-      position: 'relative'
-    },
+    ],
     expandedCard: [
+      classNames.expandedCard,
       {
         height: '1px',
         overflowY: 'hidden',
@@ -46,17 +54,21 @@ export const getStyles = memoizeFunction((
             left: '24px',
             width: '292px',
             height: '1px',
-            backgroundColor: theme.palette.neutralLighter
+            backgroundColor: palette.neutralLighter
           }
         }
+      },
+      expandedCardFirstFrameRendered && {
+        height: expandedCardHeight
       }
     ],
-    expandedCardScroll: {
-      height: '100%',
-      boxSizing: 'border-box',
-      overflowY: 'auto'
-    }
+    expandedCardScroll: [
+      classNames.expandedCardScroll,
+      needsScroll && {
+        height: '100%',
+        boxSizing: 'border-box',
+        overflowY: 'auto'
+      }
+    ]
   };
-
-  return concatStyleSets(styles, customStyles)!;
-});
+}

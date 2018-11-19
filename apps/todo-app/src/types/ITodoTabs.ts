@@ -3,7 +3,6 @@ import { ITodoItem } from './index';
  * Props of TodoTabs component.
  */
 export interface ITodoTabsProps {
-
   /**
    * The list items rendered in TodoTabs.
    * It will be filtered in each PivotItems by needs.

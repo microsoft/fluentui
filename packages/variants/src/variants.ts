@@ -1,44 +1,66 @@
-import {
-  IPalette,
-  ISemanticColors,
-  ITheme,
-  IPartialTheme
-} from '@uifabric/styling';
-import { createTheme } from '@uifabric/styling';
+import { IPalette, ISemanticColors, ITheme, IPartialTheme, createTheme } from 'office-ui-fabric-react/lib/Styling';
+import { VariantThemeType } from './variantThemeType';
 
-/* Variants
- * Variants are themes based off the current theme.
- * Each variant is a subset of the current theme, rearranging slots to create a theme of a different style.
- * Variants are meant to be applied to sections of a page, not the entire page.
- * They can be used to highlight or de-emphasize sections of a page.
- *
- * Variants are still under development.
- */
+function makeThemeFromPartials(
+  originalTheme: ITheme,
+  partialPalette: Partial<IPalette>,
+  partialSemantic: Partial<ISemanticColors>
+): ITheme {
+  // Create variant palette
+  let variantTheme = createTheme({ palette: { ...originalTheme.palette, ...partialPalette } });
+  // Change semantic colors to use updated variant palette values
+  variantTheme.semanticColors = { ...variantTheme.semanticColors, ...partialSemantic };
+  // Fill in the rest of the theme
+  variantTheme = { ...originalTheme, palette: variantTheme.palette, semanticColors: variantTheme.semanticColors };
+  return variantTheme;
+}
 
 /**
- * A variant where the background a softer version of the primary color. Most other colors remain unchanged.
+ * Returns the specified variant theme for the given theme.
+ * Do not generate a variant from a variant, the results will be ugly.
  *
  * @export
- * @param {IPartialTheme} theme the theme for which to build a variant for
+ * @param {IPartialTheme} theme the theme to build a variant for
+ * @param {VariantThemeType} variant the variant type designation
  * @returns {ITheme} the variant theme
  */
-export function getSoftVariant(theme: IPartialTheme): ITheme {
+export function getVariant(theme: IPartialTheme, variant: VariantThemeType): ITheme {
+  switch (variant) {
+    case VariantThemeType.Neutral:
+      return getNeutralVariant(theme);
+    case VariantThemeType.Soft:
+      return getSoftVariant(theme);
+    case VariantThemeType.Strong:
+      return getStrongVariant(theme);
+    default:
+      return createTheme(theme);
+  }
+}
+
+/**
+ * A variant where the background is a soft shade of the neutral color. Most other colors remain unchanged.
+ *
+ * @export
+ * @param {IPartialTheme} theme the theme to build a variant for
+ * @returns {ITheme} the variant theme
+ */
+export function getNeutralVariant(theme: IPartialTheme): ITheme {
   const fullTheme = createTheme(theme);
   const p = fullTheme.palette;
 
   // commented lines are unchanged, but left in for tracking purposes
-  // in a tint variant, most colors remain unchanged
+  // in a neutral variant, most colors remain unchanged
   const partialPalette: Partial<IPalette> = {
-    // theme
-    // themeDarker: '#004578',
-    // themeDark: '#005a9e',
-    // themeDarkAlt: '#106ebe',
-    // themePrimary: '#0078d7',
-    // themeSecondary: '#2b88d8',
-    // themeTertiary: '#71afe5',
-    // themeLight: '#c7e0f4',
-    // themeLighter: '#deecf9',
-    // themeLighterAlt: '#eff6fc',
+    // theme - shifts a shade stronger to account for contrast against stronger background
+    // themeDarker: '#004578', // can't go darker, stays the same
+    themeDark: p.themeDarker,
+    themeDarkAlt: p.themeDark,
+    themePrimary: p.themeDarkAlt,
+    themeSecondary: p.themePrimary,
+    themeTertiary: p.themeSecondary,
+    themeLight: p.themeTertiary,
+    themeLighter: p.themeLight,
+    themeLighterAlt: p.themeLighterAlt,
 
     // foregrounds
     // black: '#000000',
@@ -48,29 +70,159 @@ export function getSoftVariant(theme: IPartialTheme): ITheme {
     // neutralSecondary: '#666666',
     // neutralTertiary: '#a6a6a6',
 
-    // backgrounds
-    // neutralTertiaryAlt: '#c8c8c8', // themeLighter?
-    // neutralQuaternary: '#d0d0d0',
-    // neutralQuaternaryAlt: '#dadada',
-    // neutralLight: '#eaeaea',
-    // neutralLighter: '#f4f4f4',
-    // neutralLighterAlt: '#f8f8f8',
-    white: p.themeLighterAlt
+    // backgrounds - background is still the same scale, just squish it a bit
+    // neutralTertiaryAlt: '#c8c8c8',
+    neutralQuaternary: p.neutralTertiaryAlt,
+    neutralQuaternaryAlt: p.neutralQuaternary,
+    neutralLight: p.neutralQuaternaryAlt,
+    neutralLighter: p.neutralLight,
+    neutralLighterAlt: p.neutralLight,
+    white: p.neutralLighter
   };
 
   const partialSemantic: Partial<ISemanticColors> = {
-    bodyBackground: p.themeLighterAlt,
+    bodyBackground: p.neutralLighter,
+    bodyStandoutBackground: p.neutralLight,
+    bodyFrameBackground: !fullTheme.isInverted ? p.neutralLight : p.neutralLighter,
+    bodyFrameDivider: !fullTheme.isInverted ? p.neutralLight : p.neutralQuaternaryAlt,
+    bodyText: p.neutralPrimary,
+    bodySubtext: p.neutralSecondary,
+    bodyDivider: p.neutralQuaternaryAlt,
+    variantBorder: p.neutralLight,
+    variantBorderHovered: p.neutralTertiary,
+    defaultStateBackground: p.neutralLight,
 
+    actionLink: p.neutralPrimary,
+    actionLinkHovered: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary,
+    link: p.themeDarkAlt,
+    linkHovered: p.themeDarker,
+    disabledText: p.neutralTertiary,
+
+    buttonBackground: p.neutralQuaternaryAlt,
+    buttonBackgroundHovered: p.neutralQuaternary,
+    buttonBackgroundPressed: !fullTheme.isInverted ? p.neutralTertiary : p.neutralTertiaryAlt,
+    buttonBackgroundDisabled: p.neutralLight,
+    buttonBorder: 'transparent',
+    buttonText: p.neutralPrimary,
+    buttonTextHovered: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary,
+    buttonTextPressed: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary,
+    buttonTextDisabled: !fullTheme.isInverted ? p.neutralTertiary : p.neutralTertiaryAlt,
+    buttonBorderDisabled: 'transparent',
+    primaryButtonBackground: p.themePrimary,
+    primaryButtonBackgroundHovered: p.themeDarkAlt,
+    primaryButtonBackgroundPressed: p.themeDark,
+    primaryButtonBorder: 'transparent',
+    primaryButtonText: p.white,
+    primaryButtonTextHovered: p.white,
+    primaryButtonTextPressed: p.white,
+
+    menuBackground: p.white,
+    menuDivider: p.neutralTertiaryAlt,
+    menuItemBackgroundHovered: p.neutralLighter,
+    menuItemBackgroundPressed: p.neutralLight,
+    menuItemText: p.neutralPrimary,
+    menuItemTextHovered: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary
+  };
+
+  return makeThemeFromPartials(fullTheme, partialPalette, partialSemantic);
+}
+
+/**
+ * A variant where the background is a soft version of the primary color. Most other colors remain unchanged.
+ *
+ * @export
+ * @param {IPartialTheme} theme the theme to build a variant for
+ * @returns {ITheme} the variant theme
+ */
+export function getSoftVariant(theme: IPartialTheme): ITheme {
+  const fullTheme = createTheme(theme);
+  const p = fullTheme.palette;
+
+  // commented lines are unchanged, but left in for tracking purposes
+  // in a soft variant, most colors remain unchanged
+  const partialPalette: Partial<IPalette> = {
+    // theme - shifts a shade stronger to account for contrast against stronger background
+    // themeDarker: '#004578', // can't go darker, stays the same
+    themeDark: p.themeDarker,
+    themeDarkAlt: p.themeDark,
+    themePrimary: p.themeDarkAlt,
+    themeSecondary: p.themePrimary,
+    themeTertiary: p.themeSecondary,
+    themeLight: p.themeTertiary,
+    themeLighter: p.themeLight,
+    themeLighterAlt: p.themeLighter,
+
+    // foregrounds
+    // black: '#000000',
+    // neutralDark: '#212121',
+    // neutralPrimary: '#333333',
+    // neutralPrimaryAlt: '#3c3c3c',
+    // neutralSecondary: '#666666',
+    // neutralTertiary: '#a6a6a6',
+
+    // backgrounds - page background starts at themeLighterAlt or themeLight, depending on inverted theme or not,
+    // then gets steps stronger from there
+    neutralTertiaryAlt: !fullTheme.isInverted ? p.themeDarkAlt : p.themeDarker,
+    neutralQuaternary: !fullTheme.isInverted ? p.themePrimary : p.themeDark,
+    neutralQuaternaryAlt: !fullTheme.isInverted ? p.themeSecondary : p.themeDarkAlt,
+    neutralLight: !fullTheme.isInverted ? p.themeTertiary : p.themePrimary,
+    neutralLighter: !fullTheme.isInverted ? p.themeLight : p.themeSecondary,
+    neutralLighterAlt: !fullTheme.isInverted ? p.themeLighter : p.themeTertiary,
+    white: !fullTheme.isInverted ? p.themeLighterAlt : p.themeLight
+  };
+
+  const partialSemantic: Partial<ISemanticColors> = {
+    bodyBackground: !fullTheme.isInverted ? p.themeLighterAlt : p.themeLight,
+    bodyStandoutBackground: !fullTheme.isInverted ? p.themeLighter : p.themeTertiary,
+    bodyFrameBackground: !fullTheme.isInverted ? p.themeLighter : p.themeLight,
+    bodyFrameDivider: !fullTheme.isInverted ? p.themeLighter : p.neutralQuaternary,
+    bodyText: p.neutralPrimary,
+    bodySubtext: p.neutralSecondary,
+    bodyDivider: p.neutralQuaternaryAlt,
     inputBorder: p.themeLighter,
     // inputBorderHovered: p.neutralPrimary,
     inputBackground: p.themeLighter,
     // inputBackgroundChecked: p.themePrimary,
     // inputBackgroundCheckedHovered: p.themeDarkAlt,
-    inputForegroundChecked: p.themeLighterAlt,
+    inputForegroundChecked: p.themeLighter,
     // inputFocusBorderAlt: p.themePrimary,
+    variantBorder: p.neutralLight,
+    variantBorderHovered: p.neutralTertiary,
+    defaultStateBackground: p.neutralLight,
+
+    actionLink: p.neutralPrimary,
+    actionLinkHovered: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary,
+    link: p.themeDarkAlt,
+    linkHovered: p.themeDarker,
+    disabledText: p.neutralTertiary,
+
+    buttonBackground: p.neutralQuaternaryAlt,
+    buttonBackgroundHovered: p.neutralQuaternary,
+    buttonBackgroundPressed: !fullTheme.isInverted ? p.neutralTertiary : p.neutralTertiaryAlt,
+    buttonBackgroundDisabled: p.neutralLight,
+    buttonBorder: 'transparent',
+    buttonText: p.neutralPrimary,
+    buttonTextHovered: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary,
+    buttonTextPressed: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary,
+    buttonTextDisabled: !fullTheme.isInverted ? p.neutralTertiary : p.neutralTertiaryAlt,
+    buttonBorderDisabled: 'transparent',
+    primaryButtonBackground: p.themePrimary,
+    primaryButtonBackgroundHovered: p.themeDarkAlt,
+    primaryButtonBackgroundPressed: p.themeDark,
+    primaryButtonBorder: 'transparent',
+    primaryButtonText: p.white,
+    primaryButtonTextHovered: p.white,
+    primaryButtonTextPressed: p.white,
+
+    menuBackground: p.white,
+    menuDivider: p.neutralTertiaryAlt,
+    menuItemBackgroundHovered: p.neutralLighter,
+    menuItemBackgroundPressed: p.neutralLight,
+    menuItemText: p.neutralPrimary,
+    menuItemTextHovered: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary
   };
 
-  return createTheme({ ...theme, ...{ palette: partialPalette, semanticColors: partialSemantic } });
+  return makeThemeFromPartials(fullTheme, partialPalette, partialSemantic);
 }
 
 /**
@@ -80,7 +232,7 @@ export function getSoftVariant(theme: IPartialTheme): ITheme {
  * The primary color becomes shades of the background.
  *
  * @export
- * @param {IPartialTheme} theme the theme for which to build a variant for
+ * @param {IPartialTheme} theme the theme to build a variant for
  * @returns {ITheme} the variant theme
  */
 export function getStrongVariant(theme: IPartialTheme): ITheme {
@@ -114,26 +266,80 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
 
     // backgrounds
     neutralTertiaryAlt: p.themeLighterAlt,
-    neutralQuaternary: p.themeLighter,
-    neutralQuaternaryAlt: p.themeLight,
-    neutralLight: p.themeTertiary,
-    neutralLighter: p.themeSecondary,
-    neutralLighterAlt: p.themePrimary,
-    white: p.themeDarkAlt
+    neutralQuaternary: p.themeLighterAlt, // something needs to overlap here since we're out of slots
+    neutralQuaternaryAlt: p.themeLighter,
+    neutralLight: p.themeLight,
+    neutralLighter: p.themeTertiary,
+    neutralLighterAlt: p.themeSecondary,
+    white: p.themePrimary
   };
 
   const partialSemantic: Partial<ISemanticColors> = {
-    bodyBackground: p.themeDarkAlt,
+    bodyBackground: p.themePrimary,
+    bodyStandoutBackground: p.themeDarkAlt,
+    bodyFrameBackground: !fullTheme.isInverted ? p.themeDarkAlt : p.themePrimary,
+    bodyFrameDivider: !fullTheme.isInverted ? p.themeDarkAlt : p.themeTertiary,
     bodyText: p.white,
-
+    bodySubtext: p.white,
+    bodyDivider: p.themeTertiary,
     inputBorder: p.themeDark,
     // inputBorderHovered: p.neutralPrimary,
     inputBackground: p.themeDark,
     inputBackgroundChecked: p.white,
-    // inputBackgroundCheckedHovered: p.themeDarkAlt,
+    // inputBackgroundCheckedHovered: p.themePrimary,
     inputForegroundChecked: p.themeDark,
     // inputFocusBorderAlt: p.themePrimary,
+    variantBorder: p.themeDarkAlt,
+    variantBorderHovered: p.themeDarker,
+    defaultStateBackground: p.neutralLighterAlt,
+
+    actionLink: p.white,
+    actionLinkHovered: p.white,
+    link: p.white,
+    linkHovered: p.white,
+    disabledText: p.neutralQuaternary,
+
+    buttonBackground: p.themePrimary,
+    buttonBackgroundHovered: p.themeDarkAlt,
+    buttonBackgroundPressed: p.themeDark,
+    buttonBackgroundDisabled: !fullTheme.isInverted ? p.themeLighter : p.themeLight,
+    buttonBorder: p.white,
+    buttonText: p.white,
+    buttonTextHovered: p.white,
+    buttonTextPressed: p.white,
+    buttonTextDisabled: p.themeTertiary,
+    buttonBorderDisabled: 'transparent',
+    primaryButtonBackground: p.white,
+    primaryButtonBackgroundHovered: !fullTheme.isInverted ? p.themeLighter : p.themeLight,
+    primaryButtonBackgroundPressed: !fullTheme.isInverted ? p.themeLight : p.themeTertiary,
+    primaryButtonBorder: 'transparent',
+    primaryButtonText: !fullTheme.isInverted ? p.themePrimary : p.neutralPrimary,
+    primaryButtonTextHovered: !fullTheme.isInverted ? p.themeDark : p.neutralPrimary,
+    primaryButtonTextPressed: !fullTheme.isInverted ? p.themeDark : p.neutralPrimary,
+
+    menuBackground: p.white,
+    menuDivider: p.neutralTertiaryAlt,
+    menuItemBackgroundHovered: p.neutralLighter,
+    menuItemBackgroundPressed: p.neutralLight,
+    menuItemText: p.neutralPrimary,
+    menuItemTextHovered: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary
   };
 
-  return createTheme({ ...theme, ...{ palette: partialPalette, semanticColors: partialSemantic } });
+  // Strong variant is unique here, we've redefined the entire palette and are
+  // effectively inverting the theme. Thus, do not mix in the original theme's value
+  // for the palette and semanticColors, since they will not work well "inverted",
+  // instead, use the new palette and then generate semanticColors from scratch.
+
+  // Create variant palette
+  let variantTheme = createTheme({ palette: { ...fullTheme.palette, ...partialPalette } });
+  // Change semantic colors to use updated variant palette values
+  variantTheme.semanticColors = { ...variantTheme.semanticColors, ...partialSemantic };
+  // Fill in the rest of the theme
+  variantTheme = {
+    ...fullTheme,
+    palette: variantTheme.palette,
+    semanticColors: variantTheme.semanticColors,
+    isInverted: !fullTheme.isInverted
+  };
+  return variantTheme;
 }

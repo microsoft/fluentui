@@ -2,9 +2,8 @@
 
 exports[`ContextMenuItemChildren when a checkmark icon renders the component with the checkmark 1`] = `
 ShallowWrapper {
-  "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Unknown
+  Symbol(enzyme.__unrendered__): <ContextualMenuItemBase
     classNames={
       Object {
         "checkmarkIcon": "checkmarkIcon",
@@ -15,25 +14,26 @@ ShallowWrapper {
         "linkContent": "linkContent",
         "linkContentMenu": "linkContentMenu",
         "root": "root",
+        "secondaryText": "secondaryText",
         "splitContainer": "splitContainer",
         "splitMenu": "splitMenu",
         "splitPrimary": "splitPrimary",
         "subMenuIcon": "subMenuIcon",
       }
     }
-    hasIcons={undefined}
     index={1}
     item={
       Object {
         "key": "123",
       }
     }
-    onCheckmarkClick={[Function]}
+    onCheckmarkClick={[MockFunction]}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
     "render": [Function],
+    "simulateError": [Function],
     "simulateEvent": [Function],
     "unmount": [Function],
   },
@@ -43,11 +43,12 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
-        <Icon
+        <StyledIconBase
           className="checkmarkIcon"
           iconName=""
           onClick={[Function]}
         />,
+        null,
         null,
         null,
         null,
@@ -72,6 +73,7 @@ ShallowWrapper {
       null,
       null,
       null,
+      null,
     ],
     "type": "div",
   },
@@ -82,11 +84,12 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <Icon
+          <StyledIconBase
             className="checkmarkIcon"
             iconName=""
             onClick={[Function]}
           />,
+          null,
           null,
           null,
           null,
@@ -111,6 +114,7 @@ ShallowWrapper {
         null,
         null,
         null,
+        null,
       ],
       "type": "div",
     },
@@ -119,6 +123,16 @@ ShallowWrapper {
     "adapter": ReactSixteenAdapter {
       "options": Object {
         "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
       },
     },
   },
@@ -127,9 +141,8 @@ ShallowWrapper {
 
 exports[`ContextMenuItemChildren when it has a sub menu renders the menu icon 1`] = `
 ShallowWrapper {
-  "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Unknown
+  Symbol(enzyme.__unrendered__): <ContextualMenuItemBase
     classNames={
       Object {
         "checkmarkIcon": "checkmarkIcon",
@@ -140,6 +153,7 @@ ShallowWrapper {
         "linkContent": "linkContent",
         "linkContentMenu": "linkContentMenu",
         "root": "root",
+        "secondaryText": "secondaryText",
         "splitContainer": "splitContainer",
         "splitMenu": "splitMenu",
         "splitPrimary": "splitPrimary",
@@ -160,6 +174,7 @@ ShallowWrapper {
     "batchedUpdates": [Function],
     "getNode": [Function],
     "render": [Function],
+    "simulateError": [Function],
     "simulateEvent": [Function],
     "unmount": [Function],
   },
@@ -170,11 +185,12 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         null,
-        <Icon
+        <StyledIconBase
           className="icon"
         />,
         null,
-        <Icon
+        null,
+        <StyledIconBase
           className="subMenuIcon"
           iconName="ChevronRight"
         />,
@@ -195,6 +211,7 @@ ShallowWrapper {
         "rendered": null,
         "type": [Function],
       },
+      null,
       null,
       Object {
         "instance": null,
@@ -219,11 +236,12 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           null,
-          <Icon
+          <StyledIconBase
             className="icon"
           />,
           null,
-          <Icon
+          null,
+          <StyledIconBase
             className="subMenuIcon"
             iconName="ChevronRight"
           />,
@@ -245,6 +263,7 @@ ShallowWrapper {
           "type": [Function],
         },
         null,
+        null,
         Object {
           "instance": null,
           "key": undefined,
@@ -265,6 +284,16 @@ ShallowWrapper {
     "adapter": ReactSixteenAdapter {
       "options": Object {
         "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
       },
     },
   },
@@ -273,9 +302,8 @@ ShallowWrapper {
 
 exports[`ContextMenuItemChildren when it has icons when it doesnt have iconProps renders the icon with iconName 1`] = `
 ShallowWrapper {
-  "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Unknown
+  Symbol(enzyme.__unrendered__): <ContextualMenuItemBase
     classNames={
       Object {
         "checkmarkIcon": "checkmarkIcon",
@@ -286,6 +314,7 @@ ShallowWrapper {
         "linkContent": "linkContent",
         "linkContentMenu": "linkContentMenu",
         "root": "root",
+        "secondaryText": "secondaryText",
         "splitContainer": "splitContainer",
         "splitMenu": "splitMenu",
         "splitPrimary": "splitPrimary",
@@ -305,6 +334,7 @@ ShallowWrapper {
     "batchedUpdates": [Function],
     "getNode": [Function],
     "render": [Function],
+    "simulateError": [Function],
     "simulateEvent": [Function],
     "unmount": [Function],
   },
@@ -315,9 +345,10 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         null,
-        <Icon
+        <StyledIconBase
           className="icon"
         />,
+        null,
         null,
         null,
       ],
@@ -339,6 +370,7 @@ ShallowWrapper {
       },
       null,
       null,
+      null,
     ],
     "type": "div",
   },
@@ -350,9 +382,10 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           null,
-          <Icon
+          <StyledIconBase
             className="icon"
           />,
+          null,
           null,
           null,
         ],
@@ -374,6 +407,7 @@ ShallowWrapper {
         },
         null,
         null,
+        null,
       ],
       "type": "div",
     },
@@ -382,6 +416,16 @@ ShallowWrapper {
     "adapter": ReactSixteenAdapter {
       "options": Object {
         "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
       },
     },
   },
@@ -390,9 +434,8 @@ ShallowWrapper {
 
 exports[`ContextMenuItemChildren when it has icons when it has iconProps renders the icon 1`] = `
 ShallowWrapper {
-  "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Unknown
+  Symbol(enzyme.__unrendered__): <ContextualMenuItemBase
     classNames={
       Object {
         "checkmarkIcon": "checkmarkIcon",
@@ -403,6 +446,7 @@ ShallowWrapper {
         "linkContent": "linkContent",
         "linkContentMenu": "linkContentMenu",
         "root": "root",
+        "secondaryText": "secondaryText",
         "splitContainer": "splitContainer",
         "splitMenu": "splitMenu",
         "splitPrimary": "splitPrimary",
@@ -413,9 +457,11 @@ ShallowWrapper {
     index={1}
     item={
       Object {
-        "icon": "itemIcon",
+        "iconProps": Object {
+          "iconName": "itemIcon",
+        },
         "key": "123",
-        "name": "menuItem",
+        "text": "menuItem",
       }
     }
   />,
@@ -423,6 +469,7 @@ ShallowWrapper {
     "batchedUpdates": [Function],
     "getNode": [Function],
     "render": [Function],
+    "simulateError": [Function],
     "simulateEvent": [Function],
     "unmount": [Function],
   },
@@ -433,7 +480,7 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         null,
-        <Icon
+        <StyledIconBase
           className="icon"
           iconName="itemIcon"
         />,
@@ -442,6 +489,7 @@ ShallowWrapper {
         >
           menuItem
         </span>,
+        null,
         null,
       ],
       "className": "linkContent",
@@ -474,6 +522,7 @@ ShallowWrapper {
         "type": "span",
       },
       null,
+      null,
     ],
     "type": "div",
   },
@@ -485,7 +534,7 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           null,
-          <Icon
+          <StyledIconBase
             className="icon"
             iconName="itemIcon"
           />,
@@ -494,6 +543,7 @@ ShallowWrapper {
           >
             menuItem
           </span>,
+          null,
           null,
         ],
         "className": "linkContent",
@@ -526,6 +576,7 @@ ShallowWrapper {
           "type": "span",
         },
         null,
+        null,
       ],
       "type": "div",
     },
@@ -534,6 +585,16 @@ ShallowWrapper {
     "adapter": ReactSixteenAdapter {
       "options": Object {
         "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
       },
     },
   },

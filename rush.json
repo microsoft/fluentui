@@ -1,10 +1,14 @@
 {
-  "npmVersion": "5.3.0",
-  "rushVersion": "4.3.0",
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/rush.schema.json",
+  "npmVersion": "5.4.0",
+  "rushVersion": "5.0.6",
   "repository": {
     "url": "https://github.com/OfficeDev/office-ui-fabric-react.git"
   },
-  "nodeSupportedVersionRange": ">=6.9.0 <9.0.0",
+  "eventHooks": {
+    "postRushInstall": ["node scripts/install-husky.js"]
+  },
+  "nodeSupportedVersionRange": ">=6.9.0 <10.0.0",
   "projects": [
     {
       "packageName": "office-ui-fabric-react",
@@ -13,8 +17,31 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@uifabric/webpack-utils",
+      "projectFolder": "packages/webpack-utils",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@uifabric/experiments",
       "projectFolder": "packages/experiments",
+      "versionPolicyName": "lockedMajor",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@uifabric/foundation",
+      "projectFolder": "packages/foundation",
+      "versionPolicyName": "lockedMajor",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@uifabric/charting",
+      "projectFolder": "packages/charting",
+      "versionPolicyName": "lockedMajor",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@uifabric/dashboard",
+      "projectFolder": "packages/dashboard",
       "versionPolicyName": "lockedMajor",
       "shouldPublish": true
     },
@@ -37,22 +64,20 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@uifabric/set-version",
+      "projectFolder": "packages/set-version",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@uifabric/example-app-base",
       "projectFolder": "packages/example-app-base",
       "versionPolicyName": "lockedMajor",
-      "cyclicDependencyProjects": [
-        "office-ui-fabric-react"
-      ],
       "shouldPublish": true
     },
     {
       "packageName": "@uifabric/styling",
       "projectFolder": "packages/styling",
       "versionPolicyName": "lockedMajor",
-      "cyclicDependencyProjects": [
-        "office-ui-fabric-react",
-        "@uifabric/example-app-base"
-      ],
       "shouldPublish": true
     },
     {
@@ -68,34 +93,10 @@
       "shouldPublish": true
     },
     {
-      "packageName": "@uifabric/icons",
-      "projectFolder": "packages/icons",
+      "packageName": "@uifabric/fabric-website-resources",
+      "projectFolder": "apps/fabric-website-resources",
       "versionPolicyName": "lockedMajor",
       "shouldPublish": true
-    },
-    {
-      "packageName": "@uifabric/build",
-      "projectFolder": "scripts",
-      "versionPolicyName": "lockedMajor",
-      "shouldPublish": false
-    },
-    {
-      "packageName": "ssr-tests",
-      "projectFolder": "apps/ssr-tests",
-      "versionPolicyName": "lockedMajor",
-      "shouldPublish": false
-    },
-    {
-      "packageName": "vr-tests",
-      "projectFolder": "apps/vr-tests",
-      "versionPolicyName": "lockedMajor",
-      "shouldPublish": false
-    },
-    {
-      "packageName": "todo-app",
-      "projectFolder": "apps/todo-app",
-      "versionPolicyName": "lockedMajor",
-      "shouldPublish": false
     },
     {
       "packageName": "@uifabric/fabric-website",
@@ -104,16 +105,78 @@
       "shouldPublish": true
     },
     {
-      "packageName": "test-bundle-button",
-      "projectFolder": "apps/test-bundle-button",
+      "packageName": "@uifabric/icons",
+      "projectFolder": "packages/icons",
       "versionPolicyName": "lockedMajor",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@uifabric/build",
+      "projectFolder": "scripts",
       "shouldPublish": false
     },
     {
-      "packageName": "office-ui-fabric-react-tslint",
-      "projectFolder": "packages/office-ui-fabric-react-tslint",
-      "versionPolicyName": "lockedMajor",
+      "packageName": "ssr-tests",
+      "projectFolder": "apps/ssr-tests",
       "shouldPublish": false
+    },
+    {
+      "packageName": "vr-tests",
+      "projectFolder": "apps/vr-tests",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "todo-app",
+      "projectFolder": "apps/todo-app",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "server-rendered-app",
+      "projectFolder": "apps/server-rendered-app",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "test-bundles",
+      "projectFolder": "apps/test-bundles",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "@uifabric/tslint-rules",
+      "projectFolder": "packages/tslint-rules",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "@uifabric/prettier-rules",
+      "projectFolder": "packages/prettier-rules",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "@uifabric/theme-samples",
+      "projectFolder": "packages/theme-samples",
+      "versionPolicyName": "lockedMajor",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@uifabric/fluent-theme",
+      "projectFolder": "packages/fluent-theme",
+      "versionPolicyName": "lockedMajor",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@uifabric/date-time",
+      "projectFolder": "packages/date-time",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "@uifabric/foundation-scenarios",
+      "projectFolder": "packages/foundation-scenarios",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "@uifabric/test-utilities",
+      "projectFolder": "packages/test-utilities",
+      "versionPolicyName": "lockedMajor",
+      "shouldPublish": true
     }
   ]
 }

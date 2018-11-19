@@ -3,6 +3,9 @@ import { Async } from './Async';
 import { EventGroup } from './EventGroup';
 import { IDisposable } from './IDisposable';
 import { warnDeprecations, warnMutuallyExclusive, warnConditionallyRequiredProps, ISettingsMap } from './warn';
+import { initializeFocusRects } from './initializeFocusRects';
+import { initializeDir } from './initializeDir';
+import { IRefObject } from './createRef';
 
 /**
  * BaseProps interface.
@@ -11,7 +14,7 @@ import { warnDeprecations, warnMutuallyExclusive, warnConditionallyRequiredProps
  */
 // tslint:disable-next-line:no-any
 export interface IBaseProps<T = any> {
-  componentRef?: (ref: T | null) => (void | T);
+  componentRef?: IRefObject<T>;
 }
 
 /**
@@ -19,7 +22,7 @@ export interface IBaseProps<T = any> {
  *
  * @public
  */
-export class BaseComponent<P extends IBaseProps = {}, S = {}> extends React.Component<P, S> {
+export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends React.Component<TProps, TState> {
   /**
    * @deprecated Use React's error boundaries instead.
    */
@@ -31,7 +34,7 @@ export class BaseComponent<P extends IBaseProps = {}, S = {}> extends React.Comp
    * implementing a passthrough (higher-order component), you would set this to false and pass through
    * the props to the inner component, allowing it to resolve the componentRef.
    */
-  protected _shouldUpdateComponentRef: boolean;
+  protected _skipComponentRefResolution: boolean;
 
   // tslint:disable:variable-name
   private __async: Async;
@@ -47,10 +50,12 @@ export class BaseComponent<P extends IBaseProps = {}, S = {}> extends React.Comp
    * @param context - The context for the component.
    */
   // tslint:disable-next-line:no-any
-  constructor(props: P, context?: any) {
+  constructor(props: TProps, context?: any) {
     super(props, context);
 
-    this._shouldUpdateComponentRef = true;
+    // Ensure basic assumptions about the environment.
+    initializeFocusRects();
+    initializeDir();
 
     _makeAllSafe(this, BaseComponent.prototype, [
       'componentWillMount',
@@ -68,7 +73,7 @@ export class BaseComponent<P extends IBaseProps = {}, S = {}> extends React.Comp
    * When the component will receive props, make sure the componentRef is updated.
    */
   // tslint:disable-next-line:no-any
-  public componentWillReceiveProps(newProps: Readonly<P>, newContext: any): void {
+  public componentWillReceiveProps(newProps: Readonly<TProps>, newContext: any): void {
     this._updateComponentRef(this.props, newProps);
   }
 
@@ -76,13 +81,15 @@ export class BaseComponent<P extends IBaseProps = {}, S = {}> extends React.Comp
    * When the component has mounted, update the componentRef.
    */
   public componentDidMount(): void {
-    this._updateComponentRef(undefined, this.props);
+    this._setComponentRef(this.props.componentRef, this);
   }
 
   /**
    * If we have disposables, dispose them automatically on unmount.
    */
   public componentWillUnmount(): void {
+    this._setComponentRef(this.props.componentRef, null);
+
     if (this.__disposables) {
       for (let i = 0, len = this._disposables.length; i < len; i++) {
         let disposable = this.__disposables[i];
@@ -101,9 +108,9 @@ export class BaseComponent<P extends IBaseProps = {}, S = {}> extends React.Comp
   public get className(): string {
     if (!this.__className) {
       let funcNameRegex = /function (.{1,})\(/;
-      let results = (funcNameRegex).exec((this).constructor.toString());
+      let results = funcNameRegex.exec(this.constructor.toString());
 
-      this.__className = (results && results.length > 1) ? results[1] : '';
+      this.__className = results && results.length > 1 ? results[1] : '';
     }
 
     return this.__className;
@@ -153,16 +160,18 @@ export class BaseComponent<P extends IBaseProps = {}, S = {}> extends React.Comp
    * Helper to return a memoized ref resolver function.
    * @param refName - Name of the member to assign the ref to.
    * @returns A function instance keyed from the given refname.
+   * @deprecated Use `createRef` from React.createRef.
    */
   protected _resolveRef(refName: string): (ref: React.ReactNode) => React.ReactNode {
     if (!this.__resolves) {
       this.__resolves = {};
     }
+
     if (!this.__resolves[refName]) {
       // tslint:disable-next-line:no-any
       this.__resolves[refName] = (ref: React.ReactNode) => {
         // tslint:disable-next-line:no-any
-        return (this as any)[refName] = ref;
+        return ((this as any)[refName] = ref);
       };
     }
 
@@ -172,27 +181,20 @@ export class BaseComponent<P extends IBaseProps = {}, S = {}> extends React.Comp
   /**
    * Updates the componentRef (by calling it with "this" when necessary.)
    */
-  protected _updateComponentRef(currentProps: IBaseProps | undefined, newProps: IBaseProps = {}): void {
-    if (this._shouldUpdateComponentRef &&
-      ((!currentProps && newProps.componentRef) ||
-        (currentProps && currentProps.componentRef !== newProps.componentRef))) {
-
-      if (currentProps && currentProps.componentRef) {
-        currentProps.componentRef(null);
-      }
-
-      if (newProps.componentRef) {
-        newProps.componentRef(this);
-      }
+  protected _updateComponentRef(currentProps: IBaseProps, newProps: IBaseProps = {}): void {
+    if (currentProps.componentRef !== newProps.componentRef) {
+      this._setComponentRef(currentProps.componentRef, null);
+      this._setComponentRef(newProps.componentRef, this);
     }
   }
+
   /**
    * Warns when a deprecated props are being used.
    *
    * @param deprecationMap - The map of deprecations, where key is the prop name and the value is
    * either null or a replacement prop name.
    */
-  protected _warnDeprecations(deprecationMap: ISettingsMap<P>): void {
+  protected _warnDeprecations(deprecationMap: ISettingsMap<TProps>): void {
     warnDeprecations(this.className, this.props, deprecationMap);
   }
 
@@ -201,7 +203,7 @@ export class BaseComponent<P extends IBaseProps = {}, S = {}> extends React.Comp
    *
    * @param mutuallyExclusiveMap - The map of mutually exclusive props.
    */
-  protected _warnMutuallyExclusive(mutuallyExclusiveMap: ISettingsMap<P>): void {
+  protected _warnMutuallyExclusive(mutuallyExclusiveMap: ISettingsMap<TProps>): void {
     warnMutuallyExclusive(this.className, this.props, mutuallyExclusiveMap);
   }
 
@@ -216,6 +218,18 @@ export class BaseComponent<P extends IBaseProps = {}, S = {}> extends React.Comp
     warnConditionallyRequiredProps(this.className, this.props, requiredProps, conditionalPropName, condition);
   }
 
+  private _setComponentRef<TRefInterface>(ref: IRefObject<TRefInterface> | undefined, value: TRefInterface | null): void {
+    if (!this._skipComponentRefResolution && ref) {
+      if (typeof ref === 'function') {
+        ref(value);
+      }
+
+      if (typeof ref === 'object') {
+        // tslint:disable:no-any
+        (ref as any).current = value;
+      }
+    }
+  }
 }
 
 /**
@@ -237,7 +251,7 @@ function _makeSafe(obj: BaseComponent<{}, {}>, prototype: Object, methodName: st
 
   if (classMethod || prototypeMethod) {
     // tslint:disable-next-line:no-any
-    (obj as any)[methodName] = function (): any {
+    (obj as any)[methodName] = function(): any {
       let retVal;
 
       if (prototypeMethod) {
@@ -257,4 +271,6 @@ function _makeSafe(obj: BaseComponent<{}, {}>, prototype: Object, methodName: st
  *
  * @public
  */
-export function nullRender(): JSX.Element | null { return null; }
+export function nullRender(): JSX.Element | null {
+  return null;
+}

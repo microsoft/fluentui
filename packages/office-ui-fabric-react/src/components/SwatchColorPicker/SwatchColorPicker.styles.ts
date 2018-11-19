@@ -1,23 +1,29 @@
-
 import { ISwatchColorPickerStyleProps, ISwatchColorPickerStyles } from './SwatchColorPicker.types';
+import { getGlobalClassNames } from '../../Styling';
+
+const GlobalClassNames = {
+  focusedContainer: 'ms-swatchColorPickerBodyContainer'
+};
 
 export const getStyles = (props: ISwatchColorPickerStyleProps): ISwatchColorPickerStyles => {
-  const { className } = props;
+  const { className, theme, cellMargin } = props;
+
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {
     root: {
-      padding: 2,
-      outline: 'none'
+      margin: '8px 0',
+      borderCollapse: 'collapse'
     },
     tableCell: {
-      padding: 0
+      padding: cellMargin! / 2
     },
     focusedContainer: [
-      'ms-swatchColorPickerBodyContainer',
+      classNames.focusedContainer,
       {
         clear: 'both',
         display: 'block',
-        minWidth: '180px',
+        minWidth: '180px'
       },
       className
     ]

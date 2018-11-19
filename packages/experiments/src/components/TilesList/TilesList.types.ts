@@ -1,6 +1,5 @@
-
 import * as React from 'react';
-import { IBaseProps, ISize } from 'office-ui-fabric-react/lib/Utilities';
+import { IRefObject, IBaseProps, ISize } from 'office-ui-fabric-react/lib/Utilities';
 import { TilesList } from './TilesList';
 import { IFocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 
@@ -18,12 +17,16 @@ export interface ITilesGridItem<TItem> {
    * The desired dimensions of the item, used to compute aspect ratio.
    * If not provided, this is assumed to be a square equivalent to the current row height.
    */
-  desiredSize?: { width: number; height: number; };
+  desiredSize?: { width: number; height: number };
+  /**
+   * Set to true if the item is intended to be a placeholder
+   */
+  isPlaceholder?: boolean;
   /**
    * Invoked to render the virtual DOM for the item.
    * This content will be rendered inside the cell allocated for the item.
    */
-  onRender: (content: TItem, finalSize?: ISize) => (React.ReactNode | React.ReactNode[]);
+  onRender: (content: TItem, finalSize?: ISize) => React.ReactNode | React.ReactNode[];
 }
 
 export const enum TilesGridMode {
@@ -88,6 +91,10 @@ export interface ITilesGridSegment<TItem> {
    * The maximum aspect ratio for an item in the grid.
    */
   maxAspectRatio?: number;
+  /**
+   * Set to true if the item is intended to be a placeholder
+   */
+  isPlaceholder?: boolean;
 }
 
 export { ISize as ITileSize };
@@ -107,7 +114,7 @@ export interface ITilesListProps<TItem> extends IBaseProps, React.Props<TilesLis
   /**
    * Component ref for the focus zone within the list. Use this to control auto-focus.
    */
-  focusZoneComponentRef?: (focusZone: IFocusZone) => void;
+  focusZoneComponentRef?: IRefObject<IFocusZone>;
   /**
    * Callback for when the active element within the list's FocusZone changes.
    */

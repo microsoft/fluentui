@@ -1,1 +1,2 @@
-export * from '@uifabric/styling/lib/index';
+import './version';
+export * from '@uifabric/styling';

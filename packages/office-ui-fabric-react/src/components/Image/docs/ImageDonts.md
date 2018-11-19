@@ -1,0 +1,1 @@
+- Repeat information in your alt text that is already on the page. Don't use "image of" or "graphic of" to describe it, as that is already apparent to the reader.

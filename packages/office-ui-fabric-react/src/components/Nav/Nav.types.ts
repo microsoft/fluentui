@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
-import { IRenderFunction, IStyleFunction } from '../../Utilities';
+import { IRefObject, IRenderFunction, IStyleFunctionOrObject, IComponentAs } from '../../Utilities';
 import { IIconProps } from '../Icon/Icon.types';
+import { IButtonProps } from '../../Button';
 
 export interface INav {
   /**
@@ -18,12 +19,12 @@ export interface INavProps {
    * Optional callback to access the INav interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: INav) => void;
+  componentRef?: IRefObject<INav>;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
-  getStyles?: IStyleFunction<INavStyleProps, INavStyles>;
+  styles?: IStyleFunctionOrObject<INavStyleProps, INavStyles>;
 
   /**
    * Theme provided by HOC.
@@ -40,6 +41,18 @@ export interface INavProps {
    * A collection of link groups to display in the navigation bar
    */
   groups: INavLinkGroup[] | null;
+
+  /**
+   * Used to customize how content inside the group header is rendered
+   * @defaultvalue Default group header rendering
+   */
+  onRenderGroupHeader?: IRenderFunction<INavLinkGroup>;
+
+  /**
+   * Render a custom link in place of the normal one.
+   * This replaces the entire button rather than simply button content
+   */
+  linkAs?: IComponentAs<IButtonProps>;
 
   /**
    * Used to customize how content inside the link tag is rendered
@@ -83,14 +96,14 @@ export interface INavProps {
   expandButtonAriaLabel?: string;
 
   /**
-   * Deprecated at v0.68.1 and will be removed at >= V1.0.0.
-   * @deprecated
+   * Deprecated at v0.68.1 and will be removed at \>= v1.0.0.
+   * @deprecated Removed at v1.0.0.
    **/
   expandedStateText?: string;
 
   /**
-   * Deprecated at v0.68.1 and will be removed at >= V1.0.0.
-   * @deprecated
+   * Deprecated at v0.68.1 and will be removed at \>= v1.0.0.
+   * @deprecated Removed at v1.0.0.
    **/
   collapsedStateText?: string;
 }
@@ -134,7 +147,8 @@ export interface INavLink {
   url: string;
 
   /**
-   * Meta info for the link server, if negative, client side added node.
+   * Unique, stable key for the link, used when rendering the list of links and for tracking
+   * the currently selected link.
    */
   key?: string;
 
@@ -150,29 +164,30 @@ export interface INavLink {
   onClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
 
   /**
-   * button icon name if applied
+   * Name of an icon to render next to the link button.
    */
   icon?: string;
 
   /**
-   * Classname to apply to the icon link.
+   * Deprecated. Use `iconProps.className` instead.
+   * @deprecated Use `iconProps.className` instead.
    */
   iconClassName?: string;
 
   /**
-   * button icon props if applied
+   * Props for an icon to render next to the link button.
    */
   iconProps?: IIconProps;
 
   /**
-   * Deprecated at v0.68.1 and will be removed at >= v1.0.0.
-   * @deprecated
+   * Deprecated at v0.68.1 and will be removed at \>= v1.0.0.
+   * @deprecated Removed at v1.0.0.
    */
   engagementName?: string;
 
   /**
-   * Deprecated at v0.68.1 and will be removed at >= v1.0.0.
-   * @deprecated
+   * Deprecated at v0.68.1 and will be removed at \>= v1.0.0.
+   * @deprecated Removed at v1.0.0.
    */
   altText?: string;
 
@@ -192,7 +207,7 @@ export interface INavLink {
   ariaLabel?: string;
 
   /**
-   * title for tooltip or description
+   * Text for title tooltip and ARIA description.
    */
   title?: string;
 
@@ -202,8 +217,7 @@ export interface INavLink {
   target?: string;
 
   /**
-   * Point to the parent node key.  This is used in EditNav when move node from sublink to
-   *   parent link vs vers.
+   * @deprecated Not used in the Nav control or anywhere else in office-ui-fabric-react.
    */
   parentId?: string;
 
@@ -305,9 +319,9 @@ export interface INavStyles {
   linkText: IStyle;
 
   /**
-  * Style set for the link element extending the
-  * root style set for ActionButton component.
-  */
+   * Style set for the link element extending the
+   * root style set for ActionButton component.
+   */
   link: IStyle;
 
   /**

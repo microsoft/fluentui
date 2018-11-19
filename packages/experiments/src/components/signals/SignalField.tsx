@@ -1,12 +1,11 @@
-
 import * as React from 'react';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
-import * as SignalFieldStylesModule from './SignalField.scss';
+import * as SignalFieldStyles from './SignalField.scss';
 
-// tslint:disable-next-line:no-any
-const SignalFieldStyles: any = SignalFieldStylesModule;
+export type SignalFieldMode = 'wide' | 'compact';
 
 export interface ISignalFieldProps extends React.HTMLAttributes<HTMLSpanElement> {
+  signalsFieldMode?: SignalFieldMode;
   before?: React.ReactNode | React.ReactNode[];
   after?: React.ReactNode | React.ReactNode[];
 }
@@ -17,22 +16,22 @@ export interface ISignalFieldProps extends React.HTMLAttributes<HTMLSpanElement>
  * Pass the main value as the children.
  */
 export const SignalField: React.StatelessComponent<ISignalFieldProps> = (props: ISignalFieldProps): JSX.Element => {
-  const {
-    before,
-    after,
-    className,
-    ...spanProps
-  } = props;
+  const { before, after, className, signalsFieldMode = 'compact', ...spanProps } = props;
   return (
     <span
-      { ...spanProps }
-      className={ css(SignalFieldStyles.signalField, className) }
+      {...spanProps}
+      className={css(
+        SignalFieldStyles.signalField,
+        {
+          [SignalFieldStyles.wide]: signalsFieldMode === 'wide',
+          [SignalFieldStyles.compact]: signalsFieldMode === 'compact'
+        },
+        className
+      )}
     >
-      { props.before }
-      <span className={ SignalFieldStyles.signalFieldValue }>
-        { props.children }
-      </span>
-      { props.after }
+      {props.before}
+      <span className={SignalFieldStyles.signalFieldValue}>{props.children}</span>
+      {props.after}
     </span>
   );
 };

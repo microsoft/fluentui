@@ -1,45 +1,95 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
-import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import { TeachingBubble } from './TeachingBubble';
 import { TeachingBubbleContent } from './TeachingBubbleContent';
+import { mount } from 'enzyme';
 
 describe('TeachingBubble', () => {
+  it('renders TeachingBubble using a <div> for the child content if the child is not a string', () => {
+    const component = mount(
+      <TeachingBubble isWide={true} calloutProps={{ doNotLayer: true, className: 'specialClassName' }} ariaDescribedBy="content">
+        <div>Not a string child</div>
+      </TeachingBubble>
+    );
+
+    expect(component.find(TeachingBubbleContent).find('div#content').length).toBe(1);
+  });
+
+  it('renders TeachingBubble using a <p> for the child content if the child is a string', () => {
+    const component = mount(
+      <TeachingBubble isWide={true} calloutProps={{ doNotLayer: true, className: 'specialClassName' }} ariaDescribedBy="content">
+        Not a string child
+      </TeachingBubble>
+    );
+
+    expect(component.find(TeachingBubbleContent).find('p#content').length).toBe(1);
+  });
 
   it('renders TeachingBubble correctly', () => {
-    const component = renderer.create(<TeachingBubble>Content</TeachingBubble>);
+    const component = renderer.create(
+      <TeachingBubble isWide={true} calloutProps={{ doNotLayer: true, className: 'specialClassName' }}>
+        Test Content
+      </TeachingBubble>
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
 
-    const componentContent = renderer.create(<TeachingBubbleContent headline='Title'>Content</TeachingBubbleContent>);
+  it('renders TeachingBubbleContent correctly', () => {
+    const componentContent = renderer.create(<TeachingBubbleContent headline="Test Title">Content</TeachingBubbleContent>);
     const treeContent = componentContent.toJSON();
     expect(treeContent).toMatchSnapshot();
   });
 
-  // <Layer> components will lead ReactDOM.findDOMNode(test_component) return null, so the test is based on the teaching bubble content.
-  it('renders a label', () => {
-    const component = ReactTestUtils.renderIntoDocument(
+  it('renders TeachingBubbleContent with buttons correctly', () => {
+    const componentContent = renderer.create(
       <TeachingBubbleContent
-        headline='Title'
-      />
+        headline="Test Title"
+        hasCloseIcon={true}
+        primaryButtonProps={{ children: 'Test Primary Button', className: 'primary-className' }}
+        secondaryButtonProps={{ children: 'Test Secondary Button', className: 'secondary-className' }}
+      >
+        Content
+      </TeachingBubbleContent>
     );
-    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-    const titleElement = renderedDOM.querySelector('.ms-TeachingBubble-headline');
+    const treeContent = componentContent.toJSON();
+    expect(treeContent).toMatchSnapshot();
+  });
 
-    expect(titleElement!.textContent).toEqual('Title');
+  it('renders TeachingBubbleContent with image correctly', () => {
+    const componentContent = renderer.create(
+      <TeachingBubbleContent headline="Test Title" illustrationImage={{ src: 'test image url' }}>
+        Content
+      </TeachingBubbleContent>
+    );
+    const treeContent = componentContent.toJSON();
+    expect(treeContent).toMatchSnapshot();
+  });
+
+  it('renders TeachingBubbleContent with condensed headline correctly', () => {
+    const componentContent = renderer.create(
+      <TeachingBubbleContent hasCondensedHeadline={true} headline="Test Title">
+        Content
+      </TeachingBubbleContent>
+    );
+    const treeContent = componentContent.toJSON();
+    expect(treeContent).toMatchSnapshot();
+  });
+
+  it('renders TeachingBubbleContent with small headline correctly', () => {
+    const componentContent = renderer.create(
+      <TeachingBubbleContent hasSmallHeadline={true} headline="Test Title">
+        Content
+      </TeachingBubbleContent>
+    );
+    const treeContent = componentContent.toJSON();
+    expect(treeContent).toMatchSnapshot();
   });
 
   it('merges callout classNames', () => {
-    ReactTestUtils.renderIntoDocument<TeachingBubbleContent>(
-      <TeachingBubbleContent
-        headline='Title'
-        calloutProps={ { className: 'foo' } }
-      />
-    );
+    ReactTestUtils.renderIntoDocument(<TeachingBubbleContent headline="Title" calloutProps={{ className: 'foo' }} />);
     setTimeout(() => {
       const callout = document.querySelector('.ms-Callout') as HTMLElement;
       expect(callout).toBeDefined();

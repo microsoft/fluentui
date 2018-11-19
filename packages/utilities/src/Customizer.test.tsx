@@ -3,21 +3,26 @@ import * as ReactDOM from 'react-dom/server';
 import { customizable } from './customizable';
 import { Customizer } from './Customizer';
 import { Customizations } from './Customizations';
+import { safeMount } from '@uifabric/test-utilities';
+
+// tslint:disable:typedef
 
 @customizable('Foo', ['field'])
-class Foo extends React.Component<{ field?: string; }, {}> {
+class Foo extends React.Component<{ field?: string }, {}> {
   public render(): JSX.Element {
-    return (
-      <div>{ this.props.field }</div>
-    );
+    return <div>{this.props.field}</div>;
   }
 }
 
 @customizable('Bar', ['field', 'field2', 'field3'])
-class Bar extends React.Component<{ field?: string; field2?: string, field3?: string }, {}> {
+class Bar extends React.Component<{ field?: string; field2?: string; field3?: string }, {}> {
   public render(): JSX.Element {
     return (
-      <div>{ this.props.field }{ this.props.field2 }{ this.props.field3 }</div>
+      <div>
+        {this.props.field}
+        {this.props.field2}
+        {this.props.field3}
+      </div>
     );
   }
 }
@@ -28,67 +33,176 @@ describe('Customizer', () => {
   });
 
   it('can provide new defaults', () => {
-    expect(ReactDOM.renderToStaticMarkup(
-      <Customizer settings={ { field: 'customName' } }>
+    safeMount(
+      <Customizer settings={{ field: 'customName' }}>
         <Foo />
-      </Customizer>
-    )).toEqual('<div>customName</div>');
+      </Customizer>,
+      wrapper => {
+        expect(wrapper.html()).toEqual('<div>customName</div>');
+      }
+    );
   });
 
   it('can pass through global settings', () => {
-    Customizations.applySettings({ 'field': 'globalName' });
-    expect(ReactDOM.renderToStaticMarkup(
-      <Customizer settings={ { nonMatch: 'customName' } }>
+    Customizations.applySettings({ field: 'globalName' });
+
+    safeMount(
+      <Customizer settings={{ nonMatch: 'customName' }}>
         <Foo />
-      </Customizer>
-    )).toEqual('<div>globalName</div>');
+      </Customizer>,
+      wrapper => {
+        expect(wrapper.html()).toEqual('<div>globalName</div>');
+      }
+    );
   });
 
   it('can override global settings', () => {
-    Customizations.applySettings({ 'field': 'globalName' });
-    expect(ReactDOM.renderToStaticMarkup(
-      <Customizer settings={ { field: 'customName' } }>
+    Customizations.applySettings({ field: 'globalName' });
+
+    safeMount(
+      <Customizer settings={{ field: 'customName' }}>
         <Foo />
-      </Customizer>
-    )).toEqual('<div>customName</div>');
+      </Customizer>,
+      wrapper => {
+        expect(wrapper.html()).toEqual('<div>customName</div>');
+      }
+    );
   });
 
   it('can scope settings to specific components', () => {
-    let scopedSettings = {
+    const scopedSettings = {
       Foo: { field: 'scopedToFoo' },
       Bar: { field: 'scopedToBar' }
     };
 
-    expect(ReactDOM.renderToStaticMarkup(
-      <Customizer scopedSettings={ scopedSettings }>
+    safeMount(
+      <Customizer scopedSettings={scopedSettings}>
         <div>
           <Foo />
           <Bar />
         </div>
-      </Customizer>
-    )).toEqual('<div><div>scopedToFoo</div><div>scopedToBar</div></div>');
+      </Customizer>,
+      wrapper => {
+        expect(wrapper.html()).toEqual('<div><div>scopedToFoo</div><div>scopedToBar</div></div>');
+      }
+    );
   });
 
   it('can layer global settings', () => {
-    expect(ReactDOM.renderToStaticMarkup(
-      <Customizer settings={ { field: 'field' } }>
-        <Customizer settings={ { field2: 'field2' } }>
+    safeMount(
+      <Customizer settings={{ field: 'field' }}>
+        <Customizer settings={{ field2: 'field2' }}>
           <Bar />
-        </Customizer >
-      </Customizer >
-    )).toEqual('<div>fieldfield2</div>');
+        </Customizer>
+      </Customizer>,
+      wrapper => {
+        expect(wrapper.html()).toEqual('<div>fieldfield2</div>');
+      }
+    );
   });
 
   it('can layer scoped settings', () => {
-    Customizations.applySettings({ 'field3': 'field3' });
+    Customizations.applySettings({ field3: 'field3' });
 
-    expect(ReactDOM.renderToStaticMarkup(
-      <Customizer scopedSettings={ { Bar: { field: 'field' } } }>
-        <Customizer scopedSettings={ { Bar: { field2: 'field2' } } }>
+    safeMount(
+      <Customizer scopedSettings={{ Bar: { field: 'field', field2: 'oldfield2' } }}>
+        <Customizer scopedSettings={{ Bar: { field2: 'field2' } }}>
           <Bar />
-        </Customizer >
-      </Customizer >
-    )).toEqual('<div>fieldfield2field3</div>');
+        </Customizer>
+      </Customizer>,
+      wrapper => {
+        expect(wrapper.html()).toEqual('<div>fieldfield2field3</div>');
+      }
+    );
   });
 
+  it('can layer scoped settings with scopedSettingsFunction', () => {
+    Customizations.applySettings({ field3: 'field3' });
+
+    safeMount(
+      <Customizer scopedSettings={{ Bar: { field: 'field' } }}>
+        <Customizer
+          scopedSettings={
+            // tslint:disable-next-line:jsx-no-lambda
+            (scopedSettings: { Bar: { field2: string } }) => ({ Bar: { ...scopedSettings.Bar, field2: 'field2' } })
+          }
+        >
+          <Bar />
+        </Customizer>
+      </Customizer>,
+      wrapper => {
+        expect(wrapper.html()).toEqual('<div>fieldfield2field3</div>');
+      }
+    );
+  });
+
+  it('it allows scopedSettings to be merged when a function is passed', () => {
+    safeMount(
+      <Customizer scopedSettings={{ Foo: { field: 'scopedToFoo' } }}>
+        <Customizer
+          scopedSettings={
+            // tslint:disable-next-line:jsx-no-lambda
+            (settings: { Foo: { field: string } }) => ({ ...settings, Bar: { field: 'scopedToBar' } })
+          }
+        >
+          <div>
+            <Foo />
+            <Bar />
+          </div>
+        </Customizer>
+      </Customizer>,
+      wrapper => {
+        expect(wrapper.html()).toEqual('<div><div>scopedToFoo</div><div>scopedToBar</div></div>');
+      }
+    );
+  });
+
+  it('overrides previously set settings', () => {
+    safeMount(
+      <Customizer settings={{ field: 'field1' }}>
+        <Customizer settings={{ field: 'field2' }}>
+          <Bar />
+        </Customizer>
+      </Customizer>,
+      wrapper => {
+        expect(wrapper.html()).toEqual('<div>field2</div>');
+      }
+    );
+  });
+
+  it('overrides the old settings when the parameter is ignored', () => {
+    safeMount(
+      <Customizer settings={{ field: 'field1' }}>
+        <Customizer
+          settings={
+            // tslint:disable-next-line:jsx-no-lambda
+            (settings: { field: string }) => ({ field: 'field2' })
+          }
+        >
+          <Bar />
+        </Customizer>
+      </Customizer>,
+      wrapper => {
+        expect(wrapper.html()).toEqual('<div>field2</div>');
+      }
+    );
+  });
+
+  it('can use a function to merge settings', () => {
+    safeMount(
+      <Customizer settings={{ field: 'field1' }}>
+        <Customizer
+          settings={
+            // tslint:disable-next-line:jsx-no-lambda
+            (settings: { field: string }) => ({ field: settings.field + 'field2' })
+          }
+        >
+          <Bar />
+        </Customizer>
+      </Customizer>,
+      wrapper => {
+        expect(wrapper.html()).toEqual('<div>field1field2</div>');
+      }
+    );
+  });
 });

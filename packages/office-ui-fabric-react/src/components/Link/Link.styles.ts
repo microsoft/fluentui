@@ -1,26 +1,34 @@
-import {
-  getFocusStyle,
-  HighContrastSelector
-} from '../../Styling';
-import {
-  ILinkStyleProps,
-  ILinkStyles
-} from './Link.types';
+import { getGlobalClassNames, HighContrastSelector, HighContrastSelectorWhite, HighContrastSelectorBlack } from '../../Styling';
+import { ILinkStyleProps, ILinkStyles } from './Link.types';
+
+const GlobalClassNames = {
+  root: 'ms-Link'
+};
 
 export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
   const { className, isButton, isDisabled, theme } = props;
   const { semanticColors } = theme;
 
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
   return {
     root: [
-      'ms-Link',
-      className,
-      getFocusStyle(theme),
+      classNames.root,
+      theme.fonts.medium,
       {
         color: semanticColors.link,
+        outline: 'none',
+        selectors: {
+          '.ms-Fabric--isFocusVisible &:focus': {
+            // Can't use getFocusStyle because it doesn't support wrapping links
+            // https://github.com/OfficeDev/office-ui-fabric-react/issues/4883#issuecomment-406743543
+            outline: `1px solid ${theme.palette.neutralSecondary}`
+          }
+        }
       },
       isButton && {
         background: 'none',
+        backgroundColor: 'transparent',
         border: 'none',
         cursor: 'pointer',
         display: 'inline',
@@ -29,7 +37,21 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
         overflow: 'inherit',
         padding: 0,
         textAlign: 'left',
-        textOverflow: 'inherit'
+        textOverflow: 'inherit',
+        userSelect: 'text',
+        borderBottom: '1px solid transparent', // For Firefox high contrast mode
+        selectors: {
+          [HighContrastSelectorBlack]: {
+            color: '#FFFF00'
+          },
+          [HighContrastSelectorWhite]: {
+            color: '#00009F'
+          },
+          '@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)': {
+            // For IE high contrast mode
+            borderBottom: 'none'
+          }
+        }
       },
       !isButton && {
         textDecoration: 'none'
@@ -51,13 +73,20 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
       !isDisabled && {
         selectors: {
           '&:active, &:hover, &:active:hover': {
-            color: semanticColors.linkHovered
+            color: semanticColors.linkHovered,
+            selectors: {
+              [HighContrastSelector]: {
+                textDecoration: 'underline'
+              }
+            }
           },
           '&:focus': {
             color: semanticColors.link
           }
         }
-      }
+      },
+      classNames.root,
+      className
     ]
   };
 };

@@ -1,5 +1,5 @@
 import { getIsChecked, hasSubmenu } from './contextualMenuUtility';
-import { IContextualMenuItem } from '../..';
+import { IContextualMenuItem } from '../../index';
 
 describe('getIsChecked', () => {
   describe('when item can be checked', () => {

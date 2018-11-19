@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OverflowSet snapshot tests basicSnapshot 1`] = `
+<div
+  className=
+      ms-FocusZone
+      ms-OverflowSet
+      {
+        display: flex;
+        flex-wrap: nowrap;
+        position: relative;
+      }
+  data-focuszone-id="FocusZone0"
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseDownCapture={[Function]}
+  role="menubar"
+/>
+`;
+
+exports[`OverflowSet snapshot tests snapshot with classname 1`] = `
+<div
+  className=
+      ms-FocusZone
+      ms-OverflowSet
+      foobar
+      {
+        display: flex;
+        flex-wrap: nowrap;
+        position: relative;
+      }
+  data-focuszone-id="FocusZone1"
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseDownCapture={[Function]}
+  role="menubar"
+/>
+`;
+
+exports[`OverflowSet snapshot tests snapshot with classname and vertical layout 1`] = `
+<div
+  className=
+      ms-FocusZone
+      ms-OverflowSet
+      foobar
+      {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        position: relative;
+      }
+  data-focuszone-id="FocusZone2"
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseDownCapture={[Function]}
+  role="menubar"
+/>
+`;

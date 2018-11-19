@@ -1,0 +1,304 @@
+{
+  "name": "@uifabric/foundation",
+  "entries": [
+    {
+      "version": "0.5.7",
+      "tag": "@uifabric/foundation_v0.5.7",
+      "date": "Wed, 31 Oct 2018 12:32:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add theme provider for using schemes. Remove implicit scheme prop for all components using Foundation.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "fc5a1f4620c93499a41abe8377ff61161cf5bd76"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.5.6",
+      "tag": "@uifabric/foundation_v0.5.6",
+      "date": "Thu, 18 Oct 2018 20:22:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove api-extractor.disabled.json",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "e6b2514a003fb41c964fba14b071cb0046fd69eb"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.5.5",
+      "tag": "@uifabric/foundation_v0.5.5",
+      "date": "Mon, 08 Oct 2018 12:24:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Moving tslint/prettier dependencies ",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8ba9e22a7a8a2a1e7facda5aa7d91423c7af43ed"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.1.1 <2.0.0` to `>=1.1.2 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=6.0.5 <7.0.0` to `>=6.0.6 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.5.4",
+      "tag": "@uifabric/foundation_v0.5.4",
+      "date": "Tue, 02 Oct 2018 12:28:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Interface refactoring for reducing dev friction.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "3878b423fc86bbbab6322edc72e23a424013e642"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.5.3",
+      "tag": "@uifabric/foundation_v0.5.3",
+      "date": "Fri, 21 Sep 2018 14:25:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding a version stamp file",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "11c18bce52dba131548610c5eea0c1ab7fa4d1ca"
+          },
+          {
+            "comment": "Support schemes through new schemes prop.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "7c45ef96439a8794586a6b338c2b2ee1e7080318"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.0.0 <2.0.0` to `>=1.1.0 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=6.0.4 <7.0.0` to `>=6.0.5 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.5.2",
+      "tag": "@uifabric/foundation_v0.5.2",
+      "date": "Mon, 17 Sep 2018 12:27:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Refactor Foundation to remove code duplication, ease props typing, and make option parameter definition more consistent.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "25776c70eddcecb59d4d622c8d22bfa43a8c2d2a"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.5.1",
+      "tag": "@uifabric/foundation_v0.5.1",
+      "date": "Mon, 10 Sep 2018 10:24:57 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "0ee9e8f082ee724ef61533aa40e4c2d232312ed0",
+            "comment": "Remove Object.assign usage to fix IE11 issues."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.5.0",
+      "tag": "@uifabric/foundation_v0.5.0",
+      "date": "Fri, 07 Sep 2018 22:04:50 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "888f598942757c715181a1441457f1c7d5611c73",
+            "comment": "Adjusting foundation usage, using new React 16 context."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.4.1",
+      "tag": "@uifabric/foundation_v0.4.1",
+      "date": "Wed, 29 Aug 2018 10:28:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "f7243f460a94ed1825ae4b1a1b85eecbaf731e5c",
+            "comment": "Remove Object.assign usage to fix IE11 issues."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.4.0",
+      "tag": "@uifabric/foundation_v0.4.0",
+      "date": "Fri, 24 Aug 2018 17:02:14 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "63835ddd705e2350aa025ea69b041f28a3be5e19",
+            "comment": "Reverting Customizer React 16 context change."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.3.0",
+      "tag": "@uifabric/foundation_v0.3.0",
+      "date": "Thu, 23 Aug 2018 10:28:17 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "e4daa37b59065e1d90b91ac728b3e3c7e52d9e77",
+            "comment": "Adjusting foundation usage, using new React 16 context."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.2.5",
+      "tag": "@uifabric/foundation_v0.2.5",
+      "date": "Tue, 14 Aug 2018 10:27:33 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Avital Baral <avitalbaral99@gmail.com>",
+            "commit": "cf0f728d0b28540b7a42aa9121a840605ee04670",
+            "comment": "disabling codepen task"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=6.0.3 <7.0.0` to `>=6.0.4 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.2.4",
+      "tag": "@uifabric/foundation_v0.2.4",
+      "date": "Fri, 10 Aug 2018 10:26:09 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "e70852b93ca71d709fcf64c1973bb9bf1ff659bf",
+            "comment": "Add support for contextual theming and styling."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.2.3",
+      "tag": "@uifabric/foundation_v0.2.3",
+      "date": "Wed, 08 Aug 2018 10:25:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "e33aed2e672ab52018f934d146517b0dfff9f84d",
+            "comment": "Align createComponent naming with React terminology."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.2.2",
+      "tag": "@uifabric/foundation_v0.2.2",
+      "date": "Fri, 03 Aug 2018 10:25:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "adf6e2883a19f03298b0f2ae89a495724e47a4e4",
+            "comment": "Add tslib as dependency."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.2.1",
+      "tag": "@uifabric/foundation_v0.2.1",
+      "date": "Thu, 02 Aug 2018 10:23:19 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "5781704e7a6ba5795b6367bd3ca0c1ba7d571484",
+            "comment": "Add webpack config."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.2.0",
+      "tag": "@uifabric/foundation_v0.2.0",
+      "date": "Wed, 01 Aug 2018 10:25:51 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "a6e83781f6720a39c24f6ee58f9ad27e11d4fde2",
+            "comment": "Major improvements to typing and functionality."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.1.0",
+      "tag": "@uifabric/foundation_v0.1.0",
+      "date": "Mon, 23 Jul 2018 10:28:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "28242c40916d14cef3d555d18f4df69454163e87",
+            "comment": "Addressing bad imports."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.0.3",
+      "tag": "@uifabric/foundation_v0.0.3",
+      "date": "Mon, 09 Jul 2018 18:08:32 GMT",
+      "comments": {
+        "none": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "02b1b5e75e61a6e773bcad6ece06acf59a45eb0d",
+            "comment": "Create new Foundation package."
+          }
+        ],
+        "patch": [
+          {
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "4e506157895212eca6345c65ba3c234c77c36ee6",
+            "comment": "Improve typing consistency."
+          }
+        ]
+      }
+    }
+  ]
+}

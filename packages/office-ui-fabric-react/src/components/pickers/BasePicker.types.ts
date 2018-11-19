@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { IPickerItemProps } from './PickerItem.types';
 import { IPersonaProps } from '../Persona/Persona.types';
-import { IRenderFunction } from '../../Utilities';
+import { IRefObject, IRenderFunction } from '../../Utilities';
 import { ISuggestionModel } from './Suggestions/SuggestionsController';
 import { BaseAutoFill } from './AutoFill/BaseAutoFill';
+import { ICalloutProps } from '../../Callout';
 
 export interface IBasePicker<T> {
   /** Gets the current value of the input. */
@@ -20,7 +21,7 @@ export interface IBasePicker<T> {
 // and searched for by the people picker. For example, if the picker is
 // displaying persona's than type T could either be of Persona or Ipersona props
 export interface IBasePickerProps<T> extends React.Props<any> {
-  componentRef?: (component?: IBasePicker<T>) => void;
+  componentRef?: IRefObject<IBasePicker<T>>;
 
   /**
    * Function that specifies how the selected item will appear.
@@ -37,7 +38,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    */
   onResolveSuggestions: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]>;
   /**
-   * The delay time in ms before resolving suggestions, which is kicked off when input has been cahnged.
+   * The delay time in ms before resolving suggestions, which is kicked off when input has been changed.
    * e.g. If a second input change happens within the resolveDelay time, the timer will start over.
    * Only until after the timer completes will onResolveSuggestions be called.
    */
@@ -82,8 +83,12 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    */
   pickerSuggestionsProps?: IBasePickerSuggestionsProps;
   /**
+   * The properties that will get passed to the Callout component.
+   */
+  pickerCalloutProps?: ICalloutProps;
+  /**
    * AutoFill input native props
-   * @default undefined
+   * @defaultvalue undefined
    */
   inputProps?: IInputProps;
   /**
@@ -100,30 +105,32 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   searchingText?: ((props: { input: string }) => string) | string;
   /**
    * Flag for disabling the picker.
-   * @default false
+   * @defaultvalue false
    */
   disabled?: boolean;
 
   /**
    * Restrict the amount of selectable items.
-   * @default undefined
+   * @defaultvalue undefined
    */
   itemLimit?: number;
   /**
    * Function that specifies how arbitrary text entered into the well is handled.
    */
-  createGenericItem?: (input: string, ValidationState: ValidationState) => ISuggestionModel<T>;
+  createGenericItem?: (input: string, ValidationState: ValidationState) => ISuggestionModel<T> | T;
   /**
    * Aria label for the "X" button in the selected item component.
-   * @default ''
+   * @defaultvalue ''
    */
   removeButtonAriaLabel?: string;
   /**
-   * A callback to process a selection after the user selects something from the picker.
+   * A callback to process a selection after the user selects something from the picker. If the callback returns null,
+   * the item will not be added to the picker.
    */
-  onItemSelected?: (selectedItem?: T) => T | PromiseLike<T>;
+  onItemSelected?: (selectedItem?: T) => T | PromiseLike<T> | null;
   /**
-   * The items that the base picker should currently display as selected. If this is provided then the picker will act as a controlled component.
+   * The items that the base picker should currently display as selected.
+   * If this is provided then the picker will act as a controlled component.
    */
   selectedItems?: T[];
   /**
@@ -134,12 +141,19 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * A callback to override the default behavior of adding the selected suggestion on dismiss.
    */
   onDismiss?: (ev?: any, selectedItem?: T) => void;
+  /**
+   * Adds an additional alert for the currently selected suggestion. This prop should be set to true for IE11 and below, as it
+   * enables proper screen reader behavior for each suggestion (since aria-activedescendant does not work with IE11).
+   * It should not be set for modern browsers (Edge, Chrome).
+   * @defaultvalue false
+   */
+  enableSelectedSuggestionAlert?: boolean;
 }
 
 export interface IBasePickerSuggestionsProps {
   /**
-  * Function that specifies what to render when no results are found.
-  */
+   * Function that specifies what to render when no results are found.
+   */
   onRenderNoResultFound?: IRenderFunction<void>;
   /**
    * The text that should appear at the top of the suggestion box.
@@ -154,11 +168,11 @@ export interface IBasePickerSuggestionsProps {
    */
   noResultsFoundText?: string;
   /**
-   * ClassName for the picker.
+   * Suggestions root className.
    */
   className?: string;
   /**
-   * Classname for the suggestion box.
+   * Suggestions List className.
    */
   suggestionsClassName?: string;
   /**
@@ -218,4 +232,10 @@ export interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement>
    * Screen reader label to apply to an input element.
    */
   'aria-label'?: string;
+  /**
+   * The default value to be visible when the autofill first created.
+   * This is different than placeholder text because the placeholder text will disappear and re-appear. This
+   * text persists until deleted or changed.
+   */
+  defaultVisibleValue?: string;
 }

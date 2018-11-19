@@ -1,19 +1,8 @@
-import * as React from 'react';
-import { BaseComponent, divProperties, getNativeProps, customizable } from '../../Utilities';
-import { ILabelProps } from './Label.types';
-import { getLabelClassNames } from './Label.classNames';
+import { styled } from '../../Utilities';
+import { LabelBase } from './Label.base';
+import { getStyles } from './Label.styles';
+import { ILabelProps, ILabelStyleProps, ILabelStyles } from './Label.types';
 
-@customizable('Label', ['theme'])
-export class Label extends BaseComponent<ILabelProps, {}> {
-  public render() {
-    const { disabled, required, children, className, theme } = this.props;
-    return (
-      <label
-        { ...getNativeProps(this.props, divProperties) }
-        className={ getLabelClassNames(theme!, className, !!disabled, !!required).root }
-      >
-        { children }
-      </label>
-    );
-  }
-}
+export const Label = styled<ILabelProps, ILabelStyleProps, ILabelStyles>(LabelBase, getStyles, undefined, {
+  scope: 'Label'
+});

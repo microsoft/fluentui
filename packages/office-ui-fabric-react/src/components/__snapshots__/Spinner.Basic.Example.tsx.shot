@@ -1,0 +1,380 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders Spinner.Basic.Example.tsx correctly 1`] = `
+<div
+  className="ms-BasicSpinnersExample"
+>
+  <label
+    className=
+        ms-Label
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-shadow: none;
+          box-sizing: border-box;
+          color: #333333;
+          display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          overflow-wrap: break-word;
+          padding-bottom: 5px;
+          padding-left: 0;
+          padding-right: 0;
+          padding-top: 5px;
+          word-wrap: break-word;
+        }
+  >
+    Extra Small Spinner
+  </label>
+  <div
+    className=
+        ms-Spinner
+
+  >
+    <div
+      className=
+          ms-Spinner-circle
+          ms-Spinner--xSmall
+          {
+            animation-duration: 1.3s;
+            animation-iteration-count: infinite;
+            animation-name: keyframes 0%{transform:rotate(0deg);}100%{transform:rotate(360deg);};
+            animation-timing-function: cubic-bezier(.53,.21,.29,.67);
+            border-radius: 50%;
+            border-top-color: #0078d4;
+            border: 1.5px solid #c7e0f4;
+            box-sizing: border-box;
+            height: 12px;
+            margin-bottom: auto;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: auto;
+            width: 12px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            border-top-color: Highlight;
+          }
+    />
+  </div>
+  <label
+    className=
+        ms-Label
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-shadow: none;
+          box-sizing: border-box;
+          color: #333333;
+          display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          overflow-wrap: break-word;
+          padding-bottom: 5px;
+          padding-left: 0;
+          padding-right: 0;
+          padding-top: 5px;
+          word-wrap: break-word;
+        }
+  >
+    Small Spinner
+  </label>
+  <div
+    className=
+        ms-Spinner
+
+  >
+    <div
+      className=
+          ms-Spinner-circle
+          ms-Spinner--small
+          {
+            animation-duration: 1.3s;
+            animation-iteration-count: infinite;
+            animation-name: keyframes 0%{transform:rotate(0deg);}100%{transform:rotate(360deg);};
+            animation-timing-function: cubic-bezier(.53,.21,.29,.67);
+            border-radius: 50%;
+            border-top-color: #0078d4;
+            border: 1.5px solid #c7e0f4;
+            box-sizing: border-box;
+            height: 16px;
+            margin-bottom: auto;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: auto;
+            width: 16px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            border-top-color: Highlight;
+          }
+    />
+  </div>
+  <label
+    className=
+        ms-Label
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-shadow: none;
+          box-sizing: border-box;
+          color: #333333;
+          display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          overflow-wrap: break-word;
+          padding-bottom: 5px;
+          padding-left: 0;
+          padding-right: 0;
+          padding-top: 5px;
+          word-wrap: break-word;
+        }
+  >
+    Medium Spinner
+  </label>
+  <div
+    className=
+        ms-Spinner
+
+  >
+    <div
+      className=
+          ms-Spinner-circle
+          ms-Spinner--medium
+          {
+            animation-duration: 1.3s;
+            animation-iteration-count: infinite;
+            animation-name: keyframes 0%{transform:rotate(0deg);}100%{transform:rotate(360deg);};
+            animation-timing-function: cubic-bezier(.53,.21,.29,.67);
+            border-radius: 50%;
+            border-top-color: #0078d4;
+            border: 1.5px solid #c7e0f4;
+            box-sizing: border-box;
+            height: 20px;
+            margin-bottom: auto;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: auto;
+            width: 20px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            border-top-color: Highlight;
+          }
+    />
+  </div>
+  <label
+    className=
+        ms-Label
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-shadow: none;
+          box-sizing: border-box;
+          color: #333333;
+          display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          overflow-wrap: break-word;
+          padding-bottom: 5px;
+          padding-left: 0;
+          padding-right: 0;
+          padding-top: 5px;
+          word-wrap: break-word;
+        }
+  >
+    Large Spinner
+  </label>
+  <div
+    className=
+        ms-Spinner
+
+  >
+    <div
+      className=
+          ms-Spinner-circle
+          ms-Spinner--large
+          {
+            animation-duration: 1.3s;
+            animation-iteration-count: infinite;
+            animation-name: keyframes 0%{transform:rotate(0deg);}100%{transform:rotate(360deg);};
+            animation-timing-function: cubic-bezier(.53,.21,.29,.67);
+            border-radius: 50%;
+            border-top-color: #0078d4;
+            border: 1.5px solid #c7e0f4;
+            box-sizing: border-box;
+            height: 28px;
+            margin-bottom: auto;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: auto;
+            width: 28px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            border-top-color: Highlight;
+          }
+    />
+  </div>
+  <label
+    className=
+        ms-Label
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-shadow: none;
+          box-sizing: border-box;
+          color: #333333;
+          display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          overflow-wrap: break-word;
+          padding-bottom: 5px;
+          padding-left: 0;
+          padding-right: 0;
+          padding-top: 5px;
+          word-wrap: break-word;
+        }
+  >
+    Spinner With Label
+  </label>
+  <div
+    className=
+        ms-Spinner
+
+  >
+    <div
+      className=
+          ms-Spinner-circle
+          ms-Spinner--medium
+          {
+            animation-duration: 1.3s;
+            animation-iteration-count: infinite;
+            animation-name: keyframes 0%{transform:rotate(0deg);}100%{transform:rotate(360deg);};
+            animation-timing-function: cubic-bezier(.53,.21,.29,.67);
+            border-radius: 50%;
+            border-top-color: #0078d4;
+            border: 1.5px solid #c7e0f4;
+            box-sizing: border-box;
+            height: 20px;
+            margin-bottom: auto;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: auto;
+            width: 20px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            border-top-color: Highlight;
+          }
+    />
+    <div
+      className=
+          ms-Spinner-label
+          {
+            color: #0078d4;
+            margin-top: 10px;
+            text-align: center;
+          }
+    >
+      I am definitely loading...
+    </div>
+    <div
+      aria-live="polite"
+      role="status"
+    />
+  </div>
+  <label
+    className=
+        ms-Label
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-shadow: none;
+          box-sizing: border-box;
+          color: #333333;
+          display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          overflow-wrap: break-word;
+          padding-bottom: 5px;
+          padding-left: 0;
+          padding-right: 0;
+          padding-top: 5px;
+          word-wrap: break-word;
+        }
+  >
+    Large Spinner With Label
+  </label>
+  <div
+    className=
+        ms-Spinner
+
+  >
+    <div
+      className=
+          ms-Spinner-circle
+          ms-Spinner--large
+          {
+            animation-duration: 1.3s;
+            animation-iteration-count: infinite;
+            animation-name: keyframes 0%{transform:rotate(0deg);}100%{transform:rotate(360deg);};
+            animation-timing-function: cubic-bezier(.53,.21,.29,.67);
+            border-radius: 50%;
+            border-top-color: #0078d4;
+            border: 1.5px solid #c7e0f4;
+            box-sizing: border-box;
+            height: 28px;
+            margin-bottom: auto;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: auto;
+            width: 28px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            border-top-color: Highlight;
+          }
+    />
+    <div
+      className=
+          ms-Spinner-label
+          {
+            color: #0078d4;
+            margin-top: 10px;
+            text-align: center;
+          }
+    >
+      Seriously, still loading...
+    </div>
+    <div
+      aria-live="assertive"
+      role="status"
+    />
+  </div>
+</div>
+`;

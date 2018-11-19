@@ -1,22 +1,12 @@
 import * as React from 'react';
-import {
-  GroupedList
-} from './GroupedList';
-import {
-  IList,
-  IListProps
-} from '../../List';
-import { IRenderFunction } from '../../Utilities';
-import {
-  IDragDropContext,
-  IDragDropEvents,
-  IDragDropHelper
-} from '../../utilities/dragdrop/index';
-import {
-  ISelection,
-  SelectionMode
-} from '../../utilities/selection/index';
+import { GroupedListBase } from './GroupedList.base';
+import { IList, IListProps } from '../../List';
+import { IRefObject, IRenderFunction } from '../../Utilities';
+import { IDragDropContext, IDragDropEvents, IDragDropHelper } from '../../utilities/dragdrop/index';
+import { ISelection, SelectionMode } from '../../utilities/selection/index';
 import { IViewport } from '../../utilities/decorators/withViewport';
+import { ITheme, IStyle } from '../../Styling';
+import { IStyleFunctionOrObject } from '../../Utilities';
 
 export enum CollapseAllVisibility {
   hidden = 0,
@@ -37,12 +27,22 @@ export interface IGroupedList extends IList {
   toggleCollapseAll: (allCollapsed: boolean) => void;
 }
 
-export interface IGroupedListProps extends React.Props<GroupedList> {
+export interface IGroupedListProps extends React.Props<GroupedListBase> {
+  /**
+   * Theme that is passed in from Higher Order Component
+   */
+  theme?: ITheme;
+
+  /**
+   * Style function to be passed in to override the themed or default styles
+   */
+  styles?: IStyleFunctionOrObject<IGroupedListStyleProps, IGroupedListStyles>;
+
   /**
    * Optional callback to access the IGroupedList interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component?: IGroupedList) => void;
+  componentRef?: IRefObject<IGroupedList>;
 
   /** Optional class name to add to the root element. */
   className?: string;
@@ -54,7 +54,7 @@ export interface IGroupedListProps extends React.Props<GroupedList> {
   dragDropHelper?: IDragDropHelper;
 
   /** Event names and corresponding callbacks that will be registered to groups and rendered elements */
-  eventsToRegister?: { eventName: string, callback: (context: IDragDropContext, event?: any) => void }[];
+  eventsToRegister?: { eventName: string; callback: (context: IDragDropContext, event?: any) => void }[];
 
   /** Optional override properties to render groups. */
   groupProps?: IGroupRenderProps;
@@ -69,11 +69,7 @@ export interface IGroupedListProps extends React.Props<GroupedList> {
   listProps?: IListProps;
 
   /** Rendering callback to render the group items. */
-  onRenderCell: (
-    nestingDepth?: number,
-    item?: any,
-    index?: number
-  ) => React.ReactNode;
+  onRenderCell: (nestingDepth?: number, item?: any, index?: number) => React.ReactNode;
 
   /** Optional selection model to track selection state.  */
   selection?: ISelection;
@@ -100,6 +96,17 @@ export interface IGroupedListProps extends React.Props<GroupedList> {
    * The default implementation will virtualize when this callback is not provided.
    */
   onShouldVirtualize?: (props: IListProps) => boolean;
+
+  /**
+   * Optional function which will be called to estimate the height (in pixels) of the given group.
+   *
+   * By default, scrolling through a large virtualized GroupedList will often "jump" due to the order
+   * in which heights are calculated. For more details, see https://github.com/OfficeDev/office-ui-fabric-react/issues/5094
+   *
+   * Pass this prop to ensure the list uses the computed height rather than cached DOM measurements,
+   * avoiding the scroll jumping issue.
+   */
+  getGroupHeight?: (group: IGroup, groupIndex: number) => number;
 }
 
 export interface IGroup {
@@ -135,7 +142,7 @@ export interface IGroup {
 
   /**
    * Deprecated at 1.0.0, selection state will be controled by the selection store only.
-   * @deprecated
+   * @deprecated At 1.0.0, selection state wil be controlled by the selection store only.
    */
   isSelected?: boolean;
 
@@ -173,7 +180,6 @@ export interface IGroup {
 }
 
 export interface IGroupRenderProps {
-
   /** Boolean indicating if all groups are in collapsed state. */
   isAllGroupsCollapsed?: boolean;
 
@@ -209,7 +215,7 @@ export interface IGroupRenderProps {
 
   /**
    * Flag to indicate whether to ignore the collapsing icon on header.
-   * @default CheckboxVisibility.visible
+   * @defaultvalue CheckboxVisibility.visible
    */
   collapseAllVisibility?: CollapseAllVisibility;
 
@@ -221,8 +227,7 @@ export interface IGroupRenderProps {
 }
 
 export interface IGroupDividerProps {
-
-  componentRef?: () => void;
+  componentRef?: IRefObject<{}>;
 
   /** Callback to determine if a group has missing items and needs to load them from the server. */
   isGroupLoading?: (group: IGroup) => boolean;
@@ -239,12 +244,15 @@ export interface IGroupDividerProps {
   /** The indent level of the group. */
   groupLevel?: number;
 
+  /** Width corresponding to a single level. This is multiplied by the groupLevel to get the full spacer width for the group. */
+  indentWidth?: number;
+
   /** If all items in the group are selected. */
   selected?: boolean;
 
   /**
-   * Deprecated at v.65.1 and will be removed by v 1.0. Use 'selected' instead.
-   * @deprecated
+   * Deprecated at v.65.1 and will be removed by v 1.0. Use `selected` instead.
+   * @deprecated Use `selected` instead.
    */
   isSelected?: boolean;
 
@@ -274,4 +282,25 @@ export interface IGroupDividerProps {
 
   /** Determines if the group selection check box is shown for collapsed groups. */
   isCollapsedGroupSelectVisible?: boolean;
+
+  /** Override which allows the caller to provider a custom title. */
+  onRenderTitle?: IRenderFunction<IGroupDividerProps>;
+
+  /** Props for expand/collapse button */
+  expandButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
+
+  /** Stores parent group's children. */
+  groups?: IGroup[];
+}
+
+export type IGroupedListStyleProps = Required<Pick<IGroupedListProps, 'theme'>> &
+  Pick<IGroupedListProps, 'className'> & {
+    /** whether or not the group is collapsed */
+    isCollapsed?: boolean;
+  };
+
+export interface IGroupedListStyles {
+  root: IStyle;
+  group: IStyle;
+  groupIsDropping: IStyle;
 }

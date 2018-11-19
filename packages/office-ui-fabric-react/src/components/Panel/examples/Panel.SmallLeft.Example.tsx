@@ -2,30 +2,32 @@ import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 
-export class PanelSmallLeftExample extends React.Component<{}, {
-  showPanel: boolean;
-}> {
-
+export class PanelSmallLeftExample extends React.Component<
+  {},
+  {
+    showPanel: boolean;
+  }
+> {
   constructor(props: {}) {
     super(props);
     this.state = { showPanel: false };
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <DefaultButton
-          description='Opens the Sample Panel'
+          secondaryText="Opens the Sample Panel"
           // tslint:disable-next-line:jsx-no-lambda
-          onClick={ () => this.setState({ showPanel: true }) }
-          text='Open Panel'
+          onClick={() => this.setState({ showPanel: true })}
+          text="Open Panel"
         />
         <Panel
-          isOpen={ this.state.showPanel }
-          type={ PanelType.smallFixedNear }
+          isOpen={this.state.showPanel}
+          type={PanelType.smallFixedNear}
           // tslint:disable-next-line:jsx-no-lambda
-          onDismiss={ () => this.setState({ showPanel: false }) }
-          headerText='Panel - Small, left-aligned, fixed'
+          onDismiss={() => this.setState({ showPanel: false })}
+          headerText="Panel - Small, left-aligned, fixed"
         >
           <span>Content goes here.</span>
         </Panel>

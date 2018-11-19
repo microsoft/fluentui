@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Toggle } from './Toggle';
 import { IStyle, ITheme } from '../../Styling';
+import { IRefObject, IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
+import { IKeytipProps } from '../../Keytip';
 
 export interface IToggle {
   focus: () => void;
@@ -9,12 +10,17 @@ export interface IToggle {
 /**
  * Toggle component props.
  */
-export interface IToggleProps extends React.HTMLAttributes<HTMLElement | Toggle> {
+export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
+  /**
+   * Render the root element as another type.
+   */
+  as?: IComponentAs<React.HTMLAttributes<HTMLElement>>;
+
   /**
    * Optional callback to access the IToggle interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IToggle) => void;
+  componentRef?: IRefObject<IToggle>;
 
   /**
    * A label for the toggle.
@@ -32,22 +38,27 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement | Toggle>
   offText?: string;
 
   /**
-   * Text for screen-reader to announce when toggle is ON.
+   * Text for screen-reader to announce as the name of the toggle.
+   */
+  ariaLabel?: string;
+
+  /**
+   * @deprecated Use `ariaLabel` for name, and let the metadata convey state
    */
   onAriaLabel?: string;
 
   /**
-   * Text for screen-reader to announce when toggle is OFF.
+   * @deprecated Use `ariaLabel` for name, and let the metadata convey state
    */
   offAriaLabel?: string;
 
   /**
-   * Checked state of the toggle. If you are maintaining state yourself, use this property. Otherwise refer to 'defaultChecked'.
+   * Checked state of the toggle. If you are maintaining state yourself, use this property. Otherwise refer to `defaultChecked`.
    */
   checked?: boolean;
 
   /**
-   * Initial state of the toggle. If you want the toggle to maintain its own state, use this. Otherwise refer to 'checked'.
+   * Initial state of the toggle. If you want the toggle to maintain its own state, use this. Otherwise refer to `checked`.
    */
   defaultChecked?: boolean;
 
@@ -57,7 +68,12 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement | Toggle>
   disabled?: boolean;
 
   /**
-   * onchange callback.
+   * Callback issued when the value changes.
+   */
+  onChange?: (event: React.MouseEvent<HTMLElement>, checked?: boolean) => void;
+
+  /**
+   * @deprecated Use `onChange` instead.
    */
   onChanged?: (checked: boolean) => void;
 
@@ -67,89 +83,70 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement | Toggle>
   theme?: ITheme;
 
   /**
-   * Custom styles for this component
+   * Optional styles for the component.
    */
-  styles?: IToggleStyles;
+  styles?: IStyleFunctionOrObject<IToggleStyleProps, IToggleStyles>;
+
+  /**
+   * Optional keytip for this toggle
+   */
+  keytipProps?: IKeytipProps;
 }
 
+/**
+ * Properties required to build the styles for the Toggle component.
+ */
+export interface IToggleStyleProps {
+  /**
+   * Theme values.
+   */
+  theme: ITheme;
+
+  /**
+   * Root element class name.
+   */
+  className?: string;
+
+  /**
+   * Component is disabled.
+   */
+  disabled?: boolean;
+
+  /**
+   * Component is checked.
+   */
+  checked?: boolean;
+}
+
+/**
+ * Styles for the Toggle component.
+ */
 export interface IToggleStyles {
-  /**
-   * Style for the root element in the default enabled/unchecked state.
-   */
-  root?: IStyle;
-
-  /*
-   * Style for the text before the actual toggle switch.
-   */
-  label?: IStyle;
+  /** Root element. */
+  root: IStyle;
 
   /**
-   * Style for the container wrapping switch and the state (on/off) text.
+   * Label element above the toggle.
    */
-  container?: IStyle;
+  label: IStyle;
 
   /**
-   * Style for the toggle "pill" element, which is inside of the container and contains the thumb.
+   * Container for the toggle pill and the text next to it.
    */
-  pill?: IStyle;
+  container: IStyle;
 
   /**
-   * Style override for the pill element when enabled/checked.
+   * Pill, rendered as a button.
    */
-  pillChecked?: IStyle;
+  pill: IStyle;
 
   /**
-   * Style override for the pill element when enabled/unchecked/hovered.
+   * Thumb inside of the pill.
    */
-  pillHovered?: IStyle;
+  thumb: IStyle;
 
   /**
-   * Style override for the pill element when enabled/checked/hovered.
+   * Text next to the pill.
    */
-  pillCheckedHovered?: IStyle;
-
-  /**
-   * Style override for the pill element when disabled/unchecked.
-   */
-  pillDisabled?: IStyle;
-
-  /**
-   * Style override for the pill element when disabled/checked.
-   */
-  pillCheckedDisabled?: IStyle;
-
-  /**
-   * Style for the thumb element inside of the pill, in the normal unchecked enabled state.
-   */
-  thumb?: IStyle;
-
-  /**
-   * Style override for the thumb when enabled/unchecked/hovered.
-   */
-  thumbHovered?: IStyle;
-
-  /**
-   * Style override for the thumb when enabled/checked.
-   */
-  thumbChecked?: IStyle;
-
-  /**
-   * Style override for the thumb when enabled/checked/hovered.
-   */
-  thumbCheckedHovered?: IStyle;
-
-  /**
-   * Style override for the thumb when disabled/unchecked.
-   */
-  thumbDisabled?: IStyle;
-
-  /**
-   * Style override for the thumb when disabled/checked.
-   */
-  thumbCheckedDisabled?: IStyle;
-
-  /**
-   * Style for the text indicating the on/off state of the control.
-   */
-  text?: IStyle;
+  text: IStyle;
 }

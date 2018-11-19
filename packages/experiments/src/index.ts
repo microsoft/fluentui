@@ -1,12 +1,16 @@
-export { CommandBar } from './CommandBar';
-export { LayoutGroup } from './LayoutGroup';
-export { FolderCover } from './FolderCover';
-export { Tile } from './Tile';
-export { TilesList } from './TilesList';
-export { CommandBar as ExperimentCommandBar } from './CommandBar';
-export { FloatingPeoplePicker } from './FloatingPicker';
-export { SelectedPeopleList } from './SelectedItemsList';
-export { ExtendedPeoplePicker } from './ExtendedPicker';
-export { Keytip } from './Keytip';
-export { KeytipLayer } from './KeytipLayer';
-export { Shimmer } from './Shimmer';
+export * from './Chiclet';
+export * from './CollapsibleSection';
+export * from './CommandBar';
+export * from './FolderCover';
+export * from './Form';
+export * from './LayoutGroup';
+export * from './Shimmer';
+export * from './Sidebar';
+export * from './Stack';
+export * from './StaticList';
+export * from './Text';
+export * from './Tile';
+export * from './TilesList';
+export * from './VirtualizedList';
+
+import './version';

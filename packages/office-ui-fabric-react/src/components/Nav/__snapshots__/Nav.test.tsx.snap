@@ -2,8 +2,6 @@
 
 exports[`Nav renders Nav correctly 1`] = `
 <div
-  aria-describedby={undefined}
-  aria-labelledby={undefined}
   className="ms-FocusZone"
   data-focuszone-id="FocusZone0"
   onFocus={[Function]}
@@ -15,7 +13,12 @@ exports[`Nav renders Nav correctly 1`] = `
     className=
         ms-Nav
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           overflow-y: auto;
           user-select: none;
         }
@@ -33,14 +36,13 @@ exports[`Nav renders Nav correctly 1`] = `
             {
               animation-duration: 0.367s;
               animation-fill-mode: both;
-              animation-name: css-0,css-13;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(0,-20px,0);}to{transform:translate3d(0,0,0);};
               animation-timing-function: cubic-bezier(.1,.9,.2,1);
               display: block;
               margin-bottom: 40px;
             }
       >
         <ul
-          aria-label={undefined}
           className=
               ms-Nav-navItems
               {
@@ -75,21 +77,17 @@ exports[`Nav renders Nav correctly 1`] = `
               name=""
             >
               <button
-                aria-describedby={null}
-                aria-label={undefined}
-                aria-labelledby={null}
-                aria-pressed={undefined}
                 className=
                     ms-Button
-                    ms-Nav-link
                     ms-Button--action
                     ms-Button--command
+                    ms-Nav-link
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
                       background-color: transparent;
                       border-radius: 0px;
-                      border: 1px solid transparent;
+                      border: none;
                       box-sizing: border-box;
                       color: #333333;
                       cursor: pointer;
@@ -117,7 +115,7 @@ exports[`Nav renders Nav correctly 1`] = `
                     &::-moz-focus-inner {
                       border: 0;
                     }
-                    .ms-Fabric.is-focusVisible &:focus:after {
+                    .ms-Fabric--isFocusVisible &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -128,15 +126,28 @@ exports[`Nav renders Nav correctly 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
-                    .ms-Nav-compositeLink:hover & {
-                      background-color: #f8f8f8;
-                      color: #333333;
+                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      border: none;
+                      bottom: -2px;
+                      left: -2px;
+                      outline-color: ButtonText;
+                      right: -2px;
+                      top: -2px;
+                    }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
                     }
                     &:hover {
-                      color: #0078d7;
+                      color: #0078d4;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:hover {
+                      border-color: Highlight;
+                      color: Highlight;
                     }
                     &:hover .ms-Button-icon {
-                      color: #0078d7;
+                      color: #0078d4;
                     }
                     &:active {
                       color: #000000;
@@ -144,10 +155,17 @@ exports[`Nav renders Nav correctly 1`] = `
                     &:active .ms-Button-icon {
                       color: #004578;
                     }
+                    .ms-Nav-compositeLink:hover & {
+                      background-color: #f8f8f8;
+                      color: #333333;
+                    }
                 data-is-focusable={true}
-                disabled={undefined}
                 onClick={[Function]}
-                rel={undefined}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseUp={[Function]}
                 title=""
                 type="button"
               >
@@ -168,10 +186,8 @@ exports[`Nav renders Nav correctly 1`] = `
                         ms-Icon-placeHolder
                         ms-Button-icon
                         {
-                          width: 1em;
-                        }
-                        {
                           color: #106ebe;
+                          display: inline-block;
                           flex-shrink: 0;
                           font-size: 16px;
                           height: 16px;
@@ -182,6 +198,7 @@ exports[`Nav renders Nav correctly 1`] = `
                           margin-top: 0;
                           text-align: center;
                           vertical-align: middle;
+                          width: 1em;
                         }
                     data-icon-name=""
                     role="presentation"

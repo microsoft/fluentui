@@ -2,6 +2,6 @@
   {
     "policyName": "lockedMajor",
     "definitionName": "individualVersion",
-    "lockedMajor": 5
+    "lockedMajor": 6
   }
 ]

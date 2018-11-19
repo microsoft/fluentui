@@ -1,10 +1,6 @@
 import { IStyle } from '../../../Styling';
 
-export interface IActivityItemExampleStyleProps {
-  /**
-   * 404 No Style Props Found
-   */
-}
+export type IActivityItemExampleStyleProps = {};
 
 export interface IActivityItemExampleStyles {
   exampleRoot?: IStyle;
@@ -12,12 +8,12 @@ export interface IActivityItemExampleStyles {
 }
 
 export const getStyles = (props: IActivityItemExampleStyleProps): IActivityItemExampleStyles => {
-  return ({
+  return {
     exampleRoot: {
       marginTop: '20px'
     },
     nameText: {
       fontWeight: 'bold'
     }
-  });
+  };
 };

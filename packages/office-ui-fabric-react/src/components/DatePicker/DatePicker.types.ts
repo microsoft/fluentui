@@ -1,20 +1,33 @@
-import * as React from 'react';
-import { DatePicker } from './DatePicker';
 import { DayOfWeek, ICalendarProps } from '../../Calendar';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { ICalendarFormatDateCallbacks } from '../Calendar/Calendar.types';
+import { IStyle, ITheme } from '../../Styling';
+import { IRefObject, IBaseProps, IStyleFunction } from '../../Utilities';
 
 export interface IDatePicker {
   /** Sets focus to the text field */
   focus(): void;
+
+  /** Reset the state of the picker to the default */
+  reset(): void;
 }
 
-export interface IDatePickerProps extends React.Props<DatePicker> {
+export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAttributes<HTMLElement> {
   /**
    * Optional callback to access the IDatePicker interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IDatePicker) => void;
+  componentRef?: IRefObject<IDatePicker>;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  styles?: IStyleFunction<IDatePickerStyleProps, IDatePickerStyles>;
+
+  /**
+   * Theme provided by High-Order Component.
+   */
+  theme?: ITheme;
 
   /**
    * Pass calendar props to calendar component
@@ -39,7 +52,7 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
 
   /**
    * Disabled state of the DatePicker.
-   * @default false
+   * @defaultvalue false
    */
   disabled?: boolean;
 
@@ -47,6 +60,12 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
    * Aria Label for TextField of the DatePicker for screen reader users.
    */
   ariaLabel?: string;
+
+  /**
+   * Whether or not the Textfield of the DatePicker is underlined.
+   * @defaultvalue false
+   */
+  underlined?: boolean;
 
   /**
    * Aria label for date picker popup for screen reader users.
@@ -61,9 +80,9 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
   isMonthPickerVisible?: boolean;
 
   /**
-  * Show month picker on top of date picker when visible.
-  * @defaultvalue false
-  */
+   * Show month picker on top of date picker when visible.
+   * @defaultvalue false
+   */
   showMonthPickerAsOverlay?: boolean;
 
   /**
@@ -84,8 +103,8 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
   placeholder?: string;
 
   /**
-    * Value of today. If null, current time in client machine will be used.
-    */
+   * Value of today. If null, current time in client machine will be used.
+   */
   today?: Date;
 
   /**
@@ -117,22 +136,28 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
   strings?: IDatePickerStrings;
 
   /**
-  * Whether the month picker should highlight the current month
-  * @defaultvalue false
-  */
+   * Whether the month picker should highlight the current month
+   * @defaultvalue false
+   */
   highlightCurrentMonth?: boolean;
 
   /**
-  * Whether the calendar should show the week number (weeks 1 to 53) before each week row
-  * @defaultvalue false
-  */
+   * Whether the month picker should highlight the selected month
+   * @defaultvalue false
+   */
+  highlightSelectedMonth?: boolean;
+
+  /**
+   * Whether the calendar should show the week number (weeks 1 to 53) before each week row
+   * @defaultvalue false
+   */
   showWeekNumbers?: boolean;
 
   /**
-  * Defines when the first week of the year should start, FirstWeekOfYear.FirstDay,
-  * FirstWeekOfYear.FirstFullWeek or FirstWeekOfYear.FirstFourDayWeek are the possible values
-  * @defaultvalue FirstWeekOfYear.FirstFullWeek
-  */
+   * Defines when the first week of the year should start, FirstWeekOfYear.FirstDay,
+   * FirstWeekOfYear.FirstFullWeek or FirstWeekOfYear.FirstFourDayWeek are the possible values
+   * @defaultvalue FirstWeekOfYear.FirstFullWeek
+   */
   firstWeekOfYear?: FirstWeekOfYear;
 
   /**
@@ -152,8 +177,8 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
   className?: string;
 
   /**
-  * Apply additional formating to dates, for example localized date formatting.
-  */
+   * Apply additional formating to dates, for example localized date formatting.
+   */
   dateTimeFormatter?: ICalendarFormatDateCallbacks;
 
   /**
@@ -172,9 +197,20 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
   initialPickerDate?: Date;
 
   /**
- * Callback that runs after DatePicker's menu (Calendar) is closed
- */
+   * Allows all elements to be focused, including disabled ones
+   * @defaultvalue false
+   */
+  allFocusable?: boolean;
+
+  /**
+   * Callback that runs after DatePicker's menu (Calendar) is closed
+   */
   onAfterMenuDismiss?: () => void;
+
+  /**
+   * Whether the CalendarDay close button should be shown or not.
+   */
+  showCloseButton?: boolean;
 }
 
 export interface IDatePickerStrings {
@@ -241,4 +277,35 @@ export interface IDatePickerStrings {
    * Aria-label for the "next year" button.
    */
   nextYearAriaLabel?: string;
+
+  /**
+   * Aria-label for the "close" button.
+   */
+  closeButtonAriaLabel?: string;
+}
+export interface IDatePickerStyleProps {
+  /**
+   * Theme provided by High-Order Component.
+   */
+  theme: ITheme;
+
+  /**
+   * Accept custom classNames
+   */
+  className?: string;
+
+  // Insert DatePicker style props below
+  disabled?: boolean;
+  label?: boolean;
+  isDatePickerShown?: boolean;
+}
+
+export interface IDatePickerStyles {
+  /**
+   * Style for the root element.
+   */
+  root: IStyle;
+  textField: IStyle;
+  callout: IStyle;
+  icon: IStyle;
 }

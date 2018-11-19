@@ -1,0 +1,131 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders Link.Basic.Example.tsx correctly 1`] = `
+<div
+  className="docs-LinkExample"
+>
+  <span>
+    When a link has an href, 
+  </span>
+  <a
+    className=
+        ms-Link
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: #0078d4;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          outline: none;
+          text-decoration: none;
+        }
+        .ms-Fabric--isFocusVisible &:focus {
+          outline: 1px solid #666666;
+        }
+        &:active, &:hover, &:active:hover {
+          color: #004578;
+        }
+        @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+          text-decoration: underline;
+        }
+        &:focus {
+          color: #0078d4;
+        }
+    href="http://dev.office.com/fabric/components/link"
+    onClick={[Function]}
+  >
+    it renders as an anchor tag.
+  </a>
+  <span>
+     Without an href, 
+  </span>
+  <button
+    className=
+        ms-Link
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          background-color: transparent;
+          background: none;
+          border-bottom: 1px solid transparent;
+          border: none;
+          color: #0078d4;
+          cursor: pointer;
+          display: inline;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: inherit;
+          font-weight: 400;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          outline: none;
+          overflow: inherit;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          text-align: left;
+          text-overflow: inherit;
+          user-select: text;
+        }
+        .ms-Fabric--isFocusVisible &:focus {
+          outline: 1px solid #666666;
+        }
+        @media screen and (-ms-high-contrast: white-on-black){& {
+          color: #FFFF00;
+        }
+        @media screen and (-ms-high-contrast: black-on-white){& {
+          color: #00009F;
+        }
+        @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+          border-bottom: none;
+        }
+        &:active, &:hover, &:active:hover {
+          color: #004578;
+        }
+        @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+          text-decoration: underline;
+        }
+        &:focus {
+          color: #0078d4;
+        }
+    onClick={[Function]}
+  >
+    the link is rendered as a button
+  </button>
+  .
+  <span>
+     You can also use the disabled attribute to create a 
+  </span>
+  <a
+    aria-disabled={true}
+    className=
+        ms-Link
+        is-disabled
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: #a6a6a6;
+          cursor: default;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          outline: none;
+          text-decoration: none;
+        }
+        .ms-Fabric--isFocusVisible &:focus {
+          outline: 1px solid #666666;
+        }
+        &:link, &:visited {
+          pointer-events: none;
+        }
+    href="http://dev.office.com/fabric/components/link"
+    onClick={[Function]}
+  >
+    disabled link
+  </a>
+  .
+</div>
+`;

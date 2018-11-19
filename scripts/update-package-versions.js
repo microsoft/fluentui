@@ -1,3 +1,11 @@
+/**
+ * Script to update all versions and dependencies within the repo.
+ *
+ * Usage:
+ *
+ * node update-package-versions.js "6.0.0-alpha" ">=6.0.0-0 <7.0.0-0"
+ */
+
 const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');

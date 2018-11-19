@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  Pivot,
-  PivotItem,
-  PivotLinkFormat,
-  PivotLinkSize,
-  IPivotItemProps
-} from 'office-ui-fabric-react/lib/Pivot';
+import { Pivot, PivotItem, PivotLinkFormat, PivotLinkSize, IPivotItemProps } from 'office-ui-fabric-react/lib/Pivot';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 
@@ -26,12 +20,12 @@ export class PivotRemoveExample extends React.Component<any, IPivotOnChangeExamp
 
     this._handleClick = this._handleClick.bind(this);
   }
-  public render() {
+  public render(): JSX.Element {
     let pivotArray: React.ReactElement<IPivotItemProps>[] = [];
 
     if (this.state.shouldShowFirstPivotItem) {
       pivotArray.push(
-        <PivotItem linkText='Foo' itemKey='Foo' key='Foo'>
+        <PivotItem linkText="Foo" itemKey="Foo" key="Foo">
           <Label>Click the button below to show/hide this pivot item.</Label>
           <Label>The selected item will not change when the number of pivot items changes.</Label>
           <Label>If the selected item was removed, the new first item will be selected.</Label>
@@ -40,33 +34,24 @@ export class PivotRemoveExample extends React.Component<any, IPivotOnChangeExamp
     }
 
     pivotArray = pivotArray.concat(
-      (
-        <PivotItem linkText='Bar' itemKey='Bar' key='Bar'>
-          <Label>Pivot #2</Label>
-        </PivotItem>
-      ),
-      (
-        <PivotItem linkText='Bas' itemKey='Bas' key='Bas'>
-          <Label>Pivot #3</Label>
-        </PivotItem>
-      ),
-      (
-        <PivotItem linkText='Biz' itemKey='Biz' key='Biz'>
-          <Label>Pivot #4</Label>
-        </PivotItem>
-      )
+      <PivotItem linkText="Bar" itemKey="Bar" key="Bar">
+        <Label>Pivot #2</Label>
+      </PivotItem>,
+      <PivotItem linkText="Bas" itemKey="Bas" key="Bas">
+        <Label>Pivot #3</Label>
+      </PivotItem>,
+      <PivotItem linkText="Biz" itemKey="Biz" key="Biz">
+        <Label>Pivot #4</Label>
+      </PivotItem>
     );
 
     return (
       <div>
-        <Pivot linkSize={ PivotLinkSize.large } linkFormat={ PivotLinkFormat.tabs }>
-          { pivotArray }
+        <Pivot linkSize={PivotLinkSize.large} linkFormat={PivotLinkFormat.tabs}>
+          {pivotArray}
         </Pivot>
         <div>
-          <DefaultButton
-            onClick={ this._handleClick }
-            text={ `${this.state.shouldShowFirstPivotItem ? 'Hide' : 'Show'} First Pivot Item` }
-          />
+          <DefaultButton onClick={this._handleClick} text={`${this.state.shouldShowFirstPivotItem ? 'Hide' : 'Show'} First Pivot Item`} />
         </div>
       </div>
     );

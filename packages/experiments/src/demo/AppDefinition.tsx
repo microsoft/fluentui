@@ -1,20 +1,38 @@
 // tslint:disable:no-any
 import * as React from 'react';
 import { App as AppBase, IAppDefinition, IAppProps } from '@uifabric/example-app-base';
+import { AppCustomizations } from './customizations';
 
 export const AppDefinition: IAppDefinition = {
   appTitle: 'Fabric - React',
-
-  testPages: [
-  ],
+  customizations: AppCustomizations,
+  testPages: [],
   examplePages: [
     {
       links: [
         {
-          component: require<any>('../components/CommandBar/CommandBarPage').CommandBarPage,
-          key: 'CommandBar',
-          name: 'CommandBar',
-          url: '#/examples/commandbar'
+          component: require<any>('../components/Announced/AnnouncedPage').AnnouncedPage,
+          key: 'Announced',
+          name: 'Announced',
+          url: '#/examples/announced'
+        },
+        {
+          component: require<any>('../components/Button/ButtonPage').ButtonPage,
+          key: 'Button',
+          name: 'Button',
+          url: '#/examples/button'
+        },
+        {
+          component: require<any>('../components/CollapsibleSection/CollapsibleSectionPage').CollapsibleSectionPage,
+          key: 'CollapsibleSection',
+          name: 'CollapsibleSection',
+          url: '#/examples/collapsiblesection'
+        },
+        {
+          component: require<any>('../components/Chiclet/ChicletPage').ChicletPage,
+          key: 'Chiclet',
+          name: 'Chiclet',
+          url: '#/examples/chiclet'
         },
         {
           component: require<any>('../components/FolderCover/FolderCoverPage').FolderCoverPage,
@@ -35,16 +53,10 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/filetypeicon'
         },
         {
-          component: require<any>('../components/Keytip/KeytipPage').KeytipPage,
-          key: 'Keytip',
-          name: 'Keytip',
-          url: '#/examples/keytip'
-        },
-        {
-          component: require<any>('../components/KeytipLayer/KeytipLayerPage').KeytipLayerPage,
-          key: 'KeytipLayer',
-          name: 'KeytipLayer',
-          url: '#/examples/keytipLayer'
+          component: require<any>('../components/Stack/HorizontalStack/HorizontalStackPage').HorizontalStackPage,
+          key: 'HorizontalStack',
+          name: 'HorizontalStack',
+          url: '#/examples/horizontalstack'
         },
         {
           component: require<any>('../components/LayoutGroup/LayoutGroupPage').LayoutGroupPage,
@@ -53,10 +65,28 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/layoutgroup'
         },
         {
+          component: require<any>('../components/Separator/SeparatorPage').SeparatorPage,
+          key: 'Separator',
+          name: 'Separator',
+          url: '#/examples/separator'
+        },
+        {
           component: require<any>('../components/signals/SignalsPage').SignalsPage,
           key: 'Signals',
           name: 'Signals',
           url: '#/examples/signals'
+        },
+        {
+          component: require<any>('../components/Sidebar/SidebarPage').SidebarPage,
+          key: 'Sidebar',
+          name: 'Sidebar',
+          url: '#/examples/sidebar'
+        },
+        {
+          component: require<any>('../components/Text/TextPage').TextPage,
+          key: 'Text',
+          name: 'Text',
+          url: '#/examples/text'
         },
         {
           component: require<any>('../components/Tile/TilePage').TilePage,
@@ -71,28 +101,22 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/tileslist'
         },
         {
+          component: require<any>('../components/Toggle/TogglePage').TogglePage,
+          key: 'Toggle',
+          name: 'Toggle',
+          url: '#/examples/toggle'
+        },
+        {
           component: require<any>('../components/Shimmer/ShimmerPage').ShimmerPage,
           key: 'Shimmer',
           name: 'Shimmer',
           url: '#/examples/shimmer'
         },
         {
-          component: require<any>('../components/FloatingPicker/PeoplePicker/FloatingPeoplePickerPage').FloatingPeoplePickerPage,
-          key: 'FloatingPeoplePicker',
-          name: 'FloatingPeoplePicker',
-          url: '#/examples/floatingpeoplepicker'
-        },
-        {
-          component: require<any>('../components/SelectedItemsList/SelectedPeopleList/SelectedPeopleListPage').SelectedPeopleListPage,
-          key: 'PeopleItemList',
-          name: 'PeopleItemList',
-          url: '#/examples/peopleitemlist'
-        },
-        {
-          component: require<any>('../components/ExtendedPicker/PeoplePicker/ExtendedPeoplePickerPage').ExtendedPeoplePickerPage,
-          key: 'ExtendedPeoplePicker',
-          name: 'ExtendedPeoplePicker',
-          url: '#/examples/extendedpeoplepicker'
+          component: require<any>('../components/Stack/VerticalStack/VerticalStackPage').VerticalStackPage,
+          key: 'VerticalStack',
+          name: 'VerticalStack',
+          url: '#/examples/verticalstack'
         },
         {
           component: require<any>('../components/VirtualizedList/VirtualizedListPage').VirtualizedListPage,
@@ -105,6 +129,18 @@ export const AppDefinition: IAppDefinition = {
           key: 'StaticList',
           name: 'StaticList',
           url: '#/examples/staticlist'
+        },
+        {
+          component: require<any>('../components/fluent/examplePages/FluentThemePage').FluentThemePage,
+          key: 'FluentColorTheme',
+          name: 'Fluent Color Theme',
+          url: '#/examples/fluent-color-theme'
+        },
+        {
+          component: require<any>('../theming/ThemingPage').ThemingPage,
+          key: 'ThemingPage',
+          name: 'Theming',
+          url: '#/examples/theming'
         }
       ]
     }
@@ -123,7 +159,6 @@ export const AppDefinition: IAppDefinition = {
       url: 'http://www.github.com/officedev'
     }
   ]
-
 };
 
-export const App = (props: IAppProps) => <AppBase appDefinition={ AppDefinition } { ...props } />;
+export const App = (props: IAppProps) => <AppBase appDefinition={AppDefinition} {...props} />;

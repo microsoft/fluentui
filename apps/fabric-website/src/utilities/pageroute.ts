@@ -1,4 +1,3 @@
-
 /*
   Retreive the route URL for a page without the string after the last hash.
 */

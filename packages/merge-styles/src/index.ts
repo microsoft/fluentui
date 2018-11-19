@@ -1,39 +1,23 @@
-export {
-  IRawStyle,
-  IStyle
-} from './IStyle';
+export { IRawStyle, IStyle } from './IStyle';
 
-export {
-  IStyleSet
-} from './IStyleSet';
+export { IStyleFunction, IStyleFunctionOrObject } from './IStyleFunction';
 
-export {
-  IFontFace,
-  IFontWeight
-} from './IRawStyleBase';
+export { IConcatenatedStyleSet, IProcessedStyleSet, IStyleSet } from './IStyleSet';
 
-export {
-  mergeStyles
-} from './mergeStyles';
+export { IFontFace, IFontWeight } from './IRawStyleBase';
 
-export {
-  mergeStyleSets
-} from './mergeStyleSets';
+export { mergeStyles } from './mergeStyles';
 
-export {
-  concatStyleSets
-} from './concatStyleSets';
+export { mergeStyleSets } from './mergeStyleSets';
 
-export {
-  fontFace
-} from './fontFace';
+export { concatStyleSets } from './concatStyleSets';
 
-export {
-  keyframes
-} from './keyframes';
+export { fontFace } from './fontFace';
 
-export {
-  IStyleSheetConfig,
-  InjectionMode,
-  Stylesheet
-} from './Stylesheet';
+export { keyframes } from './keyframes';
+
+export { IStyleSheetConfig, InjectionMode, Stylesheet } from './Stylesheet';
+
+export { setRTL } from './transforms/rtlifyRules';
+
+import './version';

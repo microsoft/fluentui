@@ -6,8 +6,10 @@ const path = require('path');
   'temp',
   'dist',
   'lib-amd',
-  'lib-es2015',
-  'coverage'
+  'lib-commonjs',
+  'lib-es2015', // Keep this in clean for actually cleaning up legacy content.
+  'coverage',
+  'src/**/*.scss.ts'
 ].forEach(folder => {
   rimraf(path.resolve(process.cwd(), folder));
 });

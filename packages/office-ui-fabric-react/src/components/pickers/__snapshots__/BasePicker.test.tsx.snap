@@ -6,23 +6,13 @@ exports[`Pickers BasePicker renders BasePicker correctly 1`] = `
   onKeyDown={[Function]}
 >
   <div
-    aria-describedby={undefined}
-    aria-labelledby={undefined}
     className="ms-FocusZone"
-    data-focuszone-id="FocusZone0"
+    data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
     role="presentation"
   >
-    <div
-      aria-live="assertive"
-      className={undefined}
-      id="selected-suggestion-alert"
-      role="alert"
-    >
-       
-    </div>
     <div
       className="ms-SelectionZone"
       onClick={[Function]}
@@ -37,19 +27,21 @@ exports[`Pickers BasePicker renders BasePicker correctly 1`] = `
     >
       <div
         className="ms-BasePicker-text"
-        role="list"
       >
+        <span
+          id="selected-items-id__0"
+          role="list"
+        />
         <input
-          aria-activedescendant={undefined}
-          aria-controls="selected-suggestion-alert"
+          aria-autocomplete="both"
+          aria-controls=" "
+          aria-describedby="selected-items-id__0"
           aria-expanded={false}
           aria-haspopup="true"
-          aria-owns="suggestion-list"
           autoCapitalize="off"
           autoComplete="off"
           className="ms-BasePicker-input"
           data-lpignore={true}
-          disabled={undefined}
           onBlur={[Function]}
           onChange={[Function]}
           onClick={[Function]}
@@ -73,23 +65,13 @@ exports[`Pickers TagPicker renders TagPicker correctly 1`] = `
   onKeyDown={[Function]}
 >
   <div
-    aria-describedby={undefined}
-    aria-labelledby={undefined}
     className="ms-FocusZone"
-    data-focuszone-id="FocusZone17"
+    data-focuszone-id="FocusZone70"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
     role="presentation"
   >
-    <div
-      aria-live="assertive"
-      className={undefined}
-      id="selected-suggestion-alert"
-      role="alert"
-    >
-       
-    </div>
     <div
       className="ms-SelectionZone"
       onClick={[Function]}
@@ -104,19 +86,21 @@ exports[`Pickers TagPicker renders TagPicker correctly 1`] = `
     >
       <div
         className="ms-BasePicker-text"
-        role="list"
       >
+        <span
+          id="selected-items-id__69"
+          role="list"
+        />
         <input
-          aria-activedescendant={undefined}
-          aria-controls="selected-suggestion-alert"
+          aria-autocomplete="both"
+          aria-controls=" "
+          aria-describedby="selected-items-id__69"
           aria-expanded={false}
           aria-haspopup="true"
-          aria-owns="suggestion-list"
           autoCapitalize="off"
           autoComplete="off"
           className="ms-BasePicker-input"
           data-lpignore={true}
-          disabled={undefined}
           onBlur={[Function]}
           onChange={[Function]}
           onClick={[Function]}

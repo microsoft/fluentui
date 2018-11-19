@@ -6,7 +6,7 @@ import { FabricDecoratorFixedWidth } from '../utilities';
 import { SpinButton } from 'office-ui-fabric-react';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 
-let props = {
+const props = {
   defaultValue: '0',
   label: 'Basic SpinButton:',
   min: 0,
@@ -18,7 +18,7 @@ storiesOf('SpinButton', module)
   .addDecorator(FabricDecoratorFixedWidth)
   .addDecorator(story => (
     <Screener
-      steps={ new Screener.Steps()
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-spinButton-input')
         .snapshot('hover input', { cropTo: '.testWrapper' })
@@ -32,25 +32,25 @@ storiesOf('SpinButton', module)
         .end()
       }
     >
-      { story() }
+      {story()}
     </Screener>
-  )).add('Root', () => (
+  )).addStory('Root', () => (
     <SpinButton
       {...props}
     />
-  )).add('Disabled', () => (
+  )).addStory('Disabled', () => (
     <SpinButton
       {...props}
       disabled
     />
-  )).add('With icon', () => (
+  )).addStory('With icon', () => (
     <SpinButton
       {...props}
-      iconProps={ { iconName: 'IncreaseIndentLegacy' } }
+      iconProps={{ iconName: 'IncreaseIndentLegacy', }}
     />
-  )).add('Label at end', () => (
+  ), { rtl: true }).addStory('Label at end', () => (
     <SpinButton
       {...props}
-      labelPosition={ Position.end }
+      labelPosition={Position.end}
     />
-  ));
+  ), { rtl: true });

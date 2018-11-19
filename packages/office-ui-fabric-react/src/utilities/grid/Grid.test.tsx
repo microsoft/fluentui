@@ -1,7 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-/* tslint:enable:no-unused-variable */
 import { GridBase } from './Grid.base';
 import { getStyles } from './Grid.styles';
 import { DefaultButton } from '../../Button';
@@ -19,15 +16,16 @@ const DEFAULT_ITEMS: any[] = [
 ];
 
 describe('Grid', () => {
-
   it('Can render a grid with width of four', () => {
     const wrapper = shallow(
       <GridBase
-        items={ DEFAULT_ITEMS }
-        columnCount={ 4 }
-        getStyles={ getStyles }
+        items={DEFAULT_ITEMS}
+        columnCount={4}
+        styles={getStyles}
         // tslint:disable-next-line:jsx-no-lambda
-        onRenderItem={ (item: any, index: number) => { return <DefaultButton role='gridcell'>item.text</DefaultButton>; } }
+        onRenderItem={(item: any, index: number) => {
+          return <DefaultButton role="gridcell">item.text</DefaultButton>;
+        }}
       />
     );
     expect(wrapper.find('table[role="grid"]').length).toEqual(1);
@@ -39,11 +37,13 @@ describe('Grid', () => {
   it('Can render a grid with width of 2', () => {
     const wrapper = shallow(
       <GridBase
-        items={ DEFAULT_ITEMS }
-        columnCount={ 2 }
-        getStyles={ getStyles }
+        items={DEFAULT_ITEMS}
+        columnCount={2}
+        styles={getStyles}
         // tslint:disable-next-line:jsx-no-lambda
-        onRenderItem={ (item: any, index: number) => { return <DefaultButton role='gridcell'>item.text</DefaultButton>; } }
+        onRenderItem={(item: any, index: number) => {
+          return <DefaultButton role="gridcell">item.text</DefaultButton>;
+        }}
       />
     );
     expect(wrapper.find('table[role="grid"]').length).toEqual(1);
@@ -55,13 +55,15 @@ describe('Grid', () => {
   it('Can render a grid with posInSet and setSize', () => {
     const wrapper = shallow(
       <GridBase
-        items={ DEFAULT_ITEMS }
-        columnCount={ 2 }
-        getStyles={ getStyles }
+        items={DEFAULT_ITEMS}
+        columnCount={2}
+        styles={getStyles}
         // tslint:disable-next-line:jsx-no-lambda
-        onRenderItem={ (item: any, index: number) => { return <DefaultButton role='gridcell'>item.text</DefaultButton>; } }
-        positionInSet={ 1 }
-        setSize={ 2 }
+        onRenderItem={(item: any, index: number) => {
+          return <DefaultButton role="gridcell">item.text</DefaultButton>;
+        }}
+        positionInSet={1}
+        setSize={2}
       />
     );
     expect(wrapper.find('table[role="grid"]').length).toEqual(1);

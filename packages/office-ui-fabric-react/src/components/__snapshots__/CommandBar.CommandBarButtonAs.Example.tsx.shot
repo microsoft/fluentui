@@ -1,0 +1,3121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx correctly 1`] = `
+<div>
+  <div
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      data-automation-id="visibleContent"
+      style={
+        Object {
+          "position": "fixed",
+          "visibility": "hidden",
+        }
+      }
+    >
+      <div
+        aria-label="Use left and right arrow keys to navigate between commands"
+        className=
+            ms-FocusZone
+            ms-CommandBar
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background-color: #f4f4f4;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              height: 40px;
+              padding-bottom: 0;
+              padding-left: 16px;
+              padding-right: 16px;
+              padding-top: 0;
+            }
+        data-focuszone-id="FocusZone0"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+        role="menubar"
+      >
+        <div
+          className=
+              ms-OverflowSet
+              ms-CommandBar-primaryCommand
+              {
+                align-items: stretch;
+                display: flex;
+                flex-grow: 1;
+                flex-wrap: nowrap;
+                position: relative;
+              }
+          role="presentation"
+        >
+          <div
+            className=
+                ms-OverflowSet-item
+                {
+                  display: inherit;
+                  flex-shrink: 0;
+                }
+          >
+            <button
+              aria-expanded={false}
+              aria-haspopup={true}
+              aria-label="New. Use left and right arrow keys to navigate"
+              aria-owns={null}
+              className=
+                  ms-Button
+                  ms-Button--commandBar
+                  ms-CommandBarItem-link
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: #f4f4f4;
+                    border-radius: 0px;
+                    border: 1px solid transparent;
+                    box-sizing: border-box;
+                    color: #333333;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 100%;
+                    min-width: 40px;
+                    outline: transparent;
+                    padding-bottom: 0;
+                    padding-left: 4px;
+                    padding-right: 4px;
+                    padding-top: 0;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: 4px;
+                    left: 4px;
+                    outline-color: ButtonText;
+                    right: 4px;
+                    top: 4px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border: none;
+                  }
+                  &:hover {
+                    background-color: #eaeaea;
+                    color: #212121;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    color: Highlight;
+                  }
+                  &:active {
+                    background-color: #dadada;
+                    color: #000000;
+                  }
+              data-is-focusable={true}
+              name="New"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
+              role="menuitem"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: center;
+                    }
+              >
+                <i
+                  aria-hidden={true}
+                  className=
+                      ms-Button-icon
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #106ebe;
+                        display: inline-block;
+                        flex-shrink: 0;
+                        font-family: "FabricMDL2Icons";
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: normal;
+                        height: 16px;
+                        line-height: 16px;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                        speak: none;
+                        text-align: center;
+                        vertical-align: middle;
+                      }
+                  data-icon-name="Add"
+                  role="presentation"
+                >
+                  
+                </i>
+                <div
+                  className=
+                      ms-Button-textContainer
+                      {
+                        flex-grow: 1;
+                      }
+                >
+                  <div
+                    className=
+                        ms-Button-label
+                        {
+                          font-weight: normal;
+                          line-height: 100%;
+                          margin-bottom: 0;
+                          margin-left: 4px;
+                          margin-right: 4px;
+                          margin-top: 0;
+                          white-space: nowrap;
+                        }
+                    id="id__1"
+                  >
+                    New
+                  </div>
+                </div>
+                <i
+                  aria-hidden={true}
+                  className=
+                      ms-Button-menuIcon
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #666666;
+                        display: inline-block;
+                        flex-shrink: 0;
+                        font-family: "FabricMDL2Icons";
+                        font-size: 12px;
+                        font-style: normal;
+                        font-weight: normal;
+                        height: 16px;
+                        line-height: 16px;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                        speak: none;
+                        text-align: center;
+                        vertical-align: middle;
+                      }
+                  data-icon-name="ChevronDown"
+                  role="presentation"
+                >
+                  
+                </i>
+              </div>
+            </button>
+          </div>
+          <div
+            className=
+                ms-OverflowSet-item
+                {
+                  display: inherit;
+                  flex-shrink: 0;
+                }
+          >
+            <a
+              className=
+                  ms-Button
+                  ms-Button--commandBar
+                  ms-CommandBarItem-link
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: #f4f4f4;
+                    border-radius: 0px;
+                    border: 1px solid transparent;
+                    box-sizing: border-box;
+                    color: #333333;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 100%;
+                    min-width: 40px;
+                    outline: transparent;
+                    padding-bottom: 0;
+                    padding-left: 4px;
+                    padding-right: 4px;
+                    padding-top: 0;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: 4px;
+                    left: 4px;
+                    outline-color: ButtonText;
+                    right: 4px;
+                    top: 4px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border: none;
+                  }
+                  &:hover {
+                    background-color: #eaeaea;
+                    color: #212121;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    color: Highlight;
+                  }
+                  &:active {
+                    background-color: #dadada;
+                    color: #000000;
+                  }
+              data-automation-id="uploadButton"
+              data-is-focusable={true}
+              href="https://dev.office.com/fabric"
+              name="Upload"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
+              role="menuitem"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: center;
+                    }
+              >
+                <i
+                  aria-hidden={true}
+                  className=
+                      ms-Button-icon
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #106ebe;
+                        display: inline-block;
+                        flex-shrink: 0;
+                        font-family: "FabricMDL2Icons";
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: normal;
+                        height: 16px;
+                        line-height: 16px;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                        speak: none;
+                        text-align: center;
+                        vertical-align: middle;
+                      }
+                  data-icon-name="Upload"
+                  role="presentation"
+                >
+                  
+                </i>
+                <div
+                  className=
+                      ms-Button-textContainer
+                      {
+                        flex-grow: 1;
+                      }
+                >
+                  <div
+                    className=
+                        ms-Button-label
+                        {
+                          font-weight: normal;
+                          line-height: 100%;
+                          margin-bottom: 0;
+                          margin-left: 4px;
+                          margin-right: 4px;
+                          margin-top: 0;
+                          white-space: nowrap;
+                        }
+                    id="id__4"
+                  >
+                    Upload
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div
+            className=
+                ms-OverflowSet-item
+                {
+                  display: inherit;
+                  flex-shrink: 0;
+                }
+          >
+            <div>
+              <button
+                className=
+                    ms-Button
+                    ms-Button--commandBar
+                    ms-CommandBarItem-link
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      background-color: #f4f4f4;
+                      border-radius: 0px;
+                      border: 1px solid transparent;
+                      box-sizing: border-box;
+                      color: #333333;
+                      cursor: pointer;
+                      display: inline-block;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      height: 100%;
+                      min-width: 40px;
+                      outline: transparent;
+                      padding-bottom: 0;
+                      padding-left: 4px;
+                      padding-right: 4px;
+                      padding-top: 0;
+                      position: relative;
+                      text-align: center;
+                      text-decoration: none;
+                      user-select: none;
+                      vertical-align: top;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 0px;
+                      content: "";
+                      left: 0px;
+                      outline: 1px solid #666666;
+                      position: absolute;
+                      right: 0px;
+                      top: 0px;
+                      z-index: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      border: none;
+                      bottom: 4px;
+                      left: 4px;
+                      outline-color: ButtonText;
+                      right: 4px;
+                      top: 4px;
+                    }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
+                    }
+                    @media screen and (-ms-high-contrast: active){& {
+                      border: none;
+                    }
+                    &:hover {
+                      background-color: #eaeaea;
+                      color: #212121;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:hover {
+                      color: Highlight;
+                    }
+                    &:active {
+                      background-color: #dadada;
+                      color: #000000;
+                    }
+                data-is-focusable={true}
+                name="Share"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseUp={[Function]}
+                role="menuitem"
+                type="button"
+              >
+                <div
+                  className=
+                      ms-Button-flexContainer
+                      {
+                        align-items: center;
+                        display: flex;
+                        flex-wrap: nowrap;
+                        height: 100%;
+                        justify-content: center;
+                      }
+                >
+                  <i
+                    aria-hidden={true}
+                    className=
+                        ms-Button-icon
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          color: #106ebe;
+                          display: inline-block;
+                          flex-shrink: 0;
+                          font-family: "FabricMDL2Icons";
+                          font-size: 16px;
+                          font-style: normal;
+                          font-weight: normal;
+                          height: 16px;
+                          line-height: 16px;
+                          margin-bottom: 0;
+                          margin-left: 4px;
+                          margin-right: 4px;
+                          margin-top: 0;
+                          speak: none;
+                          text-align: center;
+                          vertical-align: middle;
+                        }
+                    data-icon-name="Share"
+                    role="presentation"
+                  >
+                    
+                  </i>
+                  <div
+                    className=
+                        ms-Button-textContainer
+                        {
+                          flex-grow: 1;
+                        }
+                  >
+                    <div
+                      className=
+                          ms-Button-label
+                          {
+                            font-weight: normal;
+                            line-height: 100%;
+                            margin-bottom: 0;
+                            margin-left: 4px;
+                            margin-right: 4px;
+                            margin-top: 0;
+                            white-space: nowrap;
+                          }
+                      id="id__7"
+                    >
+                      Share
+                    </div>
+                  </div>
+                </div>
+              </button>
+            </div>
+          </div>
+          <div
+            className=
+                ms-OverflowSet-item
+                {
+                  display: inherit;
+                  flex-shrink: 0;
+                }
+          >
+            <button
+              className=
+                  ms-Button
+                  ms-Button--commandBar
+                  ms-CommandBarItem-link
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: #f4f4f4;
+                    border-radius: 0px;
+                    border: 1px solid transparent;
+                    box-sizing: border-box;
+                    color: #333333;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 100%;
+                    min-width: 40px;
+                    outline: transparent;
+                    padding-bottom: 0;
+                    padding-left: 4px;
+                    padding-right: 4px;
+                    padding-top: 0;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: 4px;
+                    left: 4px;
+                    outline-color: ButtonText;
+                    right: 4px;
+                    top: 4px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border: none;
+                  }
+                  &:hover {
+                    background-color: #eaeaea;
+                    color: #212121;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    color: Highlight;
+                  }
+                  &:active {
+                    background-color: #dadada;
+                    color: #000000;
+                  }
+              data-is-focusable={true}
+              name="Download"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
+              role="menuitem"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: center;
+                    }
+              >
+                <i
+                  aria-hidden={true}
+                  className=
+                      ms-Button-icon
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #106ebe;
+                        display: inline-block;
+                        flex-shrink: 0;
+                        font-family: "FabricMDL2Icons";
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: normal;
+                        height: 16px;
+                        line-height: 16px;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                        speak: none;
+                        text-align: center;
+                        vertical-align: middle;
+                      }
+                  data-icon-name="Download"
+                  role="presentation"
+                >
+                  
+                </i>
+                <div
+                  className=
+                      ms-Button-textContainer
+                      {
+                        flex-grow: 1;
+                      }
+                >
+                  <div
+                    className=
+                        ms-Button-label
+                        {
+                          font-weight: normal;
+                          line-height: 100%;
+                          margin-bottom: 0;
+                          margin-left: 4px;
+                          margin-right: 4px;
+                          margin-top: 0;
+                          white-space: nowrap;
+                        }
+                    id="id__10"
+                  >
+                    Download
+                  </div>
+                </div>
+              </div>
+            </button>
+          </div>
+          <div
+            className=
+                ms-OverflowSet-overflowButton
+                {
+                  display: inherit;
+                  flex-shrink: 0;
+                }
+          >
+            <button
+              aria-expanded={false}
+              aria-haspopup={true}
+              aria-owns={null}
+              className=
+                  ms-Button
+                  ms-Button--commandBar
+                  ms-CommandBar-overflowButton
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: #f4f4f4;
+                    border-radius: 0px;
+                    border: 1px solid transparent;
+                    box-sizing: border-box;
+                    color: #333333;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    min-width: 40px;
+                    outline: transparent;
+                    padding-bottom: 0;
+                    padding-left: 4px;
+                    padding-right: 4px;
+                    padding-top: 0;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: 4px;
+                    left: 4px;
+                    outline-color: ButtonText;
+                    right: 4px;
+                    top: 4px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border: none;
+                  }
+                  &:hover {
+                    background-color: #eaeaea;
+                    color: #212121;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    color: Highlight;
+                  }
+                  &:active {
+                    background-color: #dadada;
+                    color: #000000;
+                  }
+              data-is-focusable={true}
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: center;
+                    }
+              >
+                <i
+                  aria-hidden={true}
+                  className=
+                      ms-Button-menuIcon
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #666666;
+                        display: inline-block;
+                        flex-shrink: 0;
+                        font-family: "FabricMDL2Icons";
+                        font-size: 17px;
+                        font-style: normal;
+                        font-weight: normal;
+                        height: 16px;
+                        line-height: 16px;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                        speak: none;
+                        text-align: center;
+                        vertical-align: middle;
+                      }
+                  data-icon-name="More"
+                  role="presentation"
+                >
+                  
+                </i>
+              </div>
+            </button>
+          </div>
+        </div>
+        <div
+          className=
+              ms-OverflowSet
+              ms-CommandBar-secondaryCommand
+              {
+                align-items: stretch;
+                display: flex;
+                flex-shrink: 0;
+                flex-wrap: nowrap;
+                position: relative;
+              }
+          role="presentation"
+        >
+          <div
+            className=
+                ms-OverflowSet-item
+                {
+                  display: inherit;
+                  flex-shrink: 0;
+                }
+          >
+            <button
+              className=
+                  ms-Button
+                  ms-Button--commandBar
+                  ms-CommandBarItem-link
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: #f4f4f4;
+                    border-radius: 0px;
+                    border: 1px solid transparent;
+                    box-sizing: border-box;
+                    color: #333333;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 100%;
+                    min-width: 40px;
+                    outline: transparent;
+                    padding-bottom: 0;
+                    padding-left: 4px;
+                    padding-right: 4px;
+                    padding-top: 0;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: 4px;
+                    left: 4px;
+                    outline-color: ButtonText;
+                    right: 4px;
+                    top: 4px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border: none;
+                  }
+                  &:hover {
+                    background-color: #eaeaea;
+                    color: #212121;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    color: Highlight;
+                  }
+                  &:active {
+                    background-color: #dadada;
+                    color: #000000;
+                  }
+              data-is-focusable={true}
+              name="Sort"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
+              role="menuitem"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: center;
+                    }
+              >
+                <i
+                  aria-hidden={true}
+                  className=
+                      ms-Button-icon
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #106ebe;
+                        display: inline-block;
+                        flex-shrink: 0;
+                        font-family: "FabricMDL2Icons";
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: normal;
+                        height: 16px;
+                        line-height: 16px;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                        speak: none;
+                        text-align: center;
+                        vertical-align: middle;
+                      }
+                  data-icon-name="SortLines"
+                  role="presentation"
+                >
+                  
+                </i>
+                <div
+                  className=
+                      ms-Button-textContainer
+                      {
+                        flex-grow: 1;
+                      }
+                >
+                  <div
+                    className=
+                        ms-Button-label
+                        {
+                          font-weight: normal;
+                          line-height: 100%;
+                          margin-bottom: 0;
+                          margin-left: 4px;
+                          margin-right: 4px;
+                          margin-top: 0;
+                          white-space: nowrap;
+                        }
+                    id="id__16"
+                  >
+                    Sort
+                  </div>
+                </div>
+              </div>
+            </button>
+          </div>
+          <div
+            className=
+                ms-OverflowSet-item
+                {
+                  display: inherit;
+                  flex-shrink: 0;
+                }
+          >
+            <div
+              className=
+                  ms-TooltipHost
+                  {
+                    display: inline;
+                  }
+              onBlurCapture={[Function]}
+              onFocusCapture={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+            >
+              <button
+                className=
+                    ms-Button
+                    ms-Button--commandBar
+                    ms-CommandBarItem-link
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      background-color: #f4f4f4;
+                      border-radius: 0px;
+                      border: 1px solid transparent;
+                      box-sizing: border-box;
+                      color: #333333;
+                      cursor: pointer;
+                      display: inline-block;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      height: 100%;
+                      min-width: 40px;
+                      outline: transparent;
+                      padding-bottom: 0;
+                      padding-left: 4px;
+                      padding-right: 4px;
+                      padding-top: 0;
+                      position: relative;
+                      text-align: center;
+                      text-decoration: none;
+                      user-select: none;
+                      vertical-align: top;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 0px;
+                      content: "";
+                      left: 0px;
+                      outline: 1px solid #666666;
+                      position: absolute;
+                      right: 0px;
+                      top: 0px;
+                      z-index: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      border: none;
+                      bottom: 4px;
+                      left: 4px;
+                      outline-color: ButtonText;
+                      right: 4px;
+                      top: 4px;
+                    }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
+                    }
+                    @media screen and (-ms-high-contrast: active){& {
+                      border: none;
+                    }
+                    &:hover {
+                      background-color: #eaeaea;
+                      color: #212121;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:hover {
+                      color: Highlight;
+                    }
+                    &:active {
+                      background-color: #dadada;
+                      color: #000000;
+                    }
+                data-is-focusable={true}
+                name="Grid view"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseUp={[Function]}
+                role="menuitem"
+                type="button"
+              >
+                <div
+                  className=
+                      ms-Button-flexContainer
+                      {
+                        align-items: center;
+                        display: flex;
+                        flex-wrap: nowrap;
+                        height: 100%;
+                        justify-content: center;
+                      }
+                >
+                  <i
+                    aria-hidden={true}
+                    className=
+                        ms-Button-icon
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          color: #106ebe;
+                          display: inline-block;
+                          flex-shrink: 0;
+                          font-family: "FabricMDL2Icons";
+                          font-size: 16px;
+                          font-style: normal;
+                          font-weight: normal;
+                          height: 16px;
+                          line-height: 16px;
+                          margin-bottom: 0;
+                          margin-left: 4px;
+                          margin-right: 4px;
+                          margin-top: 0;
+                          speak: none;
+                          text-align: center;
+                          vertical-align: middle;
+                        }
+                    data-icon-name="Tiles"
+                    role="presentation"
+                  >
+                    
+                  </i>
+                </div>
+              </button>
+            </div>
+          </div>
+          <div
+            className=
+                ms-OverflowSet-item
+                {
+                  display: inherit;
+                  flex-shrink: 0;
+                }
+          >
+            <div
+              className=
+                  ms-TooltipHost
+                  {
+                    display: inline;
+                  }
+              onBlurCapture={[Function]}
+              onFocusCapture={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+            >
+              <button
+                className=
+                    ms-Button
+                    ms-Button--commandBar
+                    ms-CommandBarItem-link
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      background-color: #f4f4f4;
+                      border-radius: 0px;
+                      border: 1px solid transparent;
+                      box-sizing: border-box;
+                      color: #333333;
+                      cursor: pointer;
+                      display: inline-block;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      height: 100%;
+                      min-width: 40px;
+                      outline: transparent;
+                      padding-bottom: 0;
+                      padding-left: 4px;
+                      padding-right: 4px;
+                      padding-top: 0;
+                      position: relative;
+                      text-align: center;
+                      text-decoration: none;
+                      user-select: none;
+                      vertical-align: top;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 0px;
+                      content: "";
+                      left: 0px;
+                      outline: 1px solid #666666;
+                      position: absolute;
+                      right: 0px;
+                      top: 0px;
+                      z-index: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      border: none;
+                      bottom: 4px;
+                      left: 4px;
+                      outline-color: ButtonText;
+                      right: 4px;
+                      top: 4px;
+                    }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
+                    }
+                    @media screen and (-ms-high-contrast: active){& {
+                      border: none;
+                    }
+                    &:hover {
+                      background-color: #eaeaea;
+                      color: #212121;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:hover {
+                      color: Highlight;
+                    }
+                    &:active {
+                      background-color: #dadada;
+                      color: #000000;
+                    }
+                data-is-focusable={true}
+                name="Info"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseUp={[Function]}
+                role="menuitem"
+                type="button"
+              >
+                <div
+                  className=
+                      ms-Button-flexContainer
+                      {
+                        align-items: center;
+                        display: flex;
+                        flex-wrap: nowrap;
+                        height: 100%;
+                        justify-content: center;
+                      }
+                >
+                  <i
+                    aria-hidden={true}
+                    className=
+                        ms-Button-icon
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          color: #106ebe;
+                          display: inline-block;
+                          flex-shrink: 0;
+                          font-family: "FabricMDL2Icons";
+                          font-size: 16px;
+                          font-style: normal;
+                          font-weight: normal;
+                          height: 16px;
+                          line-height: 16px;
+                          margin-bottom: 0;
+                          margin-left: 4px;
+                          margin-right: 4px;
+                          margin-top: 0;
+                          speak: none;
+                          text-align: center;
+                          vertical-align: middle;
+                        }
+                    data-icon-name="Info"
+                    role="presentation"
+                  >
+                    
+                  </i>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx correctly 2`] = `
+<div>
+  <div
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      data-automation-id="visibleContent"
+      style={
+        Object {
+          "position": "fixed",
+          "visibility": "hidden",
+        }
+      }
+    >
+      <div
+        aria-label="Use left and right arrow keys to navigate between commands"
+        className=
+            ms-FocusZone
+            ms-CommandBar
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background-color: #f4f4f4;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              height: 40px;
+              padding-bottom: 0;
+              padding-left: 16px;
+              padding-right: 16px;
+              padding-top: 0;
+            }
+        data-focuszone-id="FocusZone0"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+        role="menubar"
+      >
+        <div
+          className=
+              ms-OverflowSet
+              ms-CommandBar-primaryCommand
+              {
+                align-items: stretch;
+                display: flex;
+                flex-grow: 1;
+                flex-wrap: nowrap;
+                position: relative;
+              }
+          role="presentation"
+        >
+          <div
+            className=
+                ms-OverflowSet-item
+                {
+                  display: inherit;
+                  flex-shrink: 0;
+                }
+          >
+            <button
+              aria-expanded={false}
+              aria-haspopup={true}
+              aria-label="New. Use left and right arrow keys to navigate"
+              aria-owns={null}
+              className=
+                  ms-Button
+                  ms-Button--commandBar
+                  ms-CommandBarItem-link
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: #f4f4f4;
+                    border-radius: 0px;
+                    border: 1px solid transparent;
+                    box-sizing: border-box;
+                    color: #333333;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 100%;
+                    min-width: 40px;
+                    outline: transparent;
+                    padding-bottom: 0;
+                    padding-left: 4px;
+                    padding-right: 4px;
+                    padding-top: 0;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: 4px;
+                    left: 4px;
+                    outline-color: ButtonText;
+                    right: 4px;
+                    top: 4px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border: none;
+                  }
+                  &:hover {
+                    background-color: #eaeaea;
+                    color: #212121;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    color: Highlight;
+                  }
+                  &:active {
+                    background-color: #dadada;
+                    color: #000000;
+                  }
+              data-is-focusable={true}
+              name="New"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
+              role="menuitem"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: center;
+                    }
+              >
+                <i
+                  aria-hidden={true}
+                  className=
+                      ms-Button-icon
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #106ebe;
+                        display: inline-block;
+                        flex-shrink: 0;
+                        font-family: "FabricMDL2Icons";
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: normal;
+                        height: 16px;
+                        line-height: 16px;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                        speak: none;
+                        text-align: center;
+                        vertical-align: middle;
+                      }
+                  data-icon-name="Add"
+                  role="presentation"
+                >
+                  
+                </i>
+                <div
+                  className=
+                      ms-Button-textContainer
+                      {
+                        flex-grow: 1;
+                      }
+                >
+                  <div
+                    className=
+                        ms-Button-label
+                        {
+                          font-weight: normal;
+                          line-height: 100%;
+                          margin-bottom: 0;
+                          margin-left: 4px;
+                          margin-right: 4px;
+                          margin-top: 0;
+                          white-space: nowrap;
+                        }
+                    id="id__1"
+                  >
+                    New
+                  </div>
+                </div>
+                <i
+                  aria-hidden={true}
+                  className=
+                      ms-Button-menuIcon
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #666666;
+                        display: inline-block;
+                        flex-shrink: 0;
+                        font-family: "FabricMDL2Icons";
+                        font-size: 12px;
+                        font-style: normal;
+                        font-weight: normal;
+                        height: 16px;
+                        line-height: 16px;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                        speak: none;
+                        text-align: center;
+                        vertical-align: middle;
+                      }
+                  data-icon-name="ChevronDown"
+                  role="presentation"
+                >
+                  
+                </i>
+              </div>
+            </button>
+          </div>
+          <div
+            className=
+                ms-OverflowSet-item
+                {
+                  display: inherit;
+                  flex-shrink: 0;
+                }
+          >
+            <a
+              className=
+                  ms-Button
+                  ms-Button--commandBar
+                  ms-CommandBarItem-link
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: #f4f4f4;
+                    border-radius: 0px;
+                    border: 1px solid transparent;
+                    box-sizing: border-box;
+                    color: #333333;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 100%;
+                    min-width: 40px;
+                    outline: transparent;
+                    padding-bottom: 0;
+                    padding-left: 4px;
+                    padding-right: 4px;
+                    padding-top: 0;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: 4px;
+                    left: 4px;
+                    outline-color: ButtonText;
+                    right: 4px;
+                    top: 4px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border: none;
+                  }
+                  &:hover {
+                    background-color: #eaeaea;
+                    color: #212121;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    color: Highlight;
+                  }
+                  &:active {
+                    background-color: #dadada;
+                    color: #000000;
+                  }
+              data-automation-id="uploadButton"
+              data-is-focusable={true}
+              href="https://dev.office.com/fabric"
+              name="Upload"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
+              role="menuitem"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: center;
+                    }
+              >
+                <i
+                  aria-hidden={true}
+                  className=
+                      ms-Button-icon
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #106ebe;
+                        display: inline-block;
+                        flex-shrink: 0;
+                        font-family: "FabricMDL2Icons";
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: normal;
+                        height: 16px;
+                        line-height: 16px;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                        speak: none;
+                        text-align: center;
+                        vertical-align: middle;
+                      }
+                  data-icon-name="Upload"
+                  role="presentation"
+                >
+                  
+                </i>
+                <div
+                  className=
+                      ms-Button-textContainer
+                      {
+                        flex-grow: 1;
+                      }
+                >
+                  <div
+                    className=
+                        ms-Button-label
+                        {
+                          font-weight: normal;
+                          line-height: 100%;
+                          margin-bottom: 0;
+                          margin-left: 4px;
+                          margin-right: 4px;
+                          margin-top: 0;
+                          white-space: nowrap;
+                        }
+                    id="id__4"
+                  >
+                    Upload
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div
+            className=
+                ms-OverflowSet-item
+                {
+                  display: inherit;
+                  flex-shrink: 0;
+                }
+          >
+            <div>
+              <button
+                className=
+                    ms-Button
+                    ms-Button--commandBar
+                    ms-CommandBarItem-link
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      background-color: #f4f4f4;
+                      border-radius: 0px;
+                      border: 1px solid transparent;
+                      box-sizing: border-box;
+                      color: #333333;
+                      cursor: pointer;
+                      display: inline-block;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      height: 100%;
+                      min-width: 40px;
+                      outline: transparent;
+                      padding-bottom: 0;
+                      padding-left: 4px;
+                      padding-right: 4px;
+                      padding-top: 0;
+                      position: relative;
+                      text-align: center;
+                      text-decoration: none;
+                      user-select: none;
+                      vertical-align: top;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 0px;
+                      content: "";
+                      left: 0px;
+                      outline: 1px solid #666666;
+                      position: absolute;
+                      right: 0px;
+                      top: 0px;
+                      z-index: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      border: none;
+                      bottom: 4px;
+                      left: 4px;
+                      outline-color: ButtonText;
+                      right: 4px;
+                      top: 4px;
+                    }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
+                    }
+                    @media screen and (-ms-high-contrast: active){& {
+                      border: none;
+                    }
+                    &:hover {
+                      background-color: #eaeaea;
+                      color: #212121;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:hover {
+                      color: Highlight;
+                    }
+                    &:active {
+                      background-color: #dadada;
+                      color: #000000;
+                    }
+                data-is-focusable={true}
+                name="Share"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseUp={[Function]}
+                role="menuitem"
+                type="button"
+              >
+                <div
+                  className=
+                      ms-Button-flexContainer
+                      {
+                        align-items: center;
+                        display: flex;
+                        flex-wrap: nowrap;
+                        height: 100%;
+                        justify-content: center;
+                      }
+                >
+                  <i
+                    aria-hidden={true}
+                    className=
+                        ms-Button-icon
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          color: #106ebe;
+                          display: inline-block;
+                          flex-shrink: 0;
+                          font-family: "FabricMDL2Icons";
+                          font-size: 16px;
+                          font-style: normal;
+                          font-weight: normal;
+                          height: 16px;
+                          line-height: 16px;
+                          margin-bottom: 0;
+                          margin-left: 4px;
+                          margin-right: 4px;
+                          margin-top: 0;
+                          speak: none;
+                          text-align: center;
+                          vertical-align: middle;
+                        }
+                    data-icon-name="Share"
+                    role="presentation"
+                  >
+                    
+                  </i>
+                  <div
+                    className=
+                        ms-Button-textContainer
+                        {
+                          flex-grow: 1;
+                        }
+                  >
+                    <div
+                      className=
+                          ms-Button-label
+                          {
+                            font-weight: normal;
+                            line-height: 100%;
+                            margin-bottom: 0;
+                            margin-left: 4px;
+                            margin-right: 4px;
+                            margin-top: 0;
+                            white-space: nowrap;
+                          }
+                      id="id__7"
+                    >
+                      Share
+                    </div>
+                  </div>
+                </div>
+              </button>
+            </div>
+            <span
+              className="ms-layer"
+            >
+              <div
+                className=
+                    ms-Fabric
+                    ms-Layer-content
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #333333;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      visibility: visible;
+                    }
+                    & button {
+                      font-family: inherit;
+                    }
+                    & input {
+                      font-family: inherit;
+                    }
+                    & textarea {
+                      font-family: inherit;
+                    }
+                    button {
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
+                      overflow: visible;
+                    }
+                onBlur={[Function]}
+                onChange={[Function]}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onDoubleClick={[Function]}
+                onDrag={[Function]}
+                onDragEnd={[Function]}
+                onDragEnter={[Function]}
+                onDragExit={[Function]}
+                onDragLeave={[Function]}
+                onDragOver={[Function]}
+                onDragStart={[Function]}
+                onDrop={[Function]}
+                onFocus={[Function]}
+                onInput={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseMove={[Function]}
+                onMouseOut={[Function]}
+                onMouseOver={[Function]}
+                onMouseUp={[Function]}
+                onSubmit={[Function]}
+              >
+                <div
+                  className=
+                      ms-PositioningContainer
+                      {
+                        position: relative;
+                      }
+                >
+                  <div
+                    className=
+                        ms-PositioningContainer-layerHost
+                        {
+                          border: 1px solid \${};
+                          box-sizing: border-box;
+                          outline: transparent;
+                          position: absolute;
+                        }
+                        @media screen and (-ms-high-contrast: active){& {
+                          border: 1px solid WindowText;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0px;
+                        }
+                    style={
+                      Object {
+                        "opacity": 0,
+                      }
+                    }
+                    tabIndex={-1}
+                  >
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 14px;
+                            font-weight: 400;
+                            position: relative;
+                          }
+                    >
+                      <div
+                        aria-hidden={false}
+                        className=
+
+                            {
+                              height: 0px;
+                              opacity: 0;
+                              pointer-events: none;
+                              position: fixed;
+                              width: 0px;
+                            }
+                        role="alert"
+                      />
+                      <div
+                        className=
+
+                            {
+                              animation-delay: 0ms;
+                              animation-duration: 14s;
+                              animation-iteration-count: 1;
+                              animation-name: keyframes 0%{border-color:#0078d4;border-width:0px;width:35px;height:35px;}1.42%{opacity:1;border-width:10px;}3.57%{opacity:1;}7.14%{border-width:0;width:150px;height:150px;opacity:0;border-color:#71afe5;}8%{border-color:#0078d4;border-width:0px;width:35px;height:35px;opacity:0;}29.99%{border-color:#0078d4;border-width:0px;width:35px;height:35px;opacity:0;}30%{border-color:#0078d4;border-width:0px;width:35px;height:35px;}31.42%{opacity:1;border-width:10px;}33.57%{opacity:1;}37.14%{border-width:0;width:150px;height:150px;opacity:0;border-color:#71afe5;}38%{border-color:#0078d4;border-width:0px;width:35px;height:35px;opacity:0;}79.42%{border-color:#0078d4;border-width:0px;width:35px;height:35px;opacity:0;}79.43{border-color:#0078d4;border-width:0px;width:35px;height:35px;}81.85{opacity:1;border-width:10px;}83.42{opacity:1;}87%{border-width:0;width:150px;height:150px;opacity:0;border-color:#71afe5;}100%{};
+                              border-radius: 225px;
+                              border-style: solid;
+                              height: 0px;
+                              left: 50%;
+                              opacity: 0;
+                              position: absolute;
+                              top: 50%;
+                              transform: translate(-50%, -50%);
+                              width: 0px;
+                            }
+                      />
+                      <div
+                        className=
+
+                            {
+                              animation-delay: 0s;
+                              animation-direction: normal;
+                              animation-duration: 14s;
+                              animation-fill-mode: forwards;
+                              animation-iteration-count: 1;
+                              animation-name: keyframes 0%{transform:translate(0, 0);animation-timing-function:linear;}78.57%{transform:translate(0, 0);animation-timing-function:cubic-bezier(0.62, 0, 0.56, 1);}82.14%{transform:translate(0, -5px);animation-timing-function:cubic-bezier(0.58, 0, 0, 1);}84.88%{transform:translate(0, 9px);animation-timing-function:cubic-bezier(1, 0, 0.56, 1);}88.1%{transform:translate(0, -2px);animation-timing-function:cubic-bezier(0.58, 0, 0.67, 1);}90.12%{transform:translate(0, 0);animation-timing-function:linear;}100%{transform:translate(0, 0);};
+                              animation-timing-function: linear;
+                              height: 100%;
+                              transition: opacity 0.5s ease-in-out;
+                              width: 100%;
+                            }
+                      >
+                        <div
+                          className=
+
+                              {
+                                animation-delay: 0s;
+                                animation-direction: normal;
+                                animation-duration: 14s;
+                                animation-fill-mode: forwards;
+                                animation-iteration-count: 1;
+                                animation-name: keyframes 0%{transform: scale(0);animation-timing-function:linear;}14.29%{transform:scale(0);animation-timing-function:cubic-bezier(0.84, 0, 0.52, 0.99);}16.67%{transform:scale(1.15);animation-timing-function:cubic-bezier(0.48, -0.01, 0.52, 1.01);}19.05%{transform:scale(0.95);animation-timing-function:cubic-bezier(0.48, 0.02, 0.52, 0.98);}21.43%{transform:scale(1);animation-timing-function:linear;}42.86%{transform:scale(1);animation-timing-function:cubic-bezier(0.48, -0.02, 0.52, 1.02);}45.71%{transform:scale(0.8);animation-timing-function:cubic-bezier(0.48, 0.01, 0.52, 0.99);}50%{transform:scale(1);animation-timing-function:linear;}90.12%{transform:scale(1);animation-timing-function:cubic-bezier(0.48, -0.02, 0.52, 1.02);}92.98%{transform:scale(0.8);animation-timing-function:cubic-bezier(0.48, 0.01, 0.52, 0.99);}97.26%{transform:scale(1);animation-timing-function:linear;}100%{transform:scale(1);};
+                                animation-timing-function: linear;
+                                height: 100%;
+                                width: 100%;
+                              }
+                        >
+                          <div
+                            className=
+
+                                {
+                                  animation-delay: 0s;
+                                  animation-direction: normal;
+                                  animation-duration: 14s;
+                                  animation-fill-mode: forwards;
+                                  animation-iteration-count: 1;
+                                  animation-name: keyframes 0%{transform:rotate(0deg);animation-timing-function:linear;}83.33%{transform: rotate(0deg);animation-timing-function:cubic-bezier(0.33, 0, 0.67, 1);}83.93%{transform:rotate(15deg);animation-timing-function:cubic-bezier(0.33, 0, 0.67, 1);}84.52%{transform:rotate(-15deg);animation-timing-function:cubic-bezier(0.33, 0, 0.67, 1);}85.12%{transform:rotate(15deg);animation-timing-function:cubic-bezier(0.33, 0, 0.67, 1);}85.71%{transform:rotate(-15deg);animation-timing-function:cubic-bezier(0.33, 0, 0.67, 1);}86.31%{transform:rotate(0deg);animation-timing-function:linear;}100%{transform:rotate(0deg);};
+                                  animation-timing-function: linear;
+                                  height: 100%;
+                                  width: 100%;
+                                }
+                          >
+                            <div
+                              aria-describedby="coachmark-desc1"
+                              aria-labelledby="coachmark-label1"
+                              className=
+
+                                  {
+                                    background-color: #0078d4;
+                                    border-radius: 32px;
+                                    outline: none;
+                                    overflow: hidden;
+                                    position: relative;
+                                    transition: border-radius 250ms, width 500ms, height 500ms cubic-bezier(0.5, 0, 0, 1);
+                                    visibility: hidden;
+                                  }
+                              data-is-focusable={true}
+                              role="dialog"
+                              tabIndex={-1}
+                            >
+                              <p
+                                className=
+
+                                    {
+                                      height: 0px;
+                                      opacity: 0;
+                                      pointer-events: none;
+                                      position: fixed;
+                                      width: 0px;
+                                    }
+                                id="coachmark-label1"
+                              >
+                                Coachmark notification
+                              </p>
+                              <p
+                                className=
+
+                                    {
+                                      height: 0px;
+                                      opacity: 0;
+                                      pointer-events: none;
+                                      position: fixed;
+                                      width: 0px;
+                                    }
+                                id="coachmark-desc1"
+                              />
+                              <div
+                                onFocusCapture={[Function]}
+                                onKeyDown={[Function]}
+                              >
+                                <div
+                                  className=
+
+                                      {
+                                        transform: scale(0);
+                                        transition: transform 500ms cubic-bezier(0.5, 0, 0, 1);
+                                      }
+                                >
+                                  <div
+                                    aria-hidden={true}
+                                    className=
+
+                                        {
+                                          display: block;
+                                        }
+                                  >
+                                    <div
+                                      aria-describedby="example-description1"
+                                      aria-labelledby="example-label1"
+                                      className=
+                                          ms-TeachingBubble-content
+                                          {
+                                            animation-duration: 2000ms;
+                                            animation-fill-mode: both;
+                                            animation-name: keyframes 0%{transform:matrix3d(0.5, 0, 0, 0, 0, 0.5, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}1.7%{transform:matrix3d(0.658, 0, 0, 0, 0, 0.703, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}2.35%{transform:matrix3d(0.725, 0, 0, 0, 0, 0.8, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}3.4%{transform:matrix3d(0.83, 0, 0, 0, 0, 0.946, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}4.7%{transform:matrix3d(0.942, 0, 0, 0, 0, 1.084, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}5.11%{transform:matrix3d(0.971, 0, 0, 0, 0, 1.113, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}6.81%{transform:matrix3d(1.062, 0, 0, 0, 0, 1.166, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}7.06%{transform:matrix3d(1.07, 0, 0, 0, 0, 1.165, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}8.76%{transform:matrix3d(1.104, 0, 0, 0, 0, 1.12, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}9.36%{transform:matrix3d(1.106, 0, 0, 0, 0, 1.094, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}10.66%{transform:matrix3d(1.098, 0, 0, 0, 0, 1.035, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}12.16%{transform:matrix3d(1.075, 0, 0, 0, 0, 0.98, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}12.61%{transform:matrix3d(1.067, 0, 0, 0, 0, 0.969, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}14.51%{transform:matrix3d(1.031, 0, 0, 0, 0, 0.948, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}14.96%{transform:matrix3d(1.024, 0, 0, 0, 0, 0.949, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}17.77%{transform:matrix3d(0.99, 0, 0, 0, 0, 0.981, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}18.37%{transform:matrix3d(0.986, 0, 0, 0, 0, 0.989, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}20.52%{transform:matrix3d(0.98, 0, 0, 0, 0, 1.011, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}22.22%{transform:matrix3d(0.983, 0, 0, 0, 0, 1.016, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}26.08%{transform:matrix3d(0.996, 0, 0, 0, 0, 1.003, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}29.93%{transform:matrix3d(1.003, 0, 0, 0, 0, 0.995, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}31.63%{transform:matrix3d(1.004, 0, 0, 0, 0, 0.996, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}37.64%{transform:matrix3d(1.001, 0, 0, 0, 0, 1.002, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}42.74%{transform:matrix3d(0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}45.35%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}49.9%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}50%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}52.15%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}54.3%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}56.46%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}58.61%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}64.16%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}69.72%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}80.83%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}91.99%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}100%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);} keyframes 0%{opacity:0;animation-timing-function:cubic-bezier(.1,.25,.75,.9);}26.26%{opacity:1;}100%{opacity:1;};
+                                            animation-timing-function: linear;
+                                            border: 0px;
+                                            box-shadow: none !important;
+                                            display: block;
+                                            max-width: 364px;
+                                            outline: transparent;
+                                            width: calc(100% + 1px);
+                                          }
+                                      data-is-focusable={true}
+                                      role="dialog"
+                                      tabIndex={-1}
+                                    >
+                                      <div
+                                        className=
+                                            ms-TeachingBubble-bodycontent
+                                            {
+                                              padding-bottom: 20px;
+                                              padding-left: 20px;
+                                              padding-right: 20px;
+                                              padding-top: 20px;
+                                            }
+                                      >
+                                        <div
+                                          className=
+                                              ms-TeachingBubble-header
+                                              ms-TeachingBubble-header--large
+                                              &:not(:last-child) {
+                                                margin-bottom: 14px;
+                                              }
+                                        >
+                                          <p
+                                            className=
+                                                ms-TeachingBubble-headline
+                                                {
+                                                  -moz-osx-font-smoothing: grayscale;
+                                                  -webkit-font-smoothing: antialiased;
+                                                  color: #ffffff;
+                                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                                  font-size: 28px;
+                                                  font-weight: 100;
+                                                  margin-bottom: 0px;
+                                                  margin-left: 0px;
+                                                  margin-right: 0px;
+                                                  margin-top: 0px;
+                                                }
+                                            id="example-label1"
+                                          >
+                                            Example Title
+                                          </p>
+                                        </div>
+                                        <div
+                                          className=
+                                              ms-TeachingBubble-body
+                                              &:not(:last-child) {
+                                                margin-bottom: 20px;
+                                              }
+                                        >
+                                          <p
+                                            className=
+                                                ms-TeachingBubble-subText
+                                                {
+                                                  color: #ffffff;
+                                                  font-size: 14px;
+                                                  font-weight: 300;
+                                                  margin-bottom: 0px;
+                                                  margin-left: 0px;
+                                                  margin-right: 0px;
+                                                  margin-top: 0px;
+                                                }
+                                            id="example-description1"
+                                          >
+                                            Welcome to the land of Coachmarks!
+                                          </p>
+                                        </div>
+                                      </div>
+                                      <button
+                                        aria-label="Close"
+                                        className=
+                                            ms-Button
+                                            ms-Button--icon
+                                            ms-TeachingBubble-closebutton
+                                            {
+                                              -moz-osx-font-smoothing: grayscale;
+                                              -webkit-font-smoothing: antialiased;
+                                              background-color: transparent;
+                                              border-radius: 0px;
+                                              border: none;
+                                              box-sizing: border-box;
+                                              color: #ffffff;
+                                              cursor: pointer;
+                                              display: inline-block;
+                                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                              font-size: 12px;
+                                              font-weight: 400;
+                                              height: 32px;
+                                              outline: transparent;
+                                              padding-bottom: 0;
+                                              padding-left: 4px;
+                                              padding-right: 4px;
+                                              padding-top: 0;
+                                              position: absolute;
+                                              right: 0px;
+                                              text-align: center;
+                                              text-decoration: none;
+                                              top: 0px;
+                                              user-select: none;
+                                              vertical-align: top;
+                                              width: 32px;
+                                            }
+                                            &::-moz-focus-inner {
+                                              border: 0;
+                                            }
+                                            .ms-Fabric--isFocusVisible &:focus:after {
+                                              border: 1px solid #ffffff;
+                                              bottom: 0px;
+                                              content: "";
+                                              left: 0px;
+                                              outline: 1px solid #666666;
+                                              position: absolute;
+                                              right: 0px;
+                                              top: 0px;
+                                              z-index: 1;
+                                            }
+                                            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                              border: none;
+                                              bottom: -2px;
+                                              left: -2px;
+                                              outline-color: ButtonText;
+                                              right: -2px;
+                                              top: -2px;
+                                            }
+                                            &:active > * {
+                                              left: 0px;
+                                              position: relative;
+                                              top: 0px;
+                                            }
+                                            &:hover {
+                                              background: transparent;
+                                              color: #212121;
+                                            }
+                                            @media screen and (-ms-high-contrast: active){&:hover {
+                                              border-color: Highlight;
+                                              color: Highlight;
+                                            }
+                                            &:active {
+                                              color: #0078d4;
+                                            }
+                                        data-is-focusable={true}
+                                        onClick={[Function]}
+                                        onKeyDown={[Function]}
+                                        onKeyPress={[Function]}
+                                        onKeyUp={[Function]}
+                                        onMouseDown={[Function]}
+                                        onMouseUp={[Function]}
+                                        title="Close"
+                                        type="button"
+                                      >
+                                        <div
+                                          className=
+                                              ms-Button-flexContainer
+                                              {
+                                                align-items: center;
+                                                display: flex;
+                                                flex-wrap: nowrap;
+                                                height: 100%;
+                                                justify-content: center;
+                                              }
+                                        >
+                                          <i
+                                            aria-hidden={true}
+                                            className=
+                                                ms-Button-icon
+                                                {
+                                                  -moz-osx-font-smoothing: grayscale;
+                                                  -webkit-font-smoothing: antialiased;
+                                                  display: inline-block;
+                                                  flex-shrink: 0;
+                                                  font-family: "FabricMDL2Icons";
+                                                  font-size: 16px;
+                                                  font-style: normal;
+                                                  font-weight: normal;
+                                                  height: 16px;
+                                                  line-height: 16px;
+                                                  margin-bottom: 0;
+                                                  margin-left: 4px;
+                                                  margin-right: 4px;
+                                                  margin-top: 0;
+                                                  speak: none;
+                                                  text-align: center;
+                                                  vertical-align: middle;
+                                                }
+                                            data-icon-name="Cancel"
+                                            role="presentation"
+                                          >
+                                            
+                                          </i>
+                                        </div>
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </span>
+          </div>
+          <div
+            className=
+                ms-OverflowSet-item
+                {
+                  display: inherit;
+                  flex-shrink: 0;
+                }
+          >
+            <button
+              className=
+                  ms-Button
+                  ms-Button--commandBar
+                  ms-CommandBarItem-link
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: #f4f4f4;
+                    border-radius: 0px;
+                    border: 1px solid transparent;
+                    box-sizing: border-box;
+                    color: #333333;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 100%;
+                    min-width: 40px;
+                    outline: transparent;
+                    padding-bottom: 0;
+                    padding-left: 4px;
+                    padding-right: 4px;
+                    padding-top: 0;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: 4px;
+                    left: 4px;
+                    outline-color: ButtonText;
+                    right: 4px;
+                    top: 4px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border: none;
+                  }
+                  &:hover {
+                    background-color: #eaeaea;
+                    color: #212121;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    color: Highlight;
+                  }
+                  &:active {
+                    background-color: #dadada;
+                    color: #000000;
+                  }
+              data-is-focusable={true}
+              name="Download"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
+              role="menuitem"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: center;
+                    }
+              >
+                <i
+                  aria-hidden={true}
+                  className=
+                      ms-Button-icon
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #106ebe;
+                        display: inline-block;
+                        flex-shrink: 0;
+                        font-family: "FabricMDL2Icons";
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: normal;
+                        height: 16px;
+                        line-height: 16px;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                        speak: none;
+                        text-align: center;
+                        vertical-align: middle;
+                      }
+                  data-icon-name="Download"
+                  role="presentation"
+                >
+                  
+                </i>
+                <div
+                  className=
+                      ms-Button-textContainer
+                      {
+                        flex-grow: 1;
+                      }
+                >
+                  <div
+                    className=
+                        ms-Button-label
+                        {
+                          font-weight: normal;
+                          line-height: 100%;
+                          margin-bottom: 0;
+                          margin-left: 4px;
+                          margin-right: 4px;
+                          margin-top: 0;
+                          white-space: nowrap;
+                        }
+                    id="id__10"
+                  >
+                    Download
+                  </div>
+                </div>
+              </div>
+            </button>
+          </div>
+          <div
+            className=
+                ms-OverflowSet-overflowButton
+                {
+                  display: inherit;
+                  flex-shrink: 0;
+                }
+          >
+            <button
+              aria-expanded={false}
+              aria-haspopup={true}
+              aria-owns={null}
+              className=
+                  ms-Button
+                  ms-Button--commandBar
+                  ms-CommandBar-overflowButton
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: #f4f4f4;
+                    border-radius: 0px;
+                    border: 1px solid transparent;
+                    box-sizing: border-box;
+                    color: #333333;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    min-width: 40px;
+                    outline: transparent;
+                    padding-bottom: 0;
+                    padding-left: 4px;
+                    padding-right: 4px;
+                    padding-top: 0;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: 4px;
+                    left: 4px;
+                    outline-color: ButtonText;
+                    right: 4px;
+                    top: 4px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border: none;
+                  }
+                  &:hover {
+                    background-color: #eaeaea;
+                    color: #212121;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    color: Highlight;
+                  }
+                  &:active {
+                    background-color: #dadada;
+                    color: #000000;
+                  }
+              data-is-focusable={true}
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: center;
+                    }
+              >
+                <i
+                  aria-hidden={true}
+                  className=
+                      ms-Button-menuIcon
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #666666;
+                        display: inline-block;
+                        flex-shrink: 0;
+                        font-family: "FabricMDL2Icons";
+                        font-size: 17px;
+                        font-style: normal;
+                        font-weight: normal;
+                        height: 16px;
+                        line-height: 16px;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                        speak: none;
+                        text-align: center;
+                        vertical-align: middle;
+                      }
+                  data-icon-name="More"
+                  role="presentation"
+                >
+                  
+                </i>
+              </div>
+            </button>
+          </div>
+        </div>
+        <div
+          className=
+              ms-OverflowSet
+              ms-CommandBar-secondaryCommand
+              {
+                align-items: stretch;
+                display: flex;
+                flex-shrink: 0;
+                flex-wrap: nowrap;
+                position: relative;
+              }
+          role="presentation"
+        >
+          <div
+            className=
+                ms-OverflowSet-item
+                {
+                  display: inherit;
+                  flex-shrink: 0;
+                }
+          >
+            <button
+              className=
+                  ms-Button
+                  ms-Button--commandBar
+                  ms-CommandBarItem-link
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: #f4f4f4;
+                    border-radius: 0px;
+                    border: 1px solid transparent;
+                    box-sizing: border-box;
+                    color: #333333;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 100%;
+                    min-width: 40px;
+                    outline: transparent;
+                    padding-bottom: 0;
+                    padding-left: 4px;
+                    padding-right: 4px;
+                    padding-top: 0;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: 4px;
+                    left: 4px;
+                    outline-color: ButtonText;
+                    right: 4px;
+                    top: 4px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border: none;
+                  }
+                  &:hover {
+                    background-color: #eaeaea;
+                    color: #212121;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    color: Highlight;
+                  }
+                  &:active {
+                    background-color: #dadada;
+                    color: #000000;
+                  }
+              data-is-focusable={true}
+              name="Sort"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
+              role="menuitem"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: center;
+                    }
+              >
+                <i
+                  aria-hidden={true}
+                  className=
+                      ms-Button-icon
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #106ebe;
+                        display: inline-block;
+                        flex-shrink: 0;
+                        font-family: "FabricMDL2Icons";
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: normal;
+                        height: 16px;
+                        line-height: 16px;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                        speak: none;
+                        text-align: center;
+                        vertical-align: middle;
+                      }
+                  data-icon-name="SortLines"
+                  role="presentation"
+                >
+                  
+                </i>
+                <div
+                  className=
+                      ms-Button-textContainer
+                      {
+                        flex-grow: 1;
+                      }
+                >
+                  <div
+                    className=
+                        ms-Button-label
+                        {
+                          font-weight: normal;
+                          line-height: 100%;
+                          margin-bottom: 0;
+                          margin-left: 4px;
+                          margin-right: 4px;
+                          margin-top: 0;
+                          white-space: nowrap;
+                        }
+                    id="id__16"
+                  >
+                    Sort
+                  </div>
+                </div>
+              </div>
+            </button>
+          </div>
+          <div
+            className=
+                ms-OverflowSet-item
+                {
+                  display: inherit;
+                  flex-shrink: 0;
+                }
+          >
+            <div
+              className=
+                  ms-TooltipHost
+                  {
+                    display: inline;
+                  }
+              onBlurCapture={[Function]}
+              onFocusCapture={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+            >
+              <button
+                className=
+                    ms-Button
+                    ms-Button--commandBar
+                    ms-CommandBarItem-link
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      background-color: #f4f4f4;
+                      border-radius: 0px;
+                      border: 1px solid transparent;
+                      box-sizing: border-box;
+                      color: #333333;
+                      cursor: pointer;
+                      display: inline-block;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      height: 100%;
+                      min-width: 40px;
+                      outline: transparent;
+                      padding-bottom: 0;
+                      padding-left: 4px;
+                      padding-right: 4px;
+                      padding-top: 0;
+                      position: relative;
+                      text-align: center;
+                      text-decoration: none;
+                      user-select: none;
+                      vertical-align: top;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 0px;
+                      content: "";
+                      left: 0px;
+                      outline: 1px solid #666666;
+                      position: absolute;
+                      right: 0px;
+                      top: 0px;
+                      z-index: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      border: none;
+                      bottom: 4px;
+                      left: 4px;
+                      outline-color: ButtonText;
+                      right: 4px;
+                      top: 4px;
+                    }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
+                    }
+                    @media screen and (-ms-high-contrast: active){& {
+                      border: none;
+                    }
+                    &:hover {
+                      background-color: #eaeaea;
+                      color: #212121;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:hover {
+                      color: Highlight;
+                    }
+                    &:active {
+                      background-color: #dadada;
+                      color: #000000;
+                    }
+                data-is-focusable={true}
+                name="Grid view"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseUp={[Function]}
+                role="menuitem"
+                type="button"
+              >
+                <div
+                  className=
+                      ms-Button-flexContainer
+                      {
+                        align-items: center;
+                        display: flex;
+                        flex-wrap: nowrap;
+                        height: 100%;
+                        justify-content: center;
+                      }
+                >
+                  <i
+                    aria-hidden={true}
+                    className=
+                        ms-Button-icon
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          color: #106ebe;
+                          display: inline-block;
+                          flex-shrink: 0;
+                          font-family: "FabricMDL2Icons";
+                          font-size: 16px;
+                          font-style: normal;
+                          font-weight: normal;
+                          height: 16px;
+                          line-height: 16px;
+                          margin-bottom: 0;
+                          margin-left: 4px;
+                          margin-right: 4px;
+                          margin-top: 0;
+                          speak: none;
+                          text-align: center;
+                          vertical-align: middle;
+                        }
+                    data-icon-name="Tiles"
+                    role="presentation"
+                  >
+                    
+                  </i>
+                </div>
+              </button>
+            </div>
+          </div>
+          <div
+            className=
+                ms-OverflowSet-item
+                {
+                  display: inherit;
+                  flex-shrink: 0;
+                }
+          >
+            <div
+              className=
+                  ms-TooltipHost
+                  {
+                    display: inline;
+                  }
+              onBlurCapture={[Function]}
+              onFocusCapture={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+            >
+              <button
+                className=
+                    ms-Button
+                    ms-Button--commandBar
+                    ms-CommandBarItem-link
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      background-color: #f4f4f4;
+                      border-radius: 0px;
+                      border: 1px solid transparent;
+                      box-sizing: border-box;
+                      color: #333333;
+                      cursor: pointer;
+                      display: inline-block;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      height: 100%;
+                      min-width: 40px;
+                      outline: transparent;
+                      padding-bottom: 0;
+                      padding-left: 4px;
+                      padding-right: 4px;
+                      padding-top: 0;
+                      position: relative;
+                      text-align: center;
+                      text-decoration: none;
+                      user-select: none;
+                      vertical-align: top;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 0px;
+                      content: "";
+                      left: 0px;
+                      outline: 1px solid #666666;
+                      position: absolute;
+                      right: 0px;
+                      top: 0px;
+                      z-index: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      border: none;
+                      bottom: 4px;
+                      left: 4px;
+                      outline-color: ButtonText;
+                      right: 4px;
+                      top: 4px;
+                    }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
+                    }
+                    @media screen and (-ms-high-contrast: active){& {
+                      border: none;
+                    }
+                    &:hover {
+                      background-color: #eaeaea;
+                      color: #212121;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:hover {
+                      color: Highlight;
+                    }
+                    &:active {
+                      background-color: #dadada;
+                      color: #000000;
+                    }
+                data-is-focusable={true}
+                name="Info"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseUp={[Function]}
+                role="menuitem"
+                type="button"
+              >
+                <div
+                  className=
+                      ms-Button-flexContainer
+                      {
+                        align-items: center;
+                        display: flex;
+                        flex-wrap: nowrap;
+                        height: 100%;
+                        justify-content: center;
+                      }
+                >
+                  <i
+                    aria-hidden={true}
+                    className=
+                        ms-Button-icon
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          color: #106ebe;
+                          display: inline-block;
+                          flex-shrink: 0;
+                          font-family: "FabricMDL2Icons";
+                          font-size: 16px;
+                          font-style: normal;
+                          font-weight: normal;
+                          height: 16px;
+                          line-height: 16px;
+                          margin-bottom: 0;
+                          margin-left: 4px;
+                          margin-right: 4px;
+                          margin-top: 0;
+                          speak: none;
+                          text-align: center;
+                          vertical-align: middle;
+                        }
+                    data-icon-name="Info"
+                    role="presentation"
+                  >
+                    
+                  </i>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

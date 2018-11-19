@@ -1,0 +1,25 @@
+@import '../../../common/_variables';
+@import '../../../common/common';
+@import '../../../common/semanticSlots';
+
+// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
+
+//
+// Office UI Fabric
+// --------------------------------------------------
+// Single line (input) and multiline (textarea) form field styles
+@import '../../Label/LabelMixins.scss';
+
+$field-border-error-color: $errorTextColor;
+$field-text-disabled-color: $disabledTextColor;
+
+:global {
+  .textField-cssStyled {
+    .ms-TextField-fieldGroup {
+      border-top-color: $field-border-error-color;
+    }
+    .ms-Label {
+      color: $ms-color-themePrimary;
+    }
+  }
+}

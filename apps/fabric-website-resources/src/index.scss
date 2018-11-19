@@ -1,0 +1,8 @@
+@import '~office-ui-fabric-react/src/common/common';
+
+:global {
+  html,
+  body {
+    -webkit-tap-highlight-color: transparent;
+  }
+}

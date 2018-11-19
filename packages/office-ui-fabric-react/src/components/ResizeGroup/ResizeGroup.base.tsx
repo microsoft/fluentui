@@ -1,26 +1,14 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import {
-  BaseComponent,
-  classNamesFunction,
-  customizable,
-  divProperties,
-  getNativeProps,
-  provideContext
-} from '../../Utilities';
-import {
-  IResizeGroupProps,
-  IResizeGroupStyles,
-  IResizeGroupStyleProps
-} from './ResizeGroup.types';
+import { BaseComponent, divProperties, getNativeProps, provideContext, createRef } from '../../Utilities';
+import { IResizeGroupProps } from './ResizeGroup.types';
 
 const RESIZE_DELAY = 16;
 
 export interface IResizeGroupState {
-
   /**
    * Final data used to render proper sized component
-  */
+   */
   renderedData?: any;
 
   /**
@@ -108,9 +96,11 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
    * @param getElementToMeasureWidth - A function that returns the measurement of the rendered data. Only called when the measurement
    * is not in the cache.
    */
-  function _shrinkContentsUntilTheyFit(data: any,
+  function _shrinkContentsUntilTheyFit(
+    data: any,
     onReduceData: (prevData: any) => any,
-    getElementToMeasureWidth: () => number): IResizeGroupState {
+    getElementToMeasureWidth: () => number
+  ): IResizeGroupState {
     let dataToMeasure = data;
     let measuredWidth: number | undefined = _getMeasuredWidth(data, getElementToMeasureWidth);
 
@@ -156,9 +146,12 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
    * @param getElementToMeasureWidth - A function that returns the measurement of the rendered data. Only called when the measurement
    * is not in the cache.
    */
-  function _growDataUntilItDoesNotFit(data: any,
+  function _growDataUntilItDoesNotFit(
+    data: any,
     onGrowData: (prevData: any) => any,
-    getElementToMeasureWidth: () => number): IResizeGroupState {
+    getElementToMeasureWidth: () => number,
+    onReduceData: (prevData: any) => any
+  ): IResizeGroupState {
     let dataToMeasure = data;
     let measuredWidth: number | undefined = _getMeasuredWidth(data, getElementToMeasureWidth);
 
@@ -189,8 +182,8 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
 
     // Once the loop is done, we should now shrink until the contents fit.
     return {
-      dataToMeasure,
-      resizeDirection: 'shrink'
+      resizeDirection: 'shrink',
+      ..._shrinkContentsUntilTheyFit(dataToMeasure, onReduceData, getElementToMeasureWidth)
     };
   }
 
@@ -201,7 +194,12 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
    * @param renderedData - The data that was rendered prior to the container size changing.
    * @param onGrowData - Set to true if the Resize group has an onGrowData function.
    */
-  function _updateContainerWidth(newWidth: number, fullWidthData: any, renderedData: any, onGrowData?: (prevData: any) => any): IResizeGroupState {
+  function _updateContainerWidth(
+    newWidth: number,
+    fullWidthData: any,
+    renderedData: any,
+    onGrowData?: (prevData: any) => any
+  ): IResizeGroupState {
     let nextState: IResizeGroupState;
     if (newWidth > _containerWidth!) {
       if (onGrowData) {
@@ -225,10 +223,12 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     return { ...nextState, measureContainer: false };
   }
 
-  function getNextState(props: IResizeGroupProps,
+  function getNextState(
+    props: IResizeGroupProps,
     currentState: IResizeGroupState,
     getElementToMeasureWidth: () => number,
-    newContainerWidth?: number): IResizeGroupState | undefined {
+    newContainerWidth?: number
+  ): IResizeGroupState | undefined {
     // If there is no new container width or data to measure, there is no need for a new state update
     if (newContainerWidth === undefined && currentState.dataToMeasure === undefined) {
       return undefined;
@@ -237,7 +237,10 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     if (newContainerWidth) {
       // If we know what the last container size was and we rendered data at that width, we can do an optimized render
       if (_containerWidth && currentState.renderedData && !currentState.dataToMeasure) {
-        return { ...currentState, ..._updateContainerWidth(newContainerWidth, props.data, currentState.renderedData, props.onGrowData) };
+        return {
+          ...currentState,
+          ..._updateContainerWidth(newContainerWidth, props.data, currentState.renderedData, props.onGrowData)
+        };
       }
 
       // If we are just setting the container width for the first time, we can't do any optimizations
@@ -253,7 +256,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
       if (currentState.resizeDirection === 'grow' && props.onGrowData) {
         nextState = {
           ...nextState,
-          ..._growDataUntilItDoesNotFit(currentState.dataToMeasure, props.onGrowData, getElementToMeasureWidth)
+          ..._growDataUntilItDoesNotFit(currentState.dataToMeasure, props.onGrowData, getElementToMeasureWidth, props.onReduceData)
         };
       } else {
         nextState = {
@@ -266,7 +269,8 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     return nextState;
   }
 
-  function shouldRenderDataToMeasureInHiddenDiv(dataToMeasure: any | undefined): boolean {
+  /** Function that determines if we need to render content for measurement based on the measurement cache contents. */
+  function shouldRenderDataForMeasurement(dataToMeasure: any | undefined): boolean {
     if (!dataToMeasure || _measurementCache.getCachedMeasurement(dataToMeasure) !== undefined) {
       return false;
     }
@@ -274,65 +278,98 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     return true;
   }
 
+  function getInitialResizeGroupState(data: any): IResizeGroupState {
+    return {
+      dataToMeasure: { ...data },
+      resizeDirection: 'grow',
+      measureContainer: true
+    };
+  }
+
   return {
     getNextState,
-    shouldRenderDataToMeasureInHiddenDiv
+    shouldRenderDataForMeasurement,
+    getInitialResizeGroupState
   };
 };
 
 // Provides a context property that (if true) tells any child components that
 // they are only being used for measurement purposes and will not be visible.
-const MeasuredContext = provideContext({
-  isMeasured: PropTypes.bool
-}, () => {
-  return { isMeasured: true };
-});
+const MeasuredContext = provideContext(
+  {
+    isMeasured: PropTypes.bool
+  },
+  () => {
+    return { isMeasured: true };
+  }
+);
 
-const getClassNames = classNamesFunction<IResizeGroupStyleProps, IResizeGroupStyles>();
+// Styles for the hidden div used for measurement
+const hiddenDivStyles: React.CSSProperties = { position: 'fixed', visibility: 'hidden' };
+const hiddenParentStyles: React.CSSProperties = { position: 'relative' };
 
-@customizable('ResizeGroup', ['theme'])
 export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGroupState> {
   private _nextResizeGroupStateProvider = getNextResizeGroupStateProvider();
-  private _root: HTMLElement;
-  private _measured: HTMLElement;
+  // The root div which is the container inside of which we are trying to fit content.
+  private _root = createRef<HTMLDivElement>();
+  // A div that can be used for the initial measurement so that we can avoid mounting a second instance
+  // of the component being measured for the initial render.
+  private _initialHiddenDiv = createRef<HTMLDivElement>();
+  // A hidden div that is used for mounting a new instance of the component for measurement in a hidden
+  // div without unmounting the currently visible content.
+  private _updateHiddenDiv = createRef<HTMLDivElement>();
+  // Tracks if any content has been rendered to the user. This enables us to do some performance optimizations
+  // for the initial render.
+  private _hasRenderedContent = false;
 
   constructor(props: IResizeGroupProps) {
     super(props);
-    this.state = {
-      dataToMeasure: { ...this.props.data },
-      resizeDirection: 'grow',
-      measureContainer: true,
-    };
+    this.state = this._nextResizeGroupStateProvider.getInitialResizeGroupState(this.props.data);
+
+    this._warnDeprecations({
+      styles: 'className'
+    });
   }
 
-  public render() {
-    const { onRenderData, className, getStyles, theme } = this.props;
+  public render(): JSX.Element {
+    const { className, onRenderData } = this.props;
     const { dataToMeasure, renderedData } = this.state;
     const divProps = getNativeProps(this.props, divProperties, ['data']);
-    const classNames = getClassNames(getStyles!, { theme: theme!, className });
 
+    const dataNeedsMeasuring = this._nextResizeGroupStateProvider.shouldRenderDataForMeasurement(dataToMeasure);
+
+    const isInitialMeasure = !this._hasRenderedContent && dataNeedsMeasuring;
+
+    // We only ever render the final content to the user. All measurements are done in a hidden div.
+    // For the initial render, we want this to be as fast as possible, so we need to make sure that we only mount one version of the
+    // component for measurement and the final render. For renders that update what is on screen, we want to make sure that
+    // there are no jarring effects such as the screen flashing as we apply scaling steps for meassurement. In the update case,
+    // we mount a second version of the component just for measurement purposes and leave the rendered content untouched until we know the
+    // next state sto show to the user.
     return (
-      <div { ...divProps } className={ classNames.root } ref={ this._resolveRef('_root') }>
-        { this._nextResizeGroupStateProvider.shouldRenderDataToMeasureInHiddenDiv(dataToMeasure) && (
-          <div
-            style={ { position: 'fixed', visibility: 'hidden' } }
-            ref={ this._resolveRef('_measured') }
-          >
-            <MeasuredContext>{ onRenderData(dataToMeasure) }</MeasuredContext>
-          </div>
-        ) }
+      <div {...divProps} className={className} ref={this._root}>
+        <div style={hiddenParentStyles}>
+          {dataNeedsMeasuring &&
+            !isInitialMeasure && (
+              <div style={hiddenDivStyles} ref={this._updateHiddenDiv}>
+                <MeasuredContext>{onRenderData(dataToMeasure)}</MeasuredContext>
+              </div>
+            )}
 
-        { renderedData && onRenderData(renderedData) }
+          <div ref={this._initialHiddenDiv} style={isInitialMeasure ? hiddenDivStyles : undefined} data-automation-id="visibleContent">
+            {isInitialMeasure ? onRenderData(dataToMeasure) : renderedData && onRenderData(renderedData)}
+          </div>
+        </div>
       </div>
     );
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     this._afterComponentRendered();
     this._events.on(window, 'resize', this._async.debounce(this._onResize, RESIZE_DELAY, { leading: true }));
   }
 
-  public componentWillReceiveProps(nextProps: IResizeGroupProps) {
+  public componentWillReceiveProps(nextProps: IResizeGroupProps): void {
     this.setState({
       dataToMeasure: { ...nextProps.data },
       resizeDirection: 'grow',
@@ -342,6 +379,7 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
 
   public componentDidUpdate(prevProps: IResizeGroupProps) {
     if (this.state.renderedData) {
+      this._hasRenderedContent = true;
       if (this.props.dataDidRender) {
         this.props.dataDidRender(this.state.renderedData);
       }
@@ -350,21 +388,26 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
   }
 
   public remeasure(): void {
-    if (this._root) {
+    if (this._root.current) {
       this.setState({ measureContainer: true });
     }
   }
 
-  private _afterComponentRendered() {
+  private _afterComponentRendered(): void {
     this._async.requestAnimationFrame(() => {
       let containerWidth = undefined;
-      if (this.state.measureContainer) {
-        containerWidth = this._root.getBoundingClientRect().width;
+      if (this.state.measureContainer && this._root.current) {
+        containerWidth = this._root.current.getBoundingClientRect().width;
       }
-      const nextState = this._nextResizeGroupStateProvider.getNextState(this.props,
+      const nextState = this._nextResizeGroupStateProvider.getNextState(
+        this.props,
         this.state,
-        () => this._measured.scrollWidth,
-        containerWidth);
+        () => {
+          const refToMeasure = !this._hasRenderedContent ? this._initialHiddenDiv : this._updateHiddenDiv;
+          return refToMeasure.current ? refToMeasure.current.scrollWidth : 0;
+        },
+        containerWidth
+      );
 
       if (nextState) {
         this.setState(nextState);
@@ -372,8 +415,8 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     });
   }
 
-  private _onResize() {
-    if (this._root) {
+  private _onResize(): void {
+    if (this._root.current) {
       this.setState({ measureContainer: true });
     }
   }

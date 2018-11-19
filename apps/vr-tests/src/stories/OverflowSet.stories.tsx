@@ -9,7 +9,7 @@ const onRenderItem = (item) => item.name;
 const onRenderOverflowButton = (overflowItems) => {
   return (
     <IconButton
-      menuProps={ { items: overflowItems! } }
+      menuProps={{ items: overflowItems! }}
     />
   );
 };
@@ -18,7 +18,7 @@ storiesOf('OverflowSet', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
-      steps={ new Screener.Steps()
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .click('.ms-Button-flexContainer')
         .hover('.ms-Button-flexContainer')
@@ -26,11 +26,11 @@ storiesOf('OverflowSet', module)
         .end()
       }
     >
-      { story() }
+      {story()}
     </Screener>
-  )).add('Root', () => (
+  )).addStory('Root', () => (
     <OverflowSet
-      items={ [
+      items={[
         {
           key: 'item1',
           name: 'Link 1'
@@ -43,8 +43,8 @@ storiesOf('OverflowSet', module)
           key: 'item3',
           name: 'Link 3'
         }
-      ] }
-      overflowItems={ [
+      ]}
+      overflowItems={[
         {
           key: 'item4',
           name: 'Overflow Link 1'
@@ -55,26 +55,26 @@ storiesOf('OverflowSet', module)
         }
       ]
       }
-      onRenderOverflowButton={ onRenderOverflowButton }
-      onRenderItem={ onRenderItem }
+      onRenderOverflowButton={onRenderOverflowButton}
+      onRenderItem={onRenderItem}
     />
-  ));
+  ), { rtl: true });
 
-storiesOf('OverflowSet varient', module)
+storiesOf('OverflowSet variant', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
-      steps={ new Screener.Steps()
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .end()
       }
     >
-      { story() }
+      {story()}
     </Screener>
-  )).add('Vertical Direction', () => (
+  )).addStory('Vertical Direction', () => (
     <OverflowSet
       vertical
-      items={ [
+      items={[
         {
           key: 'item1',
           name: 'Link 1'
@@ -87,8 +87,8 @@ storiesOf('OverflowSet varient', module)
           key: 'item3',
           name: 'Link 3'
         }
-      ] }
-      overflowItems={ [
+      ]}
+      overflowItems={[
         {
           key: 'item4',
           name: 'Overflow Link 1'
@@ -99,7 +99,7 @@ storiesOf('OverflowSet varient', module)
         }
       ]
       }
-      onRenderOverflowButton={ onRenderOverflowButton }
-      onRenderItem={ onRenderItem }
+      onRenderOverflowButton={onRenderOverflowButton}
+      onRenderItem={onRenderItem}
     />
   ));

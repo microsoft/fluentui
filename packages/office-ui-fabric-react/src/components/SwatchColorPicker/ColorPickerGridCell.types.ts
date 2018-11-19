@@ -1,5 +1,5 @@
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IColorPickerGridCellProps {
   /**
@@ -8,8 +8,8 @@ export interface IColorPickerGridCellProps {
   item: IColorCellProps;
 
   /**
- * Arbitrary unique string associated with this option
- */
+   * Arbitrary unique string associated with this option
+   */
   id: string;
 
   /**
@@ -50,13 +50,31 @@ export interface IColorPickerGridCellProps {
   selected: boolean;
 
   /**
+   * Height of the cell, in pixels
+   * @defaultvalue 20
+   */
+  height?: number;
+
+  /**
+   * Width of the cell, in pixels
+   * @defaultvalue 20
+   */
+  width?: number;
+
+  /**
+   * Width of the border that indicates a selected/hovered cell, in pixels
+   * @defaultvalue 2
+   */
+  borderWidth?: number;
+
+  /**
    * The on click handler
    */
   onClick?: (item: IColorCellProps) => void;
 
   /**
- * Optional, the onHover handler
- */
+   * Optional, the onHover handler
+   */
   onHover?: (item?: IColorCellProps) => void;
 
   /**
@@ -65,9 +83,9 @@ export interface IColorPickerGridCellProps {
   onFocus?: (item: IColorCellProps) => void;
 
   /**
-  * Optional styles for the component.
-  */
-  getStyles?: IStyleFunction<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>;
+   * Optional styles for the component.
+   */
+  styles?: IStyleFunctionOrObject<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>;
 
   /**
    * Optional, mouseEnter handler.
@@ -98,10 +116,9 @@ export interface IColorPickerGridCellProps {
 }
 
 export interface IColorCellProps {
-
   /**
-  * Arbitrary unique string associated with this option
-  */
+   * Arbitrary unique string associated with this option
+   */
   id: string;
 
   /**
@@ -150,6 +167,21 @@ export interface IColorPickerGridCellStyleProps {
    * Whether the color being rendered is white or not. If it is white we show a border around it.
    */
   isWhite?: boolean;
+
+  /**
+   * The height of this cell, in pixels.
+   */
+  height?: number;
+
+  /**
+   * The width of this cell, in pixels.
+   */
+  width?: number;
+
+  /**
+   * The width of the border indicating a hovered or selected cell, in pixels.
+   */
+  borderWidth?: number;
 }
 
 /**

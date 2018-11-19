@@ -15,21 +15,12 @@
     "noImplicitAny": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
-    "lib": [
-      "es2017",
-      "dom"
-    ],
-    "types": [
-      "jest",
-      "webpack-env"
-    ],
+    "lib": ["es2017", "dom"],
+    "types": ["jest", "webpack-env"],
     "paths": {
-      "experiments/lib/*": [
-        "./src/*"
-      ]
+      "@uifabric/experiments/lib/*": ["./src/*"],
+      "@uifabric/experiments": ["./src"]
     }
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

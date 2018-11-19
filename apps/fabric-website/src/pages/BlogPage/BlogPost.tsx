@@ -11,27 +11,20 @@ export class BlogPost extends React.Component<{}, {}> {
     this._postId = this._getParameterByName('id');
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
-      <div className='BlogPost'>
-        <div className='BlogPost-pageTitle'>
-          Blog
-        </div>
-        <h1 className='BlogPost-title'>
-          { blogData[this._postId].title }
-        </h1>
-        <p className='BlogPost-meta'>
-          { blogData[this._postId].fullPublishedDate } | Posted by { blogData[this._postId].author }
+      <div className="BlogPost">
+        <div className="BlogPost-pageTitle">Blog</div>
+        <h1 className="BlogPost-title">{blogData[this._postId].title}</h1>
+        <p className="BlogPost-meta">
+          {blogData[this._postId].fullPublishedDate} | Posted by {blogData[this._postId].author}
         </p>
-        <div
-          className='BlogPost-content'
-          dangerouslySetInnerHTML={ { __html: blogData[this._postId].content } }
-        />
+        <div className="BlogPost-content" dangerouslySetInnerHTML={{ __html: blogData[this._postId].content }} />
       </div>
     );
   }
 
-  private _getParameterByName(name: string, url?: string) {
+  private _getParameterByName(name: string, url?: string): string {
     if (!url) {
       url = window.location.href;
     }

@@ -1,23 +1,21 @@
 import * as React from 'react';
 import { LayerBase } from './Layer.base';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
-export interface ILayer {
-
-}
+export interface ILayer {}
 
 export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement | LayerBase> {
   /**
    * Optional callback to access the ILayer interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ILayer) => void;
+  componentRef?: IRefObject<ILayer>;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
-  getStyles?: IStyleFunction<ILayerStyleProps, ILayerStyles>;
+  styles?: IStyleFunctionOrObject<ILayerStyleProps, ILayerStyles>;
 
   /**
    * Theme provided by HOC.
@@ -50,6 +48,13 @@ export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement | Layer
    * content in a fixed position element rendered at the end of the document.
    */
   hostId?: string;
+
+  /**
+   * When enabled, Layer allows events to bubble up from Layer content.
+   * Traditionally Layer has not had this behavior. This prop preserves backwards compatibility by
+   * default while allowing users to opt in to the new event bubbling functionality.
+   */
+  eventBubblingEnabled?: boolean;
 }
 
 export interface ILayerStyleProps {
@@ -65,7 +70,7 @@ export interface ILayerStyleProps {
 
   /**
    * Check if Host
-  */
+   */
   isNotHost?: boolean;
 }
 

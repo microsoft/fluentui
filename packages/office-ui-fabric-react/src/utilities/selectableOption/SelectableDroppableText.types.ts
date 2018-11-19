@@ -1,14 +1,19 @@
 import * as React from 'react';
-import { IRenderFunction } from '../../Utilities';
+import { IRefObject, IRenderFunction } from '../../Utilities';
 import { ICalloutProps } from '../../Callout';
+import { IPanelProps } from '../../Panel';
 import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.types';
 
-export interface ISelectableDroppableTextProps<T> extends React.HTMLAttributes<T> {
+/**
+ * TComponent - Component used for reference properties, such as componentRef
+ * TListenerElement - Listener element associated with HTML event callbacks. Optional. If not provided, TComponent is assumed.
+ */
+export interface ISelectableDroppableTextProps<TComponent, TListenerElement = TComponent> extends React.HTMLAttributes<TListenerElement> {
   /**
-  * Optional callback to access the ISelectableDroppableText interface. Use this instead of ref for accessing
-  * the public methods and properties of the component.
-  */
-  componentRef?: (component: T) => void;
+   * Optional callback to access the ISelectableDroppableText interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: IRefObject<TComponent>;
 
   /**
    * Descriptive label for the ISelectableDroppableText
@@ -16,13 +21,13 @@ export interface ISelectableDroppableTextProps<T> extends React.HTMLAttributes<T
   label?: string;
 
   /**
-  * Aria Label for the ISelectableDroppableText for screen reader users.
-  */
+   * Aria Label for the ISelectableDroppableText for screen reader users.
+   */
   ariaLabel?: string;
 
   /**
-  * Id of the ISelectableDroppableText
-  */
+   * Id of the ISelectableDroppableText
+   */
   id?: string;
 
   /**
@@ -31,15 +36,15 @@ export interface ISelectableDroppableTextProps<T> extends React.HTMLAttributes<T
   className?: string;
 
   /**
-   * The key that will be initially used to set a selected item.
+   * The key(s) that will be initially used to set a selected item.
    */
-  defaultSelectedKey?: string | number;
+  defaultSelectedKey?: string | number | string[] | number[];
 
   /**
-   * The key of the selected item. If you provide this, you must maintain selection
+   * The key(s) of the selected item. If you provide this, you must maintain selection
    * state by observing onChange events and passing a new value in when changed.
    */
-  selectedKey?: string | number;
+  selectedKey?: string | number | string[] | number[];
 
   /**
    * Collection of options for this ISelectableDroppableText
@@ -47,19 +52,14 @@ export interface ISelectableDroppableTextProps<T> extends React.HTMLAttributes<T
   options?: any;
 
   /**
-   * Callback issues when the selected option changes
+   * Optional custom renderer for the ISelectableDroppableText container
    */
-  onChanged?: (option: ISelectableOption, index?: number) => void;
+  onRenderContainer?: IRenderFunction<ISelectableDroppableTextProps<TComponent>>;
 
   /**
-    * Optional custom renderer for the ISelectableDroppableText container
-    */
-  onRenderContainer?: IRenderFunction<ISelectableDroppableTextProps<T>>;
-
-  /**
-    * Optional custom renderer for the ISelectableDroppableText list
-    */
-  onRenderList?: IRenderFunction<ISelectableDroppableTextProps<T>>;
+   * Optional custom renderer for the ISelectableDroppableText list
+   */
+  onRenderList?: IRenderFunction<ISelectableDroppableTextProps<TComponent>>;
 
   /**
    * Optional custom renderer for the ISelectableDroppableText options
@@ -85,6 +85,11 @@ export interface ISelectableDroppableTextProps<T> extends React.HTMLAttributes<T
    * Custom properties for ISelectableDroppableText's Callout used to render options.
    */
   calloutProps?: ICalloutProps;
+
+  /**
+   * Custom properties for ISelectableDroppableText's Panel used to render options on small devices.
+   */
+  panelProps?: IPanelProps;
 
   /**
    * Descriptive label for the ISelectableDroppableText Error Message

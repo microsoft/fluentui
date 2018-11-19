@@ -3,11 +3,7 @@ import { assign } from 'office-ui-fabric-react/lib/Utilities';
 import { DetailsList, DetailsListLayoutMode, IColumn, IGroup } from 'office-ui-fabric-react/lib/DetailsList';
 import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
 import './PropertiesTable.scss';
-import {
-  IInterfaceProperty,
-  IEnumProperty,
-  InterfacePropertyType
-} from '../../utilities/parser/index';
+import { IInterfaceProperty, IEnumProperty, InterfacePropertyType } from '../../utilities/parser/index';
 import { FontClassNames } from 'office-ui-fabric-react/lib/Styling';
 
 export interface IPropertiesTableProps {
@@ -23,6 +19,49 @@ export interface IProptertiesTableState {
   groups: IGroup[] | undefined;
 }
 
+const renderCell = (text: string) => {
+  // When the text is passed to this function, it has had newline characters removed,
+  // so this regex will match backtick sequences that span multiple lines.
+  const regex = new RegExp('`[^`]*`', 'g');
+  let regexResult: RegExpExecArray | null;
+  let codeBlocks: { index: number; text: string }[] = [];
+  while ((regexResult = regex.exec(text)) !== null) {
+    codeBlocks.push({
+      index: regexResult.index,
+      text: regexResult[0]
+    });
+  }
+
+  if (codeBlocks.length === 0) {
+    return <span>{text}</span>;
+  }
+
+  const eltChildren: JSX.Element[] = [];
+
+  let codeIndex = 0;
+  let textIndex = 0;
+  while (textIndex < text.length && codeIndex < codeBlocks.length) {
+    const codeBlock = codeBlocks[codeIndex];
+    if (textIndex < codeBlock.index) {
+      const str = text.substring(textIndex, codeBlock.index);
+      eltChildren.push(<span key={textIndex}>{str}</span>);
+      textIndex += str.length;
+    } else {
+      eltChildren.push(<code key={textIndex}>{codeBlock.text.substring(1, codeBlock.text.length - 1)}</code>);
+      codeIndex++;
+      textIndex += codeBlock.text.length;
+    }
+  }
+  if (textIndex < text.length) {
+    eltChildren.push(<span key={textIndex}>{text.substring(textIndex, text.length)}</span>);
+  }
+
+  return <span>{eltChildren}</span>;
+};
+
+const createRenderCell = (propertyName: keyof IInterfaceProperty | keyof IEnumProperty) => (item: IInterfaceProperty | IEnumProperty) =>
+  renderCell(item[propertyName]);
+
 const DEFAULT_COLUMNS: IColumn[] = [
   {
     key: 'name',
@@ -32,7 +71,8 @@ const DEFAULT_COLUMNS: IColumn[] = [
     maxWidth: 250,
     isCollapsable: false,
     isRowHeader: true,
-    isResizable: true
+    isResizable: true,
+    onRender: createRenderCell('name')
   },
   {
     key: 'type',
@@ -41,7 +81,9 @@ const DEFAULT_COLUMNS: IColumn[] = [
     minWidth: 130,
     maxWidth: 150,
     isCollapsable: false,
-    isResizable: true
+    isResizable: true,
+    isMultiline: true,
+    onRender: createRenderCell('type')
   },
   {
     key: 'defaultValue',
@@ -50,8 +92,11 @@ const DEFAULT_COLUMNS: IColumn[] = [
     minWidth: 130,
     maxWidth: 150,
     isCollapsable: false,
-    isResizable: true
-  }, {
+    isResizable: true,
+    isMultiline: true,
+    onRender: createRenderCell('defaultValue')
+  },
+  {
     key: 'description',
     name: 'Description',
     fieldName: 'description',
@@ -59,7 +104,8 @@ const DEFAULT_COLUMNS: IColumn[] = [
     maxWidth: 400,
     isCollapsable: false,
     isResizable: true,
-    isMultiline: true
+    isMultiline: true,
+    onRender: createRenderCell('description')
   }
 ];
 
@@ -72,7 +118,8 @@ const ENUM_COLUMNS: IColumn[] = [
     maxWidth: 250,
     isCollapsable: false,
     isRowHeader: true,
-    isResizable: true
+    isResizable: true,
+    onRender: createRenderCell('name')
   },
   {
     key: 'description',
@@ -81,7 +128,8 @@ const ENUM_COLUMNS: IColumn[] = [
     minWidth: 300,
     maxWidth: 400,
     isCollapsable: false,
-    isResizable: true
+    isResizable: true,
+    onRender: createRenderCell('description')
   }
 ];
 
@@ -94,13 +142,18 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, IPro
     super(props);
 
     let properties = (props.properties as IInterfaceProperty[])
-      .sort((a: IInterfaceProperty, b: IInterfaceProperty) => (
-        a.interfacePropertyType < b.interfacePropertyType ? -1 :
-          a.interfacePropertyType > b.interfacePropertyType ? 1 :
-            a.name < b.name ? -1 :
-              a.name > b.name ? 1 :
-                0
-      ))
+      .sort(
+        (a: IInterfaceProperty, b: IInterfaceProperty) =>
+          a.interfacePropertyType < b.interfacePropertyType
+            ? -1
+            : a.interfacePropertyType > b.interfacePropertyType
+              ? 1
+              : a.name < b.name
+                ? -1
+                : a.name > b.name
+                  ? 1
+                  : 0
+      )
       .map((prop: IInterfaceProperty, index: number) => assign({}, prop, { key: index }));
 
     let groups: IGroup[] | undefined = undefined;
@@ -125,14 +178,14 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, IPro
     }
 
     return (
-      <div className='PropertiesTable'>
-        <h2 className={ FontClassNames.xLarge }>{ title }</h2>
+      <div className="PropertiesTable">
+        <h2 className={FontClassNames.xLarge}>{title}</h2>
         <DetailsList
-          selectionMode={ SelectionMode.none }
-          layoutMode={ DetailsListLayoutMode.justified }
-          items={ properties }
-          groups={ groups }
-          columns={ isEnum ? ENUM_COLUMNS : DEFAULT_COLUMNS }
+          selectionMode={SelectionMode.none}
+          layoutMode={DetailsListLayoutMode.justified}
+          items={properties}
+          groups={groups}
+          columns={isEnum ? ENUM_COLUMNS : DEFAULT_COLUMNS}
         />
       </div>
     );
@@ -152,7 +205,8 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, IPro
   private _tryAddGroup(
     props: IInterfaceProperty[],
     typeToCompare: InterfacePropertyType,
-    name: string, index: number,
+    name: string,
+    index: number,
     allGroups: IGroup[]
   ): number {
     let group: IGroup | undefined = undefined;

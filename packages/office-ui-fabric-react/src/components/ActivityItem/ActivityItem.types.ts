@@ -1,18 +1,19 @@
 import * as React from 'react';
 import { IStyle } from '../../Styling';
-import { IRenderFunction } from '../../Utilities';
-import { IPersonaProps } from '../../Persona';
+import { IRefObject, IRenderFunction } from '../../Utilities';
+import { IPersonaSharedProps } from '../../Persona';
 
-// Please keep alphabetized
 export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement> {
   /**
-   * An element describing the activity that took place. If no activityDescription, activityDescriptionText, or onRenderActivityDescription are included, no description of the activity is shown.
+   * An element describing the activity that took place. If no activityDescription, activityDescriptionText, or
+   * onRenderActivityDescription are included, no description of the activity is shown.
    */
   activityDescription?: React.ReactNode[] | React.ReactNode;
 
   /**
-   * Text describing the activity that occurred and naming the people involved in it. Deprecated, use activityDescription instead.
-   * @deprecated
+   * Text describing the activity that occurred and naming the people involved in it.
+   * Deprecated, use `activityDescription` instead.
+   * @deprecated Use `activityDescription` instead.
    */
   activityDescriptionText?: string;
 
@@ -24,23 +25,25 @@ export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement>
   /**
    * If activityIcon is not set, then the persona props in this array will be used as the icon for the this activity item.
    */
-  activityPersonas?: Array<IPersonaProps>;
+  activityPersonas?: Array<IPersonaSharedProps>;
 
   /**
-   * An element containing the text of comments or @mention messages. If no comments, commentText, or onRenderComments are included, no comments are shown.
+   * An element containing the text of comments or \@mention messages.
+   * If no comments, commentText, or onRenderComments are included, no comments are shown.
    */
   comments?: React.ReactNode[] | React.ReactNode;
 
   /**
-   * Text of comments or @mention messages. Deprecated, use comments instead.
-   * @deprecated
+   * Text of comments or \@mention messages.
+   * Deprecated, use `comments` instead.
+   * @deprecated Use `comments` instead.
    */
   commentText?: string;
 
   /**
    * Gets ref to component interface.
    */
-  componentRef?: () => void;
+  componentRef?: IRefObject<{}>;
 
   /**
    * Indicated if the compact styling should be used.
@@ -76,6 +79,23 @@ export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement>
    * Element shown as a timestamp on this activity. If not included, no timestamp is shown.
    */
   timeStamp?: string | React.ReactNode[] | React.ReactNode;
+
+  /**
+   * Beacon color one
+   */
+  beaconColorOne?: string;
+
+  /**
+   * Beacon color two
+   */
+  beaconColorTwo?: string;
+
+  /**
+   * Enables/Disables the beacon that radiates
+   * from the center of the center of the activity icon. Signals an activity has started.
+   * @defaultvalue false
+   */
+  animateBeaconSignal?: boolean;
 }
 
 export interface IActivityItemStyles {
@@ -83,6 +103,11 @@ export interface IActivityItemStyles {
    * Styles applied to the root activity item container.
    */
   root?: IStyle;
+
+  /**
+   * Styles applied to the root activity item container.
+   */
+  pulsingBeacon?: IStyle;
 
   /**
    * Styles applied to the main container of the activity's description.
@@ -148,4 +173,10 @@ export interface IActivityItemStyles {
    * Styles applied to the timestamp at the end of each activity item.
    */
   timeStamp?: IStyle;
+
+  /**
+   * Styles applied to the timestamp in compact mode.
+   * This can occur if a host overrides the render behavior to force the timestamp to render.
+   */
+  isCompactTimeStamp?: IStyle;
 }

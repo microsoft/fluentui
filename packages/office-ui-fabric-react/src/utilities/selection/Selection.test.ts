@@ -5,7 +5,6 @@ const setA = [{ key: 'a' }, { key: 'b' }, { key: 'c' }];
 const setB = [{ key: 'a' }, { key: 'd' }, { key: 'b' }];
 
 describe('Selection', () => {
-
   it('fires change events only when selection changes occur', () => {
     let changeCount = 0;
     const selection = new Selection({ onSelectionChanged: () => changeCount++ });
@@ -86,4 +85,42 @@ describe('Selection', () => {
     expect(selection.isAllSelected()).toEqual(true);
   });
 
+  it('notifies consumers when all items are selected and some are removed', () => {
+    let changeCount = 0;
+    const selection = new Selection({ onSelectionChanged: () => changeCount++ });
+
+    selection.setItems(setA);
+
+    selection.setAllSelected(true);
+
+    expect(changeCount).toEqual(1);
+    expect(selection.getSelectedCount()).toEqual(3);
+
+    selection.setItems([{ key: 'a' }, { key: 'b' }], false);
+
+    expect(changeCount).toEqual(2);
+    expect(selection.getSelectedCount()).toEqual(2);
+
+    selection.setItems([], false);
+
+    expect(changeCount).toEqual(3);
+    expect(selection.getSelectedCount()).toEqual(0);
+  });
+
+  it('notifies consumers when some items are selected and some are removed', () => {
+    let changeCount = 0;
+    const selection = new Selection({ onSelectionChanged: () => changeCount++ });
+
+    selection.setItems(setA);
+
+    selection.setIndexSelected(2, true, false);
+
+    expect(changeCount).toEqual(1);
+    expect(selection.count).toEqual(1);
+
+    selection.setItems([{ key: 'a' }, { key: 'b' }], false);
+
+    expect(changeCount).toEqual(2);
+    expect(selection.count).toEqual(0);
+  });
 });

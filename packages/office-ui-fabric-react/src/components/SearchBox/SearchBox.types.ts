@@ -1,13 +1,19 @@
 import * as React from 'react';
 import { ITheme, IStyle } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
-import { IButtonProps } from '../Button';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { IButtonProps } from '../../Button';
+import { IIconProps } from '../../Icon';
 
 export interface ISearchBox {
   /**
    * Sets focus inside the search input box.
    */
   focus(): void;
+
+  /**
+   * Returns whether or not the SearchBox has focus
+   */
+  hasFocus(): boolean;
 }
 
 export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -15,7 +21,7 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
    * Optional callback to access the ISearchBox interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ISearchBox) => void;
+  componentRef?: IRefObject<ISearchBox>;
 
   /**
    * Placeholder for the search box.
@@ -23,14 +29,14 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
   placeholder?: string;
 
   /**
-  * Deprecated. Use placeholder instead.
-  * @deprecated
-  */
+   * Deprecated. Use `placeholder` instead.
+   * @deprecated Use `placeholder` instead.
+   */
   labelText?: string;
 
   /**
-  * Callback function for when the typed input for the SearchBox has changed.
-  */
+   * Callback function for when the typed input for the SearchBox has changed.
+   */
   onChange?: (newValue: any) => void;
 
   /**
@@ -49,8 +55,8 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
   onEscape?: (ev?: any) => void;
 
   /**
-   * Deprecated at v0.52.2, use 'onChange' instead.
-   * @deprecated
+   * Deprecated at v0.52.2, use `onChange` instead.
+   * @deprecated Use `onChange` instead.
    */
   onChanged?: (newValue: any) => void;
 
@@ -61,12 +67,15 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
 
   /**
    * The default value of the text in the SearchBox, in the case of an uncontrolled component.
+   * Up till now, this has not been implemented, deprecating. Will re-implement if uncontrolled
+   * component behavior is implemented.
+   * @deprecated Not implmented.
    */
   defaultValue?: string;
 
   /**
-  * CSS class to apply to the SearchBox.
-  */
+   * CSS class to apply to the SearchBox.
+   */
   className?: string;
 
   /**
@@ -81,8 +90,13 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
   clearButtonProps?: IButtonProps;
 
   /**
+   * The props for the icon.
+   */
+  iconProps?: Pick<IIconProps, Exclude<keyof IIconProps, 'className'>>;
+
+  /**
    * Whether or not the SearchBox is underlined.
-   * @default false
+   * @defaultvalue false
    */
   underlined?: boolean;
 
@@ -94,7 +108,13 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunction<ISearchBoxStyleProps, ISearchBoxStyles>;
+  styles?: IStyleFunctionOrObject<ISearchBoxStyleProps, ISearchBoxStyles>;
+
+  /**
+   * Whether or not to animate the SearchBox icon on focus.
+   * @defaultvalue false
+   */
+  disableAnimation?: boolean;
 }
 
 export interface ISearchBoxStyleProps {
@@ -104,6 +124,7 @@ export interface ISearchBoxStyleProps {
   hasFocus?: boolean;
   underlined?: boolean;
   hasInput?: boolean;
+  disableAnimation?: boolean;
 }
 
 export interface ISearchBoxStyles {

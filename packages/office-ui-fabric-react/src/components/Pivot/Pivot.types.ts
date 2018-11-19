@@ -1,18 +1,38 @@
 import * as React from 'react';
-
-import { Pivot } from './Pivot';
+import { PivotBase } from './Pivot.base';
+import { IStyle, ITheme } from '../../Styling';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { PivotItem } from './PivotItem';
 
 export interface IPivot {
-
+  /**
+   * Sets focus to the first pivot tab.
+   */
+  focus(): void;
 }
 
-export interface IPivotProps extends React.Props<Pivot> {
+export interface IPivotProps extends React.Props<PivotBase>, React.HTMLAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the IPivot interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IPivot) => void;
+  componentRef?: IRefObject<IPivot>;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  styles?: IStyleFunctionOrObject<IPivotStyleProps, IPivotStyles>;
+
+  /**
+   * Theme provided by High-Order Component.
+   */
+  theme?: ITheme;
+
+  /**
+   * Additional css class to apply to the Pivot
+   * @defaultvalue undefined
+   */
+  className?: string;
 
   /**
    * The index of the pivot item initially selected.
@@ -64,6 +84,32 @@ export interface IPivotProps extends React.Props<Pivot> {
   getTabId?: (itemKey: string, index: number) => string;
 }
 
+export type IPivotStyleProps = Required<Pick<IPivotProps, 'theme'>> &
+  Pick<IPivotProps, 'className'> & {
+    /** Indicates whether Pivot has large format. */
+    rootIsLarge?: boolean;
+    /** Indicates whether Pivot has tabbed format. */
+    rootIsTabs?: boolean;
+    /**
+     * Indicates whether Pivot link is selected.
+     * @deprecated Is not populated with valid value. Specify `linkIsSelected` styling instead.
+     */
+    linkIsSelected?: boolean;
+  };
+
+export interface IPivotStyles {
+  /**
+   * Style for the root element.
+   */
+  root: IStyle;
+  link: IStyle;
+  linkContent: IStyle;
+  linkIsSelected: IStyle;
+  text: IStyle;
+  count: IStyle;
+  icon: IStyle;
+}
+
 export enum PivotLinkFormat {
   /**
    * Display Pivot Links as links
@@ -77,7 +123,6 @@ export enum PivotLinkFormat {
 }
 
 export enum PivotLinkSize {
-
   /**
    * Display Link using normal font size
    */

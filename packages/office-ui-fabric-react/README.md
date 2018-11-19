@@ -9,34 +9,20 @@ Fabric React is a responsive, mobile-first collection of robust components desig
 
 ## Contents
 
-- [View the docs](#view-the-docs)
 - [Get started](#get-started)
+- [Documentation](#documentation)
 - [Testing](#testing)
 - [Advanced usage](#advanced-usage)
-- [Roadmap](#roadmap)
-- [Trello board](#trello-board)
 - [Browser support](#browser-support)
-- [Contribute to Fabric React](#contribute-to-fabric-react)
+- [Contribute](#contribute)
 - [Licenses](#licenses)
 - [Changelog](#changelog)
 
 
-## View the docs
-
-Before you get started, make sure you have [node.js](https://nodejs.org/), [gulp](http://gulpjs.com/), and [git](https://git-scm.com/) installed. To view the documentation including examples, contracts, component status, and to add functionality or fix issues locally, you can:
-
-1. `git clone https://github.com/OfficeDev/office-ui-fabric-react.git`
-2. `npm install`
-3. `npm start`
-
-This will run `gulp serve` from the office-ui-fabric-react package folder, which will open a web browser with the example page. You can make changes to the code which will automatically build and refresh the page using live-reload.
-
-To build all packages in the repo, you can use `npm run build`.
-
 ## Get started
 
 ### Tutorial
-[Here is a step by step tutorial](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/README.md) on how to build a simple React app with an Office UI Fabric React component.
+[Here is a step by step tutorial](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Sample-App) on how to build a simple React app with an Office UI Fabric React component.
 
 ### Integrate into an existing project
 Integrating components into your project depends heavily on your setup. The recommended setup is to use a bundler such as Webpack which can resolve NPM package imports in your code and can bundle the specific things you import.
@@ -54,9 +40,9 @@ The library includes commonjs entry points under the lib folder. To use a contro
 ```js
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
-const MyPage = () => (<div><Button>I am a button.</Button></div>);
+const MyPage = () => <DefaultButton>I am a button</DefaultButton>;
 
 ReactDOM.render(<MyPage />, document.body.firstChild);
 ```
@@ -67,7 +53,7 @@ If you need to render Fabric components on the server side in a node environment
 
 ```ts
 import { configureLoadStyles } from '@microsoft/load-themed-styles';
- 
+
 // Store registered styles in a variable used later for injection.
 let _allStyles = '';
 
@@ -75,13 +61,13 @@ let _allStyles = '';
 configureLoadStyles((styles: string) => {
   _allStyles += styles;
 });
- 
+
 import * as React from 'react';
 import * as ReactDOMServer from 'react-dom/server';
-import { Button } from 'office-ui-fabric-react/lib/Button'; 
- 
+import { Button } from 'office-ui-fabric-react/lib/Button';
+
 let body = ReactDOMServer.renderToString(<Button>hello</Button>);
- 
+
 console.log(
   `
   <html>
@@ -97,22 +83,26 @@ console.log(
 
 Note: we are evaluating a more robust theming and style loading approach, which will allow a much more flexible server rendering approach, so this syntax may be simplified in the future.
 
+## Documentation
+
+To learn more about how to use the components in your application visit the [Office UI Fabric website](https://developer.microsoft.com/en-us/fabric#/components). If you are looking to create a new fabric component, or contribute to the project, the developer documentation can be found in [our Wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki).
+
 ## Testing
 
-For testing see our [testing documentation](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/TESTING.md).
+For testing see our [testing documentation](https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react#testing).
 
 ## Advanced usage
 
-For advanced usage including info about module vs. path-based imports, using an AMD bundler like Require, and deployment features, see our [advanced documentation](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/ADVANCED.md).
+For advanced usage including info about module vs. path-based imports, using an AMD bundler like Require, and deployment features, see our [advanced documentation](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Advanced-Usage).
 
 ## Browser support
 
-Fabric React supports many commonly used browsers. See the [browser support doc](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/BROWSERSUPPORT.md) for more information.
+Fabric React supports many commonly used browsers. See the [browser support doc](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Browser-Support) for more information.
 
 
-## Contribute to Fabric React
+## Contributing
 
-We're excited to share our development of this project with folks outside of the company, but please keep in mind that we're moving towards a v1 state which requires that we stay focused on reaching that goal. With this in mind, take a look at our [contribution guidelines](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/CONTRIBUTING.md) for more info on how we plan to look at issues, how to structure your commit messages, and more.
+We're excited to share our development of this project with folks outside of the company, but please keep in mind that we're moving towards a v1 state which requires that we stay focused on reaching that goal. With this in mind, take a look at our [contribution guidelines](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Contributing) for more info on how we plan to look at issues, how to structure your commit messages, and more.
 
 
 ## Licenses

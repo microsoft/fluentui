@@ -1,18 +1,19 @@
 import * as React from 'react';
 import { DialogFooterBase } from './DialogFooter.base';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
+export interface IDialogFooter {}
 export interface IDialogFooterProps extends React.Props<DialogFooterBase> {
   /**
    * Gets the component ref.
    */
-  componentRef?: (component: IDialogFooterProps) => void;
+  componentRef?: IRefObject<IDialogFooter>;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
-  getStyles?: IStyleFunction<IDialogFooterStyleProps, IDialogFooterStyles>;
+  styles?: IStyleFunctionOrObject<IDialogFooterStyleProps, IDialogFooterStyles>;
 
   /**
    * Theme provided by HOC.
@@ -20,8 +21,8 @@ export interface IDialogFooterProps extends React.Props<DialogFooterBase> {
   theme?: ITheme;
 
   /**
-  * Optional override class name
-  */
+   * Optional override class name
+   */
   className?: string;
 }
 
@@ -32,8 +33,8 @@ export interface IDialogFooterStyleProps {
   theme: ITheme;
 
   /**
-  * Optional override class name
-  */
+   * Optional override class name
+   */
   className?: string;
 }
 

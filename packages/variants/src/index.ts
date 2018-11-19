@@ -1,4 +1,4 @@
-export {
-  getSoftVariant,
-  getStrongVariant
-} from './variants';
+export * from './utilities';
+export * from './variants';
+export * from './variantThemeType';
+import './version';

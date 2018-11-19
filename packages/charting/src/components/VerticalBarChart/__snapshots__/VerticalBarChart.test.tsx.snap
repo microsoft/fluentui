@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VerticalBarChart renders VerticalBarChart correctly 1`] = `
+<div
+  className=
+      ms-VerticalBarChart
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        width: 670px;
+      }
+>
+  <svg
+    className=
+
+        {
+          box-sizing: content-box;
+          height: 360px;
+          padding-bottom: 20px;
+          padding-left: 20px;
+          padding-right: 20px;
+          padding-top: 20px;
+          width: 630px;
+        }
+  >
+    <g
+      className=
+
+          {
+            transform: translate(30px, 350px);
+          }
+    />
+    <g
+      className=
+
+          {
+            transform: translate(20px, 0px);
+          }
+    />
+    <g
+      className=
+
+          {
+            transform: translate(30px, 0px);
+          }
+    >
+      <rect
+        fill="rgb(0, 188, 242)"
+        height={0}
+        width={15}
+        x={0}
+        y={350}
+      />
+      <rect
+        fill="rgb(0, 32, 80)"
+        height={350}
+        width={15}
+        x={585}
+        y={0}
+      />
+    </g>
+  </svg>
+</div>
+`;

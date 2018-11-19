@@ -1,17 +1,17 @@
 :global {
-  .hoverCardExample-compactCard {
+  .shimmerBasicExample-container {
+    padding: 2px;
+
+    .ms-Shimmer-container {
+      margin: 10px 0;
+    }
+  }
+
+  .shimmerExample-flexGroup {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-  }
 
-  .hoverCardExample-expandedCard {
-    padding: 16px 24px;
-  }
-
-  .HoverCard-item:hover {
-    text-decoration: underline;
-    cursor: pointer;
+    .ms-Toggle {
+      margin-right: 30px;
+    }
   }
 }

@@ -1,12 +1,6 @@
-import {
-  styled
-} from '../../Utilities';
+import { styled } from '../../Utilities';
 import { GridBase } from './Grid.base';
-// tslint:disable-next-line:no-unused-variable
-import { IGridProps } from './Grid.types';
+import { IGridProps, IGridStyleProps, IGridStyles } from './Grid.types';
 import { getStyles } from './Grid.styles';
 
-export const Grid = styled(
-  GridBase,
-  getStyles
-);
+export const Grid: (props: IGridProps) => JSX.Element = styled<IGridProps, IGridStyleProps, IGridStyles>(GridBase, getStyles);

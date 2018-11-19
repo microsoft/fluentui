@@ -1,9 +1,6 @@
 import * as React from 'react';
 import { BaseDecorator } from './BaseDecorator';
-import {
-  findScrollableParent,
-  getRect
-} from '../../Utilities';
+import { findScrollableParent, getRect, createRef, getWindow } from '../../Utilities';
 
 export interface IViewport {
   width: number;
@@ -21,11 +18,13 @@ export interface IWithViewportProps {
 const RESIZE_DELAY = 500;
 const MAX_RESIZE_ATTEMPTS = 3;
 
-export function withViewport<TProps extends { viewport?: IViewport }, TState>(ComposedComponent: (new (props: TProps, ...args: any[]) => React.Component<TProps, TState>)): any {
-
+export function withViewport<TProps extends { viewport?: IViewport }, TState>(
+  ComposedComponent: new (props: TProps, ...args: any[]) => React.Component<TProps, TState>
+): any {
   return class WithViewportComponent extends BaseDecorator<TProps, IWithViewportState> {
-    private _root: HTMLDivElement;
+    private _root = createRef<HTMLDivElement>();
     private _resizeAttempts: number;
+    private _viewportResizeObserver: any;
 
     constructor(props: TProps) {
       super(props);
@@ -39,55 +38,63 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(Co
       };
     }
 
-    public componentDidMount() {
-      this._onAsyncResize = this._async.debounce(
-        this._onAsyncResize,
-        RESIZE_DELAY,
-        {
-          leading: false
-        });
+    public componentDidMount(): void {
+      const { skipViewportMeasures } = this.props as IWithViewportProps;
+      this._onAsyncResize = this._async.debounce(this._onAsyncResize, RESIZE_DELAY, {
+        leading: false
+      });
 
-      this._events.on(window, 'resize', this._onAsyncResize);
-      const {
-        skipViewportMeasures
-      } = this.props as IWithViewportProps;
+      const window = getWindow();
+      const viewportElement = this._root.current;
+
+      // ResizeObserver seems always fire even window is not resized. This is
+      // particularly bad when skipViewportMeasures is set when optimizing fixed layout lists.
+      // It will measure and update and re-render the entire list after list is fully rendered.
+      // So fallback to listen to resize event when skipViewportMeasures is set.
+      if (!skipViewportMeasures && window && (window as any).ResizeObserver) {
+        this._viewportResizeObserver = new (window as any).ResizeObserver(this._onAsyncResize);
+        this._viewportResizeObserver.observe(viewportElement);
+      } else {
+        this._events.on(window, 'resize', this._onAsyncResize);
+      }
+
       if (!skipViewportMeasures) {
         this._updateViewport();
       }
     }
 
-    public componentWillUnmount() {
+    public componentWillUnmount(): void {
       this._events.dispose();
+
+      if (this._viewportResizeObserver) {
+        this._viewportResizeObserver.disconnect();
+      }
     }
 
-    public render() {
+    public render(): JSX.Element {
       const { viewport } = this.state;
-      const {
-        skipViewportMeasures
-      } = this.props as IWithViewportProps;
+      const { skipViewportMeasures } = this.props as IWithViewportProps;
       const isViewportVisible = skipViewportMeasures || (viewport!.width > 0 && viewport!.height > 0);
 
       return (
-        <div className='ms-Viewport' ref={ this._resolveRef('_root') } style={ { minWidth: 1, minHeight: 1 } }>
-          { isViewportVisible && (
-            <ComposedComponent ref={ this._updateComposedComponentRef } viewport={ viewport } { ...this.props as any } />
-          ) }
+        <div className="ms-Viewport" ref={this._root} style={{ minWidth: 1, minHeight: 1 }}>
+          {isViewportVisible && <ComposedComponent ref={this._updateComposedComponentRef} viewport={viewport} {...this.props as any} />}
         </div>
       );
     }
 
-    public forceUpdate() {
+    public forceUpdate(): void {
       this._updateViewport(true);
     }
 
-    private _onAsyncResize() {
+    private _onAsyncResize(): void {
       this._updateViewport();
     }
 
     /* Note: using lambda here because decorators don't seem to work in decorators. */
     private _updateViewport = (withForceUpdate?: boolean) => {
       const { viewport } = this.state;
-      const viewportElement = this._root;
+      const viewportElement = this._root.current;
       const scrollElement = findScrollableParent(viewportElement);
       const scrollRect = getRect(scrollElement);
       const clientRect = getRect(viewportElement);
@@ -97,22 +104,25 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(Co
         }
       };
 
-      const isSizeChanged = (
-        (clientRect && clientRect.width) !== viewport!.width ||
-        (scrollRect && scrollRect.height) !== viewport!.height);
+      const isSizeChanged = (clientRect && clientRect.width) !== viewport!.width || (scrollRect && scrollRect.height) !== viewport!.height;
 
       if (isSizeChanged && this._resizeAttempts < MAX_RESIZE_ATTEMPTS && clientRect && scrollRect) {
         this._resizeAttempts++;
-        this.setState({
-          viewport: {
-            width: clientRect.width,
-            height: scrollRect.height
+        this.setState(
+          {
+            viewport: {
+              width: clientRect.width,
+              height: scrollRect.height
+            }
+          },
+          () => {
+            this._updateViewport(withForceUpdate);
           }
-        }, () => { this._updateViewport(withForceUpdate); });
+        );
       } else {
         this._resizeAttempts = 0;
         updateComponent();
       }
-    }
+    };
   };
 }

@@ -14,7 +14,7 @@ export interface ISelection {
   count: number;
   mode: SelectionMode;
 
-  canSelectItem: (item: IObjectWithKey) => boolean;
+  canSelectItem: (item: IObjectWithKey, index?: number) => boolean;
 
   // Obesrvable methods.
   setChangeEvents(isEnabled: boolean, suppressChange?: boolean): void;
@@ -27,7 +27,7 @@ export interface ISelection {
   // Read selection methods.
 
   getSelection(): IObjectWithKey[];
-  getSelectedIndices?(): number[]; // TODO make non-optional on next breaking change
+  getSelectedIndices(): number[];
   getSelectedCount(): number;
   isRangeSelected(fromIndex: number, count: number): boolean;
 

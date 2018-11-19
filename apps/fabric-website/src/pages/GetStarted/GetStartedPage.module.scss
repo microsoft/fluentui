@@ -39,30 +39,41 @@
   }
 }
 
-
 //== Design section
 
 .designSection {
   @include headerAngles($ms-color-neutralPrimary);
-  background-color:$color-getStarted-darker;
+  background-color: $color-getStarted-darker;
   color: $ms-color-neutralLighter;
 
-  a, a:visited,
+  a:not(.title),
+  a:visited,
+  a:hover.title,
   .getStartedLink {
     border-bottom: 1px solid $ms-color-neutralLight;
   }
 
-  a, a:hover, a:active,
+  a.title {
+    border-bottom: 1px solid transparent;
+  }
+
+  a,
+  a:hover,
+  a:active,
   .getStartedLink {
     color: $ms-color-neutralLight;
   }
 }
 
 .feature {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
   margin-bottom: 32px;
+
+  .featureImage {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
 
   img {
     height: 100%;
@@ -91,7 +102,7 @@
   font-size: $font-size-big;
   font-weight: $ms-font-weight-semilight;
   margin-bottom: $contentMargin-vertical;
-  width: 100%;
+  display: table;
 }
 
 @media screen and (max-width: $uhf-screen-max-mobile) {
@@ -101,10 +112,6 @@
 }
 
 @media screen and (min-width: $uhf-screen-min-mobile) {
-  img {
-    margin-bottom: 20px;
-  }
-
   .contentInGrid {
     @include ms-padding-left($contentInGrid);
   }
@@ -116,7 +123,6 @@
   color: $ms-color-neutralLighter;
   background-color: $ms-color-neutralPrimary;
 }
-
 
 //== Instructions section
 

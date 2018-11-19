@@ -14,7 +14,7 @@ const groups = [{ 'count': 4, 'key': 'group0', 'name': 'group 0', 'startIndex': 
 
 let onRenderCell = (nestingDepth: number, item: any, itemIndex: number) => {
   return (
-    <div>{ item.name }</div>
+    <div>{item.name}</div>
   );
 };
 
@@ -22,7 +22,7 @@ storiesOf('GroupedList', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
-      steps={ new Screener.Steps()
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-GroupHeader-expand')
         .snapshot('hover', { cropTo: '.testWrapper' })
@@ -32,14 +32,13 @@ storiesOf('GroupedList', module)
         .end()
       }
     >
-      { story() }
+      {story()}
     </Screener>
   ))
-  .add('Root', () => (
+  .addStory('Root', () => (
     <GroupedList
-      groups={ groups }
-      items={ items }
-      onRenderCell={ onRenderCell }
+      groups={groups}
+      items={items}
+      onRenderCell={onRenderCell}
     />
-  ))
-  ;
+  ), { rtl: true });

@@ -1,29 +1,24 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  autobind,
-  css,
-  divProperties,
-  getNativeProps,
-  IRenderFunction
-} from '../../Utilities';
+import { BaseComponent, classNamesFunction, divProperties, getNativeProps, IRenderFunction } from '../../Utilities';
 import { TooltipHost, TooltipOverflowMode, DirectionalHint } from '../../Tooltip';
-import { PersonaCoin } from './PersonaCoin';
+import { PersonaCoin } from './PersonaCoin/PersonaCoin';
 import {
   IPersonaProps,
+  IPersonaSharedProps,
+  IPersonaStyleProps,
+  IPersonaStyles,
   PersonaPresence as PersonaPresenceEnum,
   PersonaSize
 } from './Persona.types';
-import {
-  PERSONA_PRESENCE,
-  PERSONA_SIZE
-} from './PersonaConsts';
-import * as stylesImport from './Persona.scss';
-const styles: any = stylesImport;
 
+const getClassNames = classNamesFunction<IPersonaStyleProps, IPersonaStyles>();
+
+/**
+ * Persona with no default styles.
+ * [Use the `styles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Styling)
+ */
 export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
   public static defaultProps: IPersonaProps = {
-    primaryText: '',
     size: PersonaSize.size48,
     presence: PersonaPresenceEnum.none,
     imageAlt: ''
@@ -31,110 +26,134 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
 
   constructor(props: IPersonaProps) {
     super(props);
+
+    this._warnDeprecations({ primaryText: 'text' });
   }
 
-  public render() {
+  public render(): JSX.Element {
+    // wrapping default render behavior based on various this.props properties
+    const _onRenderPrimaryText = this._onRenderText(this._getText()),
+      _onRenderSecondaryText = this._onRenderText(this.props.secondaryText),
+      _onRenderTertiaryText = this._onRenderText(this.props.tertiaryText),
+      _onRenderOptionalText = this._onRenderText(this.props.optionalText);
+
     const {
       hidePersonaDetails,
-      onRenderPrimaryText,
-      onRenderSecondaryText,
-      onRenderTertiaryText,
-      onRenderOptionalText,
+      onRenderOptionalText = _onRenderOptionalText,
+      onRenderPrimaryText = _onRenderPrimaryText,
+      onRenderSecondaryText = _onRenderSecondaryText,
+      onRenderTertiaryText = _onRenderTertiaryText
     } = this.props;
     const size = this.props.size as PersonaSize;
 
     // These properties are to be explicitly passed into PersonaCoin because they are the only props directly used
     const {
+      allowPhoneInitials,
       className,
       coinProps,
+      showUnknownPersonaCoin,
       coinSize,
-      imageUrl,
+      styles,
       imageAlt,
       imageInitials,
-      initialsColor,
-      presence,
-      primaryText,
       imageShouldFadeIn,
       imageShouldStartVisible,
-      showSecondaryText,
+      imageUrl,
+      initialsColor,
       onPhotoLoadingStateChange,
-      onRenderCoin
+      onRenderCoin,
+      onRenderInitials,
+      presence,
+      showInitialsUntilImageLoads,
+      showSecondaryText,
+      theme
     } = this.props;
 
-    const personaCoinProps = {
+    const personaCoinProps: IPersonaSharedProps = {
+      allowPhoneInitials,
       coinProps,
+      showUnknownPersonaCoin,
       coinSize,
-      imageUrl,
       imageAlt,
       imageInitials,
-      initialsColor,
-      presence,
-      primaryText,
       imageShouldFadeIn,
       imageShouldStartVisible,
-      size,
+      imageUrl,
+      initialsColor,
       onPhotoLoadingStateChange,
-      onRenderCoin
+      onRenderCoin,
+      onRenderInitials,
+      presence,
+      showInitialsUntilImageLoads,
+      size,
+      text: this._getText()
     };
+
+    const classNames = getClassNames(styles, {
+      theme: theme!,
+      className,
+      showSecondaryText,
+      presence,
+      size
+    });
 
     const divProps = getNativeProps(this.props, divProperties);
     const personaDetails = (
-      <div className={ css('ms-Persona-details', styles.details) }>
-        { this._renderElement(
-          this.props.primaryText,
-          css('ms-Persona-primaryText', styles.primaryText),
-          onRenderPrimaryText) }
-        { this._renderElement(
-          this.props.secondaryText,
-          css('ms-Persona-secondaryText', styles.secondaryText),
-          onRenderSecondaryText) }
-        { this._renderElement(
-          this.props.tertiaryText,
-          css('ms-Persona-tertiaryText', styles.tertiaryText),
-          onRenderTertiaryText) }
-        { this._renderElement(
-          this.props.optionalText,
-          css('ms-Persona-optionalText', styles.optionalText),
-          onRenderOptionalText) }
-        { this.props.children }
+      <div className={classNames.details}>
+        {this._renderElement(classNames.primaryText, onRenderPrimaryText, _onRenderPrimaryText)}
+        {this._renderElement(classNames.secondaryText, onRenderSecondaryText, _onRenderSecondaryText)}
+        {this._renderElement(classNames.tertiaryText, onRenderTertiaryText, _onRenderTertiaryText)}
+        {this._renderElement(classNames.optionalText, onRenderOptionalText, _onRenderOptionalText)}
+        {this.props.children}
       </div>
     );
 
     return (
-      <div
-        { ...divProps }
-        className={
-          css('ms-Persona',
-            styles.root,
-            className,
-            PERSONA_SIZE[size],
-            PERSONA_PRESENCE[presence as PersonaPresenceEnum],
-            showSecondaryText && styles.showSecondaryText
-          )
-        }
-        style={ coinSize ? { height: coinSize, minWidth: coinSize } : undefined }
-      >
-        <PersonaCoin { ...personaCoinProps } />
-        { (!hidePersonaDetails || (size === PersonaSize.size10 || size === PersonaSize.tiny)) && personaDetails }
+      <div {...divProps} className={classNames.root} style={coinSize ? { height: coinSize, minWidth: coinSize } : undefined}>
+        <PersonaCoin {...personaCoinProps} />
+        {(!hidePersonaDetails || (size === PersonaSize.size10 || size === PersonaSize.tiny)) && personaDetails}
       </div>
     );
   }
 
-  @autobind
-  private _renderElement(text: string | undefined, className: string, render?: IRenderFunction<IPersonaProps>): JSX.Element {
-    return (
-      <div className={ className }>
-        { render
-          ? render(this.props)
-          : text && (<TooltipHost
-            content={ text }
-            overflowMode={ TooltipOverflowMode.Parent }
-            directionalHint={ DirectionalHint.topLeftEdge }
-          >
-            { text }
-          </TooltipHost>)
+  /**
+   * Renders various types of Text (primaryText, secondaryText, etc)
+   * based on the classNames passed
+   * @param classNames
+   * @param renderFunction
+   * @param defaultRenderFunction
+   */
+  private _renderElement(
+    classNames: string,
+    renderFunction: IRenderFunction<IPersonaProps> | undefined,
+    defaultRenderFunction: IRenderFunction<IPersonaProps> | undefined
+  ): JSX.Element {
+    return <div className={classNames}>{renderFunction && renderFunction(this.props, defaultRenderFunction)}</div>;
+  }
+
+  /**
+   * Deprecation helper for getting text.
+   */
+  private _getText(): string {
+    return this.props.text || this.props.primaryText || '';
+  }
+
+  /**
+   * using closure to wrap the default render behavior
+   * to make it independent of the type of text passed
+   * @param text
+   */
+  private _onRenderText(text: string | undefined): IRenderFunction<IPersonaProps> | undefined {
+    // return default render behaviour for valid text or undefined
+    return text
+      ? (): JSX.Element => {
+          // default onRender behaviour
+          return (
+            <TooltipHost content={text} overflowMode={TooltipOverflowMode.Parent} directionalHint={DirectionalHint.topLeftEdge}>
+              {text}
+            </TooltipHost>
+          );
         }
-      </div>
-    );
+      : undefined;
   }
 }

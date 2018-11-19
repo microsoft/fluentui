@@ -6,6 +6,11 @@ exports[`Toggle renders toggle correctly 1`] = `
       ms-Toggle
       is-enabled
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
         margin-bottom: 8px;
       }
 >
@@ -14,10 +19,15 @@ exports[`Toggle renders toggle correctly 1`] = `
         ms-Label
         ms-Toggle-label
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
           color: #333333;
           display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -42,12 +52,11 @@ exports[`Toggle renders toggle correctly 1`] = `
         }
   >
     <button
-      aria-disabled={undefined}
-      aria-label="Label"
-      aria-pressed={false}
+      aria-checked={false}
       className=
           ms-Toggle-background
           {
+            align-items: center;
             background: #ffffff;
             border-color: #666666;
             border-radius: 1em;
@@ -55,10 +64,14 @@ exports[`Toggle renders toggle correctly 1`] = `
             border-width: 1px;
             box-sizing: border-box;
             cursor: pointer;
+            display: flex;
             font-size: 20px;
             height: 1em;
-            line-height: 1em;
             outline: transparent;
+            padding-bottom: 0;
+            padding-left: .2em;
+            padding-right: .2em;
+            padding-top: 0;
             position: relative;
             transition: all 0.1s ease;
             width: 2.2em;
@@ -66,7 +79,7 @@ exports[`Toggle renders toggle correctly 1`] = `
           &::-moz-focus-inner {
             border: 0;
           }
-          .ms-Fabric.is-focusVisible &:focus:after {
+          .ms-Fabric--isFocusVisible &:focus:after {
             border: 1px solid #ffffff;
             bottom: -2px;
             content: "";
@@ -80,11 +93,17 @@ exports[`Toggle renders toggle correctly 1`] = `
           &:hover {
             border-color: #212121;
           }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+            border-color: Highlight;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover {
+            border-color: Highlight;
+          }
       data-is-focusable={true}
-      disabled={undefined}
       id="Toggle1"
       onChange={[Function]}
       onClick={[Function]}
+      role="switch"
       type="button"
     >
       <div
@@ -98,9 +117,6 @@ exports[`Toggle renders toggle correctly 1`] = `
               border-width: .28em;
               box-sizing: border-box;
               height: .5em;
-              left: .2em;
-              position: absolute;
-              top: .18em;
               transition: all 0.1s ease;
               width: .5em;
             }

@@ -1,7 +1,7 @@
 import { KeyCodes } from './KeyCodes';
 import { getDocument } from './dom';
 import { getItem, setItem } from './sessionStorage';
-import { setRTL as mergeStylesSetRTL } from '@uifabric/merge-styles/lib/transforms/rtlifyRules';
+import { setRTL as mergeStylesSetRTL } from '@uifabric/merge-styles';
 
 const RTL_LOCAL_STORAGE_KEY = 'isRTL';
 

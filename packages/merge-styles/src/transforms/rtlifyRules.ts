@@ -1,3 +1,5 @@
+import { Stylesheet } from '../Stylesheet';
+
 const LEFT = 'left';
 const RIGHT = 'right';
 const NO_FLIP = '@noflip';
@@ -17,7 +19,10 @@ let _rtl = getRTL();
  * Sets the current RTL value.
  */
 export function setRTL(isRTL: boolean): void {
-  _rtl = isRTL;
+  if (_rtl !== isRTL) {
+    Stylesheet.getInstance().resetKeys();
+    _rtl = isRTL;
+  }
 }
 
 /**
@@ -25,11 +30,7 @@ export function setRTL(isRTL: boolean): void {
  */
 export function getRTL(): boolean {
   if (_rtl === undefined) {
-    _rtl = (
-      typeof document !== 'undefined' &&
-      !!document.documentElement &&
-      document.documentElement.getAttribute('dir') === 'rtl'
-    );
+    _rtl = typeof document !== 'undefined' && !!document.documentElement && document.documentElement.getAttribute('dir') === 'rtl';
   }
   return _rtl;
 }
@@ -38,10 +39,7 @@ export function getRTL(): boolean {
  * RTLifies the rulePair in the array at the current index. This mutates the array for performance
  * reasons.
  */
-export function rtlifyRules(
-  rulePairs: (string | number)[],
-  index: number
-): void {
+export function rtlifyRules(rulePairs: (string | number)[], index: number): void {
   if (getRTL()) {
     const name = rulePairs[index] as string;
 

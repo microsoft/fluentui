@@ -1,0 +1,1 @@
+TeachingBubbles allow the user to display important hints on their web pages with a callout box.

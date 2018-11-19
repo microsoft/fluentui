@@ -1,7 +1,4 @@
-import {
-  InjectionMode,
-  Stylesheet
-} from './Stylesheet';
+import { InjectionMode, Stylesheet } from './Stylesheet';
 
 import { styleToClassName } from './styleToClassName';
 
@@ -18,5 +15,16 @@ describe('Stylesheet', () => {
 
     expect(className).toEqual('myCss-0');
     expect(_stylesheet.getRules()).toEqual('.myCss-0{background:red;}');
+  });
+
+  it('recreates a new instance when global mismatches', () => {
+    const originalStylesheet = Stylesheet.getInstance();
+
+    expect(Stylesheet.getInstance()).toBe(originalStylesheet);
+
+    // tslint:disable-next-line:no-any
+    (originalStylesheet as any)._lastStyleElement = { ownerDocument: {} };
+
+    expect(Stylesheet.getInstance()).not.toBe(originalStylesheet);
   });
 });

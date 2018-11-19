@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { autobind, BaseComponent, IBaseProps, createRef } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent, IBaseProps, createRef } from 'office-ui-fabric-react/lib/Utilities';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { TextField, ITextField } from 'office-ui-fabric-react/lib/TextField';
 import * as stylesImport from './Todo.scss';
@@ -58,31 +58,27 @@ export default class TodoForm extends BaseComponent<ITodoFormProps, ITodoFormSta
 
   public render(): JSX.Element {
     return (
-      <form className={ styles.todoForm } onSubmit={ this._onSubmit }>
+      <form className={styles.todoForm} onSubmit={this._onSubmit}>
         <TextField
-          className={ styles.textField }
-          value={ this.state.inputValue }
-          componentRef={ this._textField }
-          placeholder={ strings.inputBoxPlaceholder }
-          onBeforeChange={ this._onBeforeTextFieldChange }
-          autoComplete='off'
-          errorMessage={ this.state.errorMessage }
+          className={styles.textField}
+          value={this.state.inputValue}
+          componentRef={this._textField}
+          placeholder={strings.inputBoxPlaceholder}
+          onBeforeChange={this._onBeforeTextFieldChange}
+          autoComplete="off"
+          errorMessage={this.state.errorMessage}
         />
-        <PrimaryButton
-          className={ styles.addButton }
-          type='submit'
-        >
-          { strings.addButton }
+        <PrimaryButton className={styles.addButton} type="submit">
+          {strings.addButton}
         </PrimaryButton>
       </form>
     );
   }
 
-  @autobind
-  private _onSubmit(event: React.FormEvent<HTMLElement>): void {
+  private _onSubmit = (event: React.FormEvent<HTMLElement>): void => {
     event.preventDefault();
 
-    const { value: textField } = this._textField;
+    const { current: textField } = this._textField;
     if (!textField) {
       return;
     }
@@ -100,7 +96,7 @@ export default class TodoForm extends BaseComponent<ITodoFormProps, ITodoFormSta
 
       textField.focus();
     }
-  }
+  };
 
   private _onBeforeTextFieldChange(newValue: string): void {
     this.setState({

@@ -1,90 +1,137 @@
 import * as React from 'react';
-import { assign } from 'office-ui-fabric-react/lib/Utilities';
+
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 
-export class CommandBarBasicExample extends React.Component<any, any> {
-
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      isSearchBoxVisible: true,
-      areNamesVisible: true,
-      areIconsVisible: true,
-      areItemsEnabled: true
-    };
-  }
-
-  public render() {
-    const { items, overflowItems, farItems } = this.props;
-    const {
-      isSearchBoxVisible: searchBoxVisible,
-      areIconsVisible: iconsVisible,
-      areNamesVisible: namesVisible,
-      areItemsEnabled: itemsEnabled
-    } = this.state;
-
-    const filteredItems = items.map((item: any) => assign({}, item, {
-      iconOnly: !namesVisible,
-      icon: iconsVisible ? item.icon : '',
-      disabled: !itemsEnabled
-    }));
-
-    const filteredOverflowItems = overflowItems.map((item: any) => assign({}, item, {
-      iconOnly: !namesVisible,
-      icon: iconsVisible ? item.icon : '',
-      disabled: !itemsEnabled
-    }));
-
-    const filteredFarItems = farItems.map((item: any) => assign({}, item, {
-      iconOnly: !namesVisible,
-      icon: iconsVisible ? item.icon : '',
-      disabled: !itemsEnabled
-    }));
-
+export class CommandBarBasicExample extends React.Component<{}, {}> {
+  public render(): JSX.Element {
     return (
       <div>
-        <Toggle
-          label='Show search box'
-          checked={ searchBoxVisible }
-          // tslint:disable-next-line:jsx-no-lambda
-          onChanged={ isSearchBoxVisible => this.setState({ isSearchBoxVisible }) }
-          onText='Visible'
-          offText='Hidden'
-        />
-        <Toggle
-          label='Show names'
-          checked={ namesVisible }
-          // tslint:disable-next-line:jsx-no-lambda
-          onChanged={ areNamesVisible => this.setState({ areNamesVisible }) }
-          onText='Visible'
-          offText='Hidden'
-        />
-        <Toggle
-          label='Show icons'
-          checked={ iconsVisible }
-          // tslint:disable-next-line:jsx-no-lambda
-          onChanged={ areIconsVisible => this.setState({ areIconsVisible }) }
-          onText='Visible'
-          offText='Hidden'
-        />
-        <Toggle
-          label='Enable Items'
-          checked={ itemsEnabled }
-          // tslint:disable-next-line:jsx-no-lambda
-          onChanged={ areItemsEnabled => this.setState({ areItemsEnabled }) }
-          onText='Visible'
-          offText='Hidden'
-        />
         <CommandBar
-          isSearchBoxVisible={ searchBoxVisible }
-          searchPlaceholderText='Search...'
-          elipisisAriaLabel='More options'
-          items={ filteredItems }
-          overflowItems={ filteredOverflowItems }
-          farItems={ filteredFarItems }
+          items={this.getItems()}
+          overflowItems={this.getOverlflowItems()}
+          farItems={this.getFarItems()}
+          ariaLabel={'Use left and right arrow keys to navigate between commands'}
         />
       </div>
     );
   }
+
+  // Data for CommandBar
+  private getItems = () => {
+    return [
+      {
+        key: 'newItem',
+        name: 'New',
+        cacheKey: 'myCacheKey', // changing this key will invalidate this items cache
+        iconProps: {
+          iconName: 'Add'
+        },
+        ariaLabel: 'New. Use left and right arrow keys to navigate',
+        subMenuProps: {
+          items: [
+            {
+              key: 'emailMessage',
+              name: 'Email message',
+              iconProps: {
+                iconName: 'Mail'
+              },
+              ['data-automation-id']: 'newEmailButton'
+            },
+            {
+              key: 'calendarEvent',
+              name: 'Calendar event',
+              iconProps: {
+                iconName: 'Calendar'
+              }
+            }
+          ]
+        }
+      },
+      {
+        key: 'upload',
+        name: 'Upload',
+        iconProps: {
+          iconName: 'Upload'
+        },
+        href: 'https://dev.office.com/fabric',
+        ['data-automation-id']: 'uploadButton'
+      },
+      {
+        key: 'share',
+        name: 'Share',
+        iconProps: {
+          iconName: 'Share'
+        },
+        onClick: () => console.log('Share')
+      },
+      {
+        key: 'download',
+        name: 'Download',
+        iconProps: {
+          iconName: 'Download'
+        },
+        onClick: () => console.log('Download')
+      }
+    ];
+  };
+
+  private getOverlflowItems = () => {
+    return [
+      {
+        key: 'move',
+        name: 'Move to...',
+        onClick: () => console.log('Move to'),
+        iconProps: {
+          iconName: 'MoveToFolder'
+        }
+      },
+      {
+        key: 'copy',
+        name: 'Copy to...',
+        onClick: () => console.log('Copy to'),
+        iconProps: {
+          iconName: 'Copy'
+        }
+      },
+      {
+        key: 'rename',
+        name: 'Rename...',
+        onClick: () => console.log('Rename'),
+        iconProps: {
+          iconName: 'Edit'
+        }
+      }
+    ];
+  };
+
+  private getFarItems = () => {
+    return [
+      {
+        key: 'sort',
+        name: 'Sort',
+        iconProps: {
+          iconName: 'SortLines'
+        },
+        onClick: () => console.log('Sort')
+      },
+      {
+        key: 'tile',
+        name: 'Grid view',
+        iconProps: {
+          iconName: 'Tiles'
+        },
+        iconOnly: true,
+        onClick: () => console.log('Tiles')
+      },
+      {
+        key: 'info',
+        name: 'Info',
+        iconProps: {
+          iconName: 'Info'
+        },
+        iconOnly: true,
+        onClick: () => console.log('Info')
+      }
+    ];
+  };
 }

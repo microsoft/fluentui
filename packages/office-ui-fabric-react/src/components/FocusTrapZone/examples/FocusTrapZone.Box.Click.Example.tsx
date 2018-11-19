@@ -1,8 +1,5 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
-import { autobind } from '../../../Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 import { Link } from 'office-ui-fabric-react/lib/Link';
@@ -21,7 +18,7 @@ export default class BoxNoClickExample extends React.Component<React.HTMLAttribu
     super(props);
 
     this.state = {
-      isToggled: false,
+      isToggled: false
     };
   }
 
@@ -30,27 +27,19 @@ export default class BoxNoClickExample extends React.Component<React.HTMLAttribu
 
     return (
       <div>
-        <DefaultButton
-          description='Focuses inside the FocusTrapZone'
-          onClick={ this._onButtonClickHandler }
-          text='Go to Trap Zone'
-        />
+        <DefaultButton secondaryText="Focuses inside the FocusTrapZone" onClick={this._onButtonClickHandler} text="Go to Trap Zone" />
 
-        { (() => {
+        {(() => {
           if (isToggled) {
             return (
-              <FocusTrapZone isClickableOutsideFocusTrap={ true } forceFocusInsideTrap={ false }>
-                { this._internalContents() }
+              <FocusTrapZone isClickableOutsideFocusTrap={true} forceFocusInsideTrap={false}>
+                {this._internalContents()}
               </FocusTrapZone>
             );
           } else {
-            return (
-              <div>
-                { this._internalContents() }
-              </div>
-            );
+            return <div>{this._internalContents()}</div>;
           }
-        })() }
+        })()}
       </div>
     );
   }
@@ -59,55 +48,54 @@ export default class BoxNoClickExample extends React.Component<React.HTMLAttribu
     const { isToggled } = this.state;
 
     return (
-      <div className='ms-FocusTrapZoneBoxExample'>
-        <TextField label='Default TextField' placeholder='Input inside Focus Trap Zone' className='' />
-        <Link href='' className='' >Hyperlink inside FocusTrapZone</Link><br /><br />
+      <div className="ms-FocusTrapZoneBoxExample">
+        <TextField label="Default TextField" placeholder="Input inside Focus Trap Zone" className="" />
+        <Link href="" className="">
+          Hyperlink inside FocusTrapZone
+        </Link>
+        <br />
+        <br />
         <Toggle
-          componentRef={ this._setRef }
-          checked={ isToggled }
-          onChanged={ this._onFocusTrapZoneToggleChanged }
-          label='Focus Trap Zone'
-          onText='On'
-          offText='Off'
+          componentRef={this._setRef}
+          checked={isToggled}
+          onChange={this._onFocusTrapZoneToggleChanged}
+          label="Focus Trap Zone"
+          onText="On"
+          offText="Off"
         />
-        { (() => {
+        {(() => {
           if (isToggled) {
             return (
-              <DefaultButton
-                description='Exit Focus Trap Zone'
-                onClick={ this._onExitButtonClickHandler }
-                text='Exit Focus Trap Zone'
-              />
+              <DefaultButton secondaryText="Exit Focus Trap Zone" onClick={this._onExitButtonClickHandler} text="Exit Focus Trap Zone" />
             );
           }
-        })() }
+        })()}
       </div>
     );
   }
 
-  @autobind
-  private _onButtonClickHandler() {
+  private _onButtonClickHandler = (): void => {
     this.setState({
       isToggled: true
     });
-  }
+  };
 
-  @autobind
-  private _onExitButtonClickHandler() {
+  private _onExitButtonClickHandler = (): void => {
     this.setState({
       isToggled: false
     });
-  }
+  };
 
-  @autobind
-  private _onFocusTrapZoneToggleChanged(isToggled: boolean) {
-    this.setState({
-      isToggled: isToggled
-    }, () => this._toggle.focus());
-  }
+  private _onFocusTrapZoneToggleChanged = (ev: React.MouseEvent<HTMLElement>, isToggled: boolean): void => {
+    this.setState(
+      {
+        isToggled: isToggled
+      },
+      () => this._toggle.focus()
+    );
+  };
 
-  @autobind
-  private _setRef(toggle: IToggle): void {
+  private _setRef = (toggle: IToggle): void => {
     this._toggle = toggle;
-  }
+  };
 }

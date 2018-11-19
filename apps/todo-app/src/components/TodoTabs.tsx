@@ -1,13 +1,8 @@
 import * as React from 'react';
-import {
-  Pivot,
-  PivotItem,
-  IPivotProps,
-  PivotLinkSize
-} from 'office-ui-fabric-react/lib/Pivot';
+import { Pivot, PivotItem, IPivotProps, PivotLinkSize } from 'office-ui-fabric-react/lib/Pivot';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { List } from 'office-ui-fabric-react/lib/List';
-import { KeyCodes, autobind } from 'office-ui-fabric-react/lib/Utilities';
+import { KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
 import TodoItem from './TodoItem';
 import { ITodoItem, ITodoItemProps, ITodoTabsProps } from '../types/index';
 
@@ -44,47 +39,35 @@ export default class TodoTabs extends React.Component<ITodoTabsProps, {}> {
       pivotArray.push(this._renderPivotItemList(allTasks, strings.todoListTabNameAllTasks));
     }
 
-    return pivotArray.length > 0
-      ? (
-        <div className={ styles.todoPivot }>
-          <Pivot linkSize={ PivotLinkSize.large }>
-            { pivotArray }
-          </Pivot>
-        </div>
-      )
-      : null; // tslint:disable-line:no-null-keyword
+    return pivotArray.length > 0 ? (
+      <div className={styles.todoPivot}>
+        <Pivot linkSize={PivotLinkSize.large}>{pivotArray}</Pivot>
+      </div>
+    ) : null; // tslint:disable-line:no-null-keyword
   }
 
   private _renderPivotItemList(tasks: ITodoItem[], tabName: string): React.ReactElement<IPivotProps> {
     // @todo #219004 make isInnerZoneKeystroke be rtl safe.
     return (
-      <PivotItem linkText={ `${tabName} (${tasks.length})` }>
-        <FocusZone
-          direction={ FocusZoneDirection.vertical }
-          isInnerZoneKeystroke={ this._isInnerZoneKeystroke }
-        >
-          <List
-            className={ styles.todoList }
-            items={ tasks }
-            onRenderCell={ this._onRenderTodoItem }
-          />
+      <PivotItem linkText={`${tabName} (${tasks.length})`}>
+        <FocusZone direction={FocusZoneDirection.vertical} isInnerZoneKeystroke={this._isInnerZoneKeystroke}>
+          <List className={styles.todoList} items={tasks} onRenderCell={this._onRenderTodoItem} />
         </FocusZone>
       </PivotItem>
     );
   }
 
-  @autobind
-  private _isInnerZoneKeystroke(ev: React.KeyboardEvent<HTMLElement>): boolean {
+  private _isInnerZoneKeystroke = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
     return ev.which === KeyCodes.right;
-  }
+  };
 
   private _onRenderTodoItem(item: ITodoItem): React.ReactElement<ITodoItemProps> {
     return (
       <TodoItem
-        key={ item.id }
-        item={ item }
-        onToggleComplete={ this.props.onToggleComplete }
-        onDeleteItem={ this.props.onDeleteItem }
+        key={item.id}
+        item={item}
+        onToggleComplete={this.props.onToggleComplete}
+        onDeleteItem={this.props.onDeleteItem}
       />
     );
   }

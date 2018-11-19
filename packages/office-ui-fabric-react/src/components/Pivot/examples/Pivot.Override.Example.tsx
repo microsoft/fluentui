@@ -1,10 +1,7 @@
 import * as React from 'react';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import {
-  Pivot,
-  PivotItem
-} from 'office-ui-fabric-react/lib/Pivot';
+import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
 
 export class PivotOverrideExample extends React.Component<any, any> {
   constructor(props: any) {
@@ -17,23 +14,21 @@ export class PivotOverrideExample extends React.Component<any, any> {
     this._handleClick = this._handleClick.bind(this);
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
-        <Pivot selectedKey={ `${this.state.selectedKey}` }>
-          <PivotItem linkText='My Files' itemKey='0'>
+        <Pivot selectedKey={`${this.state.selectedKey}`}>
+          <PivotItem linkText="My Files" itemKey="0">
             <Label>Pivot #1</Label>
           </PivotItem>
-          <PivotItem linkText='Recent' itemKey='1'>
+          <PivotItem linkText="Recent" itemKey="1">
             <Label>Pivot #2</Label>
           </PivotItem>
-          <PivotItem linkText='Shared with me' itemKey='2'>
+          <PivotItem linkText="Shared with me" itemKey="2">
             <Label>Pivot #3</Label>
           </PivotItem>
         </Pivot>
-        <DefaultButton onClick={ this._handleClick }>
-          Select next item
-        </DefaultButton>
+        <DefaultButton onClick={this._handleClick}>Select next item</DefaultButton>
       </div>
     );
   }

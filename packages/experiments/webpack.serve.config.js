@@ -8,18 +8,21 @@ module.exports = resources.createServeConfig({
   entry: './src/demo/index.tsx',
 
   output: {
-    filename: 'demo-app.js',
+    filename: 'demo-app.js'
   },
 
   externals: {
-    'react': 'React',
+    react: 'React',
     'react-dom': 'ReactDOM'
   },
 
   resolve: {
     alias: {
-      'experiments/src': path.join(__dirname, 'src'),
-      'experiments/lib': path.join(__dirname, 'src'),
+      '@uifabric/experiments/src': path.join(__dirname, 'src'),
+      '@uifabric/experiments/lib': path.join(__dirname, 'src'),
+      '@uifabric/experiments': path.join(__dirname, 'src'),
+      '@uifabric/fluent-theme$': path.join(__dirname, '../../packages/fluent-theme/src'),
+      '@uifabric/theme-samples$': path.join(__dirname, '../../packages/theme-samples/src'),
       'Props.ts.js': 'Props',
       'Example.tsx.js': 'Example'
     }

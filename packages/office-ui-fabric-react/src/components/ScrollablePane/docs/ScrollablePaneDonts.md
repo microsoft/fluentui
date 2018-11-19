@@ -1,0 +1,1 @@
+- Don't use Sticky on elements with `margin-top` or `margin-bottom`

@@ -1,10 +1,6 @@
 import { IStyle } from '../../../Styling';
 
-export interface IButtonBasicExampleStyleProps {
-  /**
-   * 404 No Style Props Found
-   */
-}
+export type IButtonBasicExampleStyleProps = {};
 
 export interface IButtonBasicExampleStyles {
   example?: IStyle;
@@ -12,7 +8,7 @@ export interface IButtonBasicExampleStyles {
 }
 
 export function getStyles(props: IButtonBasicExampleStyleProps): IButtonBasicExampleStyles {
-  return ({
+  return {
     example: [
       'ms-BasicButtonsExample',
       {
@@ -37,5 +33,5 @@ export function getStyles(props: IButtonBasicExampleStyleProps): IButtonBasicExa
         }
       }
     ]
-  });
+  };
 }

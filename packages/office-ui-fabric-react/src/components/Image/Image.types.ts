@@ -1,22 +1,20 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
-export interface IImage {
-
-}
+export interface IImage {}
 
 export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   /**
    * Optional callback to access the ICheckbox interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IImage) => void;
+  componentRef?: IRefObject<IImage>;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
-  getStyles?: IStyleFunction<IImageStyleProps, IImageStyles>;
+  styles?: IStyleFunctionOrObject<IImageStyleProps, IImageStyles>;
 
   /**
    * Theme provided by HOC.
@@ -45,15 +43,16 @@ export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   /**
    * Used to determine how the image is scaled and cropped to fit the frame.
    *
-   * @defaultvalue If both dimensions are provided, then the image is fit using ImageFit.scale. Otherwise, the
-   * image won't be scaled or cropped.
+   * @defaultvalue If both dimensions are provided, then the image is fit using ImageFit.scale.
+   * Otherwise, the image won't be scaled or cropped.
    */
   imageFit?: ImageFit;
 
   /**
-   * Deprecated at v1.3.6, to replace the src in case of errors, use onLoadingStateChange instead and
+   * Deprecated at v1.3.6, to replace the src in case of errors, use `onLoadingStateChange` instead and
    * rerender the Image with a difference src.
-   * @deprecated
+   * @deprecated Use `onLoadingStateChange` instead and
+   * rerender the Image with a difference src.
    */
   errorSrc?: string;
 
@@ -102,7 +101,14 @@ export enum ImageFit {
    * Neither the image nor the frame are scaled. If their sizes do not match, the image will either be cropped or the
    * frame will have empty space.
    */
-  none = 3
+  none = 3,
+
+  /**
+   * The image will be centered horizontally and vertically within the frame and maintains its aspect ratio. It will
+   * behave as ImageFit.center if the image's natural height or width is less than the Image frame's height or width,
+   * but if both natural height and width are larger than the frame it will behave as ImageFit.cover.
+   */
+  centerCover = 4
 }
 
 /**
@@ -137,9 +143,10 @@ export enum ImageLoadState {
   error = 2,
 
   /**
-   * Deprecated at v1.3.6, to replace the src in case of errors, use onLoadingStateChange instead
+   * Deprecated at v1.3.6, to replace the src in case of errors, use `onLoadingStateChange` instead
    * and rerender the Image with a difference src.
-   * @deprecated
+   * @deprecated Use `onLoadingStateChange` instead
+   * and rerender the Image with a difference src.
    */
   errorLoaded = 3
 }
@@ -184,11 +191,12 @@ export interface IImageStyleProps {
   isLandscape?: boolean;
 
   /**
-   * ImageFit booleans for center, cover, contain, none
+   * ImageFit booleans for center, cover, contain, centerCover, none
    */
   isCenter?: boolean;
   isContain?: boolean;
   isCover?: boolean;
+  isCenterCover?: boolean;
   isNone?: boolean;
 
   /**

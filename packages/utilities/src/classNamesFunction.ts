@@ -1,20 +1,33 @@
-import { mergeStyleSets, IStyle } from '@uifabric/merge-styles/lib/index';
-import { IClassNames } from './IClassNames';
-import { IStyleFunction } from './IStyleFunction';
+import { mergeStyleSets, IStyle, IStyleSet, IProcessedStyleSet } from '@uifabric/merge-styles';
+import { IStyleFunctionOrObject } from '@uifabric/merge-styles';
 
 /**
  * Creates a getClassNames function which calls getStyles given the props, and injects them
  * into mergeStyleSets.
  */
-export function classNamesFunction<TStyleProps extends {}, TStyles extends {[P in keyof TStyles]: IStyle}>(): (
-  getStyles?: IStyleFunction<TStyleProps, TStyles>,
+export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(): (
+  getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined,
   styleProps?: TStyleProps
-) => IClassNames<TStyles> {
-
+) => IProcessedStyleSet<TStyleSet> {
   // TODO: memoize.
-  return (
-    getStyles?: IStyleFunction<TStyleProps, TStyles>,
-    styleProps?: TStyleProps
-  ): IClassNames<TStyles> => mergeStyleSets(getStyles && getStyles(styleProps!)
-  );
+
+  const getClassNames = (
+    styleFunctionOrObject: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined,
+    styleProps: TStyleProps = {} as TStyleProps
+  ): IProcessedStyleSet<TStyleSet> => {
+    // styleSet might be undefined if styleFunctionOrObject is undefined, but getStyles should never
+    // ordinarily be undefined (it would hardly make any sense).
+    // However, because we usually use `props.styles` as the argument to an invocation of this method, and
+    // `props.styles` itself is defined as optional, this avoids the need to use `!` at all invocation points.
+    if (styleFunctionOrObject === undefined) {
+      return {} as IProcessedStyleSet<TStyleSet>;
+    }
+
+    const styleSet =
+      styleFunctionOrObject && (typeof styleFunctionOrObject === 'function' ? styleFunctionOrObject(styleProps!) : styleFunctionOrObject);
+
+    return mergeStyleSets(styleSet as TStyleSet);
+  };
+
+  return getClassNames;
 }

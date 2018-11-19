@@ -2,78 +2,125 @@
 
 exports[`Link renders Link correctly 1`] = `
 <a
-  aria-disabled={undefined}
   className=
       ms-Link
       {
-        color: #0078d7;
-        outline: transparent;
-        position: relative;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        color: #0078d4;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        outline: none;
         text-decoration: none;
       }
-      &::-moz-focus-inner {
-        border: 0;
-      }
-      .ms-Fabric.is-focusVisible &:focus:after {
-        border: 1px solid #ffffff;
-        bottom: 1px;
-        content: "";
-        left: 1px;
+      .ms-Fabric--isFocusVisible &:focus {
         outline: 1px solid #666666;
-        position: absolute;
-        right: 1px;
-        top: 1px;
-        z-index: 1;
       }
       &:active, &:hover, &:active:hover {
         color: #004578;
       }
+      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+        text-decoration: underline;
+      }
       &:focus {
-        color: #0078d7;
+        color: #0078d4;
       }
   href="#"
   onClick={[Function]}
-  target={undefined}
 >
   I'm a link
 </a>
 `;
 
-exports[`Link renders Link with a custom class name 1`] = `
-<a
-  aria-disabled={undefined}
+exports[`Link renders Link with "as=div" a div element 1`] = `
+<div
   className=
       ms-Link
       customClassName
       {
-        color: #0078d7;
-        outline: transparent;
-        position: relative;
-        text-decoration: none;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background-color: transparent;
+        background: none;
+        border-bottom: 1px solid transparent;
+        border: none;
+        color: #0078d4;
+        cursor: pointer;
+        display: inline;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: inherit;
+        font-weight: 400;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        outline: none;
+        overflow: inherit;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
+        text-align: left;
+        text-overflow: inherit;
+        user-select: text;
       }
-      &::-moz-focus-inner {
-        border: 0;
-      }
-      .ms-Fabric.is-focusVisible &:focus:after {
-        border: 1px solid #ffffff;
-        bottom: 1px;
-        content: "";
-        left: 1px;
+      .ms-Fabric--isFocusVisible &:focus {
         outline: 1px solid #666666;
-        position: absolute;
-        right: 1px;
-        top: 1px;
-        z-index: 1;
+      }
+      @media screen and (-ms-high-contrast: white-on-black){& {
+        color: #FFFF00;
+      }
+      @media screen and (-ms-high-contrast: black-on-white){& {
+        color: #00009F;
+      }
+      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+        border-bottom: none;
       }
       &:active, &:hover, &:active:hover {
         color: #004578;
       }
+      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+        text-decoration: underline;
+      }
       &:focus {
-        color: #0078d7;
+        color: #0078d4;
+      }
+  onClick={[Function]}
+>
+  I'm a div
+</div>
+`;
+
+exports[`Link renders Link with a custom class name 1`] = `
+<a
+  className=
+      ms-Link
+      customClassName
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        color: #0078d4;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        outline: none;
+        text-decoration: none;
+      }
+      .ms-Fabric--isFocusVisible &:focus {
+        outline: 1px solid #666666;
+      }
+      &:active, &:hover, &:active:hover {
+        color: #004578;
+      }
+      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+        text-decoration: underline;
+      }
+      &:focus {
+        color: #0078d4;
       }
   href="#"
   onClick={[Function]}
-  target={undefined}
 >
   I'm a link
 </a>
@@ -81,49 +128,55 @@ exports[`Link renders Link with a custom class name 1`] = `
 
 exports[`Link renders Link with no href as a button 1`] = `
 <button
-  aria-disabled={undefined}
   className=
       ms-Link
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background-color: transparent;
         background: none;
+        border-bottom: 1px solid transparent;
         border: none;
-        color: #0078d7;
+        color: #0078d4;
         cursor: pointer;
         display: inline;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: inherit;
+        font-weight: 400;
         margin-bottom: 0px;
         margin-left: 0px;
         margin-right: 0px;
         margin-top: 0px;
-        outline: transparent;
+        outline: none;
         overflow: inherit;
         padding-bottom: 0px;
         padding-left: 0px;
         padding-right: 0px;
         padding-top: 0px;
-        position: relative;
         text-align: left;
         text-overflow: inherit;
+        user-select: text;
       }
-      &::-moz-focus-inner {
-        border: 0;
-      }
-      .ms-Fabric.is-focusVisible &:focus:after {
-        border: 1px solid #ffffff;
-        bottom: 1px;
-        content: "";
-        left: 1px;
+      .ms-Fabric--isFocusVisible &:focus {
         outline: 1px solid #666666;
-        position: absolute;
-        right: 1px;
-        top: 1px;
-        z-index: 1;
+      }
+      @media screen and (-ms-high-contrast: white-on-black){& {
+        color: #FFFF00;
+      }
+      @media screen and (-ms-high-contrast: black-on-white){& {
+        color: #00009F;
+      }
+      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+        border-bottom: none;
       }
       &:active, &:hover, &:active:hover {
         color: #004578;
       }
+      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+        text-decoration: underline;
+      }
       &:focus {
-        color: #0078d7;
+        color: #0078d4;
       }
   onClick={[Function]}
 >
@@ -138,32 +191,24 @@ exports[`Link renders disabled Link correctly 1`] = `
       ms-Link
       is-disabled
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
         color: #a6a6a6;
         cursor: default;
-        outline: transparent;
-        position: relative;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        outline: none;
         text-decoration: none;
       }
-      &::-moz-focus-inner {
-        border: 0;
-      }
-      .ms-Fabric.is-focusVisible &:focus:after {
-        border: 1px solid #ffffff;
-        bottom: 1px;
-        content: "";
-        left: 1px;
+      .ms-Fabric--isFocusVisible &:focus {
         outline: 1px solid #666666;
-        position: absolute;
-        right: 1px;
-        top: 1px;
-        z-index: 1;
       }
       &:link, &:visited {
         pointer-events: none;
       }
   href="#"
   onClick={[Function]}
-  target={undefined}
 >
   I'm a disabled link
 </a>
@@ -176,39 +221,43 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
       ms-Link
       is-disabled
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background-color: transparent;
         background: none;
+        border-bottom: 1px solid transparent;
         border: none;
         color: #a6a6a6;
         cursor: default;
         display: inline;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: inherit;
+        font-weight: 400;
         margin-bottom: 0px;
         margin-left: 0px;
         margin-right: 0px;
         margin-top: 0px;
-        outline: transparent;
+        outline: none;
         overflow: inherit;
         padding-bottom: 0px;
         padding-left: 0px;
         padding-right: 0px;
         padding-top: 0px;
-        position: relative;
         text-align: left;
         text-overflow: inherit;
+        user-select: text;
       }
-      &::-moz-focus-inner {
-        border: 0;
-      }
-      .ms-Fabric.is-focusVisible &:focus:after {
-        border: 1px solid #ffffff;
-        bottom: 1px;
-        content: "";
-        left: 1px;
+      .ms-Fabric--isFocusVisible &:focus {
         outline: 1px solid #666666;
-        position: absolute;
-        right: 1px;
-        top: 1px;
-        z-index: 1;
+      }
+      @media screen and (-ms-high-contrast: white-on-black){& {
+        color: #FFFF00;
+      }
+      @media screen and (-ms-high-contrast: black-on-white){& {
+        color: #00009F;
+      }
+      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+        border-bottom: none;
       }
       &:link, &:visited {
         pointer-events: none;
@@ -218,4 +267,64 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
 >
   I'm a link as a button
 </button>
+`;
+
+exports[`Link supports non button/anchor html attributes when "as=" is used 1`] = `
+<blockquote
+  cite="hi"
+  className=
+      ms-Link
+      customClassName
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background-color: transparent;
+        background: none;
+        border-bottom: 1px solid transparent;
+        border: none;
+        color: #0078d4;
+        cursor: pointer;
+        display: inline;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: inherit;
+        font-weight: 400;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        outline: none;
+        overflow: inherit;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
+        text-align: left;
+        text-overflow: inherit;
+        user-select: text;
+      }
+      .ms-Fabric--isFocusVisible &:focus {
+        outline: 1px solid #666666;
+      }
+      @media screen and (-ms-high-contrast: white-on-black){& {
+        color: #FFFF00;
+      }
+      @media screen and (-ms-high-contrast: black-on-white){& {
+        color: #00009F;
+      }
+      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+        border-bottom: none;
+      }
+      &:active, &:hover, &:active:hover {
+        color: #004578;
+      }
+      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+        text-decoration: underline;
+      }
+      &:focus {
+        color: #0078d4;
+      }
+  onClick={[Function]}
+>
+  I'm a blockquote
+</blockquote>
 `;

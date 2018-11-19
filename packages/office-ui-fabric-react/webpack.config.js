@@ -1,5 +1,6 @@
 let path = require('path');
 const resources = require('../../scripts/tasks/webpack-resources');
+const ManifestServicePlugin = require('@uifabric/webpack-utils/lib/ManifestServicePlugin');
 
 const BUNDLE_NAME = 'office-ui-fabric-react';
 const IS_PRODUCTION = process.argv.indexOf('--production') > -1;
@@ -8,39 +9,56 @@ let entry = {
   [BUNDLE_NAME]: './lib/index.bundle.js'
 };
 
-// In production builds, produce the demo-app bundle.
-if (IS_PRODUCTION) {
-  entry['demo-app'] = './lib/demo/index.js';
+function createConfig(config, onlyProduction) {
+  return resources.createConfig(
+    BUNDLE_NAME,
+    IS_PRODUCTION,
+    {
+      entry,
+
+      externals: [
+        {
+          react: 'React'
+        },
+        {
+          'react-dom': 'ReactDOM'
+        }
+      ],
+
+      resolve: {
+        alias: {
+          'office-ui-fabric-react/src': path.join(__dirname, 'src'),
+          'office-ui-fabric-react/lib': path.join(__dirname, 'lib'),
+          'Props.ts.js': 'Props',
+          'Example.tsx.js': 'Example'
+        }
+      },
+
+      ...config
+    },
+    onlyProduction
+  );
 }
 
-module.exports = resources.createConfig(
-  BUNDLE_NAME,
-  IS_PRODUCTION,
-  {
-    entry,
-
-    output: {
-      libraryTarget: 'var',
-      library: 'Fabric'
+module.exports = [
+  createConfig(
+    {
+      output: {
+        libraryTarget: 'var',
+        library: 'Fabric'
+      }
     },
-
-    externals: [
-      {
-        'react': 'React',
-      },
-      {
-        'react-dom': 'ReactDOM'
+    false
+  ),
+  createConfig(
+    {
+      plugins: [new ManifestServicePlugin()],
+      output: {
+        libraryTarget: 'umd',
+        library: 'Fabric',
+        filename: `${BUNDLE_NAME}.umd.js`
       }
-    ],
-
-    resolve: {
-      alias: {
-        'office-ui-fabric-react/src': path.join(__dirname, 'src'),
-        'office-ui-fabric-react/lib': path.join(__dirname, 'lib'),
-        'Props.ts.js': 'Props',
-        'Example.tsx.js': 'Example'
-      }
-    }
-
-  }
-);
+    },
+    true
+  )
+];

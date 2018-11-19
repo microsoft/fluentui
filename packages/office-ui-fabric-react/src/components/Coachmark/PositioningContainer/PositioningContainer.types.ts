@@ -1,27 +1,14 @@
-import * as React from 'react';
-import { PositioningContainer } from './PositioningContainer';
-import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
-import {
-  IPoint,
-  IRectangle
-} from '../../../Utilities';
-import { ICalloutPositon } from 'office-ui-fabric-react/lib/utilities/positioning';
+import { DirectionalHint } from '../../../common/DirectionalHint';
+import { IRefObject, IBaseProps, IPoint, IRectangle } from '../../../Utilities';
+import { IPositionedData } from '../../../utilities/positioning';
 
-export interface IPositioningContainer {
-}
+export interface IPositioningContainer {}
 
-export interface IPositionInfo {
-  calloutPosition: ICalloutPositon;
-  beakPosition: { position: ICalloutPositon, display: string };
-  directionalClassName: string;
-  submenuDirection: DirectionalHint;
-}
-
-export interface IPositioningContainerTypes extends React.Props<PositioningContainer> {
+export interface IPositioningContainerProps extends IBaseProps<IPositioningContainer> {
   /**
-  * All props for your component are to be defined here.
-  */
-  componentRef?: (component: IPositioningContainer) => void;
+   * All props for your component are to be defined here.
+   */
+  componentRef?: IRefObject<IPositioningContainer>;
   /**
    * The target that the positioningContainer should try to position itself based on.
    * It can be either an HTMLElement a querySelector string of a valid HTMLElement
@@ -31,7 +18,7 @@ export interface IPositioningContainerTypes extends React.Props<PositioningConta
 
   /**
    * How the element should be positioned
-   * @default DirectionalHint.BottomAutoEdge
+   * @defaultvalue DirectionalHint.BottomAutoEdge
    */
   directionalHint?: DirectionalHint;
 
@@ -43,56 +30,57 @@ export interface IPositioningContainerTypes extends React.Props<PositioningConta
 
   /**
    * The gap between the positioningContainer and the target
-   * @default 0
+   * @defaultvalue 0
    */
   offsetFromTarget?: number;
 
   /**
    * Custom width for positioningContainer including borders. If value is 0, no width is applied.
-   * @default 0
+   * @defaultvalue 0
    */
   positioningContainerWidth?: number;
 
   /**
    * The background color of the positioningContainer in hex format ie. #ffffff.
-   * @default $ms-color-white
+   * @defaultvalue $ms-color-white
    */
   backgroundColor?: string;
 
   /**
-   * The bounding rectangle for which  the contextual menu can appear in.
+   * The bounding rectangle for which the contextual menu can appear in.
    */
   bounds?: IRectangle;
 
   /**
    * The minimum distance the positioningContainer will be away from the edge of the screen.
-   *  @default 8
+   *  @defaultvalue 8
    */
   minPagePadding?: number;
 
   /**
    * If true use a point rather than rectangle to position the positioningContainer.
    * For example it can be used to position based on a click.
-   * @deprecated Use 'target' instead
+   * @deprecated Do not use.
    */
   useTargetPoint?: boolean;
 
   /**
-   * Point used to position the positioningContainer
-   * @deprecated Use 'target' instead
+   * Point used to position the positioningContainer.
+   * Deprecated, use `target` instead.
+   * @deprecated Use `target` instead.
    */
   targetPoint?: IPoint;
 
   /**
    * If true then the onClose will not not dismiss on scroll
-   * @default false
+   * @defaultvalue false
    */
   preventDismissOnScroll?: boolean;
 
   /**
    * If true the position returned will have the menu element cover the target.
    * If false then it will position next to the target;
-   * @default false
+   * @defaultvalue false
    */
   coverTarget?: boolean;
 
@@ -118,7 +106,7 @@ export interface IPositioningContainerTypes extends React.Props<PositioningConta
 
   /**
    * CSS class to apply to the positioningContainer.
-   * @default null
+   * @defaultvalue null
    */
   className?: string;
 
@@ -129,8 +117,10 @@ export interface IPositioningContainerTypes extends React.Props<PositioningConta
 
   /**
    * Optional callback that is called once the positioningContainer has been correctly positioned.
+   * @param positions - gives the user information about how the container is positioned such
+   * as the element position, the target edge, and the alignment edge of the container.
    */
-  onPositioned?: () => void;
+  onPositioned?: (positions?: IPositionedData) => void;
 
   /**
    * Callback when the positioningContainer tries to close.
@@ -146,7 +136,7 @@ export interface IPositioningContainerTypes extends React.Props<PositioningConta
   /**
    * If true the position will not change sides in an attempt to fit the positioningContainer within bounds.
    * It will still attempt to align it to whatever bounds are given.
-   * @default false
+   * @defaultvalue false
    */
   directionalHintFixed?: boolean;
 
@@ -171,3 +161,6 @@ export interface IPositioningContainerTypes extends React.Props<PositioningConta
    */
   positioningContainerMaxHeight?: number;
 }
+
+/** @deprecated Use `IPositioningContainerProps` */
+export type IPositioningContainerTypes = IPositioningContainerProps;

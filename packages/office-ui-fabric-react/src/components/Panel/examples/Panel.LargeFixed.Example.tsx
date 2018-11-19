@@ -1,12 +1,13 @@
 import * as React from 'react';
-import { autobind } from '../../../Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 
-export class PanelLargeFixedExample extends React.Component<{}, {
-  showPanel: boolean;
-}> {
-
+export class PanelLargeFixedExample extends React.Component<
+  {},
+  {
+    showPanel: boolean;
+  }
+> {
   constructor(props: {}) {
     super(props);
     this.state = {
@@ -14,33 +15,22 @@ export class PanelLargeFixedExample extends React.Component<{}, {
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
-        <DefaultButton
-          description='Opens the Sample Panel'
-          onClick={ this._showPanel }
-          text='Open Panel'
-        />
-        <Panel
-          isOpen={ this.state.showPanel }
-          onDismiss={ this._closePanel }
-          type={ PanelType.largeFixed }
-          headerText='Large Panel'
-        >
+        <DefaultButton secondaryText="Opens the Sample Panel" onClick={this._showPanel} text="Open Panel" />
+        <Panel isOpen={this.state.showPanel} onDismiss={this._closePanel} type={PanelType.largeFixed} headerText="Large Panel">
           <span>Content goes here.</span>
         </Panel>
       </div>
     );
   }
 
-  @autobind
-  private _showPanel() {
+  private _showPanel = (): void => {
     this.setState({ showPanel: true });
-  }
+  };
 
-  @autobind
-  private _closePanel() {
+  private _closePanel = (): void => {
     this.setState({ showPanel: false });
-  }
+  };
 }

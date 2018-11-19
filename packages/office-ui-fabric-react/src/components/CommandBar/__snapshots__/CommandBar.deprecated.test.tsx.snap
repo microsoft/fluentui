@@ -1,0 +1,323 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CommandBar renders commands correctly 1`] = `
+<div
+  className="TestClassName"
+>
+  <div
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      data-automation-id="visibleContent"
+      style={
+        Object {
+          "position": "fixed",
+          "visibility": "hidden",
+        }
+      }
+    >
+      <div
+        className=
+            ms-FocusZone
+            ms-CommandBar
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background-color: #f4f4f4;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              height: 40px;
+              padding-bottom: 0;
+              padding-left: 16px;
+              padding-right: 16px;
+              padding-top: 0;
+            }
+        data-focuszone-id="FocusZone0"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+        role="menubar"
+      >
+        <div
+          className=
+              ms-OverflowSet
+              ms-CommandBar-primaryCommand
+              {
+                align-items: stretch;
+                display: flex;
+                flex-grow: 1;
+                flex-wrap: nowrap;
+                position: relative;
+              }
+          role="presentation"
+        >
+          <div
+            className=
+                ms-OverflowSet-item
+                {
+                  display: inherit;
+                  flex-shrink: 0;
+                }
+          >
+            <button
+              className=
+                  ms-Button
+                  ms-Button--commandBar
+                  ms-CommandBarItem-link
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: #f4f4f4;
+                    border-radius: 0px;
+                    border: 1px solid transparent;
+                    box-sizing: border-box;
+                    color: #333333;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 100%;
+                    min-width: 40px;
+                    outline: transparent;
+                    padding-bottom: 0;
+                    padding-left: 4px;
+                    padding-right: 4px;
+                    padding-top: 0;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: 4px;
+                    left: 4px;
+                    outline-color: ButtonText;
+                    right: 4px;
+                    top: 4px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border: none;
+                  }
+                  &:hover {
+                    background-color: #eaeaea;
+                    color: #212121;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    color: Highlight;
+                  }
+                  &:active {
+                    background-color: #dadada;
+                    color: #000000;
+                  }
+              data-is-focusable={true}
+              name="asdf"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
+              role="menuitem"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: center;
+                    }
+              >
+                <div
+                  className=
+                      ms-Button-textContainer
+                      {
+                        flex-grow: 1;
+                      }
+                >
+                  <div
+                    className=
+                        ms-Button-label
+                        {
+                          font-weight: normal;
+                          line-height: 100%;
+                          margin-bottom: 0;
+                          margin-left: 4px;
+                          margin-right: 4px;
+                          margin-top: 0;
+                          white-space: nowrap;
+                        }
+                    id="id__1"
+                  >
+                    asdf
+                  </div>
+                </div>
+              </div>
+            </button>
+          </div>
+          <div
+            className=
+                ms-OverflowSet-item
+                {
+                  display: inherit;
+                  flex-shrink: 0;
+                }
+          >
+            <button
+              className=
+                  ms-Button
+                  ms-Button--commandBar
+                  ms-CommandBarItem-link
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: #f4f4f4;
+                    border-radius: 0px;
+                    border: 1px solid transparent;
+                    box-sizing: border-box;
+                    color: #333333;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 100%;
+                    min-width: 40px;
+                    outline: transparent;
+                    padding-bottom: 0;
+                    padding-left: 4px;
+                    padding-right: 4px;
+                    padding-top: 0;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: 4px;
+                    left: 4px;
+                    outline-color: ButtonText;
+                    right: 4px;
+                    top: 4px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border: none;
+                  }
+                  &:hover {
+                    background-color: #eaeaea;
+                    color: #212121;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    color: Highlight;
+                  }
+                  &:active {
+                    background-color: #dadada;
+                    color: #000000;
+                  }
+              data-is-focusable={true}
+              name="asdf"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
+              role="menuitem"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: center;
+                    }
+              >
+                <div
+                  className=
+                      ms-Button-textContainer
+                      {
+                        flex-grow: 1;
+                      }
+                >
+                  <div
+                    className=
+                        ms-Button-label
+                        {
+                          font-weight: normal;
+                          line-height: 100%;
+                          margin-bottom: 0;
+                          margin-left: 4px;
+                          margin-right: 4px;
+                          margin-top: 0;
+                          white-space: nowrap;
+                        }
+                    id="id__4"
+                  >
+                    asdf
+                  </div>
+                </div>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

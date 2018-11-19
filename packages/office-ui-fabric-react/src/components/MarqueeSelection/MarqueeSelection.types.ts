@@ -1,17 +1,16 @@
 import * as React from 'react';
 import { ISelection } from '../../utilities/selection/interfaces';
-import { MarqueeSelection } from './MarqueeSelection';
+import { ITheme, IStyle } from '../../Styling';
+import { IRefObject, IStyleFunction } from '../../Utilities';
 
-export interface IMarqueeSelection {
+export interface IMarqueeSelection {}
 
-}
-
-export interface IMarqueeSelectionProps extends React.Props<MarqueeSelection> {
+export interface IMarqueeSelectionProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the IMarqueeSelection interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IMarqueeSelection) => void;
+  componentRef?: IRefObject<IMarqueeSelection>;
 
   /**
    * The selection object to interact with when updating selection changes.
@@ -34,14 +33,41 @@ export interface IMarqueeSelectionProps extends React.Props<MarqueeSelection> {
    * Optional flag to control the enabled state of marquee selection. This allows you to render
    * it and have events all ready to go, but conditionally disable it. That way transitioning
    * between enabled/disabled generate no difference in the DOM.
-   * @default true
+   * @defaultvalue true
    */
   isEnabled?: boolean;
 
   /**
    * Optional flag to restrict the drag rect to the root element, instead of allowing the drag
    * rect to start outside of the root element boundaries.
-   * @default false
+   * @defaultvalue false
    */
   isDraggingConstrainedToRoot?: boolean;
+
+  /**
+   * Additional CSS class(es) to apply to the MarqueeSelection.
+   */
+  className?: string;
+
+  /**
+   * Theme (provided through customization.)
+   */
+  theme?: ITheme;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  styles?: IStyleFunction<IMarqueeSelectionStyleProps, IMarqueeSelectionStyles>;
+}
+
+export interface IMarqueeSelectionStyleProps {
+  theme: ITheme;
+  className?: string;
+}
+
+export interface IMarqueeSelectionStyles {
+  root?: IStyle;
+  dragMask?: IStyle;
+  box?: IStyle;
+  boxFill?: IStyle;
 }

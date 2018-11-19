@@ -1,4 +1,4 @@
-import { IContextualMenuItem } from '../..';
+import { IContextualMenuItem } from '../../index';
 
 /**
  * Determines the effective checked state of a menu item.
@@ -25,6 +25,10 @@ export function getIsChecked(item: IContextualMenuItem): boolean | null {
   return null;
 }
 
-export function hasSubmenu(item: IContextualMenuItem) {
+export function hasSubmenu(item: IContextualMenuItem): boolean {
   return !!(item.subMenuProps || item.items);
+}
+
+export function isItemDisabled(item: IContextualMenuItem): boolean {
+  return !!(item.isDisabled || item.disabled);
 }

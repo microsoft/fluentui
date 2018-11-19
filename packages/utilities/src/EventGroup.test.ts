@@ -144,7 +144,10 @@ describe('EventGroup', () => {
     parentEvents.on(childDiv, 'click', parent.onChildClick);
     parentEvents.on(rootDiv, 'click', parent.onRootClick);
 
-    document.body.appendChild(rootDiv).appendChild(childDiv).appendChild(grandChildButton);
+    document.body
+      .appendChild(rootDiv)
+      .appendChild(childDiv)
+      .appendChild(grandChildButton);
 
     try {
       let ev = document.createEvent('HTMLEvents');
@@ -171,7 +174,6 @@ describe('EventGroup', () => {
       expect(rootCalled).toEqual(1);
     } finally {
       document.body.removeChild(rootDiv);
-
     }
   });
 

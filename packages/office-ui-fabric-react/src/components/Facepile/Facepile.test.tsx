@@ -1,9 +1,6 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-/* tslint:enable:no-unused-variable */
 import * as renderer from 'react-test-renderer';
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import { setRTL } from '../../Utilities';
 import { Facepile } from './Facepile';
 import { IFacepilePersona, OverflowButtonType } from './Facepile.types';
@@ -33,64 +30,39 @@ const facepilePersonas: IFacepilePersona[] = [
 ];
 
 describe('Facepile', () => {
-
   beforeEach(() => {
     setRTL(false);
   });
 
   it('renders Facepile correctly', () => {
-    const component = renderer.create(<Facepile personas={ facepilePersonas } />);
+    const component = renderer.create(<Facepile personas={facepilePersonas} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders with only add button if no personas found and addButtonProps are not null', () => {
-    const wrapper = mount(
-      <Facepile
-        personas={ [] }
-        addButtonProps={ {} }
-        showAddButton={ true }
-      />
-    );
+    const wrapper = mount(<Facepile personas={[]} addButtonProps={{}} showAddButton={true} />);
 
     expectOne(wrapper, '.ms-Facepile-addButton');
     expectOne(wrapper, '.ms-Facepile-itemButton');
   });
 
   it('renders chevron overflow button if overflowButtonProps are not null and OverflowButtonType equals downArrow', () => {
-    const wrapper = mount(
-      <Facepile
-        personas={ [] }
-        overflowButtonProps={ {} }
-        overflowButtonType={ OverflowButtonType.downArrow }
-      />
-    );
+    const wrapper = mount(<Facepile personas={[]} overflowButtonProps={{}} overflowButtonType={OverflowButtonType.downArrow} />);
 
     expectOne(wrapper, '.ms-Facepile-overflowButton');
     expectOne(wrapper, '.ms-Facepile-itemButton');
   });
 
   it('renders more overflow button if overflowButtonProps are not null as OverflowButtonType equals more', () => {
-    const wrapper = mount(
-      <Facepile
-        personas={ [] }
-        overflowButtonProps={ {} }
-        overflowButtonType={ OverflowButtonType.more }
-      />
-    );
+    const wrapper = mount(<Facepile personas={[]} overflowButtonProps={{}} overflowButtonType={OverflowButtonType.more} />);
 
     expectOne(wrapper, '.ms-Facepile-overflowButton');
     expectOne(wrapper, '.ms-Facepile-itemButton');
   });
 
   it('renders without descriptive overflow button if overflowButtonProps are not null and maximum personas are not exceeded', () => {
-    const wrapper = mount(
-      <Facepile
-        personas={ [] }
-        overflowButtonProps={ {} }
-        overflowButtonType={ OverflowButtonType.descriptive }
-      />
-    );
+    const wrapper = mount(<Facepile personas={[]} overflowButtonProps={{}} overflowButtonType={OverflowButtonType.descriptive} />);
 
     expectMissing(wrapper, '.ms-Facepile-descriptiveOverflowButton');
     expectMissing(wrapper, '.ms-Facepile-itemButton');
@@ -100,10 +72,10 @@ describe('Facepile', () => {
     const personas: IFacepilePersona[] = facepilePersonas.concat(...facepilePersonas, ...facepilePersonas);
     const wrapper = mount(
       <Facepile
-        personas={ personas }
-        maxDisplayablePersonas={ 5 }
-        overflowButtonProps={ {} }
-        overflowButtonType={ OverflowButtonType.descriptive }
+        personas={personas}
+        maxDisplayablePersonas={5}
+        overflowButtonProps={{}}
+        overflowButtonType={OverflowButtonType.descriptive}
       />
     );
     expectOne(wrapper, '.ms-Facepile-descriptiveOverflowButton');
@@ -112,29 +84,24 @@ describe('Facepile', () => {
 
   it('renders no more than maximum allowed personas', () => {
     const wrapper = mount(
-      <Facepile
-        personas={ facepilePersonas.concat(facepilePersonas, facepilePersonas, facepilePersonas) }
-        maxDisplayablePersonas={ 2 }
-      />
+      <Facepile personas={facepilePersonas.concat(facepilePersonas, facepilePersonas, facepilePersonas)} maxDisplayablePersonas={2} />
     );
     expect(findNodes(wrapper, '.ms-Facepile-itemButton').length).toEqual(2);
   });
 
   it('persona is clickable if onClick property is set', () => {
     let clicked = 0;
-    const personas: IFacepilePersona[] = [{
-      personaName: 'Alex Lundberg',
-      onClick: (ev: React.MouseEvent<HTMLElement>, persona: IFacepilePersona) => {
-        clicked++;
-        ev.preventDefault();
+    const personas: IFacepilePersona[] = [
+      {
+        personaName: 'Alex Lundberg',
+        onClick: (ev: React.MouseEvent<HTMLElement>, persona: IFacepilePersona) => {
+          clicked++;
+          ev.preventDefault();
+        }
       }
-    }];
+    ];
 
-    const wrapper = mount(
-      <Facepile
-        personas={ personas }
-      />
-    );
+    const wrapper = mount(<Facepile personas={personas} />);
 
     const buttons = findNodes(wrapper, '.ms-Facepile-itemButton');
 
@@ -146,11 +113,11 @@ describe('Facepile', () => {
   it('personas and buttons render default size if not specified', () => {
     const wrapper = mount(
       <Facepile
-        personas={ facepilePersonas }
-        addButtonProps={ {} }
-        showAddButton={ true }
-        overflowButtonProps={ {} }
-        overflowButtonType={ OverflowButtonType.downArrow }
+        personas={facepilePersonas}
+        addButtonProps={{}}
+        showAddButton={true}
+        overflowButtonProps={{}}
+        overflowButtonType={OverflowButtonType.downArrow}
       />
     );
 
@@ -168,65 +135,28 @@ describe('Facepile', () => {
 
   it('personas and buttons render specified size', () => {
     // Test XXS size renders
-    let wrapper = shallow(
-      <Facepile
-        personas={ facepilePersonas }
-        personaSize={ PersonaSize.size24 }
-      />);
+    let wrapper = mount(<Facepile personas={facepilePersonas} personaSize={PersonaSize.size24} />);
 
     expect(wrapper.find(PersonaCoin).length).toEqual(facepilePersonas.length);
-    wrapper.find(PersonaCoin).forEach((node) => {
-      expect(node.dive().hasClass('ms-Persona--size24')).toBeTruthy();
+    wrapper.find(PersonaCoin).forEach(node => {
+      // Need multiple Dives since PersonaCoin is decorated
+      expect(node.find('.ms-Persona--size24').length).toEqual(1);
     });
 
     // Test small size renders
-    wrapper = shallow(
-      <Facepile
-        personas={ facepilePersonas }
-        personaSize={ PersonaSize.size40 }
-      />);
+    wrapper = mount(<Facepile personas={facepilePersonas} personaSize={PersonaSize.size40} />);
 
     expect(wrapper.find(PersonaCoin).length).toEqual(facepilePersonas.length);
-    wrapper.find(PersonaCoin).forEach((node) => {
-      expect(node.dive().hasClass('ms-Persona--size40')).toBeTruthy();
+    wrapper.find(PersonaCoin).forEach(node => {
+      // Need multiple Dives since PersonaCoin is decorated
+      expect(node.find('.ms-Persona--size40').length).toEqual(1);
     });
   });
 
   it('renders Persona control if exactly one persona is sent in props', () => {
-    let wrapper = shallow(
-      <Facepile
-        personas={ facepilePersonas.slice(0, 1) }
-        overflowPersonas={ [] }
-      />);
+    const wrapper = mount(<Facepile personas={facepilePersonas.slice(0, 1)} overflowPersonas={[]} />);
 
-    expect(wrapper.find(PersonaCoin).length).toEqual(0);
-    expect(wrapper.find(Persona).length).toEqual(1);
-
-    wrapper = shallow(
-      <Facepile
-        personas={ facepilePersonas.slice(0, 1) }
-      />);
-
-    expect(wrapper.find(PersonaCoin).length).toEqual(0);
-    expect(wrapper.find(Persona).length).toEqual(1);
-  });
-
-  it('renders Persona control if exactly one persona is sent in props', () => {
-    let wrapper = shallow(
-      <Facepile
-        personas={ facepilePersonas.slice(0, 1) }
-        overflowPersonas={ [] }
-      />);
-
-    expect(wrapper.find(PersonaCoin).length).toEqual(0);
-    expect(wrapper.find(Persona).length).toEqual(1);
-
-    wrapper = shallow(
-      <Facepile
-        personas={ facepilePersonas.slice(0, 1) }
-      />);
-
-    expect(wrapper.find(PersonaCoin).length).toEqual(0);
+    expect(wrapper.find(PersonaCoin).length).toEqual(1);
     expect(wrapper.find(Persona).length).toEqual(1);
   });
 });

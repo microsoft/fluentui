@@ -1,5 +1,9 @@
+import { ISemanticTextColors } from './ISemanticTextColors';
+
 /**
- * The collection of semantic slots for colors used in themes.
+ * The collection of all semantic slots for colors used in themes.
+ *
+ * Note: text colors are defined in ISemanticTextColors.ts.
  *
  * ## Naming Convention
  *
@@ -46,7 +50,7 @@
  * and have a large and complex interaction surface.
  * This category covers all kinds of lists, whether they're typical one-item-per-row lists (like DetailsList) or ones with a tiled layout.
  */
-export interface ISemanticColors {
+export interface ISemanticColors extends ISemanticTextColors {
   /* ANY ADDITIONS/REMOVALS HERE MUST ALSO BE MADE TO \packages\office-ui-fabric-react\src\common\_semanticSlots.scss */
 
   //// Base slots
@@ -57,19 +61,28 @@ export interface ISemanticColors {
   bodyBackground: string;
 
   /**
-   * The default color for text.
+   * The standout color for highlighted content backgrounds.
+   * For highlighted content when there is no emphasis, use the neutral variant instead.
+   * This should be a shade darker than bodyBackground in light themes,
+   * and a shade lighter in inverted themes.
    */
-  bodyText: string;
+  bodyStandoutBackground: string;
 
   /**
-   * Checked text color, e.g. selected menu item text.
+   * The color for chrome adjacent to an area with bodyBackground.
+   * This can be used to provide visual separation of zones when using stronger colors, when using a divider line is not desired.
+   * In most themes, this should match the color of bodyBackground.
+   * See also: bodyFrameDivider
    */
-  bodyTextChecked: string;
+  bodyFrameBackground: string;
 
   /**
-   * De-emphasized text; e.g. metadata, captions, placeholder text.
+   * Used as the border between a zone with bodyFrameBackground and a zone with bodyBackground.
+   * If bodyBackground and bodyFrameBackground are different, this should be the same color as bodyFrameBackground
+   * in order to visually disappear.
+   * See also: bodyFrameBackground
    */
-  bodySubtext: string;
+  bodyFrameDivider: string;
 
   /**
    * Divider lines; e.g. lines that separate sections in a menu, an <HR> element.
@@ -82,35 +95,27 @@ export interface ISemanticColors {
   disabledBackground: string;
 
   /**
-   * The default color for disabled text on top of disabledBackground; e.g. text in a disabled text field, disabled button text.
-   */
-  disabledText: string;
-
-  /**
-   * The default color for disabled text on the default background (bodyBackground).
-   */
-  disabledBodyText: string;
-
-  /**
-   * Disabled de-emphasized text, for use on disabledBackground.
-   */
-  disabledSubtext: string;
-
-  /**
    * The color of the outline around focused controls that don't already have a border; e.g. menu items
    */
   focusBorder: string;
 
-  //// Invariants - slots that rarely change color theme-to-theme because the color has meaning
+  /**
+   * The color of the border that provides contrast between an element, such as a card, and an emphasized background.
+   */
+  variantBorder: string;
 
   /**
-   * The default color of error text, used on bodyBackground.
+   * Hover color of border that provides contrast between an element, such as a card, and an emphasized background.
    */
-  errorText: string;
+  variantBorderHovered: string;
+
   /**
-   * The color of text on errorBackground, warningBackground, blockingBackground, or successBackground.
+   * Background color for default/empty state graphical elements; eg default icons, empty section that
+   * needs user to fill in content, placeholder graphics, empty seats, etc.
    */
-  warningText: string;
+  defaultStateBackground: string;
+
+  //// Invariants - slots that rarely change color theme-to-theme because the color has meaning
   /**
    * The background for errors, if necessary, or highlighting the section of the page where the error is present.
    */
@@ -139,9 +144,9 @@ export interface ISemanticColors {
    */
   inputBorder: string;
 
-  /** The border of a small input control in its resting unchecked state; e.g. the box of an unchecked checkbox.
-  *
-  */
+  /**
+   * The border of a small input control in its resting unchecked state; e.g. the box of an unchecked checkbox.
+   */
   smallInputBorder: string;
 
   /**
@@ -175,29 +180,38 @@ export interface ISemanticColors {
    */
   inputFocusBorderAlt: string;
 
-  /**
-   * The color of placeholder text.
-   */
-  inputPlaceholderText: string;
-
   //// Buttons
 
   /**
    * Background of a standard button
    */
   buttonBackground: string;
-  /**
-   * Background of a hovered standard button
-   */
-  buttonBackgroundHovered: string;
+
   /**
    * Background of a checked standard button; e.g. bold/italicize/underline text button in toolbar
    */
   buttonBackgroundChecked: string;
+
+  /**
+   * Background of a hovered standard button
+   */
+
+  buttonBackgroundHovered: string;
+
   /**
    * Background of a checked and hovered standard button; e.g. bold/italicize/underline text button in toolbar
    */
   buttonBackgroundCheckedHovered: string;
+
+  /**
+   * Background of a disabled standard button
+   */
+  buttonBackgroundDisabled: string;
+
+  /**
+   * Background of a pressed standard button; i.e. currently being clicked by mouse
+   */
+  buttonBackgroundPressed: string;
 
   /**
    * Border of a standard button
@@ -205,34 +219,46 @@ export interface ISemanticColors {
   buttonBorder: string;
 
   /**
-   * Color of text in a standard button
+   * Border of a disabled standard button
    */
-  buttonText: string;
+  buttonBorderDisabled: string;
+
   /**
-   * Color of text in a hovered standard button
+   * Background of a primary button
    */
-  buttonTextHovered: string;
+  primaryButtonBackground: string;
+
   /**
-   * Color of text in a checked standard button
+   * Background of a hovered primary button
    */
-  buttonTextChecked: string;
+  primaryButtonBackgroundHovered: string;
+
   /**
-   * Color of text in a checked and hovered standard button
+   * Background of a pressed primary button; i.e. currently being clicked by mouse
    */
-  buttonTextCheckedHovered: string;
+  primaryButtonBackgroundPressed: string;
+
+  /**
+   * Background of a disabled primary button
+   */
+  primaryButtonBackgroundDisabled: string;
+
+  /**
+   * Border of a primary button
+   */
+  primaryButtonBorder: string;
 
   //// Menus, popups, etc
 
   /**
-   * The background of a hovered menu item.
+   * The background of a menu.
    */
-  menuItemBackgroundHovered: string;
+  menuBackground: string;
 
   /**
-   * @deprecated
-   * The background of checked menu item; e.g. a menu item whose submenu is open, a selected dropdown item.
+   * The divider between menu items.
    */
-  menuItemBackgroundChecked: string;
+  menuDivider: string;
 
   /**
    * The default colors of icons in menus.
@@ -243,6 +269,26 @@ export interface ISemanticColors {
    * The headers in menus that denote title of a section.
    */
   menuHeader: string;
+
+  /**
+   * The background of a hovered menu item.
+   */
+  menuItemBackgroundHovered: string;
+
+  /**
+   * The background of a pressed menu item.
+   */
+  menuItemBackgroundPressed: string;
+
+  /**
+   * The text color of a menu item.
+   */
+  menuItemText: string;
+
+  /**
+   * The text color of a hovered menu item.
+   */
+  menuItemTextHovered: string;
 
   //// Lists
 
@@ -272,18 +318,22 @@ export interface ISemanticColors {
   listItemBackgroundCheckedHovered: string;
 
   /**
-   * The color of a link.
+   * The background color for a hovered list header.
    */
-  link: string;
+  listHeaderBackgroundHovered: string;
 
   /**
-   * The color of a hovered link. Also used when the link is active.
+   * The background color for a pressed list header.
    */
-  linkHovered: string;
+  listHeaderBackgroundPressed: string;
 
   //// DEPRECATED SLOTS
   // Do not use these slots, they are only maintained for backwards compatibility.
 
-  /** DEPRECATED use listText instead */
-  listTextColor: string;
+  /**
+   * @deprecated
+   * (Checked menu items no longer get a background color.)
+   * The background of checked menu item; e.g. a menu item whose submenu is open, a selected dropdown item.
+   */
+  menuItemBackgroundChecked: string;
 }

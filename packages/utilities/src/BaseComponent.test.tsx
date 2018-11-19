@@ -11,7 +11,7 @@ describe('BaseComponent', () => {
       public root: HTMLElement;
 
       public render(): JSX.Element {
-        return <div ref={ this._resolveRef('root') } />;
+        return <div ref={this._resolveRef('root')} />;
       }
     }
 

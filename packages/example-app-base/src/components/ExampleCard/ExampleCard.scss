@@ -14,17 +14,20 @@
   }
 
   .ExampleCard-title {
+    @include ms-font-l;
     margin-bottom: 10px;
     display: inline-block;
   }
 
   .ExampleCard-toggleButtons {
-    display: block;
+    @include ms-font-l;
+    display: flex;
     @include float(right);
 
     .ms-Button.ExampleCard-codeButton {
       @include ms-margin-right(0);
       background: none;
+      background-color: transparent;
       border: 1px solid $ms-color-neutralTertiary;
       border-bottom: 0;
       border-top-left-radius: 4px;
@@ -50,19 +53,51 @@
         }
       }
     }
+
+    // Modeled after ExampleCard-codeButton to look similar
+    .ms-Dropdown-title.ExampleCard-themeDropdown {
+      @include ms-margin-right(0);
+      background: none;
+      background-color: transparent;
+      border: 1px solid $ms-color-neutralTertiary;
+      border-bottom: 0;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+      padding: 4px 12px;
+      min-width: 100px;
+      transition: border $ms-animation-duration-3 $ms-animation-ease-1;
+
+      &:focus {
+        border-color: $ms-color-neutralDark;
+        outline-color: $ms-color-neutralDark;
+      }
+    }
   }
 
   .ExampleCard-example {
-    -webkit-overflow-scrolling: touch;
-    max-height: 80vh;
-    overflow-x: hidden;
-    overflow-y: auto;
-    padding: 20px 4px;
-    position: relative;
-  }
+    &.is-scrollable {
+      -webkit-overflow-scrolling: touch;
+      max-height: 80vh;
+      overflow-x: hidden;
+      overflow-y: auto;
+      padding: 20px 4px;
+      position: relative;
+    }
 
-  .ExampleCard-example.is-right-aligned {
-    @include text-align(right);
+    &.is-right-aligned {
+      @include text-align(right);
+    }
+
+    // Utility classes that can be used within examples.
+    .u-marginLeft {
+      @include ms-margin-left(20px);
+    }
+    .u-marginRight {
+      @include ms-margin-right(20px);
+    }
+    .u-marginBottom {
+      margin-bottom: 28px;
+    }
   }
 
   .ExampleCard-code {
@@ -110,7 +145,7 @@
 
     h4 {
       @include ms-font-l;
-      color: #177D3E;
+      color: #177d3e;
     }
   }
 
@@ -120,8 +155,7 @@
 
     h4 {
       @include ms-font-l;
-      color: #A61E22;
+      color: #a61e22;
     }
   }
-
 }

@@ -4,13 +4,16 @@ import { ComponentPage, IComponentPageProps } from '../../components/ComponentPa
 const pageStyles: any = require('../PageStyles.module.scss');
 
 export class ComponentUtilitiesPage extends React.Component<IComponentPageProps, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
-      <div ref='pageElement' className={ pageStyles.basePage }>
+      <div className={pageStyles.basePage}>
         <ComponentPage>
-          <PageHeader pageTitle='Utilities' backgroundColor='#038387' />
-          <h2 className='ComponentPage-subHeading'>Overview</h2>
-          <p>Fabric React includes utilities that allow you to control keyboard navigation behaviors, manage object selection and interaction, and apply custom themes.</p>
+          <PageHeader pageTitle="Utilities" backgroundColor="#038387" />
+          <h2 className="ComponentPage-subHeading">Overview</h2>
+          <p>
+            Fabric React includes utilities that allow you to control keyboard navigation behaviors, manage object
+            selection and interaction, and apply custom themes.
+          </p>
         </ComponentPage>
       </div>
     );

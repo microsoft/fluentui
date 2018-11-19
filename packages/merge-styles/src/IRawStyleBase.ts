@@ -9,18 +9,128 @@ export type ICSSPercentageRule = string;
 // See CSS 3 <length> type https://drafts.csswg.org/css-values-3/#lengths
 export type ICSSPixelUnitRule = string | number;
 
+// See CSS <baseline-position> type https://www.w3.org/TR/css-align-3/#typedef-baseline-position
+export type ICSSBaselinePositionRule = 'baseline' | 'last baseline' | 'first baseline';
+
+// See CSS <overflow-position> type https://www.w3.org/TR/css-align-3/#typedef-overflow-position
+// See CSS <self-position> type https://www.w3.org/TR/css-align-3/#typedef-self-position
+export type ICSSOverflowAndSelfPositionRule =
+  // <self-position>
+  | 'center'
+  | 'start'
+  | 'end'
+  | 'self-start'
+  | 'self-end'
+  | 'flex-start'
+  | 'flex-end'
+  // <self-position> prefixed with <overflow-position> value 'safe'
+  | 'safe center'
+  | 'safe start'
+  | 'safe end'
+  | 'safe self-start'
+  | 'safe self-end'
+  | 'safe flex-start'
+  | 'safe flex-end'
+  // <self-position> prefixed with <overflow-position> value 'unsafe'
+  | 'unsafe center'
+  | 'unsafe start'
+  | 'unsafe end'
+  | 'unsafe self-start'
+  | 'unsafe self-end'
+  | 'unsafe flex-start'
+  | 'unsafe flex-end';
+
+// See CSS Box Layout Modes: the 'display' property https://www.w3.org/TR/css-display-3/#the-display-properties
+export type ICSSDisplayRule =
+  // <display-outside> values
+  | 'block'
+  | 'inline'
+  | 'run-in'
+  // <display-inside> values
+  | 'flow'
+  | 'flow-root'
+  | 'table'
+  | 'flex'
+  | 'grid'
+  | 'ruby'
+  // <display-outside> plus <display-inside> values
+  | 'block flow'
+  | 'inline table'
+  | 'flex run-in'
+  // <display-listitem> values
+  | 'list-item'
+  | 'list-item block'
+  | 'list-item inline'
+  | 'list-item flow'
+  | 'list-item flow-root'
+  | 'list-item block flow'
+  | 'list-item block flow-root'
+  | 'flow list-item block'
+  // <display-internal> values
+  | 'table-row-group'
+  | 'table-header-group'
+  | 'table-footer-group'
+  | 'table-row'
+  | 'table-cell'
+  | 'table-column-group'
+  | 'table-column'
+  | 'table-caption'
+  | 'ruby-base'
+  | 'ruby-text'
+  | 'ruby-base-container'
+  | 'ruby-text-container'
+  // <display-box> values
+  | 'contents'
+  | 'none'
+  // <display-legacy> values
+  | 'inline-block'
+  | 'inline-table'
+  | 'inline-flex'
+  | 'inline-grid';
+
 export type IFontWeight =
-  ICSSRule |
-  'normal' | 'bold' | 'bolder' | 'lighter' |
-  '100' | 100 |
-  '200' | 200 |
-  '300' | 300 |
-  '400' | 400 |
-  '500' | 500 |
-  '600' | 600 |
-  '700' | 700 |
-  '800' | 800 |
-  '900' | 900;
+  | ICSSRule
+  | 'normal'
+  | 'bold'
+  | 'bolder'
+  | 'lighter'
+  | '100'
+  | 100
+  | '200'
+  | 200
+  | '300'
+  | 300
+  | '400'
+  | 400
+  | '500'
+  | 500
+  | '600'
+  | 600
+  | '700'
+  | 700
+  | '800'
+  | 800
+  | '900'
+  | 900;
+
+export type IMixBlendModes =
+  | ICSSRule
+  | 'normal'
+  | 'multiply'
+  | 'screen'
+  | 'overlay'
+  | 'darken'
+  | 'lighten'
+  | 'color-dodge'
+  | 'color-burn'
+  | 'hard-light'
+  | 'soft-light'
+  | 'difference'
+  | 'exclusion'
+  | 'hue'
+  | 'saturation'
+  | 'color'
+  | 'luminosity';
 
 /**
  * The base font style.
@@ -54,18 +164,18 @@ export interface IRawFontStyle {
    * See CSS 3 font-size property https://www.w3.org/TR/css-fonts-3/#propdef-font-size
    */
   fontSize?:
-  | ICSSRule
-  | 'xx-small'
-  | 'x-small'
-  | 'small'
-  | 'medium'
-  | 'large'
-  | 'x-large'
-  | 'xx-large'
-  | 'larger'
-  | 'smaller'
-  | ICSSPixelUnitRule
-  | ICSSPercentageRule;
+    | ICSSRule
+    | 'xx-small'
+    | 'x-small'
+    | 'small'
+    | 'medium'
+    | 'large'
+    | 'x-large'
+    | 'xx-large'
+    | 'larger'
+    | 'smaller'
+    | ICSSPixelUnitRule
+    | ICSSPercentageRule;
 
   /**
    * The font-size-adjust property adjusts the font-size of the fallback fonts defined
@@ -83,16 +193,16 @@ export interface IRawFontStyle {
    * https://drafts.csswg.org/css-fonts-3/#propdef-font-stretch
    */
   fontStretch?:
-  | ICSSRule
-  | 'normal'
-  | 'ultra-condensed'
-  | 'extra-condensed'
-  | 'condensed'
-  | 'semi-condensed'
-  | 'semi-expanded'
-  | 'expanded'
-  | 'extra-expanded'
-  | 'ultra-expanded';
+    | ICSSRule
+    | 'normal'
+    | 'ultra-condensed'
+    | 'extra-condensed'
+    | 'condensed'
+    | 'semi-condensed'
+    | 'semi-expanded'
+    | 'expanded'
+    | 'extra-expanded'
+    | 'ultra-expanded';
 
   /**
    * The font-style property allows normal, italic, or oblique faces to be selected.
@@ -141,7 +251,7 @@ export interface IFontFace extends IRawFontStyle {
 
   /**
    * unicode-range allows you to set a specific range of characters to be downloaded
-   * from a font (embedded using @font-face) and made available for use on the current
+   * from a font (embedded using \@font-face) and made available for use on the current
    * page.
    */
   unicodeRange?: ICSSRule | string;
@@ -191,9 +301,13 @@ export interface IRawStyleBase extends IRawFontStyle {
   alignItems?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch';
 
   /**
-   * Allows the default alignment to be overridden for individual flex items.
+   * Aligns the box (as the alignment subject) within its containing block (as the alignment container)
+   * along the block/column/cross axis of the alignment container.
+   *
+   * See CSS align-self property
+   * https://www.w3.org/TR/css-align-3/#propdef-align-self
    */
-  alignSelf?: ICSSRule | 'auto' | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch';
+  alignSelf?: ICSSRule | 'auto' | 'normal' | 'stretch' | ICSSBaselinePositionRule | ICSSOverflowAndSelfPositionRule;
 
   /**
    * This property allows precise alignment of elements, such as graphics, that do not
@@ -212,6 +326,14 @@ export interface IRawStyleBase extends IRawFontStyle {
    * value of the alignment-baseline property.
    */
   alignmentBaseline?: ICSSRule | string;
+
+  /**
+   * The animation CSS property is a shorthand property for the various animation properties:
+   * `animation-name`, `animation-duration`, `animation-timing-function`, `animation-delay`,
+   * `animation-iteration-count`, `animation-direction`, `animation-fill-mode`, and
+   * `animation-play-state`.
+   */
+  animation?: ICSSRule | string;
 
   /**
    * Defines a length of time to elapse before an animation starts, allowing an animation to begin execution some time after it is applied.
@@ -262,6 +384,18 @@ export interface IRawStyleBase extends IRawFontStyle {
   appearance?: ICSSRule | string;
 
   /**
+   * Lets you apply graphical effects such as blurring or color shifting to the area
+   * behind an element. Because it applies to everything behind the element, to see
+   * the effect you must make the element or its background at least partially transparent.
+   */
+  backdropFilter?: ICSSRule | string;
+
+  /**
+   * Edge requires the -webkit prefix backdrop-filter.
+   */
+  WebkitBackdropFilter?: ICSSRule | string;
+
+  /**
    * Determines whether or not the “back” side of a transformed element is visible when
    * facing the viewer.
    */
@@ -294,6 +428,16 @@ export interface IRawStyleBase extends IRawFontStyle {
   backgroundBlendMode?: ICSSRule | string;
 
   /**
+   * The background-clip CSS property specifies if an element's background, whether a
+   * <color> or an <image>, extends underneath its border.
+   *
+   * \* Does not work in IE
+   *
+   * \* The `text` value is experimental and should not be used in production code.
+   */
+  backgroundClip?: ICSSRule | 'border-box' | 'padding-box' | 'content-box' | 'text';
+
+  /**
    * Sets the background color of an element.
    */
   backgroundColor?: ICSSRule | string;
@@ -324,6 +468,11 @@ export interface IRawStyleBase extends IRawFontStyle {
    * have been sized and positioned
    */
   backgroundRepeat?: ICSSRule | string;
+
+  /**
+   * Sets the size of background images
+   */
+  backgroundSize?: ICSSRule | string;
 
   /**
    * Shorthand property that defines the different properties of all four sides of an
@@ -701,8 +850,10 @@ export interface IRawStyleBase extends IRawFontStyle {
   /**
    * This property specifies the type of rendering box used for an element. It is a
    * shorthand property for many other display properties.
+   * W3: https://www.w3.org/TR/css-display-3/#the-display-properties
+   * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/display
    */
-  display?: ICSSRule | string;
+  display?: ICSSRule | ICSSDisplayRule;
 
   /**
    * The ‘fill’ property paints the interior of the given graphical element. The area to
@@ -805,6 +956,22 @@ export interface IRawStyleBase extends IRawFontStyle {
   gridArea?: ICSSRule | string;
 
   /**
+   * Specifies the size of an implicitly-created grid column track
+   */
+  gridAutoColumns?: ICSSRule | string;
+
+  /**
+   * Controls how the auto-placement algorithm works,
+   * specifying exactly how auto-placed items get flowed into the grid.
+   */
+  gridAutoFlow?: ICSSRule | string;
+
+  /**
+   * Specifies the size of an implicitly-created grid column track
+   */
+  gridAutoRows?: ICSSRule | string;
+
+  /**
    * Controls a grid item's placement in a grid area, particularly grid position and a
    * grid span. Shorthand for setting grid-column-start and grid-column-end in a single
    * declaration.
@@ -820,12 +987,23 @@ export interface IRawStyleBase extends IRawFontStyle {
   gridColumnEnd?: ICSSRule | string;
 
   /**
+   * Sets the size of the gap (gutter) between an element's columns
+   */
+  gridColumnGap?: ICSSRule | string;
+
+  /**
    * Determines a grid item's placement by specifying the starting grid lines of a grid
    * item's grid area . A grid item's placement in a grid area consists of a grid
    * position and a grid span. See also ( grid-row-start, grid-row-end, and
    * grid-column-end)
    */
   gridColumnStart?: ICSSRule | string;
+
+  /**
+   * Specifies the gaps (gutters) between grid rows and columns. It is a shorthand
+   * for grid-row-gap and grid-column-gap.
+   */
+  gridGap?: ICSSRule | string;
 
   /**
    * Gets or sets a value that indicates which row an element within a Grid should
@@ -844,6 +1022,18 @@ export interface IRawStyleBase extends IRawFontStyle {
   gridRowEnd?: ICSSRule | string;
 
   /**
+   * Sets the size of the gap (gutter) between an element's grid rows
+   */
+  gridRowGap?: ICSSRule | string;
+
+  /**
+   * Specifies a grid item’s start position within the grid row by contributing a line,
+   * a span, or nothing (automatic) to its grid placement, thereby specifying the
+   * inline-start edge of its grid area
+   */
+  gridRowStart?: ICSSRule | string;
+
+  /**
    * Specifies a row position based upon an integer location, string value, or desired
    * row size.
    * css/properties/grid-row is used as short-hand for grid-row-position and
@@ -856,6 +1046,11 @@ export interface IRawStyleBase extends IRawFontStyle {
    * but can be referenced from the grid-placement properties. The syntax of the
    * grid-template-areas property also provides a visualization of the structure of the
    * grid, making the overall layout of the grid container easier to understand.
+   */
+  gridTemplate?: ICSSRule | string;
+
+  /**
+   * Specifies named grid areas
    */
   gridTemplateAreas?: ICSSRule | string;
 
@@ -911,7 +1106,30 @@ export interface IRawStyleBase extends IRawFontStyle {
    * See CSS justify-content property
    * https://www.w3.org/TR/css-flexbox-1/#justify-content-property
    */
-  justifyContent?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly';
+  justifyContent?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch';
+
+  /**
+   * Justifies the box (as the alignment subject) within its containing block (as the alignment container)
+   * along the inline/row/main axis of the alignment container.
+   *
+   * See CSS jusitfy-self property
+   * https://www.w3.org/TR/css-align-3/#propdef-justify-self
+   */
+  justifySelf?:
+    | ICSSRule
+    | 'auto'
+    | 'normal'
+    | 'stretch'
+    | ICSSBaselinePositionRule
+    | ICSSOverflowAndSelfPositionRule
+    | 'left'
+    | 'right'
+    // prefixed with <overflow-position> value 'safe'
+    | 'safe left'
+    | 'safe right'
+    // prefixed with <overflow-position> value 'unsafe'
+    | 'unsafe left'
+    | 'unsafe right';
 
   /**
    * Sets the left position of an element relative to the nearest anscestor that is set
@@ -1087,6 +1305,12 @@ export interface IRawStyleBase extends IRawFontStyle {
   minWidth?: ICSSRule | ICSSPixelUnitRule;
 
   /**
+   * The mix-blend-mode CSS property describes how an element's content should blend
+   * with the content of the element's direct parent and the element's background.
+   */
+  mixBlendMode?: ICSSRule | IMixBlendModes;
+
+  /**
    * Specifies the transparency of an element.
    * See CSS 3 opacity property https://drafts.csswg.org/css-color-3/#opacity
    */
@@ -1176,12 +1400,22 @@ export interface IRawStyleBase extends IRawFontStyle {
   padding?: ICSSRule | ICSSPixelUnitRule;
 
   /**
-   * The padding-bottom CSS property of an element sets the padding space required on
-   * the bottom of an element. The padding area is the space between the content of the
-   * element and its border. Contrary to margin-bottom values, negative values of
-   * padding-bottom are invalid.
+   * The padding-block-end CSS property defines the logical block end padding
+   * of an element, which maps to a physical padding depending on the element's
+   * writing mode, directionality, and text orientation. It corresponds to the
+   * padding-top, padding-right, padding-bottom, or padding-left property
+   * depending on the values defined for writing-mode, direction, and text-orientation.
    */
-  paddingBottom?: ICSSRule | ICSSPixelUnitRule;
+  paddingBlockEnd?: ICSSRule | ICSSPixelUnitRule;
+
+  /**
+   * The padding-block-start CSS property defines the logical block start padding
+   * of an element, which maps to a physical padding depending on the element's
+   * writing mode, directionality, and text orientation. It corresponds to the
+   * padding-top, padding-right, padding-bottom, or padding-left property depending
+   * on the values defined for writing-mode, direction, and text-orientation.
+   */
+  paddingBlockStart?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * The padding-left CSS property of an element sets the padding space required on the
@@ -1190,6 +1424,32 @@ export interface IRawStyleBase extends IRawFontStyle {
    * padding-left are invalid.
    */
   paddingLeft?: ICSSRule | ICSSPixelUnitRule;
+
+  /**
+   * The padding-bottom CSS property of an element sets the padding space required on
+   * the bottom of an element. The padding area is the space between the content of the
+   * element and its border. Contrary to margin-bottom values, negative values of
+   * padding-bottom are invalid.
+   */
+  paddingBottom?: ICSSRule | ICSSPixelUnitRule;
+
+  /**
+   * The padding-inline-end CSS property defines the logical inline end padding of an element,
+   * which maps to a physical padding depending on the element's writing mode, directionality,
+   * and text orientation. It corresponds to the padding-top, padding-right, padding-bottom,
+   * or padding-left property depending on the values defined for writing-mode, direction,
+   * and text-orientation.
+   */
+  paddingInlineEnd?: ICSSRule | ICSSPixelUnitRule;
+
+  /**
+   * The padding-inline-start CSS property defines the logical inline start padding of
+   * an element, which maps to a physical padding depending on the element's writing mode,
+   * directionality, and text orientation. It corresponds to the padding-top, padding-right,
+   * padding-bottom, or padding-left property depending on the values defined for writing-mode,
+   * direction, and text-orientation.
+   */
+  paddingInlineStart?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * The padding-right CSS property of an element sets the padding space required on the
@@ -1304,6 +1564,12 @@ export interface IRawStyleBase extends IRawFontStyle {
   regionFragment?: ICSSRule | string;
 
   /**
+   * The resize CSS sets whether an element is resizable, and if so, in which direction(s).
+   */
+
+  resize?: ICSSRule | 'none' | 'both' | 'horizontal' | 'vertical' | 'block' | 'inline';
+
+  /**
    * The rest-after property determines how long a speech media agent should pause after
    * presenting an element's main content, before presenting that element's exit cue
    * sound. It may be replaced by the shorthand property rest, which sets rest time
@@ -1375,6 +1641,12 @@ export interface IRawStyleBase extends IRawFontStyle {
    * See SVG 1.1 https://www.w3.org/TR/SVG/painting.html#Stroke
    */
   stroke?: ICSSRule | string;
+
+  /**
+   * SVG: The stroke-linecap attribute defines the shape to be used at the end of open subpaths when they are stroked.
+   * See SVG 1.1 https://www.w3.org/TR/SVG/painting.html#LineCaps
+   */
+  strokeLinecap?: ICSSRule | 'butt' | 'round' | 'square';
 
   /**
    * SVG: Specifies the opacity of the outline on the current object.

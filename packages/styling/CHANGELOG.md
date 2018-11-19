@@ -1,6 +1,442 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Mon, 12 Mar 2018 06:29:20 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Nov 2018 13:36:22 GMT and should not be manually modified.
+
+## 6.35.0
+Thu, 15 Nov 2018 13:36:22 GMT
+
+### Minor changes
+
+- DevExp: get rid of const enum so the library is compatible with Typescript's isolatedModule compilation mode
+
+## 6.34.1
+Fri, 09 Nov 2018 13:32:57 GMT
+
+### Patches
+
+- Icon: warnings from duplicate registrations are now throttled into a single message.
+
+## 6.34.0
+Wed, 31 Oct 2018 12:32:41 GMT
+
+### Minor changes
+
+- API changes to getSchemedContext for use by theme provider.
+
+## 6.33.0
+Fri, 26 Oct 2018 12:32:35 GMT
+
+### Minor changes
+
+- Add api-extractor.json
+
+## 6.32.2
+Wed, 24 Oct 2018 12:28:58 GMT
+
+### Patches
+
+- getIconClassName: Strongly type the use of IStyle constant.
+
+## 6.32.1
+Tue, 23 Oct 2018 12:32:16 GMT
+
+### Patches
+
+- Fix an issue with the demo site not being able to load (in npm start or aka.ms/fabricdemo).
+
+## 6.32.0
+Mon, 22 Oct 2018 12:29:57 GMT
+
+### Minor changes
+
+- Fix unnecessary `IRGB` export. This interface is only used by internals. Use the `IRGB` interface declaration from office-ui-fabric-react package instead.
+
+## 6.31.0
+Thu, 18 Oct 2018 20:22:36 GMT
+
+### Minor changes
+
+- Enable api-extractor task for styling
+
+## 6.30.0
+Tue, 09 Oct 2018 12:26:48 GMT
+
+### Minor changes
+
+- focusBorder changed to neutralSecondary
+
+## 6.29.2
+Mon, 08 Oct 2018 12:24:15 GMT
+
+### Patches
+
+- Moving tslint/prettier dependencies 
+
+## 6.29.1
+Fri, 05 Oct 2018 23:29:26 GMT
+
+### Patches
+
+- Fixing getGlobalClassNames to return the correct class names even when the theme object is different.
+
+## 6.29.0
+Thu, 04 Oct 2018 12:26:48 GMT
+
+### Minor changes
+
+- add delayLength parameter to _createDefaultAnimation in PulsingBeaconAnimationStyles
+
+## 6.28.0
+Mon, 01 Oct 2018 12:27:24 GMT
+
+### Minor changes
+
+- Minor additions for semantic colors.
+- semantic slot value updates per design direction
+
+## 6.27.0
+Fri, 21 Sep 2018 14:25:46 GMT
+
+### Minor changes
+
+- Add schemes to ITheme with helper utility.
+
+### Patches
+
+- Adding a version stamp file
+
+## 6.26.0
+Wed, 19 Sep 2018 12:27:48 GMT
+
+### Minor changes
+
+- Theming: add ISpacing interface and spacing property
+
+## 6.25.0
+Tue, 18 Sep 2018 12:26:03 GMT
+
+### Minor changes
+
+- Theming: add ISpacing interface and spacing property
+
+## 6.24.0
+Thu, 13 Sep 2018 17:38:04 GMT
+
+### Minor changes
+
+- Adds new semantic slots per design direction
+
+## 6.23.0
+Fri, 07 Sep 2018 16:29:48 GMT
+
+### Minor changes
+
+- Updates button slots with correct pre-fluent palette values and scss fallbacks
+
+## 6.22.0
+Thu, 06 Sep 2018 10:28:35 GMT
+
+### Minor changes
+
+- add buttonBackgroundDisabled semantic slot
+
+## 6.21.0
+Wed, 05 Sep 2018 10:29:25 GMT
+
+### Minor changes
+
+- Change bodyDivider value from neutralTertiaryAlt back to neutralLight
+
+## 6.20.0
+Thu, 30 Aug 2018 10:32:49 GMT
+
+### Minor changes
+
+- Adds a new function returning a style for an :after pseudo element to replace an ellipsis text-overflow with a fading out effect of last characters. Considers the fact that all colors are affected by the theme applied to the app.
+
+## 6.19.0
+Mon, 27 Aug 2018 10:27:43 GMT
+
+### Minor changes
+
+- Added ScreenWidthMinUhfMobile constant
+
+## 6.18.0
+Fri, 24 Aug 2018 10:26:08 GMT
+
+### Minor changes
+
+- Adjustments to the internal typography interfaces.
+
+## 6.17.0
+Tue, 21 Aug 2018 10:28:16 GMT
+
+### Minor changes
+
+- adds variantBorderHovered and emptyStateBackground semantic slots to theme and variants logic
+
+## 6.16.0
+Mon, 13 Aug 2018 03:43:25 GMT
+
+### Minor changes
+
+- new button semantic slots
+- adds opacity function to variants
+
+## 6.15.0
+Fri, 10 Aug 2018 10:26:09 GMT
+
+### Minor changes
+
+- Updating `ITypography` interface with improvements. Note this is an experimental interface we're working on.
+
+## 6.14.0
+Fri, 03 Aug 2018 10:25:59 GMT
+
+### Minor changes
+
+- adds 4 new semantic slots, based on designs from SP-Client events webpart, and with approval from Philip Kuo; actionLink, actionLinkHovered, cardBackground, variantBorder
+
+## 6.13.0
+Thu, 02 Aug 2018 10:23:19 GMT
+
+### Minor changes
+
+- getGlobalClassNames - when disabled, now returns a unique classname (modularized) instead of empty string.
+- Styling: make typography properties optional in Partial<ITheme>
+
+## 6.12.0
+Tue, 24 Jul 2018 10:24:36 GMT
+
+### Minor changes
+
+- Add unregisterIcons to styling export
+
+## 6.11.0
+Mon, 23 Jul 2018 10:28:08 GMT
+
+### Minor changes
+
+- add ITypography to ITheme
+- Theming: add new semantic slot
+
+## 6.10.0
+Thu, 19 Jul 2018 10:23:34 GMT
+
+### Minor changes
+
+- Add unregister icons API
+
+## 6.9.0
+Wed, 18 Jul 2018 10:25:50 GMT
+
+### Minor changes
+
+- Move certain types into `@uifabric/merge-styles` and export more types as well from that package.
+
+## 6.8.0
+Fri, 13 Jul 2018 21:32:37 GMT
+
+### Minor changes
+
+- Reverting the TypeScript bump, to un
+
+## 6.6.0
+Tue, 10 Jul 2018 21:54:07 GMT
+
+### Minor changes
+
+- Add option to getFocusStyle() to not use :focus in the style selector.
+
+## 6.5.0
+Mon, 02 Jul 2018 20:41:48 GMT
+
+### Minor changes
+
+- New selectors for high contrast white and black modes.
+
+## 6.4.0
+Fri, 29 Jun 2018 10:24:05 GMT
+
+### Minor changes
+
+- Add neutralSecondaryAlt color.
+
+## 6.3.0
+Wed, 20 Jun 2018 10:25:55 GMT
+
+### Minor changes
+
+- Add borderColor and outlineColor parameters to getFocusStyle
+
+### Patches
+
+- Prettier fixes
+
+## 6.2.1
+Tue, 19 Jun 2018 10:26:26 GMT
+
+### Patches
+
+- Handling `stylesheet.onReset` undefined scenarios better.
+
+## 6.2.0
+Thu, 07 Jun 2018 16:35:34 GMT
+
+### Minor changes
+
+- Minor changes to improve server side rendering.
+
+## 6.0.3
+Tue, 05 Jun 2018 00:44:30 GMT
+
+### Patches
+
+- Added Prettier
+
+## 6.0.2
+Mon, 04 Jun 2018 10:16:13 GMT
+
+### Patches
+
+- Updating react typings.
+
+## 6.0.1
+Wed, 30 May 2018 22:05:04 GMT
+
+*Version update only*
+
+## 6.0.0
+Wed, 30 May 2018 20:28:33 GMT
+
+### Breaking changes
+
+- Bump to 6.0 alongside office-ui-fabric-react 6.0 release.
+
+## 5.31.0
+Thu, 24 May 2018 17:06:02 GMT
+
+### Minor changes
+
+- add new semantic slot
+
+## 5.30.3
+Wed, 23 May 2018 10:28:50 GMT
+
+### Patches
+
+- cleanup semantic slots
+
+## 5.30.2
+Thu, 17 May 2018 10:28:07 GMT
+
+### Patches
+
+- Fix import to be compatible with AMD bundlers
+
+## 5.30.1
+Fri, 04 May 2018 15:58:39 GMT
+
+### Patches
+
+- Updating React build version.
+
+## 5.30.0
+Wed, 02 May 2018 23:55:40 GMT
+
+### Minor changes
+
+- Add accompanying styling work for Keytips
+
+### Patches
+
+- fix bad import in styling package
+
+## 5.29.0
+Tue, 01 May 2018 10:23:32 GMT
+
+### Minor changes
+
+- Adding helper to derive a media query.
+
+## 5.28.0
+Mon, 30 Apr 2018 10:16:44 GMT
+
+### Minor changes
+
+- Adds flags to theme to support controlling global class names
+
+## 5.27.0
+Wed, 25 Apr 2018 05:32:09 GMT
+
+### Minor changes
+
+- Add theme slots for DetailsList header colors
+
+## 5.26.0
+Mon, 23 Apr 2018 10:24:54 GMT
+
+### Minor changes
+
+- The getFocusStyle helper has been adjusted to use the `ms-Fabric--isFocusEnabled` class name, rather than `ms-Fabric.is-focusEnabled`.
+
+## 5.25.0
+Thu, 19 Apr 2018 00:17:37 GMT
+
+### Minor changes
+
+- PulsingBeaconAnimationStyles: Distinguish between single and double pulse.
+
+## 5.24.0
+Wed, 18 Apr 2018 10:15:04 GMT
+
+### Minor changes
+
+- Add opt-in @deprecated comments
+
+### Patches
+
+- Fix deprecated semantic slots returning empty strings
+
+## 5.23.1
+Mon, 16 Apr 2018 10:23:26 GMT
+
+### Patches
+
+- Removing module entry temporarily. (Will be added back in 6.0.)
+- Updating build to React 16.3.1.
+
+## 5.23.0
+Tue, 10 Apr 2018 17:37:28 GMT
+
+### Minor changes
+
+- Add noWrap style set.
+
+## 5.22.0
+Thu, 05 Apr 2018 10:15:39 GMT
+
+### Minor changes
+
+- New pulsing beacon animation moved in from Coachmark for reuse.
+
+## 5.21.0
+Sun, 25 Mar 2018 03:08:03 GMT
+
+### Minor changes
+
+- Updating to webpack 4 for producting bundles. Adding appropriate `module` and `sideEffects` fl
+
+## 5.20.0
+Mon, 19 Mar 2018 10:27:55 GMT
+
+### Minor changes
+
+- ThemePrimary: Updating this color along with an Office branding update.
+
+### Patches
+
+- High contrast mode for focus styling.
 
 ## 5.19.1
 Mon, 12 Mar 2018 06:29:20 GMT

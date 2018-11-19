@@ -17,26 +17,33 @@
 
 #### Core build stuff
 scripts/ @dzearing
+package.json @cliffkoh
+*/package.json @cliffkoh
 
 #### Apps
 # component-demo/
-# fabric-website/
+fabric-website/ @jordandrako
 # ssr-tests/
 # test-bundle-button/ @dzearing
 # todo-app/
 
 #### Packages
+packages/charting/ @Raghurk
+packages/dashboard/ @Raghurk
+packages/foundation/ @jagore
 # packages/example-app-base/
-packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp
+packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
 # packages/icons/
 # packages/jest-serializer-merge-styles/
 # packages/merge-styles/
-# packages/office-ui-fabric-react-tslint/
+# packages/prettier-rules/
+# packages/tslint-rules/
 packages/styling/ @dzearing
 packages/styling/src/interfaces/ @phkuo
 packages/styling/src/styles/ @phkuo
 # packages/utilities/
 packages/utilities/positioning/ @joschect
+packages/date-time @OfficeDev/uifabric-calendar @jh2he @evlevy
 
 ### Fabric
 # common/
@@ -45,29 +52,30 @@ common/_themeOverrides.scss @phkuo
 common/_common.scss @phkuo
 
 ### Utilities
-dateMath/     @johannao76 lorejoh12@gmail.com jolore@microsoft.com
-dateValues/   @johannao76 lorejoh12@gmail.com jolore@microsoft.com
+dateMath/     @OfficeDev/uifabric-calendar
+dateValues/   @OfficeDev/uifabric-calendar
 
 ## Components
 # ActivityItem/
 # Breadcrumb/
 # Button/
-Calendar/   @johannao76 lorejoh12@gmail.com jolore@microsoft.com
+Calendar/   @OfficeDev/uifabric-calendar
 Callout/  @joschect
 # Check/
 # Checkbox/
-# ChoiceGroup/
+ChoiceGroup/   @srideshpande
 # ColorPicker/
 # ComboBox/
-CommandBar/   @micahgodbolt
+CommandBar/   @micahgodbolt @JasonGore
 ContextualMenu/  @joschect
-DatePicker/   @johannao76 lorejoh12@gmail.com jolore@microsoft.com
+DatePicker/   @OfficeDev/uifabric-calendar
 # DetailsList/
 # Dialog/
 DocumentCard/ @yiminwu @mikewheaton
 # Dropdown/
 # Fabric/
 # FacePile/
+FolderCover/ @ThomasMichon
 # FocusTrapZone/
 # FocusZone/
 GroupedList/  @aditima
@@ -77,7 +85,7 @@ HoverCard/   @atneik @Jahnp
 # Label/
 Layer/  @ThomasMichon
 # Link/
-List/  @cschleiden
+# List/
 # MarqueeSelection/
 # MessageBar/
 # Modal/
@@ -86,15 +94,16 @@ OverflowSet/  @micahgodbolt
 # Overlay/
 # Panel/
 # Persona/
-Persona/PersonaCoin.tsx @mtennoe @jakob101
+PersonaCoin/ @mtennoe @jakob101
 Persona/PersonaConsts.tsx @mtennoe @jakob101
 pickers/  @joschect
 # Pivot/
 # Popup/
 # ProgressIndicator/
-Rating/  @cschleiden
+# Rating/
 ResizeGroup/  @micahgodbolt
 # SearchBox/
+Signals/ @ThomasMichon
 # Slider/
 # SpinButton/
 # Spinner/
@@ -102,7 +111,63 @@ ResizeGroup/  @micahgodbolt
 TeachingBubble/   @micahgodbolt
 # TextField/
 # Theme/
-Toggle/  @phkuo
+Tile/ @ThomasMichon
+TileList/ @ThomasMichon
+office-ui-fabric-react/src/components/Toggle/  @phkuo
+experiments/src/components/Toggle/  @khmakoto @jasongore
 Tooltip/  @micahgodbolt
 
-
+## Docs
+# ActivityItem/docs/
+# Breadcrumb/docs/
+# Button/docs/
+Calendar/docs/   @OfficeDev/uifabric-calendar
+Callout/docs/  @joschect
+# Check/docs/
+# Checkbox/docs/
+ChoiceGroup/docs/   @srideshpande
+# ColorPicker/docs/
+# ComboBox/docs/
+CommandBar/docs/   @micahgodbolt
+ContextualMenu/docs/  @joschect
+DatePicker/docs/   @OfficeDev/uifabric-calendar
+# DetailsList/docs/
+# Dialog/docs/
+DocumentCard/docs/ @yiminwu @mikewheaton
+# Dropdown/docs/
+# Fabric/docs/
+# FacePile/docs/
+# FocusTrapZone/docs/
+# FocusZone/docs/
+GroupedList/docs/  @aditima
+HoverCard/docs/   @atneik @Jahnp
+# Icon/docs/
+# Image/docs/
+# Label/docs/
+Layer/docs/  @ThomasMichon
+# Link/docs/
+# List/docs/
+# MarqueeSelection/docs/
+# MessageBar/docs/
+# Modal/docs/
+# Nav/docs/
+OverflowSet/docs/  @micahgodbolt
+# Overlay/docs/
+# Panel/docs/
+# Persona/docs/
+pickers/docs/  @joschect
+# Pivot/docs/
+# Popup/docs/
+# ProgressIndicator/docs/
+# Rating/docs/
+ResizeGroup/docs/  @micahgodbolt
+# SearchBox/docs/
+# Slider/docs/
+# SpinButton/docs/
+# Spinner/docs/
+# SwatchColorPicker/docs/
+TeachingBubble/docs/   @micahgodbolt
+# TextField/docs/
+# Theme/docs/
+office-ui-fabric-react/src/components/Toggle/docs/  @phkuo
+Tooltip/docs/  @micahgodbolt

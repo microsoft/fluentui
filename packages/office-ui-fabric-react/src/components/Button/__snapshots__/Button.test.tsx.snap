@@ -2,10 +2,6 @@
 
 exports[`Button renders ActionButton correctly 1`] = `
 <button
-  aria-describedby={null}
-  aria-label={undefined}
-  aria-labelledby={null}
-  aria-pressed={undefined}
   className=
       ms-Button
       ms-Button--action
@@ -15,7 +11,7 @@ exports[`Button renders ActionButton correctly 1`] = `
         -webkit-font-smoothing: antialiased;
         background-color: transparent;
         border-radius: 0px;
-        border: 1px solid transparent;
+        border: none;
         box-sizing: border-box;
         color: #333333;
         cursor: pointer;
@@ -38,7 +34,7 @@ exports[`Button renders ActionButton correctly 1`] = `
       &::-moz-focus-inner {
         border: 0;
       }
-      .ms-Fabric.is-focusVisible &:focus:after {
+      .ms-Fabric--isFocusVisible &:focus:after {
         border: 1px solid #ffffff;
         bottom: 0px;
         content: "";
@@ -49,11 +45,28 @@ exports[`Button renders ActionButton correctly 1`] = `
         top: 0px;
         z-index: 1;
       }
+      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+        border: none;
+        bottom: -2px;
+        left: -2px;
+        outline-color: ButtonText;
+        right: -2px;
+        top: -2px;
+      }
+      &:active > * {
+        left: 0px;
+        position: relative;
+        top: 0px;
+      }
       &:hover {
-        color: #0078d7;
+        color: #0078d4;
+      }
+      @media screen and (-ms-high-contrast: active){&:hover {
+        border-color: Highlight;
+        color: Highlight;
       }
       &:hover .ms-Button-icon {
-        color: #0078d7;
+        color: #0078d4;
       }
       &:active {
         color: #000000;
@@ -62,7 +75,12 @@ exports[`Button renders ActionButton correctly 1`] = `
         color: #004578;
       }
   data-is-focusable={true}
-  disabled={undefined}
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  onKeyPress={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseUp={[Function]}
   type="button"
 >
   <div
@@ -104,13 +122,9 @@ exports[`Button renders ActionButton correctly 1`] = `
 
 exports[`Button renders CommandBarButton correctly 1`] = `
 <button
-  aria-describedby={null}
   aria-expanded={false}
   aria-haspopup={true}
-  aria-label={undefined}
-  aria-labelledby={null}
   aria-owns={null}
-  aria-pressed={undefined}
   className=
       ms-Button
       ms-Button--commandBar
@@ -142,7 +156,7 @@ exports[`Button renders CommandBarButton correctly 1`] = `
       &::-moz-focus-inner {
         border: 0;
       }
-      .ms-Fabric.is-focusVisible &:focus:after {
+      .ms-Fabric--isFocusVisible &:focus:after {
         border: 1px solid #ffffff;
         bottom: 0px;
         content: "";
@@ -153,18 +167,40 @@ exports[`Button renders CommandBarButton correctly 1`] = `
         top: 0px;
         z-index: 1;
       }
+      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+        border: none;
+        bottom: 4px;
+        left: 4px;
+        outline-color: ButtonText;
+        right: 4px;
+        top: 4px;
+      }
+      &:active > * {
+        left: 0px;
+        position: relative;
+        top: 0px;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        border: none;
+      }
       &:hover {
         background-color: #eaeaea;
         color: #212121;
+      }
+      @media screen and (-ms-high-contrast: active){&:hover {
+        color: Highlight;
       }
       &:active {
         background-color: #dadada;
         color: #000000;
       }
   data-is-focusable={true}
-  disabled={undefined}
   onClick={[Function]}
   onKeyDown={[Function]}
+  onKeyPress={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseUp={[Function]}
   type="button"
 >
   <div
@@ -183,24 +219,30 @@ exports[`Button renders CommandBarButton correctly 1`] = `
       className=
           ms-Button-icon
           {
-            display: inline-block;
-          }
-          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             color: #106ebe;
+            display: inline-block;
             flex-shrink: 0;
+            font-family: "FabricMDL2Icons";
             font-size: 16px;
+            font-style: normal;
+            font-weight: normal;
             height: 16px;
             line-height: 16px;
             margin-bottom: 0;
             margin-left: 4px;
             margin-right: 4px;
             margin-top: 0;
+            speak: none;
             text-align: center;
             vertical-align: middle;
           }
       data-icon-name="Add"
       role="presentation"
-    />
+    >
+      
+    </i>
     <div
       className=
           ms-Button-textContainer
@@ -219,7 +261,7 @@ exports[`Button renders CommandBarButton correctly 1`] = `
               margin-right: 4px;
               margin-top: 0;
             }
-        id="id__6"
+        id="id__10"
       >
         Create account
       </div>
@@ -229,34 +271,38 @@ exports[`Button renders CommandBarButton correctly 1`] = `
       className=
           ms-Button-menuIcon
           {
-            display: inline-block;
-          }
-          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             color: #666666;
+            display: inline-block;
             flex-shrink: 0;
+            font-family: "FabricMDL2Icons";
             font-size: 12px;
+            font-style: normal;
+            font-weight: normal;
             height: 16px;
             line-height: 16px;
             margin-bottom: 0;
             margin-left: 4px;
             margin-right: 4px;
             margin-top: 0;
+            speak: none;
             text-align: center;
             vertical-align: middle;
           }
       data-icon-name="ChevronDown"
       role="presentation"
-    />
+    >
+      
+    </i>
   </div>
 </button>
 `;
 
 exports[`Button renders CompoundButton correctly 1`] = `
 <button
-  aria-describedby="id__10"
-  aria-label={undefined}
-  aria-labelledby={null}
-  aria-pressed={undefined}
+  aria-describedby="id__14"
+  aria-labelledby="id__13"
   className=
       ms-Button
       ms-Button--compound
@@ -290,7 +336,7 @@ exports[`Button renders CompoundButton correctly 1`] = `
       &::-moz-focus-inner {
         border: 0;
       }
-      .ms-Fabric.is-focusVisible &:focus:after {
+      .ms-Fabric--isFocusVisible &:focus:after {
         border: 1px solid #ffffff;
         bottom: 0px;
         content: "";
@@ -301,9 +347,26 @@ exports[`Button renders CompoundButton correctly 1`] = `
         top: 0px;
         z-index: 1;
       }
+      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+        border: none;
+        bottom: -2px;
+        left: -2px;
+        outline-color: ButtonText;
+        right: -2px;
+        top: -2px;
+      }
+      &:active > * {
+        left: 0px;
+        position: relative;
+        top: 0px;
+      }
       &:hover {
         background-color: #eaeaea;
-        color: #000000;
+        color: #212121;
+      }
+      @media screen and (-ms-high-contrast: active){&:hover {
+        border-color: Highlight;
+        color: Highlight;
       }
       &:hover .ms-Button-description {
         color: #212121;
@@ -316,7 +379,12 @@ exports[`Button renders CompoundButton correctly 1`] = `
         color: inherit;
       }
   data-is-focusable={true}
-  disabled={undefined}
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  onKeyPress={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseUp={[Function]}
   type="button"
 >
   <div
@@ -355,7 +423,7 @@ exports[`Button renders CompoundButton correctly 1`] = `
               margin-right: 0;
               margin-top: 0;
             }
-        id="id__9"
+        id="id__13"
       >
         Create account
       </div>
@@ -371,7 +439,7 @@ exports[`Button renders CompoundButton correctly 1`] = `
               font-weight: 400;
               line-height: 100%;
             }
-        id="id__10"
+        id="id__14"
       >
         You can create a new account here.
       </div>
@@ -382,10 +450,6 @@ exports[`Button renders CompoundButton correctly 1`] = `
 
 exports[`Button renders DefaultButton correctly 1`] = `
 <button
-  aria-describedby={null}
-  aria-label={undefined}
-  aria-labelledby={null}
-  aria-pressed={undefined}
   className=
       ms-Button
       ms-Button--default
@@ -418,7 +482,7 @@ exports[`Button renders DefaultButton correctly 1`] = `
       &::-moz-focus-inner {
         border: 0;
       }
-      .ms-Fabric.is-focusVisible &:focus:after {
+      .ms-Fabric--isFocusVisible &:focus:after {
         border: 1px solid #ffffff;
         bottom: 0px;
         content: "";
@@ -429,16 +493,38 @@ exports[`Button renders DefaultButton correctly 1`] = `
         top: 0px;
         z-index: 1;
       }
+      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+        border: none;
+        bottom: -2px;
+        left: -2px;
+        outline-color: ButtonText;
+        right: -2px;
+        top: -2px;
+      }
+      &:active > * {
+        left: 0px;
+        position: relative;
+        top: 0px;
+      }
       &:hover {
         background-color: #eaeaea;
-        color: #000000;
+        color: #212121;
+      }
+      @media screen and (-ms-high-contrast: active){&:hover {
+        border-color: Highlight;
+        color: Highlight;
       }
       &:active {
         background-color: #c8c8c8;
         color: #212121;
       }
   data-is-focusable={true}
-  disabled={undefined}
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  onKeyPress={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseUp={[Function]}
   type="button"
 >
   <div
@@ -481,10 +567,7 @@ exports[`Button renders DefaultButton correctly 1`] = `
 
 exports[`Button renders IconButton correctly 1`] = `
 <button
-  aria-describedby={null}
   aria-label="Emoji"
-  aria-labelledby={null}
-  aria-pressed={undefined}
   className=
       ms-Button
       ms-Button--icon
@@ -493,8 +576,9 @@ exports[`Button renders IconButton correctly 1`] = `
         -webkit-font-smoothing: antialiased;
         background-color: transparent;
         border-radius: 0px;
-        border: 1px solid transparent;
+        border: none;
         box-sizing: border-box;
+        color: #333333;
         cursor: pointer;
         display: inline-block;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -516,7 +600,7 @@ exports[`Button renders IconButton correctly 1`] = `
       &::-moz-focus-inner {
         border: 0;
       }
-      .ms-Fabric.is-focusVisible &:focus:after {
+      .ms-Fabric--isFocusVisible &:focus:after {
         border: 1px solid #ffffff;
         bottom: 0px;
         content: "";
@@ -527,14 +611,36 @@ exports[`Button renders IconButton correctly 1`] = `
         top: 0px;
         z-index: 1;
       }
+      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+        border: none;
+        bottom: -2px;
+        left: -2px;
+        outline-color: ButtonText;
+        right: -2px;
+        top: -2px;
+      }
+      &:active > * {
+        left: 0px;
+        position: relative;
+        top: 0px;
+      }
       &:hover {
-        color: #004578;
+        color: #212121;
+      }
+      @media screen and (-ms-high-contrast: active){&:hover {
+        border-color: Highlight;
+        color: Highlight;
       }
       &:active {
-        color: #0078d7;
+        color: #0078d4;
       }
   data-is-focusable={true}
-  disabled={undefined}
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  onKeyPress={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseUp={[Function]}
   title="Emoji"
   type="button"
 >
@@ -554,23 +660,149 @@ exports[`Button renders IconButton correctly 1`] = `
       className=
           ms-Button-icon
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             display: inline-block;
-          }
-          {
             flex-shrink: 0;
+            font-family: "FabricMDL2Icons-0";
             font-size: 16px;
+            font-style: normal;
+            font-weight: normal;
             height: 16px;
             line-height: 16px;
             margin-bottom: 0;
             margin-left: 4px;
             margin-right: 4px;
             margin-top: 0;
+            speak: none;
             text-align: center;
             vertical-align: middle;
           }
       data-icon-name="Emoji2"
       role="presentation"
-    />
+    >
+      
+    </i>
+  </div>
+</button>
+`;
+
+exports[`Button renders a DefaultButton with a keytip correctly 1`] = `
+<button
+  aria-describedby=" ktp-layer-id ktp-a"
+  className=
+      ms-Button
+      ms-Button--default
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background-color: #f4f4f4;
+        border-radius: 0px;
+        border: 1px solid transparent;
+        box-sizing: border-box;
+        color: #333333;
+        cursor: pointer;
+        display: inline-block;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        height: 32px;
+        min-width: 80px;
+        outline: transparent;
+        padding-bottom: 0;
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-top: 0;
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        user-select: none;
+        vertical-align: top;
+      }
+      &::-moz-focus-inner {
+        border: 0;
+      }
+      .ms-Fabric--isFocusVisible &:focus:after {
+        border: 1px solid #ffffff;
+        bottom: 0px;
+        content: "";
+        left: 0px;
+        outline: 1px solid #666666;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        z-index: 1;
+      }
+      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+        border: none;
+        bottom: -2px;
+        left: -2px;
+        outline-color: ButtonText;
+        right: -2px;
+        top: -2px;
+      }
+      &:active > * {
+        left: 0px;
+        position: relative;
+        top: 0px;
+      }
+      &:hover {
+        background-color: #eaeaea;
+        color: #212121;
+      }
+      @media screen and (-ms-high-contrast: active){&:hover {
+        border-color: Highlight;
+        color: Highlight;
+      }
+      &:active {
+        background-color: #c8c8c8;
+        color: #212121;
+      }
+  data-is-focusable={true}
+  data-ktp-execute-target="ktp-a"
+  data-ktp-target="ktp-a"
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  onKeyPress={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseUp={[Function]}
+  type="button"
+>
+  <div
+    className=
+        ms-Button-flexContainer
+        {
+          align-items: center;
+          display: flex;
+          flex-wrap: nowrap;
+          height: 100%;
+          justify-content: center;
+        }
+  >
+    <div
+      className=
+          ms-Button-textContainer
+          {
+            flex-grow: 1;
+          }
+    >
+      <div
+        className=
+            ms-Button-label
+            {
+              font-weight: 600;
+              line-height: 100%;
+              margin-bottom: 0;
+              margin-left: 4px;
+              margin-right: 4px;
+              margin-top: 0;
+            }
+        id="id__6"
+      >
+        Button
+      </div>
+    </div>
   </div>
 </button>
 `;

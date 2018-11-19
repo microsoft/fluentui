@@ -11,6 +11,8 @@ interface IVirtualElement extends HTMLElement {
   };
 }
 
+export const DATA_PORTAL_ATTRIBUTE = 'data-portal-element';
+
 /**
  * Sets the virtual parent of an element.
  * Pass `undefined` as the `parent` to clear the virtual parent.
@@ -74,18 +76,15 @@ export function getVirtualParent(child: HTMLElement): HTMLElement | undefined {
  * @public
  */
 export function getParent(child: HTMLElement, allowVirtualParents: boolean = true): HTMLElement | null {
-  return child && (
-    allowVirtualParents && getVirtualParent(child) ||
-    child.parentNode && child.parentNode as HTMLElement
-  );
+  return child && ((allowVirtualParents && getVirtualParent(child)) || (child.parentNode && (child.parentNode as HTMLElement)));
 }
 
 /**
  * Gets the elements which are child elements of the given element.
  * If `allowVirtualChildren` is `true`, this method enumerates virtual child elements
  * after the original children.
- * @param parent
- * @param allowVirtualChildren
+ * @param parent - The element to get the children of.
+ * @param allowVirtualChildren - true if the method should enumerate virtual child elements.
  */
 export function getChildren(parent: HTMLElement, allowVirtualChildren: boolean = true): HTMLElement[] {
   const children: HTMLElement[] = [];
@@ -151,17 +150,13 @@ export function setSSR(isEnabled: boolean): void {
  *
  * @public
  */
-export function getWindow(rootElement?: Element): Window | undefined {
+export function getWindow(rootElement?: Element | null): Window | undefined {
   if (_isSSR || typeof window === 'undefined') {
     return undefined;
   } else {
-    return (
-      rootElement &&
-        rootElement.ownerDocument &&
-        rootElement.ownerDocument.defaultView ?
-        rootElement.ownerDocument.defaultView :
-        window
-    );
+    return rootElement && rootElement.ownerDocument && rootElement.ownerDocument.defaultView
+      ? rootElement.ownerDocument.defaultView
+      : window;
   }
 }
 
@@ -170,7 +165,7 @@ export function getWindow(rootElement?: Element): Window | undefined {
  *
  * @public
  */
-export function getDocument(rootElement?: HTMLElement): Document | undefined {
+export function getDocument(rootElement?: HTMLElement | null): Document | undefined {
   if (_isSSR || typeof document === 'undefined') {
     return undefined;
   } else {
@@ -205,9 +200,32 @@ export function getRect(element: HTMLElement | Window | null): IRectangle | unde
 }
 
 /**
+ * Identify element as a portal by setting an attribute.
+ * @param element - Element to mark as a portal.
+ */
+export function setPortalAttribute(element: HTMLElement): void {
+  element.setAttribute(DATA_PORTAL_ATTRIBUTE, 'true');
+}
+
+/**
+ * Determine whether a target is within a portal from perspective of root or optional parent.
+ * This function only works against portal components that use the setPortalAttribute function.
+ * If both parent and child are within the same portal this function will return false.
+ * @param target - Element to query portal containment status of.
+ * @param parent - Optional parent perspective. Search for containing portal stops at parent (or root if parent is undefined or invalid.)
+ */
+export function portalContainsElement(target: HTMLElement, parent?: HTMLElement): boolean {
+  const elementMatch = findElementRecursive(
+    target,
+    (testElement: HTMLElement) => parent === testElement || testElement.hasAttribute(DATA_PORTAL_ATTRIBUTE)
+  );
+  return elementMatch !== null && elementMatch.hasAttribute(DATA_PORTAL_ATTRIBUTE);
+}
+
+/**
  * Finds the first parent element where the matchFunction returns true
- * @param element element to start searching at
- * @param matchFunction the function that determines if the element is a match
+ * @param element - element to start searching at
+ * @param matchFunction - the function that determines if the element is a match
  * @returns the matched element or null no match was found
  */
 export function findElementRecursive(element: HTMLElement | null, matchFunction: (element: HTMLElement) => boolean): HTMLElement | null {
@@ -219,7 +237,7 @@ export function findElementRecursive(element: HTMLElement | null, matchFunction:
 }
 
 /**
- * Determines if an element, or any of its ancestors, contian the given attribute
+ * Determines if an element, or any of its ancestors, contain the given attribute
  * @param element - element to start searching at
  * @param attribute - the attribute to search for
  * @returns the value of the first instance found

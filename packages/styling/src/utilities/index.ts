@@ -1,6 +1,4 @@
-export {
-  buildClassMap
-} from './buildClassMap';
+export { buildClassMap } from './buildClassMap';
 
 export {
   IIconRecord,
@@ -9,9 +7,8 @@ export {
   getIcon,
   registerIcons,
   registerIconAlias,
+  unregisterIcons,
   setIconOptions
 } from './icons';
 
-export {
-  getIconClassName
-} from './getIconClassName';
+export { getIconClassName } from './getIconClassName';

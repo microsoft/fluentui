@@ -1,12 +1,6 @@
 import { IButtonStyles } from './Button.types';
 import { memoizeFunction } from '../../Utilities';
-import {
-  ITheme,
-  IRawStyle,
-  getFocusStyle,
-  FontSizes,
-  hiddenContentStyle
-} from '../../Styling';
+import { HighContrastSelector, ITheme, IRawStyle, getFocusStyle, FontSizes, hiddenContentStyle } from '../../Styling';
 
 const noOutline: IRawStyle = {
   outline: 0
@@ -27,78 +21,102 @@ const iconStyle = {
  * helper, it should have values for all class names in the interface. This let `mergeRules` optimize
  * mixing class names together.
  */
-export const getStyles = memoizeFunction((
-  theme: ITheme
-): IButtonStyles => {
-  const { semanticColors } = theme;
+export const getStyles = memoizeFunction(
+  (theme: ITheme): IButtonStyles => {
+    const { semanticColors } = theme;
 
-  const border = semanticColors.buttonBorder;
-  const disabledBackground = semanticColors.disabledBackground;
-  const disabledText = semanticColors.disabledText;
+    const border = semanticColors.buttonBorder;
+    const disabledBackground = semanticColors.disabledBackground;
+    const disabledText = semanticColors.disabledText;
+    const buttonHighContrastFocus = {
+      left: -2,
+      top: -2,
+      bottom: -2,
+      right: -2,
+      border: 'none',
+      outlineColor: 'ButtonText'
+    };
 
-  return {
-    root: [
-      getFocusStyle(theme, -1),
-      theme.fonts.medium,
-      {
-        boxSizing: 'border-box',
-        border: '1px solid ' + border,
-        userSelect: 'none',
-        display: 'inline-block',
-        textDecoration: 'none',
-        textAlign: 'center',
-        cursor: 'pointer',
-        verticalAlign: 'top',
-        padding: '0 16px',
-        borderRadius: 0
-      }
-    ],
+    return {
+      root: [
+        getFocusStyle(theme, -1, 'relative', buttonHighContrastFocus),
+        theme.fonts.medium,
+        {
+          boxSizing: 'border-box',
+          border: '1px solid ' + border,
+          userSelect: 'none',
+          display: 'inline-block',
+          textDecoration: 'none',
+          textAlign: 'center',
+          cursor: 'pointer',
+          verticalAlign: 'top',
+          padding: '0 16px',
+          borderRadius: 0,
 
-    rootDisabled: {
-      backgroundColor: disabledBackground,
-      color: disabledText,
-      cursor: 'default',
-      pointerEvents: 'none',
-      selectors: {
-        ':hover': noOutline,
-        ':focus': noOutline
-      }
-    },
+          selectors: {
+            // IE11 workaround for preventing shift of child elements of a button when active.
+            ':active > *': {
+              position: 'relative',
+              left: 0,
+              top: 0
+            }
+          }
+        }
+      ],
 
-    iconDisabled: {
-      color: disabledText
-    },
+      rootDisabled: [
+        getFocusStyle(theme, -1, 'relative', buttonHighContrastFocus),
+        {
+          backgroundColor: disabledBackground,
+          color: disabledText,
+          cursor: 'default',
+          pointerEvents: 'none',
+          selectors: {
+            ':hover': noOutline,
+            ':focus': noOutline,
+            [HighContrastSelector]: {
+              color: 'grayText',
+              bordercolor: 'grayText'
+            }
+          }
+        }
+      ],
 
-    menuIconDisabled: {
-      color: disabledText
-    },
+      iconDisabled: {
+        color: disabledText
+      },
 
-    flexContainer: {
-      display: 'flex',
-      height: '100%',
-      flexWrap: 'nowrap',
-      justifyContent: 'center',
-      alignItems: 'center'
-    },
+      menuIconDisabled: {
+        color: disabledText
+      },
 
-    textContainer: {
-      flexGrow: 1
-    },
+      flexContainer: {
+        display: 'flex',
+        height: '100%',
+        flexWrap: 'nowrap',
+        justifyContent: 'center',
+        alignItems: 'center'
+      },
 
-    icon: iconStyle,
+      textContainer: {
+        flexGrow: 1
+      },
 
-    menuIcon: [
-      iconStyle,
-      {
-        fontSize: FontSizes.small
-      }
-    ],
+      icon: iconStyle,
 
-    label: {
-      margin: '0 4px',
-      lineHeight: '100%'
-    },
+      menuIcon: [
+        iconStyle,
+        {
+          fontSize: FontSizes.small
+        }
+      ],
 
-    screenReaderText: hiddenContentStyle
-  };
-});
+      label: {
+        margin: '0 4px',
+        lineHeight: '100%'
+      },
+
+      screenReaderText: hiddenContentStyle
+    };
+  }
+);

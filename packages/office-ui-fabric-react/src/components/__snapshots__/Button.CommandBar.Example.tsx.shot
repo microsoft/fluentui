@@ -1,0 +1,638 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders Button.CommandBar.Example.tsx correctly 1`] = `
+<div>
+  <div
+    style={
+      Object {
+        "alignItems": "stretch",
+        "display": "flex",
+        "height": "40px",
+      }
+    }
+  >
+    <button
+      aria-expanded={false}
+      aria-haspopup={true}
+      aria-owns={null}
+      className=
+          ms-Button
+          ms-Button--commandBar
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            background-color: #f4f4f4;
+            border-radius: 0px;
+            border: 1px solid transparent;
+            box-sizing: border-box;
+            color: #333333;
+            cursor: pointer;
+            display: inline-block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            min-width: 40px;
+            outline: transparent;
+            padding-bottom: 0;
+            padding-left: 4px;
+            padding-right: 4px;
+            padding-top: 0;
+            position: relative;
+            text-align: center;
+            text-decoration: none;
+            user-select: none;
+            vertical-align: top;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: 0px;
+            content: "";
+            left: 0px;
+            outline: 1px solid #666666;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            border: none;
+            bottom: 4px;
+            left: 4px;
+            outline-color: ButtonText;
+            right: 4px;
+            top: 4px;
+          }
+          &:active > * {
+            left: 0px;
+            position: relative;
+            top: 0px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            border: none;
+          }
+          &:hover {
+            background-color: #eaeaea;
+            color: #212121;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover {
+            color: Highlight;
+          }
+          &:active {
+            background-color: #dadada;
+            color: #000000;
+          }
+      data-automation-id="test"
+      data-is-focusable={true}
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      type="button"
+    >
+      <div
+        className=
+            ms-Button-flexContainer
+            {
+              align-items: center;
+              display: flex;
+              flex-wrap: nowrap;
+              height: 100%;
+              justify-content: center;
+            }
+      >
+        <i
+          aria-hidden={true}
+          className=
+              ms-Button-icon
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #106ebe;
+                display: inline-block;
+                flex-shrink: 0;
+                font-family: "FabricMDL2Icons";
+                font-size: 16px;
+                font-style: normal;
+                font-weight: normal;
+                height: 16px;
+                line-height: 16px;
+                margin-bottom: 0;
+                margin-left: 4px;
+                margin-right: 4px;
+                margin-top: 0;
+                speak: none;
+                text-align: center;
+                vertical-align: middle;
+              }
+          data-icon-name="Add"
+          role="presentation"
+        >
+          
+        </i>
+        <div
+          className=
+              ms-Button-textContainer
+              {
+                flex-grow: 1;
+              }
+        >
+          <div
+            className=
+                ms-Button-label
+                {
+                  font-weight: normal;
+                  line-height: 100%;
+                  margin-bottom: 0;
+                  margin-left: 4px;
+                  margin-right: 4px;
+                  margin-top: 0;
+                }
+            id="id__0"
+          >
+            Create account
+          </div>
+        </div>
+        <i
+          aria-hidden={true}
+          className=
+              ms-Button-menuIcon
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #666666;
+                display: inline-block;
+                flex-shrink: 0;
+                font-family: "FabricMDL2Icons";
+                font-size: 12px;
+                font-style: normal;
+                font-weight: normal;
+                height: 16px;
+                line-height: 16px;
+                margin-bottom: 0;
+                margin-left: 4px;
+                margin-right: 4px;
+                margin-top: 0;
+                speak: none;
+                text-align: center;
+                vertical-align: middle;
+              }
+          data-icon-name="ChevronDown"
+          role="presentation"
+        >
+          
+        </i>
+      </div>
+    </button>
+    <div
+      aria-expanded={false}
+      aria-haspopup={true}
+      className=
+
+          {
+            display: inline-flex;
+            outline: transparent;
+            position: relative;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            border: none;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: 1px;
+            content: "";
+            left: 1px;
+            outline: 1px solid #666666;
+            position: absolute;
+            right: 1px;
+            top: 1px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            border: none;
+            bottom: -2px;
+            left: -2px;
+            right: -2px;
+            top: -2px;
+          }
+          &:focus {
+            outline: none!important;
+          }
+      data-automation-id="test"
+      data-is-focusable={true}
+      onClick={[Function]}
+      onFocusCapture={[Function]}
+      onKeyDown={[Function]}
+      onTouchStart={[Function]}
+      role="button"
+      tabIndex={0}
+    >
+      <span
+        style={
+          Object {
+            "display": "flex",
+          }
+        }
+      >
+        <button
+          className=
+              ms-Button
+              ms-Button--commandBar
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                background-color: #f4f4f4;
+                border-radius: 0px;
+                border: 1px solid transparent;
+                box-sizing: border-box;
+                color: #333333;
+                cursor: pointer;
+                display: inline-block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                min-width: 40px;
+                outline: transparent;
+                padding-bottom: 0;
+                padding-left: 4px;
+                padding-right: 4px;
+                padding-top: 0;
+                position: relative;
+                text-align: center;
+                text-decoration: none;
+                user-select: none;
+                vertical-align: top;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 0px;
+                content: "";
+                left: 0px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                border: none;
+                bottom: 4px;
+                left: 4px;
+                outline-color: ButtonText;
+                right: 4px;
+                top: 4px;
+              }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border: none;
+              }
+              &:hover {
+                background-color: #eaeaea;
+                color: #212121;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                color: Highlight;
+              }
+              &:active {
+                background-color: #dadada;
+                color: #000000;
+              }
+          data-automation-id="test"
+          data-is-focusable={false}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
+          tabIndex={-1}
+          type="button"
+        >
+          <div
+            className=
+                ms-Button-flexContainer
+                {
+                  align-items: center;
+                  display: flex;
+                  flex-wrap: nowrap;
+                  height: 100%;
+                  justify-content: center;
+                }
+          >
+            <i
+              aria-hidden={true}
+              className=
+                  ms-Button-icon
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #106ebe;
+                    display: inline-block;
+                    flex-shrink: 0;
+                    font-family: "FabricMDL2Icons";
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: normal;
+                    height: 16px;
+                    line-height: 16px;
+                    margin-bottom: 0;
+                    margin-left: 4px;
+                    margin-right: 4px;
+                    margin-top: 0;
+                    speak: none;
+                    text-align: center;
+                    vertical-align: middle;
+                  }
+              data-icon-name="Add"
+              role="presentation"
+            >
+              
+            </i>
+            <div
+              className=
+                  ms-Button-textContainer
+                  {
+                    flex-grow: 1;
+                  }
+            >
+              <div
+                className=
+                    ms-Button-label
+                    {
+                      font-weight: normal;
+                      line-height: 100%;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
+                    }
+                id="id__3"
+              >
+                Create account
+              </div>
+            </div>
+          </div>
+        </button>
+        <button
+          aria-expanded={false}
+          aria-haspopup={true}
+          className=
+              ms-Button
+              {
+                background-color: #f4f4f4;
+                border-radius: 0px;
+                border: 0px;
+                box-sizing: border-box;
+                color: #333333;
+                cursor: pointer;
+                display: inline-block;
+                height: auto;
+                margin-left: -1px;
+                outline: transparent;
+                padding-bottom: 6px;
+                padding-left: 6px;
+                padding-right: 6px;
+                padding-top: 6px;
+                text-align: center;
+                text-decoration: none;
+                user-select: none;
+                vertical-align: top;
+                width: 32px;
+              }
+              &:hover {
+                background-color: #eaeaea;
+                color: #212121;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                color: Highlight;
+              }
+          data-is-focusable={false}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
+          tabIndex={-1}
+          type="button"
+        >
+          <div
+            className=
+                ms-Button-flexContainer
+                {
+                  align-items: center;
+                  display: flex;
+                  flex-wrap: nowrap;
+                  height: 100%;
+                  justify-content: center;
+                }
+          >
+            <i
+              aria-hidden={true}
+              className=
+                  ms-Button-icon
+                  ms-Button-menuIcon
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #666666;
+                    display: inline-block;
+                    flex-shrink: 0;
+                    font-family: "FabricMDL2Icons";
+                    font-size: 12px;
+                    font-style: normal;
+                    font-weight: normal;
+                    height: 16px;
+                    line-height: 16px;
+                    margin-bottom: 0;
+                    margin-left: 4px;
+                    margin-right: 4px;
+                    margin-top: 0;
+                    speak: none;
+                    text-align: center;
+                    vertical-align: middle;
+                  }
+              data-icon-name="ChevronDown"
+              role="presentation"
+            >
+              
+            </i>
+          </div>
+        </button>
+        <span
+          className=
+
+              {
+                background-color: #c8c8c8;
+                bottom: 8px;
+                margin-bottom: 4px;
+                margin-top: 4px;
+                position: absolute;
+                right: 31px;
+                top: 8px;
+                width: 1px;
+              }
+        />
+      </span>
+    </div>
+    <button
+      className=
+          ms-Button
+          ms-Button--commandBar
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            background-color: #f4f4f4;
+            border-radius: 0px;
+            border: 1px solid transparent;
+            box-sizing: border-box;
+            color: #333333;
+            cursor: pointer;
+            display: inline-block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            min-width: 40px;
+            outline: transparent;
+            padding-bottom: 0;
+            padding-left: 4px;
+            padding-right: 4px;
+            padding-top: 0;
+            position: relative;
+            text-align: center;
+            text-decoration: none;
+            user-select: none;
+            vertical-align: top;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: 0px;
+            content: "";
+            left: 0px;
+            outline: 1px solid #666666;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            border: none;
+            bottom: 4px;
+            left: 4px;
+            outline-color: ButtonText;
+            right: 4px;
+            top: 4px;
+          }
+          &:active > * {
+            left: 0px;
+            position: relative;
+            top: 0px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            border: none;
+          }
+          &:hover {
+            background-color: #eaeaea;
+            color: #212121;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover {
+            color: Highlight;
+          }
+          &:active {
+            background-color: #dadada;
+            color: #000000;
+          }
+      data-automation-id="test2"
+      data-is-focusable={true}
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      type="button"
+    >
+      <div
+        className=
+            ms-Button-flexContainer
+            {
+              align-items: center;
+              display: flex;
+              flex-wrap: nowrap;
+              height: 100%;
+              justify-content: center;
+            }
+      >
+        <i
+          aria-hidden={true}
+          className=
+              ms-Button-icon
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #106ebe;
+                display: inline-block;
+                flex-shrink: 0;
+                font-family: "FabricMDL2Icons";
+                font-size: 16px;
+                font-style: normal;
+                font-weight: normal;
+                height: 16px;
+                line-height: 16px;
+                margin-bottom: 0;
+                margin-left: 4px;
+                margin-right: 4px;
+                margin-top: 0;
+                speak: none;
+                text-align: center;
+                vertical-align: middle;
+              }
+          data-icon-name="Mail"
+          role="presentation"
+        >
+          
+        </i>
+        <div
+          className=
+              ms-Button-textContainer
+              {
+                flex-grow: 1;
+              }
+        >
+          <div
+            className=
+                ms-Button-label
+                {
+                  font-weight: normal;
+                  line-height: 100%;
+                  margin-bottom: 0;
+                  margin-left: 4px;
+                  margin-right: 4px;
+                  margin-top: 0;
+                }
+            id="id__9"
+          >
+            Send Mail
+          </div>
+        </div>
+      </div>
+    </button>
+  </div>
+</div>
+`;
