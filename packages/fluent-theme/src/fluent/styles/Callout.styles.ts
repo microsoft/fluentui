@@ -6,6 +6,7 @@ export const CalloutContentStyles = (props: ICalloutContentStyleProps) => {
   return {
     root: {
       borderRadius: fluentBorderRadius,
+      borderWidth: 0,
       boxShadow: Depths.depth16
     }
   };
