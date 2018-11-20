@@ -8,6 +8,12 @@ export const CalloutContentStyles = (props: ICalloutContentStyleProps) => {
       borderRadius: fluentBorderRadius,
       borderWidth: 0,
       boxShadow: Depths.depth16
+    },
+    beakCurtain: {
+      backgroundColor: 'transparent'
+    },
+    calloutMain: {
+      borderRadius: fluentBorderRadius
     }
   };
 };
