@@ -5,6 +5,7 @@
     "target": "es5",
     "module": "commonjs",
     "jsx": "react",
+    // "jsxFactory": "Slot",
     "declaration": true,
     "sourceMap": true,
     "experimentalDecorators": true,
@@ -15,12 +16,24 @@
     "noImplicitAny": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
-    "lib": ["es2017", "dom"],
-    "types": ["jest", "webpack-env"],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "types": [
+      "jest",
+      "webpack-env"
+    ],
     "paths": {
-      "@uifabric/experiments/lib/*": ["./src/*"],
-      "@uifabric/experiments": ["./src"]
+      "@uifabric/experiments/lib/*": [
+        "./src/*"
+      ],
+      "@uifabric/experiments": [
+        "./src"
+      ]
     }
   },
-  "include": ["src"]
+  "include": [
+    "src"
+  ]
 }
