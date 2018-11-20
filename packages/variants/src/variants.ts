@@ -88,6 +88,7 @@ export function getNeutralVariant(theme: IPartialTheme): ITheme {
     bodyText: p.neutralPrimary,
     bodySubtext: p.neutralSecondary,
     bodyDivider: p.neutralQuaternaryAlt,
+    focusBorder: p.neutralSecondary,
     variantBorder: p.neutralLight,
     variantBorderHovered: p.neutralTertiary,
     defaultStateBackground: p.neutralLight,
@@ -96,7 +97,10 @@ export function getNeutralVariant(theme: IPartialTheme): ITheme {
     actionLinkHovered: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary,
     link: p.themeDarkAlt,
     linkHovered: p.themeDarker,
+    disabledBackground: !fullTheme.isInverted ? p.neutralLight : p.neutralLighter,
     disabledText: p.neutralTertiary,
+    disabledBodyText: p.neutralTertiary,
+    disabledBodySubtext: p.neutralTertiaryAlt,
 
     buttonBackground: p.neutralQuaternaryAlt,
     buttonBackgroundHovered: p.neutralQuaternary,
