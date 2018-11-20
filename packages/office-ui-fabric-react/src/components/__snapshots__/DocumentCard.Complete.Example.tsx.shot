@@ -824,7 +824,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               display: inline-block;
-              font-family: "FabricMDL2Icons-9";
+              font-family: "FabricMDL2Icons-8";
               font-style: normal;
               font-weight: normal;
               speak: none;
@@ -1061,7 +1061,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               display: inline-block;
-              font-family: "FabricMDL2Icons-9";
+              font-family: "FabricMDL2Icons-8";
               font-style: normal;
               font-weight: normal;
               speak: none;
@@ -1296,7 +1296,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               display: inline-block;
-              font-family: "FabricMDL2Icons-9";
+              font-family: "FabricMDL2Icons-8";
               font-style: normal;
               font-weight: normal;
               speak: none;

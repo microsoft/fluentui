@@ -86,10 +86,10 @@ exports[`Pickers BasePicker renders BasePicker with inputProps supply classnames
     >
       <div
         className="ms-BasePicker-text"
-        role="list"
       >
         <span
           id="selected-items-id__0"
+          role="list"
         />
         <input
           aria-autocomplete="both"
