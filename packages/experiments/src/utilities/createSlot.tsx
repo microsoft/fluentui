@@ -90,6 +90,7 @@ export const CreateElementWrapper = (type, props, ...children) => {
   if (type.isSlot) {
     return Slot(props);
   } else {
+    // TODO: assess perf!
     return React.createElement(type, props, ...children);
   }
 };
