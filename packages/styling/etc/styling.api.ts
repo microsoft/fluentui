@@ -92,14 +92,15 @@ export function getIcon(name?: string): IIconRecord | undefined;
 // @public
 export function getIconClassName(name: string): string;
 
-// @public
-export function getSchemedContext(scheme: ISchemeNames, context: ICustomizerContext, settingsTheme?: ITheme): ICustomizerContext | undefined;
-
 // @public (undocumented)
 export function getScreenSelector(min: number, max: number): string;
 
 // @public
 export function getTheme(depComments?: boolean): ITheme;
+
+// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
+// @internal
+export function getThemedContext(context: ICustomizerContext, scheme?: ISchemeNames, theme?: ITheme): ICustomizerContext;
 
 // @public
 interface IAnimationStyles {
@@ -358,13 +359,6 @@ interface IIconSubset {
   }
   // (undocumented)
   style?: IRawStyle;
-}
-
-// @public
-enum InjectionMode {
-  appendChild = 2,
-  insertNode = 1,
-  none = 0
 }
 
 // @public
@@ -688,4 +682,6 @@ module ZIndexes {
 // WARNING: Unsupported export: IStyle
 // WARNING: Unsupported export: IStyleSet
 // WARNING: Unsupported export: IProcessedStyleSet
+// WARNING: Unsupported export: InjectionMode
+// WARNING: Unsupported export: InjectionMode
 // (No @packagedocumentation comment for this package)

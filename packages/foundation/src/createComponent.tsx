@@ -12,11 +12,6 @@ export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 export interface IStyleableComponentProps<TViewProps, TStyleSet, TTheme, TScheme> {
   styles?: IStylesProp<TViewProps, TStyleSet, TTheme>;
   theme?: TTheme;
-  /**
-   * Optional scheme to apply to contextual theme. Specifying this prop
-   * will modify context and affect all children.
-   */
-  scheme?: TScheme;
 }
 
 /**
@@ -50,9 +45,7 @@ export type IStateComponentProps<TComponentProps, TViewProps> = TComponentProps 
  * Imposed state component props contract with styling props as well as a renderView
  * prop that the StateComponent should make use of in its render output (and should be its only render output.)
  */
-export type IStateComponentType<TComponentProps, TViewProps, TProcessedStyleSet> = React.ComponentType<
-  IStateComponentProps<TComponentProps, TViewProps>
->;
+export type IStateComponentType<TComponentProps, TViewProps> = React.ComponentType<IStateComponentProps<TComponentProps, TViewProps>>;
 
 /**
  * The props that get passed to view components.
@@ -90,7 +83,7 @@ export interface IComponentOptions<TComponentProps, TViewProps, TStyleSet, TProc
   /**
    * Optional state component that processes TComponentProps into TViewProps.
    */
-  state?: IStateComponentType<TComponentProps, TViewProps, TProcessedStyleSet>;
+  state?: IStateComponentType<TComponentProps, TViewProps>;
   /**
    * Optional static object to assign to constructed component.
    */
@@ -121,7 +114,7 @@ export type IStatelessComponent<TComponentProps, TStyleSet, TProcessedStyleSet, 
 /**
  * Providers used by createComponent to process and apply styling.
  */
-export interface IStylingProviders<TViewProps, TStyleSet, TProcessedStyleSet, TContext, TTheme, TScheme> {
+export interface IComponentProviders<TViewProps, TStyleSet, TProcessedStyleSet, TContext, TTheme, TScheme> {
   /**
    * A required provider that merges multiple TStyleSets to create a TProcessedStyleSet that will be passed onto views components.
    */
@@ -137,18 +130,6 @@ export interface IStylingProviders<TViewProps, TStyleSet, TProcessedStyleSet, TC
     context: TContext,
     fields?: string[]
   ) => IStyleableComponentProps<TViewProps, TStyleSet, TTheme, TScheme>;
-  /**
-   * A provider that allows consumer to change context based on component's view props. If returned value is defined,
-   * foundation assumes context has changed and will automatically instantiate a CustomizerContext.Provider to provide new context.
-   * @param {IStyleableComponentProps} props Combined component and processed props.
-   * @param {TContext} context Current context including any contextual customizations.
-   * @param {IStyleableComponentProps} settings Customizations obtained from getCustomizations provider.
-   */
-  getContextFromProps: (
-    props: IStyleableComponentProps<TViewProps, TStyleSet, TTheme, TScheme>,
-    context: TContext,
-    settings: IStyleableComponentProps<TViewProps, TStyleSet, TTheme, TScheme>
-  ) => TContext | undefined;
   /**
    * React context provider based on TContext.
    */
@@ -178,18 +159,19 @@ export interface IStylingProviders<TViewProps, TStyleSet, TProcessedStyleSet, TC
  * TStatics: Static type for statics applied to created component object.
  *
  * @param {IComponent} component
- * @param {IStylingProviders} providers
+ * @param {IComponentProviders} providers
  */
 export function createComponent<TComponentProps, TViewProps, TStyleSet, TProcessedStyleSet, TContext, TTheme, TScheme, TStatics>(
   component: IComponent<TComponentProps, TViewProps, TStyleSet, TProcessedStyleSet, TTheme, TStatics>,
-  providers: IStylingProviders<TViewProps, TStyleSet, TProcessedStyleSet, TContext, TTheme, TScheme>
+  providers: IComponentProviders<TViewProps, TStyleSet, TProcessedStyleSet, TContext, TTheme, TScheme>
 ): React.StatelessComponent<TComponentProps> & TStatics {
   const { CustomizerContext } = providers;
   const result: React.StatelessComponent<TComponentProps> = (componentProps: TComponentProps) => {
     return (
+      // TODO: createComponent is also probably affected by https://github.com/OfficeDev/office-ui-fabric-react/issues/6603
       <CustomizerContext.Consumer>
         {(context: TContext) => {
-          let settings: IStyleableComponentProps<TViewProps, TStyleSet, TTheme, TScheme> = providers.getCustomizations(
+          const settings: IStyleableComponentProps<TViewProps, TStyleSet, TTheme, TScheme> = providers.getCustomizations(
             component.displayName,
             context,
             component.fields
@@ -217,13 +199,6 @@ export function createComponent<TComponentProps, TViewProps, TStyleSet, TProcess
                 }
               : componentProps;
 
-            const newContext = providers.getContextFromProps(mergedProps, context, settings);
-
-            if (newContext) {
-              // If we have a new context we need to refresh our settings (to reflect new contextual theme, for example)
-              settings = providers.getCustomizations(component.displayName, newContext);
-            }
-
             const { styles: settingsStyles, ...settingsRest } = settings;
             // TODO: this next line is basically saying 'theme' prop will ALWAYS be available from getCustomizations.
             //        is there mechanism that guarantees theme and other request fields will be defined?
@@ -246,11 +221,7 @@ export function createComponent<TComponentProps, TViewProps, TStyleSet, TProcess
             };
 
             // If a new context has been generated, instantiate a Provider to provide it.
-            return newContext ? (
-              <CustomizerContext.Provider value={newContext}>{component.view(viewComponentProps)}</CustomizerContext.Provider>
-            ) : (
-              component.view(viewComponentProps)
-            );
+            return component.view(viewComponentProps);
           };
           return component.state ? <component.state {...componentProps} renderView={renderView} /> : renderView();
         }}
@@ -273,7 +244,7 @@ export function createComponent<TComponentProps, TViewProps, TStyleSet, TProcess
  */
 export function createStatelessComponent<TComponentProps, TStyleSet, TProcessedStyleSet, TContext, TTheme, TScheme, TStatics>(
   component: IStatelessComponent<TComponentProps, TStyleSet, TProcessedStyleSet, TTheme, TStatics>,
-  providers: IStylingProviders<TComponentProps, TStyleSet, TProcessedStyleSet, TContext, TTheme, TScheme>
+  providers: IComponentProviders<TComponentProps, TStyleSet, TProcessedStyleSet, TContext, TTheme, TScheme>
 ): React.StatelessComponent<TComponentProps> & TStatics {
   return createComponent(
     component as IComponent<TComponentProps, TComponentProps, TStyleSet, TProcessedStyleSet, TTheme, TStatics>,

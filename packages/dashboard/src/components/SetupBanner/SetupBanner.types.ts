@@ -100,12 +100,7 @@ export interface ISetupBannerStyles {
   bodySection: IStyle;
 
   /**
-   * Style for the action buttons
+   * Style for the action section
    */
-  actionButton: IStyle;
-
-  /**
-   * Style for the action links
-   */
-  actionLink: IStyle;
+  actionSection: IStyle;
 }

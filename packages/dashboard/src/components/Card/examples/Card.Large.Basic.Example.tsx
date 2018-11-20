@@ -15,9 +15,10 @@ import {
 } from '@uifabric/dashboard';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
-export class LargeCardBasicExample extends React.Component<{}, {}> {
+export class LargeCardBasicExample extends React.Component<{}, { loading: boolean }> {
   constructor(props: ICardProps) {
     super(props);
+    this.state = { loading: true };
   }
 
   public render(): JSX.Element {
@@ -137,7 +138,7 @@ export class LargeCardBasicExample extends React.Component<{}, {}> {
     };
     const contentAreaList = [
       {
-        priority: Priority.Priority2,
+        priority: Priority.Priority1,
         cardContentType: CardContentType.GridList,
         content: {
           gridRows: gridRows,
@@ -151,7 +152,7 @@ export class LargeCardBasicExample extends React.Component<{}, {}> {
         }
       },
       {
-        priority: Priority.Priority1,
+        priority: Priority.Priority2,
         cardContentType: CardContentType.Chart,
         content: chartContent
       }
@@ -218,7 +219,10 @@ export class LargeCardBasicExample extends React.Component<{}, {}> {
         }
       }
     ];
-
+    const that = this;
+    setTimeout(() => {
+      that.setState({ loading: false });
+    }, 10000);
     return (
       <Card
         cardFrameContent={cardFrameContent}
@@ -226,6 +230,7 @@ export class LargeCardBasicExample extends React.Component<{}, {}> {
         cardContentList={contentAreaList}
         cardSize={CardSize.large}
         actions={actions}
+        loading={this.state.loading}
       />
     );
   }

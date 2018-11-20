@@ -2,6 +2,144 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.28.4",
+      "tag": "@uifabric/charting_v0.28.4",
+      "date": "Wed, 14 Nov 2018 13:34:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add empty bar for use case, changes to handle Nan cases and infinity case",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "183aa25155ba15ad1b99e3beeffd617f818014bb"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.103.0 <7.0.0` to `>=6.103.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.28.3",
+      "tag": "@uifabric/charting_v0.28.3",
+      "date": "Fri, 09 Nov 2018 13:32:57 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Make change to multistacked bar chart's hideDenominator prop",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "1b32a57f0135257d9df873409df2c86435457829"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.100.2 <7.0.0` to `>=6.101.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.28.2",
+      "tag": "@uifabric/charting_v0.28.2",
+      "date": "Thu, 08 Nov 2018 04:17:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update to line chart to re-render on prop updates and addition of new prop to stacked and multistacked bar chart",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "dd4dc1df273e8b93f2411446225fb4fc39b5dd1a"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.100.0 <7.0.0` to `>=6.100.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.28.0",
+      "tag": "@uifabric/charting_v0.28.0",
+      "date": "Fri, 02 Nov 2018 18:11:37 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Using new props of hover card. Removing timeout which was introduced as temporary fix until new props were provided for scaling the hover card as per content.",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "e2fde54fb8f2ace3f46333edb105ab7c80365766"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.98.0 <7.0.0` to `>=6.98.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.27.0",
+      "tag": "@uifabric/charting_v0.27.0",
+      "date": "Fri, 02 Nov 2018 12:28:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "css changes for legends component",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "6990bab342ff4181034af6d9775a43665602a0b0"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Changes to line chart component, adding optional prop for users to which they can pass a html element based on which the dataviz will scale. This helps when the parent element is formed using flex or after a timeout. Also eliminates the glitch feel.",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "6990bab342ff4181034af6d9775a43665602a0b0"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.97.1 <7.0.0` to `>=6.98.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.26.3",
+      "tag": "@uifabric/charting_v0.26.3",
+      "date": "Thu, 01 Nov 2018 12:31:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "added hovercard for horizontalBar chart",
+            "author": "BalakrishnaReddyPolu <polu.balakrishna96@gmail.com>",
+            "commit": "a19b4559d8c8daf16f80e31d95d3eb7c82a28b4d"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.26.2",
+      "tag": "@uifabric/charting_v0.26.2",
+      "date": "Wed, 31 Oct 2018 12:32:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Enable ignore fixed stackbarchart style when data point is less than 2",
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "ada8851602bb6af4186a289fbf2aeae5808a6ec0"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.96.0 <7.0.0` to `>=6.97.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.9.0 <7.0.0` to `>=6.9.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.26.1",
       "tag": "@uifabric/charting_v0.26.1",
       "date": "Mon, 29 Oct 2018 18:04:30 GMT",

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Icon } from '../../Icon';
-import { BaseComponent, IRenderFunction, createRef, IDisposable, classNamesFunction, IClassNames } from '../../Utilities';
+import { BaseComponent, IRenderFunction, IDisposable, classNamesFunction, IClassNames } from '../../Utilities';
 import { IColumn, ColumnActionsMode } from './DetailsList.types';
 
 import { ITooltipHostProps } from '../../Tooltip';
@@ -21,7 +21,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
   constructor(props: IDetailsColumnProps) {
     super(props);
 
-    this._root = createRef();
+    this._root = React.createRef();
     this._onDragStart = this._onDragStart.bind(this);
     this._onDragEnd = this._onDragEnd.bind(this);
     this._onRootMouseDown = this._onRootMouseDown.bind(this);
@@ -106,8 +106,9 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
 
                   {column.isGrouped && <Icon className={classNames.nearIcon} iconName={'GroupedDescending'} />}
 
-                  {column.columnActionsMode === ColumnActionsMode.hasDropdown &&
-                    !column.isIconOnly && <Icon aria-hidden={true} className={classNames.filterChevron} iconName={'ChevronDown'} />}
+                  {column.columnActionsMode === ColumnActionsMode.hasDropdown && !column.isIconOnly && (
+                    <Icon aria-hidden={true} className={classNames.filterChevron} iconName={'ChevronDown'} />
+                  )}
                 </span>
               )
             },
@@ -142,7 +143,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
       if (this._root!.current!) {
         this._root!.current!.classList!.add(classNames.borderAfterDropping);
       }
-      setTimeout(() => {
+      this._async.setTimeout(() => {
         if (this._root!.current!) {
           this._root!.current!.classList!.remove(classNames.borderAfterDropping);
         }
@@ -160,7 +161,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
   public componentDidUpdate(): void {
     if (!this._dragDropSubscription && this.props.dragDropHelper && this.props.isDraggable!) {
       this._dragDropSubscription = this.props.dragDropHelper.subscribe(
-        this._root.value as HTMLElement,
+        this._root.current as HTMLElement,
         this._events,
         this._getColumnDragDropOptions()
       );
