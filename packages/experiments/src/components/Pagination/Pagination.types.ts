@@ -94,7 +94,7 @@ export interface IPaginationProps {
    */
   onPageChange?: (index: number) => void;
   /**
-   * provide a string for the visible item label if localization of this string is needed.
+   * provide a render function for the visible item label if localization of this string is needed.
    */
   onRenderVisibleItemLabel?: IRenderFunction<IPaginationProps>;
 }
