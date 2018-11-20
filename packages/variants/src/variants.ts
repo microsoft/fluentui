@@ -102,6 +102,14 @@ export function getNeutralVariant(theme: IPartialTheme): ITheme {
     disabledBodyText: p.neutralTertiary,
     disabledBodySubtext: p.neutralTertiaryAlt,
 
+    inputBorder: p.neutralTertiary,
+    inputBorderHovered: p.neutralPrimary,
+    inputBackground: p.white,
+    inputFocusBorderAlt: p.themePrimary,
+    inputText: p.neutralPrimary,
+    inputTextHovered: p.neutralDark,
+    inputPlaceholderText: p.neutralSecondary,
+
     buttonBackground: p.neutralQuaternaryAlt,
     buttonBackgroundHovered: p.neutralQuaternary,
     buttonBackgroundPressed: !fullTheme.isInverted ? p.neutralTertiary : p.neutralTertiaryAlt,
@@ -119,6 +127,9 @@ export function getNeutralVariant(theme: IPartialTheme): ITheme {
     primaryButtonText: p.white,
     primaryButtonTextHovered: p.white,
     primaryButtonTextPressed: p.white,
+
+    accentButtonBackground: p.accent,
+    accentButtonText: p.white,
 
     menuBackground: p.white,
     menuDivider: p.neutralTertiaryAlt,
@@ -198,6 +209,7 @@ export function getSoftVariant(theme: IPartialTheme): ITheme {
     actionLinkHovered: !fullTheme.isInverted ? p.neutralDark : p.neutralPrimary,
     link: p.themeDarkAlt,
     linkHovered: p.themeDarker,
+    disabledBackground: p.neutralLight,
     disabledText: p.neutralTertiary,
 
     buttonBackground: p.neutralQuaternaryAlt,

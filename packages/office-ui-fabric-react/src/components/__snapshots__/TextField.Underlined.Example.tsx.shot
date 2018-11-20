@@ -26,7 +26,7 @@ exports[`Component Examples renders TextField.Underlined.Example.tsx correctly 1
           border-width: 2px;
         }
         &:hover {
-          border-color: #212121;
+          border-color: #333333;
         }
   >
     <div
@@ -99,7 +99,7 @@ exports[`Component Examples renders TextField.Underlined.Example.tsx correctly 1
               text-align: left;
             }
             &:hover {
-              border-color: #212121;
+              border-color: #333333;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
@@ -329,7 +329,7 @@ exports[`Component Examples renders TextField.Underlined.Example.tsx correctly 1
           border-width: 2px;
         }
         &:hover {
-          border-color: #212121;
+          border-color: #333333;
         }
   >
     <div
@@ -408,7 +408,7 @@ exports[`Component Examples renders TextField.Underlined.Example.tsx correctly 1
               text-align: left;
             }
             &:hover {
-              border-color: #212121;
+              border-color: #333333;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
@@ -489,7 +489,7 @@ exports[`Component Examples renders TextField.Underlined.Example.tsx correctly 1
           border-width: 2px;
         }
         &:hover {
-          border-color: #212121;
+          border-color: #333333;
         }
   >
     <div
@@ -574,7 +574,7 @@ exports[`Component Examples renders TextField.Underlined.Example.tsx correctly 1
               text-align: left;
             }
             &:hover {
-              border-color: #212121;
+              border-color: #333333;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
