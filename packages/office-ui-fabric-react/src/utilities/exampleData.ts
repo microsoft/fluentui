@@ -53,16 +53,16 @@ export function createGroups(
       startIndex: index * count + startIndex,
       level: level,
       children:
-        groupDepth > 1
-          ? createGroups(groupCount, groupDepth - 1, index * count + startIndex, itemsPerGroup, level + 1, key + index)
-          : []
+        groupDepth > 1 ? createGroups(groupCount, groupDepth - 1, index * count + startIndex, itemsPerGroup, level + 1, key + index) : []
     };
   });
 }
 
 export function lorem(wordCount: number): string {
   return Array.apply(null, Array(wordCount))
-    .map((item: number) => _randWord(LOREM_IPSUM))
+    .map((item: number, idx: number) => {
+      return LOREM_IPSUM[idx % LOREM_IPSUM.length];
+    })
     .join(' ');
 }
 

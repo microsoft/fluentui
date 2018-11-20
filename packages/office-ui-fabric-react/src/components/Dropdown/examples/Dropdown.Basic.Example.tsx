@@ -28,7 +28,7 @@ export class DropdownBasicExample extends BaseComponent<
     return (
       <div className="docs-DropdownExample">
         <Dropdown
-          placeHolder="Select an Option"
+          placeholder="Select an Option"
           label="Basic uncontrolled example:"
           id="Basicdrop1"
           ariaLabel="Basic dropdown example"
@@ -75,7 +75,7 @@ export class DropdownBasicExample extends BaseComponent<
           onChange={this.changeState}
           onFocus={this._log('onFocus called')}
           onBlur={this._log('onBlur called')}
-          placeHolder="Select an Option"
+          placeholder="Select an Option"
           options={[
             { key: 'A', text: 'Option a' },
             { key: 'B', text: 'Option b' },
@@ -89,7 +89,7 @@ export class DropdownBasicExample extends BaseComponent<
         />
 
         <Dropdown
-          placeHolder="Select options"
+          placeholder="Select options"
           label="Multi-Select uncontrolled example:"
           defaultSelectedKeys={['Apple', 'Banana', 'Orange']}
           onFocus={this._log('onFocus called')}
@@ -110,7 +110,7 @@ export class DropdownBasicExample extends BaseComponent<
         />
 
         <Dropdown
-          placeHolder="Select options"
+          placeholder="Select options"
           label="Multi-Select controlled example:"
           selectedKeys={selectedItems}
           onChange={this.onChangeMultiSelect}

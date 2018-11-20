@@ -38,8 +38,8 @@ export class MultiCountPage extends React.Component<IComponentDemoPageProps, {}>
         }
         overview={
           <div>
-            This datviz has bodyText to show the data along with it's description. It also has a annotation text which
-            comes with a icon indicating whether the change is positive,negative or nuetral.
+            This datviz has bodyText to show the data along with it's description. It also has a annotation text which comes with a icon
+            indicating whether the change is positive,negative or nuetral.
           </div>
         }
         bestPractices={<div />}

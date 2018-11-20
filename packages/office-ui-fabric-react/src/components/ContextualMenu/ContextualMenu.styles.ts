@@ -72,6 +72,7 @@ export const getStyles = (props: IContextualMenuStyleProps): IContextualMenuStyl
         paddingTop: '5px',
         backgroundColor: palette.neutralLight
       }
-    ]
+    ],
+    subComponentStyles: { callout: {}, menuItem: {} }
   };
 };

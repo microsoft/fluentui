@@ -1,13 +1,5 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  KeyCodes,
-  divProperties,
-  doesElementContainFocus,
-  getDocument,
-  getNativeProps,
-  createRef
-} from '../../Utilities';
+import { BaseComponent, KeyCodes, divProperties, doesElementContainFocus, getDocument, getNativeProps, createRef } from '../../Utilities';
 import { IPopupProps } from './Popup.types';
 
 export interface IPopupState {
@@ -146,7 +138,7 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
   }
 
   private _onBlur(ev: React.FocusEvent<HTMLElement>): void {
-    if (this._root.value && this._root.value.contains(ev.relatedTarget as HTMLElement)) {
+    if (this._root.current && this._root.current.contains(ev.relatedTarget as HTMLElement)) {
       this._containsFocus = false;
     }
   }

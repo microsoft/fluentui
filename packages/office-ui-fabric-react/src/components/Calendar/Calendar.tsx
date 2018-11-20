@@ -4,7 +4,7 @@ import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateV
 import { CalendarDay, ICalendarDay } from './CalendarDay';
 import { CalendarMonth, ICalendarMonth } from './CalendarMonth';
 import { compareDates, getDateRangeArray } from '../../utilities/dateMath/DateMath';
-import { css, BaseComponent, KeyCodes, createRef, getNativeProps, divProperties } from '../../Utilities';
+import { css, BaseComponent, KeyCodes, getNativeProps, divProperties } from '../../Utilities';
 import * as stylesImport from './Calendar.scss';
 const styles: any = stylesImport;
 
@@ -69,8 +69,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     allFocusable: false
   };
 
-  private _dayPicker = createRef<ICalendarDay>();
-  private _monthPicker = createRef<ICalendarMonth>();
+  private _dayPicker = React.createRef<ICalendarDay>();
+  private _monthPicker = React.createRef<ICalendarMonth>();
 
   private _focusOnUpdate: boolean;
 
@@ -133,7 +133,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
       maxDate,
       className,
       showCloseButton,
-      allFocusable
+      allFocusable,
+      yearPickerHidden
     } = this.props;
     const nativeProps = getNativeProps(this.props, divProperties, ['value']);
 
@@ -205,6 +206,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                     minDate={minDate}
                     maxDate={maxDate}
                     componentRef={this._monthPicker}
+                    yearPickerHidden={yearPickerHidden || showMonthPickerAsOverlay}
                   />
                 )}
 

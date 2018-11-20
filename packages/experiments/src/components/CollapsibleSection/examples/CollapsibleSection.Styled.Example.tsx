@@ -83,7 +83,6 @@ export class CollapsibleSectionStyledExample extends React.Component<{}, {}> {
             titleProps={{
               text: `No Styling`
             }}
-            // testRequiredComponentProp='test'
           >
             Body
           </CollapsibleSection>
@@ -96,7 +95,6 @@ export class CollapsibleSectionStyledExample extends React.Component<{}, {}> {
               styles: getPropTitleStyles
             }}
             styles={getPropStyles}
-            // testRequiredComponentProp='test'
           >
             Body
           </CollapsibleSection>

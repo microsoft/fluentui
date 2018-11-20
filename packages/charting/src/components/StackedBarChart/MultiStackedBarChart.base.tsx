@@ -33,7 +33,8 @@ export interface IMultiStackedBarChartState {
 export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarChartProps, IMultiStackedBarChartState> {
   public static defaultProps: Partial<IMultiStackedBarChartProps> = {
     barHeight: 16,
-    hideRatio: []
+    hideRatio: [],
+    hideDenominator: []
   };
 
   private _classNames: IProcessedStyleSet<IMultiStackedBarChartStyles>;
@@ -55,13 +56,20 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   }
 
   public render(): JSX.Element {
-    const { barHeight, data, theme, hideRatio, styles, href } = this.props;
+    const { barHeight, data, theme, hideRatio, styles, href, hideDenominator } = this.props;
     this._adjustProps();
     const { palette } = theme!;
     const legends = this._getLegendData(data!, hideRatio!, palette);
     const bars: JSX.Element[] = [];
     data!.map((singleChartData: IChartProps, index: number) => {
-      const singleChartBars = this._createBarsAndLegends(singleChartData!, barHeight!, palette, hideRatio![index], href);
+      const singleChartBars = this._createBarsAndLegends(
+        singleChartData!,
+        barHeight!,
+        palette,
+        hideRatio![index],
+        hideDenominator![index],
+        href
+      );
       bars.push(<div key={index}>{singleChartBars}</div>);
     });
     this._classNames = getClassNames(styles!, {
@@ -91,7 +99,14 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     );
   }
 
-  private _createBarsAndLegends(data: IChartProps, barHeight: number, palette: IPalette, hideRatio: boolean, href?: string): JSX.Element {
+  private _createBarsAndLegends(
+    data: IChartProps,
+    barHeight: number,
+    palette: IPalette,
+    hideRatio: boolean,
+    hideDenominator: boolean,
+    href?: string
+  ): JSX.Element {
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     // calculating starting point of each bar and it's range
     const startingPoint: number[] = [];
@@ -99,12 +114,16 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     let prevPosition = 0;
     let value = 0;
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
-      const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
+      const color: string = point.color
+        ? point.color
+        : point.placeHolder
+          ? palette.neutralTertiaryAlt
+          : defaultPalette[Math.floor(Math.random() * 4 + 1)];
       const pointData = point.data ? point.data : 0;
       if (index > 0) {
         prevPosition += value;
       }
-      value = (pointData / total) * 100;
+      value = (pointData / total) * 100 ? (pointData / total) * 100 : 0;
       startingPoint.push(prevPosition);
       const styles = this.props.styles;
       let shouldHighlight = true;
@@ -119,14 +138,14 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       return (
         <g
           key={index}
-          className={this._classNames.opacityChangeOnHover}
+          className={point.placeHolder ? this._classNames.placeHolderOnHover : this._classNames.opacityChangeOnHover}
           ref={(e: SVGGElement) => {
             this._refCallback(e, point.legend!);
           }}
-          onMouseOver={this._onBarHover.bind(this, point.legend!, pointData, color)}
-          onMouseMove={this._onBarHover.bind(this, point.legend!, pointData, color)}
-          onMouseLeave={this._onBarLeave}
-          onClick={this._redirectToUrl.bind(this, href)}
+          onMouseOver={point.placeHolder ? undefined : this._onBarHover.bind(this, point.legend!, pointData, color)}
+          onMouseMove={point.placeHolder ? undefined : this._onBarHover.bind(this, point.legend!, pointData, color)}
+          onMouseLeave={point.placeHolder ? undefined : this._onBarLeave}
+          onClick={point.placeHolder ? undefined : this._redirectToUrl.bind(this, href)}
         >
           <rect key={index} x={startingPoint[index] + '%'} y={0} width={value + '%'} height={barHeight} fill={color} />
         </g>
@@ -135,6 +154,13 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     if (data.chartData!.length === 0) {
       bars.push(
         <g key={0} className={this._classNames.noData} onClick={this._redirectToUrl.bind(this, href)}>
+          <rect key={0} x={'0%'} y={0} width={'100%'} height={barHeight} fill={palette.neutralTertiaryAlt} />
+        </g>
+      );
+    }
+    if (total === 0) {
+      bars.push(
+        <g key={'empty'} className={this._classNames.noData} onClick={this._redirectToUrl.bind(this, href)}>
           <rect key={0} x={'0%'} y={0} width={'100%'} height={barHeight} fill={palette.neutralTertiaryAlt} />
         </g>
       );
@@ -152,7 +178,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           )}
           {showRatio && (
             <div>
-              <strong>{data!.chartData![0].data}</strong>/{total}
+              <strong>{data!.chartData![0].data ? data!.chartData![0].data : 0}</strong>
+              {!hideDenominator && <span>/{total}</span>}
             </div>
           )}
           {showNumber && (
@@ -194,10 +221,11 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     const actions: ILegend[] = [];
     data.map((singleChartData: IChartProps, index: number) => {
-      if (singleChartData.chartData!.length < 3) {
+      const validChartData = singleChartData.chartData!.filter((_: IChartDataPoint) => !_.placeHolder);
+      if (validChartData!.length < 3) {
         const hideNumber = hideRatio[index] === undefined ? false : hideRatio[index];
         if (hideNumber) {
-          singleChartData.chartData!.map((point: IChartDataPoint) => {
+          validChartData!.map((point: IChartDataPoint) => {
             const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
             const legend: ILegend = {
               title: point.legend!,
@@ -216,7 +244,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           });
         }
       } else {
-        singleChartData.chartData!.map((point: IChartDataPoint) => {
+        validChartData!.map((point: IChartDataPoint) => {
           const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
           const legend: ILegend = {
             title: point.legend!,
