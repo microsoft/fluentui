@@ -3,7 +3,7 @@
     {
       "packageName": "@uifabric/fluent-theme",
       "comment": "Add Callout styles (also used by Tooltip)",
-      "type": "patch"
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/fluent-theme",
