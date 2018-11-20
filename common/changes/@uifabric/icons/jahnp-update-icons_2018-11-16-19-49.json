@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/icons",
+      "comment": "Icons: Added many new icons from the Fabric icons tool (aka.ms/fabric-icons)",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/icons",
+  "email": "pejahn@microsoft.com"
+}
