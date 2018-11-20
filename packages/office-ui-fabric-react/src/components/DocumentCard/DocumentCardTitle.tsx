@@ -127,7 +127,7 @@ export class DocumentCardTitle extends BaseComponent<IDocumentCardTitleProps, ID
     if (this._titleElement.current) {
       this._truncatedTitleAtWidth = this._titleElement.current.clientWidth;
     }
-  };
+  }
 
   private _shrinkTitle(): void {
     if (this._doesTitleOverflow()) {
