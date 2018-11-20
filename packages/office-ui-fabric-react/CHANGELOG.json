@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.106.0",
+      "tag": "office-ui-fabric-react_v6.106.0",
+      "date": "Tue, 20 Nov 2018 13:32:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "changed _root.value to _root.current in componentDidMount",
+            "author": "Arko Gupta <arkogupta16@gmail.com>",
+            "commit": "c086a77297d598515514b4f9a304b5325672e947"
+          },
+          {
+            "comment": "DetailsList: Prefer BaseComponent async when using setTimeout to avoid memory leak when toggling drag & drop class.",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "bdde11a8b6af8f9eb027fc316475988e8aaa6fb7"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "API: Update API with several new icon definitions.",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "fd8af84b7deea5e883773f565477b74831cd6c81"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=6.1.2 <7.0.0` to `>=6.2.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.105.1",
       "tag": "office-ui-fabric-react_v6.105.1",
       "date": "Mon, 19 Nov 2018 13:36:25 GMT",

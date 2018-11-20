@@ -2,6 +2,20 @@
   "name": "@uifabric/icons",
   "entries": [
     {
+      "version": "6.2.0",
+      "tag": "@uifabric/icons_v6.2.0",
+      "date": "Tue, 20 Nov 2018 13:32:17 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Icons: Added many new icons from the Fabric icons tool (aka.ms/fabric-icons)",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "fd8af84b7deea5e883773f565477b74831cd6c81"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.1.2",
       "tag": "@uifabric/icons_v6.1.2",
       "date": "Mon, 08 Oct 2018 12:24:15 GMT",

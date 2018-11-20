@@ -1,6 +1,13 @@
 # Change Log - @uifabric/icons
 
-This log was last generated on Mon, 08 Oct 2018 12:24:15 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Nov 2018 13:32:17 GMT and should not be manually modified.
+
+## 6.2.0
+Tue, 20 Nov 2018 13:32:17 GMT
+
+### Minor changes
+
+- Icons: Added many new icons from the Fabric icons tool (aka.ms/fabric-icons)
 
 ## 6.1.2
 Mon, 08 Oct 2018 12:24:15 GMT

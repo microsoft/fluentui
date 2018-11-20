@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Wed, 14 Nov 2018 13:34:01 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Nov 2018 13:32:17 GMT and should not be manually modified.
+
+## 0.7.0
+Tue, 20 Nov 2018 13:32:17 GMT
+
+### Minor changes
+
+- HoverCard: Add fluent styles to ExpandingCard and PlainCard.
 
 ## 0.6.0
 Wed, 14 Nov 2018 13:34:01 GMT
