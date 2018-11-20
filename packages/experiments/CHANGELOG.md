@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 19 Oct 2018 11:27:30 GMT and should not be manually modified.
+This log was last generated on Mon, 19 Nov 2018 12:25:13 GMT and should not be manually modified.
+
+## 5.45.2
+Mon, 19 Nov 2018 12:25:13 GMT
+
+### Patches
+
+- added bookmark signal icons
 
 ## 5.45.1
 Fri, 19 Oct 2018 11:27:30 GMT
