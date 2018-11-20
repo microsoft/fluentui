@@ -2,10 +2,15 @@ import * as React from 'react';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { BaseComponent, classNamesFunction } from '../../Utilities';
 import { PageNumber } from './PageNumber';
-import { IPaginationProps, IPaginationStyleProps, IPaginationStyles, PaginationFormat } from './Pagination.types';
+import { IPaginationProps, IPaginationString, IPaginationStyleProps, IPaginationStyles, PaginationFormat } from './Pagination.types';
 import { ComboBox, IComboBoxOption } from 'office-ui-fabric-react/lib/ComboBox';
 import { TooltipHost, DirectionalHint } from 'office-ui-fabric-react/lib/Tooltip';
 const getClassNames = classNamesFunction<IPaginationStyleProps, IPaginationStyles>();
+
+const DEFAULT_STRINGS: IPaginationString = {
+  of: 'of',
+  divider: '-'
+};
 
 export class PaginationBase extends BaseComponent<IPaginationProps> {
   public static defaultProps: Partial<IPaginationProps> = {
@@ -15,7 +20,8 @@ export class PaginationBase extends BaseComponent<IPaginationProps> {
     previousPageIconProps: { iconName: 'CaretSolidLeft' },
     nextPageIconProps: { iconName: 'CaretSolidRight' },
     firstPageIconProps: { iconName: 'Previous' },
-    lastPageIconProps: { iconName: 'Next' }
+    lastPageIconProps: { iconName: 'Next' },
+    strings: DEFAULT_STRINGS
   };
 
   private _classNames: { [key in keyof IPaginationStyles]: string };
@@ -39,10 +45,12 @@ export class PaginationBase extends BaseComponent<IPaginationProps> {
       pageCount,
       selectedPageIndex,
       format,
+      strings,
       styles,
       theme,
       itemsPerPage,
-      totalItemCount
+      totalItemCount,
+      onRenderVisibleItemLabel
     } = this.props;
 
     this._classNames = getClassNames(styles!, {
@@ -90,10 +98,12 @@ export class PaginationBase extends BaseComponent<IPaginationProps> {
     }
 
     let visibleItemLabel;
-    if (itemsPerPage && totalItemCount) {
+    if (onRenderVisibleItemLabel) {
+      visibleItemLabel = onRenderVisibleItemLabel();
+    } else if (itemsPerPage && totalItemCount) {
       const leftItemIndex = selectedPageIndex! * itemsPerPage + 1;
       const rightItemsIndex = Math.min((selectedPageIndex! + 1) * itemsPerPage, totalItemCount);
-      visibleItemLabel = `${leftItemIndex} - ${rightItemsIndex} of ${totalItemCount}`;
+      visibleItemLabel = `${leftItemIndex} ${strings!.divider} ${rightItemsIndex} ${strings!.of} ${totalItemCount}`;
     }
     return (
       <div className={this._classNames.root}>
@@ -184,9 +194,9 @@ export class PaginationBase extends BaseComponent<IPaginationProps> {
   };
 
   private _pageElement(index: number): JSX.Element {
-    const { pageAriaLabel, pageCount, selectedPageIndex, selectedAriaLabel } = this.props;
+    const { pageAriaLabel, pageCount, selectedPageIndex, selectedAriaLabel, strings } = this.props;
     const isSelected = index === selectedPageIndex;
-    let ariaLabel = pageAriaLabel && `${pageAriaLabel} ${index + 1} of ${pageCount}`;
+    let ariaLabel = pageAriaLabel && `${pageAriaLabel} ${index + 1} ${strings!.of} ${pageCount}`;
 
     if (isSelected) {
       ariaLabel = ariaLabel + ' ' + selectedAriaLabel;

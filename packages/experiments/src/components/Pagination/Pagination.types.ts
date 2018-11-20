@@ -2,7 +2,7 @@ import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject, IRefObject } from '../../Utilities';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 
-export interface IPagination { }
+export interface IPagination {}
 export interface IPaginationProps {
   /**
    * The total number of pages.
@@ -88,9 +88,17 @@ export interface IPaginationProps {
    */
   numberOfPageButton?: number;
   /**
+   * The string object
+   */
+  strings?: IPaginationString;
+  /**
    * the call back function to load another page in the table. This needs to be defined in the parent component.
    */
   onPageChange?: (index: number) => void;
+  /**
+   * provide a string for the visible item label.
+   */
+  onRenderVisibleItemLabel?: () => string;
 }
 
 export enum PaginationFormat {
@@ -103,6 +111,13 @@ export enum PaginationFormat {
    * Display Pagination as Combo Box
    */
   comboBox = 1
+}
+
+export interface IPaginationString {
+  /** the divider between the 'from item index' and the 'to item index', e.g. '-' */
+  divider?: string;
+  /** the string for 'of', e.g. 'of' */
+  of?: string;
 }
 
 export interface IPaginationStyleProps {
