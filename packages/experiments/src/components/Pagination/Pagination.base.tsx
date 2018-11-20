@@ -44,6 +44,7 @@ export class PaginationBase extends BaseComponent<IPaginationProps> {
       pageAriaLabel,
       pageCount,
       selectedPageIndex,
+      onRenderVisibleItemLabel = this._renderVisibleItemLabel,
       format,
       styles,
       theme
@@ -93,8 +94,6 @@ export class PaginationBase extends BaseComponent<IPaginationProps> {
       );
     }
 
-    const visibleItemLabel = this._renderVisibleItemLabel();
-
     return (
       <div className={this._classNames.root}>
         <div>
@@ -142,11 +141,7 @@ export class PaginationBase extends BaseComponent<IPaginationProps> {
             />
           </TooltipHost>
         </div>
-        {visibleItemLabel && (
-          <div className={this._classNames.visibleItemLabel} aria-label={visibleItemLabel}>
-            {visibleItemLabel}
-          </div>
-        )}
+        {onRenderVisibleItemLabel(this.props, this._renderVisibleItemLabel)}
       </div>
     );
   }
@@ -231,19 +226,22 @@ export class PaginationBase extends BaseComponent<IPaginationProps> {
     return pageList;
   }
 
-  private _renderVisibleItemLabel(): string | null {
-    const { selectedPageIndex, strings, itemsPerPage, totalItemCount, onRenderVisibleItemLabel } = this.props;
+  private _renderVisibleItemLabel = (props: IPaginationProps): JSX.Element | null => {
+    if (props.onRenderVisibleItemLabel) {
+      return <div className={this._classNames.visibleItemLabel}>{props.onRenderVisibleItemLabel(props)}</div>;
+    }
 
-    if (itemsPerPage && totalItemCount) {
-      const leftItemIndex = selectedPageIndex! * itemsPerPage + 1;
-      const rightItemsIndex = Math.min((selectedPageIndex! + 1) * itemsPerPage, totalItemCount);
-      if (onRenderVisibleItemLabel) {
-        return onRenderVisibleItemLabel(leftItemIndex, rightItemsIndex, totalItemCount, strings!.divider, strings!.of);
-      } else {
-        return `${leftItemIndex} ${strings!.divider} ${rightItemsIndex} ${strings!.of} ${totalItemCount}`;
-      }
+    if (props.itemsPerPage && props.totalItemCount) {
+      const leftItemIndex = props.selectedPageIndex! * props.itemsPerPage + 1;
+      const rightItemsIndex = Math.min((props.selectedPageIndex! + 1) * props.itemsPerPage, props.totalItemCount);
+      const visibleItemLabel = `${leftItemIndex} ${props.strings!.divider} ${rightItemsIndex} ${props.strings!.of} ${props.totalItemCount}`;
+      return (
+        <div className={this._classNames.visibleItemLabel} aria-label={visibleItemLabel}>
+          {visibleItemLabel}
+        </div>
+      );
     }
 
     return null;
-  }
+  };
 }

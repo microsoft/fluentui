@@ -1,8 +1,7 @@
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject, IRefObject } from '../../Utilities';
+import { IStyleFunctionOrObject, IRefObject, IRenderFunction } from '../../Utilities';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 
-export interface IPagination {}
 export interface IPaginationProps {
   /**
    * The total number of pages.
@@ -66,10 +65,9 @@ export interface IPaginationProps {
    */
   styles?: IStyleFunctionOrObject<IPaginationStyleProps, IPaginationStyles>;
   /**
-   * optional callback to access the IPagination interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
+   * Gets ref to component interface
    */
-  componentRef?: IRefObject<IPagination>;
+  componentRef?: IRefObject<{}>;
   /**
    * theme provided by High-Order Component.
    */
@@ -97,20 +95,8 @@ export interface IPaginationProps {
   onPageChange?: (index: number) => void;
   /**
    * provide a string for the visible item label if localization of this string is needed.
-   * @param fromItemIndex calculated based on @see totalItemCount , @see itemsPerPage and @see selectedPageIndex
-   * @param toItemIndex calculated based on @see totalItemCount , @see itemsPerPage and @see selectedPageIndex
-   * @param totalItem @see totalItemCount
-   * @param divider @see the divider string between @param fromItemIndex and @param toItemIndex
-   * @param stringOf the string 'of'
-   * @default default string format: `${fromItemIndex} ${divider} ${toItemIndex} ${stringOf} ${totalItemCount}`
    */
-  onRenderVisibleItemLabel?: (
-    fromItemIndex?: number,
-    toItemIndex?: number,
-    totalItemCount?: number,
-    divider?: string,
-    stringOf?: string
-  ) => string;
+  onRenderVisibleItemLabel?: IRenderFunction<IPaginationProps>;
 }
 
 export enum PaginationFormat {
@@ -126,9 +112,13 @@ export enum PaginationFormat {
 }
 
 export interface IPaginationString {
-  /** the divider between the 'from item index' and the 'to item index', e.g. '-' */
+  /**
+   * the divider between the 'from item index' and the 'to item index', e.g. '-'
+   **/
   divider?: string;
-  /** the string for 'of', e.g. 'of' */
+  /**
+   *  the string for 'of', e.g. 'of'
+   **/
   of?: string;
 }
 
