@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 09 Nov 2018 12:26:42 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Nov 2018 12:28:25 GMT and should not be manually modified.
+
+## 5.131.3
+Tue, 20 Nov 2018 12:28:25 GMT
+
+### Patches
+
+- ComboBox: Update ComboBox to allow for empty string to be submitted
+- ComboBox: update isOptionSelected logic to take into acount updated values for currentPendingValue
 
 ## 5.131.2
 Fri, 09 Nov 2018 12:26:42 GMT
