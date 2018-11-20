@@ -24,6 +24,7 @@ describe('ContextualMenuButton', () => {
     });
 
     it('invokes optional onItemClick on anchor node "click"', () => {
+      const mockEvent = { foo: 'bar' };
       const onClickMock = jest.fn();
       const component = mount(
         <ContextualMenuAnchor
@@ -36,9 +37,9 @@ describe('ContextualMenuButton', () => {
           onItemClick={onClickMock}
         />
       );
-      component.find('a').simulate('click', { foo: 'bar' });
+      component.find('a').simulate('click', mockEvent);
       expect(onClickMock).toHaveBeenCalledTimes(1);
-      expect(onClickMock).toBeCalledWith(menuItem, expect.anything());
+      expect(onClickMock).toBeCalledWith(menuItem, expect.objectContaining(mockEvent));
     });
 
     it('invokes optional onItemClick on checkmark node "click"', () => {
