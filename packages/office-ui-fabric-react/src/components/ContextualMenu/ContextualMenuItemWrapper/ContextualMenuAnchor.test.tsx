@@ -36,12 +36,13 @@ describe('ContextualMenuButton', () => {
           onItemClick={onClickMock}
         />
       );
-      component.find('a').simulate('click');
+      component.find('a').simulate('click', { foo: 'bar' });
       expect(onClickMock).toHaveBeenCalledTimes(1);
       expect(onClickMock).toBeCalledWith(menuItem, expect.anything());
     });
 
     it('invokes optional onItemClick on checkmark node "click"', () => {
+      const mockEvent = { foo: 'bar' };
       const onClickMock = jest.fn();
       const component = mount(
         <ContextualMenuAnchor
@@ -54,12 +55,19 @@ describe('ContextualMenuButton', () => {
           onItemClick={onClickMock}
         />
       );
+
       component
         .find('.checkmarkIcon')
         .at(0)
-        .simulate('click');
+        .simulate('click', mockEvent);
+
+      // onItemClick is invoked twice, once for Check and again for ContextualMenuItem.
+      // This logic can be cleaned-up using Jest's toHaveNthReturnedWith when available.
       expect(onClickMock).toHaveBeenCalledTimes(2);
-      expect(onClickMock).toBeCalledWith(menuItem, expect.anything());
+      expect(onClickMock.mock.calls[0][0]).toBe(menuItem);
+      expect(onClickMock.mock.calls[0][1]).toHaveProperty('foo', 'bar');
+      expect(onClickMock.mock.calls[1][0]).toBe(menuItem);
+      expect(onClickMock.mock.calls[1][1]).toHaveProperty('foo', 'bar');
     });
   });
 });
