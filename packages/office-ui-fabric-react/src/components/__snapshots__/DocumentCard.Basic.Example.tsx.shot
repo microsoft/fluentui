@@ -3,6 +3,7 @@
 exports[`Component Examples renders DocumentCard.Basic.Example.tsx correctly 1`] = `
 <div
   className="ms-DocumentCard ms-DocumentCard--actionable undefined"
+  data-is-focusable={true}
   onClick={[Function]}
   onKeyDown={[Function]}
   role="link"

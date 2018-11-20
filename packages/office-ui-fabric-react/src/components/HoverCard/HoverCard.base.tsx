@@ -22,7 +22,7 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
     expandedCardOpenDelay: 1500,
     instantOpenOnClick: false,
     setInitialFocus: false,
-    openHotKey: KeyCodes.c,
+    openHotKey: KeyCodes.c as KeyCodes,
     type: HoverCardType.expanding
   };
 

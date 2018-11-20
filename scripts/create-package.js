@@ -37,7 +37,7 @@ const steps = [
   { template: 'ChangelogJson', output: 'CHANGELOG.json' },
   { template: 'ChangelogMarkdown', output: 'CHANGELOG.md' },
   { template: 'License', output: 'LICENSE' },
-  { template: 'Readme', output: 'README' },
+  { template: 'Readme', output: 'README.md' },
   { template: 'IndexHtml', output: 'index.html' },
   { template: 'JestConfig', output: 'jest.config.js' },
   { template: 'JsConfig', output: 'jsconfig.json' },
@@ -52,7 +52,6 @@ const steps = [
   { template: 'IndexTs', output: path.join('src', 'index.ts') },
   { template: 'Version', output: path.join('src', 'version.ts') },
   { template: 'AppDefinition', output: path.join('src', 'demo', 'AppDefinition.tsx') },
-  { template: 'AppDefinitionTest', output: path.join('src', 'demo', 'AppDefinition.test.tsx') },
   { template: 'ColorStyles', output: path.join('src', 'demo', 'ColorStyles.scss') },
   { template: 'GettingStartedPageStyles', output: path.join('src', 'demo', 'GettingStartedPage.scss') },
   { template: 'GettingStartedPage', output: path.join('src', 'demo', 'GettingStartedPage.tsx') },
@@ -135,7 +134,7 @@ function updateRush() {
   rushJson.projects.push({
     packageName: `@uifabric/${newPackageName}`,
     projectFolder: `packages/${newPackageName}`,
-    versionPolicyName: 'lockedMajor',
+    // versionPolicyName: 'lockedMajor',
     shouldPublish: false
   });
 

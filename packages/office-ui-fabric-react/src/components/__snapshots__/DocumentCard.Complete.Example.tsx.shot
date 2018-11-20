@@ -4,6 +4,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
 <div>
   <div
     className="ms-DocumentCard ms-DocumentCard--actionable undefined"
+    data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
     role="button"
@@ -806,6 +807,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
   <p />
   <div
     className="ms-DocumentCard ms-DocumentCard--actionable undefined"
+    data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
@@ -1042,6 +1044,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
   <p />
   <div
     className="ms-DocumentCard ms-DocumentCard--actionable undefined"
+    data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
@@ -1276,6 +1279,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
   <p />
   <div
     className="ms-DocumentCard ms-DocumentCard--actionable undefined"
+    data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
@@ -1483,6 +1487,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
   <p />
   <div
     className="ms-DocumentCard ms-DocumentCard--actionable undefined"
+    data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"

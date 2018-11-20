@@ -101,6 +101,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/tileslist'
         },
         {
+          component: require<any>('../components/Toggle/TogglePage').TogglePage,
+          key: 'Toggle',
+          name: 'Toggle',
+          url: '#/examples/toggle'
+        },
+        {
           component: require<any>('../components/Shimmer/ShimmerPage').ShimmerPage,
           key: 'Shimmer',
           name: 'Shimmer',

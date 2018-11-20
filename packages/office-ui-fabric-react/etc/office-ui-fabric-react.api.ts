@@ -79,7 +79,7 @@ class Autofill extends BaseComponent<IAutofillProps, IAutofillState>, implements
   readonly cursorLocation: number | null;
   // (undocumented)
   static defaultProps: {
-    enableAutofillOnKeyPress: KeyCodes[];
+    enableAutofillOnKeyPress: number[];
   }
   // (undocumented)
   focus(): void;
@@ -384,7 +384,7 @@ class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBas
   // (undocumented)
   protected onSuggestionSelect(): void;
   // (undocumented)
-  refocusSuggestions: (keyCode: KeyCodes) => void;
+  refocusSuggestions: (keyCode: number) => void;
   // (undocumented)
   protected removeItem: (item: IPickerItemProps<T>, focusNextItem?: boolean | undefined) => void;
   // (undocumented)
@@ -1005,32 +1005,16 @@ enum DialogType {
   normal = 0
 }
 
-// @public (undocumented)
-enum DirectionalHint {
-  bottomAutoEdge = 7,
-  bottomCenter = 5,
-  bottomLeftEdge = 4,
-  bottomRightEdge = 6,
-  leftBottomEdge = 10,
-  leftCenter = 9,
-  leftTopEdge = 8,
-  rightBottomEdge = 13,
-  rightCenter = 12,
-  rightTopEdge = 11,
-  topAutoEdge = 3,
-  topCenter = 1,
-  topLeftEdge = 0,
-  topRightEdge = 2
-}
-
 // @public
 export function disableBodyScroll(): void;
 
 // @public (undocumented)
-class DocumentCard extends BaseComponent<IDocumentCardProps, any> {
+class DocumentCard extends BaseComponent<IDocumentCardProps, any>, implements IDocumentCard {
   constructor(props: IDocumentCardProps);
   // (undocumented)
   static defaultProps: IDocumentCardProps;
+  // (undocumented)
+  focus(): void;
   // (undocumented)
   render(): JSX.Element;
 }
@@ -1367,13 +1351,6 @@ enum FocusZoneDirection {
   vertical = 0
 }
 
-// @public (undocumented)
-enum FocusZoneTabbableElements {
-  all = 1,
-  inputOnly = 2,
-  none = 0
-}
-
 // @public
 export function fontFace(font: IFontFace): void;
 
@@ -1632,7 +1609,7 @@ class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardState> {
     cardOpenDelay: number;
     expandedCardOpenDelay: number;
     instantOpenOnClick: boolean;
-    openHotKey: KeyCodes;
+    openHotKey: number;
     setInitialFocus: boolean;
     type: HoverCardType;
   }
@@ -2663,7 +2640,7 @@ interface ICoachmark {
 }
 
 // @public (undocumented)
-interface ICoachmarkProps extends React.Props<Coachmark> {
+interface ICoachmarkProps extends React.ClassAttributes<Coachmark> {
   ariaAlertText?: string;
   ariaDescribedBy?: string;
   ariaDescribedByText?: string;
@@ -2822,6 +2799,69 @@ interface IColorPickerStyles {
 }
 
 // @public (undocumented)
+interface IColorRectangle {
+}
+
+// @public (undocumented)
+interface IColorRectangleProps extends IBaseProps<IColorRectangle> {
+  className?: string;
+  color: IColor;
+  componentRef?: IRefObject<IColorRectangle>;
+  minSize?: number;
+  onSVChanged?: (s: number, v: number) => void;
+  styles?: IStyleFunctionOrObject<IColorRectangleStyleProps, IColorRectangleStyles>;
+  theme?: ITheme;
+}
+
+// @public (undocumented)
+interface IColorRectangleStyleProps {
+  className?: string;
+  theme: ITheme;
+}
+
+// @public (undocumented)
+interface IColorRectangleStyles {
+  dark?: IStyle;
+  light?: IStyle;
+  root?: IStyle;
+  thumb?: IStyle;
+}
+
+// @public (undocumented)
+interface IColorSlider {
+}
+
+// @public (undocumented)
+interface IColorSliderProps extends IBaseProps<IColorSlider> {
+  className?: string;
+  componentRef?: IRefObject<IColorSlider>;
+  isAlpha?: boolean;
+  maxValue?: number;
+  minValue?: number;
+  onChange?: (event: React.MouseEvent<HTMLElement>, newValue?: number) => void;
+  // @deprecated
+  onChanged?: (newValue: number) => void;
+  overlayStyle?: any;
+  styles?: IStyleFunctionOrObject<IColorSliderStyleProps, IColorSliderStyles>;
+  theme?: ITheme;
+  thumbColor?: string;
+  value?: number;
+}
+
+// @public (undocumented)
+interface IColorSliderStyleProps {
+  className?: string;
+  theme: ITheme;
+}
+
+// @public (undocumented)
+interface IColorSliderStyles {
+  root?: IStyle;
+  sliderOverlay?: IStyle;
+  sliderThumb?: IStyle;
+}
+
+// @public (undocumented)
 interface IColumn {
   ariaLabel?: string;
   calculatedWidth?: number;
@@ -2929,21 +2969,13 @@ interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox> {
 
 // @public (undocumented)
 interface IComboBoxState {
-  // (undocumented)
   currentOptions: IComboBoxOption[];
-  // (undocumented)
   currentPendingValue?: string;
-  // (undocumented)
   currentPendingValueValidIndex: number;
-  // (undocumented)
   currentPendingValueValidIndexOnHover: number;
-  // (undocumented)
   focused?: boolean;
-  // (undocumented)
   isOpen?: boolean;
-  // (undocumented)
   selectedIndices?: number[];
-  // (undocumented)
   suggestedDisplayValue?: string;
 }
 
@@ -6220,7 +6252,7 @@ interface IContextualMenuRenderItem {
 }
 
 // @public
-interface IContextualMenuSection extends React.Props<any> {
+interface IContextualMenuSection extends React.ClassAttributes<any> {
   bottomDivider?: boolean;
   items: IContextualMenuItem[];
   title?: string;
@@ -6270,6 +6302,7 @@ interface IContextualMenuStyles {
 // @public (undocumented)
 interface IContextualMenuSubComponentStyles {
   callout: IStyleFunctionOrObject<ICalloutContentStyleProps, any>;
+  menuItem: IStyleFunctionOrObject<IContextualMenuItemStyleProps, any>;
 }
 
 // @public (undocumented)
@@ -6290,6 +6323,8 @@ interface ICustomizableProps {
 
 // @public (undocumented)
 interface ICustomizations {
+  // (undocumented)
+  inCustomizerContext?: boolean;
   // (undocumented)
   scopedSettings: {
     [key: string]: Settings;
@@ -6445,7 +6480,7 @@ interface IDetailsGroupRenderProps extends IGroupRenderProps {
 
 // WARNING: The type "DetailsHeaderBase" needs to be exported by the package (e.g. added to index.ts)
 // @public (undocumented)
-interface IDetailsHeaderBaseProps extends React.Props<DetailsHeaderBase>, IDetailsItemProps {
+interface IDetailsHeaderBaseProps extends React.ClassAttributes<DetailsHeaderBase>, IDetailsItemProps {
   ariaLabel?: string;
   ariaLabelForSelectAllCheckbox?: string;
   ariaLabelForSelectionColumn?: string;
@@ -6902,6 +6937,7 @@ interface IDividerAsProps extends IIconProps {
 
 // @public (undocumented)
 interface IDocumentCard {
+  focus: () => void;
 }
 
 // @public (undocumented)
@@ -7010,7 +7046,7 @@ interface IDropdown {
   focus: (shouldOpenOnFocus?: boolean) => void;
 }
 
-// @public (undocumented)
+// @public
 interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {
 }
 
@@ -7217,6 +7253,7 @@ interface IFacepilePersona extends React.ButtonHTMLAttributes<HTMLButtonElement 
   imageInitials?: string;
   imageUrl?: string;
   initialsColor?: PersonaInitialsColor;
+  keytipProps?: IKeytipProps;
   onClick?: (ev?: React.MouseEvent<HTMLElement>, persona?: IFacepilePersona) => void;
   onMouseMove?: (ev?: React.MouseEvent<HTMLElement>, persona?: IFacepilePersona) => void;
   onMouseOut?: (ev?: React.MouseEvent<HTMLElement>, persona?: IFacepilePersona) => void;
@@ -8247,8 +8284,10 @@ interface IModalProps extends React.Props<ModalBase>, IWithResponsiveModeState, 
   isBlocking?: boolean;
   isDarkOverlay?: boolean;
   isOpen?: boolean;
+  layerProps?: ILayerProps;
   onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
   onDismissed?: () => any;
+  // @deprecated
   onLayerDidMount?: () => void;
   scrollableContentClassName?: string;
   styles?: IStyleFunctionOrObject<IModalStyleProps, IModalStyles>;
@@ -8321,6 +8360,7 @@ interface INavProps {
   groups: INavLinkGroup[] | null;
   initialSelectedKey?: string;
   isOnTop?: boolean;
+  linkAs?: IComponentAs<IButtonProps>;
   onLinkClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
   onLinkExpandClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
   onRenderGroupHeader?: IRenderFunction<INavLinkGroup>;
@@ -8380,13 +8420,6 @@ export function initializeFocusRects(window?: Window): void;
 
 // @public (undocumented)
 export function initializeIcons(baseUrl?: string, options?: IIconOptions): void;
-
-// @public
-enum InjectionMode {
-  appendChild = 2,
-  insertNode = 1,
-  none = 0
-}
 
 // @public (undocumented)
 interface IObjectWithKey {
@@ -9227,8 +9260,9 @@ interface IScrollablePaneContext {
     addSticky: (sticky: Sticky) => void;
     notifySubscribers: (sort?: boolean) => void;
     removeSticky: (sticky: Sticky) => void;
-    sortSticky: (sticky: Sticky) => void;
+    sortSticky: (sticky: Sticky, sortAgain?: boolean) => void;
     subscribe: (handler: (container: HTMLElement, stickyContainer: HTMLElement) => void) => void;
+    syncScrollSticky: (sticky: Sticky) => void;
     unsubscribe: (handler: (container: HTMLElement, stickyContainer: HTMLElement) => void) => void;
     updateStickyRefHeights: () => void;
   }
@@ -9839,6 +9873,9 @@ interface ISliderStyles {
   valueLabel: IStyle;
 }
 
+// @public
+export function isMac(reset?: boolean): boolean;
+
 // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
 // @internal
 interface ISpacing {
@@ -10302,7 +10339,7 @@ interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElement | HTM
   autoComplete?: 'on' | 'off';
   borderless?: boolean;
   className?: string;
-  // @deprecated
+  // @deprecated (undocumented)
   componentId?: string;
   componentRef?: IRefObject<ITextField>;
   defaultValue?: string;
@@ -10568,208 +10605,6 @@ enum KeyboardSpinDirection {
   notSpinning = 0,
   // (undocumented)
   up = 1
-}
-
-// @public
-enum KeyCodes {
-  // (undocumented)
-  a = 65,
-  // (undocumented)
-  add = 107,
-  // (undocumented)
-  alt = 18,
-  // (undocumented)
-  b = 66,
-  // (undocumented)
-  backSlash = 220,
-  // (undocumented)
-  backspace = 8,
-  // (undocumented)
-  c = 67,
-  // (undocumented)
-  capslock = 20,
-  // (undocumented)
-  closeBracket = 221,
-  // (undocumented)
-  comma = 188,
-  // (undocumented)
-  ctrl = 17,
-  // (undocumented)
-  d = 68,
-  // (undocumented)
-  dash = 189,
-  // (undocumented)
-  decimalPoint = 110,
-  // (undocumented)
-  del = 46,
-  // (undocumented)
-  divide = 111,
-  // (undocumented)
-  down = 40,
-  // (undocumented)
-  e = 69,
-  // (undocumented)
-  eight = 56,
-  // (undocumented)
-  eight_numpad = 104,
-  // (undocumented)
-  end = 35,
-  // (undocumented)
-  enter = 13,
-  // (undocumented)
-  equalSign = 187,
-  // (undocumented)
-  escape = 27,
-  // (undocumented)
-  f = 70,
-  // (undocumented)
-  f1 = 112,
-  // (undocumented)
-  f10 = 121,
-  // (undocumented)
-  f11 = 122,
-  // (undocumented)
-  f12 = 123,
-  // (undocumented)
-  f2 = 113,
-  // (undocumented)
-  f3 = 114,
-  // (undocumented)
-  f4 = 115,
-  // (undocumented)
-  f5 = 116,
-  // (undocumented)
-  f6 = 117,
-  // (undocumented)
-  f7 = 118,
-  // (undocumented)
-  f8 = 119,
-  // (undocumented)
-  f9 = 120,
-  // (undocumented)
-  five = 53,
-  // (undocumented)
-  five_numpad = 101,
-  // (undocumented)
-  forwardSlash = 191,
-  // (undocumented)
-  four = 52,
-  // (undocumented)
-  four_numpad = 100,
-  // (undocumented)
-  g = 71,
-  // (undocumented)
-  graveAccent = 192,
-  // (undocumented)
-  h = 72,
-  // (undocumented)
-  home = 36,
-  // (undocumented)
-  i = 73,
-  // (undocumented)
-  insert = 45,
-  // (undocumented)
-  j = 74,
-  // (undocumented)
-  k = 75,
-  // (undocumented)
-  l = 76,
-  // (undocumented)
-  left = 37,
-  // (undocumented)
-  leftWindow = 91,
-  // (undocumented)
-  m = 77,
-  // (undocumented)
-  multiply = 106,
-  // (undocumented)
-  n = 78,
-  // (undocumented)
-  nine = 57,
-  // (undocumented)
-  nine_numpad = 105,
-  // (undocumented)
-  numlock = 144,
-  // (undocumented)
-  o = 79,
-  // (undocumented)
-  one = 49,
-  // (undocumented)
-  one_numpad = 97,
-  // (undocumented)
-  openBracket = 219,
-  // (undocumented)
-  p = 80,
-  // (undocumented)
-  pageDown = 34,
-  // (undocumented)
-  pageUp = 33,
-  // (undocumented)
-  pauseBreak = 19,
-  // (undocumented)
-  period = 190,
-  // (undocumented)
-  q = 81,
-  // (undocumented)
-  r = 82,
-  // (undocumented)
-  right = 39,
-  // (undocumented)
-  rightWindow = 92,
-  // (undocumented)
-  s = 83,
-  // (undocumented)
-  scrollLock = 145,
-  // (undocumented)
-  select = 93,
-  // (undocumented)
-  semicolon = 186,
-  // (undocumented)
-  seven = 55,
-  // (undocumented)
-  seven_numpad = 103,
-  // (undocumented)
-  shift = 16,
-  // (undocumented)
-  singleQuote = 222,
-  // (undocumented)
-  six = 54,
-  // (undocumented)
-  six_numpad = 102,
-  // (undocumented)
-  space = 32,
-  // (undocumented)
-  subtract = 109,
-  // (undocumented)
-  t = 84,
-  // (undocumented)
-  tab = 9,
-  // (undocumented)
-  three = 51,
-  // (undocumented)
-  three_numpad = 99,
-  // (undocumented)
-  two = 50,
-  // (undocumented)
-  two_numpad = 98,
-  // (undocumented)
-  u = 85,
-  // (undocumented)
-  up = 38,
-  // (undocumented)
-  v = 86,
-  // (undocumented)
-  w = 87,
-  // (undocumented)
-  x = 88,
-  // (undocumented)
-  y = 89,
-  // (undocumented)
-  z = 90,
-  // (undocumented)
-  zero = 48,
-  // (undocumented)
-  zero_numpad = 96
 }
 
 // @public
@@ -11463,7 +11298,7 @@ class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScrollable
   // (undocumented)
   shouldComponentUpdate(nextProps: IScrollablePaneProps, nextState: IScrollablePaneState): boolean;
   // (undocumented)
-  sortSticky: (sticky: Sticky) => void;
+  sortSticky: (sticky: Sticky, sortAgain?: boolean | undefined) => void;
   // (undocumented)
   readonly stickyAbove: HTMLDivElement | null;
   // (undocumented)
@@ -11471,25 +11306,11 @@ class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScrollable
   // (undocumented)
   subscribe: (handler: Function) => void;
   // (undocumented)
+  syncScrollSticky: (sticky: Sticky) => void;
+  // (undocumented)
   unsubscribe: (handler: Function) => void;
   // (undocumented)
   updateStickyRefHeights: () => void;
-}
-
-// @public (undocumented)
-enum ScrollbarVisibility {
-  // (undocumented)
-  always = "always",
-  // (undocumented)
-  auto = "auto"
-}
-
-// @public (undocumented)
-enum ScrollToMode {
-  auto = 0,
-  bottom = 2,
-  center = 3,
-  top = 1
 }
 
 // @public (undocumented)
@@ -11821,6 +11642,8 @@ class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   // (undocumented)
   readonly nonStickyContent: HTMLDivElement | null;
   // (undocumented)
+  readonly placeholder: HTMLDivElement | null;
+  // (undocumented)
   render(): JSX.Element;
   // (undocumented)
   resetSticky(): void;
@@ -12108,7 +11931,7 @@ class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITeachingBu
   static defaultProps: {
     calloutProps: {
       beakWidth: number;
-      directionalHint: DirectionalHint;
+      directionalHint: 12;
       doNotLayer: boolean;
       gapSpace: number;
       setInitialFocus: boolean;
@@ -12160,6 +11983,8 @@ class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldState>, imp
   blur(): void;
   // (undocumented)
   componentDidMount(): void;
+  // (undocumented)
+  componentDidUpdate(): void;
   // (undocumented)
   componentWillReceiveProps(newProps: ITextFieldProps): void;
   // (undocumented)
@@ -12333,6 +12158,8 @@ module ZIndexes {
 
 // WARNING: Unsupported export: Breadcrumb
 // WARNING: Unsupported export: CommandButton
+// WARNING: Unsupported export: DirectionalHint
+// WARNING: Unsupported export: DirectionalHint
 // WARNING: Unsupported export: Check
 // WARNING: Unsupported export: Checkbox
 // WARNING: Unsupported export: ChoiceGroup
@@ -12370,6 +12197,8 @@ module ZIndexes {
 // WARNING: Unsupported export: groupTwo
 // WARNING: Unsupported export: Fabric
 // WARNING: Unsupported export: Facepile
+// WARNING: Unsupported export: FocusZoneTabbableElements
+// WARNING: Unsupported export: FocusZoneTabbableElements
 // WARNING: Unsupported export: Grid
 // WARNING: Unsupported export: GroupedList
 // WARNING: Unsupported export: HoverCard
@@ -12382,6 +12211,8 @@ module ZIndexes {
 // WARNING: Unsupported export: Layer
 // WARNING: Unsupported export: ILayerBaseState
 // WARNING: Unsupported export: Link
+// WARNING: Unsupported export: ScrollToMode
+// WARNING: Unsupported export: ScrollToMode
 // WARNING: Unsupported export: MarqueeSelection
 // WARNING: Unsupported export: MessageBar
 // WARNING: Unsupported export: Modal
@@ -12407,6 +12238,8 @@ module ZIndexes {
 // WARNING: Unsupported export: getMeasurementCache
 // WARNING: Unsupported export: getNextResizeGroupStateProvider
 // WARNING: Unsupported export: ScrollablePane
+// WARNING: Unsupported export: ScrollbarVisibility
+// WARNING: Unsupported export: ScrollbarVisibility
 // WARNING: Unsupported export: SearchBox
 // WARNING: Unsupported export: Shimmer
 // WARNING: Unsupported export: ShimmerLine
@@ -12454,6 +12287,8 @@ module ZIndexes {
 // WARNING: Unsupported export: IStyle
 // WARNING: Unsupported export: IStyleSet
 // WARNING: Unsupported export: IProcessedStyleSet
+// WARNING: Unsupported export: InjectionMode
+// WARNING: Unsupported export: InjectionMode
 // WARNING: Unsupported export: SwatchColorPicker
 // WARNING: Unsupported export: ColorPickerGridCell
 // WARNING: Unsupported export: TeachingBubble
@@ -12475,6 +12310,8 @@ module ZIndexes {
 // WARNING: Unsupported export: IComponentAsProps
 // WARNING: Unsupported export: IComponentAs
 // WARNING: Unsupported export: IStyleFunction
+// WARNING: Unsupported export: KeyCodes
+// WARNING: Unsupported export: KeyCodes
 // WARNING: Unsupported export: IRefObject
 // WARNING: Unsupported export: RefObject
 // WARNING: Unsupported export: ICssInput

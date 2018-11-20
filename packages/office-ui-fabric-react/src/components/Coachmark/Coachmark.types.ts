@@ -11,7 +11,7 @@ export interface ICoachmark {
   dismiss?: (ev?: any) => void;
 }
 
-export interface ICoachmarkProps extends React.Props<Coachmark> {
+export interface ICoachmarkProps extends React.ClassAttributes<Coachmark> {
   /**
    * Optional callback to access the ICoachmark interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

@@ -11,7 +11,7 @@ const SELECTION_BACKWARD = 'backward';
 
 export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> implements IAutofill {
   public static defaultProps = {
-    enableAutofillOnKeyPress: [KeyCodes.down, KeyCodes.up]
+    enableAutofillOnKeyPress: [KeyCodes.down, KeyCodes.up] as KeyCodes[]
   };
 
   private _inputElement = React.createRef<HTMLInputElement>();
@@ -296,4 +296,4 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
 /**
  *  @deprecated do not use.
  */
-export class BaseAutoFill extends Autofill { }
+export class BaseAutoFill extends Autofill {}
