@@ -6,6 +6,7 @@ import { DefaultPalette } from './DefaultPalette';
 import { DefaultSpacing } from './DefaultSpacing';
 import { DefaultTypography } from './DefaultTypography';
 import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
+import { DefaultSerifs } from './DefaultSerifs';
 
 let _theme: ITheme = createTheme({
   palette: DefaultPalette,
@@ -143,6 +144,10 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
     spacing: {
       ...DefaultSpacing,
       ...theme.spacing
+    },
+    serifs: {
+      ...DefaultSerifs,
+      ...theme.serifs
     }
   };
 }

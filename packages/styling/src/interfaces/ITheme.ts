@@ -3,6 +3,7 @@ import { IFontStyles } from './IFontStyles';
 import { ISemanticColors } from './ISemanticColors';
 import { ITypography, IPartialTypography } from './ITypography';
 import { ISpacing } from './ISpacing';
+import { ISerifs } from './ISerifs';
 
 /**
  * @internal
@@ -43,6 +44,8 @@ export interface IScheme {
    * Avoid using it until it is finalized.
    */
   spacing: ISpacing;
+
+  serifs: ISerifs;
 }
 
 export interface ITheme extends IScheme {
@@ -58,7 +61,7 @@ export interface ITheme extends IScheme {
 export type IPartialTheme = {
   [P in keyof Pick<
     ITheme,
-    'palette' | 'fonts' | 'semanticColors' | 'isInverted' | 'disableGlobalClassNames' | 'spacing' | 'schemes'
+    'palette' | 'fonts' | 'semanticColors' | 'isInverted' | 'disableGlobalClassNames' | 'spacing' | 'schemes' | 'serifs'
   >]?: Partial<ITheme[P]>
 } &
   { [P in keyof Pick<ITheme, 'typography'>]?: IPartialTypography };
