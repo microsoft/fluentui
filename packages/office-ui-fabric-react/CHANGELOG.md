@@ -1,6 +1,26 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 19 Nov 2018 13:36:25 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Nov 2018 20:12:42 GMT and should not be manually modified.
+
+## 6.106.1
+Tue, 20 Nov 2018 20:12:42 GMT
+
+### Patches
+
+- Removing some of the deprecated components flagged when turning the tslint deprecation flag to true in the office-ui-fabric-react package.
+- A bug fix to avoid crash in ScrollablePane when the componenent is unmounted in an environment where MutationObserver is not supported (for example in jsdom)
+
+## 6.106.0
+Tue, 20 Nov 2018 13:32:17 GMT
+
+### Minor changes
+
+- API: Update API with several new icon definitions.
+
+### Patches
+
+- changed _root.value to _root.current in componentDidMount
+- DetailsList: Prefer BaseComponent async when using setTimeout to avoid memory leak when toggling drag & drop class.
 
 ## 6.105.1
 Mon, 19 Nov 2018 13:36:25 GMT

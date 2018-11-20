@@ -156,7 +156,10 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   public componentWillUnmount() {
     this._events.off(this.contentContainer);
     this._events.off(window);
-    this._mutationObserver.disconnect();
+
+    if (this._mutationObserver) {
+      this._mutationObserver.disconnect();
+    }
   }
 
   // Only updates if props/state change, just to prevent excessive setState with updateStickyRefHeights

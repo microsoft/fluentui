@@ -168,11 +168,7 @@ class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends BaseC
   // (undocumented)
   componentWillReceiveProps(newProps: P): void;
   // (undocumented)
-  floatingPicker: {
-    (component: BaseFloatingPicker<T, IBaseFloatingPickerProps<T>> | null): void;
-    current: BaseFloatingPicker<T, IBaseFloatingPickerProps<T>> | null;
-    value: BaseFloatingPicker<T, IBaseFloatingPickerProps<T>> | null;
-  }
+  floatingPicker: React.RefObject<BaseFloatingPicker<T, IBaseFloatingPickerProps<T>>>;
   // (undocumented)
   protected floatingPickerProps: IBaseFloatingPickerProps<T>;
   // (undocumented)
@@ -180,11 +176,7 @@ class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends BaseC
   // (undocumented)
   readonly highlightedItems: T[];
   // (undocumented)
-  protected input: {
-    (component: Autofill | null): void;
-    current: Autofill | null;
-    value: Autofill | null;
-  }
+  protected input: React.RefObject<Autofill>;
   // (undocumented)
   readonly inputElement: HTMLInputElement | null;
   // (undocumented)
@@ -210,17 +202,9 @@ class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends BaseC
   // (undocumented)
   protected renderSuggestions(): JSX.Element;
   // (undocumented)
-  protected root: {
-    (component: HTMLDivElement | null): void;
-    current: HTMLDivElement | null;
-    value: HTMLDivElement | null;
-  }
+  protected root: React.RefObject<HTMLDivElement>;
   // (undocumented)
-  selectedItemsList: {
-    (component: BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>> | null): void;
-    current: BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>> | null;
-    value: BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>> | null;
-  }
+  selectedItemsList: React.RefObject<BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>>>;
   // (undocumented)
   protected selectedItemsListProps: IBaseSelectedItemsListProps<T>;
   // (undocumented)
@@ -273,11 +257,7 @@ class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extends BaseC
   // (undocumented)
   protected renderSuggestions(): JSX.Element | null;
   // (undocumented)
-  protected root: {
-    (component: HTMLDivElement | null): void;
-    current: HTMLDivElement | null;
-    value: HTMLDivElement | null;
-  }
+  protected root: React.RefObject<HTMLDivElement>;
   // (undocumented)
   protected selection: Selection;
   // (undocumented)
@@ -1895,11 +1875,11 @@ interface IBaseFloatingPicker {
 }
 
 // @public (undocumented)
-interface IBaseFloatingPickerProps<T> extends React.Props<any> {
+interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> {
   calloutWidth?: number;
   className?: string;
   // (undocumented)
-  componentRef?: (component?: IBaseFloatingPicker | null) => void;
+  componentRef?: IRefObject<IBaseFloatingPicker>;
   createGenericItem?: (input: string, isValid: boolean) => ISuggestionModel<T>;
   getTextFromItem?: (item: T, currentValue?: string) => string;
   inputElement?: HTMLInputElement | null;
@@ -3101,6 +3081,8 @@ enum IconNames {
   // (undocumented)
   Accept = "Accept",
   // (undocumented)
+  AccessibiltyChecker = "AccessibiltyChecker",
+  // (undocumented)
   AccessLogo = "AccessLogo",
   // (undocumented)
   AccessLogoFill = "AccessLogoFill",
@@ -3108,6 +3090,8 @@ enum IconNames {
   AccountManagement = "AccountManagement",
   // (undocumented)
   Accounts = "Accounts",
+  // (undocumented)
+  ActionCenter = "ActionCenter",
   // (undocumented)
   ActivateOrders = "ActivateOrders",
   // (undocumented)
@@ -3126,6 +3110,8 @@ enum IconNames {
   AddFriend = "AddFriend",
   // (undocumented)
   AddGroup = "AddGroup",
+  // (undocumented)
+  AddIn = "AddIn",
   // (undocumented)
   AddNotes = "AddNotes",
   // (undocumented)
@@ -3214,6 +3200,10 @@ enum IconNames {
   Annotation = "Annotation",
   // (undocumented)
   AppIconDefault = "AppIconDefault",
+  // (undocumented)
+  AppIconDefaultAdd = "AppIconDefaultAdd",
+  // (undocumented)
+  AppIconDefaultList = "AppIconDefaultList",
   // (undocumented)
   Archive = "Archive",
   // (undocumented)
@@ -3309,6 +3299,8 @@ enum IconNames {
   // (undocumented)
   Balloons = "Balloons",
   // (undocumented)
+  Bank = "Bank",
+  // (undocumented)
   BankSolid = "BankSolid",
   // (undocumented)
   BarChart4 = "BarChart4",
@@ -3316,6 +3308,12 @@ enum IconNames {
   BarChartHorizontal = "BarChartHorizontal",
   // (undocumented)
   BarChartVertical = "BarChartVertical",
+  // (undocumented)
+  BarChartVerticalFill = "BarChartVerticalFill",
+  // (undocumented)
+  BarChartVerticalFilter = "BarChartVerticalFilter",
+  // (undocumented)
+  BarChartVerticalFilterSolid = "BarChartVerticalFilterSolid",
   // (undocumented)
   Baseball = "Baseball",
   // (undocumented)
@@ -3339,11 +3337,15 @@ enum IconNames {
   // (undocumented)
   Blocked2 = "Blocked2",
   // (undocumented)
+  Blocked2Solid = "Blocked2Solid",
+  // (undocumented)
   BlockedSite = "BlockedSite",
   // (undocumented)
   BlockedSiteSolid12 = "BlockedSiteSolid12",
   // (undocumented)
   BlockedSolid = "BlockedSolid",
+  // (undocumented)
+  Blog = "Blog",
   // (undocumented)
   BlowingSnow = "BlowingSnow",
   // (undocumented)
@@ -3354,6 +3356,8 @@ enum IconNames {
   Bold = "Bold",
   // (undocumented)
   BookingsLogo = "BookingsLogo",
+  // (undocumented)
+  BookmarkReport = "BookmarkReport",
   // (undocumented)
   Bookmarks = "Bookmarks",
   // (undocumented)
@@ -3407,6 +3411,8 @@ enum IconNames {
   // (undocumented)
   Brunch = "Brunch",
   // (undocumented)
+  Brush = "Brush",
+  // (undocumented)
   BucketColor = "BucketColor",
   // (undocumented)
   BucketColorFill = "BucketColorFill",
@@ -3439,7 +3445,15 @@ enum IconNames {
   // (undocumented)
   BulletedList2Mirrored = "BulletedList2Mirrored",
   // (undocumented)
+  BulletedListBullet = "BulletedListBullet",
+  // (undocumented)
+  BulletedListBulletMirrored = "BulletedListBulletMirrored",
+  // (undocumented)
   BulletedListMirrored = "BulletedListMirrored",
+  // (undocumented)
+  BulletedListText = "BulletedListText",
+  // (undocumented)
+  BulletedListTextMirrored = "BulletedListTextMirrored",
   // (undocumented)
   Bullseye = "Bullseye",
   // (undocumented)
@@ -3490,6 +3504,8 @@ enum IconNames {
   CaloriesAdd = "CaloriesAdd",
   // (undocumented)
   Camera = "Camera",
+  // (undocumented)
+  CampaignTemplate = "CampaignTemplate",
   // (undocumented)
   Cancel = "Cancel",
   // (undocumented)
@@ -3561,6 +3577,8 @@ enum IconNames {
   // (undocumented)
   ChartSeries = "ChartSeries",
   // (undocumented)
+  ChartTemplate = "ChartTemplate",
+  // (undocumented)
   ChartXAngle = "ChartXAngle",
   // (undocumented)
   ChartYAngle = "ChartYAngle",
@@ -3577,6 +3595,8 @@ enum IconNames {
   // (undocumented)
   CheckboxCompositeReversed = "CheckboxCompositeReversed",
   // (undocumented)
+  CheckboxFill = "CheckboxFill",
+  // (undocumented)
   CheckboxIndeterminate = "CheckboxIndeterminate",
   // (undocumented)
   CheckedOutByOther12 = "CheckedOutByOther12",
@@ -3584,6 +3604,14 @@ enum IconNames {
   CheckedOutByYou12 = "CheckedOutByYou12",
   // (undocumented)
   CheckList = "CheckList",
+  // (undocumented)
+  CheckListCheck = "CheckListCheck",
+  // (undocumented)
+  CheckListCheckMirrored = "CheckListCheckMirrored",
+  // (undocumented)
+  CheckListText = "CheckListText",
+  // (undocumented)
+  CheckListTextMirrored = "CheckListTextMirrored",
   // (undocumented)
   CheckMark = "CheckMark",
   // (undocumented)
@@ -3623,6 +3651,8 @@ enum IconNames {
   // (undocumented)
   ChevronUpSmall = "ChevronUpSmall",
   // (undocumented)
+  Childof = "Childof",
+  // (undocumented)
   Chopsticks = "Chopsticks",
   // (undocumented)
   ChromeBack = "ChromeBack",
@@ -3631,7 +3661,11 @@ enum IconNames {
   // (undocumented)
   ChromeClose = "ChromeClose",
   // (undocumented)
+  ChromeFullScreen = "ChromeFullScreen",
+  // (undocumented)
   ChromeMinimize = "ChromeMinimize",
+  // (undocumented)
+  ChromeRestore = "ChromeRestore",
   // (undocumented)
   CircleAddition = "CircleAddition",
   // (undocumented)
@@ -3657,6 +3691,8 @@ enum IconNames {
   // (undocumented)
   CityNext = "CityNext",
   // (undocumented)
+  CityNext2 = "CityNext2",
+  // (undocumented)
   ClassNotebookLogo16 = "ClassNotebookLogo16",
   // (undocumented)
   ClassNotebookLogo32 = "ClassNotebookLogo32",
@@ -3678,6 +3714,10 @@ enum IconNames {
   ClearFilter = "ClearFilter",
   // (undocumented)
   ClearFormatting = "ClearFormatting",
+  // (undocumented)
+  ClearFormattingA = "ClearFormattingA",
+  // (undocumented)
+  ClearFormattingEraser = "ClearFormattingEraser",
   // (undocumented)
   ClearNight = "ClearNight",
   // (undocumented)
@@ -3739,6 +3779,8 @@ enum IconNames {
   // (undocumented)
   ColumnRightTwoThirdsEdit = "ColumnRightTwoThirdsEdit",
   // (undocumented)
+  ColumnVerticalSection = "ColumnVerticalSection",
+  // (undocumented)
   Combine = "Combine",
   // (undocumented)
   Combobox = "Combobox",
@@ -3789,6 +3831,8 @@ enum IconNames {
   // (undocumented)
   ContactLink = "ContactLink",
   // (undocumented)
+  ContactList = "ContactList",
+  // (undocumented)
   ContextMenu = "ContextMenu",
   // (undocumented)
   Contrast = "Contrast",
@@ -3796,6 +3840,8 @@ enum IconNames {
   Copy = "Copy",
   // (undocumented)
   Cotton = "Cotton",
+  // (undocumented)
+  Coupon = "Coupon",
   // (undocumented)
   CPlusPlus = "CPlusPlus",
   // (undocumented)
@@ -3805,7 +3851,13 @@ enum IconNames {
   // (undocumented)
   Cricket = "Cricket",
   // (undocumented)
+  CRMCustomerInsightsApp = "CRMCustomerInsightsApp",
+  // (undocumented)
+  CRMProcesses = "CRMProcesses",
+  // (undocumented)
   CRMReport = "CRMReport",
+  // (undocumented)
+  CRMServices = "CRMServices",
   // (undocumented)
   Crop = "Crop",
   // (undocumented)
@@ -3818,6 +3870,8 @@ enum IconNames {
   CSharpLanguage = "CSharpLanguage",
   // (undocumented)
   CSS = "CSS",
+  // (undocumented)
+  CustomizeToolbar = "CustomizeToolbar",
   // (undocumented)
   CustomList = "CustomList",
   // (undocumented)
@@ -3837,7 +3891,11 @@ enum IconNames {
   // (undocumented)
   Database = "Database",
   // (undocumented)
+  DatabaseSync = "DatabaseSync",
+  // (undocumented)
   DataConnectionLibrary = "DataConnectionLibrary",
+  // (undocumented)
+  Dataflows = "Dataflows",
   // (undocumented)
   DateTime = "DateTime",
   // (undocumented)
@@ -3853,7 +3911,15 @@ enum IconNames {
   // (undocumented)
   DeclineCall = "DeclineCall",
   // (undocumented)
+  DecreaseIndentArrow = "DecreaseIndentArrow",
+  // (undocumented)
+  DecreaseIndentArrowMirrored = "DecreaseIndentArrowMirrored",
+  // (undocumented)
   DecreaseIndentLegacy = "DecreaseIndentLegacy",
+  // (undocumented)
+  DecreaseIndentText = "DecreaseIndentText",
+  // (undocumented)
+  DecreaseIndentTextMirrored = "DecreaseIndentTextMirrored",
   // (undocumented)
   DefaultRatio = "DefaultRatio",
   // (undocumented)
@@ -3891,11 +3957,15 @@ enum IconNames {
   // (undocumented)
   DeveloperTools = "DeveloperTools",
   // (undocumented)
+  Devices2 = "Devices2",
+  // (undocumented)
   Devices3 = "Devices3",
   // (undocumented)
   Devices4 = "Devices4",
   // (undocumented)
   Diagnostic = "Diagnostic",
+  // (undocumented)
+  DiagnosticDataBarTooltip = "DiagnosticDataBarTooltip",
   // (undocumented)
   Dialpad = "Dialpad",
   // (undocumented)
@@ -3918,6 +3988,8 @@ enum IconNames {
   Dislike = "Dislike",
   // (undocumented)
   DislikeSolid = "DislikeSolid",
+  // (undocumented)
+  DistributeDown = "DistributeDown",
   // (undocumented)
   DockLeft = "DockLeft",
   // (undocumented)
@@ -3983,6 +4055,8 @@ enum IconNames {
   // (undocumented)
   DoubleColumnEdit = "DoubleColumnEdit",
   // (undocumented)
+  DoubleDownArrow = "DoubleDownArrow",
+  // (undocumented)
   Down = "Down",
   // (undocumented)
   Download = "Download",
@@ -4009,11 +4083,15 @@ enum IconNames {
   // (undocumented)
   DropShapeSolid = "DropShapeSolid",
   // (undocumented)
+  DuplicateRow = "DuplicateRow",
+  // (undocumented)
   Duststorm = "Duststorm",
   // (undocumented)
   Dynamics365Logo = "Dynamics365Logo",
   // (undocumented)
   DynamicSMBLogo = "DynamicSMBLogo",
+  // (undocumented)
+  EaseOfAccess = "EaseOfAccess",
   // (undocumented)
   EatDrink = "EatDrink",
   // (undocumented)
@@ -4022,6 +4100,8 @@ enum IconNames {
   Edit = "Edit",
   // (undocumented)
   EditContact = "EditContact",
+  // (undocumented)
+  EditCreate = "EditCreate",
   // (undocumented)
   EditMail = "EditMail",
   // (undocumented)
@@ -4075,9 +4155,13 @@ enum IconNames {
   // (undocumented)
   Event = "Event",
   // (undocumented)
+  Event12 = "Event12",
+  // (undocumented)
   EventAccepted = "EventAccepted",
   // (undocumented)
   EventDate = "EventDate",
+  // (undocumented)
+  EventDateMissed12 = "EventDateMissed12",
   // (undocumented)
   EventDeclined = "EventDeclined",
   // (undocumented)
@@ -4129,6 +4213,8 @@ enum IconNames {
   // (undocumented)
   Eyedropper = "Eyedropper",
   // (undocumented)
+  EyeShadow = "EyeShadow",
+  // (undocumented)
   F12DevTools = "F12DevTools",
   // (undocumented)
   FabricAssetLibrary = "FabricAssetLibrary",
@@ -4149,6 +4235,8 @@ enum IconNames {
   // (undocumented)
   FabricMovetoFolder = "FabricMovetoFolder",
   // (undocumented)
+  FabricNetworkFolder = "FabricNetworkFolder",
+  // (undocumented)
   FabricNewFolder = "FabricNewFolder",
   // (undocumented)
   FabricOpenFolderHorizontal = "FabricOpenFolderHorizontal",
@@ -4163,7 +4251,13 @@ enum IconNames {
   // (undocumented)
   FabricSyncFolder = "FabricSyncFolder",
   // (undocumented)
+  FabricTextHighlight = "FabricTextHighlight",
+  // (undocumented)
+  FabricTextHighlightComposite = "FabricTextHighlightComposite",
+  // (undocumented)
   FabricUnsyncFolder = "FabricUnsyncFolder",
+  // (undocumented)
+  FabricUserFolder = "FabricUserFolder",
   // (undocumented)
   Family = "Family",
   // (undocumented)
@@ -4227,6 +4321,8 @@ enum IconNames {
   // (undocumented)
   FilePDB = "FilePDB",
   // (undocumented)
+  FileRequest = "FileRequest",
+  // (undocumented)
   FileSass = "FileSass",
   // (undocumented)
   FileSQL = "FileSQL",
@@ -4243,6 +4339,8 @@ enum IconNames {
   // (undocumented)
   Filters = "Filters",
   // (undocumented)
+  FilterSettings = "FilterSettings",
+  // (undocumented)
   FilterSolid = "FilterSolid",
   // (undocumented)
   FiltersSolid = "FiltersSolid",
@@ -4255,11 +4353,17 @@ enum IconNames {
   // (undocumented)
   Fingerprint = "Fingerprint",
   // (undocumented)
+  FitPage = "FitPage",
+  // (undocumented)
+  FitWidth = "FitWidth",
+  // (undocumented)
   FiveTileGrid = "FiveTileGrid",
   // (undocumented)
   Flag = "Flag",
   // (undocumented)
   FlameSolid = "FlameSolid",
+  // (undocumented)
+  Flashlight = "Flashlight",
   // (undocumented)
   FlickDown = "FlickDown",
   // (undocumented)
@@ -4271,7 +4375,13 @@ enum IconNames {
   // (undocumented)
   Flow = "Flow",
   // (undocumented)
+  FlowChart = "FlowChart",
+  // (undocumented)
+  Flower = "Flower",
+  // (undocumented)
   FocalPoint = "FocalPoint",
+  // (undocumented)
+  Focus = "Focus",
   // (undocumented)
   Fog = "Fog",
   // (undocumented)
@@ -4307,6 +4417,8 @@ enum IconNames {
   // (undocumented)
   FontSize = "FontSize",
   // (undocumented)
+  Footer = "Footer",
+  // (undocumented)
   FormLibrary = "FormLibrary",
   // (undocumented)
   FormLibraryMirrored = "FormLibraryMirrored",
@@ -4318,6 +4430,8 @@ enum IconNames {
   Freezing = "Freezing",
   // (undocumented)
   Frigid = "Frigid",
+  // (undocumented)
+  FrontCamera = "FrontCamera",
   // (undocumented)
   FSharp = "FSharp",
   // (undocumented)
@@ -4335,11 +4449,17 @@ enum IconNames {
   // (undocumented)
   FunctionalManagerDashboard = "FunctionalManagerDashboard",
   // (undocumented)
+  FunnelChart = "FunnelChart",
+  // (undocumented)
   GallatinLogo = "GallatinLogo",
+  // (undocumented)
+  Game = "Game",
   // (undocumented)
   Generate = "Generate",
   // (undocumented)
   GenericScan = "GenericScan",
+  // (undocumented)
+  GenericScanFilled = "GenericScanFilled",
   // (undocumented)
   Giftbox = "Giftbox",
   // (undocumented)
@@ -4363,7 +4483,11 @@ enum IconNames {
   // (undocumented)
   GlobeFavorite = "GlobeFavorite",
   // (undocumented)
+  Go = "Go",
+  // (undocumented)
   Golf = "Golf",
+  // (undocumented)
+  GoMirrored = "GoMirrored",
   // (undocumented)
   GotoToday = "GotoToday",
   // (undocumented)
@@ -4376,6 +4500,8 @@ enum IconNames {
   GripperBarHorizontal = "GripperBarHorizontal",
   // (undocumented)
   GripperBarVertical = "GripperBarVertical",
+  // (undocumented)
+  GripperDotsVertical = "GripperDotsVertical",
   // (undocumented)
   GripperTool = "GripperTool",
   // (undocumented)
@@ -4412,6 +4538,8 @@ enum IconNames {
   HardDriveLock = "HardDriveLock",
   // (undocumented)
   HardDriveUnlock = "HardDriveUnlock",
+  // (undocumented)
+  Header = "Header",
   // (undocumented)
   Header1 = "Header1",
   // (undocumented)
@@ -4451,9 +4579,13 @@ enum IconNames {
   // (undocumented)
   HintText = "HintText",
   // (undocumented)
+  HistoricalWeather = "HistoricalWeather",
+  // (undocumented)
   History = "History",
   // (undocumented)
   Home = "Home",
+  // (undocumented)
+  HomeGroup = "HomeGroup",
   // (undocumented)
   HomeSolid = "HomeSolid",
   // (undocumented)
@@ -4479,6 +4611,8 @@ enum IconNames {
   // (undocumented)
   Import = "Import",
   // (undocumented)
+  ImportAllMirrored = "ImportAllMirrored",
+  // (undocumented)
   Important = "Important",
   // (undocumented)
   ImportMirrored = "ImportMirrored",
@@ -4489,7 +4623,15 @@ enum IconNames {
   // (undocumented)
   IncidentTriangle = "IncidentTriangle",
   // (undocumented)
+  IncreaseIndentArrow = "IncreaseIndentArrow",
+  // (undocumented)
+  IncreaseIndentArrowMirrored = "IncreaseIndentArrowMirrored",
+  // (undocumented)
   IncreaseIndentLegacy = "IncreaseIndentLegacy",
+  // (undocumented)
+  IncreaseIndentText = "IncreaseIndentText",
+  // (undocumented)
+  IncreaseIndentTextMirrored = "IncreaseIndentTextMirrored",
   // (undocumented)
   Info = "Info",
   // (undocumented)
@@ -4539,6 +4681,8 @@ enum IconNames {
   // (undocumented)
   KeyboardClassic = "KeyboardClassic",
   // (undocumented)
+  KnowledgeArticle = "KnowledgeArticle",
+  // (undocumented)
   Label = "Label",
   // (undocumented)
   LadybugSolid = "LadybugSolid",
@@ -4587,6 +4731,8 @@ enum IconNames {
   // (undocumented)
   Link12 = "Link12",
   // (undocumented)
+  LinkedDatabase = "LinkedDatabase",
+  // (undocumented)
   LinkedInLogo = "LinkedInLogo",
   // (undocumented)
   List = "List",
@@ -4619,9 +4765,13 @@ enum IconNames {
   // (undocumented)
   LyncLogo = "LyncLogo",
   // (undocumented)
+  M365InvoicingLogo = "M365InvoicingLogo",
+  // (undocumented)
   Mail = "Mail",
   // (undocumented)
   MailAlert = "MailAlert",
+  // (undocumented)
+  MailAttached = "MailAttached",
   // (undocumented)
   MailCheck = "MailCheck",
   // (undocumented)
@@ -4632,6 +4782,8 @@ enum IconNames {
   MailForwardMirrored = "MailForwardMirrored",
   // (undocumented)
   MailLowImportance = "MailLowImportance",
+  // (undocumented)
+  MailOptions = "MailOptions",
   // (undocumented)
   MailPause = "MailPause",
   // (undocumented)
@@ -4663,6 +4815,8 @@ enum IconNames {
   // (undocumented)
   MapDirections = "MapDirections",
   // (undocumented)
+  MapLayers = "MapLayers",
+  // (undocumented)
   MapPin = "MapPin",
   // (undocumented)
   MapPinSolid = "MapPinSolid",
@@ -4678,6 +4832,8 @@ enum IconNames {
   MaximumValue = "MaximumValue",
   // (undocumented)
   Medal = "Medal",
+  // (undocumented)
+  Media = "Media",
   // (undocumented)
   MediaAdd = "MediaAdd",
   // (undocumented)
@@ -4707,7 +4863,11 @@ enum IconNames {
   // (undocumented)
   MiniContract = "MiniContract",
   // (undocumented)
+  MiniContractMirrored = "MiniContractMirrored",
+  // (undocumented)
   MiniExpand = "MiniExpand",
+  // (undocumented)
+  MiniExpandMirrored = "MiniExpandMirrored",
   // (undocumented)
   MiniLink = "MiniLink",
   // (undocumented)
@@ -4771,6 +4931,8 @@ enum IconNames {
   // (undocumented)
   NewFolder = "NewFolder",
   // (undocumented)
+  NewMail = "NewMail",
+  // (undocumented)
   News = "News",
   // (undocumented)
   NewsSearch = "NewsSearch",
@@ -4795,9 +4957,19 @@ enum IconNames {
   // (undocumented)
   NumberedList = "NumberedList",
   // (undocumented)
+  NumberedListNumber = "NumberedListNumber",
+  // (undocumented)
+  NumberedListNumberMirrored = "NumberedListNumberMirrored",
+  // (undocumented)
+  NumberedListText = "NumberedListText",
+  // (undocumented)
+  NumberedListTextMirrored = "NumberedListTextMirrored",
+  // (undocumented)
   NumberField = "NumberField",
   // (undocumented)
   NumberSequence = "NumberSequence",
+  // (undocumented)
+  NumberSymbol = "NumberSymbol",
   // (undocumented)
   Octagon = "Octagon",
   // (undocumented)
@@ -4843,7 +5015,11 @@ enum IconNames {
   // (undocumented)
   OfflineOneDriveParachuteDisabled = "OfflineOneDriveParachuteDisabled",
   // (undocumented)
+  OfflineStorage = "OfflineStorage",
+  // (undocumented)
   OfflineStorageSolid = "OfflineStorageSolid",
+  // (undocumented)
+  Onboarding = "Onboarding",
   // (undocumented)
   OneDriveAdd = "OneDriveAdd",
   // (undocumented)
@@ -4865,6 +5041,8 @@ enum IconNames {
   // (undocumented)
   OneNoteLogoInverse16 = "OneNoteLogoInverse16",
   // (undocumented)
+  OpenEnrollment = "OpenEnrollment",
+  // (undocumented)
   OpenFile = "OpenFile",
   // (undocumented)
   OpenFolderHorizontal = "OpenFolderHorizontal",
@@ -4880,6 +5058,8 @@ enum IconNames {
   Org = "Org",
   // (undocumented)
   Orientation = "Orientation",
+  // (undocumented)
+  Orientation2 = "Orientation2",
   // (undocumented)
   OutlookLogo = "OutlookLogo",
   // (undocumented)
@@ -4913,13 +5093,21 @@ enum IconNames {
   // (undocumented)
   PageAdd = "PageAdd",
   // (undocumented)
+  PageArrowRight = "PageArrowRight",
+  // (undocumented)
   PageCheckedin = "PageCheckedin",
   // (undocumented)
   PageCheckedOut = "PageCheckedOut",
   // (undocumented)
   PageEdit = "PageEdit",
   // (undocumented)
+  PageHeader = "PageHeader",
+  // (undocumented)
   PageLeft = "PageLeft",
+  // (undocumented)
+  PageList = "PageList",
+  // (undocumented)
+  PageListFilter = "PageListFilter",
   // (undocumented)
   PageListMirroredSolid = "PageListMirroredSolid",
   // (undocumented)
@@ -4975,6 +5163,8 @@ enum IconNames {
   // (undocumented)
   Pentagon = "Pentagon",
   // (undocumented)
+  PenWorkspace = "PenWorkspace",
+  // (undocumented)
   People = "People",
   // (undocumented)
   PeopleAdd = "PeopleAdd",
@@ -5002,6 +5192,8 @@ enum IconNames {
   Photo2 = "Photo2",
   // (undocumented)
   Photo2Add = "Photo2Add",
+  // (undocumented)
+  Photo2Fill = "Photo2Fill",
   // (undocumented)
   Photo2Remove = "Photo2Remove",
   // (undocumented)
@@ -5037,6 +5229,8 @@ enum IconNames {
   // (undocumented)
   PivotChart = "PivotChart",
   // (undocumented)
+  PlainText = "PlainText",
+  // (undocumented)
   PlannerLogo = "PlannerLogo",
   // (undocumented)
   PlanView = "PlanView",
@@ -5068,6 +5262,10 @@ enum IconNames {
   PowerAppsLogo = "PowerAppsLogo",
   // (undocumented)
   PowerBILogo = "PowerBILogo",
+  // (undocumented)
+  PowerBILogo16 = "PowerBILogo16",
+  // (undocumented)
+  PowerBILogoBackplate16 = "PowerBILogoBackplate16",
   // (undocumented)
   PowerButton = "PowerButton",
   // (undocumented)
@@ -5111,6 +5309,8 @@ enum IconNames {
   // (undocumented)
   Product = "Product",
   // (undocumented)
+  ProductRelease = "ProductRelease",
+  // (undocumented)
   ProfileSearch = "ProfileSearch",
   // (undocumented)
   ProFootball = "ProFootball",
@@ -5125,6 +5325,8 @@ enum IconNames {
   // (undocumented)
   ProjectCollection = "ProjectCollection",
   // (undocumented)
+  ProjectDocument = "ProjectDocument",
+  // (undocumented)
   ProjectLogo16 = "ProjectLogo16",
   // (undocumented)
   ProjectLogo32 = "ProjectLogo32",
@@ -5134,6 +5336,8 @@ enum IconNames {
   ProjectLogoFill32 = "ProjectLogoFill32",
   // (undocumented)
   ProjectLogoInverse = "ProjectLogoInverse",
+  // (undocumented)
+  PromotedDatabase = "PromotedDatabase",
   // (undocumented)
   ProtectedDocument = "ProtectedDocument",
   // (undocumented)
@@ -5150,6 +5354,8 @@ enum IconNames {
   PublicEmail = "PublicEmail",
   // (undocumented)
   PublicFolder = "PublicFolder",
+  // (undocumented)
+  PublishContent = "PublishContent",
   // (undocumented)
   PublishCourse = "PublishCourse",
   // (undocumented)
@@ -5168,6 +5374,12 @@ enum IconNames {
   PY = "PY",
   // (undocumented)
   PythonLanguage = "PythonLanguage",
+  // (undocumented)
+  QRCode = "QRCode",
+  // (undocumented)
+  QuadColumn = "QuadColumn",
+  // (undocumented)
+  Quantity = "Quantity",
   // (undocumented)
   QuarterCircle = "QuarterCircle",
   // (undocumented)
@@ -5207,6 +5419,8 @@ enum IconNames {
   // (undocumented)
   ReadOutLoud = "ReadOutLoud",
   // (undocumented)
+  RealEstate = "RealEstate",
+  // (undocumented)
   ReceiptCheck = "ReceiptCheck",
   // (undocumented)
   ReceiptForward = "ReceiptForward",
@@ -5224,6 +5438,8 @@ enum IconNames {
   Record2 = "Record2",
   // (undocumented)
   RecruitmentManagement = "RecruitmentManagement",
+  // (undocumented)
+  RectangleShape = "RectangleShape",
   // (undocumented)
   RectangleShapeSolid = "RectangleShapeSolid",
   // (undocumented)
@@ -5243,7 +5459,15 @@ enum IconNames {
   // (undocumented)
   Refresh = "Refresh",
   // (undocumented)
+  Relationship = "Relationship",
+  // (undocumented)
   ReleaseDefinition = "ReleaseDefinition",
+  // (undocumented)
+  ReleaseGate = "ReleaseGate",
+  // (undocumented)
+  ReleaseGateCheck = "ReleaseGateCheck",
+  // (undocumented)
+  ReleaseGateError = "ReleaseGateError",
   // (undocumented)
   ReminderGroup = "ReminderGroup",
   // (undocumented)
@@ -5257,7 +5481,13 @@ enum IconNames {
   // (undocumented)
   RemoveFilter = "RemoveFilter",
   // (undocumented)
+  RemoveFromTrash = "RemoveFromTrash",
+  // (undocumented)
   RemoveLink = "RemoveLink",
+  // (undocumented)
+  RemoveLinkChain = "RemoveLinkChain",
+  // (undocumented)
+  RemoveLinkX = "RemoveLinkX",
   // (undocumented)
   RemoveOccurrence = "RemoveOccurrence",
   // (undocumented)
@@ -5270,6 +5500,8 @@ enum IconNames {
   ReopenPages = "ReopenPages",
   // (undocumented)
   Repair = "Repair",
+  // (undocumented)
+  RepeatAll = "RepeatAll",
   // (undocumented)
   Reply = "Reply",
   // (undocumented)
@@ -5287,6 +5519,8 @@ enum IconNames {
   // (undocumented)
   ReportAdd = "ReportAdd",
   // (undocumented)
+  ReportDocument = "ReportDocument",
+  // (undocumented)
   ReportHacked = "ReportHacked",
   // (undocumented)
   ReportLibrary = "ReportLibrary",
@@ -5294,6 +5528,8 @@ enum IconNames {
   ReportLibraryMirrored = "ReportLibraryMirrored",
   // (undocumented)
   RepoSolid = "RepoSolid",
+  // (undocumented)
+  ResponsesMenu = "ResponsesMenu",
   // (undocumented)
   ReturnToSession = "ReturnToSession",
   // (undocumented)
@@ -5353,13 +5589,19 @@ enum IconNames {
   // (undocumented)
   SaveTemplate = "SaveTemplate",
   // (undocumented)
+  SaveToMobile = "SaveToMobile",
+  // (undocumented)
   Savings = "Savings",
   // (undocumented)
   ScaleUp = "ScaleUp",
   // (undocumented)
+  ScaleVolume = "ScaleVolume",
+  // (undocumented)
   ScheduleEventAction = "ScheduleEventAction",
   // (undocumented)
   ScopeTemplate = "ScopeTemplate",
+  // (undocumented)
+  ScreenCast = "ScreenCast",
   // (undocumented)
   Script = "Script",
   // (undocumented)
@@ -5377,11 +5619,17 @@ enum IconNames {
   // (undocumented)
   SearchIssueMirrored = "SearchIssueMirrored",
   // (undocumented)
+  SearchNearby = "SearchNearby",
+  // (undocumented)
+  SecondaryNav = "SecondaryNav",
+  // (undocumented)
   Section = "Section",
   // (undocumented)
   Sections = "Sections",
   // (undocumented)
   SecurityGroup = "SecurityGroup",
+  // (undocumented)
+  SeeDo = "SeeDo",
   // (undocumented)
   SelectAll = "SelectAll",
   // (undocumented)
@@ -5405,6 +5653,8 @@ enum IconNames {
   // (undocumented)
   Settings = "Settings",
   // (undocumented)
+  Shapes = "Shapes",
+  // (undocumented)
   Share = "Share",
   // (undocumented)
   ShareiOS = "ShareiOS",
@@ -5419,6 +5669,8 @@ enum IconNames {
   // (undocumented)
   ShieldSolid = "ShieldSolid",
   // (undocumented)
+  Shirt = "Shirt",
+  // (undocumented)
   Shop = "Shop",
   // (undocumented)
   ShoppingCart = "ShoppingCart",
@@ -5427,9 +5679,13 @@ enum IconNames {
   // (undocumented)
   ShopServer = "ShopServer",
   // (undocumented)
+  ShowGrid = "ShowGrid",
+  // (undocumented)
   ShowResults = "ShowResults",
   // (undocumented)
   ShowResultsMirrored = "ShowResultsMirrored",
+  // (undocumented)
+  ShowTimeAs = "ShowTimeAs",
   // (undocumented)
   SidePanel = "SidePanel",
   // (undocumented)
@@ -5455,13 +5711,19 @@ enum IconNames {
   // (undocumented)
   SkiResorts = "SkiResorts",
   // (undocumented)
+  SkypeArrow = "SkypeArrow",
+  // (undocumented)
   SkypeCheck = "SkypeCheck",
+  // (undocumented)
+  SkypeCircleArrow = "SkypeCircleArrow",
   // (undocumented)
   SkypeCircleCheck = "SkypeCircleCheck",
   // (undocumented)
   SkypeCircleClock = "SkypeCircleClock",
   // (undocumented)
   SkypeCircleMinus = "SkypeCircleMinus",
+  // (undocumented)
+  SkypeCircleSlash = "SkypeCircleSlash",
   // (undocumented)
   SkypeClock = "SkypeClock",
   // (undocumented)
@@ -5481,11 +5743,17 @@ enum IconNames {
   // (undocumented)
   SkypeMinus = "SkypeMinus",
   // (undocumented)
+  SkypeSlash = "SkypeSlash",
+  // (undocumented)
   Slider = "Slider",
   // (undocumented)
   SliderHandleSize = "SliderHandleSize",
   // (undocumented)
   SliderThumb = "SliderThumb",
+  // (undocumented)
+  Slideshow = "Slideshow",
+  // (undocumented)
+  SnapToGrid = "SnapToGrid",
   // (undocumented)
   Snooze = "Snooze",
   // (undocumented)
@@ -5515,6 +5783,8 @@ enum IconNames {
   // (undocumented)
   Speakers = "Speakers",
   // (undocumented)
+  SpecialEvent = "SpecialEvent",
+  // (undocumented)
   SpeedHigh = "SpeedHigh",
   // (undocumented)
   Split = "Split",
@@ -5529,7 +5799,13 @@ enum IconNames {
   // (undocumented)
   Stack = "Stack",
   // (undocumented)
+  StackColumnChart = "StackColumnChart",
+  // (undocumented)
   StackedBarChart = "StackedBarChart",
+  // (undocumented)
+  StackedColumnChart2 = "StackedColumnChart2",
+  // (undocumented)
+  StackedColumnChart2Fill = "StackedColumnChart2Fill",
   // (undocumented)
   StackedLineChart = "StackedLineChart",
   // (undocumented)
@@ -5551,6 +5827,8 @@ enum IconNames {
   // (undocumented)
   StarburstSolid = "StarburstSolid",
   // (undocumented)
+  StatusCircleBlock = "StatusCircleBlock",
+  // (undocumented)
   StatusCircleBlock2 = "StatusCircleBlock2",
   // (undocumented)
   StatusCircleCheckmark = "StatusCircleCheckmark",
@@ -5568,6 +5846,8 @@ enum IconNames {
   StatusCircleQuestionMark = "StatusCircleQuestionMark",
   // (undocumented)
   StatusCircleRing = "StatusCircleRing",
+  // (undocumented)
+  StatusCircleSync = "StatusCircleSync",
   // (undocumented)
   StatusErrorFull = "StatusErrorFull",
   // (undocumented)
@@ -5599,6 +5879,8 @@ enum IconNames {
   // (undocumented)
   Stopwatch = "Stopwatch",
   // (undocumented)
+  StorageOptical = "StorageOptical",
+  // (undocumented)
   StoreLogo16 = "StoreLogo16",
   // (undocumented)
   StoreLogoMed20 = "StoreLogoMed20",
@@ -5610,6 +5892,10 @@ enum IconNames {
   StreamingOff = "StreamingOff",
   // (undocumented)
   StreamLogo = "StreamLogo",
+  // (undocumented)
+  Street = "Street",
+  // (undocumented)
+  StreetsideSplitMinimize = "StreetsideSplitMinimize",
   // (undocumented)
   Strikethrough = "Strikethrough",
   // (undocumented)
@@ -5651,11 +5937,17 @@ enum IconNames {
   // (undocumented)
   SyncOccurence = "SyncOccurence",
   // (undocumented)
+  SyncStatus = "SyncStatus",
+  // (undocumented)
+  SyncStatusSolid = "SyncStatusSolid",
+  // (undocumented)
   SyncToPC = "SyncToPC",
   // (undocumented)
   System = "System",
   // (undocumented)
   Tab = "Tab",
+  // (undocumented)
+  TabCenter = "TabCenter",
   // (undocumented)
   Table = "Table",
   // (undocumented)
@@ -5666,6 +5958,12 @@ enum IconNames {
   TabletMode = "TabletMode",
   // (undocumented)
   TabletSelected = "TabletSelected",
+  // (undocumented)
+  TabOneColumn = "TabOneColumn",
+  // (undocumented)
+  TabThreeColumn = "TabThreeColumn",
+  // (undocumented)
+  TabTwoColumn = "TabTwoColumn",
   // (undocumented)
   Tag = "Tag",
   // (undocumented)
@@ -5710,6 +6008,8 @@ enum IconNames {
   Teamwork = "Teamwork",
   // (undocumented)
   Teeth = "Teeth",
+  // (undocumented)
+  Telemarketer = "Telemarketer",
   // (undocumented)
   TemporaryUser = "TemporaryUser",
   // (undocumented)
@@ -5785,15 +6085,17 @@ enum IconNames {
   // (undocumented)
   ToDoLogoInverse = "ToDoLogoInverse",
   // (undocumented)
+  ToDoLogoOutline = "ToDoLogoOutline",
+  // (undocumented)
   ToDoLogoTop = "ToDoLogoTop",
   // (undocumented)
   ToggleBorder = "ToggleBorder",
   // (undocumented)
   ToggleFilled = "ToggleFilled",
   // (undocumented)
-  ToggleOff = "ToggleOff",
+  ToggleLeft = "ToggleLeft",
   // (undocumented)
-  ToggleOn = "ToggleOn",
+  ToggleRight = "ToggleRight",
   // (undocumented)
   ToggleThumb = "ToggleThumb",
   // (undocumented)
@@ -5821,6 +6123,8 @@ enum IconNames {
   // (undocumented)
   TransitionPush = "TransitionPush",
   // (undocumented)
+  Translate = "Translate",
+  // (undocumented)
   Trending12 = "Trending12",
   // (undocumented)
   TriangleDown12 = "TriangleDown12",
@@ -5828,6 +6132,8 @@ enum IconNames {
   TriangleLeft12 = "TriangleLeft12",
   // (undocumented)
   TriangleRight12 = "TriangleRight12",
+  // (undocumented)
+  TriangleShape = "TriangleShape",
   // (undocumented)
   TriangleShapeSolid = "TriangleShapeSolid",
   // (undocumented)
@@ -5852,6 +6158,8 @@ enum IconNames {
   TripleColumn = "TripleColumn",
   // (undocumented)
   TripleColumnEdit = "TripleColumnEdit",
+  // (undocumented)
+  TripleColumnWide = "TripleColumnWide",
   // (undocumented)
   Trophy = "Trophy",
   // (undocumented)
@@ -5905,6 +6213,8 @@ enum IconNames {
   // (undocumented)
   UnSetColor = "UnSetColor",
   // (undocumented)
+  UnstackSelected = "UnstackSelected",
+  // (undocumented)
   Unsubscribe = "Unsubscribe",
   // (undocumented)
   UnsyncFolder = "UnsyncFolder",
@@ -5913,6 +6223,8 @@ enum IconNames {
   // (undocumented)
   Up = "Up",
   // (undocumented)
+  UpgradeAnalysis = "UpgradeAnalysis",
+  // (undocumented)
   Upload = "Upload",
   // (undocumented)
   UserEvent = "UserEvent",
@@ -5920,6 +6232,8 @@ enum IconNames {
   UserFollowed = "UserFollowed",
   // (undocumented)
   UserGauge = "UserGauge",
+  // (undocumented)
+  UserOptional = "UserOptional",
   // (undocumented)
   UserPause = "UserPause",
   // (undocumented)
@@ -5937,11 +6251,17 @@ enum IconNames {
   // (undocumented)
   VennDiagram = "VennDiagram",
   // (undocumented)
+  VerifiedBrand = "VerifiedBrand",
+  // (undocumented)
   VersionControlPush = "VersionControlPush",
   // (undocumented)
   VerticalDistributeCenter = "VerticalDistributeCenter",
   // (undocumented)
   Video = "Video",
+  // (undocumented)
+  Video360Generic = "Video360Generic",
+  // (undocumented)
+  VideoLightOff = "VideoLightOff",
   // (undocumented)
   VideoOff = "VideoOff",
   // (undocumented)
@@ -5965,6 +6285,8 @@ enum IconNames {
   // (undocumented)
   VisioDiagram = "VisioDiagram",
   // (undocumented)
+  VisioDiagramSync = "VisioDiagramSync",
+  // (undocumented)
   VisioDocument = "VisioDocument",
   // (undocumented)
   VisioLogo = "VisioLogo",
@@ -5978,6 +6300,12 @@ enum IconNames {
   VisioLogoInverse = "VisioLogoInverse",
   // (undocumented)
   VisioLogoInverse16 = "VisioLogoInverse16",
+  // (undocumented)
+  VisioOnlineLogo32 = "VisioOnlineLogo32",
+  // (undocumented)
+  VisioOnlineLogoCloud32 = "VisioOnlineLogoCloud32",
+  // (undocumented)
+  VisioOnlineLogoFill32 = "VisioOnlineLogoFill32",
   // (undocumented)
   VisualBasicLanguage = "VisualBasicLanguage",
   // (undocumented)
@@ -6023,6 +6351,10 @@ enum IconNames {
   // (undocumented)
   Warning12 = "Warning12",
   // (undocumented)
+  WarningSolid = "WarningSolid",
+  // (undocumented)
+  WebComponents = "WebComponents",
+  // (undocumented)
   WebPublish = "WebPublish",
   // (undocumented)
   Website = "Website",
@@ -6034,6 +6366,8 @@ enum IconNames {
   WhiteBoardApp32 = "WhiteBoardApp32",
   // (undocumented)
   WifiEthernet = "WifiEthernet",
+  // (undocumented)
+  WifiWarning4 = "WifiWarning4",
   // (undocumented)
   WindDirection = "WindDirection",
   // (undocumented)
@@ -6067,6 +6401,8 @@ enum IconNames {
   // (undocumented)
   WorkItem = "WorkItem",
   // (undocumented)
+  WorkItemAlert = "WorkItemAlert",
+  // (undocumented)
   WorkItemBar = "WorkItemBar",
   // (undocumented)
   WorkItemBarSolid = "WorkItemBarSolid",
@@ -6085,7 +6421,9 @@ enum IconNames {
   // (undocumented)
   ZoomIn = "ZoomIn",
   // (undocumented)
-  ZoomOut = "ZoomOut"
+  ZoomOut = "ZoomOut",
+  // (undocumented)
+  ZoomToFit = "ZoomToFit"
 }
 
 // @public (undocumented)
@@ -6761,7 +7099,7 @@ interface IDialogContent {
 }
 
 // @public (undocumented)
-interface IDialogContentProps extends React.Props<DialogContentBase> {
+interface IDialogContentProps extends React.ClassAttributes<DialogContentBase> {
   className?: string;
   closeButtonAriaLabel?: string;
   componentRef?: IRefObject<IDialogContent>;
@@ -6839,7 +7177,7 @@ interface IDialogFooterStyles {
 }
 
 // @public (undocumented)
-interface IDialogProps extends React.Props<DialogBase>, IWithResponsiveModeState, IAccessiblePopupProps {
+interface IDialogProps extends React.ClassAttributes<DialogBase>, IWithResponsiveModeState, IAccessiblePopupProps {
   // @deprecated
   ariaDescribedById?: string;
   // @deprecated
@@ -6941,7 +7279,7 @@ interface IDocumentCard {
 }
 
 // @public (undocumented)
-interface IDocumentCardActionsProps extends React.Props<DocumentCardActions> {
+interface IDocumentCardActionsProps extends React.ClassAttributes<DocumentCardActions> {
   actions: IButtonProps[];
   componentRef?: IRefObject<{}>;
   views?: Number;
@@ -6957,14 +7295,14 @@ interface IDocumentCardActivityPerson {
 }
 
 // @public (undocumented)
-interface IDocumentCardActivityProps extends React.Props<DocumentCardActivity> {
+interface IDocumentCardActivityProps extends React.ClassAttributes<DocumentCardActivity> {
   activity: string;
   componentRef?: IRefObject<{}>;
   people: IDocumentCardActivityPerson[];
 }
 
 // @public (undocumented)
-interface IDocumentCardLocationProps extends React.Props<DocumentCardLocation> {
+interface IDocumentCardLocationProps extends React.ClassAttributes<DocumentCardLocation> {
   ariaLabel?: string;
   componentRef?: IRefObject<{}>;
   location: string;
@@ -6973,7 +7311,7 @@ interface IDocumentCardLocationProps extends React.Props<DocumentCardLocation> {
 }
 
 // @public (undocumented)
-interface IDocumentCardLogoProps extends React.Props<DocumentCardLogo> {
+interface IDocumentCardLogoProps extends React.ClassAttributes<DocumentCardLogo> {
   componentRef?: IRefObject<{}>;
   logoIcon: string;
   logoName?: string;
@@ -7018,14 +7356,14 @@ interface IDocumentCardProps extends IBaseProps<IDocumentCard> {
 }
 
 // @public (undocumented)
-interface IDocumentCardStatusProps extends React.Props<DocumentCardStatus> {
+interface IDocumentCardStatusProps extends React.ClassAttributes<DocumentCardStatus> {
   componentRef?: IRefObject<{}>;
   status: string;
   statusIcon?: string;
 }
 
 // @public (undocumented)
-interface IDocumentCardTitleProps extends React.Props<DocumentCardTitle> {
+interface IDocumentCardTitleProps extends React.ClassAttributes<DocumentCardTitle> {
   componentRef?: IRefObject<{}>;
   shouldTruncate?: boolean;
   showAsSecondaryTitle?: boolean;
@@ -7263,7 +7601,7 @@ interface IFacepilePersona extends React.ButtonHTMLAttributes<HTMLButtonElement 
 }
 
 // @public (undocumented)
-interface IFacepileProps extends React.Props<FacepileBase> {
+interface IFacepileProps extends React.ClassAttributes<FacepileBase> {
   addButtonProps?: IButtonProps;
   ariaDescription?: string;
   // @deprecated
@@ -10083,7 +10421,7 @@ interface ISuggestionModel<T> {
 }
 
 // @public (undocumented)
-interface ISuggestionsControlProps<T> extends React.Props<any>, ISuggestionsCoreProps<T> {
+interface ISuggestionsControlProps<T> extends React.ClassAttributes<any>, ISuggestionsCoreProps<T> {
   className?: string;
   completeSuggestion: () => void;
   footerItemsProps?: ISuggestionsHeaderFooterProps[];
@@ -10104,7 +10442,7 @@ interface ISuggestionsControlState<T> {
 }
 
 // @public (undocumented)
-interface ISuggestionsCoreProps<T> extends React.Props<any> {
+interface ISuggestionsCoreProps<T> extends React.ClassAttributes<any> {
   componentRef?: IRefObject<{}>;
   onRenderSuggestion?: (props: T, suggestionItemProps: T) => JSX.Element;
   onSuggestionClick: (ev?: React.MouseEvent<HTMLElement>, item?: any, index?: number) => void;

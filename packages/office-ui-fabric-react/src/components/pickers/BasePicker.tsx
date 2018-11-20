@@ -471,7 +471,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       // on the event
       relatedTarget = document.activeElement;
     }
-    if (relatedTarget && !elementContains(this.root.value!, relatedTarget as HTMLElement)) {
+    if (relatedTarget && !elementContains(this.root.current!, relatedTarget as HTMLElement)) {
       this.setState({ isFocused: false });
       if (this.props.onBlur) {
         this.props.onBlur(ev as React.FocusEvent<HTMLInputElement>);
