@@ -2,6 +2,20 @@
   "name": "@uifabric/icons",
   "entries": [
     {
+      "version": "6.3.0",
+      "tag": "@uifabric/icons_v6.3.0",
+      "date": "Tue, 20 Nov 2018 20:12:42 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Icons: Add new font files that were missed from the most recent update.",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "02c5ffd162c334369b9f4b03b03d972bcb10a970"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.2.0",
       "tag": "@uifabric/icons_v6.2.0",
       "date": "Tue, 20 Nov 2018 13:32:17 GMT",

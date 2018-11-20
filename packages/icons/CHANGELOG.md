@@ -1,6 +1,13 @@
 # Change Log - @uifabric/icons
 
-This log was last generated on Tue, 20 Nov 2018 13:32:17 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Nov 2018 20:12:42 GMT and should not be manually modified.
+
+## 6.3.0
+Tue, 20 Nov 2018 20:12:42 GMT
+
+### Minor changes
+
+- Icons: Add new font files that were missed from the most recent update.
 
 ## 6.2.0
 Tue, 20 Nov 2018 13:32:17 GMT
