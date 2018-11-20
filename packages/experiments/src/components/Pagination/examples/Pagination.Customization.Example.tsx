@@ -48,6 +48,7 @@ export class PaginationCustomizationExample extends React.Component<{}, IPaginat
       />
     );
   }
+
   private onPageChange = (index: number): void => {
     this.setState({
       selectedPageIndex: index

@@ -45,12 +45,8 @@ export class PaginationBase extends BaseComponent<IPaginationProps> {
       pageCount,
       selectedPageIndex,
       format,
-      strings,
       styles,
-      theme,
-      itemsPerPage,
-      totalItemCount,
-      onRenderVisibleItemLabel
+      theme
     } = this.props;
 
     this._classNames = getClassNames(styles!, {
@@ -97,14 +93,8 @@ export class PaginationBase extends BaseComponent<IPaginationProps> {
       );
     }
 
-    let visibleItemLabel;
-    if (onRenderVisibleItemLabel) {
-      visibleItemLabel = onRenderVisibleItemLabel();
-    } else if (itemsPerPage && totalItemCount) {
-      const leftItemIndex = selectedPageIndex! * itemsPerPage + 1;
-      const rightItemsIndex = Math.min((selectedPageIndex! + 1) * itemsPerPage, totalItemCount);
-      visibleItemLabel = `${leftItemIndex} ${strings!.divider} ${rightItemsIndex} ${strings!.of} ${totalItemCount}`;
-    }
+    const visibleItemLabel = this._renderVisibleItemLabel();
+
     return (
       <div className={this._classNames.root}>
         <div>
@@ -169,7 +159,7 @@ export class PaginationBase extends BaseComponent<IPaginationProps> {
     this.handleSelectedPage(this.props.pageCount - 1);
   };
 
-  private onComboBoxChanged = (option: IComboBoxOption, index: number, value: string) => {
+  private onComboBoxChanged = (option: IComboBoxOption, index: number) => {
     if (option !== undefined) {
       this.handleSelectedPage(index);
     }
@@ -239,5 +229,21 @@ export class PaginationBase extends BaseComponent<IPaginationProps> {
     }
 
     return pageList;
+  }
+
+  private _renderVisibleItemLabel(): string | null {
+    const { selectedPageIndex, strings, itemsPerPage, totalItemCount, onRenderVisibleItemLabel } = this.props;
+
+    if (itemsPerPage && totalItemCount) {
+      const leftItemIndex = selectedPageIndex! * itemsPerPage + 1;
+      const rightItemsIndex = Math.min((selectedPageIndex! + 1) * itemsPerPage, totalItemCount);
+      if (onRenderVisibleItemLabel) {
+        return onRenderVisibleItemLabel(leftItemIndex, rightItemsIndex, totalItemCount, strings!.divider, strings!.of);
+      } else {
+        return `${leftItemIndex} ${strings!.divider} ${rightItemsIndex} ${strings!.of} ${totalItemCount}`;
+      }
+    }
+
+    return null;
   }
 }

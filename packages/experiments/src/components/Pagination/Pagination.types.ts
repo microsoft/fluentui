@@ -96,9 +96,21 @@ export interface IPaginationProps {
    */
   onPageChange?: (index: number) => void;
   /**
-   * provide a string for the visible item label.
+   * provide a string for the visible item label if localization of this string is needed.
+   * @param fromItemIndex calculated based on @see totalItemCount , @see itemsPerPage and @see selectedPageIndex
+   * @param toItemIndex calculated based on @see totalItemCount , @see itemsPerPage and @see selectedPageIndex
+   * @param totalItem @see totalItemCount
+   * @param divider @see the divider string between @param fromItemIndex and @param toItemIndex
+   * @param stringOf the string 'of'
+   * @default default string format: `${fromItemIndex} ${divider} ${toItemIndex} ${stringOf} ${totalItemCount}`
    */
-  onRenderVisibleItemLabel?: () => string;
+  onRenderVisibleItemLabel?: (
+    fromItemIndex?: number,
+    toItemIndex?: number,
+    totalItemCount?: number,
+    divider?: string,
+    stringOf?: string
+  ) => string;
 }
 
 export enum PaginationFormat {
