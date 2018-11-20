@@ -3,6 +3,7 @@ import { IComponent, IStyleableComponentProps } from '../../Foundation';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IComponentAs, IRefObject } from '../../Utilities';
+import { IRawStyleBase } from '@uifabric/merge-styles/lib/IRawStyleBase';
 
 export type IToggleComponent = IComponent<IToggleProps, IToggleViewProps, IToggleStyles>;
 
@@ -114,18 +115,7 @@ export interface IToggleStyleVariablesTypes {
   pillHoveredBackground?: string;
   pillBorderColor?: string;
   pillHoveredBorderColor?: string;
-  pillJustifyContent?:
-    | 'initial'
-    | 'inherit'
-    | 'unset'
-    | 'flex-start'
-    | 'flex-end'
-    | 'center'
-    | 'space-between'
-    | 'space-around'
-    | 'space-evenly'
-    | 'stretch'
-    | undefined;
+  pillJustifyContent?: IRawStyleBase['justifyContent'];
   pillHighContrastBackground?: string;
   pillHighContrastHoveredBackground?: string;
   pillHighContrastBorderColor?: string;

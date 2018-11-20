@@ -1,4 +1,4 @@
-import { IToggleComponent, IToggleStyles, IToggleStyleVariablesTypes } from './Toggle.types';
+import { IToggleComponent, IToggleStyles, IToggleStyleVariablesTypes, IToggleStyleVariables, IToggleStates } from './Toggle.types';
 import { getFocusStyle, getGlobalClassNames, HighContrastSelector, concatStyleSets } from '../../Styling';
 import { processVariables } from '../../utilities/VariableProcessing';
 
@@ -17,7 +17,7 @@ export const ToggleStyles: IToggleComponent['styles'] = props => {
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  const toggleVariables = processVariables({
+  const toggleStyleVariables: IToggleStyleVariables = {
     baseState: {},
 
     enabled: {
@@ -45,7 +45,7 @@ export const ToggleStyles: IToggleComponent['styles'] = props => {
       pillHoveredBackground: semanticColors.inputBackgroundCheckedHovered,
       pillBorderColor: 'transparent',
       pillHoveredBorderColor: 'transparent',
-      pillJustifyContent: 'flex-end' as IToggleStyleVariablesTypes['pillJustifyContent'],
+      pillJustifyContent: 'flex-end',
       pillHighContrastBackground: 'WindowText',
       pillHighContrastHoveredBackground: 'Highlight',
       pillHighContrastBorderColor: 'Highlight',
@@ -58,7 +58,7 @@ export const ToggleStyles: IToggleComponent['styles'] = props => {
     checkedDisabled: {
       pillBackground: semanticColors.disabledBodyText,
       pillBorderColor: 'transparent',
-      pillJustifyContent: 'flex-end' as IToggleStyleVariablesTypes['pillJustifyContent'],
+      pillJustifyContent: 'flex-end',
 
       thumbBackground: semanticColors.disabledBackground,
 
@@ -66,8 +66,10 @@ export const ToggleStyles: IToggleComponent['styles'] = props => {
       textHighContrastColor: 'GrayText'
     },
 
-    styleVariables
-  });
+    ...styleVariables
+  };
+
+  const toggleVariables = processVariables(toggleStyleVariables);
 
   function getToggleStylesFromState(state: IToggleStyleVariablesTypes): Partial<IToggleStyles> {
     if (state) {
@@ -206,15 +208,15 @@ export const ToggleStyles: IToggleComponent['styles'] = props => {
     return {};
   }
 
-  function getToggleStylesFromVariant(): Partial<IToggleStyles> {
+  function getToggleStylesFromVariant(variantVariables: { [PState in IToggleStates]: IToggleStyleVariablesTypes }): Partial<IToggleStyles> {
     return concatStyleSets(
-      getToggleStylesFromState(toggleVariables.baseState),
-      !disabled && !checked && getToggleStylesFromState(toggleVariables.enabled),
-      disabled && !checked && getToggleStylesFromState(toggleVariables.disabled),
-      !disabled && checked && getToggleStylesFromState(toggleVariables.checked),
-      disabled && checked && getToggleStylesFromState(toggleVariables.checkedDisabled)
+      getToggleStylesFromState(variantVariables.baseState),
+      !disabled && !checked && getToggleStylesFromState(variantVariables.enabled),
+      disabled && !checked && getToggleStylesFromState(variantVariables.disabled),
+      !disabled && checked && getToggleStylesFromState(variantVariables.checked),
+      disabled && checked && getToggleStylesFromState(variantVariables.checkedDisabled)
     );
   }
 
-  return concatStyleSets({ root: getFocusStyle(theme) }, getToggleStylesFromVariant(), { root: className });
+  return concatStyleSets({ root: getFocusStyle(theme) }, getToggleStylesFromVariant(toggleVariables), { root: className });
 };
