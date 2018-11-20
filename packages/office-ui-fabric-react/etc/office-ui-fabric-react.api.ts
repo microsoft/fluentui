@@ -9566,6 +9566,7 @@ export function isElementVisible(element: HTMLElement | undefined | null): boole
 
 // @public
 interface ISemanticColors extends ISemanticTextColors {
+  accentButtonBackground: string;
   blockingBackground: string;
   bodyBackground: string;
   bodyDivider: string;
@@ -9623,6 +9624,7 @@ interface ISemanticColors extends ISemanticTextColors {
 
 // @public (undocumented)
 interface ISemanticTextColors {
+  accentButtonText: string;
   actionLink: string;
   actionLinkHovered: string;
   bodySubtext: string;
@@ -9634,11 +9636,14 @@ interface ISemanticTextColors {
   buttonTextDisabled: string;
   buttonTextHovered: string;
   buttonTextPressed: string;
+  disabledBodySubtext: string;
   disabledBodyText: string;
   disabledSubtext: string;
   disabledText: string;
   errorText: string;
   inputPlaceholderText: string;
+  inputText: string;
+  inputTextHovered: string;
   link: string;
   linkHovered: string;
   listText: string;
