@@ -104,7 +104,7 @@ export type IToggleViewProps = Pick<IToggleProps, 'as' | 'label' | 'ariaLabel' |
     /**
      * Reference to the toggle button.
      */
-    toggleButton?: React.RefObject<HTMLButtonElement>;
+    toggleButtonRef?: React.RefObject<HTMLButtonElement>;
   };
 
 /**

@@ -218,5 +218,5 @@ export const ToggleStyles: IToggleComponent['styles'] = props => {
     );
   }
 
-  return concatStyleSets({ root: getFocusStyle(theme) }, getToggleStylesFromVariant(toggleVariables), { root: className });
+  return concatStyleSets(getToggleStylesFromVariant(toggleVariables), { root: className });
 };

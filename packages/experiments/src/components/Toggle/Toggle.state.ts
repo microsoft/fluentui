@@ -2,10 +2,10 @@ import * as React from 'react';
 import { IToggle, IToggleProps, IToggleViewProps } from './Toggle.types';
 import { BaseState } from '../../utilities/BaseState';
 
-export type IToggleState = Pick<IToggleViewProps, 'checked' | 'onChange' | 'onClick' | 'text' | 'toggleButton'>;
+export type IToggleState = Pick<IToggleViewProps, 'checked' | 'onChange' | 'onClick' | 'text' | 'toggleButtonRef'>;
 
 export class ToggleState extends BaseState<IToggleProps, IToggleViewProps, IToggleState> implements IToggle {
-  private _toggleButton = React.createRef<HTMLButtonElement>();
+  private _toggleButtonRef = React.createRef<HTMLButtonElement>();
 
   constructor(props: ToggleState['props']) {
     super(props, {
@@ -21,13 +21,13 @@ export class ToggleState extends BaseState<IToggleProps, IToggleViewProps, ITogg
       text: !!props.defaultChecked ? props.onText : props.offText,
       onChange: this._noop,
       onClick: this._onClick,
-      toggleButton: this._toggleButton
+      toggleButtonRef: this._toggleButtonRef
     };
   }
 
   public focus = () => {
-    if (this._toggleButton.current) {
-      this._toggleButton.current.focus();
+    if (this._toggleButtonRef.current) {
+      this._toggleButtonRef.current.focus();
     }
   };
 

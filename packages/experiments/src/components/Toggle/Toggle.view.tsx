@@ -5,7 +5,7 @@ import { IToggleComponent } from './Toggle.types';
 import { inputProperties, getNativeProps } from '../../Utilities';
 
 export const ToggleView: IToggleComponent['view'] = props => {
-  const { as: RootType = 'div', label, text, ariaLabel, checked, disabled, onChange, keytipProps, onClick, toggleButton } = props;
+  const { as: RootType = 'div', label, text, ariaLabel, checked, disabled, onChange, keytipProps, onClick, toggleButtonRef } = props;
   const toggleNativeProps = getNativeProps(this.props, inputProperties, ['defaultChecked']);
 
   return (
@@ -27,7 +27,7 @@ export const ToggleView: IToggleComponent['view'] = props => {
               id={this._id}
               type="button"
               role="switch" // ARIA 1.1 definition; "checkbox" in ARIA 1.0
-              ref={toggleButton}
+              ref={toggleButtonRef}
               aria-disabled={disabled}
               aria-checked={checked}
               aria-label={ariaLabel}
