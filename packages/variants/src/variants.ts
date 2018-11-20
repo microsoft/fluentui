@@ -344,8 +344,10 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
     primaryButtonBackgroundPressed: !fullTheme.isInverted ? p.themeLight : p.themeTertiary,
     primaryButtonBorder: 'transparent',
     primaryButtonText: !fullTheme.isInverted ? p.themePrimary : p.neutralPrimary,
-    primaryButtonTextHovered: !fullTheme.isInverted ? p.themeDark : p.neutralPrimary,
-    primaryButtonTextPressed: !fullTheme.isInverted ? p.themeDark : p.neutralPrimary,
+    primaryButtonTextHovered: !fullTheme.isInverted ? p.themeDark : p.neutralDark,
+    primaryButtonTextPressed: !fullTheme.isInverted ? p.themeDark : p.neutralDark,
+    accentButtonBackground: p.white,
+    accentButtonText: p.themePrimary,
 
     menuBackground: p.white,
     menuDivider: p.neutralTertiaryAlt,
