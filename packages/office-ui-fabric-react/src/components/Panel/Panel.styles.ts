@@ -132,7 +132,13 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         pointerEvents: 'none',
         opacity: 1,
         cursor: 'pointer',
-        transition: `opacity ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`
+        transition: `opacity ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`,
+        selectors: {
+          '@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)': {
+            // For IE high contrast mode
+            backgroundColor: 'transparent'
+          }
+        }
       },
       isOpen && {
         cursor: 'pointer',
