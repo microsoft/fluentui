@@ -35,7 +35,6 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
         border: 'none',
         cursor: 'pointer',
         display: 'inline',
-        fontWeight: theme.fonts.medium.fontWeight,
         margin: 0,
         overflow: 'inherit',
         padding: 0,
