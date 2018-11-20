@@ -18,4 +18,5 @@ export interface ISerifs {
  * 1) finalize names
  * 2) finalize steps
  * 3) document each prop
+ * 4) add equivalents to SASS exports
  */
