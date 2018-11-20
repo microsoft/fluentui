@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import { KeyCodes, createRef } from '../../Utilities';
+import { KeyCodes } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { FocusTrapZone } from './FocusTrapZone';
 
@@ -349,7 +349,7 @@ describe('FocusTrapZone', () => {
 
   describe('Focusing the FTZ', () => {
     function setupTest(focusPreviouslyFocusedInnerElement: boolean) {
-      const focusTrapZoneRef = createRef<FocusTrapZone>();
+      const focusTrapZoneRef = React.createRef<FocusTrapZone>();
       const topLevelDiv = ReactTestUtils.renderIntoDocument(
         <div onFocusCapture={_onFocus}>
           <FocusTrapZone

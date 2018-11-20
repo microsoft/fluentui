@@ -4,7 +4,7 @@ import { IPersonaProps } from '../../../Persona';
 import { IRefObject } from '../../../Utilities';
 
 // tslint:disable-next-line:no-any
-export interface ISuggestionsCoreProps<T> extends React.Props<any> {
+export interface ISuggestionsCoreProps<T> extends React.ClassAttributes<any> {
   /**
    * Gets the component ref.
    */
@@ -54,7 +54,7 @@ export interface ISuggestionsCoreProps<T> extends React.Props<any> {
 }
 
 // tslint:disable-next-line:no-any
-export interface ISuggestionsControlProps<T> extends React.Props<any>, ISuggestionsCoreProps<T> {
+export interface ISuggestionsControlProps<T> extends React.ClassAttributes<any>, ISuggestionsCoreProps<T> {
   /**
    * An ARIA label for the container that is the parent of the suggestions header items.
    */

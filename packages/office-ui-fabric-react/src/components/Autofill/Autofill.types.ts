@@ -108,10 +108,10 @@ export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputEleme
  * Deprecated, do not use.
  * @deprecated do not use, will be removed in 6.0
  */
-export interface IBaseAutoFill extends IAutofill { }
+export interface IBaseAutoFill extends IAutofill {}
 
 /**
  * Deprecated, do not use.
  * @deprecated do not use, will be removed in 6.0
  */
-export interface IBaseAutoFillProps extends IAutofillProps { }
+export interface IBaseAutoFillProps extends IAutofillProps {}
