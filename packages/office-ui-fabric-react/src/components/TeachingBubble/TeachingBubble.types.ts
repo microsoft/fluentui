@@ -5,7 +5,7 @@ import { TeachingBubbleContentBase } from './TeachingBubbleContent.base';
 import { IImageProps } from '../../Image';
 import { IButtonProps } from '../../Button';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
-import { ICalloutProps } from '../../Callout';
+import { ICalloutProps, ICalloutContentStyles, ICalloutContentStyleProps } from '../../Callout';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
@@ -123,4 +123,10 @@ export interface ITeachingBubbleStyles {
   primaryButton: IStyle;
   secondaryButton: IStyle;
   subText: IStyle;
+  subComponentStyles: ITeachingBubbleSubComponentStyles;
+}
+
+export interface ITeachingBubbleSubComponentStyles {
+  /** Refers to the callout that hosts the teaching bubble. */
+  callout: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
 }
