@@ -83,8 +83,8 @@ export const styles: IStackComponent['styles'] = props => {
         selectors: {
           '> *': childStyles,
 
-          // apply gap margin to every direct child except the first non-empty direct child
-          '> *:not(:empty) ~ *': [
+          // apply gap margin to every direct child except the first direct child
+          '> *:not(:first-child)': [
             horizontal && {
               marginLeft: `${hGap.value}${hGap.unit}`
             },

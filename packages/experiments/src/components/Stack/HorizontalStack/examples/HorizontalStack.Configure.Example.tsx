@@ -281,10 +281,11 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
   };
 
   private _range = (start: number, end: number): number[] => {
-    const length = end - start + 1;
-    return Array(length)
-      .fill(start)
-      .map((value: number, index: number) => start + index);
+    const result = [];
+    for (let i = start; i <= end; i++) {
+      result.push(i);
+    }
+    return result;
   };
 
   private _onBoxShadowChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {

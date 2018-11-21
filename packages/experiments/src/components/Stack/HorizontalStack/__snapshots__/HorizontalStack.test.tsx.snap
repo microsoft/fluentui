@@ -21,7 +21,7 @@ exports[`HorizontalStack renders default HorizontalStack correctly 1`] = `
         text-overflow: ellipsis;
         white-space: nowrap;
       }
-      & > *:not(:empty) ~ * {
+      & > *:not(:first-child) {
         margin-left: 0px;
       }
       & > *:not(.ms-StackItem) {
@@ -58,7 +58,7 @@ exports[`HorizontalStack renders gap correctly 1`] = `
         text-overflow: ellipsis;
         white-space: nowrap;
       }
-      & > *:not(:empty) ~ * {
+      & > *:not(:first-child) {
         margin-left: 5px;
       }
       & > *:not(.ms-StackItem) {
@@ -95,7 +95,7 @@ exports[`HorizontalStack renders growing items correctly 1`] = `
         text-overflow: ellipsis;
         white-space: nowrap;
       }
-      & > *:not(:empty) ~ * {
+      & > *:not(:first-child) {
         margin-left: 0px;
       }
       & > *:not(.ms-StackItem) {
@@ -158,7 +158,7 @@ exports[`HorizontalStack renders item alignments correctly 1`] = `
         text-overflow: ellipsis;
         white-space: nowrap;
       }
-      & > *:not(:empty) ~ * {
+      & > *:not(:first-child) {
         margin-left: 0px;
       }
       & > *:not(.ms-StackItem) {
@@ -291,7 +291,7 @@ exports[`HorizontalStack renders shrinking items correctly 1`] = `
         text-overflow: ellipsis;
         white-space: nowrap;
       }
-      & > *:not(:empty) ~ * {
+      & > *:not(:first-child) {
         margin-left: 0px;
       }
       & > *:not(.ms-StackItem) {
