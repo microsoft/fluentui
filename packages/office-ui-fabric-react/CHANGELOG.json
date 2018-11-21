@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.131.3",
+      "tag": "office-ui-fabric-react_v5.131.3",
+      "date": "Tue, 20 Nov 2018 12:28:25 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "9e463663bb36ff5016da5f2cb7dc771483ab97bd",
+            "comment": "ComboBox: Update ComboBox to allow for empty string to be submitted"
+          },
+          {
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "9e463663bb36ff5016da5f2cb7dc771483ab97bd",
+            "comment": "ComboBox: update isOptionSelected logic to take into acount updated values for currentPendingValue"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.131.2",
       "tag": "office-ui-fabric-react_v5.131.2",
       "date": "Fri, 09 Nov 2018 12:26:42 GMT",
