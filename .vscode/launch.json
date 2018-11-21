@@ -75,6 +75,22 @@
       }
     },
     {
+      "name": "Debug npm start (fabric-website)",
+      "type": "node",
+      "request": "launch",
+      // scripts/start.js generates this script path and launches a subprocess (which is harder
+      // to debug), so in the launch configuration we start the script directly instead.
+      "program": "${workspaceRoot}/scripts/node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+      "stopOnEntry": true,
+      "cwd": "${workspaceRoot}/apps/fabric-website",
+      "runtimeExecutable": null,
+      // Use the config file for fabric-website, plus command line options used in start.js
+      "args": ["--nolazy", "--debug", "--config", "${workspaceRoot}/apps/fabric-website/webpack.serve.config.js", "--open"],
+      "env": {
+        "NODE_ENV": "development"
+      }
+    },
+    {
       "name": "Run ssr tests",
       "type": "node",
       "request": "launch",
