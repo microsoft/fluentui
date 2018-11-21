@@ -162,7 +162,8 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       showCloseButton,
       calendarProps,
       underlined,
-      allFocusable
+      allFocusable,
+      calendarAs: CalendarType = Calendar
     } = this.props;
     const { isDatePickerShown, formattedDate, selectedDate, errorMessage } = this.state;
 
@@ -221,7 +222,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
             onPositioned={this._onCalloutPositioned}
           >
             <FocusTrapZone isClickableOutsideFocusTrap={true} disableFirstFocus={this.props.disableAutoFocus}>
-              <Calendar
+              <CalendarType
                 {...calendarProps}
                 onSelectDate={this._onSelectDate}
                 onDismiss={this._calendarDismissed}

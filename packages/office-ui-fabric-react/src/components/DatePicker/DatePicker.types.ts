@@ -2,7 +2,7 @@ import { DayOfWeek, ICalendarProps } from '../../Calendar';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { ICalendarFormatDateCallbacks } from '../Calendar/Calendar.types';
 import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IBaseProps, IStyleFunction } from '../../Utilities';
+import { IRefObject, IBaseProps, IStyleFunction, IComponentAs } from '../../Utilities';
 
 export interface IDatePicker {
   /** Sets focus to the text field */
@@ -33,6 +33,11 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAtt
    * Pass calendar props to calendar component
    */
   calendarProps?: ICalendarProps;
+
+  /**
+   * Custom Calendar to be used for date picking
+   */
+  calendarAs?: IComponentAs<ICalendarProps>;
 
   /**
    * Callback issued when a date is selected
