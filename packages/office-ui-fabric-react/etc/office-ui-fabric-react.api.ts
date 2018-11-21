@@ -376,6 +376,8 @@ class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBas
   // (undocumented)
   protected onKeyDown: (ev: React.KeyboardEvent<HTMLElement>) => void;
   // (undocumented)
+  protected onRenderSearchInputTarget(): JSX.Element | null;
+  // (undocumented)
   protected onSelectionChange(): void;
   // (undocumented)
   protected onSuggestionClick: (ev: React.MouseEvent<HTMLElement>, item: any, index: number) => void;
