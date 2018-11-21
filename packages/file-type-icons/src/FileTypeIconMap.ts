@@ -1,7 +1,7 @@
 /**
  * Enumeration of icon file names, and what extensions they map to.
  * Please keep items alphabetical. Items without extensions may require specific logic in the code to map.
- * Track icon accuracy status here: https://msft-my.spoppe.com/personal/caperez_microsoft_com/Documents/Missing%20List.xlsx?web=1
+ * Always use getFileTypeIconProps to get the most up-to-date icon at the right pixel density.
  */
 export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   accdb: { extensions: ['accdb', 'mdb'] },
@@ -35,6 +35,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'wv'
     ]
   },
+  channelfolder: {},
   code: {
     extensions: [
       'abap',
@@ -241,7 +242,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   css: {}, // we dont have the icon yet, but i believe we want it, snapping to 'code' for now
   csv: { extensions: ['csv'] },
   docset: {},
-  docx: { extensions: ['doc', 'docm', 'docx'] },
+  docx: { extensions: ['doc', 'docm', 'docx', 'docb'] },
   dotx: { extensions: ['dot', 'dotm', 'dotx'] },
   email: { extensions: ['eml', 'msg', 'ost', 'pst'] },
   exe: { extensions: ['application', 'appref-ms', 'apk', 'app', 'appx', 'exe', 'ipa', 'msi', 'xap'] },
@@ -250,7 +251,8 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   genericfile: {},
   html: { extensions: ['htm', 'html', 'mht'] },
   link: { extensions: ['lnk', 'link', 'url', 'website', 'webloc'] },
-  listitem: { extensions: ['listitem'] },
+  linkedfolder: {},
+  splist: { extensions: ['listitem'] },
   model: {
     extensions: [
       '3ds',
@@ -323,13 +325,15 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   photo360: {},
   potx: { extensions: ['pot', 'potm', 'potx'] },
   ppsx: { extensions: ['pps', 'ppsm', 'ppsx'] },
-  pptx: { extensions: ['ppt', 'pptm', 'pptx'] },
+  pptx: { extensions: ['ppt', 'pptm', 'pptx', 'sldx', 'sldm'] },
   presentation: { extensions: ['odp', 'gslides', 'key'] },
   pub: { extensions: ['pub'] },
   spo: { extensions: ['aspx'] },
+  sponews: {},
   spreadsheet: { extensions: ['ods', 'gsheet', 'numbers'] },
   rtf: { extensions: ['epub', 'gdoc', 'odt', 'rtf', 'wri', 'pages'] },
   sharedfolder: {},
+  sway: {},
   sysfile: {
     extensions: [
       'bak',
@@ -364,7 +368,26 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   },
   txt: { extensions: ['dif', 'diff', 'readme', 'out', 'plist', 'properties', 'text', 'txt'] },
   vector: {
-    extensions: ['ai', 'dgn', 'gdraw', 'pd', 'emf', 'eps', 'indd', 'indt', 'ps', 'svg', 'svgz', 'wmf', 'oxps', 'xps', 'xd', 'sketch']
+    extensions: [
+      'ai',
+      'dgn',
+      'gdraw',
+      'pd',
+      'emf',
+      'eps',
+      'fig',
+      'indd',
+      'indt',
+      'indb',
+      'ps',
+      'svg',
+      'svgz',
+      'wmf',
+      'oxps',
+      'xps',
+      'xd',
+      'sketch'
+    ]
   },
   video: {
     extensions: [
