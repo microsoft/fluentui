@@ -1,7 +1,6 @@
 import * as React from 'react';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { IPageNumberProps } from './PageNumber.types';
-
-import { buttonProperties, getNativeProps } from '../../Utilities';
 
 export class PageNumber extends React.Component<IPageNumberProps, {}> {
   constructor(props: IPageNumberProps) {
@@ -9,22 +8,16 @@ export class PageNumber extends React.Component<IPageNumberProps, {}> {
   }
 
   public render(): JSX.Element {
-    const { ariaLabel, page, selected } = this.props;
+    const { ariaLabel, page, selected, className } = this.props;
 
     return (
-      <button
-        {...getNativeProps(this.props, buttonProperties)}
-        key={page}
-        onClick={this.onClick}
-        aria-selected={selected}
-        aria-label={ariaLabel}
-      >
+      <DefaultButton key={page} onClick={this.onClick} aria-selected={selected} aria-label={ariaLabel} styles={{ root: className }}>
         {page}
-      </button>
+      </DefaultButton>
     );
   }
 
   private onClick = () => {
-    this.props.applyPage(this.props.page - 1);
+    this.props.onClick(this.props.page - 1);
   };
 }

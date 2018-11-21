@@ -42,8 +42,8 @@ export function getStyles(props: IPaginationStyleProps): IPaginationStyles {
       buttonStyles,
       {
         verticalAlign: 'middle',
-        width: '32px',
-        height: '32px',
+        minWidth: '32px',
+        minHeight: '32px',
         color: palette.black,
         selectors: {
           '&:aria-selected=true': {

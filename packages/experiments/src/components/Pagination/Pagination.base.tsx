@@ -193,7 +193,7 @@ export class PaginationBase extends BaseComponent<IPaginationProps> {
         page={index + 1}
         ariaLabel={ariaLabel}
         selected={isSelected}
-        applyPage={this.handleSelectedPage}
+        onClick={this.handleSelectedPage}
         className={this._classNames.pageNumber}
       />
     );

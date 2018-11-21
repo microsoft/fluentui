@@ -1,12 +1,12 @@
 export interface IPageNumberProps {
   /** The call back function when click on the page number . */
-  applyPage: (page: number) => void;
-   /** The page number. This should be starting from 1, i.e., index + 1 */
+  onClick: (page: number) => void;
+  /** The page number. This should be starting from 1, i.e., index + 1 */
   page: number;
-   /** If this page if currently selected */
+  /** If this page if currently selected */
   selected: boolean;
-   /** The aria label template.*/
+  /** The aria label template.*/
   ariaLabel?: string;
-   /** The className */
+  /** The className */
   className?: string;
 }

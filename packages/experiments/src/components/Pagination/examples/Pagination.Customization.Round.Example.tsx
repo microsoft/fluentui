@@ -34,21 +34,23 @@ export class PaginationCustomizationRoundExample extends React.Component<{}, IPa
             height: '32px',
             textAlign: 'center',
             selectors: {
-              ':hover': { color: '#0078d4' },
+              ':hover': {
+                borderRadius: '16px'
+              },
               '&:aria-selected=true': {
                 backgroundColor: '#0078d4',
                 fontWeight: 'bold',
                 borderRadius: '16px',
                 color: 'white'
               },
-              '&:hover:aria-selected=true': { color: 'white' },
-              '&:hover[aria-selected=true]': { color: 'white' },
               '&[aria-selected=true]': {
                 backgroundColor: '#0078d4',
                 fontWeight: 'bold',
                 borderRadius: '16px',
                 color: 'white'
-              }
+              },
+              '&:hover:aria-selected=true': { color: 'white' },
+              '&:hover[aria-selected=true]': { color: 'white' }
             }
           }
         }}
