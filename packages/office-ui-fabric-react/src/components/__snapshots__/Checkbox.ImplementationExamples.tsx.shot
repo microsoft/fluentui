@@ -399,7 +399,7 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
             ms-Checkbox-checkbox
             {
               align-items: center;
-              border-color: #a6a6a6;
+              border-color: #c8c8c8;
               border-style: solid;
               border-width: 1px;
               box-sizing: border-box;
@@ -533,8 +533,8 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
             ms-Checkbox-checkbox
             {
               align-items: center;
-              background: #a6a6a6;
-              border-color: #a6a6a6;
+              background: #c8c8c8;
+              border-color: #c8c8c8;
               border-style: solid;
               border-width: 1px;
               box-sizing: border-box;
