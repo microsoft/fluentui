@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 08 Nov 2018 04:17:34 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Nov 2018 13:34:56 GMT and should not be manually modified.
+
+## 6.41.1
+Wed, 21 Nov 2018 13:34:56 GMT
+
+### Patches
+
+- Toggle: Reetructured Toggle to use style variables.
 
 ## 6.41.0
 Thu, 08 Nov 2018 04:17:34 GMT
