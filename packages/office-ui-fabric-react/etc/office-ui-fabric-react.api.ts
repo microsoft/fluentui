@@ -10471,11 +10471,11 @@ interface IToggleStyles {
 
 // @public (undocumented)
 interface ITooltip {
-  dismiss: () => void;
 }
 
 // @public (undocumented)
 interface ITooltipHost {
+  hideTooltip: () => void;
 }
 
 // @public
@@ -12226,13 +12226,7 @@ export function toMatrix<T>(items: T[], columnCount: number): T[][];
 class TooltipBase extends BaseComponent<ITooltipProps, any>, implements ITooltip {
   constructor(props: ITooltipProps);
   // (undocumented)
-  componentDidMount(): void;
-  // (undocumented)
-  componentWillUnmount(): void;
-  // (undocumented)
   static defaultProps: Partial<ITooltipProps>;
-  // (undocumented)
-  dismiss(): void;
   // (undocumented)
   render(): JSX.Element;
 }
@@ -12248,12 +12242,14 @@ enum TooltipDelay {
 }
 
 // @public (undocumented)
-class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHostState> {
+class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHostState>, implements ITooltipHost {
   constructor(props: ITooltipHostProps);
   // (undocumented)
   static defaultProps: {
     delay: TooltipDelay;
   }
+  // (undocumented)
+  hideTooltip: () => void;
   // (undocumented)
   render(): JSX.Element;
 }

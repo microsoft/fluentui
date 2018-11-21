@@ -7,7 +7,7 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 
 const getClassNames = classNamesFunction<ITooltipStyleProps, ITooltipStyles>();
 
-export class TooltipBase extends BaseComponent<ITooltipProps, any> implements ITooltip {
+export class TooltipBase extends BaseComponent<ITooltipProps, any> {
   // Specify default props values
   public static defaultProps: Partial<ITooltipProps> = {
     directionalHint: DirectionalHint.topCenter,
