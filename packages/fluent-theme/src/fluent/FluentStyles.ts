@@ -1,4 +1,5 @@
 import { BreadcrumbStyles } from './styles/Breadcrumb.styles';
+import { CalloutContentStyles } from './styles/Callout.styles';
 import { CheckboxStyles } from './styles/Checkbox.styles';
 import { ChoiceGroupOptionStyles } from './styles/ChoiceGroupOption.styles';
 import { ColorPickerStyles, ColorRectangleStyles, ColorSliderStyles } from './styles/ColorPicker.styles';
@@ -32,6 +33,9 @@ import { ColorPickerGridCellStyles } from './styles/ColorPickerGridCell.styles';
 export const FluentStyles: any = {
   Breadcrumb: {
     styles: BreadcrumbStyles
+  },
+  CalloutContent: {
+    styles: CalloutContentStyles
   },
   ColorPicker: {
     styles: ColorPickerStyles
