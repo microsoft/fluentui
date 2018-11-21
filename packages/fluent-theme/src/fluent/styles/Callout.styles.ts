@@ -10,7 +10,7 @@ export const CalloutContentStyles = (props: ICalloutContentStyleProps) => {
       boxShadow: Depths.depth16
     },
     beakCurtain: {
-      backgroundColor: 'transparent'
+      borderRadius: fluentBorderRadius
     },
     calloutMain: {
       borderRadius: fluentBorderRadius
