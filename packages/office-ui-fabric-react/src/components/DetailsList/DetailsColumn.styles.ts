@@ -191,9 +191,13 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
 
     borderWhileDragging: [
       {
-        borderStyle: 'solid',
-        borderWidth: 1,
-        borderColor: palette.themePrimary
+        selectors: {
+          '.ms-DetailsHeader &.ms-DetailsHeader-cell': {
+            borderStyle: 'solid',
+            borderWidth: 1,
+            borderColor: palette.themePrimary
+          }
+        }
       }
     ]
   };
