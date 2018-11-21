@@ -31,7 +31,7 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAtt
   theme?: ITheme;
 
   /**
-   * Pass calendar props to calendar component
+   * Pass callout props to callout component
    */
   calloutProps?: ICalloutProps;
 
