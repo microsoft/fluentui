@@ -8,9 +8,9 @@ import { IStyle, ITheme } from '../../Styling';
 
 export interface ITooltipHost {
   /**
-   * Hides the tooltip
+   * Dismisses the tooltip
    */
-  hideTooltip: () => void;
+  dismiss: () => void;
 }
 
 export enum TooltipOverflowMode {

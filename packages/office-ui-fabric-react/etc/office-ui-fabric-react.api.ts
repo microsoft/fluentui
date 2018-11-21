@@ -10475,7 +10475,7 @@ interface ITooltip {
 
 // @public (undocumented)
 interface ITooltipHost {
-  hideTooltip: () => void;
+  dismiss: () => void;
 }
 
 // @public
@@ -10521,7 +10521,6 @@ interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | TooltipBas
   delay?: TooltipDelay;
   directionalHint?: DirectionalHint;
   directionalHintForRTL?: DirectionalHint;
-  dismiss?: () => void;
   maxWidth?: string | null;
   onRenderContent?: IRenderFunction<ITooltipProps>;
   styles?: IStyleFunctionOrObject<ITooltipStyleProps, ITooltipStyles>;
@@ -12223,8 +12222,7 @@ class ToggleBase extends BaseComponent<IToggleProps, IToggleState>, implements I
 export function toMatrix<T>(items: T[], columnCount: number): T[][];
 
 // @public (undocumented)
-class TooltipBase extends BaseComponent<ITooltipProps, any>, implements ITooltip {
-  constructor(props: ITooltipProps);
+class TooltipBase extends BaseComponent<ITooltipProps, any> {
   // (undocumented)
   static defaultProps: Partial<ITooltipProps>;
   // (undocumented)
@@ -12249,7 +12247,7 @@ class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHostState
     delay: TooltipDelay;
   }
   // (undocumented)
-  hideTooltip: () => void;
+  dismiss: () => void;
   // (undocumented)
   render(): JSX.Element;
 }

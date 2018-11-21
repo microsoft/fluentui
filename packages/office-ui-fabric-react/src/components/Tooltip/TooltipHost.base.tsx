@@ -105,7 +105,7 @@ export class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHo
     );
   }
 
-  public hideTooltip = (): void => {
+  public dismiss = (): void => {
     this._hideTooltip();
   };
 
@@ -136,7 +136,7 @@ export class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHo
     const { overflowMode } = this.props;
 
     if (TooltipHostBase._currentVisibleTooltip && TooltipHostBase._currentVisibleTooltip !== this) {
-      TooltipHostBase._currentVisibleTooltip.hideTooltip();
+      TooltipHostBase._currentVisibleTooltip.dismiss();
     }
     TooltipHostBase._currentVisibleTooltip = this;
 
