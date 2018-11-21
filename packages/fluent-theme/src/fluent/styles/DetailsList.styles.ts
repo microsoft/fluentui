@@ -19,6 +19,13 @@ export const DetailsRowStyles = (props: IDetailsRowStyleProps) => {
   return {
     root: [
       getFocusStyle(theme, -1, undefined, undefined, palette.neutralSecondary, palette.white),
+      {
+        selectors: {
+          ':focus $check': {
+            opacity: 1
+          }
+        }
+      },
       isSelected && [
         {
           background: palette.neutralLight,
