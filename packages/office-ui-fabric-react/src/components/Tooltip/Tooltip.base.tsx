@@ -84,7 +84,9 @@ export class TooltipBase extends BaseComponent<ITooltipProps, any> implements IT
   }
 
   public componentWillUnmount(): void {
-    TooltipBase._currentVisibleTooltip = undefined;
+    if (TooltipBase._currentVisibleTooltip === this) {
+      TooltipBase._currentVisibleTooltip = undefined;
+    }
   }
 
   public dismiss(): void {
