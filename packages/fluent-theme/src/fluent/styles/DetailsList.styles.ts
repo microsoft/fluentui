@@ -1,6 +1,5 @@
 import { ICheckStyleProps } from 'office-ui-fabric-react/lib/Check';
 import { IDetailsRowStyleProps } from 'office-ui-fabric-react/lib/DetailsList';
-import { getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
 
 export const CheckStyles = (props: ICheckStyleProps) => {
   const { theme, checked } = props;
