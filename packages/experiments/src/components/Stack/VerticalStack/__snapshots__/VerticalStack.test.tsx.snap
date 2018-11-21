@@ -24,9 +24,6 @@ exports[`VerticalStack renders default VerticalStack correctly 1`] = `
       & > *:not(:empty) ~ * {
         margin-top: 0px;
       }
-      & > *:empty {
-        display: none;
-      }
       & > *:not(.ms-StackItem) {
         flex-shrink: 0;
       }
@@ -64,9 +61,6 @@ exports[`VerticalStack renders gap correctly 1`] = `
       & > *:not(:empty) ~ * {
         margin-top: 5px;
       }
-      & > *:empty {
-        display: none;
-      }
       & > *:not(.ms-StackItem) {
         flex-shrink: 0;
       }
@@ -103,9 +97,6 @@ exports[`VerticalStack renders growing items correctly 1`] = `
       }
       & > *:not(:empty) ~ * {
         margin-top: 0px;
-      }
-      & > *:empty {
-        display: none;
       }
       & > *:not(.ms-StackItem) {
         flex-shrink: 0;
@@ -169,9 +160,6 @@ exports[`VerticalStack renders item alignments correctly 1`] = `
       }
       & > *:not(:empty) ~ * {
         margin-top: 0px;
-      }
-      & > *:empty {
-        display: none;
       }
       & > *:not(.ms-StackItem) {
         flex-shrink: 0;
@@ -305,9 +293,6 @@ exports[`VerticalStack renders shrinking items correctly 1`] = `
       }
       & > *:not(:empty) ~ * {
         margin-top: 0px;
-      }
-      & > *:empty {
-        display: none;
       }
       & > *:not(.ms-StackItem) {
         flex-shrink: 1;
