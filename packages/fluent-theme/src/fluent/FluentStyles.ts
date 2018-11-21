@@ -1,5 +1,5 @@
 import { BreadcrumbStyles } from './styles/Breadcrumb.styles';
-import { CheckStyles } from './styles/DetailsList.styles';
+import { CheckStyles, DetailsRowStyles } from './styles/DetailsList.styles';
 import { CheckboxStyles } from './styles/Checkbox.styles';
 import { ChoiceGroupOptionStyles } from './styles/ChoiceGroupOption.styles';
 import { ColorPickerStyles, ColorRectangleStyles, ColorSliderStyles } from './styles/ColorPicker.styles';
@@ -71,6 +71,9 @@ export const FluentStyles: any = {
   },
   DefaultButton: {
     styles: DefaultButtonStyles
+  },
+  DetailsRow: {
+    styles: DetailsRowStyles
   },
   Dialog: {
     styles: DialogStyles
