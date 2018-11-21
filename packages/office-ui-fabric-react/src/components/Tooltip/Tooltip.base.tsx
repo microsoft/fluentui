@@ -22,17 +22,10 @@ export class TooltipBase extends BaseComponent<ITooltipProps, any> implements IT
     }
   };
 
-  private static _currentVisibleTooltip: ITooltip | undefined;
   private _classNames: IProcessedStyleSet<ITooltipStyles>;
 
   constructor(props: ITooltipProps) {
     super(props);
-
-    this.dismiss = this.dismiss.bind(this);
-
-    if (TooltipBase._currentVisibleTooltip && TooltipBase._currentVisibleTooltip !== this) {
-      TooltipBase._currentVisibleTooltip.dismiss();
-    }
   }
 
   public render(): JSX.Element {
@@ -77,22 +70,6 @@ export class TooltipBase extends BaseComponent<ITooltipProps, any> implements IT
         </div>
       </Callout>
     );
-  }
-
-  public componentDidMount(): void {
-    TooltipBase._currentVisibleTooltip = this;
-  }
-
-  public componentWillUnmount(): void {
-    if (TooltipBase._currentVisibleTooltip === this) {
-      TooltipBase._currentVisibleTooltip = undefined;
-    }
-  }
-
-  public dismiss(): void {
-    if (this.props.dismiss) {
-      this.props.dismiss();
-    }
   }
 
   private _onRenderContent = (props: ITooltipProps): JSX.Element => {
