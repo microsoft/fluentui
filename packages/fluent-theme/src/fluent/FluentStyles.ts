@@ -1,5 +1,5 @@
 import { BreadcrumbStyles } from './styles/Breadcrumb.styles';
-import { CheckStyles } from './styles/Check.styles';
+import { CheckStyles } from './styles/DetailsList.styles';
 import { CheckboxStyles } from './styles/Checkbox.styles';
 import { ChoiceGroupOptionStyles } from './styles/ChoiceGroupOption.styles';
 import { ColorPickerStyles, ColorRectangleStyles, ColorSliderStyles } from './styles/ColorPicker.styles';
