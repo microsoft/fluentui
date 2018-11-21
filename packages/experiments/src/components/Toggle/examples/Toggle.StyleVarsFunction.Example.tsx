@@ -3,27 +3,12 @@ import { Toggle } from '../index';
 import { IToggleViewProps, IToggleStyleVariablesTypes } from '../Toggle.types';
 
 const styleVarsFunction = (props: IToggleViewProps): IToggleStyleVariablesTypes => {
-  const toggleVariables: IToggleStyleVariablesTypes = {};
-
-  toggleVariables.textColor = 'red';
-
-  if (!props.disabled) {
-    toggleVariables.pillBackground = 'turquoise';
-    if (props.checked) {
-      toggleVariables.pillBackground = 'navy';
-    }
-  } else {
-    toggleVariables.pillBackground = 'gainsboro';
-    if (props.checked) {
-      toggleVariables.pillBackground = 'slategrey';
-    }
-  }
-
-  if (props.checked) {
-    toggleVariables.textColor = 'green';
-  }
-
-  return toggleVariables;
+  return {
+    ...(props.checked ? { textColor: 'green' } : { textColor: 'red' }),
+    ...(props.disabled
+      ? { ...{ pillBackground: 'gainsboro' }, ...(props.checked ? { pillBackground: 'slategrey' } : {}) }
+      : { ...{ pillBackground: 'turquoise' }, ...(props.checked ? { pillBackground: 'navy' } : {}) })
+  };
 };
 
 export class ToggleStyleVarsFunctionExample extends React.Component<{}, {}> {

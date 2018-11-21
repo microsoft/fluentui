@@ -202,19 +202,13 @@ export const ToggleStyles: IToggleComponent['styles'] = props => {
   function getToggleViewStyleVariables(viewProps: IToggleViewProps): IToggleStyleVariablesTypes {
     let toggleVariables: IToggleStyleVariablesTypes = toggleBaseStateVariables;
 
-    if (!viewProps.disabled) {
-      toggleVariables = { ...toggleVariables, ...toggleEnabledVariables };
-      if (viewProps.checked) {
-        toggleVariables = { ...toggleVariables, ...toggleCheckedVariables };
-        toggleVariables = { ...toggleVariables, ...toggleCheckedEnabledVariables };
-      }
-    } else {
-      toggleVariables = { ...toggleVariables, ...toggleDisabledVariables };
-      if (viewProps.checked) {
-        toggleVariables = { ...toggleVariables, ...toggleCheckedVariables };
-        toggleVariables = { ...toggleVariables, ...toggleCheckedDisabledVariables };
-      }
-    }
+    toggleVariables = {
+      ...toggleVariables,
+      ...(viewProps.checked ? toggleCheckedVariables : {}),
+      ...(viewProps.disabled
+        ? { ...toggleDisabledVariables, ...(viewProps.checked ? toggleCheckedDisabledVariables : {}) }
+        : { ...toggleEnabledVariables, ...(viewProps.checked ? toggleCheckedEnabledVariables : {}) })
+    };
 
     return toggleVariables;
   }
