@@ -184,53 +184,59 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   };
 
   public render(): JSX.Element {
-    const { suggestedDisplayValue } = this.state;
-    const { className, inputProps, disabled } = this.props;
-
-    const selectedSuggestionAlertId = this.props.enableSelectedSuggestionAlert ? this._ariaMap.selectedSuggestionAlert : '';
-    const suggestionsAvailable = this.state.suggestionsVisible ? this._ariaMap.suggestionList : '';
+    const { className } = this.props;
 
     return (
       <div ref={this.root} className={css('ms-BasePicker', className ? className : '')} onKeyDown={this.onKeyDown}>
-        <FocusZone
-          componentRef={this.focusZone}
-          direction={FocusZoneDirection.bidirectional}
-          isInnerZoneKeystroke={this._isFocusZoneInnerKeystroke}
-        >
-          {this.getSuggestionsAlert()}
-          <SelectionZone selection={this.selection} selectionMode={SelectionMode.multiple}>
-            <div className={css('ms-BasePicker-text', styles.pickerText, this.state.isFocused && styles.inputFocused)}>
-              <span id={this._ariaMap.selectedItems} className={styles.pickerItems} role={'list'}>
-                {this.renderItems()}
-              </span>
-              {this.canAddItems() && (
-                <Autofill
-                  {...inputProps as any}
-                  className={css('ms-BasePicker-input', styles.pickerInput)}
-                  ref={this.input}
-                  onFocus={this.onInputFocus}
-                  onBlur={this.onInputBlur}
-                  onInputValueChange={this.onInputChange}
-                  suggestedDisplayValue={suggestedDisplayValue}
-                  aria-activedescendant={this.getActiveDescendant()}
-                  aria-expanded={!!this.state.suggestionsVisible}
-                  aria-haspopup="true"
-                  aria-describedby={this._ariaMap.selectedItems}
-                  autoCapitalize="off"
-                  autoComplete="off"
-                  role={'combobox'}
-                  disabled={disabled}
-                  aria-controls={`${suggestionsAvailable} ${selectedSuggestionAlertId}` || undefined}
-                  aria-owns={suggestionsAvailable || undefined}
-                  aria-autocomplete={'both'}
-                  onInputChange={this.props.onInputChange}
-                />
-              )}
-            </div>
-          </SelectionZone>
-        </FocusZone>
+        {this.onRenderSearchInputTarget()}
         {this.renderSuggestions()}
       </div>
+    );
+  }
+
+  protected onRenderSearchInputTarget(): JSX.Element | null {
+    const { suggestedDisplayValue } = this.state;
+    const { inputProps, disabled } = this.props;
+    const selectedSuggestionAlertId = this.props.enableSelectedSuggestionAlert ? this._ariaMap.selectedSuggestionAlert : '';
+    const suggestionsAvailable = this.state.suggestionsVisible ? this._ariaMap.suggestionList : '';
+    return (
+      <FocusZone
+        componentRef={this.focusZone}
+        direction={FocusZoneDirection.bidirectional}
+        isInnerZoneKeystroke={this._isFocusZoneInnerKeystroke}
+      >
+        {this.getSuggestionsAlert()}
+        <SelectionZone selection={this.selection} selectionMode={SelectionMode.multiple}>
+          <div className={css('ms-BasePicker-text', styles.pickerText, this.state.isFocused && styles.inputFocused)}>
+            <span id={this._ariaMap.selectedItems} className={styles.pickerItems} role={'list'}>
+              {this.renderItems()}
+            </span>
+            {this.canAddItems() && (
+              <Autofill
+                {...inputProps as any}
+                className={css('ms-BasePicker-input', styles.pickerInput)}
+                ref={this.input}
+                onFocus={this.onInputFocus}
+                onBlur={this.onInputBlur}
+                onInputValueChange={this.onInputChange}
+                suggestedDisplayValue={suggestedDisplayValue}
+                aria-activedescendant={this.getActiveDescendant()}
+                aria-expanded={!!this.state.suggestionsVisible}
+                aria-haspopup="true"
+                aria-describedby={this._ariaMap.selectedItems}
+                autoCapitalize="off"
+                autoComplete="off"
+                role={'combobox'}
+                disabled={disabled}
+                aria-controls={`${suggestionsAvailable} ${selectedSuggestionAlertId}` || undefined}
+                aria-owns={suggestionsAvailable || undefined}
+                aria-autocomplete={'both'}
+                onInputChange={this.props.onInputChange}
+              />
+            )}
+          </div>
+        </SelectionZone>
+      </FocusZone>
     );
   }
 
