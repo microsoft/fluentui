@@ -6689,6 +6689,7 @@ interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAttributes
   allowTextInput?: boolean;
   ariaLabel?: string;
   borderless?: boolean;
+  calendarAs?: IComponentAs<ICalendarProps>;
   calendarProps?: ICalendarProps;
   className?: string;
   componentRef?: IRefObject<IDatePicker>;
