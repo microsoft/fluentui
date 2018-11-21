@@ -27,6 +27,7 @@
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/es6-promise": "0.0.32",
     "@types/jest": "23.0.0",
+    "@types/prop-types": "15.5.3",
     "@types/react": "16.3.16",
     "@types/react-addons-test-utils": "0.14.18",
     "@types/react-dom": "16.0.5",
@@ -61,6 +62,7 @@
     "@uifabric/styling": ">=6.35.0 <7.0.0",
     "deep-assign": "^2.0.0",
     "office-ui-fabric-react": ">=6.106.2 <7.0.0",
+    "prop-types": "^15.5.10",
     "tslib": "^1.7.1"
   },
   "peerDependencies": {
