@@ -5165,7 +5165,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         border: 0;
                                       }
                                       .ms-Fabric--isFocusVisible &:focus:after {
-                                        border: 1px solid #0078d4;
+                                        border: 1px solid #666666;
                                         bottom: 1px;
                                         content: "";
                                         left: 1px;
@@ -5363,7 +5363,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         border: 0;
                                       }
                                       .ms-Fabric--isFocusVisible &:focus:after {
-                                        border: 1px solid #0078d4;
+                                        border: 1px solid #666666;
                                         bottom: 1px;
                                         content: "";
                                         left: 1px;
@@ -5789,7 +5789,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         border: 0;
                                       }
                                       .ms-Fabric--isFocusVisible &:focus:after {
-                                        border: 1px solid #0078d4;
+                                        border: 1px solid #666666;
                                         bottom: 1px;
                                         content: "";
                                         left: 1px;
@@ -5987,7 +5987,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         border: 0;
                                       }
                                       .ms-Fabric--isFocusVisible &:focus:after {
-                                        border: 1px solid #0078d4;
+                                        border: 1px solid #666666;
                                         bottom: 1px;
                                         content: "";
                                         left: 1px;
@@ -6185,7 +6185,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         border: 0;
                                       }
                                       .ms-Fabric--isFocusVisible &:focus:after {
-                                        border: 1px solid #0078d4;
+                                        border: 1px solid #666666;
                                         bottom: 1px;
                                         content: "";
                                         left: 1px;
