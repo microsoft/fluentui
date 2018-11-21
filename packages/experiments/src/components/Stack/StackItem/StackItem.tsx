@@ -7,7 +7,7 @@ const view: IStackItemComponent['view'] = props => {
   const childNodes: React.ReactElement<{}>[] = React.Children.toArray(props.children) as React.ReactElement<{}>[];
   const first = childNodes[0];
   if (!first) {
-    return <span />;
+    return null;
   }
 
   return <span className={props.classNames.root}>{first}</span>;

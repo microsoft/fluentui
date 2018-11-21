@@ -36,10 +36,6 @@ export const styles: IStackComponent['styles'] = props => {
 
   // selectors to be applied regardless of wrap or direction
   const commonSelectors = {
-    '> *:empty': {
-      display: 'none'
-    },
-
     // flexShrink styles are applied by the StackItem
     '> *:not(.ms-StackItem)': {
       flexShrink: shrinkItems ? 1 : 0

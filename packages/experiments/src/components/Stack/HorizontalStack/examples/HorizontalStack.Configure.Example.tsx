@@ -22,6 +22,7 @@ export interface IExampleState {
   paddingBottom: number;
   horizontalAlignment: HorizontalAlignment;
   verticalAlignment: VerticalAlignment;
+  hideEmptyChildren: boolean;
   emptyChildren: string[];
 }
 
@@ -43,6 +44,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
       paddingBottom: 0,
       horizontalAlignment: 'left',
       verticalAlignment: 'top',
+      hideEmptyChildren: false,
       emptyChildren: []
     };
   }
@@ -63,6 +65,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
       paddingBottom,
       horizontalAlignment,
       verticalAlignment,
+      hideEmptyChildren,
       emptyChildren
     } = this.state;
 
@@ -208,7 +211,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
           </HorizontalStack.Item>
         </HorizontalStack>
 
-        <HorizontalStack gap={20}>
+        <HorizontalStack gap={20} verticalAlign="bottom">
           <HorizontalStack.Item grow>
             <Dropdown
               selectedKey={horizontalAlignment}
@@ -234,6 +237,9 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
               onChange={this._onVerticalAlignChange}
             />
           </HorizontalStack.Item>
+          <HorizontalStack.Item>
+            <Checkbox label="Hide empty children" onChange={this._onHideEmptyChildrenChange} />
+          </HorizontalStack.Item>
           <HorizontalStack.Item grow>
             <TextField label="Enter a space-separated list of empty children (e.g. 1 2 3):" onChange={this._onEmptyChildrenChange} />
           </HorizontalStack.Item>
@@ -252,7 +258,11 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
         >
           {this._range(1, numItems).map((value: number, index: number) => {
             if (emptyChildren.indexOf(value.toString()) !== -1) {
-              return <Text key={index} className={styles.item} />;
+              return hideEmptyChildren ? (
+                <HorizontalStack.Item key={index} className={styles.item} />
+              ) : (
+                <Text key={index} className={styles.item} />
+              );
             }
 
             return (
@@ -327,6 +337,10 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
 
   private _onVerticalAlignChange = (ev: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
     this.setState({ verticalAlignment: option.key as VerticalAlignment });
+  };
+
+  private _onHideEmptyChildrenChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
+    this.setState({ hideEmptyChildren: isChecked });
   };
 
   private _onEmptyChildrenChange = (ev: React.FormEvent<HTMLInputElement>, value?: string): void => {
