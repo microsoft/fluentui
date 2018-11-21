@@ -72,11 +72,6 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | Too
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<ITooltipStyleProps, ITooltipStyles>;
-
-  /**
-   * Forces the tooltip to dismiss.
-   */
-  dismiss?: () => void;
 }
 
 export enum TooltipDelay {
