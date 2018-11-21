@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.41.1",
+      "tag": "@uifabric/experiments_v6.41.1",
+      "date": "Wed, 21 Nov 2018 13:34:56 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Toggle: Reetructured Toggle to use style variables.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "7fa794c6069b30692d9eb8b8e1aa2e3e436a28de"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.106.1 <7.0.0` to `>=6.106.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.41.0",
       "tag": "@uifabric/experiments_v6.41.0",
       "date": "Thu, 08 Nov 2018 04:17:34 GMT",
