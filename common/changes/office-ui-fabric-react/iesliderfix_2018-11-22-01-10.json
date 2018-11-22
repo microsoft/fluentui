@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Number.parseFloat() method is not supported in IE11. The fix was to use parseFloat() method instead.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "afhassan@microsoft.com"
+}
