@@ -67,6 +67,15 @@ export function autobind<T extends Function>(target: any, key: string, descripto
 } | void;
 
 // @public (undocumented)
+class AutoComplete extends BasePicker<ISuggestedItem, IAutoCompleteProps> {
+  // (undocumented)
+  protected static defaultProps: {
+    onRenderSearchInputTarget: (props: any) => void;
+    onRenderSuggestionsItem: (props: ISuggestedItem) => JSX.Element;
+  }
+}
+
+// @public (undocumented)
 class Autofill extends BaseComponent<IAutofillProps, IAutofillState>, implements IAutofill {
   constructor(props: IAutofillProps);
   // (undocumented)
@@ -1788,6 +1797,10 @@ interface IAsAsyncOptions<TProps> {
   load: () => Promise<React.ReactType<TProps>>;
   onError?: (error: Error) => void;
   onLoad?: () => void;
+}
+
+// @public (undocumented)
+interface IAutoCompleteProps extends IBasePickerProps<ISuggestedItem> {
 }
 
 // @public (undocumented)
@@ -10045,6 +10058,14 @@ interface IStyleSheetConfig {
   injectionMode?: InjectionMode;
   namespace?: string;
   onInsertRule?: (rule: string) => void;
+}
+
+// @public (undocumented)
+interface ISuggestedItem {
+  // (undocumented)
+  key: string;
+  // (undocumented)
+  name: string;
 }
 
 // @public (undocumented)
