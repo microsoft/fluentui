@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "A new Component AutoComplete has been introduced based on the common use case of autosuggesting changes based on input. In order to accomplish this, the BasePicker component has been enhanced to support any type of input element which can trigger the suggestions retrieval logic",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "bishwenduk029@gmail.com"
+}
