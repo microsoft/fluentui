@@ -57,6 +57,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
   } = props;
 
   const { neutralPrimary, white, neutralSecondary, neutralLighter, neutralLight, neutralDark, neutralQuaternaryAlt, black } = theme.palette;
+  const { focusBorder } = theme.semanticColors;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -89,7 +90,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
   const shimmerRightBorderStyle = `${cellStyleProps.cellRightPadding * 4}px solid ${colors.defaultBackgroundColor}`;
   const shimmerLeftBorderStyle = `${cellStyleProps.cellLeftPadding}px solid ${colors.defaultBackgroundColor}`;
   const selectedStyles: IStyle = [
-    getFocusStyle(theme, -1, undefined, undefined, neutralSecondary, white),
+    getFocusStyle(theme, -1, undefined, undefined, focusBorder, white),
     classNames.isSelected,
     {
       color: colors.selectedMetaTextColor,
@@ -282,7 +283,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
       droppingClassName,
       theme.fonts.small,
       isCheckVisible && classNames.isCheckVisible,
-      getFocusStyle(theme, 0, undefined, undefined, neutralSecondary, white),
+      getFocusStyle(theme, 0, undefined, undefined, focusBorder, white),
       {
         borderBottom: `1px solid ${neutralLighter}`,
         background: colors.defaultBackgroundColor,
