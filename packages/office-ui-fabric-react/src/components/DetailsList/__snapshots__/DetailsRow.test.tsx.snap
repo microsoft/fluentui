@@ -312,7 +312,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
+                  border: undefined;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -445,7 +445,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
+                  border: undefined;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -578,7 +578,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
+                  border: undefined;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -1124,7 +1124,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
+                  border: undefined;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -1257,7 +1257,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
+                  border: undefined;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -1390,7 +1390,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
+                  border: undefined;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -2470,7 +2470,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
+                  border: undefined;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -2603,7 +2603,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
+                  border: undefined;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -2736,7 +2736,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
+                  border: undefined;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -3282,7 +3282,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
+                  border: undefined;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -3415,7 +3415,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
+                  border: undefined;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -3548,7 +3548,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
+                  border: undefined;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;

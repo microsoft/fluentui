@@ -88,6 +88,9 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
             display: 'block'
           }
         }
+      },
+      {
+        border: 'undefined'
       }
     ],
 
@@ -191,13 +194,9 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
 
     borderWhileDragging: [
       {
-        selectors: {
-          '.ms-DetailsHeader &.ms-DetailsHeader-cell': {
-            borderStyle: 'solid',
-            borderWidth: 1,
-            borderColor: palette.themePrimary
-          }
-        }
+        borderStyle: 'solid',
+        borderWidth: 1,
+        borderColor: palette.themePrimary
       }
     ]
   };
