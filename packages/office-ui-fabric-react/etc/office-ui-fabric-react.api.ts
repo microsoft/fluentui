@@ -316,6 +316,8 @@ class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBas
   // (undocumented)
   protected _isFocusZoneInnerKeystroke: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
   // (undocumented)
+  protected _onRenderSearchInputTarget: (props: any) => JSX.Element | null;
+  // (undocumented)
   protected addItem: (item: T) => void;
   // (undocumented)
   protected addItemByIndex: (index: number) => void;
@@ -375,8 +377,6 @@ class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBas
   protected onItemChange: (changedItem: T, index: number) => void;
   // (undocumented)
   protected onKeyDown: (ev: React.KeyboardEvent<HTMLElement>) => void;
-  // (undocumented)
-  protected onRenderSearchInputTarget(): JSX.Element | null;
   // (undocumented)
   protected onSelectionChange(): void;
   // (undocumented)
@@ -1971,6 +1971,7 @@ interface IBasePickerProps<T> extends React.Props<any> {
   onItemSelected?: (selectedItem?: T) => T | PromiseLike<T> | null;
   onRemoveSuggestion?: (item: IPersonaProps) => void;
   onRenderItem?: (props: IPickerItemProps<T>) => JSX.Element;
+  onRenderSearchInputTarget?: (props?: any) => JSX.Element;
   onRenderSuggestionsItem?: (props: T, itemProps: any) => JSX.Element;
   onResolveSuggestions: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]>;
   onValidateInput?: (input: string) => ValidationState;
