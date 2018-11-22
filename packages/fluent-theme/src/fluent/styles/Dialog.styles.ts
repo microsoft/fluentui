@@ -1,20 +1,8 @@
 import { IDialogContentStyleProps } from 'office-ui-fabric-react/lib/Dialog';
 import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
 
-import { Depths } from '../FluentDepths';
 import { FontSizes } from '../FluentType';
 import { fluentBorderRadius } from './styleConstants';
-
-export const DialogStyles = {
-  main: {
-    selectors: {
-      '.ms-Modal.ms-Dialog &': {
-        boxShadow: Depths.depth64,
-        borderRadius: fluentBorderRadius
-      }
-    }
-  }
-};
 
 export const DialogContentStyles = (props: IDialogContentStyleProps) => {
   const { theme } = props;
