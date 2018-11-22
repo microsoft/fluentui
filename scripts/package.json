@@ -52,7 +52,7 @@
     "sass-loader": "^6.0.6",
     "source-map-loader": "^0.2.1",
     "strip-json-comments": "^2.0.1",
-    "style-loader": "^0.19.0",
+    "style-loader": "^0.21.0",
     "ts-jest": "^22.4.6",
     "ts-loader": "^4.1.0",
     "tslint": "^5.7.0",

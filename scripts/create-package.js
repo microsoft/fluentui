@@ -3,6 +3,8 @@ const mustache = require('mustache');
 const argv = require('yargs').argv;
 const fs = require('fs');
 const exec = require('./exec-sync');
+const findConfig = require('./find-config');
+const readRushJson = require('./read-rush-json');
 const path = require('path');
 
 // Arguments
@@ -25,10 +27,12 @@ const today = new Date().toUTCString();
 // Paths
 const packagePath = path.join(process.cwd(), 'packages', newPackageName);
 const templateFolderPath = path.join(process.cwd(), 'scripts', 'templates');
-const rushPath = path.join(__dirname, '..', 'rush.json');
 
 // rush.json contents
-let rushJson = require(rushPath);
+const rushJson = readRushJson();
+if (!rushJson) {
+  return;
+}
 
 // Steps (mustache template names and output file paths)
 const steps = [
@@ -138,6 +142,7 @@ function updateRush() {
     shouldPublish: false
   });
 
+  const rushPath = findConfig('rush.json');
   fs.writeFile(rushPath, JSON.stringify(rushJson, null, 2), error => {
     if (!handleError(error, errorUnableToUpdateRush)) {
       return;

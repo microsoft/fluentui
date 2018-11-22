@@ -13,12 +13,20 @@
    */
   "preferredVersions": {
     /**
-     * When someone asks for "^3.0.0" make sure they get "3.11.0" when working in this repo,
+     * When someone asks for "^1.0.0" make sure they get "1.2.3" when working in this repo,
      * instead of the latest version.
      */
-    "webpack": "3.11.0",
-    "webpack-dev-server": "2.11.2",
-    "webpack-cli": "2.0.15"
+    // "some-package": "1.2.3"
+    "@types/webpack-env": "1.13.0",
+    "css-loader": "^0.28.7",
+    "enzyme": "^3.4.1",
+    "jest": "^23.1.0",
+    "react": ">=16.3.2-0 <17.0.0",
+    "react-dom": ">=16.3.2-0 <17.0.0",
+    "style-loader": "^0.21.0",
+    "webpack": "4.7.0",
+    "webpack-cli": "2.1.2",
+    "webpack-dev-server": "3.1.4"
   },
 
   /**
@@ -36,8 +44,7 @@
      * For example, allow some projects to use an older TypeScript compiler
      * (in addition to whatever "usual" version is being used by other projects in the repo):
      */
-    // "typescript": [
-    //   "~2.4.0"
-    // ]
+    // "typescript": ["~2.4.0"]
+    "webpack": [">=4.0.0"]
   }
 }
