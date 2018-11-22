@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/fluent-theme",
+      "comment": "CommandBar: Add fluent changes.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/fluent-theme",
+  "email": "v-vibr@microsoft.com"
+}

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { BaseComponent, css, createRef } from '../../Utilities';
+import { BaseComponent, css } from '../../Utilities';
 import { IDocumentCardTitleProps } from './DocumentCard.types';
 import * as stylesImport from './DocumentCard.scss';
 
@@ -22,7 +22,7 @@ const TRUNCATION_FIRST_PIECE_LONGER_BY = 10;
 const TRUNCATION_VERTICAL_OVERFLOW_THRESHOLD = 5;
 
 export class DocumentCardTitle extends BaseComponent<IDocumentCardTitleProps, IDocumentCardTitleState> {
-  private _titleElement = createRef<HTMLDivElement>();
+  private _titleElement = React.createRef<HTMLDivElement>();
   private _scrollTimerId: number;
   private _truncatedTitleAtWidth: number;
   private _isTruncated: boolean;

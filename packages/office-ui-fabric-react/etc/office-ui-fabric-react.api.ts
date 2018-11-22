@@ -168,11 +168,7 @@ class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends BaseC
   // (undocumented)
   componentWillReceiveProps(newProps: P): void;
   // (undocumented)
-  floatingPicker: {
-    (component: BaseFloatingPicker<T, IBaseFloatingPickerProps<T>> | null): void;
-    current: BaseFloatingPicker<T, IBaseFloatingPickerProps<T>> | null;
-    value: BaseFloatingPicker<T, IBaseFloatingPickerProps<T>> | null;
-  }
+  floatingPicker: React.RefObject<BaseFloatingPicker<T, IBaseFloatingPickerProps<T>>>;
   // (undocumented)
   protected floatingPickerProps: IBaseFloatingPickerProps<T>;
   // (undocumented)
@@ -180,11 +176,7 @@ class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends BaseC
   // (undocumented)
   readonly highlightedItems: T[];
   // (undocumented)
-  protected input: {
-    (component: Autofill | null): void;
-    current: Autofill | null;
-    value: Autofill | null;
-  }
+  protected input: React.RefObject<Autofill>;
   // (undocumented)
   readonly inputElement: HTMLInputElement | null;
   // (undocumented)
@@ -210,17 +202,9 @@ class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends BaseC
   // (undocumented)
   protected renderSuggestions(): JSX.Element;
   // (undocumented)
-  protected root: {
-    (component: HTMLDivElement | null): void;
-    current: HTMLDivElement | null;
-    value: HTMLDivElement | null;
-  }
+  protected root: React.RefObject<HTMLDivElement>;
   // (undocumented)
-  selectedItemsList: {
-    (component: BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>> | null): void;
-    current: BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>> | null;
-    value: BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>> | null;
-  }
+  selectedItemsList: React.RefObject<BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>>>;
   // (undocumented)
   protected selectedItemsListProps: IBaseSelectedItemsListProps<T>;
   // (undocumented)
@@ -273,11 +257,7 @@ class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extends BaseC
   // (undocumented)
   protected renderSuggestions(): JSX.Element | null;
   // (undocumented)
-  protected root: {
-    (component: HTMLDivElement | null): void;
-    current: HTMLDivElement | null;
-    value: HTMLDivElement | null;
-  }
+  protected root: React.RefObject<HTMLDivElement>;
   // (undocumented)
   protected selection: Selection;
   // (undocumented)
@@ -1895,11 +1875,11 @@ interface IBaseFloatingPicker {
 }
 
 // @public (undocumented)
-interface IBaseFloatingPickerProps<T> extends React.Props<any> {
+interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> {
   calloutWidth?: number;
   className?: string;
   // (undocumented)
-  componentRef?: (component?: IBaseFloatingPicker | null) => void;
+  componentRef?: IRefObject<IBaseFloatingPicker>;
   createGenericItem?: (input: string, isValid: boolean) => ISuggestionModel<T>;
   getTextFromItem?: (item: T, currentValue?: string) => string;
   inputElement?: HTMLInputElement | null;
@@ -7119,7 +7099,7 @@ interface IDialogContent {
 }
 
 // @public (undocumented)
-interface IDialogContentProps extends React.Props<DialogContentBase> {
+interface IDialogContentProps extends React.ClassAttributes<DialogContentBase> {
   className?: string;
   closeButtonAriaLabel?: string;
   componentRef?: IRefObject<IDialogContent>;
@@ -7197,7 +7177,7 @@ interface IDialogFooterStyles {
 }
 
 // @public (undocumented)
-interface IDialogProps extends React.Props<DialogBase>, IWithResponsiveModeState, IAccessiblePopupProps {
+interface IDialogProps extends React.ClassAttributes<DialogBase>, IWithResponsiveModeState, IAccessiblePopupProps {
   // @deprecated
   ariaDescribedById?: string;
   // @deprecated
@@ -7299,7 +7279,7 @@ interface IDocumentCard {
 }
 
 // @public (undocumented)
-interface IDocumentCardActionsProps extends React.Props<DocumentCardActions> {
+interface IDocumentCardActionsProps extends React.ClassAttributes<DocumentCardActions> {
   actions: IButtonProps[];
   componentRef?: IRefObject<{}>;
   views?: Number;
@@ -7315,14 +7295,14 @@ interface IDocumentCardActivityPerson {
 }
 
 // @public (undocumented)
-interface IDocumentCardActivityProps extends React.Props<DocumentCardActivity> {
+interface IDocumentCardActivityProps extends React.ClassAttributes<DocumentCardActivity> {
   activity: string;
   componentRef?: IRefObject<{}>;
   people: IDocumentCardActivityPerson[];
 }
 
 // @public (undocumented)
-interface IDocumentCardLocationProps extends React.Props<DocumentCardLocation> {
+interface IDocumentCardLocationProps extends React.ClassAttributes<DocumentCardLocation> {
   ariaLabel?: string;
   componentRef?: IRefObject<{}>;
   location: string;
@@ -7331,7 +7311,7 @@ interface IDocumentCardLocationProps extends React.Props<DocumentCardLocation> {
 }
 
 // @public (undocumented)
-interface IDocumentCardLogoProps extends React.Props<DocumentCardLogo> {
+interface IDocumentCardLogoProps extends React.ClassAttributes<DocumentCardLogo> {
   componentRef?: IRefObject<{}>;
   logoIcon: string;
   logoName?: string;
@@ -7376,14 +7356,14 @@ interface IDocumentCardProps extends IBaseProps<IDocumentCard> {
 }
 
 // @public (undocumented)
-interface IDocumentCardStatusProps extends React.Props<DocumentCardStatus> {
+interface IDocumentCardStatusProps extends React.ClassAttributes<DocumentCardStatus> {
   componentRef?: IRefObject<{}>;
   status: string;
   statusIcon?: string;
 }
 
 // @public (undocumented)
-interface IDocumentCardTitleProps extends React.Props<DocumentCardTitle> {
+interface IDocumentCardTitleProps extends React.ClassAttributes<DocumentCardTitle> {
   componentRef?: IRefObject<{}>;
   shouldTruncate?: boolean;
   showAsSecondaryTitle?: boolean;
@@ -7621,7 +7601,7 @@ interface IFacepilePersona extends React.ButtonHTMLAttributes<HTMLButtonElement 
 }
 
 // @public (undocumented)
-interface IFacepileProps extends React.Props<FacepileBase> {
+interface IFacepileProps extends React.ClassAttributes<FacepileBase> {
   addButtonProps?: IButtonProps;
   ariaDescription?: string;
   // @deprecated
@@ -10436,7 +10416,7 @@ interface ISuggestionModel<T> {
 }
 
 // @public (undocumented)
-interface ISuggestionsControlProps<T> extends React.Props<any>, ISuggestionsCoreProps<T> {
+interface ISuggestionsControlProps<T> extends React.ClassAttributes<any>, ISuggestionsCoreProps<T> {
   className?: string;
   completeSuggestion: () => void;
   footerItemsProps?: ISuggestionsHeaderFooterProps[];
@@ -10457,7 +10437,7 @@ interface ISuggestionsControlState<T> {
 }
 
 // @public (undocumented)
-interface ISuggestionsCoreProps<T> extends React.Props<any> {
+interface ISuggestionsCoreProps<T> extends React.ClassAttributes<any> {
   componentRef?: IRefObject<{}>;
   onRenderSuggestion?: (props: T, suggestionItemProps: T) => JSX.Element;
   onSuggestionClick: (ev?: React.MouseEvent<HTMLElement>, item?: any, index?: number) => void;

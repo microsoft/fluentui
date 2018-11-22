@@ -2,6 +2,25 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.7.0",
+      "tag": "@uifabric/fluent-theme_v0.7.0",
+      "date": "Tue, 20 Nov 2018 13:32:17 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "HoverCard: Add fluent styles to ExpandingCard and PlainCard.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "4eeee48e8e036ad585122a591405f22be2e36605"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.105.1 <7.0.0` to `>=6.106.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.6.0",
       "tag": "@uifabric/fluent-theme_v0.6.0",
       "date": "Wed, 14 Nov 2018 13:34:01 GMT",

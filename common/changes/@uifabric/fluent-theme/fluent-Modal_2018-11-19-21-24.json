@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/fluent-theme",
-      "comment": "HoverCard: Add fluent styles to ExpandingCard and PlainCard.",
+      "comment": "Modal: Add shadow and rounded corners. Remove the global className selector from Dialog.",
       "type": "minor"
     }
   ],

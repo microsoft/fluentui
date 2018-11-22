@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Dropdown, IDropdown, DropdownMenuItemType, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { BaseComponent, createRef } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import './Dropdown.Basic.Example.scss';
 
 export class DropdownBasicExample extends BaseComponent<
@@ -12,7 +12,7 @@ export class DropdownBasicExample extends BaseComponent<
     selectedItems: string[];
   }
 > {
-  private _basicDropdown = createRef<IDropdown>();
+  private _basicDropdown = React.createRef<IDropdown>();
 
   constructor(props: {}) {
     super(props);

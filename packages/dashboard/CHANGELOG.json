@@ -2,6 +2,25 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.35.1",
+      "tag": "@uifabric/dashboard_v0.35.1",
+      "date": "Tue, 20 Nov 2018 20:12:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add default fonts from fabric  for dashboard package ",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "d8b74c4568595d0f721b9f34ddfb1528676a9dfa"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.106.0 <7.0.0` to `>=6.106.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.35.0",
       "tag": "@uifabric/dashboard_v0.35.0",
       "date": "Tue, 13 Nov 2018 13:30:53 GMT",
