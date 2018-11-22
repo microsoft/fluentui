@@ -1,11 +1,11 @@
-const importKeywordRegex = /^import/gm;
 const importStatementGlobalRegex = /^import [{} a-zA-Z0-9_,*\r?\n ]*(?:from )?['"]{1}([.\/a-zA-Z0-9_@\-]+)['"]{1};.*$/gm;
 const importStatementRegex = /^import [{} a-zA-Z0-9_,*\r?\n ]*(?:from )?['"]{1}([.\/a-zA-Z0-9_@\-]+)['"]{1};.*$/;
 const pkgNameRegex = /^(@[a-z\-]+\/[a-z\-]+)\/|([a-z\-]+)\//;
-module.exports = function(options) {
+module.exports = function() {
   const path = require('path');
   const fs = require('fs');
   const chalk = require('chalk');
+  const stripJsonComments = require('strip-json-comments');
   const sourcePath = path.resolve(process.cwd(), 'src');
   const nodeModulesPath = path.resolve(process.cwd(), 'node_modules');
   const rushJsonPath = findRushJson(process.cwd());
@@ -14,7 +14,7 @@ module.exports = function(options) {
     throw new Error('lint-import: unable to find rush.json');
   }
 
-  const rush = JSON.parse(fs.readFileSync(rushJsonPath, 'utf8'));
+  const rush = JSON.parse(stripJsonComments(fs.readFileSync(rushJsonPath, 'utf8')));
   const rushPackages = rush.projects.map(project => project.packageName);
 
   const currentRushPackage = rush.projects.find(project => {
