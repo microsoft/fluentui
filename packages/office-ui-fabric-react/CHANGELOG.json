@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.131.4",
+      "tag": "office-ui-fabric-react_v5.131.4",
+      "date": "Thu, 22 Nov 2018 12:22:50 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "qiangh <nif_tony@outlook.com>",
+            "commit": "01f235760bb455d5faa2a4ad6cefa5dbad17664b",
+            "comment": "DocumentCardTitle: Fixes an infinite loop condition caused by componentDidUpdate calling _srinkTitle() over and over again due to setState being triggered every time without a stop condition.  Cherry-pick from  https://github.com/OfficeDev/office-ui-fabric-react/pull/6518/files"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.131.3",
       "tag": "office-ui-fabric-react_v5.131.3",
       "date": "Tue, 20 Nov 2018 12:28:25 GMT",

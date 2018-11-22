@@ -26,6 +26,6 @@
   },
   "dependencies": {
     "tslib": "^1.7.1",
-    "office-ui-fabric-react": ">=5.131.3 <6.0.0"
+    "office-ui-fabric-react": ">=5.131.4 <6.0.0"
   }
 }

@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 20 Nov 2018 12:28:25 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Nov 2018 12:22:50 GMT and should not be manually modified.
+
+## 5.131.4
+Thu, 22 Nov 2018 12:22:50 GMT
+
+### Patches
+
+- DocumentCardTitle: Fixes an infinite loop condition caused by componentDidUpdate calling _srinkTitle() over and over again due to setState being triggered every time without a stop condition.  Cherry-pick from  https://github.com/OfficeDev/office-ui-fabric-react/pull/6518/files
 
 ## 5.131.3
 Tue, 20 Nov 2018 12:28:25 GMT
