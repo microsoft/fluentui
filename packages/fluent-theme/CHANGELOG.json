@@ -2,6 +2,35 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.8.0",
+      "tag": "@uifabric/fluent-theme_v0.8.0",
+      "date": "Thu, 22 Nov 2018 13:36:17 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add Callout styles (also used by Tooltip)",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "81e8ada42e57dca57bf54c68a8dd0d4f5ce5cc38"
+          },
+          {
+            "comment": "CommandBar: Add fluent changes.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "437152e78a4e637fbc6fc3b3e071f7f040da905e"
+          },
+          {
+            "comment": "Modal: Add shadow and rounded corners. Remove the global className selector from Dialog.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "1eb461a6c344e4f322c5d3f32ffe9a752399a91b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.106.2 <7.0.0` to `>=6.106.3 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.7.0",
       "tag": "@uifabric/fluent-theme_v0.7.0",
       "date": "Tue, 20 Nov 2018 13:32:17 GMT",
