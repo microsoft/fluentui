@@ -184,21 +184,25 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   };
 
   public render(): JSX.Element {
-    const { className } = this.props;
+    const { className, onRenderSearchInputTarget = this._onRenderSearchInputTarget } = this.props;
 
     return (
       <div ref={this.root} className={css('ms-BasePicker', className ? className : '')} onKeyDown={this.onKeyDown}>
-        {this.onRenderSearchInputTarget()}
+        {onRenderSearchInputTarget({
+          suggestedDisplayValue: this.state.suggestedDisplayValue,
+          inputProps: this.props.inputProps,
+          disabled: this.props.disabled,
+          selectedSuggestionAlertId: this.props.enableSelectedSuggestionAlert ? this._ariaMap.selectedSuggestionAlert : '',
+          suggestionsAvailable: this.state.suggestionsVisible ? this._ariaMap.suggestionList : '',
+          onInputChange: this.onInputChange.bind(this)
+        })}
         {this.renderSuggestions()}
       </div>
     );
   }
 
-  protected onRenderSearchInputTarget(): JSX.Element | null {
-    const { suggestedDisplayValue } = this.state;
-    const { inputProps, disabled } = this.props;
-    const selectedSuggestionAlertId = this.props.enableSelectedSuggestionAlert ? this._ariaMap.selectedSuggestionAlert : '';
-    const suggestionsAvailable = this.state.suggestionsVisible ? this._ariaMap.suggestionList : '';
+  protected _onRenderSearchInputTarget = (props: any): JSX.Element | null => {
+    const { suggestedDisplayValue, inputProps, disabled, selectedSuggestionAlertId, suggestionsAvailable, onInputChange } = props;
     return (
       <FocusZone
         componentRef={this.focusZone}
@@ -218,7 +222,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
                 ref={this.input}
                 onFocus={this.onInputFocus}
                 onBlur={this.onInputBlur}
-                onInputValueChange={this.onInputChange}
+                onInputValueChange={onInputChange}
                 suggestedDisplayValue={suggestedDisplayValue}
                 aria-activedescendant={this.getActiveDescendant()}
                 aria-expanded={!!this.state.suggestionsVisible}
@@ -238,7 +242,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         </SelectionZone>
       </FocusZone>
     );
-  }
+  };
 
   protected canAddItems(): boolean {
     const { items } = this.state;

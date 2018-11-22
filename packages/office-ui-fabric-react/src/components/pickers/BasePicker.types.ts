@@ -148,6 +148,10 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * @defaultvalue false
    */
   enableSelectedSuggestionAlert?: boolean;
+  /**
+   * Function that specifies how the input element will appear.
+   */
+  onRenderSearchInputTarget?: (props?: any) => JSX.Element;
 }
 
 export interface IBasePickerSuggestionsProps {

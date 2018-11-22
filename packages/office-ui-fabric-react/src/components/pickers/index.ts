@@ -9,3 +9,4 @@ export * from './PickerItem.types';
 export * from './PeoplePicker/PeoplePicker';
 export * from './TagPicker/TagPicker';
 export * from './TagPicker/TagItem';
+export * from './AutoComplete/AutoComplete';
