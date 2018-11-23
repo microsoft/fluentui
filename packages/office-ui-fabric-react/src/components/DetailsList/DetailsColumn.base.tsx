@@ -142,12 +142,20 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
     if (this.props.isDropped) {
       if (this._root!.current!) {
         this._root!.current!.classList!.add(classNames.borderAfterDropping);
+
+        this._async.setTimeout(() => {
+          if (this._root!.current!) {
+            this._root!.current!.classList!.add(classNames.noBorderAfterDropping);
+          }
+        }, 20);
       }
+
       this._async.setTimeout(() => {
         if (this._root!.current!) {
           this._root!.current!.classList!.remove(classNames.borderAfterDropping);
+          this._root!.current!.classList!.remove(classNames.noBorderAfterDropping);
         }
-      }, 1500);
+      }, 1520);
     }
   }
 
@@ -245,6 +253,11 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
     if (itemIndex) {
       this._updateHeaderDragInfo(itemIndex);
       this._root.current.classList.add(classNames.borderWhileDragging);
+      this._async.setTimeout(() => {
+        if (this._root!.current!) {
+          this._root!.current!.classList!.add(classNames.noBorderWhileDragging);
+        }
+      }, 20);
     }
   }
 
@@ -254,6 +267,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
       this._updateHeaderDragInfo(-1, event);
     }
     this._root.current.classList.remove(classNames.borderWhileDragging);
+    this._root.current.classList.remove(classNames.noBorderWhileDragging);
   }
 
   private _updateHeaderDragInfo(itemIndex: number, event?: MouseEvent) {

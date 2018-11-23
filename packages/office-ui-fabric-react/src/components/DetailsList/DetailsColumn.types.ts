@@ -47,5 +47,7 @@ export interface IDetailsColumnStyles {
   sortIcon: IStyle;
   filterChevron: IStyle;
   borderAfterDropping: IStyle;
+  noBorderAfterDropping: IStyle;
   borderWhileDragging: IStyle;
+  noBorderWhileDragging: IStyle;
 }

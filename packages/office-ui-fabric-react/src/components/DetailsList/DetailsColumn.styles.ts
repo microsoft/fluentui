@@ -53,6 +53,20 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
     paddingLeft: 8
   };
 
+  const borderWhileDragging: IStyle = [
+    {
+      borderStyle: 'solid',
+      borderWidth: 1,
+      borderColor: palette.themePrimary
+    }
+  ];
+
+  const borderAfterDragOrDrop: IStyle = [
+    {
+      borderColor: 'transparent'
+    }
+  ];
+
   return {
     root: [
       getCellStyles(props),
@@ -179,26 +193,12 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
 
     accessibleLabel: [hiddenContentStyle],
 
-    borderAfterDropping: [
-      {
-        borderStyle: 'solid',
-        borderWidth: 1,
-        borderColor: palette.themePrimary,
-        left: -1,
-        lineHeight: 31
-      }
-    ],
+    borderWhileDragging: borderWhileDragging,
 
-    borderWhileDragging: [
-      {
-        selectors: {
-          '.ms-DetailsHeader &.ms-DetailsHeader-cell': {
-            borderStyle: 'solid',
-            borderWidth: 1,
-            borderColor: palette.themePrimary
-          }
-        }
-      }
-    ]
+    noBorderWhileDragging: [borderAfterDragOrDrop, { transition: 'border-color 0.2s ease' }],
+
+    borderAfterDropping: [borderWhileDragging, { left: -1, lineHeight: 31 }],
+
+    noBorderAfterDropping: [borderAfterDragOrDrop, { transition: 'border-color 1.5s ease' }]
   };
 };
