@@ -61,7 +61,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
         <div
           aria-disabled={false}
           aria-label="Basic example:"
-          aria-valuemax={3}
+          aria-valuemax={5}
           aria-valuemin={1}
           aria-valuenow={2}
           className=
@@ -178,7 +178,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
 
               style={
                 Object {
-                  "left": "50%",
+                  "left": "25%",
                 }
               }
             />
@@ -195,7 +195,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
                   }
               style={
                 Object {
-                  "width": "50%",
+                  "width": "25%",
                 }
               }
             />
@@ -212,7 +212,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
                   }
               style={
                 Object {
-                  "width": "50%",
+                  "width": "75%",
                 }
               }
             />
