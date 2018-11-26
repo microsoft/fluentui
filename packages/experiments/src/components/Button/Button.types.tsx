@@ -28,8 +28,9 @@ export interface IButtonProps extends IStyleableComponentProps<IButtonProps, IBu
 
   // Slots
   // TODO: should we more strongly identify slots in props? is the typing enough?
+  // TODO: add consolidated typing for Slots, like Slot<Component, Props, etc.>
   stack?: IHorizontalStackProps;
-  text?: string | ITextProps;
+  text?: string | ITextProps | JSX.Element;
   icon?: string | IIconProps | JSX.Element;
 
   primary?: boolean;

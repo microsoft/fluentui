@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Text } from '../components/Text';
 
 // TODO:
 //  * data types pass on
@@ -16,39 +17,55 @@ import * as React from 'react';
 // }
 
 // TODO: add TypeScript typeOf functions?
-// TODO: add tests for each case in this function
+// TODO: add tests for each case in this function.
+// TODO: tests should ensure props like data attributes and ID persist across all factory types
 export const createFactory = (ComponentType, options = {}) => (componentProps = {}, userProps = {}) => {
+  const debugLog = (message: string) => {
+    if (ComponentType.logMessages) {
+      console.log(message);
+    }
+  };
+
   if (userProps) {
     const propType = typeof userProps;
+    let userPropsAsChildren = false;
 
     switch (propType) {
       case 'string':
       case 'number':
       case 'boolean':
-        // console.log('createFactory: propType is string/number/boolean');
+        debugLog('createFactory: propType is string/number/boolean');
         // TODO: so defaultProp is like defaultShorthand prop... we should probably support more than one?
         if (options.defaultProp) {
           userProps = {
             [options.defaultProp]: userProps
           };
+        } else {
+          // If defaultProp doesn't exist, assign userProps as children.
+          // TODO: consider both children and props children.. what does React do when both exist? merge? if so, in what order?
+          userPropsAsChildren = true;
         }
         break;
 
       case 'function':
-        // console.log('createFactory: propType is function');
-        return userProps(componentProps);
+        debugLog('createFactory: propType is function');
+        return userProps(ComponentType, componentProps);
 
       default:
         if (React.isValidElement(userProps)) {
-          // console.log('createFactory: propType is React element');
+          debugLog('createFactory: propType is React element');
           return userProps;
         } else {
-          // console.log('createFactory: propType is object');
+          debugLog('createFactory: propType is object');
         }
         break;
     }
 
-    return <ComponentType {...componentProps} {...userProps} />;
+    if (userPropsAsChildren) {
+      return <ComponentType {...componentProps}>{userProps}</ComponentType>;
+    } else {
+      return <ComponentType {...componentProps} {...userProps} />;
+    }
   } else {
     // console.log('createFactory: no userProps');
     return <ComponentType {...componentProps} />;
@@ -86,6 +103,25 @@ export const Slot = (props = {}) => {
 
 Slot.isSlot = true;
 
+// export const SlotTemplate = (props = {}) => {
+//   const { as, children, userProps = {}, ...componentProps } = props;
+//   const children = props.children || userProps.children;
+//   const SlotComponent = userProps.as || props.as;
+
+//   if (SlotComponent.create !== undefined) {
+//     return SlotComponent.create(componentProps, userProps);
+//   }
+
+//   return (
+//     <SlotComponent {...componentProps} {...userProps}>
+//       {children}
+//     </SlotComponent>
+//   );
+// };
+
+// SlotTemplate.isSlot = true;
+
+// TODO: make sure Slot and SlotTemplate do not appear in hierarchy
 export const CreateElementWrapper = (type, props, ...children) => {
   if (type.isSlot) {
     return Slot(props);

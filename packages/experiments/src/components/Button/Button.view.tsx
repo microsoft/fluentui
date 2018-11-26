@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { IButtonComponent, IButtonViewProps } from './Button.types';
 import { Text as FabricText } from '../../Text';
+// import { Text } from '../../Text';
 import { HorizontalStack } from '../../Stack';
 import { Icon as FabricIcon } from 'office-ui-fabric-react';
 import { getNativeProps, buttonProperties } from '../../Utilities';
@@ -15,10 +16,12 @@ import * as SlotModule from '../../utilities/createSlot';
 // TODO: we will have to make create functions for any component we want to use in shorthand slots
 const Icon = props => <FabricIcon {...props} />;
 
+// Icon.logMessages = true;
 Icon.create = createFactory(Icon, { defaultProp: 'iconName' });
 
 const Text = props => <FabricText {...props} />;
 
+Text.logMessages = true;
 Text.create = createFactory(Text);
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -87,9 +90,7 @@ export const ButtonView: IButtonComponent['view'] = props => {
     >
       <HorizontalStack className={classNames.stack} as="span" gap={8} verticalAlign="center" horizontalAlign="center" {...stack}>
         <Slot as={Icon} className={classNames.icon} userProps={IconSlot} data-type="button" id="asdf" />
-        {/* <Slot as={Text} className={classNames.text} userProps={TextSlot} data-type="text" id='text-id' /> */}
-        {TextSlot && typeof TextSlot === 'string' && <Text className={classNames.text}>{TextSlot}</Text>}
-        {TextSlot && typeof TextSlot === 'object' && <Text className={classNames.text} {...TextSlot} />}
+        <Slot as={Text} className={classNames.text} userProps={TextSlot} data-type="text" id="text-id" />
         {children}
         {Menu && (
           <HorizontalStack.Item>

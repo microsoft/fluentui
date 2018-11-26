@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Button, IButtonComponent } from '../index';
 import { HorizontalStack, Text, VerticalStack } from '@uifabric/experiments';
-import { ContextualMenu, Customizer, IContextualMenuProps, Icon, CommandBar } from 'office-ui-fabric-react';
+import { ContextualMenu, Customizer, IContextualMenuProps, Icon, CommandBar, Spinner } from 'office-ui-fabric-react';
 
 const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
 const buttonMenu = (props: IContextualMenuProps) => <ContextualMenu {...props} items={menuItems} />;
@@ -47,12 +47,11 @@ const getButtonStyles: IButtonComponent['styles'] = {
   text: ButtonTheme.scopedSettings.Text.styles.root
 };
 
-// TODO: when using a VerticalStack, Buttons fill whole screen horizontally. this seems unexpected.
-//        is Button filling space intentional? if not, what is causing this? Button? Stack?
+// tslint:disable:jsx-no-lambda
 const ButtonSet = () => (
   <VerticalStack gap={headingGap} padding={8}>
     <div>
-      <VerticalStack gap={buttonGap} maxWidth={300}>
+      <VerticalStack gap={buttonGap} maxWidth={400}>
         {/* <ButtonStack>
           <Button text="Default button" />
           <Button disabled text="Disabled default button" />
@@ -70,22 +69,59 @@ const ButtonSet = () => (
           <Button icon={{ iconName: 'Share' }} text="Button with iconProps" />
           <Button icon={<Icon iconName="Download" />} text="Button with custom icon" />
         </ButtonStack> */}
-        <VerticalStack gap={buttonGap}>
-          <Button icon="share" text="Icon prop = string" />
-          <Button icon={<Icon iconName="share" />} text="Icon prop = element" />
-          <Button icon={{ iconName: 'share' }} text="Icon prop = props" />
 
-          <Button icon={{ iconName: 'share' }} styles={getButtonStyles} text="Button styles prop" />
+        <VerticalStack gap={buttonGap}>
+          <h2>Icon Slot</h2>
+          <Button icon="share" text="Icon: String" />
           <Button
-            icon={{ iconName: 'share' }}
-            text={{ content: 'Text as ITextProps with styles', styles: ButtonTheme.scopedSettings.Text.styles }}
+            icon={(IconType, iconProps) => (
+              <b>
+                Icon: <IconType {...iconProps} iconName="upload" />
+              </b>
+            )}
+            text="Icon: Function"
           />
+          <Button icon={<Spinner />} text="Icon: JSX Element" />
+          <Button icon={{ iconName: 'share' }} text="Icon: Props" />
+        </VerticalStack>
+
+        <VerticalStack gap={buttonGap}>
+          <h2>Text Slot</h2>
+          <Button icon="share" text={true}>
+            <p>Text: Boolean</p>
+          </Button>
+          <Button icon="share" text={1}>
+            <p>Text: Integer</p>
+          </Button>
+          <Button
+            icon="share"
+            text={(TextType, textProps) => (
+              <b>
+                Text: <TextType {...textProps}>TextType</TextType>
+              </b>
+            )}
+          />
+          <Button icon="share" text="Text: String" />
+          <Button icon="share" text={<Text>Text: JSX Element</Text>} />
+          <Button icon="share" text="Text: String">
+            <p>Button Child 1</p>
+            <p>Button Child 2</p>
+          </Button>
+        </VerticalStack>
+
+        <VerticalStack gap={buttonGap}>
+          <h2>Styled Buttons</h2>
           <Button
             icon={{ iconName: 'share' }}
             stack={{ styles: ButtonTheme.scopedSettings.HorizontalStack.styles }}
             text="Stack as IStackProps with styles"
           />
           <Button icon={{ iconName: 'share', styles: ButtonTheme.scopedSettings.Icon.styles }} text="Icon as IIconProps with styles" />
+          {/* <Button
+            icon={{ iconName: 'share' }}
+            text={{ content: 'Text as ITextProps with styles', styles: ButtonTheme.scopedSettings.Text.styles }}
+          /> */}
+          <Button icon={{ iconName: 'share' }} styles={getButtonStyles} text="Button styles prop" />
           <Customizer {...ButtonTheme}>
             <Button icon={{ iconName: 'share' }} text="Button scopedSettings" />
           </Customizer>

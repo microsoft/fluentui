@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { IStyle, IPalette, ISemanticColors } from '../../Styling';
 import { IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
 import { IFontVariants, IFontFamilies, IFontSizes, IFontWeights } from '../../Styling';
@@ -29,13 +28,6 @@ export interface ITextProps extends IStyleableComponentProps<ITextProps, ITextSt
    * Inline styling.
    */
   style?: React.CSSProperties;
-
-  /**
-   * Optional content to display. Can also be passed as children.
-   * Children have higher priority for display and will override this prop.
-   */
-  // TODO: is this needed? text={{children: 'text'}} also works but React props typing doesn't allow it
-  content?: React.ReactNode;
 
   /**
    * Optional font type for Text.
