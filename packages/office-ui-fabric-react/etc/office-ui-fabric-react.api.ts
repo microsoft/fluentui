@@ -12243,6 +12243,8 @@ enum TooltipDelay {
 class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHostState>, implements ITooltipHost {
   constructor(props: ITooltipHostProps);
   // (undocumented)
+  componentWillUnmount(): void;
+  // (undocumented)
   static defaultProps: {
     delay: TooltipDelay;
   }
