@@ -139,6 +139,11 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
    * @deprecated Use `text` instead.
    */
   primaryText?: string;
+
+  /**
+   * Should the persona coin change to showing the initals instead of an image on hover
+   */
+  showInitialsOnHover?: boolean;
 }
 
 export interface IPersonaProps extends IPersonaSharedProps {

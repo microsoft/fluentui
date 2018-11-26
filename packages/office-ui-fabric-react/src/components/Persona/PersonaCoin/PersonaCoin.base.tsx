@@ -20,6 +20,7 @@ const getClassNames = classNamesFunction<IPersonaCoinStyleProps, IPersonaCoinSty
 export interface IPersonaState {
   isImageLoaded?: boolean;
   isImageError?: boolean;
+  isHovered?: boolean;
 }
 
 /**
@@ -40,7 +41,8 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
 
     this.state = {
       isImageLoaded: false,
-      isImageError: false
+      isImageError: false,
+      isHovered: false
     };
   }
 
@@ -65,7 +67,8 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
       onRenderInitials = this._onRenderInitials,
       presence,
       showInitialsUntilImageLoads,
-      theme
+      theme,
+      showInitialsOnHover
     } = this.props;
 
     const size = this.props.size as PersonaSize;
@@ -90,14 +93,21 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
     });
 
     const shouldRenderInitials = Boolean(
-      !this.state.isImageLoaded && ((showInitialsUntilImageLoads && imageUrl) || !imageUrl || this.state.isImageError || hideImage)
+      (!this.state.isImageLoaded && ((showInitialsUntilImageLoads && imageUrl) || !imageUrl || this.state.isImageError || hideImage)) ||
+        (this.state.isImageLoaded && showInitialsOnHover && this.state.isHovered)
     );
 
     return (
       <div {...divProps} className={classNames.coin}>
         {// Render PersonaCoin if size is not size10
         size !== PersonaSize.size10 && size !== PersonaSize.tiny ? (
-          <div {...coinProps} className={classNames.imageArea} style={coinSizeStyle}>
+          <div
+            {...coinProps}
+            onMouseEnter={this._onCoinMouseEnter}
+            onMouseLeave={this._onCoinMouseLeave}
+            className={classNames.imageArea}
+            style={coinSizeStyle}
+          >
             {shouldRenderInitials && (
               <div
                 className={mergeStyles(
@@ -129,7 +139,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
     const { coinSize, styles, imageUrl, imageAlt, imageShouldFadeIn, imageShouldStartVisible, theme, showUnknownPersonaCoin } = this.props;
 
     // Render the Image component only if an image URL is provided
-    if (!imageUrl) {
+    if (!imageUrl || (this.props.showInitialsOnHover && this.state.isHovered)) {
       return null;
     }
 
@@ -187,5 +197,17 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
     });
 
     this.props.onPhotoLoadingStateChange && this.props.onPhotoLoadingStateChange(loadState);
+  };
+
+  private _onCoinMouseEnter = () => {
+    this.setState({
+      isHovered: true
+    });
+  };
+
+  private _onCoinMouseLeave = () => {
+    this.setState({
+      isHovered: false
+    });
   };
 }
