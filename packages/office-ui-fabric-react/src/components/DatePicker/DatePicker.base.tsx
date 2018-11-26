@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IDatePicker, IDatePickerProps, IDatePickerStrings, IDatePickerStyleProps, IDatePickerStyles } from './DatePicker.types';
-import { BaseComponent, KeyCodes, classNamesFunction, getId, getNativeProps, divProperties } from '../../Utilities';
+import { BaseComponent, KeyCodes, classNamesFunction, getId, getNativeProps, divProperties, css } from '../../Utilities';
 import { Calendar, ICalendar, DayOfWeek } from '../../Calendar';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { Callout } from '../../Callout';
@@ -161,6 +161,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       maxDate,
       showCloseButton,
       calendarProps,
+      calloutProps,
       underlined,
       allFocusable
     } = this.props;
@@ -212,11 +213,12 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
             role="dialog"
             ariaLabel={pickerAriaLabel}
             isBeakVisible={false}
-            className={classNames.callout}
             gapSpace={0}
             doNotLayer={false}
             target={this._datePickerDiv.current}
             directionalHint={DirectionalHint.bottomLeftEdge}
+            {...calloutProps}
+            className={css(classNames.callout, calloutProps && calloutProps.className)}
             onDismiss={this._calendarDismissed}
             onPositioned={this._onCalloutPositioned}
           >

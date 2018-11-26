@@ -6690,6 +6690,7 @@ interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAttributes
   ariaLabel?: string;
   borderless?: boolean;
   calendarProps?: ICalendarProps;
+  calloutProps?: ICalloutProps;
   className?: string;
   componentRef?: IRefObject<IDatePicker>;
   dateTimeFormatter?: ICalendarFormatDateCallbacks;
