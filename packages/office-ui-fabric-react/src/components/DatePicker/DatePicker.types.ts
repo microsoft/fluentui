@@ -5,7 +5,6 @@ import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IBaseProps, IStyleFunction, IComponentAs } from '../../Utilities';
 import { ICalloutProps } from '../../Callout';
 
-
 export interface IDatePicker {
   /** Sets focus to the text field */
   focus(): void;
