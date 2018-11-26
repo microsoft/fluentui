@@ -105,6 +105,12 @@ export class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHo
     );
   }
 
+  public componentWillUnmount(): void {
+    if (TooltipHostBase._currentVisibleTooltip && TooltipHostBase._currentVisibleTooltip === this) {
+      TooltipHostBase._currentVisibleTooltip = undefined;
+    }
+  }
+
   public dismiss = (): void => {
     this._hideTooltip();
   };
