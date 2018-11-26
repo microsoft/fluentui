@@ -1,0 +1,19 @@
+{
+  "name": "@uifabric/test-utilities",
+  "entries": [
+    {
+      "version": "6.0.1",
+      "tag": "@uifabric/test-utilities_v6.0.1",
+      "date": "Fri, 09 Nov 2018 13:32:57 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Publishing bits.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "a584c9c2626cfa6226ce8cad98d3d85a17a7f310"
+          }
+        ]
+      }
+    }
+  ]
+}

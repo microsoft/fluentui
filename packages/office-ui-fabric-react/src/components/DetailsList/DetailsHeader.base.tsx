@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { findDOMNode } from 'react-dom';
-import { BaseComponent, css, getRTL, getId, KeyCodes, IRenderFunction, createRef, IClassNames } from '../../Utilities';
+import { BaseComponent, css, getRTL, getId, KeyCodes, IRenderFunction, IClassNames } from '../../Utilities';
 import {
   IColumn,
   IDetailsHeaderBaseProps,
@@ -50,7 +50,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
   };
   private _classNames: IClassNames<IDetailsHeaderStyles>;
   private _rootElement: HTMLElement | undefined;
-  private _rootComponent = createRef<IFocusZone>();
+  private _rootComponent = React.createRef<IFocusZone>();
   private _id: string;
   private _draggedColumnIndex = -1;
   private _dropHintDetails: { [key: number]: IDropHintDetails } = {};
@@ -175,6 +175,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
       viewport,
       onColumnClick,
       onColumnContextMenu,
+      onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip,
       styles,
       theme
     } = this.props;
@@ -182,7 +183,6 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     const showCheckbox = selectAllVisibility !== SelectAllVisibility.none;
     const isCheckboxHidden = selectAllVisibility === SelectAllVisibility.hidden;
 
-    const { onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip } = this.props;
     if (!this._dragDropHelper && columnReorderProps) {
       this._dragDropHelper = new DragDropHelper({
         selection: {
@@ -289,6 +289,8 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
               dragDropHelper={this._dragDropHelper}
               onColumnClick={onColumnClick}
               onColumnContextMenu={onColumnContextMenu}
+              // Do not render tooltips by default, but allow for override via props.
+              onRenderColumnHeaderTooltip={this.props.onRenderColumnHeaderTooltip}
               isDropped={this._onDropIndexInfo.targetIndex === columnIndex}
               cellStyleProps={this.props.cellStyleProps}
             />,

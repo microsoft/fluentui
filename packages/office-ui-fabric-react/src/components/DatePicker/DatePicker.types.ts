@@ -2,6 +2,7 @@ import { DayOfWeek, ICalendarProps } from '../../Calendar';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { ICalendarFormatDateCallbacks } from '../Calendar/Calendar.types';
 import { IStyle, ITheme } from '../../Styling';
+import { ICalloutProps } from '../../Callout';
 import { IRefObject, IBaseProps, IStyleFunction } from '../../Utilities';
 
 export interface IDatePicker {
@@ -28,6 +29,11 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAtt
    * Theme provided by High-Order Component.
    */
   theme?: ITheme;
+
+  /**
+   * Pass callout props to callout component
+   */
+  calloutProps?: ICalloutProps;
 
   /**
    * Pass calendar props to calendar component

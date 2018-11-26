@@ -27,10 +27,10 @@ exports[`Pickers BasePicker renders BasePicker correctly 1`] = `
     >
       <div
         className="ms-BasePicker-text"
-        role="list"
       >
         <span
           id="selected-items-id__0"
+          role="list"
         />
         <input
           aria-autocomplete="both"
@@ -59,14 +59,14 @@ exports[`Pickers BasePicker renders BasePicker correctly 1`] = `
 </div>
 `;
 
-exports[`Pickers TagPicker renders TagPicker correctly 1`] = `
+exports[`Pickers BasePicker renders BasePicker with inputProps supply classnames correctly 1`] = `
 <div
   className="ms-BasePicker"
   onKeyDown={[Function]}
 >
   <div
     className="ms-FocusZone"
-    data-focuszone-id="FocusZone70"
+    data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -86,15 +86,76 @@ exports[`Pickers TagPicker renders TagPicker correctly 1`] = `
     >
       <div
         className="ms-BasePicker-text"
-        role="list"
       >
         <span
-          id="selected-items-id__69"
+          id="selected-items-id__0"
+          role="list"
         />
         <input
           aria-autocomplete="both"
           aria-controls=" "
-          aria-describedby="selected-items-id__69"
+          aria-describedby="selected-items-id__0"
+          aria-expanded={false}
+          aria-haspopup="true"
+          autoCapitalize="off"
+          autoComplete="off"
+          className="ms-BasePicker-input testclass "
+          data-lpignore={true}
+          id="pckSelectedUser"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onCompositionEnd={[Function]}
+          onCompositionStart={[Function]}
+          onFocus={[Function]}
+          onInput={[Function]}
+          onKeyDown={[Function]}
+          placeholder="Bitte einen Benutzer angeben..."
+          role="combobox"
+          value=""
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Pickers TagPicker renders TagPicker correctly 1`] = `
+<div
+  className="ms-BasePicker"
+  onKeyDown={[Function]}
+>
+  <div
+    className="ms-FocusZone"
+    data-focuszone-id="FocusZone1"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+    role="presentation"
+  >
+    <div
+      className="ms-SelectionZone"
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onDoubleClick={[Function]}
+      onFocusCapture={[Function]}
+      onKeyDown={[Function]}
+      onKeyDownCapture={[Function]}
+      onMouseDown={[Function]}
+      onMouseDownCapture={[Function]}
+      role="presentation"
+    >
+      <div
+        className="ms-BasePicker-text"
+      >
+        <span
+          id="selected-items-id__0"
+          role="list"
+        />
+        <input
+          aria-autocomplete="both"
+          aria-controls=" "
+          aria-describedby="selected-items-id__0"
           aria-expanded={false}
           aria-haspopup="true"
           autoCapitalize="off"

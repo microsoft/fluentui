@@ -137,6 +137,7 @@ exports[`Component Examples renders Dropdown.Custom.Example.tsx correctly 1`] = 
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
+      placeholder="Select an Option"
       role="listbox"
       tabIndex={0}
     >
@@ -187,7 +188,7 @@ exports[`Component Examples renders Dropdown.Custom.Example.tsx correctly 1`] = 
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
                   display: inline-block;
-                  font-family: "FabricMDL2Icons-4";
+                  font-family: "FabricMDL2Icons-5";
                   font-style: normal;
                   font-weight: normal;
                   speak: none;
@@ -226,7 +227,7 @@ exports[`Component Examples renders Dropdown.Custom.Example.tsx correctly 1`] = 
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 display: inline-block;
-                font-family: "FabricMDL2Icons-3";
+                font-family: "FabricMDL2Icons-4";
                 font-style: normal;
                 font-weight: normal;
                 speak: none;

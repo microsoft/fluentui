@@ -142,7 +142,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
   }
 
   private _onClickFocus = () => {
-    const inputElement = this._inputElement.value;
+    const inputElement = this._inputElement.current;
     if (inputElement) {
       this.focus();
       inputElement.selectionStart = inputElement.selectionEnd = 0;
@@ -150,9 +150,18 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
   };
 
   private _onFocusCapture = (ev: React.FocusEvent<HTMLElement>) => {
-    this.setState({
-      hasFocus: true
-    });
+    this.setState(
+      {
+        hasFocus: true
+      },
+      () => {
+        // IE doesn't capture the onClickFocus, so we will focus here
+        const inputElement = this._inputElement.current;
+        if (inputElement && document.activeElement !== inputElement) {
+          this.focus();
+        }
+      }
+    );
 
     this._events.on(ev.currentTarget, 'blur', this._onBlur, true);
 

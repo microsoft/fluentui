@@ -20,7 +20,8 @@
     "copy",
     "karma",
     "webpack",
-    "build-codepen-examples"
+    "build-codepen-examples",
+    "api-extractor"
   ],
   "devDependencies": {
     "@types/jest": "23.0.0",

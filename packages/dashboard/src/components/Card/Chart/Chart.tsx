@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IChartInternalProps, IChartStyles, IChartProps, ChartType, ChartHeight, ChartWidth } from './Chart.types';
+import { IChartInternalProps, IChartProps, IChartStyles, ChartType, ChartHeight, ChartWidth } from './Chart.types';
 import {
   DonutChart,
   HorizontalBarChart,
@@ -27,6 +27,7 @@ export class Chart extends React.Component<IChartInternalProps, { _width: number
   private _singleChartDataPoints: IDataPoint[] | undefined;
   private _rootElem: HTMLElement | null;
 
+  private getClassNames = classNamesFunction<IChartProps, IChartStyles>();
   public constructor(props: IChartInternalProps) {
     super(props);
 
@@ -64,16 +65,11 @@ export class Chart extends React.Component<IChartInternalProps, { _width: number
   }
 
   public render(): JSX.Element {
-    const getClassNames = classNamesFunction<IChartProps, IChartStyles>();
-    const classNames = getClassNames(getStyles);
-    return (
-      <div ref={(rootElem: HTMLElement | null) => (this._rootElem = rootElem)} className={classNames.chartWrapper}>
-        {this._getChartByType(this.props.chartType)}
-      </div>
-    );
+    return this._getChartByType(this.props.chartType);
   }
 
   private _getChartByType = (chartType: ChartType): JSX.Element => {
+    const classNames = this.getClassNames(getStyles);
     switch (chartType) {
       case ChartType.VerticalBarChart: {
         return (
@@ -95,13 +91,21 @@ export class Chart extends React.Component<IChartInternalProps, { _width: number
       }
       case ChartType.DonutChart: {
         return (
-          <div className={mergeStyles({ width: 300, height: 250 })}>
-            <DonutChart data={this.props.chartData![0]} innerRadius={70} />
+          <div className={classNames.donutWrapper}>
+            <div className={mergeStyles({ width: 300, height: 250 })}>
+              <DonutChart data={this.props.chartData![0]} innerRadius={88} />
+            </div>
           </div>
         );
       }
       case ChartType.PieChart: {
-        return <DonutChart data={this.props.chartData![0]} innerRadius={0} />;
+        return (
+          <div className={classNames.donutWrapper}>
+            <div className={mergeStyles({ width: 300, height: 250 })}>
+              <DonutChart data={this.props.chartData![0]} innerRadius={0} />
+            </div>
+          </div>
+        );
       }
       case ChartType.StackedBarChart: {
         return this._getStackedBarChart();
@@ -133,15 +137,30 @@ export class Chart extends React.Component<IChartInternalProps, { _width: number
 
   private _getStackedBarChart = (): JSX.Element => {
     if (this.props.chartData!.length > 1) {
-      return <MultiStackedBarChart data={this.props.chartData!} barHeight={this.props.barHeight} hideRatio={this.props.hideRatio} />;
+      return (
+        <MultiStackedBarChart
+          data={this.props.chartData!}
+          barHeight={this.props.barHeight}
+          hideRatio={this.props.hideRatio}
+          hideDenominator={this.props.hideDenominator}
+        />
+      );
     }
 
-    return <StackedBarChart data={this.props.chartData![0]} barHeight={this.props.barHeight} />;
+    return (
+      <StackedBarChart
+        hideDenominator={this.props.hideDenominator ? this.props.hideDenominator[0] : false}
+        data={this.props.chartData![0]}
+        barHeight={this.props.barHeight}
+        ignoreFixStyle={this.props.ignoreStackBarChartDefaultStyle}
+      />
+    );
   };
 
   private _getLineChart = (): JSX.Element => {
     const { chartData, timeRange } = this.props;
     let dateDataType = false;
+    const classNames = this.getClassNames(getStyles);
     if (chartData && chartData[0] && chartData[0].lineChartData) {
       chartData[0].lineChartData!.forEach((lineData: ILineChartPoints) => {
         if (lineData.data.length > 0) {
@@ -195,19 +214,35 @@ export class Chart extends React.Component<IChartInternalProps, { _width: number
           tickValues.push(nextDate);
         }
       }
+      const parentElement = this._rootElem ? this._rootElem.parentElement : null;
       return (
-        <LineChart
-          data={this.props.chartData![0]}
-          strokeWidth={this.props.strokeWidth}
-          width={this._getWidth()}
-          height={this._getHeight()}
-          tickValues={tickValues}
-          tickFormat={'%m/%d'}
-        />
+        <div
+          ref={(e: HTMLElement | null) => {
+            this._rootElem = e;
+          }}
+          className={classNames.chartWrapper}
+        >
+          <LineChart
+            parentRef={parentElement}
+            data={this.props.chartData![0]}
+            strokeWidth={this.props.strokeWidth}
+            tickValues={tickValues}
+            tickFormat={'%m/%d'}
+          />
+        </div>
+      );
+    } else {
+      const parentElement = this._rootElem ? this._rootElem.parentElement : null;
+      return (
+        <div
+          ref={(e: HTMLElement | null) => {
+            this._rootElem = e;
+          }}
+          className={classNames.chartWrapper}
+        >
+          <LineChart parentRef={parentElement} data={this.props.chartData![0]} strokeWidth={this.props.strokeWidth} />
+        </div>
       );
     }
-    return (
-      <LineChart data={this.props.chartData![0]} strokeWidth={this.props.strokeWidth} width={this._getWidth()} height={this._getHeight()} />
-    );
   };
 }

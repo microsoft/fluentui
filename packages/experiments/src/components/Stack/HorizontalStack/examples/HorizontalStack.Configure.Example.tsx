@@ -22,6 +22,7 @@ export interface IExampleState {
   paddingBottom: number;
   horizontalAlignment: HorizontalAlignment;
   verticalAlignment: VerticalAlignment;
+  hideEmptyChildren: boolean;
   emptyChildren: string[];
 }
 
@@ -43,6 +44,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
       paddingBottom: 0,
       horizontalAlignment: 'left',
       verticalAlignment: 'top',
+      hideEmptyChildren: false,
       emptyChildren: []
     };
   }
@@ -63,6 +65,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
       paddingBottom,
       horizontalAlignment,
       verticalAlignment,
+      hideEmptyChildren,
       emptyChildren
     } = this.state;
 
@@ -208,11 +211,11 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
           </HorizontalStack.Item>
         </HorizontalStack>
 
-        <HorizontalStack gap={20}>
+        <HorizontalStack gap={20} verticalAlign="bottom">
           <HorizontalStack.Item grow>
             <Dropdown
               selectedKey={horizontalAlignment}
-              placeHolder="Select Horizontal Alignment"
+              placeholder="Select Horizontal Alignment"
               label="Horizontal alignment:"
               options={[
                 { key: 'left', text: 'Left' },
@@ -228,11 +231,14 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
           <HorizontalStack.Item grow>
             <Dropdown
               selectedKey={verticalAlignment}
-              placeHolder="Select Vertical Alignment"
+              placeholder="Select Vertical Alignment"
               label="Vertical alignment:"
               options={[{ key: 'top', text: 'Top' }, { key: 'center', text: 'Center' }, { key: 'bottom', text: 'Bottom' }]}
               onChange={this._onVerticalAlignChange}
             />
+          </HorizontalStack.Item>
+          <HorizontalStack.Item>
+            <Checkbox label="Hide empty children" onChange={this._onHideEmptyChildrenChange} />
           </HorizontalStack.Item>
           <HorizontalStack.Item grow>
             <TextField label="Enter a space-separated list of empty children (e.g. 1 2 3):" onChange={this._onEmptyChildrenChange} />
@@ -252,7 +258,11 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
         >
           {this._range(1, numItems).map((value: number, index: number) => {
             if (emptyChildren.indexOf(value.toString()) !== -1) {
-              return <Text key={index} className={styles.item} />;
+              return hideEmptyChildren ? (
+                <HorizontalStack.Item key={index} className={styles.item} />
+              ) : (
+                <Text key={index} className={styles.item} />
+              );
             }
 
             return (
@@ -271,10 +281,11 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
   };
 
   private _range = (start: number, end: number): number[] => {
-    const length = end - start + 1;
-    return Array(length)
-      .fill(start)
-      .map((value: number, index: number) => start + index);
+    const result = [];
+    for (let i = start; i <= end; i++) {
+      result.push(i);
+    }
+    return result;
   };
 
   private _onBoxShadowChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
@@ -327,6 +338,10 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
 
   private _onVerticalAlignChange = (ev: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
     this.setState({ verticalAlignment: option.key as VerticalAlignment });
+  };
+
+  private _onHideEmptyChildrenChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
+    this.setState({ hideEmptyChildren: isChecked });
   };
 
   private _onEmptyChildrenChange = (ev: React.FormEvent<HTMLInputElement>, value?: string): void => {

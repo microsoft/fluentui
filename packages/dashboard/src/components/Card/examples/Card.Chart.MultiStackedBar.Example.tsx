@@ -3,9 +3,10 @@ import { IChartProps as IChartingProps, IChartDataPoint } from '@uifabric/charti
 import { Card, CardContentType, CardSize, ChartType, IChartProps, ICardContentDetails, ICardProps, Priority } from '@uifabric/dashboard';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
-export class MultiStackedBarChartExample extends React.Component<{}, {}> {
+export class MultiStackedBarChartExample extends React.Component<{}, { loading: boolean }> {
   constructor(props: ICardProps) {
     super(props);
+    this.state = { loading: true };
   }
 
   public render(): JSX.Element {
@@ -35,8 +36,7 @@ export class MultiStackedBarChartExample extends React.Component<{}, {}> {
 
     const secondChartPoints: IChartDataPoint[] = [
       { legend: 'Phone Numbers', data: 40, color: DefaultPalette.blue },
-      { legend: 'Credit card Numbers', data: 23, color: DefaultPalette.green },
-      { legend: 'Asset Numbers', data: 35, color: DefaultPalette.yellow }
+      { legend: 'Credit card Numbers', data: 23, color: DefaultPalette.green }
     ];
 
     const data: IChartingProps[] = [
@@ -59,7 +59,8 @@ export class MultiStackedBarChartExample extends React.Component<{}, {}> {
     const chartContent2: IChartProps = {
       chartType: ChartType.StackedBarChart,
       chartData: data,
-      chartUpdatedOn: 'Updated 6:20 pm today'
+      chartUpdatedOn: 'Updated 6:20 pm today',
+      hideDenominator: [true, false]
     };
 
     const contentAreaList: ICardContentDetails[] = [
@@ -78,7 +79,18 @@ export class MultiStackedBarChartExample extends React.Component<{}, {}> {
     const header = {
       headerText: 'Sensitive info types'
     };
-
-    return <Card cardFrameContent={cardFrameContent} header={header} cardContentList={contentAreaList} cardSize={CardSize.mediumTall} />;
+    const that = this;
+    setTimeout(() => {
+      that.setState({ loading: false });
+    }, 10000);
+    return (
+      <Card
+        cardFrameContent={cardFrameContent}
+        header={header}
+        cardContentList={contentAreaList}
+        cardSize={CardSize.mediumTall}
+        loading={this.state.loading}
+      />
+    );
   }
 }
