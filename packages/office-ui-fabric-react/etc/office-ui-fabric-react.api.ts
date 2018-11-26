@@ -9141,6 +9141,7 @@ interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
   // @deprecated
   primaryText?: string;
   secondaryText?: string;
+  showInitialsOnHover?: boolean;
   showInitialsUntilImageLoads?: boolean;
   // (undocumented)
   showSecondaryText?: boolean;
@@ -9153,6 +9154,8 @@ interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
 
 // @public (undocumented)
 interface IPersonaState {
+  // (undocumented)
+  isHovered?: boolean;
   // (undocumented)
   isImageError?: boolean;
   // (undocumented)
