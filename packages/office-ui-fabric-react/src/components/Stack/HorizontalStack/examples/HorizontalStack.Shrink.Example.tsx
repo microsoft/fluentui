@@ -1,3 +1,4 @@
+// @codepen
 import * as React from 'react';
 import { VerticalStack, HorizontalStack } from 'office-ui-fabric-react/lib/Stack';
 import { Slider } from '../../../..';
