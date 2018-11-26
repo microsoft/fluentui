@@ -10846,6 +10846,7 @@ interface ITooltip {
 
 // @public (undocumented)
 interface ITooltipHost {
+  dismiss: () => void;
 }
 
 // @public
@@ -12398,12 +12399,16 @@ enum TooltipDelay {
 }
 
 // @public (undocumented)
-class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHostState> {
+class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHostState>, implements ITooltipHost {
   constructor(props: ITooltipHostProps);
+  // (undocumented)
+  componentWillUnmount(): void;
   // (undocumented)
   static defaultProps: {
     delay: TooltipDelay;
   }
+  // (undocumented)
+  dismiss: () => void;
   // (undocumented)
   render(): JSX.Element;
 }
