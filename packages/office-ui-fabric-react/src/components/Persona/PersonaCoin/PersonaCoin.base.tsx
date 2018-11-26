@@ -103,8 +103,8 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
         size !== PersonaSize.size10 && size !== PersonaSize.tiny ? (
           <div
             {...coinProps}
-            onMouseEnter={this._onCoinMouseEnter}
-            onMouseLeave={this._onCoinMouseLeave}
+            onMouseEnter={showInitialsOnHover ? this._onCoinMouseEnter : undefined}
+            onMouseLeave={showInitialsOnHover ? this._onCoinMouseLeave : undefined}
             className={classNames.imageArea}
             style={coinSizeStyle}
           >
