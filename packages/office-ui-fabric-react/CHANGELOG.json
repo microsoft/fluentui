@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.106.3",
+      "tag": "office-ui-fabric-react_v6.106.3",
+      "date": "Thu, 22 Nov 2018 13:36:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixing background color of overlay so that screen behind panel isn't hidden in high contrast mode when panel's open",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "7091f0ecea0aab02f88e9e463edaf1c315c07551"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.106.2",
       "tag": "office-ui-fabric-react_v6.106.2",
       "date": "Wed, 21 Nov 2018 13:34:56 GMT",

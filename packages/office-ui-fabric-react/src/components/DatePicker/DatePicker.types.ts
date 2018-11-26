@@ -3,6 +3,8 @@ import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { ICalendarFormatDateCallbacks } from '../Calendar/Calendar.types';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IBaseProps, IStyleFunction, IComponentAs } from '../../Utilities';
+import { ICalloutProps } from '../../Callout';
+
 
 export interface IDatePicker {
   /** Sets focus to the text field */
@@ -28,6 +30,11 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAtt
    * Theme provided by High-Order Component.
    */
   theme?: ITheme;
+
+  /**
+   * Pass callout props to callout component
+   */
+  calloutProps?: ICalloutProps;
 
   /**
    * Pass calendar props to calendar component

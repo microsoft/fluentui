@@ -1,6 +1,15 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Tue, 20 Nov 2018 13:32:17 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Nov 2018 13:36:17 GMT and should not be manually modified.
+
+## 0.8.0
+Thu, 22 Nov 2018 13:36:17 GMT
+
+### Minor changes
+
+- Add Callout styles (also used by Tooltip)
+- CommandBar: Add fluent changes.
+- Modal: Add shadow and rounded corners. Remove the global className selector from Dialog.
 
 ## 0.7.0
 Tue, 20 Nov 2018 13:32:17 GMT
