@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { Button } from '../index';
-import { HorizontalStack, VerticalStack } from 'office-ui-fabric-react/lib/Stack';
 import { Text } from '@uifabric/experiments';
-import { ContextualMenu, IContextualMenuProps, Icon, CommandBar } from 'office-ui-fabric-react';
+import { ContextualMenu, IContextualMenuProps, Icon, CommandBar, HorizontalStack, VerticalStack } from 'office-ui-fabric-react';
 
 const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
 const buttonMenu = (props: IContextualMenuProps) => <ContextualMenu {...props} items={menuItems} />;

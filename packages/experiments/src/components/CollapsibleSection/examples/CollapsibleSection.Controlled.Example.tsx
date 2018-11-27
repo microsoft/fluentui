@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { HorizontalStack } from 'office-ui-fabric-react/lib/Stack';
+import { DefaultButton, FocusZone, HorizontalStack } from 'office-ui-fabric-react';
 import { CollapsibleSection } from '@uifabric/experiments/lib/CollapsibleSection';
 
 export interface ICollapsibleSectionControlledExampleState {

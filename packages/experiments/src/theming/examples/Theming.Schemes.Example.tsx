@@ -1,7 +1,6 @@
 import * as React from 'react';
 
-import { CommandBar, Customizer, Toggle } from 'office-ui-fabric-react';
-import { HorizontalStack, VerticalStack } from 'office-ui-fabric-react/lib/Stack';
+import { CommandBar, Customizer, HorizontalStack, VerticalStack, Toggle } from 'office-ui-fabric-react';
 import { farItems, items, overflowItems } from 'office-ui-fabric-react/lib/components/CommandBar/examples/data';
 import { Text } from '@uifabric/experiments';
 

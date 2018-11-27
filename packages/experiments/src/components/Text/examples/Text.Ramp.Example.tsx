@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { VerticalStack } from 'office-ui-fabric-react/lib/Stack';
+import { VerticalStack } from 'office-ui-fabric-react';
 import { Text } from '@uifabric/experiments';
 import { IFontVariants, IFontSizes, IFontWeights, IFontFamilies, IStyle } from '@uifabric/experiments/lib/Styling';
 import { ISemanticTextColors, IPalette } from '@uifabric/experiments/lib/Styling';

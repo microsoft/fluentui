@@ -1,5 +1,5 @@
 import { getNeutralVariant, getSoftVariant, getStrongVariant } from '@uifabric/variants';
-import { IHorizontalStackComponent } from 'office-ui-fabric-react/lib/Stack';
+import { IHorizontalStackComponent } from 'office-ui-fabric-react';
 
 import { createTheme, IPalette, ITheme, getTheme } from 'office-ui-fabric-react/lib/Styling';
 
