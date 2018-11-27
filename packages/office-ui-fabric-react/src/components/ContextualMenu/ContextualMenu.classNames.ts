@@ -112,7 +112,6 @@ export const getItemClassNames = memoizeFunction(
         styles.root,
         checked && [classNames.isChecked, styles.rootChecked],
         isAnchorLink && styles.anchorLink,
-        // { paddingRight: 8 },
         expanded && [classNames.isExpanded, styles.rootExpanded],
         disabled && [classNames.isDisabled, styles.rootDisabled],
         !disabled &&
