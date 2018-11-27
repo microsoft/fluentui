@@ -164,7 +164,6 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                 </i>
               </button>
               <a
-                aria-describedby="id__3"
                 className=
                     ms-Button
                     ms-Button--action
@@ -291,28 +290,6 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                     data-icon-name=""
                     role="presentation"
                   />
-                  <span
-                    className=
-                        ms-Button-screenReaderText
-                        {
-                          border: 0px;
-                          height: 1px;
-                          margin-bottom: -1px;
-                          margin-left: -1px;
-                          margin-right: -1px;
-                          margin-top: -1px;
-                          overflow: hidden;
-                          padding-bottom: 0px;
-                          padding-left: 0px;
-                          padding-right: 0px;
-                          padding-top: 0px;
-                          position: absolute;
-                          width: 1px;
-                        }
-                    id="id__3"
-                  >
-                    Parent link
-                  </span>
                   <div
                     className=
                         ms-Nav-linkText
@@ -442,7 +419,6 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                 </i>
               </button>
               <a
-                aria-describedby="id__6"
                 className=
                     ms-Button
                     ms-Button--action
@@ -569,28 +545,6 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                     data-icon-name=""
                     role="presentation"
                   />
-                  <span
-                    className=
-                        ms-Button-screenReaderText
-                        {
-                          border: 0px;
-                          height: 1px;
-                          margin-bottom: -1px;
-                          margin-left: -1px;
-                          margin-right: -1px;
-                          margin-top: -1px;
-                          overflow: hidden;
-                          padding-bottom: 0px;
-                          padding-left: 0px;
-                          padding-right: 0px;
-                          padding-top: 0px;
-                          position: absolute;
-                          width: 1px;
-                        }
-                    id="id__6"
-                  >
-                    Parent link
-                  </span>
                   <div
                     className=
                         ms-Nav-linkText
