@@ -1,11 +1,6 @@
-const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');
-const execSync = require('./exec-sync');
-const readRushJson = require('./read-rush-json');
-
-const newVersion = process.argv[2];
-const newDep = process.argv[3] || newVersion;
+const { readRushJson } = require('./read-config');
 
 const rushJson = readRushJson();
 if (!rushJson) {

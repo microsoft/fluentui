@@ -7,7 +7,7 @@ module.exports = function() {
   const fs = require('fs');
   const chalk = require('chalk');
   const findConfig = require('../find-config');
-  const readRushJson = require('../read-rush-json');
+  const { readRushJson } = require('../read-config');
 
   const sourcePath = path.resolve(process.cwd(), 'src');
   const nodeModulesPath = path.resolve(process.cwd(), 'node_modules');

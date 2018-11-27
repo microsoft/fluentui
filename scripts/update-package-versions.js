@@ -9,7 +9,7 @@
 const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');
-const readRushJson = require('./read-rush-json');
+const { readRushJson } = require('./read-config');
 
 const rushPackages = readRushJson();
 if (!rushPackages) {
