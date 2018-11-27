@@ -10321,6 +10321,7 @@ interface ISpinnerProps extends React.HTMLAttributes<HTMLElement> {
   className?: string;
   componentRef?: IRefObject<ISpinner>;
   label?: string;
+  labelPosition?: SpinnerLabelPosition;
   size?: SpinnerSize;
   styles?: IStyleFunctionOrObject<ISpinnerStyleProps, ISpinnerStyles>;
   theme?: ITheme;
@@ -10332,6 +10333,8 @@ interface ISpinnerProps extends React.HTMLAttributes<HTMLElement> {
 interface ISpinnerStyleProps {
   // (undocumented)
   className?: string;
+  // (undocumented)
+  labelPosition?: SpinnerLabelPosition;
   // (undocumented)
   size?: SpinnerSize;
   // (undocumented)
@@ -11941,6 +11944,14 @@ class SpinnerBase extends BaseComponent<ISpinnerProps, any> {
   static defaultProps: ISpinnerProps;
   // (undocumented)
   render(): JSX.Element;
+}
+
+// @public (undocumented)
+enum SpinnerLabelPosition {
+  bottom = 2,
+  left = 3,
+  right = 1,
+  top = 0
 }
 
 // @public (undocumented)
