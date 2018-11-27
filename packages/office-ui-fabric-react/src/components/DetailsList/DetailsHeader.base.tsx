@@ -415,6 +415,12 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     }
   }
 
+  private _swap(array: any, index: number): void {
+    let temp = array[index].startX;
+    array[index].startX = array[index].endX;
+    array[index].endX = temp;
+  }
+
   private _updateDropHintElement(element: HTMLElement, property: string) {
     (element.childNodes[1] as HTMLElement).style.visibility = property;
     (element.childNodes[0] as HTMLElement).style.visibility = property;
@@ -430,6 +436,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
       columnReorderProps && columnReorderProps.frozenColumnCountFromStart ? columnReorderProps.frozenColumnCountFromStart : 0;
     const frozenColumnCountFromEnd =
       columnReorderProps && columnReorderProps.frozenColumnCountFromEnd ? columnReorderProps.frozenColumnCountFromEnd : 0;
+    const isRTL = getRTL();
 
     for (let i = frozenColumnCountFromStart!; i < columns.length - frozenColumnCountFromEnd! + 1; i++) {
       if (this._rootElement) {
@@ -457,6 +464,12 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
                 endX: dropHintElement.offsetLeft,
                 dropHintElementRef: prevRef
               };
+              if (isRTL) {
+                this._swap(this._dropHintDetails, i); // swap startX and endX
+              }
+            }
+            if (isRTL) {
+              this._swap(this._dropHintDetails, i - 1); // swap startX and endX
             }
           }
         }
@@ -492,10 +505,13 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
       const currentIndex: number = frozenColumnCountFromStart!;
       const lastValidColumn = columns.length - frozenColumnCountFromEnd!;
       let indexToUpdate = -1;
-      if (eventXRelativePosition <= this._dropHintDetails[currentIndex].endX) {
-        indexToUpdate = currentIndex;
-      } else if (eventXRelativePosition >= this._dropHintDetails[lastValidColumn].startX) {
-        indexToUpdate = lastValidColumn;
+      const isRTL = getRTL();
+      const boundaryColumnLeft = isRTL ? lastValidColumn : currentIndex;
+      const boundaryColumnRight = isRTL ? currentIndex : lastValidColumn;
+      if (eventXRelativePosition <= this._dropHintDetails[boundaryColumnLeft].endX) {
+        indexToUpdate = boundaryColumnLeft;
+      } else if (eventXRelativePosition >= this._dropHintDetails[boundaryColumnRight].startX) {
+        indexToUpdate = boundaryColumnRight;
       } else if (this._isValidCurrentDropHintIndex()) {
         if (
           this._dropHintDetails[currentDropHintIndex! + 1] &&
@@ -511,6 +527,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
           indexToUpdate = currentDropHintIndex! - 1;
         }
       }
+
       if (indexToUpdate === -1) {
         let startIndex = frozenColumnCountFromStart!;
         let endIndex = lastValidColumn;
@@ -523,9 +540,17 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
             indexToUpdate = middleIndex;
             break;
           } else if (eventXRelativePosition < this._dropHintDetails[middleIndex].originX) {
-            endIndex = middleIndex;
+            if (isRTL) {
+              startIndex = middleIndex; // search towards right in case of RTL as drop hint indexes are in opposite order
+            } else {
+              endIndex = middleIndex;
+            }
           } else if (eventXRelativePosition > this._dropHintDetails[middleIndex].originX) {
-            startIndex = middleIndex;
+            if (isRTL) {
+              endIndex = middleIndex; // search towards left in case of RTL as drop hint indexes are in opposite order
+            } else {
+              startIndex = middleIndex;
+            }
           }
         }
       }
