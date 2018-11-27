@@ -84,6 +84,10 @@ export enum SpinnerSize {
   large = 3
 }
 
+/**
+ * Possible locations of the label in regards to the spinner
+ * @defaultvalue bottom
+ */
 export type SpinnerLabelPosition = 'top' | 'right' | 'bottom' | 'left';
 
 /**
