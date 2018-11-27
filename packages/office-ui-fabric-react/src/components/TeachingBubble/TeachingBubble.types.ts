@@ -123,7 +123,7 @@ export interface ITeachingBubbleStyles {
   primaryButton: IStyle;
   secondaryButton: IStyle;
   subText: IStyle;
-  subComponentStyles: ITeachingBubbleSubComponentStyles;
+  subComponentStyles?: ITeachingBubbleSubComponentStyles;
 }
 
 export interface ITeachingBubbleSubComponentStyles {

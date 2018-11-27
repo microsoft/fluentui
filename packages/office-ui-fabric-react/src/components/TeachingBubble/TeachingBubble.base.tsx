@@ -1,7 +1,12 @@
 import * as React from 'react';
 import { BaseComponent, classNamesFunction, createRef, IStyleFunctionOrObject } from '../../Utilities';
 import { TeachingBubbleContent } from './TeachingBubbleContent';
-import { ITeachingBubbleProps, ITeachingBubbleStyleProps, ITeachingBubbleStyles } from './TeachingBubble.types';
+import {
+  ITeachingBubbleProps,
+  ITeachingBubbleStyleProps,
+  ITeachingBubbleStyles,
+  ITeachingBubbleSubComponentStyles
+} from './TeachingBubble.types';
 import { Callout, ICalloutProps } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ICalloutContentStyles, ICalloutContentStyleProps } from '../Callout';
@@ -63,7 +68,10 @@ export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITea
 
     const classNames = getClassNames(styles, stylesProps);
     const calloutStyles = classNames.subComponentStyles
-      ? (classNames.subComponentStyles.callout as IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>)
+      ? ((classNames.subComponentStyles as ITeachingBubbleSubComponentStyles).callout as IStyleFunctionOrObject<
+          ICalloutContentStyleProps,
+          ICalloutContentStyles
+        >)
       : undefined;
 
     return (
