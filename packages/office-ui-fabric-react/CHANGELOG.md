@@ -1,6 +1,23 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 20 Nov 2018 20:12:42 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Nov 2018 13:36:17 GMT and should not be manually modified.
+
+## 6.106.3
+Thu, 22 Nov 2018 13:36:17 GMT
+
+### Patches
+
+- Fixing background color of overlay so that screen behind panel isn't hidden in high contrast mode when panel's open
+
+## 6.106.2
+Wed, 21 Nov 2018 13:34:56 GMT
+
+### Patches
+
+- adding more specificity by adding selectors
+- Link: inherit font size and font weight.
+- Check: Fix component not using styles prop when generating classNames.
+- ContextualMenu: Remove ContextualMenuItemWrapper onItemClick binds which drop DOM event from args list.
 
 ## 6.106.1
 Tue, 20 Nov 2018 20:12:42 GMT

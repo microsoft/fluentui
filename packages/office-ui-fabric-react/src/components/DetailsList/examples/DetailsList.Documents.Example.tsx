@@ -47,6 +47,7 @@ export interface IDocument {
   name: string;
   value: string;
   iconName: string;
+  fileType: string;
   modifiedBy: string;
   dateModified: string;
   dateModifiedValue: number;
@@ -77,6 +78,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
           name: fileName,
           value: fileName,
           iconName: randomFileType.url,
+          fileType: randomFileType.docType,
           modifiedBy: userName,
           dateModified: randomDate.dateFormatted,
           dateModifiedValue: randomDate.value,
@@ -102,7 +104,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         maxWidth: 16,
         onColumnClick: this._onColumnClick,
         onRender: (item: IDocument) => {
-          return <img src={item.iconName} className={'DetailsListExample-documentIconImage'} />;
+          return <img src={item.iconName} className={'DetailsListExample-documentIconImage'} alt={item.fileType + ' file icon'} />;
         }
       },
       {

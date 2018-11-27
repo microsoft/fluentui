@@ -21,11 +21,8 @@ exports[`HorizontalStack renders default HorizontalStack correctly 1`] = `
         text-overflow: ellipsis;
         white-space: nowrap;
       }
-      & > *:not(:empty) ~ * {
+      & > *:not(:first-child) {
         margin-left: 0px;
-      }
-      & > *:empty {
-        display: none;
       }
       & > *:not(.ms-StackItem) {
         flex-shrink: 0;
@@ -61,11 +58,8 @@ exports[`HorizontalStack renders gap correctly 1`] = `
         text-overflow: ellipsis;
         white-space: nowrap;
       }
-      & > *:not(:empty) ~ * {
+      & > *:not(:first-child) {
         margin-left: 5px;
-      }
-      & > *:empty {
-        display: none;
       }
       & > *:not(.ms-StackItem) {
         flex-shrink: 0;
@@ -101,11 +95,8 @@ exports[`HorizontalStack renders growing items correctly 1`] = `
         text-overflow: ellipsis;
         white-space: nowrap;
       }
-      & > *:not(:empty) ~ * {
+      & > *:not(:first-child) {
         margin-left: 0px;
-      }
-      & > *:empty {
-        display: none;
       }
       & > *:not(.ms-StackItem) {
         flex-shrink: 0;
@@ -167,11 +158,8 @@ exports[`HorizontalStack renders item alignments correctly 1`] = `
         text-overflow: ellipsis;
         white-space: nowrap;
       }
-      & > *:not(:empty) ~ * {
+      & > *:not(:first-child) {
         margin-left: 0px;
-      }
-      & > *:empty {
-        display: none;
       }
       & > *:not(.ms-StackItem) {
         flex-shrink: 0;
@@ -303,11 +291,8 @@ exports[`HorizontalStack renders shrinking items correctly 1`] = `
         text-overflow: ellipsis;
         white-space: nowrap;
       }
-      & > *:not(:empty) ~ * {
+      & > *:not(:first-child) {
         margin-left: 0px;
-      }
-      & > *:empty {
-        display: none;
       }
       & > *:not(.ms-StackItem) {
         flex-shrink: 1;
@@ -394,9 +379,6 @@ exports[`HorizontalStack renders wrapped HorizontalStack correctly 1`] = `
           max-width: 100%;
           text-overflow: ellipsis;
           white-space: nowrap;
-        }
-        & > *:empty {
-          display: none;
         }
         & > *:not(.ms-StackItem) {
           flex-shrink: 0;

@@ -36,10 +36,6 @@ export const styles: IStackComponent['styles'] = props => {
 
   // selectors to be applied regardless of wrap or direction
   const commonSelectors = {
-    '> *:empty': {
-      display: 'none'
-    },
-
     // flexShrink styles are applied by the StackItem
     '> *:not(.ms-StackItem)': {
       flexShrink: shrinkItems ? 1 : 0
@@ -87,8 +83,8 @@ export const styles: IStackComponent['styles'] = props => {
         selectors: {
           '> *': childStyles,
 
-          // apply gap margin to every direct child except the first non-empty direct child
-          '> *:not(:empty) ~ *': [
+          // apply gap margin to every direct child except the first direct child
+          '> *:not(:first-child)': [
             horizontal && {
               marginLeft: `${hGap.value}${hGap.unit}`
             },

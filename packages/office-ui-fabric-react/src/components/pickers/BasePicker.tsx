@@ -206,7 +206,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
               {this.canAddItems() && (
                 <Autofill
                   {...inputProps as any}
-                  className={css('ms-BasePicker-input', styles.pickerInput)}
+                  className={css('ms-BasePicker-input', styles.pickerInput, inputProps && inputProps.className)}
                   ref={this.input}
                   onFocus={this.onInputFocus}
                   onBlur={this.onInputBlur}
