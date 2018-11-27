@@ -120,6 +120,9 @@ exports[`Panel renders Panel correctly 1`] = `
               @media screen and (-ms-high-contrast: active){& {
                 border: 1px solid WindowText;
               }
+              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+                background-color: transparent;
+              }
         />
         <div
           className=
