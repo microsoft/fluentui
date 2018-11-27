@@ -18,7 +18,7 @@ const spinAnimation: string = keyframes({
 
 export const getStyles = (props: ISpinnerStyleProps): ISpinnerStyles => {
   const { theme, size, className, labelPosition } = props;
-  console.log('labelPosition: ', labelPosition);
+
   const { palette } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
