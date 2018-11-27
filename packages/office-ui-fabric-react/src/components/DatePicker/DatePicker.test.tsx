@@ -8,6 +8,7 @@ import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { shallow, mount, ReactWrapper } from 'enzyme';
 import { resetIds } from '../../Utilities';
 import { Callout } from '../Callout/Callout';
+import { TextField } from '../TextField/TextField';
 
 describe('DatePicker', () => {
   beforeEach(() => {
@@ -61,6 +62,27 @@ describe('DatePicker', () => {
     const calloutProps = datePicker.find(Callout).props();
 
     expect(calloutProps.ariaLabel).toBe('Calendar');
+  });
+
+  it('should invoke onBlur when TextField is blurred if provided', () => {
+    const onFocus = jest.fn();
+    const wrapper = mount(<DatePickerBase onFocus={onFocus} />);
+    const textFieldEl = wrapper.find(TextField);
+
+    textFieldEl.simulate('focus');
+
+    expect(onFocus).toHaveBeenCalled();
+  });
+
+  it('should invoke onBlur when TextField is blurred if provided', () => {
+    const onBlur = jest.fn();
+    const wrapper = mount(<DatePickerBase onBlur={onBlur} />);
+    const textFieldEl = wrapper.find(TextField);
+
+    textFieldEl.simulate('focus');
+    textFieldEl.simulate('blur');
+
+    expect(onBlur).toHaveBeenCalled();
   });
 
   describe('when Calendar properties are not specified', () => {
