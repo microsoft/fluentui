@@ -1,5 +1,4 @@
 /* tslint:disable */
-import { assign } from 'office-ui-fabric-react/lib/Utilities';
 import { IPickerItemProps, IInputProps } from '../../../Pickers';
 /* tslint:enable */
 
@@ -8,6 +7,7 @@ import { IPersonaProps } from '../../../Persona';
 import './ExtendedPeoplePicker.scss';
 import { BaseExtendedPicker } from '../BaseExtendedPicker';
 import { IBaseExtendedPickerProps } from '../BaseExtendedPicker.types';
+import { assign } from '@uifabric/utilities';
 
 export interface IPeoplePickerItemProps extends IPickerItemProps<IExtendedPersonaProps> {}
 
