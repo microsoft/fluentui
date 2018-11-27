@@ -1,6 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 21 Nov 2018 13:34:56 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Nov 2018 13:36:17 GMT and should not be manually modified.
+
+## 6.42.0
+Thu, 22 Nov 2018 13:36:17 GMT
+
+### Minor changes
+
+- Add initializeFolderCovers pathway to override CDN for FolderCover
+
+### Patches
+
+- Stack: remove display: none styling on empty children
 
 ## 6.41.1
 Wed, 21 Nov 2018 13:34:56 GMT

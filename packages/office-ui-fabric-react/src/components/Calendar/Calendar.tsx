@@ -134,7 +134,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
       className,
       showCloseButton,
       allFocusable,
-      yearPickerHidden
+      yearPickerHidden,
+      today
     } = this.props;
     const nativeProps = getNativeProps(this.props, divProperties, ['value']);
 
@@ -142,6 +143,16 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     const onHeaderSelect = showMonthPickerAsOverlay ? this._onHeaderSelect : undefined;
     const monthPickerOnly = !showMonthPickerAsOverlay && !isDayPickerVisible;
     const overlayedWithButton = showMonthPickerAsOverlay && showGoToToday;
+
+    let goTodayEnabled = showGoToToday;
+
+    if (goTodayEnabled && navigatedDayDate && navigatedMonthDate && today) {
+      goTodayEnabled =
+        navigatedDayDate.getFullYear() !== today.getFullYear() ||
+        navigatedDayDate.getMonth() !== today.getMonth() ||
+        navigatedMonthDate.getFullYear() !== today.getFullYear() ||
+        navigatedMonthDate.getMonth() !== today.getMonth();
+    }
 
     return (
       <div className={css(rootClass, styles.root, className)} role="application">
@@ -214,11 +225,13 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   <button
                     role="button"
                     className={css('ms-DatePicker-goToday js-goToday', styles.goToday, {
-                      [styles.goTodayInlineMonth]: isMonthPickerVisible
+                      [styles.goTodayInlineMonth]: isMonthPickerVisible,
+                      [styles.goToTodayIsDisabled]: !goTodayEnabled
                     })}
                     onClick={this._onGotoTodayClick}
                     onKeyDown={this._onGotoTodayKeyDown}
                     tabIndex={0}
+                    disabled={!goTodayEnabled}
                   >
                     {strings!.goToToday}
                   </button>

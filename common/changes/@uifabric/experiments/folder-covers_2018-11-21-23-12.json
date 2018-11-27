@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Add initializeFolderCovers pathway to override CDN for FolderCover",
+      "comment": "Re-export Signals from package root",
       "type": "minor"
     }
   ],

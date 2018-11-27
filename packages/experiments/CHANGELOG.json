@@ -2,6 +2,35 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.42.0",
+      "tag": "@uifabric/experiments_v6.42.0",
+      "date": "Thu, 22 Nov 2018 13:36:17 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add initializeFolderCovers pathway to override CDN for FolderCover",
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "0ae1191e4b7695ef0b439603c48900622da07706"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Stack: remove display: none styling on empty children",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "6201a23592b457c0e391a3aae3af581487bdd8f4"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.7.0 <1.0.0` to `>=0.8.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.106.2 <7.0.0` to `>=6.106.3 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.41.1",
       "tag": "@uifabric/experiments_v6.41.1",
       "date": "Wed, 21 Nov 2018 13:34:56 GMT",
