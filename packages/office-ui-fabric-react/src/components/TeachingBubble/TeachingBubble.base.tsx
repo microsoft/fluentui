@@ -7,9 +7,8 @@ import {
   ITeachingBubbleStyles,
   ITeachingBubbleSubComponentStyles
 } from './TeachingBubble.types';
-import { Callout, ICalloutProps } from '../../Callout';
+import { Callout, ICalloutProps, ICalloutContentStyleProps, ICalloutContentStyles } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { ICalloutContentStyles, ICalloutContentStyleProps } from '../Callout';
 
 const getClassNames = classNamesFunction<ITeachingBubbleStyleProps, ITeachingBubbleStyles>();
 
