@@ -1,6 +1,6 @@
 // @codepen
 import * as React from 'react';
-import { Spinner, SpinnerSize, SpinnerLabelPosition } from 'office-ui-fabric-react/lib/Spinner';
+import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import './Spinner.Basic.Example.scss';
 
@@ -27,13 +27,13 @@ export class SpinnerBasicExample extends React.Component<any, any> {
         <Spinner size={SpinnerSize.large} label="Seriously, still loading..." ariaLive="assertive" />
 
         <Label>Large Spinner with Label positioned above</Label>
-        <Spinner size={SpinnerSize.large} label="Sorry, still loading..." ariaLive="assertive" labelPosition={SpinnerLabelPosition.top} />
+        <Spinner size={SpinnerSize.large} label="Sorry, still loading..." ariaLive="assertive" labelPosition="top" />
 
         <Label>Large Spinner with Label positioned on the right side</Label>
-        <Spinner size={SpinnerSize.large} label="Wait, wait..." ariaLive="assertive" labelPosition={SpinnerLabelPosition.right} />
+        <Spinner size={SpinnerSize.large} label="Wait, wait..." ariaLive="assertive" labelPosition="right" />
 
         <Label>Large Spinner with Label positioned on the left side</Label>
-        <Spinner size={SpinnerSize.large} label="Nope, still loading..." ariaLive="assertive" labelPosition={SpinnerLabelPosition.left} />
+        <Spinner size={SpinnerSize.large} label="Nope, still loading..." ariaLive="assertive" labelPosition="left" />
       </div>
     );
   }

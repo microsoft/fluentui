@@ -1,4 +1,4 @@
-import { ISpinnerStyleProps, ISpinnerStyles, SpinnerSize, SpinnerLabelPosition } from './Spinner.types';
+import { ISpinnerStyleProps, ISpinnerStyles, SpinnerSize } from './Spinner.types';
 import { hiddenContentStyle, keyframes, HighContrastSelector, getGlobalClassNames } from '../../Styling';
 
 const GlobalClassNames = {
@@ -32,13 +32,13 @@ export const getStyles = (props: ISpinnerStyleProps): ISpinnerStyles => {
         alignItems: 'center',
         justifyContent: 'center'
       },
-      labelPosition === SpinnerLabelPosition.top && {
+      labelPosition === 'top' && {
         flexDirection: 'column-reverse'
       },
-      labelPosition === SpinnerLabelPosition.right && {
+      labelPosition === 'right' && {
         flexDirection: 'row'
       },
-      labelPosition === SpinnerLabelPosition.left && {
+      labelPosition === 'left' && {
         flexDirection: 'row-reverse'
       },
       className
@@ -96,13 +96,13 @@ export const getStyles = (props: ISpinnerStyleProps): ISpinnerStyles => {
         margin: '10px 0 0',
         textAlign: 'center'
       },
-      labelPosition === SpinnerLabelPosition.top && {
+      labelPosition === 'top' && {
         margin: '0 0 10px'
       },
-      labelPosition === SpinnerLabelPosition.right && {
+      labelPosition === 'right' && {
         margin: '0 0 0 10px'
       },
-      labelPosition === SpinnerLabelPosition.left && {
+      labelPosition === 'left' && {
         margin: '0 10px 0 0'
       }
     ],

@@ -84,19 +84,7 @@ export enum SpinnerSize {
   large = 3
 }
 
-export enum SpinnerLabelPosition {
-  /** Label position above the spinner */
-  top = 0,
-
-  /** Label position on the right side of the spinner */
-  right = 1,
-
-  /** Label position bellow the spinner */
-  bottom = 2,
-
-  /** Label position on the left side of the spinner */
-  left = 3
-}
+export type SpinnerLabelPosition = 'top' | 'right' | 'bottom' | 'left';
 
 /**
  * Deprecated at v2.0.0, use `SpinnerSize` instead.
