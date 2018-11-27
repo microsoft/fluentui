@@ -82,6 +82,22 @@ describe('Facepile', () => {
     expect(findNodes(wrapper, '.ms-Facepile-itemButton').length).toEqual(6);
   });
 
+  it('renders a descriptive overflow button with a custom title', () => {
+    const personas: IFacepilePersona[] = facepilePersonas.concat(...facepilePersonas, ...facepilePersonas);
+    const title: string = 'custom title';
+    const wrapper = mount(
+      <Facepile
+        personas={personas}
+        maxDisplayablePersonas={5}
+        overflowButtonProps={{title}}
+        overflowButtonType={OverflowButtonType.descriptive}
+      />
+    );
+    expect(
+      findNodes(wrapper, '.ms-Facepile-descriptiveOverflowButton').getDOMNode().attributes.getNamedItem('title')
+      ).toHaveProperty('value', title);
+  });
+
   it('renders no more than maximum allowed personas', () => {
     const wrapper = mount(
       <Facepile personas={facepilePersonas.concat(facepilePersonas, facepilePersonas, facepilePersonas)} maxDisplayablePersonas={2} />

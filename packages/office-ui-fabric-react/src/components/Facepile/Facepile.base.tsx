@@ -202,6 +202,7 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
         className={_classNames.descriptiveOverflowButton}
       >
         <PersonaCoin
+          // Check if a title is being added to the parenting FacepileButton. If so, do not set title on child PersonaCoin
           title={overflowButtonTitle ? undefined : personaNames}
           size={personaSize}
           onRenderInitials={this._renderInitialsNotPictured(numPersonasNotPictured)}

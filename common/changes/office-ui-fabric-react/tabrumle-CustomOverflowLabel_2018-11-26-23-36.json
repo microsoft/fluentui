@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix custom title on overflow button not being used in facepile",
+      "comment": "Facepile: Fix custom title on overflow button not being used in facepile",
       "type": "patch"
     }
   ],
