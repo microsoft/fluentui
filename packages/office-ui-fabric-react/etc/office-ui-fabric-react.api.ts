@@ -11947,14 +11947,6 @@ class SpinnerBase extends BaseComponent<ISpinnerProps, any> {
 }
 
 // @public (undocumented)
-enum SpinnerLabelPosition {
-  bottom = 2,
-  left = 3,
-  right = 1,
-  top = 0
-}
-
-// @public (undocumented)
 enum SpinnerSize {
   large = 3,
   medium = 2,
@@ -12611,6 +12603,7 @@ module ZIndexes {
 // WARNING: Unsupported export: Slider
 // WARNING: Unsupported export: ISliderStyleProps
 // WARNING: Unsupported export: Spinner
+// WARNING: Unsupported export: SpinnerLabelPosition
 // WARNING: Unsupported export: AnimationClassNames
 // WARNING: Unsupported export: FontClassNames
 // WARNING: Unsupported export: ColorClassNames
