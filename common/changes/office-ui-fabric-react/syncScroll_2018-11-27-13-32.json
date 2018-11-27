@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "sync scroll after sticky forceUpdate",
+      "comment": "If distanceFromTop is changed, a forceUpdate would happen. The component would be re-rendered but its scrollLeft may not be synced to ScrollablePane content container",
       "type": "patch"
     }
   ],
