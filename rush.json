@@ -445,7 +445,8 @@
     {
       "packageName": "@uifabric/date-time",
       "projectFolder": "packages/date-time",
-      "shouldPublish": false
+      "versionPolicyName": "lockedMajor",
+      "shouldPublish": true
     },
     {
       "packageName": "@uifabric/foundation-scenarios",

@@ -9,6 +9,7 @@ import { TagPicker, ITag } from './TagPicker/TagPicker';
 import { IBasePickerProps } from './BasePicker.types';
 import { BasePicker } from './BasePicker';
 import { IPickerItemProps } from './PickerItem.types';
+import { resetIds } from '@uifabric/utilities';
 
 function onResolveSuggestions(text: string): ITag[] {
   return [
@@ -49,6 +50,9 @@ export type TypedBasePicker = BasePicker<ISimple, IBasePickerProps<ISimple>>;
 
 describe('Pickers', () => {
   describe('BasePicker', () => {
+    beforeEach(() => {
+      resetIds();
+    });
     const BasePickerWithType = BasePicker as new (props: IBasePickerProps<ISimple>) => BasePicker<ISimple, IBasePickerProps<ISimple>>;
     const onRenderItem = (props: IPickerItemProps<{ key: string; name: string }>): JSX.Element => (
       <div key={props.item.name}>{basicRenderer(props)}</div>
@@ -57,6 +61,23 @@ describe('Pickers', () => {
     it('renders BasePicker correctly', () => {
       const component = renderer.create(
         <BasePickerWithType
+          onResolveSuggestions={onResolveSuggestions}
+          onRenderItem={onRenderItem}
+          onRenderSuggestionsItem={basicSuggestionRenderer}
+        />
+      );
+      const tree = component.toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+
+    it('renders BasePicker with inputProps supply classnames correctly', () => {
+      const component = renderer.create(
+        <BasePickerWithType
+          inputProps={{
+            placeholder: 'Bitte einen Benutzer angeben...',
+            id: 'pckSelectedUser',
+            className: 'testclass '
+          }}
           onResolveSuggestions={onResolveSuggestions}
           onRenderItem={onRenderItem}
           onRenderSuggestionsItem={basicSuggestionRenderer}
@@ -191,6 +212,10 @@ describe('Pickers', () => {
   });
 
   describe('TagPicker', () => {
+    beforeEach(() => {
+      resetIds();
+    });
+
     it('renders TagPicker correctly', () => {
       const component = renderer.create(<TagPicker onResolveSuggestions={onResolveSuggestions} />);
       const tree = component.toJSON();
