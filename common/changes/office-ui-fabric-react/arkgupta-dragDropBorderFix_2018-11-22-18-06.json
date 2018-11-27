@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "prevent override of border while dragging",
+      "comment": "DetailsList: Prevent override of column cell border while dragging",
       "type": "patch"
     }
   ],
