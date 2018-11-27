@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Stack: Promoting from experiments to oufr.",
+      "comment": "Stack: Promoting from experiments to OUFR package.",
       "type": "minor"
     }
   ],
