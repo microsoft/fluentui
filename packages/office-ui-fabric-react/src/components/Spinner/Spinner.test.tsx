@@ -5,7 +5,7 @@ import { Spinner } from './index';
 
 describe('Spinner', () => {
   it('renders Spinner correctly', () => {
-    const component = renderer.create(<Spinner label="Standard checkbox" />);
+    const component = renderer.create(<Spinner label="Standard spinner" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
