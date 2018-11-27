@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Modify the ExtendedPeoplePicker so that the input props, spellcheck and autocorrect, are always set to false and off, respectively.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "adameury@outlook.com"
+}
