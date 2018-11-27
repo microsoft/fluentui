@@ -70,10 +70,6 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   private _lastValidValue: string;
   private _spinningByMouse: boolean;
 
-  private _onValidate?: (value: string) => string | void;
-  private _onIncrement?: (value: string) => string | void;
-  private _onDecrement?: (value: string) => string | void;
-
   private _currentStepFunctionHandle: number;
   private _initialStepDelay = 400;
   private _stepDelay = 75;
@@ -102,16 +98,6 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     this._labelId = getId('Label');
     this._inputId = getId('input');
     this._spinningByMouse = false;
-
-    if (!props.defaultValue && props.value !== undefined) {
-      this._onValidate = props.onValidate;
-      this._onIncrement = props.onIncrement;
-      this._onDecrement = props.onDecrement;
-    } else {
-      this._onValidate = this._defaultOnValidate;
-      this._onIncrement = this._defaultOnIncrement;
-      this._onDecrement = this._defaultOnDecrement;
-    }
   }
 
   /**
@@ -312,6 +298,14 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     return this.props.value === undefined ? this.state.value : this.props.value;
   }
 
+  private _onValidate = (value: string): string | void => {
+    if (this.props.onValidate) {
+      return this.props.onValidate(value);
+    } else {
+      return this._defaultOnValidate(value);
+    }
+  }
+
   /**
    * Validate function to use if one is not passed in
    */
@@ -323,6 +317,14 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     return String(newValue);
   }
 
+  private _onIncrement = (value: string): string | void => {
+    if (this.props.onIncrement) {
+      return this.props.onIncrement(value);
+    } else {
+      return this._defaultOnIncrement(value);
+    }
+  }
+
   /**
    * Increment function to use if one is not passed in
    */
@@ -330,6 +332,14 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     let newValue: number = Math.min(Number(value) + Number(this.props.step)!, this.props.max!);
     newValue = precisionRound(newValue, this.state.precision);
     return String(newValue);
+  }
+
+  private _onDecrement = (value: string): string | void => {
+    if (this.props.onDecrement) {
+      return this.props.onDecrement(value);
+    } else {
+      return this._defaultOnDecrement(value);
+    }
   }
 
   /**
