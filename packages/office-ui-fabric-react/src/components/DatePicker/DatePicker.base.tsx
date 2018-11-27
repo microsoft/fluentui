@@ -303,6 +303,12 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
   };
 
   private _onTextFieldBlur = (ev: React.FocusEvent<HTMLElement>): void => {
+    const { onBlur } = this.props;
+
+    if (onBlur) {
+      onBlur(ev);
+    }
+
     this._validateTextInput();
   };
 
