@@ -1,7 +1,8 @@
 // @codepen
 import * as React from 'react';
+import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { VerticalStack, HorizontalStack } from 'office-ui-fabric-react/lib/Stack';
-import { Slider, Dropdown, IDropdownOption } from '../../../..';
 import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export type HorizontalAlignment = 'left' | 'center' | 'right' | 'space-around' | 'space-between' | 'space-evenly';

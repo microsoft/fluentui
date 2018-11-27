@@ -1,7 +1,7 @@
 // @codepen
 import * as React from 'react';
+import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { VerticalStack, HorizontalStack } from 'office-ui-fabric-react/lib/Stack';
-import { Slider } from '../../../..';
 import { mergeStyleSets, IStyleSet, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export interface IExampleState {
