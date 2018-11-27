@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IButtonComponent, IButtonViewProps } from './Button.types';
 import { Text } from '../../Text';
-import { HorizontalStack } from '../../Stack';
+import { HorizontalStack } from 'office-ui-fabric-react/lib/Stack';
 import { Icon, IIconProps } from 'office-ui-fabric-react';
 import { getNativeProps, buttonProperties } from '../../Utilities';
 

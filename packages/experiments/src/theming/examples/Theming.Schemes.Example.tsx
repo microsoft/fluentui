@@ -1,8 +1,9 @@
 import * as React from 'react';
 
 import { CommandBar, Customizer, Toggle } from 'office-ui-fabric-react';
+import { HorizontalStack, VerticalStack } from 'office-ui-fabric-react/lib/Stack';
 import { farItems, items, overflowItems } from 'office-ui-fabric-react/lib/components/CommandBar/examples/data';
-import { HorizontalStack, Text, VerticalStack } from '@uifabric/experiments';
+import { Text } from '@uifabric/experiments';
 
 // tslint:disable:max-line-length
 import { CollapsibleSectionRecursiveExample } from '@uifabric/experiments/lib/components/CollapsibleSection/examples/CollapsibleSection.Recursive.Example';
