@@ -334,6 +334,10 @@ export interface ISemanticColors extends ISemanticTextColors {
   //// DEPRECATED SLOTS
   // Do not use these slots, they are only maintained for backwards compatibility.
 
+  /** @deprecated
+   * This slot was incorrectly named. Use listText instead. */
+  listTextColor: string;
+
   /**
    * @deprecated
    * (Checked menu items no longer get a background color.)
