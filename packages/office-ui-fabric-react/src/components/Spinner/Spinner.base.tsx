@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ISpinnerProps, ISpinnerStyleProps, ISpinnerStyles, SpinnerType, SpinnerSize } from './Spinner.types';
+import { ISpinnerProps, ISpinnerStyleProps, ISpinnerStyles, SpinnerType, SpinnerSize, SpinnerLabelPosition } from './Spinner.types';
 import { BaseComponent, classNamesFunction, DelayedRender, getNativeProps, divProperties } from '../../Utilities';
 
 const getClassNames = classNamesFunction<ISpinnerStyleProps, ISpinnerStyles>();
@@ -7,11 +7,12 @@ const getClassNames = classNamesFunction<ISpinnerStyleProps, ISpinnerStyles>();
 export class SpinnerBase extends BaseComponent<ISpinnerProps, any> {
   public static defaultProps: ISpinnerProps = {
     size: SpinnerSize.medium,
-    ariaLive: 'polite'
+    ariaLive: 'polite',
+    labelPosition: SpinnerLabelPosition.bottom
   };
 
   public render() {
-    const { type, size, ariaLabel, ariaLive, styles, label, theme, className } = this.props;
+    const { type, size, ariaLabel, ariaLive, styles, label, theme, className, labelPosition } = this.props;
     const statusMessage = ariaLabel || label;
     const nativeProps = getNativeProps(this.props, divProperties, ['size']);
 
@@ -25,7 +26,8 @@ export class SpinnerBase extends BaseComponent<ISpinnerProps, any> {
     const classNames = getClassNames(styles!, {
       theme: theme!,
       size: styleSize,
-      className
+      className,
+      labelPosition
     });
 
     return (

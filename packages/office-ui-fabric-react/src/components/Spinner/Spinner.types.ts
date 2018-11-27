@@ -54,6 +54,12 @@ export interface ISpinnerProps extends React.HTMLAttributes<HTMLElement> {
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<ISpinnerStyleProps, ISpinnerStyles>;
+
+  /**
+   * The position of the label in regards of the spinner animation.
+   * @defaultvalue SpinnerLabelPosition.bottom
+   */
+  labelPosition?: SpinnerLabelPosition;
 }
 
 export enum SpinnerSize {
@@ -78,6 +84,20 @@ export enum SpinnerSize {
   large = 3
 }
 
+export enum SpinnerLabelPosition {
+  /** Label position above the spinner */
+  top = 0,
+
+  /** Label position on the right side of the spinner */
+  right = 1,
+
+  /** Label position bellow the spinner */
+  bottom = 2,
+
+  /** Label position on the left side of the spinner */
+  left = 3
+}
+
 /**
  * Deprecated at v2.0.0, use `SpinnerSize` instead.
  * @deprecated Use `SpinnerSize` instead.
@@ -100,6 +120,7 @@ export interface ISpinnerStyleProps {
   theme: ITheme;
   size?: SpinnerSize;
   className?: string;
+  labelPosition?: SpinnerLabelPosition;
 }
 
 export interface ISpinnerStyles {
