@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.131.5",
+      "tag": "office-ui-fabric-react_v5.131.5",
+      "date": "Tue, 27 Nov 2018 12:25:26 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Junle Li <lijunle@gmail.com>",
+            "commit": "086e8418f1387520f8a3cf197d9876ec84e0f655",
+            "comment": "SpinButton: addressing onValidate, onIncrement, and onDecrement callbacks to be called correctly."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.131.4",
       "tag": "office-ui-fabric-react_v5.131.4",
       "date": "Thu, 22 Nov 2018 12:22:50 GMT",

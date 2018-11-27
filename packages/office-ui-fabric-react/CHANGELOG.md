@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 22 Nov 2018 12:22:50 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Nov 2018 12:25:26 GMT and should not be manually modified.
+
+## 5.131.5
+Tue, 27 Nov 2018 12:25:26 GMT
+
+### Patches
+
+- SpinButton: addressing onValidate, onIncrement, and onDecrement callbacks to be called correctly.
 
 ## 5.131.4
 Thu, 22 Nov 2018 12:22:50 GMT
