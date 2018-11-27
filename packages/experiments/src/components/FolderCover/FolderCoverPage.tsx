@@ -22,7 +22,11 @@ export class FolderCoverPage extends React.Component<IComponentDemoPageProps, {}
             sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/FolderCover/FolderCover.types.ts')]}
           />
         }
-        overview={<div />}
+        overview={
+          <div>
+            Initialize folder covers first using <code>initializeFolderCovers()</code>.
+          </div>
+        }
         bestPractices={<div />}
         dos={
           <div>

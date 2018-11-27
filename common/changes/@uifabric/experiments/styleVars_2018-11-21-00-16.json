@@ -1,9 +1,9 @@
 {
   "changes": [
     {
-      "comment": "",
       "packageName": "@uifabric/experiments",
-      "type": "none"
+      "comment": "Toggle: Refining style variables approach in Toggle and adding examples passing interface and function.",
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/experiments",

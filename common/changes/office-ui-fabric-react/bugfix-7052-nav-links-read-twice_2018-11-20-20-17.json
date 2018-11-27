@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Check: Fix component not using styles prop when generating classNames.",
+      "comment": "Ensures nav links are announced once",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "keco@microsoft.com"
+  "email": "shiran.pasternak@microsoft.com"
 }
