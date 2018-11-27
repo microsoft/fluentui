@@ -55,6 +55,7 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
             onKeyDown={[Function]}
             onPaste={[Function]}
             role="combobox"
+            spellCheck={false}
             value=""
           />
         </div>

@@ -95,7 +95,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   }
 
   public render(): JSX.Element {
-    const { className, inputProps, disabled, focusZoneProps } = this.props;
+    const { className, disabled, focusZoneProps } = this.props;
     const activeDescendant =
       this.floatingPicker.current && this.floatingPicker.current.currentSelectedSuggestionIndex !== -1
         ? 'sug-' + this.floatingPicker.current.currentSelectedSuggestionIndex
@@ -115,7 +115,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
               {this.renderSelectedItemsList()}
               {this.canAddItems() && (
                 <Autofill
-                  {...inputProps as IInputProps}
+                  {...this.inputProps()}
                   className={css('ms-BasePicker-input', styles.pickerInput)}
                   ref={this.input}
                   onFocus={this.onInputFocus}
@@ -171,6 +171,10 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
       ...this.selectedItemsListProps
     });
   }
+
+  protected inputProps = (): IInputProps => {
+    return this.props.inputProps as IInputProps;
+  };
 
   protected onInputChange = (value: string): void => {
     this.setState({ queryString: value });

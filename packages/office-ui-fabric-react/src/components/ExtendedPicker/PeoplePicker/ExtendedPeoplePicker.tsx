@@ -1,5 +1,6 @@
 /* tslint:disable */
-import { IPickerItemProps } from '../../../Pickers';
+import { assign } from 'office-ui-fabric-react/lib/Utilities';
+import { IPickerItemProps, IInputProps } from '../../../Pickers';
 /* tslint:enable */
 
 import { IExtendedPersonaProps } from '../../../SelectedItemsList';
@@ -14,4 +15,12 @@ export interface IExtendedPeoplePickerProps extends IBaseExtendedPickerProps<IPe
 
 export class BaseExtendedPeoplePicker extends BaseExtendedPicker<IPersonaProps, IExtendedPeoplePickerProps> {}
 
-export class ExtendedPeoplePicker extends BaseExtendedPeoplePicker {}
+export class ExtendedPeoplePicker extends BaseExtendedPeoplePicker {
+  protected inputProps = (): IInputProps => {
+    const overwrittenInputProps: IInputProps = {
+      autoCorrect: 'off',
+      spellCheck: false
+    };
+    return assign({}, this.props.inputProps, overwrittenInputProps);
+  };
+}

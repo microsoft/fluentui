@@ -180,6 +180,8 @@ class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends BaseC
   // (undocumented)
   readonly inputElement: HTMLInputElement | null;
   // (undocumented)
+  protected inputProps: () => IInputProps;
+  // (undocumented)
   readonly items: any;
   // (undocumented)
   protected onBackspace: (ev: React.KeyboardEvent<HTMLElement>) => void;
@@ -1149,6 +1151,8 @@ enum ExpandingCardMode {
 
 // @public (undocumented)
 class ExtendedPeoplePicker extends BaseExtendedPeoplePicker {
+  // (undocumented)
+  protected inputProps: () => IInputProps;
 }
 
 // @public (undocumented)
