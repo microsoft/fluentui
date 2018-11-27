@@ -69,6 +69,7 @@ export class Chart extends React.Component<IChartInternalProps, { _width: number
   }
 
   private _getChartByType = (chartType: ChartType): JSX.Element => {
+    const classNames = this.getClassNames(getStyles);
     switch (chartType) {
       case ChartType.VerticalBarChart: {
         return (
@@ -90,15 +91,19 @@ export class Chart extends React.Component<IChartInternalProps, { _width: number
       }
       case ChartType.DonutChart: {
         return (
-          <div className={mergeStyles({ width: 300, height: 250 })}>
-            <DonutChart data={this.props.chartData![0]} innerRadius={88} />
+          <div className={classNames.donutWrapper}>
+            <div className={mergeStyles({ width: 300, height: 250 })}>
+              <DonutChart data={this.props.chartData![0]} innerRadius={88} />
+            </div>
           </div>
         );
       }
       case ChartType.PieChart: {
         return (
-          <div className={mergeStyles({ width: 300, height: 250 })}>
-            <DonutChart data={this.props.chartData![0]} innerRadius={0} />
+          <div className={classNames.donutWrapper}>
+            <div className={mergeStyles({ width: 300, height: 250 })}>
+              <DonutChart data={this.props.chartData![0]} innerRadius={0} />
+            </div>
           </div>
         );
       }
@@ -132,11 +137,19 @@ export class Chart extends React.Component<IChartInternalProps, { _width: number
 
   private _getStackedBarChart = (): JSX.Element => {
     if (this.props.chartData!.length > 1) {
-      return <MultiStackedBarChart data={this.props.chartData!} barHeight={this.props.barHeight} hideRatio={this.props.hideRatio} />;
+      return (
+        <MultiStackedBarChart
+          data={this.props.chartData!}
+          barHeight={this.props.barHeight}
+          hideRatio={this.props.hideRatio}
+          hideDenominator={this.props.hideDenominator}
+        />
+      );
     }
 
     return (
       <StackedBarChart
+        hideDenominator={this.props.hideDenominator ? this.props.hideDenominator[0] : false}
         data={this.props.chartData![0]}
         barHeight={this.props.barHeight}
         ignoreFixStyle={this.props.ignoreStackBarChartDefaultStyle}
@@ -201,6 +214,7 @@ export class Chart extends React.Component<IChartInternalProps, { _width: number
           tickValues.push(nextDate);
         }
       }
+      const parentElement = this._rootElem ? this._rootElem.parentElement : null;
       return (
         <div
           ref={(e: HTMLElement | null) => {
@@ -209,7 +223,7 @@ export class Chart extends React.Component<IChartInternalProps, { _width: number
           className={classNames.chartWrapper}
         >
           <LineChart
-            parentRef={this._rootElem}
+            parentRef={parentElement}
             data={this.props.chartData![0]}
             strokeWidth={this.props.strokeWidth}
             tickValues={tickValues}
@@ -218,6 +232,7 @@ export class Chart extends React.Component<IChartInternalProps, { _width: number
         </div>
       );
     } else {
+      const parentElement = this._rootElem ? this._rootElem.parentElement : null;
       return (
         <div
           ref={(e: HTMLElement | null) => {
@@ -225,7 +240,7 @@ export class Chart extends React.Component<IChartInternalProps, { _width: number
           }}
           className={classNames.chartWrapper}
         >
-          <LineChart parentRef={this._rootElem} data={this.props.chartData![0]} strokeWidth={this.props.strokeWidth} />
+          <LineChart parentRef={parentElement} data={this.props.chartData![0]} strokeWidth={this.props.strokeWidth} />
         </div>
       );
     }

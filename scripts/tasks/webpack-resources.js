@@ -9,20 +9,22 @@ console.log(`Webpack version: ${webpackVersion}`);
 module.exports = {
   webpack,
 
-  createConfig(packageName, isProduction, customConfig, onlyProduction) {
+  createConfig(packageName, isProduction, customConfig, onlyProduction, excludeSourceMaps) {
     const resolveLoader = {
       modules: [path.resolve(__dirname, '../node_modules'), path.resolve(process.cwd(), 'node_modules')]
     };
 
     const module = {
       noParse: [/autoit.js/],
-      rules: [
-        {
-          test: /\.js$/,
-          use: 'source-map-loader',
-          enforce: 'pre'
-        }
-      ]
+      rules: excludeSourceMaps
+        ? []
+        : [
+            {
+              test: /\.js$/,
+              use: 'source-map-loader',
+              enforce: 'pre'
+            }
+          ]
     };
 
     const devtool = 'cheap-module-source-map';
@@ -60,7 +62,7 @@ module.exports = {
 
             resolveLoader,
             module,
-            devtool,
+            devtool: excludeSourceMaps ? undefined : devtool,
             plugins: getPlugins(packageName, true)
           },
           customConfig

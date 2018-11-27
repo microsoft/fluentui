@@ -199,14 +199,14 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         >
           {this.getSuggestionsAlert()}
           <SelectionZone selection={this.selection} selectionMode={SelectionMode.multiple}>
-            <div className={css('ms-BasePicker-text', styles.pickerText, this.state.isFocused && styles.inputFocused)} role={'list'}>
-              <span id={this._ariaMap.selectedItems} className={styles.pickerItems}>
+            <div className={css('ms-BasePicker-text', styles.pickerText, this.state.isFocused && styles.inputFocused)}>
+              <span id={this._ariaMap.selectedItems} className={styles.pickerItems} role={'list'}>
                 {this.renderItems()}
               </span>
               {this.canAddItems() && (
                 <Autofill
                   {...inputProps as any}
-                  className={css('ms-BasePicker-input', styles.pickerInput)}
+                  className={css('ms-BasePicker-input', styles.pickerInput, inputProps && inputProps.className)}
                   ref={this.input}
                   onFocus={this.onInputFocus}
                   onBlur={this.onInputBlur}
@@ -471,7 +471,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       // on the event
       relatedTarget = document.activeElement;
     }
-    if (relatedTarget && !elementContains(this.root.value!, relatedTarget as HTMLElement)) {
+    if (relatedTarget && !elementContains(this.root.current!, relatedTarget as HTMLElement)) {
       this.setState({ isFocused: false });
       if (this.props.onBlur) {
         this.props.onBlur(ev as React.FocusEvent<HTMLInputElement>);

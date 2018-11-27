@@ -10,9 +10,10 @@ import { getStyles } from './DashboardGridLayout.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { CardSizeToWidthHeight, updateLayoutsFromLayout } from '../../utilities/DashboardGridLayoutUtils';
 
-require('style-loader!css-loader!react-grid-layout/css/styles.css');
-require('style-loader!css-loader!react-resizable/css/styles.css');
-require('style-loader!css-loader!./DashboardGridLayout.css');
+// These require the style-loader and css-loader rules from webpack
+require('react-grid-layout/css/styles.css');
+require('react-resizable/css/styles.css');
+require('./DashboardGridLayout.css');
 
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 

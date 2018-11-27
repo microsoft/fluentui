@@ -1643,6 +1643,12 @@ export interface IRawStyleBase extends IRawFontStyle {
   stroke?: ICSSRule | string;
 
   /**
+   * SVG: The stroke-linecap attribute defines the shape to be used at the end of open subpaths when they are stroked.
+   * See SVG 1.1 https://www.w3.org/TR/SVG/painting.html#LineCaps
+   */
+  strokeLinecap?: ICSSRule | 'butt' | 'round' | 'square';
+
+  /**
    * SVG: Specifies the opacity of the outline on the current object.
    * See SVG 1.1 https://www.w3.org/TR/SVG/painting.html#StrokeOpacityProperty
    */

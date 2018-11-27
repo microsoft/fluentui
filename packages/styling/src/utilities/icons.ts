@@ -104,9 +104,7 @@ export function registerIcons(iconSubset: IIconSubset, options?: Partial<IIconOp
       const normalizedIconName = normalizeIconName(iconName);
 
       if (_iconSettings[normalizedIconName]) {
-        if (!options.disableWarnings) {
-          warn(`Icon '${iconName} being re-registered. Ignoring duplicate registration.`);
-        }
+        _warnDuplicateIcon(iconName);
       } else {
         _iconSettings[normalizedIconName] = {
           code,
@@ -210,4 +208,30 @@ export function setIconOptions(options: Partial<IIconOptions>): void {
     ..._iconSettings.__options,
     ...options
   };
+}
+
+let _missingIcons: string[] = [];
+let _missingIconsTimer: number | undefined = undefined;
+
+function _warnDuplicateIcon(iconName: string): void {
+  const options = _iconSettings.__options;
+  const warningDelay = 2000;
+  const maxIconsInMessage = 10;
+
+  if (!options.disableWarnings) {
+    _missingIcons.push(iconName);
+    if (_missingIconsTimer === undefined) {
+      _missingIconsTimer = setTimeout(() => {
+        warn(
+          `Some icons were re-registered. Applications should only call registerIcons for any given ` +
+            `icon once. Redefining what an icon is may have unintended consequences. Duplicates ` +
+            `include: \n` +
+            _missingIcons.slice(0, maxIconsInMessage).join(', ') +
+            (_missingIcons.length > maxIconsInMessage ? ` (+ ${_missingIcons.length - maxIconsInMessage} more)` : '')
+        );
+        _missingIconsTimer = undefined;
+        _missingIcons = [];
+      }, warningDelay);
+    }
+  }
 }

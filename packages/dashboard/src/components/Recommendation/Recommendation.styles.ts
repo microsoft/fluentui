@@ -1,9 +1,10 @@
 import { ICardComponentCustomizationStyles, IRecommendationStyles } from './Recommendation.types';
 import { IStyle, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { DefaultFontStyles } from 'office-ui-fabric-react/lib/Styling';
 
 const cardFrameColor = 'rgba(0, 120, 215, 1)';
 const recommendationBaseColor = 'rgba(0,0,0,1)';
-const commonFontFamily = 'Segoe UI';
+const commonFontFamily = DefaultFontStyles.medium.fontFamily;
 const commonFontWeight = 'bold';
 const largeFontSize = 28;
 const regularFontSize = 12;

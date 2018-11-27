@@ -1,5 +1,5 @@
 import { IDetailsColumnStyleProps, IDetailsColumnStyles } from './DetailsColumn.types';
-import { getFocusStyle, getGlobalClassNames, hiddenContentStyle, keyframes, IStyle } from '../../Styling';
+import { getFocusStyle, getGlobalClassNames, hiddenContentStyle, IStyle } from '../../Styling';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import { getCellStyles } from './DetailsHeader.styles';
 
@@ -46,15 +46,6 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
     dropdownChevronForegroundColor: palette.neutralTertiary,
     resizerColor: palette.neutralTertiaryAlt
   };
-
-  const fadeOut: string = keyframes({
-    from: {
-      borderColor: palette.themePrimary
-    },
-    to: {
-      borderColor: 'transparent'
-    }
-  });
 
   const nearIconStyle: IStyle = {
     color: colors.iconForegroundColor,
@@ -194,17 +185,19 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
         borderWidth: 1,
         borderColor: palette.themePrimary,
         left: -1,
-        lineHeight: 31,
-        animation: `${fadeOut} 1.5s forwards`
+        lineHeight: 31
       }
     ],
 
     borderWhileDragging: [
       {
-        borderStyle: 'solid',
-        borderWidth: 1,
-        borderColor: palette.themePrimary,
-        animation: `${fadeOut} 0.2s forwards`
+        selectors: {
+          '.ms-DetailsHeader &.ms-DetailsHeader-cell': {
+            borderStyle: 'solid',
+            borderWidth: 1,
+            borderColor: palette.themePrimary
+          }
+        }
       }
     ]
   };

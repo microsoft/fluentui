@@ -10,18 +10,6 @@
   },
   "glyphs": [
     {
-      "name": "DecreaseIndentLegacy",
-      "unicode": "E290"
-    },
-    {
-      "name": "IncreaseIndentLegacy",
-      "unicode": "E291"
-    },
-    {
-      "name": "SizeLegacy",
-      "unicode": "E2B2"
-    },
-    {
       "name": "InternetSharing",
       "unicode": "E704"
     },
@@ -162,6 +150,10 @@
       "unicode": "E73A"
     },
     {
+      "name": "CheckboxFill",
+      "unicode": "E73B"
+    },
+    {
       "name": "CheckboxIndeterminate",
       "unicode": "E73C"
     },
@@ -202,12 +194,20 @@
       "unicode": "E753"
     },
     {
+      "name": "Flashlight",
+      "unicode": "E754"
+    },
+    {
       "name": "CommandPrompt",
       "unicode": "E756"
     },
     {
       "name": "Sad",
       "unicode": "E757"
+    },
+    {
+      "name": "RealEstate",
+      "unicode": "E758"
     },
     {
       "name": "SIPMove",
@@ -274,6 +274,10 @@
       "unicode": "E774"
     },
     {
+      "name": "EaseOfAccess",
+      "unicode": "E776"
+    },
+    {
       "name": "ContactInfo",
       "unicode": "E779"
     },
@@ -308,6 +312,10 @@
     {
       "name": "Unlock",
       "unicode": "E785"
+    },
+    {
+      "name": "Slideshow",
+      "unicode": "E786"
     },
     {
       "name": "AutoEnhanceOn",
@@ -366,6 +374,10 @@
       "unicode": "E7B0"
     },
     {
+      "name": "Translate",
+      "unicode": "E7B2"
+    },
+    {
       "name": "RedEye",
       "unicode": "E7B3"
     },
@@ -376,6 +388,10 @@
     {
       "name": "Package",
       "unicode": "E7B8"
+    },
+    {
+      "name": "Telemarketer",
+      "unicode": "E7B9"
     },
     {
       "name": "Warning",
@@ -392,22 +408,6 @@
     {
       "name": "ShoppingCart",
       "unicode": "E7BF"
-    },
-    {
-      "name": "Train",
-      "unicode": "E7C0"
-    },
-    {
-      "name": "Move",
-      "unicode": "E7C2"
-    },
-    {
-      "name": "TouchPointer",
-      "unicode": "E7C9"
-    },
-    {
-      "name": "Merge",
-      "unicode": "E7D5"
     }
   ]
 }

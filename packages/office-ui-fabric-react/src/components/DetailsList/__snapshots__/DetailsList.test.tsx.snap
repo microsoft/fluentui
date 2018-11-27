@@ -4891,7 +4891,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
             >
               <div
                 className="ms-List"
-                role="list"
+                role="presentation"
               >
                 <div
                   className="ms-List-surface"
@@ -4906,7 +4906,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                       className="ms-List-cell"
                       data-automationid="ListCell"
                       data-list-index={0}
-                      role="listitem"
+                      role="presentation"
                     >
                       <div
                         className=
@@ -5108,7 +5108,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                         <div
                           className="ms-List"
                           id="GroupedListSection18"
-                          role="list"
+                          role="grid"
                         >
                           <div
                             className="ms-List-surface"
@@ -5123,7 +5123,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 className="ms-List-cell"
                                 data-automationid="ListCell"
                                 data-list-index={0}
-                                role="listitem"
+                                role="presentation"
                               >
                                 <div
                                   aria-rowindex={1}
@@ -5165,7 +5165,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         border: 0;
                                       }
                                       .ms-Fabric--isFocusVisible &:focus:after {
-                                        border: 1px solid #0078d4;
+                                        border: 1px solid #666666;
                                         bottom: 1px;
                                         content: "";
                                         left: 1px;
@@ -5321,7 +5321,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 className="ms-List-cell"
                                 data-automationid="ListCell"
                                 data-list-index={1}
-                                role="listitem"
+                                role="presentation"
                               >
                                 <div
                                   aria-rowindex={2}
@@ -5363,7 +5363,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         border: 0;
                                       }
                                       .ms-Fabric--isFocusVisible &:focus:after {
-                                        border: 1px solid #0078d4;
+                                        border: 1px solid #666666;
                                         bottom: 1px;
                                         content: "";
                                         left: 1px;
@@ -5530,7 +5530,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                       className="ms-List-cell"
                       data-automationid="ListCell"
                       data-list-index={1}
-                      role="listitem"
+                      role="presentation"
                     >
                       <div
                         className=
@@ -5732,7 +5732,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                         <div
                           className="ms-List"
                           id="GroupedListSection20"
-                          role="list"
+                          role="grid"
                         >
                           <div
                             className="ms-List-surface"
@@ -5747,7 +5747,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 className="ms-List-cell"
                                 data-automationid="ListCell"
                                 data-list-index={2}
-                                role="listitem"
+                                role="presentation"
                               >
                                 <div
                                   aria-rowindex={3}
@@ -5789,7 +5789,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         border: 0;
                                       }
                                       .ms-Fabric--isFocusVisible &:focus:after {
-                                        border: 1px solid #0078d4;
+                                        border: 1px solid #666666;
                                         bottom: 1px;
                                         content: "";
                                         left: 1px;
@@ -5945,7 +5945,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 className="ms-List-cell"
                                 data-automationid="ListCell"
                                 data-list-index={3}
-                                role="listitem"
+                                role="presentation"
                               >
                                 <div
                                   aria-rowindex={4}
@@ -5987,7 +5987,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         border: 0;
                                       }
                                       .ms-Fabric--isFocusVisible &:focus:after {
-                                        border: 1px solid #0078d4;
+                                        border: 1px solid #666666;
                                         bottom: 1px;
                                         content: "";
                                         left: 1px;
@@ -6143,7 +6143,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 className="ms-List-cell"
                                 data-automationid="ListCell"
                                 data-list-index={4}
-                                role="listitem"
+                                role="presentation"
                               >
                                 <div
                                   aria-rowindex={5}
@@ -6185,7 +6185,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         border: 0;
                                       }
                                       .ms-Fabric--isFocusVisible &:focus:after {
-                                        border: 1px solid #0078d4;
+                                        border: 1px solid #666666;
                                         bottom: 1px;
                                         content: "";
                                         left: 1px;

@@ -362,13 +362,6 @@ interface IIconSubset {
 }
 
 // @public
-enum InjectionMode {
-  appendChild = 2,
-  insertNode = 1,
-  none = 0
-}
-
-// @public
 interface IPalette {
   accent: string;
   black: string;
@@ -450,6 +443,7 @@ interface IScheme {
 
 // @public
 interface ISemanticColors extends ISemanticTextColors {
+  accentButtonBackground: string;
   blockingBackground: string;
   bodyBackground: string;
   bodyDivider: string;
@@ -507,6 +501,7 @@ interface ISemanticColors extends ISemanticTextColors {
 
 // @public (undocumented)
 interface ISemanticTextColors {
+  accentButtonText: string;
   actionLink: string;
   actionLinkHovered: string;
   bodySubtext: string;
@@ -518,11 +513,14 @@ interface ISemanticTextColors {
   buttonTextDisabled: string;
   buttonTextHovered: string;
   buttonTextPressed: string;
+  disabledBodySubtext: string;
   disabledBodyText: string;
   disabledSubtext: string;
   disabledText: string;
   errorText: string;
   inputPlaceholderText: string;
+  inputText: string;
+  inputTextHovered: string;
   link: string;
   linkHovered: string;
   listText: string;
@@ -689,4 +687,6 @@ module ZIndexes {
 // WARNING: Unsupported export: IStyle
 // WARNING: Unsupported export: IStyleSet
 // WARNING: Unsupported export: IProcessedStyleSet
+// WARNING: Unsupported export: InjectionMode
+// WARNING: Unsupported export: InjectionMode
 // (No @packagedocumentation comment for this package)
