@@ -9,7 +9,6 @@ import {
   IStyle,
   keyframes
 } from '../../Styling';
-import { ICalloutContentStyles } from '../../Callout';
 
 const globalClassNames = {
   root: 'ms-TeachingBubble',
