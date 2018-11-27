@@ -8016,6 +8016,22 @@ interface IGroupRenderProps {
 }
 
 // @public (undocumented)
+interface IHorizontalStackProps extends IPartialStackProps {
+  as?: string | React.ReactType<IHorizontalStackProps>;
+  horizontalAlign?: 'left' | 'right' | 'center' | 'space-around' | 'space-between' | 'space-evenly';
+  styles?: IStylesProp<IHorizontalStackProps, IHorizontalStackStyles>;
+  verticalAlign?: 'top' | 'bottom' | 'center' | 'baseline' | 'stretch';
+  verticalGap?: number | string;
+  wrap?: boolean;
+}
+
+// @public (undocumented)
+interface IHorizontalStackStyles {
+  inner: IStyle;
+  root: IStyle;
+}
+
+// @public (undocumented)
 interface IHoverCard {
 }
 
@@ -10940,6 +10956,19 @@ interface IVerticalDividerProps {
 }
 
 // @public (undocumented)
+interface IVerticalStackProps extends IPartialStackProps {
+  as?: string | React.ReactType<IVerticalStackProps>;
+  horizontalAlign?: 'left' | 'right' | 'center' | 'baseline' | 'stretch';
+  styles?: IStylesProp<IVerticalStackProps, IVerticalStackStyles>;
+  verticalAlign?: 'top' | 'bottom' | 'center' | 'space-around' | 'space-between' | 'space-evenly';
+}
+
+// @public (undocumented)
+interface IVerticalStackStyles {
+  root: IStyle;
+}
+
+// @public (undocumented)
 enum KeyboardSpinDirection {
   // (undocumented)
   down = -1,
@@ -12595,6 +12624,11 @@ module ZIndexes {
 // WARNING: Unsupported export: Slider
 // WARNING: Unsupported export: ISliderStyleProps
 // WARNING: Unsupported export: Spinner
+// WARNING: Unsupported export: StackItem
+// WARNING: Unsupported export: VerticalStack
+// WARNING: Unsupported export: IVerticalStackComponent
+// WARNING: Unsupported export: HorizontalStack
+// WARNING: Unsupported export: IHorizontalStackComponent
 // WARNING: Unsupported export: AnimationClassNames
 // WARNING: Unsupported export: FontClassNames
 // WARNING: Unsupported export: ColorClassNames
