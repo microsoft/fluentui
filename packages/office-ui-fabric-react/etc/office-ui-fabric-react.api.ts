@@ -10663,7 +10663,7 @@ interface ITeachingBubbleStyles {
 
 // @public (undocumented)
 interface ITeachingBubbleSubComponentStyles {
-  callout: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
+  callout: IStyleFunctionOrObject<any, any>;
 }
 
 // @public (undocumented)
