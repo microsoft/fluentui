@@ -7123,21 +7123,6 @@ interface IDropdownSubComponentStyles {
   label: IStyleFunctionOrObject<ILabelStyleProps, any>;
 }
 
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
-interface IEffects {
-  // (undocumented)
-  elevation16: IRawStyle;
-  // (undocumented)
-  elevation4: IRawStyle;
-  // (undocumented)
-  elevation64: IRawStyle;
-  // (undocumented)
-  elevation8: IRawStyle;
-  // (undocumented)
-  roundedCorner2: number;
-}
-
 // @public
 interface IEntityRect {
   // (undocumented)
@@ -9248,8 +9233,6 @@ interface IRGB {
 // @public (undocumented)
 interface IScheme {
   disableGlobalClassNames: boolean;
-  // (undocumented)
-  effects: IEffects;
   // (undocumented)
   fonts: IFontStyles;
   // (undocumented)
