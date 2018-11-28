@@ -3,7 +3,7 @@ import { IMenuItemClassNames } from '../ContextualMenu.classNames';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 import { IRefObject } from '../../../Utilities';
 
-export interface IContextualMenuItemWrapperProps extends React.Props<IContextualMenuItem> {
+export interface IContextualMenuItemWrapperProps extends React.ClassAttributes<IContextualMenuItem> {
   /**
    * Optional callback to access the ContextualMenuSplitButton interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

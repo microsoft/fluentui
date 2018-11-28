@@ -1,6 +1,40 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 02 Nov 2018 12:28:55 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Nov 2018 13:36:17 GMT and should not be manually modified.
+
+## 6.42.0
+Thu, 22 Nov 2018 13:36:17 GMT
+
+### Minor changes
+
+- Add initializeFolderCovers pathway to override CDN for FolderCover
+
+### Patches
+
+- Stack: remove display: none styling on empty children
+
+## 6.41.1
+Wed, 21 Nov 2018 13:34:56 GMT
+
+### Patches
+
+- Toggle: Reetructured Toggle to use style variables.
+
+## 6.41.0
+Thu, 08 Nov 2018 04:17:34 GMT
+
+### Minor changes
+
+- Converting existing Toggle component to use Foundation.
+
+### Patches
+
+- added bookmark signal icons
+
+## 6.40.3
+Fri, 02 Nov 2018 18:11:37 GMT
+
+*Version update only*
 
 ## 6.40.2
 Fri, 02 Nov 2018 12:28:55 GMT

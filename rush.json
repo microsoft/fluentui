@@ -1,14 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/rush.schema.json",
   "npmVersion": "5.4.0",
-  "rushVersion": "5.0.6",
+  "rushVersion": "5.5.2",
   "repository": {
     "url": "https://github.com/OfficeDev/office-ui-fabric-react.git"
   },
   "eventHooks": {
-    "postRushInstall": [
-      "node scripts/install-husky.js"
-    ]
+    "postRushInstall": ["node scripts/install-husky.js"]
   },
   "nodeSupportedVersionRange": ">=6.9.0 <10.0.0",
   "projects": [
@@ -138,8 +136,8 @@
       "shouldPublish": false
     },
     {
-      "packageName": "test-bundle-button",
-      "projectFolder": "apps/test-bundle-button",
+      "packageName": "test-bundles",
+      "projectFolder": "apps/test-bundles",
       "shouldPublish": false
     },
     {
@@ -161,6 +159,23 @@
     {
       "packageName": "@uifabric/fluent-theme",
       "projectFolder": "packages/fluent-theme",
+      "versionPolicyName": "lockedMajor",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@uifabric/date-time",
+      "projectFolder": "packages/date-time",
+      "versionPolicyName": "lockedMajor",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@uifabric/foundation-scenarios",
+      "projectFolder": "packages/foundation-scenarios",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "@uifabric/test-utilities",
+      "projectFolder": "packages/test-utilities",
       "versionPolicyName": "lockedMajor",
       "shouldPublish": true
     }

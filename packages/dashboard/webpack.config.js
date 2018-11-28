@@ -14,6 +14,23 @@ module.exports = resources.createConfig(BUNDLE_NAME, IS_PRODUCTION, {
     library: 'FabricDashboardGridLayout'
   },
 
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        enforce: 'pre',
+        use: [
+          {
+            loader: '@microsoft/loader-load-themed-styles' // creates style nodes from JS strings
+          },
+          {
+            loader: 'css-loader' // translates CSS into CommonJS
+          }
+        ]
+      }
+    ]
+  },
+
   externals: [{ react: 'React' }, { 'react-dom': 'ReactDOM' }],
 
   resolve: {

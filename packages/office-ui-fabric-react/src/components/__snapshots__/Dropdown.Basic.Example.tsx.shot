@@ -137,6 +137,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
+      placeholder="Select an Option"
       role="listbox"
       tabIndex={0}
     >
@@ -375,7 +376,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       Disabled uncontrolled example with defaultSelectedKey:
     </label>
     <div
-      aria-activedescendant="Dropdown3-option"
       aria-describedby="Dropdown3-option"
       aria-disabled={true}
       aria-expanded="false"
@@ -461,16 +461,12 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
-      role="listbox"
       tabIndex={-1}
     >
       <span
         aria-atomic={true}
         aria-label="Option d"
         aria-live="off"
-        aria-posinset={4}
-        aria-selected={true}
-        aria-setsize={7}
         className=
             ms-Dropdown-title
             {
@@ -504,7 +500,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
               color: GrayText;
             }
         id="Dropdown3-option"
-        role="option"
       >
         <span>
           Option d
@@ -681,6 +676,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
+      placeholder="Select an Option"
       role="listbox"
       tabIndex={0}
     >
@@ -890,6 +886,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
+      placeholder="Select options"
       tabIndex={0}
     >
       <span
@@ -1095,6 +1092,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
+      placeholder="Select options"
       tabIndex={0}
     >
       <span

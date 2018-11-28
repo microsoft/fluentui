@@ -20,7 +20,6 @@ export const getStyles = (props: IChoiceGroupStyleProps): IChoiceGroupStyles => 
       },
       className
     ],
-    label: className,
     flexContainer: [
       classNames.flexContainer,
       optionsContainIconOrImage && {

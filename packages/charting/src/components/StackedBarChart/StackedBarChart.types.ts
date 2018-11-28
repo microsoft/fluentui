@@ -64,6 +64,11 @@ export interface IStackedBarChartProps {
    * If this value is set, the fixed display pattern for less than 2 data points chart will be ignore
    */
   ignoreFixStyle?: boolean;
+
+  /**
+   * If this value is set to true the denominator will not be shown for the ratio above the chart
+   */
+  hideDenominator?: boolean;
 }
 
 export interface IStackedBarChartStyleProps {

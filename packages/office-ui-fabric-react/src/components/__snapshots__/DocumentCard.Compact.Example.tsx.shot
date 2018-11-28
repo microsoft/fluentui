@@ -4,6 +4,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
 <div>
   <div
     className="ms-DocumentCard ms-DocumentCard--actionable undefined ms-DocumentCard--compact undefined"
+    data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
@@ -63,8 +64,8 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     -webkit-font-smoothing: antialiased;
                     color: #0078d4;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
+                    font-size: inherit;
+                    font-weight: inherit;
                     outline: none;
                     text-decoration: none;
                   }
@@ -133,8 +134,8 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     -webkit-font-smoothing: antialiased;
                     color: #0078d4;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
+                    font-size: inherit;
+                    font-weight: inherit;
                     outline: none;
                     text-decoration: none;
                   }
@@ -203,8 +204,8 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     -webkit-font-smoothing: antialiased;
                     color: #0078d4;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
+                    font-size: inherit;
+                    font-weight: inherit;
                     outline: none;
                     text-decoration: none;
                   }
@@ -352,6 +353,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
   <p />
   <div
     className="ms-DocumentCard ms-DocumentCard--actionable undefined ms-DocumentCard--compact undefined"
+    data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
@@ -554,6 +556,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
   <p />
   <div
     className="ms-DocumentCard ms-DocumentCard--actionable undefined ms-DocumentCard--compact undefined"
+    data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
@@ -711,6 +714,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
   <p />
   <div
     className="ms-DocumentCard ms-DocumentCard--actionable undefined ms-DocumentCard--compact undefined"
+    data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
@@ -737,7 +741,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                 -webkit-font-smoothing: antialiased;
                 color: #0078d7;
                 display: inline-block;
-                font-family: "FabricMDL2Icons-8";
+                font-family: "FabricMDL2Icons-9";
                 font-size: 42px;
                 font-style: normal;
                 font-weight: normal;

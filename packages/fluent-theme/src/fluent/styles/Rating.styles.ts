@@ -24,7 +24,7 @@ export const RatingStyles = (props: IRatingStyleProps) => {
         color: NeutralColors.gray80
       },
       disabled && {
-        color: semanticColors.disabledBodyText
+        color: semanticColors.disabledBodySubtext
       }
     ],
     ratingStarFront: {

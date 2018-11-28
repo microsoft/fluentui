@@ -49,13 +49,13 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
             z-index: 1;
           }
           &:hover .ms-Checkbox-checkbox {
-            border-color: #212121;
+            border-color: #333333;
           }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
             border-color: Highlight;
           }
           &:focus .ms-Checkbox-checkbox {
-            border-color: #212121;
+            border-color: #333333;
           }
           &:hover .ms-Checkbox-checkmark {
             color: #a6a6a6;

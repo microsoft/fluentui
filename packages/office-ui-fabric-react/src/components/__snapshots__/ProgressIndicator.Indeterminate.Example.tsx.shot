@@ -59,7 +59,7 @@ exports[`Component Examples renders ProgressIndicator.Indeterminate.Example.tsx 
           {
             animation: keyframes 0%{left:-30%;}100%{left:100%;} 3s infinite;
             background-color: #0078d4;
-            background: linear-gradient(to right, transparent 0%, #0078d4 50%, transparent 100%);
+            background: linear-gradient(to right, #eaeaea 0%, #0078d4 50%, #eaeaea 100%);
             height: 2px;
             min-width: 33%;
             position: absolute;

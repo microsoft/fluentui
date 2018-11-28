@@ -137,6 +137,7 @@ exports[`Component Examples renders Dropdown.Error.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
+      placeholder="Select an Option"
       role="listbox"
       tabIndex={0}
     >

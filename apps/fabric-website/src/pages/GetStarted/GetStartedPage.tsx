@@ -191,10 +191,14 @@ export class GetStartedPage extends React.Component<any, any> {
                 <a href="https://github.com/facebook/create-react-app" target="_blank">
                   Create React App
                 </a>{' '}
+                along with{' '}
+                <a href="https://github.com/wmonk/create-react-app-typescript">
+                  <code>react-scripts-ts</code>
+                </a>{' '}
                 to get started quickly:
               </p>
               <CodeBlock language="bash" isLightTheme={true}>
-                {`npx create-react-app my-app --typescript`}
+                {`npx create-react-app my-app --scripts-version=react-scripts-ts`}
               </CodeBlock>
             </li>
             <li>
@@ -206,22 +210,27 @@ npm install office-ui-fabric-react`}
             </li>
             <li>
               <p>
-                Import and use DefaultButton, a Fabric React control. Make sure to import controls alongside React, then use them in your
-                render method.
+                In <code>src/App.tsx</code>, import and use <code>DefaultButton</code>, a Fabric React control. Make sure to import controls
+                alongside React, then use them in your <code>render</code> method. It will should look something like this:
               </p>
               <CodeBlock language="javascript" isLightTheme={true}>
                 {`import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
-const MyPage = () => (
-  <DefaultButton>
-    I am a button.
-  </DefaultButton>
-);
+class App extends React.Component {
+  public render() {
+    return (
+      <div className="App">
+        <DefaultButton>
+          I am a button.
+        </DefaultButton>
+      </div>
+    );
+  }
+}
 
-ReactDOM.render(<MyPage />, document.body.firstChild);`}
+export default App;`}
               </CodeBlock>
             </li>
             <li>

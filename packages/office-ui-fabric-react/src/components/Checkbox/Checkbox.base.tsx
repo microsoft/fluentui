@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, getId, createRef, classNamesFunction, mergeAriaAttributeValues } from '../../Utilities';
+import { BaseComponent, getId, classNamesFunction, mergeAriaAttributeValues } from '../../Utilities';
 import { Icon } from '../../Icon';
 import { ICheckbox, ICheckboxProps, ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
 import { KeytipData } from '../../KeytipData';
@@ -16,7 +16,7 @@ export class CheckboxBase extends BaseComponent<ICheckboxProps, ICheckboxState> 
     boxSide: 'start'
   };
 
-  private _checkBox = createRef<HTMLElement>();
+  private _checkBox = React.createRef<HTMLButtonElement>();
   private _id: string;
   private _classNames: { [key in keyof ICheckboxStyles]: string };
 

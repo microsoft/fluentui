@@ -1,6 +1,54 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Fri, 02 Nov 2018 12:28:54 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Nov 2018 20:12:42 GMT and should not be manually modified.
+
+## 0.35.1
+Tue, 20 Nov 2018 20:12:42 GMT
+
+### Patches
+
+- add default fonts from fabric  for dashboard package 
+
+## 0.35.0
+Tue, 13 Nov 2018 13:30:53 GMT
+
+### Minor changes
+
+- Adding SetupCard and SetupCardBanner.
+
+## 0.34.0
+Fri, 09 Nov 2018 13:32:57 GMT
+
+### Minor changes
+
+- Adding props for card to send props to dataviz in charting package
+
+## 0.33.2
+Thu, 08 Nov 2018 04:17:34 GMT
+
+### Patches
+
+- Fixes #5849: get rid of explicit loader syntax inside component file
+- Updating context menu shadow styling for card frame and action bar
+
+## 0.33.0
+Tue, 06 Nov 2018 13:31:09 GMT
+
+### Minor changes
+
+- Fixing change in hover card behavior, this change in behavior was caused due  to fabric version update in dashbaord package by fabric bot
+
+## 0.32.2
+Sun, 04 Nov 2018 02:27:52 GMT
+
+### Patches
+
+- Adding necessary wrapper classes for charting in dashboard package
+
+## 0.32.1
+Fri, 02 Nov 2018 18:11:37 GMT
+
+*Version update only*
 
 ## 0.32.0
 Fri, 02 Nov 2018 12:28:54 GMT

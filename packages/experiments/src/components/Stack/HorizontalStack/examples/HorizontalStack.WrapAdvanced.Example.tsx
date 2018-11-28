@@ -77,7 +77,7 @@ export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExa
           <HorizontalStack.Item grow>
             <Dropdown
               selectedKey={horizontalAlignment}
-              placeHolder="Select Horizontal Alignment"
+              placeholder="Select Horizontal Alignment"
               label="Horizontal alignment:"
               options={[
                 { key: 'left', text: 'Left' },
@@ -93,7 +93,7 @@ export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExa
           <HorizontalStack.Item grow>
             <Dropdown
               selectedKey={verticalAlignment}
-              placeHolder="Select Vertical Alignment"
+              placeholder="Select Vertical Alignment"
               label="Vertical alignment:"
               options={[{ key: 'top', text: 'Top' }, { key: 'center', text: 'Center' }, { key: 'bottom', text: 'Bottom' }]}
               onChange={this._onVerticalAlignChange}
@@ -102,7 +102,7 @@ export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExa
           <HorizontalStack.Item grow>
             <Dropdown
               selectedKey={overflow}
-              placeHolder="Select Overflow"
+              placeholder="Select Overflow"
               label="Overflow:"
               options={[{ key: 'visible', text: 'Visible' }, { key: 'auto', text: 'Auto' }, { key: 'hidden', text: 'Hidden' }]}
               onChange={this._onOverflowChange}
