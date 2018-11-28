@@ -21,7 +21,7 @@ export class CheckboxBase extends BaseComponent<ICheckboxProps, ICheckboxState> 
   private _classNames: { [key in keyof ICheckboxStyles]: string };
 
   /**
-   * Initialize a new instance of the TopHeaderV2
+   * Initialize a new instance of the Checkbox
    * @param props - Props for the component
    * @param context - Context or initial state for the base component.
    */
