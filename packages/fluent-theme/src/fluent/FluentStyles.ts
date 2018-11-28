@@ -1,4 +1,5 @@
 import { BreadcrumbStyles } from './styles/Breadcrumb.styles';
+import { CheckStyles, DetailsRowStyles } from './styles/DetailsList.styles';
 import { CalloutContentStyles } from './styles/Callout.styles';
 import { CheckboxStyles } from './styles/Checkbox.styles';
 import { ChoiceGroupOptionStyles } from './styles/ChoiceGroupOption.styles';
@@ -56,6 +57,9 @@ export const FluentStyles: any = {
   CompoundButton: {
     styles: CompoundButtonStyles
   },
+  Check: {
+    styles: CheckStyles
+  },
   Checkbox: {
     styles: CheckboxStyles
   },
@@ -76,6 +80,9 @@ export const FluentStyles: any = {
   },
   DefaultButton: {
     styles: DefaultButtonStyles
+  },
+  DetailsRow: {
+    styles: DetailsRowStyles
   },
   DialogContent: {
     styles: DialogContentStyles
