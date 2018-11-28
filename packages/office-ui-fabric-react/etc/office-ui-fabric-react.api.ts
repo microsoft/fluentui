@@ -10661,7 +10661,14 @@ interface ITeachingBubbleStyles {
   // (undocumented)
   secondaryButton: IStyle;
   // (undocumented)
+  subComponentStyles?: ITeachingBubbleSubComponentStyles;
+  // (undocumented)
   subText: IStyle;
+}
+
+// @public (undocumented)
+interface ITeachingBubbleSubComponentStyles {
+  callout: IStyleFunctionOrObject<any, any>;
 }
 
 // @public (undocumented)
