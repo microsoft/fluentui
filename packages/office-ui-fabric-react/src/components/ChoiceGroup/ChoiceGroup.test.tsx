@@ -153,6 +153,20 @@ describe('ChoiceGroup', () => {
     expect(extraAttributeGetter(1)).toBeNull();
   });
 
+  it('has role attribute that can be omitted', () => {
+    const choiceGroup = mount(<ChoiceGroup options={TEST_OPTIONS} role="" />);
+    const choiceGroupEl: Element = choiceGroup.getDOMNode();
+    const role = choiceGroupEl.getAttribute('role');
+    expect(role).toEqual('');
+  });
+
+  it('can assign a role attribute to the containing element', () => {
+    const choiceGroup = mount(<ChoiceGroup options={TEST_OPTIONS} role="Test" />);
+    const choiceGroupEl: Element = choiceGroup.getDOMNode();
+    const role = choiceGroupEl.getAttribute('role');
+    expect(role).toEqual('Test');
+  });
+
   it('can assign a custom aria label', () => {
     const option4: IChoiceGroupOption[] = [{ key: '4', text: '4', ariaLabel: 'Custom aria label' }];
     const choiceGroup = mount(<ChoiceGroup label="testgroup" options={TEST_OPTIONS.concat(option4)} required={true} />);

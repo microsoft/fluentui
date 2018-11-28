@@ -142,6 +142,7 @@ export interface IChoiceGroupStyleProps {
 }
 
 export interface IChoiceGroupStyles {
+  applicationRole?: IStyle;
   root?: IStyle;
   label?: IStyle;
   flexContainer?: IStyle;
