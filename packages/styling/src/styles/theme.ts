@@ -2,6 +2,7 @@ import { Customizations } from '@uifabric/utilities/lib/Customizations';
 import {
   IPalette,
   ISemanticColors,
+  ISemanticTextColors,
   ITheme,
   IPartialTheme
 } from '../interfaces/index';
