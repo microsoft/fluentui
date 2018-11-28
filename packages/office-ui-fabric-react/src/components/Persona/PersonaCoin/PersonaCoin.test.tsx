@@ -1,7 +1,7 @@
 /* tslint:disable-next-line:no-unused-variable */
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { setRTL } from '../../../Utilities';
 import { PersonaCoin } from './PersonaCoin';
 import { PersonaCoinBase } from './PersonaCoin.base';
@@ -72,5 +72,17 @@ describe('PersonaCoin', () => {
     component.setProps({ imageUrl: undefined });
     const isImageLoaded = component.state('isImageLoaded');
     expect(isImageLoaded).toBe(false);
+  });
+
+  it('renders initials instead of an image when hovering over the a coin that has the showInitialsOnHover prop set to true', () => {
+    const wrapper = mount(<PersonaCoin showInitialsOnHover={true} text="Kat Larrson" imageUrl={testImage1x1}/>);
+    expect(wrapper.find('.ms-Persona-image').length).toBeGreaterThanOrEqual(1);
+    expect(wrapper.find('.ms-Persona-initials').length).toBe(0);
+    wrapper.find('.ms-Persona-imageArea').simulate('mouseenter');
+    expect(wrapper.find('.ms-Persona-image').length).toBe(0);
+    expect(wrapper.find('.ms-Persona-initials').length).toBe(1);
+    wrapper.find('.ms-Persona-imageArea').simulate('mouseleave');
+    expect(wrapper.find('.ms-Persona-image').length).toBeGreaterThanOrEqual(1);
+    expect(wrapper.find('.ms-Persona-initials').length).toBe(0);
   });
 });
