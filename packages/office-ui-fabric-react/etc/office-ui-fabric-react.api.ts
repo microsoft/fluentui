@@ -10319,7 +10319,7 @@ interface ISpinButtonStyles {
 interface ISpinner {
 }
 
-// @public (undocumented)
+// @public
 interface ISpinnerProps extends React.HTMLAttributes<HTMLElement> {
   ariaLabel?: string;
   ariaLive?: 'assertive' | 'polite' | 'off';
@@ -10334,27 +10334,19 @@ interface ISpinnerProps extends React.HTMLAttributes<HTMLElement> {
   type?: SpinnerType;
 }
 
-// @public (undocumented)
+// @public
 interface ISpinnerStyleProps {
-  // (undocumented)
   className?: string;
-  // (undocumented)
   labelPosition?: SpinnerLabelPosition;
-  // (undocumented)
   size?: SpinnerSize;
-  // (undocumented)
   theme: ITheme;
 }
 
-// @public (undocumented)
+// @public
 interface ISpinnerStyles {
-  // (undocumented)
   circle?: IStyle;
-  // (undocumented)
   label?: IStyle;
-  // (undocumented)
   root?: IStyle;
-  // (undocumented)
   screenReaderText?: IStyle;
 }
 
@@ -11958,7 +11950,7 @@ class SpinnerBase extends BaseComponent<ISpinnerProps, any> {
   render(): JSX.Element;
 }
 
-// @public (undocumented)
+// @public
 enum SpinnerSize {
   large = 3,
   medium = 2,
