@@ -5,7 +5,7 @@ import { TeachingBubbleContentBase } from './TeachingBubbleContent.base';
 import { IImageProps } from '../../Image';
 import { IButtonProps } from '../../Button';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
-import { ICalloutProps, ICalloutContentStyles, ICalloutContentStyleProps } from '../../Callout';
+import { ICalloutProps } from '../../Callout';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
@@ -128,5 +128,7 @@ export interface ITeachingBubbleStyles {
 
 export interface ITeachingBubbleSubComponentStyles {
   /** Refers to the callout that hosts the teaching bubble. */
-  callout: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
+  // TODO: this should be the interface once we're on TS 2.9.2 but otherwise causes errors in 2.8.4
+  // callout: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
+  callout: IStyleFunctionOrObject<any, any>;
 }
