@@ -1,6 +1,5 @@
-import { IToggleComponent, IToggleStyles, IToggleStyleVariablesTypes, IToggleStyleVariables, IToggleStates } from './Toggle.types';
+import { IToggleComponent, IToggleStyles, IToggleStyleVariablesTypes, IToggleStyleVariables, IToggleViewProps } from './Toggle.types';
 import { getFocusStyle, getGlobalClassNames, HighContrastSelector, concatStyleSets } from '../../Styling';
-import { processVariables } from '../../utilities/VariableProcessing';
 
 const GlobalClassNames = {
   root: 'ms-Toggle',
@@ -17,59 +16,51 @@ export const ToggleStyles: IToggleComponent['styles'] = props => {
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  const toggleStyleVariables: IToggleStyleVariables = {
-    baseState: {},
+  const toggleBaseStateVariables: IToggleStyleVariablesTypes = {};
 
-    enabled: {
-      pillBackground: semanticColors.bodyBackground,
-      pillBorderColor: semanticColors.smallInputBorder,
-      pillHoveredBorderColor: semanticColors.inputBorderHovered,
-      pillHighContrastBorderColor: 'Highlight',
-      pillHighContrastHoveredBorderColor: 'Highlight',
+  const toggleEnabledVariables: IToggleStyleVariablesTypes = {
+    pillBackground: semanticColors.bodyBackground,
+    pillBorderColor: semanticColors.smallInputBorder,
+    pillHoveredBorderColor: semanticColors.inputBorderHovered,
+    pillHighContrastBorderColor: 'Highlight',
+    pillHighContrastHoveredBorderColor: 'Highlight',
 
-      thumbBackground: semanticColors.inputBorderHovered
-    },
-
-    disabled: {
-      pillBackground: semanticColors.bodyBackground,
-      pillBorderColor: semanticColors.disabledBodyText,
-
-      thumbBackground: semanticColors.disabledBodyText,
-
-      textColor: semanticColors.disabledText,
-      textHighContrastColor: 'GrayText'
-    },
-
-    checked: {
-      pillBackground: semanticColors.inputBackgroundChecked,
-      pillHoveredBackground: semanticColors.inputBackgroundCheckedHovered,
-      pillBorderColor: 'transparent',
-      pillHoveredBorderColor: 'transparent',
-      pillJustifyContent: 'flex-end',
-      pillHighContrastBackground: 'WindowText',
-      pillHighContrastHoveredBackground: 'Highlight',
-      pillHighContrastBorderColor: 'Highlight',
-
-      thumbBackground: semanticColors.inputForegroundChecked,
-      thumbHighContrastBackground: 'Window',
-      thumbHighContrastBorderColor: 'Window'
-    },
-
-    checkedDisabled: {
-      pillBackground: semanticColors.disabledBodyText,
-      pillBorderColor: 'transparent',
-      pillJustifyContent: 'flex-end',
-
-      thumbBackground: semanticColors.disabledBackground,
-
-      textColor: semanticColors.disabledText,
-      textHighContrastColor: 'GrayText'
-    },
-
-    ...styleVariables
+    thumbBackground: semanticColors.inputBorderHovered
   };
 
-  const toggleVariables = processVariables(toggleStyleVariables);
+  const toggleDisabledVariables: IToggleStyleVariablesTypes = {
+    pillBackground: semanticColors.bodyBackground,
+    pillBorderColor: semanticColors.disabledBodySubtext,
+
+    thumbBackground: semanticColors.disabledBodySubtext,
+
+    textColor: semanticColors.disabledText,
+    textHighContrastColor: 'GrayText'
+  };
+
+  const toggleCheckedVariables: IToggleStyleVariablesTypes = {
+    pillBorderColor: 'transparent',
+    pillJustifyContent: 'flex-end'
+  };
+
+  const toggleCheckedEnabledVariables: IToggleStyleVariablesTypes = {
+    pillBackground: semanticColors.inputBackgroundChecked,
+    pillHoveredBackground: semanticColors.inputBackgroundCheckedHovered,
+    pillHoveredBorderColor: 'transparent',
+    pillHighContrastBackground: 'WindowText',
+    pillHighContrastHoveredBackground: 'Highlight',
+    pillHighContrastHoveredBorderColor: 'transparent',
+
+    thumbBackground: semanticColors.inputForegroundChecked,
+    thumbHighContrastBackground: 'Window',
+    thumbHighContrastBorderColor: 'Window'
+  };
+
+  const toggleCheckedDisabledVariables: IToggleStyleVariablesTypes = {
+    pillBackground: semanticColors.disabledBodySubtext,
+
+    thumbBackground: semanticColors.disabledBackground
+  };
 
   function getToggleStylesFromState(state: IToggleStyleVariablesTypes): Partial<IToggleStyles> {
     if (state) {
@@ -208,15 +199,33 @@ export const ToggleStyles: IToggleComponent['styles'] = props => {
     return {};
   }
 
-  function getToggleStylesFromVariant(variantVariables: { [PState in IToggleStates]: IToggleStyleVariablesTypes }): Partial<IToggleStyles> {
-    return concatStyleSets(
-      getToggleStylesFromState(variantVariables.baseState),
-      !disabled && !checked && getToggleStylesFromState(variantVariables.enabled),
-      disabled && !checked && getToggleStylesFromState(variantVariables.disabled),
-      !disabled && checked && getToggleStylesFromState(variantVariables.checked),
-      disabled && checked && getToggleStylesFromState(variantVariables.checkedDisabled)
-    );
+  function getToggleViewStyleVariables(viewProps: IToggleViewProps): IToggleStyleVariablesTypes {
+    let toggleVariables: IToggleStyleVariablesTypes = toggleBaseStateVariables;
+
+    toggleVariables = {
+      ...toggleVariables,
+      ...(viewProps.checked ? toggleCheckedVariables : {}),
+      ...(viewProps.disabled
+        ? { ...toggleDisabledVariables, ...(viewProps.checked ? toggleCheckedDisabledVariables : {}) }
+        : { ...toggleEnabledVariables, ...(viewProps.checked ? toggleCheckedEnabledVariables : {}) })
+    };
+
+    return toggleVariables;
   }
 
-  return concatStyleSets(getToggleStylesFromVariant(toggleVariables), { root: className });
+  function getToggleStyles(userStyleVariables: IToggleStyleVariables): Partial<IToggleStyles> {
+    let toggleVariables: IToggleStyleVariablesTypes;
+
+    toggleVariables = getToggleViewStyleVariables(props);
+
+    if (typeof userStyleVariables === 'function') {
+      toggleVariables = { ...toggleVariables, ...userStyleVariables(props) };
+    } else if (userStyleVariables !== undefined) {
+      toggleVariables = { ...toggleVariables, ...userStyleVariables };
+    }
+
+    return getToggleStylesFromState(toggleVariables);
+  }
+
+  return concatStyleSets(getToggleStyles(styleVariables), { root: className });
 };

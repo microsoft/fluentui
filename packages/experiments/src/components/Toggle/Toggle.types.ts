@@ -7,8 +7,6 @@ import { IRawStyleBase } from '@uifabric/merge-styles/lib/IRawStyleBase';
 
 export type IToggleComponent = IComponent<IToggleProps, IToggleViewProps, IToggleStyles>;
 
-export type IToggleStates = 'baseState' | 'enabled' | 'disabled' | 'checked' | 'checkedDisabled';
-
 export type IToggleSlots = 'root' | 'label' | 'container' | 'pill' | 'thumb' | 'text';
 
 export interface IToggle {
@@ -129,6 +127,6 @@ export interface IToggleStyleVariablesTypes {
   textHighContrastColor?: string;
 }
 
-export type IToggleStyleVariables = { [PState in IToggleStates]?: IToggleStyleVariablesTypes };
+export type IToggleStyleVariables = IToggleStyleVariablesTypes | ((props: IToggleViewProps) => IToggleStyleVariablesTypes) | undefined;
 
 export type IToggleStyles = { [key in IToggleSlots]: IStyle };

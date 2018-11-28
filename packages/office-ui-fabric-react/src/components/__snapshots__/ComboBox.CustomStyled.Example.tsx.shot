@@ -98,7 +98,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             top: -2px;
           }
           &:hover {
-            border-color: #212121;
+            border-color: #333333;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;

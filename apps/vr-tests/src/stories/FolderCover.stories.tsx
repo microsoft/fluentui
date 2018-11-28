@@ -2,13 +2,12 @@
 import * as React from 'react';
 import {
   FolderCover,
-  initializeFolderCovers,
   IFolderCoverProps,
   getFolderCoverLayout,
   renderFolderCoverWithLayout,
   SharedSignal
 } from '@uifabric/experiments';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { ISize, fitContentToBounds } from 'office-ui-fabric-react';
 import { FabricDecorator } from '../utilities';

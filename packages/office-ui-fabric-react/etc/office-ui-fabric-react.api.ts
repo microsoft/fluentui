@@ -7417,7 +7417,6 @@ interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDi
   placeholder?: string;
   // @deprecated
   placeHolder?: string;
-  // (undocumented)
   responsiveMode?: ResponsiveMode;
   selectedKeys?: string[] | number[];
   styles?: IStyleFunctionOrObject<IDropdownStyleProps, IDropdownStyles>;
@@ -8044,6 +8043,7 @@ interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
   expandedCardOpenDelay?: number;
   expandingCardProps?: IExpandingCardProps;
   instantOpenOnClick?: boolean;
+  onCardExpand?: () => void;
   onCardHide?: () => void;
   onCardVisible?: () => void;
   openHotKey?: KeyCodes;
@@ -9922,6 +9922,7 @@ export function isElementVisible(element: HTMLElement | undefined | null): boole
 
 // @public
 interface ISemanticColors extends ISemanticTextColors {
+  accentButtonBackground: string;
   blockingBackground: string;
   bodyBackground: string;
   bodyDivider: string;
@@ -9979,6 +9980,7 @@ interface ISemanticColors extends ISemanticTextColors {
 
 // @public (undocumented)
 interface ISemanticTextColors {
+  accentButtonText: string;
   actionLink: string;
   actionLinkHovered: string;
   bodySubtext: string;
@@ -9990,11 +9992,14 @@ interface ISemanticTextColors {
   buttonTextDisabled: string;
   buttonTextHovered: string;
   buttonTextPressed: string;
+  disabledBodySubtext: string;
   disabledBodyText: string;
   disabledSubtext: string;
   disabledText: string;
   errorText: string;
   inputPlaceholderText: string;
+  inputText: string;
+  inputTextHovered: string;
   link: string;
   linkHovered: string;
   listText: string;
@@ -10672,7 +10677,14 @@ interface ITeachingBubbleStyles {
   // (undocumented)
   secondaryButton: IStyle;
   // (undocumented)
+  subComponentStyles?: ITeachingBubbleSubComponentStyles;
+  // (undocumented)
   subText: IStyle;
+}
+
+// @public (undocumented)
+interface ITeachingBubbleSubComponentStyles {
+  callout: IStyleFunctionOrObject<any, any>;
 }
 
 // @public (undocumented)
@@ -10862,6 +10874,7 @@ interface ITooltip {
 
 // @public (undocumented)
 interface ITooltipHost {
+  dismiss: () => void;
 }
 
 // @public
@@ -12427,12 +12440,16 @@ enum TooltipDelay {
 }
 
 // @public (undocumented)
-class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHostState> {
+class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHostState>, implements ITooltipHost {
   constructor(props: ITooltipHostProps);
+  // (undocumented)
+  componentWillUnmount(): void;
   // (undocumented)
   static defaultProps: {
     delay: TooltipDelay;
   }
+  // (undocumented)
+  dismiss: () => void;
   // (undocumented)
   render(): JSX.Element;
 }
