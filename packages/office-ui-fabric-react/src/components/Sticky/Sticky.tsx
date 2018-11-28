@@ -188,6 +188,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       this.distanceFromTop = distance;
       scrollablePane.sortSticky(this, true);
       this.forceUpdate();
+      scrollablePane.syncScrollSticky(this);
     }
   }
 
