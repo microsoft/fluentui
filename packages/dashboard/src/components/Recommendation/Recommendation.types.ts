@@ -1,4 +1,5 @@
-import { IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 
 /**
  * Props that are exposed for customizing the Recommendation Card
@@ -79,6 +80,18 @@ export interface IRecommendationProps {
    * @memberof IRecommendationProps
    */
   centerDataVisualization?: boolean;
+  /**
+   * Optional: Theme (provided through customization)
+   */
+  theme?: ITheme;
+  /**
+   * Optional: Additional css class(es) to apply for RecommendationBanner
+   */
+  className?: string;
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  styles?: IStyleFunctionOrObject<IRecommendationStyleProps, IRecommendationStyles>;
 }
 
 /**
@@ -93,6 +106,20 @@ export interface ICardComponentCustomizationStyles {
    * Text color for the CardFrame header
    */
   frameHeaderColor: string;
+}
+
+/**
+ * Props for style customizations
+ */
+export interface IRecommendationStyleProps {
+  /**
+   * Theme (provided through customization.)
+   */
+  theme: ITheme;
+  /**
+   * Additional CSS class(es) to apply to the StackedBarChart.
+   */
+  className?: string;
 }
 
 /**
