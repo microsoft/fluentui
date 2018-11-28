@@ -93,7 +93,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               z-index: 1;
             }
             &:hover {
-              border-color: #212121;
+              border-color: #333333;
             }
             @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
               border-color: Highlight;
@@ -112,7 +112,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
           className=
               ms-Toggle-thumb
               {
-                background-color: #212121;
+                background-color: #333333;
                 border-color: transparent;
                 border-radius: .5em;
                 border-style: solid;
@@ -256,7 +256,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               z-index: 1;
             }
             &:hover {
-              border-color: #212121;
+              border-color: #333333;
             }
             @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
               border-color: Highlight;
@@ -275,7 +275,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
           className=
               ms-Toggle-thumb
               {
-                background-color: #212121;
+                background-color: #333333;
                 border-color: transparent;
                 border-radius: .5em;
                 border-style: solid;
@@ -407,7 +407,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               position: relative;
             }
             &:hover {
-              border-color: #212121;
+              border-color: #333333;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;

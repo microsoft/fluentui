@@ -227,7 +227,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     }
 
     // Make sure value has correct number of decimal places based on number of decimals in step
-    const roundedValue = Number.parseFloat(value.toFixed(numDec));
+    const roundedValue = parseFloat(value.toFixed(numDec));
     const valueChanged = roundedValue !== this.state.value;
 
     this.setState(

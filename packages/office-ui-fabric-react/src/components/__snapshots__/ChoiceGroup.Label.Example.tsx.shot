@@ -96,13 +96,13 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
                     color: #000000;
                   }
                   &:hover:before {
-                    border-color: #212121;
+                    border-color: #333333;
                   }
                   &:focus .ms-ChoiceFieldLabel {
                     color: #000000;
                   }
                   &:focus:before {
-                    border-color: #212121;
+                    border-color: #333333;
                   }
                   &:before {
                     background-color: #ffffff;
@@ -368,7 +368,7 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
                     width: 0px;
                   }
                   & .ms-ChoiceFieldLabel {
-                    color: #c8c8c8;
+                    color: #a6a6a6;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     color: GrayText;
@@ -480,7 +480,7 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
                     width: 0px;
                   }
                   & .ms-ChoiceFieldLabel {
-                    color: #c8c8c8;
+                    color: #a6a6a6;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     color: GrayText;
