@@ -3,7 +3,9 @@ import { ITheme, IStyle } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
 export interface ISpinner {}
-
+/**
+ * Spinner component props.
+ */
 export interface ISpinnerProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Optional callback to access the ISpinner interface. Use this instead of ref for accessing
@@ -62,6 +64,9 @@ export interface ISpinnerProps extends React.HTMLAttributes<HTMLElement> {
   labelPosition?: SpinnerLabelPosition;
 }
 
+/**
+ * Possible variations of the spinner circle size.
+ */
 export enum SpinnerSize {
   /**
    * 12px Spinner diameter
@@ -108,16 +113,36 @@ export enum SpinnerType {
   large = 1
 }
 
+/**
+ * The props needed to construct styles. This represents the simplified set of immutable things which control the class names.
+ */
 export interface ISpinnerStyleProps {
+  /** Theme provided by High-Order Component. */
   theme: ITheme;
+
+  /** Size of the spinner animation. */
   size?: SpinnerSize;
+
+  /** CSS class name for the component attached to the root stylable area. */
   className?: string;
+
+  /** Position of the label in regards to the spinner animation. */
   labelPosition?: SpinnerLabelPosition;
 }
 
+/**
+ * Represents the stylable areas of the control.
+ */
 export interface ISpinnerStyles {
+  /** Styles for the root element. Refers to the wrapper containing both the circle and the label. */
   root?: IStyle;
+
+  /** Styles for the spinner circle animation. */
   circle?: IStyle;
+
+  /** Styles for the label accompanying the circle. */
   label?: IStyle;
+
+  /** Styles for the hidden helper element to aid with screen readers. */
   screenReaderText?: IStyle;
 }
