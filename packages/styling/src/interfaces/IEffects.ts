@@ -26,13 +26,12 @@ export interface IEffects {
   /**
    * Used to provide a visual affordance that this element is elevated above the surface it rests on.
    * Usually a shadow. This is lower than elevations with a higher value, and higher than elevations with a lower value.
-   * Used for: panels, dialogs
+   * Used for: Panels, Dialogs
    */
   elevation64: IRawStyle;
 
+  /**
+   * How much corners should be rounded, for use with border-radius.
+   */
   roundedCorner2: number;
 }
-
-/** Todo list
- * 4) add equivalents to SASS exports
- */
