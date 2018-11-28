@@ -13,13 +13,13 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
   const checkmarkFontColorHovered = semanticColors.inputBorder;
   const checkboxBorderColor = semanticColors.smallInputBorder;
   const checkboxBorderColorChecked = semanticColors.inputBackgroundChecked;
-  const checkboxBorderColorDisabled = semanticColors.disabledBodyText;
+  const checkboxBorderColorDisabled = semanticColors.disabledBodySubtext;
   const checkboxBorderHoveredColor = semanticColors.inputBorderHovered;
   const checkboxBackgroundChecked = semanticColors.inputBackgroundChecked;
   const checkboxBackgroundCheckedHovered = semanticColors.inputBackgroundCheckedHovered;
   const checkboxBorderColorCheckedHovered = semanticColors.inputBackgroundCheckedHovered;
   const checkboxHoveredTextColor = semanticColors.bodyText;
-  const checkboxBackgroundDisabledChecked = semanticColors.disabledBodyText;
+  const checkboxBackgroundDisabledChecked = semanticColors.disabledBodySubtext;
   const checkboxTextColor = semanticColors.bodyText;
   const checkboxTextColorDisabled = semanticColors.disabledText;
 
