@@ -1,5 +1,9 @@
+import { ISemanticTextColors } from './ISemanticTextColors';
+
 /**
- * The collection of semantic slots for colors used in themes.
+ * The collection of all semantic slots for colors used in themes.
+ *
+ * Note: text colors are defined in ISemanticTextColors.ts.
  *
  * ## Naming Convention
  *
@@ -46,7 +50,7 @@
  * and have a large and complex interaction surface.
  * This category covers all kinds of lists, whether they're typical one-item-per-row lists (like DetailsList) or ones with a tiled layout.
  */
-export interface ISemanticColors {
+export interface ISemanticColors extends ISemanticTextColors {
   /* ANY ADDITIONS/REMOVALS HERE MUST ALSO BE MADE TO \packages\office-ui-fabric-react\src\common\_semanticSlots.scss */
 
   //// Base slots
@@ -81,64 +85,14 @@ export interface ISemanticColors {
   bodyFrameDivider: string;
 
   /**
-   * The default color for text.
-   */
-  bodyText: string;
-
-  /**
-   * Checked text color, e.g. selected menu item text.
-   */
-  bodyTextChecked: string;
-
-  /**
-   * De-emphasized text; e.g. metadata, captions, placeholder text.
-   */
-  bodySubtext: string;
-
-  /**
    * Divider lines; e.g. lines that separate sections in a menu, an <HR> element.
    */
   bodyDivider: string;
 
   /**
-   * Neutral colored links and links for action buttons.
-   */
-  actionLink: string;
-
-  /**
-   * Hover state for neutral colored links and links for action buttons.
-   */
-  actionLinkHovered: string;
-
-  /**
-   * The color of a link.
-   */
-  link: string;
-
-  /**
-   * The color of a hovered link. Also used when the link is active.
-   */
-  linkHovered: string;
-
-  /**
    * The default color for backgrounds of disabled controls; e.g. disabled text field.
    */
   disabledBackground: string;
-
-  /**
-   * The default color for disabled text on top of disabledBackground; e.g. text in a disabled text field, disabled button text.
-   */
-  disabledText: string;
-
-  /**
-   * The default color for disabled text on the default background (bodyBackground).
-   */
-  disabledBodyText: string;
-
-  /**
-   * Disabled de-emphasized text, for use on disabledBackground.
-   */
-  disabledSubtext: string;
 
   /**
    * The color of the outline around focused controls that don't already have a border; e.g. menu items
@@ -162,15 +116,6 @@ export interface ISemanticColors {
   defaultStateBackground: string;
 
   //// Invariants - slots that rarely change color theme-to-theme because the color has meaning
-
-  /**
-   * The default color of error text, used on bodyBackground.
-   */
-  errorText: string;
-  /**
-   * The color of text on errorBackground, warningBackground, blockingBackground, or successBackground.
-   */
-  warningText: string;
   /**
    * The background for errors, if necessary, or highlighting the section of the page where the error is present.
    */
@@ -199,8 +144,8 @@ export interface ISemanticColors {
    */
   inputBorder: string;
 
-  /** The border of a small input control in its resting unchecked state; e.g. the box of an unchecked checkbox.
-   *
+  /**
+   * The border of a small input control in its resting unchecked state; e.g. the box of an unchecked checkbox.
    */
   smallInputBorder: string;
 
@@ -235,37 +180,37 @@ export interface ISemanticColors {
    */
   inputFocusBorderAlt: string;
 
-  /**
-   * The color of placeholder text.
-   */
-  inputPlaceholderText: string;
-
   //// Buttons
 
   /**
    * Background of a standard button
    */
   buttonBackground: string;
-  /**
-   * Background of a hovered standard button
-   */
-  buttonBackgroundHovered: string;
+
   /**
    * Background of a checked standard button; e.g. bold/italicize/underline text button in toolbar
    */
   buttonBackgroundChecked: string;
+
+  /**
+   * Background of a hovered standard button
+   */
+  buttonBackgroundHovered: string;
+
   /**
    * Background of a checked and hovered standard button; e.g. bold/italicize/underline text button in toolbar
    */
   buttonBackgroundCheckedHovered: string;
-  /**
-   * Background of a pressed standard button; i.e. currently being clicked by mouse
-   */
-  buttonBackgroundPressed: string;
+
   /**
    * Background of a disabled standard button
    */
   buttonBackgroundDisabled: string;
+
+  /**
+   * Background of a pressed standard button; i.e. currently being clicked by mouse
+   */
+  buttonBackgroundPressed: string;
 
   /**
    * Border of a standard button
@@ -273,47 +218,29 @@ export interface ISemanticColors {
   buttonBorder: string;
 
   /**
-   * Color of text in a standard button
-   */
-  buttonText: string;
-  /**
-   * Color of text in a hovered standard button
-   */
-  buttonTextHovered: string;
-  /**
-   * Color of text in a checked standard button
-   */
-  buttonTextChecked: string;
-  /**
-   * Color of text in a checked and hovered standard button
-   */
-  buttonTextCheckedHovered: string;
-  /**
-   * Color of text in a pressed standard button; i.e. currently being clicked by mouse
-   */
-  buttonTextPressed: string;
-
-  /**
    * Border of a disabled standard button
    */
   buttonBorderDisabled: string;
-  /**
-   * Color of text in a disabled standard button
-   */
-  buttonTextDisabled: string;
 
   /**
    * Background of a primary button
    */
   primaryButtonBackground: string;
+
   /**
    * Background of a hovered primary button
    */
   primaryButtonBackgroundHovered: string;
+
   /**
    * Background of a pressed primary button; i.e. currently being clicked by mouse
    */
   primaryButtonBackgroundPressed: string;
+
+  /**
+   * Background of a disabled primary button
+   */
+  primaryButtonBackgroundDisabled: string;
 
   /**
    * Border of a primary button
@@ -321,17 +248,9 @@ export interface ISemanticColors {
   primaryButtonBorder: string;
 
   /**
-   * Color of text in a primary button
+   * Background of an accent button (kicker)
    */
-  primaryButtonText: string;
-  /**
-   * Color of text in a hovered primary button
-   */
-  primaryButtonTextHovered: string;
-  /**
-   * Color of text in a pressed primary button; i.e. currently being clicked by mouse
-   */
-  primaryButtonTextPressed: string;
+  accentButtonBackground: string;
 
   //// Menus, popups, etc
 
@@ -414,10 +333,6 @@ export interface ISemanticColors {
 
   //// DEPRECATED SLOTS
   // Do not use these slots, they are only maintained for backwards compatibility.
-
-  /** @deprecated
-   * This slot was incorrectly named. Use listText instead. */
-  listTextColor: string;
 
   /**
    * @deprecated
