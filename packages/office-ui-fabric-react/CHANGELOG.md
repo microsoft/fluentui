@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 27 Nov 2018 12:25:26 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Nov 2018 12:24:44 GMT and should not be manually modified.
+
+## 5.132.0
+Wed, 28 Nov 2018 12:24:44 GMT
+
+### Minor changes
+
+- semantic slot updates
 
 ## 5.131.5
 Tue, 27 Nov 2018 12:25:26 GMT

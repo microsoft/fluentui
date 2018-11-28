@@ -1,6 +1,13 @@
 # Change Log - @uifabric/variants
 
-This log was last generated on Mon, 01 Oct 2018 11:24:38 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Nov 2018 12:24:44 GMT and should not be manually modified.
+
+## 5.14.0
+Wed, 28 Nov 2018 12:24:44 GMT
+
+### Minor changes
+
+- semantic slot updates
 
 ## 5.13.0
 Mon, 01 Oct 2018 11:24:38 GMT
