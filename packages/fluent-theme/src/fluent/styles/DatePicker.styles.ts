@@ -1,8 +1,8 @@
-import { IDatePickerStyleProps } from 'office-ui-fabric-react/lib/DatePicker';
+import { IDatePickerStyleProps, IDatePickerStyles } from 'office-ui-fabric-react/lib/DatePicker';
 import { fluentBorderRadius } from './styleConstants';
 import { Depths } from '../FluentDepths';
 
-export const DatePickerStyles = (props: IDatePickerStyleProps) => {
+export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePickerStyles> => {
   return {
     callout: {
       border: 'none',

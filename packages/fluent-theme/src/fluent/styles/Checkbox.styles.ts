@@ -2,7 +2,7 @@ import { ICheckboxStyleProps, ICheckboxStyles } from 'office-ui-fabric-react/lib
 import { fluentBorderRadius } from './styleConstants';
 import { NeutralColors } from '../FluentColors';
 
-export const CheckboxStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
+export const CheckboxStyles = (props: ICheckboxStyleProps): Partial<ICheckboxStyles> => {
   const { disabled, checked, theme } = props;
   const { semanticColors, palette } = theme;
 
