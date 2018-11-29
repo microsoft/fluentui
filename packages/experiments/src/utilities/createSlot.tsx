@@ -1,14 +1,16 @@
 import * as React from 'react';
 import { memoizeFunction } from 'office-ui-fabric-react';
 
+// TODO: Debug scenarios: is there a way to enable or highlight slots visually? borders? etc.
 // TODO: make sure Slot and SlotTemplate do not appear in hierarchy
 // TODO: needs to work with refs / componentRefs/ forwardRefs / etc.
 // TODO: what other stuff are we bypassing / breaking by not using createElement? unique key generation for children?
+// TODO: make sure no unnecessary attributes are being pasesd to DOM ('as', 'slotAs', etc.)
 export const CreateElementWrapper = (type, props, ...children) => {
   if (type.isSlot) {
-    // TODO: does this need to make use of children argument? (props vs. nested JSX)
     // Since we are bypassing createElement, use React.Children.toArray to make sure children are properly assigned keys.
-    return type(props, React.Children.toArray(children));
+    children = React.Children.toArray(children);
+    return type({ ...props, children });
   } else {
     // TODO: assess perf! is this spread really needed?
     return React.createElement(type, props, ...children);
@@ -25,18 +27,7 @@ export const CreateElementWrapper = (type, props, ...children) => {
 // TODO: add tests for each case in this function.
 // TODO: tests should ensure props like data attributes and ID persist across all factory types
 // TODO: add typing tests too
-// TODO: get rid of all of this children crap. if separate children are needed from jsxFactory, consolidate it immediately
-export const createFactory = (ComponentType, options = { defaultProp: 'children' }) => (
-  componentProps = {},
-  userProps = {},
-  componentChildren = undefined
-) => {
-  const debugLog = (message: string) => {
-    if (ComponentType.logMessages) {
-      console.log(message);
-    }
-  };
-
+export const createFactory = (ComponentType, options = { defaultProp: 'children' }) => (componentProps = {}, userProps = {}) => {
   if (userProps) {
     const propType = typeof userProps;
 
@@ -44,7 +35,6 @@ export const createFactory = (ComponentType, options = { defaultProp: 'children'
       case 'string':
       case 'number':
       case 'boolean':
-        debugLog('createFactory: propType is string/number/boolean');
         // TODO: so defaultProp is like defaultShorthand prop... we should probably support more than one?
         if (options.defaultProp) {
           userProps = {
@@ -54,70 +44,32 @@ export const createFactory = (ComponentType, options = { defaultProp: 'children'
         break;
 
       case 'function':
-        // TODO: how to pass children to functions? add example / tests
-        debugLog('createFactory: propType is function');
-        return userProps(ComponentType, componentProps);
+        return userProps(componentProps, ComponentType);
 
       default:
         if (React.isValidElement(userProps)) {
-          // TODO: how to pass children to react elements? add example / tests
-          debugLog('createFactory: propType is React element');
           return userProps;
-        } else {
-          debugLog('createFactory: propType is object');
         }
         break;
     }
 
-    // console.log('children count: ' + React.Children.count(componentChildren));
-
-    if (componentChildren && React.Children.count(componentChildren) > 0) {
-      return (
-        <ComponentType {...componentProps} {...userProps}>
-          {componentChildren}
-        </ComponentType>
-      );
-    } else {
-      return <ComponentType {...componentProps} {...userProps} />;
-    }
+    return <ComponentType {...componentProps} {...userProps} />;
   } else {
-    // console.log('createFactory: no userProps');
     return <ComponentType {...componentProps} />;
   }
 };
 
 // Fallback behavior for primitives.
-const getDefaultFactory = memoizeFunction(type => createFactory(type, { defaultProp: 'children' }));
-const defaultFactory = (type, componentProps, userProps, componentChildren) =>
-  getDefaultFactory(type)(componentProps, userProps, componentChildren);
+const getDefaultFactory = memoizeFunction(type => createFactory(type));
+const defaultFactory = (type, componentProps, userProps) => getDefaultFactory(type)(componentProps, userProps);
 
-// React Children Rules:
-//  * JSX children override attribute children
-//  * Attribute children can be primitive or array
-// TODO: make sure code follows same rules for consistency
-// TODO: add tests enforcing rules
+const slot = (ComponentType, componentProps, userProps) => {
+  ComponentType = (userProps && userProps.slotAs) || ComponentType;
 
-// Slot Children Rules:
-//  * JSX children override attribute children (same as React)
-//  * Attribute children can be primitive or array (same as React)
-//  * User JSX children override both component attributes and JSX children?
-//  * User attribute children override both component attributes and JSX children?
-
-// <h2 children={12} />
-// <h2 children='propChild Only' />
-// <h2 children={['propChild', ' Array']} />
-// <h2 children='propChild'>JSX Child</h2>
-// <h2 children={['propChild', ' Array']}>JSX Child</h2>
-
-const slot = (ComponentType, componentProps, userProps, componentChildren) => {
-  ComponentType = (userProps && userProps.as) || ComponentType;
-
-  if (typeof userProps === 'function') {
-    return userProps(ComponentType, { ...componentProps });
-  } else if (ComponentType.create !== undefined) {
-    return ComponentType.create(componentProps, userProps, componentChildren);
+  if (ComponentType.create !== undefined) {
+    return ComponentType.create(componentProps, userProps);
   } else {
-    return defaultFactory(ComponentType, componentProps, userProps, componentChildren);
+    return defaultFactory(ComponentType, componentProps, userProps);
   }
 };
 
@@ -126,16 +78,14 @@ export const getSlots = (userProps, slots) => {
 
   for (const name in slots) {
     if (slots.hasOwnProperty(name)) {
-      // Since we are bypassing createElement, use React.Children.toArray to make sure children are properly assigned keys.
-      const userPropsChildren = userProps[name] && userProps[name].children ? React.Children.toArray(userProps[name].children) : undefined;
+      if (userProps && userProps[name] && userProps[name].children) {
+        // Since we are bypassing createElement, use React.Children.toArray to make sure children are properly assigned keys.
+        userProps[name].children = React.Children.toArray(userProps[name].children);
+      }
 
-      result[name] = (componentProps, componentChildren) =>
-        slot(
-          slots[name],
-          { ...componentProps, className: userProps.classNames[name] },
-          userProps[name],
-          userPropsChildren || componentChildren
-        );
+      result[name] = componentProps => {
+        return slot(slots[name], { ...componentProps, className: userProps.classNames[name] }, userProps[name]);
+      };
       result[name].isSlot = true; // = name + ' slot';
     }
   }

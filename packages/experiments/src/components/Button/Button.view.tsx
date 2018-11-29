@@ -41,30 +41,18 @@ export const ButtonView: IButtonComponent['view'] = props => {
   // TODO: 'href' is anchor property... consider getNativeProps by root type
   const buttonProps = { ...getNativeProps(rest, buttonProperties), href: props.href };
 
-  // return (
-  //   <div>
-  //     <ButtonTest
-  //       text={{ 'data-foo': 'bar', children: 'hi' }}
-  //     />
-  //     <ButtonTest
-  //       icon='share'
-  //       text={{ 'data-foo': 'bar', children: 'hi' }}
-  //     />
-  //     <ButtonTest
-  //       icon={{ iconName: 'share' }}
-  //       text={{ 'data-foo': 'bar', children: 'hi' }}
-  //     />
-  //   </div>
-  // );
-
   // TODO: data-type and id are for testing, remove. (add to tests, though!)
   //    * data-type and id should be overridden by user props, right?
   //    * in what cases do we ever NOT want user props to override? (see why stardust has overrideProps)
   // TODO: deal with classNames vs. slot styles props
   // TODO: do menu element as slot too. also menuIcon?
+  // TODO: how do we distinguish between a Slot 'as' and a compoenent prop 'as'?
+  //        here, I think we want to forward 'as' prop to Stack instead of replacing Stack entirely
+  //        'slotAs' vs 'as' prop?
 
   const Slots = getSlots(props, {
     root: _deriveRootType(props),
+    stack: HorizontalStack,
     icon: Icon,
     content: Text,
     test1: Text, // createFactory test
@@ -78,7 +66,7 @@ export const ButtonView: IButtonComponent['view'] = props => {
       {...buttonProps}
       aria-disabled={disabled}
     >
-      <HorizontalStack className={classNames.stack} as="span" gap={8} verticalAlign="center" horizontalAlign="center">
+      <Slots.stack as="span" gap={8} verticalAlign="center" horizontalAlign="center">
         <Slots.icon data-type="button" id="asdf" />
         <Slots.content data-type="text" id="text-id" />
 
@@ -97,7 +85,7 @@ export const ButtonView: IButtonComponent['view'] = props => {
             <Icon className={classNames.menuIcon} iconName="ChevronDown" />
           </HorizontalStack.Item>
         )}
-      </HorizontalStack>
+      </Slots.stack>
       {expanded && Menu && <Menu target={menuTarget} onDismiss={onMenuDismiss} />}
     </Slots.root>
   );

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Button, IButtonComponent } from '../index';
 import { HorizontalStack, Text, VerticalStack } from '@uifabric/experiments';
-import { ContextualMenu, Customizer, IContextualMenuProps, DialogBase, Spinner } from 'office-ui-fabric-react';
+import { ContextualMenu, Customizer, IContextualMenuProps, Spinner } from 'office-ui-fabric-react';
 
 const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
 const buttonMenu = (props: IContextualMenuProps) => <ContextualMenu {...props} items={menuItems} />;
@@ -73,19 +73,41 @@ const ButtonSet = () => (
 
         {/*/////////////////////////////////////////////////////////////////////////////////////////*/}
 
+        {/* All 'as' examples should have children that appear (when the 'as' component supports children) */}
+
         <VerticalStack gap={buttonGap}>
           <h2>Root Slot</h2>
-          <Button root={{ as: 'a' }} content="Root: As explicit 'a'" />
-          <Button href="https://developer.microsoft.com/en-us/fabric" content="Root: As implicit 'a' via href prop" />
+          <Button icon="share" root={{ slotAs: 'a' }} content="Root: slotAs explicit 'a'" />
+          <Button icon="share" href="https://developer.microsoft.com/en-us/fabric" content="Root: slotAs implicit 'a' via href prop" />
+          <Button icon="share" root={(rootProps, RootType) => <RootType {...rootProps} />} content="Root: Function" />
+          <Button
+            icon="share"
+            root={(rootProps, RootType) => <RootType {...rootProps} />}
+            content="Root: Function with Test Children"
+            enableTestChildren={true}
+          />
+        </VerticalStack>
+
+        <VerticalStack gap={buttonGap}>
+          <h2>Stack Slot</h2>
+          <Button icon="share" content="Stack: 'slotAs' VerticalStack" stack={{ slotAs: VerticalStack }} />
+          <Button icon="share" content="Stack: 'as' prop 'div'" stack={{ as: 'div' }} />
+          <Button icon="share" stack={(stackProps, StackType) => <StackType {...stackProps} />} content="Stack: Function" />
+          <Button
+            icon="share"
+            stack={(stackProps, StackType) => <StackType {...stackProps} />}
+            content="Stack: Function with Test Children"
+            enableTestChildren={true}
+          />
         </VerticalStack>
 
         <VerticalStack gap={buttonGap}>
           <h2>Icon Slot</h2>
           <Button icon="share" content="Icon: String" />
           <Button icon={{ iconName: 'share' }} content="Icon: Props" />
-          <Button icon={{ as: Spinner }} content="Icon: As Spinner" />
+          <Button icon={{ slotAs: Spinner }} content="Icon: As Spinner" />
           <Button
-            icon={(IconType, iconProps) => (
+            icon={(iconProps, IconType) => (
               <b>
                 Icon: <IconType {...iconProps} iconName="upload" />
               </b>
@@ -105,13 +127,13 @@ const ButtonSet = () => (
           </Button>
           <Button content="Text: String" />
           <Button content={{ weight: 'bold', children: 'Text: Props' }} />
-          <Button content={{ as: Spinner }}>
+          <Button content={{ slotAs: Spinner }}>
             <p>Text: As Spinner</p>
           </Button>
           <Button content={{ children: 'Text: Child String' }} />
           <Button content={{ children: ['Text: Child 1,', ' Child 2'] }} />
           <Button
-            content={(TextType, textProps) => (
+            content={(textProps, TextType) => (
               <b>
                 Text: <TextType {...textProps}>TextType</TextType>
               </b>
@@ -160,7 +182,7 @@ const ButtonSet = () => (
           <h2>Styled Buttons</h2>
           <Button icon={{ iconName: 'share', styles: ButtonTheme.scopedSettings.Icon.styles }} content="Icon as IIconProps with styles" />
           <Button icon="share" content={{ children: 'Text as ITextProps with styles', styles: ButtonTheme.scopedSettings.Text.styles }} />
-          <Button icon={{ iconName: 'share' }} styles={getButtonStyles} content="Button styles prop" />
+          <Button icon={{ iconName: 'share', styles: { root: { color: 'red' } } }} styles={getButtonStyles} content="Button styles prop" />
           <Customizer {...ButtonTheme}>
             <Button icon={{ iconName: 'share' }} content="Button scopedSettings" />
           </Customizer>
