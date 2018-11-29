@@ -96,7 +96,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         headerClassName: 'DetailsListExample-header--FileIcon',
         className: 'DetailsListExample-cell--FileIcon',
         iconClassName: 'DetailsListExample-Header-FileTypeIcon',
-        ariaLabel: 'Column operations for File type',
+        ariaLabel: 'Column operations for File type, Press to sort on File type',
         iconName: 'Page',
         isIconOnly: true,
         fieldName: 'name',
