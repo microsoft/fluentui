@@ -2,7 +2,11 @@ import { IComponent, IStyleableComponentProps } from '../../Foundation';
 import { IStyle } from '../../Styling';
 import { ITextProps } from '../../Text';
 import { IIconProps, IContextualMenuProps, IFontWeight, IRefObject } from 'office-ui-fabric-react';
-import { IHorizontalStackProps } from '../Stack';
+
+// TODO: centralize types
+export interface ISlotAs<AllowedTypes> {
+  as?: AllowedTypes;
+}
 
 export type IButtonComponent = IComponent<IButtonProps, IButtonViewProps, IButtonStyles>;
 
@@ -16,12 +20,11 @@ export type IButtonVariants = 'baseVariant' | 'primary' | 'circular';
 //    * is 'stack' descriptive enough in this case?
 //    * should it be called something else like 'content' instead?
 //    * should 'menuIcon' be a core slot or should it be an HOC of button that redefines content?
-export type IButtonSlots = 'root' | 'stack' | 'text' | 'icon' | 'menuIcon';
+export type IButtonSlots = 'root' | 'stack' | 'content' | 'icon' | 'menuIcon';
 
 export interface IButton {}
 
 export interface IButtonProps extends IStyleableComponentProps<IButtonProps, IButtonStyles> {
-  as?: keyof JSX.IntrinsicElements;
   componentRef?: IRefObject<IButton>;
   className?: string;
   href?: string;
@@ -29,9 +32,16 @@ export interface IButtonProps extends IStyleableComponentProps<IButtonProps, IBu
   // Slots
   // TODO: should we more strongly identify slots in props? is the typing enough?
   // TODO: add consolidated typing for Slots, like Slot<Component, Props, etc.>
-  stack?: IHorizontalStackProps;
-  text?: string | ITextProps | JSX.Element;
-  icon?: string | IIconProps | JSX.Element;
+  root?: ISlotAs<keyof JSX.IntrinsicElements>;
+  content?: string | ITextProps | JSX.Element;
+  // TODO: why does TS not error when passed in Spinner which doesn't take IIconProps?
+  icon?: string | IIconProps | JSX.Element | ISlotAs<React.ReactType<IIconProps>>;
+  menu?: React.ReactType<IContextualMenuProps>;
+
+  // TODO: props for testing, remove
+  test1?: string | ITextProps | JSX.Element;
+  test2?: string | JSX.Element;
+  enableTestChildren?: boolean;
 
   primary?: boolean;
   circular?: boolean;
@@ -42,7 +52,6 @@ export interface IButtonProps extends IStyleableComponentProps<IButtonProps, IBu
   variant?: IButtonVariants;
 
   onClick?: (ev: React.MouseEvent<HTMLElement>) => void;
-  menu?: React.ReactType<IContextualMenuProps>;
   styleVariables?: IButtonStyleVariables;
 }
 

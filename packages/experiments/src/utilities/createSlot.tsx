@@ -1,5 +1,19 @@
 import * as React from 'react';
-import { Text } from '../components/Text';
+import { memoizeFunction } from 'office-ui-fabric-react';
+
+// TODO: make sure Slot and SlotTemplate do not appear in hierarchy
+// TODO: needs to work with refs / componentRefs/ forwardRefs / etc.
+// TODO: what other stuff are we bypassing / breaking by not using createElement? unique key generation for children?
+export const CreateElementWrapper = (type, props, ...children) => {
+  if (type.isSlot) {
+    // TODO: does this need to make use of children argument? (props vs. nested JSX)
+    // Since we are bypassing createElement, use React.Children.toArray to make sure children are properly assigned keys.
+    return type(props, React.Children.toArray(children));
+  } else {
+    // TODO: assess perf! is this spread really needed?
+    return React.createElement(type, props, ...children);
+  }
+};
 
 // TODO:
 //  * data types pass on
@@ -7,19 +21,16 @@ import { Text } from '../components/Text';
 //  * perf comparison vs. readability
 //  * tests for all of the above
 
-// export function createSlot<TComponentProps, TStyleSet>(
-//   component: React.StatelessComponent<TComponentProps>,
-//   componentProps: TComponentProps,
-//   userProps?: TComponentProps,
-//   stylesSet?: TStyleSet
-// ): React.StatelessComponent<TComponentProps> {
-//   return component;
-// }
-
 // TODO: add TypeScript typeOf functions?
 // TODO: add tests for each case in this function.
 // TODO: tests should ensure props like data attributes and ID persist across all factory types
-export const createFactory = (ComponentType, options = {}) => (componentProps = {}, userProps = {}) => {
+// TODO: add typing tests too
+// TODO: get rid of all of this children crap. if separate children are needed from jsxFactory, consolidate it immediately
+export const createFactory = (ComponentType, options = { defaultProp: 'children' }) => (
+  componentProps = {},
+  userProps = {},
+  componentChildren = undefined
+) => {
   const debugLog = (message: string) => {
     if (ComponentType.logMessages) {
       console.log(message);
@@ -28,7 +39,6 @@ export const createFactory = (ComponentType, options = {}) => (componentProps = 
 
   if (userProps) {
     const propType = typeof userProps;
-    let userPropsAsChildren = false;
 
     switch (propType) {
       case 'string':
@@ -40,19 +50,17 @@ export const createFactory = (ComponentType, options = {}) => (componentProps = 
           userProps = {
             [options.defaultProp]: userProps
           };
-        } else {
-          // If defaultProp doesn't exist, assign userProps as children.
-          // TODO: consider both children and props children.. what does React do when both exist? merge? if so, in what order?
-          userPropsAsChildren = true;
         }
         break;
 
       case 'function':
+        // TODO: how to pass children to functions? add example / tests
         debugLog('createFactory: propType is function');
         return userProps(ComponentType, componentProps);
 
       default:
         if (React.isValidElement(userProps)) {
+          // TODO: how to pass children to react elements? add example / tests
           debugLog('createFactory: propType is React element');
           return userProps;
         } else {
@@ -61,8 +69,14 @@ export const createFactory = (ComponentType, options = {}) => (componentProps = 
         break;
     }
 
-    if (userPropsAsChildren) {
-      return <ComponentType {...componentProps}>{userProps}</ComponentType>;
+    // console.log('children count: ' + React.Children.count(componentChildren));
+
+    if (componentChildren && React.Children.count(componentChildren) > 0) {
+      return (
+        <ComponentType {...componentProps} {...userProps}>
+          {componentChildren}
+        </ComponentType>
+      );
     } else {
       return <ComponentType {...componentProps} {...userProps} />;
     }
@@ -72,74 +86,88 @@ export const createFactory = (ComponentType, options = {}) => (componentProps = 
   }
 };
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-// OPTION: Functional approach
-//    Pros: less React hierarchy
-//    Cons: not nearly as readable, particularly for nested / children content (like React.createElement vs. JSX)
+// Fallback behavior for primitives.
+const getDefaultFactory = memoizeFunction(type => createFactory(type, { defaultProp: 'children' }));
+const defaultFactory = (type, componentProps, userProps, componentChildren) =>
+  getDefaultFactory(type)(componentProps, userProps, componentChildren);
 
-// const createSlot = (ComponentType, componentProps, userProps = {}, children = undefined) => {
-//   ComponentType = userProps.as || ComponentType;
-//   children = children || userProps.children;
+// React Children Rules:
+//  * JSX children override attribute children
+//  * Attribute children can be primitive or array
+// TODO: make sure code follows same rules for consistency
+// TODO: add tests enforcing rules
 
-//   return <ComponentType {...componentProps} {...userProps}>{children}</ComponentType>;
-// };
-//////////////////////////////////////////////////////////////////////////////////////////////////////
+// Slot Children Rules:
+//  * JSX children override attribute children (same as React)
+//  * Attribute children can be primitive or array (same as React)
+//  * User JSX children override both component attributes and JSX children?
+//  * User attribute children override both component attributes and JSX children?
 
-export const Slot = (props = {}) => {
-  const { as, children, userProps = {}, ...componentProps } = props;
-  const children = props.children || userProps.children;
-  const SlotComponent = userProps.as || props.as;
+// <h2 children={12} />
+// <h2 children='propChild Only' />
+// <h2 children={['propChild', ' Array']} />
+// <h2 children='propChild'>JSX Child</h2>
+// <h2 children={['propChild', ' Array']}>JSX Child</h2>
 
-  if (SlotComponent.create !== undefined) {
-    return SlotComponent.create(componentProps, userProps);
-  }
+const slot = (ComponentType, componentProps, userProps, componentChildren) => {
+  ComponentType = (userProps && userProps.as) || ComponentType;
 
-  return (
-    <SlotComponent {...componentProps} {...userProps}>
-      {children}
-    </SlotComponent>
-  );
-};
-
-Slot.isSlot = true;
-
-// export const SlotTemplate = (props = {}) => {
-//   const { as, children, userProps = {}, ...componentProps } = props;
-//   const children = props.children || userProps.children;
-//   const SlotComponent = userProps.as || props.as;
-
-//   if (SlotComponent.create !== undefined) {
-//     return SlotComponent.create(componentProps, userProps);
-//   }
-
-//   return (
-//     <SlotComponent {...componentProps} {...userProps}>
-//       {children}
-//     </SlotComponent>
-//   );
-// };
-
-// SlotTemplate.isSlot = true;
-
-// TODO: make sure Slot and SlotTemplate do not appear in hierarchy
-export const CreateElementWrapper = (type, props, ...children) => {
-  if (type.isSlot) {
-    return Slot(props);
+  if (typeof userProps === 'function') {
+    return userProps(ComponentType, { ...componentProps });
+  } else if (ComponentType.create !== undefined) {
+    return ComponentType.create(componentProps, userProps, componentChildren);
   } else {
-    // TODO: assess perf!
-    return React.createElement(type, props, ...children);
+    return defaultFactory(ComponentType, componentProps, userProps, componentChildren);
   }
 };
 
-// export const CreateElementWrapper = () => {
-//   if (arguments[0].isSlot) {
-//     console.log('Slot type');
-//     return Slot(arguments[1]);
-//   } else {
-//     console.log('Not Slot type');
-//     return React.createElement(...arguments);
-//   }
+export const getSlots = (userProps, slots) => {
+  const result = {};
+
+  for (const name in slots) {
+    if (slots.hasOwnProperty(name)) {
+      // Since we are bypassing createElement, use React.Children.toArray to make sure children are properly assigned keys.
+      const userPropsChildren = userProps[name] && userProps[name].children ? React.Children.toArray(userProps[name].children) : undefined;
+
+      result[name] = (componentProps, componentChildren) =>
+        slot(
+          slots[name],
+          { ...componentProps, className: userProps.classNames[name] },
+          userProps[name],
+          userPropsChildren || componentChildren
+        );
+      result[name].isSlot = true; // = name + ' slot';
+    }
+  }
+
+  return result;
+};
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// TODO: need something like this to merge styles and style variables for slots,
+//        particularly if createComponent is modified not to generate classNames for slots
+//
+// const _resolveTokens = (props, ...allTokens) => Object.assign({}, ...allTokens.map(tokens =>
+//    (typeof tokens === 'function') ? tokens(props) : tokens));
+// const _resolveStyles = (props, tokens, ...allStyles) => concatStyleSets(...allStyles.map(styles =>
+//    (typeof styles === 'function') ? styles(props, tokens) : styles));
+//
+// const createComponent = (options) => {
+//   const component = componentProps => {
+//     let { tokens, styles, ...props } = componentProps;
+//
+//     tokens = _resolveTokens(props, options.tokens, tokens);
+//     styles = _resolveStyles(props, tokens, options.styles, styles);
+//
+//     const classNames = mergeStyleSets(styles);
+//
+//     return options.view({ ...props, classNames });
+//   };
+//   component.displayName = options.displayName;
+//
+//   return component;
 // };
+//////////////////////////////////////////////////////////////////////////////////////////////
 
 // TODO: test with split button approach
 

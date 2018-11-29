@@ -2,15 +2,13 @@
 import * as React from 'react';
 import { IButtonComponent, IButtonViewProps } from './Button.types';
 import { Text as FabricText } from '../../Text';
-// import { Text } from '../../Text';
 import { HorizontalStack } from '../../Stack';
 import { Icon as FabricIcon } from 'office-ui-fabric-react';
 import { getNativeProps, buttonProperties } from '../../Utilities';
 
-import { createFactory, Slot } from '../../utilities/createSlot';
+import { createFactory, getSlots } from '../../utilities/createSlot';
 
 import * as SlotModule from '../../utilities/createSlot';
-// const SlotModule = require('../../utilities/createSlot');
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 // TODO: we will have to make create functions for any component we want to use in shorthand slots
@@ -21,27 +19,27 @@ Icon.create = createFactory(Icon, { defaultProp: 'iconName' });
 
 const Text = props => <FabricText {...props} />;
 
-Text.logMessages = true;
+// Text.logMessages = true;
 Text.create = createFactory(Text);
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
 export const ButtonView: IButtonComponent['view'] = props => {
   const {
     classNames,
-    as: RootType = _deriveRootType(props),
     menu: Menu,
     children,
-    text: TextSlot,
-    icon: IconSlot,
+    content,
+    icon,
     expanded,
     disabled,
     onMenuDismiss,
     menuTarget,
-    stack,
+    enableTestChildren,
     ...rest
   } = props;
 
-  const buttonProps = getNativeProps(rest, buttonProperties);
+  // TODO: 'href' is anchor property... consider getNativeProps by root type
+  const buttonProps = { ...getNativeProps(rest, buttonProperties), href: props.href };
 
   // return (
   //   <div>
@@ -63,34 +61,36 @@ export const ButtonView: IButtonComponent['view'] = props => {
   //    * data-type and id should be overridden by user props, right?
   //    * in what cases do we ever NOT want user props to override? (see why stardust has overrideProps)
   // TODO: deal with classNames vs. slot styles props
-  // TODO: do root element as slot too
+  // TODO: do menu element as slot too. also menuIcon?
 
-  // TODO: do this!
-  // TODO: consider how user props and component props (particularly styles and style variables) will be mixed before..
-  //          can it be abstracted away by createComponent? something else?
-  // return (
-  //   <SlotTemplate props={props}>
-  //     <Slot name='root' as='button' data-foo='asdf' onClick={...}>
-  //       <div>
-  //         <Slot name='icon' as={Icon} />
-  //         <Slot name='content' as={span} />
-  //         <Slot name='menuIcon' as={Icon} />
-  //       </div>
-  //     </Slot>
-  //   </SlotTemplate>
-  // );
+  const Slots = getSlots(props, {
+    root: _deriveRootType(props),
+    icon: Icon,
+    content: Text,
+    test1: Text, // createFactory test
+    test2: 'span' // non-createFactory test
+  });
 
   return (
-    <RootType
+    <Slots.root
       type="button" // stack doesn't take in native button props
       role="button"
       {...buttonProps}
       aria-disabled={disabled}
-      className={classNames.root}
     >
-      <HorizontalStack className={classNames.stack} as="span" gap={8} verticalAlign="center" horizontalAlign="center" {...stack}>
-        <Slot as={Icon} className={classNames.icon} userProps={IconSlot} data-type="button" id="asdf" />
-        <Slot as={Text} className={classNames.text} userProps={TextSlot} data-type="text" id="text-id" />
+      <HorizontalStack className={classNames.stack} as="span" gap={8} verticalAlign="center" horizontalAlign="center">
+        <Slots.icon data-type="button" id="asdf" />
+        <Slots.content data-type="text" id="text-id" />
+
+        <Slots.test1 data-type="testSlot" id="testSlot-id">
+          {enableTestChildren && <p>Factory Slot Child 1</p>}
+          {enableTestChildren && <p>Factory Slot Child 2</p>}
+        </Slots.test1>
+        <Slots.test2 data-type="testSlot" id="testSlot-id">
+          {enableTestChildren && <p>React Element Slot Child 1</p>}
+          {enableTestChildren && <p>React Element Slot Child 2</p>}
+        </Slots.test2>
+
         {children}
         {Menu && (
           <HorizontalStack.Item>
@@ -99,43 +99,8 @@ export const ButtonView: IButtonComponent['view'] = props => {
         )}
       </HorizontalStack>
       {expanded && Menu && <Menu target={menuTarget} onDismiss={onMenuDismiss} />}
-    </RootType>
+    </Slots.root>
   );
-
-  // return (
-  //   <RootType
-  //     type="button" // stack doesn't take in native button props
-  //     role="button"
-  //     {...buttonProps}
-  //     aria-disabled={disabled}
-  //     className={classNames.root}
-  //   >
-  //     <HorizontalStack className={classNames.stack} as="span" gap={8} verticalAlign="center" horizontalAlign="center" {...stack}>
-  //       {IconSlot && typeof IconSlot === 'string' && <Icon className={classNames.icon} iconName={IconSlot} />}
-  //       {IconSlot &&
-  //         typeof IconSlot === 'object' &&
-  //         (React.isValidElement(IconSlot) ? (
-  //           IconSlot
-  //         ) : (
-  //             <Icon
-  //               className={classNames.icon}
-  //               {
-  //               ...IconSlot as IIconProps
-  //               }
-  //             />
-  //           ))}
-  //       {TextSlot && typeof TextSlot === 'string' && <Text className={classNames.text}>{TextSlot}</Text>}
-  //       {TextSlot && typeof TextSlot === 'object' && <Text className={classNames.text} {...TextSlot} />}
-  //       {children}
-  //       {Menu && (
-  //         <HorizontalStack.Item>
-  //           <Icon className={classNames.menuIcon} iconName="ChevronDown" />
-  //         </HorizontalStack.Item>
-  //       )}
-  //     </HorizontalStack>
-  //     {expanded && Menu && <Menu target={menuTarget} onDismiss={onMenuDismiss} />}
-  //   </RootType>
-  // );
 };
 
 function _deriveRootType(props: IButtonViewProps): React.ReactType {

@@ -35,7 +35,8 @@ export const getButtonStyles: IButtonComponent['styles'] = props => {
 
           // subcomponent "icon"
           iconSize: 14,
-          iconWeight: 400
+          // TODO: revert, for testing that component's styles mixin
+          iconWeight: 600
         },
 
         enabled: {
@@ -189,8 +190,10 @@ export const getButtonStyles: IButtonComponent['styles'] = props => {
           padding: state.contentPadding,
           height: '100%'
         },
-        text: {
-          overflow: 'visible'
+        content: {
+          overflow: 'visible',
+          // TODO: revert, for testing that component's styles mixin
+          color: 'red'
         }
       };
     }
