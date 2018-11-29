@@ -229,7 +229,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
 
   public componentDidUpdate(previousProps: any, previousState: IDetailsListDocumentsExampleState) {
     if (previousState.isModalSelection !== this.state.isModalSelection) {
-      if (this.state.isModalSelection === false) {
+      if (!this.state.isModalSelection) {
         this._selection.setAllSelected(false);
       }
     }
