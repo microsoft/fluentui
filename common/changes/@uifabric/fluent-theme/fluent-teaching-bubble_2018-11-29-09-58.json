@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/fluent-theme",
+      "comment": "Add styles for TeachingBubble",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/fluent-theme",
+  "email": "miwhea@microsoft.com"
+}
