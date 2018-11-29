@@ -164,7 +164,10 @@ export class RecommendationBannerBase extends React.Component<IRecommendationPro
             <AutoFontSize
               text={recommendationDescriptionHeader}
               targetElementType={'div'}
-              fontSizeMapping={[{ fontSize: 28, lineHeight: '36px' }, { fontSize: 16, lineHeight: '23px' }]}
+              fontSizeMapping={[
+                { fontSize: maxSupportedAutoFont, lineHeight: lineHeightForMaxSupportedAutoFont },
+                { fontSize: minSupportedAutoFont, lineHeight: lineHeightForMinSupportedAutoFont }
+              ]}
               targetLines={2}
             />
           </div>
