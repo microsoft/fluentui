@@ -62,7 +62,6 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
           // tslint:disable:jsx-no-lambda
           onCellHovered={(id, color) => this.setState({ previewColor: color! })}
           onCellFocused={(id, color) => this.setState({ previewColor: color! })}
-          onColorChanged={(id, newColor) => this.setState({ color: newColor })}
           // tslint:enable:jsx-no-lambda
           columnCount={4}
           cellShape={'circle'}
