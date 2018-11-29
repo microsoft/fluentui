@@ -3,7 +3,7 @@ import * as React from 'react';
 /* Dependent Components */
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { IChartProps, IChartDataPoint, MultiStackedBarChart } from '@uifabric/charting';
-import { IProcessedStyleSet, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { CardFrame, ICardDropDownOption } from '../Card/CardFrame/index';
 
 /* Types for props and styles */
