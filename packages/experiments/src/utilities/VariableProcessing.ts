@@ -1,10 +1,18 @@
-import { merge } from '../Utilities';
+export type IComponentStyleVariables<TComponentViewProps, TComponentStyleVariablesTypes> =
+  | TComponentStyleVariablesTypes
+  | ((props: TComponentViewProps) => TComponentStyleVariablesTypes)
+  | undefined;
 
-export type IProcessedVariables<T> = { [P in keyof T]-?: IProcessedVariables<T[P]> };
+export function resolveStyleVariables<
+  TViewProps,
+  TStyleVariablesTypes,
+  TStyleVariables extends IComponentStyleVariables<TViewProps, TStyleVariablesTypes>
+>(props: TViewProps, componentStyleVariables: TStyleVariablesTypes, userStyleVariables: TStyleVariables): TStyleVariablesTypes {
+  if (typeof userStyleVariables === 'function') {
+    componentStyleVariables = { ...(componentStyleVariables as any), ...(userStyleVariables as Function)(props) };
+  } else if (userStyleVariables !== undefined) {
+    componentStyleVariables = { ...(componentStyleVariables as any), ...(userStyleVariables as any) };
+  }
 
-export function processVariables<T>(partialVariables: T, customVariables?: T): IProcessedVariables<T> {
-  // tslint:disable-next-line:no-any
-  const result = customVariables ? merge({}, partialVariables, customVariables) : partialVariables;
-
-  return result as IProcessedVariables<T>;
+  return componentStyleVariables;
 }

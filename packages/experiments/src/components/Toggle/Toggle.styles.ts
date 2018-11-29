@@ -1,5 +1,6 @@
 import { IToggleComponent, IToggleStyles, IToggleStyleVariablesTypes, IToggleStyleVariables, IToggleViewProps } from './Toggle.types';
 import { getFocusStyle, getGlobalClassNames, HighContrastSelector, concatStyleSets } from '../../Styling';
+import { resolveStyleVariables } from '../../utilities/VariableProcessing';
 
 const GlobalClassNames = {
   root: 'ms-Toggle',
@@ -214,15 +215,9 @@ export const ToggleStyles: IToggleComponent['styles'] = props => {
   }
 
   function getToggleStyles(userStyleVariables: IToggleStyleVariables): Partial<IToggleStyles> {
-    let toggleVariables: IToggleStyleVariablesTypes;
+    let toggleVariables = getToggleViewStyleVariables(props);
 
-    toggleVariables = getToggleViewStyleVariables(props);
-
-    if (typeof userStyleVariables === 'function') {
-      toggleVariables = { ...toggleVariables, ...userStyleVariables(props) };
-    } else if (userStyleVariables !== undefined) {
-      toggleVariables = { ...toggleVariables, ...userStyleVariables };
-    }
+    toggleVariables = resolveStyleVariables(props, toggleVariables, userStyleVariables);
 
     return getToggleStylesFromState(toggleVariables);
   }
