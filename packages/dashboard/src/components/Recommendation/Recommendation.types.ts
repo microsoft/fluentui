@@ -5,12 +5,12 @@ export enum VisualizationType {
   /**
    * MutliStackBarChart Visualization
    */
-  MultiStackBarChart,
+  MultiStackBarChart = 1,
 
   /**
    * Image illustration visualization
    */
-  ImageIllustration
+  ImageIllustration = 2
 }
 
 /**
@@ -88,7 +88,7 @@ export interface IRecommendationProps {
    * @type {VisualizationType}
    * @memberof IRecommendationProps
    */
-  recommendationVisualization?: VisualizationType | null;
+  recommendationVisualization?: VisualizationType;
 
   /**
    * If RecommendationVisualization is ImageIllustration,

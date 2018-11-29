@@ -3,7 +3,7 @@ import * as React from 'react';
 /* Dependent Components */
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { IChartProps, IChartDataPoint, MultiStackedBarChart } from '@uifabric/charting';
-import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
+import { IProcessedStyleSet, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 import { CardFrame, ICardDropDownOption } from '../Card/CardFrame/index';
 
 /* Types for props and styles */
@@ -182,7 +182,6 @@ export class RecommendationBannerBase extends React.Component<IRecommendationPro
 
   private _getVisualizationComponent(): JSX.Element | null {
     const { recommendationVisualization } = this.props;
-    console.log(recommendationVisualization);
     switch (recommendationVisualization) {
       case VisualizationType.ImageIllustration:
         return this._renderImageIllustrationVisualization();
@@ -212,7 +211,8 @@ export class RecommendationBannerBase extends React.Component<IRecommendationPro
     const legendColorLength = legendColors.length;
     let counter = 0;
     const chartData: IChartProps[] = [];
-    console.log('ChartVisualizationData', chartVisualizationData);
+    const hideRatio: boolean[] = [];
+
     if (chartVisualizationData) {
       chartVisualizationData.forEach((data: IRecommendationBannerChartData) => {
         const chartDataPoints: IChartDataPoint[] = data.chartData.map((point: IRecommendationBannerChartDataPoint) => {
@@ -229,14 +229,13 @@ export class RecommendationBannerBase extends React.Component<IRecommendationPro
         };
 
         chartData.push(chartProp);
+        hideRatio.push(true);
       });
-
-      console.log('ChartData', chartData);
 
       return (
         <div className={this.classNames.chartVisualizationContainerStyle}>
           <div className={this.classNames.chartVisualizationStyle}>
-            <MultiStackedBarChart data={chartData} />
+            <MultiStackedBarChart data={chartData} hideRatio={hideRatio} />
           </div>
         </div>
       );
