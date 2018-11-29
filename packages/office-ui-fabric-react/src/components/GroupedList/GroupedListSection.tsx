@@ -211,6 +211,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
         {onRenderGroupHeader(groupHeaderProps, this._onRenderGroupHeader)}
         {group && group.isCollapsed ? null : hasNestedGroups ? (
           <List
+            role="presentation"
             ref={this._list}
             items={group!.children}
             onRenderCell={this._renderSubGroup}
@@ -295,6 +296,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
 
     return (
       <List
+        role="grid"
         items={items}
         onRenderCell={this._onRenderGroupCell(onRenderCell, groupNestingDepth)}
         ref={this._list}

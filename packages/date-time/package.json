@@ -1,0 +1,56 @@
+{
+  "name": "@uifabric/date-time",
+  "version": "0.2.0",
+  "description": "Experimental React components for building experiences for Office 365.",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "sideEffects": [
+    "lib/version.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "node ../../scripts/build.js",
+    "clean": "node ../../scripts/clean.js",
+    "start": "node ../../scripts/start.js",
+    "start-test": "node ../../scripts/start-test.js",
+    "update-snapshots": "node ../../scripts/build.js jest -u"
+  },
+  "devDependencies": {
+    "@types/enzyme": "3.1.13",
+    "@types/enzyme-adapter-react-16": "1.0.3",
+    "@types/es6-promise": "0.0.32",
+    "@types/jest": "23.0.0",
+    "@types/prop-types": "15.5.3",
+    "@types/react": "16.3.16",
+    "@types/react-dom": "16.0.5",
+    "@types/react-test-renderer": "^16.0.0",
+    "@types/webpack-env": "1.13.0",
+    "@uifabric/example-app-base": ">=6.7.6 <7.0.0",
+    "@uifabric/jest-serializer-merge-styles": ">=6.0.6 <7.0.0",
+    "@uifabric/prettier-rules": ">=1.0.0 <2.0.0",
+    "@uifabric/tslint-rules": ">=1.0.0 <2.0.0",
+    "enzyme": "^3.4.0",
+    "enzyme-adapter-react-16": "^1.2.0",
+    "es6-weak-map": "^2.0.2",
+    "react": ">=16.3.2-0 <17.0.0",
+    "react-dom": ">=16.3.2-0 <17.0.0",
+    "react-test-renderer": "^16.2.0"
+  },
+  "dependencies": {
+    "@microsoft/load-themed-styles": "^1.7.13",
+    "@uifabric/set-version": ">=1.1.3 <2.0.0",
+    "@uifabric/styling": ">=6.37.0 <7.0.0",
+    "@uifabric/utilities": ">=6.27.0 <7.0.0",
+    "office-ui-fabric-react": ">=6.108.0 <7.0.0",
+    "tslib": "^1.7.1"
+  },
+  "peerDependencies": {
+    "react": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0",
+    "react-dom": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0"
+  }
+}

@@ -264,6 +264,32 @@ function _flipToFit(
 }
 
 /**
+ * Flips only the alignment edge of an element rectangle. This is used instead of nudging the alignment edges into position,
+ * when alignTargetEdge is specified.
+ * @param elementEstimate
+ * @param target
+ * @param bounding
+ * @param gap
+ */
+function _flipAlignmentEdge(elementEstimate: IElementPosition, target: Rectangle, gap: number, coverTarget?: boolean): IElementPosition {
+  const { alignmentEdge, targetEdge, elementRectangle } = elementEstimate;
+  const oppositeEdge = alignmentEdge! * -1;
+  const newEstimate = _estimatePosition(
+    elementRectangle,
+    target,
+    { targetEdge: targetEdge, alignmentEdge: oppositeEdge },
+    gap,
+    coverTarget
+  );
+
+  return {
+    elementRectangle: newEstimate,
+    targetEdge: targetEdge,
+    alignmentEdge: oppositeEdge
+  };
+}
+
+/**
  * Adjusts a element rectangle to fit within the bounds given. If directionalHintFixed or covertarget is passed in
  * then the element will not flip sides on the target. They will, however, be nudged to fit within the bounds given.
  *
@@ -285,7 +311,7 @@ function _adjustFitWithinBounds(
   directionalHintFixed?: boolean,
   coverTarget?: boolean
 ): IElementPosition {
-  const { alignmentEdge } = positionData;
+  const { alignmentEdge, alignTargetEdge } = positionData;
   let elementEstimate: IElementPosition = {
     elementRectangle: element,
     targetEdge: positionData.targetEdge,
@@ -298,8 +324,18 @@ function _adjustFitWithinBounds(
 
   const outOfBounds = _getOutOfBoundsEdges(element, bounding);
 
-  for (const direction of outOfBounds) {
-    elementEstimate.elementRectangle = _alignEdges(elementEstimate.elementRectangle, bounding, direction);
+  if (alignTargetEdge) {
+    // The edge opposite to the alignment edge might be out of bounds. Flip alignment to see if we can get it within bounds.
+    if (elementEstimate.alignmentEdge && outOfBounds.indexOf(elementEstimate.alignmentEdge * -1) > -1) {
+      const flippedElementEstimate = _flipAlignmentEdge(elementEstimate, target, gap, coverTarget);
+      if (_isRectangleWithinBounds(flippedElementEstimate.elementRectangle, bounding)) {
+        return flippedElementEstimate;
+      }
+    }
+  } else {
+    for (const direction of outOfBounds) {
+      elementEstimate.elementRectangle = _alignEdges(elementEstimate.elementRectangle, bounding, direction);
+    }
   }
 
   return elementEstimate;
@@ -468,12 +504,14 @@ function _getAlignmentData(
   positionData: IPositionDirectionalHintData,
   target: Rectangle,
   boundingRect: Rectangle,
-  coverTarget?: boolean
+  coverTarget?: boolean,
+  alignTargetEdge?: boolean
 ): IPositionDirectionalHintData {
   if (positionData.isAuto) {
     positionData.alignmentEdge = getClosestEdge(positionData.targetEdge, target, boundingRect);
   }
 
+  positionData.alignTargetEdge = alignTargetEdge;
   return positionData;
 }
 
@@ -646,7 +684,8 @@ function _positionElementRelative(
     _getPositionData(props.directionalHint, props.directionalHintForRTL, previousPositions)!,
     targetRect,
     boundingRect,
-    props.coverTarget
+    props.coverTarget,
+    props.alignTargetEdge
   );
   const positionedElement: IElementPosition = _positionElementWithinBounds(
     _getRectangleFromElement(elementToPosition),

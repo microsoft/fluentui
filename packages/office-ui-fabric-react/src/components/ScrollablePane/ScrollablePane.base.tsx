@@ -11,8 +11,9 @@ export interface IScrollablePaneContext {
     addSticky: (sticky: Sticky) => void;
     removeSticky: (sticky: Sticky) => void;
     updateStickyRefHeights: () => void;
-    sortSticky: (sticky: Sticky) => void;
+    sortSticky: (sticky: Sticky, sortAgain?: boolean) => void;
     notifySubscribers: (sort?: boolean) => void;
+    syncScrollSticky: (sticky: Sticky) => void;
   };
 }
 
@@ -79,7 +80,8 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
         removeSticky: this.removeSticky,
         updateStickyRefHeights: this.updateStickyRefHeights,
         sortSticky: this.sortSticky,
-        notifySubscribers: this.notifySubscribers
+        notifySubscribers: this.notifySubscribers,
+        syncScrollSticky: this.syncScrollSticky
       }
     };
   }
@@ -107,6 +109,15 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
             return this.stickyAbove.contains(mutationRecord.target) || this.stickyBelow.contains(mutationRecord.target);
           }
           return false;
+        }
+
+        // Compute the scrollbar height which might have changed due to change in width of the content which might cause overflow
+        const scrollbarHeight = this._getScrollbarHeight();
+        // check if the scroll bar height has changed and update the state so that it's postioned correctly below sticky footer
+        if (scrollbarHeight !== this.state.scrollbarHeight) {
+          this.setState({
+            scrollbarHeight: scrollbarHeight
+          });
         }
 
         // Notify subscribers again to re-check whether Sticky should be Sticky'd or not
@@ -145,7 +156,10 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   public componentWillUnmount() {
     this._events.off(this.contentContainer);
     this._events.off(window);
-    this._mutationObserver.disconnect();
+
+    if (this._mutationObserver) {
+      this._mutationObserver.disconnect();
+    }
   }
 
   // Only updates if props/state change, just to prevent excessive setState with updateStickyRefHeights
@@ -234,8 +248,11 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     this.notifySubscribers();
   };
 
-  public sortSticky = (sticky: Sticky): void => {
+  public sortSticky = (sticky: Sticky, sortAgain?: boolean): void => {
     if (this.stickyAbove && this.stickyBelow) {
+      if (sortAgain) {
+        this._removeStickyFromContainers(sticky);
+      }
       if (sticky.canStickyTop && sticky.stickyContentTop) {
         this._addToStickyContainer(sticky, this.stickyAbove, sticky.stickyContentTop);
       }
@@ -286,6 +303,12 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     }
 
     return 0;
+  };
+
+  public syncScrollSticky = (sticky: Sticky): void => {
+    if (sticky && this.contentContainer) {
+      sticky.syncScroll(this.contentContainer);
+    }
   };
 
   private _checkStickyStatus(sticky: Sticky): void {
@@ -360,10 +383,10 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   };
 
   private _removeStickyFromContainers = (sticky: Sticky): void => {
-    if (this.stickyAbove && sticky.stickyContentTop) {
+    if (this.stickyAbove && sticky.stickyContentTop && this.stickyAbove.contains(sticky.stickyContentTop)) {
       this.stickyAbove.removeChild(sticky.stickyContentTop);
     }
-    if (this.stickyBelow && sticky.stickyContentBottom) {
+    if (this.stickyBelow && sticky.stickyContentBottom && this.stickyBelow.contains(sticky.stickyContentBottom)) {
       this.stickyBelow.removeChild(sticky.stickyContentBottom);
     }
   };

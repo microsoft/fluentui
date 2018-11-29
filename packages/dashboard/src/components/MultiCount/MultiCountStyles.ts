@@ -1,4 +1,5 @@
 import { IMultiCountStyles, IMultiCountStyleProps } from './MultiCount.types';
+import { DefaultFontStyles } from 'office-ui-fabric-react/lib/Styling';
 
 export const getStyles = (props: IMultiCountStyleProps): IMultiCountStyles => {
   const {
@@ -31,7 +32,7 @@ export const getStyles = (props: IMultiCountStyleProps): IMultiCountStyles => {
       whiteSpace: 'nowrap',
       textOverflow: 'ellipsis',
       fontSize: bodyTextSize,
-      fontFamily: 'Segoe UI',
+      fontFamily: DefaultFontStyles.medium.fontFamily,
       fontWeight: 600,
       lineHeight: '1.286em',
       marginLeft: '8px',
@@ -41,13 +42,13 @@ export const getStyles = (props: IMultiCountStyleProps): IMultiCountStyles => {
       flex: '0 0 auto',
       fontSize: bodyTextSize,
       lineHeight: '1.286em',
-      fontFamily: 'Segoe UI',
+      fontFamily: DefaultFontStyles.medium.fontFamily,
       fontWeight: 'bold',
       color: bodyTextColor ? bodyTextColor : color
     },
     annotation: {
       flex: '0 0 auto',
-      fontFamily: 'Segoe UI',
+      fontFamily: DefaultFontStyles.medium.fontFamily,
       marginLeft: '16px',
       width: '12px',
       height: '12px'
@@ -68,7 +69,7 @@ export const getStyles = (props: IMultiCountStyleProps): IMultiCountStyles => {
       paddingBottom: '3px'
     },
     hoverCardData: {
-      fontFamily: 'Segoe UI',
+      fontFamily: DefaultFontStyles.medium.fontFamily,
       fontWeight: 'bold',
       fontSize: '28px',
       lineHeight: '33px',
@@ -82,11 +83,11 @@ export const getStyles = (props: IMultiCountStyleProps): IMultiCountStyles => {
       marginRight: '16px'
     },
     hoverCardAnnotationText: {
-      fontFamily: 'Segoe UI'
+      fontFamily: DefaultFontStyles.medium.fontFamily
     },
     hoverCardBodyText: {
       marginRight: '16px',
-      fontFamily: 'Segoe UI'
+      fontFamily: DefaultFontStyles.medium.fontFamily
     },
     hoverCardIcon: {
       width: '12px',
@@ -96,7 +97,7 @@ export const getStyles = (props: IMultiCountStyleProps): IMultiCountStyles => {
     customMessage: {
       fontSize: '10px',
       lineHeight: '12px',
-      fontFamily: 'Segoe UI',
+      fontFamily: DefaultFontStyles.medium.fontFamily,
       fontWeight: 600,
       marginTop: '13px',
       marginLeft: '16px',

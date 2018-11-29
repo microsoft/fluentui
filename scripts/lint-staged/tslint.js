@@ -39,6 +39,7 @@ function groupFilesByPackage(files) {
 
 /**
  * Runs tslint for the staged files in the packages that require it.
+ * Excludes all API extractor files.
  *
  * @param {[packageName: string]: string[]} filesGroupedByPackage
  */
@@ -53,7 +54,14 @@ function runTsLintOnFilesGroupedPerPackage(filesGroupedByPackage) {
 
   for (let [package, files] of fileEntries) {
     const tslintConfig = path.join(path.resolve(__dirname, '..', '..'), package, 'tslint.json');
+    let filteredFiles = files.filter(f => {
+      return !f.endsWith('.api.ts');
+    });
 
-    execSync(`${tslintPath} --config ${tslintConfig} -t stylish -r ${rulesPath} ${files.join(' ')}`);
+    if (filteredFiles.length === 0) {
+      continue;
+    }
+
+    execSync(`${tslintPath} --config ${tslintConfig} -t stylish -r ${rulesPath} ${filteredFiles.join(' ')}`);
   }
 }

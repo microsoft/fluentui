@@ -8,14 +8,16 @@ export type SettingsFunction = (settings: Settings) => Settings;
 export interface ICustomizations {
   settings: Settings;
   scopedSettings: { [key: string]: Settings };
+  inCustomizerContext?: boolean;
 }
 
 const CustomizationsGlobalKey = 'customizations';
-const NO_CUSTOMIZATIONS = { settings: {}, scopedSettings: {} };
+const NO_CUSTOMIZATIONS = { settings: {}, scopedSettings: {}, inCustomizerContext: false };
 
 let _allSettings = GlobalSettings.getValue<ICustomizations>(CustomizationsGlobalKey, {
   settings: {},
-  scopedSettings: {}
+  scopedSettings: {},
+  inCustomizerContext: false
 });
 
 const _events = new EventGroup(_allSettings);

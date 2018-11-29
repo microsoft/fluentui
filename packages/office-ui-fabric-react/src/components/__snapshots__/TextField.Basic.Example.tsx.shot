@@ -80,7 +80,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
               position: relative;
             }
             &:hover {
-              border-color: #212121;
+              border-color: #333333;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
@@ -348,7 +348,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
               position: relative;
             }
             &:hover {
-              border-color: #212121;
+              border-color: #333333;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
@@ -489,7 +489,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
               position: relative;
             }
             &:hover {
-              border-color: #212121;
+              border-color: #333333;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
@@ -629,7 +629,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
               position: relative;
             }
             &:hover {
-              border-color: #212121;
+              border-color: #333333;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
@@ -773,7 +773,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
               position: relative;
             }
             &:hover {
-              border-color: #212121;
+              border-color: #333333;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
@@ -910,7 +910,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
               position: relative;
             }
             &:hover {
-              border-color: #212121;
+              border-color: #333333;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;

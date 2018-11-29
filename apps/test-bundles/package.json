@@ -1,0 +1,40 @@
+{
+  "name": "test-bundles",
+  "version": "6.0.0",
+  "description": "Testing the button for bundling.",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "sideEffects": [
+    "lib/version.js"
+  ],
+  "typings": "lib/index.d.ts",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "node ../../scripts/build.js",
+    "clean": "node ../../scripts/clean.js",
+    "code-style": "node ../../scripts/code-style.js",
+    "start": "node ../../scripts/start.js"
+  },
+  "disabledTasks": [
+    "api-extractor"
+  ],
+  "devDependencies": {
+    "@types/react": "16.3.16",
+    "@types/react-dom": "16.0.5",
+    "@types/webpack-env": "1.13.0",
+    "@uifabric/prettier-rules": ">=1.0.0 <2.0.0",
+    "@uifabric/tslint-rules": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+    "@uifabric/set-version": ">=1.1.3 <2.0.0",
+    "react": ">=16.3.2-0 <17.0.0",
+    "react-dom": ">=16.3.2-0 <17.0.0",
+    "office-ui-fabric-react": ">=6.108.0 <7.0.0",
+    "tslib": "^1.7.1"
+  }
+}

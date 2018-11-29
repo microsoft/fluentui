@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/experiments",
+      "comment": "Pagination: Initial check-in of pagination control into experiments package.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/experiments",
+  "email": "yudon@microsoft.com"
+}

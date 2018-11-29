@@ -92,14 +92,15 @@ export function getIcon(name?: string): IIconRecord | undefined;
 // @public
 export function getIconClassName(name: string): string;
 
-// @public
-export function getSchemedContext(scheme: ISchemeNames, context: ICustomizerContext, settingsTheme?: ITheme): ICustomizerContext | undefined;
-
 // @public (undocumented)
 export function getScreenSelector(min: number, max: number): string;
 
 // @public
 export function getTheme(depComments?: boolean): ITheme;
+
+// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
+// @internal
+export function getThemedContext(context: ICustomizerContext, scheme?: ISchemeNames, theme?: ITheme): ICustomizerContext;
 
 // @public
 interface IAnimationStyles {
@@ -361,13 +362,6 @@ interface IIconSubset {
 }
 
 // @public
-enum InjectionMode {
-  appendChild = 2,
-  insertNode = 1,
-  none = 0
-}
-
-// @public
 interface IPalette {
   accent: string;
   black: string;
@@ -449,6 +443,7 @@ interface IScheme {
 
 // @public
 interface ISemanticColors extends ISemanticTextColors {
+  accentButtonBackground: string;
   blockingBackground: string;
   bodyBackground: string;
   bodyDivider: string;
@@ -506,6 +501,7 @@ interface ISemanticColors extends ISemanticTextColors {
 
 // @public (undocumented)
 interface ISemanticTextColors {
+  accentButtonText: string;
   actionLink: string;
   actionLinkHovered: string;
   bodySubtext: string;
@@ -517,11 +513,14 @@ interface ISemanticTextColors {
   buttonTextDisabled: string;
   buttonTextHovered: string;
   buttonTextPressed: string;
+  disabledBodySubtext: string;
   disabledBodyText: string;
   disabledSubtext: string;
   disabledText: string;
   errorText: string;
   inputPlaceholderText: string;
+  inputText: string;
+  inputTextHovered: string;
   link: string;
   linkHovered: string;
   listText: string;
@@ -688,4 +687,6 @@ module ZIndexes {
 // WARNING: Unsupported export: IStyle
 // WARNING: Unsupported export: IStyleSet
 // WARNING: Unsupported export: IProcessedStyleSet
+// WARNING: Unsupported export: InjectionMode
+// WARNING: Unsupported export: InjectionMode
 // (No @packagedocumentation comment for this package)

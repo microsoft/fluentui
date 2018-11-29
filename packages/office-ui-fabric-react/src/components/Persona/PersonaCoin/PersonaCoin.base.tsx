@@ -45,9 +45,10 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
   }
 
   public componentWillReceiveProps(nextProps: IPersonaCoinProps): void {
-    if (!nextProps.imageUrl) {
+    if (nextProps.imageUrl !== this.props.imageUrl) {
       this.setState({
-        isImageLoaded: false
+        isImageLoaded: false,
+        isImageError: false
       });
     }
   }

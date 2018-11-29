@@ -4,6 +4,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
 <div>
   <div
     className="ms-DocumentCard ms-DocumentCard--actionable undefined"
+    data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
     role="button"
@@ -63,8 +64,8 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     -webkit-font-smoothing: antialiased;
                     color: #0078d4;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
+                    font-size: inherit;
+                    font-weight: inherit;
                     outline: none;
                     text-decoration: none;
                   }
@@ -133,8 +134,8 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     -webkit-font-smoothing: antialiased;
                     color: #0078d4;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
+                    font-size: inherit;
+                    font-weight: inherit;
                     outline: none;
                     text-decoration: none;
                   }
@@ -203,8 +204,8 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     -webkit-font-smoothing: antialiased;
                     color: #0078d4;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
+                    font-size: inherit;
+                    font-weight: inherit;
                     outline: none;
                     text-decoration: none;
                   }
@@ -806,6 +807,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
   <p />
   <div
     className="ms-DocumentCard ms-DocumentCard--actionable undefined"
+    data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
@@ -822,7 +824,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               display: inline-block;
-              font-family: "FabricMDL2Icons-8";
+              font-family: "FabricMDL2Icons-9";
               font-style: normal;
               font-weight: normal;
               speak: none;
@@ -1042,6 +1044,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
   <p />
   <div
     className="ms-DocumentCard ms-DocumentCard--actionable undefined"
+    data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
@@ -1058,7 +1061,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               display: inline-block;
-              font-family: "FabricMDL2Icons-8";
+              font-family: "FabricMDL2Icons-9";
               font-style: normal;
               font-weight: normal;
               speak: none;
@@ -1276,6 +1279,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
   <p />
   <div
     className="ms-DocumentCard ms-DocumentCard--actionable undefined"
+    data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
@@ -1292,7 +1296,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               display: inline-block;
-              font-family: "FabricMDL2Icons-8";
+              font-family: "FabricMDL2Icons-9";
               font-style: normal;
               font-weight: normal;
               speak: none;
@@ -1483,6 +1487,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
   <p />
   <div
     className="ms-DocumentCard ms-DocumentCard--actionable undefined"
+    data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"

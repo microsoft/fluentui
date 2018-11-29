@@ -15,12 +15,9 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-0"`,
-      src: `url('${baseUrl}fabric-icons-0-29734c63.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-0-498a310c.woff') format('woff')`
     },
     icons: {
-      DecreaseIndentLegacy: '\uE290',
-      IncreaseIndentLegacy: '\uE291',
-      SizeLegacy: '\uE2B2',
       InternetSharing: '\uE704',
       Brightness: '\uE706',
       MapPin: '\uE707',
@@ -56,6 +53,7 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       Remove: '\uE738',
       Checkbox: '\uE739',
       CheckboxComposite: '\uE73A',
+      CheckboxFill: '\uE73B',
       CheckboxIndeterminate: '\uE73C',
       CheckboxCompositeReversed: '\uE73D',
       BackToWindow: '\uE73F',
@@ -66,8 +64,10 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       OEM: '\uE74C',
       Save: '\uE74E',
       Cloud: '\uE753',
+      Flashlight: '\uE754',
       CommandPrompt: '\uE756',
       Sad: '\uE757',
+      RealEstate: '\uE758',
       SIPMove: '\uE759',
       EraseTool: '\uE75C',
       GripperTool: '\uE75E',
@@ -84,6 +84,7 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       Personalize: '\uE771',
       SearchAndApps: '\uE773',
       Globe: '\uE774',
+      EaseOfAccess: '\uE776',
       ContactInfo: '\uE779',
       Unpin: '\uE77A',
       Contact: '\uE77B',
@@ -93,6 +94,7 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       Error: '\uE783',
       GripperBarVertical: '\uE784',
       Unlock: '\uE785',
+      Slideshow: '\uE786',
       AutoEnhanceOn: '\uE78D',
       AutoEnhanceOff: '\uE78E',
       Color: '\uE790',
@@ -107,17 +109,15 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       Album: '\uE7AB',
       Rotate: '\uE7AD',
       PanoIndicator: '\uE7B0',
+      Translate: '\uE7B2',
       RedEye: '\uE7B3',
       ThumbnailView: '\uE7B6',
       Package: '\uE7B8',
+      Telemarketer: '\uE7B9',
       Warning: '\uE7BA',
       Financial: '\uE7BB',
       Education: '\uE7BE',
-      ShoppingCart: '\uE7BF',
-      Train: '\uE7C0',
-      Move: '\uE7C2',
-      TouchPointer: '\uE7C9',
-      Merge: '\uE7D5'
+      ShoppingCart: '\uE7BF'
     }
   };
 

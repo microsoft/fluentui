@@ -44,13 +44,13 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
           z-index: 1;
         }
         &:hover .ms-Checkbox-checkbox {
-          border-color: #212121;
+          border-color: #333333;
         }
         @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
           border-color: Highlight;
         }
         &:focus .ms-Checkbox-checkbox {
-          border-color: #212121;
+          border-color: #333333;
         }
         &:hover .ms-Checkbox-checkmark {
           color: #a6a6a6;
@@ -182,10 +182,10 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
       >
         <div
           className="ms-BasePicker-text"
-          role="list"
         >
           <span
             id="selected-items-id__1"
+            role="list"
           />
           <input
             aria-autocomplete="both"
@@ -242,10 +242,10 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
       >
         <div
           className="ms-BasePicker-text"
-          role="list"
         >
           <span
             id="selected-items-id__3"
+            role="list"
           />
           <input
             aria-autocomplete="both"
