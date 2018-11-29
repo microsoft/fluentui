@@ -1,24 +1,7 @@
-import { getHorizontalAlignment, getVerticalAlignment, parseGap, parsePadding } from './StackUtils';
+import { getVerticalAlignment, parseGap, parsePadding } from './StackUtils';
 import { loadTheme, getTheme } from 'office-ui-fabric-react/lib/Styling';
 
 describe('StackUtils', () => {
-  describe('getHorizontalAlignment', () => {
-    it('returns start when given left', () => {
-      expect(getHorizontalAlignment('left')).toEqual('start');
-    });
-
-    it('returns end when given right', () => {
-      expect(getHorizontalAlignment('right')).toEqual('end');
-    });
-
-    it('returns its argument when given a value other than left and right', () => {
-      const args = ['center', 'space-around', 'space-between', 'space-evenly'];
-      args.forEach((arg: string) => {
-        expect(getHorizontalAlignment(arg)).toEqual(arg);
-      });
-    });
-  });
-
   describe('getVerticalAlignment', () => {
     it('returns start when given top', () => {
       expect(getVerticalAlignment('top')).toEqual('start');

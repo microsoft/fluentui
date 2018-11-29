@@ -8017,7 +8017,7 @@ interface IGroupRenderProps {
 // @public (undocumented)
 interface IHorizontalStackProps extends IPartialStackProps {
   as?: string | React.ReactType<IHorizontalStackProps>;
-  horizontalAlign?: 'left' | 'right' | 'center' | 'space-around' | 'space-between' | 'space-evenly';
+  horizontalAlign?: 'start' | 'end' | 'center' | 'space-around' | 'space-between' | 'space-evenly';
   styles?: IStylesProp<IHorizontalStackProps, IHorizontalStackStyles>;
   verticalAlign?: 'top' | 'bottom' | 'center' | 'baseline' | 'stretch';
   verticalGap?: number | string;
@@ -10966,7 +10966,7 @@ interface IVerticalDividerProps {
 // @public (undocumented)
 interface IVerticalStackProps extends IPartialStackProps {
   as?: string | React.ReactType<IVerticalStackProps>;
-  horizontalAlign?: 'left' | 'right' | 'center' | 'baseline' | 'stretch';
+  horizontalAlign?: 'start' | 'end' | 'center' | 'baseline' | 'stretch';
   styles?: IStylesProp<IVerticalStackProps, IVerticalStackStyles>;
   verticalAlign?: 'top' | 'bottom' | 'center' | 'space-around' | 'space-between' | 'space-evenly';
 }

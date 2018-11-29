@@ -8,7 +8,7 @@ import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styli
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 
 export type VerticalAlignment = 'top' | 'center' | 'bottom' | 'space-around' | 'space-between' | 'space-evenly';
-export type HorizontalAlignment = 'left' | 'center' | 'right';
+export type HorizontalAlignment = 'start' | 'center' | 'end';
 
 export interface IExampleState {
   numItems: number;
@@ -44,7 +44,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
       paddingTop: 0,
       paddingBottom: 0,
       verticalAlignment: 'top',
-      horizontalAlignment: 'left',
+      horizontalAlignment: 'start',
       hideEmptyChildren: false,
       emptyChildren: []
     };
@@ -166,7 +166,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
                     selectedKey={horizontalAlignment}
                     placeholder="Select Horizontal Alignment"
                     label="Horizontal alignment:"
-                    options={[{ key: 'left', text: 'Left' }, { key: 'center', text: 'Center' }, { key: 'right', text: 'Right' }]}
+                    options={[{ key: 'start', text: 'Left' }, { key: 'center', text: 'Center' }, { key: 'end', text: 'Right' }]}
                     onChange={this._onHorizontalAlignChange}
                   />
                 </HorizontalStack.Item>

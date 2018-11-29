@@ -7,7 +7,7 @@ import { VerticalStack, HorizontalStack } from 'office-ui-fabric-react/lib/Stack
 import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 
-export type HorizontalAlignment = 'left' | 'center' | 'right' | 'space-around' | 'space-between' | 'space-evenly';
+export type HorizontalAlignment = 'start' | 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly';
 export type VerticalAlignment = 'top' | 'center' | 'bottom';
 
 export interface IExampleState {
@@ -45,7 +45,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
       paddingRight: 0,
       paddingTop: 0,
       paddingBottom: 0,
-      horizontalAlignment: 'left',
+      horizontalAlignment: 'start',
       verticalAlignment: 'top',
       hideEmptyChildren: false,
       emptyChildren: []
@@ -221,9 +221,9 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
               placeholder="Select Horizontal Alignment"
               label="Horizontal alignment:"
               options={[
-                { key: 'left', text: 'Left' },
+                { key: 'start', text: 'Left' },
                 { key: 'center', text: 'Center' },
-                { key: 'right', text: 'Right' },
+                { key: 'end', text: 'Right' },
                 { key: 'space-around', text: 'Space around' },
                 { key: 'space-between', text: 'Space between' },
                 { key: 'space-evenly', text: 'Space evenly' }

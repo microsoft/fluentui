@@ -18,7 +18,7 @@ export interface IVerticalStackProps extends IPartialStackProps {
   /**
    * How to align child elements horizontally.
    */
-  horizontalAlign?: 'left' | 'right' | 'center' | 'baseline' | 'stretch';
+  horizontalAlign?: 'start' | 'end' | 'center' | 'baseline' | 'stretch';
 
   /**
    * Custom styles to apply to the VerticalStack.

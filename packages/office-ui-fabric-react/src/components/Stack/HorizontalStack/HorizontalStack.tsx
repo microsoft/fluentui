@@ -3,7 +3,7 @@ import { createStatelessComponent } from '../../../Foundation';
 import { Stack } from '../Stack';
 import { StackItem } from '../StackItem/StackItem';
 import { IStackItemProps } from '../StackItem/StackItem.types';
-import { getVerticalAlignment, getHorizontalAlignment } from '../StackUtils';
+import { getVerticalAlignment } from '../StackUtils';
 import { IHorizontalStackComponent, IHorizontalStackProps, IHorizontalStackStyles } from './HorizontalStack.types';
 import { styles } from './HorizontalStack.styles';
 
@@ -20,7 +20,7 @@ const view: IHorizontalStackComponent['view'] = props => {
           wrap
           horizontal
           verticalAlignment={getVerticalAlignment(verticalAlign)}
-          horizontalAlignment={getHorizontalAlignment(horizontalAlign)}
+          horizontalAlignment={horizontalAlign}
           className={classNames.inner}
           horizontalGap={gap}
           verticalGap={vertGap}
@@ -36,7 +36,7 @@ const view: IHorizontalStackComponent['view'] = props => {
       {...rest}
       horizontal
       verticalAlignment={getVerticalAlignment(verticalAlign)}
-      horizontalAlignment={getHorizontalAlignment(horizontalAlign)}
+      horizontalAlignment={horizontalAlign}
       className={classNames.root}
       horizontalGap={gap}
     >

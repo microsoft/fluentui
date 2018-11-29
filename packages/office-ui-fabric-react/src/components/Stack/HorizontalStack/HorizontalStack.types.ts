@@ -13,7 +13,7 @@ export interface IHorizontalStackProps extends IPartialStackProps {
   /**
    * How to align child elements horizontally.
    */
-  horizontalAlign?: 'left' | 'right' | 'center' | 'space-around' | 'space-between' | 'space-evenly';
+  horizontalAlign?: 'start' | 'end' | 'center' | 'space-around' | 'space-between' | 'space-evenly';
 
   /**
    * How to align child elements vertically.

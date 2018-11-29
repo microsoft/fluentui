@@ -5,7 +5,7 @@ import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { VerticalStack, HorizontalStack } from 'office-ui-fabric-react/lib/Stack';
 import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
-export type HorizontalAlignment = 'left' | 'center' | 'right' | 'space-around' | 'space-between' | 'space-evenly';
+export type HorizontalAlignment = 'start' | 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly';
 export type VerticalAlignment = 'top' | 'center' | 'bottom';
 export type Overflow = 'visible' | 'auto' | 'hidden';
 
@@ -23,7 +23,7 @@ export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExa
     this.state = {
       stackWidth: 100,
       containerHeight: 150,
-      horizontalAlignment: 'left',
+      horizontalAlignment: 'start',
       verticalAlignment: 'top',
       overflow: 'visible'
     };
@@ -81,9 +81,9 @@ export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExa
               placeholder="Select Horizontal Alignment"
               label="Horizontal alignment:"
               options={[
-                { key: 'left', text: 'Left' },
+                { key: 'start', text: 'Left' },
                 { key: 'center', text: 'Center' },
-                { key: 'right', text: 'Right' },
+                { key: 'end', text: 'Right' },
                 { key: 'space-around', text: 'Space around' },
                 { key: 'space-between', text: 'Space between' },
                 { key: 'space-evenly', text: 'Space evenly' }

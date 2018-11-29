@@ -25,7 +25,7 @@ export class HorizontalStackHorizontalAlignExample extends React.Component<{}, {
     return (
       <VerticalStack gap={5}>
         <span>Left-aligned</span>
-        <HorizontalStack horizontalAlign="left" className={styles.root}>
+        <HorizontalStack horizontalAlign="start" className={styles.root}>
           <span>1</span>
           <span>2</span>
           <span>3</span>
@@ -39,7 +39,7 @@ export class HorizontalStackHorizontalAlignExample extends React.Component<{}, {
         </HorizontalStack>
 
         <span>Right-aligned</span>
-        <HorizontalStack horizontalAlign="right" className={styles.root}>
+        <HorizontalStack horizontalAlign="end" className={styles.root}>
           <span>1</span>
           <span>2</span>
           <span>3</span>
