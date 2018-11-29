@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "initial check-in of pagination control into experiment package",
+      "comment": "Pagination: Initial check-in of pagination control into experiments package.",
       "type": "minor"
     }
   ],
