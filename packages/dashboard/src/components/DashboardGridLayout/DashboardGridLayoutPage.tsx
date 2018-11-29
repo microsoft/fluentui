@@ -32,7 +32,7 @@ export class DashboardGridLayoutPage extends React.Component<IComponentDemoPageP
             >
               <DGLWithAddCardPanelExample />
             </ExampleCard>
-            {/* <ExampleCard title="DashboardGridLayout" isScrollable={true} isOptIn={true} code={DashboardGridLayoutExampleCode}>
+            <ExampleCard title="DashboardGridLayout" isScrollable={true} isOptIn={true} code={DashboardGridLayoutExampleCode}>
               <DashboardGridLayoutExample />
             </ExampleCard>
             <ExampleCard
@@ -74,7 +74,7 @@ export class DashboardGridLayoutPage extends React.Component<IComponentDemoPageP
               code={DashboardGridLayoutDragApiExampleCode}
             >
               <DashboardGridLayoutDragApiExample />
-            </ExampleCard> */}
+            </ExampleCard>
           </div>
         }
         propertiesTables={
