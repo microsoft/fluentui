@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add ability to change persona coins to show initials onHover when it uses an image",
+      "comment": "PersonaCoin: Add the ability to show initials onHover when an image is present.",
       "type": "minor"
     }
   ],
