@@ -137,7 +137,7 @@ const getStyles = (): IDlpRecommendationStyles => {
   };
 };
 
-export class RecommendationDlpExample extends React.Component<{}, IRecommendationExampleState> {
+export class RecommendationCustomDataVizExample extends React.Component<{}, IRecommendationExampleState> {
   constructor(props: {}) {
     super(props);
     this.state = {

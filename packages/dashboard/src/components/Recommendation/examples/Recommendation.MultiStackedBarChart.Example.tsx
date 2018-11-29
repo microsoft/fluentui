@@ -5,6 +5,7 @@ import { IStyle, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 import { Recommendation } from '../Recommendation';
+import { IRecommendationBannerChartData, VisualizationType, IRecommendationBannerChartDataPoint } from '../Recommendation.types';
 
 import { wrappingContainerHeight, wrappingContainerWidth, IRecommendationExampleState } from './RecommendationExamples.Common';
 
@@ -18,10 +19,7 @@ const getMultiSBCVisualizationStyles = (): IMultiSBCVisualizationStyles => ({
   }
 });
 
-const DlpVisualization = () => {
-  const getClassNames = classNamesFunction<{}, IMultiSBCVisualizationStyles>();
-  const classNames = getClassNames(getMultiSBCVisualizationStyles!);
-
+const getChartData = (): IChartProps[] => {
   const firstChartPoints: IChartDataPoint[] = [
     { legend: 'Debit card numbers (EU and USA)', data: 40, color: DefaultPalette.blue },
     { legend: 'Passport numbers (USA)', data: 23, color: DefaultPalette.red },
@@ -46,6 +44,14 @@ const DlpVisualization = () => {
       chartData: secondChartPoints
     }
   ];
+
+  return data;
+};
+
+const DlpVisualization = () => {
+  const getClassNames = classNamesFunction<{}, IMultiSBCVisualizationStyles>();
+  const classNames = getClassNames(getMultiSBCVisualizationStyles!);
+  const data = getChartData();
 
   return (
     <div className={classNames.visualizationContainer}>
@@ -77,6 +83,31 @@ const getStyles = (): IDlpRecommendationStyles => {
   };
 };
 
+const getVisualizationData = (): IRecommendationBannerChartData[] => {
+  const firstChartDataPoints: IRecommendationBannerChartDataPoint[] = [
+    { datapointText: 'Debit card numbers (EU and USA)', datapointValue: 40 },
+    { datapointText: 'Passport numbers (USA)', datapointValue: 23 },
+    { datapointText: 'Social security numbers', datapointValue: 35 }
+  ];
+
+  const firstChartData: IRecommendationBannerChartData = {
+    chartTitle: 'Monitored',
+    chartData: firstChartDataPoints
+  };
+
+  const secondChartDataPoints: IRecommendationBannerChartDataPoint[] = [
+    { datapointText: 'Credit card numbers', datapointValue: 40 },
+    { datapointText: 'Tax identification numbers (USA)', datapointValue: 23 }
+  ];
+
+  const secondChartData: IRecommendationBannerChartData = {
+    chartTitle: 'Unmonitored',
+    chartData: secondChartDataPoints
+  };
+
+  return [firstChartData, secondChartData];
+};
+
 export class RecommendationMultiStackedBarChartExample extends React.Component<{}, IRecommendationExampleState> {
   constructor(props: {}) {
     super(props);
@@ -106,11 +137,9 @@ export class RecommendationMultiStackedBarChartExample extends React.Component<{
             recommendationDescription={recommendationDescription}
             handleViewRecommendationClick={this.onViewRecommendationClick}
             handleDismissRecommendationClick={this.onDimissRecommendationClick}
-          >
-            <div className={classNames.visualizationStyle}>
-              <DlpVisualization />
-            </div>
-          </Recommendation>
+            recommendationVisualization={VisualizationType.MultiStackBarChart}
+            chartVisualizationData={getVisualizationData()}
+          />
         </div>
         <div className={classNames.sampleContainerStyle}>
           <Recommendation

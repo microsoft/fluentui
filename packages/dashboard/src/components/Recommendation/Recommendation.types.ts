@@ -1,6 +1,45 @@
 import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 
+export enum VisualizationType {
+  /**
+   * MutliStackBarChart Visualization
+   */
+  MultiStackBarChart,
+
+  /**
+   * Image illustration visualization
+   */
+  ImageIllustration
+}
+
+/**
+ * Representation for each chart data point
+ */
+export interface IRecommendationBannerChartDataPoint {
+  /**
+   * The display text for a given datapoint
+   */
+  datapointText: string;
+
+  /**
+   * quantifying value for a given datapoint
+   */
+  datapointValue: number;
+}
+
+export interface IRecommendationBannerChartData {
+  /**
+   * ChartTitle to be displayed when rendering
+   */
+  chartTitle: string;
+
+  /**
+   * DataPoints that make up the chart
+   */
+  chartData: IRecommendationBannerChartDataPoint[];
+}
+
 /**
  * Props that are exposed for customizing the Recommendation Card
  */
@@ -40,6 +79,37 @@ export interface IRecommendationProps {
    * @memberof IRecommendationProps
    */
   handleDismissRecommendationClick: () => void;
+
+  /**
+   * Supported Visualizations by Recommendation Banner.
+   * If this property is used, any custom visualizations
+   * plugged in as children will be ignored
+   *
+   * @type {VisualizationType}
+   * @memberof IRecommendationProps
+   */
+  recommendationVisualization?: VisualizationType | null;
+
+  /**
+   * If RecommendationVisualization is ImageIllustration,
+   * imageVisualizationSrc is a mandatory property that takes in
+   * image source that needs to be rendered.
+   *
+   * @type {string}
+   * @memberof IRecommendationProps
+   */
+  imageVisualizationSrc?: string;
+
+  /**
+   * If RecommendationVisualization is StackedBarChart variation
+   * chartVisualizationData is a mandatory property that needs
+   * the specific schema of datapoints to construct the chart
+   *
+   * @type {IRecommendationBannerChartData[]}
+   * @memberof IRecommendationProps
+   */
+  chartVisualizationData?: IRecommendationBannerChartData[];
+
   /**
    * Optional: Localized Name for the Recommendation Button
    *
@@ -170,4 +240,24 @@ export interface IRecommendationStyles {
    * Style for the Recommendation flex row: visualization
    */
   recommendationRowContainer: IStyle;
+
+  /**
+   * Style for ImageIllustration container
+   */
+  imageIllustrationContainerStyle: IStyle;
+
+  /**
+   * Style for ImageIllustration style
+   */
+  imageIllustrationStyle: IStyle;
+
+  /**
+   * Style for the ChartVisualization container
+   */
+  chartVisualizationContainerStyle: IStyle;
+
+  /**
+   * Style for the Chart Visualization
+   */
+  chartVisualizationStyle: IStyle;
 }
