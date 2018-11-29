@@ -46,9 +46,6 @@ export const ButtonView: IButtonComponent['view'] = props => {
   //    * in what cases do we ever NOT want user props to override? (see why stardust has overrideProps)
   // TODO: deal with classNames vs. slot styles props
   // TODO: do menu element as slot too. also menuIcon?
-  // TODO: how do we distinguish between a Slot 'as' and a compoenent prop 'as'?
-  //        here, I think we want to forward 'as' prop to Stack instead of replacing Stack entirely
-  //        'slotAs' vs 'as' prop?
 
   const Slots = getSlots(props, {
     root: _deriveRootType(props),

@@ -77,8 +77,7 @@ const ButtonSet = () => (
 
         <VerticalStack gap={buttonGap}>
           <h2>Root Slot</h2>
-          <Button icon="share" root={{ slotAs: 'a' }} content="Root: slotAs explicit 'a'" />
-          <Button icon="share" href="https://developer.microsoft.com/en-us/fabric" content="Root: slotAs implicit 'a' via href prop" />
+          <Button icon="share" href="https://developer.microsoft.com/en-us/fabric" content="Root: Implicit 'a' via href prop" />
           <Button icon="share" root={(rootProps, RootType) => <RootType {...rootProps} />} content="Root: Function" />
           <Button
             icon="share"
@@ -90,9 +89,13 @@ const ButtonSet = () => (
 
         <VerticalStack gap={buttonGap}>
           <h2>Stack Slot</h2>
-          <Button icon="share" content="Stack: 'slotAs' VerticalStack" stack={{ slotAs: VerticalStack }} />
           <Button icon="share" content="Stack: 'as' prop 'div'" stack={{ as: 'div' }} />
           <Button icon="share" stack={(stackProps, StackType) => <StackType {...stackProps} />} content="Stack: Function" />
+          <Button
+            icon="share"
+            content="Stack: Function, VerticalStack"
+            stack={(stackProps, StackType) => <VerticalStack {...stackProps} />}
+          />
           <Button
             icon="share"
             stack={(stackProps, StackType) => <StackType {...stackProps} />}
@@ -105,44 +108,44 @@ const ButtonSet = () => (
           <h2>Icon Slot</h2>
           <Button icon="share" content="Icon: String" />
           <Button icon={{ iconName: 'share' }} content="Icon: Props" />
-          <Button icon={{ slotAs: Spinner }} content="Icon: As Spinner" />
           <Button
             icon={(iconProps, IconType) => (
               <b>
                 Icon: <IconType {...iconProps} iconName="upload" />
               </b>
             )}
-            content="Icon: Function"
+            content="Icon: Function, Text + Icon"
           />
-          <Button icon={<Spinner />} content="Icon: JSX Element" />
+          <Button icon={() => <Spinner />} content="Icon: Function, Spinner" />
+          <Button icon={<Spinner />} content="Icon: JSX Element, Spinner" />
         </VerticalStack>
 
         <VerticalStack gap={buttonGap}>
           <h2>Content Slot</h2>
           <Button content={true}>
-            <p>Text: Boolean</p>
+            <p>Content: Boolean</p>
           </Button>
           <Button content={1}>
-            <p>Text: Integer</p>
+            <p>Content: Integer</p>
           </Button>
-          <Button content="Text: String" />
-          <Button content={{ weight: 'bold', children: 'Text: Props' }} />
-          <Button content={{ slotAs: Spinner }}>
-            <p>Text: As Spinner</p>
+          <Button content="Content: String" />
+          <Button content={{ weight: 'bold', children: 'Content: Props' }} />
+          <Button content={() => <Spinner />}>
+            <p>Content: Function, Spinner</p>
           </Button>
-          <Button content={{ children: 'Text: Child String' }} />
-          <Button content={{ children: ['Text: Child 1,', ' Child 2'] }} />
           <Button
-            content={(textProps, TextType) => (
+            content={(contentProps, ContentType) => (
               <b>
-                Text: <TextType {...textProps}>TextType</TextType>
+                Content: <ContentType {...contentProps}>TextType</ContentType>
               </b>
             )}
           >
-            <p>Text: Function</p>
+            <p>Content: Function, Text + ContentType</p>
           </Button>
-          <Button content={<Text>Text: JSX Element</Text>} />
-          <Button content="Text: With Children">
+          <Button content={{ children: 'Content: Child String' }} />
+          <Button content={{ children: ['Content: Child 1,', ' Child 2'] }} />
+          <Button content={<Text>Content: JSX Element</Text>} />
+          <Button content="Content: With Children">
             <p>Button Child 1</p>
             <p>Button Child 2</p>
           </Button>

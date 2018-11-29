@@ -4,16 +4,6 @@ import { IHorizontalStackProps } from '../../Stack';
 import { ITextProps } from '../../Text';
 import { IIconProps, IContextualMenuProps, IFontWeight, IRefObject } from 'office-ui-fabric-react';
 
-// TODO: centralize types
-export interface ISlotAs<AllowedTypes> {
-  // TODO: another alternative is simply not to support 'slotAs' and require use of render functions or JSX
-  // We need to somehow distinguish Slot 'as' diretive from component 'as' props.
-  //  Slot's 'as' requires swapping out the whole component type.
-  //  Component 'as' requires forwarding the prop to the component without changing component type.
-  //  Distinguish the two by calling slot's 'as' directive 'slotAs'.
-  slotAs?: AllowedTypes;
-}
-
 export type IButtonComponent = IComponent<IButtonProps, IButtonViewProps, IButtonStyles>;
 
 // States should only be javascript evaluated states. (Not css states.)
@@ -38,11 +28,11 @@ export interface IButtonProps extends IStyleableComponentProps<IButtonProps, IBu
   // Slots
   // TODO: should we more strongly identify slots in props? is the typing enough?
   // TODO: add consolidated typing for Slots, like Slot<Component, Props, etc.>
-  root?: ISlotAs<keyof JSX.IntrinsicElements>;
-  stack?: ISlotAs<JSX.Element> | IHorizontalStackProps;
+  // root?: ?;
+  // stack?: ?;
   content?: string | ITextProps | JSX.Element;
   // TODO: why does TS not error when passed in Spinner which doesn't take IIconProps?
-  icon?: string | IIconProps | JSX.Element | ISlotAs<React.ReactType<IIconProps>>;
+  icon?: string | IIconProps | JSX.Element;
   menu?: React.ReactType<IContextualMenuProps>;
 
   // TODO: props for testing, remove

@@ -64,8 +64,6 @@ const getDefaultFactory = memoizeFunction(type => createFactory(type));
 const defaultFactory = (type, componentProps, userProps) => getDefaultFactory(type)(componentProps, userProps);
 
 const slot = (ComponentType, componentProps, userProps) => {
-  ComponentType = (userProps && userProps.slotAs) || ComponentType;
-
   if (ComponentType.create !== undefined) {
     return ComponentType.create(componentProps, userProps);
   } else {
