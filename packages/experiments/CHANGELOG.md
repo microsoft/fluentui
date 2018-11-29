@@ -1,6 +1,15 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 22 Nov 2018 13:36:17 GMT and should not be manually modified.
+This log was last generated on Thu, 29 Nov 2018 19:34:12 GMT and should not be manually modified.
+
+## 6.43.0
+Thu, 29 Nov 2018 19:34:12 GMT
+
+### Minor changes
+
+- Re-export Signals from package root
+- update snapshots from semantic slot value updates
+- Toggle: Refining style variables approach in Toggle and adding examples passing interface and function.
 
 ## 6.42.0
 Thu, 22 Nov 2018 13:36:17 GMT
