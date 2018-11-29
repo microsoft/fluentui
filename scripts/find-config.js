@@ -1,14 +1,18 @@
 /**
  * Find a config file path, starting in the current directory and looking up to the Git root directory
  * (which contains rush.json) or the drive root.
- * @param {string} configName - Config file name
- * @param {string} [lookInCommon] - If true, check for the file under common/config/rush
+ * @param {string} configName - Config file name. If an absolute path, will be returned unmodified.
+ * @param {boolean} [lookInCommon] - If true, check for the file under common/config/rush
  * @returns The config file's path, or undefined if not found
  */
 function findConfig(configName, lookInCommon) {
   const fs = require('fs');
   const path = require('path');
   const rootPath = path.resolve('/');
+
+  if (path.isAbsolute(configName)) {
+    return configName;
+  }
 
   let cwd = process.cwd();
   let foundGitRoot = false;

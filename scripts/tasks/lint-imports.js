@@ -7,15 +7,15 @@ module.exports = function() {
   const fs = require('fs');
   const chalk = require('chalk');
   const findConfig = require('../find-config');
-  const { readRushJson } = require('../read-config');
+  const readConfig = require('../read-config');
 
   const sourcePath = path.resolve(process.cwd(), 'src');
   const nodeModulesPath = path.resolve(process.cwd(), 'node_modules');
   const rushJsonPath = findConfig('rush.json');
   const rootFolder = path.dirname(rushJsonPath);
-  const rush = readRushJson();
+  const rush = readConfig(rushJsonPath);
   if (!rush) {
-    throw new Error('lint-import: unable to find rush.json');
+    throw new Error('lint-imports: unable to find rush.json');
   }
 
   const rushPackages = rush.projects.map(project => project.packageName);

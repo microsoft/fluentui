@@ -9,10 +9,11 @@
 const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');
-const { readRushJson } = require('./read-config');
+const readConfig = require('./read-config');
 
-const rushPackages = readRushJson();
+const rushPackages = readConfig('rush.json');
 if (!rushPackages) {
+  console.error('Could not find rush.json');
   return;
 }
 const newVersion = process.argv[2];

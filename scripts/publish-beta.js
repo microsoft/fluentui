@@ -1,9 +1,10 @@
 const path = require('path');
 const chalk = require('chalk');
-const { readRushJson } = require('./read-config');
+const readConfig = require('./read-config');
 
-const rushJson = readRushJson();
+const rushJson = readConfig('rush.json');
 if (!rushJson) {
+  console.error('Could not find rush.json');
   return;
 }
 

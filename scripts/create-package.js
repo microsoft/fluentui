@@ -1,15 +1,15 @@
-// Dependencies
 const mustache = require('mustache');
 const argv = require('yargs').argv;
 const fs = require('fs');
 const exec = require('./exec-sync');
-const findConfig = require('./find-config');
-const { readConfig } = require('./read-config');
+const readConfig = require('./read-config');
+const writeConfig = require('./write-config');
 const path = require('path');
 
 // The package name can be given as a named or positional argument
 const newPackageName = argv.name || argv._[0];
-const generate = argv.noGenerate === undefined;
+const newPackageNpmName = '@uifabric/' + newPackageName;
+const generate = argv.generate !== false;
 
 if (!newPackageName) {
   console.error('Please specify a name for the new package.');
@@ -35,12 +35,11 @@ if (fs.existsSync(packagePath)) {
 }
 
 // rush.json contents
-const rushPath = findConfig('rush.json');
-if (!rushPath) {
+const rushJson = readConfig('rush.json');
+if (!rushJson) {
   console.error('Could not find rush.json.');
   return;
 }
-const rushJson = readConfig(rushPath);
 
 // @uifabric/experiments package.json contents
 // (current dependency versions are copied from here to avoid causing issues with rush check)
@@ -49,7 +48,7 @@ if (!fs.existsSync(experimentsPackagePath)) {
   console.error('Could not find @uifabric/experiments package.json (needed to get current dependency versions)');
   return;
 }
-const experimentsPackageJson = readConfig(experimentsPackagePath);
+const experimentsPackageJson = JSON.parse(fs.readFileSync(experimentsPackagePath, 'utf8'));
 
 // Steps (mustache template names and output file paths)
 const steps = [
@@ -83,11 +82,11 @@ const steps = [
 // Strings
 const successCreatedPackage = `New package ${newPackageName} successfully created.`;
 const npmGenerateMessage = 'Running "npm generate" (to bypass this step, use --no-generate arg)';
-const rushPackagePresent = `Package @uifabric/${newPackageName} is already present in rush.json`;
+const rushPackagePresent = `Package ${newPackageNpmName} is already present in rush.json`;
 const errorUnableToCreatePackage = `Error creating package directory ${packagePath}`;
 const errorUnableToOpenTemplate = templateFile => `Unable to open mustache template ${templateFile} for component`;
 const errorUnableToWriteFile = step => `Unable to write ${step} file`;
-const errorUnableToUpdateRush = 'Unable to update rush.json';
+const errorUnableToUpdateRush = `Could not add an entry for ${newPackageNpmName} to list of projects in rush.json. You must add this entry manually.`;
 
 // Functions
 function handleError(error, errorPrependMessage) {
@@ -132,7 +131,7 @@ function readFileCallback(error, data, templateName, outputFilePath, callback, r
   // Keys of this object are Mustache "tag" keys: a tag like {{packageName}} in the template
   // will be replaced with view.packageName.
   const view = {
-    packageName: newPackageName,
+    packageName: newPackageNpmName,
     friendlyPackageName: pascalCasePackage,
     todayDate: today
   };
@@ -174,45 +173,21 @@ function writeFileCallback(error, writeFileError, callback) {
 
 function updateRush() {
   // don't add the same package to rush.json twice
-  if (rushJson.projects.some(project => project.packageName === `@uifabric/${newPackageName}`)) {
+  if (rushJson.projects.some(project => project.packageName === newPackageNpmName)) {
     console.error(rushPackagePresent);
     postRushUpdate();
     return;
   }
 
-  // Hack to preserve the comments in rush.json: look for the sequence of closing braces/brackets
-  // after the last project entry and insert the new project there. This will ONLY work if
-  // "projects" is the last entry in rush.json.
-  const rushContents = fs.readFileSync(rushPath).toString();
-  const eol = rushContents.match(/\r?\n/)[0];
-  const jsonEnd = `}${eol}  ]${eol}}`;
-
-  if (rushContents.indexOf(jsonEnd) === -1) {
-    console.warn(
-      `Could not add an entry for @uifabric/${newPackageName} to list of projects in rush.json.`,
-      'You must add this entry manually.'
-    );
-    postRushUpdate();
-  } else {
-    const newRushContents = rushContents.replace(
-      jsonEnd,
-      [
-        '},',
-        '    {',
-        `      "packageName": "@uifabric/${newPackageName}",`,
-        `      "projectFolder": "packages/${newPackageName}",`,
-        '      "shouldPublish": false',
-        '    ' + jsonEnd
-      ].join(eol)
-    );
-    fs.writeFile(rushPath, newRushContents, error => {
-      if (!handleError(error, errorUnableToUpdateRush)) {
-        return;
-      }
-
-      postRushUpdate();
-    });
+  rushJson.projects.push({
+    packageName: newPackageNpmName,
+    projectFolder: 'packages/' + newPackageName,
+    shouldPublish: false
+  });
+  if (!writeConfig('rush.json', rushJson)) {
+    console.error(errorUnableToUpdateRush);
   }
+  postRushUpdate();
 }
 
 function postRushUpdate() {
