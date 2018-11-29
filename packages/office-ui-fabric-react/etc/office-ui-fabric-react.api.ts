@@ -7417,7 +7417,6 @@ interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDi
   placeholder?: string;
   // @deprecated
   placeHolder?: string;
-  // (undocumented)
   responsiveMode?: ResponsiveMode;
   selectedKeys?: string[] | number[];
   styles?: IStyleFunctionOrObject<IDropdownStyleProps, IDropdownStyles>;
@@ -8028,6 +8027,7 @@ interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
   expandedCardOpenDelay?: number;
   expandingCardProps?: IExpandingCardProps;
   instantOpenOnClick?: boolean;
+  onCardExpand?: () => void;
   onCardHide?: () => void;
   onCardVisible?: () => void;
   openHotKey?: KeyCodes;
@@ -9906,6 +9906,7 @@ export function isElementVisible(element: HTMLElement | undefined | null): boole
 
 // @public
 interface ISemanticColors extends ISemanticTextColors {
+  accentButtonBackground: string;
   blockingBackground: string;
   bodyBackground: string;
   bodyDivider: string;
@@ -9963,6 +9964,7 @@ interface ISemanticColors extends ISemanticTextColors {
 
 // @public (undocumented)
 interface ISemanticTextColors {
+  accentButtonText: string;
   actionLink: string;
   actionLinkHovered: string;
   bodySubtext: string;
@@ -9974,11 +9976,14 @@ interface ISemanticTextColors {
   buttonTextDisabled: string;
   buttonTextHovered: string;
   buttonTextPressed: string;
+  disabledBodySubtext: string;
   disabledBodyText: string;
   disabledSubtext: string;
   disabledText: string;
   errorText: string;
   inputPlaceholderText: string;
+  inputText: string;
+  inputTextHovered: string;
   link: string;
   linkHovered: string;
   listText: string;
@@ -10314,13 +10319,14 @@ interface ISpinButtonStyles {
 interface ISpinner {
 }
 
-// @public (undocumented)
+// @public
 interface ISpinnerProps extends React.HTMLAttributes<HTMLElement> {
   ariaLabel?: string;
   ariaLive?: 'assertive' | 'polite' | 'off';
   className?: string;
   componentRef?: IRefObject<ISpinner>;
   label?: string;
+  labelPosition?: SpinnerLabelPosition;
   size?: SpinnerSize;
   styles?: IStyleFunctionOrObject<ISpinnerStyleProps, ISpinnerStyles>;
   theme?: ITheme;
@@ -10328,25 +10334,19 @@ interface ISpinnerProps extends React.HTMLAttributes<HTMLElement> {
   type?: SpinnerType;
 }
 
-// @public (undocumented)
+// @public
 interface ISpinnerStyleProps {
-  // (undocumented)
   className?: string;
-  // (undocumented)
+  labelPosition?: SpinnerLabelPosition;
   size?: SpinnerSize;
-  // (undocumented)
   theme: ITheme;
 }
 
-// @public (undocumented)
+// @public
 interface ISpinnerStyles {
-  // (undocumented)
   circle?: IStyle;
-  // (undocumented)
   label?: IStyle;
-  // (undocumented)
   root?: IStyle;
-  // (undocumented)
   screenReaderText?: IStyle;
 }
 
@@ -10656,7 +10656,14 @@ interface ITeachingBubbleStyles {
   // (undocumented)
   secondaryButton: IStyle;
   // (undocumented)
+  subComponentStyles?: ITeachingBubbleSubComponentStyles;
+  // (undocumented)
   subText: IStyle;
+}
+
+// @public (undocumented)
+interface ITeachingBubbleSubComponentStyles {
+  callout: IStyleFunctionOrObject<any, any>;
 }
 
 // @public (undocumented)
@@ -11943,7 +11950,7 @@ class SpinnerBase extends BaseComponent<ISpinnerProps, any> {
   render(): JSX.Element;
 }
 
-// @public (undocumented)
+// @public
 enum SpinnerSize {
   large = 3,
   medium = 2,
@@ -12600,6 +12607,7 @@ module ZIndexes {
 // WARNING: Unsupported export: Slider
 // WARNING: Unsupported export: ISliderStyleProps
 // WARNING: Unsupported export: Spinner
+// WARNING: Unsupported export: SpinnerLabelPosition
 // WARNING: Unsupported export: AnimationClassNames
 // WARNING: Unsupported export: FontClassNames
 // WARNING: Unsupported export: ColorClassNames

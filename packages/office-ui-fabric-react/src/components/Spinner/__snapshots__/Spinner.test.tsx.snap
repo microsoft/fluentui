@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Spinner renders Spinner correctly 1`] = `
+<div
+  className=
+      ms-Spinner
+      {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+>
+  <div
+    className=
+        ms-Spinner-circle
+        ms-Spinner--medium
+        {
+          animation-duration: 1.3s;
+          animation-iteration-count: infinite;
+          animation-name: keyframes 0%{transform:rotate(0deg);}100%{transform:rotate(360deg);};
+          animation-timing-function: cubic-bezier(.53,.21,.29,.67);
+          border-radius: 50%;
+          border-top-color: #0078d4;
+          border: 1.5px solid #c7e0f4;
+          box-sizing: border-box;
+          height: 20px;
+          width: 20px;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          border-top-color: Highlight;
+        }
+  />
+  <div
+    className=
+        ms-Spinner-label
+        {
+          color: #0078d4;
+          margin-bottom: 0;
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: 10px;
+          text-align: center;
+        }
+  >
+    Standard spinner
+  </div>
+  <div
+    aria-live="polite"
+    role="status"
+  />
+</div>
+`;

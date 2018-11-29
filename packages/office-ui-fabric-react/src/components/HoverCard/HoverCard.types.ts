@@ -5,7 +5,7 @@ import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject, KeyCodes } from '../../Utilities';
 import { IPlainCardProps } from './PlainCard/PlainCard.types';
 
-export interface IHoverCard {}
+export interface IHoverCard { }
 
 /**
  * HoverCard component props.
@@ -81,6 +81,11 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
    * If not specified, the caller should mark as element as described by the hover card id.
    */
   setAriaDescribedBy?: boolean;
+
+  /**
+   * Callback when visible card is expanded.
+   */
+  onCardExpand?: () => void;
 
   /**
    * Set to true to set focus on the first focusable element in the card. Works in pair with the 'trapFocus' prop.

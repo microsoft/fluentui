@@ -30,9 +30,9 @@ export const ToggleStyles: IToggleComponent['styles'] = props => {
 
   const toggleDisabledVariables: IToggleStyleVariablesTypes = {
     pillBackground: semanticColors.bodyBackground,
-    pillBorderColor: semanticColors.disabledBodyText,
+    pillBorderColor: semanticColors.disabledBodySubtext,
 
-    thumbBackground: semanticColors.disabledBodyText,
+    thumbBackground: semanticColors.disabledBodySubtext,
 
     textColor: semanticColors.disabledText,
     textHighContrastColor: 'GrayText'
@@ -57,7 +57,7 @@ export const ToggleStyles: IToggleComponent['styles'] = props => {
   };
 
   const toggleCheckedDisabledVariables: IToggleStyleVariablesTypes = {
-    pillBackground: semanticColors.disabledBodyText,
+    pillBackground: semanticColors.disabledBodySubtext,
 
     thumbBackground: semanticColors.disabledBackground
   };
