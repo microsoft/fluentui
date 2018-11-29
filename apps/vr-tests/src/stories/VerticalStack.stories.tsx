@@ -76,7 +76,7 @@ storiesOf('VerticalStack', module)
   .addStory('Space between', () => <VerticalStack {...defaultProps} verticalAlign="space-between" className={styles.fixedHeight} />)
   .addStory('Space evenly', () => <VerticalStack {...defaultProps} verticalAlign="space-evenly" className={styles.fixedHeight} />)
   .addStory('Horizontally centered', () => <VerticalStack {...defaultProps} horizontalAlign="center" />)
-  .addStory('Right-aligned', () => <VerticalStack {...defaultProps} horizontalAlign="right" />, { rtl: true })
+  .addStory('Right-aligned', () => <VerticalStack {...defaultProps} horizontalAlign="end" />, { rtl: true })
   .addStory(
     'Item alignments',
     () => (
