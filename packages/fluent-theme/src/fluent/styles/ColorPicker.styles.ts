@@ -11,7 +11,7 @@ import { NeutralColors } from '../FluentColors';
 import { Depths } from '../FluentDepths';
 import { fluentBorderRadius } from './styleConstants';
 
-export const ColorPickerStyles = (props: IColorPickerStyleProps): IColorPickerStyles => {
+export const ColorPickerStyles = (props: IColorPickerStyleProps): Partial<IColorPickerStyles> => {
   return {
     input: {
       selectors: {
@@ -42,7 +42,7 @@ export const ColorPickerStyles = (props: IColorPickerStyleProps): IColorPickerSt
   };
 };
 
-export const ColorRectangleStyles = (props: IColorRectangleStyleProps): IColorRectangleStyles => {
+export const ColorRectangleStyles = (props: IColorRectangleStyleProps): Partial<IColorRectangleStyles> => {
   const { theme } = props;
   const { palette } = theme;
 
@@ -58,7 +58,7 @@ export const ColorRectangleStyles = (props: IColorRectangleStyleProps): IColorRe
   };
 };
 
-export const ColorSliderStyles = (props: IColorSliderStyleProps): IColorSliderStyles => {
+export const ColorSliderStyles = (props: IColorSliderStyleProps): Partial<IColorSliderStyles> => {
   return {
     root: {
       borderRadius: fluentBorderRadius,

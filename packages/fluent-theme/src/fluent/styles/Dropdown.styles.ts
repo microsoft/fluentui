@@ -1,10 +1,10 @@
-import { IDropdownStyleProps } from 'office-ui-fabric-react/lib/Dropdown';
+import { IDropdownStyleProps, IDropdownStyles } from 'office-ui-fabric-react/lib/Dropdown';
 import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { fluentBorderRadius } from './styleConstants';
 import { SharedColors, NeutralColors } from '../FluentColors';
 import { Depths } from '../FluentDepths';
 
-export const DropdownStyles = (props: IDropdownStyleProps) => {
+export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownStyles> => {
   const { disabled, hasError, isOpen, calloutRenderEdge, theme, isRenderingPlaceholder } = props;
 
   if (!theme) {

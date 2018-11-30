@@ -1,8 +1,9 @@
 import { fluentBorderRadius } from './styleConstants';
 import { Depths } from '../FluentDepths';
 import { NeutralColors, SharedColors } from '../FluentColors';
+import { IComboBoxStyles } from 'office-ui-fabric-react/lib/ComboBox';
 
-export const ComboBoxStyles = {
+export const ComboBoxStyles: Partial<IComboBoxStyles> = {
   root: {
     borderRadius: fluentBorderRadius, // the bound input box
     borderColor: NeutralColors.gray80,

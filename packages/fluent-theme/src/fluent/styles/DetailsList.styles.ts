@@ -1,7 +1,7 @@
-import { ICheckStyleProps } from 'office-ui-fabric-react/lib/Check';
-import { IDetailsRowStyleProps } from 'office-ui-fabric-react/lib/DetailsList';
+import { ICheckStyleProps, ICheckStyles } from 'office-ui-fabric-react/lib/Check';
+import { IDetailsRowStyleProps, IDetailsRowStyles } from 'office-ui-fabric-react/lib/DetailsList';
 
-export const CheckStyles = (props: ICheckStyleProps) => {
+export const CheckStyles = (props: ICheckStyleProps): Partial<ICheckStyles> => {
   const { theme, checked } = props;
   const { palette } = theme;
 
@@ -11,7 +11,7 @@ export const CheckStyles = (props: ICheckStyleProps) => {
   };
 };
 
-export const DetailsRowStyles = (props: IDetailsRowStyleProps) => {
+export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetailsRowStyles> => {
   const { theme, isSelected } = props;
   const { palette } = theme;
 
