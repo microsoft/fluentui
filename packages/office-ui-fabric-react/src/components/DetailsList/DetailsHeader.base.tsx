@@ -415,12 +415,6 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     }
   }
 
-  private _swap(array: any, index: number): void {
-    let temp = array[index].startX;
-    array[index].startX = array[index].endX;
-    array[index].endX = temp;
-  }
-
   private _updateDropHintElement(element: HTMLElement, property: string) {
     (element.childNodes[1] as HTMLElement).style.visibility = property;
     (element.childNodes[0] as HTMLElement).style.visibility = property;
@@ -436,7 +430,6 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
       columnReorderProps && columnReorderProps.frozenColumnCountFromStart ? columnReorderProps.frozenColumnCountFromStart : 0;
     const frozenColumnCountFromEnd =
       columnReorderProps && columnReorderProps.frozenColumnCountFromEnd ? columnReorderProps.frozenColumnCountFromEnd : 0;
-    const isRTL = getRTL();
 
     for (let i = frozenColumnCountFromStart!; i < columns.length - frozenColumnCountFromEnd! + 1; i++) {
       if (this._rootElement) {
@@ -464,18 +457,22 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
                 endX: dropHintElement.offsetLeft,
                 dropHintElementRef: prevRef
               };
-              if (isRTL) {
-                this._swap(this._dropHintDetails, i); // swap startX and endX
-              }
-            }
-            if (isRTL) {
-              this._swap(this._dropHintDetails, i - 1); // swap startX and endX
             }
           }
         }
       }
     }
   };
+
+  private _liesBetween(target: number, left: number, right: number): boolean {
+    return getRTL() ? target <= left && target >= right : target >= left && target <= right;
+  }
+  private _isBefore(a: number, b: number): boolean {
+    return getRTL() ? a >= b : a <= b;
+  }
+  private _isAfter(a: number, b: number): boolean {
+    return getRTL() ? a <= b : a >= b;
+  }
 
   /**
    * Based on the given cursor position, finds the nearest drop hint and updates the state to make it visible
@@ -489,8 +486,11 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
       const currentDropHintIndex = this._currentDropHintIndex!;
       if (this._isValidCurrentDropHintIndex()) {
         if (
-          eventXRelativePosition >= this._dropHintDetails[currentDropHintIndex!].startX &&
-          eventXRelativePosition <= this._dropHintDetails[currentDropHintIndex!].endX
+          this._liesBetween(
+            eventXRelativePosition,
+            this._dropHintDetails[currentDropHintIndex!].startX,
+            this._dropHintDetails[currentDropHintIndex!].endX
+          )
         ) {
           return;
         }
@@ -505,52 +505,45 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
       const currentIndex: number = frozenColumnCountFromStart!;
       const lastValidColumn = columns.length - frozenColumnCountFromEnd!;
       let indexToUpdate = -1;
-      const isRTL = getRTL();
-      const boundaryColumnLeft = isRTL ? lastValidColumn : currentIndex;
-      const boundaryColumnRight = isRTL ? currentIndex : lastValidColumn;
-      if (eventXRelativePosition <= this._dropHintDetails[boundaryColumnLeft].endX) {
-        indexToUpdate = boundaryColumnLeft;
-      } else if (eventXRelativePosition >= this._dropHintDetails[boundaryColumnRight].startX) {
-        indexToUpdate = boundaryColumnRight;
+      if (this._isBefore(eventXRelativePosition, this._dropHintDetails[currentIndex].endX)) {
+        indexToUpdate = currentIndex;
+      } else if (this._isAfter(eventXRelativePosition, this._dropHintDetails[lastValidColumn].startX)) {
+        indexToUpdate = lastValidColumn;
       } else if (this._isValidCurrentDropHintIndex()) {
         if (
           this._dropHintDetails[currentDropHintIndex! + 1] &&
-          eventXRelativePosition >= this._dropHintDetails[currentDropHintIndex! + 1].startX &&
-          eventXRelativePosition <= this._dropHintDetails[currentDropHintIndex! + 1].endX
+          this._liesBetween(
+            eventXRelativePosition,
+            this._dropHintDetails[currentDropHintIndex! + 1].startX,
+            this._dropHintDetails[currentDropHintIndex! + 1].endX
+          )
         ) {
           indexToUpdate = currentDropHintIndex! + 1;
         } else if (
           this._dropHintDetails[currentDropHintIndex! - 1] &&
-          eventXRelativePosition >= this._dropHintDetails[currentDropHintIndex! - 1].startX &&
-          eventXRelativePosition <= this._dropHintDetails[currentDropHintIndex! - 1].endX
+          this._liesBetween(
+            eventXRelativePosition,
+            this._dropHintDetails[currentDropHintIndex! - 1].startX,
+            this._dropHintDetails[currentDropHintIndex! - 1].endX
+          )
         ) {
           indexToUpdate = currentDropHintIndex! - 1;
         }
       }
-
       if (indexToUpdate === -1) {
         let startIndex = frozenColumnCountFromStart!;
         let endIndex = lastValidColumn;
         while (startIndex < endIndex) {
           const middleIndex = Math.ceil((endIndex + startIndex!) / 2);
           if (
-            eventXRelativePosition >= this._dropHintDetails[middleIndex].startX &&
-            eventXRelativePosition <= this._dropHintDetails[middleIndex].endX
+            this._liesBetween(eventXRelativePosition, this._dropHintDetails[middleIndex].startX, this._dropHintDetails[middleIndex].endX)
           ) {
             indexToUpdate = middleIndex;
             break;
-          } else if (eventXRelativePosition < this._dropHintDetails[middleIndex].originX) {
-            if (isRTL) {
-              startIndex = middleIndex; // search towards right in case of RTL as drop hint indexes are in opposite order
-            } else {
-              endIndex = middleIndex;
-            }
-          } else if (eventXRelativePosition > this._dropHintDetails[middleIndex].originX) {
-            if (isRTL) {
-              endIndex = middleIndex; // search towards left in case of RTL as drop hint indexes are in opposite order
-            } else {
-              startIndex = middleIndex;
-            }
+          } else if (this._isBefore(eventXRelativePosition, this._dropHintDetails[middleIndex].originX)) {
+            endIndex = middleIndex;
+          } else if (this._isAfter(eventXRelativePosition, this._dropHintDetails[middleIndex].originX)) {
+            startIndex = middleIndex;
           }
         }
       }
