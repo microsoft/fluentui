@@ -214,6 +214,16 @@ module IconFontSizes {
 
 }
 
+// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
+// @internal
+interface IEffects {
+  elevation16: IRawStyle;
+  elevation4: IRawStyle;
+  elevation64: IRawStyle;
+  elevation8: IRawStyle;
+  roundedCorner2: number;
+}
+
 // @public
 interface IFontFace extends IRawFontStyle {
   fontFeatureSettings?: string;
@@ -425,6 +435,8 @@ interface IRawStyle extends IRawStyleBase {
 // @public (undocumented)
 interface IScheme {
   disableGlobalClassNames: boolean;
+  // (undocumented)
+  effects: IEffects;
   // (undocumented)
   fonts: IFontStyles;
   // (undocumented)

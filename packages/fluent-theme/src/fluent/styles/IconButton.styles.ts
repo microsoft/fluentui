@@ -1,6 +1,7 @@
 import { CommunicationColors, NeutralColors } from '../FluentColors';
+import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 
-export const IconButtonStyles = {
+export const IconButtonStyles: Partial<IButtonStyles> = {
   root: {
     backgroundColor: NeutralColors.white,
     color: CommunicationColors.primary

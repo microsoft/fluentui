@@ -1,7 +1,7 @@
-import { IRatingStyleProps } from 'office-ui-fabric-react/lib/Rating';
+import { IRatingStyleProps, IRatingStyles } from 'office-ui-fabric-react/lib/Rating';
 import { NeutralColors } from '../FluentColors';
 
-export const RatingStyles = (props: IRatingStyleProps) => {
+export const RatingStyles = (props: IRatingStyleProps): Partial<IRatingStyles> => {
   const { disabled, readOnly, theme } = props;
   const { semanticColors } = theme;
 

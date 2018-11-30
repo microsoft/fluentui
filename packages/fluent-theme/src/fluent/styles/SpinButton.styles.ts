@@ -1,5 +1,6 @@
 import { fluentBorderRadius } from './styleConstants';
 import { NeutralColors } from '../FluentColors';
+import { ISpinButtonStyles } from 'office-ui-fabric-react/lib/SpinButton';
 
 const buttonStyles = {
   color: NeutralColors.gray130,
@@ -19,7 +20,7 @@ const buttonStyles = {
   }
 };
 
-export const SpinButtonStyles = {
+export const SpinButtonStyles: Partial<ISpinButtonStyles> = {
   spinButtonWrapper: {
     borderRadius: fluentBorderRadius,
     borderColor: NeutralColors.gray80
