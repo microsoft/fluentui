@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/styling",
-      "comment": "semantic slot value updates",
+      "comment": "Extend theming to incorporate shadows and rounded corners",
       "type": "minor"
     }
   ],
   "packageName": "@uifabric/styling",
-  "email": "v-jescla@microsoft.com"
+  "email": "phkuo@microsoft.com"
 }

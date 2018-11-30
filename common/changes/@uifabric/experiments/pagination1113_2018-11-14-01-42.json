@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "update snapshots from semantic slot value updates",
+      "comment": "Pagination: Initial check-in of pagination control into experiments package.",
       "type": "minor"
     }
   ],
   "packageName": "@uifabric/experiments",
-  "email": "v-jescla@microsoft.com"
+  "email": "yudon@microsoft.com"
 }

@@ -2,6 +2,28 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.36.0",
+      "tag": "@uifabric/dashboard_v0.36.0",
+      "date": "Thu, 29 Nov 2018 19:34:12 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "RecommendationBanner improvements to support Visualizations and ImageIllustration by default",
+            "author": "Veerash Ayyagari <veeray@microsoft.com>",
+            "commit": "b3558c1312273e2df0b3fa166031bbc3d020e3d7"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.42.0 <7.0.0` to `>=6.43.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.106.3 <7.0.0` to `>=6.108.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.35.1",
       "tag": "@uifabric/dashboard_v0.35.1",
       "date": "Tue, 20 Nov 2018 20:12:42 GMT",

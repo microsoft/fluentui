@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "FocusZone: Fix the spelling of direction prop's default value.",
+      "comment": "DetailsList Example: fix modal selection and make aria label more descriptive",
       "type": "none"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "keco@microsoft.com"
+  "email": "naethell@microsoft.com"
 }

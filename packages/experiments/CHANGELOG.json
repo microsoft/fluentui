@@ -2,6 +2,47 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.43.0",
+      "tag": "@uifabric/experiments_v6.43.0",
+      "date": "Thu, 29 Nov 2018 19:34:12 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Re-export Signals from package root",
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "80553ec8d2a7735dc0503d47fa7913b18fa7d2eb"
+          },
+          {
+            "comment": "update snapshots from semantic slot value updates",
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "3f75dd975a669b877023aaf45dd1c711c85f0e59"
+          },
+          {
+            "comment": "Toggle: Refining style variables approach in Toggle and adding examples passing interface and function.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "57a7af27f210a66ffb0eb1f626f3745de35e1cbd"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `>=6.2.0 <7.0.0` to `>=6.4.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.8.0 <1.0.0` to `>=0.9.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `>=6.12.0 <7.0.0` to `>=6.13.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.35.0 <7.0.0` to `>=6.37.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.106.3 <7.0.0` to `>=6.108.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.42.0",
       "tag": "@uifabric/experiments_v6.42.0",
       "date": "Thu, 22 Nov 2018 13:36:17 GMT",

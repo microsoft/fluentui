@@ -1,8 +1,19 @@
-import { concatStyleSets, FontSizes, getFocusStyle, HighContrastSelector, IRawStyle, ITheme } from '../../Styling';
+import {
+  concatStyleSets,
+  FontSizes,
+  getFocusStyle,
+  HighContrastSelector,
+  IRawStyle,
+  ITheme,
+  getScreenSelector,
+  ScreenWidthMaxMedium
+} from '../../Styling';
 import { IMenuItemStyles } from './ContextualMenu.types';
 import { memoizeFunction } from '../../Utilities';
 
 export const CONTEXTUAL_MENU_ITEM_HEIGHT = '32px';
+
+const MediumScreenSelector = getScreenSelector(0, ScreenWidthMaxMedium);
 
 const getItemHighContrastStyles = memoizeFunction(
   (): IRawStyle => {
@@ -53,7 +64,7 @@ export const getMenuItemStyles = memoizeFunction(
           lineHeight: CONTEXTUAL_MENU_ITEM_HEIGHT,
           display: 'block',
           cursor: 'pointer',
-          padding: '0px 6px',
+          padding: '0px 8px 0 4px', // inner elements have a margin of 4px (4 + 4 = 8px as on right side)
           textAlign: 'left'
         }
       ],
@@ -96,7 +107,7 @@ export const getMenuItemStyles = memoizeFunction(
         maxWidth: '100%'
       },
       anchorLink: {
-        padding: '0px 6px',
+        padding: '0px 8px 0 4px', // inner elements have a margin of 4px (4 + 4 = 8px as on right side)
         textRendering: 'auto',
         color: 'inherit',
         letterSpacing: 'normal',
@@ -170,7 +181,12 @@ export const getMenuItemStyles = memoizeFunction(
         display: 'inline-block',
         verticalAlign: 'middle',
         flexShrink: '0',
-        fontSize: FontSizes.mini
+        fontSize: FontSizes.small, // 12px
+        selectors: {
+          [MediumScreenSelector]: {
+            fontSize: FontSizes.icon // 16px
+          }
+        }
       },
       splitButtonFlexContainer: [
         getFocusStyle(theme),
