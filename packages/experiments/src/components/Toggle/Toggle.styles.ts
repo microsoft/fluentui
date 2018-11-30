@@ -1,6 +1,6 @@
 import { IToggleComponent, IToggleStyles, IToggleStyleVariablesTypes, IToggleStyleVariables, IToggleViewProps } from './Toggle.types';
 import { getFocusStyle, getGlobalClassNames, HighContrastSelector, concatStyleSets } from '../../Styling';
-import { resolveStyleVariables } from '../../utilities/VariableProcessing';
+import { resolveStyleVariables } from '../../utilities/variableProcessing';
 
 const GlobalClassNames = {
   root: 'ms-Toggle',
