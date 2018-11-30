@@ -266,7 +266,6 @@ exports[`DetailsHeader can render 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          border: undefined;
           box-sizing: border-box;
           color: #333333;
           display: inline-block;
@@ -456,7 +455,6 @@ exports[`DetailsHeader can render 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          border: undefined;
           box-sizing: border-box;
           color: #333333;
           display: inline-block;
@@ -668,7 +666,6 @@ exports[`DetailsHeader can render 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          border: undefined;
           box-sizing: border-box;
           color: #333333;
           display: inline-block;
@@ -1138,7 +1135,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          border: undefined;
           box-sizing: border-box;
           color: #333333;
           display: inline-block;
@@ -1328,7 +1324,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          border: undefined;
           box-sizing: border-box;
           color: #333333;
           display: inline-block;
@@ -1565,7 +1560,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          border: undefined;
           box-sizing: border-box;
           color: #333333;
           display: inline-block;
