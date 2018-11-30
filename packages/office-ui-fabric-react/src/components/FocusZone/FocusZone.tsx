@@ -517,7 +517,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
     const activeRect = isBidirectional ? element.getBoundingClientRect() : null;
 
-    let elementDistanceDisabled = -1;
+    let elementDistanceToBreak = -1;
     do {
       element = (isForward ? getNextElement(this._root.current, element) : getPreviousElement(this._root.current, element)) as HTMLElement;
 
@@ -526,7 +526,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
           const targetRect = element.getBoundingClientRect();
           const elementDistance = getDistanceFromCenter(activeRect as ClientRect, targetRect);
 
-          elementDistanceDisabled = elementDistance;
+          elementDistanceToBreak = elementDistance;
           if (elementDistance === -1 && candidateDistance === -1) {
             candidateElement = element;
             break;
@@ -546,7 +546,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         break;
       }
     } while (element);
-    if (elementDistanceDisabled === LARGE_DISTANCE_FROM_CENTER) {
+    if (elementDistanceToBreak === LARGE_DISTANCE_FROM_CENTER) {
       return false;
     }
 
