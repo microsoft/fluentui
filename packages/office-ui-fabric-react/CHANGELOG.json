@@ -2,6 +2,44 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.109.0",
+      "tag": "office-ui-fabric-react_v6.109.0",
+      "date": "Fri, 30 Nov 2018 13:37:17 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "DetailsList Example: fix modal selection and make aria label more descriptive",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "9043341b822bdc5ee7ca30d764d6bb80808f13ca"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "DevExp: packages will no longer include the api.json from api extractor to reduce package size",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "72942a6152855a0717f6bcdb0f12309c5be5d25b"
+          },
+          {
+            "comment": "SwatchColorPicker: Fixing state method componentWillReceiveProps of SwatchColorPicker in order to resolve how it sets focus and color on its cells in its uncontrolled form.",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "f197adec981b4183bc36615a1901d7952acc6cc6"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Extend theming to incorporate shadows and rounded corners",
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "047fd78f72f2bd7ede6949ab6ac0edb371604c91"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.37.0 <7.0.0` to `>=6.38.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.108.0",
       "tag": "office-ui-fabric-react_v6.108.0",
       "date": "Thu, 29 Nov 2018 19:34:12 GMT",

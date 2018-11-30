@@ -1,6 +1,17 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Thu, 29 Nov 2018 19:34:12 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Nov 2018 13:37:17 GMT and should not be manually modified.
+
+## 0.37.0
+Fri, 30 Nov 2018 13:37:17 GMT
+
+### Minor changes
+
+- Adding add card experience to DGL, providing respective callbacks and examples
+
+### Patches
+
+- Add missing dependency
 
 ## 0.36.0
 Thu, 29 Nov 2018 19:34:12 GMT
