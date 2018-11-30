@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsList Example: Add snapshot for DnD example.",
+      "comment": "DetailsList Example: Update snapshot for DnD example.",
       "type": "none"
     }
   ],
