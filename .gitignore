@@ -46,8 +46,6 @@ lib-commonjs
 lib-es2015
 coverage
 dist
-npm-debug.log
-npminstall-log.txt
 test-dependencies
 screenshots
 
@@ -96,8 +94,12 @@ ftpconfig.json
 # Package output folder
 package
 
-# Log files from building
+# Logs
 *.log
+npminstall-log.txt
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # Dependency change files generated from npmx aka rush
 package-deps.json

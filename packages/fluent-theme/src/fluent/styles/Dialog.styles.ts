@@ -1,10 +1,15 @@
-import { IDialogContentStyleProps } from 'office-ui-fabric-react/lib/Dialog';
+import {
+  IDialogContentStyleProps,
+  IDialogContentStyles,
+  IDialogFooterStyleProps,
+  IDialogFooterStyles
+} from 'office-ui-fabric-react/lib/Dialog';
 import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
 
 import { FontSizes } from '../FluentType';
 import { fluentBorderRadius } from './styleConstants';
 
-export const DialogContentStyles = (props: IDialogContentStyleProps) => {
+export const DialogContentStyles = (props: IDialogContentStyleProps): Partial<IDialogContentStyles> => {
   const { theme } = props;
   const { palette } = theme;
 
@@ -36,8 +41,10 @@ export const DialogContentStyles = (props: IDialogContentStyleProps) => {
   };
 };
 
-export const DialogFooterStyles = {
-  actions: {
-    margin: '16px 0 0'
-  }
+export const DialogFooterStyles = (props: IDialogFooterStyleProps): Partial<IDialogFooterStyles> => {
+  return {
+    actions: {
+      margin: '16px 0 0'
+    }
+  };
 };

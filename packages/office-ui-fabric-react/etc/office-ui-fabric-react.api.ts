@@ -6689,7 +6689,9 @@ interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAttributes
   allowTextInput?: boolean;
   ariaLabel?: string;
   borderless?: boolean;
+  calendarAs?: IComponentAs<ICalendarProps>;
   calendarProps?: ICalendarProps;
+  calloutProps?: ICalloutProps;
   className?: string;
   componentRef?: IRefObject<IDatePicker>;
   dateTimeFormatter?: ICalendarFormatDateCallbacks;
@@ -7415,7 +7417,6 @@ interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDi
   placeholder?: string;
   // @deprecated
   placeHolder?: string;
-  // (undocumented)
   responsiveMode?: ResponsiveMode;
   selectedKeys?: string[] | number[];
   styles?: IStyleFunctionOrObject<IDropdownStyleProps, IDropdownStyles>;
@@ -7459,6 +7460,16 @@ interface IDropdownStyles {
 // @public (undocumented)
 interface IDropdownSubComponentStyles {
   label: IStyleFunctionOrObject<ILabelStyleProps, any>;
+}
+
+// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
+// @internal
+interface IEffects {
+  elevation16: IRawStyle;
+  elevation4: IRawStyle;
+  elevation64: IRawStyle;
+  elevation8: IRawStyle;
+  roundedCorner2: number;
 }
 
 // @public
@@ -7953,7 +7964,7 @@ interface IGroupedList extends IList {
 }
 
 // @public (undocumented)
-interface IGroupedListProps extends React.Props<GroupedListBase> {
+interface IGroupedListProps extends React.ClassAttributes<GroupedListBase> {
   className?: string;
   componentRef?: IRefObject<IGroupedList>;
   dragDropEvents?: IDragDropEvents;
@@ -8026,6 +8037,7 @@ interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
   expandedCardOpenDelay?: number;
   expandingCardProps?: IExpandingCardProps;
   instantOpenOnClick?: boolean;
+  onCardExpand?: () => void;
   onCardHide?: () => void;
   onCardVisible?: () => void;
   openHotKey?: KeyCodes;
@@ -8219,7 +8231,7 @@ interface IKeytipLayer {
 }
 
 // @public (undocumented)
-interface IKeytipLayerProps extends React.Props<IKeytipLayer> {
+interface IKeytipLayerProps extends React.ClassAttributes<IKeytipLayer> {
   componentRef?: IRefObject<IKeytipLayer>;
   content: string;
   keytipExitSequences?: IKeytipTransitionKey[];
@@ -8617,7 +8629,7 @@ interface IModal {
 }
 
 // @public (undocumented)
-interface IModalProps extends React.Props<ModalBase>, IWithResponsiveModeState, IAccessiblePopupProps {
+interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResponsiveModeState, IAccessiblePopupProps {
   className?: string;
   componentRef?: IRefObject<IModal>;
   containerClassName?: string;
@@ -8856,7 +8868,7 @@ interface IPage {
 }
 
 // @public (undocumented)
-interface IPageProps extends React.HTMLAttributes<HTMLDivElement>, React.Props<HTMLDivElement> {
+interface IPageProps extends React.HTMLAttributes<HTMLDivElement>, React.ClassAttributes<HTMLDivElement> {
   page: IPage;
   role?: string;
 }
@@ -9572,6 +9584,8 @@ interface IRGB {
 interface IScheme {
   disableGlobalClassNames: boolean;
   // (undocumented)
+  effects: IEffects;
+  // (undocumented)
   fonts: IFontStyles;
   // (undocumented)
   isInverted: boolean;
@@ -9904,6 +9918,7 @@ export function isElementVisible(element: HTMLElement | undefined | null): boole
 
 // @public
 interface ISemanticColors extends ISemanticTextColors {
+  accentButtonBackground: string;
   blockingBackground: string;
   bodyBackground: string;
   bodyDivider: string;
@@ -9961,6 +9976,7 @@ interface ISemanticColors extends ISemanticTextColors {
 
 // @public (undocumented)
 interface ISemanticTextColors {
+  accentButtonText: string;
   actionLink: string;
   actionLinkHovered: string;
   bodySubtext: string;
@@ -9972,11 +9988,14 @@ interface ISemanticTextColors {
   buttonTextDisabled: string;
   buttonTextHovered: string;
   buttonTextPressed: string;
+  disabledBodySubtext: string;
   disabledBodyText: string;
   disabledSubtext: string;
   disabledText: string;
   errorText: string;
   inputPlaceholderText: string;
+  inputText: string;
+  inputTextHovered: string;
   link: string;
   linkHovered: string;
   listText: string;
@@ -10312,13 +10331,14 @@ interface ISpinButtonStyles {
 interface ISpinner {
 }
 
-// @public (undocumented)
+// @public
 interface ISpinnerProps extends React.HTMLAttributes<HTMLElement> {
   ariaLabel?: string;
   ariaLive?: 'assertive' | 'polite' | 'off';
   className?: string;
   componentRef?: IRefObject<ISpinner>;
   label?: string;
+  labelPosition?: SpinnerLabelPosition;
   size?: SpinnerSize;
   styles?: IStyleFunctionOrObject<ISpinnerStyleProps, ISpinnerStyles>;
   theme?: ITheme;
@@ -10326,25 +10346,19 @@ interface ISpinnerProps extends React.HTMLAttributes<HTMLElement> {
   type?: SpinnerType;
 }
 
-// @public (undocumented)
+// @public
 interface ISpinnerStyleProps {
-  // (undocumented)
   className?: string;
-  // (undocumented)
+  labelPosition?: SpinnerLabelPosition;
   size?: SpinnerSize;
-  // (undocumented)
   theme: ITheme;
 }
 
-// @public (undocumented)
+// @public
 interface ISpinnerStyles {
-  // (undocumented)
   circle?: IStyle;
-  // (undocumented)
   label?: IStyle;
-  // (undocumented)
   root?: IStyle;
-  // (undocumented)
   screenReaderText?: IStyle;
 }
 
@@ -10654,7 +10668,14 @@ interface ITeachingBubbleStyles {
   // (undocumented)
   secondaryButton: IStyle;
   // (undocumented)
+  subComponentStyles?: ITeachingBubbleSubComponentStyles;
+  // (undocumented)
   subText: IStyle;
+}
+
+// @public (undocumented)
+interface ITeachingBubbleSubComponentStyles {
+  callout: IStyleFunctionOrObject<any, any>;
 }
 
 // @public (undocumented)
@@ -10844,6 +10865,7 @@ interface ITooltip {
 
 // @public (undocumented)
 interface ITooltipHost {
+  dismiss: () => void;
 }
 
 // @public
@@ -11940,7 +11962,7 @@ class SpinnerBase extends BaseComponent<ISpinnerProps, any> {
   render(): JSX.Element;
 }
 
-// @public (undocumented)
+// @public
 enum SpinnerSize {
   large = 3,
   medium = 2,
@@ -12396,12 +12418,16 @@ enum TooltipDelay {
 }
 
 // @public (undocumented)
-class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHostState> {
+class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHostState>, implements ITooltipHost {
   constructor(props: ITooltipHostProps);
+  // (undocumented)
+  componentWillUnmount(): void;
   // (undocumented)
   static defaultProps: {
     delay: TooltipDelay;
   }
+  // (undocumented)
+  dismiss: () => void;
   // (undocumented)
   render(): JSX.Element;
 }
@@ -12593,6 +12619,7 @@ module ZIndexes {
 // WARNING: Unsupported export: Slider
 // WARNING: Unsupported export: ISliderStyleProps
 // WARNING: Unsupported export: Spinner
+// WARNING: Unsupported export: SpinnerLabelPosition
 // WARNING: Unsupported export: AnimationClassNames
 // WARNING: Unsupported export: FontClassNames
 // WARNING: Unsupported export: ColorClassNames

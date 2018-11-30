@@ -154,7 +154,7 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
               z-index: 1;
             }
             &:hover {
-              border-color: #212121;
+              border-color: #333333;
             }
             @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
               border-color: Highlight;
@@ -173,7 +173,7 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
           className=
               ms-Toggle-thumb
               {
-                background-color: #212121;
+                background-color: #333333;
                 border-color: transparent;
                 border-radius: .5em;
                 border-style: solid;
