@@ -12,6 +12,8 @@ import { IDetailsColumnStyleProps, IDetailsColumnProps } from './DetailsColumn.t
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
 
 const getClassNames = classNamesFunction<IDetailsColumnStyleProps, IDetailsColumnStyles>();
+const TRANSITION_DURATION_DRAG = 0.2; // sec
+const TRANSITION_DURATION_DROP = 1.5; // sec
 
 export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
   private _root: any;
@@ -41,7 +43,9 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
       isIconVisible: column.isSorted || column.isGrouped || column.isFiltered,
       isPadded: column.isPadded,
       isIconOnly: column.isIconOnly,
-      cellStyleProps
+      cellStyleProps,
+      transitionDurationDrag: TRANSITION_DURATION_DRAG,
+      transitionDurationDrop: TRANSITION_DURATION_DROP
     });
 
     const classNames = this._classNames;

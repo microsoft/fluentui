@@ -33,7 +33,9 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
     isIconVisible,
     isPadded,
     isIconOnly,
-    cellStyleProps = DEFAULT_CELL_STYLE_PROPS
+    cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
+    transitionDurationDrag,
+    transitionDurationDrop
   } = props;
 
   const { semanticColors, palette } = theme;
@@ -195,10 +197,10 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
 
     borderWhileDragging: borderWhileDragging,
 
-    noBorderWhileDragging: [borderAfterDragOrDrop, { transition: 'border-color 0.2s ease' }],
+    noBorderWhileDragging: [borderAfterDragOrDrop, { transition: `border-color  ${transitionDurationDrag}s ease` }],
 
     borderAfterDropping: [borderWhileDragging, { left: -1, lineHeight: 31 }],
 
-    noBorderAfterDropping: [borderAfterDragOrDrop, { transition: 'border-color 1.5s ease' }]
+    noBorderAfterDropping: [borderAfterDragOrDrop, { transition: `border-color  ${transitionDurationDrop}s ease` }]
   };
 };

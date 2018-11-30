@@ -33,6 +33,8 @@ export type IDetailsColumnStyleProps = Required<Pick<IDetailsColumnProps, 'theme
   isPadded?: boolean;
   isIconOnly?: boolean;
   iconClassName?: string;
+  transitionDurationDrag?: number;
+  transitionDurationDrop?: number;
 };
 
 export interface IDetailsColumnStyles {
