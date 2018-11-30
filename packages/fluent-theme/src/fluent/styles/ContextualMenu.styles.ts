@@ -1,10 +1,15 @@
-import { IContextualMenuStyleProps, IContextualMenuItemStyleProps } from 'office-ui-fabric-react/lib/ContextualMenu';
+import {
+  IContextualMenuStyleProps,
+  IContextualMenuStyles,
+  IContextualMenuItemStyleProps,
+  IContextualMenuItemStyles
+} from 'office-ui-fabric-react/lib/ContextualMenu';
 import { IsFocusVisibleClassName } from 'office-ui-fabric-react/lib/Utilities';
 import { fluentBorderRadius, MinimumScreenSelector } from './styleConstants';
 import { Depths } from '../FluentDepths';
 import { FontSizes } from '../FluentType';
 
-export const ContextualMenuStyles = (props: IContextualMenuStyleProps) => {
+export const ContextualMenuStyles = (props: IContextualMenuStyleProps): Partial<IContextualMenuStyles> => {
   const { theme } = props;
   const { palette } = theme;
   const CONTEXTUAL_MENU_ITEM_HEIGHT = 36;
@@ -34,7 +39,7 @@ export const ContextualMenuStyles = (props: IContextualMenuStyleProps) => {
         },
         beakCurtain: { borderRadius: fluentBorderRadius }
       },
-      menuItem: (itemStyleProps: IContextualMenuItemStyleProps) => {
+      menuItem: (itemStyleProps: IContextualMenuItemStyleProps): Partial<IContextualMenuItemStyles> => {
         const { disabled, expanded, primaryDisabled, checked } = itemStyleProps;
 
         return {

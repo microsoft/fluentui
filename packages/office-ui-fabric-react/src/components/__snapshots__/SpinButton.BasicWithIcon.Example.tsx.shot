@@ -35,7 +35,7 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               display: inline-block;
-              font-family: "FabricMDL2Icons-0";
+              font-family: "FabricMDL2Icons-16";
               font-size: 20px;
               font-style: normal;
               font-weight: normal;
@@ -94,7 +94,7 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
             min-width: 86px;
           }
           &:hover {
-            border-color: #212121;
+            border-color: #333333;
             outline: 2px dashed transparent;
           }
           @media screen and (-ms-high-contrast: active){&:hover {

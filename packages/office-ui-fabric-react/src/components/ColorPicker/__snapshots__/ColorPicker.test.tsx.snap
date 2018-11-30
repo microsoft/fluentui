@@ -172,7 +172,7 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
             }
         style={
           Object {
-            "background": "linear-gradient(to right, transparent 0, #FFFFFF 100%)",
+            "background": "linear-gradient(to right, transparent 0, #ffffff 100%)",
           }
         }
       />
@@ -309,7 +309,7 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                         position: relative;
                       }
                       &:hover {
-                        border-color: #212121;
+                        border-color: #333333;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
@@ -439,7 +439,7 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                         position: relative;
                       }
                       &:hover {
-                        border-color: #212121;
+                        border-color: #333333;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
@@ -569,7 +569,7 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                         position: relative;
                       }
                       &:hover {
-                        border-color: #212121;
+                        border-color: #333333;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
@@ -699,7 +699,7 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                         position: relative;
                       }
                       &:hover {
-                        border-color: #212121;
+                        border-color: #333333;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
@@ -829,7 +829,7 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                         position: relative;
                       }
                       &:hover {
-                        border-color: #212121;
+                        border-color: #333333;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;

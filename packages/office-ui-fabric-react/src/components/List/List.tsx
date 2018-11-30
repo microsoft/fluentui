@@ -8,8 +8,7 @@ import {
   getParent,
   divProperties,
   getNativeProps,
-  IRenderFunction,
-  createRef
+  IRenderFunction
 } from '../../Utilities';
 import { IList, IListProps, IPage, IPageProps, ScrollToMode } from './List.types';
 
@@ -92,8 +91,8 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     [key: string]: React.ReactInstance;
   };
 
-  private _root = createRef<HTMLDivElement>();
-  private _surface = createRef<HTMLDivElement>();
+  private _root = React.createRef<HTMLDivElement>();
+  private _surface = React.createRef<HTMLDivElement>();
 
   private _estimatedPageHeight: number;
   private _totalEstimates: number;

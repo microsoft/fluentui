@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, getId, createRef, allowScrollOnElement } from '../../Utilities';
+import { BaseComponent, classNamesFunction, getId, allowScrollOnElement } from '../../Utilities';
 import { FocusTrapZone, IFocusTrapZone } from '../FocusTrapZone/index';
 import { animationDuration, getOverlayStyles } from './Modal.styles';
 import { IModalProps, IModalStyleProps, IModalStyles, IModal } from './Modal.types';
@@ -36,7 +36,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
   };
 
   private _onModalCloseTimer: number;
-  private _focusTrapZone = createRef<IFocusTrapZone>();
+  private _focusTrapZone = React.createRef<IFocusTrapZone>();
   private _scrollableContent: HTMLDivElement | null;
 
   constructor(props: IModalProps) {

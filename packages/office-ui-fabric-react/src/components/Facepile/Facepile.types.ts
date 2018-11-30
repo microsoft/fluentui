@@ -6,9 +6,9 @@ import { IButtonProps } from '../../Button';
 import { IPersonaSharedProps, PersonaInitialsColor, PersonaSize } from '../../Persona';
 import { IKeytipProps } from '../../Keytip';
 
-export interface IFacepile { }
+export interface IFacepile {}
 
-export interface IFacepileProps extends React.Props<FacepileBase> {
+export interface IFacepileProps extends React.ClassAttributes<FacepileBase> {
   /**
    * Optional callback to access the IFacepile interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

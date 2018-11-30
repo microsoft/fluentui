@@ -1,6 +1,63 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Mon, 12 Nov 2018 13:31:40 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Nov 2018 13:37:17 GMT and should not be manually modified.
+
+## 0.10.0
+Fri, 30 Nov 2018 13:37:17 GMT
+
+### Minor changes
+
+- Add styles for TeachingBubble
+
+### Patches
+
+- Add types to all component style functions
+
+## 0.9.0
+Thu, 29 Nov 2018 19:34:12 GMT
+
+### Minor changes
+
+- DetailsList fluent styles added.
+- semantic slot updates
+
+## 0.8.0
+Thu, 22 Nov 2018 13:36:17 GMT
+
+### Minor changes
+
+- Add Callout styles (also used by Tooltip)
+- CommandBar: Add fluent changes.
+- Modal: Add shadow and rounded corners. Remove the global className selector from Dialog.
+
+## 0.7.0
+Tue, 20 Nov 2018 13:32:17 GMT
+
+### Minor changes
+
+- HoverCard: Add fluent styles to ExpandingCard and PlainCard.
+
+## 0.6.0
+Wed, 14 Nov 2018 13:34:01 GMT
+
+### Minor changes
+
+- SwatchColorPicker: add fluent styles.
+
+### Patches
+
+- Add styles for ColorPicker
+
+## 0.5.0
+Tue, 13 Nov 2018 13:30:53 GMT
+
+### Minor changes
+
+- ComboBox: added fluent styles.
+
+### Patches
+
+- DatePicker: adds fluent styles.
 
 ## 0.4.1
 Mon, 12 Nov 2018 13:31:40 GMT
