@@ -157,7 +157,8 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
 
       this._async.setTimeout(() => {
         if (this._root!.current!) {
-          this._root!.current!.classList!.remove(classNames.borderAfterDropping, classNames.noBorderAfterDropping);
+          this._root!.current!.classList!.remove(classNames.borderAfterDropping);
+          this._root!.current!.classList!.remove(classNames.noBorderAfterDropping);
         }
       }, TRANSITION_DURATION_DROP + CLASSNAME_ADD_INTERVAL);
     }
@@ -270,7 +271,8 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
     if (event) {
       this._updateHeaderDragInfo(-1, event);
     }
-    this._root.current.classList.remove(classNames.borderWhileDragging, classNames.noBorderWhileDragging);
+    this._root.current.classList.remove(classNames.borderWhileDragging);
+    this._root.current.classList.remove(classNames.noBorderWhileDragging);
   }
 
   private _updateHeaderDragInfo(itemIndex: number, event?: MouseEvent) {
