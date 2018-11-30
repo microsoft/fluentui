@@ -61,7 +61,8 @@ export class GroupHeaderBase extends BaseComponent<IGroupHeaderProps, IGroupHead
       theme,
       styles,
       className,
-      groupedListId
+      groupedListId,
+      compact
     } = this.props;
 
     const { isCollapsed, isLoadingVisible } = this.state;
@@ -76,7 +77,8 @@ export class GroupHeaderBase extends BaseComponent<IGroupHeaderProps, IGroupHead
       theme: theme!,
       className,
       selected: currentlySelected,
-      isCollapsed
+      isCollapsed,
+      compact: compact
     });
 
     if (!group) {
@@ -119,7 +121,7 @@ export class GroupHeaderBase extends BaseComponent<IGroupHeaderProps, IGroupHead
             aria-controls={group && !group.isCollapsed ? groupedListId : undefined}
             {...expandButtonProps}
           >
-            <Icon className={this._classNames.expandIsCollapsed} iconName={isRTL ? 'ChevronLeft' : 'ChevronRight'} />
+            <Icon className={this._classNames.expandIsCollapsed} iconName={isRTL ? 'ChevronLeftMed' : 'ChevronRightMed'} />
           </button>
 
           {onRenderTitle(this.props, this._onRenderTitle)}

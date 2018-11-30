@@ -1,8 +1,18 @@
 import { IDetailsHeaderStyleProps, IDetailsHeaderStyles } from './DetailsHeader.types';
-import { getFocusStyle, focusClear, IStyle, getGlobalClassNames, HighContrastSelector, hiddenContentStyle, ITheme } from '../../Styling';
+import {
+  getFocusStyle,
+  focusClear,
+  IStyle,
+  getGlobalClassNames,
+  HighContrastSelector,
+  hiddenContentStyle,
+  ITheme,
+  FontSizes
+} from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import { ICellStyleProps } from './DetailsRow.types';
+import { SPACER_WIDTH } from '../GroupedList/GroupSpacer';
 
 const GlobalClassNames = {
   tooltipHost: 'ms-TooltipHost',
@@ -126,7 +136,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
 
     check: [
       {
-        height: 32
+        height: values.rowHeight
       },
       {
         selectors: {
@@ -161,9 +171,21 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
     cellIsGroupExpander: [
       cellStyles,
       {
-        paddingLeft: '8px',
-        paddingRight: '8px',
-        width: '36px'
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: FontSizes.small,
+        padding: 0,
+        width: SPACER_WIDTH, // align with GroupedList first expandIcon cell width.
+        color: palette.neutralSecondary,
+        selectors: {
+          ':hover': {
+            backgroundColor: palette.neutralLighter
+          },
+          ':active': {
+            backgroundColor: palette.neutralLight
+          }
+        }
       }
     ],
 
@@ -240,19 +262,20 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
 
     collapseButton: [
       classNames.collapseButton,
-      {
-        textAlign: 'center',
-        transform: 'rotate(-180deg)',
-        transformOrigin: '50% 50%',
-        transition: 'transform 0.1s linear',
-        width: 20,
-        outline: 0,
-        paddingRight: 0
-      },
-      isAllCollapsed && {
-        transform: 'rotate(0deg)'
-      },
-      isAllCollapsed && classNames.isCollapsed
+      isAllCollapsed
+        ? [
+            classNames.isCollapsed,
+            {
+              transform: 'rotate(0deg)',
+              transformOrigin: '50% 50%',
+              transition: 'transform .1s linear'
+            }
+          ]
+        : {
+            transform: 'rotate(90deg)',
+            transformOrigin: '50% 50%',
+            transition: 'transform .1s linear'
+          }
     ],
 
     checkTooltip: [],

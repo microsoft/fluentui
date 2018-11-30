@@ -21,10 +21,15 @@ export const DEFAULT_CELL_STYLE_PROPS: ICellStyleProps = {
   cellExtraRightPadding: 24
 };
 
+// Source of default row heights to share.
+export const DEFAULT_ROW_HEIGHTS = {
+  rowHeight: 42,
+  compactRowHeight: 32
+};
+
 // Constant values
 let values = {
-  rowHeight: 42,
-  compactRowHeight: 32,
+  ...DEFAULT_ROW_HEIGHTS,
   rowVerticalPadding: 11,
   compactRowVerticalPadding: 6,
   rowShimmerLineHeight: 7,

@@ -28,6 +28,9 @@ export type IGroupHeaderStyleProps = Required<Pick<IGroupHeaderProps, 'theme'>> 
   Pick<IGroupHeaderProps, 'selected' | 'className'> & {
     /** Is Header collapsed */
     isCollapsed?: boolean;
+
+    /** Whether the group header is in compact mode or not */
+    compact?: boolean;
   };
 
 export interface IGroupHeaderStyles {

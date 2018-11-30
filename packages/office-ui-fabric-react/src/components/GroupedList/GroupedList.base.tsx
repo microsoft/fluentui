@@ -17,7 +17,8 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
   public static defaultProps = {
     selectionMode: SelectionMode.multiple,
     isHeaderVisible: true,
-    groupProps: {}
+    groupProps: {},
+    compact: false
   };
 
   public refs: {
@@ -70,11 +71,12 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
   }
 
   public render(): JSX.Element {
-    const { className, usePageCache, onShouldVirtualize, getGroupHeight, theme, styles } = this.props;
+    const { className, usePageCache, onShouldVirtualize, getGroupHeight, theme, styles, compact } = this.props;
     const { groups } = this.state;
     this._classNames = getClassNames(styles, {
       theme: theme!,
-      className
+      className,
+      compact: compact
     });
 
     return (
@@ -136,7 +138,8 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
       selection,
       viewport,
       onShouldVirtualize,
-      groups
+      groups,
+      compact
     } = this.props;
 
     // override group header/footer props as needed
@@ -182,6 +185,7 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
         onShouldVirtualize={onShouldVirtualize}
         groupedListClassNames={this._classNames}
         groups={groups}
+        compact={compact}
       />
     );
   };
