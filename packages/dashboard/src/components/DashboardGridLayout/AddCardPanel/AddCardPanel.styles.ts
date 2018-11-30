@@ -1,10 +1,11 @@
 import { IAddCardPanelStyles } from './AddCardPanel.types';
+import { FontSizes } from 'office-ui-fabric-react/lib/Styling';
 
 export const getStyles = (): IAddCardPanelStyles => {
   return {
     header: {
       fontWeight: 700,
-      fontSize: '28px',
+      fontSize: FontSizes.xxLarge,
       lineHeight: '38px',
       marginBottom: '26px'
     },

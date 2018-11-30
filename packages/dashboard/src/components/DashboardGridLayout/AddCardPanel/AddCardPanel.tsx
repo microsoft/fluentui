@@ -48,18 +48,14 @@ export class AddCardPanel extends React.Component<IAddCardPanelProps, IAddCardPa
         <div key={index}>
           <AddCard
             title={
-              addCardItem.addCardInfo
-                ? addCardItem.addCardInfo.addCardPanelHeader
-                  ? addCardItem.addCardInfo.addCardPanelHeader
-                  : 'Default Title'
-                : 'Default title'
+              addCardItem.addCardInfo ? (addCardItem.addCardInfo.addCardPanelHeader ? addCardItem.addCardInfo.addCardPanelHeader : '') : ''
             }
             description={
               addCardItem.addCardInfo
                 ? addCardItem.addCardInfo.addCardPanelBodyText
                   ? addCardItem.addCardInfo.addCardPanelBodyText
-                  : 'Default Description'
-                : 'Default Description'
+                  : ''
+                : ''
             }
             imageSrc={addCardItem.addCardInfo ? addCardItem.addCardInfo.addCardPanelImageUrl : undefined}
             id={addCardItem.id}
@@ -78,7 +74,9 @@ export class AddCardPanel extends React.Component<IAddCardPanelProps, IAddCardPa
 
   // the animation for the add card panel going half closed after successfully adding a card
   private _onCardClick = (cardId: string) => {
-    this.props.switchCard ? this.props.switchCard(cardId) : '';
+    if (this.props.moveCardFromAddCardPanelToDashboard) {
+      this.props.moveCardFromAddCardPanelToDashboard(cardId);
+    }
     this.setState({
       flyoutStyle: {
         transitionProperty: 'margin-right',

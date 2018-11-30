@@ -26,7 +26,7 @@ export class DashboardGridLayoutWithAddCardPanel extends React.Component<
     super(props);
     this.state = {
       cardsForAddCardPanel: [],
-      cardsForLayout: [],
+      dashboardCards: [],
       sections: [],
       layout: {
         lg: [{ i: 'section0', y: 0, x: 0, size: CardSize.section }]
@@ -35,17 +35,17 @@ export class DashboardGridLayoutWithAddCardPanel extends React.Component<
   }
 
   public componentDidUpdate(): void {
-    if (this._cardsForAddCardPanel !== this.props.cardsVisibleInAddCardPanel || this._cardsForLayout !== this.props.cardsVisibleInLayout) {
-      this._cardsForAddCardPanel = this.props.cardsVisibleInAddCardPanel;
-      this._cardsForLayout = this.props.cardsVisibleInLayout;
+    if (this._cardsForAddCardPanel !== this.props.addCardPanelCards || this._cardsForLayout !== this.props.dashboardCards) {
+      this._cardsForAddCardPanel = this.props.addCardPanelCards;
+      this._cardsForLayout = this.props.dashboardCards;
       const cardIds: string[] = [];
       const layout: DashboardGridBreakpointLayouts = this.state.layout;
-      this.props.cardsVisibleInLayout.map((card: IDGLCard) => {
+      this.props.dashboardCards.map((card: IDGLCard) => {
         cardIds.push(card.id);
         const cardLayout: IDashboardCardLayout = { i: card.id, x: card.x, y: card.y, size: card.cardSize };
         layout.lg!.push(cardLayout);
       });
-      this.props.cardsVisibleInAddCardPanel.map((card: IDGLCard) => {
+      this.props.addCardPanelCards.map((card: IDGLCard) => {
         cardIds.push(card.id);
       });
       const sectionsInfo: ISection = {
@@ -55,7 +55,7 @@ export class DashboardGridLayoutWithAddCardPanel extends React.Component<
       sectionsInfo.cardIds = cardIds;
       this.setState({
         cardsForAddCardPanel: this._cardsForAddCardPanel,
-        cardsForLayout: this._cardsForLayout,
+        dashboardCards: this._cardsForLayout,
         sections: [sectionsInfo],
         layout: layout
       });
@@ -66,12 +66,17 @@ export class DashboardGridLayoutWithAddCardPanel extends React.Component<
     const { isOpen, isDraggable, panelHeader } = this.props;
     return (
       <>
-        <AddCardPanel header={panelHeader} isOpen={isOpen} cards={this.state.cardsForAddCardPanel} switchCard={this._addCard} />
+        <AddCardPanel
+          header={panelHeader}
+          isOpen={isOpen}
+          cards={this.state.cardsForAddCardPanel}
+          moveCardFromAddCardPanelToDashboard={this._addCard}
+        />
         <DashboardGridSectionLayout
           isDraggable={isDraggable}
           layout={this.state.layout}
           sections={this.state.sections}
-          cards={this.state.cardsForLayout}
+          cards={this.state.dashboardCards}
           onLayoutChange={this._onLayoutChange}
         />
       </>
@@ -131,11 +136,11 @@ export class DashboardGridLayoutWithAddCardPanel extends React.Component<
     if (cardIndex !== -1) {
       // remove the selected card from the add card panel and add it to the list of cards that are to be show in layout
       const cardSelected = addCardPanelCards.splice(cardIndex, 1);
-      const layoutCards: IDGLCard[] = this.state.cardsForLayout;
+      const layoutCards: IDGLCard[] = this.state.dashboardCards;
       layoutCards.push(cardSelected[0]);
       this.setState({
         cardsForAddCardPanel: addCardPanelCards,
-        cardsForLayout: layoutCards,
+        dashboardCards: layoutCards,
         layout: layout
       });
       // scroll to the card that was added to the layout
@@ -150,11 +155,15 @@ export class DashboardGridLayoutWithAddCardPanel extends React.Component<
   };
 
   // calculate the position for the selected card from add card panel
+  // The logic below to figure out the position is a two step process
+  // 1) Getting the last and last but one row's most right card
+  // 2) Then check if adding a card to last row will exceed the row's width more than last but one row
+  // If last row's width becomes greater then add the card to the next row(y) at position 0(x: 0) else add to the exisiting row at the end
   private _calculateNextCardPostion = (cardSize: CardSize) => {
     let newCardXPosition: number = 0;
     let newCardYPosition: number = 0;
-    let maxYX: number = 0;
-    let lastButOneYX: number = 0;
+    let lastRowFinalCardPosition: number = 0;
+    let lastButOneRowFinalCardPosition: number = 0;
     const layoutState = this.state.layout;
     const lastElement: undefined | IDashboardCardLayout = layoutState.lg![layoutState.lg!.length - 1];
     const lastButOneElement = layoutState.lg![layoutState.lg!.length - 2];
@@ -168,22 +177,22 @@ export class DashboardGridLayoutWithAddCardPanel extends React.Component<
         } else {
           // not on same level
           if (lastElement.size === CardSize.mediumWide || lastElement.size === CardSize.large) {
-            maxYX = lastElement.x + 2;
+            lastRowFinalCardPosition = lastElement.x + 2;
           } else {
-            maxYX = lastElement.x + 1;
+            lastRowFinalCardPosition = lastElement.x + 1;
           }
           if (lastButOneElement.size === CardSize.mediumWide || lastButOneElement.size === CardSize.large) {
-            lastButOneYX = lastButOneElement.x + 2;
+            lastButOneRowFinalCardPosition = lastButOneElement.x + 2;
           } else {
-            lastButOneYX = lastButOneElement.x + 1;
+            lastButOneRowFinalCardPosition = lastButOneElement.x + 1;
           }
         }
         if (cardSize === CardSize.mediumWide || cardSize === CardSize.large) {
-          maxYX += 2;
+          lastRowFinalCardPosition += 2;
         } else {
-          maxYX += 1;
+          lastRowFinalCardPosition += 1;
         }
-        if (maxYX <= lastButOneYX) {
+        if (lastRowFinalCardPosition <= lastButOneRowFinalCardPosition) {
           newCardXPosition = lastElement.x + 1;
           newCardYPosition = lastElement.y;
         } else {
@@ -195,6 +204,7 @@ export class DashboardGridLayoutWithAddCardPanel extends React.Component<
         return { x: 0, y: lastElement.y + 1 };
       }
     }
+    // if initially no cards in dashbaord return x: 0, y: 0 by default
     return { x: 0, y: 0 };
   };
 }

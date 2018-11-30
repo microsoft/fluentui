@@ -1,4 +1,5 @@
 import { IAddCardStyles } from './AddCard.types';
+import { FontSizes } from 'office-ui-fabric-react/lib/Styling';
 
 export const getStyles = (): IAddCardStyles => {
   return {
@@ -24,13 +25,13 @@ export const getStyles = (): IAddCardStyles => {
     },
     header: {
       marginBottom: '8px',
-      fontSize: '12px',
+      fontSize: FontSizes.small,
       lineHeight: '16px',
       fontFamily: 'Segoe UI',
       fontWeight: 'bold'
     },
     bodyText: {
-      fontSize: '12px',
+      fontSize: FontSizes.small,
       lineHeight: '16px'
     },
     icon: {

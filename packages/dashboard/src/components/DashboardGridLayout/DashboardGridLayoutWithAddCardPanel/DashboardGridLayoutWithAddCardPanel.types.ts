@@ -10,12 +10,12 @@ export interface IDashboardGridLayoutWithAddCardPanelProps {
   /**
    * The cards rendered in the layout
    */
-  cardsVisibleInLayout: IDGLCard[];
+  dashboardCards: IDGLCard[];
 
   /**
    * The cards rendered in the add card panel
    */
-  cardsVisibleInAddCardPanel: IDGLCard[];
+  addCardPanelCards: IDGLCard[];
 
   /**
    * The section title
@@ -43,7 +43,7 @@ export interface IDashboardGridLayoutWithAddCardPanelState {
   /**
    * The cards that are shown in the layout
    */
-  cardsForLayout: IDGLCard[];
+  dashboardCards: IDGLCard[];
 
   /**
    * The cards that are shown in the add card panel

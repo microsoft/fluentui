@@ -8,7 +8,7 @@ import {
   DashboardGridLayoutWithAddCardPanel,
   DashboardGridBreakpointLayouts,
   IThumbnailItemProps
-} from '../../../index';
+} from '@uifabric/dashboard';
 
 // Cards information that go into the layout and add card panel
 const cardFrameContent = {
@@ -70,9 +70,12 @@ const contentAreaList: ICardContentDetails[] = [
     }
   }
 ];
+
+let i = 0;
+
 const cardsVisibleInLayout: IDGLCard[] = [
   {
-    id: '0',
+    id: i++ + '',
     cardFrameContent: cardFrameContent,
     header: getHeader('0'),
     cardContentList: contentAreaList,
@@ -80,88 +83,16 @@ const cardsVisibleInLayout: IDGLCard[] = [
     x: 0,
     y: 0,
     addCardInfo: {
-      addCardPanelBodyText:
-        'Add and manage users in your organization, help reset their passwords, manage their licenses,' +
-        ' and see their latest Azure AD Connect sync.',
-      addCardPanelHeader: 'User Management',
+      addCardPanelBodyText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit magna aliqua',
+      addCardPanelHeader: 'Lorem ipsum',
       addCardPanelImageUrl: '../../../../public/images/CompoundButtonStack.svg'
-    }
-  },
-  {
-    id: '1',
-    cardFrameContent: cardFrameContent,
-    header: getHeader('1'),
-    cardContentList: contentAreaList,
-    cardSize: CardSize.mediumTall,
-    x: 1,
-    y: 0,
-    addCardInfo: {
-      addCardPanelBodyText: 'View and manage your billing balance, subscription status, and payment info.',
-      addCardPanelHeader: 'Billing',
-      addCardPanelImageUrl: '../../../../public/images/DetailsList.svg'
-    }
-  },
-  {
-    id: '2',
-    cardFrameContent: cardFrameContent,
-    header: getHeader('2'),
-    cardContentList: contentAreaList,
-    cardSize: CardSize.large,
-    x: 2,
-    y: 0,
-    addCardInfo: {
-      addCardPanelBodyText: 'Get guidance on deploying Microsoft 365 features and services, and get training for you and your end users.',
-      addCardPanelHeader: 'Training and guides',
-      addCardPanelImageUrl: '../../../../public/images/Donut.svg'
-    }
-  },
-  {
-    id: '3',
-    cardFrameContent: cardFrameContent,
-    header: getHeader('3'),
-    cardContentList: contentAreaList,
-    cardSize: CardSize.small,
-    x: 0,
-    y: 1,
-    addCardInfo: {
-      addCardPanelBodyText: 'Install or deploy Office 365 ProPlus software and see how many licensed users have activated it.',
-      addCardPanelHeader: 'Office 365 software',
-      addCardPanelImageUrl: '../../../../public/images/LineChart.svg'
-    }
-  },
-  {
-    id: '4',
-    cardFrameContent: cardFrameContent,
-    header: getHeader('4'),
-    cardContentList: contentAreaList,
-    cardSize: CardSize.mediumWide,
-    x: 0,
-    y: 2,
-    addCardInfo: {
-      addCardPanelBodyText: "Stay Informed of new products, features, and changes as they're announced.",
-      addCardPanelHeader: 'Message Center',
-      addCardPanelImageUrl: '../../../../public/images/StackedBarChart.svg'
-    }
-  },
-  {
-    id: '5',
-    cardFrameContent: cardFrameContent,
-    header: getHeader('5'),
-    cardContentList: contentAreaList,
-    cardSize: CardSize.mediumWide,
-    x: 0,
-    y: 3,
-    addCardInfo: {
-      addCardPanelBodyText: "Stay Informed of new products, features, and changes as they're announced.",
-      addCardPanelHeader: 'Message Center',
-      addCardPanelImageUrl: '../../../../public/images/StackedBarChart.svg'
     }
   }
 ];
 
 const cardsVisibleInAddCardPanel: IDGLCard[] = [
   {
-    id: '6',
+    id: i++ + '',
     cardFrameContent: cardFrameContent,
     header: getHeader('6'),
     cardContentList: contentAreaList,
@@ -169,15 +100,13 @@ const cardsVisibleInAddCardPanel: IDGLCard[] = [
     x: 0,
     y: 0,
     addCardInfo: {
-      addCardPanelBodyText:
-        'Add and manage users in your organization, help reset their passwords, manage their licenses, ' +
-        'and see their latest Azure AD Connect sync.',
-      addCardPanelHeader: 'User Management',
+      addCardPanelBodyText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit magna aliqua',
+      addCardPanelHeader: 'Ut enim ad minim veniam',
       addCardPanelImageUrl: '../../../../public/images/CompoundButtonStack.svg'
     }
   },
   {
-    id: '7',
+    id: i++ + '',
     cardFrameContent: cardFrameContent,
     header: getHeader('7'),
     cardContentList: contentAreaList,
@@ -185,13 +114,13 @@ const cardsVisibleInAddCardPanel: IDGLCard[] = [
     x: 1,
     y: 0,
     addCardInfo: {
-      addCardPanelBodyText: 'View and manage your billing balance, subscription status, and payment info.',
-      addCardPanelHeader: 'Billing',
+      addCardPanelBodyText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit magna aliqua',
+      addCardPanelHeader: 'quis nostrud',
       addCardPanelImageUrl: '../../../../public/images/DetailsList.svg'
     }
   },
   {
-    id: '8',
+    id: i++ + '',
     cardFrameContent: cardFrameContent,
     header: getHeader('8'),
     cardContentList: contentAreaList,
@@ -199,51 +128,9 @@ const cardsVisibleInAddCardPanel: IDGLCard[] = [
     x: 2,
     y: 0,
     addCardInfo: {
-      addCardPanelBodyText: 'Get guidance on deploying Microsoft 365 features and services, and get training for you and your end users.',
-      addCardPanelHeader: 'Training and guides',
+      addCardPanelBodyText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit magna aliqua',
+      addCardPanelHeader: 'exercitation ullamco',
       addCardPanelImageUrl: '../../../../public/images/Donut.svg'
-    }
-  },
-  {
-    id: '9',
-    cardFrameContent: cardFrameContent,
-    header: getHeader('9'),
-    cardContentList: contentAreaList,
-    cardSize: CardSize.mediumTall,
-    x: 0,
-    y: 1,
-    addCardInfo: {
-      addCardPanelBodyText: 'Install or deploy Office 365 ProPlus software and see how many licensed users have activated it.',
-      addCardPanelHeader: 'Office 365 software',
-      addCardPanelImageUrl: '../../../../public/images/LineChart.svg'
-    }
-  },
-  {
-    id: '10',
-    cardFrameContent: cardFrameContent,
-    header: getHeader('10'),
-    cardContentList: contentAreaList,
-    cardSize: CardSize.small,
-    x: 0,
-    y: 2,
-    addCardInfo: {
-      addCardPanelBodyText: "Stay Informed of new products, features, and changes as they're announced.",
-      addCardPanelHeader: 'Message Center',
-      addCardPanelImageUrl: '../../../../public/images/StackedBarChart.svg'
-    }
-  },
-  {
-    id: '11',
-    cardFrameContent: cardFrameContent,
-    header: getHeader('11'),
-    cardContentList: contentAreaList,
-    cardSize: CardSize.mediumWide,
-    x: 0,
-    y: 2,
-    addCardInfo: {
-      addCardPanelBodyText: "Stay Informed of new products, features, and changes as they're announced.",
-      addCardPanelHeader: 'Message Center',
-      addCardPanelImageUrl: '../../../../public/images/ThumbnailList.svg'
     }
   }
 ];
@@ -264,11 +151,11 @@ export class DGLWithAddCardPanelExample extends React.Component<{}, IDGLWithAddC
       <>
         <button onClick={this._openAddCardPanel}>Add Card</button>
         <DashboardGridLayoutWithAddCardPanel
-          cardsVisibleInAddCardPanel={cardsVisibleInAddCardPanel}
-          cardsVisibleInLayout={cardsVisibleInLayout}
+          addCardPanelCards={cardsVisibleInAddCardPanel}
+          dashboardCards={cardsVisibleInLayout}
           isOpen={this.state.isOpen}
           sectionTitle={'First section'}
-          panelHeader={'Drag cards to your home page'}
+          panelHeader={'Click to add cards to your dashboard'}
           onLayoutChange={this._onLayoutChange}
         />
       </>

@@ -30,7 +30,7 @@ export class AddCard extends React.Component<IAddCardProps> {
         onMouseLeave={this.mouseLeave.bind(this, imgClassName, textContainerClassName, addIconClassName)}
       >
         <div className={imgClassName}>
-          <Image src={imageSrc} imageFit={ImageFit.cover} width={150} height={100} />
+          <Image src={imageSrc} imageFit={ImageFit.cover} width={150} height={100} alt={title} />
         </div>
         <div className={textContainerClassName}>
           <div className={classNames.header}>{title}</div>
@@ -46,7 +46,7 @@ export class AddCard extends React.Component<IAddCardProps> {
                 root: {
                   selectors: {
                     div: {
-                      alignItems: 'unset'
+                      alignItems: 'baseline'
                     }
                   }
                 }

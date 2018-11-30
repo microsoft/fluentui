@@ -20,7 +20,7 @@ export interface IAddCardPanelProps {
   /**
    * The callback method to switch between add card panel and the dashboard grid layout
    */
-  switchCard?: (cardId: string) => void;
+  moveCardFromAddCardPanelToDashboard?: (cardId: string) => void;
 }
 
 export interface IAddCardPanelState {
