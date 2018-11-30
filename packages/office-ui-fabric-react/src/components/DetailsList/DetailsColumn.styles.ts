@@ -88,9 +88,6 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
             display: 'block'
           }
         }
-      },
-      {
-        border: 'undefined'
       }
     ],
 

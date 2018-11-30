@@ -43,7 +43,6 @@ export const getCellStyles = (props: { theme: ITheme; cellStyleProps?: ICellStyl
       display: 'inline-block',
       boxSizing: 'border-box',
       padding: `0 ${cellStyleProps.cellRightPadding}px 0 ${cellStyleProps.cellLeftPadding}px`,
-      border: 'none',
       lineHeight: 'inherit',
       margin: '0',
       height: values.rowHeight,
@@ -151,7 +150,8 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         padding: 0,
         margin: 0,
         display: 'inline-flex',
-        alignItems: 'center'
+        alignItems: 'center',
+        border: 'none'
       },
       isAllSelected && {
         opacity: 1
@@ -163,7 +163,8 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
       {
         paddingLeft: '8px',
         paddingRight: '8px',
-        width: '36px'
+        width: '36px',
+        border: 'none'
       }
     ],
 
