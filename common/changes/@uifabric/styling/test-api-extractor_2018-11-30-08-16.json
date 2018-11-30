@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/styling",
+      "comment": "Add temporary export to test breaking the CI build with api-extractor. This should not be checked in.",
+      "type": "none"
+    }
+  ],
+  "packageName": "@uifabric/styling",
+  "email": "kakje@microsoft.com"
+}
