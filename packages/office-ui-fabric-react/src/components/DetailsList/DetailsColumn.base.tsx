@@ -12,8 +12,9 @@ import { IDetailsColumnStyleProps, IDetailsColumnProps } from './DetailsColumn.t
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
 
 const getClassNames = classNamesFunction<IDetailsColumnStyleProps, IDetailsColumnStyles>();
-const TRANSITION_DURATION_DRAG = 0.2; // sec
-const TRANSITION_DURATION_DROP = 1.5; // sec
+const TRANSITION_DURATION_DRAG = 200; // ms
+const TRANSITION_DURATION_DROP = 1500; // ms
+const CLASSNAME_ADD_INTERVAL = 20; // ms
 
 export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
   private _root: any;
@@ -151,7 +152,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
           if (this._root!.current!) {
             this._root!.current!.classList!.add(classNames.noBorderAfterDropping);
           }
-        }, 20);
+        }, CLASSNAME_ADD_INTERVAL);
       }
 
       this._async.setTimeout(() => {
@@ -159,7 +160,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
           this._root!.current!.classList!.remove(classNames.borderAfterDropping);
           this._root!.current!.classList!.remove(classNames.noBorderAfterDropping);
         }
-      }, 1520);
+      }, TRANSITION_DURATION_DROP + CLASSNAME_ADD_INTERVAL);
     }
   }
 
@@ -261,7 +262,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
         if (this._root!.current!) {
           this._root!.current!.classList!.add(classNames.noBorderWhileDragging);
         }
-      }, 20);
+      }, CLASSNAME_ADD_INTERVAL);
     }
   }
 
