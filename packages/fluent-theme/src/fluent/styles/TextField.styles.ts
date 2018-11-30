@@ -1,14 +1,12 @@
 import { ITextFieldStyleProps, ITextFieldStyles } from 'office-ui-fabric-react/lib/TextField';
 import { fluentBorderRadius } from './styleConstants';
 import { NeutralColors, SharedColors } from '../FluentColors';
-import { rgb2hex } from 'office-ui-fabric-react/lib';
 
 export const TextFieldStyles = (props: ITextFieldStyleProps): Partial<ITextFieldStyles> => {
   const { focused, disabled, hasErrorMessage, multiline, theme } = props;
   const { palette } = theme;
 
   return {
-    root: [theme.fonts.medium, { color: rgb2hex(51, 51, 51) }],
     fieldGroup: [
       {
         borderRadius: fluentBorderRadius
