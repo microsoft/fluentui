@@ -25,7 +25,7 @@ export const TextFieldStyles = (props: ITextFieldStyleProps): Partial<ITextField
         {
           borderColor: SharedColors.red10,
           selectors: {
-            '&:hover': {
+            '&:focus, &:hover': {
               borderColor: SharedColors.red20
             }
           }
