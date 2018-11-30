@@ -5,7 +5,7 @@ import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject, KeyCodes } from '../../Utilities';
 import { IPlainCardProps } from './PlainCard/PlainCard.types';
 
-export interface IHoverCard {}
+export interface IHoverCard { }
 
 /**
  * HoverCard component props.
@@ -24,19 +24,19 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
 
   /**
    * Length of card dismiss delay. A min number is necessary for pointer to hop between target and card
-   * @default 100
+   * @defaultvalue 100
    */
   cardDismissDelay?: number;
 
   /**
    * Length of compact card delay
-   * @default 500
+   * @defaultvalue 500
    */
   cardOpenDelay?: number;
 
   /**
    * Time in ms when expanded card should open after compact card
-   * @default 1500
+   * @defaultvalue 1500
    */
   expandedCardOpenDelay?: number;
 
@@ -49,7 +49,7 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
 
   /**
    * Enables instant open of the full card upon click
-   * @default false
+   * @defaultvalue false
    */
   instantOpenOnClick?: boolean;
 
@@ -65,7 +65,7 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
 
   /**
    * HotKey used for opening the HoverCard when tabbed to target.
-   * @default 'KeyCodes.c'
+   * @defaultvalue 'KeyCodes.c'
    */
   openHotKey?: KeyCodes;
 
@@ -83,8 +83,13 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
   setAriaDescribedBy?: boolean;
 
   /**
+   * Callback when visible card is expanded.
+   */
+  onCardExpand?: () => void;
+
+  /**
    * Set to true to set focus on the first focusable element in the card. Works in pair with the 'trapFocus' prop.
-   * @default false
+   * @defaultvalue false
    */
   setInitialFocus?: boolean;
 
@@ -95,7 +100,7 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
 
   /**
    * If true disables Card dismiss upon mouse leave, so that card sticks around.
-   * @default false
+   * @defaultvalue false
    */
   sticky?: boolean;
 
@@ -124,7 +129,7 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
 
   /**
    * Type of the hover card to render.
-   * @default HoverCardType.expanding
+   * @defaultvalue HoverCardType.expanding
    */
   type?: HoverCardType;
 }

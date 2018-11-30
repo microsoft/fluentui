@@ -64,7 +64,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
           min-width: 86px;
         }
         &:hover {
-          border-color: #212121;
+          border-color: #333333;
           outline: 2px dashed transparent;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
@@ -468,7 +468,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
           min-width: 86px;
         }
         &:hover {
-          border-color: #212121;
+          border-color: #333333;
           outline: 2px dashed transparent;
         }
         @media screen and (-ms-high-contrast: active){&:hover {

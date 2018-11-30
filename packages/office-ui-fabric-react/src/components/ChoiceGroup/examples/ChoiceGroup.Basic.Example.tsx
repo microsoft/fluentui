@@ -22,6 +22,7 @@ export class ChoiceGroupBasicExample extends React.Component<{}, IChoiceGroupBas
     return (
       <div>
         <ChoiceGroup
+          className="defaultChoiceGroup"
           defaultSelectedKey="B"
           options={[
             {

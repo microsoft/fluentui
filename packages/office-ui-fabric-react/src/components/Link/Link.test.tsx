@@ -1,3 +1,4 @@
+import { mount } from 'enzyme';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/server';
 import * as renderer from 'react-test-renderer';
@@ -76,6 +77,7 @@ describe('Link', () => {
     const testInstance = component.root;
     expect(() => testInstance.findByType(Route)).not.toThrow();
   });
+
   it('can have the global styles for Link component be disabled', () => {
     const NoClassNamesTheme = createTheme({ disableGlobalClassNames: true });
 
@@ -88,5 +90,30 @@ describe('Link', () => {
         )
       )
     ).toBe(false);
+  });
+
+  it('does not throw a React warning when the componentRef prop is provided', () => {
+    const myRef = React.createRef<HTMLDivElement>();
+
+    const renderLinkWithComponentRef = () =>
+      mount(
+        <Link as="div" className="customClassName" componentRef={myRef}>
+          I'm a div
+        </Link>
+      );
+
+    expect(renderLinkWithComponentRef).not.toThrow();
+  });
+
+  it('does not pass the componentRef property through to the button element', () => {
+    const myRef = React.createRef<HTMLDivElement>();
+
+    const component = mount(
+      <Link className="customClassName" componentRef={myRef}>
+        I'm a div
+      </Link>
+    );
+
+    expect(Object.keys(component.find('button').props())).not.toContain('componentRef');
   });
 });

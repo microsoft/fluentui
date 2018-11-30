@@ -16,7 +16,7 @@ export class DropdownCustomExample extends React.Component {
     return (
       <div className="docs-DropdownExample">
         <Dropdown
-          placeHolder="Select an Option"
+          placeholder="Select an Option"
           label="Custom example:"
           id="Customdrop1"
           ariaLabel="Custom dropdown example"
@@ -49,12 +49,7 @@ export class DropdownCustomExample extends React.Component {
       <div className="dropdownExample-option">
         {option.data &&
           option.data.icon && (
-            <Icon
-              style={{ marginRight: '8px' }}
-              iconName={option.data.icon}
-              aria-hidden="true"
-              title={option.data.icon}
-            />
+            <Icon style={{ marginRight: '8px' }} iconName={option.data.icon} aria-hidden="true" title={option.data.icon} />
           )}
         <span>{option.text}</span>
       </div>
@@ -68,12 +63,7 @@ export class DropdownCustomExample extends React.Component {
       <div className="dropdownExample-option">
         {option.data &&
           option.data.icon && (
-            <Icon
-              style={{ marginRight: '8px' }}
-              iconName={option.data.icon}
-              aria-hidden="true"
-              title={option.data.icon}
-            />
+            <Icon style={{ marginRight: '8px' }} iconName={option.data.icon} aria-hidden="true" title={option.data.icon} />
           )}
         <span>{option.text}</span>
       </div>
@@ -84,7 +74,7 @@ export class DropdownCustomExample extends React.Component {
     return (
       <div className="dropdownExample-placeholder">
         <Icon style={{ marginRight: '8px' }} iconName={'MessageFill'} aria-hidden="true" />
-        <span>{props.placeHolder}</span>
+        <span>{props.placeholder}</span>
       </div>
     );
   };

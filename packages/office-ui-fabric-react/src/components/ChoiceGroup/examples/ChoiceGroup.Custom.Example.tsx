@@ -23,11 +23,7 @@ export class ChoiceGroupCustomExample extends React.Component {
                     <Dropdown
                       className={css(styles.dropdown)}
                       defaultSelectedKey="A"
-                      options={[
-                        { key: 'A', text: '5 seconds' },
-                        { key: 'B', text: '10 seconds' },
-                        { key: 'C', text: '20 seconds' }
-                      ]}
+                      options={[{ key: 'A', text: '5 seconds' }, { key: 'B', text: '10 seconds' }, { key: 'C', text: '20 seconds' }]}
                       disabled={false}
                     />
                   </div>

@@ -67,7 +67,7 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
 
   /**
    * Allows you to set the checkbox to be at the before (start) or after (end) the label.
-   * @default 'start'
+   * @defaultvalue 'start'
    */
   boxSide?: 'start' | 'end';
 

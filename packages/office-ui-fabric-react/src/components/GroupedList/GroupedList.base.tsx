@@ -84,6 +84,7 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
         ) : (
           <List
             ref={this._list}
+            role="presentation"
             items={groups}
             onRenderCell={this._renderGroup}
             getItemCountForPage={this._returnOne}
@@ -280,7 +281,7 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
     const groups = this.state.groups;
     const pageGroup = groups && groups[itemIndex];
     return {
-      key: pageGroup && pageGroup.name
+      key: pageGroup && pageGroup.key
     };
   };
 

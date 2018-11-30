@@ -1,6 +1,46 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 24 Oct 2018 12:28:58 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Nov 2018 13:37:17 GMT and should not be manually modified.
+
+## 6.8.1
+Fri, 30 Nov 2018 13:37:17 GMT
+
+### Patches
+
+- Add missing dependency
+
+## 6.8.0
+Wed, 07 Nov 2018 13:31:00 GMT
+
+### Minor changes
+
+- Add TopNav and mobile left nav to local and non-UHF site. Allow left nav to be accessed by keyboard.
+
+### Patches
+
+- Website: Update iconography implementation documentation
+
+## 6.7.2
+Tue, 06 Nov 2018 13:31:09 GMT
+
+### Patches
+
+- Update TypeScript instructions in getting started tutorial
+- Fix visual bugs caused by MWF overrides on Fabric site
+
+## 6.7.1
+Fri, 02 Nov 2018 12:28:54 GMT
+
+### Patches
+
+- Update website getting started docs
+
+## 6.7.0
+Tue, 30 Oct 2018 18:45:48 GMT
+
+### Minor changes
+
+- Carry over website pipeline improvements to prod-deployed index
 
 ## 6.6.2
 Wed, 24 Oct 2018 12:28:58 GMT

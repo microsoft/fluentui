@@ -1,10 +1,5 @@
 import * as React from 'react';
-import {
-  FolderCover,
-  getFolderCoverLayout,
-  renderFolderCoverWithLayout,
-  IFolderCoverProps
-} from '@uifabric/experiments/lib/FolderCover';
+import { FolderCover, getFolderCoverLayout, renderFolderCoverWithLayout, IFolderCoverProps } from '@uifabric/experiments/lib/FolderCover';
 import { ISize, fitContentToBounds } from '@uifabric/experiments/lib/Utilities';
 import { SharedSignal } from '../../signals/Signals';
 
@@ -12,9 +7,7 @@ interface IFolderCoverWithImageProps extends IFolderCoverProps {
   originalImageSize: ISize;
 }
 
-const FolderCoverWithImage: React.StatelessComponent<IFolderCoverWithImageProps> = (
-  props: IFolderCoverWithImageProps
-): JSX.Element => {
+const FolderCoverWithImage: React.StatelessComponent<IFolderCoverWithImageProps> = (props: IFolderCoverWithImageProps): JSX.Element => {
   const { originalImageSize, ...folderCoverProps } = props;
 
   const folderCover = <FolderCover {...folderCoverProps} />;

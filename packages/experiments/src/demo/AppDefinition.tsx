@@ -11,6 +11,12 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
+          component: require<any>('../components/Announced/AnnouncedPage').AnnouncedPage,
+          key: 'Announced',
+          name: 'Announced',
+          url: '#/examples/announced'
+        },
+        {
           component: require<any>('../components/Button/ButtonPage').ButtonPage,
           key: 'Button',
           name: 'Button',
@@ -59,6 +65,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/layoutgroup'
         },
         {
+          component: require<any>('../components/Pagination/PaginationPage').PaginationPage,
+          key: 'Pagination',
+          name: 'Pagination',
+          url: '#/examples/pagination'
+        },
+        {
           component: require<any>('../components/Separator/SeparatorPage').SeparatorPage,
           key: 'Separator',
           name: 'Separator',
@@ -93,6 +105,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'TilesList',
           name: 'TilesList',
           url: '#/examples/tileslist'
+        },
+        {
+          component: require<any>('../components/Toggle/TogglePage').TogglePage,
+          key: 'Toggle',
+          name: 'Toggle',
+          url: '#/examples/toggle'
         },
         {
           component: require<any>('../components/Shimmer/ShimmerPage').ShimmerPage,

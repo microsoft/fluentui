@@ -14,6 +14,7 @@ import { AppState } from './components/App/AppState';
 import FluentMessageBar from './components/FluentMessageBar/FluentMessageBar';
 import { HomePage } from './pages/HomePage/HomePage';
 import WindowWidthUtility from './utilities/WindowWidthUtility';
+import { isLocal, hasUHF } from './utilities/location';
 
 require('es6-promise').polyfill();
 /* tslint:disable:no-unused-variable */
@@ -25,7 +26,6 @@ initializeIcons();
 
 let isProduction = process.argv.indexOf('--production') > -1;
 
-let isLocal = window.location.hostname === 'localhost' || window.location.hostname.indexOf('ngrok.io') > -1;
 declare let Flight; // Contains flight & CDN configuration loaded by manifest
 declare let __webpack_public_path__;
 
@@ -87,12 +87,25 @@ function _extractAnchorLink(path): string {
 }
 
 function _onLoad(): void {
+  // Don't load the TopNav if viewed on the Office Dev Portal, which uses the UHF.
+  if (!hasUHF) {
+    require.ensure([], require => {
+      let _topNav = require<any>('./components/TopNav/TopNav').TopNav;
+      _renderApp(_topNav);
+    });
+  } else {
+    _renderApp();
+  }
+}
+
+function _renderApp(TopNav?) {
   // Load the app into this element.
   rootElement = rootElement || document.getElementById('main');
   _getBreakpoint();
 
   ReactDOM.render(
     <Fabric>
+      {TopNav && <TopNav pages={AppState.pages} />}
       <FluentMessageBar />
       <Router onNewRouteLoaded={_routerDidMount}>
         <Route component={App}>{_getAppRoutes()}</Route>

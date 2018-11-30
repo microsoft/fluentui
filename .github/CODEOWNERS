@@ -17,6 +17,8 @@
 
 #### Core build stuff
 scripts/ @dzearing
+package.json @cliffkoh
+*/package.json @cliffkoh
 
 #### Apps
 # component-demo/
@@ -26,7 +28,8 @@ fabric-website/ @jordandrako
 # todo-app/
 
 #### Packages
-packages/charting/ @kkjeer
+packages/charting/ @Raghurk
+packages/dashboard/ @Raghurk
 packages/foundation/ @jagore
 # packages/example-app-base/
 packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
@@ -40,6 +43,7 @@ packages/styling/src/interfaces/ @phkuo
 packages/styling/src/styles/ @phkuo
 # packages/utilities/
 packages/utilities/positioning/ @joschect
+packages/date-time @OfficeDev/uifabric-calendar @jh2he @evlevy
 
 ### Fabric
 # common/
@@ -48,14 +52,14 @@ common/_themeOverrides.scss @phkuo
 common/_common.scss @phkuo
 
 ### Utilities
-dateMath/     @lorejoh12 @sathi23
-dateValues/   @lorejoh12 @sathi23
+dateMath/     @OfficeDev/uifabric-calendar
+dateValues/   @OfficeDev/uifabric-calendar
 
 ## Components
 # ActivityItem/
 # Breadcrumb/
 # Button/
-Calendar/   @lorejoh12 @sathi23
+Calendar/   @OfficeDev/uifabric-calendar
 Callout/  @joschect
 # Check/
 # Checkbox/
@@ -64,7 +68,7 @@ ChoiceGroup/   @srideshpande
 # ComboBox/
 CommandBar/   @micahgodbolt @JasonGore
 ContextualMenu/  @joschect
-DatePicker/   @lorejoh12 @sathi23
+DatePicker/   @OfficeDev/uifabric-calendar
 # DetailsList/
 # Dialog/
 DocumentCard/ @yiminwu @mikewheaton
@@ -109,14 +113,15 @@ TeachingBubble/   @micahgodbolt
 # Theme/
 Tile/ @ThomasMichon
 TileList/ @ThomasMichon
-Toggle/  @phkuo
+office-ui-fabric-react/src/components/Toggle/  @phkuo
+experiments/src/components/Toggle/  @khmakoto @jasongore
 Tooltip/  @micahgodbolt
 
 ## Docs
 # ActivityItem/docs/
 # Breadcrumb/docs/
 # Button/docs/
-Calendar/docs/   @lorejoh12 @sathi23
+Calendar/docs/   @OfficeDev/uifabric-calendar
 Callout/docs/  @joschect
 # Check/docs/
 # Checkbox/docs/
@@ -125,7 +130,7 @@ ChoiceGroup/docs/   @srideshpande
 # ComboBox/docs/
 CommandBar/docs/   @micahgodbolt
 ContextualMenu/docs/  @joschect
-DatePicker/docs/   @lorejoh12 @sathi23
+DatePicker/docs/   @OfficeDev/uifabric-calendar
 # DetailsList/docs/
 # Dialog/docs/
 DocumentCard/docs/ @yiminwu @mikewheaton
@@ -164,7 +169,5 @@ ResizeGroup/docs/  @micahgodbolt
 TeachingBubble/docs/   @micahgodbolt
 # TextField/docs/
 # Theme/docs/
-Toggle/docs/  @phkuo
+office-ui-fabric-react/src/components/Toggle/docs/  @phkuo
 Tooltip/docs/  @micahgodbolt
-
-

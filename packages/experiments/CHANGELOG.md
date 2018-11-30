@@ -1,6 +1,84 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 24 Oct 2018 12:28:58 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Nov 2018 13:37:17 GMT and should not be manually modified.
+
+## 6.44.0
+Fri, 30 Nov 2018 13:37:17 GMT
+
+### Minor changes
+
+- Pagination: Initial check-in of pagination control into experiments package.
+
+### Patches
+
+- Add missing depenencies
+
+## 6.43.0
+Thu, 29 Nov 2018 19:34:12 GMT
+
+### Minor changes
+
+- Re-export Signals from package root
+- update snapshots from semantic slot value updates
+- Toggle: Refining style variables approach in Toggle and adding examples passing interface and function.
+
+## 6.42.0
+Thu, 22 Nov 2018 13:36:17 GMT
+
+### Minor changes
+
+- Add initializeFolderCovers pathway to override CDN for FolderCover
+
+### Patches
+
+- Stack: remove display: none styling on empty children
+
+## 6.41.1
+Wed, 21 Nov 2018 13:34:56 GMT
+
+### Patches
+
+- Toggle: Reetructured Toggle to use style variables.
+
+## 6.41.0
+Thu, 08 Nov 2018 04:17:34 GMT
+
+### Minor changes
+
+- Converting existing Toggle component to use Foundation.
+
+### Patches
+
+- added bookmark signal icons
+
+## 6.40.3
+Fri, 02 Nov 2018 18:11:37 GMT
+
+*Version update only*
+
+## 6.40.2
+Fri, 02 Nov 2018 12:28:55 GMT
+
+*Version update only*
+
+## 6.40.1
+Wed, 31 Oct 2018 12:32:41 GMT
+
+### Patches
+
+- Add theme provider helper and replace usage of scheme prop with theme provider.
+
+## 6.40.0
+Mon, 29 Oct 2018 12:31:29 GMT
+
+### Minor changes
+
+- Announced: add initial component prototype and examples
+
+## 6.39.5
+Thu, 25 Oct 2018 12:30:06 GMT
+
+*Version update only*
 
 ## 6.39.4
 Wed, 24 Oct 2018 12:28:58 GMT

@@ -113,8 +113,8 @@ export class KeytipTree {
    * will match persisted nodes
    *
    * @param keySequence - string to match
-   * @param currentKeytip - The keytip who's children will try to match
-   * @returns {IKeytipTreeNode | undefined} The node that exactly matched the keySequence, or undefined if none matched
+   * @param currentKeytip - The keytip whose children will try to match
+   * @returns The node that exactly matched the keySequence, or undefined if none matched
    */
   public getExactMatchedNode(keySequence: string, currentKeytip: IKeytipTreeNode): IKeytipTreeNode | undefined {
     const possibleNodes = this.getNodes(currentKeytip.children);
@@ -128,8 +128,8 @@ export class KeytipTree {
    * disabled nodes but will match persisted nodes
    *
    * @param keySequence - string to partially match
-   * @param currentKeytip - The keytip who's children will try to partially match
-   * @returns {IKeytipTreeNode[]} List of tree nodes that partially match the given sequence
+   * @param currentKeytip - The keytip whose children will try to partially match
+   * @returns List of tree nodes that partially match the given sequence
    */
   public getPartiallyMatchedNodes(keySequence: string, currentKeytip: IKeytipTreeNode): IKeytipTreeNode[] {
     // Get children that are persisted
@@ -144,7 +144,7 @@ export class KeytipTree {
    * If no node is given, will use the 'currentKeytip'
    *
    * @param node - Node to get the children for
-   * @returns {string[]} List of node IDs that are the children of the node
+   * @returns List of node IDs that are the children of the node
    */
   public getChildren(node?: IKeytipTreeNode): string[] {
     if (!node) {
@@ -166,7 +166,7 @@ export class KeytipTree {
    * Gets all nodes from their IDs
    *
    * @param ids List of keytip IDs
-   * @returns {IKeytipTreeNode[]} Array of nodes that match the given IDs, can be empty
+   * @returns Array of nodes that match the given IDs, can be empty
    */
   public getNodes(ids: string[]): IKeytipTreeNode[] {
     return Object.keys(this.nodeMap).reduce((nodes: IKeytipTreeNode[], key: string): IKeytipTreeNode[] => {
@@ -181,7 +181,7 @@ export class KeytipTree {
    * Gets a single node from its ID
    *
    * @param id - ID of the node to get
-   * @returns {IKeytipTreeNode | undefined} Node with the given ID, if found
+   * @returns Node with the given ID, if found
    */
   public getNode(id: string): IKeytipTreeNode | undefined {
     const nodeMapValues = values<IKeytipTreeNode>(this.nodeMap);
@@ -197,7 +197,7 @@ export class KeytipTree {
    * Tests if the currentKeytip in this.keytipTree is the parent of 'keytipProps'
    *
    * @param keytipProps - Keytip to test the parent for
-   * @returns {boolean} T/F if the currentKeytip is this keytipProps' parent
+   * @returns T/F if the currentKeytip is this keytipProps' parent
    */
   public isCurrentKeytipParent(keytipProps: IKeytipProps): boolean {
     if (this.currentKeytip) {

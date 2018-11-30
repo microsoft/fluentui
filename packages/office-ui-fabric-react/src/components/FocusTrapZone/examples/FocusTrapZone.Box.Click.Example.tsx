@@ -11,10 +11,7 @@ export interface IBoxNoClickExampleExampleState {
   isToggled: boolean;
 }
 
-export default class BoxNoClickExample extends React.Component<
-  React.HTMLAttributes<HTMLDivElement>,
-  IBoxNoClickExampleExampleState
-> {
+export default class BoxNoClickExample extends React.Component<React.HTMLAttributes<HTMLDivElement>, IBoxNoClickExampleExampleState> {
   private _toggle: IToggle;
 
   constructor(props: React.HTMLAttributes<HTMLDivElement>) {
@@ -30,11 +27,7 @@ export default class BoxNoClickExample extends React.Component<
 
     return (
       <div>
-        <DefaultButton
-          secondaryText="Focuses inside the FocusTrapZone"
-          onClick={this._onButtonClickHandler}
-          text="Go to Trap Zone"
-        />
+        <DefaultButton secondaryText="Focuses inside the FocusTrapZone" onClick={this._onButtonClickHandler} text="Go to Trap Zone" />
 
         {(() => {
           if (isToggled) {
@@ -73,11 +66,7 @@ export default class BoxNoClickExample extends React.Component<
         {(() => {
           if (isToggled) {
             return (
-              <DefaultButton
-                secondaryText="Exit Focus Trap Zone"
-                onClick={this._onExitButtonClickHandler}
-                text="Exit Focus Trap Zone"
-              />
+              <DefaultButton secondaryText="Exit Focus Trap Zone" onClick={this._onExitButtonClickHandler} text="Exit Focus Trap Zone" />
             );
           }
         })()}

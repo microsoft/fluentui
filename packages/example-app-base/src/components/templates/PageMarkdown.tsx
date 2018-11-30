@@ -101,6 +101,4 @@ export interface IPageMarkdownProps {
   resources?: IPageMarkdownResources;
   children: string;
 }
-export const PageMarkdown = (props: IPageMarkdownProps) => (
-  <Markdown {...getMarkdownProps(props)}>{props.children}</Markdown>
-);
+export const PageMarkdown = (props: IPageMarkdownProps) => <Markdown {...getMarkdownProps(props)}>{props.children}</Markdown>;

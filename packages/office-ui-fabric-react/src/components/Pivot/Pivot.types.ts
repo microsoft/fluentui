@@ -92,7 +92,7 @@ export type IPivotStyleProps = Required<Pick<IPivotProps, 'theme'>> &
     rootIsTabs?: boolean;
     /**
      * Indicates whether Pivot link is selected.
-     * @deprecated Is not populated with valid value. Specify 'linkIsSelected' styling instead.
+     * @deprecated Is not populated with valid value. Specify `linkIsSelected` styling instead.
      */
     linkIsSelected?: boolean;
   };

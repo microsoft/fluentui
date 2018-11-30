@@ -3,6 +3,7 @@ import { IFolderCoverProps, FolderCoverSize, FolderCoverType } from './FolderCov
 import { ISize, css } from '../../Utilities';
 import * as FolderCoverStylesModule from './FolderCover.scss';
 import * as SignalStylesModule from '../signals/Signal.scss';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
 // tslint:disable-next-line:no-any
 const FolderCoverStyles = FolderCoverStylesModule as any;
@@ -20,8 +21,6 @@ const enum FolderCoverLayoutValues {
   largeHeight = 80,
   contentPadding = 4
 }
-
-const ASSET_CDN_BASE_URL = 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets';
 
 const SIZES: { [P in FolderCoverSize]: ISize } = {
   small: {
@@ -44,22 +43,22 @@ const ASSETS: {
 } = {
   small: {
     default: {
-      back: `${ASSET_CDN_BASE_URL}/foldericons/folder-small_backplate.svg`,
-      front: `${ASSET_CDN_BASE_URL}/foldericons/folder-small_frontplate_thumbnail.svg` // Yes, it's mis-named.
+      back: `folderCoverSmallDefaultBack`,
+      front: `folderCoverSmallDefaultFront`
     },
     media: {
-      back: `${ASSET_CDN_BASE_URL}/foldericons/folder-small_backplate.svg`,
-      front: `${ASSET_CDN_BASE_URL}/foldericons//folder-small_frontplate_nopreview.svg` // Yes, it's mis-named
+      back: `folderCoverSmallMediaBack`,
+      front: `folderCoverSmallMediaFront`
     }
   },
   large: {
     default: {
-      back: `${ASSET_CDN_BASE_URL}/foldericons/folder-large_backplate.svg`,
-      front: `${ASSET_CDN_BASE_URL}/foldericons/folder-large_frontplate_nopreview.svg`
+      back: `folderCoverLargeDefaultBack`,
+      front: `folderCoverLargeDefaultFront`
     },
     media: {
-      back: `${ASSET_CDN_BASE_URL}/foldericons/folder-large_backplate.svg`,
-      front: `${ASSET_CDN_BASE_URL}/foldericons//folder-large_frontplate_thumbnail.svg`
+      back: `folderCoverLargeMediaBack`,
+      front: `folderCoverLargeMediaFront`
     }
   }
 };
@@ -90,19 +89,15 @@ export class FolderCover extends React.Component<IFolderCoverProps, IFolderCover
           [`ms-FolderCover--hideContent ${FolderCoverStyles.hideContent}`]: hideContent
         })}
       >
-        <img aria-hidden={true} className={css('ms-FolderCover-back', FolderCoverStyles.back)} src={assets.back} />
+        <Icon aria-hidden={true} className={css('ms-FolderCover-back', FolderCoverStyles.back)} iconName={assets.back} />
         {children ? (
           <span className={css('ms-FolderCover-content', FolderCoverStyles.content)}>
             <span className={css('ms-FolderCover-frame', FolderCoverStyles.frame)}>{children}</span>
           </span>
         ) : null}
-        <img aria-hidden={true} className={css('ms-FolderCover-front', FolderCoverStyles.front)} src={assets.front} />
-        {signal ? (
-          <span className={css('ms-FolderCover-signal', FolderCoverStyles.signal, SignalStyles.dark)}>{signal}</span>
-        ) : null}
-        {metadata ? (
-          <span className={css('ms-FolderCover-metadata', FolderCoverStyles.metadata)}>{metadata}</span>
-        ) : null}
+        <Icon aria-hidden={true} className={css('ms-FolderCover-front', FolderCoverStyles.front)} iconName={assets.front} />
+        {signal ? <span className={css('ms-FolderCover-signal', FolderCoverStyles.signal, SignalStyles.dark)}>{signal}</span> : null}
+        {metadata ? <span className={css('ms-FolderCover-metadata', FolderCoverStyles.metadata)}>{metadata}</span> : null}
       </div>
     );
   }

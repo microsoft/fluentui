@@ -63,9 +63,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
             aria-posinset={focusableElementIndex + 1}
             aria-setsize={totalItemCount}
             onMouseEnter={this._onItemMouseEnterPrimary}
-            onMouseLeave={
-              onItemMouseLeave ? onItemMouseLeave.bind(this, { ...item, subMenuProps: null, items: null }) : undefined
-            }
+            onMouseLeave={onItemMouseLeave ? onItemMouseLeave.bind(this, { ...item, subMenuProps: null, items: null }) : undefined}
             onMouseMove={this._onItemMouseMovePrimary}
             onKeyDown={this._onItemKeyDown}
             onClick={this._executeItemClick}
@@ -130,7 +128,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
           item={itemProps}
           classNames={classNames}
           index={index}
-          onCheckmarkClick={hasCheckmarks && onItemClick ? onItemClick.bind(this, item) : undefined}
+          onCheckmarkClick={hasCheckmarks && onItemClick ? onItemClick : undefined}
           hasIcons={hasIcons}
           {...itemComponentProps}
         />
@@ -139,17 +137,11 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
   }
 
   private _renderSplitDivider(item: IContextualMenuItem) {
-    const getDividerClassNames =
-      item.getSplitButtonVerticalDividerClassNames || getSplitButtonVerticalDividerClassNames;
+    const getDividerClassNames = item.getSplitButtonVerticalDividerClassNames || getSplitButtonVerticalDividerClassNames;
     return <VerticalDivider getClassNames={getDividerClassNames} />;
   }
 
-  private _renderSplitIconButton(
-    item: IContextualMenuItem,
-    classNames: IMenuItemClassNames,
-    index: number,
-    keytipAttributes: any
-  ) {
+  private _renderSplitIconButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, keytipAttributes: any) {
     const {
       contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem,
       onItemMouseLeave,

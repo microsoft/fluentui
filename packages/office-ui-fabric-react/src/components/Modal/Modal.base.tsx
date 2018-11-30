@@ -4,11 +4,15 @@ import { FocusTrapZone, IFocusTrapZone } from '../FocusTrapZone/index';
 import { animationDuration, getOverlayStyles } from './Modal.styles';
 import { IModalProps, IModalStyleProps, IModalStyles, IModal } from './Modal.types';
 import { Overlay } from '../../Overlay';
-import { Layer } from '../../Layer';
+import { ILayerProps, Layer } from '../../Layer';
 import { Popup } from '../Popup/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 
 // @TODO - need to change this to a panel whenever the breakpoint is under medium (verify the spec)
+
+const DefaultLayerProps: ILayerProps = {
+  eventBubblingEnabled: false
+};
 
 export interface IDialogState {
   isOpen?: boolean;
@@ -43,6 +47,10 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       isVisible: props.isOpen,
       hasBeenOpened: props.isOpen
     };
+
+    this._warnDeprecations({
+      onLayerDidMount: 'layerProps.onLayerDidMount'
+    });
   }
 
   public componentWillReceiveProps(newProps: IModalProps): void {
@@ -106,15 +114,22 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       isClickableOutsideFocusTrap,
       isDarkOverlay,
       onDismiss,
-      onLayerDidMount,
+      layerProps,
       responsiveMode,
       titleAriaId,
       styles,
       subtitleAriaId,
       theme,
-      topOffsetFixed
+      topOffsetFixed,
+      onLayerDidMount
     } = this.props;
     const { isOpen, isVisible, hasBeenOpened, modalRectangleTop } = this.state;
+
+    const mergedLayerProps = {
+      ...DefaultLayerProps,
+      ...this.props.layerProps,
+      onLayerDidMount: layerProps && layerProps.onLayerDidMount ? layerProps.onLayerDidMount : onLayerDidMount
+    };
 
     if (!isOpen) {
       return null;
@@ -135,9 +150,10 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
     // @temp tuatology - Will adjust this to be a panel at certain breakpoints
     if (responsiveMode! >= ResponsiveMode.small) {
       return (
-        <Layer onLayerDidMount={onLayerDidMount}>
+        <Layer {...mergedLayerProps}>
           <Popup
             role={isBlocking ? 'alertdialog' : 'dialog'}
+            aria-modal="true"
             ariaLabelledBy={titleAriaId}
             ariaDescribedBy={subtitleAriaId}
             onDismiss={onDismiss}

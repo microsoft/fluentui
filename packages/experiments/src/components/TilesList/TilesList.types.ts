@@ -99,10 +99,7 @@ export interface ITilesGridSegment<TItem> {
 
 export { ISize as ITileSize };
 
-export interface ITilesListProps<TItem>
-  extends IBaseProps,
-    React.Props<TilesList<TItem>>,
-    React.HTMLAttributes<HTMLDivElement> {
+export interface ITilesListProps<TItem> extends IBaseProps, React.Props<TilesList<TItem>>, React.HTMLAttributes<HTMLDivElement> {
   /**
    * An array of items to assign to the list.
    * This should be complete and not contain any holes.

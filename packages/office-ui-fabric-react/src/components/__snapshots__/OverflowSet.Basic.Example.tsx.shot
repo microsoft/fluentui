@@ -39,7 +39,7 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             display: inline;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: inherit;
-            font-weight: 400;
+            font-weight: inherit;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -103,7 +103,7 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             display: inline;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: inherit;
-            font-weight: 400;
+            font-weight: inherit;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -167,7 +167,7 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             display: inline;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: inherit;
-            font-weight: 400;
+            font-weight: inherit;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;

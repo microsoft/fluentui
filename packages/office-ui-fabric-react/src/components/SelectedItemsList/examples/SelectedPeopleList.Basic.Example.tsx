@@ -4,11 +4,7 @@ import * as React from 'react';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { people, groupOne, groupTwo } from '../../../ExtendedPicker';
 import 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/examples/PeoplePicker.Types.Example.scss';
-import {
-  IExtendedPersonaProps,
-  SelectedPeopleList,
-  ISelectedPeopleItemProps
-} from '../SelectedPeopleList/SelectedPeopleList';
+import { IExtendedPersonaProps, SelectedPeopleList, ISelectedPeopleItemProps } from '../SelectedPeopleList/SelectedPeopleList';
 import { ExtendedSelectedItem } from '../SelectedPeopleList/Items/ExtendedSelectedItem';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
