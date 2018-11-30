@@ -26,7 +26,12 @@ module.exports = function(options) {
 
   const extractor = new Extractor(config, extractorOptions);
   const success = extractor.processProject();
-  if (!success) {
-    throw 'The public API file is out of date. Please run "npm run update-api" and commit the updated API file.';
+
+  if (success) {
+    return Promise.resolve();
   }
+
+  // Logging is temporary for debugging the CI build and should not be checked in.
+  console.log('API Extractor build task failed - rejecting promise');
+  return Promise.reject('The public API file is out of date. Please run "npm run update-api" and commit the updated API file.');
 };

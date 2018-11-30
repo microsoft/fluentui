@@ -57,6 +57,8 @@ const firstTasks = getNextTasks(null, disabledTasks);
 executeTasks(firstTasks)
   .then(() => {
     if (hasFailures) {
+      // Temporary for debugging CI builds - should not be checked in.
+      console.log('hasFailures is true - exiting with code 1');
       process.exitCode = 1;
     }
     logEndBuild(packageName, !hasFailures, buildStartTime);
@@ -118,6 +120,8 @@ function runTask(task) {
         .then(() => taskMap[task]({ isProduction, argv: process.argv }))
         .then(() => logEndTask(packageName, task, taskStartTime))
         .catch(e => {
+          // Temporary for debugging CI builds - should not be checked in.
+          console.log('build error: ', JSON.stringify(e));
           hasFailures = true;
           logEndTask(packageName, task, taskStartTime, e.error || e);
         })

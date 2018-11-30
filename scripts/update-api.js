@@ -23,38 +23,41 @@ require('./tasks/ts')({})
  * Checks the api.ts file to see whether it needs to be updated.
  */
 function checkApi() {
-  try {
-    require('./tasks/api-extractor')({});
-    console.log(green, `- Update API: ${apiFileName} is already up to date, no update needed.`);
-  } catch (ex) {
-    console.warn(yellow, `- Update API: ${apiFileName} is out of date, updating...`);
-    updateApi();
-  }
+  require('./tasks/api-extractor')({})
+    .then(() => {
+      console.log(green, `- Update API: ${apiFileName} is already up to date, no update needed.`);
+    })
+    .catch(ex => {
+      console.warn(yellow, `- Update API: ${apiFileName} is out of date, updating...`);
+      updateApi();
+    });
 }
 
 /**
  * Updates the api.ts file by running api-extractor with the --local option.
  */
 function updateApi() {
-  try {
-    require('./tasks/api-extractor')({
-      args: '--local'
+  require('./tasks/api-extractor')({
+    args: '--local'
+  })
+    .then(() => {
+      console.log(cyan, `- Update API: successfully updated ${apiFileName}, verifying the updates...`);
+      verifyApi();
+    })
+    .catch(ex => {
+      console.error(red, `- Update API: failed to update ${apiFileName}.`);
     });
-    console.log(cyan, `- Update API: successfully updated ${apiFileName}, verifying the updates...`);
-    verifyApi();
-  } catch (ex) {
-    console.error(red, `- Update API: failed to update ${apiFileName}.`);
-  }
 }
 
 /**
  * Verifies that the updated api.ts file passes the api-extractor task.
  */
 function verifyApi() {
-  try {
-    require('./tasks/api-extractor')({});
-    console.log(green, `- Update API: successfully verified ${apiFileName}. ` + `Please commit ${apiFileName} as part of your changes.`);
-  } catch (ex) {
-    console.error(red, `Update API: api-extractor failed after update: ${ex}`);
-  }
+  require('./tasks/api-extractor')({})
+    .then(() => {
+      console.log(green, `- Update API: successfully verified ${apiFileName}. ` + `Please commit ${apiFileName} as part of your changes.`);
+    })
+    .catch(ex => {
+      console.error(red, `Update API: api-extractor failed after update: ${ex}`);
+    });
 }
