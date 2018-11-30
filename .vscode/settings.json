@@ -28,7 +28,7 @@
   },
   // Configure glob patterns for excluding files and folders in searches. Inherits all glob patterns from the file.exclude setting.
   "search.exclude": {
-    "common": true,
+    "common/temp": true,
     "**/node_modules": true,
     "**/lib": true,
     "**/lib-amd": true,
@@ -46,5 +46,9 @@
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": false,
   "editor.formatOnSave": true,
   "typescript.tsdk": "./common/temp/node_modules/typescript/lib",
-  "tslint.autoFixOnSave": false
+  "tslint.autoFixOnSave": false,
+  "files.associations": {
+    "rush.json": "jsonc",
+    "**/common/config/rush/*.json": "jsonc"
+  }
 }
