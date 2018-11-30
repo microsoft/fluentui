@@ -5,6 +5,7 @@ import { FacepileButton } from './FacepileButton';
 import { Icon } from '../../Icon';
 import { Persona, IPersonaStyles } from '../../Persona';
 import { PersonaCoin, PersonaSize, PersonaInitialsColor } from '../../PersonaCoin';
+import { IButtonProps } from '../Button/Button.types';
 
 const getClassNames = classNamesFunction<IFacepileStyleProps, IFacepileStyles>();
 
@@ -183,14 +184,13 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
   }
 
   private _getDescriptiveOverflowElement(personasOverflow: IFacepilePersona[]): JSX.Element | null {
-    const { overflowButtonProps, personaSize } = this.props;
-
+    const { personaSize } = this.props;
     if (!personasOverflow || personasOverflow.length < 1) {
       return null;
     }
 
     const personaNames: string = personasOverflow.map((p: IFacepilePersona) => p.personaName).join(', ');
-    const overflowButtonTitle: string | undefined = overflowButtonProps && overflowButtonProps.title;
+    const overflowButtonProps: IButtonProps = { ...{ title: personaNames }, ...this.props.overflowButtonProps };
     const numPersonasNotPictured: number = Math.max(personasOverflow.length, 0);
 
     const { _classNames } = this;
@@ -198,12 +198,10 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
     return (
       <FacepileButton
         {...overflowButtonProps}
-        ariaDescription={overflowButtonTitle ? undefined : personaNames}
+        ariaDescription={overflowButtonProps.title}
         className={_classNames.descriptiveOverflowButton}
       >
         <PersonaCoin
-          // Check if a title is being added to the parenting FacepileButton. If so, do not set title on child PersonaCoin
-          title={overflowButtonTitle ? undefined : personaNames}
           size={personaSize}
           onRenderInitials={this._renderInitialsNotPictured(numPersonasNotPictured)}
           initialsColor={PersonaInitialsColor.transparent}

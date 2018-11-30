@@ -1,6 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 29 Nov 2018 19:34:12 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Nov 2018 13:37:17 GMT and should not be manually modified.
+
+## 6.44.0
+Fri, 30 Nov 2018 13:37:17 GMT
+
+### Minor changes
+
+- Pagination: Initial check-in of pagination control into experiments package.
+
+### Patches
+
+- Add missing depenencies
 
 ## 6.43.0
 Thu, 29 Nov 2018 19:34:12 GMT

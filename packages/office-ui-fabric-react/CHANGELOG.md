@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 29 Nov 2018 19:34:12 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Nov 2018 13:37:17 GMT and should not be manually modified.
+
+## 6.109.0
+Fri, 30 Nov 2018 13:37:17 GMT
+
+### Minor changes
+
+- Extend theming to incorporate shadows and rounded corners
+
+### Patches
+
+- DevExp: packages will no longer include the api.json from api extractor to reduce package size
+- SwatchColorPicker: Fixing state method componentWillReceiveProps of SwatchColorPicker in order to resolve how it sets focus and color on its cells in its uncontrolled form.
 
 ## 6.108.0
 Thu, 29 Nov 2018 19:34:12 GMT

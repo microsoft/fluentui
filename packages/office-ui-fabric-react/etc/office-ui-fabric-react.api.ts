@@ -7964,7 +7964,7 @@ interface IGroupedList extends IList {
 }
 
 // @public (undocumented)
-interface IGroupedListProps extends React.Props<GroupedListBase> {
+interface IGroupedListProps extends React.ClassAttributes<GroupedListBase> {
   className?: string;
   componentRef?: IRefObject<IGroupedList>;
   dragDropEvents?: IDragDropEvents;
@@ -8231,7 +8231,7 @@ interface IKeytipLayer {
 }
 
 // @public (undocumented)
-interface IKeytipLayerProps extends React.Props<IKeytipLayer> {
+interface IKeytipLayerProps extends React.ClassAttributes<IKeytipLayer> {
   componentRef?: IRefObject<IKeytipLayer>;
   content: string;
   keytipExitSequences?: IKeytipTransitionKey[];
@@ -8629,7 +8629,7 @@ interface IModal {
 }
 
 // @public (undocumented)
-interface IModalProps extends React.Props<ModalBase>, IWithResponsiveModeState, IAccessiblePopupProps {
+interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResponsiveModeState, IAccessiblePopupProps {
   className?: string;
   componentRef?: IRefObject<IModal>;
   containerClassName?: string;
@@ -8868,7 +8868,7 @@ interface IPage {
 }
 
 // @public (undocumented)
-interface IPageProps extends React.HTMLAttributes<HTMLDivElement>, React.Props<HTMLDivElement> {
+interface IPageProps extends React.HTMLAttributes<HTMLDivElement>, React.ClassAttributes<HTMLDivElement> {
   page: IPage;
   role?: string;
 }
