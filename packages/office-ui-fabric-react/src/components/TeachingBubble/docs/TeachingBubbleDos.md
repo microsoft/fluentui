@@ -1,0 +1,1 @@
+- Show one TeachingBubble at a time.

@@ -1,0 +1,3 @@
+- Don't use TeachingBubbles for user-invoked actions.
+- Don't use TeachingBubbles when a Callout would be sufficient.
+- Don't show a TeachingBubble more than once, even if the user has not completed the action.
