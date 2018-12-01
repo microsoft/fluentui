@@ -908,6 +908,7 @@ class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsListState
   // (undocumented)
   static defaultProps: {
     checkboxVisibility: CheckboxVisibility;
+    compact: boolean;
     constrainMode: ConstrainMode;
     enableShimmer: boolean;
     isHeaderVisible: boolean;
@@ -1540,6 +1541,7 @@ class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedListState
   componentWillReceiveProps(newProps: IGroupedListProps): void;
   // (undocumented)
   static defaultProps: {
+    compact: boolean;
     groupProps: {
     }
     isHeaderVisible: boolean;
@@ -7922,6 +7924,7 @@ interface IGroup {
 
 // @public (undocumented)
 interface IGroupDividerProps {
+  compact?: boolean;
   // (undocumented)
   componentRef?: IRefObject<{}>;
   expandButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
@@ -7956,6 +7959,7 @@ interface IGroupedList extends IList {
 // @public (undocumented)
 interface IGroupedListProps extends React.Props<GroupedListBase> {
   className?: string;
+  compact?: boolean;
   componentRef?: IRefObject<IGroupedList>;
   dragDropEvents?: IDragDropEvents;
   dragDropHelper?: IDragDropHelper;
