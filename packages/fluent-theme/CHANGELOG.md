@@ -1,6 +1,25 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Thu, 22 Nov 2018 13:36:17 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Nov 2018 13:37:17 GMT and should not be manually modified.
+
+## 0.10.0
+Fri, 30 Nov 2018 13:37:17 GMT
+
+### Minor changes
+
+- Add styles for TeachingBubble
+
+### Patches
+
+- Add types to all component style functions
+
+## 0.9.0
+Thu, 29 Nov 2018 19:34:12 GMT
+
+### Minor changes
+
+- DetailsList fluent styles added.
+- semantic slot updates
 
 ## 0.8.0
 Thu, 22 Nov 2018 13:36:17 GMT

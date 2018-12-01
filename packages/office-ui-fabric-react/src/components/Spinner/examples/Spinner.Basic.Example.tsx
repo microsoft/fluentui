@@ -20,11 +20,20 @@ export class SpinnerBasicExample extends React.Component<any, any> {
         <Label>Large Spinner</Label>
         <Spinner size={SpinnerSize.large} />
 
-        <Label>Spinner With Label</Label>
+        <Label>Spinner with Label</Label>
         <Spinner label="I am definitely loading..." />
 
-        <Label>Large Spinner With Label</Label>
+        <Label>Large Spinner with Label positioned at bottom (default)</Label>
         <Spinner size={SpinnerSize.large} label="Seriously, still loading..." ariaLive="assertive" />
+
+        <Label>Large Spinner with Label positioned above</Label>
+        <Spinner size={SpinnerSize.large} label="Sorry, still loading..." ariaLive="assertive" labelPosition="top" />
+
+        <Label>Large Spinner with Label positioned on the right side</Label>
+        <Spinner size={SpinnerSize.large} label="Wait, wait..." ariaLive="assertive" labelPosition="right" />
+
+        <Label>Large Spinner with Label positioned on the left side</Label>
+        <Spinner size={SpinnerSize.large} label="Nope, still loading..." ariaLive="assertive" labelPosition="left" />
       </div>
     );
   }

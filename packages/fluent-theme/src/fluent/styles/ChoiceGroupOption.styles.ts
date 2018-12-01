@@ -1,7 +1,7 @@
 import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { NeutralColors } from '../FluentColors';
 
-export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOptionStyles => {
+export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Partial<IChoiceGroupOptionStyles> => {
   const { checked, disabled, theme, hasIcon, hasImage } = props;
   const { semanticColors, palette } = theme;
   return {
