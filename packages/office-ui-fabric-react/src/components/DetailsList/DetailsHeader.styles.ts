@@ -12,7 +12,8 @@ import {
 import { IsFocusVisibleClassName } from '../../Utilities';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import { ICellStyleProps } from './DetailsRow.types';
-import { SPACER_WIDTH } from '../GroupedList/GroupSpacer';
+// For every group level there is a GroupSpacer added. Importing this const to have the source value in one place.
+import { SPACER_WIDTH as GROUP_EXPANDER_WIDTH } from '../GroupedList/GroupSpacer';
 
 const GlobalClassNames = {
   tooltipHost: 'ms-TooltipHost',
@@ -176,7 +177,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         justifyContent: 'center',
         fontSize: FontSizes.small,
         padding: 0,
-        width: SPACER_WIDTH, // align with GroupedList first expandIcon cell width.
+        width: GROUP_EXPANDER_WIDTH, // align with GroupedList's first expandIcon cell width.
         color: palette.neutralSecondary,
         selectors: {
           ':hover': {
