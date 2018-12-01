@@ -74,8 +74,8 @@ export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
   readOnly?: boolean;
 
   /*
-  * Optional callback to set the arialabel for rating control.
-  */
+   * Optional callback to set the arialabel for rating control.
+   */
   getAriaLabel?: (rating: number, max: number) => string;
 
   /**

@@ -71,8 +71,8 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
         AnnotationType[row.type] === AnnotationType.neutral
           ? noStateChange
           : AnnotationType[row.type] === AnnotationType.positive
-            ? negativeStateChange
-            : positiveChangeState;
+          ? negativeStateChange
+          : positiveChangeState;
       const getClassNames = classNamesFunction<IMultiCountProps, IMultiCountStyles>();
       const classNames = getClassNames(
         getStyles({
@@ -140,8 +140,8 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
       AnnotationType[data[0].type] === AnnotationType.neutral
         ? noStateChange
         : AnnotationType[data[0].type] === AnnotationType.positive
-          ? negativeStateChange
-          : positiveChangeState;
+        ? negativeStateChange
+        : positiveChangeState;
     const getClassNames = classNamesFunction<IMultiCountProps, IMultiCountStyles>();
     const classNames = getClassNames(
       getStyles({

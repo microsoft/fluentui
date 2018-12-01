@@ -1155,11 +1155,7 @@ class ExtendedPeoplePicker extends BaseExtendedPeoplePicker {
 class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps, IPeoplePickerItemState> {
   constructor(props: ISelectedPeopleItemProps);
   // (undocumented)
-  protected persona: {
-    (component: HTMLDivElement | null): void;
-    current: HTMLDivElement | null;
-    value: HTMLDivElement | null;
-  }
+  protected persona: React.RefObject<HTMLDivElement>;
   // (undocumented)
   render(): JSX.Element;
 }
@@ -2021,7 +2017,7 @@ interface IBaseSelectedItemsList<T> {
 }
 
 // @public (undocumented)
-interface IBaseSelectedItemsListProps<T> extends React.Props<any> {
+interface IBaseSelectedItemsListProps<T> extends React.ClassAttributes<any> {
   canRemoveItem?: (item: T) => boolean;
   // (undocumented)
   componentRef?: IRefObject<IBaseSelectedItemsList<T>>;
@@ -8793,7 +8789,7 @@ interface IOverflowSetItemProps {
 }
 
 // @public (undocumented)
-interface IOverflowSetProps extends React.Props<OverflowSetBase> {
+interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase> {
   // (undocumented)
   className?: string;
   componentRef?: IRefObject<IOverflowSet>;
@@ -9241,7 +9237,7 @@ interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 // @public (undocumented)
-interface IPivotProps extends React.Props<PivotBase>, React.HTMLAttributes<HTMLDivElement> {
+interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTMLAttributes<HTMLDivElement> {
   className?: string;
   componentRef?: IRefObject<IPivot>;
   getTabId?: (itemKey: string, index: number) => string;
@@ -9379,7 +9375,7 @@ interface IProgressIndicator {
 }
 
 // @public (undocumented)
-interface IProgressIndicatorProps extends React.Props<ProgressIndicatorBase> {
+interface IProgressIndicatorProps extends React.ClassAttributes<ProgressIndicatorBase> {
   ariaValueText?: string;
   barHeight?: number;
   className?: string;
@@ -10179,7 +10175,7 @@ interface ISlider {
 }
 
 // @public (undocumented)
-interface ISliderProps extends React.Props<SliderBase> {
+interface ISliderProps extends React.ClassAttributes<SliderBase> {
   ariaLabel?: string;
   ariaValueText?: (value: number) => string;
   buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
@@ -11466,11 +11462,7 @@ class PlainCardBase extends BaseComponent<IPlainCardProps, {}> {
 class Popup extends BaseComponent<IPopupProps, IPopupState> {
   constructor(props: IPopupProps);
   // (undocumented)
-  _root: {
-    (component: HTMLDivElement | null): void;
-    current: HTMLDivElement | null;
-    value: HTMLDivElement | null;
-  }
+  _root: React.RefObject<HTMLDivElement>;
   // (undocumented)
   componentDidMount(): void;
   // (undocumented)
