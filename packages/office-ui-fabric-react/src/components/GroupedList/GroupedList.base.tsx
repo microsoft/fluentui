@@ -53,7 +53,7 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
   }
 
   public componentWillReceiveProps(newProps: IGroupedListProps): void {
-    const { groups, selectionMode } = this.props;
+    const { groups, selectionMode, compact } = this.props;
     let shouldForceUpdates = false;
 
     if (newProps.groups !== groups) {
@@ -61,7 +61,7 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
       shouldForceUpdates = true;
     }
 
-    if (newProps.selectionMode !== selectionMode) {
+    if (newProps.selectionMode !== selectionMode || newProps.compact !== compact) {
       shouldForceUpdates = true;
     }
 
