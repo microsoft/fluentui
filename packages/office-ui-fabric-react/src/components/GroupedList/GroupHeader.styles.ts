@@ -61,6 +61,9 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
           ':hover $check': {
             opacity: 1
           },
+          ':focus $check': {
+            opacity: 1
+          },
           [`:global(.${classNames.group}.${classNames.isDropping})`]: {
             selectors: {
               '> $root $dropIcon': {
