@@ -2,6 +2,49 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.110.0",
+      "tag": "office-ui-fabric-react_v6.110.0",
+      "date": "Mon, 03 Dec 2018 13:37:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsList: Re-adding border fade animation as transition on column reorder",
+            "author": "Arko Gupta <arkogupta16@gmail.com>",
+            "commit": "71c6f5a7cb3ba6a8ba64c0b5b539db3ba679ffa5"
+          },
+          {
+            "comment": "TeachingBubble: Expand usage documentation to distinguish it from similar components.",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "fbef905cf9479a0cacb9fb0046826c1403286852"
+          },
+          {
+            "comment": "Facepile: Fix overflow title not rendered in Firefox.",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "ea53596072ad92e0239e16d8a0e71c3ce1046990"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Removing some deprecated components flagged when turning tslint deprecation flag to true in oufr package.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "719443e44ef792de092ab4136b9e5775a74a0da7"
+          }
+        ],
+        "none": [
+          {
+            "comment": "DetailsList Example: Drag & Drop example should have the feature enabled by default.",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "e2b769f3e770c4c6f0ae367a55227b19942d2c12"
+          },
+          {
+            "comment": "DetailsList Example: Update snapshot for DnD example.",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "edc029af9f05836fe0469d1bac2157f8d0ae577d"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.109.0",
       "tag": "office-ui-fabric-react_v6.109.0",
       "date": "Fri, 30 Nov 2018 13:37:17 GMT",

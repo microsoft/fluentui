@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/experiments",
-  "version": "6.44.0",
+  "version": "6.44.1",
   "description": "Experimental React components for building experiences for Office 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -61,7 +61,7 @@
     "@uifabric/merge-styles": ">=6.15.0 <7.0.0",
     "@uifabric/styling": ">=6.38.0 <7.0.0",
     "deep-assign": "^2.0.0",
-    "office-ui-fabric-react": ">=6.109.0 <7.0.0",
+    "office-ui-fabric-react": ">=6.110.0 <7.0.0",
     "prop-types": "^15.5.10",
     "tslib": "^1.7.1"
   },

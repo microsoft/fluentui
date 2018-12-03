@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 30 Nov 2018 13:37:17 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Dec 2018 13:37:07 GMT and should not be manually modified.
+
+## 6.44.1
+Mon, 03 Dec 2018 13:37:07 GMT
+
+### Patches
+
+- Lifting the resolution of default and user provided style variables to Utilities.
 
 ## 6.44.0
 Fri, 30 Nov 2018 13:37:17 GMT

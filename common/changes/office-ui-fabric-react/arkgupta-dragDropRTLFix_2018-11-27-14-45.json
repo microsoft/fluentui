@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsList: Re-adding border fade animation as transition on column reorder",
+      "comment": "DetailsList: Adding support for column drag-drop in RTL",
       "type": "patch"
     }
   ],
