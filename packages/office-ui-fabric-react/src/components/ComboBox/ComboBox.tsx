@@ -324,7 +324,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       styles: customStyles,
       theme,
       title,
-      keytipProps
+      keytipProps,
+      placeholder
     } = this.props;
     const { isOpen, focused, suggestedDisplayValue } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
@@ -392,6 +393,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 shouldSelectFullInputValueInComponentDidUpdate={this._onShouldSelectFullInputValueInAutofillComponentDidUpdate}
                 title={title}
                 preventValueSelection={!focused}
+                placeholder={placeholder}
               />
               <IconButton
                 className={'ms-ComboBox-CaretDown-button'}

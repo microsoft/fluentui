@@ -7414,7 +7414,6 @@ interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDi
   onRenderPlaceHolder?: IRenderFunction<IDropdownProps>;
   onRenderTitle?: IRenderFunction<IDropdownOption | IDropdownOption[]>;
   options: IDropdownOption[];
-  placeholder?: string;
   // @deprecated
   placeHolder?: string;
   responsiveMode?: ResponsiveMode;
@@ -9758,6 +9757,7 @@ interface ISelectableDroppableTextProps<TComponent, TListenerElement = TComponen
   onRenderOption?: IRenderFunction<ISelectableOption>;
   options?: any;
   panelProps?: IPanelProps;
+  placeholder?: string;
   required?: boolean;
   selectedKey?: string | number | string[] | number[];
 }
