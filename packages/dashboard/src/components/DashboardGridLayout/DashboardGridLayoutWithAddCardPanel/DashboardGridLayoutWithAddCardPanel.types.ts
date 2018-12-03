@@ -1,7 +1,8 @@
+import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
 import { DashboardGridBreakpointLayouts } from '../DashboardGridLayout.types';
 import { IDGLCard, ISection } from '../../../index';
 
-export interface IDashboardGridLayoutWithAddCardPanelProps {
+export interface IDashboardGridLayoutWithAddCardPanelProps extends IBaseProps {
   /**
    * prop to open the add card panel
    */

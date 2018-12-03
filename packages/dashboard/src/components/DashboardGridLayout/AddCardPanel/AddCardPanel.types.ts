@@ -1,7 +1,8 @@
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
 import { IDGLCard } from '../../../index';
 
-export interface IAddCardPanelProps {
+export interface IAddCardPanelProps extends IBaseProps {
   /**
    * The title for the add card panel
    */

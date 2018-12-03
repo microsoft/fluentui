@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Layout } from 'react-grid-layout';
+import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import {
   IDashboardGridLayoutWithAddCardPanelProps,
   IDashboardGridLayoutWithAddCardPanelState
@@ -15,7 +16,7 @@ import {
 } from '../../../index';
 import { getCardStyles, getClassNames } from './DashboardGridLayoutWithAddCardPanel.styles';
 
-export class DashboardGridLayoutWithAddCardPanel extends React.Component<
+export class DashboardGridLayoutWithAddCardPanel extends BaseComponent<
   IDashboardGridLayoutWithAddCardPanelProps,
   IDashboardGridLayoutWithAddCardPanelState
 > {
@@ -144,7 +145,7 @@ export class DashboardGridLayoutWithAddCardPanel extends React.Component<
         layout: layout
       });
       // scroll to the card that was added to the layout
-      setTimeout(() => {
+      this._async.setTimeout(() => {
         if (document.getElementById(cardId + 'dglCard')) {
           document.getElementById(cardId + 'dglCard')!.scrollIntoView({ behavior: 'smooth' });
           const css = getClassNames(getCardStyles!);
