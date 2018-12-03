@@ -189,14 +189,14 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     const hasNestedGroups = group && group.children && group.children.length > 0;
 
     const dividerProps: IGroupDividerProps = {
-      group: group,
-      groupIndex: groupIndex,
+      group,
+      groupIndex,
       groupLevel: group ? group.level : 0,
       isSelected,
-      viewport: viewport,
-      selectionMode: selectionMode,
-      groups: groups,
-      compact: compact
+      viewport,
+      selectionMode,
+      groups,
+      compact
     };
 
     const ariaControlsProps: IGroupHeaderProps = {

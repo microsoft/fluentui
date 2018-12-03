@@ -78,7 +78,7 @@ export class GroupHeaderBase extends BaseComponent<IGroupHeaderProps, IGroupHead
       className,
       selected: currentlySelected,
       isCollapsed,
-      compact: compact
+      compact
     });
 
     if (!group) {
