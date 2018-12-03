@@ -12,7 +12,6 @@ export class AddCardPanel extends BaseComponent<IAddCardPanelProps, IAddCardPane
   constructor(props: IAddCardPanelProps) {
     super(props);
     this.state = {
-      isOpen: false,
       flyoutStyle: {}
     };
   }
@@ -36,7 +35,9 @@ export class AddCardPanel extends BaseComponent<IAddCardPanelProps, IAddCardPane
   }
 
   private _onDismiss = () => {
-    this.setState({ isOpen: false });
+    if (this.props.onDismiss) {
+      this.props.onDismiss();
+    }
   };
 
   private _renderAddCardItems = (addCardItems: IDGLCard[], header: string): JSX.Element => {

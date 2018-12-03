@@ -72,6 +72,7 @@ export class DashboardGridLayoutWithAddCardPanel extends BaseComponent<
           isOpen={isOpen}
           cards={this.state.cardsForAddCardPanel}
           moveCardFromAddCardPanelToDashboard={this._addCard}
+          onDismiss={this._onPanelDismiss}
         />
         <DashboardGridSectionLayout
           isDraggable={isDraggable}
@@ -83,6 +84,12 @@ export class DashboardGridLayoutWithAddCardPanel extends BaseComponent<
       </>
     );
   }
+
+  private _onPanelDismiss = () => {
+    if (this.props.onPanelDismiss) {
+      this.props.onPanelDismiss();
+    }
+  };
 
   private _onLayoutChange = (currentLayout: Layout[]): void => {
     const newLayout: DashboardGridBreakpointLayouts = { lg: [] };

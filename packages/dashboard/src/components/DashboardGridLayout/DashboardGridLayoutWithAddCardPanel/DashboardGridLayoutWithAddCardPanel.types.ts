@@ -38,6 +38,11 @@ export interface IDashboardGridLayoutWithAddCardPanelProps extends IBaseProps {
    * The callback being called each time after a layout change
    */
   onLayoutChange?: (newLayout: DashboardGridBreakpointLayouts) => void;
+
+  /**
+   * The callback method fired when the add card panel is dismissed
+   */
+  onPanelDismiss?: () => void;
 }
 
 export interface IDashboardGridLayoutWithAddCardPanelState {
