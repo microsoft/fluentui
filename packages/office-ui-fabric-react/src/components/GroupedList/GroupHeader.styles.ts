@@ -51,7 +51,7 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
       getFocusStyle(theme),
       theme.fonts.medium,
       {
-        borderBottom: `1px solid ${semanticColors.bodyBackground}`,
+        borderBottom: `1px solid ${semanticColors.listBackground}`, // keep the border for height but color it so it's invisible.
         cursor: 'default',
         userSelect: 'none',
         selectors: {
@@ -85,7 +85,6 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
       selected && [
         classNames.isSelected,
         {
-          borderColor: palette.white,
           background: semanticColors.listItemBackgroundChecked,
           selectors: {
             ':hover': {
