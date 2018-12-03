@@ -1,7 +1,8 @@
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
 import { IDGLCard } from '../../../index';
 
-export interface IAddCardPanelProps {
+export interface IAddCardPanelProps extends IBaseProps {
   /**
    * The title for the add card panel
    */
@@ -21,14 +22,14 @@ export interface IAddCardPanelProps {
    * The callback method to switch between add card panel and the dashboard grid layout
    */
   moveCardFromAddCardPanelToDashboard?: (cardId: string) => void;
+
+  /**
+   * The callback method called upon add card panel dimiss
+   */
+  onDismiss?: () => void;
 }
 
 export interface IAddCardPanelState {
-  /**
-   * The callback method to switch between add card panel and the dashboard grid layout
-   */
-  isOpen: boolean;
-
   /**
    * The styles(half closing of panel) applied to the flyout after successfully adding a card
    */

@@ -1,18 +1,17 @@
 import * as React from 'react';
 
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
-import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 
 import { AddCard } from './AddCard/AddCard';
 import { getStyles } from './AddCardPanel.styles';
 import { IAddCardPanelProps, IAddCardPanelState, IAddCardPanelStyles } from './AddCardPanel.types';
 import { IDGLCard } from '../../../index';
 
-export class AddCardPanel extends React.Component<IAddCardPanelProps, IAddCardPanelState> {
+export class AddCardPanel extends BaseComponent<IAddCardPanelProps, IAddCardPanelState> {
   constructor(props: IAddCardPanelProps) {
     super(props);
     this.state = {
-      isOpen: false,
       flyoutStyle: {}
     };
   }
@@ -36,7 +35,9 @@ export class AddCardPanel extends React.Component<IAddCardPanelProps, IAddCardPa
   }
 
   private _onDismiss = () => {
-    this.setState({ isOpen: false });
+    if (this.props.onDismiss) {
+      this.props.onDismiss();
+    }
   };
 
   private _renderAddCardItems = (addCardItems: IDGLCard[], header: string): JSX.Element => {
@@ -87,7 +88,7 @@ export class AddCardPanel extends React.Component<IAddCardPanelProps, IAddCardPa
       }
     });
     // the time for which the add card panel stays half hidden after successfully adding a card
-    setTimeout(() => {
+    this._async.setTimeout(() => {
       this.setState({ flyoutStyle: {} });
     }, 1000);
   };
