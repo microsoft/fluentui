@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 30 Nov 2018 13:37:17 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Dec 2018 13:37:07 GMT and should not be manually modified.
+
+## 6.110.0
+Mon, 03 Dec 2018 13:37:07 GMT
+
+### Minor changes
+
+- Removing some deprecated components flagged when turning tslint deprecation flag to true in oufr package.
+
+### Patches
+
+- DetailsList: Re-adding border fade animation as transition on column reorder
+- TeachingBubble: Expand usage documentation to distinguish it from similar components.
+- Facepile: Fix overflow title not rendered in Firefox.
 
 ## 6.109.0
 Fri, 30 Nov 2018 13:37:17 GMT
