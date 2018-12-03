@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Picker: Add shift into delete suggestion.",
+      "comment": "Picker: The shift key is now required (in addition to the del key) in order to delete a suggestion.",
       "type": "patch"
     }
   ],
