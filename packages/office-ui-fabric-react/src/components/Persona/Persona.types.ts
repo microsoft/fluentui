@@ -7,7 +7,7 @@ import { IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IPersona {}
 
-export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
+export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | HTMLDivElement> {
   /**
    * Primary text to display, usually the name of the person.
    */
@@ -125,9 +125,9 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
   coinSize?: number;
 
   /**
-   * Optional HTML element props for Persona coin.
+   * Optional props for the Persona coin.
    */
-  coinProps?: React.HTMLAttributes<HTMLDivElement>;
+  coinProps?: IPersonaCoinProps;
 
   /**
    * Theme provided by High-Order Component.
@@ -139,11 +139,6 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
    * @deprecated Use `text` instead.
    */
   primaryText?: string;
-
-  /**
-   * Should the persona coin change to showing the initals instead of an image on hover
-   */
-  showInitialsOnHover?: boolean;
 }
 
 export interface IPersonaProps extends IPersonaSharedProps {
@@ -244,6 +239,11 @@ export interface IPersonaCoinProps extends IPersonaSharedProps {
    * @defaultvalue undefined
    */
   className?: string;
+
+  /**
+   * Should the persona coin change to showing the initals instead of an image on hover
+   */
+  showInitialsOnHover?: boolean;
 }
 
 export interface IPersonaCoinStyleProps {

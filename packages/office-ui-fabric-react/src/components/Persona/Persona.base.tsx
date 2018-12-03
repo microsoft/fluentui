@@ -67,7 +67,6 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       showInitialsUntilImageLoads,
       showSecondaryText,
       theme,
-      showInitialsOnHover
     } = this.props;
 
     const personaCoinProps: IPersonaSharedProps = {
@@ -87,7 +86,6 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       presence,
       showInitialsUntilImageLoads,
       size,
-      showInitialsOnHover,
       text: this._getText()
     };
 
