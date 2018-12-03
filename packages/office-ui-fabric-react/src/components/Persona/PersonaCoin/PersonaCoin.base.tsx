@@ -138,7 +138,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
   private _onRenderCoin = (props: IPersonaCoinProps): JSX.Element | null => {
     const { coinSize, styles, imageUrl, imageAlt, imageShouldFadeIn, imageShouldStartVisible, theme, showUnknownPersonaCoin } = this.props;
 
-    // Render the Image component only if an image URL is provided
+    // Do not render the Image component if either an image URL is not provided or we wish to show the initials when hovering over the image
     if (!imageUrl || (this.props.showInitialsOnHover && this.state.isHovered)) {
       return null;
     }
