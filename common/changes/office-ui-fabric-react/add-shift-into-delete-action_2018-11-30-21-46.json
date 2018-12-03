@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add shift into delete suggestion.",
-      "type": "minor"
+      "comment": "Picker: Add shift into delete suggestion.",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
