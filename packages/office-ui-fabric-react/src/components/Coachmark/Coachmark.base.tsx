@@ -110,7 +110,7 @@ export interface ICoachmarkState {
   alertText?: string;
 }
 
-export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> implements ICoachmark {
+export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkState> implements ICoachmark {
   public static defaultProps: Partial<ICoachmarkProps> = {
     isCollapsed: true,
     mouseProximityOffset: 10,

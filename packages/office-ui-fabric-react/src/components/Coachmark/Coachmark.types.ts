@@ -1,7 +1,7 @@
 import { IStyle } from '../../Styling';
 import { IPositioningContainerProps } from './PositioningContainer/PositioningContainer.types';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { Coachmark } from './Coachmark';
+import { CoachmarkBase } from './Coachmark.base';
 import { ITeachingBubble } from '../../TeachingBubble';
 
 export interface ICoachmark {
@@ -12,7 +12,7 @@ export interface ICoachmark {
 }
 
 /** Coachmark component props */
-export interface ICoachmarkProps extends React.ClassAttributes<Coachmark> {
+export interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
   /**
    * Optional callback to access the ICoachmark interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
