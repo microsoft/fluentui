@@ -66,6 +66,7 @@ exports[`Component Examples renders HorizontalStack.HorizontalAlign.Example.tsx 
         & > *:not(.ms-StackItem) {
           flex-shrink: 0;
         }
+    horizontal={true}
   >
     <span>
       1
@@ -115,6 +116,7 @@ exports[`Component Examples renders HorizontalStack.HorizontalAlign.Example.tsx 
         & > *:not(.ms-StackItem) {
           flex-shrink: 0;
         }
+    horizontal={true}
   >
     <span>
       1
@@ -164,6 +166,7 @@ exports[`Component Examples renders HorizontalStack.HorizontalAlign.Example.tsx 
         & > *:not(.ms-StackItem) {
           flex-shrink: 0;
         }
+    horizontal={true}
   >
     <span>
       1
@@ -213,6 +216,7 @@ exports[`Component Examples renders HorizontalStack.HorizontalAlign.Example.tsx 
         & > *:not(.ms-StackItem) {
           flex-shrink: 0;
         }
+    horizontal={true}
   >
     <span>
       1
@@ -262,6 +266,7 @@ exports[`Component Examples renders HorizontalStack.HorizontalAlign.Example.tsx 
         & > *:not(.ms-StackItem) {
           flex-shrink: 0;
         }
+    horizontal={true}
   >
     <span>
       1
@@ -311,6 +316,7 @@ exports[`Component Examples renders HorizontalStack.HorizontalAlign.Example.tsx 
         & > *:not(.ms-StackItem) {
           flex-shrink: 0;
         }
+    horizontal={true}
   >
     <span>
       1
