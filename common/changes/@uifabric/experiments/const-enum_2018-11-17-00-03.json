@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/experiments",
+      "comment": "DevExp: const enums are replaced with constants, this allows the use of isolatedModules mode of compilation",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/experiments",
+  "email": "kchau@microsoft.com"
+}
