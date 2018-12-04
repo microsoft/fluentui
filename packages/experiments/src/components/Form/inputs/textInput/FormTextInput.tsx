@@ -37,14 +37,14 @@ export class FormTextInput extends FormBaseInput<string, IFormTextInputProps, IF
         {...this.props.textFieldProps}
         key={this.props.inputKey}
         value={this.state.currentValue}
-        onBeforeChange={this._onChange}
+        onChange={this._onChange}
         errorMessage={this.state.currentError}
       />
     );
   }
 
-  private _onChange = (value: string): void => {
-    this.setValue(value);
+  private _onChange = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue: string | undefined): void => {
+    this.setValue(newValue || '');
   };
 
   private _validateTextFieldProps(props?: ITextFieldProps): void {
@@ -57,8 +57,8 @@ export class FormTextInput extends FormBaseInput<string, IFormTextInputProps, IF
         console.warn(`FormTextBox: 'value' prop was specified and will be ignored`);
       }
 
-      if (props.onBeforeChange) {
-        console.warn(`FormTextBox: 'onBeforeChange' prop was specified and will be ignored`);
+      if (props.onChange) {
+        console.warn(`FormTextBox: 'onChange' prop was specified and will be ignored`);
       }
     }
   }

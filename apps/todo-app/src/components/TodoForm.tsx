@@ -47,9 +47,6 @@ export default class TodoForm extends BaseComponent<ITodoFormProps, ITodoFormSta
   constructor(props: ITodoFormProps) {
     super(props);
 
-    this._onSubmit = this._onSubmit.bind(this);
-    this._onBeforeTextFieldChange = this._onBeforeTextFieldChange.bind(this);
-
     this.state = {
       inputValue: '',
       errorMessage: ''
@@ -60,11 +57,12 @@ export default class TodoForm extends BaseComponent<ITodoFormProps, ITodoFormSta
     return (
       <form className={styles.todoForm} onSubmit={this._onSubmit}>
         <TextField
+          strictMode
           className={styles.textField}
           value={this.state.inputValue}
           componentRef={this._textField}
           placeholder={strings.inputBoxPlaceholder}
-          onBeforeChange={this._onBeforeTextFieldChange}
+          onChange={this._onTextFieldChange}
           autoComplete="off"
           errorMessage={this.state.errorMessage}
         />
@@ -98,12 +96,12 @@ export default class TodoForm extends BaseComponent<ITodoFormProps, ITodoFormSta
     }
   };
 
-  private _onBeforeTextFieldChange(newValue: string): void {
+  private _onTextFieldChange = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue: string | undefined): void => {
     this.setState({
-      inputValue: newValue,
+      inputValue: newValue || '',
       errorMessage: ''
     });
-  }
+  };
 
   private _getTitleErrorMessage(title: string): string {
     if (title.trim() === '') {

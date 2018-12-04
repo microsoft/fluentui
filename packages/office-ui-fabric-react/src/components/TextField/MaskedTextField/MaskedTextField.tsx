@@ -108,13 +108,15 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
   public render() {
     return (
       <TextField
-        {...this.props}
+        strictMode
+        {
+          ...this.props /* allow props to potentially overwrite strictMode */
+        }
         onFocus={this._onFocus}
         onBlur={this._onBlur}
         onMouseDown={this._onMouseDown}
         onMouseUp={this._onMouseUp}
         onChange={this._onInputChange}
-        onBeforeChange={this._onBeforeChange}
         onKeyDown={this._onKeyDown}
         onPaste={this._onPaste}
         value={this.state.displayValue}
@@ -250,24 +252,13 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
   }
 
   @autobind
-  private _onBeforeChange(value: string) {
-    if (this.props.onBeforeChange) {
-      this.props.onBeforeChange(value);
-    }
-
-    if (this._changeSelectionData === null) {
+  private _onInputChange(ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, value: string) {
+    if (!this._changeSelectionData) {
       this._changeSelectionData = {
         changeType: 'default',
         selectionStart: this._textField.selectionStart !== null ? this._textField.selectionStart : -1,
         selectionEnd: this._textField.selectionEnd !== null ? this._textField.selectionEnd : -1
       };
-    }
-  }
-
-  @autobind
-  private _onInputChange(ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, value: string) {
-    if (!this._changeSelectionData) {
-      return;
     }
 
     const { displayValue } = this.state;
