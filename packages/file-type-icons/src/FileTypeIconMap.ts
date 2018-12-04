@@ -303,6 +303,8 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'dng',
       'erf',
       'gif',
+      'heic',
+      'heif',
       'ico',
       'jfi',
       'jfif',
