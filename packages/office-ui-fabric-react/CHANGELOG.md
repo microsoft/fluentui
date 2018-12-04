@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 03 Dec 2018 13:37:07 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Dec 2018 13:36:40 GMT and should not be manually modified.
+
+## 6.110.1
+Tue, 04 Dec 2018 13:36:40 GMT
+
+### Patches
+
+- Picker: The shift key is now required (in addition to the del key) in order to delete a suggestion.
+- DetailsList: Adding support for column drag-drop in RTL
 
 ## 6.110.0
 Mon, 03 Dec 2018 13:37:07 GMT
