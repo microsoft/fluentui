@@ -1,15 +1,8 @@
 import * as React from 'react';
-import {
-  Fabric,
-  FolderCover,
-  IFolderCoverProps,
-  getFolderCoverLayout,
-  renderFolderCoverWithLayout,
-  SharedSignal
-} from '@uifabric/experiments';
+import { FolderCover, IFolderCoverProps, getFolderCoverLayout, renderFolderCoverWithLayout, SharedSignal } from '@uifabric/experiments';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { ISize, fitContentToBounds } from 'office-ui-fabric-react';
+import { ISize, fitContentToBounds, Fabric } from 'office-ui-fabric-react';
 import { FabricDecorator } from '../utilities';
 
 interface IFolderCoverWithImageProps extends IFolderCoverProps {

@@ -3,14 +3,10 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { HoverCard } from 'office-ui-fabric-react';
+import { HoverCard, rgb2hex } from 'office-ui-fabric-react';
 
 let onRenderCompactCard = (item: any) => {
-  return (
-    <div>
-      Content
-    </div>
-  );
+  return <div>Content</div>;
 };
 
 const expandingCardProps = {
@@ -20,20 +16,17 @@ const expandingCardProps = {
 
 storiesOf('HoverCard', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .end()
-      }
-    >
-      {story()}
-    </Screener>
-  )).addStory('Root', () => (
-    <HoverCard
-      expandingCardProps={expandingCardProps}
-      instantOpenOnClick={true}
-    >
-      Hover over me
-    </HoverCard>
-  ), { rtl: true });
+  .addDecorator(story => <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>)
+  .addStory(
+    'Root',
+    () => (
+      <HoverCard
+        expandingCardProps={expandingCardProps}
+        instantOpenOnClick={true}
+        //styles={{ root: { fontFamily: 'Segoe UI', color: rgb2hex(51, 51, 51) } }}
+      >
+        Hover over me
+      </HoverCard>
+    ),
+    { rtl: true }
+  );
