@@ -9062,6 +9062,7 @@ interface IPersona {
 interface IPersonaCoinProps extends IPersonaSharedProps {
   className?: string;
   componentRef?: IRefObject<{}>;
+  showInitialsOnHover?: boolean;
   styles?: IStyleFunctionOrObject<IPersonaCoinStyleProps, IPersonaCoinStyles>;
 }
 
@@ -9122,9 +9123,9 @@ interface IPersonaProps extends IPersonaSharedProps {
 }
 
 // @public (undocumented)
-interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
+interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | HTMLDivElement> {
   allowPhoneInitials?: boolean;
-  coinProps?: React.HTMLAttributes<HTMLDivElement>;
+  coinProps?: IPersonaCoinProps;
   coinSize?: number;
   hidePersonaDetails?: boolean;
   imageAlt?: string;
@@ -9141,7 +9142,6 @@ interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
   // @deprecated
   primaryText?: string;
   secondaryText?: string;
-  showInitialsOnHover?: boolean;
   showInitialsUntilImageLoads?: boolean;
   // (undocumented)
   showSecondaryText?: boolean;
