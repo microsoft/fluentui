@@ -224,6 +224,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
                   aria-owns={suggestionsAvailable || undefined}
                   aria-autocomplete={'both'}
                   onInputChange={this.props.onInputChange}
+                  spellCheck={false}
                 />
               )}
             </div>
