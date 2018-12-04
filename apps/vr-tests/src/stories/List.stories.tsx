@@ -133,14 +133,4 @@ const onRenderCell = item => <div>{item.name}</div>;
 storiesOf('List', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>)
-  .addStory(
-    'Root',
-    () => (
-      <List
-        items={items}
-        onRenderCell={onRenderCell}
-        //styles={{ root: { fontFamily: 'Segoe UI', color: rgb2hex(51, 51, 51) } }}
-      />
-    ),
-    { rtl: true }
-  );
+  .addStory('Root', () => <List items={items} onRenderCell={onRenderCell} />, { rtl: true });

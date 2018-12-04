@@ -68,7 +68,6 @@ storiesOf('TagPicker', module)
           noResultsFoundText: 'No Color Tags Found'
         }}
         itemLimit={2}
-        //styles={{ root: { fontFamily: 'Segoe UI', color: rgb2hex(51, 51, 51) } }}
       />
     ),
     { rtl: true }
