@@ -66,7 +66,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       presence,
       showInitialsUntilImageLoads,
       showSecondaryText,
-      theme,
+      theme
     } = this.props;
 
     const personaCoinProps: IPersonaSharedProps = {
