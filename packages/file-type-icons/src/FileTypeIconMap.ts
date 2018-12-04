@@ -143,6 +143,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'ltx',
       'lua',
       'm',
+      'mak',
       'make',
       'manifest',
       'master',
