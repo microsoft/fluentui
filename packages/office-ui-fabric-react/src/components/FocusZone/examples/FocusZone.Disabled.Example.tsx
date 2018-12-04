@@ -12,7 +12,7 @@ export const FocusZoneDisabledExample = () => (
         <span>Enabled FocusZone: </span>
         <DefaultButton>Button 1</DefaultButton>
         <DefaultButton>Button 2</DefaultButton>
-        <TextField value="FocusZone TextField" className="ms-FocusZoneDisabledExample-textField" />
+        <TextField defaultValue="FocusZone TextField" className="ms-FocusZoneDisabledExample-textField" />
         <DefaultButton>Button 3</DefaultButton>
       </FocusZone>
     </div>
@@ -27,7 +27,7 @@ export const FocusZoneDisabledExample = () => (
       </FocusZone>
     </div>
     <div className="ms-Row">
-      <TextField value="Tabbable Element 2" />
+      <TextField defaultValue="Tabbable Element 2" />
     </div>
   </div>
 );

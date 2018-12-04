@@ -15,7 +15,7 @@ export const FocusZoneTabbableExample = () => (
         <span>Circular Tabbable FocusZone: </span>
         <DefaultButton>Button 1</DefaultButton>
         <DefaultButton>Button 2</DefaultButton>
-        <TextField value="FocusZone TextField" className="ms-FocusZoneTabbableExample-textField" />
+        <TextField defaultValue="FocusZone TextField" className="ms-FocusZoneTabbableExample-textField" />
         <DefaultButton>Button 3</DefaultButton>
         <DefaultButton
           text="Create account"
@@ -44,7 +44,7 @@ export const FocusZoneTabbableExample = () => (
         <span>Input Only FocusZone: </span>
         <DefaultButton>Button 1</DefaultButton>
         <DefaultButton>Button 2</DefaultButton>
-        <TextField value="FocusZone TextField" className="ms-FocusZoneTabbableExample-textField" />
+        <TextField defaultValue="FocusZone TextField" className="ms-FocusZoneTabbableExample-textField" />
         <DefaultButton>Button 3</DefaultButton>
       </FocusZone>
     </div>
