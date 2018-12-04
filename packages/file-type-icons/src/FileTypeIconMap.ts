@@ -397,7 +397,10 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   },
   video: {
     extensions: [
+      '3g2',
       '3gp',
+      '3gp2',
+      '3gpp',
       'asf',
       'avi',
       'dvr-ms',
@@ -411,7 +414,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'mp2',
       'mp2v',
       'mp4',
-      ' mpa',
+      'mpa',
       'mpe',
       'mpeg',
       'mpg',
