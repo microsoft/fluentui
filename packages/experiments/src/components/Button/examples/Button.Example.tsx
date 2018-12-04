@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Button, IButtonComponent } from '../index';
 import { HorizontalStack, Text, VerticalStack } from '@uifabric/experiments';
-import { ContextualMenu, Customizer, IContextualMenuProps, Spinner } from 'office-ui-fabric-react';
+import { CommandBar, ContextualMenu, Customizer, Icon, IContextualMenuProps, Spinner } from 'office-ui-fabric-react';
 
 const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
 const buttonMenu = (props: IContextualMenuProps) => <ContextualMenu {...props} items={menuItems} />;
@@ -41,6 +41,10 @@ const ButtonTheme = {
   }
 };
 
+const TestComponent: React.SFC<{}> = () => {
+  return <p>Test SFC</p>;
+};
+
 const getButtonStyles: IButtonComponent['styles'] = {
   icon: ButtonTheme.scopedSettings.Icon.styles.root,
   stack: ButtonTheme.scopedSettings.HorizontalStack.styles.root,
@@ -53,31 +57,21 @@ const ButtonSet = () => (
   <VerticalStack gap={headingGap} padding={8}>
     <div>
       <VerticalStack gap={buttonGap} maxWidth={600}>
-        {/* <ButtonStack>
-          <Button text="Default button" />
-          <Button disabled text="Disabled default button" />
-          <Button primary text="Primary button" />
-          <Button disabled primary text="Primary disabled button" styles={{}} />
-        </ButtonStack>
-        <ButtonStack>
-          <Button icon="PeopleAdd" circular />
-          <Button icon="Phone" circular disabled />
-          <Button icon="FontSize" circular primary />
-          <Button icon="Attach" circular primary disabled />
-        </ButtonStack>
-        <ButtonStack>
-          <Button icon="Upload" text="Button with string icon" />
-          <Button icon={{ iconName: 'Share' }} text="Button with iconProps" />
-          <Button icon={<Icon iconName="Download" />} text="Button with custom icon" />
-        </ButtonStack> */}
-
         {/*/////////////////////////////////////////////////////////////////////////////////////////*/}
 
-        {/* All 'as' examples should have children that appear (when the 'as' component supports children) */}
+        {/* TODO: make sure invalid cases still cause TS errors, add invalid cases as typing tests */}
+
+        <VerticalStack gap={buttonGap}>
+          <h2>Test SFC</h2>
+          <Button content={<TestComponent />} />
+          {/* <Button content={() => <TestComponent />} /> */}
+        </VerticalStack>
 
         <VerticalStack gap={buttonGap}>
           <h2>Root Slot</h2>
           <Button icon="share" href="https://developer.microsoft.com/en-us/fabric" content="Root: Implicit 'a' via href prop" />
+          {/* <Button icon="share" root='test string (INVALID USE CASE)' content="Root: String (INVALID USE CASE)" />
+          <Button icon="share" root={{ testKey: 'test value' }} content="Root: Object (INVALID USE CASE)" /> */}
           <Button icon="share" root={(rootProps, RootType) => <RootType {...rootProps} />} content="Root: Function" />
           <Button
             icon="share"
@@ -89,12 +83,14 @@ const ButtonSet = () => (
 
         <VerticalStack gap={buttonGap}>
           <h2>Stack Slot</h2>
-          <Button icon="share" content="Stack: 'as' prop 'div'" stack={{ as: 'div' }} />
+          <Button icon="share" content="Stack: Props, as: 'div'" stack={{ as: 'div' }} />
+          {/* <Button icon="share" stack='test string (INVALID USE CASE)' content="Stack: String (INVALID USE CASE)" /> */}
+          <Button icon="share" stack={{ horizontalAlign: 'left' }} content="Stack: Object, horizontalAlign: left" />
           <Button icon="share" stack={(stackProps, StackType) => <StackType {...stackProps} />} content="Stack: Function" />
           <Button
             icon="share"
             content="Stack: Function, VerticalStack"
-            stack={(stackProps, StackType) => <VerticalStack {...stackProps} />}
+            stack={(stackProps, StackType) => <VerticalStack {...stackProps as any} />}
           />
           <Button
             icon="share"
@@ -107,7 +103,7 @@ const ButtonSet = () => (
         <VerticalStack gap={buttonGap}>
           <h2>Icon Slot</h2>
           <Button icon="share" content="Icon: String" />
-          <Button icon={{ iconName: 'share' }} content="Icon: Props" />
+          <Button icon={{ iconName: 'share' }} content="Icon: Props, iconName: 'share'" />
           <Button
             icon={(iconProps, IconType) => (
               <b>
@@ -129,7 +125,7 @@ const ButtonSet = () => (
             <p>Content: Integer</p>
           </Button>
           <Button content="Content: String" />
-          <Button content={{ weight: 'bold', children: 'Content: Props' }} />
+          <Button content={{ weight: 'bold', children: 'Content: Props, weight: bold' }} />
           <Button content={() => <Spinner />}>
             <p>Content: Function, Spinner</p>
           </Button>
@@ -195,7 +191,25 @@ const ButtonSet = () => (
 
         {/*/////////////////////////////////////////////////////////////////////////////////////////*/}
 
-        {/* <ButtonStack>
+        <ButtonStack>
+          <Button content="Default button" />
+          <Button disabled content="Disabled default button" />
+          <Button primary content="Primary button" />
+          <Button disabled primary content="Primary disabled button" styles={{}} />
+        </ButtonStack>
+        <ButtonStack>
+          <Button icon="PeopleAdd" circular />
+          <Button icon="Phone" circular disabled />
+          <Button icon="FontSize" circular primary />
+          <Button icon="Attach" circular primary disabled />
+        </ButtonStack>
+        <ButtonStack>
+          <Button icon="Upload" content="Button with string icon" />
+          <Button icon={{ iconName: 'Share' }} content="Button with iconProps" />
+          <Button icon={<Icon iconName="Download" />} content="Button with custom icon" />
+        </ButtonStack>
+
+        <ButtonStack>
           <Button>
             <Icon iconName="Upload" />
             <Text>With custom text/icon</Text>
@@ -206,10 +220,10 @@ const ButtonSet = () => (
           </Button>
         </ButtonStack>
         <ButtonStack>
-          <Button text="Menu button" menu={buttonMenu} />
-          <Button disabled text="Menu disabled button" menu={buttonMenu} />
-          <Button expanded text="Menu expanded button" />
-          <Button expanded primary text="Menu expanded primary button" />
+          <Button content="Menu button" menu={buttonMenu} />
+          <Button disabled content="Menu disabled button" menu={buttonMenu} />
+          <Button expanded content="Menu expanded button" />
+          <Button expanded primary content="Menu expanded primary button" />
         </ButtonStack>
         <ButtonStack>
           <Button icon="Share" menu={buttonMenu}>
@@ -218,10 +232,10 @@ const ButtonSet = () => (
               <Text variant="caption">I can have a caption.</Text>
             </VerticalStack>
           </Button>
-          <Button disabled text="Menu disabled button" />
-          <Button expanded text="Menu expanded button" />
+          <Button disabled content="Menu disabled button" />
+          <Button expanded content="Menu expanded button" />
         </ButtonStack>
-        <CommandBar items={[{ key: '0', text: 'Button 1', iconProps: { iconName: 'Upload' } }]} /> */}
+        <CommandBar items={[{ key: '0', text: 'Button 1', iconProps: { iconName: 'Upload' } }]} />
       </VerticalStack>
     </div>
   </VerticalStack>

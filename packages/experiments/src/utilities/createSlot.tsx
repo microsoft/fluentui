@@ -6,16 +6,52 @@ import { memoizeFunction } from 'office-ui-fabric-react';
 // TODO: needs to work with refs / componentRefs/ forwardRefs / etc.
 // TODO: what other stuff are we bypassing / breaking by not using createElement? unique key generation for children?
 // TODO: make sure no unnecessary attributes are being pasesd to DOM ('as', 'slotAs', etc.)
-export const CreateElementWrapper = (type, props, ...children) => {
+
+export type IFactoryComponent<TProps> = React.ReactType<TProps> & {
+  create?: ISlotFactory<TProps>;
+};
+
+export interface IFactoryOptions<TProps> {
+  defaultProp: keyof TProps | 'children';
+}
+
+// Default prop = 'children', default prop type = typeof React children (ReactNode)
+export type ISlotChildrenType = React.ReactNode;
+
+export type ISlotDefinition<TSlots> = { [prop in keyof TSlots]: IFactoryComponent<TSlots[prop]> };
+
+export type ISlot<TProps> = ((props: TProps) => JSX.Element) & { isSlot?: boolean };
+
+export type ISlotFactory<TProps> = (componentProps: TProps, userProps: ISlotProp<TProps>) => JSX.Element;
+
+export type ISlots<TSlots> = { [slot in keyof TSlots]: ISlot<TSlots[slot]> };
+
+export interface IUserProps<TSlots> {
+  classNames: { [prop in keyof TSlots]?: string };
+}
+
+// TODO: If props object is passed but a required prop is missing, TS coerces to render function and gives a really obscure error.
+//        Is there a way to give a more descriptive error (i.e. "required prop missing")?
+export type ISlotProp<TProps, TDefaultPropType = never> = ISlotRenderFunction<TProps> | JSX.Element | TDefaultPropType | TProps;
+
+export type ISlotRenderFunction<TProps> = (props: TProps, componentType: React.ReactType<TProps>) => JSX.Element;
+
+// Can't use typeof on React.createElement since it's overloaded. Approximate createElement's signature for now and widen as needed.
+export function createElementWrapper<P>(
+  type: ISlot<P>,
+  props?: React.Attributes & P | null,
+  // tslint:disable-next-line:missing-optional-annotation
+  ...children: React.ReactNode[]
+): React.ReactElement<P> | JSX.Element | null {
   if (type.isSlot) {
     // Since we are bypassing createElement, use React.Children.toArray to make sure children are properly assigned keys.
     children = React.Children.toArray(children);
-    return type({ ...props, children });
+    return type({ ...(props as any), children });
   } else {
     // TODO: assess perf! is this spread really needed?
     return React.createElement(type, props, ...children);
   }
-};
+}
 
 // TODO:
 //  * data types pass on
@@ -23,56 +59,75 @@ export const CreateElementWrapper = (type, props, ...children) => {
 //  * perf comparison vs. readability
 //  * tests for all of the above
 
-// TODO: add TypeScript typeOf functions?
 // TODO: add tests for each case in this function.
 // TODO: tests should ensure props like data attributes and ID persist across all factory types
 // TODO: add typing tests too
-export const createFactory = (ComponentType, options = { defaultProp: 'children' }) => (componentProps = {}, userProps = {}) => {
-  if (userProps) {
-    const propType = typeof userProps;
+// TODO: is it possible to divorce the ideas of component factories and slots?
+//        since factories have to deal with slot props, it doesn't seem that way.
+export function createFactory<TProps>(
+  Component: React.ComponentType<TProps>,
+  options: IFactoryOptions<TProps> = { defaultProp: 'children' }
+): ISlotFactory<TProps> {
+  const result: ISlotFactory<TProps> = (componentProps, userProps) => {
+    if (userProps) {
+      const propType = typeof userProps;
 
-    switch (propType) {
-      case 'string':
-      case 'number':
-      case 'boolean':
-        // TODO: so defaultProp is like defaultShorthand prop... we should probably support more than one?
-        if (options.defaultProp) {
+      switch (propType) {
+        case 'string':
+        case 'number':
+        case 'boolean':
           userProps = {
-            [options.defaultProp]: userProps
-          };
-        }
-        break;
+            [options.defaultProp]: userProps as any
+          } as TProps;
+          break;
 
-      case 'function':
-        return userProps(componentProps, ComponentType);
+        case 'function':
+          // Functional components are not identified as functions because they have been converted to React Elements before this point.
+          return (userProps as ISlotRenderFunction<TProps>)(componentProps, Component);
 
-      default:
-        if (React.isValidElement(userProps)) {
-          return userProps;
-        }
-        break;
+        default:
+          if (React.isValidElement(userProps)) {
+            return userProps;
+          }
+          break;
+      }
+
+      return <Component {...componentProps} {...userProps} />;
+    } else {
+      return <Component {...componentProps} />;
     }
+  };
 
-    return <ComponentType {...componentProps} {...userProps} />;
-  } else {
-    return <ComponentType {...componentProps} />;
-  }
-};
+  return result;
+}
 
 // Fallback behavior for primitives.
 const getDefaultFactory = memoizeFunction(type => createFactory(type));
-const defaultFactory = (type, componentProps, userProps) => getDefaultFactory(type)(componentProps, userProps);
 
-const slot = (ComponentType, componentProps, userProps) => {
+function defaultFactory<TComponent, TProps>(type: TComponent, componentProps: TProps, userProps: TProps) {
+  return getDefaultFactory(type)(componentProps, userProps);
+}
+
+function renderSlot<TComponent extends IFactoryComponent<TProps>, TProps>(
+  ComponentType: TComponent,
+  componentProps: TProps,
+  userProps: TProps
+): JSX.Element {
   if (ComponentType.create !== undefined) {
     return ComponentType.create(componentProps, userProps);
   } else {
     return defaultFactory(ComponentType, componentProps, userProps);
   }
-};
+}
 
-export const getSlots = (userProps, slots) => {
-  const result = {};
+// TODO: good to require all slots? are there scenarios where slots would be optional? how would they be defined and used?
+//        constrain for now but loosen later if needed.
+// TODO: if TSlots is not enforcing values of ISlotProp, then remove the generic type constraint below
+export function getSlots<TProps extends TSlots & IUserProps<TSlots>, TSlots extends { [key in keyof TSlots]: ISlotProp<TProps[key]> }>(
+  userProps: TProps,
+  slots: ISlotDefinition<Required<TSlots>>
+): ISlots<Required<TSlots>> {
+  const result: ISlots<Required<TSlots>> = {} as ISlots<Required<TSlots>>;
 
   for (const name in slots) {
     if (slots.hasOwnProperty(name)) {
@@ -81,15 +136,16 @@ export const getSlots = (userProps, slots) => {
         userProps[name].children = React.Children.toArray(userProps[name].children);
       }
 
-      result[name] = componentProps => {
-        return slot(slots[name], { ...componentProps, className: userProps.classNames[name] }, userProps[name]);
+      const slot: ISlot<keyof TSlots> = slotProps => {
+        return renderSlot(slots[name], { ...(slotProps as any), className: userProps.classNames[name] }, userProps[name]);
       };
-      result[name].isSlot = true; // = name + ' slot';
+      slot.isSlot = true;
+      result[name] = slot;
     }
   }
 
   return result;
-};
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 // TODO: need something like this to merge styles and style variables for slots,
