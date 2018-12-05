@@ -8,7 +8,6 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "husky": "^0.14.3",
     "rxjs": "^6.3.3",
     "lint-staged": "^7.0.5"
   }
