@@ -44,7 +44,6 @@ exports[`Component Examples renders Dropdown.Custom.Example.tsx correctly 1`] = 
       aria-describedby="Customdrop1-option"
       aria-expanded="false"
       aria-label="Custom dropdown example"
-      aria-labelledby="Customdrop1-label"
       className=
           ms-Dropdown
           {
