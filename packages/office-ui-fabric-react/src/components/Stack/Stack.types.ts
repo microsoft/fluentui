@@ -31,7 +31,7 @@ export interface IStackProps extends IStyleableComponentProps<IStackProps, IStac
 
   /**
    * Whether to render Stack child elements horizontally.
-   * @default false
+   * @defaultvalue false
    */
   horizontal?: boolean;
 
@@ -87,7 +87,7 @@ export interface IStackProps extends IStyleableComponentProps<IStackProps, IStac
 
   /**
    * Whether Stack children should wrap onto multiple rows (HorizontalStacks only).
-   * @default false
+   * @defaultvalue false
    */
   wrap?: boolean;
 
