@@ -35,5 +35,29 @@ storiesOf('TextField', module)
     () => <TextField label="Icon" iconProps={{ iconName: 'Calendar' }} styles={{ icon: { color: rgb2hex(51, 51, 51) } }} />,
     { rtl: true }
   )
-  .addStory('Prefix', () => <TextField label="Prefix" prefix="https://" styles={{ icon: { color: rgb2hex(51, 51, 51) } }} />, { rtl: true })
-  .addStory('Suffix', () => <TextField label="Suffix" suffix=".com" styles={{ icon: { color: rgb2hex(51, 51, 51) } }} />, { rtl: true });
+  .addStory(
+    'Prefix',
+    () => (
+      <TextField
+        label="Prefix"
+        prefix="https://"
+        styles={{ prefix: { color: rgb2hex(51, 51, 51), fontFamily: 'Segoe UI', fontSize: '14px' } }}
+      />
+    ),
+    {
+      rtl: true
+    }
+  )
+  .addStory(
+    'Suffix',
+    () => (
+      <TextField
+        label="Suffix"
+        suffix=".com"
+        styles={{ suffix: { color: rgb2hex(51, 51, 51), fontFamily: 'Segoe UI', fontSize: '14px' } }}
+      />
+    ),
+    {
+      rtl: true
+    }
+  );
