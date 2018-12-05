@@ -337,7 +337,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   }
 
   /**
-   * Finds     the         next       valid Dropdown option and sets the selected index to it.
+   * Finds the next valid Dropdown option and sets the selected index to it.
    * @param stepValue Value of how many items the function should traverse.  Should be -1 or 1.
    * @param index Index of where the search should start
    * @param selectedIndex The selectedIndex Dropdown's state
