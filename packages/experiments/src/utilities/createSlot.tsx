@@ -2,9 +2,7 @@ import * as React from 'react';
 import { memoizeFunction } from 'office-ui-fabric-react';
 
 // TODO: Debug scenarios: is there a way to enable or highlight slots visually? borders? etc.
-// TODO: make sure Slot and SlotTemplate do not appear in hierarchy
-// TODO: needs to work with refs / componentRefs/ forwardRefs / etc.
-// TODO: what other stuff are we bypassing / breaking by not using createElement? unique key generation for children?
+// TODO: needs to work with refs / componentRefs/ forwardRefs / etc. Anything else getting bypassed?
 // TODO: make sure no unnecessary attributes are being pasesd to DOM ('as', 'slotAs', etc.)
 
 export type IFactoryComponent<TProps> = React.ReactType<TProps> & {
@@ -16,26 +14,56 @@ export interface IFactoryOptions<TProps> {
 }
 
 // Default prop = 'children', default prop type = typeof React children (ReactNode)
-export type ISlotChildrenType = React.ReactNode;
+export type IPropsWithChildren<TProps> = TProps & { children?: React.ReactNode };
 
+export type IChildrenProp = React.ReactNode;
+export type INoDefaultProp = never;
+
+/**
+ * An interface definition for defining Slots. Each key in TSlot must point to an IFactoryComponent.
+ */
 export type ISlotDefinition<TSlots> = { [prop in keyof TSlots]: IFactoryComponent<TSlots[prop]> };
 
-export type ISlot<TProps> = ((props: TProps) => JSX.Element) & { isSlot?: boolean };
+/**
+ * Interface for created Slot used internally by components.
+ */
+export type ISlot<TProps> = ((props: IPropsWithChildren<TProps>) => JSX.Element) & { isSlot?: boolean };
 
+/**
+ * Interface for a slot factory that consumes both componnent and user slot prop and generates render output.
+ */
 export type ISlotFactory<TProps> = (componentProps: TProps, userProps: ISlotProp<TProps>) => JSX.Element;
 
+/**
+ * Interface for aggregated Slots objects used internally by components.
+ */
 export type ISlots<TSlots> = { [slot in keyof TSlots]: ISlot<TSlots[slot]> };
 
 export interface IUserProps<TSlots> {
   classNames: { [prop in keyof TSlots]?: string };
 }
 
+/**
+ * Helper interface components can use for defining Slot properties. This interface defines the following properties:
+ *    1. Component props object (defined by TProps)
+ *    2. ISlotRender function
+ *    3. JSX Elements
+ *    4. Optional shorthand prop, defined by TShorthandProp
+ */
 // TODO: If props object is passed but a required prop is missing, TS coerces to render function and gives a really obscure error.
 //        Is there a way to give a more descriptive error (i.e. "required prop missing")?
-export type ISlotProp<TProps, TDefaultPropType = never> = ISlotRenderFunction<TProps> | JSX.Element | TDefaultPropType | TProps;
+export type ISlotProp<TProps, TShorthandProp = INoDefaultProp> = ISlotRenderFunction<TProps> | JSX.Element | TShorthandProp | TProps;
 
+/**
+ * Render function interface used by Slot props.
+ */
 export type ISlotRenderFunction<TProps> = (props: TProps, componentType: React.ReactType<TProps>) => JSX.Element;
 
+/**
+ * This function removes Slots from the React hierarchy by wrapping React.createElement and bypassing it for Slot components.
+ * To use this function on a per-file basis, put the following in a comment block: @jsx SlotModule.createElementWrapper
+ * As of writing, this line must be the FIRST LINE in the file to work correctly.
+ */
 // Can't use typeof on React.createElement since it's overloaded. Approximate createElement's signature for now and widen as needed.
 export function createElementWrapper<P>(
   type: ISlot<P>,
@@ -64,6 +92,9 @@ export function createElementWrapper<P>(
 // TODO: add typing tests too
 // TODO: is it possible to divorce the ideas of component factories and slots?
 //        since factories have to deal with slot props, it doesn't seem that way.
+/**
+ * This function creates factories that render ouput depending on the user ISlotProp props passed in.
+ */
 export function createFactory<TProps>(
   Component: React.ComponentType<TProps>,
   options: IFactoryOptions<TProps> = { defaultProp: 'children' }
@@ -120,6 +151,9 @@ function renderSlot<TComponent extends IFactoryComponent<TProps>, TProps>(
   }
 }
 
+/**
+ * This function generates slots that can be used in JSX given a definition of Slots and their corresponding types.
+ */
 // TODO: good to require all slots? are there scenarios where slots would be optional? how would they be defined and used?
 //        constrain for now but loosen later if needed.
 // TODO: if TSlots is not enforcing values of ISlotProp, then remove the generic type constraint below
@@ -148,7 +182,9 @@ export function getSlots<TProps extends TSlots & IUserProps<TSlots>, TSlots exte
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////
-// TODO: need something like this to merge styles and style variables for slots,
+// TODO: Slots Phase 2 (future PR)
+// TODO: Incorporate style variables approach and lift mergeStyles out of createComponent.
+// TODO: Need something like this to merge styles and style variables for slots,
 //        particularly if createComponent is modified not to generate classNames for slots
 //
 // const _resolveTokens = (props, ...allTokens) => Object.assign({}, ...allTokens.map(tokens =>
@@ -172,33 +208,3 @@ export function getSlots<TProps extends TSlots & IUserProps<TSlots>, TSlots exte
 //   return component;
 // };
 //////////////////////////////////////////////////////////////////////////////////////////////
-
-// TODO: test with split button approach
-
-// { split && (
-// <Slot as='span' userProps={splitContainer}>
-//   <Slot as={Divider} userProps={divider} />
-//   <Slot as={Icon} userProps={menuChevron} />
-// </Slot>
-// )}
-
-// export class ButtonTest extends React.Component {
-//   public render() {
-//     const { root, icon, text, splitContainer, divider, menuChevron, split } = this.props;
-
-//     // return (
-//     //   createSlot('button', { 'data-type': 'button', id: 'asdf' }, root, [
-//     //     createSlot(Icon, { size: 123, key: 0 }, icon),
-//     //     createSlot('span', { key: 1 }, text)
-//     //   ])
-//     // );
-
-//     // TODO: possible to do this without React hierarchy?
-//     return (
-//       <Slot as='button' userProps={root} data-type='button' id='asdf'>
-//         <Slot as={Icon} iconName='upload' userProps={icon} data-type='icon' />
-//         <Slot as='span' userProps={text} data-type='span' />
-//       </Slot>
-//     );
-//   }
-// }

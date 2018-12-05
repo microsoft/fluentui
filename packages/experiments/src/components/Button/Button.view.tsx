@@ -11,6 +11,7 @@ import * as SlotModule from '../../utilities/createSlot';
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 // TODO: we will have to make create functions for any component we want to use in shorthand slots
+// TODO: these should be moved to each component after Slots utilities are promoted.
 const Icon: IFactoryComponent<IIconProps> = props => <FabricIcon {...props} />;
 Icon.create = createFactory(Icon, { defaultProp: IconDefaultProp });
 
@@ -37,29 +38,15 @@ export const ButtonView: IButtonComponent['view'] = props => {
   const buttonProps = { ...getNativeProps(rest, buttonProperties), href: props.href };
 
   // TODO: data-type and id are for testing, remove. (add to tests, though!)
-  //    * data-type and id should be overridden by user props, right? add tests
-  //    * in what cases do we ever NOT want user props to override? (see why stardust has overrideProps)
-  // TODO: deal with classNames vs. slot styles props
-  // TODO: do menu element as slot too. also menuIcon?
-
-  // TODO: way to do keyof / valueof / typeof React.ReactType on IButtonSlotsTypes?
-  // TODO: this should be tied with IButtonSlotsTypes somehow
-  // TODO: need to add menu as slot which will expose typing issue with getSlots.
-  //        getSlots needs to return factory created components, not just the type passed in
-  //        For menu, { menu } => { menu: React.ComponentType }
-  // TODO: if prop is used in slots definition, what happens when prop is undefined? should there be
-  //        undefined / optional slots? should undefined / optional be allowed as an input in?
-  //        this seems bad if Slots[slot] can be undefined and could cause render fail
-  // TODO: make sure prop type safety still works!
+  //        data-type and id should be overridden by user props
   // TODO: createComponent's types add 'classNames' to props type, which is not currently easily exposed.
   //        Eventually classNames will come out of createComponent entirely and this will change. Just use 'typeof props' for now.
-  // TODO: remove explicit type declaration if possible.
   const Slots = getSlots<typeof props, IButtonSlots>(props, {
     root: _deriveRootType(props),
     stack: HorizontalStack,
     icon: Icon,
     content: Text,
-    menu: ContextualMenu, // TODO: should map to 'menu' prop?
+    menu: ContextualMenu,
     menuIcon: Icon,
     test1: Text, // createFactory test
     test2: 'span' // non-createFactory test
@@ -73,14 +60,14 @@ export const ButtonView: IButtonComponent['view'] = props => {
       aria-disabled={disabled}
     >
       <Slots.stack as="span" gap={8} verticalAlign="center" horizontalAlign="center">
-        <Slots.icon iconName="share" data-type="icon" id="icon-id" />
-        <Slots.content data-content="text" data-id="content-id" />
+        <Slots.icon />
+        <Slots.content />
 
-        <Slots.test1 data-type="testSlot" data-id="testSlot-id">
+        <Slots.test1>
           {enableTestChildren && <p>Factory Slot Child 1</p>}
           {enableTestChildren && <p>Factory Slot Child 2</p>}
         </Slots.test1>
-        <Slots.test2 data-type="testSlot" id="testSlot-id">
+        <Slots.test2>
           {enableTestChildren && <p>React Element Slot Child 1</p>}
           {enableTestChildren && <p>React Element Slot Child 2</p>}
         </Slots.test2>
@@ -88,7 +75,7 @@ export const ButtonView: IButtonComponent['view'] = props => {
         {children}
         {Menu && (
           <HorizontalStack.Item>
-            <Icon className={classNames.menuIcon} iconName="ChevronDown" />
+            <Slots.menuIcon iconName="ChevronDown" />
           </HorizontalStack.Item>
         )}
       </Slots.stack>
@@ -96,6 +83,36 @@ export const ButtonView: IButtonComponent['view'] = props => {
     </Slots.root>
   );
 };
+
+// TODO: test with split button approach
+
+// { split && (
+// <Slot as='span' userProps={splitContainer}>
+//   <Slot as={Divider} userProps={divider} />
+//   <Slot as={Icon} userProps={menuChevron} />
+// </Slot>
+// )}
+
+// export class ButtonTest extends React.Component {
+//   public render() {
+//     const { root, icon, text, splitContainer, divider, menuChevron, split } = this.props;
+
+//     // return (
+//     //   createSlot('button', { 'data-type': 'button', id: 'asdf' }, root, [
+//     //     createSlot(Icon, { size: 123, key: 0 }, icon),
+//     //     createSlot('span', { key: 1 }, text)
+//     //   ])
+//     // );
+
+//     // TODO: possible to do this without React hierarchy?
+//     return (
+//       <Slot as='button' userProps={root} data-type='button' id='asdf'>
+//         <Slot as={Icon} iconName='upload' userProps={icon} data-type='icon' />
+//         <Slot as='span' userProps={text} data-type='span' />
+//       </Slot>
+//     );
+//   }
+// }
 
 function _deriveRootType(props: IButtonViewProps): keyof JSX.IntrinsicElements {
   return !!props.href ? 'a' : 'button';

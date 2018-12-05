@@ -64,7 +64,6 @@ const ButtonSet = () => (
         <VerticalStack gap={buttonGap}>
           <h2>Test SFC</h2>
           <Button content={<TestComponent />} />
-          {/* <Button content={() => <TestComponent />} /> */}
         </VerticalStack>
 
         <VerticalStack gap={buttonGap}>
