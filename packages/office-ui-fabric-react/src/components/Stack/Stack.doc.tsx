@@ -85,37 +85,37 @@ export const StackPageProps: IDocPageProps = {
       codepenJS: VerticalStackBasicExampleCodepen
     },
     {
-      title: 'Gap and Padding Sizes',
+      title: 'Vertical Stack - Gap and Padding Sizes',
       code: VerticalStackSpacingExampleCode,
       view: <VerticalStackSpacingExample />,
       codepenJS: VerticalStackSpacingExampleCodepen
     },
     {
-      title: 'Growing Items',
+      title: 'Vertical Stack - Growing Items',
       code: VerticalStackGrowExampleCode,
       view: <VerticalStackGrowExample />,
       codepenJS: VerticalStackGrowExampleCodepen
     },
     {
-      title: 'Shrinking Items',
+      title: 'Vertical Stack - Shrinking Items',
       code: VerticalStackShrinkExampleCode,
       view: <VerticalStackShrinkExample />,
       codepenJS: VerticalStackShrinkExampleCodepen
     },
     {
-      title: 'Vertical Alignments',
+      title: 'Vertical Stack - Vertical Alignments',
       code: VerticalStackVerticalAlignExampleCode,
       view: <VerticalStackVerticalAlignExample />,
       codepenJS: VerticalStackVerticalAlignExampleCodepen
     },
     {
-      title: 'Horizontal Alignments',
+      title: 'Vertical Stack - Horizontal Alignments',
       code: VerticalStackHorizontalAlignExampleCode,
       view: <VerticalStackHorizontalAlignExample />,
       codepenJS: VerticalStackHorizontalAlignExampleCodepen
     },
     {
-      title: 'Configure Properties',
+      title: 'Vertical Stack - Configure Properties',
       code: VerticalStackConfigureExampleCode,
       view: <VerticalStackConfigureExample />,
       codepenJS: VerticalStackConfigureExampleCodepen
@@ -127,55 +127,55 @@ export const StackPageProps: IDocPageProps = {
       codepenJS: HorizontalStackBasicExampleCodepen
     },
     {
-      title: 'Gap and Padding Sizes',
+      title: 'Horizontal Stack - Gap and Padding Sizes',
       code: HorizontalStackSpacingExampleCode,
       view: <HorizontalStackSpacingExample />,
       codepenJS: HorizontalStackSpacingExampleCodepen
     },
     {
-      title: 'Growing Items',
+      title: 'Horizontal Stack - Growing Items',
       code: HorizontalStackGrowExampleCode,
       view: <HorizontalStackGrowExample />,
       codepenJS: HorizontalStackGrowExampleCodepen
     },
     {
-      title: 'Shrinking Items',
+      title: 'Horizontal Stack - Shrinking Items',
       code: HorizontalStackShrinkExampleCode,
       view: <HorizontalStackShrinkExample />,
       codepenJS: HorizontalStackShrinkExampleCodepen
     },
     {
-      title: 'Wrapping - Basic',
+      title: 'Horizontal Stack - Wrapping - Basic',
       code: HorizontalStackWrapExampleCode,
       view: <HorizontalStackWrapExample />,
       codepenJS: HorizontalStackWrapExampleCodepen
     },
     {
-      title: 'Wrapping - Advanced',
+      title: 'Horizontal Stack - Wrapping - Advanced',
       code: HorizontalStackWrapAdvancedExampleCode,
       view: <HorizontalStackWrapAdvancedExample />,
       codepenJS: HorizontalStackWrapAdvancedExampleCodepen
     },
     {
-      title: 'Wrapping - Nested',
+      title: 'Horizontal Stack - Wrapping - Nested',
       code: HorizontalStackWrapNestedExampleCode,
       view: <HorizontalStackWrapNestedExample />,
       codepenJS: HorizontalStackWrapNestedExampleCodepen
     },
     {
-      title: 'Horizontal Alignments',
+      title: 'Horizontal Stack - Horizontal Alignments',
       code: HorizontalStackHorizontalAlignExampleCode,
       view: <HorizontalStackHorizontalAlignExample />,
       codepenJS: HorizontalStackHorizontalAlignExampleCodepen
     },
     {
-      title: 'Vertical Alignments',
+      title: 'Horizontal Stack - Vertical Alignments',
       code: HorizontalStackVerticalAlignExampleCode,
       view: <HorizontalStackVerticalAlignExample />,
       codepenJS: HorizontalStackVerticalAlignExampleCodepen
     },
     {
-      title: 'Configure Properties',
+      title: 'Horizontal Stack - Configure Properties',
       code: HorizontalStackConfigureExampleCode,
       view: <HorizontalStackConfigureExample />,
       codepenJS: HorizontalStackConfigureExampleCodepen
