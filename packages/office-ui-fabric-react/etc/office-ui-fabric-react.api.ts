@@ -10370,6 +10370,34 @@ interface ISpinnerStyles {
 export function isRelativeUrl(url: string): boolean;
 
 // @public (undocumented)
+interface IStackProps extends IStyleableComponentProps<IStackProps, IStackStyles>, React.HTMLAttributes<HTMLElement> {
+  as?: string | React.ReactType<IPartialStackProps>;
+  className?: string;
+  fillHorizontal?: boolean;
+  fillVertical?: boolean;
+  gap?: number | string;
+  grow?: boolean | number | 'inherit' | 'initial' | 'unset';
+  horizontal?: boolean;
+  horizontalAlignment?: Alignment;
+  horizontalGap?: number | string;
+  maxHeight?: number | string;
+  maxWidth?: number | string;
+  padding?: number | string;
+  shrinkItems?: boolean;
+  style?: React.CSSProperties;
+  styles?: IStylesProp<IStackProps, IStackStyles>;
+  verticalAlignment?: 'top' | 'bottom' | Alignment;
+  verticalGap?: number | string;
+  wrap?: boolean;
+}
+
+// @public (undocumented)
+interface IStackStyles {
+  inner: IStyle;
+  root: IStyle;
+}
+
+// @public (undocumented)
 interface IStickyContext {
   // (undocumented)
   scrollablePane: PropTypes.Requireable<object>;
@@ -12638,6 +12666,11 @@ module ZIndexes {
 // WARNING: Unsupported export: Spinner
 // WARNING: Unsupported export: SpinnerLabelPosition
 // WARNING: Unsupported export: StackItem
+// WARNING: Unsupported export: Stack
+// WARNING: Unsupported export: Alignment
+// WARNING: Unsupported export: Omit
+// WARNING: Unsupported export: IStackComponent
+// WARNING: Unsupported export: IPartialStackProps
 // WARNING: Unsupported export: VerticalStack
 // WARNING: Unsupported export: IVerticalStackComponent
 // WARNING: Unsupported export: HorizontalStack
