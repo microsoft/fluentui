@@ -29,6 +29,11 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement | H
   setAriaDescribedBy?: boolean;
 
   /**
+   * Callback when visible card is expanded.
+   */
+  onCardExpand?: () => void;
+
+  /**
    * Length of compact card delay
    * @default 500
    */
