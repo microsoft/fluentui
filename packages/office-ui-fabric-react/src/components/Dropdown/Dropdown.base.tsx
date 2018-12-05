@@ -323,8 +323,6 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     }
   }
 
-  // this       is     a   comment
-
   /** Get either props.placeholder (new name) or props.placeHolder (old name) */
   private get _placeholder(): string | undefined {
     return this.props.placeholder || this.props.placeHolder;
