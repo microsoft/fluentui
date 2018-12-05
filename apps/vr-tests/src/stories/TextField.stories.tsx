@@ -32,8 +32,8 @@ storiesOf('TextField', module)
   .addStory('Borderless', () => <TextField label="Borderless" borderless placeholder="Placeholder text" />)
   .addStory(
     'Icon',
-    () => <TextField label="Icon" iconProps={{ iconName: 'Calendar' }} styles={{ root: { color: rgb2hex(51, 51, 51) } }} />,
+    () => <TextField label="Icon" iconProps={{ iconName: 'Calendar' }} styles={{ icon: { color: rgb2hex(51, 51, 51) } }} />,
     { rtl: true }
   )
-  .addStory('Prefix', () => <TextField label="Prefix" prefix="https://" styles={{ root: { color: rgb2hex(51, 51, 51) } }} />, { rtl: true })
-  .addStory('Suffix', () => <TextField label="Suffix" suffix=".com" styles={{ root: { color: rgb2hex(51, 51, 51) } }} />, { rtl: true });
+  .addStory('Prefix', () => <TextField label="Prefix" prefix="https://" styles={{ icon: { color: rgb2hex(51, 51, 51) } }} />, { rtl: true })
+  .addStory('Suffix', () => <TextField label="Suffix" suffix=".com" styles={{ icon: { color: rgb2hex(51, 51, 51) } }} />, { rtl: true });
