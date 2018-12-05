@@ -5,15 +5,10 @@ exports[`Component Examples renders Stack.Horizontal.Basic.Example.tsx correctly
   className=
       ms-Stack
       {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 400;
         height: auto;
         width: auto;
       }
@@ -35,16 +30,11 @@ exports[`Component Examples renders Stack.Horizontal.Basic.Example.tsx correctly
     className=
         ms-Stack
         {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
           background: #71afe5;
           box-sizing: border-box;
           display: flex;
           flex-direction: row;
           flex-wrap: nowrap;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
           height: auto;
           width: auto;
         }
@@ -76,16 +66,11 @@ exports[`Component Examples renders Stack.Horizontal.Basic.Example.tsx correctly
     className=
         ms-Stack
         {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
           background: #71afe5;
           box-sizing: border-box;
           display: flex;
           flex-direction: row;
           flex-wrap: nowrap;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
           height: auto;
           padding-bottom: 10px;
           padding-left: 10px;
@@ -121,16 +106,11 @@ exports[`Component Examples renders Stack.Horizontal.Basic.Example.tsx correctly
     className=
         ms-Stack
         {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
           background: #71afe5;
           box-sizing: border-box;
           display: flex;
           flex-direction: row;
           flex-wrap: nowrap;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
           height: 100px;
           padding-bottom: 10px;
           padding-left: 10px;
@@ -307,16 +287,11 @@ exports[`Component Examples renders Stack.Horizontal.Basic.Example.tsx correctly
     className=
         ms-Stack
         {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
           background: #71afe5;
           box-sizing: border-box;
           display: flex;
           flex-direction: row;
           flex-wrap: nowrap;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
           height: auto;
           padding-bottom: 10px;
           padding-left: 10px;

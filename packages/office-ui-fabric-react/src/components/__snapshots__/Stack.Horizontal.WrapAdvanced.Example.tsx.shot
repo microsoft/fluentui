@@ -5,15 +5,10 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
   className=
       ms-Stack
       {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 400;
         height: auto;
         width: auto;
       }
@@ -32,15 +27,10 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
     className=
         ms-Stack
         {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
           box-sizing: border-box;
           display: flex;
           flex-direction: row;
           flex-wrap: nowrap;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
           height: auto;
           width: auto;
         }
@@ -580,15 +570,10 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
     className=
         ms-Stack
         {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
           box-sizing: border-box;
           display: flex;
           flex-direction: row;
           flex-wrap: nowrap;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
           height: auto;
           width: auto;
         }
@@ -1296,13 +1281,8 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
       className=
           ms-Stack
           {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
             background: #71afe5;
             display: inline-block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
             height: 100%;
             overflow: visible;
             width: 100%;
@@ -1321,16 +1301,11 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
         className=
             ms-Stack-inner
             {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
               align-items: flex-start;
               box-sizing: border-box;
               display: flex;
               flex-direction: row;
               flex-wrap: wrap;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
               height: calc(100% + 30px);
               justify-content: flex-start;
               margin-bottom: -15px;

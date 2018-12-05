@@ -69,7 +69,6 @@ export const styles: IStackComponent['styles'] = props => {
     return {
       root: [
         classNames.root,
-        theme.fonts.medium,
         {
           maxWidth,
           maxHeight,
@@ -91,7 +90,6 @@ export const styles: IStackComponent['styles'] = props => {
 
       inner: [
         classNames.inner,
-        theme.fonts.medium,
         {
           display: 'flex',
           flexDirection: horizontal ? 'row' : 'column',
@@ -140,7 +138,6 @@ export const styles: IStackComponent['styles'] = props => {
   return {
     root: [
       classNames.root,
-      theme.fonts.medium,
       {
         display: 'flex',
         flexDirection: horizontal ? 'row' : 'column',

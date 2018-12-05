@@ -5,15 +5,10 @@ exports[`Component Examples renders Stack.Horizontal.VerticalAlign.Example.tsx c
   className=
       ms-Stack
       {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 400;
         height: auto;
         width: auto;
       }
@@ -35,17 +30,12 @@ exports[`Component Examples renders Stack.Horizontal.VerticalAlign.Example.tsx c
     className=
         ms-Stack
         {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
           align-items: flex-start;
           background: #71afe5;
           box-sizing: border-box;
           display: flex;
           flex-direction: row;
           flex-wrap: nowrap;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
           height: 100px;
           width: auto;
         }
@@ -84,17 +74,12 @@ exports[`Component Examples renders Stack.Horizontal.VerticalAlign.Example.tsx c
     className=
         ms-Stack
         {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
           align-items: center;
           background: #71afe5;
           box-sizing: border-box;
           display: flex;
           flex-direction: row;
           flex-wrap: nowrap;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
           height: 100px;
           width: auto;
         }
@@ -133,17 +118,12 @@ exports[`Component Examples renders Stack.Horizontal.VerticalAlign.Example.tsx c
     className=
         ms-Stack
         {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
           align-items: flex-end;
           background: #71afe5;
           box-sizing: border-box;
           display: flex;
           flex-direction: row;
           flex-wrap: nowrap;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
           height: 100px;
           width: auto;
         }
