@@ -5,5 +5,7 @@ import { getStyles } from './TeachingBubble.styles';
 
 export const TeachingBubbleContent = styled<ITeachingBubbleProps, ITeachingBubbleStyleProps, ITeachingBubbleStyles>(
   TeachingBubbleContentBase,
-  getStyles
+  getStyles,
+  undefined,
+  { scope: 'TeachingBubbleContent' }
 );

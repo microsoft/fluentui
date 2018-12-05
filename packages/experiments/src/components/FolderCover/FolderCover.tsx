@@ -14,13 +14,13 @@ export interface IFolderCoverState {
   // TODO Add animation support for drag/drop events.
 }
 
-const enum FolderCoverLayoutValues {
-  smallWidth = 72,
-  smallHeight = 52,
-  largeWidth = 112,
-  largeHeight = 80,
-  contentPadding = 4
-}
+const FolderCoverLayoutValues = {
+  smallWidth: 72 as 72,
+  smallHeight: 52 as 52,
+  largeWidth: 112 as 112,
+  largeHeight: 80 as 80,
+  contentPadding: 4 as 4
+};
 
 const SIZES: { [P in FolderCoverSize]: ISize } = {
   small: {
