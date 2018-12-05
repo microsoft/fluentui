@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { TagPicker, rgb2hex } from 'office-ui-fabric-react';
+import { TagPicker, Fabric } from 'office-ui-fabric-react';
 
 let testTags = [
   'black',
@@ -58,17 +58,19 @@ storiesOf('TagPicker', module)
   .addStory(
     'Selected',
     () => (
-      <TagPicker
-        defaultSelectedItems={[testTags[4]]}
-        onResolveSuggestions={getList}
-        onEmptyInputFocus={getList}
-        getTextFromItem={getTextFromItem}
-        pickerSuggestionsProps={{
-          suggestionsHeaderText: 'Suggested Tags',
-          noResultsFoundText: 'No Color Tags Found'
-        }}
-        itemLimit={2}
-      />
+      <Fabric>
+        <TagPicker
+          defaultSelectedItems={[testTags[4]]}
+          onResolveSuggestions={getList}
+          onEmptyInputFocus={getList}
+          getTextFromItem={getTextFromItem}
+          pickerSuggestionsProps={{
+            suggestionsHeaderText: 'Suggested Tags',
+            noResultsFoundText: 'No Color Tags Found'
+          }}
+          itemLimit={2}
+        />
+      </Fabric>
     ),
     { rtl: true }
   );

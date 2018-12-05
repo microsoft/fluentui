@@ -8,7 +8,7 @@ import { ColorPicker, rgb2hex } from 'office-ui-fabric-react';
 storiesOf('ColorPicker', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>)
-  .addStory('Root', () => <ColorPicker color="#FFF" styles={{ root: { fontFamily: 'Segoe UI', color: rgb2hex(51, 51, 51) } }} />, {
+  .addStory('Root', () => <ColorPicker color="#FFF" styles={{ input: { fontFamily: 'Segoe UI' } }} />, {
     rtl: true
   })
-  .addStory('Blue', () => <ColorPicker color="#48B" styles={{ root: { fontFamily: 'Segoe UI', color: rgb2hex(51, 51, 51) } }} />);
+  .addStory('Blue', () => <ColorPicker color="#48B" styles={{ input: { fontFamily: 'Segoe UI' } }} />);

@@ -14,12 +14,12 @@ storiesOf('Spinner', module)
   .addStory('Large', () => <Spinner size={SpinnerSize.large} />)
   .addStory('Label', () => <Spinner size={SpinnerSize.medium} label="Spinner label" />)
   .addStory('Label at top', () => <Spinner size={SpinnerSize.medium} label="Spinner label" labelPosition="top" />)
-  .addStory('Label on the right', () => (
+  .addStory('Label on the right', () => <Spinner size={SpinnerSize.medium} label="Spinner label" labelPosition="right" />)
+  .addStory('Label on the left', () => (
     <Spinner
       size={SpinnerSize.medium}
       label="Spinner label"
-      labelPosition="right"
-      styles={{ root: { fontFamily: 'Segoe UI', fontSize: '14px' } }}
+      labelPosition="left"
+      styles={{ label: { fontFamily: 'Segoe UI', fontSize: '14px' } }}
     />
-  ))
-  .addStory('Label on the left', () => <Spinner size={SpinnerSize.medium} label="Spinner label" labelPosition="left" />);
+  ));

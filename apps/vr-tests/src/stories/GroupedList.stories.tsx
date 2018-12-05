@@ -105,7 +105,7 @@ storiesOf('GroupedList', module)
   ))
   .addStory(
     'Root',
-    () => <GroupedList groups={groups} items={items} onRenderCell={onRenderCell} styles={{ root: { color: rgb2hex(51, 51, 51) } }} />,
+    () => <GroupedList groups={groups} items={items} onRenderCell={onRenderCell} styles={{ group: { color: rgb2hex(51, 51, 51) } }} />,
     {
       rtl: true
     }

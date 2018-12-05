@@ -20,7 +20,11 @@ storiesOf('HoverCard', module)
   .addStory(
     'Root',
     () => (
-      <HoverCard expandingCardProps={expandingCardProps} instantOpenOnClick={true}>
+      <HoverCard
+        expandingCardProps={expandingCardProps}
+        instantOpenOnClick={true}
+        styles={{ host: { fontFamily: 'Segoe UI', fontSize: '14px', color: rgb2hex(51, 51, 51) } }}
+      >
         Hover over me
       </HoverCard>
     ),
