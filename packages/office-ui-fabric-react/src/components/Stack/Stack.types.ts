@@ -1,5 +1,5 @@
 import { IStyle } from '../../Styling';
-import { IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
+import { IStatelessComponent, IStyleableComponentProps, IStylesProp } from '../../Foundation';
 
 export type Alignment = 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'baseline' | 'stretch';
 
@@ -31,6 +31,7 @@ export interface IStackProps extends IStyleableComponentProps<IStackProps, IStac
 
   /**
    * Whether to render Stack child elements horizontally.
+   * @default false
    */
   horizontal?: boolean;
 
@@ -42,7 +43,7 @@ export interface IStackProps extends IStyleableComponentProps<IStackProps, IStac
   /**
    * How to align Stack child elements vertically (along the y-axis).
    */
-  verticalAlignment?: Alignment;
+  verticalAlignment?: 'top' | 'bottom' | Alignment;
 
   /**
    * Whether the Stack should take up 100% of the width of its parent.
@@ -86,6 +87,7 @@ export interface IStackProps extends IStyleableComponentProps<IStackProps, IStac
 
   /**
    * Whether Stack children should wrap onto multiple rows (HorizontalStacks only).
+   * @default false
    */
   wrap?: boolean;
 
@@ -98,6 +100,11 @@ export interface IStackProps extends IStyleableComponentProps<IStackProps, IStac
    * Vertical gap between Stack child elements.
    */
   verticalGap?: number | string;
+
+  /**
+   * Custom styles to apply to the Stack.
+   */
+  styles?: IStylesProp<IStackProps, IStackStyles>;
 }
 
 export interface IStackStyles {
@@ -105,4 +112,9 @@ export interface IStackStyles {
    * Style set for the root element.
    */
   root: IStyle;
+
+  /**
+   * Style set for the inner element (only when the wrap property is true).
+   */
+  inner: IStyle;
 }

@@ -1,9 +1,15 @@
-import { IStackComponent, IStackStyles } from './Stack.types';
-import { parseGap, parsePadding } from './StackUtils';
+import { IStackComponent, IStackStyles, IStackProps } from './Stack.types';
+import { getVerticalAlignment, parseGap, parsePadding } from './StackUtils';
+import { getGlobalClassNames } from '../../Styling';
 
 const nameMap: { [key: string]: string } = {
   start: 'flex-start',
   end: 'flex-end'
+};
+
+const GlobalClassNames = {
+  root: 'ms-Stack',
+  inner: 'ms-Stack-inner'
 };
 
 export const styles: IStackComponent['styles'] = props => {
@@ -13,20 +19,37 @@ export const styles: IStackComponent['styles'] = props => {
     maxWidth,
     maxHeight,
     horizontal,
+    gap,
+    verticalGap,
     grow,
     wrap,
     padding,
     horizontalAlignment,
     verticalAlignment,
-    horizontalGap,
-    verticalGap,
     shrinkItems,
     theme,
     className
   } = props;
 
-  const hGap = parseGap(horizontalGap, theme);
-  const vGap = parseGap(verticalGap, theme);
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
+  const vertAlignment = getVerticalAlignment(verticalAlignment);
+
+  let horiGap: IStackProps['gap'];
+  let vertGap: IStackProps['gap'];
+
+  if (horizontal) {
+    horiGap = gap;
+    vertGap = verticalGap !== undefined ? verticalGap : gap;
+  } else {
+    vertGap = gap;
+  }
+
+  const hGap = parseGap(horiGap, theme);
+  const vGap = parseGap(vertGap, theme);
+
+  const horizontalMargin = `${-0.5 * hGap.value}${hGap.unit}`;
+  const verticalMargin = `${-0.5 * vGap.value}${vGap.unit}`;
 
   // styles to be applied to all direct children regardless of wrap or direction
   const childStyles = {
@@ -42,8 +65,81 @@ export const styles: IStackComponent['styles'] = props => {
     }
   };
 
+  if (wrap) {
+    return {
+      root: [
+        classNames.root,
+        theme.fonts.medium,
+        {
+          maxWidth,
+          maxHeight,
+          width: fillHorizontal ? '100%' : 'auto',
+          height: fillVertical ? '100%' : 'auto',
+          overflow: 'visible'
+        },
+        grow && {
+          flexGrow: grow === true ? 1 : grow,
+          overflow: 'hidden'
+        },
+        className,
+        {
+          // not allowed to be overridden by className
+          // since this is necessary in order to prevent collapsing margins
+          display: 'inline-block'
+        }
+      ],
+
+      inner: [
+        classNames.inner,
+        theme.fonts.medium,
+        {
+          display: 'flex',
+          flexDirection: horizontal ? 'row' : 'column',
+          flexWrap: 'wrap',
+          width: fillHorizontal && !wrap ? '100%' : 'auto',
+          marginLeft: horizontalMargin,
+          marginRight: horizontalMargin,
+          marginTop: verticalMargin,
+          marginBottom: verticalMargin,
+          overflow: 'visible',
+          maxWidth: '100vw',
+          maxHeight,
+          padding: parsePadding(padding, theme),
+          boxSizing: 'border-box',
+
+          // avoid unnecessary calc() calls if vertical gap is 0
+          height: fillVertical ? (vGap.value === 0 ? '100%' : `calc(100% + ${vGap.value}${vGap.unit})`) : 'auto',
+
+          selectors: {
+            '> *': {
+              margin: `${0.5 * vGap.value}${vGap.unit} ${0.5 * hGap.value}${hGap.unit}`,
+
+              // avoid unnecessary calc() calls if horizontal gap is 0
+              maxWidth: hGap.value === 0 ? '100%' : `calc(100% - ${hGap.value}${hGap.unit})`,
+
+              ...childStyles
+            },
+            ...commonSelectors
+          }
+        },
+        ,
+        grow && {
+          flexGrow: grow === true ? 1 : grow,
+          overflow: 'hidden'
+        },
+        horizontalAlignment && {
+          [horizontal ? 'justifyContent' : 'alignItems']: nameMap[horizontalAlignment] || horizontalAlignment
+        },
+        vertAlignment && {
+          [horizontal ? 'alignItems' : 'justifyContent']: nameMap[vertAlignment] || vertAlignment
+        }
+      ]
+    } as IStackStyles;
+  }
+
   return {
     root: [
+      classNames.root,
       theme.fonts.medium,
       {
         display: 'flex',
@@ -63,10 +159,15 @@ export const styles: IStackComponent['styles'] = props => {
       horizontalAlignment && {
         [horizontal ? 'justifyContent' : 'alignItems']: nameMap[horizontalAlignment] || horizontalAlignment
       },
-      verticalAlignment && {
-        [horizontal ? 'alignItems' : 'justifyContent']: nameMap[verticalAlignment] || verticalAlignment
+      vertAlignment && {
+        [horizontal ? 'alignItems' : 'justifyContent']: nameMap[vertAlignment] || vertAlignment
       },
       wrap && {
+        maxWidth,
+        maxHeight,
+        width: fillHorizontal ? '100%' : 'auto',
+        height: fillVertical ? '100%' : 'auto',
+        overflow: 'visible',
         selectors: {
           '> *': {
             margin: `${0.5 * vGap.value}${vGap.unit} ${0.5 * hGap.value}${hGap.unit}`,

@@ -11,7 +11,7 @@ const StackItemType = (<StackItem /> as React.ReactElement<IStackItemProps> & IS
   .type;
 
 const view: IStackComponent['view'] = props => {
-  const { as: RootType = 'div', classNames, shrinkItems, wrap, ...rest } = props;
+  const { as: RootType = 'div', classNames, shrinkItems, horizontal, wrap, ...rest } = props;
 
   const stackChildren: (React.ReactChild | null)[] = React.Children.map(
     props.children,
@@ -50,8 +50,18 @@ const view: IStackComponent['view'] = props => {
 
   const nativeProps = getNativeProps(rest, htmlElementProperties);
 
+  if (wrap) {
+    return (
+      <div className={classNames.root}>
+        <RootType {...nativeProps} wrap horizontal={horizontal} className={classNames.inner}>
+          {stackChildren}
+        </RootType>
+      </div>
+    );
+  }
+
   return (
-    <RootType {...nativeProps} className={classNames.root}>
+    <RootType {...nativeProps} horizontal={horizontal} className={classNames.root}>
       {stackChildren}
     </RootType>
   );
