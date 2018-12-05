@@ -1,6 +1,6 @@
 // This script collates bundle size information from
 // minified files in apps/test-bundles/dist and writes to
-// dist/bundlesizes.json.
+// apps/test-bundles/dist/bundlesizes.json.
 // It is uploaded as an artifact by the build definition in
 // Azure Dev Ops and used to compare baseline and PR file size
 // information which gets reported by Size Auditor
