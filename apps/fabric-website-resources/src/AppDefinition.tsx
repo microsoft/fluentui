@@ -217,12 +217,6 @@ export const AppDefinition: IAppDefinition = {
           url: '#examples/groupedlist'
         },
         {
-          component: require<any>('./components/pages/HorizontalStackPage').HorizontalStackPage,
-          key: 'HorizontalStack',
-          name: 'HorizontalStack',
-          url: '#/examples/horizontalstack'
-        },
-        {
           component: require<any>('./components/pages/HoverCardPage').HoverCardPage,
           key: 'HoverCard',
           name: 'HoverCard',
@@ -425,12 +419,6 @@ export const AppDefinition: IAppDefinition = {
           key: 'Tooltip',
           name: 'Tooltip',
           url: '#/examples/Tooltip'
-        },
-        {
-          component: require<any>('./components/pages/VerticalStackPage').VerticalStackPage,
-          key: 'VerticalStack',
-          name: 'VerticalStack',
-          url: '#/examples/verticalstack'
         }
       ],
       name: 'Basic components'
