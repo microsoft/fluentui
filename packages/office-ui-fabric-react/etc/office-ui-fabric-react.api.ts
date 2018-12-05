@@ -8025,22 +8025,6 @@ interface IGroupRenderProps {
 }
 
 // @public (undocumented)
-interface IHorizontalStackProps extends IPartialStackProps {
-  as?: string | React.ReactType<IHorizontalStackProps>;
-  horizontalAlign?: 'start' | 'end' | 'center' | 'space-around' | 'space-between' | 'space-evenly';
-  styles?: IStylesProp<IHorizontalStackProps, IHorizontalStackStyles>;
-  verticalAlign?: 'top' | 'bottom' | 'center' | 'baseline' | 'stretch';
-  verticalGap?: number | string;
-  wrap?: boolean;
-}
-
-// @public (undocumented)
-interface IHorizontalStackStyles {
-  inner: IStyle;
-  root: IStyle;
-}
-
-// @public (undocumented)
 interface IHoverCard {
 }
 
@@ -10383,7 +10367,7 @@ export function isRelativeUrl(url: string): boolean;
 
 // @public (undocumented)
 interface IStackProps extends IStyleableComponentProps<IStackProps, IStackStyles>, React.HTMLAttributes<HTMLElement> {
-  as?: string | React.ReactType<IPartialStackProps>;
+  as?: string | React.ReactType<IStackProps>;
   className?: string;
   fillHorizontal?: boolean;
   fillVertical?: boolean;
@@ -10391,7 +10375,6 @@ interface IStackProps extends IStyleableComponentProps<IStackProps, IStackStyles
   grow?: boolean | number | 'inherit' | 'initial' | 'unset';
   horizontal?: boolean;
   horizontalAlignment?: Alignment;
-  horizontalGap?: number | string;
   maxHeight?: number | string;
   maxWidth?: number | string;
   padding?: number | string;
@@ -11001,19 +10984,6 @@ interface IVerticalDividerClassNames {
 // @public (undocumented)
 interface IVerticalDividerProps {
   getClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
-}
-
-// @public (undocumented)
-interface IVerticalStackProps extends IPartialStackProps {
-  as?: string | React.ReactType<IVerticalStackProps>;
-  horizontalAlign?: 'start' | 'end' | 'center' | 'baseline' | 'stretch';
-  styles?: IStylesProp<IVerticalStackProps, IVerticalStackStyles>;
-  verticalAlign?: 'top' | 'bottom' | 'center' | 'space-around' | 'space-between' | 'space-evenly';
-}
-
-// @public (undocumented)
-interface IVerticalStackStyles {
-  root: IStyle;
 }
 
 // @public (undocumented)
@@ -12680,13 +12650,7 @@ module ZIndexes {
 // WARNING: Unsupported export: StackItem
 // WARNING: Unsupported export: Stack
 // WARNING: Unsupported export: Alignment
-// WARNING: Unsupported export: Omit
 // WARNING: Unsupported export: IStackComponent
-// WARNING: Unsupported export: IPartialStackProps
-// WARNING: Unsupported export: VerticalStack
-// WARNING: Unsupported export: IVerticalStackComponent
-// WARNING: Unsupported export: HorizontalStack
-// WARNING: Unsupported export: IHorizontalStackComponent
 // WARNING: Unsupported export: AnimationClassNames
 // WARNING: Unsupported export: FontClassNames
 // WARNING: Unsupported export: ColorClassNames
