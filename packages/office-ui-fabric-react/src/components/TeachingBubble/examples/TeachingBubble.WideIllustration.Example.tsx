@@ -24,7 +24,7 @@ export class TeachingBubbleWideIllustrationExample extends React.Component<{}, I
 
   public render(): JSX.Element {
     const { isTeachingBubbleVisible } = this.state;
-    const exampleImageProps: IImageProps = { src: 'http://placehold.it/364x140' };
+    const exampleImageProps: IImageProps = { src: 'http://placehold.it/154x140' };
     const examplePrimaryButton: IButtonProps = {
       children: 'Try it out'
     };

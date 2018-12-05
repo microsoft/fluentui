@@ -2,8 +2,9 @@ import { fluentBorderRadius } from './styleConstants';
 import { NeutralColors, CommunicationColors } from '../FluentColors';
 import FluentTheme from '../FluentTheme';
 import { getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
+import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 
-export const CompoundButtonStyles = {
+export const CompoundButtonStyles: Partial<IButtonStyles> = {
   root: {
     ...getFocusStyle(FluentTheme, 2),
     backgroundColor: NeutralColors.white,

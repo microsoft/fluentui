@@ -1,8 +1,8 @@
-import { IColorPickerGridCellStyleProps } from 'office-ui-fabric-react/lib/SwatchColorPicker';
+import { IColorPickerGridCellStyleProps, IColorPickerGridCellStyles } from 'office-ui-fabric-react/lib/SwatchColorPicker';
 import { NeutralColors } from '../FluentColors';
 import { IsFocusVisibleClassName } from 'office-ui-fabric-react/lib/Utilities';
 
-export const ColorPickerGridCellStyles = (props: IColorPickerGridCellStyleProps) => {
+export const ColorPickerGridCellStyles = (props: IColorPickerGridCellStyleProps): Partial<IColorPickerGridCellStyles> => {
   const { theme, selected, isWhite, circle, borderWidth } = props;
   const { palette } = theme;
 

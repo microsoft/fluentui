@@ -41,7 +41,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
 
   /**
    * Defines which arrows to react to.
-   * @defaultvalue FocusZoneDirection.bidriectional
+   * @defaultvalue FocusZoneDirection.bidirectional
    */
   direction?: FocusZoneDirection;
 

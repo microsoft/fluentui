@@ -1,6 +1,72 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 22 Nov 2018 13:36:17 GMT and should not be manually modified.
+This log was last generated on Wed, 05 Dec 2018 13:35:36 GMT and should not be manually modified.
+
+## 6.110.2
+Wed, 05 Dec 2018 13:35:35 GMT
+
+### Patches
+
+- TeachingBubble: add customizer scope to TeachingBubbleContent to allow using it individually.
+
+## 6.110.1
+Tue, 04 Dec 2018 13:36:40 GMT
+
+### Patches
+
+- Picker: The shift key is now required (in addition to the del key) in order to delete a suggestion.
+- DetailsList: Adding support for column drag-drop in RTL
+
+## 6.110.0
+Mon, 03 Dec 2018 13:37:07 GMT
+
+### Minor changes
+
+- Removing some deprecated components flagged when turning tslint deprecation flag to true in oufr package.
+
+### Patches
+
+- DetailsList: Re-adding border fade animation as transition on column reorder
+- TeachingBubble: Expand usage documentation to distinguish it from similar components.
+- Facepile: Fix overflow title not rendered in Firefox.
+
+## 6.109.0
+Fri, 30 Nov 2018 13:37:17 GMT
+
+### Minor changes
+
+- Extend theming to incorporate shadows and rounded corners
+
+### Patches
+
+- DevExp: packages will no longer include the api.json from api extractor to reduce package size
+- SwatchColorPicker: Fixing state method componentWillReceiveProps of SwatchColorPicker in order to resolve how it sets focus and color on its cells in its uncontrolled form.
+
+## 6.108.0
+Thu, 29 Nov 2018 19:34:12 GMT
+
+### Minor changes
+
+- HoverCard: A new callback called onCardExpand has been added that occurs after the expanded hover card is rendered
+- DatePicker: Added calendarAs to support custom calendars
+- DatePicker: Support custom callout props, and therefore layer props
+- TeachingBubble: Convert Callout styles to use subComponentStyles.
+- Tooltip: do not allow more than one tooltip at once
+- add SASS var for accent theme slot
+- semantic slot value updates
+- Spinner: adds new prop 'labelPosition' to allow customizing the render position of the label. Add new screener stories plus snapshot-test.
+
+### Patches
+
+- Ensures nav links are announced once
+- BasePicker: Will now respect `className` property of `inputProps`, if one was provided.
+- Dropdown: Add documentation (where there were none previously) about the responsiveMode prop.
+- Slider: Fixed IE 11 compatibility issue by changing `Number.parseFloat()` method call to `parseFloat()` method instead.
+- Correct hover and highlight states for Calendar (DateRangeType.Week)
+- Sticky: Sync ScrollablePane scroll on Sticky forceUpdate to fix scrollbar positioning.
+- Facepile: Fix custom title on overflow button not being used in facepile
+- DetailsList: fixing focus rectangle color from themePrimary to neutralSecondary.
+- ContextualMenu: Fixes alignment of the chevron button of a regular submenu and the split button chevron. Changes positioning of the divider of the split button to fix a hover state background visual bug.
 
 ## 6.106.3
 Thu, 22 Nov 2018 13:36:17 GMT
