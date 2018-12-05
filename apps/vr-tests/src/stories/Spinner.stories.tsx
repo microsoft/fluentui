@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { Spinner, SpinnerSize } from 'office-ui-fabric-react';
+import { Spinner, SpinnerSize, Fabric } from 'office-ui-fabric-react';
 
 storiesOf('Spinner', module)
   .addDecorator(FabricDecorator)
@@ -16,10 +16,12 @@ storiesOf('Spinner', module)
   .addStory('Label at top', () => <Spinner size={SpinnerSize.medium} label="Spinner label" labelPosition="top" />)
   .addStory('Label on the right', () => <Spinner size={SpinnerSize.medium} label="Spinner label" labelPosition="right" />)
   .addStory('Label on the left', () => (
-    <Spinner
-      size={SpinnerSize.medium}
-      label="Spinner label"
-      labelPosition="left"
-      styles={{ label: { fontFamily: 'Segoe UI', fontSize: '14px' } }}
-    />
+    <Fabric>
+      <Spinner
+        size={SpinnerSize.medium}
+        label="Spinner label"
+        labelPosition="left"
+        styles={{ label: { fontFamily: 'Segoe UI', fontSize: '14px' } }}
+      />
+    </Fabric>
   ));
