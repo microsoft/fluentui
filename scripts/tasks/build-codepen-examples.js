@@ -9,18 +9,32 @@ module.exports = function() {
   const async = require('async');
   const mkdirp = require('mkdirp');
 
+  function readFileStart(file, len) {
+    const buffer = Buffer.alloc(len);
+    let fileSource = '';
+    let fd;
+    try {
+      fd = fs.openSync(file, 'r');
+      fs.readSync(fd, buffer, 0, len, 0);
+      fileSource = buffer.toString();
+    } finally {
+      if (fd) {
+        fs.closeSync(fd);
+      }
+    }
+    return fileSource;
+  }
+
   return new Promise((resolve, reject) => {
     async.eachLimit(
       files,
       5,
       function(file, callback) {
-        const fileSource = fs.readFileSync(file).toString();
-
-        if (fileSource.indexOf('@codepen') >= 0) {
+        if (readFileStart(file, 50).indexOf('@codepen') >= 0) {
+          let fileSource = fs.readFileSync(file);
           const exampleName = path.basename(file, '.tsx');
 
           // extract the name of the component (relies on component/examples/examplefile.tsx structure)
-          const exampleComponentName = file.split('/').reverse()[2];
           const fileInfo = { path: file, source: fileSource };
           const api = { jscodeshift: jscodeshift.withParser('babylon'), stats: {} };
           const transformResult = transformer(fileInfo, api);
@@ -37,7 +51,7 @@ module.exports = function() {
       },
       function(err) {
         if (err) {
-          reject();
+          reject(err);
         } else {
           resolve();
         }

@@ -33,7 +33,9 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
     isIconVisible,
     isPadded,
     isIconOnly,
-    cellStyleProps = DEFAULT_CELL_STYLE_PROPS
+    cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
+    transitionDurationDrag,
+    transitionDurationDrop
   } = props;
 
   const { semanticColors, palette } = theme;
@@ -52,6 +54,20 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
     opacity: 1,
     paddingLeft: 8
   };
+
+  const borderWhileDragging: IStyle = [
+    {
+      borderStyle: 'solid',
+      borderWidth: 1,
+      borderColor: palette.themePrimary
+    }
+  ];
+
+  const borderAfterDragOrDrop: IStyle = [
+    {
+      borderColor: 'transparent'
+    }
+  ];
 
   return {
     root: [
@@ -179,22 +195,12 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
 
     accessibleLabel: [hiddenContentStyle],
 
-    borderAfterDropping: [
-      {
-        borderStyle: 'solid',
-        borderWidth: 1,
-        borderColor: palette.themePrimary,
-        left: -1,
-        lineHeight: 31
-      }
-    ],
+    borderWhileDragging: borderWhileDragging,
 
-    borderWhileDragging: [
-      {
-        borderStyle: 'solid',
-        borderWidth: 1,
-        borderColor: palette.themePrimary
-      }
-    ]
+    noBorderWhileDragging: [borderAfterDragOrDrop, { transition: `border-color  ${transitionDurationDrag}ms ease` }],
+
+    borderAfterDropping: [borderWhileDragging, { left: -1, lineHeight: 31 }],
+
+    noBorderAfterDropping: [borderAfterDragOrDrop, { transition: `border-color  ${transitionDurationDrop}ms ease` }]
   };
 };

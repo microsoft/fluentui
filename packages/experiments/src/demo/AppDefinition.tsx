@@ -65,6 +65,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/layoutgroup'
         },
         {
+          component: require<any>('../components/Pagination/PaginationPage').PaginationPage,
+          key: 'Pagination',
+          name: 'Pagination',
+          url: '#/examples/pagination'
+        },
+        {
           component: require<any>('../components/Separator/SeparatorPage').SeparatorPage,
           key: 'Separator',
           name: 'Separator',

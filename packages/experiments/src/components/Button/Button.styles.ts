@@ -14,7 +14,7 @@ export const getButtonStyles: IButtonComponent['styles'] = props => {
     true
   );
 
-  const buttonVariables = _processVariables(
+  const buttonVariables = processVariables(
     {
       baseVariant: {
         baseState: {
@@ -226,9 +226,9 @@ export const getButtonStyles: IButtonComponent['styles'] = props => {
   );
 };
 
-type IProcessedVariables<T> = { [P in keyof T]-?: IProcessedVariables<T[P]> };
+export type IProcessedVariables<T> = { [P in keyof T]-?: IProcessedVariables<T[P]> };
 
-function _processVariables<T>(partialVariables: T, customVariables?: T): IProcessedVariables<T> {
+export function processVariables<T>(partialVariables: T, customVariables?: T): IProcessedVariables<T> {
   // tslint:disable-next-line:no-any
   const result = customVariables ? merge({}, partialVariables, customVariables) : partialVariables;
 

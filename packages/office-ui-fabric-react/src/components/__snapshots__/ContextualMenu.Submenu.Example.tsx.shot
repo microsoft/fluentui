@@ -78,7 +78,7 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
               position: relative;
             }
             &:hover {
-              border-color: #212121;
+              border-color: #333333;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;

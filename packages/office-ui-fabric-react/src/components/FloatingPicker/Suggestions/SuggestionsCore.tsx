@@ -103,7 +103,7 @@ export class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, 
       this.currentSuggestion = suggestions[0];
       this.currentSuggestion.selected = true;
     } else {
-      if (this.currentIndex > -1) {
+      if (this.currentIndex > -1 && suggestions[this.currentIndex]) {
         suggestions[this.currentIndex].selected = false;
       }
       suggestions[index].selected = true;

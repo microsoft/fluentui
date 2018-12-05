@@ -16,13 +16,14 @@ $linkHoveredColor: '[theme:linkHovered, default: #004578]';
 
 $disabledBackgroundColor: '[theme:disabledBackground, default: #f4f4f4]';
 $disabledTextColor: '[theme:disabledText, default: #a6a6a6]';
-$disabledBodyTextColor: '[theme:disabledText, default: #c8c8c8]';
+$disabledBodyTextColor: '[theme:disabledBodyText, default: #a6a6a6]';
 $disabledSubtextColor: '[theme:disabledSubtext, default: #dadada]';
+$disabledBodySubtextColor: '[theme:disabledBodySubtext, default: #c8c8c8]';
 
 $focusBorderColor: '[theme:focusBorder, default: #000000]';
 $variantBorderColor: '[theme:variantBorder, default: #eaeaea]';
 $variantBorderHoveredColor: '[theme:variantBorderHovered, default: #a6a6a6]';
-$defaultStateBackgroundColor: '[theme:defaultStateBackground, default: #eaeaea]';
+$defaultStateBackgroundColor: '[theme:defaultStateBackground, default: #f8f8f8]';
 
 $errorTextColor: '[theme:errorText, default: #a80000]';
 $warningTextColor: '[theme:warningText, default: #333333]';
@@ -35,12 +36,14 @@ $successBackgroundColor: '[theme:successBackground, default: rgba(186,216,10,.2)
 /* Input controls */
 $inputBorderColor: '[theme:inputBorder, default: #a6a6a6]';
 $smallInputBorderColor: '[theme:inputBorder, default: #666666]';
-$inputBorderHoveredColor: '[theme:inputBorderHovered, default: #212121]';
+$inputBorderHoveredColor: '[theme:inputBorderHovered, default: #333333]';
 $inputBackgroundColor: '[theme:inputBackground, default: #ffffff]';
 $inputBackgroundCheckedColor: '[theme:inputBackgroundChecked, default: #0078d4]';
 $inputBackgroundCheckedHoveredColor: '[theme:inputBackgroundCheckedHovered, default: #106ebe]';
 $inputForegroundCheckedColor: '[theme:inputForegroundChecked, default: #ffffff]';
 $inputFocusBorderAltColor: '[theme:inputFocusBorderAlt, default: #0078d4]';
+$inputTextColor: '[theme:inputText, default: #333333]';
+$inputTextHoveredColor: '[theme:inputTextHovered, default: #212121]';
 $inputPlaceholderTextColor: '[theme:inputPlaceholderText, default: #666666]';
 
 /* Buttons */
@@ -65,6 +68,8 @@ $primaryButtonBorderColor: '[theme:primaryButtonText, default: transparent]';
 $primaryButtonTextColor: '[theme:primaryButtonText, default: #ffffff]';
 $primarybuttonTextHoveredColor: '[theme:primaryButtonTextHovered, default: #ffffff]';
 $primaryButtonTextPressedColor: '[theme:primaryButtonTextPressed, default: #ffffff]';
+$accentButtonBackgroundColor: '[theme:accentButtonBackground, default: #0078d4]';
+$accentButtonTextColor: '[theme:accentButtonText, default: #ffffff]';
 
 /* Menus */
 

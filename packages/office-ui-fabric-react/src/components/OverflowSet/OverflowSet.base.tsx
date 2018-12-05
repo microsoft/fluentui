@@ -2,15 +2,7 @@ import * as React from 'react';
 
 import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
 import { IKeytipProps } from '../../Keytip';
-import {
-  BaseComponent,
-  classNamesFunction,
-  createRef,
-  divProperties,
-  elementContains,
-  focusFirstChild,
-  getNativeProps
-} from '../../Utilities';
+import { BaseComponent, classNamesFunction, divProperties, elementContains, focusFirstChild, getNativeProps } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { KeytipManager } from '../../utilities/keytips/KeytipManager';
 import { IOverflowSet, IOverflowSetItemProps, IOverflowSetProps, IOverflowSetStyles, IOverflowSetStyleProps } from './OverflowSet.types';
@@ -23,10 +15,10 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
     role: 'menubar'
   };
 
-  private _focusZone = createRef<IFocusZone>();
+  private _focusZone = React.createRef<IFocusZone>();
   private _persistedKeytips: { [uniqueID: string]: IKeytipProps } = {};
   private _keytipManager: KeytipManager = KeytipManager.getInstance();
-  private _divContainer = createRef<HTMLDivElement>();
+  private _divContainer = React.createRef<HTMLDivElement>();
   private _classNames: IProcessedStyleSet<IOverflowSetStyles>;
 
   constructor(props: IOverflowSetProps) {

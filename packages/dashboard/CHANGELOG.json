@@ -2,6 +2,98 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.37.1",
+      "tag": "@uifabric/dashboard_v0.37.1",
+      "date": "Tue, 04 Dec 2018 13:36:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Using _async fabric utility functions to prevent timeout leaks",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "87c0a06a05d2c895cf054cc23c4758a469d80d0c"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.44.1 <7.0.0` to `>=6.45.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.110.0 <7.0.0` to `>=6.110.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.37.0",
+      "tag": "@uifabric/dashboard_v0.37.0",
+      "date": "Fri, 30 Nov 2018 13:37:17 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding add card experience to DGL, providing respective callbacks and examples",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "145720a4eec8d3fcfcbef581e20b0529f3cd3b66"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Add missing dependency",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "8276c66fdf75a4ad8b03614fd4e7c6e2c52203e5"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.43.0 <7.0.0` to `>=6.44.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.108.0 <7.0.0` to `>=6.109.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.36.0",
+      "tag": "@uifabric/dashboard_v0.36.0",
+      "date": "Thu, 29 Nov 2018 19:34:12 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "RecommendationBanner improvements to support Visualizations and ImageIllustration by default",
+            "author": "Veerash Ayyagari <veeray@microsoft.com>",
+            "commit": "b3558c1312273e2df0b3fa166031bbc3d020e3d7"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.42.0 <7.0.0` to `>=6.43.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.106.3 <7.0.0` to `>=6.108.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.35.1",
+      "tag": "@uifabric/dashboard_v0.35.1",
+      "date": "Tue, 20 Nov 2018 20:12:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add default fonts from fabric  for dashboard package ",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "d8b74c4568595d0f721b9f34ddfb1528676a9dfa"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.106.0 <7.0.0` to `>=6.106.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.35.0",
       "tag": "@uifabric/dashboard_v0.35.0",
       "date": "Tue, 13 Nov 2018 13:30:53 GMT",

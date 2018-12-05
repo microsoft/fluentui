@@ -1,8 +1,50 @@
+/**
+ * This configuration file specifies NPM dependency version selections that affect all projects
+ * in a Rush repo.  For full documentation, please see https://rushjs.io
+ */
 {
   "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/common-versions.schema.json",
+
+  /**
+   * A table that specifies a "preferred version" for a dependency package. The "preferred version"
+   * is typically used to hold an indirect dependency back to a specific version, however generally
+   * it can be any SemVer range specifier (e.g. "~1.2.3"), and it will narrow any (compatible)
+   * SemVer range specifier.  See the Rush documentation for details about this feature.
+   */
   "preferredVersions": {
-    "webpack": "3.11.0",
-    "webpack-dev-server": "2.11.2",
-    "webpack-cli": "2.0.15"
+    /**
+     * When someone asks for "^1.0.0" make sure they get "1.2.3" when working in this repo,
+     * instead of the latest version.
+     */
+    // "some-package": "1.2.3"
+    "@types/webpack-env": "1.13.0",
+    "css-loader": "^0.28.7",
+    "enzyme": "^3.4.1",
+    "jest": "^23.1.0",
+    "react": ">=16.3.2-0 <17.0.0",
+    "react-dom": ">=16.3.2-0 <17.0.0",
+    "style-loader": "^0.21.0",
+    "webpack": "4.7.0",
+    "webpack-cli": "2.1.2",
+    "webpack-dev-server": "3.1.4"
+  },
+
+  /**
+   * The "rush check" command can be used to enforce that every project in the repo must specify
+   * the same SemVer range for a given dependency.  However, sometimes exceptions are needed.
+   * The allowedAlternativeVersions table allows you to list other SemVer ranges that will be
+   * accepted by "rush check" for a given dependency.
+   *
+   * IMPORTANT: THIS TABLE IS FOR *ADDITIONAL* VERSION RANGES THAT ARE ALTERNATIVES TO THE
+   * USUAL VERSION (WHICH IS INFERRED BY LOOKING AT ALL PROJECTS IN THE REPO).
+   * This design avoids unnecessary churn in this file.
+   */
+  "allowedAlternativeVersions": {
+    /**
+     * For example, allow some projects to use an older TypeScript compiler
+     * (in addition to whatever "usual" version is being used by other projects in the repo):
+     */
+    // "typescript": ["~2.4.0"]
+    "webpack": [">=4.0.0"]
   }
 }

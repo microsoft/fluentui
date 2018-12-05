@@ -28,3 +28,4 @@ tslint.json
 typings
 webpack.config.js
 fabric-test*
+*.api.json

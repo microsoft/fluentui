@@ -124,13 +124,13 @@ exports[`ChoiceGroup label does not have className prop from parent 1`] = `
                   color: #000000;
                 }
                 &:hover:before {
-                  border-color: #212121;
+                  border-color: #333333;
                 }
                 &:focus .ms-ChoiceFieldLabel {
                   color: #000000;
                 }
                 &:focus:before {
-                  border-color: #212121;
+                  border-color: #333333;
                 }
                 &:before {
                   background-color: #ffffff;
@@ -238,13 +238,13 @@ exports[`ChoiceGroup label does not have className prop from parent 1`] = `
                   color: #000000;
                 }
                 &:hover:before {
-                  border-color: #212121;
+                  border-color: #333333;
                 }
                 &:focus .ms-ChoiceFieldLabel {
                   color: #000000;
                 }
                 &:focus:before {
-                  border-color: #212121;
+                  border-color: #333333;
                 }
                 &:before {
                   background-color: #ffffff;
@@ -352,13 +352,13 @@ exports[`ChoiceGroup label does not have className prop from parent 1`] = `
                   color: #000000;
                 }
                 &:hover:before {
-                  border-color: #212121;
+                  border-color: #333333;
                 }
                 &:focus .ms-ChoiceFieldLabel {
                   color: #000000;
                 }
                 &:focus:before {
-                  border-color: #212121;
+                  border-color: #333333;
                 }
                 &:before {
                   background-color: #ffffff;
@@ -497,13 +497,13 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
                   color: #000000;
                 }
                 &:hover:before {
-                  border-color: #212121;
+                  border-color: #333333;
                 }
                 &:focus .ms-ChoiceFieldLabel {
                   color: #000000;
                 }
                 &:focus:before {
-                  border-color: #212121;
+                  border-color: #333333;
                 }
                 &:before {
                   background-color: #ffffff;
@@ -611,13 +611,13 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
                   color: #000000;
                 }
                 &:hover:before {
-                  border-color: #212121;
+                  border-color: #333333;
                 }
                 &:focus .ms-ChoiceFieldLabel {
                   color: #000000;
                 }
                 &:focus:before {
-                  border-color: #212121;
+                  border-color: #333333;
                 }
                 &:before {
                   background-color: #ffffff;
@@ -725,13 +725,13 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
                   color: #000000;
                 }
                 &:hover:before {
-                  border-color: #212121;
+                  border-color: #333333;
                 }
                 &:focus .ms-ChoiceFieldLabel {
                   color: #000000;
                 }
                 &:focus:before {
-                  border-color: #212121;
+                  border-color: #333333;
                 }
                 &:before {
                   background-color: #ffffff;

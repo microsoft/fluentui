@@ -78,7 +78,7 @@ exports[`TextField renders TextField correctly 1`] = `
             position: relative;
           }
           &:hover {
-            border-color: #212121;
+            border-color: #333333;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
@@ -217,7 +217,7 @@ exports[`TextField renders TextField multiline resizable correctly 1`] = `
             position: relative;
           }
           &:hover {
-            border-color: #212121;
+            border-color: #333333;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
@@ -358,7 +358,7 @@ exports[`TextField renders TextField multiline unresizable correctly 1`] = `
             position: relative;
           }
           &:hover {
-            border-color: #212121;
+            border-color: #333333;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
@@ -445,7 +445,7 @@ exports[`TextField renders multiline TextField correctly with errorMessage 1`] =
         border-width: 2px;
       }
       &:hover {
-        border-color: #212121;
+        border-color: #333333;
       }
 >
   <div
@@ -530,7 +530,7 @@ exports[`TextField renders multiline TextField correctly with errorMessage 1`] =
             text-align: left;
           }
           &:hover {
-            border-color: #212121;
+            border-color: #333333;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
@@ -676,7 +676,7 @@ exports[`TextField renders multiline TextField correctly with props affecting st
         border-width: 2px;
       }
       &:hover {
-        border-color: #212121;
+        border-color: #333333;
       }
 >
   <div
@@ -761,7 +761,7 @@ exports[`TextField renders multiline TextField correctly with props affecting st
             text-align: left;
           }
           &:hover {
-            border-color: #212121;
+            border-color: #333333;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
@@ -908,7 +908,7 @@ exports[`TextField should resepect user component and subcomponent styling 1`] =
         border-width: 2px;
       }
       &:hover {
-        border-color: #212121;
+        border-color: #333333;
       }
 >
   <div
@@ -994,7 +994,7 @@ exports[`TextField should resepect user component and subcomponent styling 1`] =
             text-align: left;
           }
           &:hover {
-            border-color: #212121;
+            border-color: #333333;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
