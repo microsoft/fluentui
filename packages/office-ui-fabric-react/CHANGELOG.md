@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 04 Dec 2018 13:36:40 GMT and should not be manually modified.
+This log was last generated on Wed, 05 Dec 2018 13:35:36 GMT and should not be manually modified.
+
+## 6.110.2
+Wed, 05 Dec 2018 13:35:35 GMT
+
+### Patches
+
+- TeachingBubble: add customizer scope to TeachingBubbleContent to allow using it individually.
 
 ## 6.110.1
 Tue, 04 Dec 2018 13:36:40 GMT
