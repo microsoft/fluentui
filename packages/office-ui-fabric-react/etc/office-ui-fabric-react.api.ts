@@ -594,7 +594,7 @@ class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGroupState
 export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined, styleProps?: TStyleProps) => IProcessedStyleSet<TStyleSet>;
 
 // @public (undocumented)
-class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState>, implements ICoachmark {
+class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkState>, implements ICoachmark {
   constructor(props: ICoachmarkProps);
   // (undocumented)
   componentDidMount(): void;
@@ -2619,8 +2619,8 @@ interface ICoachmark {
   dismiss?: (ev?: any) => void;
 }
 
-// @public (undocumented)
-interface ICoachmarkProps extends React.ClassAttributes<Coachmark> {
+// @public
+interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
   ariaAlertText?: string;
   ariaDescribedBy?: string;
   ariaDescribedByText?: string;
@@ -2673,6 +2673,40 @@ interface ICoachmarkState {
   targetAlignment?: RectangleEdge;
   targetPosition?: RectangleEdge;
   transformOrigin?: string;
+}
+
+// @public
+interface ICoachmarkStyleProps {
+  beaconColorOne?: string;
+  beaconColorTwo?: string;
+  // @deprecated
+  collapsed?: boolean;
+  // (undocumented)
+  color?: string;
+  delayBeforeCoachmarkAnimation?: string;
+  entityHostHeight?: string;
+  entityHostWidth?: string;
+  height?: string;
+  isBeaconAnimating: boolean;
+  isCollapsed: boolean;
+  isMeasured: boolean;
+  isMeasuring: boolean;
+  transformOrigin?: string;
+  width?: string;
+}
+
+// @public
+interface ICoachmarkStyles {
+  ariaContainer?: IStyle;
+  childrenContainer: IStyle;
+  collapsed?: IStyle;
+  entityHost?: IStyle;
+  entityInnerHost: IStyle;
+  pulsingBeacon?: IStyle;
+  root?: IStyle;
+  rotateAnimationLayer?: IStyle;
+  scaleAnimationLayer?: IStyle;
+  translateAnimationContainer?: IStyle;
 }
 
 // @public (undocumented)
@@ -12532,6 +12566,7 @@ module ZIndexes {
 // WARNING: Unsupported export: ChoiceGroupOption
 // WARNING: Unsupported export: OnFocusCallback
 // WARNING: Unsupported export: OnChangeCallback
+// WARNING: Unsupported export: Coachmark
 // WARNING: Unsupported export: COACHMARK_ATTRIBUTE_NAME
 // WARNING: Unsupported export: ICoachmarkTypes
 // WARNING: Unsupported export: MAX_COLOR_SATURATION
