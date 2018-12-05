@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { GroupedList, rgb2hex } from 'office-ui-fabric-react';
+import { GroupedList } from 'office-ui-fabric-react';
 
 const groupCount = 2;
 const groupDepth = 2;
@@ -105,7 +105,7 @@ storiesOf('GroupedList', module)
   ))
   .addStory(
     'Root',
-    () => <GroupedList groups={groups} items={items} onRenderCell={onRenderCell} styles={{ group: { color: rgb2hex(51, 51, 51) } }} />,
+    () => <GroupedList groups={groups} items={items} onRenderCell={onRenderCell} styles={{ root: { color: '#333333' } }} />,
     {
       rtl: true
     }

@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { HoverCard, rgb2hex } from 'office-ui-fabric-react';
+import { HoverCard } from 'office-ui-fabric-react';
 
 let onRenderCompactCard = (item: any) => {
   return <div>Content</div>;
@@ -23,7 +23,7 @@ storiesOf('HoverCard', module)
       <HoverCard
         expandingCardProps={expandingCardProps}
         instantOpenOnClick={true}
-        styles={{ host: { fontFamily: 'Segoe UI', fontSize: '14px', color: rgb2hex(51, 51, 51) } }}
+        styles={{ host: { fontFamily: 'Segoe UI', fontSize: '14px', color: '#333333' } }}
       >
         Hover over me
       </HoverCard>

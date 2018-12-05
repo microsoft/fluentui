@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecoratorFixedWidth } from '../utilities';
-import { TextField, rgb2hex } from 'office-ui-fabric-react';
+import { TextField } from 'office-ui-fabric-react';
 
 storiesOf('TextField', module)
   .addDecorator(FabricDecoratorFixedWidth)
@@ -30,19 +30,13 @@ storiesOf('TextField', module)
   .addStory('Multiline nonresizable', () => <TextField label="Multiline" multiline rows={4} resizable={false} />)
   .addStory('Underlined', () => <TextField label="Underlined" underlined />)
   .addStory('Borderless', () => <TextField label="Borderless" borderless placeholder="Placeholder text" />)
-  .addStory(
-    'Icon',
-    () => <TextField label="Icon" iconProps={{ iconName: 'Calendar' }} styles={{ icon: { color: rgb2hex(51, 51, 51) } }} />,
-    { rtl: true }
-  )
+  .addStory('Icon', () => <TextField styles={{ icon: { color: '#333333' } }} label="Icon" iconProps={{ iconName: 'Calendar' }} />, {
+    rtl: true
+  })
   .addStory(
     'Prefix',
     () => (
-      <TextField
-        label="Prefix"
-        prefix="https://"
-        styles={{ prefix: { color: rgb2hex(51, 51, 51), fontFamily: 'Segoe UI', fontSize: '14px' } }}
-      />
+      <TextField label="Prefix" prefix="https://" styles={{ prefix: { color: '#666666', fontFamily: 'Segoe UI', fontSize: '14px' } }} />
     ),
     {
       rtl: true
@@ -50,13 +44,7 @@ storiesOf('TextField', module)
   )
   .addStory(
     'Suffix',
-    () => (
-      <TextField
-        label="Suffix"
-        suffix=".com"
-        styles={{ suffix: { color: rgb2hex(51, 51, 51), fontFamily: 'Segoe UI', fontSize: '14px' } }}
-      />
-    ),
+    () => <TextField label="Suffix" suffix=".com" styles={{ suffix: { color: '#666666', fontFamily: 'Segoe UI', fontSize: '14px' } }} />,
     {
       rtl: true
     }
