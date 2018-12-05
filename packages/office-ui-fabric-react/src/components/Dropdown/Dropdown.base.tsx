@@ -36,7 +36,7 @@ import { RectangleEdge, ICalloutPositionedInfo } from '../../utilities/positioni
 const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>();
 
 /** Internal only props interface to support mixing in responsive mode */
-export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState { }
+export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {}
 
 export interface IDropdownState {
   isOpen: boolean;
@@ -173,23 +173,23 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     const ariaAttrs =
       multiSelect || disabled
         ? {
-          role: undefined,
-          ariaActiveDescendant: undefined,
-          childRole: undefined,
-          ariaSetSize: undefined,
-          ariaPosInSet: undefined,
-          ariaSelected: undefined
-        }
+            role: undefined,
+            ariaActiveDescendant: undefined,
+            childRole: undefined,
+            ariaSetSize: undefined,
+            ariaPosInSet: undefined,
+            ariaSelected: undefined
+          }
         : // single select
-        {
-          role: 'listbox',
-          ariaActiveDescendant:
-            isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0 ? this._id + '-list' + selectedIndices[0] : optionId,
-          childRole: 'option',
-          ariaSetSize: this._sizePosCache.optionSetSize,
-          ariaPosInSet: this._sizePosCache.positionInSet(selectedIndices[0]),
-          ariaSelected: selectedIndices[0] === undefined ? undefined : true
-        };
+          {
+            role: 'listbox',
+            ariaActiveDescendant:
+              isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0 ? this._id + '-list' + selectedIndices[0] : optionId,
+            childRole: 'option',
+            ariaSetSize: this._sizePosCache.optionSetSize,
+            ariaPosInSet: this._sizePosCache.positionInSet(selectedIndices[0]),
+            ariaSelected: selectedIndices[0] === undefined ? undefined : true
+          };
 
     this._classNames = getClassNames(propStyles, {
       theme,
@@ -251,9 +251,9 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
                 aria-selected={ariaAttrs.ariaSelected}
               >
                 {// If option is selected render title, otherwise render the placeholder text
-                  selectedOptions.length
-                    ? onRenderTitle(selectedOptions, this._onRenderTitle)
-                    : onRenderPlaceHolder(this.props, this._onRenderPlaceholder)}
+                selectedOptions.length
+                  ? onRenderTitle(selectedOptions, this._onRenderTitle)
+                  : onRenderPlaceHolder(this.props, this._onRenderPlaceholder)}
               </span>
               <span className={this._classNames.caretDownWrapper}>{onRenderCaretDown(this.props, this._onRenderCaretDown)}</span>
             </div>
@@ -337,7 +337,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   }
 
   /**
-   * Finds the next valid Dropdown option and sets the selected index to it.
+   * Finds     the     next    valid Dropdown option and sets the selected index to it.
    * @param stepValue Value of how many items the function should traverse.  Should be -1 or 1.
    * @param index Index of where the search should start
    * @param selectedIndex The selectedIndex Dropdown's state
@@ -418,23 +418,23 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
         {onRenderList(props, this._onRenderList)}
       </Panel>
     ) : (
-        <Callout
-          isBeakVisible={false}
-          gapSpace={0}
-          doNotLayer={false}
-          directionalHintFixed={false}
-          directionalHint={DirectionalHint.bottomLeftEdge}
-          {...calloutProps}
-          className={this._classNames.callout}
-          target={this._dropDown.current}
-          onDismiss={this._onDismiss}
-          onScroll={this._onScroll}
-          onPositioned={this._onPositioned}
-          calloutWidth={dropdownWidth || (this._dropDown.current ? this._dropDown.current.clientWidth : 0)}
-        >
-          {onRenderList(props, this._onRenderList)}
-        </Callout>
-      );
+      <Callout
+        isBeakVisible={false}
+        gapSpace={0}
+        doNotLayer={false}
+        directionalHintFixed={false}
+        directionalHint={DirectionalHint.bottomLeftEdge}
+        {...calloutProps}
+        className={this._classNames.callout}
+        target={this._dropDown.current}
+        onDismiss={this._onDismiss}
+        onScroll={this._onScroll}
+        onPositioned={this._onPositioned}
+        calloutWidth={dropdownWidth || (this._dropDown.current ? this._dropDown.current.clientWidth : 0)}
+      >
+        {onRenderList(props, this._onRenderList)}
+      </Callout>
+    );
   };
 
   /** Render Caret Down Icon */
@@ -510,10 +510,10 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
       isItemSelected && item.disabled === true // preciate: both selected and disabled
         ? this._classNames.dropdownItemSelectedAndDisabled
         : isItemSelected // preciate: selected only
-          ? this._classNames.dropdownItemSelected
-          : item.disabled === true // predicate: disabled only
-            ? this._classNames.dropdownItemDisabled
-            : this._classNames.dropdownItem;
+        ? this._classNames.dropdownItemSelected
+        : item.disabled === true // predicate: disabled only
+        ? this._classNames.dropdownItemDisabled
+        : this._classNames.dropdownItem;
 
     return !this.props.multiSelect ? (
       <CommandButton
@@ -535,27 +535,27 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
         {onRenderOption(item, this._onRenderOption)}
       </CommandButton>
     ) : (
-        <Checkbox
-          id={id + '-list' + item.index}
-          key={item.key}
-          data-index={item.index}
-          data-is-focusable={!item.disabled}
-          disabled={item.disabled}
-          onChange={this._onItemClick(item)}
-          inputProps={{
-            onMouseEnter: this._onItemMouseEnter.bind(this, item),
-            onMouseLeave: this._onMouseItemLeave.bind(this, item),
-            onMouseMove: this._onItemMouseMove.bind(this, item)
-          }}
-          label={item.text}
-          title={item.title ? item.title : item.text}
-          onRenderLabel={this._onRenderLabel.bind(this, item)}
-          className={itemClassName}
-          role="option"
-          aria-selected={isItemSelected ? 'true' : 'false'}
-          checked={isItemSelected}
-        />
-      );
+      <Checkbox
+        id={id + '-list' + item.index}
+        key={item.key}
+        data-index={item.index}
+        data-is-focusable={!item.disabled}
+        disabled={item.disabled}
+        onChange={this._onItemClick(item)}
+        inputProps={{
+          onMouseEnter: this._onItemMouseEnter.bind(this, item),
+          onMouseLeave: this._onMouseItemLeave.bind(this, item),
+          onMouseMove: this._onItemMouseMove.bind(this, item)
+        }}
+        label={item.text}
+        title={item.title ? item.title : item.text}
+        onRenderLabel={this._onRenderLabel.bind(this, item)}
+        className={itemClassName}
+        role="option"
+        aria-selected={isItemSelected ? 'true' : 'false'}
+        checked={isItemSelected}
+      />
+    );
   };
 
   /** Render content of item (i.e. text/icon inside of button) */
