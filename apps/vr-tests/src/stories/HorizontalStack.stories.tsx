@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecoratorFullWidth } from '../utilities';
-import { HorizontalStack } from 'office-ui-fabric-react';
+import { Stack } from 'office-ui-fabric-react';
 import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 const rootStyles = {
@@ -67,72 +67,72 @@ const defaultProps = {
 storiesOf('HorizontalStack', module)
   .addDecorator(FabricDecoratorFullWidth)
   .addDecorator(story => <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>)
-  .addStory('Default', () => <HorizontalStack {...defaultProps} />, { rtl: true })
-  .addStory('Padding', () => <HorizontalStack {...defaultProps} padding={10} />)
-  .addStory('Gap', () => <HorizontalStack {...defaultProps} gap={10} />, { rtl: true })
-  .addStory('Horizontally centered', () => <HorizontalStack {...defaultProps} horizontalAlign="center" />)
-  .addStory('Right-aligned', () => <HorizontalStack {...defaultProps} horizontalAlign="end" />, { rtl: true })
-  .addStory('Space around', () => <HorizontalStack {...defaultProps} horizontalAlign="space-around" />)
-  .addStory('Space between', () => <HorizontalStack {...defaultProps} horizontalAlign="space-between" />)
-  .addStory('Space evenly', () => <HorizontalStack {...defaultProps} horizontalAlign="space-evenly" />)
-  .addStory('Vertically centered', () => <HorizontalStack {...defaultProps} verticalAlign="center" className={styles.fixedHeight} />)
-  .addStory('Bottom-aligned', () => <HorizontalStack {...defaultProps} verticalAlign="bottom" className={styles.fixedHeight} />)
+  .addStory('Default', () => <Stack horizontal {...defaultProps} />, { rtl: true })
+  .addStory('Padding', () => <Stack horizontal {...defaultProps} padding={10} />)
+  .addStory('Gap', () => <Stack horizontal {...defaultProps} gap={10} />, { rtl: true })
+  .addStory('Horizontally centered', () => <Stack horizontal {...defaultProps} horizontalAlignment="center" />)
+  .addStory('Right-aligned', () => <Stack horizontal {...defaultProps} horizontalAlignment="end" />, { rtl: true })
+  .addStory('Space around', () => <Stack horizontal {...defaultProps} horizontalAlignment="space-around" />)
+  .addStory('Space between', () => <Stack horizontal {...defaultProps} horizontalAlignment="space-between" />)
+  .addStory('Space evenly', () => <Stack horizontal {...defaultProps} horizontalAlignment="space-evenly" />)
+  .addStory('Vertically centered', () => <Stack horizontal {...defaultProps} verticalAlignment="center" className={styles.fixedHeight} />)
+  .addStory('Bottom-aligned', () => <Stack horizontal {...defaultProps} verticalAlignment="bottom" className={styles.fixedHeight} />)
   .addStory(
     'Item alignments',
     () => (
-      <HorizontalStack {...defaultProps} gap={10} className={styles.fixedHeight}>
-        <HorizontalStack.Item align="auto" className={styles.item}>
+      <Stack horizontal {...defaultProps} gap={10} className={styles.fixedHeight}>
+        <Stack.Item align="auto" className={styles.item}>
           Auto-aligned item
-        </HorizontalStack.Item>
-        <HorizontalStack.Item align="stretch" className={styles.item}>
+        </Stack.Item>
+        <Stack.Item align="stretch" className={styles.item}>
           Stretch-aligned item
-        </HorizontalStack.Item>
-        <HorizontalStack.Item align="baseline" className={styles.item}>
+        </Stack.Item>
+        <Stack.Item align="baseline" className={styles.item}>
           Baseline-aligned item
-        </HorizontalStack.Item>
-        <HorizontalStack.Item align="start" className={styles.item}>
+        </Stack.Item>
+        <Stack.Item align="start" className={styles.item}>
           Start-aligned item
-        </HorizontalStack.Item>
-        <HorizontalStack.Item align="center" className={styles.item}>
+        </Stack.Item>
+        <Stack.Item align="center" className={styles.item}>
           Center-aligned item
-        </HorizontalStack.Item>
-        <HorizontalStack.Item align="end" className={styles.item}>
+        </Stack.Item>
+        <Stack.Item align="end" className={styles.item}>
           End-aligned item
-        </HorizontalStack.Item>
-      </HorizontalStack>
+        </Stack.Item>
+      </Stack>
     ),
     { rtl: true }
   )
   .addStory('Growing items', () => (
-    <HorizontalStack {...defaultProps} gap={10}>
-      <HorizontalStack.Item grow={3} className={styles.item}>
+    <Stack horizontal {...defaultProps} gap={10}>
+      <Stack.Item grow={3} className={styles.item}>
         Grow is 3
-      </HorizontalStack.Item>
-      <HorizontalStack.Item grow={2} className={styles.item}>
+      </Stack.Item>
+      <Stack.Item grow={2} className={styles.item}>
         Grow is 2
-      </HorizontalStack.Item>
-      <HorizontalStack.Item grow className={styles.item}>
+      </Stack.Item>
+      <Stack.Item grow className={styles.item}>
         Grow is 1
-      </HorizontalStack.Item>
-    </HorizontalStack>
+      </Stack.Item>
+    </Stack>
   ))
   .addStory('Shrinking items', () => (
-    <HorizontalStack {...defaultProps} gap={10} shrinkItems>
-      <HorizontalStack.Item className={styles.shrinkItem}>1</HorizontalStack.Item>
-      <HorizontalStack.Item preventShrink className={styles.shrinkItem}>
+    <Stack horizontal {...defaultProps} gap={10} shrinkItems>
+      <Stack.Item className={styles.shrinkItem}>1</Stack.Item>
+      <Stack.Item preventShrink className={styles.shrinkItem}>
         2 (does not shrink)
-      </HorizontalStack.Item>
-      <HorizontalStack.Item className={styles.shrinkItem}>3</HorizontalStack.Item>
-      <HorizontalStack.Item className={styles.shrinkItem}>4</HorizontalStack.Item>
-      <HorizontalStack.Item className={styles.shrinkItem}>5</HorizontalStack.Item>
-      <HorizontalStack.Item className={styles.shrinkItem}>6</HorizontalStack.Item>
-      <HorizontalStack.Item className={styles.shrinkItem}>7</HorizontalStack.Item>
-    </HorizontalStack>
+      </Stack.Item>
+      <Stack.Item className={styles.shrinkItem}>3</Stack.Item>
+      <Stack.Item className={styles.shrinkItem}>4</Stack.Item>
+      <Stack.Item className={styles.shrinkItem}>5</Stack.Item>
+      <Stack.Item className={styles.shrinkItem}>6</Stack.Item>
+      <Stack.Item className={styles.shrinkItem}>7</Stack.Item>
+    </Stack>
   ))
   .addStory(
     'Wrap',
     () => (
-      <HorizontalStack {...defaultProps} gap={10} wrap>
+      <Stack horizontal {...defaultProps} gap={10} wrap>
         <span className={styles.boxItem}>1</span>
         <span className={styles.boxItem}>2</span>
         <span className={styles.boxItem}>3</span>
@@ -162,12 +162,12 @@ storiesOf('HorizontalStack', module)
         <span className={styles.boxItem}>28</span>
         <span className={styles.boxItem}>29</span>
         <span className={styles.boxItem}>30</span>
-      </HorizontalStack>
+      </Stack>
     ),
     { rtl: true }
   )
   .addStory('Wrap with specified vertical gap', () => (
-    <HorizontalStack {...defaultProps} wrap gap={10} verticalGap={40}>
+    <Stack horizontal {...defaultProps} wrap gap={10} verticalGap={40}>
       <span className={styles.boxItem}>1</span>
       <span className={styles.boxItem}>2</span>
       <span className={styles.boxItem}>3</span>
@@ -197,14 +197,14 @@ storiesOf('HorizontalStack', module)
       <span className={styles.boxItem}>28</span>
       <span className={styles.boxItem}>29</span>
       <span className={styles.boxItem}>30</span>
-    </HorizontalStack>
+    </Stack>
   ))
   .addStory('Box shadow around items', () => (
-    <HorizontalStack {...defaultProps} gap={25}>
+    <Stack horizontal {...defaultProps} gap={25}>
       <span className={styles.shadowItem}>1</span>
       <span className={styles.shadowItem}>2</span>
       <span className={styles.shadowItem}>3</span>
       <span className={styles.shadowItem}>4</span>
       <span className={styles.shadowItem}>5</span>
-    </HorizontalStack>
+    </Stack>
   ));
