@@ -3,21 +3,13 @@ import { IStatelessComponent, IStyleableComponentProps, IStylesProp } from '../.
 
 export type Alignment = 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'baseline' | 'stretch';
 
-export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
-
 export type IStackComponent = IStatelessComponent<IStackProps, IStackStyles>;
-
-// contains the members of IStackProps that are common to both VerticalStack and HorizontalStack
-export type IPartialStackProps = Omit<
-  IStackProps,
-  'verticalAlignment' | 'horizontalAlignment' | 'horizontal' | 'verticalGap' | 'horizontalGap' | 'wrap' | 'styles'
->;
 
 export interface IStackProps extends IStyleableComponentProps<IStackProps, IStackStyles>, React.HTMLAttributes<HTMLElement> {
   /**
    * How to render the Stack.
    */
-  as?: string | React.ReactType<IPartialStackProps>;
+  as?: string | React.ReactType<IStackProps>;
 
   /**
    * CSS class name used to style the Stack.
@@ -71,6 +63,11 @@ export interface IStackProps extends IStyleableComponentProps<IStackProps, IStac
   gap?: number | string;
 
   /**
+   * Vertical gap between Stack child elements.
+   */
+  verticalGap?: number | string;
+
+  /**
    * Maximum width of the Stack.
    */
   maxWidth?: number | string;
@@ -90,16 +87,6 @@ export interface IStackProps extends IStyleableComponentProps<IStackProps, IStac
    * @defaultvalue false
    */
   wrap?: boolean;
-
-  /**
-   * Horizontal gap between Stack child elements.
-   */
-  horizontalGap?: number | string;
-
-  /**
-   * Vertical gap between Stack child elements.
-   */
-  verticalGap?: number | string;
 
   /**
    * Custom styles to apply to the Stack.
