@@ -305,7 +305,6 @@ exports[`Component Examples renders Stack.Horizontal.Shrink.Example.tsx correctl
         & > *:not(.ms-StackItem) {
           flex-shrink: 1;
         }
-    horizontal={true}
   >
     <span
       className=

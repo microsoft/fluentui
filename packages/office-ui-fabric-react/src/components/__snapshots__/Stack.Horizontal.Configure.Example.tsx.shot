@@ -54,7 +54,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
         & > *:not(.ms-StackItem) {
           flex-shrink: 0;
         }
-    horizontal={true}
   >
     <span
       className=
@@ -368,7 +367,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
               & > *:not(.ms-StackItem) {
                 flex-shrink: 0;
               }
-          horizontal={true}
         >
           <button
             aria-checked={false}
@@ -717,7 +715,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
             & > *:not(.ms-StackItem) {
               flex-shrink: 0;
             }
-        horizontal={true}
       >
         <div
           className=
@@ -1340,7 +1337,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
         & > *:not(.ms-StackItem) {
           flex-shrink: 0;
         }
-    horizontal={true}
   >
     <span
       className=
@@ -2969,7 +2965,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
         & > *:not(.ms-StackItem) {
           flex-shrink: 0;
         }
-    horizontal={true}
   >
     <span
       className=
@@ -3777,7 +3772,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
         & > *:not(.ms-StackItem) {
           flex-shrink: 0;
         }
-    horizontal={true}
   >
     <span
       className=

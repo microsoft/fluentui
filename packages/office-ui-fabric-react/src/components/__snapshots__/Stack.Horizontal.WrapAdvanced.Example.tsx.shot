@@ -54,7 +54,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
         & > *:not(.ms-StackItem) {
           flex-shrink: 0;
         }
-    horizontal={true}
   >
     <span
       className=
@@ -603,7 +602,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
         & > *:not(.ms-StackItem) {
           flex-shrink: 0;
         }
-    horizontal={true}
   >
     <span
       className=
@@ -1355,8 +1353,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
             & > *:not(.ms-StackItem) {
               flex-shrink: 0;
             }
-        horizontal={true}
-        wrap={true}
       >
         <span>
           1

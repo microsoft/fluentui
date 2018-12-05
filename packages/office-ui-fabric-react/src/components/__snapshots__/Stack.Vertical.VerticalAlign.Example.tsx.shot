@@ -55,7 +55,6 @@ exports[`Component Examples renders Stack.Vertical.VerticalAlign.Example.tsx cor
         & > *:not(.ms-StackItem) {
           flex-shrink: 0;
         }
-    horizontal={true}
   >
     <div
       className=
@@ -322,7 +321,6 @@ exports[`Component Examples renders Stack.Vertical.VerticalAlign.Example.tsx cor
         & > *:not(.ms-StackItem) {
           flex-shrink: 0;
         }
-    horizontal={true}
   >
     <div
       className=

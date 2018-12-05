@@ -66,7 +66,6 @@ exports[`Component Examples renders Stack.Horizontal.VerticalAlign.Example.tsx c
         & > *:not(.ms-StackItem) {
           flex-shrink: 0;
         }
-    horizontal={true}
   >
     <span>
       1
@@ -116,7 +115,6 @@ exports[`Component Examples renders Stack.Horizontal.VerticalAlign.Example.tsx c
         & > *:not(.ms-StackItem) {
           flex-shrink: 0;
         }
-    horizontal={true}
   >
     <span>
       1
@@ -166,7 +164,6 @@ exports[`Component Examples renders Stack.Horizontal.VerticalAlign.Example.tsx c
         & > *:not(.ms-StackItem) {
           flex-shrink: 0;
         }
-    horizontal={true}
   >
     <span>
       1

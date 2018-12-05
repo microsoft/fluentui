@@ -323,8 +323,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapNested.Example.tsx corr
           & > *:not(.ms-StackItem) {
             flex-shrink: 0;
           }
-      horizontal={true}
-      wrap={true}
     >
       <div
         className=
@@ -385,8 +383,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapNested.Example.tsx corr
               & > *:not(.ms-StackItem) {
                 flex-shrink: 0;
               }
-          horizontal={true}
-          wrap={true}
         >
           <span>
             1
@@ -470,8 +466,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapNested.Example.tsx corr
               & > *:not(.ms-StackItem) {
                 flex-shrink: 0;
               }
-          horizontal={true}
-          wrap={true}
         >
           <span>
             1
@@ -543,8 +537,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapNested.Example.tsx corr
               & > *:not(.ms-StackItem) {
                 flex-shrink: 0;
               }
-          horizontal={true}
-          wrap={true}
         >
           <span>
             1

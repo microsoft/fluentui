@@ -332,8 +332,6 @@ exports[`Component Examples renders Stack.Horizontal.Wrap.Example.tsx correctly 
           & > *:not(.ms-StackItem) {
             flex-shrink: 0;
           }
-      horizontal={true}
-      wrap={true}
     >
       <span>
         1

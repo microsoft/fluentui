@@ -54,7 +54,6 @@ exports[`Component Examples renders Stack.Vertical.Spacing.Example.tsx correctly
         & > *:not(.ms-StackItem) {
           flex-shrink: 0;
         }
-    horizontal={true}
   >
     <div
       className=
@@ -302,7 +301,6 @@ exports[`Component Examples renders Stack.Vertical.Spacing.Example.tsx correctly
         & > *:not(.ms-StackItem) {
           flex-shrink: 0;
         }
-    horizontal={true}
   >
     <div
       className=

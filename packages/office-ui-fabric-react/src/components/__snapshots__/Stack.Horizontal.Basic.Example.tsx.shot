@@ -58,7 +58,6 @@ exports[`Component Examples renders Stack.Horizontal.Basic.Example.tsx correctly
         & > *:not(.ms-StackItem) {
           flex-shrink: 0;
         }
-    horizontal={true}
   >
     <span>
       Item One
@@ -104,7 +103,6 @@ exports[`Component Examples renders Stack.Horizontal.Basic.Example.tsx correctly
         & > *:not(.ms-StackItem) {
           flex-shrink: 0;
         }
-    horizontal={true}
   >
     <span>
       Item One
@@ -150,7 +148,6 @@ exports[`Component Examples renders Stack.Horizontal.Basic.Example.tsx correctly
         & > *:not(.ms-StackItem) {
           flex-shrink: 0;
         }
-    horizontal={true}
   >
     <span
       className=
@@ -337,7 +334,6 @@ exports[`Component Examples renders Stack.Horizontal.Basic.Example.tsx correctly
         & > *:not(.ms-StackItem) {
           flex-shrink: 0;
         }
-    horizontal={true}
     onClick={[Function]}
   >
     <span>
