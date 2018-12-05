@@ -11,17 +11,24 @@ import {
   textAreaProperties,
   createRef,
   classNamesFunction,
-  IStyleFunctionOrObject
+  IStyleFunctionOrObject,
+  warnControlledUsage,
+  warnControlledUncontrolledSwitch
 } from '../../Utilities';
 import { ITextField, ITextFieldProps, ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
 
 const getClassNames = classNamesFunction<ITextFieldStyleProps, ITextFieldStyles>();
 
 export interface ITextFieldState {
-  value: string;
+  /**
+   * The currently displayed value. Do NOT update via `setState` (outside the TextField class).
+   * This is unsupported and may lead to unexpected behavior. Instead, update the value by passing
+   * an updated `value` prop.
+   */
+  value?: string;
 
   /** Is true when the control has focus. */
-  isFocused: boolean;
+  isFocused?: boolean;
 
   /**
    * The validation error message.
@@ -29,7 +36,7 @@ export interface ITextFieldState {
    * - If there is no validation error or we have not validated the input value, errorMessage is an empty string.
    * - If we have done the validation and there is validation error, errorMessage is the validation error message.
    */
-  errorMessage: string;
+  errorMessage?: string;
 }
 
 const DEFAULT_STATE_VALUE = '';
@@ -41,16 +48,6 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
     autoAdjustHeight: false,
     underlined: false,
     borderless: false,
-    onChange: () => {
-      /* noop */
-    },
-    onBeforeChange: () => {
-      /* noop */
-    },
-    onNotifyValidationResult: () => {
-      /* noop */
-    },
-    onGetErrorMessage: () => undefined,
     deferredValidationTime: 200,
     errorMessage: '',
     validateOnFocusIn: false,
@@ -61,9 +58,15 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
   private _id: string;
   private _descriptionId: string;
   private _delayedValidate: (value: string | undefined) => void;
-  private _isMounted: boolean;
+  /**
+   * (only used in strict mode)
+   * Whether the component is controlled. Undefined means inconclusive (neither value nor
+   * defaultValue has been specified in props so far). Following the behavior of React's `<input>`,
+   * the component may be changed from uncontrolled to controlled (with a warning), but not
+   * vice versa--if it's ever been controlled, it's stuck that way.
+   */
+  private _isControlled: boolean | undefined;
   private _lastValidation: number;
-  private _latestValue: string | undefined;
   private _latestValidateValue: string | undefined;
   private _textElement = createRef<HTMLTextAreaElement | HTMLInputElement | null>();
   private _classNames: IProcessedStyleSet<ITextFieldStyles>;
@@ -85,26 +88,38 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
       iconClass: 'iconProps',
       addonString: 'prefix',
       onRenderAddon: 'onRenderPrefix',
-      onChanged: 'onChange'
+      onChanged: 'onChange',
+      onBeforeChange: 'onChange'
     });
 
-    this._warnMutuallyExclusive({
-      value: 'defaultValue'
-    });
+    if (!props.strictMode) {
+      // this warning is handled elsewhere in strict mode
+      this._warnMutuallyExclusive({
+        value: 'defaultValue'
+      });
+    }
 
     this._id = props.id || getId('TextField');
     this._descriptionId = getId('TextFieldDescription');
 
-    if (props.value !== undefined) {
-      this._latestValue = props.value;
-    } else if (props.defaultValue !== undefined) {
-      this._latestValue = props.defaultValue;
+    let value: string;
+    if (props.strictMode) {
+      value = this._getValueAndUpdateIsControlled(props, true /*isConstructor*/);
     } else {
-      this._latestValue = DEFAULT_STATE_VALUE;
+      // Use != null to check if value is provided, since that's the same check used by React's <input>
+      // tslint:disable:triple-equals
+      if (props.value != null) {
+        value = String(props.value);
+      } else if (props.defaultValue != null) {
+        value = String(props.defaultValue);
+      } else {
+        value = DEFAULT_STATE_VALUE;
+      }
+      // tslint:enable:triple-equals
     }
 
     this.state = {
-      value: this._latestValue,
+      value: value,
       isFocused: false,
       errorMessage: ''
     };
@@ -121,7 +136,6 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
   }
 
   public componentDidMount(): void {
-    this._isMounted = true;
     this._adjustInputHeight();
 
     if (this.props.validateOnLoad) {
@@ -130,34 +144,50 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
   }
 
   public componentWillReceiveProps(newProps: ITextFieldProps): void {
-    const { onBeforeChange } = this.props;
+    this._id = newProps.id || this._id;
 
-    // If old value prop was undefined, then component is controlled and we should
-    //    respect new undefined value and update state accordingly.
-    if (newProps.value !== this.state.value && (newProps.value !== undefined || this.props.value !== undefined)) {
-      if (onBeforeChange) {
-        onBeforeChange(newProps.value);
-      }
-
-      this._id = newProps.id || this._id;
-      this._setValue(newProps.value);
-
-      const { validateOnFocusIn, validateOnFocusOut } = newProps;
-      if (!(validateOnFocusIn || validateOnFocusOut)) {
-        this._delayedValidate(newProps.value);
-      }
-    }
-
-    // If component is not currently controlled and defaultValue changes, set value to new defaultValue.
-    if (newProps.defaultValue !== this.props.defaultValue && newProps.value === undefined) {
-      this._setValue(newProps.defaultValue);
-    }
-
-    // Text field is changing between single- and multi-line. After the change is complete,
-    // we'll need to reset focus and selection/cursor.
+    // If text field is changing between single- and multi-line, save some info so we can reset
+    // focus and selection/cursor after the change is complete.
     if (!!newProps.multiline !== !!this.props.multiline && this.state.isFocused) {
       this._shouldResetFocusAfterRender = true;
       this._selectionBeforeInputTypeChange = [this.selectionStart, this.selectionEnd];
+    }
+
+    let newValue: string | undefined = this.state.value;
+
+    if (this.props.strictMode) {
+      newValue = this._getValueAndUpdateIsControlled(newProps);
+    } else {
+      // Deprecated behavior
+      // (allows switching freely between controlled/uncontrolled and allows updates to defaultValue)
+
+      // If old value prop was provided, then component is controlled and we should
+      //    respect new undefined value and update state accordingly.
+      if (newProps.value !== this.state.value && (newProps.value !== undefined || this.props.value !== undefined)) {
+        newValue = newProps.value;
+      }
+      if (newProps.defaultValue !== this.props.defaultValue && newProps.value === undefined) {
+        // If component is not currently controlled and defaultValue changes, set value to new defaultValue.
+        // tslint:disable-next-line:triple-equals
+        newValue = newProps.defaultValue != null ? String(newProps.defaultValue) : DEFAULT_STATE_VALUE;
+      }
+    }
+
+    if (newValue !== this.state.value) {
+      // tslint:disable-next-line:triple-equals
+      newValue = newValue != null ? String(newValue) : DEFAULT_STATE_VALUE;
+
+      if (newProps.onBeforeChange) {
+        newProps.onBeforeChange(newValue);
+      }
+
+      // Update the displayed value
+      this._setValue(newValue);
+
+      const { validateOnFocusIn, validateOnFocusOut } = newProps;
+      if (!(validateOnFocusIn || validateOnFocusOut)) {
+        this._delayedValidate(newValue);
+      }
     }
   }
 
@@ -174,10 +204,6 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
         }
       }
     }
-  }
-
-  public componentWillUnmount(): void {
-    this._isMounted = false;
   }
 
   public render(): JSX.Element {
@@ -332,13 +358,62 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
     }
   }
 
+  /**
+   * (only used in strict mode)
+   * Get the current value from newProps or state, update whether the component is controlled,
+   * and log any appropriate warnings in the console.
+   */
+  private _getValueAndUpdateIsControlled(newProps: ITextFieldProps, isConstructor?: boolean): string {
+    warnControlledUsage(this._id, this.className, newProps, 'value', 'defaultValue', 'onChange', 'onChanged', 'readOnly');
+
+    // Check if the component should be controlled or uncontrolled according to the new props.
+    // We use != null since it's the check used by React's <input>, and it properly accounts for ''.
+    // The warning logic also closely follows what React does.
+    // See: https://github.com/facebook/react/blob/master/packages/react-dom/src/client/ReactDOMInput.js
+    // tslint:disable:triple-equals
+    let newIsControlledFromProps: boolean | undefined;
+    if (newProps.value != null) {
+      newIsControlledFromProps = true;
+    } else if (newProps.defaultValue != null) {
+      newIsControlledFromProps = false;
+    }
+    // else, indeterminate (handled as uncontrolled)
+
+    // Warn if switching between uncontrolled and controlled.
+    // (One difference between this implementation and React's <input> is that oldIsControlled is
+    // indeterminate and newIsControlled is true, we don't warn.)
+    const oldIsControlled = this._isControlled;
+    if (oldIsControlled !== undefined && !!newIsControlledFromProps !== !!oldIsControlled) {
+      warnControlledUncontrolledSwitch(this._id, this.className, !!oldIsControlled);
+    }
+
+    // If the component has ever been controlled, it's always considered controlled from that point on.
+    const newIsControlled = (this._isControlled = oldIsControlled || newIsControlledFromProps);
+
+    // Use the old value from state unless it's been updated in a valid way.
+    let value = this.state && this.state.value;
+    if (newIsControlled && newProps.value != null) {
+      // If the component is controlled and a valid value is given, use it.
+      value = newProps.value;
+    } else if (!newIsControlled && isConstructor) {
+      // If the component is uncontrolled and this is the constructor, use the default value.
+      // (defaultValue is ignored after the component is first constructed)
+      value = newProps.defaultValue;
+    }
+
+    // If null/undefined is given, use '' instead. (The != null check and string conversion
+    // handle the case where the number 0 is for some reason passed as the value.)
+    return value != null ? String(value) : DEFAULT_STATE_VALUE;
+
+    // tslint:enable:triple-equals
+  }
+
   private _setValue(value?: string) {
-    this._latestValue = value;
     this.setState(
       {
         value: value || DEFAULT_STATE_VALUE,
         errorMessage: ''
-      } as ITextFieldState,
+      },
       () => {
         this._adjustInputHeight();
       }
@@ -474,57 +549,75 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
     event.persist();
     const element: HTMLInputElement = event.target as HTMLInputElement;
     const value: string = element.value;
+    const props = this.props;
+    const { validateOnFocusIn, validateOnFocusOut, onChange, onChanged, onBeforeChange } = props;
 
     // Avoid doing unnecessary work when the value has not changed.
-    if (value === this._latestValue) {
+    if (value === this.state.value) {
       return;
     }
-    this._latestValue = value;
 
-    this.setState({ value: value } as ITextFieldState, () => {
-      this._adjustInputHeight();
-
-      if (this.props.onChange) {
-        this.props.onChange(event, value);
+    if (props.strictMode) {
+      if (onBeforeChange) {
+        onBeforeChange(value);
       }
 
-      if (this.props.onChanged) {
-        this.props.onChanged(value);
+      if (onChange) {
+        onChange(event, value);
+      } else if (onChanged) {
+        onChanged(value);
       }
-    });
 
-    const { validateOnFocusIn, validateOnFocusOut } = this.props;
-    if (!(validateOnFocusIn || validateOnFocusOut)) {
-      this._delayedValidate(value);
-    }
+      // ONLY is this is an uncontrolled component, update the displayed value.
+      // (Controlled components must update the `value` prop from `onChange`.)
+      if (!this._isControlled) {
+        this._setValue(value);
 
-    if (this.props.onBeforeChange) {
-      this.props.onBeforeChange(value);
+        if (!(validateOnFocusIn || validateOnFocusOut)) {
+          this._delayedValidate(value);
+        }
+      }
+    } else {
+      // Deprecated behavior
+      this.setState({ value: value } as ITextFieldState, () => {
+        if (onChange) {
+          onChange(event, value);
+        } else if (onChanged) {
+          onChanged(value);
+        }
+      });
+
+      if (!(validateOnFocusIn || validateOnFocusOut)) {
+        this._delayedValidate(value);
+      }
+
+      if (onBeforeChange) {
+        onBeforeChange(value);
+      }
     }
   };
 
   private _validate(value: string | undefined): void {
     const { validateOnFocusIn, validateOnFocusOut } = this.props;
 
-    // In case of _validate called multi-times during executing validate logic with promise return.
+    // In case _validate is called again while validation promise is executing
     if (this._latestValidateValue === value && !(validateOnFocusIn || validateOnFocusOut)) {
       return;
     }
 
     this._latestValidateValue = value;
-    const onGetErrorMessage = this.props.onGetErrorMessage as (value: string) => string | PromiseLike<string> | undefined;
-    const result = onGetErrorMessage(value || '');
+    const result = this.props.onGetErrorMessage && this.props.onGetErrorMessage(value || '');
 
     if (result !== undefined) {
       if (typeof result === 'string') {
-        this.setState({ errorMessage: result } as ITextFieldState);
+        this.setState({ errorMessage: result });
         this._notifyAfterValidate(value, result);
       } else {
         const currentValidation: number = ++this._lastValidation;
 
         result.then((errorMessage: string) => {
-          if (this._isMounted && currentValidation === this._lastValidation) {
-            this.setState({ errorMessage } as ITextFieldState);
+          if (currentValidation === this._lastValidation) {
+            this.setState({ errorMessage });
           }
           this._notifyAfterValidate(value, errorMessage);
         });
@@ -535,7 +628,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
   }
 
   private _notifyAfterValidate(value: string | undefined, errorMessage: string): void {
-    if (this._isMounted && value === this.state.value && this.props.onNotifyValidationResult) {
+    if (value === this.state.value && this.props.onNotifyValidationResult) {
       this.props.onNotifyValidationResult(errorMessage, value);
     }
   }

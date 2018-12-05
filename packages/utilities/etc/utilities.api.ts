@@ -654,6 +654,12 @@ export function warn(message: string): void;
 export function warnConditionallyRequiredProps<P>(componentName: string, props: P, requiredProps: string[], conditionalPropName: string, condition: boolean): void;
 
 // @public
+export function warnControlledUncontrolledSwitch(componentId: string, componentName: string, wasControlled: boolean): void;
+
+// @public
+export function warnControlledUsage<P>(componentId: string, componentName: string, props: P, valueProp: keyof P, defaultValueProp: keyof P, onChangeProp: keyof P, addlOnChangeProp?: keyof P, readOnlyProp?: keyof P): void;
+
+// @public
 export function warnDeprecations<P>(componentName: string, props: P, deprecationMap: ISettingsMap<P>): void;
 
 // @public

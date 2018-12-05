@@ -1,26 +1,27 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import * as WarnUtil from '@uifabric/utilities/lib-commonjs/warn';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { mount } from 'enzyme';
 
-import { resetIds } from '../../Utilities';
+import { resetIds, setWarningCallback } from '../../Utilities';
 import { TextField } from './TextField';
 
 describe('TextField deprecated', () => {
-  beforeAll(() => {
-    // Prevent warn deprecations from failing test
-    jest.spyOn(WarnUtil, 'warnDeprecations').mockImplementation(() => {
-      /** no impl **/
-    });
-  });
-
-  afterAll(() => {
-    jest.restoreAllMocks();
-  });
+  let warnFn: jest.Mock;
+  let lastWarning = '';
+  const noOp = () => undefined;
 
   beforeEach(() => {
+    warnFn = jest.fn((warning: string) => {
+      lastWarning = warning;
+    });
+    setWarningCallback(warnFn);
     resetIds();
+  });
+
+  afterEach(() => {
+    setWarningCallback();
+    lastWarning = '';
   });
 
   function mockEvent(targetValue: string = ''): ReactTestUtils.SyntheticEventData {
@@ -30,6 +31,22 @@ describe('TextField deprecated', () => {
     return event;
   }
 
+  it('warns if deprecated props are provided', () => {
+    mount(<TextField onChanged={noOp} />);
+    expect(warnFn).toHaveBeenCalledTimes(1);
+
+    mount(<TextField onBeforeChange={noOp} />);
+    expect(warnFn).toHaveBeenCalledTimes(2);
+  });
+
+  it('does not warn if value and onChanged are provided', () => {
+    mount(<TextField value="some value" onChanged={noOp} />);
+    // There will be one deprecation warning (but no controlled usage warning)
+    expect(warnFn).toHaveBeenCalledTimes(1);
+    // Verify that the warning was a deprecation warning
+    expect(lastWarning).toContain('deprecated');
+  });
+
   it('renders with deprecated props affecting styling', () => {
     const component = renderer.create(<TextField addonString={'test addonString'} iconClass={'test-iconClass'} />);
     const tree = component.toJSON();
@@ -37,10 +54,7 @@ describe('TextField deprecated', () => {
   });
 
   it('should call deprecated onChanged handler for input change', () => {
-    let callCount = 0;
-    const onChangedSpy = (value: string) => {
-      callCount++;
-    };
+    const onChangedSpy = jest.fn();
 
     const textField = mount(
       <TextField
@@ -51,31 +65,28 @@ describe('TextField deprecated', () => {
       />
     );
 
-    expect(callCount).toEqual(0);
+    expect(onChangedSpy).toHaveBeenCalledTimes(0);
     const inputDOM = textField.getDOMNode().querySelector('input') as Element;
 
     ReactTestUtils.Simulate.input(inputDOM, mockEvent('value change'));
     ReactTestUtils.Simulate.change(inputDOM, mockEvent('value change'));
-    expect(callCount).toEqual(1);
+    expect(onChangedSpy).toHaveBeenCalledTimes(1);
 
     ReactTestUtils.Simulate.input(inputDOM, mockEvent(''));
     ReactTestUtils.Simulate.change(inputDOM, mockEvent(''));
-    expect(callCount).toEqual(2);
+    expect(onChangedSpy).toHaveBeenCalledTimes(2);
   });
 
   it('should not call deprecated onChanged when initial value is undefined and input change is an empty string', () => {
-    let callCount = 0;
-    const onChangedSpy = (value: string) => {
-      callCount++;
-    };
+    const onChangedSpy = jest.fn();
 
     const textField = mount(<TextField onChanged={onChangedSpy} />);
 
-    expect(callCount).toEqual(0);
+    expect(onChangedSpy).toHaveBeenCalledTimes(0);
     const inputDOM = textField.getDOMNode().querySelector('input') as Element;
 
     ReactTestUtils.Simulate.input(inputDOM, mockEvent(''));
     ReactTestUtils.Simulate.change(inputDOM, mockEvent(''));
-    expect(callCount).toEqual(0);
+    expect(onChangedSpy).toHaveBeenCalledTimes(0);
   });
 });

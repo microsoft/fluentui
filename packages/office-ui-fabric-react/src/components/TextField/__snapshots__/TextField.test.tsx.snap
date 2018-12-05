@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TextField renders TextField correctly 1`] = `
+exports[`TextField snapshots renders correctly 1`] = `
 <div
   className=
       ms-TextField
@@ -138,7 +138,469 @@ exports[`TextField renders TextField correctly 1`] = `
 </div>
 `;
 
-exports[`TextField renders TextField multiline resizable correctly 1`] = `
+exports[`TextField snapshots renders multiline correctly with errorMessage 1`] = `
+<div
+  className=
+      ms-TextField
+      ms-TextField--underlined
+      {
+        border: 0px solid #a6a6a6;
+        box-shadow: none;
+        box-sizing: border-box;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
+        position: relative;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        border-width: 2px;
+      }
+      &:hover {
+        border-color: #333333;
+      }
+>
+  <div
+    className=
+        ms-TextField-wrapper
+        {
+          border-bottom-color: inherit;
+          border-bottom-style: solid;
+          border-bottom-width: 1px;
+          border-bottom: 1px solid #a80000;
+          border-color: #a80000;
+          display: flex;
+          width: 100%;
+        }
+        &:focus, &:hover {
+          border-color: #a80000;
+        }
+        &:focus {
+          border-bottom: 1px solid #a80000;
+        }
+        &:hover {
+          border-bottom: 1px solid #a80000;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover {
+          border-color: Highlight;
+        }
+  >
+    <label
+      className=
+          ms-Label
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #333333;
+            display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 32px;
+            line-height: 22px;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 8px;
+            margin-top: 0px;
+            overflow-wrap: break-word;
+            padding-bottom: 5px;
+            padding-left: 12px;
+            padding-right: 0px;
+            padding-top: 5px;
+            word-wrap: break-word;
+          }
+      htmlFor="TextField0"
+    >
+      Label
+    </label>
+    <div
+      className=
+          ms-TextField-fieldGroup
+          {
+            align-items: stretch;
+            background: #ffffff;
+            border-color: #a80000;
+            border-width: 0px;
+            border: 1px solid #a6a6a6;
+            box-shadow: none;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+            flex: 1 1 0px;
+            height: 32px;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+            text-align: left;
+          }
+          &:hover {
+            border-color: #333333;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover {
+            border-color: Highlight;
+          }
+          &:focus, &:hover {
+            border-color: #a80000;
+          }
+    >
+      <div
+        className=
+            ms-TextField-prefix
+            {
+              align-items: center;
+              background: #f4f4f4;
+              color: #666666;
+              display: flex;
+              line-height: 1px;
+              padding-bottom: 0;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 0;
+              white-space: nowrap;
+            }
+      >
+        <span
+          style={
+            Object {
+              "paddingBottom": "1px",
+            }
+          }
+        >
+          test prefix
+        </span>
+      </div>
+      <input
+        aria-describedby="TextFieldDescription1"
+        aria-invalid={false}
+        className=
+            ms-TextField-field
+            {
+              background-color: transparent;
+              background: none;
+              border-radius: 0px;
+              border: none;
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #333333;
+              font-size: 14px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              min-width: 0px;
+              outline: 0px;
+              padding-bottom: 0;
+              padding-left: 12px;
+              padding-right: 12px;
+              padding-top: 0;
+              text-align: left;
+              text-overflow: ellipsis;
+              width: 100%;
+            }
+            &:active, &:focus, &:hover {
+              outline: 0px;
+            }
+            &::-ms-clear {
+              display: none;
+            }
+            &::placeholder {
+              color: #666666;
+              opacity: 1;
+            }
+            &:-ms-input-placeholder {
+              color: #666666;
+              opacity: 1;
+            }
+        id="TextField0"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onInput={[Function]}
+        type="text"
+        value=""
+      />
+      <div
+        className=
+            ms-TextField-suffix
+            {
+              align-items: center;
+              background: #f4f4f4;
+              color: #666666;
+              display: flex;
+              line-height: 1px;
+              padding-bottom: 0;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 0;
+              white-space: nowrap;
+            }
+      >
+        <span
+          style={
+            Object {
+              "paddingBottom": "1px",
+            }
+          }
+        >
+          test suffix
+        </span>
+      </div>
+    </div>
+  </div>
+  <span
+    id="TextFieldDescription1"
+  >
+    <div
+      role="alert"
+    />
+  </span>
+</div>
+`;
+
+exports[`TextField snapshots renders multiline correctly with props affecting styling 1`] = `
+<div
+  className=
+      ms-TextField
+      ms-TextField--underlined
+      {
+        border: 0px solid #a6a6a6;
+        box-shadow: none;
+        box-sizing: border-box;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
+        position: relative;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        border-width: 2px;
+      }
+      &:hover {
+        border-color: #333333;
+      }
+>
+  <div
+    className=
+        ms-TextField-wrapper
+        {
+          border-bottom-color: inherit;
+          border-bottom-style: solid;
+          border-bottom-width: 1px;
+          border-bottom: 1px solid #a80000;
+          border-color: #a80000;
+          display: flex;
+          width: 100%;
+        }
+        &:focus, &:hover {
+          border-color: #a80000;
+        }
+        &:focus {
+          border-bottom: 1px solid #a80000;
+        }
+        &:hover {
+          border-bottom: 1px solid #a80000;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover {
+          border-color: Highlight;
+        }
+  >
+    <label
+      className=
+          ms-Label
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #333333;
+            display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 32px;
+            line-height: 22px;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 8px;
+            margin-top: 0px;
+            overflow-wrap: break-word;
+            padding-bottom: 5px;
+            padding-left: 12px;
+            padding-right: 0px;
+            padding-top: 5px;
+            word-wrap: break-word;
+          }
+      htmlFor="TextField0"
+    >
+      Label
+    </label>
+    <div
+      className=
+          ms-TextField-fieldGroup
+          {
+            align-items: stretch;
+            background: #ffffff;
+            border-color: #a80000;
+            border-width: 0px;
+            border: 1px solid #a6a6a6;
+            box-shadow: none;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+            flex: 1 1 0px;
+            height: 32px;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+            text-align: left;
+          }
+          &:hover {
+            border-color: #333333;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover {
+            border-color: Highlight;
+          }
+          &:focus, &:hover {
+            border-color: #a80000;
+          }
+    >
+      <div
+        className=
+            ms-TextField-prefix
+            {
+              align-items: center;
+              background: #f4f4f4;
+              color: #666666;
+              display: flex;
+              line-height: 1px;
+              padding-bottom: 0;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 0;
+              white-space: nowrap;
+            }
+      >
+        <span
+          style={
+            Object {
+              "paddingBottom": "1px",
+            }
+          }
+        >
+          test prefix
+        </span>
+      </div>
+      <input
+        aria-describedby="TextFieldDescription1"
+        aria-invalid={false}
+        className=
+            ms-TextField-field
+            {
+              background-color: transparent;
+              background: none;
+              border-radius: 0px;
+              border: none;
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #333333;
+              font-size: 14px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              min-width: 0px;
+              outline: 0px;
+              padding-bottom: 0;
+              padding-left: 12px;
+              padding-right: 12px;
+              padding-top: 0;
+              text-align: left;
+              text-overflow: ellipsis;
+              width: 100%;
+            }
+            &:active, &:focus, &:hover {
+              outline: 0px;
+            }
+            &::-ms-clear {
+              display: none;
+            }
+            &::placeholder {
+              color: #666666;
+              opacity: 1;
+            }
+            &:-ms-input-placeholder {
+              color: #666666;
+              opacity: 1;
+            }
+        id="TextField0"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onInput={[Function]}
+        type="text"
+        value=""
+      />
+      <div
+        className=
+            ms-TextField-suffix
+            {
+              align-items: center;
+              background: #f4f4f4;
+              color: #666666;
+              display: flex;
+              line-height: 1px;
+              padding-bottom: 0;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 0;
+              white-space: nowrap;
+            }
+      >
+        <span
+          style={
+            Object {
+              "paddingBottom": "1px",
+            }
+          }
+        >
+          test suffix
+        </span>
+      </div>
+    </div>
+  </div>
+  <span
+    id="TextFieldDescription1"
+  >
+    <div
+      role="alert"
+    />
+  </span>
+</div>
+`;
+
+exports[`TextField snapshots renders multiline resizable correctly 1`] = `
 <div
   className=
       ms-TextField
@@ -279,7 +741,7 @@ exports[`TextField renders TextField multiline resizable correctly 1`] = `
 </div>
 `;
 
-exports[`TextField renders TextField multiline unresizable correctly 1`] = `
+exports[`TextField snapshots renders multiline unresizable correctly 1`] = `
 <div
   className=
       ms-TextField
@@ -422,469 +884,7 @@ exports[`TextField renders TextField multiline unresizable correctly 1`] = `
 </div>
 `;
 
-exports[`TextField renders multiline TextField correctly with errorMessage 1`] = `
-<div
-  className=
-      ms-TextField
-      ms-TextField--underlined
-      {
-        border: 0px solid #a6a6a6;
-        box-shadow: none;
-        box-sizing: border-box;
-        margin-bottom: 0px;
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-top: 0px;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-        padding-top: 0px;
-        position: relative;
-      }
-      @media screen and (-ms-high-contrast: active){& {
-        border-width: 2px;
-      }
-      &:hover {
-        border-color: #333333;
-      }
->
-  <div
-    className=
-        ms-TextField-wrapper
-        {
-          border-bottom-color: inherit;
-          border-bottom-style: solid;
-          border-bottom-width: 1px;
-          border-bottom: 1px solid #a80000;
-          border-color: #a80000;
-          display: flex;
-          width: 100%;
-        }
-        &:focus, &:hover {
-          border-color: #a80000;
-        }
-        &:focus {
-          border-bottom: 1px solid #a80000;
-        }
-        &:hover {
-          border-bottom: 1px solid #a80000;
-        }
-        @media screen and (-ms-high-contrast: active){&:hover {
-          border-color: Highlight;
-        }
-  >
-    <label
-      className=
-          ms-Label
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            box-shadow: none;
-            box-sizing: border-box;
-            color: #333333;
-            display: block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            height: 32px;
-            line-height: 22px;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 8px;
-            margin-top: 0px;
-            overflow-wrap: break-word;
-            padding-bottom: 5px;
-            padding-left: 12px;
-            padding-right: 0px;
-            padding-top: 5px;
-            word-wrap: break-word;
-          }
-      htmlFor="TextField0"
-    >
-      Label
-    </label>
-    <div
-      className=
-          ms-TextField-fieldGroup
-          {
-            align-items: stretch;
-            background: #ffffff;
-            border-color: #a80000;
-            border-width: 0px;
-            border: 1px solid #a6a6a6;
-            box-shadow: none;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: row;
-            flex: 1 1 0px;
-            height: 32px;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
-            position: relative;
-            text-align: left;
-          }
-          &:hover {
-            border-color: #333333;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
-          }
-          &:focus, &:hover {
-            border-color: #a80000;
-          }
-    >
-      <div
-        className=
-            ms-TextField-prefix
-            {
-              align-items: center;
-              background: #f4f4f4;
-              color: #666666;
-              display: flex;
-              line-height: 1px;
-              padding-bottom: 0;
-              padding-left: 10px;
-              padding-right: 10px;
-              padding-top: 0;
-              white-space: nowrap;
-            }
-      >
-        <span
-          style={
-            Object {
-              "paddingBottom": "1px",
-            }
-          }
-        >
-          test prefix
-        </span>
-      </div>
-      <input
-        aria-describedby="TextFieldDescription1"
-        aria-invalid={false}
-        className=
-            ms-TextField-field
-            {
-              background-color: transparent;
-              background: none;
-              border-radius: 0px;
-              border: none;
-              box-shadow: none;
-              box-sizing: border-box;
-              color: #333333;
-              font-size: 14px;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-              min-width: 0px;
-              outline: 0px;
-              padding-bottom: 0;
-              padding-left: 12px;
-              padding-right: 12px;
-              padding-top: 0;
-              text-align: left;
-              text-overflow: ellipsis;
-              width: 100%;
-            }
-            &:active, &:focus, &:hover {
-              outline: 0px;
-            }
-            &::-ms-clear {
-              display: none;
-            }
-            &::placeholder {
-              color: #666666;
-              opacity: 1;
-            }
-            &:-ms-input-placeholder {
-              color: #666666;
-              opacity: 1;
-            }
-        id="TextField0"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        onInput={[Function]}
-        type="text"
-        value=""
-      />
-      <div
-        className=
-            ms-TextField-suffix
-            {
-              align-items: center;
-              background: #f4f4f4;
-              color: #666666;
-              display: flex;
-              line-height: 1px;
-              padding-bottom: 0;
-              padding-left: 10px;
-              padding-right: 10px;
-              padding-top: 0;
-              white-space: nowrap;
-            }
-      >
-        <span
-          style={
-            Object {
-              "paddingBottom": "1px",
-            }
-          }
-        >
-          test suffix
-        </span>
-      </div>
-    </div>
-  </div>
-  <span
-    id="TextFieldDescription1"
-  >
-    <div
-      role="alert"
-    />
-  </span>
-</div>
-`;
-
-exports[`TextField renders multiline TextField correctly with props affecting styling 1`] = `
-<div
-  className=
-      ms-TextField
-      ms-TextField--underlined
-      {
-        border: 0px solid #a6a6a6;
-        box-shadow: none;
-        box-sizing: border-box;
-        margin-bottom: 0px;
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-top: 0px;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-        padding-top: 0px;
-        position: relative;
-      }
-      @media screen and (-ms-high-contrast: active){& {
-        border-width: 2px;
-      }
-      &:hover {
-        border-color: #333333;
-      }
->
-  <div
-    className=
-        ms-TextField-wrapper
-        {
-          border-bottom-color: inherit;
-          border-bottom-style: solid;
-          border-bottom-width: 1px;
-          border-bottom: 1px solid #a80000;
-          border-color: #a80000;
-          display: flex;
-          width: 100%;
-        }
-        &:focus, &:hover {
-          border-color: #a80000;
-        }
-        &:focus {
-          border-bottom: 1px solid #a80000;
-        }
-        &:hover {
-          border-bottom: 1px solid #a80000;
-        }
-        @media screen and (-ms-high-contrast: active){&:hover {
-          border-color: Highlight;
-        }
-  >
-    <label
-      className=
-          ms-Label
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            box-shadow: none;
-            box-sizing: border-box;
-            color: #333333;
-            display: block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            height: 32px;
-            line-height: 22px;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 8px;
-            margin-top: 0px;
-            overflow-wrap: break-word;
-            padding-bottom: 5px;
-            padding-left: 12px;
-            padding-right: 0px;
-            padding-top: 5px;
-            word-wrap: break-word;
-          }
-      htmlFor="TextField0"
-    >
-      Label
-    </label>
-    <div
-      className=
-          ms-TextField-fieldGroup
-          {
-            align-items: stretch;
-            background: #ffffff;
-            border-color: #a80000;
-            border-width: 0px;
-            border: 1px solid #a6a6a6;
-            box-shadow: none;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: row;
-            flex: 1 1 0px;
-            height: 32px;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
-            position: relative;
-            text-align: left;
-          }
-          &:hover {
-            border-color: #333333;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
-          }
-          &:focus, &:hover {
-            border-color: #a80000;
-          }
-    >
-      <div
-        className=
-            ms-TextField-prefix
-            {
-              align-items: center;
-              background: #f4f4f4;
-              color: #666666;
-              display: flex;
-              line-height: 1px;
-              padding-bottom: 0;
-              padding-left: 10px;
-              padding-right: 10px;
-              padding-top: 0;
-              white-space: nowrap;
-            }
-      >
-        <span
-          style={
-            Object {
-              "paddingBottom": "1px",
-            }
-          }
-        >
-          test prefix
-        </span>
-      </div>
-      <input
-        aria-describedby="TextFieldDescription1"
-        aria-invalid={false}
-        className=
-            ms-TextField-field
-            {
-              background-color: transparent;
-              background: none;
-              border-radius: 0px;
-              border: none;
-              box-shadow: none;
-              box-sizing: border-box;
-              color: #333333;
-              font-size: 14px;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-              min-width: 0px;
-              outline: 0px;
-              padding-bottom: 0;
-              padding-left: 12px;
-              padding-right: 12px;
-              padding-top: 0;
-              text-align: left;
-              text-overflow: ellipsis;
-              width: 100%;
-            }
-            &:active, &:focus, &:hover {
-              outline: 0px;
-            }
-            &::-ms-clear {
-              display: none;
-            }
-            &::placeholder {
-              color: #666666;
-              opacity: 1;
-            }
-            &:-ms-input-placeholder {
-              color: #666666;
-              opacity: 1;
-            }
-        id="TextField0"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        onInput={[Function]}
-        type="text"
-        value=""
-      />
-      <div
-        className=
-            ms-TextField-suffix
-            {
-              align-items: center;
-              background: #f4f4f4;
-              color: #666666;
-              display: flex;
-              line-height: 1px;
-              padding-bottom: 0;
-              padding-left: 10px;
-              padding-right: 10px;
-              padding-top: 0;
-              white-space: nowrap;
-            }
-      >
-        <span
-          style={
-            Object {
-              "paddingBottom": "1px",
-            }
-          }
-        >
-          test suffix
-        </span>
-      </div>
-    </div>
-  </div>
-  <span
-    id="TextFieldDescription1"
-  >
-    <div
-      role="alert"
-    />
-  </span>
-</div>
-`;
-
-exports[`TextField should resepect user component and subcomponent styling 1`] = `
+exports[`TextField snapshots should resepect user component and subcomponent styling 1`] = `
 <div
   className=
       ms-TextField

@@ -47,19 +47,36 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   componentRef?: IRefObject<ITextField>;
 
   /**
+   * If true, the text field will follow strict controlled vs. uncontrolled behavior, similar to
+   * React's built-in input element:
+   * - If `value` is provided, `onChange` must be provided (unless `readOnly` is set to true) and
+   *   must manually update the component's props in response to user input. User input alone
+   *   will not update the displayed value.
+   * - Updates to `defaultValue` are not respected.
+   * - Changing the field from controlled (`value` provided) to uncontrolled (`defaultValue`
+   *   provided) is not supported.
+   * - Changing the field from uncontrolled to controlled is allowed but causes a warning.
+   *
+   * For more info, see https://reactjs.org/docs/forms.html and https://reactjs.org/docs/uncontrolled-components.html .
+   *
+   * In v7, this property will be removed and the behavior when it's set to true will become the default.
+   */
+  strictMode?: boolean;
+
+  /**
    * Whether or not the text field is a multiline text field.
    * @defaultvalue false
    */
   multiline?: boolean;
 
   /**
-   * Whether or not the multiline text field is resizable.
+   * For multiline text fields, whether or not the field is resizable.
    * @defaultvalue true
    */
   resizable?: boolean;
 
   /**
-   * Whether or not to auto adjust text field height. Applies only to multiline text field.
+   * For multiline text fields, whether or not to auto adjust text field height.
    * @defaultvalue false
    */
   autoAdjustHeight?: boolean;
@@ -133,7 +150,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
 
   /**
    * Default value of the text field. Only provide this if the text field is an uncontrolled component;
-   * otherwise, use the `value` property.
+   * otherwise, use the `value` property. If `strictMode` is true, updates to this prop will be ignored.
    */
   defaultValue?: string;
 
@@ -163,10 +180,12 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
 
   /**
    * Callback for when the input value changes.
+   * This is called on both `input` and `change` native events.
    */
   onChange?: (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void;
 
   /**
+   * Use `onChange` instead.
    * @deprecated Use `onChange` instead.
    */
   onChanged?: (newValue: any) => void;
@@ -174,6 +193,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   /**
    * Called after the input's value updates but before re-rendering.
    * @param newValue - The new value. Type should be string.
+   * @deprecated Use `onChange`. Please file an issue if you have a use case `onChange` does not cover.
    */
   onBeforeChange?: (newValue: any) => void;
 
@@ -185,15 +205,14 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   /**
    * Function used to determine whether the input value is valid and get an error message if not.
    *
-   *   When it returns string:
-   *   - If valid, it returns empty string.
-   *   - If invalid, it returns the error message string and the text field will
-   *     show a red border and show an error message below the text field.
+   * When it returns string:
+   * - If valid, it returns empty string.
+   * - If invalid, it returns the error message string and the text field will
+   *   show a red border and show an error message below the text field.
    *
-   *   When it returns Promise<string>:
-   *   - The resolved value is display as error message.
-   *   - The rejected, the value is thrown away.
-   *
+   * When it returns Promise<string>:
+   * - The resolved value is displayed as the error message.
+   * - If rejected, the value is thrown away.
    */
   onGetErrorMessage?: (value: string) => string | PromiseLike<string> | undefined;
 
