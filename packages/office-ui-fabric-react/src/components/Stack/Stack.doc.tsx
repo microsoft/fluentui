@@ -19,6 +19,18 @@ import { VerticalStackShrinkExample } from './examples/Stack.Vertical.Shrink.Exa
 const VerticalStackShrinkExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Vertical.Shrink.Example.tsx') as string;
 const VerticalStackShrinkExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Stack/Stack.Vertical.Shrink.Example.Codepen.txt') as string;
 
+import { VerticalStackWrapExample } from './examples/Stack.Vertical.Wrap.Example';
+const VerticalStackWrapExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Vertical.Wrap.Example.tsx') as string;
+const VerticalStackWrapExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Stack/Stack.Vertical.Wrap.Example.Codepen.txt') as string;
+
+import { VerticalStackWrapAdvancedExample } from './examples/Stack.Vertical.WrapAdvanced.Example';
+const VerticalStackWrapAdvancedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Vertical.WrapAdvanced.Example.tsx') as string;
+const VerticalStackWrapAdvancedExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Stack/Stack.Vertical.WrapAdvanced.Example.Codepen.txt') as string;
+
+import { VerticalStackWrapNestedExample } from './examples/Stack.Vertical.WrapNested.Example';
+const VerticalStackWrapNestedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Vertical.WrapNested.Example.tsx') as string;
+const VerticalStackWrapNestedExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Stack/Stack.Vertical.WrapNested.Example.Codepen.txt') as string;
+
 import { VerticalStackVerticalAlignExample } from './examples/Stack.Vertical.VerticalAlign.Example';
 const VerticalStackVerticalAlignExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Vertical.VerticalAlign.Example.tsx') as string;
 const VerticalStackVerticalAlignExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Stack/Stack.Vertical.VerticalAlign.Example.Codepen.txt') as string;
@@ -101,6 +113,24 @@ export const StackPageProps: IDocPageProps = {
       code: VerticalStackShrinkExampleCode,
       view: <VerticalStackShrinkExample />,
       codepenJS: VerticalStackShrinkExampleCodepen
+    },
+    {
+      title: 'Vertical Stack - Wrapping - Basic',
+      code: VerticalStackWrapExampleCode,
+      view: <VerticalStackWrapExample />,
+      codepenJS: VerticalStackWrapExampleCodepen
+    },
+    {
+      title: 'Vertical Stack - Wrapping - Advanced',
+      code: VerticalStackWrapAdvancedExampleCode,
+      view: <VerticalStackWrapAdvancedExample />,
+      codepenJS: VerticalStackWrapAdvancedExampleCodepen
+    },
+    {
+      title: 'Vertical Stack - Wrapping - Nested',
+      code: VerticalStackWrapNestedExampleCode,
+      view: <VerticalStackWrapNestedExample />,
+      codepenJS: VerticalStackWrapNestedExampleCodepen
     },
     {
       title: 'Vertical Stack - Vertical Alignments',

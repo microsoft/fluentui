@@ -38,12 +38,8 @@ export const styles: IStackComponent['styles'] = props => {
   let horiGap: IStackProps['gap'];
   let vertGap: IStackProps['gap'];
 
-  if (horizontal) {
-    horiGap = gap;
-    vertGap = verticalGap !== undefined ? verticalGap : gap;
-  } else {
-    vertGap = gap;
-  }
+  horiGap = gap;
+  vertGap = verticalGap !== undefined ? verticalGap : gap;
 
   const hGap = parseGap(horiGap, theme);
   const vGap = parseGap(vertGap, theme);
@@ -94,7 +90,7 @@ export const styles: IStackComponent['styles'] = props => {
           display: 'flex',
           flexDirection: horizontal ? 'row' : 'column',
           flexWrap: 'wrap',
-          width: fillHorizontal && !wrap ? '100%' : 'auto',
+          width: fillHorizontal ? '100%' : 'auto',
           marginLeft: horizontalMargin,
           marginRight: horizontalMargin,
           marginTop: verticalMargin,
@@ -112,9 +108,6 @@ export const styles: IStackComponent['styles'] = props => {
             '> *': {
               margin: `${0.5 * vGap.value}${vGap.unit} ${0.5 * hGap.value}${hGap.unit}`,
 
-              // avoid unnecessary calc() calls if horizontal gap is 0
-              maxWidth: hGap.value === 0 ? '100%' : `calc(100% - ${hGap.value}${hGap.unit})`,
-
               ...childStyles
             },
             ...commonSelectors
@@ -130,6 +123,24 @@ export const styles: IStackComponent['styles'] = props => {
         },
         vertAlignment && {
           [horizontal ? 'alignItems' : 'justifyContent']: nameMap[vertAlignment] || vertAlignment
+        },
+        horizontal && {
+          selectors: {
+            '> *': {
+              maxWidth: hGap.value === 0 ? '100%' : `calc(100% - ${hGap.value}${hGap.unit})`
+            }
+          }
+        },
+        !horizontal && {
+          height: `calc(100% + ${vGap.value}${vGap.unit})`,
+          justifyContent: 'start',
+          alignContent: 'end',
+          alignItems: 'start',
+          selectors: {
+            '> *': {
+              maxHeight: vGap.value === 0 ? '100%' : `calc(100% - ${vGap.value}${vGap.unit})`
+            }
+          }
         }
       ]
     } as IStackStyles;
