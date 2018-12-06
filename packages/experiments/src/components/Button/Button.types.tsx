@@ -22,6 +22,8 @@ export interface IButtonSlots {
   root?: ISlotProp<React.ButtonHTMLAttributes<any>>;
   stack?: ISlotProp<IHorizontalStackProps>;
   content?: ISlotProp<ITextProps, IChildrenProp>;
+  // TODO: consolidate these types to become:
+  // icon?: IIconSlot;
   icon?: ISlotProp<IIconProps, IIconDefaultProp>;
   menu?: ISlotProp<IContextualMenuProps>;
   menuIcon?: ISlotProp<IIconProps, IIconDefaultProp>;

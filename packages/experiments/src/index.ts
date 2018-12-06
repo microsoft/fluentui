@@ -1,3 +1,4 @@
+export * from './Button';
 export * from './Chiclet';
 export * from './CollapsibleSection';
 export * from './CommandBar';

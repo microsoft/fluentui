@@ -1,9 +1,11 @@
 import * as React from 'react';
+// TODO: pull this from utilities instead of adding a dependency to OUFR in Foudnation
 import { memoizeFunction } from 'office-ui-fabric-react';
 
 // TODO: Debug scenarios: is there a way to enable or highlight slots visually? borders? etc.
 // TODO: needs to work with refs / componentRefs/ forwardRefs / etc. Anything else getting bypassed?
 // TODO: make sure no unnecessary attributes are being pasesd to DOM ('as', 'slotAs', etc.)
+// TODO: make sure everything still works without @jsx pragma
 
 export type IFactoryComponent<TProps> = React.ReactType<TProps> & {
   create?: ISlotFactory<TProps>;

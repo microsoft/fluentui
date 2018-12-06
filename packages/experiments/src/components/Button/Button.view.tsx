@@ -41,6 +41,7 @@ export const ButtonView: IButtonComponent['view'] = props => {
   //        data-type and id should be overridden by user props
   // TODO: createComponent's types add 'classNames' to props type, which is not currently easily exposed.
   //        Eventually classNames will come out of createComponent entirely and this will change. Just use 'typeof props' for now.
+  // TODO: make sure Button examples have not regressed against master
   const Slots = getSlots<typeof props, IButtonSlots>(props, {
     root: _deriveRootType(props),
     stack: HorizontalStack,
