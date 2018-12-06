@@ -65,6 +65,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/layoutgroup'
         },
         {
+          component: require<any>('../components/PersonaCoin/PersonaCoinPage').PersonaCoinPage,
+          key: 'PersonaCoin',
+          name: 'PersonaCoin',
+          url: '#/examples/personacoin'
+        },
+        {
           component: require<any>('../components/Separator/SeparatorPage').SeparatorPage,
           key: 'Separator',
           name: 'Separator',
