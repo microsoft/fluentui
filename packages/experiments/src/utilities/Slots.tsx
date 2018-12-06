@@ -1,5 +1,5 @@
 import * as React from 'react';
-// TODO: pull this from utilities instead of adding a dependency to OUFR in Foudnation
+// TODO: pull this from utilities instead of adding a dependency to OUFR in Foundation
 import { memoizeFunction } from 'office-ui-fabric-react';
 
 /**
@@ -13,26 +13,27 @@ export type IFactoryComponent<TProps> = React.ReactType<TProps> & {
  * Factory options for creating component.
  */
 export interface IFactoryOptions<TProps> {
+  /** Default prop for which to map primitive values. */
   defaultProp: keyof TProps | 'children';
 }
 
-// Default prop = 'children', default prop type = typeof React children (ReactNode)
+/**
+ * Helper interface for accessing user props children.
+ */
 export type IPropsWithChildren<TProps> = TProps & { children?: React.ReactNode };
 
-export type INoDefaultProp = never;
-
 /**
- * An interface definition for defining Slots. Each key in TSlot must point to an IFactoryComponent.
+ * An interface for defining Slots. Each key in TSlot must point to an IFactoryComponent.
  */
 export type ISlotDefinition<TSlots> = { [prop in keyof TSlots]: IFactoryComponent<TSlots[prop]> };
 
 /**
- * Interface for created Slot used internally by components.
+ * Created Slot structure used for rendering by components.
  */
 export type ISlot<TProps> = ((props: IPropsWithChildren<TProps>) => JSX.Element) & { isSlot?: boolean };
 
 /**
- * Interface for a slot factory that consumes both componnent and user slot prop and generates render output.
+ * Interface for a slot factory that consumes both componnent and user slot prop and generates rendered output.
  */
 export type ISlotFactory<TProps> = (componentProps: TProps, userProps: ISlotProp<TProps>) => JSX.Element;
 
@@ -41,20 +42,23 @@ export type ISlotFactory<TProps> = (componentProps: TProps, userProps: ISlotProp
  */
 export type ISlots<TSlots> = { [slot in keyof TSlots]: ISlot<TSlots[slot]> };
 
+/**
+ * User properties that are automatically applied by Slot utilities using slot name.
+ */
 export interface IUserProps<TSlots> {
   classNames: { [prop in keyof TSlots]?: string };
 }
 
 /**
- * Helper interface components can use for defining Slot properties. This interface defines the following properties:
- *    1. Component props object (defined by TProps)
- *    2. ISlotRender function
- *    3. JSX Elements
- *    4. Optional shorthand prop, defined by TShorthandProp
+ * Helper interface components can use for defining Slot properties. This interface defines the following slot properties:
+ *    1. Component props object (defined by TProps.)
+ *    2. ISlotRender function.
+ *    3. JSX Elements.
+ *    4. Optional shorthand prop, defined by TShorthandProp.
  * The conditional type check looks up prop type in TProps if TShorthandProp is a key of TProps, otherwise it treats
- * TShorthandProp as React children.
+ * TShorthandProp as React children. If TShorthandProp is excluded, there is no default prop and no children are allowed.
  */
-export type ISlotProp<TProps, TShorthandProp extends keyof TProps | 'children' = INoDefaultProp> =
+export type ISlotProp<TProps, TShorthandProp extends keyof TProps | 'children' = never> =
   | TProps
   | JSX.Element
   | ISlotRenderFunction<TProps>
@@ -72,6 +76,8 @@ export type ISlotRenderFunction<TProps> = (props: TProps, componentType: React.R
  * As of writing, this line must be the FIRST LINE in the file to work correctly.
  *
  * Usage of this pragma also requires an import statement of SlotModule such as: import { createElementWrapper } from '<path>/Slots';
+ *
+ * @see React.createElement
  */
 // Can't use typeof on React.createElement since it's overloaded. Approximate createElement's signature for now and widen as needed.
 export function createElementWrapper<P>(
@@ -85,22 +91,22 @@ export function createElementWrapper<P>(
     children = React.Children.toArray(children);
     return type({ ...(props as any), children });
   } else {
-    // TODO: assess perf! is this spread really needed?
-    return React.createElement(type, props, ...children);
+    return React.createElement(type, props, children);
   }
 }
 
 // TODO: add tests for each case in this function.
 // TODO: tests should ensure props like data attributes and ID persist across all factory types
 // TODO: add typing tests too, both valid and invalid
-// TODO: is it possible to divorce the ideas of component factories and slots?
-//        since factories have to deal with slot props, it doesn't seem that way.
 // TODO: data-type and id are for testing, remove. (add to tests, though!)
 //        data-type and id should be overridden by user props
 // TODO: make sure Button examples have not regressed against master
 
 /**
  * This function creates factories that render ouput depending on the user ISlotProp props passed in.
+ * @param Component Base component to render when not overridden by user props.
+ * @param options Factory options, including defaultProp value for shorthand prop mapping.
+ * @returns ISlotFactory function used for rendering slots.
  */
 export function createFactory<TProps>(
   Component: React.ComponentType<TProps>,
@@ -139,11 +145,13 @@ export function createFactory<TProps>(
   return result;
 }
 
-// Fallback behavior for primitives.
+/**
+ * Default factory for components without explicit factories.
+ */
 const getDefaultFactory = memoizeFunction(type => createFactory(type));
 
 /**
- * Default factory for components that do not have explicit factories.
+ * Default factory helper.
  */
 function defaultFactory<TComponent, TProps>(type: TComponent, componentProps: TProps, userProps: TProps) {
   return getDefaultFactory(type)(componentProps, userProps);
@@ -152,6 +160,9 @@ function defaultFactory<TComponent, TProps>(type: TComponent, componentProps: TP
 /**
  * Render a slot given component and user props. Uses component factory if available, otherwise falls back
  * to default factory.
+ * @param ComponentType Factory component type.
+ * @param componentProps The properties passed into slot from within the component.
+ * @param userProps The user properties passed in from outside of the component.
  */
 function renderSlot<TComponent extends IFactoryComponent<TProps>, TProps>(
   ComponentType: TComponent,
@@ -167,6 +178,9 @@ function renderSlot<TComponent extends IFactoryComponent<TProps>, TProps>(
 
 /**
  * This function generates slots that can be used in JSX given a definition of Slots and their corresponding types.
+ * @param userProps Props as pass to component.
+ * @param slots Slot definition object defining the default slot component for each slot.
+ * @returns An set of created slots that components can render in JSX.
  */
 export function getSlots<TProps extends TSlots & IUserProps<TSlots>, TSlots extends { [key in keyof TSlots]: ISlotProp<TProps[key]> }>(
   userProps: TProps,

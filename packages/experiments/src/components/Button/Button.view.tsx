@@ -70,34 +70,12 @@ export const ButtonView: IButtonComponent['view'] = props => {
 // TODO: test with split button approach.
 //        should split button be another component?
 //        can Button's slots be manipulated to create an HOC split button?
-
 // { split && (
 // <Slot as='span' userProps={splitContainer}>
 //   <Slot as={Divider} userProps={divider} />
 //   <Slot as={Icon} userProps={menuChevron} />
 // </Slot>
 // )}
-
-// export class ButtonTest extends React.Component {
-//   public render() {
-//     const { root, icon, text, splitContainer, divider, menuChevron, split } = this.props;
-
-//     // return (
-//     //   createSlot('button', { 'data-type': 'button', id: 'asdf' }, root, [
-//     //     createSlot(Icon, { size: 123, key: 0 }, icon),
-//     //     createSlot('span', { key: 1 }, text)
-//     //   ])
-//     // );
-
-//     // TODO: possible to do this without React hierarchy?
-//     return (
-//       <Slot as='button' userProps={root} data-type='button' id='asdf'>
-//         <Slot as={Icon} iconName='upload' userProps={icon} data-type='icon' />
-//         <Slot as='span' userProps={text} data-type='span' />
-//       </Slot>
-//     );
-//   }
-// }
 
 function _deriveRootType(props: IButtonViewProps): keyof JSX.IntrinsicElements {
   return !!props.href ? 'a' : 'button';
