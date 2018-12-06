@@ -21,6 +21,7 @@ export interface IExampleState {
   paddingBottom: number;
   verticalAlignment: VerticalAlignment;
   horizontalAlignment: HorizontalAlignment;
+  hideEmptyChildren: boolean;
   emptyChildren: string[];
 }
 
@@ -41,6 +42,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
       paddingBottom: 0,
       verticalAlignment: 'top',
       horizontalAlignment: 'left',
+      hideEmptyChildren: false,
       emptyChildren: []
     };
   }
@@ -60,6 +62,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
       paddingBottom,
       verticalAlignment,
       horizontalAlignment,
+      hideEmptyChildren,
       emptyChildren
     } = this.state;
 
@@ -138,11 +141,11 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
                 showValue={true}
                 onChange={this._onGapChange}
               />
-              <HorizontalStack gap={20}>
+              <HorizontalStack gap={20} verticalAlign="bottom">
                 <HorizontalStack.Item grow>
                   <Dropdown
                     selectedKey={verticalAlignment}
-                    placeHolder="Select Vertical Alignment"
+                    placeholder="Select Vertical Alignment"
                     label="Vertical alignment:"
                     options={[
                       { key: 'top', text: 'Top' },
@@ -158,11 +161,14 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
                 <HorizontalStack.Item grow>
                   <Dropdown
                     selectedKey={horizontalAlignment}
-                    placeHolder="Select Horizontal Alignment"
+                    placeholder="Select Horizontal Alignment"
                     label="Horizontal alignment:"
                     options={[{ key: 'left', text: 'Left' }, { key: 'center', text: 'Center' }, { key: 'right', text: 'Right' }]}
                     onChange={this._onHorizontalAlignChange}
                   />
+                </HorizontalStack.Item>
+                <HorizontalStack.Item>
+                  <Checkbox label="Hide empty children" onChange={this._onHideEmptyChildrenChange} />
                 </HorizontalStack.Item>
                 <HorizontalStack.Item grow>
                   <TextField label="List of empty children (e.g. 1 2 3):" onChange={this._onEmptyChildrenChange} />
@@ -226,7 +232,11 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
         >
           {this._range(1, numItems).map((value: number, index: number) => {
             if (emptyChildren.indexOf(value.toString()) !== -1) {
-              return <Text key={index} className={styles.item} />;
+              return hideEmptyChildren ? (
+                <VerticalStack.Item key={index} className={styles.item} />
+              ) : (
+                <Text key={index} className={styles.item} />
+              );
             }
 
             return (
@@ -241,10 +251,11 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
   }
 
   private _range = (start: number, end: number): number[] => {
-    const length = end - start + 1;
-    return Array(length)
-      .fill(start)
-      .map((value: number, index: number) => start + index);
+    const result = [];
+    for (let i = start; i <= end; i++) {
+      result.push(i);
+    }
+    return result;
   };
 
   private _onNumItemsChange = (value: number): void => {
@@ -297,6 +308,10 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
 
   private _onHorizontalAlignChange = (ev: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
     this.setState({ horizontalAlignment: option.key as HorizontalAlignment });
+  };
+
+  private _onHideEmptyChildrenChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
+    this.setState({ hideEmptyChildren: isChecked });
   };
 
   private _onEmptyChildrenChange = (ev: React.FormEvent<HTMLInputElement>, value?: string): void => {

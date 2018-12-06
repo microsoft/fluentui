@@ -17,6 +17,12 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
   /**
    * Input placeholder text. Displayed until option is selected.
    */
+  placeholder?: string;
+
+  /**
+   * Input placeholder text. Displayed until option is selected.
+   * @deprecated Use `placeholder`
+   */
   placeHolder?: string;
 
   /**
@@ -60,6 +66,12 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
    */
   dropdownWidth?: number;
 
+  /**
+   * Pass in ResponsiveMode to manually overwrite the way the Dropdown renders.
+   * ResponsiveMode.Large would, for instance, disable the behavior where Dropdown options
+   * get rendered into a Panel while ResponsiveMode.Small would result in the Dropdown
+   * options always getting rendered in a Panel.
+   */
   responsiveMode?: ResponsiveMode;
 
   /**

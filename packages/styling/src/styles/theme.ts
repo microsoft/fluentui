@@ -6,6 +6,7 @@ import { DefaultPalette } from './DefaultPalette';
 import { DefaultSpacing } from './DefaultSpacing';
 import { DefaultTypography } from './DefaultTypography';
 import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
+import { DefaultEffects } from './DefaultEffects';
 
 let _theme: ITheme = createTheme({
   palette: DefaultPalette,
@@ -143,6 +144,10 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
     spacing: {
       ...DefaultSpacing,
       ...theme.spacing
+    },
+    effects: {
+      ...DefaultEffects,
+      ...theme.effects
     }
   };
 }
@@ -177,13 +182,14 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
 
     disabledBackground: p.neutralLighter,
     disabledText: p.neutralTertiary,
-    disabledBodyText: p.neutralTertiaryAlt,
+    disabledBodyText: p.neutralTertiary,
     disabledSubtext: p.neutralQuaternary,
+    disabledBodySubtext: p.neutralTertiaryAlt,
 
     focusBorder: p.neutralSecondary,
     variantBorder: p.neutralLight,
     variantBorderHovered: p.neutralTertiary,
-    defaultStateBackground: p.neutralLight,
+    defaultStateBackground: p.neutralLighterAlt,
 
     errorText: !isInverted ? p.redDark : '#ff5f5f',
     warningText: !isInverted ? '#333333' : '#ffffff',
@@ -194,13 +200,15 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     successBackground: !isInverted ? 'rgba(186, 216, 10, .2)' : 'rgba(186, 216, 10, .4)',
 
     inputBorder: p.neutralTertiary,
-    inputBorderHovered: p.neutralDark,
+    inputBorderHovered: p.neutralPrimary,
     inputBackground: p.white,
     inputBackgroundChecked: p.themePrimary,
     inputBackgroundCheckedHovered: p.themeDarkAlt,
     inputForegroundChecked: p.white,
     inputFocusBorderAlt: p.themePrimary,
     smallInputBorder: p.neutralSecondary,
+    inputText: p.neutralPrimary,
+    inputTextHovered: p.neutralDark,
     inputPlaceholderText: p.neutralSecondary,
 
     buttonBackground: p.neutralLighter,
@@ -223,11 +231,13 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     primaryButtonBackgroundPressed: p.themeDark,
     primaryButtonBackgroundDisabled: p.neutralLighter,
     primaryButtonBorder: 'transparent',
-
     primaryButtonText: p.white,
     primaryButtonTextHovered: p.white,
     primaryButtonTextPressed: p.white,
     primaryButtonTextDisabled: p.neutralQuaternary,
+
+    accentButtonBackground: p.accent,
+    accentButtonText: p.white,
 
     menuBackground: p.white,
     menuDivider: p.neutralTertiaryAlt,

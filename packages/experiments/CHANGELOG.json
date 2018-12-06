@@ -2,6 +2,265 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.45.0",
+      "tag": "@uifabric/experiments_v6.45.0",
+      "date": "Tue, 04 Dec 2018 13:36:40 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "DevExp: const enums are replaced with constants, this allows the use of isolatedModules mode of compilation",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "9b61cb962038f6d085e53058c7b806ceefea6a58"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `>=6.13.0 <7.0.0` to `>=6.14.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.110.0 <7.0.0` to `>=6.110.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.44.1",
+      "tag": "@uifabric/experiments_v6.44.1",
+      "date": "Mon, 03 Dec 2018 13:37:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Lifting the resolution of default and user provided style variables to Utilities.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "239a16755c7bc9089501d8523bb1fcfd596826dc"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.109.0 <7.0.0` to `>=6.110.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.44.0",
+      "tag": "@uifabric/experiments_v6.44.0",
+      "date": "Fri, 30 Nov 2018 13:37:17 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Pagination: Initial check-in of pagination control into experiments package.",
+            "author": "caradong <caradong1122@gmail.com>",
+            "commit": "5bc73a304b843bf183bf77659e0165d395f4af91"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Add missing depenencies",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "8276c66fdf75a4ad8b03614fd4e7c6e2c52203e5"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.9.0 <1.0.0` to `>=0.10.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.37.0 <7.0.0` to `>=6.38.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.108.0 <7.0.0` to `>=6.109.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.43.0",
+      "tag": "@uifabric/experiments_v6.43.0",
+      "date": "Thu, 29 Nov 2018 19:34:12 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Re-export Signals from package root",
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "80553ec8d2a7735dc0503d47fa7913b18fa7d2eb"
+          },
+          {
+            "comment": "update snapshots from semantic slot value updates",
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "3f75dd975a669b877023aaf45dd1c711c85f0e59"
+          },
+          {
+            "comment": "Toggle: Refining style variables approach in Toggle and adding examples passing interface and function.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "57a7af27f210a66ffb0eb1f626f3745de35e1cbd"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `>=6.2.0 <7.0.0` to `>=6.4.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.8.0 <1.0.0` to `>=0.9.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `>=6.12.0 <7.0.0` to `>=6.13.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.35.0 <7.0.0` to `>=6.37.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.106.3 <7.0.0` to `>=6.108.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.42.0",
+      "tag": "@uifabric/experiments_v6.42.0",
+      "date": "Thu, 22 Nov 2018 13:36:17 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add initializeFolderCovers pathway to override CDN for FolderCover",
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "0ae1191e4b7695ef0b439603c48900622da07706"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Stack: remove display: none styling on empty children",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "6201a23592b457c0e391a3aae3af581487bdd8f4"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.7.0 <1.0.0` to `>=0.8.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.106.2 <7.0.0` to `>=6.106.3 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.41.1",
+      "tag": "@uifabric/experiments_v6.41.1",
+      "date": "Wed, 21 Nov 2018 13:34:56 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Toggle: Reetructured Toggle to use style variables.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "7fa794c6069b30692d9eb8b8e1aa2e3e436a28de"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.106.1 <7.0.0` to `>=6.106.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.41.0",
+      "tag": "@uifabric/experiments_v6.41.0",
+      "date": "Thu, 08 Nov 2018 04:17:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "added bookmark signal icons",
+            "author": "Yumiko Huang <dayumikoda@gmail.com>",
+            "commit": "eef17a7a11df7c970b24a7c8f5781cafc0e7d7fc"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Converting existing Toggle component to use Foundation.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "d6be1268e199a6ec8355e1e94b45a6a10bac49da"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.28.0` to `^0.28.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.11.0 <7.0.0` to `>=6.13.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.100.0 <7.0.0` to `>=6.100.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.40.3",
+      "tag": "@uifabric/experiments_v6.40.3",
+      "date": "Fri, 02 Nov 2018 18:11:37 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.27.0` to `^0.28.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.98.0 <7.0.0` to `>=6.98.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.40.2",
+      "tag": "@uifabric/experiments_v6.40.2",
+      "date": "Fri, 02 Nov 2018 12:28:55 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.26.3` to `^0.27.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.97.1 <7.0.0` to `>=6.98.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.40.1",
+      "tag": "@uifabric/experiments_v6.40.1",
+      "date": "Wed, 31 Oct 2018 12:32:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add theme provider helper and replace usage of scheme prop with theme provider.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "fc5a1f4620c93499a41abe8377ff61161cf5bd76"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Prettier changes unrelated to the PR",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "1882ecb9c772a19ab6c75bdddc1ca539c932e9c4"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.26.1` to `^0.26.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.5.6 <1.0.0` to `>=0.5.7 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.96.0 <7.0.0` to `>=6.97.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.9.0 <7.0.0` to `>=6.9.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.40.0",
       "tag": "@uifabric/experiments_v6.40.0",
       "date": "Mon, 29 Oct 2018 12:31:29 GMT",

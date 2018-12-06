@@ -173,46 +173,64 @@ export class GetStartedPage extends React.Component<any, any> {
 
         <div className={styles.instructionsSection}>
           <h2 id="react">Get started with Fabric React</h2>
-          <p>
-            Use NPM to get Fabric components and core styling. All you need is{' '}
-            <a className={styles.getStartedLink} href="https://nodejs.org/en/">
-              node.js
-            </a>{' '}
-            and{' '}
-            <a className={styles.getStartedLink} href="http://gulpjs.com/">
-              gulp
-            </a>
-            .
-          </p>
+          <p>All you need to get started with Fabric is Node.js and npm.</p>
 
           <ol className={styles.steps}>
             <li>
-              <p>To install the Fabric React NPM package, from the root of your project, run:</p>
+              <p>
+                Install Node.js (at least 8.x) from the{' '}
+                <a href="https://nodejs.org" target="_blank">
+                  Node.js website
+                </a>
+                .
+              </p>
+            </li>
+            <li>
+              <p>
+                Use npm to create a React app that uses TypeScript. Consider using Facebook's{' '}
+                <a href="https://github.com/facebook/create-react-app" target="_blank">
+                  Create React App
+                </a>{' '}
+                along with{' '}
+                <a href="https://github.com/wmonk/create-react-app-typescript">
+                  <code>react-scripts-ts</code>
+                </a>{' '}
+                to get started quickly:
+              </p>
               <CodeBlock language="bash" isLightTheme={true}>
-                {`npm --save install office-ui-fabric-react`}
+                {`npx create-react-app my-app --scripts-version=react-scripts-ts`}
+              </CodeBlock>
+            </li>
+            <li>
+              <p>Navigate to your project and install Fabric React:</p>
+              <CodeBlock language="bash" isLightTheme={true}>
+                {`cd my-app
+npm install office-ui-fabric-react`}
               </CodeBlock>
             </li>
             <li>
               <p>
-                The library includes commonjs entry points under the lib folder. To use a control (like DefaultButton), import it along with
-                React and use it in your render method. Note that wrapping your application in the Fabric component is required to support
-                RTL, keyboard focus, and other features.
+                In <code>src/App.tsx</code>, import and use <code>DefaultButton</code>, a Fabric React control. Make sure to import controls
+                alongside React, then use them in your <code>render</code> method. It will should look something like this:
               </p>
               <CodeBlock language="javascript" isLightTheme={true}>
                 {`import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
-const MyPage = () => (
-  <Fabric>
-    <DefaultButton>
-      I am a button.
-    </DefaultButton>
-  </Fabric>
-);
+class App extends React.Component {
+  public render() {
+    return (
+      <div className="App">
+        <DefaultButton>
+          I am a button.
+        </DefaultButton>
+      </div>
+    );
+  }
+}
 
-ReactDOM.render(<MyPage />, document.body.firstChild);`}
+export default App;`}
               </CodeBlock>
             </li>
             <li>
@@ -226,25 +244,29 @@ ReactDOM.render(<MyPage />, document.body.firstChild);`}
               </CodeBlock>
               <DefaultButton text="See Button" primary={true} href="#/components/button" />
               <p>
-                For more information about using components, check out the{' '}
+                Check out the{' '}
                 <a className={styles.getStartedLink} href="#/components">
                   components page
-                </a>
-                .
+                </a>{' '}
+                for more design and technical docs for each component.
               </p>
             </li>
             <li>
               <p>
                 If you are using Fabric React components that have icons, you can make all icons available by calling the{' '}
-                <code>initializeIcons</code> function from the <code>@uifabric/icons</code> package.
+                <code>initializeIcons</code> function from the{' '}
+                <a href="https://www.npmjs.com/package/@uifabric/icons" target="_blank">
+                  <code>@uifabric/icons</code>
+                </a>{' '}
+                package.
               </p>
               <CodeBlock language="javascript" isLightTheme={true}>
                 {`import { initializeIcons } from '@uifabric/icons';
 
-// Register icons and pull the fonts from the default SharePoint cdn:
+// Register icons and pull the fonts from the default SharePoint CDN:
 initializeIcons();
 
-// ...or, register icons and pull the fonts from your own cdn:
+// ...or, register icons and pull the fonts from your own CDN:
 initializeIcons('https://my.cdn.com/path/to/icons/');`}
               </CodeBlock>
               <p>
@@ -268,17 +290,18 @@ initializeIcons('https://my.cdn.com/path/to/icons/');`}
 
           <h3>Need a component Fabric React doesn&rsquo;t have?</h3>
           <p>
-            First, check the
+            First, check the{' '}
             <a className={styles.getStartedLink} href="https://github.com/OfficeDev/office-ui-fabric-react/issues">
               Fabric React issue queue
             </a>{' '}
-            or
+            or{' '}
             <a className={styles.getStartedLink} href="https://github.com/OfficeDev/office-ui-fabric-react/projects">
-              projects
-            </a>
-             to see if your component has already been requested or is being worked on. If you don't see an existing issue or project for
-            the component you're looking for, please
+              projects{' '}
+            </a>{' '}
+            to see if your component has already been requested or is being worked on. If you don't see an existing issue or project for the
+            component you're looking for, please{' '}
             <a className={styles.getStartedLink} href="https://github.com/OfficeDev/office-ui-fabric-react/issues">
+              {' '}
               file an issue in the repo
             </a>
             , and we'll respond if it's being built or on our radar.
@@ -343,17 +366,18 @@ initializeIcons('https://my.cdn.com/path/to/icons/');`}
 
           <h3>Need an icon or feature Fabric Core doesn&rsquo;t have?</h3>
           <p>
-            First, check the
+            First, check the{' '}
             <a className={styles.getStartedLink} href="https://github.com/OfficeDev/office-ui-fabric-react/issues">
-              Fabric React issue queue
+              Fabric React issue queue{' '}
             </a>{' '}
-            or
+            or{' '}
             <a className={styles.getStartedLink} href="https://github.com/OfficeDev/office-ui-fabric-react/projects">
               projects
             </a>
              to see if your component has already been requested or is being worked on. If you don't see an existing issue or project for
-            the component you're looking for, please
+            the component you're looking for, please{' '}
             <a className={styles.getStartedLink} href="https://github.com/OfficeDev/office-ui-fabric-react/issues">
+              {' '}
               file an issue in the repo
             </a>
             , and we'll respond if it's being built or on our radar.

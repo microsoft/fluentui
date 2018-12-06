@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, getRTL } from '../../Utilities';
+import { BaseComponent, KeyCodes, css, getRTL, IRefObject } from '../../Utilities';
 import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.types';
 import { FocusZone } from '../../FocusZone';
 import {
@@ -21,7 +21,7 @@ export interface ICalendarMonth {
 }
 
 export interface ICalendarMonthProps extends React.ClassAttributes<CalendarMonth> {
-  componentRef?: (c: ICalendarMonth) => void;
+  componentRef?: IRefObject<ICalendarMonth>;
   navigatedDate: Date;
   selectedDate: Date;
   strings: ICalendarStrings;

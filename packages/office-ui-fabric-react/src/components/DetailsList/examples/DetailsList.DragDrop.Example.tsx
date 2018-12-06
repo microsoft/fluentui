@@ -45,7 +45,7 @@ export class DetailsListDragDropExample extends React.Component<
     this.state = {
       items: createListItems(10),
       columns: _columns,
-      isColumnReorderEnabled: false,
+      isColumnReorderEnabled: true,
       frozenColumnCountFromStart: '1',
       frozenColumnCountFromEnd: '0'
     };

@@ -86,7 +86,7 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
               position: relative;
             }
             &:hover {
-              border-color: #212121;
+              border-color: #333333;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
@@ -208,7 +208,7 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
               position: relative;
             }
             &:hover {
-              border-color: #212121;
+              border-color: #333333;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
@@ -299,7 +299,7 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
           border-width: 2px;
         }
         &:hover {
-          border-color: #212121;
+          border-color: #333333;
         }
   >
     <div
@@ -384,7 +384,7 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
               text-align: left;
             }
             &:hover {
-              border-color: #212121;
+              border-color: #333333;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
@@ -537,7 +537,7 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
               position: relative;
             }
             &:hover {
-              border-color: #212121;
+              border-color: #333333;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
