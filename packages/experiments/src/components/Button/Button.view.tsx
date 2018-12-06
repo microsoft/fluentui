@@ -1,13 +1,10 @@
-/** @jsx SlotModule.createElementWrapper */
+/** @jsx createElementWrapper */
 import { IButtonComponent, IButtonSlots, IButtonViewProps } from './Button.types';
 import { HorizontalStack } from '../../Stack';
 import { ContextualMenu } from 'office-ui-fabric-react';
 import { getNativeProps, buttonProperties } from '../../Utilities';
 import { Icon, Text } from '../../utilities/FactoryComponents';
-import { getSlots } from '../../utilities/Slots';
-
-// TODO: can this just be an import of createElementWrapper?
-import * as SlotModule from '../../utilities/Slots';
+import { createElementWrapper, getSlots } from '../../utilities/Slots';
 
 export const ButtonView: IButtonComponent['view'] = props => {
   const {
@@ -27,11 +24,6 @@ export const ButtonView: IButtonComponent['view'] = props => {
   // TODO: 'href' is anchor property... consider getNativeProps by root type
   const buttonProps = { ...getNativeProps(rest, buttonProperties), href: props.href };
 
-  // TODO: data-type and id are for testing, remove. (add to tests, though!)
-  //        data-type and id should be overridden by user props
-  // TODO: createComponent's types add 'classNames' to props type, which is not currently easily exposed.
-  //        Eventually classNames will come out of createComponent entirely and this will change. Just use 'typeof props' for now.
-  // TODO: make sure Button examples have not regressed against master
   const Slots = getSlots<typeof props, IButtonSlots>(props, {
     root: _deriveRootType(props),
     stack: HorizontalStack,
@@ -75,7 +67,9 @@ export const ButtonView: IButtonComponent['view'] = props => {
   );
 };
 
-// TODO: test with split button approach
+// TODO: test with split button approach.
+//        should split button be another component?
+//        can Button's slots be manipulated to create an HOC split button?
 
 // { split && (
 // <Slot as='span' userProps={splitContainer}>

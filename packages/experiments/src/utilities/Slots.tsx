@@ -2,15 +2,16 @@ import * as React from 'react';
 // TODO: pull this from utilities instead of adding a dependency to OUFR in Foudnation
 import { memoizeFunction } from 'office-ui-fabric-react';
 
-// TODO: Debug scenarios: is there a way to enable or highlight slots visually? borders? etc.
-// TODO: needs to work with refs / componentRefs/ forwardRefs / etc. Anything else getting bypassed?
-// TODO: make sure no unnecessary attributes are being pasesd to DOM ('as', 'slotAs', etc.)
-// TODO: make sure everything still works without @jsx pragma
-
+/**
+ * Signature of components that have component factories.
+ */
 export type IFactoryComponent<TProps> = React.ReactType<TProps> & {
   create?: ISlotFactory<TProps>;
 };
 
+/**
+ * Factory options for creating component.
+ */
 export interface IFactoryOptions<TProps> {
   defaultProp: keyof TProps | 'children';
 }
@@ -53,8 +54,6 @@ export interface IUserProps<TSlots> {
  * The conditional type check looks up prop type in TProps if TShorthandProp is a key of TProps, otherwise it treats
  * TShorthandProp as React children.
  */
-// TODO: If props object is passed but a required prop is missing, TS coerces to render function and gives a really obscure error.
-//        Is there a way to give a more descriptive error (i.e. "required prop missing")?
 export type ISlotProp<TProps, TShorthandProp extends keyof TProps | 'children' = INoDefaultProp> =
   | TProps
   | JSX.Element
@@ -69,10 +68,10 @@ export type ISlotRenderFunction<TProps> = (props: TProps, componentType: React.R
 /**
  * This function removes Slots from the React hierarchy by wrapping React.createElement and bypassing it for Slot components.
  *
- * To use this function on a per-file basis, put the following in a comment block: @jsx SlotModule.createElementWrapper
+ * To use this function on a per-file basis, put the following in a comment block: @jsx createElementWrapper
  * As of writing, this line must be the FIRST LINE in the file to work correctly.
  *
- * Usage of this pragma also requires an import statement of SlotModule such as: import * as SlotModule from '<path>/Slots';
+ * Usage of this pragma also requires an import statement of SlotModule such as: import { createElementWrapper } from '<path>/Slots';
  */
 // Can't use typeof on React.createElement since it's overloaded. Approximate createElement's signature for now and widen as needed.
 export function createElementWrapper<P>(
@@ -91,17 +90,15 @@ export function createElementWrapper<P>(
   }
 }
 
-// TODO:
-//  * data types pass on
-//  * children
-//  * perf comparison vs. readability
-//  * tests for all of the above
-
 // TODO: add tests for each case in this function.
 // TODO: tests should ensure props like data attributes and ID persist across all factory types
-// TODO: add typing tests too
+// TODO: add typing tests too, both valid and invalid
 // TODO: is it possible to divorce the ideas of component factories and slots?
 //        since factories have to deal with slot props, it doesn't seem that way.
+// TODO: data-type and id are for testing, remove. (add to tests, though!)
+//        data-type and id should be overridden by user props
+// TODO: make sure Button examples have not regressed against master
+
 /**
  * This function creates factories that render ouput depending on the user ISlotProp props passed in.
  */
@@ -145,10 +142,17 @@ export function createFactory<TProps>(
 // Fallback behavior for primitives.
 const getDefaultFactory = memoizeFunction(type => createFactory(type));
 
+/**
+ * Default factory for components that do not have explicit factories.
+ */
 function defaultFactory<TComponent, TProps>(type: TComponent, componentProps: TProps, userProps: TProps) {
   return getDefaultFactory(type)(componentProps, userProps);
 }
 
+/**
+ * Render a slot given component and user props. Uses component factory if available, otherwise falls back
+ * to default factory.
+ */
 function renderSlot<TComponent extends IFactoryComponent<TProps>, TProps>(
   ComponentType: TComponent,
   componentProps: TProps,
@@ -164,9 +168,6 @@ function renderSlot<TComponent extends IFactoryComponent<TProps>, TProps>(
 /**
  * This function generates slots that can be used in JSX given a definition of Slots and their corresponding types.
  */
-// TODO: good to require all slots? are there scenarios where slots would be optional? how would they be defined and used?
-//        constrain for now but loosen later if needed.
-// TODO: if TSlots is not enforcing values of ISlotProp, then remove the generic type constraint below
 export function getSlots<TProps extends TSlots & IUserProps<TSlots>, TSlots extends { [key in keyof TSlots]: ISlotProp<TProps[key]> }>(
   userProps: TProps,
   slots: ISlotDefinition<Required<TSlots>>
@@ -176,7 +177,7 @@ export function getSlots<TProps extends TSlots & IUserProps<TSlots>, TSlots exte
   for (const name in slots) {
     if (slots.hasOwnProperty(name)) {
       if (userProps && userProps[name] && userProps[name].children) {
-        // Since we are bypassing createElement, use React.Children.toArray to make sure children are properly assigned keys.
+        // Since createElementWrapper bypasses createElement, use React.Children.toArray to make sure children are properly assigned keys.
         userProps[name].children = React.Children.toArray(userProps[name].children);
       }
 
@@ -194,6 +195,7 @@ export function getSlots<TProps extends TSlots & IUserProps<TSlots>, TSlots exte
 //////////////////////////////////////////////////////////////////////////////////////////////
 // TODO: Slots Phase 2 (future PR)
 // TODO: Incorporate style variables approach and lift mergeStyles out of createComponent.
+// TODO: Debug scenarios: is there a way to enable or highlight slots visually? borders? etc.
 // TODO: Need something like this to merge styles and style variables for slots,
 //        particularly if createComponent is modified not to generate classNames for slots
 //
