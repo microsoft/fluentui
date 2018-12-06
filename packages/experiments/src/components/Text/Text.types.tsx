@@ -1,4 +1,4 @@
-import { IStyle, IPalette, ISemanticColors } from '../../Styling';
+import { IStyle } from '../../Styling';
 import { IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
 import { IFontStyles } from '../../Styling';
 

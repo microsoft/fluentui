@@ -1,9 +1,8 @@
-import { ISemanticTextColors } from '../../Styling';
 import { ITextComponent } from './Text.types';
 
 export const TextStyles: ITextComponent['styles'] = props => {
   const { as, className, inline, theme, wrap, variant } = props;
-  const { semanticColors, fonts } = theme;
+  const { fonts } = theme;
   const variantObject = fonts[variant!] || fonts.medium; // TODO: add default to fonts
 
   return {

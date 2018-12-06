@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Text, VerticalStack } from '@uifabric/experiments';
 import { IFontStyles, IStyle } from '@uifabric/experiments/lib/Styling';
-import { ISemanticTextColors, IPalette } from '@uifabric/experiments/lib/Styling';
 import { createStatelessComponent, IStyleableComponentProps, IStatelessComponent } from '@uifabric/experiments/lib/Foundation';
 
 const TestText = 'The quick brown fox jumped over the lazy dog.';
@@ -10,17 +9,6 @@ interface ISetting<TType> {
   name: TType;
   usage: string;
 }
-
-// const Variants: ISetting<keyof IFontVariants>[] = [
-//   { name: 'default', usage: 'default' },
-//   { name: 'caption', usage: 'caption' },
-//   { name: 'h1', usage: 'h1' },
-//   { name: 'h2', usage: 'h2' },
-//   { name: 'h3', usage: 'h3' },
-//   { name: 'h4', usage: 'h4' },
-//   { name: 'h5', usage: 'h5' },
-//   { name: 'link', usage: 'link' }
-// ];
 
 const Variants: ISetting<keyof IFontStyles>[] = [
   { name: 'tiny', usage: 'usage here.' },
@@ -34,24 +22,6 @@ const Variants: ISetting<keyof IFontStyles>[] = [
   { name: 'xxLarge', usage: 'usage here.' },
   { name: 'mega', usage: 'usage here.' }
 ];
-
-// const Weights: ISetting<keyof IFontWeights>[] = [
-//   { name: 'default', usage: '' },
-//   { name: 'light', usage: '' },
-//   { name: 'regular', usage: '' },
-//   { name: 'semibold', usage: '' },
-//   { name: 'bold', usage: '' }
-// ];
-
-// const Families: ISetting<keyof IFontFamilies>[] = [{ name: 'default', usage: '' }, { name: 'monospace', usage: '' }];
-
-// const Colors: ISetting<keyof ISemanticTextColors | keyof IPalette>[] = [
-//   { name: 'bodyText', usage: '' },
-//   { name: 'link', usage: '' },
-//   { name: 'linkHovered', usage: '' },
-//   { name: 'actionLink', usage: '' },
-//   { name: 'actionLinkHovered', usage: '' }
-// ];
 
 interface ITableStyles {
   root: IStyle;
