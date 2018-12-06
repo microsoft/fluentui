@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { BaseComponent, css, classNamesFunction } from '../../Utilities';
+import { BaseComponent, classNamesFunction } from '../../Utilities';
 import { IDocumentCardStatusProps, IDocumentCardStatusStyleProps, IDocumentCardStatusStyles } from './DocumentCardStatus.types';
 import { Icon } from '../../Icon';
 import { IProcessedStyleSet } from '../../Styling';
