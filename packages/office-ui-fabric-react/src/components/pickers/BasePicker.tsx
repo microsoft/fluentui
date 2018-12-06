@@ -205,6 +205,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
               </span>
               {this.canAddItems() && (
                 <Autofill
+                  spellCheck={false}
                   {...inputProps as any}
                   className={css('ms-BasePicker-input', styles.pickerInput, inputProps && inputProps.className)}
                   ref={this.input}
@@ -224,7 +225,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
                   aria-owns={suggestionsAvailable || undefined}
                   aria-autocomplete={'both'}
                   onInputChange={this.props.onInputChange}
-                  spellCheck={false}
                 />
               )}
             </div>
