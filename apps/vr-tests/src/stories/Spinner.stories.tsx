@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { Spinner, SpinnerSize, Fabric } from 'office-ui-fabric-react';
+import { Spinner, SpinnerSize } from 'office-ui-fabric-react';
 
 storiesOf('Spinner', module)
   .addDecorator(FabricDecorator)
@@ -12,16 +12,30 @@ storiesOf('Spinner', module)
   .addStory('Small', () => <Spinner size={SpinnerSize.small} />)
   .addStory('Medium', () => <Spinner size={SpinnerSize.medium} />)
   .addStory('Large', () => <Spinner size={SpinnerSize.large} />)
-  .addStory('Label', () => <Spinner size={SpinnerSize.medium} label="Spinner label" />)
-  .addStory('Label at top', () => <Spinner size={SpinnerSize.medium} label="Spinner label" labelPosition="top" />)
-  .addStory('Label on the right', () => <Spinner size={SpinnerSize.medium} label="Spinner label" labelPosition="right" />)
+  .addStory('Label', () => (
+    <Spinner styles={{ label: { fontFamily: 'Segoe UI', fontSize: '14px' } }} size={SpinnerSize.medium} label="Spinner label" />
+  ))
+  .addStory('Label at top', () => (
+    <Spinner
+      styles={{ label: { fontFamily: 'Segoe UI', fontSize: '14px' } }}
+      size={SpinnerSize.medium}
+      label="Spinner label"
+      labelPosition="top"
+    />
+  ))
+  .addStory('Label on the right', () => (
+    <Spinner
+      styles={{ label: { fontFamily: 'Segoe UI', fontSize: '14px' } }}
+      size={SpinnerSize.medium}
+      label="Spinner label"
+      labelPosition="right"
+    />
+  ))
   .addStory('Label on the left', () => (
-    <Fabric>
-      <Spinner
-        size={SpinnerSize.medium}
-        label="Spinner label"
-        labelPosition="left"
-        styles={{ label: { fontFamily: 'Segoe UI', fontSize: '14px' } }}
-      />
-    </Fabric>
+    <Spinner
+      styles={{ label: { fontFamily: 'Segoe UI', fontSize: '14px' } }}
+      size={SpinnerSize.medium}
+      label="Spinner label"
+      labelPosition="left"
+    />
   ));
