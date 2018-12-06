@@ -53,7 +53,7 @@ const ExampleFile = (props: IExampleFileProps) => {
   return (
     <div data-is-focusable="true" style={{ display: 'flex', alignItems: 'center', height: 24, paddingLeft: 4 + props.indent * 18 }}>
       <img src={props.iconSource} style={{ maxWidth: 16, padding: 6 }} />
-      <Text size="small">{props.filename}</Text>
+      <Text variant="small">{props.filename}</Text>
     </div>
   );
 };

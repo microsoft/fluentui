@@ -71,12 +71,12 @@ type ITableComponent = IStatelessComponent<ITableProps, ITableStyles>;
 
 const TableView: ITableComponent['view'] = props => (
   <VerticalStack className={props.className} gap={20}>
-    <Text variant="h3">{props.title}</Text>
+    <Text /*variant="h3"*/>{props.title}</Text>
     <table className={props.classNames.table}>
       <thead>
         <tr className={props.classNames.header}>
           {props.headers.map((header: string) => (
-            <Text key={header} as="td" weight="bold">
+            <Text key={header} as="td" /* weight="bold" */>
               {header}
             </Text>
           ))}
@@ -124,9 +124,7 @@ export const TextRampExample = () => (
           key={setting.name}
           cells={[
             setting.name,
-            <Text key={setting.name + 'text'} variant={setting.name}>
-              {TestText}
-            </Text>,
+            <Text key={setting.name + 'text'} /* variant={setting.name}*/>{TestText}</Text>,
             <Text key={setting.name + 'usage'}>setting.usage</Text>
           ]}
         />
@@ -135,60 +133,25 @@ export const TextRampExample = () => (
 
     <Table title="Sizes" headers={['Size', 'Example', 'Usage']}>
       {Sizes.map((setting: ISetting<keyof IFontSizes>) => (
-        <TableRow
-          key={setting.name}
-          cells={[
-            setting.name,
-            <Text key={setting.name + 'text'} size={setting.name}>
-              {TestText}
-            </Text>,
-            setting.usage
-          ]}
-        />
+        <TableRow key={setting.name} cells={[setting.name, <Text key={setting.name + 'text'}>{TestText}</Text>, setting.usage]} />
       ))}
     </Table>
 
     <Table title="Weights" headers={['Weight', 'Example', 'Usage']}>
       {Weights.map((setting: ISetting<keyof IFontWeights>) => (
-        <TableRow
-          key={setting.name}
-          cells={[
-            setting.name,
-            <Text key={setting.name + 'text'} weight={setting.name}>
-              {TestText}
-            </Text>,
-            setting.usage
-          ]}
-        />
+        <TableRow key={setting.name} cells={[setting.name, <Text key={setting.name + 'text'}>{TestText}</Text>, setting.usage]} />
       ))}
     </Table>
 
     <Table title="Families" headers={['Family', 'Example', 'Usage']}>
       {Families.map((setting: ISetting<keyof IFontFamilies>) => (
-        <TableRow
-          key={setting.name}
-          cells={[
-            setting.name,
-            <Text key={setting.name + 'text'} family={setting.name}>
-              {TestText}
-            </Text>,
-            setting.usage
-          ]}
-        />
+        <TableRow key={setting.name} cells={[setting.name, <Text key={setting.name + 'text'}>{TestText}</Text>, setting.usage]} />
       ))}
     </Table>
 
     <Table title="Colors" headers={['Color', 'Example']}>
       {Colors.map((setting: ISetting<keyof ISemanticTextColors | keyof IPalette>) => (
-        <TableRow
-          key={setting.name}
-          cells={[
-            setting.name,
-            <Text key={setting.name + 'text'} color={setting.name}>
-              {TestText}
-            </Text>
-          ]}
-        />
+        <TableRow key={setting.name} cells={[setting.name, <Text key={setting.name + 'text'}>{TestText}</Text>]} />
       ))}
     </Table>
   </VerticalStack>
