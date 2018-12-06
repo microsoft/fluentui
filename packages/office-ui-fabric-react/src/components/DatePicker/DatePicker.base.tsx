@@ -264,7 +264,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
   }
 
   private _onSelectDate = (date: Date): void => {
-    const { onSelectDate } = this.props;
+    const { formatDate, onSelectDate } = this.props;
 
     if (this.props.calendarProps && this.props.calendarProps.onSelectDate) {
       this.props.calendarProps.onSelectDate(date);
@@ -272,6 +272,11 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
 
     if (onSelectDate) {
       onSelectDate(date);
+    } else {
+      this.setState({
+        selectedDate: date,
+        formattedDate: formatDate && date ? formatDate(date) : ''
+      });
     }
 
     this._calendarDismissed();
