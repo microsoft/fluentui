@@ -195,7 +195,6 @@ export interface ISemanticColors extends ISemanticTextColors {
   /**
    * Background of a hovered standard button
    */
-
   buttonBackgroundHovered: string;
 
   /**
@@ -247,6 +246,11 @@ export interface ISemanticColors extends ISemanticTextColors {
    * Border of a primary button
    */
   primaryButtonBorder: string;
+
+  /**
+   * Background of an accent button (kicker)
+   */
+  accentButtonBackground: string;
 
   //// Menus, popups, etc
 

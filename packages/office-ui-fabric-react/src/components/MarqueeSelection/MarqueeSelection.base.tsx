@@ -8,8 +8,7 @@ import {
   classNamesFunction,
   findScrollableParent,
   getDistanceBetweenPoints,
-  getRTL,
-  createRef
+  getRTL
 } from '../../Utilities';
 
 import { IMarqueeSelectionProps, IMarqueeSelectionStyleProps, IMarqueeSelectionStyles } from './MarqueeSelection.types';
@@ -38,7 +37,7 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
     isEnabled: true
   };
 
-  private _root = createRef<HTMLDivElement>();
+  private _root = React.createRef<HTMLDivElement>();
   private _dragOrigin: IPoint | undefined;
   private _rootRect: IRectangle;
   private _lastMouseEvent: MouseEvent | undefined;

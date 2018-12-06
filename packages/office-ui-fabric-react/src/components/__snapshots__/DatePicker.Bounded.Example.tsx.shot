@@ -85,7 +85,7 @@ Wed, 06 Dec 2017 04:41:20 GMT-Wed, 06 Dec 2017 04:41:20 GMT
                   position: relative;
                 }
                 &:hover {
-                  border-color: #212121;
+                  border-color: #333333;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;

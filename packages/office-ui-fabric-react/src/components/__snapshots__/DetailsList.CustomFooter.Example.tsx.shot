@@ -48,13 +48,13 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
             z-index: 1;
           }
           &:hover .ms-Checkbox-checkbox {
-            border-color: #212121;
+            border-color: #333333;
           }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
             border-color: Highlight;
           }
           &:focus .ms-Checkbox-checkbox {
-            border-color: #212121;
+            border-color: #333333;
           }
           &:hover .ms-Checkbox-checkmark {
             color: #a6a6a6;
@@ -236,7 +236,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
               position: relative;
             }
             &:hover {
-              border-color: #212121;
+              border-color: #333333;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;

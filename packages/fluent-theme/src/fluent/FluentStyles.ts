@@ -1,4 +1,5 @@
 import { BreadcrumbStyles } from './styles/Breadcrumb.styles';
+import { CheckStyles, DetailsRowStyles } from './styles/DetailsList.styles';
 import { CalloutContentStyles } from './styles/Callout.styles';
 import { CheckboxStyles } from './styles/Checkbox.styles';
 import { ChoiceGroupOptionStyles } from './styles/ChoiceGroupOption.styles';
@@ -22,6 +23,7 @@ import { PrimaryButtonStyles } from './styles/PrimaryButton.styles';
 import { RatingStyles } from './styles/Rating.styles';
 import { SliderStyles } from './styles/Slider.styles';
 import { SpinButtonStyles } from './styles/SpinButton.styles';
+import { TeachingBubbleStyles } from './styles/TeachingBubble.styles';
 import { TextFieldStyles } from './styles/TextField.styles';
 import { ToggleStyles } from './styles/Toggle.styles';
 import { ColorPickerGridCellStyles } from './styles/ColorPickerGridCell.styles';
@@ -56,6 +58,9 @@ export const FluentStyles: any = {
   CompoundButton: {
     styles: CompoundButtonStyles
   },
+  Check: {
+    styles: CheckStyles
+  },
   Checkbox: {
     styles: CheckboxStyles
   },
@@ -76,6 +81,9 @@ export const FluentStyles: any = {
   },
   DefaultButton: {
     styles: DefaultButtonStyles
+  },
+  DetailsRow: {
+    styles: DetailsRowStyles
   },
   DialogContent: {
     styles: DialogContentStyles
@@ -118,6 +126,9 @@ export const FluentStyles: any = {
   },
   SpinButton: {
     styles: SpinButtonStyles
+  },
+  TeachingBubble: {
+    styles: TeachingBubbleStyles
   },
   TextField: {
     styles: TextFieldStyles

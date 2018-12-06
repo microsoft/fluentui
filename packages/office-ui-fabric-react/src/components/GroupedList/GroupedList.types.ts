@@ -27,7 +27,7 @@ export interface IGroupedList extends IList {
   toggleCollapseAll: (allCollapsed: boolean) => void;
 }
 
-export interface IGroupedListProps extends React.Props<GroupedListBase> {
+export interface IGroupedListProps extends React.ClassAttributes<GroupedListBase> {
   /**
    * Theme that is passed in from Higher Order Component
    */

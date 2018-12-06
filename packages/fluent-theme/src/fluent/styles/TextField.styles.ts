@@ -1,8 +1,8 @@
-import { ITextFieldStyleProps } from 'office-ui-fabric-react/lib/TextField';
+import { ITextFieldStyleProps, ITextFieldStyles } from 'office-ui-fabric-react/lib/TextField';
 import { fluentBorderRadius } from './styleConstants';
 import { NeutralColors, SharedColors } from '../FluentColors';
 
-export const TextFieldStyles = (props: ITextFieldStyleProps) => {
+export const TextFieldStyles = (props: ITextFieldStyleProps): Partial<ITextFieldStyles> => {
   const { focused, disabled, hasErrorMessage, multiline, theme } = props;
   const { palette } = theme;
 
@@ -24,8 +24,8 @@ export const TextFieldStyles = (props: ITextFieldStyleProps) => {
       hasErrorMessage && [
         {
           borderColor: SharedColors.red10,
-          selector: {
-            '&:hover': {
+          selectors: {
+            '&:focus, &:hover': {
               borderColor: SharedColors.red20
             }
           }
