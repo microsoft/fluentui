@@ -4,7 +4,6 @@ import { DocumentCardLocation } from './DocumentCardLocation';
 import { DocumentCardActivity } from './DocumentCardActivity';
 import { DocumentCardActions } from './DocumentCardActions';
 import { DocumentCardLogo } from './DocumentCardLogo';
-import { DocumentCardStatus } from './DocumentCardStatus';
 import { PersonaInitialsColor } from '../../Persona';
 import { ImageFit } from '../../Image';
 import { IButtonProps } from '../../Button';
@@ -293,20 +292,4 @@ export interface IDocumentCardLogoProps extends React.ClassAttributes<DocumentCa
    * Describe Logo name, optional.
    */
   logoName?: string;
-}
-
-export interface IDocumentCardStatusProps extends React.ClassAttributes<DocumentCardStatus> {
-  /**
-   * Gets the component ref.
-   */
-  componentRef?: IRefObject<{}>;
-  /**
-   * Describes DocumentCard status icon.
-   */
-  statusIcon?: string;
-
-  /**
-   * Describe status information. Required field.
-   */
-  status: string;
 }

@@ -138,8 +138,7 @@ $ms-DocumentCardActivity-personaTextGutter: 8px;
 
   .activityDetails {
     @include ms-left(
-      $ms-DocumentCardActivity-horizontalPadding + ($ms-DocumentCardActivity-imageSize * 1.5) +
-        $ms-DocumentCardActivity-personaTextGutter
+      $ms-DocumentCardActivity-horizontalPadding + ($ms-DocumentCardActivity-imageSize * 1.5) + $ms-DocumentCardActivity-personaTextGutter
     );
   }
 }
@@ -171,15 +170,14 @@ $ms-DocumentCardActivity-personaTextGutter: 8px;
 
 .activityDetails {
   @include ms-left(
-    $ms-DocumentCardActivity-horizontalPadding + $ms-DocumentCardActivity-imageSize +
-      $ms-DocumentCardActivity-personaTextGutter
+    $ms-DocumentCardActivity-horizontalPadding + $ms-DocumentCardActivity-imageSize + $ms-DocumentCardActivity-personaTextGutter
   );
   height: $ms-DocumentCardActivity-imageSize;
   position: absolute;
   top: $ms-DocumentCardActivity-verticalPadding;
   width: calc(
-    100% - #{$ms-DocumentCardActivity-horizontalPadding + $ms-DocumentCardActivity-imageSize +
-      $ms-DocumentCardActivity-personaTextGutter + $ms-DocumentCardActivity-horizontalPadding}
+    100% - #{$ms-DocumentCardActivity-horizontalPadding + $ms-DocumentCardActivity-imageSize + $ms-DocumentCardActivity-personaTextGutter +
+      $ms-DocumentCardActivity-horizontalPadding}
   );
 }
 
@@ -310,12 +308,4 @@ $DocumentCard-title-lineHeight: 21px;
   color: $ms-color-themePrimary;
   display: block;
   @include ms-padding(16px, 16px, 0, 16px);
-}
-
-.status {
-  @include ms-margin(8px, 16px, 8px, 16px);
-  @include ms-font-m;
-  color: $ms-color-neutralPrimary;
-  background-color: $ms-color-neutralLighter;
-  height: 32px;
 }
