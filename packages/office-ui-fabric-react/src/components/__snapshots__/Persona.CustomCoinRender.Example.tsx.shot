@@ -72,6 +72,8 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
               text-align: center;
               width: 72px;
             }
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
         style={
           Object {
             "height": 72,

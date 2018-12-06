@@ -128,6 +128,8 @@ exports[`Component Examples renders Facepile.Overflow.Example.tsx correctly 1`] 
                       text-align: center;
                       width: 32px;
                     }
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
               >
                 <div
                   className=
@@ -250,6 +252,8 @@ exports[`Component Examples renders Facepile.Overflow.Example.tsx correctly 1`] 
                       text-align: center;
                       width: 32px;
                     }
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
               >
                 <div
                   className=
@@ -426,6 +430,8 @@ exports[`Component Examples renders Facepile.Overflow.Example.tsx correctly 1`] 
                         text-align: center;
                         width: 32px;
                       }
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
                 >
                   <div
                     aria-hidden="true"
@@ -523,6 +529,8 @@ exports[`Component Examples renders Facepile.Overflow.Example.tsx correctly 1`] 
                       text-align: center;
                       width: 32px;
                     }
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
               >
                 <div
                   aria-hidden="true"
@@ -619,6 +627,8 @@ exports[`Component Examples renders Facepile.Overflow.Example.tsx correctly 1`] 
                       text-align: center;
                       width: 32px;
                     }
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
               >
                 <div
                   aria-hidden="true"

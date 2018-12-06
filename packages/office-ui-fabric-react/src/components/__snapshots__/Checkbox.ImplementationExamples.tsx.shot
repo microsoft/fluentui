@@ -1096,6 +1096,8 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
                   text-align: center;
                   width: 32px;
                 }
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
           >
             <div
               className=

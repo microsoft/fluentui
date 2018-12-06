@@ -59,6 +59,8 @@ exports[`Persona renders Persona children correctly 1`] = `
             text-align: center;
             width: 48px;
           }
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
     >
       <div
         aria-hidden="true"
@@ -233,6 +235,8 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
             text-align: center;
             width: 48px;
           }
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
     >
       <div
         aria-hidden="true"
@@ -419,6 +423,8 @@ exports[`Persona renders Persona correctly with image 1`] = `
             text-align: center;
             width: 48px;
           }
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
     >
       <div
         className=
@@ -616,6 +622,8 @@ exports[`Persona renders Persona correctly with initials 1`] = `
             text-align: center;
             width: 48px;
           }
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
     >
       <div
         aria-hidden="true"
@@ -787,6 +795,8 @@ exports[`Persona renders Persona correctly with no props 1`] = `
             text-align: center;
             width: 48px;
           }
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
     >
       <div
         aria-hidden="true"
@@ -960,6 +970,8 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
             text-align: center;
             width: 100px;
           }
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
     >
       <div
         aria-hidden="true"
@@ -1253,6 +1265,8 @@ exports[`Persona renders correctly with onRender callback 1`] = `
             text-align: center;
             width: 100px;
           }
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
     >
       <div
         className=
@@ -1533,6 +1547,8 @@ exports[`PersonaCoin does not render the initials when showInitialsUntilImageLoa
           text-align: center;
           width: 48px;
         }
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <div
       className=
@@ -1613,6 +1629,8 @@ exports[`PersonaCoin renders correctly 1`] = `
           text-align: center;
           width: 48px;
         }
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <div
       aria-hidden="true"
@@ -1682,6 +1700,8 @@ exports[`PersonaCoin renders correctly with image 1`] = `
           text-align: center;
           width: 48px;
         }
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <div
       className=
@@ -1762,6 +1782,8 @@ exports[`PersonaCoin renders correctly with onRender callback 1`] = `
           text-align: center;
           width: 100px;
         }
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <div
       aria-hidden="true"
@@ -1816,6 +1838,8 @@ exports[`PersonaCoin renders correctly with provided initials 1`] = `
           text-align: center;
           width: 48px;
         }
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <div
       aria-hidden="true"
@@ -1870,6 +1894,8 @@ exports[`PersonaCoin renders correctly with text 1`] = `
           text-align: center;
           width: 48px;
         }
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <div
       aria-hidden="true"
@@ -1924,6 +1950,8 @@ exports[`PersonaCoin renders the initials before the image is loaded 1`] = `
           text-align: center;
           width: 48px;
         }
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <div
       aria-hidden="true"

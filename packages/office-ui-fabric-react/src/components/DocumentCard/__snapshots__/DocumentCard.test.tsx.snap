@@ -47,6 +47,8 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
                   text-align: center;
                   width: 32px;
                 }
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
           >
             <div
               aria-hidden="true"

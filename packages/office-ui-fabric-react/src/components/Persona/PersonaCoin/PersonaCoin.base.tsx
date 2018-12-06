@@ -67,8 +67,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
       onRenderInitials = this._onRenderInitials,
       presence,
       showInitialsUntilImageLoads,
-      theme,
-      showInitialsOnHover
+      theme
     } = this.props;
 
     const size = this.props.size as PersonaSize;
@@ -92,19 +91,19 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
       showUnknownPersonaCoin
     });
 
-    const shouldRenderInitials = Boolean(
-      (!this.state.isImageLoaded && ((showInitialsUntilImageLoads && imageUrl) || !imageUrl || this.state.isImageError || hideImage)) ||
-        (showInitialsOnHover && this.state.isHovered)
+    const showHoveredInitials = Boolean(this.showInitialsOnHover() && this.state.isHovered);
+    const showInitialsWhenImageNotLoaded = Boolean(
+      (showInitialsUntilImageLoads && imageUrl) || !imageUrl || this.state.isImageError || hideImage
     );
-
+    const shouldRenderInitials = (!this.state.isImageLoaded && showInitialsWhenImageNotLoaded) || showHoveredInitials;
     return (
       <div {...divProps} className={classNames.coin}>
         {// Render PersonaCoin if size is not size10
         size !== PersonaSize.size10 && size !== PersonaSize.tiny ? (
           <div
             {...coinProps}
-            onMouseEnter={showInitialsOnHover ? this._onCoinMouseEnter : undefined}
-            onMouseLeave={showInitialsOnHover ? this._onCoinMouseLeave : undefined}
+            onMouseEnter={this._onCoinMouseEnter}
+            onMouseLeave={this._onCoinMouseLeave}
             className={classNames.imageArea}
             style={coinSizeStyle}
           >
@@ -139,7 +138,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
     const { coinSize, styles, imageUrl, imageAlt, imageShouldFadeIn, imageShouldStartVisible, theme, showUnknownPersonaCoin } = this.props;
 
     // Do not render the Image component if either an image URL is not provided or we wish to show the initials when hovering over the image
-    if (!imageUrl || (this.props.showInitialsOnHover && this.state.isHovered)) {
+    if (!imageUrl || (this.showInitialsOnHover() && this.state.isHovered)) {
       return null;
     }
 
@@ -200,14 +199,23 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
   };
 
   private _onCoinMouseEnter = () => {
-    this.setState({
-      isHovered: true
-    });
+    if (this.showInitialsOnHover()) {
+      this.setState({
+        isHovered: true
+      });
+    }
   };
 
   private _onCoinMouseLeave = () => {
-    this.setState({
-      isHovered: false
-    });
+    if (this.showInitialsOnHover()) {
+      this.setState({
+        isHovered: false
+      });
+    }
+  };
+
+  // Due to showInitialsOnHover having two possible places to reside, check both and return if it is set to true in either place
+  private showInitialsOnHover = () => {
+    return Boolean(this.props.showInitialsOnHover || (this.props.coinProps && this.props.coinProps.showInitialsOnHover));
   };
 }

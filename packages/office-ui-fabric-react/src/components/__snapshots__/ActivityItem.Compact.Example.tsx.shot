@@ -99,6 +99,8 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
                   text-align: center;
                   width: 16px;
                 }
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
           >
             <div
               className=
@@ -288,6 +290,8 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
                   text-align: center;
                   width: 16px;
                 }
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
           >
             <div
               aria-hidden="true"
@@ -352,6 +356,8 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
                   text-align: center;
                   width: 16px;
                 }
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
           >
             <div
               className=
@@ -442,6 +448,8 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
                   text-align: center;
                   width: 16px;
                 }
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
           >
             <div
               aria-hidden="true"

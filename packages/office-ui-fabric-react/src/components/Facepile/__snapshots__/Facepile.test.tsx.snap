@@ -103,6 +103,8 @@ exports[`Facepile renders Facepile correctly 1`] = `
                     text-align: center;
                     width: 32px;
                   }
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
             >
               <div
                 className=
@@ -225,6 +227,8 @@ exports[`Facepile renders Facepile correctly 1`] = `
                     text-align: center;
                     width: 32px;
                   }
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
             >
               <div
                 className=
@@ -401,6 +405,8 @@ exports[`Facepile renders Facepile correctly 1`] = `
                       text-align: center;
                       width: 32px;
                     }
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
               >
                 <div
                   aria-hidden="true"

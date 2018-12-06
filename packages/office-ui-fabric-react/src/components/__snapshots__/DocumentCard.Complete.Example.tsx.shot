@@ -281,6 +281,8 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     text-align: center;
                     width: 32px;
                   }
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
             >
               <div
                 aria-hidden="true"
@@ -337,6 +339,8 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     text-align: center;
                     width: 32px;
                   }
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
             >
               <div
                 className=
@@ -913,6 +917,8 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     text-align: center;
                     width: 32px;
                   }
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
             >
               <div
                 aria-hidden="true"
@@ -969,6 +975,8 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     text-align: center;
                     width: 32px;
                   }
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
             >
               <div
                 className=
@@ -1148,6 +1156,8 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     text-align: center;
                     width: 32px;
                   }
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
             >
               <div
                 aria-hidden="true"
@@ -1204,6 +1214,8 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     text-align: center;
                     width: 32px;
                   }
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
             >
               <div
                 className=
@@ -1356,6 +1368,8 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     text-align: center;
                     width: 32px;
                   }
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
             >
               <div
                 aria-hidden="true"
@@ -1412,6 +1426,8 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     text-align: center;
                     width: 32px;
                   }
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
             >
               <div
                 className=
@@ -1569,6 +1585,8 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                       text-align: center;
                       width: 32px;
                     }
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
               >
                 <div
                   className=

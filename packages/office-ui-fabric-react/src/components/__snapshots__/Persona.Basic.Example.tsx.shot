@@ -711,6 +711,8 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-align: center;
               width: 24px;
             }
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
       >
         <div
           className=
@@ -999,6 +1001,8 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-align: center;
               width: 28px;
             }
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
       >
         <div
           className=
@@ -1287,6 +1291,8 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-align: center;
               width: 32px;
             }
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
       >
         <div
           className=
@@ -1575,6 +1581,8 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-align: center;
               width: 40px;
             }
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
       >
         <div
           className=
@@ -1890,6 +1898,8 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-align: center;
               width: 48px;
             }
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
       >
         <div
           className=
@@ -2197,6 +2207,8 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-align: center;
               width: 72px;
             }
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
       >
         <div
           className=
@@ -2510,6 +2522,8 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-align: center;
               width: 100px;
             }
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
       >
         <div
           className=

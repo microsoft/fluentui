@@ -59,6 +59,8 @@ exports[`Persona renders Persona correctly with image 1`] = `
             text-align: center;
             width: 48px;
           }
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
     >
       <div
         className=
@@ -256,6 +258,8 @@ exports[`Persona renders Persona correctly with initials 1`] = `
             text-align: center;
             width: 48px;
           }
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
     >
       <div
         aria-hidden="true"
@@ -427,6 +431,8 @@ exports[`Persona renders Persona correctly with no props 1`] = `
             text-align: center;
             width: 48px;
           }
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
     >
       <div
         aria-hidden="true"

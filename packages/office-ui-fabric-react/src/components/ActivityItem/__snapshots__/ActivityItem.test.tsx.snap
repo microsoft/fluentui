@@ -97,6 +97,8 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
                 text-align: center;
                 width: 16px;
               }
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             aria-hidden="true"
@@ -371,6 +373,8 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
                 text-align: center;
                 width: 16px;
               }
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             aria-hidden="true"
@@ -530,6 +534,8 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                 text-align: center;
                 width: 16px;
               }
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             aria-hidden="true"
@@ -594,6 +600,8 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                 text-align: center;
                 width: 16px;
               }
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className=
@@ -684,6 +692,8 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                 text-align: center;
                 width: 16px;
               }
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             aria-hidden="true"
@@ -806,6 +816,8 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
                 text-align: center;
                 width: 32px;
               }
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             aria-hidden="true"
@@ -1045,6 +1057,8 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                 text-align: center;
                 width: 16px;
               }
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             aria-hidden="true"
@@ -1098,6 +1112,8 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                 text-align: center;
                 width: 16px;
               }
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className=
@@ -1177,6 +1193,8 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                 text-align: center;
                 width: 16px;
               }
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             aria-hidden="true"
@@ -1230,6 +1248,8 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                 text-align: center;
                 width: 16px;
               }
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className=

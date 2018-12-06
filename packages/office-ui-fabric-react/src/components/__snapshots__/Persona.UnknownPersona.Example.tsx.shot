@@ -62,6 +62,8 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               text-align: center;
               width: 40px;
             }
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
       >
         <div
           aria-hidden="true"
@@ -259,6 +261,8 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               text-align: center;
               width: 72px;
             }
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
       >
         <div
           aria-hidden="true"
