@@ -1,4 +1,5 @@
-import { createTheme, ITheme } from 'office-ui-fabric-react';
+import { createTheme } from '@uifabric/styling/lib/styles/theme';
+import { ITheme } from '@uifabric/styling/lib/interfaces/ITheme';
 import { NeutralColors, CommunicationColors } from './FluentColors';
 
 export const FluentTheme: ITheme = createTheme({
