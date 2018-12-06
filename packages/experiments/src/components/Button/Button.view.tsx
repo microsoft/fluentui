@@ -1,23 +1,13 @@
 /** @jsx SlotModule.createElementWrapper */
-import { IButtonComponent, IButtonSlots, IButtonViewProps, IconDefaultProp } from './Button.types';
-import { Text as FabricText, ITextProps } from '../../Text';
+import { IButtonComponent, IButtonSlots, IButtonViewProps } from './Button.types';
 import { HorizontalStack } from '../../Stack';
-import { ContextualMenu, Icon as FabricIcon, IIconProps } from 'office-ui-fabric-react';
+import { ContextualMenu } from 'office-ui-fabric-react';
 import { getNativeProps, buttonProperties } from '../../Utilities';
+import { Icon, Text } from '../../utilities/FactoryComponents';
+import { getSlots } from '../../utilities/Slots';
 
-import { createFactory, IFactoryComponent, getSlots } from '../../utilities/createSlot';
-
-import * as SlotModule from '../../utilities/createSlot';
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-// TODO: we will have to make create functions for any component we want to use in shorthand slots
-// TODO: these should be moved to each component after Slots utilities are promoted.
-const Icon: IFactoryComponent<IIconProps> = props => <FabricIcon {...props} />;
-Icon.create = createFactory(Icon, { defaultProp: IconDefaultProp });
-
-const Text: IFactoryComponent<ITextProps> = props => <FabricText {...props} />;
-Text.create = createFactory(Text);
-//////////////////////////////////////////////////////////////////////////////////////////////////////
+// TODO: can this just be an import of createElementWrapper?
+import * as SlotModule from '../../utilities/Slots';
 
 export const ButtonView: IButtonComponent['view'] = props => {
   const {

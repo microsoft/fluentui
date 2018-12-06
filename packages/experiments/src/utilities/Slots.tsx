@@ -18,7 +18,6 @@ export interface IFactoryOptions<TProps> {
 // Default prop = 'children', default prop type = typeof React children (ReactNode)
 export type IPropsWithChildren<TProps> = TProps & { children?: React.ReactNode };
 
-export type IChildrenProp = React.ReactNode;
 export type INoDefaultProp = never;
 
 /**
@@ -51,10 +50,16 @@ export interface IUserProps<TSlots> {
  *    2. ISlotRender function
  *    3. JSX Elements
  *    4. Optional shorthand prop, defined by TShorthandProp
+ * The conditional type check looks up prop type in TProps if TShorthandProp is a key of TProps, otherwise it treats
+ * TShorthandProp as React children.
  */
 // TODO: If props object is passed but a required prop is missing, TS coerces to render function and gives a really obscure error.
 //        Is there a way to give a more descriptive error (i.e. "required prop missing")?
-export type ISlotProp<TProps, TShorthandProp = INoDefaultProp> = ISlotRenderFunction<TProps> | JSX.Element | TShorthandProp | TProps;
+export type ISlotProp<TProps, TShorthandProp extends keyof TProps | 'children' = INoDefaultProp> =
+  | TProps
+  | JSX.Element
+  | ISlotRenderFunction<TProps>
+  | (TShorthandProp extends keyof TProps ? TProps[TShorthandProp] : React.ReactNode);
 
 /**
  * Render function interface used by Slot props.
@@ -63,8 +68,11 @@ export type ISlotRenderFunction<TProps> = (props: TProps, componentType: React.R
 
 /**
  * This function removes Slots from the React hierarchy by wrapping React.createElement and bypassing it for Slot components.
+ *
  * To use this function on a per-file basis, put the following in a comment block: @jsx SlotModule.createElementWrapper
  * As of writing, this line must be the FIRST LINE in the file to work correctly.
+ *
+ * Usage of this pragma also requires an import statement of SlotModule such as: import * as SlotModule from '<path>/Slots';
  */
 // Can't use typeof on React.createElement since it's overloaded. Approximate createElement's signature for now and widen as needed.
 export function createElementWrapper<P>(
