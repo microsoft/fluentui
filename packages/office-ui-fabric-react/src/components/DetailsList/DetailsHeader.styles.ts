@@ -36,9 +36,7 @@ const GlobalClassNames = {
   gripperBarVertical: 'ms-DetailsColumn-gripperBarVertical'
 };
 
-const values = {
-  rowHeight: 32
-};
+export const HEADER_HEIGHT = 32;
 
 export const getCellStyles = (props: { theme: ITheme; cellStyleProps?: ICellStyleProps }): IStyle => {
   const { theme, cellStyleProps = DEFAULT_CELL_STYLE_PROPS } = props;
@@ -56,7 +54,7 @@ export const getCellStyles = (props: { theme: ITheme; cellStyleProps?: ICellStyl
       padding: `0 ${cellStyleProps.cellRightPadding}px 0 ${cellStyleProps.cellLeftPadding}px`,
       lineHeight: 'inherit',
       margin: '0',
-      height: values.rowHeight,
+      height: HEADER_HEIGHT,
       verticalAlign: 'top',
       whiteSpace: 'nowrap',
       textOverflow: 'ellipsis',
@@ -105,8 +103,8 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         position: 'relative',
         minWidth: '100%',
         verticalAlign: 'top',
-        height: values.rowHeight,
-        lineHeight: values.rowHeight,
+        height: HEADER_HEIGHT,
+        lineHeight: HEADER_HEIGHT,
         whiteSpace: 'nowrap',
         boxSizing: 'content-box',
         paddingBottom: '1px',
@@ -136,7 +134,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
 
     check: [
       {
-        height: values.rowHeight
+        height: HEADER_HEIGHT
       },
       {
         selectors: {
