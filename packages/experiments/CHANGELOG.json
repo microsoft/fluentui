@@ -2,6 +2,47 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.45.0",
+      "tag": "@uifabric/experiments_v6.45.0",
+      "date": "Tue, 04 Dec 2018 13:36:40 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "DevExp: const enums are replaced with constants, this allows the use of isolatedModules mode of compilation",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "9b61cb962038f6d085e53058c7b806ceefea6a58"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `>=6.13.0 <7.0.0` to `>=6.14.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.110.0 <7.0.0` to `>=6.110.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.44.1",
+      "tag": "@uifabric/experiments_v6.44.1",
+      "date": "Mon, 03 Dec 2018 13:37:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Lifting the resolution of default and user provided style variables to Utilities.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "239a16755c7bc9089501d8523bb1fcfd596826dc"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.109.0 <7.0.0` to `>=6.110.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.44.0",
       "tag": "@uifabric/experiments_v6.44.0",
       "date": "Fri, 30 Nov 2018 13:37:17 GMT",

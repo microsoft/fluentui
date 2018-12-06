@@ -54,7 +54,6 @@ export const getCellStyles = (props: { theme: ITheme; cellStyleProps?: ICellStyl
       display: 'inline-block',
       boxSizing: 'border-box',
       padding: `0 ${cellStyleProps.cellRightPadding}px 0 ${cellStyleProps.cellLeftPadding}px`,
-      border: 'none',
       lineHeight: 'inherit',
       margin: '0',
       height: values.rowHeight,
@@ -162,7 +161,8 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         padding: 0,
         margin: 0,
         display: 'inline-flex',
-        alignItems: 'center'
+        alignItems: 'center',
+        border: 'none'
       },
       isAllSelected && {
         opacity: 1
@@ -177,6 +177,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         justifyContent: 'center',
         fontSize: FontSizes.small,
         padding: 0,
+        border: 'none',
         width: GROUP_EXPANDER_WIDTH, // align with GroupedList's first expandIcon cell width.
         color: palette.neutralSecondary,
         selectors: {

@@ -312,7 +312,6 @@ exports[`DetailsList renders List correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -894,7 +893,6 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -1050,7 +1048,6 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -1206,7 +1203,6 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -1362,7 +1358,6 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -1518,7 +1513,6 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -2068,7 +2062,6 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -2651,7 +2644,6 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -2840,7 +2832,6 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -3029,7 +3020,6 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -3611,7 +3601,6 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -3770,7 +3759,6 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -3929,7 +3917,6 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -4088,7 +4075,6 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -4247,7 +4233,6 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -4660,7 +4645,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
