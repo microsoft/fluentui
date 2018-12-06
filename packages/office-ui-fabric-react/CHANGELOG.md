@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 05 Dec 2018 13:35:36 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Dec 2018 13:34:21 GMT and should not be manually modified.
+
+## 6.111.0
+Thu, 06 Dec 2018 13:34:21 GMT
+
+### Minor changes
+
+- The Dropdown component will now only include an aria-labelled-by attribute when there is no provided ariaLabel prop. This means that the component will honor provided ariaLabels and create markup such that screen readers will read the aria label and not the regular label.
+
+### Patches
+
+- DetailsList: Prevent override of column cell border while dragging
+- spellCheck defaults to false in BasePicker
 
 ## 6.110.2
 Wed, 05 Dec 2018 13:35:35 GMT
