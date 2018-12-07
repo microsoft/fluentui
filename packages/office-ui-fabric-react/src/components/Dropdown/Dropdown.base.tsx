@@ -444,7 +444,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
 
   /** Render List of items */
   private _onRenderList = (props: IDropdownProps): JSX.Element => {
-    const { onRenderItem = this._onRenderItem } = this.props;
+    const { onRenderItem = this._onRenderItem, label } = this.props;
 
     const id = this._id;
 
@@ -461,7 +461,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
           direction={FocusZoneDirection.vertical}
           id={id + '-list'}
           className={this._classNames.dropdownItems}
-          aria-labelledby={id + '-label'}
+          aria-labelledby={label ? id + '-label' : undefined}
           role="listbox"
         >
           {this.props.options.map((item: any, index: number) => onRenderItem({ ...item, index }, this._onRenderItem))}
