@@ -72,7 +72,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
     const id = this._id;
     const stars = [];
     const starIds = [];
-    const { disabled, getAriaLabel, styles, max, rating, readOnly, size, theme, icon } = this.props;
+    const { disabled, getAriaLabel, styles, max, rating, readOnly, size, theme, icon, unselectedIcon = icon } = this.props;
 
     this._classNames = getClassNames(styles!, {
       disabled,
@@ -82,12 +82,13 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
 
     for (let i = this._min as number; i <= (max as number); i++) {
       if (i !== 0) {
+        const fillPercentage = this._getFillingPercentage(i);
         const ratingStarProps: IRatingStarProps = {
-          fillPercentage: this._getFillingPercentage(i),
+          fillPercentage,
           disabled: disabled ? true : false,
           readOnly: readOnly ? true : false,
           classNames: this._classNames,
-          icon
+          icon: fillPercentage > 0 ? icon : unselectedIcon
         };
 
         starIds.push(this._getStarId(i - 1));

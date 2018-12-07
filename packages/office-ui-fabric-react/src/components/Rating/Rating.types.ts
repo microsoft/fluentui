@@ -42,6 +42,13 @@ export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
   icon?: string;
 
   /**
+   * Custom icon for unselected rating elements.
+   * If an `icon` property is provided, defaults to the value of the `icon` property.
+   * @defaultvalue FavoriteStarFill
+   */
+  unselectedIcon?: string;
+
+  /**
    * Size of rating, defaults to small
    */
   size?: RatingSize;
