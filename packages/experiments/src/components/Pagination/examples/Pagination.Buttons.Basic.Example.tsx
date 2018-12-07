@@ -33,5 +33,5 @@ export class PaginationButtonsBasicExample extends React.Component<{}, IPaginati
     this.setState({
       selectedPageIndex: index
     });
-  };
+  }
 }
