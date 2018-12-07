@@ -26,13 +26,13 @@ export class PersonaCoinSizeAndColorExample extends React.Component<{}, {}> {
             </HorizontalStack>
             <HorizontalStack gap={personaCoinGap}>
               <PersonaCoin text="Kevin Jameson" size={10} imageUrl={PersonaTestImages.personMale} />
-              <PersonaCoin text="Kevin Jameson" size={24} imageUrl={PersonaTestImages.personMale} />
+              <PersonaCoin text="Kevin Jameson" size={24} imageUrl={PersonaTestImages.personMale} presence={1} />
               <PersonaCoin text="Kevin Jameson" size={28} imageUrl={PersonaTestImages.personMale} />
-              <PersonaCoin text="Kevin Jameson" size={40} imageUrl={PersonaTestImages.personMale} />
+              <PersonaCoin text="Kevin Jameson" size={40} imageUrl={PersonaTestImages.personMale} presence={2} />
               <PersonaCoin text="Kevin Jameson" size={48} imageUrl={PersonaTestImages.personMale} />
-              <PersonaCoin text="Kevin Jameson" size={56} imageUrl={PersonaTestImages.personMale} />
+              <PersonaCoin text="Kevin Jameson" size={56} imageUrl={PersonaTestImages.personMale} presence={3} />
               <PersonaCoin text="Kevin Jameson" size={72} imageUrl={PersonaTestImages.personMale} />
-              <PersonaCoin text="Kevin Jameson" size={100} imageUrl={PersonaTestImages.personMale} />
+              <PersonaCoin text="Kevin Jameson" size={100} imageUrl={PersonaTestImages.personMale} presence={4} />
             </HorizontalStack>
           </VerticalStack>
           <VerticalStack gap={personaCoinGap}>

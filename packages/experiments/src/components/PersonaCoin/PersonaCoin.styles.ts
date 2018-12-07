@@ -32,8 +32,8 @@ export const PersonaCoinStyles: IPersonaCoinComponent['styles'] = props => {
     presence: {
       position: 'absolute',
       // TODO: Pull out the following calculation into a function
-      right: `-${(size / 3 < 40 ? size / 3 : 40) / 4}px`,
-      bottom: `-${(size / 3 < 40 ? size / 3 : 40) / 4}px`
+      right: `-${size / 3 / 5}px`,
+      bottom: `-${size / 3 / 5}px`
     }
   };
 };

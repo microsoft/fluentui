@@ -4,6 +4,7 @@ import * as renderer from 'react-test-renderer';
 import { IPersonaCoinStyles } from './PersonaCoin.types';
 import { PersonaCoinView } from './PersonaCoin.view';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
+import { PersonaTestImages } from '@uifabric/experiments/lib/common/TestImages';
 
 // These tests will ensure that your styles regions have classname representation in snapshot output.
 // (Also, classNames is a required prop for views, so we have to supply it for tests.)
@@ -45,6 +46,18 @@ describe('PersonaCoinView', () => {
 
   it('renders presence when it is passed', () => {
     const tree = renderer.create(<PersonaCoinView text="五号" presence={4} classNames={testPersonaCoinClassNames} />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders presence correctly when a very large coin is rendered', () => {
+    const tree = renderer.create(<PersonaCoinView text="五号" presence={4} classNames={testPersonaCoinClassNames} size={100} />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders the coin with the provided image', () => {
+    const tree = renderer
+      .create(<PersonaCoinView text="Ellen Grace" imageUrl={PersonaTestImages.personMale} classNames={testPersonaCoinClassNames} />)
+      .toJSON();
     expect(tree).toMatchSnapshot();
   });
 });
