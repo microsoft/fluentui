@@ -1,17 +1,18 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, createRef, elementContains, getId } from '../../Utilities';
+import { BaseComponent, KeyCodes, css, createRef, elementContains, getId, classNamesFunction } from '../../Utilities';
+import { IProcessedStyleSet } from '../../Styling';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Callout, DirectionalHint } from '../../Callout';
 import { Selection, SelectionZone, SelectionMode } from '../../utilities/selection/index';
 import { Suggestions } from './Suggestions/Suggestions';
 import { ISuggestionsProps } from './Suggestions/Suggestions.types';
 import { SuggestionsController } from './Suggestions/SuggestionsController';
-import { IBasePicker, IBasePickerProps, ValidationState } from './BasePicker.types';
+import { IBasePicker, IBasePickerProps, ValidationState, IBasePickerStyleProps, IBasePickerStyles } from './BasePicker.types';
 import { IAutofill, Autofill } from '../Autofill/index';
 import { IPickerItemProps } from './PickerItem.types';
 import { IPersonaProps } from '../Persona/Persona.types';
 import * as stylesImport from './BasePicker.scss';
-const styles: any = stylesImport;
+const stylesSASS: any = stylesImport;
 
 export interface IBasePickerState {
   items?: any;
@@ -57,6 +58,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected currentPromise: PromiseLike<any> | undefined;
   protected _ariaMap: IPickerAriaIds;
   private _id: string;
+  private _getClassNames = classNamesFunction<IBasePickerStyleProps<T>, IBasePickerStyles>();
+  private _classNames: IProcessedStyleSet<IBasePickerStyles>;
 
   constructor(basePickerProps: P) {
     super(basePickerProps);
@@ -184,11 +187,18 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   };
 
   public render(): JSX.Element {
-    const { suggestedDisplayValue } = this.state;
-    const { className, inputProps, disabled } = this.props;
+    const { suggestedDisplayValue, isFocused } = this.state;
+    const { className, inputProps, disabled, theme, styles } = this.props;
 
     const selectedSuggestionAlertId = this.props.enableSelectedSuggestionAlert ? this._ariaMap.selectedSuggestionAlert : '';
     const suggestionsAvailable = this.state.suggestionsVisible ? this._ariaMap.suggestionList : '';
+
+    this._classNames = this._getClassNames(styles, {
+      theme,
+      className,
+      isFocused,
+      inputClassName: inputProps && inputProps.className
+    });
 
     return (
       <div ref={this.root} className={css('ms-BasePicker', className ? className : '')} onKeyDown={this.onKeyDown}>
@@ -199,15 +209,15 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         >
           {this.getSuggestionsAlert()}
           <SelectionZone selection={this.selection} selectionMode={SelectionMode.multiple}>
-            <div className={css('ms-BasePicker-text', styles.pickerText, this.state.isFocused && styles.inputFocused)}>
-              <span id={this._ariaMap.selectedItems} className={styles.pickerItems} role={'list'}>
+            <div className={css('ms-BasePicker-text', stylesSASS.pickerText, isFocused && stylesSASS.inputFocused)}>
+              <span id={this._ariaMap.selectedItems} className={stylesSASS.pickerItems} role={'list'}>
                 {this.renderItems()}
               </span>
               {this.canAddItems() && (
                 <Autofill
                   spellCheck={false}
                   {...inputProps as any}
-                  className={css('ms-BasePicker-input', styles.pickerInput, inputProps && inputProps.className)}
+                  className={css('ms-BasePicker-input', stylesSASS.pickerInput, inputProps && inputProps.className)}
                   ref={this.input}
                   onFocus={this.onInputFocus}
                   onBlur={this.onInputBlur}
@@ -734,7 +744,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         currentIndex > -1 ? this.suggestionStore.getSuggestionAtIndex(this.suggestionStore.currentIndex) : undefined;
       const selectedSuggestionAlertText = selectedSuggestion ? selectedSuggestion.ariaLabel : undefined;
       return (
-        <div className={styles.screenReaderOnly} role="alert" id={this._ariaMap.selectedSuggestionAlert} aria-live="assertive">
+        <div className={stylesSASS.screenReaderOnly} role="alert" id={this._ariaMap.selectedSuggestionAlert} aria-live="assertive">
           {selectedSuggestionAlertText}{' '}
         </div>
       );
@@ -821,10 +831,10 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
       <div ref={this.root}>
         <div className={css('ms-BasePicker', className ? className : '')} onKeyDown={this.onKeyDown}>
           {this.getSuggestionsAlert()}
-          <div className={css('ms-BasePicker-text', styles.pickerText, this.state.isFocused && styles.inputFocused)}>
+          <div className={css('ms-BasePicker-text', stylesSASS.pickerText, this.state.isFocused && stylesSASS.inputFocused)}>
             <Autofill
               {...inputProps as any}
-              className={css('ms-BasePicker-input', styles.pickerInput)}
+              className={css('ms-BasePicker-input', stylesSASS.pickerInput)}
               ref={this.input}
               onFocus={this.onInputFocus}
               onBlur={this.onInputBlur}

@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { IPickerItemProps } from './PickerItem.types';
 import { IPersonaProps } from '../Persona/Persona.types';
-import { IRefObject, IRenderFunction } from '../../Utilities';
+import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { ISuggestionModel } from './Suggestions/SuggestionsController';
 import { BaseAutoFill } from './AutoFill/BaseAutoFill';
 import { ICalloutProps } from '../../Callout';
+import { ITheme, IStyle } from '../../Styling';
 
 export interface IBasePicker<T> {
   /** Gets the current value of the input. */
@@ -21,6 +22,10 @@ export interface IBasePicker<T> {
 // and searched for by the people picker. For example, if the picker is
 // displaying persona's than type T could either be of Persona or Ipersona props
 export interface IBasePickerProps<T> extends React.Props<any> {
+  /**
+   * Optional callback to access the IBasePicker interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
   componentRef?: IRefObject<IBasePicker<T>>;
 
   /**
@@ -148,6 +153,16 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * @defaultvalue false
    */
   enableSelectedSuggestionAlert?: boolean;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  styles?: IStyleFunctionOrObject<IBasePickerStyleProps<T>, IBasePickerStyles>;
+
+  /**
+   * Theme provided by styled() function
+   */
+  theme?: ITheme;
 }
 
 export interface IBasePickerSuggestionsProps {
@@ -238,4 +253,26 @@ export interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement>
    * text persists until deleted or changed.
    */
   defaultVisibleValue?: string;
+}
+
+/**
+ * The props needed to construct styles.
+ */
+export type IBasePickerStyleProps<TItem> = Pick<IBasePickerProps<TItem>, 'theme' | 'className'> & {
+  /** Whether text style area is focused */
+  isFocused?: boolean;
+
+  /** Optional pickerInput className */
+  inputClassName?: string;
+};
+
+/**
+ * Represents the stylable areas of the control.
+ */
+export interface IBasePickerStyles {
+  root: IStyle;
+  text: IStyle;
+  itemsWrapper: IStyle;
+  input: IStyle;
+  screenReaderText: IStyle;
 }
