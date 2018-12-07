@@ -8,7 +8,7 @@ const GlobalClassNames = {
   input: 'ms-BasePicker-itemsWrapper'
 };
 
-export function getStyles<TItem>(props: IBasePickerStyleProps<TItem>): IBasePickerStyles {
+export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
   const { className, theme, isFocused, inputClassName } = props;
 
   if (!theme) {

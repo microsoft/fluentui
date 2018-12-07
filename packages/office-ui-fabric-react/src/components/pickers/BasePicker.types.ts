@@ -157,7 +157,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: IStyleFunctionOrObject<IBasePickerStyleProps<T>, IBasePickerStyles>;
+  styles?: IStyleFunctionOrObject<IBasePickerStyleProps, IBasePickerStyles>;
 
   /**
    * Theme provided by styled() function
@@ -258,7 +258,7 @@ export interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement>
 /**
  * The props needed to construct styles.
  */
-export type IBasePickerStyleProps<TItem> = Pick<IBasePickerProps<TItem>, 'theme' | 'className'> & {
+export type IBasePickerStyleProps = Pick<IBasePickerProps<any>, 'theme' | 'className'> & {
   /** Whether text style area is focused */
   isFocused?: boolean;
 

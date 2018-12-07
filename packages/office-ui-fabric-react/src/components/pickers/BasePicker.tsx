@@ -45,6 +45,8 @@ export type IPickerAriaIds = {
   suggestionList: string;
 };
 
+const getClassNames = classNamesFunction<IBasePickerStyleProps, IBasePickerStyles>();
+
 export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBasePickerState> implements IBasePicker<T> {
   protected selection: Selection;
 
@@ -58,7 +60,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected currentPromise: PromiseLike<any> | undefined;
   protected _ariaMap: IPickerAriaIds;
   private _id: string;
-  private _getClassNames = classNamesFunction<IBasePickerStyleProps<T>, IBasePickerStyles>();
   private _classNames: IProcessedStyleSet<IBasePickerStyles>;
 
   constructor(basePickerProps: P) {
@@ -193,7 +194,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     const selectedSuggestionAlertId = this.props.enableSelectedSuggestionAlert ? this._ariaMap.selectedSuggestionAlert : '';
     const suggestionsAvailable = this.state.suggestionsVisible ? this._ariaMap.suggestionList : '';
 
-    this._classNames = this._getClassNames(styles, {
+    this._classNames = getClassNames(styles, {
       theme,
       className,
       isFocused,
