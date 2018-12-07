@@ -12,11 +12,7 @@ interface IFolderCoverWithImageProps extends IFolderCoverProps {
 const FolderCoverWithImage: React.StatelessComponent<IFolderCoverWithImageProps> = (props: IFolderCoverWithImageProps): JSX.Element => {
   const { originalImageSize, ...folderCoverProps } = props;
 
-  const folderCover = (
-    <Fabric>
-      <FolderCover {...folderCoverProps} />
-    </Fabric>
-  );
+  const folderCover = <FolderCover {...folderCoverProps} />;
 
   const { contentSize } = getFolderCoverLayout(folderCover);
 
@@ -35,68 +31,58 @@ storiesOf('FolderCover', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>)
   .addStory('Large Default Cover', () => (
-    <Fabric>
-      <FolderCoverWithImage
-        originalImageSize={{
-          width: 200,
-          height: 150
-        }}
-        folderCoverSize="large"
-        metadata={20}
-        signal={<SharedSignal />}
-      />
-    </Fabric>
+    <FolderCoverWithImage
+      originalImageSize={{
+        width: 200,
+        height: 150
+      }}
+      folderCoverSize="large"
+      metadata={20}
+      signal={<SharedSignal />}
+    />
   ))
   .addStory('Small Default Cover', () => (
-    <Fabric>
-      <FolderCoverWithImage
-        originalImageSize={{
-          width: 200,
-          height: 150
-        }}
-        folderCoverSize="small"
-        metadata={15}
-      />
-    </Fabric>
+    <FolderCoverWithImage
+      originalImageSize={{
+        width: 200,
+        height: 150
+      }}
+      folderCoverSize="small"
+      metadata={15}
+    />
   ))
   .addStory('Large Media Cover', () => (
-    <Fabric>
-      <FolderCoverWithImage
-        originalImageSize={{
-          width: 200,
-          height: 150
-        }}
-        folderCoverSize="large"
-        folderCoverType="media"
-        metadata={20}
-        signal={<SharedSignal />}
-      />
-    </Fabric>
+    <FolderCoverWithImage
+      originalImageSize={{
+        width: 200,
+        height: 150
+      }}
+      folderCoverSize="large"
+      folderCoverType="media"
+      metadata={20}
+      signal={<SharedSignal />}
+    />
   ))
   .addStory('Small Media Cover', () => (
-    <Fabric>
-      <FolderCoverWithImage
-        originalImageSize={{
-          width: 200,
-          height: 150
-        }}
-        folderCoverSize="small"
-        folderCoverType="media"
-        metadata={15}
-      />
-    </Fabric>
+    <FolderCoverWithImage
+      originalImageSize={{
+        width: 200,
+        height: 150
+      }}
+      folderCoverSize="small"
+      folderCoverType="media"
+      metadata={15}
+    />
   ))
   .addStory('Shared Cover', () => (
-    <Fabric>
-      <FolderCoverWithImage
-        originalImageSize={{
-          width: 200,
-          height: 150
-        }}
-        folderCoverSize="small"
-        folderCoverType="media"
-        metadata={15}
-        signal={<SharedSignal />}
-      />
-    </Fabric>
+    <FolderCoverWithImage
+      originalImageSize={{
+        width: 200,
+        height: 150
+      }}
+      folderCoverSize="small"
+      folderCoverType="media"
+      metadata={15}
+      signal={<SharedSignal />}
+    />
   ));
