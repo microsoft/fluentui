@@ -34,6 +34,8 @@
     "jju": "^1.4.0",
     "jscodeshift": "^0.5.0",
     "json-loader": "^0.5.7",
+    "just-task": "^0.3.0",
+    "just-task-preset": "^0.1.1",
     "lint-staged": "^7.0.5",
     "mkdirp": "^0.5.1",
     "mustache": "^2.3.0",
