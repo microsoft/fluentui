@@ -444,7 +444,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
 
   /** Wrap item list in a FocusZone */
   private _renderFocusableList(props: IDropdownProps): JSX.Element {
-    const { onRenderList = this._onRenderList } = props;
+    const { onRenderList = this._onRenderList, label } = props;
     const id = this._id;
 
     return (
@@ -460,7 +460,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
           direction={FocusZoneDirection.vertical}
           id={id + '-list'}
           className={this._classNames.dropdownItems}
-          aria-labelledby={id + '-label'}
+          aria-labelledby={label ? id + '-label' : undefined}
           role="listbox"
         >
           {onRenderList(props, this._onRenderList)}
