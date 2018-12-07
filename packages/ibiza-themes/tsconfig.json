@@ -15,12 +15,24 @@
     "noImplicitAny": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
-    "lib": ["es2017", "dom"],
-    "types": ["jest", "webpack-env"],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "types": [
+      "jest",
+      "webpack-env"
+    ],
     "paths": {
-      "@uifabric/@uifabric&#x2F;ibiza-themes/lib/*": ["./src/*"],
-      "@uifabric/@uifabric&#x2F;ibiza-themes": ["./src"]
+      "@uifabric/ibiza-themes/lib/*": [
+        "./src/*"
+      ],
+      "@uifabric/ibiza-themes": [
+        "./src"
+      ]
     }
   },
-  "include": ["src"]
+  "include": [
+    "src"
+  ]
 }
