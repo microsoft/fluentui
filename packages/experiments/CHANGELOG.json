@@ -2,6 +2,28 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.46.0",
+      "tag": "@uifabric/experiments_v6.46.0",
+      "date": "Fri, 07 Dec 2018 13:35:16 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Pagination: Exported component from top level export",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "8760c4c86c63ef6d483039dc7d31f9fb997cedfa"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.10.0 <1.0.0` to `>=0.11.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.111.0 <7.0.0` to `>=6.111.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.45.0",
       "tag": "@uifabric/experiments_v6.45.0",
       "date": "Tue, 04 Dec 2018 13:36:40 GMT",

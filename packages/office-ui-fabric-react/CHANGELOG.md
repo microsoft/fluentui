@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 06 Dec 2018 13:34:21 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Dec 2018 13:35:16 GMT and should not be manually modified.
+
+## 6.111.1
+Fri, 07 Dec 2018 13:35:16 GMT
+
+### Patches
+
+- Searchbox: Reverts the focus fix for IE since it broke focus for other browsers
+- Check: fixing alignment of the check inside the circle when in RTL.
 
 ## 6.111.0
 Thu, 06 Dec 2018 13:34:21 GMT
