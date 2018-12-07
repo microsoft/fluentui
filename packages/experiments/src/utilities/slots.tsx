@@ -75,7 +75,7 @@ export type ISlotRenderFunction<TProps> = (props: TProps, componentType: React.R
  * To use this function on a per-file basis, put the following in a comment block: @jsx createElementWrapper
  * As of writing, this line must be the FIRST LINE in the file to work correctly.
  *
- * Usage of this pragma also requires an import statement of SlotModule such as: import { createElementWrapper } from '<path>/Slots';
+ * Usage of this pragma also requires an import statement of SlotModule such as: import { createElementWrapper } from '<path>/slots';
  *
  * @see React.createElement
  */
