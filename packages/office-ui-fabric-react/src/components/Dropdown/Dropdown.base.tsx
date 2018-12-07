@@ -115,7 +115,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     // defaultSelectedKey/defaultSelectedKeys are respected.
     const didOptionsChange = newProps.options !== this.props.options;
 
-    if (this.props.multiSelect) {
+    if (newProps.multiSelect) {
       if (didOptionsChange && newProps.defaultSelectedKeys !== undefined) {
         selectedKeyProp = 'defaultSelectedKeys';
       } else {
