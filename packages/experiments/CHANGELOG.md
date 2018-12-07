@@ -1,6 +1,27 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 30 Nov 2018 13:37:17 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Dec 2018 13:35:16 GMT and should not be manually modified.
+
+## 6.46.0
+Fri, 07 Dec 2018 13:35:16 GMT
+
+### Minor changes
+
+- Pagination: Exported component from top level export
+
+## 6.45.0
+Tue, 04 Dec 2018 13:36:40 GMT
+
+### Minor changes
+
+- DevExp: const enums are replaced with constants, this allows the use of isolatedModules mode of compilation
+
+## 6.44.1
+Mon, 03 Dec 2018 13:37:07 GMT
+
+### Patches
+
+- Lifting the resolution of default and user provided style variables to Utilities.
 
 ## 6.44.0
 Fri, 30 Nov 2018 13:37:17 GMT
