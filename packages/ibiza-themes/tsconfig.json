@@ -19,15 +19,11 @@
       "es2017",
       "dom"
     ],
-    "types": [
-      "jest",
-      "webpack-env"
-    ],
     "paths": {
-      "@uifabric/ibiza-themes/lib/*": [
+      "@uifabric/ibiza-theme/lib/*": [
         "./src/*"
       ],
-      "@uifabric/ibiza-themes": [
+      "@uifabric/ibiza-theme": [
         "./src"
       ]
     }
