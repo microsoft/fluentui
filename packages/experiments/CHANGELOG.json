@@ -2,6 +2,101 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.46.0",
+      "tag": "@uifabric/experiments_v6.46.0",
+      "date": "Fri, 07 Dec 2018 13:35:16 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Pagination: Exported component from top level export",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "8760c4c86c63ef6d483039dc7d31f9fb997cedfa"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.10.0 <1.0.0` to `>=0.11.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.111.0 <7.0.0` to `>=6.111.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.45.0",
+      "tag": "@uifabric/experiments_v6.45.0",
+      "date": "Tue, 04 Dec 2018 13:36:40 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "DevExp: const enums are replaced with constants, this allows the use of isolatedModules mode of compilation",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "9b61cb962038f6d085e53058c7b806ceefea6a58"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `>=6.13.0 <7.0.0` to `>=6.14.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.110.0 <7.0.0` to `>=6.110.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.44.1",
+      "tag": "@uifabric/experiments_v6.44.1",
+      "date": "Mon, 03 Dec 2018 13:37:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Lifting the resolution of default and user provided style variables to Utilities.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "239a16755c7bc9089501d8523bb1fcfd596826dc"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.109.0 <7.0.0` to `>=6.110.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.44.0",
+      "tag": "@uifabric/experiments_v6.44.0",
+      "date": "Fri, 30 Nov 2018 13:37:17 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Pagination: Initial check-in of pagination control into experiments package.",
+            "author": "caradong <caradong1122@gmail.com>",
+            "commit": "5bc73a304b843bf183bf77659e0165d395f4af91"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Add missing depenencies",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "8276c66fdf75a4ad8b03614fd4e7c6e2c52203e5"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.9.0 <1.0.0` to `>=0.10.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.37.0 <7.0.0` to `>=6.38.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.108.0 <7.0.0` to `>=6.109.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.43.0",
       "tag": "@uifabric/experiments_v6.43.0",
       "date": "Thu, 29 Nov 2018 19:34:12 GMT",

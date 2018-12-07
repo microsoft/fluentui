@@ -51,6 +51,7 @@ exports[`Pickers BasePicker renders BasePicker correctly 1`] = `
           onInput={[Function]}
           onKeyDown={[Function]}
           role="combobox"
+          spellCheck={false}
           value=""
         />
       </div>
@@ -112,6 +113,7 @@ exports[`Pickers BasePicker renders BasePicker with inputProps supply classnames
           onKeyDown={[Function]}
           placeholder="Bitte einen Benutzer angeben..."
           role="combobox"
+          spellCheck={false}
           value=""
         />
       </div>
@@ -171,6 +173,7 @@ exports[`Pickers TagPicker renders TagPicker correctly 1`] = `
           onInput={[Function]}
           onKeyDown={[Function]}
           role="combobox"
+          spellCheck={false}
           value=""
         />
       </div>

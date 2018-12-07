@@ -464,6 +464,16 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     }
   };
 
+  private _liesBetween(target: number, left: number, right: number): boolean {
+    return getRTL() ? target <= left && target >= right : target >= left && target <= right;
+  }
+  private _isBefore(a: number, b: number): boolean {
+    return getRTL() ? a >= b : a <= b;
+  }
+  private _isAfter(a: number, b: number): boolean {
+    return getRTL() ? a <= b : a >= b;
+  }
+
   /**
    * Based on the given cursor position, finds the nearest drop hint and updates the state to make it visible
    *
@@ -476,8 +486,11 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
       const currentDropHintIndex = this._currentDropHintIndex!;
       if (this._isValidCurrentDropHintIndex()) {
         if (
-          eventXRelativePosition >= this._dropHintDetails[currentDropHintIndex!].startX &&
-          eventXRelativePosition <= this._dropHintDetails[currentDropHintIndex!].endX
+          this._liesBetween(
+            eventXRelativePosition,
+            this._dropHintDetails[currentDropHintIndex!].startX,
+            this._dropHintDetails[currentDropHintIndex!].endX
+          )
         ) {
           return;
         }
@@ -492,21 +505,27 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
       const currentIndex: number = frozenColumnCountFromStart!;
       const lastValidColumn = columns.length - frozenColumnCountFromEnd!;
       let indexToUpdate = -1;
-      if (eventXRelativePosition <= this._dropHintDetails[currentIndex].endX) {
+      if (this._isBefore(eventXRelativePosition, this._dropHintDetails[currentIndex].endX)) {
         indexToUpdate = currentIndex;
-      } else if (eventXRelativePosition >= this._dropHintDetails[lastValidColumn].startX) {
+      } else if (this._isAfter(eventXRelativePosition, this._dropHintDetails[lastValidColumn].startX)) {
         indexToUpdate = lastValidColumn;
       } else if (this._isValidCurrentDropHintIndex()) {
         if (
           this._dropHintDetails[currentDropHintIndex! + 1] &&
-          eventXRelativePosition >= this._dropHintDetails[currentDropHintIndex! + 1].startX &&
-          eventXRelativePosition <= this._dropHintDetails[currentDropHintIndex! + 1].endX
+          this._liesBetween(
+            eventXRelativePosition,
+            this._dropHintDetails[currentDropHintIndex! + 1].startX,
+            this._dropHintDetails[currentDropHintIndex! + 1].endX
+          )
         ) {
           indexToUpdate = currentDropHintIndex! + 1;
         } else if (
           this._dropHintDetails[currentDropHintIndex! - 1] &&
-          eventXRelativePosition >= this._dropHintDetails[currentDropHintIndex! - 1].startX &&
-          eventXRelativePosition <= this._dropHintDetails[currentDropHintIndex! - 1].endX
+          this._liesBetween(
+            eventXRelativePosition,
+            this._dropHintDetails[currentDropHintIndex! - 1].startX,
+            this._dropHintDetails[currentDropHintIndex! - 1].endX
+          )
         ) {
           indexToUpdate = currentDropHintIndex! - 1;
         }
@@ -517,14 +536,13 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
         while (startIndex < endIndex) {
           const middleIndex = Math.ceil((endIndex + startIndex!) / 2);
           if (
-            eventXRelativePosition >= this._dropHintDetails[middleIndex].startX &&
-            eventXRelativePosition <= this._dropHintDetails[middleIndex].endX
+            this._liesBetween(eventXRelativePosition, this._dropHintDetails[middleIndex].startX, this._dropHintDetails[middleIndex].endX)
           ) {
             indexToUpdate = middleIndex;
             break;
-          } else if (eventXRelativePosition < this._dropHintDetails[middleIndex].originX) {
+          } else if (this._isBefore(eventXRelativePosition, this._dropHintDetails[middleIndex].originX)) {
             endIndex = middleIndex;
-          } else if (eventXRelativePosition > this._dropHintDetails[middleIndex].originX) {
+          } else if (this._isAfter(eventXRelativePosition, this._dropHintDetails[middleIndex].originX)) {
             startIndex = middleIndex;
           }
         }

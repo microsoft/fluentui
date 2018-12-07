@@ -1,6 +1,13 @@
 # Change Log - @uifabric/variants
 
-This log was last generated on Thu, 29 Nov 2018 19:34:12 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Dec 2018 13:36:40 GMT and should not be manually modified.
+
+## 6.14.0
+Tue, 04 Dec 2018 13:36:40 GMT
+
+### Minor changes
+
+- DevExp: const enums are replaced with constants, this allows the use of isolatedModules mode of compilation
 
 ## 6.13.0
 Thu, 29 Nov 2018 19:34:12 GMT

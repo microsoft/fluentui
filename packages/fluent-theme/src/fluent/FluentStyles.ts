@@ -18,11 +18,13 @@ import { IconButtonStyles } from './styles/IconButton.styles';
 import { LabelStyles } from './styles/Label.styles';
 import { LinkStyles } from './styles/Link.styles';
 import { ModalStyles } from './styles/Modal.styles';
+import { PersonaStyles } from './styles/Persona.styles';
 import { PivotStyles } from './styles/Pivot.styles';
 import { PrimaryButtonStyles } from './styles/PrimaryButton.styles';
 import { RatingStyles } from './styles/Rating.styles';
 import { SliderStyles } from './styles/Slider.styles';
 import { SpinButtonStyles } from './styles/SpinButton.styles';
+import { TeachingBubbleStyles } from './styles/TeachingBubble.styles';
 import { TextFieldStyles } from './styles/TextField.styles';
 import { ToggleStyles } from './styles/Toggle.styles';
 import { ColorPickerGridCellStyles } from './styles/ColorPickerGridCell.styles';
@@ -108,6 +110,9 @@ export const FluentStyles: any = {
   Modal: {
     styles: ModalStyles
   },
+  Persona: {
+    styles: PersonaStyles
+  },
   Pivot: {
     styles: PivotStyles
   },
@@ -125,6 +130,9 @@ export const FluentStyles: any = {
   },
   SpinButton: {
     styles: SpinButtonStyles
+  },
+  TeachingBubble: {
+    styles: TeachingBubbleStyles
   },
   TextField: {
     styles: TextFieldStyles
