@@ -327,8 +327,6 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
         if (this.props.onOuterClick) {
           this.props.onOuterClick();
           ev.preventDefault();
-        } else {
-          this.dismiss();
         }
       }
     }
