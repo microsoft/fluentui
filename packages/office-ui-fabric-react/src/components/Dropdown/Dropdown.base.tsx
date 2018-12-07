@@ -129,10 +129,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
       }
     }
 
-    if (
-      newProps[selectedKeyProp] !== undefined &&
-      (newProps[selectedKeyProp] !== this.props[selectedKeyProp] || newProps.options !== this.props.options)
-    ) {
+    if (newProps[selectedKeyProp] !== undefined && (newProps[selectedKeyProp] !== this.props[selectedKeyProp] || didOptionsChange)) {
       this.setState({
         selectedIndices: this._getSelectedIndexes(newProps.options, newProps[selectedKeyProp])
       });
