@@ -210,15 +210,15 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         >
           {this.getSuggestionsAlert()}
           <SelectionZone selection={this.selection} selectionMode={SelectionMode.multiple}>
-            <div className={css('ms-BasePicker-text', stylesSASS.pickerText, isFocused && stylesSASS.inputFocused)}>
-              <span id={this._ariaMap.selectedItems} className={stylesSASS.pickerItems} role={'list'}>
+            <div className={this._classNames.text}>
+              <span id={this._ariaMap.selectedItems} className={this._classNames.itemsWrapper} role={'list'}>
                 {this.renderItems()}
               </span>
               {this.canAddItems() && (
                 <Autofill
                   spellCheck={false}
                   {...inputProps as any}
-                  className={css('ms-BasePicker-input', stylesSASS.pickerInput, inputProps && inputProps.className)}
+                  className={this._classNames.input}
                   ref={this.input}
                   onFocus={this.onInputFocus}
                   onBlur={this.onInputBlur}
