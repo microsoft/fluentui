@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createFactory, IFactoryComponent } from './Slots';
+import { createFactory, IFactoryComponent } from './slots';
 import { Text as FabricText, ITextProps } from '../Text';
 import { Icon as FabricIcon, IIconProps } from 'office-ui-fabric-react';
 

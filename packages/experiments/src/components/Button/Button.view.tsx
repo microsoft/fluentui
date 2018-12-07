@@ -3,8 +3,8 @@ import { IButtonComponent, IButtonSlots, IButtonViewProps } from './Button.types
 import { HorizontalStack } from '../../Stack';
 import { ContextualMenu } from 'office-ui-fabric-react';
 import { getNativeProps, buttonProperties } from '../../Utilities';
-import { Icon, Text } from '../../utilities/FactoryComponents';
-import { createElementWrapper, getSlots } from '../../utilities/Slots';
+import { Icon, Text } from '../../utilities/factoryComponents';
+import { createElementWrapper, getSlots } from '../../utilities/slots';
 
 export const ButtonView: IButtonComponent['view'] = props => {
   const { classNames, menu: Menu, children, content, icon, expanded, disabled, onMenuDismiss, menuTarget, ...rest } = props;

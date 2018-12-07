@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
-import { createElementWrapper, createFactory, ISlot } from './Slots';
+import { createElementWrapper, createFactory, ISlot } from './slots';
 
 describe('createElementWrapper', () => {
   let reactCalls: number;

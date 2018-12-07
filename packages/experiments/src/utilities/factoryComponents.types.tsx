@@ -1,4 +1,4 @@
-import { ISlotProp } from './Slots';
+import { ISlotProp } from './slots';
 import { IHorizontalStackProps, ITextProps } from '@uifabric/experiments';
 import { IContextualMenuProps, IIconProps } from 'office-ui-fabric-react';
 
