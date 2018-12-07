@@ -96,8 +96,6 @@ export function createElementWrapper<P>(
   }
 }
 
-// TODO: make sure Button examples have not regressed against master
-
 /**
  * This function creates factories that render ouput depending on the user ISlotProp props passed in.
  * @param Component Base component to render when not overridden by user props.
