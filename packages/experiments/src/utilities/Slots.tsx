@@ -35,7 +35,7 @@ export type ISlot<TProps> = ((props: IPropsWithChildren<TProps>) => JSX.Element)
 /**
  * Interface for a slot factory that consumes both componnent and user slot prop and generates rendered output.
  */
-export type ISlotFactory<TProps> = (componentProps: TProps, userProps: ISlotProp<TProps>) => JSX.Element;
+export type ISlotFactory<TProps> = (componentProps: TProps, userProps?: ISlotProp<TProps>) => JSX.Element;
 
 /**
  * Interface for aggregated Slots objects used internally by components.
@@ -81,15 +81,16 @@ export type ISlotRenderFunction<TProps> = (props: TProps, componentType: React.R
  */
 // Can't use typeof on React.createElement since it's overloaded. Approximate createElement's signature for now and widen as needed.
 export function createElementWrapper<P>(
-  type: ISlot<P>,
+  type: ISlot<P> | React.SFC<P> | string,
   props?: React.Attributes & P | null,
   // tslint:disable-next-line:missing-optional-annotation
   ...children: React.ReactNode[]
 ): React.ReactElement<P> | JSX.Element | null {
-  if (type.isSlot) {
+  const slotType = type as ISlot<P>;
+  if (slotType.isSlot) {
     // Since we are bypassing createElement, use React.Children.toArray to make sure children are properly assigned keys.
     children = React.Children.toArray(children);
-    return type({ ...(props as any), children });
+    return slotType({ ...(props as any), children });
   } else {
     return React.createElement(type, props, children);
   }

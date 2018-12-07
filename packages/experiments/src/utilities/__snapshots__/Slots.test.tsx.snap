@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`createFactory renders userProp JSX correctly 1`] = `
+<p
+  id="I should be the only prop in the output"
+/>
+`;
+
+exports[`createFactory renders userProp function correctly 1`] = `
+<p
+  id="I should be the only prop in the output"
+/>
+`;
