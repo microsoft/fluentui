@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, IButtonComponent, Text, VerticalStack } from '@uifabric/experiments';
+import { Button, IButtonComponent, VerticalStack } from '@uifabric/experiments';
 import { Customizer } from 'office-ui-fabric-react';
 import { stackProps } from './SlotExampleUtils';
 
@@ -49,35 +49,6 @@ export class SlotsStyledExample extends React.Component<{}, {}> {
           <Customizer {...ButtonTheme}>
             <Button icon={{ iconName: 'share' }} content="Button scopedSettings" />
           </Customizer>
-        </VerticalStack>
-
-        <VerticalStack {...stackProps}>
-          <Button content="Component Slot children: " enableTestChildren={true} />
-          <Button
-            content="User Slot children:"
-            test1={{ children: ['User Child 1,', ' Child 2'] }}
-            test2={{ children: ['User Child 1,', ' Child 2'] }}
-          />
-          <Button
-            content={{
-              children: ['User and Component Slot children:', <br />, "User's Children should ", <br />, "replace Component's Children"]
-            }}
-            test1={{ children: ['User Child 1,', ' Child 2'] }}
-            test2={{ children: ['User Child 1,', ' Child 2'] }}
-            enableTestChildren={true}
-          />
-          <Button
-            content="User Slot function with children:"
-            test1={() => <Text>Function Child</Text>}
-            test2={() => <Text>Function Child</Text>}
-            enableTestChildren={true}
-          />
-          <Button
-            content="User Slot JSX Element with children:"
-            test1={<Text>JSX Child</Text>}
-            test2={<Text>JSX Child</Text>}
-            enableTestChildren={true}
-          />
         </VerticalStack>
       </VerticalStack>
     );

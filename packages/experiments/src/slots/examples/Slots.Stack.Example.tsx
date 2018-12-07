@@ -13,12 +13,6 @@ export class SlotsStackExample extends React.Component<{}, {}> {
         <Button icon="share" stack={{ horizontalAlign: 'left' }} content="Stack: Object, horizontalAlign: left" />
         <Button icon="share" stack={(props, StackType) => <StackType {...props} />} content="Stack: Function" />
         <Button icon="share" content="Stack: Function, VerticalStack" stack={(props, StackType) => <VerticalStack {...props as any} />} />
-        <Button
-          icon="share"
-          stack={(props, StackType) => <StackType {...props} />}
-          content="Stack: Function with Test Children"
-          enableTestChildren={true}
-        />
       </VerticalStack>
     );
   }

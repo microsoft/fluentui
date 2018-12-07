@@ -11,17 +11,12 @@ export type IButtonStates = 'baseState' | 'enabled' | 'disabled' | 'expanded';
 export type IButtonVariants = 'baseVariant' | 'primary' | 'circular';
 
 export interface IButtonSlots {
-  // TODO: remove test slots
-  // TODO: make sure children are still disallowed via typings when removed here
-  // TODO: consolidate these types to become:
   root?: IHTMLButtonSlot;
   stack?: IHorizontalStackSlot;
   content?: ITextSlot;
   icon?: IIconSlot;
   menu?: IContextualMenuSlot;
   menuIcon?: IIconSlot;
-  test1?: ITextSlot;
-  test2?: IHTMLButtonSlot;
 }
 
 export interface IButton {}
@@ -30,9 +25,6 @@ export interface IButtonProps extends IButtonSlots, IStyleableComponentProps<IBu
   componentRef?: IRefObject<IButton>;
   className?: string;
   href?: string;
-
-  // TODO: remove
-  enableTestChildren?: boolean;
 
   primary?: boolean;
   circular?: boolean;

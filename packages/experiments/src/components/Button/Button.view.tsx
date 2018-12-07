@@ -7,19 +7,7 @@ import { Icon, Text } from '../../utilities/FactoryComponents';
 import { createElementWrapper, getSlots } from '../../utilities/Slots';
 
 export const ButtonView: IButtonComponent['view'] = props => {
-  const {
-    classNames,
-    menu: Menu,
-    children,
-    content,
-    icon,
-    expanded,
-    disabled,
-    onMenuDismiss,
-    menuTarget,
-    enableTestChildren,
-    ...rest
-  } = props;
+  const { classNames, menu: Menu, children, content, icon, expanded, disabled, onMenuDismiss, menuTarget, ...rest } = props;
 
   // TODO: 'href' is anchor property... consider getNativeProps by root type
   const buttonProps = { ...getNativeProps(rest, buttonProperties), href: props.href };
@@ -30,9 +18,7 @@ export const ButtonView: IButtonComponent['view'] = props => {
     icon: Icon,
     content: Text,
     menu: ContextualMenu,
-    menuIcon: Icon,
-    test1: Text, // createFactory test
-    test2: 'span' // non-createFactory test
+    menuIcon: Icon
   });
 
   return (
@@ -45,16 +31,6 @@ export const ButtonView: IButtonComponent['view'] = props => {
       <Slots.stack as="span" gap={8} verticalAlign="center" horizontalAlign="center">
         <Slots.icon />
         <Slots.content />
-
-        <Slots.test1>
-          {enableTestChildren && <p>Factory Slot Child 1</p>}
-          {enableTestChildren && <p>Factory Slot Child 2</p>}
-        </Slots.test1>
-        <Slots.test2>
-          {enableTestChildren && <p>React Element Slot Child 1</p>}
-          {enableTestChildren && <p>React Element Slot Child 2</p>}
-        </Slots.test2>
-
         {children}
         {Menu && (
           <HorizontalStack.Item>

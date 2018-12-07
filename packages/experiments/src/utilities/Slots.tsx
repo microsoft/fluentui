@@ -96,11 +96,6 @@ export function createElementWrapper<P>(
   }
 }
 
-// TODO: add tests for each case in this function.
-// TODO: tests should ensure props like data attributes and ID persist across all factory types
-// TODO: add typing tests too, both valid and invalid
-// TODO: data-type and id are for testing, remove. (add to tests, though!)
-//        data-type and id should be overridden by user props
 // TODO: make sure Button examples have not regressed against master
 
 /**
