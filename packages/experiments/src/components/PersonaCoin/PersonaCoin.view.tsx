@@ -5,6 +5,7 @@ import { IPersonaCoinComponent } from './PersonaCoin.types';
 import { PersonaCoinImage } from './PersonaCoinImage/PersonaCoinImage';
 import { PersonaPresence } from 'office-ui-fabric-react/lib/PersonaPresence';
 import { getInitials, getRTL } from '../../Utilities';
+import { DEFAULT_PERSONA_COIN_SIZE } from './PersonaCoin.styles';
 
 const PersonaCoinInitials: IPersonaCoinComponent['view'] = props => {
   const initials = props.initials || getInitials(props.text, getRTL(), props.allowPhoneInitials);
@@ -17,6 +18,8 @@ const PersonaCoinInitials: IPersonaCoinComponent['view'] = props => {
 };
 
 export const PersonaCoinView: IPersonaCoinComponent['view'] = props => {
+  const coinSize = props.size || DEFAULT_PERSONA_COIN_SIZE;
+
   return (
     <div className={props.classNames.root}>
       <PersonaCoinInitials
@@ -29,16 +32,14 @@ export const PersonaCoinView: IPersonaCoinComponent['view'] = props => {
       <PersonaCoinImage
         classNames={props.classNames}
         src={props.imageUrl}
-        dimension={props.size}
+        dimension={coinSize}
         onPhotoLoadingStateChange={props.onPhotoLoadingStateChange}
         imageShouldFadeIn={props.imageShouldFadeIn}
         imageShouldStartVisible={props.imageShouldStartVisible}
         imageAlt={props.imageAlt}
       />
       {/* TODO: Re-implement PersonaPresence and it should not render when no presence is passed */}
-      {props.presence ? (
-        <PersonaPresence presence={props.presence} coinSize={props.size} size={props.size} styles={props.classNames} />
-      ) : null}
+      {props.presence ? <PersonaPresence presence={props.presence} coinSize={coinSize} size={coinSize} styles={props.classNames} /> : null}
     </div>
   );
 };
