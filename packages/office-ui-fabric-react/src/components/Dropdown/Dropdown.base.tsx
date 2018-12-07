@@ -111,14 +111,18 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     // state if the key or options change.
     let selectedKeyProp: 'defaultSelectedKeys' | 'selectedKeys' | 'defaultSelectedKey' | 'selectedKey';
 
+    // this does a shallow compare (assumes options are pure), for the purposes of determining whether
+    // defaultSelectedKey/defaultSelectedKeys are respected.
+    const didOptionsChange = newProps.options !== this.props.options;
+
     if (this.props.multiSelect) {
-      if (newProps.defaultSelectedKeys !== undefined && newProps.options !== this.props.options) {
+      if (didOptionsChange && newProps.defaultSelectedKeys !== undefined) {
         selectedKeyProp = 'defaultSelectedKeys';
       } else {
         selectedKeyProp = 'selectedKeys';
       }
     } else {
-      if (newProps.defaultSelectedKey !== undefined && newProps.options !== this.props.options) {
+      if (didOptionsChange && newProps.defaultSelectedKey !== undefined) {
         selectedKeyProp = 'defaultSelectedKey';
       } else {
         selectedKeyProp = 'selectedKey';
