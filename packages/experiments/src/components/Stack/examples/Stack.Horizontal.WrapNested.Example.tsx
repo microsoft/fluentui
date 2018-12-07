@@ -1,7 +1,7 @@
+// @codepen
 import * as React from 'react';
-import { VerticalStack, HorizontalStack } from '@uifabric/experiments/lib/Stack';
-import { Text } from '@uifabric/experiments/lib/Text';
-import { Slider } from 'office-ui-fabric-react';
+import { Slider } from 'office-ui-fabric-react/lib/Slider';
+import { Stack } from '../Stack';
 import { mergeStyleSets, IStyleSet, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export interface IExampleState {
@@ -64,7 +64,7 @@ export class HorizontalStackWrapNestedExample extends React.Component<{}, IExamp
     });
 
     return (
-      <VerticalStack gap={10}>
+      <Stack gap={10}>
         <Slider
           label="Change the stack width to see how child items wrap onto multiple rows:"
           min={1}
@@ -75,37 +75,37 @@ export class HorizontalStackWrapNestedExample extends React.Component<{}, IExamp
           onChange={this._onWidthChange}
         />
 
-        <HorizontalStack wrap gap={40} verticalGap={30} className={styles.root}>
-          <HorizontalStack wrap gap={30} verticalGap={10} className={styles.stackOne}>
-            <Text>1</Text>
-            <Text>2</Text>
-            <Text>3</Text>
-            <Text>4</Text>
-            <Text>5</Text>
-            <Text>6</Text>
-            <Text>7</Text>
-          </HorizontalStack>
+        <Stack horizontal wrap gap={40} verticalGap={30} className={styles.root}>
+          <Stack horizontal wrap gap={30} verticalGap={10} className={styles.stackOne}>
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>6</span>
+            <span>7</span>
+          </Stack>
 
-          <HorizontalStack wrap gap={50} verticalGap={20} className={styles.stackTwo}>
-            <Text>1</Text>
-            <Text>2</Text>
-            <Text>3</Text>
-          </HorizontalStack>
+          <Stack horizontal wrap gap={50} verticalGap={20} className={styles.stackTwo}>
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+          </Stack>
 
-          <HorizontalStack wrap className={styles.stackThree}>
-            <Text>1</Text>
-            <Text>2</Text>
-            <Text>3</Text>
-            <Text>4</Text>
-            <Text>5</Text>
-            <Text>6</Text>
-            <Text>7</Text>
-            <Text>8</Text>
-            <Text>9</Text>
-            <Text>10</Text>
-          </HorizontalStack>
-        </HorizontalStack>
-      </VerticalStack>
+          <Stack horizontal wrap className={styles.stackThree}>
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>6</span>
+            <span>7</span>
+            <span>8</span>
+            <span>9</span>
+            <span>10</span>
+          </Stack>
+        </Stack>
+      </Stack>
     );
   }
 

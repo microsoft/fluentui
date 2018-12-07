@@ -1,6 +1,7 @@
+// @codepen
 import * as React from 'react';
-import { VerticalStack, HorizontalStack } from '@uifabric/experiments/lib/Stack';
-import { Slider } from 'office-ui-fabric-react';
+import { Slider } from 'office-ui-fabric-react/lib/Slider';
+import { Stack } from '../Stack';
 import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export interface IExampleState {
@@ -35,7 +36,7 @@ export class HorizontalStackShrinkExample extends React.Component<{}, IExampleSt
     });
 
     return (
-      <VerticalStack gap={5}>
+      <Stack gap={5}>
         <Slider
           label="Change the stack width to see how child items shrink:"
           min={1}
@@ -45,21 +46,21 @@ export class HorizontalStackShrinkExample extends React.Component<{}, IExampleSt
           showValue={true}
           onChange={this._onWidthChange}
         />
-        <HorizontalStack gap={5} shrinkItems padding={10} className={styles.root}>
-          <HorizontalStack.Item grow className={styles.item}>
+        <Stack horizontal gap={5} shrinkItems padding={10} className={styles.root}>
+          <Stack.Item grow className={styles.item}>
             I shrink
-          </HorizontalStack.Item>
-          <HorizontalStack.Item grow className={styles.item}>
+          </Stack.Item>
+          <Stack.Item grow className={styles.item}>
             I shrink
-          </HorizontalStack.Item>
-          <HorizontalStack.Item grow preventShrink className={styles.item} styles={{ root: { width: 500 } }}>
+          </Stack.Item>
+          <Stack.Item grow preventShrink className={styles.item} styles={{ root: { width: 500 } }}>
             I don't shrink
-          </HorizontalStack.Item>
-          <HorizontalStack.Item grow className={styles.item}>
+          </Stack.Item>
+          <Stack.Item grow className={styles.item}>
             I shrink
-          </HorizontalStack.Item>
-        </HorizontalStack>
-      </VerticalStack>
+          </Stack.Item>
+        </Stack>
+      </Stack>
     );
   }
 

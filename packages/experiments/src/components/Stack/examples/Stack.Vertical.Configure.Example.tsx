@@ -1,11 +1,14 @@
+// @codepen
 import * as React from 'react';
-import { VerticalStack, HorizontalStack } from '@uifabric/experiments/lib/Stack';
-import { Text } from '@uifabric/experiments/lib/Text';
-import { Slider, Checkbox, Dropdown, IDropdownOption, TextField } from 'office-ui-fabric-react';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { Slider } from 'office-ui-fabric-react/lib/Slider';
+import { Stack } from '../Stack';
 import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
 
 export type VerticalAlignment = 'top' | 'center' | 'bottom' | 'space-around' | 'space-between' | 'space-evenly';
-export type HorizontalAlignment = 'left' | 'center' | 'right';
+export type HorizontalAlignment = 'start' | 'center' | 'end';
 
 export interface IExampleState {
   numItems: number;
@@ -41,7 +44,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
       paddingTop: 0,
       paddingBottom: 0,
       verticalAlignment: 'top',
-      horizontalAlignment: 'left',
+      horizontalAlignment: 'start',
       hideEmptyChildren: false,
       emptyChildren: []
     };
@@ -92,10 +95,10 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
     });
 
     return (
-      <VerticalStack gap={10}>
-        <HorizontalStack gap={20}>
-          <HorizontalStack.Item grow>
-            <VerticalStack>
+      <Stack gap={10}>
+        <Stack horizontal gap={20}>
+          <Stack.Item grow>
+            <Stack>
               <Slider
                 label="Number of items:"
                 min={1}
@@ -105,15 +108,15 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
                 showValue={true}
                 onChange={this._onNumItemsChange}
               />
-              <HorizontalStack>
+              <Stack horizontal>
                 <Checkbox label="Shadow around items" onChange={this._onBoxShadowChange} styles={{ root: { marginRight: 10 } }} />
                 <Checkbox label="Prevent item overflow" onChange={this._onPreventOverflowChange} styles={{ root: { marginRight: 10 } }} />
                 <Checkbox label="Shrink items" onChange={this._onShrinkItemsChange} />
-              </HorizontalStack>
-            </VerticalStack>
-          </HorizontalStack.Item>
-          <HorizontalStack.Item grow>
-            <VerticalStack>
+              </Stack>
+            </Stack>
+          </Stack.Item>
+          <Stack.Item grow>
+            <Stack>
               <Slider
                 label="Container height:"
                 min={1}
@@ -125,13 +128,13 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
                 disabled={autoHeight}
               />
               <Checkbox label="Automatic height (based on items)" defaultChecked={true} onChange={this._onAutoHeightChange} />
-            </VerticalStack>
-          </HorizontalStack.Item>
-        </HorizontalStack>
+            </Stack>
+          </Stack.Item>
+        </Stack>
 
-        <HorizontalStack gap={20}>
-          <HorizontalStack.Item grow>
-            <VerticalStack>
+        <Stack horizontal gap={20}>
+          <Stack.Item grow>
+            <Stack>
               <Slider
                 label="Vertical gap between items:"
                 min={0}
@@ -141,8 +144,8 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
                 showValue={true}
                 onChange={this._onGapChange}
               />
-              <HorizontalStack gap={20} verticalAlign="bottom">
-                <HorizontalStack.Item grow>
+              <Stack horizontal gap={20} verticalAlignment="bottom">
+                <Stack.Item grow>
                   <Dropdown
                     selectedKey={verticalAlignment}
                     placeholder="Select Vertical Alignment"
@@ -157,27 +160,27 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
                     ]}
                     onChange={this._onVerticalAlignChange}
                   />
-                </HorizontalStack.Item>
-                <HorizontalStack.Item grow>
+                </Stack.Item>
+                <Stack.Item grow>
                   <Dropdown
                     selectedKey={horizontalAlignment}
                     placeholder="Select Horizontal Alignment"
                     label="Horizontal alignment:"
-                    options={[{ key: 'left', text: 'Left' }, { key: 'center', text: 'Center' }, { key: 'right', text: 'Right' }]}
+                    options={[{ key: 'start', text: 'Left' }, { key: 'center', text: 'Center' }, { key: 'end', text: 'Right' }]}
                     onChange={this._onHorizontalAlignChange}
                   />
-                </HorizontalStack.Item>
-                <HorizontalStack.Item>
+                </Stack.Item>
+                <Stack.Item>
                   <Checkbox label="Hide empty children" onChange={this._onHideEmptyChildrenChange} />
-                </HorizontalStack.Item>
-                <HorizontalStack.Item grow>
+                </Stack.Item>
+                <Stack.Item grow>
                   <TextField label="List of empty children (e.g. 1 2 3):" onChange={this._onEmptyChildrenChange} />
-                </HorizontalStack.Item>
-              </HorizontalStack>
-            </VerticalStack>
-          </HorizontalStack.Item>
-          <HorizontalStack.Item grow>
-            <VerticalStack>
+                </Stack.Item>
+              </Stack>
+            </Stack>
+          </Stack.Item>
+          <Stack.Item grow>
+            <Stack>
               <Slider
                 label="Left padding:"
                 min={0}
@@ -196,10 +199,10 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
                 showValue={true}
                 onChange={this._onPaddingRightChange}
               />
-            </VerticalStack>
-          </HorizontalStack.Item>
-          <HorizontalStack.Item grow>
-            <VerticalStack>
+            </Stack>
+          </Stack.Item>
+          <Stack.Item grow>
+            <Stack>
               <Slider
                 label="Top padding:"
                 min={0}
@@ -218,35 +221,31 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
                 showValue={true}
                 onChange={this._onPaddingBottomChange}
               />
-            </VerticalStack>
-          </HorizontalStack.Item>
-        </HorizontalStack>
+            </Stack>
+          </Stack.Item>
+        </Stack>
 
-        <VerticalStack
+        <Stack
           shrinkItems={shrinkItems}
           gap={gap}
           padding={`${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`}
-          verticalAlign={verticalAlignment}
-          horizontalAlign={horizontalAlignment}
+          verticalAlignment={verticalAlignment}
+          horizontalAlignment={horizontalAlignment}
           className={styles.root}
         >
           {this._range(1, numItems).map((value: number, index: number) => {
             if (emptyChildren.indexOf(value.toString()) !== -1) {
-              return hideEmptyChildren ? (
-                <VerticalStack.Item key={index} className={styles.item} />
-              ) : (
-                <Text key={index} className={styles.item} />
-              );
+              return hideEmptyChildren ? <Stack.Item key={index} className={styles.item} /> : <span key={index} className={styles.item} />;
             }
 
             return (
-              <Text key={index} className={styles.item}>
+              <span key={index} className={styles.item}>
                 {value}
-              </Text>
+              </span>
             );
           })}
-        </VerticalStack>
-      </VerticalStack>
+        </Stack>
+      </Stack>
     );
   }
 

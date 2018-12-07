@@ -1,7 +1,7 @@
+// @codepen
 import * as React from 'react';
-import { VerticalStack, HorizontalStack } from '@uifabric/experiments/lib/Stack';
-import { Text } from '@uifabric/experiments/lib/Text';
-import { Slider } from 'office-ui-fabric-react';
+import { Slider } from 'office-ui-fabric-react/lib/Slider';
+import { Stack } from '../Stack';
 import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export interface IExampleState {
@@ -36,7 +36,7 @@ export class HorizontalStackWrapExample extends React.Component<{}, IExampleStat
     });
 
     return (
-      <VerticalStack gap={10}>
+      <Stack gap={10}>
         <Slider
           label="Change the stack width to see how child items wrap onto multiple rows:"
           min={1}
@@ -47,19 +47,19 @@ export class HorizontalStackWrapExample extends React.Component<{}, IExampleStat
           onChange={this._onWidthChange}
         />
 
-        <HorizontalStack wrap gap={30} className={styles.root}>
-          <Text>1</Text>
-          <Text>2</Text>
-          <Text>3</Text>
-          <Text>4</Text>
-          <Text>5</Text>
-          <Text>6</Text>
-          <Text>7</Text>
-          <Text>8</Text>
-          <Text>9</Text>
-          <Text>10</Text>
-        </HorizontalStack>
-      </VerticalStack>
+        <Stack horizontal wrap gap={30} className={styles.root}>
+          <span>1</span>
+          <span>2</span>
+          <span>3</span>
+          <span>4</span>
+          <span>5</span>
+          <span>6</span>
+          <span>7</span>
+          <span>8</span>
+          <span>9</span>
+          <span>10</span>
+        </Stack>
+      </Stack>
     );
   }
 

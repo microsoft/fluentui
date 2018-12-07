@@ -1,10 +1,11 @@
+// @codepen
 import * as React from 'react';
-import { VerticalStack, HorizontalStack } from '@uifabric/experiments/lib/Stack';
-import { Text } from '@uifabric/experiments/lib/Text';
-import { Slider, Dropdown, IDropdownOption } from 'office-ui-fabric-react';
+import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { Slider } from 'office-ui-fabric-react/lib/Slider';
+import { Stack } from '../Stack';
 import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
-export type HorizontalAlignment = 'left' | 'center' | 'right' | 'space-around' | 'space-between' | 'space-evenly';
+export type HorizontalAlignment = 'start' | 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly';
 export type VerticalAlignment = 'top' | 'center' | 'bottom';
 export type Overflow = 'visible' | 'auto' | 'hidden';
 
@@ -22,7 +23,7 @@ export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExa
     this.state = {
       stackWidth: 100,
       containerHeight: 150,
-      horizontalAlignment: 'left',
+      horizontalAlignment: 'start',
       verticalAlignment: 'top',
       overflow: 'visible'
     };
@@ -55,12 +56,12 @@ export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExa
     });
 
     return (
-      <VerticalStack gap={10}>
-        <HorizontalStack>
-          <HorizontalStack.Item grow>
+      <Stack gap={10}>
+        <Stack horizontal>
+          <Stack.Item grow>
             <Slider label="Stack width:" min={1} max={100} step={1} defaultValue={100} showValue={true} onChange={this._onWidthChange} />
-          </HorizontalStack.Item>
-          <HorizontalStack.Item grow>
+          </Stack.Item>
+          <Stack.Item grow>
             <Slider
               label="Container height:"
               min={1}
@@ -70,27 +71,27 @@ export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExa
               showValue={true}
               onChange={this._onHeightChange}
             />
-          </HorizontalStack.Item>
-        </HorizontalStack>
+          </Stack.Item>
+        </Stack>
 
-        <HorizontalStack gap={20}>
-          <HorizontalStack.Item grow>
+        <Stack horizontal gap={20}>
+          <Stack.Item grow>
             <Dropdown
               selectedKey={horizontalAlignment}
               placeholder="Select Horizontal Alignment"
               label="Horizontal alignment:"
               options={[
-                { key: 'left', text: 'Left' },
+                { key: 'start', text: 'Left' },
                 { key: 'center', text: 'Center' },
-                { key: 'right', text: 'Right' },
+                { key: 'end', text: 'Right' },
                 { key: 'space-around', text: 'Space around' },
                 { key: 'space-between', text: 'Space between' },
                 { key: 'space-evenly', text: 'Space evenly' }
               ]}
               onChange={this._onHorizontalAlignChange}
             />
-          </HorizontalStack.Item>
-          <HorizontalStack.Item grow>
+          </Stack.Item>
+          <Stack.Item grow>
             <Dropdown
               selectedKey={verticalAlignment}
               placeholder="Select Vertical Alignment"
@@ -98,8 +99,8 @@ export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExa
               options={[{ key: 'top', text: 'Top' }, { key: 'center', text: 'Center' }, { key: 'bottom', text: 'Bottom' }]}
               onChange={this._onVerticalAlignChange}
             />
-          </HorizontalStack.Item>
-          <HorizontalStack.Item grow>
+          </Stack.Item>
+          <Stack.Item grow>
             <Dropdown
               selectedKey={overflow}
               placeholder="Select Overflow"
@@ -107,31 +108,32 @@ export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExa
               options={[{ key: 'visible', text: 'Visible' }, { key: 'auto', text: 'Auto' }, { key: 'hidden', text: 'Hidden' }]}
               onChange={this._onOverflowChange}
             />
-          </HorizontalStack.Item>
-        </HorizontalStack>
+          </Stack.Item>
+        </Stack>
 
         <div className={styles.container}>
-          <HorizontalStack
+          <Stack
+            horizontal
             fillVertical
             wrap
             gap={30}
-            horizontalAlign={horizontalAlignment}
-            verticalAlign={verticalAlignment}
+            horizontalAlignment={horizontalAlignment}
+            verticalAlignment={verticalAlignment}
             className={styles.root}
           >
-            <Text>1</Text>
-            <Text>2</Text>
-            <Text>3</Text>
-            <Text>4</Text>
-            <Text>5</Text>
-            <Text>6</Text>
-            <Text>7</Text>
-            <Text>8</Text>
-            <Text>9</Text>
-            <Text>10</Text>
-          </HorizontalStack>
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>6</span>
+            <span>7</span>
+            <span>8</span>
+            <span>9</span>
+            <span>10</span>
+          </Stack>
         </div>
-      </VerticalStack>
+      </Stack>
     );
   }
 

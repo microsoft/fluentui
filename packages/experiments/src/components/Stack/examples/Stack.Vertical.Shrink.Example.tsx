@@ -1,6 +1,7 @@
+// @codepen
 import * as React from 'react';
-import { VerticalStack } from '@uifabric/experiments/lib/Stack';
-import { Slider } from 'office-ui-fabric-react';
+import { Slider } from 'office-ui-fabric-react/lib/Slider';
+import { Stack } from '../Stack';
 import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export interface IExampleState {
@@ -38,7 +39,7 @@ export class VerticalStackShrinkExample extends React.Component<{}, IExampleStat
     });
 
     return (
-      <VerticalStack gap={5}>
+      <Stack gap={5}>
         <Slider
           label="Change the stack height to see how child items shrink:"
           min={1}
@@ -49,22 +50,22 @@ export class VerticalStackShrinkExample extends React.Component<{}, IExampleStat
           onChange={this._onHeightChange}
         />
         <div className={styles.container}>
-          <VerticalStack shrinkItems gap={5} padding={10} className={styles.root}>
-            <VerticalStack.Item grow className={styles.item}>
+          <Stack shrinkItems gap={5} padding={10} className={styles.root}>
+            <Stack.Item grow className={styles.item}>
               I shrink
-            </VerticalStack.Item>
-            <VerticalStack.Item grow className={styles.item}>
+            </Stack.Item>
+            <Stack.Item grow className={styles.item}>
               I shrink
-            </VerticalStack.Item>
-            <VerticalStack.Item grow preventShrink className={styles.item} styles={{ root: { height: 50 } }}>
+            </Stack.Item>
+            <Stack.Item grow preventShrink className={styles.item} styles={{ root: { height: 50 } }}>
               I don't shrink
-            </VerticalStack.Item>
-            <VerticalStack.Item grow className={styles.item}>
+            </Stack.Item>
+            <Stack.Item grow className={styles.item}>
               I shrink
-            </VerticalStack.Item>
-          </VerticalStack>
+            </Stack.Item>
+          </Stack>
         </div>
-      </VerticalStack>
+      </Stack>
     );
   }
 
