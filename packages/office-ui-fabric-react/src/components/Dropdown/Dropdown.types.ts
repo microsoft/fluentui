@@ -26,7 +26,7 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
   placeHolder?: string;
 
   /**
-   * Options for the dropdown.
+   * Options for the dropdown. It is recommended to treat this as pure for performance reasons.
    */
   options: IDropdownOption[];
 
