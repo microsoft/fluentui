@@ -5,31 +5,27 @@
 // Azure Dev Ops and used to compare baseline and PR file size
 // information which gets reported by Size Auditor
 
-var fs = require('fs');
+const fs = require('fs');
+const path = require('path');
 
-var path = 'dist';
-var sizes = {};
-var outputFilePath = 'dist/bundlesizes.json';
+const distRoot = 'dist';
+const sizes = {};
+const outputFilename = 'bundlesizes.json';
 
-fs.readdir(path, function(err, items) {
-  for (var i = 0; i < items.length; i++) {
-    var file = path + '/' + items[i];
+var items = fs.readdirSync(distRoot);
+items.forEach(item => {
+  const file = path.join(distRoot, item);
 
-    const isMinifiedJavascriptFile = items[i].match(/.min.js$/);
-    if (isMinifiedJavascriptFile) {
-      var fileName = getComponentName(items[i]);
-      var fileSize = getFilesizeInBytes(file);
-      sizes[fileName] = fileSize;
-    }
+  const isMinifiedJavascriptFile = item.match(/.min.js$/);
+  if (isMinifiedJavascriptFile) {
+    sizes[getComponentName(item)] = getFilesizeInBytes(file);
   }
-
-  fs.writeFileSync(outputFilePath, JSON.stringify({ sizes }));
 });
 
+fs.writeFileSync(path.join(distRoot, outputFilename), JSON.stringify({ sizes }));
+
 function getFilesizeInBytes(fileName) {
-  const stats = fs.statSync(fileName);
-  const fileSizeInBytes = stats.size;
-  return fileSizeInBytes;
+  return fs.statSync(fileName).size;
 }
 
 function getComponentName(fileName) {
