@@ -29,8 +29,8 @@ export const ButtonView: IButtonComponent['view'] = props => {
       aria-disabled={disabled}
     >
       <Slots.stack as="span" gap={8} verticalAlign="center" horizontalAlign="center">
-        <Slots.icon />
-        <Slots.content />
+        {icon && <Slots.icon />}
+        {content && <Slots.content />}
         {children}
         {Menu && (
           <HorizontalStack.Item>
