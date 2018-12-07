@@ -2,6 +2,46 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.111.0",
+      "tag": "office-ui-fabric-react_v6.111.0",
+      "date": "Thu, 06 Dec 2018 13:34:21 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsList: Prevent override of column cell border while dragging",
+            "author": "Arko Gupta <arkogupta16@gmail.com>",
+            "commit": "04922813e240736001a3336ce17ea23567c5b95a"
+          },
+          {
+            "comment": "spellCheck defaults to false in BasePicker",
+            "author": "Xi Huang <dayumikoda@gmail.com>",
+            "commit": "2692f4a3dff1772209f7df41078605d0b70a528a"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "The Dropdown component will now only include an aria-labelled-by attribute when there is no provided ariaLabel prop. This means that the component will honor provided ariaLabels and create markup such that screen readers will read the aria label and not the regular label.",
+            "author": "Conor Wuertz <conor.wuertz@gmail.com>",
+            "commit": "d7f56b2de869e6b7b2fc23824993a52c0ec05a7b"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.110.2",
+      "tag": "office-ui-fabric-react_v6.110.2",
+      "date": "Wed, 05 Dec 2018 13:35:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "TeachingBubble: add customizer scope to TeachingBubbleContent to allow using it individually.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "3deada22e50f972f160511197e84fdc8c9c6ceae"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.110.1",
       "tag": "office-ui-fabric-react_v6.110.1",
       "date": "Tue, 04 Dec 2018 13:36:40 GMT",
