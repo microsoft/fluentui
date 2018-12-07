@@ -25,7 +25,7 @@ module.exports = function(options) {
       process.env.TRAVIS ? `--runInBand` : undefined,
 
       // In production builds, produce coverage information.
-      (options.isProduction || process.env.TRAVIS) && '--coverage',
+      (options.isProduction || process.env.TRAVIS || options.coverage) && '--coverage',
 
       // If the -u flag is passed, pass it through.
       options.argv && options.argv.indexOf('-u') >= 0 ? '-u' : '',
