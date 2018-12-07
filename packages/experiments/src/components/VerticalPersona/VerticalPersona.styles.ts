@@ -1,28 +1,27 @@
-import { IVerticalPersonaComponent } from './VerticalPersona.types';
-import { processVariables } from '../../utilities/VariableProcessing';
+import { IVerticalPersonaComponent, IVerticalPersonaStyleVariableTypes } from './VerticalPersona.types';
+import { merge } from '../../Utilities';
 
 export const VerticalPersonaStyles: IVerticalPersonaComponent['styles'] = props => {
   const { theme } = props;
 
-  const variables = processVariables(
-    {
-      text: {
-        height: '35px',
-        fontFamily: 'SegoeUI',
-        width: '106px'
-      },
-      primaryText: {
-        paddingTop: '8px',
-        fontSize: '14px',
-        fontWeight: 600
-      },
-      secondaryText: {
-        paddingTop: '12px',
-        fontSize: '12px'
-      }
+  const baseVariables: IVerticalPersonaStyleVariableTypes = {
+    text: {
+      height: '35px',
+      fontFamily: 'SegoeUI',
+      width: '106px'
     },
-    props.styleVariables
-  );
+    primaryText: {
+      paddingTop: '8px',
+      fontSize: '14px',
+      fontWeight: 600
+    },
+    secondaryText: {
+      paddingTop: '12px',
+      fontSize: '12px'
+    }
+  };
+
+  const variables = props.styleVariables ? merge(baseVariables, props.styleVariables) : baseVariables;
 
   return {
     root: {

@@ -29,19 +29,19 @@ export interface IVerticalPersonaStyleVariableTypes {
   secondaryText: ISecondaryTextStyleVariables;
 }
 
-interface ITextStyleVariables {
+export interface ITextStyleVariables {
   height: string;
   fontFamily: string;
   width: string;
 }
 
-interface IPrimaryTextStyleVariables {
+export interface IPrimaryTextStyleVariables {
   paddingTop: string;
   fontSize: string;
   fontWeight: IFontWeight;
 }
 
-interface ISecondaryTextStyleVariables {
+export interface ISecondaryTextStyleVariables {
   paddingTop: string;
   fontSize: string;
 }

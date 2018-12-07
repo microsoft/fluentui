@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { PersonaCoin } from '../index';
-import { HorizontalStack, Text, VerticalStack } from '@uifabric/experiments';
+import { HorizontalStack, VerticalStack } from '@uifabric/experiments';
 
 const sectionGap = 32;
 const headingGap = 16;

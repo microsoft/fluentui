@@ -1,10 +1,20 @@
 import * as React from 'react';
 import { Icon } from 'office-ui-fabric-react';
 import { Text } from '../Text';
-import { IPersonaCoinComponent, IPersonaCoinProps } from './PersonaCoin.types';
+import { IPersonaCoinComponent } from './PersonaCoin.types';
 import { PersonaCoinImage } from './PersonaCoinImage/PersonaCoinImage';
 import { PersonaPresence } from 'office-ui-fabric-react/lib/PersonaPresence';
 import { getInitials, getRTL } from '../../Utilities';
+
+const PersonaCoinInitials: IPersonaCoinComponent['view'] = props => {
+  const initials = props.initials || getInitials(props.text, getRTL(), props.allowPhoneInitials);
+
+  if (initials) {
+    return <Text className={props.classNames.initials}>{initials}</Text>;
+  }
+
+  return <Icon iconName="Contact" />;
+};
 
 export const PersonaCoinView: IPersonaCoinComponent['view'] = props => {
   return (
@@ -31,14 +41,4 @@ export const PersonaCoinView: IPersonaCoinComponent['view'] = props => {
       ) : null}
     </div>
   );
-};
-
-const PersonaCoinInitials: IPersonaCoinComponent['view'] = props => {
-  const initials = props.initials || getInitials(props.text, getRTL(), props.allowPhoneInitials);
-
-  if (initials) {
-    return <Text className={props.classNames.initials}>{initials}</Text>;
-  }
-
-  return <Icon iconName="Contact" />;
 };
