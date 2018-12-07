@@ -69,12 +69,14 @@ export const styles: IStackComponent['styles'] = props => {
           maxWidth,
           maxHeight,
           width: fillHorizontal ? '100%' : 'auto',
-          height: fillVertical ? '100%' : 'auto',
           overflow: 'visible'
         },
-        grow && {
-          flexGrow: grow === true ? 1 : grow,
-          overflow: 'hidden'
+        horizontal && {
+          height: fillVertical ? '100%' : 'auto',
+          width: 'auto'
+        },
+        !horizontal && {
+          height: '100%'
         },
         className,
         {
@@ -88,21 +90,13 @@ export const styles: IStackComponent['styles'] = props => {
         classNames.inner,
         {
           display: 'flex',
-          flexDirection: horizontal ? 'row' : 'column',
           flexWrap: 'wrap',
-          width: fillHorizontal ? '100%' : 'auto',
           marginLeft: horizontalMargin,
           marginRight: horizontalMargin,
           marginTop: verticalMargin,
           marginBottom: verticalMargin,
           overflow: 'visible',
-          maxWidth: '100vw',
-          maxHeight,
-          padding: parsePadding(padding, theme),
           boxSizing: 'border-box',
-
-          // avoid unnecessary calc() calls if vertical gap is 0
-          height: fillVertical ? (vGap.value === 0 ? '100%' : `calc(100% + ${vGap.value}${vGap.unit})`) : 'auto',
 
           selectors: {
             '> *': {
@@ -113,11 +107,6 @@ export const styles: IStackComponent['styles'] = props => {
             ...commonSelectors
           }
         },
-        ,
-        grow && {
-          flexGrow: grow === true ? 1 : grow,
-          overflow: 'hidden'
-        },
         horizontalAlignment && {
           [horizontal ? 'justifyContent' : 'alignItems']: nameMap[horizontalAlignment] || horizontalAlignment
         },
@@ -125,6 +114,13 @@ export const styles: IStackComponent['styles'] = props => {
           [horizontal ? 'alignItems' : 'justifyContent']: nameMap[vertAlignment] || vertAlignment
         },
         horizontal && {
+          flexDirection: 'row',
+          width: fillHorizontal ? '100%' : 'auto',
+          maxWidth: '100vw',
+
+          // avoid unnecessary calc() calls if vertical gap is 0
+          height: fillVertical ? (vGap.value === 0 ? '100%' : `calc(100% + ${vGap.value}${vGap.unit})`) : 'auto',
+
           selectors: {
             '> *': {
               maxWidth: hGap.value === 0 ? '100%' : `calc(100% - ${hGap.value}${hGap.unit})`
@@ -133,6 +129,7 @@ export const styles: IStackComponent['styles'] = props => {
         },
         !horizontal && {
           height: `calc(100% + ${vGap.value}${vGap.unit})`,
+          flexDirection: 'column',
           justifyContent: 'start',
           alignContent: 'end',
           alignItems: 'start',

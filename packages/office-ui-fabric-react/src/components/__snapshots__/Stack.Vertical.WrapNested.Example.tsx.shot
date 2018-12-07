@@ -63,7 +63,7 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
           }
       htmlFor="Slider0"
     >
-      Change the stack height to see how child items wrap onto multiple rows:
+      Change the stack height to see how child items wrap onto multiple columns:
     </label>
     <div
       className=
@@ -76,7 +76,7 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
     >
       <div
         aria-disabled={false}
-        aria-label="Change the stack height to see how child items wrap onto multiple rows:"
+        aria-label="Change the stack height to see how child items wrap onto multiple columns:"
         aria-valuemax={420}
         aria-valuemin={1}
         aria-valuenow={420}
@@ -274,34 +274,35 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
         {
           background: #71afe5;
           display: inline-block;
-          height: auto;
+          height: 420px;
           overflow: visible;
-          width: 420%;
+          width: auto;
         }
   >
     <div
       className=
           ms-Stack-inner
           {
+            align-content: end;
+            align-items: start;
             box-sizing: border-box;
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             flex-wrap: wrap;
-            height: auto;
+            height: calc(100% + 30px);
+            justify-content: start;
             margin-bottom: -15px;
             margin-left: -20px;
             margin-right: -20px;
             margin-top: -15px;
-            max-width: 100vw;
             overflow: visible;
-            width: auto;
           }
           & > * {
             margin-bottom: 15px;
             margin-left: 20px;
             margin-right: 20px;
             margin-top: 15px;
-            max-width: calc(100% - 40px);
+            max-height: calc(100% - 30px);
             text-overflow: ellipsis;
             white-space: nowrap;
           }
@@ -315,7 +316,7 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
             {
               background: #a6a6a6;
               display: inline-block;
-              height: auto;
+              height: 100%;
               overflow: visible;
               width: auto;
             }
@@ -345,15 +346,13 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
                 margin-left: -15px;
                 margin-right: -15px;
                 margin-top: -5px;
-                max-width: 100vw;
                 overflow: visible;
-                width: auto;
               }
               & > * {
-                margin-bottom: 15px;
-                margin-left: 5px;
-                margin-right: 5px;
-                margin-top: 15px;
+                margin-bottom: 5px;
+                margin-left: 15px;
+                margin-right: 15px;
+                margin-top: 5px;
                 max-height: calc(100% - 10px);
                 text-overflow: ellipsis;
                 white-space: nowrap;
@@ -391,7 +390,7 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
             {
               background: #666666;
               display: inline-block;
-              height: auto;
+              height: 100%;
               overflow: visible;
               width: auto;
             }
@@ -421,15 +420,13 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
                 margin-left: -25px;
                 margin-right: -25px;
                 margin-top: -10px;
-                max-width: 100vw;
                 overflow: visible;
-                width: auto;
               }
               & > * {
-                margin-bottom: 25px;
-                margin-left: 10px;
-                margin-right: 10px;
-                margin-top: 25px;
+                margin-bottom: 10px;
+                margin-left: 25px;
+                margin-right: 25px;
+                margin-top: 10px;
                 max-height: calc(100% - 20px);
                 text-overflow: ellipsis;
                 white-space: nowrap;
@@ -455,7 +452,7 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
             {
               background: #333333;
               display: inline-block;
-              height: auto;
+              height: 100%;
               overflow: visible;
               width: auto;
             }
@@ -485,9 +482,7 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
-                max-width: 100vw;
                 overflow: visible;
-                width: auto;
               }
               & > * {
                 margin-bottom: 0px;

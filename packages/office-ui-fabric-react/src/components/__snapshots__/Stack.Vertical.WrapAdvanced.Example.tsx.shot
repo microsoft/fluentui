@@ -1313,9 +1313,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
               margin-left: -10px;
               margin-right: -10px;
               margin-top: -10px;
-              max-width: 100vw;
               overflow: visible;
-              width: auto;
             }
             & > * {
               margin-bottom: 10px;
