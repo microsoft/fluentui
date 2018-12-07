@@ -1,8 +1,5 @@
-require('./tasks/jest')({
-  args: '--watch -i',
-  coverage: isCoverageOptionPassed()
-});
+const customArgs = process && process.argv ? process.argv.slice(2).join(' ') : '';
 
-function isCoverageOptionPassed() {
-  return process.argv.indexOf('--coverage') >= 0;
-}
+require('./tasks/jest')({
+  args: `--watch -i ${customArgs}`
+});

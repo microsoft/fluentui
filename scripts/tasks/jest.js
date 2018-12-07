@@ -8,7 +8,6 @@ module.exports = function(options) {
 
   if (fs.existsSync(jestConfigPath)) {
     const jestPath = resolve.sync('jest/bin/jest');
-    const customArgs = options && options.argv ? options.argv.slice(3).join(' ') : '';
 
     const args = [
       // Specify the config file.
