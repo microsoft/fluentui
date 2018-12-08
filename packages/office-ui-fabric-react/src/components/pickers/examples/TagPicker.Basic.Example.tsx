@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
-import { TagPicker } from 'office-ui-fabric-react/lib/components/pickers/TagPicker/TagPicker';
+import { TagPicker, TagPickerBase } from 'office-ui-fabric-react/lib/components/pickers/TagPicker/TagPicker';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { ITagPickerDemoPageState } from 'office-ui-fabric-react/lib/components/pickers/examples/ITagPickerDemoPageState';
 import * as exampleStylesImport from 'office-ui-fabric-react/lib/common/_exampleStyles.scss';
@@ -25,7 +25,7 @@ const _testTags = [
 ].map(item => ({ key: item, name: item }));
 
 export class TagPickerBasicExample extends BaseComponent<{}, ITagPickerDemoPageState> {
-  private _picker: TagPicker;
+  private _picker: TagPickerBase;
 
   constructor(props: {}) {
     super(props);

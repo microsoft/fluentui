@@ -328,7 +328,7 @@ class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBas
   // (undocumented)
   protected getActiveDescendant(): string | undefined;
   // (undocumented)
-  protected getSuggestionsAlert(): JSX.Element | undefined;
+  protected getSuggestionsAlert(suggestionAlertClassName?: string): JSX.Element | undefined;
   // (undocumented)
   protected input: {
     (component: IAutofill | null): void;
@@ -699,7 +699,7 @@ class CommandBarButton extends BaseComponent<IButtonProps, {}> {
 }
 
 // @public
-class CompactPeoplePicker extends BasePeoplePicker {
+class CompactPeoplePickerBase extends BasePeoplePicker {
   // WARNING: The type "IPeoplePickerItemProps" needs to be exported by the package (e.g. added to index.ts)
   // (undocumented)
   static defaultProps: {
@@ -775,7 +775,7 @@ export function createArray<T>(size: number, getItem: (index: number) => T): T[]
 export function createFontStyles(localeCode: string | null): IFontStyles;
 
 // @public (undocumented)
-export function createGenericItem(name: string, currentValidationState: ValidationState, allowPhoneInitials: boolean): IGenericItem & {
+export function createGenericItem(name: string, currentValidationState: ValidationState, allowPhoneInitials?: boolean): IGenericItem & {
     key: React.Key;
 };
 
@@ -1930,7 +1930,6 @@ interface IBasePicker<T> {
 // @public (undocumented)
 interface IBasePickerProps<T> extends React.Props<any> {
   className?: string;
-  // (undocumented)
   componentRef?: IRefObject<IBasePicker<T>>;
   createGenericItem?: (input: string, ValidationState: ValidationState) => ISuggestionModel<T> | T;
   defaultSelectedItems?: T[];
@@ -1960,6 +1959,8 @@ interface IBasePickerProps<T> extends React.Props<any> {
           input: string;
       }) => string) | string;
   selectedItems?: T[];
+  styles?: IStyleFunctionOrObject<IBasePickerStyleProps, IBasePickerStyles>;
+  theme?: ITheme;
 }
 
 // @public (undocumented)
@@ -1984,6 +1985,20 @@ interface IBasePickerState {
   suggestionsLoading?: boolean;
   // (undocumented)
   suggestionsVisible?: boolean;
+}
+
+// @public
+interface IBasePickerStyles {
+  // (undocumented)
+  input: IStyle;
+  // (undocumented)
+  itemsWrapper: IStyle;
+  // (undocumented)
+  root: IStyle;
+  // (undocumented)
+  screenReaderText: IStyle;
+  // (undocumented)
+  text: IStyle;
 }
 
 // @public (undocumented)
@@ -11091,7 +11106,7 @@ class List extends BaseComponent<IListProps, IListState>, implements IList {
 }
 
 // @public
-class ListPeoplePicker extends MemberListPeoplePicker {
+class ListPeoplePickerBase extends MemberListPeoplePicker {
   // WARNING: The type "IPeoplePickerItemProps" needs to be exported by the package (e.g. added to index.ts)
   // (undocumented)
   static defaultProps: {
@@ -11228,7 +11243,7 @@ class NavBase extends BaseComponent<INavProps, INavState>, implements INav {
 }
 
 // @public
-class NormalPeoplePicker extends BasePeoplePicker {
+class NormalPeoplePickerBase extends BasePeoplePicker {
   // WARNING: The type "IPeoplePickerItemProps" needs to be exported by the package (e.g. added to index.ts)
   // (undocumented)
   static defaultProps: {
@@ -12278,9 +12293,9 @@ class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps, ISwat
 }
 
 // @public (undocumented)
-class TagPicker extends BasePicker<ITag, ITagPickerProps> {
+class TagPickerBase extends BasePicker<ITag, ITagPickerProps> {
   // (undocumented)
-  protected static defaultProps: {
+  static defaultProps: {
     onRenderItem: (props: ITagItemProps) => JSX.Element;
     onRenderSuggestionsItem: (props: ITag) => JSX.Element;
   }
@@ -12594,6 +12609,11 @@ module ZIndexes {
 // WARNING: Unsupported export: sizeToPixels
 // WARNING: Unsupported export: presenceBoolean
 // WARNING: Unsupported export: IPickerAriaIds
+// WARNING: Unsupported export: IBasePickerStyleProps
+// WARNING: Unsupported export: NormalPeoplePicker
+// WARNING: Unsupported export: CompactPeoplePicker
+// WARNING: Unsupported export: ListPeoplePicker
+// WARNING: Unsupported export: TagPicker
 // WARNING: Unsupported export: TagItem
 // WARNING: Unsupported export: Pivot
 // WARNING: Unsupported export: IPivotStyleProps
