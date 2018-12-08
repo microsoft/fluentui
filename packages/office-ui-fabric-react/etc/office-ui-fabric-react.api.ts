@@ -9451,6 +9451,7 @@ interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
   size?: RatingSize;
   styles?: IStyleFunctionOrObject<IRatingStyleProps, IRatingStyles>;
   theme?: ITheme;
+  unselectedIcon?: string;
 }
 
 // @public (undocumented)
