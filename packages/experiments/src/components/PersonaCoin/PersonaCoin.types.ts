@@ -1,6 +1,5 @@
-import { IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { ImageLoadState, PersonaPresence, IStyle } from 'office-ui-fabric-react';
 import { IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
-import { ImageLoadState, PersonaPresence } from 'office-ui-fabric-react';
 
 export type IPersonaCoinComponent = IStatelessComponent<IPersonaCoinProps, IPersonaCoinStyles>;
 

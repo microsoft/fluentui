@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IPersonaCoinImageProps } from './PersonaCoinImage.types';
 import { Image, ImageFit } from 'office-ui-fabric-react';
+import { IPersonaCoinImageProps } from './PersonaCoinImage.types';
 import { IPersonaCoinComponent } from '../PersonaCoin.types';
 import { DEFAULT_PERSONA_COIN_SIZE } from '../PersonaCoin.styles';
 

@@ -1,5 +1,5 @@
-import { IPersonaCoinProps } from '../PersonaCoin.types';
 import { ImageLoadState } from 'office-ui-fabric-react';
+import { IPersonaCoinProps } from '../PersonaCoin.types';
 
 export interface IPersonaCoinImageProps {
   src?: string;
