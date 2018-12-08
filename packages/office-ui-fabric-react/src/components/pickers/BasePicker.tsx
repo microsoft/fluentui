@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, createRef, elementContains, getId, classNamesFunction } from '../../Utilities';
+import { BaseComponent, KeyCodes, createRef, elementContains, getId, classNamesFunction } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Callout, DirectionalHint } from '../../Callout';
@@ -59,8 +59,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected SuggestionOfProperType = Suggestions as new (props: ISuggestionsProps<T>) => Suggestions<T>;
   protected currentPromise: PromiseLike<any> | undefined;
   protected _ariaMap: IPickerAriaIds;
+  protected _classNames: IProcessedStyleSet<IBasePickerStyles>;
   private _id: string;
-  private _classNames: IProcessedStyleSet<IBasePickerStyles>;
 
   constructor(basePickerProps: P) {
     super(basePickerProps);
@@ -820,22 +820,29 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
 export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BasePicker<T, P> {
   public render(): JSX.Element {
-    const { suggestedDisplayValue } = this.state;
-    const { className, inputProps, disabled } = this.props;
+    const { suggestedDisplayValue, isFocused } = this.state;
+    const { className, inputProps, disabled, theme, styles } = this.props;
 
     const selectedSuggestionAlertId: string | undefined = this.props.enableSelectedSuggestionAlert
       ? this._ariaMap.selectedSuggestionAlert
       : '';
     const suggestionsAvailable: string | undefined = this.state.suggestionsVisible ? this._ariaMap.suggestionList : '';
 
+    this._classNames = getClassNames(styles, {
+      theme,
+      className,
+      isFocused,
+      inputClassName: inputProps && inputProps.className
+    });
+
     return (
       <div ref={this.root}>
-        <div className={css('ms-BasePicker', className ? className : '')} onKeyDown={this.onKeyDown}>
+        <div className={this._classNames.root} onKeyDown={this.onKeyDown}>
           {this.getSuggestionsAlert()}
-          <div className={css('ms-BasePicker-text', stylesSASS.pickerText, this.state.isFocused && stylesSASS.inputFocused)}>
+          <div className={this._classNames.text}>
             <Autofill
               {...inputProps as any}
-              className={css('ms-BasePicker-input', stylesSASS.pickerInput)}
+              className={this._classNames.input}
               ref={this.input}
               onFocus={this.onInputFocus}
               onBlur={this.onInputBlur}
