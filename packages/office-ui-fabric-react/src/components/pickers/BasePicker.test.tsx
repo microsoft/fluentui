@@ -5,7 +5,7 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 /* tslint:enable:no-unused-variable */
 import * as renderer from 'react-test-renderer';
 
-import { TagPicker, ITag } from './TagPicker/TagPicker';
+import { TagPickerBase, ITag } from './TagPicker/TagPicker';
 import { IBasePickerProps } from './BasePicker.types';
 import { BasePicker } from './BasePicker';
 import { IPickerItemProps } from './PickerItem.types';
@@ -217,7 +217,7 @@ describe('Pickers', () => {
     });
 
     it('renders TagPicker correctly', () => {
-      const component = renderer.create(<TagPicker onResolveSuggestions={onResolveSuggestions} />);
+      const component = renderer.create(<TagPickerBase onResolveSuggestions={onResolveSuggestions} />);
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
@@ -225,7 +225,7 @@ describe('Pickers', () => {
     it('can search for and select tags', () => {
       const root = document.createElement('div');
       document.body.appendChild(root);
-      const picker: TagPicker = ReactDOM.render(<TagPicker onResolveSuggestions={onResolveSuggestions} />, root) as TagPicker;
+      const picker: TagPickerBase = ReactDOM.render(<TagPickerBase onResolveSuggestions={onResolveSuggestions} />, root) as TagPickerBase;
       const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
       input.focus();
       input.value = 'bl';
@@ -248,10 +248,10 @@ describe('Pickers', () => {
     it('can be a controlled component', () => {
       const root = document.createElement('div');
       document.body.appendChild(root);
-      let picker: TagPicker = ReactDOM.render(
-        <TagPicker onResolveSuggestions={onResolveSuggestions} selectedItems={[]} />,
+      let picker: TagPickerBase = ReactDOM.render(
+        <TagPickerBase onResolveSuggestions={onResolveSuggestions} selectedItems={[]} />,
         root
-      ) as TagPicker;
+      ) as TagPickerBase;
       const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
 
       input.focus();
@@ -265,9 +265,9 @@ describe('Pickers', () => {
       expect(picker.items.length).toEqual(0);
 
       picker = ReactDOM.render(
-        <TagPicker onResolveSuggestions={onResolveSuggestions} selectedItems={[{ key: 'testColor', name: 'testColor' }]} />,
+        <TagPickerBase onResolveSuggestions={onResolveSuggestions} selectedItems={[{ key: 'testColor', name: 'testColor' }]} />,
         root
-      ) as TagPicker;
+      ) as TagPickerBase;
 
       expect(picker.items.length).toEqual(1);
       expect(picker.items[0].name).toEqual('testColor');
@@ -282,7 +282,10 @@ describe('Pickers', () => {
         done();
       };
 
-      ReactDOM.render(<TagPicker onResolveSuggestions={onResolveSuggestions} selectedItems={[]} onChange={onChange} />, root) as TagPicker;
+      ReactDOM.render(
+        <TagPickerBase onResolveSuggestions={onResolveSuggestions} selectedItems={[]} onChange={onChange} />,
+        root
+      ) as TagPickerBase;
       const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
 
       input.focus();
