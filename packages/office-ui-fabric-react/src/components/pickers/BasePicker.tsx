@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, createRef, elementContains, getId, classNamesFunction } from '../../Utilities';
+import { BaseComponent, KeyCodes, css, createRef, elementContains, getId, classNamesFunction } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Callout, DirectionalHint } from '../../Callout';
@@ -12,7 +12,7 @@ import { IAutofill, Autofill } from '../Autofill/index';
 import { IPickerItemProps } from './PickerItem.types';
 import { IPersonaProps } from '../Persona/Persona.types';
 import * as stylesImport from './BasePicker.scss';
-const stylesSASS: any = stylesImport;
+const legacyStyles: any = stylesImport;
 
 export interface IBasePickerState {
   items?: any;
@@ -59,7 +59,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected SuggestionOfProperType = Suggestions as new (props: ISuggestionsProps<T>) => Suggestions<T>;
   protected currentPromise: PromiseLike<any> | undefined;
   protected _ariaMap: IPickerAriaIds;
-  protected _classNames: IProcessedStyleSet<IBasePickerStyles>;
   private _id: string;
 
   constructor(basePickerProps: P) {
@@ -194,31 +193,46 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     const selectedSuggestionAlertId = this.props.enableSelectedSuggestionAlert ? this._ariaMap.selectedSuggestionAlert : '';
     const suggestionsAvailable = this.state.suggestionsVisible ? this._ariaMap.suggestionList : '';
 
-    this._classNames = getClassNames(styles, {
-      theme,
-      className,
-      isFocused,
-      inputClassName: inputProps && inputProps.className
-    });
+    // TODO
+    // Clean this up by leaving only the first part after removing support for SASS.
+    // Currently we can not remove the SASS styles from BasePicker class because it
+    // might be used by consumers who created custom pickers from extending from this base class.
+    // We check for 'styles' prop which is going to be injected by the 'styled' HOC
+    // for every other already existing picker variant (PeoplePicker, TagPicker).
+    // If not provided, then we just use the old SASS styles instead.
+    const classNames: Partial<IProcessedStyleSet<IBasePickerStyles>> = styles
+      ? getClassNames(styles, {
+          theme,
+          className,
+          isFocused,
+          inputClassName: inputProps && inputProps.className
+        })
+      : {
+          root: css('ms-BasePicker', className ? className : ''),
+          text: css('ms-BasePicker-text', legacyStyles.pickerText, this.state.isFocused && legacyStyles.inputFocused),
+          itemsWrapper: legacyStyles.pickerItems,
+          input: css('ms-BasePicker-input', legacyStyles.pickerInput, inputProps && inputProps.className),
+          screenReaderText: legacyStyles.screenReaderOnly
+        };
 
     return (
-      <div ref={this.root} className={this._classNames.root} onKeyDown={this.onKeyDown}>
+      <div ref={this.root} className={classNames.root} onKeyDown={this.onKeyDown}>
         <FocusZone
           componentRef={this.focusZone}
           direction={FocusZoneDirection.bidirectional}
           isInnerZoneKeystroke={this._isFocusZoneInnerKeystroke}
         >
-          {this.getSuggestionsAlert()}
+          {this.getSuggestionsAlert(classNames.screenReaderText)}
           <SelectionZone selection={this.selection} selectionMode={SelectionMode.multiple}>
-            <div className={this._classNames.text}>
-              <span id={this._ariaMap.selectedItems} className={this._classNames.itemsWrapper} role={'list'}>
+            <div className={classNames.text}>
+              <span id={this._ariaMap.selectedItems} className={classNames.itemsWrapper} role={'list'}>
                 {this.renderItems()}
               </span>
               {this.canAddItems() && (
                 <Autofill
                   spellCheck={false}
                   {...inputProps as any}
-                  className={this._classNames.input}
+                  className={classNames.input}
                   ref={this.input}
                   onFocus={this.onInputFocus}
                   onBlur={this.onInputBlur}
@@ -738,14 +752,14 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     return currentIndex > -1 && !this.state.suggestionsLoading ? 'sug-' + currentIndex : undefined;
   }
 
-  protected getSuggestionsAlert() {
+  protected getSuggestionsAlert(suggestionAlertClassName: string = legacyStyles.screenReaderOnly) {
     const currentIndex = this.suggestionStore.currentIndex;
     if (this.props.enableSelectedSuggestionAlert) {
       const selectedSuggestion =
         currentIndex > -1 ? this.suggestionStore.getSuggestionAtIndex(this.suggestionStore.currentIndex) : undefined;
       const selectedSuggestionAlertText = selectedSuggestion ? selectedSuggestion.ariaLabel : undefined;
       return (
-        <div className={stylesSASS.screenReaderOnly} role="alert" id={this._ariaMap.selectedSuggestionAlert} aria-live="assertive">
+        <div className={suggestionAlertClassName} role="alert" id={this._ariaMap.selectedSuggestionAlert} aria-live="assertive">
           {selectedSuggestionAlertText}{' '}
         </div>
       );
@@ -828,21 +842,35 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
       : '';
     const suggestionsAvailable: string | undefined = this.state.suggestionsVisible ? this._ariaMap.suggestionList : '';
 
-    this._classNames = getClassNames(styles, {
-      theme,
-      className,
-      isFocused,
-      inputClassName: inputProps && inputProps.className
-    });
+    // TODO
+    // Clean this up by leaving only the first part after removing support for SASS.
+    // Currently we can not remove the SASS styles from BasePicker class because it
+    // might be used by consumers who created custom pickers from extending from this base class.
+    // We check for 'styles' prop which is going to be injected by the 'styled' HOC
+    // for every other already existing picker variant (PeoplePicker, TagPicker).
+    // If not provided, then we just use the old SASS styles instead.
+    const classNames: Partial<IProcessedStyleSet<IBasePickerStyles>> = styles
+      ? getClassNames(styles, {
+          theme,
+          className,
+          isFocused,
+          inputClassName: inputProps && inputProps.className
+        })
+      : {
+          root: css('ms-BasePicker', className ? className : ''),
+          text: css('ms-BasePicker-text', legacyStyles.pickerText, this.state.isFocused && legacyStyles.inputFocused),
+          input: css('ms-BasePicker-input', legacyStyles.pickerInput, inputProps && inputProps.className),
+          screenReaderText: legacyStyles.screenReaderOnly
+        };
 
     return (
       <div ref={this.root}>
-        <div className={this._classNames.root} onKeyDown={this.onKeyDown}>
-          {this.getSuggestionsAlert()}
-          <div className={this._classNames.text}>
+        <div className={classNames.root} onKeyDown={this.onKeyDown}>
+          {this.getSuggestionsAlert(classNames.screenReaderText)}
+          <div className={classNames.text}>
             <Autofill
               {...inputProps as any}
-              className={this._classNames.input}
+              className={classNames.input}
               ref={this.input}
               onFocus={this.onInputFocus}
               onBlur={this.onInputBlur}
@@ -865,7 +893,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
         <SelectionZone selection={this.selection} selectionMode={SelectionMode.single}>
           <FocusZone
             componentRef={this.focusZone}
-            className="ms-BasePicker-selectedItems"
+            className="ms-BasePicker-selectedItems" // just a className hook without any styles applied to it.
             isCircularNavigation={true}
             direction={FocusZoneDirection.bidirectional}
             isInnerZoneKeystroke={this._isFocusZoneInnerKeystroke}
