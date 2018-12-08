@@ -1,4 +1,4 @@
-import { IStyle, IFontWeight } from 'office-ui-fabric-react/lib/Styling';
+import { IStyle, IFontWeight } from '@uifabric/styling';
 import { IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
 import { IPersonaCoinProps } from '../PersonaCoin/PersonaCoin.types';
 

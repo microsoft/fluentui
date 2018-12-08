@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
+import { IProcessedStyleSet } from '@uifabric/styling';
 
 import { IVerticalPersonaStyles } from './VerticalPersona.types';
 import { VerticalPersonaView } from './VerticalPersona.view';
-import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 
 // These tests will ensure that your styles regions have classname representation in snapshot output.
 // (Also, classNames is a required prop for views, so we have to supply it for tests.)

@@ -1,5 +1,5 @@
+import { merge } from 'office-ui-fabric-react';
 import { IVerticalPersonaComponent, IVerticalPersonaStyleVariableTypes } from './VerticalPersona.types';
-import { merge } from '../../Utilities';
 
 export const VerticalPersonaStyles: IVerticalPersonaComponent['styles'] = props => {
   const { theme } = props;

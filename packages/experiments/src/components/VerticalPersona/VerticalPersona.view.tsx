@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { PersonaCoin } from '../PersonaCoin';
-import { Text } from '../Text';
+import { PersonaCoin } from '@uifabric/experiments/lib/PersonaCoin';
+import { Text } from '@uifabric/experiments/lib/Text';
 import { IVerticalPersonaComponent } from './VerticalPersona.types';
 
 export const VerticalPersonaView: IVerticalPersonaComponent['view'] = props => {
