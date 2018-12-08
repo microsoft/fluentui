@@ -109,11 +109,27 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   public componentWillReceiveProps(newProps: IDropdownProps): void {
     // In controlled component usage where selectedKey is provided, update the selectedIndex
     // state if the key or options change.
-    const selectedKeyProp: keyof IDropdownProps = this.props.multiSelect ? 'selectedKeys' : 'selectedKey';
-    if (
-      newProps[selectedKeyProp] !== undefined &&
-      (newProps[selectedKeyProp] !== this.props[selectedKeyProp] || newProps.options !== this.props.options)
-    ) {
+    let selectedKeyProp: 'defaultSelectedKeys' | 'selectedKeys' | 'defaultSelectedKey' | 'selectedKey';
+
+    // this does a shallow compare (assumes options are pure), for the purposes of determining whether
+    // defaultSelectedKey/defaultSelectedKeys are respected.
+    const didOptionsChange = newProps.options !== this.props.options;
+
+    if (newProps.multiSelect) {
+      if (didOptionsChange && newProps.defaultSelectedKeys !== undefined) {
+        selectedKeyProp = 'defaultSelectedKeys';
+      } else {
+        selectedKeyProp = 'selectedKeys';
+      }
+    } else {
+      if (didOptionsChange && newProps.defaultSelectedKey !== undefined) {
+        selectedKeyProp = 'defaultSelectedKey';
+      } else {
+        selectedKeyProp = 'selectedKey';
+      }
+    }
+
+    if (newProps[selectedKeyProp] !== undefined && (newProps[selectedKeyProp] !== this.props[selectedKeyProp] || didOptionsChange)) {
       this.setState({
         selectedIndices: this._getSelectedIndexes(newProps.options, newProps[selectedKeyProp])
       });
