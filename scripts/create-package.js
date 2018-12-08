@@ -28,7 +28,7 @@ const today = new Date().toUTCString();
 
 // Paths
 const packagePath = path.join(process.cwd(), 'packages', newPackageName);
-const templateFolderPath = path.join(process.cwd(), 'scripts', 'templates');
+const templateFolderPath = path.join(process.cwd(), 'scripts', 'templates', 'create-package');
 if (fs.existsSync(packagePath)) {
   console.error(`New package path ${packagePath} already exists.`);
   return;
