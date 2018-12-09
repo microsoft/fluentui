@@ -1,16 +1,31 @@
+// @ts-check
+
 const path = require('path');
-const { task, series, parallel } = require('just-task');
-const { tscTask } = require('just-task-typescript');
-const libPath = path.resolve(process.cwd(), 'lib');
-const srcPath = path.resolve(process.cwd(), 'src');
+const { task, series, parallel, condition, option, argv } = require('just-task');
+
+require('./just-tasks/ts');
+require('./just-tasks/clean');
+require('./just-tasks/jest');
+require('./just-tasks/copy');
+require('./just-tasks/sass');
+require('./just-tasks/tslint');
+
+option('production');
 
 task(
-  'ts:commonjs',
-  { builder: argv => argv.option('production') },
-  tscTask(argv => {
-    extraOptions = { pretty: true, inlineSources: argv.production, sourceRoot: path.relative(libPath, srcPath) };
-    return { outDir: 'lib', module: 'commonjs', target: 'es5', pretty: true };
-  })
+  'build',
+  series(
+    'clean',
+    'copy',
+    'sass',
+    parallel(
+      'tslint',
+      'jest',
+      'ts:commonjs',
+      'ts:esm',
+      condition('ts:amd', () => {
+        return argv().production;
+      })
+    )
+  )
 );
-
-task('build', parallel('ts:commonjs'));

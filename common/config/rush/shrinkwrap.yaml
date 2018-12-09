@@ -106,8 +106,8 @@ dependencies:
   jju: 1.4.0
   jscodeshift: 0.5.1
   json-loader: 0.5.7
-  just-task: 0.3.0
-  just-task-preset: 0.1.1
+  just-task: 0.4.2
+  just-task-preset: 0.1.2
   lint-staged: 7.3.0
   loader-utils: 1.1.0
   markdown-to-jsx: 6.6.1
@@ -7988,29 +7988,29 @@ packages:
     dev: false
     resolution:
       integrity: sha512-Fu3T6pKBuxjWT/p4DkqGHFRsysc8OauWr4ZRTY9dIx07Y9O0RkoR5jcv28aeD1vuAwhm3nLkDurwLXoALp4DpQ==
-  /just-task-preset/0.1.1:
+  /just-task-preset/0.1.2:
     dependencies:
-      just-task: 0.3.0
+      just-task: 0.3.1
       resolve: 1.8.1
     dev: false
     peerDependencies:
       jest: '>=22.0.0'
       typescript: '>=2.8.0 <4.0.0'
     resolution:
-      integrity: sha512-qG+oltu3whr4GZiXAWdrsNElDydSiRRl1Uab2t9jNYKh8mGXp0GyMBYUiu5uGDqJFqSvFjHlwusenEjcHncbXg==
-  /just-task-preset/0.1.1/jest@23.6.0+typescript@2.8.4:
+      integrity: sha512-ueyKTb4bmHmHdCodOlv6NYZPXRJmxw1FE6eMydclZpo2spA2yI6d8zXxeEUl8wCYd7JG10AoGm71M3ynMpJRqw==
+  /just-task-preset/0.1.2/jest@23.6.0+typescript@2.8.4:
     dependencies:
       jest: 23.6.0
-      just-task: 0.3.0
+      just-task: 0.3.1
       resolve: 1.8.1
       typescript: 2.8.4
     dev: false
-    id: registry.npmjs.org/just-task-preset/0.1.1
+    id: registry.npmjs.org/just-task-preset/0.1.2
     peerDependencies:
       jest: '>=22.0.0'
       typescript: '>=2.8.0 <4.0.0'
     resolution:
-      integrity: sha512-qG+oltu3whr4GZiXAWdrsNElDydSiRRl1Uab2t9jNYKh8mGXp0GyMBYUiu5uGDqJFqSvFjHlwusenEjcHncbXg==
+      integrity: sha512-ueyKTb4bmHmHdCodOlv6NYZPXRJmxw1FE6eMydclZpo2spA2yI6d8zXxeEUl8wCYd7JG10AoGm71M3ynMpJRqw==
   /just-task-typescript/0.4.1:
     dependencies:
       just-task: 0.3.0
@@ -8029,6 +8029,26 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-szLXMqSSNE0u/La5OTmqbVU+Qjoc0TcBlPyxYF6KZRpVUAcVwSPe2sfAgEyJwv7qGCfj7PVVbWw1gyWGzsWpWw==
+  /just-task/0.3.1:
+    dependencies:
+      chalk: 2.4.1
+      undertaker: 1.2.0
+      undertaker-registry: 1.0.1
+      yargs: 12.0.5
+    dev: false
+    hasBin: true
+    resolution:
+      integrity: sha512-PM4V0HYhOMAeUe5Y6OOjCebGVEwiYXjoN8BGCxU8JBR23BAS7xU7IhYKxXJMeZAP0v/04WKu1khExMiLptVZCA==
+  /just-task/0.4.2:
+    dependencies:
+      chalk: 2.4.1
+      undertaker: 1.2.0
+      undertaker-registry: 1.0.1
+      yargs: 12.0.5
+    dev: false
+    hasBin: true
+    resolution:
+      integrity: sha512-ElIJhHGMCZ4HgNVwOiIjGeGRluZL70v07lkmb4WGg6LdtwrU0zsb+TP3FjSVNwW5LdxEqCNIjOJ4mhcNnrlQjQ==
   /keycode/2.2.0:
     dev: false
     resolution:
@@ -14493,8 +14513,8 @@ packages:
       jscodeshift: 0.5.1
       json-loader: 0.5.7
       jsonc-parser: 2.0.2
-      just-task: 0.3.0
-      just-task-preset: /just-task-preset/0.1.1/jest@23.6.0+typescript@2.8.4
+      just-task: 0.4.2
+      just-task-preset: /just-task-preset/0.1.2/jest@23.6.0+typescript@2.8.4
       just-task-typescript: 0.4.1
       lint-staged: 7.3.0
       mkdirp: 0.5.1
@@ -14530,7 +14550,7 @@ packages:
     dev: false
     name: '@rush-temp/build'
     resolution:
-      integrity: sha512-M1U+Xx8Du7xos74pXLEopt8t1uPPlmT1uVuWHjfyvWjNMzCRJRTBbBhaSp6uijPMemztvkETNEF3M8axYZxrIw==
+      integrity: sha512-gyDMMcEXOmt3l7IjOYTmSfJVV9U0DxzoRYFTqkWTvqZt/Spwot9K4XVCqZ8W1JFyR2JzKOOR0lVxq0Dk6pTmcA==
       tarball: 'file:projects/build.tgz'
     version: 0.0.0
   'file:projects/charting.tgz':
@@ -14871,7 +14891,7 @@ packages:
       es6-weak-map: 2.0.2
       highlight.js: 9.13.1
       jest-snapshot: 23.6.0
-      just-task: 0.3.0
+      just-task: 0.4.2
       office-ui-fabric-core: 9.6.1
       prop-types: 15.6.2
       react: 16.6.3
@@ -14884,7 +14904,7 @@ packages:
     dev: false
     name: '@rush-temp/office-ui-fabric-react'
     resolution:
-      integrity: sha512-yw52FDW27FdskKGO5wYo/aPAmzvsoTN9jOpDXAVEJJh3hVNsLk+4QS6NaAFOSk36P2iQByJN+FcI34M9OhVDeQ==
+      integrity: sha512-4D8lJte2ngS3pQfTgHrvgDR2V/bQEMzx/3focOTNuqu7OHehYPyrE9edOnYBikD/Qf7yWLMpjTrlyMS2SGRp5g==
       tarball: 'file:projects/office-ui-fabric-react.tgz'
     version: 0.0.0
   'file:projects/prettier-rules.tgz':
@@ -15238,8 +15258,8 @@ specifiers:
   jju: ^1.4.0
   jscodeshift: ^0.5.0
   json-loader: ^0.5.7
-  just-task: ^0.3.0
-  just-task-preset: ^0.1.1
+  just-task: ^0.4.2
+  just-task-preset: ^0.1.2
   lint-staged: ^7.0.5
   loader-utils: ^1.1.0
   markdown-to-jsx: 6.6.1

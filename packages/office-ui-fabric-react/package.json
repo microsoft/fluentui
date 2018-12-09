@@ -17,6 +17,7 @@
   },
   "license": "MIT",
   "scripts": {
+    "build:just": "just build --config ../../scripts/just-task.js",
     "build": "node ../../scripts/build.js",
     "clean": "node ../../scripts/clean.js",
     "code-style": "node ../../scripts/code-style.js",
@@ -52,6 +53,7 @@
     "es6-weak-map": "^2.0.2",
     "highlight.js": "^9.12.0",
     "jest-snapshot": "^23.6.0",
+    "just-task": "^0.5.0",
     "office-ui-fabric-core": ">=9.0.0 <10.0.0",
     "react": ">=16.3.2-0 <17.0.0",
     "react-dom": ">=16.3.2-0 <17.0.0",
