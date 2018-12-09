@@ -8,7 +8,7 @@ const srcPath = path.resolve(process.cwd(), 'src');
 
 function getExtraTscParams() {
   const args = argv();
-  return { pretty: true, inlineSources: args.production, sourceRoot: path.relative(libPath, srcPath), target: 'es5' };
+  return { pretty: true, target: 'es5', ...(args.production && { inlineSources: true, sourceRoot: path.relative(libPath, srcPath) }) };
 }
 
 task(

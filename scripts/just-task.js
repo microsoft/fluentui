@@ -9,8 +9,10 @@ require('./just-tasks/jest');
 require('./just-tasks/copy');
 require('./just-tasks/sass');
 require('./just-tasks/tslint');
+require('./just-tasks/webpack');
 
 option('production');
+option('min');
 
 task(
   'build',
@@ -19,13 +21,12 @@ task(
     'copy',
     'sass',
     parallel(
-      'tslint',
-      'jest',
-      'ts:commonjs',
+      condition('tslint', () => !argv().min),
+      condition('jest', () => !argv().min),
+      condition('ts:commonjs', () => !argv().min),
       'ts:esm',
-      condition('ts:amd', () => {
-        return argv().production;
-      })
-    )
+      condition('ts:amd', () => argv().production && !argv().min)
+    ),
+    condition('webpack', () => !argv().min)
   )
 );

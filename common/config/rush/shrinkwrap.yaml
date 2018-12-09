@@ -106,8 +106,8 @@ dependencies:
   jju: 1.4.0
   jscodeshift: 0.5.1
   json-loader: 0.5.7
-  just-task: 0.4.2
-  just-task-preset: 0.1.2
+  just-task: 0.6.0
+  just-task-preset: 0.3.0
   lint-staged: 7.3.0
   loader-utils: 1.1.0
   markdown-to-jsx: 6.6.1
@@ -7988,29 +7988,57 @@ packages:
     dev: false
     resolution:
       integrity: sha512-Fu3T6pKBuxjWT/p4DkqGHFRsysc8OauWr4ZRTY9dIx07Y9O0RkoR5jcv28aeD1vuAwhm3nLkDurwLXoALp4DpQ==
-  /just-task-preset/0.1.2:
+  /just-task-preset/0.3.0:
     dependencies:
-      just-task: 0.3.1
+      async: 2.6.1
+      cpx: 1.5.0
+      glob: 7.1.3
+      just-task: 0.6.0
+      mkdirp: 0.5.1
       resolve: 1.8.1
+      rimraf: 2.6.2
     dev: false
     peerDependencies:
+      '@microsoft/api-extractor': '>=6.0.0 <7.0.0'
+      autoprefixer: '>=7.0.0 <10.0.0'
       jest: '>=22.0.0'
+      node-sass: '>=4.0.0 <5.0.0'
+      postcss: '>=6.0.0 <8.0.0'
+      tslint: '>=5.0.0 <6.0.0'
       typescript: '>=2.8.0 <4.0.0'
+      webpack: '>=4.0.0 <5.0.0'
     resolution:
-      integrity: sha512-ueyKTb4bmHmHdCodOlv6NYZPXRJmxw1FE6eMydclZpo2spA2yI6d8zXxeEUl8wCYd7JG10AoGm71M3ynMpJRqw==
-  /just-task-preset/0.1.2/jest@23.6.0+typescript@2.8.4:
+      integrity: sha512-NVCvSwL5EnOiI3y1vqQUhj5uapTfPXscgc1IJv7vJMse17T+Mpg0mr1U4J8SMdvmtJ6kNXaRqC+dClVG4C9Png==
+  /just-task-preset/0.3.0/8322411d5c8f271222caf8a99e9af2f2:
     dependencies:
+      '@microsoft/api-extractor': 6.1.6
+      async: 2.6.1
+      autoprefixer: 7.2.6
+      cpx: 1.5.0
+      glob: 7.1.3
       jest: 23.6.0
-      just-task: 0.3.1
+      just-task: 0.6.0
+      mkdirp: 0.5.1
+      node-sass: 4.10.0
+      postcss: 6.0.23
       resolve: 1.8.1
+      rimraf: 2.6.2
+      tslint: /tslint/5.11.0/typescript@2.8.4
       typescript: 2.8.4
+      webpack: 4.7.0
     dev: false
-    id: registry.npmjs.org/just-task-preset/0.1.2
+    id: registry.npmjs.org/just-task-preset/0.3.0
     peerDependencies:
+      '@microsoft/api-extractor': '>=6.0.0 <7.0.0'
+      autoprefixer: '>=7.0.0 <10.0.0'
       jest: '>=22.0.0'
+      node-sass: '>=4.0.0 <5.0.0'
+      postcss: '>=6.0.0 <8.0.0'
+      tslint: '>=5.0.0 <6.0.0'
       typescript: '>=2.8.0 <4.0.0'
+      webpack: '>=4.0.0 <5.0.0'
     resolution:
-      integrity: sha512-ueyKTb4bmHmHdCodOlv6NYZPXRJmxw1FE6eMydclZpo2spA2yI6d8zXxeEUl8wCYd7JG10AoGm71M3ynMpJRqw==
+      integrity: sha512-NVCvSwL5EnOiI3y1vqQUhj5uapTfPXscgc1IJv7vJMse17T+Mpg0mr1U4J8SMdvmtJ6kNXaRqC+dClVG4C9Png==
   /just-task-typescript/0.4.1:
     dependencies:
       just-task: 0.3.0
@@ -8029,16 +8057,6 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-szLXMqSSNE0u/La5OTmqbVU+Qjoc0TcBlPyxYF6KZRpVUAcVwSPe2sfAgEyJwv7qGCfj7PVVbWw1gyWGzsWpWw==
-  /just-task/0.3.1:
-    dependencies:
-      chalk: 2.4.1
-      undertaker: 1.2.0
-      undertaker-registry: 1.0.1
-      yargs: 12.0.5
-    dev: false
-    hasBin: true
-    resolution:
-      integrity: sha512-PM4V0HYhOMAeUe5Y6OOjCebGVEwiYXjoN8BGCxU8JBR23BAS7xU7IhYKxXJMeZAP0v/04WKu1khExMiLptVZCA==
   /just-task/0.4.2:
     dependencies:
       chalk: 2.4.1
@@ -8049,6 +8067,17 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-ElIJhHGMCZ4HgNVwOiIjGeGRluZL70v07lkmb4WGg6LdtwrU0zsb+TP3FjSVNwW5LdxEqCNIjOJ4mhcNnrlQjQ==
+  /just-task/0.6.0:
+    dependencies:
+      chalk: 2.4.1
+      resolve: 1.8.1
+      undertaker: 1.2.0
+      undertaker-registry: 1.0.1
+      yargs: 12.0.5
+    dev: false
+    hasBin: true
+    resolution:
+      integrity: sha512-t407TMHeKN7/N1njTx9BAp95HI+fTKQbBZ/T/WzR7xDi0ZUH8ynrFOFylaKycLIz4+/5x6NLR5+oTp0onBQrXQ==
   /keycode/2.2.0:
     dev: false
     resolution:
@@ -14513,8 +14542,8 @@ packages:
       jscodeshift: 0.5.1
       json-loader: 0.5.7
       jsonc-parser: 2.0.2
-      just-task: 0.4.2
-      just-task-preset: /just-task-preset/0.1.2/jest@23.6.0+typescript@2.8.4
+      just-task: 0.6.0
+      just-task-preset: /just-task-preset/0.3.0/8322411d5c8f271222caf8a99e9af2f2
       just-task-typescript: 0.4.1
       lint-staged: 7.3.0
       mkdirp: 0.5.1
@@ -14550,7 +14579,7 @@ packages:
     dev: false
     name: '@rush-temp/build'
     resolution:
-      integrity: sha512-gyDMMcEXOmt3l7IjOYTmSfJVV9U0DxzoRYFTqkWTvqZt/Spwot9K4XVCqZ8W1JFyR2JzKOOR0lVxq0Dk6pTmcA==
+      integrity: sha512-cfZ3mMPt+VDZdCk8MlO8XdpTgXI6RnE2ZLKybxnepFSiSjhUNR7if6afp72T7EuhFrmEYHQpFmA0RvzeXb+CNw==
       tarball: 'file:projects/build.tgz'
     version: 0.0.0
   'file:projects/charting.tgz':
@@ -14904,7 +14933,7 @@ packages:
     dev: false
     name: '@rush-temp/office-ui-fabric-react'
     resolution:
-      integrity: sha512-4D8lJte2ngS3pQfTgHrvgDR2V/bQEMzx/3focOTNuqu7OHehYPyrE9edOnYBikD/Qf7yWLMpjTrlyMS2SGRp5g==
+      integrity: sha512-gicMy6IMCcqG+rjbZOtMdceNgjbIvxVcejyRNXct7LXkw3gmbe/ZgJYEE747LazvE6baIuQAwhkMlYItVmNT/A==
       tarball: 'file:projects/office-ui-fabric-react.tgz'
     version: 0.0.0
   'file:projects/prettier-rules.tgz':
@@ -15258,8 +15287,8 @@ specifiers:
   jju: ^1.4.0
   jscodeshift: ^0.5.0
   json-loader: ^0.5.7
-  just-task: ^0.4.2
-  just-task-preset: ^0.1.2
+  just-task: ^0.6.0
+  just-task-preset: ^0.3.0
   lint-staged: ^7.0.5
   loader-utils: ^1.1.0
   markdown-to-jsx: 6.6.1
