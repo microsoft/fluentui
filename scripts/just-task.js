@@ -19,14 +19,14 @@ task(
   series(
     'clean',
     'copy',
-    'sass',
     parallel(
       condition('tslint', () => !argv().min),
       condition('jest', () => !argv().min),
-      condition('ts:commonjs', () => !argv().min),
-      'ts:esm',
-      condition('ts:amd', () => argv().production && !argv().min)
-    ),
-    condition('webpack', () => !argv().min)
+      series(
+        'sass',
+        parallel(condition('ts:commonjs', () => !argv().min), 'ts:esm', condition('ts:amd', () => argv().production && !argv().min)),
+        condition('webpack', () => !argv().min)
+      )
+    )
   )
 );
