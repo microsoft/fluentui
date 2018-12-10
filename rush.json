@@ -440,6 +440,11 @@
       "packageName": "@uifabric/test-utilities",
       "projectFolder": "packages/test-utilities",
       "versionPolicyName": "lockedMajor"
+    },
+    {
+      "packageName": "@uifabric/ibiza-themes",
+      "projectFolder": "packages/ibiza-themes",
+      "shouldPublish": false
     }
   ]
 }
