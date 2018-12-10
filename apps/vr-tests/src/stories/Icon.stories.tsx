@@ -21,16 +21,9 @@ storiesOf('Icon', module)
     <div>
       <div>{allIcons}</div>
       <div>
-        <Fabric>
-          {' '}
-          <Icon className={getIconClassName('CompassNW')} />{' '}
-        </Fabric>
-        <Fabric>
-          <Icon className={getIconClassName('Upload')} />{' '}
-        </Fabric>
-        <Fabric>
-          <Icon className={getIconClassName('Share')} />{' '}
-        </Fabric>
+        <Icon style={{ fontSize: '14px', color: '#333333' }} className={getIconClassName('CompassNW')} />
+        <Icon style={{ fontSize: '14px', color: '#333333' }} className={getIconClassName('Upload')} />
+        <Icon style={{ fontSize: '14px', color: '#333333' }} className={getIconClassName('Share')} />
       </div>
     </div>
   ))
