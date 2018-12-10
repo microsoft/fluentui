@@ -60,12 +60,6 @@ executeTasks(firstTasks)
       process.exitCode = 1;
     }
     logEndBuild(packageName, !hasFailures, buildStartTime);
-  })
-  .then(() => {
-    if (process.env['APPVEYOR']) {
-      const { generateSizeData } = require('./tasks/size-audit');
-      generateSizeData();
-    }
   });
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
