@@ -2,7 +2,7 @@ import * as React from 'react';
 import { FolderCover, IFolderCoverProps, getFolderCoverLayout, renderFolderCoverWithLayout, SharedSignal } from '@uifabric/experiments';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { ISize, fitContentToBounds, Fabric } from 'office-ui-fabric-react';
+import { ISize, fitContentToBounds } from 'office-ui-fabric-react';
 import { FabricDecorator } from '../utilities';
 
 interface IFolderCoverWithImageProps extends IFolderCoverProps {
@@ -12,11 +12,7 @@ interface IFolderCoverWithImageProps extends IFolderCoverProps {
 const FolderCoverWithImage: React.StatelessComponent<IFolderCoverWithImageProps> = (props: IFolderCoverWithImageProps): JSX.Element => {
   const { originalImageSize, ...folderCoverProps } = props;
 
-  const folderCover = (
-    <Fabric>
-      <FolderCover {...folderCoverProps} />
-    </Fabric>
-  );
+  const folderCover = <FolderCover style={{ fontFamily: 'Segoe UI' }} {...folderCoverProps} />;
 
   const { contentSize } = getFolderCoverLayout(folderCover);
 

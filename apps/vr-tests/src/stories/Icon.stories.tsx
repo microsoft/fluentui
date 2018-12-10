@@ -18,14 +18,12 @@ storiesOf('Icon', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>)
   .addStory('Root', () => (
-    <div>
+    <Fabric>
       <div>{allIcons}</div>
-      <div>
-        <Icon style={{ fontSize: '14px', color: '#333333' }} className={getIconClassName('CompassNW')} />
-        <Icon style={{ fontSize: '14px', color: '#333333' }} className={getIconClassName('Upload')} />
-        <Icon style={{ fontSize: '14px', color: '#333333' }} className={getIconClassName('Share')} />
-      </div>
-    </div>
+      <Icon className={getIconClassName('CompassNW')} />
+      <Icon className={getIconClassName('Upload')} />
+      <Icon className={getIconClassName('Share')} />
+    </Fabric>
   ))
   .addStory('Color', () => (
     // tslint:disable-next-line:jsx-ban-props
