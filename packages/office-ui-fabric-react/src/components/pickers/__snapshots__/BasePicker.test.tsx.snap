@@ -124,7 +124,9 @@ exports[`Pickers BasePicker renders BasePicker with inputProps supply classnames
 
 exports[`Pickers TagPicker renders TagPicker correctly 1`] = `
 <div
-  className="ms-BasePicker"
+  className=
+      ms-BasePicker
+
   onKeyDown={[Function]}
 >
   <div
@@ -148,9 +150,28 @@ exports[`Pickers TagPicker renders TagPicker correctly 1`] = `
       role="presentation"
     >
       <div
-        className="ms-BasePicker-text"
+        className=
+            ms-BasePicker-text
+            {
+              align-items: center;
+              border: 1px solid #a6a6a6;
+              box-sizing: border-box;
+              display: flex;
+              flex-wrap: wrap;
+              min-height: 30px;
+              min-width: 180px;
+            }
+            &:hover {
+              border-color: #333333;
+            }
       >
         <span
+          className=
+              ms-BasePicker-itemsWrapper
+              {
+                display: flex;
+                flex-wrap: wrap;
+              }
           id="selected-items-id__0"
           role="list"
         />
@@ -162,7 +183,19 @@ exports[`Pickers TagPicker renders TagPicker correctly 1`] = `
           aria-haspopup="true"
           autoCapitalize="off"
           autoComplete="off"
-          className="ms-BasePicker-input"
+          className=
+              ms-BasePicker-input
+              {
+                align-self: flex-end;
+                border: none;
+                flex-grow: 1;
+                height: 34px;
+                outline: none;
+                padding-bottom: 0;
+                padding-left: 6px;
+                padding-right: 6px;
+                padding-top: 0;
+              }
           data-lpignore={true}
           onBlur={[Function]}
           onChange={[Function]}
