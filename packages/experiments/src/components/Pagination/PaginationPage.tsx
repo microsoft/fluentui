@@ -40,8 +40,10 @@ export class PaginationPage extends React.Component<IComponentDemoPageProps, {}>
         overview={
           <div>
             <p>Pagination control</p>
-            <p>This control provides a customizable pagination component that can be used to achieve specific design requirement.There
-              are two design options: with a list of buttons, with combobox</p>
+            <p>
+              This control provides a customizable pagination component that can be used to achieve specific design requirement.There are
+              two design options: with a list of buttons, with combobox
+            </p>
             <p>
               For cases when your application supports theming, Pagination component is equipped with everything you need to just load the
               custom theme to the application, and as long as the color palette you provide has an override for the{' '}
