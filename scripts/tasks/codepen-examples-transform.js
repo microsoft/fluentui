@@ -18,7 +18,7 @@ function parseRaw(code) {
   const parse = source =>
     babylon.parse(source, {
       sourceType: 'module',
-      plugins: ['jsx', 'typescript', 'classProperties']
+      plugins: ['jsx', 'typescript', 'classProperties', 'objectRestSpread']
     });
   return recast.parse(code, { parser: { parse } }).program.body;
 }
@@ -27,7 +27,7 @@ function transform(file, api) {
   const parse = source =>
     babylon.parse(source, {
       sourceType: 'module',
-      plugins: ['jsx', 'typescript', 'classProperties']
+      plugins: ['jsx', 'typescript', 'classProperties', 'objectRestSpread']
     });
 
   const j = api.jscodeshift;
@@ -85,10 +85,12 @@ function transform(file, api) {
 
   let exampleName;
   // remove exports and replace with variable or class declarations, whichever the original example used
-  source.find(j.ExportNamedDeclaration, node => node.declaration.type == 'VariableDeclaration').replaceWith(p => {
-    exampleName = p.node.declaration.declarations[0].id.name;
-    return p.node.declaration;
-  });
+  source
+    .find(j.ExportNamedDeclaration, node => node.declaration.type == 'VariableDeclaration')
+    .replaceWith(p => {
+      exampleName = p.node.declaration.declarations[0].id.name;
+      return p.node.declaration;
+    });
 
   source
     .find(
