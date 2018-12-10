@@ -65,14 +65,14 @@ Callout/  @joschect
 # Checkbox/
 ChoiceGroup/   @srideshpande
 # ColorPicker/
-# ComboBox/
+ComboBox/ @ecraig12345
 CommandBar/   @micahgodbolt @JasonGore
 ContextualMenu/  @joschect
 DatePicker/   @OfficeDev/uifabric-calendar
 # DetailsList/
 # Dialog/
 DocumentCard/ @yiminwu @mikewheaton
-# Dropdown/
+Dropdown/ @ecraig12345
 # Fabric/
 # FacePile/
 FolderCover/ @ThomasMichon
