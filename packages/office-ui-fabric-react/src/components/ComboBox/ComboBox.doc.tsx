@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { ComboBoxBasicExample } from './examples/ComboBox.Basic.Example';
+import { ComboBoxControlledExample } from './examples/ComboBox.Controlled.Example';
+import { ComboBoxVirtualizedExample } from './examples/ComboBox.Virtualized.Example';
 
 import { IDocPageProps } from '../../common/DocPage.types';
 import { ComboBoxCustomStyledExample } from './examples/ComboBox.CustomStyled.Example';
@@ -7,7 +9,15 @@ import { ComboBoxStatus } from './ComboBox.checklist';
 
 const ComboBoxBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ComboBox/examples/ComboBox.Basic.Example.tsx') as string;
 const ComboBoxBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/ComboBox/ComboBox.Basic.Example.Codepen.txt') as string;
+
+const ComboBoxControlledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ComboBox/examples/ComboBox.Controlled.Example.tsx') as string;
+const ComboBoxControlledExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/ComboBox/ComboBox.Controlled.Example.Codepen.txt') as string;
+
+const ComboBoxVirtualizedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ComboBox/examples/ComboBox.Virtualized.Example.tsx') as string;
+const ComboBoxVirtualizedExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/ComboBox/ComboBox.Virtualized.Example.Codepen.txt') as string;
+
 const ComboBoxCustomStyledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ComboBox/examples/ComboBox.CustomStyled.Example.tsx') as string;
+const ComboBoxCustomStyledExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/ComboBox/ComboBox.CustomStyled.Example.Codepen.txt') as string;
 
 export const ComboBoxPageProps: IDocPageProps = {
   title: 'ComboBox',
@@ -16,15 +26,28 @@ export const ComboBoxPageProps: IDocPageProps = {
   componentStatus: ComboBoxStatus,
   examples: [
     {
-      title: 'ComboBox',
+      title: 'Basic uncontrolled ComboBox',
       code: ComboBoxBasicExampleCode,
       view: <ComboBoxBasicExample />,
       codepenJS: ComboBoxBasicExampleCodepen
     },
     {
-      title: 'ComboBoxCustomStyled',
+      title: 'Controlled ComboBox',
+      code: ComboBoxControlledExampleCode,
+      view: <ComboBoxControlledExample />,
+      codepenJS: ComboBoxControlledExampleCodepen
+    },
+    {
+      title: 'VirtualizedComboBox',
+      code: ComboBoxVirtualizedExampleCode,
+      view: <ComboBoxVirtualizedExample />,
+      codepenJS: ComboBoxVirtualizedExampleCodepen
+    },
+    {
+      title: 'ComboBox with custom styling',
       code: ComboBoxCustomStyledExampleCode,
-      view: <ComboBoxCustomStyledExample />
+      view: <ComboBoxCustomStyledExample />,
+      codepenJS: ComboBoxCustomStyledExampleCodepen
     }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/ComboBox/ComboBox.types.ts')],
