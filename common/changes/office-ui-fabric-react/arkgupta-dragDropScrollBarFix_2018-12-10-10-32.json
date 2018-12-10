@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsList: changed drop hint diplay to none to not occupy any space",
+      "comment": "DetailsList: changed drop hint display to none to not occupy any space",
       "type": "patch"
     }
   ],
