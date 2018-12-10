@@ -8,7 +8,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const distRoot = 'dist';
+const distRoot = 'apps/test-bundles/dist';
 const sizes = {};
 const outputFilename = 'bundlesizes.json';
 
