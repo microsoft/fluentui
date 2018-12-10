@@ -1,13 +1,7 @@
 import { IComponent, IStyleableComponentProps } from '../../Foundation';
 import { IStyle } from '../../Styling';
-import { IHorizontalStackProps } from '../../Stack';
-import { ITextProps } from '../../Text';
-import { IIconProps, IContextualMenuProps, IFontWeight, IRefObject } from 'office-ui-fabric-react';
-import { ISlotProp, IChildrenProp } from '../../utilities/createSlot';
-
-// TODO: these types should be defined in Icon.types
-export const IconDefaultProp: keyof IIconProps = 'iconName';
-export type IIconDefaultProp = IIconProps['iconName'];
+import { IFontWeight, IRefObject } from 'office-ui-fabric-react';
+import { IContextualMenuSlot, IHTMLButtonSlot, IHorizontalStackSlot, IIconSlot, ITextSlot } from '../../utilities/factoryComponents.types';
 
 export type IButtonComponent = IComponent<IButtonProps, IButtonViewProps, IButtonStyles>;
 
@@ -17,18 +11,12 @@ export type IButtonStates = 'baseState' | 'enabled' | 'disabled' | 'expanded';
 export type IButtonVariants = 'baseVariant' | 'primary' | 'circular';
 
 export interface IButtonSlots {
-  // TODO: remove test slots
-  // TODO: make sure children are still disallowed via typings when removed here
-  root?: ISlotProp<React.ButtonHTMLAttributes<any>>;
-  stack?: ISlotProp<IHorizontalStackProps>;
-  content?: ISlotProp<ITextProps, IChildrenProp>;
-  // TODO: consolidate these types to become:
-  // icon?: IIconSlot;
-  icon?: ISlotProp<IIconProps, IIconDefaultProp>;
-  menu?: ISlotProp<IContextualMenuProps>;
-  menuIcon?: ISlotProp<IIconProps, IIconDefaultProp>;
-  test1?: ISlotProp<ITextProps, IChildrenProp>;
-  test2?: ISlotProp<React.AllHTMLAttributes<any>>;
+  root?: IHTMLButtonSlot;
+  stack?: IHorizontalStackSlot;
+  content?: ITextSlot;
+  icon?: IIconSlot;
+  menu?: IContextualMenuSlot;
+  menuIcon?: IIconSlot;
 }
 
 export interface IButton {}
@@ -37,9 +25,6 @@ export interface IButtonProps extends IButtonSlots, IStyleableComponentProps<IBu
   componentRef?: IRefObject<IButton>;
   className?: string;
   href?: string;
-
-  // TODO: remove
-  enableTestChildren?: boolean;
 
   primary?: boolean;
   circular?: boolean;
