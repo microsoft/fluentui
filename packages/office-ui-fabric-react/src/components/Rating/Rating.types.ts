@@ -36,9 +36,17 @@ export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
   allowZeroStars?: boolean;
 
   /**
-   * Custom icon, defaults to FavoriteStar
+   * Custom icon
+   * @defaultvalue FavoriteStarFill
    */
   icon?: string;
+
+  /**
+   * Custom icon for unselected rating elements.
+   * If an `icon` property is provided, defaults to the value of the `icon` property.
+   * @defaultvalue FavoriteStarFill
+   */
+  unselectedIcon?: string;
 
   /**
    * Size of rating, defaults to small
@@ -74,8 +82,8 @@ export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
   readOnly?: boolean;
 
   /*
-  * Optional callback to set the arialabel for rating control.
-  */
+   * Optional callback to set the arialabel for rating control.
+   */
   getAriaLabel?: (rating: number, max: number) => string;
 
   /**

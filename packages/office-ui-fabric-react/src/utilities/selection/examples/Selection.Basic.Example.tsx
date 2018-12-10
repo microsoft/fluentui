@@ -38,13 +38,11 @@ export class SelectionItemExample extends React.Component<ISelectionItemExampleP
 
     return (
       <div className="ms-SelectionItemExample" data-is-focusable={true} data-selection-index={itemIndex}>
-        {selection &&
-          selection.canSelectItem(item) &&
-          selection.mode !== SelectionMode.none && (
-            <div className="ms-SelectionItemExample-check" data-is-focusable={true} data-selection-toggle={true}>
-              <Check checked={isSelected} />
-            </div>
-          )}
+        {selection && selection.canSelectItem(item) && selection.mode !== SelectionMode.none && (
+          <div className="ms-SelectionItemExample-check" data-is-focusable={true} data-selection-toggle={true}>
+            <Check checked={isSelected} />
+          </div>
+        )}
         <span className="ms-SelectionItemExample-name">{item.name}</span>
         <a className="ms-SelectionItemExample-link" href="https://bing.com" target="_blank">
           Link that avoids selection

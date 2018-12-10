@@ -9,7 +9,7 @@ export interface ISlider {
   focus: () => void;
 }
 
-export interface ISliderProps extends React.Props<SliderBase> {
+export interface ISliderProps extends React.ClassAttributes<SliderBase> {
   /**
    * Optional callback to access the ISlider interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

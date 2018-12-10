@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IButtonComponent, IButtonViewProps } from './Button.types';
 import { Text } from '../../Text';
-import { HorizontalStack } from '../../Stack';
+import { Stack } from '../../Stack';
 import { Icon, IIconProps } from 'office-ui-fabric-react';
 import { getNativeProps, buttonProperties } from '../../Utilities';
 
@@ -30,7 +30,7 @@ export const ButtonView: IButtonComponent['view'] = props => {
       aria-disabled={disabled}
       className={classNames.root}
     >
-      <HorizontalStack className={classNames.stack} as="span" gap={8} verticalAlign="center" horizontalAlign="center">
+      <Stack horizontal className={classNames.stack} as="span" gap={8} verticalAlignment="center" horizontalAlignment="center">
         {IconProp && typeof IconProp === 'string' && <Icon className={classNames.icon} iconName={IconProp} />}
         {IconProp &&
           typeof IconProp === 'object' &&
@@ -48,11 +48,11 @@ export const ButtonView: IButtonComponent['view'] = props => {
         {text && <Text className={classNames.text}>{text}</Text>}
         {children}
         {Menu && (
-          <HorizontalStack.Item>
+          <Stack.Item>
             <Icon className={classNames.menuIcon} iconName="ChevronDown" />
-          </HorizontalStack.Item>
+          </Stack.Item>
         )}
-      </HorizontalStack>
+      </Stack>
       {expanded && Menu && <Menu target={menuTarget} onDismiss={onMenuDismiss} />}
     </RootType>
   );

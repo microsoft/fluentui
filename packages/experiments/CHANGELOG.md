@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 04 Dec 2018 13:36:40 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Dec 2018 13:35:16 GMT and should not be manually modified.
+
+## 6.46.0
+Fri, 07 Dec 2018 13:35:16 GMT
+
+### Minor changes
+
+- Pagination: Exported component from top level export
 
 ## 6.45.0
 Tue, 04 Dec 2018 13:36:40 GMT
