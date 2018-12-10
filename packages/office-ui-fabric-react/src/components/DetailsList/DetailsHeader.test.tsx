@@ -561,8 +561,6 @@ describe('DetailsHeader', () => {
     expect(header._currentDropHintIndex).toBe(5);
     dropHintElement = component.find('#columnDropHint_5').getDOMNode();
     dropHintElementChildren = dropHintElement.children;
-    console.log(dropHintElementChildren.item(0).getAttribute('style'));
-    console.log(dropHintElementChildren.item(1).getAttribute('style'));
 
     expect(dropHintElementChildren.item(0).getAttribute('style')).toEqual('display: inline-block;');
     expect(dropHintElementChildren.item(1).getAttribute('style')).toEqual('display: inline-block;');
