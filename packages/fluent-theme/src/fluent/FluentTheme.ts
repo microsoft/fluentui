@@ -1,4 +1,4 @@
-import { createTheme, ITheme } from '@uifabric/styling/';
+import { createTheme, ITheme } from '@uifabric/styling';
 import { NeutralColors, CommunicationColors } from './FluentColors';
 
 export const FluentTheme: ITheme = createTheme({
