@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode, createRef } from '../../Utilities';
+import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode } from '../../Utilities';
 import { ISliderProps, ISlider, ISliderStyleProps, ISliderStyles } from './Slider.types';
 import { classNamesFunction, getNativeProps, divProperties } from '../../Utilities';
 import { Label } from '../../Label';
@@ -29,8 +29,8 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     buttonProps: {}
   };
 
-  private _sliderLine = createRef<HTMLDivElement>();
-  private _thumb = createRef<HTMLSpanElement>();
+  private _sliderLine = React.createRef<HTMLDivElement>();
+  private _thumb = React.createRef<HTMLSpanElement>();
   private _id: string;
 
   constructor(props: ISliderProps) {

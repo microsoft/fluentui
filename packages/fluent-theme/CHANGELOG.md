@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Fri, 30 Nov 2018 13:37:17 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Dec 2018 13:35:16 GMT and should not be manually modified.
+
+## 0.11.0
+Fri, 07 Dec 2018 13:35:16 GMT
+
+### Minor changes
+
+- Add styles for Persona to theme
 
 ## 0.10.0
 Fri, 30 Nov 2018 13:37:17 GMT

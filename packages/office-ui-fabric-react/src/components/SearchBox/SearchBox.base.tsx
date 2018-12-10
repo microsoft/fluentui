@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
-import { BaseComponent, getId, KeyCodes, classNamesFunction, createRef, getNativeProps, inputProperties } from '../../Utilities';
+import { BaseComponent, getId, KeyCodes, classNamesFunction, getNativeProps, inputProperties } from '../../Utilities';
 
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
@@ -19,8 +19,8 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     clearButtonProps: { ariaLabel: 'Clear text' }
   };
 
-  private _rootElement = createRef<HTMLDivElement>();
-  private _inputElement = createRef<HTMLInputElement>();
+  private _rootElement = React.createRef<HTMLDivElement>();
+  private _inputElement = React.createRef<HTMLInputElement>();
   private _latestValue: string;
 
   public constructor(props: ISearchBoxProps) {
@@ -150,18 +150,9 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
   };
 
   private _onFocusCapture = (ev: React.FocusEvent<HTMLElement>) => {
-    this.setState(
-      {
-        hasFocus: true
-      },
-      () => {
-        // IE doesn't capture the onClickFocus, so we will focus here
-        const inputElement = this._inputElement.current;
-        if (inputElement && document.activeElement !== inputElement) {
-          this.focus();
-        }
-      }
-    );
+    this.setState({
+      hasFocus: true
+    });
 
     this._events.on(ev.currentTarget, 'blur', this._onBlur, true);
 
