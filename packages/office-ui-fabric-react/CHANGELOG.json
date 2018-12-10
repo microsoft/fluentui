@@ -2,6 +2,49 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.111.2",
+      "tag": "office-ui-fabric-react_v6.111.2",
+      "date": "Mon, 10 Dec 2018 13:35:53 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown: remove aria-labelledby from items wrapper div if no label property is provided",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "738e270892f99957aecf567e4b107f8e4cf86176"
+          },
+          {
+            "comment": "Dropdown: `defaultSelectedKey`/`defaultSelectedKeys` is no longer ignored if the Dropdown options changes.",
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "df64e2dd0a1088e2c0abed0f74566c6f72aa9328"
+          },
+          {
+            "comment": "Rating: respect the icon property",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "940979dd0ed4c31213850fcca28c6246a4fcc350"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.111.1",
+      "tag": "office-ui-fabric-react_v6.111.1",
+      "date": "Fri, 07 Dec 2018 13:35:16 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Searchbox: Reverts the focus fix for IE since it broke focus for other browsers",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "0c830a12923bb57287c030e248ab26e7923da949"
+          },
+          {
+            "comment": "Check: fixing alignment of the check inside the circle when in RTL.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "416a43f2a3222974d990c564a9b8d588b72cf021"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.111.0",
       "tag": "office-ui-fabric-react_v6.111.0",
       "date": "Thu, 06 Dec 2018 13:34:21 GMT",

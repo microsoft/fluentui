@@ -11,7 +11,7 @@ export interface IPivot {
   focus(): void;
 }
 
-export interface IPivotProps extends React.Props<PivotBase>, React.HTMLAttributes<HTMLDivElement> {
+export interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTMLAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the IPivot interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

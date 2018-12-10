@@ -300,8 +300,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
     dropHintCaretStyle: [
       classNames.dropHintCaretStyle,
       {
-        display: 'inline-block',
-        visibility: 'hidden',
+        display: 'none',
         position: 'absolute',
         top: 22,
         left: -7.5,
@@ -315,8 +314,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
     dropHintLineStyle: [
       classNames.dropHintLineStyle,
       {
-        display: 'inline-block',
-        visibility: 'hidden',
+        display: 'none',
         position: 'absolute',
         bottom: 0,
         top: -3,
