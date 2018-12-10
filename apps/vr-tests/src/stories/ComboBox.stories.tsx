@@ -5,43 +5,30 @@ import { storiesOf } from '@storybook/react';
 import { FabricDecoratorTallFixedWdith } from '../utilities';
 import { ComboBox, SelectableOptionMenuItemType } from 'office-ui-fabric-react';
 
-let testOptions = [
+const testOptions = [
   { key: 'Header', text: 'Theme Fonts', itemType: SelectableOptionMenuItemType.Header },
   { key: 'A', text: 'Arial Black' },
   { key: 'B', text: 'Times New Roman' },
   { key: 'divider_2', text: '-', itemType: SelectableOptionMenuItemType.Divider },
   { key: 'Header1', text: 'Other Options', itemType: SelectableOptionMenuItemType.Header },
-  { key: 'D', text: 'Option d' },
+  { key: 'D', text: 'Option d' }
 ];
 
-let fontMapping = {
+const fontMapping = {
   ['Arial Black']: '"Arial Black", "Arial Black_MSFontService", sans-serif',
-  ['Time New Roman']: '"Times New Roman", "Times New Roman_MSFontService", serif',
+  ['Time New Roman']: '"Times New Roman", "Times New Roman_MSFontService", serif'
 };
 
-let onRenderFontOption = (item) => {
-  if (item.itemType === SelectableOptionMenuItemType.Header ||
-    item.itemType === SelectableOptionMenuItemType.Divider) {
-    return <span className={'ms-ComboBox-optionText'}>{item.text}</span>;
+const onRenderFontOption = item => {
+  let fontFamily = this._fontMapping[item.text];
+
+  if (!fontFamily) {
+    // This is a new user-entered font. Add a font family definition for it.
+    const newFontName = item.text;
+    fontFamily = this._fontMapping[newFontName] = `"${newFontName}","Segoe UI",Tahoma,Sans-Serif`;
   }
 
-  let fontFamily = fontMapping[item.text];
-
-  if (fontFamily === null || fontFamily === undefined) {
-    let newFontFamily: string = item.text;
-    if (newFontFamily.indexOf(' ') > -1) {
-      newFontFamily = '"' + newFontFamily + '"';
-    }
-
-    // add a default fallback font
-    newFontFamily += ',"Segoe UI",Tahoma,Sans-Serif';
-
-    fontMapping = { ...fontMapping, [fontFamily]: newFontFamily };
-    fontFamily = newFontFamily;
-  }
-
-  // tslint:disable-next-line:jsx-ban-props
-  return <span className={'ms-ComboBox-optionText'} style={{ fontFamily: fontFamily && fontFamily }}>{item.text}</span>;
+  return <span style={{ fontFamily: fontFamily }}>{item.text}</span>;
 };
 
 storiesOf('ComboBox', module)
@@ -55,38 +42,22 @@ storiesOf('ComboBox', module)
         .click('.ms-Button-flexContainer')
         .hover('.ms-Button-flexContainer')
         .snapshot('click', { cropTo: '.ms-Layer' }) // Dropdown extends beyond testWrapper
-        .end()
-      }
+        .end()}
     >
       {story()}
     </Screener>
   ))
-  .addStory('Root', () => (
-    <ComboBox
-      defaultSelectedKey='A'
-      label='Default with dividers'
-      ariaLabel='Basic ComboBox example'
-      autoComplete='on'
-      options={testOptions}
-    />
-  ), { rtl: true })
+  .addStory('Root', () => <ComboBox defaultSelectedKey="A" label="Default with dividers" autoComplete="on" options={testOptions} />, {
+    rtl: true
+  })
   .addStory('Styled', () => (
     <ComboBox
-      defaultSelectedKey='A'
-      label='Styled with dividers'
-      ariaLabel='Basic ComboBox example'
-      autoComplete='on'
+      defaultSelectedKey="A"
+      label="Styled with dividers"
+      autoComplete="on"
       options={testOptions}
       onRenderOption={onRenderFontOption}
     />
   ))
-  .addStory('Disabled', () => (
-    <ComboBox
-      defaultSelectedKey='A'
-      label='Disabled'
-      ariaLabel='Basic ComboBox example'
-      autoComplete='on'
-      options={testOptions}
-      disabled
-    />
-  ));
+  .addStory('Disabled', () => <ComboBox defaultSelectedKey="A" label="Disabled" options={testOptions} disabled />)
+  .addStory('Placeholder', () => <ComboBox placeholder="Select an option" label="With a placeholder" options={testOptions} />);
