@@ -418,7 +418,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
 
   /** Render Callout or Panel container and pass in list */
   private _onRenderContainer = (props: IDropdownProps): JSX.Element => {
-    const { onRenderList = this._onRenderList, responsiveMode, calloutProps, panelProps, dropdownWidth } = this.props;
+    const { responsiveMode, calloutProps, panelProps, dropdownWidth } = this.props;
 
     const isSmall = responsiveMode! <= ResponsiveMode.medium;
 
@@ -431,7 +431,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
         hasCloseButton={false}
         {...panelProps}
       >
-        {onRenderList(props, this._onRenderList)}
+        {this._renderFocusableList(props)}
       </Panel>
     ) : (
       <Callout
@@ -448,7 +448,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
         onPositioned={this._onPositioned}
         calloutWidth={dropdownWidth || (this._dropDown.current ? this._dropDown.current.clientWidth : 0)}
       >
-        {onRenderList(props, this._onRenderList)}
+        {this._renderFocusableList(props)}
       </Callout>
     );
   };
@@ -458,10 +458,9 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     return <Icon className={this._classNames.caretDown} iconName="ChevronDown" />;
   };
 
-  /** Render List of items */
-  private _onRenderList = (props: IDropdownProps): JSX.Element => {
-    const { onRenderItem = this._onRenderItem, label } = this.props;
-
+  /** Wrap item list in a FocusZone */
+  private _renderFocusableList(props: IDropdownProps): JSX.Element {
+    const { onRenderList = this._onRenderList, label } = props;
     const id = this._id;
 
     return (
@@ -480,10 +479,17 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
           aria-labelledby={label ? id + '-label' : undefined}
           role="listbox"
         >
-          {this.props.options.map((item: any, index: number) => onRenderItem({ ...item, index }, this._onRenderItem))}
+          {onRenderList(props, this._onRenderList)}
         </FocusZone>
       </div>
     );
+  }
+
+  /** Render List of items */
+  private _onRenderList = (props: IDropdownProps): JSX.Element => {
+    const { onRenderItem = this._onRenderItem } = this.props;
+
+    return <>{this.props.options.map((item: any, index: number) => onRenderItem({ ...item, index }, this._onRenderItem))}</>;
   };
 
   private _onRenderItem = (item: IDropdownOption): JSX.Element | null => {
