@@ -43,13 +43,12 @@ export class FormValidationExample extends React.Component<{}, IFormValidationEx
           />
           <FormConditionalSubmitButton>Submit</FormConditionalSubmitButton>
         </Form>
-        {this.state &&
-          this.state.formResults && (
-            <div className="results-view">
-              <h4>Results</h4>
-              {JSON.stringify(this.state.formResults)}
-            </div>
-          )}
+        {this.state && this.state.formResults && (
+          <div className="results-view">
+            <h4>Results</h4>
+            {JSON.stringify(this.state.formResults)}
+          </div>
+        )}
       </div>
     );
   }

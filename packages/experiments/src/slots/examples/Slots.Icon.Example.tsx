@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, VerticalStack } from '@uifabric/experiments';
+import { Button, Stack } from '@uifabric/experiments';
 import { Spinner } from 'office-ui-fabric-react';
 import { stackProps } from './SlotExampleUtils';
 
@@ -7,7 +7,7 @@ import { stackProps } from './SlotExampleUtils';
 export class SlotsIconExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
-      <VerticalStack {...stackProps}>
+      <Stack {...stackProps}>
         <Button icon="share" content="Icon: String" />
         <Button icon={{ iconName: 'share' }} content="Icon: Props, iconName: 'share'" />
         <Button
@@ -20,7 +20,7 @@ export class SlotsIconExample extends React.Component<{}, {}> {
         />
         <Button icon={() => <Spinner />} content="Icon: Function, Spinner" />
         <Button icon={<Spinner />} content="Icon: JSX Element, Spinner" />
-      </VerticalStack>
+      </Stack>
     );
   }
 }

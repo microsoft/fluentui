@@ -1,6 +1,6 @@
 /** @jsx createElementWrapper */
 import { IButtonComponent, IButtonSlots, IButtonViewProps } from './Button.types';
-import { HorizontalStack } from '../../Stack';
+import { Stack } from '../../Stack';
 import { ContextualMenu } from 'office-ui-fabric-react';
 import { getNativeProps, buttonProperties } from '../../Utilities';
 import { Icon, Text } from '../../utilities/factoryComponents';
@@ -14,7 +14,7 @@ export const ButtonView: IButtonComponent['view'] = props => {
 
   const Slots = getSlots<typeof props, IButtonSlots>(props, {
     root: _deriveRootType(props),
-    stack: HorizontalStack,
+    stack: Stack,
     icon: Icon,
     content: Text,
     menu: ContextualMenu,
@@ -28,18 +28,18 @@ export const ButtonView: IButtonComponent['view'] = props => {
       {...buttonProps}
       aria-disabled={disabled}
     >
-      <Slots.stack as="span" gap={8} verticalAlign="center" horizontalAlign="center">
+      <Slots.stack horizontal as="span" gap={8} verticalAlignment="center" horizontalAlignment="center">
         {icon && <Slots.icon />}
         {content && <Slots.content />}
         {children}
         {Menu && (
-          <HorizontalStack.Item>
+          <Stack.Item>
             <Slots.menuIcon iconName="ChevronDown" />
-          </HorizontalStack.Item>
+          </Stack.Item>
         )}
       </Slots.stack>
       {expanded && Menu && <Slots.menu target={menuTarget} onDismiss={onMenuDismiss} items={[]} />}
-    </Slots.root>
+    </Slots.root >
   );
 };
 

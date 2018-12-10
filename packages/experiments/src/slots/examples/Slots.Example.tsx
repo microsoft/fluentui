@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, VerticalStack } from '@uifabric/experiments';
+import { Button, Stack } from '@uifabric/experiments';
 import { Spinner } from 'office-ui-fabric-react';
 import { stackProps } from './SlotExampleUtils';
 
@@ -7,7 +7,7 @@ import { stackProps } from './SlotExampleUtils';
 export class SlotsExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
-      <VerticalStack {...stackProps} maxWidth={400}>
+      <Stack {...stackProps} maxWidth={400}>
         <Button
           // Render function usage
           root={(rootProps, RootType) => <RootType {...rootProps} />}
@@ -20,7 +20,7 @@ export class SlotsExample extends React.Component<{}, {}> {
         >
           Just a button with a spinner as its content.
         </Button>
-      </VerticalStack>
+      </Stack>
     );
   }
 }

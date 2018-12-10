@@ -2,6 +2,25 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.9.3",
+      "tag": "@uifabric/example-app-base_v6.9.3",
+      "date": "Thu, 06 Dec 2018 13:34:21 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix for issue#7258:Documentation is missing for button",
+            "author": "Aftab Hassan <aftabh@uw.edu>",
+            "commit": "09f1011e7355358023bb8ec712defbe62f786475"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.110.2 <7.0.0` to `>=6.111.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.9.2",
       "tag": "@uifabric/example-app-base_v6.9.2",
       "date": "Tue, 06 Nov 2018 13:31:09 GMT",

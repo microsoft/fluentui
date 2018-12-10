@@ -5,6 +5,7 @@ export * from './CommandBar';
 export * from './FolderCover';
 export * from './Form';
 export * from './LayoutGroup';
+export * from './Pagination';
 export * from './Shimmer';
 export * from './Sidebar';
 export * from './Signals';

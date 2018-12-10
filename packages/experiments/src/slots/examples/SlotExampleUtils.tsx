@@ -1,3 +1,3 @@
-import { IVerticalStackProps } from '@uifabric/experiments';
+import { IStackProps } from '@uifabric/experiments';
 
-export const stackProps: IVerticalStackProps = { gap: 16, padding: 8, maxWidth: 400 };
+export const stackProps: IStackProps = { gap: 16, padding: 8, maxWidth: 400 };

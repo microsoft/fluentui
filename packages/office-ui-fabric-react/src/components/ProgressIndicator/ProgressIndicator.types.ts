@@ -7,7 +7,7 @@ export interface IProgressIndicator {
   focus: () => void;
 }
 
-export interface IProgressIndicatorProps extends React.Props<ProgressIndicatorBase> {
+export interface IProgressIndicatorProps extends React.ClassAttributes<ProgressIndicatorBase> {
   /**
    * Gets the component ref.
    */

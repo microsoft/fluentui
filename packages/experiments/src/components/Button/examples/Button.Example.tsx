@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button } from '../index';
-import { HorizontalStack, Text, VerticalStack } from '@uifabric/experiments';
+import { Stack, Text } from '@uifabric/experiments';
 import { ContextualMenu, IContextualMenuProps, Icon, CommandBar } from 'office-ui-fabric-react';
 
 const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
@@ -10,12 +10,16 @@ const sectionGap = 32;
 const headingGap = 16;
 const buttonGap = 12;
 
-const ButtonStack = (props: { children: JSX.Element[] }) => <HorizontalStack gap={buttonGap}>{props.children}</HorizontalStack>;
+const ButtonStack = (props: { children: JSX.Element[] }) => (
+  <Stack horizontal gap={buttonGap}>
+    {props.children}
+  </Stack>
+);
 
 const ButtonSet = () => (
-  <VerticalStack gap={headingGap} padding={8}>
+  <Stack gap={headingGap} padding={8}>
     <div>
-      <VerticalStack gap={buttonGap}>
+      <Stack gap={buttonGap}>
         <ButtonStack>
           <Button content="Default button" />
           <Button disabled content="Disabled default button" />
@@ -51,26 +55,26 @@ const ButtonSet = () => (
         </ButtonStack>
         <ButtonStack>
           <Button icon="Share" menu={buttonMenu}>
-            <VerticalStack padding="8px 0" as="span" gap={4} horizontalAlign="left">
+            <Stack padding="8px 0" as="span" gap={4} horizontalAlignment="start">
               <Text>I am a compound multiline button.</Text>
               <Text variant="caption">I can have a caption.</Text>
-            </VerticalStack>
+            </Stack>
           </Button>
           <Button disabled content="Menu disabled button" />
           <Button expanded content="Menu expanded button" />
         </ButtonStack>
         <CommandBar items={[{ key: '0', text: 'Button 1', iconProps: { iconName: 'Upload' } }]} />
-      </VerticalStack>
+      </Stack>
     </div>
-  </VerticalStack>
+  </Stack>
 );
 
 export class ButtonExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
-      <VerticalStack gap={sectionGap}>
+      <Stack gap={sectionGap}>
         <ButtonSet />
-      </VerticalStack>
+      </Stack>
     );
   }
 }
