@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 07 Dec 2018 13:35:16 GMT and should not be manually modified.
+This log was last generated on Mon, 10 Dec 2018 13:35:53 GMT and should not be manually modified.
+
+## 6.111.2
+Mon, 10 Dec 2018 13:35:53 GMT
+
+### Patches
+
+- Dropdown: remove aria-labelledby from items wrapper div if no label property is provided
+- Dropdown: `defaultSelectedKey`/`defaultSelectedKeys` is no longer ignored if the Dropdown options changes.
+- Rating: respect the icon property
 
 ## 6.111.1
 Fri, 07 Dec 2018 13:35:16 GMT
