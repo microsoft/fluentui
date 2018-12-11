@@ -1,11 +1,11 @@
 import { Promise } from 'es6-promise';
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
 
 import { resetIds, setWarningCallback, IRefObject } from '../../Utilities';
+import { delay, mountAttached } from '../../common/testUtilities';
 
 import { TextField } from './TextField';
 import { TextFieldBase, ITextFieldState } from './TextField.base';
@@ -24,7 +24,7 @@ describe('TextField', () => {
     textField = ref!;
   };
   /** Wrapper of the TextField currently being tested */
-  let wrapper: ReactWrapper<ITextFieldProps, ITextFieldState, TextFieldBase>;
+  let wrapper: ReactWrapper<ITextFieldProps, ITextFieldState, TextFieldBase> | undefined;
   const noOp = () => undefined;
 
   beforeEach(() => {
@@ -33,33 +33,15 @@ describe('TextField', () => {
 
   afterEach(() => {
     jest.useRealTimers();
+    if (wrapper) {
+      wrapper.unmount();
+      wrapper = undefined;
+    }
   });
-
-  function renderIntoDocument(element: React.ReactElement<any>): HTMLElement {
-    const component = ReactTestUtils.renderIntoDocument(element);
-    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-    return renderedDOM as HTMLElement;
-  }
-
-  /**
-   * Mounts the element attached to a child of document.body. This is primarily for tests involving
-   * event handlers (which don't work right unless the element is attached).
-   */
-  function mountAttached<C extends React.Component, P = C['props'], S = C['state']>(element: React.ReactElement<any>) {
-    const parent = document.createElement('div');
-    document.body.appendChild(parent);
-    return mount<C, P, S>(element, { attachTo: parent });
-  }
 
   function mockEvent(targetValue: string = ''): ReactTestUtils.SyntheticEventData {
     const target: EventTarget = { value: targetValue } as HTMLInputElement;
-    const event: ReactTestUtils.SyntheticEventData = { target };
-
-    return event;
-  }
-
-  function delay(millisecond: number): Promise<void> {
-    return new Promise<void>(resolve => setTimeout(resolve, millisecond));
+    return { target };
   }
 
   describe('snapshots', () => {
@@ -257,7 +239,7 @@ describe('TextField', () => {
         return <strong>A custom description</strong>;
       });
 
-      renderIntoDocument(<TextField onRenderDescription={onRenderDescription} />);
+      ReactTestUtils.renderIntoDocument(<TextField onRenderDescription={onRenderDescription} />);
 
       expect(onRenderDescription).toHaveBeenCalledTimes(1);
     });
@@ -289,7 +271,7 @@ describe('TextField', () => {
       ReactTestUtils.Simulate.change(inputDOM!, mockEvent('the input value'));
 
       // Validation is delayed, so we must wait to check the error message
-      return delay(20).then(() => assertErrorMessage(wrapper.getDOMNode(), errorMessage));
+      return delay(20).then(() => assertErrorMessage(wrapper!.getDOMNode(), errorMessage));
     });
 
     it('should render error message when onGetErrorMessage returns a Promise<string>', () => {
@@ -305,13 +287,13 @@ describe('TextField', () => {
       ReactTestUtils.Simulate.change(inputDOM as Element, mockEvent('the input value'));
 
       // Validation is delayed, so we must wait to check the error message
-      return delay(20).then(() => assertErrorMessage(wrapper.getDOMNode(), errorMessage));
+      return delay(20).then(() => assertErrorMessage(wrapper!.getDOMNode(), errorMessage));
     });
 
     it('should render error message on first render when onGetErrorMessage returns a string', () => {
       wrapper = mount(<TextField label="text-field-label" defaultValue="whatever value" onGetErrorMessage={() => errorMessage} />);
 
-      return delay(20).then(() => assertErrorMessage(wrapper.getDOMNode(), errorMessage));
+      return delay(20).then(() => assertErrorMessage(wrapper!.getDOMNode(), errorMessage));
     });
 
     it('should render error message on first render when onGetErrorMessage returns a Promise<string>', () => {
@@ -320,13 +302,13 @@ describe('TextField', () => {
       );
 
       // The Promise based validation need to assert with async pattern.
-      return delay(20).then(() => assertErrorMessage(wrapper.getDOMNode(), errorMessage));
+      return delay(20).then(() => assertErrorMessage(wrapper!.getDOMNode(), errorMessage));
     });
 
     it('should not render error message when onGetErrorMessage return an empty string', () => {
       wrapper = mount(<TextField label="text-field-label" defaultValue="whatever value" onGetErrorMessage={() => ''} />);
 
-      delay(20).then(() => assertErrorMessage(wrapper.getDOMNode(), /* exist */ false));
+      delay(20).then(() => assertErrorMessage(wrapper!.getDOMNode(), /* exist */ false));
     });
 
     it('should not render error message when no value is provided', () => {
@@ -334,7 +316,7 @@ describe('TextField', () => {
 
       wrapper = mount(<TextField label="text-field-label" onGetErrorMessage={(value: string) => (actualValue = value)} />);
 
-      delay(20).then(() => assertErrorMessage(wrapper.getDOMNode(), /* exist */ false));
+      delay(20).then(() => assertErrorMessage(wrapper!.getDOMNode(), /* exist */ false));
       expect(actualValue).toEqual('');
     });
 
@@ -493,7 +475,7 @@ describe('TextField', () => {
     it('should not trigger validation on component mount', () => {
       const validatorSpy = jest.fn();
 
-      renderIntoDocument(<TextField defaultValue="initial value" onGetErrorMessage={validatorSpy} validateOnLoad={false} />);
+      ReactTestUtils.renderIntoDocument(<TextField defaultValue="initial value" onGetErrorMessage={validatorSpy} validateOnLoad={false} />);
       expect(validatorSpy).toHaveBeenCalledTimes(0);
     });
   }); // end error message
@@ -506,7 +488,7 @@ describe('TextField', () => {
     function verifyWarningsAndValue(warningCount: number, value: string) {
       expect(warnFn).toHaveBeenCalledTimes(warningCount);
 
-      const inputDOM = wrapper.getDOMNode().querySelector('input');
+      const inputDOM = wrapper!.getDOMNode().querySelector('input');
       // check both the DOM and the state to ensure they match
       expect(textField.value).toEqual(value);
       expect(inputDOM!.value).toEqual(value);
@@ -682,7 +664,7 @@ describe('TextField', () => {
     function simulateAndVerifyChange(changeValue: string, calls: number, expectedValue?: string) {
       expectedValue = typeof expectedValue === 'string' ? expectedValue : changeValue;
 
-      const inputDOM = wrapper.getDOMNode().querySelector('input')!;
+      const inputDOM = wrapper!.getDOMNode().querySelector('input')!;
       ReactTestUtils.Simulate.change(inputDOM, mockEvent(changeValue));
 
       expect(onChange).toHaveBeenCalledTimes(calls);
@@ -768,7 +750,7 @@ describe('TextField', () => {
       expect(selectedText).toEqual(initialValue);
     };
 
-    renderIntoDocument(<TextField componentRef={textFieldRef} defaultValue={initialValue} onSelect={onSelect} />);
+    ReactTestUtils.renderIntoDocument(<TextField componentRef={textFieldRef} defaultValue={initialValue} onSelect={onSelect} />);
 
     textField.setSelectionRange(0, initialValue.length);
   });
@@ -794,8 +776,8 @@ describe('TextField', () => {
   });
 
   it('can switch from single to multi line and back', () => {
-    const getInput = () => wrapper.getDOMNode().querySelector('input');
-    const getTextarea = () => wrapper.getDOMNode().querySelector('textarea');
+    const getInput = () => wrapper!.getDOMNode().querySelector('input');
+    const getTextarea = () => wrapper!.getDOMNode().querySelector('textarea');
 
     // start as single line
     wrapper = mount(<TextField />);
