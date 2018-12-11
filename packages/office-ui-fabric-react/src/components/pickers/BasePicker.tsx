@@ -196,10 +196,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     // TODO
     // Clean this up by leaving only the first part after removing support for SASS.
     // Currently we can not remove the SASS styles from BasePicker class because it
-    // might be used by consumers who created custom pickers from extending from this base class.
+    // might be used by consumers who created custom pickers from extending from
+    // this base class and have not used the new 'styles' prop.
     // We check for 'styles' prop which is going to be injected by the 'styled' HOC
-    // for every other already existing picker variant (PeoplePicker, TagPicker).
-    // If not provided, then we just use the old SASS styles instead.
+    // for every other already existing picker variant (PeoplePicker, TagPicker)
+    // so that we can use the CSS-in-JS styles. If the check fails (ex: custom picker),
+    // then we just use the old SASS styles instead.
     const classNames: Partial<IProcessedStyleSet<IBasePickerStyles>> = styles
       ? getClassNames(styles, {
           theme,
@@ -845,10 +847,12 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
     // TODO
     // Clean this up by leaving only the first part after removing support for SASS.
     // Currently we can not remove the SASS styles from BasePicker class because it
-    // might be used by consumers who created custom pickers from extending from this base class.
+    // might be used by consumers who created custom pickers from extending from
+    // this base class and have not used the new 'styles' prop.
     // We check for 'styles' prop which is going to be injected by the 'styled' HOC
-    // for every other already existing picker variant (PeoplePicker, TagPicker).
-    // If not provided, then we just use the old SASS styles instead.
+    // for every other already existing picker variant (PeoplePicker, TagPicker)
+    // so that we can use the CSS-in-JS styles. If the check fails (ex: custom picker),
+    // then we just use the old SASS styles instead.
     const classNames: Partial<IProcessedStyleSet<IBasePickerStyles>> = styles
       ? getClassNames(styles, {
           theme,
