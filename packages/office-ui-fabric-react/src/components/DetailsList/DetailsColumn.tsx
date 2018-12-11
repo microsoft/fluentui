@@ -22,7 +22,9 @@ export interface IDetailsColumnProps extends React.Props<DetailsColumn> {
   onColumnContextMenu?: (column: IColumn, ev: React.MouseEvent<HTMLElement>) => void;
   dragDropHelper?: IDragDropHelper | null;
   isDraggable?: boolean;
+  // @deprecated, use updateDragInfo
   setDraggedItemIndex?: (itemIndex: number) => void;
+  updateDragInfo?: (props: { itemIndex: number }, event?: MouseEvent) => void;
   isDropped?: boolean;
 }
 
@@ -37,6 +39,7 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
     this._onDragStart = this._onDragStart.bind(this);
     this._onDragEnd = this._onDragEnd.bind(this);
     this._onRootMouseDown = this._onRootMouseDown.bind(this);
+    this._updateHeaderDragInfo = this._updateHeaderDragInfo.bind(this);
   }
 
   public render() {
@@ -235,16 +238,25 @@ export class DetailsColumn extends BaseComponent<IDetailsColumnProps> {
   }
 
   private _onDragStart(item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent): void {
-    if (itemIndex && this.props.setDraggedItemIndex) {
-      this.props.setDraggedItemIndex(itemIndex);
+    if (itemIndex) {
+      this._updateHeaderDragInfo(itemIndex);
       this._root.current.classList.add(styles.borderWhileDragging);
     }
   }
 
   private _onDragEnd(item?: any, event?: MouseEvent): void {
+    if (event) {
+      this._updateHeaderDragInfo(-1, event);
+    }
+    this._root.current.classList.remove(styles.borderWhileDragging);
+  }
+
+  private _updateHeaderDragInfo(itemIndex: number, event?: MouseEvent) {
     if (this.props.setDraggedItemIndex) {
-      this.props.setDraggedItemIndex(-1);
-      this._root.current.classList.remove(styles.borderWhileDragging);
+      this.props.setDraggedItemIndex(itemIndex);
+    }
+    if (this.props.updateDragInfo) {
+      this.props.updateDragInfo({ itemIndex }, event);
     }
   }
 

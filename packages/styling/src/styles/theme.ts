@@ -2,6 +2,7 @@ import { Customizations } from '@uifabric/utilities/lib/Customizations';
 import {
   IPalette,
   ISemanticColors,
+  ISemanticTextColors,
   ITheme,
   IPartialTheme
 } from '../interfaces/index';
@@ -149,7 +150,7 @@ function _makeSemanticColorsFromPalette(
 ): ISemanticColors {
   let toReturn: ISemanticColors = {
     bodyBackground: p.white,
-    bodyStandoutBackground: p.white,
+    bodyStandoutBackground: p.neutralLighterAlt,
     bodyFrameBackground: p.white,
     bodyFrameDivider: p.neutralLight,
     bodyText: p.neutralPrimary,
@@ -159,45 +160,40 @@ function _makeSemanticColorsFromPalette(
 
     disabledBackground: p.neutralLighter,
     disabledText: p.neutralTertiary,
-    disabledBodyText: p.neutralTertiaryAlt,
+    disabledBodyText: p.neutralTertiary,
     disabledSubtext: p.neutralQuaternary,
+    disabledBodySubtext: p.neutralTertiaryAlt,
 
-    focusBorder: p.black,
+    focusBorder: p.neutralSecondary,
     variantBorder: p.neutralLight,
     variantBorderHovered: p.neutralTertiary,
-    defaultStateBackground: p.neutralLight,
+    defaultStateBackground: p.neutralLighterAlt,
 
     errorText: !isInverted ? p.redDark : '#ff5f5f',
     warningText: !isInverted ? '#333333' : '#ffffff',
-    errorBackground: !isInverted
-      ? 'rgba(232, 17, 35, .2)'
-      : 'rgba(232, 17, 35, .5)',
-    blockingBackground: !isInverted
-      ? 'rgba(234, 67, 0, .2)'
-      : 'rgba(234, 67, 0, .5)',
-    warningBackground: !isInverted
-      ? 'rgba(255, 185, 0, .2)'
-      : 'rgba(255, 251, 0, .6)',
+    errorBackground: !isInverted ? 'rgba(232, 17, 35, .2)' : 'rgba(232, 17, 35, .5)',
+    blockingBackground: !isInverted ? 'rgba(234, 67, 0, .2)' : 'rgba(234, 67, 0, .5)',
+    warningBackground: !isInverted ? 'rgba(255, 185, 0, .2)' : 'rgba(255, 251, 0, .6)',
     warningHighlight: !isInverted ? '#ffb900' : '#fff100',
-    successBackground: !isInverted
-      ? 'rgba(186, 216, 10, .2)'
-      : 'rgba(186, 216, 10, .4)',
+    successBackground: !isInverted ? 'rgba(186, 216, 10, .2)' : 'rgba(186, 216, 10, .4)',
 
     inputBorder: p.neutralTertiary,
-    inputBorderHovered: p.neutralDark,
+    inputBorderHovered: p.neutralPrimary,
     inputBackground: p.white,
     inputBackgroundChecked: p.themePrimary,
     inputBackgroundCheckedHovered: p.themeDarkAlt,
     inputForegroundChecked: p.white,
     inputFocusBorderAlt: p.themePrimary,
     smallInputBorder: p.neutralSecondary,
+    inputText: p.neutralPrimary,
+    inputTextHovered: p.neutralDark,
     inputPlaceholderText: p.neutralSecondary,
 
     buttonBackground: p.neutralLighter,
     buttonBackgroundChecked: p.neutralTertiaryAlt,
     buttonBackgroundHovered: p.neutralLight,
     buttonBackgroundCheckedHovered: p.neutralLight,
-    buttonBackgroundPressed: p.neutralTertiaryAlt,
+    buttonBackgroundPressed: p.neutralLight,
     buttonBackgroundDisabled: p.neutralLighter,
     buttonBorder: 'transparent',
     buttonText: p.neutralPrimary,
@@ -207,17 +203,28 @@ function _makeSemanticColorsFromPalette(
     buttonTextPressed: p.neutralDark,
     buttonTextDisabled: p.neutralTertiary,
     buttonBorderDisabled: 'transparent',
+
     primaryButtonBackground: p.themePrimary,
     primaryButtonBackgroundHovered: p.themeDarkAlt,
     primaryButtonBackgroundPressed: p.themeDark,
+    primaryButtonBackgroundDisabled: p.neutralLighter,
     primaryButtonBorder: 'transparent',
     primaryButtonText: p.white,
     primaryButtonTextHovered: p.white,
     primaryButtonTextPressed: p.white,
+    primaryButtonTextDisabled: p.neutralQuaternary,
 
-    menuItemBackgroundHovered: p.neutralLighter,
+    accentButtonBackground: p.accent,
+    accentButtonText: p.white,
+
+    menuBackground: p.white,
+    menuDivider: p.neutralTertiaryAlt,
     menuIcon: p.themePrimary,
     menuHeader: p.themePrimary,
+    menuItemBackgroundHovered: p.neutralLighter,
+    menuItemBackgroundPressed: p.neutralLight,
+    menuItemText: p.neutralPrimary,
+    menuItemTextHovered: p.neutralDark,
 
     listBackground: p.white,
     listText: p.neutralPrimary,

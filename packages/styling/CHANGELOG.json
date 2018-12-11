@@ -2,6 +2,62 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "5.37.0",
+      "tag": "@uifabric/styling_v5.37.0",
+      "date": "Wed, 28 Nov 2018 12:24:44 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "d6b3b71e79cf85b397f1ba1669ef0d34e6ef29da",
+            "comment": "semantic slot updates"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.36.1",
+      "tag": "@uifabric/styling_v5.36.1",
+      "date": "Fri, 09 Nov 2018 02:51:19 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "4ad66c25dd501b3bdec5c6bbf5f99ac2c19e09fe",
+            "comment": "Icon: warnings from duplicate registrations are now throttled into a single message."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.36.0",
+      "tag": "@uifabric/styling_v5.36.0",
+      "date": "Mon, 01 Oct 2018 11:24:38 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "788a1ce8f81bdc7711c9c22583f4e90d384a76db",
+            "comment": "semantic slot value updates per design direction"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.35.0",
+      "tag": "@uifabric/styling_v5.35.0",
+      "date": "Tue, 18 Sep 2018 11:25:16 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "560e620644aeb3a3cb876ce4aab44eac585b14d6",
+            "comment": "Adds new semantic slots per design direction"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.34.0",
       "tag": "@uifabric/styling_v5.34.0",
       "date": "Fri, 07 Sep 2018 01:32:10 GMT",

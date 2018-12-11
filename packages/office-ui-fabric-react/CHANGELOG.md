@@ -1,6 +1,135 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 07 Sep 2018 01:32:10 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Nov 2018 12:24:44 GMT and should not be manually modified.
+
+## 5.132.0
+Wed, 28 Nov 2018 12:24:44 GMT
+
+### Minor changes
+
+- semantic slot updates
+
+## 5.131.5
+Tue, 27 Nov 2018 12:25:26 GMT
+
+### Patches
+
+- SpinButton: addressing onValidate, onIncrement, and onDecrement callbacks to be called correctly.
+
+## 5.131.4
+Thu, 22 Nov 2018 12:22:50 GMT
+
+### Patches
+
+- DocumentCardTitle: Fixes an infinite loop condition caused by componentDidUpdate calling _srinkTitle() over and over again due to setState being triggered every time without a stop condition.  Cherry-pick from  https://github.com/OfficeDev/office-ui-fabric-react/pull/6518/files
+
+## 5.131.3
+Tue, 20 Nov 2018 12:28:25 GMT
+
+### Patches
+
+- ComboBox: Update ComboBox to allow for empty string to be submitted
+- ComboBox: update isOptionSelected logic to take into acount updated values for currentPendingValue
+
+## 5.131.2
+Fri, 09 Nov 2018 12:26:42 GMT
+
+### Patches
+
+- PersonaCoin: image load state is now reset when the image url is changed.
+
+## 5.131.1
+Mon, 29 Oct 2018 11:24:40 GMT
+
+### Patches
+
+- Backporting changes from 6.0
+- Fixing the column index bug fix
+
+## 5.131.0
+Wed, 24 Oct 2018 11:28:06 GMT
+
+### Minor changes
+
+- Pickers: A variety of accessibility and bug fixes, ported from 6.0
+
+## 5.130.0
+Mon, 22 Oct 2018 11:23:55 GMT
+
+### Minor changes
+
+- adding groups prop to pass parent group's children info
+
+### Patches
+
+- Coachmark: Fix tabbing when Coachmark is mounted (backport from PR 6240)
+
+## 5.129.0
+Fri, 19 Oct 2018 11:27:30 GMT
+
+### Minor changes
+
+- Add onPagesUpdated optional prop to List component
+
+### Patches
+
+- FocusTrapZone: Add/remove focus and click handlers when props change
+- adding commandBarButtonAs to the correct interface
+- Spinner: No longer appears to vibrate in place in Edge (Oct 2018 Update)
+
+## 5.128.2
+Wed, 17 Oct 2018 11:23:42 GMT
+
+### Patches
+
+- Fix Persona regression in Fabric V5: this.props.children was accidentally deleted from Persona in V5, put it back.
+
+## 5.128.1
+Mon, 08 Oct 2018 11:23:10 GMT
+
+### Patches
+
+- Backporting changes from 6.0
+
+## 5.128.0
+Wed, 03 Oct 2018 11:23:42 GMT
+
+### Minor changes
+
+- Bring support for commandBarButtonAs to v5
+
+## 5.127.0
+Mon, 01 Oct 2018 11:24:38 GMT
+
+### Minor changes
+
+- semantic slot value updates per design direction
+
+### Patches
+
+- IconButton: add semantic slot color to icon in IconButton so that it can be themed.
+- DetailsRow: remove the use of neutralSecondaryAlt deprecated color slot.
+
+## 5.126.0
+Fri, 21 Sep 2018 11:24:29 GMT
+
+### Minor changes
+
+- onRenderDivider prop added to DetailsList, onRender*Text types of callbacks in Persona can be used to override default behaviour
+
+## 5.125.0
+Tue, 18 Sep 2018 11:25:16 GMT
+
+### Minor changes
+
+- Adds new semantic slots per design direction
+
+## 5.124.0
+Tue, 11 Sep 2018 11:25:00 GMT
+
+### Minor changes
+
+- adding viewport to IDetailsFooterProps
 
 ## 5.123.0
 Fri, 07 Sep 2018 01:32:10 GMT

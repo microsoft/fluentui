@@ -1,6 +1,34 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Fri, 07 Sep 2018 01:32:10 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Nov 2018 12:24:44 GMT and should not be manually modified.
+
+## 5.37.0
+Wed, 28 Nov 2018 12:24:44 GMT
+
+### Minor changes
+
+- semantic slot updates
+
+## 5.36.1
+Fri, 09 Nov 2018 02:51:19 GMT
+
+### Patches
+
+- Icon: warnings from duplicate registrations are now throttled into a single message.
+
+## 5.36.0
+Mon, 01 Oct 2018 11:24:38 GMT
+
+### Minor changes
+
+- semantic slot value updates per design direction
+
+## 5.35.0
+Tue, 18 Sep 2018 11:25:16 GMT
+
+### Minor changes
+
+- Adds new semantic slots per design direction
 
 ## 5.34.0
 Fri, 07 Sep 2018 01:32:10 GMT

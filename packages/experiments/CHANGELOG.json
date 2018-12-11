@@ -2,6 +2,58 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.45.2",
+      "tag": "@uifabric/experiments_v5.45.2",
+      "date": "Mon, 19 Nov 2018 12:25:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Yumiko Huang <dayumikoda@gmail.com>",
+            "commit": "7a9e7566fafc7f42a9a658eaabef0576ec9824e3",
+            "comment": "added bookmark signal icons"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.45.1",
+      "tag": "@uifabric/experiments_v5.45.1",
+      "date": "Fri, 19 Oct 2018 11:27:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Nick Durak <nickdurak@gmail.com>",
+            "commit": "1fbe29167f81331ddbe7678d783341c5090f8595",
+            "comment": "Move commandBarButtonAs property to the correct ICommandBarItemProps interface"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.128.2 <6.0.0` to `>=5.129.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.45.0",
+      "tag": "@uifabric/experiments_v5.45.0",
+      "date": "Wed, 03 Oct 2018 11:23:42 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Nick Durak <nickdurak@gmail.com>",
+            "commit": "038724b414db80b123703a79304d12389e8f8599",
+            "comment": "Add support for commandBarButtonAs"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.127.0 <6.0.0` to `>=5.128.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.44.2",
       "tag": "@uifabric/experiments_v5.44.2",
       "date": "Wed, 11 Jul 2018 13:26:02 GMT",

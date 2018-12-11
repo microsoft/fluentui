@@ -10,29 +10,92 @@ import {
   IDetailsList,
   IColumn
 } from './DetailsList.types';
+import { IDetailsColumnProps } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn';
 
-// Populate mock items for testing
-function mockItems(count: number): any {
-  const items = [];
-
+// Populate mock data for testing
+function mockData(count: number, isColumn: boolean = false, customDivider: boolean = false): any {
+  const data = [];
+  let _data = {};
   for (let i = 0; i < count; i++) {
-    items.push({
+    _data = {
       key: i,
       name: 'Item ' + i,
       value: i
-    });
+    };
+    if (isColumn) {
+      _data = {
+        ..._data,
+        key: `column_key_${i}`,
+        ariaLabel: `column_${i}`,
+        onRenderDivider: customDivider ? customColumnDivider : columnDividerWrapper
+      };
+    }
+    data.push(_data);
   }
+  return data;
+}
 
-  return items;
+// Wrapper function which calls the defaultRenderer with the corresponding params
+function columnDividerWrapper(
+  iDetailsColumnProps: IDetailsColumnProps,
+  defaultRenderer: (props?: IDetailsColumnProps) => JSX.Element | null
+): any {
+  return defaultRenderer(iDetailsColumnProps);
+}
+// Using a bar sign as a custom divider along with the default divider
+function customColumnDivider(
+  iDetailsColumnProps: IDetailsColumnProps,
+  defaultRenderer: (props?: IDetailsColumnProps) => JSX.Element | null
+): any {
+  return (
+    <React.Fragment key={ `divider_${iDetailsColumnProps.columnIndex}` }>
+      <span>|</span>
+      { defaultRenderer(iDetailsColumnProps) }
+    </React.Fragment>
+  );
 }
 
 describe('DetailsList', () => {
+  it('renders List correctly with onRenderDivider props', () => {
+    DetailsList.prototype.componentDidMount = jest.fn();
+    const component = renderer.create(
+      <DetailsList
+        items={ mockData(5) }
+        columns={ mockData(5, true) }
+        // tslint:disable-next-line:jsx-no-lambda
+        onRenderRow={ () => null }
+        skipViewportMeasures={ true }
+        // tslint:disable-next-line:jsx-no-lambda
+        onShouldVirtualize={ () => false }
+      />
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders List with custom icon as column divider', () => {
+    DetailsList.prototype.componentDidMount = jest.fn();
+    const component = renderer.create(
+      <DetailsList
+        items={ mockData(5) }
+        columns={ mockData(5, true, true) }
+        // tslint:disable-next-line:jsx-no-lambda
+        onRenderRow={ () => null }
+        skipViewportMeasures={ true }
+        // tslint:disable-next-line:jsx-no-lambda
+        onShouldVirtualize={ () => false }
+      />
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('renders List correctly', () => {
     DetailsList.prototype.componentDidMount = jest.fn();
 
     const component = renderer.create(
       <DetailsList
-        items={ mockItems(5) }
+        items={ mockData(5) }
         // tslint:disable-next-line:jsx-no-lambda
         onRenderRow={ () => null }
         skipViewportMeasures={ true }
@@ -50,7 +113,7 @@ describe('DetailsList', () => {
     let component: any;
     mount(
       <DetailsList
-        items={ mockItems(5) }
+        items={ mockData(5) }
         // tslint:disable-next-line:jsx-no-lambda
         componentRef={ ref => component = ref }
         skipViewportMeasures={ true }
@@ -87,7 +150,7 @@ describe('DetailsList', () => {
     let component: any;
     mount(
       <DetailsList
-        items={ mockItems(5) }
+        items={ mockData(5) }
         // tslint:disable-next-line:jsx-no-lambda
         componentRef={ ref => component = ref }
         skipViewportMeasures={ true }
@@ -129,7 +192,7 @@ describe('DetailsList', () => {
     let component: any;
     const detailsList = mount(
       <DetailsList
-        items={ mockItems(5) }
+        items={ mockData(5) }
         setKey={ 'key1' }
         initialFocusedIndex={ 0 }
         // tslint:disable-next-line:jsx-no-lambda
@@ -147,7 +210,7 @@ describe('DetailsList', () => {
     jest.runOnlyPendingTimers();
 
     // update props to new setKey
-    const newProps = { items: mockItems(7), setKey: 'set2', initialFocusedIndex: 0 };
+    const newProps = { items: mockData(7), setKey: 'set2', initialFocusedIndex: 0 };
     detailsList.setProps(newProps);
     detailsList.update();
 

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { IContextualMenuItem, IContextualMenuProps } from '../ContextualMenu/index';
+import { IComponentAs } from '@uifabric/utilities/lib/IComponentAs';
 
 export interface ICommandBar {
   /**
@@ -56,6 +57,13 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
    * @defaultvalue undefined
    */
   className?: string;
+
+  /**
+   * Method to override the render of all command bar buttons. Note, is not used when rendered in overflow
+   * @default CommandBarButton
+   * @deprecated
+   */
+  commandBarButtonAs?: IComponentAs<ICommandBarItemProps>;
 }
 
 export interface ICommandBarItemProps extends IContextualMenuItem {
@@ -64,4 +72,10 @@ export interface ICommandBarItemProps extends IContextualMenuItem {
    * @defaultvalue false
    */
   iconOnly?: boolean;
+
+  /**
+   * Method to override the render of the individual command bar button. Note, is not used when rendered in overflow
+   * @default CommandBarButton
+   */
+  commandBarButtonAs?: IComponentAs<ICommandBarItemProps>;
 }

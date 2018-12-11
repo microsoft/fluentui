@@ -17,8 +17,10 @@ export class SuggestionsController<T> {
   public updateSuggestions(newSuggestions: T[], selectedIndex?: number): void {
     if (newSuggestions && newSuggestions.length > 0) {
       this.suggestions = this.convertSuggestionsToSuggestionItems(newSuggestions);
-      this.currentIndex = 0;
-      if (selectedIndex !== undefined) {
+      this.currentIndex = selectedIndex ? selectedIndex : 0;
+      if (selectedIndex! === -1) {
+        this.currentSuggestion = undefined;
+      } else if (selectedIndex !== undefined) {
         this.suggestions[selectedIndex].selected = true;
         this.currentSuggestion = this.suggestions[selectedIndex];
       }

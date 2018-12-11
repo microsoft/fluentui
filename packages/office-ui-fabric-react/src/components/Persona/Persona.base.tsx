@@ -39,12 +39,18 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
   }
 
   public render(): JSX.Element {
+    // wrapping default render behavior based on various this.props properties
+    const _onRenderPrimaryText = this._onRenderText(this._getText()),
+      _onRenderSecondaryText = this._onRenderText(this.props.secondaryText),
+      _onRenderTertiaryText = this._onRenderText(this.props.tertiaryText),
+      _onRenderOptionalText = this._onRenderText(this.props.optionalText);
+
     const {
       hidePersonaDetails,
-      onRenderOptionalText,
-      onRenderPrimaryText,
-      onRenderSecondaryText,
-      onRenderTertiaryText,
+      onRenderOptionalText = _onRenderOptionalText,
+      onRenderPrimaryText = _onRenderPrimaryText,
+      onRenderSecondaryText = _onRenderSecondaryText,
+      onRenderTertiaryText = _onRenderTertiaryText,
     } = this.props;
     const size = this.props.size as PersonaSize;
 
@@ -100,22 +106,10 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
     const divProps = getNativeProps(this.props, divProperties);
     const personaDetails = (
       <div className={ classNames.details }>
-        { this._renderElement(
-          this._getText(),
-          classNames.primaryText,
-          onRenderPrimaryText) }
-        { this._renderElement(
-          this.props.secondaryText,
-          classNames.secondaryText,
-          onRenderSecondaryText) }
-        { this._renderElement(
-          this.props.tertiaryText,
-          classNames.tertiaryText,
-          onRenderTertiaryText) }
-        { this._renderElement(
-          this.props.optionalText,
-          classNames.optionalText,
-          onRenderOptionalText) }
+        { this._renderElement(classNames.primaryText, onRenderPrimaryText, _onRenderPrimaryText) }
+        { this._renderElement(classNames.secondaryText, onRenderSecondaryText, _onRenderSecondaryText) }
+        { this._renderElement(classNames.tertiaryText, onRenderTertiaryText, _onRenderTertiaryText) }
+        { this._renderElement(classNames.optionalText, onRenderOptionalText, _onRenderOptionalText) }
         { this.props.children }
       </div>
     );
@@ -139,20 +133,41 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
     return this.props.text || this.props.primaryText || '';
   }
 
-  private _renderElement = (text: string | undefined, className: string, render?: IRenderFunction<IPersonaProps>): JSX.Element => {
-    return (
-      <div className={ className }>
-        { render
-          ? render(this.props)
-          : text && (<TooltipHost
+  /**
+   * Renders various types of Text (primaryText, secondaryText, etc)
+   * based on the classNames passed
+   * @param classNames
+   * @param renderFunction
+   * @param defaultRenderFunction
+   */
+  private _renderElement(
+    classNames: string,
+    renderFunction: IRenderFunction<IPersonaProps> | undefined,
+    defaultRenderFunction: IRenderFunction<IPersonaProps> | undefined
+  ): JSX.Element {
+    return <div className={ classNames }>{ renderFunction && renderFunction(this.props, defaultRenderFunction) }</div>;
+  }
+
+  /**
+   * using closure to wrap the default render behavior
+   * to make it independent of the type of text passed
+   * @param text
+   */
+  private _onRenderText(text: string | undefined): IRenderFunction<IPersonaProps> | undefined {
+    // return default render behaviour for valid text or undefined
+    return text
+      ? (): JSX.Element => {
+        // default onRender behaviour
+        return (
+          <TooltipHost
             content={ text }
             overflowMode={ TooltipOverflowMode.Parent }
             directionalHint={ DirectionalHint.topLeftEdge }
           >
             { text }
-          </TooltipHost>)
-        }
-      </div>
-    );
+          </TooltipHost>
+        );
+      }
+      : undefined;
   }
 }
