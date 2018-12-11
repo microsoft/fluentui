@@ -1,6 +1,13 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Tue, 04 Dec 2018 13:36:40 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Dec 2018 13:36:20 GMT and should not be manually modified.
+
+## 0.38.0
+Tue, 11 Dec 2018 13:36:20 GMT
+
+### Minor changes
+
+- Support to horizontal compact dashboard cards
 
 ## 0.37.1
 Tue, 04 Dec 2018 13:36:40 GMT

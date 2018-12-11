@@ -1,6 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 07 Dec 2018 13:35:16 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Dec 2018 13:36:20 GMT and should not be manually modified.
+
+## 6.47.0
+Tue, 11 Dec 2018 13:36:20 GMT
+
+### Minor changes
+
+- Using single Stack component with 'horizontal' prop instead of separate HorizontalStack and VerticalStack components.
+
+### Patches
+
+- Add new Slots feature. Convert Button to use. Add Slots page with examples.
 
 ## 6.46.0
 Fri, 07 Dec 2018 13:35:16 GMT
