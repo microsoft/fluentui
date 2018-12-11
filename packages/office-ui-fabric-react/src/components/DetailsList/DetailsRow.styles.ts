@@ -3,7 +3,7 @@ import { AnimationClassNames, FontSizes, HighContrastSelector, IStyle, getFocusS
 
 const GlobalClassNames = {
   root: 'ms-DetailsRow',
-  compact: 'ms-DetailsList--Compact',
+  compact: 'ms-DetailsList--Compact', // TODO: in Fabric 7.0 lowercase the 'Compact' for consistency across other components.
   cell: 'ms-DetailsRow-cell',
   cellCheck: 'ms-DetailsRow-cellCheck',
   cellMeasurer: 'ms-DetailsRow-cellMeasurer',

@@ -6,7 +6,7 @@ import { SPACER_WIDTH as EXPAND_BUTTON_WIDTH } from './GroupSpacer';
 
 const GlobalClassNames = {
   root: 'ms-GroupHeader',
-  compact: 'ms-GroupHeader--Compact',
+  compact: 'ms-GroupHeader--compact',
   check: 'ms-GroupHeader-check',
   dropIcon: 'ms-GroupHeader-dropIcon',
   expand: 'ms-GroupHeader-expand',
