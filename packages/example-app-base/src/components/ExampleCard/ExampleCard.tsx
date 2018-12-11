@@ -12,7 +12,7 @@ import {
   ISchemeNames,
   ITheme
 } from 'office-ui-fabric-react';
-import { IThemeProviders, IThemeProviderProps, themeProvider } from '@uifabric/foundation';
+import { IThemeProviderProps, ThemeProvider } from '@uifabric/foundation';
 import './ExampleCard.scss';
 import { ExampleCardComponent, IExampleCardComponent } from './ExampleCardComponent';
 import { Highlight } from '../Highlight/Highlight';
@@ -51,20 +51,6 @@ const _schemeOptions: IDropdownOption[] = _schemes.map((item: string, index: num
   key: index,
   text: 'Scheme: ' + item
 }));
-
-// TODO: once Foundation is promoted and in OUFR, ThemeProvider can be imported directly from OUFR
-//        and themeProviders/ThemeProvider can be removed here
-const themeProviders: IThemeProviders<ICustomizerContext, ITheme, ISchemeNames, ICustomizerProps> = {
-  getThemedContext,
-  CustomizerComponent: Customizer
-};
-
-export const ThemeProvider: React.StatelessComponent<IThemeProviderProps<ISchemeNames, ITheme>> = themeProvider<
-  ICustomizerContext,
-  ITheme,
-  ISchemeNames,
-  ICustomizerProps
->(themeProviders);
 
 // tslint:disable-next-line:typedef
 const regionStyles: IExampleCardComponent['styles'] = props => ({
