@@ -19,8 +19,8 @@ import { Beak, BEAK_HEIGHT, BEAK_WIDTH } from './Beak/Beak';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
 // Coachmark
-import { ICoachmark, ICoachmarkProps } from './Coachmark.types';
-import { COACHMARK_HEIGHT, COACHMARK_WIDTH, getStyles, ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.styles';
+import { ICoachmark, ICoachmarkProps, ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.types';
+import { COACHMARK_HEIGHT, COACHMARK_WIDTH, getStyles } from './Coachmark.styles';
 import { FocusTrapZone } from '../../FocusTrapZone';
 
 const getClassNames = classNamesFunction<ICoachmarkStyleProps, ICoachmarkStyles>();
@@ -110,7 +110,7 @@ export interface ICoachmarkState {
   alertText?: string;
 }
 
-export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> implements ICoachmark {
+export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkState> implements ICoachmark {
   public static defaultProps: Partial<ICoachmarkProps> = {
     isCollapsed: true,
     mouseProximityOffset: 10,
@@ -239,17 +239,9 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> i
           <div className={classNames.translateAnimationContainer} ref={this._translateAnimationContainer}>
             <div className={classNames.scaleAnimationLayer}>
               <div className={classNames.rotateAnimationLayer}>
-                {this._positioningContainer.current &&
-                  isCollapsed && (
-                    <Beak
-                      left={beakLeft}
-                      top={beakTop}
-                      right={beakRight}
-                      bottom={beakBottom}
-                      direction={this._beakDirection}
-                      color={color}
-                    />
-                  )}
+                {this._positioningContainer.current && isCollapsed && (
+                  <Beak left={beakLeft} top={beakTop} right={beakRight} bottom={beakBottom} direction={this._beakDirection} color={color} />
+                )}
                 <div
                   className={classNames.entityHost}
                   ref={this._entityHost}

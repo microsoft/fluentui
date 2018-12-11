@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Fri, 07 Dec 2018 13:35:16 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Dec 2018 13:36:20 GMT and should not be manually modified.
+
+## 0.11.1
+Tue, 11 Dec 2018 13:36:20 GMT
+
+### Patches
+
+- Removing Fabric component dependency. For scss-based components, added Fabric component wrappers in their stories but for non-scss based components, we'll have to see if we can accept them as new changes.
 
 ## 0.11.0
 Fri, 07 Dec 2018 13:35:16 GMT
