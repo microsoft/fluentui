@@ -72,7 +72,8 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
       columnReorderProps,
       columnResizeDetails: undefined,
       groupNestingDepth: this.props.groupNestingDepth,
-      isAllCollapsed: this.props.isAllCollapsed
+      isAllCollapsed: this.props.isAllCollapsed,
+      isAllSelected: !!this.props.selection && this.props.selection.isAllSelected()
     };
 
     this._onToggleCollapseAll = this._onToggleCollapseAll.bind(this);
@@ -657,6 +658,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     const { selection } = this.props;
 
     if (selection) {
+      console.log('here');
       selection.toggleAllSelected();
     }
   };
