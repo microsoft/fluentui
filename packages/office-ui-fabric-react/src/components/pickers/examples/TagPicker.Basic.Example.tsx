@@ -28,6 +28,7 @@ export interface ITagPickerDemoPageState {
 }
 
 export class TagPickerBasicExample extends BaseComponent<{}, ITagPickerDemoPageState> {
+  // All pickers extend from BasePicker specifying the item type.
   private _picker = React.createRef<IBasePicker<ITag>>();
 
   constructor(props: {}) {
