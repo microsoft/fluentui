@@ -39,7 +39,7 @@ export const ButtonView: IButtonComponent['view'] = props => {
         )}
       </Slots.stack>
       {expanded && Menu && <Slots.menu target={menuTarget} onDismiss={onMenuDismiss} items={[]} />}
-    </Slots.root>
+    </Slots.root >
   );
 };
 
