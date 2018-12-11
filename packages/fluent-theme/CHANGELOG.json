@@ -2,6 +2,25 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.11.1",
+      "tag": "@uifabric/fluent-theme_v0.11.1",
+      "date": "Tue, 11 Dec 2018 13:36:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Removing Fabric component dependency. For scss-based components, added Fabric component wrappers in their stories but for non-scss based components, we'll have to see if we can accept them as new changes.",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "31783e67b172c645d15e169b54c84e8bfed5d6ca"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.111.2 <7.0.0` to `>=6.112.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.11.0",
       "tag": "@uifabric/fluent-theme_v0.11.0",
       "date": "Fri, 07 Dec 2018 13:35:16 GMT",
