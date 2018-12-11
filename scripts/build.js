@@ -54,8 +54,8 @@ const disabledTasks = getDisabledTasks(process, getDefaultDisabledTasks());
 const firstTasks = getNextTasks(null, disabledTasks);
 
 // Start executing tasks, executeTasks will call itself recursively until all tasks are done
-executeTasks(firstTasks).
-  then(() => {
+executeTasks(firstTasks)
+  .then(() => {
     if (hasFailures) {
       process.exitCode = 1;
     }
