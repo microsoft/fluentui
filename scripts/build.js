@@ -54,12 +54,13 @@ const disabledTasks = getDisabledTasks(process, getDefaultDisabledTasks());
 const firstTasks = getNextTasks(null, disabledTasks);
 
 // Start executing tasks, executeTasks will call itself recursively until all tasks are done
-executeTasks(firstTasks).then(() => {
-  if (hasFailures) {
-    process.exitCode = 1;
-  }
-  logEndBuild(packageName, !hasFailures, buildStartTime);
-});
+executeTasks(firstTasks)
+  .then(() => {
+    if (hasFailures) {
+      process.exitCode = 1;
+    }
+    logEndBuild(packageName, !hasFailures, buildStartTime);
+  });
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //// Build helper functions
