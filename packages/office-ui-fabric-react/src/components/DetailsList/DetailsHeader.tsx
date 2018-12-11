@@ -607,8 +607,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         if (this._isValidCurrentDropHintIndex()) {
           this._resetDropHints();
         }
-      }
-      else if (currentDropHintIndex !== indexToUpdate && indexToUpdate >= 0) {
+      } else if (currentDropHintIndex !== indexToUpdate && indexToUpdate >= 0) {
         this._resetDropHints();
         this._updateDropHintElement(this._dropHintDetails[indexToUpdate].dropHintElementRef, 'inline-block');
         this._currentDropHintIndex = indexToUpdate;
