@@ -658,7 +658,6 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     const { selection } = this.props;
 
     if (selection) {
-      console.log('here');
       selection.toggleAllSelected();
     }
   };
