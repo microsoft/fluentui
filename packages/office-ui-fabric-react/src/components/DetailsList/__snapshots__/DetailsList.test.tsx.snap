@@ -142,6 +142,7 @@ exports[`DetailsList renders List correctly 1`] = `
 
             >
               <div
+                aria-checked={false}
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
@@ -723,6 +724,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
 
             >
               <div
+                aria-checked={false}
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
@@ -1892,6 +1894,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
 
             >
               <div
+                aria-checked={false}
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
@@ -2474,6 +2477,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
 
             >
               <div
+                aria-checked={false}
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
@@ -3431,6 +3435,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
 
             >
               <div
+                aria-checked={false}
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader

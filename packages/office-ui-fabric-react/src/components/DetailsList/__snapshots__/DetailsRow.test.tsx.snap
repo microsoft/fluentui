@@ -142,6 +142,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
 
             >
               <div
+                aria-checked={false}
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
@@ -951,6 +952,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
 
             >
               <div
+                aria-checked={false}
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
@@ -2294,6 +2296,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
 
             >
               <div
+                aria-checked={false}
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
@@ -3103,6 +3106,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
 
             >
               <div
+                aria-checked={false}
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
