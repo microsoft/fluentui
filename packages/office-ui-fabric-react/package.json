@@ -17,6 +17,7 @@
   },
   "license": "MIT",
   "scripts": {
+    "just:build": "just build --config ../../scripts/just-task.js",
     "build": "node ../../scripts/build.js",
     "clean": "node ../../scripts/clean.js",
     "code-style": "node ../../scripts/code-style.js",
