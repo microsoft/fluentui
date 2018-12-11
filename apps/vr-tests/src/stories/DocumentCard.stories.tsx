@@ -76,11 +76,10 @@ let previewPropsCompact = {
 
 let DocActivity = (
   <Fabric>
-    {' '}
     <DocumentCardActivity
       activity="Created a few minutes ago"
       people={[{ name: 'Annie Lindqvist', profileImageSrc: TestImages.personaFemale }]}
-    />{' '}
+    />
   </Fabric>
 );
 
@@ -96,12 +95,11 @@ storiesOf('DocumentCard', module)
           shouldTruncate={true}
         />
         {DocActivity}
-      </DocumentCard>{' '}
+      </DocumentCard>
     </Fabric>
   ))
   .addStory('Not truncated', () => (
     <Fabric>
-      {' '}
       <DocumentCard onClickHref="http://bing.com">
         <DocumentCardPreview {...previewProps} />
         <DocumentCardTitle
@@ -109,7 +107,7 @@ storiesOf('DocumentCard', module)
           shouldTruncate={false}
         />
         {DocActivity}
-      </DocumentCard>{' '}
+      </DocumentCard>
     </Fabric>
   ))
   .addStory('With secondary title style', () => (

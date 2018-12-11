@@ -36,7 +36,7 @@ storiesOf('Link', module)
     <div className=".ms-Fabric--isFocusVisible">
       <Link href="#" disabled styles={{ root: { fontSize: '14px' } }}>
         I'm a disabled link
-      </Link>{' '}
+      </Link>
     </div>
   ))
   .addStory('No Href', () => (
