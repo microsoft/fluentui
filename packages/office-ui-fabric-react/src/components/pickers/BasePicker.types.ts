@@ -270,9 +270,18 @@ export type IBasePickerStyleProps = Pick<IBasePickerProps<any>, 'theme' | 'class
  * Represents the stylable areas of the control.
  */
 export interface IBasePickerStyles {
+  /** Root element of any picker extending from BasePicker (wraps all the elements)*/
   root: IStyle;
+
+  /** Refers to the elements already selected(picked) wrapped by `itemsWrapper` along with the input to type new selection */
   text: IStyle;
+
+  /** Refers to the items already selected(picked). */
   itemsWrapper: IStyle;
+
+  /** Refers to the input were to type new selections(picks). */
   input: IStyle;
+
+  /** Refers to helper element used for accessibility tools (hidden from view on screen). */
   screenReaderText: IStyle;
 }
