@@ -1,29 +1,32 @@
 import { createTheme, ITheme } from 'office-ui-fabric-react';
-import { NeutralColors, CommunicationColors } from './IbizaColors';
+import { NeutralColors, DarkColors } from './IbizaColors';
 
 export const IbizaThemeDark: ITheme = createTheme({
   palette: {
-    black: NeutralColors.black,
-    neutralDark: NeutralColors.gray190,
-    neutralPrimary: NeutralColors.gray160,
-    neutralPrimaryAlt: NeutralColors.gray150,
-    neutralSecondary: NeutralColors.gray130,
-    neutralTertiary: NeutralColors.gray90,
-    neutralTertiaryAlt: NeutralColors.gray60,
-    neutralQuaternary: NeutralColors.gray50,
-    neutralQuaternaryAlt: NeutralColors.gray40,
-    neutralLight: NeutralColors.gray30,
-    neutralLighter: NeutralColors.gray20,
-    neutralLighterAlt: NeutralColors.gray10,
-    white: NeutralColors.white,
-    themeDarker: CommunicationColors.shade30,
-    themeDark: CommunicationColors.shade20,
-    themeDarkAlt: CommunicationColors.shade10,
-    themePrimary: CommunicationColors.primary,
-    themeSecondary: CommunicationColors.tint10,
-    themeLight: CommunicationColors.tint20,
-    themeLighter: CommunicationColors.tint30,
-    themeLighterAlt: CommunicationColors.tint40
+    themeDarker: DarkColors.themeTint30,
+    themeDark: DarkColors.themeTint20,
+    themeDarkAlt: DarkColors.themeTint10,
+    themePrimary: DarkColors.themePrimary,
+    themeSecondary: DarkColors.themeShade10,
+    themeTertiary: DarkColors.themeShade20,
+    themeLight: DarkColors.themeShade30,
+    themeLighter: DarkColors.themeShade40,
+    themeLighterAlt: DarkColors.themeShade50,
+
+    neutralDark: NeutralColors.gray20,
+    neutralPrimary: NeutralColors.white,
+    neutralPrimaryAlt: NeutralColors.gray40,
+    neutralSecondary: NeutralColors.gray50,
+    neutralTertiary: NeutralColors.gray60,
+    neutralTertiaryAlt: NeutralColors.gray70,
+    neutralQuaternary: NeutralColors.gray80,
+    neutralQuaternaryAlt: NeutralColors.gray90,
+    neutralLight: NeutralColors.gray100,
+    neutralLighter: NeutralColors.gray110,
+    neutralLighterAlt: NeutralColors.gray120,
+
+    black: NeutralColors.gray10,
+    white: NeutralColors.black
   }
 });
 
