@@ -6,6 +6,8 @@ import { DetailsList } from './DetailsList';
 
 import { IDetailsList, IColumn, DetailsListLayoutMode, CheckboxVisibility } from './DetailsList.types';
 import { IDetailsColumnProps } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn';
+import { IDetailsHeaderProps, DetailsHeader } from './DetailsHeader';
+import { IRenderFunction } from '../../Utilities';
 
 // Populate mock data for testing
 function mockData(count: number, isColumn: boolean = false, customDivider: boolean = false): any {
@@ -197,6 +199,24 @@ describe('DetailsList', () => {
     jest.runOnlyPendingTimers();
   });
 
+  it('invokes optional onRenderMissingItem prop once per missing item rendered', () => {
+    const onRenderMissingItem = jest.fn();
+    const items = [...mockData(5), null, null];
+
+    mount(<DetailsList items={items} skipViewportMeasures={true} onRenderMissingItem={onRenderMissingItem} />);
+
+    expect(onRenderMissingItem).toHaveBeenCalledTimes(2);
+  });
+
+  it('does not invoke optional onRenderMissingItem prop if no missing items are rendered', () => {
+    const onRenderMissingItem = jest.fn();
+    const items = mockData(5);
+
+    mount(<DetailsList items={items} skipViewportMeasures={true} onRenderMissingItem={onRenderMissingItem} />);
+
+    expect(onRenderMissingItem).toHaveBeenCalledTimes(0);
+  });
+
   it('focuses into row element', () => {
     const onRenderColumn = (item: any, index: number, column: IColumn) => {
       let value = item && column && column.fieldName ? item[column.fieldName] : '';
@@ -286,5 +306,66 @@ describe('DetailsList', () => {
       expect(document.activeElement.className.split(' ')).toContain('ms-DetailsRow');
     }, 0);
     jest.runOnlyPendingTimers();
+  });
+
+  it('invokes optional onColumnResize callback per IColumn if defined when columns are adjusted', () => {
+    const detailsList = mount(
+      <DetailsList
+        items={mockData(2)}
+        skipViewportMeasures={true}
+        // tslint:disable-next-line:jsx-no-lambda
+        onShouldVirtualize={() => false}
+      />
+    );
+
+    const columns: IColumn[] = mockData(2, true);
+    columns[0].onColumnResize = jest.fn();
+    columns[1].onColumnResize = jest.fn();
+
+    // componentWillReceiveProps not executed on initial render in test
+    // so we need to force one via setProps and update.
+    const newProps = { columns };
+
+    detailsList.setProps(newProps);
+    detailsList.update();
+
+    expect(columns[0].onColumnResize).toHaveBeenCalledTimes(1);
+    expect(columns[1].onColumnResize).toHaveBeenCalledTimes(1);
+  });
+
+  it('invokes optional onRenderDetailsHeader prop to customize DetailsHeader rendering when provided', () => {
+    const onRenderDetailsHeaderMock = jest.fn();
+
+    mount(
+      <DetailsList
+        items={mockData(2)}
+        skipViewportMeasures={true}
+        // tslint:disable-next-line:jsx-no-lambda
+        onShouldVirtualize={() => false}
+        onRenderDetailsHeader={onRenderDetailsHeaderMock}
+      />
+    );
+
+    expect(onRenderDetailsHeaderMock).toHaveBeenCalledTimes(1);
+  });
+
+  it('invokes optional onRenderColumnHeaderTooltip prop to customize DetailsColumn tooltip rendering when provided', () => {
+    const NUM_COLUMNS = 2;
+    const onRenderColumnHeaderTooltipMock = jest.fn();
+    const onRenderDetailsHeader = (props: IDetailsHeaderProps, defaultRenderer?: IRenderFunction<IDetailsHeaderProps>) => {
+      return <DetailsHeader {...props} onRenderColumnHeaderTooltip={onRenderColumnHeaderTooltipMock} />;
+    };
+
+    mount(
+      <DetailsList
+        items={mockData(NUM_COLUMNS)}
+        skipViewportMeasures={true}
+        // tslint:disable-next-line:jsx-no-lambda
+        onShouldVirtualize={() => false}
+        onRenderDetailsHeader={onRenderDetailsHeader}
+      />
+    );
+
+    expect(onRenderColumnHeaderTooltipMock).toHaveBeenCalledTimes(NUM_COLUMNS);
   });
 });

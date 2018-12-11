@@ -47,9 +47,10 @@ export type TypedBaseFloatingPicker = BaseFloatingPicker<ISimple, IBaseFloatingP
 
 describe('Pickers', () => {
   describe('BaseFloatingPicker', () => {
-    const BaseFloatingPickerWithType = BaseFloatingPicker as new (
-      props: IBaseFloatingPickerProps<ISimple>
-    ) => BaseFloatingPicker<ISimple, IBaseFloatingPickerProps<ISimple>>;
+    const BaseFloatingPickerWithType = BaseFloatingPicker as new (props: IBaseFloatingPickerProps<ISimple>) => BaseFloatingPicker<
+      ISimple,
+      IBaseFloatingPickerProps<ISimple>
+    >;
 
     it('renders BaseFloatingPicker correctly', () => {
       const component = renderer.create(

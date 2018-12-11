@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - '8'
+  - '10'
 script:
   - node common/scripts/install-run-rush.js install --bypass-policy
   - if [ $TRAVIS_BRANCH == "master" ] && [ $TRAVIS_PULL_REQUEST != "false" ];
@@ -10,5 +10,5 @@ script:
   - npm run bundlesize
   - npm run vrtest
   - npm run check-for-changed-files
-after_success:
-  - ./scripts/node_modules/.bin/codecov -e TRAVIS_NODE_VERSION
+# after_success:
+#  - ./scripts/node_modules/.bin/codecov -e TRAVIS_NODE_VERSION

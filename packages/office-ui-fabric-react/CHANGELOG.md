@@ -1,6 +1,404 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 22 Oct 2018 12:29:57 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Dec 2018 13:36:20 GMT and should not be manually modified.
+
+## 6.112.0
+Tue, 11 Dec 2018 13:36:20 GMT
+
+### Minor changes
+
+- Coachmark: Move style interfaces to Coachmark.types.ts file and add styled wrapper around to enable use of Customizer to theme the component.
+
+### Patches
+
+- DetailsList: changed drop hint display to none to not occupy any space
+- Dropdown: wrap items list in FocusZone to prevent auto-scrolling to first list item
+- Fix merge conflict resulting in build error.
+- Adds a just:build script to OUFR to begin integration with Just
+- Removing some of the deprecated components flagged when turning the tslint deprecation flag to true in the office-ui-fabric-react package.
+
+## 6.111.2
+Mon, 10 Dec 2018 13:35:53 GMT
+
+### Patches
+
+- Dropdown: remove aria-labelledby from items wrapper div if no label property is provided
+- Dropdown: `defaultSelectedKey`/`defaultSelectedKeys` is no longer ignored if the Dropdown options changes.
+- Rating: respect the icon property
+
+## 6.111.1
+Fri, 07 Dec 2018 13:35:16 GMT
+
+### Patches
+
+- Searchbox: Reverts the focus fix for IE since it broke focus for other browsers
+- Check: fixing alignment of the check inside the circle when in RTL.
+
+## 6.111.0
+Thu, 06 Dec 2018 13:34:21 GMT
+
+### Minor changes
+
+- The Dropdown component will now only include an aria-labelled-by attribute when there is no provided ariaLabel prop. This means that the component will honor provided ariaLabels and create markup such that screen readers will read the aria label and not the regular label.
+
+### Patches
+
+- DetailsList: Prevent override of column cell border while dragging
+- spellCheck defaults to false in BasePicker
+
+## 6.110.2
+Wed, 05 Dec 2018 13:35:35 GMT
+
+### Patches
+
+- TeachingBubble: add customizer scope to TeachingBubbleContent to allow using it individually.
+
+## 6.110.1
+Tue, 04 Dec 2018 13:36:40 GMT
+
+### Patches
+
+- Picker: The shift key is now required (in addition to the del key) in order to delete a suggestion.
+- DetailsList: Adding support for column drag-drop in RTL
+
+## 6.110.0
+Mon, 03 Dec 2018 13:37:07 GMT
+
+### Minor changes
+
+- Removing some deprecated components flagged when turning tslint deprecation flag to true in oufr package.
+
+### Patches
+
+- DetailsList: Re-adding border fade animation as transition on column reorder
+- TeachingBubble: Expand usage documentation to distinguish it from similar components.
+- Facepile: Fix overflow title not rendered in Firefox.
+
+## 6.109.0
+Fri, 30 Nov 2018 13:37:17 GMT
+
+### Minor changes
+
+- Extend theming to incorporate shadows and rounded corners
+
+### Patches
+
+- DevExp: packages will no longer include the api.json from api extractor to reduce package size
+- SwatchColorPicker: Fixing state method componentWillReceiveProps of SwatchColorPicker in order to resolve how it sets focus and color on its cells in its uncontrolled form.
+
+## 6.108.0
+Thu, 29 Nov 2018 19:34:12 GMT
+
+### Minor changes
+
+- HoverCard: A new callback called onCardExpand has been added that occurs after the expanded hover card is rendered
+- DatePicker: Added calendarAs to support custom calendars
+- DatePicker: Support custom callout props, and therefore layer props
+- TeachingBubble: Convert Callout styles to use subComponentStyles.
+- Tooltip: do not allow more than one tooltip at once
+- add SASS var for accent theme slot
+- semantic slot value updates
+- Spinner: adds new prop 'labelPosition' to allow customizing the render position of the label. Add new screener stories plus snapshot-test.
+
+### Patches
+
+- Ensures nav links are announced once
+- BasePicker: Will now respect `className` property of `inputProps`, if one was provided.
+- Dropdown: Add documentation (where there were none previously) about the responsiveMode prop.
+- Slider: Fixed IE 11 compatibility issue by changing `Number.parseFloat()` method call to `parseFloat()` method instead.
+- Correct hover and highlight states for Calendar (DateRangeType.Week)
+- Sticky: Sync ScrollablePane scroll on Sticky forceUpdate to fix scrollbar positioning.
+- Facepile: Fix custom title on overflow button not being used in facepile
+- DetailsList: fixing focus rectangle color from themePrimary to neutralSecondary.
+- ContextualMenu: Fixes alignment of the chevron button of a regular submenu and the split button chevron. Changes positioning of the divider of the split button to fix a hover state background visual bug.
+
+## 6.106.3
+Thu, 22 Nov 2018 13:36:17 GMT
+
+### Patches
+
+- Fixing background color of overlay so that screen behind panel isn't hidden in high contrast mode when panel's open
+
+## 6.106.2
+Wed, 21 Nov 2018 13:34:56 GMT
+
+### Patches
+
+- adding more specificity by adding selectors
+- Link: inherit font size and font weight.
+- Check: Fix component not using styles prop when generating classNames.
+- ContextualMenu: Remove ContextualMenuItemWrapper onItemClick binds which drop DOM event from args list.
+
+## 6.106.1
+Tue, 20 Nov 2018 20:12:42 GMT
+
+### Patches
+
+- Removing some of the deprecated components flagged when turning the tslint deprecation flag to true in the office-ui-fabric-react package.
+- A bug fix to avoid crash in ScrollablePane when the componenent is unmounted in an environment where MutationObserver is not supported (for example in jsdom)
+
+## 6.106.0
+Tue, 20 Nov 2018 13:32:17 GMT
+
+### Minor changes
+
+- API: Update API with several new icon definitions.
+
+### Patches
+
+- changed _root.value to _root.current in componentDidMount
+- DetailsList: Prefer BaseComponent async when using setTimeout to avoid memory leak when toggling drag & drop class.
+
+## 6.105.1
+Mon, 19 Nov 2018 13:36:25 GMT
+
+### Patches
+
+- ProgressIndicator: Fixes bug when transparent color used in a gradient in Safari browser treats it not as intended.
+
+## 6.105.0
+Fri, 16 Nov 2018 13:35:41 GMT
+
+### Minor changes
+
+- Dropdown: add placeholder prop, deprecate placeHolder
+
+### Patches
+
+- Update lorem generator to not use randomly generated text
+- GroupedList: rendered with aria-role grid instead of list
+- DetailsList: Remove drag and drop border animation causing style mutations on re-render.
+- "Fix scrollable pane sticky alignment issue"
+- HoverCard: Fixes a style selector to properly remove the border from the Callout holding card's content and add a different shadow to it.
+
+## 6.104.0
+Thu, 15 Nov 2018 13:36:22 GMT
+
+### Minor changes
+
+- DevExp: get rid of const enum so the library is compatible with Typescript's isolatedModule compilation mode
+- ScrollablePane and Sticky: Fix placeholder height, Sticky sorting, and stickyClassName
+- Slider: replace button with div so vertical Sliders render on Safari
+
+### Patches
+
+- Updating snapshots from `styled` helper changes.
+
+## 6.103.1
+Wed, 14 Nov 2018 13:34:01 GMT
+
+### Patches
+
+- Choicegroup: Fix an issue where the child label component was incorrectly getting the className prop.
+- ContextualMenu, ComboBox, Dropdown: on Mac, don't close on alt or command
+- TextField: fix multiline bug, update docs
+
+## 6.103.0
+Tue, 13 Nov 2018 13:30:53 GMT
+
+### Minor changes
+
+- ColorPicker: Export sub-components
+
+### Patches
+
+- Fix bug in ColorPicker opacity slider and improve demo page
+- DatePicker: onSelectedDate now propagates empty values even when input is required.
+
+## 6.102.0
+Mon, 12 Nov 2018 13:31:40 GMT
+
+### Minor changes
+
+- Modal: Allow defining layer props
+
+### Patches
+
+- SearchBox: IE now will consistently focus when click between icon and placeholder text
+- DetailsHeader: Support optional tooltip rendering for column headers.
+
+## 6.101.0
+Fri, 09 Nov 2018 13:32:57 GMT
+
+### Minor changes
+
+- Removing more deprecated components flagged when turning the tslint deprecation flag to true in the office-ui-fabric-react package.
+- DocumentCard: Adding `focus` method to `IDocumentCard`, which can be accessed via `componentRef`.
+- Removing some of the deprecated components flaged when turning the tslint deprecation flag to true in the office-ui-fabric-react package.
+- Add keytips to Facepile personas
+- Remove the FocusZone wrapping the FacepileMembers
+
+### Patches
+
+- ChoiceGroupOption: component mergeStyled class names no longer gets overridden by choicegroupoption item className prop
+- Button: example updated with proper styling for a custom split button
+- Passing the prop alignTargetEdge to contextualMenu's callout
+- Link: Fix bug where componentRef property was passed through to the dom element
+- Improve conditions of re-initialize state
+- BasePicker: give selected items element role "list"
+
+## 6.100.2
+Thu, 08 Nov 2018 04:17:34 GMT
+
+### Patches
+
+- Label examples: updated to illustrate good accessibility patterns.
+- DatePicker: pressing enter now changes the selection.
+- Panel documentation: updated docs to recommend having a minimum 340px width on the container.
+- Modal: Set aria-modal=true for a better screen reader experience.
+- Modal examples: Adding aria labels title & description.
+
+## 6.100.0
+Wed, 07 Nov 2018 13:31:01 GMT
+
+### Minor changes
+
+- Nav: Added linkAs to support custom buttons and React Router
+- ContextualMenu: Add menuItem subComponentStyles to enable each item styling from the ContextualMenu styles.
+
+### Patches
+
+- update to fix bug when footer covered horizontal scroll bar
+- Button: Update example to use PrimaryButton component
+- Add unit tests for ComboBox multiSelect onItemClicked callback and on select via mouse click.
+- Remove defaultPrevented check in ComboBox item click due to multiSelect regression.
+- Set GroupedList List page key to IGroup key instead of name for uniqueness.
+
+## 6.99.1
+Tue, 06 Nov 2018 13:31:09 GMT
+
+### Patches
+
+- Dropdown: change aria attributes on listbox when disabled
+- Increase height on Persona card primary text to make room for descenders
+
+## 6.99.0
+Sun, 04 Nov 2018 02:27:52 GMT
+
+### Minor changes
+
+- add ariaLabel prop for ChoiceGroupOption
+
+### Patches
+
+- Fix typo with DatePicker Callout aria-label.
+
+## 6.98.1
+Fri, 02 Nov 2018 18:11:37 GMT
+
+### Patches
+
+- Panel: fix box-shadow value
+
+## 6.98.0
+Fri, 02 Nov 2018 12:28:55 GMT
+
+### Minor changes
+
+- Add optional onItemClick callback to ComboBox.
+- Callout Positioning fixes - OnPositioned should not be called on every frame and adding a new prop called alignPerfectlyWithTarget to disallow nudging of callout
+- TextField: set overflow to hidden when autoAdjustHeight is set to avoid flashing scrollbar
+- ContextualMenu: Add fix for subComponentStyles. It is now optional in the `IContextualMenuClassNames` interface.
+
+### Patches
+
+- Pickers: Fix IE 11 focus and a few css issues
+- Slider: fix value calculations
+
+## 6.97.1
+Wed, 31 Oct 2018 22:35:10 GMT
+
+### Patches
+
+- Adding warning and updating documentation on Pivot children needing to be of type PivotItem to be rendered.
+
+## 6.97.0
+Wed, 31 Oct 2018 12:32:41 GMT
+
+### Minor changes
+
+- Expose existing mergeSettings utility function.
+
+## 6.96.0
+Tue, 30 Oct 2018 18:45:48 GMT
+
+### Minor changes
+
+- ComboBox/Autofill: prevent text from being selected when focus is not on the input box
+
+### Patches
+
+- Removing some of the deprecated components flaged when turning the tslint deprecation flag to true in the office-ui-fabric-react package.
+
+## 6.95.0
+Tue, 30 Oct 2018 12:27:52 GMT
+
+### Minor changes
+
+- Addition of year picker to Calendar
+- ContextualMenu: adding a subComponentStyles hook to enable styling of the components used within ContextualMenu. Removing an unused style function.
+
+## 6.94.0
+Mon, 29 Oct 2018 18:04:30 GMT
+
+### Minor changes
+
+- Add blur to ITextField and implement to support programmatic blur."
+
+## 6.93.1
+Mon, 29 Oct 2018 12:31:29 GMT
+
+### Patches
+
+- DetailsList/List: updating documentation.
+- DatePicker: Pass id prop to TextField component.
+- ContextualMenu: Fix separator announcement in Narrator scan mode.
+
+## 6.93.0
+Fri, 26 Oct 2018 12:32:36 GMT
+
+### Minor changes
+
+- Enable api-extractor build task
+- Callout: Added layerProps to interface
+- GroupedList: add aria-expanded and aria-controls
+- Add optional onColumnResize callback to IColumn which reports resized column's current width
+
+### Patches
+
+- Fix the issue of DetailLists and DetailHeadder property about isAllGroupsCollapsed changed after initial constructor , they are not reflected in the state.
+- Breadcrumb: add overflowAriaLabel to examples
+- Fix typo in role attribute in DocumentCardActivity
+- Updated Fabric API file
+- Rating: Updating padding on each star to fix clipping focus outline and adjust height to follow redlines.
+
+## 6.92.1
+Thu, 25 Oct 2018 12:30:06 GMT
+
+### Patches
+
+- CommandBar: Remove duplicate className prop application.
+- Add unit tests for DetailsList onRenderMissingItem prop.
+- Dropdown: Add support for onFocus callback
+
+## 6.92.0
+Wed, 24 Oct 2018 12:28:58 GMT
+
+### Minor changes
+
+- Add an optional parameter to allow Dropdown to call onChanged when an item is clicked, even if that item was already selected
+- Tooltip: change display property of TooltipHost to inline-block to properly behave when wrapping inline or inline-block children.
+
+### Patches
+
+- ResizeGroup: Moved relative style to inner wrapper div
+
+## 6.91.0
+Tue, 23 Oct 2018 12:32:16 GMT
+
+### Minor changes
+
+- TooltipHost: convert to CSS-in-JS
 
 ## 6.90.0
 Mon, 22 Oct 2018 12:29:57 GMT

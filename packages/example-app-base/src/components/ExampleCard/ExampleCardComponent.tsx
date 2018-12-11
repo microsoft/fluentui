@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { createStatelessComponent, IStatelessComponent, IStyleableComponentProps, IStylingProviders } from '@uifabric/foundation';
+import { createStatelessComponent, IStatelessComponent, IStyleableComponentProps, IComponentProviders } from '@uifabric/foundation';
 import {
   Customizations,
   CustomizerContext,
-  getSchemedContext,
+  getThemedContext,
   ICustomizerContext,
   IProcessedStyleSet,
   ISchemeNames,
@@ -12,7 +12,7 @@ import {
   mergeStyleSets
 } from 'office-ui-fabric-react';
 
-// This file exists only to create a temporary stateless component for applying schemes.
+// This file exists only to create a temporary stateless component for applying styles.
 // TODO: Once Stack (or any other Foundation created layout component) is promoted out of experiments,
 //        we can remove this file and also remove foundation as a dependency of example-app-base.
 export type IExampleCardComponent = IStatelessComponent<
@@ -31,9 +31,8 @@ export interface IExampleCardComponentStyles {
 }
 
 // tslint:disable-next-line:no-any
-const providers: IStylingProviders<any, any, any, ICustomizerContext, ITheme, ISchemeNames> = {
+const providers: IComponentProviders<any, any, any, ICustomizerContext, ITheme, ISchemeNames> = {
   mergeStyleSets,
-  getContextFromProps,
   getCustomizations,
   CustomizerContext
 };
@@ -43,7 +42,7 @@ const ExampleCardComponentView: IExampleCardComponent['view'] = props => {
   return props.children ? <div className={props.classNames.root}>{props.children}</div> : null;
 };
 
-export const ExampleCardComponent = createStatelessComponent(
+export const ExampleCardComponent: React.StatelessComponent<IExampleCardComponentProps> = createStatelessComponent(
   {
     displayName: 'ExampleCardComponent',
     styles: () => undefined,
@@ -60,16 +59,4 @@ function getCustomizations<TViewProps, TStyleSet>(
 ): IStyleableComponentProps<TViewProps, TStyleSet, ITheme, ISchemeNames> {
   const DefaultFields = ['theme', 'styles', 'styleVariables'];
   return Customizations.getSettings(fields || DefaultFields, displayName, context.customizations);
-}
-
-function getContextFromProps<TComponentProps, TViewProps, TStyleSet>(
-  props: IStyleableComponentProps<TViewProps, TStyleSet, ITheme, ISchemeNames>,
-  context: ICustomizerContext,
-  settings: IStyleableComponentProps<TViewProps, TStyleSet, ITheme, ISchemeNames>
-): ICustomizerContext | undefined {
-  let newContext: ICustomizerContext | undefined;
-  if (props.scheme) {
-    newContext = getSchemedContext(props.scheme, context, settings.theme);
-  }
-  return newContext;
 }

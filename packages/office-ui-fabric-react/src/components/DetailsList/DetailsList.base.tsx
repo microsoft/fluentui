@@ -1,15 +1,6 @@
 import * as React from 'react';
 
-import {
-  BaseComponent,
-  KeyCodes,
-  assign,
-  elementContains,
-  getRTLSafeKeyCode,
-  IRenderFunction,
-  createRef,
-  classNamesFunction
-} from '../../Utilities';
+import { BaseComponent, KeyCodes, assign, elementContains, getRTLSafeKeyCode, IRenderFunction, classNamesFunction } from '../../Utilities';
 import {
   CheckboxVisibility,
   ColumnActionsMode,
@@ -30,11 +21,11 @@ import { DetailsRowBase } from '../DetailsList/DetailsRow.base';
 import { DetailsRow } from '../DetailsList/DetailsRow';
 import { IDetailsRowProps } from '../DetailsList/DetailsRow.types';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { ISelectionZone, IObjectWithKey, ISelection, Selection, SelectionMode, SelectionZone } from '../../utilities/selection/index';
+import { IObjectWithKey, ISelection, Selection, SelectionMode, SelectionZone } from '../../utilities/selection/index';
 
 import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
 import { IGroupedList, GroupedList, IGroupDividerProps, IGroupRenderProps } from '../../GroupedList';
-import { IList, List, IListProps, ScrollToMode } from '../../List';
+import { List, IListProps, ScrollToMode } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
 import { GetGroupCount } from '../../utilities/groupedList/GroupedListUtility';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
@@ -74,12 +65,12 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
   };
 
   // References
-  private _root = createRef<HTMLDivElement>();
-  private _header = createRef<IDetailsHeader>();
-  private _groupedList = createRef<IGroupedList>();
-  private _list = createRef<IList>();
-  private _focusZone = createRef<IFocusZone>();
-  private _selectionZone = createRef<ISelectionZone>();
+  private _root = React.createRef<HTMLDivElement>();
+  private _header = React.createRef<IDetailsHeader>();
+  private _groupedList = React.createRef<IGroupedList>();
+  private _list = React.createRef<List>();
+  private _focusZone = React.createRef<IFocusZone>();
+  private _selectionZone = React.createRef<SelectionZone>();
 
   private _selection: ISelection;
   private _activeRows: { [key: string]: DetailsRowBase };
@@ -212,6 +203,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
 
   public componentWillReceiveProps(newProps: IDetailsListProps): void {
     const { checkboxVisibility, items, setKey, selectionMode = this._selection.mode, columns, viewport, compact } = this.props;
+    const { isAllGroupsCollapsed = undefined } = this.props.groupProps || {};
+
     const shouldResetSelection = newProps.setKey !== setKey || newProps.setKey === undefined;
     let shouldForceUpdates = false;
 
@@ -244,6 +237,13 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
 
     if (newProps.selectionMode !== selectionMode) {
       shouldForceUpdates = true;
+    }
+
+    if (isAllGroupsCollapsed === undefined && (newProps.groupProps && newProps.groupProps.isAllGroupsCollapsed !== undefined)) {
+      this.setState({
+        isCollapsed: newProps.groupProps.isAllGroupsCollapsed,
+        isSomeGroupExpanded: !newProps.groupProps.isAllGroupsCollapsed
+      });
     }
 
     if (shouldForceUpdates) {
@@ -671,15 +671,26 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     }
   }
 
+  private _notifyColumnsResized(): void {
+    this.state.adjustedColumns.forEach(column => {
+      if (column.onColumnResize) {
+        column.onColumnResize(column.currentWidth);
+      }
+    });
+  }
+
   private _adjustColumns(newProps: IDetailsListProps, forceUpdate?: boolean, resizingColumnIndex?: number): void {
     const adjustedColumns = this._getAdjustedColumns(newProps, forceUpdate, resizingColumnIndex);
     const { width: viewportWidth } = this.props.viewport!;
 
     if (adjustedColumns) {
-      this.setState({
-        adjustedColumns: adjustedColumns,
-        lastWidth: viewportWidth
-      });
+      this.setState(
+        {
+          adjustedColumns: adjustedColumns,
+          lastWidth: viewportWidth
+        },
+        this._notifyColumnsResized
+      );
     }
   }
 

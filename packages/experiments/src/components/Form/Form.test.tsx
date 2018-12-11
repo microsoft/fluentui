@@ -75,10 +75,7 @@ describe('Form', () => {
         </Form>
       ) as Form;
 
-      const textInput: HTMLInputElement = ReactTestUtils.findRenderedDOMComponentWithTag(
-        renderedForm,
-        'input'
-      ) as HTMLInputElement;
+      const textInput: HTMLInputElement = ReactTestUtils.findRenderedDOMComponentWithTag(renderedForm, 'input') as HTMLInputElement;
       expect(textInput.value).toEqual('Value');
     });
   });
@@ -117,10 +114,7 @@ describe('Form', () => {
           <FormTextInput inputKey="fieldnumber" value="2" validators={[Validators.isNumber('')]} />
         </Form>
       ) as Form;
-      const form: HTMLFormElement = ReactTestUtils.findRenderedDOMComponentWithTag(
-        renderedForm,
-        'form'
-      ) as HTMLFormElement;
+      const form: HTMLFormElement = ReactTestUtils.findRenderedDOMComponentWithTag(renderedForm, 'form') as HTMLFormElement;
       ReactTestUtils.Simulate.submit(form);
 
       expect(result['field']).toEqual('Value');
@@ -136,18 +130,11 @@ describe('Form', () => {
         >
           <FormTextInput inputKey="field" validators={[Validators.required(formRequiredTestMessage)]} value="" />
 
-          <FormTextInput
-            inputKey="field2"
-            value="NAN"
-            validators={[Validators.isNumber(formTextBoxValidatorTestMessage)]}
-          />
+          <FormTextInput inputKey="field2" value="NAN" validators={[Validators.isNumber(formTextBoxValidatorTestMessage)]} />
         </Form>
       ) as Form;
 
-      const form: HTMLFormElement = ReactTestUtils.findRenderedDOMComponentWithTag(
-        renderedForm,
-        'form'
-      ) as HTMLFormElement;
+      const form: HTMLFormElement = ReactTestUtils.findRenderedDOMComponentWithTag(renderedForm, 'form') as HTMLFormElement;
       ReactTestUtils.Simulate.submit(form);
 
       const textBox: FormTextInput[] = ReactTestUtils.scryRenderedComponentsWithType(renderedForm, FormTextInput);

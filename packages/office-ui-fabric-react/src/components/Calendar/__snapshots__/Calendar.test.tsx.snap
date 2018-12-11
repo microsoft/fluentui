@@ -979,7 +979,12 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
               className="ms-DatePicker-header"
             >
               <div
+                aria-label="2000"
                 className="ms-DatePicker-currentYear js-showYearPicker"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="button"
+                tabIndex={0}
               >
                 2000
               </div>
@@ -1209,7 +1214,8 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
             </div>
           </div>
           <button
-            className="ms-DatePicker-goToday js-goToday undefined"
+            className="ms-DatePicker-goToday js-goToday"
+            disabled={false}
             onClick={[Function]}
             onKeyDown={[Function]}
             role="button"

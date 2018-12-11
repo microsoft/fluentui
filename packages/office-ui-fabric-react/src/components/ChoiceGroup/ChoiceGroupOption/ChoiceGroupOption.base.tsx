@@ -1,18 +1,14 @@
 import * as React from 'react';
 import { Image } from '../../../Image';
 import { Icon } from '../../../Icon';
-import {
-  IChoiceGroupOptionProps,
-  IChoiceGroupOptionStyleProps,
-  IChoiceGroupOptionStyles
-} from './ChoiceGroupOption.types';
-import { BaseComponent, classNamesFunction, getNativeProps, inputProperties, createRef } from '../../../Utilities';
+import { IChoiceGroupOptionProps, IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from './ChoiceGroupOption.types';
+import { BaseComponent, classNamesFunction, getNativeProps, inputProperties, css } from '../../../Utilities';
 import { IProcessedStyleSet } from '../../../Styling';
 
 const getClassNames = classNamesFunction<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>();
 
 export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps, any> {
-  private _inputElement = createRef<HTMLInputElement>();
+  private _inputElement = React.createRef<HTMLInputElement>();
   private _classNames: IProcessedStyleSet<IChoiceGroupOptionStyles>;
 
   constructor(props: IChoiceGroupOptionProps) {
@@ -21,6 +17,7 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
 
   public render(): JSX.Element {
     const {
+      ariaLabel,
       focused,
       required,
       theme,
@@ -45,13 +42,16 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
       focused
     });
 
+    const { className, ...nativeProps } = getNativeProps<{ className: string }>(this.props, inputProperties);
+
     return (
       <div className={this._classNames.root}>
         <div className={this._classNames.choiceFieldWrapper}>
           <input
+            aria-label={ariaLabel ? ariaLabel : undefined}
             ref={this._inputElement}
             id={id}
-            className={this._classNames.input}
+            className={css(this._classNames.input, className)}
             type="radio"
             name={name}
             disabled={disabled}
@@ -60,7 +60,7 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
             onChange={this._onChange.bind(this, this.props)}
             onFocus={this._onFocus.bind(this, this.props)}
             onBlur={this._onBlur.bind(this, this.props)}
-            {...getNativeProps(this.props, inputProperties)}
+            {...nativeProps}
           />
           {onRenderField(this.props, this._onRenderField)}
         </div>
@@ -102,12 +102,7 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
               <Image src={imageSrc} alt={imageAlt ? imageAlt : ''} width={imageSize.width} height={imageSize.height} />
             </div>
             <div className={this._classNames.selectedImageWrapper}>
-              <Image
-                src={selectedImageSrc}
-                alt={imageAlt ? imageAlt : ''}
-                width={imageSize.width}
-                height={imageSize.height}
-              />
+              <Image src={selectedImageSrc} alt={imageAlt ? imageAlt : ''} width={imageSize.width} height={imageSize.height} />
             </div>
           </div>
         )}

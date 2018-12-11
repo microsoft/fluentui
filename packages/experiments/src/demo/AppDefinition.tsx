@@ -11,6 +11,12 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
+          component: require<any>('../components/Announced/AnnouncedPage').AnnouncedPage,
+          key: 'Announced',
+          name: 'Announced',
+          url: '#/examples/announced'
+        },
+        {
           component: require<any>('../components/Button/ButtonPage').ButtonPage,
           key: 'Button',
           name: 'Button',
@@ -47,16 +53,16 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/filetypeicon'
         },
         {
-          component: require<any>('../components/Stack/HorizontalStack/HorizontalStackPage').HorizontalStackPage,
-          key: 'HorizontalStack',
-          name: 'HorizontalStack',
-          url: '#/examples/horizontalstack'
-        },
-        {
           component: require<any>('../components/LayoutGroup/LayoutGroupPage').LayoutGroupPage,
           key: 'LayoutGroup',
           name: 'LayoutGroup',
           url: '#/examples/layoutgroup'
+        },
+        {
+          component: require<any>('../components/Pagination/PaginationPage').PaginationPage,
+          key: 'Pagination',
+          name: 'Pagination',
+          url: '#/examples/pagination'
         },
         {
           component: require<any>('../components/Separator/SeparatorPage').SeparatorPage,
@@ -77,6 +83,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/sidebar'
         },
         {
+          component: require<any>('../components/Stack/StackPage').StackPage,
+          key: 'Stack',
+          name: 'Stack',
+          url: '#/examples/stack'
+        },
+        {
           component: require<any>('../components/Text/TextPage').TextPage,
           key: 'Text',
           name: 'Text',
@@ -95,16 +107,16 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/tileslist'
         },
         {
+          component: require<any>('../components/Toggle/TogglePage').TogglePage,
+          key: 'Toggle',
+          name: 'Toggle',
+          url: '#/examples/toggle'
+        },
+        {
           component: require<any>('../components/Shimmer/ShimmerPage').ShimmerPage,
           key: 'Shimmer',
           name: 'Shimmer',
           url: '#/examples/shimmer'
-        },
-        {
-          component: require<any>('../components/Stack/VerticalStack/VerticalStackPage').VerticalStackPage,
-          key: 'VerticalStack',
-          name: 'VerticalStack',
-          url: '#/examples/verticalstack'
         },
         {
           component: require<any>('../components/VirtualizedList/VirtualizedListPage').VirtualizedListPage,

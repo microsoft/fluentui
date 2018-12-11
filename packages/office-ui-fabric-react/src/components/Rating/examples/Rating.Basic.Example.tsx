@@ -93,6 +93,18 @@ export class RatingBasicExample extends React.Component<
           readOnly={true}
           ariaLabelFormat={'{0} of {1} stars selected'}
         />
+        Custom icons:
+        <Rating
+          id={'readOnlyRatingStar'}
+          min={1}
+          max={5}
+          rating={2.5}
+          getAriaLabel={this._getRatingComponentAriaLabel}
+          readOnly={true}
+          ariaLabelFormat={'{0} of {1} stars selected'}
+          icon="StarburstSolid"
+          unselectedIcon="Starburst"
+        />
         Themed star
         <Rating
           id={'themedRatingStar'}

@@ -17,10 +17,17 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
   /**
    * Input placeholder text. Displayed until option is selected.
    */
+  placeholder?: string;
+
+  /**
+   * Input placeholder text. Displayed until option is selected.
+   * @deprecated Use `placeholder`
+   */
   placeHolder?: string;
 
   /**
-   * Options for the dropdown.
+   * Options for the dropdown. If using `defaultSelectedKey` or `defaultSelectedKeys`, options must be
+   * pure for correct behavior.
    */
   options: IDropdownOption[];
 
@@ -30,7 +37,7 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
   onChange?: (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption, index?: number) => void;
 
   /**
-   * @deprecated Use onChange instead.
+   * @deprecated Use `onChange` instead.
    */
   onChanged?: (option: IDropdownOption, index?: number) => void;
 
@@ -56,10 +63,16 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
 
   /**
    * Custom width for dropdown. If value is 0, width of the input field is used.
-   * @default 0
+   * @defaultvalue 0
    */
   dropdownWidth?: number;
 
+  /**
+   * Pass in ResponsiveMode to manually overwrite the way the Dropdown renders.
+   * ResponsiveMode.Large would, for instance, disable the behavior where Dropdown options
+   * get rendered into a Panel while ResponsiveMode.Small would result in the Dropdown
+   * options always getting rendered in a Panel.
+   */
   responsiveMode?: ResponsiveMode;
 
   /**
@@ -82,13 +95,19 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
    * When multiple items are selected, this still will be used to separate values in
    * the dropdown title.
    *
-   * @defaultValue ", "
+   * @defaultvalue ", "
    */
   multiSelectDelimiter?: string;
 
   /**
-   * Deprecated at v0.52.0, use 'disabled' instead.
-   * @deprecated
+   * Optional preference to have onChanged still be called when an already selected item is
+   * clicked in single select mode.  Default to false
+   */
+  notifyOnReselect?: boolean;
+
+  /**
+   * Deprecated at v0.52.0, use `disabled` instead.
+   * @deprecated Use `disabled` instead.
    */
   isDisabled?: boolean;
 
@@ -110,8 +129,8 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
 
 export interface IDropdownOption extends ISelectableOption {
   /**
-   * Deprecated at v.65.1, use 'selected' instead.
-   * @deprecated
+   * Deprecated at v.65.1, use `selected` instead.
+   * @deprecated Use `selected` instead.
    */
   isSelected?: boolean;
 }

@@ -1,0 +1,27 @@
+{
+  "name": "@uifabric/date-time",
+  "entries": [
+    {
+      "version": "0.2.0",
+      "tag": "@uifabric/date-time_v0.2.0",
+      "date": "Thu, 29 Nov 2018 19:34:12 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Creating the initial date-time package, including the first stage of the Calendar component css-in-js refactor, and creating the example page.",
+            "author": "John Lorenz <lorejoh12@gmail.com>",
+            "commit": "19e7ec09c2a85b84743d6960f9bff1aed402593e"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.35.0 <7.0.0` to `>=6.37.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.106.3 <7.0.0` to `>=6.108.0 <7.0.0`"
+          }
+        ]
+      }
+    }
+  ]
+}

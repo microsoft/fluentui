@@ -1,4 +1,5 @@
 import { getGlobalClassNames, HighContrastSelector, HighContrastSelectorWhite, HighContrastSelectorBlack } from '../../Styling';
+import { IsFocusVisibleClassName } from '../../Utilities';
 import { ILinkStyleProps, ILinkStyles } from './Link.types';
 
 const GlobalClassNames = {
@@ -18,8 +19,10 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
       {
         color: semanticColors.link,
         outline: 'none',
+        fontSize: 'inherit',
+        fontWeight: 'inherit',
         selectors: {
-          '.ms-Fabric--isFocusVisible &:focus': {
+          [`.${IsFocusVisibleClassName} &:focus`]: {
             // Can't use getFocusStyle because it doesn't support wrapping links
             // https://github.com/OfficeDev/office-ui-fabric-react/issues/4883#issuecomment-406743543
             outline: `1px solid ${theme.palette.neutralSecondary}`
@@ -32,7 +35,6 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
         border: 'none',
         cursor: 'pointer',
         display: 'inline',
-        fontSize: 'inherit',
         margin: 0,
         overflow: 'inherit',
         padding: 0,

@@ -70,22 +70,12 @@ export class PersonaBasicExample extends React.Component<
         />
 
         <Label className={exampleStyles.exampleLabel}>Size 40 Persona</Label>
-        <Persona
-          {...examplePersona}
-          size={PersonaSize.size40}
-          presence={PersonaPresence.away}
-          hidePersonaDetails={!renderPersonaDetails}
-        />
+        <Persona {...examplePersona} size={PersonaSize.size40} presence={PersonaPresence.away} hidePersonaDetails={!renderPersonaDetails} />
         <Label className={exampleStyles.exampleLabel}>Size 48 Persona (default) </Label>
         <Persona {...examplePersona} hidePersonaDetails={!renderPersonaDetails} presence={PersonaPresence.busy} />
 
         <Label className={exampleStyles.exampleLabel}>Size 72 Persona</Label>
-        <Persona
-          {...examplePersona}
-          size={PersonaSize.size72}
-          presence={PersonaPresence.dnd}
-          hidePersonaDetails={!renderPersonaDetails}
-        />
+        <Persona {...examplePersona} size={PersonaSize.size72} presence={PersonaPresence.dnd} hidePersonaDetails={!renderPersonaDetails} />
         <Label className={exampleStyles.exampleLabel}>Size 100 Persona</Label>
         <Persona
           {...examplePersona}
@@ -97,10 +87,7 @@ export class PersonaBasicExample extends React.Component<
     );
   }
 
-  private _onChange = (
-    ev: React.FormEvent<HTMLElement | HTMLInputElement> | undefined,
-    checked: boolean | undefined
-  ): void => {
+  private _onChange = (ev: React.FormEvent<HTMLElement | HTMLInputElement> | undefined, checked: boolean | undefined): void => {
     this.setState({ renderPersonaDetails: checked });
   };
 }

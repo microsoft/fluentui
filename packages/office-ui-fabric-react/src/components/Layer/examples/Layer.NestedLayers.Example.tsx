@@ -40,8 +40,7 @@ export class LayerNestedLayersExample extends React.Component<{}, ILayerNestedLa
             isBlocking={true}
             dialogContentProps={{
               type: DialogType.normal,
-              title:
-                'This dialog uses Modal, which also makes use of Layer and FocusTrapZone. Focus should be trapped in the dialog.',
+              title: 'This dialog uses Modal, which also makes use of Layer and FocusTrapZone. Focus should be trapped in the dialog.',
               subText: "Focus will move back to the panel if you press 'OK' or 'Cancel'."
             }}
             modalProps={{

@@ -13,7 +13,7 @@ import {
   DetailsRowCheck
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { createRef, IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 const _items: any[] = [];
 
@@ -47,7 +47,7 @@ export class DetailsListCustomFooterExample extends React.Component<
   }
 > {
   private _selection: Selection;
-  private _detailsList = createRef<IDetailsList>();
+  private _detailsList = React.createRef<IDetailsList>();
 
   constructor(props: {}) {
     super(props);

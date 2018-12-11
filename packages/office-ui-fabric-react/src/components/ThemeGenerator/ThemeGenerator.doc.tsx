@@ -99,24 +99,24 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
         <div className="overview">
           <h2 id="Overview">Overview</h2>
           <p>
-            This tool helps you easily create all the shades and slots for a custom theme. The theme can be used by
-            Fabric React's styling package, see the{' '}
+            This tool helps you easily create all the shades and slots for a custom theme. The theme can be used by Fabric React's styling
+            package, see the{' '}
             <a className={'themeGeneratorPageLink'} href={stylingUrl}>
               documentation
             </a>
             .<br />
-            As you modify one of the three base colors, the theme will update automatically based on predefined rules.
-            You can modify each individual slot below as well.
+            As you modify one of the three base colors, the theme will update automatically based on predefined rules. You can modify each
+            individual slot below as well.
           </p>
         </div>
         {/* Hello! You've found hidden functionality for generating a theme from an image. This uses Microsoft's
-          * Cognitive Vision API, documented here:
-          * https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts/javascript
-          * We use that API to identify the most prominent background and foreground colors, and the accent color,
-          * and generate a theme based off of those.
-          * Since this API requires a personal subscription key, you'll have to enlist and insert your subscription
-          * key in _makeThemeFromImg() @ https://raw.githubusercontent.com/cliffkoh/office-ui-fabric-react/9c95e9b92f8caa1fe5ffb9da769ce0921a5272ed/packages/office-ui-fabric-react/src/components/ThemeGenerator/ThemeGeneratorPage.tsx
-          * Then, just uncomment this section. */}
+         * Cognitive Vision API, documented here:
+         * https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts/javascript
+         * We use that API to identify the most prominent background and foreground colors, and the accent color,
+         * and generate a theme based off of those.
+         * Since this API requires a personal subscription key, you'll have to enlist and insert your subscription
+         * key in _makeThemeFromImg() @ https://raw.githubusercontent.com/cliffkoh/office-ui-fabric-react/9c95e9b92f8caa1fe5ffb9da769ce0921a5272ed/packages/office-ui-fabric-react/src/components/ThemeGenerator/ThemeGeneratorPage.tsx
+         * Then, just uncomment this section. */}
         {/*}
         <div style={ { display: 'flex' } }>
           <div>URL to image:&nbsp;</div>
@@ -128,23 +128,20 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
         {*/}
 
         {/* the shared popup color picker for slots */}
-        {colorPickerVisible &&
-          colorPickerSlotRule !== null &&
-          colorPickerSlotRule !== undefined &&
-          colorPickerElement && (
-            <Callout
-              key={colorPickerSlotRule.name}
-              gapSpace={10}
-              target={colorPickerElement}
-              setInitialFocus={true}
-              onDismiss={this._colorPickerOnDismiss}
-            >
-              <ColorPicker
-                color={colorPickerSlotRule.color!.str}
-                onColorChanged={this._semanticSlotRuleChanged.bind(this, colorPickerSlotRule)}
-              />
-            </Callout>
-          )}
+        {colorPickerVisible && colorPickerSlotRule !== null && colorPickerSlotRule !== undefined && colorPickerElement && (
+          <Callout
+            key={colorPickerSlotRule.name}
+            gapSpace={10}
+            target={colorPickerElement}
+            setInitialFocus={true}
+            onDismiss={this._colorPickerOnDismiss}
+          >
+            <ColorPicker
+              color={colorPickerSlotRule.color!.str}
+              onColorChanged={this._semanticSlotRuleChanged.bind(this, colorPickerSlotRule)}
+            />
+          </Callout>
+        )}
 
         {/* the three base slots, prominently displayed at the top of the page */}
         <div style={{ display: 'flex' }}>
@@ -161,8 +158,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
 
         <h2 id="Fabric palette">Fabric palette</h2>
         <p>
-          The original Fabric palette slots. These are raw colors with no prescriptive uses. Each one is a shade or tint
-          of a base color.
+          The original Fabric palette slots. These are raw colors with no prescriptive uses. Each one is a shade or tint of a base color.
         </p>
         <div className={'ms-themer-fabricPalette-root'}>
           <div>{fabricThemeSlots}</div>
@@ -249,13 +245,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     this._semanticSlotColorChangeTimeout = this._async.setTimeout(() => {
       const { themeRules } = this.state;
 
-      ThemeGenerator.setSlot(
-        slotRule,
-        color,
-        isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!),
-        true,
-        true
-      );
+      ThemeGenerator.setSlot(slotRule, color, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!), true, true);
       this.setState({ themeRules: themeRules }, this._makeNewTheme);
     }, 20);
     // 20ms is low enough that you can slowly drag to change color and see that theme,
@@ -385,11 +375,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
         <div className={'ms-themer-output-root'}>
           <div>
             <h3>JSON</h3>
-            <textarea
-              readOnly={true}
-              spellCheck={false}
-              value={JSON.stringify(ThemeGenerator.getThemeAsJson(abridgedTheme), void 0, 2)}
-            />
+            <textarea readOnly={true} spellCheck={false} value={JSON.stringify(ThemeGenerator.getThemeAsJson(abridgedTheme), void 0, 2)} />
           </div>
           <div>
             <h3>SASS</h3>
@@ -457,14 +443,8 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
             /* tslint:enable:jsx-no-bind */
           />
         </div>
-        <div
-          className="ms-themer-swatchBg"
-          style={{ backgroundColor: this.state.themeRules[BaseSlots[baseSlot]].color!.str }}
-        >
-          <div
-            className="ms-themer-swatch"
-            style={{ backgroundColor: this.state.themeRules[BaseSlots[baseSlot]].color!.str }}
-          />
+        <div className="ms-themer-swatchBg" style={{ backgroundColor: this.state.themeRules[BaseSlots[baseSlot]].color!.str }}>
+          <div className="ms-themer-swatch" style={{ backgroundColor: this.state.themeRules[BaseSlots[baseSlot]].color!.str }} />
           {[
             this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade1']),
             this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade2']),
