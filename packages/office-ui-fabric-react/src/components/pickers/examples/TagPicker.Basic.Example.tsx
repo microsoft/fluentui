@@ -23,7 +23,7 @@ const _testTags: ITag[] = [
   'yellow'
 ].map(item => ({ key: item, name: item }));
 
-interface ITagPickerDemoPageState {
+export interface ITagPickerDemoPageState {
   isPickerDisabled?: boolean;
 }
 
