@@ -33,7 +33,12 @@ function onResolveSuggestions(text: string): ITag[] {
     .map(item => ({ key: item, name: item }));
 }
 
-const basicRenderer = (props: IPickerItemProps<{ key: string; name: string }>) => {
+export interface ISimple {
+  key: string;
+  name: string;
+}
+
+const basicRenderer = (props: IPickerItemProps<ISimple>) => {
   return <div> {props.item.name} </div>;
 };
 
@@ -41,22 +46,13 @@ const basicSuggestionRenderer = (props: ISimple) => {
   return <div> {props.name} </div>;
 };
 
-export interface ISimple {
-  key: string;
-  name: string;
-}
-
-export type TypedBasePicker = BasePicker<ISimple, IBasePickerProps<ISimple>>;
-
 describe('Pickers', () => {
   describe('BasePicker', () => {
     beforeEach(() => {
       resetIds();
     });
     const BasePickerWithType = BasePicker as new (props: IBasePickerProps<ISimple>) => BasePicker<ISimple, IBasePickerProps<ISimple>>;
-    const onRenderItem = (props: IPickerItemProps<{ key: string; name: string }>): JSX.Element => (
-      <div key={props.item.name}>{basicRenderer(props)}</div>
-    );
+    const onRenderItem = (props: IPickerItemProps<ISimple>): JSX.Element => <div key={props.item.name}>{basicRenderer(props)}</div>;
 
     it('renders BasePicker correctly', () => {
       const component = renderer.create(
