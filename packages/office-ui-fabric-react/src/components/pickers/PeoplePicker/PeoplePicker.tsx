@@ -65,11 +65,7 @@ export interface IGenericItem {
   ValidationState: ValidationState;
 }
 
-export function createGenericItem(
-  name: string,
-  currentValidationState: ValidationState,
-  allowPhoneInitials?: boolean // TODO: how does this gets passed to PeoplePicker
-): IGenericItem & { key: React.Key } {
+export function createGenericItem(name: string, currentValidationState: ValidationState): IGenericItem & { key: React.Key } {
   const personaToConvert = {
     key: name,
     primaryText: name,
@@ -78,7 +74,7 @@ export function createGenericItem(
   };
 
   if (currentValidationState !== ValidationState.warning) {
-    personaToConvert.imageInitials = getInitials(name, getRTL(), allowPhoneInitials);
+    personaToConvert.imageInitials = getInitials(name, getRTL());
   }
 
   return personaToConvert;
