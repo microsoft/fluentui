@@ -26,15 +26,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   }
 
   public componentDidMount(): void {
-    const { elementToFocusOnDismiss, disableFirstFocus = false } = this.props;
-
-    this._previouslyFocusedElementOutsideTrapZone = elementToFocusOnDismiss
-      ? elementToFocusOnDismiss
-      : (document.activeElement as HTMLElement);
-    if (!elementContains(this._root.current, this._previouslyFocusedElementOutsideTrapZone) && !disableFirstFocus) {
-      this.focus();
-    }
-
+    this._bringFocusIntoZone();
     this._updateEventHandlers(this.props);
   }
 
@@ -47,23 +39,30 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     this._updateEventHandlers(nextProps);
   }
 
-  public componentWillUnmount(): void {
-    const { ignoreExternalFocusing } = this.props;
+  public componentDidUpdate(prevProps: IFocusTrapZoneProps) {
+    const prevForceFocusInsideTrap = prevProps.forceFocusInsideTrap !== undefined ? prevProps.forceFocusInsideTrap : true;
+    const newForceFocusInsideTrap = this.props.forceFocusInsideTrap !== undefined ? this.props.forceFocusInsideTrap : true;
 
+    if (!prevForceFocusInsideTrap && newForceFocusInsideTrap) {
+      // Transition from forceFocusInsideTrap disabled to enabled. Emulate what happens when a FocusTrapZone gets mounted
+      FocusTrapZone._focusStack.push(this);
+      this._bringFocusIntoZone();
+    } else if (prevForceFocusInsideTrap && !newForceFocusInsideTrap) {
+      // Transition from forceFocusInsideTrap enabled to disabled. Emulate what happens when a FocusTrapZone gets unmounted
+      FocusTrapZone._focusStack = FocusTrapZone._focusStack.filter((value: FocusTrapZone) => {
+        return this !== value;
+      });
+      this._returnFocusToInitiator();
+    }
+  }
+
+  public componentWillUnmount(): void {
     this._events.dispose();
     FocusTrapZone._focusStack = FocusTrapZone._focusStack.filter((value: FocusTrapZone) => {
       return this !== value;
     });
 
-    const activeElement = document.activeElement as HTMLElement;
-    if (
-      !ignoreExternalFocusing &&
-      this._previouslyFocusedElementOutsideTrapZone &&
-      typeof this._previouslyFocusedElementOutsideTrapZone.focus === 'function' &&
-      (elementContains(this._root.current, activeElement) || activeElement === document.body)
-    ) {
-      focusAsync(this._previouslyFocusedElementOutsideTrapZone);
-    }
+    this._returnFocusToInitiator();
   }
 
   public render(): JSX.Element {
@@ -111,6 +110,31 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     }
     if (_firstFocusableChild) {
       focusAsync(_firstFocusableChild);
+    }
+  }
+
+  private _bringFocusIntoZone(): void {
+    const { elementToFocusOnDismiss, disableFirstFocus = false } = this.props;
+
+    this._previouslyFocusedElementOutsideTrapZone = elementToFocusOnDismiss
+      ? elementToFocusOnDismiss
+      : (document.activeElement as HTMLElement);
+    if (!elementContains(this._root.current, this._previouslyFocusedElementOutsideTrapZone) && !disableFirstFocus) {
+      this.focus();
+    }
+  }
+
+  private _returnFocusToInitiator(): void {
+    const { ignoreExternalFocusing } = this.props;
+
+    const activeElement = document.activeElement as HTMLElement;
+    if (
+      !ignoreExternalFocusing &&
+      this._previouslyFocusedElementOutsideTrapZone &&
+      typeof this._previouslyFocusedElementOutsideTrapZone.focus === 'function' &&
+      (elementContains(this._root.current, activeElement) || activeElement === document.body)
+    ) {
+      focusAsync(this._previouslyFocusedElementOutsideTrapZone);
     }
   }
 

@@ -95,7 +95,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       elementToFocusOnDismiss,
       firstFocusableSelector,
       focusTrapZoneProps,
-      forceFocusInsideTrap,
+      forceFocusInsideTrap = true,
       hasCloseButton,
       headerText,
       headerClassName = '',
