@@ -775,7 +775,7 @@ export function createArray<T>(size: number, getItem: (index: number) => T): T[]
 export function createFontStyles(localeCode: string | null): IFontStyles;
 
 // @public (undocumented)
-export function createGenericItem(name: string, currentValidationState: ValidationState, allowPhoneInitials?: boolean): IGenericItem & {
+export function createGenericItem(name: string, currentValidationState: ValidationState): IGenericItem & {
     key: React.Key;
 };
 
@@ -1989,15 +1989,10 @@ interface IBasePickerState {
 
 // @public
 interface IBasePickerStyles {
-  // (undocumented)
   input: IStyle;
-  // (undocumented)
   itemsWrapper: IStyle;
-  // (undocumented)
   root: IStyle;
-  // (undocumented)
   screenReaderText: IStyle;
-  // (undocumented)
   text: IStyle;
 }
 
