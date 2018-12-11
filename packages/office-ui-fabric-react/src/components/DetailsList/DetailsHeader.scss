@@ -253,8 +253,7 @@ $isPaddedMargin: 24px;
 }
 
 .dropHintCaretStyle {
-  display:inline-block;
-  visibility: hidden;
+  display:none;
   position: absolute;
   top: 22px;
   left: -7.5px;
@@ -265,8 +264,7 @@ $isPaddedMargin: 24px;
 }
 
 .dropHintLineStyle{
-  display: inline-block;
-  visibility:hidden;
+  display: none;
   position: absolute;
   bottom: 0;
   top: -3px;
