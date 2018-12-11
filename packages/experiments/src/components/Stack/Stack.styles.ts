@@ -33,7 +33,7 @@ export const styles: IStackComponent['styles'] = props => {
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  const vertAlignment = getVerticalAlignment(verticalAlign);
+  const vertAlign = getVerticalAlignment(verticalAlign);
 
   let horiGap: IStackProps['gap'];
   let vertGap: IStackProps['gap'];
@@ -110,8 +110,8 @@ export const styles: IStackComponent['styles'] = props => {
         horizontalAlign && {
           [horizontal ? 'justifyContent' : 'alignItems']: nameMap[horizontalAlign] || horizontalAlign
         },
-        vertAlignment && {
-          [horizontal ? 'alignItems' : 'justifyContent']: nameMap[vertAlignment] || vertAlignment
+        vertAlign && {
+          [horizontal ? 'alignItems' : 'justifyContent']: nameMap[vertAlign] || vertAlign
         },
         horizontal && {
           flexDirection: 'row',
@@ -164,8 +164,8 @@ export const styles: IStackComponent['styles'] = props => {
       horizontalAlign && {
         [horizontal ? 'justifyContent' : 'alignItems']: nameMap[horizontalAlign] || horizontalAlign
       },
-      vertAlignment && {
-        [horizontal ? 'alignItems' : 'justifyContent']: nameMap[vertAlignment] || vertAlignment
+      vertAlign && {
+        [horizontal ? 'alignItems' : 'justifyContent']: nameMap[vertAlign] || vertAlign
       },
       wrap && {
         maxWidth,

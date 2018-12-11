@@ -229,8 +229,8 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
           shrinkItems={shrinkItems}
           gap={gap}
           padding={`${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`}
-          verticalAlign={verticalAlignment}
-          horizontalAlign={horizontalAlignment}
+          verticalAlignment={verticalAlignment}
+          horizontalAlignment={horizontalAlignment}
           className={styles.root}
         >
           {this._range(1, numItems).map((value: number, index: number) => {
