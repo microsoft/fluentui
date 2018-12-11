@@ -2,7 +2,7 @@ import { IbizaThemeDark } from './ibiza/IbizaThemeDark';
 import { IbizaThemeLight } from './ibiza/IbizaThemeLight';
 import { IbizaStyle } from './ibiza/IbizaStyles';
 import { ICustomizations } from 'office-ui-fabric-react';
-import { addVariants } from '@uifabric/variants';
+// import { addVariants } from '@uifabric/variants';
 
 export const IbizaCustomizationsDark: ICustomizations = {
   settings: {
@@ -18,4 +18,4 @@ export const IbizaCustomizationsLight: ICustomizations = {
   scopedSettings: { ...IbizaStyle(IbizaThemeLight) }
 };
 
-addVariants(IbizaCustomizationsDark.settings.theme);
+// addVariants(IbizaCustomizationsDark.settings.theme);
