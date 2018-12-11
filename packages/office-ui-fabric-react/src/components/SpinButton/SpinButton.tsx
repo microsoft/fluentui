@@ -154,12 +154,12 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             <div
               className={classNames.spinButtonWrapper}
               title={title && title}
-              aria-label={ariaLabel && ariaLabel}
               aria-posinset={ariaPositionInSet}
               aria-setsize={ariaSetSize}
               data-ktp-target={keytipAttributes['data-ktp-target']}
             >
               <input
+                aria-label={ariaLabel && ariaLabel}
                 value={value}
                 id={this._inputId}
                 onChange={this._onChange}

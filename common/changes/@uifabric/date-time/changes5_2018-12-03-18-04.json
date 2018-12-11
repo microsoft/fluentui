@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "",
+      "packageName": "@uifabric/date-time",
+      "type": "none"
+    }
+  ],
+  "packageName": "@uifabric/date-time",
+  "email": "Humberto.Morimoto@microsoft.com"
+}

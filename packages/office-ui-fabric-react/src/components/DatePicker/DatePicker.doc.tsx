@@ -20,8 +20,7 @@ const DatePickerBoundedExampleCode = require('!raw-loader!office-ui-fabric-react
 export const DatePickerPageProps: IDocPageProps = {
   title: 'DatePicker',
   componentName: 'DatePicker',
-  componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DatePicker',
+  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DatePicker',
   componentStatus: DatePickerStatus,
   examples: [
     {
@@ -56,9 +55,7 @@ export const DatePickerPageProps: IDocPageProps = {
       view: <DatePickerBoundedExample />
     }
   ],
-  propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/DatePicker/DatePicker.types.ts')
-  ],
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/DatePicker/DatePicker.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/DatePicker/docs/DatePickerOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/DatePicker/docs/DatePickerDos.md'),

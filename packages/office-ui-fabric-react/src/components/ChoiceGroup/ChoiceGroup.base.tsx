@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Label } from '../../Label';
 import { ChoiceGroupOption, OnFocusCallback, OnChangeCallback } from './ChoiceGroupOption/index';
 import { IChoiceGroupOption, IChoiceGroupProps, IChoiceGroupStyleProps, IChoiceGroupStyles } from './ChoiceGroup.types';
-import { BaseComponent, classNamesFunction, createRef, getId, find } from '../../Utilities';
+import { BaseComponent, classNamesFunction, getId, find } from '../../Utilities';
 
 const getClassNames = classNamesFunction<IChoiceGroupStyleProps, IChoiceGroupStyles>();
 
@@ -20,7 +20,7 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
 
   private _id: string;
   private _labelId: string;
-  private _inputElement = createRef<HTMLInputElement>();
+  private _inputElement = React.createRef<HTMLInputElement>();
   private focusedVars: { [key: string]: OnFocusCallback } = {};
   private changedVars: { [key: string]: OnChangeCallback } = {};
 
@@ -65,8 +65,8 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
     const ariaLabelledBy = this.props.ariaLabelledBy
       ? this.props.ariaLabelledBy
       : label
-        ? this._id + '-label'
-        : (this.props as any)['aria-labelledby'];
+      ? this._id + '-label'
+      : (this.props as any)['aria-labelledby'];
 
     // In cases where no option is checked, set focusable to first enabled option so that ChoiceGroup remains focusable.
     // If no options are enabled, ChoiceGroup is not focusable. If any option is checked, do not set keyDefaultFocusable.

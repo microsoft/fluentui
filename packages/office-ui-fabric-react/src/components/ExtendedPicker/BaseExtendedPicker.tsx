@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, createRef } from '../../Utilities';
+import { BaseComponent, KeyCodes, css } from '../../Utilities';
 import { Autofill } from '../../Autofill';
 import { IInputProps } from '../../Pickers';
 import * as stylesImport from './BaseExtendedPicker.scss';
@@ -19,11 +19,11 @@ export interface IBaseExtendedPickerState<T> {
 
 export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends BaseComponent<P, IBaseExtendedPickerState<T>>
   implements IBaseExtendedPicker<T> {
-  public floatingPicker = createRef<BaseFloatingPicker<T, IBaseFloatingPickerProps<T>>>();
-  public selectedItemsList = createRef<BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>>>();
+  public floatingPicker = React.createRef<BaseFloatingPicker<T, IBaseFloatingPickerProps<T>>>();
+  public selectedItemsList = React.createRef<BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>>>();
 
-  protected root = createRef<HTMLDivElement>();
-  protected input = createRef<Autofill>();
+  protected root = React.createRef<HTMLDivElement>();
+  protected input = React.createRef<Autofill>();
   protected selection: Selection;
   protected floatingPickerProps: IBaseFloatingPickerProps<T>;
   protected selectedItemsListProps: IBaseSelectedItemsListProps<T>;
@@ -39,8 +39,8 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
       selectedItems: this.props.defaultSelectedItems
         ? (this.props.defaultSelectedItems as T[])
         : this.props.selectedItems
-          ? (this.props.selectedItems as T[])
-          : null
+        ? (this.props.selectedItems as T[])
+        : null
     };
 
     this.floatingPickerProps = this.props.floatingPickerProps;
@@ -52,8 +52,8 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     return this.state.selectedItems
       ? this.state.selectedItems
       : this.selectedItemsList.current
-        ? this.selectedItemsList.current.items
-        : null;
+      ? this.selectedItemsList.current.items
+      : null;
   }
 
   public componentDidMount(): void {

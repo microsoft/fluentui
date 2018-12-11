@@ -17,8 +17,7 @@ import {
   isElementFocusZone,
   isElementFocusSubZone,
   isElementTabbable,
-  shouldWrapFocus,
-  createRef
+  shouldWrapFocus
 } from '../../Utilities';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
@@ -48,7 +47,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     direction: FocusZoneDirection.bidirectional
   };
 
-  private _root = createRef<HTMLElement>();
+  private _root = React.createRef<HTMLElement>();
   private _id: string;
   /** The most recently focused child element. */
   private _activeElement: HTMLElement | null;
@@ -143,7 +142,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
   /**
    * Sets focus to the first tabbable item in the zone.
-   * @param {boolean} forceIntoFirstElement If true, focus will be forced into the first element, even
+   * @param forceIntoFirstElement - If true, focus will be forced into the first element, even
    * if focus is already in the focus zone.
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
@@ -180,7 +179,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
    * Sets focus to a specific child element within the zone. This can be used in conjunction with
    * onBeforeFocus to created delayed focus scenarios (like animate the scroll position to the correct
    * location and then focus.)
-   * @param {HTMLElement} element The child element within the zone to focus.
+   * @param element - The child element within the zone to focus.
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
   public focusElement(element: HTMLElement): boolean {

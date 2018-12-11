@@ -34,7 +34,7 @@ Wed, 06 Dec 2017 04:41:20 GMT-Wed, 06 Dec 2017 04:41:20 GMT
     <div
       aria-expanded={false}
       aria-haspopup="true"
-      aria-owns="DatePicker-Callout0"
+      aria-owns="DatePicker-Callout1"
       role="combobox"
     >
       <div
@@ -85,7 +85,7 @@ Wed, 06 Dec 2017 04:41:20 GMT-Wed, 06 Dec 2017 04:41:20 GMT
                   position: relative;
                 }
                 &:hover {
-                  border-color: #212121;
+                  border-color: #333333;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -132,7 +132,7 @@ Wed, 06 Dec 2017 04:41:20 GMT-Wed, 06 Dec 2017 04:41:20 GMT
                     color: #666666;
                     opacity: 1;
                   }
-              id="TextField1"
+              id="DatePicker0-label"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}

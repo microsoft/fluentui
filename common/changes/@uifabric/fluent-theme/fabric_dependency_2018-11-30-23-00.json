@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/fluent-theme",
+      "comment": "Removing Fabric component dependency. For scss-based components, added Fabric component wrappers in their stories but for non-scss based components, we'll have to see if we can accept them as new changes.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/fluent-theme",
+  "email": "aneeshak@microsoft.com"
+}

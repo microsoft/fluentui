@@ -5,7 +5,7 @@ import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { BaseComponent, classNamesFunction, createRef } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface ICoachmarkBasicExampleState {
   isCoachmarkVisible?: boolean;
@@ -30,7 +30,7 @@ export interface ICoachmarkBasicExampleStyles {
 }
 
 export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExampleState> {
-  private _targetButton = createRef<HTMLDivElement>();
+  private _targetButton = React.createRef<HTMLDivElement>();
 
   public constructor(props: {}) {
     super(props);
@@ -93,10 +93,7 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
         </div>
 
         <div className={classNames.buttonContainer} ref={this._targetButton}>
-          <DefaultButton
-            onClick={this._onShowMenuClicked}
-            text={isCoachmarkVisible ? 'Hide Coachmark' : 'Show Coachmark'}
-          />
+          <DefaultButton onClick={this._onShowMenuClicked} text={isCoachmarkVisible ? 'Hide Coachmark' : 'Show Coachmark'} />
         </div>
         {isCoachmarkVisible && (
           <Coachmark

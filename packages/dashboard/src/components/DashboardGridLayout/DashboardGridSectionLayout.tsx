@@ -181,7 +181,7 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridLa
       });
       cardsOfSection.forEach((card: ICard) => {
         result.push(
-          <div key={card.id}>
+          <div key={card.id} id={card.id + 'dglCard'}>
             <Card
               key={card.id}
               cardFrameContent={card.cardFrameContent}

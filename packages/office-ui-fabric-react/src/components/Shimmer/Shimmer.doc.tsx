@@ -20,8 +20,7 @@ const ShimmerApplicationExampleCode = require('!raw-loader!office-ui-fabric-reac
 export const ShimmerPageProps: IDocPageProps = {
   title: 'Shimmer',
   componentName: 'ShimmerExample',
-  componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Shimmer',
+  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Shimmer',
   examples: [
     {
       title: "Shimmer with basic elements using the 'shimmerElements' prop",
@@ -50,9 +49,7 @@ export const ShimmerPageProps: IDocPageProps = {
     }
   ],
 
-  propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/Shimmer/Shimmer.types.ts')
-  ],
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Shimmer/Shimmer.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Shimmer/docs/ShimmerOverview.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Shimmer/docs/ShimmerDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Shimmer/docs/ShimmerDonts.md'),

@@ -27,11 +27,7 @@ export default class BoxExample extends React.Component<React.HTMLAttributes<HTM
 
     return (
       <div>
-        <DefaultButton
-          secondaryText="Focuses inside the FocusTrapZone"
-          onClick={this._onButtonClickHandler}
-          text="Go to Trap Zone"
-        />
+        <DefaultButton secondaryText="Focuses inside the FocusTrapZone" onClick={this._onButtonClickHandler} text="Go to Trap Zone" />
 
         {(() => {
           if (isChecked) {
@@ -66,11 +62,7 @@ export default class BoxExample extends React.Component<React.HTMLAttributes<HTM
         {(() => {
           if (isChecked) {
             return (
-              <DefaultButton
-                secondaryText="Exit Focus Trap Zone"
-                onClick={this._onExitButtonClickHandler}
-                text="Exit Focus Trap Zone"
-              />
+              <DefaultButton secondaryText="Exit Focus Trap Zone" onClick={this._onExitButtonClickHandler} text="Exit Focus Trap Zone" />
             );
           }
         })()}

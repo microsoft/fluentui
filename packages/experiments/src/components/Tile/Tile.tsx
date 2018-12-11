@@ -13,15 +13,17 @@ const SignalStyles: any = SignalStylesModule;
 const CheckStyles: any = CheckStylesModule;
 // tslint:enable:no-any
 
-export const enum TileLayoutValues {
-  nameplatePadding = 12,
-  largeNameplateNameHeight = 15,
-  smallNameplateNameHeight = 12,
-  nameplateMargin = 0,
-  largeNameplateActivityHeight = 20,
-  smallNameplateActivityHeight = 20,
-  foregroundMargin = 16
-}
+export const TileLayoutValues = {
+  nameplatePadding: 12 as 12,
+  largeNameplateNameHeight: 15 as 15,
+  smallNameplateNameHeight: 12 as 12,
+  nameplateMargin: 0 as 0,
+  largeNameplateActivityHeight: 20 as 20,
+  smallNameplateActivityHeight: 20 as 20,
+  foregroundMargin: 16 as 16
+};
+
+export type TileLayoutValues = typeof TileLayoutValues[keyof typeof TileLayoutValues];
 
 export interface ITileState {
   isSelected?: boolean;
@@ -92,8 +94,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     const { selection: nextSelection, selectionIndex: nextSelectionIndex = -1 } = nextProps;
 
     if (selection !== nextSelection || selectionIndex !== nextSelectionIndex) {
-      const isSelected =
-        !!nextSelection && nextSelectionIndex > -1 && nextSelection.isIndexSelected(nextSelectionIndex);
+      const isSelected = !!nextSelection && nextSelectionIndex > -1 && nextSelection.isIndexSelected(nextSelectionIndex);
       const isModal = !!nextSelection && nextSelection.isModal && nextSelection.isModal();
 
       this.setState({
@@ -339,13 +340,7 @@ export function getTileLayout(tileElement: JSX.Element): ITileLayout {
 
   const width = contentSize.width;
 
-  const {
-    nameplatePadding,
-    nameplateMargin,
-    nameplateActivityHeight,
-    nameplateNameHeight,
-    foregroundMargin
-  } = TileLayoutSizes[tileSize];
+  const { nameplatePadding, nameplateMargin, nameplateActivityHeight, nameplateNameHeight, foregroundMargin } = TileLayoutSizes[tileSize];
 
   let nameplateHeight = 0;
 

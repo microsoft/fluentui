@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode, format } from '../../Utilities';
+import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode, format, IRefObject } from '../../Utilities';
 import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.types';
 import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { FocusZone } from '../../FocusZone';
@@ -38,8 +38,8 @@ export interface ICalendarDay {
   focus(): void;
 }
 
-export interface ICalendarDayProps extends React.Props<CalendarDay> {
-  componentRef?: (c: ICalendarDay) => void;
+export interface ICalendarDayProps extends React.ClassAttributes<CalendarDay> {
+  componentRef?: IRefObject<ICalendarDay>;
   strings: ICalendarStrings;
   selectedDate: Date;
   navigatedDate: Date;
@@ -240,29 +240,27 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
             >
               {weeks!.map((week, weekIndex) => (
                 <tr key={weekNumbers ? weekNumbers[weekIndex] : weekIndex}>
-                  {showWeekNumbers &&
-                    weekNumbers && (
-                      <th
-                        className={css('ms-DatePicker-weekNumbers', 'ms-DatePicker-weekday', styles.weekday, styles.weekNumbers)}
-                        key={weekIndex}
-                        title={
-                          weekNumbers && strings.weekNumberFormatString && format(strings.weekNumberFormatString, weekNumbers[weekIndex])
-                        }
-                        aria-label={
-                          weekNumbers && strings.weekNumberFormatString && format(strings.weekNumberFormatString, weekNumbers[weekIndex])
-                        }
-                        scope="row"
+                  {showWeekNumbers && weekNumbers && (
+                    <th
+                      className={css('ms-DatePicker-weekNumbers', 'ms-DatePicker-weekday', styles.weekday, styles.weekNumbers)}
+                      key={weekIndex}
+                      title={
+                        weekNumbers && strings.weekNumberFormatString && format(strings.weekNumberFormatString, weekNumbers[weekIndex])
+                      }
+                      aria-label={
+                        weekNumbers && strings.weekNumberFormatString && format(strings.weekNumberFormatString, weekNumbers[weekIndex])
+                      }
+                      scope="row"
+                    >
+                      <div
+                        className={css('ms-DatePicker-day', styles.day, {
+                          ['ms-DatePicker-week--highlighted ' + styles.weekIsHighlighted]: selectedDateWeekNumber === weekNumbers[weekIndex]
+                        })}
                       >
-                        <div
-                          className={css('ms-DatePicker-day', styles.day, {
-                            ['ms-DatePicker-week--highlighted ' + styles.weekIsHighlighted]:
-                              selectedDateWeekNumber === weekNumbers[weekIndex]
-                          })}
-                        >
-                          <span>{weekNumbers[weekIndex]}</span>
-                        </div>
-                      </th>
-                    )}
+                        <span>{weekNumbers[weekIndex]}</span>
+                      </div>
+                    </th>
+                  )}
                   {week.map((day, dayIndex) => {
                     const isNavigatedDate = compareDates(navigatedDate, day.originalDate);
                     return (
@@ -279,7 +277,10 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                             ['ms-DatePicker-day--highlighted ' + styles.dayIsHighlighted]:
                               day.isSelected && dateRangeType === DateRangeType.Day,
                             ['ms-DatePicker-day--infocus ' + styles.dayIsFocused]: day.isInBounds && day.isInMonth,
-                            ['ms-DatePicker-day--outfocus ' + styles.dayIsUnfocused]: day.isInBounds && !day.isInMonth
+                            ['ms-DatePicker-day--outfocus ' + styles.dayIsUnfocused]: day.isInBounds && !day.isInMonth,
+                            [styles.daySelection]: dateRangeType === DateRangeType.Day,
+                            [styles.weekSelection]: dateRangeType === DateRangeType.Week || dateRangeType === DateRangeType.WorkWeek,
+                            [styles.monthSelection]: dateRangeType === DateRangeType.Month
                           }
                         )}
                         ref={element => this._setDayCellRef(element, day, isNavigatedDate)}
@@ -409,6 +410,22 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               style = getRTL() ? style.concat(styles.bottomLeftCornerDate + ' ') : style.concat(styles.bottomRightCornerDate + ' ');
             }
 
+            if (!above) {
+              style = style.concat(styles.topDate + ' ');
+            }
+
+            if (!below) {
+              style = style.concat(styles.bottomDate + ' ');
+            }
+
+            if (!right) {
+              style = style.concat(styles.rightDate + ' ');
+            }
+
+            if (!left) {
+              style = style.concat(styles.leftdate + ' ');
+            }
+
             weekCornersStyled[weekIndex + '_' + dayIndex] = style;
           });
         });
@@ -416,10 +433,15 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       case DateRangeType.Week:
       case DateRangeType.WorkWeek:
         weeks.forEach((week: IDayInfo[], weekIndex: number) => {
+          const minIndex = week.findIndex(item => item.isInBounds);
+          const maxIndex = this._findLastIndex(week, (item: IDayInfo) => {
+            return item.isInBounds;
+          });
+
           const leftStyle = styles.topLeftCornerDate + ' ' + styles.bottomLeftCornerDate;
           const rightStyle = styles.topRightCornerDate + ' ' + styles.bottomRightCornerDate;
-          weekCornersStyled[weekIndex + '_' + 0] = getRTL() ? rightStyle : leftStyle;
-          weekCornersStyled[weekIndex + '_' + (DAYS_IN_WEEK - 1)] = getRTL() ? leftStyle : rightStyle;
+          weekCornersStyled[weekIndex + '_' + minIndex] = getRTL() ? rightStyle : leftStyle;
+          weekCornersStyled[weekIndex + '_' + maxIndex] = getRTL() ? leftStyle : rightStyle;
         });
         break;
     }
@@ -779,5 +801,24 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       boundedDateRange = boundedDateRange.filter(date => compareDatePart(date, maxDate as Date) <= 0);
     }
     return boundedDateRange;
+  }
+
+  /**
+   * Returns the index of the last element in the array where the predicate is true, and -1
+   * otherwise
+   * @param items Array of items to be iterated over using the predicate
+   * @param predicate find calls predicate once for each element of the array, in descending
+   * order, until it finds one where predicate returns true. If such an element is found,
+   */
+  private _findLastIndex<T>(items: T[], predicate: (item: T) => boolean): number {
+    for (let i = items.length - 1; i >= 0; i--) {
+      const item = items[i];
+
+      if (predicate(item)) {
+        return i;
+      }
+    }
+
+    return -1;
   }
 }

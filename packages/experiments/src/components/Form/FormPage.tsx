@@ -44,21 +44,19 @@ export class FormPage extends React.Component<IComponentDemoPageProps, {}> {
         overview={
           <div>
             <p>
-              Form is a wrapper component that aids in the creation of HTML forms. When used with the included Form
-              input components, it provides a way to consolidate all of your form state into the Form component. The
-              host of the Form only needs to be concerned about the values that are returned from the onSumbit and
-              onUpdated callbacks
+              Form is a wrapper component that aids in the creation of HTML forms. When used with the included Form input components, it
+              provides a way to consolidate all of your form state into the Form component. The host of the Form only needs to be concerned
+              about the values that are returned from the onSumbit and onUpdated callbacks
             </p>
             <p>
-              A set of input components are provided out of the box, including text, dropdown, checkbox, and date. More
-              components can easily be added by extending the FormBaseInput component and rendering the desired
-              component.
+              A set of input components are provided out of the box, including text, dropdown, checkbox, and date. More components can
+              easily be added by extending the FormBaseInput component and rendering the desired component.
             </p>
             <p>
-              When the user submits the form, the Form host can listen to the onSubmit callback. The argument to this
-              callback is an object which contains all the form values, keyed by 'inputKey' prop specified on all of the
-              Form input components. The host component can also listen to the onUpdated callback, which is called each
-              time an input is updated. This is useful for forms that should be saved automatically.
+              When the user submits the form, the Form host can listen to the onSubmit callback. The argument to this callback is an object
+              which contains all the form values, keyed by 'inputKey' prop specified on all of the Form input components. The host component
+              can also listen to the onUpdated callback, which is called each time an input is updated. This is useful for forms that should
+              be saved automatically.
             </p>
           </div>
         }

@@ -1,6 +1,27 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Wed, 17 Oct 2018 01:29:55 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Dec 2018 13:34:21 GMT and should not be manually modified.
+
+## 6.9.3
+Thu, 06 Dec 2018 13:34:21 GMT
+
+### Patches
+
+- Fix for issue#7258:Documentation is missing for button
+
+## 6.9.2
+Tue, 06 Nov 2018 13:31:09 GMT
+
+### Patches
+
+- Fix visual bugs caused by MWF overrides on Fabric site
+
+## 6.9.1
+Wed, 31 Oct 2018 12:32:41 GMT
+
+### Patches
+
+- Replace usage of scheme prop with theme provider.
 
 ## 6.9.0
 Wed, 17 Oct 2018 01:29:55 GMT

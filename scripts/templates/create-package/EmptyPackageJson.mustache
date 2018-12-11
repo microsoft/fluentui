@@ -1,0 +1,53 @@
+{
+  "name": "{{{packageNpmName}}}",
+  "version": "0.1.0",
+  "description": "Experimental React components for building experiences for Office 365.",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "sideEffects": [
+    "lib/version.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "node ../../scripts/build.js",
+    "clean": "node ../../scripts/clean.js",
+    "start": "node ../../scripts/start.js",
+    "start-test": "node ../../scripts/start-test.js",
+    "update-snapshots": "node ../../scripts/build.js jest -u"
+  },
+  "devDependencies": {
+    "@types/enzyme": "{{{typesEnzyme}}}",
+    "@types/enzyme-adapter-react-16": "{{{typesEnzymeAdapterReact16}}}",
+    "@types/es6-promise": "{{{typesEs6Promise}}}",
+    "@types/jest": "{{{typesJest}}}",
+    "@types/react": "{{{typesReact}}}",
+    "@types/react-dom": "{{{typesReactDom}}}",
+    "@types/react-test-renderer": "{{{typesReactTestRenderer}}}",
+    "@types/webpack-env": "{{{typesWebpackEnv}}}",
+    "@uifabric/example-app-base": "{{{uifabricExampleAppBase}}}",
+    "@uifabric/jest-serializer-merge-styles": "{{{uifabricJestSerializerMergeStyles}}}",
+    "@uifabric/prettier-rules": "{{{uifabricPrettierRules}}}",
+    "@uifabric/tslint-rules": "{{{uifabricTslintRules}}}",
+    "enzyme": "{{{enzyme}}}",
+    "enzyme-adapter-react-16": "{{{enzymeAdapterReact16}}}",
+    "es6-weak-map": "{{{es6WeakMap}}}",
+    "react": "{{{react}}}",
+    "react-dom": "{{{reactDom}}}",
+    "react-test-renderer": "{{{reactTestRenderer}}}"
+  },
+  "dependencies": {
+    "@microsoft/load-themed-styles": "{{{microsoftLoadThemedStyles}}}",
+    "@uifabric/set-version": "{{{uifabricSetVersion}}}",
+    "office-ui-fabric-react": "{{{officeUiFabricReact}}}",
+    "tslib": "{{{tslib}}}"
+  },
+  "peerDependencies": {
+    "react": "{{{react}}}",
+    "react-dom": "{{{reactDom}}}"
+  }
+}

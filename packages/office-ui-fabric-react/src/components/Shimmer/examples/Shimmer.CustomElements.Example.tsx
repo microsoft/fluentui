@@ -27,10 +27,7 @@ export class ShimmerCustomElementsExample extends React.Component<{}, {}> {
         style={{ display: 'flex' }}
       >
         <ShimmerElementsGroup
-          shimmerElements={[
-            { type: ElemType.line, width: 40, height: 40 },
-            { type: ElemType.gap, width: 10, height: 40 }
-          ]}
+          shimmerElements={[{ type: ElemType.line, width: 40, height: 40 }, { type: ElemType.gap, width: 10, height: 40 }]}
         />
         <ShimmerElementsGroup
           flexWrap={true}
@@ -50,9 +47,7 @@ export class ShimmerCustomElementsExample extends React.Component<{}, {}> {
         // tslint:disable-next-line:jsx-ban-props
         style={{ display: 'flex' }}
       >
-        <ShimmerElementsGroup
-          shimmerElements={[{ type: ElemType.circle, height: 40 }, { type: ElemType.gap, width: 10, height: 40 }]}
-        />
+        <ShimmerElementsGroup shimmerElements={[{ type: ElemType.circle, height: 40 }, { type: ElemType.gap, width: 10, height: 40 }]} />
         <ShimmerElementsGroup
           flexWrap={true}
           shimmerElements={[
@@ -73,18 +68,13 @@ export class ShimmerCustomElementsExample extends React.Component<{}, {}> {
       >
         <ShimmerElementsGroup
           width={'90px'}
-          shimmerElements={[
-            { type: ElemType.line, height: 80, width: 80 },
-            { type: ElemType.gap, width: 10, height: 80 }
-          ]}
+          shimmerElements={[{ type: ElemType.line, height: 80, width: 80 }, { type: ElemType.gap, width: 10, height: 80 }]}
         />
         <div
           // tslint:disable-next-line:jsx-ban-props
           style={{ display: 'flex', flexWrap: 'wrap', width: '100%' }}
         >
-          <ShimmerElementsGroup
-            shimmerElements={[{ type: ElemType.circle, height: 40 }, { type: ElemType.gap, width: 10, height: 40 }]}
-          />
+          <ShimmerElementsGroup shimmerElements={[{ type: ElemType.circle, height: 40 }, { type: ElemType.gap, width: 10, height: 40 }]} />
           <ShimmerElementsGroup
             flexWrap={true}
             width={'calc(100% - 50px)'}

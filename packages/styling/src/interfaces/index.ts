@@ -6,3 +6,4 @@ export { ISemanticTextColors } from './ISemanticTextColors';
 export { ISpacing } from './ISpacing';
 export { ITheme, IPartialTheme, IScheme, ISchemeNames } from './ITheme';
 export { IFontFamilies, IFontSizes, IFontVariant, IFontVariants, IFontWeights, ITypography } from './ITypography';
+export { IEffects } from './IEffects';
