@@ -9,7 +9,7 @@ export class SlotsStackExample extends React.Component<{}, {}> {
     return (
       <Stack {...stackProps}>
         <Button icon="share" content="Stack: Props, as: 'div'" stack={{ as: 'div' }} />
-        <Button icon="share" stack={{ horizontalAlignment: 'start' }} content="Stack: Object, horizontalAlign: left" />
+        <Button icon="share" stack={{ horizontalAlign: 'start' }} content="Stack: Object, horizontalAlign: left" />
         <Button icon="share" stack={(props, StackType) => <StackType {...props} />} content="Stack: Function" />
         <Button
           icon="share"
