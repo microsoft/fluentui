@@ -205,7 +205,7 @@ export interface IBasePickerSuggestionsProps {
   mostRecentlyUsedHeaderText?: string;
 
   /**
-   * the text that should appear when no results are returned.
+   * The text that should appear when no results are returned.
    */
   noResultsFoundText?: string;
 
