@@ -433,7 +433,9 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       case DateRangeType.Week:
       case DateRangeType.WorkWeek:
         weeks.forEach((week: IDayInfo[], weekIndex: number) => {
-          const minIndex = week.findIndex(item => item.isInBounds);
+          const minIndex = this._findIndex(week, (item: IDayInfo) => {
+            return item.isInBounds;
+          });
           const maxIndex = this._findLastIndex(week, (item: IDayInfo) => {
             return item.isInBounds;
           });
@@ -804,11 +806,30 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   }
 
   /**
+   * Returns the index of the first element in the array where the predicate is true, and -1
+   * otherwise
+   * @param items Array of items to be iterated over using the predicate
+   * @param predicate find calls predicate once for each element of the array, in ascending
+   * order, until it finds one where predicate returns true if such an element is found.
+   */
+  private _findIndex<T>(items: T[], predicate: (item: T) => boolean): number {
+    for (let i = 0; i < items.length; i++) {
+      const item = items[i];
+
+      if (predicate(item)) {
+        return i;
+      }
+    }
+
+    return -1;
+  }
+
+  /**
    * Returns the index of the last element in the array where the predicate is true, and -1
    * otherwise
    * @param items Array of items to be iterated over using the predicate
    * @param predicate find calls predicate once for each element of the array, in descending
-   * order, until it finds one where predicate returns true. If such an element is found,
+   * order, until it finds one where predicate returns true if such an element is found.
    */
   private _findLastIndex<T>(items: T[], predicate: (item: T) => boolean): number {
     for (let i = items.length - 1; i >= 0; i--) {
