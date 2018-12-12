@@ -17,6 +17,11 @@ export interface IThumbnailItemProps {
   description?: string;
 
   /**
+   * alternate text for the image of the thumbnail item
+   */
+  altImageText: string;
+
+  /**
    * Callback function to handle click on thumbnail item
    */
   handleThumbnailItemClick?: () => void;

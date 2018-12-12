@@ -22,6 +22,7 @@ export class ThumbnailList extends React.Component<IThumbnailListProps> {
           description={thumbnailItem.description}
           subheaderText={thumbnailItem.subheaderText}
           handleThumbnailItemClick={thumbnailItem.handleThumbnailItemClick}
+          altImageText={thumbnailItem.altImageText}
         />
       );
     });
