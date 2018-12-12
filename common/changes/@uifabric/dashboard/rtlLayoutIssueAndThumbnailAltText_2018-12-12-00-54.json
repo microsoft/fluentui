@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/dashboard",
+      "comment": "Adding LTR wrapper for RGL. This will prevent the cards from overflowing to the right most end. Although the layout of cards are displayed in LTR their content is shown in RTL when the mode is RTL. Added alt text for thumbnail item in thumbnail list",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/dashboard",
+  "email": "nulikarthik@gmail.com"
+}
