@@ -2885,7 +2885,9 @@ interface IColumn {
   headerClassName?: string;
   iconClassName?: string;
   iconName?: string;
+  // @deprecated
   isCollapsable?: boolean;
+  isCollapsible?: boolean;
   isFiltered?: boolean;
   isGrouped?: boolean;
   isIconOnly?: boolean;
