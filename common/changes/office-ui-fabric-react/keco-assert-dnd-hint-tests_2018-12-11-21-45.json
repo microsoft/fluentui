@@ -1,11 +1,11 @@
 {
   "changes": [
     {
-      "comment": "",
       "packageName": "office-ui-fabric-react",
+      "comment": "DetailsHeader Test: Assert elements in test are non-null to reduce IDE noise.",
       "type": "none"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "Humberto.Morimoto@microsoft.com"
+  "email": "keco@microsoft.com"
 }
