@@ -1,6 +1,20 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 08 Nov 2018 04:17:34 GMT and should not be manually modified.
+This log was last generated on Wed, 14 Nov 2018 13:34:01 GMT and should not be manually modified.
+
+## 0.28.4
+Wed, 14 Nov 2018 13:34:01 GMT
+
+### Patches
+
+- Add empty bar for use case, changes to handle Nan cases and infinity case
+
+## 0.28.3
+Fri, 09 Nov 2018 13:32:57 GMT
+
+### Patches
+
+- Make change to multistacked bar chart's hideDenominator prop
 
 ## 0.28.2
 Thu, 08 Nov 2018 04:17:34 GMT

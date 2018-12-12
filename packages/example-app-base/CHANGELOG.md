@@ -1,6 +1,20 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Tue, 06 Nov 2018 13:31:09 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Dec 2018 13:36:20 GMT and should not be manually modified.
+
+## 6.9.4
+Tue, 11 Dec 2018 13:36:20 GMT
+
+### Patches
+
+- Fix Example dropdown regression caused by #7326.
+
+## 6.9.3
+Thu, 06 Dec 2018 13:34:21 GMT
+
+### Patches
+
+- Fix for issue#7258:Documentation is missing for button
 
 ## 6.9.2
 Tue, 06 Nov 2018 13:31:09 GMT

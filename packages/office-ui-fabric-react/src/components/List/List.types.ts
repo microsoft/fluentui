@@ -2,24 +2,26 @@ import * as React from 'react';
 import { IRefObject, IRectangle, IRenderFunction } from '../../Utilities';
 import { List } from './List';
 
-export const enum ScrollToMode {
+export const ScrollToMode = {
   /**
    * Does not make any consideration to where in the viewport the item should align to.
    */
-  auto,
+  auto: 0 as 0,
   /**
    * Attempts to scroll the list so the top of the desired item is aligned with the top of the viewport.
    */
-  top,
+  top: 1 as 1,
   /**
    * Attempts to scroll the list so the bottom of the desired item is aligned with the bottom of the viewport.
    */
-  bottom,
+  bottom: 2 as 2,
   /**
    * Attempts to scroll the list so the desired item is in the exact center of the viewport.
    */
-  center
-}
+  center: 3 as 3
+};
+
+export type ScrollToMode = typeof ScrollToMode[keyof typeof ScrollToMode];
 
 export interface IList {
   /**
@@ -174,7 +176,7 @@ export interface IPage {
   isSpacer?: boolean;
 }
 
-export interface IPageProps extends React.HTMLAttributes<HTMLDivElement>, React.Props<HTMLDivElement> {
+export interface IPageProps extends React.HTMLAttributes<HTMLDivElement>, React.ClassAttributes<HTMLDivElement> {
   /**
    * The role being assigned to the rendered page element by the list.
    */

@@ -117,13 +117,13 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       const color: string = point.color
         ? point.color
         : point.placeHolder
-          ? palette.neutralTertiaryAlt
-          : defaultPalette[Math.floor(Math.random() * 4 + 1)];
+        ? palette.neutralTertiaryAlt
+        : defaultPalette[Math.floor(Math.random() * 4 + 1)];
       const pointData = point.data ? point.data : 0;
       if (index > 0) {
         prevPosition += value;
       }
-      value = (pointData / total) * 100;
+      value = (pointData / total) * 100 ? (pointData / total) * 100 : 0;
       startingPoint.push(prevPosition);
       const styles = this.props.styles;
       let shouldHighlight = true;
@@ -158,6 +158,13 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         </g>
       );
     }
+    if (total === 0) {
+      bars.push(
+        <g key={'empty'} className={this._classNames.noData} onClick={this._redirectToUrl.bind(this, href)}>
+          <rect key={0} x={'0%'} y={0} width={'100%'} height={barHeight} fill={palette.neutralTertiaryAlt} />
+        </g>
+      );
+    }
     const hideNumber = hideRatio === undefined ? false : hideRatio;
     const showRatio = !hideNumber && data!.chartData!.length === 2;
     const showNumber = !hideNumber && data!.chartData!.length === 1;
@@ -171,7 +178,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           )}
           {showRatio && (
             <div>
-              <strong>{data!.chartData![0].data}</strong>
+              <strong>{data!.chartData![0].data ? data!.chartData![0].data : 0}</strong>
               {!hideDenominator && <span>/{total}</span>}
             </div>
           )}

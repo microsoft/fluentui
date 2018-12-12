@@ -50,6 +50,16 @@ const view: IStackComponent['view'] = props => {
 
   const nativeProps = getNativeProps(rest, htmlElementProperties);
 
+  if (wrap) {
+    return (
+      <div className={classNames.root}>
+        <RootType {...nativeProps} className={classNames.inner}>
+          {stackChildren}
+        </RootType>
+      </div>
+    );
+  }
+
   return (
     <RootType {...nativeProps} className={classNames.root}>
       {stackChildren}

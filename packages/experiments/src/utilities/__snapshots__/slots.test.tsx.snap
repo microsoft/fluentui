@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`createFactory renders userProp JSX with one prop 1`] = `
+<p
+  id="I should be the only prop in the output"
+/>
+`;
+
+exports[`createFactory renders userProp function with one prop 1`] = `
+<p
+  id="I should be the only prop in the output"
+/>
+`;
+
+exports[`createFactory renders userProp integer as children 1`] = `
+<div
+  component="componentValue"
+  id="componentIdValue"
+>
+  42
+</div>
+`;
+
+exports[`createFactory renders userProp string as children 1`] = `
+<div
+  component="componentValue"
+  id="componentIdValue"
+>
+  userPropString
+</div>
+`;

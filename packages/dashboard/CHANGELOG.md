@@ -1,6 +1,59 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Thu, 08 Nov 2018 04:17:34 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Dec 2018 13:36:20 GMT and should not be manually modified.
+
+## 0.38.0
+Tue, 11 Dec 2018 13:36:20 GMT
+
+### Minor changes
+
+- Support to horizontal compact dashboard cards
+
+## 0.37.1
+Tue, 04 Dec 2018 13:36:40 GMT
+
+### Patches
+
+- Using _async fabric utility functions to prevent timeout leaks
+
+## 0.37.0
+Fri, 30 Nov 2018 13:37:17 GMT
+
+### Minor changes
+
+- Adding add card experience to DGL, providing respective callbacks and examples
+
+### Patches
+
+- Add missing dependency
+
+## 0.36.0
+Thu, 29 Nov 2018 19:34:12 GMT
+
+### Minor changes
+
+- RecommendationBanner improvements to support Visualizations and ImageIllustration by default
+
+## 0.35.1
+Tue, 20 Nov 2018 20:12:42 GMT
+
+### Patches
+
+- add default fonts from fabric  for dashboard package 
+
+## 0.35.0
+Tue, 13 Nov 2018 13:30:53 GMT
+
+### Minor changes
+
+- Adding SetupCard and SetupCardBanner.
+
+## 0.34.0
+Fri, 09 Nov 2018 13:32:57 GMT
+
+### Minor changes
+
+- Adding props for card to send props to dataviz in charting package
 
 ## 0.33.2
 Thu, 08 Nov 2018 04:17:34 GMT

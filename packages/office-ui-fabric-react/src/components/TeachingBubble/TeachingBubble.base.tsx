@@ -1,8 +1,12 @@
 import * as React from 'react';
 import { BaseComponent, classNamesFunction, createRef } from '../../Utilities';
 import { TeachingBubbleContent } from './TeachingBubbleContent';
-import { ITeachingBubbleProps, ITeachingBubbleStyleProps, ITeachingBubbleStyles } from './TeachingBubble.types';
-import { calloutStyles } from './TeachingBubble.styles';
+import {
+  ITeachingBubbleProps,
+  ITeachingBubbleStyleProps,
+  ITeachingBubbleStyles,
+  ITeachingBubbleSubComponentStyles
+} from './TeachingBubble.types';
 import { Callout, ICalloutProps } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
@@ -62,6 +66,9 @@ export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITea
     };
 
     const classNames = getClassNames(styles, stylesProps);
+    const calloutStyles = classNames.subComponentStyles
+      ? (classNames.subComponentStyles as ITeachingBubbleSubComponentStyles).callout
+      : undefined;
 
     return (
       <Callout
@@ -69,7 +76,7 @@ export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITea
         onDismiss={onDismiss}
         {...calloutProps}
         className={classNames.root}
-        styles={calloutStyles(stylesProps)}
+        styles={calloutStyles}
         hideOverflow
       >
         <div ref={this.rootElement}>

@@ -3,7 +3,6 @@ import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { DetailsList, DetailsListLayoutMode, Selection, IColumn, IDetailsList } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { createRef } from 'office-ui-fabric-react/lib/Utilities';
 
 const _items: any[] = [];
 
@@ -37,7 +36,7 @@ export class DetailsListBasicExample extends React.Component<
   }
 > {
   private _selection: Selection;
-  private _detailsList = createRef<IDetailsList>();
+  private _detailsList = React.createRef<IDetailsList>();
 
   constructor(props: {}) {
     super(props);

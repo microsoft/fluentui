@@ -5,6 +5,7 @@ import { FacepileButton } from './FacepileButton';
 import { Icon } from '../../Icon';
 import { Persona, IPersonaStyles } from '../../Persona';
 import { PersonaCoin, PersonaSize, PersonaInitialsColor } from '../../PersonaCoin';
+import { IButtonProps } from '../Button/Button.types';
 
 const getClassNames = classNamesFunction<IFacepileStyleProps, IFacepileStyles>();
 
@@ -131,10 +132,12 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
   }
 
   private _getElementWithOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
+    const { keytipProps } = persona;
     return (
       <FacepileButton
         {...getNativeProps(persona, buttonProperties)}
         {...this._getElementProps(persona, index)}
+        keytipProps={keytipProps}
         onClick={this._onPersonaClick.bind(this, persona)}
       >
         {personaControl}
@@ -181,21 +184,24 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
   }
 
   private _getDescriptiveOverflowElement(personasOverflow: IFacepilePersona[]): JSX.Element | null {
-    const { overflowButtonProps, personaSize } = this.props;
-
+    const { personaSize } = this.props;
     if (!personasOverflow || personasOverflow.length < 1) {
       return null;
     }
 
     const personaNames: string = personasOverflow.map((p: IFacepilePersona) => p.personaName).join(', ');
+    const overflowButtonProps: IButtonProps = { ...{ title: personaNames }, ...this.props.overflowButtonProps };
     const numPersonasNotPictured: number = Math.max(personasOverflow.length, 0);
 
     const { _classNames } = this;
 
     return (
-      <FacepileButton {...overflowButtonProps} ariaDescription={personaNames} className={_classNames.descriptiveOverflowButton}>
+      <FacepileButton
+        {...overflowButtonProps}
+        ariaDescription={overflowButtonProps.title}
+        className={_classNames.descriptiveOverflowButton}
+      >
         <PersonaCoin
-          title={personaNames}
           size={personaSize}
           onRenderInitials={this._renderInitialsNotPictured(numPersonasNotPictured)}
           initialsColor={PersonaInitialsColor.transparent}

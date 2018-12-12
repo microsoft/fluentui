@@ -17,8 +17,7 @@ import {
   isElementFocusZone,
   isElementFocusSubZone,
   isElementTabbable,
-  shouldWrapFocus,
-  createRef
+  shouldWrapFocus
 } from '../../Utilities';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
@@ -48,7 +47,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     direction: FocusZoneDirection.bidirectional
   };
 
-  private _root = createRef<HTMLElement>();
+  private _root = React.createRef<HTMLElement>();
   private _id: string;
   /** The most recently focused child element. */
   private _activeElement: HTMLElement | null;

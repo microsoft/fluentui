@@ -3,10 +3,15 @@ import { IComponent, IStyleableComponentProps } from '../../Foundation';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IComponentAs, IRefObject } from '../../Utilities';
+import { IRawStyleBase } from '@uifabric/merge-styles/lib/IRawStyleBase';
 
 export type IToggleComponent = IComponent<IToggleProps, IToggleViewProps, IToggleStyles>;
 
-export interface IToggle {}
+export type IToggleSlots = 'root' | 'label' | 'container' | 'pill' | 'thumb' | 'text';
+
+export interface IToggle {
+  focus: () => void;
+}
 
 /**
  * Toggle component props.
@@ -70,10 +75,15 @@ export interface IToggleProps extends IStyleableComponentProps<IToggleViewProps,
    * Optional keytip for this toggle
    */
   keytipProps?: IKeytipProps;
+
+  /**
+   * Style variables for Toggle.
+   */
+  styleVariables?: IToggleStyleVariables;
 }
 
 export type IToggleViewProps = Pick<IToggleProps, 'as' | 'label' | 'ariaLabel' | 'disabled' | 'onChange' | 'keytipProps'> &
-  Required<Pick<IToggleProps, 'checked'>> & {
+  Required<Pick<IToggleProps, 'checked' | 'styleVariables'>> & {
     /**
      * Toggle input callback triggered by mouse and keyboard input.
      */
@@ -88,39 +98,35 @@ export type IToggleViewProps = Pick<IToggleProps, 'as' | 'label' | 'ariaLabel' |
      * Text to display next to the toggle.
      */
     text?: string;
+
+    /**
+     * Reference to the toggle button.
+     */
+    toggleButtonRef?: React.RefObject<HTMLButtonElement>;
   };
 
 /**
  * Styles for the Toggle component.
  */
-export interface IToggleStyles {
-  /**
-   * Root element.
-   */
-  root: IStyle;
+export interface IToggleStyleVariablesTypes {
+  pillBackground?: string;
+  pillHoveredBackground?: string;
+  pillBorderColor?: string;
+  pillHoveredBorderColor?: string;
+  pillJustifyContent?: IRawStyleBase['justifyContent'];
+  pillHighContrastBackground?: string;
+  pillHighContrastHoveredBackground?: string;
+  pillHighContrastBorderColor?: string;
+  pillHighContrastHoveredBorderColor?: string;
 
-  /**
-   * Label element above the toggle.
-   */
-  label: IStyle;
+  thumbBackground?: string;
+  thumbHighContrastBackground?: string;
+  thumbHighContrastBorderColor?: string;
 
-  /**
-   * Container for the toggle pill and the text next to it.
-   */
-  container: IStyle;
-
-  /**
-   * Pill, rendered as a button.
-   */
-  pill: IStyle;
-
-  /**
-   * Thumb inside of the pill.
-   */
-  thumb: IStyle;
-
-  /**
-   * Text next to the pill.
-   */
-  text: IStyle;
+  textColor?: string;
+  textHighContrastColor?: string;
 }
+
+export type IToggleStyleVariables = IToggleStyleVariablesTypes | ((props: IToggleViewProps) => IToggleStyleVariablesTypes) | undefined;
+
+export type IToggleStyles = { [key in IToggleSlots]: IStyle };

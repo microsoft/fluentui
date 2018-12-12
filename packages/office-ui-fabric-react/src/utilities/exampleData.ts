@@ -1,4 +1,4 @@
-import { IGroup } from 'office-ui-fabric-react/lib/DetailsList';
+import { IGroup } from '../DetailsList';
 
 const LOREM_IPSUM = (
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ' +
@@ -60,7 +60,9 @@ export function createGroups(
 
 export function lorem(wordCount: number): string {
   return Array.apply(null, Array(wordCount))
-    .map((item: number) => _randWord(LOREM_IPSUM))
+    .map((item: number, idx: number) => {
+      return LOREM_IPSUM[idx % LOREM_IPSUM.length];
+    })
     .join(' ');
 }
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as stylesImport from './BaseFloatingPicker.scss';
-import { BaseComponent, createRef, css, KeyCodes } from '../../Utilities';
+import { BaseComponent, css, KeyCodes } from '../../Utilities';
 import { Callout, DirectionalHint } from '../../Callout';
 import { IBaseFloatingPicker, IBaseFloatingPickerProps, IBaseFloatingPickerSuggestionProps } from './BaseFloatingPicker.types';
 import { ISuggestionModel } from '../../Pickers';
@@ -20,7 +20,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   implements IBaseFloatingPicker {
   protected selection: Selection;
 
-  protected root = createRef<HTMLDivElement>();
+  protected root = React.createRef<HTMLDivElement>();
   protected suggestionStore: SuggestionsStore<T>;
   protected suggestionsControl: SuggestionsControl<T>;
   protected SuggestionsControlOfProperType: new (props: ISuggestionsControlProps<T>) => SuggestionsControl<T> = SuggestionsControl as new (
@@ -266,14 +266,15 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
           this.props.onRemoveSuggestion &&
           this.suggestionsControl &&
           this.suggestionsControl.hasSuggestionSelected &&
-          this.suggestionsControl.currentSuggestion
+          this.suggestionsControl.currentSuggestion &&
+          ev.shiftKey
         ) {
           (this.props.onRemoveSuggestion as ((item: T) => void))(this.suggestionsControl.currentSuggestion!.item);
 
           this.suggestionsControl.removeSuggestion();
           this.forceUpdate();
+          ev.stopPropagation();
         }
-        ev.stopPropagation();
         break;
 
       case KeyCodes.up:
