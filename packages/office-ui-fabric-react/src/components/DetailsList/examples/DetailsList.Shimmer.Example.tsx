@@ -130,7 +130,7 @@ export class DetailsListShimmerExample extends React.Component<any, IDetailsList
         minWidth: 70,
         maxWidth: 90,
         isResizable: true,
-        isCollapsable: true,
+        isCollapsible: true,
         data: 'string',
         onRender: (item: IDocument) => {
           return <span>{item.modifiedBy}</span>;
@@ -144,7 +144,7 @@ export class DetailsListShimmerExample extends React.Component<any, IDetailsList
         minWidth: 70,
         maxWidth: 90,
         isResizable: true,
-        isCollapsable: true,
+        isCollapsible: true,
         data: 'number',
         onRender: (item: IDocument) => {
           return <span>{item.fileSize}</span>;

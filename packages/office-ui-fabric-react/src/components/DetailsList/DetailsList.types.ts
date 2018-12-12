@@ -365,8 +365,14 @@ export interface IColumn {
 
   /**
    * If specified will allow the column to be collapsed when rendered in justified layout.
+   * @deprecated Use `isCollapsible`
    */
   isCollapsable?: boolean;
+
+  /**
+   * If specified will allow the column to be collapsed when rendered in justified layout.
+   */
+  isCollapsible?: boolean;
 
   /**
    * Determines if the column is currently sorted. Renders a sort arrow in the column header.
