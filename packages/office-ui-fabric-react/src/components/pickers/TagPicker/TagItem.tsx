@@ -1,14 +1,9 @@
-/* tslint:disable */
 import * as React from 'react';
-/* tslint:enable */
+
 import { styled, classNamesFunction } from '../../../Utilities';
 import { Icon } from '../../../Icon';
-import { getStyles } from './TagItem.styles';
-
 import { ITagItemProps, ITagItemStyleProps, ITagItemStyles } from './TagPicker.types';
-
-// import * as stylesImport from './TagItem.scss';
-// const styles: any = stylesImport;
+import { getStyles } from './TagItem.styles';
 
 const getClassNames = classNamesFunction<ITagItemStyleProps, ITagItemStyles>();
 
