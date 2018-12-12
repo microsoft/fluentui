@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import { IStyle, ITheme } from '../../../Styling';
 import { IStyleFunctionOrObject } from '../../../Utilities';
-
 import { IPickerItemProps } from '../PickerItem.types';
 import { IBasePickerProps } from '../BasePicker.types';
 
@@ -16,13 +15,11 @@ export interface ITag {
 }
 
 /** TagPicker component props */
-export interface ITagPickerProps extends IBasePickerProps<ITag> {}
+export interface ITagPickerProps extends IBasePickerProps<ITag> { }
 
 /** TagItem component props */
 export interface ITagItemProps extends IPickerItemProps<ITag> {
-  /**
-   * Additional CSS class(es) to apply to the TagItem root element.
-   */
+  /** Additional CSS class(es) to apply to the TagItem root element. */
   className?: string;
 
   /**
@@ -31,14 +28,10 @@ export interface ITagItemProps extends IPickerItemProps<ITag> {
    */
   enableTagFocusInDisabledPicker?: boolean;
 
-  /**
-   * Call to provide customized styling that will layer on top of the variant rules.
-   */
+  /** Call to provide customized styling that will layer on top of the variant rules. */
   styles?: IStyleFunctionOrObject<ITagItemStyleProps, ITagItemStyles>;
 
-  /**
-   * Theme provided by High-Order Component.
-   */
+  /** Theme provided by High-Order Component. */
   theme?: ITheme;
 }
 
