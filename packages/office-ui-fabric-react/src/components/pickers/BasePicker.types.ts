@@ -280,7 +280,7 @@ export enum ValidationState {
   /** User input is valid. */
   valid,
 
-  /** Intermediate validation state. */
+  /** User input could be valid or invalid, it's state is not known yet. */
   warning,
 
   /** User input is invalid. */
