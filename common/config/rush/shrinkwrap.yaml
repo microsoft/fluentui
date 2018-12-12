@@ -2453,7 +2453,7 @@ packages:
       babel-plugin-transform-es2015-typeof-symbol: 6.23.0
       babel-plugin-transform-es2015-unicode-regex: 6.24.1
       babel-plugin-transform-regenerator: 6.26.0
-    deprecated: "\U0001F64C  Thanks for using Babel: we recommend using babel-preset-env now: please read babeljs.io/env to update! "
+    deprecated: "\uD83D\uDE4C  Thanks for using Babel: we recommend using babel-preset-env now: please read babeljs.io/env to update! "
     dev: false
     resolution:
       integrity: sha1-1EBQ1rwsn+6nAqrzjXJ6AhBTiTk=
