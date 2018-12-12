@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add onCardExpand callback",
+      "comment": "HoverCard: Add optional onCardExpand callback",
       "type": "minor"
     }
   ],
