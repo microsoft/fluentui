@@ -50,7 +50,7 @@ describe('Stack', () => {
 
   it('renders vertical Stack with vertical and horizontal alignment correctly', () => {
     const component = renderer.create(
-      <Stack horizontalAlignment="start" verticalAlignment="end">
+      <Stack horizontalAlign="start" verticalAlign="end">
         <div>Item 1</div>
         <div>Item 2</div>
       </Stack>
@@ -61,7 +61,7 @@ describe('Stack', () => {
 
   it('renders horizontal Stack with vertical and horizontal alignment correctly', () => {
     const component = renderer.create(
-      <Stack horizontal horizontalAlignment="start" verticalAlignment="end">
+      <Stack horizontal horizontalAlign="start" verticalAlign="end">
         <div>Item 1</div>
         <div>Item 2</div>
       </Stack>
@@ -72,7 +72,7 @@ describe('Stack', () => {
 
   it('renders vertical Stack with vertical and horizontal fill correctly', () => {
     const component = renderer.create(
-      <Stack fillHorizontal fillVertical>
+      <Stack horizontalFill verticalFill>
         <div>Item 1</div>
         <div>Item 2</div>
       </Stack>
@@ -83,7 +83,7 @@ describe('Stack', () => {
 
   it('renders horizontal Stack with vertical and horizontal fill correctly', () => {
     const component = renderer.create(
-      <Stack horizontal fillHorizontal fillVertical>
+      <Stack horizontal horizontalFill verticalFill>
         <div>Item 1</div>
         <div>Item 2</div>
       </Stack>
