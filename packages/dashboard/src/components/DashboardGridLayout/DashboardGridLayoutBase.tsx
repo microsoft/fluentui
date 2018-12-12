@@ -46,21 +46,18 @@ export class DashboardGridLayoutBase extends React.Component<IDashboardGridLayou
     margin: [24, 24]
   };
 
-  constructor(props: IDashboardGridLayoutBaseProps) {
-    super(props);
-    const layouts = this._createLayout(props.layout);
-    const compactedLayouts = this._getCompactedLayouts(layouts);
-    this.state = {
-      layouts: compactedLayouts
-    };
-  }
+  public state: IDashboardGridLayoutBaseState = {};
 
-  public componentWillReceiveProps(nextProps: IDashboardGridLayoutBaseProps): void {
-    if (!nextProps) {
-      return;
+  public static getDerivedStateFromProps(
+    nextProps: Readonly<IDashboardGridLayoutBaseProps>
+  ): Partial<IDashboardGridLayoutBaseState> | null {
+    const layouts = _createLayout(nextProps, nextProps.layout);
+    if (!layouts) {
+      return null;
     }
-    const layouts = this._createLayout(nextProps.layout);
-    this._updateStateWithCompactedLayout(layouts);
+    return {
+      layouts: _getCompactedLayouts(nextProps, layouts)
+    };
   }
 
   public render(): JSX.Element {
@@ -94,78 +91,70 @@ export class DashboardGridLayoutBase extends React.Component<IDashboardGridLayou
     );
   }
 
-  private _updateStateWithCompactedLayout(layouts?: Layouts): void {
-    if (!layouts) {
-      return;
-    }
-
-    const compactedLayouts = this._getCompactedLayouts(layouts);
-    this.setState({
-      layouts: compactedLayouts
-    });
-  }
-
-  private _getCompactedLayouts(layouts: Layouts): Layouts | undefined {
-    if (!layouts) {
-      return undefined;
-    }
-    // todo: support other breakpoints
-    return {
-      lg: layouts.lg ? compactHorizontally(layouts.lg, this.props.cols!.lg) : undefined
-    } as Layouts;
-  }
-
   private _onLayoutChanged = (currentLayout: Layout[], allLayouts: Layouts) => {
     if (this.state.layouts) {
       // todo: support other breakpoints
       const layouts: Layouts = {
         lg: this.state.layouts.lg ? currentLayout : undefined
       };
-      this._updateStateWithCompactedLayout(layouts);
+      this.setState({
+        layouts: _getCompactedLayouts(this.props, layouts)
+      });
     }
 
     if (this.props.onLayoutChange) {
       this.props.onLayoutChange(currentLayout, allLayouts);
     }
   };
+}
 
-  private _createLayoutFromProp(layoutProp: IDashboardCardLayout): Layout {
-    return {
-      i: layoutProp.i,
-      x: layoutProp.x,
-      y: layoutProp.y,
-      w: this.props.cardSizeToRGLWidthHeight![layoutProp.size].w,
-      h: this.props.cardSizeToRGLWidthHeight![layoutProp.size].h,
-      static: layoutProp.static === undefined ? false : layoutProp.static,
-      isDraggable: layoutProp.disableDrag === undefined ? true : !layoutProp.disableDrag,
-      isResizable: layoutProp.isResizable === undefined ? true : layoutProp.isResizable
-    };
+function _getCompactedLayouts(props: IDashboardGridLayoutBaseProps, layouts: Layouts): Layouts | undefined {
+  if (!layouts) {
+    return undefined;
+  }
+  // todo: support other breakpoints
+  return {
+    lg: layouts.lg ? compactHorizontally(layouts.lg, props.cols!.lg) : undefined
+  } as Layouts;
+}
+
+function _createLayoutFromProp(props: IDashboardGridLayoutBaseProps, layoutProp: IDashboardCardLayout): Layout {
+  const { isResizable = true } = layoutProp;
+  return {
+    i: layoutProp.i,
+    x: layoutProp.x,
+    y: layoutProp.y,
+    w: props.cardSizeToRGLWidthHeight![layoutProp.size].w,
+    h: props.cardSizeToRGLWidthHeight![layoutProp.size].h,
+    static: !!layoutProp.static,
+    isDraggable: !layoutProp.disableDrag,
+    isResizable: isResizable
+  };
+}
+
+/**
+ * Default function to create RGL layout from dashboard layout.
+ * If props.createRGLLayouts is provided, use the function in prop instead
+ */
+function _createLayout(props: IDashboardGridLayoutBaseProps, layoutFromProps?: DashboardGridBreakpointLayouts): Layouts {
+  if (props.createRGLLayouts) {
+    // if the function to create layout is provided, use it; otherwise, use the default function to convert dashboard layout to RGL layout
+    return props.createRGLLayouts(layoutFromProps!);
   }
 
-  /**
-   * Default function to create RGL layout from dashboard layout.
-   * If this.props.createRGLLayouts is provided, use the function in prop instead
-   */
-  private _createLayout(layoutFromProps?: DashboardGridBreakpointLayouts): Layouts {
-    if (this.props.createRGLLayouts) {
-      // if the function to create layout is provided, use it; otherwise, use the default function to convert dashboard layout to RGL layout
-      return this.props.createRGLLayouts(layoutFromProps!);
-    }
-
-    const layouts: Layouts = {};
-    if (layoutFromProps) {
-      for (const [key, value] of Object.entries(layoutFromProps)) {
-        if (value === undefined) {
-          continue;
-        }
-        const layout: Layout[] = [];
-        for (let i = 0; i < value.length; i++) {
-          layout.push(this._createLayoutFromProp(value[i]));
-        }
-        updateLayoutsFromLayout(layouts, layout, key as Breakpoints);
+  const layouts: Layouts = {};
+  if (layoutFromProps) {
+    for (const [key, value] of Object.entries(layoutFromProps)) {
+      if (value === undefined) {
+        continue;
       }
+      const layout: Layout[] = [];
+      for (let i = 0; i < value.length; i++) {
+        layout.push(_createLayoutFromProp(props, value[i]));
+      }
+      updateLayoutsFromLayout(layouts, layout, key as Breakpoints);
     }
-
-    return layouts;
   }
+
+  return layouts;
 }
