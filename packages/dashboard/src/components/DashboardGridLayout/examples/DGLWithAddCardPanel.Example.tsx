@@ -34,7 +34,8 @@ const thumbnailItems: IThumbnailItemProps[] = [
     description: 'This is the first thumbnail item',
     handleThumbnailItemClick: () => {
       alert('First Item clicked');
-    }
+    },
+    altImageText: 'First item'
   },
   {
     imageSource: './src/images/download.jpg',
@@ -42,7 +43,8 @@ const thumbnailItems: IThumbnailItemProps[] = [
     description: 'Lorem ipsum dolor sit amet, ',
     handleThumbnailItemClick: () => {
       alert('Second Item clicked');
-    }
+    },
+    altImageText: 'Second item'
   }
 ];
 
