@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 28 Nov 2018 12:24:44 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Dec 2018 12:24:33 GMT and should not be manually modified.
+
+## 5.132.1
+Wed, 12 Dec 2018 12:24:33 GMT
+
+### Patches
+
+- DetailsList: changed display property to none when drop hint is not visible
 
 ## 5.132.0
 Wed, 28 Nov 2018 12:24:44 GMT
