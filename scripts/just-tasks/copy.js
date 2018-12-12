@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { thunk, series } = require('just-task');
+const { series } = require('just-task');
 const { copyTask } = require('just-task-preset');
 
 function expandSourcePath(pattern) {
@@ -35,7 +35,7 @@ function expandSourcePath(pattern) {
   }
 }
 
-exports.copy = thunk(() => {
+exports.copy = () => {
   let tasks = [];
   let configPath = path.resolve(process.cwd(), 'config/pre-copy.json');
 
@@ -54,4 +54,4 @@ exports.copy = thunk(() => {
   }
 
   return series.apply(null, tasks);
-});
+};
