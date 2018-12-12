@@ -1,19 +1,19 @@
-import { ITheme } from 'office-ui-fabric-react';
 import { borderRadius } from './styleConstants';
 import { getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
 import { NeutralColors, CommunicationColors } from '../IbizaColors';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
+import { IExtendedTheme } from '../IExtendedTheme';
 
 // TODO: "any" is used here to get around "is using xxx but cannot be named" TS error. Should be able to remove
 //        this 'any' once we upgrade to TS3.1+
 // tslint:disable-next-line:no-any
-export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
+export const DefaultButtonStyles = (extendedTheme: IExtendedTheme): Partial<IButtonStyles> => {
   return {
     root: {
       borderRadius: borderRadius,
       backgroundColor: NeutralColors.white,
       border: `1px solid ${NeutralColors.gray110}`,
-      ...getFocusStyle(theme, 1)
+      ...getFocusStyle(extendedTheme.theme, 1)
     },
     rootHovered: {
       selectors: {
