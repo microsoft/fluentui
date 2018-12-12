@@ -433,6 +433,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       case DateRangeType.Week:
       case DateRangeType.WorkWeek:
         weeks.forEach((week: IDayInfo[], weekIndex: number) => {
+          // Array.findIndex() is not supported in IE
           const minIndex = this._findIndex(week, (item: IDayInfo) => {
             return item.isInBounds;
           });
@@ -807,7 +808,8 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
   /**
    * Returns the index of the first element in the array where the predicate is true, and -1
-   * otherwise
+   * otherwise.
+   * Note that Array.findIndex() is not supported in IE.
    * @param items Array of items to be iterated over using the predicate
    * @param predicate find calls predicate once for each element of the array, in ascending
    * order, until it finds one where predicate returns true if such an element is found.
