@@ -2,6 +2,44 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.113.0",
+      "tag": "office-ui-fabric-react_v6.113.0",
+      "date": "Thu, 13 Dec 2018 13:37:01 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "theming: remove ITypography",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "eaba75caa15a4c8e5f96b85836d0d1d44c9d50a3"
+          },
+          {
+            "comment": "Pickers: Convert TagPicker and PeoplePicker to use CSS-in-JS. Support SASS styling for custom pickers extended from BasePicker. Fix tests not using componentRef to access component methods. Cleanup TagPicker example page.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "cece26501f732c81412ed2b6c5a1804b7999295f"
+          }
+        ],
+        "none": [
+          {
+            "comment": "DetailsHeader Test: Assert elements in test are non-null to reduce IDE noise.",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "e338fc1c92d1ec44dec5db92915773677a282f0d"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "DetailsHeader: Fix \"Select All\" state not persisted across component mounts when optional selection prop provided.",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "bd8a9a8d4c1fe42039c00fb4d691da58ac6b8cad"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.38.0 <7.0.0` to `>=6.39.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.112.0",
       "tag": "office-ui-fabric-react_v6.112.0",
       "date": "Tue, 11 Dec 2018 13:36:20 GMT",
