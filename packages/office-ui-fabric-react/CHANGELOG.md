@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 12 Dec 2018 12:24:33 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Dec 2018 12:25:40 GMT and should not be manually modified.
+
+## 5.133.0
+Thu, 13 Dec 2018 12:25:40 GMT
+
+### Minor changes
+
+- HoverCard: Add optional onCardExpand callback (cherry pick of #7107).
 
 ## 5.132.1
 Wed, 12 Dec 2018 12:24:33 GMT
