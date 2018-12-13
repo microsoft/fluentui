@@ -57,7 +57,7 @@ const ButtonSet = () => (
           <Button icon="Share" menu={buttonMenu}>
             <Stack padding="8px 0" as="span" gap={4} horizontalAlign="start">
               <Text>I am a compound multiline button.</Text>
-              <Text variant="caption">I can have a caption.</Text>
+              <Text variant="small">I can have a caption.</Text>
             </Stack>
           </Button>
           <Button disabled content="Menu disabled button" />
