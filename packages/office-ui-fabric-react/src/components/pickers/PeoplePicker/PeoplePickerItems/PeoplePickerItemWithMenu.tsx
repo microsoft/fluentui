@@ -14,7 +14,7 @@ export interface IPeoplePickerItemState {
   contextualMenuVisible: boolean;
 }
 
-export class SelectedItemWithMenu extends BaseComponent<IPeoplePickerItemWithMenuProps, IPeoplePickerItemState> {
+export class PeoplePickerItemWithMenu extends BaseComponent<IPeoplePickerItemWithMenuProps, IPeoplePickerItemState> {
   public refs: {
     [key: string]: any;
   };

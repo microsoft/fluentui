@@ -1,6 +1,5 @@
-/* tslint:disable */
 import * as React from 'react';
-/* tslint:enable */
+
 import { getRTL, getInitials, styled } from '../../../Utilities';
 import { BasePicker, BasePickerListBelow } from '../BasePicker';
 import {
@@ -10,10 +9,9 @@ import {
   IBasePickerStyleProps,
   IBasePickerStyles
 } from '../BasePicker.types';
-import { SelectedItemDefault } from './PeoplePickerItems/SelectedItemDefault';
+import { PeoplePickerItem } from './PeoplePickerItems/PeoplePickerItem';
 import { IPersonaProps } from '../../../Persona';
 import { SuggestionItemSmall, SuggestionItemNormal } from './PeoplePickerItems/SuggestionItemDefault';
-import './PeoplePicker.scss';
 import { IPeoplePickerItemProps } from './PeoplePickerItems/PeoplePickerItem.types';
 import { getStyles } from '../BasePicker.styles';
 
@@ -28,7 +26,7 @@ export class MemberListPeoplePicker extends BasePickerListBelow<IPersonaProps, I
  */
 export class NormalPeoplePickerBase extends BasePeoplePicker {
   public static defaultProps = {
-    onRenderItem: (props: IPeoplePickerItemProps) => <SelectedItemDefault {...props} />,
+    onRenderItem: (props: IPeoplePickerItemProps) => <PeoplePickerItem {...props} />,
     onRenderSuggestionsItem: (props: IPersonaProps, itemProps?: IBasePickerSuggestionsProps) =>
       SuggestionItemNormal({ ...props }, { ...itemProps }),
     createGenericItem: createGenericItem
@@ -40,7 +38,7 @@ export class NormalPeoplePickerBase extends BasePeoplePicker {
  */
 export class CompactPeoplePickerBase extends BasePeoplePicker {
   public static defaultProps = {
-    onRenderItem: (props: IPeoplePickerItemProps) => <SelectedItemDefault {...props} />,
+    onRenderItem: (props: IPeoplePickerItemProps) => <PeoplePickerItem {...props} />,
     onRenderSuggestionsItem: (props: IPersonaProps, itemProps?: IBasePickerSuggestionsProps) =>
       SuggestionItemSmall({ ...props }, { ...itemProps }),
     createGenericItem: createGenericItem
@@ -52,7 +50,7 @@ export class CompactPeoplePickerBase extends BasePeoplePicker {
  */
 export class ListPeoplePickerBase extends MemberListPeoplePicker {
   public static defaultProps = {
-    onRenderItem: (props: IPeoplePickerItemProps) => <SelectedItemDefault {...props} />,
+    onRenderItem: (props: IPeoplePickerItemProps) => <PeoplePickerItem {...props} />,
     onRenderSuggestionsItem: (props: IPersonaProps, itemProps?: IBasePickerSuggestionsProps) =>
       SuggestionItemNormal({ ...props }, { ...itemProps }),
     createGenericItem: createGenericItem
