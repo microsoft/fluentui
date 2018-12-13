@@ -46,27 +46,27 @@ export class ThemingExample extends React.Component<{}, IThemingExampleState> {
         <Stack.Item grow={true} styles={{ root: { width: '33%', maxWidth: '33%' } }}>
           <ThemeProvider scheme={sideScheme}>
             <Stack styles={regionStyles} gap={10} padding={5}>
-              <Text weight="bold">{sideCaption}</Text>
+              <Text>{sideCaption}</Text>
               <Toggle offText={sideCaption} onText={sideCaption} onChange={this.toggleSide} />
               <CollapsibleSectionRecursiveExample />
             </Stack>
           </ThemeProvider>
         </Stack.Item>
         <Stack.Item grow={true} styles={{ root: { height: 'auto' } }}>
-          <Stack grow={true} fillVertical={true}>
+          <Stack grow={true} verticalFill={true}>
             <ThemeProvider scheme={topScheme}>
               <Stack styles={regionStyles} gap={10} padding={5}>
-                <Stack horizontal horizontalAlignment="space-between">
-                  <Text weight="bold">{topCaption}</Text>
+                <Stack horizontal horizontalAlign="space-between">
+                  <Text>{topCaption}</Text>
                   <Toggle offText={topCaption} onText={topCaption} onChange={this.toggleTop} />
                 </Stack>
                 <CommandBar items={items} overflowItems={overflowItems} farItems={farItems} />
               </Stack>
             </ThemeProvider>
             <ThemeProvider scheme={bodyScheme}>
-              <Stack styles={regionStyles} fillVertical={true} padding={5}>
-                <Stack horizontal horizontalAlignment="space-between">
-                  <Text weight="bold">{bodyCaption}</Text>
+              <Stack styles={regionStyles} verticalFill={true} padding={5}>
+                <Stack horizontal horizontalAlign="space-between">
+                  <Text>{bodyCaption}</Text>
                   <Toggle offText={bodyCaption} onText={bodyCaption} onChange={this.toggleBody} />
                 </Stack>
                 <ThemeProvider scheme="default">

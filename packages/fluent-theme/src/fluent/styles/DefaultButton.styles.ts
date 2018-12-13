@@ -15,6 +15,7 @@ export const DefaultButtonStyles: Partial<IButtonStyles> = {
     ...getFocusStyle(FluentTheme, 1)
   },
   rootHovered: {
+    backgroundColor: NeutralColors.gray20,
     selectors: {
       '.ms-Button--primary': {
         backgroundColor: CommunicationColors.shade10

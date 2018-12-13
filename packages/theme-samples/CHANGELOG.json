@@ -2,6 +2,25 @@
   "name": "@uifabric/theme-samples",
   "entries": [
     {
+      "version": "0.1.3",
+      "tag": "@uifabric/theme-samples_v0.1.3",
+      "date": "Thu, 13 Dec 2018 13:37:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "TeamsCustomizations: remove primaryBorder",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "eaba75caa15a4c8e5f96b85836d0d1d44c9d50a3"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.112.0 <7.0.0` to `>=6.113.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.1.2",
       "tag": "@uifabric/theme-samples_v0.1.2",
       "date": "Mon, 22 Oct 2018 12:29:57 GMT",
