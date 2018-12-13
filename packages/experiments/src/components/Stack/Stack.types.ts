@@ -1,5 +1,6 @@
 import { IStyle } from '../../Styling';
-import { IStatelessComponent, IStyleableComponentProps, IStylesProp } from '../../Foundation';
+import { IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
+import { IStyleFunctionOrObject } from '../../Utilities';
 
 export type Alignment = 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'baseline' | 'stretch';
 
@@ -91,7 +92,7 @@ export interface IStackProps extends IStyleableComponentProps<IStackProps, IStac
   /**
    * Custom styles to apply to the Stack.
    */
-  styles?: IStylesProp<IStackProps, IStackStyles>;
+  styles?: IStyleFunctionOrObject<IStackProps, IStackStyles>;
 }
 
 export interface IStackStyles {
