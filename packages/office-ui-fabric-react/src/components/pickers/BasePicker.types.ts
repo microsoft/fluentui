@@ -21,7 +21,7 @@ export interface IBasePicker<T> {
 
 // Type T is the type of the item that is displayed
 // and searched for by the people picker. For example, if the picker is
-// displaying persona's than type T could either be of Persona or IPersona props
+// displaying persona's then type T could either be of Persona or IPersona props
 export interface IBasePickerProps<T> extends React.Props<any> {
   /**
    * Optional callback to access the IBasePicker interface. Use this instead of ref for accessing
@@ -245,7 +245,7 @@ export interface IBasePickerSuggestionsProps {
   searchingText?: string;
 
   /**
-   * A renderer that adds an element at the end of the suggestions list it has more items than resultsMaximumNumber.
+   * A renderer that adds an element at the end of the suggestions list if it has more items than resultsMaximumNumber.
    */
   resultsFooterFull?: () => JSX.Element;
 
@@ -280,7 +280,7 @@ export enum ValidationState {
   /** User input is valid. */
   valid,
 
-  /** User input could be valid or invalid, it's state is not known yet. */
+  /** User input could be valid or invalid, its state is not known yet. */
   warning,
 
   /** User input is invalid. */
