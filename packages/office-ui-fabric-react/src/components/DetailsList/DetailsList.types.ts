@@ -590,7 +590,7 @@ export enum DetailsListLayoutMode {
 
   /**
    * Manages which columns are visible, tries to size them according to their min/max rules and drops
-   * off columns that can't fit and have isCollapsable set.
+   * off columns that can't fit and have isCollapsible set.
    */
   justified = 1
 }
