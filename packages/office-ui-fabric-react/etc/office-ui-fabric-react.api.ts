@@ -7769,6 +7769,8 @@ interface IFontFace extends IRawFontStyle {
 // @public
 interface IFontStyles {
   // (undocumented)
+  default: IRawStyle;
+  // (undocumented)
   large: IRawStyle;
   // (undocumented)
   medium: IRawStyle;
