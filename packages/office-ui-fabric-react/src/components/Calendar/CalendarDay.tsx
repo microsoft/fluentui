@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode, format, IRefObject } from '../../Utilities';
+import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode, format, IRefObject, findIndex } from '../../Utilities';
 import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.types';
 import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { FocusZone } from '../../FocusZone';
@@ -433,8 +433,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       case DateRangeType.Week:
       case DateRangeType.WorkWeek:
         weeks.forEach((week: IDayInfo[], weekIndex: number) => {
-          // Array.findIndex() is not supported in IE
-          const minIndex = this._findIndex(week, (item: IDayInfo) => {
+          const minIndex = findIndex(week, (item: IDayInfo) => {
             return item.isInBounds;
           });
           const maxIndex = this._findLastIndex(week, (item: IDayInfo) => {
@@ -804,26 +803,6 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       boundedDateRange = boundedDateRange.filter(date => compareDatePart(date, maxDate as Date) <= 0);
     }
     return boundedDateRange;
-  }
-
-  /**
-   * Returns the index of the first element in the array where the predicate is true, and -1
-   * otherwise.
-   * Note that Array.findIndex() is not supported in IE.
-   * @param items Array of items to be iterated over using the predicate
-   * @param predicate find calls predicate once for each element of the array, in ascending
-   * order, until it finds one where predicate returns true if such an element is found.
-   */
-  private _findIndex<T>(items: T[], predicate: (item: T) => boolean): number {
-    for (let i = 0; i < items.length; i++) {
-      const item = items[i];
-
-      if (predicate(item)) {
-        return i;
-      }
-    }
-
-    return -1;
   }
 
   /**
