@@ -1052,6 +1052,7 @@ export function buildColumns(
           fieldName: propName,
           minWidth: MIN_COLUMN_WIDTH,
           maxWidth: 300,
+          isCollapsable: !!columns.length,
           isCollapsible: !!columns.length,
           isMultiline: isMultiline === undefined ? false : isMultiline,
           isSorted: sortedColumnKey === propName,
