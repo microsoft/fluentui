@@ -125,6 +125,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
             <TextField label='Group Item Limit' onChanged={ this._onItemLimitChanged } /> :
             (null)
         }
+
         <DetailsList
           setKey='items'
           items={ items as any[] }
