@@ -2,6 +2,13 @@
 
 exports[`fonts tests creates the correct font styles for ar 1`] = `
 Object {
+  "default": Object {
+    "MozOsxFontSmoothing": "grayscale",
+    "WebkitFontSmoothing": "antialiased",
+    "fontFamily": "'Segoe UI Web (Arabic)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif",
+    "fontSize": "14px",
+    "fontWeight": 400,
+  },
   "large": Object {
     "MozOsxFontSmoothing": "grayscale",
     "WebkitFontSmoothing": "antialiased",
@@ -84,6 +91,13 @@ Object {
 
 exports[`fonts tests creates the correct font styles for en 1`] = `
 Object {
+  "default": Object {
+    "MozOsxFontSmoothing": "grayscale",
+    "WebkitFontSmoothing": "antialiased",
+    "fontFamily": "'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif",
+    "fontSize": "14px",
+    "fontWeight": 400,
+  },
   "large": Object {
     "MozOsxFontSmoothing": "grayscale",
     "WebkitFontSmoothing": "antialiased",
@@ -166,6 +180,13 @@ Object {
 
 exports[`fonts tests creates the correct font styles for ja 1`] = `
 Object {
+  "default": Object {
+    "MozOsxFontSmoothing": "grayscale",
+    "WebkitFontSmoothing": "antialiased",
+    "fontFamily": "'Yu Gothic UI', 'Meiryo UI', Meiryo, 'MS Pgothic', Osaka, 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif",
+    "fontSize": "14px",
+    "fontWeight": 400,
+  },
   "large": Object {
     "MozOsxFontSmoothing": "grayscale",
     "WebkitFontSmoothing": "antialiased",
