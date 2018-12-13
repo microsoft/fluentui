@@ -2,6 +2,25 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.11.2",
+      "tag": "@uifabric/fluent-theme_v0.11.2",
+      "date": "Thu, 13 Dec 2018 13:37:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Default Button: Update hover background color",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "c3a82c6667d40550dd0dc67de6e69759f2641438"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.112.0 <7.0.0` to `>=6.113.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.11.1",
       "tag": "@uifabric/fluent-theme_v0.11.1",
       "date": "Tue, 11 Dec 2018 13:36:20 GMT",

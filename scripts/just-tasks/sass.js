@@ -1,7 +1,6 @@
 // @ts-check
 
 const path = require('path');
-const { task } = require('just-task');
 const { sassTask } = require('just-task-preset');
 const postcssModules = require('postcss-modules');
 
@@ -48,4 +47,4 @@ function getJSON(cssFileName, json) {
   _fileNameToClassMap[path.resolve(cssFileName)] = json;
 }
 
-task('sass', sassTask(createTypeScriptModule, [modules]));
+exports.sass = sassTask(createTypeScriptModule, [modules]);

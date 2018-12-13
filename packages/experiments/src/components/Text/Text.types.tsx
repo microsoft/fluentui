@@ -1,6 +1,6 @@
-import { IStyle, IPalette, ISemanticColors } from '../../Styling';
+import { IStyle } from '../../Styling';
 import { IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
-import { IFontVariants, IFontFamilies, IFontSizes, IFontWeights } from '../../Styling';
+import { IFontStyles } from '../../Styling';
 
 export type ITextComponent = IStatelessComponent<ITextProps, ITextStyles>;
 
@@ -32,32 +32,7 @@ export interface ITextProps extends IStyleableComponentProps<ITextProps, ITextSt
   /**
    * Optional font type for Text.
    */
-  variant?: keyof IFontVariants;
-
-  /**
-   * Optional font family for Text.
-   */
-  family?: keyof IFontFamilies;
-
-  /**
-   * Optional font size for Text.
-   */
-  size?: keyof IFontSizes;
-
-  /**
-   * Optional font weight for Text.
-   */
-  weight?: keyof IFontWeights;
-
-  /**
-   * Optional font color for Text.
-   */
-  color?: keyof IPalette | keyof ISemanticColors;
-
-  /**
-   * Optional color for hovered text.
-   */
-  hoverColor?: keyof IPalette | keyof ISemanticColors;
+  variant?: keyof IFontStyles;
 
   /**
    * Whether the text is displayed as an inline element.
