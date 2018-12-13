@@ -21,10 +21,10 @@ const ButtonSet = () => (
     <div>
       <Stack gap={buttonGap}>
         <ButtonStack>
-          <Button text="Default button" />
-          <Button disabled text="Disabled default button" />
-          <Button primary text="Primary button" />
-          <Button disabled primary text="Primary disabled button" />
+          <Button content="Default button" />
+          <Button disabled content="Disabled default button" />
+          <Button primary content="Primary button" />
+          <Button disabled primary content="Primary disabled button" />
         </ButtonStack>
         <ButtonStack>
           <Button icon="PeopleAdd" circular />
@@ -33,9 +33,9 @@ const ButtonSet = () => (
           <Button icon="Attach" circular primary disabled />
         </ButtonStack>
         <ButtonStack>
-          <Button icon="Upload" text="Button with string icon" />
-          <Button icon={{ iconName: 'Share' }} text="Button with iconProps" />
-          <Button icon={<Icon iconName="Download" />} text="Button with custom icon" />
+          <Button icon="Upload" content="Button with string icon" />
+          <Button icon={{ iconName: 'Share' }} content="Button with iconProps" />
+          <Button icon={<Icon iconName="Download" />} content="Button with custom icon" />
         </ButtonStack>
         <ButtonStack>
           <Button>
@@ -48,10 +48,10 @@ const ButtonSet = () => (
           </Button>
         </ButtonStack>
         <ButtonStack>
-          <Button text="Menu button" menu={buttonMenu} />
-          <Button disabled text="Menu disabled button" menu={buttonMenu} />
-          <Button expanded text="Menu expanded button" />
-          <Button expanded primary text="Menu expanded primary button" />
+          <Button content="Menu button" menu={buttonMenu} />
+          <Button disabled content="Menu disabled button" menu={buttonMenu} />
+          <Button expanded content="Menu expanded button" />
+          <Button expanded primary content="Menu expanded primary button" />
         </ButtonStack>
         <ButtonStack>
           <Button icon="Share" menu={buttonMenu}>
@@ -60,8 +60,8 @@ const ButtonSet = () => (
               <Text variant="small">I can have a caption.</Text>
             </Stack>
           </Button>
-          <Button disabled text="Menu disabled button" />
-          <Button expanded text="Menu expanded button" />
+          <Button disabled content="Menu disabled button" />
+          <Button expanded content="Menu expanded button" />
         </ButtonStack>
         <CommandBar items={[{ key: '0', text: 'Button 1', iconProps: { iconName: 'Upload' } }]} />
       </Stack>

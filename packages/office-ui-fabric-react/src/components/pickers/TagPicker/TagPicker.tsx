@@ -1,9 +1,10 @@
 /* tslint:disable */
 import * as React from 'react';
-import { css } from '../../../Utilities';
+import { css, styled } from '../../../Utilities';
 /* tslint:enable */
 import { BasePicker } from '../BasePicker';
-import { IBasePickerProps } from '../BasePicker.types';
+import { IBasePickerProps, IBasePickerStyleProps, IBasePickerStyles } from '../BasePicker.types';
+import { getStyles } from '../BasePicker.styles';
 import { TagItem, ITagItemProps } from './TagItem';
 import * as stylesImport from './TagItem.scss';
 const styles: any = stylesImport;
@@ -15,8 +16,8 @@ export interface ITag {
 
 export interface ITagPickerProps extends IBasePickerProps<ITag> {}
 
-export class TagPicker extends BasePicker<ITag, ITagPickerProps> {
-  protected static defaultProps = {
+export class TagPickerBase extends BasePicker<ITag, ITagPickerProps> {
+  public static defaultProps = {
     onRenderItem: (props: ITagItemProps) => {
       return <TagItem {...props}>{props.item.name}</TagItem>;
     },
@@ -25,3 +26,7 @@ export class TagPicker extends BasePicker<ITag, ITagPickerProps> {
     )
   };
 }
+
+export const TagPicker = styled<ITagPickerProps, IBasePickerStyleProps, IBasePickerStyles>(TagPickerBase, getStyles, undefined, {
+  scope: 'TagPicker'
+});

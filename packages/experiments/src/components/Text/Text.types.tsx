@@ -15,7 +15,7 @@ export interface ITextStyles {
 // Inputs to the component
 export interface ITextProps extends IStyleableComponentProps<ITextProps, ITextStyles> {
   /**
-   * Optionaly render the component as another component type or primative.
+   * Optionally render the component as another component type or primitive.
    */
   as?: string | React.ReactType<ITextProps>;
 

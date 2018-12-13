@@ -83,6 +83,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/sidebar'
         },
         {
+          component: require<any>('../slots/SlotsPage').SlotsPage,
+          key: 'Slots',
+          name: 'Slots',
+          url: '#/examples/slots'
+        },
+        {
           component: require<any>('../components/Stack/StackPage').StackPage,
           key: 'Stack',
           name: 'Stack',

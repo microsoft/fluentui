@@ -328,7 +328,7 @@ class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBas
   // (undocumented)
   protected getActiveDescendant(): string | undefined;
   // (undocumented)
-  protected getSuggestionsAlert(): JSX.Element | undefined;
+  protected getSuggestionsAlert(suggestionAlertClassName?: string): JSX.Element | undefined;
   // (undocumented)
   protected input: {
     (component: IAutofill | null): void;
@@ -594,7 +594,7 @@ class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGroupState
 export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined, styleProps?: TStyleProps) => IProcessedStyleSet<TStyleSet>;
 
 // @public (undocumented)
-class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState>, implements ICoachmark {
+class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkState>, implements ICoachmark {
   constructor(props: ICoachmarkProps);
   // (undocumented)
   componentDidMount(): void;
@@ -699,7 +699,7 @@ class CommandBarButton extends BaseComponent<IButtonProps, {}> {
 }
 
 // @public
-class CompactPeoplePicker extends BasePeoplePicker {
+class CompactPeoplePickerBase extends BasePeoplePicker {
   // WARNING: The type "IPeoplePickerItemProps" needs to be exported by the package (e.g. added to index.ts)
   // (undocumented)
   static defaultProps: {
@@ -775,7 +775,7 @@ export function createArray<T>(size: number, getItem: (index: number) => T): T[]
 export function createFontStyles(localeCode: string | null): IFontStyles;
 
 // @public (undocumented)
-export function createGenericItem(name: string, currentValidationState: ValidationState, allowPhoneInitials: boolean): IGenericItem & {
+export function createGenericItem(name: string, currentValidationState: ValidationState): IGenericItem & {
     key: React.Key;
 };
 
@@ -1926,7 +1926,6 @@ interface IBasePicker<T> {
 // @public (undocumented)
 interface IBasePickerProps<T> extends React.Props<any> {
   className?: string;
-  // (undocumented)
   componentRef?: IRefObject<IBasePicker<T>>;
   createGenericItem?: (input: string, ValidationState: ValidationState) => ISuggestionModel<T> | T;
   defaultSelectedItems?: T[];
@@ -1956,6 +1955,8 @@ interface IBasePickerProps<T> extends React.Props<any> {
           input: string;
       }) => string) | string;
   selectedItems?: T[];
+  styles?: IStyleFunctionOrObject<IBasePickerStyleProps, IBasePickerStyles>;
+  theme?: ITheme;
 }
 
 // @public (undocumented)
@@ -1980,6 +1981,15 @@ interface IBasePickerState {
   suggestionsLoading?: boolean;
   // (undocumented)
   suggestionsVisible?: boolean;
+}
+
+// @public
+interface IBasePickerStyles {
+  input: IStyle;
+  itemsWrapper: IStyle;
+  root: IStyle;
+  screenReaderText: IStyle;
+  text: IStyle;
 }
 
 // @public (undocumented)
@@ -2615,8 +2625,8 @@ interface ICoachmark {
   dismiss?: (ev?: any) => void;
 }
 
-// @public (undocumented)
-interface ICoachmarkProps extends React.ClassAttributes<Coachmark> {
+// @public
+interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
   ariaAlertText?: string;
   ariaDescribedBy?: string;
   ariaDescribedByText?: string;
@@ -2669,6 +2679,40 @@ interface ICoachmarkState {
   targetAlignment?: RectangleEdge;
   targetPosition?: RectangleEdge;
   transformOrigin?: string;
+}
+
+// @public
+interface ICoachmarkStyleProps {
+  beaconColorOne?: string;
+  beaconColorTwo?: string;
+  // @deprecated
+  collapsed?: boolean;
+  // (undocumented)
+  color?: string;
+  delayBeforeCoachmarkAnimation?: string;
+  entityHostHeight?: string;
+  entityHostWidth?: string;
+  height?: string;
+  isBeaconAnimating: boolean;
+  isCollapsed: boolean;
+  isMeasured: boolean;
+  isMeasuring: boolean;
+  transformOrigin?: string;
+  width?: string;
+}
+
+// @public
+interface ICoachmarkStyles {
+  ariaContainer?: IStyle;
+  childrenContainer: IStyle;
+  collapsed?: IStyle;
+  entityHost?: IStyle;
+  entityInnerHost: IStyle;
+  pulsingBeacon?: IStyle;
+  root?: IStyle;
+  rotateAnimationLayer?: IStyle;
+  scaleAnimationLayer?: IStyle;
+  translateAnimationContainer?: IStyle;
 }
 
 // @public (undocumented)
@@ -10985,7 +11029,7 @@ class List extends BaseComponent<IListProps, IListState>, implements IList {
 }
 
 // @public
-class ListPeoplePicker extends MemberListPeoplePicker {
+class ListPeoplePickerBase extends MemberListPeoplePicker {
   // WARNING: The type "IPeoplePickerItemProps" needs to be exported by the package (e.g. added to index.ts)
   // (undocumented)
   static defaultProps: {
@@ -11122,7 +11166,7 @@ class NavBase extends BaseComponent<INavProps, INavState>, implements INav {
 }
 
 // @public
-class NormalPeoplePicker extends BasePeoplePicker {
+class NormalPeoplePickerBase extends BasePeoplePicker {
   // WARNING: The type "IPeoplePickerItemProps" needs to be exported by the package (e.g. added to index.ts)
   // (undocumented)
   static defaultProps: {
@@ -12168,9 +12212,9 @@ class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps, ISwat
 }
 
 // @public (undocumented)
-class TagPicker extends BasePicker<ITag, ITagPickerProps> {
+class TagPickerBase extends BasePicker<ITag, ITagPickerProps> {
   // (undocumented)
-  protected static defaultProps: {
+  static defaultProps: {
     onRenderItem: (props: ITagItemProps) => JSX.Element;
     onRenderSuggestionsItem: (props: ITag) => JSX.Element;
   }
@@ -12422,6 +12466,7 @@ module ZIndexes {
 // WARNING: Unsupported export: ChoiceGroupOption
 // WARNING: Unsupported export: OnFocusCallback
 // WARNING: Unsupported export: OnChangeCallback
+// WARNING: Unsupported export: Coachmark
 // WARNING: Unsupported export: COACHMARK_ATTRIBUTE_NAME
 // WARNING: Unsupported export: ICoachmarkTypes
 // WARNING: Unsupported export: MAX_COLOR_SATURATION
@@ -12484,6 +12529,11 @@ module ZIndexes {
 // WARNING: Unsupported export: sizeToPixels
 // WARNING: Unsupported export: presenceBoolean
 // WARNING: Unsupported export: IPickerAriaIds
+// WARNING: Unsupported export: IBasePickerStyleProps
+// WARNING: Unsupported export: NormalPeoplePicker
+// WARNING: Unsupported export: CompactPeoplePicker
+// WARNING: Unsupported export: ListPeoplePicker
+// WARNING: Unsupported export: TagPicker
 // WARNING: Unsupported export: TagItem
 // WARNING: Unsupported export: Pivot
 // WARNING: Unsupported export: IPivotStyleProps
