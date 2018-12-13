@@ -214,7 +214,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
           </Stack.Item>
         </Stack>
 
-        <Stack horizontal gap={20} verticalAlignment="bottom">
+        <Stack horizontal gap={20} verticalAlign="bottom">
           <Stack.Item grow>
             <Dropdown
               selectedKey={horizontalAlignment}
@@ -255,8 +255,8 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
           gap={gap}
           verticalGap={verticalGap}
           padding={`${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`}
-          horizontalAlignment={horizontalAlignment}
-          verticalAlignment={verticalAlignment}
+          horizontalAlign={horizontalAlignment}
+          verticalAlign={verticalAlignment}
           className={styles.root}
           styles={stackStyles}
         >

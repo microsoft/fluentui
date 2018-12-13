@@ -28,7 +28,7 @@ export const ButtonView: IButtonComponent['view'] = props => {
       {...buttonProps}
       aria-disabled={disabled}
     >
-      <Slots.stack horizontal as="span" gap={8} verticalAlignment="center" horizontalAlignment="center">
+      <Slots.stack horizontal as="span" gap={8} verticalAlign="center" horizontalAlign="center">
         {icon && <Slots.icon />}
         {content && <Slots.content />}
         {children}
@@ -39,7 +39,7 @@ export const ButtonView: IButtonComponent['view'] = props => {
         )}
       </Slots.stack>
       {expanded && Menu && <Slots.menu target={menuTarget} onDismiss={onMenuDismiss} items={[]} />}
-    </Slots.root >
+    </Slots.root>
   );
 };
 

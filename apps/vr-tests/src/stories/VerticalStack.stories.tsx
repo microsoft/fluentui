@@ -89,39 +89,39 @@ storiesOf('VerticalStack', module)
   ))
   .addStory('Vertically centered', () => (
     <Fabric>
-      <Stack {...defaultProps} verticalAlignment="center" className={styles.fixedHeight} />
+      <Stack {...defaultProps} verticalAlign="center" className={styles.fixedHeight} />
     </Fabric>
   ))
   .addStory('Bottom-aligned', () => (
     <Fabric>
-      <Stack {...defaultProps} verticalAlignment="bottom" className={styles.fixedHeight} />
+      <Stack {...defaultProps} verticalAlign="bottom" className={styles.fixedHeight} />
     </Fabric>
   ))
   .addStory('Space around', () => (
     <Fabric>
-      <Stack {...defaultProps} verticalAlignment="space-around" className={styles.fixedHeight} />
+      <Stack {...defaultProps} verticalAlign="space-around" className={styles.fixedHeight} />
     </Fabric>
   ))
   .addStory('Space between', () => (
     <Fabric>
-      <Stack {...defaultProps} verticalAlignment="space-between" className={styles.fixedHeight} />
+      <Stack {...defaultProps} verticalAlign="space-between" className={styles.fixedHeight} />
     </Fabric>
   ))
   .addStory('Space evenly', () => (
     <Fabric>
-      <Stack {...defaultProps} verticalAlignment="space-evenly" className={styles.fixedHeight} />
+      <Stack {...defaultProps} verticalAlign="space-evenly" className={styles.fixedHeight} />
     </Fabric>
   ))
   .addStory('Horizontally centered', () => (
     <Fabric>
-      <Stack {...defaultProps} horizontalAlignment="center" />
+      <Stack {...defaultProps} horizontalAlign="center" />
     </Fabric>
   ))
   .addStory(
     'Right-aligned',
     () => (
       <Fabric>
-        <Stack {...defaultProps} horizontalAlignment="end" />
+        <Stack {...defaultProps} horizontalAlign="end" />
       </Fabric>
     ),
     { rtl: true }
