@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Tue, 11 Dec 2018 13:36:20 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Dec 2018 13:37:01 GMT and should not be manually modified.
+
+## 0.11.2
+Thu, 13 Dec 2018 13:37:01 GMT
+
+### Patches
+
+- Default Button: Update hover background color
 
 ## 0.11.1
 Tue, 11 Dec 2018 13:36:20 GMT

@@ -1,18 +1,22 @@
 // @ts-check
 
-const path = require('path');
 const { task, series, parallel, condition, option, argv } = require('just-task');
-
-require('./just-tasks/ts');
-require('./just-tasks/clean');
-require('./just-tasks/jest');
-require('./just-tasks/copy');
-require('./just-tasks/sass');
-require('./just-tasks/tslint');
-require('./just-tasks/webpack');
+const { rig } = require('./just-tasks');
 
 option('production');
 option('min');
+
+task('clean', rig.clean);
+task('copy', rig.copy);
+task('jest', rig.jest);
+task('tslint', rig.tslint);
+task('sass', rig.sass);
+task('ts:commonjs', rig.ts.commonJs);
+task('ts:esm', rig.ts.esm);
+task('ts:amd', rig.ts.amd);
+task('webpack', rig.webpack);
+task('outdated', rig.outdated);
+task('selfupdate', rig.selfupdate);
 
 task(
   'build',

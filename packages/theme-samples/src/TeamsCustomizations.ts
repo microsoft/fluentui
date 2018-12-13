@@ -37,9 +37,7 @@ export const TeamsCustomizations: ICustomizations = {
         buttonTextPressed: '#252424',
         buttonTextHovered: '#252424',
 
-        buttonBorder: '#bdbdbd',
-
-        primaryBorder: 'transparent'
+        buttonBorder: '#bdbdbd'
       }
     })
   },

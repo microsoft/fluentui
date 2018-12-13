@@ -30,22 +30,22 @@ export interface IStackProps extends IStyleableComponentProps<IStackProps, IStac
   /**
    * How to align Stack child elements horizontally (along the x-axis).
    */
-  horizontalAlignment?: Alignment;
+  horizontalAlign?: Alignment;
 
   /**
    * How to align Stack child elements vertically (along the y-axis).
    */
-  verticalAlignment?: 'top' | 'bottom' | Alignment;
+  verticalAlign?: 'top' | 'bottom' | Alignment;
 
   /**
    * Whether the Stack should take up 100% of the width of its parent.
    */
-  fillHorizontal?: boolean;
+  horizontalFill?: boolean;
 
   /**
    * Whether the Stack should take up 100% of the height of its parent.
    */
-  fillVertical?: boolean;
+  verticalFill?: boolean;
 
   /**
    * Whether Stack child elements should shrink to fit the available space.
