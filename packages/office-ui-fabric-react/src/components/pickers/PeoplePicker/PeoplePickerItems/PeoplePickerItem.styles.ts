@@ -9,6 +9,8 @@ const GlobalClassNames = {
   isInvalid: 'is-invalid'
 };
 
+const REMOVE_BUTTON_SIZE = 28;
+
 export function getStyles(props: IPeoplePickerItemStyleProps): IPeoplePickerItemStyles {
   const { className, theme, selected, invalid } = props;
 
@@ -36,7 +38,7 @@ export function getStyles(props: IPeoplePickerItemStyleProps): IPeoplePickerItem
       }
     ]
   ];
-  const personaInitialsStyles: IStyle = [
+  const personaCoinInitialsStyles: IStyle = [
     invalid && {
       fontSize: 20 // does not exist on the FontSizes type ramp.
     }
@@ -58,7 +60,7 @@ export function getStyles(props: IPeoplePickerItemStyleProps): IPeoplePickerItem
         verticalAlign: 'middle',
         selectors: {
           ':hover': {
-            background: palette.neutralLight
+            background: !selected ? palette.neutralLight : ''
           },
           [HighContrastSelector]: {
             border: '1px solid WindowText'
@@ -100,9 +102,9 @@ export function getStyles(props: IPeoplePickerItemStyleProps): IPeoplePickerItem
       {
         borderRadius: 15,
         flex: '0 0 auto',
-        width: 28,
-        height: 28,
-        flexBasis: 28,
+        width: REMOVE_BUTTON_SIZE,
+        height: REMOVE_BUTTON_SIZE,
+        flexBasis: REMOVE_BUTTON_SIZE,
         selectors: {
           ':hover': {
             background: palette.neutralTertiaryAlt,
@@ -137,7 +139,7 @@ export function getStyles(props: IPeoplePickerItemStyleProps): IPeoplePickerItem
         primaryText: [personaPrimaryTextStyles]
       },
       personaCoin: {
-        initials: [personaInitialsStyles]
+        initials: [personaCoinInitialsStyles]
       }
     }
   };

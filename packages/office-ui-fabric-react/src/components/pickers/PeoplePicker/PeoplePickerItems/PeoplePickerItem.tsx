@@ -6,9 +6,9 @@ import {
   PersonaSize,
   PersonaPresence,
   IPersonaStyleProps,
-  IPersonaStyles,
-  IPersonaCoinStyleProps,
-  IPersonaCoinStyles
+  IPersonaStyles
+  // IPersonaCoinStyleProps,
+  // IPersonaCoinStyles
 } from '../../../../Persona';
 import { IconButton } from '../../../../Button';
 import { ValidationState } from '../../BasePicker.types';
