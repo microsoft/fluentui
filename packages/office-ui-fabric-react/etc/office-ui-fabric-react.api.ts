@@ -2895,7 +2895,9 @@ interface IColumn {
   headerClassName?: string;
   iconClassName?: string;
   iconName?: string;
+  // @deprecated
   isCollapsable?: boolean;
+  isCollapsible?: boolean;
   isFiltered?: boolean;
   isGrouped?: boolean;
   isIconOnly?: boolean;
@@ -9086,9 +9088,9 @@ interface IPersonaProps extends IPersonaSharedProps {
 }
 
 // @public (undocumented)
-interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
+interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | HTMLDivElement> {
   allowPhoneInitials?: boolean;
-  coinProps?: React.HTMLAttributes<HTMLDivElement>;
+  coinProps?: IPersonaCoinProps;
   coinSize?: number;
   hidePersonaDetails?: boolean;
   imageAlt?: string;
