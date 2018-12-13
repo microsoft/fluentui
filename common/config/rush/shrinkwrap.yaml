@@ -8040,14 +8040,6 @@ packages:
       webpack: '>=4.0.0 <5.0.0'
     resolution:
       integrity: sha512-JOMOB9NAs7d2/f261daWVEAN8JdsRFhbgbXwRODScc3gfp9fkZ9nNcGC0VX5lZH9xfB1TLmwSEvnZgvq6yIE/g==
-  /just-task-typescript/0.4.1:
-    dependencies:
-      just-task: 0.3.0
-      resolve: 1.8.1
-      typescript: 3.2.1
-    dev: false
-    resolution:
-      integrity: sha512-bRGC4MCcRBsWoRb4FmeTQbAMaiUr8/hK2phz7RGPwBaUOsm+Tfy2RhpW0dHfaF4ezq+W6FdN3F+W2cxab7N8jA==
   /just-task/0.3.0:
     dependencies:
       chalk: 2.4.1
@@ -14549,7 +14541,6 @@ packages:
       jsonc-parser: 2.0.2
       just-task: 0.7.0
       just-task-preset: /just-task-preset/0.5.4/8322411d5c8f271222caf8a99e9af2f2
-      just-task-typescript: 0.4.1
       lint-staged: 7.3.0
       mkdirp: 0.5.1
       mustache: 2.3.2
