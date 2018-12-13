@@ -17,19 +17,27 @@ task('ts:amd', rig.ts.amd);
 task('webpack', rig.webpack);
 task('outdated', rig.outdated);
 task('selfupdate', rig.selfupdate);
+task('api-extractor', rig.apiExtractor);
+task('lint-imports', rig.lintImports);
+task('build-codepen-examples', rig.buildCodepenExamples);
 
 task(
   'build',
   series(
     'clean',
     'copy',
+    'sass',
     parallel(
-      condition('tslint', () => !argv().min),
+      parallel(condition('tslint', () => !argv().min)),
       condition('jest', () => !argv().min),
       series(
-        'sass',
         parallel(condition('ts:commonjs', () => !argv().min), 'ts:esm', condition('ts:amd', () => argv().production && !argv().min)),
-        condition('webpack', () => !argv().min)
+        condition('lint-imports', () => !argv().min),
+        parallel(
+          condition('webpack', () => !argv().min),
+          condition('api-extractor', () => !argv().min),
+          condition('build-codepen-examples', () => !argv().min)
+        )
       )
     )
   )
