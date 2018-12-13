@@ -120,13 +120,11 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
         />
         <br />
         <CommandBar items={ this._getCommandItems() } />
-
         {
           (isGrouped) ?
             <TextField label='Group Item Limit' onChanged={ this._onItemLimitChanged } /> :
             (null)
         }
-
         <DetailsList
           setKey='items'
           items={ items as any[] }
