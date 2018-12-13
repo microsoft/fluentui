@@ -125,7 +125,8 @@ export function createFontStyles(localeCode: string | null): IFontStyles {
     xLarge: _createFont(FontSizes.xLarge, FontWeights.light, fontFamilyWithFallback),
     xxLarge: _createFont(FontSizes.xxLarge, FontWeights.light, fontFamilyWithFallback),
     superLarge: _createFont(FontSizes.superLarge, FontWeights.light, fontFamilyWithFallback),
-    mega: _createFont(FontSizes.mega, FontWeights.light, fontFamilyWithFallback)
+    mega: _createFont(FontSizes.mega, FontWeights.light, fontFamilyWithFallback),
+    default: _createFont(FontSizes.medium, FontWeights.regular, fontFamilyWithFallback)
   };
 
   return fontStyles;
