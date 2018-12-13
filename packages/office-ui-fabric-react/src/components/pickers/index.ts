@@ -7,6 +7,5 @@ export * from './BasePicker';
 export * from './BasePicker.types';
 export * from './PickerItem.types';
 export * from './PeoplePicker/PeoplePicker';
-export * from './PeoplePicker/PeoplePickerItems/index';
 export * from './TagPicker/TagPicker';
 export * from './TagPicker/TagItem';
