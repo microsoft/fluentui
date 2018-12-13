@@ -114,11 +114,11 @@ export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExa
         <div className={styles.container}>
           <Stack
             horizontal
-            fillVertical
+            verticalFill
             wrap
             gap={30}
-            horizontalAlignment={horizontalAlignment}
-            verticalAlignment={verticalAlignment}
+            horizontalAlign={horizontalAlignment}
+            verticalAlign={verticalAlignment}
             className={styles.root}
           >
             <span>1</span>

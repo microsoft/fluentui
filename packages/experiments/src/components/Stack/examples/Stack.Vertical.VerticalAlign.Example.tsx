@@ -25,10 +25,10 @@ export class VerticalStackVerticalAlignExample extends React.Component<{}, {}> {
 
     return (
       <Stack gap={10}>
-        <Stack horizontal gap={30} horizontalAlignment="space-between">
+        <Stack horizontal gap={30} horizontalAlign="space-between">
           <Stack grow>
             <span>Top-aligned</span>
-            <Stack verticalAlignment="top" className={styles.root}>
+            <Stack verticalAlign="top" className={styles.root}>
               <span>1</span>
               <span>2</span>
               <span>3</span>
@@ -37,7 +37,7 @@ export class VerticalStackVerticalAlignExample extends React.Component<{}, {}> {
 
           <Stack grow>
             <span>Vertically centered</span>
-            <Stack verticalAlignment="center" className={styles.root}>
+            <Stack verticalAlign="center" className={styles.root}>
               <span>1</span>
               <span>2</span>
               <span>3</span>
@@ -46,7 +46,7 @@ export class VerticalStackVerticalAlignExample extends React.Component<{}, {}> {
 
           <Stack grow>
             <span>Bottom-aligned</span>
-            <Stack verticalAlignment="bottom" className={styles.root}>
+            <Stack verticalAlign="bottom" className={styles.root}>
               <span>1</span>
               <span>2</span>
               <span>3</span>
@@ -54,10 +54,10 @@ export class VerticalStackVerticalAlignExample extends React.Component<{}, {}> {
           </Stack>
         </Stack>
 
-        <Stack horizontal gap={30} horizontalAlignment="space-between">
+        <Stack horizontal gap={30} horizontalAlign="space-between">
           <Stack grow>
             <span>Vertical space around items</span>
-            <Stack verticalAlignment="space-around" className={styles.root}>
+            <Stack verticalAlign="space-around" className={styles.root}>
               <span>1</span>
               <span>2</span>
               <span>3</span>
@@ -66,7 +66,7 @@ export class VerticalStackVerticalAlignExample extends React.Component<{}, {}> {
 
           <Stack grow>
             <span>Vertical space between items</span>
-            <Stack verticalAlignment="space-between" className={styles.root}>
+            <Stack verticalAlign="space-between" className={styles.root}>
               <span>1</span>
               <span>2</span>
               <span>3</span>
@@ -75,7 +75,7 @@ export class VerticalStackVerticalAlignExample extends React.Component<{}, {}> {
 
           <Stack grow>
             <span>Items vertically evenly spaced</span>
-            <Stack verticalAlignment="space-evenly" className={styles.root}>
+            <Stack verticalAlign="space-evenly" className={styles.root}>
               <span>1</span>
               <span>2</span>
               <span>3</span>

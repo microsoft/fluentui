@@ -1,36 +1,26 @@
 // @ts-check
 
 const path = require('path');
-const { task, thunk, argv } = require('just-task');
+const { argv } = require('just-task');
 const { tscTask } = require('just-task-preset');
 const libPath = path.resolve(process.cwd(), 'lib');
 const srcPath = path.resolve(process.cwd(), 'src');
 
-function getExtraTscParams() {
-  const args = argv();
+function getExtraTscParams(args) {
   return { pretty: true, target: 'es5', ...(args.production && { inlineSources: true, sourceRoot: path.relative(libPath, srcPath) }) };
 }
 
-task(
-  'ts:commonjs',
-  thunk(() => {
-    const extraOptions = getExtraTscParams();
+exports.ts = {
+  commonJs: () => {
+    const extraOptions = getExtraTscParams(argv());
     return tscTask({ ...extraOptions, outDir: 'lib-commonjs', module: 'commonjs' });
-  })
-);
-
-task(
-  'ts:esm',
-  thunk(() => {
-    const extraOptions = getExtraTscParams();
+  },
+  esm: () => {
+    const extraOptions = getExtraTscParams(argv());
     return tscTask({ ...extraOptions, outDir: 'lib', module: 'es2015' });
-  })
-);
-
-task(
-  'ts:amd',
-  thunk(() => {
-    const extraOptions = getExtraTscParams();
+  },
+  amd: () => {
+    const extraOptions = getExtraTscParams(argv());
     return tscTask({ ...extraOptions, outDir: 'lib-amd', module: 'amd' });
-  })
-);
+  }
+};

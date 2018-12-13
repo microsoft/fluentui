@@ -43,7 +43,7 @@ export class VerticalStackSpacingExample extends React.Component<{}, {}> {
           </Stack>
         </Stack>
 
-        <Stack horizontal horizontalAlignment="space-between">
+        <Stack horizontal horizontalAlign="space-between">
           <Stack>
             <span>Themed spacing (extra small)</span>
             <Stack className={styles.root} gap="s2" padding="s2">
