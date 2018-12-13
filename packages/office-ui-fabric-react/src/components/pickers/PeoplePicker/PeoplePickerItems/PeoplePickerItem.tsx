@@ -1,7 +1,15 @@
 import * as React from 'react';
 
 import { getId, classNamesFunction, styled, IStyleFunctionOrObject } from '../../../../Utilities';
-import { Persona, PersonaSize, PersonaPresence, IPersonaStyleProps, IPersonaStyles } from '../../../../Persona';
+import {
+  Persona,
+  PersonaSize,
+  PersonaPresence,
+  IPersonaStyleProps,
+  IPersonaStyles,
+  IPersonaCoinStyleProps,
+  IPersonaCoinStyles
+} from '../../../../Persona';
 import { IconButton } from '../../../../Button';
 import { ValidationState } from '../../BasePicker.types';
 import { IPeoplePickerItemProps, IPeoplePickerItemStyleProps, IPeoplePickerItemStyles } from './PeoplePickerItem.types';
@@ -25,6 +33,11 @@ export const PeoplePickerItemBase = (props: IPeoplePickerItemProps) => {
     ? (classNames.subComponentStyles.persona as IStyleFunctionOrObject<IPersonaStyleProps, IPersonaStyles>)
     : undefined;
 
+  // TODO use this to pass to coinProps the styles after fixing coinProps type.
+  // const personaCoinStyles = classNames.subComponentStyles
+  //   ? (classNames.subComponentStyles.personaCoin as IStyleFunctionOrObject<IPersonaCoinStyleProps, IPersonaCoinStyles>)
+  //   : undefined;
+
   return (
     <div
       className={classNames.root}
@@ -40,6 +53,7 @@ export const PeoplePickerItemBase = (props: IPeoplePickerItemProps) => {
           presence={item.presence !== undefined ? item.presence : PersonaPresence.none}
           size={PersonaSize.size28}
           styles={personaStyles}
+          // coinProps={{}}
         />
       </div>
       <IconButton

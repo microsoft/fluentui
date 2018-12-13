@@ -36,8 +36,7 @@ export function getStyles(props: IPeoplePickerItemStyleProps): IPeoplePickerItem
       }
     ]
   ];
-
-  const personaInitialStyles: IStyle = [
+  const personaInitialsStyles: IStyle = [
     invalid && {
       fontSize: 20 // does not exist on the FontSizes type ramp.
     }
@@ -135,12 +134,10 @@ export function getStyles(props: IPeoplePickerItemStyleProps): IPeoplePickerItem
     ],
     subComponentStyles: {
       persona: {
-        primaryText: {
-          ...personaPrimaryTextStyles
-        },
-        initials: {
-          ...personaInitialStyles
-        }
+        primaryText: [personaPrimaryTextStyles]
+      },
+      personaCoin: {
+        initials: [personaInitialsStyles]
       }
     }
   };

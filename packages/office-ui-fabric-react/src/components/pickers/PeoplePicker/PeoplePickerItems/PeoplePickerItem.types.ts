@@ -1,6 +1,6 @@
 import { IStyle, ITheme } from '../../../../Styling';
 import { IStyleFunctionOrObject } from '../../../../Utilities';
-import { IPersonaProps, IPersonaStyleProps } from '../../../../Persona';
+import { IPersonaProps, IPersonaStyleProps, IPersonaCoinStyleProps } from '../../../../Persona';
 import { IPickerItemProps } from '../../PickerItem.types';
 import { IContextualMenuItem } from '../../../../ContextualMenu';
 import { ValidationState } from '../../BasePicker.types';
@@ -52,4 +52,7 @@ export interface IPeoplePickerItemStyles {
 export interface IPeoplePickerItemSubComponentStyles {
   /** Refers to the Persona rendered within the PeoplePickerItem */
   persona: IStyleFunctionOrObject<IPersonaStyleProps, any>;
+
+  /** Refers to the PersonaCoin rendered within the PeoplePickerItem */
+  personaCoin: IStyleFunctionOrObject<IPersonaCoinStyleProps, any>;
 }
