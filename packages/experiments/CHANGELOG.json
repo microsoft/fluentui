@@ -2,6 +2,73 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.48.0",
+      "tag": "@uifabric/experiments_v6.48.0",
+      "date": "Thu, 13 Dec 2018 13:37:01 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "remove references to ITypography",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "eaba75caa15a4c8e5f96b85836d0d1d44c9d50a3"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Stack: Renaming horizontalAlignment, verticalAlignment, fillHorizontal and fillVertical to horizontalAlign, verticalAlign, horizontalFill and verticalFill respectively.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "55766697887523a0c5057fde77a9ab02a56e9594"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.11.1 <1.0.0` to `>=0.11.2 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/theme-samples\" from `>=0.1.2 <1.0.0` to `>=0.1.3 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.38.0 <7.0.0` to `>=6.39.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.112.0 <7.0.0` to `>=6.113.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.47.0",
+      "tag": "@uifabric/experiments_v6.47.0",
+      "date": "Tue, 11 Dec 2018 13:36:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add new Slots feature. Convert Button to use. Add Slots page with examples.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "77e6749412a26d3eea0f42b9056c78ba1690de4f"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Using single Stack component with 'horizontal' prop instead of separate HorizontalStack and VerticalStack components.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "dde727e6fdd0b689249e93afba36d4eeeecfe29b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.11.0 <1.0.0` to `>=0.11.1 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.111.2 <7.0.0` to `>=6.112.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.9.3 <7.0.0` to `>=6.9.4 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.46.0",
       "tag": "@uifabric/experiments_v6.46.0",
       "date": "Fri, 07 Dec 2018 13:35:16 GMT",

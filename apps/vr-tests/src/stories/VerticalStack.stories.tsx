@@ -4,6 +4,7 @@ import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecoratorFullWidth } from '../utilities';
 import { Stack } from '@uifabric/experiments/lib/Stack';
+import { Fabric } from 'office-ui-fabric-react';
 import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 const rootStyles = {
@@ -67,16 +68,64 @@ const defaultProps = {
 storiesOf('VerticalStack', module)
   .addDecorator(FabricDecoratorFullWidth)
   .addDecorator(story => <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>)
-  .addStory('Default', () => <Stack {...defaultProps} />, { rtl: true })
-  .addStory('Padding', () => <Stack {...defaultProps} padding={10} />)
-  .addStory('Gap', () => <Stack {...defaultProps} gap={10} />)
-  .addStory('Vertically centered', () => <Stack {...defaultProps} verticalAlignment="center" className={styles.fixedHeight} />)
-  .addStory('Bottom-aligned', () => <Stack {...defaultProps} verticalAlignment="bottom" className={styles.fixedHeight} />)
-  .addStory('Space around', () => <Stack {...defaultProps} verticalAlignment="space-around" className={styles.fixedHeight} />)
-  .addStory('Space between', () => <Stack {...defaultProps} verticalAlignment="space-between" className={styles.fixedHeight} />)
-  .addStory('Space evenly', () => <Stack {...defaultProps} verticalAlignment="space-evenly" className={styles.fixedHeight} />)
-  .addStory('Horizontally centered', () => <Stack {...defaultProps} horizontalAlignment="center" />)
-  .addStory('Right-aligned', () => <Stack {...defaultProps} horizontalAlignment="end" />, { rtl: true })
+  .addStory(
+    'Default',
+    () => (
+      <Fabric>
+        <Stack {...defaultProps} />
+      </Fabric>
+    ),
+    { rtl: true }
+  )
+  .addStory('Padding', () => (
+    <Fabric>
+      <Stack {...defaultProps} padding={10} />
+    </Fabric>
+  ))
+  .addStory('Gap', () => (
+    <Fabric>
+      <Stack {...defaultProps} gap={10} />
+    </Fabric>
+  ))
+  .addStory('Vertically centered', () => (
+    <Fabric>
+      <Stack {...defaultProps} verticalAlign="center" className={styles.fixedHeight} />
+    </Fabric>
+  ))
+  .addStory('Bottom-aligned', () => (
+    <Fabric>
+      <Stack {...defaultProps} verticalAlign="bottom" className={styles.fixedHeight} />
+    </Fabric>
+  ))
+  .addStory('Space around', () => (
+    <Fabric>
+      <Stack {...defaultProps} verticalAlign="space-around" className={styles.fixedHeight} />
+    </Fabric>
+  ))
+  .addStory('Space between', () => (
+    <Fabric>
+      <Stack {...defaultProps} verticalAlign="space-between" className={styles.fixedHeight} />
+    </Fabric>
+  ))
+  .addStory('Space evenly', () => (
+    <Fabric>
+      <Stack {...defaultProps} verticalAlign="space-evenly" className={styles.fixedHeight} />
+    </Fabric>
+  ))
+  .addStory('Horizontally centered', () => (
+    <Fabric>
+      <Stack {...defaultProps} horizontalAlign="center" />
+    </Fabric>
+  ))
+  .addStory(
+    'Right-aligned',
+    () => (
+      <Fabric>
+        <Stack {...defaultProps} horizontalAlign="end" />
+      </Fabric>
+    ),
+    { rtl: true }
+  )
   .addStory(
     'Item alignments',
     () => (
@@ -128,11 +177,13 @@ storiesOf('VerticalStack', module)
     </Stack>
   ))
   .addStory('Box shadow around items', () => (
-    <Stack {...defaultProps} gap={25}>
-      <span className={styles.shadowItem}>1</span>
-      <span className={styles.shadowItem}>2</span>
-      <span className={styles.shadowItem}>3</span>
-      <span className={styles.shadowItem}>4</span>
-      <span className={styles.shadowItem}>5</span>
-    </Stack>
+    <Fabric>
+      <Stack {...defaultProps} gap={25}>
+        <span className={styles.shadowItem}>1</span>
+        <span className={styles.shadowItem}>2</span>
+        <span className={styles.shadowItem}>3</span>
+        <span className={styles.shadowItem}>4</span>
+        <span className={styles.shadowItem}>5</span>
+      </Stack>
+    </Fabric>
   ));

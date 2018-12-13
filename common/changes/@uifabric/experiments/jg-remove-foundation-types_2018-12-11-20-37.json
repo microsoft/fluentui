@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Add new Slots feature. Convert Button to use. Add Slots page with examples.",
+      "comment": "Change type usage for consistency. Fix Stack styling bug.",
       "type": "patch"
     }
   ],

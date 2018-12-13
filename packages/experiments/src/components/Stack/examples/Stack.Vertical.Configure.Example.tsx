@@ -144,7 +144,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
                 showValue={true}
                 onChange={this._onGapChange}
               />
-              <Stack horizontal gap={20} verticalAlignment="bottom">
+              <Stack horizontal gap={20} verticalAlign="bottom">
                 <Stack.Item grow>
                   <Dropdown
                     selectedKey={verticalAlignment}
@@ -229,8 +229,8 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
           shrinkItems={shrinkItems}
           gap={gap}
           padding={`${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`}
-          verticalAlignment={verticalAlignment}
-          horizontalAlignment={horizontalAlignment}
+          verticalAlign={verticalAlignment}
+          horizontalAlign={horizontalAlignment}
           className={styles.root}
         >
           {this._range(1, numItems).map((value: number, index: number) => {

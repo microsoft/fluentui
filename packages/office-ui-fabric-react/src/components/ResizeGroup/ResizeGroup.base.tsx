@@ -349,12 +349,11 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     return (
       <div {...divProps} className={className} ref={this._root}>
         <div style={hiddenParentStyles}>
-          {dataNeedsMeasuring &&
-            !isInitialMeasure && (
-              <div style={hiddenDivStyles} ref={this._updateHiddenDiv}>
-                <MeasuredContext>{onRenderData(dataToMeasure)}</MeasuredContext>
-              </div>
-            )}
+          {dataNeedsMeasuring && !isInitialMeasure && (
+            <div style={hiddenDivStyles} ref={this._updateHiddenDiv}>
+              <MeasuredContext>{onRenderData(dataToMeasure)}</MeasuredContext>
+            </div>
+          )}
 
           <div ref={this._initialHiddenDiv} style={isInitialMeasure ? hiddenDivStyles : undefined} data-automation-id="visibleContent">
             {isInitialMeasure ? onRenderData(dataToMeasure) : renderedData && onRenderData(renderedData)}

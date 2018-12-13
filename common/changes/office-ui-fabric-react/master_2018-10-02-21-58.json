@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix merge conflict resulting in build error.",
+      "comment": "Correct hover and highlight states for Calendar (DateRangeType.Week)",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "jagore@microsoft.com"
+  "email": "jehell@microsoft.com"
 }
