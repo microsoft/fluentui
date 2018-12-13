@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/experiments",
+      "comment": "Stack: Renaming horizontalAlignment, verticalAlignment, fillHorizontal and fillVertical to horizontalAlign, verticalAlign, horizontalFill and verticalFill respectively.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/experiments",
+  "email": "Humberto.Morimoto@microsoft.com"
+}

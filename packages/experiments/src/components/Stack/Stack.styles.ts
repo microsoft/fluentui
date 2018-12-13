@@ -14,8 +14,8 @@ const GlobalClassNames = {
 
 export const styles: IStackComponent['styles'] = props => {
   const {
-    fillHorizontal,
-    fillVertical,
+    horizontalFill,
+    verticalFill,
     maxWidth,
     maxHeight,
     horizontal,
@@ -24,8 +24,8 @@ export const styles: IStackComponent['styles'] = props => {
     grow,
     wrap,
     padding,
-    horizontalAlignment,
-    verticalAlignment,
+    horizontalAlign,
+    verticalAlign,
     shrinkItems,
     theme,
     className
@@ -33,7 +33,7 @@ export const styles: IStackComponent['styles'] = props => {
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  const vertAlignment = getVerticalAlignment(verticalAlignment);
+  const vertAlign = getVerticalAlignment(verticalAlign);
 
   let horiGap: IStackProps['gap'];
   let vertGap: IStackProps['gap'];
@@ -68,11 +68,11 @@ export const styles: IStackComponent['styles'] = props => {
         {
           maxWidth,
           maxHeight,
-          width: fillHorizontal ? '100%' : 'auto',
+          width: horizontalFill ? '100%' : 'auto',
           overflow: 'visible'
         },
         horizontal && {
-          height: fillVertical ? '100%' : 'auto',
+          height: verticalFill ? '100%' : 'auto',
           width: 'auto'
         },
         !horizontal && {
@@ -107,19 +107,19 @@ export const styles: IStackComponent['styles'] = props => {
             ...commonSelectors
           }
         },
-        horizontalAlignment && {
-          [horizontal ? 'justifyContent' : 'alignItems']: nameMap[horizontalAlignment] || horizontalAlignment
+        horizontalAlign && {
+          [horizontal ? 'justifyContent' : 'alignItems']: nameMap[horizontalAlign] || horizontalAlign
         },
-        vertAlignment && {
-          [horizontal ? 'alignItems' : 'justifyContent']: nameMap[vertAlignment] || vertAlignment
+        vertAlign && {
+          [horizontal ? 'alignItems' : 'justifyContent']: nameMap[vertAlign] || vertAlign
         },
         horizontal && {
           flexDirection: 'row',
-          width: fillHorizontal ? '100%' : 'auto',
+          width: horizontalFill ? '100%' : 'auto',
           maxWidth: '100vw',
 
           // avoid unnecessary calc() calls if vertical gap is 0
-          height: fillVertical ? (vGap.value === 0 ? '100%' : `calc(100% + ${vGap.value}${vGap.unit})`) : 'auto',
+          height: verticalFill ? (vGap.value === 0 ? '100%' : `calc(100% + ${vGap.value}${vGap.unit})`) : 'auto',
 
           selectors: {
             '> *': {
@@ -150,8 +150,8 @@ export const styles: IStackComponent['styles'] = props => {
         display: 'flex',
         flexDirection: horizontal ? 'row' : 'column',
         flexWrap: 'nowrap',
-        width: fillHorizontal && !wrap ? '100%' : 'auto',
-        height: fillVertical && !wrap ? '100%' : 'auto',
+        width: horizontalFill && !wrap ? '100%' : 'auto',
+        height: verticalFill && !wrap ? '100%' : 'auto',
         maxWidth,
         maxHeight,
         padding: parsePadding(padding, theme),
@@ -161,17 +161,17 @@ export const styles: IStackComponent['styles'] = props => {
         flexGrow: grow === true ? 1 : grow,
         overflow: 'hidden'
       },
-      horizontalAlignment && {
-        [horizontal ? 'justifyContent' : 'alignItems']: nameMap[horizontalAlignment] || horizontalAlignment
+      horizontalAlign && {
+        [horizontal ? 'justifyContent' : 'alignItems']: nameMap[horizontalAlign] || horizontalAlign
       },
-      vertAlignment && {
-        [horizontal ? 'alignItems' : 'justifyContent']: nameMap[vertAlignment] || vertAlignment
+      vertAlign && {
+        [horizontal ? 'alignItems' : 'justifyContent']: nameMap[vertAlign] || vertAlign
       },
       wrap && {
         maxWidth,
         maxHeight,
-        width: fillHorizontal ? '100%' : 'auto',
-        height: fillVertical ? '100%' : 'auto',
+        width: horizontalFill ? '100%' : 'auto',
+        height: verticalFill ? '100%' : 'auto',
         overflow: 'visible',
         selectors: {
           '> *': {
