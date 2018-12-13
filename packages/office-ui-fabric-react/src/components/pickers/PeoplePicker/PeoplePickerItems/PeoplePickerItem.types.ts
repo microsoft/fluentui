@@ -5,6 +5,18 @@ import { IPickerItemProps } from '../../PickerItem.types';
 import { IContextualMenuItem } from '../../../../ContextualMenu';
 import { ValidationState } from '../../BasePicker.types';
 
+/** Common props in between IPeoplePickerItemProps and IPeoplePickerItemWithMenuProps. */
+export interface IPeoplePickerItemSharedProps {
+  /** Additional CSS class(es) to apply to the PeoplePickerItem root element. */
+  className?: string;
+
+  /** Call to provide customized styling that will layer on top of the variant rules. */
+  styles?: IStyleFunctionOrObject<IPeoplePickerItemStyleProps, IPeoplePickerItemStyles>;
+
+  /** Theme provided by High-Order Component. */
+  theme?: ITheme;
+}
+
 export interface IPeoplePickerItemProps
   extends IPickerItemProps<IPersonaProps & { ValidationState: ValidationState }>,
     IPeoplePickerItemSharedProps {}
@@ -40,16 +52,4 @@ export interface IPeoplePickerItemStyles {
 export interface IPeoplePickerItemSubComponentStyles {
   /** Refers to the Persona rendered within the PeoplePickerItem */
   persona: IStyleFunctionOrObject<IPersonaStyleProps, any>;
-}
-
-/** Common props in between IPeoplePickerItemProps and IPeoplePickerItemWithMenuProps. */
-export interface IPeoplePickerItemSharedProps {
-  /** Additional CSS class(es) to apply to the PeoplePickerItem root element. */
-  className?: string;
-
-  /** Call to provide customized styling that will layer on top of the variant rules. */
-  styles?: IStyleFunctionOrObject<IPeoplePickerItemStyleProps, IPeoplePickerItemStyles>;
-
-  /** Theme provided by High-Order Component. */
-  theme?: ITheme;
 }
