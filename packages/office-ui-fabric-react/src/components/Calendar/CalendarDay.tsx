@@ -807,7 +807,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       return false;
     }
     const restrictedDate = restrictedDates.find(rd => {
-      return rd.getDate() === date.getDate() && rd.getMonth() === date.getMonth() && rd.getFullYear() === date.getFullYear();
+      return compareDates(rd, date);
     });
     return restrictedDate ? true : false;
   }
