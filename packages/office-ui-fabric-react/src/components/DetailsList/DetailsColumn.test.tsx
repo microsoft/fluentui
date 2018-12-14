@@ -4,6 +4,7 @@ import { IColumn, ColumnActionsMode } from 'office-ui-fabric-react/lib/component
 import { mount } from 'enzyme';
 import { DetailsList } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsList';
 import { assign } from '@uifabric/utilities';
+import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
 
 let mockOnColumnClick: jest.Mock<{}>;
 let baseColumn: IColumn;
@@ -124,5 +125,27 @@ describe('DetailsColumn', () => {
     columnHeaderTitle.simulate('click');
 
     expect(mockOnColumnClick.mock.calls.length).toBe(0);
+  });
+
+  it('by default, has aria-describedby set for columns which provide an ariaLabel value', () => {
+    const column = assign({}, baseColumn, { ariaLabel: 'Foo' });
+    let component: any;
+    const columns = [column];
+
+    component = mount(
+      <DetailsList
+        items={[]}
+        setKey={'key1'}
+        initialFocusedIndex={0}
+        skipViewportMeasures={true}
+        columns={columns}
+        // tslint:disable-next-line:jsx-no-lambda
+        componentRef={ref => (component = ref)}
+        // tslint:disable-next-line:jsx-no-lambda
+        onShouldVirtualize={() => false}
+      />
+    );
+
+    expect(component.find('[aria-describedby]').length).toBe(1);
   });
 });
