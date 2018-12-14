@@ -1,4 +1,4 @@
-import { ITagPickerProps, ITag } from 'office-ui-fabric-react/lib/Pickers';
+import { ITagPickerProps, ITag } from 'office-ui-fabric-react';
 import { IFormBaseInputProps } from '../../FormBaseInput';
 export { ITagPickerProps };
 
