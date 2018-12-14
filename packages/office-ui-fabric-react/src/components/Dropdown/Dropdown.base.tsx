@@ -1,37 +1,36 @@
 import * as React from 'react';
-
-import { CommandButton } from '../../Button';
-import { Callout } from '../../Callout';
-import { Checkbox } from '../../Checkbox';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { Icon } from '../../Icon';
-import { KeytipData } from '../../KeytipData';
-import { Label, ILabelStyleProps, ILabelStyles } from '../../Label';
-import { Panel } from '../../Panel';
-import { IProcessedStyleSet } from '../../Styling';
 import {
   BaseComponent,
-  KeyCodes,
+  classNamesFunction,
   divProperties,
   findIndex,
+  getDocument,
   getFirstFocusable,
   getId,
   getLastFocusable,
   getNativeProps,
-  mergeAriaAttributeValues,
-  classNamesFunction,
-  IStyleFunctionOrObject,
-  getDocument,
+  isIOS,
   isMac,
-  isIOS
+  IStyleFunctionOrObject,
+  KeyCodes,
+  mergeAriaAttributeValues
 } from '../../Utilities';
+import { Callout } from '../../Callout';
+import { Checkbox } from '../../Checkbox';
+import { CommandButton } from '../../Button';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
-import { ResponsiveMode, withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
-import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 import { DropdownMenuItemType, IDropdownOption, IDropdownProps, IDropdownStyleProps, IDropdownStyles } from './Dropdown.types';
 import { DropdownSizePosCache } from './utilities/DropdownSizePosCache';
-import { RectangleEdge, ICalloutPositionedInfo } from '../../utilities/positioning';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { ICalloutPositionedInfo, RectangleEdge } from '../../utilities/positioning';
+import { Icon } from '../../Icon';
+import { ILabelStyleProps, ILabelStyles, Label } from '../../Label';
+import { IProcessedStyleSet } from '../../Styling';
+import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
+import { KeytipData } from '../../KeytipData';
+import { Panel } from '../../Panel';
+import { ResponsiveMode, withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
+import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 
 const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>();
 
@@ -537,9 +536,6 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
         ? this._classNames.dropdownItemDisabled
         : this._classNames.dropdownItem;
 
-    const itemAriaLabel = item.ariaLabel || item.text;
-    const itemTitle = item.title ? item.title : item.text;
-
     return !this.props.multiSelect ? (
       <CommandButton
         id={id + '-list' + item.index}
@@ -554,8 +550,8 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
         onMouseMove={this._onItemMouseMove.bind(this, item)}
         role="option"
         aria-selected={isItemSelected ? 'true' : 'false'}
-        ariaLabel={itemAriaLabel}
-        title={itemTitle}
+        ariaLabel={item.ariaLabel}
+        title={item.title}
       >
         {onRenderOption(item, this._onRenderOption)}
       </CommandButton>
@@ -573,7 +569,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
           onMouseMove: this._onItemMouseMove.bind(this, item)
         }}
         label={item.text}
-        title={item.title ? item.title : item.text}
+        title={item.title}
         onRenderLabel={this._onRenderLabel.bind(this, item)}
         className={itemClassName}
         role="option"

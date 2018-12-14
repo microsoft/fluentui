@@ -1,31 +1,30 @@
 import * as React from 'react';
-
-import { CommandButton, IButtonStyles, IconButton } from '../../Button';
-import { Callout } from '../../Callout';
-import { Checkbox } from '../../Checkbox';
-import { KeytipData } from '../../KeytipData';
-import { Label } from '../../Label';
+import { Autofill, IAutofill } from '../Autofill/index';
 import {
   BaseComponent,
-  KeyCodes,
   css,
   customizable,
   divProperties,
+  findElementRecursive,
   findIndex,
   focusAsync,
   getId,
   getNativeProps,
-  shallowCompare,
-  findElementRecursive,
+  isIOS,
   isMac,
-  isIOS
+  KeyCodes,
+  shallowCompare
 } from '../../Utilities';
+import { Callout } from '../../Callout';
+import { Checkbox } from '../../Checkbox';
+import { CommandButton, IButtonStyles, IconButton } from '../../Button';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
-import { Autofill, IAutofill } from '../Autofill/index';
-import { IComboBoxClassNames, getClassNames, getComboBoxOptionClassNames } from './ComboBox.classNames';
 import { getCaretDownButtonStyles, getOptionStyles, getStyles } from './ComboBox.styles';
+import { getClassNames, getComboBoxOptionClassNames, IComboBoxClassNames } from './ComboBox.classNames';
 import { IComboBoxOption, IComboBoxOptionStyles, IComboBoxProps } from './ComboBox.types';
+import { KeytipData } from '../../KeytipData';
+import { Label } from '../../Label';
+import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 
 export interface IComboBoxState {
   /** The open state */
@@ -379,8 +378,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 aria-autocomplete={this._getAriaAutoCompleteValue()}
                 role="combobox"
                 readOnly={disabled || !allowFreeform}
-                aria-labelledby={label && id + '-label'}
-                aria-label={ariaLabel && !label ? ariaLabel : undefined}
+                aria-labelledby={label && !ariaLabel ? id + '-label' : undefined}
+                aria-label={ariaLabel}
                 aria-describedby={keytipAttributes['aria-describedby']}
                 aria-activedescendant={this._getAriaActiveDescentValue()}
                 aria-disabled={disabled}
@@ -1185,9 +1184,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           onMouseLeave={this._onOptionMouseLeave}
           role="option"
           aria-selected={isSelected ? 'true' : 'false'}
-          ariaLabel={this._getPreviewText(item)}
+          ariaLabel={item.ariaLabel}
           disabled={item.disabled}
-          title={title}
+          title={item.title}
         >
           {' '}
           {
@@ -1199,7 +1198,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       ) : (
         <Checkbox
           id={id + '-list' + item.index}
-          ariaLabel={this._getPreviewText(item)}
+          ariaLabel={item.ariaLabel}
           key={item.key}
           data-index={item.index}
           styles={checkboxStyles}
