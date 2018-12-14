@@ -332,7 +332,7 @@ describe('Dropdown', () => {
       expect(titleElement.textContent).toEqual('4');
     });
 
-    it('Shows correct tooltip with and without title prop specified', () => {
+    it('Shows correct tooltip only with title prop specified', () => {
       const container = document.createElement('div');
       let dropdownRoot: HTMLElement | undefined;
 
@@ -344,13 +344,13 @@ describe('Dropdown', () => {
       ReactTestUtils.Simulate.click(dropdownRoot);
 
       const firstItemElement = document.querySelector('.ms-Dropdown-item[data-index="1"]') as HTMLElement;
-      expect(firstItemElement.getAttribute('title')).toEqual('1');
+      expect(firstItemElement.getAttribute('title')).toEqual(null);
 
       const secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"]') as HTMLElement;
       expect(secondItemElement.getAttribute('title')).toEqual('test');
 
       const thirdItemElement = document.querySelector('.ms-Dropdown-item[data-index="3"]') as HTMLElement;
-      expect(thirdItemElement.getAttribute('title')).toEqual('3');
+      expect(thirdItemElement.getAttribute('title')).toEqual(null);
     });
   });
 

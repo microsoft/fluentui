@@ -145,7 +145,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
       <input
         aria-autocomplete="inline"
         aria-expanded={false}
-        aria-labelledby="Basicdrop6-label"
+        aria-label="Custom styled ComboBox example"
         autoCapitalize="off"
         autoComplete="off"
         className=
