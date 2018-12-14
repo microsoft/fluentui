@@ -9088,7 +9088,7 @@ interface IPersonaProps extends IPersonaSharedProps {
 }
 
 // @public (undocumented)
-interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | HTMLDivElement> {
+interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | PersonaCoinBase | HTMLDivElement> {
   allowPhoneInitials?: boolean;
   coinProps?: IPersonaCoinProps;
   coinSize?: number;
