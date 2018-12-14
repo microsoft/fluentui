@@ -4,7 +4,6 @@ import { IColumn, ColumnActionsMode } from 'office-ui-fabric-react/lib/component
 import { mount } from 'enzyme';
 import { DetailsList } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsList';
 import { assign } from '@uifabric/utilities';
-import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
 
 let mockOnColumnClick: jest.Mock<{}>;
 let baseColumn: IColumn;
@@ -147,5 +146,33 @@ describe('DetailsColumn', () => {
     );
 
     expect(component.find('[aria-describedby]').length).toBe(1);
+  });
+
+  it("by default, has a node present in the DOM referenced by the column's aria-describedby attribute", () => {
+    const column = assign({}, baseColumn, { ariaLabel: 'Foo' });
+    let component: any;
+    const columns = [column];
+
+    component = mount(
+      <DetailsList
+        items={[]}
+        setKey={'key1'}
+        initialFocusedIndex={0}
+        skipViewportMeasures={true}
+        columns={columns}
+        // tslint:disable-next-line:jsx-no-lambda
+        componentRef={ref => (component = ref)}
+        // tslint:disable-next-line:jsx-no-lambda
+        onShouldVirtualize={() => false}
+      />
+    );
+
+    const ariaDescribedByEl = component
+      .find('[aria-describedby]')
+      .first()
+      .getDOMNode();
+    const referenceId = ariaDescribedByEl.getAttribute('aria-describedby');
+
+    expect(component.exists(`#${referenceId}`)).toBe(true);
   });
 });
