@@ -58,6 +58,7 @@ export interface ICalendarDayProps extends React.ClassAttributes<CalendarDay> {
   showSixWeeksByDefault?: boolean;
   minDate?: Date;
   maxDate?: Date;
+  restrictedDates?: Date[];
   workWeekDays?: DayOfWeek[];
   showCloseButton?: boolean;
   allFocusable?: boolean;
@@ -662,6 +663,9 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     if (dateRangeType !== DateRangeType.Day) {
       dateRange = this._getBoundedDateRange(dateRange, minDate, maxDate);
     }
+    dateRange = dateRange.filter(d => {
+      return !this._getIsRestrictedDate(d);
+    });
 
     if (onSelectDate) {
       onSelectDate(selectedDate, dateRange);
@@ -772,7 +776,10 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
           isToday: compareDates(todaysDate, date),
           isSelected: isInDateRangeArray(date, selectedDates),
           onSelected: this._onSelectDate.bind(this, originalDate),
-          isInBounds: (minDate ? compareDatePart(minDate, date) < 1 : true) && (maxDate ? compareDatePart(date, maxDate) < 1 : true)
+          isInBounds:
+            (minDate ? compareDatePart(minDate, date) < 1 : true) &&
+            (maxDate ? compareDatePart(date, maxDate) < 1 : true) &&
+            !this._getIsRestrictedDate(date)
         };
 
         week.push(dayInfo);
@@ -792,6 +799,17 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     }
 
     return weeks;
+  }
+
+  private _getIsRestrictedDate(date: Date): boolean {
+    const { restrictedDates } = this.props;
+    if (!restrictedDates) {
+      return false;
+    }
+    const restrictedDate = restrictedDates.find(rd => {
+      return rd.getDate() === date.getDate() && rd.getMonth() === date.getMonth() && rd.getFullYear() === date.getFullYear();
+    });
+    return restrictedDate ? true : false;
   }
 
   private _getBoundedDateRange(dateRange: Date[], minDate?: Date, maxDate?: Date): Date[] {
