@@ -515,6 +515,9 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
         ? this._classNames.dropdownItemDisabled
         : this._classNames.dropdownItem;
 
+    const itemAriaLabel = item.ariaLabel || item.text;
+    const itemTitle = item.title ? item.title : item.text;
+
     return !this.props.multiSelect ? (
       <CommandButton
         id={id + '-list' + item.index}
@@ -529,8 +532,8 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
         onMouseMove={this._onItemMouseMove.bind(this, item)}
         role="option"
         aria-selected={isItemSelected ? 'true' : 'false'}
-        ariaLabel={item.ariaLabel || item.text}
-        title={item.title ? item.title : item.text}
+        ariaLabel={itemAriaLabel}
+        title={itemTitle}
       >
         {onRenderOption(item, this._onRenderOption)}
       </CommandButton>
