@@ -20,7 +20,7 @@ module.exports = function(options) {
       // If the loaded webpack config is a function
       // call it with the original process.argv arguments from build.js.
       if (typeof configLoader == 'function') {
-        config = configLoader(options.argv);
+        config = configLoader(process.env, options.argv);
       } else {
         config = configLoader;
       }
