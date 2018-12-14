@@ -3,7 +3,7 @@ import { ICardProps, ICardState, ICardStyles } from './Card.types';
 import { CardFrame } from './CardFrame/CardFrame';
 import { Layout } from './Layout/Layout';
 import { getStyles } from './Card.styles';
-import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, getRTL } from 'office-ui-fabric-react/lib/Utilities';
 
 export class Card extends React.Component<ICardProps, ICardState> {
   constructor(props: ICardProps) {
@@ -27,8 +27,9 @@ export class Card extends React.Component<ICardProps, ICardState> {
     const { cardFrameContent, header, cardContentList, actions, disableDrag, loading } = this.props;
     const getClassNames = classNamesFunction<ICardProps, ICardStyles>();
     const classNames = getClassNames(getStyles);
+    const direction = getRTL() ? 'rtl' : 'ltr';
     return (
-      <div className={classNames.root}>
+      <div dir={direction} className={classNames.root}>
         <CardFrame
           cardTitle={cardFrameContent.cardTitle}
           cardDropDownOptions={cardFrameContent.cardDropDownOptions}
