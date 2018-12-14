@@ -1,12 +1,6 @@
 /* tslint:disable:no-any */
 import * as React from 'react';
-import {
-  Form,
-  FormConditionalSubmitButton,
-  FormDatePicker,
-  FormTextInput,
-  Validators
-} from '@uifabric/experiments/lib/Form';
+import { Form, FormConditionalSubmitButton, FormDatePicker, FormTextInput, Validators } from '@uifabric/experiments/lib/Form';
 
 export interface IFormValidationExampleState {
   formResults: any;
@@ -49,13 +43,12 @@ export class FormValidationExample extends React.Component<{}, IFormValidationEx
           />
           <FormConditionalSubmitButton>Submit</FormConditionalSubmitButton>
         </Form>
-        {this.state &&
-          this.state.formResults && (
-            <div className="results-view">
-              <h4>Results</h4>
-              {JSON.stringify(this.state.formResults)}
-            </div>
-          )}
+        {this.state && this.state.formResults && (
+          <div className="results-view">
+            <h4>Results</h4>
+            {JSON.stringify(this.state.formResults)}
+          </div>
+        )}
       </div>
     );
   }

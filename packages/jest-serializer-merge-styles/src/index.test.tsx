@@ -67,12 +67,7 @@ describe('print', () => {
         '',
         '',
         indent('{'),
-        indent(
-          '  ' +
-            'animation-name: ' +
-            'keyframes from{opacity:0;}to{opacity:1;} ' +
-            'keyframes from{left:-100px;}to{left:0px;};'
-        ),
+        indent('  ' + 'animation-name: ' + 'keyframes from{opacity:0;}to{opacity:1;} ' + 'keyframes from{left:-100px;}to{left:0px;};'),
         indent('}')
       ].join('\n')
     );

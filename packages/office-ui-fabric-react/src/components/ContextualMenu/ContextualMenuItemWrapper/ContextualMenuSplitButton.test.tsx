@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
+import { mount } from 'enzyme';
 import { IContextualMenuItem } from '../ContextualMenu.types';
 import { IMenuItemClassNames } from '../ContextualMenu.classNames';
 import { ContextualMenuSplitButton } from './ContextualMenuSplitButton';
@@ -16,16 +17,34 @@ describe('ContextualMenuSplitButton', () => {
 
     it('renders the contextual menu split button correctly', () => {
       const component = renderer.create(
+        <ContextualMenuSplitButton item={menuItem} classNames={menuClassNames} index={0} focusableElementIndex={0} totalItemCount={1} />
+      );
+      const tree = component.toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+
+    it('invokes optional onItemClick on checkmark node "click"', () => {
+      const mockEvent = { foo: 'bar' };
+      const onClickMock = jest.fn();
+      const component = mount(
         <ContextualMenuSplitButton
           item={menuItem}
           classNames={menuClassNames}
           index={0}
           focusableElementIndex={0}
           totalItemCount={1}
+          hasCheckmarks={true}
+          onItemClick={onClickMock}
         />
       );
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
+
+      component
+        .find('.checkmarkIcon')
+        .at(0)
+        .simulate('click', mockEvent);
+
+      expect(onClickMock).toHaveBeenCalledTimes(1);
+      expect(onClickMock).toHaveBeenCalledWith(expect.objectContaining(menuItem), expect.objectContaining(mockEvent));
     });
   });
 });

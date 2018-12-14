@@ -1,16 +1,19 @@
 import {
   concatStyleSets,
   FontSizes,
-  FontWeights,
   getFocusStyle,
   HighContrastSelector,
   IRawStyle,
-  ITheme
+  ITheme,
+  getScreenSelector,
+  ScreenWidthMaxMedium
 } from '../../Styling';
-import { IContextualMenuStyles, IMenuItemStyles } from './ContextualMenu.types';
+import { IMenuItemStyles } from './ContextualMenu.types';
 import { memoizeFunction } from '../../Utilities';
 
 export const CONTEXTUAL_MENU_ITEM_HEIGHT = '32px';
+
+const MediumScreenSelector = getScreenSelector(0, ScreenWidthMaxMedium);
 
 const getItemHighContrastStyles = memoizeFunction(
   (): IRawStyle => {
@@ -61,7 +64,7 @@ export const getMenuItemStyles = memoizeFunction(
           lineHeight: CONTEXTUAL_MENU_ITEM_HEIGHT,
           display: 'block',
           cursor: 'pointer',
-          padding: '0px 6px',
+          padding: '0px 8px 0 4px', // inner elements have a margin of 4px (4 + 4 = 8px as on right side)
           textAlign: 'left'
         }
       ],
@@ -104,7 +107,7 @@ export const getMenuItemStyles = memoizeFunction(
         maxWidth: '100%'
       },
       anchorLink: {
-        padding: '0px 6px',
+        padding: '0px 8px 0 4px', // inner elements have a margin of 4px (4 + 4 = 8px as on right side)
         textRendering: 'auto',
         color: 'inherit',
         letterSpacing: 'normal',
@@ -178,7 +181,12 @@ export const getMenuItemStyles = memoizeFunction(
         display: 'inline-block',
         verticalAlign: 'middle',
         flexShrink: '0',
-        fontSize: FontSizes.mini
+        fontSize: FontSizes.small, // 12px
+        selectors: {
+          [MediumScreenSelector]: {
+            fontSize: FontSizes.icon // 16px
+          }
+        }
       },
       splitButtonFlexContainer: [
         getFocusStyle(theme),
@@ -193,53 +201,5 @@ export const getMenuItemStyles = memoizeFunction(
     };
 
     return concatStyleSets(menuItemStyles);
-  }
-);
-
-export const getStyles = memoizeFunction(
-  (theme: ITheme): IContextualMenuStyles => {
-    const { semanticColors, fonts } = theme;
-
-    const ContextualMenuBackground = semanticColors.bodyBackground;
-    const ContextualMenuHeaderColor = semanticColors.menuHeader;
-
-    const styles: IContextualMenuStyles = {
-      root: {
-        backgroundColor: ContextualMenuBackground,
-        minWidth: '180px'
-      },
-      container: {},
-      list: {
-        listStyleType: 'none',
-        margin: '0',
-        padding: '0',
-        lineHeight: '0'
-      },
-      title: {
-        fontSize: '16px',
-        paddingRight: '14px',
-        paddingLeft: '14px',
-        paddingBottom: '5px',
-        paddingTop: '5px',
-        backgroundColor: theme.palette.neutralLight
-      },
-      header: [
-        fonts.small,
-        {
-          fontWeight: FontWeights.semibold,
-          color: ContextualMenuHeaderColor,
-          background: 'none',
-          backgroundColor: 'transparent',
-          border: 'none',
-          height: CONTEXTUAL_MENU_ITEM_HEIGHT,
-          lineHeight: CONTEXTUAL_MENU_ITEM_HEIGHT,
-          cursor: 'default',
-          padding: '0px 6px',
-          userSelect: 'none',
-          textAlign: 'left'
-        }
-      ]
-    };
-    return concatStyleSets(styles);
   }
 );

@@ -147,7 +147,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
 
   /**
    * Handles the key down, returns true, if the event was handled, false otherwise
-   * @param keyCode The keyCode to handle
+   * @param keyCode - The keyCode to handle
    */
   public handleKeyDown(keyCode: number): boolean {
     const { selectedHeaderIndex, selectedFooterIndex } = this.state;
@@ -375,8 +375,8 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
   /**
    * Selects the next item in the suggestion item type group, given the current index
    * If none is able to be selected, returns false, otherwise returns true
-   * @param itemType The suggestion item type
-   * @param currentIndex The current index, default is -1
+   * @param itemType - The suggestion item type
+   * @param currentIndex - The current index, default is -1
    */
   private _selectNextItemOfItemType(itemType: SuggestionItemType, currentIndex: number = -1): boolean {
     if (itemType === SuggestionItemType.suggestion) {
@@ -408,8 +408,8 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
   /**
    * Selects the previous item in the suggestion item type group, given the current index
    * If none is able to be selected, returns false, otherwise returns true
-   * @param itemType The suggestion item type
-   * @param currentIndex The current index. If none is provided, the default is the items length of specified type
+   * @param itemType - The suggestion item type
+   * @param currentIndex - The current index. If none is provided, the default is the items length of specified type
    */
   private _selectPreviousItemOfItemType(itemType: SuggestionItemType, currentIndex?: number): boolean {
     if (itemType === SuggestionItemType.suggestion) {

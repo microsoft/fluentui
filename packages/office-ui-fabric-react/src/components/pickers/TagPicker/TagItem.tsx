@@ -14,12 +14,7 @@ export interface ITagItemProps extends IPickerItemProps<ITag> {
 
 export const TagItem = (props: ITagItemProps) => (
   <div
-    className={css(
-      'ms-TagItem',
-      styles.root,
-      { 'is-selected': props.selected } as IDictionary,
-      props.selected && styles.isSelected
-    )}
+    className={css('ms-TagItem', styles.root, { 'is-selected': props.selected } as IDictionary, props.selected && styles.isSelected)}
     role={'listitem'}
     key={props.index}
     data-selection-index={props.index}

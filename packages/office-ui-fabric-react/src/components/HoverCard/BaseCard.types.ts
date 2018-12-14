@@ -21,13 +21,13 @@ export interface IBaseCardProps<TComponent, TStyles, TStyleProps> extends React.
 
   /**
    * How the element should be positioned
-   * @default DirectionalHint.bottomLeftEdge
+   * @defaultvalue DirectionalHint.bottomLeftEdge
    */
   directionalHint?: DirectionalHint;
 
   /**
    * Make callout content show on the set side
-   * @default true
+   * @defaultvalue true
    */
   directionalHintFixed?: boolean;
 
@@ -38,7 +38,7 @@ export interface IBaseCardProps<TComponent, TStyles, TStyleProps> extends React.
 
   /**
    * The gap between the card and the target
-   * @default 0
+   * @defaultvalue 0
    */
   gapSpace?: number;
 

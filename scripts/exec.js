@@ -19,20 +19,17 @@ module.exports = function(cmd, displayName, cwd = process.cwd(), opts = {}) {
   };
 
   return new Promise((resolve, reject) => {
-    const child = exec(
-      cmd,
-      execOptions,
-      (error, stdout, stderr) =>
-        error
-          ? reject({
-              error,
-              stdout: stdout,
-              stderr: stderr
-            })
-          : resolve({
-              stdout: stdout,
-              stderr: stderr
-            })
+    const child = exec(cmd, execOptions, (error, stdout, stderr) =>
+      error
+        ? reject({
+            error,
+            stdout: stdout,
+            stderr: stderr
+          })
+        : resolve({
+            stdout: stdout,
+            stderr: stderr
+          })
     );
 
     if (opts.stdout) {

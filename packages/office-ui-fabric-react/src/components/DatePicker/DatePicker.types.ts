@@ -2,7 +2,8 @@ import { DayOfWeek, ICalendarProps } from '../../Calendar';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { ICalendarFormatDateCallbacks } from '../Calendar/Calendar.types';
 import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IBaseProps, IStyleFunction } from '../../Utilities';
+import { IRefObject, IBaseProps, IStyleFunction, IComponentAs } from '../../Utilities';
+import { ICalloutProps } from '../../Callout';
 
 export interface IDatePicker {
   /** Sets focus to the text field */
@@ -30,9 +31,19 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAtt
   theme?: ITheme;
 
   /**
+   * Pass callout props to callout component
+   */
+  calloutProps?: ICalloutProps;
+
+  /**
    * Pass calendar props to calendar component
    */
   calendarProps?: ICalendarProps;
+
+  /**
+   * Custom Calendar to be used for date picking
+   */
+  calendarAs?: IComponentAs<ICalendarProps>;
 
   /**
    * Callback issued when a date is selected
@@ -52,7 +63,7 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAtt
 
   /**
    * Disabled state of the DatePicker.
-   * @default false
+   * @defaultvalue false
    */
   disabled?: boolean;
 
@@ -63,7 +74,7 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAtt
 
   /**
    * Whether or not the Textfield of the DatePicker is underlined.
-   * @default false
+   * @defaultvalue false
    */
   underlined?: boolean;
 
