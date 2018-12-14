@@ -27,6 +27,8 @@ export class Card extends React.Component<ICardProps, ICardState> {
     const { cardFrameContent, header, cardContentList, actions, disableDrag, loading } = this.props;
     const getClassNames = classNamesFunction<ICardProps, ICardStyles>();
     const classNames = getClassNames(getStyles);
+    // getRTL() utility function returns true when RTL is experienced. Setting the direction this way as a wrapper was introduced
+    // in DGL where it explicitly had direction set to LTR, which was overriding card's RTL behavior
     const direction = getRTL() ? 'rtl' : 'ltr';
     return (
       <div dir={direction} className={classNames.root}>
