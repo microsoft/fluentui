@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/dashboard",
+      "comment": "Convert DashboardGridLayout from componentWillReceiveProps to getDerivedStateFromProps",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/dashboard",
+  "email": "elcraig@microsoft.com"
+}
