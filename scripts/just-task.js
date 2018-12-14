@@ -29,7 +29,7 @@ task(
     'copy',
     'sass',
     parallel(
-      parallel(condition('tslint', () => !argv().min)),
+      condition('tslint', () => !argv().min),
       condition('jest', () => !argv().min),
       series(
         parallel(condition('ts:commonjs', () => !argv().min), 'ts:esm', condition('ts:amd', () => argv().production && !argv().min)),
