@@ -1,23 +1,19 @@
 import * as React from 'react';
 
 import { getId, classNamesFunction, styled, IStyleFunctionOrObject } from '../../../../Utilities';
-import {
-  Persona,
-  PersonaSize,
-  PersonaPresence,
-  IPersonaStyleProps,
-  IPersonaStyles,
-  IPersonaCoinStyleProps,
-  IPersonaCoinStyles
-} from '../../../../Persona';
+import { Persona, PersonaSize, IPersonaStyleProps, IPersonaStyles, IPersonaCoinStyleProps, IPersonaCoinStyles } from '../../../../Persona';
 import { IconButton } from '../../../../Button';
 import { ValidationState } from '../../BasePicker.types';
-import { IPeoplePickerSelectedItemProps, IPeoplePickerItemStyleProps, IPeoplePickerItemStyles } from './PeoplePickerItem.types';
+import {
+  IPeoplePickerItemSelectedProps,
+  IPeoplePickerItemSelectedStyleProps,
+  IPeoplePickerItemSelectedStyles
+} from './PeoplePickerItem.types';
 import { getStyles } from './PeoplePickerItem.styles';
 
-const getClassNames = classNamesFunction<IPeoplePickerItemStyleProps, IPeoplePickerItemStyles>();
+const getClassNames = classNamesFunction<IPeoplePickerItemSelectedStyleProps, IPeoplePickerItemSelectedStyles>();
 
-export const PeoplePickerItemBase = (props: IPeoplePickerSelectedItemProps) => {
+export const PeoplePickerItemBase = (props: IPeoplePickerItemSelectedProps) => {
   const { item, onRemoveItem, index, selected, removeButtonAriaLabel, styles, theme, className } = props;
 
   const itemId = getId();
@@ -47,13 +43,7 @@ export const PeoplePickerItemBase = (props: IPeoplePickerSelectedItemProps) => {
       aria-labelledby={'selectedItemPersona-' + itemId}
     >
       <div className={classNames.itemContent} id={'selectedItemPersona-' + itemId}>
-        <Persona
-          {...item}
-          presence={item.presence !== undefined ? item.presence : PersonaPresence.none}
-          size={PersonaSize.size28}
-          styles={personaStyles}
-          coinProps={{ styles: personaCoinStyles }}
-        />
+        <Persona size={PersonaSize.size28} styles={personaStyles} coinProps={{ styles: personaCoinStyles }} {...item} />
       </div>
       <IconButton
         onClick={onRemoveItem}
@@ -65,9 +55,8 @@ export const PeoplePickerItemBase = (props: IPeoplePickerSelectedItemProps) => {
   );
 };
 
-export const PeoplePickerItem = styled<IPeoplePickerSelectedItemProps, IPeoplePickerItemStyleProps, IPeoplePickerItemStyles>(
-  PeoplePickerItemBase,
-  getStyles,
-  undefined,
-  { scope: 'PeoplePickerItem' }
-);
+export const PeoplePickerItem = styled<
+  IPeoplePickerItemSelectedProps,
+  IPeoplePickerItemSelectedStyleProps,
+  IPeoplePickerItemSelectedStyles
+>(PeoplePickerItemBase, getStyles, undefined, { scope: 'PeoplePickerItem' });

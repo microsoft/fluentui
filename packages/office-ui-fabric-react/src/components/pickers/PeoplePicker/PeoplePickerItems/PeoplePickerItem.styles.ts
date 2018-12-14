@@ -1,5 +1,5 @@
 import { getGlobalClassNames, getFocusStyle, HighContrastSelector, IStyle } from '../../../../Styling';
-import { IPeoplePickerItemStyleProps, IPeoplePickerItemStyles } from './PeoplePickerItem.types';
+import { IPeoplePickerItemSelectedStyleProps, IPeoplePickerItemSelectedStyles } from './PeoplePickerItem.types';
 
 const GlobalClassNames = {
   root: 'ms-PickerPersona-container',
@@ -11,7 +11,7 @@ const GlobalClassNames = {
 
 const REMOVE_BUTTON_SIZE = 28;
 
-export function getStyles(props: IPeoplePickerItemStyleProps): IPeoplePickerItemStyles {
+export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePickerItemSelectedStyles {
   const { className, theme, selected, invalid } = props;
 
   const { palette } = theme;
