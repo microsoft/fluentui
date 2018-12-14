@@ -1,4 +1,3 @@
-import { ITheme } from 'office-ui-fabric-react';
 import { BreadcrumbStyles } from './styles/Breadcrumb.styles';
 import { CheckStyles, DetailsRowStyles } from './styles/DetailsList.styles';
 import { CalloutContentStyles } from './styles/Callout.styles';
@@ -15,6 +14,7 @@ import { DefaultButtonStyles } from './styles/DefaultButton.styles';
 import { DialogContentStyles, DialogFooterStyles } from './styles/Dialog.styles';
 import { DropdownStyles } from './styles/Dropdown.styles';
 import { ExpandingCardStyles, PlainCardStyles } from './styles/HoverCard.styles';
+import { IExtendedTheme } from './IExtendedTheme';
 import { IconButtonStyles } from './styles/IconButton.styles';
 import { LabelStyles } from './styles/Label.styles';
 import { LinkStyles } from './styles/Link.styles';
@@ -34,7 +34,7 @@ import { ColorPickerGridCellStyles } from './styles/ColorPickerGridCell.styles';
 // TODO: "any" is used here to get around "is using xxx but cannot be named" TS error. Should be able to remove
 //        this 'any' once we upgrade to TS3.1+
 // tslint:disable-next-line:no-any
-export const IbizaStyle = (theme: ITheme): any => {
+export const IbizaStyle = (extendedTheme: IExtendedTheme): any => {
   return {
     Breadcrumb: {
       styles: BreadcrumbStyles
@@ -55,10 +55,10 @@ export const IbizaStyle = (theme: ITheme): any => {
       styles: CommandBarStyles
     },
     CommandBarButton: {
-      styles: CommandBarButtonStyles(theme)
+      styles: CommandBarButtonStyles(extendedTheme)
     },
     CompoundButton: {
-      styles: CompoundButtonStyles(theme)
+      styles: CompoundButtonStyles(extendedTheme)
     },
     Check: {
       styles: CheckStyles
@@ -82,7 +82,7 @@ export const IbizaStyle = (theme: ITheme): any => {
       styles: DatePickerStyles
     },
     DefaultButton: {
-      styles: DefaultButtonStyles(theme)
+      styles: DefaultButtonStyles(extendedTheme)
     },
     DetailsRow: {
       styles: DetailsRowStyles

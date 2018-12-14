@@ -1,13 +1,13 @@
-import { ITheme } from 'office-ui-fabric-react';
 import { borderRadius } from './styleConstants';
+import { IExtendedTheme } from '../IExtendedTheme';
 import { NeutralColors, CommunicationColors } from '../IbizaColors';
 import { getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 
-export const CompoundButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
+export const CompoundButtonStyles = (extendedTheme: IExtendedTheme): Partial<IButtonStyles> => {
   return {
     root: {
-      ...getFocusStyle(theme, 2),
+      ...getFocusStyle(extendedTheme.theme, 2),
       backgroundColor: NeutralColors.white,
       border: `1px solid ${NeutralColors.gray110}`,
       borderRadius: borderRadius,
