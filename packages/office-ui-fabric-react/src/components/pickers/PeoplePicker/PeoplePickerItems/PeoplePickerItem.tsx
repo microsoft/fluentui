@@ -12,12 +12,12 @@ import {
 } from '../../../../Persona';
 import { IconButton } from '../../../../Button';
 import { ValidationState } from '../../BasePicker.types';
-import { IPeoplePickerItemProps, IPeoplePickerItemStyleProps, IPeoplePickerItemStyles } from './PeoplePickerItem.types';
+import { IPeoplePickerSelectedItemProps, IPeoplePickerItemStyleProps, IPeoplePickerItemStyles } from './PeoplePickerItem.types';
 import { getStyles } from './PeoplePickerItem.styles';
 
 const getClassNames = classNamesFunction<IPeoplePickerItemStyleProps, IPeoplePickerItemStyles>();
 
-export const PeoplePickerItemBase = (props: IPeoplePickerItemProps) => {
+export const PeoplePickerItemBase = (props: IPeoplePickerSelectedItemProps) => {
   const { item, onRemoveItem, index, selected, removeButtonAriaLabel, styles, theme, className } = props;
 
   const itemId = getId();
@@ -65,7 +65,7 @@ export const PeoplePickerItemBase = (props: IPeoplePickerItemProps) => {
   );
 };
 
-export const PeoplePickerItem = styled<IPeoplePickerItemProps, IPeoplePickerItemStyleProps, IPeoplePickerItemStyles>(
+export const PeoplePickerItem = styled<IPeoplePickerSelectedItemProps, IPeoplePickerItemStyleProps, IPeoplePickerItemStyles>(
   PeoplePickerItemBase,
   getStyles,
   undefined,

@@ -17,7 +17,7 @@ export interface IPeoplePickerItemSharedProps {
   theme?: ITheme;
 }
 
-export interface IPeoplePickerItemProps
+export interface IPeoplePickerSelectedItemProps
   extends IPickerItemProps<IPersonaProps & { ValidationState: ValidationState }>,
     IPeoplePickerItemSharedProps {}
 
@@ -28,8 +28,8 @@ export interface IPersonaWithMenu extends IPersonaProps {
 }
 
 /** The props needed to construct PeoplePickerItem styles. */
-export type IPeoplePickerItemStyleProps = Required<Pick<IPeoplePickerItemProps, 'theme'>> &
-  Pick<IPeoplePickerItemProps, 'className' | 'selected'> & {
+export type IPeoplePickerItemStyleProps = Required<Pick<IPeoplePickerSelectedItemProps, 'theme'>> &
+  Pick<IPeoplePickerSelectedItemProps, 'className' | 'selected'> & {
     /** Whether it's invalid. */
     invalid?: boolean;
   };
