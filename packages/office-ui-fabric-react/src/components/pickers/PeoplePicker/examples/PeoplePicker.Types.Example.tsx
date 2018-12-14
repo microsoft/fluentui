@@ -1,6 +1,5 @@
-/* tslint:disable */
 import * as React from 'react';
-/* tslint:enable */
+
 import { BaseComponent, assign } from 'office-ui-fabric-react/lib/Utilities';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
@@ -11,13 +10,14 @@ import {
   IBasePicker,
   ListPeoplePicker,
   NormalPeoplePicker,
-  ValidationState
+  ValidationState,
+  IPersonaWithMenu
 } from 'office-ui-fabric-react/lib/Pickers';
-import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.types';
-import { people, mru } from './PeoplePickerExampleData';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Promise } from 'es6-promise';
+// Helper imports to generate data for this particular examples. Not exported by any package.
+import { people, mru } from './PeoplePickerExampleData';
+
 import './PeoplePicker.Types.Example.scss';
 
 export interface IPeoplePickerExampleState {

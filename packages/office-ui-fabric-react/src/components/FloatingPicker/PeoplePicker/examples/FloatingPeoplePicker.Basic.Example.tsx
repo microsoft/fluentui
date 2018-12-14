@@ -5,9 +5,11 @@ import { assign } from 'office-ui-fabric-react/lib/Utilities';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { SuggestionsStore } from '../../Suggestions/SuggestionsStore';
 import { IBaseFloatingPicker, IBaseFloatingPickerSuggestionProps, FloatingPeoplePicker } from 'office-ui-fabric-react/lib/FloatingPicker';
-import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.types';
-import { people, mru } from 'office-ui-fabric-react/lib/ExtendedPicker';
+import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/Pickers';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
+// Helper imports to generate data for this particular examples. Not exported by any package.
+import { people, mru } from '../../../ExtendedPicker/examples/PeopleExampleData';
+
 import './FloatingPeoplePicker.Basic.Example.scss';
 
 export interface IPeoplePickerExampleState {

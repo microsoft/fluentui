@@ -1,12 +1,10 @@
-/* tslint:disable */
 import * as React from 'react';
-/* tslint:enable */
+
 import { assign } from 'office-ui-fabric-react/lib/Utilities';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { ExtendedPeoplePicker } from 'office-ui-fabric-react/lib/ExtendedPicker';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.types';
-import { people, mru, groupOne, groupTwo } from './PeopleExampleData';
+import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/Pickers';
 import {
   SuggestionsStore,
   FloatingPeoplePicker,
@@ -21,6 +19,8 @@ import {
 } from 'office-ui-fabric-react/lib/SelectedItemsList';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { IFocusZoneProps, FocusZoneTabbableElements } from 'office-ui-fabric-react/lib/FocusZone';
+// Helper imports to generate data for this particular examples. Not exported by any package.
+import { people, mru, groupOne, groupTwo } from './PeopleExampleData';
 
 import * as stylesImport from './ExtendedPeoplePicker.Basic.Example.scss';
 // tslint:disable-next-line:no-any
