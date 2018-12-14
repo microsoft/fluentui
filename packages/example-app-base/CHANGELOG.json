@@ -2,6 +2,35 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.10.0",
+      "tag": "@uifabric/example-app-base_v6.10.0",
+      "date": "Fri, 14 Dec 2018 13:35:30 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "replace references to isCollapsable with isCollapsible",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "faf1cb2cda7bb8aa5b165b3e9fdb7664ee809830"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Remove types and modules no longer needed due to Foundation changes.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "893b91690c3421410e9ba4bb7ae03c3f74f1e953"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.5.7 <1.0.0` to `>=0.6.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.113.0 <7.0.0` to `>=6.114.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.9.4",
       "tag": "@uifabric/example-app-base_v6.9.4",
       "date": "Tue, 11 Dec 2018 13:36:20 GMT",
