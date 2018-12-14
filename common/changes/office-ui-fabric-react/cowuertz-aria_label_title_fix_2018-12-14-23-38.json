@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Dropdown and ComboBox options will read out only once to screen readers. ComboBox will also prioritize ariaLabel property over label for accessibility",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "cowuertz@microsoft.com"
+}
