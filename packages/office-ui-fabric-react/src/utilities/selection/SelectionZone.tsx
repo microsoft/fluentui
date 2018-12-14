@@ -264,6 +264,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
 
       if (itemRoot) {
         const index = this._getItemIndex(itemRoot);
+        this._onInvokeMouseDown(ev, index);
         const skipPreventDefault = onItemContextMenu(selection.getItems()[index], index, ev.nativeEvent);
 
         // In order to keep back compat, if the value here is undefined, then we should still
