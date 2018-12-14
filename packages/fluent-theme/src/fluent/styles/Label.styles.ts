@@ -1,4 +1,4 @@
-import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
+import { FontWeights } from '@uifabric/styling';
 
 export const LabelStyles = {
   root: {

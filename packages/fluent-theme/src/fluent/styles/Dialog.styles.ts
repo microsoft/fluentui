@@ -1,5 +1,5 @@
 import { FontSizes } from '../FluentType';
-import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
+import { FontWeights } from '@uifabric/styling';
 import { Depths } from '../FluentDepths';
 import { fluentBorderRadius } from './styleConstants';
 
