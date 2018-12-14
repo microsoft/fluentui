@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 13 Dec 2018 12:25:40 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Dec 2018 12:25:58 GMT and should not be manually modified.
+
+## 5.133.1
+Fri, 14 Dec 2018 12:25:58 GMT
+
+### Patches
+
+- Ensure SelectionZone sets selection before opening contextMenu
 
 ## 5.133.0
 Thu, 13 Dec 2018 12:25:40 GMT
