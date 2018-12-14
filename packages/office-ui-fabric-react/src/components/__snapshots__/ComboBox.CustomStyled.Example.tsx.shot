@@ -4,7 +4,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
 <div
   className=
       ms-Fabric
-      ms-ComboBoxExample
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -28,6 +27,12 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
         margin-right: 0px;
         margin-top: 0px;
         overflow: visible;
+      }
+      & > * {
+        margin-bottom: 20px;
+      }
+      & .ms-ComboBox {
+        max-width: 300px;
       }
 >
   <div

@@ -1,9 +1,13 @@
 // @codepen
 import * as React from 'react';
-import { ComboBox, IComboBoxOption } from 'office-ui-fabric-react/lib/ComboBox';
-import { SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import './ComboBox.Example.scss';
+import { ComboBox, IComboBoxOption, SelectableOptionMenuItemType, Fabric, mergeStyles } from 'office-ui-fabric-react/lib/index';
+
+const wrapperClassName = mergeStyles({
+  selectors: {
+    '& > *': { marginBottom: '20px' },
+    '& .ms-ComboBox': { maxWidth: '300px' }
+  }
+});
 
 export class ComboBoxCustomStyledExample extends React.Component<any, any> {
   private _optionsWithCustomStyling: IComboBoxOption[];
@@ -46,7 +50,7 @@ export class ComboBoxCustomStyledExample extends React.Component<any, any> {
 
   public render(): JSX.Element {
     return (
-      <Fabric className="ms-ComboBoxExample">
+      <Fabric className={wrapperClassName}>
         <ComboBox
           defaultSelectedKey="Calibri"
           label="Custom styled ComboBox"

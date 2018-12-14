@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { ComboBoxBasicExample } from './examples/ComboBox.Basic.Example';
+import { ComboBoxTogglesExample } from './examples/ComboBox.Toggles.Example';
 import { ComboBoxControlledExample } from './examples/ComboBox.Controlled.Example';
 import { ComboBoxVirtualizedExample } from './examples/ComboBox.Virtualized.Example';
 
@@ -9,6 +10,9 @@ import { ComboBoxStatus } from './ComboBox.checklist';
 
 const ComboBoxBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ComboBox/examples/ComboBox.Basic.Example.tsx') as string;
 const ComboBoxBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/ComboBox/ComboBox.Basic.Example.Codepen.txt') as string;
+
+const ComboBoxTogglesExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ComboBox/examples/ComboBox.Toggles.Example.tsx') as string;
+const ComboBoxTogglesExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/ComboBox/ComboBox.Toggles.Example.Codepen.txt') as string;
 
 const ComboBoxControlledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ComboBox/examples/ComboBox.Controlled.Example.tsx') as string;
 const ComboBoxControlledExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/ComboBox/ComboBox.Controlled.Example.Codepen.txt') as string;
@@ -30,6 +34,12 @@ export const ComboBoxPageProps: IDocPageProps = {
       code: ComboBoxBasicExampleCode,
       view: <ComboBoxBasicExample />,
       codepenJS: ComboBoxBasicExampleCodepen
+    },
+    {
+      title: 'ComboBox with toggleable autoComplete and allowFreeform',
+      code: ComboBoxTogglesExampleCode,
+      view: <ComboBoxTogglesExample />,
+      codepenJS: ComboBoxTogglesExampleCodepen
     },
     {
       title: 'Controlled ComboBox',

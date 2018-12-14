@@ -1,9 +1,6 @@
 // @codepen
 import * as React from 'react';
-import { ComboBox, IComboBoxOption, IComboBox } from 'office-ui-fabric-react/lib/ComboBox';
-import { SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import './ComboBox.Example.scss';
+import { ComboBox, IComboBoxOption, IComboBox, SelectableOptionMenuItemType, Fabric, mergeStyles } from 'office-ui-fabric-react/lib/index';
 
 const INITIAL_OPTIONS: IComboBoxOption[] = [
   { key: 'Header1', text: 'First heading', itemType: SelectableOptionMenuItemType.Header },
@@ -20,6 +17,13 @@ const INITIAL_OPTIONS: IComboBoxOption[] = [
   { key: 'I', text: 'Option I' },
   { key: 'J', text: 'Option J' }
 ];
+
+const wrapperClassName = mergeStyles({
+  selectors: {
+    '& > *': { marginBottom: '20px' },
+    '& .ms-ComboBox': { maxWidth: '300px' }
+  }
+});
 
 export interface IComboBoxControlledExampleState {
   /** Current options for the single-select example */
@@ -61,7 +65,7 @@ export class ComboBoxControlledExample extends React.Component<{}, IComboBoxCont
     const state = this.state;
 
     return (
-      <Fabric className="ms-ComboBoxExample">
+      <Fabric className={wrapperClassName}>
         <ComboBox
           selectedKey={state.selectedOptionKey}
           label="Controlled single-select ComboBox (allowFreeform: T)"

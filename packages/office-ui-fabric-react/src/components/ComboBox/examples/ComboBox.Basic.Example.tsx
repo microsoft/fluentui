@@ -1,11 +1,14 @@
 // @codepen
 import * as React from 'react';
-import { ComboBox, IComboBoxOption, IComboBox } from 'office-ui-fabric-react/lib/ComboBox';
-import { SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
-import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import './ComboBox.Example.scss';
+import {
+  ComboBox,
+  Fabric,
+  IComboBox,
+  IComboBoxOption,
+  mergeStyles,
+  PrimaryButton,
+  SelectableOptionMenuItemType
+} from 'office-ui-fabric-react/lib/index';
 
 const INITIAL_OPTIONS: IComboBoxOption[] = [
   { key: 'Header1', text: 'First heading', itemType: SelectableOptionMenuItemType.Header },
@@ -23,29 +26,20 @@ const INITIAL_OPTIONS: IComboBoxOption[] = [
   { key: 'J', text: 'Option J' }
 ];
 
-// tslint:disable:jsx-no-lambda
-export class ComboBoxBasicExample extends React.Component<
-  {},
-  {
-    // Only used for the example with toggles (last one)
-    autoComplete: boolean;
-    allowFreeform: boolean;
+const wrapperClassName = mergeStyles({
+  selectors: {
+    '& > *': { marginBottom: '20px' },
+    '& .ms-ComboBox': { maxWidth: '300px' }
   }
-> {
+});
+
+// tslint:disable:jsx-no-lambda
+export class ComboBoxBasicExample extends React.Component<{}, {}> {
   private _basicComboBox = React.createRef<IComboBox>();
 
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      autoComplete: false,
-      allowFreeform: true
-    };
-  }
-
   public render(): JSX.Element {
-    const state = this.state;
     return (
-      <Fabric className="ms-ComboBoxExample">
+      <Fabric className={wrapperClassName}>
         <div>
           {/* This example demonstrates various props, but only `options` is required. */}
           <ComboBox
@@ -64,8 +58,8 @@ export class ComboBoxBasicExample extends React.Component<
           />
 
           <PrimaryButton
-            className="openButton"
             text="Open ComboBox"
+            style={{ display: 'block', marginTop: '10px' }}
             onClick={() => {
               if (this._basicComboBox.current) {
                 this._basicComboBox.current.focus(true);
@@ -99,30 +93,6 @@ export class ComboBoxBasicExample extends React.Component<
         />
 
         <ComboBox disabled label="Disabled ComboBox" defaultSelectedKey="D" options={INITIAL_OPTIONS} />
-
-        <div className="ms-ComboBoxExample-toggles">
-          <ComboBox
-            label="ComboBox with toggleable freeform/auto-complete"
-            key={'' + state.autoComplete + state.allowFreeform /*key causes re-render when toggles change*/}
-            allowFreeform={state.allowFreeform}
-            autoComplete={state.autoComplete ? 'on' : 'off'}
-            options={INITIAL_OPTIONS}
-          />
-          <Toggle
-            label="Allow freeform"
-            checked={state.allowFreeform}
-            onChange={(ev: React.MouseEvent<HTMLElement>, checked?: boolean) => {
-              this.setState({ allowFreeform: !!checked });
-            }}
-          />
-          <Toggle
-            label="Auto-complete"
-            checked={state.autoComplete}
-            onChange={(ev: React.MouseEvent<HTMLElement>, checked?: boolean) => {
-              this.setState({ autoComplete: !!checked });
-            }}
-          />
-        </div>
       </Fabric>
     );
   }
