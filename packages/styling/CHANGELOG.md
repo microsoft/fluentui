@@ -1,6 +1,24 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Thu, 29 Nov 2018 19:34:12 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Dec 2018 13:37:01 GMT and should not be manually modified.
+
+## 6.39.0
+Thu, 13 Dec 2018 13:37:01 GMT
+
+### Minor changes
+
+- ITheme: remove ITypography
+
+## 6.38.0
+Fri, 30 Nov 2018 13:37:17 GMT
+
+### Minor changes
+
+- Extend theming to incorporate shadows and rounded corners
+
+### Patches
+
+- Add missing API file update
 
 ## 6.37.0
 Thu, 29 Nov 2018 19:34:12 GMT

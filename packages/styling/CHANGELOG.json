@@ -2,6 +2,41 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "6.39.0",
+      "tag": "@uifabric/styling_v6.39.0",
+      "date": "Thu, 13 Dec 2018 13:37:01 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "ITheme: remove ITypography",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "eaba75caa15a4c8e5f96b85836d0d1d44c9d50a3"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.38.0",
+      "tag": "@uifabric/styling_v6.38.0",
+      "date": "Fri, 30 Nov 2018 13:37:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add missing API file update",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "24a4afa4cc1fca1ba829fa591312ee7a97aa0a12"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Extend theming to incorporate shadows and rounded corners",
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "047fd78f72f2bd7ede6949ab6ac0edb371604c91"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.37.0",
       "tag": "@uifabric/styling_v6.37.0",
       "date": "Thu, 29 Nov 2018 19:34:12 GMT",

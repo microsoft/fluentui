@@ -1,6 +1,6 @@
 import { IButtonComponent, IButtonStyles, IButtonStyleVariablesTypes, IButtonStates } from './Button.types';
 import { getFocusStyle, getGlobalClassNames, concatStyleSets } from '../../Styling';
-import { processVariables } from '../../utilities/VariableProcessing';
+import { merge } from '../../Utilities';
 
 export const getButtonStyles: IButtonComponent['styles'] = props => {
   const { theme, disabled, expanded, className, circular, primary, styleVariables } = props;
@@ -189,7 +189,7 @@ export const getButtonStyles: IButtonComponent['styles'] = props => {
           padding: state.contentPadding,
           height: '100%'
         },
-        text: {
+        content: {
           overflow: 'visible'
         }
       };
@@ -222,3 +222,12 @@ export const getButtonStyles: IButtonComponent['styles'] = props => {
     }
   );
 };
+
+export type IProcessedVariables<T> = { [P in keyof T]-?: IProcessedVariables<T[P]> };
+
+export function processVariables<T>(partialVariables: T, customVariables?: T): IProcessedVariables<T> {
+  // tslint:disable-next-line:no-any
+  const result = customVariables ? merge({}, partialVariables, customVariables) : partialVariables;
+
+  return result as IProcessedVariables<T>;
+}

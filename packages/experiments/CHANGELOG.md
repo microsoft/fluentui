@@ -1,6 +1,67 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 29 Nov 2018 19:34:12 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Dec 2018 13:35:30 GMT and should not be manually modified.
+
+## 6.48.1
+Fri, 14 Dec 2018 13:35:30 GMT
+
+### Patches
+
+- Change type usage for consistency. Fix Stack styling bug.
+
+## 6.48.0
+Thu, 13 Dec 2018 13:37:01 GMT
+
+### Minor changes
+
+- remove references to ITypography
+
+### Patches
+
+- Stack: Renaming horizontalAlignment, verticalAlignment, fillHorizontal and fillVertical to horizontalAlign, verticalAlign, horizontalFill and verticalFill respectively.
+
+## 6.47.0
+Tue, 11 Dec 2018 13:36:20 GMT
+
+### Minor changes
+
+- Using single Stack component with 'horizontal' prop instead of separate HorizontalStack and VerticalStack components.
+
+### Patches
+
+- Add new Slots feature. Convert Button to use. Add Slots page with examples.
+
+## 6.46.0
+Fri, 07 Dec 2018 13:35:16 GMT
+
+### Minor changes
+
+- Pagination: Exported component from top level export
+
+## 6.45.0
+Tue, 04 Dec 2018 13:36:40 GMT
+
+### Minor changes
+
+- DevExp: const enums are replaced with constants, this allows the use of isolatedModules mode of compilation
+
+## 6.44.1
+Mon, 03 Dec 2018 13:37:07 GMT
+
+### Patches
+
+- Lifting the resolution of default and user provided style variables to Utilities.
+
+## 6.44.0
+Fri, 30 Nov 2018 13:37:17 GMT
+
+### Minor changes
+
+- Pagination: Initial check-in of pagination control into experiments package.
+
+### Patches
+
+- Add missing depenencies
 
 ## 6.43.0
 Thu, 29 Nov 2018 19:34:12 GMT

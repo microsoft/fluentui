@@ -1,4 +1,9 @@
-import { IExpandingCardStyleProps, IPlainCardStyleProps } from 'office-ui-fabric-react/lib/HoverCard';
+import {
+  IExpandingCardStyleProps,
+  IExpandingCardStyles,
+  IPlainCardStyleProps,
+  IPlainCardStyles
+} from 'office-ui-fabric-react/lib/HoverCard';
 import { Depths } from '../FluentDepths';
 import { fluentBorderRadius } from './styleConstants';
 
@@ -11,7 +16,7 @@ const commonCardStyles = {
   }
 };
 
-export const ExpandingCardStyles = (props: IExpandingCardStyleProps) => {
+export const ExpandingCardStyles = (props: IExpandingCardStyleProps): Partial<IExpandingCardStyles> => {
   return {
     root: {
       ...commonCardStyles,
@@ -27,7 +32,7 @@ export const ExpandingCardStyles = (props: IExpandingCardStyleProps) => {
   };
 };
 
-export const PlainCardStyles = (props: IPlainCardStyleProps) => {
+export const PlainCardStyles = (props: IPlainCardStyleProps): Partial<IPlainCardStyles> => {
   return {
     root: { ...commonCardStyles }
   };

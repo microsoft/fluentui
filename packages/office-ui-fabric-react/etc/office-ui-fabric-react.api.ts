@@ -328,7 +328,7 @@ class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBas
   // (undocumented)
   protected getActiveDescendant(): string | undefined;
   // (undocumented)
-  protected getSuggestionsAlert(): JSX.Element | undefined;
+  protected getSuggestionsAlert(suggestionAlertClassName?: string): JSX.Element | undefined;
   // (undocumented)
   protected input: {
     (component: IAutofill | null): void;
@@ -594,7 +594,7 @@ class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGroupState
 export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined, styleProps?: TStyleProps) => IProcessedStyleSet<TStyleSet>;
 
 // @public (undocumented)
-class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState>, implements ICoachmark {
+class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkState>, implements ICoachmark {
   constructor(props: ICoachmarkProps);
   // (undocumented)
   componentDidMount(): void;
@@ -699,7 +699,7 @@ class CommandBarButton extends BaseComponent<IButtonProps, {}> {
 }
 
 // @public
-class CompactPeoplePicker extends BasePeoplePicker {
+class CompactPeoplePickerBase extends BasePeoplePicker {
   // WARNING: The type "IPeoplePickerItemProps" needs to be exported by the package (e.g. added to index.ts)
   // (undocumented)
   static defaultProps: {
@@ -775,7 +775,7 @@ export function createArray<T>(size: number, getItem: (index: number) => T): T[]
 export function createFontStyles(localeCode: string | null): IFontStyles;
 
 // @public (undocumented)
-export function createGenericItem(name: string, currentValidationState: ValidationState, allowPhoneInitials: boolean): IGenericItem & {
+export function createGenericItem(name: string, currentValidationState: ValidationState): IGenericItem & {
     key: React.Key;
 };
 
@@ -1155,11 +1155,7 @@ class ExtendedPeoplePicker extends BaseExtendedPeoplePicker {
 class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps, IPeoplePickerItemState> {
   constructor(props: ISelectedPeopleItemProps);
   // (undocumented)
-  protected persona: {
-    (component: HTMLDivElement | null): void;
-    current: HTMLDivElement | null;
-    value: HTMLDivElement | null;
-  }
+  protected persona: React.RefObject<HTMLDivElement>;
   // (undocumented)
   render(): JSX.Element;
 }
@@ -1930,7 +1926,6 @@ interface IBasePicker<T> {
 // @public (undocumented)
 interface IBasePickerProps<T> extends React.Props<any> {
   className?: string;
-  // (undocumented)
   componentRef?: IRefObject<IBasePicker<T>>;
   createGenericItem?: (input: string, ValidationState: ValidationState) => ISuggestionModel<T> | T;
   defaultSelectedItems?: T[];
@@ -1960,6 +1955,8 @@ interface IBasePickerProps<T> extends React.Props<any> {
           input: string;
       }) => string) | string;
   selectedItems?: T[];
+  styles?: IStyleFunctionOrObject<IBasePickerStyleProps, IBasePickerStyles>;
+  theme?: ITheme;
 }
 
 // @public (undocumented)
@@ -1984,6 +1981,15 @@ interface IBasePickerState {
   suggestionsLoading?: boolean;
   // (undocumented)
   suggestionsVisible?: boolean;
+}
+
+// @public
+interface IBasePickerStyles {
+  input: IStyle;
+  itemsWrapper: IStyle;
+  root: IStyle;
+  screenReaderText: IStyle;
+  text: IStyle;
 }
 
 // @public (undocumented)
@@ -2021,7 +2027,7 @@ interface IBaseSelectedItemsList<T> {
 }
 
 // @public (undocumented)
-interface IBaseSelectedItemsListProps<T> extends React.Props<any> {
+interface IBaseSelectedItemsListProps<T> extends React.ClassAttributes<any> {
   canRemoveItem?: (item: T) => boolean;
   // (undocumented)
   componentRef?: IRefObject<IBaseSelectedItemsList<T>>;
@@ -2619,8 +2625,8 @@ interface ICoachmark {
   dismiss?: (ev?: any) => void;
 }
 
-// @public (undocumented)
-interface ICoachmarkProps extends React.ClassAttributes<Coachmark> {
+// @public
+interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
   ariaAlertText?: string;
   ariaDescribedBy?: string;
   ariaDescribedByText?: string;
@@ -2673,6 +2679,40 @@ interface ICoachmarkState {
   targetAlignment?: RectangleEdge;
   targetPosition?: RectangleEdge;
   transformOrigin?: string;
+}
+
+// @public
+interface ICoachmarkStyleProps {
+  beaconColorOne?: string;
+  beaconColorTwo?: string;
+  // @deprecated
+  collapsed?: boolean;
+  // (undocumented)
+  color?: string;
+  delayBeforeCoachmarkAnimation?: string;
+  entityHostHeight?: string;
+  entityHostWidth?: string;
+  height?: string;
+  isBeaconAnimating: boolean;
+  isCollapsed: boolean;
+  isMeasured: boolean;
+  isMeasuring: boolean;
+  transformOrigin?: string;
+  width?: string;
+}
+
+// @public
+interface ICoachmarkStyles {
+  ariaContainer?: IStyle;
+  childrenContainer: IStyle;
+  collapsed?: IStyle;
+  entityHost?: IStyle;
+  entityInnerHost: IStyle;
+  pulsingBeacon?: IStyle;
+  root?: IStyle;
+  rotateAnimationLayer?: IStyle;
+  scaleAnimationLayer?: IStyle;
+  translateAnimationContainer?: IStyle;
 }
 
 // @public (undocumented)
@@ -2855,7 +2895,9 @@ interface IColumn {
   headerClassName?: string;
   iconClassName?: string;
   iconName?: string;
+  // @deprecated
   isCollapsable?: boolean;
+  isCollapsible?: boolean;
   isFiltered?: boolean;
   isGrouped?: boolean;
   isIconOnly?: boolean;
@@ -7726,40 +7768,6 @@ interface IFontFace extends IRawFontStyle {
   unicodeRange?: ICSSRule | string;
 }
 
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
-interface IFontFamilies {
-  // (undocumented)
-  default: string;
-  // (undocumented)
-  monospace: string;
-}
-
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
-interface IFontSizes {
-  // (undocumented)
-  large: string;
-  // (undocumented)
-  medium: string;
-  // (undocumented)
-  mediumPlus: string;
-  // (undocumented)
-  mega: string;
-  // (undocumented)
-  mini: string;
-  // (undocumented)
-  small: string;
-  // (undocumented)
-  smallPlus: string;
-  // (undocumented)
-  xLarge: string;
-  // (undocumented)
-  xSmall: string;
-  // (undocumented)
-  xxLarge: string;
-}
-
 // @public
 interface IFontStyles {
   // (undocumented)
@@ -7784,59 +7792,6 @@ interface IFontStyles {
   xSmall: IRawStyle;
   // (undocumented)
   xxLarge: IRawStyle;
-}
-
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
-interface IFontVariant {
-  // (undocumented)
-  color?: keyof ISemanticTextColors;
-  // (undocumented)
-  disabledColor?: keyof ISemanticTextColors;
-  // (undocumented)
-  family: keyof IFontFamilies | string;
-  // (undocumented)
-  hoverColor?: keyof ISemanticTextColors;
-  // (undocumented)
-  size: keyof IFontSizes | number | string;
-  // (undocumented)
-  weight: keyof IFontWeights | number;
-}
-
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
-interface IFontVariants {
-  // (undocumented)
-  caption: Partial<IFontVariant>;
-  // (undocumented)
-  default: Partial<IFontVariant>;
-  // (undocumented)
-  h1: Partial<IFontVariant>;
-  // (undocumented)
-  h2: Partial<IFontVariant>;
-  // (undocumented)
-  h3: Partial<IFontVariant>;
-  // (undocumented)
-  h4: Partial<IFontVariant>;
-  // (undocumented)
-  h5: Partial<IFontVariant>;
-  // (undocumented)
-  link: Partial<IFontVariant>;
-}
-
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
-interface IFontWeights {
-  // (undocumented)
-  bold: IFontWeight;
-  // (undocumented)
-  default: IFontWeight;
-  // (undocumented)
-  light: IFontWeight;
-  // (undocumented)
-  regular: IFontWeight;
-  // (undocumented)
-  semibold: IFontWeight;
 }
 
 // @public (undocumented)
@@ -7964,7 +7919,7 @@ interface IGroupedList extends IList {
 }
 
 // @public (undocumented)
-interface IGroupedListProps extends React.Props<GroupedListBase> {
+interface IGroupedListProps extends React.ClassAttributes<GroupedListBase> {
   className?: string;
   componentRef?: IRefObject<IGroupedList>;
   dragDropEvents?: IDragDropEvents;
@@ -8231,7 +8186,7 @@ interface IKeytipLayer {
 }
 
 // @public (undocumented)
-interface IKeytipLayerProps extends React.Props<IKeytipLayer> {
+interface IKeytipLayerProps extends React.ClassAttributes<IKeytipLayer> {
   componentRef?: IRefObject<IKeytipLayer>;
   content: string;
   keytipExitSequences?: IKeytipTransitionKey[];
@@ -8629,7 +8584,7 @@ interface IModal {
 }
 
 // @public (undocumented)
-interface IModalProps extends React.Props<ModalBase>, IWithResponsiveModeState, IAccessiblePopupProps {
+interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResponsiveModeState, IAccessiblePopupProps {
   className?: string;
   componentRef?: IRefObject<IModal>;
   containerClassName?: string;
@@ -8793,7 +8748,7 @@ interface IOverflowSetItemProps {
 }
 
 // @public (undocumented)
-interface IOverflowSetProps extends React.Props<OverflowSetBase> {
+interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase> {
   // (undocumented)
   className?: string;
   componentRef?: IRefObject<IOverflowSet>;
@@ -8868,7 +8823,7 @@ interface IPage {
 }
 
 // @public (undocumented)
-interface IPageProps extends React.HTMLAttributes<HTMLDivElement>, React.Props<HTMLDivElement> {
+interface IPageProps extends React.HTMLAttributes<HTMLDivElement>, React.ClassAttributes<HTMLDivElement> {
   page: IPage;
   role?: string;
 }
@@ -9133,9 +9088,9 @@ interface IPersonaProps extends IPersonaSharedProps {
 }
 
 // @public (undocumented)
-interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
+interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | HTMLDivElement> {
   allowPhoneInitials?: boolean;
-  coinProps?: React.HTMLAttributes<HTMLDivElement>;
+  coinProps?: IPersonaCoinProps;
   coinSize?: number;
   hidePersonaDetails?: boolean;
   imageAlt?: string;
@@ -9241,7 +9196,7 @@ interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 // @public (undocumented)
-interface IPivotProps extends React.Props<PivotBase>, React.HTMLAttributes<HTMLDivElement> {
+interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTMLAttributes<HTMLDivElement> {
   className?: string;
   componentRef?: IRefObject<IPivot>;
   getTabId?: (itemKey: string, index: number) => string;
@@ -9379,7 +9334,7 @@ interface IProgressIndicator {
 }
 
 // @public (undocumented)
-interface IProgressIndicatorProps extends React.Props<ProgressIndicatorBase> {
+interface IProgressIndicatorProps extends React.ClassAttributes<ProgressIndicatorBase> {
   ariaValueText?: string;
   barHeight?: number;
   className?: string;
@@ -9451,6 +9406,7 @@ interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
   size?: RatingSize;
   styles?: IStyleFunctionOrObject<IRatingStyleProps, IRatingStyles>;
   theme?: ITheme;
+  unselectedIcon?: string;
 }
 
 // @public (undocumented)
@@ -9596,9 +9552,6 @@ interface IScheme {
   // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
   // @internal
   spacing: ISpacing;
-  // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-  // @internal
-  typography: ITypography;
 }
 
 // @public (undocumented)
@@ -10179,7 +10132,7 @@ interface ISlider {
 }
 
 // @public (undocumented)
-interface ISliderProps extends React.Props<SliderBase> {
+interface ISliderProps extends React.ClassAttributes<SliderBase> {
   ariaLabel?: string;
   ariaValueText?: (value: number) => string;
   buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
@@ -10933,19 +10886,6 @@ interface ITooltipStyles {
   subText: IStyle;
 }
 
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
-interface ITypography {
-  // (undocumented)
-  families: IFontFamilies;
-  // (undocumented)
-  sizes: IFontSizes;
-  // (undocumented)
-  variants: IFontVariants;
-  // (undocumented)
-  weights: IFontWeights;
-}
-
 // @public (undocumented)
 interface IVerticalDividerClassNames {
   // (undocumented)
@@ -11091,7 +11031,7 @@ class List extends BaseComponent<IListProps, IListState>, implements IList {
 }
 
 // @public
-class ListPeoplePicker extends MemberListPeoplePicker {
+class ListPeoplePickerBase extends MemberListPeoplePicker {
   // WARNING: The type "IPeoplePickerItemProps" needs to be exported by the package (e.g. added to index.ts)
   // (undocumented)
   static defaultProps: {
@@ -11228,7 +11168,7 @@ class NavBase extends BaseComponent<INavProps, INavState>, implements INav {
 }
 
 // @public
-class NormalPeoplePicker extends BasePeoplePicker {
+class NormalPeoplePickerBase extends BasePeoplePicker {
   // WARNING: The type "IPeoplePickerItemProps" needs to be exported by the package (e.g. added to index.ts)
   // (undocumented)
   static defaultProps: {
@@ -11466,11 +11406,7 @@ class PlainCardBase extends BaseComponent<IPlainCardProps, {}> {
 class Popup extends BaseComponent<IPopupProps, IPopupState> {
   constructor(props: IPopupProps);
   // (undocumented)
-  _root: {
-    (component: HTMLDivElement | null): void;
-    current: HTMLDivElement | null;
-    value: HTMLDivElement | null;
-  }
+  _root: React.RefObject<HTMLDivElement>;
   // (undocumented)
   componentDidMount(): void;
   // (undocumented)
@@ -12278,9 +12214,9 @@ class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps, ISwat
 }
 
 // @public (undocumented)
-class TagPicker extends BasePicker<ITag, ITagPickerProps> {
+class TagPickerBase extends BasePicker<ITag, ITagPickerProps> {
   // (undocumented)
-  protected static defaultProps: {
+  static defaultProps: {
     onRenderItem: (props: ITagItemProps) => JSX.Element;
     onRenderSuggestionsItem: (props: ITag) => JSX.Element;
   }
@@ -12532,6 +12468,7 @@ module ZIndexes {
 // WARNING: Unsupported export: ChoiceGroupOption
 // WARNING: Unsupported export: OnFocusCallback
 // WARNING: Unsupported export: OnChangeCallback
+// WARNING: Unsupported export: Coachmark
 // WARNING: Unsupported export: COACHMARK_ATTRIBUTE_NAME
 // WARNING: Unsupported export: ICoachmarkTypes
 // WARNING: Unsupported export: MAX_COLOR_SATURATION
@@ -12594,6 +12531,11 @@ module ZIndexes {
 // WARNING: Unsupported export: sizeToPixels
 // WARNING: Unsupported export: presenceBoolean
 // WARNING: Unsupported export: IPickerAriaIds
+// WARNING: Unsupported export: IBasePickerStyleProps
+// WARNING: Unsupported export: NormalPeoplePicker
+// WARNING: Unsupported export: CompactPeoplePicker
+// WARNING: Unsupported export: ListPeoplePicker
+// WARNING: Unsupported export: TagPicker
 // WARNING: Unsupported export: TagItem
 // WARNING: Unsupported export: Pivot
 // WARNING: Unsupported export: IPivotStyleProps

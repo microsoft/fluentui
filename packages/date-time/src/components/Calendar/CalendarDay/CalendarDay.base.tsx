@@ -223,12 +223,11 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
 
     return (
       <tr key={weekNumbers ? weekNumbers[weekIndex] : weekIndex}>
-        {showWeekNumbers &&
-          weekNumbers && (
-            <th className={classNames.weekNumberCell} key={weekIndex} title={titleString} aria-label={titleString} scope="row">
-              <span>{weekNumbers[weekIndex]}</span>
-            </th>
-          )}
+        {showWeekNumbers && weekNumbers && (
+          <th className={classNames.weekNumberCell} key={weekIndex} title={titleString} aria-label={titleString} scope="row">
+            <span>{weekNumbers[weekIndex]}</span>
+          </th>
+        )}
         {week.map((day: IDayInfo, dayIndex: number) => this.renderDayCells(classNames, day, dayIndex, weekIndex))}
       </tr>
     );
