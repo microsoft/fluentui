@@ -1,25 +1,26 @@
 // @ts-check
 
-const { task, series, parallel, condition, option, argv } = require('just-task');
+const { task, series, parallel, condition, option, argv, logger } = require('just-task');
 const { rig } = require('./just-tasks');
+const path = require('path');
+const fs = require('fs');
+
+let packageJson;
 
 option('production');
-option('min');
 
-task('clean', rig.clean);
-task('copy', rig.copy);
-task('jest', rig.jest);
-task('tslint', rig.tslint);
-task('sass', rig.sass);
-task('ts:commonjs', rig.ts.commonJs);
-task('ts:esm', rig.ts.esm);
-task('ts:amd', rig.ts.amd);
-task('webpack', rig.webpack);
-task('outdated', rig.outdated);
-task('selfupdate', rig.selfupdate);
-task('api-extractor', rig.apiExtractor);
-task('lint-imports', rig.lintImports);
-task('build-codepen-examples', rig.buildCodepenExamples);
+// Adds an alias for 'npm-install-mode' for backwards compatibility
+option('min', { alias: 'npm-install-mode' });
+
+Object.keys(rig).forEach(taskFunction => {
+  if (typeof rig[taskFunction] === 'function') {
+    registerTask(kebabCase(taskFunction), rig[taskFunction]);
+  } else if (typeof rig[taskFunction] === 'object') {
+    Object.keys(rig[taskFunction]).forEach(name => {
+      registerTask(kebabCase(`${taskFunction}:${name}`), rig[taskFunction][name]);
+    });
+  }
+});
 
 task(
   'build',
@@ -42,3 +43,44 @@ task(
     )
   )
 );
+
+// Utility functions
+
+function getPackage() {
+  if (typeof packageJson !== 'undefined') {
+    return packageJson;
+  }
+
+  let packagePath = path.resolve(process.cwd(), 'package.json');
+
+  if (fs.existsSync(packagePath)) {
+    packageJson = JSON.parse(fs.readFileSync(packagePath, 'utf8'));
+    return packageJson;
+  }
+
+  return undefined;
+}
+
+function getDisabledTasks() {
+  return getPackage().disabledTasks || [];
+}
+
+function kebabCase(name) {
+  return name
+    .replace(/([a-z])([A-Z])/g, '$1-$2')
+    .replace(/\s+/g, '-')
+    .toLowerCase();
+}
+
+function registerTask(name, taskFunction) {
+  const disabledTasks = getDisabledTasks();
+
+  task(
+    name,
+    disabledTasks.includes(name)
+      ? () => {
+          logger.info(`${name} task is disabled in package.json`);
+        }
+      : taskFunction
+  );
+}
