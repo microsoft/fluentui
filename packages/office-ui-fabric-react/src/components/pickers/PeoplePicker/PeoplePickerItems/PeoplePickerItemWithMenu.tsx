@@ -10,11 +10,11 @@ import { FocusZone } from '../../../../FocusZone';
 import * as stylesImport from './PickerItemsDefault.scss';
 const styles: any = stylesImport;
 
-export interface IPeoplePickerItemState {
+export interface IPeoplePickerItemWithMenuState {
   contextualMenuVisible: boolean;
 }
 
-export class PeoplePickerItemWithMenu extends BaseComponent<IPeoplePickerItemWithMenuProps, IPeoplePickerItemState> {
+export class PeoplePickerItemWithMenu extends BaseComponent<IPeoplePickerItemWithMenuProps, IPeoplePickerItemWithMenuState> {
   public refs: {
     [key: string]: any;
   };

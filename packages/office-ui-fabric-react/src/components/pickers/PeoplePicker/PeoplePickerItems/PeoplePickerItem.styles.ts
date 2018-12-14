@@ -19,25 +19,33 @@ export function getStyles(props: IPeoplePickerItemStyleProps): IPeoplePickerItem
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const personaPrimaryTextStyles: IStyle = [
-    selected && {
-      color: palette.white,
-      selectors: {
-        [HighContrastSelector]: {
-          color: 'HighlightText'
+    selected &&
+      !invalid && {
+        color: palette.white,
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'HighlightText'
+          }
         }
-      }
-    },
-    invalid && [
-      {
-        color: palette.redDark,
-        borderBottom: `2px dotted ${palette.redDark}`
       },
+    invalid &&
+      !selected && {
+        color: palette.redDark,
+        borderBottom: `2px dotted ${palette.redDark}`,
+        selectors: {
+          '$root:hover &': {
+            // override Persona root:hover selector
+            color: palette.redDark
+          }
+        }
+      },
+    invalid &&
       selected && {
         color: palette.white,
-        borderBottomColor: palette.white
+        borderBottom: `2px dotted ${palette.white}`
       }
-    ]
   ];
+
   const personaCoinInitialsStyles: IStyle = [
     invalid && {
       fontSize: 20 // does not exist on the FontSizes type ramp.
@@ -136,10 +144,10 @@ export function getStyles(props: IPeoplePickerItemStyleProps): IPeoplePickerItem
     ],
     subComponentStyles: {
       persona: {
-        primaryText: [personaPrimaryTextStyles]
+        primaryText: personaPrimaryTextStyles
       },
       personaCoin: {
-        initials: [personaCoinInitialsStyles]
+        initials: personaCoinInitialsStyles
       }
     }
   };
