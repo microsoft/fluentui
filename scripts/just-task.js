@@ -4,8 +4,6 @@ const { task, series, parallel, condition, option, argv, logger } = require('jus
 const { rig } = require('./tasks/rig');
 const path = require('path');
 const fs = require('fs');
-const packageName = path.basename(process.cwd());
-const apiFileName = `etc/${packageName}.api.ts`;
 
 let packageJson;
 
