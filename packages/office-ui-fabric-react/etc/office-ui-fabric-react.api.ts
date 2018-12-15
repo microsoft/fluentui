@@ -700,7 +700,6 @@ class CommandBarButton extends BaseComponent<IButtonProps, {}> {
 
 // @public
 class CompactPeoplePickerBase extends BasePeoplePicker {
-  // (undocumented)
   static defaultProps: {
     createGenericItem: typeof createGenericItem;
     onRenderItem: (props: IPeoplePickerItemSelectedProps) => JSX.Element;
@@ -8982,10 +8981,11 @@ interface IPeopleFloatingPickerProps extends IBaseFloatingPickerProps<IPersonaPr
 interface IPeoplePickerItemProps extends IPickerItemProps<IExtendedPersonaProps> {
 }
 
-// @public (undocumented)
+// @public
 interface IPeoplePickerItemSelectedProps extends IPickerItemProps<IPersonaProps & {
     ValidationState: ValidationState;
 }>, IPeoplePickerItemSharedProps {
+  styles?: IStyleFunctionOrObject<IPeoplePickerItemSelectedStyleProps, IPeoplePickerItemSelectedStyles>;
 }
 
 // @public
@@ -8993,13 +8993,18 @@ interface IPeoplePickerItemSelectedStyles {
   itemContent: IStyle;
   removeButton: IStyle;
   root: IStyle;
-  subComponentStyles: IPeoplePickerItemSubComponentStyles;
+  subComponentStyles: IPeoplePickerItemSelectedSubComponentStyles;
+}
+
+// @public
+interface IPeoplePickerItemSelectedSubComponentStyles {
+  persona: IStyleFunctionOrObject<IPersonaStyleProps, any>;
+  personaCoin: IStyleFunctionOrObject<IPersonaCoinStyleProps, any>;
 }
 
 // @public
 interface IPeoplePickerItemSharedProps {
   className?: string;
-  styles?: IStyleFunctionOrObject<IPeoplePickerItemSelectedStyleProps, IPeoplePickerItemSelectedStyles>;
   theme?: ITheme;
 }
 
@@ -9009,19 +9014,11 @@ interface IPeoplePickerItemState {
   contextualMenuVisible: boolean;
 }
 
-// @public (undocumented)
-interface IPeoplePickerItemSubComponentStyles {
-  persona: IStyleFunctionOrObject<IPersonaStyleProps, any>;
-  personaCoin: IStyleFunctionOrObject<IPersonaCoinStyleProps, any>;
-}
-
-// @public (undocumented)
+// @public
 interface IPeoplePickerItemSuggestionProps extends IPeoplePickerItemSharedProps {
-  // (undocumented)
+  compact?: boolean;
   personaProps?: IPersonaProps;
-  // (undocumented)
-  small?: boolean;
-  // (undocumented)
+  styles?: IStyleFunctionOrObject<IPeoplePickerItemSuggestionStyleProps, IPeoplePickerItemSuggestionStyles>;
   suggestionsProps?: IBasePickerSuggestionsProps;
 }
 
@@ -9031,17 +9028,17 @@ interface IPeoplePickerItemSuggestionStyles {
   root: IStyle;
 }
 
-// @public (undocumented)
-interface IPeoplePickerItemWithMenuProps extends IPickerItemProps<IPersonaWithMenu>, IPeoplePickerItemSharedProps {
+// @public @deprecated
+interface IPeoplePickerItemWithMenuProps extends IPickerItemProps<IPersonaWithMenu> {
 }
 
-// @public (undocumented)
+// @public
 interface IPeoplePickerItemWithMenuState {
   // (undocumented)
   contextualMenuVisible: boolean;
 }
 
-// @public (undocumented)
+// @public
 interface IPeoplePickerProps extends IBasePickerProps<IPersonaProps> {
 }
 
@@ -9206,9 +9203,8 @@ interface IPersonaStyles {
   textContent: IStyle;
 }
 
-// @public (undocumented)
+// @public @deprecated
 interface IPersonaWithMenu extends IPersonaProps {
-  // (undocumented)
   menuItems?: IContextualMenuItem[];
 }
 
@@ -11090,7 +11086,6 @@ class List extends BaseComponent<IListProps, IListState>, implements IList {
 
 // @public
 class ListPeoplePickerBase extends MemberListPeoplePicker {
-  // (undocumented)
   static defaultProps: {
     createGenericItem: typeof createGenericItem;
     onRenderItem: (props: IPeoplePickerItemSelectedProps) => JSX.Element;
@@ -11226,7 +11221,6 @@ class NavBase extends BaseComponent<INavProps, INavState>, implements INav {
 
 // @public
 class NormalPeoplePickerBase extends BasePeoplePicker {
-  // (undocumented)
   static defaultProps: {
     createGenericItem: typeof createGenericItem;
     onRenderItem: (props: IPeoplePickerItemSelectedProps) => JSX.Element;
@@ -11292,7 +11286,7 @@ enum PanelType {
   smallFluid = 0
 }
 
-// @public (undocumented)
+// @public @deprecated
 class PeoplePickerItemWithMenu extends BaseComponent<IPeoplePickerItemWithMenuProps, IPeoplePickerItemWithMenuState> {
   constructor(props: IPeoplePickerItemWithMenuProps);
   // (undocumented)
