@@ -50,8 +50,14 @@ export class PaginationButtonsCustomizationRoundExample extends React.Component<
                 borderRadius: '16px',
                 color: 'white'
               },
-              '&:hover:aria-selected=true': { color: 'white' },
-              '&:hover[aria-selected=true]': { color: 'white' }
+              '&:hover:aria-selected=true': {
+                backgroundColor: '#0078d4',
+                color: 'white'
+              },
+              '&:hover[aria-selected=true]': {
+                backgroundColor: '#0078d4',
+                color: 'white'
+              }
             }
           }
         }}

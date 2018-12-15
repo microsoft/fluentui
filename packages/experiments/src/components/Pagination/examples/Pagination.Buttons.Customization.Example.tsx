@@ -36,12 +36,10 @@ export class PaginationButtonsCustomizationExample extends React.Component<{}, I
             selectors: {
               ':hover': { backgroundColor: '#c8c8c8', borderRadius: '16px' },
               '&:aria-selected=true': {
-                fontWeight: 'bold',
-                textDecoration: 'underline'
+                fontWeight: 'bold'
               },
               '&[aria-selected=true]': {
-                fontWeight: 'bold',
-                textDecoration: 'underline'
+                fontWeight: 'bold'
               }
             }
           }

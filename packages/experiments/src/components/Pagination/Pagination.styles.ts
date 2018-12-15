@@ -1,6 +1,5 @@
 import { IPaginationStyles, IPaginationStyleProps, PaginationFormat } from './Pagination.types';
 import { getGlobalClassNames, IStyle } from '../../Styling';
-import { none } from '../TilesList/TilesList.scss';
 
 const GlobalClassNames = {
   root: 'ms-Pagination-container',
@@ -49,14 +48,26 @@ export function getStyles(props: IPaginationStyleProps): IPaginationStyles {
         selectors: {
           '&:aria-selected=true': {
             color: palette.blue,
-            fontWeight: 'bold'
+            cursor: 'default',
+            fontWeight: 'bold',
+            textDecoration: 'underline'
           },
           '&[aria-selected=true]': {
             color: palette.blue,
-            fontWeight: 'bold'
+            cursor: 'default',
+            fontWeight: 'bold',
+            textDecoration: 'underline'
+          },
+          '&:hover:aria-selected=true': {
+            color: palette.blue,
+            backgroundColor: 'transparent'
+          },
+          '&:hover[aria-selected=true]': {
+            color: palette.blue,
+            backgroundColor: 'transparent'
           },
           ':active': {
-            backgroundColor: none
+            backgroundColor: 'transparent'
           }
         }
       }
