@@ -12,4 +12,6 @@ export * from './PeoplePicker/PeoplePickerItems/PeoplePickerItem';
 export * from './PeoplePicker/PeoplePickerItems/PeoplePickerItemWithMenu';
 export * from './PeoplePicker/PeoplePickerItems/PeoplePickerItemSuggestion';
 export * from './TagPicker/TagPicker';
+export * from './TagPicker/TagPicker.types';
 export * from './TagPicker/TagItem';
+export * from './TagPicker/TagItemSuggestion';

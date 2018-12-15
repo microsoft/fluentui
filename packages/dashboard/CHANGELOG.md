@@ -1,6 +1,13 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Tue, 11 Dec 2018 13:36:20 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Dec 2018 13:35:30 GMT and should not be manually modified.
+
+## 0.39.0
+Fri, 14 Dec 2018 13:35:30 GMT
+
+### Minor changes
+
+- Adding aria-hidden and alt property for the image of Thumbnail item in ThumbnailList component
 
 ## 0.38.0
 Tue, 11 Dec 2018 13:36:20 GMT

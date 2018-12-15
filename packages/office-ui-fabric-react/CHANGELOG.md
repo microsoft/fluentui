@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 13 Dec 2018 13:37:01 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Dec 2018 13:35:30 GMT and should not be manually modified.
+
+## 6.114.0
+Fri, 14 Dec 2018 13:35:30 GMT
+
+### Minor changes
+
+- DetailsList: add isCollapsible and deprecate isCollapsable
+- Persona: change type of the 'coinProps' type to IPersonaCoinProps.
+
+### Patches
+
+- Correct hover and highlight states for Calendar (DateRangeType.Week)
 
 ## 6.113.0
 Thu, 13 Dec 2018 13:37:01 GMT

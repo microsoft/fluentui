@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsList: add isCollapsible and deprecate isCollapsable",
+      "comment": "Persona: fixing how coinProps are passed through from Persona to PersonaCoin.",
       "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "natalie.ethell@microsoft.com"
+  "email": "v-vibr@microsoft.com"
 }

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 13 Dec 2018 13:37:01 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Dec 2018 13:35:30 GMT and should not be manually modified.
+
+## 6.48.1
+Fri, 14 Dec 2018 13:35:30 GMT
+
+### Patches
+
+- Change type usage for consistency. Fix Stack styling bug.
 
 ## 6.48.0
 Thu, 13 Dec 2018 13:37:01 GMT

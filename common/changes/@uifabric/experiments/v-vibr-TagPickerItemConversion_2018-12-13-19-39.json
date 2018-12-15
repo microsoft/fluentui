@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Change type usage for consistency. Fix Stack styling bug.",
+      "comment": "Form: fix wrong imports from OUFR dependency.",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/experiments",
-  "email": "jagore@microsoft.com"
+  "email": "v-vibr@microsoft.com"
 }

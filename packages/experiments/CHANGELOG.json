@@ -2,6 +2,34 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.48.1",
+      "tag": "@uifabric/experiments_v6.48.1",
+      "date": "Fri, 14 Dec 2018 13:35:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Change type usage for consistency. Fix Stack styling bug.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "893b91690c3421410e9ba4bb7ae03c3f74f1e953"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.11.2 <1.0.0` to `>=0.12.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.5.7 <1.0.0` to `>=0.6.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.113.0 <7.0.0` to `>=6.114.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.9.4 <7.0.0` to `>=6.10.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.48.0",
       "tag": "@uifabric/experiments_v6.48.0",
       "date": "Thu, 13 Dec 2018 13:37:01 GMT",

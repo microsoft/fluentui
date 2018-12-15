@@ -2,6 +2,32 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.114.0",
+      "tag": "office-ui-fabric-react_v6.114.0",
+      "date": "Fri, 14 Dec 2018 13:35:30 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "DetailsList: add isCollapsible and deprecate isCollapsable",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "faf1cb2cda7bb8aa5b165b3e9fdb7664ee809830"
+          },
+          {
+            "comment": "Persona: change type of the 'coinProps' type to IPersonaCoinProps.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "548c965d7acde55d063e1e938560032802eaf9a1"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Correct hover and highlight states for Calendar (DateRangeType.Week)",
+            "author": "Jeff Hellesen <jhellesen@gmail.com>",
+            "commit": "b8ae5fa7a50a999d7d7668b054c525efd01cebbf"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.113.0",
       "tag": "office-ui-fabric-react_v6.113.0",
       "date": "Thu, 13 Dec 2018 13:37:01 GMT",
