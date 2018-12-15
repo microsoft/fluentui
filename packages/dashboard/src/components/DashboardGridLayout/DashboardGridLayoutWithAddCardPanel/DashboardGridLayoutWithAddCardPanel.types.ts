@@ -1,7 +1,8 @@
+import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
 import { DashboardGridBreakpointLayouts } from '../DashboardGridLayout.types';
 import { IDGLCard, ISection } from '../../../index';
 
-export interface IDashboardGridLayoutWithAddCardPanelProps {
+export interface IDashboardGridLayoutWithAddCardPanelProps extends IBaseProps {
   /**
    * prop to open the add card panel
    */
@@ -37,6 +38,11 @@ export interface IDashboardGridLayoutWithAddCardPanelProps {
    * The callback being called each time after a layout change
    */
   onLayoutChange?: (newLayout: DashboardGridBreakpointLayouts) => void;
+
+  /**
+   * The callback method fired when the add card panel is dismissed
+   */
+  onPanelDismiss?: () => void;
 }
 
 export interface IDashboardGridLayoutWithAddCardPanelState {

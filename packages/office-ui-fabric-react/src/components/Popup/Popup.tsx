@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, divProperties, doesElementContainFocus, getDocument, getNativeProps, createRef } from '../../Utilities';
+import { BaseComponent, KeyCodes, divProperties, doesElementContainFocus, getDocument, getNativeProps } from '../../Utilities';
 import { IPopupProps } from './Popup.types';
 
 export interface IPopupState {
@@ -14,7 +14,7 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
     shouldRestoreFocus: true
   };
 
-  public _root = createRef<HTMLDivElement>();
+  public _root = React.createRef<HTMLDivElement>();
 
   private _originalFocusedElement: HTMLElement;
   private _containsFocus: boolean;

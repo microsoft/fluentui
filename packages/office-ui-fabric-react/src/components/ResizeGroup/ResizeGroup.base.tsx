@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import { BaseComponent, divProperties, getNativeProps, provideContext, createRef } from '../../Utilities';
+import { BaseComponent, divProperties, getNativeProps, provideContext } from '../../Utilities';
 import { IResizeGroupProps } from './ResizeGroup.types';
 
 const RESIZE_DELAY = 16;
@@ -311,13 +311,13 @@ const hiddenParentStyles: React.CSSProperties = { position: 'relative' };
 export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGroupState> {
   private _nextResizeGroupStateProvider = getNextResizeGroupStateProvider();
   // The root div which is the container inside of which we are trying to fit content.
-  private _root = createRef<HTMLDivElement>();
+  private _root = React.createRef<HTMLDivElement>();
   // A div that can be used for the initial measurement so that we can avoid mounting a second instance
   // of the component being measured for the initial render.
-  private _initialHiddenDiv = createRef<HTMLDivElement>();
+  private _initialHiddenDiv = React.createRef<HTMLDivElement>();
   // A hidden div that is used for mounting a new instance of the component for measurement in a hidden
   // div without unmounting the currently visible content.
-  private _updateHiddenDiv = createRef<HTMLDivElement>();
+  private _updateHiddenDiv = React.createRef<HTMLDivElement>();
   // Tracks if any content has been rendered to the user. This enables us to do some performance optimizations
   // for the initial render.
   private _hasRenderedContent = false;
@@ -349,12 +349,11 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     return (
       <div {...divProps} className={className} ref={this._root}>
         <div style={hiddenParentStyles}>
-          {dataNeedsMeasuring &&
-            !isInitialMeasure && (
-              <div style={hiddenDivStyles} ref={this._updateHiddenDiv}>
-                <MeasuredContext>{onRenderData(dataToMeasure)}</MeasuredContext>
-              </div>
-            )}
+          {dataNeedsMeasuring && !isInitialMeasure && (
+            <div style={hiddenDivStyles} ref={this._updateHiddenDiv}>
+              <MeasuredContext>{onRenderData(dataToMeasure)}</MeasuredContext>
+            </div>
+          )}
 
           <div ref={this._initialHiddenDiv} style={isInitialMeasure ? hiddenDivStyles : undefined} data-automation-id="visibleContent">
             {isInitialMeasure ? onRenderData(dataToMeasure) : renderedData && onRenderData(renderedData)}

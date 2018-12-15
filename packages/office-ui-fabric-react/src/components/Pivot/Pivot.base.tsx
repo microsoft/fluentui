@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, getId, getNativeProps, divProperties, createRef, classNamesFunction, warn } from '../../Utilities';
+import { BaseComponent, KeyCodes, getId, getNativeProps, divProperties, classNamesFunction, warn } from '../../Utilities';
 import { CommandButton } from '../../Button';
 import { IPivotProps, IPivotStyleProps, IPivotStyles } from './Pivot.types';
 import { IPivotItemProps } from './PivotItem.types';
@@ -39,7 +39,7 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
   private _keyToIndexMapping: { [key: string]: number };
   private _keyToTabIds: { [key: string]: string };
   private _pivotId: string;
-  private focusZone = createRef<FocusZone>();
+  private focusZone = React.createRef<FocusZone>();
   private _classNames: { [key in keyof IPivotStyles]: string };
 
   constructor(props: IPivotProps) {

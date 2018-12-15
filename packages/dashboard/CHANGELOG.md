@@ -1,6 +1,27 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Fri, 30 Nov 2018 13:37:17 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Dec 2018 13:35:30 GMT and should not be manually modified.
+
+## 0.39.0
+Fri, 14 Dec 2018 13:35:30 GMT
+
+### Minor changes
+
+- Adding aria-hidden and alt property for the image of Thumbnail item in ThumbnailList component
+
+## 0.38.0
+Tue, 11 Dec 2018 13:36:20 GMT
+
+### Minor changes
+
+- Support to horizontal compact dashboard cards
+
+## 0.37.1
+Tue, 04 Dec 2018 13:36:40 GMT
+
+### Patches
+
+- Using _async fabric utility functions to prevent timeout leaks
 
 ## 0.37.0
 Fri, 30 Nov 2018 13:37:17 GMT

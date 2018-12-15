@@ -1,6 +1,34 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Fri, 30 Nov 2018 13:37:17 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Dec 2018 13:35:30 GMT and should not be manually modified.
+
+## 0.12.0
+Fri, 14 Dec 2018 13:35:30 GMT
+
+### Minor changes
+
+- Add dependency to @uifabric/styling.  Fix imports for FluentTheme.ts
+
+## 0.11.2
+Thu, 13 Dec 2018 13:37:01 GMT
+
+### Patches
+
+- Default Button: Update hover background color
+
+## 0.11.1
+Tue, 11 Dec 2018 13:36:20 GMT
+
+### Patches
+
+- Removing Fabric component dependency. For scss-based components, added Fabric component wrappers in their stories but for non-scss based components, we'll have to see if we can accept them as new changes.
+
+## 0.11.0
+Fri, 07 Dec 2018 13:35:16 GMT
+
+### Minor changes
+
+- Add styles for Persona to theme
 
 ## 0.10.0
 Fri, 30 Nov 2018 13:37:17 GMT

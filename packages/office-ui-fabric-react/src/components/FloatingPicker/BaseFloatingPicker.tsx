@@ -266,14 +266,15 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
           this.props.onRemoveSuggestion &&
           this.suggestionsControl &&
           this.suggestionsControl.hasSuggestionSelected &&
-          this.suggestionsControl.currentSuggestion
+          this.suggestionsControl.currentSuggestion &&
+          ev.shiftKey
         ) {
           (this.props.onRemoveSuggestion as ((item: T) => void))(this.suggestionsControl.currentSuggestion!.item);
 
           this.suggestionsControl.removeSuggestion();
           this.forceUpdate();
+          ev.stopPropagation();
         }
-        ev.stopPropagation();
         break;
 
       case KeyCodes.up:

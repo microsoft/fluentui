@@ -10,7 +10,7 @@ import {
   IDetailsFooterProps,
   DetailsRow
 } from 'office-ui-fabric-react/lib/DetailsList';
-import { IRenderFunction, createRef } from 'office-ui-fabric-react/lib/Utilities';
+import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { TooltipHost, ITooltipHostProps } from 'office-ui-fabric-react/lib/Tooltip';
 import { ScrollablePane, IScrollablePane, ScrollbarVisibility } from 'office-ui-fabric-react/lib/ScrollablePane';
 import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
@@ -92,7 +92,7 @@ export class ScrollablePaneDetailsListExample extends React.Component<
     selectionDetails: string;
   }
 > {
-  private _scrollablePane = createRef<IScrollablePane>();
+  private _scrollablePane = React.createRef<IScrollablePane>();
   private _selection: Selection;
   private readonly _items: IItem[];
 

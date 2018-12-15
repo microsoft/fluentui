@@ -1,6 +1,13 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Wed, 31 Oct 2018 12:32:41 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Dec 2018 13:35:30 GMT and should not be manually modified.
+
+## 0.6.0
+Fri, 14 Dec 2018 13:35:30 GMT
+
+### Minor changes
+
+- Add styling and utilities packages as dependencies and remove corresponding type injection.
 
 ## 0.5.7
 Wed, 31 Oct 2018 12:32:41 GMT

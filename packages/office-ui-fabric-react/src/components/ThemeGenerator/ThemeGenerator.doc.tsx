@@ -110,13 +110,13 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
           </p>
         </div>
         {/* Hello! You've found hidden functionality for generating a theme from an image. This uses Microsoft's
-          * Cognitive Vision API, documented here:
-          * https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts/javascript
-          * We use that API to identify the most prominent background and foreground colors, and the accent color,
-          * and generate a theme based off of those.
-          * Since this API requires a personal subscription key, you'll have to enlist and insert your subscription
-          * key in _makeThemeFromImg() @ https://raw.githubusercontent.com/cliffkoh/office-ui-fabric-react/9c95e9b92f8caa1fe5ffb9da769ce0921a5272ed/packages/office-ui-fabric-react/src/components/ThemeGenerator/ThemeGeneratorPage.tsx
-          * Then, just uncomment this section. */}
+         * Cognitive Vision API, documented here:
+         * https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts/javascript
+         * We use that API to identify the most prominent background and foreground colors, and the accent color,
+         * and generate a theme based off of those.
+         * Since this API requires a personal subscription key, you'll have to enlist and insert your subscription
+         * key in _makeThemeFromImg() @ https://raw.githubusercontent.com/cliffkoh/office-ui-fabric-react/9c95e9b92f8caa1fe5ffb9da769ce0921a5272ed/packages/office-ui-fabric-react/src/components/ThemeGenerator/ThemeGeneratorPage.tsx
+         * Then, just uncomment this section. */}
         {/*}
         <div style={ { display: 'flex' } }>
           <div>URL to image:&nbsp;</div>
@@ -128,23 +128,20 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
         {*/}
 
         {/* the shared popup color picker for slots */}
-        {colorPickerVisible &&
-          colorPickerSlotRule !== null &&
-          colorPickerSlotRule !== undefined &&
-          colorPickerElement && (
-            <Callout
-              key={colorPickerSlotRule.name}
-              gapSpace={10}
-              target={colorPickerElement}
-              setInitialFocus={true}
-              onDismiss={this._colorPickerOnDismiss}
-            >
-              <ColorPicker
-                color={colorPickerSlotRule.color!.str}
-                onColorChanged={this._semanticSlotRuleChanged.bind(this, colorPickerSlotRule)}
-              />
-            </Callout>
-          )}
+        {colorPickerVisible && colorPickerSlotRule !== null && colorPickerSlotRule !== undefined && colorPickerElement && (
+          <Callout
+            key={colorPickerSlotRule.name}
+            gapSpace={10}
+            target={colorPickerElement}
+            setInitialFocus={true}
+            onDismiss={this._colorPickerOnDismiss}
+          >
+            <ColorPicker
+              color={colorPickerSlotRule.color!.str}
+              onColorChanged={this._semanticSlotRuleChanged.bind(this, colorPickerSlotRule)}
+            />
+          </Callout>
+        )}
 
         {/* the three base slots, prominently displayed at the top of the page */}
         <div style={{ display: 'flex' }}>

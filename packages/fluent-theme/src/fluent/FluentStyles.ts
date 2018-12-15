@@ -18,6 +18,7 @@ import { IconButtonStyles } from './styles/IconButton.styles';
 import { LabelStyles } from './styles/Label.styles';
 import { LinkStyles } from './styles/Link.styles';
 import { ModalStyles } from './styles/Modal.styles';
+import { PersonaStyles } from './styles/Persona.styles';
 import { PivotStyles } from './styles/Pivot.styles';
 import { PrimaryButtonStyles } from './styles/PrimaryButton.styles';
 import { RatingStyles } from './styles/Rating.styles';
@@ -108,6 +109,9 @@ export const FluentStyles: any = {
   },
   Modal: {
     styles: ModalStyles
+  },
+  Persona: {
+    styles: PersonaStyles
   },
   Pivot: {
     styles: PivotStyles

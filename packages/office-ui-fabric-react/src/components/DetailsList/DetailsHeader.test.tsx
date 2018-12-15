@@ -510,7 +510,8 @@ describe('DetailsHeader', () => {
     expect(header._currentDropHintIndex).toBe(1);
     let dropHintElement = component.find('#columnDropHint_1').getDOMNode();
     let dropHintElementChildren = dropHintElement.children;
-    expect(dropHintElementChildren.item(0).getAttribute('style')).toEqual('visibility: visible;');
+    expect(dropHintElementChildren.item(0)!.getAttribute('style')).toEqual('display: inline-block;');
+    expect(dropHintElementChildren.item(1)!.getAttribute('style')).toEqual('display: inline-block;');
 
     // dragover b/w b&c and c&d -> dead zone b/w 370 and 810
     _RaiseEvent(detailsColSourceC, _DRAGOVER, 400);
@@ -524,11 +525,13 @@ describe('DetailsHeader', () => {
     // dead zone : idx 2 and 3 -> no hint shown
     dropHintElement = component.find('#columnDropHint_2').getDOMNode();
     dropHintElementChildren = dropHintElement.children;
-    expect(dropHintElementChildren.item(0).getAttribute('style')).toEqual(null);
+    expect(dropHintElementChildren.item(0)!.getAttribute('style')).toEqual(null);
+    expect(dropHintElementChildren.item(1)!.getAttribute('style')).toEqual(null);
 
     dropHintElement = component.find('#columnDropHint_3').getDOMNode();
     dropHintElementChildren = dropHintElement.children;
-    expect(dropHintElementChildren.item(0).getAttribute('style')).toEqual(null);
+    expect(dropHintElementChildren.item(0)!.getAttribute('style')).toEqual(null);
+    expect(dropHintElementChildren.item(1)!.getAttribute('style')).toEqual(null);
 
     // dragover e
     _RaiseEvent(detailsColTargetE, _DRAGOVER, 811);
@@ -536,7 +539,8 @@ describe('DetailsHeader', () => {
     expect(header._currentDropHintIndex).toBe(4);
     dropHintElement = component.find('#columnDropHint_4').getDOMNode();
     dropHintElementChildren = dropHintElement.children;
-    expect(dropHintElementChildren.item(0).getAttribute('style')).toEqual('visibility: visible;');
+    expect(dropHintElementChildren.item(0)!.getAttribute('style')).toEqual('display: inline-block;');
+    expect(dropHintElementChildren.item(1)!.getAttribute('style')).toEqual('display: inline-block;');
 
     // raise dragend on column c
     _RaiseEvent(detailsColSourceC, _DRAGEND, 490);
@@ -544,7 +548,8 @@ describe('DetailsHeader', () => {
     // drop hint should be hidden on doing a dragend
     dropHintElement = component.find('#columnDropHint_4').getDOMNode();
     dropHintElementChildren = dropHintElement.children;
-    expect(dropHintElementChildren.item(0).getAttribute('style')).toEqual('visibility: hidden;');
+    expect(dropHintElementChildren.item(0)!.getAttribute('style')).toEqual('display: none;');
+    expect(dropHintElementChildren.item(1)!.getAttribute('style')).toEqual('display: none;');
 
     // do a mousedown and dragstart on source column c
     _RaiseEvent(detailsColSourceC, _MOUSEDOWN, 490);
@@ -556,7 +561,9 @@ describe('DetailsHeader', () => {
     expect(header._currentDropHintIndex).toBe(5);
     dropHintElement = component.find('#columnDropHint_5').getDOMNode();
     dropHintElementChildren = dropHintElement.children;
-    expect(dropHintElementChildren.item(0).getAttribute('style')).toEqual('visibility: visible;');
+
+    expect(dropHintElementChildren.item(0)!.getAttribute('style')).toEqual('display: inline-block;');
+    expect(dropHintElementChildren.item(1)!.getAttribute('style')).toEqual('display: inline-block;');
 
     // dragover outside f's zone (frozen) -> should get last valid drop hint
     _RaiseEvent(detailsColTargetF, _DRAGOVER, 1169);
@@ -564,7 +571,8 @@ describe('DetailsHeader', () => {
     expect(header._currentDropHintIndex).toBe(5);
     dropHintElement = component.find('#columnDropHint_5').getDOMNode();
     dropHintElementChildren = dropHintElement.children;
-    expect(dropHintElementChildren.item(0).getAttribute('style')).toEqual('visibility: visible;');
+    expect(dropHintElementChildren.item(0)!.getAttribute('style')).toEqual('display: inline-block;');
+    expect(dropHintElementChildren.item(1)!.getAttribute('style')).toEqual('display: inline-block;');
   });
 
   it('should set source and target index correctly on drop', () => {
@@ -616,7 +624,8 @@ describe('DetailsHeader', () => {
 
     let dropHintElement = component.find('#columnDropHint_1').getDOMNode();
     let dropHintElementChildren = dropHintElement.children;
-    expect(dropHintElementChildren.item(0).getAttribute('style')).toEqual('visibility: visible;');
+    expect(dropHintElementChildren.item(0)!.getAttribute('style')).toEqual('display: inline-block;');
+    expect(dropHintElementChildren.item(1)!.getAttribute('style')).toEqual('display: inline-block;');
 
     _RaiseEvent(detailsColTarget, _DROP, 160);
     expect(_sourceIndex).toBe(4);
@@ -624,7 +633,8 @@ describe('DetailsHeader', () => {
 
     dropHintElement = component.find('#columnDropHint_1').getDOMNode();
     dropHintElementChildren = dropHintElement.children;
-    expect(dropHintElementChildren.item(0).getAttribute('style')).toEqual('visibility: hidden;');
+    expect(dropHintElementChildren.item(0)!.getAttribute('style')).toEqual('display: none;');
+    expect(dropHintElementChildren.item(1)!.getAttribute('style')).toEqual('display: none;');
 
     // try moving column c after frozen column f (abcdef -> abdecf)
     let detailsColSourceC = component.find('[aria-colindex=4]').getDOMNode();
@@ -641,7 +651,8 @@ describe('DetailsHeader', () => {
 
     dropHintElement = component.find('#columnDropHint_5').getDOMNode();
     dropHintElementChildren = dropHintElement.children;
-    expect(dropHintElementChildren.item(0).getAttribute('style')).toEqual('visibility: visible;');
+    expect(dropHintElementChildren.item(0)!.getAttribute('style')).toEqual('display: inline-block;');
+    expect(dropHintElementChildren.item(1)!.getAttribute('style')).toEqual('display: inline-block;');
 
     _RaiseEvent(detailsColTarget, _DROP, 1169);
     expect(_sourceIndex).toBe(2);
@@ -649,7 +660,8 @@ describe('DetailsHeader', () => {
 
     dropHintElement = component.find('#columnDropHint_5').getDOMNode();
     dropHintElementChildren = dropHintElement.children;
-    expect(dropHintElementChildren.item(0).getAttribute('style')).toEqual('visibility: hidden;');
+    expect(dropHintElementChildren.item(0)!.getAttribute('style')).toEqual('display: none;');
+    expect(dropHintElementChildren.item(1)!.getAttribute('style')).toEqual('display: none;');
 
     // source and target column are the same
     detailsColSourceC = component.find('[aria-colindex=4]').getDOMNode();
@@ -664,7 +676,8 @@ describe('DetailsHeader', () => {
 
     dropHintElement = component.find('#columnDropHint_2').getDOMNode();
     dropHintElementChildren = dropHintElement.children;
-    expect(dropHintElementChildren.item(0).getAttribute('style')).toEqual(null);
+    expect(dropHintElementChildren.item(0)!.getAttribute('style')).toEqual(null);
+    expect(dropHintElementChildren.item(1)!.getAttribute('style')).toEqual(null);
 
     // drop on source column itself -> drophintindex should not be set and hence target index not updated
     _RaiseEvent(detailsColTarget, _DROP, 500);
