@@ -1,2 +1,5 @@
-const { apiExtractorTask } = require('just-task-preset');
-exports.apiExtractor = apiExtractorTask();
+const { apiExtractorVerifyTask, apiExtractorUpdateTask } = require('just-task-preset');
+exports.apiExtractor = {
+  update: apiExtractorUpdateTask(),
+  verify: apiExtractorVerifyTask()
+};

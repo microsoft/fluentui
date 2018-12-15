@@ -9,6 +9,7 @@ const { outdated, selfupdate } = require('./outdated');
 const { apiExtractor } = require('./apiExtractor');
 const buildCodepenExamples = require('./build-codepen-examples');
 const lintImports = require('./lint-imports');
+const prettier = require('./prettier');
 
 exports.rig = {
   clean,
@@ -22,5 +23,6 @@ exports.rig = {
   selfupdate,
   apiExtractor,
   buildCodepenExamples,
-  lintImports
+  lintImports,
+  prettier
 };

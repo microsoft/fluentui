@@ -4,6 +4,8 @@ const { task, series, parallel, condition, option, argv, logger } = require('jus
 const { rig } = require('./tasks/rig');
 const path = require('path');
 const fs = require('fs');
+const packageName = path.basename(process.cwd());
+const apiFileName = `etc/${packageName}.api.ts`;
 
 let packageJson;
 
@@ -22,6 +24,8 @@ Object.keys(rig).forEach(taskFunction => {
   }
 });
 
+task('ts', parallel('ts:commonjs', 'ts:esm', condition('ts:amd', () => argv().production && !argv().min)));
+
 task(
   'build',
   series(
@@ -32,15 +36,17 @@ task(
       condition('tslint', () => !argv().min),
       condition('jest', () => !argv().min),
       series(
-        parallel('ts:commonjs', 'ts:esm', condition('ts:amd', () => argv().production && !argv().min)),
+        'ts',
         condition('lint-imports', () => !argv().min),
-        parallel(condition('webpack', () => !argv().min), condition('api-extractor', () => !argv().min), 'build-codepen-examples')
+        parallel(condition('webpack', () => !argv().min), condition('api-extractor:verify', () => !argv().min), 'build-codepen-examples')
       )
     )
   )
 );
 
 task('build-webpack-utils', rig.ts.commonjsOnly);
+task('code-style', series('prettier', 'tslint'));
+task('update-api', series('clean', 'copy', 'sass', 'ts', 'api-extractor:update'));
 
 // Utility functions
 

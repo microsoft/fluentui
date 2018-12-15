@@ -106,7 +106,7 @@ dependencies:
   jscodeshift: 0.5.1
   json-loader: 0.5.7
   just-task: 0.7.3
-  just-task-preset: 0.5.7
+  just-task-preset: 0.6.0
   lint-staged: 7.3.0
   loader-utils: 1.1.0
   markdown-to-jsx: 6.6.1
@@ -7987,7 +7987,7 @@ packages:
     dev: false
     resolution:
       integrity: sha512-Fu3T6pKBuxjWT/p4DkqGHFRsysc8OauWr4ZRTY9dIx07Y9O0RkoR5jcv28aeD1vuAwhm3nLkDurwLXoALp4DpQ==
-  /just-task-preset/0.5.7:
+  /just-task-preset/0.6.0:
     dependencies:
       chalk: 2.4.1
       glob: 7.1.3
@@ -8008,8 +8008,8 @@ packages:
       typescript: '>=2.8.0 <4.0.0'
       webpack: '>=4.0.0 <5.0.0'
     resolution:
-      integrity: sha512-IneZpLX1y7iMCWJUinP0Nl2IcLQovDk5BAVBhp5DiToO2JhCliEAoBk7ny24aXDFhvfi1PPsEjiYqRjDx0KFKA==
-  /just-task-preset/0.5.7/8322411d5c8f271222caf8a99e9af2f2:
+      integrity: sha512-SGUnbiobFplSK4bOGODkoTfMwYmEo5UpCUw1n3tFOYuOjuUBT+sihyR9HBlSFZIwxITvnSVGpQWMb8HX2cc9gg==
+  /just-task-preset/0.6.0/8322411d5c8f271222caf8a99e9af2f2:
     dependencies:
       '@microsoft/api-extractor': 6.1.6
       autoprefixer: 7.2.6
@@ -8028,7 +8028,7 @@ packages:
       typescript: 2.8.4
       webpack: 4.7.0
     dev: false
-    id: registry.npmjs.org/just-task-preset/0.5.7
+    id: registry.npmjs.org/just-task-preset/0.6.0
     peerDependencies:
       '@microsoft/api-extractor': '>=6.0.0 <7.0.0'
       autoprefixer: '>=7.0.0 <10.0.0'
@@ -8039,7 +8039,7 @@ packages:
       typescript: '>=2.8.0 <4.0.0'
       webpack: '>=4.0.0 <5.0.0'
     resolution:
-      integrity: sha512-IneZpLX1y7iMCWJUinP0Nl2IcLQovDk5BAVBhp5DiToO2JhCliEAoBk7ny24aXDFhvfi1PPsEjiYqRjDx0KFKA==
+      integrity: sha512-SGUnbiobFplSK4bOGODkoTfMwYmEo5UpCUw1n3tFOYuOjuUBT+sihyR9HBlSFZIwxITvnSVGpQWMb8HX2cc9gg==
   /just-task/0.4.2:
     dependencies:
       chalk: 2.4.1
@@ -14523,7 +14523,7 @@ packages:
       json-loader: 0.5.7
       jsonc-parser: 2.0.2
       just-task: 0.7.3
-      just-task-preset: /just-task-preset/0.5.7/8322411d5c8f271222caf8a99e9af2f2
+      just-task-preset: /just-task-preset/0.6.0/8322411d5c8f271222caf8a99e9af2f2
       lint-staged: 7.3.0
       mkdirp: 0.5.1
       mustache: 2.3.2
@@ -14558,7 +14558,7 @@ packages:
     dev: false
     name: '@rush-temp/build'
     resolution:
-      integrity: sha512-B2t9EXQUeVtsLhLO7zw65n6dwPijie0cugsxk8nPH/t2AV+XMxxq8KXPRTKXzGztwfxgw3mV81NnPoVHUBgOpg==
+      integrity: sha512-C5icisii0+3a3e5MilYANjstySRn+Z9hS0DcY87XF2tw10Po50x/4YzsM+prIwV0/AZzvoCpw7K61Iw6HJh1cA==
       tarball: 'file:projects/build.tgz'
     version: 0.0.0
   'file:projects/charting.tgz':
@@ -15266,7 +15266,7 @@ specifiers:
   jscodeshift: ^0.5.0
   json-loader: ^0.5.7
   just-task: ^0.7.3
-  just-task-preset: ^0.5.7
+  just-task-preset: ^0.6.0
   lint-staged: ^7.0.5
   loader-utils: ^1.1.0
   markdown-to-jsx: 6.6.1
