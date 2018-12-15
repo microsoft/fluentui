@@ -3,8 +3,10 @@ import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { BaseComponent, classNamesFunction } from '../../Utilities';
 import { PageNumber } from './PageNumber';
 import { IPaginationProps, IPaginationString, IPaginationStyleProps, IPaginationStyles, PaginationFormat } from './Pagination.types';
-import { ComboBox, IComboBoxOption } from 'office-ui-fabric-react/lib/ComboBox';
+import { ComboBox, IComboBoxOption, IComboBox } from 'office-ui-fabric-react/lib/ComboBox';
 import { TooltipHost, DirectionalHint } from 'office-ui-fabric-react/lib/Tooltip';
+import { IProcessedStyleSet } from '../../Styling';
+
 const getClassNames = classNamesFunction<IPaginationStyleProps, IPaginationStyles>();
 
 const DEFAULT_STRINGS: IPaginationString = {
@@ -15,7 +17,7 @@ const DEFAULT_STRINGS: IPaginationString = {
 export class PaginationBase extends BaseComponent<IPaginationProps> {
   public static defaultProps: Partial<IPaginationProps> = {
     selectedPageIndex: 0,
-    format: PaginationFormat.buttons,
+    format: PaginationFormat.comboBox,
     numberOfPageButton: 5,
     previousPageIconProps: { iconName: 'CaretSolidLeft' },
     nextPageIconProps: { iconName: 'CaretSolidRight' },
@@ -24,7 +26,7 @@ export class PaginationBase extends BaseComponent<IPaginationProps> {
     strings: DEFAULT_STRINGS
   };
 
-  private _classNames: { [key in keyof IPaginationStyles]: string };
+  private _classNames: IProcessedStyleSet<IPaginationStyles>;
 
   constructor(props: IPaginationProps) {
     super(props);
@@ -83,7 +85,7 @@ export class PaginationBase extends BaseComponent<IPaginationProps> {
             ariaLabel={comboBoxAriaLabel}
             selectedKey={`${selectedPageIndex}`}
             options={scaleOptions}
-            onChanged={this.onComboBoxChanged}
+            onChange={this.onComboBoxChange}
             styles={{
               container: this._classNames.comboBox
             }}
@@ -154,7 +156,7 @@ export class PaginationBase extends BaseComponent<IPaginationProps> {
     this.handleSelectedPage(this.props.pageCount - 1);
   };
 
-  private onComboBoxChanged = (option: IComboBoxOption, index: number) => {
+  private onComboBoxChange = (event: React.FormEvent<IComboBox>, option: IComboBoxOption, index: number) => {
     if (option !== undefined) {
       this.handleSelectedPage(index);
     }

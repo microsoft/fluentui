@@ -1,5 +1,6 @@
 import { IPaginationStyles, IPaginationStyleProps, PaginationFormat } from './Pagination.types';
 import { getGlobalClassNames, IStyle } from '../../Styling';
+import { none } from '../TilesList/TilesList.scss';
 
 const GlobalClassNames = {
   root: 'ms-Pagination-container',
@@ -53,6 +54,9 @@ export function getStyles(props: IPaginationStyleProps): IPaginationStyles {
           '&[aria-selected=true]': {
             color: palette.blue,
             fontWeight: 'bold'
+          },
+          ':active': {
+            backgroundColor: none
           }
         }
       }

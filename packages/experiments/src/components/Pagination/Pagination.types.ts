@@ -82,7 +82,7 @@ export interface IPaginationProps {
    */
   format?: PaginationFormat;
   /**
-   * number of visible buttons. This is only applicable for @param PaginationFormat.buttons
+   * number of visible buttons. This is only applicable for @param PaginationFormat.comboBox
    */
   numberOfPageButton?: number;
   /**
@@ -101,14 +101,14 @@ export interface IPaginationProps {
 
 export enum PaginationFormat {
   /**
-   * Display Pagination as buttons
-   */
-  buttons = 0,
-
-  /**
    * Display Pagination as Combo Box
    */
-  comboBox = 1
+  comboBox = 0,
+
+  /**
+   * Display Pagination as buttons
+   */
+  buttons = 1
 }
 
 export interface IPaginationString {
@@ -126,7 +126,7 @@ export interface IPaginationStyleProps {
   theme: ITheme;
   /**
    * format of the pagination control
-   * @default PaginationFormat.buttons
+   * @default PaginationFormat.comboBox
    */
   format?: PaginationFormat;
 }
