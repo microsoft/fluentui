@@ -4,7 +4,7 @@ import { IColumn, ColumnActionsMode, IDetailsHeaderProps } from 'office-ui-fabri
 import { mount } from 'enzyme';
 import { DetailsList } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsList';
 import { assign, IRenderFunction } from '@uifabric/utilities';
-import { ITooltipHostProps, TooltipHost } from '../..';
+import { ITooltipHostProps, TooltipHost } from '../Tooltip';
 
 let mockOnColumnClick: jest.Mock<{}>;
 let baseColumn: IColumn;
