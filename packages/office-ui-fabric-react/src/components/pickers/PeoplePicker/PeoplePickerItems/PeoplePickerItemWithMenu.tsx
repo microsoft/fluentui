@@ -1,19 +1,24 @@
-/* tslint:disable */
 import * as React from 'react';
-/* tslint:enable */
+
 import { BaseComponent, css, createRef } from '../../../../Utilities';
 import { IPeoplePickerItemWithMenuProps } from './PeoplePickerItem.types';
 import { Persona, PersonaPresence } from '../../../../Persona';
 import { ContextualMenu, DirectionalHint } from '../../../../ContextualMenu';
 import { IconButton } from '../../../../Button';
 import { FocusZone } from '../../../../FocusZone';
+
 import * as stylesImport from './PickerItemsDefault.scss';
 const styles: any = stylesImport;
 
+/** PeoplePickerItemWithMenu state interface. */
 export interface IPeoplePickerItemWithMenuState {
   contextualMenuVisible: boolean;
 }
 
+/**
+ * PeoplePickerItem with an additional contextual menu.
+ * @deprecated Do not use. Will be removed in Fabric 7.0
+ */
 export class PeoplePickerItemWithMenu extends BaseComponent<IPeoplePickerItemWithMenuProps, IPeoplePickerItemWithMenuState> {
   public refs: {
     [key: string]: any;

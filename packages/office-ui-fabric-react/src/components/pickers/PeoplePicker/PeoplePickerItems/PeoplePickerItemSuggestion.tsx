@@ -12,7 +12,7 @@ import { getStyles } from './PeoplePickerItemSuggestion.styles';
 const getClassNames = classNamesFunction<IPeoplePickerItemSuggestionStyleProps, IPeoplePickerItemSuggestionStyles>();
 
 export const PeoplePickerItemSuggestionBase = (props: IPeoplePickerItemSuggestionProps) => {
-  const { personaProps, suggestionsProps, small, styles, theme, className } = props;
+  const { personaProps, suggestionsProps, compact, styles, theme, className } = props;
 
   const classNames = getClassNames(styles, {
     theme: theme!,
@@ -21,7 +21,7 @@ export const PeoplePickerItemSuggestionBase = (props: IPeoplePickerItemSuggestio
 
   return (
     <div className={classNames.root}>
-      <Persona size={PersonaSize.size24} className={classNames.personaWrapper} showSecondaryText={!small} {...personaProps} />
+      <Persona size={PersonaSize.size24} className={classNames.personaWrapper} showSecondaryText={!compact} {...personaProps} />
     </div>
   );
 };

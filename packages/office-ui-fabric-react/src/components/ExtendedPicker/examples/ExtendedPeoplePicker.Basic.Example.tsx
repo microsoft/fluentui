@@ -1,10 +1,8 @@
 import * as React from 'react';
 
-import { assign } from 'office-ui-fabric-react/lib/Utilities';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { ExtendedPeoplePicker } from 'office-ui-fabric-react/lib/ExtendedPicker';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/Pickers';
 import {
   SuggestionsStore,
   FloatingPeoplePicker,
@@ -35,7 +33,6 @@ export interface IPeoplePickerExampleState {
   controlledComponent: boolean;
 }
 
-// tslint:disable-next-line:no-any
 export class ExtendedPeoplePickerTypesExample extends React.Component<{}, IPeoplePickerExampleState> {
   private _picker: ExtendedPeoplePicker;
   private _floatingPickerProps: IBaseFloatingPickerProps<IPersonaProps>;
@@ -45,16 +42,9 @@ export class ExtendedPeoplePickerTypesExample extends React.Component<{}, IPeopl
 
   constructor(props: {}) {
     super(props);
-    const peopleList: IPersonaWithMenu[] = [];
-    people.forEach((persona: IPersonaProps) => {
-      const target: IPersonaWithMenu = {};
-
-      assign(target, persona);
-      peopleList.push(target);
-    });
 
     this.state = {
-      peopleList: peopleList,
+      peopleList: people,
       mostRecentlyUsed: mru,
       searchMoreAvailable: true,
       currentlySelectedItems: [],
