@@ -970,8 +970,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
             ...props,
             columns: columns,
             groupNestingDepth: groupNestingDepth,
-            selection: this._selection,
-            selectionMode: this._selection.mode
+            selection: this._selection
           },
           defaultRender
         );
