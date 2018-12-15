@@ -1916,7 +1916,7 @@ interface IBaseFloatingPickerSuggestionProps {
   shouldSelectFirstItem?: () => boolean;
 }
 
-// @public (undocumented)
+// @public
 interface IBasePicker<T> {
   focus: () => void;
   focusInput: () => void;
@@ -8170,7 +8170,7 @@ interface IImageStyles {
   root: IStyle;
 }
 
-// @public (undocumented)
+// @public
 interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   // WARNING: The name "aria-label" contains unsupported characters; API names should use only letters, numbers, and underscores
   aria-label?: string;
@@ -10547,21 +10547,40 @@ interface ISwatchColorPickerStyles {
   tableCell: IStyle;
 }
 
-// @public (undocumented)
+// @public
 interface ITag {
-  // (undocumented)
   key: string;
-  // (undocumented)
   name: string;
 }
 
-// @public (undocumented)
+// @public
 interface ITagItemProps extends IPickerItemProps<ITag> {
-  // (undocumented)
+  className?: string;
   enableTagFocusInDisabledPicker?: boolean;
+  styles?: IStyleFunctionOrObject<ITagItemStyleProps, ITagItemStyles>;
+  theme?: ITheme;
 }
 
-// @public (undocumented)
+// @public
+interface ITagItemStyles {
+  close: IStyle;
+  root: IStyle;
+  text: IStyle;
+}
+
+// @public
+interface ITagItemSuggestionProps extends React.AllHTMLAttributes<HTMLElement> {
+  className?: string;
+  styles?: IStyleFunctionOrObject<ITagItemSuggestionStyleProps, ITagItemSuggestionStyles>;
+  theme?: ITheme;
+}
+
+// @public
+interface ITagItemSuggestionStyles {
+  suggestionTextOverflow?: IStyle;
+}
+
+// @public
 interface ITagPickerProps extends IBasePickerProps<ITag> {
 }
 
@@ -12389,13 +12408,10 @@ export function updateH(color: IColor, h: number): IColor;
 // @public (undocumented)
 export function updateSV(color: IColor, s: number, v: number): IColor;
 
-// @public (undocumented)
+// @public
 enum ValidationState {
-  // (undocumented)
   invalid = 2,
-  // (undocumented)
   valid = 0,
-  // (undocumented)
   warning = 1
 }
 
@@ -12536,7 +12552,12 @@ module ZIndexes {
 // WARNING: Unsupported export: CompactPeoplePicker
 // WARNING: Unsupported export: ListPeoplePicker
 // WARNING: Unsupported export: TagPicker
+// WARNING: Unsupported export: ITagItemStyleProps
+// WARNING: Unsupported export: ITagItemSuggestionStyleProps
+// WARNING: Unsupported export: TagItemBase
 // WARNING: Unsupported export: TagItem
+// WARNING: Unsupported export: TagItemSuggestionBase
+// WARNING: Unsupported export: TagItemSuggestion
 // WARNING: Unsupported export: Pivot
 // WARNING: Unsupported export: IPivotStyleProps
 // WARNING: Unsupported export: IPositioningContainerTypes
