@@ -1,4 +1,9 @@
+// @ts-check
+
+const fs = require('fs');
 const path = require('path');
+const { series } = require('just-task');
+const { copyTask } = require('just-task-preset');
 
 function expandSourcePath(pattern) {
   const requireResolveCwd = require('../require-resolve-cwd');
@@ -30,10 +35,8 @@ function expandSourcePath(pattern) {
   }
 }
 
-module.exports = function() {
-  const path = require('path');
-  const fs = require('fs');
-
+exports.copy = () => {
+  let tasks = [];
   let configPath = path.resolve(process.cwd(), 'config/pre-copy.json');
 
   if (!fs.existsSync(configPath)) {
@@ -41,37 +44,14 @@ module.exports = function() {
   }
 
   const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
-  let promise = Promise.resolve();
 
   if (config && config.copyTo) {
     for (let destination in config.copyTo) {
       const sources = config.copyTo[destination];
-
-      for (let source of sources) {
-        source = expandSourcePath(source);
-        destination = path.resolve(process.cwd(), destination);
-        startCopy(source, destination);
-      }
+      destination = path.resolve(process.cwd(), destination);
+      tasks.push(copyTask(sources.map(src => expandSourcePath(src)), destination));
     }
   }
 
-  return promise;
-
-  function startCopy(source, destination) {
-    promise = promise.then(
-      () =>
-        new Promise((resolve, reject) => {
-          const copy = require('cpx').copy;
-
-          console.log(`  Copying "${path.relative(process.cwd(), source)}" to "${path.relative(process.cwd(), destination)}"`);
-          copy(source, destination, err => {
-            if (err) {
-              reject(err);
-            } else {
-              resolve();
-            }
-          });
-        })
-    );
-  }
+  return series.apply(null, tasks);
 };

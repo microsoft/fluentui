@@ -1,7 +1,7 @@
 // @ts-check
 
 const { task, series, parallel, condition, option, argv, logger } = require('just-task');
-const { rig } = require('./just-tasks');
+const { rig } = require('./tasks/rig');
 const path = require('path');
 const fs = require('fs');
 
