@@ -22,5 +22,9 @@ exports.ts = {
   amd: () => {
     const extraOptions = getExtraTscParams(argv());
     return tscTask({ ...extraOptions, outDir: 'lib-amd', module: 'amd' });
+  },
+  commonjsOnly: () => {
+    const extraOptions = getExtraTscParams(argv());
+    return tscTask({ ...extraOptions, outDir: 'lib', module: 'commonjs' });
   }
 };

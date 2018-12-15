@@ -32,17 +32,15 @@ task(
       condition('tslint', () => !argv().min),
       condition('jest', () => !argv().min),
       series(
-        parallel(condition('ts:commonjs', () => !argv().min), 'ts:esm', condition('ts:amd', () => argv().production && !argv().min)),
+        parallel('ts:commonjs', 'ts:esm', condition('ts:amd', () => argv().production && !argv().min)),
         condition('lint-imports', () => !argv().min),
-        parallel(
-          condition('webpack', () => !argv().min),
-          condition('api-extractor', () => !argv().min),
-          condition('build-codepen-examples', () => !argv().min)
-        )
+        parallel(condition('webpack', () => !argv().min), condition('api-extractor', () => !argv().min), 'build-codepen-examples')
       )
     )
   )
 );
+
+task('build-webpack-utils', rig.ts.commonjsOnly);
 
 // Utility functions
 

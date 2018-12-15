@@ -13,6 +13,4 @@ process.argv = [
   ...process.argv.slice(startIndex)
 ];
 
-console.log(process.argv);
-
 require('just-task/lib/cli.js');
