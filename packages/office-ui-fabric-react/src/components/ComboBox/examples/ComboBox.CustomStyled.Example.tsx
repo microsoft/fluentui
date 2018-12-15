@@ -105,6 +105,10 @@ export class ComboBoxCustomStyledExample extends React.Component<any, any> {
    * Render function for non-header/divider options in the second example.
    */
   private _onRenderOption = (item: IComboBoxOption): JSX.Element => {
+    if (item.itemType === SelectableOptionMenuItemType.Header || item.itemType === SelectableOptionMenuItemType.Divider) {
+      return <span>{item.text}</span>;
+    }
+
     let fontFamily = this._fontMapping[item.text];
 
     if (!fontFamily) {

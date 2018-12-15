@@ -1,8 +1,8 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorTallFixedWdith } from '../utilities';
+import { FabricDecoratorTallFixedWidth } from '../utilities';
 import { ComboBox, SelectableOptionMenuItemType } from 'office-ui-fabric-react';
 
 const testOptions = [
@@ -20,19 +20,23 @@ const fontMapping = {
 };
 
 const onRenderFontOption = item => {
-  let fontFamily = this._fontMapping[item.text];
+  if (item.itemType === SelectableOptionMenuItemType.Header || item.itemType === SelectableOptionMenuItemType.Divider) {
+    return <span>{item.text}</span>;
+  }
+
+  let fontFamily = fontMapping[item.text];
 
   if (!fontFamily) {
     // This is a new user-entered font. Add a font family definition for it.
     const newFontName = item.text;
-    fontFamily = this._fontMapping[newFontName] = `"${newFontName}","Segoe UI",Tahoma,Sans-Serif`;
+    fontFamily = fontMapping[newFontName] = `"${newFontName}","Segoe UI",Tahoma,Sans-Serif`;
   }
 
   return <span style={{ fontFamily: fontFamily }}>{item.text}</span>;
 };
 
 storiesOf('ComboBox', module)
-  .addDecorator(FabricDecoratorTallFixedWdith)
+  .addDecorator(FabricDecoratorTallFixedWidth)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
