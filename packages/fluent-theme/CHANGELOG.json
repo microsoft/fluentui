@@ -2,6 +2,183 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.12.0",
+      "tag": "@uifabric/fluent-theme_v0.12.0",
+      "date": "Fri, 14 Dec 2018 13:35:30 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add dependency to @uifabric/styling.  Fix imports for FluentTheme.ts",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "c97df6629cb0ec0f0fb375f15032b2f722293d6e"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.113.0 <7.0.0` to `>=6.114.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.11.2",
+      "tag": "@uifabric/fluent-theme_v0.11.2",
+      "date": "Thu, 13 Dec 2018 13:37:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Default Button: Update hover background color",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "c3a82c6667d40550dd0dc67de6e69759f2641438"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.112.0 <7.0.0` to `>=6.113.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.11.1",
+      "tag": "@uifabric/fluent-theme_v0.11.1",
+      "date": "Tue, 11 Dec 2018 13:36:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Removing Fabric component dependency. For scss-based components, added Fabric component wrappers in their stories but for non-scss based components, we'll have to see if we can accept them as new changes.",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "31783e67b172c645d15e169b54c84e8bfed5d6ca"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.111.2 <7.0.0` to `>=6.112.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.11.0",
+      "tag": "@uifabric/fluent-theme_v0.11.0",
+      "date": "Fri, 07 Dec 2018 13:35:16 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add styles for Persona to theme",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "3e6f9f01bf8dd9845f2f662de1f3d71e60c361b2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.111.0 <7.0.0` to `>=6.111.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.10.0",
+      "tag": "@uifabric/fluent-theme_v0.10.0",
+      "date": "Fri, 30 Nov 2018 13:37:17 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add styles for TeachingBubble",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "bd8d8ede5950a45b6d0224d72f6c5ea9953888dc"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Add types to all component style functions",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "9b98e204231dcad97c862cb119dfd0cca68341e7"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.108.0 <7.0.0` to `>=6.109.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.9.0",
+      "tag": "@uifabric/fluent-theme_v0.9.0",
+      "date": "Thu, 29 Nov 2018 19:34:12 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "DetailsList fluent styles added.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "b1b8fbede84607e09624897e4f57d1797eab15d2"
+          },
+          {
+            "comment": "semantic slot updates",
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "3f75dd975a669b877023aaf45dd1c711c85f0e59"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `>=6.12.0 <7.0.0` to `>=6.13.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.106.3 <7.0.0` to `>=6.108.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.8.0",
+      "tag": "@uifabric/fluent-theme_v0.8.0",
+      "date": "Thu, 22 Nov 2018 13:36:17 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add Callout styles (also used by Tooltip)",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "81e8ada42e57dca57bf54c68a8dd0d4f5ce5cc38"
+          },
+          {
+            "comment": "CommandBar: Add fluent changes.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "437152e78a4e637fbc6fc3b3e071f7f040da905e"
+          },
+          {
+            "comment": "Modal: Add shadow and rounded corners. Remove the global className selector from Dialog.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "1eb461a6c344e4f322c5d3f32ffe9a752399a91b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.106.2 <7.0.0` to `>=6.106.3 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.7.0",
+      "tag": "@uifabric/fluent-theme_v0.7.0",
+      "date": "Tue, 20 Nov 2018 13:32:17 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "HoverCard: Add fluent styles to ExpandingCard and PlainCard.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "4eeee48e8e036ad585122a591405f22be2e36605"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.105.1 <7.0.0` to `>=6.106.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.6.0",
       "tag": "@uifabric/fluent-theme_v0.6.0",
       "date": "Wed, 14 Nov 2018 13:34:01 GMT",

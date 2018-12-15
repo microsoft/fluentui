@@ -1,6 +1,69 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Wed, 14 Nov 2018 13:34:01 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Dec 2018 13:35:30 GMT and should not be manually modified.
+
+## 0.12.0
+Fri, 14 Dec 2018 13:35:30 GMT
+
+### Minor changes
+
+- Add dependency to @uifabric/styling.  Fix imports for FluentTheme.ts
+
+## 0.11.2
+Thu, 13 Dec 2018 13:37:01 GMT
+
+### Patches
+
+- Default Button: Update hover background color
+
+## 0.11.1
+Tue, 11 Dec 2018 13:36:20 GMT
+
+### Patches
+
+- Removing Fabric component dependency. For scss-based components, added Fabric component wrappers in their stories but for non-scss based components, we'll have to see if we can accept them as new changes.
+
+## 0.11.0
+Fri, 07 Dec 2018 13:35:16 GMT
+
+### Minor changes
+
+- Add styles for Persona to theme
+
+## 0.10.0
+Fri, 30 Nov 2018 13:37:17 GMT
+
+### Minor changes
+
+- Add styles for TeachingBubble
+
+### Patches
+
+- Add types to all component style functions
+
+## 0.9.0
+Thu, 29 Nov 2018 19:34:12 GMT
+
+### Minor changes
+
+- DetailsList fluent styles added.
+- semantic slot updates
+
+## 0.8.0
+Thu, 22 Nov 2018 13:36:17 GMT
+
+### Minor changes
+
+- Add Callout styles (also used by Tooltip)
+- CommandBar: Add fluent changes.
+- Modal: Add shadow and rounded corners. Remove the global className selector from Dialog.
+
+## 0.7.0
+Tue, 20 Nov 2018 13:32:17 GMT
+
+### Minor changes
+
+- HoverCard: Add fluent styles to ExpandingCard and PlainCard.
 
 ## 0.6.0
 Wed, 14 Nov 2018 13:34:01 GMT

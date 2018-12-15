@@ -86,7 +86,7 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
               item={item}
               classNames={classNames}
               index={index}
-              onCheckmarkClick={hasCheckmarks && onItemClick ? onItemClick.bind(this, item) : undefined}
+              onCheckmarkClick={hasCheckmarks && onItemClick ? onItemClick : undefined}
               hasIcons={hasIcons}
               openSubMenu={openSubMenu}
               dismissSubMenu={dismissSubMenu}

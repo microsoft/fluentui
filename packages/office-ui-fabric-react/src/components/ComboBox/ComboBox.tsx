@@ -535,8 +535,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           currentPendingValue !== null && currentPendingValue !== undefined
             ? currentPendingValue
             : this._indexWithinBounds(currentOptions, index)
-              ? currentOptions[index].text
-              : ''
+            ? currentOptions[index].text
+            : ''
         );
       } else {
         for (let idx = 0; selectedIndices && idx < selectedIndices.length; idx++) {
@@ -563,8 +563,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           currentPendingValue !== null && currentPendingValue !== undefined
             ? currentPendingValue
             : this._indexWithinBounds(currentOptions, index)
-              ? currentOptions[index].text
-              : ''
+            ? currentOptions[index].text
+            : ''
         );
       } else {
         // If we are not allowing freeform and have a
@@ -1273,10 +1273,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       ? currentPendingValueValidIndexOnHover
       : currentPendingValueValidIndex >= 0 ||
         (includeCurrentPendingValue && (currentPendingValue !== null && currentPendingValue !== undefined))
-        ? currentPendingValueValidIndex
-        : this.props.multiSelect
-          ? 0
-          : this._getFirstSelectedIndex();
+      ? currentPendingValueValidIndex
+      : this.props.multiSelect
+      ? 0
+      : this._getFirstSelectedIndex();
   }
 
   /**

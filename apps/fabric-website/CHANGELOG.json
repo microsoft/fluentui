@@ -2,6 +2,28 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.8.1",
+      "tag": "@uifabric/fabric-website_v6.8.1",
+      "date": "Fri, 30 Nov 2018 13:37:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add missing dependency",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "8276c66fdf75a4ad8b03614fd4e7c6e2c52203e5"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.43.0 <7.0.0` to `>=6.44.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.108.0 <7.0.0` to `>=6.109.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.8.0",
       "tag": "@uifabric/fabric-website_v6.8.0",
       "date": "Wed, 07 Nov 2018 13:31:00 GMT",

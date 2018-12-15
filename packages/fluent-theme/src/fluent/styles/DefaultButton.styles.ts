@@ -2,11 +2,12 @@ import { fluentBorderRadius } from './styleConstants';
 import { getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
 import FluentTheme from '../FluentTheme';
 import { NeutralColors, CommunicationColors } from '../FluentColors';
+import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 
 // TODO: "any" is used here to get around "is using xxx but cannot be named" TS error. Should be able to remove
 //        this 'any' once we upgrade to TS3.1+
 // tslint:disable-next-line:no-any
-export const DefaultButtonStyles: any = {
+export const DefaultButtonStyles: Partial<IButtonStyles> = {
   root: {
     borderRadius: fluentBorderRadius,
     backgroundColor: NeutralColors.white,
@@ -14,6 +15,7 @@ export const DefaultButtonStyles: any = {
     ...getFocusStyle(FluentTheme, 1)
   },
   rootHovered: {
+    backgroundColor: NeutralColors.gray20,
     selectors: {
       '.ms-Button--primary': {
         backgroundColor: CommunicationColors.shade10
@@ -30,7 +32,6 @@ export const DefaultButtonStyles: any = {
     backgroundColor: NeutralColors.gray20,
     borderColor: NeutralColors.gray20
   },
-
   splitButtonMenuButton: {
     background: 'transparent',
     borderTopRightRadius: fluentBorderRadius,
@@ -38,13 +39,12 @@ export const DefaultButtonStyles: any = {
     border: `1px solid ${NeutralColors.gray110}`,
     borderLeft: 'none'
   },
-
   splitButtonContainer: {
     selectors: {
       '.ms-Button--default': {
         borderRight: 'none',
-        borderTopRightRadius: 0,
-        borderBottomRightRadius: 0
+        borderTopRightRadius: '0',
+        borderBottomRightRadius: '0'
       },
       '.ms-Button--primary': {
         border: 'none',

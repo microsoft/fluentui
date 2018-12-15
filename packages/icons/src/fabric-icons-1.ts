@@ -15,9 +15,13 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-1"`,
-      src: `url('${baseUrl}fabric-icons-1-a653c37c.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-1-0f021d71.woff') format('woff')`
     },
     icons: {
+      Train: '\uE7C0',
+      Move: '\uE7C2',
+      TouchPointer: '\uE7C9',
+      Merge: '\uE7D5',
       TurnRight: '\uE7DB',
       Ferry: '\uE7E3',
       Highlight: '\uE7E6',
@@ -26,11 +30,15 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       Admin: '\uE7EF',
       TVMonitor: '\uE7F4',
       Speakers: '\uE7F5',
+      Game: '\uE7FC',
+      UnstackSelected: '\uE7FE',
       StackIndicator: '\uE7FF',
       Nav2DMapView: '\uE800',
+      StreetsideSplitMinimize: '\uE802',
       Car: '\uE804',
       Bus: '\uE806',
       EatDrink: '\uE807',
+      SeeDo: '\uE808',
       LocationCircle: '\uE80E',
       Home: '\uE80F',
       SwitcherStartEnd: '\uE810',
@@ -42,9 +50,12 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       CaretSolid: '\uE818',
       History: '\uE81C',
       Location: '\uE81D',
+      MapLayers: '\uE81E',
+      SearchNearby: '\uE820',
       Work: '\uE821',
       Recent: '\uE823',
       Hotel: '\uE824',
+      Bank: '\uE825',
       LocationDot: '\uE827',
       Dictionary: '\uE82D',
       ChromeBack: '\uE830',
@@ -69,6 +80,7 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       ViewAll: '\uE8A9',
       Switch: '\uE8AB',
       Rename: '\uE8AC',
+      Go: '\uE8AD',
       Remote: '\uE8AF',
       SelectAll: '\uE8B3',
       Orientation: '\uE8B4',
@@ -105,19 +117,7 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       FontIncrease: '\uE8E8',
       FontSize: '\uE8E9',
       CellPhone: '\uE8EA',
-      Calculator: '\uE8EF',
-      Library: '\uE8F1',
-      PostUpdate: '\uE8F3',
-      NewFolder: '\uE8F4',
-      CalendarReply: '\uE8F5',
-      UnsyncFolder: '\uE8F6',
-      SyncFolder: '\uE8F7',
-      BlockContact: '\uE8F8',
-      Accept: '\uE8FB',
-      BulletedList: '\uE8FD',
-      Preview: '\uE8FF',
-      News: '\uE900',
-      Chat: '\uE901'
+      RepeatAll: '\uE8EE'
     }
   };
 

@@ -118,33 +118,31 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
     return (
       <div className={css('ms-Suggestions', className ? className : '', styles.root)}>
         {headerText ? <div className={css('ms-Suggestions-title', styles.suggestionsTitle)}>{headerText}</div> : null}
-        {forceResolveText &&
-          this._shouldShowForceResolve() && (
-            <CommandButton
-              componentRef={this._forceResolveButton}
-              className={css('ms-forceResolve-button', styles.actionButton, {
-                ['is-selected ' + styles.buttonSelected]: this.state.selectedActionType === SuggestionActionType.forceResolve
-              })}
-              onClick={this._forceResolve}
-            >
-              {forceResolveText}
-            </CommandButton>
-          )}
+        {forceResolveText && this._shouldShowForceResolve() && (
+          <CommandButton
+            componentRef={this._forceResolveButton}
+            className={css('ms-forceResolve-button', styles.actionButton, {
+              ['is-selected ' + styles.buttonSelected]: this.state.selectedActionType === SuggestionActionType.forceResolve
+            })}
+            onClick={this._forceResolve}
+          >
+            {forceResolveText}
+          </CommandButton>
+        )}
         {isLoading && <Spinner className={css('ms-Suggestions-spinner', styles.suggestionsSpinner)} label={loadingText} />}
         {hasNoSuggestions ? (onRenderNoResultFound ? onRenderNoResultFound(undefined, noResults) : noResults()) : this._renderSuggestions()}
-        {searchForMoreText &&
-          moreSuggestionsAvailable && (
-            <CommandButton
-              componentRef={this._searchForMoreButton}
-              className={css('ms-SearchMore-button', styles.actionButton, {
-                ['is-selected ' + styles.buttonSelected]: this.state.selectedActionType === SuggestionActionType.searchMore
-              })}
-              iconProps={{ iconName: 'Search' }}
-              onClick={this._getMoreResults}
-            >
-              {searchForMoreText}
-            </CommandButton>
-          )}
+        {searchForMoreText && moreSuggestionsAvailable && (
+          <CommandButton
+            componentRef={this._searchForMoreButton}
+            className={css('ms-SearchMore-button', styles.actionButton, {
+              ['is-selected ' + styles.buttonSelected]: this.state.selectedActionType === SuggestionActionType.searchMore
+            })}
+            iconProps={{ iconName: 'Search' }}
+            onClick={this._getMoreResults}
+          >
+            {searchForMoreText}
+          </CommandButton>
+        )}
         {isSearching ? <Spinner className={css('ms-Suggestions-spinner', styles.suggestionsSpinner)} label={searchingText} /> : null}
         {footerTitle && !moreSuggestionsAvailable && !isMostRecentlyUsedVisible && !isSearching ? (
           <div className={css('ms-Suggestions-title', styles.suggestionsTitle)}>{footerTitle(this.props)}</div>

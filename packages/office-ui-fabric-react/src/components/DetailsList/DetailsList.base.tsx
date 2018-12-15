@@ -1,15 +1,6 @@
 import * as React from 'react';
 
-import {
-  BaseComponent,
-  KeyCodes,
-  assign,
-  elementContains,
-  getRTLSafeKeyCode,
-  IRenderFunction,
-  createRef,
-  classNamesFunction
-} from '../../Utilities';
+import { BaseComponent, KeyCodes, assign, elementContains, getRTLSafeKeyCode, IRenderFunction, classNamesFunction } from '../../Utilities';
 import {
   CheckboxVisibility,
   ColumnActionsMode,
@@ -30,11 +21,11 @@ import { DetailsRowBase } from '../DetailsList/DetailsRow.base';
 import { DetailsRow } from '../DetailsList/DetailsRow';
 import { IDetailsRowProps } from '../DetailsList/DetailsRow.types';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { ISelectionZone, IObjectWithKey, ISelection, Selection, SelectionMode, SelectionZone } from '../../utilities/selection/index';
+import { IObjectWithKey, ISelection, Selection, SelectionMode, SelectionZone } from '../../utilities/selection/index';
 
 import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
 import { IGroupedList, GroupedList, IGroupDividerProps, IGroupRenderProps } from '../../GroupedList';
-import { IList, List, IListProps, ScrollToMode } from '../../List';
+import { List, IListProps, ScrollToMode } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
 import { GetGroupCount } from '../../utilities/groupedList/GroupedListUtility';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
@@ -77,9 +68,9 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
   private _root = React.createRef<HTMLDivElement>();
   private _header = React.createRef<IDetailsHeader>();
   private _groupedList = React.createRef<IGroupedList>();
-  private _list = createRef<IList>();
+  private _list = React.createRef<List>();
   private _focusZone = React.createRef<IFocusZone>();
-  private _selectionZone = createRef<ISelectionZone>();
+  private _selectionZone = React.createRef<SelectionZone>();
 
   private _selection: ISelection;
   private _activeRows: { [key: string]: DetailsRowBase };
@@ -806,7 +797,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       const minWidth = column.minWidth || MIN_COLUMN_WIDTH;
       const overflowWidth = totalWidth - availableWidth;
 
-      if (column.calculatedWidth! - minWidth >= overflowWidth || !column.isCollapsable) {
+      if (column.calculatedWidth! - minWidth >= overflowWidth || !(column.isCollapsable || column.isCollapsible)) {
         column.calculatedWidth = Math.max(column.calculatedWidth! - overflowWidth, minWidth);
         totalWidth = availableWidth;
       } else {
@@ -1062,6 +1053,7 @@ export function buildColumns(
           minWidth: MIN_COLUMN_WIDTH,
           maxWidth: 300,
           isCollapsable: !!columns.length,
+          isCollapsible: !!columns.length,
           isMultiline: isMultiline === undefined ? false : isMultiline,
           isSorted: sortedColumnKey === propName,
           isSortedDescending: !!isSortedDescending,

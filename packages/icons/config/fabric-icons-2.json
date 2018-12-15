@@ -10,6 +10,58 @@
   },
   "glyphs": [
     {
+      "name": "Calculator",
+      "unicode": "E8EF"
+    },
+    {
+      "name": "Library",
+      "unicode": "E8F1"
+    },
+    {
+      "name": "PostUpdate",
+      "unicode": "E8F3"
+    },
+    {
+      "name": "NewFolder",
+      "unicode": "E8F4"
+    },
+    {
+      "name": "CalendarReply",
+      "unicode": "E8F5"
+    },
+    {
+      "name": "UnsyncFolder",
+      "unicode": "E8F6"
+    },
+    {
+      "name": "SyncFolder",
+      "unicode": "E8F7"
+    },
+    {
+      "name": "BlockContact",
+      "unicode": "E8F8"
+    },
+    {
+      "name": "Accept",
+      "unicode": "E8FB"
+    },
+    {
+      "name": "BulletedList",
+      "unicode": "E8FD"
+    },
+    {
+      "name": "Preview",
+      "unicode": "E8FF"
+    },
+    {
+      "name": "News",
+      "unicode": "E900"
+    },
+    {
+      "name": "Chat",
+      "unicode": "E901"
+    },
+    {
       "name": "Group",
       "unicode": "E902"
     },
@@ -38,6 +90,10 @@
       "unicode": "E910"
     },
     {
+      "name": "Street",
+      "unicode": "E913"
+    },
+    {
       "name": "RadioBullet",
       "unicode": "E915"
     },
@@ -62,6 +118,10 @@
       "unicode": "E91B"
     },
     {
+      "name": "ActionCenter",
+      "unicode": "E91C"
+    },
+    {
       "name": "Hospital",
       "unicode": "E91D"
     },
@@ -82,6 +142,10 @@
       "unicode": "E921"
     },
     {
+      "name": "ChromeRestore",
+      "unicode": "E923"
+    },
+    {
       "name": "Annotation",
       "unicode": "E924"
     },
@@ -92,6 +156,10 @@
     {
       "name": "Handwriting",
       "unicode": "E929"
+    },
+    {
+      "name": "ChromeFullScreen",
+      "unicode": "E92D"
     },
     {
       "name": "Completed",
@@ -170,6 +238,10 @@
       "unicode": "E956"
     },
     {
+      "name": "StorageOptical",
+      "unicode": "E958"
+    },
+    {
       "name": "Communications",
       "unicode": "E95A"
     },
@@ -180,6 +252,10 @@
     {
       "name": "Health",
       "unicode": "E95E"
+    },
+    {
+      "name": "FrontCamera",
+      "unicode": "E96B"
     },
     {
       "name": "ChevronUpSmall",
@@ -212,6 +288,10 @@
     {
       "name": "ChevronRightMed",
       "unicode": "E974"
+    },
+    {
+      "name": "Devices2",
+      "unicode": "E975"
     },
     {
       "name": "PC1",
@@ -270,6 +350,14 @@
       "unicode": "E9A2"
     },
     {
+      "name": "FitPage",
+      "unicode": "E9A6"
+    },
+    {
+      "name": "FitWidth",
+      "unicode": "E9A7"
+    },
+    {
       "name": "BidiLtr",
       "unicode": "E9AA"
     },
@@ -320,94 +408,6 @@
     {
       "name": "RainSnow",
       "unicode": "E9C7"
-    },
-    {
-      "name": "Snow",
-      "unicode": "E9C8"
-    },
-    {
-      "name": "BlowingSnow",
-      "unicode": "E9C9"
-    },
-    {
-      "name": "Frigid",
-      "unicode": "E9CA"
-    },
-    {
-      "name": "Fog",
-      "unicode": "E9CB"
-    },
-    {
-      "name": "Squalls",
-      "unicode": "E9CC"
-    },
-    {
-      "name": "Duststorm",
-      "unicode": "E9CD"
-    },
-    {
-      "name": "Unknown",
-      "unicode": "E9CE"
-    },
-    {
-      "name": "Precipitation",
-      "unicode": "E9CF"
-    },
-    {
-      "name": "Ribbon",
-      "unicode": "E9D1"
-    },
-    {
-      "name": "AreaChart",
-      "unicode": "E9D2"
-    },
-    {
-      "name": "Assign",
-      "unicode": "E9D3"
-    },
-    {
-      "name": "CheckList",
-      "unicode": "E9D5"
-    },
-    {
-      "name": "Diagnostic",
-      "unicode": "E9D9"
-    },
-    {
-      "name": "Generate",
-      "unicode": "E9DA"
-    },
-    {
-      "name": "LineChart",
-      "unicode": "E9E6"
-    },
-    {
-      "name": "Equalizer",
-      "unicode": "E9E9"
-    },
-    {
-      "name": "BarChartHorizontal",
-      "unicode": "E9EB"
-    },
-    {
-      "name": "BarChartVertical",
-      "unicode": "E9EC"
-    },
-    {
-      "name": "Freezing",
-      "unicode": "E9EF"
-    },
-    {
-      "name": "Processing",
-      "unicode": "E9F5"
-    },
-    {
-      "name": "SnowShowerDay",
-      "unicode": "E9FD"
-    },
-    {
-      "name": "HailDay",
-      "unicode": "EA00"
     }
   ]
 }
