@@ -16,11 +16,6 @@ export interface IDropdown {
 export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDivElement> {
   /**
    * Input placeholder text. Displayed until option is selected.
-   */
-  placeholder?: string;
-
-  /**
-   * Input placeholder text. Displayed until option is selected.
    * @deprecated Use `placeholder`
    */
   placeHolder?: string;
