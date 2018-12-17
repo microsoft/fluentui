@@ -19,7 +19,7 @@ export interface IPeoplePickerItemWithMenuState {
  * PeoplePickerItem with an additional contextual menu.
  * @deprecated Do not use. Will be removed in Fabric 7.0
  */
-export class PeoplePickerItemWithMenu extends BaseComponent<IPeoplePickerItemWithMenuProps, IPeoplePickerItemWithMenuState> {
+export class SelectedItemWithMenu extends BaseComponent<IPeoplePickerItemWithMenuProps, IPeoplePickerItemWithMenuState> {
   public refs: {
     [key: string]: any;
   };

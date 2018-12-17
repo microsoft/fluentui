@@ -9033,12 +9033,6 @@ interface IPeoplePickerItemWithMenuProps extends IPickerItemProps<IPersonaWithMe
 }
 
 // @public
-interface IPeoplePickerItemWithMenuState {
-  // (undocumented)
-  contextualMenuVisible: boolean;
-}
-
-// @public
 interface IPeoplePickerProps extends IBasePickerProps<IPersonaProps> {
 }
 
@@ -11303,17 +11297,6 @@ enum PanelType {
   smallFixedFar = 1,
   smallFixedNear = 2,
   smallFluid = 0
-}
-
-// @public @deprecated
-class PeoplePickerItemWithMenu extends BaseComponent<IPeoplePickerItemWithMenuProps, IPeoplePickerItemWithMenuState> {
-  constructor(props: IPeoplePickerItemWithMenuProps);
-  // (undocumented)
-  refs: {
-    [key: string]: any;
-  }
-  // (undocumented)
-  render(): JSX.Element;
 }
 
 // @public

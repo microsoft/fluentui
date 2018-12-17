@@ -9,7 +9,6 @@ export * from './PickerItem.types';
 export * from './PeoplePicker/PeoplePicker';
 export * from './PeoplePicker/PeoplePickerItems/PeoplePickerItem.types';
 export * from './PeoplePicker/PeoplePickerItems/PeoplePickerItem';
-export * from './PeoplePicker/PeoplePickerItems/PeoplePickerItemWithMenu';
 export * from './PeoplePicker/PeoplePickerItems/PeoplePickerItemSuggestion';
 export * from './TagPicker/TagPicker';
 export * from './TagPicker/TagPicker.types';
