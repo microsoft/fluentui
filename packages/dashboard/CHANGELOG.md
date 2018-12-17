@@ -1,6 +1,13 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Fri, 14 Dec 2018 13:35:30 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Dec 2018 13:36:58 GMT and should not be manually modified.
+
+## 0.40.0
+Mon, 17 Dec 2018 13:36:58 GMT
+
+### Minor changes
+
+- Adding LTR to layout even though RTL is experienced. This way the cards are visible on the layout. Setting RTL to the content of the card, this is necessary as a wrapper was introduced which explicitly said ltr
 
 ## 0.39.0
 Fri, 14 Dec 2018 13:35:30 GMT

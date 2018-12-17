@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 14 Dec 2018 13:35:30 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Dec 2018 13:36:58 GMT and should not be manually modified.
+
+## 6.48.2
+Mon, 17 Dec 2018 13:36:58 GMT
+
+### Patches
+
+- Form: fix wrong imports from OUFR dependency.
 
 ## 6.48.1
 Fri, 14 Dec 2018 13:35:30 GMT

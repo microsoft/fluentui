@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 14 Dec 2018 13:35:30 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Dec 2018 13:36:58 GMT and should not be manually modified.
+
+## 6.115.0
+Mon, 17 Dec 2018 13:36:58 GMT
+
+### Minor changes
+
+- Persona: fixing how coinProps are passed through from Persona to PersonaCoin.
+- Pickers: convert `TagItem` to use CSS-in-JS. Add `TagItemSuggestion` functional component. Move `TagPicker` related interfaces to a `TagPicker.types.ts` file. Cleanup some TSDocs in `BasePicker.types.ts`.
+
+### Patches
+
+- BaseComponent: Remove componentWillReceiveProps usage
 
 ## 6.114.0
 Fri, 14 Dec 2018 13:35:30 GMT
