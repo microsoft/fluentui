@@ -36,7 +36,7 @@ task(
       series(
         'ts',
         condition('lint-imports', () => !argv().min),
-        parallel(condition('webpack', () => !argv().min), condition('api-extractor:verify', () => !argv().min), 'build-codepen-examples')
+        parallel(condition('webpack', () => !argv().min), condition('api-extractor', () => !argv().min), 'build-codepen-examples')
       )
     )
   )
@@ -44,7 +44,7 @@ task(
 
 task('build-webpack-utils', rig.ts.commonjsOnly);
 task('code-style', series('prettier', 'tslint'));
-task('update-api', series('clean', 'copy', 'sass', 'ts', 'api-extractor:update'));
+task('update-api', series('clean', 'copy', 'sass', 'ts', 'update-api'));
 
 // Utility functions
 
