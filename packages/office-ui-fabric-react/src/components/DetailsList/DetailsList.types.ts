@@ -258,6 +258,11 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
    *
    */
   columnReorderOptions?: IColumnReorderOptions;
+
+  /**
+   * Whether or not to disable the built-in SelectionZone, so the host component can provide its own.
+   */
+  disableSelectionZone?: boolean;
 }
 
 export interface IColumn {
