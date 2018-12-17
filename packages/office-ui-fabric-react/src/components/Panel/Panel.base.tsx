@@ -319,6 +319,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     }
   }
 
+  // aftab: adding a comment
   private _dismissOnOuterClick(ev: any): void {
     const panel = this._panel.current;
     if (this.state.isOpen && panel) {
@@ -327,7 +328,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
           this.props.onOuterClick();
           ev.preventDefault();
         } else {
-          this.dismiss();
+          // this.dismiss();
         }
       }
     }
