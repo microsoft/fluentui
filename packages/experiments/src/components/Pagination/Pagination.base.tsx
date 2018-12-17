@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { BaseComponent, classNamesFunction } from '../../Utilities';
 import { PageNumber } from './PageNumber';
-import { IPaginationProps, IPaginationString, IPaginationStyleProps, IPaginationStyles, PaginationFormat } from './Pagination.types';
+import { IPaginationProps, IPaginationString, IPaginationStyleProps, IPaginationStyles } from './Pagination.types';
 import { ComboBox, IComboBoxOption, IComboBox } from 'office-ui-fabric-react/lib/ComboBox';
 import { TooltipHost, DirectionalHint } from 'office-ui-fabric-react/lib/Tooltip';
 import { IProcessedStyleSet } from '../../Styling';
@@ -17,7 +17,7 @@ const DEFAULT_STRINGS: IPaginationString = {
 export class PaginationBase extends BaseComponent<IPaginationProps> {
   public static defaultProps: Partial<IPaginationProps> = {
     selectedPageIndex: 0,
-    format: PaginationFormat.comboBox,
+    format: 'comboBox',
     numberOfPageButton: 5,
     previousPageIconProps: { iconName: 'CaretSolidLeft' },
     nextPageIconProps: { iconName: 'CaretSolidRight' },
@@ -62,7 +62,7 @@ export class PaginationBase extends BaseComponent<IPaginationProps> {
     const canFirst = selectedPageIndex !== 0;
     const canLast = selectedPageIndex !== pageCount - 1;
 
-    if (format === PaginationFormat.comboBox) {
+    if (format === 'comboBox') {
       const scaleOptions: IComboBoxOption[] = [];
 
       for (let i = 0; i < this.props.pageCount; i++) {

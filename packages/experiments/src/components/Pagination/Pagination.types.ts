@@ -82,7 +82,7 @@ export interface IPaginationProps {
    */
   format?: PaginationFormat;
   /**
-   * number of visible buttons. This is only applicable for @param PaginationFormat.comboBox
+   * number of visible buttons. This is only applicable for @param comboBox
    */
   numberOfPageButton?: number;
   /**
@@ -99,17 +99,7 @@ export interface IPaginationProps {
   onRenderVisibleItemLabel?: IRenderFunction<IPaginationProps>;
 }
 
-export enum PaginationFormat {
-  /**
-   * Display Pagination as Combo Box
-   */
-  comboBox = 0,
-
-  /**
-   * Display Pagination as buttons
-   */
-  buttons = 1
-}
+export type PaginationFormat = 'comboBox' | 'buttons';
 
 export interface IPaginationString {
   /**

@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 
 import { resetIds } from '../../Utilities';
-import { Pagination, PaginationFormat } from './index';
+import { Pagination } from './index';
 
 describe('Pagination', () => {
   beforeEach(() => {
@@ -15,7 +15,7 @@ describe('Pagination', () => {
         pageCount={10}
         itemsPerPage={10}
         totalItemCount={268}
-        format={PaginationFormat.buttons}
+        format={'buttons'}
         previousPageAriaLabel={'previous page'}
         nextPageAriaLabel={'next page'}
         firstPageAriaLabel={'first page'}
@@ -32,7 +32,7 @@ describe('Pagination', () => {
     const component = renderer.create(
       <Pagination
         pageCount={10}
-        format={PaginationFormat.comboBox}
+        format={'comboBox'}
         previousPageAriaLabel={'previous page'}
         nextPageAriaLabel={'next page'}
         firstPageAriaLabel={'first page'}

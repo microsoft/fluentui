@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Pagination, PaginationFormat } from '@uifabric/experiments/lib/Pagination';
+import { Pagination } from '@uifabric/experiments/lib/Pagination';
 
 export interface IPaginationBasicExampleState {
   selectedPageIndex: number;
@@ -17,7 +17,7 @@ export class PaginationButtonsCustomizationExample extends React.Component<{}, I
         selectedPageIndex={this.state.selectedPageIndex}
         pageCount={50}
         numberOfPageButton={8}
-        format={PaginationFormat.buttons}
+        format={'buttons'}
         previousPageAriaLabel={'previous page'}
         nextPageAriaLabel={'next page'}
         firstPageAriaLabel={'first page'}
@@ -35,9 +35,6 @@ export class PaginationButtonsCustomizationExample extends React.Component<{}, I
             fontWeight: 'bold',
             selectors: {
               ':hover': { backgroundColor: '#c8c8c8', borderRadius: '16px' },
-              '&:aria-selected=true': {
-                fontWeight: 'bold'
-              },
               '&[aria-selected=true]': {
                 fontWeight: 'bold'
               }
