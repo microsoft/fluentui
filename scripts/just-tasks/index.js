@@ -6,6 +6,9 @@ const { ts } = require('./ts');
 const { tslint } = require('./tslint');
 const { webpack } = require('./webpack');
 const { outdated, selfupdate } = require('./outdated');
+const { apiExtractor } = require('./apiExtractor');
+const buildCodepenExamples = require('../tasks/build-codepen-examples');
+const lintImports = require('../tasks/lint-imports');
 
 exports.rig = {
   clean,
@@ -16,5 +19,8 @@ exports.rig = {
   tslint,
   webpack,
   outdated,
-  selfupdate
+  selfupdate,
+  apiExtractor,
+  buildCodepenExamples,
+  lintImports
 };

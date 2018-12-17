@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 14 Dec 2018 13:35:30 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Dec 2018 13:36:58 GMT and should not be manually modified.
+
+## 6.48.2
+Mon, 17 Dec 2018 13:36:58 GMT
+
+### Patches
+
+- Form: fix wrong imports from OUFR dependency.
 
 ## 6.48.1
 Fri, 14 Dec 2018 13:35:30 GMT
@@ -222,7 +229,7 @@ Mon, 08 Oct 2018 12:24:15 GMT
 
 ### Patches
 
-- Moving tslint/prettier dependencies 
+- Moving tslint/prettier dependencies
 - Fix a11y violations in Fluent ContextualMenu examples
 - Sidebar: Fixed filename and imports
 
@@ -598,7 +605,7 @@ Thu, 12 Jul 2018 10:29:30 GMT
 
 ### Patches
 
-- Consume horizontal bar chart in card, fix bad import 
+- Consume horizontal bar chart in card, fix bad import
 
 ## 6.13.5
 Tue, 10 Jul 2018 21:54:07 GMT
@@ -733,7 +740,7 @@ Mon, 18 Jun 2018 16:57:14 GMT
 
 ### Minor changes
 
-- Dashboard Card Component for Admin Portals Dashboard which will be hosted inside react-grid-layout. 
+- Dashboard Card Component for Admin Portals Dashboard which will be hosted inside react-grid-layout.
 - Add GridList component into the existing Dashboard Card Component
 
 ### Patches
@@ -979,7 +986,7 @@ Tue, 10 Apr 2018 17:37:28 GMT
 
 ### Minor changes
 
-- FloatingPicker: add show/hide picker call backs, fix double resolve when queryString is the same 
+- FloatingPicker: add show/hide picker call backs, fix double resolve when queryString is the same
 
 ### Patches
 

@@ -1,11 +1,10 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
-/* tslint:enable:no-unused-variable */
 import * as renderer from 'react-test-renderer';
 
-import { TagPicker, ITag } from './TagPicker/TagPicker';
+import { TagPicker } from './TagPicker/TagPicker';
+import { ITag } from './TagPicker/TagPicker.types';
 import { IBasePickerProps, IBasePicker } from './BasePicker.types';
 import { BasePicker } from './BasePicker';
 import { IPickerItemProps } from './PickerItem.types';

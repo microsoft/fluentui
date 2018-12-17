@@ -2,6 +2,28 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.40.0",
+      "tag": "@uifabric/dashboard_v0.40.0",
+      "date": "Mon, 17 Dec 2018 13:36:58 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding LTR to layout even though RTL is experienced. This way the cards are visible on the layout. Setting RTL to the content of the card, this is necessary as a wrapper was introduced which explicitly said ltr",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "3b264340152480c25fc368e6ef0f1fdb947cbd87"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.48.1 <7.0.0` to `>=6.48.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.114.0 <7.0.0` to `>=6.115.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.39.0",
       "tag": "@uifabric/dashboard_v0.39.0",
       "date": "Fri, 14 Dec 2018 13:35:30 GMT",

@@ -11,7 +11,7 @@ function getExtraTscParams(args) {
 }
 
 exports.ts = {
-  commonJs: () => {
+  commonjs: () => {
     const extraOptions = getExtraTscParams(argv());
     return tscTask({ ...extraOptions, outDir: 'lib-commonjs', module: 'commonjs' });
   },
