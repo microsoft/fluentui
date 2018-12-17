@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, createRef } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { IDetailsList, DetailsList, IColumn, IGroup } from 'office-ui-fabric-react/lib/DetailsList';
 
@@ -39,7 +39,7 @@ const _groups = Array.apply(null, Array(10)).map((_: any, num: number) => ({
 }));
 
 export class DetailsListGroupedLargeExample extends BaseComponent<{}, { items: {}[] }> {
-  private _root = createRef<IDetailsList>();
+  private _root = React.createRef<IDetailsList>();
 
   constructor(props: {}) {
     super(props);

@@ -9,8 +9,7 @@ const SliderBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/c
 export const SliderPageProps: IDocPageProps = {
   title: 'Slider',
   componentName: 'Slider',
-  componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/undefined',
+  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/undefined',
   componentStatus: SliderStatus,
   examples: [
     {
@@ -19,9 +18,7 @@ export const SliderPageProps: IDocPageProps = {
       view: <SliderBasicExample />
     }
   ],
-  propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/Slider/Slider.types.ts')
-  ],
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Slider/Slider.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Slider/docs/SliderOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Slider/docs/SliderDos.md'),

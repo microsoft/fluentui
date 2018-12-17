@@ -196,7 +196,7 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
                   position: relative;
                 }
                 &:hover {
-                  border-color: #212121;
+                  border-color: #333333;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -269,7 +269,7 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
               display: inline;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: inherit;
-              font-weight: 400;
+              font-weight: inherit;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -405,7 +405,7 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
                     z-index: 1;
                   }
                   &:hover {
-                    border-color: #212121;
+                    border-color: #333333;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
                     border-color: Highlight;
@@ -424,7 +424,7 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
                 className=
                     ms-Toggle-thumb
                     {
-                      background-color: #212121;
+                      background-color: #333333;
                       border-color: transparent;
                       border-radius: .5em;
                       border-style: solid;

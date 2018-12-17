@@ -24,13 +24,7 @@ export interface ICardContentDetails {
   /**
    * Content for component we want to render
    */
-  content:
-    | IBodyTextProps
-    | IThumbnailListProps
-    | ICompoundButtonStackProps
-    | IGridListProps
-    | IChartProps
-    | IMultiCountProps;
+  content: IBodyTextProps | IThumbnailListProps | ICompoundButtonStackProps | IGridListProps | IChartProps | IMultiCountProps;
 }
 
 export interface ILayoutProps {
@@ -53,6 +47,39 @@ export interface ILayoutProps {
    * Defines the current card size
    */
   cardSize: CardSize;
+
+  /**
+   * loading for card animations
+   */
+  loading?: boolean;
+}
+
+/**
+ * Internal interface to check whether if a content area has dataviz
+ */
+export interface IContentAreaHasDataviz {
+  contentArea1HasDataviz: boolean;
+
+  contentArea2HasDataviz: boolean;
+}
+
+/**
+ * internal interface for card layout
+ * The hasDataviz variable denotes whether a particular content area has dataviz in it and is used for appropriate styling
+ */
+
+export interface IContentAreasInfo {
+  contentAreas: JSX.Element[];
+
+  hasDataviz: IContentAreaHasDataviz;
+}
+
+export interface ILayoutStyleProps {
+  header?: ICardHeaderProps;
+
+  cardSize?: CardSize;
+
+  hasDataviz?: IContentAreaHasDataviz;
 }
 
 export interface ILayoutStyles {
@@ -90,4 +117,19 @@ export interface ILayoutStyles {
    * Style set for card footer
    */
   footer: IStyle;
+
+  /**
+   * Style set for animation chartWrapper
+   */
+  chartWrapper: IStyle;
+
+  /**
+   * Style set for shimmer
+   */
+  shimmerWrapper: IStyle;
+
+  /**
+   * Style set for shimmer container
+   */
+  shimmerContainer: IStyle;
 }

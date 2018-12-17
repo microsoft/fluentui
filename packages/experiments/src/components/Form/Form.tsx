@@ -231,9 +231,7 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
     }
   };
 
-  private _isFormValid = (
-    validationResults: { [key: string]: IFormValidationResult } = this.state.validationResults
-  ): boolean => {
+  private _isFormValid = (validationResults: { [key: string]: IFormValidationResult } = this.state.validationResults): boolean => {
     for (const key in validationResults) {
       if (!validationResults[key].isValid) {
         return false;

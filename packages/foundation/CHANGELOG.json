@@ -2,6 +2,34 @@
   "name": "@uifabric/foundation",
   "entries": [
     {
+      "version": "0.6.0",
+      "tag": "@uifabric/foundation_v0.6.0",
+      "date": "Fri, 14 Dec 2018 13:35:30 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add styling and utilities packages as dependencies and remove corresponding type injection.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "893b91690c3421410e9ba4bb7ae03c3f74f1e953"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.5.7",
+      "tag": "@uifabric/foundation_v0.5.7",
+      "date": "Wed, 31 Oct 2018 12:32:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add theme provider for using schemes. Remove implicit scheme prop for all components using Foundation.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "fc5a1f4620c93499a41abe8377ff61161cf5bd76"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.5.6",
       "tag": "@uifabric/foundation_v0.5.6",
       "date": "Thu, 18 Oct 2018 20:22:36 GMT",

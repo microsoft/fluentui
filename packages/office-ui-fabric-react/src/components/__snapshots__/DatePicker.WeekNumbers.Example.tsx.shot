@@ -29,7 +29,7 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
     <div
       aria-expanded={false}
       aria-haspopup="true"
-      aria-owns="DatePicker-Callout0"
+      aria-owns="DatePicker-Callout1"
       role="combobox"
     >
       <div
@@ -80,7 +80,7 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
                   position: relative;
                 }
                 &:hover {
-                  border-color: #212121;
+                  border-color: #333333;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -127,7 +127,7 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
                     color: #666666;
                     opacity: 1;
                   }
-              id="TextField1"
+              id="DatePicker0-label"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}

@@ -47,6 +47,7 @@ export interface IDocument {
   name: string;
   value: string;
   iconName: string;
+  fileType: string;
   modifiedBy: string;
   dateModified: string;
   dateModifiedValue: number;
@@ -77,6 +78,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
           name: fileName,
           value: fileName,
           iconName: randomFileType.url,
+          fileType: randomFileType.docType,
           modifiedBy: userName,
           dateModified: randomDate.dateFormatted,
           dateModifiedValue: randomDate.value,
@@ -94,7 +96,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         headerClassName: 'DetailsListExample-header--FileIcon',
         className: 'DetailsListExample-cell--FileIcon',
         iconClassName: 'DetailsListExample-Header-FileTypeIcon',
-        ariaLabel: 'Column operations for File type',
+        ariaLabel: 'Column operations for File type, Press to sort on File type',
         iconName: 'Page',
         isIconOnly: true,
         fieldName: 'name',
@@ -102,7 +104,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         maxWidth: 16,
         onColumnClick: this._onColumnClick,
         onRender: (item: IDocument) => {
-          return <img src={item.iconName} className={'DetailsListExample-documentIconImage'} />;
+          return <img src={item.iconName} className={'DetailsListExample-documentIconImage'} alt={item.fileType + ' file icon'} />;
         }
       },
       {
@@ -142,7 +144,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         minWidth: 70,
         maxWidth: 90,
         isResizable: true,
-        isCollapsable: true,
+        isCollapsible: true,
         data: 'string',
         onColumnClick: this._onColumnClick,
         onRender: (item: IDocument) => {
@@ -157,7 +159,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         minWidth: 70,
         maxWidth: 90,
         isResizable: true,
-        isCollapsable: true,
+        isCollapsible: true,
         data: 'number',
         onColumnClick: this._onColumnClick,
         onRender: (item: IDocument) => {
@@ -169,8 +171,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
     this._selection = new Selection({
       onSelectionChanged: () => {
         this.setState({
-          selectionDetails: this._getSelectionDetails(),
-          isModalSelection: this._selection.isModal()
+          selectionDetails: this._getSelectionDetails()
         });
       }
     });
@@ -179,13 +180,13 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
       items: _items,
       columns: _columns,
       selectionDetails: this._getSelectionDetails(),
-      isModalSelection: this._selection.isModal(),
+      isModalSelection: false,
       isCompactMode: false
     };
   }
 
   public render() {
-    const { columns, isCompactMode, items, selectionDetails } = this.state;
+    const { columns, isCompactMode, items, selectionDetails, isModalSelection } = this.state;
 
     return (
       <div>
@@ -198,7 +199,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         />
         <Toggle
           label="Enable Modal Selection"
-          checked={this.state.isModalSelection}
+          checked={isModalSelection}
           onChange={this._onChangeModalSelection}
           onText="Modal"
           offText="Normal"
@@ -210,7 +211,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
             items={items}
             compact={isCompactMode}
             columns={columns}
-            selectionMode={this.state.isModalSelection ? SelectionMode.multiple : SelectionMode.none}
+            selectionMode={isModalSelection ? SelectionMode.multiple : SelectionMode.none}
             setKey="set"
             layoutMode={DetailsListLayoutMode.justified}
             isHeaderVisible={true}
@@ -228,7 +229,9 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
 
   public componentDidUpdate(previousProps: any, previousState: IDetailsListDocumentsExampleState) {
     if (previousState.isModalSelection !== this.state.isModalSelection) {
-      this._selection.setModal(this.state.isModalSelection);
+      if (!this.state.isModalSelection) {
+        this._selection.setAllSelected(false);
+      }
     }
   }
 

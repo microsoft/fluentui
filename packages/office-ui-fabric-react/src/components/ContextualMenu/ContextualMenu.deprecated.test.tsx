@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Promise } from 'es6-promise';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import { KeyCodes, createRef } from '../../Utilities';
+import { KeyCodes } from '../../Utilities';
 import { FocusZoneDirection } from '../../FocusZone';
 import * as WarnUtil from '@uifabric/utilities/lib-commonjs/warn';
 import { IContextualMenuProps, IContextualMenuItem } from './ContextualMenu.types';
@@ -72,7 +72,8 @@ describe('ContextualMenu', () => {
         root: 'rootFoo',
         list: 'listFoo',
         header: 'headerFoo',
-        title: 'titleFoo'
+        title: 'titleFoo',
+        subComponentStyles: { callout: { root: ['calloutFoo'] }, menuItem: { root: ['itemFoo'] } }
       };
     };
 
@@ -930,7 +931,7 @@ describe('ContextualMenu', () => {
   });
 
   describe('IContextualMenuRenderItem function tests', () => {
-    const contextualItem = createRef<IContextualMenuRenderItem>();
+    const contextualItem = React.createRef<IContextualMenuRenderItem>();
     let menuDismissed: boolean;
     const onDismiss = (ev?: any, dismissAll?: boolean) => {
       menuDismissed = true;
@@ -964,19 +965,19 @@ describe('ContextualMenu', () => {
       });
 
       it('openSubMenu will open the item`s submenu if present', () => {
-        contextualItem.value!.openSubMenu();
+        contextualItem.current!.openSubMenu();
         expect(document.querySelector('.SubMenuClass')).not.toEqual(null);
       });
 
       it('dismissSubMenu will close the item`s submenu if present', () => {
-        contextualItem.value!.openSubMenu();
+        contextualItem.current!.openSubMenu();
         expect(document.querySelector('.SubMenuClass')).not.toEqual(null);
-        contextualItem.value!.dismissSubMenu();
+        contextualItem.current!.dismissSubMenu();
         expect(document.querySelector('.SubMenuClass')).toEqual(null);
       });
 
       it('dismissMenu will close the item`s menu', () => {
-        contextualItem.value!.dismissMenu();
+        contextualItem.current!.dismissMenu();
         expect(menuDismissed).toEqual(true);
       });
     });
@@ -1010,19 +1011,19 @@ describe('ContextualMenu', () => {
       });
 
       it('openSubMenu will open the item`s submenu if present', () => {
-        contextualItem.value!.openSubMenu();
+        contextualItem.current!.openSubMenu();
         expect(document.querySelector('.SubMenuClass')).not.toEqual(null);
       });
 
       it('dismissSubMenu will close the item`s submenu if present', () => {
-        contextualItem.value!.openSubMenu();
+        contextualItem.current!.openSubMenu();
         expect(document.querySelector('.SubMenuClass')).not.toEqual(null);
-        contextualItem.value!.dismissSubMenu();
+        contextualItem.current!.dismissSubMenu();
         expect(document.querySelector('.SubMenuClass')).toEqual(null);
       });
 
       it('dismissMenu will close the item`s menu', () => {
-        contextualItem.value!.dismissMenu();
+        contextualItem.current!.dismissMenu();
         expect(menuDismissed).toEqual(true);
       });
     });
@@ -1056,19 +1057,19 @@ describe('ContextualMenu', () => {
       });
 
       it('openSubMenu will open the item`s submenu if present', () => {
-        contextualItem.value!.openSubMenu();
+        contextualItem.current!.openSubMenu();
         expect(document.querySelector('.SubMenuClass')).not.toEqual(null);
       });
 
       it('dismissSubMenu will close the item`s submenu if present', () => {
-        contextualItem.value!.openSubMenu();
+        contextualItem.current!.openSubMenu();
         expect(document.querySelector('.SubMenuClass')).not.toEqual(null);
-        contextualItem.value!.dismissSubMenu();
+        contextualItem.current!.dismissSubMenu();
         expect(document.querySelector('.SubMenuClass')).toEqual(null);
       });
 
       it('dismissMenu will close the item`s menu', () => {
-        contextualItem.value!.dismissMenu();
+        contextualItem.current!.dismissMenu();
         expect(menuDismissed).toEqual(true);
       });
     });

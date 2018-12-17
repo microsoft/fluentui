@@ -2,19 +2,12 @@ import * as React from 'react';
 import { Recommendation } from '../Recommendation';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-import {
-  wrappingContainerHeight,
-  wrappingContainerWidth,
-  IRecommendationExampleState
-} from './RecommendationExamples.Common';
+import { wrappingContainerHeight, wrappingContainerWidth, IRecommendationExampleState } from './RecommendationExamples.Common';
 import { passwordExpiryBase64Image } from './RecommendationSampleImages';
+import { VisualizationType } from '../Recommendation.types';
 
 interface IPasswordRecommendationStyles {
   sampleContainerStyle: IStyle;
-
-  visualizationStyle: IStyle;
-
-  imageStyle: IStyle;
 }
 
 const getStyles = (): IPasswordRecommendationStyles => {
@@ -22,13 +15,6 @@ const getStyles = (): IPasswordRecommendationStyles => {
     sampleContainerStyle: {
       width: wrappingContainerWidth,
       height: wrappingContainerHeight
-    },
-    visualizationStyle: {
-      flex: 1,
-      display: 'flex'
-    },
-    imageStyle: {
-      flex: 1
     }
   };
 };
@@ -58,11 +44,9 @@ export class RecommendationPasswordSettingsExample extends React.Component<{}, I
           recommendationDescription={recommendationDescription}
           handleViewRecommendationClick={this.onViewRecommendationClick}
           handleDismissRecommendationClick={this.onDimissRecommendationClick}
-        >
-          <div className={classNames.visualizationStyle}>
-            <img src={passwordExpiryBase64Image} className={classNames.imageStyle} />
-          </div>
-        </Recommendation>
+          recommendationVisualization={VisualizationType.ImageIllustration}
+          imageVisualizationSrc={passwordExpiryBase64Image}
+        />
       </div>
     );
   }

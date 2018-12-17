@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { IPickerItemProps } from './PickerItem.types';
 import { IPersonaProps } from '../Persona/Persona.types';
-import { IRefObject, IRenderFunction } from '../../Utilities';
+import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { ISuggestionModel } from './Suggestions/SuggestionsController';
 import { BaseAutoFill } from './AutoFill/BaseAutoFill';
 import { ICalloutProps } from '../../Callout';
+import { ITheme, IStyle } from '../../Styling';
 
 export interface IBasePicker<T> {
   /** Gets the current value of the input. */
@@ -21,6 +22,10 @@ export interface IBasePicker<T> {
 // and searched for by the people picker. For example, if the picker is
 // displaying persona's than type T could either be of Persona or Ipersona props
 export interface IBasePickerProps<T> extends React.Props<any> {
+  /**
+   * Optional callback to access the IBasePicker interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
   componentRef?: IRefObject<IBasePicker<T>>;
 
   /**
@@ -88,7 +93,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   pickerCalloutProps?: ICalloutProps;
   /**
    * AutoFill input native props
-   * @default undefined
+   * @defaultvalue undefined
    */
   inputProps?: IInputProps;
   /**
@@ -105,13 +110,13 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   searchingText?: ((props: { input: string }) => string) | string;
   /**
    * Flag for disabling the picker.
-   * @default false
+   * @defaultvalue false
    */
   disabled?: boolean;
 
   /**
    * Restrict the amount of selectable items.
-   * @default undefined
+   * @defaultvalue undefined
    */
   itemLimit?: number;
   /**
@@ -120,7 +125,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   createGenericItem?: (input: string, ValidationState: ValidationState) => ISuggestionModel<T> | T;
   /**
    * Aria label for the "X" button in the selected item component.
-   * @default ''
+   * @defaultvalue ''
    */
   removeButtonAriaLabel?: string;
   /**
@@ -145,9 +150,19 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * Adds an additional alert for the currently selected suggestion. This prop should be set to true for IE11 and below, as it
    * enables proper screen reader behavior for each suggestion (since aria-activedescendant does not work with IE11).
    * It should not be set for modern browsers (Edge, Chrome).
-   * @default false
+   * @defaultvalue false
    */
   enableSelectedSuggestionAlert?: boolean;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  styles?: IStyleFunctionOrObject<IBasePickerStyleProps, IBasePickerStyles>;
+
+  /**
+   * Theme provided by styled() function
+   */
+  theme?: ITheme;
 }
 
 export interface IBasePickerSuggestionsProps {
@@ -238,4 +253,35 @@ export interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement>
    * text persists until deleted or changed.
    */
   defaultVisibleValue?: string;
+}
+
+/**
+ * The props needed to construct styles.
+ */
+export type IBasePickerStyleProps = Pick<IBasePickerProps<any>, 'theme' | 'className'> & {
+  /** Whether text style area is focused */
+  isFocused?: boolean;
+
+  /** Optional pickerInput className */
+  inputClassName?: string;
+};
+
+/**
+ * Represents the stylable areas of the control.
+ */
+export interface IBasePickerStyles {
+  /** Root element of any picker extending from BasePicker (wraps all the elements)*/
+  root: IStyle;
+
+  /** Refers to the elements already selected(picked) wrapped by `itemsWrapper` along with the input to type new selection */
+  text: IStyle;
+
+  /** Refers to the items already selected(picked). */
+  itemsWrapper: IStyle;
+
+  /** Refers to the input were to type new selections(picks). */
+  input: IStyle;
+
+  /** Refers to helper element used for accessibility tools (hidden from view on screen). */
+  screenReaderText: IStyle;
 }

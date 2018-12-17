@@ -10,6 +10,146 @@
   },
   "glyphs": [
     {
+      "name": "HandsFree",
+      "unicode": "EAD0"
+    },
+    {
+      "name": "Medical",
+      "unicode": "EAD4"
+    },
+    {
+      "name": "Running",
+      "unicode": "EADA"
+    },
+    {
+      "name": "Weights",
+      "unicode": "EADB"
+    },
+    {
+      "name": "Trackers",
+      "unicode": "EADF"
+    },
+    {
+      "name": "AddNotes",
+      "unicode": "EAE3"
+    },
+    {
+      "name": "AllCurrency",
+      "unicode": "EAE4"
+    },
+    {
+      "name": "BarChart4",
+      "unicode": "EAE7"
+    },
+    {
+      "name": "CirclePlus",
+      "unicode": "EAEE"
+    },
+    {
+      "name": "Coffee",
+      "unicode": "EAEF"
+    },
+    {
+      "name": "Cotton",
+      "unicode": "EAF3"
+    },
+    {
+      "name": "Market",
+      "unicode": "EAFC"
+    },
+    {
+      "name": "Money",
+      "unicode": "EAFD"
+    },
+    {
+      "name": "PieDouble",
+      "unicode": "EB04"
+    },
+    {
+      "name": "PieSingle",
+      "unicode": "EB05"
+    },
+    {
+      "name": "RemoveFilter",
+      "unicode": "EB08"
+    },
+    {
+      "name": "Savings",
+      "unicode": "EB0B"
+    },
+    {
+      "name": "Sell",
+      "unicode": "EB0C"
+    },
+    {
+      "name": "StockDown",
+      "unicode": "EB0F"
+    },
+    {
+      "name": "StockUp",
+      "unicode": "EB11"
+    },
+    {
+      "name": "Lamp",
+      "unicode": "EB19"
+    },
+    {
+      "name": "Source",
+      "unicode": "EB1B"
+    },
+    {
+      "name": "MSNVideos",
+      "unicode": "EB1C"
+    },
+    {
+      "name": "Cricket",
+      "unicode": "EB1E"
+    },
+    {
+      "name": "Golf",
+      "unicode": "EB1F"
+    },
+    {
+      "name": "Baseball",
+      "unicode": "EB20"
+    },
+    {
+      "name": "Soccer",
+      "unicode": "EB21"
+    },
+    {
+      "name": "MoreSports",
+      "unicode": "EB22"
+    },
+    {
+      "name": "AutoRacing",
+      "unicode": "EB24"
+    },
+    {
+      "name": "CollegeHoops",
+      "unicode": "EB25"
+    },
+    {
+      "name": "CollegeFootball",
+      "unicode": "EB26"
+    },
+    {
+      "name": "ProFootball",
+      "unicode": "EB27"
+    },
+    {
+      "name": "ProHockey",
+      "unicode": "EB28"
+    },
+    {
+      "name": "Rugby",
+      "unicode": "EB2D"
+    },
+    {
+      "name": "SubstitutionsIn",
+      "unicode": "EB31"
+    },
+    {
       "name": "Tennis",
       "unicode": "EB33"
     },
@@ -28,6 +168,10 @@
     {
       "name": "Drop",
       "unicode": "EB42"
+    },
+    {
+      "name": "HistoricalWeather",
+      "unicode": "EB43"
     },
     {
       "name": "SkiResorts",
@@ -56,6 +200,10 @@
     {
       "name": "Ticket",
       "unicode": "EB54"
+    },
+    {
+      "name": "WifiWarning4",
+      "unicode": "EB63"
     },
     {
       "name": "Devices4",
@@ -194,6 +342,10 @@
       "unicode": "EC06"
     },
     {
+      "name": "CityNext2",
+      "unicode": "EC07"
+    },
+    {
       "name": "Section",
       "unicode": "EC0C"
     },
@@ -234,6 +386,10 @@
       "unicode": "EC22"
     },
     {
+      "name": "HomeGroup",
+      "unicode": "EC26"
+    },
+    {
       "name": "ExcelLogoInverse",
       "unicode": "EC28"
     },
@@ -252,162 +408,6 @@
     {
       "name": "SpeedHigh",
       "unicode": "EC4A"
-    },
-    {
-      "name": "Commitments",
-      "unicode": "EC4D"
-    },
-    {
-      "name": "ThisPC",
-      "unicode": "EC4E"
-    },
-    {
-      "name": "MusicNote",
-      "unicode": "EC4F"
-    },
-    {
-      "name": "MicOff",
-      "unicode": "EC54"
-    },
-    {
-      "name": "EdgeLogo",
-      "unicode": "EC60"
-    },
-    {
-      "name": "CompletedSolid",
-      "unicode": "EC61"
-    },
-    {
-      "name": "AlbumRemove",
-      "unicode": "EC62"
-    },
-    {
-      "name": "MessageFill",
-      "unicode": "EC70"
-    },
-    {
-      "name": "TabletSelected",
-      "unicode": "EC74"
-    },
-    {
-      "name": "MobileSelected",
-      "unicode": "EC75"
-    },
-    {
-      "name": "LaptopSelected",
-      "unicode": "EC76"
-    },
-    {
-      "name": "TVMonitorSelected",
-      "unicode": "EC77"
-    },
-    {
-      "name": "DeveloperTools",
-      "unicode": "EC7A"
-    },
-    {
-      "name": "InsertTextBox",
-      "unicode": "EC7D"
-    },
-    {
-      "name": "LowerBrightness",
-      "unicode": "EC8A"
-    },
-    {
-      "name": "DOM",
-      "unicode": "EC8D"
-    },
-    {
-      "name": "CloudUpload",
-      "unicode": "EC8E"
-    },
-    {
-      "name": "ScrollUpDown",
-      "unicode": "EC8F"
-    },
-    {
-      "name": "DateTime",
-      "unicode": "EC92"
-    },
-    {
-      "name": "Event",
-      "unicode": "ECA3"
-    },
-    {
-      "name": "Cake",
-      "unicode": "ECA4"
-    },
-    {
-      "name": "Org",
-      "unicode": "ECA6"
-    },
-    {
-      "name": "PartyLeader",
-      "unicode": "ECA7"
-    },
-    {
-      "name": "DRM",
-      "unicode": "ECA8"
-    },
-    {
-      "name": "CloudAdd",
-      "unicode": "ECA9"
-    },
-    {
-      "name": "AppIconDefault",
-      "unicode": "ECAA"
-    },
-    {
-      "name": "Photo2Add",
-      "unicode": "ECAB"
-    },
-    {
-      "name": "Photo2Remove",
-      "unicode": "ECAC"
-    },
-    {
-      "name": "POI",
-      "unicode": "ECAF"
-    },
-    {
-      "name": "AddTo",
-      "unicode": "ECC8"
-    },
-    {
-      "name": "RadioBtnOff",
-      "unicode": "ECCA"
-    },
-    {
-      "name": "RadioBtnOn",
-      "unicode": "ECCB"
-    },
-    {
-      "name": "ExploreContent",
-      "unicode": "ECCD"
-    },
-    {
-      "name": "Product",
-      "unicode": "ECDC"
-    },
-    {
-      "name": "ProgressLoopInner",
-      "unicode": "ECDE"
-    },
-    {
-      "name": "ProgressLoopOuter",
-      "unicode": "ECDF"
-    },
-    {
-      "name": "Blocked2",
-      "unicode": "ECE4"
-    },
-    {
-      "name": "FangBody",
-      "unicode": "ECEB"
-    },
-    {
-      "name": "ChatInviteFriend",
-      "unicode": "ECFE"
     }
   ]
 }

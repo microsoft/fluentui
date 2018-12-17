@@ -67,8 +67,8 @@ export class TilesListPage extends React.Component<IComponentDemoPageProps, ITil
               component. It is intended to represent items visual using a one or mote content-focused flowing grids.
             </p>
             <p>
-              <code>TilesList</code> is designed to be used in conjunction with the <code>Tile</code> component. The{' '}
-              <code>Tile</code> component provides a standardized form of focusable and selectable content item.
+              <code>TilesList</code> is designed to be used in conjunction with the <code>Tile</code> component. The <code>Tile</code>{' '}
+              component provides a standardized form of focusable and selectable content item.
             </p>
           </div>
         }

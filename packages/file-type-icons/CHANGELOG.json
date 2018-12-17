@@ -2,6 +2,39 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "version": "6.4.1",
+      "tag": "@uifabric/file-type-icons_v6.4.1",
+      "date": "Thu, 06 Dec 2018 13:34:21 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Recognize additional file extensions",
+            "author": "David Michon <dmichon@microsoft.com>",
+            "commit": "7f58d3b2189d8c9b62236c2999f2e6f0a34106ee"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.4.0",
+      "tag": "@uifabric/file-type-icons_v6.4.0",
+      "date": "Thu, 29 Nov 2018 19:34:12 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updated filetype icon mappings to include missing files (figma, powerpoint slide, etc) and entries for new supported non-file items (sp news, sway)",
+            "author": "bigbadcapers <caperez@microsoft.com>",
+            "commit": "18f80e587edcdcf3c80fd6e7eb04249b52548498"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.35.0 <7.0.0` to `>=6.37.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.2.0",
       "tag": "@uifabric/file-type-icons_v6.2.0",
       "date": "Mon, 15 Oct 2018 12:29:12 GMT",

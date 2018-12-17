@@ -10,6 +10,114 @@
   },
   "glyphs": [
     {
+      "name": "Snow",
+      "unicode": "E9C8"
+    },
+    {
+      "name": "BlowingSnow",
+      "unicode": "E9C9"
+    },
+    {
+      "name": "Frigid",
+      "unicode": "E9CA"
+    },
+    {
+      "name": "Fog",
+      "unicode": "E9CB"
+    },
+    {
+      "name": "Squalls",
+      "unicode": "E9CC"
+    },
+    {
+      "name": "Duststorm",
+      "unicode": "E9CD"
+    },
+    {
+      "name": "Unknown",
+      "unicode": "E9CE"
+    },
+    {
+      "name": "Precipitation",
+      "unicode": "E9CF"
+    },
+    {
+      "name": "Ribbon",
+      "unicode": "E9D1"
+    },
+    {
+      "name": "AreaChart",
+      "unicode": "E9D2"
+    },
+    {
+      "name": "Assign",
+      "unicode": "E9D3"
+    },
+    {
+      "name": "FlowChart",
+      "unicode": "E9D4"
+    },
+    {
+      "name": "CheckList",
+      "unicode": "E9D5"
+    },
+    {
+      "name": "Diagnostic",
+      "unicode": "E9D9"
+    },
+    {
+      "name": "Generate",
+      "unicode": "E9DA"
+    },
+    {
+      "name": "LineChart",
+      "unicode": "E9E6"
+    },
+    {
+      "name": "Equalizer",
+      "unicode": "E9E9"
+    },
+    {
+      "name": "BarChartHorizontal",
+      "unicode": "E9EB"
+    },
+    {
+      "name": "BarChartVertical",
+      "unicode": "E9EC"
+    },
+    {
+      "name": "Freezing",
+      "unicode": "E9EF"
+    },
+    {
+      "name": "FunnelChart",
+      "unicode": "E9F1"
+    },
+    {
+      "name": "Processing",
+      "unicode": "E9F5"
+    },
+    {
+      "name": "Quantity",
+      "unicode": "E9F8"
+    },
+    {
+      "name": "ReportDocument",
+      "unicode": "E9F9"
+    },
+    {
+      "name": "StackColumnChart",
+      "unicode": "E9FC"
+    },
+    {
+      "name": "SnowShowerDay",
+      "unicode": "E9FD"
+    },
+    {
+      "name": "HailDay",
+      "unicode": "EA00"
+    },
+    {
       "name": "WorkFlow",
       "unicode": "EA01"
     },
@@ -28,6 +136,10 @@
     {
       "name": "TriangleSolid",
       "unicode": "EA08"
+    },
+    {
+      "name": "UpgradeAnalysis",
+      "unicode": "EA0B"
     },
     {
       "name": "VideoSolid",
@@ -142,12 +254,20 @@
       "unicode": "EA4D"
     },
     {
+      "name": "GoMirrored",
+      "unicode": "EA4F"
+    },
+    {
       "name": "HelpMirrored",
       "unicode": "EA51"
     },
     {
       "name": "ImportMirrored",
       "unicode": "EA52"
+    },
+    {
+      "name": "ImportAllMirrored",
+      "unicode": "EA53"
     },
     {
       "name": "ListMirrored",
@@ -164,6 +284,14 @@
     {
       "name": "MailReplyAllMirrored",
       "unicode": "EA58"
+    },
+    {
+      "name": "MiniContractMirrored",
+      "unicode": "EA59"
+    },
+    {
+      "name": "MiniExpandMirrored",
+      "unicode": "EA5A"
     },
     {
       "name": "OpenPaneMirrored",
@@ -186,8 +314,20 @@
       "unicode": "EA67"
     },
     {
+      "name": "Media",
+      "unicode": "EA69"
+    },
+    {
       "name": "Devices3",
       "unicode": "EA6C"
+    },
+    {
+      "name": "Focus",
+      "unicode": "EA6F"
+    },
+    {
+      "name": "VideoLightOff",
+      "unicode": "EA74"
     },
     {
       "name": "Lightbulb",
@@ -268,146 +408,6 @@
     {
       "name": "ExerciseTracker",
       "unicode": "EACC"
-    },
-    {
-      "name": "HandsFree",
-      "unicode": "EAD0"
-    },
-    {
-      "name": "Medical",
-      "unicode": "EAD4"
-    },
-    {
-      "name": "Running",
-      "unicode": "EADA"
-    },
-    {
-      "name": "Weights",
-      "unicode": "EADB"
-    },
-    {
-      "name": "Trackers",
-      "unicode": "EADF"
-    },
-    {
-      "name": "AddNotes",
-      "unicode": "EAE3"
-    },
-    {
-      "name": "AllCurrency",
-      "unicode": "EAE4"
-    },
-    {
-      "name": "BarChart4",
-      "unicode": "EAE7"
-    },
-    {
-      "name": "CirclePlus",
-      "unicode": "EAEE"
-    },
-    {
-      "name": "Coffee",
-      "unicode": "EAEF"
-    },
-    {
-      "name": "Cotton",
-      "unicode": "EAF3"
-    },
-    {
-      "name": "Market",
-      "unicode": "EAFC"
-    },
-    {
-      "name": "Money",
-      "unicode": "EAFD"
-    },
-    {
-      "name": "PieDouble",
-      "unicode": "EB04"
-    },
-    {
-      "name": "PieSingle",
-      "unicode": "EB05"
-    },
-    {
-      "name": "RemoveFilter",
-      "unicode": "EB08"
-    },
-    {
-      "name": "Savings",
-      "unicode": "EB0B"
-    },
-    {
-      "name": "Sell",
-      "unicode": "EB0C"
-    },
-    {
-      "name": "StockDown",
-      "unicode": "EB0F"
-    },
-    {
-      "name": "StockUp",
-      "unicode": "EB11"
-    },
-    {
-      "name": "Lamp",
-      "unicode": "EB19"
-    },
-    {
-      "name": "Source",
-      "unicode": "EB1B"
-    },
-    {
-      "name": "MSNVideos",
-      "unicode": "EB1C"
-    },
-    {
-      "name": "Cricket",
-      "unicode": "EB1E"
-    },
-    {
-      "name": "Golf",
-      "unicode": "EB1F"
-    },
-    {
-      "name": "Baseball",
-      "unicode": "EB20"
-    },
-    {
-      "name": "Soccer",
-      "unicode": "EB21"
-    },
-    {
-      "name": "MoreSports",
-      "unicode": "EB22"
-    },
-    {
-      "name": "AutoRacing",
-      "unicode": "EB24"
-    },
-    {
-      "name": "CollegeHoops",
-      "unicode": "EB25"
-    },
-    {
-      "name": "CollegeFootball",
-      "unicode": "EB26"
-    },
-    {
-      "name": "ProFootball",
-      "unicode": "EB27"
-    },
-    {
-      "name": "ProHockey",
-      "unicode": "EB28"
-    },
-    {
-      "name": "Rugby",
-      "unicode": "EB2D"
-    },
-    {
-      "name": "SubstitutionsIn",
-      "unicode": "EB31"
     }
   ]
 }

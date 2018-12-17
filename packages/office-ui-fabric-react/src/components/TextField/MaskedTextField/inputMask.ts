@@ -28,10 +28,7 @@ export const DEFAULT_MASK_FORMAT_CHARS: { [key: string]: RegExp } = {
  * @param mask The string use to define the format of the displayed maskedValue.
  * @param formatChars An object defining how certain characters in the mask should accept input.
  */
-export function parseMask(
-  mask: string | undefined,
-  formatChars: { [key: string]: RegExp } = DEFAULT_MASK_FORMAT_CHARS
-): IMaskValue[] {
+export function parseMask(mask: string | undefined, formatChars: { [key: string]: RegExp } = DEFAULT_MASK_FORMAT_CHARS): IMaskValue[] {
   if (!mask) {
     return [];
   }

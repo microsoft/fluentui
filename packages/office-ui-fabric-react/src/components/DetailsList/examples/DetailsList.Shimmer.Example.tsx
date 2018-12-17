@@ -42,6 +42,7 @@ export interface IDocument {
   name: string;
   value: string;
   iconName: string;
+  fileType: string;
   modifiedBy: string;
   dateModified: string;
   dateModifiedValue: number;
@@ -70,6 +71,7 @@ export class DetailsListShimmerExample extends React.Component<any, IDetailsList
           name: fileName,
           value: fileName,
           iconName: randomFileType.url,
+          fileType: randomFileType.docType,
           modifiedBy: userName,
           dateModified: randomDate.dateFormatted,
           dateModifiedValue: randomDate.value,
@@ -92,7 +94,7 @@ export class DetailsListShimmerExample extends React.Component<any, IDetailsList
         minWidth: 16,
         maxWidth: 16,
         onRender: (item: IDocument) => {
-          return <img src={item.iconName} className={'DetailsListExample-documentIconImage'} />;
+          return <img src={item.iconName} className={'DetailsListExample-documentIconImage'} alt={item.fileType + ' file icon'} />;
         }
       },
       {
@@ -128,7 +130,7 @@ export class DetailsListShimmerExample extends React.Component<any, IDetailsList
         minWidth: 70,
         maxWidth: 90,
         isResizable: true,
-        isCollapsable: true,
+        isCollapsible: true,
         data: 'string',
         onRender: (item: IDocument) => {
           return <span>{item.modifiedBy}</span>;
@@ -142,7 +144,7 @@ export class DetailsListShimmerExample extends React.Component<any, IDetailsList
         minWidth: 70,
         maxWidth: 90,
         isResizable: true,
-        isCollapsable: true,
+        isCollapsible: true,
         data: 'number',
         onRender: (item: IDocument) => {
           return <span>{item.fileSize}</span>;

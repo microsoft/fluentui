@@ -15,8 +15,7 @@ const LayerNestedLayersExampleCode = require('!raw-loader!office-ui-fabric-react
 export const LayerPageProps: IDocPageProps = {
   title: 'Layer',
   componentName: 'Layer',
-  componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Layer',
+  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Layer',
   componentStatus: LayerStatus,
   examples: [
     {

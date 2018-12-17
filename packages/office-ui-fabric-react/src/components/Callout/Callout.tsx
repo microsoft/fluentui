@@ -12,7 +12,8 @@ export class Callout extends BaseComponent<ICalloutProps, ICalloutState> {
   }
 
   public render(): JSX.Element {
-    const content = <CalloutContent {...this.props} />;
-    return this.props.doNotLayer ? content : <Layer>{content}</Layer>;
+    const { layerProps, ...rest } = this.props;
+    const content = <CalloutContent {...rest} />;
+    return this.props.doNotLayer ? content : <Layer {...layerProps}>{content}</Layer>;
   }
 }
