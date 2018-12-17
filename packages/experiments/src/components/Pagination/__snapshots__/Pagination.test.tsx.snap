@@ -303,21 +303,11 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             position: relative;
             top: 0px;
           }
-          &:aria-selected=true {
-            color: #0078d4;
-            cursor: default;
-            font-weight: bold;
-            text-decoration: underline;
-          }
           &[aria-selected=true] {
             color: #0078d4;
             cursor: default;
             font-weight: bold;
             text-decoration: underline;
-          }
-          &:hover:aria-selected=true {
-            background-color: transparent;
-            color: #0078d4;
           }
           &:hover[aria-selected=true] {
             background-color: transparent;
@@ -419,21 +409,11 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             position: relative;
             top: 0px;
           }
-          &:aria-selected=true {
-            color: #0078d4;
-            cursor: default;
-            font-weight: bold;
-            text-decoration: underline;
-          }
           &[aria-selected=true] {
             color: #0078d4;
             cursor: default;
             font-weight: bold;
             text-decoration: underline;
-          }
-          &:hover:aria-selected=true {
-            background-color: transparent;
-            color: #0078d4;
           }
           &:hover[aria-selected=true] {
             background-color: transparent;
@@ -535,21 +515,11 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             position: relative;
             top: 0px;
           }
-          &:aria-selected=true {
-            color: #0078d4;
-            cursor: default;
-            font-weight: bold;
-            text-decoration: underline;
-          }
           &[aria-selected=true] {
             color: #0078d4;
             cursor: default;
             font-weight: bold;
             text-decoration: underline;
-          }
-          &:hover:aria-selected=true {
-            background-color: transparent;
-            color: #0078d4;
           }
           &:hover[aria-selected=true] {
             background-color: transparent;
@@ -651,21 +621,11 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             position: relative;
             top: 0px;
           }
-          &:aria-selected=true {
-            color: #0078d4;
-            cursor: default;
-            font-weight: bold;
-            text-decoration: underline;
-          }
           &[aria-selected=true] {
             color: #0078d4;
             cursor: default;
             font-weight: bold;
             text-decoration: underline;
-          }
-          &:hover:aria-selected=true {
-            background-color: transparent;
-            color: #0078d4;
           }
           &:hover[aria-selected=true] {
             background-color: transparent;
@@ -767,21 +727,11 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             position: relative;
             top: 0px;
           }
-          &:aria-selected=true {
-            color: #0078d4;
-            cursor: default;
-            font-weight: bold;
-            text-decoration: underline;
-          }
           &[aria-selected=true] {
             color: #0078d4;
             cursor: default;
             font-weight: bold;
             text-decoration: underline;
-          }
-          &:hover:aria-selected=true {
-            background-color: transparent;
-            color: #0078d4;
           }
           &:hover[aria-selected=true] {
             background-color: transparent;
