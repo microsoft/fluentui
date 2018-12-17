@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "backport to v5: Add the ability to disable the built-in SelectionMode in DetailsList (PR #6140)",
+      "comment": "DetailsList: Add the ability to disable the built-in SelectionMode.",
       "type": "minor"
     }
   ],
