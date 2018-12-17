@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "add some unit tests for pagination and fix some button styles",
+      "comment": "Pagination: Add unit tests for control and fix button styles.",
       "type": "minor"
     }
   ],
