@@ -229,7 +229,7 @@ Mon, 08 Oct 2018 12:24:15 GMT
 
 ### Patches
 
-- Moving tslint/prettier dependencies
+- Moving tslint/prettier dependencies 
 - Fix a11y violations in Fluent ContextualMenu examples
 - Sidebar: Fixed filename and imports
 
@@ -605,7 +605,7 @@ Thu, 12 Jul 2018 10:29:30 GMT
 
 ### Patches
 
-- Consume horizontal bar chart in card, fix bad import
+- Consume horizontal bar chart in card, fix bad import 
 
 ## 6.13.5
 Tue, 10 Jul 2018 21:54:07 GMT
@@ -740,7 +740,7 @@ Mon, 18 Jun 2018 16:57:14 GMT
 
 ### Minor changes
 
-- Dashboard Card Component for Admin Portals Dashboard which will be hosted inside react-grid-layout.
+- Dashboard Card Component for Admin Portals Dashboard which will be hosted inside react-grid-layout. 
 - Add GridList component into the existing Dashboard Card Component
 
 ### Patches
@@ -986,7 +986,7 @@ Tue, 10 Apr 2018 17:37:28 GMT
 
 ### Minor changes
 
-- FloatingPicker: add show/hide picker call backs, fix double resolve when queryString is the same
+- FloatingPicker: add show/hide picker call backs, fix double resolve when queryString is the same 
 
 ### Patches
 

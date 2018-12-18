@@ -53,7 +53,7 @@ Tue, 20 Nov 2018 20:12:42 GMT
 
 ### Patches
 
-- add default fonts from fabric  for dashboard package
+- add default fonts from fabric  for dashboard package 
 
 ## 0.35.0
 Tue, 13 Nov 2018 13:30:53 GMT
@@ -163,7 +163,7 @@ Mon, 08 Oct 2018 12:24:15 GMT
 
 ### Patches
 
-- Moving tslint/prettier dependencies
+- Moving tslint/prettier dependencies 
 
 ## 0.29.1
 Fri, 05 Oct 2018 12:27:02 GMT
@@ -203,7 +203,7 @@ Mon, 01 Oct 2018 12:27:24 GMT
 ### Patches
 
 - Fix transient dependency on react-resizable
-- resolved hover issue of thumbnailList
+- resolved hover issue of thumbnailList 
 
 ## 0.26.2
 Thu, 27 Sep 2018 12:27:48 GMT
@@ -244,7 +244,7 @@ Fri, 21 Sep 2018 14:25:46 GMT
 ### Patches
 
 - Adding a version stamp file
-- Remove drag on menu button on card frame and link button
+- Remove drag on menu button on card frame and link button 
 
 ## 0.25.3
 Thu, 20 Sep 2018 12:25:33 GMT
@@ -329,7 +329,7 @@ Fri, 07 Sep 2018 22:04:50 GMT
 
 ### Minor changes
 
-- create base class for dashboard layout
+- create base class for dashboard layout 
 - Adding necessary override styles to scale hovercard size as per content. Introducing time delay without which override is not possible.  This is temporary solution suggested by Fabric folks until they fix the bug in hovercard component.
 
 ### Patches
@@ -360,7 +360,7 @@ Thu, 06 Sep 2018 10:28:35 GMT
 
 ### Patches
 
-- gird list text overflow css issue
+- gird list text overflow css issue 
 - patch
 - Fix content area clipping in card because of overflow set to hidden
 - merge donut and piechart and added in dashboard package
@@ -408,7 +408,7 @@ Fri, 31 Aug 2018 10:27:35 GMT
 ### Patches
 
 - Fixes the usage of renamed variable
-- change datapoint for horizontal bar chart
+- change datapoint for horizontal bar chart 
 
 ## 0.17.3
 Thu, 30 Aug 2018 19:26:04 GMT
@@ -670,7 +670,7 @@ Fri, 13 Jul 2018 21:32:37 GMT
 
 ### Minor changes
 
-- Created new package dashboard and moved Recommendation, card and nav to it
+- Created new package dashboard and moved Recommendation, card and nav to it 
 
 ## 0.2.0
 Tue, 03 Jul 2018 17:41:15 GMT
