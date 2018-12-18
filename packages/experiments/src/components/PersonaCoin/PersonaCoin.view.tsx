@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Icon } from 'office-ui-fabric-react';
-import { Text } from '../Text';
+import { Text } from '@uifabric/experiments';
 import { IPersonaCoinComponent } from './PersonaCoin.types';
 import { PersonaCoinImage } from './PersonaCoinImage/PersonaCoinImage';
 import { PersonaPresence } from 'office-ui-fabric-react/lib/PersonaPresence';
