@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Stack, Text } from '@uifabric/experiments';
 import { PersonaTestImages } from '@uifabric/experiments/lib/common/TestImages';
-import { VerticalPersona } from '../index';
 import { mergeStyles } from '@uifabric/styling';
+import { VerticalPersona } from '../VerticalPersona';
 
 const sectionGap = 32;
 const headingGap = 16;
