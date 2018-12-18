@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { VerticalStack, Text } from '@uifabric/experiments';
+import { Stack, Text } from '@uifabric/experiments';
 import { PersonaTestImages } from '@uifabric/experiments/lib/common/TestImages';
 import { VerticalPersona } from '../index';
 import { mergeStyles } from '@uifabric/styling';
@@ -15,26 +15,26 @@ const VerticalPersonaStack = (props: { children: JSX.Element[] }) => <div classN
 export class VerticalPersonaExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
-      <VerticalStack gap={sectionGap}>
-        <VerticalStack gap={headingGap} padding={8}>
-          <VerticalStack gap={personaCoinGap}>
+      <Stack gap={sectionGap}>
+        <Stack gap={headingGap} padding={8}>
+          <Stack gap={personaCoinGap}>
             <Text>Basic Usage</Text>
             <VerticalPersonaStack>
               <VerticalPersona text="Sukhnam Chander" secondaryText="Principal Program manager" />
               <VerticalPersona text="Kevin Jameson" secondaryText="Professional traveller" />
               <VerticalPersona text="王力" secondaryText="Principal Program manager" />
             </VerticalPersonaStack>
-          </VerticalStack>
-          <VerticalStack gap={personaCoinGap}>
+          </Stack>
+          <Stack gap={personaCoinGap}>
             <Text>When passing coinProps</Text>
             <VerticalPersonaStack>
               <VerticalPersona text="Eline Page" secondaryText="eSports commentator" coinProps={{ presence: 4 }} />
               <VerticalPersona text="赵丽颖" coinProps={{ imageUrl: PersonaTestImages.personFemale }} />
               <VerticalPersona text="Kevin Jameson" coinProps={{ imageUrl: PersonaTestImages.personMale }} />
             </VerticalPersonaStack>
-          </VerticalStack>
-        </VerticalStack>
-      </VerticalStack>
+          </Stack>
+        </Stack>
+      </Stack>
     );
   }
 }
