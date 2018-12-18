@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.49.0",
+      "tag": "@uifabric/experiments_v6.49.0",
+      "date": "Tue, 18 Dec 2018 22:17:52 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Pagination: Add unit tests for control and fix button styles.",
+            "author": "caradong <caradong1122@gmail.com>",
+            "commit": "603030a34f5efc0df98dfa581c9094f4c69646b9"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.116.0 <7.0.0` to `>=6.116.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.48.2",
       "tag": "@uifabric/experiments_v6.48.2",
       "date": "Mon, 17 Dec 2018 13:36:58 GMT",

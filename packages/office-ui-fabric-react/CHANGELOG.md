@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 18 Dec 2018 13:36:49 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Dec 2018 22:17:52 GMT and should not be manually modified.
+
+## 6.116.1
+Tue, 18 Dec 2018 22:17:52 GMT
+
+### Patches
+
+- MessageBar: add aria-expanded and aria-controls to See More button
 
 ## 6.116.0
 Tue, 18 Dec 2018 13:36:49 GMT
