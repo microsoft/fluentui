@@ -1,15 +1,14 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-/* tslint:enable:no-unused-variable */
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
-import { mount } from 'enzyme';
-
-import { KeyCodes, resetIds } from '../../Utilities';
 import { Dropdown } from './Dropdown';
 import { DropdownBase } from './Dropdown.base';
-import { DropdownMenuItemType, IDropdownOption, IDropdown } from './Dropdown.types';
+import { DropdownMenuItemType, IDropdown, IDropdownOption } from './Dropdown.types';
+import { KeyCodes, resetIds } from '../../Utilities';
+import { mount } from 'enzyme';
+/* tslint:disable:no-unused-variable */
+/* tslint:enable:no-unused-variable */
 
 const DEFAULT_OPTIONS: IDropdownOption[] = [
   { key: 'Header1', text: 'Header 1', itemType: DropdownMenuItemType.Header },
@@ -332,7 +331,7 @@ describe('Dropdown', () => {
       expect(titleElement.textContent).toEqual('4');
     });
 
-    it('Shows correct tooltip only with title prop specified', () => {
+    it('Shows correct tooltip with and without title prop specified', () => {
       const container = document.createElement('div');
       let dropdownRoot: HTMLElement | undefined;
 
@@ -344,13 +343,13 @@ describe('Dropdown', () => {
       ReactTestUtils.Simulate.click(dropdownRoot);
 
       const firstItemElement = document.querySelector('.ms-Dropdown-item[data-index="1"]') as HTMLElement;
-      expect(firstItemElement.getAttribute('title')).toEqual(null);
+      expect(firstItemElement.getAttribute('title')).toEqual('1');
 
       const secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"]') as HTMLElement;
       expect(secondItemElement.getAttribute('title')).toEqual('test');
 
       const thirdItemElement = document.querySelector('.ms-Dropdown-item[data-index="3"]') as HTMLElement;
-      expect(thirdItemElement.getAttribute('title')).toEqual(null);
+      expect(thirdItemElement.getAttribute('title')).toEqual('3');
     });
   });
 

@@ -1186,7 +1186,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           aria-selected={isSelected ? 'true' : 'false'}
           ariaLabel={item.ariaLabel}
           disabled={item.disabled}
-          title={item.title}
+          title={title}
         >
           {' '}
           {
