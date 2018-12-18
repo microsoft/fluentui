@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Pivot: Removing swiping references in component documentation.",
+      "type": "none"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com"
+}
