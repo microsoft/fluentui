@@ -146,7 +146,7 @@ describe('DetailsColumn', () => {
       />
     );
 
-    expect(component.find('[aria-describedby]').length).toBe(1);
+    expect(component.find('[aria-describedby]')).toHaveLength(1);
   });
 
   it("by default, has a node present in the DOM referenced by the column's aria-describedby attribute", () => {
