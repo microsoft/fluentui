@@ -1,5 +1,13 @@
 import * as React from 'react';
-import { mergeStyles, PrimaryButton, DefaultButton, Link } from 'office-ui-fabric-react';
+import {
+  mergeStyles,
+  DefaultButton,
+  Link,
+  PrimaryButton,
+  Shimmer,
+  ShimmerElementsGroup,
+  ShimmerElementType as ElemType
+} from 'office-ui-fabric-react';
 import { FontSizes } from 'office-ui-fabric-react/lib/Styling';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
@@ -11,14 +19,60 @@ export class SetupBanner extends React.Component<ISetupBannerProps, {}> {
     const { className, headerText, onRenderBody, onRenderVisualization } = this.props;
     const getClassNames = classNamesFunction<{}, ISetupBannerStyles>();
     const classNames = getClassNames(getStyles);
+
+    const visualizationPartition = onRenderVisualization
+      ? typeof onRenderVisualization === 'object'
+        ? onRenderVisualization
+        : onRenderVisualization()
+      : this._getVisualizationShimmer();
+    const headerSection = headerText ? headerText : this._getHeaderShimmer();
+    const bodySection = onRenderBody ? (typeof onRenderBody === 'object' ? onRenderBody : onRenderBody()) : this._getBodyShimmer();
+
     return (
       <div className={mergeStyles(classNames.root, className)}>
-        <div className={classNames.visualizationPartition}>{onRenderVisualization()}</div>
+        <div className={classNames.visualizationPartition}>{visualizationPartition}</div>
         <div className={classNames.textPartition}>
-          <div className={classNames.headerSection}>{headerText}</div>
-          <div className={classNames.bodySection}>{onRenderBody()}</div>
+          <div className={classNames.headerSection}>{headerSection}</div>
+          <div className={classNames.bodySection}>{bodySection}</div>
           <div className={classNames.actionSection}>{this.props.actions.map(this._renderAction)}</div>
         </div>
+      </div>
+    );
+  }
+
+  private _getBodyShimmer(): JSX.Element {
+    const getClassNames = classNamesFunction<{}, ISetupBannerStyles>();
+    const classNames = getClassNames(getStyles);
+
+    const shimmerElementsGroup = <ShimmerElementsGroup shimmerElements={[{ type: ElemType.line, height: 36 }]} />;
+
+    return (
+      <div className={classNames.bodyShimmer}>
+        <Shimmer customElementsGroup={shimmerElementsGroup} />
+      </div>
+    );
+  }
+
+  private _getHeaderShimmer(): JSX.Element {
+    const getClassNames = classNamesFunction<{}, ISetupBannerStyles>();
+    const classNames = getClassNames(getStyles);
+
+    const shimmerElementsGroup = <ShimmerElementsGroup shimmerElements={[{ type: ElemType.line, height: 42 }]} />;
+    return (
+      <div className={classNames.headerShimmer}>
+        <Shimmer customElementsGroup={shimmerElementsGroup} />
+      </div>
+    );
+  }
+
+  private _getVisualizationShimmer(): JSX.Element {
+    const getClassNames = classNamesFunction<{}, ISetupBannerStyles>();
+    const classNames = getClassNames(getStyles);
+
+    const shimmerElementsGroup = <ShimmerElementsGroup shimmerElements={[{ type: ElemType.line, height: 250 }]} />;
+    return (
+      <div className={classNames.visualizationShimmer}>
+        <Shimmer customElementsGroup={shimmerElementsGroup} />
       </div>
     );
   }
