@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 17 Dec 2018 13:36:58 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Dec 2018 13:36:49 GMT and should not be manually modified.
+
+## 6.116.0
+Tue, 18 Dec 2018 13:36:49 GMT
+
+### Minor changes
+
+- ComboBox: add placeholder prop
 
 ## 6.115.0
 Mon, 17 Dec 2018 13:36:58 GMT

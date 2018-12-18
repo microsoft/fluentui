@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.116.0",
+      "tag": "office-ui-fabric-react_v6.116.0",
+      "date": "Tue, 18 Dec 2018 13:36:49 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "ComboBox: add placeholder prop",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "044ff2a6b44b05572b7c17ef309a598b757d717f"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.115.0",
       "tag": "office-ui-fabric-react_v6.115.0",
       "date": "Mon, 17 Dec 2018 13:36:58 GMT",
