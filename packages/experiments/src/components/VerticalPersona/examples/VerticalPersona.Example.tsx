@@ -28,9 +28,9 @@ export class VerticalPersonaExample extends React.Component<{}, {}> {
           <Stack gap={personaCoinGap}>
             <Text>When passing coinProps</Text>
             <VerticalPersonaStack>
-              <VerticalPersona text="Eline Page" secondaryText="eSports commentator" coinProps={{ presence: 4 }} />
-              <VerticalPersona text="赵丽颖" coinProps={{ imageUrl: PersonaTestImages.personFemale }} />
-              <VerticalPersona text="Kevin Jameson" coinProps={{ imageUrl: PersonaTestImages.personMale }} />
+              <VerticalPersona text="Eline Page" secondaryText="eSports commentator" coin={{ presence: 4 }} />
+              <VerticalPersona text="赵丽颖" coin={{ imageUrl: PersonaTestImages.personFemale }} />
+              <VerticalPersona text="Kevin Jameson" coin={{ imageUrl: PersonaTestImages.personMale }} />
             </VerticalPersonaStack>
           </Stack>
         </Stack>

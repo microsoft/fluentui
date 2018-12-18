@@ -40,7 +40,7 @@ export const VerticalPersonaStyles: IVerticalPersonaComponent['styles'] = props 
       padding: `0 ${variables.text.textPaddingLeftAndRight}px`,
       boxSizing: 'border-box'
     },
-    text: {
+    primaryText: {
       paddingTop: variables.primaryText.paddingTop,
       height: variables.text.height,
       fontFamily: variables.text.fontFamily,

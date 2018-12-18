@@ -9,7 +9,7 @@ import { VerticalPersonaView } from './VerticalPersona.view';
 // (Also, classNames is a required prop for views, so we have to supply it for tests.)
 const testVerticalPersonaClassNames: IProcessedStyleSet<IVerticalPersonaStyles> = {
   root: 'test-cn-root',
-  text: 'test-cn-text',
+  primaryText: 'test-cn-text',
   secondaryText: 'test-cn-secondaryText',
   subComponentStyles: {}
 };
@@ -36,7 +36,7 @@ describe('VerticalPersonaView', () => {
           text="James Bond"
           secondaryText="Super secret agent"
           classNames={testVerticalPersonaClassNames}
-          coinProps={{ initials: 'MI6', coinColor: 'red' }}
+          coin={{ initials: 'MI6', coinColor: 'red' }}
         />
       )
       .toJSON();

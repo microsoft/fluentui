@@ -1,25 +1,28 @@
 import { IStyle, IFontWeight } from '@uifabric/styling';
 import { IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
-import { IPersonaCoinProps } from '../PersonaCoin/PersonaCoin.types';
+import { ITextSlot, IHTMLDivSlot, IPersonaCoinSlot } from '@uifabric/experiments/lib/utilities/factoryComponents.types';
 
 export type IVerticalPersonaComponent = IStatelessComponent<IVerticalPersonaProps, IVerticalPersonaStyles>;
 
+export interface IVerticalPersonaSlots {
+  root?: IHTMLDivSlot;
+  primaryText?: ITextSlot;
+  secondaryText?: ITextSlot;
+  coin?: IPersonaCoinSlot;
+}
+
 // Extending IStyleableComponentProps will automatically add stylable props for you, such as styles and theme.
 //    If you don't want these props to be included in your component, just remove this extension.
-export interface IVerticalPersonaProps extends IStyleableComponentProps<IVerticalPersonaProps, IVerticalPersonaStyles> {
+export interface IVerticalPersonaProps
+  extends IVerticalPersonaSlots,
+    IStyleableComponentProps<IVerticalPersonaProps, IVerticalPersonaStyles> {
   text: string;
-  secondaryText?: string;
-
-  /**
-   * Properties that should be passed to the PersonaCoin component
-   */
-  coinProps?: Partial<IPersonaCoinProps>;
   styleVariables?: IVerticalPersonaStyleVariableTypes;
 }
 
 export interface IVerticalPersonaStyles {
   root: IStyle;
-  text: IStyle;
+  primaryText: IStyle;
   secondaryText: IStyle;
 }
 
