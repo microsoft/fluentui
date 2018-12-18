@@ -1,11 +1,62 @@
 import { createTheme, ITheme } from 'office-ui-fabric-react';
-import { NeutralColors, DarkColors } from './IbizaColors';
+import { NeutralColors, DarkColors, BaseColors } from './IbizaColors';
 import { IExtendedTheme } from './IExtendedTheme';
+import { IExtendedThemeColors } from './IExtendedThemeColors';
 
 export class IbizaExtendedThemeDark implements IExtendedTheme {
-  public readonly semanticColors = {
-    errorBorder: DarkColors.errorBorder,
-    errorText: DarkColors.errorText
+  public readonly extendedColors: IExtendedThemeColors = {
+    background: BaseColors.GRAY_252525,
+    text: {
+      heading: BaseColors.WHITE,
+      body: BaseColors.WHITE,
+      value: BaseColors.WHITE,
+      icon: BaseColors.WHITE,
+      label: BaseColors.GRAY_AFAFAF,
+      disabledText: BaseColors.GRAY_808080_070,
+      hyperlink: BaseColors.BLUE_4894FE,
+      success: BaseColors.GREEN_70C400,
+      error: BaseColors.RED_F7929A
+    },
+    primaryButton: {
+      rest: {
+        background: BaseColors.BLUE_4894FE,
+        text: BaseColors.GRAY_252525 // verify color
+      },
+      hover: {
+        background: BaseColors.BLUE_6CA9FE,
+        text: BaseColors.GRAY_252525 // verify color
+      },
+      pressed: {
+        background: BaseColors.BLUE_257FFE,
+        text: BaseColors.GRAY_252525 // verify color
+      }
+    },
+    disabledButton: {
+      background: BaseColors.GRAY_808080_010,
+      text: BaseColors.GRAY_252525 // get color
+    },
+    secondaryButton: {
+      rest: {
+        background: BaseColors.GRAY_252525,
+        border: BaseColors.BLUE_4894FE
+      },
+      hover: {
+        background: BaseColors.GRAY_252525,
+        border: BaseColors.BLUE_6CA9FE
+      },
+      pressed: {
+        background: BaseColors.GRAY_252525, // get color
+        border: BaseColors.BLUE_257FFE
+      }
+    },
+    controlOutlines: {
+      rest: BaseColors.GRAY_808080,
+      disabled: BaseColors.GRAY_808080_070,
+      hover: BaseColors.WHITE,
+      accent: BaseColors.BLUE_4894FE, // button in radio, check, et. al.
+      error: BaseColors.RED_F7929A,
+      dirty: BaseColors.PURPLE_DDABE9
+    }
   };
 
   public readonly theme: ITheme;
