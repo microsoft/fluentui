@@ -13,8 +13,6 @@ export class DropdownRequiredExample extends BaseComponent<{}, {}> {
         <Dropdown
           placeholder="Select an Option"
           label="Required dropdown example:"
-          id="Requireddrop1"
-          ariaLabel="Required dropdown example"
           options={[
             { key: 'Header', text: 'Actions', itemType: DropdownMenuItemType.Header },
             { key: 'A', text: 'Option a', title: 'I am option a.' },
