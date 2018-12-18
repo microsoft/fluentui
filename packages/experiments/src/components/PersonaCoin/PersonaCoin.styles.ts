@@ -32,9 +32,13 @@ export const PersonaCoinStyles: IPersonaCoinComponent['styles'] = props => {
     },
     presence: {
       position: 'absolute',
-      // TODO: Pull out the following calculation into a function
-      right: `-${size / 3 / 5}px`,
-      bottom: `-${size / 3 / 5}px`
+      right: `${getPresenceOffsetForCoinSize(size)}px`,
+      bottom: `${getPresenceOffsetForCoinSize(size)}px`
     }
   };
 };
+
+function getPresenceOffsetForCoinSize(size: number) {
+  // TODO: Tweak this as currently it's more of an approximation.
+  return -(size / 15);
+}
