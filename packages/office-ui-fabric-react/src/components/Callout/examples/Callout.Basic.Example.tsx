@@ -2,7 +2,6 @@ import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { Link } from 'office-ui-fabric-react/lib/Link';
-import { createRef } from 'office-ui-fabric-react/lib/Utilities';
 import { getTheme, FontWeights, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 export interface ICalloutBasicExampleState {
@@ -51,7 +50,7 @@ const styles = mergeStyleSets({
 
 // Example code
 export class CalloutBasicExample extends React.Component<{}, ICalloutBasicExampleState> {
-  private _menuButtonElement = createRef<HTMLElement>();
+  private _menuButtonElement = React.createRef<HTMLDivElement>();
 
   public constructor(props: {}) {
     super(props);
@@ -67,11 +66,7 @@ export class CalloutBasicExample extends React.Component<{}, ICalloutBasicExampl
     return (
       <div>
         <div className={styles.buttonArea} ref={this._menuButtonElement}>
-          <DefaultButton
-            id="toggleCallout"
-            onClick={this._onShowMenuClicked}
-            text={isCalloutVisible ? 'Hide callout' : 'Show callout'}
-          />
+          <DefaultButton id="toggleCallout" onClick={this._onShowMenuClicked} text={isCalloutVisible ? 'Hide callout' : 'Show callout'} />
         </div>
         <Callout
           className="ms-CalloutExample-callout"
@@ -79,7 +74,7 @@ export class CalloutBasicExample extends React.Component<{}, ICalloutBasicExampl
           ariaDescribedBy={'callout-description-1'}
           role={'alertdialog'}
           gapSpace={0}
-          target={this._menuButtonElement.value}
+          target={this._menuButtonElement.current}
           onDismiss={this._onCalloutDismiss}
           setInitialFocus={true}
           hidden={!this.state.isCalloutVisible}
@@ -92,8 +87,7 @@ export class CalloutBasicExample extends React.Component<{}, ICalloutBasicExampl
           <div className="ms-CalloutExample-inner">
             <div className="ms-CalloutExample-content">
               <p className="ms-CalloutExample-subText" id={'callout-description-1'}>
-                Message body is optional. If help documentation is available, consider adding a link to learn more at
-                the bottom.
+                Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
               </p>
             </div>
             <div className="ms-CalloutExample-actions">

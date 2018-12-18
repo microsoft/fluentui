@@ -10,6 +10,7 @@ import { setBaseUrl } from 'office-ui-fabric-react/lib/Utilities';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
 import { initializeFileTypeIcons } from '@uifabric/file-type-icons';
+import { initializeFolderCovers } from '../components/FolderCover/initializeFolderCovers';
 
 import './index.scss';
 import './ColorStyles.scss';
@@ -19,6 +20,7 @@ setBaseUrl('./dist/');
 // Initialize all icons.
 initializeIcons();
 initializeFileTypeIcons();
+initializeFolderCovers();
 
 let rootElement: HTMLElement | null;
 
@@ -50,9 +52,7 @@ function _onLoad(): void {
 }
 
 function _getRoutes(): JSX.Element[] {
-  const routes = AppDefinition.testPages.map((page: IAppLink) => (
-    <Route key={page.key} path={page.url} component={page.component} />
-  ));
+  const routes = AppDefinition.testPages.map((page: IAppLink) => <Route key={page.key} path={page.url} component={page.component} />);
   const appRoutes: JSX.Element[] = [];
 
   AppDefinition.examplePages.forEach((group: IAppLinkGroup) => {

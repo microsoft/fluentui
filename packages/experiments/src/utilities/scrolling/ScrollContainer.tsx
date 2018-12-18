@@ -63,11 +63,7 @@ export class ScrollContainer extends BaseComponent<IScrollContainerProps> implem
     const { children, className } = this.props;
 
     return (
-      <div
-        className={css('ms-ScrollContainer', ScrollContainerStyles.root, className)}
-        data-is-scrollable={true}
-        ref={this._resolveRoot}
-      >
+      <div className={css('ms-ScrollContainer', ScrollContainerStyles.root, className)} data-is-scrollable={true} ref={this._resolveRoot}>
         {children as JSX.Element}
       </div>
     );

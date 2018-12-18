@@ -529,7 +529,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     Blocked MessageBar - single line, with dismiss button and truncated text. Truncation is not available if you use action buttons or multiline and should be used sparingly.
   </label>
   <div
-    aria-expanded={false}
     className=
         ms-MessageBar
         ms-MessageBar--blocked
@@ -631,7 +630,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 -webkit-font-smoothing: antialiased;
                 color: #a80000;
                 display: inline-block;
-                font-family: "FabricMDL2Icons-4";
+                font-family: "FabricMDL2Icons-5";
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
@@ -697,6 +696,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <button
+          aria-controls="MessageBar5"
+          aria-expanded={false}
           aria-label="See more"
           className=
               ms-Button
@@ -3385,7 +3386,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     Blocked, single line, with dismiss button and truncated text - custom styles
   </label>
   <div
-    aria-expanded={false}
     className=
         ms-MessageBar
         ms-MessageBar--blocked
@@ -3487,7 +3487,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 -webkit-font-smoothing: antialiased;
                 color: #a80000;
                 display: inline-block;
-                font-family: "FabricMDL2Icons-4";
+                font-family: "FabricMDL2Icons-5";
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
@@ -3555,6 +3555,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <button
+          aria-controls="MessageBar48"
+          aria-expanded={false}
           aria-label="See more"
           className=
               ms-Button

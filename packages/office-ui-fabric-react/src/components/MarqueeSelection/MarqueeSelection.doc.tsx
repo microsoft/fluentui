@@ -18,9 +18,7 @@ export const MarqueeSelectionPageProps: IDocPageProps = {
     }
   ],
   propertiesTablesSources: [],
-  overview: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/MarqueeSelection/docs/MarqueeSelectionOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/MarqueeSelection/docs/MarqueeSelectionOverview.md'),
   bestPractices: '',
   dos: '',
   donts: '',

@@ -4,10 +4,11 @@ import { PersonaBase } from './Persona.base';
 import { ImageLoadState } from '../../Image';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
+import { PersonaCoinBase } from './PersonaCoin/PersonaCoin.base';
 
 export interface IPersona {}
 
-export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
+export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | PersonaCoinBase | HTMLDivElement> {
   /**
    * Primary text to display, usually the name of the person.
    */
@@ -127,7 +128,7 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
   /**
    * Optional HTML element props for Persona coin.
    */
-  coinProps?: React.HTMLAttributes<HTMLDivElement>;
+  coinProps?: IPersonaCoinProps;
 
   /**
    * Theme provided by High-Order Component.
@@ -136,7 +137,7 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
 
   /**
    * Primary text to display, usually the name of the person.
-   * @deprecated Use 'text' instead.
+   * @deprecated Use `text` instead.
    */
   primaryText?: string;
 }
@@ -320,39 +321,39 @@ export interface IPersonaPresenceStyles {
 
 export enum PersonaSize {
   /**
-   * tiny size has been deprecated in favor of standardized numeric sizing. Use size10 instead.
-   * @deprecated
+   * tiny size has been deprecated in favor of standardized numeric sizing. Use `size10` instead.
+   * @deprecated Use `size10` instead.
    */
   tiny = 0,
   /**
    *
-   * extraExtraSmall size has been deprecated in favor of standardized numeric sizing. Use size24 instead.
-   * @deprecated
+   * extraExtraSmall size has been deprecated in favor of standardized numeric sizing. Use `size24` instead.
+   * @deprecated Use `size24` instead.
    */
   extraExtraSmall = 1,
   /**
-   * extraSmall size has been deprecated in favor of standardized numeric sizing. Use size32 instead.
-   * @deprecated
+   * extraSmall size has been deprecated in favor of standardized numeric sizing. Use `size32` instead.
+   * @deprecated Use `size32` instead.
    */
   extraSmall = 2,
   /**
-   * small size has been deprecated in favor of standardized numeric sizing. Use size40 instead.
-   * @deprecated
+   * small size has been deprecated in favor of standardized numeric sizing. Use `size40` instead.
+   * @deprecated Use `size40` instead.
    */
   small = 3,
   /**
-   * regular size has been deprecated in favor of standardized numeric sizing. Use size48 instead.
-   * @deprecated
+   * regular size has been deprecated in favor of standardized numeric sizing. Use `size48` instead.
+   * @deprecated Use `size48` instead.
    */
   regular = 4,
   /**
-   * large size has been deprecated in favor of standardized numeric sizing. Use size72 instead.
-   * @deprecated
+   * large size has been deprecated in favor of standardized numeric sizing. Use `size72` instead.
+   * @deprecated Use `size72` instead.
    */
   large = 5,
   /**
-   * extraLarge size has been deprecated in favor of standardized numeric sizing. Use size100 instead.
-   * @deprecated
+   * extraLarge size has been deprecated in favor of standardized numeric sizing. Use `size100` instead.
+   * @deprecated Use `size100` instead.
    */
   extraLarge = 6,
   size28 = 7,

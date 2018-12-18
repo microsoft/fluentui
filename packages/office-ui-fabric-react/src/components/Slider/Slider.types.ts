@@ -9,7 +9,7 @@ export interface ISlider {
   focus: () => void;
 }
 
-export interface ISliderProps extends React.Props<SliderBase> {
+export interface ISliderProps extends React.ClassAttributes<SliderBase> {
   /**
    * Optional callback to access the ISlider interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -45,25 +45,25 @@ export interface ISliderProps extends React.Props<SliderBase> {
 
   /**
    * The min value of the Slider
-   * @default 0
+   * @defaultvalue 0
    */
   min?: number;
 
   /**
    * The max value of the Slider
-   * @default 10
+   * @defaultvalue 10
    */
   max?: number;
 
   /**
    * The difference between the two adjacent values of the Slider
-   * @default 1
+   * @defaultvalue 1
    */
   step?: number;
 
   /**
    * Whether to show the value on the right of the Slider.
-   * @default true
+   * @defaultvalue true
    */
   showValue?: boolean;
 

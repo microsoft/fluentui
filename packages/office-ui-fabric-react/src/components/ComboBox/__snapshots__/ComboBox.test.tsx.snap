@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ComboBox Renders ComboBox correctly 1`] = `
+exports[`ComboBox Renders correctly 1`] = `
 <div
   autoComplete="on"
   className="ms-ComboBox-container "
@@ -61,7 +61,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
           top: -2px;
         }
         &:hover {
-          border-color: #212121;
+          border-color: #333333;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           -ms-high-contrast-adjust: none;
@@ -284,7 +284,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
 </div>
 `;
 
-exports[`ComboBox renders a ComboBox with a Keytip correctly 1`] = `
+exports[`ComboBox renders with a Keytip correctly 1`] = `
 <div
   autoComplete="on"
   className="ms-ComboBox-container "
@@ -345,7 +345,7 @@ exports[`ComboBox renders a ComboBox with a Keytip correctly 1`] = `
           top: -2px;
         }
         &:hover {
-          border-color: #212121;
+          border-color: #333333;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           -ms-high-contrast-adjust: none;

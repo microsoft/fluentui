@@ -11,7 +11,7 @@ export interface IBreadcrumb {
   focus(): void;
 }
 
-export interface IBreadcrumbProps extends React.Props<BreadcrumbBase> {
+export interface IBreadcrumbProps extends React.ClassAttributes<BreadcrumbBase> {
   /**
    * Optional callback to access the IBreadcrumb interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -29,7 +29,7 @@ export interface IBreadcrumbProps extends React.Props<BreadcrumbBase> {
   className?: string;
 
   /**
-   * Render a custom divider in place of the default chevron '>'
+   * Render a custom divider in place of the default chevron `>`
    */
   dividerAs?: IComponentAs<IDividerAsProps>;
 

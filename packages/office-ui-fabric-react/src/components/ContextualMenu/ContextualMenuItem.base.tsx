@@ -23,6 +23,7 @@ const renderItemIcon = (props: IContextualMenuItemProps) => {
 const renderCheckMarkIcon = ({ onCheckmarkClick, item, classNames }: IContextualMenuItemProps) => {
   const isItemChecked = getIsChecked(item);
   if (onCheckmarkClick) {
+    // Ensures that the item is passed as the first argument to the checkmark click callback.
     const onClick = (e: React.MouseEvent<HTMLElement>) => onCheckmarkClick(item, e);
 
     return <Icon iconName={isItemChecked ? 'CheckMark' : ''} className={classNames.checkmarkIcon} onClick={onClick} />;
@@ -46,13 +47,7 @@ const renderSecondaryText = ({ item, classNames }: IContextualMenuItemProps) => 
 
 const renderSubMenuIcon = ({ item, classNames }: IContextualMenuItemProps) => {
   if (hasSubmenu(item)) {
-    return (
-      <Icon
-        iconName={getRTL() ? 'ChevronLeft' : 'ChevronRight'}
-        {...item.submenuIconProps}
-        className={classNames.subMenuIcon}
-      />
-    );
+    return <Icon iconName={getRTL() ? 'ChevronLeft' : 'ChevronRight'} {...item.submenuIconProps} className={classNames.subMenuIcon} />;
   }
   return null;
 };

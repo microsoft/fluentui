@@ -12,7 +12,7 @@ export class DropdownErrorExample extends BaseComponent<{}, {}> {
     return (
       <div className="docs-DropdownExample">
         <Dropdown
-          placeHolder="Select an Option"
+          placeholder="Select an Option"
           label="Error message example:"
           id="Errormessagedrop1"
           ariaLabel="Error message dropdown example"

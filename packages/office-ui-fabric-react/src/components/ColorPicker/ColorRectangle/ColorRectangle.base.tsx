@@ -1,12 +1,6 @@
 import * as React from 'react';
-import { BaseComponent, assign, createRef, classNamesFunction } from '../../../Utilities';
-import {
-  IColor,
-  MAX_COLOR_SATURATION,
-  MAX_COLOR_VALUE,
-  getFullColorString,
-  hsv2hex
-} from '../../../utilities/color/colors';
+import { BaseComponent, assign, classNamesFunction } from '../../../Utilities';
+import { IColor, MAX_COLOR_SATURATION, MAX_COLOR_VALUE, getFullColorString, hsv2hex } from '../../../utilities/color/colors';
 import { IColorRectangleProps, IColorRectangleStyleProps, IColorRectangleStyles } from './ColorRectangle.types';
 
 const getClassNames = classNamesFunction<IColorRectangleStyleProps, IColorRectangleStyles>();
@@ -23,7 +17,7 @@ export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, ICol
     minSize: 220
   };
 
-  private _root = createRef<HTMLDivElement>();
+  private _root = React.createRef<HTMLDivElement>();
 
   constructor(props: IColorRectangleProps) {
     super(props);
@@ -102,10 +96,7 @@ export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, ICol
     });
 
     newColor.hex = hsv2hex(newColor.h, newColor.s, newColor.v);
-    newColor.str =
-      newColor.a === 100
-        ? '#' + newColor.hex
-        : `rgba(${newColor.r}, ${newColor.g}, ${newColor.b}, ${newColor.a / 100})`;
+    newColor.str = newColor.a === 100 ? '#' + newColor.hex : `rgba(${newColor.r}, ${newColor.g}, ${newColor.b}, ${newColor.a / 100})`;
 
     this.setState({
       isAdjusting: true,

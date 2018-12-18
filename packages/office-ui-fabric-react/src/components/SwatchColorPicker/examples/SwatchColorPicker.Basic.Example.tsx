@@ -25,6 +25,7 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
         <div>Simple circle swatch color picker:</div>
         <SwatchColorPicker
           columnCount={5}
+          selectedId={this.state.color}
           cellShape={'circle'}
           colorCells={[
             { id: 'a', label: 'green', color: '#00ff00' },
@@ -37,6 +38,7 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
         <div>Simple square swatch color picker:</div>
         <SwatchColorPicker
           columnCount={5}
+          selectedId={this.state.color}
           cellShape={'square'}
           colorCells={[
             { id: 'a', label: 'green', color: '#00ff00' },
@@ -56,10 +58,10 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
           Sample Text
         </div>
         <SwatchColorPicker
+          selectedId={this.state.color}
           // tslint:disable:jsx-no-lambda
           onCellHovered={(id, color) => this.setState({ previewColor: color! })}
           onCellFocused={(id, color) => this.setState({ previewColor: color! })}
-          onColorChanged={(id, newColor) => this.setState({ color: newColor })}
           // tslint:enable:jsx-no-lambda
           columnCount={4}
           cellShape={'circle'}
@@ -85,6 +87,7 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
         <SwatchColorPicker
           disabled={true}
           columnCount={5}
+          selectedId={this.state.color}
           cellShape={'circle'}
           colorCells={[
             { id: 'a', label: 'green', color: '#00ff00' },

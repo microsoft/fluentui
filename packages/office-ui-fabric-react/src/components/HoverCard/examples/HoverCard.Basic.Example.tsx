@@ -32,9 +32,7 @@ export class HoverCardBasicExample extends BaseComponent<{}, IHoverCardExampleSt
         <p>
           Hover over the <i>location</i> cell of a row item to see the card or use the keyboard to navigate to it.
         </p>
-        <p>
-          When using the keyboard to tab to it, the card will open but navigation inside of it will not be available.
-        </p>
+        <p>When using the keyboard to tab to it, the card will open but navigation inside of it will not be available.</p>
         <DetailsList setKey="hoverSet" items={items!} columns={columns} onRenderItemColumn={this._onRenderItemColumn} />
       </div>
     );
