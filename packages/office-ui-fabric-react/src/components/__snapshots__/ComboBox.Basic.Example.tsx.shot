@@ -616,7 +616,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
       <input
         aria-autocomplete="inline"
         aria-expanded={false}
-        aria-label="Basic ComboBox example"
+        aria-labelledby="ComboBox7-label"
         autoCapitalize="off"
         autoComplete="off"
         className=
@@ -928,7 +928,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
       <input
         aria-autocomplete="inline"
         aria-expanded={false}
-        aria-label="Basic ComboBox example"
+        aria-labelledby="ComboBox11-label"
         autoCapitalize="off"
         autoComplete="off"
         className=
@@ -1210,7 +1210,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
       <input
         aria-autocomplete="both"
         aria-expanded={false}
-        aria-label="Basic ComboBox example"
+        aria-labelledby="ComboBox15-label"
         autoCapitalize="off"
         autoComplete="off"
         className=
@@ -1496,7 +1496,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
         aria-autocomplete="none"
         aria-disabled={true}
         aria-expanded={false}
-        aria-label="Basic ComboBox example"
+        aria-labelledby="ComboBox19-label"
         autoCapitalize="off"
         autoComplete="off"
         className=
