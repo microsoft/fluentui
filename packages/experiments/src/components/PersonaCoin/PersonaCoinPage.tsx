@@ -28,8 +28,13 @@ export const PersonaCoinPage = (props: IComponentDemoPageProps) => {
           sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/PersonaCoin/PersonaCoin.types.ts')]}
         />
       }
-      // overview={<div />}
-      // bestPractices={<div />}
+      overview={
+        <div>
+          <p>The PersonaCoin component is generally used as a building block for other components like Persona/FacePile/VerticalPersona.</p>
+          <p>In case you need to render just a PersonaCoin you can use this component directly.</p>
+        </div>
+      }
+      bestPractices={<div />}
       dos={
         <div>
           <ul>

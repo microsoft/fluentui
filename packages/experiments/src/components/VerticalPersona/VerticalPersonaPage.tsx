@@ -22,8 +22,15 @@ export const VerticalPersonaPage = (props: IComponentDemoPageProps) => {
           sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/VerticalPersona/VerticalPersona.types.ts')]}
         />
       }
-      // overview={<div />}
-      // bestPractices={<div />}
+      overview={
+        <div>
+          <p>
+            The VerticalPersona is an alternative way to display a persona, when using VerticalPersona the text is placed under the
+            PersonaCoin.
+          </p>
+        </div>
+      }
+      bestPractices={<div />}
       dos={
         <div>
           <ul>
