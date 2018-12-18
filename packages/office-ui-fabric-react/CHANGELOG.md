@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 14 Dec 2018 12:25:58 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Dec 2018 12:25:50 GMT and should not be manually modified.
+
+## 5.134.0
+Tue, 18 Dec 2018 12:25:50 GMT
+
+### Minor changes
+
+- DetailsList: Add the ability to disable the built-in SelectionMode.
 
 ## 5.133.1
 Fri, 14 Dec 2018 12:25:58 GMT
