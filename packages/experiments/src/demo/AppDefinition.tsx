@@ -77,6 +77,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/personacoin'
         },
         {
+          component: require<any>('../components/VerticalPersona/VerticalPersonaPage').VerticalPersonaPage,
+          key: 'VerticalPersona',
+          name: 'Persona (Vertical)',
+          url: '#/examples/verticalpersona'
+        },
+        {
           component: require<any>('../components/Separator/SeparatorPage').SeparatorPage,
           key: 'Separator',
           name: 'Separator',

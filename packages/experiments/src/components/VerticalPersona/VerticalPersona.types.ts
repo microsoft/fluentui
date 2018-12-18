@@ -24,15 +24,16 @@ export interface IVerticalPersonaStyles {
 }
 
 export interface IVerticalPersonaStyleVariableTypes {
+  verticalPersonaWidth: number;
   text: ITextStyleVariables;
   primaryText: IPrimaryTextStyleVariables;
   secondaryText: ISecondaryTextStyleVariables;
 }
 
 export interface ITextStyleVariables {
-  height: string;
+  height: number;
   fontFamily: string;
-  width: string;
+  textPaddingLeftAndRight: number;
 }
 
 export interface IPrimaryTextStyleVariables {

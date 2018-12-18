@@ -15,7 +15,7 @@ const testVerticalPersonaClassNames: IProcessedStyleSet<IVerticalPersonaStyles> 
 };
 
 // Views are just pure functions with no statefulness, which means they can get full code coverage
-//    with snapshot tests exercising permutations of the props.
+// with snapshot tests exercising permutations of the props.
 describe('VerticalPersonaView', () => {
   it('renders correctly with only a text', () => {
     const tree = renderer.create(<VerticalPersonaView text="James Bond" classNames={testVerticalPersonaClassNames} />).toJSON();

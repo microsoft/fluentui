@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { PersonaCoin } from '@uifabric/experiments/lib/PersonaCoin';
-import { Text } from '@uifabric/experiments/lib/Text';
 import { IVerticalPersonaComponent } from './VerticalPersona.types';
+import { PersonaText } from './PersonaText';
 
 export const VerticalPersonaView: IVerticalPersonaComponent['view'] = props => {
-  const { root, text, secondaryText } = props.classNames;
+  const classNames = props.classNames;
   const coinProps = props.coinProps || {};
 
   return (
-    <div className={root}>
+    <div className={classNames.root}>
       <PersonaCoin
         text={props.text}
         size={coinProps.size}
@@ -19,12 +19,8 @@ export const VerticalPersonaView: IVerticalPersonaComponent['view'] = props => {
         presence={coinProps.presence}
         onPhotoLoadingStateChange={coinProps.onPhotoLoadingStateChange}
       />
-      <Text wrap className={text}>
-        {props.text}
-      </Text>
-      <Text wrap className={secondaryText}>
-        {props.secondaryText}
-      </Text>
+      <PersonaText className={classNames.text}>{props.text}</PersonaText>
+      <PersonaText className={classNames.secondaryText}>{props.secondaryText}</PersonaText>
     </div>
   );
 };

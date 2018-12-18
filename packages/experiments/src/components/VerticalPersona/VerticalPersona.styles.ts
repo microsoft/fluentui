@@ -1,14 +1,16 @@
-import { merge } from 'office-ui-fabric-react';
+import { merge } from 'office-ui-fabric-react/lib/Utilities';
+import { isSingleLineText } from '@uifabric/experiments/lib/utilities/textHelpers';
 import { IVerticalPersonaComponent, IVerticalPersonaStyleVariableTypes } from './VerticalPersona.types';
 
 export const VerticalPersonaStyles: IVerticalPersonaComponent['styles'] = props => {
   const { theme } = props;
 
   const baseVariables: IVerticalPersonaStyleVariableTypes = {
+    verticalPersonaWidth: 122,
     text: {
-      height: '35px',
+      height: 35,
       fontFamily: 'SegoeUI',
-      width: '106px'
+      textPaddingLeftAndRight: 8
     },
     primaryText: {
       paddingTop: '8px',
@@ -16,12 +18,17 @@ export const VerticalPersonaStyles: IVerticalPersonaComponent['styles'] = props 
       fontWeight: 600
     },
     secondaryText: {
-      paddingTop: '12px',
+      paddingTop: '6px',
       fontSize: '12px'
     }
   };
 
   const variables = props.styleVariables ? merge(baseVariables, props.styleVariables) : baseVariables;
+
+  const textStyle = `normal normal ${variables.primaryText.fontWeight} 14px ${variables.text.fontFamily}`;
+  const textPaddingInPixels = variables.text.textPaddingLeftAndRight * 2;
+  const numberOfPixelsAvailableWidthToDisplayText = variables.verticalPersonaWidth - textPaddingInPixels;
+  const isPrimaryTextSingleLine = isSingleLineText(numberOfPixelsAvailableWidthToDisplayText, props.text, textStyle);
 
   return {
     root: {
@@ -29,25 +36,29 @@ export const VerticalPersonaStyles: IVerticalPersonaComponent['styles'] = props 
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'flex-start',
-      width: '122px'
+      width: `${variables.verticalPersonaWidth}px`,
+      padding: `0 ${variables.text.textPaddingLeftAndRight}px`,
+      boxSizing: 'border-box'
     },
     text: {
       paddingTop: variables.primaryText.paddingTop,
-      width: variables.text.width,
       height: variables.text.height,
       fontFamily: variables.text.fontFamily,
       fontSize: variables.primaryText.fontSize,
       fontWeight: variables.primaryText.fontWeight,
-      color: theme.palette.neutralPrimary
+      lineHeight: isPrimaryTextSingleLine ? variables.text.height : variables.text.height / 2,
+      color: theme.palette.neutralPrimary,
+      textAlign: 'center',
+      whiteSpace: 'initial'
     },
     secondaryText: {
       paddingTop: variables.secondaryText.paddingTop,
-      width: variables.text.width,
       height: variables.text.height,
       fontFamily: variables.text.fontFamily,
       fontSize: variables.secondaryText.fontSize,
       lineHeight: '1.42',
       textAlign: 'center',
+      whiteSpace: 'initial',
       color: theme.palette.neutralSecondary
     }
   };

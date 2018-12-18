@@ -1,6 +1,5 @@
 import { IPersonaCoinComponent } from './PersonaCoin.types';
-// tslint:disable-next-line
-import { initialsColorPropToColorCode } from '../../../../../packages/office-ui-fabric-react/src/components/Persona/PersonaInitialsColor';
+import { initialsColorPropToColorCode } from 'office-ui-fabric-react/lib/components/Persona/PersonaInitialsColor';
 
 export const DEFAULT_PERSONA_COIN_SIZE = 48;
 
