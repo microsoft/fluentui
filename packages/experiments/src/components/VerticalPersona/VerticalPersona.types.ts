@@ -24,6 +24,7 @@ export interface IVerticalPersonaStyles {
   root: IStyle;
   primaryText: IStyle;
   secondaryText: IStyle;
+  coin: IStyle; // TODO: Check if this works after Jason his PR
 }
 
 export interface IVerticalPersonaStyleVariableTypes {
