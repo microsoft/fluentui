@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Dropdown and ComboBox options will read out only once to screen readers. ComboBox will also prioritize ariaLabel property over label for accessibility",
+      "comment": "ComboBox will prioritize ariaLabel property over label for accessibility. Aria labels for Dropdown and ComboBox options do not default to item text.",
       "type": "minor"
     }
   ],
