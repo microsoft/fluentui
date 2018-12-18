@@ -72,7 +72,8 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
       columnReorderProps,
       columnResizeDetails: undefined,
       groupNestingDepth: this.props.groupNestingDepth,
-      isAllCollapsed: this.props.isAllCollapsed
+      isAllCollapsed: this.props.isAllCollapsed,
+      isAllSelected: !!this.props.selection && this.props.selection.isAllSelected()
     };
 
     this._onToggleCollapseAll = this._onToggleCollapseAll.bind(this);
@@ -410,14 +411,14 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
 
   private _resetDropHints(): void {
     if (this._currentDropHintIndex >= 0) {
-      this._updateDropHintElement(this._dropHintDetails[this._currentDropHintIndex].dropHintElementRef, 'hidden');
+      this._updateDropHintElement(this._dropHintDetails[this._currentDropHintIndex].dropHintElementRef, 'none');
       this._currentDropHintIndex = Number.MIN_SAFE_INTEGER;
     }
   }
 
-  private _updateDropHintElement(element: HTMLElement, property: string) {
-    (element.childNodes[1] as HTMLElement).style.visibility = property;
-    (element.childNodes[0] as HTMLElement).style.visibility = property;
+  private _updateDropHintElement(element: HTMLElement, displayProperty: string) {
+    (element.childNodes[1] as HTMLElement).style.display = displayProperty;
+    (element.childNodes[0] as HTMLElement).style.display = displayProperty;
   }
 
   private _getDropHintPositions = (): void => {
@@ -554,7 +555,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
         }
       } else if (currentDropHintIndex !== indexToUpdate && indexToUpdate >= 0) {
         this._resetDropHints();
-        this._updateDropHintElement(this._dropHintDetails[indexToUpdate].dropHintElementRef, 'visible');
+        this._updateDropHintElement(this._dropHintDetails[indexToUpdate].dropHintElementRef, 'inline-block');
         this._currentDropHintIndex = indexToUpdate;
       }
     }

@@ -797,7 +797,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       const minWidth = column.minWidth || MIN_COLUMN_WIDTH;
       const overflowWidth = totalWidth - availableWidth;
 
-      if (column.calculatedWidth! - minWidth >= overflowWidth || !column.isCollapsable) {
+      if (column.calculatedWidth! - minWidth >= overflowWidth || !(column.isCollapsable || column.isCollapsible)) {
         column.calculatedWidth = Math.max(column.calculatedWidth! - overflowWidth, minWidth);
         totalWidth = availableWidth;
       } else {
@@ -1053,6 +1053,7 @@ export function buildColumns(
           minWidth: MIN_COLUMN_WIDTH,
           maxWidth: 300,
           isCollapsable: !!columns.length,
+          isCollapsible: !!columns.length,
           isMultiline: isMultiline === undefined ? false : isMultiline,
           isSorted: sortedColumnKey === propName,
           isSortedDescending: !!isSortedDescending,

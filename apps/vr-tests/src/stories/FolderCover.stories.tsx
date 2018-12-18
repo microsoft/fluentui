@@ -1,12 +1,5 @@
-
 import * as React from 'react';
-import {
-  FolderCover,
-  IFolderCoverProps,
-  getFolderCoverLayout,
-  renderFolderCoverWithLayout,
-  SharedSignal
-} from '@uifabric/experiments';
+import { FolderCover, IFolderCoverProps, getFolderCoverLayout, renderFolderCoverWithLayout, SharedSignal } from '@uifabric/experiments';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { ISize, fitContentToBounds } from 'office-ui-fabric-react';
@@ -19,7 +12,7 @@ interface IFolderCoverWithImageProps extends IFolderCoverProps {
 const FolderCoverWithImage: React.StatelessComponent<IFolderCoverWithImageProps> = (props: IFolderCoverWithImageProps): JSX.Element => {
   const { originalImageSize, ...folderCoverProps } = props;
 
-  const folderCover = <FolderCover {...folderCoverProps} />;
+  const folderCover = <FolderCover style={{ fontFamily: 'Segoe UI' }} {...folderCoverProps} />;
 
   const { contentSize } = getFolderCoverLayout(folderCover);
 
@@ -36,9 +29,7 @@ const FolderCoverWithImage: React.StatelessComponent<IFolderCoverWithImageProps>
 
 storiesOf('FolderCover', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(story => (
-    <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
-  ))
+  .addDecorator(story => <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>)
   .addStory('Large Default Cover', () => (
     <FolderCoverWithImage
       originalImageSize={{

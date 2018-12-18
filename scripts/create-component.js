@@ -13,7 +13,7 @@ const statelessSequence = ['GlobalIndex', 'Styles', 'Index', 'View', 'ViewTest',
 const rootComponentFolderPath = './packages/experiments/src/';
 const componentFolderPath = rootComponentFolderPath + 'components/' + newComponentName + '/';
 const componentPathNamePrefix = rootComponentFolderPath + 'components/' + newComponentName + '/' + newComponentName;
-const templateFolderPath = './scripts/templates';
+const templateFolderPath = './scripts/templates/create-component';
 
 const outputFiles = {
   Component: componentPathNamePrefix + '.ts',

@@ -5,7 +5,7 @@ import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject, KeyCodes } from '../../Utilities';
 import { IPlainCardProps } from './PlainCard/PlainCard.types';
 
-export interface IHoverCard { }
+export interface IHoverCard {}
 
 /**
  * HoverCard component props.

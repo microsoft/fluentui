@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecoratorFixedWidth } from '../utilities';
-import { SpinButton } from 'office-ui-fabric-react';
+import { Fabric, SpinButton } from 'office-ui-fabric-react';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 
 const props = {
@@ -29,28 +29,36 @@ storiesOf('SpinButton', module)
         .snapshot('hover arrow', { cropTo: '.testWrapper' })
         .mouseDown('.ms-Button-flexContainer')
         .snapshot('mouseDown arrow', { cropTo: '.testWrapper' })
-        .end()
-      }
+        .end()}
     >
       {story()}
     </Screener>
-  )).addStory('Root', () => (
-    <SpinButton
-      {...props}
-    />
-  )).addStory('Disabled', () => (
-    <SpinButton
-      {...props}
-      disabled
-    />
-  )).addStory('With icon', () => (
-    <SpinButton
-      {...props}
-      iconProps={{ iconName: 'IncreaseIndentLegacy', }}
-    />
-  ), { rtl: true }).addStory('Label at end', () => (
-    <SpinButton
-      {...props}
-      labelPosition={Position.end}
-    />
-  ), { rtl: true });
+  ))
+  .addStory('Root', () => (
+    <Fabric>
+      <SpinButton {...props} />
+    </Fabric>
+  ))
+  .addStory('Disabled', () => (
+    <Fabric>
+      <SpinButton {...props} disabled />
+    </Fabric>
+  ))
+  .addStory(
+    'With icon',
+    () => (
+      <Fabric>
+        <SpinButton {...props} iconProps={{ iconName: 'IncreaseIndentLegacy' }} />
+      </Fabric>
+    ),
+    { rtl: true }
+  )
+  .addStory(
+    'Label at end',
+    () => (
+      <Fabric>
+        <SpinButton {...props} labelPosition={Position.end} />
+      </Fabric>
+    ),
+    { rtl: true }
+  );

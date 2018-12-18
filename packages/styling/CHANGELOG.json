@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "6.39.0",
+      "tag": "@uifabric/styling_v6.39.0",
+      "date": "Thu, 13 Dec 2018 13:37:01 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "ITheme: remove ITypography",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "eaba75caa15a4c8e5f96b85836d0d1d44c9d50a3"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.38.0",
       "tag": "@uifabric/styling_v6.38.0",
       "date": "Fri, 30 Nov 2018 13:37:17 GMT",

@@ -1,6 +1,81 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 06 Dec 2018 13:34:21 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Dec 2018 13:36:49 GMT and should not be manually modified.
+
+## 6.116.0
+Tue, 18 Dec 2018 13:36:49 GMT
+
+### Minor changes
+
+- ComboBox: add placeholder prop
+
+## 6.115.0
+Mon, 17 Dec 2018 13:36:58 GMT
+
+### Minor changes
+
+- Persona: fixing how coinProps are passed through from Persona to PersonaCoin.
+- Pickers: convert `TagItem` to use CSS-in-JS. Add `TagItemSuggestion` functional component. Move `TagPicker` related interfaces to a `TagPicker.types.ts` file. Cleanup some TSDocs in `BasePicker.types.ts`.
+
+### Patches
+
+- BaseComponent: Remove componentWillReceiveProps usage
+
+## 6.114.0
+Fri, 14 Dec 2018 13:35:30 GMT
+
+### Minor changes
+
+- DetailsList: add isCollapsible and deprecate isCollapsable
+- Persona: change type of the 'coinProps' type to IPersonaCoinProps.
+
+### Patches
+
+- Correct hover and highlight states for Calendar (DateRangeType.Week)
+
+## 6.113.0
+Thu, 13 Dec 2018 13:37:01 GMT
+
+### Minor changes
+
+- theming: remove ITypography
+- Pickers: Convert TagPicker and PeoplePicker to use CSS-in-JS. Support SASS styling for custom pickers extended from BasePicker. Fix tests not using componentRef to access component methods. Cleanup TagPicker example page.
+
+### Patches
+
+- DetailsHeader: Fix "Select All" state not persisted across component mounts when optional selection prop provided.
+
+## 6.112.0
+Tue, 11 Dec 2018 13:36:20 GMT
+
+### Minor changes
+
+- Coachmark: Move style interfaces to Coachmark.types.ts file and add styled wrapper around to enable use of Customizer to theme the component.
+
+### Patches
+
+- DetailsList: changed drop hint display to none to not occupy any space
+- Dropdown: wrap items list in FocusZone to prevent auto-scrolling to first list item
+- Fix merge conflict resulting in build error.
+- Adds a just:build script to OUFR to begin integration with Just
+- Removing some of the deprecated components flagged when turning the tslint deprecation flag to true in the office-ui-fabric-react package.
+
+## 6.111.2
+Mon, 10 Dec 2018 13:35:53 GMT
+
+### Patches
+
+- Dropdown: remove aria-labelledby from items wrapper div if no label property is provided
+- Dropdown: `defaultSelectedKey`/`defaultSelectedKeys` is no longer ignored if the Dropdown options changes.
+- Rating: respect the icon property
+
+## 6.111.1
+Fri, 07 Dec 2018 13:35:16 GMT
+
+### Patches
+
+- Searchbox: Reverts the focus fix for IE since it broke focus for other browsers
+- Check: fixing alignment of the check inside the circle when in RTL.
 
 ## 6.111.0
 Thu, 06 Dec 2018 13:34:21 GMT

@@ -53,12 +53,6 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/filetypeicon'
         },
         {
-          component: require<any>('../components/Stack/HorizontalStack/HorizontalStackPage').HorizontalStackPage,
-          key: 'HorizontalStack',
-          name: 'HorizontalStack',
-          url: '#/examples/horizontalstack'
-        },
-        {
           component: require<any>('../components/LayoutGroup/LayoutGroupPage').LayoutGroupPage,
           key: 'LayoutGroup',
           name: 'LayoutGroup',
@@ -101,6 +95,18 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/sidebar'
         },
         {
+          component: require<any>('../slots/SlotsPage').SlotsPage,
+          key: 'Slots',
+          name: 'Slots',
+          url: '#/examples/slots'
+        },
+        {
+          component: require<any>('../components/Stack/StackPage').StackPage,
+          key: 'Stack',
+          name: 'Stack',
+          url: '#/examples/stack'
+        },
+        {
           component: require<any>('../components/Text/TextPage').TextPage,
           key: 'Text',
           name: 'Text',
@@ -129,12 +135,6 @@ export const AppDefinition: IAppDefinition = {
           key: 'Shimmer',
           name: 'Shimmer',
           url: '#/examples/shimmer'
-        },
-        {
-          component: require<any>('../components/Stack/VerticalStack/VerticalStackPage').VerticalStackPage,
-          key: 'VerticalStack',
-          name: 'VerticalStack',
-          url: '#/examples/verticalstack'
         },
         {
           component: require<any>('../components/VirtualizedList/VirtualizedListPage').VirtualizedListPage,
