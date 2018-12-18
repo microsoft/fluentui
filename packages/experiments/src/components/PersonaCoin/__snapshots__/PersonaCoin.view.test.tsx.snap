@@ -7,7 +7,7 @@ exports[`PersonaCoinView renders a coin with a contact icon 1`] = `
   <i
     aria-hidden={true}
     className=
-
+        test-cn-initials
         {
           display: inline-block;
         }
@@ -24,7 +24,7 @@ exports[`PersonaCoinView renders a coin with a contact icon for a Chinese name 1
   <i
     aria-hidden={true}
     className=
-
+        test-cn-initials
         {
           display: inline-block;
         }
@@ -47,10 +47,12 @@ exports[`PersonaCoinView renders a coin with the initials JB 1`] = `
           color: inherit;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: inherit;
-          font-weight: inherit;
+          font-size: 14px;
+          font-weight: 400;
+          moz-osx-font-smoothing: grayscale;
           overflow: hidden;
           text-overflow: ellipsis;
+          webkit-font-smoothing: antialiased;
           white-space: nowrap;
         }
   >
@@ -72,10 +74,12 @@ exports[`PersonaCoinView renders a correct persona 1`] = `
           color: inherit;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: inherit;
-          font-weight: inherit;
+          font-size: 14px;
+          font-weight: 400;
+          moz-osx-font-smoothing: grayscale;
           overflow: hidden;
           text-overflow: ellipsis;
+          webkit-font-smoothing: antialiased;
           white-space: nowrap;
         }
   >
@@ -97,10 +101,12 @@ exports[`PersonaCoinView renders a red coin 1`] = `
           color: inherit;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: inherit;
-          font-weight: inherit;
+          font-size: 14px;
+          font-weight: 400;
+          moz-osx-font-smoothing: grayscale;
           overflow: hidden;
           text-overflow: ellipsis;
+          webkit-font-smoothing: antialiased;
           white-space: nowrap;
         }
   >
@@ -116,7 +122,7 @@ exports[`PersonaCoinView renders presence correctly when a very large coin is re
   <i
     aria-hidden={true}
     className=
-
+        test-cn-initials
         {
           display: inline-block;
         }
@@ -187,7 +193,7 @@ exports[`PersonaCoinView renders presence when it is passed 1`] = `
   <i
     aria-hidden={true}
     className=
-
+        test-cn-initials
         {
           display: inline-block;
         }
@@ -264,10 +270,12 @@ exports[`PersonaCoinView renders the coin with the provided image 1`] = `
           color: inherit;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: inherit;
-          font-weight: inherit;
+          font-size: 14px;
+          font-weight: 400;
+          moz-osx-font-smoothing: grayscale;
           overflow: hidden;
           text-overflow: ellipsis;
+          webkit-font-smoothing: antialiased;
           white-space: nowrap;
         }
   >
