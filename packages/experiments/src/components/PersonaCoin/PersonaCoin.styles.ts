@@ -16,8 +16,10 @@ export const PersonaCoinStyles: IPersonaCoinComponent['styles'] = props => {
       borderRadius: '50%',
       display: 'flex',
       justifyContent: 'center',
-      alignItems: 'center',
-      fontSize: size / 2.5
+      alignItems: 'center'
+    },
+    initials: {
+      fontSize: `${size / 2.5}px`
     },
     image: {
       position: 'absolute',

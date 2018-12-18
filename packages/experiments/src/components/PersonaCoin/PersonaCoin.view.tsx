@@ -14,7 +14,7 @@ const PersonaCoinInitials: IPersonaCoinComponent['view'] = props => {
     return <Text className={props.classNames.initials}>{initials}</Text>;
   }
 
-  return <Icon iconName="Contact" />;
+  return <Icon className={props.classNames.initials} iconName="Contact" />;
 };
 
 export const PersonaCoinView: IPersonaCoinComponent['view'] = props => {
