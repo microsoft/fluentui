@@ -12,7 +12,7 @@ const GlobalClassNames = {
   inner: 'ms-Stack-inner'
 };
 
-export const styles: IStackComponent['styles'] = (props, themeArg) => {
+export const styles: IStackComponent['styles'] = (props, theme) => {
   const {
     horizontalFill,
     verticalFill,
@@ -31,7 +31,7 @@ export const styles: IStackComponent['styles'] = (props, themeArg) => {
   } = props;
 
   // TODO: finalize this theme mess
-  const theme = themeArg || props.theme;
+  // const theme = themeArg || props.theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 

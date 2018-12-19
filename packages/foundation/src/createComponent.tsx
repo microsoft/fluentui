@@ -2,153 +2,9 @@ import * as React from 'react';
 import { concatStyleSets, IProcessedStyleSet, IStyleSet, ITheme, mergeStyleSets } from '@uifabric/styling';
 // import { Customizations, CustomizerContext, ICustomizerContext, IStyleFunctionOrObject } from '@uifabric/utilities';
 import { Customizations, CustomizerContext, ICustomizerContext } from '@uifabric/utilities';
-
 import { assign } from './utilities';
 
-export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
-
-// TODO: call out token naming, arguments for/against:
-//  Token:
-//  + new concept implying usage across platforms
-//  + Micah likes
-//  - does not have style naming, is closely related to "styles" but name does not imply it
-//  - does not seem to match "standard" def, which seems to imply tokens are more like semanticColors
-//  StyleVars:
-//  + implies association with existing "styles", which is true because both complement each other
-//  + consistent with stardust
-//  - Micah no likes
-
-// TODO: update or move to IStyleFunction.ts? is the naming confusing?
-// TOOO: move all types out, into IComponent.ts?
-// TODO: call out impacts of these new types.
-//        obviates IStyleFunctionOrObject
-//        now have theme as separate arg for both tokens and styles functions
-export type IStylesFunction<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>> =
-  (props: TViewProps, theme: ITheme, tokens: TTokens) => Partial<TStyleSet>;
-
-export interface ITokenBaseArray<TViewProps, TTokens> extends Array<ITokenFunctionOrObject<TViewProps, TTokens>> { }
-export type ITokenBase<TViewProps, TTokens> = ITokenFunctionOrObject<TViewProps, TTokens> | ITokenBaseArray<TViewProps, TTokens>;
-
-// export type ITokenFunction<TViewProps, TTokens> = (props: TViewProps, theme: ITheme) => TTokens;
-export type ITokenFunction<TViewProps, TTokens> = (props: TViewProps, theme: ITheme) => ITokenBase<TViewProps, TTokens>;
-
-export type IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>> =
-  | IStylesFunction<TViewProps, TTokens, TStyleSet>
-  | Partial<TStyleSet>;
-
-export type ITokenFunctionOrObject<TViewProps, TTokens> =
-  | ITokenFunction<TViewProps, TTokens>
-  | TTokens;
-
-/**
- * Optional props for styleable components. If these props are present, they will automatically be
- * used by Foundation when applying theming and styling.
- */
-export interface IStyleableComponentProps<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>> {
-  styles?: IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet>;
-  theme?: ITheme;
-  tokens?: ITokenFunctionOrObject<TViewProps, TTokens>;
-}
-
-type ICustomizationProps<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>> =
-  IStyleableComponentProps<TViewProps, TTokens, TStyleSet> &
-  Required<Pick<IStyleableComponentProps<TViewProps, TTokens, TStyleSet>, 'theme'>>;
-
-/**
- * Props added by Foundation for styles functions.
- */
-// export interface IStyledProps<TTheme> {
-//   theme: TTheme;
-// }
-
-/**
- * Enforce props contract on state components, including the view prop and its shape.
- */
-export type IStateComponentProps<TComponentProps, TViewProps> = TComponentProps & {
-  renderView: React.StatelessComponent<TViewProps>;
-};
-
-/**
- * Imposed state component props contract with styling props as well as a renderView
- * prop that the StateComponent should make use of in its render output (and should be its only render output.)
- */
-export type IStateComponentType<TComponentProps, TViewProps> = React.ComponentType<IStateComponentProps<TComponentProps, TViewProps>>;
-
-/**
- * The props that get passed to view components.
- */
-// TODO: remove?
-// export type IViewComponentProps<TViewProps, TProcessedStyleSet> = TViewProps & {
-//   classNames: TProcessedStyleSet;
-// };
-
-/**
- * A helper type for defining view components, including its properties.
- */
-// export type IViewComponent<TViewProps, TProcessedStyleSet> =
-//    React.StatelessComponent<IViewComponentProps<TViewProps, TProcessedStyleSet>>;
-export type IViewComponent<TViewProps, TProcessedStyleSet> = React.StatelessComponent<TViewProps>;
-
-/**
- * Component used by foundation to tie elements together.
- * @see createComponent for generic type documentation.
- */
-export interface IComponentOptions<TComponentProps, TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>, TStatics = {}> {
-  /**
-   * Display name to identify component in React hierarchy.
-   */
-  displayName: string;
-  /**
-   * List of fields which can be customized.
-   */
-  fields?: string[];
-  /**
-   * Styles prop to pass into component.
-   */
-  styles?: IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet>;
-  /**
-   * React view stateless component.
-   */
-  view: IViewComponent<TViewProps, IProcessedStyleSet<TStyleSet>>;
-  /**
-   * Optional state component that processes TComponentProps into TViewProps.
-   */
-  state?: IStateComponentType<TComponentProps, TViewProps>;
-  /**
-   * Optional static object to assign to constructed component.
-   */
-  statics?: TStatics;
-  /**
-   * Tokens prop to pass into component.
-   */
-  tokens?: ITokenBase<TViewProps, TTokens>;
-}
-
-// TODO: Known TypeScript issue is widening return type checks when using function type declarations.
-//        Effect is that mistyped property keys on returned style objects will not generate errors.
-//        This affects lookup types used as functional decorations on IComponent and IStatelessComponent, e.g.:
-//        export const styles: IStackComponent['styles'] = props => {
-//        Existing issue: https://github.com/Microsoft/TypeScript/issues/241
-
-/**
- * Variant of IComponentOptions for stateful components with appropriate typing and required properties.
- */
-export type IComponent<TComponentProps, TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>, TStatics = {}> = IComponentOptions<
-  TComponentProps,
-  TViewProps,
-  TTokens,
-  TStyleSet,
-  TStatics
-  > &
-  Required<Pick<IComponentOptions<TComponentProps, TComponentProps, TTokens, TStyleSet, TStatics>, 'state'>>;
-
-/**
- * Variant of IComponentOptions for stateless components with appropriate typing and required properties.
- */
-export type IStatelessComponent<TComponentProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>, TStatics = {}> = Omit<
-  IComponentOptions<TComponentProps, TComponentProps, TTokens, TStyleSet, TStatics>,
-  'state'
-  >;
+import { IComponent, ICustomizationProps, IStatelessComponent, IStyleableComponentProps } from './IComponent';
 
 /**
  * Assembles a higher order component based on the following: styles, theme, view, and state.
@@ -235,9 +91,9 @@ export function createComponent<TComponentProps, TViewProps, TTokens, TStyleSet 
                 ...(mergedProps as any),
                 ...{
                   classNames: mergeStyleSets(
-                    _evaluateStyle(styledProps, component.styles),
-                    _evaluateStyle(styledProps, settingsStyles),
-                    _evaluateStyle(styledProps, mergedProps.styles)
+                    _evaluateStyle(styledProps, styledProps.theme, component.styles),
+                    _evaluateStyle(styledProps, styledProps.theme, settingsStyles),
+                    _evaluateStyle(styledProps, styledProps.theme, mergedProps.styles)
                   )
                 }
               };
@@ -251,6 +107,7 @@ export function createComponent<TComponentProps, TViewProps, TTokens, TStyleSet 
               // TOOD: Callout: This new approach removes classNames from props and makes it unavailable to views. This basically means
               //        that Slots are required for each style section. Is this what we want? Are there use cases where there'll be style
               //        sections not associated with Slots? If so, how will they have className applied?
+              //        Stack seems to have a case of this with "wrap" prop and "inner" section but is Stack doing the right thing?
               // TODO: keep themes as part of mergedProps or make separate variable? (might clean up awkward typings to make it separate)
               // TODO: then again, createComponent shouldn't know about settings that are being passed on... it should NOT be a separate arg
               // TODO: david mentioned avoiding mixins for perf, but with theme (and other fields) coming from either settings or props,
@@ -260,15 +117,17 @@ export function createComponent<TComponentProps, TViewProps, TTokens, TStyleSet 
               const tokens = _resolveTokens(mergedProps, theme, component.tokens, settings.tokens, mergedProps.tokens);
               const styles = _resolveStyles(mergedProps, theme, tokens, component.styles, settings.styles, mergedProps.styles);
 
-              console.log('styles: ' + JSON.stringify(styles));
+              // console.log('styles: ' + JSON.stringify(styles));
 
               const viewComponentProps: TViewProps = {
                 ...mergedProps,
                 // TODO: This is a "hidden" prop that view components shouldn't be aware of.
-                //        Is this the best way to do this?
+                //        Is this the best way to do this? Are we sure we don't want to create new objects with theme
+                //        and tokens rather than pass them through separately?
                 //        Figure out a way to deal with this without using cast to any.
-                //         const viewComponentProps: TViewProps & ISlotProps<> =
-                _defaultStyles: styles
+                //          const viewComponentProps: TViewProps & ISlotProps<> =
+                _defaultStyles: styles,
+                _defaultTheme: theme
               } as any;
 
               return component.view(viewComponentProps);
@@ -302,12 +161,15 @@ export function createStatelessComponent<TComponentProps, TTokens, TStyleSet ext
 /**
  * Evaluate styles based on type to return consistent TStyleSet.
  */
-function _evaluateStyle<TViewProps, TStyledProps extends IStyledProps<ITheme>, TStyleSet extends IStyleSet<TStyleSet>>(
-  props: TViewProps & TStyledProps,
-  styles?: IStyleFunctionOrObject<TViewProps, TStyleSet>
+// TODO: remove when old createComponent is removed
+function _evaluateStyle<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>>(
+  props: TViewProps,
+  theme: ITheme,
+  styles?: IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet>
 ): Partial<TStyleSet> | undefined {
   if (typeof styles === 'function') {
-    return styles(props);
+    // TOOD: need theme to resolve styles!
+    return styles(props, theme);
   }
 
   return styles;

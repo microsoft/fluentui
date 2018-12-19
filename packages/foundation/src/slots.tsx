@@ -1,6 +1,6 @@
 import * as React from 'react';
 // TODO: pull this from utilities instead of adding a dependency to OUFR in Foundation
-import { IStyleSet, mergeStyles } from '@uifabric/styling';
+import { IStyleSet, ITheme, mergeStyles } from '@uifabric/styling';
 import { memoizeFunction } from '@uifabric/utilities';
 import { IStylesFunctionOrObject } from './createComponent';
 
@@ -121,7 +121,7 @@ export function createFactory<TProps, TTokens, TStyleSet extends IStyleSet<TStyl
   ComponentType: React.ComponentType<TProps>,
   options: IFactoryOptions<TProps> = { defaultProp: 'children' }
 ): ISlotFactory<TProps, TTokens, TStyleSet> {
-  const result: ISlotFactory<TProps, TTokens, TStyleSet> = (componentProps, userProps, defaultStyles) => {
+  const result: ISlotFactory<TProps, TTokens, TStyleSet> = (componentProps, userProps, defaultTheme, defaultStyles) => {
     const propType = typeof userProps;
 
     // If they passed in raw JSX, just return that.
@@ -145,17 +145,20 @@ export function createFactory<TProps, TTokens, TStyleSet extends IStyleSet<TStyl
     // const finalProps = componentProps;
     const finalProps = {
       ...(componentProps as any),
-      ...((typeof userProps === 'object') && userProps as any),
-      className: mergeStyles(
-        defaultStyles,
-        componentProps.className,
-        // TODO: how can this be resolved with finalProps before declaration?? is always undefined
-        // TODO: make sure this case is covered with examples and tests (user styles function) which uses theme
-        // TODO: what about passing theme?
-        _resolveWith(finalProps, userProps && userProps.styles),
-        userProps && userProps.className
-      )
+      ...((typeof userProps === 'object') && userProps as any)
     };
+
+    finalProps.className = mergeStyles(
+      defaultStyles,
+      componentProps.className,
+      // TODO: how can this be resolved with finalProps before declaration?? is always undefined
+      // TODO: make sure this case is covered with examples and tests (user styles function) which uses theme
+      // TODO: what about passing theme?
+      // _resolveWith(finalProps, userProps && userProps.styles),
+      _evaluateStyle(finalProps, defaultTheme, userProps && userProps.styles),
+      userProps && userProps.className
+    )
+
 
     // If we're rendering a function, let the user resolve how to render given the original component
     // and final args.
@@ -178,11 +181,12 @@ const _resolveWith = (props, styles) => (typeof styles === 'function') ? styles(
 
 function _evaluateStyle<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>>(
   props: TViewProps,
+  theme: ITheme,
   styles?: IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet>
 ): Partial<TStyleSet> | undefined {
   if (typeof styles === 'function') {
     // TOOD: need theme to resolve styles!
-    return styles(props);
+    return styles(props, theme);
   }
 
   return styles;
@@ -213,12 +217,13 @@ function renderSlot<TComponent extends IFactoryComponent<TProps>, TProps, TToken
   ComponentType: TComponent,
   componentProps: TProps,
   userProps: TProps,
+  defaultTheme: ITheme,
   defaultStyles: IStylesFunctionOrObject<TProps, TTokens, TStyleSet>
 ): JSX.Element {
   if (ComponentType.create !== undefined) {
-    return ComponentType.create(componentProps, userProps, defaultStyles);
+    return ComponentType.create(componentProps, userProps, defaultTheme, defaultStyles);
   } else {
-    return getDefaultFactory(ComponentType)(componentProps, userProps, defaultStyles);
+    return getDefaultFactory(ComponentType)(componentProps, userProps, defaultTheme, defaultStyles);
     // return defaultFactory(ComponentType, componentProps, userProps, defaultStyles);
   }
 }
@@ -249,6 +254,8 @@ export function getSlots
           // TODO: this cast to any is hiding a relationship issue between the first two args
           slotProps as any,
           userProps[name],
+          // TODO: what if theme is passed as prop to slot? add examples/tests
+          userProps._defaultTheme,
           // TODO: is this check needed (put in temporarily until createComponent is updated)? what about for backwards compatibility?
           userProps._defaultStyles && userProps._defaultStyles[name],
           // TODO: David had this, make sure it's not needed:
