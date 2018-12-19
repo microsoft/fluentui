@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text } from '@uifabric/experiments/lib/Text';
+import { Text } from '../../Text/Text';
 
 export const PersonaText = <T extends { children?: React.ReactChild; className?: string }>(props: T): React.ReactElement<T> | null => {
   return props.children ? (

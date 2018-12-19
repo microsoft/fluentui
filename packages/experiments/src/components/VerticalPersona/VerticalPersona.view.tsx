@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { PersonaCoin } from '@uifabric/experiments/lib/PersonaCoin';
-import { getSlots } from '@uifabric/experiments/lib/utilities/slots';
+import { PersonaCoin } from '../../PersonaCoin';
+import { getSlots } from '../../utilities/slots';
 import { IVerticalPersonaComponent, IVerticalPersonaSlots } from './VerticalPersona.types';
 import { PersonaText } from './PersonaText/PersonaText';
 
