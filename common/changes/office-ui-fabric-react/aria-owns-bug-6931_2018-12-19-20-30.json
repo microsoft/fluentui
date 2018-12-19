@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DatePicker: do not select aria-owns unless id it references exists",
+      "comment": "DatePicker: only set aria-owns when callout is rendered [#6931]",
       "type": "patch"
     }
   ],
