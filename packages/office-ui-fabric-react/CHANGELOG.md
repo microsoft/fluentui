@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 18 Dec 2018 22:17:52 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Dec 2018 13:39:07 GMT and should not be manually modified.
+
+## 6.116.2
+Wed, 19 Dec 2018 13:39:07 GMT
+
+### Patches
+
+- DetailsList: fix conditional rendering of aria-describedby
+- Dropdown: only select aria-activedescendant when open to fix screen reader output for required dropdown
+- DetailsList: Fix custom footer example's footer row not full width.
 
 ## 6.116.1
 Tue, 18 Dec 2018 22:17:52 GMT
