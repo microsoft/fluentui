@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 
 import { Suggestions } from './Suggestions';
-import { ISuggestionModel } from './SuggestionsController';
+import { ISuggestionModel } from './Suggestions.types';
 
 const suggestions = [
   'black',
