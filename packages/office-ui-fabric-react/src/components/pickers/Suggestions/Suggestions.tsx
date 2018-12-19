@@ -1,21 +1,22 @@
 import * as React from 'react';
+
 import { BaseComponent, css, KeyCodes, createRef } from '../../../Utilities';
 import { CommandButton, IconButton, IButton } from '../../../Button';
 import { Spinner } from '../../../Spinner';
-import { ISuggestionItemProps, ISuggestionsProps } from './Suggestions.types';
+import { ISuggestionItemProps, ISuggestionsProps, SuggestionActionType } from './Suggestions.types';
+import { SuggestionItem } from './SuggestionItem';
+
 import * as stylesImport from './Suggestions.scss';
 const styles: any = stylesImport;
-
-export enum SuggestionActionType {
-  none,
-  forceResolve,
-  searchMore
-}
 
 export interface ISuggestionsState {
   selectedActionType: SuggestionActionType;
 }
 
+/**
+ * SuggestionItem class component.
+ * @deprecated Will be removed in next major release of Fabric. Use SuggestionItem functional component.
+ */
 export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {}> {
   public render(): JSX.Element {
     const { suggestionModel, RenderSuggestion, onClick, className, onRemoveItem, isSelectedOverride, removeButtonAriaLabel } = this.props;
@@ -51,7 +52,6 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
   protected _forceResolveButton = createRef<IButton>();
   protected _searchForMoreButton = createRef<IButton>();
   protected _selectedElement = createRef<HTMLDivElement>();
-  private SuggestionsItemOfProperType = SuggestionsItem as new (props: ISuggestionItemProps<T>) => SuggestionsItem<T>;
   private activeSelectedElement: HTMLDivElement | null;
   constructor(suggestionsProps: ISuggestionsProps<T>) {
     super(suggestionsProps);
@@ -288,7 +288,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
       suggestionsClassName
     } = this.props;
     let { suggestions } = this.props;
-    const TypedSuggestionsItem = this.SuggestionsItemOfProperType;
+    // const TypedSuggestionsItem = this.SuggestionsItemOfProperType;
 
     if (resultsMaximumNumber) {
       suggestions = suggestions.slice(0, resultsMaximumNumber);
@@ -315,7 +315,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
             role="option"
             aria-label={suggestion.ariaLabel}
           >
-            <TypedSuggestionsItem
+            <SuggestionItem
               suggestionModel={suggestion}
               RenderSuggestion={onRenderSuggestion as any}
               onClick={this._onClickTypedSuggestionsItem(suggestion.item, index)}
