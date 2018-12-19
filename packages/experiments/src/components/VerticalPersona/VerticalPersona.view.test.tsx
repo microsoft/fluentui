@@ -11,6 +11,7 @@ const testVerticalPersonaClassNames: IProcessedStyleSet<IVerticalPersonaStyles> 
   root: 'test-cn-root',
   primaryText: 'test-cn-text',
   secondaryText: 'test-cn-secondaryText',
+  coin: 'test-cn-coin',
   subComponentStyles: {}
 };
 
