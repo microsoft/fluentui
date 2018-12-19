@@ -29,7 +29,6 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
     <div
       aria-expanded={false}
       aria-haspopup="true"
-      aria-owns="DatePicker-Callout1"
       role="combobox"
     >
       <div
