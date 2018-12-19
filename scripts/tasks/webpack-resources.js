@@ -19,12 +19,12 @@ module.exports = {
       rules: excludeSourceMaps
         ? []
         : [
-            {
-              test: /\.js$/,
-              use: 'source-map-loader',
-              enforce: 'pre'
-            }
-          ]
+          {
+            test: /\.js$/,
+            use: 'source-map-loader',
+            enforce: 'pre'
+          }
+        ]
     };
 
     const devtool = 'cheap-module-source-map';
@@ -92,7 +92,7 @@ module.exports = {
           extensions: ['.ts', '.tsx', '.js']
         },
 
-        devtool: 'eval',
+        devtool: 'source-map',
 
         module: {
           rules: [
@@ -127,7 +127,7 @@ module.exports = {
                 {
                   loader: 'postcss-loader',
                   options: {
-                    plugins: function() {
+                    plugins: function () {
                       return [require('autoprefixer')];
                     }
                   }

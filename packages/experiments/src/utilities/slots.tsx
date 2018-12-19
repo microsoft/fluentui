@@ -1,6 +1,7 @@
 import * as React from 'react';
 // TODO: pull this from utilities instead of adding a dependency to OUFR in Foundation
 import { memoizeFunction } from 'office-ui-fabric-react';
+import { mergeStyles } from '@uifabric/styling';
 
 /**
  * Signature of components that have component factories.
@@ -98,46 +99,66 @@ export function createElementWrapper<P>(
 
 /**
  * This function creates factories that render ouput depending on the user ISlotProp props passed in.
- * @param Component Base component to render when not overridden by user props.
+ * @param ComponentType Base component to render when not overridden by user props.
  * @param options Factory options, including defaultProp value for shorthand prop mapping.
  * @returns ISlotFactory function used for rendering slots.
  */
 export function createFactory<TProps>(
-  Component: React.ComponentType<TProps>,
+  ComponentType: React.ComponentType<TProps>,
   options: IFactoryOptions<TProps> = { defaultProp: 'children' }
 ): ISlotFactory<TProps> {
-  const result: ISlotFactory<TProps> = (componentProps, userProps) => {
-    if (userProps) {
-      const propType = typeof userProps;
+  const result: ISlotFactory<TProps> = (componentProps, userProps, defaultStyles) => {
+    const propType = typeof userProps;
 
-      switch (propType) {
-        case 'string':
-        case 'number':
-        case 'boolean':
-          userProps = {
-            [options.defaultProp]: userProps as any
-          } as TProps;
-          break;
-
-        case 'function':
-          // Functional components are not identified as functions because they have been converted to React Elements before this point.
-          return (userProps as ISlotRenderFunction<TProps>)(componentProps, Component);
-
-        default:
-          if (React.isValidElement(userProps)) {
-            return userProps;
-          }
-          break;
-      }
-
-      return <Component {...componentProps} {...userProps} />;
-    } else {
-      return <Component {...componentProps} />;
+    // If they passed in raw JSX, just return that.
+    if (React.isValidElement(userProps)) {
+      return userProps;
     }
+
+    switch (propType) {
+      case 'string':
+      case 'number':
+      case 'boolean':
+        userProps = {
+          [options.defaultProp]: userProps as any
+        } as TProps;
+        break;
+    }
+
+    // Construct the final props for the component by merging component props, user props, and the
+    // generated class name.
+    // TODO: final approach has to ensure this is done before calling user render functions
+    // const finalProps = componentProps;
+    const finalProps = {
+      ...(componentProps as any),
+      ...((typeof userProps === 'object') && userProps as any),
+      className: mergeStyles(
+        defaultStyles,
+        componentProps.className,
+        // TODO: how can this be resolved with finalProps before declaration?? is always undefined
+        // TODO: make sure this case is covered with examples and tests (user styles function)
+        _resolveWith(finalProps, userProps && userProps.styles),
+        userProps && userProps.className
+      )
+    };
+
+    // If we're rendering a function, let the user resolve how to render given the original component
+    // and final args.
+    if (typeof userProps === 'function') {
+      return (userProps as ISlotRenderFunction<TProps>)(finalProps, ComponentType);
+    }
+
+    return <ComponentType {...finalProps} />;
   };
 
   return result;
 }
+
+const _resolveWith = (props, styles) => (typeof styles === 'function') ? styles(props) : styles;
+// const _resolveWith = (props, styles) => {
+//   console.log('_resolveWith: props = ' + props);
+//   return (typeof styles === 'function') ? styles(props) : styles;
+// }
 
 /**
  * Default factory for components without explicit factories.
@@ -147,8 +168,8 @@ const getDefaultFactory = memoizeFunction(type => createFactory(type));
 /**
  * Default factory helper.
  */
-function defaultFactory<TComponent, TProps>(type: TComponent, componentProps: TProps, userProps: TProps) {
-  return getDefaultFactory(type)(componentProps, userProps);
+function defaultFactory<TComponent, TProps>(type: TComponent, componentProps: TProps, userProps: TProps, defaultStyles) {
+  return getDefaultFactory(type)(componentProps, userProps, defaultStyles);
 }
 
 /**
@@ -161,12 +182,13 @@ function defaultFactory<TComponent, TProps>(type: TComponent, componentProps: TP
 function renderSlot<TComponent extends IFactoryComponent<TProps>, TProps>(
   ComponentType: TComponent,
   componentProps: TProps,
-  userProps: TProps
+  userProps: TProps,
+  defaultStyles
 ): JSX.Element {
   if (ComponentType.create !== undefined) {
-    return ComponentType.create(componentProps, userProps);
+    return ComponentType.create(componentProps, userProps, defaultStyles);
   } else {
-    return defaultFactory(ComponentType, componentProps, userProps);
+    return defaultFactory(ComponentType, componentProps, userProps, defaultStyles);
   }
 }
 
@@ -190,7 +212,21 @@ export function getSlots<TProps extends TSlots & IUserProps<TSlots>, TSlots exte
       }
 
       const slot: ISlot<keyof TSlots> = slotProps => {
-        return renderSlot(slots[name], { ...(slotProps as any), className: userProps.classNames[name] }, userProps[name]);
+        // TODO: temporarily put in to keep "old" slots working for comparison
+        if (!userProps._defaultStyles) {
+          slotProps = { ...(slotProps as any), className: userProps.classNames[name] };
+        }
+        // return renderSlot(slots[name], { ...(slotProps as any), className: userProps.classNames[name] }, userProps[name]);
+
+        return renderSlot(
+          slots[name],
+          slotProps,
+          userProps[name],
+          // TODO: is this check needed (put in temporarily until createComponent is updated)? what about for backwards compatibility?
+          userProps._defaultStyles && userProps._defaultStyles[name],
+          // TODO: David had this, make sure it's not needed:
+          // componentProps.children
+        );
       };
       slot.isSlot = true;
       result[name] = slot;
@@ -199,32 +235,3 @@ export function getSlots<TProps extends TSlots & IUserProps<TSlots>, TSlots exte
 
   return result;
 }
-
-//////////////////////////////////////////////////////////////////////////////////////////////
-// TODO: Slots Phase 2 (future PR)
-// TODO: Incorporate style variables approach and lift mergeStyles out of createComponent.
-// TODO: Debug scenarios: is there a way to enable or highlight slots visually? borders? etc.
-// TODO: Need something like this to merge styles and style variables for slots,
-//        particularly if createComponent is modified not to generate classNames for slots
-//
-// const _resolveTokens = (props, ...allTokens) => Object.assign({}, ...allTokens.map(tokens =>
-//    (typeof tokens === 'function') ? tokens(props) : tokens));
-// const _resolveStyles = (props, tokens, ...allStyles) => concatStyleSets(...allStyles.map(styles =>
-//    (typeof styles === 'function') ? styles(props, tokens) : styles));
-//
-// const createComponent = (options) => {
-//   const component = componentProps => {
-//     let { tokens, styles, ...props } = componentProps;
-//
-//     tokens = _resolveTokens(props, options.tokens, tokens);
-//     styles = _resolveStyles(props, tokens, options.styles, styles);
-//
-//     const classNames = mergeStyleSets(styles);
-//
-//     return options.view({ ...props, classNames });
-//   };
-//   component.displayName = options.displayName;
-//
-//   return component;
-// };
-//////////////////////////////////////////////////////////////////////////////////////////////

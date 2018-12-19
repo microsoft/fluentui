@@ -44,6 +44,54 @@ export const TeamsCustomizations: ICustomizations = {
 
   scopedSettings: {
     Button: {
+      // TODO: try and figure out type safety
+      // TODO: as a test, see if every line of production Button's styling can be changed with a token
+      // tslint:disable:no-any
+      tokens: (props: any) => {
+        return [
+          {
+            borderRadius: 3,
+            borderWidth: 2,
+            circularBorderWidth: 1,
+            iconSize: 16,
+            iconWeight: 700,
+            textWeight: 400,
+            contentPadding: '4px 32px',
+          },
+          !props.disabled && {
+            iconColor: '#252424',
+            borderColorHovered: 'transparent',
+            borderColorPressed: 'transparent'
+          },
+          props.expanded && {
+            borderColor: 'transparent'
+          },
+          props.circular && !props.disabled && {
+            backgroundColorHovered: '#464775',
+            backgroundColorPressed: '#464775',
+            textColorHovered: '#fff',
+            textColorPressed: '#fff',
+            iconColorHovered: '#fff',
+            iconColorPressed: '#fff'
+          },
+          props.primary && !props.disabled && {
+            iconColor: 'white'
+          }
+        ];
+      },
+      // TODO: include styles functions in themes as a test to make sure they still work. cover with tests.
+      styles: (props: any) => {
+        return {
+          icon: [
+            {
+              color: 'pink'
+            },
+            props.circular && {
+              color: 'purple'
+            }
+          ]
+        }
+      },
       styleVariables: {
         baseVariant: {
           baseState: {

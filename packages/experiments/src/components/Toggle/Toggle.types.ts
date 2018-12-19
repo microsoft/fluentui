@@ -79,6 +79,7 @@ export interface IToggleProps extends IStyleableComponentProps<IToggleViewProps,
   /**
    * Style variables for Toggle.
    */
+  // TODO: convert to tokens?
   styleVariables?: IToggleStyleVariables;
 }
 

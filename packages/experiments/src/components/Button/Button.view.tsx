@@ -3,16 +3,24 @@ import { IButtonComponent, IButtonSlots, IButtonViewProps } from './Button.types
 import { Stack } from '../../Stack';
 import { ContextualMenu } from 'office-ui-fabric-react';
 import { getNativeProps, buttonProperties } from '../../Utilities';
-import { Icon, Text } from '../../utilities/factoryComponents';
+import { Icon as IconOld, Text as TextOld } from '../../utilities/factoryComponents';
+import { Icon as IconNew, Text as TextNew } from '../../utilities/factoryComponents.new';
 import { createElementWrapper, getSlots } from '../../utilities/slots';
+import { getSlotsNew } from '../../utilities/slots.new';
 
 export const ButtonView: IButtonComponent['view'] = props => {
   const { classNames, menu: Menu, children, content, icon, expanded, disabled, onMenuDismiss, menuTarget, ...rest } = props;
 
   // TODO: 'href' is anchor property... consider getNativeProps by root type
-  const buttonProps = { ...getNativeProps(rest, buttonProperties), href: props.href };
+  // const buttonProps = { ...getNativeProps(rest, buttonProperties), href: props.href };
+  // const buttonProps = { ...getNativeProps(props, ['button'], ['icon']) };
+  const buttonProps = { ...getNativeProps(rest, buttonProperties) };
 
-  const Slots = getSlots<typeof props, IButtonSlots>(props, {
+  const slotsFunction: typeof getSlots = props.useNewSlots ? getSlotsNew : getSlots;
+  const Icon = props.useNewSlots ? IconNew : IconOld;
+  const Text = props.useNewSlots ? TextNew : TextOld;
+
+  const Slots = slotsFunction<typeof props, IButtonSlots>(props, {
     root: _deriveRootType(props),
     stack: Stack,
     icon: Icon,
@@ -21,6 +29,9 @@ export const ButtonView: IButtonComponent['view'] = props => {
     menuIcon: Icon
   });
 
+  // TODO: David's codepen automatically doesn't show an icon without having to check for icon prop presence
+  // TODO: determine final arguments for Stack slot based on workarounds in styles and differences in codepen
+  // TODO: checks for content should be moved to component (i.e. Icon shouldn't render anything if it doesn't have input like iconName)
   return (
     <Slots.root
       type="button" // stack doesn't take in native button props
@@ -28,7 +39,7 @@ export const ButtonView: IButtonComponent['view'] = props => {
       {...buttonProps}
       aria-disabled={disabled}
     >
-      <Slots.stack horizontal as="span" gap={8} verticalAlign="center" horizontalAlign="center">
+      <Slots.stack horizontal as="span" gap={8} verticalAlign="center" horizontalAlign="center" verticalFill>
         {icon && <Slots.icon />}
         {content && <Slots.content />}
         {children}
@@ -46,7 +57,7 @@ export const ButtonView: IButtonComponent['view'] = props => {
 // TODO: test with split button approach.
 //        should split button be another component?
 //        can Button's slots be manipulated to create an HOC split button?
-// { split && (
+// {split && (
 // <Slot as='span' userProps={splitContainer}>
 //   <Slot as={Divider} userProps={divider} />
 //   <Slot as={Icon} userProps={menuChevron} />
