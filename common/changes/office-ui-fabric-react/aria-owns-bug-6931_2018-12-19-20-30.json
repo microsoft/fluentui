@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix for Issue#6931 : Datepicker:ARIA attributes must conform to valid values",
+      "comment": "DatePicker: do not select aria-owns unless id it references exists",
       "type": "patch"
     }
   ],
