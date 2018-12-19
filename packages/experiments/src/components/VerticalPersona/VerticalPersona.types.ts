@@ -1,6 +1,6 @@
 import { IStyle, IFontWeight } from '@uifabric/styling';
 import { IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
-import { ITextSlot, IHTMLDivSlot, IPersonaCoinSlot } from '@uifabric/experiments/lib/utilities/factoryComponents.types';
+import { ITextSlot, IHTMLDivSlot, IPersonaCoinSlot } from '../../utilities/factoryComponents.types';
 
 export type IVerticalPersonaComponent = IStatelessComponent<IVerticalPersonaProps, IVerticalPersonaStyles>;
 
