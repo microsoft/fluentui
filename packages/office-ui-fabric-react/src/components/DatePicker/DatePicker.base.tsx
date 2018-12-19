@@ -181,7 +181,14 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
 
     return (
       <div {...nativeProps} className={classNames.root}>
-        <div ref={this._datePickerDiv} role="combobox" aria-expanded={isDatePickerShown} aria-haspopup="true" aria-owns={calloutId}>
+        <div
+          ref={this._datePickerDiv}
+          role="combobox"
+          aria-expanded={isDatePickerShown}
+          aria-haspopup="true"
+          // aria-owns={calloutId}
+          aria-owns={isDatePickerShown ? `${calloutId}` : undefined}
+        >
           <TextField
             id={this._id + '-label'}
             label={label}
