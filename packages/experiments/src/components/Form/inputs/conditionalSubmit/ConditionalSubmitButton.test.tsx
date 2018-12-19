@@ -33,10 +33,7 @@ describe('FormSubmitButton Unit Tests', () => {
       </Form>
     ) as Form;
 
-    const button: HTMLButtonElement = ReactTestUtils.findRenderedDOMComponentWithClass(
-      renderedForm,
-      'ms-Button'
-    ) as HTMLButtonElement;
+    const button: HTMLButtonElement = ReactTestUtils.findRenderedDOMComponentWithClass(renderedForm, 'ms-Button') as HTMLButtonElement;
     const textBox: ExtendsTextBox = ReactTestUtils.findRenderedComponentWithType(renderedForm, ExtendsTextBox);
 
     expect(button.getAttribute('disabled')).toEqual('');

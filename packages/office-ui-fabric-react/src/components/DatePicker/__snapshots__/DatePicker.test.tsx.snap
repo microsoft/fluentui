@@ -25,7 +25,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
   <div
     aria-expanded={false}
     aria-haspopup="true"
-    aria-owns="DatePicker-Callout0"
+    aria-owns="DatePicker-Callout1"
     role="combobox"
   >
     <div
@@ -76,7 +76,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
                 position: relative;
               }
               &:hover {
-                border-color: #212121;
+                border-color: #333333;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -122,7 +122,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
                   color: #666666;
                   opacity: 1;
                 }
-            id="TextField1"
+            id="DatePicker0-label"
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}

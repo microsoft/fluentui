@@ -33,9 +33,10 @@ function getRushVersion() {
     }
 }
 function run() {
-    const [nodePath, /* Ex: /bin/node */ // tslint:disable-line:no-unused-variable
-    scriptPath, /* /repo/common/scripts/install-run-rush.js */ // tslint:disable-line:no-unused-variable
-    ...packageBinArgs /* [build, --to, myproject] */] = process.argv;
+    const [nodePath, /* Ex: /bin/node */ scriptPath, /* /repo/common/scripts/install-run-rush.js */ ...packageBinArgs /* [build, --to, myproject] */] = process.argv;
+    if (!nodePath || !scriptPath) {
+        throw new Error('Unexpected exception: could not detect node path or script path');
+    }
     if (process.argv.length < 3) {
         console.log('Usage: install-run-rush.js <command> [args...]');
         console.log('Example: install-run-rush.js build --to myproject');

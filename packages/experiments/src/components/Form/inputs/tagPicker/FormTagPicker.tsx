@@ -2,7 +2,7 @@ import * as React from 'react';
 
 // Components
 import { IFormTagPickerProps } from './FormTagPicker.types';
-import { TagPicker, ITag, ITagPickerProps } from 'office-ui-fabric-react/lib/components/pickers/TagPicker/TagPicker';
+import { TagPicker, ITag, ITagPickerProps } from 'office-ui-fabric-react/lib/Pickers';
 import { FormBaseInput, IFormBaseInputState } from '../../FormBaseInput';
 import { IFormContext } from '../../Form';
 

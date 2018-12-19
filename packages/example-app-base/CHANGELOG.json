@@ -2,6 +2,128 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.10.0",
+      "tag": "@uifabric/example-app-base_v6.10.0",
+      "date": "Fri, 14 Dec 2018 13:35:30 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "replace references to isCollapsable with isCollapsible",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "faf1cb2cda7bb8aa5b165b3e9fdb7664ee809830"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Remove types and modules no longer needed due to Foundation changes.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "893b91690c3421410e9ba4bb7ae03c3f74f1e953"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.5.7 <1.0.0` to `>=0.6.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.113.0 <7.0.0` to `>=6.114.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.9.4",
+      "tag": "@uifabric/example-app-base_v6.9.4",
+      "date": "Tue, 11 Dec 2018 13:36:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix Example dropdown regression caused by #7326.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "228d92dff41d167d367eb86eaba693df0a66846b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.111.2 <7.0.0` to `>=6.112.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.9.3",
+      "tag": "@uifabric/example-app-base_v6.9.3",
+      "date": "Thu, 06 Dec 2018 13:34:21 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix for issue#7258:Documentation is missing for button",
+            "author": "Aftab Hassan <aftabh@uw.edu>",
+            "commit": "09f1011e7355358023bb8ec712defbe62f786475"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.110.2 <7.0.0` to `>=6.111.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.9.2",
+      "tag": "@uifabric/example-app-base_v6.9.2",
+      "date": "Tue, 06 Nov 2018 13:31:09 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Disable api-extractor build task",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "7b1ab4cf4295fce57364338746b066496acc9ce8"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix visual bugs caused by MWF overrides on Fabric site",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "6ae35dc88698d2ffd3f0620b615ab7bd2f343652"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.99.0 <7.0.0` to `>=6.99.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.9.1",
+      "tag": "@uifabric/example-app-base_v6.9.1",
+      "date": "Wed, 31 Oct 2018 12:32:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace usage of scheme prop with theme provider.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "fc5a1f4620c93499a41abe8377ff61161cf5bd76"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Running Prettier on all .ts and .tsx files in the packages folder.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "2ce6c5ac3ccf4e62d4866841317b4aa55b8fb541"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.5.6 <1.0.0` to `>=0.5.7 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.96.0 <7.0.0` to `>=6.97.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.9.0",
       "tag": "@uifabric/example-app-base_v6.9.0",
       "date": "Wed, 17 Oct 2018 01:29:55 GMT",

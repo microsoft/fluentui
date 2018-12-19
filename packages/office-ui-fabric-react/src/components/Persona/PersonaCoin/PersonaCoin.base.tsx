@@ -45,9 +45,10 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
   }
 
   public componentWillReceiveProps(nextProps: IPersonaCoinProps): void {
-    if (!nextProps.imageUrl) {
+    if (nextProps.imageUrl !== this.props.imageUrl) {
       this.setState({
-        isImageLoaded: false
+        isImageLoaded: false,
+        isImageError: false
       });
     }
   }
@@ -69,6 +70,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
 
     const size = this.props.size as PersonaSize;
     const divProps = getNativeProps(this.props, divProperties);
+    const divCoinProps = getNativeProps(coinProps || {}, divProperties);
     const coinSizeStyle = coinSize ? { width: coinSize, height: coinSize } : undefined;
     const hideImage = showUnknownPersonaCoin;
 
@@ -96,7 +98,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
       <div {...divProps} className={classNames.coin}>
         {// Render PersonaCoin if size is not size10
         size !== PersonaSize.size10 && size !== PersonaSize.tiny ? (
-          <div {...coinProps} className={classNames.imageArea} style={coinSizeStyle}>
+          <div {...divCoinProps} className={classNames.imageArea} style={coinSizeStyle}>
             {shouldRenderInitials && (
               <div
                 className={mergeStyles(

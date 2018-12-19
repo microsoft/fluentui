@@ -1,17 +1,18 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, createRef, elementContains, getId } from '../../Utilities';
+import { BaseComponent, KeyCodes, css, createRef, elementContains, getId, classNamesFunction } from '../../Utilities';
+import { IProcessedStyleSet } from '../../Styling';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Callout, DirectionalHint } from '../../Callout';
 import { Selection, SelectionZone, SelectionMode } from '../../utilities/selection/index';
 import { Suggestions } from './Suggestions/Suggestions';
 import { ISuggestionsProps } from './Suggestions/Suggestions.types';
 import { SuggestionsController } from './Suggestions/SuggestionsController';
-import { IBasePicker, IBasePickerProps, ValidationState } from './BasePicker.types';
+import { IBasePicker, IBasePickerProps, ValidationState, IBasePickerStyleProps, IBasePickerStyles } from './BasePicker.types';
 import { IAutofill, Autofill } from '../Autofill/index';
 import { IPickerItemProps } from './PickerItem.types';
 import { IPersonaProps } from '../Persona/Persona.types';
 import * as stylesImport from './BasePicker.scss';
-const styles: any = stylesImport;
+const legacyStyles: any = stylesImport;
 
 export interface IBasePickerState {
   items?: any;
@@ -43,6 +44,8 @@ export type IPickerAriaIds = {
    */
   suggestionList: string;
 };
+
+const getClassNames = classNamesFunction<IBasePickerStyleProps, IBasePickerStyles>();
 
 export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBasePickerState> implements IBasePicker<T> {
   protected selection: Selection;
@@ -184,27 +187,54 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   };
 
   public render(): JSX.Element {
-    const { suggestedDisplayValue } = this.state;
-    const { className, inputProps, disabled } = this.props;
+    const { suggestedDisplayValue, isFocused } = this.state;
+    const { className, inputProps, disabled, theme, styles } = this.props;
 
     const selectedSuggestionAlertId = this.props.enableSelectedSuggestionAlert ? this._ariaMap.selectedSuggestionAlert : '';
     const suggestionsAvailable = this.state.suggestionsVisible ? this._ariaMap.suggestionList : '';
 
+    // TODO
+    // Clean this up by leaving only the first part after removing support for SASS.
+    // Currently we can not remove the SASS styles from BasePicker class because it
+    // might be used by consumers who created custom pickers from extending from
+    // this base class and have not used the new 'styles' prop.
+    // We check for 'styles' prop which is going to be injected by the 'styled' HOC
+    // for every other already existing picker variant (PeoplePicker, TagPicker)
+    // so that we can use the CSS-in-JS styles. If the check fails (ex: custom picker),
+    // then we just use the old SASS styles instead.
+    const classNames: Partial<IProcessedStyleSet<IBasePickerStyles>> = styles
+      ? getClassNames(styles, {
+          theme,
+          className,
+          isFocused,
+          inputClassName: inputProps && inputProps.className
+        })
+      : {
+          root: css('ms-BasePicker', className ? className : ''),
+          text: css('ms-BasePicker-text', legacyStyles.pickerText, this.state.isFocused && legacyStyles.inputFocused),
+          itemsWrapper: legacyStyles.pickerItems,
+          input: css('ms-BasePicker-input', legacyStyles.pickerInput, inputProps && inputProps.className),
+          screenReaderText: legacyStyles.screenReaderOnly
+        };
+
     return (
-      <div ref={this.root} className={css('ms-BasePicker', className ? className : '')} onKeyDown={this.onKeyDown}>
+      <div ref={this.root} className={classNames.root} onKeyDown={this.onKeyDown}>
         <FocusZone
           componentRef={this.focusZone}
           direction={FocusZoneDirection.bidirectional}
           isInnerZoneKeystroke={this._isFocusZoneInnerKeystroke}
         >
-          {this.getSuggestionsAlert()}
+          {this.getSuggestionsAlert(classNames.screenReaderText)}
           <SelectionZone selection={this.selection} selectionMode={SelectionMode.multiple}>
-            <div className={css('ms-BasePicker-text', styles.pickerText, this.state.isFocused && styles.inputFocused)} role={'list'}>
-              <span id={this._ariaMap.selectedItems}>{this.renderItems()}</span>
+            <div className={classNames.text}>
+              <span id={this._ariaMap.selectedItems} className={classNames.itemsWrapper} role={'list'}>
+                {this.renderItems()}
+              </span>
               {this.canAddItems() && (
                 <Autofill
+                  spellCheck={false}
                   {...inputProps as any}
-                  className={css('ms-BasePicker-input', styles.pickerInput)}
+                  className={classNames.input}
                   ref={this.input}
                   onFocus={this.onInputFocus}
                   onBlur={this.onInputBlur}
@@ -454,8 +484,22 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     if (this.props.inputProps && this.props.inputProps.onBlur) {
       this.props.inputProps.onBlur(ev as React.FocusEvent<HTMLInputElement>);
     }
+
     // Only blur the entire component if an unrelated element gets focus. Otherwise treat it as though it still has focus.
-    if (!elementContains(this.root.value!, ev.relatedTarget as HTMLElement)) {
+    // Do nothing if the blur is coming from something
+    // inside the comboBox root or the comboBox menu since
+    // it we are not really bluring from the whole comboBox
+    let relatedTarget: EventTarget | null = ev.relatedTarget;
+
+    if (ev.relatedTarget === null) {
+      // In IE11, due to lack of support, event.relatedTarget is always
+      // null making every onBlur call to be "outside" of the ComboBox
+      // even when it's not. Using document.activeElement is another way
+      // for us to be able to get what the relatedTarget without relying
+      // on the event
+      relatedTarget = document.activeElement;
+    }
+    if (relatedTarget && !elementContains(this.root.current!, relatedTarget as HTMLElement)) {
       this.setState({ isFocused: false });
       if (this.props.onBlur) {
         this.props.onBlur(ev as React.FocusEvent<HTMLInputElement>);
@@ -710,14 +754,14 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     return currentIndex > -1 && !this.state.suggestionsLoading ? 'sug-' + currentIndex : undefined;
   }
 
-  protected getSuggestionsAlert() {
+  protected getSuggestionsAlert(suggestionAlertClassName: string = legacyStyles.screenReaderOnly) {
     const currentIndex = this.suggestionStore.currentIndex;
     if (this.props.enableSelectedSuggestionAlert) {
       const selectedSuggestion =
         currentIndex > -1 ? this.suggestionStore.getSuggestionAtIndex(this.suggestionStore.currentIndex) : undefined;
       const selectedSuggestionAlertText = selectedSuggestion ? selectedSuggestion.ariaLabel : undefined;
       return (
-        <div className={styles.screenReaderOnly} role="alert" id={this._ariaMap.selectedSuggestionAlert} aria-live="assertive">
+        <div className={suggestionAlertClassName} role="alert" id={this._ariaMap.selectedSuggestionAlert} aria-live="assertive">
           {selectedSuggestionAlertText}{' '}
         </div>
       );
@@ -792,22 +836,45 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
 export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BasePicker<T, P> {
   public render(): JSX.Element {
-    const { suggestedDisplayValue } = this.state;
-    const { className, inputProps, disabled } = this.props;
+    const { suggestedDisplayValue, isFocused } = this.state;
+    const { className, inputProps, disabled, theme, styles } = this.props;
 
     const selectedSuggestionAlertId: string | undefined = this.props.enableSelectedSuggestionAlert
       ? this._ariaMap.selectedSuggestionAlert
       : '';
     const suggestionsAvailable: string | undefined = this.state.suggestionsVisible ? this._ariaMap.suggestionList : '';
 
+    // TODO
+    // Clean this up by leaving only the first part after removing support for SASS.
+    // Currently we can not remove the SASS styles from BasePicker class because it
+    // might be used by consumers who created custom pickers from extending from
+    // this base class and have not used the new 'styles' prop.
+    // We check for 'styles' prop which is going to be injected by the 'styled' HOC
+    // for every other already existing picker variant (PeoplePicker, TagPicker)
+    // so that we can use the CSS-in-JS styles. If the check fails (ex: custom picker),
+    // then we just use the old SASS styles instead.
+    const classNames: Partial<IProcessedStyleSet<IBasePickerStyles>> = styles
+      ? getClassNames(styles, {
+          theme,
+          className,
+          isFocused,
+          inputClassName: inputProps && inputProps.className
+        })
+      : {
+          root: css('ms-BasePicker', className ? className : ''),
+          text: css('ms-BasePicker-text', legacyStyles.pickerText, this.state.isFocused && legacyStyles.inputFocused),
+          input: css('ms-BasePicker-input', legacyStyles.pickerInput, inputProps && inputProps.className),
+          screenReaderText: legacyStyles.screenReaderOnly
+        };
+
     return (
       <div ref={this.root}>
-        <div className={css('ms-BasePicker', className ? className : '')} onKeyDown={this.onKeyDown}>
-          {this.getSuggestionsAlert()}
-          <div className={css('ms-BasePicker-text', styles.pickerText, this.state.isFocused && styles.inputFocused)}>
+        <div className={classNames.root} onKeyDown={this.onKeyDown}>
+          {this.getSuggestionsAlert(classNames.screenReaderText)}
+          <div className={classNames.text}>
             <Autofill
               {...inputProps as any}
-              className={css('ms-BasePicker-input', styles.pickerInput)}
+              className={classNames.input}
               ref={this.input}
               onFocus={this.onInputFocus}
               onBlur={this.onInputBlur}
@@ -830,7 +897,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
         <SelectionZone selection={this.selection} selectionMode={SelectionMode.single}>
           <FocusZone
             componentRef={this.focusZone}
-            className="ms-BasePicker-selectedItems"
+            className="ms-BasePicker-selectedItems" // just a className hook without any styles applied to it.
             isCircularNavigation={true}
             direction={FocusZoneDirection.bidirectional}
             isInnerZoneKeystroke={this._isFocusZoneInnerKeystroke}

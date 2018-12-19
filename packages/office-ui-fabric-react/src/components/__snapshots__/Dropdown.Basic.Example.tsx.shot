@@ -40,11 +40,9 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       Basic uncontrolled example:
     </label>
     <div
-      aria-activedescendant="Basicdrop1-option"
       aria-describedby="Basicdrop1-option"
       aria-expanded="false"
       aria-label="Basic dropdown example"
-      aria-labelledby="Basicdrop1-label"
       className=
           ms-Dropdown
           {
@@ -137,6 +135,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
+      placeholder="Select an Option"
       role="listbox"
       tabIndex={0}
     >
@@ -375,7 +374,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       Disabled uncontrolled example with defaultSelectedKey:
     </label>
     <div
-      aria-activedescendant="Dropdown3-option"
       aria-describedby="Dropdown3-option"
       aria-disabled={true}
       aria-expanded="false"
@@ -461,16 +459,12 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
-      role="listbox"
       tabIndex={-1}
     >
       <span
         aria-atomic={true}
         aria-label="Option d"
         aria-live="off"
-        aria-posinset={4}
-        aria-selected={true}
-        aria-setsize={7}
         className=
             ms-Dropdown-title
             {
@@ -504,7 +498,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
               color: GrayText;
             }
         id="Dropdown3-option"
-        role="option"
       >
         <span>
           Option d
@@ -584,7 +577,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       Controlled example:
     </label>
     <div
-      aria-activedescendant="Dropdown4-option"
       aria-describedby="Dropdown4-option"
       aria-expanded="false"
       aria-labelledby="Dropdown4-label"
@@ -681,6 +673,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
+      placeholder="Select an Option"
       role="listbox"
       tabIndex={0}
     >
@@ -890,6 +883,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
+      placeholder="Select options"
       tabIndex={0}
     >
       <span
@@ -1095,6 +1089,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
+      placeholder="Select options"
       tabIndex={0}
     >
       <span

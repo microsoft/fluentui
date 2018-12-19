@@ -8,7 +8,6 @@ import {
   allowScrollOnElement,
   BaseComponent,
   classNamesFunction,
-  createRef,
   divProperties,
   elementContains,
   getId,
@@ -36,7 +35,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     type: PanelType.smallFixedFar
   };
 
-  private _panel = createRef<HTMLDivElement>();
+  private _panel = React.createRef<HTMLDivElement>();
   private _classNames: IProcessedStyleSet<IPanelStyles>;
   private _scrollableContent: HTMLDivElement | null;
 

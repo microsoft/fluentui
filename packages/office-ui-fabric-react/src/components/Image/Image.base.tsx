@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, createRef, getNativeProps, imageProperties } from '../../Utilities';
+import { BaseComponent, classNamesFunction, getNativeProps, imageProperties } from '../../Utilities';
 import { IImageProps, IImageStyleProps, IImageStyles, ImageCoverStyle, ImageFit, ImageLoadState } from './Image.types';
 
 const getClassNames = classNamesFunction<IImageStyleProps, IImageStyles>();
@@ -21,8 +21,8 @@ export class ImageBase extends BaseComponent<IImageProps, IImageState> {
   // check the rendered element. The value here only takes effect when
   // shouldStartVisible is true.
   private _coverStyle: ImageCoverStyle = ImageCoverStyle.portrait;
-  private _imageElement = createRef<HTMLImageElement>();
-  private _frameElement = createRef<HTMLDivElement>();
+  private _imageElement = React.createRef<HTMLImageElement>();
+  private _frameElement = React.createRef<HTMLDivElement>();
 
   constructor(props: IImageProps) {
     super(props);

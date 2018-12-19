@@ -1545,7 +1545,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 2`] = `
               border-left: 1px solid #c8c8c8;
               bottom: 8px;
               position: absolute;
-              right: 12px;
+              right: 17px;
               top: 8px;
               width: 1px;
             }

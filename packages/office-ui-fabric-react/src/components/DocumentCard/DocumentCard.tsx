@@ -1,13 +1,15 @@
 import * as React from 'react';
-import { IDocumentCardProps, DocumentCardType } from './DocumentCard.types';
+import { IDocumentCard, IDocumentCardProps, DocumentCardType } from './DocumentCard.types';
 import { BaseComponent, KeyCodes, css } from '../../Utilities';
 import * as stylesImport from './DocumentCard.scss';
 const styles: any = stylesImport;
 
-export class DocumentCard extends BaseComponent<IDocumentCardProps, any> {
+export class DocumentCard extends BaseComponent<IDocumentCardProps, any> implements IDocumentCard {
   public static defaultProps: IDocumentCardProps = {
     type: DocumentCardType.normal
   };
+
+  private _rootElement = React.createRef<HTMLDivElement>();
 
   constructor(props: IDocumentCardProps) {
     super(props);
@@ -35,7 +37,9 @@ export class DocumentCard extends BaseComponent<IDocumentCardProps, any> {
 
     return (
       <div
+        ref={this._rootElement}
         tabIndex={tabIndex}
+        data-is-focusable={actionable}
         role={role}
         className={css(
           'ms-DocumentCard',
@@ -53,6 +57,12 @@ export class DocumentCard extends BaseComponent<IDocumentCardProps, any> {
         {children}
       </div>
     );
+  }
+
+  public focus(): void {
+    if (this._rootElement.current) {
+      this._rootElement.current.focus();
+    }
   }
 
   private _onClick = (ev: React.MouseEvent<HTMLElement>): void => {

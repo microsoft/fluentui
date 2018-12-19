@@ -3,6 +3,7 @@ import { ModalBase } from './Modal.base';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import { IStyle, ITheme } from '../../Styling';
+import { ILayerProps } from '../../Layer';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IModal {
@@ -12,7 +13,7 @@ export interface IModal {
   focus: () => void;
 }
 
-export interface IModalProps extends React.Props<ModalBase>, IWithResponsiveModeState, IAccessiblePopupProps {
+export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResponsiveModeState, IAccessiblePopupProps {
   /**
    * Optional callback to access the IDialog interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -31,13 +32,13 @@ export interface IModalProps extends React.Props<ModalBase>, IWithResponsiveMode
 
   /**
    * Whether the dialog is displayed.
-   * @default false
+   * @defaultvalue false
    */
   isOpen?: boolean;
 
   /**
    * Whether the overlay is dark themed.
-   * @default true
+   * @defaultvalue true
    */
   isDarkOverlay?: boolean;
 
@@ -52,8 +53,13 @@ export interface IModalProps extends React.Props<ModalBase>, IWithResponsiveMode
   onDismissed?: () => any;
 
   /**
+   * Props to be passed through to Layer
+   */
+  layerProps?: ILayerProps;
+
+  /**
    * Whether the dialog can be light dismissed by clicking outside the dialog (on the overlay).
-   * @default false
+   * @defaultvalue false
    */
   isBlocking?: boolean;
 
@@ -74,6 +80,7 @@ export interface IModalProps extends React.Props<ModalBase>, IWithResponsiveMode
 
   /**
    * A callback function for when the Modal content is mounted on the overlay layer
+   * @deprecated Use layerProps.onLayerDidMount instead
    */
   onLayerDidMount?: () => void;
 

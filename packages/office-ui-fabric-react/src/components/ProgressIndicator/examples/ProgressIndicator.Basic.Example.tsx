@@ -36,9 +36,7 @@ export class ProgressIndicatorBasicExample extends React.Component<{}, IProgress
   public render(): JSX.Element {
     const { percentComplete } = this.state;
 
-    return (
-      <ProgressIndicator label="Example title" description="Example description" percentComplete={percentComplete} />
-    );
+    return <ProgressIndicator label="Example title" description="Example description" percentComplete={percentComplete} />;
   }
 
   private _startProgressDemo(): void {

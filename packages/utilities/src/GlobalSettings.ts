@@ -23,9 +23,7 @@ if (typeof window !== 'undefined') {
 }
 
 // tslint:disable-next-line:no-any
-let _globalSettings: { [key: string]: any } = (_global[GLOBAL_SETTINGS_PROP_NAME] = _global[
-  GLOBAL_SETTINGS_PROP_NAME
-] || {
+let _globalSettings: { [key: string]: any } = (_global[GLOBAL_SETTINGS_PROP_NAME] = _global[GLOBAL_SETTINGS_PROP_NAME] || {
   [CALLBACK_STATE_PROP_NAME]: {}
 });
 

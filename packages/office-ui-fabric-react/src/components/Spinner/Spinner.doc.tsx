@@ -10,8 +10,7 @@ const SpinnerBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/l
 export const SpinnerPageProps: IDocPageProps = {
   title: 'Spinner',
   componentName: 'Spinner',
-  componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Spinner',
+  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Spinner',
   componentStatus: SpinnerStatus,
   examples: [
     {
@@ -21,9 +20,7 @@ export const SpinnerPageProps: IDocPageProps = {
       codepenJS: SpinnerBasicExampleCodepen
     }
   ],
-  propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/Spinner.types.ts')
-  ],
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/Spinner.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/docs/SpinnerOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/docs/SpinnerDos.md'),

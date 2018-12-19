@@ -9,7 +9,6 @@ import {
   IStyle,
   keyframes
 } from '../../Styling';
-import { ICalloutContentStyles } from '../../Callout';
 
 const globalClassNames = {
   root: 'ms-TeachingBubble',
@@ -100,27 +99,6 @@ const rootStyle = (isWide?: boolean): IStyle[] => {
       maxWidth: '456px'
     }
   ];
-};
-
-// TODO: merge this into styles prop once mergeStyles is updated to allow functions/style objects,
-//        which will also allow consumers to provide their own callout styles.
-// This function takes in TeachingBubble props and returns a Callout styles object
-export const calloutStyles = (props: ITeachingBubbleStyleProps): Partial<ICalloutContentStyles> => {
-  const { isWide, theme } = props;
-  const { palette } = theme;
-  return {
-    root: [...rootStyle(isWide), theme.fonts.medium],
-    beak: [
-      {
-        background: palette.themePrimary
-      }
-    ],
-    calloutMain: [
-      {
-        background: palette.themePrimary
-      }
-    ]
-  };
 };
 
 const headerStyle = (
@@ -325,6 +303,21 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
         color: palette.white,
         fontWeight: FontWeights.semilight
       }
-    ]
+    ],
+    subComponentStyles: {
+      callout: {
+        root: [...rootStyle(isWide), theme.fonts.medium],
+        beak: [
+          {
+            background: palette.themePrimary
+          }
+        ],
+        calloutMain: [
+          {
+            background: palette.themePrimary
+          }
+        ]
+      }
+    }
   };
 };

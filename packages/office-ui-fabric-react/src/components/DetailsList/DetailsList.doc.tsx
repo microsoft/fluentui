@@ -55,12 +55,8 @@ export const DetailsListPageProps: IDocPageProps = {
       view: <DetailsListDocumentsExample />
     }
   ],
-  propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/DetailsList.types.ts')
-  ],
-  overview: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/DetailsList/docs/DetailsListOverview.md'),
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/DetailsList.types.ts')],
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/docs/DetailsListOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/docs/DetailsListDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/docs/DetailsListDonts.md'),

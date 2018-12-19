@@ -57,12 +57,7 @@ export class StackedBarChartDynamicExample extends React.Component<{}, IExampleS
           { legend: 'fourth', data: 87, color: DefaultPalette.greenLight }
         ]
       },
-      colors: [
-        DefaultPalette.blueLight,
-        DefaultPalette.yellow,
-        DefaultPalette.neutralSecondary,
-        DefaultPalette.greenLight
-      ]
+      colors: [DefaultPalette.blueLight, DefaultPalette.yellow, DefaultPalette.neutralSecondary, DefaultPalette.greenLight]
     };
 
     this._changeData = this._changeData.bind(this);
