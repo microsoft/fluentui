@@ -1,14 +1,15 @@
+/* tslint:disable:no-unused-variable */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+/* tslint:enable:no-unused-variable */
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
+import { mount } from 'enzyme';
+
+import { KeyCodes, resetIds } from '../../Utilities';
 import { Dropdown } from './Dropdown';
 import { DropdownBase } from './Dropdown.base';
-import { DropdownMenuItemType, IDropdown, IDropdownOption } from './Dropdown.types';
-import { KeyCodes, resetIds } from '../../Utilities';
-import { mount } from 'enzyme';
-/* tslint:disable:no-unused-variable */
-/* tslint:enable:no-unused-variable */
+import { DropdownMenuItemType, IDropdownOption, IDropdown } from './Dropdown.types';
 
 const DEFAULT_OPTIONS: IDropdownOption[] = [
   { key: 'Header1', text: 'Header 1', itemType: DropdownMenuItemType.Header },
