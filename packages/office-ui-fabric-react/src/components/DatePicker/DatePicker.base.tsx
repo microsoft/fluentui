@@ -186,8 +186,8 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
           role="combobox"
           aria-expanded={isDatePickerShown}
           aria-haspopup="true"
-          // aria-owns={calloutId}
-          aria-owns={isDatePickerShown ? `${calloutId}` : undefined}
+          aria-owns={calloutId}
+          // aria-owns={isDatePickerShown ? `${calloutId}` : undefined}
         >
           <TextField
             id={this._id + '-label'}
