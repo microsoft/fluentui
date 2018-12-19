@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode, createRef } from '../../Utilities';
+import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode } from '../../Utilities';
 import { ISliderProps, ISlider, ISliderStyleProps, ISliderStyles } from './Slider.types';
-import { classNamesFunction } from '../../Utilities';
+import { classNamesFunction, getNativeProps, divProperties } from '../../Utilities';
 import { Label } from '../../Label';
 
 export interface ISliderState {
@@ -29,8 +29,8 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     buttonProps: {}
   };
 
-  private _sliderLine = createRef<HTMLDivElement>();
-  private _thumb = createRef<HTMLSpanElement>();
+  private _sliderLine = React.createRef<HTMLDivElement>();
+  private _thumb = React.createRef<HTMLSpanElement>();
   private _id: string;
 
   constructor(props: ISliderProps) {
@@ -80,6 +80,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       showValue,
       theme: theme!
     });
+    const divButtonProps = buttonProps ? getNativeProps(buttonProps, divProperties) : undefined;
 
     return (
       <div className={classNames.root}>
@@ -89,21 +90,22 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
           </Label>
         )}
         <div className={classNames.container}>
-          <button
+          <div
             aria-valuenow={value}
             aria-valuemin={min}
             aria-valuemax={max}
             aria-valuetext={this._getAriaValueText(value)}
             aria-label={ariaLabel || label}
+            aria-disabled={disabled}
             {...onMouseDownProp}
             {...onTouchStartProp}
             {...onKeyDownProp}
-            {...buttonProps}
+            {...divButtonProps}
             className={css(classNames.slideBox, buttonProps!.className)}
             id={this._id}
-            disabled={disabled}
-            type="button"
             role="slider"
+            tabIndex={disabled ? undefined : 0}
+            data-is-focusable={!disabled}
           >
             <div ref={this._sliderLine} className={classNames.line}>
               <span ref={this._thumb} className={classNames.thumb} style={this._getThumbStyle(vertical, thumbOffsetPercent)} />
@@ -116,7 +118,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
                 style={{ [lengthString]: 100 - thumbOffsetPercent + '%' }}
               />
             </div>
-          </button>
+          </div>
           {showValue && <Label className={classNames.valueLabel}>{value}</Label>}
         </div>
       </div>
@@ -215,10 +217,17 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     return currentPosition;
   }
   private _updateValue(value: number, renderedValue: number): void {
-    const interval: number = 1.0 / this.props.step!;
-    // Make sure value has correct number of decimal places based on steps without JS's floating point issues
-    const roundedValue: number = Math.round(value * interval) / interval;
+    const { step } = this.props;
 
+    let numDec = 0;
+    if (isFinite(step!)) {
+      while (Math.round(step! * Math.pow(10, numDec)) / Math.pow(10, numDec) !== step!) {
+        numDec++;
+      }
+    }
+
+    // Make sure value has correct number of decimal places based on number of decimals in step
+    const roundedValue = parseFloat(value.toFixed(numDec));
     const valueChanged = roundedValue !== this.state.value;
 
     this.setState(

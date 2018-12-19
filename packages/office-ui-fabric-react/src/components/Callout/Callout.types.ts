@@ -4,7 +4,7 @@ import { IRefObject, IPoint, IRectangle, IStyleFunctionOrObject } from '../../Ut
 import { ICalloutPositionedInfo } from '../../utilities/positioning';
 import { ILayerProps } from '../../Layer';
 
-export interface ICallout { }
+export interface ICallout {}
 
 export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
@@ -97,6 +97,12 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
    * @defaultvalue false
    */
   coverTarget?: boolean;
+
+  /**
+   * If true the positioning logic will prefer to flip edges rather than to nudge the rectangle to fit within bounds,
+   * thus making sure the element aligns perfectly with target's alignment edge
+   */
+  alignTargetEdge?: boolean;
 
   /**
    * Aria role assigned to the callout (Eg. dialog, alertdialog).

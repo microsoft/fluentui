@@ -52,6 +52,7 @@ export const AppState: IAppState = {
       url: '#/styles',
       className: 'stylesPage',
       isUhfLink: true,
+      component: () => <LoadingComponent title="Styles" />,
       getComponent: cb => require.ensure([], require => cb(require<any>('../../pages/Overviews/StylesPage').StylesPage)),
       pages: [
         {
@@ -122,13 +123,12 @@ export const AppState: IAppState = {
       url: '#/components',
       className: 'componentsPage',
       isUhfLink: true,
-      component: require<any>('../../pages/Overviews/ComponentsPage').ComponentsPage,
+      getComponent: cb => require.ensure([], require => cb(require<any>('../../pages/Overviews/ComponentsPage').ComponentsPage)),
       pages: [
         {
           title: 'Basic Inputs',
           url: '#/components',
           className: 'componentsPage',
-          isUhfLink: true,
           isCategory: true,
           pages: [
             {
@@ -243,7 +243,6 @@ export const AppState: IAppState = {
           title: 'Navigation',
           url: '#/components',
           className: 'componentsPage',
-          isUhfLink: true,
           isCategory: true,
           pages: [
             {
@@ -300,7 +299,6 @@ export const AppState: IAppState = {
           title: 'Content',
           url: '#/components',
           className: 'componentsPage',
-          isUhfLink: true,
           isCategory: true,
           pages: [
             {
@@ -506,7 +504,6 @@ export const AppState: IAppState = {
           title: 'Pickers',
           url: '#/components',
           className: 'componentsPage',
-          isUhfLink: true,
           isCategory: true,
           pages: [
             {
@@ -559,7 +556,6 @@ export const AppState: IAppState = {
           title: 'Progress & Validation',
           url: '#/components',
           className: 'componentsPage',
-          isUhfLink: true,
           isCategory: true,
           pages: [
             {
@@ -602,9 +598,9 @@ export const AppState: IAppState = {
           title: 'Surfaces',
           url: '#/components',
           className: 'componentsPage',
-          isUhfLink: true,
           isCategory: true,
-          component: require<any>('../../pages/Overviews/ComponentsPage').ComponentsPage,
+          component: () => <LoadingComponent title="Surfaces" />,
+          getComponent: cb => require.ensure([], require => cb(require<any>('../../pages/Overviews/ComponentsPage').ComponentsPage)),
           pages: [
             {
               title: 'Callout',
@@ -714,7 +710,6 @@ export const AppState: IAppState = {
           title: 'Utilities',
           url: '#/components/utilities',
           className: 'componentsPage',
-          isUhfLink: true,
           isCategory: true,
           component: () => <LoadingComponent title="Utilities" />,
           getComponent: cb =>
@@ -776,7 +771,6 @@ export const AppState: IAppState = {
           title: 'Customization',
           url: '#/components/customization',
           className: 'componentsPage',
-          isUhfLink: true,
           isCategory: true,
           component: () => <LoadingComponent title="Customization" />,
           getComponent: cb =>
@@ -816,6 +810,7 @@ export const AppState: IAppState = {
       url: '#/blog',
       className: 'blogPage',
       isUhfLink: true,
+      isHiddenFromMainNav: true,
       getComponent: cb => require.ensure([], require => cb(require<any>('../../pages/BlogPage/BlogPage').BlogPage))
     },
     {

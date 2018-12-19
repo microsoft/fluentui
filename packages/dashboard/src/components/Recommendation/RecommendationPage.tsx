@@ -2,13 +2,14 @@ import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 import {
   RecommendationBasicExample,
-  RecommendationDlpExample,
+  RecommendationAutoFontExample,
+  RecommendationCustomDataVizExample,
   RecommendationPasswordSettingsExample,
   RecommendationMultiStackedBarChartExample
 } from './examples/index';
 const RecommendationExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Recommendation/examples/Recommendation.Basic.Example.tsx') as string;
-
-const DlpRecommendationCode = require('!raw-loader!@uifabric/dashboard/src/components/Recommendation/examples/Recommendation.DLP.Example.tsx') as string;
+const RecommendationAutoFontExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Recommendation/examples/Recommendation.AutoFont.Example.tsx') as string;
+const DlpRecommendationCode = require('!raw-loader!@uifabric/dashboard/src/components/Recommendation/examples/Recommendation.CustomDataViz.Example.tsx') as string;
 const DlpStackedBarChartCode = require('!raw-loader!@uifabric/dashboard/src/components/Recommendation/examples/Recommendation.MultiStackedBarChart.Example.tsx') as string;
 
 const PasswordSettingsRecommendationCode = require('!raw-loader!@uifabric/dashboard/src/components/Recommendation/examples/Recommendation.PasswordSettings.Example.tsx') as string;
@@ -24,8 +25,11 @@ export class RecommendationPage extends React.Component<IComponentDemoPageProps,
             <ExampleCard title="Basic Recommendation Card" code={RecommendationExampleCode}>
               <RecommendationBasicExample />
             </ExampleCard>
-            <ExampleCard title="DLP Recommendation Card (Data Visualization Example)" code={DlpRecommendationCode}>
-              <RecommendationDlpExample />
+            <ExampleCard title="AutoFont Adjusting Recommendation Card" code={RecommendationAutoFontExampleCode}>
+              <RecommendationAutoFontExample />
+            </ExampleCard>
+            <ExampleCard title="Custom DataViz Recommendation Card" code={DlpRecommendationCode}>
+              <RecommendationCustomDataVizExample />
             </ExampleCard>
             <ExampleCard title="DLP Recommendation Card (StackedBarChart Example)" code={DlpStackedBarChartCode}>
               <RecommendationMultiStackedBarChartExample />
@@ -40,18 +44,13 @@ export class RecommendationPage extends React.Component<IComponentDemoPageProps,
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={[
-              require<string>('!raw-loader!@uifabric/dashboard/src/components/Recommendation/Recommendation.types.ts')
-            ]}
+            sources={[require<string>('!raw-loader!@uifabric/dashboard/src/components/Recommendation/Recommendation.types.ts')]}
           />
         }
         /* tslint:disable:max-line-length */
         overview={
           <div>
-            <p>
-              The recommendation control allows you to recommend an action to an admin with and without a data
-              visualization.
-            </p>
+            <p>The recommendation control allows you to recommend an action to an admin with and without a data visualization.</p>
           </div>
         }
         bestPractices={<div />}
@@ -61,12 +60,10 @@ export class RecommendationPage extends React.Component<IComponentDemoPageProps,
               <li>Use for features where activation can occur in a few steps in the context of M365 dashboard.</li>
               <li>Provide a concise benefit headline that speaks to the product value of the feature.</li>
               <li>
-                Keep description text brief and consider how localization may affect the message. Translation to other
-                languages may add up to 33% more characters to the string length.
+                Keep description text brief and consider how localization may affect the message. Translation to other languages may add up
+                to 33% more characters to the string length.
               </li>
-              <li>
-                Include a single data visualization only when it makes comprehension of the feature more efficient.
-              </li>
+              <li>Include a single data visualization only when it makes comprehension of the feature more efficient.</li>
               <li>Include a single CTA (“view recommendation”).</li>
               <li>Offer a corresponding report card (if applicable) on the dashboard after activation.</li>
             </ul>

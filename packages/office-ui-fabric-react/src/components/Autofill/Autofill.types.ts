@@ -95,16 +95,23 @@ export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputEleme
    * A callback used to modify the input string.
    */
   onInputChange?: (value: string) => string;
+
+  /**
+   * Should the value of the input be selected? True if we're focused on our input, false otherwise.
+   * We need to explicitly not select the text in the autofill if we are no longer focused.
+   * In IE11, selecting a input will also focus the input, causing other element's focus to be stolen.
+   */
+  preventValueSelection?: boolean;
 }
 
 /**
  * Deprecated, do not use.
  * @deprecated do not use, will be removed in 6.0
  */
-export interface IBaseAutoFill extends IAutofill { }
+export interface IBaseAutoFill extends IAutofill {}
 
 /**
  * Deprecated, do not use.
  * @deprecated do not use, will be removed in 6.0
  */
-export interface IBaseAutoFillProps extends IAutofillProps { }
+export interface IBaseAutoFillProps extends IAutofillProps {}

@@ -142,6 +142,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
 
             >
               <div
+                aria-checked={false}
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader

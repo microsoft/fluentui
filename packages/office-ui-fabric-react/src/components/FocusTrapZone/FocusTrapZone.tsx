@@ -8,15 +8,14 @@ import {
   getFirstTabbable,
   getLastTabbable,
   getNextElement,
-  focusAsync,
-  createRef
+  focusAsync
 } from '../../Utilities';
 import { IFocusTrapZone, IFocusTrapZoneProps } from './FocusTrapZone.types';
 
 export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implements IFocusTrapZone {
   private static _focusStack: FocusTrapZone[] = [];
 
-  private _root = createRef<HTMLDivElement>();
+  private _root = React.createRef<HTMLDivElement>();
   private _previouslyFocusedElementOutsideTrapZone: HTMLElement;
   private _previouslyFocusedElementInTrapZone?: HTMLElement;
   private _hasFocusHandler: boolean;
@@ -61,7 +60,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
       !ignoreExternalFocusing &&
       this._previouslyFocusedElementOutsideTrapZone &&
       typeof this._previouslyFocusedElementOutsideTrapZone.focus === 'function' &&
-      (elementContains(this._root.value, activeElement) || activeElement === document.body)
+      (elementContains(this._root.current, activeElement) || activeElement === document.body)
     ) {
       focusAsync(this._previouslyFocusedElementOutsideTrapZone);
     }
@@ -91,7 +90,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     if (
       focusPreviouslyFocusedInnerElement &&
       this._previouslyFocusedElementInTrapZone &&
-      elementContains(this._root.value, this._previouslyFocusedElementInTrapZone)
+      elementContains(this._root.current, this._previouslyFocusedElementInTrapZone)
     ) {
       // focus on the last item that had focus in the zone before we left the zone
       focusAsync(this._previouslyFocusedElementInTrapZone);

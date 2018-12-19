@@ -1,4 +1,5 @@
 import { ICardFrameStyles, ICardFrameProps } from './CardFrame.types';
+import { DefaultFontStyles } from 'office-ui-fabric-react/lib/Styling';
 
 const cardTitleBox = 40;
 
@@ -40,7 +41,7 @@ export const getStyles = (props: ICardFrameProps): ICardFrameStyles => {
       lineHeight: '19px',
       paddingLeft: '16px',
       fontSize: fontSize ? fontSize : '14px',
-      fontFamily: fontFamily ? fontFamily : 'Segoe UI',
+      fontFamily: fontFamily ? fontFamily : DefaultFontStyles.medium.fontFamily,
       fontWeight: 600,
       display: 'inline-block',
       selectors: {

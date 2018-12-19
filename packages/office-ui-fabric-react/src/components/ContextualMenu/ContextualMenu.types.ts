@@ -2,7 +2,7 @@ import * as React from 'react';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IFocusZoneProps } from '../../FocusZone';
 import { IIconProps } from '../Icon/Icon.types';
-import { ICalloutProps } from '../../Callout';
+import { ICalloutProps, ICalloutContentStyleProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
 import { IButtonStyles } from '../../Button';
 import { IRefObject, IBaseProps, IPoint, IRectangle, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
@@ -10,7 +10,7 @@ import { IWithResponsiveModeState } from '../../utilities/decorators/withRespons
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
 export { DirectionalHint } from '../../common/DirectionalHint';
 import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
-import { IContextualMenuItemProps, IContextualMenuRenderItem } from './ContextualMenuItem.types';
+import { IContextualMenuItemProps, IContextualMenuRenderItem, IContextualMenuItemStyleProps } from './ContextualMenuItem.types';
 import { IKeytipProps } from '../../Keytip';
 
 export enum ContextualMenuItemType {
@@ -20,7 +20,7 @@ export enum ContextualMenuItemType {
   Section = 3
 }
 
-export interface IContextualMenu { }
+export interface IContextualMenu {}
 
 /**
  * React.Props is deprecated and we're removing it in 6.0. Usage of 'any' should go away with it.
@@ -108,6 +108,12 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
    */
 
   coverTarget?: boolean;
+
+  /**
+   * If true the positioning logic will prefer to flip edges rather than to nudge the rectangle to fit within bounds,
+   * thus making sure the element aligns perfectly with target's alignment edge
+   */
+  alignTargetEdge?: boolean;
 
   /**
    * Collection of menu items.
@@ -483,7 +489,7 @@ export interface IContextualMenuItem {
 /**
  * React.Props is deprecated and we're removing it in 6.0. Usage of 'any' should go away with it.
  */
-export interface IContextualMenuSection extends React.Props<any> {
+export interface IContextualMenuSection extends React.ClassAttributes<any> {
   /**
    * The items to include inside the section.
    */
@@ -581,4 +587,17 @@ export interface IContextualMenuStyles {
    * Styles for the list that contains all menuItems.
    */
   list: IStyle;
+
+  /**
+   * SubComponent styles.
+   */
+  subComponentStyles: IContextualMenuSubComponentStyles;
+}
+
+export interface IContextualMenuSubComponentStyles {
+  /** Refers to the callout that hosts the ContextualMenu options */
+  callout: IStyleFunctionOrObject<ICalloutContentStyleProps, any>;
+
+  /** Refers to the item in the list */
+  menuItem: IStyleFunctionOrObject<IContextualMenuItemStyleProps, any>;
 }

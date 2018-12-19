@@ -11,7 +11,6 @@ import {
   getWindow,
   getDocument,
   css,
-  createRef,
   getNativeProps,
   divProperties
 } from '../../Utilities';
@@ -62,8 +61,8 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
 
   private _classNames: { [key in keyof ICalloutContentStyles]: string };
   private _didSetInitialFocus: boolean;
-  private _hostElement = createRef<HTMLDivElement>();
-  private _calloutElement = createRef<HTMLDivElement>();
+  private _hostElement = React.createRef<HTMLDivElement>();
+  private _calloutElement = React.createRef<HTMLDivElement>();
   private _targetWindow: Window;
   private _bounds: IRectangle;
   private _positionAttempts: number;
@@ -343,7 +342,8 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
         this.setState({
           positions: newPositions
         });
-      } else {
+      } else if (this._positionAttempts > 0) {
+        // Only call the onPositioned callback if the callout has been re-positioned at least once.
         this._positionAttempts = 0;
         if (this.props.onPositioned) {
           this.props.onPositioned(this.state.positions);

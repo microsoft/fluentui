@@ -74,7 +74,7 @@ class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends React.C
   protected _warnMutuallyExclusive(mutuallyExclusiveMap: ISettingsMap<TProps>): void;
   readonly className: string;
   componentDidMount(): void;
-  componentWillReceiveProps(newProps: Readonly<TProps>, newContext: any): void;
+  componentDidUpdate(prevProps: TProps, prevState: TState): void;
   componentWillUnmount(): void;
   // @deprecated (undocumented)
   static onError: ((errorMessage?: string, ex?: any) => void);
@@ -347,6 +347,8 @@ interface ICustomizableProps {
 // @public (undocumented)
 interface ICustomizations {
   // (undocumented)
+  inCustomizerContext?: boolean;
+  // (undocumented)
   scopedSettings: {
     [key: string]: Settings;
   }
@@ -536,206 +538,7 @@ interface ISize {
 }
 
 // @public
-enum KeyCodes {
-  // (undocumented)
-  a = 65,
-  // (undocumented)
-  add = 107,
-  // (undocumented)
-  alt = 18,
-  // (undocumented)
-  b = 66,
-  // (undocumented)
-  backSlash = 220,
-  // (undocumented)
-  backspace = 8,
-  // (undocumented)
-  c = 67,
-  // (undocumented)
-  capslock = 20,
-  // (undocumented)
-  closeBracket = 221,
-  // (undocumented)
-  comma = 188,
-  // (undocumented)
-  ctrl = 17,
-  // (undocumented)
-  d = 68,
-  // (undocumented)
-  dash = 189,
-  // (undocumented)
-  decimalPoint = 110,
-  // (undocumented)
-  del = 46,
-  // (undocumented)
-  divide = 111,
-  // (undocumented)
-  down = 40,
-  // (undocumented)
-  e = 69,
-  // (undocumented)
-  eight = 56,
-  // (undocumented)
-  eight_numpad = 104,
-  // (undocumented)
-  end = 35,
-  // (undocumented)
-  enter = 13,
-  // (undocumented)
-  equalSign = 187,
-  // (undocumented)
-  escape = 27,
-  // (undocumented)
-  f = 70,
-  // (undocumented)
-  f1 = 112,
-  // (undocumented)
-  f10 = 121,
-  // (undocumented)
-  f11 = 122,
-  // (undocumented)
-  f12 = 123,
-  // (undocumented)
-  f2 = 113,
-  // (undocumented)
-  f3 = 114,
-  // (undocumented)
-  f4 = 115,
-  // (undocumented)
-  f5 = 116,
-  // (undocumented)
-  f6 = 117,
-  // (undocumented)
-  f7 = 118,
-  // (undocumented)
-  f8 = 119,
-  // (undocumented)
-  f9 = 120,
-  // (undocumented)
-  five = 53,
-  // (undocumented)
-  five_numpad = 101,
-  // (undocumented)
-  forwardSlash = 191,
-  // (undocumented)
-  four = 52,
-  // (undocumented)
-  four_numpad = 100,
-  // (undocumented)
-  g = 71,
-  // (undocumented)
-  graveAccent = 192,
-  // (undocumented)
-  h = 72,
-  // (undocumented)
-  home = 36,
-  // (undocumented)
-  i = 73,
-  // (undocumented)
-  insert = 45,
-  // (undocumented)
-  j = 74,
-  // (undocumented)
-  k = 75,
-  // (undocumented)
-  l = 76,
-  // (undocumented)
-  left = 37,
-  // (undocumented)
-  leftWindow = 91,
-  // (undocumented)
-  m = 77,
-  // (undocumented)
-  multiply = 106,
-  // (undocumented)
-  n = 78,
-  // (undocumented)
-  nine = 57,
-  // (undocumented)
-  nine_numpad = 105,
-  // (undocumented)
-  numlock = 144,
-  // (undocumented)
-  o = 79,
-  // (undocumented)
-  one = 49,
-  // (undocumented)
-  one_numpad = 97,
-  // (undocumented)
-  openBracket = 219,
-  // (undocumented)
-  p = 80,
-  // (undocumented)
-  pageDown = 34,
-  // (undocumented)
-  pageUp = 33,
-  // (undocumented)
-  pauseBreak = 19,
-  // (undocumented)
-  period = 190,
-  // (undocumented)
-  q = 81,
-  // (undocumented)
-  r = 82,
-  // (undocumented)
-  right = 39,
-  // (undocumented)
-  rightWindow = 92,
-  // (undocumented)
-  s = 83,
-  // (undocumented)
-  scrollLock = 145,
-  // (undocumented)
-  select = 93,
-  // (undocumented)
-  semicolon = 186,
-  // (undocumented)
-  seven = 55,
-  // (undocumented)
-  seven_numpad = 103,
-  // (undocumented)
-  shift = 16,
-  // (undocumented)
-  singleQuote = 222,
-  // (undocumented)
-  six = 54,
-  // (undocumented)
-  six_numpad = 102,
-  // (undocumented)
-  space = 32,
-  // (undocumented)
-  subtract = 109,
-  // (undocumented)
-  t = 84,
-  // (undocumented)
-  tab = 9,
-  // (undocumented)
-  three = 51,
-  // (undocumented)
-  three_numpad = 99,
-  // (undocumented)
-  two = 50,
-  // (undocumented)
-  two_numpad = 98,
-  // (undocumented)
-  u = 85,
-  // (undocumented)
-  up = 38,
-  // (undocumented)
-  v = 86,
-  // (undocumented)
-  w = 87,
-  // (undocumented)
-  x = 88,
-  // (undocumented)
-  y = 89,
-  // (undocumented)
-  z = 90,
-  // (undocumented)
-  zero = 48,
-  // (undocumented)
-  zero_numpad = 96
-}
+export function isMac(reset?: boolean): boolean;
 
 // @public (undocumented)
 export function mapEnumByName<T>(theEnum: any, callback: (name?: string, value?: string | number) => T | undefined): (T | undefined)[] | undefined;
@@ -755,8 +558,11 @@ export function merge<T = {}>(target: Partial<T>, ...args: (Partial<T> | null | 
 // @public
 export function mergeAriaAttributeValues(...ariaAttributes: (string | undefined)[]): string | undefined;
 
-// @public (undocumented)
+// @public
 export function mergeCustomizations(props: ICustomizerProps, parentContext: ICustomizerContext): ICustomizerContext;
+
+// @public
+export function mergeSettings(oldSettings?: Settings, newSettings?: Settings | SettingsFunction): Settings;
 
 // @public
 export function nullRender(): JSX.Element | null;
@@ -863,6 +669,8 @@ export function warnMutuallyExclusive<P>(componentName: string, props: P, exclus
 // WARNING: Unsupported export: IComponentAsProps
 // WARNING: Unsupported export: IComponentAs
 // WARNING: Unsupported export: IStyleFunction
+// WARNING: Unsupported export: KeyCodes
+// WARNING: Unsupported export: KeyCodes
 // WARNING: Unsupported export: IRefObject
 // WARNING: Unsupported export: RefObject
 // WARNING: Unsupported export: ICssInput

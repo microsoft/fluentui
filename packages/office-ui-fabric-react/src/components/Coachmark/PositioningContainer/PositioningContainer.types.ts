@@ -2,7 +2,7 @@ import { DirectionalHint } from '../../../common/DirectionalHint';
 import { IRefObject, IBaseProps, IPoint, IRectangle } from '../../../Utilities';
 import { IPositionedData } from '../../../utilities/positioning';
 
-export interface IPositioningContainer { }
+export interface IPositioningContainer {}
 
 export interface IPositioningContainerProps extends IBaseProps<IPositioningContainer> {
   /**

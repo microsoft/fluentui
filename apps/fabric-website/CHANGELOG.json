@@ -2,6 +2,129 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.8.1",
+      "tag": "@uifabric/fabric-website_v6.8.1",
+      "date": "Fri, 30 Nov 2018 13:37:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add missing dependency",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "8276c66fdf75a4ad8b03614fd4e7c6e2c52203e5"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.43.0 <7.0.0` to `>=6.44.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.108.0 <7.0.0` to `>=6.109.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.8.0",
+      "tag": "@uifabric/fabric-website_v6.8.0",
+      "date": "Wed, 07 Nov 2018 13:31:00 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add TopNav and mobile left nav to local and non-UHF site. Allow left nav to be accessed by keyboard.",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "9580e27dd0bae4e6c57f8298a8602f3d8220ca8b"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Website: Update iconography implementation documentation",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "1d6c20753150e5337137a492d4cde3ff9b59a7fe"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.99.1 <7.0.0` to `>=6.100.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.7.2",
+      "tag": "@uifabric/fabric-website_v6.7.2",
+      "date": "Tue, 06 Nov 2018 13:31:09 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Disable api-extractor build task",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "7b1ab4cf4295fce57364338746b066496acc9ce8"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update TypeScript instructions in getting started tutorial",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "788c2eacf35056bbd0266d3cdfe1596a9861f030"
+          },
+          {
+            "comment": "Fix visual bugs caused by MWF overrides on Fabric site",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "6ae35dc88698d2ffd3f0620b615ab7bd2f343652"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.9.1 <7.0.0` to `>=6.9.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.99.0 <7.0.0` to `>=6.99.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.7.1",
+      "tag": "@uifabric/fabric-website_v6.7.1",
+      "date": "Fri, 02 Nov 2018 12:28:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update website getting started docs",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "e06f4d66bcac4c052d1903c0ec83ccbea82c14d8"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.40.1 <7.0.0` to `>=6.40.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.97.1 <7.0.0` to `>=6.98.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.7.0",
+      "tag": "@uifabric/fabric-website_v6.7.0",
+      "date": "Tue, 30 Oct 2018 18:45:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Carry over website pipeline improvements to prod-deployed index",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "bda21112a764910c54fcba11cae5a4d2e282124b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.95.0 <7.0.0` to `>=6.96.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.6.2",
       "tag": "@uifabric/fabric-website_v6.6.2",
       "date": "Wed, 24 Oct 2018 12:28:58 GMT",

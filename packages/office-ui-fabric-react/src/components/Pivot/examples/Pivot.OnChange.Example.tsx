@@ -19,7 +19,6 @@ export class PivotOnChangeExample extends React.Component<any, any> {
           <PivotItem linkText="Biz">
             <Label>Pivot #4</Label>
           </PivotItem>
-          <div>content not in a PivotItem</div>
         </Pivot>
       </div>
     );

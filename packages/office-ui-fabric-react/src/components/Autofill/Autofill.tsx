@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IAutofillProps, IAutofill } from './Autofill.types';
-import { BaseComponent, KeyCodes, getNativeProps, inputProperties, createRef } from '../../Utilities';
+import { BaseComponent, KeyCodes, getNativeProps, inputProperties } from '../../Utilities';
 
 export interface IAutofillState {
   displayValue?: string;
@@ -11,10 +11,10 @@ const SELECTION_BACKWARD = 'backward';
 
 export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> implements IAutofill {
   public static defaultProps = {
-    enableAutofillOnKeyPress: [KeyCodes.down, KeyCodes.up]
+    enableAutofillOnKeyPress: [KeyCodes.down, KeyCodes.up] as KeyCodes[]
   };
 
-  private _inputElement = createRef<HTMLInputElement>();
+  private _inputElement = React.createRef<HTMLInputElement>();
   private _autoFillEnabled = true;
   private _value: string;
 
@@ -75,15 +75,14 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
 
   public componentDidUpdate() {
     const value = this._value;
-    const { suggestedDisplayValue, shouldSelectFullInputValueInComponentDidUpdate } = this.props;
+    const { suggestedDisplayValue, shouldSelectFullInputValueInComponentDidUpdate, preventValueSelection } = this.props;
     let differenceIndex = 0;
 
-    if (
-      this._autoFillEnabled &&
-      value &&
-      suggestedDisplayValue &&
-      this._doesTextStartWith(suggestedDisplayValue, value)
-    ) {
+    if (preventValueSelection) {
+      return;
+    }
+
+    if (this._autoFillEnabled && value && suggestedDisplayValue && this._doesTextStartWith(suggestedDisplayValue, value)) {
       let shouldSelectFullRange = false;
 
       if (shouldSelectFullInputValueInComponentDidUpdate) {
@@ -100,11 +99,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
           differenceIndex++;
         }
         if (differenceIndex > 0 && this._inputElement.current) {
-          this._inputElement.current.setSelectionRange(
-            differenceIndex,
-            suggestedDisplayValue.length,
-            SELECTION_BACKWARD
-          );
+          this._inputElement.current.setSelectionRange(differenceIndex, suggestedDisplayValue.length, SELECTION_BACKWARD);
         }
       }
     }
@@ -284,12 +279,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
    */
   private _getDisplayValue(inputValue: string, suggestedDisplayValue?: string): string {
     let displayValue = inputValue;
-    if (
-      suggestedDisplayValue &&
-      inputValue &&
-      this._doesTextStartWith(suggestedDisplayValue, displayValue) &&
-      this._autoFillEnabled
-    ) {
+    if (suggestedDisplayValue && inputValue && this._doesTextStartWith(suggestedDisplayValue, displayValue) && this._autoFillEnabled) {
       displayValue = suggestedDisplayValue;
     }
     return displayValue;
@@ -306,4 +296,4 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
 /**
  *  @deprecated do not use.
  */
-export class BaseAutoFill extends Autofill { }
+export class BaseAutoFill extends Autofill {}

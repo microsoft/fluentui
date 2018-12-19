@@ -3,7 +3,7 @@ import { IIconProps } from '../../Icon';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { ITheme, IStyle } from '../../Styling';
 
-export interface IChoiceGroup { }
+export interface IChoiceGroup {}
 
 export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement> {
   /**
@@ -128,6 +128,11 @@ export interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | H
    * Should be used for 'aria-owns' and other such uses, rather than direct reference for programmatic purposes.
    */
   labelId?: string;
+
+  /**
+   * The aria label of the ChoiceGroupOption for the benefit of screen readers.
+   */
+  ariaLabel?: string;
 }
 
 export interface IChoiceGroupStyleProps {

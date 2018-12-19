@@ -1,7 +1,5 @@
 import * as React from 'react';
 import { IProcessedStyleSet } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
-import { ITextField, ITextFieldProps } from './TextField.types';
 import { Label, ILabelStyleProps, ILabelStyles } from '../../Label';
 import { Icon } from '../../Icon';
 import {
@@ -12,9 +10,10 @@ import {
   inputProperties,
   textAreaProperties,
   createRef,
-  classNamesFunction
+  classNamesFunction,
+  IStyleFunctionOrObject
 } from '../../Utilities';
-import { ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
+import { ITextField, ITextFieldProps, ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
 
 const getClassNames = classNamesFunction<ITextFieldStyleProps, ITextFieldStyles>();
 
@@ -66,9 +65,18 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
   private _lastValidation: number;
   private _latestValue: string | undefined;
   private _latestValidateValue: string | undefined;
-  private _isDescriptionAvailable: boolean;
   private _textElement = createRef<HTMLTextAreaElement | HTMLInputElement | null>();
   private _classNames: IProcessedStyleSet<ITextFieldStyles>;
+  /**
+   * If true, the text field is changing between single- and multi-line, so we'll need to reset
+   * focus after the change completes.
+   */
+  private _shouldResetFocusAfterRender: boolean | undefined;
+  /**
+   * If set, the text field is changing between single- and multi-line, so we'll need to reset
+   * selection/cursor after the change completes.
+   */
+  private _selectionBeforeInputTypeChange: [number | null, number | null] | undefined;
 
   public constructor(props: ITextFieldProps) {
     super(props);
@@ -101,13 +109,8 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
       errorMessage: ''
     };
 
-    this._onInputChange = this._onInputChange.bind(this);
-    this._onFocus = this._onFocus.bind(this);
-    this._onBlur = this._onBlur.bind(this);
-
     this._delayedValidate = this._async.debounce(this._validate, this.props.deferredValidationTime);
     this._lastValidation = 0;
-    this._isDescriptionAvailable = false;
   }
 
   /**
@@ -149,6 +152,28 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
     if (newProps.defaultValue !== this.props.defaultValue && newProps.value === undefined) {
       this._setValue(newProps.defaultValue);
     }
+
+    // Text field is changing between single- and multi-line. After the change is complete,
+    // we'll need to reset focus and selection/cursor.
+    if (!!newProps.multiline !== !!this.props.multiline && this.state.isFocused) {
+      this._shouldResetFocusAfterRender = true;
+      this._selectionBeforeInputTypeChange = [this.selectionStart, this.selectionEnd];
+    }
+  }
+
+  public componentDidUpdate(): void {
+    if (this._shouldResetFocusAfterRender) {
+      // The text field has just changed between single- and multi-line, so we need to reset focus
+      // and selection/cursor.
+      this._shouldResetFocusAfterRender = false;
+      this.focus();
+      if (this._selectionBeforeInputTypeChange) {
+        const [start, end] = this._selectionBeforeInputTypeChange;
+        if (start !== null && end !== null) {
+          this.setSelectionRange(start, end);
+        }
+      }
+    }
   }
 
   public componentWillUnmount(): void {
@@ -159,7 +184,6 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
     const {
       borderless,
       className,
-      description,
       disabled,
       iconClass,
       iconProps,
@@ -174,6 +198,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
       suffix,
       theme,
       styles,
+      autoAdjustHeight,
       onRenderAddon = this._onRenderAddon, // @deprecated
       onRenderPrefix = this._onRenderPrefix,
       onRenderSuffix = this._onRenderSuffix,
@@ -197,12 +222,9 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
       hasIcon: !!iconProps,
       underlined,
       iconClass,
-      inputClassName
+      inputClassName,
+      autoAdjustHeight
     });
-
-    // If a custom description render function is supplied then treat description as always available.
-    // Otherwise defer to the presence of description or error message text.
-    this._isDescriptionAvailable = Boolean(this.props.onRenderDescription || description || errorMessage);
 
     return (
       <div className={this._classNames.root}>
@@ -246,6 +268,15 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
   public focus() {
     if (this._textElement.current) {
       this._textElement.current.focus();
+    }
+  }
+
+  /**
+   * Blurs the text field.
+   */
+  public blur() {
+    if (this._textElement.current) {
+      this._textElement.current.blur();
     }
   }
 
@@ -314,7 +345,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
     );
   }
 
-  private _onFocus(ev: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>): void {
+  private _onFocus = (ev: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     if (this.props.onFocus) {
       this.props.onFocus(ev);
     }
@@ -323,9 +354,9 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
     if (this.props.validateOnFocusIn) {
       this._validate(this.state.value);
     }
-  }
+  };
 
-  private _onBlur(ev: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>): void {
+  private _onBlur = (ev: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     if (this.props.onBlur) {
       this.props.onBlur(ev);
     }
@@ -334,7 +365,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
     if (this.props.validateOnFocusOut) {
       this._validate(this.state.value);
     }
-  }
+  };
 
   private _onRenderLabel = (props: ITextFieldProps): JSX.Element | null => {
     const { label, required } = props;
@@ -385,6 +416,15 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
     return errorMessage;
   }
 
+  /**
+   * If a custom description render function is supplied then treat description as always available.
+   * Otherwise defer to the presence of description or error message text.
+   */
+  private get _isDescriptionAvailable(): boolean {
+    const props = this.props;
+    return !!(props.onRenderDescription || props.description || this._errorMessage);
+  }
+
   private _renderTextArea(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
     const textAreaProps = getNativeProps(this.props, textAreaProperties, ['defaultValue']);
 
@@ -408,9 +448,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
   }
 
   private _renderInput(): React.ReactElement<React.HTMLAttributes<HTMLInputElement>> {
-    const inputProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties, [
-      'defaultValue'
-    ]);
+    const inputProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties, ['defaultValue']);
 
     return (
       <input
@@ -432,7 +470,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
     );
   }
 
-  private _onInputChange(event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>): void {
+  private _onInputChange = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     event.persist();
     const element: HTMLInputElement = event.target as HTMLInputElement;
     const value: string = element.value;
@@ -443,31 +481,27 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
     }
     this._latestValue = value;
 
-    this.setState(
-      {
-        value: value
-      } as ITextFieldState,
-      () => {
-        this._adjustInputHeight();
+    this.setState({ value: value } as ITextFieldState, () => {
+      this._adjustInputHeight();
 
-        if (this.props.onChange) {
-          this.props.onChange(event, value);
-        }
-
-        if (this.props.onChanged) {
-          this.props.onChanged(value);
-        }
+      if (this.props.onChange) {
+        this.props.onChange(event, value);
       }
-    );
+
+      if (this.props.onChanged) {
+        this.props.onChanged(value);
+      }
+    });
 
     const { validateOnFocusIn, validateOnFocusOut } = this.props;
     if (!(validateOnFocusIn || validateOnFocusOut)) {
       this._delayedValidate(value);
     }
 
-    const onBeforeChange = this.props.onBeforeChange as (newValue: any) => void;
-    onBeforeChange(value);
-  }
+    if (this.props.onBeforeChange) {
+      this.props.onBeforeChange(value);
+    }
+  };
 
   private _validate(value: string | undefined): void {
     const { validateOnFocusIn, validateOnFocusOut } = this.props;
@@ -478,16 +512,12 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
     }
 
     this._latestValidateValue = value;
-    const onGetErrorMessage = this.props.onGetErrorMessage as (
-      value: string
-    ) => string | PromiseLike<string> | undefined;
+    const onGetErrorMessage = this.props.onGetErrorMessage as (value: string) => string | PromiseLike<string> | undefined;
     const result = onGetErrorMessage(value || '');
 
     if (result !== undefined) {
       if (typeof result === 'string') {
-        this.setState({
-          errorMessage: result
-        } as ITextFieldState);
+        this.setState({ errorMessage: result } as ITextFieldState);
         this._notifyAfterValidate(value, result);
       } else {
         const currentValidation: number = ++this._lastValidation;
@@ -514,8 +544,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
     if (this._textElement.current && this.props.autoAdjustHeight && this.props.multiline) {
       const textField = this._textElement.current;
       textField.style.height = '';
-      const scrollHeight = textField.scrollHeight + 2; // +2 to avoid vertical scroll bars
-      textField.style.height = scrollHeight + 'px';
+      textField.style.height = textField.scrollHeight + 'px';
     }
   }
 }

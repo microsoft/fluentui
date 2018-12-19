@@ -2,6 +2,34 @@
   "name": "@uifabric/icons",
   "entries": [
     {
+      "version": "6.3.0",
+      "tag": "@uifabric/icons_v6.3.0",
+      "date": "Tue, 20 Nov 2018 20:12:42 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Icons: Add new font files that were missed from the most recent update.",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "02c5ffd162c334369b9f4b03b03d972bcb10a970"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.2.0",
+      "tag": "@uifabric/icons_v6.2.0",
+      "date": "Tue, 20 Nov 2018 13:32:17 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Icons: Added many new icons from the Fabric icons tool (aka.ms/fabric-icons)",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "fd8af84b7deea5e883773f565477b74831cd6c81"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.1.2",
       "tag": "@uifabric/icons_v6.1.2",
       "date": "Mon, 08 Oct 2018 12:24:15 GMT",

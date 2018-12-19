@@ -17,8 +17,7 @@ import {
   isElementFocusZone,
   isElementFocusSubZone,
   isElementTabbable,
-  shouldWrapFocus,
-  createRef
+  shouldWrapFocus
 } from '../../Utilities';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
@@ -48,7 +47,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     direction: FocusZoneDirection.bidirectional
   };
 
-  private _root = createRef<HTMLElement>();
+  private _root = React.createRef<HTMLElement>();
   private _id: string;
   /** The most recently focused child element. */
   private _activeElement: HTMLElement | null;
@@ -122,10 +121,10 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         role="presentation"
         {...divProps}
         {
-        // root props has been deprecated and should get removed.
-        // it needs to be marked as "any" since root props expects a div element, but really Tag can
-        // be any native element so typescript rightly flags this as a problem.
-        ...rootProps as any
+          // root props has been deprecated and should get removed.
+          // it needs to be marked as "any" since root props expects a div element, but really Tag can
+          // be any native element so typescript rightly flags this as a problem.
+          ...rootProps as any
         }
         className={css('ms-FocusZone', className)}
         ref={this._root}

@@ -13,7 +13,7 @@ export interface IDetailsHeader {
   focus: () => boolean;
 }
 
-export interface IDetailsHeaderBaseProps extends React.Props<DetailsHeaderBase>, IDetailsItemProps {
+export interface IDetailsHeaderBaseProps extends React.ClassAttributes<DetailsHeaderBase>, IDetailsItemProps {
   /** Theme from the Higher Order Component */
   theme?: ITheme;
 

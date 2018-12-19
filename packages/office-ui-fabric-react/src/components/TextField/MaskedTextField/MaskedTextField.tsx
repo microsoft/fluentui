@@ -17,24 +17,7 @@ import {
 } from './inputMask';
 
 /**
- * props.mask:
- *  The string containing the prompt and format characters.
- * @example
- *  `Phone Number: (999) 9999`
- *
- * _maskCharData
- *  An array of data containing information regarding the format characters,
- *  their indices inside the display text, and their corresponding values.
- * @example
- * ```
- *  [
- *    { value: '1', displayIndex: 16, format: /[0-9]/ },
- *    { value: '2', displayIndex: 17, format: /[0-9]/ },
- *    { displayIndex: 18, format: /[0-9]/ },
- *    { value: '4', displayIndex: 22, format: /[0-9]/ },
- *    ...
- *  ]
- * ```
+ * State for the MaskedTextField component.
  */
 export interface IMaskedTextFieldState {
   /**
@@ -50,12 +33,7 @@ export interface IMaskedTextFieldState {
 
 export const DEFAULT_MASK_CHAR = '_';
 
-enum inputChangeType {
-  default,
-  backspace,
-  delete,
-  textPasted
-}
+type InputChangeType = 'default' | 'backspace' | 'delete' | 'textPasted';
 
 export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextFieldState> implements ITextField {
   public static defaultProps: ITextFieldProps = {
@@ -68,15 +46,29 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
   protected _skipComponentRefResolution = true;
 
   private _textField: ITextField;
+  /**
+   *  An array of data containing information regarding the format characters,
+   *  their indices inside the display text, and their corresponding values.
+   * @example
+   * ```
+   *  [
+   *    { value: '1', displayIndex: 16, format: /[0-9]/ },
+   *    { value: '2', displayIndex: 17, format: /[0-9]/ },
+   *    { displayIndex: 18, format: /[0-9]/ },
+   *    { value: '4', displayIndex: 22, format: /[0-9]/ },
+   *    ...
+   *  ]
+   * ```
+   */
   private _maskCharData: IMaskValue[];
-  // True if the TextField is focused
+  /** True if the TextField is focused */
   private _isFocused: boolean;
-  // True if the TextField was not focused and it was clicked into
+  /** True if the TextField was not focused and it was clicked into */
   private _moveCursorOnMouseUp: boolean;
 
-  // The stored selection data prior to input change events.
+  /** The stored selection data prior to input change events. */
   private _changeSelectionData: {
-    changeType: inputChangeType;
+    changeType: InputChangeType;
     selectionStart: number;
     selectionEnd: number;
   } | null;
@@ -168,6 +160,10 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
     this._textField && this._textField.focus();
   }
 
+  public blur(): void {
+    this._textField && this._textField.blur();
+  }
+
   public select(): void {
     this._textField && this._textField.select();
   }
@@ -254,14 +250,14 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
   }
 
   @autobind
-  private _onBeforeChange(value: String) {
+  private _onBeforeChange(value: string) {
     if (this.props.onBeforeChange) {
       this.props.onBeforeChange(value);
     }
 
     if (this._changeSelectionData === null) {
       this._changeSelectionData = {
-        changeType: inputChangeType.default,
+        changeType: 'default',
         selectionStart: this._textField.selectionStart !== null ? this._textField.selectionStart : -1,
         selectionEnd: this._textField.selectionEnd !== null ? this._textField.selectionEnd : -1
       };
@@ -280,7 +276,7 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
     let cursorPos = 0;
     const { changeType, selectionStart, selectionEnd } = this._changeSelectionData;
 
-    if (changeType === inputChangeType.textPasted) {
+    if (changeType === 'textPasted') {
       const charsSelected = selectionEnd - selectionStart,
         charCount = value.length + charsSelected - displayValue.length,
         startPos = selectionStart,
@@ -291,9 +287,9 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
         this._maskCharData = clearRange(this._maskCharData, selectionStart, charsSelected);
       }
       cursorPos = insertString(this._maskCharData, startPos, pastedString);
-    } else if (changeType === inputChangeType.delete || changeType === inputChangeType.backspace) {
+    } else if (changeType === 'delete' || changeType === 'backspace') {
       // isDel is true If the characters are removed LTR, otherwise RTL
-      const isDel = changeType === inputChangeType.delete,
+      const isDel = changeType === 'delete',
         charCount = selectionEnd - selectionStart;
 
       if (charCount) {
@@ -381,7 +377,7 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
         }
 
         this._changeSelectionData = {
-          changeType: keyCode === KeyCodes.backspace ? inputChangeType.backspace : inputChangeType.delete,
+          changeType: keyCode === KeyCodes.backspace ? 'backspace' : 'delete',
           selectionStart: selectionStart !== null ? selectionStart : -1,
           selectionEnd: selectionEnd !== null ? selectionEnd : -1
         };
@@ -399,7 +395,7 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
       selectionEnd = (event.target as HTMLInputElement).selectionEnd;
     // Store the paste selection range
     this._changeSelectionData = {
-      changeType: inputChangeType.textPasted,
+      changeType: 'textPasted',
       selectionStart: selectionStart !== null ? selectionStart : -1,
       selectionEnd: selectionEnd !== null ? selectionEnd : -1
     };

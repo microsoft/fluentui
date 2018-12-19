@@ -3,7 +3,7 @@ import { IStyle, ITheme } from '../../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
 import { IShimmerElement } from '../Shimmer.types';
 
-export interface IShimmerElementsGroup { }
+export interface IShimmerElementsGroup {}
 
 /**
  * ShimmerElementsGroup component props.
