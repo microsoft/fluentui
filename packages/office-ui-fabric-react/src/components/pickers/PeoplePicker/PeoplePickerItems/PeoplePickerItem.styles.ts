@@ -82,7 +82,8 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
           selectors: {
             [HighContrastSelector]: {
               borderColor: 'HighLight',
-              background: 'Highlight'
+              background: 'Highlight',
+              MsHighContrastAdjust: 'none'
             }
           }
         }
