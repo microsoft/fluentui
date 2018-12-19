@@ -76,14 +76,18 @@ export function getStyles(props: ISuggestionItemStyleProps): ISuggestionItemStyl
         height: 'auto',
         width: 32,
         selectors: {
-          ':hover': {
-            background: palette.neutralLight
+          ':hover, :active': {
+            background: palette.neutralTertiaryAlt,
+            color: palette.neutralDark
+          },
+          [HighContrastSelector]: {
+            color: 'WindowText'
           }
         }
       },
       suggested && {
         selectors: {
-          ':hover': {
+          ':hover, :active': {
             background: palette.neutralTertiary,
             color: palette.neutralPrimary
           }
