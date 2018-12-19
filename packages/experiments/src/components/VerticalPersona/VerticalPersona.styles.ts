@@ -1,5 +1,5 @@
 import { merge } from 'office-ui-fabric-react/lib/Utilities';
-import { isSingleLineText } from '@uifabric/experiments/lib/utilities/textHelpers';
+import { isSingleLineText } from '../../utilities/textHelpers';
 import { IVerticalPersonaComponent, IVerticalPersonaStyleVariableTypes } from './VerticalPersona.types';
 
 export const VerticalPersonaStyles: IVerticalPersonaComponent['styles'] = props => {
