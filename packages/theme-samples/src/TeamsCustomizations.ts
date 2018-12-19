@@ -90,7 +90,7 @@ export const TeamsCustomizations: ICustomizations = {
               color: 'purple'
             }
           ]
-        }
+        };
       },
       styleVariables: {
         baseVariant: {

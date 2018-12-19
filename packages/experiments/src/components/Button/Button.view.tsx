@@ -3,24 +3,18 @@ import { IButtonComponent, IButtonSlots, IButtonViewProps } from './Button.types
 import { Stack } from '../../Stack';
 import { ContextualMenu } from 'office-ui-fabric-react';
 import { getNativeProps, buttonProperties } from '../../Utilities';
-import { Icon as IconOld, Text as TextOld } from '../../utilities/factoryComponents';
-import { Icon as IconNew, Text as TextNew } from '../../utilities/factoryComponents.new';
-import { createElementWrapper, getSlots } from '../../utilities/slots';
-import { getSlotsNew } from '../../utilities/slots.new';
+import { Icon, Text } from '../../utilities/factoryComponents';
+import { createElementWrapper, getSlots } from '@uifabric/foundation';
 
 export const ButtonView: IButtonComponent['view'] = props => {
-  const { classNames, menu: Menu, children, content, icon, expanded, disabled, onMenuDismiss, menuTarget, ...rest } = props;
+  const { menu: Menu, children, content, icon, expanded, disabled, onMenuDismiss, menuTarget, ...rest } = props;
 
   // TODO: 'href' is anchor property... consider getNativeProps by root type
   // const buttonProps = { ...getNativeProps(rest, buttonProperties), href: props.href };
   // const buttonProps = { ...getNativeProps(props, ['button'], ['icon']) };
   const buttonProps = { ...getNativeProps(rest, buttonProperties) };
 
-  const slotsFunction: typeof getSlots = props.useNewSlots ? getSlotsNew : getSlots;
-  const Icon = props.useNewSlots ? IconNew : IconOld;
-  const Text = props.useNewSlots ? TextNew : TextOld;
-
-  const Slots = slotsFunction<typeof props, IButtonSlots>(props, {
+  const Slots = getSlots<typeof props, IButtonSlots>(props, {
     root: _deriveRootType(props),
     stack: Stack,
     icon: Icon,

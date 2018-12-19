@@ -1,7 +1,10 @@
 import * as React from 'react';
 // TODO: pull this from utilities instead of adding a dependency to OUFR in Foundation
-import { memoizeFunction } from 'office-ui-fabric-react';
-import { mergeStyles } from '@uifabric/styling';
+import { IStyleSet, mergeStyles } from '@uifabric/styling';
+import { memoizeFunction } from '@uifabric/utilities';
+import { IStylesFunctionOrObject } from './createComponent';
+
+// TODO: move types out. into ISlots.ts?
 
 /**
  * Signature of components that have component factories.
@@ -36,7 +39,9 @@ export type ISlot<TProps> = ((props: IPropsWithChildren<TProps>) => JSX.Element)
 /**
  * Interface for a slot factory that consumes both componnent and user slot prop and generates rendered output.
  */
-export type ISlotFactory<TProps> = (componentProps: TProps, userProps?: ISlotProp<TProps>) => JSX.Element;
+export type ISlotFactory<TProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>> =
+  (componentProps: TProps, userProps: ISlotProp<TProps> | undefined, defaultStyles: IStylesFunctionOrObject<TProps, TTokens, TStyleSet>) =>
+    JSX.Element;
 
 /**
  * Interface for aggregated Slots objects used internally by components.
@@ -46,8 +51,17 @@ export type ISlots<TSlots> = { [slot in keyof TSlots]: ISlot<TSlots[slot]> };
 /**
  * User properties that are automatically applied by Slot utilities using slot name.
  */
-export interface IUserProps<TSlots> {
-  classNames: { [prop in keyof TSlots]?: string };
+// TODO: remove?
+// export interface IUserProps<TSlots> {
+//   classNames: { [prop in keyof TSlots]?: string };
+// }
+// TODO: also use this type in createComponent somehow to bind types. also, is this the best way to do this?
+export type ISlotStyles<TViewProps, TSlots, TTokens, TStyleSet extends IStyleSet<TStyleSet>> =
+  { [slot in keyof TSlots]: IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet> };
+
+export interface ISlotProps<TViewProps, TSlots, TTokens, TStyleSet extends IStyleSet<TStyleSet>> {
+  // _defaultStyles: IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet>;
+  _defaultStyles: ISlotStyles<TViewProps, TSlots, TTokens, TStyleSet>;
 }
 
 /**
@@ -103,11 +117,11 @@ export function createElementWrapper<P>(
  * @param options Factory options, including defaultProp value for shorthand prop mapping.
  * @returns ISlotFactory function used for rendering slots.
  */
-export function createFactory<TProps>(
+export function createFactory<TProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>>(
   ComponentType: React.ComponentType<TProps>,
   options: IFactoryOptions<TProps> = { defaultProp: 'children' }
-): ISlotFactory<TProps> {
-  const result: ISlotFactory<TProps> = (componentProps, userProps, defaultStyles) => {
+): ISlotFactory<TProps, TTokens, TStyleSet> {
+  const result: ISlotFactory<TProps, TTokens, TStyleSet> = (componentProps, userProps, defaultStyles) => {
     const propType = typeof userProps;
 
     // If they passed in raw JSX, just return that.
@@ -136,7 +150,8 @@ export function createFactory<TProps>(
         defaultStyles,
         componentProps.className,
         // TODO: how can this be resolved with finalProps before declaration?? is always undefined
-        // TODO: make sure this case is covered with examples and tests (user styles function)
+        // TODO: make sure this case is covered with examples and tests (user styles function) which uses theme
+        // TODO: what about passing theme?
         _resolveWith(finalProps, userProps && userProps.styles),
         userProps && userProps.className
       )
@@ -154,11 +169,25 @@ export function createFactory<TProps>(
   return result;
 }
 
+// TODO: this is very similar to existing evaluateStyleFunction above
 const _resolveWith = (props, styles) => (typeof styles === 'function') ? styles(props) : styles;
 // const _resolveWith = (props, styles) => {
 //   console.log('_resolveWith: props = ' + props);
 //   return (typeof styles === 'function') ? styles(props) : styles;
 // }
+
+function _evaluateStyle<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>>(
+  props: TViewProps,
+  styles?: IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet>
+): Partial<TStyleSet> | undefined {
+  if (typeof styles === 'function') {
+    // TOOD: need theme to resolve styles!
+    return styles(props);
+  }
+
+  return styles;
+}
+
 
 /**
  * Default factory for components without explicit factories.
@@ -168,9 +197,10 @@ const getDefaultFactory = memoizeFunction(type => createFactory(type));
 /**
  * Default factory helper.
  */
-function defaultFactory<TComponent, TProps>(type: TComponent, componentProps: TProps, userProps: TProps, defaultStyles) {
-  return getDefaultFactory(type)(componentProps, userProps, defaultStyles);
-}
+// function defaultFactory<TComponent, TProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>>
+//   (type: TComponent, componentProps: TProps, userProps: TProps, defaultStyles) {
+//   return getDefaultFactory(type)(componentProps, userProps, defaultStyles);
+// }
 
 /**
  * Render a slot given component and user props. Uses component factory if available, otherwise falls back
@@ -179,16 +209,17 @@ function defaultFactory<TComponent, TProps>(type: TComponent, componentProps: TP
  * @param componentProps The properties passed into slot from within the component.
  * @param userProps The user properties passed in from outside of the component.
  */
-function renderSlot<TComponent extends IFactoryComponent<TProps>, TProps>(
+function renderSlot<TComponent extends IFactoryComponent<TProps>, TProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>>(
   ComponentType: TComponent,
   componentProps: TProps,
   userProps: TProps,
-  defaultStyles
+  defaultStyles: IStylesFunctionOrObject<TProps, TTokens, TStyleSet>
 ): JSX.Element {
   if (ComponentType.create !== undefined) {
     return ComponentType.create(componentProps, userProps, defaultStyles);
   } else {
-    return defaultFactory(ComponentType, componentProps, userProps, defaultStyles);
+    return getDefaultFactory(ComponentType)(componentProps, userProps, defaultStyles);
+    // return defaultFactory(ComponentType, componentProps, userProps, defaultStyles);
   }
 }
 
@@ -198,10 +229,11 @@ function renderSlot<TComponent extends IFactoryComponent<TProps>, TProps>(
  * @param slots Slot definition object defining the default slot component for each slot.
  * @returns An set of created slots that components can render in JSX.
  */
-export function getSlots<TProps extends TSlots & IUserProps<TSlots>, TSlots extends { [key in keyof TSlots]: ISlotProp<TProps[key]> }>(
-  userProps: TProps,
-  slots: ISlotDefinition<Required<TSlots>>
-): ISlots<Required<TSlots>> {
+export function getSlots
+  <TProps extends TSlots, TSlots extends ISlots<TProps>, TTokens, TStyleSet extends IStyleSet<TStyleSet>>(
+    userProps: TProps & ISlotProps<TProps, TSlots, TTokens, TStyleSet>,
+    slots: ISlotDefinition<Required<TSlots>>
+  ): ISlots<Required<TSlots>> {
   const result: ISlots<Required<TSlots>> = {} as ISlots<Required<TSlots>>;
 
   for (const name in slots) {
@@ -212,15 +244,10 @@ export function getSlots<TProps extends TSlots & IUserProps<TSlots>, TSlots exte
       }
 
       const slot: ISlot<keyof TSlots> = slotProps => {
-        // TODO: temporarily put in to keep "old" slots working for comparison
-        if (!userProps._defaultStyles) {
-          slotProps = { ...(slotProps as any), className: userProps.classNames[name] };
-        }
-        // return renderSlot(slots[name], { ...(slotProps as any), className: userProps.classNames[name] }, userProps[name]);
-
         return renderSlot(
           slots[name],
-          slotProps,
+          // TODO: this cast to any is hiding a relationship issue between the first two args
+          slotProps as any,
           userProps[name],
           // TODO: is this check needed (put in temporarily until createComponent is updated)? what about for backwards compatibility?
           userProps._defaultStyles && userProps._defaultStyles[name],

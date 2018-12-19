@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { IButtonProps } from '../index';
-import { Button as ButtonOld, Stack } from '@uifabric/experiments';
-import { Button as ButtonNew } from '../Button.new';
+import { Button, IButtonProps } from '../index';
+import { Stack } from '@uifabric/experiments';
 import { ContextualMenu, IContextualMenuProps, Spinner } from 'office-ui-fabric-react';
 
 const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
@@ -13,10 +12,6 @@ const buttonGap = 12;
 
 export class ButtonStyleVarsExample extends React.Component<{ useNewSlots?: boolean }, {}> {
   public render(): JSX.Element {
-    const { useNewSlots } = this.props
-    const Button: React.SFC<IButtonProps> = (props) => { return useNewSlots ? <ButtonNew useNewSlots {...props} /> : <ButtonOld {...props} /> };
-
-    // TODO: how will button state fit into this?
     const ButtonSet = (props: IButtonProps) => (
       <Stack horizontal verticalAlign='center' gap={8}>
         <Button {...props} />

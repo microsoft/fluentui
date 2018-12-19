@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Button as ButtonOld, IButtonProps } from '../index';
-import { Button as ButtonNew } from '../Button.new';
+import { Button } from '../index';
 import { Stack, Text } from '@uifabric/experiments';
 import { ContextualMenu, IContextualMenuProps, Icon, CommandBar } from 'office-ui-fabric-react';
 
@@ -20,9 +19,6 @@ const ButtonStack = (props: { children: JSX.Element[] }) => (
 // TODO: remove useNewSlots everywhere
 export class ButtonExample extends React.Component<{ useNewSlots?: boolean }, {}> {
   public render(): JSX.Element {
-    const { useNewSlots } = this.props
-    const Button: React.SFC<IButtonProps> = (props) => { return useNewSlots ? <ButtonNew useNewSlots {...props} /> : <ButtonOld {...props} /> };
-
     return (
       <Stack gap={sectionGap}>
         <Stack gap={headingGap} padding={8}>

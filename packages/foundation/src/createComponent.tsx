@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { concatStyleSets, IProcessedStyleSet, IStyleSet, ITheme, mergeStyleSets } from '@uifabric/styling';
-import { Customizations, CustomizerContext, ICustomizerContext, IStyleFunctionOrObject } from '@uifabric/utilities';
+// import { Customizations, CustomizerContext, ICustomizerContext, IStyleFunctionOrObject } from '@uifabric/utilities';
+import { Customizations, CustomizerContext, ICustomizerContext } from '@uifabric/utilities';
 
 import { assign } from './utilities';
 
@@ -17,22 +18,48 @@ export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 //  + consistent with stardust
 //  - Micah no likes
 
+// TODO: update or move to IStyleFunction.ts? is the naming confusing?
+// TOOO: move all types out, into IComponent.ts?
+// TODO: call out impacts of these new types.
+//        obviates IStyleFunctionOrObject
+//        now have theme as separate arg for both tokens and styles functions
+export type IStylesFunction<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>> =
+  (props: TViewProps, theme: ITheme, tokens: TTokens) => Partial<TStyleSet>;
+
+export interface ITokenBaseArray<TViewProps, TTokens> extends Array<ITokenFunctionOrObject<TViewProps, TTokens>> { }
+export type ITokenBase<TViewProps, TTokens> = ITokenFunctionOrObject<TViewProps, TTokens> | ITokenBaseArray<TViewProps, TTokens>;
+
+// export type ITokenFunction<TViewProps, TTokens> = (props: TViewProps, theme: ITheme) => TTokens;
+export type ITokenFunction<TViewProps, TTokens> = (props: TViewProps, theme: ITheme) => ITokenBase<TViewProps, TTokens>;
+
+export type IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>> =
+  | IStylesFunction<TViewProps, TTokens, TStyleSet>
+  | Partial<TStyleSet>;
+
+export type ITokenFunctionOrObject<TViewProps, TTokens> =
+  | ITokenFunction<TViewProps, TTokens>
+  | TTokens;
+
 /**
  * Optional props for styleable components. If these props are present, they will automatically be
  * used by Foundation when applying theming and styling.
  */
 export interface IStyleableComponentProps<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>> {
-  styles?: IStyleFunctionOrObject<TViewProps, TStyleSet>;
+  styles?: IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet>;
   theme?: ITheme;
-  tokens?: TTokens;
+  tokens?: ITokenFunctionOrObject<TViewProps, TTokens>;
 }
+
+type ICustomizationProps<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>> =
+  IStyleableComponentProps<TViewProps, TTokens, TStyleSet> &
+  Required<Pick<IStyleableComponentProps<TViewProps, TTokens, TStyleSet>, 'theme'>>;
 
 /**
  * Props added by Foundation for styles functions.
  */
-export interface IStyledProps<TTheme> {
-  theme: TTheme;
-}
+// export interface IStyledProps<TTheme> {
+//   theme: TTheme;
+// }
 
 /**
  * Enforce props contract on state components, including the view prop and its shape.
@@ -50,14 +77,17 @@ export type IStateComponentType<TComponentProps, TViewProps> = React.ComponentTy
 /**
  * The props that get passed to view components.
  */
-export type IViewComponentProps<TViewProps, TProcessedStyleSet> = TViewProps & {
-  classNames: TProcessedStyleSet;
-};
+// TODO: remove?
+// export type IViewComponentProps<TViewProps, TProcessedStyleSet> = TViewProps & {
+//   classNames: TProcessedStyleSet;
+// };
 
 /**
  * A helper type for defining view components, including its properties.
  */
-export type IViewComponent<TViewProps, TProcessedStyleSet> = React.StatelessComponent<IViewComponentProps<TViewProps, TProcessedStyleSet>>;
+// export type IViewComponent<TViewProps, TProcessedStyleSet> =
+//    React.StatelessComponent<IViewComponentProps<TViewProps, TProcessedStyleSet>>;
+export type IViewComponent<TViewProps, TProcessedStyleSet> = React.StatelessComponent<TViewProps>;
 
 /**
  * Component used by foundation to tie elements together.
@@ -75,7 +105,7 @@ export interface IComponentOptions<TComponentProps, TViewProps, TTokens, TStyleS
   /**
    * Styles prop to pass into component.
    */
-  styles?: IStyleFunctionOrObject<TViewProps & IStyledProps<ITheme>, TStyleSet>;
+  styles?: IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet>;
   /**
    * React view stateless component.
    */
@@ -91,7 +121,7 @@ export interface IComponentOptions<TComponentProps, TViewProps, TTokens, TStyleS
   /**
    * Tokens prop to pass into component.
    */
-  tokens?: TTokens;
+  tokens?: ITokenBase<TViewProps, TTokens>;
 }
 
 // TODO: Known TypeScript issue is widening return type checks when using function type declarations.
@@ -153,7 +183,7 @@ export function createComponent<TComponentProps, TViewProps, TTokens, TStyleSet 
       // TODO: createComponent is also probably affected by https://github.com/OfficeDev/office-ui-fabric-react/issues/6603
       <CustomizerContext.Consumer>
         {(context: ICustomizerContext) => {
-          const settings: IStyleableComponentProps<TViewProps, TTokens, TStyleSet> = _getCustomizations(
+          const settings: ICustomizationProps<TViewProps, TTokens, TStyleSet> = _getCustomizations(
             component.displayName,
             context,
             component.fields
@@ -214,10 +244,13 @@ export function createComponent<TComponentProps, TViewProps, TTokens, TStyleSet 
 
               return component.view(viewComponentProps);
             } else {
-              const theme = settings.theme || mergedProps.theme;
+              const theme = mergedProps.theme || settings.theme;
 
               // console.log('settings.styles: ' + settings.styles);
 
+              // TOOD: Callout: This new approach removes classNames from props and makes it unavailable to views. This basically means
+              //        that Slots are required for each style section. Is this what we want? Are there use cases where there'll be style
+              //        sections not associated with Slots? If so, how will they have className applied?
               // TODO: keep themes as part of mergedProps or make separate variable? (might clean up awkward typings to make it separate)
               // TODO: then again, createComponent shouldn't know about settings that are being passed on... it should NOT be a separate arg
               // TODO: david mentioned avoiding mixins for perf, but with theme (and other fields) coming from either settings or props,
@@ -229,10 +262,12 @@ export function createComponent<TComponentProps, TViewProps, TTokens, TStyleSet 
 
               console.log('styles: ' + JSON.stringify(styles));
 
-              const viewComponentProps: IViewComponentProps<TViewProps, IProcessedStyleSet<TStyleSet>> = {
+              const viewComponentProps: TViewProps = {
                 ...mergedProps,
-                // TODO: this is a "hidden" prop that view components shouldn't be aware of.
-                //        figure out a way to deal with this without using cast to any.
+                // TODO: This is a "hidden" prop that view components shouldn't be aware of.
+                //        Is this the best way to do this?
+                //        Figure out a way to deal with this without using cast to any.
+                //         const viewComponentProps: TViewProps & ISlotProps<> =
                 _defaultStyles: styles
               } as any;
 
@@ -284,8 +319,13 @@ function _evaluateStyle<TViewProps, TStyledProps extends IStyledProps<ITheme>, T
 // const _resolveStyles = (props, theme, tokens, ...allStyles) =>
 //   concatStyleSets(...allStyles.map(styles => (typeof styles === 'function') ? styles(props, theme, tokens) : styles));
 
-function _resolveStyles(props, theme, tokens, ...allStyles) {
-  return concatStyleSets(...allStyles.map(styles => (typeof styles === 'function') ? styles(props, theme, tokens) : styles));
+function _resolveStyles<TProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>>(
+  props: TProps,
+  theme: ITheme,
+  tokens: TTokens,
+  ...allStyles: (IStylesFunctionOrObject<TProps, TTokens, TStyleSet> | undefined)[]): ReturnType<typeof concatStyleSets> {
+  return concatStyleSets(...allStyles.map((styles: IStylesFunctionOrObject<TProps, TTokens, TStyleSet> | undefined) =>
+    (typeof styles === 'function') ? styles(props, theme, tokens) : styles));
 }
 
 /**
@@ -309,7 +349,8 @@ function _resolveStyles(props, theme, tokens, ...allStyles) {
 //   return tokens;
 // };
 
-function _resolveTokens(props, theme, ...allTokens) {
+function _resolveTokens<TViewProps, TTokens>
+  (props: TViewProps, theme: ITheme, ...allTokens: (ITokenBase<TViewProps, TTokens> | undefined)[]): TTokens {
   const tokens = {};
 
   for (let currentTokens of allTokens) {
@@ -321,11 +362,13 @@ function _resolveTokens(props, theme, ...allTokens) {
       currentTokens = _resolveTokens(props, theme, ...currentTokens);
     }
 
-    Object.assign(tokens, ...currentTokens);
+    Object.assign(tokens, ...(currentTokens as any));
   }
 
-  return tokens;
-};
+  // TODO: does it make sense that all tokens will always be optional? {} should be a valid TTokens object, if that's true.
+  // TODO: is it practical to have TTokens extends {} or object somehow to avoid this cast?
+  return tokens as TTokens;
+}
 
 /**
  * Helper function for calling Customizations.getSettings falling back to default fields.
@@ -338,10 +381,11 @@ function _getCustomizations<TViewProps, TTokens, TStyleSet extends IStyleSet<TSt
   displayName: string,
   context: ICustomizerContext,
   fields?: string[]
-): IStyleableComponentProps<TViewProps, TTokens, TStyleSet> {
+): ICustomizationProps<TViewProps, TTokens, TStyleSet> {
   // TODO: do we want field props? should fields be part of IComponent and used here?
   // TODO: should we centrally define DefaultFields? (not exported from styling)
   // TODO: remove styleVariables
+  // TOOD: tie this array to ICustomizationProps, such that each array element is keyof ICustomizationProps
   const DefaultFields = ['theme', 'styles', 'styleVariables', 'tokens'];
   return Customizations.getSettings(fields || DefaultFields, displayName, context.customizations);
 }

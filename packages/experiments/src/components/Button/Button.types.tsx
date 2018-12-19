@@ -6,6 +6,7 @@ import { IContextualMenuSlot, IHTMLButtonSlot, IHorizontalStackSlot, IIconSlot, 
 export type IButtonComponent = IComponent<IButtonProps, IButtonViewProps, IButtonTokens, IButtonStyles>;
 
 // States should only be javascript evaluated states. (Not css states.)
+// TODO: remove
 export type IButtonStates = 'baseState' | 'enabled' | 'disabled' | 'expanded';
 
 export type IButtonVariants = 'baseVariant' | 'primary' | 'circular';
@@ -87,6 +88,7 @@ export interface IButtonStyleVariablesTypes {
   //              Need to get with Jason Morse about this approach. There are some good arguments to defining a "common" set of tokens
   //              across all component types and variants and claims that Layer provides that ability.
   //        Going with approach 6 for now as it's the easiest to implement and pull out.
+  circularBorderRadius?: number | string;
   circularBorderWidth?: number | string;
   circularContentPadding?: number | string;
   circularHeight?: number | string;

@@ -27,6 +27,7 @@ const view: IStackComponent['view'] = props => {
 
       if (child.type === StackItemType) {
         // If child is a StackItem, we need to pass down the className of ITS first child to the StackItem for mergeStylesSet to work
+        // TODO: how will this be affected by mergeStyleSets being removed from createComponent?
         const children = child.props ? child.props.children : undefined;
         const stackItemFirstChildren = React.Children.toArray(children) as React.ReactElement<{ className?: string }>[];
         const stackItemFirstChild = stackItemFirstChildren && stackItemFirstChildren[0];
