@@ -34,7 +34,7 @@ export const SuggestionItemBase: (props: ISuggestionItemProps<any>) => JSX.Eleme
       </CommandButton>
       {showRemoveButton ? (
         <IconButton
-          iconProps={{ iconName: 'Cancel', style: { fontSize: '12px' } }}
+          iconProps={{ iconName: 'Cancel', styles: { root: { fontSize: '12px' } } }}
           title={removeButtonAriaLabel}
           ariaLabel={removeButtonAriaLabel}
           onClick={onRemoveItem}
