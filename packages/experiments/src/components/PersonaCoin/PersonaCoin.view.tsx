@@ -38,7 +38,6 @@ export const PersonaCoinView: IPersonaCoinComponent['view'] = props => {
         imageShouldStartVisible={props.imageShouldStartVisible}
         imageAlt={props.imageAlt}
       />
-      {/* TODO: Re-implement PersonaPresence and it should not render when no presence is passed */}
       {props.presence ? <PersonaPresence presence={props.presence} coinSize={coinSize} size={coinSize} styles={props.classNames} /> : null}
     </div>
   );
