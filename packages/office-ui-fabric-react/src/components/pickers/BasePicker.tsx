@@ -4,7 +4,7 @@ import { IProcessedStyleSet } from '../../Styling';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Callout, DirectionalHint } from '../../Callout';
 import { Selection, SelectionZone, SelectionMode } from '../../utilities/selection/index';
-import { Suggestions } from './Suggestions/Suggestions';
+import { styledSuggestions } from './Suggestions/Suggestions';
 import { ISuggestions } from './Suggestions/Suggestions.types';
 import { SuggestionsController } from './Suggestions/SuggestionsController';
 import { IBasePicker, IBasePickerProps, ValidationState, IBasePickerStyleProps, IBasePickerStyles } from './BasePicker.types';
@@ -268,7 +268,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   protected renderSuggestions(): JSX.Element | null {
-    const TypedSuggestions = Suggestions<T>();
+    const StyledTypedSuggestions = styledSuggestions<T>();
 
     return this.state.suggestionsVisible && this.input ? (
       <Callout
@@ -280,7 +280,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         directionalHintForRTL={DirectionalHint.bottomRightEdge}
         {...this.props.pickerCalloutProps}
       >
-        <TypedSuggestions
+        <StyledTypedSuggestions
           onRenderSuggestion={this.props.onRenderSuggestionsItem}
           onSuggestionClick={this.onSuggestionClick}
           onSuggestionRemove={this.onSuggestionRemove}

@@ -5,7 +5,7 @@ import { IProcessedStyleSet } from '../../../Styling';
 import { CommandButton, IButton } from '../../../Button';
 import { Spinner, ISpinnerStyleProps, ISpinnerStyles } from '../../../Spinner';
 import { ISuggestionsProps, SuggestionActionType, ISuggestionsStyleProps, ISuggestionsStyles } from './Suggestions.types';
-import { SuggestionItem } from './SuggestionItem';
+import { styledSuggestionItem } from './SuggestionItem';
 
 const getClassNames = classNamesFunction<ISuggestionsStyleProps, ISuggestionsStyles>();
 
@@ -279,7 +279,7 @@ export class SuggestionsBase<T> extends BaseComponent<ISuggestionsProps<T>, ISug
       return null;
     }
 
-    const TypedSuggestionItem = SuggestionItem<T>();
+    const StyledTypedSuggestionItem = styledSuggestionItem<T>();
 
     return (
       <div
@@ -298,7 +298,7 @@ export class SuggestionsBase<T> extends BaseComponent<ISuggestionsProps<T>, ISug
             role="option"
             aria-label={suggestion.ariaLabel}
           >
-            <TypedSuggestionItem
+            <StyledTypedSuggestionItem
               suggestionModel={suggestion}
               RenderSuggestion={onRenderSuggestion as any}
               onClick={this._onClickTypedSuggestionsItem(suggestion.item, index)}

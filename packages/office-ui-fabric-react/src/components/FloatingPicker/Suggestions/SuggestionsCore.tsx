@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseComponent, css, autobind } from '../../../Utilities';
-import { SuggestionItem, ISuggestionModel } from '../../../Pickers';
+import { styledSuggestionItem, ISuggestionModel } from '../../../Pickers';
 import { ISuggestionsCoreProps } from './Suggestions.types';
 import * as stylesImport from './SuggestionsCore.scss';
 // tslint:disable-next-line:no-any
@@ -123,7 +123,7 @@ export class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, 
       showRemoveButtons,
       suggestionsContainerAriaLabel
     } = this.props;
-    const TypedSuggestionsItem = SuggestionItem<T>();
+    const StyledTypedSuggestionsItem = styledSuggestionItem<T>();
     let { suggestions } = this.props;
 
     if (resultsMaximumNumber) {
@@ -147,7 +147,7 @@ export class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, 
             role="listitem"
             aria-label={suggestion.ariaLabel}
           >
-            <TypedSuggestionsItem
+            <StyledTypedSuggestionsItem
               id={'sug-item' + index}
               suggestionModel={suggestion}
               // tslint:disable-next-line:no-any

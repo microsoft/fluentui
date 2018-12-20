@@ -3,7 +3,7 @@ import * as React from 'react';
 import { IRefObject, IRenderFunction, KeyCodes, IStyleFunctionOrObject } from '../../../Utilities';
 import { IPersonaProps } from '../../Persona/Persona.types';
 import { IStyle, ITheme } from '../../../Styling';
-import { ISpinnerStyleProps } from '../../Spinner';
+import { ISpinnerStyleProps } from '../../Spinner/Spinner.types';
 
 /** Suggestions component. */
 export interface ISuggestions<T> {

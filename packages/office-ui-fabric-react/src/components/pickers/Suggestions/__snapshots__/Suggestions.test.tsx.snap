@@ -2,10 +2,21 @@
 
 exports[`Suggestions renders a list properly 1`] = `
 <div
-  className="ms-Suggestions"
+  className=
+      ms-Suggestions
+      {
+        min-width: 260px;
+      }
 >
   <div
-    className="ms-Suggestions-container"
+    className=
+        ms-Suggestions-container
+        {
+          border-bottom: 1px solid #eaeaea;
+          max-height: 300px;
+          overflow-x: hidden;
+          overflow-y: auto;
+        }
     role="listbox"
   >
     <div
@@ -14,7 +25,28 @@ exports[`Suggestions renders a list properly 1`] = `
       role="option"
     >
       <div
-        className="ms-Suggestions-item is-suggested undefined"
+        className=
+            ms-Suggestions-item
+            is-suggested
+            {
+              align-items: stretch;
+              background: #eaeaea;
+              box-sizing: border-box;
+              display: flex;
+              position: relative;
+              width: 100%;
+            }
+            &:hover {
+              background: #c8c8c8;
+            }
+            &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              background: Highlight;
+              color: HighlightText;
+            }
       >
         <button
           className=
@@ -35,17 +67,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 40px;
+                height: 100%;
                 outline: transparent;
-                padding-bottom: 0;
-                padding-left: 4px;
-                padding-right: 4px;
-                padding-top: 0;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
+                width: 100%;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -75,7 +108,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #0078d4;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -89,6 +122,9 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -125,7 +161,21 @@ exports[`Suggestions renders a list properly 1`] = `
       role="option"
     >
       <div
-        className="ms-Suggestions-item"
+        className=
+            ms-Suggestions-item
+            {
+              align-items: stretch;
+              box-sizing: border-box;
+              display: flex;
+              position: relative;
+              width: 100%;
+            }
+            &:hover {
+              background: #f4f4f4;
+            }
+            &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
       >
         <button
           className=
@@ -146,17 +196,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 40px;
+                height: 100%;
                 outline: transparent;
-                padding-bottom: 0;
-                padding-left: 4px;
-                padding-right: 4px;
-                padding-top: 0;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
+                width: 100%;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -186,7 +237,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #0078d4;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -200,6 +251,9 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -236,7 +290,21 @@ exports[`Suggestions renders a list properly 1`] = `
       role="option"
     >
       <div
-        className="ms-Suggestions-item"
+        className=
+            ms-Suggestions-item
+            {
+              align-items: stretch;
+              box-sizing: border-box;
+              display: flex;
+              position: relative;
+              width: 100%;
+            }
+            &:hover {
+              background: #f4f4f4;
+            }
+            &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
       >
         <button
           className=
@@ -257,17 +325,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 40px;
+                height: 100%;
                 outline: transparent;
-                padding-bottom: 0;
-                padding-left: 4px;
-                padding-right: 4px;
-                padding-top: 0;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
+                width: 100%;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -297,7 +366,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #0078d4;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -311,6 +380,9 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -347,7 +419,21 @@ exports[`Suggestions renders a list properly 1`] = `
       role="option"
     >
       <div
-        className="ms-Suggestions-item"
+        className=
+            ms-Suggestions-item
+            {
+              align-items: stretch;
+              box-sizing: border-box;
+              display: flex;
+              position: relative;
+              width: 100%;
+            }
+            &:hover {
+              background: #f4f4f4;
+            }
+            &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
       >
         <button
           className=
@@ -368,17 +454,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 40px;
+                height: 100%;
                 outline: transparent;
-                padding-bottom: 0;
-                padding-left: 4px;
-                padding-right: 4px;
-                padding-top: 0;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
+                width: 100%;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -408,7 +495,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #0078d4;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -422,6 +509,9 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -458,7 +548,21 @@ exports[`Suggestions renders a list properly 1`] = `
       role="option"
     >
       <div
-        className="ms-Suggestions-item"
+        className=
+            ms-Suggestions-item
+            {
+              align-items: stretch;
+              box-sizing: border-box;
+              display: flex;
+              position: relative;
+              width: 100%;
+            }
+            &:hover {
+              background: #f4f4f4;
+            }
+            &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
       >
         <button
           className=
@@ -479,17 +583,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 40px;
+                height: 100%;
                 outline: transparent;
-                padding-bottom: 0;
-                padding-left: 4px;
-                padding-right: 4px;
-                padding-top: 0;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
+                width: 100%;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -519,7 +624,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #0078d4;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -533,6 +638,9 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -569,7 +677,21 @@ exports[`Suggestions renders a list properly 1`] = `
       role="option"
     >
       <div
-        className="ms-Suggestions-item"
+        className=
+            ms-Suggestions-item
+            {
+              align-items: stretch;
+              box-sizing: border-box;
+              display: flex;
+              position: relative;
+              width: 100%;
+            }
+            &:hover {
+              background: #f4f4f4;
+            }
+            &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
       >
         <button
           className=
@@ -590,17 +712,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 40px;
+                height: 100%;
                 outline: transparent;
-                padding-bottom: 0;
-                padding-left: 4px;
-                padding-right: 4px;
-                padding-top: 0;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
+                width: 100%;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -630,7 +753,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #0078d4;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -644,6 +767,9 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -680,7 +806,21 @@ exports[`Suggestions renders a list properly 1`] = `
       role="option"
     >
       <div
-        className="ms-Suggestions-item"
+        className=
+            ms-Suggestions-item
+            {
+              align-items: stretch;
+              box-sizing: border-box;
+              display: flex;
+              position: relative;
+              width: 100%;
+            }
+            &:hover {
+              background: #f4f4f4;
+            }
+            &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
       >
         <button
           className=
@@ -701,17 +841,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 40px;
+                height: 100%;
                 outline: transparent;
-                padding-bottom: 0;
-                padding-left: 4px;
-                padding-right: 4px;
-                padding-top: 0;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
+                width: 100%;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -741,7 +882,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #0078d4;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -755,6 +896,9 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -791,7 +935,21 @@ exports[`Suggestions renders a list properly 1`] = `
       role="option"
     >
       <div
-        className="ms-Suggestions-item"
+        className=
+            ms-Suggestions-item
+            {
+              align-items: stretch;
+              box-sizing: border-box;
+              display: flex;
+              position: relative;
+              width: 100%;
+            }
+            &:hover {
+              background: #f4f4f4;
+            }
+            &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
       >
         <button
           className=
@@ -812,17 +970,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 40px;
+                height: 100%;
                 outline: transparent;
-                padding-bottom: 0;
-                padding-left: 4px;
-                padding-right: 4px;
-                padding-top: 0;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
+                width: 100%;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -852,7 +1011,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #0078d4;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -866,6 +1025,9 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -902,7 +1064,21 @@ exports[`Suggestions renders a list properly 1`] = `
       role="option"
     >
       <div
-        className="ms-Suggestions-item"
+        className=
+            ms-Suggestions-item
+            {
+              align-items: stretch;
+              box-sizing: border-box;
+              display: flex;
+              position: relative;
+              width: 100%;
+            }
+            &:hover {
+              background: #f4f4f4;
+            }
+            &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
       >
         <button
           className=
@@ -923,17 +1099,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 40px;
+                height: 100%;
                 outline: transparent;
-                padding-bottom: 0;
-                padding-left: 4px;
-                padding-right: 4px;
-                padding-top: 0;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
+                width: 100%;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -963,7 +1140,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #0078d4;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -977,6 +1154,9 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -1013,7 +1193,21 @@ exports[`Suggestions renders a list properly 1`] = `
       role="option"
     >
       <div
-        className="ms-Suggestions-item"
+        className=
+            ms-Suggestions-item
+            {
+              align-items: stretch;
+              box-sizing: border-box;
+              display: flex;
+              position: relative;
+              width: 100%;
+            }
+            &:hover {
+              background: #f4f4f4;
+            }
+            &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
       >
         <button
           className=
@@ -1034,17 +1228,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 40px;
+                height: 100%;
                 outline: transparent;
-                padding-bottom: 0;
-                padding-left: 4px;
-                padding-right: 4px;
-                padding-top: 0;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
+                width: 100%;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -1074,7 +1269,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #0078d4;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -1088,6 +1283,9 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -1124,7 +1322,21 @@ exports[`Suggestions renders a list properly 1`] = `
       role="option"
     >
       <div
-        className="ms-Suggestions-item"
+        className=
+            ms-Suggestions-item
+            {
+              align-items: stretch;
+              box-sizing: border-box;
+              display: flex;
+              position: relative;
+              width: 100%;
+            }
+            &:hover {
+              background: #f4f4f4;
+            }
+            &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
       >
         <button
           className=
@@ -1145,17 +1357,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 40px;
+                height: 100%;
                 outline: transparent;
-                padding-bottom: 0;
-                padding-left: 4px;
-                padding-right: 4px;
-                padding-top: 0;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
+                width: 100%;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -1185,7 +1398,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #0078d4;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -1199,6 +1412,9 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -1235,7 +1451,21 @@ exports[`Suggestions renders a list properly 1`] = `
       role="option"
     >
       <div
-        className="ms-Suggestions-item"
+        className=
+            ms-Suggestions-item
+            {
+              align-items: stretch;
+              box-sizing: border-box;
+              display: flex;
+              position: relative;
+              width: 100%;
+            }
+            &:hover {
+              background: #f4f4f4;
+            }
+            &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
       >
         <button
           className=
@@ -1256,17 +1486,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 40px;
+                height: 100%;
                 outline: transparent;
-                padding-bottom: 0;
-                padding-left: 4px;
-                padding-right: 4px;
-                padding-top: 0;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
+                width: 100%;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -1296,7 +1527,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #0078d4;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -1310,6 +1541,9 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -1346,7 +1580,21 @@ exports[`Suggestions renders a list properly 1`] = `
       role="option"
     >
       <div
-        className="ms-Suggestions-item"
+        className=
+            ms-Suggestions-item
+            {
+              align-items: stretch;
+              box-sizing: border-box;
+              display: flex;
+              position: relative;
+              width: 100%;
+            }
+            &:hover {
+              background: #f4f4f4;
+            }
+            &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
       >
         <button
           className=
@@ -1367,17 +1615,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 40px;
+                height: 100%;
                 outline: transparent;
-                padding-bottom: 0;
-                padding-left: 4px;
-                padding-right: 4px;
-                padding-top: 0;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
+                width: 100%;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -1407,7 +1656,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #0078d4;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -1421,6 +1670,9 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -1457,7 +1709,21 @@ exports[`Suggestions renders a list properly 1`] = `
       role="option"
     >
       <div
-        className="ms-Suggestions-item"
+        className=
+            ms-Suggestions-item
+            {
+              align-items: stretch;
+              box-sizing: border-box;
+              display: flex;
+              position: relative;
+              width: 100%;
+            }
+            &:hover {
+              background: #f4f4f4;
+            }
+            &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
       >
         <button
           className=
@@ -1478,17 +1744,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 40px;
+                height: 100%;
                 outline: transparent;
-                padding-bottom: 0;
-                padding-left: 4px;
-                padding-right: 4px;
-                padding-top: 0;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
+                width: 100%;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -1518,7 +1785,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #0078d4;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -1532,6 +1799,9 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -1568,7 +1838,21 @@ exports[`Suggestions renders a list properly 1`] = `
       role="option"
     >
       <div
-        className="ms-Suggestions-item"
+        className=
+            ms-Suggestions-item
+            {
+              align-items: stretch;
+              box-sizing: border-box;
+              display: flex;
+              position: relative;
+              width: 100%;
+            }
+            &:hover {
+              background: #f4f4f4;
+            }
+            &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
       >
         <button
           className=
@@ -1589,17 +1873,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 40px;
+                height: 100%;
                 outline: transparent;
-                padding-bottom: 0;
-                padding-left: 4px;
-                padding-right: 4px;
-                padding-top: 0;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
+                width: 100%;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -1629,7 +1914,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #0078d4;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -1643,6 +1928,9 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -1676,7 +1964,23 @@ exports[`Suggestions renders a list properly 1`] = `
   </div>
   <span
     aria-live="polite"
-    className="ms-Suggestions-suggestionsAvailable"
+    className=
+        ms-Suggestions-suggestionsAvailable
+        {
+          border: 0px;
+          height: 1px;
+          margin-bottom: -1px;
+          margin-left: -1px;
+          margin-right: -1px;
+          margin-top: -1px;
+          overflow: hidden;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: absolute;
+          width: 1px;
+        }
     role="alert"
   />
 </div>
@@ -1684,10 +1988,21 @@ exports[`Suggestions renders a list properly 1`] = `
 
 exports[`Suggestions scrolls to selected index properly 1`] = `
 <div
-  className="ms-Suggestions"
+  className=
+      ms-Suggestions
+      {
+        min-width: 260px;
+      }
 >
   <div
-    className="ms-Suggestions-container"
+    className=
+        ms-Suggestions-container
+        {
+          border-bottom: 1px solid #eaeaea;
+          max-height: 300px;
+          overflow-x: hidden;
+          overflow-y: auto;
+        }
     role="listbox"
   >
     <div
@@ -1696,7 +2011,21 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       role="option"
     >
       <div
-        className="ms-Suggestions-item"
+        className=
+            ms-Suggestions-item
+            {
+              align-items: stretch;
+              box-sizing: border-box;
+              display: flex;
+              position: relative;
+              width: 100%;
+            }
+            &:hover {
+              background: #f4f4f4;
+            }
+            &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
       >
         <button
           className=
@@ -1717,17 +2046,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 40px;
+                height: 100%;
                 outline: transparent;
-                padding-bottom: 0;
-                padding-left: 4px;
-                padding-right: 4px;
-                padding-top: 0;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
+                width: 100%;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -1757,7 +2087,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #0078d4;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -1771,6 +2101,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -1807,7 +2140,21 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       role="option"
     >
       <div
-        className="ms-Suggestions-item"
+        className=
+            ms-Suggestions-item
+            {
+              align-items: stretch;
+              box-sizing: border-box;
+              display: flex;
+              position: relative;
+              width: 100%;
+            }
+            &:hover {
+              background: #f4f4f4;
+            }
+            &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
       >
         <button
           className=
@@ -1828,17 +2175,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 40px;
+                height: 100%;
                 outline: transparent;
-                padding-bottom: 0;
-                padding-left: 4px;
-                padding-right: 4px;
-                padding-top: 0;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
+                width: 100%;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -1868,7 +2216,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #0078d4;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -1882,6 +2230,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -1918,7 +2269,21 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       role="option"
     >
       <div
-        className="ms-Suggestions-item"
+        className=
+            ms-Suggestions-item
+            {
+              align-items: stretch;
+              box-sizing: border-box;
+              display: flex;
+              position: relative;
+              width: 100%;
+            }
+            &:hover {
+              background: #f4f4f4;
+            }
+            &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
       >
         <button
           className=
@@ -1939,17 +2304,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 40px;
+                height: 100%;
                 outline: transparent;
-                padding-bottom: 0;
-                padding-left: 4px;
-                padding-right: 4px;
-                padding-top: 0;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
+                width: 100%;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -1979,7 +2345,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #0078d4;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -1993,6 +2359,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -2029,7 +2398,21 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       role="option"
     >
       <div
-        className="ms-Suggestions-item"
+        className=
+            ms-Suggestions-item
+            {
+              align-items: stretch;
+              box-sizing: border-box;
+              display: flex;
+              position: relative;
+              width: 100%;
+            }
+            &:hover {
+              background: #f4f4f4;
+            }
+            &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
       >
         <button
           className=
@@ -2050,17 +2433,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 40px;
+                height: 100%;
                 outline: transparent;
-                padding-bottom: 0;
-                padding-left: 4px;
-                padding-right: 4px;
-                padding-top: 0;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
+                width: 100%;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -2090,7 +2474,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #0078d4;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -2104,6 +2488,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -2140,7 +2527,21 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       role="option"
     >
       <div
-        className="ms-Suggestions-item"
+        className=
+            ms-Suggestions-item
+            {
+              align-items: stretch;
+              box-sizing: border-box;
+              display: flex;
+              position: relative;
+              width: 100%;
+            }
+            &:hover {
+              background: #f4f4f4;
+            }
+            &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
       >
         <button
           className=
@@ -2161,17 +2562,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 40px;
+                height: 100%;
                 outline: transparent;
-                padding-bottom: 0;
-                padding-left: 4px;
-                padding-right: 4px;
-                padding-top: 0;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
+                width: 100%;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -2201,7 +2603,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #0078d4;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -2215,6 +2617,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -2251,7 +2656,21 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       role="option"
     >
       <div
-        className="ms-Suggestions-item"
+        className=
+            ms-Suggestions-item
+            {
+              align-items: stretch;
+              box-sizing: border-box;
+              display: flex;
+              position: relative;
+              width: 100%;
+            }
+            &:hover {
+              background: #f4f4f4;
+            }
+            &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
       >
         <button
           className=
@@ -2272,17 +2691,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 40px;
+                height: 100%;
                 outline: transparent;
-                padding-bottom: 0;
-                padding-left: 4px;
-                padding-right: 4px;
-                padding-top: 0;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
+                width: 100%;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -2312,7 +2732,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #0078d4;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -2326,6 +2746,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -2362,7 +2785,21 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       role="option"
     >
       <div
-        className="ms-Suggestions-item"
+        className=
+            ms-Suggestions-item
+            {
+              align-items: stretch;
+              box-sizing: border-box;
+              display: flex;
+              position: relative;
+              width: 100%;
+            }
+            &:hover {
+              background: #f4f4f4;
+            }
+            &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
       >
         <button
           className=
@@ -2383,17 +2820,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 40px;
+                height: 100%;
                 outline: transparent;
-                padding-bottom: 0;
-                padding-left: 4px;
-                padding-right: 4px;
-                padding-top: 0;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
+                width: 100%;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -2423,7 +2861,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #0078d4;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -2437,6 +2875,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -2473,7 +2914,21 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       role="option"
     >
       <div
-        className="ms-Suggestions-item"
+        className=
+            ms-Suggestions-item
+            {
+              align-items: stretch;
+              box-sizing: border-box;
+              display: flex;
+              position: relative;
+              width: 100%;
+            }
+            &:hover {
+              background: #f4f4f4;
+            }
+            &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
       >
         <button
           className=
@@ -2494,17 +2949,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 40px;
+                height: 100%;
                 outline: transparent;
-                padding-bottom: 0;
-                padding-left: 4px;
-                padding-right: 4px;
-                padding-top: 0;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
+                width: 100%;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -2534,7 +2990,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #0078d4;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -2548,6 +3004,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -2584,7 +3043,28 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       role="option"
     >
       <div
-        className="ms-Suggestions-item is-suggested undefined"
+        className=
+            ms-Suggestions-item
+            is-suggested
+            {
+              align-items: stretch;
+              background: #eaeaea;
+              box-sizing: border-box;
+              display: flex;
+              position: relative;
+              width: 100%;
+            }
+            &:hover {
+              background: #c8c8c8;
+            }
+            &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              background: Highlight;
+              color: HighlightText;
+            }
       >
         <button
           className=
@@ -2605,17 +3085,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 40px;
+                height: 100%;
                 outline: transparent;
-                padding-bottom: 0;
-                padding-left: 4px;
-                padding-right: 4px;
-                padding-top: 0;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
+                width: 100%;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -2645,7 +3126,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #0078d4;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -2659,6 +3140,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -2695,7 +3179,21 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       role="option"
     >
       <div
-        className="ms-Suggestions-item"
+        className=
+            ms-Suggestions-item
+            {
+              align-items: stretch;
+              box-sizing: border-box;
+              display: flex;
+              position: relative;
+              width: 100%;
+            }
+            &:hover {
+              background: #f4f4f4;
+            }
+            &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
       >
         <button
           className=
@@ -2716,17 +3214,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 40px;
+                height: 100%;
                 outline: transparent;
-                padding-bottom: 0;
-                padding-left: 4px;
-                padding-right: 4px;
-                padding-top: 0;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
+                width: 100%;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -2756,7 +3255,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #0078d4;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -2770,6 +3269,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -2806,7 +3308,21 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       role="option"
     >
       <div
-        className="ms-Suggestions-item"
+        className=
+            ms-Suggestions-item
+            {
+              align-items: stretch;
+              box-sizing: border-box;
+              display: flex;
+              position: relative;
+              width: 100%;
+            }
+            &:hover {
+              background: #f4f4f4;
+            }
+            &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
       >
         <button
           className=
@@ -2827,17 +3343,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 40px;
+                height: 100%;
                 outline: transparent;
-                padding-bottom: 0;
-                padding-left: 4px;
-                padding-right: 4px;
-                padding-top: 0;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
+                width: 100%;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -2867,7 +3384,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #0078d4;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -2881,6 +3398,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -2917,7 +3437,21 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       role="option"
     >
       <div
-        className="ms-Suggestions-item"
+        className=
+            ms-Suggestions-item
+            {
+              align-items: stretch;
+              box-sizing: border-box;
+              display: flex;
+              position: relative;
+              width: 100%;
+            }
+            &:hover {
+              background: #f4f4f4;
+            }
+            &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
       >
         <button
           className=
@@ -2938,17 +3472,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 40px;
+                height: 100%;
                 outline: transparent;
-                padding-bottom: 0;
-                padding-left: 4px;
-                padding-right: 4px;
-                padding-top: 0;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
+                width: 100%;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -2978,7 +3513,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #0078d4;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -2992,6 +3527,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -3028,7 +3566,21 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       role="option"
     >
       <div
-        className="ms-Suggestions-item"
+        className=
+            ms-Suggestions-item
+            {
+              align-items: stretch;
+              box-sizing: border-box;
+              display: flex;
+              position: relative;
+              width: 100%;
+            }
+            &:hover {
+              background: #f4f4f4;
+            }
+            &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
       >
         <button
           className=
@@ -3049,17 +3601,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 40px;
+                height: 100%;
                 outline: transparent;
-                padding-bottom: 0;
-                padding-left: 4px;
-                padding-right: 4px;
-                padding-top: 0;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
+                width: 100%;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -3089,7 +3642,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #0078d4;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -3103,6 +3656,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -3139,7 +3695,21 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       role="option"
     >
       <div
-        className="ms-Suggestions-item"
+        className=
+            ms-Suggestions-item
+            {
+              align-items: stretch;
+              box-sizing: border-box;
+              display: flex;
+              position: relative;
+              width: 100%;
+            }
+            &:hover {
+              background: #f4f4f4;
+            }
+            &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
       >
         <button
           className=
@@ -3160,17 +3730,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 40px;
+                height: 100%;
                 outline: transparent;
-                padding-bottom: 0;
-                padding-left: 4px;
-                padding-right: 4px;
-                padding-top: 0;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
+                width: 100%;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -3200,7 +3771,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #0078d4;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -3214,6 +3785,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -3250,7 +3824,21 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       role="option"
     >
       <div
-        className="ms-Suggestions-item"
+        className=
+            ms-Suggestions-item
+            {
+              align-items: stretch;
+              box-sizing: border-box;
+              display: flex;
+              position: relative;
+              width: 100%;
+            }
+            &:hover {
+              background: #f4f4f4;
+            }
+            &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
       >
         <button
           className=
@@ -3271,17 +3859,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 40px;
+                height: 100%;
                 outline: transparent;
-                padding-bottom: 0;
-                padding-left: 4px;
-                padding-right: 4px;
-                padding-top: 0;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
+                width: 100%;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -3311,7 +3900,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #0078d4;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -3325,6 +3914,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: WindowText;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -3358,7 +3950,23 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
   </div>
   <span
     aria-live="polite"
-    className="ms-Suggestions-suggestionsAvailable"
+    className=
+        ms-Suggestions-suggestionsAvailable
+        {
+          border: 0px;
+          height: 1px;
+          margin-bottom: -1px;
+          margin-left: -1px;
+          margin-right: -1px;
+          margin-top: -1px;
+          overflow: hidden;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: absolute;
+          width: 1px;
+        }
     role="alert"
   />
 </div>
