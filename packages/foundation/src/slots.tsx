@@ -157,13 +157,14 @@ export function createFactory<TProps, TTokens, TStyleSet extends IStyleSet<TStyl
     finalProps.className = mergeStyles(
       defaultStyles,
       componentProps.className,
-      // TODO: make sure this case is covered with examples and tests (user styles function) which uses theme
-      // TODO: what about passing theme?
       // TODO: Callout: What was reasoning for this call in prototype?
       //        Seems to lead to multiple executions of userProp styles functions in examples.
       //        In both styled and createComponent (at least old version) components, this function will get called again.
       //          styled: called via classNamesFunction
       //          old createComponent: called via _evaulateStyles
+      //          new createComponent: called via _resolveStyles
+      //        Even for Slots, slot component props are accounted for at the top level of the child component's
+      //          styled/createComponent call in the same locations listed above.
       // TODO: If theme isn't needed here, this will collapse a BUNCH Of typing in this module.
       // _evaluateStyle(finalProps, theme, userProps && userProps.styles),
       userProps && userProps.className
