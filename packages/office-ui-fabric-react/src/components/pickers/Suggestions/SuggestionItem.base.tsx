@@ -27,9 +27,7 @@ export class SuggestionItemBase<T> extends BaseComponent<ISuggestionItemProps<T>
     });
 
     return (
-      <div
-        className={classNames.root}
-      >
+      <div className={classNames.root}>
         <CommandButton onClick={onClick} className={classNames.itemButton}>
           {RenderSuggestion(suggestionModel.item, this.props)}
         </CommandButton>

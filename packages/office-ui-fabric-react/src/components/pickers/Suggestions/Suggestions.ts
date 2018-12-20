@@ -4,14 +4,7 @@ import { getStyles } from './Suggestions.styles';
 import { SuggestionsBase } from './Suggestions.base';
 
 export function Suggestions<T>(): (props: ISuggestionsProps<T>) => JSX.Element {
-  return (
-    styled<ISuggestionsProps<T>, ISuggestionsStyleProps, ISuggestionsStyles>(
-      SuggestionsBase,
-      getStyles,
-      undefined,
-      {
-        scope: 'Suggestions'
-      }
-    )
-  );
+  return styled<ISuggestionsProps<T>, ISuggestionsStyleProps, ISuggestionsStyles>(SuggestionsBase, getStyles, undefined, {
+    scope: 'Suggestions'
+  });
 }

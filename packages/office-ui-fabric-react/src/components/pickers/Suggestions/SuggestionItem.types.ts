@@ -3,7 +3,7 @@ import { IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
 import { ISuggestionModel } from './Suggestions.types';
 
 /** SuggestionItem component. */
-export interface ISuggestionItem { }
+export interface ISuggestionItem {}
 
 /**
  * Suggestion item props. Refers to the each individual suggested items rendered within Suggestions callout.

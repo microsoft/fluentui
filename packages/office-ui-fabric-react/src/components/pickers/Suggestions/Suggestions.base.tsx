@@ -267,7 +267,7 @@ export class SuggestionsBase<T> extends BaseComponent<ISuggestionsProps<T>, ISug
       resultsMaximumNumber,
       showRemoveButtons,
       suggestionsContainerAriaLabel,
-      suggestionsListId,
+      suggestionsListId
     } = this.props;
     let { suggestions } = this.props;
 

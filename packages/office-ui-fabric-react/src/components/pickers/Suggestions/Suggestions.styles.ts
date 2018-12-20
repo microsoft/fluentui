@@ -86,19 +86,12 @@ export function getStyles(props: ISuggestionsStyleProps): ISuggestionsStyles {
     forceResolveButton: [
       classNames.forceResolveButton,
       actionButtonStyles,
-      forceResolveButtonSelected && [
-        classNames.isSelected,
-        actionButtonSelectedStyles
-      ]
+      forceResolveButtonSelected && [classNames.isSelected, actionButtonSelectedStyles]
     ],
     searchForMoreButton: [
       classNames.searchForMoreButton,
       actionButtonStyles,
-      searchForMoreButtonSelected && [
-        classNames.isSelected,
-        actionButtonSelectedStyles
-      ]
-
+      searchForMoreButtonSelected && [classNames.isSelected, actionButtonSelectedStyles]
     ],
     noSuggestions: [
       classNames.noSuggestions,
@@ -109,10 +102,7 @@ export function getStyles(props: ISuggestionsStyleProps): ISuggestionsStyles {
         lineHeight: 30
       }
     ],
-    suggestionsAvailable: [
-      classNames.suggestionsAvailable,
-      hiddenContentStyle
-    ],
+    suggestionsAvailable: [classNames.suggestionsAvailable, hiddenContentStyle],
     subComponentStyles: {
       spinner: {
         root: [
