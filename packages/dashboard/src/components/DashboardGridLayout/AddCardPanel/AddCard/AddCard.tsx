@@ -25,12 +25,14 @@ export class AddCard extends React.Component<IAddCardProps> {
     }
     return (
       <div
+        id={'addCard' + id + 'DGL'}
         className={classNames.root}
         onMouseEnter={this.mouseEnter.bind(this, imgClassName, textContainerClassName, addIconClassName)}
         onMouseLeave={this.mouseLeave.bind(this, imgClassName, textContainerClassName, addIconClassName)}
+        onMouseDown={this.dragPlaceholder}
       >
         <div className={imgClassName}>
-          <Image src={imageSrc} imageFit={ImageFit.cover} width={150} height={100} alt={title} />
+            <Image src={imageSrc} imageFit={ImageFit.cover} width={150} height={100} alt={title} />
         </div>
         <div className={textContainerClassName}>
           <div className={classNames.header}>{title}</div>
@@ -58,10 +60,29 @@ export class AddCard extends React.Component<IAddCardProps> {
     );
   }
 
+  private dragPlaceholder = () => {
+    window.document.addEventListener('mousemove', this.handleInitialMove);
+    window.document.addEventListener('mouseup', this._releaseDrag);
+    window.document.addEventListener('mouseup', () => {
+      window.document.removeEventListener('mousemove', this.handleInitialMove);     
+    });
+  };
+
+  private handleInitialMove = (event: MouseEvent) => {
+    window.document.removeEventListener('mousemove', this.handleInitialMove);
+    this.props.draggingCardCallback(this.props.id, this.props.title, this.props.cardSize, event.clientX, this.props.draggingAnimation);
+  };
+
   private cardClicked = (cardId: string) => {
     if (this.props.cardClicked) {
       this.props.cardClicked(cardId);
     }
+  };
+
+  private _releaseDrag = () => {
+    window.document.removeEventListener('mouseup', this._releaseDrag);
+    window.document.removeEventListener('mousemove', this.handleInitialMove);
+    this.props.expandAddCardPanelBack();
   };
 
   private mouseEnter = (imgClassName: string, textClassName: string, addCardIconClassName: string) => {

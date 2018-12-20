@@ -7,7 +7,8 @@ export const getStyles = (): IAddCardStyles => {
       width: '100%',
       display: 'flex',
       flexDirection: 'row',
-      marginBottom: '32px'
+      marginBottom: '32px',
+      cursor: 'move'
     },
     imageWrapper: {
       width: '150px',

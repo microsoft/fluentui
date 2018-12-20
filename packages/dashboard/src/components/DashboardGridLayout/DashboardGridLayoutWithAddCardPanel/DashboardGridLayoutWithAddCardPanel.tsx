@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { Layout } from 'react-grid-layout';
+import { createDragApiRef, Layout } from 'react-grid-layout';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import {
   IDashboardGridLayoutWithAddCardPanelProps,
   IDashboardGridLayoutWithAddCardPanelState
 } from './DashboardGridLayoutWithAddCardPanel.types';
+import { DraggingCard } from './DraggingCard/DraggingCard';
 import {
   AddCardPanel,
   DashboardGridSectionLayout,
@@ -12,10 +13,12 @@ import {
   IDashboardCardLayout,
   ISection,
   CardSize,
-  DashboardGridBreakpointLayouts
+  DashboardGridBreakpointLayouts,
+  DraggingAnimationType
 } from '../../../index';
 import { getCardStyles, getClassNames } from './DashboardGridLayoutWithAddCardPanel.styles';
 
+export const dragApi = createDragApiRef();
 export class DashboardGridLayoutWithAddCardPanel extends BaseComponent<
   IDashboardGridLayoutWithAddCardPanelProps,
   IDashboardGridLayoutWithAddCardPanelState
@@ -31,7 +34,12 @@ export class DashboardGridLayoutWithAddCardPanel extends BaseComponent<
       sections: [],
       layout: {
         lg: [{ i: 'section0', y: 0, x: 0, size: CardSize.section }]
-      }
+      },
+      renderDraggingCard: false,
+      selectedCardId: '',
+      selectedCardInitialX: 0,
+      selectedCardSize: CardSize.small,
+      selectedCardTitle: ''
     };
   }
 
@@ -67,23 +75,55 @@ export class DashboardGridLayoutWithAddCardPanel extends BaseComponent<
     const { isOpen, isDraggable, panelHeader } = this.props;
     return (
       <>
+        {this.state.renderDraggingCard && (
+          <DraggingCard
+            setDragMode={this._hideDraggingCard}
+            cardId={this.state.selectedCardId}
+            cardSize={this.state.selectedCardSize}
+            initialX={this.state.selectedCardInitialX}
+            title={this.state.selectedCardTitle}
+            draggingAnimation={this.state.draggingAnimation}
+          />
+        )}
         <AddCardPanel
           header={panelHeader}
           isOpen={isOpen}
           cards={this.state.cardsForAddCardPanel}
           moveCardFromAddCardPanelToDashboard={this._addCard}
           onDismiss={this._onPanelDismiss}
+          draggingCardCallback={this._draggingCardCallback}
+          initialX={this.state.selectedCardInitialX}
         />
-        <DashboardGridSectionLayout
-          isDraggable={isDraggable}
-          layout={this.state.layout}
-          sections={this.state.sections}
-          cards={this.state.dashboardCards}
-          onLayoutChange={this._onLayoutChange}
-        />
+        <div className="dashboardContainerClassName">
+          <DashboardGridSectionLayout
+            isDraggable={isDraggable}
+            layout={this.state.layout}
+            sections={this.state.sections}
+            cards={this.state.dashboardCards}
+            dragApi={dragApi}
+            onLayoutChange={this._onLayoutChange}
+          />
+        </div>
       </>
     );
   }
+
+  private _draggingCardCallback = (cardId: string, title: string, cardSize: CardSize, initialX: number, draggingAnimation?: DraggingAnimationType) => {
+    this.setState({
+      renderDraggingCard: true,
+      selectedCardId: cardId,
+      selectedCardInitialX: initialX,
+      selectedCardSize: cardSize,
+      selectedCardTitle: title,
+      draggingAnimation
+    });
+  };
+
+  private _hideDraggingCard = () => {
+    this.setState({
+      renderDraggingCard: false
+    });
+  };
 
   private _onPanelDismiss = () => {
     if (this.props.onPanelDismiss) {
@@ -92,38 +132,72 @@ export class DashboardGridLayoutWithAddCardPanel extends BaseComponent<
   };
 
   private _onLayoutChange = (currentLayout: Layout[]): void => {
-    const newLayout: DashboardGridBreakpointLayouts = { lg: [] };
-    currentLayout.map((individualItemLayout: Layout) => {
-      const key: string = individualItemLayout.w.toString() + individualItemLayout.h.toString();
-      let cardSize = CardSize.small;
-      // recreating layout based off width and height of card. The width and height values are returned by RGl
-      // medium wide is 2 scale wide and 1 scale in height
-      // large is 2 scale high and wide
-      // mediumTall is 1 scale wide and 2 scales high
-      if (individualItemLayout.h === 1) {
-        cardSize = CardSize.section;
-      } else if (key === '28') {
-        cardSize = CardSize.large;
-      } else if (key === '18') {
-        cardSize = CardSize.mediumTall;
-      } else if (key === '24') {
-        cardSize = CardSize.mediumWide;
-      }
-      const itemLayout: IDashboardCardLayout = {
-        i: individualItemLayout.i!,
-        x: individualItemLayout.x,
-        y: individualItemLayout.y,
-        size: cardSize
-      };
-      newLayout.lg!.push(itemLayout);
-    });
-    if (newLayout !== this.state.layout) {
-      if (this.props.onLayoutChange) {
-        this.props.onLayoutChange(newLayout);
-      }
-      this.setState({
-        layout: newLayout
+    const index = currentLayout.length - 1;
+    // checking if a dragging card action is performed. 
+    // If dragging is performed, dragging card is added to the layout whose id starts with 'n'
+    if (index > -1 && currentLayout[index].i!.startsWith('n')) {
+      const newlyAddedCardId = currentLayout[index].i!.substring(1);
+      const newlyAddedCard = currentLayout[index];
+      const addCardPanelCards = this.state.cardsForAddCardPanel;
+      let cardIndex: number = -1;
+      let newLayout: DashboardGridBreakpointLayouts = {lg:[]};
+      // find the card selected in the list of cards in add card panel
+      addCardPanelCards.map((card: IDGLCard, index: number) => {
+        if (card.id === newlyAddedCardId) {
+          cardIndex = index;
+          const cardLayout: IDashboardCardLayout = { i: card.id, x: newlyAddedCard.x, y: newlyAddedCard.y, size: card.cardSize };
+          newLayout.lg!.push(cardLayout);
+        }
       });
+      newLayout.lg = newLayout.lg!.concat(this.state.layout.lg!);
+      if (cardIndex !== -1) {
+        // remove the selected card from the add card panel and add it to the list of cards that are to be show in layout
+        const cardSelected = addCardPanelCards.splice(cardIndex, 1);
+        let newLayoutCards: IDGLCard[] = [];
+        newLayoutCards.push(cardSelected[0]);
+        newLayoutCards = newLayoutCards.concat(this.state.dashboardCards);
+        this.setState({
+          cardsForAddCardPanel: addCardPanelCards,
+          dashboardCards: newLayoutCards,
+          layout: newLayout
+        });
+      }
+    } 
+    // logic to add card to the dashboard when '+' sign is clicked
+    else {
+      const newLayout: DashboardGridBreakpointLayouts = { lg: [] };
+      currentLayout.map((individualItemLayout: Layout) => {
+        const key: string = individualItemLayout.w.toString() + individualItemLayout.h.toString();
+        let cardSize = CardSize.small;
+        // recreating layout based off width and height of card. The width and height values are returned by RGl
+        // medium wide is 2 scale wide and 1 scale in height
+        // large is 2 scale high and wide
+        // mediumTall is 1 scale wide and 2 scales high
+        if (individualItemLayout.h === 1) {
+          cardSize = CardSize.section;
+        } else if (key === '28') {
+          cardSize = CardSize.large;
+        } else if (key === '18') {
+          cardSize = CardSize.mediumTall;
+        } else if (key === '24') {
+          cardSize = CardSize.mediumWide;
+        }
+        const itemLayout: IDashboardCardLayout = {
+          i: individualItemLayout.i!,
+          x: individualItemLayout.x,
+          y: individualItemLayout.y,
+          size: cardSize
+        };
+        newLayout.lg!.push(itemLayout);
+      });
+      if (newLayout !== this.state.layout) {
+        if (this.props.onLayoutChange) {
+          this.props.onLayoutChange(newLayout);
+        }
+        this.setState({
+          layout: newLayout
+        });
+      }
     }
   };
 
