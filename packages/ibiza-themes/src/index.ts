@@ -1,2 +1,2 @@
 export * from './IbizaCustomizations';
-export * from './ibiza/index';
+export * from './azure/index';
