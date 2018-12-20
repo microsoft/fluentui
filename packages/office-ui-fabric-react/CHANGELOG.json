@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.117.0",
+      "tag": "office-ui-fabric-react_v6.117.0",
+      "date": "Thu, 20 Dec 2018 13:39:35 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "GroupedList: add compact mode and styles cleanup across GroupedList and DetailsList. Change expand button icon. Consolidate style values in between mentioned components.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "c14a4a9aca451afebbad178286e91a38a3628671"
+          },
+          {
+            "comment": "Pickers: convert PeoplePicker items to CSS-in-JS. Expose some components to the surface API and rename them to solve ambiguity issues. Fix some imports in ExtendedPicker and FloatingPicker caused by my API changes.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "4e3f82e76e31aaaa34485c1653a521a5ec65fd14"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.116.2",
       "tag": "office-ui-fabric-react_v6.116.2",
       "date": "Wed, 19 Dec 2018 13:39:07 GMT",

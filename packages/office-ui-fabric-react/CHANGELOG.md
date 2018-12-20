@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 19 Dec 2018 13:39:07 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Dec 2018 13:39:35 GMT and should not be manually modified.
+
+## 6.117.0
+Thu, 20 Dec 2018 13:39:35 GMT
+
+### Minor changes
+
+- GroupedList: add compact mode and styles cleanup across GroupedList and DetailsList. Change expand button icon. Consolidate style values in between mentioned components.
+- Pickers: convert PeoplePicker items to CSS-in-JS. Expose some components to the surface API and rename them to solve ambiguity issues. Fix some imports in ExtendedPicker and FloatingPicker caused by my API changes.
 
 ## 6.116.2
 Wed, 19 Dec 2018 13:39:07 GMT

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Mon, 17 Dec 2018 13:36:58 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Dec 2018 13:39:35 GMT and should not be manually modified.
+
+## 0.41.0
+Thu, 20 Dec 2018 13:39:35 GMT
+
+### Minor changes
+
+- Improved low resolution support and added shimmer to setup banner
 
 ## 0.40.0
 Mon, 17 Dec 2018 13:36:58 GMT
