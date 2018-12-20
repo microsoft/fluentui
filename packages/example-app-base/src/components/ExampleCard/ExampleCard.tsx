@@ -55,8 +55,8 @@ const _schemeOptions: IDropdownOption[] = _schemes.map((item: string, index: num
 // tslint:disable-next-line:typedef
 const regionStyles: IExampleCardComponent['styles'] = (props, theme) => ({
   root: {
-    backgroundColor: theme.semanticColors.bodyBackground,
-    color: theme.semanticColors.bodyText
+    backgroundColor: props.theme.semanticColors.bodyBackground,
+    color: props.theme.semanticColors.bodyText
   }
 });
 

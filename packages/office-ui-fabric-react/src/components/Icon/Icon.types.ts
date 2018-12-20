@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IImageProps } from '../Image/Image.types';
-import { IStyle } from '../../Styling';
+import { IStyle, ITheme } from '../../Styling';
 import { IBaseProps, IStyleFunctionOrObject } from '../../Utilities';
 
 // Please keep alphabetized
@@ -28,6 +28,7 @@ export enum IconType {
   Image = 100001
 }
 
+// TODO: why does Icon not have a theme prop? oversight?
 export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement> {
   /**
    * The name of the icon to use from the icon font. If string is empty, a placeholder icon will be rendered the same width as an icon
@@ -58,6 +59,7 @@ export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement
    * Gets the styles for an Icon.
    */
   styles?: IStyleFunctionOrObject<IIconStyleProps, IIconStyles>;
+  theme?: ITheme;
 }
 
 export interface IIconStyleProps {
@@ -66,6 +68,7 @@ export interface IIconStyleProps {
   isPlaceholder: boolean;
   isImage: boolean;
   styles?: Partial<IIconStyles>;
+  theme?: ITheme;
 }
 
 export interface IIconStyles {

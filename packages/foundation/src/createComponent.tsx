@@ -91,7 +91,8 @@ export function createComponent<TComponentProps, TViewProps, TTokens, TStyleSet 
                 ...(mergedProps as any),
                 ...{
                   classNames: mergeStyleSets(
-                    // TOOD: need theme to resolve styles? only if keeping "old" Foundation components with "new" styles function signature
+                    // TOOD: need theme arg to resolve styles? will need to do this if ALL createComponent styles functions have
+                    //        theme as a separate argument.
                     _evaluateStyle(styledProps, styledProps.theme, component.styles),
                     _evaluateStyle(styledProps, styledProps.theme, settingsStyles),
                     _evaluateStyle(styledProps, styledProps.theme, mergedProps.styles)

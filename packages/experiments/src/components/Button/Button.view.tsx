@@ -49,9 +49,9 @@ export const ButtonView: IButtonComponent['view'] = props => {
       aria-disabled={disabled}
     >
       <Slots.stack horizontal as="span" gap={8} verticalAlign="center" horizontalAlign="center" verticalFill>
-        {renderTestButton && <Slots.button />}
         {icon && <Slots.icon theme={testTheme} />}
         {content && <Slots.content />}
+        {renderTestButton && <Slots.button />}
         {children}
         {Menu && (
           <Stack.Item>

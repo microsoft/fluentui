@@ -6,6 +6,11 @@ import { createTheme } from 'office-ui-fabric-react';
 const testTheme = createTheme({
   semanticColors: {
     buttonText: 'red'
+  },
+  fonts: {
+    medium: {
+      color: 'purple'
+    }
   }
 });
 
@@ -27,13 +32,8 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
           <div>
             <Stack gap={buttonGap}>
               <ButtonStack>
-                <Button icon="share" content="Button Theme: Red Icon and Text" theme={testTheme} />
-              </ButtonStack>
-              <ButtonStack>
-                {/* TODO: Should these work? TBD. They won't work with current approach since styles are resolved
-                            with theme in createComponent before themes in slot props are available. */}
-                <Button icon={{ iconName: "share", theme: testTheme }} content="Slot Theme: Red Icon" />
-                <Button icon="share" content={{ children: "Slot Theme: Red Text", theme: testTheme }} />
+                <Button icon="PeopleAdd" content="Button Theme: Red Icon and Text" theme={testTheme} />
+                <Button icon="PeopleAdd" content={{ children: "Slot Theme: Purple Text", theme: testTheme }} />
               </ButtonStack>
               <ButtonStack>
                 <Button icon="PeopleAdd" content="Button Styles Object: Pink Icon" styles={{ icon: { color: 'pink ' } }} />
@@ -41,8 +41,8 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
               </ButtonStack>
               <ButtonStack>
                 <Button
+                  icon="PeopleAdd"
                   content="Button Styles Function: Theme.warningHighlight Content"
-                  // styles={(props, theme) => ({ content: { color: theme.semanticColors.warningHighlight } })}
                   styles={(props, theme) => {
                     console.log('Button styles function called');
                     return { content: { color: theme.semanticColors.warningHighlight } };
@@ -51,6 +51,15 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
               </ButtonStack>
               <ButtonStack>
                 <Button
+                  icon="PeopleAdd"
+                  content="Button Styles Function: Purple Icon via Button Theme"
+                  styles={(props) => ({ icon: { color: props.theme.fonts.medium.color } })}
+                  theme={testTheme}
+                />
+              </ButtonStack>
+              <ButtonStack>
+                <Button
+                  icon='PeopleAdd'
                   renderTestButton
                   button={{
                     content: "Nested Button Styles Function: Theme.warningHighlight Content",
@@ -63,15 +72,26 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
               </ButtonStack>
               <ButtonStack>
                 <Button
+                  icon='PeopleAdd'
                   content={{
                     children: "Content Styles Function: Theme.warningHighlight Text",
-                    // styles: (props, theme) => ({ root: { color: theme.semanticColors.warningHighlight } })
-                    // TODO: This styles generates a console error "Invalid styles prop on span tag".
-                    //         Some props not getting removed somewhere.
-                    styles: (props, theme) => {
+                    styles: (props) => {
                       console.log('Text styles function called');
-                      return { root: { color: theme.semanticColors.warningHighlight } };
+                      return { root: { color: props.theme.semanticColors.warningHighlight } };
                     }
+                  }}
+                />
+              </ButtonStack>
+              <ButtonStack>
+                <Button
+                  icon="PeopleAdd"
+                  content={{
+                    children: "Content Styles Function: Red Text via Content Theme",
+                    styles: (props) => {
+                      console.log('Text styles function with custom theme called');
+                      return { root: { color: props.theme.semanticColors.buttonText } };
+                    },
+                    theme: testTheme
                   }}
                 />
               </ButtonStack>
@@ -79,18 +99,25 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
                 <Button
                   icon={{
                     iconName: "PeopleAdd",
-                    // TODO: why is this not working? theme is not available in Icon styles function
-                    // TODO: this function also gets called twice.. seems like it should only be called once.
-                    // styles: (props) => ({ root: { color: props.theme.semanticColors.warningHighlight } })
-                    styles: (props, themeArg) => {
-                      const theme = themeArg || props.theme;
+                    styles: (props) => {
                       console.log('Icon styles function called');
-                      // console.log('styles function theme: ' + JSON.stringify(theme));
-                      // return { root: { color: theme.semanticColors.warningHighlight } };
-                      return {};
+                      return { root: { color: props.theme.semanticColors.warningHighlight } };
                     }
                   }}
                   content="Icon Styles Function: Theme.warningHighlight Icon"
+                />
+              </ButtonStack>
+              <ButtonStack>
+                <Button
+                  icon={{
+                    iconName: "PeopleAdd",
+                    styles: (props) => {
+                      console.log('Icon styles function with custom theme called');
+                      return { root: { color: props.theme.semanticColors.buttonText } };
+                    },
+                    theme: testTheme
+                  }}
+                  content="Icon Styles Function: Red Icon via Icon Theme"
                 />
               </ButtonStack>
             </Stack>
