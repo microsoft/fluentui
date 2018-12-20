@@ -18,7 +18,7 @@ import {
 } from '../../../index';
 import { getCardStyles, getClassNames } from './DashboardGridLayoutWithAddCardPanel.styles';
 
-export const dragApi = createDragApiRef();
+export const dragApi: ReactGridLayout.DragApiRefObject = createDragApiRef();
 export class DashboardGridLayoutWithAddCardPanel extends BaseComponent<
   IDashboardGridLayoutWithAddCardPanelProps,
   IDashboardGridLayoutWithAddCardPanelState
