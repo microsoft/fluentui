@@ -19,13 +19,15 @@ const testVerticalPersonaClassNames: IProcessedStyleSet<IVerticalPersonaStyles> 
 // with snapshot tests exercising permutations of the props.
 describe('VerticalPersonaView', () => {
   it('renders correctly with only a text', () => {
-    const tree = renderer.create(<VerticalPersonaView text="James Bond" classNames={testVerticalPersonaClassNames} />).toJSON();
+    const tree = renderer.create(<VerticalPersonaView vertical text="James Bond" classNames={testVerticalPersonaClassNames} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders correctly with a text and secondary text', () => {
     const tree = renderer
-      .create(<VerticalPersonaView text="James Bond" secondaryText="Super secret agent" classNames={testVerticalPersonaClassNames} />)
+      .create(
+        <VerticalPersonaView vertical text="James Bond" secondaryText="Super secret agent" classNames={testVerticalPersonaClassNames} />
+      )
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -34,6 +36,7 @@ describe('VerticalPersonaView', () => {
     const tree = renderer
       .create(
         <VerticalPersonaView
+          vertical
           text="James Bond"
           secondaryText="Super secret agent"
           classNames={testVerticalPersonaClassNames}

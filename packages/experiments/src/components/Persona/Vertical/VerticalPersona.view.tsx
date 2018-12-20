@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { PersonaCoin } from '../../PersonaCoin';
-import { getSlots } from '../../utilities/slots';
+import { getSlots } from '../../../utilities/slots';
 import { IVerticalPersonaComponent, IVerticalPersonaSlots } from './VerticalPersona.types';
-import { PersonaText } from './PersonaText/PersonaText';
+import { PersonaText } from '../PersonaText/PersonaText';
 
 export const VerticalPersonaView: IVerticalPersonaComponent['view'] = props => {
   const classNames = props.classNames;
