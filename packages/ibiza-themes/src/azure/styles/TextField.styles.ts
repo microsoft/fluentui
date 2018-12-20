@@ -8,38 +8,28 @@ export const TextFieldStyles = (props: ITextFieldStyleProps): Partial<ITextField
 
   return {
     fieldGroup: [
-      !focused &&
-        !disabled &&
-        !hasErrorMessage && {
-          borderColor: semanticColors.inputBorder,
-          selectors: {
-            ':hover': {
-              borderColor: semanticColors.inputBorder
-            }
-          }
-        },
-      hasErrorMessage && [
-        {
-          borderColor: semanticColors.errorBackground,
-          borderWidth: StyleConstants.borderWidthError,
-          selectors: {
-            '&:focus, &:hover': {
-              borderColor: semanticColors.focusBorder,
-              borderWidth: StyleConstants.borderWidthError
-            }
-          }
-        },
-        focused && {
-          borderColor: semanticColors.errorBackground,
-          borderWidth: StyleConstants.borderWidthError
-        }
-      ],
-      disabled && {
-        borderColor: semanticColors.inputBorder
+      !multiline && {
+        height: StyleConstants.inputControlHeight
       },
       focused && {
         borderColor: semanticColors.focusBorder
-      }
+      },
+      disabled && {
+        borderColor: semanticColors.disabledBodyText
+      },
+      hasErrorMessage && [
+        {
+          borderWidth: StyleConstants.borderWidthError
+        },
+        focused && {
+          borderColor: semanticColors.focusBorder,
+          selectors: {
+            '&:focus, &:hover': {
+              borderColor: semanticColors.focusBorder
+            }
+          }
+        }
+      ]
     ],
     field: [
       disabled && {
@@ -51,8 +41,9 @@ export const TextFieldStyles = (props: ITextFieldStyleProps): Partial<ITextField
         backgroundColor: semanticColors.inputBackground
       },
       (!disabled || disabled) && {
-        padding: !multiline ? '0 8px' : '6px 8px',
         fontSize: FontSizes.size12,
+        paddingTop: '0px',
+        paddingBottom: '0px',
         selectors: {
           '::placeholder': [disabled && { color: semanticColors.inputBorder }],
           ':-ms-input-placeholder': [disabled && { color: semanticColors.inputBorder }]

@@ -6,7 +6,7 @@ export interface IThemeSemanticColors {
     value: string;
     icon: string;
     label: string;
-    disabledText: string;
+    disabled: string;
     hyperlink: string;
     success: string;
     error: string;

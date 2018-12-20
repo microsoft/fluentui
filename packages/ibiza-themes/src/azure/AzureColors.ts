@@ -70,7 +70,6 @@ export namespace CommonSemanticColors {
   };
   export const textControlOutline = {
     rest: BaseColors.GRAY_808080_070,
-    disabled: BaseColors.GRAY_808080_070,
     hover: BaseColors.GRAY_808080
   };
   export const controlOutline = {
@@ -87,7 +86,7 @@ export const DarkSemanticColors: IThemeSemanticColors = {
     value: BaseColors.WHITE,
     icon: BaseColors.WHITE,
     label: BaseColors.GRAY_AFAFAF,
-    disabledText: BaseColors.GRAY_808080_070,
+    disabled: BaseColors.GRAY_808080_070,
     hyperlink: BaseColors.BLUE_4894FE,
     success: BaseColors.GREEN_70C400,
     error: BaseColors.RED_F7929A
@@ -142,7 +141,7 @@ export const LightSemanticColors: IThemeSemanticColors = {
     value: BaseColors.GRAY_161616,
     icon: BaseColors.GRAY_161616,
     label: BaseColors.GRAY_595959,
-    disabledText: BaseColors.GRAY_808080_070,
+    disabled: BaseColors.GRAY_808080_070,
     hyperlink: BaseColors.BLUE_015CDA,
     success: BaseColors.GREEN_386300,
     error: BaseColors.RED_B40E1B
