@@ -20,7 +20,7 @@ export const PersonaCoinImage = (props: IPersonaCoinImageProps): JSX.Element | n
     dimension = DEFAULT_PERSONA_COIN_SIZE,
     src,
     classNames,
-    imageAlt,
+    imageAlt = '',
     onPhotoLoadingStateChange,
     imageShouldFadeIn,
     imageShouldStartVisible

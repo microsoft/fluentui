@@ -9,11 +9,19 @@ exports[`PersonaCoinView renders a coin with a contact icon 1`] = `
     className=
         test-cn-initials
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           display: inline-block;
+          font-family: "FabricMDL2Icons-0";
+          font-style: normal;
+          font-weight: normal;
+          speak: none;
         }
     data-icon-name="Contact"
     role="presentation"
-  />
+  >
+    
+  </i>
 </div>
 `;
 
@@ -26,11 +34,19 @@ exports[`PersonaCoinView renders a coin with a contact icon for a Chinese name 1
     className=
         test-cn-initials
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           display: inline-block;
+          font-family: "FabricMDL2Icons-0";
+          font-style: normal;
+          font-weight: normal;
+          speak: none;
         }
     data-icon-name="Contact"
     role="presentation"
-  />
+  >
+    
+  </i>
 </div>
 `;
 
@@ -124,11 +140,19 @@ exports[`PersonaCoinView renders presence correctly when a very large coin is re
     className=
         test-cn-initials
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           display: inline-block;
+          font-family: "FabricMDL2Icons-0";
+          font-style: normal;
+          font-weight: normal;
+          speak: none;
         }
     data-icon-name="Contact"
     role="presentation"
-  />
+  >
+    
+  </i>
   <div
     className=
         ms-Persona-presence
@@ -164,10 +188,16 @@ exports[`PersonaCoinView renders presence correctly when a very large coin is re
       className=
           ms-Persona-presenceIcon
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             color: #ffffff;
             display: inline-block;
+            font-family: "FabricMDL2Icons";
             font-size: 6px;
+            font-style: normal;
+            font-weight: normal;
             line-height: 12px;
+            speak: none;
             vertical-align: top;
           }
           @media screen and (-ms-high-contrast: active){& {
@@ -181,7 +211,9 @@ exports[`PersonaCoinView renders presence correctly when a very large coin is re
           "lineHeight": "33.333333333333336px",
         }
       }
-    />
+    >
+      
+    </i>
   </div>
 </div>
 `;
@@ -195,11 +227,19 @@ exports[`PersonaCoinView renders presence when it is passed 1`] = `
     className=
         test-cn-initials
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           display: inline-block;
+          font-family: "FabricMDL2Icons-0";
+          font-style: normal;
+          font-weight: normal;
+          speak: none;
         }
     data-icon-name="Contact"
     role="presentation"
-  />
+  >
+    
+  </i>
   <div
     className=
         ms-Persona-presence
@@ -235,10 +275,16 @@ exports[`PersonaCoinView renders presence when it is passed 1`] = `
       className=
           ms-Persona-presenceIcon
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             color: #ffffff;
             display: inline-block;
+            font-family: "FabricMDL2Icons";
             font-size: 6px;
+            font-style: normal;
+            font-weight: normal;
             line-height: 12px;
+            speak: none;
             vertical-align: top;
           }
           @media screen and (-ms-high-contrast: active){& {
@@ -252,7 +298,9 @@ exports[`PersonaCoinView renders presence when it is passed 1`] = `
           "lineHeight": "16px",
         }
       }
-    />
+    >
+      
+    </i>
   </div>
 </div>
 `;
@@ -303,6 +351,7 @@ exports[`PersonaCoinView renders the coin with the provided image 1`] = `
     }
   >
     <img
+      alt=""
       className=
           ms-Image-image
           ms-Image-image--cover
