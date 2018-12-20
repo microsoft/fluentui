@@ -26,14 +26,21 @@ export const PersonaPage = (props: IComponentDemoPageProps) => {
       propertiesTables={
         <PropertiesTableSet
           sources={[
-            require<string>('!raw-loader!@uifabric/experiments/src/components/Persona/Persona.types.ts')
-            // require<string>('!raw-loader!@uifabric/experiments/src/components/Persona/Vertical/VerticalPersona.types.ts')
+            require<string>('!raw-loader!@uifabric/experiments/src/components/Persona/Persona.types.ts'),
+            require<string>('!raw-loader!@uifabric/experiments/src/components/Persona/Vertical/VerticalPersona.types.ts')
           ]}
         />
       }
       overview={
         <div>
-          <p />
+          <p>
+            The Persona component in experiments is the next iteration of the one that is currently in fabric. Currently it supports
+            rendering a vertical variation of the Persona component.
+          </p>
+          <p>
+            On a somewhat longer term this should replace the Persona component in the next major version. It'll aim to reduce the DOM
+            impact and in addition support stuff like Slots etc for the "horizontal" persona as well.
+          </p>
         </div>
       }
       bestPractices={<div />}
