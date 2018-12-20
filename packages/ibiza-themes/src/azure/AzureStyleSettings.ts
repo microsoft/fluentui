@@ -1,11 +1,10 @@
 import { TextFieldStyles } from './styles/TextField.styles';
-import { IExtendedTheme } from './IExtendedTheme';
-// Roll up all style overrides in a single "Ibiza theme" object
+// Roll up all style overrides in a single "Azure theme" object
 
 // TODO: "any" is used here to get around "is using xxx but cannot be named" TS error. Should be able to remove
 //        this 'any' once we upgrade to TS3.1+
 // tslint:disable-next-line:no-any
-export const IbizaStyle = (extendedTheme: IExtendedTheme): any => {
+export const AzureStyleSettings = (): any => {
   return {
     // Breadcrumb: {
     //   styles: BreadcrumbStyles

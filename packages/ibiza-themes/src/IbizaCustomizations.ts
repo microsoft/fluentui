@@ -1,21 +1,18 @@
-import IbizaExtendedThemeDark from './ibiza/IbizaExtendedThemeDark';
-import IbizaExtendedThemeLight from './ibiza/IbizaExtendedThemeLight';
-import { IbizaStyle } from './ibiza/IbizaStyles';
 import { ICustomizations } from 'office-ui-fabric-react';
-// import { addVariants } from '@uifabric/variants';
+import { AzureThemeDark } from './azure/AzureThemeDark';
+import { AzureThemeLight } from './azure/AzureThemeLight';
+import { AzureStyleSettings } from './azure/AzureStyleSettings';
 
 export const IbizaCustomizationsDark: ICustomizations = {
   settings: {
-    theme: { ...IbizaExtendedThemeDark.theme }
+    theme: { ...AzureThemeDark }
   },
-  scopedSettings: { ...IbizaStyle(IbizaExtendedThemeDark) }
+  scopedSettings: { ...AzureStyleSettings() }
 };
 
 export const IbizaCustomizationsLight: ICustomizations = {
   settings: {
-    theme: { ...IbizaExtendedThemeLight.theme }
+    theme: { ...AzureThemeLight }
   },
-  scopedSettings: { ...IbizaStyle(IbizaExtendedThemeLight) }
+  scopedSettings: { ...AzureStyleSettings() }
 };
-
-// addVariants(IbizaCustomizationsDark.settings.theme);

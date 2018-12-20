@@ -1,4 +1,4 @@
-export interface IExtendedThemeColors {
+export interface IThemeSemanticColors {
   background: string;
   text: {
     heading: string;
