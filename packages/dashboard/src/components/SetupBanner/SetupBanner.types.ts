@@ -57,12 +57,12 @@ export interface ISetupBannerProps {
   /**
    * The content of the banner body
    */
-  onRenderBody?: () => JSX.Element | JSX.Element;
+  onRenderBody?: (() => JSX.Element) | JSX.Element;
 
   /**
    * The content of the visualization
    */
-  onRenderVisualization?: () => JSX.Element | JSX.Element;
+  onRenderVisualization?: (() => JSX.Element) | JSX.Element;
 
   /**
    * CSS class name for the outermost div
