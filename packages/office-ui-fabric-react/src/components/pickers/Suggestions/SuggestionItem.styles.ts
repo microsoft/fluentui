@@ -1,11 +1,11 @@
 import { getGlobalClassNames, HighContrastSelector } from '../../../Styling';
-import { ISuggestionItemStyleProps, ISuggestionItemStyles } from './Suggestions.types';
+import { ISuggestionItemStyleProps, ISuggestionItemStyles } from './SuggestionItem.types';
 
 const GlobalClassNames = {
   root: 'ms-Suggestions-item',
   itemButton: 'ms-Suggestions-itemButton',
   closeButton: 'ms-Suggestions-closeButton',
-  isSelected: 'is-suggested'
+  isSuggested: 'is-suggested'
 };
 
 export function getStyles(props: ISuggestionItemStyleProps): ISuggestionItemStyles {
@@ -34,7 +34,7 @@ export function getStyles(props: ISuggestionItemStyleProps): ISuggestionItemStyl
         }
       },
       suggested && [
-        classNames.isSelected,
+        classNames.isSuggested,
         {
           background: palette.neutralLight,
           selectors: {

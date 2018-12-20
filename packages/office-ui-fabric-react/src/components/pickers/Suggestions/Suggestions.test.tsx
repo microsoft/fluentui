@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 
-import { Suggestions } from './Suggestions';
+import { Suggestions } from './Suggestions.base';
 import { ISuggestionModel } from './Suggestions.types';
 
 const suggestions = [

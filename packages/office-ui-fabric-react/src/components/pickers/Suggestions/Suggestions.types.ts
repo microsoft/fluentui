@@ -1,11 +1,19 @@
 import * as React from 'react';
 
 import { IRefObject, IRenderFunction, KeyCodes, IStyleFunctionOrObject } from '../../../Utilities';
-import { IStyle, ITheme } from '../../../Styling';
 import { IPersonaProps } from '../../Persona/Persona.types';
+import { IStyle, ITheme } from '../../../Styling';
+import { ISpinnerStyleProps } from '../../Spinner';
 
 /** Suggestions component. */
-export interface ISuggestions {}
+export interface ISuggestions<T> {
+  executeSelectedAction: () => void;
+  focusAboveSuggestions: () => void;
+  focusBelowSuggestions: () => void;
+  hasSuggestedAction: () => boolean;
+  hasSuggestedActionSelected: () => boolean;
+  tryHandleKeyDown: (keyCode: number, currentSuggestionIndex: number) => boolean;
+}
 
 /**
  * Suggestions props interface. Refers to the entire container holding all the suggestions.
@@ -16,7 +24,7 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
    * Optional callback to access the ISuggestions interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: IRefObject<ISuggestions>;
+  componentRef?: IRefObject<ISuggestions<T>>;
 
   /**
    * How the suggestion should look in the suggestion list.
@@ -185,6 +193,55 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
    * Will be used by the BasePicker to keep track of the list for aria.
    */
   suggestionsListId?: string;
+
+  /** Call to provide customized styling that will layer on top of the variant rules. */
+  styles?: IStyleFunctionOrObject<{}, {}>;
+
+  /** Theme provided by High-Order Component. */
+  theme?: ITheme;
+}
+
+/** The props needed to construct Suggestions styles. */
+export type ISuggestionsStyleProps = Required<Pick<ISuggestionsProps<any>, 'theme'>> &
+  Pick<ISuggestionsProps<any>, 'className' | 'suggestionsClassName'> & {
+    /** Whether the forceResolve actionButton is selected. */
+    forceResolveButtonSelected?: boolean;
+
+    /** Whether the searchForMore actionButton is selected. */
+    searchForMoreButtonSelected?: boolean;
+  };
+
+/** Represents the stylable areas of the Suggestions. */
+export interface ISuggestionsStyles {
+  /** Root element of the suggestions outer wrapper. */
+  root: IStyle;
+
+  /** Refers to the suggestions container. */
+  suggestionsContainer: IStyle;
+
+  /** Refers to the title rendered for suggestions container header and/or footer (if provided). */
+  title: IStyle;
+
+  /** Refers to the 'Force resolve' actionButton. */
+  forceResolveButton: IStyle;
+
+  /** Refers to the 'Search for more' actionButton. */
+  searchForMoreButton: IStyle;
+
+  /** Refers to the text rendered when no suggestions are found. */
+  noSuggestions: IStyle;
+
+  /** Refers to the text displaying if more suggestions available. */
+  suggestionsAvailable: IStyle;
+
+  /** SubComponents (Spinner) styles. */
+  subComponentStyles: ISuggestionsSubComponentStyles;
+}
+
+/** Styles interface of the SubComponents rendered within PeoplePickerItemSelected. */
+export interface ISuggestionsSubComponentStyles {
+  /** Refers to the Spinner rendered within the Suggestions when searching or loading suggestions. */
+  spinner: IStyleFunctionOrObject<ISpinnerStyleProps, any>;
 }
 
 /**
@@ -200,75 +257,6 @@ export interface ISuggestionModel<T> {
 
   /** Aria-label string for each suggested item. */
   ariaLabel?: string;
-}
-
-/** SuggestionItem component. */
-export interface ISuggestionItem {}
-
-/**
- * Suggestion item props. Refers to the each individual suggested items rendered within Suggestions callout.
- * Type T is the type of the item that is displayed.
- */
-export interface ISuggestionItemProps<T> {
-  /**
-   * Optional callback to access the ISuggestionItem interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
-   */
-  componentRef?: IRefObject<ISuggestionItem>;
-
-  /** Individual suggestion object containing its properties. */
-  suggestionModel: ISuggestionModel<T>;
-
-  /** Optional renderer to override the default one for each type of picker. */
-  RenderSuggestion: (item: T, suggestionItemProps?: ISuggestionItemProps<T>) => JSX.Element;
-
-  /** Callback for when the user clicks on the suggestion. */
-  onClick: (ev: React.MouseEvent<HTMLButtonElement>) => void;
-
-  /** Callback for when the item is removed from the array of suggested items. */
-  onRemoveItem: (ev: React.MouseEvent<HTMLButtonElement>) => void;
-
-  /** Optional className for the root element of the suggestion item. */
-  className?: string;
-
-  /** Unique id of the suggested item. */
-  id?: string;
-
-  /** Whether the remove button should be rendered or not. */
-  showRemoveButton?: boolean;
-
-  /** An override for the 'selected' property of the SuggestionModel. */
-  isSelectedOverride?: boolean;
-
-  /**
-   * The ARIA label for the button to remove the suggestion from the list.
-   */
-  removeButtonAriaLabel?: string;
-
-  /** Call to provide customized styling that will layer on top of the variant rules. */
-  styles?: IStyleFunctionOrObject<ISuggestionItemStyleProps, ISuggestionItemStyles>;
-
-  /** Theme provided by High-Order Component. */
-  theme?: ITheme;
-}
-
-/** The props needed to construct SuggestionItem styles. */
-export type ISuggestionItemStyleProps = Required<Pick<ISuggestionItemProps<any>, 'theme'>> &
-  Pick<ISuggestionItemProps<any>, 'className'> & {
-    /** Whether the suggestion item is selected or not. */
-    suggested?: boolean;
-  };
-
-/** Represents the stylable areas of the SuggestionItem. */
-export interface ISuggestionItemStyles {
-  /** Root element of the suggested item. */
-  root: IStyle;
-
-  /** Refers to the CommandButton holding the content of the suggested item. */
-  itemButton: IStyle;
-
-  /** Refers to the remove button in case it's rendered. */
-  closeButton: IStyle;
 }
 
 export enum SuggestionActionType {

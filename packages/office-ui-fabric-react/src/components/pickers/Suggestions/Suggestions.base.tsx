@@ -1,58 +1,26 @@
 import * as React from 'react';
 
-import { BaseComponent, css, KeyCodes, createRef } from '../../../Utilities';
-import { CommandButton, IconButton, IButton } from '../../../Button';
-import { Spinner } from '../../../Spinner';
-import { ISuggestionItemProps, ISuggestionsProps, SuggestionActionType } from './Suggestions.types';
+import { BaseComponent, KeyCodes, createRef, classNamesFunction, IStyleFunctionOrObject } from '../../../Utilities';
+import { IProcessedStyleSet } from '../../../Styling';
+import { CommandButton, IButton } from '../../../Button';
+import { Spinner, ISpinnerStyleProps, ISpinnerStyles } from '../../../Spinner';
+import { ISuggestionsProps, SuggestionActionType, ISuggestionsStyleProps, ISuggestionsStyles } from './Suggestions.types';
 import { SuggestionItem } from './SuggestionItem';
 
-import * as stylesImport from './Suggestions.scss';
-const styles: any = stylesImport;
+const getClassNames = classNamesFunction<ISuggestionsStyleProps, ISuggestionsStyles>();
 
 export interface ISuggestionsState {
   selectedActionType: SuggestionActionType;
 }
 
-/**
- * SuggestionItem class component.
- * @deprecated Will be removed in next major release of Fabric. Use SuggestionItem functional component.
- */
-export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {}> {
-  public render(): JSX.Element {
-    const { suggestionModel, RenderSuggestion, onClick, className, onRemoveItem, isSelectedOverride, removeButtonAriaLabel } = this.props;
-    return (
-      <div
-        className={css(
-          'ms-Suggestions-item',
-          styles.suggestionsItem,
-          {
-            ['is-suggested ' + styles.suggestionsItemIsSuggested]: suggestionModel.selected || isSelectedOverride
-          },
-          className
-        )}
-      >
-        <CommandButton onClick={onClick} className={css('ms-Suggestions-itemButton', styles.itemButton)}>
-          {RenderSuggestion(suggestionModel.item, this.props)}
-        </CommandButton>
-        {this.props.showRemoveButton ? (
-          <IconButton
-            iconProps={{ iconName: 'Cancel', style: { fontSize: '12px' } }}
-            title={removeButtonAriaLabel}
-            ariaLabel={removeButtonAriaLabel}
-            onClick={onRemoveItem}
-            className={css('ms-Suggestions-closeButton', styles.closeButton)}
-          />
-        ) : null}
-      </div>
-    );
-  }
-}
-
-export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggestionsState> {
+export class SuggestionsBase<T> extends BaseComponent<ISuggestionsProps<T>, ISuggestionsState> {
   protected _forceResolveButton = createRef<IButton>();
   protected _searchForMoreButton = createRef<IButton>();
   protected _selectedElement = createRef<HTMLDivElement>();
+
   private activeSelectedElement: HTMLDivElement | null;
+  private _classNames: IProcessedStyleSet<ISuggestionsStyles>;
+
   constructor(suggestionsProps: ISuggestionsProps<T>) {
     super(suggestionsProps);
     this.state = {
@@ -95,60 +63,75 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
       resultsFooter,
       isResultsFooterVisible = true,
       suggestionsAvailableAlertText,
-      suggestionsHeaderText
+      suggestionsHeaderText,
+      suggestionsClassName,
+      theme,
+      styles
     } = this.props;
+
+    this._classNames = getClassNames(styles, {
+      theme: theme!,
+      className,
+      suggestionsClassName,
+      forceResolveButtonSelected: this.state.selectedActionType === SuggestionActionType.forceResolve,
+      searchForMoreButtonSelected: this.state.selectedActionType === SuggestionActionType.searchMore
+    });
 
     const noResults = () => {
       return noResultsFoundText ? (
-        <div role="alert" className={css('ms-Suggestions-none', styles.suggestionsNone)}>
+        <div role="alert" className={this._classNames.noSuggestions}>
           {noResultsFoundText}
         </div>
       ) : null;
     };
+
+    const spinnerStyles = this._classNames.subComponentStyles
+      ? (this._classNames.subComponentStyles.spinner as IStyleFunctionOrObject<ISpinnerStyleProps, ISpinnerStyles>)
+      : undefined;
+
     // MostRecently Used text should supercede the header text if it's there and available.
     let headerText: string | undefined = suggestionsHeaderText;
     if (isMostRecentlyUsedVisible && mostRecentlyUsedHeaderText) {
       headerText = mostRecentlyUsedHeaderText;
     }
+
     let footerTitle: ((props: ISuggestionsProps<T>) => JSX.Element) | undefined = undefined;
     if (isResultsFooterVisible) {
       footerTitle = suggestions.length >= (resultsMaximumNumber as number) ? resultsFooterFull : resultsFooter;
     }
+
     const hasNoSuggestions = (!suggestions || !suggestions.length) && !isLoading;
+
     return (
-      <div className={css('ms-Suggestions', className ? className : '', styles.root)}>
-        {headerText ? <div className={css('ms-Suggestions-title', styles.suggestionsTitle)}>{headerText}</div> : null}
+      <div className={this._classNames.root}>
+        {headerText ? <div className={this._classNames.title}>{headerText}</div> : null}
         {forceResolveText && this._shouldShowForceResolve() && (
           <CommandButton
             componentRef={this._forceResolveButton}
-            className={css('ms-forceResolve-button', styles.actionButton, {
-              ['is-selected ' + styles.buttonSelected]: this.state.selectedActionType === SuggestionActionType.forceResolve
-            })}
+            className={this._classNames.forceResolveButton}
             onClick={this._forceResolve}
           >
             {forceResolveText}
           </CommandButton>
         )}
-        {isLoading && <Spinner className={css('ms-Suggestions-spinner', styles.suggestionsSpinner)} label={loadingText} />}
+        {isLoading && <Spinner styles={spinnerStyles} label={loadingText} />}
         {hasNoSuggestions ? (onRenderNoResultFound ? onRenderNoResultFound(undefined, noResults) : noResults()) : this._renderSuggestions()}
         {searchForMoreText && moreSuggestionsAvailable && (
           <CommandButton
             componentRef={this._searchForMoreButton}
-            className={css('ms-SearchMore-button', styles.actionButton, {
-              ['is-selected ' + styles.buttonSelected]: this.state.selectedActionType === SuggestionActionType.searchMore
-            })}
+            className={this._classNames.searchForMoreButton}
             iconProps={{ iconName: 'Search' }}
             onClick={this._getMoreResults}
           >
             {searchForMoreText}
           </CommandButton>
         )}
-        {isSearching ? <Spinner className={css('ms-Suggestions-spinner', styles.suggestionsSpinner)} label={searchingText} /> : null}
+        {isSearching ? <Spinner styles={spinnerStyles} label={searchingText} /> : null}
         {footerTitle && !moreSuggestionsAvailable && !isMostRecentlyUsedVisible && !isSearching ? (
-          <div className={css('ms-Suggestions-title', styles.suggestionsTitle)}>{footerTitle(this.props)}</div>
+          <div className={this._classNames.title}>{footerTitle(this.props)}</div>
         ) : null}
         {
-          <span role="alert" aria-live="polite" className={css('ms-Suggestions-suggestionsAvailable', styles.suggestionsAvailable)}>
+          <span role="alert" aria-live="polite" className={this._classNames.suggestionsAvailable}>
             {!isLoading && !isSearching && suggestions && suggestions.length > 0 && suggestionsAvailableAlertText
               ? suggestionsAvailableAlertText
               : null}
@@ -285,10 +268,8 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
       showRemoveButtons,
       suggestionsContainerAriaLabel,
       suggestionsListId,
-      suggestionsClassName
     } = this.props;
     let { suggestions } = this.props;
-    // const TypedSuggestionsItem = this.SuggestionsItemOfProperType;
 
     if (resultsMaximumNumber) {
       suggestions = suggestions.slice(0, resultsMaximumNumber);
@@ -298,9 +279,11 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
       return null;
     }
 
+    const TypedSuggestionItem = SuggestionItem<T>();
+
     return (
       <div
-        className={css('ms-Suggestions-container', styles.suggestionsContainer, suggestionsClassName)}
+        className={this._classNames.suggestionsContainer}
         id={suggestionsListId}
         role="listbox"
         aria-label={suggestionsContainerAriaLabel}
@@ -315,7 +298,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
             role="option"
             aria-label={suggestion.ariaLabel}
           >
-            <SuggestionItem
+            <TypedSuggestionItem
               suggestionModel={suggestion}
               RenderSuggestion={onRenderSuggestion as any}
               onClick={this._onClickTypedSuggestionsItem(suggestion.item, index)}

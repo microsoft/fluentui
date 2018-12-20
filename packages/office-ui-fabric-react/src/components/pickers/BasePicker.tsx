@@ -5,7 +5,7 @@ import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Callout, DirectionalHint } from '../../Callout';
 import { Selection, SelectionZone, SelectionMode } from '../../utilities/selection/index';
 import { Suggestions } from './Suggestions/Suggestions';
-import { ISuggestionsProps } from './Suggestions/Suggestions.types';
+import { ISuggestions } from './Suggestions/Suggestions.types';
 import { SuggestionsController } from './Suggestions/SuggestionsController';
 import { IBasePicker, IBasePickerProps, ValidationState, IBasePickerStyleProps, IBasePickerStyles } from './BasePicker.types';
 import { IAutofill, Autofill } from '../Autofill/index';
@@ -53,10 +53,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected root = createRef<HTMLDivElement>();
   protected input = createRef<IAutofill>();
   protected focusZone = createRef<IFocusZone>();
-  protected suggestionElement = createRef<Suggestions<T>>();
+  protected suggestionElement = React.createRef<ISuggestions<T>>();
 
   protected suggestionStore: SuggestionsController<T>;
-  protected SuggestionOfProperType = Suggestions as new (props: ISuggestionsProps<T>) => Suggestions<T>;
   protected currentPromise: PromiseLike<any> | undefined;
   protected _ariaMap: IPickerAriaIds;
   private _id: string;
@@ -204,18 +203,18 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     // then we just use the old SASS styles instead.
     const classNames: Partial<IProcessedStyleSet<IBasePickerStyles>> = styles
       ? getClassNames(styles, {
-          theme,
-          className,
-          isFocused,
-          inputClassName: inputProps && inputProps.className
-        })
+        theme,
+        className,
+        isFocused,
+        inputClassName: inputProps && inputProps.className
+      })
       : {
-          root: css('ms-BasePicker', className ? className : ''),
-          text: css('ms-BasePicker-text', legacyStyles.pickerText, this.state.isFocused && legacyStyles.inputFocused),
-          itemsWrapper: legacyStyles.pickerItems,
-          input: css('ms-BasePicker-input', legacyStyles.pickerInput, inputProps && inputProps.className),
-          screenReaderText: legacyStyles.screenReaderOnly
-        };
+        root: css('ms-BasePicker', className ? className : ''),
+        text: css('ms-BasePicker-text', legacyStyles.pickerText, this.state.isFocused && legacyStyles.inputFocused),
+        itemsWrapper: legacyStyles.pickerItems,
+        input: css('ms-BasePicker-input', legacyStyles.pickerInput, inputProps && inputProps.className),
+        screenReaderText: legacyStyles.screenReaderOnly
+      };
 
     return (
       <div ref={this.root} className={classNames.root} onKeyDown={this.onKeyDown}>
@@ -269,7 +268,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   protected renderSuggestions(): JSX.Element | null {
-    const TypedSuggestion = this.SuggestionOfProperType;
+    const TypedSuggestions = Suggestions<T>();
+
     return this.state.suggestionsVisible && this.input ? (
       <Callout
         isBeakVisible={false}
@@ -280,12 +280,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         directionalHintForRTL={DirectionalHint.bottomRightEdge}
         {...this.props.pickerCalloutProps}
       >
-        <TypedSuggestion
+        <TypedSuggestions
           onRenderSuggestion={this.props.onRenderSuggestionsItem}
           onSuggestionClick={this.onSuggestionClick}
           onSuggestionRemove={this.onSuggestionRemove}
           suggestions={this.suggestionStore.getSuggestions()}
-          ref={this.suggestionElement}
+          componentRef={this.suggestionElement}
           onGetMoreResults={this.onGetMoreResults}
           moreSuggestionsAvailable={this.state.moreSuggestionsAvailable}
           isLoading={this.state.suggestionsLoading}
@@ -855,17 +855,17 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
     // then we just use the old SASS styles instead.
     const classNames: Partial<IProcessedStyleSet<IBasePickerStyles>> = styles
       ? getClassNames(styles, {
-          theme,
-          className,
-          isFocused,
-          inputClassName: inputProps && inputProps.className
-        })
+        theme,
+        className,
+        isFocused,
+        inputClassName: inputProps && inputProps.className
+      })
       : {
-          root: css('ms-BasePicker', className ? className : ''),
-          text: css('ms-BasePicker-text', legacyStyles.pickerText, this.state.isFocused && legacyStyles.inputFocused),
-          input: css('ms-BasePicker-input', legacyStyles.pickerInput, inputProps && inputProps.className),
-          screenReaderText: legacyStyles.screenReaderOnly
-        };
+        root: css('ms-BasePicker', className ? className : ''),
+        text: css('ms-BasePicker-text', legacyStyles.pickerText, this.state.isFocused && legacyStyles.inputFocused),
+        input: css('ms-BasePicker-input', legacyStyles.pickerInput, inputProps && inputProps.className),
+        screenReaderText: legacyStyles.screenReaderOnly
+      };
 
     return (
       <div ref={this.root}>
