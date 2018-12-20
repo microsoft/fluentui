@@ -32,20 +32,18 @@ export const TextFieldStyles = (props: ITextFieldStyleProps): Partial<ITextField
       ]
     ],
     field: [
-      disabled && {
-        color: semanticColors.disabledBodyText,
-        backgroundColor: semanticColors.disabledBackground
-      },
-      !disabled && {
+      {
         color: semanticColors.inputText,
-        backgroundColor: semanticColors.inputBackground
-      },
-      (!disabled || disabled) && {
+        backgroundColor: semanticColors.inputBackground,
         fontSize: FontSizes.size12,
         selectors: {
           '::placeholder': [disabled && { color: semanticColors.inputBorder }],
           ':-ms-input-placeholder': [disabled && { color: semanticColors.inputBorder }]
         }
+      },
+      disabled && {
+        color: semanticColors.disabledBodyText,
+        backgroundColor: semanticColors.disabledBackground
       }
     ],
     errorMessage: {
