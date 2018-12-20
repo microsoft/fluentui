@@ -83,14 +83,17 @@ export interface IPersonaCoinStyles {
    * Styling for the root element.
    */
   root: IStyle;
+
   /**
    * Styling for the image element
    */
   image: IStyle;
+
   /**
    * Styling for the initials element
    */
   initials: IStyle;
+
   /**
    * Styling for the presence element
    */
