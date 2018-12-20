@@ -42,8 +42,6 @@ export const TextFieldStyles = (props: ITextFieldStyleProps): Partial<ITextField
       },
       (!disabled || disabled) && {
         fontSize: FontSizes.size12,
-        paddingTop: '0px',
-        paddingBottom: '0px',
         selectors: {
           '::placeholder': [disabled && { color: semanticColors.inputBorder }],
           ':-ms-input-placeholder': [disabled && { color: semanticColors.inputBorder }]
