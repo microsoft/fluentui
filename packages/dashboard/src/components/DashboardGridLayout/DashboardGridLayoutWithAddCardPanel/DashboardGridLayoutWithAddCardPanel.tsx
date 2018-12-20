@@ -138,15 +138,15 @@ export class DashboardGridLayoutWithAddCardPanel extends BaseComponent<
   };
 
   private _onLayoutChange = (currentLayout: Layout[]): void => {
-    const index = currentLayout.length - 1;
+    const lastCardIndex = currentLayout.length - 1;
     // checking if a dragging card action is performed.
     // If dragging is performed, dragging card is added to the layout whose id starts with 'n'
-    if (index > -1 && currentLayout[index].i!.startsWith('n')) {
-      const newlyAddedCardId = currentLayout[index].i!.substring(1);
-      const newlyAddedCard = currentLayout[index];
+    if (lastCardIndex > -1 && currentLayout[lastCardIndex].i!.startsWith('n')) {
+      const newlyAddedCardId = currentLayout[lastCardIndex].i!.substring(1);
+      const newlyAddedCard = currentLayout[lastCardIndex];
       const addCardPanelCards = this.state.cardsForAddCardPanel;
       let cardIndex: number = -1;
-      let newLayout: DashboardGridBreakpointLayouts = { lg: [] };
+      const newLayout: DashboardGridBreakpointLayouts = { lg: [] };
       // find the card selected in the list of cards in add card panel
       addCardPanelCards.map((card: IDGLCard, index: number) => {
         if (card.id === newlyAddedCardId) {
@@ -168,9 +168,7 @@ export class DashboardGridLayoutWithAddCardPanel extends BaseComponent<
           layout: newLayout
         });
       }
-    }
-    // logic to add card to the dashboard when '+' sign is clicked
-    else {
+    } else {
       const newLayout: DashboardGridBreakpointLayouts = { lg: [] };
       currentLayout.map((individualItemLayout: Layout) => {
         const key: string = individualItemLayout.w.toString() + individualItemLayout.h.toString();
