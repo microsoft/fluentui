@@ -64,7 +64,7 @@ export class AddCardPanel extends BaseComponent<IAddCardPanelProps, IAddCardPane
             cardClicked={this._onCardClick}
             draggingCardCallback={this._draggingCardCallback}
             expandAddCardPanelBack={this._expandAddCardPanelBack}
-            draggingAnimation={addCardItem.addCardInfo? addCardItem.addCardInfo.draggingAnimation : undefined}
+            draggingAnimation={addCardItem.addCardInfo ? addCardItem.addCardInfo.draggingAnimation : undefined}
           />
         </div>
       );
@@ -75,7 +75,7 @@ export class AddCardPanel extends BaseComponent<IAddCardPanelProps, IAddCardPane
         {addCardItemsList}
       </div>
     );
-  };  
+  };
 
   // checking if dragging card is brought close to add card panel and if so expanding add card panel back
   // for user to place dragging card back in add card panel
@@ -84,13 +84,19 @@ export class AddCardPanel extends BaseComponent<IAddCardPanelProps, IAddCardPane
       this.setState({
         flyoutStyle: {}
       });
-      window.document.removeEventListener('mousemove',this._moveHandler);
+      window.document.removeEventListener('mousemove', this._moveHandler);
       return;
     }
-  }
+  };
 
   // taking dragging card information from AddCard to pass it to DraggingCard
-  private _draggingCardCallback = (cardId: string, title: string, cardSize: CardSize, initialX: number, draggingAnimation?: DraggingAnimationType) => {
+  private _draggingCardCallback = (
+    cardId: string,
+    title: string,
+    cardSize: CardSize,
+    initialX: number,
+    draggingAnimation?: DraggingAnimationType
+  ) => {
     window.document.addEventListener('mousemove', this._moveHandler);
     this.setState({
       flyoutStyle: {
@@ -106,7 +112,7 @@ export class AddCardPanel extends BaseComponent<IAddCardPanelProps, IAddCardPane
 
   // use to open add card panel back after successfully placing a card from panel to dashboard by dragging
   private _expandAddCardPanelBack = () => {
-    window.document.removeEventListener('mousemove',this._moveHandler);
+    window.document.removeEventListener('mousemove', this._moveHandler);
     this.setState({
       flyoutStyle: {}
     });

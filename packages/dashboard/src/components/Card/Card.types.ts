@@ -181,7 +181,7 @@ export interface IAddCardInfo {
    */
   addCardPanelImageUrl?: string;
 
-   /**
+  /**
    * The dragging animation type for the add card. Used for rendering animation in the dragging card
    */
   draggingAnimation?: DraggingAnimationType;

@@ -30,7 +30,13 @@ export interface IAddCardProps {
   /**
    * The callback that is called when a card is dragged, with the necessary card information
    */
-  draggingCardCallback: (cardId: string, title: string, cardSize: CardSize, initialX: number, draggingAnimation?: DraggingAnimationType) => void;
+  draggingCardCallback: (
+    cardId: string,
+    title: string,
+    cardSize: CardSize,
+    initialX: number,
+    draggingAnimation?: DraggingAnimationType
+  ) => void;
 
   /**
    * The callback that is passed by add card panel to open the add card panel back

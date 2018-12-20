@@ -32,7 +32,7 @@ export class AddCard extends React.Component<IAddCardProps> {
         onMouseDown={this.dragPlaceholder}
       >
         <div className={imgClassName}>
-            <Image src={imageSrc} imageFit={ImageFit.cover} width={150} height={100} alt={title} />
+          <Image src={imageSrc} imageFit={ImageFit.cover} width={150} height={100} alt={title} />
         </div>
         <div className={textContainerClassName}>
           <div className={classNames.header}>{title}</div>
@@ -64,7 +64,7 @@ export class AddCard extends React.Component<IAddCardProps> {
     window.document.addEventListener('mousemove', this.handleInitialMove);
     window.document.addEventListener('mouseup', this._releaseDrag);
     window.document.addEventListener('mouseup', () => {
-      window.document.removeEventListener('mousemove', this.handleInitialMove);     
+      window.document.removeEventListener('mousemove', this.handleInitialMove);
     });
   };
 

@@ -31,7 +31,13 @@ export interface IAddCardPanelProps extends IBaseProps {
   /**
    * The callback that is called when a card is dragged, with the necessary card information
    */
-  draggingCardCallback: (cardId: string, title: string, cardSzie: CardSize, initialX: number, draggingAnimation?: DraggingAnimationType) => void;
+  draggingCardCallback: (
+    cardId: string,
+    title: string,
+    cardSzie: CardSize,
+    initialX: number,
+    draggingAnimation?: DraggingAnimationType
+  ) => void;
 
   /**
    * The cards initial x position of add card, used to determine when to open the add card panel back

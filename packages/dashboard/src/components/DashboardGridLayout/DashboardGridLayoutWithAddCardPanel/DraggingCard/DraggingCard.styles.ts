@@ -39,9 +39,9 @@ export const getStyles = (): IAddCardStyles => {
     },
     titleText: {},
     body: {
-     display: 'flex',
-    justifyContent: 'center',
-    height: '250px'
+      display: 'flex',
+      justifyContent: 'center',
+      height: '250px'
     }
   };
 };
