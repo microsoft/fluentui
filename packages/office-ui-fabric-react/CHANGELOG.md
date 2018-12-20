@@ -1,6 +1,41 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 14 Dec 2018 13:35:30 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Dec 2018 13:39:07 GMT and should not be manually modified.
+
+## 6.116.2
+Wed, 19 Dec 2018 13:39:07 GMT
+
+### Patches
+
+- DetailsList: fix conditional rendering of aria-describedby
+- Dropdown: only select aria-activedescendant when open to fix screen reader output for required dropdown
+- DetailsList: Fix custom footer example's footer row not full width.
+
+## 6.116.1
+Tue, 18 Dec 2018 22:17:52 GMT
+
+### Patches
+
+- MessageBar: add aria-expanded and aria-controls to See More button
+
+## 6.116.0
+Tue, 18 Dec 2018 13:36:49 GMT
+
+### Minor changes
+
+- ComboBox: add placeholder prop
+
+## 6.115.0
+Mon, 17 Dec 2018 13:36:58 GMT
+
+### Minor changes
+
+- Persona: fixing how coinProps are passed through from Persona to PersonaCoin.
+- Pickers: convert `TagItem` to use CSS-in-JS. Add `TagItemSuggestion` functional component. Move `TagPicker` related interfaces to a `TagPicker.types.ts` file. Cleanup some TSDocs in `BasePicker.types.ts`.
+
+### Patches
+
+- BaseComponent: Remove componentWillReceiveProps usage
 
 ## 6.114.0
 Fri, 14 Dec 2018 13:35:30 GMT

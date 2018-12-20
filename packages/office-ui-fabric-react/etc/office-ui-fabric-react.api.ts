@@ -142,7 +142,7 @@ class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends React.C
   protected _warnMutuallyExclusive(mutuallyExclusiveMap: ISettingsMap<TProps>): void;
   readonly className: string;
   componentDidMount(): void;
-  componentWillReceiveProps(newProps: Readonly<TProps>, newContext: any): void;
+  componentDidUpdate(prevProps: TProps, prevState: TState): void;
   componentWillUnmount(): void;
   // @deprecated (undocumented)
   static onError: ((errorMessage?: string, ex?: any) => void);
@@ -700,12 +700,10 @@ class CommandBarButton extends BaseComponent<IButtonProps, {}> {
 
 // @public
 class CompactPeoplePickerBase extends BasePeoplePicker {
-  // WARNING: The type "IPeoplePickerItemProps" needs to be exported by the package (e.g. added to index.ts)
-  // (undocumented)
   static defaultProps: {
     createGenericItem: typeof createGenericItem;
-    onRenderItem: (props: IPeoplePickerItemProps) => JSX.Element;
-    onRenderSuggestionsItem: (props: IPersonaProps, itemProps?: IBasePickerSuggestionsProps | undefined) => JSX.Element;
+    onRenderItem: (props: IPeoplePickerItemSelectedProps) => JSX.Element;
+    onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps | undefined) => JSX.Element;
   }
 }
 
@@ -908,6 +906,7 @@ class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsListState
   // (undocumented)
   static defaultProps: {
     checkboxVisibility: CheckboxVisibility;
+    compact: boolean;
     constrainMode: ConstrainMode;
     enableShimmer: boolean;
     isHeaderVisible: boolean;
@@ -1536,6 +1535,7 @@ class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedListState
   componentWillReceiveProps(newProps: IGroupedListProps): void;
   // (undocumented)
   static defaultProps: {
+    compact: boolean;
     groupProps: {
     }
     isHeaderVisible: boolean;
@@ -7456,7 +7456,6 @@ interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDi
   onRenderPlaceHolder?: IRenderFunction<IDropdownProps>;
   onRenderTitle?: IRenderFunction<IDropdownOption | IDropdownOption[]>;
   options: IDropdownOption[];
-  placeholder?: string;
   // @deprecated
   placeHolder?: string;
   responsiveMode?: ResponsiveMode;
@@ -7887,6 +7886,7 @@ interface IGroup {
 
 // @public (undocumented)
 interface IGroupDividerProps {
+  compact?: boolean;
   // (undocumented)
   componentRef?: IRefObject<{}>;
   expandButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
@@ -7921,6 +7921,7 @@ interface IGroupedList extends IList {
 // @public (undocumented)
 interface IGroupedListProps extends React.ClassAttributes<GroupedListBase> {
   className?: string;
+  compact?: boolean;
   componentRef?: IRefObject<IGroupedList>;
   dragDropEvents?: IDragDropEvents;
   dragDropHelper?: IDragDropHelper;
@@ -8983,13 +8984,58 @@ interface IPeopleFloatingPickerProps extends IBaseFloatingPickerProps<IPersonaPr
 interface IPeoplePickerItemProps extends IPickerItemProps<IExtendedPersonaProps> {
 }
 
+// @public
+interface IPeoplePickerItemSelectedProps extends IPickerItemProps<IPersonaProps & {
+    ValidationState: ValidationState;
+}>, IPeoplePickerItemSharedProps {
+  styles?: IStyleFunctionOrObject<IPeoplePickerItemSelectedStyleProps, IPeoplePickerItemSelectedStyles>;
+}
+
+// @public
+interface IPeoplePickerItemSelectedStyles {
+  itemContent: IStyle;
+  removeButton: IStyle;
+  root: IStyle;
+  subComponentStyles: IPeoplePickerItemSelectedSubComponentStyles;
+}
+
+// @public
+interface IPeoplePickerItemSelectedSubComponentStyles {
+  persona: IStyleFunctionOrObject<IPersonaStyleProps, any>;
+  personaCoin: IStyleFunctionOrObject<IPersonaCoinStyleProps, any>;
+}
+
+// @public
+interface IPeoplePickerItemSharedProps {
+  className?: string;
+  theme?: ITheme;
+}
+
 // @public (undocumented)
 interface IPeoplePickerItemState {
   // (undocumented)
   contextualMenuVisible: boolean;
 }
 
-// @public (undocumented)
+// @public
+interface IPeoplePickerItemSuggestionProps extends IPeoplePickerItemSharedProps {
+  compact?: boolean;
+  personaProps?: IPersonaProps;
+  styles?: IStyleFunctionOrObject<IPeoplePickerItemSuggestionStyleProps, IPeoplePickerItemSuggestionStyles>;
+  suggestionsProps?: IBasePickerSuggestionsProps;
+}
+
+// @public
+interface IPeoplePickerItemSuggestionStyles {
+  personaWrapper: IStyle;
+  root: IStyle;
+}
+
+// @public @deprecated
+interface IPeoplePickerItemWithMenuProps extends IPickerItemProps<IPersonaWithMenu> {
+}
+
+// @public
 interface IPeoplePickerProps extends IBasePickerProps<IPersonaProps> {
 }
 
@@ -9152,6 +9198,11 @@ interface IPersonaStyles {
   tertiaryText: IStyle;
   // (undocumented)
   textContent: IStyle;
+}
+
+// @public @deprecated
+interface IPersonaWithMenu extends IPersonaProps {
+  menuItems?: IContextualMenuItem[];
 }
 
 // @public (undocumented)
@@ -9711,6 +9762,7 @@ interface ISelectableDroppableTextProps<TComponent, TListenerElement = TComponen
   onRenderOption?: IRenderFunction<ISelectableOption>;
   options?: any;
   panelProps?: IPanelProps;
+  placeholder?: string;
   required?: boolean;
   selectedKey?: string | number | string[] | number[];
 }
@@ -11051,12 +11103,10 @@ class List extends BaseComponent<IListProps, IListState>, implements IList {
 
 // @public
 class ListPeoplePickerBase extends MemberListPeoplePicker {
-  // WARNING: The type "IPeoplePickerItemProps" needs to be exported by the package (e.g. added to index.ts)
-  // (undocumented)
   static defaultProps: {
     createGenericItem: typeof createGenericItem;
-    onRenderItem: (props: IPeoplePickerItemProps) => JSX.Element;
-    onRenderSuggestionsItem: (props: IPersonaProps, itemProps?: IBasePickerSuggestionsProps | undefined) => JSX.Element;
+    onRenderItem: (props: IPeoplePickerItemSelectedProps) => JSX.Element;
+    onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps | undefined) => JSX.Element;
   }
 }
 
@@ -11188,12 +11238,10 @@ class NavBase extends BaseComponent<INavProps, INavState>, implements INav {
 
 // @public
 class NormalPeoplePickerBase extends BasePeoplePicker {
-  // WARNING: The type "IPeoplePickerItemProps" needs to be exported by the package (e.g. added to index.ts)
-  // (undocumented)
   static defaultProps: {
     createGenericItem: typeof createGenericItem;
-    onRenderItem: (props: IPeoplePickerItemProps) => JSX.Element;
-    onRenderSuggestionsItem: (props: IPersonaProps, itemProps?: IBasePickerSuggestionsProps | undefined) => JSX.Element;
+    onRenderItem: (props: IPeoplePickerItemSelectedProps) => JSX.Element;
+    onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps | undefined) => JSX.Element;
   }
 }
 
@@ -12551,6 +12599,12 @@ module ZIndexes {
 // WARNING: Unsupported export: NormalPeoplePicker
 // WARNING: Unsupported export: CompactPeoplePicker
 // WARNING: Unsupported export: ListPeoplePicker
+// WARNING: Unsupported export: IPeoplePickerItemSelectedStyleProps
+// WARNING: Unsupported export: IPeoplePickerItemSuggestionStyleProps
+// WARNING: Unsupported export: PeoplePickerItemBase
+// WARNING: Unsupported export: PeoplePickerItem
+// WARNING: Unsupported export: PeoplePickerItemSuggestionBase
+// WARNING: Unsupported export: PeoplePickerItemSuggestion
 // WARNING: Unsupported export: TagPicker
 // WARNING: Unsupported export: ITagItemStyleProps
 // WARNING: Unsupported export: ITagItemSuggestionStyleProps
