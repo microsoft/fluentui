@@ -1182,7 +1182,7 @@ exports[`Stack renders wrapped horizontal Stack correctly 1`] = `
       ms-Stack
       {
         display: inline-block;
-        height: auto;
+        height: 100%;
         overflow: visible;
         width: auto;
       }
@@ -1195,7 +1195,7 @@ exports[`Stack renders wrapped horizontal Stack correctly 1`] = `
           display: flex;
           flex-direction: row;
           flex-wrap: wrap;
-          height: auto;
+          height: 100%;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;

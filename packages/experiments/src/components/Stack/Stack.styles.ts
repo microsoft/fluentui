@@ -69,14 +69,11 @@ export const styles: IStackComponent['styles'] = props => {
           maxWidth,
           maxHeight,
           width: horizontalFill ? '100%' : 'auto',
-          overflow: 'visible'
+          overflow: 'visible',
+          height: '100%'
         },
         horizontal && {
-          height: verticalFill ? '100%' : 'auto',
           width: 'auto'
-        },
-        !horizontal && {
-          height: '100%'
         },
         className,
         {
@@ -97,6 +94,7 @@ export const styles: IStackComponent['styles'] = props => {
           marginBottom: verticalMargin,
           overflow: 'visible',
           boxSizing: 'border-box',
+          padding: parsePadding(padding, theme),
 
           selectors: {
             '> *': {
@@ -119,7 +117,7 @@ export const styles: IStackComponent['styles'] = props => {
           maxWidth: '100vw',
 
           // avoid unnecessary calc() calls if vertical gap is 0
-          height: verticalFill ? (vGap.value === 0 ? '100%' : `calc(100% + ${vGap.value}${vGap.unit})`) : 'auto',
+          height: vGap.value === 0 ? '100%' : `calc(100% + ${vGap.value}${vGap.unit})`,
 
           selectors: {
             '> *': {
@@ -155,37 +153,8 @@ export const styles: IStackComponent['styles'] = props => {
         maxWidth,
         maxHeight,
         padding: parsePadding(padding, theme),
-        boxSizing: 'border-box'
-      },
-      grow && {
-        flexGrow: grow === true ? 1 : grow,
-        overflow: 'hidden'
-      },
-      horizontalAlign && {
-        [horizontal ? 'justifyContent' : 'alignItems']: nameMap[horizontalAlign] || horizontalAlign
-      },
-      vertAlign && {
-        [horizontal ? 'alignItems' : 'justifyContent']: nameMap[vertAlign] || vertAlign
-      },
-      wrap && {
-        maxWidth,
-        maxHeight,
-        width: horizontalFill ? '100%' : 'auto',
-        height: verticalFill ? '100%' : 'auto',
-        overflow: 'visible',
-        selectors: {
-          '> *': {
-            margin: `${0.5 * vGap.value}${vGap.unit} ${0.5 * hGap.value}${hGap.unit}`,
+        boxSizing: 'border-box',
 
-            // avoid unnecessary calc() calls if horizontal gap is 0
-            maxWidth: hGap.value === 0 ? '100%' : `calc(100% - ${hGap.value}${hGap.unit})`,
-
-            ...childStyles
-          },
-          ...commonSelectors
-        }
-      },
-      !wrap && {
         selectors: {
           '> *': childStyles,
 
@@ -200,6 +169,16 @@ export const styles: IStackComponent['styles'] = props => {
           ],
           ...commonSelectors
         }
+      },
+      grow && {
+        flexGrow: grow === true ? 1 : grow,
+        overflow: 'hidden'
+      },
+      horizontalAlign && {
+        [horizontal ? 'justifyContent' : 'alignItems']: nameMap[horizontalAlign] || horizontalAlign
+      },
+      vertAlign && {
+        [horizontal ? 'alignItems' : 'justifyContent']: nameMap[vertAlign] || vertAlign
       },
       className
     ]
