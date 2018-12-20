@@ -34,7 +34,7 @@ export type ISlotDefinition<TSlots> = { [prop in keyof TSlots]: IFactoryComponen
 /**
  * Created Slot structure used for rendering by components.
  */
-export type ISlot<TProps> = ((props: IPropsWithChildren<TProps>) => JSX.Element) & { isSlot?: boolean };
+export type ISlot<TProps> = ((componentProps: IPropsWithChildren<TProps>) => JSX.Element) & { isSlot?: boolean };
 
 /**
  * Interface for a slot factory that consumes both componnent and user slot prop and generates rendered output.
@@ -124,6 +124,12 @@ export function createFactory<TProps, TTokens, TStyleSet extends IStyleSet<TStyl
   const result: ISlotFactory<TProps, TTokens, TStyleSet> = (componentProps, userProps, defaultTheme, defaultStyles) => {
     const propType = typeof userProps;
 
+    // TODO: resolve theme mess
+    // const theme = (userProps && userProps.theme) || defaultTheme;
+    const theme = defaultTheme;
+
+    // if (userProps && userProps.theme) console.log('userProps.theme: ' + userProps.theme);
+
     // If they passed in raw JSX, just return that.
     if (React.isValidElement(userProps)) {
       return userProps;
@@ -151,11 +157,15 @@ export function createFactory<TProps, TTokens, TStyleSet extends IStyleSet<TStyl
     finalProps.className = mergeStyles(
       defaultStyles,
       componentProps.className,
-      // TODO: how can this be resolved with finalProps before declaration?? is always undefined
       // TODO: make sure this case is covered with examples and tests (user styles function) which uses theme
       // TODO: what about passing theme?
-      // _resolveWith(finalProps, userProps && userProps.styles),
-      _evaluateStyle(finalProps, defaultTheme, userProps && userProps.styles),
+      // TODO: Callout: What was reasoning for this call in prototype?
+      //        Seems to lead to multiple executions of userProp styles functions in examples.
+      //        In both styled and createComponent (at least old version) components, this function will get called again.
+      //          styled: called via classNamesFunction
+      //          old createComponent: called via _evaulateStyles
+      // TODO: If theme isn't needed here, this will collapse a BUNCH Of typing in this module.
+      // _evaluateStyle(finalProps, theme, userProps && userProps.styles),
       userProps && userProps.className
     )
 
@@ -173,7 +183,7 @@ export function createFactory<TProps, TTokens, TStyleSet extends IStyleSet<TStyl
 }
 
 // TODO: this is very similar to existing evaluateStyleFunction above
-const _resolveWith = (props, styles) => (typeof styles === 'function') ? styles(props) : styles;
+// const _resolveWith = (props, styles) => (typeof styles === 'function') ? styles(props) : styles;
 // const _resolveWith = (props, styles) => {
 //   console.log('_resolveWith: props = ' + props);
 //   return (typeof styles === 'function') ? styles(props) : styles;
@@ -185,7 +195,9 @@ function _evaluateStyle<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleS
   styles?: IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet>
 ): Partial<TStyleSet> | undefined {
   if (typeof styles === 'function') {
-    // TOOD: need theme to resolve styles!
+    // TODO: This is making a lot of assumptions about the style signature of the underlying component.
+    //        If it's a Foundation styles function, then it takes themes as an arg.
+    //        However, if it's an existing styled component, they will choke since themes is not in props.
     return styles(props, theme);
   }
 
@@ -241,6 +253,7 @@ export function getSlots
   ): ISlots<Required<TSlots>> {
   const result: ISlots<Required<TSlots>> = {} as ISlots<Required<TSlots>>;
 
+  // TODO: need to check if userProps is defined? what is passed here when no props are passed to Button?
   for (const name in slots) {
     if (slots.hasOwnProperty(name)) {
       if (userProps && userProps[name] && userProps[name].children) {
@@ -248,13 +261,14 @@ export function getSlots
         userProps[name].children = React.Children.toArray(userProps[name].children);
       }
 
-      const slot: ISlot<keyof TSlots> = slotProps => {
+      const slot: ISlot<keyof TSlots> = componentProps => {
         return renderSlot(
           slots[name],
           // TODO: this cast to any is hiding a relationship issue between the first two args
-          slotProps as any,
+          componentProps as any,
           userProps[name],
           // TODO: what if theme is passed as prop to slot? add examples/tests
+          // userProps.theme || userProps._defaultTheme?
           userProps._defaultTheme,
           // TODO: is this check needed (put in temporarily until createComponent is updated)? what about for backwards compatibility?
           userProps._defaultStyles && userProps._defaultStyles[name],

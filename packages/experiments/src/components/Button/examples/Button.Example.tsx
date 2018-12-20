@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Button } from '../index';
 import { Stack, Text } from '@uifabric/experiments';
-import { ContextualMenu, IContextualMenuProps, Icon, CommandBar } from 'office-ui-fabric-react';
+import { ContextualMenu, createTheme, IContextualMenuProps, Icon, CommandBar } from 'office-ui-fabric-react';
 
 const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
 const buttonMenu = (props: IContextualMenuProps) => <ContextualMenu {...props} items={menuItems} />;
@@ -10,14 +10,13 @@ const sectionGap = 32;
 const headingGap = 16;
 const buttonGap = 12;
 
-const ButtonStack = (props: { children: JSX.Element[] }) => (
+const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
   <Stack horizontal gap={buttonGap}>
     {props.children}
   </Stack>
 );
 
-// TODO: remove useNewSlots everywhere
-export class ButtonExample extends React.Component<{ useNewSlots?: boolean }, {}> {
+export class ButtonExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
       <Stack gap={sectionGap}>
@@ -37,7 +36,6 @@ export class ButtonExample extends React.Component<{ useNewSlots?: boolean }, {}
                 <Button disabled secondary content="Secondary disabled button" />
               </ButtonStack>
               <ButtonStack>
-                <Button icon="PeopleAdd" circular styles={{ icon: { color: 'pink ' } }} />
                 <Button icon="Phone" circular disabled />
                 <Button icon="FontSize" circular primary />
                 <Button icon="Attach" circular primary disabled />

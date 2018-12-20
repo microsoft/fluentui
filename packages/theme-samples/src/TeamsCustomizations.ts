@@ -91,46 +91,6 @@ export const TeamsCustomizations: ICustomizations = {
             }
           ]
         };
-      },
-      styleVariables: {
-        baseVariant: {
-          baseState: {
-            borderRadius: 3,
-            borderWidth: 2,
-            iconSize: 16,
-            iconWeight: 700,
-            textWeight: 400,
-            contentPadding: '4px 32px'
-          },
-          enabled: {
-            iconColor: '#252424',
-            borderColorHovered: 'transparent',
-            borderColorPressed: 'transparent'
-          },
-          expanded: {
-            borderColor: 'transparent'
-          }
-        },
-        circular: {
-          baseState: {
-            borderWidth: 1
-          },
-          enabled: {
-            backgroundColorHovered: '#464775',
-            backgroundColorPressed: '#464775',
-
-            textColorHovered: '#fff',
-            textColorPressed: '#fff',
-
-            iconColorHovered: '#fff',
-            iconColorPressed: '#fff'
-          }
-        },
-        primary: {
-          enabled: {
-            iconColor: 'white'
-          }
-        }
       }
     }
   }

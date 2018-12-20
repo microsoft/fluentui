@@ -1,13 +1,17 @@
 /** @jsx createElementWrapper */
-import { IButtonComponent, IButtonSlots, IButtonViewProps } from './Button.types';
-import { Stack } from '../../Stack';
 import { ContextualMenu } from 'office-ui-fabric-react';
-import { getNativeProps, buttonProperties } from '../../Utilities';
-import { Icon, Text } from '../../utilities/factoryComponents';
 import { createElementWrapper, getSlots } from '@uifabric/foundation';
 
+import { Stack } from '../../Stack';
+import { createTheme } from '../../Styling';
+import { getNativeProps, buttonProperties } from '../../Utilities';
+import { Icon, Text } from '../../utilities/factoryComponents';
+
+import { IButtonComponent, IButtonSlots, IButtonViewProps } from './Button.types';
+import { Button } from './Button';
+
 export const ButtonView: IButtonComponent['view'] = props => {
-  const { menu: Menu, children, content, icon, expanded, disabled, onMenuDismiss, menuTarget, ...rest } = props;
+  const { menu: Menu, children, content, icon, expanded, disabled, onMenuDismiss, menuTarget, renderTestButton, ...rest } = props;
 
   // TODO: 'href' is anchor property... consider getNativeProps by root type
   // const buttonProps = { ...getNativeProps(rest, buttonProperties), href: props.href };
@@ -20,7 +24,18 @@ export const ButtonView: IButtonComponent['view'] = props => {
     icon: Icon,
     content: Text,
     menu: ContextualMenu,
-    menuIcon: Icon
+    menuIcon: Icon,
+    button: Button
+  });
+
+  // TODO: Callout: It doesn't make sense for a component to ever pass a theme to a Slot, right?
+  //        How could a component's theme ever override global/contextual theme? It doesn't make sense.
+  //        The only thing that can override a global/contextual theme is a user's slot props object for a given slot.
+  //        If component's can't pass theme, using testTheme here should cause a type error when passed to a Slot.
+  const testTheme = createTheme({
+    semanticColors: {
+      buttonText: 'orange'
+    }
   });
 
   // TODO: David's codepen automatically doesn't show an icon without having to check for icon prop presence
@@ -34,7 +49,8 @@ export const ButtonView: IButtonComponent['view'] = props => {
       aria-disabled={disabled}
     >
       <Slots.stack horizontal as="span" gap={8} verticalAlign="center" horizontalAlign="center" verticalFill>
-        {icon && <Slots.icon />}
+        {renderTestButton && <Slots.button />}
+        {icon && <Slots.icon theme={testTheme} />}
         {content && <Slots.content />}
         {children}
         {Menu && (

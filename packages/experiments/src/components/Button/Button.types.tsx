@@ -1,4 +1,4 @@
-import { IComponent, IStyleableComponentProps } from '../../Foundation';
+import { IComponent, ISlotProp, IStyleableComponentProps } from '../../Foundation';
 import { IStyle } from '../../Styling';
 import { IFontWeight, IRefObject } from 'office-ui-fabric-react';
 import { IContextualMenuSlot, IHTMLButtonSlot, IHorizontalStackSlot, IIconSlot, ITextSlot } from '../../utilities/factoryComponents.types';
@@ -11,6 +11,8 @@ export type IButtonStates = 'baseState' | 'enabled' | 'disabled' | 'expanded';
 
 export type IButtonVariants = 'baseVariant' | 'primary' | 'circular';
 
+export type IButtonSlot = ISlotProp<IButtonProps>;
+
 export interface IButtonSlots {
   root?: IHTMLButtonSlot;
   stack?: IHorizontalStackSlot;
@@ -18,6 +20,8 @@ export interface IButtonSlots {
   icon?: IIconSlot;
   menu?: IContextualMenuSlot;
   menuIcon?: IIconSlot;
+  // TODO: remove, for testing nested Slot components using new createComponent
+  button?: IButtonSlot;
 }
 
 export interface IButton { }
@@ -34,16 +38,15 @@ export interface IButtonProps extends IButtonSlots, IStyleableComponentProps<IBu
   expanded?: boolean;
   defaultExpanded?: boolean;
 
+  // remove
+  renderTestButton?: boolean;
+
   // 'variant' prop vs. boolean for each variant (primary, secondary, circular, etc.)
   // TODO: remove variant prop. make sure new way isn't using
   variant?: IButtonVariants;
+  tokens?: IButtonStyleVariablesTypes;
 
   onClick?: (ev: React.MouseEvent<HTMLElement>) => void;
-  // TODO: remove styleVariables prop
-  styleVariables?: IButtonStyleVariables;
-
-  // TODO: remove
-  useNewSlots?: boolean;
 }
 
 export interface IButtonStyleVariablesTypes {

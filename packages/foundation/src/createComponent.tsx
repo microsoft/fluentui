@@ -91,6 +91,7 @@ export function createComponent<TComponentProps, TViewProps, TTokens, TStyleSet 
                 ...(mergedProps as any),
                 ...{
                   classNames: mergeStyleSets(
+                    // TOOD: need theme to resolve styles? only if keeping "old" Foundation components with "new" styles function signature
                     _evaluateStyle(styledProps, styledProps.theme, component.styles),
                     _evaluateStyle(styledProps, styledProps.theme, settingsStyles),
                     _evaluateStyle(styledProps, styledProps.theme, mergedProps.styles)
@@ -108,6 +109,9 @@ export function createComponent<TComponentProps, TViewProps, TTokens, TStyleSet 
               //        that Slots are required for each style section. Is this what we want? Are there use cases where there'll be style
               //        sections not associated with Slots? If so, how will they have className applied?
               //        Stack seems to have a case of this with "wrap" prop and "inner" section but is Stack doing the right thing?
+              // TODO: Callout: Resolving tokens and styles here means only `theme` prop at component level will apply. Any theme props
+              //        passed to slots by user or internal to component will not take effect since they are not available here.
+
               // TODO: keep themes as part of mergedProps or make separate variable? (might clean up awkward typings to make it separate)
               // TODO: then again, createComponent shouldn't know about settings that are being passed on... it should NOT be a separate arg
               // TODO: david mentioned avoiding mixins for perf, but with theme (and other fields) coming from either settings or props,
@@ -116,8 +120,6 @@ export function createComponent<TComponentProps, TViewProps, TTokens, TStyleSet 
               //        one, just keep it separate. All other customized settings (Layer fields, etc.) need to be forwarded in merged Props.
               const tokens = _resolveTokens(mergedProps, theme, component.tokens, settings.tokens, mergedProps.tokens);
               const styles = _resolveStyles(mergedProps, theme, tokens, component.styles, settings.styles, mergedProps.styles);
-
-              // console.log('styles: ' + JSON.stringify(styles));
 
               const viewComponentProps: TViewProps = {
                 ...mergedProps,
@@ -168,7 +170,7 @@ function _evaluateStyle<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleS
   styles?: IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet>
 ): Partial<TStyleSet> | undefined {
   if (typeof styles === 'function') {
-    // TOOD: need theme to resolve styles!
+    // return styles(props, theme);
     return styles(props, theme);
   }
 

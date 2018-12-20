@@ -10,7 +10,8 @@ const sectionGap = 32;
 const headingGap = 16;
 const buttonGap = 12;
 
-export class ButtonStyleVarsExample extends React.Component<{ useNewSlots?: boolean }, {}> {
+// TODO: if kept, rename to tokens
+export class ButtonStyleVarsExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     const ButtonSet = (props: IButtonProps) => (
       <Stack horizontal verticalAlign='center' gap={8}>

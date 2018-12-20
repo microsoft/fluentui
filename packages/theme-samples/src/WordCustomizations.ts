@@ -28,19 +28,6 @@ export const WordCustomizations: ICustomizations = {
         textWeight: 600,
         iconSize: 12,
         contentPadding: '0px 6px'
-      },
-      styleVariables: {
-        baseVariant: {
-          baseState: {
-            borderWidth: 1,
-            minHeight: 26,
-            textSize: 13.5,
-            lineHeight: 13.5,
-            textWeight: 600,
-            iconSize: 12,
-            contentPadding: '0px 6px'
-          }
-        }
       }
     }
   }
