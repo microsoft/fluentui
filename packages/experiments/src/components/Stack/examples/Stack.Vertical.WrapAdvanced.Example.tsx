@@ -112,13 +112,12 @@ export class VerticalStackWrapAdvancedExample extends React.Component<{}, IExamp
         </Stack>
 
         <div className={styles.container}>
-          <Stack verticalFill wrap gap={20} horizontalAlign={horizontalAlignment} verticalAlign={verticalAlignment} className={styles.root}>
+          <Stack wrap gap={20} horizontalAlign={horizontalAlignment} verticalAlign={verticalAlignment} className={styles.root}>
             <span>1</span>
             <span>2</span>
             <span>3</span>
             <span>4</span>
             <span>5</span>
-            <span>6</span>
           </Stack>
         </div>
       </Stack>

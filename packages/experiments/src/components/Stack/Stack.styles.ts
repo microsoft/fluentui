@@ -68,12 +68,9 @@ export const styles: IStackComponent['styles'] = props => {
         {
           maxWidth,
           maxHeight,
-          width: horizontalFill ? '100%' : 'auto',
+          width: 'auto',
           overflow: 'visible',
           height: '100%'
-        },
-        horizontal && {
-          width: 'auto'
         },
         className,
         {
@@ -95,6 +92,8 @@ export const styles: IStackComponent['styles'] = props => {
           overflow: 'visible',
           boxSizing: 'border-box',
           padding: parsePadding(padding, theme),
+          width: horizontalFill ? '100%' : 'auto',
+          maxWidth: '100vw',
 
           selectors: {
             '> *': {
@@ -113,8 +112,6 @@ export const styles: IStackComponent['styles'] = props => {
         },
         horizontal && {
           flexDirection: 'row',
-          width: horizontalFill ? '100%' : 'auto',
-          maxWidth: '100vw',
 
           // avoid unnecessary calc() calls if vertical gap is 0
           height: vGap.value === 0 ? '100%' : `calc(100% + ${vGap.value}${vGap.unit})`,
@@ -126,11 +123,12 @@ export const styles: IStackComponent['styles'] = props => {
           }
         },
         !horizontal && {
-          height: `calc(100% + ${vGap.value}${vGap.unit})`,
           flexDirection: 'column',
-          justifyContent: 'start',
-          alignContent: 'end',
-          alignItems: 'start',
+          height: `calc(100% + ${vGap.value}${vGap.unit})`,
+
+          // avoid unnecessary calc() calls if horizontal gap is 0
+          width: hGap.value === 0 ? '100%' : `calc(100% + ${hGap.value}${hGap.unit})`,
+
           selectors: {
             '> *': {
               maxHeight: vGap.value === 0 ? '100%' : `calc(100% - ${vGap.value}${vGap.unit})`
