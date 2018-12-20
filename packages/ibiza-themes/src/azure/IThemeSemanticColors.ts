@@ -1,5 +1,12 @@
 export interface IThemeSemanticColors {
   background: string;
+  statusBar: {
+    okay: string;
+    error: string;
+    warning: string;
+    information: string;
+    upsell: string;
+  };
   text: {
     heading: string;
     body: string;
