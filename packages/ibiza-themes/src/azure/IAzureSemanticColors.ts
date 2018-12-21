@@ -1,4 +1,4 @@
-export interface IThemeSemanticColors {
+export interface IAzureSemanticColors {
   background: string;
   statusBar: {
     okay: string;
