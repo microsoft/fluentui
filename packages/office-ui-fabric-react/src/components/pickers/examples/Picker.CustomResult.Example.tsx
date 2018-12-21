@@ -16,9 +16,10 @@ import { ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { IBasePickerProps, BasePickerListBelow, IPickerItemProps, ISuggestionItemProps } from 'office-ui-fabric-react/lib/Pickers';
-
-import { TestImages } from '../../../common/TestImages';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
+// Helper imports to generate data for this particular examples. Not exported by any package.
+import { TestImages } from '../../../common/TestImages';
+
 import './Picker.CustomResult.Example.scss';
 import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
 const exampleStyles: any = exampleStylesImport;

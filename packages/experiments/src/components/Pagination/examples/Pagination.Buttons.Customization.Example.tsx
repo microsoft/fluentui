@@ -5,7 +5,7 @@ export interface IPaginationBasicExampleState {
   selectedPageIndex: number;
 }
 
-export class PaginationCustomizationExample extends React.Component<{}, IPaginationBasicExampleState> {
+export class PaginationButtonsCustomizationExample extends React.Component<{}, IPaginationBasicExampleState> {
   constructor(props: {}) {
     super(props);
     this.state = { selectedPageIndex: 15 };
@@ -17,6 +17,7 @@ export class PaginationCustomizationExample extends React.Component<{}, IPaginat
         selectedPageIndex={this.state.selectedPageIndex}
         pageCount={50}
         numberOfPageButton={8}
+        format={'buttons'}
         previousPageAriaLabel={'previous page'}
         nextPageAriaLabel={'next page'}
         firstPageAriaLabel={'first page'}
@@ -34,13 +35,8 @@ export class PaginationCustomizationExample extends React.Component<{}, IPaginat
             fontWeight: 'bold',
             selectors: {
               ':hover': { backgroundColor: '#c8c8c8', borderRadius: '16px' },
-              '&:aria-selected=true': {
-                fontWeight: 'bold',
-                textDecoration: 'underline'
-              },
               '&[aria-selected=true]': {
-                fontWeight: 'bold',
-                textDecoration: 'underline'
+                fontWeight: 'bold'
               }
             }
           }

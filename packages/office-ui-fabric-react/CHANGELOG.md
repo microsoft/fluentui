@@ -1,6 +1,30 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 18 Dec 2018 13:36:49 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Dec 2018 13:39:35 GMT and should not be manually modified.
+
+## 6.117.0
+Thu, 20 Dec 2018 13:39:35 GMT
+
+### Minor changes
+
+- GroupedList: add compact mode and styles cleanup across GroupedList and DetailsList. Change expand button icon. Consolidate style values in between mentioned components.
+- Pickers: convert PeoplePicker items to CSS-in-JS. Expose some components to the surface API and rename them to solve ambiguity issues. Fix some imports in ExtendedPicker and FloatingPicker caused by my API changes.
+
+## 6.116.2
+Wed, 19 Dec 2018 13:39:07 GMT
+
+### Patches
+
+- DetailsList: fix conditional rendering of aria-describedby
+- Dropdown: only select aria-activedescendant when open to fix screen reader output for required dropdown
+- DetailsList: Fix custom footer example's footer row not full width.
+
+## 6.116.1
+Tue, 18 Dec 2018 22:17:52 GMT
+
+### Patches
+
+- MessageBar: add aria-expanded and aria-controls to See More button
 
 ## 6.116.0
 Tue, 18 Dec 2018 13:36:49 GMT
