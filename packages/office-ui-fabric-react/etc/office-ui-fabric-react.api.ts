@@ -2655,6 +2655,7 @@ interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
   onMouseMove?: (e: MouseEvent) => void;
   positioningContainerProps?: IPositioningContainerProps;
   preventDismissOnLostFocus?: boolean;
+  preventFocusOnMount?: boolean;
   styles?: IStyleFunctionOrObject<ICoachmarkStyleProps, ICoachmarkStyles>;
   target: HTMLElement | string | null;
   // @deprecated
