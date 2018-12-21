@@ -271,6 +271,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   protected renderSuggestions(): JSX.Element | null {
     const TypedSuggestions = this.SuggestionsOfProperType;
+
+    // TODO:
+    // Move this styled component in a separate file and make it available to the public API.
+    // This should be done after rewriting pickers to use a composition pattern instead of inheritance.
     const StyledTypedSuggestions = styled<ISuggestionsProps<T>, ISuggestionsStyleProps, ISuggestionsStyles>(
       TypedSuggestions,
       suggestionsStyles,

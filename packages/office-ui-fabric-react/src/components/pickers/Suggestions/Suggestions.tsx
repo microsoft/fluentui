@@ -72,6 +72,17 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
       styles
     } = this.props;
 
+    // TODO
+    // Clean this up by leaving only the first part after removing support for SASS.
+    // Currently we can not remove the SASS styles from Suggestions class because it
+    // might be used by consumers separately from pickers extending from BasePicker
+    // and have not used the new 'styles' prop. Because it's expecting a type parameter,
+    // we can not use the 'styled' function without adding some helpers which can break
+    // downstream consumers who did not use the new helpers.
+    // We check for 'styles' prop which is going to be injected by the 'styled' HOC
+    // in the BasePicker when the typed Suggestions class is ready to be rendered and
+    // we can use the CSS-in-JS styles. If the check fails (ex: custom picker),
+    // then we just use the old SASS styles instead.
     this._classNames = styles
       ? getClassNames(styles, {
           theme: theme!,
@@ -98,6 +109,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
       ? (this._classNames.subComponentStyles.spinner as IStyleFunctionOrObject<ISpinnerStyleProps, ISpinnerStyles>)
       : undefined;
 
+    // TODO: cleanup after refactor of pickers to composition pattern and remove SASS support.
     const spinnerClassNameOrStyles = styles
       ? { styles: spinnerStyles }
       : { className: css('ms-Suggestions-spinner', legacyStyles.suggestionsSpinner) };
