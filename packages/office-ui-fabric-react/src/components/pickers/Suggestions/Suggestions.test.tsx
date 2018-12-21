@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 
-import { styledSuggestions } from './Suggestions';
+import { Suggestions } from './Suggestions';
 import { ISuggestionModel } from './Suggestions.types';
 
 const suggestions = [
@@ -49,30 +49,20 @@ function mockOnClick() {
 
 describe('Suggestions', () => {
   it('renders a list properly', () => {
-    const TypedSuggestions = styledSuggestions<ISimple>();
     const component = renderer.create(
-      <TypedSuggestions
-        onRenderSuggestion={basicSuggestionRenderer}
-        onSuggestionClick={mockOnClick}
-        suggestions={generateSimpleSuggestions()}
-      />
+      <Suggestions onRenderSuggestion={basicSuggestionRenderer} onSuggestionClick={mockOnClick} suggestions={generateSimpleSuggestions()} />
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('scrolls to selected index properly', () => {
-    const TypedSuggestions = styledSuggestions<ISimple>();
     const component = renderer.create(
-      <TypedSuggestions
-        onRenderSuggestion={basicSuggestionRenderer}
-        onSuggestionClick={mockOnClick}
-        suggestions={generateSimpleSuggestions()}
-      />
+      <Suggestions onRenderSuggestion={basicSuggestionRenderer} onSuggestionClick={mockOnClick} suggestions={generateSimpleSuggestions()} />
     );
 
     component.update(
-      <TypedSuggestions
+      <Suggestions
         onRenderSuggestion={basicSuggestionRenderer}
         onSuggestionClick={mockOnClick}
         suggestions={generateSimpleSuggestions(8)}

@@ -1,5 +1,4 @@
 export * from './Suggestions/Suggestions';
-export * from './Suggestions/Suggestions.base';
 export * from './Suggestions/Suggestions.types';
 export * from './Suggestions/SuggestionItem';
 export * from './Suggestions/SuggestionItem.base';

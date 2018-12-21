@@ -2,21 +2,10 @@
 
 exports[`Suggestions renders a list properly 1`] = `
 <div
-  className=
-      ms-Suggestions
-      {
-        min-width: 260px;
-      }
+  className="ms-Suggestions"
 >
   <div
-    className=
-        ms-Suggestions-container
-        {
-          border-bottom: 1px solid #eaeaea;
-          max-height: 300px;
-          overflow-x: hidden;
-          overflow-y: auto;
-        }
+    className="ms-Suggestions-container"
     role="listbox"
   >
     <div
@@ -1964,23 +1953,7 @@ exports[`Suggestions renders a list properly 1`] = `
   </div>
   <span
     aria-live="polite"
-    className=
-        ms-Suggestions-suggestionsAvailable
-        {
-          border: 0px;
-          height: 1px;
-          margin-bottom: -1px;
-          margin-left: -1px;
-          margin-right: -1px;
-          margin-top: -1px;
-          overflow: hidden;
-          padding-bottom: 0px;
-          padding-left: 0px;
-          padding-right: 0px;
-          padding-top: 0px;
-          position: absolute;
-          width: 1px;
-        }
+    className="ms-Suggestions-suggestionsAvailable"
     role="alert"
   />
 </div>
@@ -1988,21 +1961,10 @@ exports[`Suggestions renders a list properly 1`] = `
 
 exports[`Suggestions scrolls to selected index properly 1`] = `
 <div
-  className=
-      ms-Suggestions
-      {
-        min-width: 260px;
-      }
+  className="ms-Suggestions"
 >
   <div
-    className=
-        ms-Suggestions-container
-        {
-          border-bottom: 1px solid #eaeaea;
-          max-height: 300px;
-          overflow-x: hidden;
-          overflow-y: auto;
-        }
+    className="ms-Suggestions-container"
     role="listbox"
   >
     <div
@@ -3950,23 +3912,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
   </div>
   <span
     aria-live="polite"
-    className=
-        ms-Suggestions-suggestionsAvailable
-        {
-          border: 0px;
-          height: 1px;
-          margin-bottom: -1px;
-          margin-left: -1px;
-          margin-right: -1px;
-          margin-top: -1px;
-          overflow: hidden;
-          padding-bottom: 0px;
-          padding-left: 0px;
-          padding-right: 0px;
-          padding-top: 0px;
-          position: absolute;
-          width: 1px;
-        }
+    className="ms-Suggestions-suggestionsAvailable"
     role="alert"
   />
 </div>

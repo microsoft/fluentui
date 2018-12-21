@@ -1,11 +1,14 @@
 import * as React from 'react';
 
-import { BaseComponent, KeyCodes, createRef, classNamesFunction, IStyleFunctionOrObject } from '../../../Utilities';
+import { BaseComponent, KeyCodes, createRef, classNamesFunction, IStyleFunctionOrObject, css } from '../../../Utilities';
 import { IProcessedStyleSet } from '../../../Styling';
 import { CommandButton, IButton } from '../../../Button';
 import { Spinner, ISpinnerStyleProps, ISpinnerStyles } from '../../../Spinner';
 import { ISuggestionsProps, SuggestionActionType, ISuggestionsStyleProps, ISuggestionsStyles } from './Suggestions.types';
 import { styledSuggestionItem } from './SuggestionItem';
+
+import * as stylesImport from './Suggestions.scss';
+const legacyStyles: any = stylesImport;
 
 const getClassNames = classNamesFunction<ISuggestionsStyleProps, ISuggestionsStyles>();
 
@@ -13,13 +16,13 @@ export interface ISuggestionsState {
   selectedActionType: SuggestionActionType;
 }
 
-export class SuggestionsBase<T> extends BaseComponent<ISuggestionsProps<T>, ISuggestionsState> {
+export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggestionsState> {
   protected _forceResolveButton = createRef<IButton>();
   protected _searchForMoreButton = createRef<IButton>();
   protected _selectedElement = createRef<HTMLDivElement>();
 
   private activeSelectedElement: HTMLDivElement | null;
-  private _classNames: IProcessedStyleSet<ISuggestionsStyles>;
+  private _classNames: Partial<IProcessedStyleSet<ISuggestionsStyles>>;
 
   constructor(suggestionsProps: ISuggestionsProps<T>) {
     super(suggestionsProps);
@@ -69,13 +72,35 @@ export class SuggestionsBase<T> extends BaseComponent<ISuggestionsProps<T>, ISug
       styles
     } = this.props;
 
-    this._classNames = getClassNames(styles, {
-      theme: theme!,
-      className,
-      suggestionsClassName,
-      forceResolveButtonSelected: this.state.selectedActionType === SuggestionActionType.forceResolve,
-      searchForMoreButtonSelected: this.state.selectedActionType === SuggestionActionType.searchMore
-    });
+    this._classNames = styles
+      ? getClassNames(styles, {
+          theme: theme!,
+          className,
+          suggestionsClassName,
+          forceResolveButtonSelected: this.state.selectedActionType === SuggestionActionType.forceResolve,
+          searchForMoreButtonSelected: this.state.selectedActionType === SuggestionActionType.searchMore
+        })
+      : {
+          root: css('ms-Suggestions', className ? className : '', legacyStyles.root),
+          title: css('ms-Suggestions-title', legacyStyles.suggestionsTitle),
+          searchForMoreButton: css('ms-SearchMore-button', legacyStyles.actionButton, {
+            ['is-selected ' + legacyStyles.buttonSelected]: this.state.selectedActionType === SuggestionActionType.searchMore
+          }),
+          forceResolveButton: css('ms-forceResolve-button', legacyStyles.actionButton, {
+            ['is-selected ' + legacyStyles.buttonSelected]: this.state.selectedActionType === SuggestionActionType.forceResolve
+          }),
+          suggestionsAvailable: css('ms-Suggestions-suggestionsAvailable', legacyStyles.suggestionsAvailable),
+          suggestionsContainer: css('ms-Suggestions-container', legacyStyles.suggestionsContainer, suggestionsClassName),
+          noSuggestions: css('ms-Suggestions-none', legacyStyles.suggestionsNone)
+        };
+
+    const spinnerStyles = this._classNames.subComponentStyles
+      ? (this._classNames.subComponentStyles.spinner as IStyleFunctionOrObject<ISpinnerStyleProps, ISpinnerStyles>)
+      : undefined;
+
+    const spinnerClassNameOrStyles = styles
+      ? { styles: spinnerStyles }
+      : { className: css('ms-Suggestions-spinner', legacyStyles.suggestionsSpinner) };
 
     const noResults = () => {
       return noResultsFoundText ? (
@@ -84,10 +109,6 @@ export class SuggestionsBase<T> extends BaseComponent<ISuggestionsProps<T>, ISug
         </div>
       ) : null;
     };
-
-    const spinnerStyles = this._classNames.subComponentStyles
-      ? (this._classNames.subComponentStyles.spinner as IStyleFunctionOrObject<ISpinnerStyleProps, ISpinnerStyles>)
-      : undefined;
 
     // MostRecently Used text should supercede the header text if it's there and available.
     let headerText: string | undefined = suggestionsHeaderText;
@@ -114,7 +135,7 @@ export class SuggestionsBase<T> extends BaseComponent<ISuggestionsProps<T>, ISug
             {forceResolveText}
           </CommandButton>
         )}
-        {isLoading && <Spinner styles={spinnerStyles} label={loadingText} />}
+        {isLoading && <Spinner {...spinnerClassNameOrStyles} label={loadingText} />}
         {hasNoSuggestions ? (onRenderNoResultFound ? onRenderNoResultFound(undefined, noResults) : noResults()) : this._renderSuggestions()}
         {searchForMoreText && moreSuggestionsAvailable && (
           <CommandButton
@@ -126,7 +147,7 @@ export class SuggestionsBase<T> extends BaseComponent<ISuggestionsProps<T>, ISug
             {searchForMoreText}
           </CommandButton>
         )}
-        {isSearching ? <Spinner styles={spinnerStyles} label={searchingText} /> : null}
+        {isSearching ? <Spinner {...spinnerClassNameOrStyles} label={searchingText} /> : null}
         {footerTitle && !moreSuggestionsAvailable && !isMostRecentlyUsedVisible && !isSearching ? (
           <div className={this._classNames.title}>{footerTitle(this.props)}</div>
         ) : null}

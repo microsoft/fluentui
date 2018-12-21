@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, createRef, elementContains, getId, classNamesFunction } from '../../Utilities';
+import { BaseComponent, KeyCodes, css, createRef, elementContains, getId, classNamesFunction, styled } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Callout, DirectionalHint } from '../../Callout';
 import { Selection, SelectionZone, SelectionMode } from '../../utilities/selection/index';
-import { styledSuggestions } from './Suggestions/Suggestions';
-import { ISuggestions } from './Suggestions/Suggestions.types';
+import { Suggestions } from './Suggestions/Suggestions';
+import { ISuggestions, ISuggestionsProps, ISuggestionsStyleProps, ISuggestionsStyles } from './Suggestions/Suggestions.types';
+import { getStyles as suggestionsStyles } from './Suggestions/Suggestions.styles';
 import { SuggestionsController } from './Suggestions/SuggestionsController';
 import { IBasePicker, IBasePickerProps, ValidationState, IBasePickerStyleProps, IBasePickerStyles } from './BasePicker.types';
 import { IAutofill, Autofill } from '../Autofill/index';
@@ -56,6 +57,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected suggestionElement = React.createRef<ISuggestions<T>>();
 
   protected suggestionStore: SuggestionsController<T>;
+  protected SuggestionsOfProperType = Suggestions as new (props: ISuggestionsProps<T>) => Suggestions<T>;
   protected currentPromise: PromiseLike<any> | undefined;
   protected _ariaMap: IPickerAriaIds;
   private _id: string;
@@ -268,7 +270,13 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   protected renderSuggestions(): JSX.Element | null {
-    const StyledTypedSuggestions = styledSuggestions<T>();
+    const TypedSuggestions = this.SuggestionsOfProperType;
+    const StyledTypedSuggestions = styled<ISuggestionsProps<T>, ISuggestionsStyleProps, ISuggestionsStyles>(
+      TypedSuggestions,
+      suggestionsStyles,
+      undefined,
+      { scope: 'Suggestions' }
+    );
 
     return this.state.suggestionsVisible && this.input ? (
       <Callout
