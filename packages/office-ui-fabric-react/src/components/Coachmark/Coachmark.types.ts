@@ -168,7 +168,7 @@ export interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
   /**
    * If true then focus will not be set to the Coachmark when it mounts. Useful in cases where focus on coachmark
    * is causing other components in page to dismiss upon losing focus.
-   * @default false
+   * @defaultvalue false
    */
   preventFocusOnMount?: boolean;
 
