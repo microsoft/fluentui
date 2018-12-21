@@ -28,12 +28,8 @@ fabric-website/ @jordandrako
 # todo-app/
 
 #### Packages
-packages/charting/ @Raghurk
-packages/dashboard/ @Raghurk
-packages/charting/ @veeray
-packages/dashboard/ @veeray
-packages/charting/ @chankev
-packages/dashboard/ @chankev
+packages/charting/ @Raghurk @veeray @chankev
+packages/dashboard/ @Raghurk @veeray @chankev
 packages/foundation/ @jagore
 # packages/example-app-base/
 packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
